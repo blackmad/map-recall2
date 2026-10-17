@@ -108,7 +108,10 @@ export const FAMILY_PALETTE: Record<BridgeFamily, FamilyPalette> = {
   'render-white': { spandrel: slotTint('stucco', '#e9e6dd'), pier: slotTint('stucco', '#e1ded4'), ring: slotTint('stucco', '#f1eee6'), key: slotTint('stucco', '#f6f3ec'), vault: hex('#6b6862'), coping: slotTint('stucco', '#f1eee6') },
   concrete: { spandrel: hex('#a9a49b'), pier: hex('#9d988f'), ring: hex('#b4afa6'), key: hex('#b4afa6'), vault: hex('#56534e'), coping: hex('#b4afa6') },
   // A riveted girder (the Prinsengracht radials): the fascia steel, the piers brick with stone caps.
-  steel: { spandrel: hex('#3f4d47'), pier: slotTint('brick', '#7e4636'), ring: hex('#3f4d47'), key: hex('#3f4d47'), vault: hex('#2e3532'), coping: slotTint('stone', '#b5ad9e') },
+  // The coping is the girder's own top flange: the iron rail stands on the steel fascia, one dark band from quay to quay
+  // (the Berensluis BRU0065 panorama, 2021; a stone coping drew a pale band over a thin dark line, and the bridge read
+  // as two pale strips with the road between, user 2026-10-16).
+  steel: { spandrel: hex('#3f4d47'), pier: slotTint('brick', '#7e4636'), ring: hex('#3f4d47'), key: hex('#3f4d47'), vault: hex('#2e3532'), coping: hex('#3f4d47') },
 };
 
 /** Bridge colours (sRGB). Brick and natural stone after the canal-belt bridges; Amsterdam railing green. */
@@ -523,10 +526,14 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
       };
       const water = wa || wb;
       if (!water && !arch && !lv.land) continue;
+      // A face segment half over the water ends at the water bottom along its whole length: a land bottom at one end
+      // and a water bottom at the other slanted its lower edge, a brick wedge hanging into the canal at each abutment
+      // (user 2026-10-16, Berensluis BRU0065); over the land part the face runs on under the relief, hidden.
+      const [wA, wB] = water ? [true, true] : [wa, wb];
       if (kind === 'arch') {
         // Brick to the extrados (in an arch), to the water (piers and abutments over water) or into the relief; a stone coping band on top.
         const bottom = (s: number, w: boolean, g: number, z: number) => arch ? Math.min(intrados(arch, s) + (lv.ring ? RING_M : 0), z - (lv.ring ? COPE_M : 0) - 0.05) : w ? waterZ - 0.3 : Math.min(g, z) - BURY;
-        const ba = bottom(a.s, wa, ga, za), bb = bottom(b.s, wb, gb, zb);
+        const ba = bottom(a.s, wA, ga, za), bb = bottom(b.s, wB, gb, zb);
         if (lv.ring) {
           // Under the parapet the stone coping (the parapet's proud outer face, parapet()) covers the top COPE_M.
           // A brick-rail parapet stands on the deck edge (its own face reaches 6 cm down): the face below runs up to the deck.
@@ -542,7 +549,7 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
       } else {
         const bottom = (w: boolean, g: number, z: number) => (w ? z - thickness : Math.min(g, z) - BURY);
         const col = inJoint(mid) ? C.joint : inLeaf(mid) ? input.colour ?? fascia : water ? fascia : C.brick;
-        wall(bottom(wa, ga, za), bottom(wb, gb, zb), za, zb, col);
+        wall(bottom(wA, ga, za), bottom(wB, gb, zb), za, zb, col);
       }
     }
     // Underside over water: the vault in an arch, else the soffit (girder kinds).

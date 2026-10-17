@@ -5,8 +5,8 @@
  *
  * Looks the house's pand up in public/data/extracts/amsterdam/roof-facts/14 (the z14 tile under its BAG footprint and
  * the eight around it) and prints the colour the city draws that roof in (`flatRoofFromFact`, buildingRecipe/measuredRoof.ts).
- * `--write` puts it into the intent as `roof.flat` (exported with `tintSource: measured`, drawn as is) and adds a note.
- * A house whose intent already has `roof.flat` is reported and left alone. Recompile and reinstall afterwards
+ * `--write` puts it into the intent as `roof.flatHex` (exported with `tintSource: measured`, drawn as is) and adds a note.
+ * A house whose intent already has `roof.flatHex` is reported and left alone. Recompile and reinstall afterwards
  * (install-large.ts), then check:covers.
  */
 import fs from 'node:fs';
@@ -56,9 +56,9 @@ for (const id of ids) {
   const line = `${id} (pand ${intent.pandId})`;
   if (!fact) { console.log(`${line}: no roof fact`); continue; }
   if (!reading) { console.log(`${line}: fact ${fact.slot} rgb ${fact.rgb.join('/')} conf ${fact.confidence} not usable for a flat roof`); continue; }
-  console.log(`${line}: ${reading.hex} (roof-facts 14/${at}: slot ${reading.slot}, rgb ${reading.rgb.join('/')}, confidence ${reading.confidence})${intent.roof?.flat ? `; intent already has roof.flat ${intent.roof.flat}` : ''}`);
-  if (!write || intent.roof?.flat) continue;
-  intent.roof = {material: intent.roof?.material ?? 'bitumen', flat: reading.hex};
-  intent.notes = [...(intent.notes ?? []), `roof.flat ${reading.hex}: the PDOK orthophoto's reading of this pand (roof-facts 14/${at}: slot ${reading.slot}, rgb ${reading.rgb.join('/')}, confidence ${reading.confidence}; roof-flat.ts), the colour the city drew it in before the install.`];
+  console.log(`${line}: ${reading.hex} (roof-facts 14/${at}: slot ${reading.slot}, rgb ${reading.rgb.join('/')}, confidence ${reading.confidence})${intent.roof?.flatHex ? `; intent already has roof.flatHex ${intent.roof.flatHex}` : ''}`);
+  if (!write || intent.roof?.flatHex) continue;
+  intent.roof = {...(intent.roof ?? {material: 'bitumen'}), flatHex: reading.hex};
+  intent.notes = [...(intent.notes ?? []), `roof.flatHex ${reading.hex}: the PDOK orthophoto's reading of this pand (roof-facts 14/${at}: slot ${reading.slot}, rgb ${reading.rgb.join('/')}, confidence ${reading.confidence}; roof-flat.ts), the colour the city drew it in before the install.`];
   fs.writeFileSync(intentFile, JSON.stringify(intent, null, 1) + '\n');
 }

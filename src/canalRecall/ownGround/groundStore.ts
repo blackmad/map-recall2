@@ -21,14 +21,16 @@ import { GroundSurface, type DeckSurface, type Vec2 } from './surface.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { ParksCell, ParksManifest } from './parks.js';
 import { decodeRoadLine, type RoadCell, type RoadsManifest } from './roadCells.js';
+import { decodeMarks, isRoadMarksCell, type RoadMark, type RoadMarksManifest } from './roadMarks.js';
 import type { CourtyardsCell, CourtyardsManifest } from './courtyards.js';
 import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } from './water.js';
 import { openUnderHouseboats, type Boat } from './moorings.js';
 import type { CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
-import { movableApproaches, pointInRing } from './decks.js';
+import { deckReach, movableApproaches, pointInRing } from './decks.js';
 import { prepareWays, isBridgeWay } from './streets.js';
-import { WAY_DECK_CLEAR_M, wayDeckGroups, wayDeckHighway, type WayDeckInput } from './wayDecks.js';
+import { WAY_DECK_CLEAR_M, roadEdgeSides, joinChains, wayDeckGroups, wayDeckHighway, type WayDeckInput } from './wayDecks.js';
+import { RoadIndex } from './roadSurfaces.js';
 import { landedPlatformRings } from './landedPlatforms.js';
 
 /** The game's local frame (galleryPipeline.toLocal), duplicated so the worker bundle stays small. */
@@ -37,7 +39,7 @@ const KX = 111_320 * Math.cos(GAME_ORIGIN.lat * Math.PI / 180), KY = 110_540;
 export const toLocal = (lng: number, lat: number): Vec2 => [(lng - GAME_ORIGIN.lng) * KX, (lat - GAME_ORIGIN.lat) * KY];
 export const fromLocal = (x: number, y: number): Vec2 => [GAME_ORIGIN.lng + x / KX, GAME_ORIGIN.lat + y / KY];
 
-export const EXTRACTS = { relief: 'ground-height-v1', osm: 'own-ground-osm-v1', water: 'elevation-v1', parks: 'parks-v1', roads: 'roads-v1', courtyards: 'courtyards-v1' } as const;
+export const EXTRACTS = { relief: 'ground-height-v1', osm: 'own-ground-osm-v1', water: 'elevation-v1', parks: 'parks-v1', roads: 'roads-v1', courtyards: 'courtyards-v1', marks: 'road-marks-v1' } as const;
 /** Water surface, scene z (canal level −0.40 NAP below the +1.37 NAP datum). */
 export const WATER_Z = -1.77;
 /** Relief loaded this far around a cell before it is built (decks and streets reach past its edge). */
@@ -52,6 +54,12 @@ export interface WaterLevels { version: 1; defaultNap: number; cells: Record<str
 export interface OsmCellsManifest { version: 1; area: string; cellSizeM: number; cells: string[]; fetched?: string; attribution?: string }
 
 export type Rect = [number, number, number, number];
+
+/** Inside any of the water polygons (outer ring and holes, even-odd), each tested only within its box. */
+export function waterTest(polygons: readonly (readonly (readonly Vec2[])[])[]): (x: number, y: number) => boolean {
+  const polys = polygons.map(poly => { let a = Infinity, b = Infinity, c = -Infinity, d = -Infinity; for (const [px, py] of poly[0] ?? []) { a = Math.min(a, px); b = Math.min(b, py); c = Math.max(c, px); d = Math.max(d, py); } return { poly, box: [a, b, c, d] }; });
+  return (x, y) => polys.some(({ poly, box }) => { if (x < box[0] || x > box[2] || y < box[1] || y > box[3]) return false; let inside = false; for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside; } return inside; });
+}
 
 export class GroundStore {
   relief!: GroundIndex;
@@ -72,6 +80,9 @@ export class GroundStore {
   private readonly osm = new Map<string, Promise<OsmGroundExtract | null>>();
   private readonly parks = new Map<string, Promise<ParksCell | null>>();
   private readonly roads = new Map<string, Promise<RoadCell | null>>();
+  /** road-marks-v1 (roadMarks.ts): crossing / signal / give-way nodes, loaded with the roads. */
+  private readonly marks = new Map<string, Promise<RoadMark[]>>();
+  markCells = new Set<string>();
   private readonly courtyards = new Map<string, Promise<CourtyardsCell | null>>();
   /** Polder water levels (null: the extract has none, every polygon sits at WATER_Z). */
   waterLevels: WaterLevels | null = null;
@@ -93,7 +104,7 @@ export class GroundStore {
    * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
    * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
    */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -126,6 +137,8 @@ export class GroundStore {
     this.parkCells = new Set(parks?.version === 1 ? parks.cells : []);
     const roads = this.options.roads === true ? await this.json<RoadsManifest>(`${EXTRACTS.roads}/cells.json`).catch(() => null) : null;
     this.roadCells = new Set(roads?.version === 1 ? roads.cells : []);
+    const marks = this.options.roads === true ? await this.json<RoadMarksManifest>(`${EXTRACTS.marks}/cells.json`).catch(() => null) : null;
+    this.markCells = new Set(marks?.version === 1 ? marks.cells : []);
     const courtyards = this.options.courtyards === false ? null : await this.json<CourtyardsManifest>(`${EXTRACTS.courtyards}/cells.json`).catch(() => null);
     this.courtyardCells = new Set(courtyards?.version === 1 ? courtyards.cells : []);
     this.waterLevels = levels?.version === 1 ? levels : null;
@@ -316,8 +329,7 @@ export class GroundStore {
     const around = GroundStore.neighbours(key);
     const [osms, waters] = await Promise.all([Promise.all(around.map(k => this.osmCell(k))), Promise.all(around.map(k => this.waterCell(k)))]);
     // Each polygon with its box: a station tests only the polygons around it.
-    const polys = waters.flatMap(w => w?.polygons ?? []).map(poly => { let a = Infinity, b = Infinity, c = -Infinity, d = -Infinity; for (const [px, py] of poly[0] ?? []) { a = Math.min(a, px); b = Math.min(b, py); c = Math.max(c, px); d = Math.max(d, py); } return { poly, box: [a, b, c, d] }; });
-    const wet = (x: number, y: number) => polys.some(({ poly, box }) => { if (x < box[0] || x > box[2] || y < box[1] || y > box[3]) return false; let inside = false; for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside; } return inside; });
+    const wet = waterTest(waters.flatMap(w => w?.polygons ?? []));
     const flats = around.flatMap(k => this.flatDecks(k));
     // Every measured bridge around, placed or not (a deck is placed only near the cell being prepared).
     const quant = this.elevation.quantization.xy;
@@ -340,8 +352,21 @@ export class GroundStore {
       if (Math.min(...xs) < x0 - pad || Math.max(...xs) > x1 + pad || Math.min(...ys) < y0 - pad || Math.max(...ys) > y1 + pad) continue;
       ways.push({ id: w.id, name: w.tags.name ?? '', points: w.points, halfWidth: w.section.halfWidth });
     }
-    const { profiles } = wayDeckGroups(ways, wet, claimed);
+    // Consecutive pieces of one bridge join first (wayDecks.ts joinChains).
+    const { profiles } = wayDeckGroups(this.options.wayDeckChains === false ? ways : joinChains(ways).ways, wet, claimed, this.options.wayDeckHoles === false ? undefined : this.surface.ground);
     for (const w of ways) this.wayDeckIds.add(w.id);
+    // roads-v1: the parapets stand at the road surfaces' outer edges (carriageway, cycle path, footway), not the way's drawn half-width (wayDecks.ts roadEdgeSides).
+    if (profiles.length && this.options.roads === true && this.options.wayDeckCarriage !== false) {
+      const index = new RoadIndex(await Promise.all(around.map(k => this.roadCell(k))));
+      const onRoad = (x: number, y: number) => index.classAt(x, y, true) !== null;
+      for (const profile of profiles) {
+        const sides = roadEdgeSides(profile, onRoad);
+        if (!sides) continue;
+        profile.sides = sides;
+        const r = Math.max(...sides) - Math.max(...profile.halfWidth);
+        profile.bbox = [profile.bbox[0] - r, profile.bbox[1] - r, profile.bbox[2] + r, profile.bbox[3] + r];
+      }
+    }
     for (const profile of profiles) {
       const owner = this.cellAt(profile.x[0], profile.y[0]);
       (this.decksByCell.get(owner) ?? this.decksByCell.set(owner, []).get(owner)!).push(this.surface.addDeck(profile));
@@ -488,6 +513,18 @@ export class GroundStore {
     return p;
   }
 
+  /** A cell's road-marking nodes (empty: none, or roads off). */
+  markCell(key: string): Promise<RoadMark[]> {
+    let p = this.marks.get(key);
+    if (!p) {
+      p = this.markCells.has(key)
+        ? this.fetchBytes(`${EXTRACTS.marks}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)); return isRoadMarksCell(c) ? decodeMarks(c) : []; }).catch(() => [])
+        : Promise.resolve([]);
+      this.marks.set(key, p);
+    }
+    return p;
+  }
+
   /** A cell's BGT courtyards (null: none, or courtyards off). */
   courtyardCell(key: string): Promise<CourtyardsCell | null> {
     let p = this.courtyards.get(key);
@@ -502,7 +539,7 @@ export class GroundStore {
 
   /** Forget cached water/OSM data for cells far away (relief is evicted separately). */
   forgetCells(keep: ReadonlySet<string>): void {
-    for (const map of [this.water, this.osm, this.parks, this.roads, this.courtyards, this.waterResident] as Map<string, unknown>[]) for (const k of [...map.keys()]) if (!keep.has(k)) map.delete(k);
+    for (const map of [this.water, this.osm, this.parks, this.roads, this.marks, this.courtyards, this.waterResident] as Map<string, unknown>[]) for (const k of [...map.keys()]) if (!keep.has(k)) map.delete(k);
   }
 
   /**
@@ -512,7 +549,7 @@ export class GroundStore {
   async cellInput(key: string, lod: 0 | 1): Promise<CellInput> {
     await this.prepareCell(key);
     const around = GroundStore.neighbours(key);
-    const [water, waterAround, osm, osmAround, parksAround, roadsAround, courtyardsAround] = await Promise.all([
+    const [water, waterAround, osm, osmAround, parksAround, roadsAround, courtyardsAround, marksAround] = await Promise.all([
       this.waterCell(key),
       Promise.all(around.map(k => this.waterCell(k))),
       this.osmCell(key),
@@ -520,6 +557,7 @@ export class GroundStore {
       Promise.all(around.map(k => this.parkCell(k))),
       Promise.all(around.map(k => this.roadCell(k))),
       Promise.all(around.map(k => this.courtyardCell(k))),
+      Promise.all(around.map(k => this.markCell(k))),
     ]);
     // Path ways a park's BGT path polygons replace may run into the neighbours' junction graph: drop them everywhere.
     const dropWays = parksAround.flatMap(p => p?.dropWays ?? []);
@@ -536,8 +574,13 @@ export class GroundStore {
       return this.flatDecks(k).flatMap((ring, i) => meta[i]?.movable && bridgeLines.length ? movableApproaches(ring, bridgeLines).map(r => ({ ring: r, id: `${meta[i].id}-approach` })) : []);
     };
     const own = approaches(key);
+    // A measured deck's footprint reaches over the water past its span to the bank (decks.ts deckReach, as the deck top
+    // and the kit draw it): the survey's ground polygons (h = 0) that end at the bridge's surveyed start overlie that
+    // water, and the street mask cut them there, leaving the grey deck top as a jagged band across the road at both
+    // ends (user 2026-10-16, a Prinsengracht bridge). The reach is read off the water polygons (the mask is built from these rings).
+    const wetAround = waterTest(waterAround.flatMap(g => g?.polygons ?? []));
     const deckRingsAround: Vec2[][] = [
-      ...this.surface.decks.filter(d => near(d.profile.bbox)).map(d => GroundSurface.footprint(d)),
+      ...this.surface.decks.filter(d => near(d.profile.bbox)).map(d => GroundSurface.footprint(d, this.options.deckEnds === false ? undefined : deckReach(d, wetAround).reach)),
       ...around.flatMap(k => [...this.flatDecks(k), ...(k === key ? own : approaches(k)).map(a => a.ring)]),
       // roads-v1 deck polygons (h ≥ 1): the water mask never cuts a surveyed bridge surface (or the bands over it).
       ...roadsAround.flatMap(r => (r ? r.surfaces.filter(s => s.h >= 1).map(s => decodeRoadLine(s.r[0])).filter(ring => ring.length >= 3 && near([Math.min(...ring.map(p => p[0])), Math.min(...ring.map(p => p[1])), Math.max(...ring.map(p => p[0])), Math.max(...ring.map(p => p[1]))])) : [])),
@@ -551,8 +594,8 @@ export class GroundStore {
       // Landed platforms near the cell (landedPlatforms.ts): the quay wall leaves them out, their own stone walls meet it.
       landedPlatforms: landedPlatformRings(toLocal).filter(r => near(r.reduce((b, p) => [Math.min(b[0], p[0]), Math.min(b[1], p[1]), Math.max(b[2], p[0]), Math.max(b[3], p[1])], [Infinity, Infinity, -Infinity, -Infinity] as [number, number, number, number]))),
       osm, osmAround: osmAround.filter((o): o is OsmGroundExtract => !!o),
-      parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays, ...(this.options.clipDecks === false ? { clipDecks: false } : {}),
-      ...(hasRoads ? { roads: roadsAround[around.indexOf(key)] ?? null, roadsAround, coverWays } : {}),
+      parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays, ...(this.options.clipDecks === false ? { clipDecks: false } : {}), ...(this.options.deckEnds === false ? { deckEnds: false } : {}),
+      ...(hasRoads ? { roads: roadsAround[around.indexOf(key)] ?? null, roadsAround, coverWays, marks: marksAround.flat() } : {}),
       courtyards: courtyardsAround[around.indexOf(key)] ?? null, courtyardsAround,
       project: p => toLocal(p[0], p[1]),
     };

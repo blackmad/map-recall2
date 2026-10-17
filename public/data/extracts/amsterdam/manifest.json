@@ -25,11 +25,11 @@
     },
     "bridges": {
       "file": "bridges.json",
-      "count": 416,
+      "count": 415,
       "availableCount": 1300,
-      "bytes": 871036,
+      "bytes": 1056203,
       "availableLinkedCount": 484,
-      "linkedCount": 300
+      "linkedCount": 393
     },
     "squares": {
       "file": "squares.json",

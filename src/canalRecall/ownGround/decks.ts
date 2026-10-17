@@ -23,6 +23,9 @@ import {
 import type { DeckSurface, HeightFn, Vec2 } from './surface.js';
 import { sideWidths } from '../elevation/bridgeDeck.js';
 import { waterOutside, type CrossingTest } from './railingRuns.js';
+import { HOLE_M } from './wayDecks.js';
+/** How far outside a way deck's edge over a hole the drop is looked for (past the deck's DECK_BLEND_M). */
+export const HOLE_DROP_PROBE_M = 1.5;
 
 export { FRAME, RAILING, PIER_SPAN_M } from './bridgeKit.js';
 const hex = (h: string): RGB => { const v = parseInt(h.slice(1), 16); return [((v >> 16) & 255) / 255, ((v >> 8) & 255) / 255, (v & 255) / 255]; };
@@ -32,6 +35,8 @@ export const DECK_TOP: RGB = hex('#8e8a84');
 export const RAILING_GREEN: RGB = KIT_COLOURS.iron;
 /** Deck-top lift over the surface: under every street band (LIFT.carriageway 0.03; bridge bands are sampled every 0.75 m), 2 cm down so the deck top's 1 m chords stay under the bands where a ramp turns concave (BRU0290, BRU0044, BRU0052 in the belt audit); the parapet covers its edge. */
 export const DECK_TOP_LIFT = 0;
+/** A covered deck's top past its span sinks this far under the riding surface (measuredDeckTop `sinkPastSpan`). */
+export const COVERED_TOP_SINK_M = 0.06;
 
 /** Is (x, y) over water? (signed mask distance < 0) */
 export type WaterTest = (x: number, y: number) => boolean;
@@ -121,7 +126,8 @@ export function deckWidths(deck: DeckSurface, overWater: WaterTest, onBand?: Ban
         else if (banded && t <= hw && onBand!(x, y)) road = Math.max(road, t + BAND_MARGIN_M);
       }
       core[side][i] = Math.min(hw, road);
-      wet[side][i] = water;
+      // Over a way deck's hole (wayDecks.ts HOLE_M) the deck reaches its sides as over the water.
+      wet[side][i] = p.under?.some(([a, b]) => p.s[i] >= a - 1e-6 && p.s[i] <= b + 1e-6) ? w : water;
     }
   }
   // Along the deck the water's reach spreads to the neighbours within WIDEN_PAST_WATER_M (the deck overlaps the quay).
@@ -257,7 +263,13 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
     // Past the road's half-width (an outline wider than the road, DeckProfile.sides) the surface there is the canal: the deck's own level.
     const zAt = (q: Vec2, w: number) => (!height ? z : w > hw + 0.01 ? Math.max(z, height(q[0], q[1])) : height(q[0], q[1]));
     return { s: p.s[i], c: [p.x[i], p.y[i]], n, L, R, z, zL: zAt(L, hl), zR: zAt(R, hr),
-      water: overWater(p.x[i], p.y[i]), wL: overWater(L[0], L[1]), wR: overWater(R[0], R[1]), gL: ground(L[0], L[1]), gR: ground(R[0], R[1]), ...waterOutside(L, R, n, overWater) };
+      water: overWater(p.x[i], p.y[i]), wL: overWater(L[0], L[1]), wR: overWater(R[0], R[1]), gL: ground(L[0], L[1]), gR: ground(R[0], R[1]),
+      // Over a hole past a way deck's water (wayDecks.ts HOLE_M: an underpass, its ramps) an edge with a drop outside it
+      // (the riding surface HOLE_DROP_PROBE_M out more than HOLE_M under the deck) takes a parapet, as over the water; an
+      // edge beside another deck at its level (a dual carriageway's other half) does not.
+      ...(p.under?.some(([a, b]) => p.s[i] >= a - 1e-6 && p.s[i] <= b + 1e-6) && height
+        ? { oL: height(L[0] + n[0] * HOLE_DROP_PROBE_M, L[1] + n[1] * HOLE_DROP_PROBE_M) < z - HOLE_M, oR: height(R[0] - n[0] * HOLE_DROP_PROBE_M, R[1] - n[1] * HOLE_DROP_PROBE_M) < z - HOLE_M }
+        : waterOutside(L, R, n, overWater)) };
   });
   // Water spans: the profile's measured water (the pipeline's AHN water) where it has one, else the mask's runs along the centre.
   const runs: [number, number][] = [];
@@ -290,8 +302,12 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
 /**
  * The deck top of a measured deck: a strip over its footprint (the deck span
  * plus half a metre), draped on the riding surface, under every street band.
+ * `sinkPastSpan` lowers it past the deck span (the reach onto the banks): under
+ * the survey's ground polygons (roads-v1), which drape on the land within a
+ * couple of centimetres of the riding surface, an unsunk top poked through them
+ * as grey wedges at both bridge ends (user 2026-10-16, Prinsengracht).
  */
-export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4, stride = 2, reach?: [number, number], widths?: { left: Float64Array; right: Float64Array }): MeshArrays {
+export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4, stride = 2, reach?: [number, number], widths?: { left: Float64Array; right: Float64Array }, sinkPastSpan = 0): MeshArrays {
   const m = emptyMesh(true), p = deck.profile, [r0, r1] = reach ?? [p.deck[0], p.deck[1]];
   const all: number[] = [];
   for (let i = 0; i < p.s.length; i++) if (p.s[i] >= r0 - 0.5 && p.s[i] <= r1 + 0.5) all.push(i);
@@ -319,7 +335,8 @@ export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4,
       // must stay on top (BRU0077 in the belt audit, a top on the profile's z rose 2 cm over the klinker band).
       // Past the road's half-width on a wider outline: the deck's own level (the surface there is the canal).
       const z = Math.abs(t) > hw + 0.01 ? Math.max(deck.z[i], height(x, y)) : height(x, y);
-      vertex(m, x, y, z + DECK_TOP_LIFT, DECK_TOP);
+      const sink = p.s[i] < p.deck[0] || p.s[i] > p.deck[1] ? sinkPastSpan : 0;
+      vertex(m, x, y, z + DECK_TOP_LIFT - sink, DECK_TOP);
     }
   }
   // Left (+n) to right per row; the next row is +s. (+s) × (−n) is up, so a row's j → j+1 then the next row is counter-clockwise from above.

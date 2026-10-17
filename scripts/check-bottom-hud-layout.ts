@@ -18,8 +18,10 @@ import { resolveViewport } from '../src/canalRecall/viewport.ts';
 const CANVAS_W = 1280;
 const CANVAS_H = 720;
 
-// hud.js drawCityOverview: 260×200 at (15, CANVAS_H - 215).
-const MINIMAP: Rect = { x: 15, y: CANVAS_H - 200 - 15, width: 260, height: 200 };
+// The M-key city sheet, 260×200 at (15, CANVAS_H - 228) (hudLayout, 28 px
+// above the bottom for the attribution line). The riding radar's 180×180 slot
+// lies inside it, so this one rectangle covers both shapes.
+const MINIMAP: Rect = { x: 15, y: CANVAS_H - 200 - 28, width: 260, height: 200 };
 
 // Measured from the runtime: the trip readout is monospace text plus 22 px of
 // padding, so it varies with speed and distance; the trivia card is 480 wide

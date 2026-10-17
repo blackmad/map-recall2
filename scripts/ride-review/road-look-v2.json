@@ -1,0 +1,17 @@
+{ "mode": "car", "dest": "Westerkerk", "step": 60,
+  "legs": [],
+  "extra": [
+    { "name": "kinkerstraat-dacostakade-west-quay-from-west", "at": [4.87269, 52.3674, 67] },
+    { "name": "kinkerstraat-dacostakade-east-quay-from-east", "at": [4.87437, 52.36786, 247] },
+    { "name": "marnixstraat-busway-plantsoen-from-south", "at": [4.8765, 52.37437, 20] },
+    { "name": "marnixstraat-busway-plantsoen-from-north", "at": [4.87698, 52.37512, 202] },
+    { "name": "kinkerstraat-bilderdijkgracht-zebras-from-west", "at": [4.86987, 52.36657, 66] },
+    { "name": "kinkerstraat-bilderdijkgracht-zebras-from-east", "at": [4.87175, 52.36711, 246] },
+    { "name": "oost-linnaeusstraat-wijttenbachstraat-from-south", "at": [4.92564, 52.35964, 337] },
+    { "name": "oost-linnaeusstraat-wijttenbachstraat-from-north", "at": [4.92501, 52.36055, 157] },
+    { "name": "zuid-ferdinand-bolstraat-ceintuurbaan-from-south", "at": [4.89124, 52.35239, 350] },
+    { "name": "zuid-ferdinand-bolstraat-ceintuurbaan-from-north", "at": [4.89096, 52.35336, 170] },
+    { "name": "noord-van-der-pekstraat-mosplein-from-south", "at": [4.91083, 52.39068, 20] },
+    { "name": "noord-van-der-pekstraat-mosplein-from-north", "at": [4.91138, 52.39161, 200] },
+    { "name": "nassaukade-frederik-hendrikplantsoen-from-south", "at": [4.87746, 52.37828, 20] }
+  ] }

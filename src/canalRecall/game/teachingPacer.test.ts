@@ -70,3 +70,35 @@ test('cards that opened by themselves fold after 8 seconds; clicked and arrival 
   assert.equal(pacer.cardCollapsed('arrival', 600), false);
   assert.equal(pacer.cardCollapsed(null, 600), false);
 });
+
+const MULTATULI_ID = 'extract_landmarks_1627709377';
+// ---- A folded card keeps its fact (user 2026-10-16: the Multatuli card folded to its title, "needs a fact") ----
+import fs from 'node:fs';
+import { buildFactIndex, factCardText } from '../facts/factStore.ts';
+import { emptyRotationState } from '../facts/factRotation.ts';
+import { splitDetail } from './landmarkData.ts';
+import type { FactsFile } from '../facts/factTypes.ts';
+
+test('foldedCardLine: the rotated fact without its opening sentence', () => {
+  const fact = 'Its bust has stood here since 1987.';
+  assert.equal(pacer.foldedCardLine({ detail: `A bridge over the Singel. ${fact}`, factTexts: ['A bridge over the Singel.', fact, 'Another fact.'] }), fact);
+  assert.equal(pacer.foldedCardLine({ detail: fact, factTexts: [fact, 'Another fact.'] }), fact);
+});
+
+test('foldedCardLine: with no facts, the first sentence of the card text', () => {
+  assert.equal(pacer.foldedCardLine({ detail: 'The Noorderkerk is a church. It was built in 1623.' }), 'The Noorderkerk is a church.');
+  assert.equal(pacer.foldedCardLine({ longDetail: 'St. Nicholas was built in 1887. More text.' }), 'St. Nicholas was built in 1887.');
+  assert.equal(pacer.foldedCardLine({}), '');
+});
+
+test('named regression: the folded Multatuli card still tells its fact', () => {
+  // Its card text is the published sourced override (landmarks.json funFact), not a facts.json rotation.
+  const features = JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/landmarks.json', 'utf8')) as { id: string; funFact?: string; wikipediaExtract?: string }[];
+  const feature = features.find(f => f.id === MULTATULI_ID);
+  assert.ok(feature?.funFact, 'Multatuli has a published card text');
+  const facts = buildFactIndex(JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/facts.json', 'utf8')) as FactsFile);
+  const notice = factCardText(MULTATULI_ID, facts, emptyRotationState())?.text ?? splitDetail(feature.funFact);
+  const line = pacer.foldedCardLine(notice);
+  assert.ok(line.length > 40, line);
+  assert.ok(/Bayens|Douwes Dekker|Max Havelaar|suffered/.test(line), line);
+});

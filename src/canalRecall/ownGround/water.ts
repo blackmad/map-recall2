@@ -225,6 +225,31 @@ const inPolygon = (poly: readonly (readonly Vec2[])[], x: number, y: number) => 
   return c;
 };
 
+/**
+ * A land run this long at most along a deck's centreline, inside its span with water on both sides along the axis, is
+ * a gap between two water polygons that meet under the bridge (lane prinsengracht-bridge 2026-10-16), whatever the
+ * deck's width. A road on a dam crosses land over its whole span.
+ */
+export const MIDSPAN_LAND_MAX_M = 4;
+/**
+ * Land runs [s0, s1] along a deck's centreline inside its span, each with a water station before and after it inside
+ * the span, at most MIDSPAN_LAND_MAX_M long (the Angenietje Swarthofbrug BRU0067 over the Leidsegracht mouth: the
+ * Prinsengracht and Leidsegracht polygons stop 2 m apart under the deck).
+ */
+export function midSpanLand(d: Pick<OpeningDeck, 'x' | 'y' | 's' | 'deck'>, polygons: readonly (readonly (readonly Vec2[])[])[]): [number, number][] {
+  const wet: { s: number; w: boolean }[] = [];
+  for (let i = 0; i < d.s.length; i++) if (d.s[i] >= d.deck[0] && d.s[i] <= d.deck[1]) wet.push({ s: d.s[i], w: polygons.some(p => inPolygon(p, d.x[i], d.y[i])) });
+  const out: [number, number][] = [];
+  for (let k = 1; k < wet.length; k++) {
+    if (wet[k].w || !wet[k - 1].w) continue;
+    let e = k;
+    while (e + 1 < wet.length && !wet[e + 1].w) e++;
+    if (e + 1 < wet.length && wet[e].s - wet[k].s <= MIDSPAN_LAND_MAX_M) out.push([wet[k].s, wet[e].s]);
+    k = e;
+  }
+  return out;
+}
+
 /** Clip a ring to an axis-aligned rectangle (Sutherland–Hodgman). */
 export function clipRing(ring: readonly Vec2[], rect: readonly [number, number, number, number]): Vec2[] {
   let out: Vec2[] = [...ring];
