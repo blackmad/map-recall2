@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-17T09:25:20.605Z",
+ "generatedAt": "2026-10-17T09:56:52.101Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -43379,8 +43379,8 @@
    "id": "chunk-face-polanen-181-331-r1",
    "category": "street-survey",
    "name": "face-polanen-181-331-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-polanen-181-331-r1.glb?asset=2dd105ae25de6945",
-   "sha256": "2dd105ae25de69452daa744bfdac18784e33bc3707b15cc732d68cc674369d48",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-polanen-181-331-r1.glb?asset=87804c4746d4820b",
+   "sha256": "87804c4746d4820bbba1bf6a2e38bbaa73410374f9588b4eed22af0c6baf867f",
    "bytes": 889028,
    "triangles": 13349,
    "primitives": 19,
@@ -44459,8 +44459,8 @@
    "id": "chunk-face-hembrug-21-27",
    "category": "street-survey",
    "name": "face-hembrug-21-27",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hembrug-21-27.glb?asset=db05d83092e5741d",
-   "sha256": "db05d83092e5741d9bfc911805211c9daf917ef77f9f8b83c6b6884830391829",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hembrug-21-27.glb?asset=4157c727cab0858c",
+   "sha256": "4157c727cab0858c275c31fd8586bd6c84c1efe15d145c0c8dec699e3adbefcc",
    "bytes": 188200,
    "triangles": 2550,
    "primitives": 12,
@@ -44715,8 +44715,8 @@
    "id": "chunk-face-houtrijk-335-409-r1",
    "category": "street-survey",
    "name": "face-houtrijk-335-409-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-houtrijk-335-409-r1.glb?asset=29a64a0c4b136538",
-   "sha256": "29a64a0c4b13653828df23bd666b4019e471d11c9831fd49fa105c765e622907",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-houtrijk-335-409-r1.glb?asset=d095592c8fdf15da",
+   "sha256": "d095592c8fdf15da32efb94c0f3dfc25cf402baa2da4f6e8fe355328789b0bf2",
    "bytes": 229108,
    "triangles": 3173,
    "primitives": 12,
@@ -44979,8 +44979,8 @@
    "id": "chunk-face-polanen-184-250-r1",
    "category": "street-survey",
    "name": "face-polanen-184-250-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-polanen-184-250-r1.glb?asset=2a2cef09a45cd169",
-   "sha256": "2a2cef09a45cd169390b350129c7428e24f567255ec7211a0a1aced83eda9442",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-polanen-184-250-r1.glb?asset=e1cae5871678a7e4",
+   "sha256": "e1cae5871678a7e4d337d884ef977c0e25b011d209adad4501f73f2f847b0ce9",
    "bytes": 220828,
    "triangles": 3074,
    "primitives": 12,
@@ -45234,6 +45234,3680 @@
        "primitive": 11,
        "firstTriangle": 5,
        "triangleCount": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-zaanhof-1-20",
+   "category": "street-survey",
+   "name": "face-zaanhof-1-20",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-1-20.glb?asset=b6c9028ce28e6df1",
+   "sha256": "b6c9028ce28e6df116c972c0b1aef38e33af04bb643bf3a4b9b5201528d2cf37",
+   "bytes": 498792,
+   "triangles": 7356,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.872272430776158,
+     52.39171846240676
+    ],
+    "northOffsetDegrees": 68.6932,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -30.089,
+     0,
+     -9.563
+    ],
+    "max": [
+     29.633,
+     12.309,
+     0.568
+    ]
+   },
+   "height": 12.309,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012094000",
+    "NL.IMBAG.Pand.0363100012146841",
+    "NL.IMBAG.Pand.0363100012142675",
+    "NL.IMBAG.Pand.0363100012087177",
+    "NL.IMBAG.Pand.0363100012123914",
+    "NL.IMBAG.Pand.0363100012096324",
+    "NL.IMBAG.Pand.0363100012147168",
+    "NL.IMBAG.Pand.0363100012111405",
+    "NL.IMBAG.Pand.0363100012103385",
+    "NL.IMBAG.Pand.0363100012107452"
+   ],
+   "replaces": [
+    "ordinary-0363100012094000",
+    "ordinary-0363100012146841",
+    "ordinary-0363100012142675",
+    "ordinary-0363100012087177",
+    "ordinary-0363100012123914",
+    "ordinary-0363100012096324",
+    "ordinary-0363100012147168",
+    "ordinary-0363100012111405",
+    "ordinary-0363100012103385",
+    "ordinary-0363100012107452"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8722232,
+        52.3919971
+       ],
+       [
+        4.8721064,
+        52.3919674
+       ],
+       [
+        4.8721294,
+        52.3919326
+       ],
+       [
+        4.8721309,
+        52.391933
+       ],
+       [
+        4.8721419,
+        52.3919163
+       ],
+       [
+        4.8722681,
+        52.3919482
+       ],
+       [
+        4.8722557,
+        52.3919672
+       ],
+       [
+        4.8722447,
+        52.3919645
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8722681,
+        52.3919482
+       ],
+       [
+        4.8721419,
+        52.3919163
+       ],
+       [
+        4.8721516,
+        52.3919018
+       ],
+       [
+        4.8721501,
+        52.3919014
+       ],
+       [
+        4.8721737,
+        52.3918656
+       ],
+       [
+        4.8722903,
+        52.3918953
+       ],
+       [
+        4.8722693,
+        52.3919272
+       ],
+       [
+        4.8722802,
+        52.3919299
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8722903,
+        52.3918953
+       ],
+       [
+        4.8721737,
+        52.3918656
+       ],
+       [
+        4.8721949,
+        52.3918336
+       ],
+       [
+        4.8721964,
+        52.391834
+       ],
+       [
+        4.8722075,
+        52.3918171
+       ],
+       [
+        4.8723334,
+        52.3918493
+       ],
+       [
+        4.8723211,
+        52.3918678
+       ],
+       [
+        4.8723102,
+        52.3918651
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8723334,
+        52.3918493
+       ],
+       [
+        4.8722151,
+        52.391819
+       ],
+       [
+        4.8722389,
+        52.391767
+       ],
+       [
+        4.8723548,
+        52.3917976
+       ],
+       [
+        4.8723352,
+        52.3918272
+       ],
+       [
+        4.8723461,
+        52.3918299
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8723548,
+        52.3917976
+       ],
+       [
+        4.8722389,
+        52.391767
+       ],
+       [
+        4.8722603,
+        52.3917346
+       ],
+       [
+        4.8722619,
+        52.391735
+       ],
+       [
+        4.8722727,
+        52.3917185
+       ],
+       [
+        4.8723986,
+        52.3917503
+       ],
+       [
+        4.8723861,
+        52.3917692
+       ],
+       [
+        4.8723752,
+        52.3917665
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8723986,
+        52.3917503
+       ],
+       [
+        4.8722727,
+        52.3917185
+       ],
+       [
+        4.8722825,
+        52.3917038
+       ],
+       [
+        4.872281,
+        52.3917034
+       ],
+       [
+        4.872304,
+        52.3916686
+       ],
+       [
+        4.8724202,
+        52.3916983
+       ],
+       [
+        4.8723997,
+        52.3917293
+       ],
+       [
+        4.8724106,
+        52.391732
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8724202,
+        52.3916983
+       ],
+       [
+        4.872304,
+        52.3916686
+       ],
+       [
+        4.8723258,
+        52.3916356
+       ],
+       [
+        4.8723273,
+        52.391636
+       ],
+       [
+        4.8723379,
+        52.3916199
+       ],
+       [
+        4.872464,
+        52.3916512
+       ],
+       [
+        4.8724514,
+        52.3916701
+       ],
+       [
+        4.8724405,
+        52.3916674
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.872464,
+        52.3916512
+       ],
+       [
+        4.8723379,
+        52.3916199
+       ],
+       [
+        4.872348,
+        52.3916047
+       ],
+       [
+        4.8723464,
+        52.3916044
+       ],
+       [
+        4.8723689,
+        52.3915703
+       ],
+       [
+        4.8724854,
+        52.3915994
+       ],
+       [
+        4.8724646,
+        52.391631
+       ],
+       [
+        4.8724755,
+        52.3916337
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8724854,
+        52.3915994
+       ],
+       [
+        4.8723689,
+        52.3915703
+       ],
+       [
+        4.8723913,
+        52.3915365
+       ],
+       [
+        4.8723928,
+        52.3915369
+       ],
+       [
+        4.8724035,
+        52.3915208
+       ],
+       [
+        4.8725291,
+        52.3915524
+       ],
+       [
+        4.872518,
+        52.3915691
+       ],
+       [
+        4.8725071,
+        52.3915664
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8725291,
+        52.3915524
+       ],
+       [
+        4.8724035,
+        52.3915208
+       ],
+       [
+        4.8724134,
+        52.3915058
+       ],
+       [
+        4.8724119,
+        52.3915054
+       ],
+       [
+        4.8724344,
+        52.3914713
+       ],
+       [
+        4.8725507,
+        52.3915003
+       ],
+       [
+        4.8725315,
+        52.3915295
+       ],
+       [
+        4.8725424,
+        52.3915322
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "zaanhof-094000",
+     "pandId": "0363100012094000",
+     "buildingId": "NL.IMBAG.Pand.0363100012094000",
+     "address": "Zaanhof 1",
+     "frontage": {
+      "x0": -29.869,
+      "x1": -23.741,
+      "widthM": 6.129
+     },
+     "bounds": {
+      "min": [
+       -30.089,
+       0,
+       -9.071
+      ],
+      "max": [
+       -23.738,
+       11.439,
+       0.568
+      ]
+     },
+     "triangles": 739,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 100
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-146841",
+     "pandId": "0363100012146841",
+     "buildingId": "NL.IMBAG.Pand.0363100012146841",
+     "address": "Zaanhof 3",
+     "frontage": {
+      "x0": -23.741,
+      "x1": -17.694,
+      "widthM": 6.046
+     },
+     "bounds": {
+      "min": [
+       -23.915,
+       0,
+       -9.061
+      ],
+      "max": [
+       -17.694,
+       11.635,
+       0.486
+      ]
+     },
+     "triangles": 748,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 100,
+       "triangleCount": 118
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 20,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 440,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 56,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 60,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 5,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 1,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 9,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-142675",
+     "pandId": "0363100012142675",
+     "buildingId": "NL.IMBAG.Pand.0363100012142675",
+     "address": "Zaanhof 5",
+     "frontage": {
+      "x0": -17.694,
+      "x1": -11.831,
+      "widthM": 5.863
+     },
+     "bounds": {
+      "min": [
+       -17.881,
+       0,
+       -9.197
+      ],
+      "max": [
+       -11.828,
+       11.507,
+       0.492
+      ]
+     },
+     "triangles": 746,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 218,
+       "triangleCount": 100
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 40,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 864,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 112,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 116,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 13,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 8,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 20,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-087177",
+     "pandId": "0363100012087177",
+     "buildingId": "NL.IMBAG.Pand.0363100012087177",
+     "address": "Zaanhof 7",
+     "frontage": {
+      "x0": -11.844,
+      "x1": -5.866,
+      "widthM": 5.978
+     },
+     "bounds": {
+      "min": [
+       -12.045,
+       0,
+       -9.221
+      ],
+      "max": [
+       -5.866,
+       12.309,
+       0.325
+      ]
+     },
+     "triangles": 698,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 318,
+       "triangleCount": 57
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 60,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1304,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 168,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 176,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 16,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 35,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-123914",
+     "pandId": "0363100012123914",
+     "buildingId": "NL.IMBAG.Pand.0363100012123914",
+     "address": "Zaanhof 9",
+     "frontage": {
+      "x0": -5.866,
+      "x1": 0.003,
+      "widthM": 5.868
+     },
+     "bounds": {
+      "min": [
+       -6.155,
+       0,
+       -9.321
+      ],
+      "max": [
+       0.006,
+       11.548,
+       0.334
+      ]
+     },
+     "triangles": 738,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 375,
+       "triangleCount": 94
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 80,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1744,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 224,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 236,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 22,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 16,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 42,
+       "triangleCount": 14
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-096324",
+     "pandId": "0363100012096324",
+     "buildingId": "NL.IMBAG.Pand.0363100012096324",
+     "address": "Zaanhof 11",
+     "frontage": {
+      "x0": 0.003,
+      "x1": 5.945,
+      "widthM": 5.943
+     },
+     "bounds": {
+      "min": [
+       -0.173,
+       0,
+       -9.311
+      ],
+      "max": [
+       5.945,
+       11.629,
+       0.225
+      ]
+     },
+     "triangles": 734,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 469,
+       "triangleCount": 111
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 120,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 100,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 120,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2184,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 280,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 296,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 25,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 19,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 56,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-147168",
+     "pandId": "0363100012147168",
+     "buildingId": "NL.IMBAG.Pand.0363100012147168",
+     "address": "Zaanhof 13",
+     "frontage": {
+      "x0": 5.945,
+      "x1": 11.832,
+      "widthM": 5.886
+     },
+     "bounds": {
+      "min": [
+       5.748,
+       0,
+       -9.448
+      ],
+      "max": [
+       11.834,
+       11.566,
+       0.222
+      ]
+     },
+     "triangles": 743,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 580,
+       "triangleCount": 99
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 144,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 120,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 144,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2608,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 336,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 352,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 29,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 22,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 68,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-111405",
+     "pandId": "0363100012111405",
+     "buildingId": "NL.IMBAG.Pand.0363100012111405",
+     "address": "Zaanhof 15",
+     "frontage": {
+      "x0": 11.832,
+      "x1": 17.743,
+      "widthM": 5.911
+     },
+     "bounds": {
+      "min": [
+       11.723,
+       0,
+       -9.437
+      ],
+      "max": [
+       17.743,
+       11.643,
+       0.091
+      ]
+     },
+     "triangles": 739,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 679,
+       "triangleCount": 105
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 168,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 140,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 168,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 3048,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 392,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 412,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 32,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 29,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 78,
+       "triangleCount": 14
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-103385",
+     "pandId": "0363100012103385",
+     "buildingId": "NL.IMBAG.Pand.0363100012103385",
+     "address": "Zaanhof 17",
+     "frontage": {
+      "x0": 17.743,
+      "x1": 23.734,
+      "widthM": 5.991
+     },
+     "bounds": {
+      "min": [
+       17.621,
+       0,
+       -9.54
+      ],
+      "max": [
+       23.737,
+       11.569,
+       0.088
+      ]
+     },
+     "triangles": 728,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 784,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 192,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 160,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 192,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 3472,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 448,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 468,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 40,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 37,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 92,
+       "triangleCount": 14
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-107452",
+     "pandId": "0363100012107452",
+     "buildingId": "NL.IMBAG.Pand.0363100012107452",
+     "address": "Zaanhof 19",
+     "frontage": {
+      "x0": 23.734,
+      "x1": 29.633,
+      "widthM": 5.899
+     },
+     "bounds": {
+      "min": [
+       23.574,
+       0,
+       -9.563
+      ],
+      "max": [
+       29.633,
+       11.598,
+       -0.049
+      ]
+     },
+     "triangles": 743,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 888,
+       "triangleCount": 117
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 216,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 180,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 216,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 3896,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 504,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 524,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 43,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 40,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 106,
+       "triangleCount": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-zaanhof-23-34",
+   "category": "street-survey",
+   "name": "face-zaanhof-23-34",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-23-34.glb?asset=199e7be85e578d16",
+   "sha256": "199e7be85e578d167a434a3d0352c5e494bf55234044a90b35c4f977b4f0e761",
+   "bytes": 308492,
+   "triangles": 4485,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.872565915673397,
+     52.39127373647232
+    ],
+    "northOffsetDegrees": 68.0231,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -17.821,
+     0,
+     -9.329
+    ],
+    "max": [
+     17.743,
+     11.646,
+     0.261
+    ]
+   },
+   "height": 11.646,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012114944",
+    "NL.IMBAG.Pand.0363100012109995",
+    "NL.IMBAG.Pand.0363100012074829",
+    "NL.IMBAG.Pand.0363100012065518",
+    "NL.IMBAG.Pand.0363100012097562",
+    "NL.IMBAG.Pand.0363100012141963"
+   ],
+   "replaces": [
+    "ordinary-0363100012114944",
+    "ordinary-0363100012109995",
+    "ordinary-0363100012074829",
+    "ordinary-0363100012065518",
+    "ordinary-0363100012097562",
+    "ordinary-0363100012141963"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8725942,
+        52.3914535
+       ],
+       [
+        4.8724686,
+        52.3914223
+       ],
+       [
+        4.8724789,
+        52.3914067
+       ],
+       [
+        4.8724774,
+        52.3914064
+       ],
+       [
+        4.8724995,
+        52.3913728
+       ],
+       [
+        4.8726158,
+        52.3914016
+       ],
+       [
+        4.8725964,
+        52.391431
+       ],
+       [
+        4.8726073,
+        52.3914337
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8726158,
+        52.3914016
+       ],
+       [
+        4.8724995,
+        52.3913728
+       ],
+       [
+        4.8725222,
+        52.3913386
+       ],
+       [
+        4.8725237,
+        52.3913389
+       ],
+       [
+        4.8725337,
+        52.3913237
+       ],
+       [
+        4.8726592,
+        52.391355
+       ],
+       [
+        4.8726471,
+        52.3913734
+       ],
+       [
+        4.8726362,
+        52.3913707
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8726592,
+        52.391355
+       ],
+       [
+        4.8725337,
+        52.3913237
+       ],
+       [
+        4.8725443,
+        52.3913077
+       ],
+       [
+        4.8725429,
+        52.3913073
+       ],
+       [
+        4.872565,
+        52.3912739
+       ],
+       [
+        4.8726806,
+        52.3913033
+       ],
+       [
+        4.8726611,
+        52.3913329
+       ],
+       [
+        4.872672,
+        52.3913356
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8726806,
+        52.3913033
+       ],
+       [
+        4.872565,
+        52.3912739
+       ],
+       [
+        4.8725877,
+        52.3912395
+       ],
+       [
+        4.8725892,
+        52.3912399
+       ],
+       [
+        4.8725996,
+        52.3912242
+       ],
+       [
+        4.8727251,
+        52.391255
+       ],
+       [
+        4.8727111,
+        52.3912762
+       ],
+       [
+        4.8727002,
+        52.3912735
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8727251,
+        52.391255
+       ],
+       [
+        4.8725996,
+        52.3912242
+       ],
+       [
+        4.8726098,
+        52.3912087
+       ],
+       [
+        4.8726083,
+        52.3912083
+       ],
+       [
+        4.8726311,
+        52.3911738
+       ],
+       [
+        4.8727464,
+        52.3912034
+       ],
+       [
+        4.8727254,
+        52.3912353
+       ],
+       [
+        4.8727364,
+        52.391238
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8727464,
+        52.3912034
+       ],
+       [
+        4.8726311,
+        52.3911738
+       ],
+       [
+        4.8726532,
+        52.3911405
+       ],
+       [
+        4.8726547,
+        52.3911408
+       ],
+       [
+        4.8726644,
+        52.3911261
+       ],
+       [
+        4.8727894,
+        52.3911575
+       ],
+       [
+        4.8727769,
+        52.3911764
+       ],
+       [
+        4.872766,
+        52.3911737
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "zaanhof-114944",
+     "pandId": "0363100012114944",
+     "buildingId": "NL.IMBAG.Pand.0363100012114944",
+     "address": "Zaanhof 23",
+     "frontage": {
+      "x0": -17.756,
+      "x1": -11.917,
+      "widthM": 5.839
+     },
+     "bounds": {
+      "min": [
+       -17.821,
+       0,
+       -9.329
+      ],
+      "max": [
+       -11.917,
+       11.646,
+       0.258
+      ]
+     },
+     "triangles": 776,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 13
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-109995",
+     "pandId": "0363100012109995",
+     "buildingId": "NL.IMBAG.Pand.0363100012109995",
+     "address": "Zaanhof 25",
+     "frontage": {
+      "x0": -11.917,
+      "x1": -5.979,
+      "widthM": 5.938
+     },
+     "bounds": {
+      "min": [
+       -11.918,
+       0,
+       -9.319
+      ],
+      "max": [
+       -5.978,
+       11.535,
+       0.257
+      ]
+     },
+     "triangles": 737,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 120,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 20,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 440,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 56,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 60,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 8,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 11,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 13,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-074829",
+     "pandId": "0363100012074829",
+     "buildingId": "NL.IMBAG.Pand.0363100012074829",
+     "address": "Zaanhof 27",
+     "frontage": {
+      "x0": -5.979,
+      "x1": -0.037,
+      "widthM": 5.942
+     },
+     "bounds": {
+      "min": [
+       -6.001,
+       0,
+       -9.278
+      ],
+      "max": [
+       -0.037,
+       11.535,
+       0.256
+      ]
+     },
+     "triangles": 722,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 216,
+       "triangleCount": 95
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 40,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 880,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 112,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 120,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 11,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 19,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 19,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-065518",
+     "pandId": "0363100012065518",
+     "buildingId": "NL.IMBAG.Pand.0363100012065518",
+     "address": "Zaanhof 29",
+     "frontage": {
+      "x0": -0.038,
+      "x1": 5.972,
+      "widthM": 6.01
+     },
+     "bounds": {
+      "min": [
+       -0.116,
+       0,
+       -9.306
+      ],
+      "max": [
+       5.993,
+       11.531,
+       0.257
+      ]
+     },
+     "triangles": 759,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 311,
+       "triangleCount": 109
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 60,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1304,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 168,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 176,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 14,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 28,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 30,
+       "triangleCount": 14
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-097562",
+     "pandId": "0363100012097562",
+     "buildingId": "NL.IMBAG.Pand.0363100012097562",
+     "address": "Zaanhof 31",
+     "frontage": {
+      "x0": 5.972,
+      "x1": 11.969,
+      "widthM": 5.997
+     },
+     "bounds": {
+      "min": [
+       5.971,
+       0,
+       -9.264
+      ],
+      "max": [
+       11.969,
+       11.263,
+       0.261
+      ]
+     },
+     "triangles": 747,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 420,
+       "triangleCount": 111
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 80,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1744,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 224,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 236,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 17,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 37,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 44,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-141963",
+     "pandId": "0363100012141963",
+     "buildingId": "NL.IMBAG.Pand.0363100012141963",
+     "address": "Zaanhof 33",
+     "frontage": {
+      "x0": 11.969,
+      "x1": 17.741,
+      "widthM": 5.772
+     },
+     "bounds": {
+      "min": [
+       11.858,
+       0,
+       -9.293
+      ],
+      "max": [
+       17.743,
+       11.507,
+       0.261
+      ]
+     },
+     "triangles": 744,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 531,
+       "triangleCount": 102
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 120,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 100,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 120,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2168,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 280,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 292,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 25,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 46,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 59,
+       "triangleCount": 14
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-zaanhof-52-55",
+   "category": "street-survey",
+   "name": "face-zaanhof-52-55",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-52-55.glb?asset=5243c4dd1fbe45cf",
+   "sha256": "5243c4dd1fbe45cff9491dbbee5052610c35bba219605d0c4c7e73ea2fbbfbcd",
+   "bytes": 111780,
+   "triangles": 1536,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.872177334442794,
+     52.391110364883716
+    ],
+    "northOffsetDegrees": 225.1255,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.146,
+     0,
+     -9.539
+    ],
+    "max": [
+     5.954,
+     11.577,
+     0.203
+    ]
+   },
+   "height": 11.577,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012127918",
+    "NL.IMBAG.Pand.0363100012098344"
+   ],
+   "replaces": [
+    "ordinary-0363100012127918",
+    "ordinary-0363100012098344"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8722379,
+        52.3910723
+       ],
+       [
+        4.872219,
+        52.3910839
+       ],
+       [
+        4.8722201,
+        52.3910846
+       ],
+       [
+        4.8721778,
+        52.3911104
+       ],
+       [
+        4.8720927,
+        52.3910568
+       ],
+       [
+        4.8721319,
+        52.3910335
+       ],
+       [
+        4.8721202,
+        52.3910261
+       ],
+       [
+        4.8721439,
+        52.3910119
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8721778,
+        52.3911104
+       ],
+       [
+        4.8721355,
+        52.3911362
+       ],
+       [
+        4.8721344,
+        52.3911355
+       ],
+       [
+        4.872116,
+        52.3911468
+       ],
+       [
+        4.8721171,
+        52.3911475
+       ],
+       [
+        4.8721157,
+        52.3911483
+       ],
+       [
+        4.8720172,
+        52.3910876
+       ],
+       [
+        4.8720413,
+        52.3910732
+       ],
+       [
+        4.8720531,
+        52.3910803
+       ],
+       [
+        4.8720927,
+        52.3910568
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "zaanhof-127918",
+     "pandId": "0363100012127918",
+     "buildingId": "NL.IMBAG.Pand.0363100012127918",
+     "address": "Zaanhof 52",
+     "frontage": {
+      "x0": -5.911,
+      "x1": -0.021,
+      "widthM": 5.889
+     },
+     "bounds": {
+      "min": [
+       -6.146,
+       0,
+       -9.414
+      ],
+      "max": [
+       -0.021,
+       11.529,
+       0.203
+      ]
+     },
+     "triangles": 735,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 94
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-098344",
+     "pandId": "0363100012098344",
+     "buildingId": "NL.IMBAG.Pand.0363100012098344",
+     "address": "Zaanhof 54",
+     "frontage": {
+      "x0": -0.022,
+      "x1": 5.954,
+      "widthM": 5.975
+     },
+     "bounds": {
+      "min": [
+       -0.152,
+       0,
+       -9.539
+      ],
+      "max": [
+       5.954,
+       11.577,
+       0.201
+      ]
+     },
+     "triangles": 801,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 94,
+       "triangleCount": 145
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 20,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 440,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 56,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 60,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 4,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 9,
+       "triangleCount": 26
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-zaanhof-71-78",
+   "category": "street-survey",
+   "name": "face-zaanhof-71-78",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-71-78.glb?asset=3e9b26eac4d4a3d5",
+   "sha256": "3e9b26eac4d4a3d550df7a025bcb6453fd9415a32b1ba24da07b95bb7734d92c",
+   "bytes": 210244,
+   "triangles": 3013,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.8717634831416845,
+     52.39158698028504
+    ],
+    "northOffsetDegrees": 247.7922,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -12.015,
+     0,
+     -9.639
+    ],
+    "max": [
+     11.942,
+     11.46,
+     0.284
+    ]
+   },
+   "height": 11.46,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012085115",
+    "NL.IMBAG.Pand.0363100012074750",
+    "NL.IMBAG.Pand.0363100012080422",
+    "NL.IMBAG.Pand.0363100012116468"
+   ],
+   "replaces": [
+    "ordinary-0363100012085115",
+    "ordinary-0363100012074750",
+    "ordinary-0363100012080422",
+    "ordinary-0363100012116468"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8717971,
+        52.3915382
+       ],
+       [
+        4.8716833,
+        52.3915083
+       ],
+       [
+        4.871705,
+        52.3914762
+       ],
+       [
+        4.8716903,
+        52.3914726
+       ],
+       [
+        4.8717015,
+        52.3914548
+       ],
+       [
+        4.8718284,
+        52.3914886
+       ],
+       [
+        4.8718194,
+        52.3915021
+       ],
+       [
+        4.8718209,
+        52.3915025
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8717632,
+        52.3915863
+       ],
+       [
+        4.8716333,
+        52.3915537
+       ],
+       [
+        4.871647,
+        52.3915336
+       ],
+       [
+        4.8716632,
+        52.3915379
+       ],
+       [
+        4.8716833,
+        52.3915083
+       ],
+       [
+        4.8717971,
+        52.3915382
+       ],
+       [
+        4.8717757,
+        52.3915702
+       ],
+       [
+        4.8717742,
+        52.3915698
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8717316,
+        52.3916362
+       ],
+       [
+        4.8716175,
+        52.3916063
+       ],
+       [
+        4.8716368,
+        52.391576
+       ],
+       [
+        4.871621,
+        52.3915718
+       ],
+       [
+        4.8716333,
+        52.3915537
+       ],
+       [
+        4.8717632,
+        52.3915863
+       ],
+       [
+        4.8717534,
+        52.391601
+       ],
+       [
+        4.8717549,
+        52.3916013
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8716965,
+        52.3916862
+       ],
+       [
+        4.8715683,
+        52.3916526
+       ],
+       [
+        4.8715798,
+        52.3916334
+       ],
+       [
+        4.8715977,
+        52.3916373
+       ],
+       [
+        4.8716175,
+        52.3916063
+       ],
+       [
+        4.8717316,
+        52.3916362
+       ],
+       [
+        4.8717097,
+        52.391669
+       ],
+       [
+        4.8717082,
+        52.3916686
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "zaanhof-085115",
+     "pandId": "0363100012085115",
+     "buildingId": "NL.IMBAG.Pand.0363100012085115",
+     "address": "Zaanhof 71",
+     "frontage": {
+      "x0": -11.806,
+      "x1": -5.894,
+      "widthM": 5.912
+     },
+     "bounds": {
+      "min": [
+       -12.015,
+       0,
+       -9.478
+      ],
+      "max": [
+       -5.894,
+       11.445,
+       0.273
+      ]
+     },
+     "triangles": 723,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 103
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-074750",
+     "pandId": "0363100012074750",
+     "buildingId": "NL.IMBAG.Pand.0363100012074750",
+     "address": "Zaanhof 73",
+     "frontage": {
+      "x0": -5.894,
+      "x1": -0.064,
+      "widthM": 5.829
+     },
+     "bounds": {
+      "min": [
+       -6.037,
+       0,
+       -9.639
+      ],
+      "max": [
+       -0.062,
+       11.4,
+       0.273
+      ]
+     },
+     "triangles": 799,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 103,
+       "triangleCount": 137
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 20,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 424,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 56,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 56,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 4,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 8,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4,
+       "triangleCount": 28
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-080422",
+     "pandId": "0363100012080422",
+     "buildingId": "NL.IMBAG.Pand.0363100012080422",
+     "address": "Zaanhof 75",
+     "frontage": {
+      "x0": -0.064,
+      "x1": 5.891,
+      "widthM": 5.955
+     },
+     "bounds": {
+      "min": [
+       -0.075,
+       0,
+       -9.613
+      ],
+      "max": [
+       5.891,
+       11.382,
+       0.284
+      ]
+     },
+     "triangles": 723,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 240,
+       "triangleCount": 91
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 40,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 864,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 112,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 116,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 7,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 15,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 32,
+       "triangleCount": 16
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-116468",
+     "pandId": "0363100012116468",
+     "buildingId": "NL.IMBAG.Pand.0363100012116468",
+     "address": "Zaanhof 77",
+     "frontage": {
+      "x0": 5.891,
+      "x1": 11.94,
+      "widthM": 6.05
+     },
+     "bounds": {
+      "min": [
+       5.753,
+       0,
+       -9.632
+      ],
+      "max": [
+       11.942,
+       11.46,
+       0.278
+      ]
+     },
+     "triangles": 768,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 331,
+       "triangleCount": 118
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 60,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1288,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 168,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 172,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 15,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 19,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 48,
+       "triangleCount": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-zaanhof-99-104",
+   "category": "street-survey",
+   "name": "face-zaanhof-99-104",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-99-104.glb?asset=c268a39204986537",
+   "sha256": "c268a392049865375c25db7148efc03d9caf99d6c0aae6d30d55330cbe7ddf02",
+   "bytes": 157688,
+   "triangles": 2216,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.871497534507225,
+     52.39238824138645
+    ],
+    "northOffsetDegrees": 271.0717,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -8.739,
+     0,
+     -9.474
+    ],
+    "max": [
+     8.847,
+     11.345,
+     0.28
+    ]
+   },
+   "height": 11.345,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012066165",
+    "NL.IMBAG.Pand.0363100012116074",
+    "NL.IMBAG.Pand.0363100012131022"
+   ],
+   "replaces": [
+    "ordinary-0363100012066165",
+    "ordinary-0363100012116074",
+    "ordinary-0363100012131022"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8714956,
+        52.3923613
+       ],
+       [
+        4.871358,
+        52.3923633
+       ],
+       [
+        4.8713571,
+        52.3923456
+       ],
+       [
+        4.8713696,
+        52.3923453
+       ],
+       [
+        4.8713677,
+        52.3923112
+       ],
+       [
+        4.8714951,
+        52.3923099
+       ],
+       [
+        4.8714965,
+        52.3923443
+       ],
+       [
+        4.8714949,
+        52.3923444
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8714994,
+        52.3924149
+       ],
+       [
+        4.8713734,
+        52.3924171
+       ],
+       [
+        4.8713717,
+        52.3923846
+       ],
+       [
+        4.8713592,
+        52.392385
+       ],
+       [
+        4.871358,
+        52.3923633
+       ],
+       [
+        4.8714956,
+        52.3923613
+       ],
+       [
+        4.8714963,
+        52.392378
+       ],
+       [
+        4.8714979,
+        52.392378
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8715,
+        52.3924672
+       ],
+       [
+        4.8713762,
+        52.3924689
+       ],
+       [
+        4.8713637,
+        52.3924693
+       ],
+       [
+        4.8713627,
+        52.39245
+       ],
+       [
+        4.8713752,
+        52.3924497
+       ],
+       [
+        4.8713734,
+        52.3924171
+       ],
+       [
+        4.8714994,
+        52.3924149
+       ],
+       [
+        4.871501,
+        52.3924513
+       ],
+       [
+        4.8714993,
+        52.3924513
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "zaanhof-066165",
+     "pandId": "0363100012066165",
+     "buildingId": "NL.IMBAG.Pand.0363100012066165",
+     "address": "Zaanhof 99",
+     "frontage": {
+      "x0": -8.723,
+      "x1": -3.002,
+      "widthM": 5.721
+     },
+     "bounds": {
+      "min": [
+       -8.739,
+       0,
+       -9.47
+      ],
+      "max": [
+       -2.949,
+       11.272,
+       0.202
+      ]
+     },
+     "triangles": 736,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 105
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 17
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-116074",
+     "pandId": "0363100012116074",
+     "buildingId": "NL.IMBAG.Pand.0363100012116074",
+     "address": "Zaanhof 101",
+     "frontage": {
+      "x0": -3.002,
+      "x1": 2.97,
+      "widthM": 5.972
+     },
+     "bounds": {
+      "min": [
+       -3.004,
+       0,
+       -9.474
+      ],
+      "max": [
+       3.047,
+       11.345,
+       0.279
+      ]
+     },
+     "triangles": 729,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 105,
+       "triangleCount": 90
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 20,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 424,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 56,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 56,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 8,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 17,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-131022",
+     "pandId": "0363100012131022",
+     "buildingId": "NL.IMBAG.Pand.0363100012131022",
+     "address": "Zaanhof 103",
+     "frontage": {
+      "x0": 2.97,
+      "x1": 8.785,
+      "widthM": 5.815
+     },
+     "bounds": {
+      "min": [
+       2.97,
+       0,
+       -9.307
+      ],
+      "max": [
+       8.847,
+       11.266,
+       0.28
+      ]
+     },
+     "triangles": 751,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 195,
+       "triangleCount": 122
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 40,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 864,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 112,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 116,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 14,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 22,
+       "triangleCount": 21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-zaanhof-125-134",
+   "category": "street-survey",
+   "name": "face-zaanhof-125-134",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-125-134.glb?asset=ce6bbeaec7a52bd4",
+   "sha256": "ce6bbeaec7a52bd4374016f6705afc9e95b20e08e63808edd32ad8df089385b9",
+   "bytes": 267232,
+   "triangles": 3854,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.872048031788851,
+     52.39232542986692
+    ],
+    "northOffsetDegrees": 91.352,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -14.942,
+     0,
+     -9.721
+    ],
+    "max": [
+     14.907,
+     11.718,
+     0.299
+    ]
+   },
+   "height": 11.718,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012127622",
+    "NL.IMBAG.Pand.0363100012139676",
+    "NL.IMBAG.Pand.0363100012063074",
+    "NL.IMBAG.Pand.0363100012131844",
+    "NL.IMBAG.Pand.0363100012109397"
+   ],
+   "replaces": [
+    "ordinary-0363100012127622",
+    "ordinary-0363100012139676",
+    "ordinary-0363100012063074",
+    "ordinary-0363100012131844",
+    "ordinary-0363100012109397"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8721954,
+        52.392457
+       ],
+       [
+        4.872053,
+        52.3924597
+       ],
+       [
+        4.872053,
+        52.3924589
+       ],
+       [
+        4.8720545,
+        52.3924586
+       ],
+       [
+        4.8720537,
+        52.392443
+       ],
+       [
+        4.8720523,
+        52.392443
+       ],
+       [
+        4.8720506,
+        52.3924057
+       ],
+       [
+        4.8721779,
+        52.3924035
+       ],
+       [
+        4.8721797,
+        52.3924371
+       ],
+       [
+        4.8721944,
+        52.3924368
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8721779,
+        52.3924035
+       ],
+       [
+        4.8720506,
+        52.3924057
+       ],
+       [
+        4.872049,
+        52.3923698
+       ],
+       [
+        4.8720505,
+        52.3923698
+       ],
+       [
+        4.8720497,
+        52.3923512
+       ],
+       [
+        4.8721904,
+        52.3923493
+       ],
+       [
+        4.8721915,
+        52.3923703
+       ],
+       [
+        4.8721762,
+        52.3923706
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8721904,
+        52.3923493
+       ],
+       [
+        4.8720497,
+        52.3923512
+       ],
+       [
+        4.872049,
+        52.392336
+       ],
+       [
+        4.8720475,
+        52.392336
+       ],
+       [
+        4.8720459,
+        52.3922987
+       ],
+       [
+        4.8721722,
+        52.3922965
+       ],
+       [
+        4.8721739,
+        52.3923291
+       ],
+       [
+        4.8721892,
+        52.3923288
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8721722,
+        52.3922965
+       ],
+       [
+        4.8720459,
+        52.3922987
+       ],
+       [
+        4.8720443,
+        52.3922629
+       ],
+       [
+        4.8720459,
+        52.3922629
+       ],
+       [
+        4.8720451,
+        52.3922458
+       ],
+       [
+        4.8721863,
+        52.3922438
+       ],
+       [
+        4.872187,
+        52.3922639
+       ],
+       [
+        4.8721705,
+        52.3922642
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8721863,
+        52.3922438
+       ],
+       [
+        4.8720451,
+        52.3922458
+       ],
+       [
+        4.8720443,
+        52.3922295
+       ],
+       [
+        4.8720428,
+        52.3922295
+       ],
+       [
+        4.8720405,
+        52.3921916
+       ],
+       [
+        4.8721671,
+        52.3921897
+       ],
+       [
+        4.8721683,
+        52.392223
+       ],
+       [
+        4.8721856,
+        52.3922226
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "zaanhof-127622",
+     "pandId": "0363100012127622",
+     "buildingId": "NL.IMBAG.Pand.0363100012127622",
+     "address": "Zaanhof 125",
+     "frontage": {
+      "x0": -14.942,
+      "x1": -8.934,
+      "widthM": 6.009
+     },
+     "bounds": {
+      "min": [
+       -14.942,
+       0,
+       -9.721
+      ],
+      "max": [
+       -8.891,
+       11.647,
+       0.169
+      ]
+     },
+     "triangles": 775,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 129
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-139676",
+     "pandId": "0363100012139676",
+     "buildingId": "NL.IMBAG.Pand.0363100012139676",
+     "address": "Zaanhof 127",
+     "frontage": {
+      "x0": -8.934,
+      "x1": -2.871,
+      "widthM": 6.063
+     },
+     "bounds": {
+      "min": [
+       -8.934,
+       0,
+       -9.679
+      ],
+      "max": [
+       -2.867,
+       11.718,
+       0.299
+      ]
+     },
+     "triangles": 767,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 129,
+       "triangleCount": 125
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 20,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 440,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 56,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 60,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 7,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 15,
+       "triangleCount": 3
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-063074",
+     "pandId": "0363100012063074",
+     "buildingId": "NL.IMBAG.Pand.0363100012063074",
+     "address": "Zaanhof 129",
+     "frontage": {
+      "x0": -2.871,
+      "x1": 2.976,
+      "widthM": 5.848
+     },
+     "bounds": {
+      "min": [
+       -2.89,
+       0,
+       -9.657
+      ],
+      "max": [
+       3.022,
+       11.665,
+       0.299
+      ]
+     },
+     "triangles": 755,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 254,
+       "triangleCount": 107
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 40,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 880,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 112,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 120,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 5,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 17,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 18,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-131844",
+     "pandId": "0363100012131844",
+     "buildingId": "NL.IMBAG.Pand.0363100012131844",
+     "address": "Zaanhof 131",
+     "frontage": {
+      "x0": 2.976,
+      "x1": 8.848,
+      "widthM": 5.872
+     },
+     "bounds": {
+      "min": [
+       2.976,
+       0,
+       -9.665
+      ],
+      "max": [
+       8.861,
+       11.709,
+       0.271
+      ]
+     },
+     "triangles": 778,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 361,
+       "triangleCount": 127
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 60,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1320,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 168,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 180,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 15,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 19,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 30,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "zaanhof-109397",
+     "pandId": "0363100012109397",
+     "buildingId": "NL.IMBAG.Pand.0363100012109397",
+     "address": "Zaanhof 133",
+     "frontage": {
+      "x0": 8.848,
+      "x1": 14.904,
+      "widthM": 6.056
+     },
+     "bounds": {
+      "min": [
+       8.846,
+       0,
+       -9.67
+      ],
+      "max": [
+       14.907,
+       11.641,
+       0.29
+      ]
+     },
+     "triangles": 779,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 488,
+       "triangleCount": 125
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 80,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1760,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 224,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 240,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 18,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 28,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 45,
+       "triangleCount": 17
       }
      ]
     }

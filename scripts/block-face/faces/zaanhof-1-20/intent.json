@@ -1,0 +1,241 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "zaanhof-1-20",
+ "street": "Zaanhof",
+ "sources": [
+  {
+   "id": "strip-2021-03-19",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-19",
+   "image": "staging/block-face/zaanhof-1-20/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the spaarndammerbuurt library (buurt Spaarndammerbuurt-Noordwest); scores and holds in scripts/block-face/faces/zaanhof-1-20/auto-place.json"
+ },
+ "types": [
+  "zaanhof-1919-white-gable"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012094000",
+   "slug": "zaanhof-094000",
+   "address": "Zaanhof 1",
+   "type": {
+    "type": "zaanhof-1919-white-gable",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2021-03-19 span 0-245"
+   }
+  },
+  {
+   "pandId": "0363100012146841",
+   "slug": "zaanhof-146841",
+   "address": "Zaanhof 3",
+   "type": {
+    "type": "zaanhof-1919-white-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 1 on eaves 1, storeys 1, stucco 1; strip 2021-03-19 span 245-487"
+   }
+  },
+  {
+   "pandId": "0363100012142675",
+   "slug": "zaanhof-142675",
+   "address": "Zaanhof 5",
+   "type": {
+    "type": "zaanhof-1919-white-gable",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 1 on eaves 1, storeys 1, stucco 1; strip 2021-03-19 span 487-722"
+   }
+  },
+  {
+   "pandId": "0363100012087177",
+   "slug": "zaanhof-087177",
+   "address": "Zaanhof 7",
+   "type": {
+    "type": "zaanhof-1919-white-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 1 on eaves 1, storeys 1, stucco 1; strip 2021-03-19 span 721-960"
+   }
+  },
+  {
+   "pandId": "0363100012123914",
+   "slug": "zaanhof-123914",
+   "address": "Zaanhof 9",
+   "type": {
+    "type": "zaanhof-1919-white-gable",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2021-03-19 span 960-1195"
+   }
+  },
+  {
+   "pandId": "0363100012096324",
+   "slug": "zaanhof-096324",
+   "address": "Zaanhof 11",
+   "type": {
+    "type": "zaanhof-1919-white-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 0.77 on eaves 1, storeys 1, stucco 1, columns 0; strip 2021-03-19 span 1195-1433"
+   }
+  },
+  {
+   "pandId": "0363100012147168",
+   "slug": "zaanhof-147168",
+   "address": "Zaanhof 13",
+   "type": {
+    "type": "zaanhof-1919-white-gable",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2021-03-19 span 1433-1668"
+   }
+  },
+  {
+   "pandId": "0363100012111405",
+   "slug": "zaanhof-111405",
+   "address": "Zaanhof 15",
+   "type": {
+    "type": "zaanhof-1919-white-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 0.77 on eaves 1, storeys 1, stucco 1, columns 0; strip 2021-03-19 span 1668-1904"
+   }
+  },
+  {
+   "pandId": "0363100012103385",
+   "slug": "zaanhof-103385",
+   "address": "Zaanhof 17",
+   "type": {
+    "type": "zaanhof-1919-white-gable",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 0.77 on eaves 1, storeys 1, stucco 1, columns 0; strip 2021-03-19 span 1905-2145"
+   }
+  },
+  {
+   "pandId": "0363100012107452",
+   "slug": "zaanhof-107452",
+   "address": "Zaanhof 19",
+   "type": {
+    "type": "zaanhof-1919-white-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 0.77 on eaves 1, storeys 1, stucco 1, columns 0; strip 2021-03-19 span 2144-2380"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

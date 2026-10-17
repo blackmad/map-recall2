@@ -1,0 +1,361 @@
+{
+ "face": "zaanhof-125-134",
+ "street": "Zaanhof",
+ "library": "spaarndammerbuurt",
+ "stripDate": "2021-03-19",
+ "seconds": 0.39,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "zaanhof-125-134",
+   "pands": [
+    "0363100012127622",
+    "0363100012139676",
+    "0363100012063074",
+    "0363100012131844",
+    "0363100012109397"
+   ]
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012127622",
+   "address": "Zaanhof 125",
+   "builtYear": 1919,
+   "widthM": 6.01,
+   "eavesM": 7.67,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b4926c",
+    "wallRaw": "#b3956e",
+    "skyline": {
+     "eavesM": 10.45,
+     "eavesRow": 131,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.713,
+    "structure": {
+     "bayWidthM": 2.42,
+     "bayCentre": 0.58,
+     "balconies": true,
+     "why": "dark open axis 2.45 m at 0.58 (light 0.43): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.45,
+       "centre": 0.58,
+       "light": 0.43
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.12
+   },
+   "status": "placed",
+   "type": "zaanhof-1919-white-gable",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "zaanhof-1919-white-gable"
+   },
+   "notes": [
+    "crown white-gable (type default)",
+    "door left: reviewer pin (zaanhof strips 2021-03-19: the round-arched door sits at the party wall under the narrow axis, opposite the gable over the wide axis; the door detector reads none (or the wrong side) under the arches and the courtyard trees)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012139676",
+   "address": "Zaanhof 127",
+   "builtYear": 1919,
+   "widthM": 6.07,
+   "eavesM": 7.75,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 3.9,
+    "toM": 3.99,
+    "depthM": 0.26,
+    "centre": 0.65,
+    "lineRD": [
+     [
+      119933.64125,
+      489519.8525
+     ],
+     [
+      119933.81125,
+      489514.2955
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#776a44",
+    "wallRaw": "#766c45",
+    "skyline": {
+     "eavesM": 11.97,
+     "eavesRow": 70,
+     "confidence": 0.74,
+     "crown": {
+      "widthM": 1.15,
+      "riseM": 1.75,
+      "topWidthM": 0.3,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.144,
+    "structure": {
+     "bayWidthM": 0.4,
+     "bayCentre": 0.96,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.26
+   },
+   "status": "placed",
+   "type": "zaanhof-1919-white-gable",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "zaanhof-1919-white-gable",
+    "mirror": true
+   },
+   "notes": [
+    "crown white-gable (type default)",
+    "door right: mirrored: reviewer pin (zaanhof strips 2021-03-19: the round-arched door sits at the party wall under the narrow axis, opposite the gable over the wide axis; the door detector reads none (or the wrong side) under the arches and the courtyard trees)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012063074",
+   "address": "Zaanhof 129",
+   "builtYear": 1919,
+   "widthM": 5.85,
+   "eavesM": 7.69,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d0a87e",
+    "wallRaw": "#cfab80",
+    "skyline": {
+     "eavesM": 8.9,
+     "eavesRow": 193,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 3.13,
+      "riseM": 4.82,
+      "topWidthM": 0.4,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.791,
+    "structure": {
+     "bayWidthM": 2.45,
+     "bayCentre": 0.6,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.06 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.06,
+       "light": 0.27
+      },
+      {
+       "widthM": 2.45,
+       "centre": 0.6,
+       "light": 0.45
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.14
+   },
+   "status": "placed",
+   "type": "zaanhof-1919-white-gable",
+   "score": 0.86,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "zaanhof-1919-white-gable"
+   },
+   "notes": [
+    "crown white-gable (type default)",
+    "door left: reviewer pin (zaanhof strips 2021-03-19: the round-arched door sits at the party wall under the narrow axis, opposite the gable over the wide axis; the door detector reads none (or the wrong side) under the arches and the courtyard trees)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012131844",
+   "address": "Zaanhof 131",
+   "builtYear": 1919,
+   "widthM": 5.86,
+   "eavesM": 7.68,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#cfa982",
+    "wallRaw": "#ceac84",
+    "skyline": {
+     "eavesM": 8.82,
+     "eavesRow": 196,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.35,
+      "riseM": 2.18,
+      "topWidthM": 0.78,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.736,
+    "structure": {
+     "bayWidthM": 2.45,
+     "bayCentre": 0.25,
+     "balconies": true,
+     "why": "dark open axis 2.45 m at 0.25 (light 0.43): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.45,
+       "centre": 0.25,
+       "light": 0.43
+      },
+      {
+       "widthM": 1.1,
+       "centre": 0.83,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.15,
+    "foliageShare": 0.11
+   },
+   "status": "placed",
+   "type": "zaanhof-1919-white-gable",
+   "score": 0.77,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "zaanhof-1919-white-gable",
+    "mirror": true
+   },
+   "notes": [
+    "crown white-gable (type default)",
+    "door right: mirrored: reviewer pin (zaanhof strips 2021-03-19: the round-arched door sits at the party wall under the narrow axis, opposite the gable over the wide axis; the door detector reads none (or the wrong side) under the arches and the courtyard trees)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012109397",
+   "address": "Zaanhof 133",
+   "builtYear": 1919,
+   "widthM": 6.04,
+   "eavesM": 7.6,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e1c1a4",
+    "wallRaw": "#e0c4a6",
+    "skyline": {
+     "eavesM": 8.8,
+     "eavesRow": 197,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.92,
+      "riseM": 2.15,
+      "topWidthM": 0.6,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.893,
+    "structure": {
+     "bayWidthM": 2.4,
+     "bayCentre": 0.63,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.07 (light 0.48): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.07,
+       "light": 0.48
+      },
+      {
+       "widthM": 2.4,
+       "centre": 0.63,
+       "light": 0.44
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.17,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "zaanhof-1919-white-gable",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "zaanhof-1919-white-gable"
+   },
+   "notes": [
+    "crown white-gable (type default)",
+    "door left: reviewer pin (zaanhof strips 2021-03-19: the round-arched door sits at the party wall under the narrow axis, opposite the gable over the wide axis; the door detector reads none (or the wrong side) under the arches and the courtyard trees)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

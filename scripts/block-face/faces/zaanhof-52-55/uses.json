@@ -1,0 +1,55 @@
+{
+ "street": "Zaanhof",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012127918",
+   "addresses": [
+    "Zaanhof 52",
+    "Zaanhof 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zaanhof 53",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000963265"
+    },
+    {
+     "address": "Zaanhof 52",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000877306"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098344",
+   "addresses": [
+    "Zaanhof 54",
+    "Zaanhof 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zaanhof 54",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000877308"
+    },
+    {
+     "address": "Zaanhof 55",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000877309"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}
