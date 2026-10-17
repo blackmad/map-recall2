@@ -24,21 +24,32 @@ const generatedBundles = [
 
 const packageScripts = JSON.parse(fs.readFileSync('package.json', 'utf8')).scripts;
 
-function esbuildArgsFor(bundle) {
-  const marker = `--outfile=public/canal-drive/${bundle}`;
-  const script = Object.values(packageScripts).find(
-    value => value.startsWith('esbuild ') && value.includes(marker));
+// A bundle is built either by plain `esbuild … --outfile=<bundle>` or by
+// `node scripts/esbuild-ride-bundle.mjs <entry> <bundle> …`, which shares the
+// manual-model catalogue with signature-placement.bundle.js instead of inlining it.
+const RIDE_BUILDER = 'node scripts/esbuild-ride-bundle.mjs ';
+
+function buildCommandFor(bundle) {
+  const outfile = `public/canal-drive/${bundle}`;
+  const script = Object.values(packageScripts).find(value =>
+    (value.startsWith('esbuild ') && value.includes(`--outfile=${outfile}`))
+    || (value.startsWith(RIDE_BUILDER) && value.split(/\s+/)[3] === outfile));
   assert(script, `no npm script builds ${bundle}; add one so it cannot be built by hand`);
-  return script.slice('esbuild '.length).split(/\s+/);
+  return script;
 }
 
 function assertBundleIsCurrent(bundle) {
-  const args = esbuildArgsFor(bundle);
+  const script = buildCommandFor(bundle);
   const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'canal-decomp-'));
   const rebuilt = path.join(scratch, path.basename(bundle));
   try {
-    execFileSync('npx', ['esbuild', ...args].map(arg =>
-      arg.startsWith('--outfile=') ? `--outfile=${rebuilt}` : arg), { stdio: 'pipe' });
+    if (script.startsWith(RIDE_BUILDER)) {
+      const [entry, , ...flags] = script.slice(RIDE_BUILDER.length).split(/\s+/);
+      execFileSync('node', ['scripts/esbuild-ride-bundle.mjs', entry, rebuilt, ...flags], { stdio: 'pipe' });
+    } else {
+      execFileSync('npx', ['esbuild', ...script.slice('esbuild '.length).split(/\s+/)].map(arg =>
+        arg.startsWith('--outfile=') ? `--outfile=${rebuilt}` : arg), { stdio: 'pipe' });
+    }
     assert.equal(
       fs.readFileSync(path.join(root, bundle), 'utf8'),
       fs.readFileSync(rebuilt, 'utf8'),
@@ -63,7 +74,8 @@ const runtimeFiles = [
 const gameFile = 'js/game.js';
 // Typed leaves the subsystems call through. They are loaded into the sandbox
 // first so that installing a subsystem exercises the same globals the page has.
-const dependencyBundles = ['js/route-selection.bundle.js', 'js/preferences.bundle.js'];
+// signature-placement first: the ride bundles read the manual-model catalogue it publishes.
+const dependencyBundles = ['js/signature-placement.bundle.js', 'js/route-selection.bundle.js', 'js/preferences.bundle.js'];
 const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 
 let previousIndex = -1;
