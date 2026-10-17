@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
+import { SiteSwitch } from '../../components/SiteSwitch.tsx';
+import { canalPageLinks } from '../../siteLinks.ts';
 import { ArrowLeft, BookOpenCheck, ChevronDown, Clock3, Search } from 'lucide-react';
 import {
   ASK_BUDGETS,
@@ -24,6 +26,9 @@ import {
   TRAVEL_ICONS,
   VIEW_ICONS,
 } from './enamelIcons.tsx';
+
+/** The ride's own links to the landing page and Map Quest, by where this page is served. */
+const siteLinksHere = canalPageLinks(typeof location === 'undefined' ? '/' : location.pathname);
 
 export interface OverlayCallbacks {
   zoom: ZoomClamp;
@@ -973,6 +978,7 @@ export function OverlayApp({
               </p>
               <button id="route-start" className="enamel-plaque enamel-framed enamel-start" type="submit">Start route</button>
               <div id="route-error" aria-live="polite">{state.routeError}</div>
+              <SiteSwitch links={siteLinksHere} current="ride" id="setup-site-switch" />
             </div>
           </form>
         </div>
@@ -992,6 +998,7 @@ export function OverlayApp({
       <div id="settings-panel" className="utility-panel enamel-utility" style={{ display: state.settingsOpen ? 'flex' : 'none' }}>
         <div className="utility-card enamel-plaque enamel-framed enamel-panel">
           <h2>Ride settings</h2>
+          <SiteSwitch links={siteLinksHere} current="ride" id="settings-site-switch" />
           <div className="setup-account" id="settings-account-row">
             <div className="setup-account-copy" role="status" aria-live="polite">
               <strong id="settings-account-label">{state.account.buttonLabel === 'Sign out' ? `Signed in as ${state.account.label}` : state.account.label}</strong>

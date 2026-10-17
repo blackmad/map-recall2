@@ -1,13 +1,26 @@
 # Deploying
 
-Two games ship from this repo, and they are two hosts, not two entry points on
-one site:
+Canal Recall and Map Quest ship from **one origin** (2026-10-17), so they share
+Firebase auth, localStorage progress (`mapRecall_reviewStates_v1`) and plain
+relative links:
+
+| Path on `canalrecall.blackmad.com` | Serves | Built from |
+| --- | --- | --- |
+| `/` | Landing page | `public/canal-drive/landing.html` |
+| `/ride` | Canal Recall (Hosting rewrite onto `/ride.html`) | `public/canal-drive/index.html` |
+| `/quiz/` | Map Quest (SPA rewrite for `/quiz/**`) | `vite build --mode quiz` → `dist-quiz/` |
+| `/data/`, `/js/`, `/models/`, … | Extracts and the canal-drive tree | `dist/data`, `dist/canal-drive` |
+
+The landing page forwards any URL with a query or hash, and anyone who has
+opened the ride before (localStorage `canalRecall.returningPlayer.v1`), to
+`/ride` with the query intact, so old deep links to the root keep working.
+`/?home` always shows the landing page; that is where the Home switch points.
 
 | Hostname | Firebase site | Serves | Built from |
 | --- | --- | --- | --- |
-| `edumap.blackmad.com` | `edumap-blackmad` | Map Quest | `dist/` |
-| `mapquest.blackmad.com` | `canalrecall-blackmad` | Canal Recall | `dist-canalrecall/` |
-| `canalrecall.blackmad.com` | `canalrecall-blackmad` | Canal Recall | `dist-canalrecall/` |
+| `canalrecall.blackmad.com` | `canalrecall-blackmad` | Everything above | `dist-canalrecall/` |
+| `mapquest.blackmad.com` | `canalrecall-blackmad` | Same site | `dist-canalrecall/` |
+| `edumap.blackmad.com` | `edumap-blackmad` | 301 to `canalrecall.blackmad.com/quiz/…` | `dist-edumap/` (placeholder only) |
 
 Both sites live in the existing `map-recall2-blackmad` Firebase project, which
 also holds Firestore. `FIREBASE_SETUP.md` covers the Firestore side.
@@ -33,7 +46,17 @@ the browser refuses to execute HTML as a script.
 So `scripts/assemble-canalrecall-site.mjs` (`npm run build:canalrecall-site`)
 hoists `dist/canal-drive` into `dist-canalrecall/` and copies `dist/data`
 alongside it. At that point every relative path in the page resolves the way it
-already expected to, with no rewrites at all.
+already expected to. The ride then moves to `ride.html` and the landing page
+takes `index.html`; `/ride` (no trailing slash) is rewritten onto `ride.html`,
+so its relative paths still resolve against the root. Map Quest's quiz build
+lands in `quiz/`, and `src/mapQuestSite.ts` points it at `/data/` and the
+root-level canal assets instead of copies under `/quiz/`. The copies are
+copy-on-write clones on APFS, so assembling costs almost no disk.
+
+To check the assembled site locally with the real rewrites:
+`npx firebase-tools@15 serve --only hosting:canalrecall --port 4403` (it
+listens on 4404), then
+`CANAL_SITE_URL=http://localhost:4404 npx playwright test tests/e2e/canal-site.spec.ts`.
 
 Two Firebase Hosting behaviours are worth knowing before editing
 `firebase.json`, because each one cost a deploy to discover:
@@ -54,10 +77,14 @@ npm run build:canalrecall-site    # writes dist-canalrecall/ from dist/
 npx firebase-tools@15 deploy --only hosting --project map-recall2-blackmad
 ```
 
-Set `VITE_CANAL_RECALL_URL` on the build to point Map Quest's "Canal Recall →"
-link at the other host. Without it the link falls back to the sibling
-`canal-drive/` path, which only exists on a build that serves both from one
-origin.
+`npm run build` includes the quiz build (`npm run build:quiz`). The quiz
+build ignores `VITE_CANAL_RECALL_URL`: on the one-origin site its links are
+`/ride`, `/?home` and `/quiz/`. The variable still applies to the default build
+(dev server layout, GitHub Pages).
+
+Firebase auth on `/quiz/` uses the same `VITE_FIREBASE_*` config as the ride
+(popup sign-in through `VITE_FIREBASE_AUTH_DOMAIN`); the serving hostnames must
+be listed under Authentication → Settings → Authorized domains.
 
 To publish one site only, use `--only hosting:edumap` or
 `--only hosting:canalrecall`. The target names are mapped to site IDs in
