@@ -140,7 +140,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#87898d"
  },
  "palette": {
   "brick": "#6a3f38",
@@ -152,7 +153,8 @@
   "2003 four-storey police bureau, a rounded rectangle of dark red-brown brick with brown-framed windows on Linnaeusstraat / Kruislaan (the whole pand: 34.2 x 23.3 m, 19.7 m eaves, 3DBAG panels 3, 4, 1 and 0). Three fronts from panoramas: west (2025-09-26, w01-249): four rows, tall windows on the first floor and ground floor shutters; north (2019-05-23, w02-341, sun-flared): a dark door at the right end of the ground floor and gold POLITIE lettering high on the right on the second floor; south (2022-06-13, w03-161): a roller-shutter vehicle bay at the right end, a glazed entrance at the left under a street sign, and a blue diamond POLITIE blade sign at the left.",
   "The east wall (panel 0, 34.2 m, bearing 71) has no panorama (candidates 0) and is INFERRED: the same brick grid as the west front, same bay rhythm, no components. A previous attempt left it blank and audit:glb failed on the 34 m blank wall.",
   "Ornaments: POLITIE lettering in gold on the north wall (MODELLED, wall signage; the kit centres it over the entrance bay at the right, the photo has it one storey higher and left of the door: position deviation about 2.5 m); dark door at the north end (MODELLED, entrance); roller-shutter vehicle bay on the south (MODELLED, garageDoors 1); south glazed entrance with blue diamond blade sign (entrance MODELLED, blade SIMPLIFIED as the kit blue lamp: same colour and position by the entrance, a box not a diamond); blue sign on the west front's right edge (SKIPPED: the same police blade on the corner, a duplicate of the south one, not on the rectified crop); ground-floor roller shutters on the west front (SKIPPED: shutter slats are texture at 15 mm, the window reveal is kept); security cameras and the flagpole (SKIPPED: 0.2 m and slender fixtures, not stable between captures); no striped band, canopy or crest visible.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #3e5a6c not used (not darker than the wall #4e4f53 by 10 L*, or tinted): kit glass kept; walls[1] glass #505c5e not used (not darker than the wall #574c4a by 10 L*, or tinted): kit glass kept; walls[2] glass #322927 not used (not darker than the wall #413333 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #3e5a6c not used (not darker than the wall #4e4f53 by 10 L*, or tinted): kit glass kept; walls[1] glass #505c5e not used (not darker than the wall #574c4a by 10 L*, or tinted): kit glass kept; walls[2] glass #322927 not used (not darker than the wall #413333 by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5385: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "layeredKit": true,
  "measured": {

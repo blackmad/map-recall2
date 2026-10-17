@@ -49,9 +49,19 @@ function pageUrl() {
   u.hash = '';
   return u.href;
 }
+/** A WebGL canvas read outside its frame is fully transparent; JPEG makes it black. */
+function blank(c: HTMLCanvasElement) {
+  const probe = document.createElement('canvas'); probe.width = probe.height = 24;
+  const p = probe.getContext('2d', { willReadFrequently: true })!; p.drawImage(c, 0, 0, 24, 24);
+  const d = p.getImageData(0, 0, 24, 24).data;
+  for (let i = 3; i < d.length; i += 4) if (d[i]) return false;
+  return true;
+}
 function snapshot(target: Target) {
   try {
-    const source = target.canvas || target.image;
+    const gameMap = w.canalRecallGame?.vectorMap?.map;
+    // The map canvas alone is captured through the HUD path, which composites both.
+    const source = target.canvas && target.canvas === gameMap?.getCanvas?.() ? (document.getElementById('gameCanvas') as HTMLCanvasElement || target.canvas) : target.canvas || target.image;
     if (!source) return '';
     const width = source instanceof HTMLImageElement ? source.naturalWidth : source.width;
     const height = source instanceof HTMLImageElement ? source.naturalHeight : source.height;
@@ -61,7 +71,7 @@ function snapshot(target: Target) {
     c.width = Math.round(width * ratio); c.height = Math.round(height * ratio);
     const ctx = c.getContext('2d')!;
     if (source.id === 'gameCanvas') {
-      const mapCanvas = w.canalRecallGame?.vectorMap?.map?.getCanvas?.();
+      const mapCanvas = gameMap?.getCanvas?.();
       if (mapCanvas) {
         const gameRect = source.getBoundingClientRect(), mapRect = mapCanvas.getBoundingClientRect();
         ctx.drawImage(mapCanvas, (mapRect.left - gameRect.left) / gameRect.width * c.width,
@@ -70,6 +80,7 @@ function snapshot(target: Target) {
       }
     }
     ctx.drawImage(source, 0, 0, c.width, c.height);
+    if (blank(c)) return '';
     const data = c.toDataURL('image/jpeg', .72);
     return data.length <= 240000 ? data : '';
   } catch { return ''; }
@@ -90,7 +101,12 @@ function gameContext(): Context {
 }
 function open(target?: Target) {
   if (dialog.open) return;
-  current = target || w.CanalFeedbackPage?.() || { id: 'page', label: document.title, canvas: document.querySelector('#gameCanvas, main canvas, canvas') as HTMLCanvasElement, context: gameContext };
+  // `querySelector('#gameCanvas, main canvas, canvas')` returns the first match in
+  // document order, which in the game is MapLibre's canvas (it precedes the HUD).
+  // That skipped the render-callback capture below and read a cleared WebGL
+  // buffer: a transparent frame, encoded as a black JPEG. Prefer the HUD canvas.
+  const pageCanvas = (document.getElementById('gameCanvas') || document.querySelector('main canvas, canvas')) as HTMLCanvasElement | null;
+  current = target || w.CanalFeedbackPage?.() || { id: 'page', label: document.title, canvas: pageCanvas || undefined, context: gameContext };
   anchor = null; noteId = crypto.randomUUID(); captured = ''; readyCloud = undefined;
   payload = JSON.parse(JSON.stringify(current.context?.() || {}));
   draftKey = `canalFeedback.draft:${location.pathname}:${current.id}`;
@@ -112,7 +128,8 @@ function open(target?: Target) {
   // Capture a fresh WebGL render in its render callback; no permanent drawing
   // buffer and no continuous screenshot cost during normal gameplay.
   capturePromise = new Promise<void>(resolve => {
-    const map = current.map || (current.canvas?.id === 'gameCanvas' ? w.canalRecallGame?.vectorMap?.map : null);
+    const gameMap = w.canalRecallGame?.vectorMap?.map;
+    const map = current.map || (current.canvas && (current.canvas.id === 'gameCanvas' || current.canvas === gameMap?.getCanvas?.()) ? gameMap : null);
     let done = false;
     const finish = () => {
       if (done) return; done = true;
@@ -120,7 +137,9 @@ function open(target?: Target) {
       dialog.querySelector('.cf-anchor')!.textContent = captured ? 'Tap the image to mark the spot you mean (optional).' : 'Page and view context will be included.';
       resolve();
     };
-    if (map?.isStyleLoaded?.()) { map.once('render', finish); map.triggerRepaint(); setTimeout(finish, 2000); }
+    // 'render' fires after every painted frame, styled or still streaming, and
+    // the drawing buffer is readable until the frame is composited.
+    if (map?.once && map.triggerRepaint) { map.once('render', finish); map.triggerRepaint(); setTimeout(finish, 2000); }
     else finish();
   });
 }

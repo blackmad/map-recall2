@@ -23,9 +23,10 @@ export function fitHashes(): Record<string, string> {
     try {
       const facts: BuildingFacts = JSON.parse(fs.readFileSync(`${HOUSES}/${id}/facts.json`, 'utf8'));
       if (raw(id).kind === 'large') {
-        // kind: large: the fitted wall groups, panel assignment, storey lines, systems and roof plant.
+        // kind: large: the fitted wall groups, panel assignment, storey lines, systems and roof plant; the measured flat-roof
+        // colour only when there is one (colour-only, so the mesh golden cannot see it; absent keeps every other hash)
         const {recipe: r, report} = fitLarge(validateLargeIntent(raw(id)), facts);
-        out[id] = createHash('sha256').update(JSON.stringify({anchorRD: r.anchorRD, groups: r.groups, panelGroup: r.panelGroup, wallGroup: r.wallGroup, roofPlant: r.roofPlant, systems: r.spec.systems, palette: r.spec.palette, report})).digest('hex').slice(0, 16);
+        out[id] = createHash('sha256').update(JSON.stringify({anchorRD: r.anchorRD, groups: r.groups, panelGroup: r.panelGroup, wallGroup: r.wallGroup, roofPlant: r.roofPlant, systems: r.spec.systems, palette: r.spec.palette, ...(r.roof.flatHex ? {roofFlatHex: r.roof.flatHex} : {}), report})).digest('hex').slice(0, 16);
         continue;
       }
       const fit = fitIntent(resolveIntent(raw(id), raw), facts);

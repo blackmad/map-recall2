@@ -832,11 +832,6 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   the overview flight's YOU marker; on phones a map tap shows the cluster
   over the bottom-right quiz answer for 3 s; `osm-loader.js` `_loadTile`
   (CARTO) is dead code.
-- **Two canal-recall.spec tests fail on main** (2026-10-16, found merging
-  the HUD radar; fail before it too at 43b3999e9): "an actual high-speed car
-  cannot escape the mapped road corridor" (21–23 m off the corridor, limit
-  12.5) and "anonymous year-only buildings clear selection without opening a
-  card" (desktop and iPhone). Lane `lane/canal-spec-fails-20261016` on them.
 - **Bridge ends and spans, after the Berensluis** (2026-10-16): ~2,900
   deck-top misses remain at other belt bridge ends (BRU0140 Jean Dulieubrug
   52; BRU0066's north pavement stops 2 m short;
@@ -863,6 +858,29 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   the street); the 434 houses with no routing street; address-aware choice
   for through-lots; moulded scrolled/arched neck caps (wallen-oza 177916,
   177946) and cap finials are kit gaps.
+- **Road look, after v2** (2026-10-16, HISTORY "Road look v2"): klinker
+  carriageways still redder than the orthophoto (a greyer tone that stays
+  clear of `brick`); thin out zebras on dense crossing-node clusters
+  (Linnaeusstraat); measure markings and tones on iPhone.
+- **Own look, after** (2026-10-17, HISTORY "coverage page shows buurten
+  with their own look"): archive the Bellamy/Hasebroek/Clercq face strips to
+  source-data (thumbnails read them from lane staging); photos missing for
+  nw-portiek-3st-blue-door, nw-garage-pair-balcony-5st,
+  nw-loggia-stack-flat-5st; kit renders missing for the 13 types no installed
+  chunk draws (Kinkerstraat, nassau-1900-*); row-house design renders need 8
+  candidate angles; landmark-gallery cards render only the ground plane in
+  headless Chrome.
+- **Seeded start not deterministic** (P3, 2026-10-17): `openRoute`'s seeded
+  start varies between runs (async loading consumes `Math.random` in a
+  varying order), so any spec that depends on the start position is flaky;
+  pin starts (as the Reestraat corridor test now does) or seed a private RNG.
+- **Measured flat roofs, next** (2026-10-17, HISTORY "The De Hallen slab was
+  Kinkerstraat 89–105"): `roof-flat.ts --write` and reinstall for
+  stadsloket-west, reade and hamerkanaal-175 (roof/wall dE ~11.6–11.8);
+  Kinkerstraat 89–105 courtyard faces still blank tan (no photo); kit gaps on
+  its Tollensstraat front: open ground passage with round columns, yellow
+  glazed entrance, curved cantilevered balconies, loggias; Polderweg 3 walls
+  fail the tightened likeness gate (walls[1] no photo, walls[2] 52.9° crop).
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;

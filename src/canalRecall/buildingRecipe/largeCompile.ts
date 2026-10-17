@@ -190,14 +190,18 @@ function drawNameBoards(c: PanelCtx, cells: Cell[], g: LargeGroupFit): number {
  * within its height range, 5 cm slack), else `roof.flat` for the flat class, else the default material.
  */
 export function roofMaterialOf(roof: LargeRoofFit, a: number[], b: number[], c: number[], cls: 'steep' | 'low' | 'flat'): RoofMaterial {
-  if (roof.regions) {
-    const x = (a[0] + b[0] + c[0]) / 3, y = (a[1] + b[1] + c[1]) / 3, z = (a[2] + b[2] + c[2]) / 3;
-    for (const r of roof.regions) {
-      if (y < r.yMin - 0.05 || y > r.yMax + 0.05) continue;
-      if (pointInRing([x, z], r.rings[0]) && !r.rings.slice(1).some(h => pointInRing([x, z], h))) return r.material;
-    }
+  return roofRegionOf(roof, a, b, c) ?? (cls === 'flat' && roof.flat ? roof.flat : roof.material);
+}
+
+/** The material of the `surfaces` region a roof triangle lies in, or null. */
+function roofRegionOf(roof: LargeRoofFit, a: number[], b: number[], c: number[]): RoofMaterial | null {
+  if (!roof.regions) return null;
+  const x = (a[0] + b[0] + c[0]) / 3, y = (a[1] + b[1] + c[1]) / 3, z = (a[2] + b[2] + c[2]) / 3;
+  for (const r of roof.regions) {
+    if (y < r.yMin - 0.05 || y > r.yMax + 0.05) continue;
+    if (pointInRing([x, z], r.rings[0]) && !r.rings.slice(1).some(h => pointInRing([x, z], h))) return r.material;
   }
-  return cls === 'flat' && roof.flat ? roof.flat : roof.material;
+  return null;
 }
 
 function slopeClass(a: number[], b: number[], c: number[]): 'steep' | 'low' | 'flat' {
@@ -247,22 +251,27 @@ export function applyWallSplits(mesh: MeshBuilder, groups: LargeGroupFit[], pane
 export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe): T.Group {
   const group = new T.Group(); group.name = recipe.id;
   const measured = new Set(recipe.measuredSlots ?? []);
-  const add = (name: string, positions: number[], colour: string, materialSlot: string, surface: string, slot?: string) => {
+  const add = (name: string, positions: number[], colour: string, materialSlot: string, surface: string, slot?: string, measuredTint = false) => {
     if (!positions.length) return;
     const geo = new T.BufferGeometry(); geo.setAttribute('position', new T.Float32BufferAttribute(positions, 3)); geo.computeVertexNormals();
     const m = new T.Mesh(geo, new T.MeshStandardMaterial({color: colour, roughness: 0.9, metalness: 0}));
     m.name = name; m.userData = {surface, materialSlot, component: name.split('/')[0], pandId: recipe.pandId};
     // measured wall colour (export-glb writes `tintSource: 'measured'`; the look then keeps it instead of clamping it)
-    if (slot && measured.has(slot)) m.material.userData = {tintSource: 'measured'};
+    if (measuredTint || (slot && measured.has(slot))) m.material.userData = {tintSource: 'measured'};
     group.add(m);
   };
   for (const [slot, s] of [...mesh.slots].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
     if (slot === 'roof') {
       // one mesh per (material, slope class); the default material first and named as before, so a roof without
       // `flat`/`regions` exports exactly as it always did
+      // `flatHex` (measured from the orthophoto): the flat class outside the `surfaces` regions is one mesh in that colour,
+      // named `roof/flat`, drawn as measured
       const by = new Map<RoofMaterial, Record<'steep' | 'low' | 'flat', number[]>>([[recipe.roof.material, {steep: [], low: [], flat: []}]]), v = s.positions;
+      const measuredFlat: number[] = [], flatHex = recipe.roof.flatHex;
       for (let i = 0; i < v.length; i += 9) {
-        const a = v.slice(i, i + 3), b = v.slice(i + 3, i + 6), c = v.slice(i + 6, i + 9), k = slopeClass(a, b, c), m = roofMaterialOf(recipe.roof, a, b, c, k);
+        const a = v.slice(i, i + 3), b = v.slice(i + 3, i + 6), c = v.slice(i + 6, i + 9), k = slopeClass(a, b, c);
+        if (flatHex && k === 'flat' && !roofRegionOf(recipe.roof, a, b, c)) { measuredFlat.push(...a, ...b, ...c); continue; }
+        const m = roofMaterialOf(recipe.roof, a, b, c, k);
         if (!by.has(m)) by.set(m, {steep: [], low: [], flat: []});
         by.get(m)![k].push(...a, ...b, ...c);
       }
@@ -270,6 +279,7 @@ export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe)
         const roofSlot = ['slate', 'zinc', 'bitumen', 'copper'].includes(m) ? 'slate' : 'roofTile';
         add(m === recipe.roof.material ? `roof/${k}` : `roof/${k}/${m}`, cls[k], ROOF_COLOURS[m][k], k === 'flat' ? 'bitumen' : roofSlot, 'roof');
       }
+      if (flatHex) add('roof/flat', measuredFlat, flatHex, 'bitumen', 'roof', undefined, true);
       continue;
     }
     const colour = recipe.spec.palette[slot];

@@ -746,8 +746,45 @@ test('measured groups export their wall, arch-ring and own glass slots with tint
   };
   // Houthavenkade: the balcony columns' own reflective glass (columns.glass) is measured; the punched windows keep the kit glass (the photo's pane glass reads no darker than the brick).
   assert.deepEqual(tinted('houthavenkade-26-247232'), ['glass/glass@g0c', 'glass/glass@g1c', 'wall/wall@g0', 'wall/wall@g1', 'wall/wall@g3', 'wall/wall@g4']);
-  // The glazed hall's measured dark grey-blue glass reaches the look (look/palette.ts `cityMeasuredGlassTint`); the kit glass of unmeasured groups does not.
-  assert.deepEqual(tinted('apollolaan-4-134507'), ['glass/glass@g0', 'wall/wall@g0', 'wall/wall@g1']);
+  // The glazed hall's measured dark grey-blue glass reaches the look (look/palette.ts `cityMeasuredGlassTint`); the kit glass of unmeasured groups does not. Its white membrane roof is measured from the orthophoto (roof.flatHex).
+  assert.deepEqual(tinted('apollolaan-4-134507'), ['glass/glass@g0', 'roof/flat', 'wall/wall@g0', 'wall/wall@g1']);
   assert.ok(tinted('waagdragerhof-198-118320').includes('wall/arch@g3'));
   assert.deepEqual(tinted('politie-west-overtoomsesluis'), []);
+});
+
+test('roof.flatHex: a measured flat roof is exported as measured and drawn as is; absent = identical mesh (Kinkerstraat 89-105 slab, 2026-10-16)', async () => {
+  const {cityTint, FLAT_ROOF_GREYS} = await import('../look/palette.ts');
+  const base = validateLargeIntent(raw('kinkerstraat-89-092013')), f = facts('kinkerstraat-89-092013');
+  assert.throws(() => validateLargeIntent({...base, roof: {material: 'slate', flatHex: 'grey'}}), /roof\.flatHex/);
+  assert.throws(() => validateLargeIntent({...base, roof: {material: 'slate', tone: 1}}), /roof\.tone/);
+  const flatOf = (group: any) => { let m: any = null; group.traverse((o: any) => { if (o.isMesh && o.name === 'roof/flat') m = o.material; }); return m; };
+  const {flatHex: _drop, ...roofWithout} = base.roof ?? {material: 'slate' as const};
+  const plain = compileBuilding({...base, roof: roofWithout}, f), measured = compileBuilding(validateLargeIntent({...base, roof: {...roofWithout, flatHex: '#87898D'}}), f);
+  const before = flatOf(plain.group), after = flatOf(measured.group);
+  assert.ok(before && after, 'the block has flat roofs');
+  assert.notEqual(before.userData.tintSource, 'measured');
+  assert.equal(after.userData.tintSource, 'measured');
+  assert.equal('#' + after.color.getHexString(), '#87898d');
+  // Only the flat roof's colour changes: same meshes, same vertex counts, same other colours.
+  const sig = (g: any) => { const out: string[] = []; g.traverse((o: any) => { if (o.isMesh) out.push(`${o.name}|${o.name === 'roof/flat' ? '' : o.material.color.getHexString()}|${o.geometry.attributes.position.count}`); }); return out.join(';'); };
+  assert.equal(sig(measured.group), sig(plain.group));
+  // The look: the kit's flat grey lands on a flat-roof prior (buff gravel for #6a6c6c, the slab); the measured colour is kept.
+  assert.ok(FLAT_ROOF_GREYS.includes(cityTint('bitumen', '#' + before.color.getHexString())));
+  assert.equal(cityTint('bitumen', '#87898d', 'measured'), '#87898d');
+});
+
+test('roof.flatHex composes with roof.flat and roof.surfaces (Entrepotdok): one measured flat mesh, regions keep their material', async () => {
+  const base = validateLargeIntent(raw('entrepotdok-164981')), f = facts('entrepotdok-164981');
+  assert.ok(base.roof?.flat || base.roof?.surfaces, 'Entrepotdok re-materials its roof');
+  assert.equal(base.roof?.flatHex, undefined);
+  const tris = (g: any) => { const out = new Map<string, number>(); g.traverse((o: any) => { if (o.isMesh && o.name.startsWith('roof/')) out.set(o.name, o.geometry.attributes.position.count / 3); }); return out; };
+  const plain = tris(compileBuilding(base, f).group);
+  const measuredGroup = compileBuilding(validateLargeIntent({...base, roof: {...base.roof!, flatHex: '#56585e'}}), f).group, measured = tris(measuredGroup);
+  // every flat triangle that took `material` or `flat` moves into the one measured `roof/flat`; steep/low and other meshes keep their counts
+  const flatOutside = [...plain].filter(([n]) => n === 'roof/flat' || n === `roof/flat/${base.roof!.flat}`).reduce((s, [, c]) => s + c, 0);
+  assert.equal(measured.get('roof/flat'), flatOutside);
+  if (base.roof!.flat && base.roof!.flat !== base.roof!.material) assert.equal(measured.has(`roof/flat/${base.roof!.flat}`), false);
+  for (const [n, c] of plain) if (!n.startsWith('roof/flat')) assert.equal(measured.get(n), c, n);
+  let mat: any = null; measuredGroup.traverse((o: any) => { if (o.isMesh && o.name === 'roof/flat') mat = o.material; });
+  assert.equal(mat.userData.tintSource, 'measured');
 });
