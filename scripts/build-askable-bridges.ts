@@ -32,6 +32,7 @@ import { dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { supplementBridges, type RoutingWay } from '../src/canalRecall/askableBridges';
 import { pickNearestDistractors } from '../src/canalRecall/bridgeDistractors';
+import { readPartition, shipPartition } from './lib/extract-sidecar';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const directoryArgument = process.argv.find((argument) => argument.startsWith('--directory='));
@@ -58,10 +59,12 @@ if (publish) {
 
 type Bridge = { id: string; name: string; center: [number, number]; distractors?: string[]; [key: string]: unknown };
 const bridgesPath = resolve(extractDir, 'bridges.json');
-const published = JSON.parse(readFileSync(bridgesPath, 'utf8')) as Bridge[];
 const routing = JSON.parse(readFileSync(resolve(extractDir, 'streets-routing.json'), 'utf8')) as RoutingWay[];
 const manifest = JSON.parse(readFileSync(resolve(extractDir, 'manifest.json'), 'utf8'));
 const cityId = String(manifest.cityId || 'amsterdam');
+// The staged file ships without the build-only fields (extractSidecar.ts):
+// read them back from the sidecar, and `shipPartition` moves them there again.
+const published = readPartition<Bridge>(extractDir, 'bridges.json', cityId);
 
 // The register's names are the official spellings (Heiligewegsluis, not
 // Heiligewegssluis) when OSM maps one bridge under two.
@@ -77,7 +80,8 @@ for (const feature of result.added) feature.distractors = pickNearestDistractors
 const staged = [...published, ...result.added];
 
 mkdirSync(stagingDir, { recursive: true });
-writeFileSync(resolve(stagingDir, 'bridges.json'), JSON.stringify(staged));
+const stagedText = shipPartition('bridges.json', staged, cityId);
+writeFileSync(resolve(stagingDir, 'bridges.json'), stagedText);
 // The builders read these from the directory they are pointed at.
 for (const file of ['water.json', 'boundaries.json', 'bridge-crossings.json', 'bridge-register.json']) {
   copyFileSync(resolve(extractDir, file), resolve(stagingDir, file));
@@ -85,7 +89,7 @@ for (const file of ['water.json', 'boundaries.json', 'bridge-crossings.json', 'b
 manifest.partitions.bridges = {
   ...manifest.partitions.bridges,
   count: staged.length,
-  bytes: Buffer.byteLength(JSON.stringify(staged)),
+  bytes: Buffer.byteLength(stagedText),
 };
 writeFileSync(resolve(stagingDir, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
 
