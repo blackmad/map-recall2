@@ -10,7 +10,8 @@ import {
 import { mergeSidecar, splitSidecar, updateSidecar } from './extractSidecar.ts';
 import { dropUnfinishedSentence, ledeSentences, repairBridgeLede } from './bridgeLedeRepair.ts';
 import { submitAnswer } from './answerPath.ts';
-import { buildRouteKnowledgeIndex } from './game/routeKnowledge.ts';
+import { buildRouteKnowledgeIndex, streetCardText } from './game/routeKnowledge.ts';
+import { routePlaqueName } from './game/recallRules.ts';
 
 const score = { attempts: 0, correct: 0, points: 0, streak: 0, bestStreak: 0 };
 
@@ -121,4 +122,29 @@ test('named regression: the garbled Zaandijkspoorbrug lede', () => {
   assert.ok(entry?.machine, 'the machine text is kept beside the edit');
   assert.doesNotMatch(entry.en, /artwork|The tunnel has a$/);
   assert.equal(cache.filter(row => /structural work of art/.test(row.en) && row.machine).length, 0);
+});
+
+test('the HUD road title prints the official spelling, and still withholds it before the answer', () => {
+  const names = buildBridgeDisplayNames([{ name: 'Mr. J.J. van der Veldebrug', displayName: 'Mr. J. J. van der Veldebrug' }]);
+  const roadName = 'Mr. J.J. van der Veldebrug';
+  const shownName = displayBridgeName(names, roadName);
+  const base = { roadName, shownName, currentName: '', promptName: '', candidateName: '', revealed: false, learned: false };
+  // Asked: withheld, under either spelling.
+  assert.deepEqual(routePlaqueName({ ...base, promptName: roadName }), { routeName: '', answerHidden: true });
+  // Not yet answered or shown: withheld.
+  assert.equal(routePlaqueName(base).routeName, '');
+  // Answered: the official spelling, not OSM's.
+  assert.equal(routePlaqueName({ ...base, learned: true }).routeName, 'Mr. J. J. van der Veldebrug');
+  assert.equal(routePlaqueName({ ...base, currentName: roadName }).routeName, 'Mr. J. J. van der Veldebrug');
+  // An ordinary street prints as before.
+  assert.equal(routePlaqueName({ ...base, roadName: 'Herenstraat', shownName: 'Herenstraat', currentName: 'Herenstraat' }).routeName, 'Herenstraat');
+});
+
+test('named regression: the card does not cut a name at its patronymic', () => {
+  const card = streetCardText({
+    wikipediaExtract: 'The Hendrick Jacobsz. Staetsbrug (bridge 35) is a fixed bridge in Amsterdam-Centrum. The bridge spans the Herengracht.',
+    structureFact: 'Stone markers on the Amstel side date the current structure to the year 1728.',
+  });
+  assert.ok(card.detail.startsWith('The Hendrick Jacobsz. Staetsbrug (bridge 35) is a fixed bridge'), card.detail);
+  assert.doesNotMatch(card.longDetail, /Jacobsz\. Stone/);
 });

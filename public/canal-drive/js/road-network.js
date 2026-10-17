@@ -609,7 +609,9 @@ class RoadNetwork {
   // could pass the reach box and `isLabelled`, in `labels` order (the game's
   // per-cell index, src/canalRecall/game/streetLabelCandidates.ts): the walk
   // below still applies every test, so the result is unchanged.
-  drawLabels(ctx, camera, isLabelled, hiddenName = '', player = null, candidatesFor = null) {
+  // `shownText(name)`, when given, is what is printed for a raw way name (a
+  // bridge's official spelling); every test still runs on the raw name.
+  drawLabels(ctx, camera, isLabelled, hiddenName = '', player = null, candidatesFor = null, shownText = null) {
     const z = camera.zoom || 1;
     const fontSize = Math.max(8, Math.round(9 * z));
     ctx.font = `bold ${fontSize}px Arial, sans-serif`;
@@ -642,7 +644,8 @@ class RoadNetwork {
         if (player && Math.hypot(lbl.x - player.x, lbl.y - player.y) * z < 145) continue;
 
         // Estimate label bounding box in screen space for overlap check
-        const tw = ctx.measureText(lbl.text).width;
+        const printed = shownText ? shownText(lbl.text) : lbl.text;
+        const tw = ctx.measureText(printed).width;
         const pad = 5;
         const rectW = tw + pad * 2 + 10; // margin
         const rectH = fontSize + 10;
@@ -676,9 +679,9 @@ class RoadNetwork {
         ctx.strokeStyle = 'rgba(250,249,244,.92)';
         ctx.lineWidth = 4;
         ctx.lineJoin = 'round';
-        ctx.strokeText(lbl.text, 0, 0);
+        ctx.strokeText(printed, 0, 0);
         ctx.fillStyle = 'rgba(38,56,59,.78)';
-        ctx.fillText(lbl.text, 0, 0);
+        ctx.fillText(printed, 0, 0);
         ctx.restore();
       }
     }
