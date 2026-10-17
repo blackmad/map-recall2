@@ -1,0 +1,681 @@
+{
+ "street": "Molukkenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:34:32.632Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012113625",
+   "addresses": [
+    "Molukkenstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javaplein 37",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000689015"
+    },
+    {
+     "address": "Javaplein 37",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 127,
+     "bagId": "0363010012062264"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809504866,
+     "lngLat": [
+      4.9398153,
+      52.3632483
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Franggo"
+     },
+     "fetchedAt": "2026-10-17T07:34:32.632Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012124425",
+   "addresses": [
+    "Molukkenstraat 71"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085956",
+   "addresses": [
+    "Molukkenstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 73-H",
+     "use": "winkelfunctie",
+     "areaM2": 213,
+     "bagId": "0363010001963363"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 467095933,
+     "lngLat": [
+      4.9397958,
+      52.3631333
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "71-73",
+      "addr:postcode": "1095AX",
+      "addr:street": "Molukkenstraat",
+      "brand": "Etos",
+      "brand:website": "https://www.etos.nl/",
+      "brand:wikidata": "Q2609459",
+      "brand:wikipedia": "nl:Etos",
+      "name": "Etos",
+      "opening_hours": "Mo-Fr 11:00-18:00; Sa 11:00-18:00",
+      "phone": "+31 20 693 2539",
+      "ref": "7435",
+      "shop": "chemist",
+      "website": "https://www.etos.nl/winkels/amsterdam/molukkenstraat-71-73-7435/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-17T07:34:32.632Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012135573",
+   "addresses": [
+    "Molukkenstraat 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 75-H",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 202,
+     "bagId": "0363010012078443"
+    },
+    {
+     "address": "Molukkenstraat 75-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001004136"
+    },
+    {
+     "address": "Molukkenstraat 75-H",
+     "use": "winkelfunctie",
+     "areaM2": 389,
+     "bagId": "0363010001963365"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830048763,
+     "lngLat": [
+      4.9397959,
+      52.363031
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "75-H",
+      "addr:postcode": "1095AX",
+      "addr:street": "Molukkenstraat",
+      "brand": "Kruidvat",
+      "brand:website": "https://www.kruidvat.nl",
+      "brand:wikidata": "Q2226366",
+      "brand:wikipedia": "nl:Kruidvat",
+      "name": "Kruidvat",
+      "opening_hours": "Mo-Fr 08:00-20:00; Sa 09:00-19:00; Su 10:00-19:00; PH off",
+      "operator": "Kruidvat",
+      "ref": "6252",
+      "shop": "chemist",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.kruidvat.nl/store/drogisterij-kruidvat-6252",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-17T07:34:32.632Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012074320",
+   "addresses": [
+    "Molukkenstraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 77-H",
+     "use": "winkelfunctie",
+     "areaM2": 188,
+     "bagId": "0363010012078444"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012139846",
+   "addresses": [
+    "Molukkenstraat 79"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 79-H",
+     "use": "winkelfunctie",
+     "areaM2": 112,
+     "bagId": "0363010001963366"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 483553576,
+     "lngLat": [
+      4.9398047,
+      52.3629525
+     ],
+     "tags": {
+      "addr:street": "Molukkenstraat",
+      "brand": "Gall & Gall",
+      "brand:wikidata": "Q13639185",
+      "brand:wikipedia": "nl:Gall & Gall",
+      "name": "Gall & Gall",
+      "ref": "6979",
+      "shop": "alcohol",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-17T07:34:32.632Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012094386",
+   "addresses": [
+    "Molukkenstraat 81"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130593",
+   "addresses": [
+    "Molukkenstraat 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 83-H",
+     "use": "winkelfunctie",
+     "areaM2": 308,
+     "bagId": "0363010001004137"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830049967,
+     "lngLat": [
+      4.9398039,
+      52.3628719
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "81",
+      "addr:postcode": "1095AX",
+      "addr:street": "Molukkenstraat",
+      "amenity": "pharmacy",
+      "healthcare": "pharmacy",
+      "name": "Molukken Apotheek",
+      "opening_hours": "Mo-Fr 08:00-18:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-17T07:34:32.632Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012148285",
+   "addresses": [
+    "Molukkenstraat 85",
+    "Molukkenstraat 85C",
+    "Molukkenstraat 85B",
+    "Molukkenstraat 85A",
+    "Molukkenstraat 85D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 85-H",
+     "use": "winkelfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000745647"
+    },
+    {
+     "address": "Molukkenstraat 85C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012073891"
+    },
+    {
+     "address": "Molukkenstraat 85B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012073892"
+    },
+    {
+     "address": "Molukkenstraat 85A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012073893"
+    },
+    {
+     "address": "Molukkenstraat 85D",
+     "use": "winkelfunctie",
+     "areaM2": 105,
+     "bagId": "0363010012073894"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12714023269,
+     "lngLat": [
+      4.9398133,
+      52.3627917
+     ],
+     "tags": {
+      "shop": "vacant"
+     },
+     "fetchedAt": "2026-10-17T07:34:32.632Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012082453",
+   "addresses": [
+    "Molukkenstraat 87",
+    "Molukkenstraat 87C",
+    "Molukkenstraat 87B",
+    "Molukkenstraat 87A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 87C",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012073899"
+    },
+    {
+     "address": "Molukkenstraat 87B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012073900"
+    },
+    {
+     "address": "Molukkenstraat 87A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012073901"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070707",
+   "addresses": [
+    "Molukkenstraat 89",
+    "Molukkenstraat 89C",
+    "Molukkenstraat 89B",
+    "Molukkenstraat 89A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 89C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012073902"
+    },
+    {
+     "address": "Molukkenstraat 89B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012073903"
+    },
+    {
+     "address": "Molukkenstraat 89A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012073904"
+    },
+    {
+     "address": "Molukkenstraat 89-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001007642"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079892",
+   "addresses": [
+    "Molukkenstraat 89",
+    "Molukkenstraat 91",
+    "Molukkenstraat 91C",
+    "Molukkenstraat 91B",
+    "Molukkenstraat 91A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 91C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074207"
+    },
+    {
+     "address": "Molukkenstraat 91B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074208"
+    },
+    {
+     "address": "Molukkenstraat 91A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012074209"
+    },
+    {
+     "address": "Molukkenstraat 89",
+     "use": "winkelfunctie",
+     "areaM2": 1156,
+     "bagId": "0363010012074233"
+    },
+    {
+     "address": "Molukkenstraat 91-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001007643"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080014",
+   "addresses": [
+    "Molukkenstraat 93",
+    "Molukkenstraat 93C",
+    "Molukkenstraat 93B",
+    "Molukkenstraat 93A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 93-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000947340"
+    },
+    {
+     "address": "Molukkenstraat 93C",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012074211"
+    },
+    {
+     "address": "Molukkenstraat 93B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012074212"
+    },
+    {
+     "address": "Molukkenstraat 93A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012074213"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012101846",
+   "addresses": [
+    "Molukkenstraat 95",
+    "Molukkenstraat 95C",
+    "Molukkenstraat 95A",
+    "Molukkenstraat 95B",
+    "Molukkenstraat 97",
+    "Molukkenstraat 97A",
+    "Molukkenstraat 97B",
+    "Molukkenstraat 97C",
+    "Molukkenstraat 99",
+    "Molukkenstraat 99B",
+    "Molukkenstraat 99C",
+    "Molukkenstraat 99A",
+    "Molukkenstraat 101",
+    "Molukkenstraat 101A",
+    "Molukkenstraat 101C",
+    "Molukkenstraat 101B",
+    "Molukkenstraat 103",
+    "Molukkenstraat 103A",
+    "Molukkenstraat 103B",
+    "Molukkenstraat 103C",
+    "Molukkenstraat 105",
+    "Molukkenstraat 105B",
+    "Molukkenstraat 105A",
+    "Molukkenstraat 105C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 101A",
+     "use": "winkelfunctie",
+     "areaM2": 1219,
+     "bagId": "0363010000745708"
+    },
+    {
+     "address": "Molukkenstraat 103A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074215"
+    },
+    {
+     "address": "Molukkenstraat 101C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074216"
+    },
+    {
+     "address": "Molukkenstraat 101B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074217"
+    },
+    {
+     "address": "Molukkenstraat 103B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074218"
+    },
+    {
+     "address": "Molukkenstraat 105B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012074219"
+    },
+    {
+     "address": "Molukkenstraat 105A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012074220"
+    },
+    {
+     "address": "Molukkenstraat 103C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074221"
+    },
+    {
+     "address": "Molukkenstraat 105C",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012074222"
+    },
+    {
+     "address": "Molukkenstraat 95C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074223"
+    },
+    {
+     "address": "Molukkenstraat 97A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074224"
+    },
+    {
+     "address": "Molukkenstraat 95A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074225"
+    },
+    {
+     "address": "Molukkenstraat 95B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074226"
+    },
+    {
+     "address": "Molukkenstraat 97B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074227"
+    },
+    {
+     "address": "Molukkenstraat 99B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012074228"
+    },
+    {
+     "address": "Molukkenstraat 99C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074229"
+    },
+    {
+     "address": "Molukkenstraat 97C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012074230"
+    },
+    {
+     "address": "Molukkenstraat 99A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012074231"
+    }
+   ],
+   "units": 37,
+   "osm": [
+    {
+     "type": "node",
+     "id": 34044760,
+     "lngLat": [
+      4.9398394,
+      52.3624356
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "101A",
+      "addr:postcode": "1095AZ",
+      "addr:street": "Molukkenstraat",
+      "brand": "Albert Heijn",
+      "brand:wikidata": "Q1653985",
+      "brand:wikipedia": "nl:Albert Heijn (supermarkt)",
+      "name": "Albert Heijn",
+      "opening_hours": "Mo-Sa 08:00-21:00; Su 10:00-20:00",
+      "phone": "+31 20 694 4198",
+      "ref": "1033",
+      "shop": "supermarket",
+      "website": "https://www.ah.nl/winkel/1033",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-17T07:34:32.632Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12912960775,
+     "lngLat": [
+      4.9398418,
+      52.3624224
+     ],
+     "tags": {
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "cash_in": "no",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "operator": "Geldmaat",
+      "operator:wikidata": "Q74051230",
+      "ref": "1095001"
+     },
+     "fetchedAt": "2026-10-17T07:34:32.632Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "way",
+     "id": 278679874,
+     "lngLat": [
+      4.9396425,
+      52.3624873
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "ref:bag": "0363100012197442",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "start_date": "1924"
+     },
+     "fetchedAt": "2026-10-17T07:34:32.632Z",
+     "match": "frontage",
+     "distanceM": 7.9
+    }
+   ]
+  }
+ ]
+}

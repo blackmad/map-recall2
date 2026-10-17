@@ -1,0 +1,653 @@
+{
+ "face": "nias-1-13",
+ "street": "Niasstraat",
+ "library": "indische-buurt",
+ "stripDate": "2023-01-02",
+ "seconds": 31.53,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "nias-1-13-r1",
+   "pands": [
+    "0363100012102866",
+    "0363100012110430",
+    "0363100012122437",
+    "0363100012131529",
+    "0363100012079465",
+    "0363100012125631"
+   ],
+   "passed": true,
+   "triangles": 8519
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012073042",
+   "address": "Niasstraat 1",
+   "builtYear": 1926,
+   "widthM": 6.15,
+   "eavesM": 12.48,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5a53",
+    "wallRaw": "#6d5e52",
+    "skyline": {
+     "eavesM": 18.1,
+     "eavesRow": 38,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.233,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the corner tower of the Niasstraat block (17 m, a monogram relief, one window axis): no type; the white-attic type matched it on year and eaves alone",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012102866",
+   "address": "Niasstraat 3",
+   "builtYear": 1926,
+   "widthM": 6,
+   "eavesM": 14.61,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685b51",
+    "wallRaw": "#65584c",
+    "skyline": {
+     "eavesM": 17.02,
+     "eavesRow": 81,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.185,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.82,
+       "widthM": 1.32,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#685b51",
+     "evidence": "strip 2023-01-02 span 246-486: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "notes": [
+    "crown overhang: reviewer pin (strip 2023-01-02: a deep flat overhang with a white fascia over the whole row, its brown soffit at 15.1 m over the attic lights)"
+   ],
+   "likeness": {
+    "pandId": "0363100012102866",
+    "ncc": 0.223,
+    "nccRaw": 0.223,
+    "shiftM": [
+     -0.3,
+     -0.4
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#695b51",
+     "model": "#807064",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.29
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.348
+   },
+   "challengers": {
+    "indisch-1926-attic-lights": 0.223
+   }
+  },
+  {
+   "pandId": "0363100012110430",
+   "address": "Niasstraat 5",
+   "builtYear": 1926,
+   "widthM": 6,
+   "eavesM": 14.69,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c5047",
+    "wallRaw": "#5c5043",
+    "skyline": {
+     "eavesM": 16.93,
+     "eavesRow": 85,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.07,
+      "topWidthM": 0.38,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.155,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.95,
+       "widthM": 0.95,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "ground": {
+     "shopfront": {
+      "colour": "#443b33",
+      "fascia": true,
+      "name": "HaptoMotion",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, kantoorfunctie, woonfunctie, healthcare=physiotherapist); fascia colour measured on the strip 2023-01-02 span 486-726"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#5c5047",
+     "evidence": "strip 2023-01-02 span 486-726: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "notes": [
+    "crown overhang: reviewer pin (strip 2023-01-02: a deep flat overhang with a white fascia over the whole row, its brown soffit at 15.1 m over the attic lights)"
+   ],
+   "likeness": {
+    "pandId": "0363100012110430",
+    "ncc": 0.264,
+    "nccRaw": 0.264,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#5c5047",
+     "model": "#75665b",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.374
+   },
+   "challengers": {
+    "indisch-1926-attic-lights": 0.264
+   }
+  },
+  {
+   "pandId": "0363100012122437",
+   "address": "Niasstraat 7",
+   "builtYear": 1926,
+   "widthM": 6,
+   "eavesM": 14.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a4f46",
+    "wallRaw": "#645547",
+    "skyline": {
+     "eavesM": 16.65,
+     "eavesRow": 96,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 2.33,
+      "topWidthM": 0.05,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.217,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.8,
+       "widthM": 1.3,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "measuredPalette": {
+     "brick": "#5a4f46",
+     "evidence": "strip 2023-01-02 span 726-966: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "notes": [
+    "crown overhang: reviewer pin (strip 2023-01-02: a deep flat overhang with a white fascia over the whole row, its brown soffit at 15.1 m over the attic lights)"
+   ],
+   "likeness": {
+    "pandId": "0363100012122437",
+    "ncc": 0.292,
+    "nccRaw": 0.292,
+    "shiftM": [
+     0.2,
+     -0.4
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.15",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#5a4e46",
+     "model": "#73655a",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.22,
+     "model": 0.29
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.406
+   },
+   "challengers": {
+    "indisch-1926-attic-lights": 0.292
+   }
+  },
+  {
+   "pandId": "0363100012131529",
+   "address": "Niasstraat 7F",
+   "builtYear": 1926,
+   "widthM": 6,
+   "eavesM": 14.71,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695a4b",
+    "wallRaw": "#5d4e40",
+    "skyline": {
+     "eavesM": 17.32,
+     "eavesRow": 69,
+     "confidence": 0.73,
+     "crown": {
+      "widthM": 1.73,
+      "riseM": 1.73,
+      "topWidthM": 0.82,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.164,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#695a4b",
+     "evidence": "strip 2023-01-02 span 966-1206: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "notes": [
+    "crown overhang: reviewer pin (strip 2023-01-02: a deep flat overhang with a white fascia over the whole row, its brown soffit at 15.1 m over the attic lights)"
+   ],
+   "likeness": {
+    "pandId": "0363100012131529",
+    "ncc": 0.323,
+    "nccRaw": 0.323,
+    "shiftM": [
+     0.05,
+     -0.4
+    ],
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#66574a",
+     "model": "#82705d",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.28
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.448
+   },
+   "challengers": {
+    "indisch-1926-attic-lights": 0.323
+   }
+  },
+  {
+   "pandId": "0363100012079465",
+   "address": "Niasstraat 11",
+   "builtYear": 1926,
+   "widthM": 6,
+   "eavesM": 14.71,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a4e47",
+    "wallRaw": "#695949",
+    "skyline": {
+     "eavesM": 16.13,
+     "eavesRow": 117,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.17,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#5a4e47",
+     "evidence": "strip 2023-01-02 span 1206-1446: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "notes": [
+    "crown overhang: reviewer pin (strip 2023-01-02: a deep flat overhang with a white fascia over the whole row, its brown soffit at 15.1 m over the attic lights)"
+   ],
+   "likeness": {
+    "pandId": "0363100012079465",
+    "ncc": 0.27,
+    "nccRaw": 0.27,
+    "shiftM": [
+     0.4,
+     -0.4
+    ],
+    "usable": 0.84,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.386 < 0.45"
+    ],
+    "wall": {
+     "photo": "#5c514a",
+     "model": "#73645b",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.2,
+     "model": 0.28
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.386
+   },
+   "challengers": {
+    "indisch-1926-attic-lights": 0.27
+   }
+  },
+  {
+   "pandId": "0363100012125631",
+   "address": "Niasstraat 13",
+   "builtYear": 1926,
+   "widthM": 6.15,
+   "eavesM": 14.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b5c50",
+    "wallRaw": "#6c5a48",
+    "skyline": {
+     "eavesM": 15.95,
+     "eavesRow": 124,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.129,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1925-stair-pair",
+    "score": 0.5
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "ground": {
+     "shopfront": {
+      "colour": "#5b4d3e",
+      "fascia": true,
+      "name": "Yeung",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, kantoorfunctie, woonfunctie, healthcare=alternative); fascia colour measured on the strip 2023-01-02 span 1446-1692"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#6b5c50",
+     "evidence": "strip 2023-01-02 span 1446-1692: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "notes": [
+    "crown overhang: reviewer pin (strip 2023-01-02: a deep flat overhang with a white fascia over the whole row, its brown soffit at 15.1 m over the attic lights)"
+   ],
+   "likeness": {
+    "pandId": "0363100012125631",
+    "ncc": 0.272,
+    "nccRaw": 0.272,
+    "shiftM": [
+     0.15,
+     -0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.14",
+     "glazing storey band off by 0.27 mean 0.33 vs photo 0.13"
+    ],
+    "wall": {
+     "photo": "#594e45",
+     "model": "#837162",
+     "dL": 0.139
+    },
+    "glazing": {
+     "photo": 0.13,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.201
+   },
+   "challengers": {
+    "indisch-1926-attic-lights": 0.272
+   }
+  }
+ ]
+}

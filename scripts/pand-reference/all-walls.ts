@@ -2,7 +2,7 @@
  * One street-level reference per exposed wall of a pand (the stock run.ts keeps only the front).
  *
  *   npx tsx scripts/pand-reference/all-walls.ts --pand=0363100012186086 [--min-len=14] [--max=8] [--out=staging/pand-reference-walls] [--archive]
- *     [--date=2019,2022-05] [--exclude-date=2024-12-11] [--exclude-pano=<id>,...] [--segment=30] [--walls=1,4] [--suffix=d19] [--min-dist=5]
+ *     [--date=2019,2022-05] [--exclude-date=2024-12-11] [--exclude-pano=<id>,...] [--segment=30] [--walls=1,4] [--suffix=d19] [--min-dist=5] [--max-dist=60]
  *
  * For each exposed (non-party) wall >= min-len metres: the best panorama within 35 m (same ranking as run.ts), a
  * rectified straight-on crop and an aimed thumbnail, written to <out>/<pand>/w<NN>-<bearing>.{jpg,thumb.jpg} and
@@ -18,7 +18,8 @@
  * Another capture day or a long wall (panoPick.ts): `--date=` keeps only panoramas whose timestamp starts with one of
  * the prefixes, `--exclude-date=` / `--exclude-pano=` drop them; `--segment=<m>` cuts walls longer than that into equal
  * pieces with a panorama each (tags `w01-67s1`, `s2`, ...); `--walls=` limits the run to those wall numbers (the NN of
- * the tag); `--suffix=` appends to every tag; `--min-dist=` lets a camera stand nearer than 5 m (a narrow street). Runs with any of `--segment`, `--walls`, `--suffix` merge into the
+ * the tag); `--suffix=` appends to every tag; `--min-dist=` lets a camera stand nearer than 5 m (a narrow street); `--max-dist=` lets it stand further than 35 m (a
+ * front set back behind a lawn or a cycle park, the 1967 Rietveld building 45-55 m from Fred. Roeskestraat). Runs with any of `--segment`, `--walls`, `--suffix` merge into the
  * existing walls.json (rows of the same tag replaced, the rest kept); without them the output is as before.
  */
 import fs from 'node:fs/promises';
@@ -26,7 +27,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import sharp from 'sharp';
 import { findPands, neighbourhood, normId, rdToLngLat } from './core.ts';
-import { exposedWalls, listPanos, rankPanos } from './select.ts';
+import { exposedWalls, FACADE_WINDOW, listPanos, rankPanos } from './select.ts';
 import { loadPano, rectifyWall, aimedThumbnail } from './rectify.ts';
 import { filterPanos, mergeWallRows, parsePanoFilter, segmentTag, segmentWall } from '../../src/canalRecall/buildingRecipe/panoPick.ts';
 
@@ -42,7 +43,7 @@ if (!fp) throw new Error(`pand not in building tiles: ${pand}`);
 const centre = { x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length };
 const walls = exposedWalls(fp, await neighbourhood(centre)).filter(w => w.len >= minLen).sort((a, b) => b.len - a.len).slice(0, max);
 const panoFilter = parsePanoFilter(process.argv), segM = Number(arg('segment', '0')), suffix = arg('suffix');
-const minDist = Number(arg('min-dist', '5'));
+const minDist = Number(arg('min-dist', '5')), maxDist = Number(arg('max-dist', '0'));
 const onlyWalls = arg('walls').split(',').filter(Boolean).map(Number);
 const merging = segM > 0 || onlyWalls.length > 0 || suffix !== '';
 const rows: any[] = [], rerun: string[] = [];
@@ -55,7 +56,7 @@ for (const whole of walls) {
   rerun.push(wallTag);
   for (const w of segmentWall(whole, segM)) {
   const tag = segmentTag(wallTag, w.segment, suffix);
-  const ranked = filterPanos(rankPanos(w, await listPanos(w.mid), minDist), panoFilter);
+  const ranked = filterPanos(rankPanos(w, await listPanos(w.mid, maxDist > 35 ? Math.ceil(maxDist) : 35), maxDist > 35 ? { ...FACADE_WINDOW, minD: minDist, maxD: maxDist } : minDist), panoFilter);
   const [lng, lat] = rdToLngLat(w.mid);
   const base: any = { bearing, lengthM: Math.round(w.len * 10) / 10, centre: [lng, lat], height: fp.height, candidates: ranked.length,
     wallRD: { a: [r2(w.a.x), r2(w.a.y)], b: [r2(w.b.x), r2(w.b.y)], normal: [r4(w.nx), r4(w.ny)] } };

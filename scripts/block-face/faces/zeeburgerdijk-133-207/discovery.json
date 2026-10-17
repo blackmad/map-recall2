@@ -1,0 +1,1050 @@
+{
+ "street": "Zeeburgerdijk",
+ "seed": "0363100012096397",
+ "members": [
+  "0363100012096397",
+  "0363100012100806",
+  "0363100012090264",
+  "0363100012103933",
+  "0363100012107029",
+  "0363100012125663",
+  "0363100012136055"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012184243 47.3 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012136055 (face continues: 073872 091468 080525 147732 105497 119753)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062384",
+   "reason": "frontage 146.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012062429",
+   "reason": "frontage 127.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012062527",
+   "reason": "frontage 120.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012063047",
+   "reason": "frontage 98.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012063800",
+   "reason": "frontage 54.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012065784",
+   "reason": "frontage 54.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012066054",
+   "reason": "frontage 69.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012066664",
+   "reason": "frontage 144.3 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012066697",
+   "reason": "frontage 86.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012068591",
+   "reason": "frontage 87.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012069113",
+   "reason": "frontage 126.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012069173",
+   "reason": "frontage 167.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012069682",
+   "reason": "frontage 63.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012069771",
+   "reason": "frontage 142.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012069863",
+   "reason": "frontage 179.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012070098",
+   "reason": "frontage 80.3 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012072464",
+   "reason": "frontage 145.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012072833",
+   "reason": "frontage 115.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012073042",
+   "reason": "frontage 99.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012074338",
+   "reason": "frontage 124.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012075008",
+   "reason": "frontage 146.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012077761",
+   "reason": "frontage 109.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012078026",
+   "reason": "frontage 127.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012078287",
+   "reason": "frontage 144.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012078916",
+   "reason": "frontage 60.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012079210",
+   "reason": "frontage 86.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012079465",
+   "reason": "frontage 99.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012079555",
+   "reason": "frontage 84.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012080763",
+   "reason": "frontage 130.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012081321",
+   "reason": "frontage 115.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012062819",
+   "reason": "frontage 145.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012063372",
+   "reason": "frontage 94.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012066206",
+   "reason": "frontage 98.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012067077",
+   "reason": "frontage 94.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012068972",
+   "reason": "frontage 94.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012070563",
+   "reason": "frontage 144.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012070662",
+   "reason": "frontage 45.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012073196",
+   "reason": "frontage 36.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012073326",
+   "reason": "frontage 94.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012073612",
+   "reason": "frontage 91.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012074712",
+   "reason": "frontage 63.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012075561",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012105367"
+  },
+  {
+   "pandId": "0363100012077529",
+   "reason": "frontage 40.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012077692",
+   "reason": "frontage 133.3 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012082255",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012066931"
+  },
+  {
+   "pandId": "0363100012082284",
+   "reason": "frontage 61.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012084282",
+   "reason": "frontage 86.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012084401",
+   "reason": "frontage 143.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012087575",
+   "reason": "frontage 145.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012088701",
+   "reason": "frontage 80.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012089626",
+   "reason": "frontage 143.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012090617",
+   "reason": "frontage 86.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012091656",
+   "reason": "frontage 167.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012092089",
+   "reason": "frontage 75.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012092864",
+   "reason": "frontage 81.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012092960",
+   "reason": "frontage 99.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012093121",
+   "reason": "frontage 40.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012093257",
+   "reason": "frontage 145.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012093268",
+   "reason": "frontage 54.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012093828",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012081365"
+  },
+  {
+   "pandId": "0363100012094001",
+   "reason": "frontage 86.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012094377",
+   "reason": "frontage 86.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012095414",
+   "reason": "frontage 131.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012095455",
+   "reason": "frontage 43.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012096412",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012081365"
+  },
+  {
+   "pandId": "0363100012097481",
+   "reason": "frontage 86.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012098028",
+   "reason": "frontage 86.3 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012099261",
+   "reason": "frontage 98.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012099953",
+   "reason": "frontage 146.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012100391",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012066931"
+  },
+  {
+   "pandId": "0363100012100535",
+   "reason": "frontage 87.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012082819",
+   "reason": "frontage 43.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012082972",
+   "reason": "frontage 40.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012083083",
+   "reason": "frontage 167.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012089422",
+   "reason": "frontage 123.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012090942",
+   "reason": "frontage 30.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012092915",
+   "reason": "frontage 75.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012093374",
+   "reason": "frontage 68.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012093577",
+   "reason": "frontage 55.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012093771",
+   "reason": "frontage 83.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012095325",
+   "reason": "frontage 94.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012095922",
+   "reason": "frontage 94.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012095980",
+   "reason": "frontage 82.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012101053",
+   "reason": "frontage 31.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012101136",
+   "reason": "frontage 177.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012102408",
+   "reason": "frontage 144.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012102563",
+   "reason": "frontage 84.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012102866",
+   "reason": "frontage 99.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012104158",
+   "reason": "frontage 59.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012104592",
+   "reason": "frontage 75.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012106655",
+   "reason": "frontage 36.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012107809",
+   "reason": "frontage 109.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012108175",
+   "reason": "frontage 177.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012108270",
+   "reason": "frontage 176.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012108617",
+   "reason": "frontage 120.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012108941",
+   "reason": "frontage 92.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012109433",
+   "reason": "frontage 127.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012109726",
+   "reason": "frontage 170.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012110044",
+   "reason": "frontage 124.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012110430",
+   "reason": "frontage 95.3 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012110582",
+   "reason": "frontage 93.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012111204",
+   "reason": "frontage 104.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012111959",
+   "reason": "frontage 142.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012113301",
+   "reason": "frontage 137.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012113411",
+   "reason": "frontage 76.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012113498",
+   "reason": "frontage 63.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012113540",
+   "reason": "frontage 127.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012115019",
+   "reason": "frontage 43.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012115631",
+   "reason": "frontage 144.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012115870",
+   "reason": "frontage 145.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012100639",
+   "reason": "frontage 92.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012101409",
+   "reason": "frontage 167.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012104063",
+   "reason": "frontage 82.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012107819",
+   "reason": "frontage 98.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012108442",
+   "reason": "frontage 86.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012112372",
+   "reason": "frontage 167.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012113567",
+   "reason": "frontage 80.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012114783",
+   "reason": "frontage 75.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012116066",
+   "reason": "frontage 178.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012116980",
+   "reason": "frontage 49.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012117117",
+   "reason": "frontage 123.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012117530",
+   "reason": "frontage 126.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012118700",
+   "reason": "frontage 54.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012121865",
+   "reason": "frontage 92.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012122011",
+   "reason": "frontage 139.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012122436",
+   "reason": "frontage 124.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012122437",
+   "reason": "frontage 99.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012122926",
+   "reason": "frontage 103.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012122980",
+   "reason": "frontage 131.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012123289",
+   "reason": "frontage 79.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012123753",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012096113"
+  },
+  {
+   "pandId": "0363100012124171",
+   "reason": "frontage 92.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012125352",
+   "reason": "frontage 86.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012125421",
+   "reason": "frontage 124.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012125631",
+   "reason": "frontage 99.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012125682",
+   "reason": "frontage 133.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012125701",
+   "reason": "frontage 173.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012125885",
+   "reason": "frontage 65.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012127733",
+   "reason": "frontage 90.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012128109",
+   "reason": "frontage 31.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012128311",
+   "reason": "frontage 68.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012129720",
+   "reason": "frontage 104.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012130744",
+   "reason": "frontage 90.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012131182",
+   "reason": "frontage 136.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012131435",
+   "reason": "frontage 83.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012131518",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012093463"
+  },
+  {
+   "pandId": "0363100012131529",
+   "reason": "frontage 99.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012131679",
+   "reason": "frontage 98.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012131890",
+   "reason": "frontage 49.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012131961",
+   "reason": "frontage 81.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012135603",
+   "reason": "frontage 145.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012136122",
+   "reason": "frontage 93.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012136282",
+   "reason": "frontage 137.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012136784",
+   "reason": "frontage 43.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012138844",
+   "reason": "frontage 171.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012139109",
+   "reason": "frontage 40.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012122695",
+   "reason": "frontage 94.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012123849",
+   "reason": "frontage 40.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012126852",
+   "reason": "frontage 30.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012129829",
+   "reason": "frontage 62.3 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012131909",
+   "reason": "frontage 139.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012135404",
+   "reason": "frontage 88.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012137316",
+   "reason": "frontage 88.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012137717",
+   "reason": "frontage 75.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012138107",
+   "reason": "frontage 98.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012139392",
+   "reason": "frontage 103.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012140052",
+   "reason": "frontage 86.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012140561",
+   "reason": "frontage 127.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012140581",
+   "reason": "frontage 124.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012144103",
+   "reason": "frontage 124.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012145454",
+   "reason": "frontage 137.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012146592",
+   "reason": "frontage 145.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012147120",
+   "reason": "frontage 30.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012147329",
+   "reason": "frontage 55.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012148092",
+   "reason": "frontage 177.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012148300",
+   "reason": "frontage 76.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012148427",
+   "reason": "frontage 145.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012148852",
+   "reason": "frontage 74.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012149087",
+   "reason": "frontage 99.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012149503",
+   "reason": "frontage 177.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012149516",
+   "reason": "frontage 69.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012150368",
+   "reason": "frontage 131.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012151134",
+   "reason": "frontage 177.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012153044",
+   "reason": "frontage 86.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012154579",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012093463"
+  },
+  {
+   "pandId": "0363100012156742",
+   "reason": "frontage 144.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012157905",
+   "reason": "frontage 176.3 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012158066",
+   "reason": "frontage 141.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012162772",
+   "reason": "frontage 140.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012164750",
+   "reason": "frontage 157.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012184280",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012115009"
+  },
+  {
+   "pandId": "0363100012185934",
+   "reason": "frontage 165.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012187907",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012079497"
+  },
+  {
+   "pandId": "0363100012197651",
+   "reason": "frontage 177.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012200722",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012128496"
+  },
+  {
+   "pandId": "0363100012200723",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012107709"
+  },
+  {
+   "pandId": "0363100012144300",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012100172"
+  },
+  {
+   "pandId": "0363100012146333",
+   "reason": "frontage 98.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012147379",
+   "reason": "frontage 144.3 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012147474",
+   "reason": "frontage 58.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012147632",
+   "reason": "frontage 96.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012153975",
+   "reason": "frontage 144.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012161696",
+   "reason": "frontage 139.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012162384",
+   "reason": "frontage 83.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012163722",
+   "reason": "frontage 83.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012185380",
+   "reason": "frontage 129.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012191700",
+   "reason": "frontage 144.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012191701",
+   "reason": "frontage 144.3 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012212092",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012116590"
+  },
+  {
+   "pandId": "0363100012212093",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012107709"
+  },
+  {
+   "pandId": "0363100012230054",
+   "reason": "frontage 142.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012233909",
+   "reason": "frontage 143.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012235221",
+   "reason": "frontage 145.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012235222",
+   "reason": "frontage 144.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012240312",
+   "reason": "frontage 84.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012248158",
+   "reason": "frontage 30.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012249646",
+   "reason": "frontage 55.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012239866",
+   "reason": "frontage 84.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012241861",
+   "reason": "frontage 81.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012066931",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012081365",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012081366",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012093463",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094122",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095234",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096113",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092612",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100172",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012102359",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012106412",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012107948",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103629",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105367",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120831",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125128",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147131",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236071",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012243265",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012096397",
+   "alongM": 0,
+   "widthM": 20,
+   "eavesM": 8.1,
+   "roofMaxM": 16.1,
+   "storeys3dbag": 4,
+   "builtYear": 1972,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012100806",
+   "alongM": 17.44,
+   "widthM": 14.89,
+   "eavesM": 7.18,
+   "roofMaxM": 15.3,
+   "storeys3dbag": 4,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012090264",
+   "alongM": 32.39,
+   "widthM": 15,
+   "eavesM": 7.2,
+   "roofMaxM": 15.32,
+   "storeys3dbag": 4,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012103933",
+   "alongM": 47.39,
+   "widthM": 15,
+   "eavesM": 7.49,
+   "roofMaxM": 16.63,
+   "storeys3dbag": 4,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012107029",
+   "alongM": 62.39,
+   "widthM": 15,
+   "eavesM": 7.63,
+   "roofMaxM": 11.15,
+   "storeys3dbag": 4,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012125663",
+   "alongM": 77.39,
+   "widthM": 15,
+   "eavesM": 7.59,
+   "roofMaxM": 11.16,
+   "storeys3dbag": 4,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012136055",
+   "alongM": 92.39,
+   "widthM": 15,
+   "eavesM": 7.55,
+   "roofMaxM": 11.17,
+   "storeys3dbag": 3,
+   "builtYear": 1927,
+   "uncertainty": []
+  }
+ ]
+}

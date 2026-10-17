@@ -1,0 +1,246 @@
+{
+ "street": "Niasstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:36:12.336Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012140581",
+   "addresses": [
+    "Niasstraat 14A",
+    "Niasstraat 14B",
+    "Niasstraat 14C",
+    "Niasstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000749611"
+    },
+    {
+     "address": "Niasstraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000749612"
+    },
+    {
+     "address": "Niasstraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000749613"
+    },
+    {
+     "address": "Niasstraat 16",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000749618"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830020935,
+     "lngLat": [
+      4.9402975,
+      52.364923
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16",
+      "addr:postcode": "1095VA",
+      "addr:street": "Niasstraat",
+      "amenity": "restaurant",
+      "cuisine": "pizza",
+      "name": "Ela Palermo",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.elapalermo.nl/"
+     },
+     "fetchedAt": "2026-10-17T07:36:12.336Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012144103",
+   "addresses": [
+    "Niasstraat 12B",
+    "Niasstraat 12C",
+    "Niasstraat 12D",
+    "Niasstraat 12A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000749604"
+    },
+    {
+     "address": "Niasstraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000749605"
+    },
+    {
+     "address": "Niasstraat 12D",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000749606"
+    },
+    {
+     "address": "Niasstraat 12A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012070883"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012122436",
+   "addresses": [
+    "Niasstraat 8A",
+    "Niasstraat 8B",
+    "Niasstraat 8C",
+    "Niasstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000749592"
+    },
+    {
+     "address": "Niasstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000749593"
+    },
+    {
+     "address": "Niasstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000749594"
+    },
+    {
+     "address": "Niasstraat 10",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000749599"
+    },
+    {
+     "address": "Niasstraat 10",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012070882"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830012959,
+     "lngLat": [
+      4.9401243,
+      52.364921
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "10",
+      "addr:postcode": "1095VA",
+      "addr:street": "Niasstraat",
+      "name": "Avondwinkel John",
+      "shop": "convenience",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-17T07:36:12.336Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012074338",
+   "addresses": [
+    "Niasstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000749584"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125421",
+   "addresses": [
+    "Niasstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000749576"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110044",
+   "addresses": [
+    "Niasstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 33",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000745462"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830031527,
+     "lngLat": [
+      4.9397427,
+      52.3649261
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "33",
+      "addr:postcode": "1095AT",
+      "addr:street": "Molukkenstraat",
+      "amenity": "bar",
+      "name": "Joost",
+      "opening_hours": "Mo-Th 15:00-01:00, Fr,Sa 15:00-03:00, Su 15:00-01:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.facebook.com/debarvanjoost",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-17T07:36:12.336Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

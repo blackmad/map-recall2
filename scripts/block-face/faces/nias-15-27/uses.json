@@ -1,0 +1,158 @@
+{
+ "street": "Niasstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:38:51.452Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012149087",
+   "addresses": [
+    "Niasstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 15-H",
+     "use": "industriefunctie",
+     "areaM2": 55,
+     "bagId": "0363010000749614"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830020124,
+     "lngLat": [
+      4.9405731,
+      52.3651231
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "15-1",
+      "addr:postcode": "1095TT",
+      "addr:street": "Niasstraat",
+      "male": "yes",
+      "name": "Kapsalon Zaid",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-17T07:38:51.452Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4732632310,
+     "lngLat": [
+      4.9405863,
+      52.3650354
+     ],
+     "tags": {
+      "amenity": "waste_disposal"
+     },
+     "fetchedAt": "2026-10-17T07:38:51.452Z",
+     "match": "frontage",
+     "distanceM": 6.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012092960",
+   "addresses": [
+    "Niasstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000749619"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131679",
+   "addresses": [
+    "Niasstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000749625"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066206",
+   "addresses": [
+    "Niasstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 21-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000749629"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012146333",
+   "addresses": [
+    "Niasstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000749634"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138107",
+   "addresses": [
+    "Niasstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000749638"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107819",
+   "addresses": [
+    "Niasstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000749643"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
