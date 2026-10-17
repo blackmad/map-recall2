@@ -84,9 +84,6 @@ export const paperTheme = {
   ochre: enamelTheme.rivet,
 } as const;
 
-export type PaperTheme = typeof paperTheme;
-export type EnamelTheme = typeof enamelTheme;
-
 /** Card fills carry alpha so the map stays legible underneath. A HUD card that
  *  is fully opaque hides the corridor it is supposed to be annotating.
  *

@@ -211,8 +211,6 @@ export function rasteriseWall(
   return { frame, cellSize, columns, rows, bottomUp: bottomLimit, planeOffset, pointCount: slab.length, cells, byIndex };
 }
 
-export type WallElement = 'wall' | 'recessed' | 'protruding';
-
 export interface WallRasterClassification {
   wall: WallRasterCell[];
   recessed: WallRasterCell[];
@@ -334,22 +332,4 @@ export function simplifyPolyline(points: readonly (readonly [number, number])[],
   const left = simplifyPolyline(points.slice(0, index + 1), tolerance);
   const right = simplifyPolyline(points.slice(index), tolerance);
   return [...left.slice(0, -1), ...right];
-}
-
-/** Mean depth per column, useful for locating vertical bays and piers. */
-export function columnDepthProfile(raster: WallRaster): number[] {
-  const sums = new Array<number>(raster.columns).fill(0);
-  const counts = new Array<number>(raster.columns).fill(0);
-  for (const cell of raster.cells) {
-    sums[cell.column] += cell.meanDepth;
-    counts[cell.column] += 1;
-  }
-  return sums.map((sum, column) => (counts[column] ? sum / counts[column] : Number.NaN));
-}
-
-/** Median height per row, useful for locating storey bands and the eaves. */
-export function rowHeightProfile(raster: WallRaster): Array<number | null> {
-  const values: number[][] = Array.from({ length: raster.rows }, () => []);
-  for (const cell of raster.cells) values[cell.row].push(cell.height);
-  return values.map((row) => (row.length ? median(row) : null));
 }

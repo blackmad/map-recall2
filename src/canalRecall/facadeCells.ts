@@ -455,24 +455,6 @@ export function paintAllCells(): Uint8ClampedArray {
   return out;
 }
 
-/**
- * The procedural cells as the two arrays the shader samples: RGBA colour and
- * an RG tint mask (R = wall tint weight, G = accent, unused here), the same
- * layout the bay looks use, so one shader serves every look.
- */
-export function paintProceduralLayers(extra: Uint8ClampedArray[] = []): { layers: number; colour: Uint8Array; mask: Uint8Array } {
-  const base = paintAllCells(), layerBytes = CELL_PX * CELL_PX * 4;
-  const all = new Uint8ClampedArray(base.length + extra.length * layerBytes);
-  all.set(base); extra.forEach((cell, i) => all.set(cell, base.length + i * layerBytes));
-  const total = CELL_LAYER_COUNT + extra.length, pixels = CELL_PX * CELL_PX * total;
-  const colour = new Uint8Array(pixels * 4), mask = new Uint8Array(pixels * 2);
-  for (let i = 0; i < pixels; i++) {
-    colour[i * 4] = all[i * 4]; colour[i * 4 + 1] = all[i * 4 + 1]; colour[i * 4 + 2] = all[i * 4 + 2]; colour[i * 4 + 3] = 255;
-    mask[i * 2] = all[i * 4 + 3]; mask[i * 2 + 1] = 0;
-  }
-  return { layers: total, colour, mask };
-}
-
 /** Original continuous brick cell for Fatih's existing 5 m / 3.1 m kit UVs.
  * Course/brick sizes are display approximations, not survey measurements. */
 export function paintFatihMasonryCell(): Uint8ClampedArray {

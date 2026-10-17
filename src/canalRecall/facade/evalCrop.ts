@@ -164,11 +164,6 @@ export function r1PixelsPerMetre(wall: Pick<FacadeWallEvidence, 'standoff' | 'ob
   return Math.max(FULL_TIER_PIXELS_PER_METRE, r1NativePixelsPerMetre(wall));
 }
 
-/** True when R1 resolves to a higher-resolution render than the cached R0 strip. */
-export function r1BeatsR0(wall: Pick<FacadeWallEvidence, 'standoff' | 'obliquity'>): boolean {
-  return r1PixelsPerMetre(wall) > FULL_TIER_PIXELS_PER_METRE;
-}
-
 /** Path to a cached strip: `<evidenceDir>/images/<file>`. Pure string join. */
 export function r0ImagePath(evidenceDir: string, file: string): string {
   const base = evidenceDir.replace(/[/\\]+$/, '');

@@ -118,48 +118,6 @@ const SIDE_INK_CLEAR = 6;
 
 type Bounds = { minX: number; minY: number; maxX: number; maxY: number };
 
-/** Untransformed content box: glyph faces + extrusion + outline pad. */
-export function measureLetterContentBounds(layout: Pick<
-  LargeLetterPostcardLayout,
-  'glyphs' | 'nameFontSize' | 'extrusionSteps' | 'extrusionDx' | 'extrusionDy' | 'outlineWidth'
->): Bounds {
-  const ascent = layout.nameFontSize * 0.82;
-  const descent = layout.nameFontSize * 0.1;
-  const pad = layout.outlineWidth + 2;
-  const steps = layout.extrusionSteps;
-  let minX = Infinity;
-  let minY = Infinity;
-  let maxX = -Infinity;
-  let maxY = -Infinity;
-  for (const g of layout.glyphs) {
-    if (g.char === ' ' || g.char === '-') continue;
-    const xs = [
-      g.x,
-      g.x + g.width,
-      g.x + steps * layout.extrusionDx,
-      g.x + g.width + steps * layout.extrusionDx,
-    ];
-    const ys = [
-      g.baselineY - ascent,
-      g.baselineY + descent,
-      g.baselineY - ascent + steps * layout.extrusionDy,
-      g.baselineY + descent + steps * layout.extrusionDy + 3,
-    ];
-    for (const x of xs) {
-      minX = Math.min(minX, x - pad);
-      maxX = Math.max(maxX, x + pad);
-    }
-    for (const y of ys) {
-      minY = Math.min(minY, y);
-      maxY = Math.max(maxY, y);
-    }
-  }
-  if (!Number.isFinite(minX)) {
-    return { minX: 0, minY: 0, maxX: 0, maxY: 0 };
-  }
-  return { minX, minY, maxX, maxY };
-}
-
 function applyPaintTransform(
   x: number,
   y: number,
