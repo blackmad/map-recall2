@@ -24,7 +24,7 @@ import {
   ROUTE_POI_MAX_PAIR_KM,
   type RoutePoi,
 } from '../src/canalRecall/game/routeSelection';
-import { A_LIST, isAList, notabilityScore } from '../src/canalRecall/game/poiNotability';
+import { A_LIST, isAList, NOTABILITY_TEMPERATURE, notabilityScore, notabilityWeight } from '../src/canalRecall/game/poiNotability';
 import type { LandmarkFeature } from '../src/canalRecall/game/extracts';
 
 const AMS = CANAL_CITIES.amsterdam;
@@ -151,6 +151,29 @@ for (const name of MUST_BE_OFFERED) {
 // The A-list is the hand-curated reference; keep it large enough to satisfy
 // the gate and the must-be-offered trio.
 assert.ok(A_LIST.length >= MIN_ALIST_IN_TOP_20, 'the A-list must stay large enough to satisfy the gate');
+
+// Variety: the sampler is a softmax over notability, so measure what a player
+// actually gets — the most likely pick's share, the effective number of
+// distinct destinations (1/Σp²), and the A-list share of picks.
+for (const temperature of [2, NOTABILITY_TEMPERATURE, 4, 6]) {
+  const weights = ranked.map(entry => notabilityWeight(entry.notability, temperature));
+  const total = weights.reduce((a, b) => a + b, 0);
+  const p = weights.map(w => w / total);
+  const top1 = Math.max(...p);
+  const effective = 1 / p.reduce((a, b) => a + b * b, 0);
+  const alistShare = p.reduce((a, b, i) => a + (ranked[i].alist ? b : 0), 0);
+  if (temperature === NOTABILITY_TEMPERATURE) {
+    assert.ok(top1 <= 0.08, `one destination takes ${(top1 * 100).toFixed(1)}% of picks from Dam Square`);
+    assert.ok(effective >= 30, `picks collapse onto ${effective.toFixed(1)} effective destinations (want >= 30)`);
+    assert.ok(alistShare >= 0.75, `A-list gets only ${(alistShare * 100).toFixed(0)}% of picks (want >= 75%)`);
+  }
+  if (temperature === NOTABILITY_TEMPERATURE) {
+    assert.ok(top1 <= 0.08, `one destination takes ${(top1 * 100).toFixed(1)}% of picks from Dam Square`);
+    assert.ok(effective >= 30, `picks collapse onto ${effective.toFixed(1)} effective destinations (want >= 30)`);
+    assert.ok(alistShare >= 0.75, `A-list gets only ${(alistShare * 100).toFixed(0)}% of picks (want >= 75%)`);
+  }
+  process.stdout.write(`T=${temperature}: top pick ${(top1 * 100).toFixed(1)}%, effective ${effective.toFixed(1)} of ${ranked.length}, A-list share ${(alistShare * 100).toFixed(0)}%\n`);
+}
 
 console.log(`\nPOI notability OK: top-20 from Dam Square has ${afterAlist} A-list landmarks ` +
   `(${MUST_BE_OFFERED.join(', ')} present); before the change the prominence order had ${beforeAlist}.`);

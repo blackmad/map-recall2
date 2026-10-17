@@ -218,7 +218,7 @@ export function notabilityScore(poi: PoiNotability): number {
 }
 
 /** Temperature for the softmax-style pick weight: higher = more variety. */
-export const NOTABILITY_TEMPERATURE = 2;
+export const NOTABILITY_TEMPERATURE = 3;
 
 /** Expected pick weight for weighted sampling by notability. */
 export function notabilityWeight(score: number, temperature = NOTABILITY_TEMPERATURE): number {
