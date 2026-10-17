@@ -1565,6 +1565,14 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Full e2e on CI (2026-10-17, HISTORY "CI green again")**: the suite runs
+  nightly in `e2e-full.yml`; triage its first full report. On the 09:21 run it
+  failed in askable-bridges (Noordsche Compagniebrug, Vingboomsbrug),
+  answered-street-name, block-face (28 lines), building-click-perf, bag-tiles,
+  bike-* and bridge-* specs before the timeout; likely software-rendering and
+  timing on hosted runners as much as real regressions. The web server also
+  logs an unresolved `@sparkjsdev/spark` import from sculpture-splat-demo.html.
+
 - **Low-colour brick re-measure (2026-10-17, HISTORY "Tropenmuseum brick")**:
   19 catalogue landmarks have a brick in the same tan band (Lab hue 55-100,
   chroma < 20) and may carry a sun reading: kesbeke, kesbeke-shop,
