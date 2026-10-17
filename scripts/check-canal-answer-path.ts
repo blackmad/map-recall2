@@ -56,7 +56,7 @@ const novel = submitAnswer({
   revealName() {},
 });
 assert.equal(novel.points, 115, 'a new-street answer earns the stated bounded multiplier');
-assert.match(novel.feedback, /1\.15× new street/, 'the bonus is explained where points are awarded');
+assert.match(novel.feedback, /new name bonus/, 'the bonus is explained where points are awarded');
 
 const cycle = submitAnswer({
   correctName: 'Nes', answer: 'Nes',
@@ -74,7 +74,7 @@ const both = submitAnswer({
   revealName() {},
 });
 assert.equal(both.points, 127, 'novelty and cycle-track stack without exceeding a sensible product');
-assert.match(both.feedback, /new · cycle track/);
+assert.match(both.feedback, /new name \+ cycle track/);
 
 const calmNovel = submitAnswer({
   correctName: 'Nes', answer: 'Nes',

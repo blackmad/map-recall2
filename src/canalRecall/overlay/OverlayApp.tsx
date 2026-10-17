@@ -9,6 +9,7 @@ import {
   type ZoomClamp,
 } from '../game/preferences.ts';
 import { missionBrief } from '../game/missionBrief.ts';
+import { difficultyGloss } from '../game/setupCopy.ts';
 import {
   loadKnowledgeReview,
   type KnowledgeItem,
@@ -120,6 +121,7 @@ function ChoiceRow<T extends string>({
   icons,
   gloss,
   showCurrent = false,
+  keepGloss = false,
 }: {
   label: string;
   name: string;
@@ -133,6 +135,9 @@ function ChoiceRow<T extends string>({
   gloss?: string;
   /** Show the selected option title beside the section label (helps icon-only rows). */
   showCurrent?: boolean;
+  /** Keep the gloss on a phone too: it explains the current choice, which an
+   *  icon or a bare level name cannot. */
+  keepGloss?: boolean;
 }) {
   const rowClass = [
     'setup-choice-row',
@@ -150,7 +155,7 @@ function ChoiceRow<T extends string>({
           <span className="setup-choice-current">{currentTitle}</span>
         ) : null}
       </div>
-      {gloss ? <p className="setup-choice-gloss">{gloss}</p> : null}
+      {gloss ? <p className={`setup-choice-gloss${keepGloss ? ' keep' : ''}`} data-gloss={name}>{gloss}</p> : null}
       <div
         className="setup-choice-options"
         style={layout !== 'tiles' ? { gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` } : undefined}
@@ -824,12 +829,26 @@ export function OverlayApp({
               icons={VIEW_ICONS}
               layout="icons"
               showCurrent
+              gloss={VIEW.find(option => option.value === prefs.viewMode)?.hint}
+              keepGloss
             />
             <ChoiceRow
               label="Route"
               name="route"
               value={prefs.routePattern}
-              onChange={value => patch({ routePattern: value })}
+              onChange={value => {
+                patch({ routePattern: value });
+                // The address field opens below Destination, under the fold
+                // on a phone: a Home pick with no address looked like it did
+                // nothing (clarity review 2026-10-17).
+                if (value === 'home' && !prefs.homeAddress.trim()) {
+                  requestAnimationFrame(() => {
+                    const field = document.getElementById('home-address') as HTMLInputElement | null;
+                    field?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+                    field?.focus({ preventScroll: true });
+                  });
+                }
+              }}
               options={ROUTE}
               icons={ROUTE_ICONS}
               layout="strip"
@@ -846,7 +865,8 @@ export function OverlayApp({
               }
               compact
               icons={DIFFICULTY_ICONS}
-              gloss="Naming help. Expert & Custom sit under More options."
+              gloss={difficultyGloss(prefs.difficulty)}
+              keepGloss
             />
 
             <label className="setup-field enamel-field" style={{ marginTop: 10 }}>
