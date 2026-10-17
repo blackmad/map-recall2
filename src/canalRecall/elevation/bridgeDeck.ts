@@ -53,6 +53,8 @@ export interface DeckProfile {
    * off-centre). Undefined elsewhere.
    */
   sides?: [number, number];
+  /** Way decks only (ownGround/wayDecks.ts HOLE_M): station ranges past the water over a hole in the relief (an underpass, its ramps). */
+  under?: [number, number][];
 }
 
 /** An outline this much wider than the road deck on a side widens the deck there (DeckProfile.sides), at most OUTLINE_REACH_MAX_M. */

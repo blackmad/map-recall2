@@ -65,6 +65,67 @@ test('coverage map: buurt panels list faces, types, designs, or say there is not
   await expect.poll(() => page.evaluate(() => (window as any).coveragePage.selected)).not.toBe('NC03');
 });
 
+// User 2026-10-16: "are there any buurts that have their own look/style? could we highlight those and see some examples
+// in coverage.html?buurt=KD02?" Own look = drawn from kit made for that district (house types, measured faces,
+// Nieuw-West building types). EP02 Bellamybuurt-Zuid (house types), FK05 Osdorp-Zuidoost (designs), KD02 (none).
+test('own look: map scheme, list, filter, and examples with kit render, photo, 3D view and ride', async ({ page }, info) => {
+  await page.goto('/canal-drive/coverage.html?buurt=EP02&colour=look');
+  await ready(page);
+  expect(await page.evaluate(() => (window as any).coveragePage.errors)).toEqual([]);
+  const panel = page.locator('#panel');
+  await expect(panel.locator('h2')).toHaveText('Bellamybuurt-Zuid');
+  const look = panel.locator('#sec-look');
+  await expect(look.locator('.badge.own.drawn')).toHaveText('Own look');
+  await expect(look).toContainText(/\d+ of [\d,]+ pands \([\d.]+%\) are drawn from Bellamybuurt house types/);
+  const cards = look.locator('.look-card');
+  expect(await cards.count()).toBeGreaterThanOrEqual(3);
+  const first = cards.first();
+  expect(await first.locator('img.look').count()).toBe(2);
+  for (const img of await first.locator('img.look').all()) await img.scrollIntoViewIfNeeded(), await expect.poll(() => img.evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth)).toBeGreaterThan(100);
+  await expect(first.locator('figcaption').nth(1)).toContainText('CC BY 4.0');
+  await expect(first.locator('a[href^="street-chunks.html?only=chunk-face-"]')).toBeVisible();
+  await expect(first.locator('a', { hasText: 'Ride past it' })).toHaveAttribute('href', /^\.\/index\.html\?travel=car#race=(-?\d+\.\d{6},){5}-?\d+\.\d{6}$/);
+  expect(await overflow(page)).toBeLessThanOrEqual(0);
+  if (SHOTS) await shots(page, info.project.name, 'own-look-bellamybuurt-zuid');
+
+  // The list names every drawn buurt, long names included, and a row opens that buurt.
+  const list = page.locator('#own-list');
+  const drawn = await page.evaluate(() => (window as any).coveragePage.ownList() as string[]);
+  expect(drawn.length).toBeGreaterThanOrEqual(20);
+  expect(drawn).toContain('FK05');
+  await expect(list.locator('.own-rows').first().locator('button.own-row')).toHaveCount(drawn.length);
+  await list.locator('button.own-row[data-code="FK05"]').click();
+  await expect(panel.locator('h2')).toHaveText('Osdorp-Zuidoost');
+  const design = panel.locator('#sec-look .look-card').first();
+  await expect(design.locator('h4')).toHaveText(/^nw-/);
+  await expect(design.locator('a[href^="model-compare.html?"]')).toBeVisible();
+  await expect(design.locator('a', { hasText: 'Ride past it' })).toBeVisible();
+  for (const img of await design.locator('img.look').all()) await img.scrollIntoViewIfNeeded(), await expect.poll(() => img.evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth)).toBeGreaterThan(100);
+  if (SHOTS) await shots(page, info.project.name, 'own-look-osdorp-zuidoost');
+
+  // The filter keeps only own-look buurten coloured and is kept in the URL.
+  await page.locator('#own-only').check();
+  await expect(page).toHaveURL(/[?&]own=1/);
+
+  // KD02 has no own look and says where to find buurten that do.
+  await page.evaluate(() => (window as any).coveragePage.select('KD02'));
+  await expect(panel.locator('h2')).toHaveText('Cornelis Schuytbuurt');
+  await expect(panel.locator('#sec-look .badge.own.none')).toHaveText('No own look');
+  await expect(panel.locator('#sec-look a[href="#own-list"]')).toBeVisible();
+  expect(await overflow(page)).toBeLessThanOrEqual(0);
+  if (SHOTS) await shots(page, info.project.name, 'own-look-kd02');
+});
+
+test('own look: a missing thumbnail becomes a placeholder, not a gap', async ({ page }) => {
+  await page.route('**/coverage-v1/look/family-*', route => route.abort());
+  await page.goto('/canal-drive/coverage.html?buurt=FK05');
+  await ready(page);
+  const card = page.locator('#sec-look .look-card').first();
+  await card.scrollIntoViewIfNeeded();
+  await expect(card.locator('.ph.look')).toHaveText('Image unavailable');
+  await expect(card.locator('img.look')).toHaveCount(1);
+});
+
 async function shots(page: Page, project: string, slug: string) {
   mkdirSync(SHOTS!, { recursive: true });
   for (const scheme of ['light', 'dark'] as const) {

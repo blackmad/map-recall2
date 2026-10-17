@@ -24,7 +24,7 @@ export type FlatTone = string | readonly number[] | 'vertex';
 export function flatLayerTones(palette: GroundPalette): Partial<Record<GroundLayer, FlatTone>> {
   const T = groundTokens(palette), { street: S, tones: G } = palette;
   return {
-    land: T.land, klinker: T.klinker, asphalt: T.road, cycle: T.cycle,
+    land: T.land, klinker: T.klinker, brick: S.brick.base, asphalt: T.road, cycle: T.cycle,
     paving: T.pavement, gravel: T.gravel, kerb: S.kerb, paint: T.road, tram: T.road,
     bollard: T.pavement, park: T.park, wood: T.wood, square: G.square.base, parking: G.parking, water: T.water,
     lawn: G.lawn, bed: G.bed.soil, shrub: G.shrub.base, bark: G.bark, sand: G.sand, parkGravel: G.parkGravel, parkPath: G.parkPath, pond: G.pond,

@@ -96,7 +96,7 @@ export function buildContents({ ROOT, pands, unitBuurt, modelUnits, kitUnits, in
     faceUnits.push({ id, units });
     const chunkId = `chunk-face-${id}`, installed = chunks.has(chunkId), page = surveyFaces.get(id);
     const status: FaceStatus = installed ? 'installed' : page?.status === 'held' ? 'held' : page?.status === 'staged' ? 'staged' : intent ? 'authored' : 'discovery';
-    const note = installed ? `Drawn as ${chunkId} behind ?streetChunks=1.` : page?.statusReason ?? (intent ? 'Intent authored; not installed as a chunk.' : 'Discovery and photo strip only; no intent authored yet.');
+    const note = installed ? `Drawn in the game by default as ${chunkId}.` : page?.statusReason ?? (intent ? 'Intent authored; not installed as a chunk.' : 'Discovery and photo strip only; no intent authored yet.');
     const known = faceTitles.get(id);
     const street = intent?.street ?? discovery.street ?? known?.street ?? '';
     const sheet = sheetFor.get(id);

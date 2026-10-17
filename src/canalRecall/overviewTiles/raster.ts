@@ -11,13 +11,19 @@ export const layerId = (layer: GroundLayer): number => GROUND_LAYERS.indexOf(lay
 export const layerOfId = (id: number): GroundLayer | null => (id > 0 ? GROUND_LAYERS[id - 1] ?? null : null);
 
 /**
+ * The order layers are drawn in: GROUND_LAYERS with tram and bollard last (render-topdown's review order, road look
+ * v2), so on an exact tie (same rank within 2 cm) they lose to the surface they stand on.
+ */
+export const RASTER_ORDER: readonly GroundLayer[] = [...GROUND_LAYERS.filter(l => l !== 'tram' && l !== 'bollard'), 'tram', 'bollard'];
+
+/**
  * Rasterise built cells over [x0, y0]–[x0 + w·res, y0 + h·res] (game frame metres, north up: row 0 is the north
  * edge). `skip`: layers left out (the layer beneath shows). Returns one layer id per pixel.
  */
 export function rasterLayerIds(cells: readonly BuiltCell[], x0: number, y0: number, w: number, h: number, res: number, skip: ReadonlySet<GroundLayer> = new Set()): Uint8Array {
   const zbuf = new Float32Array(w * h).fill(-Infinity), rank = new Int8Array(w * h).fill(-1), out = new Uint8Array(w * h);
   const top = y0 + h * res;
-  for (const cell of cells) for (const layer of GROUND_LAYERS) {
+  for (const cell of cells) for (const layer of RASTER_ORDER) {
     if (skip.has(layer)) continue;
     const m = cell.layers[layer];
     if (!m) continue;
