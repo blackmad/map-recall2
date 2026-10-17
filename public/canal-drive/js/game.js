@@ -248,6 +248,13 @@ class Game {
       // Riding on from the finish card goes straight to the bike: the
       // overview flight is for the first ride of a session (user 2026-10-16).
       this._skipNextIntro = true;
+      // On a tour, Next stop rides the next leg; after the last stop the tour
+      // is done and the next ride is an ordinary one.
+      if (this._tour && !this._tour.completed) { this._launchTourLeg(); return; }
+      if (this._tour) {
+        this._tour = null;
+        if (this._overlay) this._overlay.store.setTourId('');
+      }
       if (this.routePattern === 'home') { this._startNextHomeLeg(); return; }
       this._startNextRouteFromArrival();
     } else if (id === 'route') {
@@ -603,6 +610,8 @@ class Game {
       }
       // A review stop's name was held back for the ride; arrival reveals it.
       if (this.routeTo && this.routeTo.reviewStop) this.routeTo = { ...this.routeTo, name: this.routeTo.reviewStop };
+      // So was a tour stop's whose name answers a street question.
+      if (this.routeTo && this.routeTo.tourRevealName) this.routeTo = { ...this.routeTo, name: this.routeTo.tourRevealName, tourRevealName: undefined };
       this.state = GameState.FINISHED;
       this.sound.silence();
       // Settings/help may still be "open" in state even though the finish card
@@ -611,6 +620,8 @@ class Game {
       if (typeof this._closeUtilityPanels === 'function') this._closeUtilityPanels();
       this._reclaimKeyboardFocus();
       const arrived = this._finishLandmark();
+      // Stamps and tour progress (game-route.js); the finish card draws both.
+      if (typeof this._recordArrival === 'function') this._recordArrival(arrived);
       if (arrived) {
         // The arrival card belongs to the finish screen and stays until
         // something replaces it, rather than pretending to be an hour-long timer.
