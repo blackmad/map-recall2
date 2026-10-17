@@ -1,0 +1,1138 @@
+{
+ "street": "Soembawastraat",
+ "seed": "0363100012136795",
+ "members": [
+  "0363100012136795",
+  "0363100012123086",
+  "0363100012138643",
+  "0363100012086289",
+  "0363100012062019",
+  "0363100012087505",
+  "0363100012145814",
+  "0363100012140614",
+  "0363100012122904"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012136757 32.5 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012122904 (face continues: 111313 086084 098443 139600 118478)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062385",
+   "reason": "frontage 112.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012062404",
+   "reason": "frontage 108.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012062819",
+   "reason": "frontage 121.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012063404",
+   "reason": "frontage 69.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012063465",
+   "reason": "frontage 56.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012066275",
+   "reason": "frontage 81.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012067440",
+   "reason": "frontage 114.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012067802",
+   "reason": "frontage 110.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012068895",
+   "reason": "frontage 46.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012068922",
+   "reason": "frontage 47.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012069060",
+   "reason": "frontage 89.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012069661",
+   "reason": "frontage 98.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012070299",
+   "reason": "frontage 103.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012070307",
+   "reason": "frontage 72.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012070662",
+   "reason": "frontage 146.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012071073",
+   "reason": "frontage 33.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012071151",
+   "reason": "frontage 127.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012073196",
+   "reason": "frontage 177.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012073326",
+   "reason": "frontage 152.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012073612",
+   "reason": "frontage 122.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012074470",
+   "reason": "frontage 72.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012074619",
+   "reason": "sightline to Soembawastraat crosses 0363100012136795"
+  },
+  {
+   "pandId": "0363100012075400",
+   "reason": "frontage 66.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012075561",
+   "reason": "frontage 183.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012075602",
+   "reason": "frontage 85.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012075864",
+   "reason": "frontage 53.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012076585",
+   "reason": "frontage 149.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012077692",
+   "reason": "frontage 124.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012078149",
+   "reason": "frontage 47.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012078200",
+   "reason": "frontage 74.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012080440",
+   "reason": "frontage 39.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012080525",
+   "reason": "frontage 204.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012081027",
+   "reason": "frontage 46.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012081354",
+   "reason": "frontage 41.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012081478",
+   "reason": "frontage 34.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012081654",
+   "reason": "frontage 102.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012081854",
+   "reason": "frontage 67.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012082167",
+   "reason": "frontage 73.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012082819",
+   "reason": "frontage 174.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012083492",
+   "reason": "frontage 120.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012083953",
+   "reason": "frontage 113.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012084455",
+   "reason": "frontage 84.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012085198",
+   "reason": "frontage 38.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012085255",
+   "reason": "frontage 54.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012085701",
+   "reason": "frontage 78.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012087501",
+   "reason": "frontage 46.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012087570",
+   "reason": "frontage 77.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012087916",
+   "reason": "frontage 46.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012088267",
+   "reason": "frontage 46.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012088818",
+   "reason": "frontage 136.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012089355",
+   "reason": "frontage 112.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012089422",
+   "reason": "frontage 104.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012089880",
+   "reason": "frontage 47.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012090190",
+   "reason": "frontage 91.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012090266",
+   "reason": "frontage 98.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012090337",
+   "reason": "frontage 156.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012090942",
+   "reason": "no frontage on Soembawastraat: No footprint edge faces Soembawastraat"
+  },
+  {
+   "pandId": "0363100012091468",
+   "reason": "frontage 217.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012091815",
+   "reason": "sightline to Soembawastraat crosses 0363100012115812"
+  },
+  {
+   "pandId": "0363100012091940",
+   "reason": "frontage 80.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012092915",
+   "reason": "frontage 130.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012092951",
+   "reason": "frontage 62.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012093164",
+   "reason": "frontage 95.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012093374",
+   "reason": "frontage 163.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012093577",
+   "reason": "frontage 168.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012093719",
+   "reason": "frontage 97.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012093961",
+   "reason": "frontage 47.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012094338",
+   "reason": "frontage 39.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012094616",
+   "reason": "frontage 119.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012094674",
+   "reason": "frontage 122.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012095485",
+   "reason": "frontage 84.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012095922",
+   "reason": "frontage 165.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012098644",
+   "reason": "frontage 143.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012098925",
+   "reason": "frontage 120.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012099162",
+   "reason": "frontage 113.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012099909",
+   "reason": "frontage 47.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012100172",
+   "reason": "frontage 162.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012100973",
+   "reason": "frontage 127.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012100975",
+   "reason": "frontage 45.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012101503",
+   "reason": "frontage 48.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012103163",
+   "reason": "frontage 31.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012103210",
+   "reason": "frontage 63.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012103944",
+   "reason": "frontage 68.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012104063",
+   "reason": "frontage 157.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012105367",
+   "reason": "frontage 191.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012105497",
+   "reason": "frontage 178.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012105799",
+   "reason": "frontage 83.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012107740",
+   "reason": "frontage 74.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012107867",
+   "reason": "frontage 119.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012108677",
+   "reason": "frontage 47.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012108682",
+   "reason": "frontage 33.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012108684",
+   "reason": "frontage 100.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012108735",
+   "reason": "frontage 75.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012109485",
+   "reason": "frontage 104.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012109510",
+   "reason": "frontage 110.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012109585",
+   "reason": "frontage 37.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012109591",
+   "reason": "frontage 99.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012110121",
+   "reason": "frontage 130.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012110184",
+   "reason": "frontage 46.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012111477",
+   "reason": "frontage 153.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012111633",
+   "reason": "frontage 151.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012112106",
+   "reason": "frontage 103.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012112430",
+   "reason": "sightline to Soembawastraat crosses 0363100012137651"
+  },
+  {
+   "pandId": "0363100012113700",
+   "reason": "frontage 78.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012114488",
+   "reason": "frontage 65.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012114908",
+   "reason": "frontage 101.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012115094",
+   "reason": "frontage 46.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012116229",
+   "reason": "frontage 47.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012116393",
+   "reason": "frontage 72.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012116728",
+   "reason": "frontage 45.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012116758",
+   "reason": "frontage 97.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012116826",
+   "reason": "sightline to Soembawastraat crosses 0363100012115812"
+  },
+  {
+   "pandId": "0363100012116980",
+   "reason": "frontage 171.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012117117",
+   "reason": "frontage 128.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012118024",
+   "reason": "frontage 47.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012119753",
+   "reason": "no frontage on Soembawastraat: No footprint edge faces Soembawastraat"
+  },
+  {
+   "pandId": "0363100012119898",
+   "reason": "frontage 75.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012120182",
+   "reason": "no frontage on Soembawastraat: No footprint edge faces Soembawastraat"
+  },
+  {
+   "pandId": "0363100012120886",
+   "reason": "frontage 74.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012121834",
+   "reason": "frontage 62.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012121852",
+   "reason": "frontage 55.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012121879",
+   "reason": "frontage 50.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012121998",
+   "reason": "frontage 100.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012122134",
+   "reason": "frontage 151.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012122533",
+   "reason": "frontage 47.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012122626",
+   "reason": "frontage 63.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012122655",
+   "reason": "frontage 74.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012122695",
+   "reason": "frontage 159.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012123464",
+   "reason": "frontage 116.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012123827",
+   "reason": "frontage 47.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012124861",
+   "reason": "frontage 113.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012125169",
+   "reason": "frontage 46.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012125447",
+   "reason": "frontage 110.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012126503",
+   "reason": "sightline to Soembawastraat crosses 0363100012240316"
+  },
+  {
+   "pandId": "0363100012126596",
+   "reason": "frontage 82.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012126852",
+   "reason": "frontage 180.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012127080",
+   "reason": "frontage 100.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012127748",
+   "reason": "frontage 68.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012128603",
+   "reason": "frontage 89.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012128949",
+   "reason": "frontage 157.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012128964",
+   "reason": "frontage 107.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012129709",
+   "reason": "frontage 59.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012129788",
+   "reason": "no frontage on Soembawastraat: No footprint edge faces Soembawastraat"
+  },
+  {
+   "pandId": "0363100012129821",
+   "reason": "frontage 37.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012129829",
+   "reason": "frontage 166.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012130694",
+   "reason": "frontage 46.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012131373",
+   "reason": "frontage 118.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012131376",
+   "reason": "frontage 129.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012131909",
+   "reason": "frontage 123.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012132253",
+   "reason": "frontage 46.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012132700",
+   "reason": "frontage 116.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012133379",
+   "reason": "frontage 47.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012133901",
+   "reason": "frontage 47.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012134360",
+   "reason": "frontage 47.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012135267",
+   "reason": "frontage 47.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012136285",
+   "reason": "frontage 93.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012136941",
+   "reason": "frontage 143.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012137316",
+   "reason": "frontage 155.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012137717",
+   "reason": "frontage 158.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012138071",
+   "reason": "frontage 44.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012138187",
+   "reason": "frontage 123.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012138653",
+   "reason": "frontage 47.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012138859",
+   "reason": "frontage 64.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012139070",
+   "reason": "frontage 46.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012139404",
+   "reason": "frontage 72.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012139619",
+   "reason": "frontage 157.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012140216",
+   "reason": "frontage 127.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012140837",
+   "reason": "frontage 139.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012142097",
+   "reason": "no frontage on Soembawastraat: No footprint edge faces Soembawastraat"
+  },
+  {
+   "pandId": "0363100012142420",
+   "reason": "frontage 72.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012142460",
+   "reason": "frontage 157.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012143859",
+   "reason": "frontage 72.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012144300",
+   "reason": "frontage 160.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012144627",
+   "reason": "frontage 83.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012145179",
+   "reason": "frontage 72.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012145299",
+   "reason": "frontage 155.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012145314",
+   "reason": "frontage 89.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012145978",
+   "reason": "frontage 106.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012146156",
+   "reason": "frontage 49.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012147474",
+   "reason": "frontage 137.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012147494",
+   "reason": "frontage 89.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012147632",
+   "reason": "frontage 107.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012147732",
+   "reason": "frontage 191.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012148266",
+   "reason": "frontage 117.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012148670",
+   "reason": "no frontage on Soembawastraat: No footprint edge faces Soembawastraat"
+  },
+  {
+   "pandId": "0363100012149514",
+   "reason": "frontage 143.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012150586",
+   "reason": "frontage 71.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012151593",
+   "reason": "frontage 101.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012151910",
+   "reason": "frontage 37.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012152259",
+   "reason": "sightline to Soembawastraat crosses 0363100012136757"
+  },
+  {
+   "pandId": "0363100012152476",
+   "reason": "frontage 97.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012153261",
+   "reason": "frontage 128.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012155108",
+   "reason": "frontage 47.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012163232",
+   "reason": "frontage 112.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012163486",
+   "reason": "frontage 97.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012183353",
+   "reason": "frontage 32.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012185380",
+   "reason": "frontage 156.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012189745",
+   "reason": "frontage 33.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012189746",
+   "reason": "frontage 33.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012190020",
+   "reason": "frontage 33.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012193462",
+   "reason": "frontage 32.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012194863",
+   "reason": "frontage 35.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012194864",
+   "reason": "frontage 35.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012194865",
+   "reason": "frontage 35.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012194866",
+   "reason": "frontage 35.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012194867",
+   "reason": "frontage 35.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012194868",
+   "reason": "frontage 35.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012194869",
+   "reason": "frontage 35.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012194870",
+   "reason": "frontage 35.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012194871",
+   "reason": "frontage 35.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012194872",
+   "reason": "frontage 35.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012196244",
+   "reason": "frontage 147.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012197421",
+   "reason": "frontage 145.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012199175",
+   "reason": "frontage 33.1 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012203309",
+   "reason": "frontage 136.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012206512",
+   "reason": "frontage 143.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012208273",
+   "reason": "frontage 107.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012208841",
+   "reason": "frontage 32.9 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012211837",
+   "reason": "frontage 106.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012217970",
+   "reason": "frontage 110.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012218196",
+   "reason": "frontage 32.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012220949",
+   "reason": "frontage 97.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012221007",
+   "reason": "frontage 123.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012224730",
+   "reason": "frontage 34.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012225045",
+   "reason": "frontage 147.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012225862",
+   "reason": "frontage 64.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012227912",
+   "reason": "frontage 141.3 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012228854",
+   "reason": "frontage 120.4 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012229599",
+   "reason": "frontage 34.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012233908",
+   "reason": "no frontage on Soembawastraat: No footprint edge faces Soembawastraat"
+  },
+  {
+   "pandId": "0363100012233985",
+   "reason": "frontage 133.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012240315",
+   "reason": "frontage 74.6 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012243265",
+   "reason": "no frontage on Soembawastraat: No footprint edge faces Soembawastraat"
+  },
+  {
+   "pandId": "0363100012253329",
+   "reason": "frontage 36.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012253330",
+   "reason": "frontage 39.7 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012253331",
+   "reason": "frontage 51.2 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012253332",
+   "reason": "frontage 54.0 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012253333",
+   "reason": "frontage 65.8 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012253334",
+   "reason": "frontage 68.5 m from Soembawastraat"
+  },
+  {
+   "pandId": "0363100012091543",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104681",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105858",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115812",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118025",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012127687",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129124",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129367",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137651",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140907",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150260",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012240316",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012241723",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012136795",
+   "alongM": 0,
+   "widthM": 17.64,
+   "eavesM": 13.85,
+   "roofMaxM": 13.86,
+   "storeys3dbag": 5,
+   "builtYear": 1991,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012123086",
+   "alongM": 17.37,
+   "widthM": 17.1,
+   "eavesM": 13.83,
+   "roofMaxM": 13.86,
+   "storeys3dbag": 5,
+   "builtYear": 1991,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012138643",
+   "alongM": 34.59,
+   "widthM": 17.35,
+   "eavesM": 13.81,
+   "roofMaxM": 13.83,
+   "storeys3dbag": 5,
+   "builtYear": 1991,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012086289",
+   "alongM": 55.94,
+   "widthM": 25.35,
+   "eavesM": 13.88,
+   "roofMaxM": 13.91,
+   "storeys3dbag": 5,
+   "builtYear": 1991,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012062019",
+   "alongM": 71.8,
+   "widthM": 6.36,
+   "eavesM": 12.64,
+   "roofMaxM": 17.02,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012087505",
+   "alongM": 78.01,
+   "widthM": 6.07,
+   "eavesM": 12.68,
+   "roofMaxM": 16.93,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012145814",
+   "alongM": 84.08,
+   "widthM": 6.07,
+   "eavesM": 12.73,
+   "roofMaxM": 16.99,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012140614",
+   "alongM": 90.14,
+   "widthM": 6.06,
+   "eavesM": 12.88,
+   "roofMaxM": 17.17,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012122904",
+   "alongM": 96.21,
+   "widthM": 6.06,
+   "eavesM": 12.7,
+   "roofMaxM": 17.04,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

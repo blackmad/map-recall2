@@ -1,0 +1,351 @@
+{
+ "street": "Gorontalostraat",
+ "seed": "0363100012075561",
+ "members": [
+  "0363100012104063",
+  "0363100012137717",
+  "0363100012093374",
+  "0363100012129829",
+  "0363100012093577",
+  "0363100012116980",
+  "0363100012082819",
+  "0363100012073196",
+  "0363100012126852",
+  "0363100012075561"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012104063 (face continues: 073326 137316)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012075561 (face continues: 105367)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012070098",
+   "reason": "frontage 99.4 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012084282",
+   "reason": "frontage 99.4 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012092960",
+   "reason": "frontage 97.0 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012093121",
+   "reason": "frontage 95.4 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012103933",
+   "reason": "frontage 96.5 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012120831",
+   "reason": "frontage 92.1 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012121865",
+   "reason": "frontage 101.2 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012063372",
+   "reason": "frontage 47.8 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012066206",
+   "reason": "frontage 84.9 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012067077",
+   "reason": "frontage 41.3 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012068972",
+   "reason": "sightline to Gorontalostraat crosses 0363100012073326"
+  },
+  {
+   "pandId": "0363100012073872",
+   "reason": "frontage 39.3 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012074712",
+   "reason": "frontage 39.6 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012077529",
+   "reason": "frontage 79.7 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012080525",
+   "reason": "no frontage on Gorontalostraat: No footprint edge faces Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012082972",
+   "reason": "frontage 64.0 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012090190",
+   "reason": "frontage 37.6 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012091468",
+   "reason": "no frontage on Gorontalostraat: No footprint edge faces Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012092612",
+   "reason": "frontage 69.6 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012095325",
+   "reason": "frontage 34.9 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012095922",
+   "reason": "sightline to Gorontalostraat crosses 0363100012073326"
+  },
+  {
+   "pandId": "0363100012095980",
+   "reason": "frontage 43.7 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012100639",
+   "reason": "frontage 66.4 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012103629",
+   "reason": "frontage 39.5 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012105497",
+   "reason": "no frontage on Gorontalostraat: No footprint edge faces Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012107029",
+   "reason": "frontage 81.8 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012107819",
+   "reason": "frontage 66.1 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012108442",
+   "reason": "frontage 66.4 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012113567",
+   "reason": "frontage 66.4 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012113700",
+   "reason": "frontage 53.8 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012114783",
+   "reason": "frontage 41.5 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012119753",
+   "reason": "frontage 30.7 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012120182",
+   "reason": "frontage 39.9 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012121834",
+   "reason": "frontage 69.1 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012122695",
+   "reason": "sightline to Gorontalostraat crosses 0363100012073326"
+  },
+  {
+   "pandId": "0363100012123849",
+   "reason": "frontage 40.7 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012131679",
+   "reason": "frontage 91.0 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012125128",
+   "reason": "sightline to Gorontalostraat crosses 0363100012105367"
+  },
+  {
+   "pandId": "0363100012125663",
+   "reason": "frontage 67.3 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012135404",
+   "reason": "frontage 43.8 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012136055",
+   "reason": "frontage 53.0 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012138107",
+   "reason": "frontage 72.9 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012146333",
+   "reason": "frontage 79.0 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012147131",
+   "reason": "frontage 54.4 m from Gorontalostraat"
+  },
+  {
+   "pandId": "0363100012147632",
+   "reason": "sightline to Gorontalostraat crosses 0363100012073612"
+  },
+  {
+   "pandId": "0363100012241861",
+   "reason": "sightline to Gorontalostraat crosses 0363100012104063"
+  },
+  {
+   "pandId": "0363100012243265",
+   "reason": "sightline to Gorontalostraat crosses 0363100012100172"
+  },
+  {
+   "pandId": "0363100012070662",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073612",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090942",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092915",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100172",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144300",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147474",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147732",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012104063",
+   "alongM": -58,
+   "widthM": 6.2,
+   "eavesM": 10.52,
+   "roofMaxM": 15.92,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012137717",
+   "alongM": -53.88,
+   "widthM": 2.03,
+   "eavesM": 6.86,
+   "roofMaxM": 15.6,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012093374",
+   "alongM": -44.88,
+   "widthM": 6.44,
+   "eavesM": 11.68,
+   "roofMaxM": 15.48,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012129829",
+   "alongM": -38.44,
+   "widthM": 6.44,
+   "eavesM": 11.65,
+   "roofMaxM": 15.24,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012093577",
+   "alongM": -32,
+   "widthM": 6.44,
+   "eavesM": 11.56,
+   "roofMaxM": 15.11,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012116980",
+   "alongM": -25.56,
+   "widthM": 6.44,
+   "eavesM": 11.48,
+   "roofMaxM": 15.06,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012082819",
+   "alongM": -19.12,
+   "widthM": 6.44,
+   "eavesM": 11.43,
+   "roofMaxM": 15.01,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012073196",
+   "alongM": -12.68,
+   "widthM": 6.44,
+   "eavesM": 11.18,
+   "roofMaxM": 14.83,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012126852",
+   "alongM": -4.31,
+   "widthM": 2.06,
+   "eavesM": 9.32,
+   "roofMaxM": 14.96,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012075561",
+   "alongM": 0,
+   "widthM": 6.72,
+   "eavesM": 12.63,
+   "roofMaxM": 12.74,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  }
+ ]
+}

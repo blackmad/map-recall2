@@ -1,0 +1,180 @@
+{
+ "face": "nias-58-76",
+ "image": "staging/block-face/nias-58-76/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1016,
+ "height": 705,
+ "groundNAP": 0.327,
+ "heightM": 17.61,
+ "frame": {
+  "midRD": [
+   124916.7475,
+   486400.645625
+  ],
+  "uRD": [
+   -0.9758263781534238,
+   0.2185472024528603
+  ],
+  "nRD": [
+   0.2185472024528603,
+   0.9758263781534238
+  ]
+ },
+ "x0M": -12.71,
+ "x1M": 12.7,
+ "date": "2017-04-04",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012069060",
+   "x0M": -12.71,
+   "x1M": -6.06,
+   "px": [
+    0,
+    266
+   ],
+   "date": "2017-04-04",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-000243_pano_0001_000424",
+     "timestamp": "2017-04-04T11:31:06.156440Z",
+     "distanceM": 6.8,
+     "obliquityDeg": 2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-000243_pano_0001_000284",
+     "timestamp": "2017-04-04T11:25:08.578890Z",
+     "distanceM": 10.8,
+     "obliquityDeg": 13.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-000243_pano_0001_000389",
+     "timestamp": "2017-04-04T11:29:55.211950Z",
+     "distanceM": 21.7,
+     "obliquityDeg": 27.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012084455",
+   "x0M": -6.06,
+   "x1M": 0,
+   "px": [
+    266,
+    508
+   ],
+   "date": "2017-04-04",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-000243_pano_0001_000283",
+     "timestamp": "2017-04-04T11:25:06.743920Z",
+     "distanceM": 10.4,
+     "obliquityDeg": 5.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-000243_pano_0001_000425",
+     "timestamp": "2017-04-04T11:31:08.161470Z",
+     "distanceM": 8,
+     "obliquityDeg": 27.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-000243_pano_0001_000389",
+     "timestamp": "2017-04-04T11:29:55.211950Z",
+     "distanceM": 25.2,
+     "obliquityDeg": 40.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012085701",
+   "x0M": 0,
+   "x1M": 6.06,
+   "px": [
+    508,
+    750
+   ],
+   "date": "2017-04-04",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-000243_pano_0001_000425",
+     "timestamp": "2017-04-04T11:31:08.161470Z",
+     "distanceM": 7.4,
+     "obliquityDeg": 18.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-000243_pano_0001_000282",
+     "timestamp": "2017-04-04T11:25:05.153960Z",
+     "distanceM": 11.2,
+     "obliquityDeg": 25.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-000243_pano_0001_000283",
+     "timestamp": "2017-04-04T11:25:06.743920Z",
+     "distanceM": 11.6,
+     "obliquityDeg": 26,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012150586",
+   "x0M": 6.06,
+   "x1M": 12.7,
+   "px": [
+    751,
+    1017
+   ],
+   "date": "2017-04-04",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-000243_pano_0001_000282",
+     "timestamp": "2017-04-04T11:25:05.153960Z",
+     "distanceM": 10.2,
+     "obliquityDeg": 8.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-000243_pano_0001_000426",
+     "timestamp": "2017-04-04T11:31:10.301540Z",
+     "distanceM": 7.1,
+     "obliquityDeg": 13.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-000243_pano_0001_000281",
+     "timestamp": "2017-04-04T11:25:03.693990Z",
+     "distanceM": 12.7,
+     "obliquityDeg": 40.4,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2016-05-11": 4,
+  "2020-05-07": 4,
+  "2025-09-26": 4,
+  "2019-05-23": 4,
+  "2024-09-16": 4,
+  "2022-08-31": 4,
+  "2021-05-28": 4,
+  "2017-04-04": 4,
+  "2018-05-23": 4,
+  "2023-01-02": 1,
+  "2022-01-12": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

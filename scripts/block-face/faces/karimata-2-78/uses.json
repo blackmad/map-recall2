@@ -1,0 +1,344 @@
+{
+ "street": "Karimatastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012127080",
+   "addresses": [
+    "Karimatastraat 62",
+    "Karimatastraat 64",
+    "Karimatastraat 66",
+    "Karimatastraat 68",
+    "Karimatastraat 70",
+    "Karimatastraat 72",
+    "Karimatastraat 74",
+    "Karimatastraat 76",
+    "Karimatastraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Karimatastraat 72",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000698794"
+    },
+    {
+     "address": "Karimatastraat 74",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000698796"
+    },
+    {
+     "address": "Karimatastraat 76",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000698798"
+    },
+    {
+     "address": "Karimatastraat 78",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000698800"
+    },
+    {
+     "address": "Karimatastraat 70",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000698792"
+    },
+    {
+     "address": "Karimatastraat 66",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000698788"
+    },
+    {
+     "address": "Karimatastraat 62",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000698784"
+    },
+    {
+     "address": "Karimatastraat 64",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000698786"
+    },
+    {
+     "address": "Karimatastraat 68",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000698790"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151593",
+   "addresses": [
+    "Karimatastraat 44",
+    "Karimatastraat 46",
+    "Karimatastraat 48",
+    "Karimatastraat 50",
+    "Karimatastraat 52",
+    "Karimatastraat 54",
+    "Karimatastraat 56",
+    "Karimatastraat 58",
+    "Karimatastraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Karimatastraat 44",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000698766"
+    },
+    {
+     "address": "Karimatastraat 46",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000698768"
+    },
+    {
+     "address": "Karimatastraat 48",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000698770"
+    },
+    {
+     "address": "Karimatastraat 50",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000698772"
+    },
+    {
+     "address": "Karimatastraat 52",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000698774"
+    },
+    {
+     "address": "Karimatastraat 54",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000698776"
+    },
+    {
+     "address": "Karimatastraat 56",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000698778"
+    },
+    {
+     "address": "Karimatastraat 58",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000698780"
+    },
+    {
+     "address": "Karimatastraat 60",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000698782"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081654",
+   "addresses": [
+    "Karimatastraat 10",
+    "Karimatastraat 26",
+    "Karimatastraat 30",
+    "Karimatastraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Karimatastraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000698741"
+    },
+    {
+     "address": "Karimatastraat 26",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000698742"
+    },
+    {
+     "address": "Karimatastraat 30",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000698743"
+    },
+    {
+     "address": "Karimatastraat 34",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000698744"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114908",
+   "addresses": [
+    "Karimatastraat 8",
+    "Karimatastraat 22",
+    "Karimatastraat 24",
+    "Karimatastraat 28",
+    "Karimatastraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Karimatastraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000698736"
+    },
+    {
+     "address": "Karimatastraat 22",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010012073949"
+    },
+    {
+     "address": "Karimatastraat 32",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000698739"
+    },
+    {
+     "address": "Karimatastraat 28",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000698738"
+    },
+    {
+     "address": "Karimatastraat 24",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000698737"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109591",
+   "addresses": [
+    "Karimatastraat 10",
+    "Karimatastraat 14",
+    "Karimatastraat 18",
+    "Karimatastraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Karimatastraat 20",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012073948"
+    },
+    {
+     "address": "Karimatastraat 10",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000698751"
+    },
+    {
+     "address": "Karimatastraat 14",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000698753"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069661",
+   "addresses": [
+    "Karimatastraat 4",
+    "Karimatastraat 8",
+    "Karimatastraat 12",
+    "Karimatastraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Karimatastraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000698730"
+    },
+    {
+     "address": "Karimatastraat 8",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000698731"
+    },
+    {
+     "address": "Karimatastraat 12",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000698732"
+    },
+    {
+     "address": "Karimatastraat 16",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000698733"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093164",
+   "addresses": [
+    "Karimatastraat 2",
+    "Karimatastraat 4",
+    "Karimatastraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Karimatastraat 2-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000698725"
+    },
+    {
+     "address": "Niasstraat 70",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000749757"
+    },
+    {
+     "address": "Niasstraat 78",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012073926"
+    },
+    {
+     "address": "Karimatastraat 6",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012073945"
+    },
+    {
+     "address": "Karimatastraat 4",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012073946"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  }
+ ]
+}

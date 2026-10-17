@@ -1,0 +1,340 @@
+{
+ "street": "Boetonstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012116229",
+   "addresses": [
+    "Boetonstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000590027"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133379",
+   "addresses": [
+    "Boetonstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000590023"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123827",
+   "addresses": [
+    "Boetonstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000590019"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133901",
+   "addresses": [
+    "Boetonstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000590015"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134360",
+   "addresses": [
+    "Boetonstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000590011"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012135267",
+   "addresses": [
+    "Boetonstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000590005"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155108",
+   "addresses": [
+    "Boetonstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000590001"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130694",
+   "addresses": [
+    "Boetonstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000589991"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110184",
+   "addresses": [
+    "Boetonstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000589983"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087501",
+   "addresses": [
+    "Boetonstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000589979"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088267",
+   "addresses": [
+    "Boetonstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000589971"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093961",
+   "addresses": [
+    "Boetonstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000589963"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068895",
+   "addresses": [
+    "Boetonstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000589955"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081027",
+   "addresses": [
+    "Boetonstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000589940"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151910",
+   "addresses": [
+    "Boetonstraat 2B",
+    "Boetonstraat 2C",
+    "Boetonstraat 2E",
+    "Boetonstraat 2F",
+    "Boetonstraat 2H",
+    "Boetonstraat 2G",
+    "Boetonstraat 2D",
+    "Boetonstraat 2A",
+    "Boetonstraat 4F",
+    "Boetonstraat 4A",
+    "Boetonstraat 4C",
+    "Boetonstraat 4D",
+    "Boetonstraat 4E",
+    "Boetonstraat 4B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 4F",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000589935"
+    },
+    {
+     "address": "Boetonstraat 2B",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000589919"
+    },
+    {
+     "address": "Boetonstraat 2C",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000589920"
+    },
+    {
+     "address": "Boetonstraat 2E",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000589922"
+    },
+    {
+     "address": "Boetonstraat 2F",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000589923"
+    },
+    {
+     "address": "Boetonstraat 2H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000589925"
+    },
+    {
+     "address": "Boetonstraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000589930"
+    },
+    {
+     "address": "Boetonstraat 4C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000589932"
+    },
+    {
+     "address": "Boetonstraat 4D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000589933"
+    },
+    {
+     "address": "Boetonstraat 4E",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000589934"
+    },
+    {
+     "address": "Boetonstraat 2G",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000589924"
+    },
+    {
+     "address": "Boetonstraat 2D",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000589921"
+    },
+    {
+     "address": "Boetonstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000589931"
+    },
+    {
+     "address": "Boetonstraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000589918"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  }
+ ]
+}

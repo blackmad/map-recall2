@@ -1,0 +1,263 @@
+{
+ "street": "Niasstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:39:40.599Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012095325",
+   "addresses": [
+    "Niasstraat 31C",
+    "Niasstraat 31L",
+    "Niasstraat 31U",
+    "Niasstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 33-H",
+     "use": "kantoorfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000749668"
+    },
+    {
+     "address": "Niasstraat 31C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012076729"
+    },
+    {
+     "address": "Niasstraat 31L",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012076756"
+    },
+    {
+     "address": "Niasstraat 31U",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012076773"
+    },
+    {
+     "address": "Niasstraat 33",
+     "use": "winkelfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012076688"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12716502312,
+     "lngLat": [
+      4.9416024,
+      52.365128
+     ],
+     "tags": {
+      "check_date:opening_hours": "2025-03-31",
+      "healthcare": "physiotherapist",
+      "name": "Exret",
+      "opening_hours:signed": "no"
+     },
+     "fetchedAt": "2026-10-17T07:39:40.599Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012068972",
+   "addresses": [
+    "Niasstraat 31D",
+    "Niasstraat 31M",
+    "Niasstraat 31V",
+    "Niasstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 35-H",
+     "use": "winkelfunctie",
+     "areaM2": 260,
+     "bagId": "0363010000749678"
+    },
+    {
+     "address": "Niasstraat 31D",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012076742"
+    },
+    {
+     "address": "Niasstraat 31M",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012076759"
+    },
+    {
+     "address": "Niasstraat 31V",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012076774"
+    },
+    {
+     "address": "Niasstraat 35",
+     "use": "winkelfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012079704"
+    },
+    {
+     "address": "Niasstraat 35",
+     "use": "winkelfunctie",
+     "areaM2": 321,
+     "bagId": "0363010012076677"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8364251074,
+     "lngLat": [
+      4.9417402,
+      52.3651298
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "35",
+      "addr:postcode": "1095TV",
+      "addr:street": "Niasstraat",
+      "name": "TurnTwo",
+      "office": "advertising_agency",
+      "opening_hours": "24/7",
+      "source": "BAG",
+      "source:date": "2021-01-26",
+      "website": "https://www.sprintsandsneakers.com"
+     },
+     "fetchedAt": "2026-10-17T07:39:40.599Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012095922",
+   "addresses": [
+    "Niasstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 37",
+     "use": "winkelfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012079705"
+    },
+    {
+     "address": "Niasstraat 37-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001005324"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012122695",
+   "addresses": [
+    "Niasstraat 31E",
+    "Niasstraat 31N",
+    "Niasstraat 31W",
+    "Niasstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000749694"
+    },
+    {
+     "address": "Niasstraat 31E",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010012076750"
+    },
+    {
+     "address": "Niasstraat 31N",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010012076760"
+    },
+    {
+     "address": "Niasstraat 31W",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012076781"
+    },
+    {
+     "address": "Niasstraat 39",
+     "use": "winkelfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012079706"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073326",
+   "addresses": [
+    "Niasstraat 31F",
+    "Niasstraat 31P",
+    "Niasstraat 31X",
+    "Niasstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 31F",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012076757"
+    },
+    {
+     "address": "Niasstraat 31P",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012076765"
+    },
+    {
+     "address": "Niasstraat 31X",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012076782"
+    },
+    {
+     "address": "Niasstraat 41",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012079707"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12716419771,
+     "lngLat": [
+      4.9419314,
+      52.3651311
+     ],
+     "tags": {
+      "check_date:opening_hours": "2025-03-31",
+      "healthcare": "speech_therapist",
+      "name": "Logopediepraktijk Oost",
+      "opening_hours:signed": "no"
+     },
+     "fetchedAt": "2026-10-17T07:39:40.599Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

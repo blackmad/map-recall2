@@ -1,0 +1,1353 @@
+{
+ "street": "Ceramplein",
+ "seed": "0363100012115368",
+ "members": [
+  "0363100012136698",
+  "0363100012090579",
+  "0363100012102826",
+  "0363100012118074",
+  "0363100012106670",
+  "0363100012128085",
+  "0363100012080321",
+  "0363100012130546",
+  "0363100012109369",
+  "0363100012100646",
+  "0363100012134019",
+  "0363100012132486",
+  "0363100012099773",
+  "0363100012115368"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012136698 (face continues: 075831 073673 071250)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012115368 (face continues: 116745)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063439",
+   "reason": "frontage 132.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012064639",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012066235",
+   "reason": "frontage 79.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012066312",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012066455",
+   "reason": "frontage 168.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012066570",
+   "reason": "frontage 109.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012068465",
+   "reason": "frontage 74.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012068826",
+   "reason": "frontage 137.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012069343",
+   "reason": "frontage 128.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012070707",
+   "reason": "sightline to Ceramplein crosses 0363100012084715"
+  },
+  {
+   "pandId": "0363100012072788",
+   "reason": "frontage 143.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012072908",
+   "reason": "frontage 124.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012073033",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012073822",
+   "reason": "frontage 129.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012074320",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012074961",
+   "reason": "frontage 193.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012075173",
+   "reason": "frontage 136.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012076554",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012076777",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012079892",
+   "reason": "sightline to Ceramplein crosses 0363100012108504"
+  },
+  {
+   "pandId": "0363100012062385",
+   "reason": "frontage 37.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012063024",
+   "reason": "sightline to Ceramplein crosses 0363100012094338"
+  },
+  {
+   "pandId": "0363100012063465",
+   "reason": "frontage 39.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012064145",
+   "reason": "frontage 97.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012066183",
+   "reason": "frontage 32.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012066275",
+   "reason": "frontage 37.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012066590",
+   "reason": "frontage 97.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012067098",
+   "reason": "frontage 128.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012067241",
+   "reason": "frontage 156.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012067417",
+   "reason": "frontage 199.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012067594",
+   "reason": "frontage 179.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012071081",
+   "reason": "frontage 172.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012071240",
+   "reason": "frontage 122.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012071455",
+   "reason": "frontage 81.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012072806",
+   "reason": "frontage 31.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012073165",
+   "reason": "frontage 188.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012073275",
+   "reason": "frontage 31.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012073507",
+   "reason": "frontage 191.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012073853",
+   "reason": "frontage 79.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012074328",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012074470",
+   "reason": "frontage 72.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012076430",
+   "reason": "frontage 119.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012077199",
+   "reason": "frontage 116.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012077447",
+   "reason": "frontage 32.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012077853",
+   "reason": "frontage 126.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012078829",
+   "reason": "frontage 204.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012080014",
+   "reason": "sightline to Ceramplein crosses 0363100012108504"
+  },
+  {
+   "pandId": "0363100012080693",
+   "reason": "frontage 181.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012080959",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012081206",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012081226",
+   "reason": "frontage 140.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012081291",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012081796",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012082453",
+   "reason": "frontage 32.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012082491",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012083102",
+   "reason": "frontage 209.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012083683",
+   "reason": "frontage 213.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012084032",
+   "reason": "frontage 127.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012084149",
+   "reason": "frontage 100.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012084194",
+   "reason": "sightline to Ceramplein crosses 0363100012116745"
+  },
+  {
+   "pandId": "0363100012084888",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012085684",
+   "reason": "frontage 60.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012085956",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012086002",
+   "reason": "frontage 130.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012087345",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012087749",
+   "reason": "frontage 165.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012088736",
+   "reason": "frontage 72.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012091028",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012091050",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012093650",
+   "reason": "frontage 87.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012094225",
+   "reason": "frontage 118.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012080800",
+   "reason": "frontage 153.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012081854",
+   "reason": "frontage 103.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012081881",
+   "reason": "frontage 125.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012082675",
+   "reason": "frontage 122.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012083193",
+   "reason": "frontage 163.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012084226",
+   "reason": "frontage 208.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012084456",
+   "reason": "frontage 73.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012085140",
+   "reason": "frontage 187.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012085198",
+   "reason": "frontage 48.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012085255",
+   "reason": "frontage 72.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012085537",
+   "reason": "frontage 47.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012085877",
+   "reason": "frontage 77.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012086583",
+   "reason": "frontage 75.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012088729",
+   "reason": "frontage 97.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012088889",
+   "reason": "frontage 37.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012089843",
+   "reason": "frontage 153.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012090722",
+   "reason": "frontage 38.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012091002",
+   "reason": "frontage 157.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012091815",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012092951",
+   "reason": "frontage 38.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012093864",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012094386",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012095515",
+   "reason": "frontage 139.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012095931",
+   "reason": "frontage 181.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012096511",
+   "reason": "frontage 75.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012098432",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012098954",
+   "reason": "frontage 146.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012099338",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012099882",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012099998",
+   "reason": "frontage 89.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012100526",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012101346",
+   "reason": "frontage 204.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012101846",
+   "reason": "frontage 30.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012102658",
+   "reason": "frontage 112.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012103997",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012105262",
+   "reason": "frontage 72.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012105702",
+   "reason": "frontage 151.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012107239",
+   "reason": "frontage 106.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012108575",
+   "reason": "frontage 98.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012108621",
+   "reason": "frontage 148.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012112290",
+   "reason": "frontage 50.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012113625",
+   "reason": "frontage 76.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012113746",
+   "reason": "frontage 140.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012096521",
+   "reason": "frontage 152.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012096677",
+   "reason": "frontage 155.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012101805",
+   "reason": "frontage 203.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012102813",
+   "reason": "frontage 171.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012103106",
+   "reason": "frontage 159.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012103163",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012103944",
+   "reason": "frontage 37.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012105625",
+   "reason": "frontage 37.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012105699",
+   "reason": "frontage 98.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012105861",
+   "reason": "frontage 97.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012107634",
+   "reason": "frontage 121.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012107867",
+   "reason": "frontage 34.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012108502",
+   "reason": "frontage 195.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012108678",
+   "reason": "frontage 151.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012108684",
+   "reason": "frontage 37.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012111272",
+   "reason": "frontage 97.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012111468",
+   "reason": "frontage 45.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012112341",
+   "reason": "frontage 151.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012112382",
+   "reason": "frontage 167.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012112430",
+   "reason": "frontage 131.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012114967",
+   "reason": "frontage 147.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012115808",
+   "reason": "frontage 55.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012116412",
+   "reason": "frontage 109.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012117408",
+   "reason": "frontage 152.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012117480",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012117772",
+   "reason": "frontage 49.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012118250",
+   "reason": "frontage 70.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012118669",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012119450",
+   "reason": "frontage 152.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012120494",
+   "reason": "frontage 75.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012121633",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012122283",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012122886",
+   "reason": "frontage 153.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012123735",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012124425",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012125472",
+   "reason": "frontage 54.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012126945",
+   "reason": "frontage 91.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012126984",
+   "reason": "frontage 33.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012127441",
+   "reason": "sightline to Ceramplein crosses 0363100012137575"
+  },
+  {
+   "pandId": "0363100012127906",
+   "reason": "frontage 148.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012130593",
+   "reason": "frontage 44.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012131049",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012132120",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012113974",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012113990",
+   "reason": "frontage 84.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012114170",
+   "reason": "frontage 122.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012115072",
+   "reason": "frontage 122.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012115306",
+   "reason": "frontage 176.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012115812",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012116739",
+   "reason": "frontage 152.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012116826",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012119898",
+   "reason": "frontage 37.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012121241",
+   "reason": "frontage 96.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012121879",
+   "reason": "frontage 42.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012121998",
+   "reason": "frontage 91.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012124892",
+   "reason": "frontage 103.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012126503",
+   "reason": "frontage 83.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012126994",
+   "reason": "frontage 173.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012127131",
+   "reason": "frontage 97.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012127951",
+   "reason": "frontage 37.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012128964",
+   "reason": "frontage 71.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012129709",
+   "reason": "frontage 103.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012129821",
+   "reason": "frontage 76.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012130107",
+   "reason": "frontage 37.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012132094",
+   "reason": "frontage 31.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012133222",
+   "reason": "frontage 71.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012133751",
+   "reason": "frontage 139.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012135160",
+   "reason": "frontage 45.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012135573",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012135598",
+   "reason": "frontage 142.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012135961",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012136081",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012137313",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012138072",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012138387",
+   "reason": "frontage 132.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012139846",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012140006",
+   "reason": "frontage 112.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012140394",
+   "reason": "frontage 43.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012141610",
+   "reason": "frontage 151.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012142736",
+   "reason": "frontage 83.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012143730",
+   "reason": "frontage 196.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012145282",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012145792",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012146441",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012146480",
+   "reason": "frontage 165.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012147583",
+   "reason": "frontage 62.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012147884",
+   "reason": "frontage 155.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012148285",
+   "reason": "frontage 37.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012151389",
+   "reason": "frontage 87.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012152189",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012154799",
+   "reason": "frontage 139.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012135485",
+   "reason": "frontage 152.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012136285",
+   "reason": "frontage 37.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012136340",
+   "reason": "frontage 40.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012136747",
+   "reason": "frontage 32.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012137062",
+   "reason": "frontage 42.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012137651",
+   "reason": "frontage 136.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012138071",
+   "reason": "frontage 44.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012142616",
+   "reason": "frontage 37.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012142926",
+   "reason": "frontage 71.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012143130",
+   "reason": "frontage 153.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012145209",
+   "reason": "frontage 99.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012145978",
+   "reason": "frontage 37.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012147494",
+   "reason": "frontage 71.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012147509",
+   "reason": "frontage 31.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012147545",
+   "reason": "frontage 31.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012148656",
+   "reason": "frontage 97.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012152044",
+   "reason": "frontage 111.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012154806",
+   "reason": "frontage 125.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012184308",
+   "reason": "frontage 103.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012188707",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012192487",
+   "reason": "frontage 112.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012194432",
+   "reason": "frontage 57.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012195682",
+   "reason": "frontage 99.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012201688",
+   "reason": "frontage 42.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012205452",
+   "reason": "frontage 122.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012206844",
+   "reason": "frontage 62.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012215795",
+   "reason": "frontage 182.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012215796",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012219310",
+   "reason": "frontage 134.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012220662",
+   "reason": "frontage 136.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012223473",
+   "reason": "frontage 79.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012223474",
+   "reason": "frontage 83.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012224626",
+   "reason": "frontage 110.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012230549",
+   "reason": "frontage 148.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012233169",
+   "reason": "frontage 127.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012233246",
+   "reason": "frontage 65.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012233454",
+   "reason": "frontage 109.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189761",
+   "reason": "frontage 185.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189762",
+   "reason": "frontage 183.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189763",
+   "reason": "frontage 181.9 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189764",
+   "reason": "frontage 204.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189765",
+   "reason": "frontage 204.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189766",
+   "reason": "frontage 203.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189767",
+   "reason": "frontage 201.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189768",
+   "reason": "frontage 199.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189769",
+   "reason": "frontage 177.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189770",
+   "reason": "frontage 178.7 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189771",
+   "reason": "frontage 180.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189772",
+   "reason": "frontage 188.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189773",
+   "reason": "frontage 190.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189774",
+   "reason": "frontage 191.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189775",
+   "reason": "frontage 193.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189776",
+   "reason": "frontage 194.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189777",
+   "reason": "frontage 196.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189778",
+   "reason": "frontage 198.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189779",
+   "reason": "frontage 175.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189780",
+   "reason": "frontage 173.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189781",
+   "reason": "frontage 172.2 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189782",
+   "reason": "frontage 170.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189783",
+   "reason": "frontage 168.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189784",
+   "reason": "frontage 168.6 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012189785",
+   "reason": "frontage 186.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012192489",
+   "reason": "frontage 112.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012192490",
+   "reason": "frontage 112.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012192491",
+   "reason": "frontage 112.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012192492",
+   "reason": "frontage 112.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012194113",
+   "reason": "sightline to Ceramplein crosses 0363100012118074"
+  },
+  {
+   "pandId": "0363100012211837",
+   "reason": "sightline to Ceramplein crosses 0363100012062404"
+  },
+  {
+   "pandId": "0363100012225862",
+   "reason": "sightline to Ceramplein crosses 0363100012094338"
+  },
+  {
+   "pandId": "0363100012233547",
+   "reason": "frontage 98.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012233620",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012233648",
+   "reason": "frontage 116.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012236754",
+   "reason": "frontage 75.8 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012236792",
+   "reason": "frontage 66.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012236803",
+   "reason": "frontage 86.5 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012237039",
+   "reason": "frontage 126.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012237042",
+   "reason": "no frontage on Ceramplein: No footprint edge faces Ceramplein"
+  },
+  {
+   "pandId": "0363100012237108",
+   "reason": "frontage 99.1 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012237380",
+   "reason": "frontage 69.3 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012240315",
+   "reason": "frontage 95.4 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012240316",
+   "reason": "frontage 90.0 m from Ceramplein"
+  },
+  {
+   "pandId": "0363100012062404",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012084715",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094338",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097052",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108504",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012111578",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137575",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137390",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012136698",
+   "alongM": -96.42,
+   "widthM": 6.24,
+   "eavesM": 9.47,
+   "roofMaxM": 13.9,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012090579",
+   "alongM": -90.18,
+   "widthM": 6.24,
+   "eavesM": 9.45,
+   "roofMaxM": 13.92,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012102826",
+   "alongM": -83.92,
+   "widthM": 6.27,
+   "eavesM": 9.41,
+   "roofMaxM": 13.88,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012118074",
+   "alongM": -75.67,
+   "widthM": 10.24,
+   "eavesM": 9.44,
+   "roofMaxM": 13.87,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012106670",
+   "alongM": -63.16,
+   "widthM": 6.21,
+   "eavesM": 9.42,
+   "roofMaxM": 13.93,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012128085",
+   "alongM": -56.96,
+   "widthM": 6.2,
+   "eavesM": 9.44,
+   "roofMaxM": 13.98,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012080321",
+   "alongM": -50.74,
+   "widthM": 6.24,
+   "eavesM": 9.37,
+   "roofMaxM": 13.98,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012130546",
+   "alongM": -44.52,
+   "widthM": 6.2,
+   "eavesM": 9.32,
+   "roofMaxM": 13.95,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012109369",
+   "alongM": -38.33,
+   "widthM": 6.2,
+   "eavesM": 9.26,
+   "roofMaxM": 13.95,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012100646",
+   "alongM": -32.14,
+   "widthM": 6.17,
+   "eavesM": 9.37,
+   "roofMaxM": 13.99,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012134019",
+   "alongM": -25.95,
+   "widthM": 6.21,
+   "eavesM": 9.42,
+   "roofMaxM": 13.91,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012132486",
+   "alongM": -19.75,
+   "widthM": 6.21,
+   "eavesM": 9.48,
+   "roofMaxM": 13.95,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012099773",
+   "alongM": -13.54,
+   "widthM": 6.21,
+   "eavesM": 9.48,
+   "roofMaxM": 13.89,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012115368",
+   "alongM": 0,
+   "widthM": 20.87,
+   "eavesM": 9.4,
+   "roofMaxM": 11.93,
+   "storeys3dbag": 4,
+   "builtYear": 1980,
+   "uncertainty": []
+  }
+ ]
+}

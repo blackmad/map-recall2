@@ -1,0 +1,231 @@
+{
+ "street": "Molukkenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:29:04.835Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012148852",
+   "addresses": [
+    "Molukkenstraat 23",
+    "Molukkenstraat 23F",
+    "Molukkenstraat 23G",
+    "Molukkenstraat 23B",
+    "Molukkenstraat 23D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 23-H",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000745430"
+    },
+    {
+     "address": "Molukkenstraat 23F",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012113060"
+    },
+    {
+     "address": "Molukkenstraat 23G",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012113057"
+    },
+    {
+     "address": "Molukkenstraat 23B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012113058"
+    },
+    {
+     "address": "Molukkenstraat 23D",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012113059"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6016401289,
+     "lngLat": [
+      4.9397345,
+      52.3653714
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "23G",
+      "addr:postcode": "1095AR",
+      "addr:street": "Molukkenstraat",
+      "name": "garment g",
+      "opening_hours": "Fr 11:00-18:00; Sa 11:00-17:00",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2021-01-08",
+      "website": "https://garment.nl"
+     },
+     "fetchedAt": "2026-10-17T07:29:04.835Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012088701",
+   "addresses": [
+    "Molukkenstraat 25",
+    "Molukkenstraat 27A",
+    "Molukkenstraat 27C",
+    "Molukkenstraat 27E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 25-H",
+     "use": "industriefunctie",
+     "areaM2": 118,
+     "bagId": "0363010000745438"
+    },
+    {
+     "address": "Molukkenstraat 25",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012113061"
+    },
+    {
+     "address": "Molukkenstraat 27A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012113062"
+    },
+    {
+     "address": "Molukkenstraat 27C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012113063"
+    },
+    {
+     "address": "Molukkenstraat 27E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012113064"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830027551,
+     "lngLat": [
+      4.9397379,
+      52.3653173
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25",
+      "addr:postcode": "1095AS",
+      "addr:street": "Molukkenstraat",
+      "amenity": "veterinary",
+      "name": "Joyce Hofman Dierenklinieken",
+      "opening_hours": "Mo-Fr 09:00-17:00",
+      "source": "BAG",
+      "source:date": "2021-01-08"
+     },
+     "fetchedAt": "2026-10-17T07:29:04.835Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012094377",
+   "addresses": [
+    "Molukkenstraat 27",
+    "Molukkenstraat 27D",
+    "Molukkenstraat 27F",
+    "Molukkenstraat 27B",
+    "Molukkenstraat 27G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000745446"
+    },
+    {
+     "address": "Molukkenstraat 27D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012113067"
+    },
+    {
+     "address": "Molukkenstraat 27F",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012113068"
+    },
+    {
+     "address": "Molukkenstraat 27B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012113066"
+    },
+    {
+     "address": "Molukkenstraat 27G",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012113065"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108941",
+   "addresses": [
+    "Molukkenstraat 29",
+    "Molukkenstraat 29A",
+    "Molukkenstraat 29C",
+    "Molukkenstraat 29D",
+    "Molukkenstraat 29B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000745450"
+    },
+    {
+     "address": "Molukkenstraat 29A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012113069"
+    },
+    {
+     "address": "Molukkenstraat 29C",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012113071"
+    },
+    {
+     "address": "Molukkenstraat 29D",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012113072"
+    },
+    {
+     "address": "Molukkenstraat 29B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012113070"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

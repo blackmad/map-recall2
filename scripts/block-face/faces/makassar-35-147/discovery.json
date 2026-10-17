@@ -1,0 +1,325 @@
+{
+ "street": "Makassarstraat",
+ "seed": "0363100012067802",
+ "members": [
+  "0363100012067802",
+  "0363100012109485",
+  "0363100012090266",
+  "0363100012105799"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012105799 (face continues: 122655)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062385",
+   "reason": "frontage 73.4 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012062404",
+   "reason": "frontage 94.2 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012062819",
+   "reason": "frontage 73.5 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012066275",
+   "reason": "frontage 73.0 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012067440",
+   "reason": "frontage 43.6 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012071455",
+   "reason": "frontage 35.6 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012073853",
+   "reason": "frontage 35.6 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012074328",
+   "reason": "frontage 73.8 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012074470",
+   "reason": "frontage 36.5 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012075602",
+   "reason": "frontage 94.3 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012077692",
+   "reason": "frontage 85.4 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012078200",
+   "reason": "frontage 60.9 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012083492",
+   "reason": "frontage 67.5 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012083953",
+   "reason": "frontage 37.2 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012084456",
+   "reason": "frontage 35.6 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012085255",
+   "reason": "frontage 36.3 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012085877",
+   "reason": "frontage 35.6 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012086583",
+   "reason": "frontage 35.6 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012087916",
+   "reason": "frontage 61.6 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012088889",
+   "reason": "frontage 73.6 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012089355",
+   "reason": "sightline to Makassarstraat crosses 0363100012067802"
+  },
+  {
+   "pandId": "0363100012089422",
+   "reason": "frontage 94.0 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012090722",
+   "reason": "frontage 73.7 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012094616",
+   "reason": "frontage 61.5 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012099162",
+   "reason": "frontage 31.0 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012105625",
+   "reason": "frontage 73.6 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012107740",
+   "reason": "frontage 43.4 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012107867",
+   "reason": "frontage 73.6 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012108684",
+   "reason": "frontage 73.2 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012113974",
+   "reason": "frontage 73.8 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012115094",
+   "reason": "frontage 42.6 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012116728",
+   "reason": "sightline to Makassarstraat crosses 0363100012112430"
+  },
+  {
+   "pandId": "0363100012117117",
+   "reason": "frontage 91.2 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012119898",
+   "reason": "frontage 72.9 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012120886",
+   "reason": "sightline to Makassarstraat crosses 0363100012122655"
+  },
+  {
+   "pandId": "0363100012123464",
+   "reason": "frontage 49.6 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012124861",
+   "reason": "sightline to Makassarstraat crosses 0363100012067802"
+  },
+  {
+   "pandId": "0363100012125169",
+   "reason": "frontage 80.5 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012125447",
+   "reason": "sightline to Makassarstraat crosses 0363100012067802"
+  },
+  {
+   "pandId": "0363100012126503",
+   "reason": "frontage 36.3 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012126596",
+   "reason": "frontage 79.7 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012127687",
+   "reason": "frontage 96.5 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012127951",
+   "reason": "frontage 73.7 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012128964",
+   "reason": "sightline to Makassarstraat crosses 0363100012121998"
+  },
+  {
+   "pandId": "0363100012129821",
+   "reason": "frontage 36.3 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012131909",
+   "reason": "frontage 79.5 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012136285",
+   "reason": "frontage 73.1 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012136340",
+   "reason": "frontage 73.8 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012137062",
+   "reason": "frontage 73.8 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012142616",
+   "reason": "frontage 73.7 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012145978",
+   "reason": "frontage 73.3 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012147494",
+   "reason": "frontage 36.8 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012148266",
+   "reason": "frontage 55.6 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012161696",
+   "reason": "frontage 57.9 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012184308",
+   "reason": "sightline to Makassarstraat crosses 0363100012073640"
+  },
+  {
+   "pandId": "0363100012185380",
+   "reason": "frontage 85.0 m from Makassarstraat"
+  },
+  {
+   "pandId": "0363100012073640",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012081854",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121998",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129709",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140768",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142926",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145209",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012240315",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012240316",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012067802",
+   "alongM": 0,
+   "widthM": 11.72,
+   "eavesM": 15.78,
+   "roofMaxM": 15.88,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012109485",
+   "alongM": 8.83,
+   "widthM": 5.95,
+   "eavesM": 12.97,
+   "roofMaxM": 15.94,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012090266",
+   "alongM": 14.78,
+   "widthM": 5.95,
+   "eavesM": 12.93,
+   "roofMaxM": 15.93,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012105799",
+   "alongM": 25.09,
+   "widthM": 14.66,
+   "eavesM": 14.16,
+   "roofMaxM": 14.16,
+   "storeys3dbag": 5,
+   "builtYear": 1990,
+   "uncertainty": []
+  }
+ ]
+}

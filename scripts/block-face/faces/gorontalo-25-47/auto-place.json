@@ -3,7 +3,7 @@
  "street": "Gorontalostraat",
  "library": "indische-buurt",
  "stripDate": "2025-09-26",
- "seconds": 1.84,
+ "seconds": 45.97,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -23,12 +23,20 @@
     "0363100012094616",
     "0363100012148266",
     "0363100012123464",
-    "0363100012067440",
-    "0363100012083953",
+    "0363100012067440"
+   ],
+   "passed": false,
+   "triangles": 8529
+  },
+  {
+   "face": "gorontalo-25-47-r2",
+   "pands": [
     "0363100012099162",
     "0363100012124861",
     "0363100012089355"
-   ]
+   ],
+   "passed": false,
+   "triangles": 3674
   }
  ],
  "pands": [
@@ -75,10 +83,6 @@
    "status": "placed",
    "type": "indisch-1926-white-attic",
    "score": 0.88,
-   "runnerUp": {
-    "typeId": "indisch-1926-attic-lights",
-    "score": 0.61
-   },
    "placement": {
     "type": "indisch-1926-white-attic",
     "ground": "door-left",
@@ -90,8 +94,36 @@
    "notes": [
     "crown overhang-dormer (type default)"
    ],
-   "likeness": null,
-   "challengers": {}
+   "likeness": {
+    "pandId": "0363100012131909",
+    "ncc": 0.536,
+    "nccRaw": 0.536,
+    "shiftM": [
+     0,
+     0.4
+    ],
+    "usable": 0.85,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#7a6d6c",
+     "model": "#928682",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.49
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.536
+   }
   },
   {
    "pandId": "0363100012062819",
@@ -141,10 +173,6 @@
    "status": "placed",
    "type": "indisch-1926-white-attic",
    "score": 1,
-   "runnerUp": {
-    "typeId": "indisch-1926-attic-lights",
-    "score": 0.67
-   },
    "placement": {
     "type": "indisch-1926-white-attic",
     "ground": "door-right",
@@ -156,8 +184,36 @@
    "notes": [
     "crown overhang-dormer (type default)"
    ],
-   "likeness": null,
-   "challengers": {}
+   "likeness": {
+    "pandId": "0363100012062819",
+    "ncc": 0.424,
+    "nccRaw": 0.424,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#807370",
+     "model": "#8f837f",
+     "dL": 0.059
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.487
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.424
+   }
   },
   {
    "pandId": "0363100012083492",
@@ -212,10 +268,6 @@
    "status": "placed",
    "type": "indisch-1926-white-attic",
    "score": 1,
-   "runnerUp": {
-    "typeId": "indisch-1926-attic-lights",
-    "score": 0.67
-   },
    "placement": {
     "type": "indisch-1926-white-attic",
     "ground": "door-left",
@@ -227,8 +279,38 @@
    "notes": [
     "crown overhang-dormer (type default)"
    ],
-   "likeness": null,
-   "challengers": {}
+   "likeness": {
+    "pandId": "0363100012083492",
+    "ncc": 0.475,
+    "nccRaw": 0.475,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.54 mean 0.34 vs photo 0.59"
+    ],
+    "wall": {
+     "photo": "#817470",
+     "model": "#9a8d89",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.534
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.475
+   }
   },
   {
    "pandId": "0363100012094616",
@@ -283,10 +365,6 @@
    "status": "placed",
    "type": "indisch-1926-white-attic",
    "score": 1,
-   "runnerUp": {
-    "typeId": "indisch-1926-attic-lights",
-    "score": 0.67
-   },
    "placement": {
     "type": "indisch-1926-white-attic",
     "measuredPalette": {
@@ -297,8 +375,38 @@
    "notes": [
     "crown overhang-dormer (type default)"
    ],
-   "likeness": null,
-   "challengers": {}
+   "likeness": {
+    "pandId": "0363100012094616",
+    "ncc": 0.418,
+    "nccRaw": 0.418,
+    "shiftM": [
+     -0.15,
+     0.4
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 26 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#746a68",
+     "model": "#9f928e",
+     "dL": 0.159
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.527
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.418
+   }
   },
   {
    "pandId": "0363100012148266",
@@ -353,10 +461,6 @@
    "status": "placed",
    "type": "indisch-1926-white-attic",
    "score": 1,
-   "runnerUp": {
-    "typeId": "indisch-1926-attic-lights",
-    "score": 0.67
-   },
    "placement": {
     "type": "indisch-1926-white-attic",
     "measuredPalette": {
@@ -367,8 +471,38 @@
    "notes": [
     "crown overhang-dormer (type default)"
    ],
-   "likeness": null,
-   "challengers": {}
+   "likeness": {
+    "pandId": "0363100012148266",
+    "ncc": 0.398,
+    "nccRaw": 0.398,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.28"
+    ],
+    "wall": {
+     "photo": "#7f726f",
+     "model": "#968984",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 4,
+     "model": 4
+    },
+    "iou": 0.584
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.398
+   }
   },
   {
    "pandId": "0363100012123464",
@@ -433,10 +567,6 @@
    "status": "placed",
    "type": "indisch-1926-white-attic",
    "score": 1,
-   "runnerUp": {
-    "typeId": "indisch-1926-attic-lights",
-    "score": 0.67
-   },
    "placement": {
     "type": "indisch-1926-white-attic",
     "ground": "door-right",
@@ -448,8 +578,38 @@
    "notes": [
     "crown overhang-dormer (type default)"
    ],
-   "likeness": null,
-   "challengers": {}
+   "likeness": {
+    "pandId": "0363100012123464",
+    "ncc": 0.371,
+    "nccRaw": 0.371,
+    "shiftM": [
+     -0.15,
+     0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.57 mean 0.36 vs photo 0.51"
+    ],
+    "wall": {
+     "photo": "#817572",
+     "model": "#918481",
+     "dL": 0.061
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.569
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.371
+   }
   },
   {
    "pandId": "0363100012067440",
@@ -504,10 +664,6 @@
    "status": "placed",
    "type": "indisch-1926-white-attic",
    "score": 0.88,
-   "runnerUp": {
-    "typeId": "indisch-1926-attic-lights",
-    "score": 0.61
-   },
    "placement": {
     "type": "indisch-1926-white-attic",
     "ground": "door-left",
@@ -519,8 +675,38 @@
    "notes": [
     "crown overhang-dormer (type default)"
    ],
-   "likeness": null,
-   "challengers": {}
+   "likeness": {
+    "pandId": "0363100012067440",
+    "ncc": 0.377,
+    "nccRaw": 0.377,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24"
+    ],
+    "wall": {
+     "photo": "#807473",
+     "model": "#938785",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.543
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.377
+   }
   },
   {
    "pandId": "0363100012083953",
@@ -582,23 +768,9 @@
     "voidShare": 0.02,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "indisch-1926-white-attic",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "indisch-1926-attic-lights",
-    "score": 0.67
-   },
-   "placement": {
-    "type": "indisch-1926-white-attic",
-    "measuredPalette": {
-     "brick": "#8d7f78",
-     "evidence": "strip 2025-09-26 span 1714-1935: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "crown overhang-dormer (type default)"
-   ],
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the front folds where the street kinks (a canted window pair on storeys 1-2, the overhang breaking round the bend): the flat white-attic front drew it as a two-bay house under a black roof; the kit has no folded front",
    "likeness": null,
    "challengers": {}
   },
@@ -650,10 +822,6 @@
    "status": "placed",
    "type": "indisch-1926-white-attic",
    "score": 1,
-   "runnerUp": {
-    "typeId": "indisch-1926-attic-lights",
-    "score": 0.67
-   },
    "placement": {
     "type": "indisch-1926-white-attic",
     "measuredPalette": {
@@ -664,8 +832,38 @@
    "notes": [
     "crown overhang-dormer (type default)"
    ],
-   "likeness": null,
-   "challengers": {}
+   "likeness": {
+    "pandId": "0363100012099162",
+    "ncc": 0.381,
+    "nccRaw": 0.381,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19"
+    ],
+    "wall": {
+     "photo": "#837673",
+     "model": "#958a86",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.496
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.381
+   }
   },
   {
    "pandId": "0363100012124861",
@@ -710,10 +908,6 @@
    "status": "placed",
    "type": "indisch-1926-white-attic",
    "score": 1,
-   "runnerUp": {
-    "typeId": "indisch-1926-attic-lights",
-    "score": 0.67
-   },
    "placement": {
     "type": "indisch-1926-white-attic",
     "ground": "door-right",
@@ -725,8 +919,36 @@
    "notes": [
     "crown overhang-dormer (type default)"
    ],
-   "likeness": null,
-   "challengers": {}
+   "likeness": {
+    "pandId": "0363100012124861",
+    "ncc": 0.363,
+    "nccRaw": 0.363,
+    "shiftM": [
+     -0.3,
+     0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#807471",
+     "model": "#9c8f8a",
+     "dL": 0.104
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.48
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.363
+   }
   },
   {
    "pandId": "0363100012089355",
@@ -770,10 +992,6 @@
    "status": "placed",
    "type": "indisch-1926-white-attic",
    "score": 0.88,
-   "runnerUp": {
-    "typeId": "indisch-1926-attic-lights",
-    "score": 0.61
-   },
    "placement": {
     "type": "indisch-1926-white-attic",
     "measuredPalette": {
@@ -784,8 +1002,38 @@
    "notes": [
     "crown overhang-dormer (type default)"
    ],
-   "likeness": null,
-   "challengers": {}
+   "likeness": {
+    "pandId": "0363100012089355",
+    "ncc": 0.447,
+    "nccRaw": 0.447,
+    "shiftM": [
+     -0.2,
+     0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.52 mean 0.35 vs photo 0.49"
+    ],
+    "wall": {
+     "photo": "#817570",
+     "model": "#978c87",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.6
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.447
+   }
   },
   {
    "pandId": "0363100012125447",

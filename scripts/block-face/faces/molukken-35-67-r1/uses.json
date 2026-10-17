@@ -1,0 +1,372 @@
+{
+ "street": "Molukkenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:31:11.871Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012080763",
+   "addresses": [
+    "Molukkenstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 35-H",
+     "use": "winkelfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000745467"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830032571,
+     "lngLat": [
+      4.9397421,
+      52.3648693
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "35-H",
+      "addr:postcode": "1095AT",
+      "addr:street": "Molukkenstraat",
+      "female": "yes",
+      "male": "yes",
+      "name": "Kapsalon TND",
+      "old_name": "kapsalon Amsterdam",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-17T07:31:11.871Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012131182",
+   "addresses": [
+    "Molukkenstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 37-H",
+     "use": "kantoorfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000745475"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830033500,
+     "lngLat": [
+      4.9397458,
+      52.3648184
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "37-H",
+      "addr:postcode": "1095AT",
+      "addr:street": "Molukkenstraat",
+      "healthcare": "physiotherapist",
+      "name": "Fysiotherapie Molukkenstraat",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.fysiotherapiemolukkenstraat.nl"
+     },
+     "fetchedAt": "2026-10-17T07:31:11.871Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012111959",
+   "addresses": [
+    "Molukkenstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000745483"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830035104,
+     "lngLat": [
+      4.9397459,
+      52.3647617
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "39-H",
+      "addr:postcode": "1095AT",
+      "addr:street": "Molukkenstraat",
+      "name": "Ramazan",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-17T07:31:11.871Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012148990",
+   "addresses": [
+    "Molukkenstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 41-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000745491"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12714077342,
+     "lngLat": [
+      4.9397466,
+      52.364706
+     ],
+     "tags": {
+      "laundry_service": "yes",
+      "name": "Stomerij SuperNette",
+      "self_service": "no",
+      "shop": "laundry"
+     },
+     "fetchedAt": "2026-10-17T07:31:11.871Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012080878",
+   "addresses": [
+    "Molukkenstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 43-H",
+     "use": "winkelfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000745499"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830036266,
+     "lngLat": [
+      4.9397471,
+      52.3646517
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "43-H",
+      "addr:postcode": "1095AT",
+      "addr:street": "Molukkenstraat",
+      "female": "yes",
+      "male": "yes",
+      "name": "Kapsalon The Friends",
+      "opening_hours": "Mo-Sa 10:00-19:00",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-17T07:31:11.871Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012107515",
+   "addresses": [
+    "Molukkenstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 45-H",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000745503"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12714072197,
+     "lngLat": [
+      4.9397477,
+      52.364596
+     ],
+     "tags": {
+      "beauty": "nails",
+      "name": "Pampering Myself",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-17T07:31:11.871Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012086183",
+   "addresses": [
+    "Molukkenstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 47-H",
+     "use": "industriefunctie",
+     "areaM2": 71,
+     "bagId": "0363010000745511"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12714049640,
+     "lngLat": [
+      4.9397509,
+      52.3645406
+     ],
+     "tags": {
+      "name": "Sala Thai Wellness",
+      "shop": "massage"
+     },
+     "fetchedAt": "2026-10-17T07:31:11.871Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012149152",
+   "addresses": [
+    "Molukkenstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 49-H",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000745519"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12714040608,
+     "lngLat": [
+      4.9397529,
+      52.3644852
+     ],
+     "tags": {
+      "laundry_service": "yes",
+      "name": "Kleine Wasjes Grote Wasjes",
+      "self_service": "no",
+      "shop": "laundry"
+     },
+     "fetchedAt": "2026-10-17T07:31:11.871Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012092896",
+   "addresses": [
+    "Molukkenstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 51-H",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000745527"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12714064013,
+     "lngLat": [
+      4.939756,
+      52.3644303
+     ],
+     "tags": {
+      "name": "Super Toko Nawied",
+      "shop": "convenience"
+     },
+     "fetchedAt": "2026-10-17T07:31:11.871Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012146291",
+   "addresses": [
+    "Molukkenstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Molukkenstraat 53-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000745535"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830039871,
+     "lngLat": [
+      4.9397602,
+      52.3643752
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "53-H",
+      "addr:postcode": "1095AV",
+      "addr:street": "Molukkenstraat",
+      "amenity": "cafe",
+      "name": "Chantilly",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "http://cafechantilly.nl/"
+     },
+     "fetchedAt": "2026-10-17T07:31:11.871Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

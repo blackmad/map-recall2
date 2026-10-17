@@ -1,0 +1,359 @@
+{
+ "street": "Niasstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:37:58.707Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012073042",
+   "addresses": [
+    "Niasstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 1-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000749564"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830012945,
+     "lngLat": [
+      4.9397473,
+      52.3651336
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1-2",
+      "addr:postcode": "1095TS",
+      "addr:street": "Niasstraat",
+      "check_date": "2014-09-23",
+      "name": "Best Friends",
+      "shop": "cannabis",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-17T07:37:58.707Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012102866",
+   "addresses": [
+    "Niasstraat 3",
+    "Niasstraat 5B",
+    "Niasstraat 5D",
+    "Niasstraat 5F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000749572"
+    },
+    {
+     "address": "Niasstraat 5B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012143373"
+    },
+    {
+     "address": "Niasstraat 5D",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012143374"
+    },
+    {
+     "address": "Niasstraat 5F",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012143375"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110430",
+   "addresses": [
+    "Niasstraat 5",
+    "Niasstraat 5G",
+    "Niasstraat 5A",
+    "Niasstraat 5C",
+    "Niasstraat 5E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 5-H",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000749580"
+    },
+    {
+     "address": "Niasstraat 5G",
+     "use": "kantoorfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012143376"
+    },
+    {
+     "address": "Niasstraat 5A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012143377"
+    },
+    {
+     "address": "Niasstraat 5C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012143378"
+    },
+    {
+     "address": "Niasstraat 5E",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012143379"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830039108,
+     "lngLat": [
+      4.939927,
+      52.3651181
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5-1",
+      "addr:postcode": "1095TS",
+      "addr:street": "Niasstraat",
+      "check_date:opening_hours": "2025-03-31",
+      "healthcare": "physiotherapist",
+      "name": "HaptoMotion",
+      "opening_hours:signed": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-17T07:37:58.707Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012122437",
+   "addresses": [
+    "Niasstraat 7",
+    "Niasstraat 7A",
+    "Niasstraat 7C",
+    "Niasstraat 7E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 7-H",
+     "use": "kantoorfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000749588"
+    },
+    {
+     "address": "Niasstraat 7",
+     "use": "kantoorfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012143380"
+    },
+    {
+     "address": "Niasstraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012143381"
+    },
+    {
+     "address": "Niasstraat 7C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012143382"
+    },
+    {
+     "address": "Niasstraat 7E",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012143383"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12716456403,
+     "lngLat": [
+      4.940017,
+      52.3651178
+     ],
+     "tags": {
+      "check_date:opening_hours": "2025-03-31",
+      "name": "Marjolein Poels",
+      "opening_hours:signed": "no",
+      "tourism": "gallery"
+     },
+     "fetchedAt": "2026-10-17T07:37:58.707Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012131529",
+   "addresses": [
+    "Niasstraat 7F",
+    "Niasstraat 7D",
+    "Niasstraat 7B",
+    "Niasstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000980514"
+    },
+    {
+     "address": "Niasstraat 7F",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012143384"
+    },
+    {
+     "address": "Niasstraat 7D",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012143385"
+    },
+    {
+     "address": "Niasstraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012143386"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079465",
+   "addresses": [
+    "Niasstraat 11",
+    "Niasstraat 11B",
+    "Niasstraat 11A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000749600"
+    },
+    {
+     "address": "Niasstraat 11B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012143388"
+    },
+    {
+     "address": "Niasstraat 11A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012143389"
+    },
+    {
+     "address": "Menadostraat 3B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012143390"
+    },
+    {
+     "address": "Menadostraat 3E",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012143391"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125631",
+   "addresses": [
+    "Niasstraat 13",
+    "Niasstraat 13B",
+    "Niasstraat 13A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 13-H",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000749607"
+    },
+    {
+     "address": "Niasstraat 13B",
+     "use": "kantoorfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012143392"
+    },
+    {
+     "address": "Niasstraat 13A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012143393"
+    },
+    {
+     "address": "Menadostraat 3C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012143394"
+    },
+    {
+     "address": "Menadostraat 3F",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012143395"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830018862,
+     "lngLat": [
+      4.9402897,
+      52.3651238
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13-1",
+      "addr:postcode": "1095TS",
+      "addr:street": "Niasstraat",
+      "healthcare": "alternative",
+      "healthcare:speciality": "traditional_chinese_medicine",
+      "name": "Yeung",
+      "opening_hours": "\"by appointment\"",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-17T07:37:58.707Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
