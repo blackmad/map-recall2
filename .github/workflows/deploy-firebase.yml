@@ -63,7 +63,8 @@ jobs:
           VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
           VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
           VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
-          VITE_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          # Map Quest reports to its own Sentry project; Canal Recall uses SENTRY_DSN.
+          VITE_SENTRY_DSN: ${{ secrets.SENTRY_DSN_MAP_QUEST }}
           VITE_RELEASE: ${{ github.sha }}
           VITE_APPCHECK_SITE_KEY: ${{ secrets.APPCHECK_SITE_KEY }}
       # Upload Vite source maps to Sentry, then delete them so they never deploy.
@@ -71,8 +72,8 @@ jobs:
       - name: Upload source maps to Sentry
         if: env.SENTRY_AUTH_TOKEN != ''
         env:
-          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+          SENTRY_ORG: whizziwig
+          SENTRY_PROJECT: map-quest
         run: |
           npx @sentry/cli sourcemaps inject dist
           npx @sentry/cli sourcemaps upload --release "$GITHUB_SHA" dist
