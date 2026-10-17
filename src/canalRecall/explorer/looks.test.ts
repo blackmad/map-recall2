@@ -2,9 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import {
-  asksForLook, findLook, groupKitKeys, inGeometry, kitKeyLabel, lookReportOptions, looksIn, nearestLook, paletteSwatch, slugify, typeRun,
-  type ExplorerLooks, type LookBuurt,
+  asksForLook, cellLabel, findLook, lookPath, useMatchesRef, groupKitKeys, inGeometry, kitKeyLabel, lookReportOptions, looksIn, nearestLook, paletteSwatch, slugify, typeRun,
+  type ExplorerLooks, type ExplorerRecipePands, type LookBuurt,
 } from './looks';
+import { liveCamera, liveRideHref } from './liveTiles';
 
 const buurt = (o: Partial<LookBuurt>): LookBuurt => ({
   slug: 'x', code: 'XX01', name: 'X', lngLat: [4.9, 52.37], bbox: [4.89, 52.36, 4.91, 52.38], outline: [], status: 'drawn',
@@ -106,4 +107,42 @@ test('the published looks: every slug unique, every GLB on disk, focus boxes san
       if (u.focus) for (let k = 0; k < 3; k++) assert.ok(u.focus.max[k] >= u.focus.min[k], `${b.slug} ${u.key}`);
     }
   }
+});
+
+test('recipe-tile refs match the look tab they were authored from', () => {
+  assert.ok(useMatchesRef('type:rivierenbuurt-portiek', 'face:kinker-a/3 · type rivierenbuurt-portiek'));
+  assert.ok(!useMatchesRef('type:rivierenbuurt-portiek', 'face:kinker-a/3 · type rivierenbuurt-portiek-wide'));
+  assert.ok(useMatchesRef('face:bilderdijk-122', 'face:bilderdijk-122/0 · type x'));
+  assert.ok(!useMatchesRef('face:bilderdijk-12', 'face:bilderdijk-122/0'));
+  // A design tab is a family: every variant unit of it matches.
+  assert.ok(useMatchesRef('design:nw-rowhouse__cream', 'type:nw-rowhouse__slate__2__gable'));
+  assert.ok(!useMatchesRef('design:nw-rowhouse__cream', 'type:nw-rowhouse-tall__slate'));
+  assert.ok(!useMatchesRef('type:x', undefined));
+  assert.ok(!useMatchesRef('model:x', 'model:x'));
+});
+
+test('the live path needs own-look pands in the recipe tiles; everything else is the installed chunk', () => {
+  assert.equal(lookPath({}), 'chunk');
+  assert.equal(lookPath({ recipeTiles: { tiles: ['16/1/2'], pands: 3, lookPands: 0, centre: [4.9, 52.37] } }), 'chunk');
+  assert.equal(lookPath({ recipeTiles: { tiles: ['16/1/2'], pands: 3, lookPands: 2, centre: [4.9, 52.37] } }), 'live');
+  assert.equal(cellLabel('brick20'), 'Brick (20th c.)');
+  assert.equal(cellLabel('slate'), 'Slate');
+  assert.equal(liveCamera([4.9, 52.37], true).zoom < liveCamera([4.9, 52.37], false).zoom, true);
+  const href = liveRideHref([4.87, 52.368]);
+  assert.match(href, /^\.\/index\.html\?travel=car&recipeTiles=1#race=52\.368000,4\.870000,52\.368000,4\.86\d+,52\.368000,4\.87\d+$/);
+});
+
+test('the published recipe tiles: every live look has its pand file, and its pands sit in its tiles', { skip: !existsSync(PUBLISHED) }, () => {
+  const data = JSON.parse(readFileSync(PUBLISHED, 'utf8')) as ExplorerLooks;
+  const live = data.buurten.filter(b => lookPath(b) === 'live');
+  assert.ok(live.length >= 20, `${live.length} live looks`);
+  for (const b of live) {
+    const f = `public/data/extracts/amsterdam/explorer-recipe-pands/${b.code}.json`;
+    assert.ok(existsSync(f), f);
+    const pands = (JSON.parse(readFileSync(f, 'utf8')) as ExplorerRecipePands).pands;
+    const own = Object.values(pands).filter(p => b.uses.some(u => useMatchesRef(u.key, p.ref)));
+    assert.equal(own.length, b.recipeTiles!.lookPands, b.slug);
+    for (const p of Object.values(pands)) assert.ok(b.recipeTiles!.tiles.includes(p.tile), `${b.slug} ${p.tile}`);
+  }
+  for (const [code] of data.recipeTileBuurten) assert.ok(existsSync(`public/data/extracts/amsterdam/explorer-recipe-pands/${code}.json`), code);
 });

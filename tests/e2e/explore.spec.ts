@@ -136,16 +136,31 @@ test('a deep link opens its building, and a click off the pins offers a request'
 });
 
 // Buurt looks (?buurt=<slug>): a buurt drawn from its own district recipes, shown in the same viewer.
-for (const slug of ['rijnbuurt-oost', 'bellamybuurt-zuid', 'osdorp-zuidoost']) {
-  test(`?buurt=${slug} shows that buurt's own look in 3D`, async ({ page, request }) => {
+// Live: the buurt's own recipes are in the published recipe tiles, drawn by the ride's own near tier. Chunk: they are
+// not (yet), so the installed chunk GLB stands in.
+for (const [slug, path] of [['rijnbuurt-oost', 'chunk'], ['bellamybuurt-zuid', 'chunk'], ['osdorp-zuidoost', 'live'], ['da-costabuurt-noord', 'live']] as const) {
+  test(`?buurt=${slug} shows that buurt's own look in 3D (${path})`, async ({ page, request }) => {
     const three = await boot(page, `?buurt=${slug}`);
     await expect(page.locator('#panel')).toBeVisible();
     await expect(page.locator('#look-details')).toBeVisible();
     await expect(page.locator('#model-details')).toBeHidden();
     await expect(page.locator('#p-kind')).toHaveText(/^Own look/);
     await expect(page.locator('#l-uses .use').first()).toHaveAttribute('aria-selected', 'true');
-    await expect(page.locator('#stage')).toHaveAttribute('data-state', 'ready', { timeout: 45_000 });
+    await expect(page.locator('#stage')).toHaveAttribute('data-state', 'ready', { timeout: 60_000 });
     expect(three.length).toBe(1);
+    await expect(page.locator('#stage-path')).toHaveAttribute('data-path', path);
+    await expect(page.locator('#stage-path')).toHaveText(path === 'live' ? 'Live recipe tiles · as the ride draws them' : 'Installed chunk GLB');
+    await expect(page.locator('#l-path-note')).toContainText(path === 'live' ? 'index.html?recipeTiles=1' : 'Installed chunk');
+    if (path === 'live') {
+      const stats = await page.evaluate(() => (window as any).__explorerLive.stats());
+      expect(stats.ready).toBeGreaterThan(0);
+      expect(stats.ready).toBe(stats.tiles.length);
+      expect(stats.errors).toEqual([]);
+      await expect(page.locator('canvas.viewer-canvas')).toHaveCount(0);
+      expect(await page.locator('#l-ride').getAttribute('href')).toMatch(/recipeTiles=1#race=/);
+    } else {
+      await expect(page.locator('#stage-map')).toBeHidden();
+    }
     await expect(page.locator('#l-sw-own .sw').first()).toBeVisible();
     await expect(page.locator('#l-sw-city .sw').first()).toBeAttached();
     await expect(page.locator('#l-licence-line')).toContainText('CC BY 4.0 · credit Canal Recall, 3DBAG, BAG and OpenStreetMap contributors');
@@ -164,6 +179,40 @@ for (const slug of ['rijnbuurt-oost', 'bellamybuurt-zuid', 'osdorp-zuidoost']) {
     expect(calls[0].id).toMatch(/^explore:look:[A-Z]{2}\d{2}$/);
   });
 }
+
+test('a pand picked in the live recipe tiles shows its recipe, layers and tints; a recipe tab highlights its pands', async ({ page }) => {
+  await boot(page, '?buurt=jacob-geelbuurt');
+  await expect(page.locator('#stage')).toHaveAttribute('data-state', 'ready', { timeout: 60_000 });
+  await expect(page.locator('#stage-path')).toHaveAttribute('data-path', 'live');
+  // Find a screen point over a recipe-tile building through the runtime's own picking.
+  const hit = await page.evaluate(() => {
+    const live = (window as any).__explorerLive, c = live.map.getCanvas(), w = c.clientWidth, h = c.clientHeight, box = c.getBoundingClientRect();
+    // A point the canvas itself receives (not under the badges), over a recipe-tile building.
+    for (let y = h * 0.3; y < h * 0.85; y += 10) for (let x = w * 0.15; x < w * 0.85; x += 10) {
+      if (document.elementFromPoint(box.left + x, box.top + y) !== c) continue;
+      if (live.tiles.inspectAtScreen(x, y, w, h)) return { x, y };
+    }
+    return null;
+  });
+  expect(hit).not.toBeNull();
+  // MapLibre's click, as a tap or a mouse click: down and up on the same point without moving.
+  const box = (await page.locator('#stage-map canvas').boundingBox())!;
+  await page.mouse.click(box.x + hit!.x, box.y + hit!.y);
+  await expect(page.locator('#l-pick')).toBeVisible();
+  await expect(page.locator('#l-pick-facts')).toContainText('Recipe');
+  await expect(page.locator('#l-pick-facts')).toContainText('type:nw-');
+  await expect(page.locator('#l-pick-slots .sw').first()).toBeVisible();
+  await expect(page.locator('#l-live-count')).toContainText('Picked building highlighted');
+  if (SHOTS) await page.screenshot({ path: `${SHOTS}/explore-${test.info().project.name}-look-live-pick.png` });
+  await page.locator('#l-uses .use').nth(1).click();
+  await expect(page.locator('#l-live-count')).toContainText(/\d+ pands? of this recipe highlighted/);
+  await page.locator('#l-live-count button').click();
+  await expect(page.locator('#l-pick')).toBeHidden();
+  // Leaving the look takes the live map down.
+  await page.locator('#close').click();
+  await expect(page.locator('#stage-map')).toBeHidden();
+  expect(await page.evaluate(() => (window as any).__explorerLive?.map?._removed)).toBe(true);
+});
 
 test('the rail offers a neighbourhood its look, says when there is none, and a model link leaves the look', async ({ page }) => {
   await boot(page, '?buurt=Rijnbuurt');
