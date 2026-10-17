@@ -50070,7 +50070,7 @@
           ctx.fillText(wrapText(ctx, this.routeTo.name, innerW, 1)[0], cardX + padX, top + 42);
           ctx.fillStyle = MUTED;
           ctx.font = "13px system-ui, sans-serif";
-          ctx.fillText(`${this.routeFrom.name}  \u2192  ${this.routeTo.name}`, cardX + padX, top + 64);
+          ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  \u2192  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64);
         } });
         if (landmark && level2 < 3 || tour) {
           const photo = hasImage ? level2 >= 2 ? 64 : 88 : 0;
