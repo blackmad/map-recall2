@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## Stamps and tours in the ride (2026-10-17)
+
+Stamps: `collection.bundle.js` loads in the ride; `_recordArrival` stamps only
+when the arrival id equals the chosen destination (the 220 px nearest-landmark
+fallback never stamps); a one-line "NEW STAMP <name> · n of N" sits above the
+arrival card's buttons. Sync through the shared Firebase app
+(`stampSync.ts`), failures are console warnings and retried on next sign-in.
+/progress reads `canalRecall.poiStamps.v1` and the ride's pool snapshot
+(`canalRecall.poiStampPool.v1`, 377 places; 261 from the raw extract before
+the first ride). Tours: a picker beside Destination (titles only; blurbs name
+streets), `?tour=<id>` links from the landing Tours section, legs via
+`_launchPoiRoute(..., {explicitDestination})`, stop cards with the sourced
+why and source host, "Next stop", TOUR COMPLETE and a tour stamp. Stops whose
+name would answer a street question are hidden until arrival
+(`stopNameSpoils`; pinned: Golden Bend, Jodenbreestraat, Magere Brug, the
+markets). Phone: the setup footer clears the floating Report a problem button.
+`tours-stamps.spec` passes.
+
 ## Account chip, ride history, /progress; POI stamps and tours staged (2026-10-17)
 
 - One sign-in for the ride, the quiz and `/progress`: both use Firebase's

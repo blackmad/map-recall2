@@ -734,7 +734,10 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     as `APPCHECK_SITE_KEY`, App Check registration (monitor, then enforce);
     Firebase Auth authorized domains for `/quiz/`; attach `edumap.blackmad.com`
     so the 301 works; check query strings survive it.
-  - In flight: wiring stamps + a Tours picker into the ride.
+  - Tours: starting one saves Bike/Amsterdam/Surprise as the player's settings;
+    restore the previous settings after the tour. Home/Here starts don't apply.
+  - Stamp/route sync only tested with an in-memory fake; test with a real
+    sign-in once the rules are deployed.
   - Real Google sign-in across /ride, /quiz/ and /progress untested (lanes had
     no Firebase config). No account control while riding (by design so far).
   - Rules deploy needed for poiStamps (and the stricter gameSessions).
