@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
 import {chordOverFrontBump, frontBump, BUMP_MIN_DEPTH_M} from './bayOutline.ts';
-import {decidePand, fillPairs, rowCoherence, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
+import {decidePand, fillPairs, rowCoherence, rowExposure, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
 import {defaultTypeLoader} from './typeLibrary.ts';
 import type {StripPalette} from './stripPalette.ts';
 
@@ -106,6 +106,18 @@ test('doorsPairAcross: a flat front with an unread door meets the door of the er
   const plain = {...flat, match: {...flat.match!, doorsPairAcross: undefined}} as MatchableType;
   const ds2: Decision[] = [ds[0], ds[1], decidePand([plain], pand({pandId: '0363100012096263', bagBay: null}), 'b-096263', 'd'), decidePand([plain], pand({pandId: '0363100012149435', bagBay: null}), 'b-149435', 'd')];
   assert.equal(fillPairs(ds2, [erker, plain]), 0);
+});
+
+test('rowExposure: one trim gain for the row (Hoendiepstraat 5-35: 1.26-1.36 under the white attic, 0.82-0.88 where it is hidden)', () => {
+  const raw = '#4d4038', scaled = (g: number) => '#' + [0x4d, 0x40, 0x38].map(v => Math.round(v * g).toString(16).padStart(2, '0')).join('');
+  const evs = [1.36, 1.31, 0.82, 1.34, 0.88].map((g, k) => pand({pandId: `03631000120784${10 + k}`, strip: {...strip, palette: {...strip.palette, wall: raw, stucco: false}, wall: scaled(g)}}));
+  const painted = pand({pandId: '0363100012078499', strip: {...strip, palette: {...strip.palette, wall: '#e0dcd4', stucco: true}, wall: '#f0ece4'}});
+  const gain = rowExposure([...evs, painted])!;
+  assert.ok(gain.every(g => Math.abs(g - 1.31) < 0.02), `gain ${gain}`);
+  assert.equal(new Set(evs.map(e => e.strip!.wall)).size, 1, 'one brick, one wall colour');
+  assert.equal(evs[2].strip!.wallOwnGain, scaled(0.82));
+  assert.equal(painted.strip!.wall, '#f0ece4', 'a painted front keeps its own reading');
+  assert.equal(rowExposure(evs.slice(0, 3)), null, 'fewer than four pands: unchanged');
 });
 
 test('rowCoherence: a lone pand between two houses of one type takes theirs (Boterdiepstraat 23A-27)', () => {

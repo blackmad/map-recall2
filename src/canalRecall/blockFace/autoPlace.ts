@@ -103,6 +103,8 @@ export interface StripEvidence {
   palette: StripPalette;
   /** The wall colour normalised by the light trim (measureFacade `wall.hex`): exposure-independent, what the likeness gate compares. */
   wall: string | null;
+  /** `rowExposure` only: the pand's own trim-normalised wall before the row's gain replaced it. */
+  wallOwnGain?: string;
   skyline: Skyline | null;
   /** Body-band shares that are no evidence: the strip's grey placeholder and foliage. */
   voidShare: number; foliageShare: number;
@@ -284,7 +286,7 @@ export function decidePand(types: MatchableType[], ev: PandEvidence, slug: strin
   if (t.match?.mirrorForAccent && aSide) { if (aSide !== t.match.mirrorForAccent) placement.mirror = true; notes.push(`accent ${aSide}${placement.mirror ? ': mirrored' : ''}`); }
   else if (t.match?.mirrorForDoor) { if (s.doorSide && s.doorSide !== t.match.mirrorForDoor) placement.mirror = true; notes.push(`door ${s.doorSide ?? 'unread'}${placement.mirror ? ': mirrored' : ''}`); }
   else if (!trading && s.doorSide && grounds.includes(`door-${s.doorSide}`)) placement.ground = `door-${s.doorSide}`;
-  if (s.wall && !s.palette.stucco && s.foliageShare <= AUTO_PLACE.maxFoliage) placement.measuredPalette = {brick: s.wall, evidence: `strip ${s.date} span ${s.px.join('-')}: trim-normalised wall (buildingRecipe/measureFacade.ts)`};
+  if (s.wall && !s.palette.stucco && s.foliageShare <= AUTO_PLACE.maxFoliage) placement.measuredPalette = {brick: s.wall, evidence: `strip ${s.date} span ${s.px.join('-')}: ${s.wallOwnGain ? `raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain ${s.wallOwnGain})` : 'trim-normalised wall (buildingRecipe/measureFacade.ts)'}`};
   const crown = crownFor(t, s.skyline);
   if (crown.name !== Object.keys(t.crowns)[0]) placement.crown = crown.name;
   notes.push(crown.why);
@@ -307,6 +309,29 @@ export function crownFor(t: MatchableType, sky: Skyline | null): {name: string; 
     if (r.none ? !c : fits(r) || (!!r.alt && fits(r.alt))) return {name, why: `crown ${name}: skyline ${c ? `rise ${c.riseM} m, width ${c.widthM} m, top ${c.topWidthM} m` : 'no crown over the eaves'}`};
   }
   return {name: first, why: `crown ${first}: skyline ${c ? `rise ${c.riseM} m, width ${c.widthM} m, top ${c.topWidthM} m` : 'no crown'} matches no variant`};
+}
+
+/**
+ * One exposure for a row (auto-place `--row-exposure`). The trim normalisation of each pand's wall (measureFacade: the
+ * p97 light cells to 215/255) takes whatever is lightest in that pand for white, so on one strip of one brick the gain
+ * follows the house type, not the light: Hoendiepstraat 5-35 (2023-01-03) 1.26-1.36 under the white attic storey and
+ * 0.82-0.88 where a van or a tree covers it; Eemsstraat 6-36 1.35 at the white-framed erkers, 0.93 at the flat fronts.
+ * Here every unpainted pand with both readings takes its raw strip wall (stripPalette `wall`) times the median gain of
+ * the face, per channel, so a row keeps the differences in its bricks and loses those of its trim. Returns the gain, or
+ * null (nothing changed) with fewer than four such pands.
+ */
+export function rowExposure(evs: PandEvidence[]): [number, number, number] | null {
+  const rgb = (h: string) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const use = evs.filter(e => e.strip?.wall && e.strip.palette.wall && !e.strip.palette.stucco);
+  if (use.length < 4) return null;
+  const gains = use.map(e => { const w = rgb(e.strip!.wall!), r = rgb(e.strip!.palette.wall!); return w.map((v, c) => v / Math.max(1, r[c])); });
+  const median = (xs: number[]) => { const q = [...xs].sort((x, y) => x - y), m = q.length >> 1; return q.length % 2 ? q[m] : (q[m - 1] + q[m]) / 2; };
+  const gain = [0, 1, 2].map(c => +median(gains.map(g => g[c])).toFixed(3)) as [number, number, number];
+  for (const e of use) {
+    const r = rgb(e.strip!.palette.wall!), hex = '#' + r.map((v, c) => Math.min(255, Math.round(v * gain[c])).toString(16).padStart(2, '0')).join('');
+    e.strip!.wallOwnGain = e.strip!.wall!; e.strip!.wall = hex;
+  }
+  return gain;
 }
 
 /**
