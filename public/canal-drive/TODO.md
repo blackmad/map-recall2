@@ -867,6 +867,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   carriageways still redder than the orthophoto (a greyer tone that stays
   clear of `brick`); thin out zebras on dense crossing-node clusters
   (Linnaeusstraat); measure markings and tones on iPhone.
+- **Own look, after** (2026-10-17, HISTORY "coverage page shows buurten
+  with their own look"): archive the Bellamy/Hasebroek/Clercq face strips to
+  source-data (thumbnails read them from lane staging); photos missing for
+  nw-portiek-3st-blue-door, nw-garage-pair-balcony-5st,
+  nw-loggia-stack-flat-5st; kit renders missing for the 13 types no installed
+  chunk draws (Kinkerstraat, nassau-1900-*); row-house design renders need 8
+  candidate angles; landmark-gallery cards render only the ground plane in
+  headless Chrome.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
