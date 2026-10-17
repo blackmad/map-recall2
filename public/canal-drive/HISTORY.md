@@ -33,6 +33,19 @@ the default. Data: `explorer-looks.json` (165 KB, lazy) from
 `npm run build:explorer-looks` (`--check`). Existing `?buurt=<explorer
 neighbourhood>` filters still win.
 
+Follow-up the same day (the user expected the live recipe path): where a
+buurt's own recipes are in the published recipe tiles, the look view now
+runs the ride's own `SharedFrame` + `mountRecipeTiles` (same near tier,
+instancing and city-look layer/tint shading as `?recipeTiles=1`), badged
+"Live recipe tiles"; picking a pand shows its authoring ref, unit, tile and
+layer×tint swatches. Others fall back to the installed chunk GLB, badged so.
+Recipes are compiled offline (`compile-recipes.ts`); the browser only keeps
+the near 2×2 z16 block resident, instances units and shades — no in-browser
+recipe generation. Live today: 22 Nieuw-West buurten (complete) and the
+Bilderdijkstraat pilot (Da Costabuurt-Noord 48/78, -Zuid 9/10); the district
+type libraries (Rivierenbuurt, Spaarndammer, Indische, Bellamy, Oud-West)
+are chunk-only until compiled into tiles.
+
 ## Postcards need spaced recall (2026-10-17)
 
 The user found postcards too easy ("16 of 78" after little play). Before, any
