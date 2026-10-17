@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+## The Marnixstraat Europarking reads as the Waterkant (2026-10-17)
+
+User: the car park "really fails to get the look of waterkant". It was a
+large-tier recipe on the 3DBAG shell with 18 cm openings. Now a bespoke
+`europarking-marnixstraat`: two ramp drums (r 9.32 m, BAG circle fit), seven
+white rounded bands 1.28 m over 1.32 m dark slots (2.60 m pitch, measured
+from rectified panoramas), the deck block, a pillared undercroft (declared
+through-passages in its spec for the GLB audit), the Waterkant bar (teal
+front, green WATERKANT, striped awning) and its quay terrace; 28.5k tris,
+410 KB. New kit component `landmarks/openDeckStack.ts` (banded section swept
+along any outline; `test:open-deck-stack`, in check:canal). Replaces
+`ordinary-0363100012185422`; covers rebuilt. Kit still cannot: helical ramp
+slope, ramp interiors, parapet joints, the stencil font, quay tables outside
+BAG, night lighting.
+
 ## Tours lead in to their first stop (2026-10-17)
 
 User: tours "should maybe start from somewhere like ... central station or the
