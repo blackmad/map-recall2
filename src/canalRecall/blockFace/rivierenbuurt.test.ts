@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
 import {chordOverFrontBump, frontBump, BUMP_MIN_DEPTH_M} from './bayOutline.ts';
-import {decidePand, fillPairs, rowCoherence, rowExposure, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
+import {decidePand, fillPairs, medianGain, rowCoherence, rowExposure, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
 import {defaultTypeLoader} from './typeLibrary.ts';
 import type {StripPalette} from './stripPalette.ts';
 
@@ -118,6 +118,10 @@ test('rowExposure: one trim gain for the row (Hoendiepstraat 5-35: 1.26-1.36 und
   assert.equal(evs[2].strip!.wallOwnGain, scaled(0.82));
   assert.equal(painted.strip!.wall, '#f0ece4', 'a painted front keeps its own reading');
   assert.equal(rowExposure(evs.slice(0, 3)), null, 'fewer than four pands: unchanged');
+  // --row-exposure=date: the gain pooled over the day's faces (Eemsstraat and Hoendiepstraat 2-60 at 0.94) wins.
+  assert.deepEqual(medianGain([[0.93, 0.94, 0.95], [0.95, 0.94, 0.93], [1.33, 1.3, 1.32]]), [0.95, 0.94, 0.95]);
+  rowExposure(evs, [0.94, 0.94, 0.94]);
+  assert.equal(evs[0].strip!.wall, scaled(0.94));
 });
 
 test('rowCoherence: a lone pand between two houses of one type takes theirs (Boterdiepstraat 23A-27)', () => {

@@ -320,18 +320,29 @@ export function crownFor(t: MatchableType, sky: Skyline | null): {name: string; 
  * the face, per channel, so a row keeps the differences in its bricks and loses those of its trim. Returns the gain, or
  * null (nothing changed) with fewer than four such pands.
  */
-export function rowExposure(evs: PandEvidence[]): [number, number, number] | null {
-  const rgb = (h: string) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+export function rowExposure(evs: PandEvidence[], given?: [number, number, number]): [number, number, number] | null {
   const use = evs.filter(e => e.strip?.wall && e.strip.palette.wall && !e.strip.palette.stucco);
-  if (use.length < 4) return null;
-  const gains = use.map(e => { const w = rgb(e.strip!.wall!), r = rgb(e.strip!.palette.wall!); return w.map((v, c) => v / Math.max(1, r[c])); });
-  const median = (xs: number[]) => { const q = [...xs].sort((x, y) => x - y), m = q.length >> 1; return q.length % 2 ? q[m] : (q[m - 1] + q[m]) / 2; };
-  const gain = [0, 1, 2].map(c => +median(gains.map(g => g[c])).toFixed(3)) as [number, number, number];
+  if (!given && use.length < 4) return null;
+  const gain = given ?? medianGain(trimGains(evs));
   for (const e of use) {
-    const r = rgb(e.strip!.palette.wall!), hex = '#' + r.map((v, c) => Math.min(255, Math.round(v * gain[c])).toString(16).padStart(2, '0')).join('');
+    const r = hexRgb(e.strip!.palette.wall!), hex = '#' + r.map((v, c) => Math.min(255, Math.round(v * gain[c])).toString(16).padStart(2, '0')).join('');
     e.strip!.wallOwnGain = e.strip!.wall!; e.strip!.wall = hex;
   }
   return gain;
+}
+/** Per pand (unpainted, both readings): the trim normalisation's gain per channel, trim-normalised wall over raw strip wall. */
+export function trimGains(evs: PandEvidence[]): number[][] {
+  return evs.filter(e => e.strip?.wall && e.strip.palette.wall && !e.strip.palette.stucco)
+    .map(e => { const w = hexRgb(e.strip!.wall!), r = hexRgb(e.strip!.palette.wall!); return w.map((v, c) => v / Math.max(1, r[c])); });
+}
+/**
+ * The median per channel of many pands' gains. `--row-exposure=date` pools every face of the run photographed on one
+ * day: one light, one exposure (Hoendiepstraat 5-35's own median, 1.33, is its white attic storey; the other faces of
+ * 2023-01-03, Eemsstraat and Hoendiepstraat 2-60, read 0.94).
+ */
+export function medianGain(gains: number[][]): [number, number, number] {
+  const median = (xs: number[]) => { const q = [...xs].sort((x, y) => x - y), m = q.length >> 1; return q.length % 2 ? q[m] : (q[m - 1] + q[m]) / 2; };
+  return [0, 1, 2].map(c => +median(gains.map(g => g[c])).toFixed(3)) as [number, number, number];
 }
 
 /**
