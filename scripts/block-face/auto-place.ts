@@ -29,6 +29,7 @@ import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
 import {applyCrownPins, crownPinProblems, type CrownPin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
+import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
 import {FACES, STAGING} from './intake.ts';
 
@@ -240,6 +241,11 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const crownPins: CrownPin[] = existsSync(crownsFile) ? (await readJson(crownsFile)).pins : [];
   const pinProblems = crownPinProblems(crownPins, types);
   if (pinProblems.length) throw Error(`${crownsFile}: ${pinProblems.join('; ')}`);
+  // Door sides a reviewer pinned where the strip's door was not read (blockFace/reviewDoors.ts).
+  const doorsFile = path.join('scripts/block-face/buurten', `${buurt}-review-doors.json`);
+  const doorPins: DoorPin[] = existsSync(doorsFile) ? (await readJson(doorsFile)).pins : [];
+  const doorPinErrors = doorPinProblems(doorPins, types);
+  if (doorPinErrors.length) throw Error(`${doorsFile}: ${doorPinErrors.join('; ')}`);
   const {compileFace} = await import('./compile.ts');
   const {reviewFace} = process.argv.includes('--review') ? await import('./review.ts') : {reviewFace: null};
   const summary: any[] = [];
@@ -270,6 +276,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       return decidePand(types, ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date);
     });
     if (crownPins.length) { const pinned = applyCrownPins(f.id, decisions, crownPins, types); if (pinned.length) console.log(`${f.id}: crown pinned on ${pinned.length} pand(s)`); }
+    if (doorPins.length) { const pinned = applyDoorPins(decisions, doorPins, types); if (pinned.length) console.log(`${f.id}: door pinned on ${pinned.length} pand(s)`); }
     fillPairs(decisions, types);
     const rowSet = rowCoherence(decisions, types, evs, strip.date);
     const challengers = new Map<string, Record<string, number | null>>(), switched = new Set<string>();

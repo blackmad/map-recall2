@@ -102,6 +102,36 @@ test('Polanenstraat 237: a round-arched 0.9 m door at the party wall, no transom
   await compileBuilding(intent, factsOf('polanen-181-331', POLANEN));
 });
 
+test('stairLight: a glass-block ladder on the staircase axis, over the door canopy to the eaves (Houtrijkstraat 381)', () => {
+  const pand = '0363100012113918', facts = factsOf('houtrijk-335-409', pand);
+  const intent = house('spaarndammer-1933-stair-ladder', pand, 'Houtrijkstraat');
+  const {recipe, report} = fitIntent(intent, facts), f = report.fronts[0];
+  const lights = recipe.elevations[0].openings.value.filter(o => o.id.startsWith('stair-light'));
+  assert.equal(lights.length, 1);
+  const l = lights[0], floors = f.storeyHeightsM.reduce((a, h) => [...a, a[a.length - 1] + h], [0]);
+  assert.equal(l.widthM, 0.5);
+  assert.ok(Math.abs(l.bottomM - (floors[1] + 0.03 * f.storeyHeightsM[1])) < 0.01, `foot ${l.bottomM}`);
+  assert.ok(Math.abs(l.bottomM + l.heightM - (floors[3] + 0.85 * f.storeyHeightsM[3])) < 0.01, `head ${l.bottomM + l.heightM}`);
+  const door = recipe.elevations[0].openings.value.find(o => o.id === 'door')!;
+  assert.ok(Math.abs(l.leftM + 0.25 - (door.leftM + door.widthM / 2)) < 0.05, 'on the door axis');
+  assert.ok(l.horizontalBars!.length >= 12 && l.horizontalBars!.length <= 15, `bars ${l.horizontalBars!.length}`);
+  assert.throws(() => house('spaarndammer-1933-stair-ladder', pand, 'Houtrijkstraat', fr => { fr.stairLight = {...fr.stairLight!, axis: 3}; }), /stairLight.axis/);
+  assert.throws(() => house('spaarndammer-1933-stair-ladder', pand, 'Houtrijkstraat', fr => { fr.stairLight = {...fr.stairLight!, to: [0, 0.95]}; }), /half a storey/);
+  assert.throws(() => house('spaarndammer-1933-stair-ladder', pand, 'Houtrijkstraat', fr => { fr.stairLight = {...fr.stairLight!, width: 0.5} as never; }), /stairLight/);
+  const twin = fitIntent(house('spaarndammer-1933-stair-ladder', pand, 'Houtrijkstraat', fr => { fr.stairLight = {...fr.stairLight!, breadth: 0.2, twin: 0.4}; }), facts);
+  const two = twin.recipe.elevations[0].openings.value.filter(o => o.id.startsWith('stair-light'));
+  assert.equal(two.length, 2);
+  assert.ok(Math.abs(two[1].leftM - two[0].leftM - 0.6) < 1e-6);
+  assert.deepEqual(mirrorFront(intent.fronts[0]).stairLight?.axis, 1);
+});
+
+test('stairLight: the door canopy still stands under the light (the light is not the door transom)', async () => {
+  const pand = '0363100012113918', built = await compileBuilding(house('spaarndammer-1933-stair-ladder', pand, 'Houtrijkstraat'), factsOf('houtrijk-335-409', pand));
+  const canopy = meshes(built.group, /^ground-canopy\//), light = meshes(built.group, /^opening\/stair-light-0\/frame$/);
+  assert.equal(canopy.length, 1);
+  assert.ok(box(canopy[0]).max.y < box(light[0]).min.y + 0.05, `canopy ${box(canopy[0]).max.y} under the light ${box(light[0]).min.y}`);
+});
+
 test('without the keys: the fit is unchanged', () => {
   const plain = (f: FrontIntent) => { delete f.brickStripes; delete f.lisenes; };
   const a = fitIntent(hembrug(plain), factsOf('hembrug-44-154', HEMBRUG));
