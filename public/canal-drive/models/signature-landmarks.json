@@ -49525,7 +49525,7 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "brick": "#a2856c",
+        "brick": "#a28382",
         "stone": "#e2d6bc",
         "frame": "#efece3",
         "glass": "#4f6270",
@@ -50874,7 +50874,7 @@
       "bytes": 496288,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "2fa730e7607e7112",
+        "sourceHash": "62bb1f9ad28b4c9b",
         "buildVersion": 2,
         "bytes": 126200,
         "triangles": 7337
