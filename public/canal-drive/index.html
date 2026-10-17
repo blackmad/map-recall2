@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="js/runtime-config.js"></script>
-<script src="js/monitoring.bundle.js"></script>
+<script>/* Sentry loads only once a DSN is configured, off the critical path. */(function(){var c=window.CANAL_RUNTIME_CONFIG;if(!c||!c.sentryDsn)return;var s=document.createElement("script");s.src="js/monitoring.bundle.js";s.async=true;document.head.appendChild(s);})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amsterdam Canal Recall</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
