@@ -55,9 +55,10 @@ export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as co
  * end house of a hood-lisene row); `casement-gridded-toplight-double` the same with a small-pane top light (two bars over
  * each light: J.F. Staal's 2.6 m windows on 68-92); `casement-pair` two side-hung casements with no top light (a mullion only);
  * `casement-small-panes` two casements glazed in small panes all over (bars at thirds across, a transom row under a top
- * light: Jan Evertsenstraat 45-53).
+ * light: Jan Evertsenstraat 45-53). `casement-sidelights-toplight` a wide fixed light between two narrow side lights under a
+ * top light across all three (bars at 0.14 and 0.86, a transom at 0.86: Polanenstraat 229-311, 1935).
  */
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes'] as const;
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight'] as const;
 export type WindowKind = typeof WINDOWS[number];
 /** `relieving`: a flat-headed window under a segmental relieving arch (brick tympanum), the 17th-c. canal front. */
 export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;

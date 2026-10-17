@@ -93,6 +93,12 @@ test('Polanenstraat 237: a round-arched 0.9 m door at the party wall, no transom
   assert.ok(Math.abs(door.bottomM + door.heightM - 2.6) < 0.05, `apex ${door.bottomM + door.heightM}`);
   assert.ok(!openings.some(o => o.id === 'door-transom'));
   assert.ok(door.leftM < 0.1, `at the party wall: ${door.leftM}`);
+  // casement-sidelights-toplight: side lights at 0.14/0.86 under one top light; bars 3.5 cm (5 cm bars on 1.45 m
+  // segments sit over the zfight-tight patch floor).
+  const wide = openings.find(o => o.id === 's1-b1')! as unknown as {verticalBars?: number[]; horizontalBars?: number[]; mullionWidthM?: number};
+  assert.deepEqual(wide.verticalBars, [0.14, 0.86]);
+  assert.deepEqual(wide.horizontalBars, [0.86]);
+  assert.equal(wide.mullionWidthM, 0.035);
   await compileBuilding(intent, factsOf('polanen-181-331', POLANEN));
 });
 
