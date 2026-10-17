@@ -141,6 +141,11 @@ Even green, Pages would not deploy: three sessions pushed more often than a CI
 run takes (~8 min) and `cancel-in-progress` cancelled every main run before it
 finished. CI now lets a main run finish (GitHub keeps one pending, the newest);
 pull requests still cancel.
+The first run allowed to finish then failed `check:landmark-inventory`: 309 of
+434 landmarks "first exported 2026-10-17". The gate dates a model by the commit
+that first added its GLB, and CI's shallow checkout had one commit. The
+check:canal job now checks out the history without blobs (`fetch-depth: 0`,
+`filter: blob:none`), and the gate refuses a shallow clone instead of misdating.
 
 ## Rivierenbuurt (Plan Zuid, 1934): 103 pands from six types (2026-10-17)
 
