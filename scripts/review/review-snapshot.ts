@@ -212,7 +212,6 @@ catch (e: any) {
     await fs.mkdir(path.dirname(p), { recursive: true });
     await fs.copyFile(path.join(path.resolve(directory), 'files', e.path), p, constants.COPYFILE_EXCL);
 } return v.manifest; }
-export const snapshotReviewData = createReviewSnapshot, verifySnapshot = verifyReviewSnapshot, restoreSnapshot = restoreReviewSnapshot;
 async function main() { const a = process.argv.slice(2), cmd = ['plan', 'write', 'verify', 'restore'].includes(a[0]) ? a.shift()! : 'plan'; let root = process.cwd(), out: string | undefined, snap: string | undefined; for (let i = 0; i < a.length; i++) {
     if (a[i] === '--root' && a[i + 1])
         root = a[++i];

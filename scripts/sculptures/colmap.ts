@@ -35,16 +35,6 @@ export async function readImages(dir: string): Promise<ColmapImage[]> {
   return out;
 }
 
-export function readPoints(dir: string): { xyz: V3; rgb: V3; error: number; track: number }[] {
-  const out: { xyz: V3; rgb: V3; error: number; track: number }[] = [];
-  for (const line of fs.readFileSync(path.join(dir, 'points3D.txt'), 'utf8').split('\n')) {
-    if (!line || line[0] === '#') continue;
-    const p = line.trim().split(/\s+/);
-    out.push({ xyz: [+p[1], +p[2], +p[3]], rgb: [+p[4], +p[5], +p[6]], error: +p[7], track: (p.length - 8) / 2 });
-  }
-  return out;
-}
-
 /** Project a world point with a SIMPLE_RADIAL / PINHOLE camera; null if behind. */
 export function project(img: ColmapImage, cam: ColmapCamera, X: V3): [number, number] | null {
   const R = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];

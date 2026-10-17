@@ -7,7 +7,7 @@
  * sidecar holds the mid-tier descriptor per pand.
  */
 import { createReadStream } from 'node:fs';
-import { mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { createInterface } from 'node:readline';
 import path from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';
@@ -193,7 +193,3 @@ export async function writeBagTiles(options: BagTileOptions): Promise<Record<str
 const emptyFacts: PandFacts = {
   heightM: null, eavesM: null, ridgeM: null, roofType: null, year: null, storeys: null, groundAreaM2: null, partyWallAreaM2: null,
 };
-
-export async function fileSize(file: string): Promise<number | null> {
-  return (await stat(file).catch(() => null))?.size ?? null;
-}
