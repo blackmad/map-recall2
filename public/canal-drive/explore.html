@@ -157,6 +157,55 @@ ul.rows { list-style: none; margin: 0; padding: 0; }
 /* The feedback module adds its own floating launcher; this page has buttons for it. */
 .cf-launch { display: none !important; }
 
+/* Buurt look view */
+.look-entry { margin: 4px 10px 6px; padding: 10px 12px; border: 1px dashed var(--line-strong); border-radius: 8px; background: var(--raised); }
+.look-entry-text { margin: 0; font-size: 13.5px; color: var(--muted); text-wrap: pretty; }
+.look-link { padding: 0; border: 0; background: none; color: var(--copper-ink); font-weight: 600; text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
+.look-buttons { display: grid; gap: 6px; margin-top: 8px; }
+.look-button { justify-content: space-between; width: 100%; text-align: left; }
+.look-button-meta { font: 500 12.5px/1 var(--body); letter-spacing: 0; text-transform: none; color: var(--muted); }
+.chip-look { background: #2f5d50; }
+.look-summary { margin: 10px 0 0; font-size: 14px; text-wrap: pretty; }
+.sub { margin: 18px 0 8px; font: 700 14px/1.1 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.uses { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x proximity; }
+.use { flex: none; display: grid; gap: 1px; min-width: 128px; max-width: 200px; min-height: 44px; padding: 7px 10px; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--page); text-align: left; cursor: pointer; scroll-snap-align: start; transition: border-color 140ms; }
+.use:hover { border-color: var(--copper); }
+.use[aria-selected="true"] { border-color: var(--copper); box-shadow: inset 0 0 0 1px var(--copper); background: var(--raised); }
+.use-kind { font: 700 11px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.use-name { font: 560 13.5px/1.25 var(--body); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.use-meta { font-size: 12px; color: var(--muted); }
+.recipe { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+.recipe h3 { margin: 0; font: 800 20px/1.05 var(--display); text-transform: uppercase; overflow-wrap: anywhere; }
+.recipe h4 { margin: 12px 0 6px; font: 700 12.5px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.recipe-desc { margin: 8px 0 0; font-size: 13.5px; text-wrap: pretty; }
+.compare-swatches { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px; }
+.sw-row { display: grid; gap: 3px; margin-bottom: 6px; }
+.sw-name { font-size: 12px; color: var(--muted); }
+.sw-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.sw-chips.compact { gap: 3px; }
+.sw-item { display: grid; justify-items: center; gap: 2px; }
+.sw { display: block; width: 26px; height: 26px; border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(31,28,23,.18); }
+.sw-chips.compact .sw { width: 16px; height: 16px; }
+.sw-role { font-size: 10.5px; color: var(--muted); }
+.tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 5px; }
+.tags li { padding: 3px 8px; border-radius: 4px; background: var(--day-fill); font-size: 12.5px; }
+.thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+.thumbs figure { margin: 0; }
+.thumbs img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; background: var(--sunk); }
+.thumbs figcaption { margin-top: 3px; font-size: 11.5px; color: var(--muted); }
+.look-compare { margin: 16px 0 0; font-size: 13.5px; }
+.look-all { margin-top: 16px; font-size: 13.5px; }
+.look-all summary { cursor: pointer; font-weight: 600; min-height: 32px; }
+.look-list { margin: 6px 0 0; padding-left: 18px; columns: 2; column-gap: 18px; }
+.look-list li { break-inside: avoid; margin-bottom: 3px; }
+.look-list li[aria-current] a { font-weight: 700; }
+.mut { color: var(--muted); }
+.note { margin: 6px 0 0; font-size: 12.5px; color: var(--muted); text-wrap: pretty; }
+.note a { color: var(--muted); }
+.stage[data-compact] { height: 64px; }
+.stage[data-compact] .viewer-canvas, .stage[data-compact] .stage-status { display: none; }
+.stage[data-state="empty"] .stage-status { inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; }
+
 .sheet-handle { display: none; }
 
 /* Phone: the map fills the screen; browsing is a bottom sheet, the building panel a taller one over it. */
@@ -188,6 +237,8 @@ ul.rows { list-style: none; margin: 0; padding: 0; }
   .details { padding: 16px 16px max(18px, env(safe-area-inset-bottom)); }
   .details h2 { font-size: 28px; }
   .actions { grid-template-columns: 1fr; }
+  .look-list { columns: 1; }
+  .compare-swatches { grid-template-columns: 1fr; gap: 0; }
 }
 @media (min-width: 760px) { .phone-top { display: none; } }
 </style>
@@ -223,6 +274,7 @@ ul.rows { list-style: none; margin: 0; padding: 0; }
     <div class="scroll">
       <ul class="rows" id="results" hidden aria-label="Search results"></ul>
       <div id="browse">
+        <div class="look-entry" id="look-entry" hidden></div>
         <div class="list-head">
           <h2 id="list-title">Loading…</h2>
           <div class="legend" aria-hidden="true"><span><i class="dot dot-landmark"></i>Landmark</span><span><i class="dot dot-ordinary"></i>Building</span><span><i class="dot dot-block"></i>Street</span></div>
@@ -252,7 +304,7 @@ ul.rows { list-style: none; margin: 0; padding: 0; }
       <p class="stage-status" id="stage-status" role="status" aria-live="polite"></p>
       <p class="stage-hint" aria-hidden="true">Drag to turn · scroll to zoom</p>
     </div>
-    <div class="details">
+    <div class="details" id="model-details">
       <h2 id="p-title"></h2>
       <p class="where" id="p-buurt"></p>
       <p class="facts" id="p-facts"></p>
@@ -271,6 +323,56 @@ ul.rows { list-style: none; margin: 0; padding: 0; }
         <button class="quiet" id="report" type="button">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4a1 1 0 0 1 .6-.9C5.6 2.6 7 2 9 2c3 0 4 2 7 2 1.5 0 2.7-.4 3.4-.7a.5.5 0 0 1 .6.5V15a1 1 0 0 1-.6.9c-.8.4-2 .9-3.4.9-3 0-4-2-7-2-2 0-3.4.6-4.4 1.1"/></svg>
           Report a problem with this building
+        </button>
+      </div>
+
+    </div>
+    <div class="details look-details" id="look-details" hidden>
+      <h2 id="l-title"></h2>
+      <p class="where" id="l-where"></p>
+      <p class="look-summary" id="l-summary"></p>
+      <div id="l-uses-wrap">
+        <h3 class="sub">Recipes drawn here</h3>
+        <div class="uses" id="l-uses" role="tablist" aria-label="Recipes of this buurt"></div>
+      </div>
+      <section class="recipe" id="l-recipe" aria-labelledby="l-r-title">
+        <h3 id="l-r-title"></h3>
+        <p class="facts" id="l-r-meta"></p>
+        <p class="facts" id="l-r-facts"></p>
+        <p class="recipe-desc" id="l-r-desc"></p>
+        <div class="compare-swatches">
+          <div><h4>This recipe</h4><div id="l-sw-own"></div></div>
+          <div><h4>City default</h4><div id="l-sw-city"></div></div>
+        </div>
+        <p class="note" id="l-sw-city-desc"></p>
+        <div id="l-kit">
+          <h4>Window, gable and roof kinds</h4>
+          <ul class="tags" id="l-kinds"></ul>
+          <div id="l-components-wrap"><h4>Kit components</h4><ul class="tags" id="l-components"></ul></div>
+        </div>
+        <div class="thumbs" id="l-thumbs"></div>
+        <div class="actions">
+          <button class="quiet small" id="l-open" type="button" hidden>Open this street frontage</button>
+          <a class="stamp" id="l-download" href="#" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            <span id="l-download-label">Download GLB</span>
+          </a>
+          <p class="note" id="l-licence-line">CC BY 4.0 · credit Canal Recall, 3DBAG, BAG and OpenStreetMap contributors; see <a href="credits.html">credits.html</a></p>
+        </div>
+      </section>
+      <p class="look-compare" id="l-compare" hidden></p>
+      <div id="l-models-wrap">
+        <h3 class="sub" id="l-models-title"></h3>
+        <ul class="rows" id="l-models"></ul>
+      </div>
+      <details class="look-all" id="l-all-wrap">
+        <summary>All buurten with their own look (<span id="l-all-count"></span>)</summary>
+        <ul class="look-list" id="l-all"></ul>
+      </details>
+      <div class="actions">
+        <button class="quiet" id="l-report" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4a1 1 0 0 1 .6-.9C5.6 2.6 7 2 9 2c3 0 4 2 7 2 1.5 0 2.7-.4 3.4-.7a.5.5 0 0 1 .6.5V15a1 1 0 0 1-.6.9c-.8.4-2 .9-3.4.9-3 0-4-2-7-2-2 0-3.4.6-4.4 1.1"/></svg>
+          Report a problem with this look
         </button>
       </div>
     </div>
