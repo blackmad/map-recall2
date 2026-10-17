@@ -1,0 +1,3575 @@
+{
+ "street": "Eemsstraat",
+ "seed": "0363100012148727",
+ "members": [
+  "0363100012140994",
+  "0363100012124657",
+  "0363100012061247",
+  "0363100012111889",
+  "0363100012121394",
+  "0363100012088569",
+  "0363100012094658",
+  "0363100012069912",
+  "0363100012149922",
+  "0363100012087051",
+  "0363100012138436",
+  "0363100012084686",
+  "0363100012104341",
+  "0363100012062063",
+  "0363100012063274",
+  "0363100012148727"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012140994 (face continues: 108991 085479 087247 102689 062893 072239 086312 135175 118899 070767 140279 097642 094555 131546 131457)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012148727 (face continues: 078784)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012065707",
+   "reason": "frontage 198.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012062319",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012062425",
+   "reason": "frontage 88.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012063519",
+   "reason": "frontage 43.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012063552",
+   "reason": "frontage 107.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012063738",
+   "reason": "frontage 181.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012064648",
+   "reason": "frontage 82.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012064932",
+   "reason": "frontage 107.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012065027",
+   "reason": "frontage 36.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012065304",
+   "reason": "frontage 182.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012065337",
+   "reason": "frontage 43.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012066229",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012067158",
+   "reason": "frontage 181.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012067390",
+   "reason": "frontage 44.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012068033",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012068358",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012069764",
+   "reason": "frontage 182.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012061318",
+   "reason": "frontage 119.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012061420",
+   "reason": "frontage 181.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012062445",
+   "reason": "frontage 177.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012062632",
+   "reason": "frontage 163.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012063384",
+   "reason": "frontage 59.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012063607",
+   "reason": "frontage 181.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012063638",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012063717",
+   "reason": "frontage 105.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012064217",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012064651",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012065041",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012065484",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012065564",
+   "reason": "frontage 44.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012065854",
+   "reason": "frontage 73.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012065978",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012066270",
+   "reason": "frontage 146.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012066278",
+   "reason": "frontage 82.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012066648",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012067519",
+   "reason": "frontage 181.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012067897",
+   "reason": "frontage 44.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012068366",
+   "reason": "frontage 103.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012069551",
+   "reason": "frontage 132.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012069853",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012073176",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012074421",
+   "reason": "frontage 73.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012075945",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012077429",
+   "reason": "frontage 218.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012078409",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012078537",
+   "reason": "frontage 37.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012078679",
+   "reason": "frontage 104.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012071190",
+   "reason": "sightline to Eemsstraat crosses 0363100012078784"
+  },
+  {
+   "pandId": "0363100012071397",
+   "reason": "frontage 74.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012071568",
+   "reason": "frontage 110.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012071778",
+   "reason": "frontage 44.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012071854",
+   "reason": "frontage 115.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012071875",
+   "reason": "frontage 74.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012072054",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012072132",
+   "reason": "frontage 73.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012072262",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012072520",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012072566",
+   "reason": "frontage 32.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012072934",
+   "reason": "frontage 175.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012073035",
+   "reason": "frontage 141.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012073305",
+   "reason": "frontage 145.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012073357",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012073665",
+   "reason": "frontage 91.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012073891",
+   "reason": "frontage 72.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012073917",
+   "reason": "frontage 72.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012074429",
+   "reason": "frontage 118.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012075286",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012075378",
+   "reason": "frontage 44.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012075379",
+   "reason": "frontage 92.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012075694",
+   "reason": "frontage 169.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012075850",
+   "reason": "frontage 75.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012076089",
+   "reason": "frontage 181.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012076687",
+   "reason": "frontage 42.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012076849",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012076998",
+   "reason": "frontage 47.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012077433",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012077471",
+   "reason": "frontage 86.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012077611",
+   "reason": "frontage 173.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012077861",
+   "reason": "frontage 106.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012078095",
+   "reason": "frontage 99.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012078514",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012078634",
+   "reason": "frontage 194.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012078686",
+   "reason": "frontage 153.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012078854",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012079232",
+   "reason": "frontage 105.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012080028",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012080362",
+   "reason": "frontage 102.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012080585",
+   "reason": "frontage 41.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012080688",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012081152",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012081666",
+   "reason": "frontage 73.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012081985",
+   "reason": "frontage 105.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012082341",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012082533",
+   "reason": "frontage 135.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012083666",
+   "reason": "frontage 33.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012084947",
+   "reason": "frontage 73.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012085962",
+   "reason": "frontage 105.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012079115",
+   "reason": "frontage 39.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012079412",
+   "reason": "frontage 79.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012079434",
+   "reason": "frontage 147.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012079538",
+   "reason": "frontage 72.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012079582",
+   "reason": "frontage 44.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012080140",
+   "reason": "frontage 150.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012080347",
+   "reason": "frontage 83.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012080465",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012080792",
+   "reason": "frontage 99.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012081170",
+   "reason": "frontage 94.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012081343",
+   "reason": "frontage 183.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012081899",
+   "reason": "frontage 105.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012081920",
+   "reason": "frontage 163.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012082003",
+   "reason": "frontage 72.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012082036",
+   "reason": "frontage 106.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012082589",
+   "reason": "frontage 44.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012082668",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012083172",
+   "reason": "frontage 111.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012083311",
+   "reason": "frontage 89.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012083971",
+   "reason": "frontage 174.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012084161",
+   "reason": "frontage 149.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012084349",
+   "reason": "frontage 111.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012084359",
+   "reason": "frontage 108.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012084920",
+   "reason": "frontage 168.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012085028",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012085092",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012085458",
+   "reason": "frontage 44.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012085658",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012085791",
+   "reason": "frontage 207.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012085930",
+   "reason": "frontage 55.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012086035",
+   "reason": "frontage 150.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012086190",
+   "reason": "frontage 37.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012086252",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012086703",
+   "reason": "frontage 43.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012088007",
+   "reason": "frontage 218.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012088520",
+   "reason": "frontage 218.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012089260",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012092096",
+   "reason": "frontage 182.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012093554",
+   "reason": "frontage 43.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012093666",
+   "reason": "frontage 181.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012094114",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012094215",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012094261",
+   "reason": "frontage 218.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012095439",
+   "reason": "frontage 43.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012086467",
+   "reason": "frontage 148.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012087129",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012088033",
+   "reason": "frontage 72.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012089332",
+   "reason": "frontage 74.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012089508",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012089873",
+   "reason": "frontage 122.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012090174",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012090493",
+   "reason": "frontage 151.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012090853",
+   "reason": "frontage 44.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012090890",
+   "reason": "frontage 114.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012091332",
+   "reason": "frontage 41.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012091702",
+   "reason": "frontage 33.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012091827",
+   "reason": "frontage 35.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012091907",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012092092",
+   "reason": "frontage 72.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012092116",
+   "reason": "frontage 184.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012092476",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012093003",
+   "reason": "frontage 112.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012093170",
+   "reason": "frontage 122.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012093399",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012093992",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012094485",
+   "reason": "frontage 72.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012094704",
+   "reason": "frontage 37.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012094871",
+   "reason": "frontage 158.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012095798",
+   "reason": "frontage 74.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012095914",
+   "reason": "frontage 181.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012096263",
+   "reason": "frontage 44.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012097239",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012097689",
+   "reason": "frontage 105.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012097792",
+   "reason": "frontage 43.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012097896",
+   "reason": "frontage 182.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012099539",
+   "reason": "frontage 73.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012100370",
+   "reason": "frontage 101.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012100604",
+   "reason": "frontage 218.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012100933",
+   "reason": "frontage 43.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012101367",
+   "reason": "frontage 73.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012101523",
+   "reason": "frontage 94.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012103864",
+   "reason": "frontage 73.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012096620",
+   "reason": "frontage 71.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012096625",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012096750",
+   "reason": "frontage 181.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012096779",
+   "reason": "frontage 124.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012096830",
+   "reason": "frontage 85.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012097047",
+   "reason": "frontage 165.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012097377",
+   "reason": "frontage 131.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012097378",
+   "reason": "frontage 104.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012097507",
+   "reason": "frontage 105.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012097543",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012097776",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012097998",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012098082",
+   "reason": "frontage 120.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012098452",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012098772",
+   "reason": "frontage 106.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012098862",
+   "reason": "frontage 119.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012099488",
+   "reason": "frontage 158.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012100011",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012100474",
+   "reason": "frontage 78.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012100758",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012100946",
+   "reason": "frontage 32.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012100968",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012101797",
+   "reason": "frontage 106.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012102097",
+   "reason": "frontage 171.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012102192",
+   "reason": "frontage 46.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012102622",
+   "reason": "frontage 138.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012102840",
+   "reason": "frontage 181.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012102848",
+   "reason": "frontage 44.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012103485",
+   "reason": "frontage 162.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012103891",
+   "reason": "frontage 170.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012103895",
+   "reason": "frontage 90.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012103970",
+   "reason": "frontage 72.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012104126",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012104713",
+   "reason": "frontage 181.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012105636",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012107119",
+   "reason": "frontage 73.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012107513",
+   "reason": "frontage 36.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012108229",
+   "reason": "frontage 105.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012109092",
+   "reason": "frontage 43.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012109098",
+   "reason": "frontage 73.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012110556",
+   "reason": "frontage 73.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012111742",
+   "reason": "frontage 73.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012104465",
+   "reason": "frontage 37.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012104647",
+   "reason": "frontage 74.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012104662",
+   "reason": "frontage 166.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012104968",
+   "reason": "frontage 73.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012105233",
+   "reason": "frontage 118.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012105279",
+   "reason": "frontage 104.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012105440",
+   "reason": "frontage 68.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012106302",
+   "reason": "frontage 158.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012106514",
+   "reason": "frontage 69.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012106683",
+   "reason": "frontage 139.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012107435",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012107502",
+   "reason": "frontage 72.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012107814",
+   "reason": "frontage 74.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012108118",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012108242",
+   "reason": "frontage 46.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012108358",
+   "reason": "frontage 105.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012108416",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012108515",
+   "reason": "frontage 183.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012108784",
+   "reason": "frontage 129.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012108993",
+   "reason": "frontage 66.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012109011",
+   "reason": "frontage 112.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012109535",
+   "reason": "frontage 38.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012109723",
+   "reason": "frontage 72.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012109950",
+   "reason": "frontage 108.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012109966",
+   "reason": "frontage 147.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012110148",
+   "reason": "frontage 113.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012110175",
+   "reason": "frontage 84.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012110931",
+   "reason": "frontage 75.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012111406",
+   "reason": "frontage 154.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012111616",
+   "reason": "frontage 37.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012111941",
+   "reason": "frontage 139.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012112680",
+   "reason": "frontage 44.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012112713",
+   "reason": "frontage 116.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012112754",
+   "reason": "frontage 157.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012113080",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012113100",
+   "reason": "frontage 105.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012113373",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012113468",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012113636",
+   "reason": "frontage 182.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012113872",
+   "reason": "frontage 73.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012114387",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012115174",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012115944",
+   "reason": "frontage 45.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012116530",
+   "reason": "frontage 102.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012119641",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012120231",
+   "reason": "frontage 73.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012121643",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012122882",
+   "reason": "frontage 105.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012122885",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012123557",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012123614",
+   "reason": "frontage 105.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012124046",
+   "reason": "frontage 36.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012113500",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012113609",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012114918",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012115000",
+   "reason": "frontage 104.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012115959",
+   "reason": "frontage 44.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012116105",
+   "reason": "frontage 136.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012117297",
+   "reason": "frontage 98.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012117321",
+   "reason": "frontage 167.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012117551",
+   "reason": "frontage 181.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012117743",
+   "reason": "frontage 97.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012117854",
+   "reason": "frontage 74.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012118414",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012118502",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012118934",
+   "reason": "frontage 126.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012119010",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012119253",
+   "reason": "frontage 81.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012120314",
+   "reason": "frontage 155.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012120634",
+   "reason": "frontage 199.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012121462",
+   "reason": "frontage 37.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012121859",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012121957",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012122479",
+   "reason": "sightline to Eemsstraat crosses 0363100012084259"
+  },
+  {
+   "pandId": "0363100012122943",
+   "reason": "frontage 74.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012123129",
+   "reason": "frontage 104.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012123137",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012123281",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012123435",
+   "reason": "frontage 118.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012123722",
+   "reason": "frontage 145.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012125154",
+   "reason": "frontage 218.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012125589",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012126062",
+   "reason": "frontage 39.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012128714",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012129373",
+   "reason": "frontage 37.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012130903",
+   "reason": "frontage 105.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012132775",
+   "reason": "frontage 34.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012133802",
+   "reason": "frontage 32.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012134798",
+   "reason": "frontage 73.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012135117",
+   "reason": "frontage 37.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012136351",
+   "reason": "frontage 105.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012136909",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012124136",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012124406",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012124733",
+   "reason": "frontage 44.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012125273",
+   "reason": "frontage 98.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012125569",
+   "reason": "frontage 64.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012125990",
+   "reason": "frontage 130.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012126807",
+   "reason": "frontage 40.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012127388",
+   "reason": "frontage 104.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012127484",
+   "reason": "frontage 77.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012128564",
+   "reason": "frontage 44.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012128708",
+   "reason": "frontage 73.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012128725",
+   "reason": "frontage 103.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012128792",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012129143",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012131067",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012131208",
+   "reason": "frontage 106.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012131670",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012131952",
+   "reason": "frontage 164.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012132023",
+   "reason": "frontage 148.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012132674",
+   "reason": "frontage 181.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012133136",
+   "reason": "frontage 34.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012134610",
+   "reason": "frontage 74.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012134631",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012135481",
+   "reason": "frontage 145.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012135514",
+   "reason": "frontage 37.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012135789",
+   "reason": "frontage 106.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012136339",
+   "reason": "frontage 87.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012137000",
+   "reason": "frontage 37.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012138811",
+   "reason": "frontage 34.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012139791",
+   "reason": "frontage 44.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012141123",
+   "reason": "frontage 181.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012142588",
+   "reason": "frontage 32.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012145095",
+   "reason": "frontage 41.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012146443",
+   "reason": "frontage 36.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012137183",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012137288",
+   "reason": "frontage 93.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012137485",
+   "reason": "frontage 108.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012137579",
+   "reason": "frontage 53.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012137783",
+   "reason": "frontage 44.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012138426",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012138552",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012138785",
+   "reason": "frontage 36.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012139012",
+   "reason": "frontage 72.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012139169",
+   "reason": "frontage 87.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012139506",
+   "reason": "frontage 72.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012139561",
+   "reason": "frontage 181.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012140075",
+   "reason": "frontage 44.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012140203",
+   "reason": "frontage 31.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012140377",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012140764",
+   "reason": "frontage 148.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012141047",
+   "reason": "frontage 95.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012141169",
+   "reason": "frontage 104.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012141360",
+   "reason": "frontage 37.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012141546",
+   "reason": "frontage 39.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012142115",
+   "reason": "frontage 44.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012142360",
+   "reason": "sightline to Eemsstraat crosses 0363100012065498"
+  },
+  {
+   "pandId": "0363100012142451",
+   "reason": "frontage 80.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012142506",
+   "reason": "frontage 104.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012142625",
+   "reason": "sightline to Eemsstraat crosses 0363100012071190"
+  },
+  {
+   "pandId": "0363100012142714",
+   "reason": "frontage 65.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012142760",
+   "reason": "frontage 72.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012142831",
+   "reason": "frontage 88.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012143290",
+   "reason": "sightline to Eemsstraat crosses 0363100012065498"
+  },
+  {
+   "pandId": "0363100012143645",
+   "reason": "frontage 104.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012143830",
+   "reason": "frontage 102.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012144140",
+   "reason": "frontage 133.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012144161",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012144333",
+   "reason": "frontage 83.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012144700",
+   "reason": "frontage 156.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012144753",
+   "reason": "frontage 161.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012144920",
+   "reason": "frontage 189.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012145504",
+   "reason": "frontage 126.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012146149",
+   "reason": "frontage 106.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012146544",
+   "reason": "frontage 218.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012146635",
+   "reason": "frontage 106.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012146777",
+   "reason": "frontage 36.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012147014",
+   "reason": "frontage 182.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012148704",
+   "reason": "frontage 182.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012150053",
+   "reason": "frontage 73.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012150494",
+   "reason": "frontage 182.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012151358",
+   "reason": "frontage 182.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012151628",
+   "reason": "frontage 73.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012152137",
+   "reason": "frontage 177.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012183273",
+   "reason": "sightline to Eemsstraat crosses 0363100012070767"
+  },
+  {
+   "pandId": "0363100012183494",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012183615",
+   "reason": "frontage 93.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012146886",
+   "reason": "frontage 73.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012147270",
+   "reason": "frontage 74.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012147318",
+   "reason": "frontage 104.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012147409",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012147681",
+   "reason": "frontage 107.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012147821",
+   "reason": "frontage 158.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012148100",
+   "reason": "frontage 104.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012148115",
+   "reason": "frontage 78.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012148743",
+   "reason": "frontage 102.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012148879",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012149151",
+   "reason": "frontage 181.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012149435",
+   "reason": "frontage 44.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012149484",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012149923",
+   "reason": "frontage 49.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012150135",
+   "reason": "frontage 142.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012150282",
+   "reason": "frontage 104.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012150503",
+   "reason": "frontage 109.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012150773",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012151457",
+   "reason": "frontage 106.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012151656",
+   "reason": "frontage 73.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012153909",
+   "reason": "frontage 120.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012154049",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012154553",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012154849",
+   "reason": "frontage 134.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012154964",
+   "reason": "frontage 72.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012155223",
+   "reason": "frontage 147.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012183166",
+   "reason": "frontage 95.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012183321",
+   "reason": "frontage 153.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012183404",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012183556",
+   "reason": "sightline to Eemsstraat crosses 0363100012124657"
+  },
+  {
+   "pandId": "0363100012183572",
+   "reason": "frontage 31.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012183642",
+   "reason": "frontage 93.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012183822",
+   "reason": "sightline to Eemsstraat crosses 0363100012087051"
+  },
+  {
+   "pandId": "0363100012184400",
+   "reason": "sightline to Eemsstraat crosses 0363100012131546"
+  },
+  {
+   "pandId": "0363100012186136",
+   "reason": "sightline to Eemsstraat crosses 0363100012131546"
+  },
+  {
+   "pandId": "0363100012186231",
+   "reason": "sightline to Eemsstraat crosses 0363100012097642"
+  },
+  {
+   "pandId": "0363100012186709",
+   "reason": "frontage 91.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012186871",
+   "reason": "frontage 94.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012186897",
+   "reason": "frontage 93.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012187730",
+   "reason": "frontage 167.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012191802",
+   "reason": "frontage 93.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012191975",
+   "reason": "frontage 104.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192032",
+   "reason": "frontage 93.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012183849",
+   "reason": "frontage 92.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012183940",
+   "reason": "frontage 57.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012184000",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012184182",
+   "reason": "sightline to Eemsstraat crosses 0363100012088569"
+  },
+  {
+   "pandId": "0363100012184336",
+   "reason": "frontage 105.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012184389",
+   "reason": "sightline to Eemsstraat crosses 0363100012111889"
+  },
+  {
+   "pandId": "0363100012184672",
+   "reason": "frontage 102.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012185879",
+   "reason": "frontage 92.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012185950",
+   "reason": "frontage 93.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012186189",
+   "reason": "frontage 97.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012186332",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012186371",
+   "reason": "frontage 95.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012186628",
+   "reason": "frontage 92.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012186661",
+   "reason": "frontage 90.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012186764",
+   "reason": "frontage 158.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012186795",
+   "reason": "frontage 95.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012187099",
+   "reason": "frontage 30.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012187790",
+   "reason": "frontage 91.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012187818",
+   "reason": "frontage 153.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012188277",
+   "reason": "frontage 31.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012188421",
+   "reason": "frontage 101.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012188652",
+   "reason": "frontage 95.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012189025",
+   "reason": "frontage 31.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012189363",
+   "reason": "frontage 93.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012189523",
+   "reason": "sightline to Eemsstraat crosses 0363100012088569"
+  },
+  {
+   "pandId": "0363100012189624",
+   "reason": "frontage 101.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012189654",
+   "reason": "frontage 196.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012190096",
+   "reason": "frontage 95.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012190173",
+   "reason": "frontage 92.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012190657",
+   "reason": "sightline to Eemsstraat crosses 0363100012104341"
+  },
+  {
+   "pandId": "0363100012190783",
+   "reason": "frontage 95.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012190801",
+   "reason": "frontage 61.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012190839",
+   "reason": "frontage 95.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012191095",
+   "reason": "frontage 92.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012191220",
+   "reason": "frontage 101.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012191244",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012191271",
+   "reason": "frontage 42.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012191381",
+   "reason": "frontage 113.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012191449",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012191851",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192344",
+   "reason": "frontage 30.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192456",
+   "reason": "frontage 92.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192591",
+   "reason": "frontage 167.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012193162",
+   "reason": "frontage 31.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012193302",
+   "reason": "frontage 167.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012193350",
+   "reason": "frontage 92.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012193831",
+   "reason": "frontage 167.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012194424",
+   "reason": "frontage 34.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012194771",
+   "reason": "frontage 33.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012195151",
+   "reason": "frontage 33.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012195314",
+   "reason": "frontage 30.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012195708",
+   "reason": "sightline to Eemsstraat crosses 0363100012118899"
+  },
+  {
+   "pandId": "0363100012196492",
+   "reason": "frontage 94.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012196650",
+   "reason": "frontage 92.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192065",
+   "reason": "sightline to Eemsstraat crosses 0363100012121394"
+  },
+  {
+   "pandId": "0363100012192091",
+   "reason": "frontage 31.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192281",
+   "reason": "frontage 34.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192541",
+   "reason": "frontage 100.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192542",
+   "reason": "frontage 98.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192543",
+   "reason": "frontage 90.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192544",
+   "reason": "frontage 88.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192545",
+   "reason": "frontage 176.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192546",
+   "reason": "frontage 164.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192547",
+   "reason": "frontage 161.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192548",
+   "reason": "frontage 124.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192549",
+   "reason": "frontage 115.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192550",
+   "reason": "frontage 112.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192551",
+   "reason": "frontage 179.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192552",
+   "reason": "frontage 152.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192553",
+   "reason": "frontage 149.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192554",
+   "reason": "frontage 141.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192555",
+   "reason": "frontage 139.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192556",
+   "reason": "frontage 129.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192557",
+   "reason": "frontage 78.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192558",
+   "reason": "frontage 76.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012192813",
+   "reason": "sightline to Eemsstraat crosses 0363100012063274"
+  },
+  {
+   "pandId": "0363100012193198",
+   "reason": "frontage 95.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012193452",
+   "reason": "frontage 93.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012193514",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012193534",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012194161",
+   "reason": "frontage 94.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012195020",
+   "reason": "frontage 49.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012195224",
+   "reason": "frontage 100.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012195352",
+   "reason": "frontage 82.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012195353",
+   "reason": "frontage 93.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012195633",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012195725",
+   "reason": "frontage 92.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012196116",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012196548",
+   "reason": "sightline to Eemsstraat crosses 0363100012154732"
+  },
+  {
+   "pandId": "0363100012196846",
+   "reason": "frontage 92.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012197051",
+   "reason": "frontage 167.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012198185",
+   "reason": "frontage 92.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012198329",
+   "reason": "frontage 31.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012198652",
+   "reason": "frontage 30.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012199687",
+   "reason": "frontage 93.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012199803",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012200216",
+   "reason": "sightline to Eemsstraat crosses 0363100012135175"
+  },
+  {
+   "pandId": "0363100012200564",
+   "reason": "sightline to Eemsstraat crosses 0363100012072239"
+  },
+  {
+   "pandId": "0363100012200687",
+   "reason": "sightline to Eemsstraat crosses 0363100012072239"
+  },
+  {
+   "pandId": "0363100012201440",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012201970",
+   "reason": "frontage 94.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012202241",
+   "reason": "frontage 34.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012203068",
+   "reason": "frontage 92.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012203289",
+   "reason": "frontage 30.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012203785",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012203886",
+   "reason": "frontage 95.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012196863",
+   "reason": "frontage 97.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012197424",
+   "reason": "frontage 95.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012197806",
+   "reason": "frontage 95.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012197976",
+   "reason": "frontage 92.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012198321",
+   "reason": "frontage 93.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012198580",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012199097",
+   "reason": "sightline to Eemsstraat crosses 0363100012138436"
+  },
+  {
+   "pandId": "0363100012199409",
+   "reason": "frontage 39.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012199472",
+   "reason": "frontage 45.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012199677",
+   "reason": "frontage 156.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012200396",
+   "reason": "frontage 95.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012200429",
+   "reason": "frontage 93.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012201119",
+   "reason": "sightline to Eemsstraat crosses 0363100012138436"
+  },
+  {
+   "pandId": "0363100012202061",
+   "reason": "frontage 88.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012202283",
+   "reason": "frontage 99.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012202525",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012202526",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012202592",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012203163",
+   "reason": "frontage 92.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012203240",
+   "reason": "frontage 39.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012203460",
+   "reason": "frontage 152.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012203526",
+   "reason": "frontage 92.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204195",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204338",
+   "reason": "sightline to Eemsstraat crosses 0363100012061247"
+  },
+  {
+   "pandId": "0363100012204514",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204515",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204516",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204517",
+   "reason": "frontage 130.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204518",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204519",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204520",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204521",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204522",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204523",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012205265",
+   "reason": "frontage 167.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012205652",
+   "reason": "frontage 94.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206190",
+   "reason": "frontage 94.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206522",
+   "reason": "frontage 33.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206869",
+   "reason": "sightline to Eemsstraat crosses 0363100012072239"
+  },
+  {
+   "pandId": "0363100012207602",
+   "reason": "frontage 94.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012208045",
+   "reason": "frontage 30.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012208115",
+   "reason": "sightline to Eemsstraat crosses 0363100012135175"
+  },
+  {
+   "pandId": "0363100012209095",
+   "reason": "sightline to Eemsstraat crosses 0363100012094555"
+  },
+  {
+   "pandId": "0363100012209524",
+   "reason": "frontage 91.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204524",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204525",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204526",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204527",
+   "reason": "frontage 129.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204528",
+   "reason": "frontage 124.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204529",
+   "reason": "frontage 123.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204530",
+   "reason": "frontage 111.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204531",
+   "reason": "frontage 114.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204532",
+   "reason": "frontage 119.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204533",
+   "reason": "frontage 118.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204534",
+   "reason": "frontage 115.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012204535",
+   "reason": "frontage 112.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012205177",
+   "reason": "frontage 104.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012205205",
+   "reason": "sightline to Eemsstraat crosses 0363100012061247"
+  },
+  {
+   "pandId": "0363100012205604",
+   "reason": "frontage 91.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206070",
+   "reason": "frontage 173.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206244",
+   "reason": "frontage 95.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206246",
+   "reason": "frontage 46.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206247",
+   "reason": "frontage 69.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206248",
+   "reason": "frontage 74.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206249",
+   "reason": "frontage 81.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206250",
+   "reason": "frontage 86.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206251",
+   "reason": "frontage 62.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206252",
+   "reason": "frontage 57.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206253",
+   "reason": "frontage 50.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206488",
+   "reason": "frontage 92.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012206839",
+   "reason": "frontage 92.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012207038",
+   "reason": "frontage 34.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012207318",
+   "reason": "frontage 30.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012207354",
+   "reason": "frontage 92.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012207600",
+   "reason": "frontage 95.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012207851",
+   "reason": "sightline to Eemsstraat crosses 0363100012069912"
+  },
+  {
+   "pandId": "0363100012207881",
+   "reason": "sightline to Eemsstraat crosses 0363100012149922"
+  },
+  {
+   "pandId": "0363100012208036",
+   "reason": "frontage 135.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012208208",
+   "reason": "frontage 33.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012208570",
+   "reason": "sightline to Eemsstraat crosses 0363100012084686"
+  },
+  {
+   "pandId": "0363100012208704",
+   "reason": "frontage 90.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012209221",
+   "reason": "frontage 184.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012209305",
+   "reason": "frontage 31.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012209563",
+   "reason": "frontage 95.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012209927",
+   "reason": "frontage 34.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012209957",
+   "reason": "frontage 30.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012210097",
+   "reason": "frontage 33.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012210196",
+   "reason": "frontage 167.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012210458",
+   "reason": "frontage 34.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012210825",
+   "reason": "frontage 31.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012212132",
+   "reason": "frontage 93.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012212448",
+   "reason": "sightline to Eemsstraat crosses 0363100012086312"
+  },
+  {
+   "pandId": "0363100012212533",
+   "reason": "sightline to Eemsstraat crosses 0363100012097642"
+  },
+  {
+   "pandId": "0363100012212534",
+   "reason": "sightline to Eemsstraat crosses 0363100012094555"
+  },
+  {
+   "pandId": "0363100012212535",
+   "reason": "sightline to Eemsstraat crosses 0363100012131546"
+  },
+  {
+   "pandId": "0363100012213074",
+   "reason": "frontage 94.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012213672",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012213973",
+   "reason": "frontage 89.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012214805",
+   "reason": "sightline to Eemsstraat crosses 0363100012070767"
+  },
+  {
+   "pandId": "0363100012215462",
+   "reason": "frontage 33.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012209861",
+   "reason": "frontage 101.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012209870",
+   "reason": "frontage 156.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012209992",
+   "reason": "sightline to Eemsstraat crosses 0363100012104341"
+  },
+  {
+   "pandId": "0363100012210301",
+   "reason": "sightline to Eemsstraat crosses 0363100012087051"
+  },
+  {
+   "pandId": "0363100012210451",
+   "reason": "frontage 34.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012210936",
+   "reason": "frontage 31.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012211373",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012211430",
+   "reason": "frontage 34.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012211433",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012211434",
+   "reason": "frontage 30.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012211599",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012211907",
+   "reason": "frontage 92.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012211960",
+   "reason": "frontage 31.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012212059",
+   "reason": "sightline to Eemsstraat crosses 0363100012062063"
+  },
+  {
+   "pandId": "0363100012212537",
+   "reason": "sightline to Eemsstraat crosses 0363100012140994"
+  },
+  {
+   "pandId": "0363100012212538",
+   "reason": "sightline to Eemsstraat crosses 0363100012124657"
+  },
+  {
+   "pandId": "0363100012212980",
+   "reason": "frontage 170.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012212981",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012212982",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012212983",
+   "reason": "frontage 170.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012212984",
+   "reason": "frontage 170.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012212985",
+   "reason": "frontage 170.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012213208",
+   "reason": "frontage 100.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012213658",
+   "reason": "frontage 151.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012214055",
+   "reason": "frontage 95.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012214137",
+   "reason": "frontage 115.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012214429",
+   "reason": "sightline to Eemsstraat crosses 0363100012094658"
+  },
+  {
+   "pandId": "0363100012214480",
+   "reason": "frontage 95.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012214608",
+   "reason": "frontage 93.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012214795",
+   "reason": "frontage 153.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012214875",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012215195",
+   "reason": "frontage 45.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012215487",
+   "reason": "frontage 97.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012215488",
+   "reason": "frontage 99.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012215511",
+   "reason": "frontage 34.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012216639",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012217689",
+   "reason": "sightline to Eemsstraat crosses 0363100012140279"
+  },
+  {
+   "pandId": "0363100012218342",
+   "reason": "frontage 36.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012219306",
+   "reason": "frontage 30.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012219734",
+   "reason": "frontage 33.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012220201",
+   "reason": "frontage 30.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012220442",
+   "reason": "frontage 167.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012220616",
+   "reason": "frontage 92.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012221070",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012221098",
+   "reason": "frontage 93.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012222106",
+   "reason": "frontage 31.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012222146",
+   "reason": "frontage 93.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012222675",
+   "reason": "sightline to Eemsstraat crosses 0363100012070767"
+  },
+  {
+   "pandId": "0363100012215512",
+   "reason": "frontage 30.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012215912",
+   "reason": "frontage 35.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012216048",
+   "reason": "sightline to Eemsstraat crosses 0363100012069912"
+  },
+  {
+   "pandId": "0363100012217257",
+   "reason": "frontage 95.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012217339",
+   "reason": "frontage 98.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012217672",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012217821",
+   "reason": "frontage 35.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012217848",
+   "reason": "sightline to Eemsstraat crosses 0363100012063274"
+  },
+  {
+   "pandId": "0363100012217895",
+   "reason": "frontage 31.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012218063",
+   "reason": "frontage 166.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012218079",
+   "reason": "frontage 95.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012218107",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012218142",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012219101",
+   "reason": "frontage 106.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012219472",
+   "reason": "sightline to Eemsstraat crosses 0363100012062063"
+  },
+  {
+   "pandId": "0363100012219528",
+   "reason": "frontage 106.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012219677",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012219689",
+   "reason": "frontage 30.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012220101",
+   "reason": "frontage 95.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012220170",
+   "reason": "frontage 151.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012220244",
+   "reason": "frontage 40.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012220431",
+   "reason": "frontage 95.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012220652",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012220958",
+   "reason": "frontage 106.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012221521",
+   "reason": "frontage 92.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012221699",
+   "reason": "sightline to Eemsstraat crosses 0363100012084686"
+  },
+  {
+   "pandId": "0363100012221785",
+   "reason": "frontage 149.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012221909",
+   "reason": "frontage 34.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012222621",
+   "reason": "frontage 93.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012222627",
+   "reason": "frontage 87.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012222817",
+   "reason": "sightline to Eemsstraat crosses 0363100012063274"
+  },
+  {
+   "pandId": "0363100012222881",
+   "reason": "frontage 93.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012223319",
+   "reason": "frontage 112.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012223382",
+   "reason": "frontage 39.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012223839",
+   "reason": "frontage 69.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012223995",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012224806",
+   "reason": "frontage 93.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012225184",
+   "reason": "frontage 92.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012225301",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012226287",
+   "reason": "frontage 92.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012230869",
+   "reason": "frontage 167.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012231111",
+   "reason": "frontage 30.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012231246",
+   "reason": "frontage 30.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012231570",
+   "reason": "frontage 33.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012231619",
+   "reason": "frontage 31.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012232493",
+   "reason": "frontage 36.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012232614",
+   "reason": "frontage 93.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012232812",
+   "reason": "frontage 33.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012224081",
+   "reason": "frontage 95.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012224083",
+   "reason": "frontage 31.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012224732",
+   "reason": "frontage 34.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012225098",
+   "reason": "frontage 95.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012225224",
+   "reason": "frontage 93.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012225804",
+   "reason": "frontage 153.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012226006",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012226044",
+   "reason": "frontage 153.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012226187",
+   "reason": "sightline to Eemsstraat crosses 0363100012063274"
+  },
+  {
+   "pandId": "0363100012226721",
+   "reason": "frontage 94.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012226893",
+   "reason": "frontage 156.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012226894",
+   "reason": "frontage 156.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012226895",
+   "reason": "frontage 156.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012227544",
+   "reason": "sightline to Eemsstraat crosses 0363100012121394"
+  },
+  {
+   "pandId": "0363100012227646",
+   "reason": "frontage 92.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012228703",
+   "reason": "frontage 160.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012228726",
+   "reason": "frontage 34.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012229136",
+   "reason": "frontage 92.2 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012229359",
+   "reason": "frontage 85.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012229440",
+   "reason": "sightline to Eemsstraat crosses 0363100012063274"
+  },
+  {
+   "pandId": "0363100012229465",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012229621",
+   "reason": "frontage 93.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012230398",
+   "reason": "sightline to Eemsstraat crosses 0363100012149922"
+  },
+  {
+   "pandId": "0363100012230462",
+   "reason": "frontage 95.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012230478",
+   "reason": "frontage 95.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012230507",
+   "reason": "frontage 94.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012230621",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012230647",
+   "reason": "frontage 95.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012230723",
+   "reason": "sightline to Eemsstraat crosses 0363100012154732"
+  },
+  {
+   "pandId": "0363100012230855",
+   "reason": "frontage 30.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012230948",
+   "reason": "frontage 73.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012231599",
+   "reason": "frontage 153.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012231735",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012231926",
+   "reason": "frontage 95.4 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012232284",
+   "reason": "frontage 179.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012232308",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012232509",
+   "reason": "frontage 89.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012232666",
+   "reason": "frontage 38.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012234458",
+   "reason": "frontage 170.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012235215",
+   "reason": "frontage 33.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012235476",
+   "reason": "sightline to Eemsstraat crosses 0363100012135175"
+  },
+  {
+   "pandId": "0363100012233063",
+   "reason": "frontage 30.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012233197",
+   "reason": "frontage 92.3 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012233782",
+   "reason": "frontage 94.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012233893",
+   "reason": "frontage 92.9 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012233993",
+   "reason": "frontage 152.8 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012234282",
+   "reason": "frontage 34.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012234421",
+   "reason": "no frontage on Eemsstraat: No footprint edge faces Eemsstraat"
+  },
+  {
+   "pandId": "0363100012234617",
+   "reason": "frontage 95.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012235271",
+   "reason": "frontage 93.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012235295",
+   "reason": "frontage 110.6 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012235588",
+   "reason": "frontage 33.1 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012235652",
+   "reason": "frontage 90.7 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012241083",
+   "reason": "sightline to Eemsstraat crosses 0363100012140994"
+  },
+  {
+   "pandId": "0363100012253621",
+   "reason": "sightline to Eemsstraat crosses 0363100012111889"
+  },
+  {
+   "pandId": "0363100012254918",
+   "reason": "frontage 93.5 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012572048",
+   "reason": "frontage 150.0 m from Eemsstraat"
+  },
+  {
+   "pandId": "0363100012066325",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065128",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065498",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070921",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012072303",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012077649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012071039",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012072982",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012084259",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086041",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087891",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088252",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092362",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088317",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088777",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089766",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096438",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103607",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103793",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012107697",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012109865",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012112801",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115651",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117378",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120213",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123124",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124333",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124537",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012127050",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131240",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132234",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133381",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138077",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140068",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147468",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154732",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233146",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100100091374",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012140994",
+   "alongM": -91.62,
+   "widthM": 6.07,
+   "eavesM": 12.42,
+   "roofMaxM": 12.45,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.07 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012124657",
+   "alongM": -85.55,
+   "widthM": 6.06,
+   "eavesM": 12.49,
+   "roofMaxM": 12.5,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012061247",
+   "alongM": -79.47,
+   "widthM": 6.1,
+   "eavesM": 12.45,
+   "roofMaxM": 12.58,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012111889",
+   "alongM": -73.5,
+   "widthM": 5.87,
+   "eavesM": 12.48,
+   "roofMaxM": 12.52,
+   "storeys3dbag": 0,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012121394",
+   "alongM": -67.28,
+   "widthM": 6.1,
+   "eavesM": 12.47,
+   "roofMaxM": 12.52,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.1 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012088569",
+   "alongM": -61.18,
+   "widthM": 6.1,
+   "eavesM": 12.28,
+   "roofMaxM": 12.32,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012094658",
+   "alongM": -55.09,
+   "widthM": 6.09,
+   "eavesM": 12.37,
+   "roofMaxM": 12.39,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012069912",
+   "alongM": -48.99,
+   "widthM": 6.1,
+   "eavesM": 12.53,
+   "roofMaxM": 12.58,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012149922",
+   "alongM": -42.84,
+   "widthM": 6.2,
+   "eavesM": 12.42,
+   "roofMaxM": 12.46,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.2 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012087051",
+   "alongM": -36.65,
+   "widthM": 6.19,
+   "eavesM": 12.44,
+   "roofMaxM": 12.45,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012138436",
+   "alongM": -30.5,
+   "widthM": 6.1,
+   "eavesM": 12.34,
+   "roofMaxM": 13.66,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012084686",
+   "alongM": -24.4,
+   "widthM": 6.1,
+   "eavesM": 12.38,
+   "roofMaxM": 12.39,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012104341",
+   "alongM": -18.19,
+   "widthM": 6.32,
+   "eavesM": 12.46,
+   "roofMaxM": 12.46,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.32 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012062063",
+   "alongM": -11.96,
+   "widthM": 6.12,
+   "eavesM": 12.51,
+   "roofMaxM": 12.51,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012063274",
+   "alongM": -5.76,
+   "widthM": 6.28,
+   "eavesM": 12.54,
+   "roofMaxM": 12.55,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012148727",
+   "alongM": 0,
+   "widthM": 5.3,
+   "eavesM": 12.42,
+   "roofMaxM": 15.78,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

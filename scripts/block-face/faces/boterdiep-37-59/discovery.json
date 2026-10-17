@@ -1,0 +1,1216 @@
+{
+ "street": "Boterdiepstraat",
+ "seed": "0363100012107119",
+ "members": [
+  "0363100012072132",
+  "0363100012104968",
+  "0363100012151656",
+  "0363100012134798",
+  "0363100012099539",
+  "0363100012113872",
+  "0363100012084947",
+  "0363100012107119",
+  "0363100012081666",
+  "0363100012151628",
+  "0363100012110556",
+  "0363100012111742",
+  "0363100012074421"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012072132 (face continues: 107814 146886 147270 117854 071875 089332 065854 128708)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012074421 (face continues: 120231)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062425",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012064648"
+  },
+  {
+   "pandId": "0363100012062893",
+   "reason": "frontage 67.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012063158",
+   "reason": "frontage 77.2 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012063552",
+   "reason": "frontage 46.0 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012064648",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012120231"
+  },
+  {
+   "pandId": "0363100012065276",
+   "reason": "frontage 84.7 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012065549",
+   "reason": "frontage 39.0 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012066325",
+   "reason": "frontage 37.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012068033",
+   "reason": "frontage 43.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012068707",
+   "reason": "frontage 67.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012070767",
+   "reason": "frontage 67.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012072239",
+   "reason": "frontage 67.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012072303",
+   "reason": "frontage 37.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012077649",
+   "reason": "frontage 36.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012077660",
+   "reason": "frontage 67.7 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012077965",
+   "reason": "frontage 67.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012078679",
+   "reason": "frontage 43.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012080362",
+   "reason": "frontage 41.0 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012082533",
+   "reason": "frontage 73.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012085479",
+   "reason": "frontage 67.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012086312",
+   "reason": "frontage 67.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012087247",
+   "reason": "frontage 67.1 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012087891",
+   "reason": "frontage 33.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012064217",
+   "reason": "frontage 73.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012065041",
+   "reason": "frontage 73.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012065978",
+   "reason": "frontage 43.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012070921",
+   "reason": "frontage 37.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012071039",
+   "reason": "frontage 37.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012072982",
+   "reason": "frontage 36.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012078196",
+   "reason": "frontage 104.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012078514",
+   "reason": "frontage 73.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012078942",
+   "reason": "frontage 104.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012085028",
+   "reason": "frontage 73.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012086041",
+   "reason": "frontage 37.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012086252",
+   "reason": "frontage 73.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012087129",
+   "reason": "frontage 73.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012088252",
+   "reason": "frontage 33.0 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012088803",
+   "reason": "frontage 67.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012089260",
+   "reason": "frontage 73.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012089481",
+   "reason": "frontage 91.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012092362",
+   "reason": "frontage 37.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012094555",
+   "reason": "frontage 67.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012096438",
+   "reason": "frontage 37.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012097239",
+   "reason": "frontage 43.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012097642",
+   "reason": "frontage 67.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012100370",
+   "reason": "frontage 39.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012101523",
+   "reason": "frontage 33.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012102689",
+   "reason": "frontage 67.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012103607",
+   "reason": "frontage 37.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012105636",
+   "reason": "frontage 43.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012106279",
+   "reason": "frontage 80.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012106409",
+   "reason": "frontage 67.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012107363",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012088536"
+  },
+  {
+   "pandId": "0363100012107697",
+   "reason": "frontage 37.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012108991",
+   "reason": "frontage 67.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012109222",
+   "reason": "frontage 40.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012112731",
+   "reason": "frontage 100.7 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012114387",
+   "reason": "frontage 43.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012088777",
+   "reason": "frontage 37.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012088894",
+   "reason": "frontage 104.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012092476",
+   "reason": "frontage 43.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012097875",
+   "reason": "frontage 104.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012098244",
+   "reason": "frontage 104.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012103793",
+   "reason": "frontage 37.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012104126",
+   "reason": "frontage 73.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012108416",
+   "reason": "frontage 73.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012109865",
+   "reason": "frontage 37.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012112801",
+   "reason": "frontage 36.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012113609",
+   "reason": "frontage 43.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012115651",
+   "reason": "frontage 37.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012116530",
+   "reason": "frontage 41.0 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012117378",
+   "reason": "frontage 36.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012117775",
+   "reason": "frontage 88.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012118899",
+   "reason": "frontage 67.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012121197",
+   "reason": "frontage 94.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012121546",
+   "reason": "frontage 34.1 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012124333",
+   "reason": "frontage 36.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012131176",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012088536"
+  },
+  {
+   "pandId": "0363100012131546",
+   "reason": "frontage 67.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012131674",
+   "reason": "frontage 67.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012135175",
+   "reason": "frontage 67.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012136909",
+   "reason": "frontage 73.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012137156",
+   "reason": "frontage 104.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012138077",
+   "reason": "frontage 37.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012140279",
+   "reason": "frontage 67.0 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012146635",
+   "reason": "frontage 45.0 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012147468",
+   "reason": "frontage 37.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012115000",
+   "reason": "frontage 43.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012119202",
+   "reason": "frontage 104.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012123124",
+   "reason": "frontage 35.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012127050",
+   "reason": "frontage 37.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012128058",
+   "reason": "frontage 104.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012132234",
+   "reason": "frontage 35.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012140377",
+   "reason": "frontage 43.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012140632",
+   "reason": "frontage 104.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012140702",
+   "reason": "frontage 104.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012141169",
+   "reason": "frontage 43.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012142458",
+   "reason": "frontage 104.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012143645",
+   "reason": "frontage 43.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012143830",
+   "reason": "frontage 40.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012144161",
+   "reason": "frontage 73.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012147318",
+   "reason": "frontage 43.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012148100",
+   "reason": "frontage 43.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012148743",
+   "reason": "frontage 41.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012149153",
+   "reason": "frontage 105.1 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012155133",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012088536"
+  },
+  {
+   "pandId": "0363100012186871",
+   "reason": "frontage 33.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012188457",
+   "reason": "frontage 88.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012192344",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012100933"
+  },
+  {
+   "pandId": "0363100012192456",
+   "reason": "frontage 31.2 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012193162",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012109092"
+  },
+  {
+   "pandId": "0363100012193350",
+   "reason": "frontage 31.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012194424",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012139791"
+  },
+  {
+   "pandId": "0363100012194771",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012063519"
+  },
+  {
+   "pandId": "0363100012195151",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012080585"
+  },
+  {
+   "pandId": "0363100012195314",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012086703"
+  },
+  {
+   "pandId": "0363100012196492",
+   "reason": "frontage 33.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012196650",
+   "reason": "frontage 31.2 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012198185",
+   "reason": "frontage 31.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012198329",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012097792"
+  },
+  {
+   "pandId": "0363100012198652",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012067390"
+  },
+  {
+   "pandId": "0363100012201970",
+   "reason": "frontage 33.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012202241",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012067390"
+  },
+  {
+   "pandId": "0363100012203068",
+   "reason": "frontage 31.2 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012203289",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012142115"
+  },
+  {
+   "pandId": "0363100012203800",
+   "reason": "frontage 89.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012205198",
+   "reason": "frontage 96.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012205264",
+   "reason": "frontage 90.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012150282",
+   "reason": "frontage 43.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012154553",
+   "reason": "frontage 73.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012154849",
+   "reason": "frontage 73.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012183321",
+   "reason": "frontage 91.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012183572",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012112680"
+  },
+  {
+   "pandId": "0363100012183849",
+   "reason": "frontage 31.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012185879",
+   "reason": "frontage 31.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012186628",
+   "reason": "frontage 31.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012187026",
+   "reason": "frontage 94.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012187514",
+   "reason": "frontage 91.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012188277",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012124733"
+  },
+  {
+   "pandId": "0363100012188652",
+   "reason": "frontage 33.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012189025",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012096263"
+  },
+  {
+   "pandId": "0363100012190173",
+   "reason": "frontage 30.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012191851",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012112680"
+  },
+  {
+   "pandId": "0363100012192091",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012085458"
+  },
+  {
+   "pandId": "0363100012192281",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012096263"
+  },
+  {
+   "pandId": "0363100012195725",
+   "reason": "frontage 30.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012196846",
+   "reason": "frontage 31.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012197424",
+   "reason": "frontage 33.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012197976",
+   "reason": "frontage 31.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012198580",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012082589"
+  },
+  {
+   "pandId": "0363100012204195",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012128564"
+  },
+  {
+   "pandId": "0363100012205523",
+   "reason": "frontage 91.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012205652",
+   "reason": "frontage 33.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012206190",
+   "reason": "frontage 33.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012206522",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012126062"
+  },
+  {
+   "pandId": "0363100012207602",
+   "reason": "frontage 33.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012208045",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012145095"
+  },
+  {
+   "pandId": "0363100012209927",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012065337"
+  },
+  {
+   "pandId": "0363100012209957",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012139791"
+  },
+  {
+   "pandId": "0363100012210097",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012093554"
+  },
+  {
+   "pandId": "0363100012210458",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012086703"
+  },
+  {
+   "pandId": "0363100012210825",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012093554"
+  },
+  {
+   "pandId": "0363100012213074",
+   "reason": "frontage 33.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012213973",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012111742"
+  },
+  {
+   "pandId": "0363100012215462",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012115944"
+  },
+  {
+   "pandId": "0363100012215511",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012100933"
+  },
+  {
+   "pandId": "0363100012215994",
+   "reason": "frontage 30.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012218342",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012115944"
+  },
+  {
+   "pandId": "0363100012219306",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012065337"
+  },
+  {
+   "pandId": "0363100012219734",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012145095"
+  },
+  {
+   "pandId": "0363100012220201",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012080585"
+  },
+  {
+   "pandId": "0363100012220616",
+   "reason": "frontage 30.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012221800",
+   "reason": "frontage 92.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012221822",
+   "reason": "frontage 98.7 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012222106",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012126062"
+  },
+  {
+   "pandId": "0363100012225184",
+   "reason": "frontage 31.2 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012226287",
+   "reason": "frontage 31.2 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012206244",
+   "reason": "frontage 33.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012207038",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012142115"
+  },
+  {
+   "pandId": "0363100012207318",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012149435"
+  },
+  {
+   "pandId": "0363100012207354",
+   "reason": "frontage 31.3 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012209305",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012065564"
+  },
+  {
+   "pandId": "0363100012209563",
+   "reason": "frontage 33.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012210451",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012065564"
+  },
+  {
+   "pandId": "0363100012211102",
+   "reason": "frontage 90.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012211430",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012090853"
+  },
+  {
+   "pandId": "0363100012211907",
+   "reason": "frontage 30.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012211960",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012128564"
+  },
+  {
+   "pandId": "0363100012212074",
+   "reason": "frontage 94.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012213347",
+   "reason": "frontage 94.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012214795",
+   "reason": "frontage 91.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012217257",
+   "reason": "frontage 33.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012218142",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012085458"
+  },
+  {
+   "pandId": "0363100012219689",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012090853"
+  },
+  {
+   "pandId": "0363100012220431",
+   "reason": "frontage 33.7 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012221189",
+   "reason": "frontage 94.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012221521",
+   "reason": "frontage 30.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012221909",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012149435"
+  },
+  {
+   "pandId": "0363100012224081",
+   "reason": "frontage 33.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012224083",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012082589"
+  },
+  {
+   "pandId": "0363100012224732",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012124733"
+  },
+  {
+   "pandId": "0363100012225804",
+   "reason": "frontage 91.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012231111",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012095439"
+  },
+  {
+   "pandId": "0363100012231246",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012115944"
+  },
+  {
+   "pandId": "0363100012231570",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012097792"
+  },
+  {
+   "pandId": "0363100012231619",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012063519"
+  },
+  {
+   "pandId": "0363100012232493",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012115944"
+  },
+  {
+   "pandId": "0363100012232812",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012095439"
+  },
+  {
+   "pandId": "0363100012233146",
+   "reason": "frontage 30.5 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012235001",
+   "reason": "frontage 84.9 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012235215",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012109092"
+  },
+  {
+   "pandId": "0363100012226721",
+   "reason": "frontage 33.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012226893",
+   "reason": "frontage 94.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012228726",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012115959"
+  },
+  {
+   "pandId": "0363100012229136",
+   "reason": "frontage 30.8 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012229738",
+   "reason": "frontage 94.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012230462",
+   "reason": "frontage 33.7 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012230647",
+   "reason": "frontage 33.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012233063",
+   "reason": "sightline to Boterdiepstraat crosses 0363100012115959"
+  },
+  {
+   "pandId": "0363100012233993",
+   "reason": "frontage 91.4 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012234617",
+   "reason": "frontage 33.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012235535",
+   "reason": "frontage 94.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012235536",
+   "reason": "frontage 95.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012235537",
+   "reason": "frontage 94.6 m from Boterdiepstraat"
+  },
+  {
+   "pandId": "0363100012063519",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065337",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012067390",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080585",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086703",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065564",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012082589",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012085458",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088536",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012093554",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095439",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097792",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100933",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012109092",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090853",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096263",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012112680",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115944",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012126062",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139791",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145095",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115959",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124733",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012128564",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142115",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149435",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012072132",
+   "alongM": -42.72,
+   "widthM": 6.11,
+   "eavesM": 12.37,
+   "roofMaxM": 12.4,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.11 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012104968",
+   "alongM": -36.61,
+   "widthM": 6.1,
+   "eavesM": 12.3,
+   "roofMaxM": 12.34,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.1 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012151656",
+   "alongM": -30.51,
+   "widthM": 6.1,
+   "eavesM": 12.31,
+   "roofMaxM": 12.34,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.1 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012134798",
+   "alongM": -24.41,
+   "widthM": 6.09,
+   "eavesM": 12.41,
+   "roofMaxM": 12.47,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.09 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012099539",
+   "alongM": -18.29,
+   "widthM": 6.15,
+   "eavesM": 12.41,
+   "roofMaxM": 12.5,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.15 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012113872",
+   "alongM": -12.19,
+   "widthM": 6.05,
+   "eavesM": 12.49,
+   "roofMaxM": 12.51,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.05 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012084947",
+   "alongM": -6.1,
+   "widthM": 6.12,
+   "eavesM": 12.45,
+   "roofMaxM": 12.52,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.12 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012107119",
+   "alongM": 0,
+   "widthM": 6.08,
+   "eavesM": 12.26,
+   "roofMaxM": 12.27,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.08 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012081666",
+   "alongM": 6.1,
+   "widthM": 6.11,
+   "eavesM": 12.36,
+   "roofMaxM": 14.77,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.11 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012151628",
+   "alongM": 12.21,
+   "widthM": 6.1,
+   "eavesM": 12.47,
+   "roofMaxM": 12.51,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.1 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012110556",
+   "alongM": 18.31,
+   "widthM": 6.1,
+   "eavesM": 12.29,
+   "roofMaxM": 12.34,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.1 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012111742",
+   "alongM": 24.41,
+   "widthM": 6.1,
+   "eavesM": 12.09,
+   "roofMaxM": 12.13,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.1 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012074421",
+   "alongM": 30.52,
+   "widthM": 6.12,
+   "eavesM": 12.13,
+   "roofMaxM": 12.16,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.12 m bay front; blockFace/bayOutline.ts)."
+   ]
+  }
+ ]
+}

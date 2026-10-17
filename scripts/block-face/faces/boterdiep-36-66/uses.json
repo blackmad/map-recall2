@@ -1,0 +1,271 @@
+{
+ "street": "Boterdiepstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T20:42:10.144Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012093554",
+   "addresses": [
+    "Boterdiepstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 66-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000594047"
+    },
+    {
+     "address": "Boterdiepstraat 66-H",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010012080841"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012097792",
+   "addresses": [
+    "Boterdiepstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 64-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000594044"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126062",
+   "addresses": [
+    "Boterdiepstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 62-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000594041"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063519",
+   "addresses": [
+    "Boterdiepstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 60-H",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000594038"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109092",
+   "addresses": [
+    "Boterdiepstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 58-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000594033"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095439",
+   "addresses": [
+    "Boterdiepstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000594027"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080585",
+   "addresses": [
+    "Boterdiepstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 54-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000594021"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145095",
+   "addresses": [
+    "Boterdiepstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 52-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000594015"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086703",
+   "addresses": [
+    "Boterdiepstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000594009"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012067390",
+   "addresses": [
+    "Boterdiepstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000594003"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065337",
+   "addresses": [
+    "Boterdiepstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000593997"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100933",
+   "addresses": [
+    "Boterdiepstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000593991"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012139791",
+   "addresses": [
+    "Boterdiepstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000593987"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012142115",
+   "addresses": [
+    "Boterdiepstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000593981"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012096263",
+   "addresses": [
+    "Boterdiepstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000593975"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149435",
+   "addresses": [
+    "Boterdiepstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000593969"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

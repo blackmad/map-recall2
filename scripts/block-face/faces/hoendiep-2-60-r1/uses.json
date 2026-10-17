@@ -1,0 +1,249 @@
+{
+ "street": "Hoendiepstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T20:41:21.927Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012141169",
+   "addresses": [
+    "Hoendiepstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000668555"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147318",
+   "addresses": [
+    "Hoendiepstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000668549"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150282",
+   "addresses": [
+    "Hoendiepstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000668542"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012140377",
+   "addresses": [
+    "Hoendiepstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000668536"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065978",
+   "addresses": [
+    "Hoendiepstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000668530"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113609",
+   "addresses": [
+    "Hoendiepstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000668524"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092476",
+   "addresses": [
+    "Hoendiepstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000668518"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012118414",
+   "addresses": [
+    "Hoendiepstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000668512"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114918",
+   "addresses": [
+    "Hoendiepstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000668506"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100758",
+   "addresses": [
+    "Hoendiepstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000668500"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065484",
+   "addresses": [
+    "Hoendiepstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000668494"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131067",
+   "addresses": [
+    "Hoendiepstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000668488"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012142506",
+   "addresses": [
+    "Hoendiepstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000668482"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108358",
+   "addresses": [
+    "Hoendiepstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000668476"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081899",
+   "addresses": [
+    "Hoendiepstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000668470"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

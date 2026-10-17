@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-16T16:25:38.242Z",
+ "generatedAt": "2026-10-17T07:21:30.071Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -32013,6 +32013,10499 @@
        "primitive": 16,
        "firstTriangle": 111,
        "triangleCount": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-boterdiep-3-59-r1",
+   "category": "street-survey",
+   "name": "face-boterdiep-3-59-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-boterdiep-3-59-r1.glb?asset=23c15e86bb9327b1",
+   "sha256": "23c15e86bb9327b1f672c09fc6664455df6ab78a6a0f90d3b2b3b08974211adc",
+   "bytes": 1433484,
+   "triangles": 21499,
+   "primitives": 21,
+   "instance": {
+    "anchor": [
+     4.909776227074372,
+     52.34247530662693
+    ],
+    "northOffsetDegrees": 77.0971,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -39.756,
+     0,
+     -13.21
+    ],
+    "max": [
+     39.653,
+     12.43,
+     1.351
+    ]
+   },
+   "height": 12.43,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012095798",
+    "NL.IMBAG.Pand.0363100012071397",
+    "NL.IMBAG.Pand.0363100012104647",
+    "NL.IMBAG.Pand.0363100012122943",
+    "NL.IMBAG.Pand.0363100012134610",
+    "NL.IMBAG.Pand.0363100012107814",
+    "NL.IMBAG.Pand.0363100012146886",
+    "NL.IMBAG.Pand.0363100012147270",
+    "NL.IMBAG.Pand.0363100012117854",
+    "NL.IMBAG.Pand.0363100012071875",
+    "NL.IMBAG.Pand.0363100012089332",
+    "NL.IMBAG.Pand.0363100012065854",
+    "NL.IMBAG.Pand.0363100012128708"
+   ],
+   "replaces": [
+    "ordinary-0363100012095798",
+    "ordinary-0363100012071397",
+    "ordinary-0363100012104647",
+    "ordinary-0363100012122943",
+    "ordinary-0363100012134610",
+    "ordinary-0363100012107814",
+    "ordinary-0363100012146886",
+    "ordinary-0363100012147270",
+    "ordinary-0363100012117854",
+    "ordinary-0363100012071875",
+    "ordinary-0363100012089332",
+    "ordinary-0363100012065854",
+    "ordinary-0363100012128708"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9098097,
+        52.3428466
+       ],
+       [
+        4.9097912,
+        52.342844
+       ],
+       [
+        4.9097916,
+        52.3428431
+       ],
+       [
+        4.909647,
+        52.3428229
+       ],
+       [
+        4.9096552,
+        52.3428009
+       ],
+       [
+        4.9096646,
+        52.3427759
+       ],
+       [
+        4.909667,
+        52.3427694
+       ],
+       [
+        4.9098301,
+        52.3427923
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9096846,
+        52.3427223
+       ],
+       [
+        4.909687,
+        52.3427158
+       ],
+       [
+        4.9098773,
+        52.3427425
+       ],
+       [
+        4.9098573,
+        52.3427959
+       ],
+       [
+        4.909667,
+        52.3427692
+       ],
+       [
+        4.9096753,
+        52.3427472
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9098501,
+        52.3427387
+       ],
+       [
+        4.909687,
+        52.3427158
+       ],
+       [
+        4.9096953,
+        52.3426938
+       ],
+       [
+        4.9097046,
+        52.3426689
+       ],
+       [
+        4.909707,
+        52.3426624
+       ],
+       [
+        4.90987,
+        52.3426853
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.90987,
+        52.3426853
+       ],
+       [
+        4.909707,
+        52.3426624
+       ],
+       [
+        4.9097153,
+        52.3426403
+       ],
+       [
+        4.9097246,
+        52.3426155
+       ],
+       [
+        4.909727,
+        52.342609
+       ],
+       [
+        4.90989,
+        52.3426319
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.90989,
+        52.3426319
+       ],
+       [
+        4.909727,
+        52.342609
+       ],
+       [
+        4.9097353,
+        52.3425867
+       ],
+       [
+        4.9097446,
+        52.3425619
+       ],
+       [
+        4.909747,
+        52.3425555
+       ],
+       [
+        4.90991,
+        52.3425784
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.90992,
+        52.3425807
+       ],
+       [
+        4.9099097,
+        52.3425792
+       ],
+       [
+        4.90991,
+        52.3425784
+       ],
+       [
+        4.909747,
+        52.3425555
+       ],
+       [
+        4.9097553,
+        52.3425331
+       ],
+       [
+        4.9097646,
+        52.3425084
+       ],
+       [
+        4.909767,
+        52.342502
+       ],
+       [
+        4.9099404,
+        52.3425262
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9099547,
+        52.3425282
+       ],
+       [
+        4.9097573,
+        52.3425007
+       ],
+       [
+        4.9097768,
+        52.3424473
+       ],
+       [
+        4.9099746,
+        52.3424751
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9099602,
+        52.3424731
+       ],
+       [
+        4.9097869,
+        52.3424488
+       ],
+       [
+        4.9097952,
+        52.3424263
+       ],
+       [
+        4.9098045,
+        52.3424017
+       ],
+       [
+        4.9098069,
+        52.3423953
+       ],
+       [
+        4.9099802,
+        52.3424196
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9099802,
+        52.3424196
+       ],
+       [
+        4.9098069,
+        52.3423953
+       ],
+       [
+        4.9098153,
+        52.3423727
+       ],
+       [
+        4.9098245,
+        52.3423482
+       ],
+       [
+        4.9098269,
+        52.3423417
+       ],
+       [
+        4.9100003,
+        52.3423661
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9100003,
+        52.3423661
+       ],
+       [
+        4.9098269,
+        52.3423417
+       ],
+       [
+        4.9098353,
+        52.3423193
+       ],
+       [
+        4.9098444,
+        52.3422949
+       ],
+       [
+        4.9098468,
+        52.3422884
+       ],
+       [
+        4.9100202,
+        52.3423127
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9100202,
+        52.3423127
+       ],
+       [
+        4.9098468,
+        52.3422884
+       ],
+       [
+        4.9098552,
+        52.3422659
+       ],
+       [
+        4.9098644,
+        52.3422415
+       ],
+       [
+        4.9098668,
+        52.342235
+       ],
+       [
+        4.9100214,
+        52.3422567
+       ],
+       [
+        4.9100218,
+        52.3422558
+       ],
+       [
+        4.9100405,
+        52.3422584
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9100214,
+        52.3422567
+       ],
+       [
+        4.9098668,
+        52.342235
+       ],
+       [
+        4.9098752,
+        52.3422125
+       ],
+       [
+        4.9098844,
+        52.342188
+       ],
+       [
+        4.9098868,
+        52.3421815
+       ],
+       [
+        4.9100414,
+        52.3422032
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9100414,
+        52.3422032
+       ],
+       [
+        4.9098868,
+        52.3421815
+       ],
+       [
+        4.9098951,
+        52.3421592
+       ],
+       [
+        4.9099043,
+        52.3421345
+       ],
+       [
+        4.9099068,
+        52.3421281
+       ],
+       [
+        4.9100614,
+        52.3421498
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "boterdiep-095798",
+     "pandId": "0363100012095798",
+     "buildingId": "NL.IMBAG.Pand.0363100012095798",
+     "address": "Boterdiepstraat 9",
+     "frontage": {
+      "x0": -39.663,
+      "x1": -33.55,
+      "widthM": 6.113
+     },
+     "bounds": {
+      "min": [
+       -39.756,
+       0,
+       -11.514
+      ],
+      "max": [
+       -33.55,
+       12.374,
+       0.605
+      ]
+     },
+     "triangles": 1667,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 342
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 17
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-071397",
+     "pandId": "0363100012071397",
+     "buildingId": "NL.IMBAG.Pand.0363100012071397",
+     "address": "Boterdiepstraat 11",
+     "frontage": {
+      "x0": -33.55,
+      "x1": -27.444,
+      "widthM": 6.106
+     },
+     "bounds": {
+      "min": [
+       -33.551,
+       0,
+       -12.143
+      ],
+      "max": [
+       -27.435,
+       12.396,
+       0.609
+      ]
+     },
+     "triangles": 1645,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 330
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 1064,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 198,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 17,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-104647",
+     "pandId": "0363100012104647",
+     "buildingId": "NL.IMBAG.Pand.0363100012104647",
+     "address": "Boterdiepstraat 13",
+     "frontage": {
+      "x0": -27.444,
+      "x1": -21.346,
+      "widthM": 6.098
+     },
+     "bounds": {
+      "min": [
+       -27.444,
+       0,
+       -11.505
+      ],
+      "max": [
+       -21.339,
+       12.374,
+       0.614
+      ]
+     },
+     "triangles": 1647,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 330
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 16,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 2128,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 396,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 24,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-122943",
+     "pandId": "0363100012122943",
+     "buildingId": "NL.IMBAG.Pand.0363100012122943",
+     "address": "Boterdiepstraat 15",
+     "frontage": {
+      "x0": -21.346,
+      "x1": -15.25,
+      "widthM": 6.096
+     },
+     "bounds": {
+      "min": [
+       -21.346,
+       0,
+       -11.5
+      ],
+      "max": [
+       -15.243,
+       12.398,
+       0.616
+      ]
+     },
+     "triangles": 1651,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 334
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 24,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 3192,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 594,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 33,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-134610",
+     "pandId": "0363100012134610",
+     "buildingId": "NL.IMBAG.Pand.0363100012134610",
+     "address": "Boterdiepstraat 17",
+     "frontage": {
+      "x0": -15.25,
+      "x1": -9.142,
+      "widthM": 6.108
+     },
+     "bounds": {
+      "min": [
+       -15.25,
+       0,
+       -11.497
+      ],
+      "max": [
+       -9.134,
+       12.396,
+       0.62
+      ]
+     },
+     "triangles": 1674,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 32,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 4256,
+       "triangleCount": 1088
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 792,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 42,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-107814",
+     "pandId": "0363100012107814",
+     "buildingId": "NL.IMBAG.Pand.0363100012107814",
+     "address": "Boterdiepstraat 19",
+     "frontage": {
+      "x0": -9.142,
+      "x1": -3.039,
+      "widthM": 6.103
+     },
+     "bounds": {
+      "min": [
+       -9.235,
+       0,
+       -12.214
+      ],
+      "max": [
+       -3.017,
+       12.309,
+       0.625
+      ]
+     },
+     "triangles": 1661,
+     "ranges": [
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 335
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 120,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 40,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 5344,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 996,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 50,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-146886",
+     "pandId": "0363100012146886",
+     "buildingId": "NL.IMBAG.Pand.0363100012146886",
+     "address": "Boterdiepstraat 21",
+     "frontage": {
+      "x0": -3.039,
+      "x1": 3.049,
+      "widthM": 6.088
+     },
+     "bounds": {
+      "min": [
+       -3.04,
+       0,
+       -13.21
+      ],
+      "max": [
+       3.05,
+       12.302,
+       1.351
+      ]
+     },
+     "triangles": 1711,
+     "ranges": [
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 409
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 144,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 12,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 48,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 6408,
+       "triangleCount": 1016
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1194,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 8,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 60,
+       "triangleCount": 43
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-147270",
+     "pandId": "0363100012147270",
+     "buildingId": "NL.IMBAG.Pand.0363100012147270",
+     "address": "Boterdiepstraat 23A",
+     "frontage": {
+      "x0": 3.042,
+      "x1": 9.148,
+      "widthM": 6.106
+     },
+     "bounds": {
+      "min": [
+       3.042,
+       0,
+       -12.206
+      ],
+      "max": [
+       9.156,
+       12.296,
+       0.633
+      ]
+     },
+     "triangles": 1639,
+     "ranges": [
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 168,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 14,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 56,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 7424,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 84,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1380,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 103,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-117854",
+     "pandId": "0363100012117854",
+     "buildingId": "NL.IMBAG.Pand.0363100012117854",
+     "address": "Boterdiepstraat 25",
+     "frontage": {
+      "x0": 9.148,
+      "x1": 15.256,
+      "widthM": 6.108
+     },
+     "bounds": {
+      "min": [
+       9.148,
+       0,
+       -12.202
+      ],
+      "max": [
+       15.265,
+       12.282,
+       0.637
+      ]
+     },
+     "triangles": 1635,
+     "ranges": [
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 320
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 192,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 16,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 64,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 8488,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 96,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1578,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 110,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-071875",
+     "pandId": "0363100012071875",
+     "buildingId": "NL.IMBAG.Pand.0363100012071875",
+     "address": "Boterdiepstraat 27",
+     "frontage": {
+      "x0": 15.256,
+      "x1": 21.345,
+      "widthM": 6.089
+     },
+     "bounds": {
+      "min": [
+       15.256,
+       0,
+       -12.199
+      ],
+      "max": [
+       21.354,
+       12.302,
+       0.641
+      ]
+     },
+     "triangles": 1656,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 330
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 216,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 18,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 72,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 9552,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 108,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1776,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 19,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 117,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-089332",
+     "pandId": "0363100012089332",
+     "buildingId": "NL.IMBAG.Pand.0363100012089332",
+     "address": "Boterdiepstraat 29",
+     "frontage": {
+      "x0": 21.345,
+      "x1": 27.441,
+      "widthM": 6.096
+     },
+     "bounds": {
+      "min": [
+       21.345,
+       0,
+       -12.195
+      ],
+      "max": [
+       27.549,
+       12.363,
+       0.645
+      ]
+     },
+     "triangles": 1651,
+     "ranges": [
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 334
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 240,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 20,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 80,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 10616,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 120,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1974,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 125,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-065854",
+     "pandId": "0363100012065854",
+     "buildingId": "NL.IMBAG.Pand.0363100012065854",
+     "address": "Boterdiepstraat 31",
+     "frontage": {
+      "x0": 27.441,
+      "x1": 33.542,
+      "widthM": 6.101
+     },
+     "bounds": {
+      "min": [
+       27.441,
+       0,
+       -10.88
+      ],
+      "max": [
+       33.549,
+       12.43,
+       0.648
+      ]
+     },
+     "triangles": 1619,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 325
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 264,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 22,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 88,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 11680,
+       "triangleCount": 1040
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 132,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 2172,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 29,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 134,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-128708",
+     "pandId": "0363100012128708",
+     "buildingId": "NL.IMBAG.Pand.0363100012128708",
+     "address": "Boterdiepstraat 33",
+     "frontage": {
+      "x0": 33.542,
+      "x1": 39.646,
+      "widthM": 6.104
+     },
+     "bounds": {
+      "min": [
+       33.542,
+       0,
+       -10.877
+      ],
+      "max": [
+       39.653,
+       12.395,
+       0.652
+      ]
+     },
+     "triangles": 1643,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 288,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 24,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 96,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 12720,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 144,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 2364,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 141,
+       "triangleCount": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-eems-6-78",
+   "category": "street-survey",
+   "name": "face-eems-6-78",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-eems-6-78.glb?asset=78fa965eaa5d6e76",
+   "sha256": "78fa965eaa5d6e7656bbaf8af3a1d4950558341737d7d2af735c13de877931be",
+   "bytes": 1381292,
+   "triangles": 20470,
+   "primitives": 23,
+   "instance": {
+    "anchor": [
+     4.908583406865096,
+     52.342449728264135
+    ],
+    "northOffsetDegrees": 257.0954,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -48.866,
+     0,
+     -13.341
+    ],
+    "max": [
+     48.955,
+     12.537,
+     0.751
+    ]
+   },
+   "height": 12.537,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012140994",
+    "NL.IMBAG.Pand.0363100012124657",
+    "NL.IMBAG.Pand.0363100012061247",
+    "NL.IMBAG.Pand.0363100012111889",
+    "NL.IMBAG.Pand.0363100012121394",
+    "NL.IMBAG.Pand.0363100012088569",
+    "NL.IMBAG.Pand.0363100012094658",
+    "NL.IMBAG.Pand.0363100012069912",
+    "NL.IMBAG.Pand.0363100012149922",
+    "NL.IMBAG.Pand.0363100012087051",
+    "NL.IMBAG.Pand.0363100012138436",
+    "NL.IMBAG.Pand.0363100012084686",
+    "NL.IMBAG.Pand.0363100012104341",
+    "NL.IMBAG.Pand.0363100012062063",
+    "NL.IMBAG.Pand.0363100012063274",
+    "NL.IMBAG.Pand.0363100012148727"
+   ],
+   "replaces": [
+    "ordinary-0363100012140994",
+    "ordinary-0363100012124657",
+    "ordinary-0363100012061247",
+    "ordinary-0363100012111889",
+    "ordinary-0363100012121394",
+    "ordinary-0363100012088569",
+    "ordinary-0363100012094658",
+    "ordinary-0363100012069912",
+    "ordinary-0363100012149922",
+    "ordinary-0363100012087051",
+    "ordinary-0363100012138436",
+    "ordinary-0363100012084686",
+    "ordinary-0363100012104341",
+    "ordinary-0363100012062063",
+    "ordinary-0363100012063274",
+    "ordinary-0363100012148727"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9087396,
+        52.3420331
+       ],
+       [
+        4.9087309,
+        52.3420565
+       ],
+       [
+        4.908724,
+        52.3420748
+       ],
+       [
+        4.9085556,
+        52.3420512
+       ],
+       [
+        4.9085756,
+        52.341998
+       ],
+       [
+        4.9087439,
+        52.3420217
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9087041,
+        52.342128
+       ],
+       [
+        4.9085357,
+        52.3421043
+       ],
+       [
+        4.9085556,
+        52.3420512
+       ],
+       [
+        4.908724,
+        52.3420748
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.908684,
+        52.3421814
+       ],
+       [
+        4.9085264,
+        52.3421592
+       ],
+       [
+        4.9085464,
+        52.3421058
+       ],
+       [
+        4.9087041,
+        52.342128
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9084804,
+        52.3422089
+       ],
+       [
+        4.9085004,
+        52.3421555
+       ],
+       [
+        4.908684,
+        52.3421814
+       ],
+       [
+        4.9086721,
+        52.3422133
+       ],
+       [
+        4.908664,
+        52.3422348
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9086508,
+        52.3422701
+       ],
+       [
+        4.908644,
+        52.3422882
+       ],
+       [
+        4.9084538,
+        52.3422614
+       ],
+       [
+        4.9084738,
+        52.342208
+       ],
+       [
+        4.908664,
+        52.3422348
+       ],
+       [
+        4.9086595,
+        52.3422469
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.908624,
+        52.3423416
+       ],
+       [
+        4.9084663,
+        52.3423194
+       ],
+       [
+        4.9084863,
+        52.342266
+       ],
+       [
+        4.908644,
+        52.3422882
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9086039,
+        52.342395
+       ],
+       [
+        4.9084463,
+        52.3423728
+       ],
+       [
+        4.9084663,
+        52.3423194
+       ],
+       [
+        4.908624,
+        52.3423416
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9083937,
+        52.3424216
+       ],
+       [
+        4.9084137,
+        52.3423682
+       ],
+       [
+        4.9086039,
+        52.3423949
+       ],
+       [
+        4.9085839,
+        52.3424484
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9085793,
+        52.3424606
+       ],
+       [
+        4.9085707,
+        52.3424836
+       ],
+       [
+        4.9085636,
+        52.3425026
+       ],
+       [
+        4.9084468,
+        52.3424862
+       ],
+       [
+        4.90845,
+        52.3424775
+       ],
+       [
+        4.9084143,
+        52.3424725
+       ],
+       [
+        4.9084314,
+        52.3424269
+       ],
+       [
+        4.9085839,
+        52.3424484
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9085432,
+        52.3425569
+       ],
+       [
+        4.9083907,
+        52.3425355
+       ],
+       [
+        4.9084042,
+        52.3424995
+       ],
+       [
+        4.9083903,
+        52.3424976
+       ],
+       [
+        4.9084004,
+        52.3424705
+       ],
+       [
+        4.90845,
+        52.3424775
+       ],
+       [
+        4.9084468,
+        52.3424862
+       ],
+       [
+        4.9085636,
+        52.3425026
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9085232,
+        52.3426104
+       ],
+       [
+        4.9084064,
+        52.342594
+       ],
+       [
+        4.9084091,
+        52.3425867
+       ],
+       [
+        4.9083734,
+        52.3425817
+       ],
+       [
+        4.9083907,
+        52.3425355
+       ],
+       [
+        4.9085432,
+        52.3425569
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9085031,
+        52.3426638
+       ],
+       [
+        4.9083367,
+        52.3426404
+       ],
+       [
+        4.9083595,
+        52.3425797
+       ],
+       [
+        4.9084091,
+        52.3425867
+       ],
+       [
+        4.9084064,
+        52.342594
+       ],
+       [
+        4.9085232,
+        52.3426104
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9084993,
+        52.3426741
+       ],
+       [
+        4.9084904,
+        52.3426978
+       ],
+       [
+        4.9084824,
+        52.3427192
+       ],
+       [
+        4.9083646,
+        52.3427026
+       ],
+       [
+        4.9083674,
+        52.3426952
+       ],
+       [
+        4.9083326,
+        52.3426903
+       ],
+       [
+        4.9083506,
+        52.3426423
+       ],
+       [
+        4.9085031,
+        52.3426638
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9084622,
+        52.3427728
+       ],
+       [
+        4.9083097,
+        52.3427513
+       ],
+       [
+        4.9083228,
+        52.3427165
+       ],
+       [
+        4.9083089,
+        52.3427146
+       ],
+       [
+        4.9083187,
+        52.3426884
+       ],
+       [
+        4.9083674,
+        52.3426952
+       ],
+       [
+        4.9083646,
+        52.3427026
+       ],
+       [
+        4.9084824,
+        52.3427192
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9084416,
+        52.3428278
+       ],
+       [
+        4.908284,
+        52.3428056
+       ],
+       [
+        4.9083046,
+        52.3427506
+       ],
+       [
+        4.9084622,
+        52.3427728
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9084316,
+        52.3428545
+       ],
+       [
+        4.9084226,
+        52.3428785
+       ],
+       [
+        4.9083487,
+        52.3428682
+       ],
+       [
+        4.9083517,
+        52.34286
+       ],
+       [
+        4.9083123,
+        52.3428545
+       ],
+       [
+        4.9083148,
+        52.3428478
+       ],
+       [
+        4.9082704,
+        52.3428416
+       ],
+       [
+        4.908284,
+        52.3428056
+       ],
+       [
+        4.9084416,
+        52.3428278
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "eems-140994",
+     "pandId": "0363100012140994",
+     "buildingId": "NL.IMBAG.Pand.0363100012140994",
+     "address": "Eemsstraat 36",
+     "frontage": {
+      "x0": -48.865,
+      "x1": -42.797,
+      "widthM": 6.068
+     },
+     "bounds": {
+      "min": [
+       -48.866,
+       0,
+       -11.812
+      ],
+      "max": [
+       -42.797,
+       12.44,
+       0.751
+      ]
+     },
+     "triangles": 1570,
+     "ranges": [
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-124657",
+     "pandId": "0363100012124657",
+     "buildingId": "NL.IMBAG.Pand.0363100012124657",
+     "address": "Eemsstraat 34",
+     "frontage": {
+      "x0": -42.797,
+      "x1": -36.732,
+      "widthM": 6.065
+     },
+     "bounds": {
+      "min": [
+       -42.797,
+       0,
+       -11.812
+      ],
+      "max": [
+       -36.732,
+       12.462,
+       0.75
+      ]
+     },
+     "triangles": 965,
+     "ranges": [
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 8,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1008,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 186,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 6,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-061247",
+     "pandId": "0363100012061247",
+     "buildingId": "NL.IMBAG.Pand.0363100012061247",
+     "address": "Eemsstraat 32",
+     "frontage": {
+      "x0": -36.732,
+      "x1": -30.636,
+      "widthM": 6.096
+     },
+     "bounds": {
+      "min": [
+       -36.732,
+       0,
+       -11.064
+      ],
+      "max": [
+       -30.635,
+       12.494,
+       0.75
+      ]
+     },
+     "triangles": 977,
+     "ranges": [
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 33
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 36,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1728,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 336,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 11,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-111889",
+     "pandId": "0363100012111889",
+     "buildingId": "NL.IMBAG.Pand.0363100012111889",
+     "address": "Eemsstraat 30",
+     "frontage": {
+      "x0": -30.636,
+      "x1": -24.539,
+      "widthM": 6.097
+     },
+     "bounds": {
+      "min": [
+       -30.636,
+       0,
+       -11.607
+      ],
+      "max": [
+       -24.539,
+       12.502,
+       0.751
+      ]
+     },
+     "triangles": 1573,
+     "ranges": [
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 317
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 64,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 2448,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 486,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 19,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-121394",
+     "pandId": "0363100012121394",
+     "buildingId": "NL.IMBAG.Pand.0363100012121394",
+     "address": "Eemsstraat 28",
+     "frontage": {
+      "x0": -24.539,
+      "x1": -18.443,
+      "widthM": 6.096
+     },
+     "bounds": {
+      "min": [
+       -24.541,
+       0,
+       -13.341
+      ],
+      "max": [
+       -18.443,
+       12.525,
+       0.751
+      ]
+     },
+     "triangles": 1529,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 340
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 82,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 3456,
+       "triangleCount": 960
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 672,
+       "triangleCount": 174
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 25,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-088569",
+     "pandId": "0363100012088569",
+     "buildingId": "NL.IMBAG.Pand.0363100012088569",
+     "address": "Eemsstraat 26",
+     "frontage": {
+      "x0": -18.443,
+      "x1": -12.348,
+      "widthM": 6.096
+     },
+     "bounds": {
+      "min": [
+       -18.444,
+       0,
+       -11.065
+      ],
+      "max": [
+       -12.348,
+       12.486,
+       0.75
+      ]
+     },
+     "triangles": 963,
+     "ranges": [
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 120,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 90,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 4416,
+       "triangleCount": 712
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 846,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 34,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-094658",
+     "pandId": "0363100012094658",
+     "buildingId": "NL.IMBAG.Pand.0363100012094658",
+     "address": "Eemsstraat 24",
+     "frontage": {
+      "x0": -12.348,
+      "x1": -6.253,
+      "widthM": 6.095
+     },
+     "bounds": {
+      "min": [
+       -12.349,
+       0,
+       -11.065
+      ],
+      "max": [
+       -6.252,
+       12.499,
+       0.75
+      ]
+     },
+     "triangles": 967,
+     "ranges": [
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 26
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 144,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 12,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 118,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 5128,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 994,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 39,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-069912",
+     "pandId": "0363100012069912",
+     "buildingId": "NL.IMBAG.Pand.0363100012069912",
+     "address": "Eemsstraat 22",
+     "frontage": {
+      "x0": -6.257,
+      "x1": -0.156,
+      "widthM": 6.101
+     },
+     "bounds": {
+      "min": [
+       -6.257,
+       0,
+       -13.303
+      ],
+      "max": [
+       -0.153,
+       12.507,
+       0.75
+      ]
+     },
+     "triangles": 1594,
+     "ranges": [
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 333
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 168,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 14,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 146,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 5848,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 84,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1144,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 44,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-149922",
+     "pandId": "0363100012149922",
+     "buildingId": "NL.IMBAG.Pand.0363100012149922",
+     "address": "Eemsstraat 20",
+     "frontage": {
+      "x0": -0.156,
+      "x1": 6.041,
+      "widthM": 6.197
+     },
+     "bounds": {
+      "min": [
+       -0.156,
+       0,
+       -10.706
+      ],
+      "max": [
+       6.041,
+       12.477,
+       0.751
+      ]
+     },
+     "triangles": 1566,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 320
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 192,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 16,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 164,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 6856,
+       "triangleCount": 1000
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 96,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1330,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 4,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 55,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-087051",
+     "pandId": "0363100012087051",
+     "buildingId": "NL.IMBAG.Pand.0363100012087051",
+     "address": "Eemsstraat 18",
+     "frontage": {
+      "x0": 6.041,
+      "x1": 12.236,
+      "widthM": 6.195
+     },
+     "bounds": {
+      "min": [
+       5.047,
+       0,
+       -11.675
+      ],
+      "max": [
+       12.236,
+       12.474,
+       0.751
+      ]
+     },
+     "triangles": 1047,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 31
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 216,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 18,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 172,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 7856,
+       "triangleCount": 776
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 108,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1514,
+       "triangleCount": 164
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 14,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 61,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-138436",
+     "pandId": "0363100012138436",
+     "buildingId": "NL.IMBAG.Pand.0363100012138436",
+     "address": "Eemsstraat 16",
+     "frontage": {
+      "x0": 12.236,
+      "x1": 18.34,
+      "widthM": 6.104
+     },
+     "bounds": {
+      "min": [
+       12.236,
+       0,
+       -10.705
+      ],
+      "max": [
+       18.341,
+       12.442,
+       0.751
+      ]
+     },
+     "triangles": 956,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 240,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 20,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 200,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 8632,
+       "triangleCount": 712
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 120,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1678,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 18,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 67,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-084686",
+     "pandId": "0363100012084686",
+     "buildingId": "NL.IMBAG.Pand.0363100012084686",
+     "address": "Eemsstraat 14",
+     "frontage": {
+      "x0": 18.34,
+      "x1": 24.438,
+      "widthM": 6.098
+     },
+     "bounds": {
+      "min": [
+       17.51,
+       0,
+       -11.674
+      ],
+      "max": [
+       24.438,
+       12.531,
+       0.75
+      ]
+     },
+     "triangles": 1605,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 318
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 264,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 22,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 228,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 9344,
+       "triangleCount": 1032
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 132,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1826,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 74,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-104341",
+     "pandId": "0363100012104341",
+     "buildingId": "NL.IMBAG.Pand.0363100012104341",
+     "address": "Eemsstraat 12",
+     "frontage": {
+      "x0": 24.438,
+      "x1": 30.763,
+      "widthM": 6.324
+     },
+     "bounds": {
+      "min": [
+       24.438,
+       0,
+       -10.705
+      ],
+      "max": [
+       30.763,
+       12.503,
+       0.751
+      ]
+     },
+     "triangles": 1568,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 322
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 288,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 24,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 246,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 10376,
+       "triangleCount": 1000
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 144,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 2018,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 22,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 81,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-062063",
+     "pandId": "0363100012062063",
+     "buildingId": "NL.IMBAG.Pand.0363100012062063",
+     "address": "Eemsstraat 10",
+     "frontage": {
+      "x0": 30.763,
+      "x1": 36.881,
+      "widthM": 6.119
+     },
+     "bounds": {
+      "min": [
+       29.914,
+       0,
+       -11.675
+      ],
+      "max": [
+       36.881,
+       12.501,
+       0.75
+      ]
+     },
+     "triangles": 1008,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 322,
+       "triangleCount": 32
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 312,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 26,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 254,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 11376,
+       "triangleCount": 744
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 156,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 2202,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 29,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 90,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-063274",
+     "pandId": "0363100012063274",
+     "buildingId": "NL.IMBAG.Pand.0363100012063274",
+     "address": "Eemsstraat 8",
+     "frontage": {
+      "x0": 36.881,
+      "x1": 43.161,
+      "widthM": 6.28
+     },
+     "bounds": {
+      "min": [
+       36.88,
+       0,
+       -11.065
+      ],
+      "max": [
+       43.161,
+       12.537,
+       0.751
+      ]
+     },
+     "triangles": 986,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 336,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 28,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 282,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 12120,
+       "triangleCount": 744
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 168,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 2358,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 96,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "eems-148727",
+     "pandId": "0363100012148727",
+     "buildingId": "NL.IMBAG.Pand.0363100012148727",
+     "address": "Eemsstraat 6",
+     "frontage": {
+      "x0": 43.161,
+      "x1": 48.955,
+      "widthM": 5.794
+     },
+     "bounds": {
+      "min": [
+       43.16,
+       0,
+       -11.066
+      ],
+      "max": [
+       48.955,
+       12.5,
+       0.751
+      ]
+     },
+     "triangles": 1596,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 341
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 360,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 30,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 310,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 12864,
+       "triangleCount": 1000
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 180,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 2514,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 33,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 98,
+       "triangleCount": 9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-hoendiep-2-60-r1",
+   "category": "street-survey",
+   "name": "face-hoendiep-2-60-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hoendiep-2-60-r1.glb?asset=1a1d9020106c7a16",
+   "sha256": "1a1d9020106c7a16612d1569a574fe0e417a30de13d1b61156cd11d32124c8d9",
+   "bytes": 1341608,
+   "triangles": 19726,
+   "primitives": 23,
+   "instance": {
+    "anchor": [
+     4.910347073433388,
+     52.34264228751349
+    ],
+    "northOffsetDegrees": 257.1257,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -45.774,
+     0,
+     -11.188
+    ],
+    "max": [
+     46.516,
+     14.485,
+     0.776
+    ]
+   },
+   "height": 14.485,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012141169",
+    "NL.IMBAG.Pand.0363100012147318",
+    "NL.IMBAG.Pand.0363100012150282",
+    "NL.IMBAG.Pand.0363100012140377",
+    "NL.IMBAG.Pand.0363100012065978",
+    "NL.IMBAG.Pand.0363100012113609",
+    "NL.IMBAG.Pand.0363100012092476",
+    "NL.IMBAG.Pand.0363100012118414",
+    "NL.IMBAG.Pand.0363100012114918",
+    "NL.IMBAG.Pand.0363100012100758",
+    "NL.IMBAG.Pand.0363100012065484",
+    "NL.IMBAG.Pand.0363100012131067",
+    "NL.IMBAG.Pand.0363100012142506",
+    "NL.IMBAG.Pand.0363100012108358",
+    "NL.IMBAG.Pand.0363100012081899"
+   ],
+   "replaces": [
+    "ordinary-0363100012141169",
+    "ordinary-0363100012147318",
+    "ordinary-0363100012150282",
+    "ordinary-0363100012140377",
+    "ordinary-0363100012065978",
+    "ordinary-0363100012113609",
+    "ordinary-0363100012092476",
+    "ordinary-0363100012118414",
+    "ordinary-0363100012114918",
+    "ordinary-0363100012100758",
+    "ordinary-0363100012065484",
+    "ordinary-0363100012131067",
+    "ordinary-0363100012142506",
+    "ordinary-0363100012108358",
+    "ordinary-0363100012081899"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9104879,
+        52.3422659
+       ],
+       [
+        4.9104789,
+        52.34229
+       ],
+       [
+        4.9104771,
+        52.3422947
+       ],
+       [
+        4.9103177,
+        52.3422724
+       ],
+       [
+        4.9103376,
+        52.3422189
+       ],
+       [
+        4.9104971,
+        52.3422413
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9104753,
+        52.3422995
+       ],
+       [
+        4.9104664,
+        52.3423233
+       ],
+       [
+        4.9104571,
+        52.3423482
+       ],
+       [
+        4.9102977,
+        52.3423258
+       ],
+       [
+        4.9103177,
+        52.3422724
+       ],
+       [
+        4.9104771,
+        52.3422947
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9104371,
+        52.3424016
+       ],
+       [
+        4.9102777,
+        52.3423793
+       ],
+       [
+        4.9102977,
+        52.3423258
+       ],
+       [
+        4.9104571,
+        52.3423482
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9104171,
+        52.342455
+       ],
+       [
+        4.9102578,
+        52.3424327
+       ],
+       [
+        4.9102777,
+        52.3423793
+       ],
+       [
+        4.9104371,
+        52.3424016
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9104079,
+        52.3424798
+       ],
+       [
+        4.9103988,
+        52.3425039
+       ],
+       [
+        4.9103971,
+        52.3425085
+       ],
+       [
+        4.9102377,
+        52.3424862
+       ],
+       [
+        4.9102578,
+        52.3424327
+       ],
+       [
+        4.9104171,
+        52.342455
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9103954,
+        52.3425131
+       ],
+       [
+        4.9103864,
+        52.3425372
+       ],
+       [
+        4.9103771,
+        52.3425619
+       ],
+       [
+        4.9102178,
+        52.3425396
+       ],
+       [
+        4.9102377,
+        52.3424862
+       ],
+       [
+        4.9103971,
+        52.3425085
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9103571,
+        52.3426154
+       ],
+       [
+        4.9101977,
+        52.342593
+       ],
+       [
+        4.9102178,
+        52.3425396
+       ],
+       [
+        4.9103771,
+        52.3425619
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9103372,
+        52.3426688
+       ],
+       [
+        4.9101777,
+        52.3426464
+       ],
+       [
+        4.9101977,
+        52.342593
+       ],
+       [
+        4.9103571,
+        52.3426154
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9103279,
+        52.3426935
+       ],
+       [
+        4.9103189,
+        52.3427177
+       ],
+       [
+        4.9103172,
+        52.3427222
+       ],
+       [
+        4.9101578,
+        52.3426999
+       ],
+       [
+        4.9101777,
+        52.3426464
+       ],
+       [
+        4.9103372,
+        52.3426688
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9103155,
+        52.3427268
+       ],
+       [
+        4.9103065,
+        52.3427508
+       ],
+       [
+        4.9102972,
+        52.3427757
+       ],
+       [
+        4.9101377,
+        52.3427533
+       ],
+       [
+        4.9101578,
+        52.3426999
+       ],
+       [
+        4.9103172,
+        52.3427222
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9102772,
+        52.3428291
+       ],
+       [
+        4.9101178,
+        52.3428068
+       ],
+       [
+        4.9101377,
+        52.3427533
+       ],
+       [
+        4.9102972,
+        52.3427757
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9102572,
+        52.3428826
+       ],
+       [
+        4.9100979,
+        52.3428602
+       ],
+       [
+        4.9101178,
+        52.3428068
+       ],
+       [
+        4.9102772,
+        52.3428291
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9102479,
+        52.3429074
+       ],
+       [
+        4.9102389,
+        52.3429315
+       ],
+       [
+        4.9102373,
+        52.3429358
+       ],
+       [
+        4.9100778,
+        52.3429134
+       ],
+       [
+        4.9100979,
+        52.3428602
+       ],
+       [
+        4.9102572,
+        52.3428826
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9102354,
+        52.3429409
+       ],
+       [
+        4.9102301,
+        52.3429548
+       ],
+       [
+        4.9102173,
+        52.3429892
+       ],
+       [
+        4.910064,
+        52.3429677
+       ],
+       [
+        4.910084,
+        52.3429143
+       ],
+       [
+        4.9102373,
+        52.3429358
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9101946,
+        52.3430498
+       ],
+       [
+        4.910085,
+        52.3430344
+       ],
+       [
+        4.9100936,
+        52.3430114
+       ],
+       [
+        4.9100499,
+        52.3430053
+       ],
+       [
+        4.910064,
+        52.3429677
+       ],
+       [
+        4.9102173,
+        52.3429892
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hoendiep-141169",
+     "pandId": "0363100012141169",
+     "buildingId": "NL.IMBAG.Pand.0363100012141169",
+     "address": "Hoendiepstraat 34",
+     "frontage": {
+      "x0": -45.774,
+      "x1": -39.673,
+      "widthM": 6.101
+     },
+     "bounds": {
+      "min": [
+       -45.774,
+       0,
+       -11.187
+      ],
+      "max": [
+       -39.672,
+       12.437,
+       0.775
+      ]
+     },
+     "triangles": 1618,
+     "ranges": [
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 322
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 1032
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-147318",
+     "pandId": "0363100012147318",
+     "buildingId": "NL.IMBAG.Pand.0363100012147318",
+     "address": "Hoendiepstraat 32",
+     "frontage": {
+      "x0": -39.673,
+      "x1": -33.572,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       -39.673,
+       0,
+       -11.187
+      ],
+      "max": [
+       -33.571,
+       12.448,
+       0.776
+      ]
+     },
+     "triangles": 1595,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 312
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 18,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 1032,
+       "triangleCount": 1032
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 192,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 9,
+       "triangleCount": 3
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-150282",
+     "pandId": "0363100012150282",
+     "buildingId": "NL.IMBAG.Pand.0363100012150282",
+     "address": "Hoendiepstraat 30",
+     "frontage": {
+      "x0": -33.572,
+      "x1": -27.472,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       -33.572,
+       0,
+       -11.182
+      ],
+      "max": [
+       -27.471,
+       12.453,
+       0.751
+      ]
+     },
+     "triangles": 987,
+     "ranges": [
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 36,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 2064,
+       "triangleCount": 744
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 384,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 12,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-140377",
+     "pandId": "0363100012140377",
+     "buildingId": "NL.IMBAG.Pand.0363100012140377",
+     "address": "Hoendiepstraat 28",
+     "frontage": {
+      "x0": -27.472,
+      "x1": -21.374,
+      "widthM": 6.098
+     },
+     "bounds": {
+      "min": [
+       -27.472,
+       0,
+       -11.181
+      ],
+      "max": [
+       -21.373,
+       12.499,
+       0.751
+      ]
+     },
+     "triangles": 986,
+     "ranges": [
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 64,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 2808,
+       "triangleCount": 744
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 540,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 17,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-065978",
+     "pandId": "0363100012065978",
+     "buildingId": "NL.IMBAG.Pand.0363100012065978",
+     "address": "Hoendiepstraat 26",
+     "frontage": {
+      "x0": -21.374,
+      "x1": -15.272,
+      "widthM": 6.102
+     },
+     "bounds": {
+      "min": [
+       -21.374,
+       0,
+       -11.187
+      ],
+      "max": [
+       -15.268,
+       12.471,
+       0.775
+      ]
+     },
+     "triangles": 1596,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 312
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 92,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 3552,
+       "triangleCount": 1032
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 696,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 19,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-113609",
+     "pandId": "0363100012113609",
+     "buildingId": "NL.IMBAG.Pand.0363100012113609",
+     "address": "Hoendiepstraat 24",
+     "frontage": {
+      "x0": -15.272,
+      "x1": -9.174,
+      "widthM": 6.098
+     },
+     "bounds": {
+      "min": [
+       -15.273,
+       0,
+       -11.187
+      ],
+      "max": [
+       -9.171,
+       12.444,
+       0.776
+      ]
+     },
+     "triangles": 1604,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 311
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 120,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 110,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 4584,
+       "triangleCount": 1032
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 888,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 7,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 23,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-092476",
+     "pandId": "0363100012092476",
+     "buildingId": "NL.IMBAG.Pand.0363100012092476",
+     "address": "Hoendiepstraat 22",
+     "frontage": {
+      "x0": -9.174,
+      "x1": -3.074,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       -9.174,
+       0,
+       -11.187
+      ],
+      "max": [
+       -3.073,
+       12.46,
+       0.749
+      ]
+     },
+     "triangles": 990,
+     "ranges": [
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 144,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 12,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 128,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 5616,
+       "triangleCount": 744
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1080,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 16,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 27,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-118414",
+     "pandId": "0363100012118414",
+     "buildingId": "NL.IMBAG.Pand.0363100012118414",
+     "address": "Hoendiepstraat 20",
+     "frontage": {
+      "x0": -3.074,
+      "x1": 3.027,
+      "widthM": 6.101
+     },
+     "bounds": {
+      "min": [
+       -3.074,
+       0,
+       -11.188
+      ],
+      "max": [
+       3.028,
+       12.45,
+       0.75
+      ]
+     },
+     "triangles": 982,
+     "ranges": [
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 168,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 14,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 156,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 6360,
+       "triangleCount": 744
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 84,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1236,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 29,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-114918",
+     "pandId": "0363100012114918",
+     "buildingId": "NL.IMBAG.Pand.0363100012114918",
+     "address": "Hoendiepstraat 18",
+     "frontage": {
+      "x0": 3.027,
+      "x1": 9.128,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       3.027,
+       0,
+       -11.187
+      ],
+      "max": [
+       9.129,
+       12.461,
+       0.775
+      ]
+     },
+     "triangles": 1596,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 312
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 192,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 16,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 184,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 7104,
+       "triangleCount": 1032
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 96,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1392,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 31,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-100758",
+     "pandId": "0363100012100758",
+     "buildingId": "NL.IMBAG.Pand.0363100012100758",
+     "address": "Hoendiepstraat 16",
+     "frontage": {
+      "x0": 9.128,
+      "x1": 15.228,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       9.127,
+       0,
+       -11.187
+      ],
+      "max": [
+       15.228,
+       14.485,
+       0.776
+      ]
+     },
+     "triangles": 1631,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 338
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 216,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 18,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 202,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 8136,
+       "triangleCount": 1032
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 108,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1584,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 19,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 35,
+       "triangleCount": 3
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-065484",
+     "pandId": "0363100012065484",
+     "buildingId": "NL.IMBAG.Pand.0363100012065484",
+     "address": "Hoendiepstraat 14",
+     "frontage": {
+      "x0": 15.228,
+      "x1": 21.327,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       15.228,
+       0,
+       -11.186
+      ],
+      "max": [
+       21.328,
+       12.491,
+       0.751
+      ]
+     },
+     "triangles": 992,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 240,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 20,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 220,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 9168,
+       "triangleCount": 744
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 120,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1776,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 26,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 38,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-131067",
+     "pandId": "0363100012131067",
+     "buildingId": "NL.IMBAG.Pand.0363100012131067",
+     "address": "Hoendiepstraat 12",
+     "frontage": {
+      "x0": 21.327,
+      "x1": 27.428,
+      "widthM": 6.101
+     },
+     "bounds": {
+      "min": [
+       21.327,
+       0,
+       -11.181
+      ],
+      "max": [
+       27.428,
+       12.484,
+       0.751
+      ]
+     },
+     "triangles": 982,
+     "ranges": [
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 264,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 22,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 248,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 9912,
+       "triangleCount": 744
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 132,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1932,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 30,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 40,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-142506",
+     "pandId": "0363100012142506",
+     "buildingId": "NL.IMBAG.Pand.0363100012142506",
+     "address": "Hoendiepstraat 10",
+     "frontage": {
+      "x0": 27.428,
+      "x1": 33.502,
+      "widthM": 6.074
+     },
+     "bounds": {
+      "min": [
+       27.428,
+       0,
+       -11.186
+      ],
+      "max": [
+       33.502,
+       12.497,
+       0.775
+      ]
+     },
+     "triangles": 1600,
+     "ranges": [
+      {
+       "primitive": 12,
+       "firstTriangle": 322,
+       "triangleCount": 316
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 288,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 24,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 276,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 10656,
+       "triangleCount": 1032
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 144,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 2088,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 42,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-108358",
+     "pandId": "0363100012108358",
+     "buildingId": "NL.IMBAG.Pand.0363100012108358",
+     "address": "Hoendiepstraat 8",
+     "frontage": {
+      "x0": 33.502,
+      "x1": 39.601,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       33.502,
+       0,
+       -10.759
+      ],
+      "max": [
+       39.601,
+       12.546,
+       0.775
+      ]
+     },
+     "triangles": 1575,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 318
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 312,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 26,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 294,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 11688,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 156,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 2280,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 46,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-081899",
+     "pandId": "0363100012081899",
+     "buildingId": "NL.IMBAG.Pand.0363100012081899",
+     "address": "Hoendiepstraat 6",
+     "frontage": {
+      "x0": 39.601,
+      "x1": 46.515,
+      "widthM": 6.914
+     },
+     "bounds": {
+      "min": [
+       39.601,
+       0,
+       -10.76
+      ],
+      "max": [
+       46.516,
+       12.564,
+       0.75
+      ]
+     },
+     "triangles": 992,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 51
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 336,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 28,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 312,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 12696,
+       "triangleCount": 712
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 168,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 2466,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 33,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 53,
+       "triangleCount": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-hoendiep-5-35-r1",
+   "category": "street-survey",
+   "name": "face-hoendiep-5-35-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hoendiep-5-35-r1.glb?asset=5e3a1eba1a79b073",
+   "sha256": "5e3a1eba1a79b073fc7e80395eda9b98410e3dc4d2c023f6e95abe34c6684619",
+   "bytes": 381684,
+   "triangles": 5657,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.910637983434217,
+     52.342625508343474
+    ],
+    "northOffsetDegrees": 77.05,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -11.665,
+     0,
+     -11.262
+    ],
+    "max": [
+     9.162,
+     12.219,
+     0.776
+    ]
+   },
+   "height": 12.219,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012124406",
+    "NL.IMBAG.Pand.0363100012078854",
+    "NL.IMBAG.Pand.0363100012138426"
+   ],
+   "replaces": [
+    "ordinary-0363100012124406",
+    "ordinary-0363100012078854",
+    "ordinary-0363100012138426"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9107751,
+        52.3427101
+       ],
+       [
+        4.91076,
+        52.3427503
+       ],
+       [
+        4.9107135,
+        52.3427438
+       ],
+       [
+        4.9107217,
+        52.3427218
+       ],
+       [
+        4.9106078,
+        52.3427057
+       ],
+       [
+        4.910609,
+        52.3427026
+       ],
+       [
+        4.9106181,
+        52.3426783
+       ],
+       [
+        4.9106279,
+        52.3426523
+       ],
+       [
+        4.9107658,
+        52.3426718
+       ],
+       [
+        4.9107525,
+        52.3427069
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9107828,
+        52.3426675
+       ],
+       [
+        4.9107658,
+        52.3426718
+       ],
+       [
+        4.9106279,
+        52.3426523
+       ],
+       [
+        4.9106291,
+        52.3426492
+       ],
+       [
+        4.9106382,
+        52.3426248
+       ],
+       [
+        4.9106481,
+        52.3425987
+       ],
+       [
+        4.9108005,
+        52.3426202
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9108056,
+        52.3426219
+       ],
+       [
+        4.9108002,
+        52.3426211
+       ],
+       [
+        4.9108005,
+        52.3426202
+       ],
+       [
+        4.9106481,
+        52.3425987
+       ],
+       [
+        4.9106492,
+        52.3425955
+       ],
+       [
+        4.9106584,
+        52.3425712
+       ],
+       [
+        4.9106682,
+        52.3425453
+       ],
+       [
+        4.9108261,
+        52.3425676
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hoendiep-124406",
+     "pandId": "0363100012124406",
+     "buildingId": "NL.IMBAG.Pand.0363100012124406",
+     "address": "Hoendiepstraat 5",
+     "frontage": {
+      "x0": -9.16,
+      "x1": -3.061,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       -11.665,
+       0,
+       -11.262
+      ],
+      "max": [
+       -3.06,
+       12.168,
+       0.776
+      ]
+     },
+     "triangles": 1962,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 341
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 1176
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 224
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-078854",
+     "pandId": "0363100012078854",
+     "buildingId": "NL.IMBAG.Pand.0363100012078854",
+     "address": "Hoendiepstraat 7",
+     "frontage": {
+      "x0": -3.061,
+      "x1": 3.061,
+      "widthM": 6.122
+     },
+     "bounds": {
+      "min": [
+       -3.061,
+       0,
+       -10.703
+      ],
+      "max": [
+       3.061,
+       12.187,
+       0.775
+      ]
+     },
+     "triangles": 1820,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 323
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 156,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1176,
+       "triangleCount": 1080
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 224,
+       "triangleCount": 200
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 9,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 10,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-138426",
+     "pandId": "0363100012138426",
+     "buildingId": "NL.IMBAG.Pand.0363100012138426",
+     "address": "Hoendiepstraat 9",
+     "frontage": {
+      "x0": 3.061,
+      "x1": 9.16,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       2.96,
+       0,
+       -11.081
+      ],
+      "max": [
+       9.162,
+       12.219,
+       0.776
+      ]
+     },
+     "triangles": 1875,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 334
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 312,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 16,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2256,
+       "triangleCount": 1120
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 424,
+       "triangleCount": 210
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 15,
+       "triangleCount": 9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-hoendiep-5-35-r2",
+   "category": "street-survey",
+   "name": "face-hoendiep-5-35-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hoendiep-5-35-r2.glb?asset=a3c576470b0746cd",
+   "sha256": "a3c576470b0746cdaf4c28499c0b8d846d3648349c75254bbccc9637ada15c53",
+   "bytes": 1474596,
+   "triangles": 22375,
+   "primitives": 21,
+   "instance": {
+    "anchor": [
+     4.910808864214983,
+     52.34217141413087
+    ],
+    "northOffsetDegrees": 77.0511,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -36.579,
+     0,
+     -15.08
+    ],
+    "max": [
+     38.549,
+     12.418,
+     0.777
+    ]
+   },
+   "height": 12.418,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012065041",
+    "NL.IMBAG.Pand.0363100012104126",
+    "NL.IMBAG.Pand.0363100012078514",
+    "NL.IMBAG.Pand.0363100012085028",
+    "NL.IMBAG.Pand.0363100012154553",
+    "NL.IMBAG.Pand.0363100012087129",
+    "NL.IMBAG.Pand.0363100012086252",
+    "NL.IMBAG.Pand.0363100012064217",
+    "NL.IMBAG.Pand.0363100012154849",
+    "NL.IMBAG.Pand.0363100012108416",
+    "NL.IMBAG.Pand.0363100012136909",
+    "NL.IMBAG.Pand.0363100012089260"
+   ],
+   "replaces": [
+    "ordinary-0363100012065041",
+    "ordinary-0363100012104126",
+    "ordinary-0363100012078514",
+    "ordinary-0363100012085028",
+    "ordinary-0363100012154553",
+    "ordinary-0363100012087129",
+    "ordinary-0363100012086252",
+    "ordinary-0363100012064217",
+    "ordinary-0363100012154849",
+    "ordinary-0363100012108416",
+    "ordinary-0363100012136909",
+    "ordinary-0363100012089260"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9108462,
+        52.3425141
+       ],
+       [
+        4.9106883,
+        52.3424918
+       ],
+       [
+        4.9106895,
+        52.3424886
+       ],
+       [
+        4.9106987,
+        52.3424643
+       ],
+       [
+        4.9107084,
+        52.3424384
+       ],
+       [
+        4.9108663,
+        52.3424607
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9107084,
+        52.3424384
+       ],
+       [
+        4.9107096,
+        52.3424353
+       ],
+       [
+        4.9107187,
+        52.342411
+       ],
+       [
+        4.9107285,
+        52.3423851
+       ],
+       [
+        4.9109221,
+        52.3424124
+       ],
+       [
+        4.910902,
+        52.3424657
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9108863,
+        52.3424074
+       ],
+       [
+        4.9107285,
+        52.3423851
+       ],
+       [
+        4.9107296,
+        52.3423819
+       ],
+       [
+        4.9107388,
+        52.3423576
+       ],
+       [
+        4.9107486,
+        52.3423317
+       ],
+       [
+        4.9109064,
+        52.3423539
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9109064,
+        52.3423539
+       ],
+       [
+        4.9107486,
+        52.3423317
+       ],
+       [
+        4.9107498,
+        52.3423285
+       ],
+       [
+        4.9107589,
+        52.3423042
+       ],
+       [
+        4.9107687,
+        52.3422782
+       ],
+       [
+        4.9109265,
+        52.3423005
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9109265,
+        52.3423005
+       ],
+       [
+        4.9107687,
+        52.3422782
+       ],
+       [
+        4.9107698,
+        52.3422751
+       ],
+       [
+        4.910779,
+        52.3422508
+       ],
+       [
+        4.9107888,
+        52.3422247
+       ],
+       [
+        4.9109467,
+        52.342247
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9109467,
+        52.342247
+       ],
+       [
+        4.9107888,
+        52.3422247
+       ],
+       [
+        4.91079,
+        52.3422216
+       ],
+       [
+        4.9107991,
+        52.3421973
+       ],
+       [
+        4.9108089,
+        52.3421714
+       ],
+       [
+        4.9109667,
+        52.3421937
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9109667,
+        52.3421937
+       ],
+       [
+        4.9108089,
+        52.3421714
+       ],
+       [
+        4.9108101,
+        52.3421682
+       ],
+       [
+        4.9108192,
+        52.342144
+       ],
+       [
+        4.910829,
+        52.3421179
+       ],
+       [
+        4.9109869,
+        52.3421402
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9109869,
+        52.3421402
+       ],
+       [
+        4.910829,
+        52.3421179
+       ],
+       [
+        4.9108302,
+        52.3421147
+       ],
+       [
+        4.9108393,
+        52.3420904
+       ],
+       [
+        4.9108491,
+        52.3420645
+       ],
+       [
+        4.911007,
+        52.3420867
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9108491,
+        52.3420645
+       ],
+       [
+        4.9108503,
+        52.3420613
+       ],
+       [
+        4.9108594,
+        52.342037
+       ],
+       [
+        4.9108691,
+        52.3420112
+       ],
+       [
+        4.9110628,
+        52.3420385
+       ],
+       [
+        4.9110427,
+        52.3420918
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9108691,
+        52.3420112
+       ],
+       [
+        4.9108703,
+        52.342008
+       ],
+       [
+        4.9108795,
+        52.3419838
+       ],
+       [
+        4.9108893,
+        52.3419578
+       ],
+       [
+        4.9111043,
+        52.3419881
+       ],
+       [
+        4.9110842,
+        52.3420416
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9110417,
+        52.3419794
+       ],
+       [
+        4.9108892,
+        52.3419578
+       ],
+       [
+        4.9108904,
+        52.3419547
+       ],
+       [
+        4.9108996,
+        52.3419304
+       ],
+       [
+        4.9109094,
+        52.3419043
+       ],
+       [
+        4.9110473,
+        52.3419237
+       ],
+       [
+        4.9110595,
+        52.3419322
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9110812,
+        52.3418932
+       ],
+       [
+        4.9110599,
+        52.3418903
+       ],
+       [
+        4.9110473,
+        52.3419237
+       ],
+       [
+        4.9109094,
+        52.3419043
+       ],
+       [
+        4.9109106,
+        52.3419011
+       ],
+       [
+        4.9109197,
+        52.3418769
+       ],
+       [
+        4.9109291,
+        52.3418519
+       ],
+       [
+        4.9110422,
+        52.3418677
+       ],
+       [
+        4.9110496,
+        52.3418499
+       ],
+       [
+        4.9110949,
+        52.3418563
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hoendiep-065041",
+     "pandId": "0363100012065041",
+     "buildingId": "NL.IMBAG.Pand.0363100012065041",
+     "address": "Hoendiepstraat 13",
+     "frontage": {
+      "x0": -36.578,
+      "x1": -30.488,
+      "widthM": 6.091
+     },
+     "bounds": {
+      "min": [
+       -36.579,
+       0,
+       -11.082
+      ],
+      "max": [
+       -30.487,
+       12.418,
+       0.776
+      ]
+     },
+     "triangles": 1878,
+     "ranges": [
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 331
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 1120
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 210
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-104126",
+     "pandId": "0363100012104126",
+     "buildingId": "NL.IMBAG.Pand.0363100012104126",
+     "address": "Hoendiepstraat 15",
+     "frontage": {
+      "x0": -30.488,
+      "x1": -24.397,
+      "widthM": 6.09
+     },
+     "bounds": {
+      "min": [
+       -30.488,
+       0,
+       -13.581
+      ],
+      "max": [
+       -24.396,
+       12.345,
+       0.776
+      ]
+     },
+     "triangles": 1833,
+     "ranges": [
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 343
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 156,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 1120,
+       "triangleCount": 1072
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 210,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 5,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 10,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-078514",
+     "pandId": "0363100012078514",
+     "buildingId": "NL.IMBAG.Pand.0363100012078514",
+     "address": "Hoendiepstraat 17",
+     "frontage": {
+      "x0": -24.397,
+      "x1": -18.297,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       -24.397,
+       0,
+       -11.081
+      ],
+      "max": [
+       -18.297,
+       12.339,
+       0.775
+      ]
+     },
+     "triangles": 1865,
+     "ranges": [
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 326
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 312,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 16,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 2192,
+       "triangleCount": 1120
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 408,
+       "triangleCount": 210
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 22,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-085028",
+     "pandId": "0363100012085028",
+     "buildingId": "NL.IMBAG.Pand.0363100012085028",
+     "address": "Hoendiepstraat 19",
+     "frontage": {
+      "x0": -18.297,
+      "x1": -12.197,
+      "widthM": 6.101
+     },
+     "bounds": {
+      "min": [
+       -18.297,
+       0,
+       -11.08
+      ],
+      "max": [
+       -12.197,
+       12.295,
+       0.775
+      ]
+     },
+     "triangles": 1874,
+     "ranges": [
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 327
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 468,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 24,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 3312,
+       "triangleCount": 1120
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 618,
+       "triangleCount": 210
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 11,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 29,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-154553",
+     "pandId": "0363100012154553",
+     "buildingId": "NL.IMBAG.Pand.0363100012154553",
+     "address": "Hoendiepstraat 21",
+     "frontage": {
+      "x0": -12.197,
+      "x1": -6.087,
+      "widthM": 6.109
+     },
+     "bounds": {
+      "min": [
+       -12.197,
+       0,
+       -11.082
+      ],
+      "max": [
+       -6.086,
+       12.35,
+       0.776
+      ]
+     },
+     "triangles": 1877,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 330
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 624,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 32,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 4432,
+       "triangleCount": 1120
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 828,
+       "triangleCount": 210
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 19,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 36,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-087129",
+     "pandId": "0363100012087129",
+     "buildingId": "NL.IMBAG.Pand.0363100012087129",
+     "address": "Hoendiepstraat 23",
+     "frontage": {
+      "x0": -6.087,
+      "x1": 0.002,
+      "widthM": 6.09
+     },
+     "bounds": {
+      "min": [
+       -6.087,
+       0,
+       -11.082
+      ],
+      "max": [
+       0.003,
+       12.38,
+       0.776
+      ]
+     },
+     "triangles": 1872,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 325
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 780,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 120,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 40,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 5552,
+       "triangleCount": 1120
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1038,
+       "triangleCount": 210
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 24,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 46,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-086252",
+     "pandId": "0363100012086252",
+     "buildingId": "NL.IMBAG.Pand.0363100012086252",
+     "address": "Hoendiepstraat 25",
+     "frontage": {
+      "x0": 0.002,
+      "x1": 6.114,
+      "widthM": 6.111
+     },
+     "bounds": {
+      "min": [
+       0.002,
+       0,
+       -11.081
+      ],
+      "max": [
+       6.114,
+       12.353,
+       0.776
+      ]
+     },
+     "triangles": 1856,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 327
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 936,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 144,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 12,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 48,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 6672,
+       "triangleCount": 1112
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1248,
+       "triangleCount": 208
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 53,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-064217",
+     "pandId": "0363100012064217",
+     "buildingId": "NL.IMBAG.Pand.0363100012064217",
+     "address": "Hoendiepstraat 27",
+     "frontage": {
+      "x0": 6.114,
+      "x1": 12.213,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       6.113,
+       0,
+       -11.082
+      ],
+      "max": [
+       12.213,
+       12.329,
+       0.776
+      ]
+     },
+     "triangles": 1863,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 1092,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 168,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 14,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 56,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 7784,
+       "triangleCount": 1120
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 84,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1456,
+       "triangleCount": 210
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 60,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-154849",
+     "pandId": "0363100012154849",
+     "buildingId": "NL.IMBAG.Pand.0363100012154849",
+     "address": "Hoendiepstraat 29",
+     "frontage": {
+      "x0": 12.213,
+      "x1": 18.293,
+      "widthM": 6.08
+     },
+     "bounds": {
+      "min": [
+       12.213,
+       0,
+       -13.581
+      ],
+      "max": [
+       18.293,
+       12.319,
+       0.777
+      ]
+     },
+     "triangles": 1826,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 337
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 1248,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 192,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 16,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 64,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 8904,
+       "triangleCount": 1072
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 96,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1666,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 32,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 67,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-108416",
+     "pandId": "0363100012108416",
+     "buildingId": "NL.IMBAG.Pand.0363100012108416",
+     "address": "Hoendiepstraat 31",
+     "frontage": {
+      "x0": 18.293,
+      "x1": 24.391,
+      "widthM": 6.098
+     },
+     "bounds": {
+      "min": [
+       18.293,
+       0,
+       -15.08
+      ],
+      "max": [
+       24.394,
+       12.322,
+       0.777
+      ]
+     },
+     "triangles": 1820,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 338
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 1404,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 216,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 18,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 72,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 9976,
+       "triangleCount": 1072
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 108,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1864,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 76,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-136909",
+     "pandId": "0363100012136909",
+     "buildingId": "NL.IMBAG.Pand.0363100012136909",
+     "address": "Hoendiepstraat 33",
+     "frontage": {
+      "x0": 24.391,
+      "x1": 30.503,
+      "widthM": 6.113
+     },
+     "bounds": {
+      "min": [
+       24.387,
+       0,
+       -10.702
+      ],
+      "max": [
+       30.504,
+       12.335,
+       0.775
+      ]
+     },
+     "triangles": 1861,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 1560,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 240,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 20,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 80,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 11048,
+       "triangleCount": 1112
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 120,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 2062,
+       "triangleCount": 208
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 40,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 86,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "hoendiep-089260",
+     "pandId": "0363100012089260",
+     "buildingId": "NL.IMBAG.Pand.0363100012089260",
+     "address": "Hoendiepstraat 35",
+     "frontage": {
+      "x0": 30.503,
+      "x1": 36.48,
+      "widthM": 5.977
+     },
+     "bounds": {
+      "min": [
+       30.503,
+       0,
+       -11.17
+      ],
+      "max": [
+       38.549,
+       12.275,
+       0.776
+      ]
+     },
+     "triangles": 1950,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 338
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 1716,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 264,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 22,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 88,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 12160,
+       "triangleCount": 1176
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 132,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 2270,
+       "triangleCount": 224
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 91,
+       "triangleCount": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-boterdiep-36-66",
+   "category": "street-survey",
+   "name": "face-boterdiep-36-66",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-boterdiep-36-66.glb?asset=ea753b6c0a0aee36",
+   "sha256": "ea753b6c0a0aee36331e31e7ade86d9475e3be8d1e8e5f9a5c768d2b25108d57",
+   "bytes": 1372928,
+   "triangles": 20414,
+   "primitives": 23,
+   "instance": {
+    "anchor": [
+     4.9097755988755925,
+     52.34171705931869
+    ],
+    "northOffsetDegrees": 257.121,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -48.849,
+     0,
+     -15.039
+    ],
+    "max": [
+     48.795,
+     12.759,
+     0.776
+    ]
+   },
+   "height": 12.759,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012093554",
+    "NL.IMBAG.Pand.0363100012097792",
+    "NL.IMBAG.Pand.0363100012126062",
+    "NL.IMBAG.Pand.0363100012063519",
+    "NL.IMBAG.Pand.0363100012109092",
+    "NL.IMBAG.Pand.0363100012095439",
+    "NL.IMBAG.Pand.0363100012080585",
+    "NL.IMBAG.Pand.0363100012145095",
+    "NL.IMBAG.Pand.0363100012086703",
+    "NL.IMBAG.Pand.0363100012067390",
+    "NL.IMBAG.Pand.0363100012065337",
+    "NL.IMBAG.Pand.0363100012100933",
+    "NL.IMBAG.Pand.0363100012139791",
+    "NL.IMBAG.Pand.0363100012142115",
+    "NL.IMBAG.Pand.0363100012096263",
+    "NL.IMBAG.Pand.0363100012149435"
+   ],
+   "replaces": [
+    "ordinary-0363100012093554",
+    "ordinary-0363100012097792",
+    "ordinary-0363100012126062",
+    "ordinary-0363100012063519",
+    "ordinary-0363100012109092",
+    "ordinary-0363100012095439",
+    "ordinary-0363100012080585",
+    "ordinary-0363100012145095",
+    "ordinary-0363100012086703",
+    "ordinary-0363100012067390",
+    "ordinary-0363100012065337",
+    "ordinary-0363100012100933",
+    "ordinary-0363100012139791",
+    "ordinary-0363100012142115",
+    "ordinary-0363100012096263",
+    "ordinary-0363100012149435"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9099264,
+        52.341314
+       ],
+       [
+        4.9099174,
+        52.3413381
+       ],
+       [
+        4.9099156,
+        52.341343
+       ],
+       [
+        4.9097583,
+        52.3413209
+       ],
+       [
+        4.9097784,
+        52.341267
+       ],
+       [
+        4.9098012,
+        52.3412702
+       ],
+       [
+        4.909801,
+        52.3412707
+       ],
+       [
+        4.9099356,
+        52.3412896
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.909914,
+        52.3413473
+       ],
+       [
+        4.9099049,
+        52.3413715
+       ],
+       [
+        4.9098956,
+        52.3413964
+       ],
+       [
+        4.9097383,
+        52.3413744
+       ],
+       [
+        4.9097583,
+        52.3413209
+       ],
+       [
+        4.9099156,
+        52.341343
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9098756,
+        52.3414499
+       ],
+       [
+        4.9096611,
+        52.3414198
+       ],
+       [
+        4.9096811,
+        52.3413663
+       ],
+       [
+        4.9098956,
+        52.3413964
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9096339,
+        52.3414722
+       ],
+       [
+        4.9096539,
+        52.3414188
+       ],
+       [
+        4.9098756,
+        52.3414499
+       ],
+       [
+        4.9098556,
+        52.3415033
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9098464,
+        52.3415279
+       ],
+       [
+        4.9098373,
+        52.3415521
+       ],
+       [
+        4.9098356,
+        52.3415568
+       ],
+       [
+        4.9096783,
+        52.3415347
+       ],
+       [
+        4.9096983,
+        52.3414812
+       ],
+       [
+        4.9098556,
+        52.3415033
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9098339,
+        52.3415612
+       ],
+       [
+        4.9098249,
+        52.3415853
+       ],
+       [
+        4.9098156,
+        52.3416102
+       ],
+       [
+        4.9096583,
+        52.3415881
+       ],
+       [
+        4.9096783,
+        52.3415347
+       ],
+       [
+        4.9098356,
+        52.3415568
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9097956,
+        52.3416636
+       ],
+       [
+        4.9096025,
+        52.3416365
+       ],
+       [
+        4.9096225,
+        52.3415831
+       ],
+       [
+        4.9098156,
+        52.3416102
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9097756,
+        52.3417171
+       ],
+       [
+        4.9095825,
+        52.34169
+       ],
+       [
+        4.9096025,
+        52.3416365
+       ],
+       [
+        4.9097956,
+        52.3416636
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9095625,
+        52.3417434
+       ],
+       [
+        4.9095825,
+        52.34169
+       ],
+       [
+        4.9097756,
+        52.3417171
+       ],
+       [
+        4.9097556,
+        52.3417705
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9097538,
+        52.3417753
+       ],
+       [
+        4.9097449,
+        52.341799
+       ],
+       [
+        4.9097356,
+        52.3418239
+       ],
+       [
+        4.9095783,
+        52.3418019
+       ],
+       [
+        4.9095983,
+        52.3417484
+       ],
+       [
+        4.9097556,
+        52.3417705
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9095225,
+        52.3418503
+       ],
+       [
+        4.9095425,
+        52.3417968
+       ],
+       [
+        4.9097356,
+        52.3418239
+       ],
+       [
+        4.9097156,
+        52.3418774
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9095025,
+        52.3419037
+       ],
+       [
+        4.9095225,
+        52.3418503
+       ],
+       [
+        4.9097156,
+        52.3418774
+       ],
+       [
+        4.9096956,
+        52.3419308
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9096864,
+        52.3419555
+       ],
+       [
+        4.9096775,
+        52.3419793
+       ],
+       [
+        4.9096756,
+        52.3419843
+       ],
+       [
+        4.9095183,
+        52.3419622
+       ],
+       [
+        4.9095383,
+        52.3419087
+       ],
+       [
+        4.9096956,
+        52.3419308
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9096739,
+        52.3419889
+       ],
+       [
+        4.909665,
+        52.3420126
+       ],
+       [
+        4.9096556,
+        52.3420376
+       ],
+       [
+        4.9094983,
+        52.3420156
+       ],
+       [
+        4.9095183,
+        52.3419621
+       ],
+       [
+        4.9096756,
+        52.3419842
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9096356,
+        52.3420911
+       ],
+       [
+        4.9094783,
+        52.342069
+       ],
+       [
+        4.9094983,
+        52.3420156
+       ],
+       [
+        4.9096556,
+        52.3420376
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9096156,
+        52.3421445
+       ],
+       [
+        4.9094583,
+        52.3421224
+       ],
+       [
+        4.9094783,
+        52.342069
+       ],
+       [
+        4.9096356,
+        52.3420911
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "boterdiep-093554",
+     "pandId": "0363100012093554",
+     "buildingId": "NL.IMBAG.Pand.0363100012093554",
+     "address": "Boterdiepstraat 66",
+     "frontage": {
+      "x0": -48.8,
+      "x1": -42.698,
+      "widthM": 6.101
+     },
+     "bounds": {
+      "min": [
+       -48.849,
+       0,
+       -11.04
+      ],
+      "max": [
+       -42.698,
+       12.467,
+       0.775
+      ]
+     },
+     "triangles": 1612,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 343
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-097792",
+     "pandId": "0363100012097792",
+     "buildingId": "NL.IMBAG.Pand.0363100012097792",
+     "address": "Boterdiepstraat 64",
+     "frontage": {
+      "x0": -42.698,
+      "x1": -36.598,
+      "widthM": 6.101
+     },
+     "bounds": {
+      "min": [
+       -42.7,
+       0,
+       -11.039
+      ],
+      "max": [
+       -36.598,
+       12.42,
+       0.775
+      ]
+     },
+     "triangles": 1592,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 325
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 18,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1008,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 186,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 9,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-126062",
+     "pandId": "0363100012126062",
+     "buildingId": "NL.IMBAG.Pand.0363100012126062",
+     "address": "Boterdiepstraat 62",
+     "frontage": {
+      "x0": -36.598,
+      "x1": -30.499,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       -36.599,
+       0,
+       -15.039
+      ],
+      "max": [
+       -30.499,
+       12.479,
+       0.75
+      ]
+     },
+     "triangles": 930,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 36,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 2016,
+       "triangleCount": 672
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 372,
+       "triangleCount": 138
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 16,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-063519",
+     "pandId": "0363100012063519",
+     "buildingId": "NL.IMBAG.Pand.0363100012063519",
+     "address": "Boterdiepstraat 60",
+     "frontage": {
+      "x0": -30.499,
+      "x1": -24.398,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       -30.499,
+       0,
+       -11.959
+      ],
+      "max": [
+       -24.398,
+       12.413,
+       0.75
+      ]
+     },
+     "triangles": 984,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 35
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 64,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 2688,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 510,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 20,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 26,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-109092",
+     "pandId": "0363100012109092",
+     "buildingId": "NL.IMBAG.Pand.0363100012109092",
+     "address": "Boterdiepstraat 58",
+     "frontage": {
+      "x0": -24.398,
+      "x1": -18.299,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       -24.4,
+       0,
+       -11.039
+      ],
+      "max": [
+       -18.298,
+       12.478,
+       0.776
+      ]
+     },
+     "triangles": 1577,
+     "ranges": [
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 320
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 92,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 3408,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 660,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 35,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-095439",
+     "pandId": "0363100012095439",
+     "buildingId": "NL.IMBAG.Pand.0363100012095439",
+     "address": "Boterdiepstraat 56",
+     "frontage": {
+      "x0": -18.299,
+      "x1": -12.198,
+      "widthM": 6.101
+     },
+     "bounds": {
+      "min": [
+       -18.299,
+       0,
+       -11.039
+      ],
+      "max": [
+       -12.198,
+       12.501,
+       0.776
+      ]
+     },
+     "triangles": 1594,
+     "ranges": [
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 327
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 120,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 110,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 4416,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 846,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 24,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 42,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-080585",
+     "pandId": "0363100012080585",
+     "buildingId": "NL.IMBAG.Pand.0363100012080585",
+     "address": "Boterdiepstraat 54",
+     "frontage": {
+      "x0": -12.198,
+      "x1": -6.098,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       -12.199,
+       0,
+       -13.539
+      ],
+      "max": [
+       -6.098,
+       12.504,
+       0.75
+      ]
+     },
+     "triangles": 931,
+     "ranges": [
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 42
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 144,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 12,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 128,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 5424,
+       "triangleCount": 672
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1032,
+       "triangleCount": 138
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 49,
+       "triangleCount": 13
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-145095",
+     "pandId": "0363100012145095",
+     "buildingId": "NL.IMBAG.Pand.0363100012145095",
+     "address": "Boterdiepstraat 52",
+     "frontage": {
+      "x0": -6.098,
+      "x1": 0.001,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       -6.099,
+       0,
+       -13.538
+      ],
+      "max": [
+       0.002,
+       12.759,
+       0.751
+      ]
+     },
+     "triangles": 942,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 49
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 168,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 14,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 156,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 6096,
+       "triangleCount": 672
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 84,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1170,
+       "triangleCount": 138
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 62,
+       "triangleCount": 17
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-086703",
+     "pandId": "0363100012086703",
+     "buildingId": "NL.IMBAG.Pand.0363100012086703",
+     "address": "Boterdiepstraat 50",
+     "frontage": {
+      "x0": 0.001,
+      "x1": 6.102,
+      "widthM": 6.101
+     },
+     "bounds": {
+      "min": [
+       0.001,
+       0,
+       -12.078
+      ],
+      "max": [
+       6.102,
+       12.443,
+       0.775
+      ]
+     },
+     "triangles": 1579,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 323
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 192,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 16,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 184,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 6768,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 96,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1308,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 79,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-067390",
+     "pandId": "0363100012067390",
+     "buildingId": "NL.IMBAG.Pand.0363100012067390",
+     "address": "Boterdiepstraat 48",
+     "frontage": {
+      "x0": 6.102,
+      "x1": 12.201,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       6.1,
+       0,
+       -11.039
+      ],
+      "max": [
+       12.202,
+       12.445,
+       0.776
+      ]
+     },
+     "triangles": 1583,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 326
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 216,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 18,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 202,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 7776,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 108,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1494,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 85,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-065337",
+     "pandId": "0363100012065337",
+     "buildingId": "NL.IMBAG.Pand.0363100012065337",
+     "address": "Boterdiepstraat 46",
+     "frontage": {
+      "x0": 12.201,
+      "x1": 18.301,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       12.201,
+       0,
+       -13.499
+      ],
+      "max": [
+       18.302,
+       12.507,
+       0.75
+      ]
+     },
+     "triangles": 986,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 41
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 240,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 20,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 220,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 8784,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 120,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1680,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 34,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 92,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-100933",
+     "pandId": "0363100012100933",
+     "buildingId": "NL.IMBAG.Pand.0363100012100933",
+     "address": "Boterdiepstraat 44",
+     "frontage": {
+      "x0": 18.301,
+      "x1": 24.4,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       18.301,
+       0,
+       -11.783
+      ],
+      "max": [
+       24.401,
+       12.493,
+       0.751
+      ]
+     },
+     "triangles": 975,
+     "ranges": [
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 264,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 22,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 248,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 9504,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 132,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1830,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 36,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 99,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-139791",
+     "pandId": "0363100012139791",
+     "buildingId": "NL.IMBAG.Pand.0363100012139791",
+     "address": "Boterdiepstraat 42",
+     "frontage": {
+      "x0": 24.4,
+      "x1": 30.498,
+      "widthM": 6.097
+     },
+     "bounds": {
+      "min": [
+       24.4,
+       0,
+       -11.04
+      ],
+      "max": [
+       30.501,
+       12.493,
+       0.776
+      ]
+     },
+     "triangles": 1595,
+     "ranges": [
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 288,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 24,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 276,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 10224,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 144,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1980,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 40,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 104,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-142115",
+     "pandId": "0363100012142115",
+     "buildingId": "NL.IMBAG.Pand.0363100012142115",
+     "address": "Boterdiepstraat 40",
+     "frontage": {
+      "x0": 30.498,
+      "x1": 36.594,
+      "widthM": 6.096
+     },
+     "bounds": {
+      "min": [
+       30.494,
+       0,
+       -11.04
+      ],
+      "max": [
+       36.595,
+       12.619,
+       0.775
+      ]
+     },
+     "triangles": 1595,
+     "ranges": [
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 329
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 312,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 26,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 294,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 11232,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 156,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 2166,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 50,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 111,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-096263",
+     "pandId": "0363100012096263",
+     "buildingId": "NL.IMBAG.Pand.0363100012096263",
+     "address": "Boterdiepstraat 38",
+     "frontage": {
+      "x0": 36.594,
+      "x1": 42.694,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       36.594,
+       0,
+       -11.039
+      ],
+      "max": [
+       42.694,
+       12.485,
+       0.75
+      ]
+     },
+     "triangles": 968,
+     "ranges": [
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 27
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 336,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 28,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 312,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 12240,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 168,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 2352,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 118,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-149435",
+     "pandId": "0363100012149435",
+     "buildingId": "NL.IMBAG.Pand.0363100012149435",
+     "address": "Boterdiepstraat 36",
+     "frontage": {
+      "x0": 42.694,
+      "x1": 48.795,
+      "widthM": 6.101
+     },
+     "bounds": {
+      "min": [
+       42.693,
+       0,
+       -11.04
+      ],
+      "max": [
+       48.795,
+       12.462,
+       0.75
+      ]
+     },
+     "triangles": 971,
+     "ranges": [
+      {
+       "primitive": 13,
+       "firstTriangle": 27,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 360,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 30,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 340,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 12960,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 180,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 2502,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 123,
+       "triangleCount": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-boterdiep-6-34",
+   "category": "street-survey",
+   "name": "face-boterdiep-6-34",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-boterdiep-6-34.glb?asset=032b5bfdb6240f27",
+   "sha256": "032b5bfdb6240f2782b1d6d86112b0a94c6693bce1c60e3bf05fba32883be342",
+   "bytes": 1315748,
+   "triangles": 19524,
+   "primitives": 23,
+   "instance": {
+    "anchor": [
+     4.9094656271708095,
+     52.342545342182504
+    ],
+    "northOffsetDegrees": 257.123,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -45.755,
+     0,
+     -11.041
+    ],
+    "max": [
+     45.869,
+     12.615,
+     0.776
+    ]
+   },
+   "height": 12.615,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012090853",
+    "NL.IMBAG.Pand.0363100012115959",
+    "NL.IMBAG.Pand.0363100012065564",
+    "NL.IMBAG.Pand.0363100012124733",
+    "NL.IMBAG.Pand.0363100012112680",
+    "NL.IMBAG.Pand.0363100012085458",
+    "NL.IMBAG.Pand.0363100012082589",
+    "NL.IMBAG.Pand.0363100012128564",
+    "NL.IMBAG.Pand.0363100012067897",
+    "NL.IMBAG.Pand.0363100012102848",
+    "NL.IMBAG.Pand.0363100012137783",
+    "NL.IMBAG.Pand.0363100012079582",
+    "NL.IMBAG.Pand.0363100012075378",
+    "NL.IMBAG.Pand.0363100012140075",
+    "NL.IMBAG.Pand.0363100012071778"
+   ],
+   "replaces": [
+    "ordinary-0363100012090853",
+    "ordinary-0363100012115959",
+    "ordinary-0363100012065564",
+    "ordinary-0363100012124733",
+    "ordinary-0363100012112680",
+    "ordinary-0363100012085458",
+    "ordinary-0363100012082589",
+    "ordinary-0363100012128564",
+    "ordinary-0363100012067897",
+    "ordinary-0363100012102848",
+    "ordinary-0363100012137783",
+    "ordinary-0363100012079582",
+    "ordinary-0363100012075378",
+    "ordinary-0363100012140075",
+    "ordinary-0363100012071778"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9096064,
+        52.3421691
+       ],
+       [
+        4.9095974,
+        52.3421933
+       ],
+       [
+        4.9095956,
+        52.342198
+       ],
+       [
+        4.9094383,
+        52.3421759
+       ],
+       [
+        4.9094583,
+        52.3421224
+       ],
+       [
+        4.9096156,
+        52.3421445
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.909594,
+        52.3422024
+       ],
+       [
+        4.9095849,
+        52.3422267
+       ],
+       [
+        4.9095756,
+        52.3422514
+       ],
+       [
+        4.9094183,
+        52.3422293
+       ],
+       [
+        4.9094383,
+        52.3421759
+       ],
+       [
+        4.9095956,
+        52.342198
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9095556,
+        52.3423048
+       ],
+       [
+        4.9093983,
+        52.3422827
+       ],
+       [
+        4.9094183,
+        52.3422293
+       ],
+       [
+        4.9095756,
+        52.3422514
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9095356,
+        52.3423583
+       ],
+       [
+        4.9093783,
+        52.3423362
+       ],
+       [
+        4.9093983,
+        52.3422827
+       ],
+       [
+        4.9095556,
+        52.3423048
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9095265,
+        52.3423827
+       ],
+       [
+        4.9095172,
+        52.3424075
+       ],
+       [
+        4.9095156,
+        52.3424117
+       ],
+       [
+        4.9093583,
+        52.3423896
+       ],
+       [
+        4.9093783,
+        52.3423362
+       ],
+       [
+        4.9095356,
+        52.3423583
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.909514,
+        52.342416
+       ],
+       [
+        4.9095048,
+        52.3424406
+       ],
+       [
+        4.9094956,
+        52.3424652
+       ],
+       [
+        4.9093383,
+        52.3424431
+       ],
+       [
+        4.9093583,
+        52.3423896
+       ],
+       [
+        4.9095156,
+        52.3424117
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9094756,
+        52.3425186
+       ],
+       [
+        4.9093183,
+        52.3424965
+       ],
+       [
+        4.9093383,
+        52.3424431
+       ],
+       [
+        4.9094956,
+        52.3424652
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9094556,
+        52.342572
+       ],
+       [
+        4.9092983,
+        52.3425499
+       ],
+       [
+        4.9093183,
+        52.3424965
+       ],
+       [
+        4.9094756,
+        52.3425186
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9094464,
+        52.3425967
+       ],
+       [
+        4.9094373,
+        52.342621
+       ],
+       [
+        4.9094356,
+        52.3426255
+       ],
+       [
+        4.9092783,
+        52.3426034
+       ],
+       [
+        4.9092983,
+        52.3425499
+       ],
+       [
+        4.9094556,
+        52.342572
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.909434,
+        52.3426299
+       ],
+       [
+        4.9094251,
+        52.3426538
+       ],
+       [
+        4.9094156,
+        52.3426789
+       ],
+       [
+        4.9092583,
+        52.3426568
+       ],
+       [
+        4.9092783,
+        52.3426034
+       ],
+       [
+        4.9094356,
+        52.3426255
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9093957,
+        52.3427323
+       ],
+       [
+        4.9092383,
+        52.3427103
+       ],
+       [
+        4.9092583,
+        52.3426568
+       ],
+       [
+        4.9094156,
+        52.3426789
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9093757,
+        52.3427858
+       ],
+       [
+        4.9092183,
+        52.3427637
+       ],
+       [
+        4.9092383,
+        52.3427103
+       ],
+       [
+        4.9093957,
+        52.3427323
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9093664,
+        52.3428105
+       ],
+       [
+        4.9093575,
+        52.3428344
+       ],
+       [
+        4.9093556,
+        52.3428392
+       ],
+       [
+        4.9091983,
+        52.3428171
+       ],
+       [
+        4.9092183,
+        52.3427637
+       ],
+       [
+        4.9093757,
+        52.3427858
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9093541,
+        52.3428435
+       ],
+       [
+        4.909345,
+        52.3428678
+       ],
+       [
+        4.9093357,
+        52.3428927
+       ],
+       [
+        4.9091783,
+        52.3428706
+       ],
+       [
+        4.9091983,
+        52.3428171
+       ],
+       [
+        4.9093556,
+        52.3428392
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9093153,
+        52.3429471
+       ],
+       [
+        4.9091849,
+        52.3429285
+       ],
+       [
+        4.9091667,
+        52.3429256
+       ],
+       [
+        4.9091879,
+        52.3428719
+       ],
+       [
+        4.9093357,
+        52.3428927
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "boterdiep-090853",
+     "pandId": "0363100012090853",
+     "buildingId": "NL.IMBAG.Pand.0363100012090853",
+     "address": "Boterdiepstraat 34",
+     "frontage": {
+      "x0": -45.754,
+      "x1": -39.655,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       -45.755,
+       0,
+       -11.039
+      ],
+      "max": [
+       -39.654,
+       12.46,
+       0.776
+      ]
+     },
+     "triangles": 1595,
+     "ranges": [
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 330
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-115959",
+     "pandId": "0363100012115959",
+     "buildingId": "NL.IMBAG.Pand.0363100012115959",
+     "address": "Boterdiepstraat 32",
+     "frontage": {
+      "x0": -39.655,
+      "x1": -33.554,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       -39.656,
+       0,
+       -11.039
+      ],
+      "max": [
+       -33.554,
+       12.45,
+       0.776
+      ]
+     },
+     "triangles": 1574,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 342
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 18,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1008,
+       "triangleCount": 984
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 186,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 7,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-065564",
+     "pandId": "0363100012065564",
+     "buildingId": "NL.IMBAG.Pand.0363100012065564",
+     "address": "Boterdiepstraat 30",
+     "frontage": {
+      "x0": -33.554,
+      "x1": -27.454,
+      "widthM": 6.101
+     },
+     "bounds": {
+      "min": [
+       -33.556,
+       0,
+       -11.04
+      ],
+      "max": [
+       -27.454,
+       12.615,
+       0.751
+      ]
+     },
+     "triangles": 969,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 36,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1992,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 366,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 19,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-124733",
+     "pandId": "0363100012124733",
+     "buildingId": "NL.IMBAG.Pand.0363100012124733",
+     "address": "Boterdiepstraat 28",
+     "frontage": {
+      "x0": -27.454,
+      "x1": -21.354,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       -27.455,
+       0,
+       -11.04
+      ],
+      "max": [
+       -21.353,
+       12.529,
+       0.75
+      ]
+     },
+     "triangles": 1004,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 64,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 2712,
+       "triangleCount": 744
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 516,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 8,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 24,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-112680",
+     "pandId": "0363100012112680",
+     "buildingId": "NL.IMBAG.Pand.0363100012112680",
+     "address": "Boterdiepstraat 26",
+     "frontage": {
+      "x0": -21.354,
+      "x1": -15.253,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       -21.355,
+       0,
+       -11.039
+      ],
+      "max": [
+       -15.253,
+       12.378,
+       0.776
+      ]
+     },
+     "triangles": 1619,
+     "ranges": [
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 323
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 92,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 3456,
+       "triangleCount": 1032
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 672,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 12,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 28,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-085458",
+     "pandId": "0363100012085458",
+     "buildingId": "NL.IMBAG.Pand.0363100012085458",
+     "address": "Boterdiepstraat 24",
+     "frontage": {
+      "x0": -15.253,
+      "x1": -9.153,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       -15.255,
+       0,
+       -11.039
+      ],
+      "max": [
+       -9.153,
+       12.403,
+       0.776
+      ]
+     },
+     "triangles": 1581,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 120,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 110,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 4488,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 864,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 34,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-082589",
+     "pandId": "0363100012082589",
+     "buildingId": "NL.IMBAG.Pand.0363100012082589",
+     "address": "Boterdiepstraat 22",
+     "frontage": {
+      "x0": -9.153,
+      "x1": -3.054,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       -9.154,
+       0,
+       -11.04
+      ],
+      "max": [
+       -3.054,
+       12.387,
+       0.751
+      ]
+     },
+     "triangles": 971,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 26
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 144,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 12,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 128,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 5496,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1050,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 22,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 41,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-128564",
+     "pandId": "0363100012128564",
+     "buildingId": "NL.IMBAG.Pand.0363100012128564",
+     "address": "Boterdiepstraat 20",
+     "frontage": {
+      "x0": -3.054,
+      "x1": 3.046,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       -3.055,
+       0,
+       -11.04
+      ],
+      "max": [
+       3.046,
+       12.433,
+       0.75
+      ]
+     },
+     "triangles": 943,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 168,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 14,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 156,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 6216,
+       "triangleCount": 696
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 84,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1200,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 46,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-067897",
+     "pandId": "0363100012067897",
+     "buildingId": "NL.IMBAG.Pand.0363100012067897",
+     "address": "Boterdiepstraat 18",
+     "frontage": {
+      "x0": 3.046,
+      "x1": 9.146,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       3.045,
+       0,
+       -11.04
+      ],
+      "max": [
+       9.146,
+       12.399,
+       0.776
+      ]
+     },
+     "triangles": 1594,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 192,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 16,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 184,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 6912,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 96,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1344,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 26,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 53,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-102848",
+     "pandId": "0363100012102848",
+     "buildingId": "NL.IMBAG.Pand.0363100012102848",
+     "address": "Boterdiepstraat 16",
+     "frontage": {
+      "x0": 9.146,
+      "x1": 15.246,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       9.145,
+       0,
+       -11.04
+      ],
+      "max": [
+       15.246,
+       12.429,
+       0.776
+      ]
+     },
+     "triangles": 1579,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 322
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 216,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 18,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 202,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 7920,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 108,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1530,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 60,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-137783",
+     "pandId": "0363100012137783",
+     "buildingId": "NL.IMBAG.Pand.0363100012137783",
+     "address": "Boterdiepstraat 14",
+     "frontage": {
+      "x0": 15.246,
+      "x1": 21.346,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       15.245,
+       0,
+       -11.039
+      ],
+      "max": [
+       21.346,
+       12.429,
+       0.75
+      ]
+     },
+     "triangles": 965,
+     "ranges": [
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 240,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 20,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 220,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 8928,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 120,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1716,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 67,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-079582",
+     "pandId": "0363100012079582",
+     "buildingId": "NL.IMBAG.Pand.0363100012079582",
+     "address": "Boterdiepstraat 12",
+     "frontage": {
+      "x0": 21.346,
+      "x1": 27.445,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       21.346,
+       0,
+       -11.041
+      ],
+      "max": [
+       27.445,
+       12.586,
+       0.75
+      ]
+     },
+     "triangles": 964,
+     "ranges": [
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 23
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 264,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 22,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 248,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 9648,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 132,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1866,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 72,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-075378",
+     "pandId": "0363100012075378",
+     "buildingId": "NL.IMBAG.Pand.0363100012075378",
+     "address": "Boterdiepstraat 10",
+     "frontage": {
+      "x0": 27.445,
+      "x1": 33.546,
+      "widthM": 6.102
+     },
+     "bounds": {
+      "min": [
+       27.445,
+       0,
+       -11.041
+      ],
+      "max": [
+       33.546,
+       12.578,
+       0.775
+      ]
+     },
+     "triangles": 1596,
+     "ranges": [
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 330
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 288,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 24,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 276,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 10368,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 144,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 2016,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 35,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 77,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-140075",
+     "pandId": "0363100012140075",
+     "buildingId": "NL.IMBAG.Pand.0363100012140075",
+     "address": "Boterdiepstraat 8",
+     "frontage": {
+      "x0": 33.546,
+      "x1": 39.647,
+      "widthM": 6.1
+     },
+     "bounds": {
+      "min": [
+       33.545,
+       0,
+       -11.04
+      ],
+      "max": [
+       39.647,
+       12.505,
+       0.776
+      ]
+     },
+     "triangles": 1599,
+     "ranges": [
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 333
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 312,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 26,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 294,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 11376,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 156,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 2202,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 44,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 84,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-071778",
+     "pandId": "0363100012071778",
+     "buildingId": "NL.IMBAG.Pand.0363100012071778",
+     "address": "Boterdiepstraat 6",
+     "frontage": {
+      "x0": 39.647,
+      "x1": 45.866,
+      "widthM": 6.219
+     },
+     "bounds": {
+      "min": [
+       39.645,
+       0,
+       -10.437
+      ],
+      "max": [
+       45.869,
+       12.351,
+       0.75
+      ]
+     },
+     "triangles": 971,
+     "ranges": [
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 29
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 336,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 28,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 312,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 12384,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 168,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 2388,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 95,
+       "triangleCount": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-boterdiep-37-59",
+   "category": "street-survey",
+   "name": "face-boterdiep-37-59",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-boterdiep-37-59.glb?asset=ef47c827858e3606",
+   "sha256": "ef47c827858e36067fdff284167bfc14e97f6adff9540e38999272b1b13fd137",
+   "bytes": 1432448,
+   "triangles": 21450,
+   "primitives": 21,
+   "instance": {
+    "anchor": [
+     4.9100367800935185,
+     52.3417804864376
+    ],
+    "northOffsetDegrees": 77.1197,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -39.676,
+     0,
+     -13.512
+    ],
+    "max": [
+     39.688,
+     12.48,
+     0.695
+    ]
+   },
+   "height": 12.48,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012072132",
+    "NL.IMBAG.Pand.0363100012104968",
+    "NL.IMBAG.Pand.0363100012151656",
+    "NL.IMBAG.Pand.0363100012134798",
+    "NL.IMBAG.Pand.0363100012099539",
+    "NL.IMBAG.Pand.0363100012113872",
+    "NL.IMBAG.Pand.0363100012084947",
+    "NL.IMBAG.Pand.0363100012107119",
+    "NL.IMBAG.Pand.0363100012081666",
+    "NL.IMBAG.Pand.0363100012151628",
+    "NL.IMBAG.Pand.0363100012110556",
+    "NL.IMBAG.Pand.0363100012111742",
+    "NL.IMBAG.Pand.0363100012074421"
+   ],
+   "replaces": [
+    "ordinary-0363100012072132",
+    "ordinary-0363100012104968",
+    "ordinary-0363100012151656",
+    "ordinary-0363100012134798",
+    "ordinary-0363100012099539",
+    "ordinary-0363100012113872",
+    "ordinary-0363100012084947",
+    "ordinary-0363100012107119",
+    "ordinary-0363100012081666",
+    "ordinary-0363100012151628",
+    "ordinary-0363100012110556",
+    "ordinary-0363100012111742",
+    "ordinary-0363100012074421"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9100614,
+        52.3421498
+       ],
+       [
+        4.9099068,
+        52.3421281
+       ],
+       [
+        4.9099152,
+        52.3421056
+       ],
+       [
+        4.9099244,
+        52.342081
+       ],
+       [
+        4.9099268,
+        52.3420745
+       ],
+       [
+        4.9100814,
+        52.3420962
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9100814,
+        52.3420962
+       ],
+       [
+        4.9099268,
+        52.3420745
+       ],
+       [
+        4.9099351,
+        52.3420522
+       ],
+       [
+        4.9099444,
+        52.3420275
+       ],
+       [
+        4.9099468,
+        52.3420211
+       ],
+       [
+        4.9101014,
+        52.3420427
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9101014,
+        52.3420427
+       ],
+       [
+        4.9099468,
+        52.3420211
+       ],
+       [
+        4.9099551,
+        52.3419988
+       ],
+       [
+        4.9099643,
+        52.341974
+       ],
+       [
+        4.9099668,
+        52.3419676
+       ],
+       [
+        4.9101214,
+        52.3419893
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9101429,
+        52.3419923
+       ],
+       [
+        4.9099668,
+        52.3419676
+       ],
+       [
+        4.909975,
+        52.3419455
+       ],
+       [
+        4.9099843,
+        52.3419207
+       ],
+       [
+        4.9099867,
+        52.3419142
+       ],
+       [
+        4.9101414,
+        52.3419359
+       ],
+       [
+        4.910141,
+        52.3419368
+       ],
+       [
+        4.9101439,
+        52.3419372
+       ],
+       [
+        4.9101442,
+        52.3419363
+       ],
+       [
+        4.91018,
+        52.3419414
+       ],
+       [
+        4.910178,
+        52.3419466
+       ],
+       [
+        4.9101608,
+        52.3419442
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9101439,
+        52.3419372
+       ],
+       [
+        4.910141,
+        52.3419368
+       ],
+       [
+        4.9101414,
+        52.3419359
+       ],
+       [
+        4.9099876,
+        52.3419144
+       ],
+       [
+        4.9100045,
+        52.3418668
+       ],
+       [
+        4.9100069,
+        52.3418603
+       ],
+       [
+        4.9101644,
+        52.3418824
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9101644,
+        52.3418824
+       ],
+       [
+        4.9100069,
+        52.3418603
+       ],
+       [
+        4.910015,
+        52.3418386
+       ],
+       [
+        4.9100243,
+        52.3418138
+       ],
+       [
+        4.9100267,
+        52.3418073
+       ],
+       [
+        4.9101842,
+        52.3418294
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9101842,
+        52.3418294
+       ],
+       [
+        4.9100267,
+        52.3418073
+       ],
+       [
+        4.910035,
+        52.3417852
+       ],
+       [
+        4.9100443,
+        52.3417601
+       ],
+       [
+        4.9100468,
+        52.3417537
+       ],
+       [
+        4.9102043,
+        52.3417758
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9102043,
+        52.3417758
+       ],
+       [
+        4.9100468,
+        52.3417537
+       ],
+       [
+        4.9100549,
+        52.3417318
+       ],
+       [
+        4.9100643,
+        52.3417069
+       ],
+       [
+        4.9100667,
+        52.3417004
+       ],
+       [
+        4.9102242,
+        52.3417225
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9102242,
+        52.3417225
+       ],
+       [
+        4.9100667,
+        52.3417004
+       ],
+       [
+        4.9100749,
+        52.3416784
+       ],
+       [
+        4.9100843,
+        52.3416533
+       ],
+       [
+        4.9100867,
+        52.3416468
+       ],
+       [
+        4.9102442,
+        52.3416689
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9102442,
+        52.3416689
+       ],
+       [
+        4.9100867,
+        52.3416468
+       ],
+       [
+        4.9100949,
+        52.341625
+       ],
+       [
+        4.9101043,
+        52.3415998
+       ],
+       [
+        4.9101067,
+        52.3415934
+       ],
+       [
+        4.9102642,
+        52.3416154
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9102642,
+        52.3416154
+       ],
+       [
+        4.9101067,
+        52.3415934
+       ],
+       [
+        4.9101148,
+        52.3415715
+       ],
+       [
+        4.9101243,
+        52.3415464
+       ],
+       [
+        4.9101267,
+        52.3415399
+       ],
+       [
+        4.9102842,
+        52.341562
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9102842,
+        52.341562
+       ],
+       [
+        4.9101267,
+        52.3415399
+       ],
+       [
+        4.9101349,
+        52.341518
+       ],
+       [
+        4.9101442,
+        52.3414929
+       ],
+       [
+        4.9101467,
+        52.3414865
+       ],
+       [
+        4.9102823,
+        52.3415055
+       ],
+       [
+        4.9102827,
+        52.3415046
+       ],
+       [
+        4.9102939,
+        52.3415062
+       ],
+       [
+        4.910302,
+        52.3415142
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9103072,
+        52.3414772
+       ],
+       [
+        4.9102908,
+        52.3414827
+       ],
+       [
+        4.9102823,
+        52.3415055
+       ],
+       [
+        4.9101467,
+        52.3414865
+       ],
+       [
+        4.910155,
+        52.3414641
+       ],
+       [
+        4.9101644,
+        52.3414391
+       ],
+       [
+        4.9101667,
+        52.3414328
+       ],
+       [
+        4.910287,
+        52.3414497
+       ],
+       [
+        4.9102856,
+        52.3414531
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "boterdiep-072132",
+     "pandId": "0363100012072132",
+     "buildingId": "NL.IMBAG.Pand.0363100012072132",
+     "address": "Boterdiepstraat 35",
+     "frontage": {
+      "x0": -39.675,
+      "x1": -33.562,
+      "widthM": 6.113
+     },
+     "bounds": {
+      "min": [
+       -39.676,
+       0,
+       -10.857
+      ],
+      "max": [
+       -33.561,
+       12.29,
+       0.671
+      ]
+     },
+     "triangles": 1679,
+     "ranges": [
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 326
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 1088
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-104968",
+     "pandId": "0363100012104968",
+     "buildingId": "NL.IMBAG.Pand.0363100012104968",
+     "address": "Boterdiepstraat 37",
+     "frontage": {
+      "x0": -33.562,
+      "x1": -27.46,
+      "widthM": 6.102
+     },
+     "bounds": {
+      "min": [
+       -33.562,
+       0,
+       -10.855
+      ],
+      "max": [
+       -27.457,
+       12.341,
+       0.673
+      ]
+     },
+     "triangles": 1650,
+     "ranges": [
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 1088,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 204,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 6,
+       "triangleCount": 14
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-151656",
+     "pandId": "0363100012151656",
+     "buildingId": "NL.IMBAG.Pand.0363100012151656",
+     "address": "Boterdiepstraat 39",
+     "frontage": {
+      "x0": -27.46,
+      "x1": -21.359,
+      "widthM": 6.101
+     },
+     "bounds": {
+      "min": [
+       -27.46,
+       0,
+       -10.853
+      ],
+      "max": [
+       -21.353,
+       12.35,
+       0.674
+      ]
+     },
+     "triangles": 1653,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 16,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 2152,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 402,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 9,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 20,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-134798",
+     "pandId": "0363100012134798",
+     "buildingId": "NL.IMBAG.Pand.0363100012134798",
+     "address": "Boterdiepstraat 41",
+     "frontage": {
+      "x0": -21.359,
+      "x1": -15.269,
+      "widthM": 6.09
+     },
+     "bounds": {
+      "min": [
+       -21.361,
+       0,
+       -13.512
+      ],
+      "max": [
+       -15.265,
+       12.382,
+       0.684
+      ]
+     },
+     "triangles": 1626,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 365
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 24,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 3216,
+       "triangleCount": 1008
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 600,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 19,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 27,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-099539",
+     "pandId": "0363100012099539",
+     "buildingId": "NL.IMBAG.Pand.0363100012099539",
+     "address": "Boterdiepstraat 43",
+     "frontage": {
+      "x0": -15.269,
+      "x1": -9.117,
+      "widthM": 6.152
+     },
+     "bounds": {
+      "min": [
+       -15.367,
+       0,
+       -11.052
+      ],
+      "max": [
+       -9.113,
+       12.413,
+       0.675
+      ]
+     },
+     "triangles": 1654,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 359
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 32,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 4224,
+       "triangleCount": 1040
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 784,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 27,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 42,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-113872",
+     "pandId": "0363100012113872",
+     "buildingId": "NL.IMBAG.Pand.0363100012113872",
+     "address": "Boterdiepstraat 45",
+     "frontage": {
+      "x0": -9.117,
+      "x1": -3.063,
+      "widthM": 6.053
+     },
+     "bounds": {
+      "min": [
+       -9.117,
+       0,
+       -11.051
+      ],
+      "max": [
+       -3.061,
+       12.426,
+       0.677
+      ]
+     },
+     "triangles": 1638,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 323
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 120,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 40,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 5264,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 976,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 51,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-084947",
+     "pandId": "0363100012084947",
+     "buildingId": "NL.IMBAG.Pand.0363100012084947",
+     "address": "Boterdiepstraat 47",
+     "frontage": {
+      "x0": -3.063,
+      "x1": 3.058,
+      "widthM": 6.121
+     },
+     "bounds": {
+      "min": [
+       -3.063,
+       0,
+       -11.049
+      ],
+      "max": [
+       3.062,
+       12.402,
+       0.679
+      ]
+     },
+     "triangles": 1679,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 326
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 144,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 12,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 48,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 6328,
+       "triangleCount": 1088
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1174,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 35,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 58,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-107119",
+     "pandId": "0363100012107119",
+     "buildingId": "NL.IMBAG.Pand.0363100012107119",
+     "address": "Boterdiepstraat 49",
+     "frontage": {
+      "x0": 3.058,
+      "x1": 9.14,
+      "widthM": 6.083
+     },
+     "bounds": {
+      "min": [
+       3.058,
+       0,
+       -11.048
+      ],
+      "max": [
+       9.144,
+       12.377,
+       0.68
+      ]
+     },
+     "triangles": 1633,
+     "ranges": [
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 318
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 168,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 14,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 56,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 7416,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 84,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1378,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 67,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-081666",
+     "pandId": "0363100012081666",
+     "buildingId": "NL.IMBAG.Pand.0363100012081666",
+     "address": "Boterdiepstraat 51",
+     "frontage": {
+      "x0": 9.14,
+      "x1": 15.254,
+      "widthM": 6.113
+     },
+     "bounds": {
+      "min": [
+       9.14,
+       0,
+       -11.046
+      ],
+      "max": [
+       15.259,
+       12.48,
+       0.682
+      ]
+     },
+     "triangles": 1703,
+     "ranges": [
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 354
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 192,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 16,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 64,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 8480,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 96,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1576,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 74,
+       "triangleCount": 41
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-151628",
+     "pandId": "0363100012151628",
+     "buildingId": "NL.IMBAG.Pand.0363100012151628",
+     "address": "Boterdiepstraat 53",
+     "frontage": {
+      "x0": 15.254,
+      "x1": 21.358,
+      "widthM": 6.104
+     },
+     "bounds": {
+      "min": [
+       15.254,
+       0,
+       -11.044
+      ],
+      "max": [
+       21.362,
+       12.403,
+       0.684
+      ]
+     },
+     "triangles": 1643,
+     "ranges": [
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 216,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 18,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 72,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 9544,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 108,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1774,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 115,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-110556",
+     "pandId": "0363100012110556",
+     "buildingId": "NL.IMBAG.Pand.0363100012110556",
+     "address": "Boterdiepstraat 55",
+     "frontage": {
+      "x0": 21.358,
+      "x1": 27.461,
+      "widthM": 6.103
+     },
+     "bounds": {
+      "min": [
+       21.358,
+       0,
+       -11.043
+      ],
+      "max": [
+       27.465,
+       12.369,
+       0.685
+      ]
+     },
+     "triangles": 1653,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 329
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 240,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 20,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 80,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 10608,
+       "triangleCount": 1064
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 120,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1972,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 41,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 122,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-111742",
+     "pandId": "0363100012111742",
+     "buildingId": "NL.IMBAG.Pand.0363100012111742",
+     "address": "Boterdiepstraat 57",
+     "frontage": {
+      "x0": 27.461,
+      "x1": 33.557,
+      "widthM": 6.096
+     },
+     "bounds": {
+      "min": [
+       27.461,
+       0,
+       -11.041
+      ],
+      "max": [
+       33.662,
+       12.291,
+       0.687
+      ]
+     },
+     "triangles": 1632,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 335
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 264,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 22,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 88,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 11672,
+       "triangleCount": 1040
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 132,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 2170,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 47,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 132,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "boterdiep-074421",
+     "pandId": "0363100012074421",
+     "buildingId": "NL.IMBAG.Pand.0363100012074421",
+     "address": "Boterdiepstraat 59",
+     "frontage": {
+      "x0": 33.557,
+      "x1": 39.68,
+      "widthM": 6.123
+     },
+     "bounds": {
+      "min": [
+       33.557,
+       0,
+       -10.421
+      ],
+      "max": [
+       39.688,
+       12.346,
+       0.695
+      ]
+     },
+     "triangles": 1607,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 348
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 288,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 24,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 96,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 12712,
+       "triangleCount": 1016
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 144,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 2362,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 141,
+       "triangleCount": 11
       }
      ]
     }
