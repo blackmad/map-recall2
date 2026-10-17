@@ -168,6 +168,10 @@ export function simplifyLine(pts: readonly Vec2[], tol: number): Vec2[] {
  */
 /** Largest footway polygon between parking bays that draws as street (RoadIndex.parkingIslands). */
 export const PARKING_ISLAND_MAX_M2 = 40;
+/** Largest footway polygon across a carriageway at a crossing that draws as the carriageway (RoadIndex.crossingStrips). */
+export const CROSSING_STRIP_MAX_M2 = 120;
+/** A crossing strip's edges against the carriageway run across the road: within this of the road's normal. */
+export const CROSS_EDGE_DEG = 30;
 export class RoadIndex extends SurfaceIndex<RoadSurface> {
   /** `within`: the neighbours' polygons only where the build can ask (the cell, its own ways' reach): earcut of the full 3×3 was a fifth of the roads cost. */
   constructor(cells: readonly (RoadCell | null | undefined)[], within?: readonly [number, number, number, number]) { super(cells, () => true, within); }
@@ -215,6 +219,59 @@ export class RoadIndex extends SurfaceIndex<RoadSurface> {
       if (!total || park / total < minShare) continue;
       const mesh = [...parkMesh.entries()].sort((x, y) => y[1] - x[1])[0][0];
       this.classOver.set(k, 'parking'); this.meshOver.set(k, mesh); n++;
+    }
+    return n;
+  }
+
+  /**
+   * Footway strips across a carriageway at a mapped crossing draw as the carriageway (its mesh, at road height,
+   * without kerbs), so the zebra is painted on them. BGT maps many crossings as a `voetpad` polygon across the road
+   * (Leidseplein: every zebra of the plein), which drew as a raised pale pavement strip with granite kerbs across the
+   * road and kept the zebra off it (crossing audit 2026-10-17, user: "crossings sit on cobbles and in odd places").
+   * A foot polygon of at most `maxArea` m² that holds a crossing point `p` (on the road way, `r` the road's direction
+   * there), and borders a carriageway along edges running across the road (within CROSS_EDGE_DEG of the normal to
+   * `r`) on both sides of the point, at least `minEdge` metres each, and whose edges along the road meet no
+   * carriageway for at least half their length (a strip runs kerb to kerb; a refuge island has road beside it and
+   * stays). Returns the count.
+   */
+  crossingStrips(points: readonly { p: Vec2; r: Vec2 }[], maxArea = CROSSING_STRIP_MAX_M2, minEdge = 1.5): number {
+    let n = 0;
+    const done = new Set<number>(), cosMax = Math.cos((90 - CROSS_EDGE_DEG) * Math.PI / 180);
+    for (const { p, r } of points) {
+      for (const k of this.findAll(p[0], p[1])) {
+        if (done.has(k) || this.records[k].h !== 0 || this.drawClass(k) !== 'foot') continue;
+        const ring = this.ringsOf(k)[0];
+        if (!ring || ring.length < 3) continue;
+        let a2 = 0;
+        for (let i = 0; i < ring.length; i++) { const a = ring[i], b = ring[(i + 1) % ring.length]; a2 += a[0] * b[1] - b[0] * a[1]; }
+        if (Math.abs(a2) / 2 > maxArea) continue;
+        const side = [0, 0], meshLen = new Map<RoadMesh, number>(), along = [0, 0];
+        for (let i = 0; i < ring.length; i++) {
+          const a = ring[i], b = ring[(i + 1) % ring.length], len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+          if (len < 1e-6) continue;
+          const ux = (b[0] - a[0]) / len, uy = (b[1] - a[1]) / len;
+          const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, nx = -uy, ny = ux;
+          if (Math.abs(ux * r[0] + uy * r[1]) > cosMax) {
+            // An edge along the road: a strip meets the pavement or a cycle path here; an island the carriageway.
+            if (Math.abs(ux * r[0] + uy * r[1]) >= Math.cos(CROSS_EDGE_DEG * Math.PI / 180)) {
+              along[1] += len;
+              if ([1, -1].some(s => { const hit = this.findAll(mx + s * nx * 0.3, my + s * ny * 0.3).find(j => j !== k && this.records[j].h === 0); return hit !== undefined && this.drawClass(hit) === 'carriage'; })) along[0] += len;
+            }
+            continue;
+          }
+          for (const s of [1, -1]) {
+            const hit = this.findAll(mx + s * nx * 0.3, my + s * ny * 0.3).find(j => j !== k && this.records[j].h === 0);
+            if (hit === undefined || this.drawClass(hit) !== 'carriage') continue;
+            // Which side of the crossing point (along the road) the edge lies on.
+            side[(mx - p[0]) * r[0] + (my - p[1]) * r[1] >= 0 ? 0 : 1] += len;
+            meshLen.set(this.mesh(hit), (meshLen.get(this.mesh(hit)) ?? 0) + len);
+            break;
+          }
+        }
+        if (side[0] < minEdge || side[1] < minEdge || along[0] > 0.5 * along[1]) continue;
+        const mesh = [...meshLen.entries()].sort((x, y) => y[1] - x[1])[0][0];
+        this.classOver.set(k, 'carriage'); this.meshOver.set(k, mesh); done.add(k); n++;
+      }
     }
     return n;
   }

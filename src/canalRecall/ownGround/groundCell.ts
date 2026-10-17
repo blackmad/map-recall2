@@ -31,7 +31,7 @@ import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats, type Surv
 import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } from './roadSurfaces.js';
 import type { RoadCell } from './roadCells.js';
 import type { RoadMark } from './roadMarks.js';
-import { buildSurveyMarkings, SURVEY_MARKINGS, type SurveyMarkingStats } from './surveyMarkings.js';
+import { buildSurveyMarkings, crossingStripPoints, SURVEY_MARKINGS, type SurveyMarkingStats } from './surveyMarkings.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
 
@@ -54,7 +54,7 @@ export interface BuiltCell {
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number; /** surveyMarkings.ts: what the survey-aware markings drew. */ markings?: SurveyMarkingStats | null }) | null; courtyards?: number };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number; /** Footway strips across the road at a crossing drawn as carriageway. */ crossingStrips?: number; /** surveyMarkings.ts: what the survey-aware markings drew. */ markings?: SurveyMarkingStats | null }) | null; courtyards?: number };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -243,6 +243,8 @@ export function buildCell(input: CellInput): BuiltCell {
   // Footway islands between parking bays draw as street (RoadIndex.parkingIslands). A fietsstraat's red is decided
   // per section in the extract (roadCells fietsstraatSection), so there is no runtime override under tram track.
   const parkingIslands = roadIndex ? roadIndex.parkingIslands() : 0;
+  // Footway strips BGT maps across the road at a mapped crossing draw as the carriageway, zebra on them (crossingStrips).
+  const crossingStrips = roadIndex && SURVEY_MARKINGS ? roadIndex.crossingStrips(crossingStripPoints(ways, input.marks ?? [])) : 0;
   phase('roadIndex');
   let roads: BuiltCell['stats']['roads'] = null;
   let roadCover: SurfaceRaster | null = null, roadSkipped: ReadonlySet<number> = new Set();
@@ -251,7 +253,7 @@ export function buildCell(input: CellInput): BuiltCell {
     const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, canalSide, ...(input.drape ?? {}) });
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!);
     roadSkipped = built.skipped;
-    roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, parkingIslands, markings: null };
+    roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, parkingIslands, crossingStrips, markings: null };
   }
   // One raster serves the street pass's point lookups (RoadIndex.prepareFast) and the land culling under the own polygons.
   phase('roads');
