@@ -729,6 +729,22 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Public preview follow-ups (2026-10-17).**
+  - User: Sentry projects/DSNs and `SENTRY_AUTH_TOKEN`, reCAPTCHA Enterprise key
+    as `APPCHECK_SITE_KEY`, App Check registration (monitor, then enforce);
+    Firebase Auth authorized domains for `/quiz/`; attach `edumap.blackmad.com`
+    so the 301 works; check query strings survive it.
+  - In flight: account chip + My progress + route history; neighbourhood
+    explorer with GLB download / report / request; POI stamps + themed tours.
+  - Clarity findings still open (`docs/preview/gameplay-clarity-review.md`):
+    10 zoom badge after the start flight, 11 phone "More" cue over fields,
+    12 desktop More options below the fold, 13 blank band after answering,
+    14 duplicate arrival stats, 15 flat 21-row key table, 16 HUD names the
+    start street (check against the answer-before-reveal rule).
+  - Verify-first dead-code cleanup from the held report (14a6c2284).
+  - `canal-recall.spec` "named bridge card" fails on main since the bridge
+    lede repair (expects the register sentence in `longDetail`).
+  - `test:canal-onboarding` npm script for the intro unit tests.
 - **Chunks vs generic boxes, the colour gap** (2026-10-16, HISTORY "One
   wall material"): light and material now match; the generic period-prior
   palette is about twice as light as measured walls. Next: measured colours
