@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Spaarndammerbuurt: 54 pands from five measured types (2026-10-17)
+
+Lane `lane/spaarndammer-20261017` (19ec2cff4 … b0aec6444). 54 pands in 13
+runs: Midden 17 of 122 non-Het-Schip pands (Polanenstraat 229–309, 222 and
+240; Houtrijkstraat 381 and 399; Hembrugstraat 21–27), Noordwest 37 of 196
+(Hembrugstraat 44–272; Zaanhof, Walenkamp 1919, 30 pands in six faces). Types
+in `scripts/block-face/types/spaarndammerbuurt/`: hembrug-1925-white-attic,
+polanen-1935-white-attic, spaarndammer-1933-stair-ladder (+ five-axis),
+zaanhof-1919-white-gable (type palette: the sunlit half-rendered strips read
+the brick as #eac495–#fffcd6). Kit: `brickStripes`, inner `lisenes`
+(`at`/`breadth`/`stopStorey`), `doorArch`, window kind
+`casement-sidelights-toplight`, `stairLight` (glass-block ladder on the stair
+axis), `renderedGable` with painted bargeboards (they replace the crown's edge
+boxes), `match.measuredWall: false`, reviewer door pins
+(`reviewDoors.ts`, `<buurt>-review-doors.json`: the door detector reads
+nothing under round arches, so every Zaanhof door side is pinned). Held:
+Zaanhof 46, 48, 113 (wider design), 117 (36 % of the strip without panorama),
+85–89 (1934 infill); Spaarndammerstraat 121–137 (1884 shop row) drafted but
+fails the GLB audit on 3DBAG rear-wing shell holes and cornice-through-roof.
+No before frames: the block-face spec cannot leave one face's chunk out.
+
 ## Stamps and tours in the ride (2026-10-17)
 
 Stamps: `collection.bundle.js` loads in the ride; `_recordArrival` stamps only
