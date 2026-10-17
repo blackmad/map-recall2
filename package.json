@@ -495,7 +495,7 @@
     "build:explorer-index": "tsx scripts/explorer/build-index.ts",
     "test:explorer": "node --import tsx --test src/canalRecall/explorer/*.test.ts",
     "build:canal-route-history": "esbuild src/canalRecall/routeHistoryBrowser.ts --bundle --format=iife --global-name=CanalRouteHistory --outfile=public/canal-drive/js/route-history.bundle.js --minify",
-    "test:route-history": "node --import tsx --test src/canalRecall/routeHistory.test.ts",
+    "test:route-history": "node --import tsx --test src/canalRecall/routeHistory.test.ts src/canalRecall/shareRoute.test.ts",
     "test:route-history:rules": "npx --yes firebase-tools@15.28.2 emulators:exec --only firestore --project demo-canal-feedback --config firebase.feedback.json 'node scripts/route-history/rules.test.mjs'",
     "build:monitoring": "esbuild src/canalRecall/monitoring.ts --bundle --format=iife --outfile=public/canal-drive/js/monitoring.bundle.js --minify",
     "feedback:queue": "node scripts/feedback/queue.mjs",
