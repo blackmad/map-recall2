@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## Makassarpleinbuurt (Indische Buurt): 34 pands from three interwar types (2026-10-17)
+
+Lane `lane/indische-buurt-20261017` (ed3982426, 48d94a79c, b13ea401a). Chosen
+because 224 of its 447 BAG pands date from 1918–40 (most in 1925–26), far
+more than the other Indische Buurt buurten. 34 pands on Molukken-, Gorontalo-
+and Niasstraat in three measured types (`scripts/block-face/types/indische-buurt/`:
+indisch-1926-attic-lights, indisch-1926-white-attic, indisch-1925-stair-pair);
+coverage shows MG01 as drawn (34 of 514). Kit: `storeyWindowWidths`,
+`paintedStoreys.from`, a measured `dormerSize`; glazing bars 4 cm off the pane
+(opening v20, clears the audit's 30 mm tight overlaps); flat dormer roofs as a
+sheet on a slab (dormer v8); reviewer type and mirror pins
+(`reviewCrowns.ts`; photo-decides confused shop doors with house doors).
+Chunks installed earlier keep their old bars and dormers until recompiled.
+The stair-pair dormers are deliberately undrawn: the kit could not seat them
+in the steep attic roof without piercing it. Held: four Molukken 7-29 shop
+pands (NCC < 0.15), Niasstraat 1 and Gorontalostraat 47 (corners),
+Gorontalostraat 39 (folded front at the street kink).
+
 ## Rietveld revisited: the 1967 glass block and the 2006 tower installed (2026-10-17)
 
 User (2026-10-17): "I think we need to revisit Gerrit Rietveld Academie". Lane

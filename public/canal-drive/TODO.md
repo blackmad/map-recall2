@@ -930,6 +930,16 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   glass; cantilevered overhangs, undercrofts, roof railings; interior columns
   seen through glass. Likeness: a glazing classifier that copes with reflective
   curtain walls and sunlit white facades.
+- **Makassarpleinbuurt, next** (2026-10-17, HISTORY "Makassarpleinbuurt"):
+  review and install boeton-2-42-r1 and nias-15-27-r1 (faces committed); type
+  the 1933 Boeton 24-32 houses; revisit the held Molukken 7-29 shop pands;
+  480 of 514 pands left. Kit gaps: dormers on a steep attic roof; the
+  Gorontalo board dormer's proportions (wider, lower); a darker ground-storey
+  brick with a soldier-course ledge; doors against the party wall and paired
+  doors; folded/canted fronts at a street kink; corner towers and blocks; white
+  attic pilasters with capitals; curved parapets with plaques; brick header
+  accents; specific shop fronts; walls lighter than the overcast strip after
+  trim normalisation.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
