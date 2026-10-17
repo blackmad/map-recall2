@@ -1,0 +1,223 @@
+{
+ "street": "Boterdiepstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T21:10:26.039Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012072132",
+   "addresses": [
+    "Boterdiepstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000593966"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012104968",
+   "addresses": [
+    "Boterdiepstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000593972"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151656",
+   "addresses": [
+    "Boterdiepstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 39-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000593978"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134798",
+   "addresses": [
+    "Boterdiepstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000593984"
+    },
+    {
+     "address": "Boterdiepstraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010012145128"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099539",
+   "addresses": [
+    "Boterdiepstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 43-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000593988"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113872",
+   "addresses": [
+    "Boterdiepstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000593994"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084947",
+   "addresses": [
+    "Boterdiepstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 47-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000594000"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107119",
+   "addresses": [
+    "Boterdiepstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000594006"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081666",
+   "addresses": [
+    "Boterdiepstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000594012"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151628",
+   "addresses": [
+    "Boterdiepstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 53-H",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000594018"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110556",
+   "addresses": [
+    "Boterdiepstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 55-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000594024"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111742",
+   "addresses": [
+    "Boterdiepstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000594030"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074421",
+   "addresses": [
+    "Boterdiepstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boterdiepstraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000594036"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

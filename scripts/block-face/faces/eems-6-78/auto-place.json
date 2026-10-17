@@ -1,0 +1,1666 @@
+{
+ "face": "eems-6-78",
+ "street": "Eemsstraat",
+ "library": "rivierenbuurt",
+ "stripDate": "2023-01-03",
+ "seconds": 57.74,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "eems-6-78",
+   "pands": [
+    "0363100012140994",
+    "0363100012124657",
+    "0363100012061247",
+    "0363100012111889",
+    "0363100012121394",
+    "0363100012088569",
+    "0363100012094658",
+    "0363100012069912",
+    "0363100012149922",
+    "0363100012087051",
+    "0363100012138436",
+    "0363100012084686",
+    "0363100012104341",
+    "0363100012062063",
+    "0363100012063274",
+    "0363100012148727"
+   ],
+   "passed": false,
+   "triangles": 20468
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012140994",
+   "address": "Eemsstraat 36",
+   "builtYear": 1934,
+   "widthM": 6.07,
+   "eavesM": 12.42,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 1.76,
+    "toM": 3.47,
+    "depthM": 0.66,
+    "centre": 0.431
+   },
+   "strip": {
+    "wall": "#483f38",
+    "wallRaw": "#4b423c",
+    "skyline": {
+     "eavesM": 16.98,
+     "eavesRow": 32,
+     "confidence": 0.61,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-centre",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "rijn-1934-flat-three",
+    "score": 0.67
+   },
+   "placement": {
+    "type": "rijn-1934-erker-centre",
+    "measuredPalette": {
+     "brick": "#483f38",
+     "evidence": "strip 2023-01-03 span 0-243: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #685951)"
+    }
+   },
+   "notes": [
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012140994",
+    "ncc": 0.226,
+    "nccRaw": 0.226,
+    "shiftM": [
+     -0.05,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.30 mean 0.46 vs photo 0.32"
+    ],
+    "wall": {
+     "photo": "#675951",
+     "model": "#63574d",
+     "dL": -0.016
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.46
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.458
+   },
+   "challengers": {
+    "rijn-1934-erker-centre": 0.248,
+    "rijn-1934-erker-centre~m": 0.26,
+    "rijn-1934-erker-end": 0.107,
+    "rijn-1934-erker-end~m": 0.121,
+    "rijn-1934-erker-pair": 0.132,
+    "rijn-1934-erker-pair~m": 0.188,
+    "rijn-1934-erker-ribbon": 0.134,
+    "rijn-1934-erker-ribbon~m": 0.098,
+    "rijn-1934-erker-white-attic~m": 0.153,
+    "rijn-1934-erker-white-attic": 0.154,
+    "rijn-1934-flat-three~m": 0.212,
+    "rijn-1934-flat-three": 0.212
+   }
+  },
+  {
+   "pandId": "0363100012124657",
+   "address": "Eemsstraat 34",
+   "builtYear": 1934,
+   "widthM": 6.06,
+   "eavesM": 12.49,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4c423c",
+    "wallRaw": "#4f4640",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 96,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 1.6,
+      "topWidthM": 0.6,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-centre",
+    "score": 0.73
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#4c423c",
+     "evidence": "strip 2023-01-03 span 243-486: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #6f6059)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, paired with 140994's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012124657",
+    "ncc": 0.473,
+    "nccRaw": 0.473,
+    "shiftM": [
+     0.35,
+     0
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.49 vs photo 0.38",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#6d5f58",
+     "model": "#675951",
+     "dL": -0.025
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.471
+   },
+   "challengers": {
+    "rijn-1934-flat-three": 0.461,
+    "rijn-1934-erker-centre~m": 0.348,
+    "rijn-1934-erker-centre": 0.387,
+    "rijn-1934-erker-end": 0.403,
+    "rijn-1934-erker-end~m": 0.378,
+    "rijn-1934-erker-pair": 0.333,
+    "rijn-1934-erker-pair~m": 0.386,
+    "rijn-1934-erker-ribbon": 0.386,
+    "rijn-1934-erker-ribbon~m": 0.354,
+    "rijn-1934-erker-white-attic~m": 0.379,
+    "rijn-1934-erker-white-attic": 0.389,
+    "rijn-1934-flat-three~m": 0.461
+   }
+  },
+  {
+   "pandId": "0363100012061247",
+   "address": "Eemsstraat 32",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.45,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#49403a",
+    "wallRaw": "#4c443e",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 104,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.2,
+      "topWidthM": 0.2,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-ribbon",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#49403a",
+     "evidence": "strip 2023-01-03 span 485-729: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #483f39)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, paired with 124657's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012061247",
+    "ncc": 0.421,
+    "nccRaw": 0.421,
+    "shiftM": [
+     0.25,
+     0.05
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#665a57",
+     "model": "#64574f",
+     "dL": -0.02
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.558
+   },
+   "challengers": {
+    "rijn-1934-flat-three~m": 0.414,
+    "rijn-1934-erker-centre~m": 0.353,
+    "rijn-1934-erker-centre": 0.389,
+    "rijn-1934-erker-end": 0.384,
+    "rijn-1934-erker-end~m": 0.309,
+    "rijn-1934-erker-pair": 0.362,
+    "rijn-1934-erker-pair~m": 0.411,
+    "rijn-1934-erker-ribbon": 0.384,
+    "rijn-1934-erker-ribbon~m": 0.439,
+    "rijn-1934-erker-white-attic~m": 0.341,
+    "rijn-1934-erker-white-attic": 0.341,
+    "rijn-1934-flat-three": 0.414
+   }
+  },
+  {
+   "pandId": "0363100012111889",
+   "address": "Eemsstraat 30",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.47,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 4.12,
+    "toM": 5.83,
+    "depthM": 0.65,
+    "centre": 0.853,
+    "lineRD": [
+     [
+      122390.34449999999,
+      483914.64225000003
+     ],
+     [
+      122389.55249999999,
+      483918.20325
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#463d37",
+    "wallRaw": "#49403a",
+    "skyline": {
+     "eavesM": 14.97,
+     "eavesRow": 112,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 2.6,
+      "topWidthM": 1,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.05,
+       "widthM": 0.82,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-end",
+   "score": 0.83,
+   "runnerUp": {
+    "typeId": "rijn-1934-flat-three",
+    "score": 0.59
+   },
+   "placement": {
+    "type": "rijn-1934-erker-end",
+    "measuredPalette": {
+     "brick": "#463d37",
+     "evidence": "strip 2023-01-03 span 729-963: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #453c37)"
+    }
+   },
+   "notes": [
+    "accent right",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012111889",
+    "ncc": 0.453,
+    "nccRaw": 0.453,
+    "shiftM": [
+     0.1,
+     0.05
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.29 mean 0.43 vs photo 0.61"
+    ],
+    "wall": {
+     "photo": "#473e38",
+     "model": "#61554c",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.61,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.558
+   },
+   "challengers": {
+    "rijn-1934-erker-end": 0.463,
+    "rijn-1934-erker-centre~m": 0.269,
+    "rijn-1934-erker-centre": 0.301,
+    "rijn-1934-erker-end~m": 0.433,
+    "rijn-1934-erker-pair": 0.125,
+    "rijn-1934-erker-pair~m": 0.287,
+    "rijn-1934-erker-ribbon": 0.282,
+    "rijn-1934-erker-ribbon~m": 0.365,
+    "rijn-1934-erker-white-attic~m": 0.339,
+    "rijn-1934-erker-white-attic": 0.307,
+    "rijn-1934-flat-three": 0.27,
+    "rijn-1934-flat-three~m": 0.27
+   }
+  },
+  {
+   "pandId": "0363100012121394",
+   "address": "Eemsstraat 28",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.47,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 1.8,
+    "toM": 3.53,
+    "depthM": 0.64,
+    "centre": 0.437
+   },
+   "strip": {
+    "wall": "#453d38",
+    "wallRaw": "#48403b",
+    "skyline": {
+     "eavesM": 14.97,
+     "eavesRow": 112,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 2.72,
+      "topWidthM": 0.05,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-centre",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "rijn-1934-flat-three",
+    "score": 0.67
+   },
+   "placement": {
+    "type": "rijn-1934-erker-centre",
+    "measuredPalette": {
+     "brick": "#453d38",
+     "evidence": "strip 2023-01-03 span 973-1217: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #625751)"
+    }
+   },
+   "notes": [
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012121394",
+    "ncc": 0.19,
+    "nccRaw": 0.19,
+    "shiftM": [
+     -0.15,
+     -0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24 mean 0.44 vs photo 0.31"
+    ],
+    "wall": {
+     "photo": "#645852",
+     "model": "#60554e",
+     "dL": -0.016
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.436
+   },
+   "challengers": {
+    "rijn-1934-erker-centre": 0.19,
+    "rijn-1934-erker-centre~m": 0.209,
+    "rijn-1934-erker-end": 0.099,
+    "rijn-1934-erker-end~m": 0.107,
+    "rijn-1934-erker-pair": 0.077,
+    "rijn-1934-erker-pair~m": 0.088,
+    "rijn-1934-erker-ribbon": 0.098,
+    "rijn-1934-erker-ribbon~m": 0.092,
+    "rijn-1934-erker-white-attic~m": 0.114,
+    "rijn-1934-erker-white-attic": 0.146,
+    "rijn-1934-flat-three~m": 0.164,
+    "rijn-1934-flat-three": 0.164
+   }
+  },
+  {
+   "pandId": "0363100012088569",
+   "address": "Eemsstraat 26",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.28,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#493f3a",
+    "wallRaw": "#4c433e",
+    "skyline": {
+     "eavesM": 14.5,
+     "eavesRow": 131,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-ribbon",
+    "score": 0.76
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#493f3a",
+     "evidence": "strip 2023-01-03 span 1217-1461: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #493f3a)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, paired with 121394's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012088569",
+    "ncc": 0.376,
+    "nccRaw": 0.376,
+    "shiftM": [
+     0.4,
+     0
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#473e39",
+     "model": "#64564f",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.482
+   },
+   "challengers": {
+    "rijn-1934-flat-three": 0.375,
+    "rijn-1934-erker-centre": 0.377,
+    "rijn-1934-erker-centre~m": 0.371,
+    "rijn-1934-erker-end~m": 0.352,
+    "rijn-1934-erker-end": 0.365,
+    "rijn-1934-erker-pair~m": 0.342,
+    "rijn-1934-erker-pair": 0.31,
+    "rijn-1934-erker-ribbon~m": 0.353,
+    "rijn-1934-erker-ribbon": 0.381,
+    "rijn-1934-erker-white-attic": 0.318,
+    "rijn-1934-erker-white-attic~m": 0.34,
+    "rijn-1934-flat-three~m": 0.375
+   }
+  },
+  {
+   "pandId": "0363100012094658",
+   "address": "Eemsstraat 24",
+   "builtYear": 1934,
+   "widthM": 6.09,
+   "eavesM": 12.37,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4a413b",
+    "wallRaw": "#4d453f",
+    "skyline": {
+     "eavesM": 14.3,
+     "eavesRow": 139,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.53,
+     "bayCentre": 0.2,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-ribbon",
+    "score": 0.76
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#4a413b",
+     "evidence": "strip 2023-01-03 span 1461-1705: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #483f38)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, paired with 088569's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012094658",
+    "ncc": 0.417,
+    "nccRaw": 0.417,
+    "shiftM": [
+     0.35,
+     0.05
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#483f3a",
+     "model": "#655850",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.589
+   },
+   "challengers": {
+    "rijn-1934-flat-three~m": 0.414,
+    "rijn-1934-erker-centre~m": 0.362,
+    "rijn-1934-erker-centre": 0.394,
+    "rijn-1934-erker-end": 0.388,
+    "rijn-1934-erker-end~m": 0.329,
+    "rijn-1934-erker-pair": 0.361,
+    "rijn-1934-erker-pair~m": 0.381,
+    "rijn-1934-erker-ribbon": 0.405,
+    "rijn-1934-erker-ribbon~m": 0.415,
+    "rijn-1934-erker-white-attic~m": 0.319,
+    "rijn-1934-erker-white-attic": 0.313,
+    "rijn-1934-flat-three": 0.414
+   }
+  },
+  {
+   "pandId": "0363100012069912",
+   "address": "Eemsstraat 22",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.53,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#463e38",
+    "wallRaw": "#49413b",
+    "skyline": {
+     "eavesM": 14.97,
+     "eavesRow": 112,
+     "confidence": 0.81,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 2.8,
+      "topWidthM": 0.25,
+      "centre": 0.83
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-end",
+   "score": 0.84,
+   "placement": {
+    "type": "rijn-1934-erker-end",
+    "measuredPalette": {
+     "brick": "#463e38",
+     "evidence": "strip 2023-01-03 span 1704-1948: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #625651)"
+    }
+   },
+   "notes": [
+    "crown overhang (type default)",
+    "row coherence: the row repeats every four houses: 111889 (BAG erker) are rijn-1934-erker-end, was rijn-1934-flat-three (no BAG bay)"
+   ],
+   "likeness": {
+    "pandId": "0363100012069912",
+    "ncc": 0.44,
+    "nccRaw": 0.44,
+    "shiftM": [
+     0.05,
+     0.05
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#655952",
+     "model": "#61564e",
+     "dL": -0.016
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 2,
+     "model": 2
+    },
+    "iou": 0.528
+   },
+   "challengers": {
+    "rijn-1934-erker-end": 0.442,
+    "rijn-1934-erker-centre~m": 0.176,
+    "rijn-1934-erker-centre": 0.232,
+    "rijn-1934-erker-end~m": 0.372,
+    "rijn-1934-erker-pair": 0.147,
+    "rijn-1934-erker-pair~m": 0.249,
+    "rijn-1934-erker-ribbon": 0.218,
+    "rijn-1934-erker-ribbon~m": 0.337,
+    "rijn-1934-erker-white-attic~m": 0.31,
+    "rijn-1934-erker-white-attic": 0.301,
+    "rijn-1934-flat-three": 0.229,
+    "rijn-1934-flat-three~m": 0.229
+   }
+  },
+  {
+   "pandId": "0363100012149922",
+   "address": "Eemsstraat 20",
+   "builtYear": 1934,
+   "widthM": 6.2,
+   "eavesM": 12.42,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 1.84,
+    "toM": 3.56,
+    "depthM": 0.64,
+    "centre": 0.436
+   },
+   "strip": {
+    "wall": "#413a35",
+    "wallRaw": "#443d38",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 104,
+     "confidence": 0.79,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 2.6,
+      "topWidthM": 0.1,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-centre",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "rijn-1934-flat-three",
+    "score": 0.67
+   },
+   "placement": {
+    "type": "rijn-1934-erker-centre",
+    "measuredPalette": {
+     "brick": "#413a35",
+     "evidence": "strip 2023-01-03 span 1948-2196: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #403934)"
+    }
+   },
+   "notes": [
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012149922",
+    "ncc": 0.266,
+    "nccRaw": 0.266,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.29 mean 0.43 vs photo 0.59"
+    ],
+    "wall": {
+     "photo": "#433b35",
+     "model": "#5c524b",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.477
+   },
+   "challengers": {
+    "rijn-1934-erker-centre": 0.269,
+    "rijn-1934-erker-centre~m": 0.255,
+    "rijn-1934-erker-end": 0.08,
+    "rijn-1934-erker-end~m": 0.103,
+    "rijn-1934-erker-pair": 0.1,
+    "rijn-1934-erker-pair~m": 0.173,
+    "rijn-1934-erker-ribbon": 0.1,
+    "rijn-1934-erker-ribbon~m": 0.085,
+    "rijn-1934-erker-white-attic~m": 0.12,
+    "rijn-1934-erker-white-attic": 0.123,
+    "rijn-1934-flat-three~m": 0.19,
+    "rijn-1934-flat-three": 0.19
+   }
+  },
+  {
+   "pandId": "0363100012087051",
+   "address": "Eemsstraat 18",
+   "builtYear": 1934,
+   "widthM": 6.19,
+   "eavesM": 12.44,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#433c37",
+    "wallRaw": "#463f3a",
+    "skyline": {
+     "eavesM": 14.32,
+     "eavesRow": 138,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-ribbon",
+    "score": 0.76
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#433c37",
+     "evidence": "strip 2023-01-03 span 2196-2444: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #423a35)"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012087051",
+    "ncc": 0.398,
+    "nccRaw": 0.398,
+    "shiftM": [
+     0.3,
+     0.05
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.27 mean 0.45 vs photo 0.59"
+    ],
+    "wall": {
+     "photo": "#3f3733",
+     "model": "#5e544d",
+     "dL": 0.112
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.45
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.547
+   },
+   "challengers": {
+    "rijn-1934-flat-three~m": 0.397,
+    "rijn-1934-erker-centre": 0.382,
+    "rijn-1934-erker-centre~m": 0.392,
+    "rijn-1934-erker-end~m": 0.364,
+    "rijn-1934-erker-end": 0.425,
+    "rijn-1934-erker-pair~m": 0.344,
+    "rijn-1934-erker-pair": 0.367,
+    "rijn-1934-erker-ribbon~m": 0.307,
+    "rijn-1934-erker-ribbon": 0.374,
+    "rijn-1934-erker-white-attic": 0.365,
+    "rijn-1934-erker-white-attic~m": 0.409,
+    "rijn-1934-flat-three": 0.397
+   }
+  },
+  {
+   "pandId": "0363100012138436",
+   "address": "Eemsstraat 16",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.34,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#443c37",
+    "wallRaw": "#473f3a",
+    "skyline": {
+     "eavesM": 14.3,
+     "eavesRow": 139,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.95,
+       "widthM": 0.9,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-ribbon",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#443c37",
+     "evidence": "strip 2023-01-03 span 2444-2688: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #443b35)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, paired with 087051's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012138436",
+    "ncc": 0.477,
+    "nccRaw": 0.477,
+    "shiftM": [
+     0.25,
+     0.05
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#433b36",
+     "model": "#5f544d",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.671
+   },
+   "challengers": {
+    "rijn-1934-flat-three": 0.481,
+    "rijn-1934-erker-centre~m": 0.393,
+    "rijn-1934-erker-centre": 0.394,
+    "rijn-1934-erker-end": 0.401,
+    "rijn-1934-erker-end~m": 0.337,
+    "rijn-1934-erker-pair": 0.38,
+    "rijn-1934-erker-pair~m": 0.372,
+    "rijn-1934-erker-ribbon": 0.33,
+    "rijn-1934-erker-ribbon~m": 0.365,
+    "rijn-1934-erker-white-attic~m": 0.402,
+    "rijn-1934-erker-white-attic": 0.406,
+    "rijn-1934-flat-three~m": 0.481
+   }
+  },
+  {
+   "pandId": "0363100012084686",
+   "address": "Eemsstraat 14",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.38,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3f3732",
+    "wallRaw": "#423a35",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 96,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 2,
+      "topWidthM": 0.2,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-end",
+   "score": 0.84,
+   "placement": {
+    "type": "rijn-1934-erker-end",
+    "measuredPalette": {
+     "brick": "#3f3732",
+     "evidence": "strip 2023-01-03 span 2688-2932: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #3e3732)"
+    }
+   },
+   "notes": [
+    "crown overhang (type default)",
+    "row coherence: the row repeats every four houses: 148727 (BAG erker) are rijn-1934-erker-end, was rijn-1934-flat-three (no BAG bay)"
+   ],
+   "likeness": {
+    "pandId": "0363100012084686",
+    "ncc": 0.328,
+    "nccRaw": 0.328,
+    "shiftM": [
+     -0.1,
+     -0.05
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18"
+    ],
+    "wall": {
+     "photo": "#574e49",
+     "model": "#5b4f48",
+     "dL": 0.006
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 2,
+     "model": 2
+    },
+    "iou": 0.42
+   },
+   "challengers": {
+    "rijn-1934-erker-end": 0.336,
+    "rijn-1934-erker-centre~m": 0.126,
+    "rijn-1934-erker-centre": 0.159,
+    "rijn-1934-erker-end~m": 0.277,
+    "rijn-1934-erker-pair": 0.156,
+    "rijn-1934-erker-pair~m": 0.134,
+    "rijn-1934-erker-ribbon": 0.146,
+    "rijn-1934-erker-ribbon~m": 0.21,
+    "rijn-1934-erker-white-attic~m": 0.274,
+    "rijn-1934-erker-white-attic": 0.259,
+    "rijn-1934-flat-three": 0.185,
+    "rijn-1934-flat-three~m": 0.185
+   }
+  },
+  {
+   "pandId": "0363100012104341",
+   "address": "Eemsstraat 12",
+   "builtYear": 1934,
+   "widthM": 6.32,
+   "eavesM": 12.46,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 1.65,
+    "toM": 3.37,
+    "depthM": 0.67,
+    "centre": 0.397
+   },
+   "strip": {
+    "wall": "#3c3530",
+    "wallRaw": "#3f3833",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 711,
+     "confidence": 0.27,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-centre",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "rijn-1934-flat-three",
+    "score": 0.67
+   },
+   "placement": {
+    "type": "rijn-1934-erker-centre",
+    "measuredPalette": {
+     "brick": "#3c3530",
+     "evidence": "strip 2023-01-03 span 2932-3185: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #3c3530)"
+    }
+   },
+   "notes": [
+    "accent left",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012104341",
+    "ncc": 0.21,
+    "nccRaw": 0.21,
+    "shiftM": [
+     -0.1,
+     -0.25
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.443 < 0.45"
+    ],
+    "wall": {
+     "photo": "#3c3531",
+     "model": "#584e46",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.443
+   },
+   "challengers": {
+    "rijn-1934-erker-centre": 0.211,
+    "rijn-1934-erker-centre~m": 0.166,
+    "rijn-1934-erker-end~m": 0.082,
+    "rijn-1934-erker-end": 0.077,
+    "rijn-1934-erker-pair~m": 0.201,
+    "rijn-1934-erker-pair": 0.081,
+    "rijn-1934-erker-ribbon~m": 0.121,
+    "rijn-1934-erker-ribbon": 0.074,
+    "rijn-1934-erker-white-attic": 0.12,
+    "rijn-1934-erker-white-attic~m": 0.117,
+    "rijn-1934-flat-three~m": 0.149,
+    "rijn-1934-flat-three": 0.149
+   }
+  },
+  {
+   "pandId": "0363100012062063",
+   "address": "Eemsstraat 10",
+   "builtYear": 1934,
+   "widthM": 6.12,
+   "eavesM": 12.51,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c3530",
+    "wallRaw": "#3f3833",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 711,
+     "confidence": 0.14,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-ribbon",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#3c3530",
+     "evidence": "strip 2023-01-03 span 3185-3430: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #3c3630)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012062063",
+    "ncc": 0.363,
+    "nccRaw": 0.363,
+    "shiftM": [
+     0.25,
+     -0.05
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#3b3530",
+     "model": "#584e46",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.551
+   },
+   "challengers": {
+    "rijn-1934-flat-three": 0.365,
+    "rijn-1934-erker-centre~m": 0.368,
+    "rijn-1934-erker-centre": 0.38,
+    "rijn-1934-erker-end": 0.378,
+    "rijn-1934-erker-end~m": 0.362,
+    "rijn-1934-erker-pair": 0.385,
+    "rijn-1934-erker-pair~m": 0.264,
+    "rijn-1934-erker-ribbon": 0.344,
+    "rijn-1934-erker-ribbon~m": 0.242,
+    "rijn-1934-erker-white-attic~m": 0.419,
+    "rijn-1934-erker-white-attic": 0.336,
+    "rijn-1934-flat-three~m": 0.365
+   }
+  },
+  {
+   "pandId": "0363100012063274",
+   "address": "Eemsstraat 8",
+   "builtYear": 1934,
+   "widthM": 6.28,
+   "eavesM": 12.54,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#423c38",
+    "wallRaw": "#453f3b",
+    "skyline": {
+     "eavesM": 14.97,
+     "eavesRow": 112,
+     "confidence": 0.66,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 2.4,
+      "topWidthM": 0.2,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.55,
+     "bayCentre": 0.2,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-centre",
+    "score": 0.73
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#423c38",
+     "evidence": "strip 2023-01-03 span 3429-3680: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #3e3531)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, paired with 062063's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012063274",
+    "ncc": 0.589,
+    "nccRaw": 0.589,
+    "shiftM": [
+     0.35,
+     -0.05
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#3d3632",
+     "model": "#5d544e",
+     "dL": 0.118
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.687
+   },
+   "challengers": {
+    "rijn-1934-flat-three~m": 0.586,
+    "rijn-1934-erker-centre": 0.409,
+    "rijn-1934-erker-centre~m": 0.37,
+    "rijn-1934-erker-end~m": 0.328,
+    "rijn-1934-erker-end": 0.351,
+    "rijn-1934-erker-pair~m": 0.377,
+    "rijn-1934-erker-pair": 0.369,
+    "rijn-1934-erker-ribbon~m": 0.381,
+    "rijn-1934-erker-ribbon": 0.294,
+    "rijn-1934-erker-white-attic": 0.39,
+    "rijn-1934-erker-white-attic~m": 0.389,
+    "rijn-1934-flat-three": 0.586
+   }
+  },
+  {
+   "pandId": "0363100012148727",
+   "address": "Eemsstraat 6",
+   "builtYear": 1934,
+   "widthM": 5.79,
+   "eavesM": 12.42,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 3.53,
+    "toM": 5.25,
+    "depthM": 0.74,
+    "centre": 0.837,
+    "lineRD": [
+     [
+      122374.3005625,
+      483986.67425
+     ],
+     [
+      122373.6365625,
+      483989.65125
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#403834",
+    "wallRaw": "#433b37",
+    "skyline": {
+     "eavesM": 14.97,
+     "eavesRow": 112,
+     "confidence": 0.7,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 2.8,
+      "topWidthM": 0.4,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-end",
+   "score": 0.91,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-centre",
+    "score": 0.64
+   },
+   "placement": {
+    "type": "rijn-1934-erker-end",
+    "measuredPalette": {
+     "brick": "#403834",
+     "evidence": "strip 2023-01-03 span 3681-3891: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #5c4f4a)"
+    }
+   },
+   "notes": [
+    "accent right",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012148727",
+    "ncc": 0.442,
+    "nccRaw": 0.442,
+    "shiftM": [
+     -0.15,
+     0
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#594d47",
+     "model": "#5b504a",
+     "dL": 0.01
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.568
+   },
+   "challengers": {
+    "rijn-1934-erker-end": 0.435,
+    "rijn-1934-erker-centre~m": 0.379,
+    "rijn-1934-erker-centre": 0.315,
+    "rijn-1934-erker-end~m": 0.443,
+    "rijn-1934-erker-pair": 0.315,
+    "rijn-1934-erker-pair~m": 0.276,
+    "rijn-1934-erker-ribbon": 0.297,
+    "rijn-1934-erker-ribbon~m": 0.215,
+    "rijn-1934-erker-white-attic~m": 0.381,
+    "rijn-1934-erker-white-attic": 0.361,
+    "rijn-1934-flat-three": 0.353,
+    "rijn-1934-flat-three~m": 0.353
+   }
+  }
+ ]
+}

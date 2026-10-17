@@ -1,0 +1,1728 @@
+{
+ "face": "boterdiep-36-66",
+ "street": "Boterdiepstraat",
+ "library": "rivierenbuurt",
+ "stripDate": "2020-01-07",
+ "seconds": 57.35,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "boterdiep-36-66",
+   "pands": [
+    "0363100012093554",
+    "0363100012097792",
+    "0363100012126062",
+    "0363100012063519",
+    "0363100012109092",
+    "0363100012095439",
+    "0363100012080585",
+    "0363100012145095",
+    "0363100012086703",
+    "0363100012067390",
+    "0363100012065337",
+    "0363100012100933",
+    "0363100012139791",
+    "0363100012142115",
+    "0363100012096263",
+    "0363100012149435"
+   ],
+   "passed": false,
+   "triangles": 20414
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012093554",
+   "address": "Boterdiepstraat 66",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.47,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 3.31,
+    "toM": 5.02,
+    "depthM": 0.71,
+    "centre": 0.682
+   },
+   "strip": {
+    "wall": "#695b55",
+    "wallRaw": "#625750",
+    "skyline": {
+     "eavesM": 13.72,
+     "eavesRow": 129,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 0.68,
+      "topWidthM": 1.18,
+      "centre": 0.27
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.025,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-pair",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "rijn-1934-flat-three",
+    "score": 0.67
+   },
+   "placement": {
+    "type": "rijn-1934-erker-pair",
+    "measuredPalette": {
+     "brick": "#695b55",
+     "evidence": "strip 2020-01-07 span 0-244: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #766763)"
+    }
+   },
+   "notes": [
+    "accent right",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012093554",
+    "ncc": 0.23,
+    "nccRaw": 0.23,
+    "shiftM": [
+     -0.4,
+     -0.25
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#766864",
+     "model": "#806f68",
+     "dL": 0.027
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.589
+   },
+   "challengers": {
+    "rijn-1934-erker-pair": 0.239,
+    "rijn-1934-erker-centre~m": 0.29,
+    "rijn-1934-erker-centre": 0.203,
+    "rijn-1934-erker-end": 0.167,
+    "rijn-1934-erker-end~m": 0.215,
+    "rijn-1934-erker-pair~m": 0.199,
+    "rijn-1934-erker-ribbon": 0.187,
+    "rijn-1934-erker-ribbon~m": 0.222,
+    "rijn-1934-erker-white-attic~m": 0.164,
+    "rijn-1934-erker-white-attic": 0.207,
+    "rijn-1934-flat-three": 0.253,
+    "rijn-1934-flat-three~m": 0.253
+   }
+  },
+  {
+   "pandId": "0363100012097792",
+   "address": "Boterdiepstraat 64",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.46,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0.99,
+    "toM": 2.72,
+    "depthM": 0.71,
+    "centre": 0.304
+   },
+   "strip": {
+    "wall": "#6b5c55",
+    "wallRaw": "#645850",
+    "skyline": {
+     "eavesM": 13.72,
+     "eavesRow": 129,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 0.63,
+      "topWidthM": 1,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.032,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.35,
+       "widthM": 1.3,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-pair",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-centre",
+    "score": 0.76
+   },
+   "placement": {
+    "type": "rijn-1934-erker-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#6b5c55",
+     "evidence": "strip 2020-01-07 span 244-488: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #7b6c65)"
+    }
+   },
+   "notes": [
+    "accent left: mirrored",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012097792",
+    "ncc": 0.264,
+    "nccRaw": 0.264,
+    "shiftM": [
+     -0.4,
+     -0.25
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.17"
+    ],
+    "wall": {
+     "photo": "#766861",
+     "model": "#827068",
+     "dL": 0.037
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.49
+   },
+   "challengers": {
+    "rijn-1934-erker-pair~m": 0.262,
+    "rijn-1934-erker-centre": 0.163,
+    "rijn-1934-erker-centre~m": 0.254,
+    "rijn-1934-erker-end~m": 0.445,
+    "rijn-1934-erker-end": 0.37,
+    "rijn-1934-erker-pair": 0.178,
+    "rijn-1934-erker-ribbon~m": 0.297,
+    "rijn-1934-erker-ribbon": 0.175,
+    "rijn-1934-erker-white-attic": 0.301,
+    "rijn-1934-erker-white-attic~m": 0.279,
+    "rijn-1934-flat-three~m": 0.312,
+    "rijn-1934-flat-three": 0.312
+   }
+  },
+  {
+   "pandId": "0363100012126062",
+   "address": "Boterdiepstraat 62",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.51,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#736359",
+    "wallRaw": "#6c5e54",
+    "skyline": {
+     "eavesM": 13.65,
+     "eavesRow": 132,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 2.92,
+      "topWidthM": 0.6,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.264,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.97,
+       "widthM": 0.85,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-ribbon",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#736359",
+     "evidence": "strip 2020-01-07 span 488-732: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #7c6a5f)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, paired with 097792's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012126062",
+    "ncc": 0.59,
+    "nccRaw": 0.59,
+    "shiftM": [
+     -0.4,
+     0.25
+    ],
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#76675d",
+     "model": "#8a776b",
+     "dL": 0.067
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.713
+   },
+   "challengers": {
+    "rijn-1934-flat-three": 0.598,
+    "rijn-1934-erker-centre~m": 0.398,
+    "rijn-1934-erker-centre": 0.304,
+    "rijn-1934-erker-end": 0.318,
+    "rijn-1934-erker-end~m": 0.382,
+    "rijn-1934-erker-pair": 0.398,
+    "rijn-1934-erker-pair~m": 0.349,
+    "rijn-1934-erker-ribbon": 0.467,
+    "rijn-1934-erker-ribbon~m": 0.336,
+    "rijn-1934-erker-white-attic~m": 0.412,
+    "rijn-1934-erker-white-attic": 0.384,
+    "rijn-1934-flat-three~m": 0.598
+   }
+  },
+  {
+   "pandId": "0363100012063519",
+   "address": "Boterdiepstraat 60",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.44,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#79675e",
+    "wallRaw": "#716258",
+    "skyline": {
+     "eavesM": 13.72,
+     "eavesRow": 129,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.253,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.6,
+       "widthM": 1.02,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 0.88,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-centre",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#79675e",
+     "evidence": "strip 2020-01-07 span 732-976: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #83756b)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, paired with 126062's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012063519",
+    "ncc": 0.461,
+    "nccRaw": 0.461,
+    "shiftM": [
+     0,
+     0.15
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25 mean 0.51 vs photo 0.67"
+    ],
+    "wall": {
+     "photo": "#82756e",
+     "model": "#8f7a6f",
+     "dL": 0.027
+    },
+    "glazing": {
+     "photo": 0.67,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.655
+   },
+   "challengers": {
+    "rijn-1934-flat-three~m": 0.453,
+    "rijn-1934-erker-centre": 0.362,
+    "rijn-1934-erker-centre~m": 0.401,
+    "rijn-1934-erker-end~m": 0.441,
+    "rijn-1934-erker-end": 0.311,
+    "rijn-1934-erker-pair~m": 0.356,
+    "rijn-1934-erker-pair": 0.344,
+    "rijn-1934-erker-ribbon~m": 0.377,
+    "rijn-1934-erker-ribbon": 0.378,
+    "rijn-1934-erker-white-attic": 0.364,
+    "rijn-1934-erker-white-attic~m": 0.332,
+    "rijn-1934-flat-three": 0.453
+   }
+  },
+  {
+   "pandId": "0363100012109092",
+   "address": "Boterdiepstraat 58",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.37,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 3.31,
+    "toM": 5.02,
+    "depthM": 0.7,
+    "centre": 0.683
+   },
+   "strip": {
+    "wall": "#816f65",
+    "wallRaw": "#796a5f",
+    "skyline": {
+     "eavesM": 14.03,
+     "eavesRow": 117,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.234,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.54,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.9,
+       "widthM": 0.97,
+       "centre": 0.74
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-pair",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "rijn-1934-flat-three",
+    "score": 0.67
+   },
+   "placement": {
+    "type": "rijn-1934-erker-pair",
+    "measuredPalette": {
+     "brick": "#816f65",
+     "evidence": "strip 2020-01-07 span 976-1220: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #6c615d)"
+    }
+   },
+   "notes": [
+    "accent right",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012109092",
+    "ncc": 0.279,
+    "nccRaw": 0.279,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.12"
+    ],
+    "wall": {
+     "photo": "#6f635f",
+     "model": "#958277",
+     "dL": 0.122
+    },
+    "glazing": {
+     "photo": 0.55,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.625
+   },
+   "challengers": {
+    "rijn-1934-erker-pair": 0.301,
+    "rijn-1934-erker-centre~m": 0.239,
+    "rijn-1934-erker-centre": 0.138,
+    "rijn-1934-erker-end": 0.151,
+    "rijn-1934-erker-end~m": 0.257,
+    "rijn-1934-erker-pair~m": 0.266,
+    "rijn-1934-erker-ribbon": 0.177,
+    "rijn-1934-erker-ribbon~m": 0.217,
+    "rijn-1934-erker-white-attic~m": 0.191,
+    "rijn-1934-erker-white-attic": 0.228,
+    "rijn-1934-flat-three": 0.225,
+    "rijn-1934-flat-three~m": 0.225
+   }
+  },
+  {
+   "pandId": "0363100012095439",
+   "address": "Boterdiepstraat 56",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.43,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 1.02,
+    "toM": 2.73,
+    "depthM": 0.7,
+    "centre": 0.307
+   },
+   "strip": {
+    "wall": "#7f6d62",
+    "wallRaw": "#77685c",
+    "skyline": {
+     "eavesM": 14.18,
+     "eavesRow": 111,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.117,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.8,
+       "widthM": 1.13,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-pair",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-centre",
+    "score": 0.76
+   },
+   "placement": {
+    "type": "rijn-1934-erker-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#7f6d62",
+     "evidence": "strip 2020-01-07 span 1220-1464: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #766963)"
+    }
+   },
+   "notes": [
+    "accent left: mirrored",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012095439",
+    "ncc": 0.25,
+    "nccRaw": 0.25,
+    "shiftM": [
+     -0.3,
+     -0.35
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16 mean 0.47 vs photo 0.36"
+    ],
+    "wall": {
+     "photo": "#776a62",
+     "model": "#948074",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.495
+   },
+   "challengers": {
+    "rijn-1934-erker-pair~m": 0.245,
+    "rijn-1934-erker-centre": 0.206,
+    "rijn-1934-erker-centre~m": 0.224,
+    "rijn-1934-erker-end~m": 0.422,
+    "rijn-1934-erker-end": 0.397,
+    "rijn-1934-erker-pair": 0.196,
+    "rijn-1934-erker-ribbon~m": 0.278,
+    "rijn-1934-erker-ribbon": 0.169,
+    "rijn-1934-erker-white-attic": 0.274,
+    "rijn-1934-erker-white-attic~m": 0.26,
+    "rijn-1934-flat-three~m": 0.292,
+    "rijn-1934-flat-three": 0.292
+   }
+  },
+  {
+   "pandId": "0363100012080585",
+   "address": "Boterdiepstraat 54",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.6,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e6e62",
+    "wallRaw": "#76695c",
+    "skyline": {
+     "eavesM": 14.15,
+     "eavesRow": 112,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.091,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.82,
+       "widthM": 1.32,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-centre",
+    "score": 0.55
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#7e6e62",
+     "evidence": "strip 2020-01-07 span 1464-1708: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #937f75)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, paired with 095439's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012080585",
+    "ncc": 0.497,
+    "nccRaw": 0.497,
+    "shiftM": [
+     -0.35,
+     0.15
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.29 mean 0.49 vs photo 0.63",
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#8d7c72",
+     "model": "#938174",
+     "dL": 0.016
+    },
+    "glazing": {
+     "photo": 0.63,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.629
+   },
+   "challengers": {
+    "rijn-1934-flat-three": 0.53,
+    "rijn-1934-erker-centre~m": 0.357,
+    "rijn-1934-erker-centre": 0.352,
+    "rijn-1934-erker-end": 0.28,
+    "rijn-1934-erker-end~m": 0.293,
+    "rijn-1934-erker-pair": 0.413,
+    "rijn-1934-erker-pair~m": 0.327,
+    "rijn-1934-erker-ribbon": 0.453,
+    "rijn-1934-erker-ribbon~m": 0.297,
+    "rijn-1934-erker-white-attic~m": 0.38,
+    "rijn-1934-erker-white-attic": 0.322,
+    "rijn-1934-flat-three~m": 0.53
+   }
+  },
+  {
+   "pandId": "0363100012145095",
+   "address": "Boterdiepstraat 52",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.87,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e6d61",
+    "wallRaw": "#76685b",
+    "skyline": {
+     "eavesM": 14.28,
+     "eavesRow": 107,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.164,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.72,
+       "widthM": 1.15,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-ribbon",
+    "score": 0.76
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#7e6d61",
+     "evidence": "strip 2020-01-07 span 1708-1952: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #82756b)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, paired with 080585's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012145095",
+    "ncc": 0.352,
+    "nccRaw": 0.352,
+    "shiftM": [
+     0,
+     0.3
+    ],
+    "usable": 0.86,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#857669",
+     "model": "#938073",
+     "dL": 0.047
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.644
+   },
+   "challengers": {
+    "rijn-1934-flat-three~m": 0.362,
+    "rijn-1934-erker-centre": 0.23,
+    "rijn-1934-erker-centre~m": 0.374,
+    "rijn-1934-erker-end~m": 0.305,
+    "rijn-1934-erker-end": 0.277,
+    "rijn-1934-erker-pair~m": 0.362,
+    "rijn-1934-erker-pair": 0.339,
+    "rijn-1934-erker-ribbon~m": 0.425,
+    "rijn-1934-erker-ribbon": 0.435,
+    "rijn-1934-erker-white-attic": 0.298,
+    "rijn-1934-erker-white-attic~m": 0.187,
+    "rijn-1934-flat-three": 0.362
+   }
+  },
+  {
+   "pandId": "0363100012086703",
+   "address": "Boterdiepstraat 50",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.52,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c6b61",
+    "wallRaw": "#74665b",
+    "skyline": {
+     "eavesM": 14.15,
+     "eavesRow": 112,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 0.53,
+      "riseM": 2.8,
+      "topWidthM": 0.1,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.206,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-pair",
+   "score": 0.8,
+   "placement": {
+    "type": "rijn-1934-erker-pair",
+    "measuredPalette": {
+     "brick": "#7c6b61",
+     "evidence": "strip 2020-01-07 span 1952-2196: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #695c55)"
+    }
+   },
+   "notes": [
+    "crown overhang (type default)",
+    "row coherence: the row repeats every four houses: 109092 and 139791 (BAG erker) are rijn-1934-erker-pair, was rijn-1934-flat-three (no BAG bay)"
+   ],
+   "likeness": {
+    "pandId": "0363100012086703",
+    "ncc": 0.312,
+    "nccRaw": 0.312,
+    "shiftM": [
+     -0.4,
+     -0.3
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.12"
+    ],
+    "wall": {
+     "photo": "#6c6059",
+     "model": "#917e73",
+     "dL": 0.124
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.607
+   },
+   "challengers": {
+    "rijn-1934-erker-pair": 0.314,
+    "rijn-1934-erker-centre~m": 0.301,
+    "rijn-1934-erker-centre": 0.21,
+    "rijn-1934-erker-end": 0.198,
+    "rijn-1934-erker-end~m": 0.234,
+    "rijn-1934-erker-pair~m": 0.262,
+    "rijn-1934-erker-ribbon": 0.23,
+    "rijn-1934-erker-ribbon~m": 0.229,
+    "rijn-1934-erker-white-attic~m": 0.227,
+    "rijn-1934-erker-white-attic": 0.274,
+    "rijn-1934-flat-three": 0.277,
+    "rijn-1934-flat-three~m": 0.277
+   }
+  },
+  {
+   "pandId": "0363100012067390",
+   "address": "Boterdiepstraat 48",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.36,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 1.03,
+    "toM": 2.74,
+    "depthM": 0.69,
+    "centre": 0.309
+   },
+   "strip": {
+    "wall": "#7a6b63",
+    "wallRaw": "#72665d",
+    "skyline": {
+     "eavesM": 13.88,
+     "eavesRow": 123,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.166,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.29,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.38,
+       "widthM": 0.8,
+       "centre": 0.35
+      },
+      {
+       "atM": 6,
+       "widthM": 0.9,
+       "centre": 0.73
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-pair",
+   "score": 0.93,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-ribbon",
+    "score": 0.76
+   },
+   "placement": {
+    "type": "rijn-1934-erker-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#7a6b63",
+     "evidence": "strip 2020-01-07 span 2196-2440: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #746661)"
+    }
+   },
+   "notes": [
+    "accent left: mirrored",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012067390",
+    "ncc": 0.262,
+    "nccRaw": 0.262,
+    "shiftM": [
+     -0.4,
+     -0.3
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21 mean 0.47 vs photo 0.63"
+    ],
+    "wall": {
+     "photo": "#766964",
+     "model": "#8f7e75",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.63,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.605
+   },
+   "challengers": {
+    "rijn-1934-erker-pair~m": 0.259,
+    "rijn-1934-erker-centre": 0.186,
+    "rijn-1934-erker-centre~m": 0.225,
+    "rijn-1934-erker-end~m": 0.425,
+    "rijn-1934-erker-end": 0.396,
+    "rijn-1934-erker-pair": 0.156,
+    "rijn-1934-erker-ribbon~m": 0.303,
+    "rijn-1934-erker-ribbon": 0.125,
+    "rijn-1934-erker-white-attic": 0.256,
+    "rijn-1934-erker-white-attic~m": 0.265,
+    "rijn-1934-flat-three~m": 0.301,
+    "rijn-1934-flat-three": 0.301
+   }
+  },
+  {
+   "pandId": "0363100012065337",
+   "address": "Boterdiepstraat 46",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.46,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c6d66",
+    "wallRaw": "#746860",
+    "skyline": {
+     "eavesM": 14.07,
+     "eavesRow": 115,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.186,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.75,
+       "widthM": 1.13,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-ribbon",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#7c6d66",
+     "evidence": "strip 2020-01-07 span 2440-2684: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #7f7065)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, paired with 067390's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012065337",
+    "ncc": 0.534,
+    "nccRaw": 0.534,
+    "shiftM": [
+     -0.35,
+     0.25
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.50 vs photo 0.39"
+    ],
+    "wall": {
+     "photo": "#817268",
+     "model": "#908078",
+     "dL": 0.061
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.672
+   },
+   "challengers": {
+    "rijn-1934-flat-three": 0.547,
+    "rijn-1934-erker-centre~m": 0.414,
+    "rijn-1934-erker-centre": 0.324,
+    "rijn-1934-erker-end": 0.322,
+    "rijn-1934-erker-end~m": 0.371,
+    "rijn-1934-erker-pair": 0.412,
+    "rijn-1934-erker-pair~m": 0.339,
+    "rijn-1934-erker-ribbon": 0.389,
+    "rijn-1934-erker-ribbon~m": 0.317,
+    "rijn-1934-erker-white-attic~m": 0.292,
+    "rijn-1934-erker-white-attic": 0.342,
+    "rijn-1934-flat-three~m": 0.547
+   }
+  },
+  {
+   "pandId": "0363100012100933",
+   "address": "Boterdiepstraat 44",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.46,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#81716d",
+    "wallRaw": "#796c66",
+    "skyline": {
+     "eavesM": 14.07,
+     "eavesRow": 115,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.124,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.77,
+       "widthM": 0.95,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-ribbon",
+    "score": 0.76
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#81716d",
+     "evidence": "strip 2020-01-07 span 2684-2928: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #8f7d77)"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012100933",
+    "ncc": 0.425,
+    "nccRaw": 0.425,
+    "shiftM": [
+     -0.05,
+     0.2
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#927f76",
+     "model": "#948480",
+     "dL": 0.024
+    },
+    "glazing": {
+     "photo": 0.54,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.673
+   },
+   "challengers": {
+    "rijn-1934-flat-three~m": 0.444,
+    "rijn-1934-erker-centre": 0.303,
+    "rijn-1934-erker-centre~m": 0.381,
+    "rijn-1934-erker-end~m": 0.407,
+    "rijn-1934-erker-end": 0.336,
+    "rijn-1934-erker-pair~m": 0.352,
+    "rijn-1934-erker-pair": 0.303,
+    "rijn-1934-erker-ribbon~m": 0.379,
+    "rijn-1934-erker-ribbon": 0.356,
+    "rijn-1934-erker-white-attic": 0.38,
+    "rijn-1934-erker-white-attic~m": 0.276,
+    "rijn-1934-flat-three": 0.444
+   }
+  },
+  {
+   "pandId": "0363100012139791",
+   "address": "Boterdiepstraat 42",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.45,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 3.34,
+    "toM": 5.05,
+    "depthM": 0.67,
+    "centre": 0.688
+   },
+   "strip": {
+    "wall": "#82726e",
+    "wallRaw": "#7a6d67",
+    "skyline": {
+     "eavesM": 13.53,
+     "eavesRow": 137,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.33,
+      "riseM": 0.65,
+      "topWidthM": 2.65,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.136,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-pair",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "rijn-1934-flat-three",
+    "score": 0.67
+   },
+   "placement": {
+    "type": "rijn-1934-erker-pair",
+    "measuredPalette": {
+     "brick": "#82726e",
+     "evidence": "strip 2020-01-07 span 2928-3172: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #86756d)"
+    }
+   },
+   "notes": [
+    "accent right",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012139791",
+    "ncc": 0.28,
+    "nccRaw": 0.28,
+    "shiftM": [
+     -0.4,
+     -0.3
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.15"
+    ],
+    "wall": {
+     "photo": "#84746c",
+     "model": "#948581",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.514
+   },
+   "challengers": {
+    "rijn-1934-erker-pair": 0.274,
+    "rijn-1934-erker-centre~m": 0.336,
+    "rijn-1934-erker-centre": 0.237,
+    "rijn-1934-erker-end": 0.16,
+    "rijn-1934-erker-end~m": 0.247,
+    "rijn-1934-erker-pair~m": 0.297,
+    "rijn-1934-erker-ribbon": 0.219,
+    "rijn-1934-erker-ribbon~m": 0.271,
+    "rijn-1934-erker-white-attic~m": 0.163,
+    "rijn-1934-erker-white-attic": 0.235,
+    "rijn-1934-flat-three": 0.251,
+    "rijn-1934-flat-three~m": 0.251
+   }
+  },
+  {
+   "pandId": "0363100012142115",
+   "address": "Boterdiepstraat 40",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.5,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 1.02,
+    "toM": 2.74,
+    "depthM": 0.67,
+    "centre": 0.308
+   },
+   "strip": {
+    "wall": "#8b7771",
+    "wallRaw": "#82716a",
+    "skyline": {
+     "eavesM": 13.3,
+     "eavesRow": 146,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 0.75,
+      "topWidthM": 0.72,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.239,
+    "structure": {
+     "bayWidthM": 0.82,
+     "bayCentre": 0.22,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-erker-pair",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-centre",
+    "score": 0.73
+   },
+   "placement": {
+    "type": "rijn-1934-erker-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#8b7771",
+     "evidence": "strip 2020-01-07 span 3172-3416: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #816d64)"
+    }
+   },
+   "notes": [
+    "accent left: mirrored",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012142115",
+    "ncc": 0.35,
+    "nccRaw": 0.35,
+    "shiftM": [
+     -0.4,
+     -0.2
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13",
+     "glazing  mean 0.47 vs photo 0.58"
+    ],
+    "wall": {
+     "photo": "#7c6860",
+     "model": "#9b8a85",
+     "dL": 0.133
+    },
+    "glazing": {
+     "photo": 0.58,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.608
+   },
+   "challengers": {
+    "rijn-1934-erker-pair~m": 0.351,
+    "rijn-1934-erker-centre": 0.263,
+    "rijn-1934-erker-centre~m": 0.317,
+    "rijn-1934-erker-end~m": 0.48,
+    "rijn-1934-erker-end": 0.395,
+    "rijn-1934-erker-pair": 0.143,
+    "rijn-1934-erker-ribbon~m": 0.318,
+    "rijn-1934-erker-ribbon": 0.134,
+    "rijn-1934-erker-white-attic": 0.345,
+    "rijn-1934-erker-white-attic~m": 0.322,
+    "rijn-1934-flat-three~m": 0.276,
+    "rijn-1934-flat-three": 0.276
+   }
+  },
+  {
+   "pandId": "0363100012096263",
+   "address": "Boterdiepstraat 38",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.29,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#836f69",
+    "wallRaw": "#7b6a63",
+    "skyline": {
+     "eavesM": 14,
+     "eavesRow": 118,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.209,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-ribbon",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#836f69",
+     "evidence": "strip 2020-01-07 span 3416-3660: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #87736a)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, paired with 142115's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012096263",
+    "ncc": 0.463,
+    "nccRaw": 0.463,
+    "shiftM": [
+     -0.4,
+     0.2
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.49 vs photo 0.38",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#8b776e",
+     "model": "#96827c",
+     "dL": 0.049
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.715
+   },
+   "challengers": {
+    "rijn-1934-flat-three": 0.462,
+    "rijn-1934-erker-centre~m": 0.393,
+    "rijn-1934-erker-centre": 0.303,
+    "rijn-1934-erker-end": 0.356,
+    "rijn-1934-erker-end~m": 0.353,
+    "rijn-1934-erker-pair": 0.428,
+    "rijn-1934-erker-pair~m": 0.343,
+    "rijn-1934-erker-ribbon": 0.378,
+    "rijn-1934-erker-ribbon~m": 0.308,
+    "rijn-1934-erker-white-attic~m": 0.271,
+    "rijn-1934-erker-white-attic": 0.281,
+    "rijn-1934-flat-three~m": 0.462
+   }
+  },
+  {
+   "pandId": "0363100012149435",
+   "address": "Boterdiepstraat 36",
+   "builtYear": 1934,
+   "widthM": 6.1,
+   "eavesM": 12.29,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#836f69",
+    "wallRaw": "#7b6a63",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 141,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 0.75,
+      "topWidthM": 0.95,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.245,
+    "structure": {
+     "bayWidthM": 1.4,
+     "bayCentre": 0.38,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.71 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.71,
+       "light": 0.3
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.07,
+       "widthM": 1.27,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "rijn-1934-flat-three",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "rijn-1934-erker-centre",
+    "score": 0.55
+   },
+   "placement": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#836f69",
+     "evidence": "strip 2020-01-07 span 3660-3904: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #8c6f64)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, paired with 096263's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012149435",
+    "ncc": 0.457,
+    "nccRaw": 0.457,
+    "shiftM": [
+     -0.1,
+     0.2
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#8c756b",
+     "model": "#96827c",
+     "dL": 0.053
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.618
+   },
+   "challengers": {
+    "rijn-1934-flat-three~m": 0.455,
+    "rijn-1934-erker-centre~m": 0.335,
+    "rijn-1934-erker-centre": 0.31,
+    "rijn-1934-erker-end": 0.318,
+    "rijn-1934-erker-end~m": 0.416,
+    "rijn-1934-erker-pair": 0.328,
+    "rijn-1934-erker-pair~m": 0.326,
+    "rijn-1934-erker-ribbon": 0.365,
+    "rijn-1934-erker-ribbon~m": 0.382,
+    "rijn-1934-erker-white-attic~m": 0.287,
+    "rijn-1934-erker-white-attic": 0.314,
+    "rijn-1934-flat-three": 0.455
+   }
+  }
+ ]
+}

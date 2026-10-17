@@ -369,6 +369,13 @@ test('surveyed pitched roof closes the end wall without closing internal partiti
  const rear=hit(group,[5,8.5,15],[0,0,-1])[0];assert(rear);assert.equal(rear.object.userData.surface,'wall');
  const seam=hit(group,[2,9,5],[1,0,0]);assert(!seam.some(h=>h.object.name.includes('roof-closure')));
 });
+test('a roof edge over collinear footprint edges still closes (Boterdiepstraat 57, 111742: chord across the erker foot)',()=>{
+ const r=fixture();r.shellTopM=m(5);r.elevations[0].crown=undefined;r.elevations[0].openings=m([]);
+ r.footprint=m([{outer:[[0,0],[6,0],[6,10],[2.5,10],[0,10]],holes:[]}]);
+ r.roof=m([{polygon:{outer:[[0,0],[6,0],[6,10],[0,10]],holes:[]},plane:{heightM:8,slopeX:0,slopeZ:0}}]);
+ const {group}=compileCanalHouseRecipe(r);
+ for(const x of [1,4]){const wall=hit(group,[x,6.5,15],[0,0,-1])[0];assert(wall,`rear wall at x=${x}`);assert.match(wall.object.name,/roof-closure/);assert.ok(Math.abs(wall.point.z-10)<1e-6);}
+});
 test('same-area roof shifted outside the native footprint is rejected',()=>{
  const r=fixture();r.roof.value[0].polygon={outer:r.roof.value[0].polygon.outer.map(([x,z])=>[x+1,z]),holes:r.roof.value[0].polygon.holes.map(h=>h.map(([x,z])=>[x+1,z]))};
  assert.throws(()=>compileCanalHouseRecipe(r),/outside surveyed footprint/);

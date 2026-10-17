@@ -1,0 +1,429 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "boterdiep-36-66",
+ "street": "Boterdiepstraat",
+ "sources": [
+  {
+   "id": "strip-2020-01-07",
+   "kind": "street-panorama",
+   "capturedAt": "2020-01-07",
+   "image": "staging/block-face/boterdiep-36-66/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the rivierenbuurt library (buurt Rijnbuurt-Oost); scores and holds in scripts/block-face/faces/boterdiep-36-66/auto-place.json"
+ },
+ "types": [
+  "rijn-1934-erker-pair",
+  "rijn-1934-flat-three"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012093554",
+   "slug": "boterdiep-093554",
+   "address": "Boterdiepstraat 66",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "measuredPalette": {
+     "brick": "#695b55",
+     "evidence": "strip 2020-01-07 span 0-244: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #766763)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 0.82 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0; strip 2020-01-07 span 0-244"
+   }
+  },
+  {
+   "pandId": "0363100012097792",
+   "slug": "boterdiep-097792",
+   "address": "Boterdiepstraat 64",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#6b5c55",
+     "evidence": "strip 2020-01-07 span 244-488: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #7b6c65)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 1, columns 1; strip 2020-01-07 span 244-488"
+   }
+  },
+  {
+   "pandId": "0363100012126062",
+   "slug": "boterdiep-126062",
+   "address": "Boterdiepstraat 62",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#736359",
+     "evidence": "strip 2020-01-07 span 488-732: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #7c6a5f)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2020-01-07 span 488-732"
+   }
+  },
+  {
+   "pandId": "0363100012063519",
+   "slug": "boterdiep-063519",
+   "address": "Boterdiepstraat 60",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#79675e",
+     "evidence": "strip 2020-01-07 span 732-976: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #83756b)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 0.88 on eaves 1, storeys -, roof 0, stucco 1, bag-bay 1; strip 2020-01-07 span 732-976"
+   }
+  },
+  {
+   "pandId": "0363100012109092",
+   "slug": "boterdiep-109092",
+   "address": "Boterdiepstraat 58",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "measuredPalette": {
+     "brick": "#816f65",
+     "evidence": "strip 2020-01-07 span 976-1220: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #6c615d)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 0.82 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0; strip 2020-01-07 span 976-1220"
+   }
+  },
+  {
+   "pandId": "0363100012095439",
+   "slug": "boterdiep-095439",
+   "address": "Boterdiepstraat 56",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#7f6d62",
+     "evidence": "strip 2020-01-07 span 1220-1464: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #766963)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 1, columns 1; strip 2020-01-07 span 1220-1464"
+   }
+  },
+  {
+   "pandId": "0363100012080585",
+   "slug": "boterdiep-080585",
+   "address": "Boterdiepstraat 54",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#7e6e62",
+     "evidence": "strip 2020-01-07 span 1464-1708: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #937f75)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1; strip 2020-01-07 span 1464-1708"
+   }
+  },
+  {
+   "pandId": "0363100012145095",
+   "slug": "boterdiep-145095",
+   "address": "Boterdiepstraat 52",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#7e6d61",
+     "evidence": "strip 2020-01-07 span 1708-1952: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #82756b)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2020-01-07 span 1708-1952"
+   }
+  },
+  {
+   "pandId": "0363100012086703",
+   "slug": "boterdiep-086703",
+   "address": "Boterdiepstraat 50",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "measuredPalette": {
+     "brick": "#7c6b61",
+     "evidence": "strip 2020-01-07 span 1952-2196: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #695c55)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 0.8 on eaves 1, storeys -, roof 1, stucco 1, bag-bay 1, accent-side 0; strip 2020-01-07 span 1952-2196"
+   }
+  },
+  {
+   "pandId": "0363100012067390",
+   "slug": "boterdiep-067390",
+   "address": "Boterdiepstraat 48",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#7a6b63",
+     "evidence": "strip 2020-01-07 span 2196-2440: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #746661)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 0.93 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 1, columns 0.4; strip 2020-01-07 span 2196-2440"
+   }
+  },
+  {
+   "pandId": "0363100012065337",
+   "slug": "boterdiep-065337",
+   "address": "Boterdiepstraat 46",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#7c6d66",
+     "evidence": "strip 2020-01-07 span 2440-2684: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #7f7065)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2020-01-07 span 2440-2684"
+   }
+  },
+  {
+   "pandId": "0363100012100933",
+   "slug": "boterdiep-100933",
+   "address": "Boterdiepstraat 44",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#81716d",
+     "evidence": "strip 2020-01-07 span 2684-2928: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #8f7d77)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2020-01-07 span 2684-2928"
+   }
+  },
+  {
+   "pandId": "0363100012139791",
+   "slug": "boterdiep-139791",
+   "address": "Boterdiepstraat 42",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "measuredPalette": {
+     "brick": "#82726e",
+     "evidence": "strip 2020-01-07 span 2928-3172: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #86756d)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 0.82 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0; strip 2020-01-07 span 2928-3172"
+   }
+  },
+  {
+   "pandId": "0363100012142115",
+   "slug": "boterdiep-142115",
+   "address": "Boterdiepstraat 40",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#8b7771",
+     "evidence": "strip 2020-01-07 span 3172-3416: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #816d64)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 1; strip 2020-01-07 span 3172-3416"
+   }
+  },
+  {
+   "pandId": "0363100012096263",
+   "slug": "boterdiep-096263",
+   "address": "Boterdiepstraat 38",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#836f69",
+     "evidence": "strip 2020-01-07 span 3416-3660: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #87736a)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2020-01-07 span 3416-3660"
+   }
+  },
+  {
+   "pandId": "0363100012149435",
+   "slug": "boterdiep-149435",
+   "address": "Boterdiepstraat 36",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#836f69",
+     "evidence": "strip 2020-01-07 span 3660-3904: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #8c6f64)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-01-07",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1; strip 2020-01-07 span 3660-3904"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}
