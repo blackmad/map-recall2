@@ -1,0 +1,412 @@
+{
+ "face": "houtrijk-335-409",
+ "street": "Houtrijkstraat",
+ "library": "spaarndammerbuurt",
+ "stripDate": "2021-03-19",
+ "seconds": 5.68,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "houtrijk-335-409-r1",
+   "pands": [
+    "0363100012113918",
+    "0363100012099132"
+   ]
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012082941",
+   "address": "Houtrijkstraat 335",
+   "builtYear": 1921,
+   "widthM": 26.9,
+   "eavesM": 11.67,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c6454",
+    "wallRaw": "#816b59",
+    "skyline": {
+     "eavesM": 12.22,
+     "eavesRow": 288,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 9.5,
+      "riseM": 7.2,
+      "topWidthM": 0.47,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.099,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: built 1921, type 1924-1926; frontage 26.9 m, type 11.8-13 m)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1924-1926",
+     "frontage 26.9 m, type 11.8-13 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 11.67 m = 5 storeys of 2.33 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 4.19 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.098 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 8 vs 7 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012101696",
+   "address": "Houtrijkstraat 349",
+   "builtYear": 1921,
+   "widthM": 16.94,
+   "eavesM": 12.54,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#856a59",
+    "wallRaw": "#8b725f",
+    "skyline": {
+     "eavesM": 12.55,
+     "eavesRow": 275,
+     "confidence": 0.82,
+     "crown": {
+      "widthM": 3.17,
+      "riseM": 6.68,
+      "topWidthM": 0.3,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.141,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: built 1921, type 1924-1926; frontage 16.94 m, type 11.8-13 m)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1924-1926",
+     "frontage 16.94 m, type 11.8-13 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.54 m = 5 storeys of 2.51 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 4.89 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.141 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 4 vs 7 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012069936",
+   "address": "Houtrijkstraat 365",
+   "builtYear": 1921,
+   "widthM": 15.5,
+   "eavesM": 12.22,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#816654",
+    "wallRaw": "#876e59",
+    "skyline": {
+     "eavesM": 14.43,
+     "eavesRow": 200,
+     "confidence": 0.74,
+     "crown": {
+      "widthM": 4.78,
+      "riseM": 5,
+      "topWidthM": 0.8,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.075,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.97,
+       "widthM": 0.93,
+       "centre": 0.44
+      },
+      {
+       "atM": 9,
+       "widthM": 1.35,
+       "centre": 0.9
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: built 1921, type 1924-1926; frontage 15.5 m, type 11.8-13 m)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1924-1926",
+     "frontage 15.5 m, type 11.8-13 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 12.22 m = 5 storeys of 2.44 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 5.07 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.092 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 7 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012113918",
+   "address": "Houtrijkstraat 381",
+   "builtYear": 1933,
+   "widthM": 12.52,
+   "eavesM": 13.96,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f6957",
+    "wallRaw": "#85715c",
+    "skyline": {
+     "eavesM": 14.38,
+     "eavesRow": 202,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 3.25,
+      "riseM": 5.05,
+      "topWidthM": 0.63,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.049,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "spaarndammer-1933-stair-ladder",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "spaarndammer-1933-stair-ladder",
+    "measuredPalette": {
+     "brick": "#7f6957",
+     "evidence": "strip 2021-03-19 span 2374-2875: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #766456)"
+    }
+   },
+   "notes": [
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099132",
+   "address": "Houtrijkstraat 399",
+   "builtYear": 1933,
+   "widthM": 15.42,
+   "eavesM": 13.98,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725f50",
+    "wallRaw": "#776655",
+    "skyline": {
+     "eavesM": 13.65,
+     "eavesRow": 231,
+     "confidence": 0.75,
+     "crown": {
+      "widthM": 3.38,
+      "riseM": 5.78,
+      "topWidthM": 0.1,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.077,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "spaarndammer-1933-stair-ladder-five",
+   "score": 0.77,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "spaarndammer-1933-stair-ladder-five",
+    "measuredPalette": {
+     "brick": "#725f50",
+     "evidence": "strip 2021-03-19 span 2874-3491: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #725f50)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

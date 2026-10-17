@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-17T09:01:58.152Z",
+ "generatedAt": "2026-10-17T09:25:20.605Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -44450,6 +44450,790 @@
        "primitive": 18,
        "firstTriangle": 46,
        "triangleCount": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-hembrug-21-27",
+   "category": "street-survey",
+   "name": "face-hembrug-21-27",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hembrug-21-27.glb?asset=db05d83092e5741d",
+   "sha256": "db05d83092e5741d9bfc911805211c9daf917ef77f9f8b83c6b6884830391829",
+   "bytes": 188200,
+   "triangles": 2550,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.876232935876834,
+     52.391622231156724
+    ],
+    "northOffsetDegrees": 153.8458,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -12.6,
+     0,
+     -9.01
+    ],
+    "max": [
+     12.627,
+     16.126,
+     1.1
+    ]
+   },
+   "height": 16.126,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012139242",
+    "NL.IMBAG.Pand.0363100012081333"
+   ],
+   "replaces": [
+    "ordinary-0363100012139242",
+    "ordinary-0363100012081333"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8763991,
+        52.391672
+       ],
+       [
+        4.8762331,
+        52.3916223
+       ],
+       [
+        4.8762903,
+        52.3915501
+       ],
+       [
+        4.8764458,
+        52.3915972
+       ],
+       [
+        4.8764562,
+        52.3916006
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8762331,
+        52.3916223
+       ],
+       [
+        4.8760664,
+        52.3915723
+       ],
+       [
+        4.8761251,
+        52.3914997
+       ],
+       [
+        4.876137,
+        52.3915038
+       ],
+       [
+        4.8762903,
+        52.3915501
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hembrug-139242",
+     "pandId": "0363100012139242",
+     "buildingId": "NL.IMBAG.Pand.0363100012139242",
+     "address": "Hembrugstraat 21",
+     "frontage": {
+      "x0": -12.598,
+      "x1": -0.012,
+      "widthM": 12.586
+     },
+     "bounds": {
+      "min": [
+       -12.6,
+       0,
+       -8.96
+      ],
+      "max": [
+       0.024,
+       16.125,
+       1.1
+      ]
+     },
+     "triangles": 1270,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 49
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 992
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "hembrug-081333",
+     "pandId": "0363100012081333",
+     "buildingId": "NL.IMBAG.Pand.0363100012081333",
+     "address": "Hembrugstraat 25",
+     "frontage": {
+      "x0": -0.012,
+      "x1": 12.623,
+      "widthM": 12.636
+     },
+     "bounds": {
+      "min": [
+       -0.017,
+       0,
+       -9.01
+      ],
+      "max": [
+       12.627,
+       16.126,
+       1.1
+      ]
+     },
+     "triangles": 1280,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 59
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 992,
+       "triangleCount": 992
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 160,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 6,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 3,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 4,
+       "triangleCount": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-houtrijk-335-409-r1",
+   "category": "street-survey",
+   "name": "face-houtrijk-335-409-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-houtrijk-335-409-r1.glb?asset=29a64a0c4b136538",
+   "sha256": "29a64a0c4b13653828df23bd666b4019e471d11c9831fd49fa105c765e622907",
+   "bytes": 229108,
+   "triangles": 3173,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.876591976464462,
+     52.39158277775276
+    ],
+    "northOffsetDegrees": 243.8671,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -13.264,
+     0,
+     -8.955
+    ],
+    "max": [
+     14.705,
+     16.181,
+     1.1
+    ]
+   },
+   "height": 16.181,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012113918",
+    "NL.IMBAG.Pand.0363100012099132"
+   ],
+   "replaces": [
+    "ordinary-0363100012113918",
+    "ordinary-0363100012099132"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8765967,
+        52.3915769
+       ],
+       [
+        4.8764799,
+        52.3915411
+       ],
+       [
+        4.8765621,
+        52.3914409
+       ],
+       [
+        4.8766778,
+        52.391476
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8763991,
+        52.391672
+       ],
+       [
+        4.8764562,
+        52.3916006
+       ],
+       [
+        4.8764458,
+        52.3915972
+       ],
+       [
+        4.8764642,
+        52.3915756
+       ],
+       [
+        4.8764581,
+        52.3915677
+       ],
+       [
+        4.8764799,
+        52.3915411
+       ],
+       [
+        4.8765967,
+        52.3915769
+       ],
+       [
+        4.8764967,
+        52.3917013
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "houtrijk-113918",
+     "pandId": "0363100012113918",
+     "buildingId": "NL.IMBAG.Pand.0363100012113918",
+     "address": "Houtrijkstraat 381",
+     "frontage": {
+      "x0": -13.242,
+      "x1": -0.726,
+      "widthM": 12.516
+     },
+     "bounds": {
+      "min": [
+       -13.264,
+       0,
+       -8.927
+      ],
+      "max": [
+       -0.717,
+       16.143,
+       1.1
+      ]
+     },
+     "triangles": 1269,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 47
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 992
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "houtrijk-099132",
+     "pandId": "0363100012099132",
+     "buildingId": "NL.IMBAG.Pand.0363100012099132",
+     "address": "Houtrijkstraat 399",
+     "frontage": {
+      "x0": -0.726,
+      "x1": 14.693,
+      "widthM": 15.419
+     },
+     "bounds": {
+      "min": [
+       -0.795,
+       0,
+       -8.955
+      ],
+      "max": [
+       14.705,
+       16.181,
+       1.1
+      ]
+     },
+     "triangles": 1904,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 79
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 992,
+       "triangleCount": 1500
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 160,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 6,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 6,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-polanen-184-250-r1",
+   "category": "street-survey",
+   "name": "face-polanen-184-250-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-polanen-184-250-r1.glb?asset=2a2cef09a45cd169",
+   "sha256": "2a2cef09a45cd169390b350129c7428e24f567255ec7211a0a1aced83eda9442",
+   "bytes": 220828,
+   "triangles": 3074,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.876064206953099,
+     52.391424928970714
+    ],
+    "northOffsetDegrees": 63.8412,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -14.665,
+     0,
+     -9.094
+    ],
+    "max": [
+     13.426,
+     16.189,
+     1.1
+    ]
+   },
+   "height": 16.189,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012066643",
+    "NL.IMBAG.Pand.0363100012096276"
+   ],
+   "replaces": [
+    "ordinary-0363100012066643",
+    "ordinary-0363100012096276"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.876137,
+        52.3915038
+       ],
+       [
+        4.8761251,
+        52.3914997
+       ],
+       [
+        4.8760664,
+        52.3915723
+       ],
+       [
+        4.8759691,
+        52.3915431
+       ],
+       [
+        4.8760686,
+        52.3914195
+       ],
+       [
+        4.8761874,
+        52.3914559
+       ],
+       [
+        4.8761677,
+        52.3914806
+       ],
+       [
+        4.8761527,
+        52.3914851
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8761874,
+        52.3914559
+       ],
+       [
+        4.8760686,
+        52.3914195
+       ],
+       [
+        4.8761506,
+        52.3913175
+       ],
+       [
+        4.8762701,
+        52.3913524
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "polanen-066643",
+     "pandId": "0363100012066643",
+     "buildingId": "NL.IMBAG.Pand.0363100012066643",
+     "address": "Polanenstraat 240",
+     "frontage": {
+      "x0": -14.662,
+      "x1": 0.672,
+      "widthM": 15.334
+     },
+     "bounds": {
+      "min": [
+       -14.665,
+       0,
+       -9.094
+      ],
+      "max": [
+       0.679,
+       16.189,
+       1.1
+      ]
+     },
+     "triangles": 1816,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 80
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 1424
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 236
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "polanen-096276",
+     "pandId": "0363100012096276",
+     "buildingId": "NL.IMBAG.Pand.0363100012096276",
+     "address": "Polanenstraat 222",
+     "frontage": {
+      "x0": 0.672,
+      "x1": 13.319,
+      "widthM": 12.647
+     },
+     "bounds": {
+      "min": [
+       0.609,
+       0,
+       -9.088
+      ],
+      "max": [
+       13.426,
+       16.137,
+       1.1
+      ]
+     },
+     "triangles": 1258,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 50
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1424,
+       "triangleCount": 980
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 236,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 11,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 5,
+       "triangleCount": 4
       }
      ]
     }

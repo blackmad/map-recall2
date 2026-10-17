@@ -1,14 +1,69 @@
 {
  "buurt": "spaarndammerbuurt-midden",
  "library": "spaarndammerbuurt",
- "generatedAt": "2026-10-17T08:59:31.380Z",
- "seconds": 8.63,
+ "generatedAt": "2026-10-17T09:24:45.829Z",
+ "seconds": 8.72,
  "totals": {
-  "faces": 1,
-  "pands": 15,
-  "placed": 11
+  "faces": 4,
+  "pands": 27,
+  "placed": 17
  },
  "faces": [
+  {
+   "face": "hembrug-21-27",
+   "street": "Hembrugstraat",
+   "pands": 2,
+   "placed": 2,
+   "held": 0,
+   "runs": [
+    {
+     "face": "hembrug-21-27",
+     "pands": [
+      "0363100012139242",
+      "0363100012081333"
+     ]
+    }
+   ],
+   "seconds": 2.02,
+   "byType": {
+    "spaarndammer-1933-stair-ladder": 2
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "houtrijk-335-409",
+   "street": "Houtrijkstraat",
+   "pands": 5,
+   "placed": 2,
+   "held": 3,
+   "runs": [
+    {
+     "face": "houtrijk-335-409-r1",
+     "pands": [
+      "0363100012113918",
+      "0363100012099132"
+     ]
+    }
+   ],
+   "seconds": 5.68,
+   "byType": {
+    "spaarndammer-1933-stair-ladder": 1,
+    "spaarndammer-1933-stair-ladder-five": 1
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
   {
    "face": "polanen-181-331",
    "street": "Polanenstraat",
@@ -40,6 +95,34 @@
    "holds": {
     "evidence": 0,
     "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "polanen-184-250",
+   "street": "Polanenstraat",
+   "pands": 5,
+   "placed": 2,
+   "held": 3,
+   "runs": [
+    {
+     "face": "polanen-184-250-r1",
+     "pands": [
+      "0363100012066643",
+      "0363100012096276"
+     ]
+    }
+   ],
+   "seconds": 3.29,
+   "byType": {
+    "spaarndammer-1933-stair-ladder-five": 1,
+    "spaarndammer-1933-stair-ladder": 1
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 3,
     "likeness": 0,
     "run": 0,
     "review": 0

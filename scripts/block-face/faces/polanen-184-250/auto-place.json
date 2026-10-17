@@ -1,0 +1,452 @@
+{
+ "face": "polanen-184-250",
+ "street": "Polanenstraat",
+ "library": "spaarndammerbuurt",
+ "stripDate": "2022-12-14",
+ "seconds": 3.29,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "polanen-184-250-r1",
+   "pands": [
+    "0363100012066643",
+    "0363100012096276"
+   ]
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012066643",
+   "address": "Polanenstraat 240",
+   "builtYear": 1933,
+   "widthM": 15.33,
+   "eavesM": 13.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b4906a",
+    "wallRaw": "#a68b67",
+    "skyline": {
+     "eavesM": 13.72,
+     "eavesRow": 260,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.13,
+      "riseM": 0.93,
+      "topWidthM": 2.13,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.052,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.03 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.03,
+       "light": 0.25
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.47,
+       "widthM": 1.52,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "placed",
+   "type": "spaarndammer-1933-stair-ladder-five",
+   "score": 0.86,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "spaarndammer-1933-stair-ladder-five",
+    "measuredPalette": {
+     "brick": "#b4906a",
+     "evidence": "strip 2022-12-14 span 0-613: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #b49069)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown overhang (type default)",
+    "door left: mirrored: reviewer pin (polanen-184-250 strip 2022-12-14: the slab canopy at 5.0-6.6 m and the ladder light at 6.0-6.5 m of the 15.3 m front stand left of its middle; the door itself is behind a hedge)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012096276",
+   "address": "Polanenstraat 222",
+   "builtYear": 1933,
+   "widthM": 12.65,
+   "eavesM": 13.93,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c59569",
+    "wallRaw": "#b69066",
+    "skyline": {
+     "eavesM": 13.85,
+     "eavesRow": 255,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.05,
+      "riseM": 0.85,
+      "topWidthM": 2.05,
+      "centre": 0.74
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.058,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.6,
+       "widthM": 1.75,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "placed",
+   "type": "spaarndammer-1933-stair-ladder",
+   "score": 0.77,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "spaarndammer-1933-stair-ladder",
+    "measuredPalette": {
+     "brick": "#c59569",
+     "evidence": "strip 2022-12-14 span 613-1119: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #b5906a)"
+    }
+   },
+   "notes": [
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012074107",
+   "address": "Polanenstraat 206",
+   "builtYear": 1921,
+   "widthM": 8.22,
+   "eavesM": 12.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b18d64",
+    "wallRaw": "#a38861",
+    "skyline": {
+     "eavesM": 13.13,
+     "eavesRow": 284,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 3.5,
+      "riseM": 7.1,
+      "topWidthM": 0.35,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.021,
+    "structure": {
+     "bayWidthM": 0.55,
+     "bayCentre": 0.96,
+     "balconies": true,
+     "why": "dark open axis 1.93 m at 0.38 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.93,
+       "centre": 0.38,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: built 1921, type 1924-1926; frontage 8.22 m, type 11.8-13 m)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1924-1926",
+     "frontage 8.22 m, type 11.8-13 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 12.17 m = 5 storeys of 2.43 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 5.5 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.016 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012092078",
+   "address": "Polanenstraat 190",
+   "builtYear": 1921,
+   "widthM": 7.42,
+   "eavesM": 12.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a37f5e",
+    "wallRaw": "#967b5b",
+    "skyline": {
+     "eavesM": 12.32,
+     "eavesRow": 316,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 1.95,
+      "riseM": 3.28,
+      "topWidthM": 0.03,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.027,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.5,
+       "widthM": 1.05,
+       "centre": 0.53
+      },
+      {
+       "atM": 9.4,
+       "widthM": 1.13,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: built 1921, type 1924-1926; frontage 7.42 m, type 11.8-13 m)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1924-1926",
+     "frontage 7.42 m, type 11.8-13 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 12.45 m = 5 storeys of 2.49 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 5.78 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.022 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 7 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012142112",
+   "address": "Polanenstraat 184",
+   "builtYear": 1921,
+   "widthM": 8.66,
+   "eavesM": 9.26,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b88760",
+    "wallRaw": "#aa825d",
+    "skyline": {
+     "eavesM": 9.75,
+     "eavesRow": 419,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.25,
+      "riseM": 6.25,
+      "topWidthM": 0.13,
+      "centre": 0.73
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.048,
+    "structure": {
+     "bayWidthM": 1.3,
+     "bayCentre": 0.92,
+     "balconies": true,
+     "why": "dark open axis 1.68 m at 0.15 (light 0.04): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.68,
+       "centre": 0.15,
+       "light": 0.04
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.44,
+       "light": 0
+      },
+      {
+       "widthM": 1.32,
+       "centre": 0.92,
+       "light": 0.76
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.38,
+       "widthM": 1.32,
+       "centre": 0.1
+      },
+      {
+       "atM": 5.82,
+       "widthM": 3.27,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: built 1921, type 1924-1926; frontage 8.66 m, type 11.8-13 m)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1924-1926",
+     "frontage 8.66 m, type 11.8-13 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.26 m = 5 storeys of 1.85 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 5.04 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.041 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

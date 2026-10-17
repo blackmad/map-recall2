@@ -1,0 +1,55 @@
+{
+ "street": "Hembrugstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012139242",
+   "addresses": [
+    "Hembrugstraat 21",
+    "Hembrugstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hembrugstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000661711"
+    },
+    {
+     "address": "Hembrugstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000661716"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081333",
+   "addresses": [
+    "Hembrugstraat 25",
+    "Hembrugstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hembrugstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000661721"
+    },
+    {
+     "address": "Hembrugstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000661726"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}
