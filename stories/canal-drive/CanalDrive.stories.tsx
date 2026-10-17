@@ -34,7 +34,18 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   // The riding radar (the always-on minimap since 2026-10-16), heading-up at
   // Westermarkt with the route along Raadhuisstraat and the Dam off the rim.
   | 'hud-radar' | 'touch-hud-radar'
+  // The first-run intro over the setup screen, one story per step, with the
+  // keyboard hints (desktop) and the ring/tap hints (phone).
+  | 'onboarding-ride' | 'onboarding-name' | 'onboarding-score'
+  | 'touch-onboarding-ride' | 'touch-onboarding-name' | 'touch-onboarding-score'
+  // A home route on a phone: the Feedback / How to play row under Start.
+  | 'touch-setup-home'
 ;
+
+const ONBOARDING_STEP: Partial<Record<Scenario, number>> = {
+  'onboarding-ride': 0, 'onboarding-name': 1, 'onboarding-score': 2,
+  'touch-onboarding-ride': 0, 'touch-onboarding-name': 1, 'touch-onboarding-score': 2,
+};
 
 /** Draw the radar once its tiles around the view are all rasterised. */
 function drawStoryRadar(win: Window, game: any, ctx: CanvasRenderingContext2D) {
@@ -81,7 +92,8 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     if (win && scenario.includes('touch')) win.canalRecallForceTouch = true;
     const setupStories = new Set([
       'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'advanced-cartoon', 'advanced-questions-off', 'knowledge',
-      'touch-setup', 'touch-setup-transit', 'touch-setup-here', 'touch-knowledge',
+      'touch-setup', 'touch-setup-transit', 'touch-setup-here', 'touch-knowledge', 'touch-setup-home',
+      ...Object.keys(ONBOARDING_STEP),
     ]);
     if (setupStories.has(scenario)) doc.body.classList.add('storybook-setup');
     else doc.body.classList.remove('storybook-setup');
@@ -90,7 +102,13 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       if (!overlay) return;
       overlay.store.patchPrefs(patch, overlay.callbacks.zoom);
     };
-    if (scenario === 'bike-home') {
+    const onboardingStep = ONBOARDING_STEP[scenario];
+    if (onboardingStep !== undefined && win) {
+      // The bundle is loaded by the time onLoad fires; open on the wanted step.
+      const ui = (win as unknown as { CanalRecallUi?: { openOnboarding?: (o: unknown) => void } }).CanalRecallUi;
+      ui?.openOnboarding?.({ input: scenario.includes('touch') ? 'touch' : 'keyboard', startAt: onboardingStep });
+    }
+    if (scenario === 'bike-home' || scenario === 'touch-setup-home') {
       patchPrefs({
         travelMode: 'car', viewMode: 'heading', routePattern: 'home',
         homeAddress: 'Da Costakade 13-3, Amsterdam',
@@ -688,6 +706,33 @@ export const PortraitRouteSetup: Story = {
 
 export const PortraitRouteSetupHere: Story = {
   args: { scenario: 'touch-setup-here' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** A home route on a phone: the address field, the home mission line, and
+ *  Feedback / How to play in their own row below Start route. */
+export const PortraitRouteSetupHome: Story = {
+  args: { scenario: 'touch-setup-home' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** First-run intro, step 1 of 3: what the ride is and how to steer (keys). */
+export const IntroRide: Story = { args: { scenario: 'onboarding-ride' } };
+/** Step 2: the question card and how to answer (1–4, 0 for No idea). */
+export const IntroNameIt: Story = { args: { scenario: 'onboarding-name' } };
+/** Step 3: what the plaque tally means and where learned names live. */
+export const IntroScore: Story = { args: { scenario: 'onboarding-score' } };
+/** The intro on a phone: a bottom sheet with the ring and tap hints. */
+export const IntroRidePhone: Story = {
+  args: { scenario: 'touch-onboarding-ride' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+export const IntroNameItPhone: Story = {
+  args: { scenario: 'touch-onboarding-name' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+export const IntroScorePhone: Story = {
+  args: { scenario: 'touch-onboarding-score' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
 

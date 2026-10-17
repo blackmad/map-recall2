@@ -95,6 +95,16 @@ class GameRouteRuntime {
     document.querySelectorAll('#help-panel .utility-close, #landmark-panel .utility-close').forEach(button => {
       button.addEventListener('click', () => this._closeUtilityPanels());
     });
+    // First-run intro (src/canalRecall/onboarding): on a first visit, and
+    // again from How to play. The ride stays paused while it is open.
+    const ui = window.CanalRecallUi;
+    const openIntro = () => {
+      this._closeUtilityPanels();
+      this._utilityOpen = true;
+      ui.openOnboarding({ onClose: () => { this._utilityOpen = false; } });
+    };
+    document.getElementById('replay-intro')?.addEventListener('click', openIntro);
+    if (ui && typeof ui.maybeShowOnboarding === 'function') ui.maybeShowOnboarding();
   }
 
   _applyPrefsToRuntime(prefs, { persist = true, applySound = persist } = {}) {

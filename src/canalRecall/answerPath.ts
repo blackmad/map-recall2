@@ -104,13 +104,13 @@ export function submitAnswer(input: SubmitAnswerInput): AnswerResult {
     if (!input.gameyFeatures) {
       feedback = `Correct — ${input.correctName}`;
     } else if (noveltyMultiplier > 1 && cycleTrackMultiplier > 1) {
-      feedback = `Correct — ${input.correctName}  (+${earned} pts, new · cycle track)`;
+      feedback = `Correct — ${input.correctName}  (+${earned} pts · new name + cycle track bonus)`;
     } else if (noveltyMultiplier > 1) {
-      feedback = `Correct — ${input.correctName}  (+${earned} pts, ${noveltyMultiplier.toFixed(2)}× new street)`;
+      feedback = `Correct — ${input.correctName}  (+${earned} pts · new name bonus)`;
     } else if (cycleTrackMultiplier > 1) {
-      feedback = `Correct — ${input.correctName}  (+${earned} pts, cycle track)`;
+      feedback = `Correct — ${input.correctName}  (+${earned} pts · cycle track bonus)`;
     } else if (streak >= 2) {
-      feedback = `Correct — ${input.correctName}  (+${earned} pts, ${streak}× streak)`;
+      feedback = `Correct — ${input.correctName}  (+${earned} pts · ${streak} in a row)`;
     } else {
       feedback = `Correct — ${input.correctName}  (+${earned} pts)`;
     }

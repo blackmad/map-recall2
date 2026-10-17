@@ -328,7 +328,7 @@ class HUD {
     y += lineH;
     ctx.font = this._font(700, 12, surface.fontMono);
     ctx.fillStyle = surface.ink;
-    const tally = gamey ? `${correct} / ${attempts}  ·  ${points} pts` : `${correct} / ${attempts}`;
+    const tally = window.CanalRecallUi.scoreTally({ correct, attempts, points, gamey });
     ctx.fillText(tally, left, y);
     if (gamey && streak >= 2) {
       const mult = (1 + 0.1 * Math.min(streak - 1, 9)).toFixed(1);
@@ -404,7 +404,7 @@ class HUD {
     // Row 2: where and how well on the left; where to on the right. The score
     // never moves; the neighbourhood and destination name trim to fit.
     y += 20;
-    const tally = gamey ? `${correct}/${attempts} · ${points} pts` : `${correct}/${attempts}`;
+    const tally = window.CanalRecallUi.scoreTally({ correct, attempts, points, gamey, compact: true });
     const streakText = gamey && streak >= 2 ? `  ${streak}×streak` : '';
     ctx.font = this._font(700, 11, surface.fontMono);
     const tallyWidth = ctx.measureText(tally + streakText).width;

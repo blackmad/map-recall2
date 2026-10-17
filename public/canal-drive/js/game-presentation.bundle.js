@@ -291,7 +291,7 @@
     (d) => `Transfer-ready: get to ${d}`
   ];
   var HOME = [
-    (km) => km > 0 ? `Home ring \xB7 learn within ~${km.toFixed(1)} km` : "Home base \xB7 grow your learning ring",
+    (km) => km > 0 ? `Learn the streets within ~${km.toFixed(1)} km of home` : "Rides from home reach further as you learn",
     () => "Errand mode: leave knowing the way back"
   ];
   var HERE = [
@@ -400,6 +400,11 @@
   }
   function isBoat(mode) {
     return mode === "boat";
+  }
+
+  // src/canalRecall/hudCopy.ts
+  function zoomBadgeText(zoom) {
+    return `Zoom ${Math.round(zoom * 100)}%`;
   }
 
   // src/canalRecall/game/travelProfile.ts
@@ -49469,9 +49474,9 @@
       const surface = window.CanalRecallUi.hudSurface;
       this.hud.paperCard(ctx, rect, { radius: 9 });
       ctx.fillStyle = surface.inkMuted;
-      ctx.font = `700 12px ${surface.fontMono}`;
+      ctx.font = `700 11px ${surface.fontMono}`;
       ctx.textAlign = "center";
-      ctx.fillText(`${Math.round(this.camera.zoom * 100)}%`, rect.x + rect.width / 2, rect.y + 15);
+      ctx.fillText(zoomBadgeText(this.camera.zoom), rect.x + rect.width / 2, rect.y + 15);
     }
     _renderRecenterButton() {
       if (Math.hypot(this.camera.panX, this.camera.panY) <= 40) {
