@@ -291,7 +291,7 @@
     (d) => `Transfer-ready: get to ${d}`
   ];
   var HOME = [
-    (km) => km > 0 ? `Home ring \xB7 learn within ~${km.toFixed(1)} km` : "Home base \xB7 grow your learning ring",
+    (km) => km > 0 ? `Learn the streets within ~${km.toFixed(1)} km of home` : "Rides from home reach further as you learn",
     () => "Errand mode: leave knowing the way back"
   ];
   var HERE = [
@@ -402,6 +402,11 @@
     return mode === "boat";
   }
 
+  // src/canalRecall/hudCopy.ts
+  function zoomBadgeText(zoom) {
+    return `Zoom ${Math.round(zoom * 100)}%`;
+  }
+
   // src/canalRecall/game/travelProfile.ts
   var PROFILES = {
     boat: {
@@ -468,7 +473,34 @@
   }
   function routePlaqueName(input) {
     const answerHidden = hudWithholdsRouteName(input);
-    return { routeName: answerHidden ? "" : input.roadName, answerHidden };
+    return { routeName: answerHidden ? "" : input.shownName || input.roadName, answerHidden };
+  }
+
+  // src/canalRecall/bridgeDisplayNames.ts
+  function bridgeLetterKey(name) {
+    return name.trim().replace(/^(de|het|'t)\s+/i, "").replace(/ł/g, "l").replace(/Ł/g, "L").toLocaleLowerCase().normalize("NFD").replace(/[^\p{L}]/gu, "").replace(/(\p{L})\1+/gu, "$1");
+  }
+  function isBridgeSpelling(osmName, displayName) {
+    return !!displayName && displayName !== osmName && bridgeLetterKey(displayName) === bridgeLetterKey(osmName);
+  }
+  function buildBridgeDisplayNames(bridges) {
+    const names = /* @__PURE__ */ new Map();
+    for (const bridge of bridges) {
+      const name = bridge.name?.trim();
+      const shown = bridge.displayName?.trim();
+      if (name && shown && isBridgeSpelling(name, shown)) names.set(name, shown);
+    }
+    return names;
+  }
+  var indexes = /* @__PURE__ */ new WeakMap();
+  function bridgeDisplayNamesOf(bridges) {
+    if (!bridges) return /* @__PURE__ */ new Map();
+    let index = indexes.get(bridges);
+    if (!index) indexes.set(bridges, index = buildBridgeDisplayNames(bridges));
+    return index;
+  }
+  function displayBridgeName(names, name) {
+    return names && names.get(name) || name;
   }
 
   // src/canalRecall/facts/factRotation.ts
@@ -603,6 +635,7 @@
       if (!before) return true;
       const word = before[1];
       if (word.length === 1) return false;
+      if (/^\p{Lu}\p{L}*sz$/u.test(word)) return false;
       return !abbreviations.has(word.toLocaleLowerCase());
     };
     let end = -1;
@@ -973,6 +1006,80 @@
     }
     out += label.slice(cursor);
     return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
+  }
+
+  // src/canalRecall/answerPath.ts
+  function normaliseAnswer(value) {
+    return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+
+  // src/canalRecall/game/poiNotability.ts
+  var A_LIST = [
+    { name: "Rijksmuseum", wikidata: ["Q190804"] },
+    { name: "Van Gogh Museum", wikidata: ["Q224124"] },
+    { name: "Stedelijk Museum", aliases: ["Stedelijk Museum Amsterdam"], wikidata: ["Q924335", "Q42175133"] },
+    { name: "Anne Frank Huis", aliases: ["Anne Frank House"], wikidata: ["Q165366"] },
+    { name: "Westerkerk", wikidata: ["Q1130722"] },
+    { name: "Koninklijk Paleis", aliases: ["Royal Palace", "Paleis op de Dam", "Royal Palace of Amsterdam"], wikidata: ["Q1056152"] },
+    { name: "Nieuwe Kerk", aliases: ["Nieuwe Kerk Amsterdam"], wikidata: ["Q1419675"] },
+    { name: "Oude Kerk", aliases: ["Oude Kerk Amsterdam"], wikidata: ["Q623558"] },
+    { name: "Concertgebouw", aliases: ["Royal Concertgebouw", "Koninklijk Concertgebouw"], wikidata: ["Q849957"] },
+    { name: "Amsterdam Centraal", aliases: ["Central Station", "Amsterdam Centraal Station"], wikidata: ["Q50719"] },
+    { name: "Magere Brug", aliases: ["Skinny Bridge", "Skinny bridge"], wikidata: ["Q1344400"] },
+    { name: "Munttoren", aliases: ["Mint Tower", "Munt Tower"], wikidata: ["Q1429748"] },
+    { name: "De Waag", aliases: ["Waag", "Weigh House"], wikidata: ["Q2466999"] },
+    { name: "Begijnhof", wikidata: ["Q1629214"] },
+    { name: "Homomonument", wikidata: ["Q51411"] },
+    { name: "Rembrandthuis", aliases: ["Rembrandt House", "Museum Het Rembrandthuis", "Rembrandt House Museum"], wikidata: ["Q277316"] },
+    { name: "Portugese Synagoge", aliases: ["Portuguese Synagogue"], wikidata: ["Q1853707"] },
+    { name: "Joods Museum", aliases: ["Jewish Museum", "Jewish Historical Museum", "Joods Historisch Museum"], wikidata: ["Q702726"] },
+    { name: "Het Scheepvaartmuseum", aliases: ["National Maritime Museum", "Scheepvaartmuseum", "Nederlands Scheepvaartmuseum"], wikidata: ["Q1616123"] },
+    { name: "NEMO", aliases: ["NEMO Science Museum", "Nemo"], wikidata: ["Q1422000"] },
+    { name: "EYE Filmmuseum", aliases: ["Eye Filmmuseum", "EYE Film Institute"], wikidata: ["Q1538389"] },
+    { name: "A'DAM Toren", aliases: ["A'DAM Tower", "Adam Tower", "ADAM Tower"], wikidata: ["Q21185268"] },
+    { name: "Artis", aliases: ["Natura Artis Magistra", "Artis Zoo"], wikidata: ["Q713124"] },
+    { name: "Hortus Botanicus", aliases: ["Hortus Botanicus Amsterdam", "Botanical Garden Amsterdam"], wikidata: ["Q2475752"] },
+    { name: "Koninklijk Theater Carr\xE9", aliases: ["Royal Theater Carr\xE9", "Theater Carr\xE9", "Carr\xE9"], wikidata: ["Q1106490"] },
+    { name: "Tuschinski", aliases: ["Path\xE9 Tuschinski", "Tuschinski Theater", "Path\xE9 Tuschinski Cinema"], wikidata: ["Q599272"] },
+    { name: "Bloemenmarkt", aliases: ["Flower Market"], wikidata: ["Q643079"] },
+    { name: "Schreierstoren", aliases: ["Schreierstoren"], wikidata: ["Q610402"] },
+    { name: "Montelbaanstoren", wikidata: ["Q1946061"] },
+    { name: "Westergasfabriek", wikidata: ["Q4848627"] },
+    { name: "Albert Cuypmarkt", aliases: ["Albert Cuyp Market"], wikidata: ["Q1322408"] },
+    { name: "Heineken Experience", aliases: ["Heineken Experience Amsterdam"], wikidata: ["Q2087161"] },
+    { name: "Hermitage", aliases: ["H'ART Museum", "Hermitage Amsterdam", "H ART Museum"], wikidata: ["Q2509774"] },
+    { name: "Amstel Hotel", wikidata: ["Q1780741"] },
+    { name: "Stopera", aliases: ["Muziektheater"], wikidata: ["Q1587736"] },
+    { name: "Sint-Nicolaasbasiliek", aliases: ["Basilica of Saint Nicholas", "Basiliek van de Heilige Nicolaas", "Co-kathedrale Basiliek van Sint Nicolaas"], wikidata: ["Q1350750"] },
+    { name: "De Krijtberg", aliases: ["Krijtberg", "Sint-Franciscus Xaveriuskerk"], wikidata: ["Q1180056"] },
+    { name: "Zuiderkerk", wikidata: ["Q228629"] },
+    { name: "Noorderkerk", wikidata: ["Q613854"] },
+    { name: "Vondelpark", wikidata: ["Q2279698"] },
+    { name: "Nationaal Monument", aliases: ["National Monument", "National Monument on Dam Square", "Dam Square", "Nationaal Monument op de Dam"], wikidata: ["Q473851"] },
+    { name: "Leidseplein", wikidata: ["Q501445"] },
+    { name: "Rembrandtplein", wikidata: ["Q613678"] },
+    { name: "Museumplein", wikidata: ["Q2172631"] },
+    { name: "Stadsschouwburg", aliases: ["Stadsschouwburg Amsterdam", "Internationaal Theater Amsterdam"], wikidata: ["Q1817103"] },
+    { name: "Bijbels Museum", aliases: ["Biblical Museum"], wikidata: ["Q2111026"] },
+    { name: "Hollandsche Schouwburg", wikidata: ["Q2206529"] },
+    { name: "Nationaal Holocaust Namenmonument", aliases: ["Holocaust Namenmonument", "National Holocaust Names Monument"], wikidata: ["Q66023853"] },
+    { name: "De Dokwerker", aliases: ["Dokwerker"], wikidata: ["Q1179838"] },
+    { name: "Ons' Lieve Heer op Solder", aliases: ["Our Lord in the Attic", "Museum Ons' Lieve Heer op Solder"], wikidata: ["Q493160"] },
+    { name: "Amsterdam Museum", wikidata: ["Q1820897"] },
+    { name: "Moco", aliases: ["Moco Museum"], wikidata: ["Q26832671"] },
+    { name: "FOAM", aliases: ["Foam", "Fotografiemuseum Amsterdam"], wikidata: ["Q5422840"] },
+    { name: "Huis Bartolotti", aliases: ["Bartolotti House"], wikidata: ["Q2205055"] },
+    { name: "Scheepvaarthuis", aliases: ["Shipping House"], wikidata: ["Q2078885"] },
+    { name: "Beurs van Berlage", aliases: ["Berlage's Stock Market", "Berlage Beurs"], wikidata: ["Q851200"] },
+    { name: "Centrale Bibliotheek", aliases: ["OBA", "Amsterdam Public Library Oosterdok", "Openbare Bibliotheek Amsterdam", "Centrale Bibliotheek OBA"], wikidata: ["Q50413436"] }
+  ];
+  var A_LIST_BY_NAME = /* @__PURE__ */ new Map();
+  var A_LIST_BY_WIKIDATA = /* @__PURE__ */ new Map();
+  for (const entry of A_LIST) {
+    for (const name of [entry.name, ...entry.aliases ?? []]) {
+      A_LIST_BY_NAME.set(normaliseAnswer(name), entry);
+    }
+    for (const qid of entry.wikidata ?? []) A_LIST_BY_WIKIDATA.set(qid, entry);
   }
 
   // src/canalRecall/landmarks/surveyedLandmarks.json
@@ -38788,7 +38895,7 @@
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#a2856c",
+        brick: "#a28382",
         stone: "#e2d6bc",
         frame: "#efece3",
         glass: "#4f6270",
@@ -49321,7 +49428,8 @@
         (text, x, y) => this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y),
         this.quizPromptName || this.quizCandidateName,
         player,
-        (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates()).candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach)
+        (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates()).candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach),
+        (text) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text)
       );
       if (this.state === GameState.FINISHED) {
         this._renderFinish();
@@ -49353,7 +49461,9 @@
           promptName: this.quizPromptName || "",
           candidateName: this.quizCandidateName || "",
           revealed: !!roadName && this.revealedNames.has(roadName),
-          learned: !!roadName && this.learnedNames.has(roadName)
+          learned: !!roadName && this.learnedNames.has(roadName),
+          // A bridge deck prints under its official spelling once it may show.
+          shownName: roadName ? displayBridgeName(bridgeDisplayNamesOf(this.bridges), roadName) : ""
         });
         visibleRouteName = plaque.routeName;
         routeAnswerHidden = plaque.answerHidden;
@@ -49475,9 +49585,9 @@
       const surface = window.CanalRecallUi.hudSurface;
       this.hud.paperCard(ctx, rect, { radius: 9 });
       ctx.fillStyle = surface.inkMuted;
-      ctx.font = `700 12px ${surface.fontMono}`;
+      ctx.font = `700 11px ${surface.fontMono}`;
       ctx.textAlign = "center";
-      ctx.fillText(`${Math.round(this.camera.zoom * 100)}%`, rect.x + rect.width / 2, rect.y + 15);
+      ctx.fillText(zoomBadgeText(this.camera.zoom), rect.x + rect.width / 2, rect.y + 15);
     }
     _renderRecenterButton() {
       if (Math.hypot(this.camera.panX, this.camera.panY) <= 40) {
@@ -49930,6 +50040,8 @@
       const exploration = this._explorationSnapshot && this._explorationSnapshot.totalRoutes > 0 ? this._explorationSnapshot : null;
       const ribbon = gamey ? this._ribbon : null;
       const landmark = this._finishLandmark();
+      const tour = this._tourArrival || null;
+      const stamp = this._finishStamp || null;
       const image = landmark ? this._landmarkImages?.get(landmark.id) : void 0;
       const hasImage = !!image && image.complete && image.naturalWidth > 0;
       const rule = (y2) => {
@@ -49952,24 +50064,24 @@
           ctx.textAlign = "left";
           ctx.fillStyle = ACCENT;
           ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-          ctx.fillText("ARRIVED", cardX + padX, top + 11);
+          ctx.fillText(tour?.completed ? "TOUR COMPLETE" : "ARRIVED", cardX + padX, top + 11);
           ctx.fillStyle = INK;
           ctx.font = "800 26px system-ui, sans-serif";
           ctx.fillText(wrapText(ctx, this.routeTo.name, innerW, 1)[0], cardX + padX, top + 42);
           ctx.fillStyle = MUTED;
           ctx.font = "13px system-ui, sans-serif";
-          ctx.fillText(`${this.routeFrom.name}  \u2192  ${this.routeTo.name}`, cardX + padX, top + 64);
+          ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  \u2192  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64);
         } });
-        if (landmark && level2 < 3) {
+        if (landmark && level2 < 3 || tour) {
           const photo = hasImage ? level2 >= 2 ? 64 : 88 : 0;
           const textX = cardX + padX + (hasImage ? photo + 16 : 0);
           const textW = cardX + cardW - padX - textX;
           ctx.font = "12px system-ui, sans-serif";
           const blurb = wrapText(
             ctx,
-            this._finishBlurbText(landmark),
+            tour ? tour.why : this._finishBlurbText(landmark),
             textW,
-            [hasImage ? 4 : 3, 3, 2][level2]
+            tour ? [4, 3, 3, 3][level2] : [hasImage ? 4 : 3, 3, 2, 2][level2]
           );
           const height = Math.max(photo, 20 + blurb.length * 17) + 14;
           blocks2.push({ height, draw: (top) => {
@@ -49995,8 +50107,14 @@
             ctx.textAlign = "left";
             ctx.fillStyle = MUTED;
             ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-            const kind = String(landmark.type || "landmark").toUpperCase();
-            ctx.fillText(landmark.wikipediaUrl ? `${kind}  \xB7  W  WIKIPEDIA` : kind, textX, top + 10);
+            if (tour) {
+              const where = `${tour.title.toUpperCase()}  \xB7  STOP ${tour.stopIndex + 1} OF ${tour.stopCount}`;
+              const credit = [tour.sourceHost, tour.checked].filter(Boolean).join("  \xB7  ");
+              ctx.fillText(wrapText(ctx, credit ? `${where}  \xB7  ${credit.toUpperCase()}` : where, textW, 1)[0], textX, top + 10);
+            } else {
+              const kind = String(landmark.type || "landmark").toUpperCase();
+              ctx.fillText(landmark.wikipediaUrl ? `${kind}  \xB7  W  WIKIPEDIA` : kind, textX, top + 10);
+            }
             ctx.fillStyle = BODY;
             ctx.font = "12px system-ui, sans-serif";
             blurb.forEach((line, index) => ctx.fillText(line, textX, top + 30 + index * 17));
@@ -50125,10 +50243,28 @@
             ctx.fillText(bestText, cardX + padX, top + 14);
           } });
         }
+        if (stamp) {
+          blocks2.push({ height: 20, draw: (top) => {
+            ctx.textAlign = "left";
+            const label = stamp.kind === "tour" ? stamp.isNew ? "TOUR STAMP" : "TOUR STAMP AGAIN" : stamp.isNew ? "NEW STAMP" : "STAMP AGAIN";
+            ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
+            const labelW = ctx.measureText(label).width;
+            ctx.fillStyle = ACCENT;
+            ctx.beginPath();
+            ctx.arc(cardX + padX + 6, top + 9, 6, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillText(label, cardX + padX + 18, top + 13);
+            ctx.fillStyle = INK;
+            ctx.font = "700 13px system-ui, sans-serif";
+            const tally = stamp.kind === "poi" && stamp.total > 0 ? `  \xB7  ${stamp.earned} of ${stamp.total}` : "";
+            const textX = cardX + padX + 18 + labelW + 10;
+            ctx.fillText(wrapText(ctx, `${stamp.name}${tally}`, cardX + cardW - padX - textX, 1)[0], textX, top + 13);
+          } });
+        }
         const actions = [
           // Say what happens: 'again' deals another route with these settings,
           // 'route' goes back to setup. "Continue" / "Finish" said neither.
-          { id: "again", key: "ENTER", caption: "Next route" }
+          { id: "again", key: "ENTER", caption: tour && !tour.completed ? "Next stop" : "Next route" }
         ];
         if (compact) actions.push({ id: "route", key: "", caption: "Route setup" });
         if (this._shareUrl) {
@@ -50268,6 +50404,7 @@
       if (!this.routeTo || this.routeTo.id === "home" || isReviewStop(this.routeTo) || !this.landmarks) return null;
       const exactId = this.routeTo.landmarkId || (this.routeTo.id.startsWith("lm-") ? this.routeTo.id.slice(3) : "");
       if (exactId) return this.landmarks.find((landmark) => landmark.id === exactId) ?? null;
+      if (this.routeTo.tourStop) return null;
       const wanted = this._normaliseCanalName(this.routeTo.name);
       const byName = this.landmarks.find(
         (landmark) => this._normaliseCanalName(landmark.name) === wanted

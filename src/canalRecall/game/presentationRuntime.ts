@@ -1440,7 +1440,8 @@ export class GamePresentationRuntime {
         ctx.fillStyle = INK; ctx.font = '800 26px system-ui, sans-serif';
         ctx.fillText(wrapText(ctx, this.routeTo.name, innerW, 1)[0], cardX + padX, top + 42);
         ctx.fillStyle = MUTED; ctx.font = '13px system-ui, sans-serif';
-        ctx.fillText(`${this.routeFrom.name}  →  ${this.routeTo.name}`, cardX + padX, top + 64);
+        // Long tour stop names ran off a phone card.
+        ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  →  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64);
       } });
 
       // The tightest level drops the encyclopedia blurb: the heading already
