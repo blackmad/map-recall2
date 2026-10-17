@@ -1405,6 +1405,8 @@ export class GamePresentationRuntime {
       ? this._explorationSnapshot : null;
     const ribbon = gamey ? this._ribbon : null;
     const landmark = this._finishLandmark();
+    const tour = this._tourArrival || null;
+    const stamp = this._finishStamp || null;
     const image = landmark ? this._landmarkImages?.get(landmark.id) : undefined;
     const hasImage = !!image && image.complete && image.naturalWidth > 0;
 
@@ -1434,22 +1436,24 @@ export class GamePresentationRuntime {
       blocks.push({ height: 74, draw: (top) => {
         ctx.textAlign = 'left';
         ctx.fillStyle = ACCENT; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-        ctx.fillText('ARRIVED', cardX + padX, top + 11);
+        ctx.fillText(tour?.completed ? 'TOUR COMPLETE' : 'ARRIVED', cardX + padX, top + 11);
         ctx.fillStyle = INK; ctx.font = '800 26px system-ui, sans-serif';
         ctx.fillText(wrapText(ctx, this.routeTo.name, innerW, 1)[0], cardX + padX, top + 42);
         ctx.fillStyle = MUTED; ctx.font = '13px system-ui, sans-serif';
-        ctx.fillText(`${this.routeFrom.name}  →  ${this.routeTo.name}`, cardX + padX, top + 64);
+        // Long tour stop names ran off a phone card.
+        ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  →  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64);
       } });
 
       // The tightest level drops the encyclopedia blurb: the heading already
       // names the place, and scaling the card would shrink the touch targets.
-      if (landmark && level < 3) {
+      // A tour stop keeps its sourced "why" line at every level, shortened.
+      if ((landmark && level < 3) || tour) {
         const photo = hasImage ? (level >= 2 ? 64 : 88) : 0;
         const textX = cardX + padX + (hasImage ? photo + 16 : 0);
         const textW = cardX + cardW - padX - textX;
         ctx.font = '12px system-ui, sans-serif';
-        const blurb = wrapText(ctx, this._finishBlurbText(landmark), textW,
-          [hasImage ? 4 : 3, 3, 2][level]);
+        const blurb = wrapText(ctx, tour ? tour.why : this._finishBlurbText(landmark!), textW,
+          tour ? [4, 3, 3, 3][level] : [hasImage ? 4 : 3, 3, 2, 2][level]);
         const height = Math.max(photo, 20 + blurb.length * 17) + 14;
         blocks.push({ height, draw: (top) => {
           if (hasImage && image) {
@@ -1464,8 +1468,14 @@ export class GamePresentationRuntime {
           }
           ctx.textAlign = 'left';
           ctx.fillStyle = MUTED; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-          const kind = String(landmark.type || 'landmark').toUpperCase();
-          ctx.fillText(landmark.wikipediaUrl ? `${kind}  ·  W  WIKIPEDIA` : kind, textX, top + 10);
+          if (tour) {
+            const where = `${tour.title.toUpperCase()}  ·  STOP ${tour.stopIndex + 1} OF ${tour.stopCount}`;
+            const credit = [tour.sourceHost, tour.checked].filter(Boolean).join('  ·  ');
+            ctx.fillText(wrapText(ctx, credit ? `${where}  ·  ${credit.toUpperCase()}` : where, textW, 1)[0], textX, top + 10);
+          } else {
+            const kind = String(landmark!.type || 'landmark').toUpperCase();
+            ctx.fillText(landmark!.wikipediaUrl ? `${kind}  ·  W  WIKIPEDIA` : kind, textX, top + 10);
+          }
           ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
           blurb.forEach((line, index) => ctx.fillText(line, textX, top + 30 + index * 17));
         } });
@@ -1615,6 +1625,28 @@ export class GamePresentationRuntime {
         } });
       }
 
+      // The stamp this arrival earned: one line just above the actions, so the
+      // moment sits low on the card and never covers the road.
+      if (stamp) {
+        blocks.push({ height: 20, draw: (top) => {
+          ctx.textAlign = 'left';
+          const label = stamp.kind === 'tour'
+            ? (stamp.isNew ? 'TOUR STAMP' : 'TOUR STAMP AGAIN')
+            : (stamp.isNew ? 'NEW STAMP' : 'STAMP AGAIN');
+          ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
+          const labelW = ctx.measureText(label).width;
+          ctx.fillStyle = ACCENT;
+          ctx.beginPath();
+          ctx.arc(cardX + padX + 6, top + 9, 6, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillText(label, cardX + padX + 18, top + 13);
+          ctx.fillStyle = INK; ctx.font = '700 13px system-ui, sans-serif';
+          const tally = stamp.kind === 'poi' && stamp.total > 0 ? `  ·  ${stamp.earned} of ${stamp.total}` : '';
+          const textX = cardX + padX + 18 + labelW + 10;
+          ctx.fillText(wrapText(ctx, `${stamp.name}${tally}`, cardX + cardW - padX - textX, 1)[0], textX, top + 13);
+        } });
+      }
+
       // A phone has no ENTER, ESC or C, so the keycaps that document the actions
       // on a keyboard are the actions themselves on touch: full-width buttons
       // with 44 px targets, hit-tested against `_finishButtonBounds`.
@@ -1622,7 +1654,7 @@ export class GamePresentationRuntime {
       const actions: FinishAction[] = [
         // Say what happens: 'again' deals another route with these settings,
         // 'route' goes back to setup. "Continue" / "Finish" said neither.
-        { id: 'again', key: 'ENTER', caption: 'Next route' },
+        { id: 'again', key: 'ENTER', caption: tour && !tour.completed ? 'Next stop' : 'Next route' },
       ];
       // Route setup is a tap target on the phone. The desktop card no longer
       // offers it on ESC (user request 2026-09-28); the pause menu keeps it.
@@ -1771,6 +1803,9 @@ export class GamePresentationRuntime {
     if (!this.routeTo || this.routeTo.id === 'home' || isReviewStop(this.routeTo) || !this.landmarks) return null;
     const exactId = this.routeTo.landmarkId || (this.routeTo.id.startsWith('lm-') ? this.routeTo.id.slice(3) : '');
     if (exactId) return this.landmarks.find(landmark => landmark.id === exactId) ?? null;
+    // A tour stop without a landmark has its own card (the stop's "why");
+    // a nearby landmark's would misname it.
+    if (this.routeTo.tourStop) return null;
     const wanted = this._normaliseCanalName(this.routeTo.name);
     const byName = this.landmarks.find(
       landmark => this._normaliseCanalName(landmark.name) === wanted);

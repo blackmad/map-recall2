@@ -24,6 +24,7 @@ import type { RecallFeature } from '../recallStore';
 import type { NoticeHold, NoticeState } from './landmarkNotice';
 import type { FactIndex } from '../facts/factStore';
 import type { RotationState } from '../facts/factRotation';
+import type { TourArrival } from './tourRoute';
 import type { LatLon } from './recallRules';
 import type { StreetLabelAnchor, StreetLabelCandidates } from './streetLabelCandidates';
 
@@ -230,7 +231,7 @@ export interface RecallHost extends GameCoreHost {
   _factRotation: RotationState;
 
   routeFrom: { id: string; name: string };
-  routeTo: { id: string; name: string; reviewStop?: string; landmarkId?: string };
+  routeTo: { id: string; name: string; reviewStop?: string; landmarkId?: string; tourStop?: boolean; tourRevealName?: string };
   routeOptions: { answerMode: AnswerMode };
   routeDifficulty: RouteDifficulty;
   gameyFeatures: boolean;
@@ -347,6 +348,10 @@ export interface PresentationHost extends GameCoreHost {
   /** Published trivia and what has been told (LandmarkHost owns them); the ARRIVED card draws from the same rotation. */
   _facts: FactIndex;
   _factRotation: RotationState;
+  /** The stamp this arrival earned (game.js, collection/browser.ts), for the card's stamp line. */
+  _finishStamp?: { kind: 'poi' | 'tour'; name: string; isNew: boolean; earned: number; total: number } | null;
+  /** A tour stop's arrival (tourRoute.tourArrival): its "why" line replaces the encyclopedia blurb. */
+  _tourArrival?: TourArrival | null;
   /** The ARRIVED card's text, chosen once per arrival (finishBlurb.ts). */
   _finishBlurb?: { route: unknown; id: string; text: string } | null;
   /** Orbit chase/cockpit by `delta` degrees and persist it (game-route.js). */
@@ -395,7 +400,7 @@ export interface PresentationHost extends GameCoreHost {
   routeOptions: { answerMode: AnswerMode; line: boolean; arrow: boolean; minimap: boolean };
 
   routeFrom: { id: string; name: string };
-  routeTo: { id: string; name: string; reviewStop?: string; landmarkId?: string };
+  routeTo: { id: string; name: string; reviewStop?: string; landmarkId?: string; tourStop?: boolean; tourRevealName?: string };
   routePath: WorldPoint[] | null;
   _liveRoutePath: WorldPoint[] | null;
   /** Length of the route planned at the start — the efficiency reference,

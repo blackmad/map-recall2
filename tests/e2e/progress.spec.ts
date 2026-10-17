@@ -38,9 +38,9 @@ test('a guest sees Sign in everywhere and an empty progress page', async ({ page
   await expect(page.getByTestId('rides-empty').locator('a')).toHaveAttribute('href', '/canal-drive/');
   await expect(page.getByTestId('mastered-canal')).toHaveCount(0);
   await expect(page.locator('#progress-site-switch a[data-site="progress"]')).toHaveAttribute('aria-current', 'page');
-  // The landmark-stamp module is another lane's; until it exists the section stays hidden.
-  const stampsModule = await page.evaluate(() => typeof (window as { CanalCollection?: unknown }).CanalCollection);
-  if (stampsModule === 'undefined') await expect(page.getByTestId('stamps')).toHaveCount(0);
+  // Landmark stamps read the ride's storage; a guest with none sees the empty rack.
+  await expect(page.getByTestId('stamps')).toContainText(/0 of \d+ collected/);
+  await expect(page.getByTestId('stamp-token')).toHaveCount(0);
   await screenshotBoth(page, 'guest-empty');
 
   await page.setViewportSize({ width: 1440, height: 900 });

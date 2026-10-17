@@ -159,7 +159,7 @@ export function recordStamp(stamps: StampMap, event: StampEvent, now = Date.now(
 }
 
 /** Earned out of the pool, overall and per tier. Tour stamps are not in the pool. */
-export function stampProgress(stamps: StampMap, pool: readonly CollectiblePoi[]): StampProgress {
+export function stampProgress<P extends Pick<CollectiblePoi, 'id' | 'tier'>>(stamps: StampMap, pool: readonly P[]): StampProgress {
   const progress: StampProgress = {
     earned: 0, total: pool.length,
     byTier: { alist: { earned: 0, total: 0 }, other: { earned: 0, total: 0 } },
@@ -243,6 +243,43 @@ export function saveStamps(storage: StorageLike | null | undefined, stamps: Stam
     return true;
   } catch {
     return false;
+  }
+}
+
+// ---- The pool the ride used, for pages that cannot rebuild it ----
+
+/**
+ * The ride counts stamps against its manual-POI-merged destination pool
+ * (setPool); rebuilding that pool needs the ~850 kB manual catalogue. The ride
+ * keeps the pool's ids and tiers here so My progress shows the same "n of N".
+ */
+export const POI_STAMP_POOL_STORAGE_KEY = 'canalRecall.poiStampPool.v1';
+
+export type PoolEntry = Pick<CollectiblePoi, 'id' | 'tier'>;
+
+export function savePoolSnapshot(storage: StorageLike | null | undefined, pool: readonly PoolEntry[]): boolean {
+  try {
+    if (!storage || !pool.length) return false;
+    storage.setItem(POI_STAMP_POOL_STORAGE_KEY, JSON.stringify(pool.map(poi => [poi.id, poi.tier === 'alist' ? 1 : 0])));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function loadPoolSnapshot(storage: StorageLike | null | undefined): PoolEntry[] | null {
+  try {
+    const raw = storage?.getItem(POI_STAMP_POOL_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) as unknown : null;
+    if (!Array.isArray(parsed) || !parsed.length) return null;
+    const out: PoolEntry[] = [];
+    for (const entry of parsed) {
+      if (!Array.isArray(entry) || typeof entry[0] !== 'string') return null;
+      out.push({ id: entry[0], tier: entry[1] === 1 ? 'alist' : 'other' });
+    }
+    return out;
+  } catch {
+    return null;
   }
 }
 

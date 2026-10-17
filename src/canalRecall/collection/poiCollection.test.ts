@@ -17,9 +17,12 @@ import {
   stampProgress,
   stampsToUpload,
   toStampDoc,
+  loadPoolSnapshot,
+  savePoolSnapshot,
   type CollectibleFeature,
   type StampMap,
 } from './poiCollection.ts';
+import { mergeIntoStorage, saveStamp, syncStamps, type StampFirestoreApi } from './stampSync.ts';
 
 function memoryStorage() {
   const map = new Map<string, string>();
@@ -134,4 +137,63 @@ test('cloud docs carry the schema version and come back sanitised', () => {
   assert.equal(doc.schemaVersion, 1);
   assert.deepEqual(fromStampDocs([doc, { nope: true }, null]), { x: record });
   assert.equal(sanitiseStamp({ ...record, count: -3 })?.count, 1);
+});
+
+test('the ride keeps its pool for My progress, which counts against the same total', () => {
+  const storage = memoryStorage();
+  assert.equal(loadPoolSnapshot(storage), null);
+  const pool = [{ id: 'a', tier: 'alist' as const }, { id: 'b', tier: 'other' as const }];
+  assert.equal(savePoolSnapshot(storage, pool), true);
+  assert.deepEqual(loadPoolSnapshot(storage), pool);
+  const stamps: StampMap = { a: { id: 'a', kind: 'poi', name: 'A', firstEarnedAt: 1, lastEarnedAt: 1, how: 'arrived', count: 1 } };
+  assert.deepEqual(stampProgress(stamps, loadPoolSnapshot(storage)!), {
+    earned: 1, total: 2, byTier: { alist: { earned: 1, total: 1 }, other: { earned: 0, total: 1 } },
+  });
+  storage.setItem('canalRecall.poiStampPool.v1', '{"broken"');
+  assert.equal(loadPoolSnapshot(storage), null);
+  assert.equal(savePoolSnapshot(null, pool), false);
+});
+
+/** An in-memory stand-in for the four Firestore calls stampSync uses. */
+function fakeFirestore(initial: Record<string, unknown> = {}) {
+  const docs = new Map<string, unknown>(Object.entries(initial).map(([id, data]) => [`users/u1/poiStamps/${id}`, data]));
+  let commits = 0;
+  const api: StampFirestoreApi<string> = {
+    collection: (_db, ...path) => path.join('/'),
+    doc: (_db, ...path) => path.join('/'),
+    getDocs: (async (path: string) => ({
+      docs: [...docs].filter(([key]) => key.startsWith(`${path}/`)).map(([, data]) => ({ data: () => data })),
+    })) as never,
+    writeBatch: () => {
+      const pending: [string, unknown][] = [];
+      return {
+        set: ((ref: string, data: unknown) => { pending.push([ref, data]); }) as never,
+        commit: async () => { commits++; for (const [ref, data] of pending) docs.set(ref, data); },
+      };
+    },
+  };
+  return { api, docs, commits: () => commits };
+}
+
+test('sign-in merges cloud and device stamps and uploads only what the cloud lacks', async () => {
+  const storage = memoryStorage();
+  const local: StampMap = {
+    a: { id: 'a', kind: 'poi', name: 'A', firstEarnedAt: 10, lastEarnedAt: 50, how: 'arrived', count: 2 },
+    same: { id: 'same', kind: 'poi', name: 'Same', firstEarnedAt: 5, lastEarnedAt: 5, how: 'arrived', count: 1 },
+  };
+  saveStamps(storage, local);
+  const cloud = fakeFirestore({
+    a: toStampDoc({ id: 'a', kind: 'poi', name: 'A', firstEarnedAt: 5, lastEarnedAt: 20, how: 'named', count: 1 }),
+    same: toStampDoc(local.same),
+    'tour:t': toStampDoc({ id: 'tour:t', kind: 'tour', name: 'T', firstEarnedAt: 7, lastEarnedAt: 7, how: 'completed', count: 1 }),
+  });
+  const { merged, uploaded } = await syncStamps({ db: 'db', api: cloud.api, uid: 'u1' }, mergeIntoStorage(storage));
+  assert.deepEqual(merged.map(r => r.id).sort(), ['a', 'same', 'tour:t']);
+  assert.equal(uploaded, 1, 'only a changed; same is identical and tour:t came from the cloud');
+  assert.deepEqual(cloud.docs.get('users/u1/poiStamps/a'), toStampDoc({ id: 'a', kind: 'poi', name: 'A', firstEarnedAt: 5, lastEarnedAt: 50, how: 'arrived', count: 2 }));
+  assert.ok(loadStamps(storage)['tour:t'], 'cloud stamps land on the device');
+
+  await saveStamp({ db: 'db', api: cloud.api, uid: 'u1' }, { id: 'b', kind: 'poi', name: 'B', firstEarnedAt: 60, lastEarnedAt: 60, how: 'arrived', count: 1 });
+  assert.deepEqual(Object.keys(cloud.docs.get('users/u1/poiStamps/b') as object).sort(),
+    ['count', 'firstEarnedAt', 'how', 'id', 'kind', 'lastEarnedAt', 'name', 'schemaVersion'], 'exactly the fields the rules allow');
 });

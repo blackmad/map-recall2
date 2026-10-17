@@ -19,6 +19,9 @@ import { belongsToKnowledgeItem } from './knowledgeReview';
 import { scheduleExposure } from './recallExposure';
 import { canalFirebase, type CanalFirebase } from './firebaseShared';
 import { loadRouteHistory, mergeHistories, saveRouteHistory, toCloudDoc, type RideRecord } from './routeHistory';
+import { saveStamp, syncStamps, type StampCloud } from './collection/stampSync';
+import type { StampRecord } from './collection/poiCollection';
+import type { CanalCollectionApi } from './collection/browser';
 
 export { RECALL_LOCAL_RADIUS_METERS, RECALL_CHUNK_METERS } from './recallChunks';
 
@@ -155,7 +158,13 @@ class RecallStore {
         if (this.uid) {
           void this.pull().finally(() => this.markHistoryReady());
           void this.syncRides();
+          void this.syncStamps();
         } else this.markHistoryReady();
+      });
+      // Every stamp the ride records (collection/browser.ts) is mirrored while signed in.
+      window.addEventListener('canal-stamp-recorded', (event) => {
+        const record = (event as CustomEvent<{ record?: StampRecord }>).detail?.record;
+        if (record) void this.saveStampRecord(record);
       });
     } catch (reason) {
       console.warn('Canal Recall progress is local only:', reason);
@@ -507,6 +516,39 @@ class RecallStore {
     } catch (reason) {
       console.warn('Could not sync ride history:', reason);
       return false;
+    }
+  }
+
+  // ---- POI stamps (collection/poiCollection.ts) ----
+
+  private stampCloud(): StampCloud | null {
+    if (!this.uid || !this.db || !this.fb) return null;
+    return { db: this.db, api: this.fb.firestoreApi as unknown as StampCloud['api'], uid: this.uid };
+  }
+
+  /** Mirror one stamp to `users/{uid}/poiStamps/{id}`; a no-op for guests. */
+  async saveStampRecord(record: StampRecord): Promise<boolean> {
+    const cloud = this.stampCloud();
+    if (!cloud) return false;
+    try {
+      await saveStamp(cloud, record);
+      return true;
+    } catch (reason) {
+      console.warn('Could not sync landmark stamps:', reason);
+      return false;
+    }
+  }
+
+  /** On sign-in: merge cloud stamps into the ride's collection and push what the cloud lacks. */
+  private async syncStamps(): Promise<void> {
+    const collection = (window as unknown as { CanalCollection?: CanalCollectionApi }).CanalCollection;
+    const cloud = this.stampCloud();
+    if (!collection || !cloud) return;
+    try {
+      await syncStamps(cloud, remote => collection.merge(remote));
+      window.dispatchEvent(new CustomEvent('canal-stamps-synced'));
+    } catch (reason) {
+      console.warn('Could not sync landmark stamps:', reason);
     }
   }
 

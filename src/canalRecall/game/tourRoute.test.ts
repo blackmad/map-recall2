@@ -13,8 +13,14 @@ import {
   tourLegs,
   tourProgressLabel,
   withinLegCap,
+  stopNameSpoils,
+  tourDestination,
+  tourArrival,
+  tourCheckedLabel,
+  tourFromSearch,
   type Tour,
 } from './tourRoute.ts';
+import { readFileSync } from 'node:fs';
 
 const stop = (name: string, lng: number, lat: number, landmarkId?: string) => ({
   name, lngLat: [lng, lat] as [number, number], why: `${name}.`, source: 'https://example.org', ...(landmarkId ? { landmarkId } : {}),
@@ -73,4 +79,40 @@ test('stops become route POIs; landmark stops reuse the extract id', () => {
   assert.deepEqual(stopAsRoutePoi(tour, 0), { id: 'lm-lm1', name: 'A', lat: 52.37, lng: 4.89, landmarkId: 'lm1' });
   assert.deepEqual(stopAsRoutePoi(tour, 1), { id: 'tour-t-1', name: 'B', lat: 52.37, lng: 4.90 });
   assert.equal(stopAsRoutePoi(tour, 9), null);
+});
+
+test('stop names that answer a street question stay hidden until arrival', () => {
+  const data = JSON.parse(readFileSync('public/data/extracts/amsterdam/tours.json', 'utf8')) as { tours: Tour[] };
+  const byName = new Map(data.tours.flatMap(t => t.stops.map((s, i) => [s.name, { t, i }] as const)));
+  for (const name of ['Golden Bend', 'Jodenbreestraat', 'Magere Brug', 'Albert Cuypmarkt', 'Waterlooplein', 'Noordermarkt', 'Bloemenmarkt', 'Dappermarkt']) {
+    const hit = byName.get(name);
+    assert.ok(hit, `${name} is a stop`);
+    assert.equal(stopNameSpoils(hit.t.stops[hit.i]), true, `${name} is hidden`);
+    const dest = tourDestination(hit.t, hit.i)!;
+    assert.equal(dest.tourRevealName, name);
+    assert.ok(!dest.name.includes(name), `${name} not in "${dest.name}"`);
+    assert.match(dest.name, new RegExp(`^${hit.t.title}, stop ${hit.i + 1} of ${hit.t.stops.length}$`));
+  }
+  for (const name of ['Rijksmuseum', 'Westerkerk', 'Schreierstoren', 'Café Hoppe']) {
+    const hit = byName.get(name)!;
+    const dest = tourDestination(hit.t, hit.i)!;
+    assert.equal(dest.name, name);
+    assert.equal(dest.tourRevealName, undefined);
+    assert.equal(dest.tourStop, true);
+  }
+});
+
+test('the arrival card, the checked date and ?tour= links', () => {
+  const food: Tour = { ...tour, volatile: true, checkedAt: '2026-10-17' };
+  assert.equal(tourCheckedLabel(food), 'checked 2026-10-17');
+  assert.equal(tourCheckedLabel(tour), null);
+  const arrival = tourArrival(food, 1, false)!;
+  assert.deepEqual(
+    { name: arrival.name, why: arrival.why, host: arrival.sourceHost, checked: arrival.checked, of: arrival.stopCount },
+    { name: 'B', why: 'B.', host: 'example.org', checked: 'checked 2026-10-17', of: 3 },
+  );
+  assert.equal(tourArrival(tour, 9, false), null);
+  assert.equal(tourFromSearch('?tour=t', [tour])?.id, 't');
+  assert.equal(tourFromSearch('?tour=nope', [tour]), null);
+  assert.equal(tourFromSearch('', [tour]), null);
 });

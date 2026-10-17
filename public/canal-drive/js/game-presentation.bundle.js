@@ -50040,6 +50040,8 @@
       const exploration = this._explorationSnapshot && this._explorationSnapshot.totalRoutes > 0 ? this._explorationSnapshot : null;
       const ribbon = gamey ? this._ribbon : null;
       const landmark = this._finishLandmark();
+      const tour = this._tourArrival || null;
+      const stamp = this._finishStamp || null;
       const image = landmark ? this._landmarkImages?.get(landmark.id) : void 0;
       const hasImage = !!image && image.complete && image.naturalWidth > 0;
       const rule = (y2) => {
@@ -50062,24 +50064,24 @@
           ctx.textAlign = "left";
           ctx.fillStyle = ACCENT;
           ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-          ctx.fillText("ARRIVED", cardX + padX, top + 11);
+          ctx.fillText(tour?.completed ? "TOUR COMPLETE" : "ARRIVED", cardX + padX, top + 11);
           ctx.fillStyle = INK;
           ctx.font = "800 26px system-ui, sans-serif";
           ctx.fillText(wrapText(ctx, this.routeTo.name, innerW, 1)[0], cardX + padX, top + 42);
           ctx.fillStyle = MUTED;
           ctx.font = "13px system-ui, sans-serif";
-          ctx.fillText(`${this.routeFrom.name}  \u2192  ${this.routeTo.name}`, cardX + padX, top + 64);
+          ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  \u2192  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64);
         } });
-        if (landmark && level2 < 3) {
+        if (landmark && level2 < 3 || tour) {
           const photo = hasImage ? level2 >= 2 ? 64 : 88 : 0;
           const textX = cardX + padX + (hasImage ? photo + 16 : 0);
           const textW = cardX + cardW - padX - textX;
           ctx.font = "12px system-ui, sans-serif";
           const blurb = wrapText(
             ctx,
-            this._finishBlurbText(landmark),
+            tour ? tour.why : this._finishBlurbText(landmark),
             textW,
-            [hasImage ? 4 : 3, 3, 2][level2]
+            tour ? [4, 3, 3, 3][level2] : [hasImage ? 4 : 3, 3, 2, 2][level2]
           );
           const height = Math.max(photo, 20 + blurb.length * 17) + 14;
           blocks2.push({ height, draw: (top) => {
@@ -50105,8 +50107,14 @@
             ctx.textAlign = "left";
             ctx.fillStyle = MUTED;
             ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-            const kind = String(landmark.type || "landmark").toUpperCase();
-            ctx.fillText(landmark.wikipediaUrl ? `${kind}  \xB7  W  WIKIPEDIA` : kind, textX, top + 10);
+            if (tour) {
+              const where = `${tour.title.toUpperCase()}  \xB7  STOP ${tour.stopIndex + 1} OF ${tour.stopCount}`;
+              const credit = [tour.sourceHost, tour.checked].filter(Boolean).join("  \xB7  ");
+              ctx.fillText(wrapText(ctx, credit ? `${where}  \xB7  ${credit.toUpperCase()}` : where, textW, 1)[0], textX, top + 10);
+            } else {
+              const kind = String(landmark.type || "landmark").toUpperCase();
+              ctx.fillText(landmark.wikipediaUrl ? `${kind}  \xB7  W  WIKIPEDIA` : kind, textX, top + 10);
+            }
             ctx.fillStyle = BODY;
             ctx.font = "12px system-ui, sans-serif";
             blurb.forEach((line, index) => ctx.fillText(line, textX, top + 30 + index * 17));
@@ -50235,10 +50243,28 @@
             ctx.fillText(bestText, cardX + padX, top + 14);
           } });
         }
+        if (stamp) {
+          blocks2.push({ height: 20, draw: (top) => {
+            ctx.textAlign = "left";
+            const label = stamp.kind === "tour" ? stamp.isNew ? "TOUR STAMP" : "TOUR STAMP AGAIN" : stamp.isNew ? "NEW STAMP" : "STAMP AGAIN";
+            ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
+            const labelW = ctx.measureText(label).width;
+            ctx.fillStyle = ACCENT;
+            ctx.beginPath();
+            ctx.arc(cardX + padX + 6, top + 9, 6, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillText(label, cardX + padX + 18, top + 13);
+            ctx.fillStyle = INK;
+            ctx.font = "700 13px system-ui, sans-serif";
+            const tally = stamp.kind === "poi" && stamp.total > 0 ? `  \xB7  ${stamp.earned} of ${stamp.total}` : "";
+            const textX = cardX + padX + 18 + labelW + 10;
+            ctx.fillText(wrapText(ctx, `${stamp.name}${tally}`, cardX + cardW - padX - textX, 1)[0], textX, top + 13);
+          } });
+        }
         const actions = [
           // Say what happens: 'again' deals another route with these settings,
           // 'route' goes back to setup. "Continue" / "Finish" said neither.
-          { id: "again", key: "ENTER", caption: "Next route" }
+          { id: "again", key: "ENTER", caption: tour && !tour.completed ? "Next stop" : "Next route" }
         ];
         if (compact) actions.push({ id: "route", key: "", caption: "Route setup" });
         if (this._shareUrl) {
@@ -50378,6 +50404,7 @@
       if (!this.routeTo || this.routeTo.id === "home" || isReviewStop(this.routeTo) || !this.landmarks) return null;
       const exactId = this.routeTo.landmarkId || (this.routeTo.id.startsWith("lm-") ? this.routeTo.id.slice(3) : "");
       if (exactId) return this.landmarks.find((landmark) => landmark.id === exactId) ?? null;
+      if (this.routeTo.tourStop) return null;
       const wanted = this._normaliseCanalName(this.routeTo.name);
       const byName = this.landmarks.find(
         (landmark) => this._normaliseCanalName(landmark.name) === wanted
