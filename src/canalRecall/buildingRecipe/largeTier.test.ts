@@ -746,8 +746,8 @@ test('measured groups export their wall, arch-ring and own glass slots with tint
   };
   // Houthavenkade: the balcony columns' own reflective glass (columns.glass) is measured; the punched windows keep the kit glass (the photo's pane glass reads no darker than the brick).
   assert.deepEqual(tinted('houthavenkade-26-247232'), ['glass/glass@g0c', 'glass/glass@g1c', 'wall/wall@g0', 'wall/wall@g1', 'wall/wall@g3', 'wall/wall@g4']);
-  // The glazed hall's measured dark grey-blue glass reaches the look (look/palette.ts `cityMeasuredGlassTint`); the kit glass of unmeasured groups does not.
-  assert.deepEqual(tinted('apollolaan-4-134507'), ['glass/glass@g0', 'wall/wall@g0', 'wall/wall@g1']);
+  // The glazed hall's measured dark grey-blue glass reaches the look (look/palette.ts `cityMeasuredGlassTint`); the kit glass of unmeasured groups does not. Its white membrane roof is measured from the orthophoto (roof.flatHex).
+  assert.deepEqual(tinted('apollolaan-4-134507'), ['glass/glass@g0', 'roof/flat', 'wall/wall@g0', 'wall/wall@g1']);
   assert.ok(tinted('waagdragerhof-198-118320').includes('wall/arch@g3'));
   assert.deepEqual(tinted('politie-west-overtoomsesluis'), []);
 });

@@ -874,6 +874,13 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   start varies between runs (async loading consumes `Math.random` in a
   varying order), so any spec that depends on the start position is flaky;
   pin starts (as the Reestraat corridor test now does) or seed a private RNG.
+- **Measured flat roofs, next** (2026-10-17, HISTORY "The De Hallen slab was
+  Kinkerstraat 89–105"): `roof-flat.ts --write` and reinstall for
+  stadsloket-west, reade and hamerkanaal-175 (roof/wall dE ~11.6–11.8);
+  Kinkerstraat 89–105 courtyard faces still blank tan (no photo); kit gaps on
+  its Tollensstraat front: open ground passage with round columns, yellow
+  glazed entrance, curved cantilevered balconies, loggias; Polderweg 3 walls
+  fail the tightened likeness gate (walls[1] no photo, walls[2] 52.9° crop).
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
