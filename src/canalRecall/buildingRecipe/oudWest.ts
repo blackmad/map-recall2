@@ -174,10 +174,23 @@ export function paintStoreys(group: T.Group, intent: CanalHouseIntent): number {
   let painted = 0;
   for (const f of intent.fronts) {
     const facade = group.getObjectByName(`elevation/${f.id}`);
-    if (!f.paintedStoreys || !facade) continue;
-    let paint: T.Material | null = null;
+    if (!(f.paintedStoreys || f.renderedGable) || !facade) continue;
+    let paint: T.Material | null = null, render: T.Material | null = null, board: T.Material | null = null;
     facade.traverse(o => {
-      if (!(o instanceof T.Mesh) || Array.isArray(o.material) || !/(?:^|\/)facadeDetail\/bands\/painted-storey-s\d+\//.test(o.name)) return;
+      if (!(o instanceof T.Mesh) || Array.isArray(o.material)) return;
+      // `renderedGable`: the crown face (not its edges, cap or wings) in the render colour.
+      if (f.renderedGable && /(?:^|\/)crown\/(?!edge$|cap-|wing-)[^/]+$/.test(o.name)) {
+        if (!render) { const c = (o.material as T.MeshStandardMaterial).clone(); c.color.set(f.renderedGable.colour); c.userData = {...o.material.userData, tintSource: 'measured'}; render = c; }
+        o.material = render; painted++;
+        return;
+      }
+      // Its bargeboards (bargeboards.ts) in the front's trim colour.
+      if (f.renderedGable && /(?:^|\/)ornament\/bargeboard-\d+\/field$/.test(o.name)) {
+        if (!board) { const c = (o.material as T.MeshStandardMaterial).clone(); c.color.set(f.palette?.frame ?? intent.palette.frame); c.userData = {...o.material.userData, tintSource: 'measured'}; board = c; }
+        o.material = board; painted++;
+        return;
+      }
+      if (!f.paintedStoreys || !/(?:^|\/)facadeDetail\/bands\/painted-storey-s\d+\//.test(o.name)) return;
       if (!paint) { const c = (o.material as T.MeshStandardMaterial).clone(); c.color.set(f.paintedStoreys!.colour); c.userData = {...o.material.userData, tintSource: 'measured'}; paint = c; }
       o.material = paint; painted++;
     });
@@ -188,7 +201,7 @@ export function paintStoreys(group: T.Group, intent: CanalHouseIntent): number {
 /** Every Oud-West pass, or null when the house uses none of the set (nothing is touched). */
 export function applyOudWest(group: T.Group, intent: CanalHouseIntent, recipe: CanalHouseRecipe, fit: FitReport) {
   const painted = intent.palette.wallMaterial === 'painted-brick' || intent.palette.wallTint === 'measured', paintedStone = intent.palette.stoneMaterial === 'painted';
-  const storeys = intent.fronts.some(f => f.paintedStoreys);
+  const storeys = intent.fronts.some(f => f.paintedStoreys || f.renderedGable);
   if (!painted && !paintedStone && !storeys && !fit.fronts.some(f => f.timberBalconies?.length || f.erker?.finish)) return null;
   const dark = painted && intent.fronts.some(f => f.windowHead?.tympanum === 'dark');
   // Painted storeys first: their own measured paint, which the whole-wall mark below then leaves alone.

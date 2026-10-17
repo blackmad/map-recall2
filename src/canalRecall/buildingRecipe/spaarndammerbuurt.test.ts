@@ -13,6 +13,7 @@ import {compileBuilding} from './compile.ts';
 import {fitIntent} from './fit.ts';
 import {validateIntent, type CanalHouseIntent, type FrontIntent} from './intent.ts';
 import {brickStripeBlocks, mirrorStripeZone} from './brickStripes.ts';
+import {bargeboardOrnaments} from './bargeboards.ts';
 import {mirrorFront, resolvePlacement} from '../blockFace/houseType.ts';
 import {defaultTypeLoader} from '../blockFace/typeLibrary.ts';
 
@@ -140,4 +141,39 @@ test('without the keys: the fit is unchanged', () => {
   const pol = house('polanen-1935-white-attic', POLANEN, 'Polanenstraat', f => { delete f.doorArch; });
   const door = fitIntent(pol, factsOf('polanen-181-331', POLANEN)).recipe.elevations[0].openings.value.find(o => o.id === 'door')!;
   assert.equal(door.head, undefined);
+});
+
+test('renderedGable: the Zaanhof crown painted white, two bargeboards inside its raking edges in the frame colour', async () => {
+  const pand = '0363100012146841', facts = factsOf('zaanhof-1-20', pand);
+  const intent = house('zaanhof-1919-white-gable', pand, 'Zaanhof');
+  const {recipe} = fitIntent(intent, facts), e = recipe.elevations[0];
+  const boards = e.ornaments!.value.filter(o => o.id.startsWith('bargeboard-'));
+  assert.equal(boards.length, 2);
+  const crown = e.crown!.value.profile, apex = Math.max(...crown.map(p => p[1])), eaves = Math.min(...crown.map(p => p[1]));
+  for (const b of boards) {
+    assert.equal(b.fill, 'wall');
+    for (const [x, y] of b.profile) { assert.ok(y >= eaves - 1e-6 && y <= apex + 1e-6, `inside the gable: ${y}`); assert.ok(x >= 0.06 - 1e-6, `clear of the end: ${x}`); }
+  }
+  const built = await compileBuilding(intent, facts);
+  const face = meshes(built.group, /(?:^|\/)crown\/punt$/), board = meshes(built.group, /ornament\/bargeboard-0\/field$/);
+  assert.equal((face[0].material as T.MeshStandardMaterial).color.getHexString(), 'f2efe6');
+  assert.equal((board[0].material as T.MeshStandardMaterial).color.getHexString(), 'd8aa3c');
+  assert.throws(() => house('zaanhof-1919-white-gable', pand, 'Zaanhof', f => { f.renderedGable = {bargeboard: 0.5, colour: '#ffffff'}; }), /renderedGable/);
+  assert.throws(() => house('zaanhof-1919-white-gable', pand, 'Zaanhof', f => { f.renderedGable = {bargeboard: 0.2} as never; }), /renderedGable/);
+  // Without the key: no boards.
+  const plain = fitIntent(house('zaanhof-1919-white-gable', pand, 'Zaanhof', f => { delete f.renderedGable; }), facts);
+  assert.ok(!(plain.recipe.elevations[0].ornaments?.value ?? []).some(o => o.id.startsWith('bargeboard-')));
+});
+
+test('bargeboardOrnaments: raking edges only, cut level at the eaves', () => {
+  const step = bargeboardOrnaments([[0, 8], [1, 8], [1, 9], [3, 11], [5, 9], [5, 8], [6, 8]], 8, 0.2, 6);
+  assert.equal(step.length, 2);
+  assert.ok(step.every(b => b.profile.every(([, y]) => y >= 8)));
+  assert.equal(bargeboardOrnaments([[0, 8], [6, 8]], 8, 0.2, 6).length, 0);
+});
+
+test('paintedStoreys.from: a Zaanhof render line 3.3 m up the storey validates; past 4 m it does not', () => {
+  const pand = '0363100012146841';
+  assert.equal(house('zaanhof-1919-white-gable', pand, 'Zaanhof').fronts[0].paintedStoreys?.from, 3.3);
+  assert.throws(() => house('zaanhof-1919-white-gable', pand, 'Zaanhof', f => { f.paintedStoreys = {...f.paintedStoreys!, from: 4.5}; }), /paintedStoreys/);
 });

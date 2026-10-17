@@ -36,7 +36,7 @@ test('validation: storeyWindowWidths keys, range and the storeys it may not shar
   assert.doesNotThrow(front({storeyWindowWidths: {last: 0.6}}));
   const white = house('indisch-1926-white-attic', GOR, 'Gorontalostraat');
   const wf = (patch: Record<string, unknown>) => () => validateIntent({...white, fronts: white.fronts.map(f => ({...f, ...patch}))} as CanalHouseIntent);
-  assert.throws(wf({paintedStoreys: {storeys: [3], colour: '#e8eae4', from: 3}}), /paintedStoreys.from/);
+  assert.throws(wf({paintedStoreys: {storeys: [3], colour: '#e8eae4', from: 4.5}}), /paintedStoreys.from/);
   assert.throws(wf({paintedStoreys: {storeys: [3], colour: '#e8eae4', at: 1}}), /paintedStoreys: \{storeys, colour, from\?\}/);
 });
 
