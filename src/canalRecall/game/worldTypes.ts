@@ -78,6 +78,14 @@ export interface Landmark extends LandmarkNotice {
   wikipedia: string;
   extractLang: string;
   geojson: GeoJsonFeatureCollection;
+  /** 60-day Wikipedia pageviews of the linked article (missing = unknown). */
+  wikipediaPageviews60d?: number;
+  /** Number of Wikipedia language sitelinks. */
+  wikidataSitelinks?: number;
+  /** Wikidata P1435 heritage-designation Q-ids (rijksmonument, UNESCO, …). */
+  heritage?: string[];
+  /** Wikidata P31 instance-of Q-ids, used for destination-kind weighting. */
+  wikidataInstanceOf?: string[];
   /** Building-tile ids this landmark is, from `landmark-buildings.json`. Empty
    *  when it has no building; absent when the city has no resolved file. */
   buildingIds?: string[];

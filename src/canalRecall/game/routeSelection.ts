@@ -7,13 +7,18 @@
 // setup screen is built out of, so they live here rather than in the form.
 
 import type { WorldPoint } from './worldTypes';
-import { isWorthACard } from './landmarkData';
+import {
+  notabilityFameFactor,
+  notabilityScore,
+  notabilityWeight,
+  type PoiNotability,
+} from './poiNotability';
 export { mergeManualPoiFeatures, manualPoiForCuratedId } from './manualPoiCatalog';
 
 import { HOME_RECENT_WINDOW } from './recentDestinations';
 export * from './recentDestinations';
 
-export interface RoutePoi {
+export interface RoutePoi extends PoiNotability {
   id: string;
   name: string;
   lat: number;
@@ -25,6 +30,8 @@ export interface RoutePoi {
 export interface RouteDestinationFeature {
   funFact?: string;
   wikipediaExtract?: string;
+  /** Set to 'wikidata-description' when the blurb is only a thin Wikidata one-liner. */
+  wikipediaExtractSource?: string;
   wikipediaImageUrl?: string;
   wikipediaUrl?: string;
 }
@@ -33,14 +40,17 @@ export interface RouteDestinationFeature {
  * A route destination has to teach something when the player reaches it.
  *
  * This deliberately uses the same content floor as drive-by landmark cards:
- * a name and OSM category alone are not a reward for completing a route.
+ * a name and OSM category alone are not a reward for completing a route. A
+ * thin Wikidata description — the one-line fallback written when no real
+ * article exists — is not enough on its own: it must be backed by an image or
+ * a real article to be worth an arrival card.
  */
 export function isTeachableRouteDestination(feature: RouteDestinationFeature): boolean {
-  return isWorthACard({
-    detail: feature.funFact || feature.wikipediaExtract,
-    imageUrl: feature.wikipediaImageUrl,
-    wikipediaUrl: feature.wikipediaUrl,
-  });
+  const thin = feature.wikipediaExtractSource === 'wikidata-description';
+  const realText = !!(feature.funFact || (feature.wikipediaExtract && !thin));
+  const image = !!feature.wikipediaImageUrl;
+  const realArticle = !!feature.wikipediaUrl && !thin;
+  return realText || image || realArticle;
 }
 
 /**
@@ -96,6 +106,26 @@ export type ChooseIndex = (count: number) => number;
 
 export const randomIndex: ChooseIndex = count => Math.floor(Math.random() * count);
 
+/** Injected so weighted picks stay deterministic under test. */
+export type ChooseUnit = () => number;
+
+export const randomUnit: ChooseUnit = () => Math.random();
+
+function pickWeighted<T>(
+  entries: readonly { item: T; weight: number }[],
+  chooseUnit: ChooseUnit,
+): T | null {
+  const positive = entries.filter(entry => entry.weight > 0);
+  if (positive.length === 0) return null;
+  const total = positive.reduce((sum, entry) => sum + entry.weight, 0);
+  let tick = chooseUnit() * total;
+  for (const entry of positive) {
+    tick -= entry.weight;
+    if (tick <= 0) return entry.item;
+  }
+  return positive[positive.length - 1]?.item ?? null;
+}
+
 /**
  * A destination for a trip starting at `from`.
  *
@@ -103,18 +133,27 @@ export const randomIndex: ChooseIndex = count => Math.floor(Math.random() * coun
  * rather than returning nothing: a start with no near neighbour should still
  * produce a trip, and the loader's own window check is what ultimately rejects
  * an impossible pair.
+ *
+ * Weighted by notability so the more recognisable landmarks come up more
+ * often, with an exponential temperature that keeps some variety in the mix.
+ * A bare POI with no enrichment still gets a stable baseline weight, so this
+ * degrades to a uniform pick.
  */
 export function pickDestinationNear(
   pois: readonly RoutePoi[],
   from: { id: string; lat: number; lng: number },
-  chooseIndex: ChooseIndex = randomIndex,
+  chooseUnit: ChooseUnit = randomUnit,
   alsoExcludeId: string | null = null,
 ): RoutePoi | null {
   const candidates = pois.filter(poi => poi.id !== from.id && poi.id !== alsoExcludeId);
   if (candidates.length === 0) return null;
   const inRange = candidates.filter(poi => kmBetween(poi, from) <= ROUTE_POI_MAX_PAIR_KM);
   const pool = inRange.length > 0 ? inRange : candidates;
-  return pool[chooseIndex(pool.length)] ?? null;
+  const scored = pool.map(poi => ({
+    item: poi,
+    weight: notabilityWeight(notabilityScore(poi)),
+  }));
+  return pickWeighted(scored, chooseUnit);
 }
 
 /**
@@ -166,27 +205,10 @@ export function scoreHomeDestination(
   // likelier and let a favourite dominate).
   const closeness = 1 / (1.2 + km);
   const novelty = 1 - localFamiliarity(poi, samples);
-  return closeness * (0.35 + 0.65 * novelty);
-}
-
-/** Injected so weighted home picks stay deterministic under test. */
-export type ChooseUnit = () => number;
-
-export const randomUnit: ChooseUnit = () => Math.random();
-
-function pickWeighted<T>(
-  entries: readonly { item: T; weight: number }[],
-  chooseUnit: ChooseUnit,
-): T | null {
-  const positive = entries.filter(entry => entry.weight > 0);
-  if (positive.length === 0) return null;
-  const total = positive.reduce((sum, entry) => sum + entry.weight, 0);
-  let tick = chooseUnit() * total;
-  for (const entry of positive) {
-    tick -= entry.weight;
-    if (tick <= 0) return entry.item;
-  }
-  return positive[positive.length - 1]?.item ?? null;
+  // Notability nudges the pick toward the landmarks worth learning, bounded
+  // so a favourite cannot dominate the ring the way the old 220 floor did.
+  const fame = notabilityFameFactor(poi);
+  return closeness * (0.35 + 0.65 * novelty) * fame;
 }
 
 /** Recent ids resolved to the pool's landmarks (null when not in the pool). */
@@ -280,11 +302,10 @@ export function pickHomeDestination(
     return pickHomeDestination(pois, home, samples, chooseUnit, alsoExcludeId, recentIds.slice(0, 1), from);
   }
 
-  const chooseIndex: ChooseIndex = count => Math.min(count - 1, Math.floor(chooseUnit() * count));
   const fallback = pickDestinationNear(
     pois,
     from ? { id: alsoExcludeId ?? homeId, lat: from.lat, lng: from.lng } : { id: homeId, lat: home.lat, lng: home.lng },
-    chooseIndex,
+    chooseUnit,
     alsoExcludeId,
   );
   return fallback ? { poi: fallback, radiusKm } : null;
