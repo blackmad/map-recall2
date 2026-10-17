@@ -49004,7 +49004,10 @@ Learned names, exploration collection, personal bests, route settings and the ho
      *  wrong pick struck through, and every button inert for the hold. */
     _markAnsweredChoices(correctName, answer, correct) {
       const card = document.getElementById("canal-card");
-      if (card) card.classList.add("answered");
+      if (card) {
+        card.style.setProperty("--answer-hold", `${correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG}ms`);
+        card.classList.add("answered");
+      }
       if (!this._promptChoices) return;
       const normalise2 = (value) => (value || "").trim().toLowerCase();
       for (const node of Array.from(this._promptChoices.children)) {
