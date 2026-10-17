@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## Share this route and a lighter first load (2026-10-17)
+
+"Share this route" on the arrival/pause cards and My progress uses the share
+sheet or copies `?travel=…#race=…` (tours share `?tour=`). A Home/Here start,
+or one within 400 m of a saved home/GPS fix, is replaced by the nearest public
+destination (≤3 km) and the centre recomputed, so a link never encodes the
+home; Ride again replays of home rides are recorded private. First load
+(desktop, 20 Mbit, median of 3): setup visible 1482 → 1036 ms, route started
+3441 → 2991 ms, 20.8 → 19.0 MB — the ride bundles now share one manual-model
+catalogue from `signature-placement.bundle.js` (load order matters), the setup
+backdrop is 545 KB, maplibre is pinned (no redirect). Report and ranked next
+wins: `docs/preview/first-load-2026-10-17.md`.
+
 ## Statue rebuild comparison: TRELLIS.2 multi-view beats the kit on 17 of 20 (2026-10-17)
 
 User (2026-10-17), after "these are a little rough": "honestly can we rebuild

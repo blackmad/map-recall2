@@ -260,8 +260,14 @@ class Game {
     } else if (id === 'route') {
       this._openRouteSetup();
     } else if (id === 'copy' && this._shareUrl) {
-      navigator.clipboard.writeText(this._shareUrl).catch(() => {});
-      this._copiedTimer = 2;
+      this._shareRoute();
+    }
+  }
+
+  /** Share sheet or clipboard, with Home/Here starts neutralised (src/canalRecall/shareRoute.ts). */
+  _shareRoute() {
+    if (window.CanalRouteHistory && window.CanalRouteHistory.shareRide) {
+      window.CanalRouteHistory.shareRide(this).catch(error => console.warn('Share failed:', error));
     }
   }
 
@@ -276,10 +282,7 @@ class Game {
       this._openRouteSetup();
       return;
     }
-    if (id === 'copy' && this._shareUrl) {
-      navigator.clipboard.writeText(this._shareUrl).catch(() => {});
-      this._copiedTimer = 2;
-    }
+    if (id === 'copy' && this._shareUrl) this._shareRoute();
   }
 
   // The logical drawing space fills the window. It used to be fixed at 1280×720
