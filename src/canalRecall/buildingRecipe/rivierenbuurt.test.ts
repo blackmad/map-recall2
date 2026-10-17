@@ -75,6 +75,29 @@ test('without the keys no overhang and no canopy mesh (the kit stays as it was)'
   assert.equal(meshes(onlyOverhang.group, /^eaves-overhang\//).length, 2);
 });
 
+test('ground oriel: Boterdiepstraat 17 (134610) canted bay from the pavement, the console under storey 1', async () => {
+  const pand = '0363100012134610', f17: BuildingFacts = JSON.parse(fs.readFileSync(`scripts/block-face/faces/boterdiep-3-59/pands/${pand}/facts.json`, 'utf8'));
+  const t = defaultTypeLoader('rijn-1934-erker-ribbon')!;
+  const intent = validateIntent({schemaVersion: 1, kind: 'canal-house', id: 'boterdiep-134610', pandId: pand, address: 'Boterdiepstraat 17', sources: [{id: 'strip', kind: 'street-panorama', capturedAt: '2020-01-07'}], ...resolvePlacement(t, {type: t.id}, 'Boterdiepstraat').design} as CanalHouseIntent);
+  assert.deepEqual(intent.fronts[0].bayWindows!.storeys, [0, 1, 2]);
+  const built = await compileBuilding(intent, f17), el = built.recipe.elevations[0];
+  const bays = (el.glazedBays?.value ?? []).filter(b => /^erker-s\d$/.test(b.id)).sort((a, b) => a.bottomM! - b.bottomM!);
+  assert.deepEqual(bays.map(b => b.id), ['erker-s0', 'erker-s1', 'erker-s2']);
+  assert.equal(bays[0].bottomM, 0);
+  // Measured: glazing 1.0-2.9 m over a brick stallriser.
+  assert.ok(Math.abs(bays[0].lowerPanelM - 0.95) < 1e-9 && Math.abs(bays[0].heightM - bays[0].upperPanelM - 2.9) < 0.05, `ground module ${bays[0].lowerPanelM}-${bays[0].heightM - bays[0].upperPanelM}`);
+  // No flat ground window left behind the bay; the house door stays.
+  assert.equal(el.openings.value.filter(o => /^s0-b\d$/.test(o.id)).length, 0);
+  assert.equal(el.openings.value.filter(o => o.id === 'door').length, 1);
+  // The console: under storey 1's module, not on the pavement.
+  const console = meshes(built.group, /^oriel-console\//);
+  assert.equal(console.length, 1);
+  const cb = box(console[0]);
+  assert.ok(Math.abs(cb.max.y - bays[1].bottomM!) < 0.01, `console top ${cb.max.y} vs storey 1 ${bays[1].bottomM}`);
+  // Without a ground oriel the storeys still start at 1 (and 0 is refused on a shopfront).
+  assert.throws(() => validateIntent({...intent, fronts: intent.fronts.map(f => ({...f, bayWindows: {...f.bayWindows!, oriel: undefined}}))} as CanalHouseIntent), /bayWindows.storeys/);
+});
+
 test('storeyRibbons: Boterdiepstraat 17 (134610) top storey, three two-light windows 0.38 m apart over 0.174-0.911 of the front', async () => {
   const pand = '0363100012134610', f17: BuildingFacts = JSON.parse(fs.readFileSync(`scripts/block-face/faces/boterdiep-3-59/pands/${pand}/facts.json`, 'utf8'));
   const t = defaultTypeLoader('rijn-1934-erker-ribbon')!;
