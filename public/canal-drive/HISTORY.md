@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+## Our own flat overview tiles (2026-10-16)
+
+User (2026-10-16): "we should just generate our own flat tiles for the
+overview? the change in colors as it zooms in is jarring". Lane
+`lane/overview-tiles-20261016` (aedd7f837 … 823cce0fe). The overview now
+draws `overview-tiles-v1`, a z11–z15 raster (893 files, 18.3 MB) rasterised
+from directly above the built own-ground cells plus the city's footprints,
+in the ground palette's flat tones; it sits just above liberty's top ground
+or building fill, under extrusions, labels and game overlays, fades in over
+z11→11.5 and is transparent outside coverage. The manifest records every
+layer colour; `overviewTilesPlan` skips the tiles (console.info) on any
+mismatch with the live palette and `overviewTiles.test.ts` fails when they
+go stale. Opt-out `?overviewTiles=0`. The reported 13.9→14 jump was
+OpenMapTiles' footprints switching from generalised to detailed shapes at
+z14 (ground-only tiles made it worse, 9.3 %); baking our own footprints
+fixed it: the `overview-transition` gate went 7.7 % (fail) → 2.7 % (pass).
+Its canvas "Entering quarter" postcard fade was a separate flake; the spec
+holds it off. Desktop ride-perf unchanged. z16 skipped (+22 MB). Rebuild with
+`npm run build:overview-tiles -- --publish` after any palette or ground
+extract change. The Vondelpark lawn (bd47c876d): the game's
+`park-landscape-ground` sat above the raster in the park token; it now counts
+as flat ground under the tiles (lawn 96,140,70 → 110,154,74 at z13.5–14).
+
 ## The "De Hallen slab" was Kinkerstraat 89–105: measured flat roofs for large recipes (2026-10-17)
 
 User (2026-10-16), riding the Tollensstraat with the De Hallen card open: one

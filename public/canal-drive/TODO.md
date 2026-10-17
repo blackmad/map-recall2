@@ -794,13 +794,6 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   `sendToSource` deep clone; `_refreshColoredBuildingFilter` on landmark
   load; the 50 ms `dt` clamp in `game.js` (interpolate instead of slowing
   the rider); then measure iPhone.
-- **Overview → city zoom sweep fails on main** (2026-10-16):
-  `overview-transition.spec.ts` "no step of the zoom sweep jumps" measures
-  ΔE>20 on 7.7 % of pixels at z13.9→14 before the flags merge, 6.6 % after
-  (limit 5 %; ground 7.0 % → 2.2 %). The user saw the same jump ("the change
-  in colors as it zooms in is jarring"); lane `lane/overview-tiles-20261016`
-  (own flat overview tiles in the groundLook palette) owns it, with this
-  spec as its gate.
 - **Roads, after city-wide** (2026-10-16, HISTORY "Surveyed road surface
   city-wide"): a coarser drape for large flat carriage polygons (rural and
   dike cells -8_4 1.43×, 10_4, 9_3, 8_1, 4_0, 7_5 exceed the 1.15× triangle
@@ -881,6 +874,12 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   its Tollensstraat front: open ground passage with round columns, yellow
   glazed entrance, curved cantilevered balconies, loggias; Polderweg 3 walls
   fail the tightened likeness gate (walls[1] no photo, walls[2] 52.9° crop).
+- **Overview tiles, after** (2026-10-16, HISTORY "Our own flat overview
+  tiles"): the textured ground's mean is ~5 % darker than the flat tones
+  (small luma step near z14.6); `basemapPalette`'s `/^park/` also paints the
+  game's `park-landscape-*` layers (visible with `?overviewTiles=0`); the
+  Vondelpark probe stalled on "Rendering streets…" when run after the sweep
+  in one worker; z16 tiles (+22 MB) only if the jump above z15 shows.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
