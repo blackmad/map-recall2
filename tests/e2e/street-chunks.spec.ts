@@ -17,7 +17,10 @@ const ahead = ([lng, lat]: number[], bearingDeg: number, metres: number) => {
   const r = bearingDeg * Math.PI / 180;
   return [lng + Math.sin(r) * metres / (111320 * Math.cos(lat * Math.PI / 180)), lat + Math.cos(r) * metres / 111320];
 };
-const bearing = 90 + chunk.instance.northOffsetDegrees, outward = (bearing + 90) % 360;
+// The per-house chunks were all removed from chunks.json (2026-10-16); without one there is nothing to compare, and
+// reading `chunk.instance` at load failed the whole e2e run in CI.
+test.skip(!chunk, 'no chunk-bilder-* chunk in chunks.json');
+const bearing = 90 + (chunk?.instance.northOffsetDegrees ?? 0), outward = (bearing + 90) % 360;
 
 async function parkAt(page: Page, at: number[], face: number[]) {
   await page.evaluate(({ at, face }) => {
@@ -33,7 +36,7 @@ async function parkAt(page: Page, at: number[], face: number[]) {
 }
 
 for (const mode of ['off', 'on'] as const) {
-  test(`street chunks ${mode}: ${chunk.name}`, async ({ page }, info) => {
+  test(`street chunks ${mode}: ${chunk?.name}`, async ({ page }, info) => {
     test.setTimeout(300_000);
     mkdirSync(OUT, { recursive: true });
     const requests: string[] = [];
