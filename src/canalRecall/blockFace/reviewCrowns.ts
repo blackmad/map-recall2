@@ -54,3 +54,74 @@ export function applyCrownPins(faceId: string, decisions: Decision[], pins: Crow
   }
   return changed;
 }
+
+/**
+ * Reviewer type pins (`<buurt>-review-types.json`): the types a face may be placed with, with the reason. For a row the
+ * facts and the photo's edges cannot settle: Molukkenstraat 35-53 and Gorontalostraat 25-45 share year, eaves and
+ * width, and on the 2019 Molukkenstraat strip (shop fronts, trees) the white-attic type scored a higher edge NCC on four
+ * houses that the photo shows are stair-pair fronts. A face without a pin keeps the whole library.
+ */
+export interface TypePin {
+  face: string;
+  types: string[];
+  reason: string;
+}
+
+export function typePinProblems(pins: TypePin[], types: Pick<HouseTypeIntent, 'id'>[]): string[] {
+  const p: string[] = [];
+  pins.forEach((pin, k) => {
+    const at = `type pin ${k}`;
+    if (!pin.face) p.push(`${at}: face required`);
+    if (!pin.reason) p.push(`${at}: reason required (what on the strip shows the type)`);
+    if (!pin.types?.length) p.push(`${at}: at least one type`);
+    for (const id of pin.types ?? []) if (!types.some(t => t.id === id)) p.push(`${at}: unknown type ${id}`);
+    if (pins.findIndex(x => x.face === pin.face) !== k) p.push(`${at}: face ${pin.face} pinned twice`);
+  });
+  return p;
+}
+
+/** The library for one face: the pinned types (library order), or the whole library when the face has no pin. */
+export function typesForFace<T extends Pick<HouseTypeIntent, 'id'>>(faceId: string, types: T[], pins: TypePin[]): T[] {
+  const pin = pins.find(x => x.face === faceId);
+  return pin ? types.filter(t => pin.types.includes(t.id)) : types;
+}
+
+/**
+ * Reviewer mirror pins (`mirrors` in `<buurt>-review-types.json`): whether a placed pand is drawn mirrored, with the
+ * reason. For mirrored-pair rows whose door reading the shop fronts defeat: Molukkenstraat 35-53's stair-light pairs
+ * straddle every other party wall, but the strip read the shop door as the house door on five of ten fronts. A pinned
+ * side counts as known, so --photo-decides does not flip it back.
+ */
+export interface MirrorPin {
+  pandId: string;
+  type: string;
+  mirror: boolean;
+  reason: string;
+}
+
+export function mirrorPinProblems(pins: MirrorPin[], types: Pick<HouseTypeIntent, 'id'>[]): string[] {
+  const p: string[] = [];
+  pins.forEach((pin, k) => {
+    const at = `mirror pin ${k}`;
+    if (!pin.pandId) p.push(`${at}: pandId required`);
+    if (typeof pin.mirror !== 'boolean') p.push(`${at}: mirror must be true or false`);
+    if (!pin.reason) p.push(`${at}: reason required (what on the strip shows the side)`);
+    if (!types.some(t => t.id === pin.type)) p.push(`${at}: unknown type ${pin.type}`);
+    if (pins.findIndex(x => x.pandId === pin.pandId) !== k) p.push(`${at}: pand ${pin.pandId} pinned twice`);
+  });
+  return p;
+}
+
+/** Apply mirror pins to placed pands of the pinned type (in place); returns the pands pinned. */
+export function applyMirrorPins(decisions: Decision[], pins: MirrorPin[]): string[] {
+  const changed: string[] = [];
+  for (const d of decisions) {
+    if (d.kind !== 'placed' || !d.house.type) continue;
+    const pin = pins.find(x => x.pandId === d.pandId && x.type === d.typeId);
+    if (!pin) continue;
+    if (pin.mirror) d.house.type.mirror = true; else delete d.house.type.mirror;
+    d.notes = [...d.notes.filter(n => !/^door /.test(n)), `door reviewer pin: ${pin.mirror ? 'mirrored' : 'as drawn'} (${pin.reason})`];
+    changed.push(d.pandId);
+  }
+  return changed;
+}

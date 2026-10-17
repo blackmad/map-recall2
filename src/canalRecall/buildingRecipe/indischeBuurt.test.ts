@@ -58,6 +58,25 @@ test('Molukkenstraat 25: attic lights 0.66 m wide on the body axes, the body win
   assert.deepEqual(ops.filter(o => !/^s4-/.test(o.id)), ref.filter(o => !/^s4-/.test(o.id)));
 });
 
+test('dormerSize: Gorontalostraat 31 dormer sill 1.0 m over the eaves, 1.4 m tall, front 1.6 m up the slope; validation; absent = style default', () => {
+  const facts = factsOf('gorontalo-25-47', GOR);
+  const dormers = (i: CanalHouseIntent) => fitIntent(i, facts).recipe.elevations[0].dormers!.value;
+  const sized = dormers(house('indisch-1926-white-attic', GOR, 'Gorontalostraat'));
+  const plain = dormers(house('indisch-1926-white-attic', GOR, 'Gorontalostraat', f => { delete f.dormerSize; }));
+  assert.equal(sized.length, 1);
+  assert.ok(Math.abs(sized[0].bottomM - plain[0].bottomM - 0.95) < 1e-9, `sill ${sized[0].bottomM} vs default ${plain[0].bottomM}`);
+  assert.equal(sized[0].heightM, 1.4);
+  assert.equal(sized[0].setbackM, 1.6);
+  // The flat style's own default: 1.8 m tall, 0.35 m back.
+  assert.equal(plain[0].heightM, 1.8);
+  assert.equal(plain[0].setbackM, 0.35);
+  const base = house('indisch-1926-white-attic', GOR, 'Gorontalostraat');
+  const front = (patch: Record<string, unknown>) => () => validateIntent({...base, fronts: base.fronts.map(f => ({...f, ...patch}))} as CanalHouseIntent);
+  assert.throws(front({dormerSize: {sill: 3, rise: 1.4, setback: 1.6}}), /dormerSize: \{sill 0.05..2/);
+  assert.throws(front({dormerSize: {sill: 1, rise: 1.4}}), /dormerSize/);
+  assert.throws(front({dormers: 0, dormerSize: {sill: 1, rise: 1.4, setback: 1}}), /dormerSize: only with dormers/);
+});
+
 test('Gorontalostraat 31: the white top storey starts 0.44 m over its floor; without `from` it starts on the floor', () => {
   const facts = factsOf('gorontalo-25-47', GOR);
   const band = (i: CanalHouseIntent) => fitIntent(i, facts).recipe.elevations[0].bands!.value.find(b => b.id === 'painted-storey-s3')!;

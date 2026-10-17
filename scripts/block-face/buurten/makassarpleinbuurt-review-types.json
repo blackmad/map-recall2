@@ -1,0 +1,82 @@
+{
+ "note": "Faces a reviewer restricted to some house types after reading the strip at full size (scripts/block-face/auto-place.ts, blockFace/reviewCrowns.ts typesForFace).",
+ "reviewed": "2026-10-17",
+ "pins": [
+  {
+   "face": "molukken-35-67",
+   "types": [
+    "indisch-1925-stair-pair"
+   ],
+   "reason": "Molukkenstraat 35-53 (2019-12-18 strip): every front is the stair-pair design (wide window + stair light on storeys 1-2, three windows over a brick course, gutter under a dark tiled roof); no white top storey anywhere, yet --photo-decides gave the white-attic type to 39, 45, 49 and 51 on edge NCC through trees and shop awnings"
+  },
+  {
+   "face": "gorontalo-25-47",
+   "types": [
+    "indisch-1926-white-attic"
+   ],
+   "reason": "Gorontalostraat 25-45 (2025-09-26 strip): every front has the white top storey under the overhang and the tiled roof; no stair-pair front"
+  }
+ ],
+ "mirrors": [
+  {
+   "pandId": "0363100012080763",
+   "type": "indisch-1925-stair-pair",
+   "mirror": false,
+   "reason": "Molukkenstraat 35: the stair-light pair and the paired house doors under it straddle the party wall with 37, on the right (strip 2019-12-18); the door reading took a shop door"
+  },
+  {
+   "pandId": "0363100012131182",
+   "type": "indisch-1925-stair-pair",
+   "mirror": true,
+   "reason": "Molukkenstraat 37: the stair-light pair and the paired house doors under it straddle the party wall with 35, on the left (strip 2019-12-18); the door reading took a shop door"
+  },
+  {
+   "pandId": "0363100012111959",
+   "type": "indisch-1925-stair-pair",
+   "mirror": false,
+   "reason": "Molukkenstraat 39: the stair-light pair and the paired house doors under it straddle the party wall with 41, on the right (strip 2019-12-18); the door reading took a shop door"
+  },
+  {
+   "pandId": "0363100012148990",
+   "type": "indisch-1925-stair-pair",
+   "mirror": true,
+   "reason": "Molukkenstraat 41: the stair-light pair and the paired house doors under it straddle the party wall with 39, on the left (strip 2019-12-18); the door reading took a shop door"
+  },
+  {
+   "pandId": "0363100012080878",
+   "type": "indisch-1925-stair-pair",
+   "mirror": false,
+   "reason": "Molukkenstraat 43: the stair-light pair and the paired house doors under it straddle the party wall with 45, on the right (strip 2019-12-18); the door reading took a shop door"
+  },
+  {
+   "pandId": "0363100012107515",
+   "type": "indisch-1925-stair-pair",
+   "mirror": true,
+   "reason": "Molukkenstraat 45: the stair-light pair and the paired house doors under it straddle the party wall with 43, on the left (strip 2019-12-18); the door reading took a shop door"
+  },
+  {
+   "pandId": "0363100012086183",
+   "type": "indisch-1925-stair-pair",
+   "mirror": false,
+   "reason": "Molukkenstraat 47: the stair-light pair and the paired house doors under it straddle the party wall with 49, on the right (strip 2019-12-18); the door reading took a shop door"
+  },
+  {
+   "pandId": "0363100012149152",
+   "type": "indisch-1925-stair-pair",
+   "mirror": true,
+   "reason": "Molukkenstraat 49: the stair-light pair and the paired house doors under it straddle the party wall with 47, on the left (strip 2019-12-18); the door reading took a shop door"
+  },
+  {
+   "pandId": "0363100012092896",
+   "type": "indisch-1925-stair-pair",
+   "mirror": false,
+   "reason": "Molukkenstraat 51: the stair-light pair and the paired house doors under it straddle the party wall with 53, on the right (strip 2019-12-18); the door reading took a shop door"
+  },
+  {
+   "pandId": "0363100012146291",
+   "type": "indisch-1925-stair-pair",
+   "mirror": true,
+   "reason": "Molukkenstraat 53: the stair-light pair and the paired house doors under it straddle the party wall with 51, on the left (strip 2019-12-18); the door reading took a shop door"
+  }
+ ]
+}
