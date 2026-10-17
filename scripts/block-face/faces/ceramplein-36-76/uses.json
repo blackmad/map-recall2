@@ -1,0 +1,306 @@
+{
+ "street": "Ceramplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:12:48.832Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012136698",
+   "addresses": [
+    "Ceramplein 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 72-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000603821"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090579",
+   "addresses": [
+    "Ceramplein 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 70-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000603818"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012102826",
+   "addresses": [
+    "Ceramplein 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 68-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000603815"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012118074",
+   "addresses": [
+    "Ceramplein 60",
+    "Ceramplein 62",
+    "Ceramplein 62A",
+    "Ceramplein 62B",
+    "Ceramplein 64",
+    "Ceramplein 66",
+    "Ceramplein 66B",
+    "Ceramplein 66A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 66",
+     "use": "industriefunctie",
+     "areaM2": 50,
+     "bagId": "0363010000603814"
+    },
+    {
+     "address": "Ceramplein 62A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012062571"
+    },
+    {
+     "address": "Ceramplein 62B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012062572"
+    },
+    {
+     "address": "Ceramplein 66B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012062578"
+    },
+    {
+     "address": "Ceramplein 66A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012062579"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106670",
+   "addresses": [
+    "Ceramplein 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 58-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000603806"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012128085",
+   "addresses": [
+    "Ceramplein 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 56-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000603803"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080321",
+   "addresses": [
+    "Ceramplein 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 54-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000603800"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130546",
+   "addresses": [
+    "Ceramplein 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 52-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000603797"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109369",
+   "addresses": [
+    "Ceramplein 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 50-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000603794"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100646",
+   "addresses": [
+    "Ceramplein 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 48-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000603791"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134019",
+   "addresses": [
+    "Ceramplein 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 46-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000603788"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132486",
+   "addresses": [
+    "Ceramplein 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 44-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000603782"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099773",
+   "addresses": [
+    "Ceramplein 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 42-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000603776"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115368",
+   "addresses": [
+    "Ceramplein 36A",
+    "Ceramplein 36B",
+    "Ceramplein 36C",
+    "Ceramplein 38A",
+    "Ceramplein 38B",
+    "Ceramplein 38C",
+    "Ceramplein 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceramplein 36A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000603760"
+    },
+    {
+     "address": "Ceramplein 36B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000603761"
+    },
+    {
+     "address": "Ceramplein 36C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000603762"
+    },
+    {
+     "address": "Ceramplein 38A",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000603766"
+    },
+    {
+     "address": "Ceramplein 38B",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000603767"
+    },
+    {
+     "address": "Ceramplein 38C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000603768"
+    },
+    {
+     "address": "Ceramplein 40",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000603772"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

@@ -12,7 +12,7 @@ import { openTopPrism, upwardRoofPlane } from '../../scripts/landmarks/house-geo
 import { auditHouse, type CanalHouse, type GableType } from './facade/houseRecord.ts';
 import { auditFields, type Measured, type Observation } from './facade/evidence.ts';
 
-export const CANALHOUSE_COMPONENT_VERSIONS = Object.freeze({ shell: '3', roof: '11', frontage: '4', opening: '19', glazedBay: '1', facadeDetail: '11', ornament: '2', dormer: '7', nativeAperture: '1', cornice: '6', crown: '5', entrance: '9', hoist: '1' });
+export const CANALHOUSE_COMPONENT_VERSIONS = Object.freeze({ shell: '3', roof: '11', frontage: '4', opening: '20', glazedBay: '1', facadeDetail: '11', ornament: '2', dormer: '8', nativeAperture: '1', cornice: '6', crown: '5', entrance: '9', hoist: '1' });
 export type CanalhousePoint = [number, number];
 export interface CanalhousePolygon { outer: CanalhousePoint[]; holes: CanalhousePoint[][] }
 export interface CanalhouseDoorPanel {
@@ -539,7 +539,10 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
       const paneOffset=o.paneOffsetM??.065;finite(paneOffset);if(paneOffset<.025||paneOffset>.065)throw new Error('Unsupported glazing setback');
       const headSegments=o.headSegments??16;
       if(!Number.isInteger(headSegments)||headSegments<2||headSegments>32)throw new Error('Unsupported head segment count');
-      const barDepth=Math.min(.095,.015+frameDepth-.025);
+      // Bars stand 4 cm over the pane, not 3 cm, where the frame is deep enough to keep them inside it: 3 cm is the audit's
+      // band that bleeds through at distance (geometryAudit zTightTol), 0.05 m2 per two-light window and 0.1-0.2 m2 per
+      // paired door, so a row of a few houses failed the new-export budget (Gorontalostraat 25-45, 2026-10-17).
+      const baseBarDepth=Math.min(.095,.015+frameDepth-.025),barDepth=Math.max(baseBarDepth,Math.min(paneOffset+.04,frameDepth-.015));
       const openingShape=(x:number,y:number,w:number,h:number,rise=0,oval=false)=>{
         if(oval){
           const s=new T.Shape();
@@ -807,8 +810,11 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         box(x0,d.bottomM,d.widthM,t,.04,.03,'trim',`${label}/frame-bottom`);
         box(x0,top-t,d.widthM,t,.04,.03,'trim',`${label}/frame-top`);
         box(x0+t,d.bottomM+t,d.widthM-2*t,d.heightM-2*t,.03,.065,'glass',`${label}/pane`);
-        for(const f of d.verticalBars??[]){if(!(f>0&&f<1)||d.widthM*f-t/2<t||d.widthM*f+t/2>d.widthM-t)throw new Error('Dormer bar escapes pane');box(x0+d.widthM*f-t/2,d.bottomM+t,t,d.heightM-2*t,.03,.095,'trim',`${label}/bar`);}
-        for(const f of d.horizontalBars??[]){if(!(f>0&&f<1)||d.heightM*f-t/2<t||d.heightM*f+t/2>d.heightM-t)throw new Error('Dormer bar escapes pane');box(x0+t,d.bottomM+d.heightM*f-t/2,d.widthM-2*t,t,.03,.095,'trim',`${label}/bar`);}
+        // Bars 4.2 cm over the pane, not 3 cm: 3 cm is the audit's band that bleeds through at distance (geometryAudit
+        // zTightTol); a tall two-light dormer's bar was 0.1 m2 of it (Gorontalostraat 25-45, 2026-10-17).
+        const dormerBarZ=.107;
+        for(const f of d.verticalBars??[]){if(!(f>0&&f<1)||d.widthM*f-t/2<t||d.widthM*f+t/2>d.widthM-t)throw new Error('Dormer bar escapes pane');box(x0+d.widthM*f-t/2,d.bottomM+t,t,d.heightM-2*t,.03,dormerBarZ,'trim',`${label}/bar`);}
+        for(const f of d.horizontalBars??[]){if(!(f>0&&f<1)||d.heightM*f-t/2<t||d.heightM*f+t/2>d.heightM-t)throw new Error('Dormer bar escapes pane');box(x0+t,d.bottomM+d.heightM*f-t/2,d.widthM-2*t,t,.03,dormerBarZ,'trim',`${label}/bar`);}
         const overhang=d.frontOverhangM??0;finite(overhang);if(overhang<0||overhang>.3)throw Error('Unsupported dormer front overhang');
         const roofValues:number[]=[],mid=(x0+x1)/2;
         const quad=(p:number[],q:number[],r:number[],s:number[])=>roofValues.push(...p,...q,...r,...p,...r,...s);
@@ -825,7 +831,16 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
           const gable=new T.Shape([new T.Vector2(x0,top-capClearance),new T.Vector2(x1,top-capClearance),new T.Vector2(mid,top+d.roofRiseM-capClearance)]);
           const g=new T.ExtrudeGeometry(gable,{depth:wall,bevelEnabled:false});g.translate(0,0,overhang-wall);add(g,wallSurface,`${label}/front-gable`,facade);
           const back=g.clone();back.translate(0,0,-d.depthM+wall-overhang);add(back,wallSurface,`${label}/back-gable`,facade);
-        }else quad([x0,top,overhang],[x1,top,overhang],[x1,top,-d.depthM],[x0,top,-d.depthM]);
+        }
+        // A flat dormer roof sits on a 5.5 cm slab 3 cm proud at the front (the fascia board), its sheet 6 cm over the wall
+        // tops: a sheet at the wall tops lay in their plane, 0.26 m2 of coplanar overlap per dormer (Gorontalostraat 25-45,
+        // 2026-10-17). The slab's underside faces down onto the tops; the sheet stays the dormer's upward-only roof.
+        const lift=d.roofRiseM>0?0:.06;
+        if(lift){
+          const front=overhang+.03;
+          quad([x0,top+lift,front],[x1,top+lift,front],[x1,top+lift,-d.depthM],[x0,top+lift,-d.depthM]);
+          box(x0,top,d.widthM,lift-.005,d.depthM+front,(front-d.depthM)/2,roofSurface,`${label}/roof-slab`);
+        }
         const roof=new T.BufferGeometry();roof.setAttribute('position',new T.Float32BufferAttribute(roofValues,3));roof.computeVertexNormals();add(roof,roofSurface,`${label}/roof`,facade);
         if(setback)for(const child of facade.children.slice(firstChild))if(child instanceof T.Mesh)child.geometry.translate(0,0,-setback);
         if(d.hostAperture){

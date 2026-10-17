@@ -1,0 +1,185 @@
+{
+ "street": "Makassarstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:25:59.890Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012081726",
+   "addresses": [
+    "Makassarstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000733393"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064858",
+   "addresses": [
+    "Makassarstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000733389"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086737",
+   "addresses": [
+    "Makassarstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000733385"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075959",
+   "addresses": [
+    "Makassarstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000733381"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088631",
+   "addresses": [
+    "Makassarstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000733377"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012124922",
+   "addresses": [
+    "Makassarstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000733373"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075844",
+   "addresses": [
+    "Makassarstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000733365"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105884",
+   "addresses": [
+    "Makassarstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000733358"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012102408",
+   "addresses": [
+    "Makassarstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000733351"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136282",
+   "addresses": [
+    "Makassarstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000733347"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012122980",
+   "addresses": [
+    "Makassarstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000733343"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

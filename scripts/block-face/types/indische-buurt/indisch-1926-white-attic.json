@@ -1,0 +1,85 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "indisch-1926-white-attic",
+ "district": "indische-buurt",
+ "description": "Gorontalostraat 25-45 (BAG 1925-26): a 6.1 m brown-brick front of two storeys with a close group of three white-framed two-light windows over a ground of paired green house doors, a top storey painted white with three evenly spaced windows between white piers, under a deep flat eaves overhang with a white fascia; a low red-tile roof behind it with one flat-roofed dormer per house",
+ "fit": {
+  "widthM": [5.4, 6.6],
+  "storeys": [4]
+ },
+ "match": {
+  "years": [1924, 1927],
+  "eavesM": [12.0, 13.4],
+  "storeys3dbag": [4, 5],
+  "roof": "pitched",
+  "baysByWidth": [{"maxWidthM": 99, "bays": 3}],
+  "stucco": false,
+  "balconies": false,
+  "note": "eaves 12.7 m under a 16 m tiled ridge; the attic-lights type stands 2 m higher with a flat roof"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "cornice": "none",
+  "windows": "casement-pair",
+  "storeyWindows": {"0": "casement-toplight", "3": "casement-toplight"},
+  "windowShare": 0.46,
+  "storeyWindowWidths": {"3": 0.94},
+  "storeyRibbons": {"1": {"from": 0.147, "to": 0.853, "pier": 0.36}, "2": {"from": 0.147, "to": 0.853, "pier": 0.36}},
+  "storeyHeights": [3.4, 3.0, 3.0, 2.5],
+  "windowHeights": [0.44, 0.59, 0.59, 0.61],
+  "headLines": [0.74, 0.733, 0.74, 0.8],
+  "paintedStoreys": {"storeys": [3], "colour": "#e8eae4", "from": 0.44}
+ },
+ "crowns": {
+  "overhang-dormer": {
+   "gable": "cornice",
+   "eavesOverhang": {"projection": 0.9, "fascia": 0.3, "colour": "#e6e8e2", "soffit": "#c9ccc4"},
+   "dormers": 1,
+   "dormerStyle": "flat",
+   "dormerSize": {"sill": 1.0, "rise": 1.4, "setback": 1.6},
+   "note": "the deep white overhang at 12.0-12.7 m; one flat-roofed dormer (blue-grey boards, two-light window) per house on the low tile roof behind it"
+  }
+ },
+ "grounds": {
+  "door-left": {"doorBay": 0, "note": "paired green house doors at the left"},
+  "door-right": {"doorBay": 2, "note": "paired green house doors at the right"}
+ },
+ "palettes": {
+  "brown": {
+   "brick": "#6e5a4c",
+   "frame": "#eeeeea",
+   "door": "#3f5a3a",
+   "stone": "#e8eae4",
+   "cornice": "#e6e8e2"
+  }
+ },
+ "roof": {
+  "material": "red-tile"
+ },
+ "rhythm": {
+  "bays": "3 axes: a close group of three windows on storeys 1-2, three evenly spaced windows in the white top storey",
+  "identicalBays": "equal windows",
+  "windowsPerStorey": "ground: doors + windows | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "paired house doors",
+  "signage": "none",
+  "roofline": "deep white eaves overhang; a low tiled roof with one flat dormer per house",
+  "photoRows": [2, 3, 3, 3],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "gorontalo-25-47",
+   "pands": ["083492", "094616", "148266", "123464", "067440"],
+   "citation": "strip.jpg 2025-09-26 (camera 2.1 m) at 40 px/m: storey-1 windows 3.83-5.60 m, storey-2 6.85-8.62 m, 1.2 m wide in a group of three 0.36 m apart (0.9 m margins); brick ends and the white top storey starts at 9.84 m; white-storey windows 0.94 m wide, 9.87-11.40 m, evenly spaced 2.03 m; white wall to the soffit at 11.9 m, fascia top ~13.2 m on the strip (proud, lifted by perspective); dormers 13.7-15.2 m; 3DBAG eaves 12.7 m, ridge 16.0 m"
+  }
+ ],
+ "schemaLimits": [
+  "the white top storey's pilasters with small capitals between the windows",
+  "the soldier course over the ground storey",
+  "the doors stand on the first/last axis, not against the party wall"
+ ],
+ "notes": []
+}

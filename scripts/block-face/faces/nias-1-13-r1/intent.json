@@ -1,0 +1,244 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "nias-1-13-r1",
+ "street": "Niasstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-02",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-02",
+   "image": "staging/block-face/nias-1-13-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the indische-buurt library (buurt Makassarpleinbuurt); scores and holds in scripts/block-face/faces/nias-1-13/auto-place.json"
+ },
+ "types": [
+  "indisch-1926-attic-lights"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012102866",
+   "slug": "nias-102866",
+   "address": "Niasstraat 3",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#685b51",
+     "evidence": "strip 2023-01-02 span 246-486: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2023-01-02 span 246-486"
+   }
+  },
+  {
+   "pandId": "0363100012110430",
+   "slug": "nias-110430",
+   "address": "Niasstraat 5",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": {
+     "shopfront": {
+      "colour": "#443b33",
+      "fascia": true,
+      "name": "HaptoMotion",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, kantoorfunctie, woonfunctie, healthcare=physiotherapist); fascia colour measured on the strip 2023-01-02 span 486-726"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#5c5047",
+     "evidence": "strip 2023-01-02 span 486-726: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "groundFloor": {
+    "use": "services",
+    "name": "HaptoMotion",
+    "category": "healthcare=physiotherapist",
+    "osm": {
+     "type": "node",
+     "id": 2830039108,
+     "name": "HaptoMotion"
+    },
+    "bag": [
+     "winkelfunctie",
+     "kantoorfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2023-01-02 span 486-726"
+   }
+  },
+  {
+   "pandId": "0363100012122437",
+   "slug": "nias-122437",
+   "address": "Niasstraat 7",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "measuredPalette": {
+     "brick": "#5a4f46",
+     "evidence": "strip 2023-01-02 span 726-966: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "groundFloor": {
+    "use": "office",
+    "name": "Marjolein Poels",
+    "osm": {
+     "type": "node",
+     "id": 12716456403,
+     "name": "Marjolein Poels"
+    },
+    "bag": [
+     "kantoorfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2023-01-02 span 726-966"
+   }
+  },
+  {
+   "pandId": "0363100012131529",
+   "slug": "nias-131529",
+   "address": "Niasstraat 7F",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#695a4b",
+     "evidence": "strip 2023-01-02 span 966-1206: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2023-01-02 span 966-1206"
+   }
+  },
+  {
+   "pandId": "0363100012079465",
+   "slug": "nias-079465",
+   "address": "Niasstraat 11",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#5a4e47",
+     "evidence": "strip 2023-01-02 span 1206-1446: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2023-01-02 span 1206-1446"
+   }
+  },
+  {
+   "pandId": "0363100012125631",
+   "slug": "nias-125631",
+   "address": "Niasstraat 13",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": {
+     "shopfront": {
+      "colour": "#5b4d3e",
+      "fascia": true,
+      "name": "Yeung",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, kantoorfunctie, woonfunctie, healthcare=alternative); fascia colour measured on the strip 2023-01-02 span 1446-1692"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#6b5c50",
+     "evidence": "strip 2023-01-02 span 1446-1692: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "groundFloor": {
+    "use": "services",
+    "name": "Yeung",
+    "category": "healthcare=alternative",
+    "osm": {
+     "type": "node",
+     "id": 2830018862,
+     "name": "Yeung"
+    },
+    "bag": [
+     "winkelfunctie",
+     "kantoorfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2023-01-02 span 1446-1692"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "nias-15-27-r1",
+ "street": "Niasstraat",
+ "sources": [
+  {
+   "id": "strip-2020-02-03",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-03",
+   "image": "staging/block-face/nias-15-27-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the indische-buurt library (buurt Makassarpleinbuurt); scores and holds in scripts/block-face/faces/nias-15-27/auto-place.json"
+ },
+ "types": [
+  "indisch-1926-attic-lights"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012066206",
+   "slug": "nias-066206",
+   "address": "Niasstraat 21",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": {
+     "shopfront": {
+      "colour": "#dad4c7",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (bijeenkomstfunctie); fascia colour measured on the strip 2020-02-03 span 734-980"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#ccb59c",
+     "evidence": "strip 2020-02-03 span 734-980: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2020-02-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 0.8 on eaves 1, storeys 1, roof 1, stucco 1, columns 0; strip 2020-02-03 span 734-980"
+   }
+  },
+  {
+   "pandId": "0363100012146333",
+   "slug": "nias-146333",
+   "address": "Niasstraat 23",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "measuredPalette": {
+     "brick": "#b7a18a",
+     "evidence": "strip 2020-02-03 span 980-1226: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-02-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2020-02-03 span 980-1226"
+   }
+  },
+  {
+   "pandId": "0363100012138107",
+   "slug": "nias-138107",
+   "address": "Niasstraat 25",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "measuredPalette": {
+     "brick": "#b4a08a",
+     "evidence": "strip 2020-02-03 span 1226-1475: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-02-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2020-02-03 span 1226-1475"
+   }
+  },
+  {
+   "pandId": "0363100012107819",
+   "slug": "nias-107819",
+   "address": "Niasstraat 27",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "measuredPalette": {
+     "brick": "#9e8774",
+     "evidence": "strip 2020-02-03 span 1475-1705: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-02-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2020-02-03 span 1475-1705"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

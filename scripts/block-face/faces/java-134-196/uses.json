@@ -1,0 +1,362 @@
+{
+ "street": "Javastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:24:14.559Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012062385",
+   "addresses": [
+    "Javastraat 166"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 166-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000689687"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107867",
+   "addresses": [
+    "Javastraat 158",
+    "Javastraat 160",
+    "Javastraat 162",
+    "Javastraat 164",
+    "Javastraat 164A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 160",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000689679"
+    },
+    {
+     "address": "Javastraat 164A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000689686"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088889",
+   "addresses": [
+    "Javastraat 156"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 156-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000689672"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105625",
+   "addresses": [
+    "Javastraat 154A",
+    "Javastraat 154B",
+    "Javastraat 154C",
+    "Javastraat 154D",
+    "Javastraat 154E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 154A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000689668"
+    },
+    {
+     "address": "Javastraat 154E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012165264"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012142616",
+   "addresses": [
+    "Javastraat 152A",
+    "Javastraat 152B",
+    "Javastraat 152C",
+    "Javastraat 152D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 152A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000689664"
+    },
+    {
+     "address": "Javastraat 152D",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000689667"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127951",
+   "addresses": [
+    "Javastraat 150A",
+    "Javastraat 150B",
+    "Javastraat 150C",
+    "Javastraat 150D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 150A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001041633"
+    },
+    {
+     "address": "Javastraat 150C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001041635"
+    },
+    {
+     "address": "Javastraat 150D",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010001041636"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090722",
+   "addresses": [
+    "Javastraat 148A",
+    "Javastraat 148D",
+    "Javastraat 148B",
+    "Javastraat 148C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 148A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000689656"
+    },
+    {
+     "address": "Javastraat 148D",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000689659"
+    },
+    {
+     "address": "Javastraat 148C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012142783"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136340",
+   "addresses": [
+    "Javastraat 146A",
+    "Javastraat 146B",
+    "Javastraat 146C",
+    "Javastraat 146D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 146A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000689652"
+    },
+    {
+     "address": "Javastraat 146B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000689653"
+    },
+    {
+     "address": "Javastraat 146C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000689654"
+    },
+    {
+     "address": "Javastraat 146D",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000689655"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012137062",
+   "addresses": [
+    "Javastraat 144"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 144-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000689648"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074328",
+   "addresses": [
+    "Javastraat 142"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 142-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000689644"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113974",
+   "addresses": [
+    "Javastraat 140"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 140-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000689640"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145792",
+   "addresses": [
+    "Javastraat 138A",
+    "Javastraat 138B",
+    "Javastraat 138C",
+    "Javastraat 138D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 138A",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000689636"
+    },
+    {
+     "address": "Javastraat 138B",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000689637"
+    },
+    {
+     "address": "Javastraat 138C",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000689638"
+    },
+    {
+     "address": "Javastraat 138D",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000689639"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237042",
+   "addresses": [
+    "Javastraat 136"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 136-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000980761"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100526",
+   "addresses": [
+    "Javastraat 134B",
+    "Javastraat 134E",
+    "Javastraat 134A",
+    "Javastraat 134C",
+    "Javastraat 134D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 134B",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010011214890"
+    },
+    {
+     "address": "Javastraat 134E",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010011214891"
+    },
+    {
+     "address": "Javastraat 134A",
+     "use": "winkelfunctie",
+     "areaM2": 103,
+     "bagId": "0363010011214892"
+    },
+    {
+     "address": "Javastraat 134C",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010011214893"
+    },
+    {
+     "address": "Javastraat 134D",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010011214894"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

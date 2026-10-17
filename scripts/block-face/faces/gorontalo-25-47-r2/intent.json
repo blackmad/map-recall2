@@ -1,0 +1,109 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "gorontalo-25-47-r2",
+ "street": "Gorontalostraat",
+ "sources": [
+  {
+   "id": "strip-2025-09-26",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "image": "staging/block-face/gorontalo-25-47-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the indische-buurt library (buurt Makassarpleinbuurt); scores and holds in scripts/block-face/faces/gorontalo-25-47/auto-place.json"
+ },
+ "types": [
+  "indisch-1926-white-attic"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012099162",
+   "slug": "gorontalo-099162",
+   "address": "Gorontalostraat 41",
+   "type": {
+    "type": "indisch-1926-white-attic",
+    "measuredPalette": {
+     "brick": "#837773",
+     "evidence": "strip 2025-09-26 span 1934-2177: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2025-09-26 span 1934-2177"
+   }
+  },
+  {
+   "pandId": "0363100012124861",
+   "slug": "gorontalo-124861",
+   "address": "Gorontalostraat 43",
+   "type": {
+    "type": "indisch-1926-white-attic",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#8c7d77",
+     "evidence": "strip 2025-09-26 span 2178-2421: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2025-09-26 span 2178-2421"
+   }
+  },
+  {
+   "pandId": "0363100012089355",
+   "slug": "gorontalo-089355",
+   "address": "Gorontalostraat 43C",
+   "type": {
+    "type": "indisch-1926-white-attic",
+    "measuredPalette": {
+     "brick": "#867974",
+     "evidence": "strip 2025-09-26 span 2421-2664: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-white-attic scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2025-09-26 span 2421-2664"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}
