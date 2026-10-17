@@ -55,7 +55,7 @@ export function mirrorIntent(intent: CanalHouseIntent): CanalHouseIntent | null 
     const out: FrontIntent = {...f};
     if (f.doorBay !== null) out.doorBay = bays[0] - 1 - f.doorBay;
     // Multi-bay erkers, corner towers and rigid canopies and lisenes (Amsterdam School set) are not mirror-shared.
-    if (f.bayWindows?.bays || f.tower?.corner || f.shopfront?.awning?.style === 'rigid' || f.lisenes) return null;
+    if (f.bayWindows?.bays || f.tower?.corner || f.shopfront?.awning?.style === 'rigid' || f.lisenes || f.brickStripes?.some(z => z.span !== undefined)) return null;
     if (f.bayWindows) { const bay = flip(f.bayWindows.bay!, f.bayWindows.storeys); if (Number.isNaN(bay)) return null; out.bayWindows = {...f.bayWindows, bay}; }
     if (f.balconies) {
       const bs = f.balconies.bays.map(b => flip(b, f.balconies!.storeys));
