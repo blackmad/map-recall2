@@ -863,6 +863,10 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   the street); the 434 houses with no routing street; address-aware choice
   for through-lots; moulded scrolled/arched neck caps (wallen-oza 177916,
   177946) and cap finials are kit gaps.
+- **Road look, after v2** (2026-10-16, HISTORY "Road look v2"): klinker
+  carriageways still redder than the orthophoto (a greyer tone that stays
+  clear of `brick`); thin out zebras on dense crossing-node clusters
+  (Linnaeusstraat); measure markings and tones on iPhone.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
