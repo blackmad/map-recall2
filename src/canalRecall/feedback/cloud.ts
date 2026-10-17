@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { getFirestore, doc, runTransaction, serverTimestamp, getDocs, collection, query, where, limit } from 'firebase/firestore';
 
@@ -12,7 +12,7 @@ const db = getFirestore(app);
 // App Check is a no-op until a reCAPTCHA site key is provided via runtime-config.js.
 const appCheckSiteKey = (window as unknown as { CANAL_RUNTIME_CONFIG?: { appCheckSiteKey?: string } }).CANAL_RUNTIME_CONFIG?.appCheckSiteKey;
 if (appCheckSiteKey) {
-  initializeAppCheck(app, { provider: new ReCaptchaV3Provider(appCheckSiteKey), isTokenAutoRefreshEnabled: true });
+  initializeAppCheck(app, { provider: new ReCaptchaEnterpriseProvider(appCheckSiteKey), isTokenAutoRefreshEnabled: true });
 }
 
 await auth.authStateReady();

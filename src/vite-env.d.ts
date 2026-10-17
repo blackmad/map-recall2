@@ -6,7 +6,6 @@ interface ImportMetaEnv {
   readonly VITE_SENTRY_DSN?: string;
   readonly VITE_RELEASE?: string;
   readonly VITE_APPCHECK_SITE_KEY?: string;
-  readonly VITE_APPCHECK_PROVIDER?: string;
   readonly VITE_APPCHECK_DEBUG_TOKEN?: string;
 }
 

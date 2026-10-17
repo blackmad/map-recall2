@@ -1,5 +1,5 @@
 import { FirebaseApp, getApp, getApps, initializeApp } from 'firebase/app';
-import { initializeAppCheck, ReCaptchaEnterpriseProvider, ReCaptchaV3Provider } from 'firebase/app-check';
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 import { Auth, getAuth } from 'firebase/auth';
 import { Firestore, getFirestore, initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore';
 import { firebaseConfig, isFirebaseConfigured } from './firebaseConfig';
@@ -28,10 +28,7 @@ if (isFirebaseConfigured) {
       (self as unknown as { FIREBASE_APPCHECK_DEBUG_TOKEN?: string }).FIREBASE_APPCHECK_DEBUG_TOKEN =
         import.meta.env.VITE_APPCHECK_DEBUG_TOKEN;
     }
-    const provider = import.meta.env.VITE_APPCHECK_PROVIDER === 'enterprise'
-      ? new ReCaptchaEnterpriseProvider(appCheckSiteKey)
-      : new ReCaptchaV3Provider(appCheckSiteKey);
-    initializeAppCheck(app, { provider, isTokenAutoRefreshEnabled: true });
+    initializeAppCheck(app, { provider: new ReCaptchaEnterpriseProvider(appCheckSiteKey), isTokenAutoRefreshEnabled: true });
   }
 }
 
