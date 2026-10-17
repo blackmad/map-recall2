@@ -1,0 +1,178 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "boeton-2-42-r1",
+ "street": "Boetonstraat",
+ "sources": [
+  {
+   "id": "strip-2025-09-26",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "image": "staging/block-face/boeton-2-42-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the indische-buurt library (buurt Makassarpleinbuurt); scores and holds in scripts/block-face/faces/boeton-2-42/auto-place.json"
+ },
+ "types": [
+  "indisch-1926-attic-lights"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012155108",
+   "slug": "boeton-155108",
+   "address": "Boetonstraat 20",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-left"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco -; strip 2025-09-26 span 1474-1726"
+   }
+  },
+  {
+   "pandId": "0363100012130694",
+   "slug": "boeton-130694",
+   "address": "Boetonstraat 18",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-right"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco -; strip 2025-09-26 span 1726-1978"
+   }
+  },
+  {
+   "pandId": "0363100012110184",
+   "slug": "boeton-110184",
+   "address": "Boetonstraat 16",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#8d6d63",
+     "evidence": "strip 2025-09-26 span 1978-2230: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2025-09-26 span 1978-2230"
+   }
+  },
+  {
+   "pandId": "0363100012087501",
+   "slug": "boeton-087501",
+   "address": "Boetonstraat 14",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#7b5e54",
+     "evidence": "strip 2025-09-26 span 2230-2482: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2025-09-26 span 2230-2482"
+   }
+  },
+  {
+   "pandId": "0363100012088267",
+   "slug": "boeton-088267",
+   "address": "Boetonstraat 12",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#9e7f76",
+     "evidence": "strip 2025-09-26 span 2482-2734: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2025-09-26 span 2482-2734"
+   }
+  },
+  {
+   "pandId": "0363100012093961",
+   "slug": "boeton-093961",
+   "address": "Boetonstraat 10",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#9f837c",
+     "evidence": "strip 2025-09-26 span 2734-2986: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2025-09-26 span 2734-2986"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

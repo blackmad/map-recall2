@@ -1,0 +1,1595 @@
+{
+ "street": "Molukkenstraat",
+ "seed": "0363100012113625",
+ "members": [
+  "0363100012113625",
+  "0363100012124425",
+  "0363100012085956",
+  "0363100012135573",
+  "0363100012074320",
+  "0363100012139846",
+  "0363100012094386",
+  "0363100012130593",
+  "0363100012148285",
+  "0363100012082453",
+  "0363100012070707",
+  "0363100012079892",
+  "0363100012080014",
+  "0363100012101846"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012133751 87.0 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012101846 (face continues: 080959)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062429",
+   "reason": "frontage 133.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012063439",
+   "reason": "frontage 61.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012063476",
+   "reason": "frontage 131.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012064639",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012064858",
+   "reason": "frontage 39.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012066024",
+   "reason": "frontage 105.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012066312",
+   "reason": "sightline to Molukkenstraat crosses 0363100012073822"
+  },
+  {
+   "pandId": "0363100012066570",
+   "reason": "frontage 37.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012066988",
+   "reason": "frontage 93.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012068826",
+   "reason": "frontage 57.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012069343",
+   "reason": "frontage 57.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012069698",
+   "reason": "frontage 52.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012070922",
+   "reason": "frontage 57.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012072685",
+   "reason": "frontage 117.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012072788",
+   "reason": "frontage 53.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012072908",
+   "reason": "frontage 54.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012073033",
+   "reason": "frontage 60.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012073400",
+   "reason": "frontage 106.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012073510",
+   "reason": "frontage 146.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012073640",
+   "reason": "frontage 69.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012073822",
+   "reason": "sightline to Molukkenstraat crosses 0363100012138387"
+  },
+  {
+   "pandId": "0363100012074432",
+   "reason": "frontage 87.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012074961",
+   "reason": "frontage 60.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012075173",
+   "reason": "frontage 66.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012075844",
+   "reason": "frontage 39.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012075959",
+   "reason": "frontage 39.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012076554",
+   "reason": "frontage 54.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012076777",
+   "reason": "frontage 49.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012062385",
+   "reason": "frontage 152.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012062404",
+   "reason": "frontage 87.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012062819",
+   "reason": "frontage 175.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012064145",
+   "reason": "frontage 142.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012066183",
+   "reason": "frontage 130.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012066275",
+   "reason": "frontage 176.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012066590",
+   "reason": "frontage 126.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012067440",
+   "reason": "frontage 175.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012067802",
+   "reason": "frontage 168.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012071250",
+   "reason": "frontage 179.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012071455",
+   "reason": "frontage 81.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012072806",
+   "reason": "frontage 73.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012073275",
+   "reason": "frontage 92.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012073673",
+   "reason": "frontage 185.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012073853",
+   "reason": "frontage 86.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012074328",
+   "reason": "frontage 90.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012074470",
+   "reason": "frontage 188.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012077835",
+   "reason": "frontage 125.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012078026",
+   "reason": "frontage 121.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012079663",
+   "reason": "frontage 140.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012080973",
+   "reason": "frontage 87.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012081206",
+   "reason": "frontage 32.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012081209",
+   "reason": "frontage 93.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012081226",
+   "reason": "frontage 47.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012081726",
+   "reason": "frontage 39.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012081796",
+   "reason": "sightline to Molukkenstraat crosses 0363100012101846"
+  },
+  {
+   "pandId": "0363100012081898",
+   "reason": "frontage 100.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012082047",
+   "reason": "frontage 106.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012082491",
+   "reason": "frontage 64.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012082754",
+   "reason": "frontage 113.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012083049",
+   "reason": "frontage 129.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012083102",
+   "reason": "frontage 72.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012083668",
+   "reason": "frontage 152.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012083683",
+   "reason": "frontage 77.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012084032",
+   "reason": "frontage 57.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012084149",
+   "reason": "frontage 30.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012084194",
+   "reason": "frontage 63.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012084255",
+   "reason": "frontage 151.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012084401",
+   "reason": "frontage 52.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012084715",
+   "reason": "frontage 32.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012084888",
+   "reason": "sightline to Molukkenstraat crosses 0363100012098432"
+  },
+  {
+   "pandId": "0363100012085131",
+   "reason": "frontage 134.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012085465",
+   "reason": "frontage 89.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012085684",
+   "reason": "sightline to Molukkenstraat crosses 0363100012088736"
+  },
+  {
+   "pandId": "0363100012086002",
+   "reason": "frontage 60.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012086098",
+   "reason": "frontage 85.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012086737",
+   "reason": "frontage 39.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012087345",
+   "reason": "frontage 71.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012087749",
+   "reason": "frontage 79.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012088631",
+   "reason": "frontage 39.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012077447",
+   "reason": "frontage 168.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012077692",
+   "reason": "frontage 175.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012080321",
+   "reason": "frontage 128.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012083492",
+   "reason": "frontage 175.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012083953",
+   "reason": "frontage 174.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012084456",
+   "reason": "frontage 102.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012085877",
+   "reason": "frontage 91.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012086583",
+   "reason": "frontage 96.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012088729",
+   "reason": "frontage 158.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012088736",
+   "reason": "sightline to Molukkenstraat crosses 0363100012105262"
+  },
+  {
+   "pandId": "0363100012089266",
+   "reason": "frontage 90.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012089342",
+   "reason": "frontage 94.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012089626",
+   "reason": "frontage 77.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012090058",
+   "reason": "frontage 123.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012091050",
+   "reason": "frontage 36.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012092844",
+   "reason": "frontage 100.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012093650",
+   "reason": "sightline to Molukkenstraat crosses 0363100012068465"
+  },
+  {
+   "pandId": "0363100012094225",
+   "reason": "frontage 48.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012095165",
+   "reason": "frontage 113.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012095414",
+   "reason": "frontage 77.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012095515",
+   "reason": "frontage 61.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012095988",
+   "reason": "frontage 95.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012096127",
+   "reason": "frontage 51.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012096517",
+   "reason": "frontage 151.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012097052",
+   "reason": "frontage 32.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012097084",
+   "reason": "frontage 139.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012097275",
+   "reason": "frontage 103.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012097629",
+   "reason": "frontage 93.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012098432",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012098612",
+   "reason": "frontage 99.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012098954",
+   "reason": "frontage 70.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012099338",
+   "reason": "frontage 53.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012099634",
+   "reason": "frontage 105.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012100145",
+   "reason": "frontage 140.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012100430",
+   "reason": "frontage 147.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012100526",
+   "reason": "frontage 67.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012102408",
+   "reason": "frontage 39.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012102480",
+   "reason": "frontage 139.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012102658",
+   "reason": "frontage 32.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012103586",
+   "reason": "frontage 139.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012103819",
+   "reason": "frontage 39.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012103997",
+   "reason": "frontage 48.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012088889",
+   "reason": "frontage 129.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012089355",
+   "reason": "frontage 171.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012090266",
+   "reason": "frontage 185.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012090579",
+   "reason": "frontage 166.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012090722",
+   "reason": "frontage 106.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012094338",
+   "reason": "frontage 154.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012094616",
+   "reason": "frontage 175.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012099162",
+   "reason": "frontage 173.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012099773",
+   "reason": "frontage 91.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012100646",
+   "reason": "frontage 110.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012102826",
+   "reason": "frontage 160.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012104289",
+   "reason": "frontage 119.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012104978",
+   "reason": "frontage 77.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012105262",
+   "reason": "sightline to Molukkenstraat crosses 0363100012113625"
+  },
+  {
+   "pandId": "0363100012105702",
+   "reason": "frontage 65.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012105884",
+   "reason": "frontage 39.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012106005",
+   "reason": "frontage 122.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012106812",
+   "reason": "frontage 88.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012107239",
+   "reason": "frontage 36.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012108323",
+   "reason": "frontage 97.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012108504",
+   "reason": "sightline to Molukkenstraat crosses 0363100012080014"
+  },
+  {
+   "pandId": "0363100012108621",
+   "reason": "frontage 70.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012109433",
+   "reason": "frontage 112.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012110647",
+   "reason": "frontage 100.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012111189",
+   "reason": "frontage 93.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012111578",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012112290",
+   "reason": "frontage 55.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012112314",
+   "reason": "frontage 70.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012113044",
+   "reason": "frontage 129.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012113301",
+   "reason": "frontage 53.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012113746",
+   "reason": "frontage 70.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012114967",
+   "reason": "frontage 68.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012115806",
+   "reason": "frontage 108.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012115808",
+   "reason": "frontage 52.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012116412",
+   "reason": "frontage 34.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012116673",
+   "reason": "frontage 110.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012116745",
+   "reason": "frontage 62.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012116812",
+   "reason": "frontage 140.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012117245",
+   "reason": "frontage 135.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012117480",
+   "reason": "frontage 59.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012117772",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012118250",
+   "reason": "frontage 47.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012118669",
+   "reason": "frontage 31.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012120215",
+   "reason": "frontage 124.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012120494",
+   "reason": "frontage 51.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012105625",
+   "reason": "frontage 123.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012105861",
+   "reason": "frontage 109.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012106670",
+   "reason": "frontage 140.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012107867",
+   "reason": "frontage 134.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012108684",
+   "reason": "frontage 164.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012109369",
+   "reason": "frontage 116.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012109485",
+   "reason": "frontage 179.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012113974",
+   "reason": "frontage 84.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012113990",
+   "reason": "frontage 75.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012115368",
+   "reason": "frontage 71.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012118074",
+   "reason": "frontage 146.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012119898",
+   "reason": "frontage 188.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012120856",
+   "reason": "frontage 39.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012122011",
+   "reason": "frontage 100.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012122027",
+   "reason": "frontage 78.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012122283",
+   "reason": "sightline to Molukkenstraat crosses 0363100012121633"
+  },
+  {
+   "pandId": "0363100012122886",
+   "reason": "frontage 64.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012122980",
+   "reason": "frontage 40.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012123735",
+   "reason": "frontage 54.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012124226",
+   "reason": "frontage 61.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012124922",
+   "reason": "frontage 39.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012125459",
+   "reason": "frontage 91.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012125472",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012125487",
+   "reason": "frontage 112.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012125623",
+   "reason": "frontage 146.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012125682",
+   "reason": "frontage 100.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012126261",
+   "reason": "frontage 117.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012126924",
+   "reason": "frontage 111.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012126984",
+   "reason": "frontage 33.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012127441",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012127906",
+   "reason": "frontage 78.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012128027",
+   "reason": "frontage 114.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012128926",
+   "reason": "frontage 82.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012129780",
+   "reason": "frontage 134.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012129979",
+   "reason": "frontage 100.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012130723",
+   "reason": "frontage 128.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012130820",
+   "reason": "frontage 82.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012131773",
+   "reason": "frontage 63.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012131991",
+   "reason": "frontage 103.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012132961",
+   "reason": "frontage 89.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012133222",
+   "reason": "frontage 51.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012133565",
+   "reason": "frontage 144.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012121998",
+   "reason": "frontage 161.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012123464",
+   "reason": "frontage 175.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012124861",
+   "reason": "frontage 172.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012125447",
+   "reason": "frontage 169.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012127131",
+   "reason": "frontage 92.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012127951",
+   "reason": "frontage 112.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012128085",
+   "reason": "frontage 134.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012128964",
+   "reason": "frontage 157.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012130546",
+   "reason": "frontage 122.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012131909",
+   "reason": "frontage 175.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012132094",
+   "reason": "frontage 111.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012132486",
+   "reason": "frontage 98.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012133599",
+   "reason": "frontage 145.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012135160",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012135598",
+   "reason": "frontage 72.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012136282",
+   "reason": "frontage 40.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012137575",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012138041",
+   "reason": "frontage 103.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012138072",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012138203",
+   "reason": "frontage 118.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012138387",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012138464",
+   "reason": "frontage 93.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012139295",
+   "reason": "frontage 136.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012140006",
+   "reason": "frontage 42.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012140394",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012140561",
+   "reason": "frontage 145.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012140648",
+   "reason": "frontage 152.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012141610",
+   "reason": "frontage 81.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012142149",
+   "reason": "frontage 116.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012142527",
+   "reason": "frontage 106.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012142829",
+   "reason": "frontage 128.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012142896",
+   "reason": "frontage 134.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012144116",
+   "reason": "frontage 113.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012144729",
+   "reason": "frontage 124.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012144738",
+   "reason": "frontage 52.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012145005",
+   "reason": "frontage 151.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012145282",
+   "reason": "frontage 67.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012145454",
+   "reason": "frontage 77.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012145792",
+   "reason": "frontage 79.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012146441",
+   "reason": "frontage 42.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012147583",
+   "reason": "frontage 49.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012148129",
+   "reason": "frontage 84.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012148181",
+   "reason": "frontage 93.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012134019",
+   "reason": "frontage 104.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012136285",
+   "reason": "frontage 170.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012136340",
+   "reason": "frontage 100.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012136698",
+   "reason": "frontage 173.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012137062",
+   "reason": "frontage 95.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012137390",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012140768",
+   "reason": "frontage 97.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012142616",
+   "reason": "frontage 117.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012142926",
+   "reason": "frontage 107.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012145209",
+   "reason": "frontage 114.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012145978",
+   "reason": "frontage 158.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012147494",
+   "reason": "frontage 171.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012148266",
+   "reason": "frontage 175.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012149677",
+   "reason": "frontage 82.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012149697",
+   "reason": "frontage 86.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012150248",
+   "reason": "frontage 151.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012150368",
+   "reason": "frontage 53.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012151389",
+   "reason": "frontage 70.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012152189",
+   "reason": "sightline to Molukkenstraat crosses 0363100012073822"
+  },
+  {
+   "pandId": "0363100012152492",
+   "reason": "frontage 135.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012153374",
+   "reason": "frontage 151.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012154744",
+   "reason": "frontage 124.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012154799",
+   "reason": "frontage 68.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012155173",
+   "reason": "frontage 106.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012157727",
+   "reason": "frontage 134.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012158229",
+   "reason": "frontage 96.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012158404",
+   "reason": "frontage 113.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012158940",
+   "reason": "frontage 107.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012159979",
+   "reason": "frontage 129.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012160224",
+   "reason": "frontage 136.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012160334",
+   "reason": "frontage 129.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012160520",
+   "reason": "frontage 102.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012161988",
+   "reason": "frontage 146.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012162921",
+   "reason": "frontage 124.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012163688",
+   "reason": "frontage 140.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012164840",
+   "reason": "frontage 145.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012165317",
+   "reason": "frontage 140.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012167039",
+   "reason": "frontage 118.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012183433",
+   "reason": "frontage 88.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012184832",
+   "reason": "sightline to Molukkenstraat crosses 0363100012107862"
+  },
+  {
+   "pandId": "0363100012185889",
+   "reason": "frontage 120.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012186169",
+   "reason": "frontage 90.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012188707",
+   "reason": "frontage 59.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012190189",
+   "reason": "frontage 101.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012190917",
+   "reason": "frontage 152.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012192487",
+   "reason": "frontage 42.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012194432",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012195682",
+   "reason": "frontage 30.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012198255",
+   "reason": "frontage 121.4 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012199412",
+   "reason": "sightline to Molukkenstraat crosses 0363100012080878"
+  },
+  {
+   "pandId": "0363100012200582",
+   "reason": "frontage 138.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012201688",
+   "reason": "sightline to Molukkenstraat crosses 0363100012130593"
+  },
+  {
+   "pandId": "0363100012203661",
+   "reason": "frontage 136.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012205452",
+   "reason": "frontage 52.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012205804",
+   "reason": "frontage 129.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012206844",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012148656",
+   "reason": "frontage 76.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012161696",
+   "reason": "frontage 116.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012184308",
+   "reason": "frontage 83.0 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012194113",
+   "reason": "frontage 150.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012208388",
+   "reason": "sightline to Molukkenstraat crosses 0363100012146291"
+  },
+  {
+   "pandId": "0363100012209041",
+   "reason": "frontage 121.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012212957",
+   "reason": "frontage 88.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012216142",
+   "reason": "frontage 134.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012219310",
+   "reason": "frontage 64.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012220645",
+   "reason": "sightline to Molukkenstraat crosses 0363100012148990"
+  },
+  {
+   "pandId": "0363100012220662",
+   "reason": "frontage 66.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012224626",
+   "reason": "frontage 40.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012228475",
+   "reason": "frontage 140.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012230054",
+   "reason": "frontage 31.9 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012230549",
+   "reason": "frontage 78.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012233169",
+   "reason": "frontage 57.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012233246",
+   "reason": "no frontage on Molukkenstraat: No footprint edge faces Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012233454",
+   "reason": "sightline to Molukkenstraat crosses 0363100012233620"
+  },
+  {
+   "pandId": "0363100012233479",
+   "reason": "frontage 124.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012233547",
+   "reason": "sightline to Molukkenstraat crosses 0363100012236754"
+  },
+  {
+   "pandId": "0363100012233598",
+   "reason": "frontage 98.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012233648",
+   "reason": "frontage 45.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012236792",
+   "reason": "sightline to Molukkenstraat crosses 0363100012088736"
+  },
+  {
+   "pandId": "0363100012236803",
+   "reason": "sightline to Molukkenstraat crosses 0363100012236754"
+  },
+  {
+   "pandId": "0363100012236850",
+   "reason": "frontage 155.2 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012237039",
+   "reason": "frontage 45.8 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012237042",
+   "reason": "frontage 74.1 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012237067",
+   "reason": "frontage 117.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012237108",
+   "reason": "sightline to Molukkenstraat crosses 0363100012233620"
+  },
+  {
+   "pandId": "0363100012237380",
+   "reason": "sightline to Molukkenstraat crosses 0363100012088736"
+  },
+  {
+   "pandId": "0363100012255136",
+   "reason": "frontage 150.5 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012570402",
+   "reason": "frontage 147.7 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012211837",
+   "reason": "frontage 154.6 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012240315",
+   "reason": "frontage 183.3 m from Molukkenstraat"
+  },
+  {
+   "pandId": "0363100012066235",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012068465",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096511",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099998",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121633",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012126945",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131049",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142736",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012223473",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012223474",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233620",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236754",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012238726",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012249646",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012113625",
+   "alongM": 0,
+   "widthM": 9.3,
+   "eavesM": 12.67,
+   "roofMaxM": 15.7,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012124425",
+   "alongM": 7.7,
+   "widthM": 6.12,
+   "eavesM": 12.33,
+   "roofMaxM": 15.54,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012085956",
+   "alongM": 13.65,
+   "widthM": 5.79,
+   "eavesM": 11.96,
+   "roofMaxM": 16.03,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012135573",
+   "alongM": 19.38,
+   "widthM": 5.67,
+   "eavesM": 12.48,
+   "roofMaxM": 15.99,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012074320",
+   "alongM": 25.13,
+   "widthM": 5.81,
+   "eavesM": 12.43,
+   "roofMaxM": 15.43,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012139846",
+   "alongM": 30.94,
+   "widthM": 5.81,
+   "eavesM": 12.4,
+   "roofMaxM": 15.39,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012094386",
+   "alongM": 36.81,
+   "widthM": 5.94,
+   "eavesM": 12.4,
+   "roofMaxM": 15.4,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012130593",
+   "alongM": 42.71,
+   "widthM": 5.86,
+   "eavesM": 12.13,
+   "roofMaxM": 15.5,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012148285",
+   "alongM": 48.77,
+   "widthM": 6.28,
+   "eavesM": 15.35,
+   "roofMaxM": 15.4,
+   "storeys3dbag": 5,
+   "builtYear": 1924,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012082453",
+   "alongM": 55.11,
+   "widthM": 6.41,
+   "eavesM": 13,
+   "roofMaxM": 13.05,
+   "storeys3dbag": 4,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012070707",
+   "alongM": 61.44,
+   "widthM": 6.24,
+   "eavesM": 12.98,
+   "roofMaxM": 13.04,
+   "storeys3dbag": 4,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012079892",
+   "alongM": 67.86,
+   "widthM": 6.59,
+   "eavesM": 12.99,
+   "roofMaxM": 13,
+   "storeys3dbag": 4,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012080014",
+   "alongM": 74.17,
+   "widthM": 6.03,
+   "eavesM": 12.94,
+   "roofMaxM": 12.98,
+   "storeys3dbag": 4,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012101846",
+   "alongM": 96.54,
+   "widthM": 38.73,
+   "eavesM": 12.88,
+   "roofMaxM": 13.09,
+   "storeys3dbag": 4,
+   "builtYear": 1924,
+   "uncertainty": []
+  }
+ ]
+}

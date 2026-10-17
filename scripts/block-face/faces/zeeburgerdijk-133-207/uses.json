@@ -1,0 +1,226 @@
+{
+ "street": "Zeeburgerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012096397",
+   "addresses": [
+    "Zeeburgerdijk 133",
+    "Zeeburgerdijk 135",
+    "Zeeburgerdijk 137",
+    "Zeeburgerdijk 139"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 133",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000878432"
+    },
+    {
+     "address": "Zeeburgerdijk 135",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000878433"
+    },
+    {
+     "address": "Zeeburgerdijk 137",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000878434"
+    },
+    {
+     "address": "Zeeburgerdijk 139",
+     "use": "kantoorfunctie",
+     "areaM2": 530,
+     "bagId": "0363010000878435"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100806",
+   "addresses": [
+    "Zeeburgerdijk 141",
+    "Zeeburgerdijk 143",
+    "Zeeburgerdijk 145"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 141-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000878436"
+    },
+    {
+     "address": "Zeeburgerdijk 145",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000878440"
+    },
+    {
+     "address": "Zeeburgerdijk 143-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000878438"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090264",
+   "addresses": [
+    "Zeeburgerdijk 147",
+    "Zeeburgerdijk 149",
+    "Zeeburgerdijk 151"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 151-H",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000878444"
+    },
+    {
+     "address": "Zeeburgerdijk 147",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000878441"
+    },
+    {
+     "address": "Zeeburgerdijk 149-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000878442"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103933",
+   "addresses": [
+    "Zeeburgerdijk 153",
+    "Zeeburgerdijk 155",
+    "Zeeburgerdijk 157"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 153-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000878446"
+    },
+    {
+     "address": "Zeeburgerdijk 155-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000878448"
+    },
+    {
+     "address": "Zeeburgerdijk 157",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000878450"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107029",
+   "addresses": [
+    "Zeeburgerdijk 159",
+    "Zeeburgerdijk 161",
+    "Zeeburgerdijk 163"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 163-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000878454"
+    },
+    {
+     "address": "Zeeburgerdijk 159",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000878451"
+    },
+    {
+     "address": "Zeeburgerdijk 161-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000878452"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125663",
+   "addresses": [
+    "Zeeburgerdijk 165",
+    "Zeeburgerdijk 167",
+    "Zeeburgerdijk 169"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 165-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000878456"
+    },
+    {
+     "address": "Zeeburgerdijk 167-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000878458"
+    },
+    {
+     "address": "Zeeburgerdijk 169",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000878460"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136055",
+   "addresses": [
+    "Zeeburgerdijk 171",
+    "Zeeburgerdijk 173",
+    "Zeeburgerdijk 175"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 175-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000878464"
+    },
+    {
+     "address": "Zeeburgerdijk 171",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000878461"
+    },
+    {
+     "address": "Zeeburgerdijk 173-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000878462"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}
