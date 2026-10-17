@@ -1,0 +1,226 @@
+{
+ "id": "vondelmonument",
+ "figures": {
+  "poet": {
+   "route": "TRELLIS.2-4B multidiffusion, 5 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:Amsterdam kunstwerk joost van den vondel.jpg",
+     "box": [
+      0.2,
+      0.08,
+      0.62,
+      0.55
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Vondelbeeld in 2019 (24).jpg",
+     "box": [
+      0.3,
+      0.12,
+      0.58,
+      0.34
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Vondelbeeld in 2019 (26).jpg",
+     "box": [
+      0.27,
+      0.12,
+      0.55,
+      0.33
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Vondelbeeld in 2019 (28).jpg",
+     "box": [
+      0.3,
+      0.07,
+      0.58,
+      0.32
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Vondelbeeld in 2019 (29).jpg",
+     "box": [
+      0.31,
+      0.08,
+      0.59,
+      0.3
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 58,
+    "trellisWall": 582.9,
+    "decimate": 9.9
+   },
+   "freeGbAtStart": 30.4,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/vondelmonument/rebuild/poet/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/vondelmonument/rebuild/poet/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/vondelmonument/rebuild/poet/mv-inputs/v2-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/vondelmonument/rebuild/poet/mv-inputs/v3-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/vondelmonument/rebuild/poet/mv-inputs/v4-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.3,
+    "generateS": 577.1,
+    "rawVertices": 487352,
+    "rawTriangles": 971120
+   },
+   "placement": {
+    "cutKitTriangles": 476,
+    "heightM": 2.484,
+    "baseM": [
+     0.096,
+     4.676,
+     0.056
+    ],
+    "facingDeg": 130
+   },
+   "orient": {
+    "front": "+y",
+    "scores": {
+     "+x": {
+      "iou": 0.476,
+      "greyCorr": -0.035,
+      "score": 0.459
+     },
+     "-x": {
+      "iou": 0.607,
+      "greyCorr": 0.108,
+      "score": 0.661
+     },
+     "+y": {
+      "iou": 0.711,
+      "greyCorr": 0.204,
+      "score": 0.813
+     },
+     "-y": {
+      "iou": 0.712,
+      "greyCorr": 0.159,
+      "score": 0.792
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 275054,
+    "afterDebris": 275054,
+    "triangles": 10022,
+    "scale": 2.612,
+    "sizeM": [
+     1.31,
+     2.48,
+     1.4
+    ],
+    "watertight": true
+   },
+   "cutMask": 476
+  }
+ },
+ "sculptor": {
+  "name": "Louis Royer (statue); P.J.H. Cuypers (pedestal)",
+  "born": 1793,
+  "died": 1868,
+  "year": 1867,
+  "publicDomain": true
+ },
+ "kit": "public/canal-drive/models/vondelmonument.glb",
+ "photos": {
+  "File:Amsterdam kunstwerk joost van den vondel.jpg": {
+   "title": "File:Amsterdam kunstwerk joost van den vondel.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam_kunstwerk_joost_van_den_vondel.jpg",
+   "author": "Wikifrits",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2025-05-11",
+   "originalSize": [
+    1402,
+    1800
+   ],
+   "sha1": "9e0970d495a7803da924305f0bf81afe586b0358",
+   "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/92/Amsterdam_kunstwerk_joost_van_den_vondel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "file": "artifacts/sculpture-reconstruction/vondelmonument/download/9e0970d495.jpg"
+  },
+  "File:Vondelbeeld in 2019 (24).jpg": {
+   "title": "File:Vondelbeeld in 2019 (24).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Vondelbeeld_in_2019_(24).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-12-01 15:23:52",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "0f7bb57d2fa5eccc8b273bdaac8b5ac3dd79b672",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Vondelbeeld_in_2019_%2824%29.jpg/1920px-Vondelbeeld_in_2019_%2824%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/vondelmonument/download/0f7bb57d2f.jpg"
+  },
+  "File:Vondelbeeld in 2019 (26).jpg": {
+   "title": "File:Vondelbeeld in 2019 (26).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Vondelbeeld_in_2019_(26).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-12-01 15:24:37",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "a74ec6199d46b68841e86dcfc8fbef475b2d9fc4",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Vondelbeeld_in_2019_%2826%29.jpg/1920px-Vondelbeeld_in_2019_%2826%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/vondelmonument/download/a74ec6199d.jpg"
+  },
+  "File:Vondelbeeld in 2019 (28).jpg": {
+   "title": "File:Vondelbeeld in 2019 (28).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Vondelbeeld_in_2019_(28).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-12-01 15:25:24",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "00a231571698ee326d5afc0729fd14a6c0ede8db",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Vondelbeeld_in_2019_%2828%29.jpg/1920px-Vondelbeeld_in_2019_%2828%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/vondelmonument/download/00a2315716.jpg"
+  },
+  "File:Vondelbeeld in 2019 (29).jpg": {
+   "title": "File:Vondelbeeld in 2019 (29).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Vondelbeeld_in_2019_(29).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-12-01 15:25:46",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "d6e04b359ba1579bb5aae3eb7d4cd879c26309da",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Vondelbeeld_in_2019_%2829%29.jpg/1920px-Vondelbeeld_in_2019_%2829%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/vondelmonument/download/d6e04b359b.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/vondelmonument/rebuild/vondelmonument.glb",
+  "triangles": 13938,
+  "keptKitTriangles": 3916,
+  "figureTriangles": 10022,
+  "droppedKitTriangles": 476
+ },
+ "generated": "2026-10-17T09:24:34.212Z",
+ "sheet": "docs/images/sculptures/vondelmonument-rebuild.jpg",
+ "verdict": "better: the seated, cloaked poet on his chair with the book reads from all four sides; the kit is a block chair figure"
+}

@@ -1,0 +1,134 @@
+{
+ "id": "sarphatimonument",
+ "figures": {
+  "bust": {
+   "route": "TripoSR, one photo",
+   "views": [
+    {
+     "title": "File:Sarpahti monument.jpg",
+     "box": [
+      0.3,
+      0.3,
+      0.7,
+      0.84
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Sarphatipark pic5.JPG",
+     "box": null,
+     "keepTop": null
+    },
+    {
+     "title": "File:Amsterdam monument samuel sarphati.jpg",
+     "box": null,
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "triposrWall": 41.8,
+    "decimate": 3
+   },
+   "triposr": {
+    "loadS": 3.6,
+    "cutoutS": 10.5,
+    "modelS": 3.9,
+    "meshS": 20,
+    "device": "mps",
+    "rawTriangles": 68548,
+    "rawVertices": 34275,
+    "image": "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/sarphatimonument/download/8154a85651.jpg",
+    "box": "0.3,0.3,0.7,0.84"
+   },
+   "placement": {
+    "cutKitTriangles": 282,
+    "heightM": 1,
+    "baseM": [
+     0,
+     4.61,
+     0
+    ],
+    "facingDeg": 180
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 68548,
+    "afterDebris": 68546,
+    "triangles": 6000,
+    "scale": 1.048,
+    "sizeM": [
+     0.58,
+     1,
+     0.39
+    ],
+    "watertight": true
+   },
+   "cutMask": 282
+  }
+ },
+ "sculptor": {
+  "name": "J.Th. Stracké (bust); J. Gosschalk (monument)",
+  "born": 1817,
+  "died": 1891,
+  "year": 1886,
+  "publicDomain": true
+ },
+ "kit": "public/canal-drive/models/sarphatimonument.glb",
+ "photos": {
+  "File:Sarphatipark pic5.JPG": {
+   "title": "File:Sarphatipark pic5.JPG",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Sarphatipark_pic5.JPG",
+   "author": "Alf van Beem",
+   "licence": "Public domain",
+   "licenceUrl": null,
+   "date": "2016-05-28 10:16:20",
+   "originalSize": [
+    3456,
+    4608
+   ],
+   "sha1": "090019bc632466e2d4b4670038f44a28358d4f68",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Sarphatipark_pic5.JPG/1920px-Sarphatipark_pic5.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/sarphatimonument/download/090019bc63.jpg"
+  },
+  "File:Amsterdam monument samuel sarphati.jpg": {
+   "title": "File:Amsterdam monument samuel sarphati.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam_monument_samuel_sarphati.jpg",
+   "author": "Wikifrits",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2025-05-10",
+   "originalSize": [
+    1166,
+    1800
+   ],
+   "sha1": "e14992dec7fa3e09100b979b593c9587e54133bc",
+   "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/33/Amsterdam_monument_samuel_sarphati.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "file": "artifacts/sculpture-reconstruction/sarphatimonument/download/e14992dec7.jpg"
+  },
+  "File:Sarpahti monument.jpg": {
+   "title": "File:Sarpahti monument.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Sarpahti_monument.jpg",
+   "author": "Huegette D. Eldering",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2016-05-07 14:32:09",
+   "originalSize": [
+    2592,
+    3888
+   ],
+   "sha1": "8154a8565153b96566fc788bbc1a0e46d4223693",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Sarpahti_monument.jpg/1920px-Sarpahti_monument.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/sarphatimonument/download/8154a85651.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/sarphatimonument/rebuild/sarphatimonument.glb",
+  "triangles": 19350,
+  "keptKitTriangles": 13350,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 282
+ },
+ "generated": "2026-10-17T09:37:58.764Z",
+ "sheet": "docs/images/sculptures/sarphatimonument-rebuild.jpg",
+ "verdict": "better: a real bust with head, collar and shoulders replaces the kit's snowman; one profile photo, so the far side is guessed"
+}

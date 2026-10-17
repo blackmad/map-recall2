@@ -1,0 +1,150 @@
+{
+ "note": "Statue rebuild 2026-10-17 (lane/statue-rebuild-20261017): per statue the Commons categories searched for side views, the route chosen from the photos, and the figures that replace kit parts. Read by commons-candidates.ts and rebuild.ts. Outputs are gitignored under artifacts/sculpture-reconstruction/<id>/.",
+ "statues": {
+  "lieverdje": {"kit": "lieverdje", "verdict": "better: a real hands-on-hips boy with the right front, where the kit is a block figure", "categories": ["Category:Amsterdams Lieverdje"],
+   "sculptor": {"name": "Carel Kneulman", "born": 1915, "died": 2008, "year": 1960},
+   "figures": [
+    {"name": "boy", "route": "trellis", "facing": 330, "material": "bronze", "cut": {"min": [-1, 1.2, -1], "max": [1, 3, 1]},
+     "views": [{"title": "File:2024 Lieverdje, Amsterdam (D).jpg", "box": [0, 0, 1920, 2180]}, {"title": "File:2024 Lieverdje, Amsterdam (E).jpg", "box": [0, 0, 1920, 2080]},
+               {"title": "File:2024 Lieverdje, Amsterdam (G).jpg", "box": [0, 0, 1920, 2120]}, {"title": "File:2024 Lieverdje, Amsterdam (F).jpg", "box": [0, 0, 1920, 2100]}]}
+   ]},
+  "de-dokwerker": {"kit": "de-dokwerker", "verdict": "better: the stocky docker's stance and rolled sleeves read; hands at the sides are softer than in the photo", "categories": ["Category:De Dokwerker"], "skipCategories": ["Category:Wreath laying ceremonies at De Dokwerker (Amsterdam)"],
+   "sculptor": {"name": "Mari Andriessen", "born": 1897, "died": 1979, "year": 1952},
+   "figures": [
+    {"name": "docker", "route": "trellis", "facing": 252, "material": "bronze", "cut": {"min": [-2, 1.6, -2], "max": [2, 5, 2]},
+     "views": [{"title": "File:Amsterdam, De dokwerker 07.JPG", "box": [0, 0, 1, 0.56]}, {"title": "File:Herdenking februaristaking vlag halfstok bij dokwerken, Bestanddeelnr 925-4107.jpg", "box": [0, 0, 1, 0.91]},
+               {"title": "File:Herdenking februaristaking 1941 op Jonas Daniel Meijerplein Na de kranslegging , Bestanddeelnr 916-0908.jpg", "box": [0, 0, 1, 0.545]}]}
+   ]},
+  "rembrandtmonument": {"kit": "rembrandtmonument", "verdict": "better: the cloaked painter with beret and folded hands reads from all sides, where the kit is blocks; the Night Watch group (22 figures) stays kit", "categories": ["Category:Rembrandtmonument, Amsterdam"], "stripCrop": {"min": [-2.5, 0, -2.5], "max": [2.5, 7.5, 2.5]},
+   "sculptor": {"name": "Louis Royer", "born": 1793, "died": 1868, "year": 1852},
+   "note": "statue only: the Night Watch group (2006, 22 bronze figures after the painting) stays kit; one run per figure is out of scope for this batch",
+   "figures": [
+    {"name": "painter", "route": "trellis", "facing": 225, "material": "bronze", "cut": {"min": [-1.2, 3.85, -1.2], "max": [1.2, 7, 1.2]},
+     "views": [{"title": "File:Rembrandtplein (11).jpg", "box": [0.25, 0.1, 0.75, 0.95]}, {"title": "File:Louis Royer-Rembrandt-Amsterdam.jpg", "box": [0.25, 0, 0.95, 1]}, {"title": "File:Rembrandt.JPG", "box": [0.3, 0.05, 0.75, 0.5]}, {"title": "File:Rembrandt (42707741651).jpg", "box": [0.25, 0.35, 0.8, 0.98]}]}
+   ]},
+  "vondelmonument": {"kit": "vondelmonument", "verdict": "better: the seated, cloaked poet on his chair with the book reads from all four sides; the kit is a block chair figure", "categories": ["Category:Vondelbeeld"], "stripCrop": {"min": [-3, 3.8, -3], "max": [3, 7.4, 3]},
+   "sculptor": {"name": "Louis Royer (statue); P.J.H. Cuypers (pedestal)", "born": 1793, "died": 1868, "year": 1867},
+   "figures": [
+    {"name": "poet", "route": "trellis", "facing": 130, "material": "bronze", "cut": {"min": [-3, 4.6, -3], "max": [3, 8, 3]},
+     "views": [{"title": "File:Amsterdam kunstwerk joost van den vondel.jpg", "box": [0.2, 0.08, 0.62, 0.55]}, {"title": "File:Vondelbeeld in 2019 (24).jpg", "box": [0.3, 0.12, 0.58, 0.34]},
+               {"title": "File:Vondelbeeld in 2019 (26).jpg", "box": [0.27, 0.12, 0.55, 0.33]},
+               {"title": "File:Vondelbeeld in 2019 (28).jpg", "box": [0.3, 0.07, 0.58, 0.32]}, {"title": "File:Vondelbeeld in 2019 (29).jpg", "box": [0.31, 0.08, 0.59, 0.3]}]}
+   ]},
+  "wilhelmina-ruiterstandbeeld": {"kit": "wilhelmina-ruiterstandbeeld", "verdict": "better: a true dressage horse with raised foreleg and side-saddle rider, against the kit's box horse; heading set by eye (orient_front picked the wrong axis)", "categories": ["Category:Wilhelmina by Theresia van der Pant"],
+   "sculptor": {"name": "Theresia van der Pant", "born": 1924, "died": 2016, "year": 1972},
+   "figures": [
+    {"name": "horse-and-rider", "route": "trellis", "facing": 255, "front": "-y", "frontNote": "v0 is a 3/4 view from the horse's front-left (about 40 deg off its axis) and orient_front could not tell front from back (IoU 0.48/0.44): front and facing set by eye so the horse heads 265 like the kit", "material": "bronze", "cut": {"min": [-3, 3.57, -3], "max": [3, 9, 3]},
+     "views": [{"title": "File:Statue of Queen Wilhelmina of the Netherlands, Amsterdam.jpg", "box": [0.1, 0.05, 0.85, 0.75]}, {"title": "File:Wilhelmina Rokin door Theresia van der Pant.jpg"},
+               {"title": "File:File by Peteris P1170742 (3666927469).jpg", "box": [0.25, 0.25, 0.95, 0.98]}, {"title": "File:Wilhelmina2 Rokin door Theresia van der Pant.jpg"}]}
+   ]},
+  "sarphatimonument": {"kit": "sarphatimonument", "verdict": "better: a real bust with head, collar and shoulders replaces the kit's snowman; one profile photo, so the far side is guessed", "categories": ["Category:Sarphatimonument"], "stripCrop": {"min": [-0.8, 4.0, -0.8], "max": [0.8, 6.0, 0.8]},
+   "sculptor": {"name": "J.Th. Stracké (bust); J. Gosschalk (monument)", "born": 1817, "died": 1891, "year": 1886},
+   "figures": [
+    {"name": "bust", "route": "triposr", "facing": 180, "front": "-y", "material": "bronze", "cut": {"min": [-0.6, 4.6, -0.6], "max": [0.6, 5.7, 0.6]},
+     "views": [{"title": "File:Sarpahti monument.jpg", "box": [0.3, 0.3, 0.7, 0.84]}, {"title": "File:Sarphatipark pic5.JPG"}, {"title": "File:Amsterdam monument samuel sarphati.jpg"}]}
+   ]},
+  "thorbecke-standbeeld": {"kit": "thorbecke-standbeeld", "verdict": "slightly better: the frock coat drape and the lectern read as one cast; at gallery size close to the kit", "categories": ["Category:Thorbeckemonument, Amsterdam"],
+   "sculptor": {"name": "Ferdinand Leenhoff", "born": 1841, "died": 1914, "year": 1876},
+   "figures": [
+    {"name": "statesman", "route": "trellis", "facing": 200, "material": "bronze", "cut": {"min": [-2, 3.46, -2], "max": [2, 7, 2]},
+     "views": [{"title": "File:Thorbecke statue Amsterdam.jpg", "box": [0.15, 0, 0.85, 0.45]}, {"title": "File:Thorbecke statue - amsterdam nl.jpg", "box": [0.32, 0, 0.9, 0.57]},
+               {"title": "File:Exterieur OVERZICHT - Amsterdam - 20292626 - RCE.jpg", "box": [0.22, 0.04, 0.52, 0.37]}, {"title": "File:Eind, overzicht - Amsterdam - 20021118 - RCE.jpg", "box": [0.27, 0.3, 0.43, 0.62]}]}
+   ]},
+  "multatuli-standbeeld": {"kit": "multatuli-standbeeld", "verdict": "better: the twisted Bayens torso and outstretched arm read, though the surface is rough", "categories": ["Category:Multatuli bust (Amsterdam)"],
+   "sculptor": {"name": "Hans Bayens", "born": 1924, "died": 2003, "year": 1987},
+   "figures": [
+    {"name": "bust", "route": "trellis", "facing": 350, "material": "bronze", "cut": {"min": [-2, 1.12, -2], "max": [2, 4, 2]},
+     "views": [{"title": "File:Amsterdam32.JPG", "box": [0, 0, 9999, 1880]}, {"title": "File:Multatuli Hans Bayens Torensluis Amsterdam.jpg", "box": [0, 0, 9999, 1760]},
+               {"title": "File:Brug 9- Torensluis over het Singel - toeristen rond het standbeeld van Mutatuli (buste door Hans Bayens, 1987) - Amsterdam - 20536117 - RCE.jpg", "box": [0, 0, 1000, 1760]},
+               {"title": "File:Brug 9- Torensluis over het Singel - toeristen rond het standbeeld van Mutatuli (buste door Hans Bayens, 1987) - Amsterdam - 20536116 - RCE.jpg", "box": [100, 0, 1150, 1450]}]}
+   ]},
+  "anne-frank-merwedeplein": {"kit": "anne-frank-merwedeplein", "verdict": "better: coat, suitcase, shoulder bag and turned head all read; the kit girl is generic", "categories": ["Category:Statue of Anne Frank, Merwedeplein, Amsterdam"],
+   "sculptor": {"name": "Jet Schepp", "born": 1937, "died": null, "year": 2005},
+   "figures": [
+    {"name": "girl", "route": "trellis", "facing": 200, "material": "bronze", "cut": {"min": [-1, 1.42, -1], "max": [1, 3.2, 1]}, "cutMaterials": ["bronze", "dark", "ochre", "slate"],
+     "views": [{"title": "File:Anne Frank-Denkmal Amsterdam 03.jpg", "box": [0, 0, 9999, 2980]}, {"title": "File:Anne Frank 2019, Merwedeplein (3).jpg", "box": [0, 0, 9999, 1580]},
+               {"title": "File:Anne Frank 2019, Merwedeplein (1).jpg", "box": [0, 0, 9999, 1600]}, {"title": "File:Anne Frank-Denkmal Amsterdam 02.jpg", "box": [0, 0, 9999, 3280]}]}
+   ]},
+  "spinoza-standbeeld": {"kit": "spinoza-standbeeld", "verdict": "no better: the cloak is right but the head merges into a hood and the birds on the cloak are lost; the kit head is more legible", "categories": ["Category:Spinozamonument Amsterdam"], "stripCrop": {"min": [-1.6, 0, -3.3], "max": [1.8, 3, 0]},
+   "sculptor": {"name": "Nicolas Dings", "born": 1953, "died": null, "year": 2008},
+   "figures": [
+    {"name": "philosopher", "route": "trellis", "facing": 180, "material": "bronze", "cut": {"min": [-0.5, 0.6, -2.3], "max": [1, 3, -1]},
+     "views": [{"title": "File:Amsterdam-spinoza.JPG", "box": [0, 0, 1, 0.92]}, {"title": "File:2019 Spinozamonument (11).jpg", "box": [0, 0, 1, 0.93]}, {"title": "File:2019 Spinozamonument (09).jpg", "box": [0, 0, 1, 0.86]}, {"title": "File:2019 Spinozamonument (07).jpg"}]}
+   ]},
+  "teun-de-jager": {"kit": "teun-de-jager", "verdict": "better: the falcon on the raised arm and the dog at his feet read; the kit is a plain upright", "categories": ["Category:Teun de Jager (Vondelpark)", "Category:Teun de Jager"], "subcategories": false,
+   "sculptor": {"name": "Jan Bronner", "born": 1881, "died": 1972, "year": 1958},
+   "figures": [
+    {"name": "hunter", "route": "trellis", "facing": 250, "material": "bronze", "cut": {"min": [-1, 1.1, -1], "max": [1, 3.2, 1]},
+     "views": [{"title": "File:2019 Teun de Jager (02).jpg", "box": [0, 0, 1, 0.53]}, {"title": "File:2019 Teun de Jager (03).jpg", "box": [0, 0, 1, 0.54]}, {"title": "File:2019 Teun de Jager (04).jpg", "box": [0, 0, 1, 0.56]}, {"title": "File:2019 Teun de Jager (05).jpg", "box": [0, 0, 1, 0.53]}]}
+   ]},
+  "johnny-jordaan-groep": {"kit": "johnny-jordaan-groep", "verdict": "better: Manke Nelis on his stool with the double bass, Johnny Meijer seated at the accordion and the three busts all read as people, where the kit figures are blocky; five runs, about 6.7k tris each", "categories": ["Category:Johnny Jordaanplein", "Category:Bust of Johnny Jordaan, Amsterdam"],
+   "sculptor": {"name": "Kees Verkade (Johnny Jordaan, Tante Leen); others per the plaques (Manke Nelis, Johnny Meijer, Mien and Jan Froger, signed 'Dominic 2010')", "born": 1941, "died": 2020, "year": 1991},
+   "figures": [
+    {"name": "manke-nelis", "route": "trellis", "facing": 160, "material": "bronze", "cut": {"min": [-3.8, 0.8, 0.9], "max": [-2.1, 3.1, 2.4]},
+     "views": [{"title": "File:2024 Johnny Jordaanplein, Asd-Manke Nelis (A).jpg", "box": [0.3, 0.04, 0.64, 0.72]}, {"title": "File:2024 Johnny Jordaanplein, Asd-Manke Nelis (C).jpg", "box": [0.2, 0, 0.8, 0.93]}, {"title": "File:2024 Johnny Jordaanplein, Asd-Manke Nelis (E).jpg", "box": [0.22, 0, 0.7, 0.82]}]},
+    {"name": "tante-leen", "route": "trellis", "facing": 160, "material": "bronze", "cut": {"min": [-2, 0.85, 0.2], "max": [-1.2, 1.8, 0.75]},
+     "views": [{"title": "File:2024 Johnny Jordaanplein, Asd-Tante leen (A).jpg", "box": [0.28, 0, 0.75, 0.56]}, {"title": "File:2024 Johnny Jordaanplein, Asd-Tante leen (B).jpg", "box": [0.3, 0, 0.68, 0.57]}, {"title": "File:2024 Johnny Jordaanplein, Asd-Tante leen (C).jpg", "box": [0.2, 0, 0.78, 0.86]}]},
+    {"name": "johnny-jordaan", "route": "trellis", "facing": 160, "material": "bronze", "cut": {"min": [-0.45, 0.85, -0.3], "max": [0.45, 1.8, 0.3]},
+     "views": [{"title": "File:2024 Johnny Jordaanplein, Asd-Johnny Jordaan (A).jpg", "box": [0.24, 0, 0.7, 0.53]}, {"title": "File:2024 Johnny Jordaanplein, Asd-Johnny Jordaan (B).jpg", "box": [0.31, 0, 0.62, 0.58]}, {"title": "File:2024 Johnny Jordaanplein, Asd-Johnny Jordaan (E).jpg", "box": [0.2, 0.07, 0.67, 0.93]}]},
+    {"name": "johnny-meijer", "route": "trellis", "facing": 160, "material": "bronze", "cut": {"min": [0.75, 0.75, -1], "max": [2.1, 2.2, 0.4]},
+     "views": [{"title": "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (A).jpg", "box": [0.18, 0, 0.72, 0.66]}, {"title": "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (C).jpg", "box": [0.24, 0, 0.7, 0.82]}, {"title": "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (D).jpg", "box": [0.2, 0, 0.84, 0.87]}, {"title": "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (F).jpg", "box": [0.08, 0.05, 0.8, 0.95]}]},
+    {"name": "mien-en-jan-froger", "route": "trellis", "facing": 160, "material": "bronze", "cut": {"min": [2.75, 0.9, -1.1], "max": [4.05, 2.45, 0.15]},
+     "views": [{"title": "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (A).jpg", "box": [0.16, 0, 0.64, 0.6]}, {"title": "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (C).jpg", "box": [0.23, 0.03, 0.68, 0.83]}, {"title": "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (D).jpg", "box": [0.22, 0.05, 0.6, 0.77]}]}
+   ]},
+  "theo-thijssen-standbeeld": {"kit": "theo-thijssen-standbeeld", "verdict": "better: the master leaning over the boy at the open-framed desk reads as Bayens's group from every side; the kit figures are stick-like. Man, boy and desk are one casting, so one run, not two", "categories": ["Category:Statue of Theo Thijssen by Hans Bayens", "Category:Theo Thijssenmonument"],
+   "sculptor": {"name": "Hans Bayens", "born": 1924, "died": 2003, "year": 1960},
+   "figures": [
+    {"name": "master-boy-desk", "route": "trellis", "facing": 0, "material": "bronze", "cut": {"min": [-1, 1.0, -1.2], "max": [1, 3, 0.5]},
+     "note": "one run for the fused bronze (master, boy and desk are one casting and one kit part); separate runs fused the boy into the desk in batch 1",
+     "views": [{"title": "File:Lindengracht, Theo Thijssen beeld foto 1.jpg", "box": [0.2, 0.08, 0.8, 0.59]}, {"title": "File:Lindengracht, Theo Thijssen beeld foto 2.jpg", "box": [0.2, 0.05, 0.8, 0.93]},
+               {"title": "File:2023 Theo Thijssen door Bayens, Asd (3).jpg", "box": [0.15, 0, 0.85, 0.5]}, {"title": "File:2023 Theo Thijssen door Bayens, Asd (2).jpg", "box": [0.2, 0.08, 0.75, 0.55]}]}
+   ]},
+  "carmiggelt-borstbeeld": {"kit": "carmiggelt-borstbeeld", "verdict": "better: the head with glasses, the jacket lapels and the sloping shoulders read like Verkade's bust; three photos (two from the 1988 unveiling), so the back is soft", "categories": ["Category:Buste Simon Carmiggelt (Kees Verkade, Amsterdam)"],
+   "sculptor": {"name": "Kees Verkade", "born": 1941, "died": 2020, "year": 1988},
+   "figures": [
+    {"name": "bust", "route": "trellis", "facing": 150, "material": "bronze", "cut": {"min": [-1, 1.1, -1], "max": [1, 2.2, 1]},
+     "views": [{"title": "File:Simon Carmiggeltbeeld.jpg", "box": [0.25, 0.08, 0.75, 0.41]}, {"title": "File:Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdamweduwe Tiny Carmigge…, Bestanddeelnr 934-3460.jpg", "box": [0.63, 0, 1, 0.83]},
+               {"title": "File:Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdam Ton van Duinhoven en, Bestanddeelnr 934-3461.jpg", "box": [0, 0, 0.32, 0.85]}]}
+   ]},
+  "gandhi-churchill-laan": {"kit": "gandhi-churchill-laan", "verdict": "better: the striding Gandhi with staff and wrapped shawl reads; the kit walker is stiff", "categories": ["Category:Mahatma Gandhi (Amsterdam)"],
+   "sculptor": {"name": "Gautam Pal", "born": null, "died": null, "year": 1990},
+   "figures": [
+    {"name": "walker", "route": "trellis", "facing": 90, "material": "bronze", "cutMaterials": ["bronze", "dark"], "cut": {"min": [-1, 1.24, -1], "max": [1, 3.4, 1]},
+     "views": [{"title": "File:Statue of Gandhi, Amsterdam.jpg", "box": [0.2, 0, 0.7, 0.72]}, {"title": "File:Gandhi (Amsterdam) (1).jpg", "box": [0.38, 0.12, 0.62, 0.44]},
+               {"title": "File:Gandhi (Amsterdam) (2).jpg", "box": [0.32, 0.18, 0.58, 0.56]}, {"title": "File:Gandhi (Amsterdam) (3).jpg", "box": [0.28, 0.15, 0.58, 0.49]}]}
+   ]},
+  "waterdraagster-bellamyplein": {"kit": "waterdraagster-bellamyplein", "verdict": "worse: TripoSR tilts the figure forward and lumps the arms; the kit is clean and already faithful", "categories": ["Category:Waterdraagster met vissen"], "stripCrop": {"min": [-1, 0, -1], "max": [1, 1.8, 1]},
+   "sculptor": {"name": "Leo Braat", "born": 1908, "died": 1979, "year": 1951},
+   "note": "the Waterdraagster only (front and back photos, no side: TripoSR); the two fish stay kit",
+   "figures": [
+    {"name": "waterdraagster", "route": "triposr", "facing": 0, "front": "-y", "material": "bronze", "cut": {"min": [-0.6, 0.42, -0.5], "max": [0.6, 1.6, 0.5]},
+     "views": [{"title": "File:2021 Waterdraagster met vissen-Waterdraagster (1).jpg", "box": [0.16, 0.09, 0.83, 0.91]}, {"title": "File:Waterdraagster 2.JPG", "box": [0.2, 0, 0.95, 0.93]}]}
+   ]},
+  "mama-baranka": {"kit": "mama-baranka", "verdict": "no better: the rough-cast surface makes TRELLIS punch holes through the torso and legs; the stance is truer than the kit's blob figure, but the see-through holes show at gallery size", "categories": ["Category:Mama Baranka"],
+   "sculptor": {"name": "Nelson Carrilho", "born": 1960, "died": null, "year": 2002},
+   "figures": [
+    {"name": "woman", "route": "trellis", "facing": 200, "material": "bronze", "note": "the cut-outs drop the cast ground disc, so the kit disc stays", "cut": {"min": [-1.5, 0.12, -1.5], "max": [1.5, 2.3, 1.5]},
+     "views": [{"title": "File:Mama Baranka in 2019 (1).jpg", "box": [0.05, 0.1, 0.95, 0.85]}, {"title": "File:Mama Baranka in 2019 (3).jpg", "box": [0.05, 0.1, 0.95, 0.85]}, {"title": "File:Mama Baranka in 2019 (5).jpg", "box": [0, 0.1, 0.95, 0.85]}, {"title": "File:Amsterdam Nelson Carrilho Mama Baranka.jpg", "box": [0.25, 0.1, 0.75, 0.95]}]}
+   ]},
+  "spanjemonument": {"kit": "spanjemonument", "verdict": "better: the two linked flying figures with stretched arms and legs read, where the kit has two flat planks; placed broadside to the south-east like the kit", "categories": ["Category:Spanjemonument"],
+   "sculptor": {"name": "Eddy Roos", "born": 1949, "died": null, "year": 1986},
+   "note": "the two flying figures only; the steel stem stays kit",
+   "figures": [
+    {"name": "flyers", "route": "trellis", "facing": 145, "facingNote": "v0 is a broadside view, which the kit shows from the south-east, so the first photo is placed at 145 (the kit facing 235 is the flight direction)", "material": "bronze", "cut": {"min": [-1, 5.1, -1.5], "max": [2.2, 6.4, 0.7]},
+     "views": [{"title": "File:Spanje monument groot.jpg", "box": [0.25, 0.05, 0.72, 0.26]}, {"title": "File:2021 Spanjemonument-beeld (4).jpg", "box": [0.25, 0.02, 0.72, 0.3]}, {"title": "File:2021 Spanjemonument-beeld (1).jpg", "box": [0.28, 0.06, 0.64, 0.43]}, {"title": "File:Opdracht Tendenzen Spanje-Monument, Bestanddeelnr 933-6767.jpg", "box": [0.2, 0.02, 0.85, 0.34]}]}
+   ]},
+  "kinderbrug-meisje-eekhoorns": {"kit": "kinderbrug-meisje-eekhoorns", "verdict": "better: the girl with a squirrel in her arms over a ring of squirrels reads; one photo, the back is guessed", "categories": ["Category:Brug 420, Kindertjesbrug"],
+   "sculptor": {"name": "Hildo Krop", "born": 1884, "died": 1970, "year": 1931},
+   "note": "one colour photo and one 1979 RCE photo, both from the front: TripoSR; the brick pier stays kit",
+   "figures": [
+    {"name": "girl-squirrels", "route": "triposr", "facing": 180, "front": "-y", "material": "stone", "cutMaterials": ["stone"], "cut": {"min": [-1, 2.42, -1], "max": [1, 3.6, 1]},
+     "views": [{"title": "File:Brug 420 Kinderbrug pic 7.JPG", "box": [0.14, 0.07, 0.86, 0.79], "model": "u2net"}, {"title": "File:Brug over Boerenwetering tussen Muzenplein en Churchilllaan - Amsterdam - 20011025 - RCE.jpg"}]}
+   ]},
+  "kinderbrug-jongen-konijnen": {"kit": "kinderbrug-jongen-konijnen", "verdict": "better: the seated boy among the rabbits reads, where the kit is egg shapes; one 1979 photo, the back is guessed", "categories": ["Category:Brug 420, Kindertjesbrug"],
+   "sculptor": {"name": "Hildo Krop", "born": 1884, "died": 1970, "year": 1931},
+   "figures": [
+    {"name": "boy-rabbits", "route": "triposr", "facing": 180, "front": "-y", "note": "the side and 1981 cut-outs lost the rabbits and the colour photo is the back: TripoSR on the 1979 RCE front view", "material": "stone", "cutMaterials": ["stone"], "cut": {"min": [-1, 2.42, -1], "max": [1, 3.6, 1]},
+     "views": [{"title": "File:Brug over Boerenwetering beeldhouwwerk tussen Churchilllaan en Muzenplein - Amsterdam - 20011022 - RCE.jpg", "box": [0.05, 0.06, 0.94, 0.68]}]}
+   ]}
+ }
+}

@@ -1,0 +1,200 @@
+{
+ "id": "theo-thijssen-standbeeld",
+ "figures": {
+  "master-boy-desk": {
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:Lindengracht, Theo Thijssen beeld foto 1.jpg",
+     "box": [
+      0.2,
+      0.08,
+      0.8,
+      0.59
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Lindengracht, Theo Thijssen beeld foto 2.jpg",
+     "box": [
+      0.2,
+      0.05,
+      0.8,
+      0.93
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2023 Theo Thijssen door Bayens, Asd (3).jpg",
+     "box": [
+      0.15,
+      0,
+      0.85,
+      0.5
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2023 Theo Thijssen door Bayens, Asd (2).jpg",
+     "box": [
+      0.2,
+      0.08,
+      0.75,
+      0.55
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 64,
+    "trellisWall": 574.8,
+    "decimate": 6.5
+   },
+   "freeGbAtStart": 33.9,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/theo-thijssen-standbeeld/rebuild/master-boy-desk/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/theo-thijssen-standbeeld/rebuild/master-boy-desk/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/theo-thijssen-standbeeld/rebuild/master-boy-desk/mv-inputs/v2-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/theo-thijssen-standbeeld/rebuild/master-boy-desk/mv-inputs/v3-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.2,
+    "generateS": 569.8,
+    "rawVertices": 769900,
+    "rawTriangles": 1574192
+   },
+   "placement": {
+    "cutKitTriangles": 2044,
+    "heightM": 1.678,
+    "baseM": [
+     0.051,
+     1.002,
+     -0.26
+    ],
+    "facingDeg": 0
+   },
+   "orient": {
+    "front": "-y",
+    "scores": {
+     "+x": {
+      "iou": 0.557,
+      "greyCorr": -0.051,
+      "score": 0.531
+     },
+     "-x": {
+      "iou": 0.392,
+      "greyCorr": 0.065,
+      "score": 0.425
+     },
+     "+y": {
+      "iou": 0.443,
+      "greyCorr": -0.071,
+      "score": 0.408
+     },
+     "-y": {
+      "iou": 0.789,
+      "greyCorr": 0.443,
+      "score": 1.01
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 382476,
+    "afterDebris": 379624,
+    "triangles": 5998,
+    "scale": 1.741,
+    "sizeM": [
+     1.43,
+     1.68,
+     1.31
+    ],
+    "watertight": false
+   },
+   "cutMask": 2044
+  }
+ },
+ "sculptor": {
+  "name": "Hans Bayens",
+  "born": 1924,
+  "died": 2003,
+  "year": 1960,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/theo-thijssen-standbeeld.glb",
+ "photos": {
+  "File:Lindengracht, Theo Thijssen beeld foto 1.jpg": {
+   "title": "File:Lindengracht, Theo Thijssen beeld foto 1.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg",
+   "author": "Alf van Beem",
+   "licence": "Public domain",
+   "licenceUrl": null,
+   "date": "2017-03-12 11:17:41",
+   "originalSize": [
+    3456,
+    4608
+   ],
+   "sha1": "1fbb4bcee2453d59f993285f846bd1910ba2f59a",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Lindengracht%2C_Theo_Thijssen_beeld_foto_1.jpg/1920px-Lindengracht%2C_Theo_Thijssen_beeld_foto_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/theo-thijssen-standbeeld/download/1fbb4bcee2.jpg"
+  },
+  "File:Lindengracht, Theo Thijssen beeld foto 2.jpg": {
+   "title": "File:Lindengracht, Theo Thijssen beeld foto 2.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_2.jpg",
+   "author": "Alf van Beem",
+   "licence": "Public domain",
+   "licenceUrl": null,
+   "date": "2017-03-12 11:18:12",
+   "originalSize": [
+    4608,
+    3456
+   ],
+   "sha1": "963be6af0d6d155f16c1938597823e16b68f0faa",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Lindengracht%2C_Theo_Thijssen_beeld_foto_2.jpg/1920px-Lindengracht%2C_Theo_Thijssen_beeld_foto_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/theo-thijssen-standbeeld/download/963be6af0d.jpg"
+  },
+  "File:2023 Theo Thijssen door Bayens, Asd (3).jpg": {
+   "title": "File:2023 Theo Thijssen door Bayens, Asd (3).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2023_Theo_Thijssen_door_Bayens,_Asd_(3).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2023-11-12 12:05:04",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "290afa0271255e464577ffefaac6c09ca71fa6f9",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/2023_Theo_Thijssen_door_Bayens%2C_Asd_%283%29.jpg/1920px-2023_Theo_Thijssen_door_Bayens%2C_Asd_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/theo-thijssen-standbeeld/download/290afa0271.jpg"
+  },
+  "File:2023 Theo Thijssen door Bayens, Asd (2).jpg": {
+   "title": "File:2023 Theo Thijssen door Bayens, Asd (2).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2023_Theo_Thijssen_door_Bayens,_Asd_(2).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2023-11-12 12:04:51",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "a9b3d686d2987c86da143030e7410cf72263c4c9",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/2023_Theo_Thijssen_door_Bayens%2C_Asd_%282%29.jpg/1920px-2023_Theo_Thijssen_door_Bayens%2C_Asd_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/theo-thijssen-standbeeld/download/a9b3d686d2.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/theo-thijssen-standbeeld/rebuild/theo-thijssen-standbeeld.glb",
+  "triangles": 8890,
+  "keptKitTriangles": 2892,
+  "figureTriangles": 5998,
+  "droppedKitTriangles": 2044
+ },
+ "generated": "2026-10-17T09:56:55.660Z",
+ "sheet": "docs/images/sculptures/theo-thijssen-standbeeld-rebuild.jpg",
+ "verdict": "better: the master leaning over the boy at the open-framed desk reads as Bayens's group from every side; the kit figures are stick-like. Man, boy and desk are one casting, so one run, not two"
+}

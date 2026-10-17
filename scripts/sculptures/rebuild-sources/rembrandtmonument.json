@@ -1,0 +1,215 @@
+{
+ "id": "rembrandtmonument",
+ "figures": {
+  "painter": {
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:Rembrandtplein (11).jpg",
+     "box": [
+      0.25,
+      0.1,
+      0.75,
+      0.95
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Louis Royer-Rembrandt-Amsterdam.jpg",
+     "box": [
+      0.25,
+      0,
+      0.95,
+      1
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Rembrandt.JPG",
+     "box": [
+      0.3,
+      0.05,
+      0.75,
+      0.5
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Rembrandt (42707741651).jpg",
+     "box": [
+      0.25,
+      0.35,
+      0.8,
+      0.98
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 50.7,
+    "trellisWall": 2202.4,
+    "decimate": 3.5
+   },
+   "freeGbAtStart": 27.3,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/rembrandtmonument/rebuild/painter/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/rembrandtmonument/rebuild/painter/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/rembrandtmonument/rebuild/painter/mv-inputs/v2-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/rembrandtmonument/rebuild/painter/mv-inputs/v3-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 1.2,
+    "generateS": 2186.2,
+    "rawVertices": 431050,
+    "rawTriangles": 869082
+   },
+   "placement": {
+    "cutKitTriangles": 416,
+    "heightM": 2.739,
+    "baseM": [
+     -0.089,
+     3.85,
+     -0.096
+    ],
+    "facingDeg": 225
+   },
+   "orient": {
+    "front": "+y",
+    "scores": {
+     "+x": {
+      "iou": 0.707,
+      "greyCorr": 0.335,
+      "score": 0.874
+     },
+     "-x": {
+      "iou": 0.666,
+      "greyCorr": 0.034,
+      "score": 0.683
+     },
+     "+y": {
+      "iou": 0.821,
+      "greyCorr": 0.266,
+      "score": 0.954
+     },
+     "-y": {
+      "iou": 0.835,
+      "greyCorr": 0.147,
+      "score": 0.909
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 190660,
+    "afterDebris": 190202,
+    "triangles": 6000,
+    "scale": 2.733,
+    "sizeM": [
+     0.96,
+     2.74,
+     1.07
+    ],
+    "watertight": true
+   },
+   "cutMask": 416
+  }
+ },
+ "sculptor": {
+  "name": "Louis Royer",
+  "born": 1793,
+  "died": 1868,
+  "year": 1852,
+  "publicDomain": true
+ },
+ "kit": "public/canal-drive/models/rembrandtmonument.glb",
+ "photos": {
+  "File:Rembrandtplein (11).jpg": {
+   "title": "File:Rembrandtplein (11).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Rembrandtplein_(11).jpg",
+   "author": "Elekes Andor",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2018-08-10 18:39:26",
+   "originalSize": [
+    3000,
+    4000
+   ],
+   "sha1": "135d0a36a2e6c6c87d184beec2fc86cb8f99b287",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Rembrandtplein_%2811%29.jpg/1920px-Rembrandtplein_%2811%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/rembrandtmonument/download/135d0a36a2.jpg"
+  },
+  "File:Louis Royer-Rembrandt-Amsterdam.jpg": {
+   "title": "File:Louis Royer-Rembrandt-Amsterdam.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Louis_Royer-Rembrandt-Amsterdam.jpg",
+   "author": "Yair Haklai",
+   "licence": "CC BY-SA 3.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "date": "2011-08-19",
+   "originalSize": [
+    2448,
+    3264
+   ],
+   "sha1": "15b5e4d7616753dabb513e6a069a5f043c474df2",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Louis_Royer-Rembrandt-Amsterdam.jpg/1920px-Louis_Royer-Rembrandt-Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/rembrandtmonument/download/15b5e4d761.jpg"
+  },
+  "File:Rembrandt.JPG": {
+   "title": "File:Rembrandt.JPG",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Rembrandt.JPG",
+   "author": "Владимир Шеляпин",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "",
+   "originalSize": [
+    3000,
+    4000
+   ],
+   "sha1": "8e33ba1610b5772c9ef23e72bc24d2243c2853d4",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Rembrandt.JPG/1920px-Rembrandt.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/rembrandtmonument/download/8e33ba1610.jpg"
+  },
+  "File:Rembrandplein monument.JPG": {
+   "title": "File:Rembrandplein monument.JPG",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Rembrandplein_monument.JPG",
+   "author": "Luu",
+   "licence": "Public domain",
+   "licenceUrl": null,
+   "date": "7 May 2009, 12:08:45 (according to Exif data)",
+   "originalSize": [
+    3741,
+    2585
+   ],
+   "sha1": "de18f2e21448e41c3b0739ebae497b1576b830a3",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Rembrandplein_monument.JPG/1920px-Rembrandplein_monument.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/rembrandtmonument/download/de18f2e214.jpg"
+  },
+  "File:Rembrandt (42707741651).jpg": {
+   "title": "File:Rembrandt (42707741651).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Rembrandt_(42707741651).jpg",
+   "author": "Julien Chatelain from Paris, France",
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+   "date": "2018-04-30 17:55",
+   "originalSize": [
+    3264,
+    4896
+   ],
+   "sha1": "5a448ce879f91e0db1d8418b71715deb96dee671",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Rembrandt_%2842707741651%29.jpg/1920px-Rembrandt_%2842707741651%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/rembrandtmonument/download/5a448ce879.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/rembrandtmonument/rebuild/rembrandtmonument.glb",
+  "triangles": 13726,
+  "keptKitTriangles": 7726,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 416
+ },
+ "generated": "2026-10-17T11:10:17.175Z",
+ "sheet": "docs/images/sculptures/rembrandtmonument-rebuild.jpg",
+ "verdict": "better: the cloaked painter with beret and folded hands reads from all sides, where the kit is blocks; the Night Watch group (22 figures) stays kit"
+}

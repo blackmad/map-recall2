@@ -1,0 +1,200 @@
+{
+ "id": "teun-de-jager",
+ "figures": {
+  "hunter": {
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:2019 Teun de Jager (02).jpg",
+     "box": [
+      0,
+      0,
+      1,
+      0.53
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2019 Teun de Jager (03).jpg",
+     "box": [
+      0,
+      0,
+      1,
+      0.54
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2019 Teun de Jager (04).jpg",
+     "box": [
+      0,
+      0,
+      1,
+      0.56
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2019 Teun de Jager (05).jpg",
+     "box": [
+      0,
+      0,
+      1,
+      0.53
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 78.6,
+    "trellisWall": 372.4,
+    "decimate": 3.5
+   },
+   "freeGbAtStart": 29.6,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/teun-de-jager/rebuild/hunter/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/teun-de-jager/rebuild/hunter/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/teun-de-jager/rebuild/hunter/mv-inputs/v2-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/teun-de-jager/rebuild/hunter/mv-inputs/v3-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.2,
+    "generateS": 367.1,
+    "rawVertices": 347375,
+    "rawTriangles": 729600
+   },
+   "placement": {
+    "cutKitTriangles": 570,
+    "heightM": 1.89,
+    "baseM": [
+     0,
+     1.1,
+     0
+    ],
+    "facingDeg": 250
+   },
+   "orient": {
+    "front": "-y",
+    "scores": {
+     "+x": {
+      "iou": 0.378,
+      "greyCorr": -0.069,
+      "score": 0.344
+     },
+     "-x": {
+      "iou": 0.481,
+      "greyCorr": 0.287,
+      "score": 0.624
+     },
+     "+y": {
+      "iou": 0.691,
+      "greyCorr": 0.13,
+      "score": 0.756
+     },
+     "-y": {
+      "iou": 0.879,
+      "greyCorr": 0.234,
+      "score": 0.996
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 149836,
+    "afterDebris": 149592,
+    "triangles": 6000,
+    "scale": 1.887,
+    "sizeM": [
+     0.79,
+     1.89,
+     0.8
+    ],
+    "watertight": true
+   },
+   "cutMask": 570
+  }
+ },
+ "sculptor": {
+  "name": "Jan Bronner",
+  "born": 1881,
+  "died": 1972,
+  "year": 1958,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/teun-de-jager.glb",
+ "photos": {
+  "File:2019 Teun de Jager (02).jpg": {
+   "title": "File:2019 Teun de Jager (02).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(02).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-12-18 09:51:28",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "74591157a314ec5922482717ad75983edbce3b8d",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/2019_Teun_de_Jager_%2802%29.jpg/1920px-2019_Teun_de_Jager_%2802%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/teun-de-jager/download/74591157a3.jpg"
+  },
+  "File:2019 Teun de Jager (03).jpg": {
+   "title": "File:2019 Teun de Jager (03).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(03).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-12-18 09:51:39",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "2666546e29200344615339767f490b823a81c9d3",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/2019_Teun_de_Jager_%2803%29.jpg/1920px-2019_Teun_de_Jager_%2803%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/teun-de-jager/download/2666546e29.jpg"
+  },
+  "File:2019 Teun de Jager (04).jpg": {
+   "title": "File:2019 Teun de Jager (04).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(04).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-12-18 09:51:51",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "15d457aa645c4c79b46db87e7063be9cc3498304",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/2019_Teun_de_Jager_%2804%29.jpg/1920px-2019_Teun_de_Jager_%2804%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/teun-de-jager/download/15d457aa64.jpg"
+  },
+  "File:2019 Teun de Jager (05).jpg": {
+   "title": "File:2019 Teun de Jager (05).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(05).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-12-18 09:52:02",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "d75ef8eea920d03a1b5f1d4fa6c33920b7e283f9",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/2019_Teun_de_Jager_%2805%29.jpg/1920px-2019_Teun_de_Jager_%2805%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/teun-de-jager/download/d75ef8eea9.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/teun-de-jager/rebuild/teun-de-jager.glb",
+  "triangles": 6012,
+  "keptKitTriangles": 12,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 570
+ },
+ "generated": "2026-10-17T09:28:14.829Z",
+ "sheet": "docs/images/sculptures/teun-de-jager-rebuild.jpg",
+ "verdict": "better: the falcon on the raised arm and the dog at his feet read; the kit is a plain upright"
+}
