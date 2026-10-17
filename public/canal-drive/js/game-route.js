@@ -1102,8 +1102,8 @@ class GameRouteRuntime {
     const tours = await this._loadTourCatalog();
     const tour = T && tours.find(candidate => candidate.id === tourId);
     if (!tour) { this._tour = null; this._setRouteError('That tour is unavailable.'); return; }
-    // Tours ride by bike in Amsterdam from their first stop (Home and Here
-    // pick their own starts). That is the tour's setting, not the player's:
+    // Tours ride by bike in Amsterdam, leading in to the first stop from the
+    // rider's location (only when location is already allowed) or a hub. That is the tour's setting, not the player's:
     // snapshot what it changes, restore it when the tour ends, never save it.
     const { patch, restore } = T.tourPrefsOverride(this._prefs(), this._tourPrefsRestore);
     this._tourPrefsRestore = restore;
@@ -1113,7 +1113,8 @@ class GameRouteRuntime {
     this.homeBase = null;
     this.gpsOrigin = null;
     await this._loadRoutePoiCatalog();
-    this._tour = { tour, state: T.startTour(tour), completed: false };
+    const start = T.chooseTourStart(tour, await this._tourHere());
+    this._tour = { tour, state: T.startTour(tour, start), completed: false };
     T.saveTourState(this._tour.state);
     this._launchTourLeg();
   }
@@ -1133,6 +1134,17 @@ class GameRouteRuntime {
     return true;
   }
 
+  /** The rider's [lng, lat] when location is already granted; never prompts. */
+  async _tourHere() {
+    try {
+      if (!navigator.geolocation || !navigator.permissions || !window.isSecureContext) return null;
+      const status = await navigator.permissions.query({ name: 'geolocation' });
+      if (status.state !== 'granted') return null;
+      const fix = await new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 4000, maximumAge: 120000 }));
+      return [fix.coords.longitude, fix.coords.latitude];
+    } catch (_) { return null; }
+  }
+
   /** Ride the tour's current leg. A stop whose name would answer a street
    *  question is held back until arrival (tourRoute.tourDestination). */
   _launchTourLeg() {
@@ -1141,8 +1153,12 @@ class GameRouteRuntime {
     const { tour, state } = this._tour;
     const leg = T.nextLeg(state, tour);
     if (!leg) return;
-    // After the first leg the start is the stop just reached, already named.
-    const from = leg.fromIndex > 0 ? T.stopAsRoutePoi(tour, leg.fromIndex) : T.tourDestination(tour, leg.fromIndex);
+    // The lead-in starts at the rider ('here', private) or a hub; after it the
+    // start is the stop just reached, already named.
+    const start = state.start;
+    const from = leg.fromIndex < 0
+      ? { id: start.private ? 'here' : 'tour-start', name: start.name, lat: start.lngLat[1], lng: start.lngLat[0] }
+      : leg.fromIndex > 0 || state.start ? T.stopAsRoutePoi(tour, leg.fromIndex) : T.tourDestination(tour, leg.fromIndex);
     const to = T.tourDestination(tour, leg.toIndex);
     if (leg.fromIndex > 0) this._skipNextIntro = true;
     this._launchPoiRoute(from, to, { explicitDestination: true });

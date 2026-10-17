@@ -121,6 +121,16 @@ test('?tour= starts the tour, hides a street stop until arrival, and rides on st
   await expect.poll(() => page.evaluate(() => window.canalRecallGame?._tour?.tour.id), { timeout: 60_000 }).toBe('jewish-amsterdam');
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.player?.x)), { timeout: 120_000 }).toBe(true);
 
+  // The lead-in rides from Centraal (no location permission here) to stop 1,
+  // so the first stop is reached, not handed over at the start.
+  const lead = await page.evaluate(() => ({ from: window.canalRecallGame.routeFrom.name, to: window.canalRecallGame.routeTo.name, tour: window.canalRecallGame._tour!.state }));
+  expect(lead.from).toBe('Amsterdam Centraal');
+  expect(lead.to).toBe('Anne Frank House');
+  expect(lead.tour).toMatchObject({ legIndex: -1, completedStops: [] });
+  await arrive(page);
+  expect(await page.evaluate(() => window.canalRecallGame._tourArrival)).toMatchObject({ name: 'Anne Frank House', stopIndex: 0, completed: false });
+  await nextLeg(page, await page.evaluate(() => window.canalRecallGame._shareUrl));
+
   // Leg 1 ends on Jodenbreestraat, a street: its name stays off the HUD and the briefing.
   const before = await page.evaluate(() => {
     const game = window.canalRecallGame;
@@ -137,7 +147,7 @@ test('?tour= starts the tour, hides a street stop until arrival, and rides on st
   expect(first.to.name).toBe('Jodenbreestraat');
   expect(first.arrival).toMatchObject({ name: 'Jodenbreestraat', stopIndex: 1, completed: false });
   expect(first.arrival!.why.length).toBeGreaterThan(20);
-  expect(first.tour).toEqual({ tourId: 'jewish-amsterdam', legIndex: 1, completedStops: [0, 1] });
+  expect(first.tour).toMatchObject({ tourId: 'jewish-amsterdam', legIndex: 1, completedStops: [0, 1] });
   await page.waitForTimeout(400);
   await page.screenshot({ path: shot('tour-stop-card') });
 

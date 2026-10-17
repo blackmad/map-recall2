@@ -1,8 +1,9 @@
 // Themed tours as a sequence of route legs.
 //
 // A tour is an ordered list of stops (public/data/extracts/amsterdam/tours.json,
-// built by scripts/tours/build-tours.ts). The ride starts at the first stop and
-// each leg is an ordinary route from one stop to the next; arriving at the leg's
+// built by scripts/tours/build-tours.ts). The ride first leads in to stop 1
+// from the rider's location or a central hub (so stop 1 is ridden to, not
+// handed over at the start), then each leg is an ordinary route from one stop to the next; arriving at the leg's
 // end advances the tour, and arriving at the last stop completes it (a tour
 // stamp, see collection/poiCollection.ts). Pure: no DOM, no Game instance.
 
@@ -31,12 +32,20 @@ export interface Tour {
   stops: TourStop[];
 }
 
+/** Where the lead-in leg to the first stop starts. `private` marks the rider's own location. */
+export interface TourStart {
+  name: string;
+  lngLat: LngLat;
+  private?: boolean;
+}
+
 export interface TourState {
   tourId: string;
-  /** The leg being ridden: from stops[legIndex] to stops[legIndex + 1]. */
+  /** The leg being ridden: from stops[legIndex] to stops[legIndex + 1]; -1 is the lead-in from `start`. */
   legIndex: number;
-  /** Indices of the stops reached, in order (the first stop is the start). */
+  /** Indices of the stops reached, in order. */
   completedStops: number[];
+  start?: TourStart;
 }
 
 export interface TourLeg {
@@ -61,8 +70,43 @@ export function legKm(a: LngLat, b: LngLat): number {
   return Math.hypot(dx, dy);
 }
 
-/** Start a tour at its first stop. */
-export function startTour(tour: Tour): TourState {
+/** Lead-in legs shorter than this would finish almost at once; longer than this, the hub is the wrong side of town. */
+export const MIN_LEAD_IN_KM = 0.5;
+export const MAX_LEAD_IN_KM = 4;
+
+/** Well-known starting points, Centraal first: a visitor arrives there. */
+export const TOUR_HUBS: readonly TourStart[] = [
+  { name: 'Amsterdam Centraal', lngLat: [4.9003, 52.3791] },
+  { name: 'Dam', lngLat: [4.8932, 52.3731] },
+  { name: 'Leidseplein', lngLat: [4.8828, 52.3641] },
+  { name: 'Museumplein', lngLat: [4.8810, 52.3580] },
+  { name: 'Waterlooplein', lngLat: [4.9020, 52.3675] },
+];
+
+/**
+ * The lead-in start: the rider's location when it is a real ride away from the
+ * first stop, else Centraal when in range, else the nearest hub at least
+ * MIN_LEAD_IN_KM away. Null only for a tour with no stops.
+ */
+export function chooseTourStart(tour: Tour, here?: LngLat | null): TourStart | null {
+  const first = tour.stops[0];
+  if (!first) return null;
+  const inRange = (point: LngLat) => {
+    const km = legKm(point, first.lngLat);
+    return km >= MIN_LEAD_IN_KM && km <= MAX_LEAD_IN_KM;
+  };
+  if (here && inRange(here)) return { name: 'Here', lngLat: here, private: true };
+  if (inRange(TOUR_HUBS[0].lngLat)) return TOUR_HUBS[0];
+  const far = TOUR_HUBS
+    .map(hub => ({ hub, km: legKm(hub.lngLat, first.lngLat) }))
+    .filter(({ km }) => km >= MIN_LEAD_IN_KM)
+    .sort((a, b) => a.km - b.km);
+  return far[0]?.hub ?? TOUR_HUBS[0];
+}
+
+/** Start a tour: with a `start`, a lead-in leg rides to the first stop; without one, the first stop is the start. */
+export function startTour(tour: Tour, start?: TourStart | null): TourState {
+  if (start && tour.stops.length) return { tourId: tour.id, legIndex: -1, completedStops: [], start };
   return { tourId: tour.id, legIndex: 0, completedStops: tour.stops.length ? [0] : [] };
 }
 
@@ -74,6 +118,12 @@ export function isComplete(state: TourState, tour: Tour): boolean {
 /** The leg to ride now, or null when the tour is complete (or a mismatched state). */
 export function nextLeg(state: TourState, tour: Tour): TourLeg | null {
   if (state.tourId !== tour.id || isComplete(state, tour)) return null;
+  if (state.legIndex === -1) {
+    const first = tour.stops[0];
+    if (!state.start || !first) return null;
+    const from: TourStop = { name: state.start.name, lngLat: state.start.lngLat, why: '', source: '' };
+    return { index: -1, from, to: first, fromIndex: -1, toIndex: 0, km: legKm(from.lngLat, first.lngLat) };
+  }
   const from = tour.stops[state.legIndex];
   const to = tour.stops[state.legIndex + 1];
   if (!from || !to) return null;
@@ -92,6 +142,7 @@ export function advanceOnArrival(state: TourState, tour: Tour): { state: TourSta
     tourId: state.tourId,
     legIndex: Math.min(leg.toIndex, tour.stops.length - 1),
     completedStops: [...state.completedStops, leg.toIndex],
+    ...(state.start ? { start: state.start } : {}),
   };
   return { state: next, completed: isComplete(next, tour), reached: leg.to };
 }
