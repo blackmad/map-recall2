@@ -5,6 +5,8 @@
 // riding surface. A way is missing when at least half its stations are (at least 3). Both road modes.
 //
 //   npx tsx scripts/own-ground/audit-bridge-surfaces.ts [--json=out.json] [--cells=-2_0,-1_0] [--all] [--highways=primary|secondary|tertiary]
+//   … --streets      the street classes only (STREET_HIGHWAYS: the "road bridge ways" of the board, 1,294 city-wide)
+//   … --max=N        exit 1 when more than N bridge ways miss a surface (in any mode run): the cap of the check
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
@@ -21,7 +23,10 @@ const read = async (path: string) => {
   return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes);
 };
 
-export interface MissingWay { id: number; name: string; highway: string; lng: number; lat: number; stations: number; missing: number; tops: string }
+/** The street classes (the board's "road bridge ways"): not paths, cycleways, service roads or motorways. */
+export const STREET_HIGHWAYS = /^(primary|secondary|tertiary|unclassified|residential|living_street)$/;
+
+export interface MissingWay { id: number; name: string; highway: string; lng: number; lat: number; stations: number; missing: number; tops: string; /** At the way's middle: the riding surface and the water level there (a polder whose level the extract lacks floods its decks). */ ride: number; waterZ: number }
 
 export async function auditBridgeSurfaces(store: GroundStore, keys: string[], highways?: RegExp, log = false): Promise<{ ways: number; missing: MissingWay[] }> {
   const cache = new Map<string, BuiltCell>();
@@ -55,7 +60,7 @@ export async function auditBridgeSurfaces(store: GroundStore, keys: string[], hi
       if (bad >= 3 && bad * 2 >= stations) {
         const [lng, lat] = fromLocal(mid[0], mid[1]);
         if (log) console.log(`  missing ${w.id} ${w.tags.highway} "${w.tags.name ?? ''}" ${fromLocal(mid[0], mid[1]).map(v => v.toFixed(5))} ${bad}/${stations}`);
-        missing.push({ id: w.id, name: w.tags.name ?? '', highway: w.tags.highway, lng: +lng.toFixed(5), lat: +lat.toFixed(5), stations, missing: bad, tops: [...tops].map(([k, v]) => `${k}:${v}`).join(' ') });
+        missing.push({ id: w.id, name: w.tags.name ?? '', highway: w.tags.highway, lng: +lng.toFixed(5), lat: +lat.toFixed(5), stations, missing: bad, tops: [...tops].map(([k, v]) => `${k}:${v}`).join(' '), ride: +store.surface.height(mid[0], mid[1]).toFixed(2), waterZ: +store.waterZ(mid[0], mid[1]).toFixed(2) });
       }
     }
   }
@@ -66,16 +71,20 @@ async function main(): Promise<void> {
   const roads = new GroundStore(read, { roads: true }), plain = new GroundStore(read, { roads: false });
   await roads.init(); await plain.init();
   const keys = flag('cells')?.split(',') ?? (process.argv.includes('--all') ? [...roads.osmCells].sort() : [...roads.roadCells].sort());
-  const highways = flag('highways') ? new RegExp(`^(${flag('highways')})$`) : undefined;
+  const highways = flag('highways') ? new RegExp(`^(${flag('highways')})$`) : process.argv.includes('--streets') ? STREET_HIGHWAYS : undefined;
+  const max = flag('max') !== undefined ? Number(flag('max')) : Infinity;
+  let over = false;
   const out: Record<string, unknown> = { cells: keys };
   // --all: the city in the default mode only (outside the roads-v1 cells both modes build the same ground).
   for (const [mode, s] of (process.argv.includes('--all') ? [['roads', roads]] : [['roads', roads], ['bands', plain]]) as [string, GroundStore][]) {
     const r = await auditBridgeSurfaces(s, keys, highways, true);
     out[mode] = r;
-    console.log(`${mode}: ${r.missing.length} of ${r.ways} bridge ways missing a surface`);
-    for (const m of r.missing) console.log(`  ${m.id} ${m.highway} "${m.name}" ${m.lng},${m.lat} ${m.missing}/${m.stations} stations (${m.tops})`);
+    console.log(`${mode}: ${r.missing.length} of ${r.ways} bridge ways missing a surface${max < Infinity ? ` (at most ${max})` : ''}`);
+    if (r.missing.length > max) over = true;
+    for (const m of r.missing) console.log(`  ${m.id} ${m.highway} "${m.name}" ${m.lng},${m.lat} ${m.missing}/${m.stations} stations (${m.tops}); ride ${m.ride}, water ${m.waterZ}${m.waterZ > m.ride ? ' (under the water level)' : ''}`);
   }
   if (flag('json')) writeFileSync(flag('json')!, JSON.stringify(out, null, 1));
+  if (over) { console.log('FAIL more bridge ways without a surface than the cap'); process.exitCode = 1; }
 }
 
 if (process.argv[1]?.endsWith('audit-bridge-surfaces.ts')) main().catch(e => { console.error(e); process.exit(1); });
