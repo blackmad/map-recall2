@@ -296,6 +296,8 @@ function RideOptions({
           icons={VIEW_ICONS}
           layout="icons"
           showCurrent
+          gloss={VIEW.find(option => option.value === prefs.viewMode)?.hint}
+          keepGloss
         />
       ) : null}
       {live && threeD ? (

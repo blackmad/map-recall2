@@ -23,7 +23,9 @@ const CSS = `
   background:rgba(28,24,18,.38);animation:onb-fade .22s ease-out both}
 @keyframes onb-fade{from{opacity:0}to{opacity:1}}
 #${ROOT_ID} .onb-card{position:relative;width:min(100%,440px);max-height:100%;overflow:auto;
-  display:flex;flex-direction:column;gap:10px;padding:20px 22px 16px;
+  display:flex;flex-direction:column;gap:10px;padding:44px 22px 16px;
+  border:1px solid var(--day-line-strong,#b9ad98);border-radius:14px;background:var(--day-paper,#f4efe5);
+  box-shadow:0 18px 48px rgba(31,28,23,.28),0 2px 6px rgba(31,28,23,.12);
   color:var(--day-ink,#1f1c17);font-family:var(--font-ui,system-ui,sans-serif);
   animation:onb-rise .32s cubic-bezier(.16,1,.3,1) both}
 @keyframes onb-rise{from{transform:translateY(10px)}to{transform:none}}
@@ -67,7 +69,7 @@ const CSS = `
 #${ROOT_ID} .onb-close svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
 @media (max-width:480px){
   #${ROOT_ID}{align-items:flex-end}
-  #${ROOT_ID} .onb-card{padding:18px 16px 12px}
+  #${ROOT_ID} .onb-card{padding:44px 16px 12px}
   #${ROOT_ID} h2{font-size:22px}
 }
 `;
@@ -162,7 +164,7 @@ export function openOnboarding(options: OnboardingOptions = {}): () => void {
   root.setAttribute('aria-modal', 'true');
   root.setAttribute('aria-labelledby', 'onboarding-title');
   root.setAttribute('aria-describedby', 'onboarding-body');
-  const card = el(doc, 'div', 'onb-card enamel-plaque enamel-framed enamel-panel');
+  const card = el(doc, 'div', 'onb-card');
   const close = el(doc, 'button', 'onb-close');
   close.type = 'button';
   close.setAttribute('aria-label', 'Close the intro');
