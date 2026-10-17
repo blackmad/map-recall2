@@ -60,8 +60,9 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
   if (intent?.roof !== undefined) {
     const r = intent.roof;
     oneOf(r?.material, ROOF_MATERIALS, 'roof.material');
-    for (const k of Object.keys(r ?? {})) if (!['material', 'flat', 'surfaces'].includes(k)) problems.push(`roof.${k}: unknown field (material, flat, surfaces)`);
+    for (const k of Object.keys(r ?? {})) if (!['material', 'flat', 'surfaces', 'flatHex'].includes(k)) problems.push(`roof.${k}: unknown field (material, flat, surfaces, flatHex)`);
     if (r?.flat !== undefined) oneOf(r.flat, ROOF_MATERIALS, 'roof.flat');
+    if (r?.flatHex !== undefined && !/^#[0-9a-f]{6}$/i.test(r.flatHex)) problems.push(`roof.flatHex: a measured #rrggbb (roof-flat.ts), got ${JSON.stringify(r.flatHex)}`);
     if (r?.surfaces !== undefined && !Array.isArray(r.surfaces)) problems.push('roof.surfaces: list of {roofSurfaces, material, evidence}');
     else if (r?.surfaces) {
       const listed = new Set<number>();
