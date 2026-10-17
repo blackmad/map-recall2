@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Neighbourhood explorer: browse, download, report, request (2026-10-17)
+
+`explore.html` (`/explore`), typed in `src/canalRecall/explorer/`, bundle
+20.5 KB; three.js loads only when a building opens. Index
+`explorer-index.json` (`build:explorer-index`, 164 KB / 36 KB gz): 513 models
+(312 landmark, 150 ordinary, 49 block-face chunks, 2 recipe houses) in 64
+neighbourhoods. Panel: live GLB view, pand ids, Wikipedia, Download GLB,
+licence line naming the sources (3DBAG CC BY 4.0, BAG, OSM ODbL), Report a
+problem (`category: building`, `subject: model`). A map click off the pins
+looks up the z14 building tiles and offers Request this building (`pand`,
+`osm` or `point`). 3D Warehouse-derived models would lose the download (none
+today). Landing links point here. `test:explorer` 11/11, `explore.spec` 6/6
+on dev and on `firebase serve`.
+
 ## Public preview batch: one origin, landing, onboarding, notable destinations, report a problem, monitoring (2026-10-17)
 
 Integrated from `preview/*-20261017` lanes (plan
