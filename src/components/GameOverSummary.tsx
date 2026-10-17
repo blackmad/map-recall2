@@ -13,9 +13,9 @@ import {
   Layers,
 } from 'lucide-react';
 import { sounds } from '../utils/audio';
-import type { ReviewState } from '../spacedRepetition';
-import { loadLocalReviewStates } from '../progressRepository';
-import { newlyEarned, sessionGroups } from '../mapRecall/progress';
+import type { ReviewEvent, ReviewState } from '../spacedRepetition';
+import { loadLocalReviewEvents, loadLocalReviewStates } from '../progressRepository';
+import { newlyEarned, postcardProgress, sessionGroups } from '../mapRecall/progress';
 import { PostcardHeader } from './PostcardHeader';
 import { postcardCityName, postcardPhotosFor } from '../mapRecall/postcardPhotos';
 
@@ -35,6 +35,8 @@ interface GameOverSummaryProps {
   reviewStatesBefore?: ReviewState[];
   /** After the session; defaults to the local store, which recordReview has updated. */
   reviewStatesAfter?: ReviewState[];
+  /** The review-event log after the session; defaults to the local log. Postcards need it (progress.ts `newlyEarned`). */
+  reviewEvents?: ReviewEvent[];
   /** Clock for "today"/"tomorrow" (Storybook). */
   now?: number;
 }
@@ -57,16 +59,29 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
   onSwitchMode,
   reviewStatesBefore = [],
   reviewStatesAfter,
+  reviewEvents,
   now,
 }) => {
   const [sessionNow] = useState(() => now ?? Date.now());
   const [statesAfter] = useState(() => reviewStatesAfter ?? loadLocalReviewStates());
+  const [events] = useState(() => reviewEvents ?? loadLocalReviewEvents());
   const groups = useMemo(
     () => sessionGroups(roundResults, reviewStatesBefore, statesAfter, sessionNow),
     [roundResults, reviewStatesBefore, statesAfter, sessionNow],
   );
-  const earnedThisSession = useMemo(() => newlyEarned(roundResults, reviewStatesBefore), [roundResults, reviewStatesBefore]);
+  // Fires only when this session completed the postcard rule, not on a first correct answer.
+  const earnedThisSession = useMemo(
+    () => newlyEarned(roundResults, reviewStatesBefore, statesAfter, events),
+    [roundResults, reviewStatesBefore, statesAfter, events],
+  );
   const hero = earnedThisSession[0];
+  // Neighbourhoods this session moved toward a card without finishing it.
+  const onTheirWay = useMemo(() => {
+    const asked = new Set(roundResults.filter((result) => result.feature.type === 'neighborhood').map((result) => result.feature.name.trim().toLowerCase()));
+    if (!asked.size) return 0;
+    return postcardProgress(statesAfter, events, currentCity.id)
+      .filter((area) => !area.earned && asked.has(area.name.trim().toLowerCase())).length;
+  }, [roundResults, statesAfter, events, currentCity.id]);
   const roundIndex = useMemo(() => new globalThis.Map(roundResults.map((result, index) => [result, index + 1])), [roundResults]);
   const [isMapInspectMode, setIsMapInspectMode] = useState(false);
   useEffect(() => {
@@ -198,6 +213,9 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
               <h2 className="enamel-brand text-2xl sm:text-3xl text-white">Session complete</h2>
               <p className="text-xs sm:text-sm text-white/60" data-testid="game-over-subtitle">{subtitle}</p>
               <div className={`text-sm sm:text-base font-bold ${rankColor}`}>{rankTitle}</div>
+              {onTheirWay > 0 && <p className="text-xs text-white/60" data-testid="game-over-postcard-progress">
+                {onTheirWay === 1 ? '1 postcard' : `${onTheirWay} postcards`} on the way · recall {onTheirWay === 1 ? 'it' : 'them'} on another day to collect
+              </p>}
             </div>
 
             {/* Stats Row */}

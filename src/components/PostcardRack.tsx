@@ -1,13 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { X } from 'lucide-react';
 import type { StreetFeature } from '../types';
-import type { ReviewState } from '../spacedRepetition';
+import type { ReviewEvent, ReviewState } from '../spacedRepetition';
 import { PostcardHeader } from './PostcardHeader';
 import { PostcardExport } from './PostcardExport';
 import { postcardCityName, postcardPhotosFor } from '../mapRecall/postcardPhotos';
 import { extractCityById } from '../mapRecall/cityExtracts';
 import { fetchQuizFeatures } from '../dataSources/featureProvider';
-import { earnedAreas } from '../mapRecall/progress';
+import { POSTCARD_RULE, postcardProgress } from '../mapRecall/progress';
+import { loadLocalReviewEvents } from '../progressRepository';
 
 const PLACEHOLDERS = 3;
 /** Cards shown on the desktop vista panel before "Show all" (two rows; the phone strip scrolls instead). */
@@ -33,7 +34,13 @@ interface RackCard {
   key: string;
   name: string;
   photos: string[];
+  /** Set while the card is still being earned: "1 of 2 days". */
+  progress?: string;
 }
+
+const safeLocalEvents = (): ReviewEvent[] => {
+  try { return loadLocalReviewEvents(); } catch { return []; }
+};
 
 /** The postcard-shaped slot a card sits in, so the strip does not jump while the frame is composed. */
 const CardFrame: React.FC<{ children: React.ReactNode; muted?: boolean }> = ({ children, muted }) =>
@@ -45,9 +52,10 @@ const CardFrame: React.FC<{ children: React.ReactNode; muted?: boolean }> = ({ c
   </div>;
 
 /**
- * Earned "Greetings from" postcards: one per neighbourhood answered well in any
- * mode (src/mapRecall/progress.ts `earnedAreas`), newest first, followed by a
- * few greyed blanks showing there is more to collect. Names and photographs
+ * Earned "Greetings from" postcards: one per neighbourhood recalled on two
+ * different days (src/mapRecall/progress.ts `postcardProgress`), newest first,
+ * then faded cards still being earned with their progress ("1 of 2 days"), then
+ * a few greyed blanks showing there is more to collect. Names and photographs
  * come from the city's extract, fetched lazily; until it arrives the earned
  * cards render typography-only from the review store's snapshots.
  */
@@ -61,13 +69,15 @@ export const PostcardRack: React.FC<{
   cityId: string;
   cityCenter: [number, number];
   states: readonly ReviewState[];
+  /** The review-event log; defaults to the local one (read again whenever `states` changes). */
+  events?: readonly ReviewEvent[];
   /** Neighbourhood features to use instead of fetching the extract (Storybook). */
   features?: StreetFeature[];
   /** Render regardless of window width (Storybook frames, My progress). */
   alwaysShow?: boolean;
   /** Omit the small "Postcards" label when the host page already titles the rack. */
   hideTitle?: boolean;
-}> = ({ placement = 'rail', cityId, cityCenter, states, features: providedFeatures, alwaysShow = false, hideTitle = false }) => {
+}> = ({ placement = 'rail', cityId, cityCenter, states, events: providedEvents, features: providedFeatures, alwaysShow = false, hideTitle = false }) => {
   const desktop = useDesktop();
   const visible = alwaysShow || (placement === 'vista') === desktop;
   const extractCity = visible ? extractCityById(cityId) : undefined;
@@ -96,21 +106,27 @@ export const PostcardRack: React.FC<{
   }, [open]);
 
   const features = providedFeatures ?? fetched;
-  const earned = useMemo(() => earnedAreas(states, cityId), [states, cityId]);
-  const cards = useMemo<RackCard[]>(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const events = useMemo(() => providedEvents ?? safeLocalEvents(), [providedEvents, states]);
+  const areas = useMemo(() => postcardProgress(states, events, cityId), [states, events, cityId]);
+  const { cards, pending } = useMemo(() => {
     const byName = new Map((features ?? []).map((feature) => [nameKey(feature.name), feature]));
-    return earned.map((area) => {
+    const toCard = (area: (typeof areas)[number]): RackCard => {
       const feature = byName.get(nameKey(area.name));
-      return { key: area.featureKey, name: feature?.name ?? area.name, photos: feature ? postcardPhotosFor(feature) : [] };
-    });
-  }, [earned, features]);
+      return {
+        key: area.featureKey, name: feature?.name ?? area.name, photos: feature ? postcardPhotosFor(feature) : [],
+        progress: area.earned ? undefined : area.hint,
+      };
+    };
+    return { cards: areas.filter((area) => area.earned).map(toCard), pending: areas.filter((area) => !area.earned).map(toCard) };
+  }, [areas, features]);
 
   if (!extractCity) return null;
   const total = features ? new Set(features.map((feature) => nameKey(feature.name))).size : null;
-  const remaining = total === null ? PLACEHOLDERS : Math.max(0, total - cards.length);
+  const remaining = total === null ? PLACEHOLDERS : Math.max(0, total - cards.length - pending.length);
   const placeholders = Math.min(PLACEHOLDERS, remaining);
   const cityName = postcardCityName(cityId) ?? extractCity.name;
-  const slots = cards.length + placeholders;
+  const slots = cards.length + pending.length + placeholders;
   const vista = placement === 'vista';
   const collapsible = vista && slots > DESKTOP_COLLAPSED;
   const desktopHidden = (index: number) => collapsible && !expanded && index >= DESKTOP_COLLAPSED ? 'hidden' : '';
@@ -127,10 +143,11 @@ export const PostcardRack: React.FC<{
       {hideTitle ? <span /> : <p className="enamel-brand text-sm text-white tracking-wide">Postcards</p>}
       <p className="text-xs text-white/55" data-testid="postcard-count">
         {total === null ? `${cards.length} collected` : `${cards.length} of ${total} postcards`}
+        {pending.length > 0 && <span data-testid="postcard-pending-count"> · {pending.length} on the way</span>}
       </p>
     </div>
-    {cards.length === 0 && <p className="text-xs text-white/55 leading-relaxed">
-      Place a neighbourhood correctly to collect its “Greetings from” card.
+    {cards.length === 0 && <p className="text-xs text-white/55 leading-relaxed" data-testid="postcard-rule">
+      {POSTCARD_RULE}
     </p>}
     <div className={vista
       ? 'flex flex-wrap gap-2'
@@ -147,11 +164,27 @@ export const PostcardRack: React.FC<{
           <PostcardHeader name={card.name} cityName={cityName} photos={card.photos} thumbnail className="h-full w-full" />
         </CardFrame>
       </button>)}
+      {pending.map((card, index) => <div
+        key={`pending-${card.key}`}
+        data-testid="postcard-rack-pending"
+        title={`${card.name}: ${card.progress}. ${POSTCARD_RULE}`}
+        aria-label={`Postcard on the way: ${card.name}, ${card.progress}`}
+        className={`relative ${cardWidth} shrink-0 ${desktopHidden(cards.length + index)}`}
+      >
+        <div className="opacity-50 grayscale-[70%]">
+          <CardFrame>
+            <PostcardHeader name={card.name} cityName={cityName} photos={card.photos} thumbnail className="h-full w-full" />
+          </CardFrame>
+        </div>
+        <span className="absolute inset-x-1 bottom-1 rounded bg-[#fbf8f2]/95 px-1.5 py-0.5 text-center text-[10px] font-bold leading-tight text-[#5a3a1a] shadow-sm">
+          {card.progress}
+        </span>
+      </div>)}
       {Array.from({ length: placeholders }, (_, index) => <div
         key={`blank-${index}`}
         aria-hidden="true"
         data-testid="postcard-rack-blank"
-        className={`pointer-events-none ${cardWidth} shrink-0 opacity-45 grayscale ${desktopHidden(cards.length + index)}`}
+        className={`pointer-events-none ${cardWidth} shrink-0 opacity-45 grayscale ${desktopHidden(cards.length + pending.length + index)}`}
       >
         <CardFrame muted>
           <PostcardHeader name="?" cityName={cityName} photos={[]} thumbnail className="h-full w-full" />
