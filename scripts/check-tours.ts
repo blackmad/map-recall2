@@ -3,14 +3,15 @@
 // Asserts that public/data/extracts/amsterdam/tours.json is fresh against
 // scripts/tours/amsterdam-tours.json, and that every tour has 4-7 stops, every
 // stop resolves to a coordinate within 4 km of the centre with a why and an
-// https source, every leg is under the 2.5 km detour cap, and every stop is
+// https source, every leg is between MIN_TOUR_LEG_KM (0.3 km, so the game's
+// start/finish gate never refuses it) and the 2.5 km detour cap, and every stop is
 // within 60 m of a way the cycling router can use (motor-only ways are dropped
 // exactly as the reachability harness drops them). Prints a table.
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { isMotorOnlyHighway, motorOnlyNames } from '../src/canalRecall/routing/bikeAccess.ts';
 import {
-  MAX_TOUR_LEG_KM, MAX_TOUR_STOPS, MIN_TOUR_STOPS, legKm, tourLegs, type LngLat, type Tour,
+  MAX_TOUR_LEG_KM, MAX_TOUR_STOPS, MIN_TOUR_LEG_KM, MIN_TOUR_STOPS, legKm, tourLegs, type LngLat, type Tour,
 } from '../src/canalRecall/game/tourRoute.ts';
 import { readSource, resolveTours, routingWays } from './tours/resolveTours.ts';
 
@@ -89,6 +90,9 @@ for (const tour of built.tours) {
     if (!stop.why || stop.why.length < 20 || !/[.!?]$/.test(stop.why)) problems.push('why is not a sentence');
     if (/\bbest\b/i.test(stop.why) && !/(Time Out|I amsterdam|Little Black Book)/.test(stop.why)) problems.push('unattributed "best"');
     if (leg && leg.km > MAX_TOUR_LEG_KM) problems.push(`leg ${leg.km.toFixed(2)} km over cap`);
+    // Named regression (user, 2026-10-17): Jewish Amsterdam's De Dokwerker ->
+    // Portugese Synagoge leg (0.04 km) failed with "Start and finish are too close".
+    if (leg && leg.km < MIN_TOUR_LEG_KM) problems.push(`leg ${leg.km.toFixed(2)} km under the ${MIN_TOUR_LEG_KM} km minimum`);
     if (snap.m > SNAP_M) problems.push(`${Math.round(snap.m)} m from a routable way`);
     for (const p of problems) failures.push(`${tour.id}/${stop.name}: ${p}`);
     rows.push([
@@ -118,4 +122,4 @@ if (failures.length) {
   console.error(`\n${failures.length} tour problem(s):\n  ${failures.join('\n  ')}`);
   process.exit(1);
 }
-console.log(`\nTours: ${built.tours.length} tours, ${stops} stops; all resolve within ${MAX_KM_FROM_CENTRE} km, legs <= ${MAX_TOUR_LEG_KM} km, stops within ${SNAP_M} m of a routable way.`);
+console.log(`\nTours: ${built.tours.length} tours, ${stops} stops; all resolve within ${MAX_KM_FROM_CENTRE} km, legs ${MIN_TOUR_LEG_KM}-${MAX_TOUR_LEG_KM} km, stops within ${SNAP_M} m of a routable way.`);

@@ -151,15 +151,15 @@ test('?tour= starts the tour, hides a street stop until arrival, and rides on st
   await page.waitForTimeout(400);
   await page.screenshot({ path: shot('tour-stop-card') });
 
-  // Next stop rides leg 2, from Jodenbreestraat to De Dokwerker, a landmark: it stamps.
+  // Next stop rides leg 2, from Jodenbreestraat to the Portuguese Synagogue, a landmark: it stamps.
   await nextLeg(page, await page.evaluate(() => window.canalRecallGame._shareUrl));
   const leg2 = await page.evaluate(() => ({ from: window.canalRecallGame.routeFrom.name, to: window.canalRecallGame.routeTo }));
   expect(leg2.from).toBe('Jodenbreestraat');
-  expect(leg2.to.name).toBe('De Dokwerker');
+  expect(leg2.to.name).toBe('Portuguese Synagogue');
   await arrive(page);
   const second = await page.evaluate(() => ({ arrival: window.canalRecallGame._tourArrival, stamp: window.canalRecallGame._finishStamp, tour: window.canalRecallGame._tour!.state }));
-  expect(second.arrival).toMatchObject({ name: 'De Dokwerker', stopIndex: 2, completed: false });
-  expect(second.stamp).toMatchObject({ kind: 'poi', name: 'De Dokwerker', isNew: true });
+  expect(second.arrival).toMatchObject({ name: 'Portuguese Synagogue', stopIndex: 2, completed: false });
+  expect(second.stamp).toMatchObject({ kind: 'poi', isNew: true });
   expect(second.tour.completedStops).toEqual([0, 1, 2]);
 
   // Skip to the last leg: its arrival completes the tour and stamps it.
@@ -168,7 +168,7 @@ test('?tour= starts the tour, hides a street stop until arrival, and rides on st
     t.state = { ...t.state, legIndex: 5, completedStops: [0, 1, 2, 3, 4, 5] };
   });
   await nextLeg(page, await page.evaluate(() => window.canalRecallGame._shareUrl));
-  expect(await page.evaluate(() => window.canalRecallGame.routeTo.name)).toBe('Hollandsche Schouwburg');
+  expect(await page.evaluate(() => window.canalRecallGame.routeTo.name)).toBe('Liberal Jewish Synagogue');
   await arrive(page);
   const done = await page.evaluate(() => ({ arrival: window.canalRecallGame._tourArrival, stamp: window.canalRecallGame._finishStamp, completed: window.canalRecallGame._tour?.completed }));
   expect(done.arrival).toMatchObject({ completed: true, stopIndex: 6 });
