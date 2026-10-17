@@ -5,7 +5,7 @@ import { AccountChip } from '../components/AccountChip';
 import { PostcardRack } from '../components/PostcardRack';
 import { SiteSwitch } from '../components/SiteSwitch';
 import { mapQuestSite } from '../mapQuestSite';
-import { earnedAreas } from '../mapRecall/progress';
+import { postcardProgress } from '../mapRecall/progress';
 import { EXTRACT_CITIES } from '../mapRecall/cityExtracts';
 import { loadLocalReviewStates, syncProgress } from '../progressRepository';
 import type { ReviewEvent, ReviewState } from '../spacedRepetition';
@@ -183,9 +183,9 @@ export function ProgressPage() {
 
   const view = useMemo(() => progressView(rides, states, events, now), [rides, states, events, now]);
   const postcardCities = useMemo(() => {
-    const earned = new Set(earnedAreas(states).map(area => area.cityId).filter(Boolean));
-    return EXTRACT_CITIES.filter(city => city.id === 'amsterdam' || earned.has(city.id));
-  }, [states]);
+    const started = new Set(postcardProgress(states, events).map(area => area.cityId).filter(Boolean));
+    return EXTRACT_CITIES.filter(city => city.id === 'amsterdam' || started.has(city.id));
+  }, [states, events]);
   const stampProgress = stamps ? stamps.progress() : null;
   const stampList = stamps ? stamps.all() : [];
   // A few greyed blanks show there is more to collect, as the postcard rack does.
@@ -316,6 +316,7 @@ export function ProgressPage() {
                   cityId={city.id}
                   cityCenter={[(city.bbox.minLat + city.bbox.maxLat) / 2, (city.bbox.minLng + city.bbox.maxLng) / 2]}
                   states={states}
+                  events={events}
                 />
               </div>
             ))}
