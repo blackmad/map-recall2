@@ -751,7 +751,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     12 desktop More options below the fold, 13 blank band after answering,
     14 duplicate arrival stats, 15 flat 21-row key table, 16 HUD names the
     start street (check against the answer-before-reveal rule).
-  - Verify-first dead-code cleanup from the held report (14a6c2284).
+  - `check:canal` red on main (pre-existing, found by the dead-code lane):
+    `test:look` — `face-gorontalo-25-47-r1` has no entry in
+    `chunkWallExposureData.ts` (rerun `build-chunk-wall-exposure.ts`);
+    `test:tile-buildings` — pilot-tiles golden `16/33655/21538` per-pand
+    geometry changed.
+  - Dead code left: ~1,600 module-internal exports; unused deps in
+    package.json; `scripts/canalhouse-recipes/capture.mjs` needs the missing
+    `canalhouse-recipes.html` (on `wip/canalhouse-recipes-20261008`).
   - `canal-recall.spec` "named bridge card" fails on main since the bridge
     lede repair (expects the register sentence in `longDetail`).
   - `test:canal-onboarding` npm script for the intro unit tests.
