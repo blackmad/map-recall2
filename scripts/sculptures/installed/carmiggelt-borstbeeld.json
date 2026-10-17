@@ -1,0 +1,32 @@
+{
+ "id": "carmiggelt-borstbeeld",
+ "provenance": "scripts/sculptures/rebuild-sources/carmiggelt-borstbeeld.json",
+ "figures": [
+  {
+   "name": "bust",
+   "glb": "scripts/sculptures/installed/carmiggelt-borstbeeld/bust.glb",
+   "at": [
+    0,
+    1.1,
+    0
+   ],
+   "cut": {
+    "min": [
+     -1,
+     1.1,
+     -1
+    ],
+    "max": [
+     1,
+     2.2,
+     1
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TRELLIS.2-4B multidiffusion, 3 photos (trellis2-apple MLX port)"
+  }
+ ]
+}
