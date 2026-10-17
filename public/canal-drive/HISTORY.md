@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## Tours lead in to their first stop (2026-10-17)
+
+User: tours "should maybe start from somewhere like ... central station or the
+user's current location so it doesn't immediately complete the first stop".
+A tour now starts with a lead-in leg (`legIndex: -1`, `TourState.start`) to
+stop 1: from the rider's location when geolocation is already granted (never
+prompts; id `here`, so share/history treat it as private) and 0.5–4 km away,
+else Amsterdam Centraal when in range, else the nearest hub ≥ 0.5 km (Dam,
+Leidseplein, Museumplein, Waterlooplein). Saved states from before keep
+working. Pinned in `tourRoute.test.ts` (every published tour gets a start in
+range) and `tours-stamps.spec.ts`.
+
 ## Statue rebuilds installed: 16 in the game, Kinderbrug built but held (2026-10-17)
 
 User (2026-10-17): "install better ones, the sculpture models are fine". Lane

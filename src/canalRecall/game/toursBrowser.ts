@@ -7,12 +7,12 @@
 import type { Tour } from './tourRoute';
 
 export {
-  MAX_TOUR_LEG_KM, advanceOnArrival, isComplete, legKm, nextLeg, startTour, stopAsRoutePoi,
+  MAX_TOUR_LEG_KM, TOUR_HUBS, chooseTourStart, advanceOnArrival, isComplete, legKm, nextLeg, startTour, stopAsRoutePoi,
   tourLegs, tourProgressLabel, withinLegCap,
   hiddenStopLabel, stopNameSpoils, tourArrival, tourCheckedLabel, tourDestination, tourFromSearch,
   TOUR_RIDE_PREFS, persistablePrefs, tourPrefsOverride,
 } from './tourRoute';
-export type { Tour, TourArrival, TourDestination, TourLeg, TourState, TourStop } from './tourRoute';
+export type { Tour, TourArrival, TourDestination, TourLeg, TourStart, TourState, TourStop } from './tourRoute';
 
 /** Fetch tours.json from the city extract folder (e.g. city.extractPath). Never throws. */
 export async function loadTours(extractPath = '../data/extracts/amsterdam'): Promise<Tour[]> {
@@ -33,7 +33,7 @@ export function saveTourState(state: unknown): void {
   try { window.localStorage.setItem(STATE_KEY, JSON.stringify(state ?? null)); } catch { /* ignore */ }
 }
 
-export function loadTourState(): { tourId: string; legIndex: number; completedStops: number[] } | null {
+export function loadTourState(): { tourId: string; legIndex: number; completedStops: number[]; start?: unknown } | null {
   try {
     const raw = window.localStorage.getItem(STATE_KEY);
     const state = raw ? JSON.parse(raw) : null;

@@ -4,6 +4,8 @@ import assert from 'node:assert/strict';
 import {
   MAX_TOUR_LEG_KM,
   advanceOnArrival,
+  chooseTourStart,
+  TOUR_HUBS,
   isComplete,
   legKm,
   legsOverCap,
@@ -134,4 +136,47 @@ test('a tour rides by bike without saving that as the player\'s settings', () =>
   assert.deepEqual(again.restore, restore);
   // Already on a bike in Amsterdam on Surprise: nothing to change or undo.
   assert.deepEqual(tourPrefsOverride({ travelMode: 'car', cityId: 'amsterdam', routePattern: 'surprise' }), { patch: {}, restore: {} });
+});
+
+test('a tour with a start rides a lead-in to stop 1 first, so stop 1 is reached, not given', () => {
+  const start = { name: 'Amsterdam Centraal', lngLat: [4.9003, 52.3791] as [number, number] };
+  let state = startTour(tour, start);
+  assert.deepEqual(state.completedStops, []);
+  assert.equal(tourProgressLabel(state, tour), 'Test tour: stop 1 of 3');
+  const lead = nextLeg(state, tour)!;
+  assert.equal(lead.fromIndex, -1);
+  assert.equal(lead.from.name, 'Amsterdam Centraal');
+  assert.equal(lead.to.name, 'A');
+  let step = advanceOnArrival(state, tour);
+  state = step.state;
+  assert.deepEqual(state.completedStops, [0]);
+  assert.equal(step.reached!.name, 'A');
+  assert.equal(nextLeg(state, tour)!.to.name, 'B');
+  step = advanceOnArrival(state, tour);
+  step = advanceOnArrival(step.state, tour);
+  assert.equal(step.completed, true);
+  assert.deepEqual(step.state.start, start);
+});
+
+test('chooseTourStart: the rider when a real ride away, else Centraal, else the nearest far-enough hub', () => {
+  const here: [number, number] = [4.875, 52.37];
+  assert.deepEqual(chooseTourStart(tour, here), { name: 'Here', lngLat: here, private: true });
+  assert.equal(chooseTourStart(tour, [4.8901, 52.3701])!.name, 'Amsterdam Centraal');
+  assert.equal(chooseTourStart(tour, [5.2, 52.1])!.name, 'Amsterdam Centraal');
+  const atCentraal: Tour = { ...tour, stops: [stop('CS', 4.9003, 52.3790), ...tour.stops] };
+  const s = chooseTourStart(atCentraal)!;
+  assert.notEqual(s.name, 'Amsterdam Centraal');
+  assert.ok(legKm(s.lngLat, atCentraal.stops[0].lngLat) >= 0.5);
+  assert.equal(chooseTourStart({ ...tour, stops: [] }), null);
+  assert.equal(TOUR_HUBS[0].name, 'Amsterdam Centraal');
+});
+
+test('every published tour gets a lead-in start between 0.5 and 4 km from its first stop', () => {
+  const tours = JSON.parse(readFileSync('public/data/extracts/amsterdam/tours.json', 'utf8'));
+  const list: Tour[] = Array.isArray(tours) ? tours : tours.tours;
+  for (const t of list) {
+    const s = chooseTourStart(t)!;
+    const km = legKm(s.lngLat, t.stops[0].lngLat);
+    assert.ok(km >= 0.5 && km <= 4, `${t.id}: ${s.name} ${km.toFixed(2)} km`);
+  }
 });
