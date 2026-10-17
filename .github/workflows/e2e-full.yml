@@ -1,0 +1,38 @@
+name: Canal e2e full
+
+# The whole Playwright suite (121 spec files, ~986 tests). On a hosted runner with software rendering it does not
+# finish in 40 min (2026-10-17: 13 files reached, then the timeout), so it no longer sits in Canal CI, whose green run
+# gates the GitHub Pages deploy. Nightly and on demand, with room to finish; the report is uploaded either way.
+# Every push still runs check:canal and the boot smoke in Canal CI, and the pre-push hook runs the smoke locally.
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: canal-e2e-full
+  cancel-in-progress: false
+
+jobs:
+  e2e:
+    name: e2e full
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14

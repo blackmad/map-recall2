@@ -223,6 +223,12 @@ The first run allowed to finish then failed `check:landmark-inventory`: 309 of
 that first added its GLB, and CI's shallow checkout had one commit. The
 check:canal job now checks out the history without blobs (`fetch-depth: 0`,
 `filter: blob:none`), and the gate refuses a shallow clone instead of misdating.
+With check:canal green on CI, the full Playwright job still blocked Pages: on a
+hosted runner it reached 13 of 121 spec files in its 40 min and timed out, with
+failures in askable-bridges, answered-street-name, block-face and others. It
+moved to its own workflow, `e2e-full.yml` (nightly 03:00 UTC and on demand,
+180 min); Canal CI is check:canal plus the boot smoke, the same bar as the
+Firebase deploy.
 
 ## Rivierenbuurt (Plan Zuid, 1934): 103 pands from six types (2026-10-17)
 
