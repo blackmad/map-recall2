@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Rietveld revisited: the 1967 glass block and the 2006 tower installed (2026-10-17)
+
+User (2026-10-17): "I think we need to revisit Gerrit Rietveld Academie". Lane
+`lane/public-large-20261017` (075dd33bc, 75711e8f3; source crops 721a5eb8b,
+74a9023e1 in source-data). The 1967 Rietveld building (pand 077325, recipe
+`rietveld-gebouw-077325`, 4,100 tris): square 2.07 m modules, 30 across the
+62.9 m north front, a 1.7 m dark plinth under four 4.2 m floors, each floor a
+clear band between frosted spandrel bands, measured spandrel/mullion/glass
+tones and an orthophoto roof; evidence: three north-front captures (incl. a
+2021 leaf-off view from 55 m across the canal) and an east-corner oblique; the
+south and west walls are inferred. The 2006 complex (091838, 5,412 tris),
+refused on 2026-10-14 for missing evidence, reinstalled from 2017-12 and
+2021-04 leaf-off fronts: dark dimpled-metal tower with a glazed ground storey
+and ribbon windows only where the crops have them, white low block with a
+glazed ground and a screen storey. Kit: `spandrels`, `groundFactor`,
+`palette.plinth`, `shell` (3DBAG restarts surface numbers per solid),
+`openBays`, `meshScreen`, `all-walls.ts --max-dist`; fit-golden and
+large-mesh-golden identical for every other house. Likeness FAILs come from
+the glazing classifier reading reflective curtain walls as wall and sunlit
+white as washed out; installed with `--allow-inferred` notes.
+
 ## Neighbourhood explorer: browse, download, report, request (2026-10-17)
 
 `explore.html` (`/explore`), typed in `src/canalRecall/explorer/`, bundle

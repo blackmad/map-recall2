@@ -922,6 +922,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   pitch across party walls, per-house ribbon variants, white posts between
   ribbon windows, the 2–3 cm door-leaf/frame z-fight, strip x-registration
   (~0.4 m off BAG party lines).
+- **Public buildings, after Rietveld** (2026-10-17, HISTORY "Rietveld
+  revisited"): still open CREA (3DBAG ground missing), HvA, Het 4e Gymnasium,
+  UvA Spui, Metis/Oostpoort Montessori, Spinoza, and the Fedora pands
+  (0363100012246283–86) across the street. Kit gaps: dimpled pressed-metal and
+  expanded-metal mesh relief (drawn smooth); lettering under 0.3 m on ground
+  glass; cantilevered overhangs, undercrofts, roof railings; interior columns
+  seen through glass. Likeness: a glazing classifier that copes with reflective
+  curtain walls and sunlit white facades.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
