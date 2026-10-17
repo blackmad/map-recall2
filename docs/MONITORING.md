@@ -1,0 +1,105 @@
+# Monitoring & abuse protection
+
+Error monitoring (Sentry) and abuse protection (Firebase App Check) are wired in
+but **completely inactive until their keys exist**. Every feature is a no-op
+when its environment variable is unset, so local builds and the e2e smoke test
+run exactly as before with no keys.
+
+| Feature | App | Source of truth | Env var(s) |
+| --- | --- | --- | --- |
+| Sentry | Map Quest (`src/main.tsx`) | `import.meta.env` | `VITE_SENTRY_DSN`, `VITE_RELEASE` |
+| Sentry | Canal Recall (`src/canalRecall/monitoring.ts`) | `window.CANAL_RUNTIME_CONFIG` | `SENTRY_DSN`, `GITHUB_SHA` |
+| App Check | Map Quest (`src/firebase.ts`) | `import.meta.env` | `VITE_APPCHECK_SITE_KEY`, `VITE_APPCHECK_PROVIDER`, `VITE_APPCHECK_DEBUG_TOKEN` |
+| App Check | Canal Recall (`src/canalRecall/feedback/cloud.ts`) | `window.CANAL_RUNTIME_CONFIG` | `APPCHECK_SITE_KEY` |
+
+## 1. Sentry
+
+### What to create at sentry.io
+
+- One **organization**.
+- One **project** named `canal-recall`, platform **JavaScript**.
+- Map Quest shares this project; it is distinguished by the `app` tag
+  (`app=map-quest` vs `app=canal-recall`), so no second project is needed.
+
+Grab the project's **DSN** (Settings → Projects → *canal-recall* → Client Keys).
+
+### GitHub secrets to add
+
+| Secret | Value | Used for |
+| --- | --- | --- |
+| `SENTRY_DSN` | the project DSN | `VITE_SENTRY_DSN` (Map Quest) and Canal Recall's runtime config |
+| `SENTRY_AUTH_TOKEN` | Sentry auth token (Org Settings → Auth Tokens) | source-map upload; also gates the upload step |
+| `SENTRY_ORG` | org slug | source-map upload |
+| `SENTRY_PROJECT` | `canal-recall` | source-map upload |
+
+The deploy workflow maps `GITHUB_SHA` to `VITE_RELEASE` and to the release used
+by `npx @sentry/cli sourcemaps upload`, so every deployed revision gets its own
+release.
+
+## 2. Firebase App Check
+
+### Register a reCAPTCHA v3 key
+
+Create a **reCAPTCHA v3** site at <https://www.google.com/recaptcha/admin/create>
+and register these domains:
+
+- `canalrecall.blackmad.com`
+- `edumap-blackmad.web.app`
+- `canalrecall-blackmad.web.app`
+- `localhost`
+
+### Register it in the Firebase console
+
+1. Firebase console → project `map-recall2-blackmad` → **App Check** → **Apps**.
+2. Add both apps (the edumap and canalrecall web apps).
+3. Set the provider to **reCAPTCHA v3** and paste the **site key** from above.
+
+The key is the **site key** (public), not the secret key. Store it as:
+
+- `APPCHECK_SITE_KEY` (GitHub secret → `VITE_APPCHECK_SITE_KEY` and Canal
+  Recall's runtime config).
+
+### Run unenforced, then enforce
+
+App Check starts in **unenforced / monitor mode** by default: requests carry the
+token but nothing is rejected. This is the correct state for the first few days
+so a bad key cannot lock real users out.
+
+When you are ready:
+
+1. Firebase console → App Check → **APIs** → **Cloud Firestore**.
+2. Switch **Enforcement** from *Unenforced* to *Enforced*.
+
+`firestore.rules` is intentionally unchanged by this work; enforcement is
+switched on in the console, not in the rules file.
+
+### Debug token for e2e / CI
+
+reCAPTCHA cannot complete attestation on `localhost` without a debug token. To
+use App Check locally, generate a token with
+`firebase apps:sdkconfig appcheck` / `firebase appcheck:token` and set it in
+`.env.local`:
+
+```sh
+VITE_APPCHECK_DEBUG_TOKEN=...
+```
+
+When Vite is in dev mode (`import.meta.env.DEV`) and this token is present,
+`src/firebase.ts` sets `self.FIREBASE_APPCHECK_DEBUG_TOKEN` before calling
+`initializeAppCheck`, so the debug token is attached to attestation requests.
+The debug token is never read in production builds.
+
+## How the pieces fit together
+
+- **Map Quest** is a Vite app: it reads `import.meta.env` directly. Sentry is
+  initialized in `src/main.tsx`, wrapped in `Sentry.ErrorBoundary`. App Check is
+  initialized in `src/firebase.ts` after `initializeApp`.
+- **Canal Recall** is a legacy static page. `scripts/write-runtime-config.mjs`
+  writes `public/canal-drive/js/runtime-config.js` from `SENTRY_DSN`,
+  `GITHUB_SHA`, and `APPCHECK_SITE_KEY` at deploy time. The checked-in default
+  has empty values, so nothing activates without keys. `index.html` loads
+  `runtime-config.js` then `monitoring.bundle.js` (built by
+  `npm run build:monitoring`) at the top of `<head>`.
+- **Source maps**: `vite.config.ts` sets `build.sourcemap: 'hidden'`. The deploy
+  workflow runs `@sentry/cli sourcemaps inject` + `upload`, then deletes every
+  `.map` from `dist/` so maps never deploy.
