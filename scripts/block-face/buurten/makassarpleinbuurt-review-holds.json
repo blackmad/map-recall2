@@ -1,0 +1,8 @@
+{
+ "note": "Pands held after reviewing the auto-place strip sheets at full size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
+ "reviewed": "2026-10-17",
+ "holds": [
+  {"pandId": "0363100012073042", "address": "Niasstraat 1", "reason": "the corner tower of the Niasstraat block (17 m, a monogram relief, one window axis): no type; the white-attic type matched it on year and eaves alone"},
+  {"pandId": "0363100012125447", "address": "Gorontalostraat 47", "reason": "the corner block of the Gorontalostraat row (taller, white erkers, a tower): no type; attic-lights matched it on year and eaves alone"}
+ ]
+}
