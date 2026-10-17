@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "city": "amsterdam",
+  "note": "Hand-curated themed tours. Each stop resolves through scripts/tours/build-tours.ts: landmarkId (landmarks.json), osm (click-poi-info.json, an OSM extract), orientation (orientation-pois.json name + optional near hint) or street (streets.json, nearest point to near). 'why' is one sentence taken from 'source'; food and cafe tours quote only what the cited guide says and are volatile.",
+  "tours": [
+    {
+      "id": "jewish-amsterdam",
+      "title": "Jewish Amsterdam",
+      "theme": "history",
+      "blurb": "From the Anne Frank House across the old Jewish quarter to the theatre the occupiers turned into a deportation centre.",
+      "stops": [
+        { "name": "Anne Frank House", "landmarkId": "extract_landmarks_614625734", "why": "Anne Frank hid from Nazi persecution with her family in the rear of this Prinsengracht building during the German occupation.", "source": "https://en.wikipedia.org/wiki/Anne_Frank_House" },
+        { "name": "Jodenbreestraat", "street": "Jodenbreestraat", "near": [4.9006, 52.3700], "why": "The southern part of Sint Antoniesbreestraat came to be called Jodenbreestraat, 'Jewish Broad Street', in the later 17th century, after Jewish refugees from Portugal and Spain settled around it.", "source": "https://en.wikipedia.org/wiki/Jodenbreestraat" },
+        { "name": "De Dokwerker", "landmarkId": "extract_landmarks_1098130181", "why": "Mari Andriessen's statue on Jonas Daniël Meijerplein commemorates the February Strike of 1941 against the persecution of the Jews.", "source": "https://nl.wikipedia.org/wiki/De_Dokwerker" },
+        { "name": "Portugese Synagoge", "landmarkId": "extract_landmarks_1311905515", "why": "The Esnoga of Amsterdam's Sephardi community was completed in 1675 and is still in use.", "source": "https://en.wikipedia.org/wiki/Portuguese_Synagogue_(Amsterdam)" },
+        { "name": "Joods Museum", "landmarkId": "extract_landmarks_273619808", "why": "The only museum in the Netherlands dedicated to Jewish history; since 1987 it has occupied four former synagogues.", "source": "https://en.wikipedia.org/wiki/Joods_Historisch_Museum" },
+        { "name": "Nationaal Holocaust Namenmonument", "landmarkId": "extract_landmarks_1974741421", "why": "Since 2021 the national Holocaust memorial, it names the roughly 102,000 Jews from the Netherlands who were deported and murdered.", "source": "https://en.wikipedia.org/wiki/National_Holocaust_Names_Memorial_(Amsterdam)" },
+        { "name": "Hollandsche Schouwburg", "landmarkId": "extract_landmarks_1588171596", "why": "The occupiers made this theatre a Jewish theatre in 1941 and then used it as a deportation centre.", "source": "https://en.wikipedia.org/wiki/Hollandsche_Schouwburg" }
+      ]
+    },
+    {
+      "id": "golden-age-canal-ring",
+      "title": "Golden Age canal ring",
+      "theme": "architecture",
+      "blurb": "Along the 17th-century ring from the Westerkerk to the Amstel: merchant houses, the Golden Bend and the Skinny Bridge.",
+      "stops": [
+        { "name": "Westerkerk", "landmarkId": "extract_landmarks_1692085215", "why": "Designed by Hendrick de Keyser and inaugurated in 1631, it is one of the first churches built for Protestant worship.", "source": "https://en.wikipedia.org/wiki/Westerkerk" },
+        { "name": "Huis Bartolotti", "landmarkId": "extract_landmarks_1450151185", "why": "Built around 1617 at Herengracht 170-172 for Willem van den Heuvel, who took the name Bartolotti to inherit his uncle's fortune.", "source": "https://nl.wikipedia.org/wiki/Huis_Bartolotti" },
+        { "name": "Golden Bend", "street": "Herengracht", "near": [4.8909, 52.3652], "why": "The stretch of Herengracht between Leidsestraat and Vijzelstraat, dug after 1663 with wider lots that drew the city's richest residents.", "source": "https://en.wikipedia.org/wiki/Golden_Bend" },
+        { "name": "Museum Van Loon", "landmarkId": "extract_landmarks_211818595", "why": "A canal house on the Keizersgracht named after the Van Loon family, who lived in it from the 19th century.", "source": "https://en.wikipedia.org/wiki/Museum_Van_Loon" },
+        { "name": "Magere Brug", "orientation": "Magere Brug", "why": "The 'Skinny Bridge' crosses the Amstel at Kerkstraat; the present white wooden bridge of 1934 replaced a 13-arched bridge of 1691.", "source": "https://en.wikipedia.org/wiki/Magere_Brug" }
+      ]
+    },
+    {
+      "id": "art-museums",
+      "title": "Art museums",
+      "theme": "art",
+      "blurb": "Rembrandt's house to Museumplein by way of the Amstel and the Keizersgracht.",
+      "stops": [
+        { "name": "Rembrandthuis", "landmarkId": "extract_landmarks_25101431", "why": "Rembrandt lived and worked in this Jodenbreestraat house from 1639 until it was auctioned in 1658.", "source": "https://en.wikipedia.org/wiki/Rembrandt_House_Museum" },
+        { "name": "H'ART Museum", "landmarkId": "extract_landmarks_352379234", "why": "The Amstel-side art museum was a satellite of the Hermitage in Saint Petersburg until it cut ties after Russia's 2022 invasion of Ukraine.", "source": "https://en.wikipedia.org/wiki/H%27ART_Museum" },
+        { "name": "Foam", "landmarkId": "extract_landmarks_1875254501", "why": "Fotografiemuseum Amsterdam on the Keizersgracht shows four photography exhibitions at any time.", "source": "https://en.wikipedia.org/wiki/Foam_Fotografiemuseum_Amsterdam" },
+        { "name": "Rijksmuseum", "landmarkId": "extract_landmarks_512243549", "why": "The national museum of Dutch art and history, founded in The Hague in 1798 and moved to Amsterdam in 1808.", "source": "https://en.wikipedia.org/wiki/Rijksmuseum" },
+        { "name": "Moco Museum", "landmarkId": "extract_landmarks_1523176628", "why": "An independent museum of modern and contemporary art that opened on Museumplein in 2016.", "source": "https://en.wikipedia.org/wiki/Moco_Museum" },
+        { "name": "Van Gogh Museum", "landmarkId": "extract_landmarks_2070637412", "why": "Dedicated to Vincent van Gogh and his contemporaries, it opened on 2 June 1973 in a building by Gerrit Rietveld.", "source": "https://en.wikipedia.org/wiki/Van_Gogh_Museum" },
+        { "name": "Stedelijk Museum", "landmarkId": "extract_landmarks_1719479765", "why": "The city's museum of modern and contemporary art and design, in a 19th-century building by Adriaan Willem Weissman.", "source": "https://en.wikipedia.org/wiki/Stedelijk_Museum_Amsterdam" }
+      ]
+    },
+    {
+      "id": "churches-and-towers",
+      "title": "Churches and towers",
+      "theme": "skyline",
+      "blurb": "The spires and wall towers that pin the old city's skyline, from the Westerkerk to the Munttoren.",
+      "stops": [
+        { "name": "Westerkerk", "landmarkId": "extract_landmarks_1692085215", "why": "Inaugurated in 1631 to a design by Hendrick de Keyser, it is still the largest church built for Protestants in the Netherlands.", "source": "https://en.wikipedia.org/wiki/Westerkerk" },
+        { "name": "Nieuwe Kerk", "landmarkId": "extract_landmarks_239964759", "why": "The 15th-century church on Dam Square beside the Royal Palace became Dutch Reformed in 1578.", "source": "https://en.wikipedia.org/wiki/Nieuwe_Kerk,_Amsterdam" },
+        { "name": "Oude Kerk", "landmarkId": "extract_landmarks_1522513904", "why": "Amsterdam's oldest parish church and oldest building, founded around 1213 and consecrated in 1306.", "source": "https://en.wikipedia.org/wiki/Oude_Kerk,_Amsterdam" },
+        { "name": "Schreierstoren", "osm": "way/57859248", "why": "A defensive tower of 1487 from the medieval city wall, from which Henry Hudson set out on his voyage to North America.", "source": "https://en.wikipedia.org/wiki/Schreierstoren" },
+        { "name": "Montelbaanstoren", "landmarkId": "extract_landmarks_1027016792", "why": "Built in 1516 as part of the city walls; Hendrick de Keyser's decorative top was added in 1606.", "source": "https://en.wikipedia.org/wiki/Montelbaanstoren" },
+        { "name": "Zuiderkerk", "landmarkId": "extract_landmarks_684653190", "why": "The 17th-century church of the Nieuwmarkt area played a part in Rembrandt's life and was painted by Claude Monet.", "source": "https://en.wikipedia.org/wiki/Zuiderkerk" },
+        { "name": "Munttoren", "landmarkId": "extract_landmarks_1375175685", "why": "A remnant of the medieval Regulierspoort, rebuilt after a 1618 fire with a spire by Hendrick de Keyser; coins were minted beside it in 1672.", "source": "https://en.wikipedia.org/wiki/Munttoren" }
+      ]
+    },
+    {
+      "id": "markets",
+      "title": "Markets",
+      "theme": "markets",
+      "blurb": "Five street markets from the Jordaan to Oost: flowers, flea market, food and fabric.",
+      "stops": [
+        { "name": "Noordermarkt", "orientation": "Noordermarkt", "why": "The Jordaan square holds a Monday market and a popular organic farmers' market on Saturdays.", "source": "https://en.wikipedia.org/wiki/Noordermarkt" },
+        { "name": "Bloemenmarkt", "orientation": "Bloemenmarkt", "why": "A floating flower market on the Singel between Muntplein and Koningsplein, dating back to 1862.", "source": "https://en.wikipedia.org/wiki/Bloemenmarkt" },
+        { "name": "Albert Cuypmarkt", "osm": "node/5756367437", "why": "The De Pijp street market became official in 1905 and a six-day daytime market in 1912; it is named after the painter Albert Cuyp.", "source": "https://en.wikipedia.org/wiki/Albert_Cuyp_Market" },
+        { "name": "Waterlooplein", "osm": "node/1611202846", "why": "The square was made in 1882 by filling in two canals; Jewish traders were moved here, and after the war the market became a flea market.", "source": "https://en.wikipedia.org/wiki/Waterlooplein" },
+        { "name": "Dappermarkt", "orientation": "Dappermarkt", "why": "The city made Dapperstraat in Oost an official market street in 1910.", "source": "https://en.wikipedia.org/wiki/Dappermarkt" }
+      ]
+    },
+    {
+      "id": "ice-cream",
+      "title": "Ice cream",
+      "theme": "food",
+      "volatile": true,
+      "checkedAt": "2026-10-17",
+      "blurb": "Ice cream parlours named in published Amsterdam guides, from Westerpark to De Pijp. Shops change: check before you go.",
+      "stops": [
+        { "name": "Doardi", "osm": "node/11271409214", "why": "I amsterdam's ice cream guide lists Doardi at Van Limburg Stirumstraat 15 and says Westerpark is best experienced with one of its ice creams in hand.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/best-ice-cream-spots-in-amsterdam" },
+        { "name": "Monte Pelmo", "osm": "node/10866005301", "why": "I amsterdam describes this 2e Anjeliersdwarsstraat parlour as a family-owned ice cream institution in the heart of the Jordaan.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/best-ice-cream-spots-in-amsterdam" },
+        { "name": "IJssalon Tofani", "osm": "node/251168504", "why": "Your Little Black Book's ice cream guide lists Tofani at Kloveniersburgwal 16, near Nieuwmarkt.", "source": "https://www.yourlittleblackbook.me/en/ijsjes-in-amsterdam/" },
+        { "name": "Miuz", "osm": "node/2506017793", "why": "I amsterdam lists Miuz at Ferdinand Bolstraat 4 and notes its gelato is slow-churned and kept in covered containers.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/best-ice-cream-spots-in-amsterdam" },
+        { "name": "Massimo Gelato", "osm": "node/2817709969", "why": "I amsterdam calls Massimo, listed at Van Ostadestraat 147 among others, one of the most authentic Italian gelaterias in the city.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/best-ice-cream-spots-in-amsterdam" }
+      ]
+    },
+    {
+      "id": "pizza",
+      "title": "Pizza",
+      "theme": "food",
+      "volatile": true,
+      "checkedAt": "2026-10-17",
+      "blurb": "Pizzerias picked by I amsterdam and Time Out, from the Haarlemmerdijk to De Pijp. Shops change: check before you go.",
+      "stops": [
+        { "name": "De Pizzabakkers", "osm": "node/2721294507", "why": "I amsterdam's pizza guide lists the Haarlemmerdijk 128 branch of De Pizzabakkers for its oven-baked thin, crusty pizza.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/best-pizza" },
+        { "name": "Yam-Yam", "osm": "node/2891887847", "why": "Time Out Amsterdam names Yam-Yam as tying for the best pizza in town.", "source": "https://www.timeout.com/amsterdam/restaurants-and-cafes/da-portare-via" },
+        { "name": "nNea", "osm": "node/6841918972", "why": "I amsterdam lists nNea at Bilderdijkstraat 92 for its light Neapolitan-style crusts with seasonal toppings.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/best-pizza" },
+        { "name": "Pizza Beppe", "osm": "node/2809439848", "why": "I amsterdam lists Pizza Beppe, with a branch at Nassaukade 379, as the first in the Netherlands accepted by the guardians of pizza authenticity.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/best-pizza" },
+        { "name": "Mangia Pizza", "osm": "node/2737958388", "why": "I amsterdam lists Mangia at Vijzelgracht 33 and says its pizzas have taken the Amsterdam pizza world by storm.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/best-pizza" },
+        { "name": "Renato's Pizzeria", "osm": "node/2647227085", "why": "I amsterdam lists Renato's at Karel du Jardinstraat 32 for Roman-style bases since 2013.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/best-pizza" }
+      ]
+    },
+    {
+      "id": "brown-cafes",
+      "title": "Brown cafés",
+      "theme": "cafes",
+      "volatile": true,
+      "checkedAt": "2026-10-17",
+      "blurb": "Old wood-panelled bars from the Jordaan to the eastern docks, as described by I amsterdam. Opening hours change: check before you go.",
+      "stops": [
+        { "name": "Café Chris", "osm": "node/5696710525", "why": "I amsterdam lists Café Chris at Bloemstraat 42 and says it opened as a beer house in 1624, a date other guides dispute.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/best-brown-bars-in-amsterdam" },
+        { "name": "Café 't Smalle", "osm": "node/1447362298", "why": "I amsterdam says a liqueur distillery opened here on the Egelantiersgracht around 1780.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/best-brown-bars-in-amsterdam" },
+        { "name": "Café Hoppe", "osm": "node/725239184", "why": "I amsterdam lists Hoppe on the Spui and says it has been pouring jenever for 348 years.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/best-brown-bars-in-amsterdam" },
+        { "name": "In 't Aepjen", "osm": "node/251127914", "why": "I amsterdam dates the Zeedijk 1 building to 1475 and says its annexe became a tavern in the 17th century.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/wonky-pubs-and-historic-drinking-holes-in-amsterdam" },
+        { "name": "Café De Druif", "osm": "node/2741083814", "why": "I amsterdam says the Rapenburgerplein café has been serving liquor since 1631.", "source": "https://www.iamsterdam.com/en/see-and-do/restaurant-and-bars/wonky-pubs-and-historic-drinking-holes-in-amsterdam" }
+      ]
+    }
+  ]
+}
