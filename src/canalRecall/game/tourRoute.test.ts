@@ -3,6 +3,11 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   MAX_TOUR_LEG_KM,
+  MIN_TOUR_LEG_KM,
+  GAME_MIN_START_FINISH_KM,
+  GAME_MIN_START_FINISH_PX,
+  GAME_PIXELS_PER_METER,
+  legsUnderMin,
   advanceOnArrival,
   chooseTourStart,
   TOUR_HUBS,
@@ -178,5 +183,30 @@ test('every published tour gets a lead-in start between 0.5 and 4 km from its fi
     const s = chooseTourStart(t)!;
     const km = legKm(s.lngLat, t.stops[0].lngLat);
     assert.ok(km >= 0.5 && km <= 4, `${t.id}: ${s.name} ${km.toFixed(2)} km`);
+  }
+});
+
+test('the minimum leg clears the game\'s start/finish gate, read from constants.js', () => {
+  const constants = readFileSync('public/canal-drive/js/constants.js', 'utf8');
+  const value = (name: string) => Number(new RegExp(`const ${name} = ([\\d.]+)`).exec(constants)?.[1]);
+  assert.equal(value('MIN_START_FINISH_DIST'), GAME_MIN_START_FINISH_PX);
+  assert.equal(value('PIXELS_PER_METER'), GAME_PIXELS_PER_METER);
+  assert.ok(Math.abs(GAME_MIN_START_FINISH_KM - 0.0667) < 0.001);
+  // Both ends may snap up to 60 m toward each other (check-tours SNAP_M).
+  assert.ok(MIN_TOUR_LEG_KM - 2 * 0.06 >= 2 * GAME_MIN_START_FINISH_KM, `${MIN_TOUR_LEG_KM} km leaves too little margin`);
+  assert.ok(MIN_TOUR_LEG_KM < MAX_TOUR_LEG_KM);
+  const near: Tour = { ...tour, stops: [tour.stops[0], stop('Near', 4.8905, 52.37)] };
+  assert.equal(legsUnderMin(near).length, 1);
+  assert.deepEqual(legsUnderMin(tour), []);
+});
+
+test('every published tour leg is between the minimum and the cap', () => {
+  const tours = JSON.parse(readFileSync('public/data/extracts/amsterdam/tours.json', 'utf8'));
+  const list: Tour[] = Array.isArray(tours) ? tours : tours.tours;
+  for (const t of list) {
+    for (const leg of tourLegs(t)) {
+      assert.ok(leg.km >= MIN_TOUR_LEG_KM && leg.km <= MAX_TOUR_LEG_KM,
+        `${t.id}: ${leg.from.name} -> ${leg.to.name} ${leg.km.toFixed(2)} km`);
+    }
   }
 });

@@ -59,6 +59,24 @@ export interface TourLeg {
 
 /** No leg may be longer than this; scripts/check-tours.ts enforces it on the data. */
 export const MAX_TOUR_LEG_KM = 2.5;
+
+/**
+ * The game refuses a route whose snapped start and finish are closer than
+ * MIN_START_FINISH_DIST (200 px, public/canal-drive/js/constants.js) at
+ * PIXELS_PER_METER (3): about 67 m. The unit test reads both constants so a
+ * change there fails here.
+ */
+export const GAME_MIN_START_FINISH_PX = 200;
+export const GAME_PIXELS_PER_METER = 3;
+export const GAME_MIN_START_FINISH_KM = GAME_MIN_START_FINISH_PX / GAME_PIXELS_PER_METER / 1000;
+
+/**
+ * No leg may be shorter than this. Stops snap within 60 m of a routable way
+ * (scripts/check-tours.ts), so two stops this far apart still snap at least
+ * 180 m apart, 2.7x the game's gate; and a shorter ride is over before it
+ * asks anything. scripts/check-tours.ts enforces it on the data.
+ */
+export const MIN_TOUR_LEG_KM = 0.3;
 export const MIN_TOUR_STOPS = 4;
 export const MAX_TOUR_STOPS = 7;
 
@@ -158,6 +176,9 @@ export function tourLegs(tour: Tour): TourLeg[] {
   }
   return legs;
 }
+
+/** Legs shorter than the minimum (empty for a valid tour). */
+export const legsUnderMin = (tour: Tour, minKm = MIN_TOUR_LEG_KM): TourLeg[] => tourLegs(tour).filter(leg => leg.km < minKm);
 
 /** Legs longer than the cap (empty for a valid tour). */
 export const legsOverCap = (tour: Tour, capKm = MAX_TOUR_LEG_KM): TourLeg[] => tourLegs(tour).filter(leg => !withinLegCap(leg, capKm));
