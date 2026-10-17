@@ -1,0 +1,32 @@
+{
+ "id": "thorbecke-standbeeld",
+ "provenance": "scripts/sculptures/rebuild-sources/thorbecke-standbeeld.json",
+ "figures": [
+  {
+   "name": "statesman",
+   "glb": "scripts/sculptures/installed/thorbecke-standbeeld/statesman.glb",
+   "at": [
+    -0.374,
+    3.445,
+    0.046
+   ],
+   "cut": {
+    "min": [
+     -2,
+     3.46,
+     -2
+    ],
+    "max": [
+     2,
+     7,
+     2
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)"
+  }
+ ]
+}

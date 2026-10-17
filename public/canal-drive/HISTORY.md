@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## Statue rebuilds installed: 16 in the game, Kinderbrug built but held (2026-10-17)
+
+User (2026-10-17): "install better ones, the sculpture models are fine". Lane
+`lane/statue-rebuild-20261017` (7ea72eec9). `rebuild.ts --steps=install`
+writes `scripts/sculptures/installed/<id>.json` plus the figure mesh;
+`scripts/landmarks/installed-figures.ts`, called by `build-manual-landmarks`
+before save, runs the kit builder as before, drops the kit figure's triangles
+inside each cut box (`keptTriangles`, kitParts.ts) and adds the reconstructed
+figure in the kit's colour, so ids, positions, facing, material slots and the
+LOD path are unchanged and the GLBs rebuild from source. Installed:
+Lieverdje, Anne Frank Merwedeplein, Multatuli, Wilhelmina, Vondel, Dokwerker,
+Thorbecke, Teun de Jager, Johnny Jordaan group, Theo Thijssen, Carmiggelt,
+Gandhi, Rembrandt statue, Sarphati bust, Spanjemonument; both Kinderbrug
+groups are rebuilt but stay held until the catalogue step below runs. Spinoza,
+Mama Baranka and the Waterdraagster stay kit. Photo credits per statue in
+NOTICE.md. audit:glb passes on all 17; check:manual-landmarks 350;
+landmark lods 305 current. Note: `rebuild.ts` reads `models/<id>.glb` as the
+kit, which is now the rebuild; re-run compose/strip on a pre-install kit GLB.
+
 ## Buurt looks in the explorer (2026-10-17)
 
 `explore.html?buurt=<slug|CBS code>` shows a buurt's "own look": the building

@@ -1,0 +1,32 @@
+{
+ "id": "multatuli-standbeeld",
+ "provenance": "scripts/sculptures/rebuild-sources/multatuli-standbeeld.json",
+ "figures": [
+  {
+   "name": "bust",
+   "glb": "scripts/sculptures/installed/multatuli-standbeeld/bust.glb",
+   "at": [
+    -0.063,
+    1.105,
+    -0.017
+   ],
+   "cut": {
+    "min": [
+     -2,
+     1.12,
+     -2
+    ],
+    "max": [
+     2,
+     4,
+     2
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)"
+  }
+ ]
+}
