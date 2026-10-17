@@ -747,23 +747,17 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   the width step at the deck end), unchecked. The A10/A4 viaducts are at
   grade in the ground model, so they show no elevated deck.
 
-- **Bridge names and cards after the askable-bridges pass (2026-10-16,
-  HISTORY "Every named bridge is a bridge question", "Cards for the new
-  bridges")**: OSM spellings stay as answer text ("Katten brug", "Hilletjes
-  Brug"); fix in OSM or add an alias match. Seven new bridges have no sourced
-  card (Godenbrug, Kaassluis, Kleine Brouwerssluis, Melkwegbrug,
-  Vingboomsbrug, Zandbrug, Zwanenburger fiets brug): most sit 1–12 m from a
-  register bridge with another official name and need a source tying the
-  names. Moddermolenbrug's card is the Theo Boschbrug article (Wikidata alias:
-  the OSM name is the old one); Uiverbrug's origin says aluminium, the
-  register reinforced concrete. IJburg Baltic-port bridge names (Kolbergbrug,
-  Pernaubrug, Rostockbrug …) may be shifted in OSM; compare with the
-  orthophoto. trn ledes keep slips ("structural work of art" for bouwkundig
-  kunstwerk, a garbled Zaandijkspoorbrug lede); an edit pass is due.
-  **Load time:** `bridges.json` is a ride-start file and grew 871 → ~1,050 KB
-  (+45 KB gzipped); `wikipediaSourceText` (~300 KB) is read by nothing at
-  runtime, so strip it from the shipped file. Railway flags were not rebuilt
-  (needs Overpass). The 8 m cutoff covers the distance settle only.
+- **Bridge names and cards (2026-10-17, HISTORY "Bridges shown under their
+  official spelling")**: three bridges still have no sourced card (Kaassluis,
+  Melkwegbrug, Zwanenburger fiets brug). Maria Woestenburgbrug may be a rename
+  (BRU0620 lists Woestenburg and Woesthoven; BAG and nl.wikipedia say
+  Woesthovenbrug). The register's Simon Wiesenthalbrug for BRU0026 conflicts
+  with BAG/Wikipedia (bridge 790). Uiverbrug's origin says aluminium, the
+  register reinforced concrete. IJburg Baltic-port bridge names may be shifted
+  in OSM; compare with the orthophoto. Three `streets.json` features share
+  the edited Dutch originals and still ship the old English until the
+  translate pass is re-run on streets. Railway flags were not rebuilt (needs
+  Overpass). The 8 m cutoff covers the distance settle only.
 
 - **Landmark cards, after the 43 rewrites (2026-10-16, HISTORY "Landmark
   cards")**: 92 cards are empty (mostly manual POIs and kit locations: UvA

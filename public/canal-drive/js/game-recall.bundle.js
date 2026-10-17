@@ -47909,6 +47909,37 @@
   }
   var START_HEADING_SNAP_RAD = Math.PI / 6;
 
+  // src/canalRecall/bridgeDisplayNames.ts
+  function bridgeLetterKey(name) {
+    return name.trim().replace(/^(de|het|'t)\s+/i, "").replace(/ł/g, "l").replace(/Ł/g, "L").toLocaleLowerCase().normalize("NFD").replace(/[^\p{L}]/gu, "").replace(/(\p{L})\1+/gu, "$1");
+  }
+  function isBridgeSpelling(osmName, displayName) {
+    return !!displayName && displayName !== osmName && bridgeLetterKey(displayName) === bridgeLetterKey(osmName);
+  }
+  function buildBridgeDisplayNames(bridges) {
+    const names = /* @__PURE__ */ new Map();
+    for (const bridge of bridges) {
+      const name = bridge.name?.trim();
+      const shown = bridge.displayName?.trim();
+      if (name && shown && isBridgeSpelling(name, shown)) names.set(name, shown);
+    }
+    return names;
+  }
+  var indexes = /* @__PURE__ */ new WeakMap();
+  function bridgeDisplayNamesOf(bridges) {
+    if (!bridges) return /* @__PURE__ */ new Map();
+    let index = indexes.get(bridges);
+    if (!index) indexes.set(bridges, index = buildBridgeDisplayNames(bridges));
+    return index;
+  }
+  function displayBridgeName(names, name) {
+    return names && names.get(name) || name;
+  }
+  function acceptedBridgeAnswers(names, name) {
+    const shown = names?.get(name);
+    return shown ? [shown, name] : [name];
+  }
+
   // src/canalRecall/game/recallRuntime.ts
   var BRIDGE_END_TOUCH_METRES = 3;
   var DISTRACTOR_COUNT = 3;
@@ -48083,6 +48114,12 @@ Learned names, exploration collection, personal bests, route settings and the ho
         center
       };
     }
+    /** The spelling to show for a name the game matched by its raw OSM name:
+     *  a bridge's official spelling ("Katten brug" is shown as Kattenbrug),
+     *  anything else unchanged. Every key, match and record keeps the raw name. */
+    _shownName(name) {
+      return displayBridgeName(bridgeDisplayNamesOf(this.bridges), name);
+    }
     _revealName(name) {
       if (!name) return;
       this.revealedNames.add(name);
@@ -48154,12 +48191,13 @@ Learned names, exploration collection, personal bests, route settings and the ho
         ));
         if (clearance <= 0) continue;
         ctx.globalAlpha = 0.55 * clearance;
-        const width = ctx.measureText(bridge.name).width + 12;
+        const label = this._shownName(bridge.name);
+        const width = ctx.measureText(label).width + 12;
         ctx.fillStyle = "rgba(3,18,28,0.55)";
         roundRect(ctx, screen.x - width / 2, screen.y - 24, width, 16, 4);
         ctx.fill();
         ctx.fillStyle = "#E7D5A3";
-        ctx.fillText(bridge.name, screen.x, screen.y - 12);
+        ctx.fillText(label, screen.x, screen.y - 12);
       }
       ctx.restore();
     }
@@ -48232,7 +48270,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         this.learnedNames.add(decision.name);
         this._revealName(decision.name);
         if (isTransit(this.travelMode)) this._stickTransitLine(decision.name);
-        this.quizFeedback = knowThisCornerFeedback(decision.name);
+        this.quizFeedback = knowThisCornerFeedback(this._shownName(decision.name));
         return;
       }
       if (isTransit(this.travelMode) && !transitReady) return;
@@ -48726,6 +48764,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
       const recallFeature = this._recallFeatureAt(name, this.player.x, this.player.y, this.quizPromptSubject === "bridge" ? "bridge" : "");
       const result = CanalRecallAnswerPath.submitAnswer({
         correctName: name,
+        displayName: this._shownName(name),
         answer: "",
         passed: true,
         score: {
@@ -48742,7 +48781,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         revealName: (revealed) => this._revealName(revealed)
       });
       void result;
-      this.quizFeedback = `That was ${name}`;
+      this.quizFeedback = `That was ${this._shownName(name)}`;
       this._silentPass = null;
       this.quizCurrentName = name;
       this.quizCandidateName = "";
@@ -48878,7 +48917,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         key.className = "canal-choice-key";
         key.textContent = String(index + 1);
         button.dataset.name = name;
-        button.append(key, document.createTextNode(name));
+        button.append(key, document.createTextNode(this._shownName(name)));
         button.addEventListener("click", () => this._submitCanalAnswer(name));
         return button;
       }));
@@ -48969,6 +49008,9 @@ Learned names, exploration collection, personal bests, route settings and the ho
       }
       const result = CanalRecallAnswerPath.submitAnswer({
         correctName,
+        // A bridge is asked under its official spelling and typed either way.
+        displayName: this._shownName(correctName),
+        acceptedAnswers: acceptedBridgeAnswers(bridgeDisplayNamesOf(this.bridges), correctName),
         answer,
         noIdea,
         score: {
@@ -49017,6 +49059,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
       };
       this._answerStamp = this.quizPromptSegmentIndex >= 0 ? {
         name: correctName,
+        label: this._shownName(correctName),
         segmentIndex: this.quizPromptSegmentIndex,
         correct,
         until: this.raceTime + ANSWERED_STREET_SECONDS

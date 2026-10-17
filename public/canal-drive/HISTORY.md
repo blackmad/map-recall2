@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+## Bridges shown under their official spelling; bridges.json halved (2026-10-17)
+
+Lane `content/bridge-data-finish-20261017`. Load: `bridges.json` (ride start)
+1,056,203 → 553,504 bytes, 227,818 → 101,146 gzipped; fields nothing reads
+at runtime (`wikipediaSourceText`, `wikipediaExtractOriginal(Lang)`,
+`encyclopediaScore`, `wikidataSitelinks`, `wikipediaPageviews60d`) live in
+`scripts/data/extract-sidecars/amsterdam/bridges.json`, and every enrich,
+translate and build script reads them back and splits them out on write
+(`extractSidecar.ts`). Spelling: a bridge may carry `displayName` (BAG
+spelling, only when the letters match exactly; table
+`scripts/data/bridge-display-names.json`); the raw OSM `name` keeps way
+matching, crossings, recall and knowledge keys. Shown on choices, feedback,
+card title, map labels, the answer stamp and the HUD road title
+(`routePlaqueName` `shownName`, withholding still on the raw name); typed
+answers accept both. 15 change, e.g. Katten brug → Kattenbrug, Hilletjes
+Brug → Hilletjesbrug, Mr. J.J. van der Veldebrug → Mr. J. J. van der
+Veldebrug. Cards: Godenbrug, Kleine Brouwerssluis, Vingboomsbrug, Zandbrug
+from the nl.wikipedia article of the register bridge on the spot, which names
+the OSM name as a former name (revision-pinned,
+`bridge-card-overrides.json`). Ledes: 227 of 365 edited
+(`bridgeLedeRepair.ts`: kunstwerk → structure, welfbrug → vaulted bridge …,
+Dutch names restored, cut sentences dropped; old text kept as `machine`), and
+91 bridge trivia openings re-derived from them. Cards no longer cut at a
+patronymic or initials ("The Hendrick Jacobsz." was the whole opening).
+Checked on iPhone renders: question, two-line choices, feedback, HUD title
+and card. `bridgeData.test.ts` (11) runs in `test:bridge-street-name`.
+
 ## CI green again: held-model card overrides and an opt-in spec's local file (2026-10-17)
 
 Canal CI had failed on every push since 2026-10-16 evening, so the GitHub Pages
