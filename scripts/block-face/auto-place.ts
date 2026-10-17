@@ -28,6 +28,7 @@ import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts'
 import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
+import {applyCrownPins, crownPinProblems, type CrownPin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
 import {FACES, STAGING} from './intake.ts';
 
@@ -234,6 +235,11 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   // Pands held after a review of their run's strip sheet (scripts/block-face/buurten/<buurt>-review-holds.json).
   const holdsFile = path.join('scripts/block-face/buurten', `${buurt}-review-holds.json`);
   const reviewHolds = new Map<string, string>(existsSync(holdsFile) ? (await readJson(holdsFile)).holds.map((h: {pandId: string; reason: string}) => [h.pandId, h.reason]) : []);
+  // Crowns a reviewer pinned after reading the strip (blockFace/reviewCrowns.ts): flat crowns the skyline cannot tell apart.
+  const crownsFile = path.join('scripts/block-face/buurten', `${buurt}-review-crowns.json`);
+  const crownPins: CrownPin[] = existsSync(crownsFile) ? (await readJson(crownsFile)).pins : [];
+  const pinProblems = crownPinProblems(crownPins, types);
+  if (pinProblems.length) throw Error(`${crownsFile}: ${pinProblems.join('; ')}`);
   const {compileFace} = await import('./compile.ts');
   const {reviewFace} = process.argv.includes('--review') ? await import('./review.ts') : {reviewFace: null};
   const summary: any[] = [];
@@ -263,6 +269,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       if (hold) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'review', reason: `review: ${hold}`};
       return decidePand(types, ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date);
     });
+    if (crownPins.length) { const pinned = applyCrownPins(f.id, decisions, crownPins, types); if (pinned.length) console.log(`${f.id}: crown pinned on ${pinned.length} pand(s)`); }
     fillPairs(decisions, types);
     const rowSet = rowCoherence(decisions, types, evs, strip.date);
     const challengers = new Map<string, Record<string, number | null>>(), switched = new Set<string>();
