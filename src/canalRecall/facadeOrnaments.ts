@@ -13,7 +13,7 @@
 // Everything lines up with the painted openings (facadeOpenings.ts) and the wall's bay grid,
 // is drawn as flat-coloured boxes and strips, and is atomic (all of a cornice or none of it).
 
-import { BOX_TRIS, hash01, type ExtraContext, type ExtraSink, type WallComponent } from './facadeExtraCore.js';
+import { hash01, type ExtraContext, type ExtraSink, type WallComponent } from './facadeExtraCore.js';
 import { bayLookOpenings, proceduralOpenings, type OpeningRow, type Openings } from './facadeOpenings.js';
 import type { FacadeStyle } from './genericFacades.js';
 
@@ -447,5 +447,3 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     s.strip(c.f, a0 + w / 2 - 0.2, a0 + w / 2 + 0.2, 0.42, storeyZ(c, 1), c.top + 1.6, '#4d5f6b', 0.02);
   } },
 ];
-
-export const ornamentBoxTris = BOX_TRIS;

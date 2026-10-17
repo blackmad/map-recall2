@@ -104,14 +104,6 @@ export const LARGE_LETTER_FONT_EM_SCALE = 0.688 / 0.859;
 export const LARGE_LETTER_SCRIPT_FAMILY = 'Pacifico';
 
 /**
- * Browser/Storybook URL for the bundled TTF. Vite serves `public/` at `/`,
- * so Storybook uses `/canal-drive/fonts/...`. The craft harness serves the
- * repo root and needs `/public/canal-drive/fonts/...` — callers should pass
- * an explicit URL when not using the default.
- */
-export const LARGE_LETTER_FONT_PUBLIC_URL = '/canal-drive/fonts/Anton-Regular.ttf';
-
-/**
  * Register the name face and the greeting script as webfonts from `fontsBaseUrl` (the directory
  * holding Anton-Regular.ttf and Pacifico-Regular.ttf) and wait for them, so canvas text never
  * falls back to a serif. Pages that already declare the families lose nothing. Never rejects.

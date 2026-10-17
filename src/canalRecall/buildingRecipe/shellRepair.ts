@@ -43,7 +43,6 @@ const PLANAR_M = 0.05;
 export const FILL_NEAREST_M = 1.5;
 
 export type PatchKind = 'cap' | 'strip' | 'seam';
-export interface ShellPatch { kind: PatchKind; target: 'wall' | 'roof'; surface?: number; areaM2: number; edgeM: number }
 export interface ShellRepairReport {
   mode: {repair: boolean; footprint: 'lod22' | 'bag'};
   /** gate-rule open edge of the bare host (metres) before and after the repair */

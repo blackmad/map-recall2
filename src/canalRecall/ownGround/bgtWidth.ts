@@ -15,9 +15,6 @@ export type SurfaceClass = 'carriage' | 'foot' | 'cycle' | 'pedestrian' | 'parki
 
 export interface BgtPolygon { cls: SurfaceClass; /** relatieve_hoogteligging */ h: number; rings: Vec2[][]; bbox: [number, number, number, number] }
 
-/** Decimetres: [own surface width, footpath per side, cycle path per side]; 0 = none found. */
-export type BgtWayWidth = [number, number, number];
-
 export interface SectionWidths { widthM: number; sidewalkM: number; cycleM: number }
 
 export function classOf(functie: string): SurfaceClass {
