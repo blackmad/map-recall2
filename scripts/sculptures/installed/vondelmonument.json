@@ -1,0 +1,32 @@
+{
+ "id": "vondelmonument",
+ "provenance": "scripts/sculptures/rebuild-sources/vondelmonument.json",
+ "figures": [
+  {
+   "name": "poet",
+   "glb": "scripts/sculptures/installed/vondelmonument/poet.glb",
+   "at": [
+    0.096,
+    4.676,
+    0.056
+   ],
+   "cut": {
+    "min": [
+     -3,
+     4.6,
+     -3
+    ],
+    "max": [
+     3,
+     8,
+     3
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TRELLIS.2-4B multidiffusion, 5 photos (trellis2-apple MLX port)"
+  }
+ ]
+}

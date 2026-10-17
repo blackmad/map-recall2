@@ -1,0 +1,32 @@
+{
+ "id": "wilhelmina-ruiterstandbeeld",
+ "provenance": "scripts/sculptures/rebuild-sources/wilhelmina-ruiterstandbeeld.json",
+ "figures": [
+  {
+   "name": "horse-and-rider",
+   "glb": "scripts/sculptures/installed/wilhelmina-ruiterstandbeeld/horse-and-rider.glb",
+   "at": [
+    0.004,
+    3.56,
+    0.129
+   ],
+   "cut": {
+    "min": [
+     -3,
+     3.57,
+     -3
+    ],
+    "max": [
+     3,
+     9,
+     3
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": "theo-thijssen-standbeeld",
+ "provenance": "scripts/sculptures/rebuild-sources/theo-thijssen-standbeeld.json",
+ "figures": [
+  {
+   "name": "master-boy-desk",
+   "glb": "scripts/sculptures/installed/theo-thijssen-standbeeld/master-boy-desk.glb",
+   "at": [
+    0.051,
+    1.002,
+    -0.26
+   ],
+   "cut": {
+    "min": [
+     -1,
+     1,
+     -1.2
+    ],
+    "max": [
+     1,
+     3,
+     0.5
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)"
+  }
+ ]
+}
