@@ -48900,6 +48900,159 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-17T08:39:59.601Z"
+    },
+    {
+      "id": "ordinary-0363100012091838",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012091838",
+      "name": "Gerrit Rietveld Academie and Sandberg Instituut, Fred. Roeskestraat 96-98, Amsterdam: a 2006 art-school complex, a ten-storey tower clad in dark grey pressed-metal dimples with three long ribbon windows over a glazed ground storey, beside a two-storey low block whose upper storey is a white expanded-metal screen between white slab edges over a glazed ground",
+      "hash": "dabd876cf07b98c8a354aa7e2194d7cdc06f3909c324aff528393b8fc1d25614",
+      "sha256": "dabd876cf07b98c8a354aa7e2194d7cdc06f3909c324aff528393b8fc1d25614",
+      "meshHash": "2d76a3cd01e35076",
+      "bytes": 400288,
+      "triangles": 5412,
+      "materials": 11,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -35.735,
+          0.001,
+          -29.987
+        ],
+        "max": [
+          43.961,
+          32.376,
+          14.438
+        ]
+      },
+      "anchor": [
+        4.8598204,
+        52.3413454
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8604523,
+              52.3414183
+            ],
+            [
+              4.8598628,
+              52.3413976
+            ],
+            [
+              4.8598702,
+              52.3413186
+            ],
+            [
+              4.8597535,
+              52.3413223
+            ],
+            [
+              4.8597415,
+              52.3413219
+            ],
+            [
+              4.8597133,
+              52.3416138
+            ],
+            [
+              4.8592942,
+              52.3415987
+            ],
+            [
+              4.8593311,
+              52.3412135
+            ],
+            [
+              4.8597506,
+              52.3412285
+            ],
+            [
+              4.8597441,
+              52.3412957
+            ],
+            [
+              4.8597561,
+              52.3412961
+            ],
+            [
+              4.8598721,
+              52.341298
+            ],
+            [
+              4.859877,
+              52.3412462
+            ],
+            [
+              4.8604665,
+              52.341267
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 32.38,
+      "height": 32.38,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-rietveld-academie-091838.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012091838"
+      ],
+      "aliases": [
+        "w57860150"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "rietveld-academie-091838",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012091838/w03-177a21.jpg",
+          "source-data://pand-reference-walls/0363100012091838/w05-177L.jpg",
+          "source-data://pand-reference-walls/0363100012091838/w07-87far.jpg",
+          "source-data://pand-reference-walls/0363100012091838/w03-177d17.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 9st 23b",
+          "ribbon-windows 9st 9b",
+          "brick-bay-grid 2st 11b",
+          "brick-bay-grid 2st 13b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.20; wall family unresolved (#4b4a47 is dark and neutral, brick courses not resolved): lightness and hue judged only)); inferred: wall colour passes (dL 0.06) and the two upper ribbons match (photo 9 and 11 % glazed, model 12 and 14 %), the FAIL is the first-floor ribbon, which the classifier reads as 1 % in the 2017-12 crop (dark frames and an unlit interior behind the 2017 hoarding) where the rectified crop shows it over 26 m of the front at 4.3-5.7 m, as in the 2021-04 crop",
+        "walls[1] not confirmed by the photo (NO EVIDENCE (foliage 35 % > 25 %)); inferred: east wall seen 60 m away at 28 degrees through bare branches (foliage 35 %), the three ribbons read at the same heights as the south front and placed from the rectified crop (5.8-14.7 m and 8.9-14.7 m), colour as walls[0]",
+        "walls[2] not confirmed by the photo (NO EVIDENCE (foliage 40 % > 25 %; washed out 52 % > 30 %)); inferred: the low block's white front in March sun reads as washed out (52 %) and the tree in front as foliage (40 %), the storey lines, the screen panels, the slab edges and the window bay are measured on the 2022-03 and 2021-04 crops and judged side by side on the sheet",
+        "walls[3] not confirmed by the photo (NO PHOTO); inferred: the low block's west, east and north walls have no panorama (the 2001 neighbour, the yard between the blocks, the 1967 building's courtyard), inferred as the south front's screen storey over a glazed ground",
+        "walls[0] tower south front (panel 26; crops w03-177a21 2021-04-30 and w03-177d17 2017-12-20, both leaf-off and clear, 30-32 m across the street): dark grey dimpled pressed metal over a dark glazed ground storey (0-3.4 m). Three ribbon windows of square dark-framed panes, 1.2-1.4 m tall: on the first floor in three runs (0-4.7, 11.7-28.3 and 35.6-40.2 m from the west end, sills at 4.3 m), and on two floors near the top across the middle run only (sills 22.0 and 25.6 m), blank metal between and 5.6 m of blank metal above. Storeys fitted to the ribbons: a 3.7 m ground and eight 3.55 m floors to the 32.3 m eaves, ribbons on floors 1, 6 and 7 (openBays, 23 bays of 1.74 m; 9 bays in the middle run where the photo counts 19 panes), windowShape h 0.36 / sill 0.16.",
+        "walls[1] tower east wall (panel 25, 16.5 m; crop w07-87far 2022-03-24, 60 m away at 28 degrees through bare branches): the same metal with the first-floor ribbon from 8.9 to 14.7 m and the two upper ribbons from 5.8 to 14.7 m, at the same heights as the south front. The west and north tower walls have no panorama and stay blank metal (otherWalls)."
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012091838",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-17T09:01:23.834Z"
     }
   ]
 }
