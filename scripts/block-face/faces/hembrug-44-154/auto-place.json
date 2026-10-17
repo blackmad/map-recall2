@@ -1,0 +1,698 @@
+{
+ "face": "hembrug-44-154",
+ "street": "Hembrugstraat",
+ "library": "spaarndammerbuurt",
+ "stripDate": "2022-12-14",
+ "seconds": 2.25,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "hembrug-44-154-r1",
+   "pands": [
+    "0363100012110068",
+    "0363100012103688",
+    "0363100012118245"
+   ]
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012070859",
+   "address": "Hembrugstraat 148",
+   "builtYear": 1925,
+   "widthM": 5.7,
+   "eavesM": 14.58,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e2c58a",
+    "wallRaw": "#fbeaa2",
+    "skyline": {
+     "eavesM": 15.4,
+     "eavesRow": 190,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.187,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.18 m at 0.88 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.18,
+       "centre": 0.88,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.9,
+       "widthM": 0.8,
+       "centre": 0.69
+      }
+     ]
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: frontage 5.7 m, type 11.8-13 m)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "frontage 5.7 m, type 11.8-13 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.58 m = 5 storeys of 2.92 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.48 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.036 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 6 vs 7 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012110068",
+   "address": "Hembrugstraat 132",
+   "builtYear": 1925,
+   "widthM": 12.34,
+   "eavesM": 14.74,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.49,
+    "toM": 7.4,
+    "depthM": 0.43,
+    "centre": 0.482
+   },
+   "strip": {
+    "wall": "#5d514c",
+    "wallRaw": "#676159",
+    "skyline": {
+     "eavesM": 15.28,
+     "eavesRow": 195,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.15,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 11 m (2.27 m wide), 10.7 m (1.55 m wide), 8.75 m (1.52 m wide), 8.38 m (1.52 m wide), 5.67 m (1.5 m wide), 5.38 m (1.5 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11,
+       "widthM": 2.27,
+       "centre": 0.29
+      },
+      {
+       "atM": 10.7,
+       "widthM": 1.55,
+       "centre": 0.78
+      },
+      {
+       "atM": 8.75,
+       "widthM": 1.52,
+       "centre": 0.53
+      },
+      {
+       "atM": 8.38,
+       "widthM": 1.52,
+       "centre": 0.78
+      },
+      {
+       "atM": 5.67,
+       "widthM": 1.5,
+       "centre": 0.52
+      },
+      {
+       "atM": 5.38,
+       "widthM": 1.5,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.12
+   },
+   "status": "placed",
+   "type": "hembrug-1925-white-attic",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "polanen-1935-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "hembrug-1925-white-attic",
+    "measuredPalette": {
+     "brick": "#5d514c",
+     "evidence": "strip 2022-12-14 span 228-722: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #645851)"
+    }
+   },
+   "notes": [
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012103688",
+   "address": "Hembrugstraat 116",
+   "builtYear": 1925,
+   "widthM": 12.6,
+   "eavesM": 14.74,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.68,
+    "toM": 7.58,
+    "depthM": 0.43,
+    "centre": 0.487
+   },
+   "strip": {
+    "wall": "#564b45",
+    "wallRaw": "#5f5951",
+    "skyline": {
+     "eavesM": 15.2,
+     "eavesRow": 198,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.055,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 4 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.93,
+       "widthM": 4.05,
+       "centre": 0.83
+      },
+      {
+       "atM": 10.63,
+       "widthM": 2.05,
+       "centre": 0.91
+      },
+      {
+       "atM": 5.67,
+       "widthM": 1.45,
+       "centre": 0.53
+      },
+      {
+       "atM": 5.38,
+       "widthM": 1.35,
+       "centre": 0.1
+      },
+      {
+       "atM": 5.07,
+       "widthM": 0.95,
+       "centre": 0.08
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.17
+   },
+   "status": "placed",
+   "type": "hembrug-1925-white-attic",
+   "score": 0.88,
+   "runnerUp": {
+    "typeId": "polanen-1935-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "hembrug-1925-white-attic",
+    "measuredPalette": {
+     "brick": "#564b45",
+     "evidence": "strip 2022-12-14 span 722-1226: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #675c52)"
+    }
+   },
+   "notes": [
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012118245",
+   "address": "Hembrugstraat 100",
+   "builtYear": 1925,
+   "widthM": 12.54,
+   "eavesM": 14.75,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.56,
+    "toM": 7.55,
+    "depthM": 0.44,
+    "centre": 0.483
+   },
+   "strip": {
+    "wall": "#574d48",
+    "wallRaw": "#615c54",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 199,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.052,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.85,
+       "widthM": 1.63,
+       "centre": 0.72
+      },
+      {
+       "atM": 5.67,
+       "widthM": 1.07,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.17
+   },
+   "status": "placed",
+   "type": "hembrug-1925-white-attic",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "polanen-1935-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "hembrug-1925-white-attic",
+    "measuredPalette": {
+     "brick": "#574d48",
+     "evidence": "strip 2022-12-14 span 1225-1727: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #72655c)"
+    }
+   },
+   "notes": [
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012132207",
+   "address": "Hembrugstraat 84",
+   "builtYear": 1925,
+   "widthM": 12.39,
+   "eavesM": 14.71,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.54,
+    "toM": 7.51,
+    "depthM": 0.43,
+    "centre": 0.486
+   },
+   "strip": {
+    "wall": "#e2cfa8",
+    "wallRaw": "#fbf6c5",
+    "skyline": {
+     "eavesM": 14.88,
+     "eavesRow": 211,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 1.27,
+      "topWidthM": 0.28,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.402,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.02 m at 0.52 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.02,
+       "centre": 0.52,
+       "light": 0
+      },
+      {
+       "widthM": 2.42,
+       "centre": 0.73,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.95,
+       "widthM": 2.05,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0.39,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 39 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012147064",
+   "address": "Hembrugstraat 68",
+   "builtYear": 1925,
+   "widthM": 7.62,
+   "eavesM": 14.8,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.66,
+    "toM": 12.49,
+    "depthM": 0.96,
+    "centre": 0.686,
+    "lineRD": [
+     [
+      120193.27425,
+      489435.8975
+     ],
+     [
+      120200.03825,
+      489439.8375
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#d2af7c",
+    "wallRaw": "#e9d092",
+    "skyline": {
+     "eavesM": 14.93,
+     "eavesRow": 209,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.119,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: frontage 7.62 m, type 11.8-13 m)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "frontage 7.62 m, type 11.8-13 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.8 m = 5 storeys of 2.96 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012116998",
+   "address": "Hembrugstraat 56",
+   "builtYear": 1925,
+   "widthM": 13.49,
+   "eavesM": 13.04,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 1.48,
+    "toM": 3.09,
+    "depthM": 0.43,
+    "centre": 0.169
+   },
+   "strip": {
+    "wall": "#4d403a",
+    "wallRaw": "#554c44",
+    "skyline": {
+     "eavesM": 12.05,
+     "eavesRow": 324,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 1.05,
+      "topWidthM": 1.27,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.014,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.47,
+       "widthM": 2.95,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: frontage 13.49 m, type 11.8-13 m)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "frontage 13.49 m, type 11.8-13 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.04 m = 5 storeys of 2.61 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 5.11 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.008 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 3 vs 7 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012145950",
+   "address": "Hembrugstraat 44",
+   "builtYear": 1929,
+   "widthM": 12.15,
+   "eavesM": 12.91,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#55473f",
+    "wallRaw": "#5e544a",
+    "skyline": {
+     "eavesM": 11.85,
+     "eavesRow": 332,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.05,
+      "topWidthM": 1.3,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.047,
+    "structure": {
+     "bayWidthM": 0.4,
+     "bayCentre": 0.98,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.5,
+       "widthM": 3.3,
+       "centre": 0.34
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: built 1929, type 1924-1926)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1924-1926"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.91 m = 5 storeys of 2.58 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 4.95 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.033 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

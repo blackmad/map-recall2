@@ -16,15 +16,16 @@
  */
 import type {CanalHouseIntent, FrontIntent, GroundFrontIntent, PaletteIntent, ShopfrontIntent} from '../buildingRecipe/intent.ts';
 import {frontGrid} from '../buildingRecipe/intent.ts';
+import {mirrorStripeZone} from '../buildingRecipe/brickStripes.ts';
 import type {HouseDesign, RhythmSpec} from './intent.ts';
 
 /** Everything above the cornice line: a crown variant sets exactly these (and nothing else). */
 export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownShoulder', 'crownNeckWidth', 'crownCapCornice', 'crownCapRatio', 'crownAt', 'crownBays', 'crownRise', 'crownSteps', 'crownFinial',
-  'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet', 'eavesOverhang', 'dormerSize'] as const;
+  'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet', 'eavesOverhang', 'dormerSize', 'renderedGable'] as const;
 /** Body fields a crown variant may also set (a gabled variant drops the cornice its cornice variant has). */
 export const CROWN_BODY_KEYS = ['cornice'] as const;
 /** The ground storey (with souterrain/stoop): a ground variant or a per-house shop sets these. */
-export const GROUND_KEYS = ['doorBay', 'basement', 'souterrain', 'tallGround', 'shopfront', 'groundFront', 'shutters', 'groundCanopy'] as const;
+export const GROUND_KEYS = ['doorBay', 'doorArch', 'basement', 'souterrain', 'tallGround', 'shopfront', 'groundFront', 'shutters', 'groundCanopy'] as const;
 /** Keys a type never sets: identity and frontage split come from the face/placement. */
 const PLACEMENT_KEYS = ['id', 'street', 'share'] as const;
 type CrownKey = typeof CROWN_KEYS[number];
@@ -150,7 +151,13 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
   if (f.crownGroups) out.crownGroups = f.crownGroups.map(flipAxes).reverse();
   if (f.tower?.corner) throw Error(`${f.id}: a corner tower stands on the pand's own corner; it is not part of a mirrored type`);
   if (f.tower) out.tower = {...f.tower, bays: flipAxes(f.tower.bays!)};
-  if (f.lisenes) out.lisenes = {...(f.lisenes.rightEnd ? {leftEnd: f.lisenes.rightEnd} : {}), ...(f.lisenes.leftEnd ? {rightEnd: f.lisenes.leftEnd} : {})};
+  if (f.lisenes) {
+    const {leftEnd, rightEnd, at, ...rest} = f.lisenes;
+    // Inner lisenes stand on bay edges: edge k of a G-axis grid is edge G - k mirrored.
+    out.lisenes = {...(rightEnd ? {leftEnd: rightEnd} : {}), ...(leftEnd ? {rightEnd: leftEnd} : {}), ...(at ? {at: at.map(k => grid - k).sort((p, q) => p - q)} : {}), ...rest};
+  }
+  if (f.brickStripes) out.brickStripes = f.brickStripes.map(mirrorStripeZone);
+  if (f.stairLight) out.stairLight = {...f.stairLight, axis: flipAxis(f.stairLight.axis)};
   if (f.dormerAt) out.dormerAt = f.dormerAt.map(flipFrac).reverse();
   // Dormer indices count left to right as drawn: a mirrored front reverses them (with its dormerAt spans).
   if (f.dormerCap && f.dormers) out.dormerCap = {...f.dormerCap, dormers: f.dormerCap.dormers.map(i => f.dormers! - 1 - i).sort((p, q) => p - q)};

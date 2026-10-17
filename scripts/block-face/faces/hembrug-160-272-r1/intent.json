@@ -1,0 +1,132 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "hembrug-160-272-r1",
+ "street": "Hembrugstraat",
+ "sources": [
+  {
+   "id": "strip-2022-12-14",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-14",
+   "image": "staging/block-face/hembrug-160-272-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the spaarndammerbuurt library (buurt Spaarndammerbuurt-Noordwest); scores and holds in scripts/block-face/faces/hembrug-160-272/auto-place.json"
+ },
+ "types": [
+  "hembrug-1925-white-attic"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012102874",
+   "slug": "hembrug-102874",
+   "address": "Hembrugstraat 216",
+   "type": {
+    "type": "hembrug-1925-white-attic",
+    "measuredPalette": {
+     "brick": "#736754",
+     "evidence": "strip 2022-12-14 span 1378-1868: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #5c4e48)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: hembrug-1925-white-attic scored 0.8 on eaves 1, storeys 1, roof 1, stucco 1, columns 0; strip 2022-12-14 span 1378-1868"
+   }
+  },
+  {
+   "pandId": "0363100012115911",
+   "slug": "hembrug-115911",
+   "address": "Hembrugstraat 200",
+   "type": {
+    "type": "hembrug-1925-white-attic",
+    "measuredPalette": {
+     "brick": "#73695c",
+     "evidence": "strip 2022-12-14 span 1868-2370: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #736057)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: hembrug-1925-white-attic scored 0.8 on eaves 1, storeys 1, roof 1, stucco 1, columns 0; strip 2022-12-14 span 1868-2370"
+   }
+  },
+  {
+   "pandId": "0363100012125901",
+   "slug": "hembrug-125901",
+   "address": "Hembrugstraat 184",
+   "type": {
+    "type": "hembrug-1925-white-attic",
+    "measuredPalette": {
+     "brick": "#6a5d52",
+     "evidence": "strip 2022-12-14 span 2370-2858: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #75645a)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: hembrug-1925-white-attic scored 0.8 on eaves 1, storeys 1, roof 1, stucco 1, columns 0; strip 2022-12-14 span 2370-2858"
+   }
+  },
+  {
+   "pandId": "0363100012067159",
+   "slug": "hembrug-067159",
+   "address": "Hembrugstraat 168",
+   "type": {
+    "type": "hembrug-1925-white-attic",
+    "measuredPalette": {
+     "brick": "#706457",
+     "evidence": "strip 2022-12-14 span 2859-3363: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #5c554e)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: hembrug-1925-white-attic scored 0.8 on eaves 1, storeys 1, roof 1, stucco 1, columns 0; strip 2022-12-14 span 2859-3363"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

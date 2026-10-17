@@ -9,6 +9,8 @@
  * compiler builds geometry.
  */
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
+import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
+import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
 import {awningProblems, deBaarsjesProblems} from './deBaarsjesIntent.ts';
 import {eavesOverhangProblems, type EavesOverhangIntent} from './eavesOverhangIntent.ts';
@@ -54,9 +56,10 @@ export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as co
  * end house of a hood-lisene row); `casement-gridded-toplight-double` the same with a small-pane top light (two bars over
  * each light: J.F. Staal's 2.6 m windows on 68-92); `casement-pair` two side-hung casements with no top light (a mullion only);
  * `casement-small-panes` two casements glazed in small panes all over (bars at thirds across, a transom row under a top
- * light: Jan Evertsenstraat 45-53).
+ * light: Jan Evertsenstraat 45-53). `casement-sidelights-toplight` a wide fixed light between two narrow side lights under a
+ * top light across all three (bars at 0.14 and 0.86, a transom at 0.86: Polanenstraat 229-311, 1935).
  */
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes'] as const;
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight'] as const;
 export type WindowKind = typeof WINDOWS[number];
 /** `relieving`: a flat-headed window under a segmental relieving arch (brick tympanum), the 17th-c. canal front. */
 export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;
@@ -262,7 +265,7 @@ export interface FrontIntent {
    * A window ribbon (Rivierenbuurt 1934, Boterdiepstraat 3-59: the top storey's band of three or four lights over the
    * two-axis body): the storey's windows stand side by side between `from` and `to` (shares of the front, left to
    * right as seen), equal, their frames meeting in one post; key = storey index or last. Off the body's axes, so not
-   * together with `storeyAxes`/`storeyBayWidths` for that storey. Absent = byte-identical. `pier` (m, 0.02-1): brick
+   * together with `storeyAxes`/`storeyBayWidths` for that storey. Absent = byte-identical. `pier` (m, 0.02-2.5; a row of small attic lights spaced 1.4 m apart): brick
    * between neighbouring windows instead of the touching frames (Boterdiepstraat 17: three two-light windows, 0.38 m
    * apart), the first and last window then standing on `from` and `to`.
    */
@@ -305,6 +308,12 @@ export interface FrontIntent {
   dormers?: number;
   /** 0-based bay (left-to-right, as seen from the street) holding the main door; null = no door. */
   doorBay: number | null;
+  /**
+   * The house door is a round-arched portiek opening (Amsterdam School, Polanenstraat 229-311, Spaarndammerdijk 247-299):
+   * `span` m wide (0.8..2.6), its semicircular head's crown `apex` m over the ground storey floor (1.8..4, at least
+   * span / 2 + 1.2), a dark leaf with no transom. Absent = the square door with its transom, byte-identical.
+   */
+  doorArch?: {span: number; apex: number};
   /** Ground storey noticeably taller than upper storeys (bel-etage / shop level). */
   tallGround?: boolean;
   basement: typeof BASEMENTS[number];
@@ -339,7 +348,7 @@ export interface FrontIntent {
   /** Window width as a share of the front (all windows of a full storey together, 0.3..0.8; survey median 0.66). Default: the legacy 58 % of an equal-pier bay. Only on the shared equal-pier grid (not with bayWidths). */
   windowShare?: number;
   /**
-   * Window height per storey as a share of the storey height (ground storey first; one entry per storey, 0.3..0.9), or
+   * Window height per storey as a share of the storey height (ground storey first; one entry per storey, 0.15..0.9: a row of small attic lights reads 0.17), or
    * `diminishing` for the survey medians (`DIMINISHING_WINDOW_HEIGHTS`: bel-etage tallest, the attic storey smallest).
    * The window head keeps a fixed share of wall above it; the sill moves. Default: the legacy 0.62 / 0.6 - 0.02 per storey.
    */
@@ -452,9 +461,9 @@ export interface FrontIntent {
    * white-painted over the whole width): each listed 0-based storey (the ground only without a shopfront/ground front) is
    * laid as a 4 cm facing from its floor to the next floor (the top storey to 2 cm under the eaves), cut around the
    * openings, in the wall material and `colour`, exported as a measured tint (the paint is drawn as measured, not lifted
-   * into the city brick range). Absent = byte-identical. `from` (m, 0.05..2): the paint starts that far over each listed
+   * into the city brick range). Absent = byte-identical. `from` (m, 0.05..4): the paint starts that far over each listed
    * storey's floor, brick below it (Gorontalostraat 25-45, 1926: the white top storey begins at its window sills, 0.45 m
-   * over the floor; absent = from the floor).
+   * over the floor; Zaanhof 1919: the render starts over the first-floor window heads, 3.3 m up a tall top storey; absent = from the floor).
    */
   paintedStoreys?: {storeys: number[]; colour: string; from?: number};
   /**
@@ -462,7 +471,29 @@ export interface FrontIntent {
    * to 0.3 m under the eaves, 0.1 m proud, with a 0.15 m corbel cap 0.16 m proud. `half` (0.25 m wide) is the house's half
    * of a lisene shared across the party wall (its outer face follows the party plane); `full` is a whole 0.45 m lisene.
    */
-  lisenes?: { leftEnd?: 'half' | 'full'; rightEnd?: 'half' | 'full' };
+  lisenes?: { leftEnd?: 'half' | 'full'; rightEnd?: 'half' | 'full';
+    /**
+     * Lisenes standing on bay boundaries inside the front (Hembrugstraat 100-232, 1925: two brick pilasters flank the
+     * portiek's staircase axis): indices into the shared grid's bay edges (1 .. grid - 1, `1` = between the first and
+     * second bay), each a whole lisene centred on that edge, `breadth` m wide (0.2..0.8, default 0.45). Absent = none.
+     */
+    at?: number[]; breadth?: number;
+    /** The lisenes stop 0.05 m under this storey's floor (0-based; a white attic storey over them), not 0.3 m under the eaves. */
+    stopStorey?: number };
+  /**
+   * Horizontal brick stripes (buildingRecipe/brickStripes.ts): zones where courses of the band brick alternate with the
+   * wall brick (Hembrugstraat 2-32's striped ground storey, the striped portiek bay of Hembrugstraat 100-232). Absent = byte-identical.
+   */
+  /** A staircase light through the storeys on one axis of the shared grid (stairLight.ts). Absent = byte-identical. */
+  stairLight?: StairLightIntent;
+  /**
+   * A rendered gable (Zaanhof 1919, Walenkamp): the crown face in the render `colour` (#rrggbb, a measured tint; the
+   * storeys under it keep their brick or take `paintedStoreys`) and a painted board `bargeboard` metres deep inside each
+   * raking edge in the trim colour (0.08..0.4; bargeboards.ts). Only on a gabled crown (point, step, neck, raised-neck,
+   * bell, spout). Absent = byte-identical.
+   */
+  renderedGable?: {bargeboard: number; colour: string};
+  brickStripes?: BrickStripeZone[];
   /**
    * Projecting brick hoods (Jan Evertsenstraat): over every upper-storey window, or over a ladder pair as one, a ledge in
    * the wall material 0.12 m high and 0.22 m proud, 2 cm over the head, 0.1 m wider than the window on each side.
@@ -1055,6 +1086,11 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.atticWindows !== undefined) count(f.atticWindows, `${at}.atticWindows`, 0, 6);
     if (f.dormers !== undefined) count(f.dormers, `${at}.dormers`, 0, 8);
     if (f.doorBay !== null) count(f.doorBay, `${at}.doorBay`, 0, Math.max(0, bays[0] - 1));
+    if (f.doorArch !== undefined) {
+      const d = f.doorArch as unknown as Record<string, unknown>, n = (v: unknown, a: number, b: number) => typeof v === 'number' && v >= a && v <= b;
+      if (!d || typeof d !== 'object' || Object.keys(d).some(k => k !== 'span' && k !== 'apex') || !n(d.span, 0.8, 2.6) || !n(d.apex, 1.8, 4) || (d.apex as number) < (d.span as number) / 2 + 1.2) problems.push(`${at}.doorArch: {span 0.8..2.6 m, apex 1.8..4 m and at least span / 2 + 1.2}`);
+      if (f.doorBay === null || f.shopfront?.residentialDoor || f.groundFront) problems.push(`${at}.doorArch: needs a doorBay (not a shop's residential door or a ground front)`);
+    }
     oneOf(f.basement, BASEMENTS, `${at}.basement`);
     oneOf(f.cornice, CORNICES, `${at}.cornice`);
     oneOf(f.windows, WINDOWS, `${at}.windows`);
@@ -1091,9 +1127,18 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     problems.push(...groundCanopyProblems(f, at));
     if (f.lisenes !== undefined) {
       const l = f.lisenes as Record<string, unknown>;
-      if (typeof l !== 'object' || l === null || Object.keys(l).some(k => !['leftEnd', 'rightEnd'].includes(k)) || Object.values(l).some(v => v !== 'half' && v !== 'full') || !Object.keys(l).length) problems.push(`${at}.lisenes: {leftEnd?, rightEnd?} each "half" or "full"`);
+      const ends = typeof l === 'object' && l !== null ? Object.entries(l).filter(([k]) => k === 'leftEnd' || k === 'rightEnd') : [];
+      if (typeof l !== 'object' || l === null || Object.keys(l).some(k => !['leftEnd', 'rightEnd', 'at', 'breadth', 'stopStorey'].includes(k)) || ends.some(([, v]) => v !== 'half' && v !== 'full') || !(ends.length || l.at !== undefined)) problems.push(`${at}.lisenes: {leftEnd?, rightEnd?} each "half" or "full", and/or at: [bay edge indices]`);
+      else problems.push(...liseneAtProblems(f, at));
       if (f.repeat) problems.push(`${at}.lisenes: not on a repeated front`);
     }
+    if (f.renderedGable !== undefined) {
+      const r = f.renderedGable as unknown as Record<string, unknown>;
+      if (!r || typeof r !== 'object' || Object.keys(r).some(k => k !== 'bargeboard' && k !== 'colour') || !(typeof r.bargeboard === 'number' && r.bargeboard >= 0.08 && r.bargeboard <= 0.4) || typeof r.colour !== 'string' || !/^#[0-9a-f]{6}$/i.test(r.colour)) problems.push(`${at}.renderedGable: {bargeboard: 0.08..0.4 m, colour: #rrggbb}`);
+      if (f.gable === 'flat' || f.gable === 'cornice') problems.push(`${at}.renderedGable: only on a gabled crown (gable ${f.gable})`);
+    }
+    if (f.stairLight !== undefined) problems.push(...stairLightProblems(f.stairLight, f.storeys, frontGrid(f), !!f.repeat, at));
+    if (f.brickStripes !== undefined) problems.push(...brickStripeProblems(f.brickStripes, f.palette?.band ?? intent?.palette?.band, !!f.repeat, at));
     problems.push(...windowProblems(f, at, oneOf));
     problems.push(...deBaarsjesProblems(f, intent?.palette, at));
     if (f.crownCapSpan !== undefined) oneOf(f.crownCapSpan, CROWN_CAP_SPANS, `${at}.crownCapSpan`);
@@ -1127,7 +1172,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       const s = Number(k), r = v as unknown as Record<string, unknown>;
       if (k !== 'last' && !(Number.isInteger(s) && s >= 0 && s < f.storeys)) problems.push(`${at}.storeyRibbons.${k}: key must be a storey index or "last"`);
       else if (!r || typeof r !== 'object' || Object.keys(r).some(x => x !== 'from' && x !== 'to' && x !== 'pier') || !(typeof r.from === 'number' && typeof r.to === 'number' && r.from >= 0 && r.to <= 1 && r.to - r.from >= 0.2)) problems.push(`${at}.storeyRibbons.${k}: {from, to} shares of the front, 0 <= from, to <= 1, at least 0.2 apart`);
-      else if (r.pier !== undefined && !(typeof r.pier === 'number' && r.pier >= 0.02 && r.pier <= 1)) problems.push(`${at}.storeyRibbons.${k}.pier: metres between windows, 0.02-1`);
+      else if (r.pier !== undefined && !(typeof r.pier === 'number' && r.pier >= 0.02 && r.pier <= 2.5)) problems.push(`${at}.storeyRibbons.${k}.pier: metres between windows, 0.02-2.5`);
       else if (f.storeyAxes?.[k] || f.storeyBayWidths?.[k]) problems.push(`${at}.storeyRibbons.${k}: not together with storeyAxes or storeyBayWidths for the same storey`);
     }
     for (const [k, v] of Object.entries(f.storeyWindowWidths ?? {})) {
@@ -1363,7 +1408,7 @@ export function tilePanelProblems(f: FrontIntent, at: string): string[] {
 export function paintedStoreyProblems(f: FrontIntent, at: string): string[] {
   const p: string[] = [], ps = f.paintedStoreys as {storeys?: unknown; colour?: unknown; from?: unknown} | undefined;
   if (!ps || typeof ps !== 'object' || Object.keys(ps).some(k => !['storeys', 'colour', 'from'].includes(k))) return [`${at}.paintedStoreys: {storeys, colour, from?}`];
-  if (ps.from !== undefined && !(typeof ps.from === 'number' && ps.from >= 0.05 && ps.from <= 2)) p.push(`${at}.paintedStoreys.from: 0.05..2 m over the storey floor`);
+  if (ps.from !== undefined && !(typeof ps.from === 'number' && ps.from >= 0.05 && ps.from <= 4)) p.push(`${at}.paintedStoreys.from: 0.05..4 m over the storey floor`);
   const l = ps.storeys as number[];
   if (!Array.isArray(l) || !l.length || l.some((s, i) => !Number.isInteger(s) || s < 0 || s >= f.storeys || (i > 0 && s <= l[i - 1]))) p.push(`${at}.paintedStoreys.storeys: ascending storey indices within 0..${f.storeys - 1}`);
   else if (l.includes(0) && (f.shopfront || f.groundFront)) p.push(`${at}.paintedStoreys.storeys: the ground storey holds a shop/ground front; paint the upper storeys`);
@@ -1417,7 +1462,7 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
     } else if (h?.kind === 'relieving') p.push(`${at}.windowHead: a relieving arch needs archRing {colour}`);
   }
   const wh = f.windowHeights;
-  if (wh !== undefined && wh !== 'diminishing' && (!Array.isArray(wh) || wh.length !== f.storeys || wh.some(v => !(typeof v === 'number' && v >= 0.3 && v <= 0.9)))) p.push(`${at}.windowHeights: "diminishing" or one share 0.3..0.9 per storey (${f.storeys})`);
+  if (wh !== undefined && wh !== 'diminishing' && (!Array.isArray(wh) || wh.length !== f.storeys || wh.some(v => !(typeof v === 'number' && v >= 0.15 && v <= 0.9)))) p.push(`${at}.windowHeights: "diminishing" or one share 0.15..0.9 per storey (${f.storeys})`);
   const hl = f.headLines;
   if (hl !== undefined) {
     if (!Array.isArray(wh)) p.push(`${at}.headLines: needs a windowHeights list`);
@@ -1504,4 +1549,15 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     else if (!z || typeof z !== 'object' || Object.keys(z).some(k => !['sill', 'rise', 'setback'].includes(k)) || !(typeof z.sill === 'number' && z.sill >= 0.05 && z.sill <= 2) || !(typeof z.rise === 'number' && z.rise >= 0.6 && z.rise <= 2.5) || !(typeof z.setback === 'number' && z.setback >= 0.05 && z.setback <= 2)) problems.push(`${at}.dormerSize: {sill 0.05..2 m over the eaves, rise (dormer height) 0.6..2.5 m, setback 0.05..2 m behind the facade}`);
   }
   return problems;
+}
+
+/** Problems with `lisenes.at` / `width` / `stopStorey` (lisenes on bay boundaries inside the front). */
+function liseneAtProblems(f: FrontIntent, at: string): string[] {
+  const l = f.lisenes!, p: string[] = [], grid = frontGrid(f);
+  if (l.at !== undefined && (!Array.isArray(l.at) || !l.at.length || l.at.some((k, i) => !Number.isInteger(k) || k < 1 || k > grid - 1 || (i > 0 && k <= l.at![i - 1]))))
+    p.push(`${at}.lisenes.at: ascending bay edge indices within 1..${grid - 1}`);
+  if (l.breadth !== undefined && !(typeof l.breadth === 'number' && l.breadth >= 0.2 && l.breadth <= 0.8)) p.push(`${at}.lisenes.breadth: 0.2..0.8 m`);
+  if (l.breadth !== undefined && l.at === undefined) p.push(`${at}.lisenes.breadth: only with at (the end lisenes keep half/full)`);
+  if (l.stopStorey !== undefined && !(Number.isInteger(l.stopStorey) && l.stopStorey >= 2 && l.stopStorey < f.storeys)) p.push(`${at}.lisenes.stopStorey: a storey index within 2..${f.storeys - 1}`);
+  return p;
 }

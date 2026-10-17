@@ -1,0 +1,131 @@
+{
+ "street": "Houtrijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:54:22.224Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012113918",
+   "addresses": [
+    "Houtrijkstraat 381",
+    "Houtrijkstraat 383",
+    "Houtrijkstraat 385",
+    "Houtrijkstraat 387",
+    "Houtrijkstraat 389",
+    "Houtrijkstraat 391",
+    "Houtrijkstraat 393",
+    "Houtrijkstraat 395"
+   ],
+   "groundUnits": [
+    {
+     "address": "Houtrijkstraat 381",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000674091"
+    },
+    {
+     "address": "Houtrijkstraat 383",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000674093"
+    },
+    {
+     "address": "Houtrijkstraat 385",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000674095"
+    },
+    {
+     "address": "Houtrijkstraat 387",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000674097"
+    },
+    {
+     "address": "Houtrijkstraat 389",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000674099"
+    },
+    {
+     "address": "Houtrijkstraat 391",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000674101"
+    },
+    {
+     "address": "Houtrijkstraat 393",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000674103"
+    },
+    {
+     "address": "Houtrijkstraat 395",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000674105"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099132",
+   "addresses": [
+    "Houtrijkstraat 399",
+    "Houtrijkstraat 401",
+    "Houtrijkstraat 403",
+    "Houtrijkstraat 405",
+    "Houtrijkstraat 407",
+    "Houtrijkstraat 409"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hembrugstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000661709"
+    },
+    {
+     "address": "Houtrijkstraat 409",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000674118"
+    },
+    {
+     "address": "Houtrijkstraat 399",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000674108"
+    },
+    {
+     "address": "Houtrijkstraat 401",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000674110"
+    },
+    {
+     "address": "Houtrijkstraat 403",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000674112"
+    },
+    {
+     "address": "Houtrijkstraat 405",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000674114"
+    },
+    {
+     "address": "Houtrijkstraat 407",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000674116"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

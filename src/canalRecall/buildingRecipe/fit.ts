@@ -9,6 +9,9 @@
  */
 import type {CanalHouseRecipe, CanalhouseDressing, CanalhouseElevation, CanalhouseFacadeBlock, CanalhouseOpening, CanalhousePoint} from '../canalhouseRecipes.ts';
 import type {CanalhouseGlazedBay} from '../canalhouseGlazedBay.ts';
+import {brickStripeBlocks} from './brickStripes.ts';
+import {stairLightOpenings} from './stairLight.ts';
+import {bargeboardOrnaments} from './bargeboards.ts';
 import {canalhouseCrownProfile} from '../canalhouseRecipes.ts';
 import {surveyRecipe} from '../../../scripts/canalhouse-recipes/survey-recipe.ts';
 import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
@@ -65,6 +68,8 @@ const WINDOW_BARS: Record<FrontIntent['windows'], WindowBars> = {
   'casement-gridded-toplight-double': {verticalBars: [.25, .5, .75], horizontalBars: [.8], horizontalBarWidthsM: [.05], mullionWidthM: .05, diagonalBars: [.125, .375, .625, .875].map(x => [[x, .81], [x, .95]] as [[number, number], [number, number]])},
   'casement-pair': {verticalBars: [.5], mullionWidthM: .05},
   'casement-small-panes': {verticalBars: [.25, .5, .75], horizontalBars: [.36, .8], horizontalBarWidthsM: [.03, .05], mullionWidthM: .05},
+  // Polanenstraat 229-311 (1935): narrow side lights either side of a wide fixed light, one top light band over all three.
+  'casement-sidelights-toplight': {verticalBars: [.14, .86], horizontalBars: [.86], horizontalBarWidthsM: [.035], mullionWidthM: .035},
 };
 /** Share of the storey height above a window head when `windowHeights` is given (survey median, all eras). */
 const HEAD_LINE = 0.86;
@@ -241,7 +246,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   const openings: CanalhouseOpening[] = [], glazedBays: CanalhouseGlazedBay[] = [], balconies: Layout['balconies'] = [];
   // `gridAt`: the window grid spans only the visual house module [gx0, gx0 + gw] of the front (0 and width when absent).
   const gx0 = f.gridAt ? width * f.gridAt.from : 0, gw = f.gridAt ? width * (f.gridAt.to - f.gridAt.from) : width;
-  const doorWidth = f.shopfront?.residentialDoor ? clamp(gw * 0.17, 0.95, 1.3) : clamp(gw * 0.2, 0.95, 1.4);
+  // `doorArch`: the measured round-arched portiek opening sets the door's width.
+  const doorWidth = f.doorArch && !f.shopfront?.residentialDoor ? f.doorArch.span : f.shopfront?.residentialDoor ? clamp(gw * 0.17, 0.95, 1.3) : clamp(gw * 0.2, 0.95, 1.4);
   let doorLeft: number | null = null;
   const warnings: string[] = [];
   const sf = f.shopfront, rd = sf?.residentialDoor;
@@ -330,6 +336,12 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       if (s === 0 && f.groundFront) continue; // groundFrontLayout builds the ground storey
       if (s === 0 && f.doorBay === b && !rd) {
         doorLeft = clamp(centre - doorWidth / 2, 0.05, width - doorWidth - 0.05);
+        if (f.doorArch) {
+          // Round-arched portiek: a semicircular head (rise = half the span) whose crown stands at `apex`, no transom.
+          const rise = Math.floor(doorWidth / 2 * 1000) / 1000, apex = Math.min(f.doorArch.apex, h - 0.15);
+          openings.push({id: 'door', kind: 'door', leftM: doorLeft, bottomM: y, widthM: doorWidth, heightM: round(apex), head: 'segmental', headRiseM: rise, headSegments: 12, trimWidthM: 0.08, paneSurface: 'door', frameSurface: 'trim', barSurface: 'trim'});
+          continue;
+        }
         const doorH = Math.min(h * 0.78, 2.7);
         openings.push({id: 'door', kind: 'door', leftM: doorLeft, bottomM: y, widthM: doorWidth, heightM: doorH, trimWidthM: 0.08, verticalBars: [.5], paneSurface: 'door', frameSurface: 'trim', barSurface: 'trim'});
         const transomH = Math.min(0.6, h - doorH - 0.25);
@@ -497,6 +509,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       openings.push({id: `basement-b${b}`, kind: 'window', leftM: centre - w / 2, bottomM: souterrain ? round(basement * 0.3) : 0.12, widthM: w, heightM: souterrain ? round(basement * 0.58) : Math.max(0.35, basement - 0.3), trimWidthM: 0.05, ...(f.basementBars ? {verticalBars: [.2, .4, .6, .8], mullionWidthM: .025} : {verticalBars: [.5]}), frameSurface: 'trim', barSurface: 'trim'});
     }
   }
+  // `stairLight` (stairLight.ts): the staircase light on its grid axis, foot and head on the fitted storeys.
+  if (f.stairLight) { const floors = heights.reduce((a, h) => [...a, a[a.length - 1] + h], [basement]); openings.push(...stairLightOpenings(f.stairLight, axisCentres[f.stairLight.axis], floors, width)); }
   const groundBlocks = f.groundFront ? groundFrontLayout(f.groundFront, width, heights[0], openings) : undefined;
   return {openings, glazedBays, balconies, storeyHeights: [basement, ...heights].filter(h => h > 0).map(h => round(h)), groundBase: basement, doorLeft, doorWidth, shopSpans, shopGlass, warnings, shopZone, riserTopM, entrance, bayEdges, axisCentres, shopStoreys: twoStorey ? 2 : 1, ...(groundBlocks ? {groundBlocks} : {}), ...(school ? {school} : {})};
 }
@@ -773,8 +787,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     const relievingRise = (span: number) => headRing?.shape === 'round' ? Math.floor(span / 2 * 1000) / 1000 : round(span * 0.25);
     const relieving = (o: CanalhouseOpening) => { const span = o.widthM + 0.12, rise = relievingRise(span); return {left: o.leftM - 0.06, top: o.bottomM + o.heightM + (headRing?.springGap ?? 0.04) + rise, w: span, rise}; };
     const archOf = (o: CanalhouseOpening) => front.windowHead?.kind === 'relieving' ? relieving(o) : {left: o.leftM, top: o.bottomM + o.heightM, w: o.widthM, rise: o.headRiseM!};
-    const ringedOpenings = () => elevation.openings.value.filter(o => !o.id.includes('shop') && (front.windowHead?.kind === 'relieving' ? o.kind === 'window' && onHeadStorey(o.id) : o.head === 'segmental' && !!o.headRiseM));
-    // `style: springers` draws no ring (the springer blocks are dressings, below).
+    const ringedOpenings = () => elevation.openings.value.filter(o => !o.id.includes('shop') && (front.windowHead?.kind === 'relieving' ? o.kind === 'window' && onHeadStorey(o.id) : o.head === 'segmental' && !!o.headRiseM && !(front.doorArch && o.id === 'door')));
+    // `style: springers` draws no ring (the springer blocks are dressings, below). A `doorArch` portiek is laid in the wall brick: no ring.
     if (ringSurface && headRing?.style !== 'none' && headRing?.style !== 'springers') {
       const ringed = ringedOpenings();
       const rings = ringed.flatMap(o => {
@@ -933,7 +947,10 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       }
     }
     if (profile) {
-      elevation.crown = seen({profile: profile.map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: 0.08, surface: 'wall'});
+      elevation.crown = seen({profile: profile.map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: front.renderedGable ? 0 : 0.08, surface: 'wall'});
+      // `renderedGable.bargeboard`: painted boards inside each raking edge of the crown, in the trim colour (bargeboards.ts);
+      // they replace the crown's trim edge boxes (a frame-class box past the gable end is judged an opening outside its wall).
+      if (front.renderedGable) { const boards = bargeboardOrnaments(elevation.crown.value.profile, eaves, front.renderedGable.bargeboard, width); if (boards.length) elevation.ornaments = elevation.ornaments ? {...elevation.ornaments, value: [...elevation.ornaments.value, ...boards]} : seen(boards); }
       // A measured entablature under a neck/bell cap: a stone frieze and cap (the crown head clipped above the frieze
       // foot) and a cornice ledge projecting past the neck. One crown per front only.
       const k = front.crownCapCornice;
@@ -1000,6 +1017,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     if (front.palette?.brick) elevation.bands.value.push({id: 'facing', leftM: 0, bottomM: round(plinthBand), widthM: Math.floor(width * 1000) / 1000, heightM: round(eaves - plinthBand - 0.02), depthM: 0.03, surface: 'wall'});
     // Storeys painted in a second colour (`paintedStoreys`): a wall facing per storey, recoloured and marked measured in oudWest.ts.
     if (front.paintedStoreys) elevation.bands.value.push(...paintedStoreyBands(front, layout, width, eaves));
+    // Horizontal brick stripes (`brickStripes`, brickStripes.ts): band-brick facings the library cuts around the openings.
+    if (front.brickStripes) elevation.bands.value.push(...brickStripeBlocks(front.brickStripes, width, flipX));
     if (layout.groundBlocks?.length) elevation.blocks = seen([...(elevation.blocks?.value ?? []), ...Array.from({length: count}, (_, k) => layout.groundBlocks!.map(b => ({...b, id: idFor(k, b.id), leftM: round(flipX(place(k, b.leftM, b.widthM), b.widthM))}))).flat()]);
     if (front.shopfront && layout.shopGlass && layout.shopZone) {
       const g0 = layout.groundBase > 0 ? 1 : 0, floor = layout.groundBase + layout.storeyHeights[g0];
@@ -1120,7 +1139,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     if (cornerEnd) corner!.bottomM = Math.min(corner!.bottomM, round(bodyEaves));
     const erker = layout.school?.erker;
     // Lisenes: from the top of the ground storey (or the canopy) to 0.3 m under the body eaves, at the chosen ends.
-    const lisenes = front.lisenes ? (['leftEnd', 'rightEnd'] as const).flatMap(side => {
+    const lisenes = front.lisenes ? [...(['leftEnd', 'rightEnd'] as const).flatMap(side => {
       const kind = front.lisenes![side];
       if (!kind) return [];
       const w = kind === 'half' ? 0.25 : 0.45, viewerLeft = side === 'leftEnd' ? 0 : width - w;
@@ -1131,7 +1150,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       if (topM - bottomM < 2) { warnings.push(`${front.id}: lisene ${side} has no height (${bottomM}..${topM} m)`); return []; }
       const atStart = (side === 'leftEnd') !== mirrored;
       return [{leftM: round(flipX(viewerLeft, w)), widthM: w, bottomM, topM, party: kind === 'half' ? (atStart ? 'start' as const : 'end' as const) : null}];
-    }) : undefined;
+    }), ...innerLisenes(front, layout, width, bodyEaves, parapetM, canopy, flipX, warnings)] : undefined;
     reports.push({id: front.id, widthM: round(width), eavesM: round(eaves), crownTopM: round(groupCrowns ? Math.max(...groupCrowns.map(g => g.top)) : crownTop), storeyHeightsM: layout.storeyHeights, mirrored, edge: [edgeIndex, endIndex], frontageDeviationM: round(deviation), frontageOutsetM: round(maxOut, 4), polygonIndex, ...(fasciaRect ? {fascia: fasciaRect} : {}), ...(signBand ? {signBand} : {}),
       ...(mansard ? {mansard} : {}), ...(towerSpan ? {towers: Array.from({length: count}, (_, m) => ({leftM: round(flipX(place(m, towerSpan![0], towerSpan![1] - towerSpan![0]), towerSpan![1] - towerSpan![0])), widthM: round(towerSpan![1] - towerSpan![0]), bottomM: round(bodyEaves), topM: towerTop, cap: cornerEnd ? corner!.cap : front.tower!.cap,
         ...(cornerEnd ? {corner: {role: cornerEnd.role, ...(cornerEnd.role === 'owner' ? {plan: corner!.plan, walls: corner!.walls} : {})}} : {})}))} : {}), ...(measuredEaves !== undefined ? {measuredEaves: true} : {}),
@@ -1174,6 +1193,25 @@ function brickCourses(front: FrontIntent, layout: Layout, width: number, flipX: 
     for (let k = 0; k < n; k++) { const bottom = head + 0.05 + k * 0.11; if (bottom + 0.05 > limit) break; push(`course-s${s}-${k}`, s, bottom, 0.05, 0.07); }
   }
   return out;
+}
+
+/**
+ * Lisenes on bay boundaries (`lisenes.at`): a whole lisene `width` m wide centred on each listed edge of the shared grid,
+ * from the top of the ground storey (or the canopy) to 0.3 m under the body eaves, or to 0.05 m under the floor of
+ * `stopStorey`. Facade x.
+ */
+function innerLisenes(front: FrontIntent, layout: Layout, width: number, bodyEaves: number, parapetM: number | null, canopy: {bottomM: number; thicknessM: number} | undefined, flipX: (x: number, w: number) => number, warnings: string[]) {
+  const l = front.lisenes!;
+  if (!l.at?.length) return [];
+  const w = l.breadth ?? 0.45, g0 = layout.groundBase > 0 ? 1 : 0;
+  const floorOf = (s: number) => layout.groundBase + layout.storeyHeights.slice(g0, g0 + s).reduce((a, b) => a + b, 0);
+  const bottomM = round(canopy ? canopy.bottomM + canopy.thicknessM : floorOf(1));
+  const topM = round(l.stopStorey !== undefined ? floorOf(l.stopStorey) - 0.05 : parapetM !== null ? bodyEaves - parapetM + 0.3 : bodyEaves - 0.3);
+  if (topM - bottomM < 2) { warnings.push(`${front.id}: inner lisenes have no height (${bottomM}..${topM} m)`); return []; }
+  return l.at.map(k => {
+    const centre = layout.bayEdges[k], left = clamp(centre - w / 2, 0.05, width - w - 0.05);
+    return {leftM: round(flipX(left, w)), widthM: w, bottomM, topM, party: null};
+  });
 }
 
 /** Depth of a painted-storey facing: 1 cm proud of the 3 cm per-front facing, so the two never share a face. */
