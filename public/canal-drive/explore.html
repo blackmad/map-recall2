@@ -202,6 +202,21 @@ ul.rows { list-style: none; margin: 0; padding: 0; }
 .mut { color: var(--muted); }
 .note { margin: 6px 0 0; font-size: 12.5px; color: var(--muted); text-wrap: pretty; }
 .note a { color: var(--muted); }
+.stage-map { position: absolute; inset: 0; }
+.stage[data-live] .viewer-canvas, .stage[data-live] .stage-hint { display: none; }
+.stage[data-live] .stage-status { pointer-events: none; }
+.stage-path { position: absolute; z-index: 2; left: 12px; bottom: 10px; margin: 0; padding: 4px 8px; border-radius: 4px; background: rgba(251,248,242,.92); border: 1px solid var(--line-strong); font: 700 11.5px/1.2 var(--display); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); pointer-events: none; }
+.stage-path[data-path="live"] { border-color: #2f5d50; color: #2f5d50; }
+.stage[data-live] .stage-path { bottom: 30px; }
+.note-link { display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 600; }
+.pick { margin-top: 14px; padding: 10px 12px 12px; border: 1px solid var(--copper); border-radius: 8px; background: var(--page); }
+.pick .sub { margin-top: 0; }
+.pick-title { margin: 0; font: 700 16px/1.2 var(--body); overflow-wrap: anywhere; }
+.pick-facts { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 10px; margin: 8px 0 0; font-size: 13px; }
+.pick-facts dt { color: var(--muted); }
+.pick-facts dd { margin: 0; font-family: var(--mono); font-size: 12px; overflow-wrap: anywhere; }
+.pick h4 { margin: 10px 0 6px; font: 700 12px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.sw-item.wide { justify-items: start; grid-template-columns: auto auto; align-items: center; gap: 5px; }
 .stage[data-compact] { height: 64px; }
 .stage[data-compact] .viewer-canvas, .stage[data-compact] .stage-status { display: none; }
 .stage[data-state="empty"] .stage-status { inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; }
@@ -301,6 +316,8 @@ ul.rows { list-style: none; margin: 0; padding: 0; }
       <button class="close" id="close" type="button" aria-label="Close building">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
+      <div class="stage-map" id="stage-map" hidden></div>
+      <p class="stage-path" id="stage-path" hidden></p>
       <p class="stage-status" id="stage-status" role="status" aria-live="polite"></p>
       <p class="stage-hint" aria-hidden="true">Drag to turn · scroll to zoom</p>
     </div>
@@ -331,6 +348,15 @@ ul.rows { list-style: none; margin: 0; padding: 0; }
       <h2 id="l-title"></h2>
       <p class="where" id="l-where"></p>
       <p class="look-summary" id="l-summary"></p>
+      <p class="note" id="l-path-note" hidden></p>
+      <a class="note-link" id="l-ride" href="#" hidden>Ride here with the recipe tiles on</a>
+      <section class="pick" id="l-pick" hidden aria-labelledby="l-pick-title">
+        <h3 class="sub">Picked building</h3>
+        <p class="pick-title" id="l-pick-title"></p>
+        <dl class="pick-facts" id="l-pick-facts"></dl>
+        <div id="l-pick-slots-wrap"><h4>City-look layers and tints (share of surface)</h4><div class="sw-chips" id="l-pick-slots"></div></div>
+        <button class="quiet small" id="l-pick-open" type="button" hidden>Open its model</button>
+      </section>
       <div id="l-uses-wrap">
         <h3 class="sub">Recipes drawn here</h3>
         <div class="uses" id="l-uses" role="tablist" aria-label="Recipes of this buurt"></div>
@@ -339,6 +365,7 @@ ul.rows { list-style: none; margin: 0; padding: 0; }
         <h3 id="l-r-title"></h3>
         <p class="facts" id="l-r-meta"></p>
         <p class="facts" id="l-r-facts"></p>
+        <p class="facts" id="l-live-count"></p>
         <p class="recipe-desc" id="l-r-desc"></p>
         <div class="compare-swatches">
           <div><h4>This recipe</h4><div id="l-sw-own"></div></div>

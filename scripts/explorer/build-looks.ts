@@ -12,7 +12,7 @@
  *
  * --check exits 1 if the published file differs from a fresh build (ignoring generatedAt).
  */
-import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fullPandId } from '../../src/canalRecall/bagTiles';
 import { paletteSwatches, typeKitKeys, type ContentItems } from '../../src/canalRecall/coverage/contents';
@@ -20,17 +20,19 @@ import { SWATCHES } from '../../src/canalRecall/buildingRecipe/intent';
 import { PHOTO_WALLS, CITY_ROOF } from '../../src/canalRecall/look/palette';
 import { buurtFor, prepareBoundaries, type Boundary } from '../../src/canalRecall/explorer/indexBuilder';
 import {
-  inGeometry, paletteSwatch, slugify, typeRun,
+  inGeometry, paletteSwatch, slugify, typeRun, useMatchesRef,
   type ExplorerLooks, type LookBuurt, type LookRecipe, type LookUse, type Swatch,
 } from '../../src/canalRecall/explorer/looks';
 import type { ExplorerIndex, LngLat } from '../../src/canalRecall/explorer/types';
 import { readOwnLookSources } from '../coverage/ownLook';
+import { authoringRefs, readRecipePands } from './recipe-pands';
 
 const root = path.resolve(import.meta.dirname, '../..');
 const canal = path.join(root, 'public/canal-drive');
 const extract = path.join(root, 'public/data/extracts/amsterdam');
 const args = process.argv.slice(2);
 const out = args.includes('--out') ? path.resolve(args[args.indexOf('--out') + 1]) : path.join(extract, 'explorer-looks.json');
+const outPands = path.join(path.dirname(out), path.basename(out, '.json').replace('explorer-looks', 'explorer-recipe-pands'));
 const json = <T>(file: string): T => JSON.parse(readFileSync(file, 'utf8')) as T;
 
 type Tally = [string, number];
@@ -172,6 +174,34 @@ function typeUse(id: string, n: number, f: Feature): LookUse {
   return use;
 }
 
+// What the published recipe tiles draw, pand by pand, and in which municipal buurt each pand stands.
+const modelOfPand = new Map<string, string>();
+for (const m of index.models) for (const p of m.pandIds) if (!modelOfPand.has(p)) modelOfPand.set(p, m.id);
+const recipe = await readRecipePands(canal, authoringRefs(root, canal, { modelOfPand }));
+const pandsByBuurt = new Map<string, string[]>();
+for (const [key, p] of recipe.pands) {
+  const f = features.find(f => inGeometry(p.lngLat, f.geometry));
+  if (!f) continue;
+  p.buurt = f.properties.code;
+  pandsByBuurt.set(f.properties.code, [...(pandsByBuurt.get(f.properties.code) ?? []), key]);
+}
+const recipeTilesOf = (code: string, uses: LookUse[]): LookBuurt['recipeTiles'] => {
+  const keys = pandsByBuurt.get(code);
+  if (!keys?.length) return undefined;
+  const ps = keys.map(k => recipe.pands.get(k)!);
+  const own = ps.filter(p => uses.some(u => useMatchesRef(u.key, p.ref)));
+  // Open on the densest cluster of own-look pands (else of all of them): the mean of the pands within 120 m of the pand
+  // with the most such neighbours. A plain centroid can fall between clusters on generic blocks, and the ride's near
+  // tier keeps only the 2×2 tiles round the centre resident.
+  const at = own.length ? own : ps;
+  const kx = 111320 * Math.cos((at[0].lngLat[1] * Math.PI) / 180), near = (a: LngLat, b: LngLat) => Math.hypot((a[0] - b[0]) * kx, (a[1] - b[1]) * 111320) < 120;
+  let best = at[0], bestN = -1;
+  for (const p of at) { const n = at.filter(q => near(p.lngLat, q.lngLat)).length; if (n > bestN) { best = p; bestN = n; } }
+  const cluster = at.filter(q => near(best.lngLat, q.lngLat));
+  const r = (v: number) => Math.round(v * 1e6) / 1e6;
+  return { tiles: [...new Set(ps.map(p => p.tile))].sort(), pands: keys.length, lookPands: own.length, centre: [r(cluster.reduce((s, p) => s + p.lngLat[0], 0) / cluster.length), r(cluster.reduce((s, p) => s + p.lngLat[1], 0) / cluster.length)] };
+};
+
 const buurten: LookBuurt[] = [];
 const none: [string, string, string][] = [];
 for (const f of features) {
@@ -196,6 +226,7 @@ for (const f of features) {
     lngLat, bbox: bboxOf(f.geometry), outline: outlineOf(f.geometry), status: look.status, pands: p.pands, lookPands: look.pands, share: look.share,
     districts: look.districts.map(d => DISTRICT_NAME[d] ? `${DISTRICT_NAME[d]} house types` : d), uses: uses.sort((a, b) => b.pands - a.pands),
     models: index.models.filter(m => inGeometry(m.lngLat, f.geometry)).sort((a, b) => a.name.localeCompare(b.name)).map(m => m.id),
+    ...(recipeTilesOf(p.code, uses) ? { recipeTiles: recipeTilesOf(p.code, uses) } : {}),
   });
 }
 buurten.sort((a, b) => a.name.localeCompare(b.name, 'nl'));
@@ -217,10 +248,18 @@ const looks: ExplorerLooks = {
   recipes: Object.fromEntries(Object.entries(recipes).sort(([a], [b]) => a.localeCompare(b))),
   buurten,
   none,
+  recipeTileBuurten: [...pandsByBuurt].map(([code, keys]) => [code, features.find(f => f.properties.code === code)!.properties.name, keys.length] as [string, string, number])
+    .sort((a, b) => b[2] - a[2] || a[1].localeCompare(b[1], 'nl')),
 };
+// One file per buurt (explorer-recipe-pands/<code>.json), fetched when its live view opens.
+const pandFiles = new Map([...pandsByBuurt].map(([code, keys]) => [`${code}.json`,
+  `${JSON.stringify({ version: 1, generatedAt: looks.generatedAt, pands: Object.fromEntries(keys.sort().map(k => [k, recipe.pands.get(k)])) })}\n`]));
+const pandsBytes = [...pandFiles.values()].reduce((s, t) => s + t.length, 0);
 
 const text = `${JSON.stringify(looks)}\n`;
 const drawn = buurten.filter(b => b.status === 'drawn').length;
+console.log(`recipe tiles: ${recipe.tiles.length} z16 tiles, ${recipe.pands.size} pands in ${looks.recipeTileBuurten.length} buurten (${buurten.filter(b => b.recipeTiles).length} with a look, ${buurten.filter(b => b.recipeTiles?.lookPands).length} whose own recipes are in the tiles: ${buurten.filter(b => b.recipeTiles?.lookPands).map(b => `${b.name} ${b.recipeTiles!.lookPands}/${b.lookPands}`).join(', ')}); ${(pandsBytes / 1024).toFixed(0)} KB in ${pandFiles.size} per-buurt pand files`);
+console.log(`recipe-tile buurten: ${looks.recipeTileBuurten.map(([c, n, k]) => `${n} ${c} ${k}`).join(', ')}`);
 console.log(`${buurten.length} buurten with a look (${drawn} drawn, ${buurten.length - drawn} authored only), ${none.length} without; ${Object.keys(recipes).length} recipes; ${(text.length / 1024).toFixed(0)} KB`);
 const noGlb = buurten.filter(b => !b.uses.some(u => u.glbUrl ?? recipes[u.key]?.glbUrl)).map(b => b.name);
 if (noGlb.length) console.log(`no 3D example: ${noGlb.join(', ')}`);
@@ -228,9 +267,14 @@ if (missing.length) console.log(`missing: ${missing.join('; ')}`);
 if (args.includes('--check')) {
   const strip = (s: string) => s.replace(/"generatedAt":"[^"]*"/, '');
   const current = existsSync(out) ? readFileSync(out, 'utf8') : '';
-  if (strip(current) !== strip(text)) { console.error(`${path.relative(root, out)} is stale: run node --import tsx scripts/explorer/build-looks.ts`); process.exit(1); }
+  const published = existsSync(outPands) ? readdirSync(outPands).filter(f => f.endsWith('.json')).sort() : [];
+  const pandsStale = published.join() !== [...pandFiles.keys()].sort().join() || [...pandFiles].some(([f, t]) => strip(readFileSync(path.join(outPands, f), 'utf8')) !== strip(t));
+  if (strip(current) !== strip(text) || pandsStale) { console.error(`${path.relative(root, out)} is stale: run node --import tsx scripts/explorer/build-looks.ts`); process.exit(1); }
   console.log('explorer-looks.json is current');
 } else {
   writeFileSync(out, text);
+  rmSync(outPands, { recursive: true, force: true });
+  mkdirSync(outPands, { recursive: true });
+  for (const [f, t] of pandFiles) writeFileSync(path.join(outPands, f), t);
   console.log(`wrote ${path.relative(root, out)}`);
 }

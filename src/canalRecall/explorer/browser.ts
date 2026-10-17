@@ -14,11 +14,12 @@ import {
   type ClickTarget, type FeedbackOptions,
 } from './panel';
 import {
-  asksForLook, findLook, groupKitKeys, kitKeyLabel, lookReportOptions, looksIn, lookSummary, nearestLook, slugify,
-  type ExplorerLooks, type LookBuurt, type LookRecipe, type LookUse, type Swatch,
+  asksForLook, cellLabel, findLook, groupKitKeys, lookPath, useMatchesRef, kitKeyLabel, lookReportOptions, looksIn, lookSummary, nearestLook, slugify,
+  type ExplorerLooks, type ExplorerRecipePands, type LookBuurt, type LookRecipe, type LookUse, type Swatch,
 } from './looks';
 import { ELSEWHERE, type ExplorerIndex, type ExplorerKind, type ExplorerModel, type LngLat } from './types';
 import type { ModelViewer } from './viewer';
+import { LiveRecipeTiles, liveCamera, liveRideHref } from './liveTiles';
 
 declare const maplibregl: any;
 const w = window as any;
@@ -83,6 +84,9 @@ class Explorer {
   /** explorer-looks.json, fetched on first use (a picked neighbourhood, the look entry, a `?buurt=<slug>` link). */
   private looks: Promise<ExplorerLooks> | undefined;
   /** The open look view: a buurt with its own look, one without, or the list of those that have one. */
+  /** The live recipe-tile stage (the ride's near tier) while a look with recipe tiles is open. */
+  private live: LiveRecipeTiles | undefined;
+  private livePands = new Map<string, Promise<ExplorerRecipePands | undefined>>();
   private look: { kind: 'buurt'; buurt: LookBuurt; use: number } | { kind: 'none'; slug?: string; name: string } | { kind: 'index' } | undefined;
 
   async start(): Promise<void> {
@@ -212,13 +216,15 @@ class Explorer {
       this.map.addSource('outline', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
       this.map.addLayer({ id: 'outline-fill', type: 'fill', source: 'outline', paint: { 'fill-color': '#b4682c', 'fill-opacity': 0.06 } });
       this.map.addLayer({ id: 'outline-line', type: 'line', source: 'outline', paint: { 'line-color': '#8a4a18', 'line-width': 2, 'line-dasharray': [2, 1.5] } });
-      const radius = ['interpolate', ['linear'], ['zoom'], 11, ['match', ['get', 'kind'], 'landmark', 3.5, 2.5], 15, ['match', ['get', 'kind'], 'landmark', 7, 5.5], 18, ['match', ['get', 'kind'], 'landmark', 11, 9]];
+      // MapLibre allows ['zoom'] only at the top of an interpolate, so the selection ring gets its own (radius + 6).
+      const radiusPlus = (d: number) => ['interpolate', ['linear'], ['zoom'], 11, ['match', ['get', 'kind'], 'landmark', 3.5 + d, 2.5 + d], 15, ['match', ['get', 'kind'], 'landmark', 7 + d, 5.5 + d], 18, ['match', ['get', 'kind'], 'landmark', 11 + d, 9 + d]];
+      const radius = radiusPlus(0);
       this.map.addLayer({ id: 'pins', type: 'circle', source: 'models', paint: {
         'circle-color': ['match', ['get', 'kind'], 'landmark', PIN_COLOUR.landmark, 'ordinary', PIN_COLOUR.ordinary, PIN_COLOUR.block],
         'circle-radius': radius, 'circle-stroke-color': '#fbf8f2', 'circle-stroke-width': ['interpolate', ['linear'], ['zoom'], 11, 1, 16, 2],
       } });
       this.map.addLayer({ id: 'pin-selected', type: 'circle', source: 'models', filter: ['==', ['get', 'id'], ''], paint: {
-        'circle-color': 'rgba(0,0,0,0)', 'circle-radius': ['+', 6, radius] as any, 'circle-stroke-color': '#b4682c', 'circle-stroke-width': 3,
+        'circle-color': 'rgba(0,0,0,0)', 'circle-radius': radiusPlus(6), 'circle-stroke-color': '#b4682c', 'circle-stroke-width': 3,
       } });
       this.map.on('mouseenter', 'pins', () => { this.map.getCanvas().style.cursor = 'pointer'; });
       this.map.on('mouseleave', 'pins', () => { this.map.getCanvas().style.cursor = ''; });
@@ -356,6 +362,7 @@ class Explorer {
 
   private leaveLook(): void {
     this.look = undefined;
+    this.stopLive();
     delete $('#panel').dataset.mode;
     delete $('#stage').dataset.compact;
     $('#model-details').hidden = false;
@@ -401,7 +408,7 @@ class Explorer {
         el('span', { class: 'use-name', textContent: r?.title ?? u.key }),
         el('span', { class: 'use-meta', textContent: u.pands ? `${u.pands} pands` : 'not drawn here' }));
       button.dataset.use = u.key;
-      button.addEventListener('click', () => this.showUse(i));
+      button.addEventListener('click', () => this.showUse(i, true));
       return button;
     }));
     $('#l-uses-wrap').hidden = !b.uses.length;
@@ -417,6 +424,11 @@ class Explorer {
     void this.showOutline();
     if (fit && this.map) this.map.fitBounds(b.bbox, { padding: this.padding(), maxZoom: 16.5, duration: 700 });
     ($('#close') as HTMLButtonElement).focus({ preventScroll: true });
+    $('#l-pick').hidden = true;
+    const path = lookPath(b);
+    this.setStagePath(path, b);
+    if (path === 'live') { this.viewer?.clear(); void this.startLive(b); }
+    else this.stopLive();
     if (b.uses.length) this.showUse(Math.min(use, b.uses.length - 1));
     else this.stageEmpty('No recipe is installed or authored here yet: only street photo strips have been surveyed.');
   }
@@ -450,7 +462,7 @@ class Explorer {
   }
 
   /** Shows one recipe of the open look: its GLB framed on a run of its houses, and its parameters. */
-  private async showUse(i: number): Promise<void> {
+  private async showUse(i: number, picked = false): Promise<void> {
     if (this.look?.kind !== 'buurt') return;
     const looks = await this.loadLooks();
     const b = this.look.buurt, u: LookUse | undefined = b.uses[i];
@@ -489,6 +501,7 @@ class Explorer {
       $('#l-download-label').textContent = `Download GLB${bytes ? ` · ${formatBytes(bytes)}` : ''}`;
     }
     $('#l-licence-line').hidden = !glb;
+    if (lookPath(b) === 'live') { if (picked) void this.highlightUse(b, u.key); return; }
     if (!glb) { this.stageEmpty(u.pands ? 'This recipe has no published GLB.' : 'Authored, not drawn in 3D yet: no installed chunk uses this recipe.'); return; }
     $('#stage').dataset.state = 'loading';
     $('#stage-status').textContent = 'Loading recipe…';
@@ -543,6 +556,9 @@ class Explorer {
 
   private showLookList(looks: ExplorerLooks, title: string, summary: string): void {
     this.viewer?.clear();
+    this.stopLive();
+    this.setStagePath(null);
+    $('#l-pick').hidden = true;
     this.showPanel('look');
     $('#stage').dataset.compact = '1';
     $('#stage').dataset.state = 'empty';
@@ -564,6 +580,125 @@ class Explorer {
     this.syncUrl();
     void this.showOutline();
     ($('#close') as HTMLButtonElement).focus({ preventScroll: true });
+  }
+
+  // ---------- live recipe tiles ----------
+
+  private setStagePath(path: 'live' | 'chunk' | null, b?: LookBuurt): void {
+    const badge = $('#stage-path');
+    badge.hidden = !path;
+    badge.dataset.path = path ?? '';
+    badge.textContent = path === 'live' ? 'Live recipe tiles · as the ride draws them' : path === 'chunk' ? 'Installed chunk GLB' : '';
+    const note = $('#l-path-note');
+    note.hidden = !path || !b;
+    if (!b) return;
+    const rt = b.recipeTiles;
+    note.textContent = path === 'live'
+      ? `Live: the published recipe tiles (${rt!.tiles.length} z16 ${rt!.tiles.length === 1 ? 'tile' : 'tiles'}, ${rt!.lookPands} of this buurt's ${b.lookPands} own-look pands) drawn by the ride's own near tier and city-look material, as index.html?recipeTiles=1 does. Only recipe-tile pands are drawn here; the ride draws the rest as generic buildings. Click a building to see its recipe.`
+      : rt ? `Installed chunk: this buurt's own recipes are not in the published recipe tiles yet (they draw ${rt.pands} other ${rt.pands === 1 ? 'pand' : 'pands'} here), so the view loads the street chunk GLB the ride draws by default.`
+        : `Installed chunk: no published recipe tile covers ${b.name} yet, so the view loads the street chunk GLB the ride draws by default.`;
+    const ride = $('#l-ride') as HTMLAnchorElement;
+    ride.hidden = path !== 'live';
+    if (path === 'live') ride.href = liveRideHref(rt!.centre);
+  }
+
+  private stopLive(): void {
+    this.live?.dispose();
+    this.live = undefined;
+    const box = $('#stage-map');
+    box.hidden = true;
+    box.replaceChildren();
+    delete $('#stage').dataset.live;
+  }
+
+  private loadLivePands(code: string): Promise<ExplorerRecipePands | undefined> {
+    let p = this.livePands.get(code);
+    if (!p) {
+      p = fetch(`${EXTRACT}/explorer-recipe-pands/${code}.json`).then(r => (r.ok ? r.json() : undefined)).catch(() => undefined);
+      this.livePands.set(code, p);
+    }
+    return p;
+  }
+
+  private async startLive(b: LookBuurt): Promise<void> {
+    this.stopLive();
+    const look = this.look;
+    const box = $('#stage-map');
+    box.hidden = false;
+    $('#stage').dataset.live = '1';
+    $('#stage').dataset.state = 'loading';
+    $('#stage-status').textContent = 'Loading the live recipe tiles…';
+    try {
+      const live = await LiveRecipeTiles.create(box, { maplibregl, style: STYLE, camera: liveCamera(b.recipeTiles!.centre, isPhone()), loadScript });
+      if (this.look !== look) { live.dispose(); return; }
+      this.live = live;
+      w.__explorerLive = live;
+      live.onPick = pick => void this.showPick(b, pick);
+      const stats = await live.ready();
+      if (this.look !== look) return;
+      $('#stage').dataset.state = 'ready';
+      $('#stage-status').textContent = '';
+      $('#l-r-facts').textContent = stats ? `${stats.ready} recipe ${stats.ready === 1 ? 'tile' : 'tiles'} resident · ${stats.draws} draws · ${Math.round(stats.triangles).toLocaleString('en-GB')} triangles · ${stats.instances.toLocaleString('en-GB')} instances` : '';
+      // Opens unhighlighted, so the city-look textures and tints read as the ride draws them; a recipe tab or a pick highlights.
+      this.showLiveCount('');
+    } catch (e) {
+      if ((e as Error).message === 'superseded' || this.look !== look) return;
+      console.warn('live recipe tiles', e);
+      $('#stage').dataset.state = 'error';
+      $('#stage-status').textContent = 'The live recipe tiles could not load.';
+    }
+  }
+
+  /** Highlights the pands of one recipe in the live view (all own-look pands when it is not in the tiles). */
+  private async highlightUse(b: LookBuurt, key: string | undefined): Promise<void> {
+    const data = await this.loadLivePands(b.code);
+    if (!this.live || !data) return;
+    const entries = Object.entries(data.pands);
+    let ids = entries.filter(([, p]) => key && useMatchesRef(key, p.ref)).map(([k]) => k);
+    if (!ids.length) ids = entries.filter(([, p]) => b.uses.some(u => useMatchesRef(u.key, p.ref))).map(([k]) => k);
+    this.live.highlight(ids);
+    this.showLiveCount(`${ids.length} ${ids.length === 1 ? 'pand' : 'pands'} of this recipe highlighted in the live view. `);
+  }
+
+  private showLiveCount(text: string): void {
+    const p = $('#l-live-count');
+    if (!text) { p.replaceChildren(); return; }
+    const clear = el('button', { type: 'button', class: 'look-link', textContent: 'Clear the highlight' });
+    clear.addEventListener('click', () => { this.live?.highlight([]); $('#l-pick').hidden = true; this.showLiveCount(''); });
+    p.replaceChildren(text, clear);
+  }
+
+  /** The recipe reference of a pand picked in the live view. */
+  private async showPick(b: LookBuurt, pick: { id: string; name: string; recipeTile: string } | null): Promise<void> {
+    const box = $('#l-pick');
+    if (!pick) { box.hidden = true; return; }
+    const id = pick.id.replace(/^NL\.IMBAG\.Pand\./, '');
+    const data = await this.loadLivePands(b.code);
+    const p = data?.pands[id] ?? data?.pands[pick.id];
+    this.live?.highlight([id]);
+    this.showLiveCount('Picked building highlighted. ');
+    $('#l-pick-title').textContent = p?.name ?? pick.name;
+    const rows: [string, string][] = [
+      ['BAG pand', /^\d{16}$/.test(id) ? id : '—'],
+      ['Recipe', p?.ref ?? 'not in this buurt’s recipe list'],
+      ['Drawn as', p?.unit ? `instanced unit ${p.unit}` : 'merged in its tile'],
+      ['Recipe tile', pick.recipeTile],
+      ...(p ? [['Triangles', p.triangles.toLocaleString('en-GB')] as [string, string]] : []),
+      ...(p?.buurt && p.buurt !== b.code ? [['Buurt', p.buurt] as [string, string]] : []),
+    ];
+    $('#l-pick-facts').replaceChildren(...rows.flatMap(([k, v]) => [el('dt', { textContent: k }), el('dd', { textContent: v })]));
+    $('#l-pick-slots').replaceChildren(...(p?.slots ?? []).map(([cell, tint, pct]) => {
+      const chip = el('span', { class: 'sw', title: `${cell} ${tint}` });
+      chip.style.background = tint || '#ccc';
+      return el('span', { class: 'sw-item wide' }, chip, el('span', { class: 'sw-role', textContent: `${cellLabel(cell)} · ${pct} %` }));
+    }));
+    $('#l-pick-slots-wrap').hidden = !p?.slots.length;
+    box.hidden = false;
+    const model = /^\d{16}$/.test(id) ? this.byPand.get(id) : undefined;
+    const open = $('#l-pick-open') as HTMLButtonElement;
+    open.hidden = !model;
+    open.onclick = () => { if (model) void this.open(model.id, { fly: true }); };
+    box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }
 
   // ---------- panel ----------

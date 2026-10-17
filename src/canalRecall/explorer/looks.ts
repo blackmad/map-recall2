@@ -60,6 +60,54 @@ export interface LookUse {
 
 export type LookStatus = 'drawn' | 'authored';
 
+/**
+ * One pand as the published recipe tiles draw it (read from the mesh tiles, explorer-recipe-pands/<buurt code>.json): its z16 tile,
+ * label, authoring reference, instanced unit, and the city-look layers it samples with their tints, most triangles
+ * first ([cell, tint hex, % of the pand's surface area]).
+ */
+export interface RecipePand {
+  tile: string;
+  name: string;
+  /** "face:<face>/<i> · type <id>", "type:<unit>", "house:<id> · large", "model:<spec>". */
+  ref?: string;
+  /** Content hash of the instanced unit (units/<hash>.glb) when the pand is drawn by instancing. */
+  unit?: string;
+  triangles: number;
+  slots: [cell: string, tint: string, pct: number][];
+  /** Municipal buurt code. */
+  buurt?: string;
+}
+
+export interface ExplorerRecipePands {
+  version: 1;
+  generatedAt: string;
+  /** Pand key (16-digit id or m:<spec>) → what the tiles draw. */
+  pands: Record<string, RecipePand & { lngLat: LngLat }>;
+}
+
+/** A buurt's share of the published recipe tiles: the z16 tiles that draw its pands, how many, and where to look. */
+export interface BuurtRecipeTiles {
+  tiles: string[];
+  pands: number;
+  /** Of those, pands drawn from one of this buurt's own-look recipes (`useMatchesRef`). 0: only landmarks or other kits. */
+  lookPands: number;
+  centre: LngLat;
+}
+
+/** Whether a pand's authoring reference comes from a look recipe (`type:<id>`, `design:<unit>`, `face:<id>`). */
+export function useMatchesRef(useKey: string, ref: string | undefined): boolean {
+  if (!ref) return false;
+  const [kind, id] = [useKey.slice(0, useKey.indexOf(':')), useKey.slice(useKey.indexOf(':') + 1)];
+  if (kind === 'type') return ref.endsWith(` · type ${id}`);
+  // A design tab stands for its family (the coverage tally counts families); every variant unit of it matches.
+  if (kind === 'design') return ref.startsWith(`type:${id.split('__')[0]}__`);
+  if (kind === 'face') return ref.startsWith(`face:${id}/`);
+  return false;
+}
+
+/** Which 3D path the look view uses: the ride's live recipe tiles when they carry this buurt's own recipes, else the installed chunk GLB. */
+export const lookPath = (b: Pick<LookBuurt, 'recipeTiles'>): 'live' | 'chunk' => (b.recipeTiles?.lookPands ? 'live' : 'chunk');
+
 export interface LookBuurt {
   slug: string;
   /** Municipal buurt code (CBS), e.g. KM04. */
@@ -83,6 +131,8 @@ export interface LookBuurt {
   uses: LookUse[];
   /** Explorer models (landmarks, buildings, street frontages) standing in this buurt, ids for `?model=`. */
   models: string[];
+  /** Present when the published recipe tiles (`?recipeTiles=1`) draw pands of this buurt: the live view uses them. */
+  recipeTiles?: BuurtRecipeTiles;
 }
 
 export interface ExplorerLooks {
@@ -93,6 +143,8 @@ export interface ExplorerLooks {
   buurten: LookBuurt[];
   /** Municipal buurten without an own look, [slug, name, code], so their deep links can say so. */
   none: [string, string, string][];
+  /** Every municipal buurt the published recipe tiles draw pands in, [code, name, pands], most first. */
+  recipeTileBuurten: [string, string, number][];
 }
 
 /** "Rijnbuurt-Oost" -> "rijnbuurt-oost"; "Van Galenbuurt e.o." -> "van-galenbuurt-e-o". */
@@ -209,4 +261,10 @@ export function inGeometry([x, y]: LngLat, g: { type: string; coordinates: unkno
     return inside;
   };
   return polys.some(p => p.length > 0 && inRing(p[0]) && !p.slice(1).some(inRing));
+}
+
+/** "brick" → "Brick"; "brick20" → "Brick (20th c.)"; "whiteStucco" → "White stucco"; "glassTint" → "Glass (measured)". */
+export function cellLabel(cell: string): string {
+  const L: Record<string, string> = { brick20: 'Brick (20th c.)', whiteStucco: 'White stucco', glassTint: 'Glass (measured)', flat: 'Flat roof', tile: 'Roof tile' };
+  return L[cell] ?? cell.charAt(0).toUpperCase() + cell.slice(1);
 }
