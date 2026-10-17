@@ -404,7 +404,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     }
     const top = storeys.at(-1)!;
     school.erker = {leftM: round(erkerSpan[0]), widthM: w, storeys, topM: round(school.bottoms[top] + heights[top]),
-      oriel: {depthM: depth, frontWidthM: round(w - 2 * ret), footM: round(school.bottoms[storeys[0]]), paintedStoreys: oriel.paintedStoreys ?? [], ...(oriel.paintFrom !== undefined ? {paintFrom: oriel.paintFrom} : {}), console: !!oriel.console}};
+      oriel: {depthM: depth, frontWidthM: round(w - 2 * ret), footM: round(school.bottoms[storeys[0] === 0 ? storeys.find(v => v > 0) ?? 0 : storeys[0]]), paintedStoreys: oriel.paintedStoreys ?? [], ...(oriel.paintFrom !== undefined ? {paintFrom: oriel.paintFrom} : {}), console: !!oriel.console}};
   } else if (school && erkerSpan && erkerBays) {
     const storeys = f.bayWindows!.storeys, w = round(erkerSpan[1] - erkerSpan[0]), lights = 2 * (erkerBays.to - erkerBays.from + 1);
     for (const s of storeys) {

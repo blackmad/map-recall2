@@ -379,7 +379,9 @@ export interface FrontIntent {
    * stack. Each storey: a solid stallriser panel 0.85 m high (wall brick) under a front light divided into two lights per
    * spanned axis, one light in each angled side (0.25 m return), a 0.2 m head panel; closed at its foot and top. `cap` on
    * the top storey: `hip` (a lean-to hipped roof rising 0.45 m to the wall, roof colour), `flat` (a 0.12 m slab overhanging
-   * 6 cm, trim colour) or `none` (default: the closure only).
+   * 6 cm, trim colour) or `none` (default: the closure only). An `oriel` stack may list the ground storey (0) when the
+   * front has no shopfront or ground front: the canted bay then stands on the pavement and its `console` sits under the
+   * first upper storey's module instead (Boterdiepstraat 9-33, Hoendiepstraat 5-35: the white slab at 2.95 m).
    */
   bayWindows?: { bay?: number; bays?: {from: number; to: number}; storeys: number[]; cap?: typeof ERKER_CAPS[number];
     /** `painted` (a timber erker, Nassaukade 146): its panels, closures and cap in the trim colour instead of wall brick and roof. Multi-bay erkers only. */
@@ -994,7 +996,10 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (f.bayWindows.bays === undefined) count(f.bayWindows.bay, `${at}.bayWindows.bay`, 0, 15);
       else problems.push(...erkerProblems(f, at));
       if (f.bayWindows.finish !== undefined && (f.bayWindows.finish !== 'painted' || f.bayWindows.bays === undefined)) problems.push(`${at}.bayWindows.finish: "painted", on a multi-bay erker (bays)`);
-      f.bayWindows.storeys.forEach(v => count(v, `${at}.bayWindows.storeys`, 1, f.storeys - 1));
+      // A timber oriel may start on the ground storey (Boterdiepstraat 9-33: the canted bay runs down to the pavement under
+      // the console) unless the ground is a shopfront or a historic ground front.
+      const groundOriel = !!f.bayWindows.oriel && f.bayWindows.bays !== undefined && !f.shopfront && !f.groundFront;
+      f.bayWindows.storeys.forEach(v => count(v, `${at}.bayWindows.storeys`, groundOriel ? 0 : 1, f.storeys - 1));
     }
     if (f.bands !== undefined) oneOf(f.bands, ['none', 'storey', 'lintel', 'both', 'courses', 'speklagen', 'painted'], `${at}.bands`);
     problems.push(...paintedProblems(f, at, oneOf));

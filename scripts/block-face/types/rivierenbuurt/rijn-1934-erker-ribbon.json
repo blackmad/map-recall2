@@ -67,6 +67,7 @@
     "to": 1
    },
    "storeys": [
+    0,
     1,
     2
    ],
@@ -78,6 +79,12 @@
     "head": 0.3,
     "frontLights": 3,
     "transom": 0.7,
+    "panels": {
+     "0": {
+      "stallriser": 0.95,
+      "head": 0.2
+     }
+    },
     "console": true
    }
   }
