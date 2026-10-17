@@ -9,8 +9,9 @@ import type { Tour } from './tourRoute';
 export {
   MAX_TOUR_LEG_KM, advanceOnArrival, isComplete, legKm, nextLeg, startTour, stopAsRoutePoi,
   tourLegs, tourProgressLabel, withinLegCap,
+  hiddenStopLabel, stopNameSpoils, tourArrival, tourCheckedLabel, tourDestination, tourFromSearch,
 } from './tourRoute';
-export type { Tour, TourLeg, TourState, TourStop } from './tourRoute';
+export type { Tour, TourArrival, TourDestination, TourLeg, TourState, TourStop } from './tourRoute';
 
 /** Fetch tours.json from the city extract folder (e.g. city.extractPath). Never throws. */
 export async function loadTours(extractPath = '../data/extracts/amsterdam'): Promise<Tour[]> {

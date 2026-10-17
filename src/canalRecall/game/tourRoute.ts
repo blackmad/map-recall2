@@ -132,3 +132,89 @@ export function tourProgressLabel(state: TourState, tour: Tour): string {
   if (isComplete(state, tour)) return `${tour.title}: complete`;
   return `${tour.title}: stop ${Math.min(state.legIndex + 2, tour.stops.length)} of ${tour.stops.length}`;
 }
+
+// ---- What the ride may show before and after a stop ----
+
+/**
+ * Words that make a stop's name a street, water, square, market or bridge
+ * name, i.e. the answer to a question the ride may ask on the way there.
+ */
+const STREET_LIKE = /(straat|gracht|plein|markt|brug|dijk|kade|weg|laan|sluis|steeg|singel|bend|bocht)/i;
+
+/**
+ * Whether naming this stop before arrival could answer a street question.
+ * Landmark stops keep their name (the HUD already masks the one street being
+ * asked, see _destinationLabel); a stop with no landmark is hidden when it has
+ * no mapped element of its own (Golden Bend, Jodenbreestraat) or its name is
+ * street-like (Albert Cuypmarkt, Waterlooplein).
+ */
+export function stopNameSpoils(stop: Pick<TourStop, 'name' | 'landmarkId' | 'osm'>): boolean {
+  if (stop.landmarkId) return false;
+  return !stop.osm || STREET_LIKE.test(stop.name);
+}
+
+/** "Jewish Amsterdam, stop 2 of 7": what the HUD calls a hidden stop. */
+export function hiddenStopLabel(tour: Tour, index: number): string {
+  return `${tour.title}, stop ${index + 1} of ${tour.stops.length}`;
+}
+
+export interface TourDestination {
+  id: string;
+  name: string;
+  lat: number;
+  lng: number;
+  landmarkId?: string;
+  /** Marks a tour leg's end: the finish card uses the stop's own card, never a nearby landmark's. */
+  tourStop: true;
+  /** The real name, shown only on arrival, when `name` is a hidden label. */
+  tourRevealName?: string;
+}
+
+/** A stop as the leg's destination, with a spoiling name held back until arrival. */
+export function tourDestination(tour: Tour, index: number): TourDestination | null {
+  const poi = stopAsRoutePoi(tour, index);
+  const stop = tour.stops[index];
+  if (!poi || !stop) return null;
+  if (!stopNameSpoils(stop)) return { ...poi, tourStop: true };
+  return { ...poi, name: hiddenStopLabel(tour, index), tourStop: true, tourRevealName: stop.name };
+}
+
+/** "checked 2026-10-17" for tours of shops and cafés, which change; null otherwise. */
+export function tourCheckedLabel(tour: Pick<Tour, 'volatile' | 'checkedAt'>): string | null {
+  return tour.volatile && tour.checkedAt ? `checked ${tour.checkedAt}` : null;
+}
+
+/** The host of a stop's source, for the card's attribution ("iamsterdam.com"). */
+export function sourceHost(source: string): string {
+  try { return new URL(source).hostname.replace(/^www\./, ''); } catch { return ''; }
+}
+
+export interface TourArrival {
+  tourId: string;
+  title: string;
+  stopIndex: number;
+  stopCount: number;
+  name: string;
+  why: string;
+  sourceHost: string;
+  checked: string | null;
+  completed: boolean;
+}
+
+/** What the finish card shows for a tour stop: its sourced "why" line and where it is in the tour. */
+export function tourArrival(tour: Tour, stopIndex: number, completed: boolean): TourArrival | null {
+  const stop = tour.stops[stopIndex];
+  if (!stop) return null;
+  return {
+    tourId: tour.id, title: tour.title, stopIndex, stopCount: tour.stops.length,
+    name: stop.name, why: stop.why, sourceHost: sourceHost(stop.source),
+    checked: tourCheckedLabel(tour), completed,
+  };
+}
+
+/** The tour a `?tour=<id>` link asks for, if it exists. */
+export function tourFromSearch(search: string, tours: readonly Tour[]): Tour | null {
+  let id: string | null = null;
+  try { id = new URLSearchParams(search).get('tour'); } catch { return null; }
+  return (id && tours.find(tour => tour.id === id)) || null;
+}

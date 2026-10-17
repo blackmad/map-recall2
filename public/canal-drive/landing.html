@@ -148,6 +148,13 @@ footer nav a:hover { color: var(--copper-ink); }
 footer p { margin: 0; max-width: 46rem; }
 footer p a { color: var(--muted); }
 
+/* Tours: one tap starts the tour in the ride. Titles only; the stops are the ride's surprise. */
+.tours { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; margin: clamp(24px, 3vw, 36px) 0 0; padding: 0; }
+.tour { display: flex; flex-direction: column; gap: 6px; min-height: 76px; padding: 14px 16px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--raised); color: var(--ink); text-decoration: none; transition: border-color 140ms, transform 140ms; }
+.tour:hover { border-color: var(--copper); transform: translateY(-1px); text-decoration: none; }
+.tour strong { font: 800 20px/1 var(--display); letter-spacing: 0.04em; text-transform: uppercase; }
+.tour small { font-size: 14px; color: var(--muted); }
+
 /* The feedback module adds its own floating launcher; this page has a button for it. */
 .cf-launch { display: none !important; }
 
@@ -179,6 +186,7 @@ footer p a { color: var(--muted); }
   <nav aria-label="Site">
     <a href="/quiz/" data-dev-href="../">Quiz</a>
     <a class="hide-sm" href="explore.html">Buildings</a>
+    <a class="hide-sm" href="#tours">Tours</a>
     <a href="/progress" data-dev-href="../progress">Progress</a>
     <a href="/ride" data-dev-href="./">Ride</a>
   </nav>
@@ -261,6 +269,26 @@ footer p a { color: var(--muted); }
           <div class="row"><a class="quiet" href="/quiz/" data-dev-href="../">Open the quiz</a></div>
         </article>
       </div>
+    </div>
+  </section>
+
+  <section id="tours" aria-labelledby="tours-title">
+    <div class="wrap">
+      <div class="prose">
+        <h2 id="tours-title">Tours</h2>
+        <p>Ride a theme stop by stop, by bike. Each arrival says why the place is on the list, with its source; finish them all for a tour stamp. The stops stay a surprise until you reach them.</p>
+      </div>
+      <!-- Titles from public/data/extracts/amsterdam/tours.json; the ride reads ?tour=<id>. -->
+      <ul class="tours">
+        <li><a class="tour" href="/ride?tour=jewish-amsterdam" data-dev-href="./?tour=jewish-amsterdam"><strong>Jewish Amsterdam</strong><small>7 stops</small></a></li>
+        <li><a class="tour" href="/ride?tour=golden-age-canal-ring" data-dev-href="./?tour=golden-age-canal-ring"><strong>Golden Age canal ring</strong><small>5 stops</small></a></li>
+        <li><a class="tour" href="/ride?tour=art-museums" data-dev-href="./?tour=art-museums"><strong>Art museums</strong><small>7 stops</small></a></li>
+        <li><a class="tour" href="/ride?tour=churches-and-towers" data-dev-href="./?tour=churches-and-towers"><strong>Churches and towers</strong><small>7 stops</small></a></li>
+        <li><a class="tour" href="/ride?tour=markets" data-dev-href="./?tour=markets"><strong>Markets</strong><small>5 stops</small></a></li>
+        <li><a class="tour" href="/ride?tour=ice-cream" data-dev-href="./?tour=ice-cream"><strong>Ice cream</strong><small>5 stops · checked 2026-10-17</small></a></li>
+        <li><a class="tour" href="/ride?tour=pizza" data-dev-href="./?tour=pizza"><strong>Pizza</strong><small>6 stops · checked 2026-10-17</small></a></li>
+        <li><a class="tour" href="/ride?tour=brown-cafes" data-dev-href="./?tour=brown-cafes"><strong>Brown cafés</strong><small>5 stops · checked 2026-10-17</small></a></li>
+      </ul>
     </div>
   </section>
 
