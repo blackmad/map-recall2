@@ -16,21 +16,24 @@ run exactly as before with no keys.
 
 ### What to create at sentry.io
 
-- One **organization**.
-- One **project** named `canal-recall`, platform **JavaScript**.
-- Map Quest shares this project; it is distinguished by the `app` tag
-  (`app=map-quest` vs `app=canal-recall`), so no second project is needed.
+Org `whizziwig`, two projects (with the official `sentry` CLI, after `npx sentry@latest auth login`):
 
-Grab the project's **DSN** (Settings → Projects → *canal-recall* → Client Keys).
+```sh
+npx sentry@latest project create whizziwig/canal-recall:javascript whizziwig/map-quest:javascript-react
+npx sentry@latest project view whizziwig/canal-recall   # prints the DSN
+npx sentry@latest project view whizziwig/map-quest
+```
 
 ### GitHub secrets to add
 
 | Secret | Value | Used for |
 | --- | --- | --- |
-| `SENTRY_DSN` | the project DSN | `VITE_SENTRY_DSN` (Map Quest) and Canal Recall's runtime config |
-| `SENTRY_AUTH_TOKEN` | Sentry auth token (Org Settings → Auth Tokens) | source-map upload; also gates the upload step |
-| `SENTRY_ORG` | org slug | source-map upload |
-| `SENTRY_PROJECT` | `canal-recall` | source-map upload |
+| `SENTRY_DSN` | `canal-recall` DSN | Canal Recall's runtime config |
+| `SENTRY_DSN_MAP_QUEST` | `map-quest` DSN | `VITE_SENTRY_DSN` (Map Quest) |
+| `SENTRY_AUTH_TOKEN` | org auth token (Settings → Auth Tokens, scope `project:releases`) | Map Quest source-map upload; gates the upload step |
+
+The org slug (`whizziwig`) and upload project (`map-quest`) are written in the
+workflow; they are not secrets.
 
 The deploy workflow maps `GITHUB_SHA` to `VITE_RELEASE` and to the release used
 by `npx @sentry/cli sourcemaps upload`, so every deployed revision gets its own

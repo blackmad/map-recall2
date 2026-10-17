@@ -16,7 +16,7 @@ if (sentryDsn) {
     tracesSampleRate: 0.05,
     // Sentry v11 equivalent of `sendDefaultPii: false`: do not attach user PII.
     dataCollection: { userInfo: false },
-    // Map Quest shares the "canal-recall" Sentry project; tag the app.
+    // Map Quest reports to its own Sentry project (map-quest); tag the app too.
     initialScope: { tags: { app: 'map-quest' } },
   });
 }
