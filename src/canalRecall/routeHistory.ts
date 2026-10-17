@@ -207,9 +207,18 @@ export function toCloudDoc(record: RideRecord): Record<string, unknown> {
  * Null when the ride had no share hash (an old record, or a route without
  * fixed endpoints).
  */
-export function rideAgainHref(record: Pick<RideRecord, 'raceHash' | 'mode'>, rideHref: string): string | null {
+export function rideAgainHref(record: Pick<RideRecord, 'raceHash' | 'mode'> & { start?: { name: string } }, rideHref: string): string | null {
   if (!record.raceHash || !RACE_HASH.test(record.raceHash)) return null;
-  return `${rideHref}?travel=${travelParamFor(record.mode)}${record.raceHash}`;
+  // A Home or Here ride replays from that private point; `start=` tells the ride so, which
+  // keeps the replay's own record private and its share link neutral (shareRoute.ts).
+  const origin = privateStartParam(record.start?.name);
+  return `${rideHref}?travel=${travelParamFor(record.mode)}${origin ? `&start=${origin}` : ''}${record.raceHash}`;
+}
+
+/** `home` / `here` for a ride that started at that private origin, else ''. */
+export function privateStartParam(startName: string | undefined | null): 'home' | 'here' | '' {
+  const name = (startName || '').trim().toLowerCase();
+  return name === 'home' || name === 'here' ? name : '';
 }
 
 const dayKey = (time: number): string => {

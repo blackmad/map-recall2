@@ -37,7 +37,7 @@ export { basemapBuildingFilter, encodeBasemapBuildingId } from '../buildingStyle
 
 export {rdProjectionBasis,rdProjectedSurvey} from './rdProjectionBasis';
 
-export { MANUAL_LANDMARKS, MANUAL_ORDINARY_BUILDINGS } from './manualModels';
+export { ALL_MANUAL_LANDMARKS, MANUAL_LANDMARKS, MANUAL_ORDINARY_BUILDINGS } from './manualModels';
 import modelVersions from './modelAssetVersions.json';
 import { ORDINARY_BUILDINGS, ORDINARY_BUILDING_VERSIONS, ORDINARY_CATEGORY_BUILDINGS, STREET_SURVEY_HOUSES } from './ordinaryModels';
 import { MANUAL_LANDMARKS as manualModels } from './manualModels';

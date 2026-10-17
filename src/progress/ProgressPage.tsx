@@ -11,6 +11,8 @@ import { loadLocalReviewStates, syncProgress } from '../progressRepository';
 import type { ReviewEvent, ReviewState } from '../spacedRepetition';
 import { REVIEW_EVENTS_KEY } from '../canalRecall/knowledgeReview';
 import { loadRouteHistory, rideAgainHref, rideMinutes, type RideMode, type RideRecord } from '../canalRecall/routeHistory';
+import { privatePlacesFromHomeCache, shareOrCopy, shareRecordUrl, shareToastText } from '../canalRecall/shareRoute';
+import { HOME_GEOCODE_CACHE_KEY } from '../canalRecall/game/progressStore';
 import { syncRides, syncStamps } from './cloud';
 import { plural, progressView, rideWhen, type StampCollection } from './progressData';
 import { loadLocalStamps, loadPool, stampView } from './stamps';
@@ -42,10 +44,30 @@ const MODE: Record<RideMode, { label: string; Icon: typeof Bike }> = {
 
 const RIDES_COLLAPSED = 8;
 
-function RideRow({ ride, now }: { ride: RideRecord; now: number }) {
+function savedHomes() {
+  try { return privatePlacesFromHomeCache(localStorage.getItem(HOME_GEOCODE_CACHE_KEY)); } catch { return []; }
+}
+
+async function shareRide(url: string, ride: RideRecord): Promise<string> {
+  const nav = navigator as Navigator & { canShare?: (data: ShareData) => boolean };
+  const outcome = await shareOrCopy({
+    url,
+    title: 'Canal Recall route',
+    text: `Ride from ${ride.start.name} to ${ride.finish.name} in Canal Recall and learn the streets and canals on the way.`,
+  }, {
+    share: typeof nav.share === 'function' ? data => nav.share(data) : undefined,
+    canShare: typeof nav.canShare === 'function' ? data => nav.canShare!(data) : undefined,
+    clipboard: nav.clipboard ?? null,
+  });
+  return shareToastText(outcome);
+}
+
+function RideRow({ ride, now, onToast }: { ride: RideRecord; now: number; onToast: (text: string) => void }) {
   const { label, Icon } = MODE[ride.mode];
   const minutes = rideMinutes(ride);
   const again = rideAgainHref(ride, mapQuestSite.ride);
+  // Home and Here rides are not offered: the page has no public stand-in to share from.
+  const shareUrl = shareRecordUrl(ride, window.location.origin, mapQuestSite.ride, savedHomes());
   const names = ride.streetsLearned;
   return (
     <li className="pg-ride" data-testid="ride-row" data-ride-id={ride.id}>
@@ -67,8 +89,15 @@ function RideRow({ ride, now }: { ride: RideRecord; now: number }) {
           </p>
         ) : null}
       </div>
-      {again ? (
-        <a className="pg-again" href={again} data-testid="ride-again">Ride again</a>
+      {again || shareUrl ? (
+        <div className="pg-ride-actions">
+          {again ? <a className="pg-again" href={again} data-testid="ride-again">Ride again</a> : null}
+          {shareUrl ? (
+            <button type="button" className="pg-quiet pg-share" data-testid="ride-share" onClick={() => { void shareRide(shareUrl, ride).then(onToast); }}>
+              Share this route
+            </button>
+          ) : null}
+        </div>
       ) : null}
     </li>
   );
@@ -94,6 +123,7 @@ export function ProgressPage() {
   const [authOpen, setAuthOpen] = useState(false);
   const [allRides, setAllRides] = useState(false);
   const [syncNote, setSyncNote] = useState('');
+  const [toast, setToast] = useState('');
   const now = useMemo(() => Date.now(), [rides, states]);
 
   useEffect(() => {
@@ -144,6 +174,12 @@ export function ProgressPage() {
     });
     return () => { cancelled = true; };
   }, [user]);
+
+  useEffect(() => {
+    if (!toast) return;
+    const timer = setTimeout(() => setToast(''), 2000);
+    return () => clearTimeout(timer);
+  }, [toast]);
 
   const view = useMemo(() => progressView(rides, states, events, now), [rides, states, events, now]);
   const postcardCities = useMemo(() => {
@@ -216,7 +252,7 @@ export function ProgressPage() {
             {rides.length ? (
               <>
                 <ol className="pg-rides">
-                  {shownRides.map(ride => <RideRow key={ride.id} ride={ride} now={now} />)}
+                  {shownRides.map(ride => <RideRow key={ride.id} ride={ride} now={now} onToast={setToast} />)}
                 </ol>
                 {rides.length > RIDES_COLLAPSED ? (
                   <button type="button" className="pg-quiet pg-more" onClick={() => setAllRides(value => !value)}>
@@ -317,6 +353,8 @@ export function ProgressPage() {
           <p>Progress lives in this browser{user ? ' and in your account' : ''}. Clear it from Settings in the ride.</p>
         </div>
       </footer>
+
+      <div className={`pg-toast${toast ? ' pg-toast-on' : ''}`} role="status" aria-live="polite" data-testid="share-toast">{toast}</div>
 
       {authOpen ? <Suspense fallback={null}><AuthModal onClose={() => setAuthOpen(false)} /></Suspense> : null}
     </div>

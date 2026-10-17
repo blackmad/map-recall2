@@ -1256,6 +1256,12 @@ class GameRouteRuntime {
     }
     // Bypass menu and map picker — load directly. Close route setup as a launch from it does, or the
     // ride loads hidden behind the setup rail and its hero photo (user report 2026-10-13).
+    // My progress's "Ride again" marks a Home or Here replay (`&start=home|here`, routeHistory.ts), so the
+    // replay records and shares as private rather than under a stale routeFrom name.
+    const privateStart = new URLSearchParams(window.location.search).get('start');
+    if (privateStart === 'home' || privateStart === 'here') {
+      this.routeFrom = { id: privateStart, name: privateStart === 'home' ? 'Home' : 'Here', lat: startLat, lng: startLng };
+    }
     this._overlay.store.setSetupOpen(false);
     this._onLocationSelected(lat, lng, { lat: startLat, lng: startLng }, { lat: finishLat, lng: finishLng });
   }

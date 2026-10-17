@@ -755,6 +755,10 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     `chunkWallExposureData.ts` (rerun `build-chunk-wall-exposure.ts`);
     `test:tile-buildings` — pilot-tiles golden `16/33655/21538` per-pand
     geometry changed.
+  - First-load next wins (docs/preview/first-load-2026-10-17.md): Bricks057
+    texture at q≈100 (~1.1 MB), Wikimedia card photos at 960 px (~2.5 MB),
+    lazy park/bridge extracts; iPhone not measured. Share toast overlaps the
+    desktop arrival card's bottom edge.
   - Dead code left: ~1,600 module-internal exports; unused deps in
     package.json; `scripts/canalhouse-recipes/capture.mjs` needs the missing
     `canalhouse-recipes.html` (on `wip/canalhouse-recipes-20261008`).
