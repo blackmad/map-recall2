@@ -1,0 +1,404 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "hoendiep-2-60-r1",
+ "street": "Hoendiepstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/hoendiep-2-60-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the rivierenbuurt library (buurt Rijnbuurt-Oost); scores and holds in scripts/block-face/faces/hoendiep-2-60/auto-place.json"
+ },
+ "types": [
+  "rijn-1934-erker-pair",
+  "rijn-1934-flat-three"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012141169",
+   "slug": "hoendiep-141169",
+   "address": "Hoendiepstraat 34",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "measuredPalette": {
+     "brick": "#4e4440",
+     "evidence": "strip 2023-01-03 span 0-244: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #4c433e)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 1, columns 1; strip 2023-01-03 span 0-244"
+   }
+  },
+  {
+   "pandId": "0363100012147318",
+   "slug": "hoendiep-147318",
+   "address": "Hoendiepstraat 32",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#493f3b",
+     "evidence": "strip 2023-01-03 span 244-488: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #483f3a)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 0.82 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0; strip 2023-01-03 span 244-488"
+   }
+  },
+  {
+   "pandId": "0363100012150282",
+   "slug": "hoendiep-150282",
+   "address": "Hoendiepstraat 30",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#4c433f",
+     "evidence": "strip 2023-01-03 span 488-732: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #4b423e)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2023-01-03 span 488-732"
+   }
+  },
+  {
+   "pandId": "0363100012140377",
+   "slug": "hoendiep-140377",
+   "address": "Hoendiepstraat 28",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#4f4542",
+     "evidence": "strip 2023-01-03 span 732-976: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #4e4441)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2023-01-03 span 732-976"
+   }
+  },
+  {
+   "pandId": "0363100012065978",
+   "slug": "hoendiep-065978",
+   "address": "Hoendiepstraat 26",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "measuredPalette": {
+     "brick": "#4c413d",
+     "evidence": "strip 2023-01-03 span 976-1220: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #4c423b)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 0.77 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0, columns 0.4; strip 2023-01-03 span 976-1220"
+   }
+  },
+  {
+   "pandId": "0363100012113609",
+   "slug": "hoendiep-113609",
+   "address": "Hoendiepstraat 24",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#493f3c",
+     "evidence": "strip 2023-01-03 span 1220-1464: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #483e3a)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 0.82 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0; strip 2023-01-03 span 1220-1464"
+   }
+  },
+  {
+   "pandId": "0363100012092476",
+   "slug": "hoendiep-092476",
+   "address": "Hoendiepstraat 22",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#4c423e",
+     "evidence": "strip 2023-01-03 span 1464-1708: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #4c433f)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2023-01-03 span 1464-1708"
+   }
+  },
+  {
+   "pandId": "0363100012118414",
+   "slug": "hoendiep-118414",
+   "address": "Hoendiepstraat 20",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#4c423d",
+     "evidence": "strip 2023-01-03 span 1708-1952: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #4b413c)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2023-01-03 span 1708-1952"
+   }
+  },
+  {
+   "pandId": "0363100012114918",
+   "slug": "hoendiep-114918",
+   "address": "Hoendiepstraat 18",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "measuredPalette": {
+     "brick": "#473f39",
+     "evidence": "strip 2023-01-03 span 1952-2196: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #48403a)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 0.84 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0, columns 1; strip 2023-01-03 span 1952-2196"
+   }
+  },
+  {
+   "pandId": "0363100012100758",
+   "slug": "hoendiep-100758",
+   "address": "Hoendiepstraat 16",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#463e38",
+     "evidence": "strip 2023-01-03 span 2196-2440: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #463d38)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 0.73 on eaves 1, storeys 1, roof 0, stucco 1, bag-bay 1, accent-side 0; strip 2023-01-03 span 2196-2440"
+   }
+  },
+  {
+   "pandId": "0363100012065484",
+   "slug": "hoendiep-065484",
+   "address": "Hoendiepstraat 14",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#49403b",
+     "evidence": "strip 2023-01-03 span 2440-2684: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #4c423d)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2023-01-03 span 2440-2684"
+   }
+  },
+  {
+   "pandId": "0363100012131067",
+   "slug": "hoendiep-131067",
+   "address": "Hoendiepstraat 12",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#4d433f",
+     "evidence": "strip 2023-01-03 span 2684-2928: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #4d433f)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2023-01-03 span 2684-2928"
+   }
+  },
+  {
+   "pandId": "0363100012142506",
+   "slug": "hoendiep-142506",
+   "address": "Hoendiepstraat 10",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "measuredPalette": {
+     "brick": "#4e4440",
+     "evidence": "strip 2023-01-03 span 2928-3171: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #4d433e)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 0.77 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0, columns 0.4; strip 2023-01-03 span 2928-3171"
+   }
+  },
+  {
+   "pandId": "0363100012108358",
+   "slug": "hoendiep-108358",
+   "address": "Hoendiepstraat 8",
+   "type": {
+    "type": "rijn-1934-erker-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#4b423e",
+     "evidence": "strip 2023-01-03 span 3171-3415: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #473e39)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-pair scored 0.82 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0; strip 2023-01-03 span 3171-3415"
+   }
+  },
+  {
+   "pandId": "0363100012081899",
+   "slug": "hoendiep-081899",
+   "address": "Hoendiepstraat 6",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#4b413e",
+     "evidence": "strip 2023-01-03 span 3415-3692: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #4a413d)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 0.9 on eaves 1, storeys 1, roof 0, stucco 1, bag-bay 1, columns 1; strip 2023-01-03 span 3415-3692"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

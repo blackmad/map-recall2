@@ -1,0 +1,163 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "rijn-1934-flat-three",
+ "district": "rivierenbuurt",
+ "description": "Rijnbuurt-Oost (Plan Zuid, BAG 1934-35), Boterdiepstraat 4-70 and Eemsstraat: a flat 6.1 m brick front of three white-framed casement windows with toplights per upper storey (the top storey's lower), a pair of house doors at one party wall and a wide three-light window beside them, mirrored in pairs (the doors meet the next pair's doors), under a flat roof whose deep overhang (0.75 m, a white fascia over a boarded soffit) runs the whole row",
+ "fit": {
+  "widthM": [
+   5.7,
+   6.6
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [
+   2,
+   3,
+   3,
+   3
+  ],
+  "storeyBayWidths": {
+   "0": [
+    1.9,
+    4.2
+   ]
+  },
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "storeyWindows": {
+   "0": "casement-triple"
+  },
+  "windowShare": 0.71,
+  "storeyHeights": [
+   3.1,
+   3.0,
+   3.0,
+   3.0
+  ],
+  "windowHeights": [
+   0.63,
+   0.67,
+   0.67,
+   0.45
+  ],
+  "headLines": [
+   0.95,
+   0.97,
+   0.97,
+   0.88
+  ]
+ },
+ "crowns": {
+  "overhang": {
+   "gable": "flat",
+   "eavesOverhang": {
+    "projection": 0.75,
+    "fascia": 0.45,
+    "colour": "#e4e1d8",
+    "soffit": "#d6cfc0"
+   },
+   "note": "the flat roof's overhang: wall top 12.1-12.25 m under a thin white trim, soffit nose 0.75 m out, white fascia 0.45 m (rectified 13.6-14.1 m from 6.4 m)"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "groundCanopy": {
+    "projection": 0.45,
+    "thickness": 0.12,
+    "overhang": 0.08,
+    "doorOverhang": 0.25,
+    "gap": 0.08,
+    "colour": "#e4e1d8"
+   },
+   "note": "house doors at the left party wall"
+  }
+ },
+ "palettes": {
+  "brown-red": {
+   "brick": "#7a6a5f",
+   "frame": "#efeee8",
+   "door": "#86482a",
+   "stone": "#d6d3cc",
+   "cornice": "#e4e1d8"
+  }
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "match": {
+  "years": [
+   1932,
+   1936
+  ],
+  "eavesM": [
+   11.6,
+   13.0
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "roof": "flat",
+  "stucco": false,
+  "mirrorForDoor": "left",
+  "doorsPairAcross": true,
+  "bagBay": false,
+  "note": "the 1934 Rijnbuurt-Oost rows at 6.1 m and 12.3 m eaves; the erker type of the same rows is told apart by the photo (auto-place --photo-decides): the strip structure reads no light bay on brick-panelled erkers"
+ },
+ "rhythm": {
+  "bays": "3 equal axes",
+  "identicalBays": "yes",
+  "windowsPerStorey": "ground: doors + 1 wide | 1: 3 | 2: 3 | 3: 3 (lower)",
+  "symmetry": "mirrored in pairs: doors at the outer party walls of a pair, the wide windows meet",
+  "groundFloor": "paired house doors and one wide three-light window",
+  "signage": "none",
+  "roofline": "flat roof with a deep white-fascia overhang, one line along the row",
+  "photoRows": [
+   2,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "boterdiep-6-34",
+   "pands": [
+    "065564",
+    "124733",
+    "082589",
+    "128564",
+    "137783",
+    "079582",
+    "071778"
+   ],
+   "citation": "strip.jpg 2022-03-24 (40 px/m, panoramas 6.4-6.7 m out), ruler crops of 28-30: windows 1.44 m wide on 2.03 m axes (share 0.71); sills 4.0 / 7.0 / 10.4 m, heads 6.0 / 9.0 / 11.75 m; ground window 2.65-5.6 m x 1.0-2.95 m, doors 0.2-2.55 m under a transom to 2.9 m; wall top 12.1 m"
+  },
+  {
+   "face": "eems-6-78",
+   "pands": [
+    "088569",
+    "094658",
+    "087051",
+    "138436",
+    "062063"
+   ],
+   "citation": "strip.jpg 2023-01-03 (overcast): the same front"
+  }
+ ],
+ "schemaLimits": [
+  "the two house doors side by side under one transom are drawn as one door",
+  "the dark brick soldier course at 3.0 m",
+  "the toplight's single pane over two casements is the kit's casement-toplight"
+ ],
+ "notes": [
+  "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}
