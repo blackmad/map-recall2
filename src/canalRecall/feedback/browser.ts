@@ -7,7 +7,7 @@ type Category = 'bug' | 'building' | 'data' | 'request' | 'other';
 type Subject = { kind: 'pand' | 'model' | 'osm' | 'point'; id?: string; lngLat?: [number, number] };
 type Target = { id: string; label: string; canvas?: HTMLCanvasElement; image?: HTMLImageElement; context?: () => Context; map?: any };
 /** open() accepts either a card target or a pre-filled report/request. */
-type OpenOptions = { category?: Category; target?: Subject; id?: string; label?: string; canvas?: HTMLCanvasElement; image?: HTMLImageElement; context?: () => Context; map?: any };
+type OpenOptions = { category?: Category; subject?: Subject; id?: string; label?: string; canvas?: HTMLCanvasElement; image?: HTMLImageElement; context?: () => Context; map?: any };
 declare global {
   interface Window {
     CanalFeedback: { attach: (container: HTMLElement, target: Target) => void; open: (options?: OpenOptions) => void };
@@ -123,7 +123,7 @@ function open(options?: OpenOptions) {
     map: options?.map ?? pageTarget.map,
   };
   category = options?.category ?? 'bug';
-  subject = options?.target;
+  subject = options?.subject;
   anchor = null; noteId = crypto.randomUUID(); captured = ''; readyCloud = undefined;
   payload = JSON.parse(JSON.stringify(current.context?.() || {}));
   draftKey = `canalFeedback.draft:${location.pathname}:${current.id}`;
