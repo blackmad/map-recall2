@@ -50,16 +50,31 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     if (!m || !/^\d{4}-\d{2}-\d{2}$/.test(m.date ?? '')) problems.push('measured.date must be YYYY-MM-DD');
     if (!Array.isArray(m?.groups)) problems.push('measured.groups: list of wall-group indices');
     else m.groups.forEach(g => count(g, 'measured.groups', 0, Math.max(0, (intent.walls?.length ?? 1) - 1)));
-    for (const k of Object.keys(m ?? {})) if (!['date', 'groups'].includes(k)) problems.push(`measured.${k}: unknown field (date, groups)`);
+    bool(m?.otherWalls, 'measured.otherWalls');
+    for (const k of Object.keys(m ?? {})) if (!['date', 'groups', 'otherWalls'].includes(k)) problems.push(`measured.${k}: unknown field (date, groups, otherWalls)`);
   }
   if (intent?.otherWalls !== undefined) oneOf(intent.otherWalls, LARGE_SYSTEMS, 'otherWalls');
   bool(intent?.roofPlant, 'roofPlant'); bool(intent?.closedBands, 'closedBands'); bool(intent?.layeredKit, 'layeredKit'); bool(intent?.shellRepair, 'shellRepair');
   if (intent?.footprint !== undefined) oneOf(intent.footprint, ['lod22', 'bag'], 'footprint');
   if (intent?.groundClamp !== undefined && typeof intent.groundClamp !== 'boolean') problems.push('groundClamp: boolean');
   if (intent?.roof !== undefined) {
-    oneOf(intent.roof?.material, ROOF_MATERIALS, 'roof.material');
-    if (intent.roof?.flat !== undefined && !/^#[0-9a-f]{6}$/i.test(intent.roof.flat)) problems.push(`roof.flat: a measured #rrggbb, got ${JSON.stringify(intent.roof.flat)}`);
-    for (const k of Object.keys(intent.roof ?? {})) if (!['material', 'flat'].includes(k)) problems.push(`roof.${k}: unknown field (material, flat)`);
+    const r = intent.roof;
+    oneOf(r?.material, ROOF_MATERIALS, 'roof.material');
+    for (const k of Object.keys(r ?? {})) if (!['material', 'flat', 'surfaces', 'flatHex'].includes(k)) problems.push(`roof.${k}: unknown field (material, flat, surfaces, flatHex)`);
+    if (r?.flat !== undefined) oneOf(r.flat, ROOF_MATERIALS, 'roof.flat');
+    if (r?.flatHex !== undefined && !/^#[0-9a-f]{6}$/i.test(r.flatHex)) problems.push(`roof.flatHex: a measured #rrggbb (roof-flat.ts), got ${JSON.stringify(r.flatHex)}`);
+    if (r?.surfaces !== undefined && !Array.isArray(r.surfaces)) problems.push('roof.surfaces: list of {roofSurfaces, material, evidence}');
+    else if (r?.surfaces) {
+      const listed = new Set<number>();
+      r.surfaces.forEach((g, i) => {
+        const at = `roof.surfaces[${i}]`;
+        for (const k of Object.keys(g ?? {})) if (!['roofSurfaces', 'material', 'evidence'].includes(k)) problems.push(`${at}.${k}: unknown field (roofSurfaces, material, evidence)`);
+        oneOf(g?.material, ROOF_MATERIALS, `${at}.material`);
+        if (typeof g?.evidence !== 'string' || !g.evidence.trim()) problems.push(`${at}.evidence: say what shows this material (orthophoto, photo id)`);
+        if (!Array.isArray(g?.roofSurfaces) || !g.roofSurfaces.length) problems.push(`${at}.roofSurfaces: list the 3DBAG roof surface numbers`);
+        else for (const s of g.roofSurfaces) { count(s, `${at}.roofSurfaces`, 0, 100000); if (listed.has(s)) problems.push(`${at}.roofSurfaces: ${s} listed twice`); listed.add(s); }
+      });
+    }
   }
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice', 'glass'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);

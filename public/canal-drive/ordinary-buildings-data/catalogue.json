@@ -27129,11 +27129,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012164981",
       "name": "Entrepotdok 13-37 / Binnenkadijk / Laagte Kadijk, Amsterdam: the Entrepotdok warehouses, converted to housing in the 1980s",
-      "hash": "cd5b4edbe754e4a77119894f283b4b87327881d7028427b65e5e9921ab2f7d18",
-      "sha256": "cd5b4edbe754e4a77119894f283b4b87327881d7028427b65e5e9921ab2f7d18",
-      "bytes": 953808,
+      "hash": "d0ef2b7863c1bd95ed022b1d0cffb9ee0c4caae7e4fa7b8f4e56893695cad7b2",
+      "sha256": "d0ef2b7863c1bd95ed022b1d0cffb9ee0c4caae7e4fa7b8f4e56893695cad7b2",
+      "bytes": 955612,
       "triangles": 11797,
-      "materials": 16,
+      "materials": 18,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -27462,7 +27462,9 @@
         "id": "entrepotdok-164981",
         "kind": "large",
         "intentSources": [
-          "source-data://pand-reference-walls/0363100012164981/w01-210.jpg"
+          "source-data://pand-reference-walls/0363100012164981/w01-210.jpg",
+          "pano-2022-04-25-laagte-kadijk",
+          "ortho-2025-orthohr"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -27480,7 +27482,8 @@
           "storey-height/walls[3]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 5st 14b",
@@ -27491,23 +27494,20 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (window shape square vs photo wide; columns 5 vs photo 4)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (window shape square vs photo wide, columns 5 vs photo 4) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.75 mean 0.29 vs photo 0.44)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.75 mean 0.29 vs photo 0.44) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.38 mean 0.38 vs photo 0.03)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.38 mean 0.38 vs photo 0.03) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[3] not confirmed by the photo (NO EVIDENCE (obliquity 49.5 deg > 45)); inferred: 49.5 deg oblique crop, brick by hand from the measured walls[0]-[2]",
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
         "The rest of the canal front (0-47.7 m and 84.8-156.5 m, walls[2]) was converted with rectangular glazed loading stacks and white slab sills; modelled as a 33-bay grid with a rectangular loading door on a stone sill every third bay (the real stacks are irregular, two per warehouse in places). Its ground floor is drawn as windows; the photos show garden doors, a few small arched doors, and the board ELBURG over a rectangular door near 87 m (not modelled: that door is in the rectangular-hoist group, whose ground has no portals).",
         "Rear (Laagte Kadijk side, the panel of surfaces 134/135/151) from the 2017-03-23 panorama: windows with segmental brick heads, modelled as narrow segmental-arched windows on 13 bays. The other rear and courtyard walls, the SE modern rendered block (light render in the 2021 photo w04-120) and the NW end are blank: the 12k triangle budget is spent on the canal front (11,156 triangles).",
         "Not modelled (the photos show them): the French-balcony railings of the arched loading doors; the blind mezzanine panels with segmental relieving arches over the small portals; wall anchors and downpipes; the hoist beams at the gable tops; white stone corbels at the gable feet; gable stones in the gables (illegible at panorama resolution); a second name board over the wide portal of the second loading axis (four letters at low resolution, probably EDAM; not confirmed, so left out); the balconies and white slabs of the converted stacks; the raised gable copings (3DBAG gives the gable outline, not the coping).",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #483f3b not used (not darker than the wall #574c45 by 10 L*, or tinted): kit glass kept; walls[2] glass #485952 not used (not darker than the wall #564f4a by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-likeness-inferred",
+      "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164981",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T13:32:21.774Z",
+      "updatedAt": "2026-10-16T21:49:46.634Z",
       "bagYear": 1750,
-      "meshHash": "71159425163a0d7d"
+      "meshHash": "2b7fd56f549f0ac6"
     },
     {
       "id": "ordinary-0363100012084999",

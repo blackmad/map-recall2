@@ -33,7 +33,9 @@ import type { RoadIndex } from './roadSurfaces.js';
 /** roads-v1: no procedural paint (dashes, edge lines, stop lines, teeth, crossing blocks, zebras) on surveyed ground.
  *  User 2026-10-16: "maybe we just stop showing dashes for now? the most important part for this afternoon is that
  *  the roads don't look broken" — prior-based paint clipped to the BGT carriageway shredded into stray fragments.
- *  Paint comes back from data (orthophoto/OSM nodes) in the road-look lane. Cells without the survey keep their paint. */
+ *  Cells without the survey keep their paint. Since road look v2 (2026-10-16) the surveyed carriageway's markings come
+ *  from surveyMarkings.ts instead (OSM crossing / signal / give-way nodes of road-marks-v1 and the junction graph,
+ *  measured on and clipped to the carriageway polygons); this band paint stays off there. */
 export const PAINT_ON_SURVEY = false;
 export const ROAD_MARK_LIFT = { lane: 0.056, paint: 0.062, rail: 0.066 } as const;
 export const LIFT = {

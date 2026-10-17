@@ -83,6 +83,9 @@ export type HudLayoutInput = {
   postcardHeight?: number;
   neighborhoodVisible?: boolean;
   minimapVisible?: boolean;
+  /** `radar` (default): the round riding radar, a square slot. `city`: the
+   *  whole-city sheet (the M-key map), the older landscape slot. */
+  minimapShape?: 'radar' | 'city';
   /** Extra plaque lines under the two fixed rows (a feedback line, a cycling
    *  restriction). Only the merged portrait plaque sizes from this. */
   plaqueExtraLines?: number;
@@ -106,6 +109,14 @@ const PORTRAIT_PLAQUE_H = 56;
 const PORTRAIT_PLAQUE_LINE_H = 15;
 const PORTRAIT_MINIMAP_W = 100;
 const PORTRAIT_MINIMAP_H = 76;
+// The riding radar is round, so its slot is square: desktop 180 px (a block is
+// ~20 px at the radar's resting 220 m), phones 88 / 96 px.
+const RADAR_DESKTOP = 180;
+const RADAR_PORTRAIT = 88;
+const RADAR_LANDSCAPE = 96;
+/** Desktop map slots sit this far above the bottom edge, leaving the map
+ *  attribution its own line under them instead of printing across the card. */
+const DESKTOP_MAP_BOTTOM = 28;
 
 /** The centred strip the chrome occupies. Narrower than the canvas on wide
  *  windows so cards stay next to the driving corridor instead of the bezels. */
@@ -169,6 +180,7 @@ export function hudLayout({
   postcardHeight = 104,
   neighborhoodVisible = false,
   minimapVisible = true,
+  minimapShape = 'radar',
   plaqueExtraLines = feedbackVisible ? 1 : 0,
 }: HudLayoutInput): HudLayout {
   const band = hudBand(viewport);
@@ -176,6 +188,7 @@ export function hudLayout({
   const height = band.height;
   const left = band.x;
 
+  const radar = minimapShape !== 'city';
   if (viewport.mode === 'compact') {
     const dpad = dpadLayout(viewport, band);
     const controlsTop = dpad ? dpad.bounds.y : height - viewport.safeBottom;
@@ -202,7 +215,7 @@ export function hudLayout({
       }, left);
       const minimap = offsetRect({
         x: MARGIN, y: topBottom + GAP,
-        width: PORTRAIT_MINIMAP_W, height: PORTRAIT_MINIMAP_H,
+        width: radar ? RADAR_PORTRAIT : PORTRAIT_MINIMAP_W, height: radar ? RADAR_PORTRAIT : PORTRAIT_MINIMAP_H,
       }, left);
       const upperBottom = Math.max(
         compass.y + compass.height,
@@ -259,7 +272,9 @@ export function hudLayout({
       height: COMPASS_SIZE_COMPACT,
     };
     const cardWidth = Math.min(landmarkWidth, compactLandscapeCardWidth(band, dpad));
-    const cardTop = destination.y + destination.height + GAP + (minimapVisible ? COMPACT_MINIMAP_H + GAP : 0);
+    const mapW = radar ? RADAR_LANDSCAPE : COMPACT_MINIMAP_W;
+    const mapH = radar ? RADAR_LANDSCAPE : COMPACT_MINIMAP_H;
+    const cardTop = destination.y + destination.height + GAP + (minimapVisible ? mapH + GAP : 0);
     const cardHeight = clampHeight(landmarkHeight, height - viewport.safeBottom - MARGIN - cardTop);
     const landmark = offsetRect({
       x: width - MARGIN - cardWidth,
@@ -267,8 +282,8 @@ export function hudLayout({
       width: cardWidth, height: cardHeight,
     }, left);
     const minimap = offsetRect({
-      x: width - MARGIN - COMPACT_MINIMAP_W, y: landmark.y - GAP - COMPACT_MINIMAP_H,
-      width: COMPACT_MINIMAP_W, height: COMPACT_MINIMAP_H,
+      x: width - MARGIN - mapW, y: landmark.y - GAP - mapH,
+      width: mapW, height: mapH,
     }, left);
     const postcardH = clampHeight(postcardHeight, height - viewport.safeBottom - MARGIN - cardTop);
     const postcardW = Math.min(postcardWidth(viewport), cardWidth);
@@ -318,7 +333,9 @@ export function hudLayout({
     left,
   );
   const minimap = offsetRect(
-    { x: 15, y: height - 215, width: 260, height: 200 },
+    radar
+      ? { x: 15, y: height - DESKTOP_MAP_BOTTOM - RADAR_DESKTOP, width: RADAR_DESKTOP, height: RADAR_DESKTOP }
+      : { x: 15, y: height - DESKTOP_MAP_BOTTOM - 200, width: 260, height: 200 },
     left,
   );
   const zoomBadge = {

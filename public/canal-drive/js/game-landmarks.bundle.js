@@ -533,7 +533,7 @@ Map source: ${osmUrl(places[i][0])}`);
 
   // src/canalRecall/game/routeKnowledge.ts
   var eligible = (entry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin;
-  function buildRouteKnowledgeIndex(legacy, streets, waters, normalise, origins = [], bridgeRegister = {}) {
+  function buildRouteKnowledgeIndex(legacy, streets, waters, normalise, origins = [], bridgeRegister = {}, bridges = []) {
     const index = /* @__PURE__ */ new Map();
     const add = (entry, type) => {
       index.set(`${type}:${normalise(entry.name)}`, { ...entry, type });
@@ -541,6 +541,18 @@ Map source: ${osmUrl(places[i][0])}`);
     for (const entry of legacy) add(entry, entry.type === "water" ? "water" : "street");
     for (const entry of streets) if (eligible(entry)) add(entry, "street");
     for (const entry of waters) if (eligible(entry)) add(entry, "water");
+    for (const bridge of bridges) {
+      if (!bridge.name || !bridge.wikipediaExtract) continue;
+      if (bridge.wikipediaExtractLang && bridge.wikipediaExtractLang !== "en") continue;
+      index.set(`bridge:${normalise(bridge.name)}`, {
+        id: bridge.id,
+        name: bridge.name,
+        type: "bridge",
+        wikipediaExtract: bridge.wikipediaExtract,
+        ...bridge.wikipediaUrl ? { wikipediaUrl: bridge.wikipediaUrl } : {},
+        ...bridge.wikipediaImageUrl ? { wikipediaImageUrl: bridge.wikipediaImageUrl } : {}
+      });
+    }
     for (const origin of origins) {
       if (!origin.en) continue;
       const type = origin.kind;
@@ -45133,11 +45145,29 @@ Map source: ${osmUrl(places[i][0])}`);
         "w1240314142",
         "w1239767723",
         "w1240155433",
-        "w1240155432"
+        "w1240155432",
+        // 2026-10-16 the east wing of the station pand (BAG 0363100012185598, x 122..246 in the model frame) is now modelled: its
+        // building:parts were the flat 20 m city-layer box east of the Cuypers front (user report, aerial screenshot).
+        "w752286896",
+        "w752286897",
+        "w752286898",
+        "w1239767701",
+        "w1239767702",
+        "w752328422",
+        "w752328423",
+        "w752328424",
+        "w752328425",
+        "w752328426",
+        "w752653574",
+        "w752653575",
+        "w752738610"
       ],
       spatialSuppression: false,
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 210.6533,
+      // Measured from the 2022 sunlit Stationsplein panorama (TMX7316010203-002532_pano_0000_001491) and the 2020/2025 wing and
+      // east-wing panoramas: per-class pixel medians (artifacts/centraal-lane/classify.ts). 'bronze' is the train-shed roofing.
+      materialOverrides: { brick: "#7b5141", stone: "#b8ad92", sandstone: "#9a8f7a", slate: "#676863", glass: "#3f4a4f", gold: "#c09a45", red: "#8a3c31", frame: "#7d8384", white: "#e3dccb", ochre: "#9c7d4e", green: "#7d8a78", dark: "#2f2d2a", concrete: "#8e9396", bronze: "#4a4a4c", pink: "#7a4850" },
       footprint: { centre: [4.899750668752946, 52.37855998792934], headingDegrees: 120.65330083236796, lengthMetres: 244.34798071019168, widthMetres: 30.916412054875813 },
       surveyed: { anchor: [4.899750668752946, 52.37855998792934], northOffsetDegrees: 30.65330083236796, source: "OSM Cuypersgebouw anchor/bearing; four exact current train/bus roof outlines. Zuidkap 23 m /50 frames per ProRail; other profiles and bus deck approximately reconstructed from architect photographs and 3DBAG." },
       attribution: { ...ownAttribution("Amsterdam Centraal", "https://www.benthemcrouwel.com/projects/bus-station-amsterdam-cs"), modifications: "Original texture-free Cuypers facade and four arched roof structures. Current mapped roof perimeters retained at native scale; approximate interior roof profiles, frame details and raised bus deck. Published Zuidkap 23 m height and 50 frames. Colored AMSTERDAM glass panels follow architect photographs. No imported geometry or photo pixels. Metro, ferry piers, hotel/postal buildings and ground-level streets omitted." }
@@ -48035,6 +48065,23 @@ Map source: ${osmUrl(places[i][0])}`);
     if (source !== "street" && source !== "drive-by") return false;
     return elapsed >= CARD_COLLAPSE_AFTER_SECONDS;
   }
+  var FOLDED_BODY_LINES = 2;
+  function foldedCardLine(notice) {
+    const detail = (notice.detail || "").trim();
+    const fact = notice.factTexts?.find((text2) => text2 && detail.endsWith(text2.trim()));
+    if (fact) return fact.trim();
+    const text = detail || (notice.longDetail || "").trim();
+    return firstSentence(text);
+  }
+  var ABBREVIATIONS = /\b(St|Sts|Dr|Mr|Mrs|Ms|Prof|Jr|Sr|ca|c|no|nr|vol|Ste|Mt)\.$/i;
+  function firstSentence(text) {
+    const end = /[.!?](?=\s+[A-Z0-9"'‘“(])/g;
+    for (let m = end.exec(text); m; m = end.exec(text)) {
+      const head = text.slice(0, m.index + 1);
+      if (!ABBREVIATIONS.test(head)) return head.trim();
+    }
+    return text.trim();
+  }
 
   // src/canalRecall/game/postcardPacing.ts
   var storageKey = (cityId) => `canalRecall.neighborhoodEntries.${cityId}`;
@@ -48457,7 +48504,7 @@ Map source: ${osmUrl(places[i][0])}`);
           typeof localStorage === "undefined" ? null : localStorage
         );
         const normalise = (name) => this._normaliseCanalName(name);
-        const knowledge = buildRouteKnowledgeIndex(streetKnowledge, streetFeatures, waterFeatures, normalise);
+        const knowledge = buildRouteKnowledgeIndex(streetKnowledge, streetFeatures, waterFeatures, normalise, [], {}, bridgeFeatures);
         this.streetKnowledge = knowledge;
         const deferredJson = (name) => fetch(url(name)).then((response) => readJson(response, null)).catch(() => null);
         void Promise.all([
@@ -48479,7 +48526,8 @@ Map source: ${osmUrl(places[i][0])}`);
               waterFeatures,
               normalise,
               originsFile?.origins ?? [],
-              bridgeRegister?.bridges ?? {}
+              bridgeRegister?.bridges ?? {},
+              bridgeFeatures
             );
           }
           if (brandedPois) this.vectorMap.setBrandedPois(brandedPois);
@@ -48684,17 +48732,18 @@ Map source: ${osmUrl(places[i][0])}`);
       };
       const card = cards.measureLandmarkCard({
         name: lm.name,
-        body: collapsed ? "" : lm.longDetail || lm.detail || cards.placeOnlyDetail(
+        body: collapsed ? foldedCardLine(lm) : lm.longDetail || lm.detail || cards.placeOnlyDetail(
           lm.type,
           this.currentNeighborhood,
           this._cityDisplayName()
         ),
         category: lm.type ? lm.type.toUpperCase() : "",
-        factKind: collapsed ? void 0 : lm.factKind,
-        extractLang: collapsed ? void 0 : lm.extractLang,
+        factKind: lm.factKind,
+        extractLang: lm.extractLang,
         hasArticle: !!(lm.wikipediaUrl || lm.sourceUrl),
         articleLabel: lm.wikipediaUrl ? "W  WIKIPEDIA" : "W  SOURCE",
-        hasImage
+        hasImage,
+        ...collapsed ? { maxBodyLines: FOLDED_BODY_LINES, hasMore: (lm.longDetail || lm.detail || "").trim() !== foldedCardLine(lm) } : {}
       }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
       const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0) && canShowTeachingCard(this._teachingGate());
       const bottomLayout = window.CanalRecallUi.hudLayout({

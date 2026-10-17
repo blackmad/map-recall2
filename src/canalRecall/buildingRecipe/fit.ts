@@ -587,6 +587,11 @@ export function fitGableLights(profile: CanalhousePoint[], lights: GableLight[],
   return fits(one) ? one : [];
 }
 
+/** Neck share of a neck/bell crown's width: measured (`crownNeckWidth`) or the stock 0.5 neck / 0.46 bell. */
+const neckShare = (f: FrontIntent) => f.crownNeckWidth ?? (f.gable === 'bell' ? 0.46 : 0.5);
+/** Cap rise of a neck/bell crown `width` wide: measured (`crownCapRatio` of the neck, within 0.4 of the rise) or the stock share of the rise. */
+const capRiseOf = (f: FrontIntent, rise: number, width: number) => f.crownCapRatio !== undefined ? Math.min(f.crownCapRatio * width * neckShare(f), rise * 0.4) : f.gable === 'bell' ? Math.min(0.6, rise * 0.15) : Math.min(0.45, rise * 0.1);
+
 /** `fill`: the crown stands on a part of the front (`crownAt`/`crownBays`) and fills that part; wide cornice caps by default. */
 function crownProfile(f: FrontIntent, width: number, eaves: number, top: number, fill = false): CanalhousePoint[] | null {
   const rise = top - eaves;
@@ -598,8 +603,9 @@ function crownProfile(f: FrontIntent, width: number, eaves: number, top: number,
     // Flanks: `crownShoulder` (measured off the strip, gableFromStrip `flankCurvature`), default concave. The kit drew
     // every neck (power 0.6) and bell (quarter sine) flank convex, the inverse of the claw pieces and bell flares on the
     // photos (user, 2026-10-16); every flank measured on the six bell/neck faces reads concave.
-    case 'neck': case 'raised-neck': return canalhouseCrownProfile('hals', width, eaves, top, width * 0.5, eaves + rise * (f.gable === 'neck' ? 0.45 : 0.25), 0, {cap: f.crownCap ?? 'pediment', capRiseM: Math.min(0.45, rise * 0.1), crestWidthM: width * 0.5, shoulder: f.crownShoulder ?? 'concave'});
-    case 'bell': return canalhouseCrownProfile('klok', width, eaves, top, width * 0.46, eaves + rise * 0.55, 0, {cap: f.crownCap ?? 'rounded', capRiseM: Math.min(0.6, rise * 0.15), crestWidthM: width * 0.46, shoulder: f.crownShoulder ?? 'concave'});
+    // `crownNeckWidth` / `crownCapRiseM`: measured on the photo; absent, the stock shares (byte-identical).
+    case 'neck': case 'raised-neck': { const n = width * neckShare(f); return canalhouseCrownProfile('hals', width, eaves, top, n, eaves + rise * (f.gable === 'neck' ? 0.45 : 0.25), 0, {cap: f.crownCap ?? 'pediment', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
+    case 'bell': { const n = width * neckShare(f); return canalhouseCrownProfile('klok', width, eaves, top, n, eaves + rise * 0.55, 0, {cap: f.crownCap ?? 'rounded', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
     case 'cornice': {
       if (f.crownCap && f.crownCap !== 'flat') {
         // Wide: a parapet over nearly the whole front with the cap across it (1900s fronts, 081118/087959).
@@ -914,6 +920,20 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     }
     if (profile) {
       elevation.crown = seen({profile: profile.map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: 0.08, surface: 'wall'});
+      // A measured entablature under a neck/bell cap: a stone frieze and cap (the crown head clipped above the frieze
+      // foot) and a cornice ledge projecting past the neck. One crown per front only.
+      const k = front.crownCapCornice;
+      if (k && rawProfile && ['neck', 'raised-neck', 'bell'].includes(front.gable)) {
+        if (groupCrowns || count > 1) warnings.push(`${front.id}: crownCapCornice is drawn on a single crown only; skipped`);
+        else {
+          const capBase = crownTop - capRiseOf(front, crownTop - eaves, crownW), neck = crownW * neckShare(front), project = k.projection * neck, ledge = k.ledge * neck;
+          const local = (crownSpan?.[0] ?? 0) + (crownW - neck) / 2 - project, w = neck + 2 * project;
+          const ledgeBottom = round(capBase - ledge), faceBottom = round(ledgeBottom - (k.frieze ?? 0) * neck);
+          const shoulderTop = Math.max(...rawProfile.filter(([x]) => x < (crownW - neck) / 2 - 1e-6).map(([, y]) => y), eaves);
+          if (faceBottom <= shoulderTop + 0.05) warnings.push(`${front.id}: crownCapCornice reaches below the neck (${faceBottom} m vs shoulder ${round(shoulderTop)} m); skipped`);
+          else elevation.crown.value = {...elevation.crown.value, capFacing: {bottomM: faceBottom, depthM: 0.03, surface: 'stone'}, capCornice: {leftM: round(clamp(flipX(place(0, local, w), w), 0, width - w)), widthM: round(w), bottomM: ledgeBottom, heightM: round(ledge), depthM: round(clamp(project, 0.06, 0.3)), surface: 'stone'}};
+        }
+      }
       // Attic windows inside the crown.
       const attic = front.atticWindows ?? 0, rise = crownTop - eaves;
       if (attic > 0 && rise > 1.2 && !groupCrowns) {

@@ -59,10 +59,24 @@ async function lookFrom(page: Page, from: [number, number], up: number, to: [num
   await page.waitForTimeout(2000);
 }
 
+// SHOT_CAMS=name:fromLng,fromLat,up,toLng,toLat,toUp;… absolute cameras (up/toUp over the riding surface) instead of
+// the views around SHOT_LIST's places: a panorama's own standpoint, side by side with it.
+const CAMS: [string, [number, number], number, [number, number], number][] = (process.env.SHOT_CAMS ?? '').split(';').filter(Boolean).map(e => {
+  const [n, c] = e.split(':'), v = c.split(',').map(Number);
+  return [n, [v[0], v[1]], v[2], [v[3], v[4]], v[5]];
+});
+
 test('Marnixstraat bridge frames', async ({ page }, info) => {
   test.setTimeout(600_000);
   mkdirSync(OUT, { recursive: true });
   await boot(page);
+  if (CAMS.length) {
+    for (const [name, from, up, to, toUp] of CAMS) {
+      await lookFrom(page, from, up, to, toUp, false);
+      await page.screenshot({ path: `${OUT}/${name}-${info.project.name}${process.env.ROADS ? `-roads${process.env.ROADS}` : ''}.png` });
+    }
+    return;
+  }
   for (const [place, C] of PLACES) {
   const P = `${place ? `${place}-` : ''}${info.project.name}${process.env.ROADS ? `-roads${process.env.ROADS}` : ''}`;
   // The chase angle: riding south down Marnixstraat (bearing ~190), the Nassaukade over the Singelgracht to the right.

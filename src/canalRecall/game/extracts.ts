@@ -59,6 +59,9 @@ export interface BridgeFeature {
   carriesRoad?: boolean;
   wikipediaUrl?: string;
   wikipediaExtract?: string;
+  /** Set only when the lede is not English. */
+  wikipediaExtractLang?: string;
+  wikipediaImageUrl?: string;
 }
 
 /** One physical span-crossing of a named bridge, precomputed by
