@@ -449,9 +449,11 @@ class Game {
           this._closeUtilityPanels();
           this._reclaimKeyboardFocus();
         }
-        if (this.input.wasPressed('Enter') || this.input.wasPressed('Space') || this.input.wasPressed('KeyM')) {
+        if (this.input.wasPressed('Enter') || this.input.wasPressed('Space')) {
           this._runFinishAction('again');
         }
+        // M is Route setup, as on the pause card (clarity review 14).
+        if (this.input.wasPressed('KeyM')) this._runFinishAction('route');
         if (this.input.wasPressed('KeyC')) this._runFinishAction('copy');
         break;
     }

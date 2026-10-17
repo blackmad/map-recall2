@@ -1485,17 +1485,17 @@ export class GamePresentationRuntime {
       // One stat row instead of four differently coloured boxes.
       const profile = travelProfile(this.travelMode);
       const recallNoun = profile.recallNoun;
-      const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
       // A ride with no questions ends on what was covered, not on "0% recall".
+      // The tally alone: "1/2 Canals" beside "50% Recall" said one fact twice
+      // (clarity review 14).
       const stats = this.quizAttempts > 0 ? [
         { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
-        { label: 'Recall', value: `${accuracy}%` },
       ] : [];
       stats.push(
         { label: 'Time', value: this.hud.formatTime(this.raceTime).slice(0, -2) },
         { label: 'Distance', value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1000).toFixed(2)} km` },
       );
-      if (gamey && this.quizAttempts > 0) stats.splice(2, 0, { label: 'Points', value: String(this.quizPoints) });
+      if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: 'Points', value: String(this.quizPoints) });
 
       const footerBits = [
         this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
@@ -1657,9 +1657,10 @@ export class GamePresentationRuntime {
         // 'route' goes back to setup. "Continue" / "Finish" said neither.
         { id: 'again', key: 'ENTER', caption: tour && !tour.completed ? 'Next stop' : 'Next route' },
       ];
-      // Route setup is a tap target on the phone. The desktop card no longer
-      // offers it on ESC (user request 2026-09-28); the pause menu keeps it.
-      if (compact) actions.push({ id: 'route', key: '', caption: 'Route setup' });
+      // Route setup on both layouts: a tap target on the phone, M on desktop,
+      // the same key as the pause menu. Escape stays unbound here (user
+      // request 2026-09-28); desktop lacked the action (clarity review 14).
+      actions.push({ id: 'route', key: compact ? '' : 'M', caption: 'Route setup' });
       if (this._shareUrl) {
         actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? 'Link copied' : 'Share this route' });
       }
@@ -1714,7 +1715,10 @@ export class GamePresentationRuntime {
             ctx.fillStyle = action.caption === 'Link copied' ? GOOD : MUTED;
             ctx.font = '12px system-ui, sans-serif';
             ctx.fillText(action.caption, ax, top + 18);
-            ax += ctx.measureText(action.caption).width + 22;
+            const captionW = ctx.measureText(action.caption).width;
+            // The keycap and its caption are a click target too.
+            finishButtons.push({ x: ax - keyW - 8, y: top, w: keyW + 8 + captionW, h: 28, id: action.id });
+            ax += captionW + 22;
           }
         },
       });
