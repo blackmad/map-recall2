@@ -5,9 +5,12 @@
  *
  * Exposes window.CanalCollection = { record(event), progress(), all() } and
  * dispatches a `canal-stamp` CustomEvent on window when a stamp is new
- * (detail: { record, progress }). Extras for the integrator and the account
- * lane: setPool(features), ready, merge(remoteDocs) and docs(). Storage is
- * localStorage 'canalRecall.poiStamps.v1', every access guarded.
+ * (detail: { record, progress }). Every record, new or repeat, also
+ * dispatches `canal-stamp-recorded` (detail: { record }), which the recall
+ * store mirrors to users/{uid}/poiStamps when signed in. Extras for the
+ * integrator and the account lane: setPool(features), ready, merge(remoteDocs)
+ * and docs(). Storage is localStorage 'canalRecall.poiStamps.v1', every
+ * access guarded.
  */
 import {
   allStamps,
@@ -16,6 +19,7 @@ import {
   loadStamps,
   mergeStamps,
   recordStamp,
+  savePoolSnapshot,
   saveStamps,
   stampProgress,
   toStampDoc,
@@ -63,11 +67,18 @@ const api: CanalCollectionApi = {
     stamps = result.stamps;
     saveStamps(storage(), stamps);
     if (result.isNew) emit(result.record);
+    try {
+      window.dispatchEvent(new CustomEvent('canal-stamp-recorded', { detail: { record: result.record } }));
+    } catch { /* no cloud mirror without CustomEvent */ }
     return { isNew: result.isNew, record: result.record };
   },
   progress: () => stampProgress(stamps, pool),
   all: () => allStamps(stamps),
-  setPool(features) { pool = collectiblePool(features); },
+  setPool(features) {
+    pool = collectiblePool(features);
+    // My progress is another bundle without the manual catalogue; it reads this.
+    savePoolSnapshot(storage(), pool);
+  },
   merge(remote) {
     const theirs = fromStampDocs(remote);
     stamps = mergeStamps(stamps, theirs);

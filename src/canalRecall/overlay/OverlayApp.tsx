@@ -693,6 +693,7 @@ export function OverlayApp({
   const cityName = CITY_OPTIONS.find(option => option.value === prefs.cityId)?.title
     || prefs.cityId;
   const setupScroll = useScrollEdges(state.setupOpen);
+  const selectedTour = state.tours.find(tour => tour.id === state.tourId) || null;
   const settingsScroll = useScrollEdges(state.settingsOpen);
 
   useEffect(() => {
@@ -878,15 +879,33 @@ export function OverlayApp({
               keepGloss
             />
 
-            <label className="setup-field enamel-field" style={{ marginTop: 10 }}>
-              <span>Destination</span>
-              <select id="poi-destination" value={state.destinationId} onChange={event => store.setDestinationId(event.target.value)}>
-                <option value="">Surprise me</option>
-                {[...state.routePois].sort((a, b) => a.name.localeCompare(b.name)).map(poi => (
-                  <option key={poi.id} value={poi.id}>{poi.name}</option>
-                ))}
-              </select>
-            </label>
+            <div className={`setup-pair${state.tours.length ? '' : ' setup-pair-single'}`} style={{ marginTop: 10 }}>
+              <label className="setup-field enamel-field">
+                <span>Destination</span>
+                <select id="poi-destination" value={state.destinationId} disabled={!!state.tourId} onChange={event => store.setDestinationId(event.target.value)}>
+                  <option value="">{state.tourId ? 'Tour stops' : 'Surprise me'}</option>
+                  {[...state.routePois].sort((a, b) => a.name.localeCompare(b.name)).map(poi => (
+                    <option key={poi.id} value={poi.id}>{poi.name}</option>
+                  ))}
+                </select>
+              </label>
+              {state.tours.length ? (
+                <label className="setup-field enamel-field" id="tour-field">
+                  <span>Tours</span>
+                  <select id="tour-picker" value={state.tourId} onChange={event => store.setTourId(event.target.value)}>
+                    <option value="">No tour</option>
+                    {state.tours.map(tour => (
+                      <option key={tour.id} value={tour.id}>{tour.title}</option>
+                    ))}
+                  </select>
+                </label>
+              ) : null}
+            </div>
+            {selectedTour ? (
+              <p id="tour-note" className="setup-choice-gloss keep" role="status">
+                {selectedTour.stopCount} stops by bike, one leg at a time{selectedTour.checked ? ` · ${selectedTour.checked}, shops change` : ''}
+              </p>
+            ) : null}
             <label id="home-address-field" className="setup-field enamel-field" style={{ display: prefs.routePattern === 'home' ? 'flex' : 'none', marginTop: 10 }}>
               HOME ADDRESS
               <input
@@ -976,9 +995,9 @@ export function OverlayApp({
             </div>
             <div className="enamel-setup-footer">
               <p className="enamel-field-note" id="mission-brief" style={{ margin: '0 0 8px', textAlign: 'center' }}>
-                {briefingMission(prefs)}
+                {selectedTour ? `Ride the ${selectedTour.title} tour stop by stop. Each arrival tells you why it is on the list.` : briefingMission(prefs)}
               </p>
-              <button id="route-start" className="enamel-plaque enamel-framed enamel-start" type="submit">Start route</button>
+              <button id="route-start" className="enamel-plaque enamel-framed enamel-start" type="submit">{selectedTour ? 'Start tour' : 'Start route'}</button>
               <div id="route-error" aria-live="polite">{state.routeError}</div>
               <SiteSwitch links={siteLinksHere} current="ride" id="setup-site-switch" />
             </div>

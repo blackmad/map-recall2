@@ -23,6 +23,16 @@ export interface AccountState {
   available?: boolean;
 }
 
+/** A tour as the setup picker lists it: no stop names, which could answer a question on the way. */
+export interface TourOption {
+  id: string;
+  title: string;
+  theme: string;
+  stopCount: number;
+  /** "checked 2026-10-17" for shop and café tours; see tourRoute.tourCheckedLabel. */
+  checked: string | null;
+}
+
 export interface OverlayState {
   prefs: CanalPreferences;
   setupOpen: boolean;
@@ -32,6 +42,9 @@ export interface OverlayState {
   routeError: string;
   routePois: readonly RoutePoi[];
   destinationId: string;
+  tours: readonly TourOption[];
+  /** The tour chosen in setup; '' rides a single route. */
+  tourId: string;
   account: AccountState;
 }
 
@@ -55,6 +68,8 @@ export function createOverlayStore(initial: CanalPreferences) {
     routeError: '',
     routePois: [],
     destinationId: '',
+    tours: [],
+    tourId: '',
     account: { ...GUEST_ACCOUNT },
   };
   const listeners = new Set<() => void>();
@@ -102,6 +117,14 @@ export function createOverlayStore(initial: CanalPreferences) {
     },
     setDestinationId(destinationId: string): void {
       state = { ...state, destinationId };
+      emit();
+    },
+    setTours(tours: readonly TourOption[]): void {
+      state = { ...state, tours, tourId: tours.some(tour => tour.id === state.tourId) ? state.tourId : '' };
+      emit();
+    },
+    setTourId(tourId: string): void {
+      state = { ...state, tourId, destinationId: tourId ? '' : state.destinationId };
       emit();
     },
     setAccount(account: Partial<AccountState>): void {

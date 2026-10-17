@@ -41,6 +41,7 @@ class GameRouteRuntime {
     this._routeFrom.value = this.routeFrom.id;
     this._routeTo.value = this.routeTo.id;
     this._loadPreferences();
+    this._loadTourCatalog();
   }
 
   _loadPreferences() {
@@ -454,6 +455,10 @@ class GameRouteRuntime {
     if (!isReroll) this._routeRerolls = 0;
     this._reviewRoute = null;
     this._setRouteError('');
+    // A tour picked in setup rides its stops instead of a single route.
+    const tourId = this._overlay.store.getState().tourId;
+    if (tourId && !isReroll) { await this._startTour(tourId); return; }
+    this._tour = null;
     const prefs = this._prefs();
     this._applyPrefsToRuntime(prefs, { persist: true, applySound: false });
     // City may have changed on the briefing since the last catalog fetch.
@@ -833,6 +838,8 @@ class GameRouteRuntime {
       const response = await fetch(new URL(catalogUrl, window.location.href));
       if (!response.ok) throw new Error(`landmark catalog ${response.status}`);
       const features = CanalRecallRoute.mergeManualPoiFeatures(await response.json(), city.id);
+      // Stamps count the same hand-modelled destinations the picker offers (collection/browser.ts).
+      if (window.CanalCollection && city.id === 'amsterdam') window.CanalCollection.setPool(features);
       for (const poi of curated) {
         const modelId = CanalRecallRoute.manualPoiForCuratedId(poi.id);
         // Resolve the installed model first: an earlier raw name alias must
@@ -1053,6 +1060,113 @@ class GameRouteRuntime {
     );
   }
 
+  // ---- Themed tours (src/canalRecall/game/tourRoute.ts, js/tours.bundle.js) ----
+
+  /** Tours for the setup picker; Amsterdam only. Stop names are never listed. */
+  async _loadTourCatalog() {
+    const T = window.CanalRecallTours;
+    if (!T) return [];
+    const city = this._activeCity();
+    if (city.id !== 'amsterdam') {
+      if (this._overlay) this._overlay.store.setTours([]);
+      return [];
+    }
+    if (!this._tourCatalog) this._tourCatalog = T.loadTours(city.extractPath);
+    const tours = await this._tourCatalog;
+    if (this._overlay) {
+      this._overlay.store.setTours(tours.map(tour => ({
+        id: tour.id, title: tour.title, theme: tour.theme, stopCount: tour.stops.length, checked: T.tourCheckedLabel(tour),
+      })));
+    }
+    return tours;
+  }
+
+  async _startTourFromLink(tourId) {
+    const tours = await this._loadTourCatalog();
+    if (!tours.some(tour => tour.id === tourId)) {
+      this._setRouteError('That tour is unavailable. Pick another below.');
+      return;
+    }
+    this._overlay.store.setTourId(tourId);
+    this._startConfiguredRoute();
+  }
+
+  /** Start a tour at its first stop: tours are bike rides from stop to stop. */
+  async _startTour(tourId) {
+    const T = window.CanalRecallTours;
+    const tours = await this._loadTourCatalog();
+    const tour = T && tours.find(candidate => candidate.id === tourId);
+    if (!tour) { this._tour = null; this._setRouteError('That tour is unavailable.'); return; }
+    const prefs = this._prefs();
+    const patch = {};
+    if (prefs.travelMode !== 'car') patch.travelMode = 'car';
+    if (prefs.cityId !== 'amsterdam') patch.cityId = 'amsterdam';
+    // Home and Here pick their own starts; a tour starts at its first stop.
+    if (prefs.routePattern !== 'surprise') patch.routePattern = 'surprise';
+    if (Object.keys(patch).length) this._overlay.store.patchPrefs(patch, this._overlayZoom());
+    this._applyPrefsToRuntime(this._prefs(), { persist: true, applySound: false });
+    this._reviewRoute = null;
+    this.homeBase = null;
+    this.gpsOrigin = null;
+    await this._loadRoutePoiCatalog();
+    this._tour = { tour, state: T.startTour(tour), completed: false };
+    T.saveTourState(this._tour.state);
+    this._launchTourLeg();
+  }
+
+  /** Ride the tour's current leg. A stop whose name would answer a street
+   *  question is held back until arrival (tourRoute.tourDestination). */
+  _launchTourLeg() {
+    const T = window.CanalRecallTours;
+    if (!this._tour || !T) return;
+    const { tour, state } = this._tour;
+    const leg = T.nextLeg(state, tour);
+    if (!leg) return;
+    // After the first leg the start is the stop just reached, already named.
+    const from = leg.fromIndex > 0 ? T.stopAsRoutePoi(tour, leg.fromIndex) : T.tourDestination(tour, leg.fromIndex);
+    const to = T.tourDestination(tour, leg.toIndex);
+    if (leg.fromIndex > 0) this._skipNextIntro = true;
+    this._launchPoiRoute(from, to, { explicitDestination: true });
+  }
+
+  /**
+   * Arrival bookkeeping, called by game.js once per finish. A landmark stamp
+   * only for the destination the ride was going to: the finish card's
+   * nearest-landmark fallback (220 px) may show a neighbour, which must not
+   * stamp. Then a tour arrival advances the tour and, at its last stop,
+   * stamps the tour.
+   */
+  _recordArrival(arrived) {
+    const C = window.CanalCollection;
+    const to = this.routeTo;
+    this._finishStamp = null;
+    this._tourArrival = null;
+    if (C && arrived && to) {
+      const chosen = to.landmarkId || (typeof to.id === 'string' && to.id.startsWith('lm-') ? to.id.slice(3) : '');
+      if (chosen && arrived.id === chosen) {
+        const result = C.record({ id: arrived.id, name: arrived.name, how: 'arrived' });
+        if (result && result.isNew) {
+          const progress = C.progress();
+          this._finishStamp = { kind: 'poi', name: result.record.name, isNew: true, earned: progress.earned, total: progress.total };
+        }
+      }
+    }
+    const T = window.CanalRecallTours;
+    if (!this._tour || !T || !to || !to.tourStop) return;
+    const { tour } = this._tour;
+    const leg = T.nextLeg(this._tour.state, tour);
+    if (!leg) return;
+    const step = T.advanceOnArrival(this._tour.state, tour);
+    this._tour.state = step.state;
+    T.saveTourState(step.state);
+    this._tourArrival = T.tourArrival(tour, leg.toIndex, step.completed);
+    if (step.completed) {
+      this._tour.completed = true;
+      const result = C && C.record({ kind: 'tour', id: tour.id, name: tour.title });
+      if (result) this._finishStamp = { kind: 'tour', name: tour.title, isNew: result.isNew, earned: 0, total: 0 };
+    }
+  }
+
   /**
    * Enter on the finish card: ride on from where this route ended, not the
    * same route again (user report 2026-09-29). A review ride when Plan review
@@ -1102,11 +1216,19 @@ class GameRouteRuntime {
       this._prompt.style.display = 'none';
     }
     this.state = GameState.MENU;
+    // Leaving for setup ends a tour in progress; Start tour begins it again.
+    this._tour = null;
     if (this._overlay && this._overlay.store) this._overlay.store.setSetupOpen(true);
     history.replaceState(null, '', window.location.pathname);
   }
 
   _checkShareLink() {
+    // `?tour=<id>` (the landing page's tour links) picks the tour and starts it.
+    const tourParam = new URLSearchParams(window.location.search).get('tour');
+    if (tourParam && !window.location.hash.startsWith('#race=')) {
+      this._startTourFromLink(tourParam);
+      return;
+    }
     if (new URLSearchParams(window.location.search).get('ferry') === 'F3') {
       this._overlay.store.patchPrefs({ cityId: 'amsterdam', travelMode: 'car', viewMode: 'chase' }, this._overlayZoom());
       this._ferryPreviewRef = 'F3';
@@ -1141,6 +1263,9 @@ class GameRouteRuntime {
   _setupRace() {
     this.cars = [];
     this.raceTime = 0;
+    // The finish card's stamp line and tour card belong to the ride that earned them.
+    this._finishStamp = null;
+    this._tourArrival = null;
     if (window.CanalRouteHistory) window.CanalRouteHistory.beginRide(this);
     this.particles = new ParticleSystem();
 
@@ -1598,7 +1723,8 @@ class GameRouteRuntime {
         if (explicitDestination) {
           // A chosen POI must remain the destination. Only Surprise's random
           // origin may be retried; home and live-location starts stay fixed.
-          if (this.routePattern === 'surprise' && this._routeRerolls < MAX_ROUTE_REROLLS) {
+          // A tour leg's start is the previous stop, so there is nothing to re-roll.
+          if (this.routePattern === 'surprise' && !this._tour && this._routeRerolls < MAX_ROUTE_REROLLS) {
             this._routeRerolls++;
             this._startConfiguredRoute({ isReroll: true });
           } else {
