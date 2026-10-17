@@ -756,8 +756,7 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     desktop arrival card's bottom edge.
   - Explorer looks: Rivierenbuurt/Spaarndammer/Indische types lack kit
     thumbs (rerun `scripts/coverage/build-look-thumbs.ts`); design kit keys
-    are thin; rerun `build:explorer-looks` after coverage/chunk/index regen and
-    add `test:explorer` + looks `--check` to check:canal.
+    are thin; rerun `build:explorer-looks` after coverage/chunk/index regen.
   - Dead code left: ~1,600 module-internal exports; unused deps in
     package.json; `scripts/canalhouse-recipes/capture.mjs` needs the missing
     `canalhouse-recipes.html` (on `wip/canalhouse-recipes-20261008`).
