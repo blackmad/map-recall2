@@ -406,6 +406,9 @@
   function zoomBadgeText(zoom) {
     return `Zoom ${Math.round(zoom * 100)}%`;
   }
+  function zoomBadgeShouldFlash(lastShown, zoom, playerZoomed) {
+    return playerZoomed && lastShown !== null && lastShown !== zoom;
+  }
 
   // src/canalRecall/game/travelProfile.ts
   var PROFILES = {
@@ -49077,6 +49080,7 @@
           lastCtrlWheel = performance.now();
           this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * Math.exp(-event.deltaY * 2e-3)));
           this._zoomTouchedByPlayer = true;
+          this._playerZoomPending = true;
         } else this.camera.pan(event.deltaX, event.deltaY);
         syncZoom();
       }, { passive: false });
@@ -49096,6 +49100,7 @@
         if (this.state !== GameState.MENU && livePinch.size < 2 && !wheelZooming && scale !== gestureScale) {
           this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * scale / gestureScale));
           this._zoomTouchedByPlayer = true;
+          this._playerZoomPending = true;
           syncZoom();
         }
         gestureScale = scale;
@@ -49130,6 +49135,7 @@
         if (pinchDistance > 0 && distance > 0) {
           this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * distance / pinchDistance));
           this._zoomTouchedByPlayer = true;
+          this._playerZoomPending = true;
           syncZoom();
         }
         pinchDistance = distance;
@@ -49352,11 +49358,9 @@
       if (!this.player) return;
       const player = this.player;
       this.hud.setTime(this.raceTime);
-      if (this._intro) this._lastZoomShown = this.camera.zoom;
-      if (this._lastZoomShown !== this.camera.zoom) {
-        this._lastZoomShown = this.camera.zoom;
-        this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
-      }
+      if (zoomBadgeShouldFlash(this._lastZoomShown, this.camera.zoom, this._playerZoomPending)) this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
+      this._lastZoomShown = this.camera.zoom;
+      this._playerZoomPending = false;
       this._updateLandmarkSightline();
       this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
       this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);

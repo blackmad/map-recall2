@@ -36,7 +36,7 @@ import { introFrame, introOverview, introPlan } from './introFlight';
 import { vehicleZoomScale } from './vehicleZoomScale';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
-import { zoomBadgeText } from '../hudCopy';
+import { zoomBadgeShouldFlash, zoomBadgeText } from '../hudCopy';
 import { travelProfile } from './travelProfile';
 import { routePlaqueName } from './recallRules';
 import { bridgeDisplayNamesOf, displayBridgeName } from '../bridgeDisplayNames';
@@ -322,7 +322,7 @@ export class GamePresentationRuntime {
       event.preventDefault();
       const twistDeg = wheelTwistDegrees(event);
       if (twistDeg !== null) { if (twistable()) twist(twistDeg); return; }
-      if (event.ctrlKey) { lastCtrlWheel = performance.now(); this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * Math.exp(-event.deltaY * .002))); this._zoomTouchedByPlayer = true; }
+      if (event.ctrlKey) { lastCtrlWheel = performance.now(); this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * Math.exp(-event.deltaY * .002))); this._zoomTouchedByPlayer = true; this._playerZoomPending = true; }
       else this.camera.pan(event.deltaX, event.deltaY);
       syncZoom();
     }, { passive: false });
@@ -345,6 +345,7 @@ export class GamePresentationRuntime {
       if (this.state !== GameState.MENU && livePinch.size < 2 && !wheelZooming && scale !== gestureScale) {
         this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * scale / gestureScale));
         this._zoomTouchedByPlayer = true;
+        this._playerZoomPending = true;
         syncZoom();
       }
       gestureScale = scale;
@@ -375,7 +376,7 @@ export class GamePresentationRuntime {
       if (!changed || points.length !== 2) return;
       event.preventDefault();
       const distance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
-      if (pinchDistance > 0 && distance > 0) { this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * distance / pinchDistance)); this._zoomTouchedByPlayer = true; syncZoom(); }
+      if (pinchDistance > 0 && distance > 0) { this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * distance / pinchDistance)); this._zoomTouchedByPlayer = true; this._playerZoomPending = true; syncZoom(); }
       pinchDistance = distance;
     }, { passive: false });
     const endPinch = (event: TouchEvent) => { for (const touch of event.changedTouches) livePinch.delete(touch.identifier); if (livePinch.size < 2) pinchDistance = 0; };
@@ -623,12 +624,12 @@ export class GamePresentationRuntime {
     const player = this.player;
 
     this.hud.setTime(this.raceTime);
-    // The intro flight changes zoom every frame; that is not the player's zoom.
-    if (this._intro) this._lastZoomShown = this.camera.zoom;
-    if (this._lastZoomShown !== this.camera.zoom) {
-      this._lastZoomShown = this.camera.zoom;
-      this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
-    }
+    // Only the player's own zoom flashes the badge. The intro flight and the
+    // camera settling after it changed zoom too, and the badge fired right
+    // after every start (clarity review finding 10).
+    if (zoomBadgeShouldFlash(this._lastZoomShown, this.camera.zoom, this._playerZoomPending)) this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
+    this._lastZoomShown = this.camera.zoom;
+    this._playerZoomPending = false;
 
     // Transparent game world over the live MapLibre vector basemap.
     this._updateLandmarkSightline();

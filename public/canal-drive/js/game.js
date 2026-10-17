@@ -76,6 +76,7 @@ class Game {
     this._routeRerolls = 0;
     this._zoomBadgeTimer = 0;
     this._zoomTouchedByPlayer = false; // player zoom wins over resize/rotation
+    this._playerZoomPending = false; // a player zoom flashes the zoom badge
     this.viewport = window.CanalRecallUi.resolveViewport({ windowWidth: CANVAS_W, windowHeight: CANVAS_H });
     this._lastZoomShown = null;
     this._liveRoutePath = null;
@@ -389,8 +390,8 @@ class Game {
     if (this.input.wasPressed('KeyW')) this._openLandmarkArticle();
     this._handleChoiceShortcut();
     if (this.input.wasPressed('Backquote')) this._toggleDebug();
-    if (this.input.isDown('Minus') || this.input.isDown('NumpadSubtract')) { this.camera.zoomOut(); this._zoomTouchedByPlayer = true; }
-    if (this.input.isDown('Equal') || this.input.isDown('NumpadAdd')) { this.camera.zoomIn(); this._zoomTouchedByPlayer = true; }
+    if (this.input.isDown('Minus') || this.input.isDown('NumpadSubtract')) { this.camera.zoomOut(); this._zoomTouchedByPlayer = true; this._playerZoomPending = true; }
+    if (this.input.isDown('Equal') || this.input.isDown('NumpadAdd')) { this.camera.zoomIn(); this._zoomTouchedByPlayer = true; this._playerZoomPending = true; }
     if (this.input.isDown('KeyI')) this.camera.pan(0, -8);
     if (this.input.isDown('KeyK')) this.camera.pan(0, 8);
     if (this.input.isDown('KeyJ')) this.camera.pan(-8, 0);
