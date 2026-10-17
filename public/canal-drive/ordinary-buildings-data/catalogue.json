@@ -48596,12 +48596,12 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012092013",
       "name": "Kinkerstraat 89-105, Amsterdam-West (Oud-West): 1987 urban-renewal block opposite De Hallen, five storeys of grey-beige rendered panels with white window bands, cantilevered balconies and yellow-tiled stair towers over a shop ground",
-      "hash": "fd5866fbdcb2c6d8062212fc1f4afbfe99b5ec0cc78765de3d6f22e2dbd96bfb",
-      "sha256": "fd5866fbdcb2c6d8062212fc1f4afbfe99b5ec0cc78765de3d6f22e2dbd96bfb",
-      "meshHash": "9e97f47685c635c2",
-      "bytes": 248472,
-      "triangles": 3205,
-      "materials": 9,
+      "hash": "b53e30fd212bbda27de5194523536edd406ebf29e53b1bd73b85fe692f18848b",
+      "sha256": "b53e30fd212bbda27de5194523536edd406ebf29e53b1bd73b85fe692f18848b",
+      "meshHash": "b71692a80534605e",
+      "bytes": 366788,
+      "triangles": 4825,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -48706,6 +48706,7 @@
           "source-data://pand-reference-walls/0363100012092013/w01-337s4.jpg",
           "source-data://pand-reference-walls/0363100012092013/w01-337s5bL.jpg",
           "source-data://pand-reference-walls/0363100012092013/w02-67.jpg",
+          "source-data://pand-reference-walls/0363100012092013/w04-248.jpg",
           "source-data://pand-reference-walls/0363100012092013/w01-337s2.jpg"
         ],
         "gates": [
@@ -48718,26 +48719,32 @@
           "storey-height/walls[0]:pass",
           "eaves-vs-3dbag/walls[1]:pass",
           "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "ribbon-windows 5st 9b",
-          "ribbon-windows 5st 7b"
+          "ribbon-windows 5st 7b",
+          "brick-bay-grid 5st 10b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.16)); inferred: rendered front, nine bays of white-framed window bands and storey lines read the same, wall colour and glazing pass, the band check fails on the cantilevered balcony slabs and yellow-tiled stair towers drawn as wall - kit gap cantilevered balconies on chosen bays with tiled stair towers between",
-        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #6a6d6c not used (not darker than the wall #786b61 by 10 L*, or tinted): kit glass kept; walls[0] wall split #675c4f | #857c6a at 62 % (dE 15.8)."
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.23)); inferred: rendered front, nine bays of white-framed window bands and storey lines read the same, wall colour and glazing pass, the band check fails on the cantilevered balcony slabs and yellow-tiled stair towers drawn as wall - kit gap cantilevered balconies on chosen bays with tiled stair towers between",
+        "walls[2] not confirmed by the photo (NO EVIDENCE (washed out 57 % > 30 %)); inferred: Tollensstraat front, photo washed out (57 %): pale buff brick hand-sampled from the shaded storeys of w04-248/w04-248L, ten bays of punched white-framed windows read by hand - kit gaps open ground passage with round columns, yellow glazed entrance, curved balconies, loggias",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #6a6d6c not used (not darker than the wall #786b61 by 10 L*, or tinted): kit glass kept; walls[0] wall split #675c4f | #857c6a at 62 % (dE 15.8).",
+        "2026-10-16 (lane de-hallen-slab): walls[2] is the 29.9 m Tollensstraat front (panel 1, surfaces 3-4), left blank by the first install although its crop w04-248 was archived: pale buff brick, five storeys of white-framed punched windows. measure.ts reads it washed out (57 % > 30 %, wall #eadcc2 in full sun), so the brick #c8b796 (drawn as measured: measured.groups lists 2, the hand colour kept) is hand-sampled from the shaded lower storeys of w04-248 (#d3c5a6, #d8c7a9) and w04-248L, and the window shape (1.4 x 1.7 m at a ~3 m pitch, sill 0.9 m) and ten bays are read by hand at 50 px/m. Kit gaps on this front: the open ground-floor passage with round columns and the yellow glazed entrance, the curved cantilevered balconies and the recessed loggias."
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012092013",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T13:28:09.332Z"
+      "updatedAt": "2026-10-17T02:02:02.707Z"
     }
   ]
 }
