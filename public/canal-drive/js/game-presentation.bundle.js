@@ -468,7 +468,34 @@
   }
   function routePlaqueName(input) {
     const answerHidden = hudWithholdsRouteName(input);
-    return { routeName: answerHidden ? "" : input.roadName, answerHidden };
+    return { routeName: answerHidden ? "" : input.shownName || input.roadName, answerHidden };
+  }
+
+  // src/canalRecall/bridgeDisplayNames.ts
+  function bridgeLetterKey(name) {
+    return name.trim().replace(/^(de|het|'t)\s+/i, "").replace(/ł/g, "l").replace(/Ł/g, "L").toLocaleLowerCase().normalize("NFD").replace(/[^\p{L}]/gu, "").replace(/(\p{L})\1+/gu, "$1");
+  }
+  function isBridgeSpelling(osmName, displayName) {
+    return !!displayName && displayName !== osmName && bridgeLetterKey(displayName) === bridgeLetterKey(osmName);
+  }
+  function buildBridgeDisplayNames(bridges) {
+    const names = /* @__PURE__ */ new Map();
+    for (const bridge of bridges) {
+      const name = bridge.name?.trim();
+      const shown = bridge.displayName?.trim();
+      if (name && shown && isBridgeSpelling(name, shown)) names.set(name, shown);
+    }
+    return names;
+  }
+  var indexes = /* @__PURE__ */ new WeakMap();
+  function bridgeDisplayNamesOf(bridges) {
+    if (!bridges) return /* @__PURE__ */ new Map();
+    let index = indexes.get(bridges);
+    if (!index) indexes.set(bridges, index = buildBridgeDisplayNames(bridges));
+    return index;
+  }
+  function displayBridgeName(names, name) {
+    return names && names.get(name) || name;
   }
 
   // src/canalRecall/facts/factRotation.ts
@@ -603,6 +630,7 @@
       if (!before) return true;
       const word = before[1];
       if (word.length === 1) return false;
+      if (/^\p{Lu}\p{L}*sz$/u.test(word)) return false;
       return !abbreviations.has(word.toLocaleLowerCase());
     };
     let end = -1;
@@ -38788,7 +38816,7 @@
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#a2856c",
+        brick: "#a28382",
         stone: "#e2d6bc",
         frame: "#efece3",
         glass: "#4f6270",
@@ -49321,7 +49349,8 @@
         (text, x, y) => this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y),
         this.quizPromptName || this.quizCandidateName,
         player,
-        (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates()).candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach)
+        (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates()).candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach),
+        (text) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text)
       );
       if (this.state === GameState.FINISHED) {
         this._renderFinish();
@@ -49353,7 +49382,9 @@
           promptName: this.quizPromptName || "",
           candidateName: this.quizCandidateName || "",
           revealed: !!roadName && this.revealedNames.has(roadName),
-          learned: !!roadName && this.learnedNames.has(roadName)
+          learned: !!roadName && this.learnedNames.has(roadName),
+          // A bridge deck prints under its official spelling once it may show.
+          shownName: roadName ? displayBridgeName(bridgeDisplayNamesOf(this.bridges), roadName) : ""
         });
         visibleRouteName = plaque.routeName;
         routeAnswerHidden = plaque.answerHidden;
