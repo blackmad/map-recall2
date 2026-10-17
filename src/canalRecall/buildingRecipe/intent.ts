@@ -11,6 +11,8 @@
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
 import {awningProblems, deBaarsjesProblems} from './deBaarsjesIntent.ts';
+import {eavesOverhangProblems, type EavesOverhangIntent} from './eavesOverhangIntent.ts';
+import {groundCanopyProblems, type GroundCanopyIntent} from './groundCanopyIntent.ts';
 
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat'] as const;
 export type GableIntent = typeof GABLES[number];
@@ -257,6 +259,15 @@ export interface FrontIntent {
   /** A storey whose windows do not sit on the shared bays gives its own weights (one per window of that storey; key = storey index from the ground, or "last"), e.g. `{"4": [1, 0.6, 0.6]}` for one far-left and a close pair. */
   storeyBayWidths?: Record<string, number[]>;
   /**
+   * A window ribbon (Rivierenbuurt 1934, Boterdiepstraat 3-59: the top storey's band of three or four lights over the
+   * two-axis body): the storey's windows stand side by side between `from` and `to` (shares of the front, left to
+   * right as seen), equal, their frames meeting in one post; key = storey index or last. Off the body's axes, so not
+   * together with `storeyAxes`/`storeyBayWidths` for that storey. Absent = byte-identical. `pier` (m, 0.02-1): brick
+   * between neighbouring windows instead of the touching frames (Boterdiepstraat 17: three two-light windows, 0.38 m
+   * apart), the first and last window then standing on `from` and `to`.
+   */
+  storeyRibbons?: Record<string, {from: number; to: number; pier?: number}>;
+  /**
    * Gable/crown that covers only part of the front: `{from, to}` as fractions of the front width from the viewer's
    * left (`{from: 0.4, to: 1}` = the right 60 %). Gable windows, the hoist and the crown cap follow it. Default: the whole front.
    */
@@ -379,7 +390,9 @@ export interface FrontIntent {
    * stack. Each storey: a solid stallriser panel 0.85 m high (wall brick) under a front light divided into two lights per
    * spanned axis, one light in each angled side (0.25 m return), a 0.2 m head panel; closed at its foot and top. `cap` on
    * the top storey: `hip` (a lean-to hipped roof rising 0.45 m to the wall, roof colour), `flat` (a 0.12 m slab overhanging
-   * 6 cm, trim colour) or `none` (default: the closure only).
+   * 6 cm, trim colour) or `none` (default: the closure only). An `oriel` stack may list the ground storey (0) when the
+   * front has no shopfront or ground front: the canted bay then stands on the pavement and its `console` sits under the
+   * first upper storey's module instead (Boterdiepstraat 9-33, Hoendiepstraat 5-35: the white slab at 2.95 m).
    */
   bayWindows?: { bay?: number; bays?: {from: number; to: number}; storeys: number[]; cap?: typeof ERKER_CAPS[number];
     /** `painted` (a timber erker, Nassaukade 146): its panels, closures and cap in the trim colour instead of wall brick and roof. Multi-bay erkers only. */
@@ -471,6 +484,18 @@ export interface FrontIntent {
    * top. A crown field; needs `cornice: "none"` and a `flat` or `cornice` gable.
    */
   parapet?: {courses: number; coping?: boolean};
+  /**
+   * Flat roof run out over the front as a deep eaves overhang (Plan Zuid rows of 1930-1936, Rivierenbuurt): a slab
+   * `fascia` metres thick hanging from the eaves, `projection` metres out, its ends on the party planes so a row reads as
+   * one line; fascia `colour` and `soffit` are measured tints (default the trim). A crown field; needs `cornice: "none"`
+   * and a `flat` or `cornice` gable (buildingRecipe/eavesOverhang.ts). Absent = byte-identical.
+   */
+  eavesOverhang?: EavesOverhangIntent;
+  /**
+   * Slab canopies (luifels) over the ground-storey door and windows of the Plan Zuid portiek rows
+   * (buildingRecipe/groundCanopy.ts). Absent = byte-identical.
+   */
+  groundCanopy?: GroundCanopyIntent;
   /**
    * `bands: painted` (Jan Evertsenstraat 9-33): the window zone of every band storey, from the top of its sill band to
    * the foot of its head band, is faced in `palette.band` (a second brick: the yellow piers between the windows under
@@ -1001,13 +1026,18 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (f.bayWindows.bays === undefined) count(f.bayWindows.bay, `${at}.bayWindows.bay`, 0, 15);
       else problems.push(...erkerProblems(f, at));
       if (f.bayWindows.finish !== undefined && (f.bayWindows.finish !== 'painted' || f.bayWindows.bays === undefined)) problems.push(`${at}.bayWindows.finish: "painted", on a multi-bay erker (bays)`);
-      f.bayWindows.storeys.forEach(v => count(v, `${at}.bayWindows.storeys`, 1, f.storeys - 1));
+      // A timber oriel may start on the ground storey (Boterdiepstraat 9-33: the canted bay runs down to the pavement under
+      // the console) unless the ground is a shopfront or a historic ground front.
+      const groundOriel = !!f.bayWindows.oriel && f.bayWindows.bays !== undefined && !f.shopfront && !f.groundFront;
+      f.bayWindows.storeys.forEach(v => count(v, `${at}.bayWindows.storeys`, groundOriel ? 0 : 1, f.storeys - 1));
     }
     if (f.bands !== undefined) oneOf(f.bands, ['none', 'storey', 'lintel', 'both', 'courses', 'speklagen', 'painted'], `${at}.bands`);
     problems.push(...paintedProblems(f, at, oneOf));
     if (f.bands === 'courses' || f.courseStoreys !== undefined) problems.push(...courseProblems(f, intent?.palette, at));
     if (f.windowHoods !== undefined && f.windowHoods !== true) problems.push(`${at}.windowHoods: true (or leave it out)`);
     if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
+    problems.push(...eavesOverhangProblems(f, at));
+    problems.push(...groundCanopyProblems(f, at));
     if (f.lisenes !== undefined) {
       const l = f.lisenes as Record<string, unknown>;
       if (typeof l !== 'object' || l === null || Object.keys(l).some(k => !['leftEnd', 'rightEnd'].includes(k)) || Object.values(l).some(v => v !== 'half' && v !== 'full') || !Object.keys(l).length) problems.push(`${at}.lisenes: {leftEnd?, rightEnd?} each "half" or "full"`);
@@ -1041,6 +1071,13 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       const grid = f.axisGrid ?? Math.max(...(Array.isArray(f.bays) ? f.bays.slice(f.storeys > 1 ? 1 : 0) : [f.bays]));
       if (!Array.isArray(f.bayWidths) || f.bayWidths.length !== grid || f.bayWidths.some(w => !(w >= 0.15 && w <= 8))) problems.push(`${at}.bayWidths: ${grid} relative widths (one per axis), each 0.15..8`);
       else if (Math.max(...f.bayWidths) / Math.min(...f.bayWidths) > 8) problems.push(`${at}.bayWidths: widest bay more than 8x the narrowest`);
+    }
+    for (const [k, v] of Object.entries(f.storeyRibbons ?? {})) {
+      const s = Number(k), r = v as unknown as Record<string, unknown>;
+      if (k !== 'last' && !(Number.isInteger(s) && s >= 0 && s < f.storeys)) problems.push(`${at}.storeyRibbons.${k}: key must be a storey index or "last"`);
+      else if (!r || typeof r !== 'object' || Object.keys(r).some(x => x !== 'from' && x !== 'to' && x !== 'pier') || !(typeof r.from === 'number' && typeof r.to === 'number' && r.from >= 0 && r.to <= 1 && r.to - r.from >= 0.2)) problems.push(`${at}.storeyRibbons.${k}: {from, to} shares of the front, 0 <= from, to <= 1, at least 0.2 apart`);
+      else if (r.pier !== undefined && !(typeof r.pier === 'number' && r.pier >= 0.02 && r.pier <= 1)) problems.push(`${at}.storeyRibbons.${k}.pier: metres between windows, 0.02-1`);
+      else if (f.storeyAxes?.[k] || f.storeyBayWidths?.[k]) problems.push(`${at}.storeyRibbons.${k}: not together with storeyAxes or storeyBayWidths for the same storey`);
     }
     for (const [k, v] of Object.entries(f.storeyBayWidths ?? {})) {
       const s = k === 'last' ? f.storeys - 1 : Number(k), per = Array.isArray(f.bays) ? f.bays[s] : f.bays;

@@ -1,0 +1,2631 @@
+{
+ "street": "Hoendiepstraat",
+ "seed": "0363100012124406",
+ "members": [
+  "0363100012124406",
+  "0363100012078854",
+  "0363100012138426"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012124406 (face continues: 149484)"
+  },
+  {
+   "side": "right",
+   "reason": "run of hoendiep-5-35: 144161 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012065707",
+   "reason": "frontage 143.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012068011",
+   "reason": "frontage 129.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012070852",
+   "reason": "frontage 144.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012062425",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012063552"
+  },
+  {
+   "pandId": "0363100012062893",
+   "reason": "frontage 128.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012063519",
+   "reason": "frontage 67.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012064648",
+   "reason": "frontage 33.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012065027",
+   "reason": "frontage 159.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012065337",
+   "reason": "frontage 67.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012065549",
+   "reason": "frontage 100.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012066325",
+   "reason": "frontage 99.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012067390",
+   "reason": "frontage 67.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012068707",
+   "reason": "frontage 129.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012070767",
+   "reason": "frontage 128.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012061247",
+   "reason": "frontage 128.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012061318",
+   "reason": "frontage 129.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012062063",
+   "reason": "frontage 129.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012062445",
+   "reason": "frontage 55.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012062479",
+   "reason": "frontage 68.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012062632",
+   "reason": "frontage 42.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012062699",
+   "reason": "frontage 78.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012062700",
+   "reason": "frontage 78.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012062938",
+   "reason": "frontage 43.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012063274",
+   "reason": "frontage 129.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012063384",
+   "reason": "frontage 128.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012063638",
+   "reason": "frontage 67.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012064651",
+   "reason": "frontage 157.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012065128",
+   "reason": "frontage 99.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012065498",
+   "reason": "frontage 103.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012065564",
+   "reason": "frontage 67.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012065854",
+   "reason": "frontage 38.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012067897",
+   "reason": "frontage 68.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012068366",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012069912",
+   "reason": "frontage 129.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012070665",
+   "reason": "frontage 78.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012070921",
+   "reason": "frontage 99.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012071039",
+   "reason": "frontage 99.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012071190",
+   "reason": "frontage 143.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012071397",
+   "reason": "frontage 37.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012071778",
+   "reason": "frontage 68.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012071854",
+   "reason": "frontage 136.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012071875",
+   "reason": "frontage 36.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012072054",
+   "reason": "frontage 157.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012072132",
+   "reason": "frontage 38.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012081613",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012082649",
+   "reason": "frontage 129.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012072239",
+   "reason": "frontage 128.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012072303",
+   "reason": "frontage 98.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012074421",
+   "reason": "frontage 38.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012075945",
+   "reason": "frontage 156.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012077649",
+   "reason": "frontage 98.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012077939",
+   "reason": "frontage 159.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012077965",
+   "reason": "frontage 128.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012078537",
+   "reason": "frontage 159.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012080585",
+   "reason": "frontage 67.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012080666",
+   "reason": "frontage 159.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012081666",
+   "reason": "frontage 37.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012083666",
+   "reason": "frontage 155.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012083859",
+   "reason": "frontage 47.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012084947",
+   "reason": "frontage 37.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012085479",
+   "reason": "frontage 128.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012072566",
+   "reason": "frontage 155.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012072982",
+   "reason": "frontage 98.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012073035",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012149484"
+  },
+  {
+   "pandId": "0363100012074429",
+   "reason": "frontage 123.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012075378",
+   "reason": "frontage 68.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012075379",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012105279"
+  },
+  {
+   "pandId": "0363100012075850",
+   "reason": "frontage 45.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012076849",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012076998",
+   "reason": "frontage 122.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012077471",
+   "reason": "frontage 31.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012078196",
+   "reason": "frontage 43.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012078742",
+   "reason": "frontage 43.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012078784",
+   "reason": "frontage 129.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012078942",
+   "reason": "frontage 43.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012079538",
+   "reason": "frontage 39.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012079582",
+   "reason": "frontage 68.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012080140",
+   "reason": "frontage 30.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012081920",
+   "reason": "frontage 106.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012082589",
+   "reason": "frontage 68.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012082668",
+   "reason": "frontage 143.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012084161",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012073035"
+  },
+  {
+   "pandId": "0363100012084259",
+   "reason": "frontage 119.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012084686",
+   "reason": "frontage 129.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012085458",
+   "reason": "frontage 68.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012085663",
+   "reason": "frontage 78.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012085930",
+   "reason": "frontage 59.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012086045",
+   "reason": "frontage 178.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012092708",
+   "reason": "frontage 126.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012093979",
+   "reason": "frontage 95.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012086312",
+   "reason": "frontage 128.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012086703",
+   "reason": "frontage 67.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012087247",
+   "reason": "frontage 128.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012087891",
+   "reason": "frontage 95.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012088252",
+   "reason": "frontage 94.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012088536",
+   "reason": "frontage 69.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012088803",
+   "reason": "frontage 128.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012092362",
+   "reason": "frontage 98.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012093554",
+   "reason": "frontage 67.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012094555",
+   "reason": "frontage 128.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012095439",
+   "reason": "frontage 67.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012096438",
+   "reason": "frontage 99.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012097642",
+   "reason": "frontage 128.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012097792",
+   "reason": "frontage 67.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012086041",
+   "reason": "frontage 99.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012086190",
+   "reason": "frontage 160.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012087051",
+   "reason": "frontage 129.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012088033",
+   "reason": "frontage 40.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012088317",
+   "reason": "frontage 99.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012088569",
+   "reason": "frontage 128.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012088777",
+   "reason": "frontage 99.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012088894",
+   "reason": "frontage 43.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012089332",
+   "reason": "frontage 36.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012089508",
+   "reason": "frontage 64.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012089766",
+   "reason": "frontage 126.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012089873",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012090493",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012102622"
+  },
+  {
+   "pandId": "0363100012090853",
+   "reason": "frontage 67.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012091332",
+   "reason": "frontage 120.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012091702",
+   "reason": "frontage 84.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012091827",
+   "reason": "frontage 117.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012091907",
+   "reason": "frontage 67.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012092579",
+   "reason": "frontage 46.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012093170",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012093992",
+   "reason": "frontage 70.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012094658",
+   "reason": "frontage 129.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012095798",
+   "reason": "frontage 37.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012096263",
+   "reason": "frontage 67.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012096625",
+   "reason": "frontage 71.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012096790",
+   "reason": "frontage 61.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012097377",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012097378",
+   "reason": "frontage 80.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012102137",
+   "reason": "frontage 135.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012102564",
+   "reason": "frontage 148.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012106791",
+   "reason": "frontage 151.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012106964",
+   "reason": "frontage 154.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012099539",
+   "reason": "frontage 37.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012100370",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012063552"
+  },
+  {
+   "pandId": "0363100012100933",
+   "reason": "frontage 67.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012101523",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012063552"
+  },
+  {
+   "pandId": "0363100012102689",
+   "reason": "frontage 128.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012103607",
+   "reason": "frontage 99.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012106279",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012082533"
+  },
+  {
+   "pandId": "0363100012107119",
+   "reason": "frontage 37.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012107363",
+   "reason": "frontage 90.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012107513",
+   "reason": "frontage 159.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012107697",
+   "reason": "frontage 98.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012097875",
+   "reason": "frontage 43.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012097998",
+   "reason": "frontage 66.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012098082",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012098244",
+   "reason": "frontage 43.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012098452",
+   "reason": "frontage 157.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012098862",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012099488",
+   "reason": "frontage 36.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012100946",
+   "reason": "frontage 155.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012101160",
+   "reason": "frontage 96.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012102097",
+   "reason": "frontage 49.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012102192",
+   "reason": "frontage 68.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012102848",
+   "reason": "frontage 68.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012103485",
+   "reason": "frontage 38.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012103793",
+   "reason": "frontage 99.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012103891",
+   "reason": "frontage 47.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012103895",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012104341",
+   "reason": "frontage 129.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012104647",
+   "reason": "frontage 37.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012104919",
+   "reason": "frontage 67.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012104968",
+   "reason": "frontage 38.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012105440",
+   "reason": "frontage 52.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012105818",
+   "reason": "frontage 68.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012106514",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012106683",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012107814",
+   "reason": "frontage 36.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012108118",
+   "reason": "frontage 64.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012108242",
+   "reason": "frontage 68.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012108991",
+   "reason": "frontage 128.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012109092",
+   "reason": "frontage 67.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012109222",
+   "reason": "frontage 103.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012110556",
+   "reason": "frontage 37.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012111742",
+   "reason": "frontage 37.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012112731",
+   "reason": "frontage 39.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012113872",
+   "reason": "frontage 37.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012115651",
+   "reason": "frontage 98.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012115944",
+   "reason": "frontage 68.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012117378",
+   "reason": "frontage 98.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012117775",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012082533"
+  },
+  {
+   "pandId": "0363100012118899",
+   "reason": "frontage 128.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012120231",
+   "reason": "frontage 40.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012121197",
+   "reason": "frontage 33.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012121546",
+   "reason": "frontage 96.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012108993",
+   "reason": "frontage 132.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012109011",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012109865",
+   "reason": "frontage 99.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012110148",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012110175",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012111889",
+   "reason": "frontage 128.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012111941",
+   "reason": "frontage 76.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012112680",
+   "reason": "frontage 67.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012112754",
+   "reason": "frontage 34.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012112801",
+   "reason": "frontage 98.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012114696",
+   "reason": "frontage 42.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012115716",
+   "reason": "frontage 78.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012115959",
+   "reason": "frontage 67.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012116105",
+   "reason": "frontage 79.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012117297",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012105279"
+  },
+  {
+   "pandId": "0363100012117570",
+   "reason": "frontage 78.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012117743",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012117854",
+   "reason": "frontage 36.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012118502",
+   "reason": "frontage 150.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012118934",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012119202",
+   "reason": "frontage 43.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012119253",
+   "reason": "frontage 39.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012120213",
+   "reason": "frontage 97.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012121394",
+   "reason": "frontage 128.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012121462",
+   "reason": "frontage 160.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012122479",
+   "reason": "frontage 116.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012122943",
+   "reason": "frontage 37.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012123124",
+   "reason": "frontage 96.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012123137",
+   "reason": "frontage 66.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012124046",
+   "reason": "frontage 159.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012124333",
+   "reason": "frontage 98.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012126062",
+   "reason": "frontage 67.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012129373",
+   "reason": "frontage 159.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012131176",
+   "reason": "frontage 77.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012131546",
+   "reason": "frontage 128.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012132775",
+   "reason": "frontage 156.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012133802",
+   "reason": "frontage 155.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012134798",
+   "reason": "frontage 36.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012135117",
+   "reason": "frontage 159.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012135175",
+   "reason": "frontage 128.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012137156",
+   "reason": "frontage 43.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012138077",
+   "reason": "frontage 98.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012138811",
+   "reason": "frontage 156.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012123435",
+   "reason": "frontage 118.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012123722",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012106683"
+  },
+  {
+   "pandId": "0363100012124136",
+   "reason": "frontage 64.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012124537",
+   "reason": "frontage 99.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012124657",
+   "reason": "frontage 128.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012124733",
+   "reason": "frontage 67.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012125273",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012109011"
+  },
+  {
+   "pandId": "0363100012125435",
+   "reason": "frontage 78.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012125990",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012126807",
+   "reason": "frontage 72.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012127050",
+   "reason": "frontage 99.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012128058",
+   "reason": "frontage 43.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012128564",
+   "reason": "frontage 68.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012128708",
+   "reason": "frontage 38.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012130084",
+   "reason": "frontage 68.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012131240",
+   "reason": "frontage 99.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012131457",
+   "reason": "frontage 128.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012131952",
+   "reason": "frontage 40.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012132234",
+   "reason": "frontage 97.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012133136",
+   "reason": "frontage 157.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012133381",
+   "reason": "frontage 99.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012134610",
+   "reason": "frontage 37.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012134631",
+   "reason": "frontage 74.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012135481",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012102622"
+  },
+  {
+   "pandId": "0363100012135514",
+   "reason": "frontage 160.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012135789",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012137000",
+   "reason": "frontage 160.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012137288",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012125273"
+  },
+  {
+   "pandId": "0363100012137579",
+   "reason": "frontage 125.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012137783",
+   "reason": "frontage 68.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012138436",
+   "reason": "frontage 129.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012138785",
+   "reason": "frontage 159.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012139120",
+   "reason": "frontage 139.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012139791",
+   "reason": "frontage 67.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012140279",
+   "reason": "frontage 128.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012142588",
+   "reason": "frontage 155.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012142880",
+   "reason": "frontage 159.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012145095",
+   "reason": "frontage 67.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012146443",
+   "reason": "frontage 159.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012146777",
+   "reason": "frontage 159.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012147012",
+   "reason": "frontage 195.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012147468",
+   "reason": "frontage 98.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012139012",
+   "reason": "frontage 37.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012139169",
+   "reason": "frontage 33.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012139506",
+   "reason": "frontage 135.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012140068",
+   "reason": "frontage 112.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012140075",
+   "reason": "frontage 68.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012140203",
+   "reason": "frontage 154.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012140632",
+   "reason": "frontage 43.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012140702",
+   "reason": "frontage 43.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012140994",
+   "reason": "frontage 128.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012141360",
+   "reason": "frontage 160.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012141546",
+   "reason": "frontage 77.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012142115",
+   "reason": "frontage 67.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012142360",
+   "reason": "frontage 96.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012142451",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012142458",
+   "reason": "frontage 43.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012142625",
+   "reason": "frontage 148.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012142714",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012142760",
+   "reason": "frontage 39.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012143290",
+   "reason": "frontage 90.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012144140",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012144700",
+   "reason": "frontage 32.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012145504",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012146886",
+   "reason": "frontage 35.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012147270",
+   "reason": "frontage 36.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012147409",
+   "reason": "frontage 64.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012147519",
+   "reason": "frontage 68.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012147681",
+   "reason": "frontage 167.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012148115",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012148727",
+   "reason": "frontage 129.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012149153",
+   "reason": "frontage 43.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012158511",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012158712",
+   "reason": "frontage 123.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012162804",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012163004",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012163581",
+   "reason": "frontage 118.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012151628",
+   "reason": "frontage 37.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012155133",
+   "reason": "frontage 83.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012183273",
+   "reason": "frontage 149.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012184400",
+   "reason": "frontage 149.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012186136",
+   "reason": "frontage 149.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012186231",
+   "reason": "frontage 149.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012186871",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012097239"
+  },
+  {
+   "pandId": "0363100012149435",
+   "reason": "frontage 67.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012149922",
+   "reason": "frontage 129.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012150135",
+   "reason": "frontage 71.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012150503",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012151163",
+   "reason": "frontage 43.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012151656",
+   "reason": "frontage 37.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012154049",
+   "reason": "frontage 137.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012154732",
+   "reason": "frontage 103.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012155637",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012157180",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012157516",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012159085",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012162892",
+   "reason": "frontage 78.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012163361",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012166183",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012183321",
+   "reason": "frontage 30.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012183556",
+   "reason": "frontage 150.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012183572",
+   "reason": "frontage 88.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012183822",
+   "reason": "frontage 147.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012183849",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012115000"
+  },
+  {
+   "pandId": "0363100012183940",
+   "reason": "frontage 150.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012184000",
+   "reason": "frontage 86.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012184182",
+   "reason": "frontage 147.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012184389",
+   "reason": "frontage 147.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012185879",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012141169"
+  },
+  {
+   "pandId": "0363100012185950",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012108358"
+  },
+  {
+   "pandId": "0363100012186189",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012186371",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012108358"
+  },
+  {
+   "pandId": "0363100012186628",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012148743"
+  },
+  {
+   "pandId": "0363100012186764",
+   "reason": "frontage 35.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012186795",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012065484"
+  },
+  {
+   "pandId": "0363100012187026",
+   "reason": "frontage 33.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012187099",
+   "reason": "frontage 153.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012187514",
+   "reason": "frontage 30.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012188457",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012136909"
+  },
+  {
+   "pandId": "0363100012192344",
+   "reason": "frontage 88.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192456",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012068033"
+  },
+  {
+   "pandId": "0363100012193162",
+   "reason": "frontage 88.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012187790",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012187818",
+   "reason": "frontage 30.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012188277",
+   "reason": "frontage 88.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012188652",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012141169"
+  },
+  {
+   "pandId": "0363100012189025",
+   "reason": "frontage 88.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012189523",
+   "reason": "frontage 150.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012189624",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012190173",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012092476"
+  },
+  {
+   "pandId": "0363100012190657",
+   "reason": "frontage 150.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012190783",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012114918"
+  },
+  {
+   "pandId": "0363100012190801",
+   "reason": "frontage 151.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012190839",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012118414"
+  },
+  {
+   "pandId": "0363100012191095",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012065484"
+  },
+  {
+   "pandId": "0363100012191271",
+   "reason": "frontage 147.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012191449",
+   "reason": "frontage 86.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012191851",
+   "reason": "frontage 85.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192065",
+   "reason": "frontage 150.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192091",
+   "reason": "frontage 89.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192281",
+   "reason": "frontage 86.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192541",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192542",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192543",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192544",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192545",
+   "reason": "frontage 58.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192546",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192547",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192548",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012105233"
+  },
+  {
+   "pandId": "0363100012192549",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012105233"
+  },
+  {
+   "pandId": "0363100012192550",
+   "reason": "frontage 30.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192551",
+   "reason": "frontage 61.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192552",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192553",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192554",
+   "reason": "frontage 32.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192555",
+   "reason": "frontage 31.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192556",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012105233"
+  },
+  {
+   "pandId": "0363100012192557",
+   "reason": "frontage 55.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192558",
+   "reason": "frontage 57.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192559",
+   "reason": "frontage 95.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192560",
+   "reason": "frontage 86.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192561",
+   "reason": "frontage 69.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192562",
+   "reason": "frontage 95.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192563",
+   "reason": "frontage 87.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192564",
+   "reason": "frontage 87.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192565",
+   "reason": "frontage 81.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012192813",
+   "reason": "frontage 147.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012193198",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012131067"
+  },
+  {
+   "pandId": "0363100012193350",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012078679"
+  },
+  {
+   "pandId": "0363100012194424",
+   "reason": "frontage 85.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012194771",
+   "reason": "frontage 85.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012195151",
+   "reason": "frontage 85.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012195314",
+   "reason": "frontage 88.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012195708",
+   "reason": "frontage 146.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012196492",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012114387"
+  },
+  {
+   "pandId": "0363100012196650",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012116530"
+  },
+  {
+   "pandId": "0363100012198185",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012078679"
+  },
+  {
+   "pandId": "0363100012198329",
+   "reason": "frontage 88.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012198652",
+   "reason": "frontage 88.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012200216",
+   "reason": "frontage 146.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012200564",
+   "reason": "frontage 149.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012200687",
+   "reason": "frontage 146.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012201970",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012105636"
+  },
+  {
+   "pandId": "0363100012202241",
+   "reason": "frontage 86.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012203068",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012116530"
+  },
+  {
+   "pandId": "0363100012203289",
+   "reason": "frontage 88.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012194161",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012195020",
+   "reason": "frontage 147.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012195725",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012065978"
+  },
+  {
+   "pandId": "0363100012196548",
+   "reason": "frontage 96.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012196846",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012148743"
+  },
+  {
+   "pandId": "0363100012197424",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012143645"
+  },
+  {
+   "pandId": "0363100012197976",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012115000"
+  },
+  {
+   "pandId": "0363100012198580",
+   "reason": "frontage 86.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012199097",
+   "reason": "frontage 147.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012199409",
+   "reason": "frontage 137.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012199677",
+   "reason": "frontage 33.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012201119",
+   "reason": "frontage 150.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012202061",
+   "reason": "frontage 33.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012202283",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012202525",
+   "reason": "frontage 86.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012202526",
+   "reason": "frontage 86.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012203163",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012142506"
+  },
+  {
+   "pandId": "0363100012203240",
+   "reason": "frontage 81.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012203526",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012114918"
+  },
+  {
+   "pandId": "0363100012204195",
+   "reason": "frontage 86.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204338",
+   "reason": "frontage 147.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204514",
+   "reason": "frontage 59.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204515",
+   "reason": "frontage 63.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204516",
+   "reason": "frontage 64.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204517",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204518",
+   "reason": "frontage 56.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204519",
+   "reason": "frontage 56.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204520",
+   "reason": "frontage 56.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204521",
+   "reason": "frontage 56.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204522",
+   "reason": "frontage 58.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204523",
+   "reason": "frontage 65.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204524",
+   "reason": "frontage 64.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012205198",
+   "reason": "frontage 35.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012205264",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012136909"
+  },
+  {
+   "pandId": "0363100012205652",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012148100"
+  },
+  {
+   "pandId": "0363100012206190",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012080362"
+  },
+  {
+   "pandId": "0363100012206522",
+   "reason": "frontage 85.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012206869",
+   "reason": "frontage 149.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012207602",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012068033"
+  },
+  {
+   "pandId": "0363100012208045",
+   "reason": "frontage 88.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012208115",
+   "reason": "frontage 149.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012209095",
+   "reason": "frontage 149.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012209927",
+   "reason": "frontage 86.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012209957",
+   "reason": "frontage 88.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012210097",
+   "reason": "frontage 85.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012210458",
+   "reason": "frontage 86.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012210825",
+   "reason": "frontage 88.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204525",
+   "reason": "frontage 59.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204526",
+   "reason": "frontage 58.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204527",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204528",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204529",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204530",
+   "reason": "frontage 106.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204531",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204532",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204533",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204534",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012204535",
+   "reason": "frontage 105.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012205205",
+   "reason": "frontage 150.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012205523",
+   "reason": "frontage 30.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012205604",
+   "reason": "frontage 30.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012206244",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012115000"
+  },
+  {
+   "pandId": "0363100012206246",
+   "reason": "frontage 148.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012206253",
+   "reason": "frontage 150.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012206839",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012114918"
+  },
+  {
+   "pandId": "0363100012207038",
+   "reason": "frontage 85.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012207318",
+   "reason": "frontage 88.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012207354",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012141169"
+  },
+  {
+   "pandId": "0363100012207600",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012108358"
+  },
+  {
+   "pandId": "0363100012207851",
+   "reason": "frontage 150.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012207881",
+   "reason": "frontage 150.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012208208",
+   "reason": "frontage 87.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012208570",
+   "reason": "frontage 147.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012209305",
+   "reason": "frontage 88.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012209563",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012143830"
+  },
+  {
+   "pandId": "0363100012209870",
+   "reason": "frontage 33.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012209992",
+   "reason": "frontage 147.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012210301",
+   "reason": "frontage 150.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012210451",
+   "reason": "frontage 85.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012210936",
+   "reason": "frontage 89.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012211102",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012136909"
+  },
+  {
+   "pandId": "0363100012212448",
+   "reason": "frontage 146.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012212533",
+   "reason": "frontage 146.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012212534",
+   "reason": "frontage 146.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012212535",
+   "reason": "frontage 148.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012213074",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012078679"
+  },
+  {
+   "pandId": "0363100012213973",
+   "reason": "frontage 30.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012214805",
+   "reason": "frontage 147.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012215462",
+   "reason": "frontage 86.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012215511",
+   "reason": "frontage 86.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012215994",
+   "reason": "frontage 91.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012217689",
+   "reason": "frontage 146.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012218342",
+   "reason": "frontage 82.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012219306",
+   "reason": "frontage 88.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012219734",
+   "reason": "frontage 86.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012220201",
+   "reason": "frontage 88.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012220616",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012068033"
+  },
+  {
+   "pandId": "0363100012221800",
+   "reason": "frontage 31.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012211430",
+   "reason": "frontage 85.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012211434",
+   "reason": "frontage 90.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012211907",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012092476"
+  },
+  {
+   "pandId": "0363100012211960",
+   "reason": "frontage 89.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012212059",
+   "reason": "frontage 150.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012212074",
+   "reason": "frontage 33.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012212537",
+   "reason": "frontage 147.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012212538",
+   "reason": "frontage 147.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012213347",
+   "reason": "frontage 33.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012213658",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012078854"
+  },
+  {
+   "pandId": "0363100012214429",
+   "reason": "frontage 147.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012214480",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012100758"
+  },
+  {
+   "pandId": "0363100012214795",
+   "reason": "frontage 30.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012215195",
+   "reason": "frontage 145.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012215512",
+   "reason": "frontage 153.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012215912",
+   "reason": "frontage 133.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012216048",
+   "reason": "frontage 147.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012217257",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012140377"
+  },
+  {
+   "pandId": "0363100012217821",
+   "reason": "frontage 134.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012217848",
+   "reason": "frontage 151.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012217895",
+   "reason": "frontage 89.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012218079",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012142506"
+  },
+  {
+   "pandId": "0363100012218107",
+   "reason": "frontage 86.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012218142",
+   "reason": "frontage 85.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012219472",
+   "reason": "frontage 147.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012219689",
+   "reason": "frontage 88.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012220170",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012078854"
+  },
+  {
+   "pandId": "0363100012220244",
+   "reason": "frontage 142.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012220431",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012092476"
+  },
+  {
+   "pandId": "0363100012221189",
+   "reason": "frontage 33.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012221521",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012150282"
+  },
+  {
+   "pandId": "0363100012221699",
+   "reason": "frontage 150.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012221785",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012078854"
+  },
+  {
+   "pandId": "0363100012221822",
+   "reason": "frontage 37.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012222106",
+   "reason": "frontage 88.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012222675",
+   "reason": "frontage 149.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012225184",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012097239"
+  },
+  {
+   "pandId": "0363100012226287",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012097239"
+  },
+  {
+   "pandId": "0363100012231111",
+   "reason": "frontage 88.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012231246",
+   "reason": "frontage 88.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012231570",
+   "reason": "frontage 85.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012231619",
+   "reason": "frontage 88.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012232493",
+   "reason": "frontage 81.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012232812",
+   "reason": "frontage 85.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012233146",
+   "reason": "frontage 91.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012235215",
+   "reason": "frontage 85.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012235476",
+   "reason": "frontage 149.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012221909",
+   "reason": "frontage 86.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012222817",
+   "reason": "frontage 144.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012223382",
+   "reason": "frontage 81.5 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012224081",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012150282"
+  },
+  {
+   "pandId": "0363100012224083",
+   "reason": "frontage 89.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012224732",
+   "reason": "frontage 85.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012225804",
+   "reason": "frontage 30.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012226044",
+   "reason": "frontage 30.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012226187",
+   "reason": "frontage 144.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012226721",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012148743"
+  },
+  {
+   "pandId": "0363100012226893",
+   "reason": "frontage 33.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012226894",
+   "reason": "frontage 33.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012226895",
+   "reason": "frontage 33.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012227544",
+   "reason": "frontage 147.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012227646",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012065484"
+  },
+  {
+   "pandId": "0363100012228703",
+   "reason": "frontage 37.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012228726",
+   "reason": "frontage 85.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012229136",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012150282"
+  },
+  {
+   "pandId": "0363100012229440",
+   "reason": "frontage 149.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012229738",
+   "reason": "frontage 33.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012230398",
+   "reason": "frontage 147.3 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012230462",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012113609"
+  },
+  {
+   "pandId": "0363100012230647",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012147318"
+  },
+  {
+   "pandId": "0363100012230723",
+   "reason": "frontage 96.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012230855",
+   "reason": "frontage 90.4 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012231599",
+   "reason": "frontage 30.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012232308",
+   "reason": "frontage 86.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012232509",
+   "reason": "frontage 31.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012232666",
+   "reason": "frontage 134.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012233063",
+   "reason": "frontage 88.8 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012233197",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012142506"
+  },
+  {
+   "pandId": "0363100012233993",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012104126"
+  },
+  {
+   "pandId": "0363100012234282",
+   "reason": "frontage 86.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012234617",
+   "reason": "sightline to Hoendiepstraat crosses 0363100012065978"
+  },
+  {
+   "pandId": "0363100012235535",
+   "reason": "frontage 33.1 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012235536",
+   "reason": "frontage 34.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012248052",
+   "reason": "frontage 79.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012239266",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012239479",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012235537",
+   "reason": "frontage 33.2 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012235588",
+   "reason": "frontage 87.7 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012235652",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012241082",
+   "reason": "no frontage on Hoendiepstraat: No footprint edge faces Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012241083",
+   "reason": "frontage 149.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012248053",
+   "reason": "frontage 78.9 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012253621",
+   "reason": "frontage 150.0 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100100091374",
+   "reason": "frontage 131.6 m from Hoendiepstraat"
+  },
+  {
+   "pandId": "0363100012063552",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012068033",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065484",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065978",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078679",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080362",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012081899",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097239",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092476",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105636",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100758",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105233",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105279",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108358",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114387",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116530",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113609",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114918",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115000",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118414",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131067",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146635",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140377",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141169",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142506",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143645",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143830",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147318",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148100",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148743",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150282",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012124406",
+   "alongM": 0,
+   "widthM": 6.1,
+   "eavesM": 12.09,
+   "roofMaxM": 12.53,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.1 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012078854",
+   "alongM": 6.11,
+   "widthM": 6.12,
+   "eavesM": 12.16,
+   "roofMaxM": 12.19,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.12 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012138426",
+   "alongM": 12.22,
+   "widthM": 6.1,
+   "eavesM": 12.18,
+   "roofMaxM": 12.23,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.1 m bay front; blockFace/bayOutline.ts)."
+   ]
+  }
+ ],
+ "runOf": "hoendiep-5-35"
+}

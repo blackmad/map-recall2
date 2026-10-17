@@ -1,0 +1,193 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "rijn-1934-erker-pair",
+ "district": "rivierenbuurt",
+ "description": "Rijnbuurt-Oost (Plan Zuid, BAG 1934-35), Boterdiepstraat 4-70 and Eemsstraat: a 6.1 m brick front of a narrow window axis and a wide axis carrying a three-storey canted brick erker (white-framed three-light glazing over brick stallrisers on storeys 1-3), a pair of house doors under the narrow axis and a wide three-light window under the erker, mirrored in pairs so two erkers stand either side of one party wall, under the row's deep flat-roof overhang",
+ "fit": {
+  "widthM": [
+   5.7,
+   6.6
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 2,
+  "bayWidths": [
+   2.1,
+   4.0
+  ],
+  "bayFill": [
+   0.67,
+   0.64
+  ],
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "storeyWindows": {
+   "0": "casement-triple"
+  },
+  "storeyHeights": [
+   3.1,
+   3.0,
+   3.0,
+   3.0
+  ],
+  "windowHeights": [
+   0.63,
+   0.67,
+   0.67,
+   0.45
+  ],
+  "headLines": [
+   0.95,
+   0.97,
+   0.97,
+   0.88
+  ],
+  "bayWindows": {
+   "bays": {
+    "from": 1,
+    "to": 1
+   },
+   "storeys": [
+    1,
+    2,
+    3
+   ],
+   "oriel": {
+    "span": 2.75,
+    "projection": 0.7,
+    "returns": 0.52,
+    "stallriser": 0.9,
+    "head": 0.3,
+    "frontLights": 3,
+    "transom": 0.7,
+    "panels": {
+     "3": {
+      "head": 0.6
+     }
+    },
+    "console": true
+   }
+  }
+ },
+ "crowns": {
+  "overhang": {
+   "gable": "flat",
+   "eavesOverhang": {
+    "projection": 0.75,
+    "fascia": 0.45,
+    "colour": "#e4e1d8",
+    "soffit": "#d6cfc0"
+   },
+   "note": "the row's flat-roof overhang runs over the erker tops"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "groundCanopy": {
+    "projection": 0.45,
+    "thickness": 0.12,
+    "overhang": 0.08,
+    "doorOverhang": 0.25,
+    "gap": 0.08,
+    "colour": "#e4e1d8",
+    "over": [
+     "door"
+    ]
+   },
+   "note": "house doors under the narrow axis at the outer party wall; the erker console is the slab over the ground window"
+  }
+ },
+ "palettes": {
+  "brown-red": {
+   "brick": "#7a6a5f",
+   "frame": "#efeee8",
+   "door": "#86482a",
+   "stone": "#d6d3cc",
+   "cornice": "#e4e1d8"
+  }
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "match": {
+  "years": [
+   1932,
+   1936
+  ],
+  "eavesM": [
+   11.6,
+   13.0
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "roof": "flat",
+  "stucco": false,
+  "mirrorForAccent": "right",
+  "bagBay": true,
+  "bagBayOffset": [
+   0.17,
+   0.205
+  ],
+  "note": "the erker (2.75 m, brick-panelled) is the tell; the strip structure reads no light bay on it, so type and mirroring are decided by the photo (auto-place --photo-decides)"
+ },
+ "rhythm": {
+  "bays": "a narrow window axis and a wide erker axis",
+  "identicalBays": "no: narrow + erker",
+  "windowsPerStorey": "ground: doors + 1 wide | 1-3: 1 + erker",
+  "symmetry": "mirrored in pairs: the erkers stand either side of one party wall",
+  "groundFloor": "paired house doors at the outer party wall, a wide window under the erker",
+  "signage": "none",
+  "roofline": "flat roof with a deep white-fascia overhang over the erkers",
+  "photoRows": [
+   2,
+   2,
+   2,
+   2
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "boterdiep-6-34",
+   "pands": [
+    "090853",
+    "115959",
+    "112680",
+    "085458",
+    "067897",
+    "102848",
+    "075378",
+    "140075"
+   ],
+   "citation": "strip.jpg 2022-03-24 (40 px/m), ruler crop of 32-34: erker 2.65-5.4 m on the 6.1 m front (2.75 m), its foot slab 3.0-3.2 m, glazing 4.15-6.05 / 7.2-9.4 / 10.8-12.6 m rectified (the erker front is ~0.6 m nearer the 6.4 m camera, so true 4.1-5.7 / 6.7-8.7 / 10.0-11.6 m); narrow axis window 0.05-1.45 m, 4.0-6.0 m; doors 0-1.75 m"
+  },
+  {
+   "face": "boterdiep-36-66",
+   "pands": [
+    "093554",
+    "097792",
+    "109092",
+    "095439",
+    "067390",
+    "139791",
+    "142115"
+   ],
+   "citation": "strip.jpg 2020-01-07 re-rectified with the camera 2.1 m over the ground (intake --camera-height=2.1): narrow-axis sills 4.0 / 7.0 / 10.4 m, as on the 2022-03-24 strip; BAG outlines carry every erker 0.67-0.71 m deep, centre 0.30 or 0.69 of the front"
+  }
+ ],
+ "schemaLimits": [
+  "the two house doors under one transom are drawn as one door",
+  "the erker's glazing is rectified higher than it stands (it projects toward the camera); panels are set from the corrected heights"
+ ],
+ "notes": [
+  "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}

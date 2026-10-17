@@ -22,6 +22,7 @@ import type {StripPalette} from './stripPalette.ts';
 import type {Skyline} from './stripSkyline.ts';
 import type {StripStructure} from './stripStructure.ts';
 import {rgbToLab, type Rgb} from '../buildingRecipe/measureFacade.ts';
+import type {FrontBump} from './bayOutline.ts';
 import type {ShopfrontIntent} from '../buildingRecipe/intent.ts';
 
 /** How a library type is recognised (`match` in scripts/block-face/types/<district>/<id>.json). */
@@ -50,6 +51,12 @@ export interface TypeMatchRule {
   /** The type is drawn with its house door on this side; a pand whose door reads on the other side is mirrored (pairs). */
   mirrorForDoor?: 'left' | 'right';
   /**
+   * Doors pair across the party wall whatever the neighbour's type (`fillPairs`): a pand whose door was not read takes
+   * the side that meets a placed neighbour of any type whose door side is known (read, or set by its accent/BAG bay).
+   * Rivierenbuurt 1934 portiek rows: a flat front's door meets the door of the erker house beside it.
+   */
+  doorsPairAcross?: boolean;
+  /**
    * The type is drawn with its light accent mass (a white bay stack) on this side; the strip's upper-storey accent
    * asymmetry is then a criterion (an even front scores 0) and a pand whose accent reads on the other side is mirrored.
    */
@@ -71,6 +78,14 @@ export interface TypeMatchRule {
    * dark and washed-out strips alike): the tile-bay oriels read 2.0-2.3 m, plain window columns at most 1.3 m.
    */
   bayWidthM?: [number, number];
+  /**
+   * The BAG outline carries a bay in front of the facade line (blockFace/bayOutline.ts `frontBump`, PandEvidence
+   * `bagBay`): true for an erker type, false for a flat front. A weighted criterion (3), not a veto: BAG can miss an erker.
+   * Rivierenbuurt 1934 rows: the brick-panelled erkers read no light bay on the strip, but BAG draws every one of them.
+   */
+  bagBay?: boolean;
+  /** Range of |bay centre - 0.5| (share of the front): Boterdiepstraat's side erkers 0.18-0.19, Eemsstraat's 0.06-0.10. */
+  bagBayOffset?: [number, number];
   crowns?: Record<string, CrownRule & {alt?: CrownRule}>;
   note?: string;
 }
@@ -88,6 +103,8 @@ export interface StripEvidence {
   palette: StripPalette;
   /** The wall colour normalised by the light trim (measureFacade `wall.hex`): exposure-independent, what the likeness gate compares. */
   wall: string | null;
+  /** `rowExposure` only: the pand's own trim-normalised wall before the row's gain replaced it. */
+  wallOwnGain?: string;
   skyline: Skyline | null;
   /** Body-band shares that are no evidence: the strip's grey placeholder and foliage. */
   voidShare: number; foliageShare: number;
@@ -115,6 +132,8 @@ export interface PandEvidence {
   groundUses: string[];
   osm: {type: string; id: number; name?: string; category?: string}[];
   strip?: StripEvidence;
+  /** The bay of the pand's BAG outline in front of its facade line (`frontBump` of the discovered front), null when straight; undefined = not read. */
+  bagBay?: FrontBump | null;
 }
 
 export interface Criterion { key: string; score: number | null; weight: number; note: string }
@@ -178,7 +197,7 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
     const s = storeysFor(t, ev.eavesM), p = storeyPitch(t), off = Math.abs(ev.eavesM / s - p) / p;
     criteria.push({key: 'eaves', weight: W.eaves, score: off <= 0.08 ? 1 : off <= 0.15 ? 0.5 : 0, note: `3DBAG eaves ${r2(ev.eavesM)} m = ${s} storeys of ${r2(ev.eavesM / s)} m vs the type's ${r2(p)} m`});
   }
-  if (m.storeys3dbag) criteria.push({key: 'storeys', weight: W.storeys, score: ev.storeys3dbag === null ? null : m.storeys3dbag.includes(ev.storeys3dbag) ? 1 : 0, note: `3DBAG bouwlagen ${ev.storeys3dbag ?? '-'} vs ${m.storeys3dbag.join('/')}`});
+  if (m.storeys3dbag) criteria.push({key: 'storeys', weight: W.storeys, score: !ev.storeys3dbag ? null : m.storeys3dbag.includes(ev.storeys3dbag) ? 1 : 0, note: `3DBAG bouwlagen ${ev.storeys3dbag ?? '-'} vs ${m.storeys3dbag.join('/')}`});
   if (m.roof) {
     const rise = ev.roofMaxM - ev.eavesM, form = rise < AUTO_PLACE.flatRoofRiseM ? 'flat' : 'pitched';
     criteria.push({key: 'roof', weight: W.roof, score: form === m.roof ? 1 : 0, note: `roof rise ${r2(rise)} m (${form}) vs ${m.roof}`});
@@ -195,6 +214,11 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   }
   const st = usable ? s!.structure ?? null : null;
   if (m.balconies === false && st?.balconies) veto.push(`strip shows balconies (${st.balconyWhy})`);
+  if (m.bagBay !== undefined && ev.bagBay !== undefined) {
+    const off = ev.bagBay ? Math.abs(ev.bagBay.centre - 0.5) : null, offOk = !m.bagBayOffset || (off !== null && off >= m.bagBayOffset[0] && off <= m.bagBayOffset[1]);
+    criteria.push({key: 'bag-bay', weight: 3, score: !!ev.bagBay === m.bagBay && (!m.bagBay || offOk) ? 1 : 0,
+      note: ev.bagBay ? `BAG outline bay ${ev.bagBay.fromM}-${ev.bagBay.toM} m, ${ev.bagBay.depthM} m deep, centre ${ev.bagBay.centre}` : 'BAG outline straight'});
+  }
   if (m.bayWidthM) criteria.push({key: 'bay', weight: 3, score: st ? (st.bayWidthM >= m.bayWidthM[0] && st.bayWidthM <= m.bayWidthM[1] ? 1 : 0) : null, note: st ? `widest light bay ${st.bayWidthM} m vs ${m.bayWidthM.join('-')} m` : 'no strip structure'});
   if (m.accentShare) criteria.push({key: 'accent-share', weight: 2, score: usable && s!.accentShare !== undefined ? (s!.accentShare >= m.accentShare[0] && s!.accentShare <= m.accentShare[1] ? 1 : 0) : null, note: usable ? `upper accent share ${s!.accentShare ?? '-'} vs ${m.accentShare.join('-')}` : 'no strip'});
   if (m.mirrorForAccent) { const side = usable ? accentSideOf(s!) : null; criteria.push({key: 'accent-side', weight: 2, score: usable ? (side ? 1 : 0) : null, note: usable ? `upper accent ${side ?? 'even'} (type: one-sided)` : 'no strip'}); }
@@ -256,11 +280,13 @@ export function decidePand(types: MatchableType[], ev: PandEvidence, slug: strin
   // Door side: the type's grounds are authored door-left / door-right; the measured side picks one, unread keeps the first.
   const grounds = Object.keys(t.grounds ?? {});
   if (trading) placement.ground = {shopfront: autoShopfront(ev, use)};
-  const aSide = accentSideOf(s);
+  // A bay in the BAG outline gives the accent side outright (it does not depend on the strip's exposure).
+  const bagSide = ev.bagBay && Math.abs(ev.bagBay.centre - 0.5) >= 0.1 ? (ev.bagBay.centre < 0.5 ? 'left' : 'right') : null;
+  const aSide = bagSide ?? accentSideOf(s);
   if (t.match?.mirrorForAccent && aSide) { if (aSide !== t.match.mirrorForAccent) placement.mirror = true; notes.push(`accent ${aSide}${placement.mirror ? ': mirrored' : ''}`); }
   else if (t.match?.mirrorForDoor) { if (s.doorSide && s.doorSide !== t.match.mirrorForDoor) placement.mirror = true; notes.push(`door ${s.doorSide ?? 'unread'}${placement.mirror ? ': mirrored' : ''}`); }
   else if (!trading && s.doorSide && grounds.includes(`door-${s.doorSide}`)) placement.ground = `door-${s.doorSide}`;
-  if (s.wall && !s.palette.stucco && s.foliageShare <= AUTO_PLACE.maxFoliage) placement.measuredPalette = {brick: s.wall, evidence: `strip ${s.date} span ${s.px.join('-')}: trim-normalised wall (buildingRecipe/measureFacade.ts)`};
+  if (s.wall && !s.palette.stucco && s.foliageShare <= AUTO_PLACE.maxFoliage) placement.measuredPalette = {brick: s.wall, evidence: `strip ${s.date} span ${s.px.join('-')}: ${s.wallOwnGain ? `raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain ${s.wallOwnGain})` : 'trim-normalised wall (buildingRecipe/measureFacade.ts)'}`};
   const crown = crownFor(t, s.skyline);
   if (crown.name !== Object.keys(t.crowns)[0]) placement.crown = crown.name;
   notes.push(crown.why);
@@ -286,20 +312,136 @@ export function crownFor(t: MatchableType, sky: Skyline | null): {name: string; 
 }
 
 /**
+ * One exposure for a row (auto-place `--row-exposure`). The trim normalisation of each pand's wall (measureFacade: the
+ * p97 light cells to 215/255) takes whatever is lightest in that pand for white, so on one strip of one brick the gain
+ * follows the house type, not the light: Hoendiepstraat 5-35 (2023-01-03) 1.26-1.36 under the white attic storey and
+ * 0.82-0.88 where a van or a tree covers it; Eemsstraat 6-36 1.35 at the white-framed erkers, 0.93 at the flat fronts.
+ * Here every unpainted pand with both readings takes its raw strip wall (stripPalette `wall`) times the median gain of
+ * the face, per channel, so a row keeps the differences in its bricks and loses those of its trim. Returns the gain, or
+ * null (nothing changed) with fewer than four such pands.
+ */
+export function rowExposure(evs: PandEvidence[], given?: [number, number, number]): [number, number, number] | null {
+  const use = evs.filter(e => e.strip?.wall && e.strip.palette.wall && !e.strip.palette.stucco);
+  if (!given && use.length < 4) return null;
+  const gain = given ?? medianGain(trimGains(evs));
+  for (const e of use) {
+    const r = hexRgb(e.strip!.palette.wall!), hex = '#' + r.map((v, c) => Math.min(255, Math.round(v * gain[c])).toString(16).padStart(2, '0')).join('');
+    e.strip!.wallOwnGain = e.strip!.wall!; e.strip!.wall = hex;
+  }
+  return gain;
+}
+/** Per pand (unpainted, both readings): the trim normalisation's gain per channel, trim-normalised wall over raw strip wall. */
+export function trimGains(evs: PandEvidence[]): number[][] {
+  return evs.filter(e => e.strip?.wall && e.strip.palette.wall && !e.strip.palette.stucco)
+    .map(e => { const w = hexRgb(e.strip!.wall!), r = hexRgb(e.strip!.palette.wall!); return w.map((v, c) => v / Math.max(1, r[c])); });
+}
+/**
+ * The median per channel of many pands' gains. `--row-exposure=date` pools every face of the run photographed on one
+ * day: one light, one exposure (Hoendiepstraat 5-35's own median, 1.33, is its white attic storey; the other faces of
+ * 2023-01-03, Eemsstraat and Hoendiepstraat 2-60, read 0.94).
+ */
+export function medianGain(gains: number[][]): [number, number, number] {
+  const median = (xs: number[]) => { const q = [...xs].sort((x, y) => x - y), m = q.length >> 1; return q.length % 2 ? q[m] : (q[m - 1] + q[m]) / 2; };
+  return [0, 1, 2].map(c => +median(gains.map(g => g[c])).toFixed(3)) as [number, number, number];
+}
+
+/**
+ * Row coherence for the BAG erker (Rivierenbuurt 1934 rows). Two rules; the presence of a BAG erker outline is a fact
+ * they never override, its offset along the front is not:
+ *
+ * 1. Between two of a kind. The types of a street side tell their erker apart by its place in the BAG outline
+ *    (`match.bagBayOffset`), and BAG digitises the same erker 0.05-0.15 of the front apart from house to house
+ *    (Boterdiepstraat 25: 0.75 among 0.65s), so a lone pand lands on a neighbour row's type. A placed pand between two
+ *    placed neighbours of one other type (across at most one held pand on each side: Hoendiepstraat 13 beside the held
+ *    11), drawn the same way round, takes their type and side. A pand BAG draws with an erker never becomes a type
+ *    without one.
+ * 2. The rhythm. The rows repeat every four houses (erker pair, then flat pair). A placed pand takes the type and side
+ *    of the houses four along when those of them that BAG draws with an erker agree and at least one does: BAG misses
+ *    some erkers the photo shows (Eemsstraat 22 and 14, Boterdiepstraat 50) and puts others off their row's place
+ *    (Hoendiepstraat 8: 0.25 among 0.31s). Again an erker in BAG is never dropped.
+ *
+ * The adopted type is scored with the reference house's BAG bay (the row's erker place), so it places on the same
+ * evidence as its neighbours. Returns the pands changed.
+ */
+export function rowCoherence(decisions: Decision[], types: MatchableType[], evs: PandEvidence[], photoDate: string): string[] {
+  const changed: string[] = [];
+  type P = {kind: 'placed'} & Placed;
+  const placedAt = (j: number) => j >= 0 && j < decisions.length && decisions[j].kind === 'placed' ? decisions[j] as P : null;
+  const adopt = (k: number, t: MatchableType, ref: number, why: string) => {
+    const d = decisions[k] as P, r = decisions[ref] as P, bay = evs[k].bagBay, mirror = !!r.house.type?.mirror;
+    let nd = decidePand([t], {...evs[k], bagBay: evs[ref].bagBay ?? bay}, d.house.slug, photoDate);
+    if (nd.kind !== 'placed') {
+      const {bagBay: _bay, bagBayOffset: _offset, ...rest} = t.match!;
+      nd = decidePand([{...t, match: rest} as MatchableType], evs[k], d.house.slug, photoDate);
+    }
+    if (nd.kind !== 'placed') return;
+    if (mirror) nd.house.type!.mirror = true; else delete nd.house.type!.mirror;
+    nd.notes = [...nd.notes.filter(x => !/^(accent|door) |^bag-bay /.test(x)), `row coherence: ${why}, was ${d.typeId}${d.house.type?.mirror ? ' (mirrored)' : ''}${bay ? ` (BAG bay centre ${bay.centre})` : ' (no BAG bay)'}`];
+    decisions[k] = nd; changed.push(d.pandId);
+  };
+  const same = (x: P, y: P) => x.typeId === y.typeId && !!x.house.type?.mirror === !!y.house.type?.mirror;
+  const keepsBay = (k: number, t: MatchableType | undefined) => !!t?.match && t.match.bagBay !== undefined && !(evs[k].bagBay && !t.match.bagBay);
+  for (let k = 1; k + 1 < decisions.length; k++) {
+    const d = placedAt(k);
+    const ia = placedAt(k - 1) ? k - 1 : decisions[k - 1].kind === 'held' && placedAt(k - 2) ? k - 2 : -1;
+    const ib = placedAt(k + 1) ? k + 1 : decisions[k + 1].kind === 'held' && placedAt(k + 2) ? k + 2 : -1;
+    if (!d || ia < 0 || ib < 0) continue;
+    const a = decisions[ia] as P, b = decisions[ib] as P;
+    if (!same(a, b) || a.typeId === d.typeId) continue;
+    const t = types.find(x => x.id === a.typeId);
+    if (!keepsBay(k, t)) continue;
+    adopt(k, t!, ia, `between two ${t!.id}${a.house.type?.mirror ? ' (mirrored)' : ''} houses`);
+  }
+  for (let k = 0; k < decisions.length; k++) {
+    const d = placedAt(k);
+    if (!d || evs[k].bagBay === undefined || changed.includes(d.pandId)) continue;
+    const at = [k - 4, k + 4].filter(j => placedAt(j) && evs[j].bagBay), anchors = at.map(j => decisions[j] as P);
+    if (!anchors.length || anchors.some(x => !same(x, anchors[0])) || same(anchors[0], d)) continue;
+    // A pand with its own BAG erker is moved only on a confirmed rhythm: two anchors, or one whose own house four further
+    // on agrees with it (Hoendiepstraat 16 and 24 for 8), never on one house at the end of a face.
+    const confirmed = at.length === 2 || at.some(j => { const far = placedAt(2 * j - k); return !!far && !!evs[2 * j - k].bagBay && same(far, decisions[j] as P); });
+    if (evs[k].bagBay && !confirmed) continue;
+    const t = types.find(x => x.id === anchors[0].typeId);
+    if (!t?.match?.bagBay || !keepsBay(k, t)) continue;
+    adopt(k, t, at[0], `the row repeats every four houses: ${anchors.map(x => x.pandId.slice(-6)).join(' and ')} (BAG erker) are ${t.id}${anchors[0].house.type?.mirror ? ' (mirrored)' : ''}`);
+  }
+  return changed;
+}
+
+/**
  * Mirrored pairs (`match.mirrorForDoor`): a pand whose door was not read takes the opposite of a same-type neighbour
  * whose door was (the doors of a pair meet at one party wall, so neighbours alternate).
  */
 export function fillPairs(decisions: Decision[], types: MatchableType[]): number {
   let filled = 0;
-  for (let k = 0; k < decisions.length; k++) {
+  for (let sweep = 0, before = -1; sweep < 4 && filled !== before; sweep++) { before = filled; for (let k = 0; k < decisions.length; k++) {
     const d = decisions[k];
     if (d.kind !== 'placed' || !d.notes.includes('door unread') || !types.find(t => t.id === d.typeId)?.match?.mirrorForDoor) continue;
+    const t = types.find(x => x.id === d.typeId)!;
+    if (sweep > 0 && !t.match?.doorsPairAcross) continue; // later sweeps chain cross-type pairs only (same-type pairing is one forward pass)
+    if (t.match?.doorsPairAcross) {
+      // The neighbour's door side: its authored door ground, flipped when mirrored; known unless its own door is unread.
+      const sideOf = (x: Decision | undefined): 'left' | 'right' | null => {
+        if (x?.kind !== 'placed' || x.notes.includes('door unread')) return null;
+        const g = typeof x.house.type?.ground === 'string' ? x.house.type.ground : Object.keys(types.find(y => y.id === x.typeId)?.grounds ?? {})[0];
+        const s = g === 'door-left' ? 'left' : g === 'door-right' ? 'right' : null;
+        return s && x.house.type?.mirror ? (s === 'left' ? 'right' : 'left') : s;
+      };
+      const left = sideOf(decisions[k - 1]), right = sideOf(decisions[k + 1]);
+      const want = left === 'right' ? 'left' : right === 'left' ? 'right' : left === 'left' ? 'right' : right === 'right' ? 'left' : null;
+      if (!want) continue;
+      if (want !== t.match.mirrorForDoor) d.house.type!.mirror = true; else delete d.house.type!.mirror;
+      const mate = left ? decisions[k - 1] as Placed : decisions[k + 1] as Placed;
+      d.notes[d.notes.indexOf('door unread')] = `door unread: ${d.house.type!.mirror ? 'mirrored' : 'as drawn'}, paired with ${mate.pandId.slice(-6)}'s door`;
+      filled++;
+      continue;
+    }
     const mate = [decisions[k - 1], decisions[k + 1]].find(x => x?.kind === 'placed' && x.typeId === d.typeId && !x.notes.includes('door unread')) as Placed | undefined;
     if (!mate) continue;
     if (!mate.house.type!.mirror) d.house.type!.mirror = true; else delete d.house.type!.mirror;
     d.notes[d.notes.indexOf('door unread')] = `door unread: ${d.house.type!.mirror ? 'mirrored' : 'as drawn'}, the opposite of ${mate.pandId.slice(-6)}`;
     filled++;
-  }
+  } }
   return filled;
 }
 
