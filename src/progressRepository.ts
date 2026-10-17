@@ -65,3 +65,9 @@ export async function syncProgress(user: User): Promise<ReviewState[]> {
   await batch.commit();
   return Object.values(localStates);
 }
+
+/** The local review-event log (Map Quest and Canal Recall write the same key). */
+export function loadLocalReviewEvents(): ReviewEvent[] {
+  const events = read<Record<string, ReviewEvent> | ReviewEvent[]>(EVENTS_KEY, {});
+  return Array.isArray(events) ? events : Object.values(events ?? {});
+}

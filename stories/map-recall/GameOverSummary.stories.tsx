@@ -30,6 +30,7 @@ const EndScreen: React.FC<{ withPostcard: boolean; width: number; height: number
       allCities={CITIES}
       reviewStatesBefore={session.before}
       reviewStatesAfter={session.after}
+      reviewEvents={session.events}
       now={STORY_NOW}
     />
   </div>;
