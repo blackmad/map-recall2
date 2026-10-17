@@ -7,13 +7,19 @@
   "suppressOsmIds": [],
   "spatialSuppression": false,
   "footprint": {
-    "centre": [4.874086, 52.360017],
+    "centre": [
+      4.874086,
+      52.360017
+    ],
     "headingDegrees": 0,
     "lengthMetres": 13.4,
     "widthMetres": 13.4
   },
   "surveyed": {
-    "anchor": [4.874086, 52.360017],
+    "anchor": [
+      4.874086,
+      52.360017
+    ],
     "northOffsetDegrees": 0,
     "source": "Backlog destination point (OSM memorial); statue facing read from Gemeente Amsterdam panoramas (2017-04-13) - a visual estimate, not a surveyed bearing"
   },
@@ -26,11 +32,11 @@
     "dark": "#2c2e30"
   },
   "attribution": {
-    "title": "Vondelmonument - original low-poly interpretation",
-    "author": "Map Recall; commemorated sculpture by Louis Royer (1867)",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam,_Vondelpark_monument_of_Joost_van_den_Vondel.jpg",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free geometric figures, pedestal and kerb. Proportions and pose from Gemeente Amsterdam panoramas (CC BY 4.0), Commons photograph by Dguendel (CC BY 4.0) and Rijksmuseum RP-F-F01187-BS (CC0); dimensions estimated. No pixels or third-party meshes imported."
+    "title": "Vondelmonument - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Louis Royer (statue); P.J.H. Cuypers (pedestal) (1867); figure reconstructed from photographs by Wikifrits, Ceescamel",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam_kunstwerk_joost_van_den_vondel.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Amsterdam kunstwerk joost van den vondel.jpg\" by Wikifrits (CC0, https://commons.wikimedia.org/wiki/File:Amsterdam_kunstwerk_joost_van_den_vondel.jpg); \"Vondelbeeld in 2019 (24).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Vondelbeeld_in_2019_(24).jpg); \"Vondelbeeld in 2019 (26).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Vondelbeeld_in_2019_(26).jpg); \"Vondelbeeld in 2019 (28).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Vondelbeeld_in_2019_(28).jpg); \"Vondelbeeld in 2019 (29).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Vondelbeeld_in_2019_(29).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/vondelmonument.json."
   }
 }

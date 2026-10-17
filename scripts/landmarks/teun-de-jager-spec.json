@@ -30,11 +30,11 @@
     "bronze": "#2c3835"
   },
   "attribution": {
-    "title": "Teun de Jager - original low-poly reconstruction",
-    "author": "Map Recall; after the 1958 statue by Jan Bronner",
-    "sourceUrl": "https://www.openstreetmap.org/node/5653694042",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free low-poly figure and plinth from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or third-party meshes imported."
+    "title": "Teun de Jager (Vondelpark) - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Jan Bronner (1958); figure reconstructed from photographs by Ceescamel",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(02).jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"2019 Teun de Jager (02).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(02).jpg); \"2019 Teun de Jager (03).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(03).jpg); \"2019 Teun de Jager (04).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(04).jpg); \"2019 Teun de Jager (05).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(05).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/teun-de-jager.json."
   }
 }

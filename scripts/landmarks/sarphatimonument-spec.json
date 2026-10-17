@@ -36,11 +36,11 @@
     "dark": "#1f2326"
   },
   "attribution": {
-    "title": "Sarphatimonument - original low-poly reconstruction",
-    "author": "Map Recall; commemorated monument of 1886 (bust by Jacques de Braekeleer)",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Sarphati_monument",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free low-poly monument. Layout and proportions measured from Commons photographs by Ceescamel (CC BY-SA 4.0) and SanderK (CC BY-SA 2.5); no pixels or third-party meshes imported."
+    "title": "Sarphatimonument - reconstruction from photographs",
+    "author": "Map Recall; sculpture by J.Th. Stracké (bust); J. Gosschalk (monument) (1886); figure reconstructed from photographs by Huegette D. Eldering, Alf van Beem, Wikifrits",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sarpahti_monument.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figure reconstructed (TripoSR single-view) from Wikimedia Commons photographs: \"Sarpahti monument.jpg\" by Huegette D. Eldering (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Sarpahti_monument.jpg); \"Sarphatipark pic5.JPG\" by Alf van Beem (Public domain, https://commons.wikimedia.org/wiki/File:Sarphatipark_pic5.JPG); \"Amsterdam monument samuel sarphati.jpg\" by Wikifrits (CC0, https://commons.wikimedia.org/wiki/File:Amsterdam_monument_samuel_sarphati.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/sarphatimonument.json."
   }
 }

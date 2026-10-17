@@ -32,11 +32,11 @@
     "white": "#d8d0bc"
   },
   "attribution": {
-    "title": "Multatuli statue - original low-poly reconstruction",
-    "author": "Map Recall; commemorated bust by Hans Bayens (1987)",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Multatuli_statue,_Torensluis,_Amsterdam",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free low-poly bust and granite block. Form and proportions from Commons photographs (FaceMePLS CC BY 2.0; Paul van Galen / RCE CC BY-SA 4.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+    "title": "Multatuli statue (Torensluis) - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Hans Bayens (1987); figure reconstructed from photographs by Vysotsky, Brbbl, Paul van Galen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam32.JPG",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Amsterdam32.JPG\" by Vysotsky (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Amsterdam32.JPG); \"Multatuli Hans Bayens Torensluis Amsterdam.jpg\" by Brbbl (CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Multatuli_Hans_Bayens_Torensluis_Amsterdam.jpg); \"Brug 9- Torensluis over het Singel - toeristen rond het standbeeld van Mutatuli (buste door Hans Bayens, 1987) - Amsterdam - 20536117 - RCE.jpg\" by Paul van Galen (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Brug_9-_Torensluis_over_het_Singel_-_toeristen_rond_het_standbeeld_van_Mutatuli_(buste_door_Hans_Bayens,_1987)_-_Amsterdam_-_20536117_-_RCE.jpg); \"Brug 9- Torensluis over het Singel - toeristen rond het standbeeld van Mutatuli (buste door Hans Bayens, 1987) - Amsterdam - 20536116 - RCE.jpg\" by Paul van Galen (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Brug_9-_Torensluis_over_het_Singel_-_toeristen_rond_het_standbeeld_van_Mutatuli_(buste_door_Hans_Bayens,_1987)_-_Amsterdam_-_20536116_-_RCE.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/multatuli-standbeeld.json."
   }
 }

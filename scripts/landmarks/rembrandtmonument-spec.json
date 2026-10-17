@@ -7,13 +7,19 @@
   "suppressOsmIds": [],
   "spatialSuppression": false,
   "footprint": {
-    "centre": [4.8965948, 52.3660041],
+    "centre": [
+      4.8965948,
+      52.3660041
+    ],
     "headingDegrees": 0,
     "lengthMetres": 11.3,
     "widthMetres": 6.8
   },
   "surveyed": {
-    "anchor": [4.8965948, 52.3660041],
+    "anchor": [
+      4.8965948,
+      52.3660041
+    ],
     "northOffsetDegrees": 0,
     "source": "Backlog destination point (OSM memorial); statue position and facing read from Gemeente Amsterdam panoramas (2025-06-19); the facing is a visual estimate, not a surveyed bearing"
   },
@@ -27,11 +33,11 @@
     "copper": "#4a524c"
   },
   "attribution": {
-    "title": "Rembrandtmonument - original low-poly interpretation",
-    "author": "Map Recall; commemorated sculpture by Louis Royer (1852)",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Standbeeld_van_Rembrandt_Harmensz._van_Rijn_op_het_Rembrandtplein_te_Amsterdam,_RP-P-1933-342.jpg",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free geometric figure and terrace. Pose and costume from the Rijksmuseum print RP-P-1933-342 (CC0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the panoramas. No pixels or third-party meshes imported."
+    "title": "Rembrandtmonument - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Louis Royer (1852); figure reconstructed from photographs by Elekes Andor, Yair Haklai, Владимир Шеляпин, Julien Chatelain from Paris, France",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rembrandtplein_(11).jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Rembrandtplein (11).jpg\" by Elekes Andor (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Rembrandtplein_(11).jpg); \"Louis Royer-Rembrandt-Amsterdam.jpg\" by Yair Haklai (CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Louis_Royer-Rembrandt-Amsterdam.jpg); \"Rembrandt.JPG\" by Владимир Шеляпин (CC0, https://commons.wikimedia.org/wiki/File:Rembrandt.JPG); \"Rembrandt (42707741651).jpg\" by Julien Chatelain from Paris, France (CC BY-SA 2.0, https://commons.wikimedia.org/wiki/File:Rembrandt_(42707741651).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/rembrandtmonument.json."
   }
 }

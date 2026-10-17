@@ -35,11 +35,11 @@
     "white": "#e2dccb"
   },
   "attribution": {
-    "title": "Anne Frank statue, Merwedeplein - original low-poly reconstruction",
-    "author": "Map Recall; commemorated sculpture by Mari Andriessen (1977)",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Anne_Frank_statue,_Merwedeplein,_Amsterdam",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free low-poly figure and granite block. Pose, coat and bags from Commons photographs (CC BY-SA 4.0, 3.0, 2.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+    "title": "Anne Frank statue (Merwedeplein) - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Jet Schepp (2005); figure reconstructed from photographs by Christian Michelides, Ceescamel",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anne_Frank-Denkmal_Amsterdam_03.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Anne Frank-Denkmal Amsterdam 03.jpg\" by Christian Michelides (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Anne_Frank-Denkmal_Amsterdam_03.jpg); \"Anne Frank 2019, Merwedeplein (3).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Anne_Frank_2019,_Merwedeplein_(3).jpg); \"Anne Frank 2019, Merwedeplein (1).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Anne_Frank_2019,_Merwedeplein_(1).jpg); \"Anne Frank-Denkmal Amsterdam 02.jpg\" by Christian Michelides (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Anne_Frank-Denkmal_Amsterdam_02.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/anne-frank-merwedeplein.json."
   }
 }

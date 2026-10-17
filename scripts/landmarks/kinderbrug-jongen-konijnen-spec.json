@@ -30,11 +30,11 @@
     "brick": "#8f4c3b"
   },
   "attribution": {
-    "title": "Kinderbrug: Boy with rabbits (Hildo Krop) - original low-poly reconstruction",
-    "author": "Map Recall; after the group by Hildo Krop on bridge 420",
-    "sourceUrl": "https://www.openstreetmap.org/node/4370459609",
-    "modifications": "Original texture-free low-poly pier and group built from Commons photographs: Brug 420 Kinderbrug pic 7 and Jongen met konijnen, beeld op de Kinder(tjes)brug (Alf van Beem, public domain), Brug over Boerenwetering (Beeld van Jongen met konijnen) and Beeld door hildo krop. Kinderbrug (Marcelmulder68, CC BY-SA 3.0 nl). No pixels or third-party meshes imported.",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE"
+    "title": "Kinderbrug: Boy with rabbits (Hildo Krop) - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Hildo Krop (1931); figure reconstructed from photographs by Paul van Galen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brug_over_Boerenwetering_beeldhouwwerk_tussen_Churchilllaan_en_Muzenplein_-_Amsterdam_-_20011022_-_RCE.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figure reconstructed (TripoSR single-view) from Wikimedia Commons photographs: \"Brug over Boerenwetering beeldhouwwerk tussen Churchilllaan en Muzenplein - Amsterdam - 20011022 - RCE.jpg\" by Paul van Galen (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Brug_over_Boerenwetering_beeldhouwwerk_tussen_Churchilllaan_en_Muzenplein_-_Amsterdam_-_20011022_-_RCE.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/kinderbrug-jongen-konijnen.json."
   }
 }

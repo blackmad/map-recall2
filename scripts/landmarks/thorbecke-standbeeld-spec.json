@@ -11,8 +11,8 @@
       52.3650584
     ],
     "headingDegrees": 0,
-    "lengthMetres": 6.0,
-    "widthMetres": 6.0
+    "lengthMetres": 6,
+    "widthMetres": 6
   },
   "surveyed": {
     "anchor": [
@@ -33,11 +33,11 @@
     "dark": "#1c1f22"
   },
   "attribution": {
-    "title": "Thorbecke statue - original low-poly reconstruction",
-    "author": "Map Recall; commemorated sculpture by Ferdinand Leenhoff (1876)",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Statue_of_Johan_Rudolph_Thorbecke,_Amsterdam",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free low-poly figure, pedestal and railing. Pose and costume from Commons photographs (public domain; CC BY-SA 3.0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the photographs. No pixels or third-party meshes imported."
+    "title": "Thorbecke statue - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Ferdinand Leenhoff (1876); figure reconstructed from photographs by Brbbl, Phyzome, Gerard Dukker",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thorbecke_statue_Amsterdam.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Thorbecke statue Amsterdam.jpg\" by Brbbl (uploader; no Artist field) (CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Thorbecke_statue_Amsterdam.jpg); \"Thorbecke statue - amsterdam nl.jpg\" by Phyzome (uploader; no Artist field) (Public domain, https://commons.wikimedia.org/wiki/File:Thorbecke_statue_-_amsterdam_nl.jpg); \"Exterieur OVERZICHT - Amsterdam - 20292626 - RCE.jpg\" by Gerard Dukker (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Exterieur_OVERZICHT_-_Amsterdam_-_20292626_-_RCE.jpg); \"Eind, overzicht - Amsterdam - 20021118 - RCE.jpg\" by Gerard Dukker (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Eind,_overzicht_-_Amsterdam_-_20021118_-_RCE.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/thorbecke-standbeeld.json."
   }
 }

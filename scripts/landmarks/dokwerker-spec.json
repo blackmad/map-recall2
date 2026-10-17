@@ -28,11 +28,11 @@
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 0,
   "attribution": {
-    "title": "De Dokwerker — original faceted interpretation",
-    "author": "Map Recall; commemorated sculpture by Mari Andriessen",
-    "sourceUrl": "https://www.4en5mei.nl/oorlogsmonumenten/zoeken/1434/amsterdam-de-dokwerker",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free geometric silhouette with documented1.60m pedestal and2.60m standing figure; body/pose divisions and facing approximate. Exact node position. No surrounding buildings or plaza replaced."
+    "title": "De Dokwerker - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Mari Andriessen (1952); figure reconstructed from photographs by A.A.W.J. Rietman, Bert Verhoeff for Anefo, Joop van Bilsen for Anefo",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_07.JPG",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Amsterdam, De dokwerker 07.JPG\" by A.A.W.J. Rietman (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_07.JPG); \"Herdenking februaristaking vlag halfstok bij dokwerken, Bestanddeelnr 925-4107.jpg\" by Bert Verhoeff for Anefo (CC0, https://commons.wikimedia.org/wiki/File:Herdenking_februaristaking_vlag_halfstok_bij_dokwerken,_Bestanddeelnr_925-4107.jpg); \"Herdenking februaristaking 1941 op Jonas Daniel Meijerplein Na de kranslegging , Bestanddeelnr 916-0908.jpg\" by Joop van Bilsen for Anefo (CC0, https://commons.wikimedia.org/wiki/File:Herdenking_februaristaking_1941_op_Jonas_Daniel_Meijerplein_Na_de_kranslegging_,_Bestanddeelnr_916-0908.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/de-dokwerker.json."
   }
 }
