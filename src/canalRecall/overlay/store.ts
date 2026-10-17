@@ -16,6 +16,11 @@ export interface AccountState {
   note: string;
   buttonLabel: string;
   busy: boolean;
+  /** Set by the recall store's user listener; older callers infer it from `buttonLabel`. */
+  signedIn?: boolean;
+  photoURL?: string | null;
+  /** False when this build has no Firebase config (guest-only). */
+  available?: boolean;
 }
 
 export interface OverlayState {
@@ -36,6 +41,8 @@ export const GUEST_ACCOUNT: AccountState = {
   note: 'Sign in to keep your progress on every device',
   buttonLabel: 'Sign in',
   busy: false,
+  signedIn: false,
+  photoURL: null,
 };
 
 export function createOverlayStore(initial: CanalPreferences) {
