@@ -9,7 +9,7 @@ run exactly as before with no keys.
 | --- | --- | --- | --- |
 | Sentry | Map Quest (`src/main.tsx`) | `import.meta.env` | `VITE_SENTRY_DSN`, `VITE_RELEASE` |
 | Sentry | Canal Recall (`src/canalRecall/monitoring.ts`) | `window.CANAL_RUNTIME_CONFIG` | `SENTRY_DSN`, `GITHUB_SHA` |
-| App Check | Map Quest (`src/firebase.ts`) | `import.meta.env` | `VITE_APPCHECK_SITE_KEY`, `VITE_APPCHECK_PROVIDER`, `VITE_APPCHECK_DEBUG_TOKEN` |
+| App Check | Map Quest (`src/firebase.ts`) | `import.meta.env` | `VITE_APPCHECK_SITE_KEY`, `VITE_APPCHECK_DEBUG_TOKEN` |
 | App Check | Canal Recall (`src/canalRecall/feedback/cloud.ts`) | `window.CANAL_RUNTIME_CONFIG` | `APPCHECK_SITE_KEY` |
 
 ## 1. Sentry
@@ -38,21 +38,25 @@ release.
 
 ## 2. Firebase App Check
 
-### Register a reCAPTCHA v3 key
+### Create a reCAPTCHA Enterprise key
 
-Create a **reCAPTCHA v3** site at <https://www.google.com/recaptcha/admin/create>
-and register these domains:
+Both apps use `ReCaptchaEnterpriseProvider` (the reCAPTCHA Enterprise API is
+enabled on `map-recall2-blackmad`). Create a score-based website key:
 
-- `canalrecall.blackmad.com`
-- `edumap-blackmad.web.app`
-- `canalrecall-blackmad.web.app`
-- `localhost`
+```sh
+gcloud recaptcha keys create --project=map-recall2-blackmad \
+  --display-name="canal-recall web" --web --integration-type=score \
+  --domains=canalrecall.blackmad.com,canalrecall-blackmad.web.app,edumap-blackmad.web.app,localhost
+```
+
+or Google Cloud console → Security → reCAPTCHA → **Create key** (Website,
+score-based, no checkbox challenge), with the same domains.
 
 ### Register it in the Firebase console
 
 1. Firebase console → project `map-recall2-blackmad` → **App Check** → **Apps**.
-2. Add both apps (the edumap and canalrecall web apps).
-3. Set the provider to **reCAPTCHA v3** and paste the **site key** from above.
+2. Register both web apps (edumap and canalrecall) with **reCAPTCHA Enterprise**
+   and paste the key ID from above.
 
 The key is the **site key** (public), not the secret key. Store it as:
 
