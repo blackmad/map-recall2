@@ -734,13 +734,18 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   palette is about twice as light as measured walls. Next: measured colours
   for generic facades next to chunks (facade-colour pipeline). Whether shade
   sides go past 0.55 toward flat overcast light is the user's call.
-- **Bridge follow-ups** (2026-10-16, HISTORY "Bridges: canal-mouth
-  parapets"): the way-deck railing that runs diagonally across the cycle
-  path at the Jan Evertsenstraat/Erasmusgracht end (apply `parapetRuns`'
-  turn-in rule to way decks, end the parapet at the quay line); the
-  mid-span parapet jog on widened sides (BRU0063, BRU0108); the 31 of 1,294
-  road bridge ways still without a surface (`audit-bridge-surfaces.ts
-  --all`; 137 before way decks); cap that count in a check.
+- **Bridge follow-ups** (2026-10-17, HISTORY "Way decks: level over
+  underpasses, chained ways, parapets at the road edges"): 22 of 1,200 street
+  bridge ways still draw no surface (`audit-bridge-surfaces.ts --all --streets
+  --max=22`, several minutes, not yet in `check:canal`). 21 sit in polders
+  missing from `water-levels.json`, so the −1.77 default floods their decks
+  (Dijkwater −4.54, Th. Weeversweg −4.33, Aandammerbrug −2.28): add those
+  polder levels. Gevlebrug 991513319 is claimed by another deck at station 45
+  of 143; Provincialeweg 7038514 and Gooilandseweg 706268062 are refused for
+  an end over water; none investigated. With roads-v1 off the old half-width
+  parapet placement still applies. One new 1 m turn on OSM1150921009 (likely
+  the width step at the deck end), unchecked. The A10/A4 viaducts are at
+  grade in the ground model, so they show no elevated deck.
 
 - **Bridge names and cards after the askable-bridges pass (2026-10-16,
   HISTORY "Every named bridge is a bridge question", "Cards for the new
