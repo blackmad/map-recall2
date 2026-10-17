@@ -1,0 +1,7711 @@
+{
+ "buurt": "Spaarndammerbuurt-Noordwest",
+ "code": "EB04",
+ "identificatie": "03630980000108",
+ "slug": "spaarndammerbuurt-noordwest",
+ "sources": {
+  "outline": "api.data.amsterdam.nl gebieden/buurten (CC0)",
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (CC0)",
+  "threeDBag": "3DBAG api.3dbag.nl (CC BY 4.0)"
+ },
+ "surveyedAt": "2026-10-17",
+ "outlineRD": [
+  [
+   119560.273,
+   489605.387
+  ],
+  [
+   119579.706,
+   489607.944
+  ],
+  [
+   119612.964,
+   489609.114
+  ],
+  [
+   119828.88,
+   489599.685
+  ],
+  [
+   119873.065,
+   489595.977
+  ],
+  [
+   119901.785,
+   489592.555
+  ],
+  [
+   120006.301,
+   489574.714
+  ],
+  [
+   120038.27,
+   489570.682
+  ],
+  [
+   120070.416,
+   489568.458
+  ],
+  [
+   120224.231,
+   489563.279
+  ],
+  [
+   120231.613,
+   489561.849
+  ],
+  [
+   120240.271,
+   489558.87
+  ],
+  [
+   120247.79,
+   489554.96
+  ],
+  [
+   120255.618,
+   489549.228
+  ],
+  [
+   120301.859,
+   489496.429
+  ],
+  [
+   120245.951,
+   489452.945
+  ],
+  [
+   120051.855,
+   489359.432
+  ],
+  [
+   120029.286,
+   489349.446
+  ],
+  [
+   119999.095,
+   489333.845
+  ],
+  [
+   119988.791,
+   489325.64
+  ],
+  [
+   119969.508,
+   489300.137
+  ],
+  [
+   119888.649,
+   489359.352
+  ],
+  [
+   119876.446,
+   489354.518
+  ],
+  [
+   119850.808,
+   489371.799
+  ],
+  [
+   119815.193,
+   489397.796
+  ],
+  [
+   119649.984,
+   489524.53
+  ],
+  [
+   119543.476,
+   489601.996
+  ],
+  [
+   119560.273,
+   489605.387
+  ]
+ ],
+ "facesRule": "blockFace/buurtFaces.ts proposeFaces: per street and side, pands with a frontage on their address street joined by shared BAG party walls (>= 1 m, front normals within 0.8 dot); faces already authored are kept, not proposed",
+ "faces": [
+  {
+   "id": "hembrug-2-32",
+   "street": "Hembrugstraat",
+   "side": "even",
+   "seed": "0363100012137501",
+   "members": [
+    "0363100012109303",
+    "0363100012138043",
+    "0363100012144723",
+    "0363100012137501"
+   ],
+   "numbers": [
+    2,
+    32
+   ],
+   "lengthM": 44.3
+  },
+  {
+   "id": "hembrug-44-154",
+   "street": "Hembrugstraat",
+   "side": "even",
+   "seed": "0363100012145950",
+   "members": [
+    "0363100012070859",
+    "0363100012110068",
+    "0363100012103688",
+    "0363100012118245",
+    "0363100012132207",
+    "0363100012147064",
+    "0363100012116998",
+    "0363100012145950"
+   ],
+   "numbers": [
+    44,
+    154
+   ],
+   "lengthM": 93.7
+  },
+  {
+   "id": "hembrug-160-272",
+   "street": "Hembrugstraat",
+   "side": "even",
+   "seed": "0363100012116313",
+   "members": [
+    "0363100012099152",
+    "0363100012103705",
+    "0363100012073279",
+    "0363100012102874",
+    "0363100012115911",
+    "0363100012125901",
+    "0363100012067159",
+    "0363100012116313"
+   ],
+   "numbers": [
+    160,
+    272
+   ],
+   "lengthM": 84.6
+  },
+  {
+   "id": "hembrug-300-328",
+   "street": "Hembrugstraat",
+   "side": "even",
+   "seed": "0363100012110511",
+   "members": [
+    "0363100012066411",
+    "0363100012110511"
+   ],
+   "numbers": [
+    300,
+    328
+   ],
+   "lengthM": 30.2
+  },
+  {
+   "id": "hembrug-330-334",
+   "street": "Hembrugstraat",
+   "side": "even",
+   "seed": "0363100012119170",
+   "members": [
+    "0363100012119170"
+   ],
+   "numbers": [
+    330,
+    334
+   ],
+   "lengthM": 8.6
+  },
+  {
+   "id": "hembrug-336-340",
+   "street": "Hembrugstraat",
+   "side": "even",
+   "seed": "0363100012108079",
+   "members": [
+    "0363100012108079"
+   ],
+   "numbers": [
+    336,
+    340
+   ],
+   "lengthM": 7.1
+  },
+  {
+   "id": "hembrug-342-346",
+   "street": "Hembrugstraat",
+   "side": "even",
+   "seed": "0363100012064968",
+   "members": [
+    "0363100012064968"
+   ],
+   "numbers": [
+    342,
+    346
+   ],
+   "lengthM": 5.2
+  },
+  {
+   "id": "hembrug-348-352",
+   "street": "Hembrugstraat",
+   "side": "even",
+   "seed": "0363100012146365",
+   "members": [
+    "0363100012146365"
+   ],
+   "numbers": [
+    348,
+    352
+   ],
+   "lengthM": 8.6
+  },
+  {
+   "id": "hembrug-354-368",
+   "street": "Hembrugstraat",
+   "side": "even",
+   "seed": "0363100012066126",
+   "members": [
+    "0363100012066126"
+   ],
+   "numbers": [
+    354,
+    368
+   ],
+   "lengthM": 14.5
+  },
+  {
+   "id": "houtrijk-342-404",
+   "street": "Houtrijkstraat",
+   "side": "even",
+   "seed": "0363100012069837",
+   "members": [
+    "0363100012062014",
+    "0363100012155179",
+    "0363100012069837"
+   ],
+   "numbers": [
+    342,
+    404
+   ],
+   "lengthM": 43.7
+  },
+  {
+   "id": "houtrijk-406-444",
+   "street": "Houtrijkstraat",
+   "side": "even",
+   "seed": "0363100012069740",
+   "members": [
+    "0363100012068054",
+    "0363100012103203",
+    "0363100012069740"
+   ],
+   "numbers": [
+    406,
+    444
+   ],
+   "lengthM": 33.2
+  },
+  {
+   "id": "houtrijk-411-449",
+   "street": "Houtrijkstraat",
+   "side": "odd",
+   "seed": "0363100012076965",
+   "members": [
+    "0363100012076965",
+    "0363100012146438",
+    "0363100012123360"
+   ],
+   "numbers": [
+    411,
+    449
+   ],
+   "lengthM": 44.3
+  },
+  {
+   "id": "houtrijk-451-473",
+   "street": "Houtrijkstraat",
+   "side": "odd",
+   "seed": "0363100012117606",
+   "members": [
+    "0363100012117606",
+    "0363100012108968"
+   ],
+   "numbers": [
+    451,
+    473
+   ],
+   "lengthM": 23.8
+  },
+  {
+   "id": "koog-2-24",
+   "street": "Koogstraat",
+   "side": "even",
+   "seed": "0363100012115849",
+   "members": [
+    "0363100012072922",
+    "0363100012115849"
+   ],
+   "numbers": [
+    2,
+    24
+   ],
+   "lengthM": 21.1
+  },
+  {
+   "id": "koog-1-21",
+   "street": "Koogstraat",
+   "side": "odd",
+   "seed": "0363100012141747",
+   "members": [
+    "0363100012141747",
+    "0363100012067376"
+   ],
+   "numbers": [
+    1,
+    21
+   ],
+   "lengthM": 21
+  },
+  {
+   "id": "oostzaan-188-216",
+   "street": "Oostzaanstraat",
+   "side": "even",
+   "seed": "0363100012080385",
+   "members": [
+    "0363100012080385"
+   ],
+   "numbers": [
+    188,
+    216
+   ],
+   "lengthM": 27.4
+  },
+  {
+   "id": "oostzaan-218-322",
+   "street": "Oostzaanstraat",
+   "side": "even",
+   "seed": "0363100012067520",
+   "members": [
+    "0363100012079010",
+    "0363100012069691",
+    "0363100012067869",
+    "0363100012131380",
+    "0363100012067520"
+   ],
+   "numbers": [
+    218,
+    322
+   ],
+   "lengthM": 100.7
+  },
+  {
+   "id": "oostzaan-97-245",
+   "street": "Oostzaanstraat",
+   "side": "odd",
+   "seed": "0363100012104008",
+   "members": [
+    "0363100012104008",
+    "0363100012078548",
+    "0363100012144053",
+    "0363100012106564",
+    "0363100012107283",
+    "0363100012126325",
+    "0363100012094665",
+    "0363100012135902",
+    "0363100012095732",
+    "0363100012088158"
+   ],
+   "numbers": [
+    97,
+    245
+   ],
+   "lengthM": 122.7
+  },
+  {
+   "id": "oostzaan-247-317",
+   "street": "Oostzaanstraat",
+   "side": "odd",
+   "seed": "0363100012063264",
+   "members": [
+    "0363100012095263",
+    "0363100012063264",
+    "0363100012073565",
+    "0363100012121270",
+    "0363100012063407"
+   ],
+   "numbers": [
+    247,
+    317
+   ],
+   "lengthM": 56
+  },
+  {
+   "id": "spaarndammerdijk-160-170",
+   "street": "Spaarndammerdijk",
+   "side": "even",
+   "seed": "0363100012065620",
+   "members": [
+    "0363100012065620",
+    "0363100012136859"
+   ],
+   "numbers": [
+    160,
+    170
+   ],
+   "lengthM": 22.2
+  },
+  {
+   "id": "spaarndammerdijk-176-206",
+   "street": "Spaarndammerdijk",
+   "side": "even",
+   "seed": "0363100012105669",
+   "members": [
+    "0363100012105669",
+    "0363100012105616",
+    "0363100012078763"
+   ],
+   "numbers": [
+    176,
+    206
+   ],
+   "lengthM": 72.5
+  },
+  {
+   "id": "spaarndammerdijk-240-246",
+   "street": "Spaarndammerdijk",
+   "side": "even",
+   "seed": "0363100012142927",
+   "members": [
+    "0363100012142927"
+   ],
+   "numbers": [
+    240,
+    246
+   ],
+   "lengthM": 15.2
+  },
+  {
+   "id": "spaarndammerdijk-272-299",
+   "street": "Spaarndammerdijk",
+   "side": "even",
+   "seed": "0363100012086895",
+   "members": [
+    "0363100012086895",
+    "0363100012102396",
+    "0363100012094482"
+   ],
+   "numbers": [
+    272,
+    299
+   ],
+   "lengthM": 45.2
+  },
+  {
+   "id": "spaarndammerdijk-302-306",
+   "street": "Spaarndammerdijk",
+   "side": "even",
+   "seed": "0363100012109017",
+   "members": [
+    "0363100012109017"
+   ],
+   "numbers": [
+    302,
+    306
+   ],
+   "lengthM": 26.3
+  },
+  {
+   "id": "spaarndammerdijk-23-41",
+   "street": "Spaarndammerdijk",
+   "side": "odd",
+   "seed": "0363100012102016",
+   "members": [
+    "0363100012102016",
+    "0363100012099225",
+    "0363100012099226",
+    "0363100012110714",
+    "0363100012139131"
+   ],
+   "numbers": [
+    23,
+    41
+   ],
+   "lengthM": 47.9
+  },
+  {
+   "id": "spaarndammerdijk-43-61",
+   "street": "Spaarndammerdijk",
+   "side": "odd",
+   "seed": "0363100012145066",
+   "members": [
+    "0363100012145066",
+    "0363100012084396",
+    "0363100012123720",
+    "0363100012069927",
+    "0363100012139352",
+    "0363100012109748"
+   ],
+   "numbers": [
+    43,
+    61
+   ],
+   "lengthM": 40.8
+  },
+  {
+   "id": "spaarndammerdijk-155-159",
+   "street": "Spaarndammerdijk",
+   "side": "odd",
+   "seed": "0363100012140055",
+   "members": [
+    "0363100012140055"
+   ],
+   "numbers": [
+    155,
+    159
+   ],
+   "lengthM": 7.6
+  },
+  {
+   "id": "spaarndammerdijk-171-175",
+   "street": "Spaarndammerdijk",
+   "side": "odd",
+   "seed": "0363100012129258",
+   "members": [
+    "0363100012129258"
+   ],
+   "numbers": [
+    171,
+    175
+   ],
+   "lengthM": 7.6
+  },
+  {
+   "id": "spaarndammerdijk-207-238",
+   "street": "Spaarndammerdijk",
+   "side": "odd",
+   "seed": "0363100012127085",
+   "members": [
+    "0363100012127085",
+    "0363100012085158",
+    "0363100012074744"
+   ],
+   "numbers": [
+    207,
+    238
+   ],
+   "lengthM": 29.7
+  },
+  {
+   "id": "spaarndammerdijk-247-273",
+   "street": "Spaarndammerdijk",
+   "side": "odd",
+   "seed": "0363100012136579",
+   "members": [
+    "0363100012136579",
+    "0363100012123704",
+    "0363100012090405"
+   ],
+   "numbers": [
+    247,
+    273
+   ],
+   "lengthM": 48.4
+  },
+  {
+   "id": "spaarndammerdijk-301-301",
+   "street": "Spaarndammerdijk",
+   "side": "odd",
+   "seed": "0363100012232677",
+   "members": [
+    "0363100012232677"
+   ],
+   "numbers": [
+    301,
+    301
+   ],
+   "lengthM": 3.3
+  },
+  {
+   "id": "uitgeest-2-10",
+   "street": "Uitgeeststraat",
+   "side": "even",
+   "seed": "0363100012074814",
+   "members": [
+    "0363100012074814"
+   ],
+   "numbers": [
+    2,
+    10
+   ],
+   "lengthM": 12.7
+  },
+  {
+   "id": "uitgeest-1-15",
+   "street": "Uitgeeststraat",
+   "side": "odd",
+   "seed": "0363100012120652",
+   "members": [
+    "0363100012120652"
+   ],
+   "numbers": [
+    1,
+    15
+   ],
+   "lengthM": 12.6
+  },
+  {
+   "id": "zaandammerplein-50-50",
+   "street": "Zaandammerplein",
+   "side": "even",
+   "seed": "0363100012107305",
+   "members": [
+    "0363100012107305"
+   ],
+   "numbers": [
+    50,
+    50
+   ],
+   "lengthM": 48.1
+  },
+  {
+   "id": "zaandammerplein-136-140",
+   "street": "Zaandammerplein",
+   "side": "even",
+   "seed": "0363100012077291",
+   "members": [
+    "0363100012077291"
+   ],
+   "numbers": [
+    136,
+    140
+   ],
+   "lengthM": 13.2
+  },
+  {
+   "id": "zaandammerplein-154-166",
+   "street": "Zaandammerplein",
+   "side": "even",
+   "seed": "0363100012155161",
+   "members": [
+    "0363100012155161",
+    "0363100012091874"
+   ],
+   "numbers": [
+    154,
+    166
+   ],
+   "lengthM": 26.2
+  },
+  {
+   "id": "zaandammerplein-172-176",
+   "street": "Zaandammerplein",
+   "side": "even",
+   "seed": "0363100012135269",
+   "members": [
+    "0363100012135269"
+   ],
+   "numbers": [
+    172,
+    176
+   ],
+   "lengthM": 7.7
+  },
+  {
+   "id": "zaandammerplein-200-200",
+   "street": "Zaandammerplein",
+   "side": "even",
+   "seed": "0363100012119633",
+   "members": [
+    "0363100012119633"
+   ],
+   "numbers": [
+    200,
+    200
+   ],
+   "lengthM": 10
+  },
+  {
+   "id": "zaandammerplein-1-8",
+   "street": "Zaandammerplein",
+   "side": "odd",
+   "seed": "0363100012105269",
+   "members": [
+    "0363100012105269"
+   ],
+   "numbers": [
+    1,
+    8
+   ],
+   "lengthM": 4.6
+  },
+  {
+   "id": "zaandammerplein-9-28",
+   "street": "Zaandammerplein",
+   "side": "odd",
+   "seed": "0363100012130669",
+   "members": [
+    "0363100012130669",
+    "0363100012088214",
+    "0363100012105370"
+   ],
+   "numbers": [
+    9,
+    28
+   ],
+   "lengthM": 30.7
+  },
+  {
+   "id": "zaandammerplein-29-42",
+   "street": "Zaandammerplein",
+   "side": "odd",
+   "seed": "0363100012123840",
+   "members": [
+    "0363100012123840",
+    "0363100012117074"
+   ],
+   "numbers": [
+    29,
+    42
+   ],
+   "lengthM": 23
+  },
+  {
+   "id": "zaandammerplein-51-68",
+   "street": "Zaandammerplein",
+   "side": "odd",
+   "seed": "0363100012076784",
+   "members": [
+    "0363100012076784",
+    "0363100012152141",
+    "0363100012124565"
+   ],
+   "numbers": [
+    51,
+    68
+   ],
+   "lengthM": 35.8
+  },
+  {
+   "id": "zaandammerplein-69-76",
+   "street": "Zaandammerplein",
+   "side": "odd",
+   "seed": "0363100012061268",
+   "members": [
+    "0363100012061268"
+   ],
+   "numbers": [
+    69,
+    76
+   ],
+   "lengthM": 3.9
+  },
+  {
+   "id": "zaandammerplein-77-80",
+   "street": "Zaandammerplein",
+   "side": "odd",
+   "seed": "0363100012064058",
+   "members": [
+    "0363100012064058"
+   ],
+   "numbers": [
+    77,
+    80
+   ],
+   "lengthM": 5.4
+  },
+  {
+   "id": "zaandammerplein-81-116",
+   "street": "Zaandammerplein",
+   "side": "odd",
+   "seed": "0363100012068362",
+   "members": [
+    "0363100012068362",
+    "0363100012100080",
+    "0363100012076443"
+   ],
+   "numbers": [
+    81,
+    116
+   ],
+   "lengthM": 67.9
+  },
+  {
+   "id": "zaandammerplein-117-124",
+   "street": "Zaandammerplein",
+   "side": "odd",
+   "seed": "0363100012133459",
+   "members": [
+    "0363100012133459"
+   ],
+   "numbers": [
+    117,
+    124
+   ],
+   "lengthM": 4.5
+  },
+  {
+   "id": "zaandammerplein-125-135",
+   "street": "Zaandammerplein",
+   "side": "odd",
+   "seed": "0363100012118638",
+   "members": [
+    "0363100012118638",
+    "0363100012070304"
+   ],
+   "numbers": [
+    125,
+    135
+   ],
+   "lengthM": 26.6
+  },
+  {
+   "id": "zaandammerplein-141-153",
+   "street": "Zaandammerplein",
+   "side": "odd",
+   "seed": "0363100012117604",
+   "members": [
+    "0363100012117604",
+    "0363100012072006"
+   ],
+   "numbers": [
+    141,
+    153
+   ],
+   "lengthM": 18.9
+  },
+  {
+   "id": "zaandammerplein-167-171",
+   "street": "Zaandammerplein",
+   "side": "odd",
+   "seed": "0363100012114860",
+   "members": [
+    "0363100012114860"
+   ],
+   "numbers": [
+    167,
+    171
+   ],
+   "lengthM": 13.2
+  },
+  {
+   "id": "zaanhof-22-22",
+   "street": "Zaanhof",
+   "side": "even",
+   "seed": "0363100012061939",
+   "members": [
+    "0363100012061939"
+   ],
+   "numbers": [
+    22,
+    22
+   ],
+   "lengthM": 5.9
+  },
+  {
+   "id": "zaanhof-40-42",
+   "street": "Zaanhof",
+   "side": "even",
+   "seed": "0363100012117213",
+   "members": [
+    "0363100012117213"
+   ],
+   "numbers": [
+    40,
+    42
+   ],
+   "lengthM": 11.6
+  },
+  {
+   "id": "zaanhof-46-49",
+   "street": "Zaanhof",
+   "side": "even",
+   "seed": "0363100012143746",
+   "members": [
+    "0363100012143746",
+    "0363100012114675"
+   ],
+   "numbers": [
+    46,
+    49
+   ],
+   "lengthM": 13
+  },
+  {
+   "id": "zaanhof-52-55",
+   "street": "Zaanhof",
+   "side": "even",
+   "seed": "0363100012127918",
+   "members": [
+    "0363100012127918",
+    "0363100012098344"
+   ],
+   "numbers": [
+    52,
+    55
+   ],
+   "lengthM": 11.9
+  },
+  {
+   "id": "zaanhof-56-57",
+   "street": "Zaanhof",
+   "side": "even",
+   "seed": "0363100012116456",
+   "members": [
+    "0363100012116456"
+   ],
+   "numbers": [
+    56,
+    57
+   ],
+   "lengthM": 9.9
+  },
+  {
+   "id": "zaanhof-66-66",
+   "street": "Zaanhof",
+   "side": "even",
+   "seed": "0363100012111330",
+   "members": [
+    "0363100012111330"
+   ],
+   "numbers": [
+    66,
+    66
+   ],
+   "lengthM": 5.8
+  },
+  {
+   "id": "zaanhof-70-70",
+   "street": "Zaanhof",
+   "side": "even",
+   "seed": "0363100012082437",
+   "members": [
+    "0363100012082437"
+   ],
+   "numbers": [
+    70,
+    70
+   ],
+   "lengthM": 5.8
+  },
+  {
+   "id": "zaanhof-90-92",
+   "street": "Zaanhof",
+   "side": "even",
+   "seed": "0363100012148996",
+   "members": [
+    "0363100012148996"
+   ],
+   "numbers": [
+    90,
+    92
+   ],
+   "lengthM": 7.5
+  },
+  {
+   "id": "zaanhof-110-112",
+   "street": "Zaanhof",
+   "side": "even",
+   "seed": "0363100012136592",
+   "members": [
+    "0363100012136592"
+   ],
+   "numbers": [
+    110,
+    112
+   ],
+   "lengthM": 5.7
+  },
+  {
+   "id": "zaanhof-120-122",
+   "street": "Zaanhof",
+   "side": "even",
+   "seed": "0363100012116276",
+   "members": [
+    "0363100012116276"
+   ],
+   "numbers": [
+    120,
+    122
+   ],
+   "lengthM": 5.9
+  },
+  {
+   "id": "zaanhof-1-20",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012094000",
+   "members": [
+    "0363100012094000",
+    "0363100012146841",
+    "0363100012142675",
+    "0363100012087177",
+    "0363100012123914",
+    "0363100012096324",
+    "0363100012147168",
+    "0363100012111405",
+    "0363100012103385",
+    "0363100012107452"
+   ],
+   "numbers": [
+    1,
+    20
+   ],
+   "lengthM": 59.5
+  },
+  {
+   "id": "zaanhof-23-34",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012114944",
+   "members": [
+    "0363100012114944",
+    "0363100012109995",
+    "0363100012074829",
+    "0363100012065518",
+    "0363100012097562",
+    "0363100012141963"
+   ],
+   "numbers": [
+    23,
+    34
+   ],
+   "lengthM": 35.4
+  },
+  {
+   "id": "zaanhof-37-39",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012127592",
+   "members": [
+    "0363100012127592"
+   ],
+   "numbers": [
+    37,
+    39
+   ],
+   "lengthM": 6.3
+  },
+  {
+   "id": "zaanhof-43-45",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012075697",
+   "members": [
+    "0363100012075697"
+   ],
+   "numbers": [
+    43,
+    45
+   ],
+   "lengthM": 5.8
+  },
+  {
+   "id": "zaanhof-51-51",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012091396",
+   "members": [
+    "0363100012091396"
+   ],
+   "numbers": [
+    51,
+    51
+   ],
+   "lengthM": 5.9
+  },
+  {
+   "id": "zaanhof-61-62",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012139891",
+   "members": [
+    "0363100012139891"
+   ],
+   "numbers": [
+    61,
+    62
+   ],
+   "lengthM": 9.9
+  },
+  {
+   "id": "zaanhof-63-64",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012135824",
+   "members": [
+    "0363100012135824"
+   ],
+   "numbers": [
+    63,
+    64
+   ],
+   "lengthM": 5.9
+  },
+  {
+   "id": "zaanhof-67-68",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012103199",
+   "members": [
+    "0363100012103199"
+   ],
+   "numbers": [
+    67,
+    68
+   ],
+   "lengthM": 6.1
+  },
+  {
+   "id": "zaanhof-71-78",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012085115",
+   "members": [
+    "0363100012085115",
+    "0363100012074750",
+    "0363100012080422",
+    "0363100012116468"
+   ],
+   "numbers": [
+    71,
+    78
+   ],
+   "lengthM": 23.8
+  },
+  {
+   "id": "zaanhof-79-82",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012061275",
+   "members": [
+    "0363100012061275",
+    "0363100012070692"
+   ],
+   "numbers": [
+    79,
+    82
+   ],
+   "lengthM": 17.8
+  },
+  {
+   "id": "zaanhof-83-84",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012143789",
+   "members": [
+    "0363100012143789"
+   ],
+   "numbers": [
+    83,
+    84
+   ],
+   "lengthM": 11
+  },
+  {
+   "id": "zaanhof-85-89",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012106544",
+   "members": [
+    "0363100012106544",
+    "0363100012115120"
+   ],
+   "numbers": [
+    85,
+    89
+   ],
+   "lengthM": 13.5
+  },
+  {
+   "id": "zaanhof-93-94",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012079436",
+   "members": [
+    "0363100012079436"
+   ],
+   "numbers": [
+    93,
+    94
+   ],
+   "lengthM": 6.2
+  },
+  {
+   "id": "zaanhof-95-96",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012107104",
+   "members": [
+    "0363100012107104"
+   ],
+   "numbers": [
+    95,
+    96
+   ],
+   "lengthM": 11
+  },
+  {
+   "id": "zaanhof-97-98",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012084647",
+   "members": [
+    "0363100012084647"
+   ],
+   "numbers": [
+    97,
+    98
+   ],
+   "lengthM": 9.5
+  },
+  {
+   "id": "zaanhof-99-104",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012066165",
+   "members": [
+    "0363100012066165",
+    "0363100012116074",
+    "0363100012131022"
+   ],
+   "numbers": [
+    99,
+    104
+   ],
+   "lengthM": 17.5
+  },
+  {
+   "id": "zaanhof-107-109",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012146345",
+   "members": [
+    "0363100012146345"
+   ],
+   "numbers": [
+    107,
+    109
+   ],
+   "lengthM": 6.2
+  },
+  {
+   "id": "zaanhof-113-119",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012108440",
+   "members": [
+    "0363100012108440",
+    "0363100012084460"
+   ],
+   "numbers": [
+    113,
+    119
+   ],
+   "lengthM": 19.6
+  },
+  {
+   "id": "zaanhof-125-134",
+   "street": "Zaanhof",
+   "side": "odd",
+   "seed": "0363100012127622",
+   "members": [
+    "0363100012127622",
+    "0363100012139676",
+    "0363100012063074",
+    "0363100012131844",
+    "0363100012109397"
+   ],
+   "numbers": [
+    125,
+    134
+   ],
+   "lengthM": 29.8
+  },
+  {
+   "id": "zaan-250-256",
+   "street": "Zaanstraat",
+   "side": "even",
+   "seed": "0363100012134665",
+   "members": [
+    "0363100012134665"
+   ],
+   "numbers": [
+    250,
+    256
+   ],
+   "lengthM": 15.1
+  },
+  {
+   "id": "zaan-326-336",
+   "street": "Zaanstraat",
+   "side": "even",
+   "seed": "0363100012101802",
+   "members": [
+    "0363100012101802"
+   ],
+   "numbers": [
+    326,
+    336
+   ],
+   "lengthM": 18.1
+  },
+  {
+   "id": "zaan-366-389",
+   "street": "Zaanstraat",
+   "side": "even",
+   "seed": "0363100012150468",
+   "members": [
+    "0363100012117091",
+    "0363100012125506",
+    "0363100012150468"
+   ],
+   "numbers": [
+    366,
+    389
+   ],
+   "lengthM": 48.2
+  },
+  {
+   "id": "zaan-257-286",
+   "street": "Zaanstraat",
+   "side": "odd",
+   "seed": "0363100012142603",
+   "members": [
+    "0363100012062857",
+    "0363100012151489",
+    "0363100012142859",
+    "0363100012142603"
+   ],
+   "numbers": [
+    257,
+    286
+   ],
+   "lengthM": 56.8
+  },
+  {
+   "id": "zaan-287-290",
+   "street": "Zaanstraat",
+   "side": "odd",
+   "seed": "0363100012117014",
+   "members": [
+    "0363100012117014"
+   ],
+   "numbers": [
+    287,
+    290
+   ],
+   "lengthM": 10.4
+  },
+  {
+   "id": "zaan-291-294",
+   "street": "Zaanstraat",
+   "side": "odd",
+   "seed": "0363100012066030",
+   "members": [
+    "0363100012066030"
+   ],
+   "numbers": [
+    291,
+    294
+   ],
+   "lengthM": 6.1
+  },
+  {
+   "id": "zaan-295-324",
+   "street": "Zaanstraat",
+   "side": "odd",
+   "seed": "0363100012110854",
+   "members": [
+    "0363100012140463",
+    "0363100012079827",
+    "0363100012109403",
+    "0363100012110854"
+   ],
+   "numbers": [
+    295,
+    324
+   ],
+   "lengthM": 56.6
+  },
+  {
+   "id": "zaan-337-344",
+   "street": "Zaanstraat",
+   "side": "odd",
+   "seed": "0363100012117862",
+   "members": [
+    "0363100012117862"
+   ],
+   "numbers": [
+    337,
+    344
+   ],
+   "lengthM": 15.3
+  },
+  {
+   "id": "zaan-345-365",
+   "street": "Zaanstraat",
+   "side": "odd",
+   "seed": "0363100012071072",
+   "members": [
+    "0363100012066120",
+    "0363100012071072"
+   ],
+   "numbers": [
+    345,
+    365
+   ],
+   "lengthM": 33.6
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012137501",
+   "street": "Hembrugstraat",
+   "numbers": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1924,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7,
+   "eavesM": 15.2,
+   "ridgeM": 20.1,
+   "roofMaxM": 20.3,
+   "normal": [
+    0.621,
+    -0.784
+   ],
+   "frontMidRD": [
+    120274.79,
+    489485.43
+   ]
+  },
+  {
+   "pandId": "0363100012144723",
+   "street": "Hembrugstraat",
+   "numbers": [
+    10,
+    12,
+    14,
+    16
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.9,
+   "eavesM": 14.7,
+   "ridgeM": 19.6,
+   "roofMaxM": 19.8,
+   "normal": [
+    0.621,
+    -0.784
+   ],
+   "frontMidRD": [
+    120266.59,
+    489479
+   ]
+  },
+  {
+   "pandId": "0363100012138043",
+   "street": "Hembrugstraat",
+   "numbers": [
+    18,
+    20,
+    22,
+    24
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15.7,
+   "eavesM": 14.1,
+   "ridgeM": 19.1,
+   "roofMaxM": 19.2,
+   "normal": [
+    0.621,
+    -0.784
+   ],
+   "frontMidRD": [
+    120255.02,
+    489469.77
+   ]
+  },
+  {
+   "pandId": "0363100012109303",
+   "street": "Hembrugstraat",
+   "numbers": [
+    26,
+    28,
+    30,
+    32
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.7,
+   "eavesM": 13.6,
+   "ridgeM": 17.5,
+   "roofMaxM": 17.7,
+   "normal": [
+    0.621,
+    -0.784
+   ],
+   "frontMidRD": [
+    120245.84,
+    489462.5
+   ]
+  },
+  {
+   "pandId": "0363100012145950",
+   "street": "Hembrugstraat",
+   "numbers": [
+    44,
+    46,
+    48,
+    50,
+    52,
+    54
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.2,
+   "eavesM": 12.9,
+   "ridgeM": 17.8,
+   "roofMaxM": 17.9,
+   "normal": [
+    0.432,
+    -0.902
+   ],
+   "frontMidRD": [
+    120222.35,
+    489449.51
+   ]
+  },
+  {
+   "pandId": "0363100012116998",
+   "street": "Hembrugstraat",
+   "numbers": [
+    56,
+    58,
+    60,
+    62,
+    64,
+    66
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.5,
+   "eavesM": 12.6,
+   "ridgeM": 17.9,
+   "roofMaxM": 18.1,
+   "normal": [
+    0.43,
+    -0.903
+   ],
+   "frontMidRD": [
+    120210.44,
+    489444.67
+   ]
+  },
+  {
+   "pandId": "0363100012147064",
+   "street": "Hembrugstraat",
+   "numbers": [
+    68,
+    70,
+    72,
+    74,
+    76,
+    78,
+    80,
+    82
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.5,
+   "eavesM": 12.8,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.8,
+   "normal": [
+    0.433,
+    -0.901
+   ],
+   "frontMidRD": [
+    120198.76,
+    489438.89
+   ]
+  },
+  {
+   "pandId": "0363100012132207",
+   "street": "Hembrugstraat",
+   "numbers": [
+    84,
+    86,
+    88,
+    90,
+    92,
+    94,
+    96,
+    98
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.4,
+   "eavesM": 14.7,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.7,
+   "normal": [
+    0.433,
+    -0.901
+   ],
+   "frontMidRD": [
+    120187.69,
+    489433.21
+   ]
+  },
+  {
+   "pandId": "0363100012118245",
+   "street": "Hembrugstraat",
+   "numbers": [
+    100,
+    102,
+    104,
+    106,
+    108,
+    110,
+    112,
+    114
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.5,
+   "eavesM": 14.8,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.8,
+   "normal": [
+    0.431,
+    -0.903
+   ],
+   "frontMidRD": [
+    120176.46,
+    489427.81
+   ]
+  },
+  {
+   "pandId": "0363100012103688",
+   "street": "Hembrugstraat",
+   "numbers": [
+    116,
+    118,
+    120,
+    122,
+    124,
+    126,
+    128,
+    130
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.6,
+   "eavesM": 14.7,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.8,
+   "normal": [
+    0.434,
+    -0.901
+   ],
+   "frontMidRD": [
+    120165.14,
+    489422.36
+   ]
+  },
+  {
+   "pandId": "0363100012110068",
+   "street": "Hembrugstraat",
+   "numbers": [
+    132,
+    134,
+    136,
+    138,
+    140,
+    142,
+    144,
+    146
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.3,
+   "eavesM": 14.7,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.8,
+   "normal": [
+    0.43,
+    -0.903
+   ],
+   "frontMidRD": [
+    120153.9,
+    489416.96
+   ]
+  },
+  {
+   "pandId": "0363100012070859",
+   "street": "Hembrugstraat",
+   "numbers": [
+    148,
+    150,
+    152,
+    154
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 14.6,
+   "ridgeM": 15.1,
+   "roofMaxM": 15.1,
+   "normal": [
+    0.437,
+    -0.899
+   ],
+   "frontMidRD": [
+    120145.74,
+    489413.11
+   ]
+  },
+  {
+   "pandId": "0363100012116313",
+   "street": "Hembrugstraat",
+   "numbers": [
+    160,
+    162,
+    164,
+    166
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.4,
+   "eavesM": 14.8,
+   "ridgeM": 14.9,
+   "roofMaxM": 14.9,
+   "normal": [
+    0.429,
+    -0.903
+   ],
+   "frontMidRD": [
+    120127.8,
+    489404.38
+   ]
+  },
+  {
+   "pandId": "0363100012067159",
+   "street": "Hembrugstraat",
+   "numbers": [
+    168,
+    170,
+    172,
+    174,
+    176,
+    178,
+    180,
+    182
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.6,
+   "eavesM": 15,
+   "ridgeM": 15,
+   "roofMaxM": 15,
+   "normal": [
+    0.434,
+    -0.901
+   ],
+   "frontMidRD": [
+    120119.71,
+    489400.48
+   ]
+  },
+  {
+   "pandId": "0363100012125901",
+   "street": "Hembrugstraat",
+   "numbers": [
+    184,
+    186,
+    188,
+    190,
+    192,
+    194,
+    196,
+    198
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.2,
+   "eavesM": 15,
+   "ridgeM": 15,
+   "roofMaxM": 15,
+   "normal": [
+    0.434,
+    -0.901
+   ],
+   "frontMidRD": [
+    120108.52,
+    489395.11
+   ]
+  },
+  {
+   "pandId": "0363100012115911",
+   "street": "Hembrugstraat",
+   "numbers": [
+    200,
+    202,
+    204,
+    206,
+    208,
+    210,
+    212,
+    214
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.6,
+   "eavesM": 15,
+   "ridgeM": 15,
+   "roofMaxM": 15,
+   "normal": [
+    0.434,
+    -0.901
+   ],
+   "frontMidRD": [
+    120097.36,
+    489389.75
+   ]
+  },
+  {
+   "pandId": "0363100012102874",
+   "street": "Hembrugstraat",
+   "numbers": [
+    216,
+    218,
+    220,
+    222,
+    224,
+    226,
+    228,
+    230
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.2,
+   "eavesM": 15,
+   "ridgeM": 15,
+   "roofMaxM": 15,
+   "normal": [
+    0.433,
+    -0.901
+   ],
+   "frontMidRD": [
+    120086.19,
+    489384.36
+   ]
+  },
+  {
+   "pandId": "0363100012073279",
+   "street": "Hembrugstraat",
+   "numbers": [
+    232,
+    234,
+    236,
+    238,
+    240,
+    242,
+    244,
+    246
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1925,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie",
+    "industriefunctie"
+   ],
+   "frontWidthM": 8.2,
+   "eavesM": 14.9,
+   "ridgeM": 15,
+   "roofMaxM": 15,
+   "normal": [
+    0.434,
+    -0.901
+   ],
+   "frontMidRD": [
+    120077.08,
+    489379.73
+   ]
+  },
+  {
+   "pandId": "0363100012103705",
+   "street": "Hembrugstraat",
+   "numbers": [
+    248,
+    250,
+    252,
+    254,
+    256
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.5,
+   "eavesM": 12.5,
+   "ridgeM": 17.8,
+   "roofMaxM": 17.8,
+   "normal": [
+    0.434,
+    -0.901
+   ],
+   "frontMidRD": [
+    120062.65,
+    489373.45
+   ]
+  },
+  {
+   "pandId": "0363100012099152",
+   "street": "Hembrugstraat",
+   "numbers": [
+    258,
+    260,
+    262,
+    264,
+    266,
+    268,
+    270,
+    272
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "winkelfunctie,woonfunctie",
+    "woonfunctie",
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 7.9,
+   "eavesM": 13,
+   "ridgeM": 17.7,
+   "roofMaxM": 18,
+   "normal": [
+    0.445,
+    -0.896
+   ],
+   "frontMidRD": [
+    120053.33,
+    489368.14
+   ]
+  },
+  {
+   "pandId": "0363100012110511",
+   "street": "Hembrugstraat",
+   "numbers": [
+    300,
+    302,
+    304,
+    306,
+    308,
+    310,
+    312
+   ],
+   "otherStreets": {
+    "Oostzaanstraat": [
+     95
+    ]
+   },
+   "side": "even",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.8,
+   "eavesM": 12.1,
+   "ridgeM": 17,
+   "roofMaxM": 17.7,
+   "normal": [
+    0.431,
+    -0.902
+   ],
+   "frontMidRD": [
+    120019.08,
+    489353.68
+   ]
+  },
+  {
+   "pandId": "0363100012066411",
+   "street": "Hembrugstraat",
+   "numbers": [
+    314,
+    316,
+    318,
+    320,
+    322,
+    324,
+    326,
+    328
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15.4,
+   "eavesM": 12.1,
+   "ridgeM": 17.1,
+   "roofMaxM": 17.4,
+   "normal": [
+    0.434,
+    -0.901
+   ],
+   "frontMidRD": [
+    120006.15,
+    489345.39
+   ]
+  },
+  {
+   "pandId": "0363100012119170",
+   "street": "Hembrugstraat",
+   "numbers": [
+    330,
+    332,
+    334
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1918,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 8.6,
+   "eavesM": 9,
+   "ridgeM": 15.7,
+   "roofMaxM": 15.9,
+   "normal": [
+    -0.903,
+    -0.431
+   ],
+   "frontMidRD": [
+    119990.29,
+    489346.97
+   ]
+  },
+  {
+   "pandId": "0363100012108079",
+   "street": "Hembrugstraat",
+   "numbers": [
+    336,
+    338,
+    340
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1918,
+   "storeys3dbag": 3,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.1,
+   "eavesM": 8.5,
+   "ridgeM": 12,
+   "roofMaxM": 12.7,
+   "normal": [
+    -0.558,
+    -0.83
+   ],
+   "frontMidRD": [
+    119984.35,
+    489359.47
+   ]
+  },
+  {
+   "pandId": "0363100012064968",
+   "street": "Hembrugstraat",
+   "numbers": [
+    342,
+    344,
+    346
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1918,
+   "storeys3dbag": 3,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.2,
+   "eavesM": 8.5,
+   "ridgeM": 11.9,
+   "roofMaxM": 12.6,
+   "normal": [
+    0.922,
+    0.388
+   ],
+   "frontMidRD": [
+    119967.69,
+    489348.35
+   ]
+  },
+  {
+   "pandId": "0363100012146365",
+   "street": "Hembrugstraat",
+   "numbers": [
+    348,
+    350,
+    352
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1918,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 8.6,
+   "eavesM": 8.9,
+   "ridgeM": 15.5,
+   "roofMaxM": 15.4,
+   "normal": [
+    0.591,
+    0.807
+   ],
+   "frontMidRD": [
+    119979.27,
+    489339.53
+   ]
+  },
+  {
+   "pandId": "0363100012066126",
+   "street": "Hembrugstraat",
+   "numbers": [
+    354,
+    356,
+    358,
+    360,
+    362,
+    364,
+    366,
+    368
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.5,
+   "eavesM": 12.1,
+   "ridgeM": 17,
+   "roofMaxM": 17.4,
+   "normal": [
+    0.806,
+    -0.592
+   ],
+   "frontMidRD": [
+    119978.15,
+    489323.94
+   ]
+  },
+  {
+   "pandId": "0363100012069837",
+   "street": "Houtrijkstraat",
+   "numbers": [
+    342,
+    344,
+    346,
+    348,
+    350,
+    352,
+    354,
+    356,
+    358,
+    360,
+    362,
+    364,
+    366,
+    368,
+    370,
+    372
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 16,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 26.5,
+   "eavesM": 13.3,
+   "ridgeM": 18.1,
+   "roofMaxM": 18.1,
+   "normal": [
+    -0.901,
+    -0.433
+   ],
+   "frontMidRD": [
+    120230.16,
+    489478.36
+   ]
+  },
+  {
+   "pandId": "0363100012155179",
+   "street": "Houtrijkstraat",
+   "numbers": [
+    374,
+    376,
+    378,
+    380,
+    382,
+    384,
+    386,
+    388
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.1,
+   "eavesM": 13.3,
+   "ridgeM": 18,
+   "roofMaxM": 18.1,
+   "normal": [
+    -0.901,
+    -0.434
+   ],
+   "frontMidRD": [
+    120224.44,
+    489503.66
+   ]
+  },
+  {
+   "pandId": "0363100012062014",
+   "street": "Houtrijkstraat",
+   "numbers": [
+    390,
+    392,
+    394,
+    396,
+    398,
+    400,
+    402,
+    404
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 13.1,
+   "ridgeM": 17.3,
+   "roofMaxM": 18.1,
+   "normal": [
+    -0.901,
+    -0.434
+   ],
+   "frontMidRD": [
+    120220.47,
+    489511.27
+   ]
+  },
+  {
+   "pandId": "0363100012069740",
+   "street": "Houtrijkstraat",
+   "numbers": [
+    406,
+    408,
+    410,
+    412,
+    414,
+    416
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.1,
+   "eavesM": 13,
+   "ridgeM": 17.9,
+   "roofMaxM": 18.3,
+   "normal": [
+    -0.032,
+    -0.999
+   ],
+   "frontMidRD": [
+    120207.96,
+    489514.23
+   ]
+  },
+  {
+   "pandId": "0363100012076965",
+   "street": "Houtrijkstraat",
+   "numbers": [
+    411,
+    413,
+    415,
+    417
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 13.2,
+   "ridgeM": 17.8,
+   "roofMaxM": 18.2,
+   "normal": [
+    0.901,
+    0.433
+   ],
+   "frontMidRD": [
+    120223.03,
+    489465.59
+   ]
+  },
+  {
+   "pandId": "0363100012103203",
+   "street": "Houtrijkstraat",
+   "numbers": [
+    418,
+    420,
+    422,
+    424,
+    426,
+    428,
+    430,
+    432
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11,
+   "eavesM": 13.2,
+   "ridgeM": 17.9,
+   "roofMaxM": 18,
+   "normal": [
+    -0.032,
+    -0.999
+   ],
+   "frontMidRD": [
+    120196.91,
+    489514.59
+   ]
+  },
+  {
+   "pandId": "0363100012146438",
+   "street": "Houtrijkstraat",
+   "numbers": [
+    419,
+    421,
+    423,
+    425,
+    427,
+    429,
+    431,
+    433
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 21.7,
+   "eavesM": 13.1,
+   "ridgeM": 17.9,
+   "roofMaxM": 17.9,
+   "normal": [
+    0.901,
+    0.433
+   ],
+   "frontMidRD": [
+    120216.95,
+    489478.25
+   ]
+  },
+  {
+   "pandId": "0363100012068054",
+   "street": "Houtrijkstraat",
+   "numbers": [
+    434,
+    436,
+    438,
+    440,
+    442,
+    444
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.1,
+   "eavesM": 13.2,
+   "ridgeM": 18,
+   "roofMaxM": 18.4,
+   "normal": [
+    -0.032,
+    -0.999
+   ],
+   "frontMidRD": [
+    120185.87,
+    489514.94
+   ]
+  },
+  {
+   "pandId": "0363100012123360",
+   "street": "Houtrijkstraat",
+   "numbers": [
+    435,
+    437,
+    439,
+    441,
+    443,
+    445,
+    447,
+    449
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 16.2,
+   "eavesM": 12.9,
+   "ridgeM": 17.7,
+   "roofMaxM": 17.8,
+   "normal": [
+    0.901,
+    0.433
+   ],
+   "frontMidRD": [
+    120208.3,
+    489495.14
+   ]
+  },
+  {
+   "pandId": "0363100012117606",
+   "street": "Houtrijkstraat",
+   "numbers": [
+    451,
+    453,
+    455,
+    457,
+    459,
+    461,
+    463,
+    465
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 17,
+   "eavesM": 13.2,
+   "ridgeM": 17.8,
+   "roofMaxM": 17.8,
+   "normal": [
+    0.035,
+    0.999
+   ],
+   "frontMidRD": [
+    120194.83,
+    489502.56
+   ]
+  },
+  {
+   "pandId": "0363100012108968",
+   "street": "Houtrijkstraat",
+   "numbers": [
+    467,
+    469,
+    471,
+    473
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.8,
+   "eavesM": 13.2,
+   "ridgeM": 17.8,
+   "roofMaxM": 18.6,
+   "normal": [
+    0.034,
+    0.999
+   ],
+   "frontMidRD": [
+    120182.9,
+    489502.97
+   ]
+  },
+  {
+   "pandId": "0363100012141747",
+   "street": "Koogstraat",
+   "numbers": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11,
+    13
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12,
+   "eavesM": 13.2,
+   "ridgeM": 17.3,
+   "roofMaxM": 18.2,
+   "normal": [
+    -0.406,
+    0.914
+   ],
+   "frontMidRD": [
+    120039.34,
+    489415.02
+   ]
+  },
+  {
+   "pandId": "0363100012115849",
+   "street": "Koogstraat",
+   "numbers": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.2,
+   "eavesM": 13.3,
+   "ridgeM": 18.2,
+   "roofMaxM": 18.2,
+   "normal": [
+    0.41,
+    -0.912
+   ],
+   "frontMidRD": [
+    120034.81,
+    489426.02
+   ]
+  },
+  {
+   "pandId": "0363100012067376",
+   "street": "Koogstraat",
+   "numbers": [
+    15,
+    17,
+    19,
+    21
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "overige gebruiksfunctie,woonfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 9,
+   "eavesM": 12,
+   "ridgeM": 17.9,
+   "roofMaxM": 17.9,
+   "normal": [
+    -0.407,
+    0.914
+   ],
+   "frontMidRD": [
+    120029.91,
+    489410.44
+   ]
+  },
+  {
+   "pandId": "0363100012072922",
+   "street": "Koogstraat",
+   "numbers": [
+    18,
+    20,
+    22,
+    24
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie,woonfunctie"
+   ],
+   "frontWidthM": 8.9,
+   "eavesM": 12.1,
+   "ridgeM": 18.1,
+   "roofMaxM": 18.1,
+   "normal": [
+    0.41,
+    -0.912
+   ],
+   "frontMidRD": [
+    120025,
+    489422.14
+   ]
+  },
+  {
+   "pandId": "0363100012104008",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    97,
+    99,
+    101,
+    103,
+    105,
+    107,
+    109,
+    111
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15.3,
+   "eavesM": 12.3,
+   "ridgeM": 17.2,
+   "roofMaxM": 17.9,
+   "normal": [
+    0.9,
+    0.435
+   ],
+   "frontMidRD": [
+    120017.9,
+    489373.01
+   ]
+  },
+  {
+   "pandId": "0363100012078548",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    113,
+    115,
+    129,
+    131,
+    159,
+    161,
+    189,
+    191
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.6,
+   "eavesM": 13.6,
+   "ridgeM": 16.8,
+   "roofMaxM": 16.8,
+   "normal": [
+    0.902,
+    0.432
+   ],
+   "frontMidRD": [
+    120012.07,
+    489385.13
+   ]
+  },
+  {
+   "pandId": "0363100012144053",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    117,
+    119,
+    133,
+    135,
+    163,
+    165,
+    193,
+    195
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.2,
+   "eavesM": 13.5,
+   "ridgeM": 17.7,
+   "roofMaxM": 17.7,
+   "normal": [
+    0.902,
+    0.432
+   ],
+   "frontMidRD": [
+    120006.93,
+    489395.9
+   ]
+  },
+  {
+   "pandId": "0363100012106564",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    121,
+    123,
+    137,
+    139,
+    167,
+    169,
+    197,
+    199
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.7,
+   "eavesM": 13.4,
+   "ridgeM": 16.7,
+   "roofMaxM": 16.7,
+   "normal": [
+    0.926,
+    0.377
+   ],
+   "frontMidRD": [
+    120002.09,
+    489406.84
+   ]
+  },
+  {
+   "pandId": "0363100012107283",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    125,
+    127,
+    141,
+    143,
+    171,
+    173,
+    201,
+    203,
+    219,
+    223
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 10,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.2,
+   "eavesM": 13.5,
+   "ridgeM": 17.7,
+   "roofMaxM": 17.7,
+   "normal": [
+    0.926,
+    0.378
+   ],
+   "frontMidRD": [
+    119997.58,
+    489417.93
+   ]
+  },
+  {
+   "pandId": "0363100012126325",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    145,
+    175,
+    205,
+    221
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.9,
+   "eavesM": 13.4,
+   "ridgeM": 16.8,
+   "roofMaxM": 17,
+   "normal": [
+    0.926,
+    0.378
+   ],
+   "frontMidRD": [
+    119993.02,
+    489429.11
+   ]
+  },
+  {
+   "pandId": "0363100012094665",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    147,
+    177,
+    207,
+    225
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.9,
+   "eavesM": 13.5,
+   "ridgeM": 17.7,
+   "roofMaxM": 17.7,
+   "normal": [
+    0.926,
+    0.377
+   ],
+   "frontMidRD": [
+    119988.58,
+    489440.15
+   ]
+  },
+  {
+   "pandId": "0363100012135902",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    149,
+    151,
+    179,
+    181,
+    209,
+    211,
+    227,
+    229
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.1,
+   "eavesM": 13.6,
+   "ridgeM": 16.8,
+   "roofMaxM": 16.8,
+   "normal": [
+    0.926,
+    0.378
+   ],
+   "frontMidRD": [
+    119984,
+    489451.25
+   ]
+  },
+  {
+   "pandId": "0363100012095732",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    153,
+    155,
+    183,
+    185,
+    213,
+    215,
+    231,
+    233
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.9,
+   "eavesM": 13.7,
+   "ridgeM": 17.7,
+   "roofMaxM": 17.7,
+   "normal": [
+    0.926,
+    0.377
+   ],
+   "frontMidRD": [
+    119979.51,
+    489462.39
+   ]
+  },
+  {
+   "pandId": "0363100012088158",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    157,
+    187,
+    217,
+    235,
+    237,
+    239,
+    241,
+    243,
+    245
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 9,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.9,
+   "eavesM": 13.6,
+   "ridgeM": 16.7,
+   "roofMaxM": 16.8,
+   "normal": [
+    0.926,
+    0.377
+   ],
+   "frontMidRD": [
+    119974.97,
+    489473.38
+   ]
+  },
+  {
+   "pandId": "0363100012080385",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    188,
+    190,
+    192,
+    194,
+    196,
+    198,
+    200,
+    202,
+    204,
+    206,
+    208,
+    210,
+    212,
+    214,
+    216
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 15,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 27.4,
+   "eavesM": 13.1,
+   "ridgeM": 18.7,
+   "roofMaxM": 18.7,
+   "normal": [
+    -0.901,
+    -0.434
+   ],
+   "frontMidRD": [
+    120032.97,
+    489387.87
+   ]
+  },
+  {
+   "pandId": "0363100012067520",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    218,
+    220,
+    222,
+    224,
+    226,
+    228,
+    230,
+    232,
+    234,
+    236,
+    238,
+    240,
+    242,
+    244,
+    246,
+    248,
+    250,
+    252,
+    254,
+    256,
+    258
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 21,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 54.3,
+   "eavesM": 13.5,
+   "ridgeM": 18.6,
+   "roofMaxM": 18.1,
+   "normal": [
+    -0.926,
+    -0.377
+   ],
+   "frontMidRD": [
+    120005.57,
+    489451.32
+   ]
+  },
+  {
+   "pandId": "0363100012063264",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    247,
+    249,
+    253,
+    257,
+    261
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12,
+   "eavesM": 13.7,
+   "ridgeM": 17,
+   "roofMaxM": 17.1,
+   "normal": [
+    0.999,
+    -0.032
+   ],
+   "frontMidRD": [
+    119969.17,
+    489506.85
+   ]
+  },
+  {
+   "pandId": "0363100012095263",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    251,
+    255,
+    259,
+    263
+   ],
+   "otherStreets": {
+    "Zaanhof": [
+     135
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 14.8,
+   "ridgeM": 18.6,
+   "roofMaxM": 18.6,
+   "normal": [
+    0.999,
+    -0.032
+   ],
+   "frontMidRD": [
+    119968.94,
+    489497.85
+   ]
+  },
+  {
+   "pandId": "0363100012131380",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    260,
+    262,
+    264,
+    266,
+    268,
+    270,
+    272,
+    274,
+    276,
+    278,
+    280,
+    282,
+    284,
+    286,
+    288,
+    290
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 16,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 8.1,
+   "eavesM": 13.3,
+   "ridgeM": 18.6,
+   "roofMaxM": 18.8,
+   "normal": [
+    -0.926,
+    -0.378
+   ],
+   "frontMidRD": [
+    119993.79,
+    489480.23
+   ]
+  },
+  {
+   "pandId": "0363100012073565",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    265,
+    267,
+    269,
+    271,
+    273,
+    275,
+    277,
+    279
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.2,
+   "eavesM": 14.1,
+   "ridgeM": 18.4,
+   "roofMaxM": 18.4,
+   "normal": [
+    0.999,
+    -0.034
+   ],
+   "frontMidRD": [
+    119969.59,
+    489518.91
+   ]
+  },
+  {
+   "pandId": "0363100012121270",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    281,
+    283,
+    285,
+    287,
+    289,
+    291,
+    293,
+    295
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.3,
+   "eavesM": 14.1,
+   "ridgeM": 17.4,
+   "roofMaxM": 17.1,
+   "normal": [
+    0.999,
+    -0.034
+   ],
+   "frontMidRD": [
+    119970.07,
+    489531.11
+   ]
+  },
+  {
+   "pandId": "0363100012067869",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    292,
+    294,
+    296,
+    298,
+    300
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.7,
+   "eavesM": 13.9,
+   "ridgeM": 18.9,
+   "roofMaxM": 19.1,
+   "normal": [
+    -0.999,
+    0.033
+   ],
+   "frontMidRD": [
+    119989.57,
+    489515.78
+   ]
+  },
+  {
+   "pandId": "0363100012069691",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    302,
+    304,
+    306,
+    308,
+    310
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.6,
+   "eavesM": 14.5,
+   "ridgeM": 19.7,
+   "roofMaxM": 19.8,
+   "normal": [
+    -0.999,
+    0.033
+   ],
+   "frontMidRD": [
+    119989.98,
+    489528.46
+   ]
+  },
+  {
+   "pandId": "0363100012063407",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    303,
+    305,
+    307,
+    309,
+    311,
+    313,
+    315,
+    317
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.5,
+   "eavesM": 14.1,
+   "ridgeM": 19,
+   "roofMaxM": 19.4,
+   "normal": [
+    0.999,
+    -0.034
+   ],
+   "frontMidRD": [
+    119970.51,
+    489544
+   ]
+  },
+  {
+   "pandId": "0363100012079010",
+   "street": "Oostzaanstraat",
+   "numbers": [
+    314,
+    316,
+    318,
+    320,
+    322
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13,
+   "eavesM": 15.1,
+   "ridgeM": 20.2,
+   "roofMaxM": 20.4,
+   "normal": [
+    -0.999,
+    0.033
+   ],
+   "frontMidRD": [
+    119990.4,
+    489541.25
+   ]
+  },
+  {
+   "pandId": "0363100012102016",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    23,
+    25
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 8.1,
+   "eavesM": 13.8,
+   "ridgeM": 18.5,
+   "roofMaxM": 18.6,
+   "normal": [
+    0.776,
+    0.631
+   ],
+   "frontMidRD": [
+    120281.9,
+    489503.46
+   ]
+  },
+  {
+   "pandId": "0363100012099225",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    27,
+    29
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1922,
+   "storeys3dbag": 0,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.2,
+   "eavesM": 15.5,
+   "ridgeM": 20.1,
+   "roofMaxM": 21,
+   "normal": [
+    0.776,
+    0.631
+   ],
+   "frontMidRD": [
+    120275.32,
+    489511.78
+   ]
+  },
+  {
+   "pandId": "0363100012099226",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    31
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 15.5,
+   "ridgeM": 19.3,
+   "roofMaxM": 20.7,
+   "normal": [
+    0.776,
+    0.631
+   ],
+   "frontMidRD": [
+    120269.85,
+    489518.5
+   ]
+  },
+  {
+   "pandId": "0363100012110714",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    33,
+    35
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1922,
+   "storeys3dbag": 0,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.4,
+   "eavesM": 15.2,
+   "ridgeM": 20.3,
+   "roofMaxM": 20.3,
+   "normal": [
+    0.777,
+    0.629
+   ],
+   "frontMidRD": [
+    120261.72,
+    489526.27
+   ]
+  },
+  {
+   "pandId": "0363100012139131",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    37,
+    39,
+    41
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1922,
+   "storeys3dbag": 0,
+   "units": 9,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9,
+   "eavesM": 15.4,
+   "ridgeM": 20.6,
+   "roofMaxM": 21.1,
+   "normal": [
+    0.622,
+    0.783
+   ],
+   "frontMidRD": [
+    120252.58,
+    489538.27
+   ]
+  },
+  {
+   "pandId": "0363100012145066",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    43,
+    45
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1922,
+   "storeys3dbag": 0,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.5,
+   "eavesM": 15.5,
+   "ridgeM": 20.1,
+   "roofMaxM": 21.1,
+   "normal": [
+    0.249,
+    0.969
+   ],
+   "frontMidRD": [
+    120225.84,
+    489552.12
+   ]
+  },
+  {
+   "pandId": "0363100012084396",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    47,
+    49
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1922,
+   "storeys3dbag": 0,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.5,
+   "eavesM": 15.4,
+   "ridgeM": 20.1,
+   "roofMaxM": 21.7,
+   "normal": [
+    0.249,
+    0.968
+   ],
+   "frontMidRD": [
+    120221.48,
+    489553.24
+   ]
+  },
+  {
+   "pandId": "0363100012123720",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    51
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 15.1,
+   "ridgeM": 20.1,
+   "roofMaxM": 21.2,
+   "normal": [
+    0.035,
+    0.999
+   ],
+   "frontMidRD": [
+    120204.9,
+    489552.83
+   ]
+  },
+  {
+   "pandId": "0363100012069927",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    53
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.3,
+   "eavesM": 15.5,
+   "ridgeM": 19.3,
+   "roofMaxM": 20.7,
+   "normal": [
+    0.033,
+    0.999
+   ],
+   "frontMidRD": [
+    120197.3,
+    489554.6
+   ]
+  },
+  {
+   "pandId": "0363100012139352",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    55,
+    57
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.2,
+   "eavesM": 15.5,
+   "ridgeM": 20.1,
+   "roofMaxM": 21.2,
+   "normal": [
+    0.033,
+    0.999
+   ],
+   "frontMidRD": [
+    120188.56,
+    489554.9
+   ]
+  },
+  {
+   "pandId": "0363100012109748",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    59,
+    61
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1922,
+   "storeys3dbag": 0,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.8,
+   "eavesM": 15.7,
+   "ridgeM": 20.2,
+   "roofMaxM": 20.6,
+   "normal": [
+    0.033,
+    0.999
+   ],
+   "frontMidRD": [
+    120178.08,
+    489555.24
+   ]
+  },
+  {
+   "pandId": "0363100012140055",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    155,
+    156,
+    157,
+    158,
+    159
+   ],
+   "otherStreets": {
+    "Polanenhof": [
+     1
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.6,
+   "eavesM": 15.7,
+   "ridgeM": 20.4,
+   "roofMaxM": 20.4,
+   "normal": [
+    0.033,
+    0.999
+   ],
+   "frontMidRD": [
+    120145.33,
+    489556.2
+   ]
+  },
+  {
+   "pandId": "0363100012065620",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    160,
+    161,
+    162,
+    163,
+    164,
+    165
+   ],
+   "otherStreets": {
+    "Polanenhof": [
+     2,
+     3
+    ]
+   },
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 0,
+   "units": 8,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.1,
+   "eavesM": 15.8,
+   "ridgeM": 20.3,
+   "roofMaxM": 20.9,
+   "normal": [
+    0.034,
+    0.999
+   ],
+   "frontMidRD": [
+    120135.97,
+    489556.51
+   ]
+  },
+  {
+   "pandId": "0363100012136859",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    166,
+    167,
+    168,
+    169,
+    170
+   ],
+   "otherStreets": {
+    "Polanenhof": [
+     4,
+     5
+    ]
+   },
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 0,
+   "units": 7,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.1,
+   "eavesM": 15.7,
+   "ridgeM": 20.3,
+   "roofMaxM": 20.3,
+   "normal": [
+    0.033,
+    0.999
+   ],
+   "frontMidRD": [
+    120124.86,
+    489556.89
+   ]
+  },
+  {
+   "pandId": "0363100012129258",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    171,
+    172,
+    173,
+    174,
+    175
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 0,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.6,
+   "eavesM": 15.7,
+   "ridgeM": 20.3,
+   "roofMaxM": 20.4,
+   "normal": [
+    0.033,
+    0.999
+   ],
+   "frontMidRD": [
+    120115.53,
+    489557.2
+   ]
+  },
+  {
+   "pandId": "0363100012105669",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 0,
+   "units": 10,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 24.2,
+   "eavesM": 15.7,
+   "ridgeM": 21,
+   "roofMaxM": 21,
+   "normal": [
+    0.033,
+    0.999
+   ],
+   "frontMidRD": [
+    120093.21,
+    489552.14
+   ]
+  },
+  {
+   "pandId": "0363100012105616",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 0,
+   "units": 16,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 40.8,
+   "eavesM": 15.8,
+   "ridgeM": 20.4,
+   "roofMaxM": 20.4,
+   "normal": [
+    0.033,
+    0.999
+   ],
+   "frontMidRD": [
+    120060.74,
+    489553.21
+   ]
+  },
+  {
+   "pandId": "0363100012078763",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    202,
+    203,
+    204,
+    205,
+    206
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 0,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 15.8,
+   "ridgeM": 20.5,
+   "roofMaxM": 20.5,
+   "normal": [
+    0.034,
+    0.999
+   ],
+   "frontMidRD": [
+    120030.49,
+    489560.01
+   ]
+  },
+  {
+   "pandId": "0363100012127085",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    207,
+    208,
+    209,
+    210,
+    211
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 0,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11,
+   "eavesM": 15.8,
+   "ridgeM": 21,
+   "roofMaxM": 20.4,
+   "normal": [
+    0.034,
+    0.999
+   ],
+   "frontMidRD": [
+    120021.21,
+    489560.33
+   ]
+  },
+  {
+   "pandId": "0363100012085158",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    225,
+    226,
+    227,
+    228,
+    229,
+    230
+   ],
+   "otherStreets": {
+    "Polanenhof": [
+     22,
+     23
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.1,
+   "eavesM": 15.8,
+   "ridgeM": 21,
+   "roofMaxM": 20.3,
+   "normal": [
+    0.034,
+    0.999
+   ],
+   "frontMidRD": [
+    120010.14,
+    489560.71
+   ]
+  },
+  {
+   "pandId": "0363100012074744",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238
+   ],
+   "otherStreets": {
+    "Polanenhof": [
+     24,
+     25
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 10,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.6,
+   "eavesM": 15.7,
+   "ridgeM": 20.4,
+   "roofMaxM": 20.5,
+   "normal": [
+    0.034,
+    0.999
+   ],
+   "frontMidRD": [
+    120000.8,
+    489561.01
+   ]
+  },
+  {
+   "pandId": "0363100012142927",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246
+   ],
+   "otherStreets": {
+    "Oostzaanstraat": [
+     319
+    ]
+   },
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 0,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15.2,
+   "eavesM": 15.2,
+   "ridgeM": 20.1,
+   "roofMaxM": 22.5,
+   "normal": [
+    0.031,
+    1
+   ],
+   "frontMidRD": [
+    119963.55,
+    489562.26
+   ]
+  },
+  {
+   "pandId": "0363100012136579",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 0,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15.1,
+   "eavesM": 15.3,
+   "ridgeM": 20.1,
+   "roofMaxM": 20.1,
+   "normal": [
+    0.031,
+    1
+   ],
+   "frontMidRD": [
+    119948.43,
+    489562.73
+   ]
+  },
+  {
+   "pandId": "0363100012123704",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    255,
+    256,
+    257,
+    258,
+    259,
+    260,
+    261,
+    262
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 0,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 15.3,
+   "ridgeM": 20.1,
+   "roofMaxM": 20.1,
+   "normal": [
+    0.031,
+    1
+   ],
+   "frontMidRD": [
+    119933.43,
+    489563.2
+   ]
+  },
+  {
+   "pandId": "0363100012090405",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    273
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 0,
+   "units": 10,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 18.4,
+   "eavesM": 15.2,
+   "ridgeM": 22.4,
+   "roofMaxM": 24,
+   "normal": [
+    0.034,
+    0.999
+   ],
+   "frontMidRD": [
+    119916.78,
+    489563.73
+   ]
+  },
+  {
+   "pandId": "0363100012086895",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    272,
+    274,
+    275,
+    276,
+    277,
+    278,
+    279,
+    280,
+    281
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 0,
+   "units": 9,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15.2,
+   "eavesM": 15.2,
+   "ridgeM": 20,
+   "roofMaxM": 20,
+   "normal": [
+    0.034,
+    0.999
+   ],
+   "frontMidRD": [
+    119899.97,
+    489564.27
+   ]
+  },
+  {
+   "pandId": "0363100012102396",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    282,
+    283,
+    284,
+    285,
+    286,
+    287,
+    288,
+    289
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 0,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 15.2,
+   "ridgeM": 20,
+   "roofMaxM": 20.1,
+   "normal": [
+    0.034,
+    0.999
+   ],
+   "frontMidRD": [
+    119884.92,
+    489564.79
+   ]
+  },
+  {
+   "pandId": "0363100012094482",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    290,
+    291,
+    292,
+    293,
+    294,
+    295,
+    296,
+    297,
+    298,
+    299
+   ],
+   "otherStreets": {
+    "Zaanstraat": [
+     390,
+     391
+    ]
+   },
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 0,
+   "units": 12,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15.1,
+   "eavesM": 15.2,
+   "ridgeM": 20.1,
+   "roofMaxM": 20.3,
+   "normal": [
+    0.034,
+    0.999
+   ],
+   "frontMidRD": [
+    119869.95,
+    489565.3
+   ]
+  },
+  {
+   "pandId": "0363100012232677",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    301
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 3.3,
+   "eavesM": 3,
+   "ridgeM": -2.6,
+   "roofMaxM": 3,
+   "normal": [
+    0.027,
+    1
+   ],
+   "frontMidRD": [
+    119840.5,
+    489561.74
+   ]
+  },
+  {
+   "pandId": "0363100012109017",
+   "street": "Spaarndammerdijk",
+   "numbers": [
+    302,
+    304,
+    306
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 2001,
+   "storeys3dbag": 0,
+   "units": 3,
+   "groundUses": [
+    "logiesfunctie",
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 26.3,
+   "eavesM": 24,
+   "ridgeM": 26.8,
+   "roofMaxM": 26.7,
+   "normal": [
+    0.033,
+    0.999
+   ],
+   "frontMidRD": [
+    119726.91,
+    489568.39
+   ]
+  },
+  {
+   "pandId": "0363100012120652",
+   "street": "Uitgeeststraat",
+   "numbers": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    15
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.6,
+   "eavesM": 13.4,
+   "ridgeM": 17.6,
+   "roofMaxM": 17.6,
+   "normal": [
+    -0.999,
+    0.032
+   ],
+   "frontMidRD": [
+    120168.55,
+    489535.55
+   ]
+  },
+  {
+   "pandId": "0363100012074814",
+   "street": "Uitgeeststraat",
+   "numbers": [
+    2,
+    4,
+    6,
+    8,
+    10
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.7,
+   "eavesM": 13.4,
+   "ridgeM": 17.7,
+   "roofMaxM": 17.7,
+   "normal": [
+    1,
+    -0.03
+   ],
+   "frontMidRD": [
+    120153.51,
+    489535.97
+   ]
+  },
+  {
+   "pandId": "0363100012105269",
+   "street": "Zaandammerplein",
+   "numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.6,
+   "eavesM": 13.1,
+   "ridgeM": 18,
+   "roofMaxM": 18,
+   "normal": [
+    -0.731,
+    -0.683
+   ],
+   "frontMidRD": [
+    120171.39,
+    489519.55
+   ]
+  },
+  {
+   "pandId": "0363100012130669",
+   "street": "Zaandammerplein",
+   "numbers": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.3,
+   "eavesM": 13.1,
+   "ridgeM": 17.8,
+   "roofMaxM": 18,
+   "normal": [
+    -1,
+    0.031
+   ],
+   "frontMidRD": [
+    120166.33,
+    489494.08
+   ]
+  },
+  {
+   "pandId": "0363100012088214",
+   "street": "Zaandammerplein",
+   "numbers": [
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.8,
+   "eavesM": 13.1,
+   "ridgeM": 18.7,
+   "roofMaxM": 18.7,
+   "normal": [
+    -1,
+    0.031
+   ],
+   "frontMidRD": [
+    120166.03,
+    489484.49
+   ]
+  },
+  {
+   "pandId": "0363100012105370",
+   "street": "Zaandammerplein",
+   "numbers": [
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.6,
+   "eavesM": 13.2,
+   "ridgeM": 17.8,
+   "roofMaxM": 18.5,
+   "normal": [
+    -1,
+    0.031
+   ],
+   "frontMidRD": [
+    120165.67,
+    489472.8
+   ]
+  },
+  {
+   "pandId": "0363100012123840",
+   "street": "Zaandammerplein",
+   "numbers": [
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.2,
+   "eavesM": 13.2,
+   "ridgeM": 17.8,
+   "roofMaxM": 18.2,
+   "normal": [
+    -0.434,
+    0.901
+   ],
+   "frontMidRD": [
+    120161.33,
+    489459.42
+   ]
+  },
+  {
+   "pandId": "0363100012117074",
+   "street": "Zaandammerplein",
+   "numbers": [
+    37,
+    38,
+    39,
+    40,
+    41,
+    42
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.8,
+   "eavesM": 13.2,
+   "ridgeM": 17.8,
+   "roofMaxM": 17.8,
+   "normal": [
+    -0.433,
+    0.901
+   ],
+   "frontMidRD": [
+    120151.13,
+    489454.17
+   ]
+  },
+  {
+   "pandId": "0363100012107305",
+   "street": "Zaandammerplein",
+   "numbers": [
+    50
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 48.1,
+   "eavesM": 12.8,
+   "ridgeM": 21.1,
+   "roofMaxM": 21.6,
+   "normal": [
+    -0.434,
+    0.901
+   ],
+   "frontMidRD": [
+    120120.81,
+    489441.72
+   ]
+  },
+  {
+   "pandId": "0363100012076784",
+   "street": "Zaandammerplein",
+   "numbers": [
+    51,
+    52,
+    53,
+    54,
+    55,
+    56
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.8,
+   "eavesM": 13.3,
+   "ridgeM": 17.8,
+   "roofMaxM": 17.8,
+   "normal": [
+    -0.433,
+    0.901
+   ],
+   "frontMidRD": [
+    120092.17,
+    489425.74
+   ]
+  },
+  {
+   "pandId": "0363100012152141",
+   "street": "Zaandammerplein",
+   "numbers": [
+    57,
+    58,
+    59,
+    60,
+    61,
+    62
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.1,
+   "eavesM": 13.3,
+   "ridgeM": 17.9,
+   "roofMaxM": 19.1,
+   "normal": [
+    -0.433,
+    0.901
+   ],
+   "frontMidRD": [
+    120080.98,
+    489420.37
+   ]
+  },
+  {
+   "pandId": "0363100012124565",
+   "street": "Zaandammerplein",
+   "numbers": [
+    63,
+    64,
+    65,
+    66,
+    67,
+    68
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.9,
+   "eavesM": 13.3,
+   "ridgeM": 18.7,
+   "roofMaxM": 18.7,
+   "normal": [
+    -0.433,
+    0.901
+   ],
+   "frontMidRD": [
+    120071.1,
+    489415.62
+   ]
+  },
+  {
+   "pandId": "0363100012061268",
+   "street": "Zaandammerplein",
+   "numbers": [
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.9,
+   "eavesM": 13.3,
+   "ridgeM": 17.9,
+   "roofMaxM": 17.9,
+   "normal": [
+    0.338,
+    0.941
+   ],
+   "frontMidRD": [
+    120061.5,
+    489412.58
+   ]
+  },
+  {
+   "pandId": "0363100012064058",
+   "street": "Zaandammerplein",
+   "numbers": [
+    77,
+    78,
+    79,
+    80
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1929,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.4,
+   "eavesM": 13,
+   "ridgeM": 17.8,
+   "roofMaxM": 18.3,
+   "normal": [
+    0.901,
+    0.433
+   ],
+   "frontMidRD": [
+    120057.11,
+    489418.52
+   ]
+  },
+  {
+   "pandId": "0363100012068362",
+   "street": "Zaandammerplein",
+   "numbers": [
+    81,
+    82,
+    83,
+    84
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.6,
+   "eavesM": 13.1,
+   "ridgeM": 18.1,
+   "roofMaxM": 18.1,
+   "normal": [
+    0.926,
+    0.378
+   ],
+   "frontMidRD": [
+    120049.29,
+    489437.02
+   ]
+  },
+  {
+   "pandId": "0363100012100080",
+   "street": "Zaandammerplein",
+   "numbers": [
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 24,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 57.7,
+   "eavesM": 13.3,
+   "ridgeM": 19,
+   "roofMaxM": 19,
+   "normal": [
+    0.926,
+    0.378
+   ],
+   "frontMidRD": [
+    120037.35,
+    489466.28
+   ]
+  },
+  {
+   "pandId": "0363100012076443",
+   "street": "Zaandammerplein",
+   "numbers": [
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.6,
+   "eavesM": 13.5,
+   "ridgeM": 18.2,
+   "roofMaxM": 18.9,
+   "normal": [
+    0.985,
+    0.17
+   ],
+   "frontMidRD": [
+    120025.04,
+    489503.2
+   ]
+  },
+  {
+   "pandId": "0363100012133459",
+   "street": "Zaandammerplein",
+   "numbers": [
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.5,
+   "eavesM": 13.2,
+   "ridgeM": 18.1,
+   "roofMaxM": 18.8,
+   "normal": [
+    0.679,
+    -0.734
+   ],
+   "frontMidRD": [
+    120026.26,
+    489518.62
+   ]
+  },
+  {
+   "pandId": "0363100012118638",
+   "street": "Zaandammerplein",
+   "numbers": [
+    125,
+    126,
+    128,
+    129,
+    130
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.2,
+   "eavesM": 13.3,
+   "ridgeM": 18.2,
+   "roofMaxM": 18.2,
+   "normal": [
+    -0.034,
+    -0.999
+   ],
+   "frontMidRD": [
+    120037.5,
+    489519.83
+   ]
+  },
+  {
+   "pandId": "0363100012070304",
+   "street": "Zaandammerplein",
+   "numbers": [
+    131,
+    132,
+    133,
+    134,
+    135
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.4,
+   "eavesM": 13.3,
+   "ridgeM": 18.1,
+   "roofMaxM": 18.1,
+   "normal": [
+    -0.033,
+    -0.999
+   ],
+   "frontMidRD": [
+    120050.8,
+    489519.38
+   ]
+  },
+  {
+   "pandId": "0363100012077291",
+   "street": "Zaandammerplein",
+   "numbers": [
+    136,
+    137,
+    138,
+    139,
+    140
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 0,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.2,
+   "eavesM": 13.3,
+   "ridgeM": 18.1,
+   "roofMaxM": 18.8,
+   "normal": [
+    -0.034,
+    -0.999
+   ],
+   "frontMidRD": [
+    120064.11,
+    489518.94
+   ]
+  },
+  {
+   "pandId": "0363100012117604",
+   "street": "Zaandammerplein",
+   "numbers": [
+    141,
+    142,
+    143,
+    144,
+    145,
+    146
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 13.2,
+   "ridgeM": 18.1,
+   "roofMaxM": 18.2,
+   "normal": [
+    -0.034,
+    -0.999
+   ],
+   "frontMidRD": [
+    120084.74,
+    489518.24
+   ]
+  },
+  {
+   "pandId": "0363100012072006",
+   "street": "Zaandammerplein",
+   "numbers": [
+    149,
+    150,
+    151,
+    152,
+    153
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.2,
+   "eavesM": 13.2,
+   "ridgeM": 18.7,
+   "roofMaxM": 18.1,
+   "normal": [
+    -0.034,
+    -0.999
+   ],
+   "frontMidRD": [
+    120094.18,
+    489517.93
+   ]
+  },
+  {
+   "pandId": "0363100012155161",
+   "street": "Zaandammerplein",
+   "numbers": [
+    154,
+    156
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 10,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.2,
+   "eavesM": 13.3,
+   "ridgeM": 18.1,
+   "roofMaxM": 18.1,
+   "normal": [
+    -0.034,
+    -0.999
+   ],
+   "frontMidRD": [
+    120107.37,
+    489517.48
+   ]
+  },
+  {
+   "pandId": "0363100012091874",
+   "street": "Zaandammerplein",
+   "numbers": [
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13,
+   "eavesM": 13.2,
+   "ridgeM": 18,
+   "roofMaxM": 18,
+   "normal": [
+    -0.033,
+    -0.999
+   ],
+   "frontMidRD": [
+    120120.46,
+    489517.04
+   ]
+  },
+  {
+   "pandId": "0363100012114860",
+   "street": "Zaandammerplein",
+   "numbers": [
+    167,
+    168,
+    169,
+    170,
+    171
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.2,
+   "eavesM": 13.1,
+   "ridgeM": 18,
+   "roofMaxM": 18,
+   "normal": [
+    -0.034,
+    -0.999
+   ],
+   "frontMidRD": [
+    120133.59,
+    489516.6
+   ]
+  },
+  {
+   "pandId": "0363100012135269",
+   "street": "Zaandammerplein",
+   "numbers": [
+    172,
+    173,
+    174,
+    175,
+    176
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1923,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.7,
+   "eavesM": 13.2,
+   "ridgeM": 18.1,
+   "roofMaxM": 18.1,
+   "normal": [
+    -0.032,
+    -0.999
+   ],
+   "frontMidRD": [
+    120144.04,
+    489516.26
+   ]
+  },
+  {
+   "pandId": "0363100012119633",
+   "street": "Zaandammerplein",
+   "numbers": [
+    200
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 2007,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 10,
+   "eavesM": 3.1,
+   "ridgeM": 3.2,
+   "roofMaxM": 3.1,
+   "normal": [
+    -0.25,
+    0.968
+   ],
+   "frontMidRD": [
+    120133.27,
+    489501.98
+   ]
+  },
+  {
+   "pandId": "0363100012094000",
+   "street": "Zaanhof",
+   "numbers": [
+    1,
+    2
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 7.5,
+   "ridgeM": 11.6,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.927,
+    -0.376
+   ],
+   "frontMidRD": [
+    119938.35,
+    489468.21
+   ]
+  },
+  {
+   "pandId": "0363100012146841",
+   "street": "Zaanhof",
+   "numbers": [
+    3,
+    4
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 7.7,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.369
+   ],
+   "frontMidRD": [
+    119940.53,
+    489462.53
+   ]
+  },
+  {
+   "pandId": "0363100012142675",
+   "street": "Zaanhof",
+   "numbers": [
+    5,
+    6
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.369
+   ],
+   "frontMidRD": [
+    119942.73,
+    489456.99
+   ]
+  },
+  {
+   "pandId": "0363100012087177",
+   "street": "Zaanhof",
+   "numbers": [
+    7,
+    8
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.368
+   ],
+   "frontMidRD": [
+    119945.16,
+    489451.6
+   ]
+  },
+  {
+   "pandId": "0363100012123914",
+   "street": "Zaanhof",
+   "numbers": [
+    9,
+    10
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.368
+   ],
+   "frontMidRD": [
+    119947.08,
+    489445.99
+   ]
+  },
+  {
+   "pandId": "0363100012096324",
+   "street": "Zaanhof",
+   "numbers": [
+    11,
+    12
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.368
+   ],
+   "frontMidRD": [
+    119949.26,
+    489440.5
+   ]
+  },
+  {
+   "pandId": "0363100012147168",
+   "street": "Zaanhof",
+   "numbers": [
+    13,
+    14
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.369
+   ],
+   "frontMidRD": [
+    119951.44,
+    489435
+   ]
+  },
+  {
+   "pandId": "0363100012111405",
+   "street": "Zaanhof",
+   "numbers": [
+    15,
+    16
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.7,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.368
+   ],
+   "frontMidRD": [
+    119953.61,
+    489429.52
+   ]
+  },
+  {
+   "pandId": "0363100012103385",
+   "street": "Zaanhof",
+   "numbers": [
+    17,
+    18
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 7.7,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.368
+   ],
+   "frontMidRD": [
+    119955.8,
+    489423.99
+   ]
+  },
+  {
+   "pandId": "0363100012107452",
+   "street": "Zaanhof",
+   "numbers": [
+    19,
+    20
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.7,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.368
+   ],
+   "frontMidRD": [
+    119957.99,
+    489418.46
+   ]
+  },
+  {
+   "pandId": "0363100012061939",
+   "street": "Zaanhof",
+   "numbers": [
+    22
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.368
+   ],
+   "frontMidRD": [
+    119960.17,
+    489412.97
+   ]
+  },
+  {
+   "pandId": "0363100012114944",
+   "street": "Zaanhof",
+   "numbers": [
+    23,
+    24
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 7.6,
+   "ridgeM": 11.6,
+   "roofMaxM": 11.6,
+   "normal": [
+    -0.93,
+    -0.368
+   ],
+   "frontMidRD": [
+    119962.36,
+    489407.45
+   ]
+  },
+  {
+   "pandId": "0363100012109995",
+   "street": "Zaanhof",
+   "numbers": [
+    25,
+    26
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.369
+   ],
+   "frontMidRD": [
+    119964.53,
+    489401.98
+   ]
+  },
+  {
+   "pandId": "0363100012074829",
+   "street": "Zaanhof",
+   "numbers": [
+    27,
+    28
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.369
+   ],
+   "frontMidRD": [
+    119966.71,
+    489396.45
+   ]
+  },
+  {
+   "pandId": "0363100012065518",
+   "street": "Zaanhof",
+   "numbers": [
+    29,
+    30
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.368
+   ],
+   "frontMidRD": [
+    119968.92,
+    489390.9
+   ]
+  },
+  {
+   "pandId": "0363100012097562",
+   "street": "Zaanhof",
+   "numbers": [
+    31,
+    32
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 7.4,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.93,
+    -0.369
+   ],
+   "frontMidRD": [
+    119971.13,
+    489385.32
+   ]
+  },
+  {
+   "pandId": "0363100012141963",
+   "street": "Zaanhof",
+   "numbers": [
+    33,
+    34
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.929,
+    -0.369
+   ],
+   "frontMidRD": [
+    119973.29,
+    489379.85
+   ]
+  },
+  {
+   "pandId": "0363100012068007",
+   "street": "Zaanhof",
+   "numbers": [
+    35,
+    36
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": null,
+   "storeys3dbag": null,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "factsError": "No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012127592",
+   "street": "Zaanhof",
+   "numbers": [
+    37,
+    38,
+    39
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 10.6,
+   "ridgeM": 14.7,
+   "roofMaxM": 18.5,
+   "normal": [
+    -0.366,
+    0.931
+   ],
+   "frontMidRD": [
+    119972.97,
+    489372.54
+   ]
+  },
+  {
+   "pandId": "0363100012117213",
+   "street": "Zaanhof",
+   "numbers": [
+    40,
+    41,
+    42
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.6,
+   "eavesM": 10.6,
+   "ridgeM": 16.5,
+   "roofMaxM": 16.5,
+   "normal": [
+    -0.562,
+    0.827
+   ],
+   "frontMidRD": [
+    119965.3,
+    489368.07
+   ]
+  },
+  {
+   "pandId": "0363100012075697",
+   "street": "Zaanhof",
+   "numbers": [
+    43,
+    44,
+    45
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 10.7,
+   "ridgeM": 14.7,
+   "roofMaxM": 18.1,
+   "normal": [
+    -0.736,
+    0.677
+   ],
+   "frontMidRD": [
+    119958.93,
+    489362.39
+   ]
+  },
+  {
+   "pandId": "0363100012143746",
+   "street": "Zaanhof",
+   "numbers": [
+    46,
+    47
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.1,
+   "eavesM": 7.3,
+   "ridgeM": 21.1,
+   "roofMaxM": 21.1,
+   "normal": [
+    0.712,
+    0.703
+   ],
+   "frontMidRD": [
+    119956.27,
+    489360.53
+   ]
+  },
+  {
+   "pandId": "0363100012114675",
+   "street": "Zaanhof",
+   "numbers": [
+    48,
+    49
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    0.711,
+    0.703
+   ],
+   "frontMidRD": [
+    119951.62,
+    489365.13
+   ]
+  },
+  {
+   "pandId": "0363100012091396",
+   "street": "Zaanhof",
+   "numbers": [
+    51
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.5,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.8,
+   "normal": [
+    0.711,
+    0.703
+   ],
+   "frontMidRD": [
+    119947.46,
+    489369.34
+   ]
+  },
+  {
+   "pandId": "0363100012127918",
+   "street": "Zaanhof",
+   "numbers": [
+    52,
+    53
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.8,
+   "normal": [
+    0.711,
+    0.703
+   ],
+   "frontMidRD": [
+    119943.31,
+    489373.54
+   ]
+  },
+  {
+   "pandId": "0363100012098344",
+   "street": "Zaanhof",
+   "numbers": [
+    54,
+    55
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 7.6,
+   "ridgeM": 11.8,
+   "roofMaxM": 11.8,
+   "normal": [
+    0.711,
+    0.703
+   ],
+   "frontMidRD": [
+    119939.18,
+    489377.8
+   ]
+  },
+  {
+   "pandId": "0363100012116456",
+   "street": "Zaanhof",
+   "numbers": [
+    56,
+    57
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.9,
+   "eavesM": 7.3,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.704,
+    0.71
+   ],
+   "frontMidRD": [
+    119930.48,
+    489379.98
+   ]
+  },
+  {
+   "pandId": "0363100012103590",
+   "street": "Zaanhof",
+   "numbers": [
+    58,
+    59,
+    60
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": null,
+   "storeys3dbag": null,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "factsError": "No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012139891",
+   "street": "Zaanhof",
+   "numbers": [
+    61,
+    62
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.9,
+   "eavesM": 7.5,
+   "ridgeM": 11.7,
+   "roofMaxM": 13.9,
+   "normal": [
+    0.369,
+    -0.93
+   ],
+   "frontMidRD": [
+    119924.25,
+    489389.51
+   ]
+  },
+  {
+   "pandId": "0363100012135824",
+   "street": "Zaanhof",
+   "numbers": [
+    63,
+    64
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.5,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    0.928,
+    0.371
+   ],
+   "frontMidRD": [
+    119925.51,
+    489398.79
+   ]
+  },
+  {
+   "pandId": "0363100012111330",
+   "street": "Zaanhof",
+   "numbers": [
+    66
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 7.5,
+   "ridgeM": 11.8,
+   "roofMaxM": 11.8,
+   "normal": [
+    0.928,
+    0.372
+   ],
+   "frontMidRD": [
+    119923.33,
+    489404.22
+   ]
+  },
+  {
+   "pandId": "0363100012103199",
+   "street": "Zaanhof",
+   "numbers": [
+    67,
+    68
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.8,
+   "normal": [
+    0.928,
+    0.372
+   ],
+   "frontMidRD": [
+    119921.13,
+    489409.73
+   ]
+  },
+  {
+   "pandId": "0363100012082437",
+   "street": "Zaanhof",
+   "numbers": [
+    70
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 7.5,
+   "ridgeM": 11.8,
+   "roofMaxM": 11.8,
+   "normal": [
+    0.928,
+    0.372
+   ],
+   "frontMidRD": [
+    119918.92,
+    489415.24
+   ]
+  },
+  {
+   "pandId": "0363100012085115",
+   "street": "Zaanhof",
+   "numbers": [
+    71,
+    72
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.6,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.8,
+   "normal": [
+    0.929,
+    0.371
+   ],
+   "frontMidRD": [
+    119916.74,
+    489420.68
+   ]
+  },
+  {
+   "pandId": "0363100012074750",
+   "street": "Zaanhof",
+   "numbers": [
+    73,
+    74
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 7.5,
+   "ridgeM": 11.8,
+   "roofMaxM": 11.8,
+   "normal": [
+    0.928,
+    0.372
+   ],
+   "frontMidRD": [
+    119914.53,
+    489426.12
+   ]
+  },
+  {
+   "pandId": "0363100012080422",
+   "street": "Zaanhof",
+   "numbers": [
+    75,
+    76
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 7.4,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    0.928,
+    0.372
+   ],
+   "frontMidRD": [
+    119912.37,
+    489431.6
+   ]
+  },
+  {
+   "pandId": "0363100012116468",
+   "street": "Zaanhof",
+   "numbers": [
+    77,
+    78
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 7.5,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    0.928,
+    0.372
+   ],
+   "frontMidRD": [
+    119910.14,
+    489437.18
+   ]
+  },
+  {
+   "pandId": "0363100012061275",
+   "street": "Zaanhof",
+   "numbers": [
+    79,
+    80
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 8.4,
+   "eavesM": 7.9,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.382,
+    0.924
+   ],
+   "frontMidRD": [
+    119903.03,
+    489443.84
+   ]
+  },
+  {
+   "pandId": "0363100012070692",
+   "street": "Zaanhof",
+   "numbers": [
+    81,
+    82
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.4,
+   "eavesM": 7.4,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.384,
+    0.924
+   ],
+   "frontMidRD": [
+    119900.23,
+    489449.08
+   ]
+  },
+  {
+   "pandId": "0363100012143789",
+   "street": "Zaanhof",
+   "numbers": [
+    83,
+    84
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11,
+   "eavesM": 7,
+   "ridgeM": 12.8,
+   "roofMaxM": 12.9,
+   "normal": [
+    0.383,
+    -0.924
+   ],
+   "frontMidRD": [
+    119899.27,
+    489455.19
+   ]
+  },
+  {
+   "pandId": "0363100012106544",
+   "street": "Zaanhof",
+   "numbers": [
+    85,
+    86
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 7.2,
+   "ridgeM": 12.7,
+   "roofMaxM": 12.7,
+   "normal": [
+    0.926,
+    0.378
+   ],
+   "frontMidRD": [
+    119900.85,
+    489466.18
+   ]
+  },
+  {
+   "pandId": "0363100012115120",
+   "street": "Zaanhof",
+   "numbers": [
+    87,
+    88,
+    89
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.3,
+   "eavesM": 10.1,
+   "ridgeM": 16.5,
+   "roofMaxM": 16.5,
+   "normal": [
+    0.985,
+    0.173
+   ],
+   "frontMidRD": [
+    119899.14,
+    489472.73
+   ]
+  },
+  {
+   "pandId": "0363100012148996",
+   "street": "Zaanhof",
+   "numbers": [
+    90,
+    91,
+    92
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1934,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 10.1,
+   "ridgeM": 16.4,
+   "roofMaxM": 17.4,
+   "normal": [
+    0.985,
+    0.173
+   ],
+   "frontMidRD": [
+    119897.86,
+    489480.02
+   ]
+  },
+  {
+   "pandId": "0363100012079436",
+   "street": "Zaanhof",
+   "numbers": [
+    93,
+    94
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 7.1,
+   "ridgeM": 12.7,
+   "roofMaxM": 13.1,
+   "normal": [
+    0.999,
+    -0.035
+   ],
+   "frontMidRD": [
+    119897.2,
+    489486.78
+   ]
+  },
+  {
+   "pandId": "0363100012107104",
+   "street": "Zaanhof",
+   "numbers": [
+    95,
+    96
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11,
+   "eavesM": 7.4,
+   "ridgeM": 12.7,
+   "roofMaxM": 13.4,
+   "normal": [
+    0.034,
+    0.999
+   ],
+   "frontMidRD": [
+    119891.94,
+    489496.74
+   ]
+  },
+  {
+   "pandId": "0363100012084647",
+   "street": "Zaanhof",
+   "numbers": [
+    97,
+    98
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.5,
+   "eavesM": 7.2,
+   "ridgeM": 11.6,
+   "roofMaxM": 11.6,
+   "normal": [
+    -0.035,
+    -0.999
+   ],
+   "frontMidRD": [
+    119890.69,
+    489502.78
+   ]
+  },
+  {
+   "pandId": "0363100012066165",
+   "street": "Zaanhof",
+   "numbers": [
+    99,
+    100
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 7.4,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    0.999,
+    -0.033
+   ],
+   "frontMidRD": [
+    119895.79,
+    489512.32
+   ]
+  },
+  {
+   "pandId": "0363100012116074",
+   "street": "Zaanhof",
+   "numbers": [
+    101,
+    102
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 7.5,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    0.999,
+    -0.032
+   ],
+   "frontMidRD": [
+    119895.98,
+    489518.16
+   ]
+  },
+  {
+   "pandId": "0363100012131022",
+   "street": "Zaanhof",
+   "numbers": [
+    103,
+    104
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 7.4,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    0.999,
+    -0.033
+   ],
+   "frontMidRD": [
+    119896.17,
+    489524.05
+   ]
+  },
+  {
+   "pandId": "0363100012141308",
+   "street": "Zaanhof",
+   "numbers": [
+    105,
+    106
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": null,
+   "storeys3dbag": null,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "factsError": "No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012146345",
+   "street": "Zaanhof",
+   "numbers": [
+    107,
+    108,
+    109
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 10.3,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.8,
+   "normal": [
+    -0.033,
+    -0.999
+   ],
+   "frontMidRD": [
+    119899.62,
+    489530.7
+   ]
+  },
+  {
+   "pandId": "0363100012136592",
+   "street": "Zaanhof",
+   "numbers": [
+    110,
+    111,
+    112
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 10.5,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.8,
+   "normal": [
+    -0.033,
+    -0.999
+   ],
+   "frontMidRD": [
+    119905.57,
+    489530.45
+   ]
+  },
+  {
+   "pandId": "0363100012108440",
+   "street": "Zaanhof",
+   "numbers": [
+    113,
+    114,
+    115,
+    116
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.8,
+   "eavesM": 10.3,
+   "ridgeM": 16.6,
+   "roofMaxM": 16.6,
+   "normal": [
+    -0.033,
+    -0.999
+   ],
+   "frontMidRD": [
+    119915.37,
+    489530.13
+   ]
+  },
+  {
+   "pandId": "0363100012084460",
+   "street": "Zaanhof",
+   "numbers": [
+    117,
+    118,
+    119
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 10.4,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.8,
+   "normal": [
+    -0.033,
+    -0.999
+   ],
+   "frontMidRD": [
+    119925.14,
+    489529.75
+   ]
+  },
+  {
+   "pandId": "0363100012116276",
+   "street": "Zaanhof",
+   "numbers": [
+    120,
+    121,
+    122
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 10.3,
+   "ridgeM": 14.7,
+   "roofMaxM": 18,
+   "normal": [
+    -0.032,
+    -0.999
+   ],
+   "frontMidRD": [
+    119931.01,
+    489529.56
+   ]
+  },
+  {
+   "pandId": "0363100012102297",
+   "street": "Zaanhof",
+   "numbers": [
+    123,
+    124
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": null,
+   "storeys3dbag": null,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "factsError": "No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012127622",
+   "street": "Zaanhof",
+   "numbers": [
+    125,
+    126
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 7.7,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.999,
+    0.034
+   ],
+   "frontMidRD": [
+    119933.74,
+    489522.85
+   ]
+  },
+  {
+   "pandId": "0363100012139676",
+   "street": "Zaanhof",
+   "numbers": [
+    127,
+    128
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 7.7,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.999,
+    0.034
+   ],
+   "frontMidRD": [
+    119933.66,
+    489516.82
+   ]
+  },
+  {
+   "pandId": "0363100012063074",
+   "street": "Zaanhof",
+   "numbers": [
+    129,
+    130
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 7.7,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.999,
+    0.035
+   ],
+   "frontMidRD": [
+    119933.38,
+    489510.87
+   ]
+  },
+  {
+   "pandId": "0363100012131844",
+   "street": "Zaanhof",
+   "numbers": [
+    131,
+    132
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 7.7,
+   "ridgeM": 11.6,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.999,
+    0.035
+   ],
+   "frontMidRD": [
+    119933.19,
+    489505.02
+   ]
+  },
+  {
+   "pandId": "0363100012109397",
+   "street": "Zaanhof",
+   "numbers": [
+    133,
+    134
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 7.6,
+   "ridgeM": 11.6,
+   "roofMaxM": 11.6,
+   "normal": [
+    -0.999,
+    0.044
+   ],
+   "frontMidRD": [
+    119933.02,
+    489499.05
+   ]
+  },
+  {
+   "pandId": "0363100012134665",
+   "street": "Zaanstraat",
+   "numbers": [
+    250,
+    252,
+    253,
+    254,
+    255,
+    256
+   ],
+   "otherStreets": {
+    "Hembrugstraat": [
+     370
+    ]
+   },
+   "side": "even",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15.1,
+   "eavesM": 12.2,
+   "ridgeM": 17.1,
+   "roofMaxM": 18.2,
+   "normal": [
+    -0.596,
+    -0.803
+   ],
+   "frontMidRD": [
+    119959.92,
+    489315.1
+   ]
+  },
+  {
+   "pandId": "0363100012142603",
+   "street": "Zaanstraat",
+   "numbers": [
+    257,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15,
+   "eavesM": 12.2,
+   "ridgeM": 17,
+   "roofMaxM": 17,
+   "normal": [
+    -0.596,
+    -0.803
+   ],
+   "frontMidRD": [
+    119947.84,
+    489324.06
+   ]
+  },
+  {
+   "pandId": "0363100012142859",
+   "street": "Zaanstraat",
+   "numbers": [
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 12.2,
+   "ridgeM": 17,
+   "roofMaxM": 17,
+   "normal": [
+    -0.596,
+    -0.803
+   ],
+   "frontMidRD": [
+    119935.83,
+    489332.97
+   ]
+  },
+  {
+   "pandId": "0363100012151489",
+   "street": "Zaanstraat",
+   "numbers": [
+    273,
+    274,
+    276,
+    277,
+    278,
+    279,
+    280
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 12.2,
+   "ridgeM": 17,
+   "roofMaxM": 17,
+   "normal": [
+    -0.595,
+    -0.803
+   ],
+   "frontMidRD": [
+    119923.86,
+    489341.84
+   ]
+  },
+  {
+   "pandId": "0363100012062857",
+   "street": "Zaanstraat",
+   "numbers": [
+    281,
+    282,
+    283,
+    284,
+    285,
+    286
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12,
+   "eavesM": 12.2,
+   "ridgeM": 17.1,
+   "roofMaxM": 17.1,
+   "normal": [
+    -0.595,
+    -0.803
+   ],
+   "frontMidRD": [
+    119913.06,
+    489349.85
+   ]
+  },
+  {
+   "pandId": "0363100012117014",
+   "street": "Zaanstraat",
+   "numbers": [
+    287,
+    288,
+    289,
+    290
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1918,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.4,
+   "eavesM": 9.4,
+   "ridgeM": 17.6,
+   "roofMaxM": 18.8,
+   "normal": [
+    -0.705,
+    0.709
+   ],
+   "frontMidRD": [
+    119917.38,
+    489366.99
+   ]
+  },
+  {
+   "pandId": "0363100012066030",
+   "street": "Zaanstraat",
+   "numbers": [
+    291,
+    292,
+    293,
+    294
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 9.1,
+   "ridgeM": 18.8,
+   "roofMaxM": 18.9,
+   "normal": [
+    0.381,
+    -0.925
+   ],
+   "frontMidRD": [
+    119909.09,
+    489383.48
+   ]
+  },
+  {
+   "pandId": "0363100012110854",
+   "street": "Zaanstraat",
+   "numbers": [
+    295,
+    296,
+    297,
+    298,
+    299,
+    300
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.7,
+   "eavesM": 12.4,
+   "ridgeM": 17.1,
+   "roofMaxM": 17.1,
+   "normal": [
+    -0.964,
+    -0.265
+   ],
+   "frontMidRD": [
+    119889.6,
+    489384.84
+   ]
+  },
+  {
+   "pandId": "0363100012109403",
+   "street": "Zaanstraat",
+   "numbers": [
+    301,
+    302,
+    303,
+    304,
+    305,
+    306,
+    307,
+    308
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15.1,
+   "eavesM": 12.4,
+   "ridgeM": 17.1,
+   "roofMaxM": 17.1,
+   "normal": [
+    -0.964,
+    -0.265
+   ],
+   "frontMidRD": [
+    119886.05,
+    489397.78
+   ]
+  },
+  {
+   "pandId": "0363100012079827",
+   "street": "Zaanstraat",
+   "numbers": [
+    309,
+    310,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 12.4,
+   "ridgeM": 17.1,
+   "roofMaxM": 17.1,
+   "normal": [
+    -0.964,
+    -0.265
+   ],
+   "frontMidRD": [
+    119882.08,
+    489412.25
+   ]
+  },
+  {
+   "pandId": "0363100012140463",
+   "street": "Zaanstraat",
+   "numbers": [
+    317,
+    318,
+    319,
+    320,
+    321,
+    322,
+    323,
+    324
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 12.4,
+   "ridgeM": 17.1,
+   "roofMaxM": 17.1,
+   "normal": [
+    -0.964,
+    -0.265
+   ],
+   "frontMidRD": [
+    119878.13,
+    489426.64
+   ]
+  },
+  {
+   "pandId": "0363100012101802",
+   "street": "Zaanstraat",
+   "numbers": [
+    326,
+    327,
+    328,
+    329,
+    330,
+    331,
+    332,
+    333,
+    334,
+    335,
+    336
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 5,
+   "units": 11,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 18.1,
+   "eavesM": 10.8,
+   "ridgeM": 20.1,
+   "roofMaxM": 21.3,
+   "normal": [
+    -0.964,
+    -0.265
+   ],
+   "frontMidRD": [
+    119873.75,
+    489442.53
+   ]
+  },
+  {
+   "pandId": "0363100012117862",
+   "street": "Zaanstraat",
+   "numbers": [
+    337,
+    339,
+    340,
+    341,
+    342,
+    343,
+    344
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 5,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15.3,
+   "eavesM": 12.5,
+   "ridgeM": 17.2,
+   "roofMaxM": 17.6,
+   "normal": [
+    -0.964,
+    -0.266
+   ],
+   "frontMidRD": [
+    119869.31,
+    489458.62
+   ]
+  },
+  {
+   "pandId": "0363100012071072",
+   "street": "Zaanstraat",
+   "numbers": [
+    345,
+    346,
+    347,
+    348,
+    349,
+    350,
+    351,
+    352
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.8,
+   "eavesM": 12.5,
+   "ridgeM": 17.2,
+   "roofMaxM": 17.2,
+   "normal": [
+    -0.964,
+    -0.266
+   ],
+   "frontMidRD": [
+    119863.61,
+    489479.34
+   ]
+  },
+  {
+   "pandId": "0363100012066120",
+   "street": "Zaanstraat",
+   "numbers": [
+    355,
+    356,
+    357,
+    358,
+    359,
+    360,
+    361,
+    362,
+    363,
+    364,
+    365
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 5,
+   "units": 11,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 18.8,
+   "eavesM": 12.3,
+   "ridgeM": 20,
+   "roofMaxM": 20.5,
+   "normal": [
+    -0.964,
+    -0.265
+   ],
+   "frontMidRD": [
+    119859.13,
+    489495.54
+   ]
+  },
+  {
+   "pandId": "0363100012150468",
+   "street": "Zaanstraat",
+   "numbers": [
+    366,
+    367,
+    368,
+    369,
+    370,
+    371,
+    372,
+    373
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15,
+   "eavesM": 12.9,
+   "ridgeM": 17.6,
+   "roofMaxM": 17.6,
+   "normal": [
+    -0.963,
+    -0.269
+   ],
+   "frontMidRD": [
+    119854.61,
+    489511.78
+   ]
+  },
+  {
+   "pandId": "0363100012125506",
+   "street": "Zaanstraat",
+   "numbers": [
+    374,
+    375,
+    376,
+    377,
+    378,
+    379,
+    380,
+    381
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 18.2,
+   "eavesM": 13.5,
+   "ridgeM": 18.3,
+   "roofMaxM": 19.3,
+   "normal": [
+    -0.972,
+    0.237
+   ],
+   "frontMidRD": [
+    119854.02,
+    489527.95
+   ]
+  },
+  {
+   "pandId": "0363100012117091",
+   "street": "Zaanstraat",
+   "numbers": [
+    382,
+    383,
+    384,
+    386,
+    387,
+    388,
+    389
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1919,
+   "storeys3dbag": 0,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15,
+   "eavesM": 14.1,
+   "ridgeM": 18.9,
+   "roofMaxM": 18.9,
+   "normal": [
+    -0.972,
+    0.236
+   ],
+   "frontMidRD": [
+    119857.22,
+    489544.21
+   ]
+  }
+ ]
+}

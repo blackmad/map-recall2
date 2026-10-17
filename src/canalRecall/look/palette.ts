@@ -590,8 +590,19 @@ export const STONE_CELL_MEAN = 228 / 255;
 export function cityMeasuredStoneTint(hex: string): string {
   return rgbToHex(hexToRgb(hex).map(v => Math.min(255, Math.round(v / STONE_CELL_MEAN))) as RGB);
 }
-/** The slots a `measured` tint source applies to: walls (brick, accent) keep their colour, glass its pane colour, painted stone its paint. */
-export const MEASURED_SLOTS: readonly MaterialSlot[] = ['brick', 'accent', 'glass', 'stone'];
+/**
+ * A measured flat roof (roof-facts: `roofSlotHex(slot, rgb)`, already pulled into its slot's luma band) is drawn as is,
+ * the way the city draws the same pand's roof (threeBuildingFeatures `measuredRoofOf`), not mapped to the gravel or
+ * bitumen prior by lightness (`cityRoofTint`).
+ */
+export function cityMeasuredFlatRoofTint(hex: string): string {
+  return rgbToHex(hexToRgb(hex));
+}
+/**
+ * The slots a `measured` tint source applies to: walls (brick, accent) keep their colour, glass its pane colour, painted
+ * stone its paint, a flat roof (bitumen) the orthophoto's colour for its pand.
+ */
+export const MEASURED_SLOTS: readonly MaterialSlot[] = ['brick', 'accent', 'glass', 'stone', 'bitumen'];
 export const isMeasuredTint = (slot: MaterialSlot, source?: TintSource | null) => source === MEASURED_TINT_SOURCE && MEASURED_SLOTS.includes(slot);
 
 /** An authored slot colour mapped into the city palette range. */
@@ -599,6 +610,7 @@ export function cityTint(slot: MaterialSlot, hex: string, source?: TintSource | 
   if (source === MEASURED_TINT_SOURCE && (slot === 'brick' || slot === 'accent')) return cityMeasuredWallTint(hex);
   if (source === MEASURED_TINT_SOURCE && slot === 'glass') return cityMeasuredGlassTint(hex);
   if (source === MEASURED_TINT_SOURCE && slot === 'stone') return cityMeasuredStoneTint(hex);
+  if (source === MEASURED_TINT_SOURCE && slot === 'bitumen') return cityMeasuredFlatRoofTint(hex);
   switch (slot) {
     case 'brick': case 'accent': return cityWallTint(hex);
     case 'stucco': return cityStuccoTint(hex);

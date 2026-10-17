@@ -2,7 +2,7 @@ import { expect, test, type Page, type TestInfo } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
-import { jump, zoomWarp, VIEW_REGION, GROUND_REGION, type Frame, type JumpStats } from '../../src/canalRecall/overviewTransition/frameMetrics';
+import { jump, lab, zoomWarp, VIEW_REGION, GROUND_REGION, type Frame, type JumpStats } from '../../src/canalRecall/overviewTransition/frameMetrics';
 
 // The flat overview → shaded city transition (src/canalRecall/overviewTransition/). A plan-view zoom sweep over the
 // Westerstraat through the blend window in 0.1-zoom steps; each frame is compared with the previous one magnified
@@ -17,7 +17,8 @@ const PLACE = { lng: 4.88262, lat: 52.37713, bearing: 95 };
 const FROM = 13.8, TO = 16.0, STEP = 0.1;
 const MAX_OVER_DE = 0.05, MAX_DL = 10;
 
-async function sweep(page: Page, query: string, info0: TestInfo) {
+/** Open the game, hide the HUD and hold the rider at `place` in plan view at its play zoom, own ground settled. */
+async function holdAt(page: Page, query: string, place: { lng: number; lat: number; bearing: number }) {
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', query });
   await page.waitForFunction(() => (window as any).canalRecallGame.camera.introOverview === 0, null, { timeout: 120_000 });
   await page.addStyleTag({ content: 'body > *:not(#vector-map):not(#gameCanvas), body > *:not(#vector-map):not(#gameCanvas) * { visibility: hidden !important; }' });
@@ -33,10 +34,13 @@ async function sweep(page: Page, query: string, info0: TestInfo) {
     const hold = () => {
       Object.assign(g.player, pose, { speed: 0, vx: 0, vy: 0 });
       if (w.__tz) { g.camera.zoom = w.__tz.zoom; g.camera.introOverview = 1; }
+      // The "Entering quarter" postcard is canvas-drawn (no CSS hides it) and fades out on a timer: when the teleport
+      // into the Jordaan raised it, its fade landed in the sweep's first steps (7.5 % of the view at 13.8 → 13.9).
+      g._neighborhoodNoticeTimer = 0;
       requestAnimationFrame(hold);
     };
     hold();
-  }, PLACE);
+  }, place);
   await page.waitForTimeout(1500);
   await page.waitForFunction(() => {
     const og = (window as any).canalRecallGame.vectorMap._ownGround;
@@ -47,11 +51,20 @@ async function sweep(page: Page, query: string, info0: TestInfo) {
   const playZoom = await page.evaluate(() => (window as any).canalRecallGame.camera.zoom as number);
   await page.evaluate(z => { (window as any).__tz = { zoom: z }; }, playZoom * 0.15);
   await page.waitForTimeout(500);
-  // Start the sweep from a settled view at its first zoom (its tiles loaded), not from the jump to it.
-  await page.evaluate(t => { const g = (window as any).canalRecallGame, m = g.vectorMap.map; (window as any).__tz = { zoom: g.camera.zoom * 2 ** (t - m.getZoom()) }; }, FROM);
-  await page.waitForTimeout(2500);
+}
+
+/** Move the held plan view to map zoom `t` and wait for its tiles. */
+async function planZoom(page: Page, t: number, settleMs = 2500) {
+  await page.evaluate(t => { const g = (window as any).canalRecallGame, m = g.vectorMap.map; (window as any).__tz = { zoom: g.camera.zoom * 2 ** (t - m.getZoom()) }; }, t);
+  await page.waitForTimeout(settleMs);
   await page.waitForFunction(() => (window as any).canalRecallGame.vectorMap.map.areTilesLoaded(), null, { timeout: 15_000 }).catch(() => {});
   await page.waitForTimeout(500);
+}
+
+async function sweep(page: Page, query: string, info0: TestInfo) {
+  await holdAt(page, query, PLACE);
+  // Start the sweep from a settled view at its first zoom (its tiles loaded), not from the jump to it.
+  await planZoom(page, FROM);
   const frames: { z: number; frame: Frame; cx: number; cy: number }[] = [];
   for (let target = FROM; target <= TO + 1e-9; target += STEP) {
     await page.evaluate(t => {
@@ -104,4 +117,46 @@ test('A/B: the old hard switch (?transition=0) breaks the bound', async ({ page 
   const r = await sweep(page, '?transition=0', info);
   console.log(`[${info.project.name}] transition=0: ${summary(r)}`);
   expect(r.worstDE.view.overDE).toBeGreaterThan(MAX_OVER_DE);
+});
+
+// Vondelpark lawn probe (2026-10-17): from z13 the game's park landscape (park-landscape.js, painted the park token by
+// basemapPalette's `/^park/`) drew over the overview tiles, so the park stayed 96,140,70 while the tiles' lawn is
+// 110,154,74 and the ride's ~117,158,81, then jumped as the own ground blended in. Below the blend (13.5, 14) nothing
+// flat may sit over the tiles at the lawn, and the pixel there is the tiles' lawn.
+const LAWN = { lng: 4.868106, lat: 52.357296 }, PARK_RIDER = { lng: 4.8689, lat: 52.3579, bearing: 0 };
+const MAX_LAWN_DE = 8;
+
+test('overview tiles: the Vondelpark lawn is the tiles\' lawn below the blend, nothing flat over it', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'desktop probe');
+  test.setTimeout(240_000);
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await holdAt(page, '', PARK_RIDER);
+  const lawn = await page.evaluate(async () => {
+    const vm = (window as any).canalRecallGame.vectorMap;
+    const root = vm._extractPath || '/data/extracts/amsterdam';
+    return (await (await fetch(`${root.replace(/\/$/, '')}/overview-tiles-v1/manifest.json`)).json()).colours.lawn as number[];
+  });
+  for (const z of [13.5, 14]) {
+    await planZoom(page, z);
+    const at = await page.evaluate(({ lng, lat }) => {
+      const m = (window as any).canalRecallGame.vectorMap.map, p = m.project([lng, lat]);
+      const order = m.getStyle().layers as { id: string; type: string }[];
+      const tiles = order.findIndex(l => l.id === 'canal-overview-ground');
+      const over = [...new Set((m.queryRenderedFeatures([p.x, p.y]) as { layer: { id: string; type: string } }[])
+        .filter(f => (f.layer.type === 'fill' || f.layer.type === 'line') && order.findIndex(l => l.id === f.layer.id) > tiles).map(f => f.layer.id))];
+      return { x: p.x, y: p.y, tiles, over, zoom: m.getZoom() as number, cssW: window.innerWidth };
+    }, LAWN);
+    expect(at.tiles, 'overview tiles layer present').toBeGreaterThanOrEqual(0);
+    const { data, info: im } = await sharp(await page.screenshot()).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+    const dpr = im.width / at.cssW, box: number[][] = [];
+    for (let dy = -3; dy <= 3; dy++) for (let dx = -3; dx <= 3; dx++) {
+      const i = ((Math.round(at.y * dpr) + dy) * im.width + Math.round(at.x * dpr) + dx) * 3;
+      box.push([data[i], data[i + 1], data[i + 2]]);
+    }
+    const px = [0, 1, 2].map(c => box.map(b => b[c]).sort((a, b) => a - b)[box.length >> 1]);
+    const a = lab(px[0], px[1], px[2]), b = lab(lawn[0], lawn[1], lawn[2]), dE = Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
+    console.log(`[desktop] Vondelpark lawn z${at.zoom.toFixed(2)}: rgb(${px.join(',')}) vs tiles' lawn rgb(${lawn.join(',')}) ΔE ${dE.toFixed(1)}; flat over tiles: ${at.over.join(',') || 'none'}`);
+    expect(at.over, `flat layers over the tiles at z${z}`).toEqual([]);
+    expect(dE, `lawn ΔE at z${z}`).toBeLessThanOrEqual(MAX_LAWN_DE);
+  }
 });

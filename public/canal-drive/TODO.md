@@ -794,13 +794,6 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   `sendToSource` deep clone; `_refreshColoredBuildingFilter` on landmark
   load; the 50 ms `dt` clamp in `game.js` (interpolate instead of slowing
   the rider); then measure iPhone.
-- **Overview → city zoom sweep fails on main** (2026-10-16):
-  `overview-transition.spec.ts` "no step of the zoom sweep jumps" measures
-  ΔE>20 on 7.7 % of pixels at z13.9→14 before the flags merge, 6.6 % after
-  (limit 5 %; ground 7.0 % → 2.2 %). The user saw the same jump ("the change
-  in colors as it zooms in is jarring"); lane `lane/overview-tiles-20261016`
-  (own flat overview tiles in the groundLook palette) owns it, with this
-  spec as its gate.
 - **Roads, after city-wide** (2026-10-16, HISTORY "Surveyed road surface
   city-wide"): a coarser drape for large flat carriage polygons (rural and
   dike cells -8_4 1.43×, 10_4, 9_3, 8_1, 4_0, 7_5 exceed the 1.15× triangle
@@ -874,6 +867,41 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   start varies between runs (async loading consumes `Math.random` in a
   varying order), so any spec that depends on the start position is flaky;
   pin starts (as the Reestraat corridor test now does) or seed a private RNG.
+- **Measured flat roofs, next** (2026-10-17, HISTORY "The De Hallen slab was
+  Kinkerstraat 89–105"): `roof-flat.ts --write` and reinstall for
+  stadsloket-west, reade and hamerkanaal-175 (roof/wall dE ~11.6–11.8);
+  Kinkerstraat 89–105 courtyard faces still blank tan (no photo); kit gaps on
+  its Tollensstraat front: open ground passage with round columns, yellow
+  glazed entrance, curved cantilevered balconies, loggias; Polderweg 3 walls
+  fail the tightened likeness gate (walls[1] no photo, walls[2] 52.9° crop).
+- **Overview tiles, after** (2026-10-16, HISTORY "Our own flat overview
+  tiles"): the textured ground's mean is ~5 % darker than the flat tones
+  (small luma step near z14.6); `basemapPalette`'s `/^park/` also paints the
+  game's `park-landscape-*` layers (visible with `?overviewTiles=0`); the
+  Vondelpark probe stalled on "Rendering streets…" when run after the sweep
+  in one worker; z16 tiles (+22 MB) only if the jump above z15 shows.
+- **Figure-kit statues, user's call** (2026-10-17, HISTORY "Kinderbrug
+  statues held"): 20 live figure-kit statues on contact sheets (demo page):
+  pick which to hold or replace by route B. Kinderbrug's two groups are held;
+  bridge 420 lost its brick piers with them.
+- **Duplicate manual-catalogue entries** (P1, 2026-10-17): `manualCatalogue.json`
+  carries byte-identical duplicates from merges (johnny-jordaan-groep ×6,
+  theo-thijssen-standbeeld ×5, carmiggelt-borstbeeld ×4, winkler-prins-monument
+  ×3, kinderbrug-meisje-eekhoorns ×2), and `build-manual-landmarks.ts` repeats
+  imports and `id ===` dispatch lines; the game may draw these several times on
+  top of each other. Dedupe and add a uniqueness check to `check:manual-landmarks`.
+- **Buurt looks, next** (2026-10-17, HISTORY "Rivierenbuurt (Plan Zuid,
+  1934)"): Spaarndammerbuurt (surveys committed in `scripts/block-face/buurten/`:
+  EB04 noordwest 200 pands/87 faces, EB05 midden — the Het Schip streets — 149
+  pands/30 faces, noordoost): intake `--camera-height=2.1 --bay-outline=auto`,
+  then Amsterdam School and Zaanhof types. Rivierenbuurt faces intaken but not
+  placed: hoendiep-36-60, rijn-157-237, uiterwaarden-3-33, vecht-111-185,
+  -130-188, -145-173, -162-186 (new Rijnstraat/Vechtstraat types). Consider
+  making `--camera-height=2.1` and `--row-exposure=date` the defaults. Kit gaps:
+  oriel white cap, double portiek doors with side lights, attic windows on a row
+  pitch across party walls, per-house ribbon variants, white posts between
+  ribbon windows, the 2–3 cm door-leaf/frame z-fight, strip x-registration
+  (~0.4 m off BAG party lines).
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;

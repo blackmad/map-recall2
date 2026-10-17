@@ -1,0 +1,108 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "hoendiep-5-35-r1",
+ "street": "Hoendiepstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/hoendiep-5-35-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the rivierenbuurt library (buurt Rijnbuurt-Oost); scores and holds in scripts/block-face/faces/hoendiep-5-35/auto-place.json"
+ },
+ "types": [
+  "rijn-1934-erker-white-attic"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012124406",
+   "slug": "hoendiep-124406",
+   "address": "Hoendiepstraat 5",
+   "type": {
+    "type": "rijn-1934-erker-white-attic",
+    "measuredPalette": {
+     "brick": "#4a3d35",
+     "evidence": "strip 2023-01-03 span 0-244: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #68564e)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-white-attic scored 0.93 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 1, columns 0.4; strip 2023-01-03 span 0-244"
+   }
+  },
+  {
+   "pandId": "0363100012078854",
+   "slug": "hoendiep-078854",
+   "address": "Hoendiepstraat 7",
+   "type": {
+    "type": "rijn-1934-erker-white-attic",
+    "measuredPalette": {
+     "brick": "#4c4139",
+     "evidence": "strip 2023-01-03 span 244-489: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #695751)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-white-attic scored 0.93 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 1, columns 0.4; strip 2023-01-03 span 244-489"
+   }
+  },
+  {
+   "pandId": "0363100012138426",
+   "slug": "hoendiep-138426",
+   "address": "Hoendiepstraat 9",
+   "type": {
+    "type": "rijn-1934-erker-white-attic",
+    "measuredPalette": {
+     "brick": "#50433a",
+     "evidence": "strip 2023-01-03 span 489-733: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #715d54)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-white-attic scored 0.93 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 1, columns 0.4; strip 2023-01-03 span 489-733"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}
