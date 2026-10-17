@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Buurt looks in the explorer (2026-10-17)
+
+`explore.html?buurt=<slug|CBS code>` shows a buurt's "own look": the building
+recipes that draw it instead of the city default — district house types
+(`scripts/block-face/types/<district>/`, framed on a run of their houses in
+the installed chunk), Nieuw-West building-type designs, and measured faces —
+with this recipe's swatches beside the city default, window/gable/roof kinds,
+kit components, the archived kit render/photo, GLB download and "Report a
+problem with this look" (category building, subject point `buurt:<CODE>`;
+no new rules kind). 38 buurten are drawn, 6 authored only, the other 474 use
+the default. Data: `explorer-looks.json` (165 KB, lazy) from
+`npm run build:explorer-looks` (`--check`). Existing `?buurt=<explorer
+neighbourhood>` filters still win.
+
 ## Postcards need spaced recall (2026-10-17)
 
 The user found postcards too easy ("16 of 78" after little play). Before, any
