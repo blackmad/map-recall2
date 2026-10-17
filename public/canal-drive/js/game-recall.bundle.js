@@ -41724,6 +41724,8 @@
     },
     {
       id: "kinderbrug-meisje-eekhoorns",
+      status: "held",
+      heldReason: `Figure-kit statue: blobby ellipsoid figures on a brown pier (user, What's new review 2026-10-17: "a little rough"; the figure kit was stopped for statues on 2026-10-14). The brick pier exists only in this GLB, so bridge 420 shows no pier while held. Waits for a route-B (TripoSR/TRELLIS.2) group on a kit pier or the user's call.`,
       name: "Kinderbrug: Girl with squirrels (Hildo Krop)",
       landmarkId: "osm_artwork_4370460330",
       modelUrl: "./models/kinderbrug-meisje-eekhoorns.glb",
@@ -41929,6 +41931,8 @@
     },
     {
       id: "kinderbrug-meisje-eekhoorns",
+      status: "held",
+      heldReason: `Figure-kit statue: blobby ellipsoid figures on a brown pier (user, What's new review 2026-10-17: "a little rough"; the figure kit was stopped for statues on 2026-10-14). The brick pier exists only in this GLB, so bridge 420 shows no pier while held. Waits for a route-B (TripoSR/TRELLIS.2) group on a kit pier or the user's call.`,
       name: "Kinderbrug: Girl with squirrels (Hildo Krop)",
       landmarkId: "osm_artwork_4370460330",
       modelUrl: "./models/kinderbrug-meisje-eekhoorns.glb",
@@ -41969,6 +41973,8 @@
     },
     {
       id: "kinderbrug-jongen-konijnen",
+      status: "held",
+      heldReason: `Figure-kit statue: blobby ellipsoid figures on a brown pier (user, What's new review 2026-10-17: "a little rough"; the figure kit was stopped for statues on 2026-10-14). The brick pier exists only in this GLB, so bridge 420 shows no pier while held. Waits for a route-B (TripoSR/TRELLIS.2) group on a kit pier or the user's call.`,
       name: "Kinderbrug: Boy with rabbits (Hildo Krop)",
       landmarkId: "osm_artwork_4370459609",
       modelUrl: "./models/kinderbrug-jongen-konijnen.glb",

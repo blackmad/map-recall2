@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## Kinderbrug statues held (2026-10-17)
+
+User, on the What's new gallery: "these are a little rough". Lane
+`lane/hold-kit-statues-20261017` (93542c00d, c39ea88fd, 0a6e86714). The two
+Hildo Krop figure-kit groups on bridge 420 (Girl with squirrels, Boy with
+rabbits) are `status: held`: out of the game, galleries and What's new;
+sources, specs and GLBs stay (the manifest flag came from
+`build-manual-landmarks --only`, GLBs byte-identical); `whats-new.spec` pins
+the hold. Their brick piers existed only in these GLBs, so bridge 420 has none
+until a route-B group on a kit pier returns. The 20 other live figure-kit
+statues were inventoried on contact sheets for the user's call; none held.
+
 ## Our own flat overview tiles (2026-10-16)
 
 User (2026-10-16): "we should just generate our own flat tiles for the

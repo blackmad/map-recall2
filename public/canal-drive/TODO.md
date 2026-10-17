@@ -880,6 +880,16 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   game's `park-landscape-*` layers (visible with `?overviewTiles=0`); the
   Vondelpark probe stalled on "Rendering streets…" when run after the sweep
   in one worker; z16 tiles (+22 MB) only if the jump above z15 shows.
+- **Figure-kit statues, user's call** (2026-10-17, HISTORY "Kinderbrug
+  statues held"): 20 live figure-kit statues on contact sheets (demo page):
+  pick which to hold or replace by route B. Kinderbrug's two groups are held;
+  bridge 420 lost its brick piers with them.
+- **Duplicate manual-catalogue entries** (P1, 2026-10-17): `manualCatalogue.json`
+  carries byte-identical duplicates from merges (johnny-jordaan-groep ×6,
+  theo-thijssen-standbeeld ×5, carmiggelt-borstbeeld ×4, winkler-prins-monument
+  ×3, kinderbrug-meisje-eekhoorns ×2), and `build-manual-landmarks.ts` repeats
+  imports and `id ===` dispatch lines; the game may draw these several times on
+  top of each other. Dedupe and add a uniqueness check to `check:manual-landmarks`.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
