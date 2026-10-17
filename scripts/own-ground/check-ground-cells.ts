@@ -21,7 +21,7 @@ import { parapetCrossings, type ParapetPoint } from '../../src/canalRecall/ownGr
 // Named canal-belt bridges (bridgeHints BRIDGE_FACTS, lane bridge-fidelity 2026-10-14) take the named tier.
 const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.named, far: KIT_BUDGET.namedFar } : { near: KIT_BUDGET.near, far: KIT_BUDGET.far });
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
-import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, gapLand, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_WAY_STRAYS, STRAYS, SURVEY_GAPS, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, gapLand, surveyPaint, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_WAY_STRAYS, STRAYS, SURVEY_GAPS, SURVEY_PAINT, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { auditBridgeSurfaces } from './audit-bridge-surfaces.ts';
 import { ROAD_CELL_BUDGET_GZ } from '../../src/canalRecall/ownGround/roadCells.ts';
@@ -81,7 +81,7 @@ async function main(): Promise<void> {
   console.log(JSON.stringify({ osmCells: store.osmCells.size, reliefTiles: store.relief.tiles.length }));
   if (process.argv.includes('--roads')) { await roadsTable(); return; }
   if (process.argv.includes('--road-regressions')) { await roadRegressions(); if (failed) process.exit(1); return; }
-  if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); process.exitCode = failed ? 1 : 0; return; }
+  if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); await wayDeckHoleRegressions(); await wayDeckCarriageRegressions(); process.exitCode = failed ? 1 : 0; return; }
   if (process.argv.includes('--all')) {
     const rows = [];
     for (const key of [...store.osmCells].sort()) {
@@ -152,7 +152,7 @@ async function main(): Promise<void> {
           const tops = built.map(c => layersAt(c, qx, qy)).filter(r => r.hits.length);
           const top = tops.map(t => t.top).find(Boolean) ?? null;
           probes++;
-          if (!top || !['asphalt', 'klinker', 'paving', 'cycle', 'paint', 'kerb'].includes(top)) bad.push(`${f}/${o}:${top}`);
+          if (!top || !['asphalt', 'klinker', 'brick', 'paving', 'cycle', 'paint', 'kerb'].includes(top)) bad.push(`${f}/${o}:${top}`);
         }
       }
       check(!bad.length, `${id}: deck top is a street band at ${probes - bad.length}/${probes} probes${bad.length ? ` (${bad.slice(0, 6).join(' ')})` : ''}`);
@@ -250,6 +250,8 @@ async function main(): Promise<void> {
   await deckSlabRegressions();
   await parapetRegressions();
   await bridgeSurfaceRegressions();
+  await wayDeckHoleRegressions();
+  await wayDeckCarriageRegressions();
   await zooRegressions();
   await courtyardRegressions();
   await parkFillRegressions();
@@ -406,7 +408,7 @@ async function pocketRegressions(): Promise<void> {
       return out;
     };
     const on = await tops(true), off = await tops(false);
-    const street = on.filter(t => ['asphalt', 'klinker', 'paving', 'cycle', 'kerb', 'paint'].includes(t)).length;
+    const street = on.filter(t => ['asphalt', 'klinker', 'brick', 'paving', 'cycle', 'kerb', 'paint'].includes(t)).length;
     check(street === on.length, `${id}: ${street}/${on.length} probes are street with the pocket fill (${[...new Set(on)].join(', ')})`);
     check(off.includes('land'), `${id}: without it ${off.filter(t => t === 'land').length}/${off.length} probes read land (the pin is live)`);
   }
@@ -599,7 +601,7 @@ const PARKS: { id: string; at: [number, number]; half: number; minPark: number; 
   { id: 'Bellamyplein', at: [4.8677, 52.36795], half: 40, minPark: 0.6, minSurfaces: ['lawn'] },
   { id: 'Sarphatipark', at: [4.8963, 52.3544], half: 110, minPark: 0.7, minSurfaces: ['lawn', 'shrub', 'furniture', 'hedge'] },
 ];
-const STREET_TOPS = new Set(['asphalt', 'klinker', 'cycle', 'paving', 'kerb', 'paint', 'tram', 'bollard', 'gravel']);
+const STREET_TOPS = new Set(['asphalt', 'klinker', 'brick', 'cycle', 'paving', 'kerb', 'paint', 'tram', 'bollard', 'gravel']);
 const PARK_TOPS = new Set(['lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'hedge', 'furniture', 'paving', 'cycle']);
 async function parkRegressions(): Promise<void> {
   await noParks.init();
@@ -731,6 +733,13 @@ async function roadRegressions(): Promise<void> {
     }
     check(found, `${reg.id}: ways ${reg.ways.join(', ')} found in a roads-v1 cell`);
   }
+  for (const reg of SURVEY_PAINT) {
+    const [x, y] = toLocal(reg.at[0], reg.at[1]), n = await neighbourhood(roadsStore, x, y);
+    if (!roadsStore.roadCells.has(n.key) || !n.index) { console.log(`skip ${reg.id} (cell ${n.key} not in roads-v1)`); continue; }
+    const index = n.index, onCarriage = (px: number, py: number) => { const k = index.findAtLevel(px, py, false); return k >= 0 && index.records[k].h === 0 && index.drawClass(k) === 'carriage'; };
+    const r = surveyPaint(n.cells, [x, y], reg.radiusM, onCarriage);
+    check(r.off.length === 0 && r.paint >= reg.minPaint, `${reg.id} roads-v1: ${r.paint} paint triangles within ${reg.radiusM} m (≥ ${reg.minPaint}), ${r.off.length} off the carriageway polygons${r.off.length ? ` ${JSON.stringify(r.off.slice(0, 6))}` : ''}`);
+  }
   for (const reg of SURVEY_GAPS) {
     // The cell alone, its neighbours' roads withheld: the extract's edge (where the pilot ended at the Nieuwmarkt).
     const [x, y] = toLocal(reg.at[0], reg.at[1]), key = roadsStore.cellAt(x, y);
@@ -852,6 +861,15 @@ async function parapetRegressions(): Promise<void> {
  * does not (the pin is live).
  */
 const BRIDGE_SURFACES: [number, number, number, string][] = [[323258135, 4.84795, 52.36965, 'Jan Evertsenstraat over the Erasmusgracht']];
+/**
+ * Bridges mapped as consecutive OSM ways (lane bridge-decks-followups 2026-10-16, audit-bridge-surfaces --streets: 31 of
+ * 1,294 street bridge ways had no surface). Each way alone ends over the water, so wayDeckProfile refused both halves;
+ * joined end to end (wayDecks.ts joinChains) they carry one way deck. Without the join they do not (the pin is live).
+ */
+const CHAINED_BRIDGE_SURFACES: [number, number, number, string][] = [
+  [24343390, 4.93743, 52.33298, 'Satellietbaan, first of two ways'],
+  [1252138995, 4.93755, 52.33298, 'Satellietbaan, second of two ways'],
+];
 async function bridgeSurfaceRegressions(): Promise<void> {
   const off = new GroundStore(readExtract, { wayDecks: false });
   await off.init();
@@ -861,6 +879,88 @@ async function bridgeSurfaceRegressions(): Promise<void> {
     const miss = (r: typeof on) => r.missing.find(m => m.id === id);
     check(!miss(on), `bridge way ${id} (${label}): a surface along it${miss(on) ? ` (missing ${miss(on)!.missing}/${miss(on)!.stations})` : ''}; ${on.missing.length} of ${on.ways} bridge ways in ${key} missing`);
     check(!!miss(was), `bridge way ${id}: without the way decks ${miss(was)?.missing ?? 0}/${miss(was)?.stations ?? 0} stations missing (the pin is live)`);
+  }
+  const unjoined = new GroundStore(readExtract, { wayDeckChains: false });
+  await unjoined.init();
+  for (const [id, lng, lat, label] of CHAINED_BRIDGE_SURFACES) {
+    const [x, y] = toLocal(lng, lat), key = store.cellAt(x, y);
+    const on = await auditBridgeSurfaces(store, [key]), was = await auditBridgeSurfaces(unjoined, [key]);
+    const miss = (r: typeof on) => r.missing.find(m => m.id === id);
+    check(!miss(on), `bridge way ${id} (${label}): a surface along it${miss(on) ? ` (missing ${miss(on)!.missing}/${miss(on)!.stations})` : ''}`);
+    check(!!miss(was), `bridge way ${id}: without joining consecutive ways ${miss(was)?.missing ?? 0}/${miss(was)?.stations ?? 0} stations missing (the pin is live)`);
+  }
+}
+
+/**
+ * Way decks over a hole (user 2026-10-16, "the railing runs diagonally across the cycle path" at the Jan Evertsenstraat
+ * over the Erasmusgracht): the bridge spans the canal and the Rembrandtpark underpass beside it (OSM path 122525654,
+ * municipal panorama TMX7316010203-002500_pano_0000_000916 under the deck), and the relief is interpolated low under the
+ * whole structure. The way deck ended 1 m past the water, its approach landed in the underpass 1.8 m under the west
+ * bank, the street sloped down into it and the south parapet ran 1.7 m down its ramp. Now (wayDecks.ts HOLE_M) the
+ * deck runs on to the far bank: over the underpass the street stays within 0.6 m of the west bank, and each parapet
+ * stays within 0.6 m of the deck level over its run, reaching past the underpass. Without the hole rule it does not
+ * (the pin is live). Both road modes.
+ */
+const WAY_DECK_HOLES: [string, number, number, [number, number], string][] = [['OSM323258135', 4.84795, 52.36965, [4.84787, 52.36963], 'Jan Evertsenstraat over the Erasmusgracht and the Rembrandtpark underpass']];
+async function wayDeckHoleRegressions(): Promise<void> {
+  const noHoles = new GroundStore(readExtract, { wayDeckHoles: false });
+  await noHoles.init();
+  for (const [id, lng, lat, underpass, label] of WAY_DECK_HOLES) for (const [mode, s] of [['osm', store], ['roads', roadsStore], ['no-holes', noHoles]] as const) {
+    await s.init();
+    const [x, y] = toLocal(lng, lat), [ux, uy] = toLocal(underpass[0], underpass[1]);
+    let input: KitInput | null = null;
+    const drawn: [number, number][][] = [[], []];
+    kitTrace.input = k => { if (k.id === id && k.lod === 0) input = k; };
+    parapetTrace.fn = (pid, side, line, at) => { if (pid === id && at.level === 0) drawn[side > 0 ? 0 : 1].push([line[0].s, line[line.length - 1].s]); };
+    for (const k of GroundStore.neighbours(s.cellAt(x, y)).filter(k => s.covers(k))) buildCell(await s.cellInput(k, 0));
+    kitTrace.input = null; parapetTrace.fn = null;
+    const got = input as KitInput | null;
+    check(!!got, `${id} (${label}, ${mode}): kit built`);
+    if (!got) continue;
+    const bank = got.rows[0].z, over = s.surface.height(ux, uy);
+    const live = mode === 'no-holes';
+    const level = Math.abs(over - bank) <= 0.6;
+    check(live ? !level : level, `${id} ${mode}: over the underpass the street at ${over.toFixed(2)} m, the west bank ${bank.toFixed(2)} m${live ? ' (without the hole rule it sinks: the pin is live)' : ''}`);
+    if (live) continue;
+    for (const side of [0, 1]) {
+      const run = got.parapetSides?.[side] ?? got.parapet, on = got.rows.filter(r => r.s >= run[0] - 1e-6 && r.s <= run[1] + 1e-6);
+      const drop = Math.max(...on.map(r => Math.abs((side ? r.zR : r.zL) - r.z)));
+      // Past the underpass: the run's end station beyond the station nearest the path, plus its half-width (2.35 m).
+      // The drawn parapet (railingRuns railRuns pieces) reaches past it too.
+      const atPath = got.rows.reduce((m, r) => (Math.hypot(r.c[0] - ux, r.c[1] - uy) < Math.hypot(m.c[0] - ux, m.c[1] - uy) ? r : m));
+      const end = Math.max(-Infinity, ...drawn[side].map(p => p[1])), reach = run[1] > atPath.s + 2.35 && end > atPath.s + 2.35;
+      check(drop <= 0.6 && reach, `${id} ${mode} ${side ? 'right' : 'left'} parapet: within ${drop.toFixed(2)} m of the deck level over ${(run[1] - run[0]).toFixed(1)} m, drawn to s ${end.toFixed(1)}, ${reach ? 'past' : 'short of'} the underpass (s ${atPath.s.toFixed(1)})`);
+    }
+  }
+}
+
+/**
+ * Way-deck parapets at the carriageway's edge (coordinator 2026-10-16, the motorway viaducts: the PDOK orthophoto puts
+ * the railings at the outer edges of each carriageway, ours ran down the middle lanes at the OSM way's half-width).
+ * roads-v1: the drawn parapet points (level 0) lie within CARRIAGE_EDGE_M of the carriageway polygon's outer edge
+ * (carriageway CARRIAGE_EDGE_M inside the point, none CARRIAGE_EDGE_M outside it) at CARRIAGE_EDGE_SHARE of them at
+ * least; with the way decks at the way's half-width (wayDeckCarriage: false) they do not (the pin is live).
+ */
+const CARRIAGE_EDGE_M = 0.5, CARRIAGE_EDGE_SHARE = 0.75;
+const WAY_DECK_CARRIAGE: [string, number, number, string][] = [
+  ['OSM7382983', 4.84286, 52.35607, 'motorway viaduct over the water and a cycle path, Nieuw-West'],
+  ['OSM7041280', 4.95495, 52.40128, 'motorway viaduct over the water and a cycle path, Noord'],
+];
+async function wayDeckCarriageRegressions(): Promise<void> {
+  const halfWidth = new GroundStore(readExtract, { roads: true, wayDeckCarriage: false });
+  await halfWidth.init();
+  await roadsStore.init();
+  for (const [id, lng, lat, label] of WAY_DECK_CARRIAGE) for (const [mode, s] of [['roads', roadsStore], ['half-width', halfWidth]] as const) {
+    const [x, y] = toLocal(lng, lat), around = GroundStore.neighbours(s.cellAt(x, y));
+    const index = new RoadIndex(await Promise.all(around.map(k => s.roadCell(k))));
+    const carriage = (px: number, py: number) => index.classAt(px, py, true) === 'carriage';
+    const pts: { p: [number, number]; out: [number, number] }[] = [];
+    parapetTrace.fn = (pid, _side, line, at) => { if (pid === id && at.level === 0) for (const q of line) pts.push({ p: [q.p[0], q.p[1]], out: [q.out[0], q.out[1]] }); };
+    for (const k of around.filter(k => s.covers(k))) buildCell(await s.cellInput(k, 0));
+    parapetTrace.fn = null;
+    const at = pts.filter(({ p, out }) => carriage(p[0] - out[0] * CARRIAGE_EDGE_M, p[1] - out[1] * CARRIAGE_EDGE_M) && !carriage(p[0] + out[0] * CARRIAGE_EDGE_M, p[1] + out[1] * CARRIAGE_EDGE_M)).length;
+    const share = pts.length ? at / pts.length : 0, ok = share >= CARRIAGE_EDGE_SHARE, live = mode === 'half-width';
+    check(pts.length > 0 && (live ? !ok : ok), `${id} (${label}, ${mode}): ${at} of ${pts.length} parapet points within ${CARRIAGE_EDGE_M} m of the carriageway's outer edge (${(share * 100).toFixed(0)}%)${live ? ' (at the way half-width: the pin is live)' : ''}`);
   }
 }
 

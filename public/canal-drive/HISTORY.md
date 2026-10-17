@@ -1,5 +1,71 @@
 # Canal Recall — what is built
 
+## Road look v2: measured tones and markings on the surveyed roads (2026-10-16)
+
+User (2026-10-16 evening): "not gonna lie, our roads still don't look great".
+Lane `lane/road-look-v2-20261016` (4b5d9df36, 7dfe6653c), bounded after the
+user parked the big orthophoto road study. Tones measured from the PDOK
+orthophoto inside BGT polygons (sunlit, dehazed medians): asphalt luma 130 →
+144, klinker lightened, inrit and parking klinker now a muted `brick` layer
+near the pavement instead of saturated brown slabs; tram rails light steel.
+Markings on surveyed roads from OSM nodes (new extract `road-marks-v1`, from
+the archived pbf, 83 KB, 11,661 nodes) and the road graph, clipped to BGT
+carriageway polygons: zebras, block lines, red cycle crossings with blocks,
+stop lines at signals, give-way teeth, centre dashes on two-way carriageways
+≥ 6 m wide stopping 8 m before junctions; the old band paint stays off.
+Cost +1.9 % triangles, ~+10 % cell build, desktop ride frames unchanged.
+Regressions `SURVEY_PAINT` (Bilderdijkgracht, Marnixstraat busway,
+Nassaukade × Frederik Hendrikplantsoen); the paint spec expects survey paint.
+
+## Crowns on the street end only; neck heads with a cornice and a segmental cap (2026-10-16)
+
+User (2026-10-16): "sometimes houses have gables on both the street and back
+side, which is wrong", and on the Oudezijds Voorburgwal sheet "did you fix
+the curves on this gable model?". Lane `lane/street-gables-only-20261016`
+(5f8869ac3, bd5f11613, 20f4c73e2). Only the city-tier roof planner
+(`roofMesh.ts` gable kind) drew the shaped crown on both short ends; recipe,
+block-face and bespoke builders were clean. `streetGableEnds` picks the end
+with the street ray test the doors use; the rear becomes a plain saddle
+triangle with no verge boards. City: 5,998 rear crowns → 0 (cornice 1,967,
+neck 1,595, step 1,361, bell 608, …); a through-lot is crowned on the
+nearer street (no addresses at runtime); a corner's second street runs
+along a long side, which never had a crown; 434 houses with no street known
+are unchanged; ~346 whose only crown was on the rear now have none. Output
+without street data is byte-identical (288 cases). Neck/bell heads gained
+`crownNeckWidth`, `crownCapRatio` and `crownCapCornice` (shares of the neck):
+a segmental cap over a cornice entablature; OZV 115 and 119 measured by
+hand (the strip skyline abstains). The concave shoulders were already fixed
+earlier the same day. Tests in `test:street-gables` (in `check:canal`).
+## Way decks: level over underpasses, chained ways, parapets at the road edges (2026-10-17)
+
+Lane `fix/bridge-decks-followups-20261016`. Jan Evertsenstraat over the
+Erasmusgracht: the way deck stopped 1 m past the water and its west approach
+landed in the Rembrandtpark cycle underpass 1.8 m below the bank, so the street
+dipped and the south parapet followed it down across the cycle path (the
+"diagonal railing"). A way deck now runs on, level, over a hole in the relief
+(`HOLE_M` 0.6 m below the far bank, the bridge way continuing ≥ 3 m over it,
+ground climbing back within 30 m; 62 of ~1,220 way decks, mostly viaducts),
+with a parapet over the hole only where the ground 1.5 m outside drops past
+0.6 m. Bridge ways mapped as consecutive OSM ways are joined first
+(`joinChains`): Satellietbaan, Zuiderzeeweg, Nauernaseweg, Westzanerweg,
+Cornelis Lelylaan gain surfaces, 31 → 22 surfaceless street bridge ways. That
+lengthened an older error: way-deck parapets sat at the OSM way's half-width,
+down the middle lanes of dual-carriageway viaducts (PDOK ortho: the railings are
+on the outer crash barriers). With roads-v1, each side now walks outward
+through the road-surface polygons (carriageway, cycle path, footway; a tram
+bed ends it) and takes the median edge over the span, capped at half-width +
+12 m (`roadEdgeSides`). Parapet length inside traffic polygons 4,512 → 1,543 m,
+bridges with ≥ 1 m inside 239 → 157; `check:bridge-railings` caps it at
+1,650 m. BRU0063/BRU0108 mid-span jog: an edge-straightening pass was tried
+and dropped; frames were identical and the BRU0108 boat panorama shows a
+straight railing, as ours already is. The red `check:own-ground-cells` (58
+skipped deck polygons) was main's GroundStore re-init, fixed in 60c5c11f0.
+Regressions in `check-ground-cells.ts`: OSM323258135 (level over the underpass,
+parapets within 0.2 m of the deck; sinks to −0.91 m with `wayDeckHoles:false`),
+Satellietbaan 24343390 + 1252138995 (`CHAINED_BRIDGE_SURFACES`), OSM7382983 and
+OSM7041280 (parapet within 0.5 m of the carriageway's outer edge: 81 % / 94 %
+against 10 % / 0 % at the old half-width).
+
 ## Houseboats placed from the orthophoto, boat by boat (2026-10-16)
 
 User: "is there any way to actually get these right in placement?" and "see

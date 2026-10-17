@@ -16,11 +16,11 @@ import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStor
 import { existsSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { buildCell, type BuiltCell, type GroundLayer } from '../../src/canalRecall/ownGround/groundCell.ts';
-import { layerOfId, rasterLayerIds } from '../../src/canalRecall/overviewTiles/raster.ts';
+import { layerOfId, rasterLayerIds, RASTER_ORDER } from '../../src/canalRecall/overviewTiles/raster.ts';
 
 const COLOURS: Record<GroundLayer, [number, number, number]> = {
   land: [150, 142, 130], park: [92, 122, 66], wood: [70, 96, 52], square: [176, 166, 150], parking: [92, 92, 96],
-  asphalt: [72, 74, 78], klinker: [128, 82, 66], cycle: [160, 70, 62], paving: [190, 182, 170], gravel: [170, 156, 128],
+  asphalt: [72, 74, 78], klinker: [128, 82, 66], brick: [168, 156, 146], cycle: [160, 70, 62], paving: [190, 182, 170], gravel: [170, 156, 128],
   kerb: [235, 230, 220], paint: [255, 255, 255], water: [48, 75, 77], quay: [110, 100, 90], deckBody: [120, 110, 100], deckTop: [140, 130, 120],
   tram: [30, 30, 34], bollard: [120, 40, 30],
   // Park surfaces (parks-v1), a shade apart from the OSM park fill so a review can tell survey from fill.
@@ -36,13 +36,26 @@ function png(width: number, height: number, rgb: Uint8Array): Buffer {
   return Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), chunk('IHDR', ihdr), chunk('IDAT', deflateSync(raw)), chunk('IEND', Buffer.alloc(0))]);
 }
 
-/** Rasterise built cells over [x0, y0]–[x0 + w·res, y0 + h·res] (north up), in the review colours. */
-export function rasterTopDown(cells: readonly BuiltCell[], x0: number, y0: number, w: number, h: number, res: number): Uint8Array {
+/** The layers rasterised, in order; `topLayers` returns indices into it (overviewTiles/raster.ts RASTER_ORDER). */
+export const TOP_LAYERS: readonly GroundLayer[] = RASTER_ORDER;
+
+/**
+ * The topmost layer (index into TOP_LAYERS, -1: none) per texel over [x0, y0]–[x0 + w·res, y0 + h·res] (north up):
+ * the overview tiles' rasteriser (game DRAW_RANK ties, CUT_CHANNEL water-mask discard), as layer indices.
+ */
+export function topLayers(cells: readonly BuiltCell[], x0: number, y0: number, w: number, h: number, res: number): Int16Array {
+  const ids = rasterLayerIds(cells, x0, y0, w, h, res), out = new Int16Array(w * h).fill(-1);
+  for (let i = 0; i < ids.length; i++) { const layer = layerOfId(ids[i]); if (layer) out[i] = TOP_LAYERS.indexOf(layer); }
+  return out;
+}
+
+/** Rasterise built cells over [x0, y0]–[x0 + w·res, y0 + h·res] (north up), in the review colours (or `colours`). */
+export function rasterTopDown(cells: readonly BuiltCell[], x0: number, y0: number, w: number, h: number, res: number, colours: Partial<Record<GroundLayer, readonly number[]>> = COLOURS): Uint8Array {
   const ids = rasterLayerIds(cells, x0, y0, w, h, res), out = new Uint8Array(w * h * 3).fill(250);
   for (let i = 0; i < ids.length; i++) {
     const layer = layerOfId(ids[i]);
     if (!layer) continue;
-    const col = COLOURS[layer] ?? [255, 0, 255];
+    const col = colours[layer] ?? COLOURS[layer] ?? [255, 0, 255];
     out[i * 3] = col[0]; out[i * 3 + 1] = col[1]; out[i * 3 + 2] = col[2];
   }
   return out;

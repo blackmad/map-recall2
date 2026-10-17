@@ -12,7 +12,8 @@ import { openRoute } from './helpers';
 // crossing:signals=yes; the extract has the matching crossing ways
 // 1352089473 crossing=traffic_signals). The camera looks at the junction
 // from the cockpit; the white paint pixels inside a box around the node's
-// screen position are counted.
+// screen position are counted. Since road look v2 the surveyed (BGT) junction is pinned: the zebras at its crossing
+// nodes (road-marks-v1) and the stop lines before them.
 //
 //   OWN_GROUND=1 PW_PORT=4515 npx playwright test own-ground-paint --project=desktop
 //   BUNDLES_DIR=<dir> serves *.bundle.js from <dir> (the before measurement).
@@ -23,7 +24,8 @@ const JUNCTION = { lng: 4.8776303, lat: 52.3785795 };
 /** The rider sits on the Nassaukade ~35 m south of the junction, facing it (cockpit view: the chase camera's trees hide the mouth). */
 const APPROACH = { lng: 4.87746, lat: 52.37828, bearing: 20 };
 /** Measured 2026-10-14 (desktop 1440×900, cockpit, 640×320 box): 0.99 % without the junction markings (stop lines, cycle lanes and
- * crossings carried through, wider lines), 1.46 % with them. The bound sits between, nearer the after. */
+ * crossings carried through, wider lines), 1.46 % with them. The bound sits between, nearer the after. Road look v2
+ * (2026-10-16, survey paint): see the HISTORY entry for the measured share with the BGT roads on; 0 % before it. */
 const MIN_WHITE_SHARE = 0.0125;
 
 async function boot(page: Page): Promise<string[]> {
@@ -35,10 +37,10 @@ async function boot(page: Page): Promise<string[]> {
     return existsSync(file) ? route.fulfill({ body: readFileSync(file), contentType: 'text/javascript' }) : route.continue();
   });
   await page.addInitScript(() => { (window as any).__canalRecallOwnGround = true; });
-  // The BGT road partition is the default since 2026-10-16; ROADS=0 draws the OSM bands (before/after shots in separate directories).
-  // Surveyed (BGT) ground draws no procedural paint since 2026-10-16 (streets.ts PAINT_ON_SURVEY; user: "maybe we
-  // just stop showing dashes for now"), so this pins the paint of the band fallback (cells without the survey).
-  await page.addInitScript(() => { (window as any).__canalRecallRoads = false; });
+  // The BGT road partition is the default since 2026-10-16. Its markings come from the survey-aware module since road
+  // look v2 (surveyMarkings.ts: the OSM crossing nodes here are zebras with crossing:signals=yes, so zebras and stop
+  // lines on the carriageway polygons); ROADS=0 pins the band fallback's paint instead (cells without the survey).
+  if (process.env.ROADS === '0') await page.addInitScript(() => { (window as any).__canalRecallRoads = false; });
   await openRoute(page, { travelMode: 'car', viewMode: 'cockpit', abortHeavyTiles: false, enterRacing: false, query: '?ownGround=1' });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   return errors;
