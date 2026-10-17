@@ -65,6 +65,9 @@ export function openingSentence(text: string | undefined, maxChars = 160): strin
     if (!before) return true;
     const word = before[1];
     if (word.length === 1) return false; // initials: "J. Smit"
+    // Dutch patronymics: "Hendrick Jacobsz. Staets", "Frans Hendricksz.
+    // Oetgens" (the Staetsbrug card opened "The Hendrick Jacobsz.").
+    if (/^\p{Lu}\p{L}*sz$/u.test(word)) return false;
     return !abbreviations.has(word.toLocaleLowerCase());
   };
 
