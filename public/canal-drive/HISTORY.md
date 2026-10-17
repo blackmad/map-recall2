@@ -12,6 +12,16 @@ Leidseplein, Museumplein, Waterlooplein). Saved states from before keep
 working. Pinned in `tourRoute.test.ts` (every published tour gets a start in
 range) and `tours-stamps.spec.ts`.
 
+Then the user hit "Start and finish are too close" on Jewish Amsterdam: De
+Dokwerker → Portugese Synagoge was 0.04 km, under the game's 200 px (~67 m)
+minimum. `MIN_TOUR_LEG_KM = 0.3` (unit test reads constants.js so a change
+there fails it; `check-tours.ts` enforces [0.3, 2.5] km). Jewish Amsterdam
+now runs Anne Frank House → Jodenbreestraat → Portuguese Synagogue (naming the
+Joods Museum and the Dokwerker) → Hollandsche Schouwburg → Gerard Dou
+Synagogue → Merwedeplein → Liberal Jewish Synagogue (Zuidelijke Wandelweg
+41), all sourced; Art museums ends on a Museumplein stop; Golden Age drops
+Huis Bartolotti and reorders. All 44 leg setups across 8 tours succeed.
+
 ## Statue rebuilds installed: 16 in the game, Kinderbrug built but held (2026-10-17)
 
 User (2026-10-17): "install better ones, the sculpture models are fine". Lane
