@@ -778,9 +778,24 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     publish, rerun `build:explorer-looks` (looks switch to live by
     themselves); then step 4 and the `recipeTiles` default. Phone: the
     explorer path badge sits over the 3D view's lower left.
-  - Visuals follow-ups: 247 landmarks z-fight > 0.5 m² (zfight-patches.ts
-    --top; worst bercylaan-801-855, jacob-bontiusplaats-9, jodenbreestraat-11);
-    Westerkerk row count in westerkerk-elevations.json and side-on pediments;
+  - **Landmark z-fighting (estimate, 2026-10-17):** survey in
+    `docs/zfight-survey-2026-10-17.md` (re-run: `npx tsx
+    scripts/landmarks/zfight-patches.ts --top`). 247 of 351 landmarks fight
+    above 0.5 m². By size: 5 over 500 m² (bercylaan-801-855,
+    jacob-bontiusplaats-9, jodenbreestraat-11, valley, frascati), 13 at
+    100–500, 47 at 20–100, ~180 under 20 (mostly invisible at ride
+    distance). The top-30 causes repeat: flush cladding/bands on a wall (11),
+    panels 2–3 cm proud of the wall (8), window frames 2–3 cm proud of an
+    unholed wall (6), roof glazing strips 3 cm up (3), doubled faces (1).
+    Plan, cheapest first: (1) one lane (~half a day, Opus) finds the shared
+    builder helpers that emit 2–3 cm offsets and flush overlays and changes
+    the offset to ≥ 6 cm or cuts the wall hole, re-exporting every model
+    that uses them — likely clears most of the 20–500 m² band at once; (2)
+    the 5 worst by hand, ~30–60 min each (~1 lane-day); (3) leave the
+    sub-20 m² tail behind the 0.5 m² gate for new exports only. Magna Plaza
+    took one lane-hour by hand, so per-builder fixing of all 247 (~120
+    lane-hours) is not worth it; do (1) first and re-survey.
+  - Visuals follow-ups: Westerkerk row count in westerkerk-elevations.json and side-on pediments;
     Magna Plaza x≈7.1 window column 20.9 m² near-flush; gallery renderer's
     depth bias draws false streaks; zebras missing where OSM has none
     (Magna south, Weteringcircuit west arms, Museumplein, Rembrandtplein
