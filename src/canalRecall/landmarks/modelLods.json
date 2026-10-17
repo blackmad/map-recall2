@@ -60,10 +60,10 @@
   "triangles": 1080
  },
  "westerkerk": {
-  "sourceHash": "c0fc848649680324",
+  "sourceHash": "29cc7723458acc71",
   "buildVersion": 2,
-  "bytes": 70244,
-  "triangles": 3457
+  "bytes": 88112,
+  "triangles": 4797
  },
  "concertgebouw": {
   "sourceHash": "4d80783fac5a2e71",
@@ -156,10 +156,10 @@
   "triangles": 3263
  },
  "magna-plaza": {
-  "sourceHash": "ddd4641379f24f7d",
+  "sourceHash": "62aa346d9154e7fd",
   "buildVersion": 2,
-  "bytes": 80024,
-  "triangles": 4292
+  "bytes": 73444,
+  "triangles": 3896
  },
  "felix-meritis": {
   "sourceHash": "d128fa40815d1320",
