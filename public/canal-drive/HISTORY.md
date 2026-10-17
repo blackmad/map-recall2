@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+## canal-recall.spec: two failures were stale tests, not regressions (2026-10-17)
+
+Lane `lane/canal-spec-fails-20261016` (009cf1d20, test only). The corridor
+test failed 21–23 px vs 12.5 because it measured the heading-less nearest
+centreline: beside a wide corridor that is a narrow way the car is not on,
+while the guard's union contact (pickGuardContact) kept the car within
+0.7 px. Its seeded start also varied between runs (four starts in four
+repeats), so it was flaky before today; a bisect of today's merges named
+1f4862dd8, but its parent failed 1/4 too. The test now judges
+`getGuardRoad` against CAR_ROAD_EDGE_TOLERANCE (4 px) from a pinned start
+mid-block on Reestraat, aimed at the houses, with questions off. The
+anonymous-building test still expected no card; since 7f4d1e818
+(2026-10-10) every drawn building opens a card, so it now asserts the
+"Built 1887" card replaces the previous selection and "Unnamed building"
+never shows.
+
 ## Feedback preview no longer black; coverage page shows buurten with their own look (2026-10-17)
 
 Lane `lane/feedback-coverage-20261016` (b87dca908, 6d9a93c53, 4b8be10d1,

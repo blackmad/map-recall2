@@ -832,11 +832,6 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   the overview flight's YOU marker; on phones a map tap shows the cluster
   over the bottom-right quiz answer for 3 s; `osm-loader.js` `_loadTile`
   (CARTO) is dead code.
-- **Two canal-recall.spec tests fail on main** (2026-10-16, found merging
-  the HUD radar; fail before it too at 43b3999e9): "an actual high-speed car
-  cannot escape the mapped road corridor" (21–23 m off the corridor, limit
-  12.5) and "anonymous year-only buildings clear selection without opening a
-  card" (desktop and iPhone). Lane `lane/canal-spec-fails-20261016` on them.
 - **Bridge ends and spans, after the Berensluis** (2026-10-16): ~2,900
   deck-top misses remain at other belt bridge ends (BRU0140 Jean Dulieubrug
   52; BRU0066's north pavement stops 2 m short;
@@ -875,6 +870,10 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   chunk draws (Kinkerstraat, nassau-1900-*); row-house design renders need 8
   candidate angles; landmark-gallery cards render only the ground plane in
   headless Chrome.
+- **Seeded start not deterministic** (P3, 2026-10-17): `openRoute`'s seeded
+  start varies between runs (async loading consumes `Math.random` in a
+  varying order), so any spec that depends on the start position is flaky;
+  pin starts (as the Reestraat corridor test now does) or seed a private RNG.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
