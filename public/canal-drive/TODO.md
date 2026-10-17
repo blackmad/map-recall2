@@ -734,8 +734,6 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     as `APPCHECK_SITE_KEY`, App Check registration (monitor, then enforce);
     Firebase Auth authorized domains for `/quiz/`; attach `edumap.blackmad.com`
     so the 301 works; check query strings survive it.
-  - Tours: starting one saves Bike/Amsterdam/Surprise as the player's settings;
-    restore the previous settings after the tour. Home/Here starts don't apply.
   - Stamp/route sync only tested with an in-memory fake; test with a real
     sign-in once the rules are deployed.
   - Real Google sign-in across /ride, /quiz/ and /progress untested (lanes had
@@ -743,13 +741,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   - Rules deploy needed for poiStamps (and the stricter gameSessions).
   - No landmark-name question exists, so 'named' stamps never fire.
   - Explorer: Centrum is one 99-building bucket (no Burgwallen-level areas in
-    `boundaries.json`); no "Buildings" item in SiteSwitch yet; rerun
+    `boundaries.json`); rerun
     `build:explorer-index` after model installs (add `--check` to check:canal).
-  - Clarity findings still open (`docs/preview/gameplay-clarity-review.md`):
-    10 zoom badge after the start flight, 11 phone "More" cue over fields,
-    12 desktop More options below the fold, 13 blank band after answering,
-    14 duplicate arrival stats, 15 flat 21-row key table, 16 HUD names the
-    start street (check against the answer-before-reveal rule).
+  - Clarity finding 16 (HUD names the start street before any question):
+    awaiting the user's decision on whether that street can be asked later.
+  - `mobile-overlays.spec.ts` iphone, red on main: "phone setup shows every
+    main choice above Start" (Hard ends at 477 px, rail at 416 px — needs a
+    slimmer plaque, one-line briefing, or moving the report/help row) and
+    "settings and help stay tucked while riding until the map is tapped".
   - `check:canal` red on main (pre-existing, found by the dead-code lane):
     `test:look` — `face-gorontalo-25-47-r1` has no entry in
     `chunkWallExposureData.ts` (rerun `build-chunk-wall-exposure.ts`);
