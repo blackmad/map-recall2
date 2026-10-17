@@ -22,7 +22,13 @@ os.makedirs(out, exist_ok=True)
 sessions = {}
 for v in spec["views"]:
     img = Image.open(v["src"]).convert("RGB")
-    crop = img.crop(tuple(v["box"])) if v.get("box") else img
+    if v.get("box"):  # clamped to the image, so 9999 means "to the edge"
+        x0, y0, x1, y1 = v["box"]
+        if max(v["box"]) <= 1:  # fractions of the image
+            x0, x1, y0, y1 = int(x0 * img.width), int(x1 * img.width), int(y0 * img.height), int(y1 * img.height)
+        crop = img.crop((max(0, x0), max(0, y0), min(img.width, x1), min(img.height, y1)))
+    else:
+        crop = img
     crop.save(os.path.join(out, f"{v['name']}-crop.png"))
     if v.get("upscale"):
         crop = crop.resize((crop.width * v["upscale"], crop.height * v["upscale"]), Image.LANCZOS)

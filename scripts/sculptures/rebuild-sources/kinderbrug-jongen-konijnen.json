@@ -1,0 +1,139 @@
+{
+ "id": "kinderbrug-jongen-konijnen",
+ "figures": {
+  "boy-rabbits": {
+   "route": "TripoSR, one photo",
+   "views": [
+    {
+     "title": "File:Brug over Boerenwetering beeldhouwwerk tussen Churchilllaan en Muzenplein - Amsterdam - 20011022 - RCE.jpg",
+     "box": [
+      0.05,
+      0.06,
+      0.94,
+      0.68
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "triposrWall": 32.1,
+    "decimate": 2.4
+   },
+   "triposr": {
+    "loadS": 3.2,
+    "cutoutS": 10.7,
+    "modelS": 3.2,
+    "meshS": 12.8,
+    "device": "mps",
+    "rawTriangles": 101882,
+    "rawVertices": 50951,
+    "image": "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/kinderbrug-jongen-konijnen/download/e73aca5ff1.jpg",
+    "box": "0.05,0.06,0.94,0.68"
+   },
+   "placement": {
+    "cutKitTriangles": 1438,
+    "heightM": 1.04,
+    "baseM": [
+     0.023,
+     2.42,
+     0.03
+    ],
+    "facingDeg": 180
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 101882,
+    "afterDebris": 101630,
+    "triangles": 6000,
+    "scale": 1.395,
+    "sizeM": [
+     0.69,
+     1.04,
+     1.36
+    ],
+    "watertight": true
+   },
+   "cutMask": 1438
+  }
+ },
+ "sculptor": {
+  "name": "Hildo Krop",
+  "born": 1884,
+  "died": 1970,
+  "year": 1931,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/kinderbrug-jongen-konijnen.glb",
+ "photos": {
+  "File:Jongen met konijnen, beeld op de Kinder(tjes)brug (brug 420), Muzenplein, over Boerenwetering, in Amsterdam-Zuid.JPG": {
+   "title": "File:Jongen met konijnen, beeld op de Kinder(tjes)brug (brug 420), Muzenplein, over Boerenwetering, in Amsterdam-Zuid.JPG",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Jongen_met_konijnen,_beeld_op_de_Kinder(tjes)brug_(brug_420),_Muzenplein,_over_Boerenwetering,_in_Amsterdam-Zuid.JPG",
+   "author": "Alf van Beem",
+   "licence": "Public domain",
+   "licenceUrl": null,
+   "date": "2016-06-26 13:35:13",
+   "originalSize": [
+    4608,
+    3456
+   ],
+   "sha1": "e46f7a66245cde0804e385270e5a59be60ec22f5",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Jongen_met_konijnen%2C_beeld_op_de_Kinder%28tjes%29brug_%28brug_420%29%2C_Muzenplein%2C_over_Boerenwetering%2C_in_Amsterdam-Zuid.JPG/1920px-Jongen_met_konijnen%2C_beeld_op_de_Kinder%28tjes%29brug_%28brug_420%29%2C_Muzenplein%2C_over_Boerenwetering%2C_in_Amsterdam-Zuid.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/kinderbrug-jongen-konijnen/download/e46f7a6624.jpg"
+  },
+  "File:Brug over Boerenwetering (Beeld van Jongen met konijnen).JPG": {
+   "title": "File:Brug over Boerenwetering (Beeld van Jongen met konijnen).JPG",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Brug_over_Boerenwetering_(Beeld_van_Jongen_met_konijnen).JPG",
+   "author": "Marcelmulder68",
+   "licence": "CC BY-SA 3.0 nl",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/nl/deed.en",
+   "date": "2012-06-18",
+   "originalSize": [
+    2304,
+    3072
+   ],
+   "sha1": "aa1be71ae0eb3f941a29d0fd74aa27d9c0d6693b",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Brug_over_Boerenwetering_%28Beeld_van_Jongen_met_konijnen%29.JPG/1920px-Brug_over_Boerenwetering_%28Beeld_van_Jongen_met_konijnen%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/kinderbrug-jongen-konijnen/download/aa1be71ae0.jpg"
+  },
+  "File:Beeld bij de brug - Amsterdam - 20015882 - RCE.jpg": {
+   "title": "File:Beeld bij de brug - Amsterdam - 20015882 - RCE.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Beeld_bij_de_brug_-_Amsterdam_-_20015882_-_RCE.jpg",
+   "author": "Gerard Dukker",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "1981-04",
+   "originalSize": [
+    3054,
+    3066
+   ],
+   "sha1": "cd5a8ae14a86c3d26198caa414c441d16ce800d8",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Beeld_bij_de_brug_-_Amsterdam_-_20015882_-_RCE.jpg/1920px-Beeld_bij_de_brug_-_Amsterdam_-_20015882_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/kinderbrug-jongen-konijnen/download/cd5a8ae14a.jpg"
+  },
+  "File:Brug over Boerenwetering beeldhouwwerk tussen Churchilllaan en Muzenplein - Amsterdam - 20011022 - RCE.jpg": {
+   "title": "File:Brug over Boerenwetering beeldhouwwerk tussen Churchilllaan en Muzenplein - Amsterdam - 20011022 - RCE.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Brug_over_Boerenwetering_beeldhouwwerk_tussen_Churchilllaan_en_Muzenplein_-_Amsterdam_-_20011022_-_RCE.jpg",
+   "author": "Paul van Galen",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "1979-07",
+   "originalSize": [
+    3052,
+    3076
+   ],
+   "sha1": "e73aca5ff1255640a8fdb79329edbce9ffd76dd7",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Brug_over_Boerenwetering_beeldhouwwerk_tussen_Churchilllaan_en_Muzenplein_-_Amsterdam_-_20011022_-_RCE.jpg/1920px-Brug_over_Boerenwetering_beeldhouwwerk_tussen_Churchilllaan_en_Muzenplein_-_Amsterdam_-_20011022_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/kinderbrug-jongen-konijnen/download/e73aca5ff1.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/kinderbrug-jongen-konijnen/rebuild/kinderbrug-jongen-konijnen.glb",
+  "triangles": 6034,
+  "keptKitTriangles": 34,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 1438
+ },
+ "generated": "2026-10-17T09:40:03.494Z",
+ "sheet": "docs/images/sculptures/kinderbrug-jongen-konijnen-rebuild.jpg",
+ "verdict": "better: the seated boy among the rabbits reads, where the kit is egg shapes; one 1979 photo, the back is guessed"
+}
