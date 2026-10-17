@@ -19,6 +19,11 @@ let firstAdded: Map<string, string> | undefined;
 export function firstExportDates(): Map<string, string> {
   if (firstAdded) return firstAdded;
   firstAdded = new Map();
+  // A shallow clone has one commit, so every GLB looks first added today and every landmark would need an inventory
+  // (CI 2026-10-17: 309 of 434 failed). Refuse rather than misdate.
+  if (execFileSync('git', ['rev-parse', '--is-shallow-repository'], {cwd: ROOT, encoding: 'utf8'}).trim() === 'true') {
+    throw new Error('landmark-inventory-gate: shallow git clone; first-export dates need the history (actions/checkout fetch-depth: 0)');
+  }
   const log = execFileSync('git', ['log', '--no-renames', '--diff-filter=A', '--reverse', '--name-only', '--format=@%aI', '--', 'public/canal-drive/models/*.glb'], {cwd: ROOT, encoding: 'utf8', maxBuffer: 1 << 28});
   let date = '';
   for (const line of log.split('\n')) {
