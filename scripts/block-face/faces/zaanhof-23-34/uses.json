@@ -1,0 +1,147 @@
+{
+ "street": "Zaanhof",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T08:34:43.863Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012114944",
+   "addresses": [
+    "Zaanhof 23",
+    "Zaanhof 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zaanhof 23",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000877277"
+    },
+    {
+     "address": "Zaanhof 24",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001006338"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109995",
+   "addresses": [
+    "Zaanhof 25",
+    "Zaanhof 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zaanhof 26",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000877280"
+    },
+    {
+     "address": "Zaanhof 25",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000877279"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074829",
+   "addresses": [
+    "Zaanhof 27",
+    "Zaanhof 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zaanhof 27",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000877281"
+    },
+    {
+     "address": "Zaanhof 28",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000877282"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065518",
+   "addresses": [
+    "Zaanhof 29",
+    "Zaanhof 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zaanhof 30",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000877284"
+    },
+    {
+     "address": "Zaanhof 29",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000877283"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012097562",
+   "addresses": [
+    "Zaanhof 31",
+    "Zaanhof 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zaanhof 31",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000877285"
+    },
+    {
+     "address": "Zaanhof 32",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000877286"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141963",
+   "addresses": [
+    "Zaanhof 33",
+    "Zaanhof 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zaanhof 34",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000877288"
+    },
+    {
+     "address": "Zaanhof 33",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000877287"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

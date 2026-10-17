@@ -1,0 +1,124 @@
+{
+ "street": "Zaanhof",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012127622",
+   "addresses": [
+    "Zaanhof 125",
+    "Zaanhof 126"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zaanhof 125",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000877377"
+    },
+    {
+     "address": "Zaanhof 126",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000877378"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012139676",
+   "addresses": [
+    "Zaanhof 127",
+    "Zaanhof 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zaanhof 128",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000877380"
+    },
+    {
+     "address": "Zaanhof 127",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000877379"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063074",
+   "addresses": [
+    "Zaanhof 129",
+    "Zaanhof 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zaanhof 129",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000877381"
+    },
+    {
+     "address": "Zaanhof 130",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000877382"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131844",
+   "addresses": [
+    "Zaanhof 131",
+    "Zaanhof 132"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zaanhof 131",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000877383"
+    },
+    {
+     "address": "Zaanhof 132",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000877384"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109397",
+   "addresses": [
+    "Zaanhof 133",
+    "Zaanhof 134"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zaanhof 133",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000877385"
+    },
+    {
+     "address": "Zaanhof 134",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000877386"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

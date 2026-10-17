@@ -1,0 +1,134 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "zaanhof-1919-white-gable",
+ "district": "spaarndammerbuurt",
+ "description": "Zaanhof (BAG 1919, H.J.M. Walenkamp), the courtyard's 6 m two-dwelling fronts: two brick storeys, a wide window axis and a narrow one over a round-arched door at the party wall; over the wide axis a tall pointed gable rendered white from the first-floor head up, its yellow bargeboards on a red-tile roof, an attic light in it; beside it a small flat-roofed dormer over the door axis; yellow window frames, small-paned top lights; mirrored in pairs so the arched doors meet at every second party wall",
+ "fit": {
+  "widthM": [
+   5.6,
+   6.5
+  ],
+  "storeys": [
+   2
+  ]
+ },
+ "body": {
+  "storeys": 2,
+  "bays": 2,
+  "bayWidths": [
+   1.9,
+   4.15
+  ],
+  "bayFill": [
+   0.53,
+   0.65
+  ],
+  "cornice": "none",
+  "windows": "casement-sidelights-toplight",
+  "storeyHeights": [
+   3.3,
+   4.2
+  ],
+  "windowHeights": [
+   0.67,
+   0.46
+  ],
+  "headLines": [
+   0.86,
+   0.65
+  ],
+  "paintedStoreys": {
+   "storeys": [
+    1
+   ],
+   "colour": "#f2efe6",
+   "from": 3.3
+  }
+ },
+ "crowns": {
+  "white-gable": {
+   "gable": "point",
+   "crownBays": {
+    "from": 1,
+    "to": 1
+   },
+   "crownRise": 0.95,
+   "atticWindows": 1,
+   "note": "a pointed gable over the wide axis, apex 11.5 m from the 7.5 m eaves, an attic light at 7.7-9.0 m. The small flat-roofed dormer over the door axis is left out: a dormer set into these 3DBAG roof planes pierces them (cheek frames 1.5-2 m2 through the roof per house, zaanhof-71-78)",
+   "renderedGable": {
+    "bargeboard": 0.25,
+    "colour": "#f2efe6"
+   }
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "doorArch": {
+    "span": 1.4,
+    "apex": 2.85
+   },
+   "note": "the round-arched door at the party wall (rectified 1.5 m wide, apex 2.85 m); the neighbour's arched door beside it"
+  }
+ },
+ "palettes": {
+  "yellow-trim": {
+   "brick": "#9c6a52",
+   "frame": "#d8aa3c",
+   "door": "#d4b04a",
+   "stone": "#efece2",
+   "cornice": "#d8aa3c"
+  }
+ },
+ "roof": {
+  "material": "red-tile"
+ },
+ "match": {
+  "years": [
+   1918,
+   1920
+  ],
+  "eavesM": [
+   6.6,
+   8.4
+  ],
+  "storeys3dbag": [
+   2,
+   3
+  ],
+  "stucco": false,
+  "mirrorForDoor": "left",
+  "doorsPairAcross": true,
+  "note": "the Zaanhof courtyard (1919); the 1934 infill at Zaanhof 85-89 is another design",
+  "measuredWall": false
+ },
+ "rhythm": {
+  "bays": "a narrow door axis and a wide window axis",
+  "identicalBays": "no: narrow + wide",
+  "windowsPerStorey": "ground: arched door + 1 wide | 1: 1 narrow + 1 wide | gable: 1 attic light",
+  "symmetry": "mirrored in pairs: the arched doors meet on every second party wall, the gables on the others",
+  "groundFloor": "round-arched door at the party wall, one wide window",
+  "signage": "none",
+  "roofline": "pointed white gable over the wide axis, a dormer beside it, red-tile roof",
+  "photoRows": [
+   2,
+   2
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "zaanhof-1-20",
+   "pands": [
+    "146841",
+    "142675"
+   ],
+   "citation": "strip.jpg 2021-03-19 (40 px/m, camera 2.1 m), ruler crop 7-22 m: brick to 6.6 m, white render to the 7.5 m eaves and up the gable to 11.5 m; wide windows 8.55-11.3 m at 0.65-2.85 and 4.1-6.05 m; narrow first-floor window 1.0 m; arched doors 1.5 m wide, apex 2.85 m, paired at the party wall; attic light 9.3-10.7 m at 7.7-9.0 m"
+  }
+ ],
+ "schemaLimits": [],
+ "notes": [
+  "Palette: the type palette (match.measuredWall false): half of each front is white render and the 2021 strips are sunlit past the trim white point, so the strip wall reads #eac495-#fffcd6 for a red-brown brick; #9c6a52 from the shaded 2021 crops."
+ ]
+}
