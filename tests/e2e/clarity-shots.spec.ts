@@ -42,13 +42,10 @@ test('first visit and start panel', async ({ page }, info) => {
     await page.locator('#onboarding [data-onboarding="next"]').click();
   }
   await shot(page, p, '02-start-panel');
-  await page.evaluate(() => {
-    const overlay = (window as any).CanalRecallOverlay?.getOverlay?.();
-    overlay?.store.setAdvancedOpen(true);
-  });
-  await page.waitForTimeout(400);
-  await page.evaluate(() => document.querySelector('.advanced-options summary')?.scrollIntoView({ block: 'start' }));
-  await page.waitForTimeout(300);
+  // Opened the way a player opens it, so the shot shows where the rail
+  // lands after the click (finding 12), not a harness scroll.
+  await page.locator('#route-setup .advanced-options summary').click();
+  await page.waitForTimeout(800);
   await shot(page, p, '03-setup-advanced');
   await page.evaluate(() => {
     const overlay = (window as any).CanalRecallOverlay?.getOverlay?.();
