@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## Rivierenbuurt (Plan Zuid, 1934): 103 pands from six types (2026-10-17)
+
+User (2026-10-16): "can you pick some more neighborhoods to give that
+coverage to?". Lane `lane/buurt-looks-20261016` (28420445b … b2541075e). 103
+pands on Boterdiep-, Hoendiep- and Eemsstraat in 8 chunks from six types
+(`scripts/block-face/types/rivierenbuurt/`: flat-three, erker-pair,
+erker-ribbon, erker-white-attic, erker-centre, erker-end), placed by
+auto-place with BAG erker evidence, row coherence (across one held pand, a
+confirmed four-house rhythm) and date-pooled trim exposure
+(`--row-exposure=date`). Kit: eaves overhang, ground canopies, storey ribbons,
+erker at the party wall, ribbon piers, ground-storey oriel. Review sheets
+caught Boterdiepstraat 57's top storey standing open: the library never closed
+a roof edge spanning collinear footprint edges; it now closes each piece (test
+pinned, fit-golden identical). Auto-place no longer always holds challenger
+types, so re-runs elsewhere may place more pands. Held: Boterdiepstraat 3–7
+(pitched corner, 3.39 m frontage), Hoendiepstraat 2 (corner), 11 (NCC 0.143).
+Desktop ride-perf 9/9 (motion p95 16.7 ms).
+
 ## Kinderbrug statues held (2026-10-17)
 
 User, on the What's new gallery: "these are a little rough". Lane
