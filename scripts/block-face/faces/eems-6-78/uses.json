@@ -1,0 +1,277 @@
+{
+ "street": "Eemsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T20:35:35.904Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012140994",
+   "addresses": [
+    "Eemsstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000628682"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012124657",
+   "addresses": [
+    "Eemsstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000628676"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012061247",
+   "addresses": [
+    "Eemsstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000628670"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111889",
+   "addresses": [
+    "Eemsstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000628664"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012121394",
+   "addresses": [
+    "Eemsstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000628658"
+    },
+    {
+     "address": "Eemsstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010012072944"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088569",
+   "addresses": [
+    "Eemsstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000628652"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094658",
+   "addresses": [
+    "Eemsstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000628646"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069912",
+   "addresses": [
+    "Eemsstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000628640"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149922",
+   "addresses": [
+    "Eemsstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000628634"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087051",
+   "addresses": [
+    "Eemsstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000628628"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138436",
+   "addresses": [
+    "Eemsstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000628622"
+    },
+    {
+     "address": "Eemsstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010012047079"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084686",
+   "addresses": [
+    "Eemsstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000628616"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012104341",
+   "addresses": [
+    "Eemsstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000628610"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062063",
+   "addresses": [
+    "Eemsstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000628604"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063274",
+   "addresses": [
+    "Eemsstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000628598"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012148727",
+   "addresses": [
+    "Eemsstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eemsstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000628592"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}
