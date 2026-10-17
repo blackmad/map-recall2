@@ -1,7 +1,11 @@
 import { expect, test, type Page } from '@playwright/test';
 
-// The neighbourhood explorer (canal-drive/explore.html). Dev server: /canal-drive/explore.html;
-// the assembled site serves the same page at /explore (EXPLORE_PATH=/explore).
+// The neighbourhood explorer (canal-drive/explore.html). Dev server: /canal-drive/explore.html.
+// The assembled site serves the same page at /explore behind a Hosting rewrite:
+//   npm run build && node scripts/assemble-canalrecall-site.mjs
+//   npx firebase-tools@15 serve --only hosting:canalrecall --port 4431
+//   EXPLORE_PATH=http://localhost:4431/explore PW_PORT=4430 npx playwright test tests/e2e/explore.spec.ts
+// EXPLORE_SHOTS=<dir> saves desktop/phone screenshots of the list, panel and request states.
 const PATH = process.env.EXPLORE_PATH ?? '/canal-drive/explore.html';
 const SHOTS = process.env.EXPLORE_SHOTS;
 
