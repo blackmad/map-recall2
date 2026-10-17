@@ -1,0 +1,119 @@
+{
+ "id": "waterdraagster-bellamyplein",
+ "figures": {
+  "waterdraagster": {
+   "route": "TripoSR, one photo",
+   "views": [
+    {
+     "title": "File:2021 Waterdraagster met vissen-Waterdraagster (1).jpg",
+     "box": [
+      0.16,
+      0.09,
+      0.83,
+      0.91
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Waterdraagster 2.JPG",
+     "box": [
+      0.2,
+      0,
+      0.95,
+      0.93
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "triposrWall": 43.8,
+    "decimate": 2.5
+   },
+   "triposr": {
+    "loadS": 2.9,
+    "cutoutS": 8.8,
+    "modelS": 3.8,
+    "meshS": 26.1,
+    "device": "mps",
+    "rawTriangles": 50766,
+    "rawVertices": 25381,
+    "image": "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/waterdraagster-bellamyplein/download/f0eecacf11.jpg",
+    "box": "0.16,0.09,0.83,0.91"
+   },
+   "placement": {
+    "cutKitTriangles": 874,
+    "heightM": 1.06,
+    "baseM": [
+     0,
+     0.42,
+     0
+    ],
+    "facingDeg": 0
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 50766,
+    "afterDebris": 50766,
+    "triangles": 6000,
+    "scale": 1.181,
+    "sizeM": [
+     0.66,
+     1.06,
+     0.66
+    ],
+    "watertight": true
+   },
+   "cutMask": 874
+  }
+ },
+ "sculptor": {
+  "name": "Leo Braat",
+  "born": 1908,
+  "died": 1979,
+  "year": 1951,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/waterdraagster-bellamyplein.glb",
+ "photos": {
+  "File:Waterdraagster 2.JPG": {
+   "title": "File:Waterdraagster 2.JPG",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Waterdraagster_2.JPG",
+   "author": "Marion Golsteijn",
+   "licence": "CC BY-SA 3.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "date": "2014-04-19 13:28:37",
+   "originalSize": [
+    1632,
+    2176
+   ],
+   "sha1": "ce22ca09cd3fb764d4d2457baedd73e90dd9993b",
+   "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/54/Waterdraagster_2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "file": "artifacts/sculpture-reconstruction/waterdraagster-bellamyplein/download/ce22ca09cd.jpg"
+  },
+  "File:2021 Waterdraagster met vissen-Waterdraagster (1).jpg": {
+   "title": "File:2021 Waterdraagster met vissen-Waterdraagster (1).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2021_Waterdraagster_met_vissen-Waterdraagster_(1).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2021-11-17 13:55:54",
+   "originalSize": [
+    3120,
+    4160
+   ],
+   "sha1": "f0eecacf11cce2f2b10e9baeb4f8802243c50438",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/2021_Waterdraagster_met_vissen-Waterdraagster_%281%29.jpg/1920px-2021_Waterdraagster_met_vissen-Waterdraagster_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/waterdraagster-bellamyplein/download/f0eecacf11.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/waterdraagster-bellamyplein/rebuild/waterdraagster-bellamyplein.glb",
+  "triangles": 8350,
+  "keptKitTriangles": 2350,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 874
+ },
+ "generated": "2026-10-17T09:38:48.322Z",
+ "sheet": "docs/images/sculptures/waterdraagster-bellamyplein-rebuild.jpg",
+ "verdict": "worse: TripoSR tilts the figure forward and lumps the arms; the kit is clean and already faithful"
+}

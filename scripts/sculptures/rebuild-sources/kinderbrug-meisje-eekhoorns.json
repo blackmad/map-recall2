@@ -1,0 +1,114 @@
+{
+ "id": "kinderbrug-meisje-eekhoorns",
+ "figures": {
+  "girl-squirrels": {
+   "route": "TripoSR, one photo",
+   "views": [
+    {
+     "title": "File:Brug 420 Kinderbrug pic 7.JPG",
+     "box": [
+      0.14,
+      0.07,
+      0.86,
+      0.79
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Brug over Boerenwetering tussen Muzenplein en Churchilllaan - Amsterdam - 20011025 - RCE.jpg",
+     "box": null,
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "triposrWall": 27.3,
+    "decimate": 1.7
+   },
+   "triposr": {
+    "loadS": 3.4,
+    "cutoutS": 8,
+    "modelS": 2.9,
+    "meshS": 9.5,
+    "device": "mps",
+    "rawTriangles": 108184,
+    "rawVertices": 54088,
+    "image": "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/kinderbrug-meisje-eekhoorns/download/fb35bdf3bc.jpg",
+    "box": "0.14,0.07,0.86,0.79"
+   },
+   "placement": {
+    "cutKitTriangles": 2732,
+    "heightM": 1.04,
+    "baseM": [
+     -0.043,
+     2.42,
+     0.027
+    ],
+    "facingDeg": 180
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 108184,
+    "afterDebris": 107992,
+    "triangles": 6000,
+    "scale": 1.348,
+    "sizeM": [
+     0.83,
+     1.04,
+     1.36
+    ],
+    "watertight": true
+   },
+   "cutMask": 2732
+  }
+ },
+ "sculptor": {
+  "name": "Hildo Krop",
+  "born": 1884,
+  "died": 1970,
+  "year": 1931,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/kinderbrug-meisje-eekhoorns.glb",
+ "photos": {
+  "File:Brug 420 Kinderbrug pic 7.JPG": {
+   "title": "File:Brug 420 Kinderbrug pic 7.JPG",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Brug_420_Kinderbrug_pic_7.JPG",
+   "author": "Alf van Beem",
+   "licence": "Public domain",
+   "licenceUrl": null,
+   "date": "2016-06-19 09:31:13",
+   "originalSize": [
+    4608,
+    3456
+   ],
+   "sha1": "fb35bdf3bc5bea1b96025b67bf449c8bae2be672",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Brug_420_Kinderbrug_pic_7.JPG/1920px-Brug_420_Kinderbrug_pic_7.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/kinderbrug-meisje-eekhoorns/download/fb35bdf3bc.jpg"
+  },
+  "File:Brug over Boerenwetering tussen Muzenplein en Churchilllaan - Amsterdam - 20011025 - RCE.jpg": {
+   "title": "File:Brug over Boerenwetering tussen Muzenplein en Churchilllaan - Amsterdam - 20011025 - RCE.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Brug_over_Boerenwetering_tussen_Muzenplein_en_Churchilllaan_-_Amsterdam_-_20011025_-_RCE.jpg",
+   "author": "Paul van Galen",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "1979-07",
+   "originalSize": [
+    3028,
+    3076
+   ],
+   "sha1": "0d0527c5aa78d38eacad57a8339bf6b9241f0de5",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Brug_over_Boerenwetering_tussen_Muzenplein_en_Churchilllaan_-_Amsterdam_-_20011025_-_RCE.jpg/1920px-Brug_over_Boerenwetering_tussen_Muzenplein_en_Churchilllaan_-_Amsterdam_-_20011025_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/kinderbrug-meisje-eekhoorns/download/0d0527c5aa.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/kinderbrug-meisje-eekhoorns/rebuild/kinderbrug-meisje-eekhoorns.glb",
+  "triangles": 6034,
+  "keptKitTriangles": 34,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 2732
+ },
+ "generated": "2026-10-17T09:41:09.202Z",
+ "sheet": "docs/images/sculptures/kinderbrug-meisje-eekhoorns-rebuild.jpg",
+ "verdict": "better: the girl with a squirrel in her arms over a ring of squirrels reads; one photo, the back is guessed"
+}

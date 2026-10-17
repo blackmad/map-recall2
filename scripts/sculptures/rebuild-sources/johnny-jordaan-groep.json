@@ -1,0 +1,796 @@
+{
+ "id": "johnny-jordaan-groep",
+ "figures": {
+  "manke-nelis": {
+   "route": "TRELLIS.2-4B multidiffusion, 3 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Manke Nelis (A).jpg",
+     "box": [
+      0.3,
+      0.04,
+      0.64,
+      0.72
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Manke Nelis (C).jpg",
+     "box": [
+      0.2,
+      0,
+      0.8,
+      0.93
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Manke Nelis (E).jpg",
+     "box": [
+      0.22,
+      0,
+      0.7,
+      0.82
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 28.3,
+    "trellisWall": 316.2,
+    "decimate": 3.6
+   },
+   "freeGbAtStart": 37.4,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/manke-nelis/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/manke-nelis/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/manke-nelis/mv-inputs/v2-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.4,
+    "generateS": 310.5,
+    "rawVertices": 397583,
+    "rawTriangles": 803200
+   },
+   "placement": {
+    "cutKitTriangles": 2690,
+    "heightM": 2.142,
+    "baseM": [
+     -2.96,
+     0.806,
+     1.662
+    ],
+    "facingDeg": 160
+   },
+   "orient": {
+    "front": "-x",
+    "scores": {
+     "+x": {
+      "iou": 0.578,
+      "greyCorr": 0.121,
+      "score": 0.638
+     },
+     "-x": {
+      "iou": 0.633,
+      "greyCorr": 0.15,
+      "score": 0.708
+     },
+     "+y": {
+      "iou": 0.569,
+      "greyCorr": 0.235,
+      "score": 0.686
+     },
+     "-y": {
+      "iou": 0.558,
+      "greyCorr": 0.25,
+      "score": 0.683
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 190622,
+    "afterDebris": 190578,
+    "triangles": 6000,
+    "scale": 2.168,
+    "sizeM": [
+     1.32,
+     2.14,
+     0.96
+    ],
+    "watertight": true
+   },
+   "cutMask": 2690
+  },
+  "tante-leen": {
+   "route": "TRELLIS.2-4B multidiffusion, 3 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Tante leen (A).jpg",
+     "box": [
+      0.28,
+      0,
+      0.75,
+      0.56
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Tante leen (B).jpg",
+     "box": [
+      0.3,
+      0,
+      0.68,
+      0.57
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Tante leen (C).jpg",
+     "box": [
+      0.2,
+      0,
+      0.78,
+      0.86
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 22.9,
+    "trellisWall": 338.6,
+    "decimate": 4.3
+   },
+   "freeGbAtStart": 33.8,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/tante-leen/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/tante-leen/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/tante-leen/mv-inputs/v2-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.2,
+    "generateS": 333.9,
+    "rawVertices": 487304,
+    "rawTriangles": 973722
+   },
+   "placement": {
+    "cutKitTriangles": 2200,
+    "heightM": 0.83,
+    "baseM": [
+     -1.585,
+     0.9,
+     0.478
+    ],
+    "facingDeg": 160
+   },
+   "orient": {
+    "front": "-y",
+    "scores": {
+     "+x": {
+      "iou": 0.706,
+      "greyCorr": 0.329,
+      "score": 0.871
+     },
+     "-x": {
+      "iou": 0.698,
+      "greyCorr": 0.132,
+      "score": 0.764
+     },
+     "+y": {
+      "iou": 0.816,
+      "greyCorr": -0.002,
+      "score": 0.816
+     },
+     "-y": {
+      "iou": 0.875,
+      "greyCorr": 0.64,
+      "score": 1.195
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 264864,
+    "afterDebris": 264864,
+    "triangles": 6000,
+    "scale": 0.835,
+    "sizeM": [
+     0.49,
+     0.83,
+     0.41
+    ],
+    "watertight": false
+   },
+   "cutMask": 2200
+  },
+  "johnny-jordaan": {
+   "route": "TRELLIS.2-4B multidiffusion, 3 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Jordaan (A).jpg",
+     "box": [
+      0.24,
+      0,
+      0.7,
+      0.53
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Jordaan (B).jpg",
+     "box": [
+      0.31,
+      0,
+      0.62,
+      0.58
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Jordaan (E).jpg",
+     "box": [
+      0.2,
+      0.07,
+      0.67,
+      0.93
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 28.1,
+    "trellisWall": 341.5,
+    "decimate": 5.1
+   },
+   "freeGbAtStart": 32.3,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/johnny-jordaan/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/johnny-jordaan/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/johnny-jordaan/mv-inputs/v2-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.3,
+    "generateS": 336.9,
+    "rawVertices": 486988,
+    "rawTriangles": 982656
+   },
+   "placement": {
+    "cutKitTriangles": 1704,
+    "heightM": 0.83,
+    "baseM": [
+     0,
+     0.9,
+     0.01
+    ],
+    "facingDeg": 160
+   },
+   "orient": {
+    "front": "-y",
+    "scores": {
+     "+x": {
+      "iou": 0.649,
+      "greyCorr": 0.13,
+      "score": 0.714
+     },
+     "-x": {
+      "iou": 0.617,
+      "greyCorr": 0.097,
+      "score": 0.666
+     },
+     "+y": {
+      "iou": 0.847,
+      "greyCorr": 0.149,
+      "score": 0.921
+     },
+     "-y": {
+      "iou": 0.871,
+      "greyCorr": 0.495,
+      "score": 1.118
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 243676,
+    "afterDebris": 243508,
+    "triangles": 5996,
+    "scale": 0.841,
+    "sizeM": [
+     0.53,
+     0.83,
+     0.36
+    ],
+    "watertight": false
+   },
+   "cutMask": 1704
+  },
+  "johnny-meijer": {
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (A).jpg",
+     "box": [
+      0.18,
+      0,
+      0.72,
+      0.66
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (C).jpg",
+     "box": [
+      0.24,
+      0,
+      0.7,
+      0.82
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (D).jpg",
+     "box": [
+      0.2,
+      0,
+      0.84,
+      0.87
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (F).jpg",
+     "box": [
+      0.08,
+      0.05,
+      0.8,
+      0.95
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 34.8,
+    "trellisWall": 1415.1,
+    "decimate": 4.4
+   },
+   "freeGbAtStart": 29.3,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/johnny-meijer/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/johnny-meijer/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/johnny-meijer/mv-inputs/v2-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/johnny-meijer/mv-inputs/v3-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.3,
+    "generateS": 1409.6,
+    "rawVertices": 545707,
+    "rawTriangles": 1078852
+   },
+   "placement": {
+    "cutKitTriangles": 1224,
+    "heightM": 1.371,
+    "baseM": [
+     1.431,
+     0.772,
+     -0.277
+    ],
+    "facingDeg": 160
+   },
+   "orient": {
+    "front": "+x",
+    "scores": {
+     "+x": {
+      "iou": 0.635,
+      "greyCorr": 0.198,
+      "score": 0.735
+     },
+     "-x": {
+      "iou": 0.585,
+      "greyCorr": 0.112,
+      "score": 0.641
+     },
+     "+y": {
+      "iou": 0.438,
+      "greyCorr": 0.185,
+      "score": 0.531
+     },
+     "-y": {
+      "iou": 0.505,
+      "greyCorr": 0.191,
+      "score": 0.6
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 262628,
+    "afterDebris": 262012,
+    "triangles": 9776,
+    "scale": 1.412,
+    "sizeM": [
+     1.09,
+     1.37,
+     0.82
+    ],
+    "watertight": true
+   },
+   "cutMask": 1224
+  },
+  "mien-en-jan-froger": {
+   "route": "TRELLIS.2-4B multidiffusion, 3 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (A).jpg",
+     "box": [
+      0.16,
+      0,
+      0.64,
+      0.6
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (C).jpg",
+     "box": [
+      0.23,
+      0.03,
+      0.68,
+      0.83
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (D).jpg",
+     "box": [
+      0.22,
+      0.05,
+      0.6,
+      0.77
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 64.7,
+    "trellisWall": 2004.4,
+    "decimate": 4.4
+   },
+   "freeGbAtStart": 31.5,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/mien-en-jan-froger/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/mien-en-jan-froger/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/mien-en-jan-froger/mv-inputs/v2-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.2,
+    "generateS": 1999.7,
+    "rawVertices": 577850,
+    "rawTriangles": 1155410
+   },
+   "placement": {
+    "cutKitTriangles": 2864,
+    "heightM": 1.406,
+    "baseM": [
+     3.401,
+     0.95,
+     -0.47
+    ],
+    "facingDeg": 160
+   },
+   "orient": {
+    "front": "-y",
+    "scores": {
+     "+x": {
+      "iou": 0.692,
+      "greyCorr": 0.16,
+      "score": 0.772
+     },
+     "-x": {
+      "iou": 0.603,
+      "greyCorr": 0.168,
+      "score": 0.687
+     },
+     "+y": {
+      "iou": 0.644,
+      "greyCorr": 0.168,
+      "score": 0.728
+     },
+     "-y": {
+      "iou": 0.796,
+      "greyCorr": 0.304,
+      "score": 0.948
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 305642,
+    "afterDebris": 305642,
+    "triangles": 5998,
+    "scale": 1.411,
+    "sizeM": [
+     0.85,
+     1.41,
+     0.66
+    ],
+    "watertight": false
+   },
+   "cutMask": 2864
+  }
+ },
+ "sculptor": {
+  "name": "Kees Verkade (Johnny Jordaan, Tante Leen); others per the plaques (Manke Nelis, Johnny Meijer, Mien and Jan Froger, signed 'Dominic 2010')",
+  "born": 1941,
+  "died": 2020,
+  "year": 1991,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/johnny-jordaan-groep.glb",
+ "photos": {
+  "File:2024 Johnny Jordaanplein, Asd-Manke Nelis (A).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Manke Nelis (A).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(A).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 12:00:17",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "57f6393633496b1a0119a59ca1c9f36818aea1d9",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/2024_Johnny_Jordaanplein%2C_Asd-Manke_Nelis_%28A%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Manke_Nelis_%28A%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/57f6393633.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Manke Nelis (C).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Manke Nelis (C).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(C).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 12:00:39",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "ad86242195d886d8d4fda63d1b7829177dd04340",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/2024_Johnny_Jordaanplein%2C_Asd-Manke_Nelis_%28C%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Manke_Nelis_%28C%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/ad86242195.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Manke Nelis (E).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Manke Nelis (E).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(E).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 12:01:05",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "6a61824d0552685727d0b6288ead4095dd354c9a",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/2024_Johnny_Jordaanplein%2C_Asd-Manke_Nelis_%28E%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Manke_Nelis_%28E%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/6a61824d05.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Tante leen (A).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Tante leen (A).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Tante_leen_(A).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 11:59:22",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "ee2825d883c34bc27a7113628a340fd1c4f1feb3",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/2024_Johnny_Jordaanplein%2C_Asd-Tante_leen_%28A%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Tante_leen_%28A%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/ee2825d883.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Tante leen (B).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Tante leen (B).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Tante_leen_(B).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 11:59:29",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "a1d182e49eadf484d8d4b9a7dd9eb65ced5fb759",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/2024_Johnny_Jordaanplein%2C_Asd-Tante_leen_%28B%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Tante_leen_%28B%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/a1d182e49e.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Tante leen (C).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Tante leen (C).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Tante_leen_(C).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 11:59:39",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "e613c9ba97ab58648c809fef98aab8c06e2f8a21",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/2024_Johnny_Jordaanplein%2C_Asd-Tante_leen_%28C%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Tante_leen_%28C%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/e613c9ba97.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Johnny Jordaan (A).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Jordaan (A).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Jordaan_(A).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 11:58:23",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "810780b544dfd24a6a6e5c8bb1bf27b1a31f257d",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/2024_Johnny_Jordaanplein%2C_Asd-Johnny_Jordaan_%28A%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Johnny_Jordaan_%28A%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/810780b544.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Johnny Jordaan (B).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Jordaan (B).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Jordaan_(B).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 11:58:33",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "49a3fd1bc1c11e40da65a1f69b4e433f3d85abcd",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/2024_Johnny_Jordaanplein%2C_Asd-Johnny_Jordaan_%28B%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Johnny_Jordaan_%28B%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/49a3fd1bc1.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Johnny Jordaan (E).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Jordaan (E).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Jordaan_(E).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 11:58:58",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "318b1e584cae43b24895341c174dce56e3a6562a",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/2024_Johnny_Jordaanplein%2C_Asd-Johnny_Jordaan_%28E%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Johnny_Jordaan_%28E%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/318b1e584c.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (A).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (A).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(A).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 11:57:16",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "addc4ddb2f3105ac798e9e98384b6f26d0cc302b",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/2024_Johnny_Jordaanplein%2C_Asd-Johnny_Meijer_%28A%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Johnny_Meijer_%28A%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/addc4ddb2f.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (C).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (C).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(C).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 11:57:32",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "e65fa1c9fb871eab849da57ad9099b5490944b5d",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/2024_Johnny_Jordaanplein%2C_Asd-Johnny_Meijer_%28C%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Johnny_Meijer_%28C%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/e65fa1c9fb.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (D).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (D).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(D).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 11:57:40",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "cd9796027fc793b76f6f050e4e8dbdd1b751c20b",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/2024_Johnny_Jordaanplein%2C_Asd-Johnny_Meijer_%28D%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Johnny_Meijer_%28D%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/cd9796027f.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (F).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Johnny Meijer (F).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(F).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 11:57:57",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "5c9fe776aead553e20cae5cefaf0afd0686d86c1",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/2024_Johnny_Jordaanplein%2C_Asd-Johnny_Meijer_%28F%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Johnny_Meijer_%28F%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/5c9fe776ae.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (A).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (A).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Mien_en_Jan_Froger_(A).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 11:55:29",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "a9c8441390876d04777963f5b5c0151d15da9da7",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/2024_Johnny_Jordaanplein%2C_Asd-Mien_en_Jan_Froger_%28A%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Mien_en_Jan_Froger_%28A%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/a9c8441390.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (C).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (C).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Mien_en_Jan_Froger_(C).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 11:55:54",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "7449c70c3391f478fd570be6d49ae8c4ae81a2df",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/2024_Johnny_Jordaanplein%2C_Asd-Mien_en_Jan_Froger_%28C%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Mien_en_Jan_Froger_%28C%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/7449c70c33.jpg"
+  },
+  "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (D).jpg": {
+   "title": "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (D).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Mien_en_Jan_Froger_(D).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-07 11:56:06",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "0d641956ce8c43fba5fe88f083cadf3f4a239be8",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/2024_Johnny_Jordaanplein%2C_Asd-Mien_en_Jan_Froger_%28D%29.jpg/1920px-2024_Johnny_Jordaanplein%2C_Asd-Mien_en_Jan_Froger_%28D%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/download/0d641956ce.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/johnny-jordaan-groep/rebuild/johnny-jordaan-groep.glb",
+  "triangles": 37394,
+  "keptKitTriangles": 3624,
+  "figureTriangles": 33770,
+  "droppedKitTriangles": 10682
+ },
+ "generated": "2026-10-17T11:43:56.703Z",
+ "sheet": "docs/images/sculptures/johnny-jordaan-groep-rebuild.jpg",
+ "verdict": "better: Manke Nelis on his stool with the double bass, Johnny Meijer seated at the accordion and the three busts all read as people, where the kit figures are blocky; five runs, about 6.7k tris each"
+}
