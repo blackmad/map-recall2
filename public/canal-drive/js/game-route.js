@@ -798,6 +798,19 @@ class GameRouteRuntime {
   // prominence-ranked landmark extract. Non-blocking: the curated list stays
   // usable if this fetch fails or is slow.
 
+  // Copy the enrichment fields the notability-weighted picker reads, so a
+  // curated POI and an extract POI are scored on the same footing. The names
+  // here match game/poiNotability.ts, not the extract's verbose field names.
+  _attachNotability(poi, feature) {
+    if (feature.wikidata) poi.wikidata = feature.wikidata;
+    if (feature.wikidataSitelinks) poi.sitelinks = feature.wikidataSitelinks;
+    if (feature.wikipediaPageviews60d != null) poi.pageviews60d = feature.wikipediaPageviews60d;
+    if (feature.heritage) poi.heritage = feature.heritage;
+    if (feature.wikidataInstanceOf) poi.wikidataInstanceOf = feature.wikidataInstanceOf;
+    if (feature.type) poi.type = feature.type;
+    if (feature.manualPoi) poi.manualPoi = feature.manualPoi;
+  }
+
   async _loadRoutePoiCatalog() {
     const city = this._activeCity();
     if (this.travelMode === 'transit') {
@@ -821,6 +834,7 @@ class GameRouteRuntime {
           poi.landmarkId = match.id;
           const centre = model && (model.routeCenter || model.center);
           if (centre) [poi.lat, poi.lng] = centre;
+          this._attachNotability(poi, match);
         }
       }
       const seen = new Set(curated.map(poi => this._normaliseCanalName(poi.name)));
@@ -838,6 +852,7 @@ class GameRouteRuntime {
         if (seen.has(key)) continue;
         const poi = { id: `lm-${feature.id}`, landmarkId: feature.id, name: feature.name, lat: centre[0], lng: centre[1],
                       prominence: feature.prominenceScore || 0, type: feature.type || 'landmark' };
+        this._attachNotability(poi, feature);
         if (!feature.manualPoi && Game._kmBetween(poi, city.center) > ROUTE_POI_MAX_KM_FROM_CENTRE) continue;
         seen.add(key);
         extras.push(poi);

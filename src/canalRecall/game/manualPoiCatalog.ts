@@ -65,7 +65,11 @@ export function mergeManualPoiFeatures(features: readonly LandmarkFeature[], cit
         manualPoi: true,
         modelId: model.id,
         buildingIds: manualPoiBuildingIds(id, [...(existing?.buildingIds ?? []), ...(model.suppressOsmIds ?? [])]),
-        prominenceScore: Math.max(existing?.prominenceScore ?? 0, 220),
+        // Hand-modelled assets get a tie-break bump over their extract score,
+        // not the old hard 220 floor that let any modelled building outrank a
+        // genuinely famous one. Routing now weighs real notability; this field
+        // only orders ties and keeps the map-label admission via `manualPoi`.
+        prominenceScore: (existing?.prominenceScore ?? 0) + 1,
       });
     }
     // Suppress duplicate aliases in the pin/destination pool while allowing

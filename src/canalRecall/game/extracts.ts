@@ -27,6 +27,14 @@ export interface LandmarkFeature {
   sourceUrl?: string;
   researchSourceUrl?: string;
   researchDetail?: string;
+  /** 60-day Wikipedia pageviews of the linked article (missing = unknown). */
+  wikipediaPageviews60d?: number;
+  /** Number of Wikipedia language sitelinks (a proxy for international fame). */
+  wikidataSitelinks?: number;
+  /** Wikidata P1435 heritage-designation Q-ids (rijksmonument, UNESCO, …). */
+  heritage?: string[];
+  /** Wikidata P31 instance-of Q-ids, used for destination-kind weighting. */
+  wikidataInstanceOf?: string[];
   manualPoi?: boolean;
   nativeKitPoi?: boolean;
   modelId?: string;
