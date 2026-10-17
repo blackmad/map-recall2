@@ -293,9 +293,11 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     const own = ownWeights(s);
     if (own) { const wg = weighted(own); return {centre: wg.centre, w: wg.w, pitch: wg.cell, axis: (): number | null => null}; }
     const axes = axesFor(s, count);
-    if (axes && sharedWeighted) return {centre: (b: number) => sharedWeighted.centre(axes[b]), w: (b: number) => sharedWeighted.w(axes[b]), pitch: (b: number) => sharedWeighted.cell(axes[b]), axis: (b: number): number | null => axes[b]};
+    const fixedW = f.storeyWindowWidths?.[String(s)] ?? (s === n - 1 ? f.storeyWindowWidths?.last : undefined);
+    if (axes && sharedWeighted) return {centre: (b: number) => sharedWeighted.centre(axes[b]), w: (b: number) => fixedW ?? sharedWeighted.w(axes[b]), pitch: (b: number) => sharedWeighted.cell(axes[b]), axis: (b: number): number | null => axes[b]};
     const g = axes ? sharedGrid : gridOf(count);
-    return {centre: (b: number) => g.first + g.pitch * (axes ? axes[b] : b), w: () => g.winW, pitch: () => g.pitch, axis: (b: number): number | null => axes ? axes[b] : null};
+    // `storeyWindowWidths`: this storey's windows keep their axes and take a measured width (small attic lights).
+    return {centre: (b: number) => g.first + g.pitch * (axes ? axes[b] : b), w: () => fixedW ?? g.winW, pitch: () => g.pitch, axis: (b: number): number | null => axes ? axes[b] : null};
   };
   // Bay boundaries of the shared grid (left to right, `grid + 1` values): crown and shop spans follow them.
   const bayEdges = sharedWeighted ? sharedWeighted.edges : [f.gridAt ? Math.max(0, gx0) : 0, ...Array.from({length: grid - 1}, (_, a) => { const g = sharedGrid; return g.first + g.pitch * a + g.pitch / 2; }), f.gridAt ? Math.min(width, gx0 + gw) : width];
@@ -1188,7 +1190,9 @@ function paintedStoreyBands(front: FrontIntent, layout: Layout, width: number, e
   let acc = layout.groundBase;
   const bottoms = heights.map(h => { const b = acc; acc += h; return b; });
   return front.paintedStoreys!.storeys.filter(s => s < heights.length).map(s => {
-    const bottom = s === 0 ? Math.max(bottoms[0], 0.3) : bottoms[s], top = Math.min(bottoms[s] + heights[s], eaves - 0.02);
+    // `from`: brick under the paint (the paint starts at the window sills).
+    const lift = front.paintedStoreys!.from ?? 0;
+    const bottom = (s === 0 ? Math.max(bottoms[0], 0.3) : bottoms[s]) + lift, top = Math.min(bottoms[s] + heights[s], eaves - 0.02);
     return {id: paintedStoreyId(s), leftM: 0, bottomM: round(bottom), widthM: full, heightM: round(top - bottom), depthM: PAINTED_STOREY_DEPTH_M, surface: 'wall' as const};
   }).filter(b => b.heightM > 0.1);
 }
