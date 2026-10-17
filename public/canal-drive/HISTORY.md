@@ -64,6 +64,10 @@ when absent; `playwright test --list` collects all 986 tests), and eight new
 Boterdiep/Hoendiep block faces had no `chunkWallExposureData.ts` entry
 (regenerated from their strips; the 42 existing entries unchanged). Installs
 must re-run `scripts/look/build-chunk-wall-exposure.ts --write`.
+Even green, Pages would not deploy: three sessions pushed more often than a CI
+run takes (~8 min) and `cancel-in-progress` cancelled every main run before it
+finished. CI now lets a main run finish (GitHub keeps one pending, the newest);
+pull requests still cancel.
 
 ## Rivierenbuurt (Plan Zuid, 1934): 103 pands from six types (2026-10-17)
 
