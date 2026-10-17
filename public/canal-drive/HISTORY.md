@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+## The "De Hallen slab" was Kinkerstraat 89–105: measured flat roofs for large recipes (2026-10-17)
+
+User (2026-10-16), riding the Tollensstraat with the De Hallen card open: one
+flat brown-grey slab covered a whole block. Lane `lane/de-hallen-slab-20261016`
+(63a3922c3, 493b87695, ead4d6b9b, 18edcaa0d). De Hallen drew correctly; hiding
+only the large recipe for Kinkerstraat 89–105 (pand 092013) removed the slab.
+Two causes: the kit's flat-roof grey #6a6c6c maps through `cityRoofTint` to the
+buff gravel #9e9281, 4 dE from the buff render, so roof, walls and courtyard
+read as one mass; and the 29.9 m Tollensstraat front was installed blank under
+`otherWalls` although its crop w04-248 was archived. One roof schema with
+Entrepotdok's: `roof.flat` stays the material, new `roof.flatHex` carries the
+orthophoto colour (`roof-flat.ts --write`, roof-facts `roofSlotHex`), drawn as
+one measured `roof/flat` mesh outside any `surfaces` region; fit-golden hashes
+it because the mesh hash is positions-only. 089 reinstalled with roof #87898d
+and a `walls[2]` Tollensstraat front (pale buff brick hand-sampled, the crop is
+57 % washed out; ten bays). The audit's lowest roof-to-wall contrasts were
+reinstalled with measured roofs, walls untouched: Stadsloket Noord #87898d,
+Polderweg 3 #898c89, Politie Oost Watergraafsmeer #87898d, the Apollohal
+#e3e3e1 (white membrane). Polderweg 3 and Politie needed new `--allow-inferred`
+notes because the likeness gate tightened after their first installs; each
+note says only the roof colour changed. Exactly five fit-golden hashes moved;
+Entrepotdok and every other house are identical.
+
 ## canal-recall.spec: two failures were stale tests, not regressions (2026-10-17)
 
 Lane `lane/canal-spec-fails-20261016` (009cf1d20, test only). The corridor
