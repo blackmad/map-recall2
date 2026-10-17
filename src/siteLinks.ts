@@ -10,6 +10,9 @@
  *   root, Canal Recall is `canal-drive/` beneath it, and the landing page is
  *   `canal-drive/landing.html`.
  *
+ * The buildings explorer is `explore.html` in the canal-drive tree; the public
+ * site serves it at `/explore` (a Hosting rewrite).
+ *
  * My progress is a view of the Map Quest app selected by its path (`/progress`,
  * see src/progress/route.ts): Vite's SPA fallback serves it in dev, and a
  * Hosting rewrite onto `/quiz/index.html` serves it on the public site.
@@ -28,6 +31,8 @@ export interface SiteLinks {
   quiz: string;
   /** My progress: rides, names learned, postcards (a Map Quest view). */
   progress: string;
+  /** The buildings explorer (`explore.html` in the canal-drive tree). */
+  explore: string;
   /** Root of the canal-drive tree (landmark gallery, credits, privacy live here). */
   canal: string;
   /** Root of the versioned extracts (`…/data/`). */
@@ -37,11 +42,11 @@ export interface SiteLinks {
 /** `prefix` is the path above the canal-drive tree in the dev layout (Vite's BASE_URL). */
 export function siteLinks(layout: SiteLayout, prefix = '/'): SiteLinks {
   if (layout === 'canal-site') {
-    return { home: '/?home', ride: '/ride', quiz: '/quiz/', progress: '/progress', canal: '/', data: '/data/' };
+    return { home: '/?home', ride: '/ride', quiz: '/quiz/', progress: '/progress', explore: '/explore', canal: '/', data: '/data/' };
   }
   const base = prefix.endsWith('/') ? prefix : `${prefix}/`;
   const canal = `${base}canal-drive/`;
-  return { home: `${canal}landing.html`, ride: canal, quiz: base, progress: `${base}progress`, canal, data: `${base}data/` };
+  return { home: `${canal}landing.html`, ride: canal, quiz: base, progress: `${base}progress`, explore: `${canal}explore.html`, canal, data: `${base}data/` };
 }
 
 /**

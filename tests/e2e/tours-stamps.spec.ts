@@ -226,7 +226,7 @@ test('the Tours picker sits beside Destination and lists no stop names', async (
   await page.screenshot({ path: shot('tours-picker') });
 });
 
-test('on a phone the Report a problem button does not cover the site switch', async ({ page }) => {
+test('on a phone the five-item site switch fits and Report a problem covers neither it nor Start', async ({ page }) => {
   test.skip(test.info().project.name !== 'iphone', 'phone layout');
   await page.goto('/canal-drive/');
   await expect(page.locator('#route-card')).toBeVisible();
@@ -236,18 +236,33 @@ test('on a phone the Report a problem button does not cover the site switch', as
   await expect(sw).toBeVisible();
   const boxes = await page.evaluate(() => {
     const rect = (el: Element) => { const r = el.getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; };
-    const switchBox = rect(document.getElementById('setup-site-switch')!);
+    const switchNode = document.getElementById('setup-site-switch')!;
+    const switchBox = rect(switchNode);
     const links = [...document.querySelectorAll('#setup-site-switch a')].map(rect);
+    const labels = [...document.querySelectorAll('#setup-site-switch a')].map(a => ({
+      text: a.textContent, href: a.getAttribute('href'), clipped: (a as HTMLElement).scrollWidth > (a as HTMLElement).clientWidth + 1,
+    }));
+    const start = rect(document.getElementById('route-start')!);
+    const switchOverflow = switchNode.scrollWidth - switchNode.clientWidth;
     const others = [...document.querySelectorAll('#utility-buttons > *')]
       .filter(el => getComputedStyle(el).display !== 'none' && (el as HTMLElement).offsetParent !== null)
       .map(rect).filter(r => r.w > 0 && r.h > 0);
-    return { switchBox, links, others, width: window.innerWidth };
+    return { switchBox, links, labels, start, switchOverflow, others, width: window.innerWidth };
   });
+  // Five surfaces, Buildings last, and every label whole at 390 px.
+  expect(boxes.labels.map(l => l.text)).toEqual(['Home', 'Ride', 'Quiz', 'Progress', 'Buildings']);
+  expect(boxes.labels[4].href).toMatch(/explore(\.html)?$/);
+  for (const label of boxes.labels) expect(label.clipped, `${label.text} is not cut off`).toBe(false);
+  expect(boxes.switchOverflow, 'the switch does not scroll sideways').toBeLessThanOrEqual(1);
   const overlaps = (a: { x: number; y: number; w: number; h: number }, b: typeof a) =>
     a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
   for (const other of boxes.others) {
     expect(overlaps(other, boxes.switchBox), `${JSON.stringify(other)} vs switch ${JSON.stringify(boxes.switchBox)}`).toBe(false);
+    expect(overlaps(other, boxes.start), `${JSON.stringify(other)} vs Start ${JSON.stringify(boxes.start)}`).toBe(false);
   }
-  for (const link of boxes.links) expect(link.x + link.w).toBeLessThanOrEqual(boxes.width);
+  for (const link of boxes.links) {
+    expect(link.x + link.w).toBeLessThanOrEqual(boxes.width);
+    expect(link.x + link.w, 'each item ends inside the switch').toBeLessThanOrEqual(boxes.switchBox.x + boxes.switchBox.w + 0.5);
+  }
   await page.screenshot({ path: shot('phone-setup-feedback') });
 });

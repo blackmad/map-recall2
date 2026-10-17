@@ -554,6 +554,9 @@ body.setup-open #utility-buttons #open-settings { display: none; }
 .setup-pair select:disabled { opacity: .55; }
 #tour-note { margin: 6px 0 0; }
 #route-error { min-height: 20px; margin-top: 10px; color: var(--day-danger); font: 13px/1.4 var(--font-ui); }
+/* Empty, it holds no line: on a phone those 30 px are the Difficulty row's.
+   It stays in the tree, so the live region still announces an error. */
+#route-error:empty { min-height: 0; margin-top: 0; }
 
 /* ---- Help and live settings panels (enamel) ---- */
 .utility-panel {
