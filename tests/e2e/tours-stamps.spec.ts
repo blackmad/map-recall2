@@ -21,10 +21,23 @@ type Game = {
   _destinationLabel(): string;
   _composeMissionBrief(): unknown;
   _runFinishAction(id: string): void;
+  _openRouteSetup(): void;
+  _overlay: { store: { getState(): { prefs: { travelMode: string; routePattern: string; cityId: string } } } };
 };
 declare global { interface Window { canalRecallGame: Game } }
 
 const STAMPS_KEY = 'canalRecall.poiStamps.v1';
+const PREFS_KEY = 'canalRecall.preferences.v1';
+
+async function storedPrefs(page: Page): Promise<{ travelMode?: string; routePattern?: string; cityId?: string; difficulty?: string }> {
+  return page.evaluate(key => JSON.parse(localStorage.getItem(key) || '{}'), PREFS_KEY);
+}
+async function livePrefs(page: Page) {
+  return page.evaluate(() => {
+    const { travelMode, routePattern, cityId } = window.canalRecallGame._overlay.store.getState().prefs;
+    return { travelMode, routePattern, cityId };
+  });
+}
 const width = () => (test.info().project.name === 'iphone' ? '390' : '1440');
 const shot = (name: string) => `artifacts/tours-stamps/${name}-${width()}.png`;
 
@@ -152,8 +165,49 @@ test('?tour= starts the tour, hides a street stop until arrival, and rides on st
   expect(done.stamp).toMatchObject({ kind: 'tour', name: 'Jewish Amsterdam', isNew: true });
   expect(done.completed).toBe(true);
   expect((await storedStamps(page))['tour:jewish-amsterdam']).toMatchObject({ kind: 'tour', how: 'completed' });
+  // The whole tour rode by bike; the player's saved travel mode never changed.
+  expect((await storedPrefs(page)).travelMode ?? 'boat').toBe('boat');
   await page.waitForTimeout(400);
   await page.screenshot({ path: shot('tour-complete') });
+});
+
+// Starting a tour saved Bike/Amsterdam/Surprise as the player's settings
+// (TODO, 2026-10-17). The tour rides with them; storage and setup keep the
+// player's own, and leaving the tour puts them back.
+test('a tour rides by bike without overwriting the player\'s settings', async ({ page }) => {
+  test.skip(test.info().project.name !== 'desktop', 'logic, not layout');
+  test.setTimeout(240_000);
+  await page.addInitScript(key => {
+    if (!sessionStorage.getItem('seeded')) {
+      localStorage.setItem(key, JSON.stringify({ travelMode: 'boat', routePattern: 'here', difficulty: 'hard' }));
+      sessionStorage.setItem('seeded', '1');
+    }
+  }, PREFS_KEY);
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  await page.goto('/canal-drive/?tour=jewish-amsterdam');
+  await expect.poll(() => page.evaluate(() => window.canalRecallGame?._tour?.tour.id), { timeout: 60_000 }).toBe('jewish-amsterdam');
+  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.player?.x)), { timeout: 120_000 }).toBe(true);
+  expect(await livePrefs(page)).toEqual({ travelMode: 'car', routePattern: 'surprise', cityId: 'amsterdam' });
+  expect(await storedPrefs(page)).toMatchObject({ travelMode: 'boat', routePattern: 'here', difficulty: 'hard' });
+
+  // Any save mid-tour (the L key, a settings change) still writes the player's own.
+  await page.evaluate(() => (window.canalRecallGame as unknown as { _savePreferences(): void })._savePreferences());
+  expect(await storedPrefs(page)).toMatchObject({ travelMode: 'boat', routePattern: 'here' });
+
+  // Abandoning for setup ends the tour and shows the player's settings again.
+  await page.evaluate(() => window.canalRecallGame._openRouteSetup());
+  expect(await page.evaluate(() => window.canalRecallGame._tour)).toBeNull();
+  expect(await livePrefs(page)).toEqual({ travelMode: 'boat', routePattern: 'here', cityId: 'amsterdam' });
+  expect(await storedPrefs(page)).toMatchObject({ travelMode: 'boat', routePattern: 'here', difficulty: 'hard' });
+  await expect(page.locator('[data-choice="travel:boat"]')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('[data-choice="route:here"]')).toHaveAttribute('aria-pressed', 'true');
+
+  // A reload mid-tour comes back to the player's settings too.
+  await page.goto('/canal-drive/?tour=jewish-amsterdam');
+  await expect.poll(() => page.evaluate(() => window.canalRecallGame?._tour?.tour.id), { timeout: 60_000 }).toBe('jewish-amsterdam');
+  await page.goto('/canal-drive/');
+  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame))).toBe(true);
+  expect(await livePrefs(page)).toEqual({ travelMode: 'boat', routePattern: 'here', cityId: 'amsterdam' });
 });
 
 test('the Tours picker sits beside Destination and lists no stop names', async ({ page }) => {

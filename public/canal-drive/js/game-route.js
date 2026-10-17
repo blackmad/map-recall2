@@ -85,7 +85,10 @@ class GameRouteRuntime {
       answerMode: this.routeOptions.answerMode || current.answerMode,
     }, zoom);
     this._overlay.store.replacePrefs(prefs);
-    Prefs.writePreferences(localStorage, prefs);
+    // During a tour the player's own travel mode, city and route stand in
+    // for the tour's, which are never saved (tourRoute.persistablePrefs).
+    const T = window.CanalRecallTours;
+    Prefs.writePreferences(localStorage, T && T.persistablePrefs ? T.persistablePrefs(prefs, this._tourPrefsRestore) : prefs);
   }
 
   _setupUtilityPanels() {
@@ -458,7 +461,9 @@ class GameRouteRuntime {
     // A tour picked in setup rides its stops instead of a single route.
     const tourId = this._overlay.store.getState().tourId;
     if (tourId && !isReroll) { await this._startTour(tourId); return; }
-    this._tour = null;
+    // Setup already ended any tour and restored the player's settings; these
+    // prefs are what the player just picked, so nothing is restored over them.
+    this._endTour({ restorePrefs: false });
     const prefs = this._prefs();
     this._applyPrefsToRuntime(prefs, { persist: true, applySound: false });
     // City may have changed on the briefing since the last catalog fetch.
@@ -1097,12 +1102,11 @@ class GameRouteRuntime {
     const tours = await this._loadTourCatalog();
     const tour = T && tours.find(candidate => candidate.id === tourId);
     if (!tour) { this._tour = null; this._setRouteError('That tour is unavailable.'); return; }
-    const prefs = this._prefs();
-    const patch = {};
-    if (prefs.travelMode !== 'car') patch.travelMode = 'car';
-    if (prefs.cityId !== 'amsterdam') patch.cityId = 'amsterdam';
-    // Home and Here pick their own starts; a tour starts at its first stop.
-    if (prefs.routePattern !== 'surprise') patch.routePattern = 'surprise';
+    // Tours ride by bike in Amsterdam from their first stop (Home and Here
+    // pick their own starts). That is the tour's setting, not the player's:
+    // snapshot what it changes, restore it when the tour ends, never save it.
+    const { patch, restore } = T.tourPrefsOverride(this._prefs(), this._tourPrefsRestore);
+    this._tourPrefsRestore = restore;
     if (Object.keys(patch).length) this._overlay.store.patchPrefs(patch, this._overlayZoom());
     this._applyPrefsToRuntime(this._prefs(), { persist: true, applySound: false });
     this._reviewRoute = null;
@@ -1112,6 +1116,21 @@ class GameRouteRuntime {
     this._tour = { tour, state: T.startTour(tour), completed: false };
     T.saveTourState(this._tour.state);
     this._launchTourLeg();
+  }
+
+  /**
+   * Leave the tour. With `restorePrefs`, the travel mode, city and route the
+   * tour overrode go back to the player's own, in setup and in storage.
+   * Returns true when that changed a setting.
+   */
+  _endTour({ restorePrefs = true } = {}) {
+    this._tour = null;
+    const restore = this._tourPrefsRestore;
+    this._tourPrefsRestore = null;
+    if (!restorePrefs || !restore || !Object.keys(restore).length || !this._overlay) return false;
+    this._overlay.store.patchPrefs(restore, this._overlayZoom());
+    this._applyPrefsToRuntime(this._prefs(), { persist: true, applySound: false });
+    return true;
   }
 
   /** Ride the tour's current leg. A stop whose name would answer a street
@@ -1216,8 +1235,9 @@ class GameRouteRuntime {
       this._prompt.style.display = 'none';
     }
     this.state = GameState.MENU;
-    // Leaving for setup ends a tour in progress; Start tour begins it again.
-    this._tour = null;
+    // Leaving for setup ends a tour in progress, and setup shows the player's
+    // own settings again; Start tour begins it again.
+    this._endTour();
     if (this._overlay && this._overlay.store) this._overlay.store.setSetupOpen(true);
     history.replaceState(null, '', window.location.pathname);
   }
