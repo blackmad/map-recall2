@@ -7,28 +7,27 @@
       "id": "jewish-amsterdam",
       "title": "Jewish Amsterdam",
       "theme": "history",
-      "blurb": "From the Anne Frank House across the old Jewish quarter to the theatre the occupiers turned into a deportation centre.",
+      "blurb": "From the Anne Frank House across the old Jewish quarter and the Plantage to the Rivierenbuurt, where the Frank family lived before going into hiding.",
       "stops": [
         { "name": "Anne Frank House", "landmarkId": "extract_landmarks_614625734", "why": "Anne Frank hid from Nazi persecution with her family in the rear of this Prinsengracht building during the German occupation.", "source": "https://en.wikipedia.org/wiki/Anne_Frank_House" },
-        { "name": "Jodenbreestraat", "street": "Jodenbreestraat", "near": [4.9006, 52.3700], "why": "The southern part of Sint Antoniesbreestraat came to be called Jodenbreestraat, 'Jewish Broad Street', in the later 17th century, after Jewish refugees from Portugal and Spain settled around it.", "source": "https://en.wikipedia.org/wiki/Jodenbreestraat" },
-        { "name": "De Dokwerker", "landmarkId": "extract_landmarks_1098130181", "why": "Mari Andriessen's statue on Jonas Daniël Meijerplein commemorates the February Strike of 1941 against the persecution of the Jews.", "source": "https://nl.wikipedia.org/wiki/De_Dokwerker" },
-        { "name": "Portugese Synagoge", "landmarkId": "extract_landmarks_1311905515", "why": "The Esnoga of Amsterdam's Sephardi community was completed in 1675 and is still in use.", "source": "https://en.wikipedia.org/wiki/Portuguese_Synagogue_(Amsterdam)" },
-        { "name": "Joods Museum", "landmarkId": "extract_landmarks_273619808", "why": "The only museum in the Netherlands dedicated to Jewish history; since 1987 it has occupied four former synagogues.", "source": "https://en.wikipedia.org/wiki/Joods_Historisch_Museum" },
-        { "name": "Nationaal Holocaust Namenmonument", "landmarkId": "extract_landmarks_1974741421", "why": "Since 2021 the national Holocaust memorial, it names the roughly 102,000 Jews from the Netherlands who were deported and murdered.", "source": "https://en.wikipedia.org/wiki/National_Holocaust_Names_Memorial_(Amsterdam)" },
-        { "name": "Hollandsche Schouwburg", "landmarkId": "extract_landmarks_1588171596", "why": "The occupiers made this theatre a Jewish theatre in 1941 and then used it as a deportation centre.", "source": "https://en.wikipedia.org/wiki/Hollandsche_Schouwburg" }
+        { "name": "Jodenbreestraat", "street": "Jodenbreestraat", "near": [4.9006, 52.37], "why": "The southern part of Sint Antoniesbreestraat came to be called Jodenbreestraat, 'Jewish Broad Street', in the later 17th century, after Jewish refugees from Portugal and Spain settled around it.", "source": "https://en.wikipedia.org/wiki/Jodenbreestraat" },
+        { "name": "Portuguese Synagogue", "landmarkId": "extract_landmarks_1311905515", "why": "On Jonas Daniël Meijerplein stand the Portuguese Synagogue of 1675, once the largest synagogue in the world, the four former Ashkenazi synagogues used as the Joods Museum since 1987, and De Dokwerker, unveiled by Queen Juliana in 1952 in memory of the February Strike.", "source": "https://nl.wikipedia.org/wiki/Jonas_Dani%C3%ABl_Meijerplein" },
+        { "name": "Hollandsche Schouwburg", "landmarkId": "extract_landmarks_1588171596", "why": "The occupiers made this theatre a Jewish theatre in 1941 and then used it as a deportation centre.", "source": "https://en.wikipedia.org/wiki/Hollandsche_Schouwburg" },
+        { "name": "Gerard Dou Synagogue", "landmarkId": "extract_landmarks_25099441", "why": "Built in 1892 for the Ashkenazi charity Tesjoe'at Israël, the De Pijp synagogue came through the war relatively intact and is still in use.", "source": "https://nl.wikipedia.org/wiki/Synagoge_Gerard_Doustraat" },
+        { "name": "Merwedeplein", "orientation": "Merwedeplein", "why": "The German-Jewish Frank family lived in a second-floor flat at Merwedeplein 37 for more than eight years, until they went into hiding on 6 July 1942; Jet Schepp's statue of Anne stands on the square.", "source": "https://nl.wikipedia.org/wiki/Merwedeplein" },
+        { "name": "Liberal Jewish Synagogue", "osm": "way/277313909", "why": "The Liberaal Joodse Gemeente, whose Amsterdam branch was founded in 1932, opened its synagogue at Zuidelijke Wandelweg 41 in August 2010, having left Graafschapstraat in 2007.", "source": "https://nl.wikipedia.org/wiki/Liberaal_Joodse_Gemeente_Amsterdam" }
       ]
     },
     {
       "id": "golden-age-canal-ring",
       "title": "Golden Age canal ring",
       "theme": "architecture",
-      "blurb": "Along the 17th-century ring from the Westerkerk to the Amstel: merchant houses, the Golden Bend and the Skinny Bridge.",
+      "blurb": "Along the 17th-century ring from the Westerkerk: the Golden Bend, the Skinny Bridge over the Amstel and the Van Loon family's house on the Keizersgracht.",
       "stops": [
         { "name": "Westerkerk", "landmarkId": "extract_landmarks_1692085215", "why": "Designed by Hendrick de Keyser and inaugurated in 1631, it is one of the first churches built for Protestant worship.", "source": "https://en.wikipedia.org/wiki/Westerkerk" },
-        { "name": "Huis Bartolotti", "landmarkId": "extract_landmarks_1450151185", "why": "Built around 1617 at Herengracht 170-172 for Willem van den Heuvel, who took the name Bartolotti to inherit his uncle's fortune.", "source": "https://nl.wikipedia.org/wiki/Huis_Bartolotti" },
         { "name": "Golden Bend", "street": "Herengracht", "near": [4.8909, 52.3652], "why": "The stretch of Herengracht between Leidsestraat and Vijzelstraat, dug after 1663 with wider lots that drew the city's richest residents.", "source": "https://en.wikipedia.org/wiki/Golden_Bend" },
-        { "name": "Museum Van Loon", "landmarkId": "extract_landmarks_211818595", "why": "A canal house on the Keizersgracht named after the Van Loon family, who lived in it from the 19th century.", "source": "https://en.wikipedia.org/wiki/Museum_Van_Loon" },
-        { "name": "Magere Brug", "orientation": "Magere Brug", "why": "The 'Skinny Bridge' crosses the Amstel at Kerkstraat; the present white wooden bridge of 1934 replaced a 13-arched bridge of 1691.", "source": "https://en.wikipedia.org/wiki/Magere_Brug" }
+        { "name": "Magere Brug", "orientation": "Magere Brug", "why": "The 'Skinny Bridge' crosses the Amstel at Kerkstraat; the present white wooden bridge of 1934 replaced a 13-arched bridge of 1691.", "source": "https://en.wikipedia.org/wiki/Magere_Brug" },
+        { "name": "Museum Van Loon", "landmarkId": "extract_landmarks_211818595", "why": "A canal house on the Keizersgracht named after the Van Loon family, who lived in it from the 19th century.", "source": "https://en.wikipedia.org/wiki/Museum_Van_Loon" }
       ]
     },
     {
@@ -41,9 +40,7 @@
         { "name": "H'ART Museum", "landmarkId": "extract_landmarks_352379234", "why": "The Amstel-side art museum was a satellite of the Hermitage in Saint Petersburg until it cut ties after Russia's 2022 invasion of Ukraine.", "source": "https://en.wikipedia.org/wiki/H%27ART_Museum" },
         { "name": "Foam", "landmarkId": "extract_landmarks_1875254501", "why": "Fotografiemuseum Amsterdam on the Keizersgracht shows four photography exhibitions at any time.", "source": "https://en.wikipedia.org/wiki/Foam_Fotografiemuseum_Amsterdam" },
         { "name": "Rijksmuseum", "landmarkId": "extract_landmarks_512243549", "why": "The national museum of Dutch art and history, founded in The Hague in 1798 and moved to Amsterdam in 1808.", "source": "https://en.wikipedia.org/wiki/Rijksmuseum" },
-        { "name": "Moco Museum", "landmarkId": "extract_landmarks_1523176628", "why": "An independent museum of modern and contemporary art that opened on Museumplein in 2016.", "source": "https://en.wikipedia.org/wiki/Moco_Museum" },
-        { "name": "Van Gogh Museum", "landmarkId": "extract_landmarks_2070637412", "why": "Dedicated to Vincent van Gogh and his contemporaries, it opened on 2 June 1973 in a building by Gerrit Rietveld.", "source": "https://en.wikipedia.org/wiki/Van_Gogh_Museum" },
-        { "name": "Stedelijk Museum", "landmarkId": "extract_landmarks_1719479765", "why": "The city's museum of modern and contemporary art and design, in a 19th-century building by Adriaan Willem Weissman.", "source": "https://en.wikipedia.org/wiki/Stedelijk_Museum_Amsterdam" }
+        { "name": "Museumplein", "street": "Museumplein", "near": [4.8818, 52.3574], "why": "The public space in Amsterdam-Zuid is home to three major museums, the Rijksmuseum, the Van Gogh Museum and the Stedelijk Museum, with the Moco Museum, opened in May 2016, among its surrounding buildings.", "source": "https://en.wikipedia.org/wiki/Museumplein" }
       ]
     },
     {
