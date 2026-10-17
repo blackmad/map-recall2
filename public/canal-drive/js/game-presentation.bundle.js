@@ -980,6 +980,80 @@
     return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
   }
 
+  // src/canalRecall/answerPath.ts
+  function normaliseAnswer(value) {
+    return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+
+  // src/canalRecall/game/poiNotability.ts
+  var A_LIST = [
+    { name: "Rijksmuseum", wikidata: ["Q190804"] },
+    { name: "Van Gogh Museum", wikidata: ["Q224124"] },
+    { name: "Stedelijk Museum", aliases: ["Stedelijk Museum Amsterdam"], wikidata: ["Q924335", "Q42175133"] },
+    { name: "Anne Frank Huis", aliases: ["Anne Frank House"], wikidata: ["Q165366"] },
+    { name: "Westerkerk", wikidata: ["Q1130722"] },
+    { name: "Koninklijk Paleis", aliases: ["Royal Palace", "Paleis op de Dam", "Royal Palace of Amsterdam"], wikidata: ["Q1056152"] },
+    { name: "Nieuwe Kerk", aliases: ["Nieuwe Kerk Amsterdam"], wikidata: ["Q1362297"] },
+    { name: "Oude Kerk", aliases: ["Oude Kerk Amsterdam"], wikidata: ["Q623558"] },
+    { name: "Concertgebouw", aliases: ["Royal Concertgebouw", "Koninklijk Concertgebouw"], wikidata: ["Q849957"] },
+    { name: "Amsterdam Centraal", aliases: ["Central Station", "Amsterdam Centraal Station"], wikidata: ["Q50719"] },
+    { name: "Magere Brug", aliases: ["Skinny Bridge", "Skinny bridge"], wikidata: ["Q1344400"] },
+    { name: "Munttoren", aliases: ["Mint Tower", "Munt Tower"], wikidata: ["Q1138936"] },
+    { name: "De Waag", aliases: ["Waag", "Weigh House"], wikidata: ["Q2466999"] },
+    { name: "Begijnhof", wikidata: ["Q1629214"] },
+    { name: "Homomonument", wikidata: ["Q51411"] },
+    { name: "Rembrandthuis", aliases: ["Rembrandt House", "Museum Het Rembrandthuis", "Rembrandt House Museum"], wikidata: ["Q2773167"] },
+    { name: "Portugese Synagoge", aliases: ["Portuguese Synagogue"], wikidata: ["Q1853707"] },
+    { name: "Joods Museum", aliases: ["Jewish Museum", "Jewish Historical Museum", "Joods Historisch Museum"], wikidata: ["Q1833502"] },
+    { name: "Het Scheepvaartmuseum", aliases: ["National Maritime Museum", "Scheepvaartmuseum", "Nederlands Scheepvaartmuseum"], wikidata: ["Q1615515"] },
+    { name: "NEMO", aliases: ["NEMO Science Museum", "Nemo"], wikidata: ["Q1422000"] },
+    { name: "EYE Filmmuseum", aliases: ["Eye Filmmuseum", "EYE Film Institute"], wikidata: ["Q1538389"] },
+    { name: "A'DAM Toren", aliases: ["A'DAM Tower", "Adam Tower", "ADAM Tower"], wikidata: ["Q21185268"] },
+    { name: "Artis", aliases: ["Natura Artis Magistra", "Artis Zoo"], wikidata: ["Q713124"] },
+    { name: "Hortus Botanicus", aliases: ["Hortus Botanicus Amsterdam", "Botanical Garden Amsterdam"], wikidata: ["Q2475752"] },
+    { name: "Koninklijk Theater Carr\xE9", aliases: ["Royal Theater Carr\xE9", "Theater Carr\xE9", "Carr\xE9"], wikidata: ["Q1106490"] },
+    { name: "Tuschinski", aliases: ["Path\xE9 Tuschinski", "Tuschinski Theater", "Path\xE9 Tuschinski Cinema"], wikidata: ["Q599272"] },
+    { name: "Bloemenmarkt", aliases: ["Flower Market"], wikidata: ["Q643079"] },
+    { name: "Schreierstoren", aliases: ["Schreierstoren"], wikidata: ["Q1917853"] },
+    { name: "Montelbaanstoren", wikidata: ["Q1946061"] },
+    { name: "Westergasfabriek", wikidata: ["Q4848627"] },
+    { name: "Albert Cuypmarkt", aliases: ["Albert Cuyp Market"], wikidata: ["Q1322408"] },
+    { name: "Heineken Experience", aliases: ["Heineken Experience Amsterdam"], wikidata: ["Q2087161"] },
+    { name: "Hermitage", aliases: ["H'ART Museum", "Hermitage Amsterdam", "H ART Museum"], wikidata: ["Q2509774"] },
+    { name: "Amstel Hotel", wikidata: ["Q1780741"] },
+    { name: "Stopera", aliases: ["Muziektheater"], wikidata: ["Q1587736"] },
+    { name: "Sint-Nicolaasbasiliek", aliases: ["Basilica of Saint Nicholas", "Basiliek van de Heilige Nicolaas", "Co-kathedrale Basiliek van Sint Nicolaas"], wikidata: ["Q1350750"] },
+    { name: "De Krijtberg", aliases: ["Krijtberg", "Sint-Franciscus Xaveriuskerk"], wikidata: ["Q1183475"] },
+    { name: "Zuiderkerk", wikidata: ["Q228629"] },
+    { name: "Noorderkerk", wikidata: ["Q613854"] },
+    { name: "Vondelpark", wikidata: ["Q2279698"] },
+    { name: "Nationaal Monument", aliases: ["National Monument", "National Monument on Dam Square", "Dam Square", "Nationaal Monument op de Dam"], wikidata: ["Q1733661"] },
+    { name: "Leidseplein", wikidata: ["Q501445"] },
+    { name: "Rembrandtplein", wikidata: ["Q613678"] },
+    { name: "Museumplein", wikidata: ["Q2172631"] },
+    { name: "Stadsschouwburg", aliases: ["Stadsschouwburg Amsterdam"], wikidata: ["Q1138147"] },
+    { name: "Bijbels Museum", aliases: ["Biblical Museum"], wikidata: ["Q2111026"] },
+    { name: "Hollandsche Schouwburg", wikidata: ["Q2206529"] },
+    { name: "Nationaal Holocaust Namenmonument", aliases: ["Holocaust Namenmonument", "National Holocaust Names Monument"], wikidata: ["Q66023853"] },
+    { name: "De Dokwerker", aliases: ["Dokwerker"], wikidata: ["Q1179838"] },
+    { name: "Ons' Lieve Heer op Solder", aliases: ["Our Lord in the Attic", "Museum Ons' Lieve Heer op Solder"], wikidata: ["Q493160"] },
+    { name: "Amsterdam Museum", wikidata: ["Q1820897"] },
+    { name: "Moco", aliases: ["Moco Museum"], wikidata: ["Q26832671"] },
+    { name: "FOAM", aliases: ["Foam", "Fotografiemuseum Amsterdam"], wikidata: ["Q5422840"] },
+    { name: "Huis Bartolotti", aliases: ["Bartolotti House"], wikidata: ["Q2205055"] },
+    { name: "Scheepvaarthuis", aliases: ["Shipping House"], wikidata: ["Q1838919"] },
+    { name: "Beurs van Berlage", aliases: ["Berlage's Stock Market", "Berlage Beurs"], wikidata: ["Q851200"] },
+    { name: "Centrale Bibliotheek", aliases: ["OBA", "Amsterdam Public Library Oosterdok", "Openbare Bibliotheek Amsterdam", "Centrale Bibliotheek OBA"], wikidata: ["Q50413436"] }
+  ];
+  var A_LIST_BY_NAME = /* @__PURE__ */ new Map();
+  var A_LIST_BY_WIKIDATA = /* @__PURE__ */ new Map();
+  for (const entry of A_LIST) {
+    for (const name of [entry.name, ...entry.aliases ?? []]) {
+      A_LIST_BY_NAME.set(normaliseAnswer(name), entry);
+    }
+    for (const qid of entry.wikidata ?? []) A_LIST_BY_WIKIDATA.set(qid, entry);
+  }
+
   // src/canalRecall/landmarks/surveyedLandmarks.json
   var surveyedLandmarks_default = [
     {

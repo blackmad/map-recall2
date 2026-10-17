@@ -193,6 +193,10 @@ export function buildLandmarks(
       wikidata: feature.wikidata || '',
       wikipedia: feature.wikipedia || '',
       extractLang: feature.wikipediaExtractLang || 'en',
+      wikipediaPageviews60d: feature.wikipediaPageviews60d,
+      wikidataSitelinks: feature.wikidataSitelinks,
+      heritage: feature.heritage,
+      wikidataInstanceOf: feature.wikidataInstanceOf,
       geojson: { type: 'FeatureCollection', features: displayGeometry(feature, center) },
     });
   }
