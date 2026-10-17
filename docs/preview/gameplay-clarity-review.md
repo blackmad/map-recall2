@@ -144,49 +144,94 @@ understanding. **Low** is polish.
 - **Fix.** The line now reads “Rides from home reach further as you learn”.
   With a known radius it reads “Learn the names within ~1.2 km of home”.
 
-### 10. A bare “65%” flashes over the vehicle — Low — FIXED (label only)
-- **Shots.** `before/iphone-30-stacked-long.jpg`, `before/desktop-30-stacked-long.jpg`
+### 10. A bare “65%” flashes over the vehicle — Low — FIXED
+- **Shots.** `before/iphone-30-stacked-long.jpg`, `before/desktop-30-stacked-long.jpg`;
+  after: `polish/after/desktop-30-stacked-long.jpg`, `polish/after/iphone-30-stacked-long.jpg`
 - **What confuses a first-time player.** The camera zoom badge appears as the
   ride starts and reads as a loading bar.
-- **Fix.** It now reads `Zoom 65%`.
-- **Unfixed.** Why the badge fires right after the start flight, when the
-  player never zoomed. The camera settling after `_intro` clears counts as a
-  zoom change.
+- **Fix.** It reads `Zoom 65%`, and it only appears when the player zooms.
+  The camera settling after the start flight changed zoom, and any change
+  flashed the badge. Keys (−/+), ctrl+wheel, the Safari gesture and touch
+  pinch now set `_playerZoomPending`, and `zoomBadgeShouldFlash`
+  (`src/canalRecall/hudCopy.ts`, unit-tested in `onboarding.test.ts`) flashes
+  only when the zoom moved because the player asked. Commit `49c284b7c`.
+- **Pinned.** `clarity-polish.spec.ts` samples `_zoomBadgeTimer` every frame
+  for 3 s after the flight (never up), then presses `=` on desktop (up).
 
-### 11. The phone “More ⌄” cue covers the Destination select — Medium — open
-- **Shots.** `before/iphone-02-start-panel.jpg`, `before/iphone-04-home-route-setup.jpg`
+### 11. The phone “More ⌄” cue covers the Destination select — Medium — FIXED
+- **Shots.** `polish/before/iphone-02-start-panel.jpg` (the cue sits on Here
+  and Difficulty), `polish/after/iphone-02-start-panel.jpg`; desktop
+  `polish/{before,after}/desktop-03-setup-advanced.jpg`
 - **What confuses a first-time player.** The floating cue sits on the select's
   chevron, so it looks like part of the field.
-- **Proposed fix.** Dock the cue into the scroll fade band, or hide it once the
-  last field is at least half visible.
+- **Fix.** The cue has its own slim row under the rail (`OverlayApp.tsx`,
+  `.setup-scroll-cue` in `index.html`), centred, never over a field. When the
+  rail reaches its end the cue keeps its row with `visibility: hidden`, so
+  the rail does not jump. The same applies to Ride settings. Commit `86b56ba65`.
+- **Pinned.** `clarity-polish.spec.ts` checks, on both layouts, that the cue
+  sits below the rail and overlaps no visible field, select, choice or summary.
+- **Still open (pre-existing, not caused by this fix).** On a 390×844 phone the
+  Difficulty row is still below the fold. `mobile-overlays.spec.ts` “phone
+  setup shows every main choice above Start” was red on `main` before this
+  lane: Hard ended at 477 px against a rail bottom of 416 px. The rail bottom
+  is still 416 px, because the cue row (+26 px) and the taller five-item site
+  switch are paid for by collapsing an empty `#route-error` (−30 px). Closing
+  the 61 px gap needs a layout call: a slimmer title plaque, a one-line
+  briefing, or Feedback/help somewhere other than their own row.
 
-### 12. More options opens out of sight on desktop — Low — open
-- **Shot.** `before/desktop-03-setup-advanced.jpg`
+### 12. More options opens out of sight on desktop — Low — FIXED
+- **Shots.** `polish/before/desktop-03-setup-advanced.jpg`,
+  `polish/after/desktop-03-setup-advanced.jpg` (both opened by a click on the
+  summary; the harness no longer scrolls for it)
 - **What confuses a first-time player.** Expanding the section shows only the
   “Harder difficulties” label above the footer. The new controls are below the
   fold, so the click seems to do little.
-- **Proposed fix.** On `toggle`, scroll the opened `<details>` into view.
+- **Fix.** On `toggle` to open, `revealOpenedSection` scrolls the `<details>`
+  to the top of the rail one frame later, smoothly unless reduced motion is
+  set. Commit `86b56ba65`.
+- **Pinned.** `clarity-polish.spec.ts`: after a click on More options, Expert
+  is inside the rail's visible box.
 
-### 13. The answered card keeps an empty band — Low — open
-- **Shot.** `before/iphone-14-boat-wrong.jpg`
+### 13. The answered card keeps an empty band — Low — FIXED
+- **Shots.** `polish/before/iphone-14-boat-wrong.jpg`,
+  `polish/after/iphone-14-boat-wrong.jpg`, plus the desktop pair
 - **What confuses a first-time player.** After answering, No idea hides and
   leaves about 120 px of blank paper, which looks like a missing control.
-- **Proposed fix.** Collapse the slot, or put a “Riding on in 3 s” line there.
+- **Fix.** After an answer, No idea is removed (`display: none`) and its slot
+  shows a quiet “RIDING ON” line. Its bar drains over the hold that closes
+  the card: 0.9 s right, 3.2 s wrong (`--answer-hold`, set in
+  `_markAnsweredChoices`). With reduced motion the bar stays still. Commit
+  `ee70af510`.
+- **Pinned.** `clarity-polish.spec.ts`: No idea is hidden, the line is shown,
+  and the card ends less than 40 px below it.
 
-### 14. The arrival card repeats itself and differs between devices — Low — open
-- **Shot.** `before/desktop-16-boat-finish.jpg`, compared with `before/iphone-16-boat-finish.jpg`
+### 14. The arrival card repeats itself and differs between devices — Low — FIXED
+- **Shots.** `polish/before/desktop-16-boat-finish.jpg`,
+  `polish/after/desktop-16-boat-finish.jpg`, plus the phone pair
 - **What confuses a first-time player.** `1/2 Canals` and `50% Recall` state the
   same fact. The phone offers Route setup, but the desktop card only offers
   ENTER (Next route) and C (Share).
-- **Proposed fix.** Drop Recall %, or show ribbon axes instead. Add
-  “ESC Route setup” to the desktop actions.
+- **Fix.** Recall % is dropped. The tally stays, and the ribbon keeps its
+  recall axis. Desktop now offers “M Route setup”, the pause card's key.
+  Escape stays unbound on this card (user request 2026-09-28), and M no longer
+  doubles as Next route here. Desktop keycaps are click targets too. On the
+  phone the four stats sit in two rows of two (`f46a73857`), not three and a
+  lone Distance. Commits `38cee7178`, `f46a73857`.
+- **Pinned.** `clarity-polish.spec.ts`: the finish card lists a `route`
+  action on desktop, and M opens route setup.
 
-### 15. The How to play keyboard table is flat — Low — open
-- **Shots.** `after/desktop-20-help.jpg`, `after/iphone-20-help.jpg`
+### 15. The How to play keyboard table is flat — Low — FIXED
+- **Shots.** `polish/before/desktop-20-help.jpg`,
+  `polish/after/desktop-20-help.jpg`. The phone shows no key table, since
+  touch readers get the ring.
 - **What confuses a first-time player.** The table lists 21 rows. Steer, brake
   and the answer keys sit beside the debug overlay and IJKU panning.
-- **Proposed fix.** Split it into “Ride and answer” (5 rows) and a collapsed
-  “More keys”.
+- **Fix.** Three short tables: Ride (6 rows), Answer (4 rows, now including
+  `0` No idea) and View (10 rows). D (road labels), B (building look), IJKU
+  and ` sit behind a collapsed “Developer keys” disclosure. M is documented
+  as Route setup when paused or arrived. Commit `a6aca3e63`.
+- **Pinned.** `clarity-polish.spec.ts`: the headings are Ride, Answer, View;
+  “Debug overlay” is hidden until the disclosure opens.
 
 ### 16. The plaque names the starting street before any question — Info, for the owner
 - **Shots.** `before/desktop-10-boat-riding.jpg` (SINGEL),
@@ -207,6 +252,19 @@ understanding. **Low** is polish.
 - The signed-in state was not exercised, because this lane has no account.
 
 ## Verification
+
+### Findings 10–15 (preview polish lane, 2026-10-17)
+
+- `tests/e2e/clarity-polish.spec.ts` covers one check per finding, on desktop
+  and iphone (10 run, 2 skipped by design).
+- The before/after pairs for these findings are in
+  `docs/preview/clarity/polish/{before,after}/`. They were captured with
+  `CLARITY_SHOTS=1 SHOT_TAG=pv-before|pv-after` against `main` at `3aa3bc326`
+  and this lane's head. That `main` already had the site switch, so these
+  “before” shots differ from the originals above.
+- Finding 16 is unchanged, pending the owner's decision.
+
+### Findings 1–9
 
 - Unit tests: `node --import tsx --test src/canalRecall/onboarding/onboarding.test.ts`
   (6 tests). They cover storage that throws, device hints, that the intro

@@ -468,6 +468,8 @@ export interface PresentationHost extends GameCoreHost {
   _debugLinkBounds: DebugLinkBounds[] | null;
   _lastZoomShown: number | null;
   _zoomTouchedByPlayer: boolean;
+  /** Set by a player zoom (keys, ctrl+wheel, pinch); the next zoom change flashes the badge. */
+  _playerZoomPending: boolean;
   /** The window's starting zoom, which the chase bike's size is tuned at. */
   _defaultZoom?: number;
 

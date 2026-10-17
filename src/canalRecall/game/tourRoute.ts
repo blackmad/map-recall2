@@ -218,3 +218,33 @@ export function tourFromSearch(search: string, tours: readonly Tour[]): Tour | n
   try { id = new URLSearchParams(search).get('tour'); } catch { return null; }
   return (id && tours.find(tour => tour.id === id)) || null;
 }
+
+/** The settings a tour rides with: tours are bike rides in Amsterdam, and a
+ *  tour starts at its first stop rather than at Home or Here. */
+export const TOUR_RIDE_PREFS = { travelMode: 'car', cityId: 'amsterdam', routePattern: 'surprise' } as const;
+export type TourPrefKey = keyof typeof TOUR_RIDE_PREFS;
+type TourPrefs = Record<TourPrefKey, string>;
+
+/**
+ * What a tour changes and how to undo it. `patch` is applied for the tour;
+ * `restore` holds the player's own values of exactly those keys. A tour
+ * started while one is already held keeps the first `held` values, so a
+ * second tour never snapshots the first one's overrides as the player's.
+ */
+export function tourPrefsOverride<P extends TourPrefs>(prefs: P, held?: Partial<P> | null): { patch: Partial<P>; restore: Partial<P> } {
+  const patch: Partial<P> = {};
+  const restore = { ...(held || {}) } as Partial<P>;
+  for (const key of Object.keys(TOUR_RIDE_PREFS) as TourPrefKey[]) {
+    const want = TOUR_RIDE_PREFS[key];
+    if (prefs[key] === want) continue;
+    (patch as Record<string, string>)[key] = want;
+    if (!(key in restore)) (restore as Record<string, string>)[key] = prefs[key];
+  }
+  return { patch, restore };
+}
+
+/** The preferences to write to storage: during a tour, the player's own
+ *  values stand in for the tour's overrides, which are never saved. */
+export function persistablePrefs<P extends object>(prefs: P, restore?: Partial<P> | null): P {
+  return restore ? { ...prefs, ...restore } : prefs;
+}

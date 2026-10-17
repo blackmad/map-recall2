@@ -1189,7 +1189,11 @@ export class GameRecallRuntime {
    *  wrong pick struck through, and every button inert for the hold. */
   _markAnsweredChoices(correctName: string, answer: string | null, correct: boolean): void {
     const card = document.getElementById('canal-card');
-    if (card) card.classList.add('answered');
+    if (card) {
+      // The "Riding on" bar drains over the same hold that closes the card.
+      card.style.setProperty('--answer-hold', `${correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG}ms`);
+      card.classList.add('answered');
+    }
     if (!this._promptChoices) return;
     const normalise = (value: string | null | undefined) => (value || '').trim().toLowerCase();
     for (const node of Array.from(this._promptChoices.children)) {

@@ -7,7 +7,7 @@ import {
   onboardingSteps,
   shouldShowOnboarding,
 } from './steps.ts';
-import { scoreTally, zoomBadgeText } from '../hudCopy.ts';
+import { scoreTally, zoomBadgeShouldFlash, zoomBadgeText } from '../hudCopy.ts';
 import { difficultyGloss } from '../game/setupCopy.ts';
 
 function memoryStorage() {
@@ -56,6 +56,14 @@ test('the plaque tally says what it counts', () => {
   assert.equal(scoreTally({ correct: 3, attempts: 4, points: 290, gamey: true, compact: true }), '3/4 named · 290 pts');
   assert.equal(scoreTally({ correct: 0, attempts: 0, points: 0, gamey: false, compact: true }), '0/0 named');
   assert.equal(zoomBadgeText(0.654), 'Zoom 65%');
+});
+
+test('the zoom badge flashes only on a player zoom', () => {
+  // The camera settling after the start flight is not the player's zoom.
+  assert.equal(zoomBadgeShouldFlash(0.6, 0.65, false), false);
+  assert.equal(zoomBadgeShouldFlash(null, 0.65, true), false);
+  assert.equal(zoomBadgeShouldFlash(0.65, 0.65, true), false);
+  assert.equal(zoomBadgeShouldFlash(0.6, 0.65, true), true);
 });
 
 test('each difficulty says what it changes', () => {
