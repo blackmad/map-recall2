@@ -488,6 +488,32 @@ export function drawSpandrels(c: PanelCtx, cells: Cell[], levels: number[], sp: 
   return { panels: n, rails: edges, gridLevels: [...levels.filter((L, f) => f === 0 || !covered(L)), ...edges].sort((a, b) => a - b) };
 }
 
+/** Screen panels (intent `meshScreen`): defaults for the storey share and joint, and the layer (4.5-9 cm off the wall). */
+export const MESH_SCREEN = { from: 0.15, to: 0.92, joint: 0.06, back: SHEET_PITCH, out: 2 * SHEET_PITCH, minW: 0.4 };
+
+/**
+ * A screen of pale panels over the wall (the 2006 Rietveld Academie low block's white expanded-metal mesh): on each listed
+ * storey, one closed panel per bay from `from` to `to` of the storey's height, `joint` m short of the bay edges so the wall
+ * shows as a joint between panels, 4.5-9 cm off the wall. A bay with an opening cut into it is left open (the window shows
+ * through), as are bays the panel does not fit. Returns the panels drawn.
+ */
+export function drawMeshScreen(c: PanelCtx, cells: Cell[], levels: number[], ms: { storeys: number[]; from: number; to: number; joint: number; slot: Slot }): number {
+  const part = c.part();
+  let n = 0;
+  for (const cell of cells) {
+    if (!ms.storeys.includes(cell.floor)) continue;
+    const L0 = levels[cell.floor], L1 = levels[cell.floor + 1] ?? cell.v1, h = L1 - L0;
+    const v0 = Math.max(cell.v0, L0 + ms.from * h), v1 = Math.min(cell.v1, L0 + ms.to * h);
+    const a = Math.max(c.p.uMin, cell.u0 + ms.joint / 2), b = Math.min(c.p.uMax, cell.u1 - ms.joint / 2);
+    if (v1 - v0 < 0.3 || b - a < MESH_SCREEN.minW) continue;
+    if (holeSpans(c, v0, v1).some(([s0, s1]) => s0 < b && s1 > a)) continue;
+    if (!fitsPanel(c.p, rectPoly(a, b, v0, v1), 0.0)) continue;
+    c.box(ms.slot, a, b, v0, v1, MESH_SCREEN.back, MESH_SCREEN.out, part);
+    n++;
+  }
+  return n;
+}
+
 function drawLattice(c: PanelCtx, cells: Cell[], levels: number[], slot: Slot, top: number, dims: typeof SCREEN, postsSkipHoles: boolean): number {
   const p = c.p, part = c.part(), bot = Math.max(p.vMin, 0, Math.min(...cells.map(x => x.v0))) + 0.02;
   let n = 0;

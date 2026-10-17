@@ -859,6 +859,26 @@ export interface LargeWallIntent {
    */
   groundFactor?: number;
   /**
+   * The 3DBAG shell (1-based, in facts order) whose surfaces `wallSurfaces` names. A pand of two separate solids (the 2006
+   * Rietveld Academie: the tower and the low block) numbers each shell's wall surfaces from 1, so a bare index claims a
+   * surface in every shell. Absent: every shell, as before.
+   */
+  shell?: number;
+  /**
+   * Openings in only some bays of some storeys: on each entry's `storeys` (1 = first floor) only the listed `bays` (of
+   * `baysPerStorey`, from the viewer's left on the widest panel) keep the storey's windows; the rest of the storey is plain
+   * wall. The 2006 Rietveld Academie tower: ribbon windows across the middle 16 m of a 40 m dimpled-metal front on three
+   * floors, blank metal between. Absent: every bay, byte-identical.
+   */
+  openBays?: {storeys: number[]; bays: number[]}[];
+  /**
+   * A layered screen of pale panels over the wall on the listed `storeys` (expanded-metal mesh, perforated sheet): one panel
+   * per bay, `joint` m apart (default 0.06), from `from` to `to` of the storey's height (defaults 0.15 and 0.92, leaving
+   * the slab edges in the wall colour), in `colour`; bays with an opening are left open (the window shows). The 2006
+   * Rietveld Academie low block: white expanded-metal panels over its upper storey between white slab edges. Layered kit only.
+   */
+  meshScreen?: {storeys: number[]; colour: string; from?: number; to?: number; joint?: number};
+  /**
    * true = the group's 3DBAG facets that link end to end (a curved front kept as a chain of narrow planes) carry one
    * bay rhythm along their arc length, `baysPerStorey`'s pitch continuing round the curve (curve.ts); default: each
    * facet restarts its own grid.

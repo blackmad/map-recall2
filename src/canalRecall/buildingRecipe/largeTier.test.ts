@@ -857,3 +857,72 @@ test('storey-height gate: a mesh plinth under a curtain wall may be a low raised
   const {gates} = await gatesOf(validateLargeIntent(glazedGround), facts(id));
   assert.equal(gates.find(g => g.id === 'storey-height/walls[0]')?.pass, false, 'a 1.7 m glazed ground storey is still refused');
 });
+
+// ---------------------------------------------------------------------------------------------------------------
+// Gerrit Rietveld Academie 2006 (pand 0363100012091838): two 3DBAG shells numbered from 1 each, a dimpled-metal tower with
+// ribbon windows over part of its width, a low block with a white expanded-metal screen storey (lane public-large-20261017).
+
+test('walls[].shell: a surface index claims only its own shell; without shell it claims every shell (as before)', () => {
+  const id = 'rietveld-academie-091838', base = raw(id), f = facts(id);
+  const {recipe, report} = fitLarge(validateLargeIntent(base), f);
+  // surface 7 is the tower's south front in shell 2 and a 4 m lightwell wall in shell 1; surface 8 the low block's south front in shell 1
+  const panelsOf = (gi: number) => report.panels.filter(p => p.group === gi);
+  assert.deepEqual(panelsOf(0).map(p => Math.round(p.widthM)), [40]);
+  assert.deepEqual(panelsOf(2).map(p => Math.round(p.widthM)), [29]);
+  assert.equal(recipe.groups[0].mainPanel, panelsOf(0)[0].index);
+  // the lightwell's surface 7 (shell 1) is left to otherWalls
+  assert.ok(report.panels.some(p => p.group === -1 && p.surfaces.includes(7)));
+  // without shell, walls[0] also takes the shell-1 surface 7 (the old behaviour)
+  const strip = (w: {shell?: number}) => { const {shell: _x, ...rest} = w; return rest; };
+  const noShell = fitLarge(validateLargeIntent({...base, measured: undefined, walls: [strip(base.walls[0]), strip(base.walls[1])]}), f).report;
+  assert.ok(noShell.panels.filter(p => p.group === 0).length > 1);
+  // validation: shell-qualified duplicates clash only within a shell; an unqualified surface clashes with every shell
+  assert.throws(() => validateLargeIntent({...base, walls: [...base.walls, {...base.walls[3], wallSurfaces: [7], shell: 2}]}), /surface 7 is already/);
+  assert.doesNotThrow(() => validateLargeIntent({...base, walls: [...base.walls, {...base.walls[3], wallSurfaces: [7], shell: 1}]}));
+  assert.throws(() => validateLargeIntent({...base, walls: [...base.walls, strip({...base.walls[3], wallSurfaces: [7]})]}), /surface 7 is already/);
+  assert.throws(() => fitLarge(validateLargeIntent({...base, walls: [{...base.walls[0], wallSurfaces: [22]}, ...base.walls.slice(1)]}), f), /shell 2/);
+});
+
+test('openBays: windows only in the listed bays of the listed storeys, plain wall in the rest; absent = every bay', async () => {
+  const id = 'rietveld-academie-091838', base = raw(id);
+  const {largeSystem} = await import('../blockBuilding/systems.ts');
+  const fit = {pitchM: 1.7, lines: [0, 3.7, 7.2, 10.7, 14.2], ground: 'glazed' as const, bays: 6, shape: {w: 0.93, h: 0.36, sillM: 0.56}, slots: {frame: 'f', stone: 's', glass: 'g', door: 'd', curtain: 'c'}};
+  const plain = largeSystem('ribbon-windows', fit), open = largeSystem('ribbon-windows', {...fit, openBays: [{storeys: [1, 3], bays: [1, 2]}]});
+  for (const st of ['1', '3']) {
+    const row = open.rowOverrides![st];
+    assert.equal(row.kind, 'wall');
+    assert.deepEqual(row.cycle!.map(r => r.kind), ['wall', 'ribbon', 'ribbon', 'wall', 'wall', 'wall']);
+    assert.deepEqual(row.cycle![1], plain.typical);
+  }
+  assert.equal(open.rowOverrides!['2'], undefined);
+  assert.deepEqual({...open, rowOverrides: undefined}, {...plain, rowOverrides: undefined});
+  // validated: needs a windowed system, bays in range, no clash with blank storeys, each storey once
+  const bad = (patch: object, re: RegExp) => assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], ...patch}, ...base.walls.slice(1)]}), re);
+  bad({openBays: [{storeys: [1], bays: [23]}]}, /openBays\[0\]\.bays/);
+  bad({openBays: [{storeys: [2], bays: [1]}]}, /blank storey/);
+  bad({openBays: [{storeys: [1], bays: [1]}, {storeys: [1], bays: [2]}]}, /listed twice/);
+  bad({system: 'curtain-wall', openBays: [{storeys: [1], bays: [1]}]}, /openBays: needs windows/);
+});
+
+test('meshScreen: one closed pale panel per bay on the listed storeys, open where a window is cut, within the gates; absent = no screen', async () => {
+  const id = 'rietveld-academie-091838', base = raw(id), f = facts(id);
+  const intent = validateLargeIntent(base);
+  const {gates, tris, built} = await gatesOf(intent, f);
+  assert.deepEqual(gates.filter(g => !g.pass).map(g => g.id), []);
+  assert.ok(tris.length <= LARGE_BUDGET_TRIANGLES, `${tris.length}`);
+  // the south front: 11 bays less the window bay; the low block's other walls one per bay
+  const screens = (built.components as {meshScreens?: number}).meshScreens!;
+  assert.ok(screens >= 10 + 13, `${screens}`);
+  const {recipe} = fitLarge(intent, f), g2 = recipe.groups[2];
+  assert.deepEqual({...g2.meshScreen!, slot: ''}, {storeys: [1], from: 0.15, to: 0.88, joint: 0.06, slot: ''});
+  assert.ok(recipe.measuredSlots?.includes(g2.meshScreen!.slot));
+  const bad = (patch: object, re: RegExp) => assert.throws(() => validateLargeIntent({...base, walls: [base.walls[0], base.walls[1], {...base.walls[2], ...patch}, base.walls[3]]}), re);
+  bad({meshScreen: {storeys: [1], colour: '#ffffff', from: 0.5, to: 0.6}}, /meshScreen: 0 <= from/);
+  bad({meshScreen: {storeys: [1], colour: '#ffffff', joint: 1}}, /joint/);
+  bad({meshScreen: {storeys: [1]}}, /colour/);
+  // without meshScreen: no screen slot, no screen panels
+  const {meshScreen: _m, ...w2} = base.walls[2], {meshScreen: _n, ...w3} = base.walls[3];
+  const plain = validateLargeIntent({...base, walls: [base.walls[0], base.walls[1], w2, w3]});
+  assert.equal(Object.keys(fitLarge(plain, f).recipe.spec.palette).some(k => k.startsWith('screen@')), false);
+  assert.equal((compileBuilding(plain, f).components as {meshScreens?: number}).meshScreens, undefined);
+});

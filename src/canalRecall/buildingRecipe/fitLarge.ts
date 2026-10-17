@@ -21,6 +21,7 @@ import type {BlockSpec, System} from '../blockBuilding/spec.ts';
 import {ARCADE_PROPORTIONS, DEFAULT_PITCH_M, largeSystem, SOUTERRAIN, type ArcadeFit, type LargeGround, type LargeSystemName} from '../blockBuilding/systems.ts';
 import {panelRuns, runBayAxes} from '../blockBuilding/curve.ts';
 import type {Lantern} from '../blockBuilding/components.ts';
+import {MESH_SCREEN} from '../blockBuilding/components.ts';
 import {roofHeightAt} from './facts.ts';
 import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellRepair.ts';
 
@@ -51,6 +52,8 @@ export interface LargeGroupFit {
   screen?: boolean;
   /** layered curtain wall: opaque spandrel panels (fractions of an upper storey over each floor line and under the next) in `slot` */
   spandrels?: {sill: number; head: number; slot: string};
+  /** layered screen panels over the wall on `storeys` (intent `meshScreen`): `from`..`to` of each storey, panels `joint` m apart, in `slot` */
+  meshScreen?: {storeys: number[]; from: number; to: number; joint: number; slot: string};
   /** mesh plinth panel slot when the group colours it (palette.plinth); default the door slot */
   plinthSlot?: string;
   entrance: {panel: number; bay: number; storeys: number; canopy: boolean; portal?: boolean} | null;
@@ -266,23 +269,36 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     if (!known.has(s)) throw Error(`${intent.id}: walls[${gi}] lists surface ${s}, which is not a LoD2.2 wall of pand ${facts.pandId} (see scripts/building-recipes/walls.ts)`);
     groupOfSurface.set(s, gi);
   }));
+  // Multi-shell pands number each 3DBAG shell's surfaces from 1 (facts order); a group with `shell` claims its surfaces in
+  // that shell only. Without `shell` anywhere, every wall takes its surface's group as before (byte-identical).
+  const byShell = intent.walls.some(w => w.shell !== undefined);
+  if (byShell && set.walls.length !== facts.wallsRD!.length) throw Error(`${intent.id}: walls[].shell needs every LoD2.2 wall in the surface set (not with groundClamp dropping walls)`);
+  const shellOf: number[] = [];
+  set.walls.forEach((w, wi) => shellOf.push(wi === 0 ? 1 : shellOf[wi - 1] + (w.surface! <= set.walls[wi - 1].surface! ? 1 : 0)));
+  const groupOfWall = set.walls.map((w, wi) => {
+    if (!byShell) return groupOfSurface.get(w.surface!);
+    let g: number | undefined;
+    intent.walls.forEach((iw, gi) => { if (iw.wallSurfaces.includes(w.surface!) && (iw.shell === undefined || iw.shell === shellOf[wi])) g = gi; });
+    return g;
+  });
+  if (byShell) intent.walls.forEach((w, gi) => { if (w.shell !== undefined) for (const s of w.wallSurfaces) if (!set.walls.some((x, wi) => x.surface === s && shellOf[wi] === w.shell)) throw Error(`${intent.id}: walls[${gi}] lists surface ${s} of shell ${w.shell}, which has no such LoD2.2 wall (shells: ${Math.max(...shellOf)})`); });
   // Group per surface-set wall; coplanar walls of different groups stay separate panels.
   // shellRepair: panels merge only truly coplanar walls (strictMergeClasses), so a dissolved face cannot stray off a roof edge
   const strict = intent.shellRepair || intent.footprint === 'bag' ? strictMergeClasses(set.walls) : null;
-  const wallGroup = set.walls.map((w, wi) => strict ? ((groupOfSurface.get(w.surface!) ?? -1) + 1) * 100000 + strict[wi] : groupOfSurface.get(w.surface!) ?? -1);
+  const wallGroup = set.walls.map((w, wi) => strict ? ((groupOfWall[wi] ?? -1) + 1) * 100000 + strict[wi] : groupOfWall[wi] ?? -1);
   const {panels} = buildHost(set, new MeshBuilder(), 'roof', 'wall', {deferWalls: true, mergeKey: wi => wallGroup[wi]});
   // Panel -> group: the group holding most of its surfaces (by area), ties to the lower group.
   const panelGroup = panels.map(p => {
     const votes = new Map<number, number>();
     for (const wi of p.walls) {
-      const s = set.walls[wi].surface!, g = groupOfSurface.get(s);
+      const s = set.walls[wi].surface!, g = groupOfWall[wi];
       if (g === undefined) continue;
-      const area = facts.wallsRD!.find(w => w.surface === s)!.areaM2;
+      const area = byShell ? facts.wallsRD![wi].areaM2 : facts.wallsRD!.find(w => w.surface === s)!.areaM2;
       votes.set(g, (votes.get(g) ?? 0) + area);
     }
     let best = -1, top = 0;
     for (const [g, a] of [...votes].sort((x, y) => x[0] - y[0])) if (a > top + 1e-9) { best = g; top = a; }
-    const listed = p.walls.filter(wi => groupOfSurface.has(set.walls[wi].surface!)).length;
+    const listed = p.walls.filter(wi => groupOfWall[wi] !== undefined).length;
     if (best >= 0 && listed < p.walls.length && p.uMax - p.uMin > 2) warnings.push(`panel ${p.index}: ${p.walls.length - listed} of ${p.walls.length} surfaces unlisted, panel follows walls[${best}]`);
     return best;
   });
@@ -324,6 +340,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     const plinthSlot = w.palette?.plinth ? `plinth@g${gi}` : undefined;
     if (plinthSlot) { palette[plinthSlot] = swatch(w.palette!.plinth!); if (measuredGroups.has(gi)) measuredSlots.push(plinthSlot); }
     const spandrelSlot = w.spandrels ? `spandrel@g${gi}` : undefined;
+    const screenSlot = w.meshScreen ? `screen@g${gi}` : undefined;
+    if (screenSlot) { palette[screenSlot] = swatch(w.meshScreen!.colour); if (measuredGroups.has(gi)) measuredSlots.push(screenSlot); }
     if (spandrelSlot) { palette[spandrelSlot] = w.spandrels!.colour ? swatch(w.spandrels!.colour) : palette[slots.frame]; if (measuredGroups.has(gi) && w.spandrels!.colour) measuredSlots.push(spandrelSlot); }
     // Flush brick arch bands (arches / hoist): a shade darker than the group's brick.
     const arch = (w.arches || w.hoist) && (w.arches?.band ?? 'brick') === 'brick' ? `arch@g${gi}` : undefined;
@@ -372,7 +390,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.columns ? {columnBays: w.columns.bays, bays} : {}),
       ...(w.windowShape ? {shape: {w: w.windowShape.w, h: w.windowShape.h, sillM: r3(w.windowShape.sill * (uppers[0] ?? st.heights[0]))}} : {}),
       ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {}),
-      ...(w.glazing === 'panes' ? {paneSplit: true} : {}), ...(w.courses ? {courses: [...w.courses]} : {}), ...(w.souterrain ? {souterrain: w.souterrain} : {})});
+      ...(w.glazing === 'panes' ? {paneSplit: true} : {}), ...(w.courses ? {courses: [...w.courses]} : {}), ...(w.souterrain ? {souterrain: w.souterrain} : {}), ...(w.openBays ? {openBays: w.openBays, bays} : {})});
     // Curved front: one bay rhythm along each run of linked facets (two or more panels of this group), at the group's pitch.
     let curve: LargeGroupFit['curve'];
     if (w.curve) {
@@ -388,7 +406,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     }
     groups.push({index: gi, system: w.system, specSystem, panels: own.map(p => p.index), surfaces: [...w.wallSurfaces], mainPanel: main?.index ?? null, bearingDeg: main ? Math.round(bearingOfNormal(main.n)) : null,
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
-      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(plinthSlot ? {plinthSlot} : {}), ...(spandrelSlot ? {spandrels: {sill: w.spandrels!.sill ?? 0, head: w.spandrels!.head ?? 0, slot: spandrelSlot}} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(pilasters ? {pilasters} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
+      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(plinthSlot ? {plinthSlot} : {}), ...(spandrelSlot ? {spandrels: {sill: w.spandrels!.sill ?? 0, head: w.spandrels!.head ?? 0, slot: spandrelSlot}} : {}), ...(screenSlot ? {meshScreen: {storeys: [...w.meshScreen!.storeys], from: w.meshScreen!.from ?? MESH_SCREEN.from, to: w.meshScreen!.to ?? MESH_SCREEN.to, joint: w.meshScreen!.joint ?? MESH_SCREEN.joint, slot: screenSlot}} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(pilasters ? {pilasters} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
       ...(w.hall ? {hall: {baseM: r3(w.hall.base * eaves), lights: w.hall.lights, rows: w.hall.rows}} : {}),
       ...(w.columns ? {columns: {bays: [...w.columns.bays], share: w.columns.share ?? 0.9, from: w.columns.from ?? 1, slabs: !!w.columns.slabs, ...(colGlass ? {glass: colGlass} : {})}} : {}),
       ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}),
@@ -404,7 +422,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
   for (const gi of intent.measured?.groups ?? []) { const g = groups[gi]; if (g) measuredSlots.push(...[g.slots.wall, `arch@g${gi}`, g.slots.glass].filter(sl => sl !== 'wall' && sl !== 'glass' && palette[sl] !== undefined)); }
   // `measured.otherWalls`: palette.brick was measured too (the rear and courtyard walls of the same brick as the fronts)
   if (intent.measured?.otherWalls) measuredSlots.push('wall');
-  const unlistedSurfaces = set.walls.map(w => w.surface!).filter(s => !groupOfSurface.has(s));
+  const unlistedSurfaces = byShell ? set.walls.filter((_, wi) => groupOfWall[wi] === undefined).map(w => w.surface!) : set.walls.map(w => w.surface!).filter(s => !groupOfSurface.has(s));
   const spec: BlockSpec = {id: intent.id, pandId: intent.pandId, name: intent.address, palette, levels: {groundM: civicM, storeyM: civicM}, systems, default: 'other', roofSlot: 'roof', wallSlot: 'wall'};
   const roofPlant = intent.roofPlant ? placeRoofPlant(set) : [];
   if (intent.roofPlant && !roofPlant.length) warnings.push('roofPlant: no flat roof of 40 m² with room for a lift overrun');
