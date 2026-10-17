@@ -358,12 +358,21 @@ test('a new question shows every choice alike, with no hover left over from the 
 // ride. They are tucked while riding and come back on a tap on the map.
 test('settings and help stay tucked while riding until the map is tapped', async ({ page }) => {
   await drive(page);
+  // The cluster always carries `tucked-all` (the whole corner tucks, Feedback
+  // too, 2026-10-16), so a /tucked/ regex matched it for good and `not
+  // tucked` could never pass; and the container keeps pointer-events, only
+  // its buttons drop them. Read the `tucked` token and the buttons instead.
   const utility = page.locator('#utility-buttons');
-  await expect(utility).toHaveClass(/tucked/);
-  expect(await utility.evaluate(el => getComputedStyle(el).pointerEvents)).toBe('none');
+  const tucked = () => utility.evaluate(el => el.classList.contains('tucked'));
+  const buttons = () => utility.evaluate(el => [...el.children]
+    .filter(child => getComputedStyle(child).display !== 'none')
+    .map(child => getComputedStyle(child).pointerEvents));
+  await expect.poll(tucked).toBe(true);
+  await expect.poll(async () => (await buttons()).every(value => value === 'none')).toBe(true);
   await page.touchscreen.tap(195, 260);
-  await expect(utility).not.toHaveClass(/tucked/);
-  await expect(utility).toHaveClass(/tucked/, { timeout: 6000 });
+  await expect.poll(tucked).toBe(false);
+  expect((await buttons()).every(value => value !== 'none')).toBe(true);
+  await expect.poll(tucked, { timeout: 6000 }).toBe(true);
 });
 
 // Named regression (user report 2026-09-28, "can't really turn around").
