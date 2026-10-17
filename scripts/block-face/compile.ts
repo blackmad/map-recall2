@@ -114,5 +114,8 @@ if (process.argv[1]?.endsWith('block-face/compile.ts')) {
   if (process.argv.includes('--install')) {
     if (!report.passed && !process.argv.includes('--force-install')) { console.log('not installing: gates/interference/audit failed (see report.json)'); process.exit(1); }
     await installFace(faceId, entry, glbPath);
+    // The sunny look reads each installed chunk's strip exposure (look/chunkWallExposure.ts), and test:look fails
+    // without an entry: three installs on 2026-10-16/17 skipped this step and turned CI red. The strip is in staging now.
+    execFileSync(process.execPath, ['--import', 'tsx', 'scripts/look/build-chunk-wall-exposure.ts', '--write'], {stdio: 'inherit'});
   }
 }

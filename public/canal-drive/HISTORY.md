@@ -267,6 +267,10 @@ failures in askable-bridges, answered-street-name, block-face and others. It
 moved to its own workflow, `e2e-full.yml` (nightly 03:00 UTC and on demand,
 180 min); Canal CI is check:canal plus the boot smoke, the same bar as the
 Firebase deploy.
+Block-face installs kept skipping the exposure step (Gorontalo, Molukken, Nias,
+Hembrug, Polanen, Houtrijk, Zaanhof: 18 faces on 2026-10-17), each time turning
+CI red; `block-face/compile.ts --install` now runs
+`build-chunk-wall-exposure.ts --write` itself.
 
 ## Rivierenbuurt (Plan Zuid, 1934): 103 pands from six types (2026-10-17)
 
