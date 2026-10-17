@@ -275,6 +275,27 @@ export function surveyPaint(cells: readonly BuiltCell[], centre: [number, number
 }
 
 /**
+ * Crossing audit 2026-10-17 (crossingAudit.ts; user ride screenshots by the Nieuwezijds Voorburgwal / Magna Plaza /
+ * Dam junction: zebras splayed in fans, overlapped at different angles, every other stripe missing, on cobbles and in
+ * odd places). Within `radiusM` of `at` the renderer draws between `count[0]` and `count[1]` zebras, and the audit
+ * finds none of them splayed, skewed, overlapping, off the carriageway, gapped or of an implausible length.
+ *  - Raadhuisstraat by Magna Plaza: OSM maps each crossing as a node on every way it crosses (busway, cycleway,
+ *    footway, tram rails); each node drew its own zebra on the nearest road 1.3 m apart and at the angle of whichever
+ *    way it snapped to (one fan of five over the tram junction). The photo has a zebra on each general lane; the
+ *    south one is mapped only as the cycle path's crossing node (crossing:markings=yes on the cycleway vertex), so it
+ *    is not drawn (the cycle crossing pass draws none there either).
+ *  - Nieuwezijds Voorburgwal south of the Dam: three nodes of one crossing 1.3 m apart drew three interleaved zebras;
+ *    the Paleisstraat (a highway=cycleway on BGT rijbaan) zebra was dropped as a cycle crossing.
+ *  - Leidseplein: BGT maps the zebras as voetpad strips across the road; they drew as raised pavement without stripes.
+ */
+export interface CrossingRegression { id: string; label: string; at: [number, number]; radiusM: number; count: [number, number] }
+export const CROSSINGS: CrossingRegression[] = [
+  { id: 'magna-plaza-raadhuisstraat', label: 'Raadhuisstraat × Nieuwezijds Voorburgwal by Magna Plaza: the north lane zebra alone, no fan over the tram junction', at: [4.89032, 52.37318], radiusM: 12, count: [1, 1] },
+  { id: 'nzvoorburgwal-dam-south', label: 'Nieuwezijds Voorburgwal × Dam (south) and the Paleisstraat: one zebra per crossing, not three interleaved', at: [4.89067, 52.37251], radiusM: 16, count: [2, 2] },
+  { id: 'leidseplein-voetpad-strips', label: 'Leidseplein: zebras on the BGT voetpad strips across the road', at: [4.8822, 52.3638], radiusM: 40, count: [3, 8] },
+];
+
+/**
  * Stray surface fragments at a junction (user, 2026-10-13: "red cycle-lane smear
  * and brown holes at Rozengracht/Marnixstraat"). Each probe point lies where a
  * fragment was drawn; the top surface there must not be one of `forbid`.
