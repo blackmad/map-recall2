@@ -217,6 +217,27 @@ if (steps.has('compose')) {
   console.log(JSON.stringify(source.result));
 }
 
+// 5b. Install (only after the user picked this rebuild): the figure meshes and their cuts go into the repo, where
+// build-manual-landmarks (scripts/landmarks/installed-figures.ts) applies them to the kit builder's parts, so the served GLB keeps
+// the landmark's id, placement, materials, slots and LOD path and stays rebuildable.
+if (steps.has('install')) {
+  const dir = path.join('scripts/sculptures/installed', id);
+  fs.mkdirSync(dir, {recursive: true});
+  const figures = [];
+  for (const f of cfg.figures) {
+    const plain = path.join(out, f.name, 'figure.glb');
+    if (!fs.existsSync(plain)) throw new Error(`${f.name}: no figure.glb to install`);
+    const glbPath = path.join(dir, `${f.name}.glb`);
+    fs.copyFileSync(plain, glbPath);
+    figures.push({name: f.name, glb: glbPath, at: source.figures[f.name].placement.baseM, cut: f.cut, cutMaterials: f.cutMaterials ?? ['bronze'],
+      material: f.material ?? 'bronze', route: source.figures[f.name].route});
+  }
+  fs.writeFileSync(path.join('scripts/sculptures/installed', `${id}.json`), JSON.stringify({id, provenance: trackedSource, figures}, null, 1) + '\n');
+  source.installed = new Date().toISOString().slice(0, 10);
+  save();
+  console.log('installed', id, figures.length);
+}
+
 // 6. Review sheet: photos row, kit four sides, rebuild four sides (gallery-card size, same camera distance).
 if (steps.has('strip')) {
   const sdir = path.join(out, 'strips');

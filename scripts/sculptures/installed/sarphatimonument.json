@@ -1,0 +1,32 @@
+{
+ "id": "sarphatimonument",
+ "provenance": "scripts/sculptures/rebuild-sources/sarphatimonument.json",
+ "figures": [
+  {
+   "name": "bust",
+   "glb": "scripts/sculptures/installed/sarphatimonument/bust.glb",
+   "at": [
+    0,
+    4.61,
+    0
+   ],
+   "cut": {
+    "min": [
+     -0.6,
+     4.6,
+     -0.6
+    ],
+    "max": [
+     0.6,
+     5.7,
+     0.6
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TripoSR, one photo"
+  }
+ ]
+}

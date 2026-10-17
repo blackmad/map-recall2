@@ -1157,14 +1157,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -0.4357823431491852,
+          -0.4065285921096802,
           -1.1920929132713809e-8,
-          -0.4357823431491852
+          -0.3820820450782776
         ],
         "max": [
-          0.4357823431491852,
-          2.990000009536743,
-          0.4357823431491852
+          0.3851166069507599,
+          2.9899771213531494,
+          0.42143091559410095
         ]
       },
       "placement": {
@@ -1178,14 +1178,20 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 0.8715646862983704,
-        "heightMetres": 2.9900000214576723,
-        "depthMetres": 0.8715646862983704,
-        "depthCoverage": 1.245092408997672
+        "widthMetres": 0.8035129606723785,
+        "heightMetres": 2.9899771332740785,
+        "depthMetres": 0.7916451990604401,
+        "depthCoverage": 1.1309217129434859
       },
-      "triangles": 582,
-      "bytes": 9204,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 6012,
+      "bytes": 39556,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "e75a89af6d620770",
+        "buildVersion": 2,
+        "bytes": 24920,
+        "triangles": 1080
+      }
     },
     "westerkerk": {
       "id": "westerkerk",
@@ -7077,13 +7083,13 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -0.7129079699516296,
+          -0.574999988079071,
           -1.1920929132713809e-8,
           -0.550000011920929
         ],
         "max": [
-          0.7129079699516296,
-          4.127633094787598,
+          0.6745800375938416,
+          4.127557754516602,
           0.5899999737739563
         ]
       },
@@ -7098,14 +7104,20 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 1.4258159399032593,
-        "heightMetres": 4.127633106708527,
+        "widthMetres": 1.2495800256729126,
+        "heightMetres": 4.127557766437531,
         "depthMetres": 1.1399999856948853,
         "depthCoverage": 0.949999988079071
       },
-      "triangles": 516,
-      "bytes": 11000,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 6228,
+      "bytes": 36620,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "2358cce2579ce451",
+        "buildVersion": 2,
+        "bytes": 37888,
+        "triangles": 1808
+      }
     },
     "westermoskee": {
       "id": "westermoskee",
@@ -47687,7 +47699,7 @@
         ],
         "max": [
           5.650000095367432,
-          6.588562965393066,
+          6.588854789733887,
           11.242998123168945
         ]
       },
@@ -47703,18 +47715,18 @@
       },
       "extent": {
         "widthMetres": 16.892998218536377,
-        "heightMetres": 6.588562965393066,
+        "heightMetres": 6.588854789733887,
         "depthMetres": 14.642998218536377,
         "depthCoverage": 2.153382090961232
       },
-      "triangles": 8142,
-      "bytes": 95524,
+      "triangles": 13730,
+      "bytes": 122408,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "789043ca1e977063",
+        "sourceHash": "25a9f7d133328b2a",
         "buildVersion": 2,
-        "bytes": 37992,
-        "triangles": 1672
+        "bytes": 58820,
+        "triangles": 2855
       }
     },
     "vondelmonument": {
@@ -47767,7 +47779,7 @@
         ],
         "max": [
           6.21539306640625,
-          7.1599626541137695,
+          7.159729480743408,
           6.21539306640625
         ]
       },
@@ -47783,18 +47795,18 @@
       },
       "extent": {
         "widthMetres": 12.4307861328125,
-        "heightMetres": 7.1599626541137695,
+        "heightMetres": 7.159729480743408,
         "depthMetres": 12.4307861328125,
         "depthCoverage": 0.927670606926306
       },
-      "triangles": 4392,
-      "bytes": 65972,
+      "triangles": 13938,
+      "bytes": 106336,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "6ac87d4c2310cfcf",
+        "sourceHash": "5f88f48d99715441",
         "buildVersion": 2,
-        "bytes": 37856,
-        "triangles": 1794
+        "bytes": 78292,
+        "triangles": 4094
       }
     },
     "begijnhof": {
@@ -48878,13 +48890,13 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -1.960498571395874,
+          -2.2301621437072754,
           0,
           -1.3812718391418457
         ],
         "max": [
-          1.960498571395874,
-          7.929999828338623,
+          2.178628444671631,
+          7.9301276206970215,
           1.3812718391418457
         ]
       },
@@ -48899,19 +48911,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 3.920997142791748,
-        "heightMetres": 7.929999828338623,
+        "widthMetres": 4.408790588378906,
+        "heightMetres": 7.9301276206970215,
         "depthMetres": 2.7625436782836914,
         "depthCoverage": 0.9866227422441756
       },
-      "triangles": 3716,
-      "bytes": 53436,
+      "triangles": 8254,
+      "bytes": 79856,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "ce5ceee85bd19387",
+        "sourceHash": "f25096f25e831407",
         "buildVersion": 2,
-        "bytes": 27580,
-        "triangles": 1206
+        "bytes": 34660,
+        "triangles": 1526
       }
     },
     "sarphatimonument": {
@@ -48988,14 +49000,14 @@
         "depthMetres": 23.299999237060547,
         "depthCoverage": 0.896153816810021
       },
-      "triangles": 13632,
-      "bytes": 149352,
+      "triangles": 19350,
+      "bytes": 183720,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "2ebf7005547722f2",
+        "sourceHash": "68d73896c3a5ffb2",
         "buildVersion": 2,
-        "bytes": 63920,
-        "triangles": 3215
+        "bytes": 71200,
+        "triangles": 3783
       }
     },
     "thorbecke-standbeeld": {
@@ -49049,7 +49061,7 @@
         ],
         "max": [
           3.396538734436035,
-          6.050000190734863,
+          6.0501885414123535,
           3.3982317447662354
         ]
       },
@@ -49065,18 +49077,18 @@
       },
       "extent": {
         "widthMetres": 6.798949241638184,
-        "heightMetres": 6.050000194311142,
+        "heightMetres": 6.050188544988632,
         "depthMetres": 6.797973155975342,
         "depthCoverage": 1.1329955259958904
       },
-      "triangles": 6316,
-      "bytes": 83024,
+      "triangles": 11396,
+      "bytes": 102912,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "41535bb315fa8feb",
+        "sourceHash": "099d46093ba4a47d",
         "buildVersion": 2,
-        "bytes": 31568,
-        "triangles": 1478
+        "bytes": 55528,
+        "triangles": 2746
       }
     },
     "multatuli-standbeeld": {
@@ -49129,7 +49141,7 @@
         ],
         "max": [
           1.2048423290252686,
-          3.0450000762939453,
+          3.04498291015625,
           0.8803784251213074
         ]
       },
@@ -49145,13 +49157,19 @@
       },
       "extent": {
         "widthMetres": 2.409684658050537,
-        "heightMetres": 3.0450000753998756,
+        "heightMetres": 3.0449829092621803,
         "depthMetres": 1.7607568502426147,
         "depthCoverage": 0.9781982501347859
       },
-      "triangles": 1408,
-      "bytes": 18464,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 6346,
+      "bytes": 49668,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "525e790cde684c79",
+        "buildVersion": 2,
+        "bytes": 26008,
+        "triangles": 1028
+      }
     },
     "lieverdje": {
       "id": "lieverdje",
@@ -49202,7 +49220,7 @@
         ],
         "max": [
           0.6830127239227295,
-          2.6660983562469482,
+          2.666057586669922,
           0.6830127239227295
         ]
       },
@@ -49218,13 +49236,19 @@
       },
       "extent": {
         "widthMetres": 1.366025447845459,
-        "heightMetres": 2.6660983569920065,
+        "heightMetres": 2.66605758741498,
         "depthMetres": 1.366025447845459,
         "depthCoverage": 0.9757324627467565
       },
-      "triangles": 636,
-      "bytes": 11024,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 6060,
+      "bytes": 41708,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "f7a9c22f444051bc",
+        "buildVersion": 2,
+        "bytes": 22580,
+        "triangles": 942
+      }
     },
     "anne-frank-merwedeplein": {
       "id": "anne-frank-merwedeplein",
@@ -49279,7 +49303,7 @@
         ],
         "max": [
           0.6408563852310181,
-          2.9784774780273438,
+          2.9785025119781494,
           0.6408563852310181
         ]
       },
@@ -49295,13 +49319,19 @@
       },
       "extent": {
         "widthMetres": 1.2817127704620361,
-        "heightMetres": 2.9784774773567912,
+        "heightMetres": 2.978502511307597,
         "depthMetres": 1.2817127704620361,
         "depthCoverage": 0.9155091217585973
       },
-      "triangles": 2396,
-      "bytes": 35696,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 7034,
+      "bytes": 53248,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "5e2a5a2077afe355",
+        "buildVersion": 2,
+        "bytes": 35116,
+        "triangles": 1606
+      }
     },
     "walraven-van-hall": {
       "id": "walraven-van-hall",
@@ -51774,7 +51804,7 @@
         ],
         "max": [
           4.181951999664307,
-          2.9475505352020264,
+          2.9477200508117676,
           4.112924098968506
         ]
       },
@@ -51790,18 +51820,18 @@
       },
       "extent": {
         "widthMetres": 7.849419593811035,
-        "heightMetres": 2.9475505471229555,
+        "heightMetres": 2.9477200627326967,
         "depthMetres": 5.156344294548035,
         "depthCoverage": 1.1209444118582685
       },
-      "triangles": 14306,
-      "bytes": 134044,
+      "triangles": 37394,
+      "bytes": 198096,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "d1d0e32949f7736b",
+        "sourceHash": "8a8093a144c3965a",
         "buildVersion": 2,
-        "bytes": 46468,
-        "triangles": 2231
+        "bytes": 99688,
+        "triangles": 5452
       }
     },
     "theo-thijssen-standbeeld": {
@@ -51849,11 +51879,11 @@
         "min": [
           -0.800000011920929,
           -1.1920929132713809e-8,
-          -0.8453311920166016
+          -0.9137009978294373
         ],
         "max": [
           0.800000011920929,
-          2.6798200607299805,
+          2.6802101135253906,
           0.6000000238418579
         ]
       },
@@ -51869,18 +51899,18 @@
       },
       "extent": {
         "widthMetres": 1.600000023841858,
-        "heightMetres": 2.6798200726509096,
-        "depthMetres": 1.4453312158584595,
-        "depthCoverage": 1.1117932429680457
+        "heightMetres": 2.6802101254463198,
+        "depthMetres": 1.5137010216712952,
+        "depthCoverage": 1.1643854012856116
       },
-      "triangles": 4936,
-      "bytes": 57684,
+      "triangles": 8890,
+      "bytes": 64272,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "6faf541ad5ec9cef",
+        "sourceHash": "ddac9403630d4828",
         "buildVersion": 2,
-        "bytes": 27932,
-        "triangles": 1314
+        "bytes": 56352,
+        "triangles": 2732
       }
     },
     "carmiggelt-borstbeeld": {
@@ -51932,7 +51962,7 @@
         ],
         "max": [
           0.39614737033843994,
-          1.965000033378601,
+          1.964961051940918,
           0.39614737033843994
         ]
       },
@@ -51948,13 +51978,19 @@
       },
       "extent": {
         "widthMetres": 0.7922947406768799,
-        "heightMetres": 1.9650000095367428,
+        "heightMetres": 1.9649610280990597,
         "depthMetres": 0.7922947406768799,
         "depthCoverage": 1.3204912344614665
       },
-      "triangles": 1208,
-      "bytes": 13852,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 8698,
+      "bytes": 45972,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "a9f3fbc991ba4591",
+        "buildVersion": 2,
+        "bytes": 37788,
+        "triangles": 1802
+      }
     },
     "winkler-prins-monument": {
       "id": "winkler-prins-monument",
@@ -52078,14 +52114,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -0.7181138396263123,
+          -0.675000011920929,
           4.7683716530855236e-8,
-          -0.574999988079071
+          -0.6523568034172058
         ],
         "max": [
           0.675000011920929,
-          3.4600000381469727,
-          0.574999988079071
+          3.459995746612549,
+          0.7063568234443665
         ]
       },
       "placement": {
@@ -52099,15 +52135,21 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 1.3931138515472412,
-        "heightMetres": 3.459999990463256,
-        "depthMetres": 1.149999976158142,
-        "depthCoverage": 0.9583333134651184
+        "widthMetres": 1.3587136268615723,
+        "heightMetres": 3.4599956989288323,
+        "depthMetres": 1.350000023841858,
+        "depthCoverage": 1.125000019868215
       },
-      "triangles": 2766,
-      "bytes": 26628,
+      "triangles": 6034,
+      "bytes": 42448,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "held": true,
+      "lod1": {
+        "sourceHash": "d37201221a696b1d",
+        "buildVersion": 2,
+        "bytes": 25424,
+        "triangles": 1164
+      }
     },
     "kinderbrug-jongen-konijnen": {
       "id": "kinderbrug-jongen-konijnen",
@@ -52155,12 +52197,12 @@
         "min": [
           -0.675000011920929,
           4.7683716530855236e-8,
-          -0.574999988079071
+          -0.650513231754303
         ],
         "max": [
           0.675000011920929,
-          3.4600000381469727,
-          0.574999988079071
+          3.459995746612549,
+          0.710513174533844
         ]
       },
       "placement": {
@@ -52174,15 +52216,21 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 1.350000023841858,
-        "heightMetres": 3.459999990463256,
-        "depthMetres": 1.149999976158142,
-        "depthCoverage": 0.9583333134651184
+        "widthMetres": 1.361026406288147,
+        "heightMetres": 3.4599956989288323,
+        "depthMetres": 1.350000023841858,
+        "depthCoverage": 1.125000019868215
       },
-      "triangles": 1472,
-      "bytes": 15812,
+      "triangles": 6034,
+      "bytes": 42376,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "held": true,
+      "lod1": {
+        "sourceHash": "93e98bd5315de9da",
+        "buildVersion": 2,
+        "bytes": 23204,
+        "triangles": 1040
+      }
     },
     "gandhi-churchill-laan": {
       "id": "gandhi-churchill-laan",
@@ -52237,7 +52285,7 @@
         ],
         "max": [
           3.4000000953674316,
-          3.200000047683716,
+          3.1995837688446045,
           4.492386817932129
         ]
       },
@@ -52253,18 +52301,18 @@
       },
       "extent": {
         "widthMetres": 8.984773635864258,
-        "heightMetres": 3.200000047683716,
+        "heightMetres": 3.1995837688446045,
         "depthMetres": 7.900000095367432,
         "depthCoverage": 0.8977272835644808
       },
-      "triangles": 5432,
-      "bytes": 62476,
+      "triangles": 9695,
+      "bytes": 84588,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "42c051d7754d99f5",
+        "sourceHash": "339181a31e96abad",
         "buildVersion": 2,
-        "bytes": 38504,
-        "triangles": 1830
+        "bytes": 40740,
+        "triangles": 1951
       }
     },
     "de-schreeuw-oosterpark": {
@@ -52549,7 +52597,7 @@
         ],
         "max": [
           2.99928617477417,
-          6.143473148345947,
+          6.143855571746826,
           3.4309003353118896
         ]
       },
@@ -52565,18 +52613,18 @@
       },
       "extent": {
         "widthMetres": 7.123937606811523,
-        "heightMetres": 6.143473150134087,
+        "heightMetres": 6.143855573534966,
         "depthMetres": 6.43018651008606,
         "depthCoverage": 0.45929903643471853
       },
-      "triangles": 4880,
-      "bytes": 53704,
+      "triangles": 7864,
+      "bytes": 68320,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "5dce32739bc8cd46",
+        "sourceHash": "cfe7909241c5b93b",
         "buildVersion": 2,
-        "bytes": 35636,
-        "triangles": 1531
+        "bytes": 29824,
+        "triangles": 1203
       }
     },
     "motorkade-1": {

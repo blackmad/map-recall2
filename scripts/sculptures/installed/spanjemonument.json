@@ -1,0 +1,32 @@
+{
+ "id": "spanjemonument",
+ "provenance": "scripts/sculptures/rebuild-sources/spanjemonument.json",
+ "figures": [
+  {
+   "name": "flyers",
+   "glb": "scripts/sculptures/installed/spanjemonument/flyers.glb",
+   "at": [
+    0.688,
+    5.148,
+    -0.318
+   ],
+   "cut": {
+    "min": [
+     -1,
+     5.1,
+     -1.5
+    ],
+    "max": [
+     2.2,
+     6.4,
+     0.7
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)"
+  }
+ ]
+}

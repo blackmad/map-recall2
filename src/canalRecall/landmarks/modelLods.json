@@ -53,6 +53,12 @@
   "bytes": 84924,
   "triangles": 4631
  },
+ "teun-de-jager": {
+  "sourceHash": "e75a89af6d620770",
+  "buildVersion": 2,
+  "bytes": 24920,
+  "triangles": 1080
+ },
  "westerkerk": {
   "sourceHash": "c0fc848649680324",
   "buildVersion": 2,
@@ -436,6 +442,12 @@
   "buildVersion": 2,
   "bytes": 45796,
   "triangles": 2254
+ },
+ "de-dokwerker": {
+  "sourceHash": "2358cce2579ce451",
+  "buildVersion": 2,
+  "bytes": 37888,
+  "triangles": 1808
  },
  "westermoskee": {
   "sourceHash": "443a9ca11112e4fa",
@@ -1650,16 +1662,16 @@
   "triangles": 3299
  },
  "rembrandtmonument": {
-  "sourceHash": "789043ca1e977063",
+  "sourceHash": "25a9f7d133328b2a",
   "buildVersion": 2,
-  "bytes": 37992,
-  "triangles": 1672
+  "bytes": 58820,
+  "triangles": 2855
  },
  "vondelmonument": {
-  "sourceHash": "6ac87d4c2310cfcf",
+  "sourceHash": "5f88f48d99715441",
   "buildVersion": 2,
-  "bytes": 37856,
-  "triangles": 1794
+  "bytes": 78292,
+  "triangles": 4094
  },
  "begijnhof": {
   "sourceHash": "f4572b102b6d517e",
@@ -1686,22 +1698,40 @@
   "triangles": 1284
  },
  "wilhelmina-ruiterstandbeeld": {
-  "sourceHash": "ce5ceee85bd19387",
+  "sourceHash": "f25096f25e831407",
   "buildVersion": 2,
-  "bytes": 27580,
-  "triangles": 1206
+  "bytes": 34660,
+  "triangles": 1526
  },
  "sarphatimonument": {
-  "sourceHash": "2ebf7005547722f2",
+  "sourceHash": "68d73896c3a5ffb2",
   "buildVersion": 2,
-  "bytes": 63920,
-  "triangles": 3215
+  "bytes": 71200,
+  "triangles": 3783
  },
  "thorbecke-standbeeld": {
-  "sourceHash": "41535bb315fa8feb",
+  "sourceHash": "099d46093ba4a47d",
   "buildVersion": 2,
-  "bytes": 31568,
-  "triangles": 1478
+  "bytes": 55528,
+  "triangles": 2746
+ },
+ "multatuli-standbeeld": {
+  "sourceHash": "525e790cde684c79",
+  "buildVersion": 2,
+  "bytes": 26008,
+  "triangles": 1028
+ },
+ "lieverdje": {
+  "sourceHash": "f7a9c22f444051bc",
+  "buildVersion": 2,
+  "bytes": 22580,
+  "triangles": 942
+ },
+ "anne-frank-merwedeplein": {
+  "sourceHash": "5e2a5a2077afe355",
+  "buildVersion": 2,
+  "bytes": 35116,
+  "triangles": 1606
  },
  "walraven-van-hall": {
   "sourceHash": "f8c7dbce34f4cc8e",
@@ -1722,16 +1752,22 @@
   "triangles": 6514
  },
  "johnny-jordaan-groep": {
-  "sourceHash": "d1d0e32949f7736b",
+  "sourceHash": "8a8093a144c3965a",
   "buildVersion": 2,
-  "bytes": 46468,
-  "triangles": 2231
+  "bytes": 99688,
+  "triangles": 5452
  },
  "theo-thijssen-standbeeld": {
-  "sourceHash": "6faf541ad5ec9cef",
+  "sourceHash": "ddac9403630d4828",
   "buildVersion": 2,
-  "bytes": 27932,
-  "triangles": 1314
+  "bytes": 56352,
+  "triangles": 2732
+ },
+ "carmiggelt-borstbeeld": {
+  "sourceHash": "a9f3fbc991ba4591",
+  "buildVersion": 2,
+  "bytes": 37788,
+  "triangles": 1802
  },
  "winkler-prins-monument": {
   "sourceHash": "dc04963f913b3880",
@@ -1739,11 +1775,23 @@
   "bytes": 16316,
   "triangles": 720
  },
- "gandhi-churchill-laan": {
-  "sourceHash": "42c051d7754d99f5",
+ "kinderbrug-meisje-eekhoorns": {
+  "sourceHash": "d37201221a696b1d",
   "buildVersion": 2,
-  "bytes": 38504,
-  "triangles": 1830
+  "bytes": 25424,
+  "triangles": 1164
+ },
+ "kinderbrug-jongen-konijnen": {
+  "sourceHash": "93e98bd5315de9da",
+  "buildVersion": 2,
+  "bytes": 23204,
+  "triangles": 1040
+ },
+ "gandhi-churchill-laan": {
+  "sourceHash": "339181a31e96abad",
+  "buildVersion": 2,
+  "bytes": 40740,
+  "triangles": 1951
  },
  "waterdraagster-bellamyplein": {
   "sourceHash": "9686e52663e2b64e",
@@ -1758,10 +1806,10 @@
   "triangles": 892
  },
  "spanjemonument": {
-  "sourceHash": "5dce32739bc8cd46",
+  "sourceHash": "cfe7909241c5b93b",
   "buildVersion": 2,
-  "bytes": 35636,
-  "triangles": 1531
+  "bytes": 29824,
+  "triangles": 1203
  },
  "motorkade-1": {
   "sourceHash": "ceded78930018e4f",

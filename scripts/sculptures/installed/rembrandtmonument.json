@@ -1,0 +1,32 @@
+{
+ "id": "rembrandtmonument",
+ "provenance": "scripts/sculptures/rebuild-sources/rembrandtmonument.json",
+ "figures": [
+  {
+   "name": "painter",
+   "glb": "scripts/sculptures/installed/rembrandtmonument/painter.glb",
+   "at": [
+    -0.089,
+    3.85,
+    -0.096
+   ],
+   "cut": {
+    "min": [
+     -1.2,
+     3.85,
+     -1.2
+    ],
+    "max": [
+     1.2,
+     7,
+     1.2
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)"
+  }
+ ]
+}
