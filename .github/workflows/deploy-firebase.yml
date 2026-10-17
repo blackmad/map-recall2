@@ -28,6 +28,9 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    # Job-level so the Sentry source-map step can guard on `env.SENTRY_AUTH_TOKEN`.
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -38,6 +41,15 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+      # Write Canal Recall's runtime config before Vite copies public/ to dist/
+      # and before the canalrecall site is assembled, so the deployed page reads
+      # the deploy-time Sentry / App Check keys.
+      - name: Write Canal Recall runtime config
+        env:
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          GITHUB_SHA: ${{ github.sha }}
+          APPCHECK_SITE_KEY: ${{ secrets.APPCHECK_SITE_KEY }}
+        run: node scripts/write-runtime-config.mjs
       # No DEPLOY_TARGET here: each Firebase site serves from its own domain
       # root, so the build keeps Vite's default '/' base.
       - run: npm run build
@@ -51,6 +63,20 @@ jobs:
           VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
           VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
           VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+          VITE_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          VITE_RELEASE: ${{ github.sha }}
+          VITE_APPCHECK_SITE_KEY: ${{ secrets.APPCHECK_SITE_KEY }}
+      # Upload Vite source maps to Sentry, then delete them so they never deploy.
+      # Skipped until the Sentry auth token secret exists.
+      - name: Upload source maps to Sentry
+        if: env.SENTRY_AUTH_TOKEN != ''
+        env:
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        run: |
+          npx @sentry/cli sourcemaps inject dist
+          npx @sentry/cli sourcemaps upload --release "$GITHUB_SHA" dist
+          find dist -name '*.map' -delete
       - run: node scripts/assemble-canalrecall-site.mjs
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e:smoke
