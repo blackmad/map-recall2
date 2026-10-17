@@ -187,7 +187,7 @@ export interface RecallStore extends AnswerRecallStore {
   init(): Promise<unknown>;
   signIn(): Promise<unknown>;
   signOut(): Promise<unknown>;
-  onUserChange(listener: (user: { label: string } | null) => void): void;
+  onUserChange(listener: (user: { label: string; photoURL?: string | null } | null) => void): void;
   knownPlaces(): Array<{ name: string; center: LatLon }>;
   dueReviews?(): Array<{
     name: string;
