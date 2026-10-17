@@ -745,10 +745,6 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     `build:explorer-index` after model installs (add `--check` to check:canal).
   - Clarity finding 16 (HUD names the start street before any question):
     awaiting the user's decision on whether that street can be asked later.
-  - `mobile-overlays.spec.ts` iphone, red on main: "phone setup shows every
-    main choice above Start" (Hard ends at 477 px, rail at 416 px — needs a
-    slimmer plaque, one-line briefing, or moving the report/help row) and
-    "settings and help stay tucked while riding until the map is tapped".
   - `check:canal` red on main (pre-existing, found by the dead-code lane):
     `test:look` — `face-gorontalo-25-47-r1` has no entry in
     `chunkWallExposureData.ts` (rerun `build-chunk-wall-exposure.ts`);
