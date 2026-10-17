@@ -79,6 +79,13 @@ test('the tiles sit above the basemap ground and flat footprints, below its 3D b
   ];
   assert.equal(overviewTilesBeforeId(layers), 'cycle-tracks');
   assert.equal(overviewTilesBeforeId(layers.slice(0, 5)), undefined);
+  // Vondelpark z13.5–14 regression: the game's park landscape (fill from z13, painted the park token) sits under the
+  // first extrusion; the tiles go over it, below its bench extrusions.
+  const withPark = [...layers.slice(0, 6),
+    { id: 'park-landscape-ground', type: 'fill', source: 'park-landscape' }, { id: 'park-landscape-path-edge', type: 'line', source: 'park-landscape' },
+    { id: 'park-landscape-path', type: 'line', source: 'park-landscape' }, { id: 'park-landscape-benches', type: 'fill-extrusion', source: 'park-landscape' },
+    ...layers.slice(6)];
+  assert.equal(overviewTilesBeforeId(withPark), 'park-landscape-benches');
 });
 
 test('tile maths: a point lies in its tile; pyramids average by coverage', () => {

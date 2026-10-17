@@ -56,11 +56,20 @@ export function tilesetMismatch(manifest: Pick<OverviewTilesManifest, 'colours' 
 
 interface LayerLike { id: string; type: string; source?: string; 'source-layer'?: string }
 
-/** The id the tiles' layer goes before: the layer right above the basemap's topmost flat ground or footprint layer (undefined: on top). */
+/**
+ * The game's own flat ground layers that the tiles already draw and must cover. park-landscape.js inserts its park
+ * fill (minzoom 13) and path lines just under the first extrusion, above liberty's ground; basemapPalette's `/^park/`
+ * then paints them the park token, so from z13 the Vondelpark read 96,140,70 over the tiles' lawn 110,154,74.
+ */
+export const GAME_FLAT_GROUND_PREFIXES = ['park-landscape-'];
+
+/** The id the tiles' layer goes before: the layer right above the topmost flat ground or footprint layer, basemap or game (undefined: on top). */
 export function overviewTilesBeforeId(layers: readonly LayerLike[]): string | undefined {
   let last = -1;
   layers.forEach((l, i) => {
-    if (l.type === 'background' || ((l.type === 'fill' || l.type === 'line') && BASEMAP_GROUND_SOURCE_LAYERS.includes(l['source-layer'] ?? ''))) last = i;
+    if (l.type === 'background') last = i;
+    else if ((l.type === 'fill' || l.type === 'line')
+      && (BASEMAP_GROUND_SOURCE_LAYERS.includes(l['source-layer'] ?? '') || GAME_FLAT_GROUND_PREFIXES.some(p => l.id.startsWith(p)))) last = i;
   });
   return layers[last + 1]?.id;
 }

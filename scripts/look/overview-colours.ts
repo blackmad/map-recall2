@@ -104,7 +104,12 @@ async function capture(page: Page, file: string, samples: Sample[]) {
       const p = m.project([s.lng, s.lat]);
       const dLat = patch / 2 / 111320, dLng = patch / 2 / (111320 * Math.cos(s.lat * Math.PI / 180));
       const a = m.project([s.lng - dLng, s.lat + dLat]), b = m.project([s.lng + dLng, s.lat - dLat]);
-      return { x: p.x, y: p.y, half: Math.max(1, Math.abs(b.x - a.x) / 2, Math.abs(b.y - a.y) / 2) };
+      // Flat layers drawn over our overview raster at this point (top first): what hides the tiles' colour.
+      const order = m.getStyle().layers as { id: string; type: string }[];
+      const tilesAt = order.findIndex(l => l.id === 'canal-overview-ground');
+      const over = tilesAt < 0 ? [] : [...new Set((m.queryRenderedFeatures([p.x, p.y]) as { layer: { id: string; type: string } }[])
+        .filter(f => (f.layer.type === 'fill' || f.layer.type === 'line') && order.findIndex(l => l.id === f.layer.id) > tilesAt).map(f => f.layer.id))];
+      return { x: p.x, y: p.y, half: Math.max(1, Math.abs(b.x - a.x) / 2, Math.abs(b.y - a.y) / 2), over };
     });
   }, { samples, patch: PATCH_M });
   const zoom = await page.evaluate(() => +(window as any).canalRecallGame.vectorMap.map.getZoom().toFixed(2));
@@ -125,7 +130,7 @@ async function capture(page: Page, file: string, samples: Sample[]) {
       const h = Math.min(p.half, 200);
       for (let y = Math.max(0, Math.round(p.y - h)); y <= Math.min(info.height - 1, Math.round(p.y + h)); y++)
         for (let x = Math.max(0, Math.round(p.x - h)); x <= Math.min(info.width - 1, Math.round(p.x + h)); x++) { const c = px(x, y); sum[0] += c[0]; sum[1] += c[1]; sum[2] += c[2]; n++; }
-      return { name: samples[k].name, cls: samples[k].cls, point: med, patch: sum.map(v => Math.round(v / Math.max(1, n))) };
+      return { name: samples[k].name, cls: samples[k].cls, over: p.over, point: med, patch: sum.map(v => Math.round(v / Math.max(1, n))) };
     }),
   };
 }
@@ -158,8 +163,8 @@ for (const name of spots) {
   await page.evaluate(() => { (window as any).__tz = null; });
   (report.spots as Record<string, unknown>)[name] = { ...spot, playZoom, frames };
   console.log(`\n${spot.label}`);
-  for (const f of frames as { zoom: number; ride?: boolean; samples: { name: string; point: number[]; patch: number[] }[] }[]) {
-    console.log(`  ${f.ride ? 'ride ' : 'plan '} z${f.zoom.toFixed(2)}  ` + f.samples.map(s => `${s.name}: pt ${css(s.point)} patch ${css(s.patch)}`).join('  |  '));
+  for (const f of frames as { zoom: number; ride?: boolean; samples: { name: string; point: number[]; patch: number[]; over: string[] }[] }[]) {
+    console.log(`  ${f.ride ? 'ride ' : 'plan '} z${f.zoom.toFixed(2)}  ` + f.samples.map(s => `${s.name}: pt ${css(s.point)} patch ${css(s.patch)}${s.over.length ? ` over tiles: ${s.over.join(',')}` : ''}`).join('  |  '));
   }
   const last = (frames.at(-2) as { samples: { point: number[] }[] }), first = frames[0] as { samples: { point: number[] }[] };
   spot.samples.forEach((s, k) => console.log(`  ΔE76 ${s.name}: z${zooms[0]} vs z${zooms.at(-1)} ${deltaE(first.samples[k].point, last.samples[k].point).toFixed(1)}`));
