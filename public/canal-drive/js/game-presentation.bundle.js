@@ -50142,7 +50142,7 @@
         if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
         const bestInFooter = level2 >= 1 && !!bestText;
         if (bestInFooter) footerBits.unshift(bestText.replace("\u2605  ", "\u2605 "));
-        const statsPerRow = compact ? Math.min(3, stats.length) : stats.length;
+        const statsPerRow = compact ? Math.ceil(stats.length / Math.ceil(stats.length / 3)) : stats.length;
         const statRows = Math.ceil(stats.length / statsPerRow);
         const ROW_H = level2 >= 2 ? 42 : 48;
         blocks2.push({ height: 30 + statRows * ROW_H, rule: true, draw: (top) => {
