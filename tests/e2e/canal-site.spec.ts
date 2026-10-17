@@ -36,10 +36,13 @@ test('landing page leads to the ride and the quiz on the same origin', async ({ 
   expect(explore.status()).toBe(200);
   expect(await explore.text()).toContain('<title>Buildings');
 
-  // Having opened the ride, the bare root forwards a returning player back to it…
+  // Having opened the ride, the bare root still shows the landing page (user
+  // 2026-10-17); only a root link carrying a route forwards to the ride…
   await page.goto(`${site}/`);
-  await expect(page).toHaveURL(`${origin}/ride`);
-  // …while Home always shows the landing page.
+  await expect(page).toHaveURL(`${origin}/`);
+  await page.goto(`${site}/?travel=boat`);
+  await expect(page).toHaveURL(`${origin}/ride?travel=boat`);
+  // …and Home (`?home`) shows the landing page with a clean URL.
   await page.goto(`${site}/?home`);
   await expect(page).toHaveURL(`${origin}/`);
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();

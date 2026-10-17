@@ -60,7 +60,7 @@ export function canalPageLinks(pathname: string): SiteLinks {
   return at < 0 ? siteLinks('canal-site') : siteLinks('dev', pathname.slice(0, at + 1));
 }
 
-/** Set by the ride on load; the landing page forwards a returning player straight to it. */
+/** Set by the ride on load. The landing page no longer forwards on it (user 2026-10-17); kept for returning-player copy. */
 export const RETURNING_PLAYER_KEY = 'canalRecall.returningPlayer.v1';
 
 export function markReturningPlayer(storage: Pick<Storage, 'setItem'> | undefined): void {

@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <script>
 // Landing page at the site root. Old links to the root carried the ride's own
-// query (route, mode, home address…) or hash, and a player who has ridden before
-// wants the ride, not the pitch: both go straight to /ride, before anything else
-// loads. `?home` (the Home switch) always shows this page.
+// query (route, mode, home address…) or hash: those go straight to /ride,
+// before anything else loads. Everyone else, returning players included
+// (user 2026-10-17), sees this page; `?home` (the Home switch) is stripped.
 (function () {
   var dev = location.pathname.indexOf('/canal-drive/') >= 0;
   var params = new URLSearchParams(location.search);
@@ -15,9 +15,7 @@
     return;
   }
   if (dev || !/^\/(index\.html)?$/.test(location.pathname)) return;
-  var returning = false;
-  try { returning = localStorage.getItem('canalRecall.returningPlayer.v1') === '1'; } catch (e) {}
-  if (location.search || location.hash || returning) location.replace('/ride' + location.search + location.hash);
+  if (location.search || location.hash) location.replace('/ride' + location.search + location.hash);
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
