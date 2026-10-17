@@ -6,6 +6,7 @@
  *   public/data/extracts/<city>/staging/bridge-data/
  *     bridges.json              the shipped file
  *     manifest.json             bridges partition bytes updated
+ *     facts.json                bridge trivia openings re-taken from the ledes
  *     bridge-data-report.json   bytes before/after, every change by name
  *
  * What it does to the published bridges.json, in order:
@@ -18,12 +19,16 @@
  *   3. cards from `scripts/data/bridge-card-overrides.json` (sourced, for
  *      bridges whose OSM name is a former unofficial name);
  *   4. each translated lede set to its reviewed entry in
- *      `scripts/english-translations.json` (keyed by the Dutch source's hash).
+ *      `scripts/english-translations.json` (keyed by the Dutch source's hash);
+ *   5. each bridge's trivia `opening` in facts.json re-taken from its lede by
+ *      `openingSentence`, so the trivia card does not keep the machine text
+ *      ("a structural work of art") or a name cut at "Jacobsz.". Openings of
+ *      other collections (hand-written for landmarks) are left alone.
  *
  *   npx tsx scripts/stage-bridge-data.ts
  *   npx tsx scripts/stage-bridge-data.ts --publish
  *
- * `--publish` copies the staged bridges.json and manifest.json into the
+ * `--publish` copies the staged bridges.json, manifest.json and facts.json into the
  * extract, and refuses if the published bridges.json changed since staging.
  */
 import { createHash } from 'node:crypto';
@@ -32,6 +37,7 @@ import { dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
 import { isBridgeSpelling } from '../src/canalRecall/bridgeDisplayNames';
+import { openingSentence } from '../src/canalRecall/facts/factStore';
 import { readPartition, shipPartition } from './lib/extract-sidecar';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -47,7 +53,7 @@ if (process.argv.includes('--publish')) {
   if (!existsSync(reportPath)) throw new Error(`Nothing staged: run without --publish first (${rel(reportPath)})`);
   const staged = JSON.parse(readFileSync(reportPath, 'utf8')) as { sourceBridgesSha256: string };
   if (sha(bridgesPath) !== staged.sourceBridgesSha256) throw new Error('The published bridges.json changed since staging; re-run without --publish.');
-  for (const file of ['bridges.json', 'manifest.json']) {
+  for (const file of ['bridges.json', 'manifest.json', 'facts.json']) {
     copyFileSync(resolve(stagingDir, file), resolve(extractDir, file));
     console.log(`Published ${rel(resolve(extractDir, file))}`);
   }
@@ -121,12 +127,27 @@ for (const bridge of bridges) {
   bridge.wikipediaExtract = reviewed;
 }
 
+// ---- 5. Bridge trivia openings ----
+const factsPath = resolve(extractDir, 'facts.json');
+const facts = JSON.parse(readFileSync(factsPath, 'utf8')) as { features?: Array<{ id: string; name?: string; collection?: string; opening?: string }> };
+const byId = new Map(bridges.map(bridge => [bridge.id, bridge]));
+const openings: Array<{ name: string; before: string; after: string }> = [];
+for (const feature of facts.features || []) {
+  if (feature.collection !== 'bridges') continue;
+  const next = openingSentence(byId.get(feature.id)?.wikipediaExtract);
+  if (!next || next === feature.opening?.trim()) continue;
+  openings.push({ name: feature.name || feature.id, before: feature.opening || '', after: next });
+  feature.opening = next;
+}
+
 // ---- 1. Ship without the build-only fields ----
 mkdirSync(stagingDir, { recursive: true });
 const shipped = shipPartition('bridges.json', bridges, cityId);
 writeFileSync(resolve(stagingDir, 'bridges.json'), shipped);
 manifest.partitions.bridges = { ...manifest.partitions.bridges, bytes: Buffer.byteLength(shipped) };
 writeFileSync(resolve(stagingDir, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
+// Compact, no trailing newline: as published, so the diff is the openings alone.
+writeFileSync(resolve(stagingDir, 'facts.json'), JSON.stringify(facts));
 
 const size = (text: string) => ({ raw: Buffer.byteLength(text), gzip: gzipSync(text, { level: 9 }).length });
 const before = size(publishedText);
@@ -140,6 +161,8 @@ const report = {
   cards,
   ledesChanged: ledes.length,
   ledes,
+  openingsChanged: openings.length,
+  openings,
 };
 writeFileSync(reportPath, `${JSON.stringify(report, null, 1)}\n`);
 const kb = (bytes: number) => `${(bytes / 1024).toFixed(0)} KB`;
@@ -148,4 +171,5 @@ console.log(`Display names: ${displayNames.length}`);
 for (const row of displayNames) console.log(`  ${row.name} → ${row.displayName} (${row.source})`);
 console.log(`Cards added: ${cards.length} (${cards.join(', ')})`);
 console.log(`Ledes changed: ${ledes.length}`);
+console.log(`Bridge trivia openings changed: ${openings.length}`);
 console.log(`\nStaged in ${rel(stagingDir)}; review, then re-run with --publish.`);

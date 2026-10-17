@@ -38,6 +38,7 @@ import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { travelProfile } from './travelProfile';
 import { routePlaqueName } from './recallRules';
+import { bridgeDisplayNamesOf, displayBridgeName } from '../bridgeDisplayNames';
 import { finishBlurb } from './finishBlurb';
 import { commitShownFact } from '../facts/factStore';
 import { StreetLabelCandidates } from './streetLabelCandidates';
@@ -707,7 +708,8 @@ export class GamePresentationRuntime {
       (text, x, y) => this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y),
       this.quizPromptName || this.quizCandidateName, player,
       (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates())
-        .candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach));
+        .candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach),
+      (text) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text));
 
     // Results replace the live HUD rather than competing with it.
     if (this.state === GameState.FINISHED) { this._renderFinish(); return; }
@@ -751,6 +753,8 @@ export class GamePresentationRuntime {
         candidateName: this.quizCandidateName || '',
         revealed: !!roadName && this.revealedNames.has(roadName),
         learned: !!roadName && this.learnedNames.has(roadName),
+        // A bridge deck prints under its official spelling once it may show.
+        shownName: roadName ? displayBridgeName(bridgeDisplayNamesOf(this.bridges), roadName) : '',
       });
       visibleRouteName = plaque.routeName;
       routeAnswerHidden = plaque.answerHidden;

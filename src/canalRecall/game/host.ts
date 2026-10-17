@@ -339,6 +339,8 @@ export interface RecallHost extends GameCoreHost {
 
 /** Frame composition, the menu, the pause overlay and the finish card. */
 export interface PresentationHost extends GameCoreHost {
+  /** For the plaque's bridge spellings (bridgeDisplayNames.ts). */
+  bridges: Bridge[];
   /** Published trivia and what has been told (LandmarkHost owns them); the ARRIVED card draws from the same rotation. */
   _facts: FactIndex;
   _factRotation: RotationState;

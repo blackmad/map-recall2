@@ -1,6 +1,7 @@
 import type { StreetKnowledgeEntry } from './extracts';
 import { sentencesUpTo } from './landmarkData';
 import { describeRegisteredBridge, type BridgeRegisterFact } from '../bridgeRegister';
+import { ledeSentences } from '../bridgeLedeRepair';
 
 export type RouteKnowledgeType = 'street' | 'water' | 'bridge';
 export type RouteKnowledgeIndex = Map<string, StreetKnowledgeEntry>;
@@ -89,7 +90,10 @@ export function buildRouteKnowledgeIndex(
   return index;
 }
 
-const sentencesOf = (text: string) => text.trim().split(/(?<=[.!?])\s+/).map(part => part.trim()).filter(Boolean);
+// A name's initials and patronymics ("Hendrick Jacobsz. Staetsbrug",
+// "Mr. J. J. van der Veldebrug") do not end a sentence: splitting there put
+// "The Hendrick Jacobsz." alone on the card.
+const sentencesOf = (text: string) => ledeSentences(text).map(part => part.trim()).filter(Boolean);
 
 export const STREET_CARD_DETAIL_CHARS = 150;
 export const STREET_CARD_LONG_CHARS = 280;
