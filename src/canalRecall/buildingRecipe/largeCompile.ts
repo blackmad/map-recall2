@@ -7,7 +7,7 @@
 import * as T from 'three';
 import {compose, intervals, SHEET_PITCH, type Cell, type PanelCtx} from '../blockBuilding/compose.ts';
 import {runGates, type GateReport} from '../blockBuilding/gates.ts';
-import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawArcadeFacing, drawCurtainGrid, drawEntrance, drawGlazedColumns, drawGlazedHall, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStAndrewsCross, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
+import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawArcadeFacing, drawCurtainGrid, CURTAIN_GRID_OVER_SPANDRELS, drawSpandrels, drawEntrance, drawGlazedColumns, drawGlazedHall, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStAndrewsCross, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
 import {fitsPanel, pointInRing, rectPoly, type Panel} from '../blockBuilding/panels.ts';
 import type {BuildingFacts} from './facts.ts';
@@ -15,7 +15,7 @@ import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 
-export interface LargeComponentCounts { arcades?: number; glazedHalls?: number; glassColumns?: number; curtainGrids?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { arcades?: number; glazedHalls?: number; glassColumns?: number; curtainGrids?: number; spandrels?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -29,6 +29,9 @@ export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe
   switch (base) {
     case 'wall': case 'arch': return {materialSlot: recipe.slotMaterial?.[slot] ?? recipe.wallMaterial, surface: 'wall'};
     case 'curtain': return {materialSlot: 'frame', surface: 'wall'};
+    // opaque (frosted or enamelled) spandrel glass of a curtain wall: a smooth stone-cell panel (a measured colour is drawn as authored, cityMeasuredStoneTint), not the glass pane texture; a coloured mesh plinth: a matte render
+    case 'spandrel': return {materialSlot: 'stone', surface: 'wall'};
+    case 'plinth': return {materialSlot: 'stucco', surface: 'wall'};
     case 'glass': return {materialSlot: 'glass', surface: 'glass'};
     case 'frame': case 'rail': return {materialSlot: 'frame', surface: 'joinery'};
     case 'door': return {materialSlot: 'door', surface: 'door'};
@@ -83,8 +86,13 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   // starts above the ground storey and a closed dark panel covers it.
   if (c.layered && g.system === 'curtain-wall' && info.cells.length) {
     const plinth = g.ground === 'mesh-plinth', cells = plinth ? info.cells.filter(x => x.floor > 0) : info.cells, top = panelEaves(p) - 0.05;
-    if (plinth && drawPlinthPanel(c, Math.max(0, p.vMin), groundTop, s.door)) counts.plinths = (counts.plinths ?? 0) + 1;
-    if (cells.length && top - p.vMin > 2 && drawCurtainGrid(c, cells, levels, s.curtain, top)) counts.curtainGrids = (counts.curtainGrids ?? 0) + 1;
+    if (plinth && drawPlinthPanel(c, Math.max(0, p.vMin), groundTop, g.plinthSlot ?? s.door)) counts.plinths = (counts.plinths ?? 0) + 1;
+    if (g.spandrels && cells.length && top - p.vMin > 2) {
+      // Spandrel panels on the 9 cm layer, the grid in front of them (transoms 13.5 cm, mullions 18 cm) with rails at the panel edges.
+      const sp = drawSpandrels(c, cells, levels, g.spandrels, top);
+      if (sp.panels) counts.spandrels = (counts.spandrels ?? 0) + sp.panels;
+      if (drawCurtainGrid(c, cells, sp.gridLevels, s.curtain, top, CURTAIN_GRID_OVER_SPANDRELS)) counts.curtainGrids = (counts.curtainGrids ?? 0) + 1;
+    } else if (cells.length && top - p.vMin > 2 && drawCurtainGrid(c, cells, levels, s.curtain, top)) counts.curtainGrids = (counts.curtainGrids ?? 0) + 1;
   }
   // Glazed hall over its brick base; glass columns over their bays (after the openings, before the cornice).
   if (g.hall && info.cells.length && drawGlazedHall(c, info.cells, g.hall.baseM, panelEaves(p) - 0.05, g.hall.lights, g.hall.rows, {wall: s.wall, frame: s.frame, stone: s.stone})) counts.glazedHalls = (counts.glazedHalls ?? 0) + 1;

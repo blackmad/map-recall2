@@ -48751,6 +48751,155 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-17T02:02:02.707Z"
+    },
+    {
+      "id": "ordinary-0363100012077325",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012077325",
+      "name": "Gerrit Rietveld Academie, the Rietveld building (1967, Gerrit Rietveld with J. van Dillen and J. van Tricht), Fred. Roeskestraat 96: a four-storey glass box on a low dark plinth, a fully glazed curtain wall of square grey modules where every floor is a clear vision band between frosted spandrel bands, beside a low workshop wing with saw-tooth roofs",
+      "hash": "763e41a8b5a544cda0587e57ec64188ecc0ae31659f306a0ee6cf889b3c2bac3",
+      "sha256": "763e41a8b5a544cda0587e57ec64188ecc0ae31659f306a0ee6cf889b3c2bac3",
+      "meshHash": "512992958aea9eab",
+      "bytes": 296992,
+      "triangles": 4100,
+      "materials": 10,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -38.875,
+          -0.001,
+          -32.022
+        ],
+        "max": [
+          39.976,
+          21.059,
+          30.762
+        ]
+      },
+      "anchor": [
+        4.8598499,
+        52.3418243
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8603852,
+              52.3421142
+            ],
+            [
+              4.8594634,
+              52.3420798
+            ],
+            [
+              4.859463,
+              52.3420828
+            ],
+            [
+              4.859278,
+              52.3420759
+            ],
+            [
+              4.8592983,
+              52.3418817
+            ],
+            [
+              4.8595435,
+              52.3418912
+            ],
+            [
+              4.8595433,
+              52.341894
+            ],
+            [
+              4.860158,
+              52.3419179
+            ],
+            [
+              4.8601805,
+              52.3416916
+            ],
+            [
+              4.8599343,
+              52.3416825
+            ],
+            [
+              4.8599476,
+              52.3415482
+            ],
+            [
+              4.8601321,
+              52.3415544
+            ],
+            [
+              4.8601318,
+              52.3415568
+            ],
+            [
+              4.8604395,
+              52.3415683
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 21.06,
+      "height": 21.06,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-rietveld-gebouw-077325.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012077325"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "rietveld-gebouw-077325",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012077325/w01-357w21.jpg",
+          "source-data://pand-reference-walls/0363100012077325/w11-357m17.jpg",
+          "source-data://pand-reference-walls/0363100012077325/w02-87s2far.thumb.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "curtain-wall 5st 19b",
+          "curtain-wall 4st 6b",
+          "curtain-wall 5st 10b",
+          "curtain-wall 5st 23b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.35 mean 0.58 vs photo 0.39; wall family unresolved (#4a4b47 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 6 vs photo 20)); inferred: wall colour passes (dL 0.09) and the module count matches the photo (photo 20 columns on panel 56, model 19 square 2.07 m modules), the glazing FAIL is the measurement on transparent glass: lit interiors and tree reflections in the vision bands class as wall (photo storeys 0.63/0.21/0.49/0.27 alternate with no change in the facade), judged side by side on the sheet instead",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.42 mean 0.43 vs photo 0.27; columns 6 vs photo 4)); inferred: pale plinth to the second floor and the same curtain wall over it, wall colour dL 0.01, glazing undercounted as on walls[0] (reflective glass behind a tree), module count 6 vs photo 4 counted through the tree",
+        "walls[2] not confirmed by the photo (NO EVIDENCE (foliage 33 % > 25 %)); inferred: east end of the glass block: the 2019 panorama from the Fred. Roeskestraat corner shows its upper storeys' frosted and clear squares over the old neighbour, the lower storeys inferred as walls[0]",
+        "walls[3] not confirmed by the photo (NO PHOTO); inferred: south and west walls of the glass block face the courtyard and the 2001 neighbour, no panorama, inferred as walls[0] because the block is one curtain-wall box",
+        "otherWalls: the workshop wing's walls (no panorama; the east panorama of 2019 shows the old neighbour in front of it) stay blank in the render colour of the west plinth (#858880); the narrow full-height 3DBAG slivers at the corners and the stair cores (18-21 m tall) are in walls[4] with the roof heads, dark, so no pale strips cut the glass. Not expressed: the interior columns seen through the glass, the occasional opaque infill panes in the vision bands, the bicycle racks."
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012077325",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-17T08:39:59.601Z"
     }
   ]
 }

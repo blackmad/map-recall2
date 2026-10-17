@@ -771,7 +771,7 @@ export interface LargeWallIntent {
    * Group colours when they differ from the house palette (`brick` = this group's wall, `glass` = its glazing, `arch` = the
    * brick arch rings over arched openings, default a shade darker than the wall).
    */
-  palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone' | 'glass'>> & {arch?: string};
+  palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone' | 'glass'>> & {arch?: string; /** the mesh plinth panel under a layered curtain wall (`ground: "mesh-plinth"`), a matte panel in this colour instead of the door slot (the Rietveld building's white rendered plinth) */ plinth?: string};
   /**
    * Measured window proportions (`measure.ts` from the rectified photo; replaces the `windows` preset's size): `w` window
    * width as a fraction of the bay, `h` height as a fraction of the storey, `sill` sill height as a fraction of the storey.
@@ -845,6 +845,19 @@ export interface LargeWallIntent {
   lantern?: boolean;
   /** Perforated-brick screen (car parks): a concrete lattice of posts and rails over the wall, glass-block perforations in one bay of three; brick-bay-grid only. */
   screen?: boolean;
+  /**
+   * Layered `curtain-wall` with opaque spandrel panels (the Rietveld building, 1967: every storey is a 2 m vision band
+   * between frosted panels over the floor slab and under the ceiling): in every storey above the ground, a panel `sill`
+   * of the storey tall over its floor line and one `head` of the storey under the next floor line (fractions of an upper
+   * storey; the top storey's head panel runs up to the eaves), in `colour` (measured from the crop; default the group's
+   * frame colour). The grid gains transoms at the panel edges. Absent: the plain grid, byte-identical.
+   */
+  spandrels?: {sill?: number; head?: number; colour?: string};
+  /**
+   * The ground storey's height as a fraction of an upper storey (0.3..2.5), when the photo shows it differs from the
+   * ground system's default (a low raised plinth under the Rietveld building's curtain wall: 1.8 m under 4.2 m floors).
+   */
+  groundFactor?: number;
   /**
    * true = the group's 3DBAG facets that link end to end (a curved front kept as a chain of narrow planes) carry one
    * bay rhythm along their arc length, `baysPerStorey`'s pitch continuing round the curve (curve.ts); default: each
