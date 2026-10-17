@@ -734,8 +734,12 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     as `APPCHECK_SITE_KEY`, App Check registration (monitor, then enforce);
     Firebase Auth authorized domains for `/quiz/`; attach `edumap.blackmad.com`
     so the 301 works; check query strings survive it.
-  - In flight: account chip + My progress + route history; neighbourhood
-    explorer with GLB download / report / request; POI stamps + themed tours.
+  - In flight: account chip + My progress + route history; POI stamps +
+    themed tours.
+  - Explorer: Centrum is one 99-building bucket (no Burgwallen-level areas in
+    `boundaries.json`); no "Buildings" item in SiteSwitch yet; decide and state
+    a licence for the models themselves in credits.html; rerun
+    `build:explorer-index` after model installs (add `--check` to check:canal).
   - Clarity findings still open (`docs/preview/gameplay-clarity-review.md`):
     10 zoom badge after the start flight, 11 phone "More" cue over fields,
     12 desktop More options below the fold, 13 blank band after answering,
