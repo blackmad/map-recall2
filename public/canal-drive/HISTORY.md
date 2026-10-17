@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+## Statue rebuild comparison: TRELLIS.2 multi-view beats the kit on 17 of 20 (2026-10-17)
+
+User (2026-10-17), after "these are a little rough": "honestly can we rebuild
+those statues? did we ever try trellis? is tripo still better?". Lane
+`lane/statue-rebuild-20261017` (133e452f5, 7f57ed792, c51f57d60). TRELLIS.2
+multidiffusion (MLX port) on 3–5 licensed Commons photos beats both the figure
+kit and single-view TripoSR wherever 3 or more side views exist; TripoSR stays
+for single-view stone groups (the Kinderbrug) and the Sarphati bust. Verdicts
+at gallery size: 17 better (Lieverdje, Anne Frank Merwedeplein, Multatuli,
+Wilhelmina, Vondel, Dokwerker, Thorbecke slightly, Teun de Jager, Johnny
+Jordaan group in five runs, Theo Thijssen as one casting, Carmiggelt, Gandhi,
+Rembrandt statue, Sarphati bust, Spanjemonument, both Kinderbrug groups); no
+better: Spinoza (head becomes a hood), Mama Baranka (rough-cast bronze gives
+see-through holes); worse: Waterdraagster (TripoSR tilts it). Pipeline
+`scripts/sculptures/rebuild.ts`: Commons fetch with licence gate and author
+(429 retry-after, 1.2–1.5 s spacing), cut-outs (isnet or u2net per view),
+reconstruction under a one-TRELLIS lock (18 GB free), decimation to ~6k tris
+into the kit's material slot (no photo colour), kit surgery keeping plinths
+and architecture (`kitParts.ts`), and a photo | kit | rebuild sheet
+(`docs/images/sculptures/<id>-rebuild.jpg`). Provenance with sculptor, death
+year and PD status per statue in `scripts/sculptures/rebuild-sources/`. TRELLIS
+puts the first photo on −y; silhouette orientation cannot tell front from back
+on dark bronze (Wilhelmina and Spanjemonument set by eye). Nothing installed:
+the GLBs are in the lane's artifacts/ for the user's pick. Only Vondel,
+Thorbecke, Rembrandt and Sarphati are by sculptors dead over 70 years.
+
 ## Verified dead-code cleanup (2026-10-17)
 
 649 lines / 42 KB removed in four batches (`docs/dead-code-cleanup-2026-10-17.md`
