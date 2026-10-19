@@ -74,9 +74,9 @@ export function addBays(b: BuildingTools, w: Wall, o: BayOptions) {
     // behind it (6 cm + 22.5 cm steps, cycling every 7 solids), so no back face is flush with the 3DBAG shell or coplanar
     // with another part: the old 2 cm proud glass/frame and flush sills failed the coplanar-overlap audit on any model with
     // more than a few bays.
-    let n = 0;
+    let sinkN = 0;
     const on = (tt: number, yy: number, bw: number, bh: number, front: number, colour: string, tag?: string) => {
-      const s = 0.06 + ((n++ * 5) % 7) * 0.045;
+      const s = 0.06 + ((sinkN++ * 5) % 7) * 0.045;
       onWall(b, w, tt, yy, bw, bh, front + s, colour, -s, tag);
     };
     on(t, y - 0.12, o.wd + 0.3, 0.14, 0.16, trim);
