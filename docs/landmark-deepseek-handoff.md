@@ -1,5 +1,7 @@
 # DeepSeek handoff: one Amsterdam landmark
 
+> **Superseded (2026-10-19)** by `docs/deepseek-modeling-lanes.md`, which covers running DeepSeek lanes for landmarks, mid-tier (`kind: large`) buildings and z-fight fixes under the current gates. Muiderpoort is already built. Kept for history.
+
 Copy the prompt below into a fresh coding session with access to this repository. Use a separate checkout/worktree from the active Codex session. This is a comparison of the same quality bar, not a cheaper visual approximation. Muiderpoort is a suggested unmodeled, bounded first trial; confirm its current queue status before starting.
 
 ---
