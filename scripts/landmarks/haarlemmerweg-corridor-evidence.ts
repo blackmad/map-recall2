@@ -15,7 +15,39 @@ import path from 'node:path';
 
 const INVENTORY = 'scripts/landmarks/haarlemmerweg-corridor-inventory.json';
 const SOURCE = process.env.MAP_RECALL_SOURCE_DATA ?? '/Users/blackmad/Code/map-recall2-worktrees/source-archive';
-const batch = ['0363100012250971', '0363100012250972', '0363100012116511'];
+const batch = ['0363100012250971', '0363100012250972', '0363100012116511', '0363100012066028'];
+
+/** What the lane actually got out of each Track M pand (B6 steps 0-7), kept next to the wall evidence. */
+const OUTCOMES: Record<string, {houseId: string; triangles: number; likeness: string; outcome: string; reason: string}> = {
+  '0363100012250972': {
+    houseId: 'haarlemmerweg-940',
+    triangles: 18145,
+    likeness: 'walls[0] FAIL (blue-cast crop, wall family and glazing band off by 0.21), walls[1] FAIL (glazing band 0.22, columns 9 vs photo 3), walls[2] NO EVIDENCE (51.6 deg obliquity), walls[3] NO PHOTO',
+    outcome: 'do not install',
+    reason: 'triangle budget: 18,145 tris for 16 storeys x 8 bays on four faces (520 recessed openings); no face of this tower reaches 12k at the measured 2.68 m pitch, and two of the four faces have no usable post-build crop.',
+  },
+  '0363100012250971': {
+    houseId: 'haarlemmerweg-778',
+    triangles: 3686,
+    likeness: 'walls[0] NO EVIDENCE (foliage 42%), walls[1] NO EVIDENCE (foliage 31%, storey pitch read as 5.83 m), walls[2] NO EVIDENCE (foliage 46%), walls[3] NO PHOTO',
+    outcome: 'blocked (no measurable evidence)',
+    reason: 'the only post-build capture is one 2025-07-01 pass and every wall crop is through summer trees (31-46% foliage), so measure.ts refuses all three walls; older crops show the 1980s office block this tower replaced.',
+  },
+  '0363100012116511': {
+    houseId: 'haarlemmerweg-290',
+    triangles: 15262,
+    likeness: 'not judged: the house was held before measure --write (the measured rhythm needs more openings than the budget allows)',
+    outcome: 'held (triangle budget, not built)',
+    reason: '14 storeys x 7 bays on four faces needs 279-377 recessed openings = 15.3k tris, 3.3k over the 12k budget; the balcony-band reading is the kit balcony plus glass rail, which is the expensive form.',
+  },
+  '0363100012066028': {
+    houseId: 'molenwerf-1-066028',
+    triangles: 8828,
+    likeness: 'walls[0] FAIL (wall dL +0.20, glazing storey band 0.45 vs photo 0.54; columns 6 vs 6, shape wide vs wide, IoU 0.63), walls[1] NO PHOTO (the 30 m wing)',
+    outcome: 'held (gates)',
+    reason: 'fits the budget (8,828 tris) and the measured bay rhythm, but eaves-vs-3dbag fails on both groups (group 0 model 19.47 m against a sampled LoD2.2 roof at 4.02 m; group 1 29.73 m against 19.40 m) and one opening sits 1.19 m2 outside a wall; seen at build time, not resolved.',
+  },
+};
 
 type Wall = Record<string, any>;
 type Row = Record<string, any>;
@@ -45,9 +77,9 @@ for (const pand of batch) {
       const usable =
         postBuild === true &&
         (missing ?? 0) < 0.15 &&
-        (foliage ?? 0) < 0.55 &&
-        (washed ?? 0) < 0.5 &&
-        (w.obliquityDeg ?? 90) <= 60;
+        (foliage ?? 0) < 0.25 &&
+        (washed ?? 0) < 0.35 &&
+        (w.obliquityDeg ?? 90) <= 45;
       return {
         wall: w.tag,
         bearing: w.bearing,
@@ -73,7 +105,7 @@ for (const pand of batch) {
     evidenceNote:
       evidence.length === 0
         ? 'no archived wall crop'
-        : `${evidence.filter(e => e.usableForMeasurement).length} of ${evidence.length} archived walls are post-build, unobstructed and front-on enough to measure`,
+        : `${evidence.filter(e => e.usableForMeasurement).length} of ${evidence.length} archived walls pass measure.ts's limits (post-build, foliage < 25%, washed-out < 35%, obliquity <= 45 deg)`,
   };
 }
 
@@ -93,6 +125,7 @@ inv.phase2 = {
       builtYear: row.builtYear,
       side: row.side,
       usableWalls: row.panorama?.usableForMeasurement ?? 0,
+      ...(OUTCOMES[pand] ? OUTCOMES[pand] : {}),
       walls: (row.panorama?.wallEvidence ?? []).map((e: any) => ({
         wall: e.wall,
         bearing: e.bearing,

@@ -1,0 +1,152 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "haarlemmerweg-778",
+ "pandId": "0363100012250971",
+ "address": "Haarlemmerweg 778-938, Amsterdam (Westerpark corner of the Haarlemmerweg corridor): a 2023 dark-brick high-rise, 12 storeys, tall narrow windows and recessed loggias with pale soffits, a glazed ground floor on a paved square",
+ "sources": [
+  {
+   "id": "pano-2025-07-01-n",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-01_09-03-48_00779/",
+   "image": "pand-reference-walls/0363100012250971/w03-359.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-01-w",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-01_09-03-48_00768/",
+   "image": "pand-reference-walls/0363100012250971/w01-269.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-01-e",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-01_09-03-48_00792/",
+   "image": "pand-reference-walls/0363100012250971/w02-89.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    10
+   ],
+   "street": "north front on the paved square off the Haarlemmerweg, with the glazed entrance bay",
+   "system": "brick-bay-grid",
+   "storeys": 11,
+   "baysPerStorey": 7,
+   "ground": "glazed",
+   "windows": "plain",
+   "entrance": true,
+   "palette": {
+    "brick": "#3b3d3e",
+    "frame": "#23272b",
+    "stone": "#d8d5cf"
+   },
+   "windowShape": {
+    "w": 0.38,
+    "h": 0.6,
+    "sill": 0.34
+   }
+  },
+  {
+   "wallSurfaces": [
+    1,
+    5
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 11,
+   "baysPerStorey": 9,
+   "ground": "glazed",
+   "windows": "plain",
+   "palette": {
+    "brick": "#3b3d3e",
+    "frame": "#23272b",
+    "stone": "#d8d5cf"
+   },
+   "windowShape": {
+    "w": 0.38,
+    "h": 0.6,
+    "sill": 0.34
+   }
+  },
+  {
+   "wallSurfaces": [
+    3,
+    4,
+    7
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 11,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "windows": "plain",
+   "palette": {
+    "brick": "#3b3d3e",
+    "frame": "#23272b",
+    "stone": "#d8d5cf"
+   },
+   "windowShape": {
+    "w": 0.38,
+    "h": 0.6,
+    "sill": 0.34
+   }
+  },
+  {
+   "wallSurfaces": [
+    2
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 11,
+   "baysPerStorey": 7,
+   "ground": "glazed",
+   "windows": "plain",
+   "balconies": {
+    "storeys": [
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "rail": "glass",
+    "every": 2,
+    "first": 0
+   },
+   "palette": {
+    "brick": "#3b3d3e",
+    "frame": "#23272b",
+    "stone": "#d8d5cf"
+   },
+   "windowShape": {
+    "w": 0.38,
+    "h": 0.6,
+    "sill": 0.34
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#3b3d3e",
+  "frame": "#23272b",
+  "door": "#1e2124",
+  "stone": "#d8d5cf"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Haarlemmerweg 778-938 (BAG pand 0363100012250971, built 2023, 749 m2, eaves 36.5 m, 12 storeys at 3.0 m). Photographed only after completion, on one day: the north wall at 9.4 m (recording_2025-07-01_09-03-48_00779, 3.6 deg obliquity, 46% foliage from the trees on the square) and the west/east walls from 56-57 m (recording_2025-07-01_09-03-48_00768 at 38 deg and ...00792 at 22.6 deg, 37% and 53% foliage). The 2019 and 2022 crops of the north wall show the low 1980s office block this tower replaced, so they are not evidence.",
+  "walls[0] = panel 7 (north, surface 10, 21.4 m): dark charcoal brick, a grid of tall narrow windows with near-black frames, deep recessed loggias (dark, with pale slab soffits) on the upper floors, and a glazed ground floor with the entrance on the paved square. walls[1] = panel 0 (west, surfaces 1 and 5, 29.8 m) and walls[2] = panels 2 and 4 (east, surfaces 3 and 4 plus the 9.8 m return 7) carry the same dark brick grid; the east face is the one with the stacked projecting balcony boxes seen in the 2025 panorama. walls[3] = panel 1 (south, surface 2, 21.8 m, party wall for 9 m): same treatment, no panorama of its own.",
+  "Simplified: the recessed loggias are drawn as glass-railed balcony slabs on the south group only (the kit projects balconies, it cannot recess one); the east face's projecting balcony boxes are punched windows and piers, which loses their depth. Not drawn: the step in the north facade where the tower meets its lower base, and the panel joints."
+ ]
+}

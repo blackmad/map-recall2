@@ -1,0 +1,176 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "haarlemmerweg-940",
+ "pandId": "0363100012250972",
+ "address": "Haarlemmerweg 940-1060, Amsterdam (Westerpark corner of the Haarlemmerweg corridor): a 2023 white-panel high-rise, 16 storeys, with a regular grid of tall windows on a pale composite-panel skin, a glazed ground floor carrying the Gymbase Westerpark front, and a cantilevered crown block above a dark recessed band",
+ "sources": [
+  {
+   "id": "pano-2025-07-01-w03-359",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-01_09-03-48_00772/",
+   "image": "source-data://pand-reference-walls/0363100012250972/w03-359.jpg",
+   "sha256": "86b5904a01f6f80d0ef63c7bc64ee6116df5b0a399bd195442b293da741ea481",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w04-179",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_26_05_36_39_00285/",
+   "image": "source-data://pand-reference-walls/0363100012250972/w04-179.jpg",
+   "sha256": "9b282341f951695b51e9828120d0884c59c389fd8c9c64ec628d8c85507e08bf",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-s",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_26_05_36_39_00285/",
+   "image": "pand-reference-walls/0363100012250972/w04-179.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-01-n",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-01_09-03-48_00772/",
+   "image": "pand-reference-walls/0363100012250972/w03-359.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-01-e",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-01_09-03-48_00782/",
+   "image": "pand-reference-walls/0363100012250972/w02-89.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    10
+   ],
+   "street": "north front on the Haarlemmerweg; the Gymbase Westerpark entrance and its fascia sit on this wall",
+   "system": "brick-bay-grid",
+   "storeys": 16,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "windows": "plain",
+   "entrance": {
+    "bay": 3,
+    "canopy": true
+   },
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#e4e4e0",
+    "frame": "#59636a",
+    "stone": "#d2d2ce"
+   },
+   "windowShape": {
+    "w": 0.664,
+    "h": 0.25,
+    "sill": 0.2
+   },
+   "hand": [
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    17
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 16,
+   "baysPerStorey": 9,
+   "ground": "glazed",
+   "windows": "plain",
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#e4e4e0",
+    "frame": "#59636a",
+    "stone": "#d2d2ce"
+   },
+   "windowShape": {
+    "w": 0.335,
+    "h": 0.62,
+    "sill": 0.26
+   },
+   "wallSplit": {
+    "at": 0.345,
+    "brick": "#a3a8a5"
+   },
+   "hand": [
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    20
+   ],
+   "system": "ribbon-windows",
+   "storeys": 16,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "windows": "plain",
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#e4e4e0",
+    "frame": "#59636a",
+    "stone": "#d2d2ce"
+   },
+   "hand": [
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    3,
+    4
+   ],
+   "system": "ribbon-windows",
+   "storeys": 16,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "windows": "plain",
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#e4e4e0",
+    "frame": "#59636a",
+    "stone": "#d2d2ce"
+   },
+   "hand": [
+    "palette"
+   ]
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "roofPlant": true,
+ "palette": {
+  "brick": "#e4e4e0",
+  "frame": "#59636a",
+  "door": "#2a2c2c",
+  "stone": "#d2d2ce"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Haarlemmerweg 940-1060 (BAG pand 0363100012250972, built 2023, 802 m2 footprint, eaves 46.9 m, 16 storeys at 2.93 m). Photographed after completion: the north wall in 2025-07-01 (recording_2025-07-01_09-03-48_00772, 35.9 m, 3.2 deg obliquity, 21% foliage) and the south wall in 2025-09-26 (2025_09_26_05_36_39_00285, 50.8 m, 0.6 deg, 29% foliage). The 2019/2022 crops of the same walls show the 1970s concrete block that stood here before and the 2022 scaffolding, so none of them is evidence for this model.",
+  "walls[0] = panel 8 (north, surface 10, 22.6 m): the entrance front. Pale composite panels with a regular grid of tall windows (about 0.9 x 1.9 m at 2.7 m pitch, dark frames), a glazed ground floor with the Gymbase Westerpark fascia and entrance. walls[1] = panel 14 (south, surface 17, 21.8 m) and walls[2] = panel 17 (east, surface 20, 35.5 m, measured at 51.6 deg obliquity so its numbers are coarse) and walls[3] = panels 2 (west, surfaces 3 and 4, 34 m, no panorama reaches it: the W face looks over the canal and the deck).",
+  "Simplified: the white panel skin is exported as render with a measured pale tint (the panel joints are not drawn), the windows are punched plain openings in that skin. Not drawn: the cantilevered white crown that overhangs the east corner above a dark recessed band (a 3DBAG extrusion cannot overhang, and the kit has no cantilever component), the inset upper balconies behind that band, the roof plant enclosure edges and the ground-floor shop glazing subdivisions.",
+  "Measured 2026-10-20 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4879a0 not used (not darker than the wall #7ca9bf by 10 L*, or tinted): kit glass kept; walls[1] wall split #3c3a2d | #a3a8a5 at 35 % (dE 40.6).",
+  "palette hand-held: the 2025 north crop is strongly blue-cast (measure.ts reads #7ca9bf for a white panel wall) and the south crop reads #d9d9d5 raw, so the light panel colour is taken from the south crop and the two are kept the same rather than measuring a cast."
+ ],
+ "measured": {
+  "date": "2026-10-20",
+  "groups": [
+   0,
+   1
+  ]
+ }
+}

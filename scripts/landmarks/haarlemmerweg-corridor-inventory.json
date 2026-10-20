@@ -25,10 +25,10 @@
   "panoramas": "node --import tsx scripts/pand-reference/all-walls.ts --pand=<id> --min-len=8 --max=6 (Gemeente Amsterdam panoramas, CC BY 4.0, via api.data.amsterdam.nl); read back from staging/pand-reference-walls/<pand>/walls.json"
  },
  "tally": {
-  "STREET_SURVEY": 76,
   "TRACK_M": 4,
-  "NO_EVIDENCE": 11,
-  "ALREADY_MODELLED": 1
+  "ALREADY_MODELLED": 1,
+  "STREET_SURVEY": 76,
+  "NO_EVIDENCE": 11
  },
  "rows": [
   {
@@ -197,7 +197,7 @@
       "missingFraction": 0,
       "cameraHeadingDeg": 0,
       "postDatesBuild": true,
-      "usableForMeasurement": true
+      "usableForMeasurement": false
      },
      {
       "wall": "w03-179",
@@ -232,8 +232,8 @@
       "usableForMeasurement": true
      }
     ],
-    "usableForMeasurement": 4,
-    "evidenceNote": "4 of 4 archived walls are post-build, unobstructed and front-on enough to measure"
+    "usableForMeasurement": 3,
+    "evidenceNote": "3 of 4 archived walls pass measure.ts's limits (post-build, foliage < 25%, washed-out < 35%, obliquity <= 45 deg)"
    },
    "status": "grey",
    "coveredBy": [],
@@ -559,7 +559,7 @@
       "missingFraction": 0,
       "cameraHeadingDeg": 0,
       "postDatesBuild": true,
-      "usableForMeasurement": true
+      "usableForMeasurement": false
      },
      {
       "wall": "w02-89",
@@ -575,22 +575,22 @@
       "missingFraction": 0,
       "cameraHeadingDeg": 0,
       "postDatesBuild": true,
-      "usableForMeasurement": true
+      "usableForMeasurement": false
      },
      {
       "wall": "w03-359",
       "bearing": 359,
       "lengthM": 21.8,
       "crop": "0363100012250971/w03-359.jpg",
-      "panorama": "TMX7316010203-001040_pano_0003_000104",
-      "capturedAt": "2019-01-07",
-      "cameraDistM": 9.6,
-      "obliquityDeg": 1,
-      "foliage": 0.0515,
-      "washedOut": 0.5463,
+      "panorama": "recording_2025-07-01_09-03-48_00779",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 9.4,
+      "obliquityDeg": 3.6,
+      "foliage": 0.461,
+      "washedOut": 0.0414,
       "missingFraction": 0,
-      "cameraHeadingDeg": 94.07,
-      "postDatesBuild": false,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
       "usableForMeasurement": false
      },
      {
@@ -610,8 +610,8 @@
       "usableForMeasurement": false
      }
     ],
-    "usableForMeasurement": 2,
-    "evidenceNote": "2 of 4 archived walls are post-build, unobstructed and front-on enough to measure"
+    "usableForMeasurement": 0,
+    "evidenceNote": "0 of 4 archived walls pass measure.ts's limits (post-build, foliage < 25%, washed-out < 35%, obliquity <= 45 deg)"
    },
    "status": "grey",
    "coveredBy": [],
@@ -660,7 +660,203 @@
      "recording_2025-07-01_09-03-48_01377",
      "recording_2025-07-01_09-03-48_01361"
     ],
-    "maxDistM": 34.8
+    "maxDistM": 34.8,
+    "wallEvidence": [
+     {
+      "wall": "w01-358",
+      "bearing": 358,
+      "lengthM": 32.5,
+      "crop": "0363100012066028/w01-358.jpg",
+      "panorama": "recording_2024-09-09_11-06-52_00668",
+      "capturedAt": "2024-09-09",
+      "cameraDistM": 12.4,
+      "obliquityDeg": 1.1,
+      "foliage": 0.3439,
+      "washedOut": 0.0173,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": false
+     },
+     {
+      "wall": "w02-88",
+      "bearing": 88,
+      "lengthM": 32.4,
+      "crop": "0363100012066028/w02-88.jpg",
+      "panorama": "TMX7316010203-002554_pano_0000_004009",
+      "capturedAt": "2022-05-02",
+      "cameraDistM": 20,
+      "obliquityDeg": 1.2,
+      "foliage": 0.0917,
+      "washedOut": 0.422,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 176.15,
+      "postDatesBuild": true,
+      "usableForMeasurement": false
+     },
+     {
+      "wall": "w03-358",
+      "bearing": 358,
+      "lengthM": 21.7,
+      "crop": "0363100012066028/w03-358.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_01377",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 12,
+      "obliquityDeg": 2.8,
+      "foliage": 0.343,
+      "washedOut": 0.002,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": false
+     },
+     {
+      "wall": "w04-268",
+      "bearing": 268,
+      "lengthM": 19.9,
+      "crop": "0363100012066028/w04-268.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_01355",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 51.6,
+      "obliquityDeg": 14.8,
+      "foliage": 0.0986,
+      "washedOut": 0.0002,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w05-178",
+      "bearing": 178,
+      "lengthM": 19.8,
+      "crop": "0363100012066028/w05-178.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_01398",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 24.2,
+      "obliquityDeg": 36.6,
+      "foliage": 0.0142,
+      "washedOut": 0.0609,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w06-178",
+      "bearing": 178,
+      "lengthM": 16.3,
+      "crop": "0363100012066028/w06-178.jpg",
+      "panorama": "recording_2024-12-23_09-14-39_09581",
+      "capturedAt": "2024-12-23",
+      "cameraDistM": 41,
+      "obliquityDeg": 0.9,
+      "foliage": 0.0534,
+      "washedOut": 0.2691,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w07-268",
+      "bearing": 268,
+      "lengthM": 11.7,
+      "crop": "0363100012066028/w07-268.jpg",
+      "panorama": "TMX7316010203-002491_pano_0004_000028",
+      "capturedAt": "2022-03-29",
+      "cameraDistM": 59.4,
+      "obliquityDeg": 44,
+      "foliage": 0.0412,
+      "washedOut": 0.0449,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 86.18,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w08-178",
+      "bearing": 178,
+      "lengthM": 11.3,
+      "crop": "0363100012066028/w08-178.jpg",
+      "panorama": "2025_09_26_05_36_39_00147",
+      "capturedAt": "2025-09-26",
+      "cameraDistM": 54.1,
+      "obliquityDeg": 1,
+      "foliage": 0.0073,
+      "washedOut": 0.1138,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w09-178",
+      "bearing": 178,
+      "lengthM": 10.8,
+      "crop": "0363100012066028/w09-178.jpg",
+      "panorama": "recording_2024-12-23_09-14-39_09578",
+      "capturedAt": "2024-12-23",
+      "cameraDistM": 46.5,
+      "obliquityDeg": 0.6,
+      "foliage": 0.055,
+      "washedOut": 0.347,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w10-268",
+      "bearing": 268,
+      "lengthM": 10.4,
+      "crop": "0363100012066028/w10-268.jpg",
+      "panorama": "TMX7316010203-002491_pano_0004_000022",
+      "capturedAt": "2022-03-29",
+      "cameraDistM": 59.2,
+      "obliquityDeg": 31.2,
+      "foliage": 0.0241,
+      "washedOut": 0.0109,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 86.7,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w11-178",
+      "bearing": 178,
+      "lengthM": 10.3,
+      "crop": "0363100012066028/w11-178.jpg",
+      "panorama": "2025_09_26_05_36_39_00149",
+      "capturedAt": "2025-09-26",
+      "cameraDistM": 55.6,
+      "obliquityDeg": 1.6,
+      "foliage": 0.0118,
+      "washedOut": 0.2359,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w12-358",
+      "bearing": 358,
+      "lengthM": 9.9,
+      "crop": "0363100012066028/w12-358.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_01374",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 19.4,
+      "obliquityDeg": 1.7,
+      "foliage": 0.0691,
+      "washedOut": 0.0005,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     }
+    ],
+    "usableForMeasurement": 9,
+    "evidenceNote": "9 of 12 archived walls pass measure.ts's limits (post-build, foliage < 25%, washed-out < 35%, obliquity <= 45 deg)"
    },
    "status": "grey",
    "coveredBy": [],
@@ -813,15 +1009,15 @@
       "bearing": 89,
       "lengthM": 35.5,
       "crop": "0363100012250972/w02-89.jpg",
-      "panorama": "TMX7316010203-002829_pano_0007_000151",
-      "capturedAt": "2022-12-06",
-      "cameraDistM": 57.9,
-      "obliquityDeg": 50.5,
-      "foliage": 0.01,
-      "washedOut": 0,
+      "panorama": "recording_2025-07-01_09-03-48_00782",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 58.3,
+      "obliquityDeg": 51.6,
+      "foliage": 0.0856,
+      "washedOut": 0.0038,
       "missingFraction": 0,
-      "cameraHeadingDeg": 275.66,
-      "postDatesBuild": false,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
       "usableForMeasurement": false
      },
      {
@@ -829,16 +1025,16 @@
       "bearing": 359,
       "lengthM": 22.6,
       "crop": "0363100012250972/w03-359.jpg",
-      "panorama": "TMX7316010203-002497_pano_0002_000199",
-      "capturedAt": "2022-04-08",
-      "cameraDistM": 36.1,
-      "obliquityDeg": 0.4,
-      "foliage": 0.0435,
-      "washedOut": 0.2506,
+      "panorama": "recording_2025-07-01_09-03-48_00772",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 35.9,
+      "obliquityDeg": 3.2,
+      "foliage": 0.2063,
+      "washedOut": 0.0203,
       "missingFraction": 0,
-      "cameraHeadingDeg": 96.57,
-      "postDatesBuild": false,
-      "usableForMeasurement": false
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
      },
      {
       "wall": "w04-179",
@@ -854,11 +1050,11 @@
       "missingFraction": 0,
       "cameraHeadingDeg": 0,
       "postDatesBuild": true,
-      "usableForMeasurement": true
+      "usableForMeasurement": false
      }
     ],
     "usableForMeasurement": 1,
-    "evidenceNote": "1 of 3 archived walls are post-build, unobstructed and front-on enough to measure"
+    "evidenceNote": "1 of 3 archived walls pass measure.ts's limits (post-build, foliage < 25%, washed-out < 35%, obliquity <= 45 deg)"
    },
    "status": "recipe-house",
    "coveredBy": [
@@ -5240,24 +5436,28 @@
     "storeys": 12,
     "builtYear": 2023,
     "side": "north",
-    "usableWalls": 2,
+    "usableWalls": 0,
+    "triangles": 3686,
+    "likeness": "walls[0] NO EVIDENCE (foliage 42%), walls[1] NO EVIDENCE (foliage 31%, storey pitch read as 5.83 m), walls[2] NO EVIDENCE (foliage 46%), walls[3] NO PHOTO",
+    "outcome": "blocked (no measurable evidence)",
+    "reason": "the only post-build capture is one 2025-07-01 pass and every wall crop is through summer trees (31-46% foliage), so measure.ts refuses all three walls; older crops show the 1980s office block this tower replaced.",
     "walls": [
      {
       "wall": "w01-269",
       "bearing": 269,
       "capturedAt": "2025-07-01",
-      "usable": true
+      "usable": false
      },
      {
       "wall": "w02-89",
       "bearing": 89,
       "capturedAt": "2025-07-01",
-      "usable": true
+      "usable": false
      },
      {
       "wall": "w03-359",
       "bearing": 359,
-      "capturedAt": "2019-01-07",
+      "capturedAt": "2025-07-01",
       "usable": false
      },
      {
@@ -5281,24 +5481,28 @@
     "builtYear": 2023,
     "side": "north",
     "usableWalls": 1,
+    "triangles": 18145,
+    "likeness": "walls[0] FAIL (blue-cast crop, wall family and glazing band off by 0.21), walls[1] FAIL (glazing band 0.22, columns 9 vs photo 3), walls[2] NO EVIDENCE (51.6 deg obliquity), walls[3] NO PHOTO",
+    "outcome": "do not install",
+    "reason": "triangle budget: 18,145 tris for 16 storeys x 8 bays on four faces (520 recessed openings); no face of this tower reaches 12k at the measured 2.68 m pitch, and two of the four faces have no usable post-build crop.",
     "walls": [
      {
       "wall": "w02-89",
       "bearing": 89,
-      "capturedAt": "2022-12-06",
+      "capturedAt": "2025-07-01",
       "usable": false
      },
      {
       "wall": "w03-359",
       "bearing": 359,
-      "capturedAt": "2022-04-08",
-      "usable": false
+      "capturedAt": "2025-07-01",
+      "usable": true
      },
      {
       "wall": "w04-179",
       "bearing": 179,
       "capturedAt": "2025-09-26",
-      "usable": true
+      "usable": false
      }
     ]
    },
@@ -5314,7 +5518,11 @@
     "storeys": 14,
     "builtYear": 1970,
     "side": "south",
-    "usableWalls": 4,
+    "usableWalls": 3,
+    "triangles": 15262,
+    "likeness": "not judged: the house was held before measure --write (the measured rhythm needs more openings than the budget allows)",
+    "outcome": "held (triangle budget, not built)",
+    "reason": "14 storeys x 7 bays on four faces needs 279-377 recessed openings = 15.3k tris, 3.3k over the 12k budget; the balcony-band reading is the kit balcony plus glass rail, which is the expensive form.",
     "walls": [
      {
       "wall": "w01-89",
@@ -5326,7 +5534,7 @@
       "wall": "w02-269",
       "bearing": 269,
       "capturedAt": "2025-07-01",
-      "usable": true
+      "usable": false
      },
      {
       "wall": "w03-179",
@@ -5338,6 +5546,98 @@
       "wall": "w04-359",
       "bearing": 359,
       "capturedAt": "2019-11-07",
+      "usable": true
+     }
+    ]
+   },
+   {
+    "pand": "0363100012066028",
+    "addresses": [
+     "Molenwerf 1",
+     "Molenwerf 1"
+    ],
+    "houseId": "molenwerf-1-066028",
+    "footprintM2": 2686,
+    "heightM": 20,
+    "storeys": 1,
+    "builtYear": 1980,
+    "side": "north",
+    "usableWalls": 9,
+    "triangles": 8828,
+    "likeness": "walls[0] FAIL (wall dL +0.20, glazing storey band 0.45 vs photo 0.54; columns 6 vs 6, shape wide vs wide, IoU 0.63), walls[1] NO PHOTO (the 30 m wing)",
+    "outcome": "held (gates)",
+    "reason": "fits the budget (8,828 tris) and the measured bay rhythm, but eaves-vs-3dbag fails on both groups (group 0 model 19.47 m against a sampled LoD2.2 roof at 4.02 m; group 1 29.73 m against 19.40 m) and one opening sits 1.19 m2 outside a wall; seen at build time, not resolved.",
+    "walls": [
+     {
+      "wall": "w01-358",
+      "bearing": 358,
+      "capturedAt": "2024-09-09",
+      "usable": false
+     },
+     {
+      "wall": "w02-88",
+      "bearing": 88,
+      "capturedAt": "2022-05-02",
+      "usable": false
+     },
+     {
+      "wall": "w03-358",
+      "bearing": 358,
+      "capturedAt": "2025-07-01",
+      "usable": false
+     },
+     {
+      "wall": "w04-268",
+      "bearing": 268,
+      "capturedAt": "2025-07-01",
+      "usable": true
+     },
+     {
+      "wall": "w05-178",
+      "bearing": 178,
+      "capturedAt": "2025-07-01",
+      "usable": true
+     },
+     {
+      "wall": "w06-178",
+      "bearing": 178,
+      "capturedAt": "2024-12-23",
+      "usable": true
+     },
+     {
+      "wall": "w07-268",
+      "bearing": 268,
+      "capturedAt": "2022-03-29",
+      "usable": true
+     },
+     {
+      "wall": "w08-178",
+      "bearing": 178,
+      "capturedAt": "2025-09-26",
+      "usable": true
+     },
+     {
+      "wall": "w09-178",
+      "bearing": 178,
+      "capturedAt": "2024-12-23",
+      "usable": true
+     },
+     {
+      "wall": "w10-268",
+      "bearing": 268,
+      "capturedAt": "2022-03-29",
+      "usable": true
+     },
+     {
+      "wall": "w11-178",
+      "bearing": 178,
+      "capturedAt": "2025-09-26",
+      "usable": true
+     },
+     {
+      "wall": "w12-358",
+      "bearing": 358,
+      "capturedAt": "2025-07-01",
       "usable": true
      }
     ]

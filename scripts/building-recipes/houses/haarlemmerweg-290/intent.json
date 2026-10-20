@@ -1,0 +1,145 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "haarlemmerweg-290",
+ "pandId": "0363100012116511",
+ "address": "Haarlemmerweg 290-488, Amsterdam (north side of the Haarlemmerweg corridor at Molenwerf): a 1970 residential slab, 14 storeys, with continuous balcony bands on white slab edges, glass balustrades, a recessed glazed balcony wall behind and white piers between the bays",
+ "sources": [
+  {
+   "id": "pano-2025-09-26-s",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_26_05_36_39_00041/",
+   "image": "pand-reference-walls/0363100012116511/w03-179.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-01-07-e",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001040_pano_0003_000071/",
+   "image": "pand-reference-walls/0363100012116511/w01-89.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-01-w",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-01_09-03-48_00788/",
+   "image": "pand-reference-walls/0363100012116511/w02-269.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    12
+   ],
+   "street": "south front on the Haarlemmerweg, with the entrance at the ground floor",
+   "system": "curtain-wall",
+   "storeys": 14,
+   "baysPerStorey": 7,
+   "ground": "glazed",
+   "windows": "wide",
+   "entrance": true,
+   "palette": {
+    "brick": "#b9bab4",
+    "frame": "#8f9498",
+    "stone": "#c9c9c4"
+   },
+   "hand": [
+    "baysPerStorey",
+    "system",
+    "stringCourses"
+   ],
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    21,
+    24,
+    25
+   ],
+   "system": "curtain-wall",
+   "storeys": 14,
+   "baysPerStorey": 7,
+   "ground": "glazed",
+   "windows": "wide",
+   "palette": {
+    "brick": "#b9bab4",
+    "frame": "#8f9498",
+    "stone": "#c9c9c4"
+   },
+   "hand": [
+    "baysPerStorey",
+    "system",
+    "stringCourses"
+   ],
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    31
+   ],
+   "system": "curtain-wall",
+   "storeys": 14,
+   "baysPerStorey": 7,
+   "ground": "glazed",
+   "windows": "wide",
+   "palette": {
+    "brick": "#b9bab4",
+    "frame": "#8f9498",
+    "stone": "#c9c9c4"
+   },
+   "hand": [
+    "baysPerStorey",
+    "system",
+    "stringCourses"
+   ],
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    15
+   ],
+   "system": "curtain-wall",
+   "storeys": 14,
+   "baysPerStorey": 7,
+   "ground": "glazed",
+   "windows": "wide",
+   "palette": {
+    "brick": "#b9bab4",
+    "frame": "#8f9498",
+    "stone": "#c9c9c4"
+   },
+   "hand": [
+    "baysPerStorey",
+    "system",
+    "stringCourses"
+   ],
+   "frames": false,
+   "sills": false
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "roofPlant": true,
+ "palette": {
+  "brick": "#b9bab4",
+  "frame": "#8f9498",
+  "door": "#2b2d2e",
+  "stone": "#e2e2de"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Haarlemmerweg 290-488 (BAG pand 0363100012116511, built 1970, 450 m2 tower footprint, eaves 45.3 m, 14 storeys at 3.2 m, 98 flats). Photographed from the south on 2025-09-26 (2025_09_26_05_36_39_00041, 42.7 m, 1.0 deg obliquity, 6% foliage) and from the east on 2019-01-07 (TMX7316010203-001040_pano_0003_000071, 36.4 m, 0.2 deg); the 2025 south crop shows the renovated facade (white slab bands, glass balustrades, recessed glazed balcony walls, white piers), the 2019 east crop the same structural rhythm before the balustrade glass went in. The north crop (2019-11-07) looks into the neighbouring construction site 16 m away and is not evidence for this wall.",
+  "walls[0] = panel 11 (south, surface 12, 20.1 m): entrance front, seven bays at about 2.9 m with continuous balcony bands on every upper storey, glass balustrades and a glazed ground floor. walls[1] = panel 18 (east, surfaces 21/24/25, 22.5 m) and walls[2] = panel 24 (west, surface 31, 22.5 m, measured at 36 deg obliquity with 51% foliage so coarse) repeat the same bands; walls[3] = panel 13 (north, surface 15, 20.1 m) is inferred from the other three (no usable panorama).",
+  "Simplified: the balcony band is the kit's balcony slab plus glass rail on every bay of every upper storey, which the layered kit merges into one slab/rail run per storey; the recessed balcony wall behind is a wide window. Not drawn: the white fascia's chamfered edge, the balcony dividers between flats and the roof-level plant enclosure edges."
+ ]
+}
