@@ -99,17 +99,23 @@ export function topAt(w: Wall, t: number) {
   return Number.isFinite(v) ? v : Math.max(...w.poly.map(p => p[1]));
 }
 
-/** Windows with arched heads in white frames, glazing bars and a sill, spaced evenly along a wall. */
+/**
+ * Windows with arched heads in white frames, glazing bars and a sill, spaced evenly along a wall.
+ * Sheets stand on distinct layers: frame 8 cm, glass 13 cm, glazing bars 18 cm, sill 20 cm. Everything is a solid that sinks
+ * into the wall (slab/archSlab sink their hidden back face), so the assembly still touches the wall and the opening audit
+ * reads it as mounted; before 2026-10-20 the layers were 8/11/14 cm, i.e. 3 cm apart, which the coplanar-overlap audit
+ * counts as `window/frame 3 cm proud of an unholed wall` (2-3 cm is the tight band that bleeds through in the game).
+ */
 export function archWindows(b: BuildingTools, f: Frame, ts: number[], o: {y: number; w: number; h: number; wall?: Wall; frame?: Col; glass?: Col; sill?: Col; bars?: number; rows?: number}) {
   const frame = o.frame ?? 'white', glass = o.glass ?? 'glass';
   for (const t of ts) {
     if (o.wall && (topAt(o.wall, t - o.w / 2) < o.y + o.h + 0.3 || topAt(o.wall, t + o.w / 2) < o.y + o.h + 0.3)) continue;
     archSlab(b, f, t, o.y - 0.04, o.w + 0.2, o.h + 0.12, 0.08, frame);
-    archSlab(b, f, t, o.y, o.w, o.h, 0.11, glass);
+    archSlab(b, f, t, o.y, o.w, o.h, 0.13, glass);
     const bars = o.bars ?? 1;
-    for (let k = 1; k <= bars; k++) slab(b, f, t - o.w / 2 + o.w * k / (bars + 1), o.y, 0.05, o.h - o.w / 2, 0.14, frame);
+    for (let k = 1; k <= bars; k++) slab(b, f, t - o.w / 2 + o.w * k / (bars + 1), o.y, 0.05, o.h - o.w / 2, 0.18, frame);
     const rows = o.rows ?? 2;
-    for (let r = 1; r <= rows; r++) slab(b, f, t, o.y + (o.h - o.w / 2) * r / (rows + 1), o.w, 0.05, 0.14, frame);
+    for (let r = 1; r <= rows; r++) slab(b, f, t, o.y + (o.h - o.w / 2) * r / (rows + 1), o.w, 0.05, 0.18, frame);
     if (o.sill) slab(b, f, t, o.y - 0.14, o.w + 0.45, 0.1, 0.2, o.sill);
   }
 }
@@ -277,23 +283,25 @@ export function leanSlab(b: BuildingTools, f: Frame, t: number, y: number, w: nu
 }
 export function sashWindows(b: BuildingTools, f: Frame, ts: number[], o: {lean?: boolean; y: number; w: number; h: number; cols?: number; rows?: number; sill?: Col; lintel?: Col; frame?: Col; glass?: Col; snap?: (f: Frame, t: number, y: number) => Frame | null}) {
   const frame = o.frame ?? 'white', cols = o.cols ?? 2, rows = o.rows ?? 3;
+  // Frame 7 cm, glass 12 cm, glazing bars 17 cm (5 cm apart, and every layer sinks its own back face): the old 7/10/13 cm
+  // stack put the pane 3 cm in front of the frame, which the coplanar-overlap audit reads as a tight z-fight.
   for (const t of ts) {
     const g = o.snap ? o.snap(f, t, o.y + o.h / 2) : f;
     if (!g) continue;
     if (o.lean) {
       // Lean variant (opt-in, keeps every other model's geometry): glass and bars are single quads, frame and sill drop their hidden faces.
       leanSlab(b, g, t, o.y - 0.06, o.w + 0.26, o.h + 0.12, 0.07, frame);
-      facePanel(b, g, t, o.y, o.w, o.h, o.glass ?? 'glass', 0.1);
-      for (let k = 1; k < cols; k++) facePanel(b, g, t - o.w / 2 + o.w * k / cols, o.y, 0.045, o.h, frame, 0.13);
-      for (let r = 1; r < rows; r++) facePanel(b, g, t, o.y + o.h * r / rows - 0.02, o.w, 0.045, frame, 0.13);
+      facePanel(b, g, t, o.y, o.w, o.h, o.glass ?? 'glass', 0.12);
+      for (let k = 1; k < cols; k++) facePanel(b, g, t - o.w / 2 + o.w * k / cols, o.y, 0.045, o.h, frame, 0.17);
+      for (let r = 1; r < rows; r++) facePanel(b, g, t, o.y + o.h * r / rows - 0.02, o.w, 0.045, frame, 0.17);
       if (o.sill) ledgeStrip(b, g, t, o.y - 0.17, o.w + 0.5, 0.1, 0.2, o.sill);
       if (o.lintel) leanSlab(b, g, t, o.y + o.h + 0.06, o.w + 0.4, 0.14, 0.14, o.lintel);
       continue;
     }
     slab(b, g, t, o.y - 0.06, o.w + 0.26, o.h + 0.12, 0.07, frame);
-    slab(b, g, t, o.y, o.w, o.h, 0.1, o.glass ?? 'glass');
-    for (let k = 1; k < cols; k++) slab(b, g, t - o.w / 2 + o.w * k / cols, o.y, 0.045, o.h, 0.13, frame);
-    for (let r = 1; r < rows; r++) slab(b, g, t, o.y + o.h * r / rows - 0.02, o.w, 0.045, 0.13, frame);
+    slab(b, g, t, o.y, o.w, o.h, 0.12, o.glass ?? 'glass');
+    for (let k = 1; k < cols; k++) slab(b, g, t - o.w / 2 + o.w * k / cols, o.y, 0.045, o.h, 0.17, frame);
+    for (let r = 1; r < rows; r++) slab(b, g, t, o.y + o.h * r / rows - 0.02, o.w, 0.045, 0.17, frame);
     if (o.sill) slab(b, g, t, o.y - 0.17, o.w + 0.5, 0.1, 0.2, o.sill);
     if (o.lintel) slab(b, g, t, o.y + o.h + 0.06, o.w + 0.4, 0.14, 0.14, o.lintel);
   }
