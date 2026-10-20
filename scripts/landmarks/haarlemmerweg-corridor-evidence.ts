@@ -28,10 +28,10 @@ const OUTCOMES: Record<string, {houseId: string; triangles: number; likeness: st
   },
   '0363100012250971': {
     houseId: 'haarlemmerweg-778',
-    triangles: 3686,
+    triangles: 13462,
     likeness: 'walls[0] NO EVIDENCE (foliage 42%), walls[1] NO EVIDENCE (foliage 31%, storey pitch read as 5.83 m), walls[2] NO EVIDENCE (foliage 46%), walls[3] NO PHOTO',
     outcome: 'blocked (no measurable evidence)',
-    reason: 'the only post-build capture is one 2025-07-01 pass and every wall crop is through summer trees (31-46% foliage), so measure.ts refuses all three walls; older crops show the 1980s office block this tower replaced.',
+    reason: 'the only post-build capture is one 2025-07-01 pass and every wall crop is through summer trees (31-46% foliage), so measure.ts refuses all three walls; older crops show the 1980s office block this tower replaced. It also compiles to 13,462 tris (11 storeys x 7-9 bays on four faces), over the budget.',
   },
   '0363100012116511': {
     houseId: 'haarlemmerweg-290',
