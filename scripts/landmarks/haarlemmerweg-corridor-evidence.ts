@@ -63,6 +63,13 @@ for (const pand of batch) {
   const file = path.join(SOURCE, 'pand-reference-walls', pand, 'walls.json');
   const walls: Wall[] = JSON.parse(await fs.readFile(file, 'utf8')).walls;
   const built = Number(row.builtYear);
+  const statusOf: Record<string, string> = {
+    '0363100012250972': 'held-budget',
+    '0363100012250971': 'blocked-no-evidence',
+    '0363100012116511': 'held-budget',
+    '0363100012066028': 'held-gates',
+  };
+  if (statusOf[pand]) { row.status = statusOf[pand]; row.coveredBy = row.coveredBy ?? []; }
   const evidence = walls
     .filter(w => w.crop && !/L$/.test(w.tag))
     .map(w => {

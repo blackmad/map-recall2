@@ -235,7 +235,7 @@
     "usableForMeasurement": 3,
     "evidenceNote": "3 of 4 archived walls pass measure.ts's limits (post-build, foliage < 25%, washed-out < 35%, obliquity <= 45 deg)"
    },
-   "status": "grey",
+   "status": "held-budget",
    "coveredBy": [],
    "classification": "TRACK_M",
    "reason": "450 m2, 14 storeys, 1970, 45.7 m, 85 m frontage, 7.5 m off the road axis, south side; woonfunctie/bijeenkomstfunctie/overige gebruiksfunctie; flat/low roof; 2 usable panorama wall(s)",
@@ -613,7 +613,7 @@
     "usableForMeasurement": 0,
     "evidenceNote": "0 of 4 archived walls pass measure.ts's limits (post-build, foliage < 25%, washed-out < 35%, obliquity <= 45 deg)"
    },
-   "status": "grey",
+   "status": "blocked-no-evidence",
    "coveredBy": [],
    "classification": "TRACK_M",
    "reason": "749 m2, 12 storeys, 2023, 36 m, 56.2 m frontage, 7.7 m off the road axis, north side; woonfunctie/bijeenkomstfunctie; flat/low roof; 3 usable panorama wall(s)",
@@ -858,7 +858,7 @@
     "usableForMeasurement": 9,
     "evidenceNote": "9 of 12 archived walls pass measure.ts's limits (post-build, foliage < 25%, washed-out < 35%, obliquity <= 45 deg)"
    },
-   "status": "grey",
+   "status": "held-gates",
    "coveredBy": [],
    "classification": "TRACK_M",
    "reason": "2686 m2, 1 storeys, 1980, 20 m, 51 m frontage, 29.4 m off the road axis, north side; bijeenkomstfunctie,logiesfunctie; pitched roof; 4 usable panorama wall(s)",
@@ -1056,7 +1056,7 @@
     "usableForMeasurement": 1,
     "evidenceNote": "1 of 3 archived walls pass measure.ts's limits (post-build, foliage < 25%, washed-out < 35%, obliquity <= 45 deg)"
    },
-   "status": "recipe-house",
+   "status": "held-budget",
    "coveredBy": [
     "recipe:haarlemmerweg-940"
    ],
