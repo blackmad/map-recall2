@@ -126,8 +126,10 @@ export function punchedFacade(b: BuildingTools, w: Wall, o: PunchedOptions) {
   const topMax = Math.max(...w.poly.map(p => p[1]));
   if (w.base < o.y0 - 0.5 && o.ground) slab(b, f, w.length / 2, w.base, w.length - 0.1, o.y0 - w.base - 0.05, 0.24, o.ground);
   const kFirst = Math.max(0, Math.ceil((w.base - o.y0 - 0.05) / o.pitch));
-  // Glazing strip 9 cm proud, spandrel band 15 cm, floor stripe 20 cm (5-6 cm apart): a 10/14/17 cm stack left the stripe
-  // 3 cm off the band, which the coplanar-overlap audit counts as a z-fight on every punched facade.
+  // Glazing strip 10 cm proud, spandrel band 16 cm, floor stripe 22 cm (6 cm apart): the old 10/14/17 cm stack left the
+  // stripe 3 cm off the band, which the coplanar-overlap audit counts as a z-fight on every punched facade. The glass sheet
+  // stays at its legacy 10 cm: on Symphony's office wing the authored wall face stands 8-9 cm off the fitted wall plane, so
+  // pulling the strip back to 9 cm put its face within 2 cm of that wall (a builder-plane mismatch, Track Z2, not the kit).
   // glazed strips
   for (let i = 0; i < n; i++) {
     const t = tc(i), lim = top(t) - 0.35;
@@ -135,7 +137,7 @@ export function punchedFacade(b: BuildingTools, w: Wall, o: PunchedOptions) {
     for (let k = kFirst; o.y0 + k * o.pitch + o.winBottom + o.winH <= lim; k++) kLast = k;
     if (kLast < kFirst) continue;
     const yb = o.y0 + kFirst * o.pitch + o.winBottom, yt = o.y0 + kLast * o.pitch + o.winBottom + o.winH;
-    slab(b, f, t, yb, o.winW, yt - yb, 0.09, o.glass);
+    slab(b, f, t, yb, o.winW, yt - yb, 0.1, o.glass);
   }
   // spandrel bands between and below windows, as runs of columns whose strip reaches that floor
   for (let k = kFirst; ; k++) {
@@ -151,8 +153,8 @@ export function punchedFacade(b: BuildingTools, w: Wall, o: PunchedOptions) {
         const a = run === 0 ? 0 : t0, c = i === n ? w.length : t1;
         if (Math.min(top(a + 0.05), top(c - 0.05)) >= bandY + 0.4) {
           const hh = Math.min(bandH, Math.min(top(a + 0.05), top(c - 0.05)) - bandY - 0.05);
-          slab(b, f, (a + c) / 2, bandY, c - a, hh, 0.15, o.band);
-          if (o.stripe) slab(b, f, (a + c) / 2, bandY + hh * 0.35, c - a, Math.min(0.4, hh * 0.3), 0.2, k < (o.darkFloors ?? 0) && o.darkStripe ? o.darkStripe : o.stripe);
+          slab(b, f, (a + c) / 2, bandY, c - a, hh, 0.16, o.band);
+          if (o.stripe) slab(b, f, (a + c) / 2, bandY + hh * 0.35, c - a, Math.min(0.4, hh * 0.3), 0.22, k < (o.darkFloors ?? 0) && o.darkStripe ? o.darkStripe : o.stripe);
         }
         run = null;
       }

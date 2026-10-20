@@ -83,14 +83,14 @@ test('nearbar sashWindows: frame 7 cm, glass 12 cm, bars 17 cm', () => {
   }
 });
 
-test('modern-kit punchedFacade: glass 9 cm, band 15 cm, stripe 20 cm', () => {
+test('modern-kit punchedFacade: glass 10 cm, band 16 cm, stripe 22 cm', () => {
   const {b, solids} = record();
   punchedFacade(b, plusZWall(24, 20), {y0: 4, pitch: 3.4, colPitch: 2.6, winW: 1.4, winBottom: 0.9, winH: 2.1, band: 'brick', stripe: 'red', glass: 'glass'});
   check(solids, 'punchedFacade');
   const front = (c: string) => Math.max(...solids.filter(s => s.colour === c).map(s => s.max.z));
-  assert.ok(Math.abs(front('glass') - 0.09) < 1e-6, `glass ${front('glass')}`);
-  assert.ok(Math.abs(front('brick') - 0.15) < 1e-6, `band ${front('brick')}`);
-  assert.ok(Math.abs(front('red') - 0.2) < 1e-6, `stripe ${front('red')}`);
+  assert.ok(Math.abs(front('glass') - 0.1) < 1e-6, `glass ${front('glass')}`);
+  assert.ok(Math.abs(front('brick') - 0.16) < 1e-6, `band ${front('brick')}`);
+  assert.ok(Math.abs(front('red') - 0.22) < 1e-6, `stripe ${front('red')}`);
 });
 
 test('modern-kit curtainOnWall: spandrel 5.5 cm behind the mullion face, coping 10 cm over the roof', () => {
