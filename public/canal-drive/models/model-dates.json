@@ -2,8 +2,8 @@
   "description": "Model asset update dates, not historical building construction dates.",
   "models": {
     "academie-theater-dans": {
-      "updatedAt": "2026-10-13T19:25:19.694Z",
-      "version": "1411874136611a3a",
+      "updatedAt": "2026-10-20T10:01:49.386Z",
+      "version": "6a157de55857fe89",
       "dateSource": "asset-update"
     },
     "academie-theater-dans.lod1": {
@@ -12,9 +12,9 @@
       "dateSource": "asset-update"
     },
     "adam-tower": {
-      "updatedAt": "2026-10-03T23:34:10+02:00",
-      "version": "b6bc30564fde16c9",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:45.269Z",
+      "version": "7aeee8f5b9ff81c5",
+      "dateSource": "asset-update"
     },
     "adam-tower.lod1": {
       "updatedAt": "2026-10-10T13:42:19.772Z",
@@ -22,8 +22,8 @@
       "dateSource": "asset-update"
     },
     "afrikahuis": {
-      "updatedAt": "2026-10-07T12:05:53.420Z",
-      "version": "09ff3adba973233b",
+      "updatedAt": "2026-10-20T10:15:08.929Z",
+      "version": "6290ec8a232cd883",
       "dateSource": "asset-update"
     },
     "afrikahuis.lod1": {
@@ -32,13 +32,13 @@
       "dateSource": "asset-update"
     },
     "agnietenkapel": {
-      "updatedAt": "2026-10-04T03:01:07+02:00",
-      "version": "ba5fe79aed5afb2d",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:36.672Z",
+      "version": "0105a37aacfc4f0c",
+      "dateSource": "asset-update"
     },
     "allard-pierson": {
-      "updatedAt": "2026-10-13T20:19:02.188Z",
-      "version": "71b8e10eba70a3bf",
+      "updatedAt": "2026-10-20T10:12:46.497Z",
+      "version": "6fade88aac322024",
       "dateSource": "asset-update"
     },
     "allard-pierson.lod1": {
@@ -57,9 +57,9 @@
       "dateSource": "asset-update"
     },
     "amsta-de-poort": {
-      "updatedAt": "2026-10-04T12:49:59+02:00",
-      "version": "1a767c01f7a0af9f",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.663Z",
+      "version": "768b267959b06b7d",
+      "dateSource": "asset-update"
     },
     "amsta-de-poort.lod1": {
       "updatedAt": "2026-10-10T13:42:19.780Z",
@@ -77,9 +77,9 @@
       "dateSource": "asset-update"
     },
     "amstelkerk": {
-      "updatedAt": "2026-10-04T00:18:08+02:00",
-      "version": "81f473aa9dd31fa3",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:50.593Z",
+      "version": "7000cb45aa29d746",
+      "dateSource": "asset-update"
     },
     "amstelkerk.lod1": {
       "updatedAt": "2026-10-10T13:42:19.782Z",
@@ -87,9 +87,9 @@
       "dateSource": "asset-update"
     },
     "amsterdam-dungeon": {
-      "updatedAt": "2026-10-04T05:54:12+02:00",
-      "version": "3da6448fcbd9c489",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:04.851Z",
+      "version": "4ec8ea01240a3ec0",
+      "dateSource": "asset-update"
     },
     "amsterdam-dungeon.lod1": {
       "updatedAt": "2026-10-10T13:42:19.784Z",
@@ -97,9 +97,9 @@
       "dateSource": "asset-update"
     },
     "amsterdam-in-motion": {
-      "updatedAt": "2026-10-04T13:28:28+02:00",
-      "version": "d4a5bcd2a43ca817",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.854Z",
+      "version": "5dc6daa86b9b3de7",
+      "dateSource": "asset-update"
     },
     "amsterdam-in-motion.lod1": {
       "updatedAt": "2026-10-10T13:42:19.786Z",
@@ -107,8 +107,8 @@
       "dateSource": "asset-update"
     },
     "amsterdam-museum": {
-      "updatedAt": "2026-10-13T13:04:34.264Z",
-      "version": "05c96fc51d0946ad",
+      "updatedAt": "2026-10-20T10:12:23.829Z",
+      "version": "f69b3ebc3dd33061",
       "dateSource": "asset-update"
     },
     "amsterdam-museum.lod1": {
@@ -117,9 +117,9 @@
       "dateSource": "asset-update"
     },
     "amsterdam-pipe-museum": {
-      "updatedAt": "2026-10-04T03:52:47+02:00",
-      "version": "64d077d5bc1ffb31",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:57.968Z",
+      "version": "4983bd1781103ef3",
+      "dateSource": "asset-update"
     },
     "amsterdam-pipe-museum.lod1": {
       "updatedAt": "2026-10-10T13:42:19.791Z",
@@ -127,9 +127,9 @@
       "dateSource": "asset-update"
     },
     "amsterdam-tulip-museum": {
-      "updatedAt": "2026-10-04T04:30:00+02:00",
-      "version": "3f8dbb51843c6054",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:58.070Z",
+      "version": "4b8a32381adc6f71",
+      "dateSource": "asset-update"
     },
     "amsterdam-tulip-museum.lod1": {
       "updatedAt": "2026-10-10T13:42:19.792Z",
@@ -137,9 +137,9 @@
       "dateSource": "asset-update"
     },
     "anne-frank-house": {
-      "updatedAt": "2026-10-04T00:09:57+02:00",
-      "version": "75608e113736daa2",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:50.561Z",
+      "version": "d626cc976cdc33bc",
+      "dateSource": "asset-update"
     },
     "anne-frank-merwedeplein": {
       "updatedAt": "2026-10-17T12:49:20.348Z",
@@ -152,9 +152,9 @@
       "dateSource": "asset-update"
     },
     "arcam": {
-      "updatedAt": "2026-10-04T02:29:48+02:00",
-      "version": "6ee584e00b324458",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:36.508Z",
+      "version": "14011d4bd844b10e",
+      "dateSource": "asset-update"
     },
     "aron-schuster-synagoge": {
       "updatedAt": "2026-10-19T19:27:00.642Z",
@@ -167,8 +167,8 @@
       "dateSource": "asset-update"
     },
     "artis-aquarium": {
-      "updatedAt": "2026-10-10T05:23:34.179Z",
-      "version": "ca2973a24a456ef6",
+      "updatedAt": "2026-10-20T10:16:53.348Z",
+      "version": "faa8b522debe6126",
       "dateSource": "asset-update"
     },
     "artis-aquarium.lod1": {
@@ -177,14 +177,14 @@
       "dateSource": "asset-update"
     },
     "artis-entrance": {
-      "updatedAt": "2026-10-04T01:54:42+02:00",
-      "version": "a027602c839ce971",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:36.468Z",
+      "version": "b2d6b88f32155935",
+      "dateSource": "asset-update"
     },
     "artis-library": {
-      "updatedAt": "2026-10-04T03:31:34+02:00",
-      "version": "d9e537bc26136840",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:57.931Z",
+      "version": "67bc70e61cd14505",
+      "dateSource": "asset-update"
     },
     "artis-library.lod1": {
       "updatedAt": "2026-10-10T13:42:19.808Z",
@@ -192,14 +192,14 @@
       "dateSource": "asset-update"
     },
     "asterweg-23": {
-      "updatedAt": "2026-10-10T18:44:54.714Z",
-      "version": "46d070cd3ad9d942",
+      "updatedAt": "2026-10-20T10:16:57.905Z",
+      "version": "2001cd89e4af86b9",
       "dateSource": "asset-update"
     },
     "athenaeum": {
-      "updatedAt": "2026-10-04T03:55:52+02:00",
-      "version": "067cace770708c8e",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:57.984Z",
+      "version": "72395c79c4d485ec",
+      "dateSource": "asset-update"
     },
     "athenaeum.lod1": {
       "updatedAt": "2026-10-10T13:42:19.808Z",
@@ -222,8 +222,8 @@
       "dateSource": "asset-update"
     },
     "beest-boulders": {
-      "updatedAt": "2026-10-06T13:15:28.867Z",
-      "version": "05d2fc34067b8fe3",
+      "updatedAt": "2026-10-20T10:13:46.563Z",
+      "version": "706557a1657d97f0",
       "dateSource": "asset-update"
     },
     "beest-boulders.lod1": {
@@ -232,8 +232,8 @@
       "dateSource": "asset-update"
     },
     "beest-het-lab": {
-      "updatedAt": "2026-10-06T10:41:24.593Z",
-      "version": "ec32672c79476dd7",
+      "updatedAt": "2026-10-20T10:14:46.849Z",
+      "version": "63dfb1e9227b8af7",
       "dateSource": "asset-update"
     },
     "begijnhof": {
@@ -247,9 +247,9 @@
       "dateSource": "asset-update"
     },
     "begijnhofkapel": {
-      "updatedAt": "2026-10-04T04:37:05+02:00",
-      "version": "6f9418891f76b644",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:58.040Z",
+      "version": "4c715175e2b3ccf9",
+      "dateSource": "asset-update"
     },
     "begijnhofkapel.lod1": {
       "updatedAt": "2026-10-10T13:42:19.815Z",
@@ -257,8 +257,8 @@
       "dateSource": "asset-update"
     },
     "bercylaan-801-855": {
-      "updatedAt": "2026-10-11T03:12:55.492Z",
-      "version": "36dedb4d0996f8e3",
+      "updatedAt": "2026-10-20T09:59:27.277Z",
+      "version": "da47cd58262034b5",
       "dateSource": "asset-update"
     },
     "bercylaan-801-855.lod1": {
@@ -267,8 +267,8 @@
       "dateSource": "asset-update"
     },
     "beta-boulders": {
-      "updatedAt": "2026-10-13T12:51:36.543Z",
-      "version": "15996e9d1fe0f90e",
+      "updatedAt": "2026-10-20T10:13:46.455Z",
+      "version": "823e0b6492026375",
       "dateSource": "asset-update"
     },
     "beta-boulders.lod1": {
@@ -277,8 +277,8 @@
       "dateSource": "asset-update"
     },
     "blankenstraat-15": {
-      "updatedAt": "2026-10-13T13:04:09.587Z",
-      "version": "3479cb03fc4540d8",
+      "updatedAt": "2026-10-20T10:16:58.124Z",
+      "version": "631eace09fd06d0d",
       "dateSource": "asset-update"
     },
     "blankenstraat-15.lod1": {
@@ -287,8 +287,8 @@
       "dateSource": "asset-update"
     },
     "blauwe-theehuis": {
-      "updatedAt": "2026-10-06T10:41:24.578Z",
-      "version": "88d7c482fb829252",
+      "updatedAt": "2026-10-20T10:14:46.834Z",
+      "version": "2c76f7ae7905c362",
       "dateSource": "asset-update"
     },
     "blauwe-theehuis.lod1": {
@@ -297,8 +297,8 @@
       "dateSource": "asset-update"
     },
     "bogortuin-101": {
-      "updatedAt": "2026-10-13T13:04:09.531Z",
-      "version": "82c5783376a6297d",
+      "updatedAt": "2026-10-20T10:16:58.076Z",
+      "version": "3520d14a631ffc10",
       "dateSource": "asset-update"
     },
     "bogortuin-101.lod1": {
@@ -317,8 +317,8 @@
       "dateSource": "asset-update"
     },
     "boom-chicago": {
-      "updatedAt": "2026-10-06T21:08:45.801Z",
-      "version": "93f24ea15c5e59af",
+      "updatedAt": "2026-10-20T10:12:36.543Z",
+      "version": "07d521812305b3fa",
       "dateSource": "asset-update"
     },
     "boom-chicago.lod1": {
@@ -327,9 +327,9 @@
       "dateSource": "asset-update"
     },
     "boomkerk": {
-      "updatedAt": "2026-10-05T18:07:25+02:00",
-      "version": "796eb1791fc67a1d",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:42.678Z",
+      "version": "cbc066efa0fc689d",
+      "dateSource": "asset-update"
     },
     "boomkerk.lod1": {
       "updatedAt": "2026-10-10T13:42:19.825Z",
@@ -337,9 +337,9 @@
       "dateSource": "asset-update"
     },
     "brakke-grond": {
-      "updatedAt": "2026-10-04T20:43:07+02:00",
-      "version": "617d67be917d679f",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:36.521Z",
+      "version": "c19ff3188928724a",
+      "dateSource": "asset-update"
     },
     "brakke-grond.lod1": {
       "updatedAt": "2026-10-10T13:42:19.826Z",
@@ -347,9 +347,9 @@
       "dateSource": "asset-update"
     },
     "breitner-tower": {
-      "updatedAt": "2026-10-04T13:28:28+02:00",
-      "version": "34942497e72240a7",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.725Z",
+      "version": "cbf28700115ee162",
+      "dateSource": "asset-update"
     },
     "breitner-tower.lod1": {
       "updatedAt": "2026-10-10T13:42:19.827Z",
@@ -357,14 +357,14 @@
       "dateSource": "asset-update"
     },
     "brouwerij-het-ij": {
-      "updatedAt": "2026-10-07T07:39:59.241Z",
-      "version": "56cc1a41eb3ddfa6",
+      "updatedAt": "2026-10-20T10:15:06.863Z",
+      "version": "1677082daee69e53",
       "dateSource": "asset-update"
     },
     "buiksloterkerk": {
-      "updatedAt": "2026-10-04T01:12:41+02:00",
-      "version": "5f33780635f73091",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:23.621Z",
+      "version": "d3f0cb103c5247c4",
+      "dateSource": "asset-update"
     },
     "buiksloterkerk.lod1": {
       "updatedAt": "2026-10-10T13:42:19.828Z",
@@ -372,8 +372,8 @@
       "dateSource": "asset-update"
     },
     "cafe-kobalt": {
-      "updatedAt": "2026-10-07T22:01:46.657Z",
-      "version": "be40f3802a213638",
+      "updatedAt": "2026-10-20T10:15:09.109Z",
+      "version": "c787ae2afa017062",
       "dateSource": "asset-update"
     },
     "cafe-kobalt.lod1": {
@@ -382,9 +382,9 @@
       "dateSource": "asset-update"
     },
     "canals-museum": {
-      "updatedAt": "2026-10-04T23:51:03+02:00",
-      "version": "a3e41a96d5fbca7f",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:42.499Z",
+      "version": "a6eca24167c2892b",
+      "dateSource": "asset-update"
     },
     "canals-museum.lod1": {
       "updatedAt": "2026-10-10T13:42:19.830Z",
@@ -422,8 +422,8 @@
       "dateSource": "asset-update"
     },
     "centrale-markthal": {
-      "updatedAt": "2026-10-13T12:50:18.188Z",
-      "version": "601426edc9fd13bc",
+      "updatedAt": "2026-10-20T10:00:54.567Z",
+      "version": "9ce6b54498760a99",
       "dateSource": "asset-update"
     },
     "centrale-markthal.lod1": {
@@ -432,8 +432,8 @@
       "dateSource": "asset-update"
     },
     "ceramiquelaan-437": {
-      "updatedAt": "2026-10-10T18:44:54.825Z",
-      "version": "c2fe7f58e917f912",
+      "updatedAt": "2026-10-20T10:16:57.983Z",
+      "version": "f11a9ebfb34eb2e3",
       "dateSource": "asset-update"
     },
     "ceramiquelaan-437.lod1": {
@@ -442,8 +442,8 @@
       "dateSource": "asset-update"
     },
     "chassekerk": {
-      "updatedAt": "2026-10-10T08:41:34.206Z",
-      "version": "896e6e633f4f54af",
+      "updatedAt": "2026-10-20T10:16:53.416Z",
+      "version": "e7545d5ac9e22d85",
       "dateSource": "asset-update"
     },
     "chassekerk.lod1": {
@@ -452,8 +452,8 @@
       "dateSource": "asset-update"
     },
     "christ-church-groenburgwal": {
-      "updatedAt": "2026-10-10T03:50:12.377Z",
-      "version": "9c9de7a57cc70a8a",
+      "updatedAt": "2026-10-20T10:16:34.559Z",
+      "version": "0b73cbdf7d3e629f",
       "dateSource": "asset-update"
     },
     "christ-church-groenburgwal.lod1": {
@@ -472,8 +472,8 @@
       "dateSource": "asset-update"
     },
     "club-panama": {
-      "updatedAt": "2026-10-09T21:18:03.125Z",
-      "version": "69c4ca0c0ace8b3e",
+      "updatedAt": "2026-10-20T10:16:06.772Z",
+      "version": "9ab5eb1919d55020",
       "dateSource": "asset-update"
     },
     "club-panama.lod1": {
@@ -482,8 +482,8 @@
       "dateSource": "asset-update"
     },
     "collectie-six": {
-      "updatedAt": "2026-10-08T12:28:07.417Z",
-      "version": "7db65223df3f539b",
+      "updatedAt": "2026-10-20T10:15:09.367Z",
+      "version": "4d45dee33be6afb2",
       "dateSource": "asset-update"
     },
     "collectie-six.lod1": {
@@ -492,8 +492,8 @@
       "dateSource": "asset-update"
     },
     "compagnietheater": {
-      "updatedAt": "2026-10-09T21:18:03.163Z",
-      "version": "2134878bcbafcc48",
+      "updatedAt": "2026-10-20T10:00:58.682Z",
+      "version": "d39bdbf201d38a08",
       "dateSource": "asset-update"
     },
     "compagnietheater.lod1": {
@@ -502,8 +502,8 @@
       "dateSource": "asset-update"
     },
     "concertgebouw": {
-      "updatedAt": "2026-10-10T03:00:00.828Z",
-      "version": "4d80783fac5a2e71",
+      "updatedAt": "2026-10-20T10:13:09.110Z",
+      "version": "6bbde10baab9fa29",
       "dateSource": "asset-update"
     },
     "concertgebouw.lod1": {
@@ -522,8 +522,8 @@
       "dateSource": "asset-update"
     },
     "coymanshuis": {
-      "updatedAt": "2026-10-10T04:57:52.962Z",
-      "version": "9f128ce0337ab787",
+      "updatedAt": "2026-10-20T10:16:53.321Z",
+      "version": "01eb50d717491f69",
       "dateSource": "asset-update"
     },
     "coymanshuis.lod1": {
@@ -532,8 +532,8 @@
       "dateSource": "asset-update"
     },
     "da-costakade-13": {
-      "updatedAt": "2026-10-13T10:57:14.932Z",
-      "version": "d1522f9fab5d9f9d",
+      "updatedAt": "2026-10-20T10:17:05.349Z",
+      "version": "da7222a59d7ea6c4",
       "dateSource": "asset-update"
     },
     "da-costakade-13.lod1": {
@@ -542,8 +542,8 @@
       "dateSource": "asset-update"
     },
     "dageraad": {
-      "updatedAt": "2026-10-13T13:04:41.795Z",
-      "version": "3f80603b4bb4280e",
+      "updatedAt": "2026-10-20T10:13:42.466Z",
+      "version": "34ae76bf6a6a5cf4",
       "dateSource": "asset-update"
     },
     "dageraad.lod1": {
@@ -552,8 +552,8 @@
       "dateSource": "asset-update"
     },
     "de-balie": {
-      "updatedAt": "2026-10-09T22:24:10.418Z",
-      "version": "98f79d401b4bc4a0",
+      "updatedAt": "2026-10-20T10:11:50.556Z",
+      "version": "b2304095772064be",
       "dateSource": "asset-update"
     },
     "de-balie.lod1": {
@@ -572,9 +572,9 @@
       "dateSource": "asset-update"
     },
     "de-beurs-van-berlage": {
-      "updatedAt": "2026-10-04T12:49:59+02:00",
-      "version": "1e46ca4ddd8d41f9",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.633Z",
+      "version": "9f3cfc24c3021afc",
+      "dateSource": "asset-update"
     },
     "de-beurs-van-berlage.lod1": {
       "updatedAt": "2026-10-10T13:42:19.927Z",
@@ -582,8 +582,8 @@
       "dateSource": "asset-update"
     },
     "de-bijenkorf": {
-      "updatedAt": "2026-10-13T12:51:07.977Z",
-      "version": "e6d449439cb06037",
+      "updatedAt": "2026-10-20T10:12:04.557Z",
+      "version": "e158e072ede63fe3",
       "dateSource": "asset-update"
     },
     "de-bijenkorf.lod1": {
@@ -602,9 +602,9 @@
       "dateSource": "asset-update"
     },
     "de-dolphijn": {
-      "updatedAt": "2026-10-04T04:54:22+02:00",
-      "version": "209671bcce9bab36",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:58.167Z",
+      "version": "a6d0c64c28399ea8",
+      "dateSource": "asset-update"
     },
     "de-dolphijn.lod1": {
       "updatedAt": "2026-10-10T13:42:19.929Z",
@@ -612,8 +612,8 @@
       "dateSource": "asset-update"
     },
     "de-duif": {
-      "updatedAt": "2026-10-13T09:43:53.717Z",
-      "version": "6840e55193fbcf90",
+      "updatedAt": "2026-10-20T10:17:05.244Z",
+      "version": "d13aee0a7677b4d9",
       "dateSource": "asset-update"
     },
     "de-duif.lod1": {
@@ -622,8 +622,8 @@
       "dateSource": "asset-update"
     },
     "de-gooyer": {
-      "updatedAt": "2026-10-06T20:56:05.297Z",
-      "version": "2ba75a134a27a8e7",
+      "updatedAt": "2026-10-20T10:14:54.054Z",
+      "version": "f3dec5518d716788",
       "dateSource": "asset-update"
     },
     "de-gooyer.lod1": {
@@ -632,9 +632,9 @@
       "dateSource": "asset-update"
     },
     "de-hallen": {
-      "updatedAt": "2026-10-04T01:16:17+02:00",
-      "version": "dbe038fb26700d34",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:23.660Z",
+      "version": "00dccd677959bdce",
+      "dateSource": "asset-update"
     },
     "de-hallen.lod1": {
       "updatedAt": "2026-10-10T13:42:19.931Z",
@@ -642,9 +642,9 @@
       "dateSource": "asset-update"
     },
     "de-krakeling": {
-      "updatedAt": "2026-10-04T13:28:28+02:00",
-      "version": "232d3fd856a022d6",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.865Z",
+      "version": "aad82236830324a4",
+      "dateSource": "asset-update"
     },
     "de-krakeling.lod1": {
       "updatedAt": "2026-10-10T13:42:19.932Z",
@@ -652,8 +652,8 @@
       "dateSource": "asset-update"
     },
     "de-nederlandsche-bank": {
-      "updatedAt": "2026-10-11T05:03:55.910Z",
-      "version": "2a652cfd44d82d05",
+      "updatedAt": "2026-10-20T10:16:53.609Z",
+      "version": "5c4dd5b7b9966aed",
       "dateSource": "asset-update"
     },
     "de-nederlandsche-bank.lod1": {
@@ -662,9 +662,9 @@
       "dateSource": "asset-update"
     },
     "de-papegaai": {
-      "updatedAt": "2026-10-04T01:12:41+02:00",
-      "version": "3669802e5fea667e",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:23.636Z",
+      "version": "819db8b35d2d2ede",
+      "dateSource": "asset-update"
     },
     "de-piramides": {
       "updatedAt": "2026-10-13T19:22:17.862Z",
@@ -677,8 +677,8 @@
       "dateSource": "asset-update"
     },
     "de-school": {
-      "updatedAt": "2026-10-13T15:41:03.552Z",
-      "version": "17951767e52d0e71",
+      "updatedAt": "2026-10-20T10:16:34.520Z",
+      "version": "17bcde25b1620990",
       "dateSource": "asset-update"
     },
     "de-school.lod1": {
@@ -692,8 +692,8 @@
       "dateSource": "asset-update"
     },
     "de-wester": {
-      "updatedAt": "2026-10-13T20:21:19.879Z",
-      "version": "8ad96681b320b7c3",
+      "updatedAt": "2026-10-20T09:59:56.148Z",
+      "version": "5ac4f3fd46a8936c",
       "dateSource": "asset-update"
     },
     "de-wester.lod1": {
@@ -712,8 +712,8 @@
       "dateSource": "asset-update"
     },
     "dominicuskerk": {
-      "updatedAt": "2026-10-13T12:51:22.622Z",
-      "version": "6938cd113370107e",
+      "updatedAt": "2026-10-20T10:12:51.332Z",
+      "version": "e232284172914435",
       "dateSource": "asset-update"
     },
     "dominicuskerk.lod1": {
@@ -722,8 +722,8 @@
       "dateSource": "asset-update"
     },
     "dorus-theus-brug": {
-      "updatedAt": "2026-10-08T11:26:01.480Z",
-      "version": "d4cc78127cae539f",
+      "updatedAt": "2026-10-20T10:15:09.343Z",
+      "version": "e0265562540b159e",
       "dateSource": "asset-update"
     },
     "dorus-theus-brug.lod1": {
@@ -732,8 +732,8 @@
       "dateSource": "asset-update"
     },
     "dutch-resistance-museum": {
-      "updatedAt": "2026-10-13T14:28:52.383Z",
-      "version": "ae6124c428336229",
+      "updatedAt": "2026-10-20T10:12:41.204Z",
+      "version": "65a0b4eb809caef4",
       "dateSource": "asset-update"
     },
     "dutch-resistance-museum.lod1": {
@@ -742,8 +742,8 @@
       "dateSource": "asset-update"
     },
     "el-tawheed": {
-      "updatedAt": "2026-10-07T10:15:18.485Z",
-      "version": "f39fb7244564e067",
+      "updatedAt": "2026-10-20T10:15:06.940Z",
+      "version": "5fa5f3ef794687df",
       "dateSource": "asset-update"
     },
     "el-tawheed.lod1": {
@@ -752,8 +752,8 @@
       "dateSource": "asset-update"
     },
     "electric-ladyland": {
-      "updatedAt": "2026-10-07T20:33:48.865Z",
-      "version": "05312522c406fec6",
+      "updatedAt": "2026-10-20T10:15:09.088Z",
+      "version": "2fc0e56c723ffa98",
       "dateSource": "asset-update"
     },
     "electric-ladyland.lod1": {
@@ -762,14 +762,14 @@
       "dateSource": "asset-update"
     },
     "embassy-free-mind": {
-      "updatedAt": "2026-10-03T23:59:52+02:00",
-      "version": "212d08e4aed60889",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:45.393Z",
+      "version": "1f524a90878f8b55",
+      "dateSource": "asset-update"
     },
     "english-reformed-church": {
-      "updatedAt": "2026-10-04T01:12:41+02:00",
-      "version": "37fc9d996520a28f",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:23.630Z",
+      "version": "7fe4971edc2a0b5c",
+      "dateSource": "asset-update"
     },
     "english-reformed-church.lod1": {
       "updatedAt": "2026-10-10T13:42:19.946Z",
@@ -782,14 +782,14 @@
       "dateSource": "asset-update"
     },
     "eye-filmmuseum": {
-      "updatedAt": "2026-10-04T09:18:13+02:00",
-      "version": "3e6505fb458d8d37",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:04.955Z",
+      "version": "757905cc04dc9f51",
+      "dateSource": "asset-update"
     },
     "faralda-crane-hotel": {
-      "updatedAt": "2026-10-04T19:31:25+02:00",
-      "version": "1c731fea39788340",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:42.326Z",
+      "version": "cd3eeab58417f6b7",
+      "dateSource": "asset-update"
     },
     "faralda-crane-hotel.lod1": {
       "updatedAt": "2026-10-10T13:42:19.947Z",
@@ -797,8 +797,8 @@
       "dateSource": "asset-update"
     },
     "fatih-moskee": {
-      "updatedAt": "2026-10-10T07:25:38.827Z",
-      "version": "df6bdf127192554a",
+      "updatedAt": "2026-10-20T10:16:53.380Z",
+      "version": "c4626b9ef776e46b",
       "dateSource": "asset-update"
     },
     "fatih-moskee.lod1": {
@@ -822,8 +822,8 @@
       "dateSource": "asset-update"
     },
     "fire-station-anton": {
-      "updatedAt": "2026-10-09T11:05:06.237Z",
-      "version": "ba76d5dc361a9725",
+      "updatedAt": "2026-10-20T10:15:45.729Z",
+      "version": "d8e7036396fc4ebb",
       "dateSource": "asset-update"
     },
     "fire-station-anton.lod1": {
@@ -832,8 +832,8 @@
       "dateSource": "asset-update"
     },
     "fire-station-dirk": {
-      "updatedAt": "2026-10-09T08:42:18.704Z",
-      "version": "cf63ed7a452b9c05",
+      "updatedAt": "2026-10-20T10:15:19.321Z",
+      "version": "93354fbb1b366df0",
       "dateSource": "asset-update"
     },
     "fire-station-dirk.lod1": {
@@ -842,8 +842,8 @@
       "dateSource": "asset-update"
     },
     "fire-station-driemond": {
-      "updatedAt": "2026-10-09T10:58:58.322Z",
-      "version": "d6470dc788512bc5",
+      "updatedAt": "2026-10-20T10:15:45.543Z",
+      "version": "20f65b9d9599d75b",
       "dateSource": "asset-update"
     },
     "fire-station-hendrik": {
@@ -857,8 +857,8 @@
       "dateSource": "asset-update"
     },
     "fire-station-ijsbrand": {
-      "updatedAt": "2026-10-09T10:58:58.271Z",
-      "version": "62db72acfe611233",
+      "updatedAt": "2026-10-20T10:15:41.814Z",
+      "version": "b96d57b1383f8168",
       "dateSource": "asset-update"
     },
     "fire-station-ijsbrand.lod1": {
@@ -867,8 +867,8 @@
       "dateSource": "asset-update"
     },
     "fire-station-nico": {
-      "updatedAt": "2026-10-09T09:59:27.940Z",
-      "version": "f9dbc9b6d4d2ace3",
+      "updatedAt": "2026-10-20T10:15:19.376Z",
+      "version": "185184fe7ad68702",
       "dateSource": "asset-update"
     },
     "fire-station-nico.lod1": {
@@ -877,8 +877,8 @@
       "dateSource": "asset-update"
     },
     "fire-station-osdorp": {
-      "updatedAt": "2026-10-09T09:59:27.996Z",
-      "version": "9edad63f86b9243d",
+      "updatedAt": "2026-10-20T10:15:19.422Z",
+      "version": "e8ea4dce0c62b898",
       "dateSource": "asset-update"
     },
     "fire-station-osdorp.lod1": {
@@ -887,8 +887,8 @@
       "dateSource": "asset-update"
     },
     "fire-station-pieter": {
-      "updatedAt": "2026-10-09T10:58:58.288Z",
-      "version": "b5e22ca8fc13de12",
+      "updatedAt": "2026-10-20T10:15:41.832Z",
+      "version": "27ff8cd0b2414a6c",
       "dateSource": "asset-update"
     },
     "fire-station-pieter.lod1": {
@@ -897,8 +897,8 @@
       "dateSource": "asset-update"
     },
     "fire-station-teunis": {
-      "updatedAt": "2026-10-09T10:58:58.118Z",
-      "version": "78a5f49bd115750d",
+      "updatedAt": "2026-10-20T10:15:19.432Z",
+      "version": "72f460e59ae4d033",
       "dateSource": "asset-update"
     },
     "fire-station-teunis.lod1": {
@@ -907,8 +907,8 @@
       "dateSource": "asset-update"
     },
     "fire-station-victor": {
-      "updatedAt": "2026-10-09T10:58:58.169Z",
-      "version": "93fb54f39ecc0262",
+      "updatedAt": "2026-10-20T10:15:19.472Z",
+      "version": "b273089787690b71",
       "dateSource": "asset-update"
     },
     "fire-station-victor.lod1": {
@@ -917,8 +917,8 @@
       "dateSource": "asset-update"
     },
     "fire-station-weesp": {
-      "updatedAt": "2026-10-09T10:58:58.316Z",
-      "version": "ae5e8066de6020f9",
+      "updatedAt": "2026-10-20T10:15:45.535Z",
+      "version": "363874599312211d",
       "dateSource": "asset-update"
     },
     "fire-station-weesp.lod1": {
@@ -927,8 +927,8 @@
       "dateSource": "asset-update"
     },
     "fire-station-willem": {
-      "updatedAt": "2026-10-13T12:52:55.565Z",
-      "version": "f6e56c6838a9bbbb",
+      "updatedAt": "2026-10-20T10:15:41.792Z",
+      "version": "1a9f6587be889f28",
       "dateSource": "asset-update"
     },
     "fire-station-willem.lod1": {
@@ -947,9 +947,9 @@
       "dateSource": "asset-update"
     },
     "foam": {
-      "updatedAt": "2026-10-04T02:25:47+02:00",
-      "version": "1faf16397ccbe23b",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:36.596Z",
+      "version": "bfe1bfae73cf795a",
+      "dateSource": "asset-update"
     },
     "foam.lod1": {
       "updatedAt": "2026-10-10T13:42:19.978Z",
@@ -957,9 +957,9 @@
       "dateSource": "asset-update"
     },
     "frascati": {
-      "updatedAt": "2026-10-04T02:29:04+02:00",
-      "version": "11cdb4e5fba53e45",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T09:59:55.903Z",
+      "version": "a19378d527ed6f54",
+      "dateSource": "asset-update"
     },
     "frascati.lod1": {
       "updatedAt": "2026-10-10T13:42:19.978Z",
@@ -977,9 +977,9 @@
       "dateSource": "asset-update"
     },
     "gashouder": {
-      "updatedAt": "2026-10-04T00:34:55+02:00",
-      "version": "a61e26dbacb806f0",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:04.574Z",
+      "version": "297078e45465e2cc",
+      "dateSource": "asset-update"
     },
     "gashouder.lod1": {
       "updatedAt": "2026-10-10T13:42:19.979Z",
@@ -987,8 +987,8 @@
       "dateSource": "asset-update"
     },
     "gerard-dou-synagogue": {
-      "updatedAt": "2026-10-10T02:13:27.260Z",
-      "version": "de8c17041c88fa89",
+      "updatedAt": "2026-10-20T10:16:05.465Z",
+      "version": "1b5f6d3d4a815cc7",
       "dateSource": "asset-update"
     },
     "gerard-dou-synagogue.lod1": {
@@ -1007,14 +1007,14 @@
       "dateSource": "asset-update"
     },
     "groot-melkhuis": {
-      "updatedAt": "2026-10-06T10:41:24.587Z",
-      "version": "236cf1e655704a19",
+      "updatedAt": "2026-10-20T10:14:46.843Z",
+      "version": "4fa0cb401d2478c6",
       "dateSource": "asset-update"
     },
     "groote-museum": {
-      "updatedAt": "2026-10-04T03:31:34+02:00",
-      "version": "83a3afa84a5d1246",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:57.906Z",
+      "version": "a9e6b70e1fbd40b6",
+      "dateSource": "asset-update"
     },
     "groote-museum.lod1": {
       "updatedAt": "2026-10-10T13:42:19.982Z",
@@ -1022,9 +1022,9 @@
       "dateSource": "asset-update"
     },
     "haarlemmermeerstation": {
-      "updatedAt": "2026-10-04T03:55:52+02:00",
-      "version": "2b43cdf9d86db7dc",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:58.022Z",
+      "version": "97b1826e46a10dff",
+      "dateSource": "asset-update"
     },
     "haarlemmermeerstation.lod1": {
       "updatedAt": "2026-10-10T13:42:19.982Z",
@@ -1032,8 +1032,8 @@
       "dateSource": "asset-update"
     },
     "haarlemmerpoort": {
-      "updatedAt": "2026-10-13T12:50:18.196Z",
-      "version": "a752d934308ad681",
+      "updatedAt": "2026-10-20T10:11:50.619Z",
+      "version": "a18190b20a25c9a5",
       "dateSource": "asset-update"
     },
     "haarlemmerpoort.lod1": {
@@ -1052,8 +1052,8 @@
       "dateSource": "asset-update"
     },
     "hannekes-boom": {
-      "updatedAt": "2026-10-09T16:18:51.077Z",
-      "version": "cfb520433d0cf97e",
+      "updatedAt": "2026-10-20T10:15:50.226Z",
+      "version": "a11dbf621df46ba6",
       "dateSource": "asset-update"
     },
     "hannekes-boom.lod1": {
@@ -1062,13 +1062,13 @@
       "dateSource": "asset-update"
     },
     "haparandaweg-11": {
-      "updatedAt": "2026-10-07T15:48:56.018Z",
-      "version": "d7277ae156f93894",
+      "updatedAt": "2026-10-20T10:15:09.055Z",
+      "version": "d8f40af285400b88",
       "dateSource": "asset-update"
     },
     "haparandaweg-13": {
-      "updatedAt": "2026-10-07T15:48:56.029Z",
-      "version": "f0257cb44f19da99",
+      "updatedAt": "2026-10-20T10:15:09.060Z",
+      "version": "33a18013f8346b8a",
       "dateSource": "asset-update"
     },
     "haparandaweg-2-4": {
@@ -1082,8 +1082,8 @@
       "dateSource": "asset-update"
     },
     "haparandaweg-57": {
-      "updatedAt": "2026-10-09T16:22:58.476Z",
-      "version": "049b4419b135e586",
+      "updatedAt": "2026-10-20T10:16:05.410Z",
+      "version": "b236ae3c9963f018",
       "dateSource": "asset-update"
     },
     "haparandaweg-57.lod1": {
@@ -1142,8 +1142,8 @@
       "dateSource": "asset-update"
     },
     "haparandaweg-9": {
-      "updatedAt": "2026-10-07T14:59:34.070Z",
-      "version": "11c8aea6e9d43520",
+      "updatedAt": "2026-10-20T10:15:09.049Z",
+      "version": "6f80e976de93a48c",
       "dateSource": "asset-update"
     },
     "haparandaweg-902-950": {
@@ -1162,8 +1162,8 @@
       "dateSource": "asset-update"
     },
     "hart-museum": {
-      "updatedAt": "2026-10-10T20:52:17.145Z",
-      "version": "e6d94f744bcef2a8",
+      "updatedAt": "2026-10-20T10:12:23.749Z",
+      "version": "e5b49b2b94517146",
       "dateSource": "asset-update"
     },
     "hart-museum.lod1": {
@@ -1172,9 +1172,9 @@
       "dateSource": "asset-update"
     },
     "hash-marihuana-hemp-museum": {
-      "updatedAt": "2026-10-04T05:34:04+02:00",
-      "version": "8db446fefd6e32d5",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:02.627Z",
+      "version": "3094990044b797a3",
+      "dateSource": "asset-update"
     },
     "hash-marihuana-hemp-museum.lod1": {
       "updatedAt": "2026-10-10T13:42:19.996Z",
@@ -1182,8 +1182,8 @@
       "dateSource": "asset-update"
     },
     "he-hua-temple": {
-      "updatedAt": "2026-10-10T02:13:27.146Z",
-      "version": "7a42a11a10b61fd2",
+      "updatedAt": "2026-10-20T10:11:50.610Z",
+      "version": "a6e7133c8cf673b9",
       "dateSource": "asset-update"
     },
     "he-hua-temple.lod1": {
@@ -1202,9 +1202,9 @@
       "dateSource": "asset-update"
     },
     "hemp-gallery": {
-      "updatedAt": "2026-10-04T05:34:04+02:00",
-      "version": "9cb6ca346ecc2db5",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:02.651Z",
+      "version": "e4754d6836b8343e",
+      "dateSource": "asset-update"
     },
     "hemp-gallery.lod1": {
       "updatedAt": "2026-10-10T13:42:20.001Z",
@@ -1212,14 +1212,14 @@
       "dateSource": "asset-update"
     },
     "herepoort-bergpoort": {
-      "updatedAt": "2026-10-04T05:02:31+02:00",
-      "version": "dd67e46044c10b46",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:58.145Z",
+      "version": "04ba05c7a02dbb7d",
+      "dateSource": "asset-update"
     },
     "het-schip": {
-      "updatedAt": "2026-10-04T00:23:44+02:00",
-      "version": "2b8522053787a6bd",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:50.670Z",
+      "version": "6b781592a63cd5d7",
+      "dateSource": "asset-update"
     },
     "het-schip.lod1": {
       "updatedAt": "2026-10-10T13:42:20.003Z",
@@ -1227,9 +1227,9 @@
       "dateSource": "asset-update"
     },
     "het-veem": {
-      "updatedAt": "2026-10-04T05:44:11+02:00",
-      "version": "959ab5ba83752320",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:02.578Z",
+      "version": "59af46ef26fdbe8a",
+      "dateSource": "asset-update"
     },
     "het-veem.lod1": {
       "updatedAt": "2026-10-10T13:42:20.003Z",
@@ -1247,9 +1247,9 @@
       "dateSource": "asset-update"
     },
     "hnk-sloterdijk": {
-      "updatedAt": "2026-10-04T17:40:44+02:00",
-      "version": "02db406a59ab982c",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.943Z",
+      "version": "821f04c93f199c44",
+      "dateSource": "asset-update"
     },
     "hnk-sloterdijk.lod1": {
       "updatedAt": "2026-10-10T13:42:20.005Z",
@@ -1257,9 +1257,9 @@
       "dateSource": "asset-update"
     },
     "hollandsche-schouwburg": {
-      "updatedAt": "2026-10-04T01:37:30+02:00",
-      "version": "62c3cf225b10116b",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:23.871Z",
+      "version": "8e49862cadb52062",
+      "dateSource": "asset-update"
     },
     "hollandsche-schouwburg.lod1": {
       "updatedAt": "2026-10-10T13:42:20.005Z",
@@ -1282,8 +1282,8 @@
       "dateSource": "asset-update"
     },
     "hoofdbureau-elandsgracht": {
-      "updatedAt": "2026-10-13T20:58:28.389Z",
-      "version": "c7c97e9afe21948a",
+      "updatedAt": "2026-10-20T10:17:07.530Z",
+      "version": "88499b8a887d3aaa",
       "dateSource": "asset-update"
     },
     "hoofdbureau-elandsgracht.lod1": {
@@ -1292,9 +1292,9 @@
       "dateSource": "asset-update"
     },
     "hortus-greenhouses": {
-      "updatedAt": "2026-10-04T01:52:21+02:00",
-      "version": "f7824a049c315a4f",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:36.502Z",
+      "version": "f35af2e1c1817ee3",
+      "dateSource": "asset-update"
     },
     "hortus-greenhouses.lod1": {
       "updatedAt": "2026-10-10T13:42:20.007Z",
@@ -1302,8 +1302,8 @@
       "dateSource": "asset-update"
     },
     "hotel-de-l-europe": {
-      "updatedAt": "2026-10-13T19:25:19.701Z",
-      "version": "5c2e96291bc54893",
+      "updatedAt": "2026-10-20T10:16:53.143Z",
+      "version": "5a03c36f0be13141",
       "dateSource": "asset-update"
     },
     "hotel-de-l-europe.lod1": {
@@ -1312,8 +1312,8 @@
       "dateSource": "asset-update"
     },
     "hotel-jakarta": {
-      "updatedAt": "2026-10-10T09:00:13.609Z",
-      "version": "0b5624fe5dca3aaa",
+      "updatedAt": "2026-10-20T10:16:53.708Z",
+      "version": "2493b3469d9a3c53",
       "dateSource": "asset-update"
     },
     "hotel-jakarta.lod1": {
@@ -1322,8 +1322,8 @@
       "dateSource": "asset-update"
     },
     "hotel-okura": {
-      "updatedAt": "2026-10-10T04:43:23.157Z",
-      "version": "85970807e5cb2891",
+      "updatedAt": "2026-10-20T10:16:53.301Z",
+      "version": "16aafc971912faa9",
       "dateSource": "asset-update"
     },
     "hotel-okura.lod1": {
@@ -1332,19 +1332,19 @@
       "dateSource": "asset-update"
     },
     "houseboat-museum": {
-      "updatedAt": "2026-10-09T18:14:30.919Z",
-      "version": "ba60fd8e992e345f",
+      "updatedAt": "2026-10-20T10:16:06.705Z",
+      "version": "cf941fb165642276",
       "dateSource": "asset-update"
     },
     "houten-huys": {
-      "updatedAt": "2026-10-04T04:37:05+02:00",
-      "version": "ea52102890367c71",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:58.138Z",
+      "version": "212ad19e7ab3149f",
+      "dateSource": "asset-update"
     },
     "huis-aan-drie-grachten": {
-      "updatedAt": "2026-10-04T04:54:22+02:00",
-      "version": "ef516639b168b53b",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:58.154Z",
+      "version": "dc4023c9be22b568",
+      "dateSource": "asset-update"
     },
     "huis-aan-drie-grachten.lod1": {
       "updatedAt": "2026-10-10T13:42:20.034Z",
@@ -1352,9 +1352,9 @@
       "dateSource": "asset-update"
     },
     "huis-bartolotti": {
-      "updatedAt": "2026-10-04T01:16:17+02:00",
-      "version": "5e8e931a48170630",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:23.675Z",
+      "version": "22e4977c97d55677",
+      "dateSource": "asset-update"
     },
     "huis-bartolotti.lod1": {
       "updatedAt": "2026-10-10T13:42:20.041Z",
@@ -1362,9 +1362,9 @@
       "dateSource": "asset-update"
     },
     "huis-de-pinto": {
-      "updatedAt": "2026-10-04T04:30:00+02:00",
-      "version": "651d0053a0182291",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:58.055Z",
+      "version": "20e04af188516e89",
+      "dateSource": "asset-update"
     },
     "huis-de-pinto.lod1": {
       "updatedAt": "2026-10-10T13:42:20.045Z",
@@ -1372,9 +1372,9 @@
       "dateSource": "asset-update"
     },
     "huis-marseille": {
-      "updatedAt": "2026-10-04T02:25:47+02:00",
-      "version": "8ea7c944e0177147",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:36.658Z",
+      "version": "597d0a5418466dd6",
+      "dateSource": "asset-update"
     },
     "huis-marseille.lod1": {
       "updatedAt": "2026-10-10T13:42:20.045Z",
@@ -1382,8 +1382,8 @@
       "dateSource": "asset-update"
     },
     "huize-frankendael": {
-      "updatedAt": "2026-10-09T16:19:32.240Z",
-      "version": "03849239aa04f430",
+      "updatedAt": "2026-10-20T10:15:50.108Z",
+      "version": "7030412c2dd4963a",
       "dateSource": "asset-update"
     },
     "huize-frankendael.lod1": {
@@ -1392,9 +1392,9 @@
       "dateSource": "asset-update"
     },
     "huize-lydia": {
-      "updatedAt": "2026-10-04T06:15:19+02:00",
-      "version": "971151a77561e93f",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:04.947Z",
+      "version": "326092fc924b7244",
+      "dateSource": "asset-update"
     },
     "huize-lydia.lod1": {
       "updatedAt": "2026-10-10T13:42:20.049Z",
@@ -1422,9 +1422,9 @@
       "dateSource": "asset-update"
     },
     "idfa-pavilion": {
-      "updatedAt": "2026-10-05T09:29:22+02:00",
-      "version": "666d6b58ad29572a",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:42.434Z",
+      "version": "a90e67ed8e6483ba",
+      "dateSource": "asset-update"
     },
     "idfa-pavilion.lod1": {
       "updatedAt": "2026-10-10T13:42:20.054Z",
@@ -1432,8 +1432,8 @@
       "dateSource": "asset-update"
     },
     "ij-toren": {
-      "updatedAt": "2026-10-13T13:04:09.000Z",
-      "version": "728bf0de828caf5e",
+      "updatedAt": "2026-10-20T10:16:34.436Z",
+      "version": "d48b974d8b575c11",
       "dateSource": "asset-update"
     },
     "ij-toren.lod1": {
@@ -1452,8 +1452,8 @@
       "dateSource": "asset-update"
     },
     "jacob-bontiusplaats-9": {
-      "updatedAt": "2026-10-11T02:35:36.303Z",
-      "version": "020fff3add0ffdaa",
+      "updatedAt": "2026-10-20T10:01:07.840Z",
+      "version": "3bc844361675f53d",
       "dateSource": "asset-update"
     },
     "jacob-bontiusplaats-9.lod1": {
@@ -1462,8 +1462,8 @@
       "dateSource": "asset-update"
     },
     "jeruzalemkerk": {
-      "updatedAt": "2026-10-06T11:39:49.126Z",
-      "version": "202fbee82e35d0c0",
+      "updatedAt": "2026-10-20T10:14:46.815Z",
+      "version": "e38452b4dd1f46f9",
       "dateSource": "asset-update"
     },
     "jeruzalemkerk.lod1": {
@@ -1482,8 +1482,8 @@
       "dateSource": "asset-update"
     },
     "jodenbreestraat-11": {
-      "updatedAt": "2026-10-13T19:28:26.635Z",
-      "version": "6c8879c04805bbcc",
+      "updatedAt": "2026-10-20T10:01:07.868Z",
+      "version": "d4bc7ab02f1432d5",
       "dateSource": "asset-update"
     },
     "jodenbreestraat-11.lod1": {
@@ -1507,9 +1507,9 @@
       "dateSource": "asset-update"
     },
     "kattenkabinet": {
-      "updatedAt": "2026-10-04T10:58:02+02:00",
-      "version": "16cfd90fbaaa8913",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.533Z",
+      "version": "869e1a54afec4ce1",
+      "dateSource": "asset-update"
     },
     "kattenkabinet.lod1": {
       "updatedAt": "2026-10-10T13:42:20.088Z",
@@ -1517,8 +1517,8 @@
       "dateSource": "asset-update"
     },
     "keith-haring-mural": {
-      "updatedAt": "2026-10-06T08:06:43.794Z",
-      "version": "8a50d19e865f7a58",
+      "updatedAt": "2026-10-20T10:13:54.367Z",
+      "version": "704dfad29fecf2db",
       "dateSource": "asset-update"
     },
     "keith-haring-mural.lod1": {
@@ -1527,8 +1527,8 @@
       "dateSource": "asset-update"
     },
     "keizersgrachtkerk": {
-      "updatedAt": "2026-10-09T18:02:14.008Z",
-      "version": "5b06c4e5409f4037",
+      "updatedAt": "2026-10-20T10:16:05.451Z",
+      "version": "bd8bb0b02bd4575d",
       "dateSource": "asset-update"
     },
     "keizersgrachtkerk.lod1": {
@@ -1537,8 +1537,8 @@
       "dateSource": "asset-update"
     },
     "kesbeke-shop": {
-      "updatedAt": "2026-10-06T13:16:17.525Z",
-      "version": "1d1ff32df01de1c5",
+      "updatedAt": "2026-10-20T10:14:47.000Z",
+      "version": "2229c9abcaa2505c",
       "dateSource": "asset-update"
     },
     "kesbeke-shop.lod1": {
@@ -1547,8 +1547,8 @@
       "dateSource": "asset-update"
     },
     "kesbeke": {
-      "updatedAt": "2026-10-06T13:16:17.495Z",
-      "version": "e2acae9a946ddee1",
+      "updatedAt": "2026-10-20T10:14:46.942Z",
+      "version": "0ffc69c585380c26",
       "dateSource": "asset-update"
     },
     "kesbeke.lod1": {
@@ -1587,8 +1587,8 @@
       "dateSource": "asset-update"
     },
     "kinderkookkafe": {
-      "updatedAt": "2026-10-06T06:24:27.978Z",
-      "version": "2a100f055a7ab05f",
+      "updatedAt": "2026-10-20T10:13:42.770Z",
+      "version": "e75a8c62bd19e619",
       "dateSource": "asset-update"
     },
     "kinderkookkafe.lod1": {
@@ -1597,9 +1597,9 @@
       "dateSource": "asset-update"
     },
     "kleine-komedie": {
-      "updatedAt": "2026-10-04T00:07:10+02:00",
-      "version": "4b55df2562dcf809",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:50.547Z",
+      "version": "d525f9e9ea4b80ec",
+      "dateSource": "asset-update"
     },
     "kleine-komedie.lod1": {
       "updatedAt": "2026-10-10T13:42:20.106Z",
@@ -1607,13 +1607,13 @@
       "dateSource": "asset-update"
     },
     "klimhal": {
-      "updatedAt": "2026-10-10T02:12:05.575Z",
-      "version": "1a7194d721ba40c4",
+      "updatedAt": "2026-10-20T10:16:34.318Z",
+      "version": "96fe17b24871faed",
       "dateSource": "asset-update"
     },
     "klimmuur-centraal": {
-      "updatedAt": "2026-10-06T07:57:51.485Z",
-      "version": "f8954acce2d6adc6",
+      "updatedAt": "2026-10-20T10:00:02.770Z",
+      "version": "d8a425109051a29f",
       "dateSource": "asset-update"
     },
     "kohnstammhuis": {
@@ -1657,8 +1657,8 @@
       "dateSource": "asset-update"
     },
     "kriterion": {
-      "updatedAt": "2026-10-07T08:28:12.141Z",
-      "version": "d069a17f44212a81",
+      "updatedAt": "2026-10-20T10:12:02.740Z",
+      "version": "56065f9d3b58bb67",
       "dateSource": "asset-update"
     },
     "kriterion.lod1": {
@@ -1677,8 +1677,8 @@
       "dateSource": "asset-update"
     },
     "lekstraat-synagoge": {
-      "updatedAt": "2026-10-09T18:02:14.077Z",
-      "version": "353b5a50df1cd690",
+      "updatedAt": "2026-10-20T10:16:05.493Z",
+      "version": "8bd7c1f86926776a",
       "dateSource": "asset-update"
     },
     "lekstraat-synagoge.lod1": {
@@ -1702,8 +1702,8 @@
       "dateSource": "asset-update"
     },
     "ljg-synagoge": {
-      "updatedAt": "2026-10-10T03:50:12.409Z",
-      "version": "861e68bfbdcd399f",
+      "updatedAt": "2026-10-20T10:16:34.583Z",
+      "version": "f5b69000082caa49",
       "dateSource": "asset-update"
     },
     "ljg-synagoge.lod1": {
@@ -1712,8 +1712,8 @@
       "dateSource": "asset-update"
     },
     "lloyd-hotel": {
-      "updatedAt": "2026-10-10T04:24:49.650Z",
-      "version": "cddf847944522eeb",
+      "updatedAt": "2026-10-20T10:16:53.228Z",
+      "version": "eac7b321289fac33",
       "dateSource": "asset-update"
     },
     "lloyd-hotel.lod1": {
@@ -1722,8 +1722,8 @@
       "dateSource": "asset-update"
     },
     "luther-museum": {
-      "updatedAt": "2026-10-09T16:23:49.203Z",
-      "version": "9d206ae339330815",
+      "updatedAt": "2026-10-20T10:15:50.050Z",
+      "version": "e2c2dbde73e6c9ad",
       "dateSource": "asset-update"
     },
     "luther-museum.lod1": {
@@ -1732,8 +1732,8 @@
       "dateSource": "asset-update"
     },
     "maagdenhuis": {
-      "updatedAt": "2026-10-13T20:55:41.236Z",
-      "version": "7eb5f89887c7f195",
+      "updatedAt": "2026-10-20T10:19:35.455Z",
+      "version": "f0b34170920942b6",
       "dateSource": "asset-update"
     },
     "maagdenhuis.lod1": {
@@ -1742,8 +1742,8 @@
       "dateSource": "asset-update"
     },
     "maarten-lutherkerk": {
-      "updatedAt": "2026-10-13T13:04:08.944Z",
-      "version": "6bb66c5c5cce6b14",
+      "updatedAt": "2026-10-20T10:16:06.051Z",
+      "version": "a5fc6a059de6c2a3",
       "dateSource": "asset-update"
     },
     "maarten-lutherkerk.lod1": {
@@ -1752,9 +1752,9 @@
       "dateSource": "asset-update"
     },
     "machinegebouw": {
-      "updatedAt": "2026-10-04T17:40:44+02:00",
-      "version": "825b775e04c45e57",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:09.014Z",
+      "version": "d8c9c8e5dde80167",
+      "dateSource": "asset-update"
     },
     "machinegebouw.lod1": {
       "updatedAt": "2026-10-10T13:42:20.179Z",
@@ -1762,8 +1762,8 @@
       "dateSource": "asset-update"
     },
     "madame-tussauds": {
-      "updatedAt": "2026-10-13T20:17:22.757Z",
-      "version": "9830bbe5b0a15ba9",
+      "updatedAt": "2026-10-20T10:13:04.824Z",
+      "version": "074df8703cfc2d0e",
       "dateSource": "asset-update"
     },
     "madame-tussauds.lod1": {
@@ -1772,8 +1772,8 @@
       "dateSource": "asset-update"
     },
     "magna-plaza": {
-      "updatedAt": "2026-10-17T15:30:37.343Z",
-      "version": "62aa346d9154e7fd",
+      "updatedAt": "2026-10-20T10:11:50.528Z",
+      "version": "01f1b99a123fc64a",
       "dateSource": "asset-update"
     },
     "magna-plaza.lod1": {
@@ -1802,8 +1802,8 @@
       "dateSource": "asset-update"
     },
     "mediamatic": {
-      "updatedAt": "2026-10-08T20:20:44.554Z",
-      "version": "72fda1651845e18b",
+      "updatedAt": "2026-10-20T10:15:09.446Z",
+      "version": "fbce7e788ce53c61",
       "dateSource": "asset-update"
     },
     "mediamatic.lod1": {
@@ -1812,8 +1812,8 @@
       "dateSource": "asset-update"
     },
     "meerpadkerk": {
-      "updatedAt": "2026-10-10T07:55:18.361Z",
-      "version": "ba8082657f1feea4",
+      "updatedAt": "2026-10-20T10:15:50.183Z",
+      "version": "4d8cc7071328b2c0",
       "dateSource": "asset-update"
     },
     "meerpadkerk.lod1": {
@@ -1822,9 +1822,9 @@
       "dateSource": "asset-update"
     },
     "melkweg": {
-      "updatedAt": "2026-10-04T00:13:31+02:00",
-      "version": "a55b13361380a702",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:45.385Z",
+      "version": "c316c1a16e1e79c2",
+      "dateSource": "asset-update"
     },
     "mercatorplein-noordtoren": {
       "updatedAt": "2026-10-14T14:47:21.581Z",
@@ -1847,9 +1847,9 @@
       "dateSource": "asset-update"
     },
     "micropia-ledenlokalen": {
-      "updatedAt": "2026-10-04T01:54:42+02:00",
-      "version": "6d8e4969e328569f",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:36.462Z",
+      "version": "ca2663737e6c853f",
+      "dateSource": "asset-update"
     },
     "micropia-ledenlokalen.lod1": {
       "updatedAt": "2026-10-10T13:42:20.188Z",
@@ -1857,8 +1857,8 @@
       "dateSource": "asset-update"
     },
     "midwest": {
-      "updatedAt": "2026-10-06T11:39:49.126Z",
-      "version": "0cf4c0abc070d609",
+      "updatedAt": "2026-10-20T10:14:46.763Z",
+      "version": "1bd8d4fddaa797a5",
       "dateSource": "asset-update"
     },
     "midwest.lod1": {
@@ -1877,9 +1877,9 @@
       "dateSource": "asset-update"
     },
     "mondriaan-tower": {
-      "updatedAt": "2026-10-04T13:28:28+02:00",
-      "version": "da4a8d9ed9d84bfc",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.757Z",
+      "version": "cc79a4c11f99876d",
+      "dateSource": "asset-update"
     },
     "mondriaan-tower.lod1": {
       "updatedAt": "2026-10-10T13:42:20.191Z",
@@ -1887,8 +1887,8 @@
       "dateSource": "asset-update"
     },
     "monk-amsterdam": {
-      "updatedAt": "2026-10-06T21:05:23.847Z",
-      "version": "931e573ff99f3f64",
+      "updatedAt": "2026-10-20T10:14:54.098Z",
+      "version": "d9da83391c4cdbb3",
       "dateSource": "asset-update"
     },
     "monk-amsterdam.lod1": {
@@ -1897,9 +1897,9 @@
       "dateSource": "asset-update"
     },
     "montelbaanstoren-amsterdam": {
-      "updatedAt": "2026-10-04T10:58:02+02:00",
-      "version": "cd253f9546f3b5fb",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.566Z",
+      "version": "1801a0a49bb84609",
+      "dateSource": "asset-update"
     },
     "montelbaanstoren-amsterdam.lod1": {
       "updatedAt": "2026-10-10T13:42:20.193Z",
@@ -1927,8 +1927,8 @@
       "dateSource": "asset-update"
     },
     "mozes-en-aaronkerk": {
-      "updatedAt": "2026-10-13T09:06:03.216Z",
-      "version": "93dd16804fae9219",
+      "updatedAt": "2026-10-20T10:17:05.224Z",
+      "version": "577638b6f78be191",
       "dateSource": "asset-update"
     },
     "mozes-en-aaronkerk.lod1": {
@@ -1947,9 +1947,9 @@
       "dateSource": "asset-update"
     },
     "muiderpoort": {
-      "updatedAt": "2026-10-04T23:51:03+02:00",
-      "version": "4c4040cbd509e074",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:42.402Z",
+      "version": "54106702988c35bc",
+      "dateSource": "asset-update"
     },
     "muiderpoort.lod1": {
       "updatedAt": "2026-10-10T13:42:20.199Z",
@@ -1967,9 +1967,9 @@
       "dateSource": "asset-update"
     },
     "multatuli": {
-      "updatedAt": "2026-10-05T09:29:22+02:00",
-      "version": "12b95d37da67cc5d",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:42.538Z",
+      "version": "027c8dae462ec068",
+      "dateSource": "asset-update"
     },
     "multatuli.lod1": {
       "updatedAt": "2026-10-10T13:42:20.200Z",
@@ -1977,9 +1977,9 @@
       "dateSource": "asset-update"
     },
     "munttoren-amsterdam": {
-      "updatedAt": "2026-10-04T12:49:59+02:00",
-      "version": "d25c5e03036cf9a0",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.590Z",
+      "version": "45c6b9a10742979b",
+      "dateSource": "asset-update"
     },
     "munttoren-amsterdam.lod1": {
       "updatedAt": "2026-10-10T13:42:20.201Z",
@@ -1987,8 +1987,8 @@
       "dateSource": "asset-update"
     },
     "museum-amsterdam-noord": {
-      "updatedAt": "2026-10-13T15:41:03.479Z",
-      "version": "2a8095a8b4c3706c",
+      "updatedAt": "2026-10-20T10:16:06.059Z",
+      "version": "efc6d1d52ec7d8b8",
       "dateSource": "asset-update"
     },
     "museum-van-loon": {
@@ -1997,13 +1997,13 @@
       "dateSource": "asset-update"
     },
     "muziekgebouw-bimhuis": {
-      "updatedAt": "2026-10-03T23:22:30+02:00",
-      "version": "4d6f6c76eda45f3b",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:45.229Z",
+      "version": "b165abe32c0d0af1",
+      "dateSource": "asset-update"
     },
     "naco-house": {
-      "updatedAt": "2026-10-06T11:39:49.126Z",
-      "version": "df4445c3f6b327bb",
+      "updatedAt": "2026-10-20T10:14:46.798Z",
+      "version": "0a471dbcb07e6bec",
       "dateSource": "asset-update"
     },
     "naco-house.lod1": {
@@ -2022,9 +2022,9 @@
       "dateSource": "asset-update"
     },
     "national-holocaust-museum": {
-      "updatedAt": "2026-10-04T01:37:30+02:00",
-      "version": "206a3b7910093d22",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T09:59:55.889Z",
+      "version": "439fb139097329a9",
+      "dateSource": "asset-update"
     },
     "national-holocaust-museum.lod1": {
       "updatedAt": "2026-10-10T13:42:20.205Z",
@@ -2032,9 +2032,9 @@
       "dateSource": "asset-update"
     },
     "national-monument-on-the-dam": {
-      "updatedAt": "2026-10-04T12:49:59+02:00",
-      "version": "aeac99d45ed7c5f6",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.601Z",
+      "version": "5c6fd1051011658b",
+      "dateSource": "asset-update"
     },
     "national-monument-on-the-dam.lod1": {
       "updatedAt": "2026-10-10T13:42:20.206Z",
@@ -2042,8 +2042,8 @@
       "dateSource": "asset-update"
     },
     "ndsm-container-arch": {
-      "updatedAt": "2026-10-06T16:03:55.204Z",
-      "version": "e833366969413fe3",
+      "updatedAt": "2026-10-20T10:14:47.049Z",
+      "version": "9f4a558c30b94695",
       "dateSource": "asset-update"
     },
     "ndsm-container-arch.lod1": {
@@ -2052,8 +2052,8 @@
       "dateSource": "asset-update"
     },
     "ndsm-warehouse-complex": {
-      "updatedAt": "2026-10-06T10:03:55.100Z",
-      "version": "ebf02ab7f8d789da",
+      "updatedAt": "2026-10-20T10:14:46.735Z",
+      "version": "26713ac3d6ab6d35",
       "dateSource": "asset-update"
     },
     "ndsm-warehouse-complex.lod1": {
@@ -2062,8 +2062,8 @@
       "dateSource": "asset-update"
     },
     "nemo": {
-      "updatedAt": "2026-10-10T02:13:27.234Z",
-      "version": "9ae65e782c7796ca",
+      "updatedAt": "2026-10-20T10:13:08.884Z",
+      "version": "5cf8026a0b067b36",
       "dateSource": "asset-update"
     },
     "nemo.lod1": {
@@ -2072,8 +2072,8 @@
       "dateSource": "asset-update"
     },
     "nieuw-dakota": {
-      "updatedAt": "2026-10-06T20:56:05.320Z",
-      "version": "1579cea94e829e38",
+      "updatedAt": "2026-10-20T10:14:54.068Z",
+      "version": "c080935a9df679fd",
       "dateSource": "asset-update"
     },
     "nieuw-dakota.lod1": {
@@ -2082,8 +2082,8 @@
       "dateSource": "asset-update"
     },
     "nieuwe-kerk": {
-      "updatedAt": "2026-10-16T08:17:14.290Z",
-      "version": "5ee4be33beed348c",
+      "updatedAt": "2026-10-20T10:12:23.598Z",
+      "version": "5e2cf5172fe73710",
       "dateSource": "asset-update"
     },
     "nieuwe-kerk.lod1": {
@@ -2092,8 +2092,8 @@
       "dateSource": "asset-update"
     },
     "nieuwendammerkerk": {
-      "updatedAt": "2026-10-09T16:26:17.601Z",
-      "version": "7dd13c274c3f51e2",
+      "updatedAt": "2026-10-20T10:15:50.166Z",
+      "version": "c20af42bf2018526",
       "dateSource": "asset-update"
     },
     "nieuwendammerkerk.lod1": {
@@ -2102,8 +2102,8 @@
       "dateSource": "asset-update"
     },
     "nikolaas-myrakerk": {
-      "updatedAt": "2026-10-06T11:39:49.126Z",
-      "version": "c1750d621307d40f",
+      "updatedAt": "2026-10-20T10:14:46.789Z",
+      "version": "339327220c42dd6c",
       "dateSource": "asset-update"
     },
     "nikolaas-myrakerk.lod1": {
@@ -2112,9 +2112,9 @@
       "dateSource": "asset-update"
     },
     "niod": {
-      "updatedAt": "2026-10-04T23:51:03+02:00",
-      "version": "cc6c658e4e0ddf79",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:42.527Z",
+      "version": "07a4f082790f72a1",
+      "dateSource": "asset-update"
     },
     "niod.lod1": {
       "updatedAt": "2026-10-10T13:42:20.216Z",
@@ -2132,9 +2132,9 @@
       "dateSource": "asset-update"
     },
     "oba-oosterdok": {
-      "updatedAt": "2026-10-05T18:07:25+02:00",
-      "version": "4fc90fd20e653331",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T09:59:55.852Z",
+      "version": "e17fa33f00b2662b",
+      "dateSource": "asset-update"
     },
     "oba-oosterdok.lod1": {
       "updatedAt": "2026-10-10T13:42:20.217Z",
@@ -2157,8 +2157,8 @@
       "dateSource": "asset-update"
     },
     "odessa": {
-      "updatedAt": "2026-10-10T09:00:13.624Z",
-      "version": "6f081eff662dab44",
+      "updatedAt": "2026-10-20T10:16:53.716Z",
+      "version": "03302730c1bcb31f",
       "dateSource": "asset-update"
     },
     "odessa.lod1": {
@@ -2167,9 +2167,9 @@
       "dateSource": "asset-update"
     },
     "olvg-oost": {
-      "updatedAt": "2026-10-04T17:40:44+02:00",
-      "version": "b85fbdea39e26e68",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:19:37.460Z",
+      "version": "844cf40bd35b8f8e",
+      "dateSource": "asset-update"
     },
     "olvg-oost.lod1": {
       "updatedAt": "2026-10-10T13:42:20.219Z",
@@ -2177,9 +2177,9 @@
       "dateSource": "asset-update"
     },
     "olvg-west": {
-      "updatedAt": "2026-10-04T17:40:44+02:00",
-      "version": "b3d9166087c429c8",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:19:37.397Z",
+      "version": "464243c07bd2cb6f",
+      "dateSource": "asset-update"
     },
     "olvg-west.lod1": {
       "updatedAt": "2026-10-10T13:42:20.221Z",
@@ -2187,9 +2187,9 @@
       "dateSource": "asset-update"
     },
     "ons-lieve-heer-op-solder": {
-      "updatedAt": "2026-10-05T18:07:25+02:00",
-      "version": "da35531d4fe2d20d",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:42.484Z",
+      "version": "f225ef38745508da",
+      "dateSource": "asset-update"
     },
     "ons-lieve-heer-op-solder.lod1": {
       "updatedAt": "2026-10-10T13:42:20.222Z",
@@ -2197,9 +2197,9 @@
       "dateSource": "asset-update"
     },
     "oost-indisch-huis": {
-      "updatedAt": "2026-10-04T05:24:36+02:00",
-      "version": "c37ff7dcef43f0e3",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:02.515Z",
+      "version": "3ecadad78bbca5ac",
+      "dateSource": "asset-update"
     },
     "oost-indisch-huis.lod1": {
       "updatedAt": "2026-10-10T13:42:20.226Z",
@@ -2207,8 +2207,8 @@
       "dateSource": "asset-update"
     },
     "oostenburgermiddenstraat-228": {
-      "updatedAt": "2026-10-13T13:04:09.464Z",
-      "version": "b44bb44386406812",
+      "updatedAt": "2026-10-20T10:16:57.940Z",
+      "version": "a0f0d0edbed6f1ea",
       "dateSource": "asset-update"
     },
     "oostenburgermiddenstraat-228.lod1": {
@@ -2217,8 +2217,8 @@
       "dateSource": "asset-update"
     },
     "oosterkerk": {
-      "updatedAt": "2026-10-13T09:08:14.204Z",
-      "version": "75c95d3a8d162feb",
+      "updatedAt": "2026-10-20T10:17:05.205Z",
+      "version": "35e0014538b7aa5d",
       "dateSource": "asset-update"
     },
     "oosterkerk.lod1": {
@@ -2227,8 +2227,8 @@
       "dateSource": "asset-update"
     },
     "oosterparkkerk": {
-      "updatedAt": "2026-10-08T15:07:49.973Z",
-      "version": "2ad382a7bb22d73d",
+      "updatedAt": "2026-10-20T10:15:09.404Z",
+      "version": "d2b68dced647f5f0",
       "dateSource": "asset-update"
     },
     "oosterparkkerk.lod1": {
@@ -2237,8 +2237,8 @@
       "dateSource": "asset-update"
     },
     "opstandingskerk": {
-      "updatedAt": "2026-10-13T19:31:46.555Z",
-      "version": "8b74b85c47bfecdb",
+      "updatedAt": "2026-10-20T10:17:05.320Z",
+      "version": "176000923ff7a24b",
       "dateSource": "asset-update"
     },
     "opstandingskerk.lod1": {
@@ -2267,8 +2267,8 @@
       "dateSource": "asset-update"
     },
     "oude-kerk": {
-      "updatedAt": "2026-10-13T12:51:14.314Z",
-      "version": "fcbb517b833bb7e1",
+      "updatedAt": "2026-10-20T10:12:11.190Z",
+      "version": "2a5a37ec68e797e1",
       "dateSource": "asset-update"
     },
     "oude-kerk.lod1": {
@@ -2277,8 +2277,8 @@
       "dateSource": "asset-update"
     },
     "oude-lutherse-kerk": {
-      "updatedAt": "2026-10-13T13:04:08.924Z",
-      "version": "a5c34f691a47ce7b",
+      "updatedAt": "2026-10-20T10:13:08.521Z",
+      "version": "35dd3bd53e42e37a",
       "dateSource": "asset-update"
     },
     "oude-lutherse-kerk.lod1": {
@@ -2297,8 +2297,8 @@
       "dateSource": "asset-update"
     },
     "overtoom-197": {
-      "updatedAt": "2026-10-10T18:02:53.711Z",
-      "version": "3c2fd3bfa54187f0",
+      "updatedAt": "2026-10-20T10:16:57.781Z",
+      "version": "8d85fc2556b3d741",
       "dateSource": "asset-update"
     },
     "overtoom-197.lod1": {
@@ -2307,8 +2307,8 @@
       "dateSource": "asset-update"
     },
     "pakhuis-de-zwijger": {
-      "updatedAt": "2026-10-13T13:04:09.046Z",
-      "version": "3122ba9d61070550",
+      "updatedAt": "2026-10-20T10:16:53.440Z",
+      "version": "4943a8260e5c4e03",
       "dateSource": "asset-update"
     },
     "pakhuis-de-zwijger.lod1": {
@@ -2327,9 +2327,9 @@
       "dateSource": "asset-update"
     },
     "paradiso": {
-      "updatedAt": "2026-10-04T00:13:31+02:00",
-      "version": "910c44a76ca569b0",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:45.378Z",
+      "version": "5ce89164c61afca0",
+      "dateSource": "asset-update"
     },
     "paradiso.lod1": {
       "updatedAt": "2026-10-10T13:42:20.436Z",
@@ -2337,9 +2337,9 @@
       "dateSource": "asset-update"
     },
     "pathe-city": {
-      "updatedAt": "2026-10-04T00:48:21+02:00",
-      "version": "07c1b888cb76da4d",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:04.614Z",
+      "version": "7722dbfe0633ea77",
+      "dateSource": "asset-update"
     },
     "pathe-city.lod1": {
       "updatedAt": "2026-10-10T13:42:20.437Z",
@@ -2362,9 +2362,9 @@
       "dateSource": "asset-update"
     },
     "petruskerk": {
-      "updatedAt": "2026-10-05T18:07:25+02:00",
-      "version": "ddc41f62dcf7186a",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:42.638Z",
+      "version": "c8f78828c9c8e8b1",
+      "dateSource": "asset-update"
     },
     "petruskerk.lod1": {
       "updatedAt": "2026-10-10T13:42:20.439Z",
@@ -2372,9 +2372,9 @@
       "dateSource": "asset-update"
     },
     "pianola-museum": {
-      "updatedAt": "2026-10-04T10:58:02+02:00",
-      "version": "ba244aaa14dcb405",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.547Z",
+      "version": "f8e211dedb552b92",
+      "dateSource": "asset-update"
     },
     "pianola-museum.lod1": {
       "updatedAt": "2026-10-10T13:42:20.440Z",
@@ -2382,9 +2382,9 @@
       "dateSource": "asset-update"
     },
     "plein-theater": {
-      "updatedAt": "2026-10-04T05:44:11+02:00",
-      "version": "260f0e47a725d8d7",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:02.610Z",
+      "version": "c5cf7238f441c3f4",
+      "dateSource": "asset-update"
     },
     "plein-theater.lod1": {
       "updatedAt": "2026-10-10T13:42:20.440Z",
@@ -2392,8 +2392,8 @@
       "dateSource": "asset-update"
     },
     "pllek": {
-      "updatedAt": "2026-10-06T21:05:23.826Z",
-      "version": "dc5d3ef35f825449",
+      "updatedAt": "2026-10-20T10:00:54.518Z",
+      "version": "73341fa36d2052b3",
       "dateSource": "asset-update"
     },
     "pllek.lod1": {
@@ -2402,8 +2402,8 @@
       "dateSource": "asset-update"
     },
     "podium-mozaiek": {
-      "updatedAt": "2026-10-08T11:26:01.414Z",
-      "version": "ba268d238b1b5b07",
+      "updatedAt": "2026-10-20T10:15:09.286Z",
+      "version": "c759556f16122968",
       "dateSource": "asset-update"
     },
     "podium-mozaiek.lod1": {
@@ -2412,9 +2412,9 @@
       "dateSource": "asset-update"
     },
     "pontsteiger": {
-      "updatedAt": "2026-10-03T23:34:10+02:00",
-      "version": "7eceb598c7d77e8b",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:45.320Z",
+      "version": "1f9f41629833d4c5",
+      "dateSource": "asset-update"
     },
     "pontsteiger.lod1": {
       "updatedAt": "2026-10-10T13:42:20.443Z",
@@ -2422,9 +2422,9 @@
       "dateSource": "asset-update"
     },
     "portuguese-synagogue": {
-      "updatedAt": "2026-10-04T01:37:22+02:00",
-      "version": "f7c67aca9592d33d",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:36.434Z",
+      "version": "77a79d26675ebeba",
+      "dateSource": "asset-update"
     },
     "portuguese-synagogue.lod1": {
       "updatedAt": "2026-10-10T13:42:20.447Z",
@@ -2442,8 +2442,8 @@
       "dateSource": "asset-update"
     },
     "pulitzer-amsterdam": {
-      "updatedAt": "2026-10-06T19:37:22.159Z",
-      "version": "46da427f4defad48",
+      "updatedAt": "2026-10-20T10:14:54.042Z",
+      "version": "a4cfccd473d8830d",
       "dateSource": "asset-update"
     },
     "pulitzer-amsterdam.lod1": {
@@ -2462,8 +2462,8 @@
       "dateSource": "asset-update"
     },
     "rasphuispoort": {
-      "updatedAt": "2026-10-06T21:05:24.027Z",
-      "version": "a5285cde46a71818",
+      "updatedAt": "2026-10-20T10:15:06.850Z",
+      "version": "999ec12436855ecc",
       "dateSource": "asset-update"
     },
     "rasphuispoort.lod1": {
@@ -2472,8 +2472,8 @@
       "dateSource": "asset-update"
     },
     "rem-eiland": {
-      "updatedAt": "2026-10-06T08:54:22.181Z",
-      "version": "c1d915bb11c84795",
+      "updatedAt": "2026-10-20T10:11:45.369Z",
+      "version": "dd10910cbb955e71",
       "dateSource": "asset-update"
     },
     "rem-eiland.lod1": {
@@ -2482,9 +2482,9 @@
       "dateSource": "asset-update"
     },
     "rembrandt-house": {
-      "updatedAt": "2026-10-04T00:09:57+02:00",
-      "version": "de2a8f9b6da74788",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:50.569Z",
+      "version": "9d89f4040576047a",
+      "dateSource": "asset-update"
     },
     "rembrandt-house.lod1": {
       "updatedAt": "2026-10-10T13:42:20.460Z",
@@ -2492,9 +2492,9 @@
       "dateSource": "asset-update"
     },
     "rembrandt-tower": {
-      "updatedAt": "2026-10-04T13:28:28+02:00",
-      "version": "77b57de315082631",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T09:59:56.111Z",
+      "version": "b0a531f37b0b06a3",
+      "dateSource": "asset-update"
     },
     "rembrandt-tower.lod1": {
       "updatedAt": "2026-10-10T13:42:20.464Z",
@@ -2517,9 +2517,9 @@
       "dateSource": "asset-update"
     },
     "rijksmuseum": {
-      "updatedAt": "2026-10-04T09:03:59+02:00",
-      "version": "86607f097c034ce7",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T09:59:56.065Z",
+      "version": "4522b3dbb1ecf576",
+      "dateSource": "asset-update"
     },
     "rijksmuseum.lod1": {
       "updatedAt": "2026-10-10T13:42:20.467Z",
@@ -2527,8 +2527,8 @@
       "dateSource": "asset-update"
     },
     "rode-hoed": {
-      "updatedAt": "2026-10-13T13:04:38.492Z",
-      "version": "95fd84e044a6f3cb",
+      "updatedAt": "2026-10-20T10:12:58.179Z",
+      "version": "22db86629558b27c",
       "dateSource": "asset-update"
     },
     "rode-hoed.lod1": {
@@ -2537,8 +2537,8 @@
       "dateSource": "asset-update"
     },
     "roeterseiland-rec-a": {
-      "updatedAt": "2026-10-14T02:27:26.486Z",
-      "version": "7e2a0a7dd6bdf95d",
+      "updatedAt": "2026-10-20T10:19:36.670Z",
+      "version": "0d7b1c43143a48cd",
       "dateSource": "asset-update"
     },
     "roeterseiland-rec-a.lod1": {
@@ -2547,8 +2547,8 @@
       "dateSource": "asset-update"
     },
     "ronde-lutherse-kerk": {
-      "updatedAt": "2026-10-13T13:04:09.031Z",
-      "version": "2b779030928e6b45",
+      "updatedAt": "2026-10-20T10:16:53.252Z",
+      "version": "f3d12c730bac1273",
       "dateSource": "asset-update"
     },
     "ronde-lutherse-kerk.lod1": {
@@ -2557,9 +2557,9 @@
       "dateSource": "asset-update"
     },
     "royal-theater-carre": {
-      "updatedAt": "2026-10-04T08:47:46+02:00",
-      "version": "6cd5c146f0460417",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:04.990Z",
+      "version": "691987957fc8588b",
+      "dateSource": "asset-update"
     },
     "royal-theater-carre.lod1": {
       "updatedAt": "2026-10-10T13:42:20.472Z",
@@ -2577,8 +2577,8 @@
       "dateSource": "asset-update"
     },
     "scheepvaarthuis": {
-      "updatedAt": "2026-10-13T12:51:06.214Z",
-      "version": "ee2941f43b2966de",
+      "updatedAt": "2026-10-20T10:12:02.715Z",
+      "version": "87999690ef079260",
       "dateSource": "asset-update"
     },
     "scheepvaarthuis.lod1": {
@@ -2597,9 +2597,9 @@
       "dateSource": "asset-update"
     },
     "scheltema": {
-      "updatedAt": "2026-10-04T03:55:52+02:00",
-      "version": "940ecaab5a705bff",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:58.005Z",
+      "version": "d2af22de8199d63b",
+      "dateSource": "asset-update"
     },
     "scheltema.lod1": {
       "updatedAt": "2026-10-10T13:42:20.479Z",
@@ -2607,9 +2607,9 @@
       "dateSource": "asset-update"
     },
     "schreierstoren": {
-      "updatedAt": "2026-10-04T06:15:19+02:00",
-      "version": "696f87d9db247773",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:04.917Z",
+      "version": "bdfa675b2af9ea8a",
+      "dateSource": "asset-update"
     },
     "schreierstoren.lod1": {
       "updatedAt": "2026-10-10T13:42:20.479Z",
@@ -2617,8 +2617,8 @@
       "dateSource": "asset-update"
     },
     "sea-palace": {
-      "updatedAt": "2026-10-10T02:50:58.396Z",
-      "version": "437643613f66fd7b",
+      "updatedAt": "2026-10-20T10:16:34.496Z",
+      "version": "fa063155a88b0892",
       "dateSource": "asset-update"
     },
     "sea-palace.lod1": {
@@ -2627,9 +2627,9 @@
       "dateSource": "asset-update"
     },
     "sexmuseum-venustempel": {
-      "updatedAt": "2026-10-04T10:58:02+02:00",
-      "version": "8c1f56d5387fca1c",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.493Z",
+      "version": "8799c5dfa9ac10d0",
+      "dateSource": "asset-update"
     },
     "sexmuseum-venustempel.lod1": {
       "updatedAt": "2026-10-10T13:42:20.483Z",
@@ -2637,8 +2637,8 @@
       "dateSource": "asset-update"
     },
     "shell-technology-centre": {
-      "updatedAt": "2026-10-10T20:41:04.314Z",
-      "version": "f79ab119a1c5f566",
+      "updatedAt": "2026-10-20T10:01:07.804Z",
+      "version": "377117f9a6cd9695",
       "dateSource": "asset-update"
     },
     "shell-technology-centre.lod1": {
@@ -2657,9 +2657,9 @@
       "dateSource": "asset-update"
     },
     "singelkerk": {
-      "updatedAt": "2026-10-05T18:07:25+02:00",
-      "version": "44504f14eb3bbca5",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:42.553Z",
+      "version": "fdb4667127c0d7fe",
+      "dateSource": "asset-update"
     },
     "singelkerk.lod1": {
       "updatedAt": "2026-10-10T13:42:20.489Z",
@@ -2667,9 +2667,9 @@
       "dateSource": "asset-update"
     },
     "sint-agneskerk": {
-      "updatedAt": "2026-10-05T18:07:25+02:00",
-      "version": "f1bea314f629b3e8",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:42.611Z",
+      "version": "9d693c1565161b91",
+      "dateSource": "asset-update"
     },
     "sint-agneskerk.lod1": {
       "updatedAt": "2026-10-10T13:42:20.492Z",
@@ -2677,9 +2677,9 @@
       "dateSource": "asset-update"
     },
     "sint-jorishof": {
-      "updatedAt": "2026-10-04T06:16:22+02:00",
-      "version": "51546a65d0743c24",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:04.900Z",
+      "version": "485e6e8f82422129",
+      "dateSource": "asset-update"
     },
     "sint-jorishof.lod1": {
       "updatedAt": "2026-10-10T13:42:20.499Z",
@@ -2687,9 +2687,9 @@
       "dateSource": "asset-update"
     },
     "sint-nicolaas": {
-      "updatedAt": "2026-10-04T08:51:10+02:00",
-      "version": "273d5ac92f039827",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:05.052Z",
+      "version": "0bd6d198c4c47de7",
+      "dateSource": "asset-update"
     },
     "sint-nicolaas.lod1": {
       "updatedAt": "2026-10-10T13:42:20.501Z",
@@ -2712,9 +2712,9 @@
       "dateSource": "asset-update"
     },
     "sloterdijk-station": {
-      "updatedAt": "2026-10-04T17:40:44+02:00",
-      "version": "38d256e4825dfc69",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:08.907Z",
+      "version": "3a518469067cf2cd",
+      "dateSource": "asset-update"
     },
     "sloterdijk-station.lod1": {
       "updatedAt": "2026-10-10T13:42:20.503Z",
@@ -2722,9 +2722,9 @@
       "dateSource": "asset-update"
     },
     "social-history": {
-      "updatedAt": "2026-10-04T23:51:03+02:00",
-      "version": "379578130b1c302a",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:42.443Z",
+      "version": "0d97bc6ba8d2a685",
+      "dateSource": "asset-update"
     },
     "social-history.lod1": {
       "updatedAt": "2026-10-10T13:42:20.503Z",
@@ -2772,9 +2772,9 @@
       "dateSource": "asset-update"
     },
     "stedelijk-museum": {
-      "updatedAt": "2026-10-04T00:13:31+02:00",
-      "version": "cad040a76b7e50a6",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:45.252Z",
+      "version": "b228f5dd96a7760d",
+      "dateSource": "asset-update"
     },
     "stedelijk-museum.lod1": {
       "updatedAt": "2026-10-10T13:42:20.564Z",
@@ -2792,8 +2792,8 @@
       "dateSource": "asset-update"
     },
     "studiok": {
-      "updatedAt": "2026-10-13T19:09:52.744Z",
-      "version": "d5c4028124eac762",
+      "updatedAt": "2026-10-20T10:12:57.884Z",
+      "version": "21128223ebed8fc9",
       "dateSource": "asset-update"
     },
     "studiok.lod1": {
@@ -2802,8 +2802,8 @@
       "dateSource": "asset-update"
     },
     "symphony": {
-      "updatedAt": "2026-10-10T02:12:05.621Z",
-      "version": "045947226436ce65",
+      "updatedAt": "2026-10-20T10:37:08.157Z",
+      "version": "d3f9794a44b978f8",
       "dateSource": "asset-update"
     },
     "symphony.lod1": {
@@ -2822,9 +2822,9 @@
       "dateSource": "asset-update"
     },
     "the-movies": {
-      "updatedAt": "2026-10-03T23:59:52+02:00",
-      "version": "81b65535e377b947",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:45.405Z",
+      "version": "7f4aae83c2b2ffd3",
+      "dateSource": "asset-update"
     },
     "the-movies.lod1": {
       "updatedAt": "2026-10-10T13:42:20.567Z",
@@ -2832,8 +2832,8 @@
       "dateSource": "asset-update"
     },
     "the-rock": {
-      "updatedAt": "2026-10-06T17:58:05.595Z",
-      "version": "c42ec5e34493fc8b",
+      "updatedAt": "2026-10-20T10:00:54.504Z",
+      "version": "affc853ba557e9c9",
       "dateSource": "asset-update"
     },
     "the-rock.lod1": {
@@ -2842,9 +2842,9 @@
       "dateSource": "asset-update"
     },
     "theater-amsterdam": {
-      "updatedAt": "2026-10-04T04:57:51+02:00",
-      "version": "ee5101d708768c42",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:58.191Z",
+      "version": "34e51859771c7ea5",
+      "dateSource": "asset-update"
     },
     "theater-amsterdam.lod1": {
       "updatedAt": "2026-10-10T13:42:20.571Z",
@@ -2852,8 +2852,8 @@
       "dateSource": "asset-update"
     },
     "theo-thijssen-museum": {
-      "updatedAt": "2026-10-09T21:12:13.830Z",
-      "version": "b93ed7783c539338",
+      "updatedAt": "2026-10-20T10:16:06.701Z",
+      "version": "aa2f8da43b96f71a",
       "dateSource": "asset-update"
     },
     "theo-thijssen-standbeeld": {
@@ -2867,8 +2867,8 @@
       "dateSource": "asset-update"
     },
     "this-is-holland": {
-      "updatedAt": "2026-10-13T14:30:26.972Z",
-      "version": "ecb2668aa414b89e",
+      "updatedAt": "2026-10-20T10:00:58.647Z",
+      "version": "012aa7d0809e9c1e",
       "dateSource": "asset-update"
     },
     "this-is-holland.lod1": {
@@ -2877,8 +2877,8 @@
       "dateSource": "asset-update"
     },
     "thomaskerk": {
-      "updatedAt": "2026-10-09T22:07:23.833Z",
-      "version": "b80127c8ba91dbcc",
+      "updatedAt": "2026-10-20T10:16:34.039Z",
+      "version": "60dc2617b0ee7031",
       "dateSource": "asset-update"
     },
     "thorbecke-standbeeld": {
@@ -2892,9 +2892,9 @@
       "dateSource": "asset-update"
     },
     "tobacco-theater": {
-      "updatedAt": "2026-10-04T05:44:11+02:00",
-      "version": "e77efef4eb4fd0a0",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:02.593Z",
+      "version": "fc0b34923f1ff3bc",
+      "dateSource": "asset-update"
     },
     "tobacco-theater.lod1": {
       "updatedAt": "2026-10-10T13:42:20.575Z",
@@ -2902,13 +2902,13 @@
       "dateSource": "asset-update"
     },
     "torture-museum": {
-      "updatedAt": "2026-10-11T05:42:43.764Z",
-      "version": "b22565b6b60888d5",
+      "updatedAt": "2026-10-20T10:16:06.696Z",
+      "version": "a4f79228351fe998",
       "dateSource": "asset-update"
     },
     "treehouse-ndsm": {
-      "updatedAt": "2026-10-06T21:05:23.950Z",
-      "version": "16a70ba7c3f5215f",
+      "updatedAt": "2026-10-20T10:15:02.652Z",
+      "version": "e5f87381bd928bde",
       "dateSource": "asset-update"
     },
     "treehouse-ndsm.lod1": {
@@ -2917,8 +2917,8 @@
       "dateSource": "asset-update"
     },
     "trippenhuis": {
-      "updatedAt": "2026-10-10T04:02:33.886Z",
-      "version": "a3cad0e513c251a5",
+      "updatedAt": "2026-10-20T10:16:34.609Z",
+      "version": "a0157f2eb2f44000",
       "dateSource": "asset-update"
     },
     "trippenhuis.lod1": {
@@ -2937,9 +2937,9 @@
       "dateSource": "asset-update"
     },
     "tuschinski": {
-      "updatedAt": "2026-10-04T00:48:21+02:00",
-      "version": "40d1ef278d608881",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:04.604Z",
+      "version": "65b1a1fc35bd541d",
+      "dateSource": "asset-update"
     },
     "tuschinski.lod1": {
       "updatedAt": "2026-10-10T13:42:20.641Z",
@@ -2947,8 +2947,8 @@
       "dateSource": "asset-update"
     },
     "uilenburger-synagoge": {
-      "updatedAt": "2026-10-09T16:26:00.838Z",
-      "version": "58896b5f0545f0f6",
+      "updatedAt": "2026-10-20T10:15:50.139Z",
+      "version": "acfdfaa151a8b256",
       "dateSource": "asset-update"
     },
     "uilenburger-synagoge.lod1": {
@@ -2957,8 +2957,8 @@
       "dateSource": "asset-update"
     },
     "valley": {
-      "updatedAt": "2026-10-13T19:25:19.711Z",
-      "version": "bb854051eaaa72ac",
+      "updatedAt": "2026-10-20T10:00:54.448Z",
+      "version": "86661c42f3565925",
       "dateSource": "asset-update"
     },
     "valley.lod1": {
@@ -2967,8 +2967,8 @@
       "dateSource": "asset-update"
     },
     "van-gendt-hallen": {
-      "updatedAt": "2026-10-09T22:17:36.660Z",
-      "version": "a012eb6b29ebdb6f",
+      "updatedAt": "2026-10-20T10:16:34.136Z",
+      "version": "cc0ce3528ad1d92d",
       "dateSource": "asset-update"
     },
     "van-gendt-hallen.lod1": {
@@ -2977,13 +2977,13 @@
       "dateSource": "asset-update"
     },
     "van-gogh-museum": {
-      "updatedAt": "2026-10-03T23:34:10+02:00",
-      "version": "f7c57ad6fb08f886",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:11:45.236Z",
+      "version": "0b663a1c7450e894",
+      "dateSource": "asset-update"
     },
     "victoria-hotel": {
-      "updatedAt": "2026-10-10T07:58:07.429Z",
-      "version": "5e9cae9e94546afc",
+      "updatedAt": "2026-10-20T10:16:53.490Z",
+      "version": "721d98704c685d7f",
       "dateSource": "asset-update"
     },
     "victoria-hotel.lod1": {
@@ -2992,8 +2992,8 @@
       "dateSource": "asset-update"
     },
     "vinoly": {
-      "updatedAt": "2026-10-07T08:09:15.878Z",
-      "version": "e25e62032c28211d",
+      "updatedAt": "2026-10-20T10:15:06.922Z",
+      "version": "a1bf421212f4b2dd",
       "dateSource": "asset-update"
     },
     "vinoly.lod1": {
@@ -3012,8 +3012,8 @@
       "dateSource": "asset-update"
     },
     "vondelkerk": {
-      "updatedAt": "2026-10-13T15:43:13.988Z",
-      "version": "555ac8dda9d30fc7",
+      "updatedAt": "2026-10-20T10:16:53.174Z",
+      "version": "ab3b7f65b59ee607",
       "dateSource": "asset-update"
     },
     "vondelkerk.lod1": {
@@ -3032,9 +3032,9 @@
       "dateSource": "asset-update"
     },
     "vondelpark-bandstand": {
-      "updatedAt": "2026-10-04T05:18:02+02:00",
-      "version": "0e632fab53dc3740",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:58.219Z",
+      "version": "713c0003cd19d9b6",
+      "dateSource": "asset-update"
     },
     "vondelpark-bandstand.lod1": {
       "updatedAt": "2026-10-10T13:42:20.707Z",
@@ -3042,13 +3042,13 @@
       "dateSource": "asset-update"
     },
     "vondelpark-open-air-theater": {
-      "updatedAt": "2026-10-04T04:57:51+02:00",
-      "version": "5067ef40e3266e95",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:58.196Z",
+      "version": "4f28f482aff2f5a9",
+      "dateSource": "asset-update"
     },
     "vondeltuin": {
-      "updatedAt": "2026-10-06T21:05:23.959Z",
-      "version": "cc3f4c61eef67258",
+      "updatedAt": "2026-10-20T10:15:02.663Z",
+      "version": "28c954de1ae9491b",
       "dateSource": "asset-update"
     },
     "voormalige-schouwburgpoort": {
@@ -3062,8 +3062,8 @@
       "dateSource": "asset-update"
     },
     "vredeskerk": {
-      "updatedAt": "2026-10-13T12:51:27.084Z",
-      "version": "6507c94a45ff9cc9",
+      "updatedAt": "2026-10-20T10:12:56.033Z",
+      "version": "6c13cebf87d7c20d",
       "dateSource": "asset-update"
     },
     "vredeskerk.lod1": {
@@ -3082,8 +3082,8 @@
       "dateSource": "asset-update"
     },
     "vrijburg": {
-      "updatedAt": "2026-10-09T21:53:01.139Z",
-      "version": "1b37afe9c6f257d0",
+      "updatedAt": "2026-10-20T10:16:34.073Z",
+      "version": "880f4901931b5d44",
       "dateSource": "asset-update"
     },
     "vrijburg.lod1": {
@@ -3092,8 +3092,8 @@
       "dateSource": "asset-update"
     },
     "w139": {
-      "updatedAt": "2026-10-10T07:55:18.331Z",
-      "version": "760db4fdbc6b1577",
+      "updatedAt": "2026-10-20T10:13:42.697Z",
+      "version": "5a1c77850473e6e8",
       "dateSource": "asset-update"
     },
     "w139.lod1": {
@@ -3112,9 +3112,9 @@
       "dateSource": "asset-update"
     },
     "walloon-church": {
-      "updatedAt": "2026-10-04T06:15:19+02:00",
-      "version": "d9c664eac2d1422d",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:13:04.908Z",
+      "version": "990963ba8d8f3d92",
+      "dateSource": "asset-update"
     },
     "walraven-van-hall": {
       "updatedAt": "2026-10-13T22:56:01.350Z",
@@ -3137,9 +3137,9 @@
       "dateSource": "asset-update"
     },
     "wereldmuseum-amsterdam": {
-      "updatedAt": "2026-10-04T02:58:21+02:00",
-      "version": "f735821ca778afe2",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T09:59:55.988Z",
+      "version": "43ee6f41800cb7a6",
+      "dateSource": "asset-update"
     },
     "wereldmuseum-amsterdam.lod1": {
       "updatedAt": "2026-10-10T13:42:20.715Z",
@@ -3147,8 +3147,8 @@
       "dateSource": "asset-update"
     },
     "west-india-house": {
-      "updatedAt": "2026-10-09T21:18:03.240Z",
-      "version": "56f5d61aeb23686f",
+      "updatedAt": "2026-10-20T10:16:06.859Z",
+      "version": "a1394688636adc52",
       "dateSource": "asset-update"
     },
     "west-india-house.lod1": {
@@ -3157,8 +3157,8 @@
       "dateSource": "asset-update"
     },
     "west-indisch-pakhuis": {
-      "updatedAt": "2026-10-10T03:22:06.490Z",
-      "version": "2a10f80b7aae2bbc",
+      "updatedAt": "2026-10-20T10:16:34.551Z",
+      "version": "8d2fd63ac1a874b4",
       "dateSource": "asset-update"
     },
     "west-indisch-pakhuis.lod1": {
@@ -3207,8 +3207,8 @@
       "dateSource": "asset-update"
     },
     "willem-de-zwijgerlaan-350": {
-      "updatedAt": "2026-10-13T13:04:09.353Z",
-      "version": "b11c74bb4ead86f8",
+      "updatedAt": "2026-10-20T10:01:07.731Z",
+      "version": "4e03d468afe8daec",
       "dateSource": "asset-update"
     },
     "willem-de-zwijgerlaan-350.lod1": {
@@ -3217,9 +3217,9 @@
       "dateSource": "asset-update"
     },
     "willet-holthuysen": {
-      "updatedAt": "2026-10-04T03:52:47+02:00",
-      "version": "c7f1f08ff67ab766",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T10:12:57.955Z",
+      "version": "54cc9ca43ef6acef",
+      "dateSource": "asset-update"
     },
     "willet-holthuysen.lod1": {
       "updatedAt": "2026-10-10T13:42:20.779Z",
@@ -3227,8 +3227,8 @@
       "dateSource": "asset-update"
     },
     "wine-guildhall": {
-      "updatedAt": "2026-10-06T17:58:05.515Z",
-      "version": "1e475780392acc9f",
+      "updatedAt": "2026-10-20T10:14:47.072Z",
+      "version": "84ed7c9c40dfa11e",
       "dateSource": "asset-update"
     },
     "wine-guildhall.lod1": {
@@ -3247,8 +3247,8 @@
       "dateSource": "asset-update"
     },
     "woongebouw-wladiwostok": {
-      "updatedAt": "2026-10-10T07:58:07.456Z",
-      "version": "4715e269f100f32a",
+      "updatedAt": "2026-10-20T10:16:53.515Z",
+      "version": "9ccfed7fd4c5c988",
       "dateSource": "asset-update"
     },
     "woongebouw-wladiwostok.lod1": {
@@ -3257,8 +3257,8 @@
       "dateSource": "asset-update"
     },
     "zevenlandenhuizen": {
-      "updatedAt": "2026-10-10T02:21:03.943Z",
-      "version": "354d0ed3c61e1c16",
+      "updatedAt": "2026-10-20T10:16:34.312Z",
+      "version": "150229fdc5785de5",
       "dateSource": "asset-update"
     },
     "zevenlandenhuizen.lod1": {
@@ -3277,9 +3277,9 @@
       "dateSource": "asset-update"
     },
     "zuiveringshal-west": {
-      "updatedAt": "2026-10-04T13:28:28+02:00",
-      "version": "5978f719de17ff3e",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-20T09:59:56.135Z",
+      "version": "0c0b7a3ff1f3840f",
+      "dateSource": "asset-update"
     },
     "zuiveringshal-west.lod1": {
       "updatedAt": "2026-10-10T13:42:20.789Z",
