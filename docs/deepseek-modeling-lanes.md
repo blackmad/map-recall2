@@ -53,10 +53,15 @@ job aimed at another directory can be auto-rejected.
 
 ```sh
 cd /Users/blackmad/Code/map-recall2-worktrees/$LANE
-nohup opencode run --auto -m opencode-go/deepseek-v4-pro \
+nohup opencode run --auto -m opencode-go/deepseek-v4.1-flash \
   --title "$LANE" --format json \
   "$(cat /path/to/prompt.txt)" > artifacts/$LANE.log 2> artifacts/$LANE.err &
 ```
+
+**Use Flash, not Pro.** The user's instruction on 2026-10-20: lanes run on
+`opencode-go/deepseek-v4.1-flash` only. Pro burned the opencode-go plan limit
+mid-run on 2026-10-19 and stopped every lane at once. Flash also accepts image
+input (verified 2026-10-20), so it can run Track L; Pro cannot view images at all.
 
 - `--auto` is required. Without it the lane stops on a permission prompt that
   has no TTY to draw it.
@@ -78,8 +83,15 @@ Look at `/usr/bin/git -C ../$LANE log --oneline origin/main..` to see its
 commits as they land.
 
 If the log or stderr says **"Go usage limit exceeded"**, the opencode-go plan
-has hit its cap. Don't wait for it. Hand the same worktree to a Claude lane
-(Opus) with the same prompt plus "continue from the existing commits".
+has hit its cap; every lane on the same plan stops at the same moment (this
+happened to four Pro lanes at 21:32 on 2026-10-19). Don't wait for it. Relaunch
+the worktree on Flash with the same prompt plus "continue from the existing
+commits", or hand it to a Claude lane if Flash is also capped.
+
+**Shell calls inside a lane.** The shell tool's default timeout is 120 s, which
+is shorter than a survey, a build or a sheet run. Pass `timeout: 1800000`
+explicitly for those, and never use `background: true` plus polling: the lane
+can end its turn while waiting and lose the session (observed 2026-10-19).
 
 ### A5. Merge (integrator only)
 
@@ -156,6 +168,7 @@ When a lane reports done:
     view images)"** at the top of your report. In that case, do only work
     whose acceptance rests on measured numbers (Track Z, and Track M with
     `measure.ts`), and never claim something "matches the photo".
+    Flash can read images; Pro could not (2026-10-19). Track L is Flash-only.
 11. **Stop when the task is done.** One building or one batch. Do not drift
     into unrelated fixes, refactors or other buildings.
 
@@ -542,7 +555,7 @@ message says what changed and the measured result. End every commit message
 with this line:
 
 ```
-Co-Authored-By: DeepSeek V4 Pro (opencode) <noreply@opencode.ai>
+Co-Authored-By: DeepSeek V4.1 Flash (opencode) <noreply@opencode.ai>
 ```
 
 Before your final message, run `/usr/bin/git status`: the tree must be clean
