@@ -84,3 +84,10 @@ firestore-debug.log
 
 # Per-pand reference feed staging (scripts/pand-reference)
 /staging/
+/dist-pages/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
