@@ -377,6 +377,10 @@
       done: false
     };
   }
+  function playerZoom(cameraZoom, intro, prepared) {
+    const flight = intro ?? prepared;
+    return flight && Number.isFinite(flight.playZoom) && flight.playZoom > 0 ? flight.playZoom : cameraZoom;
+  }
 
   // src/canalRecall/game/vehicleZoomScale.ts
   var VEHICLE_ZOOM_EXPONENT = 0.65;
@@ -386,6 +390,10 @@
     if (!(zoom > 0) || !(defaultZoom > 0)) return 1;
     const scale = (defaultZoom / zoom) ** VEHICLE_ZOOM_EXPONENT;
     return Math.max(VEHICLE_ZOOM_MIN_SCALE, Math.min(VEHICLE_ZOOM_MAX_SCALE, scale));
+  }
+  var BOAT_REFERENCE_ZOOM = 0.65;
+  function boatZoomScale(zoom, referenceZoom = BOAT_REFERENCE_ZOOM) {
+    return Math.max(1, vehicleZoomScale(zoom, referenceZoom));
   }
 
   // src/canalRecall/game/coldOpenReview.ts
@@ -4866,6 +4874,19 @@
       this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
       return true;
     }
+    /** The zoom to save as the player's: the flight's landing zoom while one owns the camera (introFlight.ts playerZoom). */
+    _playerZoom() {
+      return playerZoom(this.camera.zoom, this._intro, this.state === GameState.LOADING ? this._introPrepared : null);
+    }
+    /** Apply a saved zoom. A flight in progress keeps the camera and lands on it instead. */
+    _setPlayerZoom(zoom) {
+      if (this._intro) {
+        this._intro.playZoom = zoom;
+        return;
+      }
+      if (this._introPrepared) this._introPrepared.playZoom = zoom;
+      this.camera.zoom = zoom;
+    }
     _applyIntroCamera(x, y, zoom) {
       this.camera.x = x;
       this.camera.y = y;
@@ -5282,7 +5303,7 @@
         pitched && showBike,
         vehicleZoomScale(this.camera.zoom, this._defaultZoom ?? this.camera.zoom)
       );
-      this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
+      this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat, boatZoomScale(this.camera.zoom));
       this.vectorMap.setPlayerFerry?.(player, this.osmLoader, pitched && byFerry);
       if (typeof this.vectorMap.setPlayerTransit === "function") {
         let underground = false;

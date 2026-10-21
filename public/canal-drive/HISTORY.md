@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## 2026-10-21 — The missing boat was a saved zoom stuck at the minimum
+
+User report: sometimes no boat under START (Amstel at Carré, Chase). Saving
+any setting during the start overview flight (B, L, [ ], R, G) wrote the
+flight's wide camera zoom, clamped to 0.1, into preferences; every later ride
+opened 2.7 levels out, where the world-scaled boat is ~9 px while the START
+tag keeps its screen size. Saves and applies now go through `_playerZoom()` /
+`_setPlayerZoom()` (the flight's landing zoom while it owns the camera), and
+`boatZoomScale` grows the boat when zoomed out (never below its tuned size).
+Pinned in `tests/e2e/boat-start-zoom.spec.ts` (forces the flight on, which
+automated browsers skip by default) and `check-intro-flight.ts`. Open: the
+START tag can still overlap a small boat at minimum zoom; ferry/transit get
+no zoom compensation; `boat-model.spec` asserts a retired map layer.
+
 ## 2026-10-21 — Rides start on the bike, in Chase
 
 User's call: setup drops the View picker and every ride starts in Chase;
