@@ -58,6 +58,8 @@ export type CurtainOptions = {
  */
 export function curtainOnWall(b: BuildingTools, w: Wall, o: CurtainOptions) {
   const f = frameOf(w), d = o.depth ?? 0.12, m = o.margin ?? 0.15;
+  // Spandrel 0.55 d (6.6 cm at the 12 cm default), mullion d, coping 1.5 d: at least 5 cm between layers. The old 0.8 d
+  // spandrel stood 2.4 cm behind the mullion face, inside the audit's tight band.
   const n = Math.max(1, Math.round((w.length - 2 * m) / o.bayW)), pitch = (w.length - 2 * m) / n;
   const tAt = (i: number) => m + i * pitch;
   const top = (t: number) => { const v = wallTop(w, t); return Number.isFinite(v) ? v : 0; };
@@ -72,7 +74,7 @@ export function curtainOnWall(b: BuildingTools, w: Wall, o: CurtainOptions) {
     for (let i = 0; i <= n; i++) {
       const ok = i < n && top(tAt(i) + pitch / 2) >= y + o.spandrelH + 0.2;
       if (ok && run === null) run = i;
-      if (!ok && run !== null) { const t0 = tAt(run), t1 = tAt(i); slab(b, f, (t0 + t1) / 2, y, t1 - t0, o.spandrelH, d * 0.8, o.spandrel); run = null; }
+      if (!ok && run !== null) { const t0 = tAt(run), t1 = tAt(i); slab(b, f, (t0 + t1) / 2, y, t1 - t0, o.spandrelH, d * 0.55, o.spandrel); run = null; }
     }
   }
   for (let i = 0; i <= n; i++) {
@@ -80,10 +82,11 @@ export function curtainOnWall(b: BuildingTools, w: Wall, o: CurtainOptions) {
     if (h - yStart > 0.5) slab(b, f, t, yStart, o.mullionW ?? 0.08, h - yStart, d, o.mullion);
   }
   if (o.cap) {
-    // Coping band standing 3.5 cm proud of the wall top (a band exactly at the roof plane would z-fight the roof; one far above it reads as an overhanging part).
+    // Coping band whose top stands 10 cm above the wall top: a band at (or 3.5 cm over) the roof plane sat inside the
+    // near-coplanar band and read as `flush roof cap` from the air; 10 cm clears it and still reads as the same coping.
     let minTop = Infinity;
     for (let i = 0; i <= 8; i++) minTop = Math.min(minTop, top(0.05 + (w.length - 0.1) * i / 8));
-    if (Number.isFinite(minTop) && minTop > w.base + 1) slab(b, f, w.length / 2, minTop - 0.265, w.length - 3 * d, 0.3, d * 1.5, o.cap);   // 3.5 cm of coping above the roof plane (not coplanar with it); ends stop short of the corner neighbours
+    if (Number.isFinite(minTop) && minTop > w.base + 1) slab(b, f, w.length / 2, minTop - 0.2, w.length - 3 * d, 0.3, d * 1.5, o.cap);   // 10 cm of coping above the roof plane (not coplanar with it); ends stop short of the corner neighbours
   }
 }
 
@@ -123,6 +126,10 @@ export function punchedFacade(b: BuildingTools, w: Wall, o: PunchedOptions) {
   const topMax = Math.max(...w.poly.map(p => p[1]));
   if (w.base < o.y0 - 0.5 && o.ground) slab(b, f, w.length / 2, w.base, w.length - 0.1, o.y0 - w.base - 0.05, 0.24, o.ground);
   const kFirst = Math.max(0, Math.ceil((w.base - o.y0 - 0.05) / o.pitch));
+  // Glazing strip 10 cm proud, spandrel band 16 cm, floor stripe 22 cm (6 cm apart): the old 10/14/17 cm stack left the
+  // stripe 3 cm off the band, which the coplanar-overlap audit counts as a z-fight on every punched facade. The glass sheet
+  // stays at its legacy 10 cm: on Symphony's office wing the authored wall face stands 8-9 cm off the fitted wall plane, so
+  // pulling the strip back to 9 cm put its face within 2 cm of that wall (a builder-plane mismatch, Track Z2, not the kit).
   // glazed strips
   for (let i = 0; i < n; i++) {
     const t = tc(i), lim = top(t) - 0.35;
@@ -146,8 +153,8 @@ export function punchedFacade(b: BuildingTools, w: Wall, o: PunchedOptions) {
         const a = run === 0 ? 0 : t0, c = i === n ? w.length : t1;
         if (Math.min(top(a + 0.05), top(c - 0.05)) >= bandY + 0.4) {
           const hh = Math.min(bandH, Math.min(top(a + 0.05), top(c - 0.05)) - bandY - 0.05);
-          slab(b, f, (a + c) / 2, bandY, c - a, hh, 0.14, o.band);
-          if (o.stripe) slab(b, f, (a + c) / 2, bandY + hh * 0.35, c - a, Math.min(0.4, hh * 0.3), 0.17, k < (o.darkFloors ?? 0) && o.darkStripe ? o.darkStripe : o.stripe);
+          slab(b, f, (a + c) / 2, bandY, c - a, hh, 0.16, o.band);
+          if (o.stripe) slab(b, f, (a + c) / 2, bandY + hh * 0.35, c - a, Math.min(0.4, hh * 0.3), 0.22, k < (o.darkFloors ?? 0) && o.darkStripe ? o.darkStripe : o.stripe);
         }
         run = null;
       }

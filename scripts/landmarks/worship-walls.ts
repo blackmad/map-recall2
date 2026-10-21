@@ -70,13 +70,22 @@ export function addBays(b: BuildingTools, w: Wall, o: BayOptions) {
     const t = start + i * o.pitch, y = w.base + o.y;
     if (wallTop(w, t - o.wd / 2) < y + o.h + 0.5 || wallTop(w, t + o.wd / 2) < y + o.h + 0.5) continue;
     const trim = o.trim ?? 'stone', frame = o.frame ?? 'frame';
-    onWall(b, w, t, y - 0.12, o.wd + 0.3, 0.14, 0.16, trim, 0);
-    onWall(b, w, t, y + o.h, o.wd + 0.3, 0.16, 0.16, trim, 0);
-    onWall(b, w, t, y, o.wd, o.h, 0.08, o.glass ?? 'glass', 0.02, 'pane');
+    // Sill/lintel/glass/bars each stand >= 6 cm proud of the wall (fronts at 16/16/10/14 cm) and sink a *different* amount
+    // behind it (6 cm + 22.5 cm steps, cycling every 7 solids), so no back face is flush with the 3DBAG shell or coplanar
+    // with another part: the old 2 cm proud glass/frame and flush sills failed the coplanar-overlap audit on any model with
+    // more than a few bays.
+    let sinkN = 0;
+    const on = (tt: number, yy: number, bw: number, bh: number, front: number, colour: string, tag?: string) => {
+      const s = 0.06 + ((sinkN++ * 5) % 7) * 0.045;
+      onWall(b, w, tt, yy, bw, bh, front + s, colour, -s, tag);
+    };
+    on(t, y - 0.12, o.wd + 0.3, 0.14, 0.16, trim);
+    on(t, y + o.h, o.wd + 0.3, 0.16, 0.16, trim);
+    on(t, y, o.wd, o.h, 0.10, o.glass ?? 'glass', 'pane');
     const rows = Math.max(1, Math.round(o.h / 1.2));
-    for (let k = 1; k < rows; k++) onWall(b, w, t, y + o.h * k / rows - 0.03, o.wd, 0.06, 0.12, frame, 0.02);
+    for (let k = 1; k < rows; k++) on(t, y + o.h * k / rows - 0.03, o.wd, 0.06, 0.14, frame);
     const cols = o.wd > 1.6 ? 3 : o.wd > 0.9 ? 2 : 1;
-    for (let k = 0; k <= cols; k++) onWall(b, w, t - o.wd / 2 + 0.03 + (o.wd - 0.06) * k / cols, y, 0.06, o.h, 0.12, frame, 0.02);
+    for (let k = 0; k <= cols; k++) on(t - o.wd / 2 + 0.03 + (o.wd - 0.06) * k / cols, y, 0.06, o.h, 0.14, frame);
     placed++;
   }
   return placed;

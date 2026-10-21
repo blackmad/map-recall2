@@ -100,11 +100,14 @@ export function archWindow(b: BuildingTools, w: Wall, t: number, y: number, wd: 
     if (tag) g.userData.tag = tag;
     b.add(g, colour as never);
   };
+  // Layers stand >= 6 cm apart (trim 0.10, glass 0.16, transom 0.22, mullion 0.24 front; backs 0 / 0.06 / 0.12 / 0.18) so
+  // the glass pane, glazing bars and surround never share a plane. The old bars shared the glass's back plane at 0.10 and their
+  // fronts at 0.20 (2 cm proud of the glass), which read as `flush wall cladding (frame/glass)` in the coplanar-overlap audit.
   place(new T.ExtrudeGeometry(outline(wd, h, 0, 0.22), {depth: 0.1, bevelEnabled: false}), trim, 0);
-  place(new T.ExtrudeGeometry(outline(wd, h, 0, 0), {depth: 0.08, bevelEnabled: false}), glass, 0.1, 'pane');
+  place(new T.ExtrudeGeometry(outline(wd, h, 0, 0), {depth: 0.1, bevelEnabled: false}), glass, 0.06, 'pane');
   const m = o.mullions ?? (wd > 1.4 ? 2 : 1);
-  for (let k = 1; k <= m; k++) onWall(b, w, t - wd / 2 + wd * k / (m + 1), y, 0.07, r0, 0.1, 'frame', 0.1);
-  for (const yy of [0.35, 0.65]) onWall(b, w, t, y + r0 * yy, wd - 0.1, 0.06, 0.1, 'frame', 0.1);
+  for (let k = 1; k <= m; k++) onWall(b, w, t - wd / 2 + wd * k / (m + 1), y, 0.07, r0, 0.06, 'frame', 0.18);
+  for (const yy of [0.35, 0.65]) onWall(b, w, t, y + r0 * yy, wd - 0.1, 0.06, 0.1, 'frame', 0.12);
 }
 
 /** Round (oculus) window flush on a wall. */

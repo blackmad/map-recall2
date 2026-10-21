@@ -110,10 +110,12 @@ export function edgeWindow(b: BuildingTools, e: Edge, t: number, y: number, w: n
   const fr = opts.frame ?? 'white', sr = opts.surround ?? 'white';
   edgeBox(b, e, t, y - .06, w + .16, h + .12, .08, .04, sr);
   edgeBox(b, e, t, y, w, h, .06, .09, 'glass');
+  // Glazing bars stand 14 cm out (17.5 cm front) against the glass's 12 cm front: the old 11 cm offset left them 2.5 cm
+  // apart, inside the coplanar-overlap audit's tight band.
   const m = opts.mullions ?? 1;
-  for (let i = 1; i < m + 1 && m > 1; i++) edgeBox(b, e, t - w / 2 + (w * i) / m, y, .05, h, .07, .11, fr);
-  if (m === 1) edgeBox(b, e, t, y, .05, h, .07, .11, fr);
-  if (opts.transom !== false) edgeBox(b, e, t, y + h * .62, w, .05, .07, .11, fr);
+  for (let i = 1; i < m + 1 && m > 1; i++) edgeBox(b, e, t - w / 2 + (w * i) / m, y, .05, h, .07, .14, fr);
+  if (m === 1) edgeBox(b, e, t, y, .05, h, .07, .14, fr);
+  if (opts.transom !== false) edgeBox(b, e, t, y + h * .62, w, .05, .07, .14, fr);
   if (opts.sill !== false) edgeBox(b, e, t, y - .1, w + .3, .07, .2, .1, 'stone');
 }
 /** Door with surround. */

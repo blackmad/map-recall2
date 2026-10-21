@@ -30,21 +30,26 @@ export function panel(b:BuildingTools,f:EdgeFrame,t:number,y:number,o:number,w:n
  const [x,z]=f.at(f.s(t),o);
  b.add(g,c,x,y+h/2,z,f.ang);
 }
-/** Window with a pale frame plane behind a glass plane. */
+/**
+ * Window with a pale frame around a glass plane. The frame is a shallow box that sinks into the wall (front 8 cm), the glass
+ * plane stands 12.5 cm out and the glazing bars 17 cm: 4.5 cm layers, so no face is inside the audit's 3 cm tight band and
+ * the frame's return still touches the wall (a pair of planes 2-3 cm apart was read as `window/frame 2 cm proud`).
+ */
 export function windowPane(b:BuildingTools,f:EdgeFrame,t:number,y:number,w:number,h:number,opts:{frame?:Colour;glass?:Colour;mullion?:boolean;sill?:Colour}={}){
- panel(b,f,t,y-.12,.03,w+.28,h+.24,opts.frame??'white');
- panel(b,f,t,y,.05,w,h,opts.glass??'glass');
- if(opts.mullion!==false){panel(b,f,t,y,.065,.08,h,opts.frame??'white');panel(b,f,t,y+h*.62,.065,w,.07,opts.frame??'white')}
- if(opts.sill){f.box(f.s(t),y-.2,.1,w+.45,.1,.24,opts.sill)}
+ f.box(f.s(t),y-.12,.03,w+.28,h+.24,.1,opts.frame??'white');
+ panel(b,f,t,y,.125,w,h,opts.glass??'glass');
+ if(opts.mullion!==false){panel(b,f,t,y,.17,.08,h,opts.frame??'white');panel(b,f,t,y+h*.62,.17,w,.07,opts.frame??'white')}
+ if(opts.sill){f.box(f.s(t),y-.2,.06,w+.45,.1,.28,opts.sill)}
 }
-/** Round-headed window: plane rectangle plus a half-disc top. */
+/** Round-headed window: rectangle plus a half-disc top; the surround is a 10 cm extrusion sunk 2 cm into the wall. */
 export function archedPane(b:BuildingTools,f:EdgeFrame,t:number,y:number,w:number,h:number,opts:{frame?:Colour;glass?:Colour}={}){
- const mk=(ww:number,hh:number,o:number,c:Colour)=>{
+ const mk=(ww:number,hh:number,o:number,c:Colour,depth=0)=>{
   const s=new T.Shape();const r=ww/2;s.moveTo(-r,0);s.lineTo(r,0);s.lineTo(r,hh-r);s.absarc(0,hh-r,r,0,Math.PI,false);s.lineTo(-r,0);
-  const g=new T.ShapeGeometry(s,6);const [x,z]=f.at(f.s(t),o);b.add(g,c,x,y,z,f.ang);
+  const g=depth>0?new T.ExtrudeGeometry(s,{depth,bevelEnabled:false,curveSegments:6}):new T.ShapeGeometry(s,6);
+  f.geo(g,c,f.s(t),y,o);
  };
- mk(w+.3,h+.15,.03,opts.frame??'white');mk(w,h,.05,opts.glass??'glass');
- panel(b,f,t,y,.065,.07,h-w/2,opts.frame??'white');
+ mk(w+.3,h+.15,-.02,opts.frame??'white',.1);mk(w,h,.125,opts.glass??'glass');
+ panel(b,f,t,y,.17,.07,h-w/2,opts.frame??'white');
 }
 /** Regular rows of windows along an edge. `skip` ranges (metres from ring[i]) are left blank. */
 export function windowRows(b:BuildingTools,f:EdgeFrame,o:{from:number;to:number;pitch:number;w:number;h:number;sills:number[];skip?:[number,number][];arch?:boolean|((rowIndex:number)=>boolean);frame?:Colour;glass?:Colour;mullion?:boolean;top?:(x:number,z:number)=>number}){

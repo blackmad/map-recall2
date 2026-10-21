@@ -1,6 +1,7 @@
 {"id": "van-gendt-hallen", "facades": [
   {"name": "northeast (gable ends)", "bearing": 47.5, "photo": "artifacts/landmark-lanes/van-gendt-hallen/ref-ne.jpg", "depthBand": 3},
   {"name": "southwest (gable ends)", "bearing": 227.5, "photo": "artifacts/landmark-lanes/van-gendt-hallen/ref-sw.jpg", "depthBand": 3},
-  {"name": "northwest (water front)", "bearing": 317.5, "photo": "artifacts/landmark-lanes/van-gendt-hallen/ref-nw.jpg", "depthBand": 3},
+  {"name": "northwest (water front)", "bearing": 316.2, "photo": "artifacts/landmark-lanes/van-gendt-hallen/ref-nw.jpg", "depthBand": 3,
+   "note": "Bearing corrected 317.5 -> 316.2 on 2026-10-20 to the built wall normal: the front runs (2.68, -52.18) -> (-110.6, 56.5) with outward normal (-0.6922, -0.7217), bearing 316.2. The rounded 317.5 is 1.3 deg off; over the 157 m front that drifts 3.6 m in depth, so the 3 m band cut the last 3.5 m of the wall mid-bay and counted the half-visible arch at the crop as a 0.5 m opening. At 316.2 the band covers the whole front: 43 boarded + 43 arch openings, all regular, 0 off-size."},
   {"name": "southeast (long side)", "bearing": 137.5, "photo": "artifacts/landmark-lanes/van-gendt-hallen/ref-se.jpg", "depthBand": 3}
 ]}

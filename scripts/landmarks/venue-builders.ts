@@ -1,5 +1,11 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
+/**
+ * Local window depths (m, from the wall plane): the pane's face and the sill box's full depth. The sill must stand in front
+ * of the pane (they are parallel same-facing faces at the same height band's edge); a 0.40 m sill left it 1.5 cm behind the
+ * 0.185 m pane face, which the coplanar-overlap audit reads as a tight z-fight on every window.
+ */
+export const VENUE_WINDOW = {paneFront: 0.185, sillDepth: 0.46};
 /** Original silhouettes and facade details; no imported mesh or image textures. */
 export function buildVenueLandmark(id:string,w:number,d:number,b:BuildingTools){
  const shortFront=id==='embassy-free-mind'||id==='the-movies';
@@ -10,7 +16,7 @@ export function buildVenueLandmark(id:string,w:number,d:number,b:BuildingTools){
  function box(x:number,y:number,z:number,a:number,h:number,c:number,colour:Colour){add(new T.BoxGeometry(a,h,c),colour,x,y+h/2,z);}
  function gable(x:number,y:number,z:number,a:number,h:number,c:number,colour:Colour){const s=new T.Shape();s.moveTo(-a/2,0);s.lineTo(a/2,0);s.lineTo(0,h);s.closePath();add(new T.ExtrudeGeometry(s,{depth:c,bevelEnabled:false}),colour,x,y,z-c/2);}
  function arch(x:number,y:number,z:number,a:number,h:number,colour:Colour){const s=new T.Shape();s.moveTo(-a/2,0);s.lineTo(a/2,0);s.lineTo(a/2,h-a/2);s.absarc(0,h-a/2,a/2,0,Math.PI,false);s.closePath();add(new T.ExtrudeGeometry(s,{depth:.12,bevelEnabled:false,curveSegments:6}),colour,x,y,z);}
- function win(x:number,y:number,z:number,a:number,h:number,arched=false){if(arched){arch(x,y-.15,z,a+.35,h+.3,'stone');arch(x,y,z+.15,a,h,'dark');}else{box(x,y-.13,z,a+.35,h+.26,.15,'stone');box(x,y,z+.12,a,h,.13,'dark');}box(x,y,z+.28,.1,h,.08,'stone');box(x,y+h*.5,z+.28,a,.1,.08,'stone');box(x,y-.2,z,a+.5,.18,.4,'stone');}
+ function win(x:number,y:number,z:number,a:number,h:number,arched=false){if(arched){arch(x,y-.15,z,a+.35,h+.3,'stone');arch(x,y,z+.15,a,h,'dark');}else{box(x,y-.13,z,a+.35,h+.26,.15,'stone');box(x,y,z+.12,a,h,.13,'dark');}box(x,y,z+.28,.1,h,.08,'stone');box(x,y+h*.5,z+.28,a,.1,.08,'stone');box(x,y-.2,z,a+.5,.18,VENUE_WINDOW.sillDepth,'stone');}
  function sphere(x:number,y:number,z:number,r:number,colour:Colour,sx=1,sy=1,sz=1){const g=new T.IcosahedronGeometry(r,1);g.scale(sx,sy,sz);add(g,colour,x,y,z);}
  function sign(text:string,x:number,y:number,z:number,pixel:number,c:Colour){
   // BuildingTools lettering is emitted in global axes, so rotate the elevation by
