@@ -6,7 +6,7 @@
 import assert from 'node:assert/strict';
 import {
   INTRO_FLIGHT_S, INTRO_HOLD_S, INTRO_MAX_ZOOM_FRACTION, INTRO_MIN_ZOOM,
-  INTRO_LANDING_RADIUS_M, introFrame, introLandingArea, introOverview, introPlan, type IntroCamera, type Point,
+  INTRO_LANDING_RADIUS_M, introFrame, introLandingArea, introOverview, introPlan, playerZoom, type IntroCamera, type Point,
 } from '../src/canalRecall/game/introFlight.ts';
 
 let checks = 0;
@@ -91,6 +91,19 @@ for (const [name, box] of [['phone', phone], ['desktop', desktop]] as const) {
   const fromOverview = introLandingArea(overview, rider);
   ok((fromOverview.east - fromOverview.west) < 0.05, 'a city-scale view never becomes the landing area');
   ok(introLandingArea(null, rider).west < rider[0], 'no view falls back to the rider');
+}
+
+// Named regression (user, 2026-10-21, boat ride from the Amstel at Carré): a
+// setting saved while the overview held the camera stored the overview zoom as
+// the player's, and the next ride opened at the 0.1 minimum with the boat a few
+// pixels long. While a flight (or one prepared on the loading screen) owns the
+// camera, the player's zoom is its landing zoom.
+{
+  ok(playerZoom(0.06, { playZoom: 0.65 }) === 0.65, 'in flight: the landing zoom, not the overview');
+  ok(playerZoom(0.06, null, { playZoom: 0.65 }) === 0.65, 'prepared on the loading screen: the landing zoom');
+  ok(playerZoom(0.06, { playZoom: 0.5 }, { playZoom: 0.65 }) === 0.5, 'the running flight wins over a stale prepared one');
+  ok(playerZoom(0.8, null, null) === 0.8, 'riding: the camera zoom');
+  ok(playerZoom(0.8, { playZoom: Number.NaN }) === 0.8, 'a broken flight falls back to the camera');
 }
 
 console.log(`Intro flight checks passed (${checks} assertions).`);

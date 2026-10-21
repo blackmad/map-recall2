@@ -32,8 +32,8 @@ import {
 } from './neighborhoodPassport';
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
-import { introFrame, introOverview, introPlan } from './introFlight';
-import { vehicleZoomScale } from './vehicleZoomScale';
+import { introFrame, introOverview, introPlan, playerZoom } from './introFlight';
+import { boatZoomScale, vehicleZoomScale } from './vehicleZoomScale';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { zoomBadgeShouldFlash, zoomBadgeText } from '../hudCopy';
@@ -181,6 +181,19 @@ export class GamePresentationRuntime {
     this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
     this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
     return true;
+  }
+
+  /** The zoom to save as the player's: the flight's landing zoom while one owns the camera (introFlight.ts playerZoom). */
+  _playerZoom(): number {
+    // A prepared flight holds the camera only on the loading screen; one left by an abandoned load does not.
+    return playerZoom(this.camera.zoom, this._intro, this.state === GameState.LOADING ? this._introPrepared : null);
+  }
+
+  /** Apply a saved zoom. A flight in progress keeps the camera and lands on it instead. */
+  _setPlayerZoom(zoom: number): void {
+    if (this._intro) { this._intro.playZoom = zoom; return; }
+    if (this._introPrepared) this._introPrepared.playZoom = zoom;
+    this.camera.zoom = zoom;
   }
 
   _applyIntroCamera(x: number, y: number, zoom: number): void {
@@ -644,7 +657,8 @@ export class GamePresentationRuntime {
     const showBike = !byBoat && !byTransit && !byFerry;
     this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike,
       vehicleZoomScale(this.camera.zoom, this._defaultZoom ?? this.camera.zoom));
-    this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
+    // Grows as the camera zooms out, so a zoomed-out chase still shows the boat (vehicleZoomScale.ts boatZoomScale).
+    this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat, boatZoomScale(this.camera.zoom));
     this.vectorMap.setPlayerFerry?.(player, this.osmLoader, pitched && byFerry);
     if (typeof this.vectorMap.setPlayerTransit === 'function') {
       let underground = false;
