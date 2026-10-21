@@ -91,6 +91,13 @@ export interface SystemFit {
   souterrain?: boolean | 'single';
   /** on each entry's storeys (1 = first floor) only the listed bays (of `bays` per storey) keep the storey's openings; the rest is plain wall (intent `openBays`) */
   openBays?: { storeys: number[]; bays: number[] }[];
+  /**
+   * Window width per bay, cycling across the bays as fractions of the bay (intent `windowPattern`): `[0.85, 0.3]` draws
+   * a wide drawing-room window on the even bays and a narrow slot on the odd ones (the pair rhythm of the 2023
+   * Haarlemmerweg blocks). The bays stay on one pitch; only the opening width and so the pier width change.
+   * `h` and `sill` stay the group's (`windowShape`).
+   */
+  windowPattern?: number[];
 }
 
 /**
@@ -332,6 +339,15 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
       ...(r.items ? { items: r.items.map(fl => fl.map(it => (it.win ? { ...it, win: { ...it.win, paneSplit: true } } : it))) } : {}), ...(r.stack ? { stack: r.stack.map(x => ({ ...x, row: split(x.row) })) } : {}) });
     typical = split(typical); ground = split(ground);
     for (const k of Object.keys(rowOverrides)) rowOverrides[k] = split(rowOverrides[k]);
+  }
+  // Per-bay window widths (the wide drawing-room window + narrow slot pair of a panel front): the last step, so every
+  // storey row (arched, glazed, openBays) keeps its own openings and only their width changes per bay. Rows that are
+  // already a per-bay cycle (loading doors, screens, tilted bays, gateway grounds) or not punched are left alone:
+  // compose resolves one cycle level, so a nested cycle would draw plain wall.
+  if (f.windowPattern?.length && name !== 'blank') {
+    const wrap = (r: Row): Row => (r.kind === 'punched' && r.win ? { kind: 'wall', cycle: f.windowPattern!.map(w => ({ ...r, win: { ...r.win!, w } })) } : r);
+    typical = wrap(typical); ground = wrap(ground);
+    for (const k of Object.keys(rowOverrides)) rowOverrides[k] = wrap(rowOverrides[k]);
   }
   return { pitch: f.pitchM, lines: f.lines, ground, typical, bands, piers, ...(Object.keys(rowOverrides).length ? { rowOverrides } : {}) };
 }

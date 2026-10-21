@@ -10,6 +10,7 @@ import type {LargeBuildingIntent} from './intent.ts';
 import {canalhouseGroupToGlb} from '../../../scripts/canalhouse-recipes/export-glb.ts';
 import {decodeTriangles} from '../../../scripts/building-recipes/compile.ts';
 import {dissolveFaces} from '../blockBuilding/dissolve.ts';
+import {meshHashOf} from '../../../scripts/building-recipes/mesh-hash.ts';
 
 const HOUSES = 'scripts/building-recipes/houses';
 const raw = (id: string) => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/intent.json`, 'utf8'));
@@ -925,4 +926,51 @@ test('meshScreen: one closed pale panel per bay on the listed storeys, open wher
   const plain = validateLargeIntent({...base, walls: [base.walls[0], base.walls[1], w2, w3]});
   assert.equal(Object.keys(fitLarge(plain, f).recipe.spec.palette).some(k => k.startsWith('screen@')), false);
   assert.equal((compileBuilding(plain, f).components as {meshScreens?: number}).meshScreens, undefined);
+});
+
+test('budgetTriangles: an opt-in per-house budget (12000..40000) raises that house\'s gate and changes no geometry', async () => {
+  const id = 'de-balie-large', base = raw(id), f = facts(id);
+  // The field is validated: the default floor and the approved cap, integers only.
+  assert.equal(validateLargeIntent({...base, budgetTriangles: 40000}).budgetTriangles, 40000);
+  assert.equal(validateLargeIntent(base).budgetTriangles, undefined);
+  for (const bad of [11999, 40001, 12000.5, '40000']) assert.throws(() => validateLargeIntent({...base, budgetTriangles: bad as never}), /budgetTriangles/);
+  // Geometry is untouched: the same GLB bytes and triangle count with and without the field.
+  const plain = await gatesOf(validateLargeIntent(base), f), raised = await gatesOf(validateLargeIntent({...base, budgetTriangles: 40000}), f);
+  assert.equal(raised.tris.length, plain.tris.length);
+  assert.equal(raised.built.budgetTriangles, 40000);
+  assert.equal(plain.built.budgetTriangles, LARGE_BUDGET_TRIANGLES);
+  const limit = (g: {gates: {id: string; limit: string}[]}) => g.gates.find(x => x.id === 'triangle-budget')!.limit;
+  assert.equal(limit(plain), `<= ${LARGE_BUDGET_TRIANGLES}`);
+  assert.equal(limit(raised), '<= 40000');
+  // The gate reads the compiled budget: below this house's count it fails, at the raised budget it passes.
+  const built = raised.built;
+  const gate = (budget: number) => evaluateLargeGates(raised.tris, {...built, budgetTriangles: budget}).gates.find(x => x.id === 'triangle-budget')!;
+  assert.equal(gate(raised.tris.length).pass, true);
+  assert.deepEqual({pass: gate(raised.tris.length - 1).pass, value: gate(raised.tris.length - 1).value}, {pass: false, value: raised.tris.length});
+  // The block-kit gate inside the compile takes the same number (hooks.budget wins, as the bespoke builders use it).
+  const compiled = compileBuilding(validateLargeIntent({...base, budgetTriangles: 40000}), f);
+  assert.deepEqual({budget: compiled.blockGates.budget, ok: compiled.blockGates.budgetOk}, {budget: 40000, ok: true});
+});
+
+test('windowPattern: per-bay window widths cycle across the bays, keep one pitch, and change no other house', async () => {
+  const id = 'de-balie-large', base = raw(id), f = facts(id);
+  const plain = validateLargeIntent(base), w0 = base.walls[0];
+  const patterned = validateLargeIntent({...base, walls: [{...w0, windowPattern: [0.8, 0.3]}, ...base.walls.slice(1)]});
+  // the fit turns the pattern into a per-bay cycle of punched rows on the group's own pitch
+  const spec = fitLarge(patterned, f).recipe.spec.systems[fitLarge(patterned, f).recipe.groups[0].specSystem];
+  assert.deepEqual(spec.typical.cycle?.map(r => r.win?.w), [0.8, 0.3]);
+  assert.equal(spec.pitch, fitLarge(plain, f).recipe.spec.systems[fitLarge(plain, f).recipe.groups[0].specSystem].pitch);
+  assert.equal(fitLarge(plain, f).recipe.spec.systems[fitLarge(plain, f).recipe.groups[0].specSystem].typical.cycle, undefined);
+  // it compiles within the gates and draws different geometry (same opening count, different widths and piers)
+  const a = await gatesOf(plain, f), b = await gatesOf(patterned, f);
+  assert.deepEqual(b.gates.filter(g => !g.pass).map(g => g.id), []);
+  assert.notEqual(meshHashOf(b.built.group), meshHashOf(a.built.group));
+  assert.equal(b.tris.length, a.tris.length);
+  // validation: fractions, length, system and the per-bay features it cannot combine with
+  const bad = (patch: object, re: RegExp) => assert.throws(() => validateLargeIntent({...base, walls: [{...w0, ...patch}, ...base.walls.slice(1)]}), re);
+  bad({windowPattern: []}, /windowPattern/);
+  bad({windowPattern: [0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.3]}, /windowPattern/);
+  bad({windowPattern: [1.2]}, /windowPattern\[0\]/);
+  bad({windowPattern: [0.8], system: 'ribbon-windows'}, /windowPattern: only/);
+  bad({windowPattern: [0.8], openBays: [{storeys: [1], bays: [0]}]}, /windowPattern: not with/);
 });

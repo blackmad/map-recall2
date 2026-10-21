@@ -8,8 +8,8 @@ import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/syst
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen'];
-const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'measured', 'notes'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen'];
+const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
 export function validateLargeIntent(input: unknown): LargeBuildingIntent {
@@ -57,6 +57,11 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
   bool(intent?.roofPlant, 'roofPlant'); bool(intent?.closedBands, 'closedBands'); bool(intent?.layeredKit, 'layeredKit'); bool(intent?.shellRepair, 'shellRepair');
   if (intent?.footprint !== undefined) oneOf(intent.footprint, ['lod22', 'bag'], 'footprint');
   if (intent?.groundClamp !== undefined && typeof intent.groundClamp !== 'boolean') problems.push('groundClamp: boolean');
+  // A raised per-house triangle budget (see LargeBuildingIntent.budgetTriangles): it only ever raises the 12k default.
+  if (intent?.budgetTriangles !== undefined) {
+    const b = intent.budgetTriangles;
+    if (!Number.isInteger(b) || b < 12000 || b > 40000) problems.push(`budgetTriangles: expected an integer 12000..40000 (the large-tier default and the approved cap), got ${JSON.stringify(b)}`);
+  }
   if (intent?.roof !== undefined) {
     const r = intent.roof;
     oneOf(r?.material, ROOF_MATERIALS, 'roof.material');
@@ -304,6 +309,14 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (typeof s?.h === 'number' && typeof s?.sill === 'number' && s.h + s.sill > 0.98) problems.push(`${at}.windowShape: sill + h must leave a head (<= 0.98 of the storey)`);
       if (!['brick-bay-grid', 'ribbon-windows', 'plinth-shopfronts', 'glazed-columns', 'french-window-ledge'].includes(w.system)) problems.push(`${at}.windowShape: only brick-bay-grid, ribbon-windows, plinth-shopfronts, glazed-columns, french-window-ledge windows take a measured shape`);
       if (w.screen) problems.push(`${at}.windowShape: not with screen (glass-block perforations)`);
+    }
+    if (w.windowPattern !== undefined) {
+      const p = w.windowPattern;
+      if (!Array.isArray(p) || p.length < 1 || p.length > 8) problems.push(`${at}.windowPattern: 1..8 widths (fractions of the bay)`);
+      else p.forEach((v, i) => { if (typeof v !== 'number' || !(v >= 0.06 && v <= 0.99)) problems.push(`${at}.windowPattern[${i}]: fraction 0.06..0.99 of the bay`); });
+      if (!['brick-bay-grid', 'plinth-shopfronts', 'french-window-ledge'].includes(w.system)) problems.push(`${at}.windowPattern: only brick-bay-grid, plinth-shopfronts and french-window-ledge windows take per-bay widths`);
+      if (w.screen) problems.push(`${at}.windowPattern: not with screen (glass-block perforations)`);
+      if (w.hoist || w.openBays || w.columns || w.tiltedBays) problems.push(`${at}.windowPattern: not with hoist, openBays, columns or tiltedBays (those keep their own per-bay rows)`);
     }
     if (w.system === 'glazed-hall') {
       const h = w.hall;

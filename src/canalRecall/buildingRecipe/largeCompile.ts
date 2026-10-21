@@ -19,6 +19,8 @@ export interface LargeComponentCounts { arcades?: number; glazedHalls?: number; 
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
+  /** the triangle budget this house is gated on: `intent.budgetTriangles` (opt-in, up to 40,000), else 12,000 */
+  budgetTriangles: number;
   /** block-kit wall panels (index = `recipe.panelGroup` index) */
   panels: Panel[];
 }
@@ -325,6 +327,8 @@ export interface LargeCompileHooks {
 export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: BuildingFacts, hooks: LargeCompileHooks = {}): CompiledLargeBuilding {
   // `facts` are the shell-repaired facts when the intent opts in (shellRepair.ts), so the gates see the shell that was built
   const {recipe, report, facts} = fitLarge(intent, inputFacts);
+  // A house may raise its own budget (`budgetTriangles`, user-approved up to 40,000); the default is unchanged.
+  const budgetTriangles = hooks.budget ?? intent.budgetTriangles ?? 12000;
   const groupOf = (index: number) => recipe.groups[recipe.panelGroup[index]];
   const counts: LargeComponentCounts = {nameBoards: 0, entrances: 0, halls: 0, canopies: 0, garageDoors: 0, letters: 0, cornices: 0, fascias: 0, policeStripes: 0, lamps: 0, roofPlant: recipe.roofPlant.length};
   const res = compose(recipe.set, recipe.spec, {
@@ -353,6 +357,6 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
   for (const l of recipe.lanterns ?? []) { drawLantern(res.mesh, l, {glass: 'glass', frame: 'frame', stone: 'stone'}); counts.lanterns = (counts.lanterns ?? 0) + 1; }
   applyWallSplits(res.mesh, recipe.groups, res.panels);
   hooks.afterCompose?.(res.mesh, recipe, res.panels);
-  const blockGates = runGates(res.mesh, recipe.set, {budget: hooks.budget ?? 12000});
-  return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, panels: res.panels};
+  const blockGates = runGates(res.mesh, recipe.set, {budget: budgetTriangles});
+  return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, budgetTriangles, panels: res.panels};
 }

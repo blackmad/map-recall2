@@ -18,7 +18,9 @@ export const LARGE_MIN_PLINTH_M = 1.2;
 export function evaluateLargeGates(tris: Tri[], built: CompiledLargeBuilding): {gates: Gate[]; topology: ReturnType<typeof topology>} {
   const gates: Gate[] = [], facts = built.facts, recipe = built.recipe, [ax, ay] = recipe.anchorRD;
   const g = (id: string, pass: boolean, value: unknown, limit: string) => gates.push({id, pass, value, limit});
-  g('triangle-budget', tris.length <= LARGE_BUDGET_TRIANGLES, tris.length, `<= ${LARGE_BUDGET_TRIANGLES}`);
+  // The budget a house is gated on: its own `budgetTriangles` (opt-in, up to 40,000), else the 12k large-tier default.
+  const budget = built.budgetTriangles ?? LARGE_BUDGET_TRIANGLES;
+  g('triangle-budget', tris.length <= budget, tris.length, `<= ${budget}`);
   g('finite', tris.every(t => [...t.a, ...t.b, ...t.c].every(Number.isFinite)), true, 'all positions finite');
   g('non-metallic', tris.every(t => t.metallic === 0), true, 'metallicFactor 0');
   const rings = recipe.set.ground.flatMap(s => s.rings.map(r => r.map(p => [p[0], p[2]])));
