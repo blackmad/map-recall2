@@ -17,3 +17,21 @@ export function vehicleZoomScale(zoom: number, defaultZoom: number): number {
   const scale = (defaultZoom / zoom) ** VEHICLE_ZOOM_EXPONENT;
   return Math.max(VEHICLE_ZOOM_MIN_SCALE, Math.min(VEHICLE_ZOOM_MAX_SCALE, scale));
 }
+
+/** The ride's default camera zoom (`CAMERA_ZOOM_INITIAL`, constants.js), at which the boat's game scale was tuned. */
+export const BOAT_REFERENCE_ZOOM = 0.65;
+
+/**
+ * The chase boat's zoom compensation: it grows as the camera zooms out, as the
+ * bike does, but never shrinks below its tuned size.
+ *
+ * Without it the boat was a literal world-space hull: at the slider's 0.1
+ * minimum it was ~9 px long, while the START tag beside it is screen-sized,
+ * so the ride read as having no boat at all (user report 2026-10-21, Amstel
+ * at Carré). It is measured against the default zoom rather than the bike's
+ * per-window `_defaultZoom`: on a phone that is ~0.2, and the bike's formula
+ * would halve a boat that already reads there.
+ */
+export function boatZoomScale(zoom: number, referenceZoom = BOAT_REFERENCE_ZOOM): number {
+  return Math.max(1, vehicleZoomScale(zoom, referenceZoom));
+}

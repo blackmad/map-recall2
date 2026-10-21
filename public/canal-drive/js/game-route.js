@@ -67,7 +67,8 @@ class GameRouteRuntime {
       minimap: this.showMiniMap,
       gamey: this.gameyFeatures,
       sound: !this.sound.muted,
-      zoom: this.camera.zoom,
+      // The player's zoom, not the start flight's overview (presentationRuntime.ts _playerZoom).
+      zoom: this._playerZoom ? this._playerZoom() : this.camera.zoom,
       cameraTilt: (this.vectorMap && Number.isFinite(this.vectorMap._cameraTilt))
         ? this.vectorMap._cameraTilt
         : current.cameraTilt,
@@ -153,7 +154,8 @@ class GameRouteRuntime {
     } else if (previousTravelMode !== this.travelMode && this.state === GameState.MENU) {
       this._loadRoutePoiCatalog();
     }
-    this.camera.zoom = prefs.zoom;
+    if (this._setPlayerZoom) this._setPlayerZoom(prefs.zoom);
+    else this.camera.zoom = prefs.zoom;
     if (typeof this.vectorMap.setCameraTilt === 'function') {
       this.vectorMap.setCameraTilt(prefs.cameraTilt || 0);
     }
@@ -220,7 +222,8 @@ class GameRouteRuntime {
       gamey: this.gameyFeatures,
       sound: !this.sound.muted,
       reducedMotion: !!this.camera.reducedMotion,
-      zoom: this.camera.zoom,
+      // The player's zoom, not the start flight's overview (presentationRuntime.ts _playerZoom).
+      zoom: this._playerZoom ? this._playerZoom() : this.camera.zoom,
       cameraTilt: (this.vectorMap && this.vectorMap._cameraTilt) || current.cameraTilt || 0,
       cameraBearing: Number.isFinite(this.camera.bearingOffset)
         ? this.camera.bearingOffset * 180 / Math.PI

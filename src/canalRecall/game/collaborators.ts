@@ -248,7 +248,7 @@ export interface VectorMap {
   setFerryTerminals?(track: Track, loader: OsmLoader): void;
   setPlayerFerry?(player: unknown, loader: OsmLoader, visible: boolean): void;
   isPlayerFerryReady?(): boolean;
-  setPlayerBoat(player: unknown, loader: OsmLoader, visible: boolean): void;
+  setPlayerBoat(player: unknown, loader: OsmLoader, visible: boolean, zoomScale?: number): void;
   setPlayerTransit?(player: unknown, loader: OsmLoader, visible: boolean, underground?: boolean): void;
   isPlayerBikeReady(): boolean;
   isPlayerBoatReady(): boolean;

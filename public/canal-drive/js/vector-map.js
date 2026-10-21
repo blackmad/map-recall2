@@ -2246,8 +2246,9 @@ class VectorBasemap {
     );
   }
 
-  setPlayerBoat(player, loader, visible) {
+  setPlayerBoat(player, loader, visible, zoomScale = 1) {
     if (!this._playerBoat || !player || !loader) return;
+    this._playerBoat.zoomScale = zoomScale;
     const surface = this._riderSurface();
     if (surface && visible && typeof this._playerBoat.setAltitude === 'function') {
       // Per-polder water (own ground): the boat floats at the level of the water it is on, not one city-wide plane.
