@@ -838,18 +838,6 @@ export function OverlayApp({
               layout="strip"
             />
             <ChoiceRow
-              label="View"
-              name="view"
-              value={prefs.viewMode}
-              onChange={value => patch({ viewMode: value })}
-              options={VIEW}
-              icons={VIEW_ICONS}
-              layout="icons"
-              showCurrent
-              gloss={VIEW.find(option => option.value === prefs.viewMode)?.hint}
-              keepGloss
-            />
-            <ChoiceRow
               label="Route"
               name="route"
               value={prefs.routePattern}

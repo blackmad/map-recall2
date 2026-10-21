@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## 2026-10-21 — Rides start on the bike, in Chase
+
+User's call: setup drops the View picker and every ride starts in Chase;
+a fresh player starts on the bike. A stored view is dropped on load (a
+returning player who once picked North up still starts in Chase); the
+in-ride settings can still switch view for the session. A stored vehicle is
+kept. Pinned in `startDefaults.test.ts` (`npm run test:canal-preferences`).
+Eight keyboard-ride / named-bridge e2e cases fail on main before this change
+too ("question pending but not on screen", bridge register text); not caused
+here.
+
 ## 2026-10-21 — rideamsterdam.nl moves to Cloudflare Pages
 
 Firebase was on the free plan (360 MB/day of Hosting transfer), and one ride

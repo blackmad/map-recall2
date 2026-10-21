@@ -323,7 +323,7 @@
     "build:canal-overlay": "esbuild src/canalRecall/overlay/mount.tsx --bundle --format=iife --global-name=CanalRecallOverlay --outfile=public/canal-drive/js/overlay.bundle.js --minify --jsx=automatic",
     "test:canal-overlay": "tsx scripts/check-canal-overlay.ts",
     "build:canal-preferences": "esbuild src/canalRecall/game/preferences.ts --bundle --format=iife --global-name=CanalRecallPreferences --outfile=public/canal-drive/js/preferences.bundle.js --minify",
-    "test:canal-preferences": "tsx scripts/check-canal-preferences.ts",
+    "test:canal-preferences": "node --import tsx --test src/canalRecall/game/startDefaults.test.ts && tsx scripts/check-canal-preferences.ts",
     "test:canal-cities": "tsx scripts/check-canal-cities.ts",
     "build:canal-photoreal-gate": "esbuild src/canalRecall/building/photorealGate.ts --bundle --format=iife --global-name=CanalRecallPhotorealGate --outfile=public/canal-drive/js/photoreal-gate.bundle.js --minify",
     "test:photoreal-gate": "tsx scripts/check-photoreal-gate.ts",
