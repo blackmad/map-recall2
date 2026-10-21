@@ -1026,6 +1026,13 @@ export interface LargeBuildingIntent {
    * `houses/<id>/measured.json`): the date of that run and the wall groups it wrote.
    */
   measured?: {date: string; groups: number[]; /** `palette.brick` (the unlisted walls' colour) was measured too, so it is drawn as is */ otherWalls?: boolean};
+  /**
+   * Opt-in triangle budget for this house alone (user-approved 2026-10-21 for the Haarlemmerweg north row: up to 40,000,
+   * because a 13-14 storey slab needs its balcony bands on every storey). The large-tier `triangle-budget` gate and the
+   * block-kit gate use it instead of `LARGE_BUDGET_TRIANGLES` (12,000, unchanged); geometry is unchanged, so a house
+   * without it stays byte-identical. Never raise the global constant for one building.
+   */
+  budgetTriangles?: number;
   notes?: string[];
 }
 export type RoofMaterial = typeof ROOF_MATERIALS[number];

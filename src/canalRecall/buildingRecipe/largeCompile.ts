@@ -14,6 +14,7 @@ import type {BuildingFacts} from './facts.ts';
 import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
+import {LARGE_BUDGET_TRIANGLES} from './largeGates.ts';
 
 export interface LargeComponentCounts { arcades?: number; glazedHalls?: number; glassColumns?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
@@ -353,6 +354,6 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
   for (const l of recipe.lanterns ?? []) { drawLantern(res.mesh, l, {glass: 'glass', frame: 'frame', stone: 'stone'}); counts.lanterns = (counts.lanterns ?? 0) + 1; }
   applyWallSplits(res.mesh, recipe.groups, res.panels);
   hooks.afterCompose?.(res.mesh, recipe, res.panels);
-  const blockGates = runGates(res.mesh, recipe.set, {budget: hooks.budget ?? 12000});
+  const blockGates = runGates(res.mesh, recipe.set, {budget: hooks.budget ?? intent.budgetTriangles ?? LARGE_BUDGET_TRIANGLES});
   return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, panels: res.panels};
 }

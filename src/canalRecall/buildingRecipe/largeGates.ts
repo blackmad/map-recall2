@@ -10,15 +10,22 @@ import {roofHeightAt} from './facts.ts';
 import type {CompiledLargeBuilding} from './largeCompile.ts';
 
 export const LARGE_BUDGET_TRIANGLES = 12000;
+/**
+ * The per-house ceiling for the opt-in `budgetTriangles` (intent.ts, user-approved 2026-10-21 for the Haarlemmerweg north
+ * row: a 13-14 storey slab needs its balcony bands on every storey). The default budget above never moves; a house opts in
+ * to at most this, and its own intent is the only place the number lives.
+ */
+export const LARGE_BUDGET_TRIANGLES_MAX = 40000;
 /** Civic and monumental storeys run taller than houses (De Balie, 1880s: ~5.9 m); the canal-house gate stops at 4.6 m. */
 export const LARGE_MAX_STOREY_M = 6.2;
 /** Lowest ground storey under a layered curtain wall whose ground is a mesh plinth (a raised plinth panel, not a storey). */
 export const LARGE_MIN_PLINTH_M = 1.2;
 
-export function evaluateLargeGates(tris: Tri[], built: CompiledLargeBuilding): {gates: Gate[]; topology: ReturnType<typeof topology>} {
+export function evaluateLargeGates(tris: Tri[], built: CompiledLargeBuilding, opts: {budget?: number} = {}): {gates: Gate[]; topology: ReturnType<typeof topology>} {
   const gates: Gate[] = [], facts = built.facts, recipe = built.recipe, [ax, ay] = recipe.anchorRD;
   const g = (id: string, pass: boolean, value: unknown, limit: string) => gates.push({id, pass, value, limit});
-  g('triangle-budget', tris.length <= LARGE_BUDGET_TRIANGLES, tris.length, `<= ${LARGE_BUDGET_TRIANGLES}`);
+  const budget = opts.budget ?? LARGE_BUDGET_TRIANGLES;
+  g('triangle-budget', tris.length <= budget, tris.length, `<= ${budget}${budget === LARGE_BUDGET_TRIANGLES ? '' : ' (house intent budgetTriangles)'}`);
   g('finite', tris.every(t => [...t.a, ...t.b, ...t.c].every(Number.isFinite)), true, 'all positions finite');
   g('non-metallic', tris.every(t => t.metallic === 0), true, 'metallicFactor 0');
   const rings = recipe.set.ground.flatMap(s => s.rings.map(r => r.map(p => [p[0], p[2]])));
