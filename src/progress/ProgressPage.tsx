@@ -52,8 +52,8 @@ async function shareRide(url: string, ride: RideRecord): Promise<string> {
   const nav = navigator as Navigator & { canShare?: (data: ShareData) => boolean };
   const outcome = await shareOrCopy({
     url,
-    title: 'Canal Recall route',
-    text: `Ride from ${ride.start.name} to ${ride.finish.name} in Canal Recall and learn the streets and canals on the way.`,
+    title: 'Ride Amsterdam route',
+    text: `Ride from ${ride.start.name} to ${ride.finish.name} in Ride Amsterdam and learn the streets and canals on the way.`,
   }, {
     share: typeof nav.share === 'function' ? data => nav.share(data) : undefined,
     canShare: typeof nav.canShare === 'function' ? data => nav.canShare!(data) : undefined,
@@ -135,7 +135,7 @@ export function ProgressPage() {
     body.classList.add('pg-body');
     document.documentElement.classList.add('pg-doc');
     const title = document.title;
-    document.title = 'My progress · Canal Recall';
+    document.title = 'My progress · Ride Amsterdam';
     const theme = document.querySelector('meta[name="theme-color"]');
     const themeColor = theme?.getAttribute('content');
     theme?.setAttribute('content', '#f4efe5');
@@ -198,7 +198,7 @@ export function ProgressPage() {
   return (
     <div className="pg" data-testid="progress-page">
       <header className="pg-wrap pg-top">
-        <a className="pg-wordmark enamel-plaque enamel-framed" href={mapQuestSite.home} aria-label="Canal Recall home">Canal Recall</a>
+        <a className="pg-wordmark enamel-plaque enamel-framed" href={mapQuestSite.home} aria-label="Ride Amsterdam home">Ride Amsterdam</a>
         <nav className="pg-nav" aria-label="Site">
           <a href={mapQuestSite.ride}>Ride</a>
           <a href={mapQuestSite.quiz}>Quiz</a>

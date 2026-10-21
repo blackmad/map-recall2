@@ -236,7 +236,7 @@
     amsterdam: {
       id: "amsterdam",
       name: "Amsterdam",
-      productName: "Canal Recall",
+      productName: "Ride Amsterdam",
       center: { lat: 52.372851, lng: 4.8936 },
       extractPath: "../data/extracts/amsterdam",
       geocodeSuffix: ", Amsterdam",
@@ -250,7 +250,7 @@
     utrecht: {
       id: "utrecht",
       name: "Utrecht",
-      productName: "Canal Recall",
+      productName: "Ride Utrecht",
       center: { lat: 52.0907374, lng: 5.1214201 },
       extractPath: "../data/extracts/utrecht",
       geocodeSuffix: ", Utrecht",
@@ -275,7 +275,7 @@
     rotterdam: {
       id: "rotterdam",
       name: "Rotterdam",
-      productName: "Canal Recall",
+      productName: "Ride Rotterdam",
       center: { lat: 51.9225, lng: 4.47917 },
       extractPath: "../data/extracts/rotterdam",
       geocodeSuffix: ", Rotterdam",
@@ -294,7 +294,7 @@
     "den-haag": {
       id: "den-haag",
       name: "Den Haag",
-      productName: "Canal Recall",
+      productName: "Ride Den Haag",
       center: { lat: 52.0705, lng: 4.3007 },
       extractPath: "../data/extracts/den-haag",
       geocodeSuffix: ", Den Haag",
@@ -4001,7 +4001,7 @@ Sign-in and your route settings stay. This cannot be undone.`
         overlay.callbacks.onClearAllData = async () => {
           const cloud = recall.signedIn ? " and your signed-in cloud copy" : "";
           const ok = window.confirm(
-            `Clear everything Canal Recall stores on this device${cloud}?
+            `Clear everything Ride Amsterdam stores on this device${cloud}?
 
 Learned names, exploration collection, personal bests, route settings and the home-address cache all go. Sign-in stays. This cannot be undone.`
           );
@@ -4025,7 +4025,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
             recall.enabled = defaults.skipMastered;
             this._refreshMasteredLabels();
             overlay.callbacks.onLiveChange();
-            this._setRouteError("Cleared all local Canal Recall data.");
+            this._setRouteError("Cleared all local Ride Amsterdam data.");
           } catch (error) {
             this._setRouteError(error.message || "Could not clear data.");
           } finally {

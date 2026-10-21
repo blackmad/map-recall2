@@ -17,7 +17,7 @@ export function SiteSwitch({ links, current, id }: { links: SiteLinks; current: 
     { key: 'explore', label: 'Buildings', href: links.explore, Icon: Building2 },
   ];
   return (
-    <nav className="site-switch" id={id} aria-label="Map Recall">
+    <nav className="site-switch" id={id} aria-label="Ride Amsterdam">
       {items.map(({ key, label, href, Icon }) => (
         <a key={key} href={href} data-site={key} aria-current={key === current ? 'page' : undefined}>
           <Icon aria-hidden="true" strokeWidth={2.25} />

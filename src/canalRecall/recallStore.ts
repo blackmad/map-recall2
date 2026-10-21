@@ -167,7 +167,7 @@ class RecallStore {
         if (record) void this.saveStampRecord(record);
       });
     } catch (reason) {
-      console.warn('Canal Recall progress is local only:', reason);
+      console.warn('Ride Amsterdam progress is local only:', reason);
       this.markHistoryReady();
     }
   }

@@ -762,12 +762,13 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     Enterprise key (`gcloud recaptcha keys create …`, docs/MONITORING.md) →
     secret APPCHECK_SITE_KEY, register both web apps in Firebase App Check
     (monitor first, enforce Firestore after a week of clean metrics);
-    (3) canalrecall.blackmad.com DNS points at 45.63.21.43, not Firebase —
-    re-add the records from Hosting → custom domain (deploy "verify live"
-    step fails until then), optionally edumap.blackmad.com; (4) Auth →
-    authorized domains include canalrecall.blackmad.com; (5) real Google
-    sign-in test across /ride, /quiz/, /progress; (6) buy a .amsterdam domain
-    (ride.amsterdam / canalrecall.amsterdam; Gandi or Namecheap).
+    (3) canalrecall.blackmad.com now 301s to rideamsterdam.nl in Firebase but
+    its Namecheap DNS still points at 45.63.21.43: replace that A record with
+    CNAME `canalrecall-blackmad.web.app`; optionally edumap.blackmad.com;
+    (4) DONE 2026-10-21: rideamsterdam.nl (Porkbun) attached, Auth domains and
+    reCAPTCHA key updated; waiting on the .nl delegation and the Firebase
+    certificate; (5) real Google sign-in test across /ride, /quiz/, /progress
+    on rideamsterdam.nl; (6) DONE: domain bought (rideamsterdam.nl).
   - Decisions pending: clarity finding 16 (HUD names the start street);
     whether this session or integrator-f5 runs the recipe-tile compile pass
     (district libraries + stale pilots, width quantisation) and step 4 (mid

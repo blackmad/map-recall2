@@ -156,7 +156,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 <Compass className="w-4 h-4 text-white" />
               </div>
               <span className="enamel-brand hidden sm:inline text-sm sm:text-lg text-white whitespace-nowrap">
-                Map Recall
+                Map Quest
               </span>
             </div>
             )}
@@ -403,7 +403,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 <div className="w-7 h-7 rounded-md border border-white/40 bg-white/10 flex items-center justify-center text-white">
                   <Compass className="w-4 h-4" />
                 </div>
-                <h3 className="font-bold text-sm sm:text-base text-white">Map Recall Options</h3>
+                <h3 className="font-bold text-sm sm:text-base text-white">Map Quest Options</h3>
               </div>
               <button
                 onClick={() => setIsMenuOpen(false)}

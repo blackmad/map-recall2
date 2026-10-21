@@ -1,7 +1,7 @@
 {
-  "name": "Map Recall",
-  "short_name": "Map Recall",
-  "description": "Learn streets, waterways, landmarks, and neighborhoods through map quizzes and Canal Recall rides.",
+  "name": "Ride Amsterdam",
+  "short_name": "Ride Amsterdam",
+  "description": "Learn streets, waterways, landmarks, and neighborhoods through map quizzes and rides through the city.",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",

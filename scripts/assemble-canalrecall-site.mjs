@@ -72,8 +72,8 @@ await mkdir(edumap, { recursive: true });
 await writeFile(path.join(edumap, 'index.html'), `<!doctype html>
 <meta charset="utf-8">
 <title>Map Quest has moved</title>
-<meta http-equiv="refresh" content="0; url=https://canalrecall.blackmad.com/quiz/">
-<p>Map Quest now lives at <a href="https://canalrecall.blackmad.com/quiz/">canalrecall.blackmad.com/quiz/</a>.</p>
+<meta http-equiv="refresh" content="0; url=https://rideamsterdam.nl/quiz/">
+<p>Map Quest now lives at <a href="https://rideamsterdam.nl/quiz/">rideamsterdam.nl/quiz/</a>.</p>
 `);
 
 console.log(`Assembled Canal Recall site at ${path.relative(projectRoot, destination)}/ (landing /, ride /ride, quiz /quiz/) and the edumap redirect at ${path.relative(projectRoot, edumap)}/`);

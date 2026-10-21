@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## 2026-10-21 — Ride Amsterdam: new name and domain
+
+The product is now **Ride Amsterdam** at `rideamsterdam.nl` (user bought it on
+Porkbun and chose the name). Firebase Hosting site `canalrecall-blackmad` has
+custom domains `rideamsterdam.nl` (serves) and `www.rideamsterdam.nl`
+(redirects), and `canalrecall.blackmad.com` now redirects there too (its
+Namecheap DNS still needs the CNAME). Porkbun DNS was set through the v3 API:
+apex A 199.36.158.100, TXT `hosting-site=canalrecall-blackmad`, `www` CNAME
+`canalrecall-blackmad.web.app`; the parking ALIAS and wildcard CNAME were
+removed. Auth authorized domains and the reCAPTCHA Enterprise key gained both
+names; the browser API key has no referrer restriction, so no change there.
+
+User-facing names: landing, ride setup plaque, `/explore`, credits, privacy,
+What's new, progress page, share texts, explorer licence line, model
+attribution author, manifest, and per-city `productName` (Ride Utrecht, Ride
+Rotterdam, Ride Den Haag). Map Quest's own header says "Map Quest" instead of
+"Map Recall". Canonical/OG URLs, `VITE_CANAL_RECALL_URL`, the edumap redirect
+and the share cards (re-rendered from the landing's ride frame) use
+rideamsterdam.nl. Not renamed on purpose: code identifiers, globals
+(`CanalRecall*`), storage keys (`canalRecall.*`, `mapRecall_*`, renaming them
+would wipe progress), and the internal lab/review pages.
+
 ## Westerkerk aisles and windows, Magna Plaza caps, zebras city-wide (2026-10-17)
 
 User screenshots: gaps in the Westerkerk aisle roofs and weak windows; Magna

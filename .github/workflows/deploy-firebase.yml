@@ -54,7 +54,7 @@ jobs:
       # root, so the build keeps Vite's default '/' base.
       - run: npm run build
         env:
-          VITE_CANAL_RECALL_URL: https://canalrecall.blackmad.com/
+          VITE_CANAL_RECALL_URL: https://rideamsterdam.nl/
           VITE_CARTO_API_KEY: ${{ secrets.VITE_CARTO_API_KEY }}
           VITE_GOOGLE_MAPS_EMBED_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_EMBED_API_KEY }}
           VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}

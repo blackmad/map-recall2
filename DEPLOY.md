@@ -1,13 +1,13 @@
 # Deploying
 
-Canal Recall and Map Quest ship from **one origin** (2026-10-17), so they share
+Ride Amsterdam (the ride, formerly Canal Recall) and Map Quest ship from **one origin** (2026-10-17; domain `rideamsterdam.nl` since 2026-10-21), so they share
 Firebase auth, localStorage progress (`mapRecall_reviewStates_v1`) and plain
 relative links:
 
-| Path on `canalrecall.blackmad.com` | Serves | Built from |
+| Path on `rideamsterdam.nl` | Serves | Built from |
 | --- | --- | --- |
 | `/` | Landing page | `public/canal-drive/landing.html` |
-| `/ride` | Canal Recall (Hosting rewrite onto `/ride.html`) | `public/canal-drive/index.html` |
+| `/ride` | The ride (Hosting rewrite onto `/ride.html`) | `public/canal-drive/index.html` |
 | `/quiz/` | Map Quest (SPA rewrite for `/quiz/**`) | `vite build --mode quiz` → `dist-quiz/` |
 | `/data/`, `/js/`, `/models/`, … | Extracts and the canal-drive tree | `dist/data`, `dist/canal-drive` |
 
@@ -18,9 +18,16 @@ opened the ride before (localStorage `canalRecall.returningPlayer.v1`), to
 
 | Hostname | Firebase site | Serves | Built from |
 | --- | --- | --- | --- |
-| `canalrecall.blackmad.com` | `canalrecall-blackmad` | Everything above | `dist-canalrecall/` |
+| `rideamsterdam.nl` | `canalrecall-blackmad` | Everything above | `dist-canalrecall/` |
+| `www.rideamsterdam.nl` | `canalrecall-blackmad` | Firebase custom-domain redirect to `rideamsterdam.nl` | — |
+| `canalrecall.blackmad.com` | `canalrecall-blackmad` | Firebase custom-domain redirect to `rideamsterdam.nl` (needs its Namecheap CNAME) | — |
 | `mapquest.blackmad.com` | `canalrecall-blackmad` | Same site | `dist-canalrecall/` |
-| `edumap.blackmad.com` | `edumap-blackmad` | 301 to `canalrecall.blackmad.com/quiz/…` | `dist-edumap/` (placeholder only) |
+| `edumap.blackmad.com` | `edumap-blackmad` | 301 to `rideamsterdam.nl/quiz/…` | `dist-edumap/` (placeholder only) |
+
+DNS for `rideamsterdam.nl` is at Porkbun (apex A `199.36.158.100`, TXT
+`hosting-site=canalrecall-blackmad`, `www` CNAME `canalrecall-blackmad.web.app`);
+`blackmad.com` is at Namecheap. Firebase Auth authorized domains and the
+reCAPTCHA (App Check) key list both `rideamsterdam.nl` and `www`.
 
 Both sites live in the existing `map-recall2-blackmad` Firebase project, which
 also holds Firestore. `FIREBASE_SETUP.md` covers the Firestore side.

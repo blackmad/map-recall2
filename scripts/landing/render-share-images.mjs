@@ -22,8 +22,8 @@ h1 em{font-style:normal;color:var(--enamel)}
 p{margin:0;font:600 30px/1.2 var(--font-plaque);color:var(--day-ink-muted);letter-spacing:.02em}
 .url{position:absolute;right:28px;bottom:22px;padding:8px 14px;border-radius:6px;background:rgba(251,248,242,.92);font:700 24px/1 var(--font-plaque);letter-spacing:.06em;color:var(--day-accent-ink)}
 </style></head><body><div class="bg"></div><div class="fade"></div>
-<div class="copy"><div class="plaque enamel-plaque enamel-framed">Canal Recall</div><h1>${title}</h1><p>${line}</p></div>
-<div class="url">canalrecall.blackmad.com</div></body></html>`;
+<div class="copy"><div class="plaque enamel-plaque enamel-framed">Ride Amsterdam</div><h1>${title}</h1><p>${line}</p></div>
+<div class="url">rideamsterdam.nl</div></body></html>`;
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
 for (const [name, title, line] of [

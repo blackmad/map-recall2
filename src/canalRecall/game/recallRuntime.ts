@@ -145,7 +145,7 @@ export class GameRecallRuntime {
       overlay.callbacks.onClearAllData = async () => {
         const cloud = recall.signedIn ? ' and your signed-in cloud copy' : '';
         const ok = window.confirm(
-          `Clear everything Canal Recall stores on this device${cloud}?\n\n`
+          `Clear everything Ride Amsterdam stores on this device${cloud}?\n\n`
           + 'Learned names, exploration collection, personal bests, route settings '
           + 'and the home-address cache all go. Sign-in stays. This cannot be undone.',
         );
@@ -166,7 +166,7 @@ export class GameRecallRuntime {
           recall.enabled = defaults.skipMastered;
           this._refreshMasteredLabels();
           overlay.callbacks.onLiveChange();
-          this._setRouteError('Cleared all local Canal Recall data.');
+          this._setRouteError('Cleared all local Ride Amsterdam data.');
         } catch (error) {
           this._setRouteError((error as Error).message || 'Could not clear data.');
         } finally {

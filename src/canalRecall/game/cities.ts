@@ -24,7 +24,7 @@ export interface CanalCity {
   id: CanalCityId;
   /** Short UI label on the briefing. */
   name: string;
-  /** Product line under the title, e.g. "Canal Recall". */
+  /** Product line under the title, e.g. "Ride Amsterdam". */
   productName: string;
   center: CanalCityCenter;
   /** Path relative to `public/canal-drive/` (used with `new URL(..., location)`). */
@@ -70,7 +70,7 @@ export const CANAL_CITIES: Record<CanalCityId, CanalCity> = {
   amsterdam: {
     id: 'amsterdam',
     name: 'Amsterdam',
-    productName: 'Canal Recall',
+    productName: 'Ride Amsterdam',
     center: { lat: 52.372851, lng: 4.8936 },
     extractPath: '../data/extracts/amsterdam',
     geocodeSuffix: ', Amsterdam',
@@ -84,7 +84,7 @@ export const CANAL_CITIES: Record<CanalCityId, CanalCity> = {
   utrecht: {
     id: 'utrecht',
     name: 'Utrecht',
-    productName: 'Canal Recall',
+    productName: 'Ride Utrecht',
     center: { lat: 52.0907374, lng: 5.1214201 },
     extractPath: '../data/extracts/utrecht',
     geocodeSuffix: ', Utrecht',
@@ -109,7 +109,7 @@ export const CANAL_CITIES: Record<CanalCityId, CanalCity> = {
   rotterdam: {
     id: 'rotterdam',
     name: 'Rotterdam',
-    productName: 'Canal Recall',
+    productName: 'Ride Rotterdam',
     center: { lat: 51.9225, lng: 4.47917 },
     extractPath: '../data/extracts/rotterdam',
     geocodeSuffix: ', Rotterdam',
@@ -128,7 +128,7 @@ export const CANAL_CITIES: Record<CanalCityId, CanalCity> = {
   'den-haag': {
     id: 'den-haag',
     name: 'Den Haag',
-    productName: 'Canal Recall',
+    productName: 'Ride Den Haag',
     center: { lat: 52.0705, lng: 4.3007 },
     extractPath: '../data/extracts/den-haag',
     geocodeSuffix: ', Den Haag',
