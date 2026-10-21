@@ -39,7 +39,7 @@ export async function compileLargeHouse(id: string) {
   const t1 = performance.now();
   const glb = await canalhouseGroupToGlb(intent.id, built.group, {metreUvs: true, slotFor: m => m.userData.materialSlot as string, maxBytes: 2_000_000});
   const tris = await decodeTriangles(glb.bytes);
-  const {gates, topology} = evaluateLargeGates(tris, built);
+  const {gates, topology} = evaluateLargeGates(tris, built, {budget: intent.budgetTriangles});
   // Openings inside their walls and clear of the roof planes (roofChecks.ts, with the landmark pipeline's hard gate).
   gates.push(openingsWithinWallsGate(built.group, m => m.userData.materialSlot as string).gate);
   const out = path.join(ARTIFACTS, id);

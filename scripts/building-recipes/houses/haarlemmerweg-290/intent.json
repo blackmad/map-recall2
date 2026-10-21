@@ -3,7 +3,7 @@
  "kind": "large",
  "id": "haarlemmerweg-290",
  "pandId": "0363100012116511",
- "address": "Haarlemmerweg 290-488, Amsterdam (north side of the Haarlemmerweg corridor at Molenwerf): a 1970 residential slab, 14 storeys, with continuous balcony bands on white slab edges, glass balustrades, a recessed glazed balcony wall behind and white piers between the bays",
+ "address": "Haarlemmerweg 290-488, Amsterdam (south side of the Haarlemmerweg at Molenwerf): a 1970 gallery-flat slab of 14 storeys, renovated with a white slab edge, a glass balustrade on every storey and a glazed wall with white mullions behind it",
  "sources": [
   {
    "id": "pano-2025-09-26-s",
@@ -36,24 +36,55 @@
     12
    ],
    "street": "south front on the Haarlemmerweg, with the entrance at the ground floor",
-   "system": "curtain-wall",
+   "system": "brick-bay-grid",
    "storeys": 14,
-   "baysPerStorey": 7,
+   "baysPerStorey": 10,
    "ground": "glazed",
    "windows": "wide",
    "entrance": true,
    "palette": {
-    "brick": "#b9bab4",
-    "frame": "#8f9498",
-    "stone": "#c9c9c4"
+    "brick": "#707576",
+    "frame": "#c3c5c1",
+    "stone": "#757a78",
+    "glass": "#3f4344"
    },
    "hand": [
     "baysPerStorey",
     "system",
-    "stringCourses"
+    "windows",
+    "balconies",
+    "palette",
+    "wallMaterial",
+    "blankStoreys",
+    "glazedStoreys"
    ],
    "frames": false,
-   "sills": false
+   "sills": false,
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13
+    ],
+    "rail": "glass"
+   },
+   "wallMaterial": "render",
+   "blankStoreys": [
+    1
+   ],
+   "glazedStoreys": [
+    2
+   ]
   },
   {
    "wallSurfaces": [
@@ -61,67 +92,136 @@
     24,
     25
    ],
-   "system": "curtain-wall",
+   "system": "brick-bay-grid",
    "storeys": 14,
-   "baysPerStorey": 7,
+   "baysPerStorey": 6,
    "ground": "glazed",
    "windows": "wide",
    "palette": {
-    "brick": "#b9bab4",
-    "frame": "#8f9498",
-    "stone": "#c9c9c4"
+    "brick": "#707576",
+    "frame": "#c3c5c1",
+    "stone": "#757a78",
+    "glass": "#3f4344"
    },
    "hand": [
     "baysPerStorey",
     "system",
-    "stringCourses"
+    "windows",
+    "balconies",
+    "palette",
+    "wallMaterial"
    ],
    "frames": false,
-   "sills": false
+   "sills": false,
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13
+    ],
+    "rail": "glass"
+   },
+   "wallMaterial": "render"
   },
   {
    "wallSurfaces": [
     31
    ],
-   "system": "curtain-wall",
+   "system": "brick-bay-grid",
    "storeys": 14,
-   "baysPerStorey": 7,
+   "baysPerStorey": 11,
    "ground": "glazed",
    "windows": "wide",
    "palette": {
-    "brick": "#b9bab4",
-    "frame": "#8f9498",
-    "stone": "#c9c9c4"
+    "brick": "#707576",
+    "frame": "#c3c5c1",
+    "stone": "#757a78",
+    "glass": "#3f4344"
    },
    "hand": [
     "baysPerStorey",
     "system",
-    "stringCourses"
+    "windows",
+    "balconies",
+    "palette",
+    "wallMaterial"
    ],
    "frames": false,
-   "sills": false
+   "sills": false,
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13
+    ],
+    "rail": "glass"
+   },
+   "wallMaterial": "render"
   },
   {
    "wallSurfaces": [
     15
    ],
-   "system": "curtain-wall",
+   "system": "brick-bay-grid",
    "storeys": 14,
-   "baysPerStorey": 7,
+   "baysPerStorey": 8,
    "ground": "glazed",
    "windows": "wide",
    "palette": {
-    "brick": "#b9bab4",
-    "frame": "#8f9498",
-    "stone": "#c9c9c4"
+    "brick": "#707576",
+    "frame": "#c3c5c1",
+    "stone": "#757a78",
+    "glass": "#3f4344"
    },
    "hand": [
     "baysPerStorey",
     "system",
-    "stringCourses"
+    "windows",
+    "balconies",
+    "palette",
+    "wallMaterial"
    ],
    "frames": false,
-   "sills": false
+   "sills": false,
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13
+    ],
+    "rail": "glass"
+   },
+   "wallMaterial": "render"
   }
  ],
  "otherWalls": "blank",
@@ -130,16 +230,27 @@
  },
  "roofPlant": true,
  "palette": {
-  "brick": "#b9bab4",
-  "frame": "#8f9498",
+  "brick": "#707576",
+  "frame": "#c3c5c1",
   "door": "#2b2d2e",
-  "stone": "#e2e2de"
+  "stone": "#757a78",
+  "glass": "#3f4344"
  },
  "closedBands": true,
  "layeredKit": true,
  "notes": [
-  "Haarlemmerweg 290-488 (BAG pand 0363100012116511, built 1970, 450 m2 tower footprint, eaves 45.3 m, 14 storeys at 3.2 m, 98 flats). Photographed from the south on 2025-09-26 (2025_09_26_05_36_39_00041, 42.7 m, 1.0 deg obliquity, 6% foliage) and from the east on 2019-01-07 (TMX7316010203-001040_pano_0003_000071, 36.4 m, 0.2 deg); the 2025 south crop shows the renovated facade (white slab bands, glass balustrades, recessed glazed balcony walls, white piers), the 2019 east crop the same structural rhythm before the balustrade glass went in. The north crop (2019-11-07) looks into the neighbouring construction site 16 m away and is not evidence for this wall.",
-  "walls[0] = panel 11 (south, surface 12, 20.1 m): entrance front, seven bays at about 2.9 m with continuous balcony bands on every upper storey, glass balustrades and a glazed ground floor. walls[1] = panel 18 (east, surfaces 21/24/25, 22.5 m) and walls[2] = panel 24 (west, surface 31, 22.5 m, measured at 36 deg obliquity with 51% foliage so coarse) repeat the same bands; walls[3] = panel 13 (north, surface 15, 20.1 m) is inferred from the other three (no usable panorama).",
-  "Simplified: the balcony band is the kit's balcony slab plus glass rail on every bay of every upper storey, which the layered kit merges into one slab/rail run per storey; the recessed balcony wall behind is a wide window. Not drawn: the white fascia's chamfered edge, the balcony dividers between flats and the roof-level plant enclosure edges."
- ]
+  "Haarlemmerweg 290-488 (BAG pand 0363100012116511, built 1970, 450 m2 tower footprint, eaves 45.3 m, 14 storeys, 98 flats) is the gallery-flat slab on the south side at Molenwerf. Current appearance (2025): a white/light concrete slab edge and a glass balustrade with thin posts on every storey, a glazed wall with white mullions behind them, and a glazed plinth; the 2022-01-25 west crop and the 2025-07-01/2022-01 south crops agree. The 2019-01-07 east crop and the 2019-11-07 north crop show the building BEFORE the balcony glazing went in: an open in-situ concrete gallery frame with orange-red rails and no glass.",
+  "2026-10-21 correction (this lane): the previous draft used `curtain-wall` with the layered kit, which draws the 3DBAG wall itself as the glass skin (likeness: wall not drawn, glazing 1.00 on all four groups, 2,640 tris, no balcony rows). It is now `brick-bay-grid` with `windows: wide`, `wallMaterial: render` and a glass-railed balcony row on storeys 1-13, measured from the 2025 south crop: continuous slab band, glass balustrade, recessed glazed wall with white piers. 18,536 tris under the house's own 40,000 budget (see intent.budgetTriangles).",
+  "Bays from measure.ts, per wall: south 10 (2.00 m pitch), east 6, west 11, north 8. South storey 1 is set blank and storey 2 glazed on the crop's own reading (its first two bands measure 0.12 and 0.92 glazing): the lowest band above the plinth is a solid parapet, the next one a fully glazed band.",
+  "Likeness 2026-10-21: 4 of 4 groups FAIL, and the reasons are declared, not hidden. walls[0] south: wall colour dL 0.094 (PASS), mean glazing 0.589 vs 0.614 (PASS), columns 10 vs 15 (WARN), IoU 0.489; the remaining failure is one storey band off by 0.25, because the 2022-01-04 crop covers only the lower part of a 45 m wall (61 % usable, top half outside the crop). walls[2] west: dL 0.067, mean 0.574 vs 0.616, columns 11 vs 11, one storey band off by 0.23. walls[1] east and walls[3] north are paired with PRE-RENOVATION 2019 crops (open galleries, glazing 0.42/0.23) while the model draws today's glazed balconies, so their measured comparison cannot pass by construction.",
+  "palette.brick = #707576 with wallMaterial render: the measured wall of the 2025 south crop is #595d5d (the recesses and soffits between the white bands dominate the floor-zone cells) and the west crop reads #68635c; #707576 is the measured family with dL +0.09/+0.07. The white slab edges and mullions are the frame/stone slots."
+ ],
+ "budgetTriangles": 40000,
+ "measured": {
+  "date": "2026-10-21",
+  "groups": [
+   0,
+   2
+  ]
+ }
 }
