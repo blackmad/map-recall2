@@ -6,7 +6,7 @@
  "address": "Molenwerf 1, Amsterdam (north side of the Haarlemmerweg corridor at its west end): a 1980 office campus of brown concrete, five storeys of continuous band windows in deep precast panels with a glazed ground floor, and a taller plain wing of small punched windows",
  "sources": [
   {
-   "id": "pano-2019-11-07-w01-358L",
+   "id": "pano-2019-11-07-n",
    "kind": "street-panorama",
    "capturedAt": "2019-11-07",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000470_pano_0000_001812/",
@@ -15,19 +15,12 @@
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2019-11-07-n",
-   "kind": "street-panorama",
-   "capturedAt": "2019-11-07",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000470_pano_0000_001812/",
-   "image": "pand-reference-walls/0363100012066028/w01-358L.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
    "id": "pano-2019-11-07-e",
    "kind": "street-panorama",
    "capturedAt": "2019-11-07",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000470_pano_0000_001764/",
-   "image": "pand-reference-walls/0363100012066028/w02-88L.jpg",
+   "image": "source-data://pand-reference-walls/0363100012066028/w02-88L.jpg",
+   "sha256": "3704307b9c3b6f91f1de5dd0086be2384dceb3f096d3bff5ad8b7baf69b7a216",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
@@ -35,7 +28,8 @@
    "kind": "street-panorama",
    "capturedAt": "2022-03-29",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002491_pano_0004_000010/",
-   "image": "pand-reference-walls/0363100012066028/w05-178L.jpg",
+   "image": "source-data://pand-reference-walls/0363100012066028/w05-178L.jpg",
+   "sha256": "31a56cbe68d11be9cf25b4618e1b4bda8eca73feabe34dfb46b1b0078fcf90c4",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
@@ -43,7 +37,8 @@
    "kind": "street-panorama",
    "capturedAt": "2025-07-01",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-01_09-03-48_01355/",
-   "image": "pand-reference-walls/0363100012066028/w04-268.jpg",
+   "image": "source-data://pand-reference-walls/0363100012066028/w04-268.jpg",
+   "sha256": "760531a5e978e3281bd36b864ef428533467844983a1a210a4ca8b725119544b",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -51,8 +46,6 @@
   {
    "wallSurfaces": [
     121,
-    205,
-    100,
     106,
     159,
     183,
@@ -79,19 +72,24 @@
    "ground": "glazed",
    "windows": "plain",
    "palette": {
-    "brick": "#8a7160",
+    "brick": "#5f4f45",
     "frame": "#42484c",
-    "stone": "#7a6656"
+    "stone": "#7a6656",
+    "glass": "#2b2525"
    },
    "hand": [
-    "palette",
+    "palette.brick",
     "baysPerStorey",
     "system"
-   ]
+   ],
+   "windowShape": {
+    "w": 0.95,
+    "h": 0.4,
+    "sill": 0.15
+   }
   },
   {
    "wallSurfaces": [
-    109,
     153,
     164,
     182,
@@ -111,7 +109,7 @@
    "ground": "system",
    "windows": "plain",
    "palette": {
-    "brick": "#8a7160",
+    "brick": "#7c675b",
     "frame": "#42484c",
     "stone": "#7a6656"
    },
@@ -120,8 +118,30 @@
     "h": 0.4,
     "sill": 0.42
    },
+   "hand": []
+  },
+  {
+   "wallSurfaces": [
+    98,
+    132
+   ],
+   "street": "the two-storey glazed podium under the taller south wing, facing Molenwerf",
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "wide",
+   "entrance": true,
+   "palette": {
+    "brick": "#7c675b",
+    "frame": "#c8c9c4",
+    "stone": "#6d5a4e"
+   },
    "hand": [
-    "palette"
+    "baysPerStorey",
+    "system",
+    "storeys",
+    "ground"
    ]
   }
  ],
@@ -130,7 +150,7 @@
   "material": "bitumen"
  },
  "palette": {
-  "brick": "#8a7160",
+  "brick": "#7c675b",
   "frame": "#42484c",
   "door": "#2a2c2d",
   "stone": "#7a6656"
@@ -138,16 +158,15 @@
  "closedBands": true,
  "layeredKit": true,
  "notes": [
-  "Molenwerf 1 (BAG pand 0363100012066028, built 1980, 2686 m2 of footprint in several wings, roof max 32.4 m) is the 1980 office campus on the north side of the Haarlemmerweg at the corridor's west end, the block behind the north-side commercial frontage in the user's screenshot. Photographed front-on: the north wing in 2019-11-07 (TMX7316060226-000470_pano_0000_001812, 32.5 m wall at 12.1 m, 9.9 deg obliquity, 4% foliage), the east wing in 2019-11-07 (..._0000_001764, 32.4 m at 19.5 m, 2.4 deg), the taller south wing in 2022-03-29 (TMX7316010203-002491_pano_0004_000010, 19.8 m at 28.1 m, 1.5 deg) and the west wing in 2025-07-01 (recording_2025-07-01_09-03-48_01355, 19.9 m at 51.6 m, 14.8 deg).",
-  "walls[0] = the five-storey banded wings (panels 116 N 32.5 m, 97 E 32.4 m, 197 S 26.5 m, 207 N 26.3 m, 205 S 26.3 m, 44 N 21.7 m, 163 W 21.4 m and their neighbours, eaves 19.4-24.0 m): brown precast concrete with a continuous band of mullioned windows per storey and deep spandrel panels between, a glazed ground floor with the entrance and a dark fascia/awning line. walls[1] = the plain taller wing (panels 105 E, 149 S, 178 W, 86 W, 158 W, eaves 29.7-30.0 m): the same brown concrete but with small punched windows set in pairs, no bands. Low canopies, sheds and plant edges (eaves 3.9-4.0 m) stay blank.",
-  "Simplified: the band windows are the kit's ribbon windows with measured mullion pitch; the precast panel joints and the dark spandrel band are not drawn as relief. Not drawn: the glazed entrance canopy on the north wing, the rooftop plant screens and the terrace steps on the south side (ground at 3.9-7.0 m).",
-  "Measured 2026-10-20 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] system ribbon-windows -> brick-bay-grid (measured punched).",
-  "palette hand-held: measure.ts reads the brown precast as #4c4039 on the 2019 north crop while its own normalised photo wall is #866e60 (dL +0.19), so the group colour is set to the photo-normalised value.",
-  "baysPerStorey hand-held at 6: measure.ts locks onto the window mullion pitch (1.477 m, 22 bays) while the front reads as six wide windows per storey (5.4 m each) in the 2019 crop.",
-  "system hand-held as ribbon-windows: measure.ts classes this front \"ribbon\" (glazing cell class) and the 2019 crop shows a continuous band per storey, so the punched default it proposed was rejected."
+  "Molenwerf 1 (BAG pand 0363100012066028, built 1980, 2686 m2 footprint in several wings, roof max 32.4 m) is the 1980 office campus on the north side of the Haarlemmerweg at the corridor's west end. Photographed front-on: the north wing in 2019-11-07 (TMX7316060226-000470_pano_0000_001812, 32.5 m wall at 12.1 m, 9.9 deg obliquity, 4 % foliage), the east wing in 2019-11-07 (..._0000_001764), the two-storey glazed podium under the tall south wing in 2022-03-29 (TMX7316010203-002491_pano_0004_000010, 19.9 m at 28.1 m, 1.5 deg) and the west wing in 2025-07-01 (recording_2025-07-01_09-03-48_01355).",
+  "2026-10-21 correction (this lane): three surfaces were taken out of the groups because 3DBAG merges them, coplanar, into a big panel and the group then draws them at the big panel's height. Surface 205 is a 5.1 x 4.1 m annex wall coplanar with the 27.4 m north wing wall (surface 121) and surface 100 a 0.2 x 4.1 m sliver on the east wall: both were drawn as 19.5 m of windows over a 4 m annex, which is what the eaves-vs-3dbag gate caught (model 19.47 vs 3dbag 4.02). Surface 109 (0.4 x 1.5 m) merged into the tall wing's east panel the same way (model 29.73 vs 3dbag 19.40). They now fall to otherWalls (blank), which is what they are: plain low annex walls.",
+  "The two-storey glazed podium (surfaces 98, 132: panel 95, 19.9 m, eaves 4.1 m, reaching 13.3 m over part of its width) is now walls[2], 5 bays, one tall storey, entrance. It was the largest blank wall of the audit (204 m2 facing south) and the shopfront the south photo shows at the foot of the tall wing. Its paired crop covers 19.9 m of wall including the taller wing rising behind it, so the mask IoU stays 0.398 (WARN, reason written).",
+  "Likeness 2026-10-21: walls[0] PASS (wall #4b4039 vs #5f4f45, dL 0.063; glazing 0.431 vs 0.399; columns 5 vs 6; IoU 0.657), walls[2] WARN (dL -0.014; glazing 0.334 vs 0.256; IoU 0.398). walls[1] (the plain taller wing, panels 86/143/151/160/206) has NO paired photo: the podium edge, not the wing, is the BAG outline edge that all-walls.ts rectifies, so every archived crop of this pand matches a podium or banded-wing panel; the wing's own south face stands 1.9 m behind the outline and no crop covers it.",
+  "palette.brick hand-held on the banded wing at #5f4f45: the 2019 north crop measures #4b4039 (the darkest reading of the precast panels, an overcast November facade), the 2022 south crop reads the same precast at #826e64, and #5f4f45 sits inside the measured tolerance (dL 0.063) without drawing the block as near-black. The taller wing and the podium take #7c675b, the south crop's daylight value.",
+  "baysPerStorey hand-held at 6 on the banded wing (the measured 22 is the window mullion pitch, 1.455 m; the front reads as six wide bands) and at 5 on the podium."
  ],
  "measured": {
-  "date": "2026-10-20",
+  "date": "2026-10-21",
   "groups": [
    0
   ]
