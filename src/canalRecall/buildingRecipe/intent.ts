@@ -853,6 +853,13 @@ export interface LargeWallIntent {
    */
   windowShape?: LargeWindowShape;
   /**
+   * Measured window widths per bay, cycling across the bays as fractions of the bay (as `windowShape.w`), 1-8 entries:
+   * `[0.8, 0.3]` draws the wide drawing-room window with the narrow slot beside it that the photo shows on one 2-bay
+   * pitch (Haarlemmerweg 940's panel fronts; `windowShape.w` then only documents the wide bay). Bays stay on the
+   * group's pitch, so the piers between the openings differ per bay. `windowShape` still sets the height and sill.
+   */
+  windowPattern?: number[];
+  /**
    * `panes`: pane-split glazing (block kit `WinParams.paneSplit`): the frame is one sheet at the back of the recess and the
    * glass separate panes in front of it, so frames, mullions and transoms cost no bar boxes (white-framed cross windows on
    * a byte budget). Absent: the kit's frame ring and bar boxes, byte-identical.
@@ -1021,6 +1028,12 @@ export interface LargeBuildingIntent {
   footprint?: 'lod22' | 'bag';
   /** Lift 3DBAG wall and roof vertices under the ground to it and drop faces left on the ground (opt-in; `largeSurfaceSet`). */
   groundClamp?: boolean;
+  /**
+   * Triangle budget for this house's large-tier gate, in place of the 12,000 default (the user-approved raised cap is
+   * 40,000 for a tall block whose facade rhythm, loggias and crown the 12k kit cannot draw). It only raises the budget:
+   * the validator accepts 12,000..40,000, and every house without the field keeps the default and byte-identical output.
+   */
+  budgetTriangles?: number;
   /**
    * The intent carries values measured from the rectified photos (`measure.ts --write`, the evidence in
    * `houses/<id>/measured.json`): the date of that run and the wall groups it wrote.
