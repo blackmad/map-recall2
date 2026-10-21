@@ -1,0 +1,197 @@
+{
+ "id": "molenwerf-1-066028",
+ "pandId": "0363100012066028",
+ "date": "2026-10-20",
+ "method": "measureFacade.ts (k=4 clusters on smoothed normalised Lab + texture, wall = clusters enriched in the floor zones, mixed edge cells by nearest pure colour, light-trim exposure normalisation, autocorrelated bay/storey rhythm, colour split along u) on all-walls.ts --archive crops paired by cropToPanel.ts; likeness.ts against the model elevation",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 116,
+   "verdict": "FAIL",
+   "reasons": [
+    "wall dL +0.19",
+    "window shape none vs photo wide",
+    "columns 28 vs photo 6"
+   ],
+   "crop": {
+    "ref": "source-data://pand-reference-walls/0363100012066028/w01-358L.jpg",
+    "sha256": "5fdbc86aafb505d8f19161194e376c1a69060211c2ae7bd1e20b78316907c08f",
+    "panoId": "TMX7316060226-000470_pano_0000_001812",
+    "capturedAt": "2019-11-07",
+    "obliquityDeg": 9.9,
+    "cameraDistM": 12.1
+   },
+   "pieces": [
+    {
+     "tag": "w01-358L",
+     "ref": "source-data://pand-reference-walls/0363100012066028/w01-358L.jpg",
+     "sha256": "5fdbc86aafb505d8f19161194e376c1a69060211c2ae7bd1e20b78316907c08f",
+     "capturedAt": "2019-11-07",
+     "u0": 0,
+     "u1": 32.495
+    }
+   ],
+   "coverage": 1,
+   "placement": {
+    "offsetM": 0.042,
+    "angleDeg": 0.015,
+    "overlap": 1,
+    "along": [
+     0.03,
+     32.525
+    ],
+    "shift": {
+     "uM": 0.5,
+     "vM": -0.5
+    },
+    "box": {
+     "u0": 0,
+     "u1": 32.495,
+     "v0": 0,
+     "v1": 19.47
+    }
+   },
+   "likeness": {
+    "shift": {
+     "uM": 0.5,
+     "vM": -0.5
+    },
+    "iou": 0.574,
+    "wall": {
+     "photo": "#4c4039",
+     "photoRaw": "#4e423b",
+     "model": "#866e60",
+     "modelToday": "#866e60",
+     "photoFamily": "brick",
+     "modelFamily": "brick",
+     "photoMaterial": "brick-grey",
+     "modelMaterial": "brick-purple-brown",
+     "dL": 0.19,
+     "dHue": 0,
+     "pass": false
+    },
+    "glass": {
+     "photo": "#2b2526",
+     "model": "#586a75"
+    },
+    "glazing": {
+     "photo": [
+      null,
+      0.456,
+      0.418,
+      0.449,
+      0.382,
+      0.432,
+      null,
+      null,
+      null,
+      null
+     ],
+     "model": [
+      null,
+      0.46,
+      0.482,
+      0.482,
+      0.466,
+      0.539,
+      null,
+      null,
+      null,
+      null
+     ],
+     "photoMean": 0.458,
+     "modelMean": 0.484,
+     "maxDiff": 0.107,
+     "meanDiff": 0.026,
+     "pass": true
+    },
+    "columns": {
+     "photo": 6,
+     "model": 28,
+     "pass": false
+    },
+    "shape": {
+     "photo": "wide",
+     "model": null,
+     "pass": false
+    },
+    "classes": {
+     "photo": "ribbon",
+     "model": "punched"
+    },
+    "ground": {
+     "photo": 0.941,
+     "model": 0.901
+    },
+    "evidence": {
+     "usable": 0.837,
+     "foliage": 0.046,
+     "washedOut": 0.1,
+     "obliquityDeg": 9.9,
+     "cameraDistM": 12.1,
+     "widthM": 32.5,
+     "abstain": []
+    }
+   },
+   "measured": {
+    "wall": "#4c4039",
+    "wallRaw": "#4e423b",
+    "glass": "#2b2526",
+    "trim": "#595957",
+    "glazing": 0.447,
+    "storeyGlazing": [
+     null,
+     0.403,
+     0.43,
+     0.428,
+     0.378,
+     0.494,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ground": 0.935,
+    "bays": 22,
+    "pitchM": 1.455,
+    "storeyM": 3.08,
+    "window": null,
+    "frontClass": "punched",
+    "normalisation": {
+     "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
+     "ref": [
+      221,
+      222,
+      221
+     ],
+     "gain": 0.97,
+     "wb": [
+      1.003,
+      0.996,
+      1.001
+     ]
+    },
+    "usable": 0.792,
+    "foliage": 0.046,
+    "washedOut": 0.1,
+    "split": null
+   },
+   "gaps": {
+    "kit": [],
+    "evidence": []
+   }
+  },
+  {
+   "group": 1,
+   "panel": 105,
+   "verdict": "NO PHOTO",
+   "coverage": 0,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 105"
+    ]
+   }
+  }
+ ]
+}

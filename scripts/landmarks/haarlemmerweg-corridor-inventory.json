@@ -1,0 +1,5654 @@
+{
+ "schemaVersion": 2,
+ "corridor": "Haarlemmerweg, Amsterdam — Molenwerf (west) to Solebaystraat (east), both sides, including the corner buildings that front Haarlemmerweg from Gibraltarstraat, Van Gentstraat, Kijkduinstraat, Livornostraat, Solebaystraat and Nieuwpoortstraat",
+ "userCorridorLabel": "The user typed \"Haarlemmerdijk\"; the screenshot corridor (Kennedy Van der Laan, WJ Digital Marketing, MB limousines and Gymbase Westerpark to the north; Stichting De Gibraltar, Amsterdam Skin care, Taco Lindo West and Dojo Doorje to the south) is this Haarlemmerweg stretch, and that is what is inventoried.",
+ "queryDate": "2026-10-20",
+ "window": {
+  "west": 4.8462,
+  "east": 4.8572,
+  "south": 52.3838,
+  "north": 52.3862
+ },
+ "frontageMetres": 45,
+ "sources": {
+  "addresses": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeName=bag:verblijfsobject&outputFormat=application/json&count=500&startIndex=<n>&filter=<Filter><PropertyIsEqualTo><PropertyName>openbare_ruimte</PropertyName><Literal>Haarlemmerweg</Literal></PropertyIsEqualTo></Filter> — one walk per street in: Haarlemmerweg, Gibraltarstraat, Van Gentstraat, Kijkduinstraat, Livornostraat, Solebaystraat, Nieuwpoortstraat, Molenwerf",
+  "pands": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeName=bag:pand&outputFormat=application/json&filter=<Filter><Or><PropertyIsEqualTo><PropertyName>identificatie</PropertyName><Literal>0363…</Or></Filter> (bouwjaar, gebruiksdoel)",
+  "heights": "https://api.3dbag.nl/collections/pand/items?limit=100&offset=<n>&bbox=118150,488380,118990,488960 (b3_bouwlagen, b3_h_dak_50p, b3_h_dak_max, b3_h_maaiveld, b3_dak_type)",
+  "footprints": "public/data/extracts/amsterdam/building-tiles/14/<x>/<y>.geojson.gz (NL.IMBAG.Pand.* rings; the same tiles scripts/pand-reference/core.ts reads; all parts of a pand are kept)",
+  "axis": "public/data/extracts/amsterdam/streets-routing.json, name=Haarlemmerweg, highway classes except cycleway/footway/path/steps/service (OpenStreetMap, ODbL)",
+  "coverage": [
+   "src/canalRecall/landmarks/manualCatalogue.json",
+   "public/canal-drive/models/covers.json",
+   "public/canal-drive/ordinary-buildings-data/catalogue.json",
+   "scripts/building-recipes/houses/*/{facts,intent}.json"
+  ],
+  "panoramas": "node --import tsx scripts/pand-reference/all-walls.ts --pand=<id> --min-len=8 --max=6 (Gemeente Amsterdam panoramas, CC BY 4.0, via api.data.amsterdam.nl); read back from staging/pand-reference-walls/<pand>/walls.json"
+ },
+ "tally": {
+  "TRACK_M": 4,
+  "ALREADY_MODELLED": 1,
+  "STREET_SURVEY": 76,
+  "NO_EVIDENCE": 11
+ },
+ "rows": [
+  {
+   "pand": "0363100012116511",
+   "addresses": [
+    "Haarlemmerweg 290",
+    "Haarlemmerweg 292",
+    "Haarlemmerweg 294",
+    "Haarlemmerweg 296",
+    "Haarlemmerweg 298",
+    "Haarlemmerweg 300",
+    "Haarlemmerweg 302",
+    "Haarlemmerweg 304",
+    "Haarlemmerweg 306",
+    "Haarlemmerweg 308",
+    "Haarlemmerweg 310",
+    "Haarlemmerweg 312",
+    "Haarlemmerweg 314",
+    "Haarlemmerweg 316",
+    "Haarlemmerweg 318",
+    "Haarlemmerweg 320",
+    "Haarlemmerweg 322",
+    "Haarlemmerweg 324",
+    "Haarlemmerweg 326",
+    "Haarlemmerweg 328",
+    "Haarlemmerweg 330",
+    "Haarlemmerweg 332",
+    "Haarlemmerweg 334",
+    "Haarlemmerweg 336",
+    "Haarlemmerweg 338",
+    "Haarlemmerweg 340",
+    "Haarlemmerweg 342",
+    "Haarlemmerweg 344",
+    "Haarlemmerweg 346",
+    "Haarlemmerweg 348",
+    "Haarlemmerweg 350",
+    "Haarlemmerweg 352",
+    "Haarlemmerweg 354",
+    "Haarlemmerweg 356",
+    "Haarlemmerweg 358",
+    "Haarlemmerweg 360",
+    "Haarlemmerweg 362",
+    "Haarlemmerweg 364",
+    "Haarlemmerweg 366",
+    "Haarlemmerweg 368",
+    "Haarlemmerweg 370",
+    "Haarlemmerweg 372",
+    "Haarlemmerweg 374",
+    "Haarlemmerweg 376",
+    "Haarlemmerweg 378",
+    "Haarlemmerweg 380",
+    "Haarlemmerweg 384",
+    "Haarlemmerweg 386",
+    "Haarlemmerweg 388",
+    "Haarlemmerweg 390",
+    "Haarlemmerweg 392",
+    "Haarlemmerweg 394",
+    "Haarlemmerweg 396",
+    "Haarlemmerweg 398",
+    "Haarlemmerweg 400",
+    "Haarlemmerweg 402",
+    "Haarlemmerweg 404",
+    "Haarlemmerweg 406",
+    "Haarlemmerweg 408",
+    "Haarlemmerweg 410",
+    "Haarlemmerweg 412",
+    "Haarlemmerweg 414",
+    "Haarlemmerweg 416",
+    "Haarlemmerweg 418",
+    "Haarlemmerweg 420",
+    "Haarlemmerweg 422",
+    "Haarlemmerweg 424",
+    "Haarlemmerweg 426",
+    "Haarlemmerweg 428",
+    "Haarlemmerweg 430",
+    "Haarlemmerweg 432",
+    "Haarlemmerweg 434",
+    "Haarlemmerweg 436",
+    "Haarlemmerweg 438",
+    "Haarlemmerweg 440",
+    "Haarlemmerweg 442",
+    "Haarlemmerweg 446",
+    "Haarlemmerweg 448",
+    "Haarlemmerweg 450",
+    "Haarlemmerweg 452",
+    "Haarlemmerweg 454",
+    "Haarlemmerweg 456",
+    "Haarlemmerweg 458",
+    "Haarlemmerweg 460",
+    "Haarlemmerweg 462",
+    "Haarlemmerweg 464",
+    "Haarlemmerweg 466",
+    "Haarlemmerweg 468",
+    "Haarlemmerweg 470",
+    "Haarlemmerweg 472",
+    "Haarlemmerweg 474",
+    "Haarlemmerweg 476",
+    "Haarlemmerweg 478",
+    "Haarlemmerweg 480",
+    "Haarlemmerweg 482",
+    "Haarlemmerweg 484",
+    "Haarlemmerweg 486",
+    "Haarlemmerweg 488"
+   ],
+   "addressCount": 98,
+   "side": "south",
+   "footprintM2": 450,
+   "heightM": 45.7,
+   "roofMaxM": 47.1,
+   "storeys": 14,
+   "groundLevelM": 0.43,
+   "roofType": "slanted",
+   "builtYear": 1970,
+   "archetype": "tower",
+   "uses": [
+    "woonfunctie",
+    "bijeenkomstfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 85,
+   "roadDistanceM": 7.5,
+   "panorama": {
+    "sampled": true,
+    "walls": 4,
+    "corridorWalls": 4,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2017-04-24",
+     "2019-11-07"
+    ],
+    "panoramas": [
+     "TMX7316010203-000279_pano_0000_003702",
+     "TMX7316060226-000470_pano_0000_001978"
+    ],
+    "maxDistM": 34.9,
+    "wallEvidence": [
+     {
+      "wall": "w01-89",
+      "bearing": 89,
+      "lengthM": 22.5,
+      "crop": "0363100012116511/w01-89.jpg",
+      "panorama": "TMX7316010203-001040_pano_0003_000071",
+      "capturedAt": "2019-01-07",
+      "cameraDistM": 36.4,
+      "obliquityDeg": 0.2,
+      "foliage": 0.0944,
+      "washedOut": 0,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 174.57,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w02-269",
+      "bearing": 269,
+      "lengthM": 22.5,
+      "crop": "0363100012116511/w02-269.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_00788",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 57.7,
+      "obliquityDeg": 36.1,
+      "foliage": 0.5097,
+      "washedOut": 0.0657,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": false
+     },
+     {
+      "wall": "w03-179",
+      "bearing": 179,
+      "lengthM": 20.1,
+      "crop": "0363100012116511/w03-179.jpg",
+      "panorama": "2025_09_26_05_36_39_00041",
+      "capturedAt": "2025-09-26",
+      "cameraDistM": 42.7,
+      "obliquityDeg": 1,
+      "foliage": 0.0612,
+      "washedOut": 0.0887,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w04-359",
+      "bearing": 359,
+      "lengthM": 20,
+      "crop": "0363100012116511/w04-359.jpg",
+      "panorama": "TMX7316060226-000470_pano_0000_001978",
+      "capturedAt": "2019-11-07",
+      "cameraDistM": 16.4,
+      "obliquityDeg": 0.9,
+      "foliage": 0.0385,
+      "washedOut": 0.0047,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 277.73,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     }
+    ],
+    "usableForMeasurement": 3,
+    "evidenceNote": "3 of 4 archived walls pass measure.ts's limits (post-build, foliage < 25%, washed-out < 35%, obliquity <= 45 deg)"
+   },
+   "status": "held-budget",
+   "coveredBy": [],
+   "classification": "TRACK_M",
+   "reason": "450 m2, 14 storeys, 1970, 45.7 m, 85 m frontage, 7.5 m off the road axis, south side; woonfunctie/bijeenkomstfunctie/overige gebruiksfunctie; flat/low roof; 2 usable panorama wall(s)",
+   "anchor": [
+    4.8548102,
+    52.3855808
+   ]
+  },
+  {
+   "pand": "0363100012250970",
+   "addresses": [
+    "Haarlemmerweg 518A",
+    "Haarlemmerweg 518B",
+    "Haarlemmerweg 518C",
+    "Haarlemmerweg 518D",
+    "Haarlemmerweg 518E",
+    "Haarlemmerweg 518F",
+    "Haarlemmerweg 520A",
+    "Haarlemmerweg 520B",
+    "Haarlemmerweg 520C",
+    "Haarlemmerweg 522",
+    "Haarlemmerweg 524",
+    "Haarlemmerweg 526",
+    "Haarlemmerweg 528",
+    "Haarlemmerweg 530",
+    "Haarlemmerweg 532",
+    "Haarlemmerweg 534",
+    "Haarlemmerweg 536",
+    "Haarlemmerweg 538",
+    "Haarlemmerweg 540",
+    "Haarlemmerweg 542",
+    "Haarlemmerweg 544",
+    "Haarlemmerweg 546",
+    "Haarlemmerweg 548",
+    "Haarlemmerweg 550",
+    "Haarlemmerweg 552",
+    "Haarlemmerweg 554",
+    "Haarlemmerweg 556",
+    "Haarlemmerweg 558",
+    "Haarlemmerweg 560",
+    "Haarlemmerweg 562",
+    "Haarlemmerweg 564",
+    "Haarlemmerweg 566",
+    "Haarlemmerweg 568",
+    "Haarlemmerweg 570",
+    "Haarlemmerweg 572",
+    "Haarlemmerweg 574",
+    "Haarlemmerweg 576",
+    "Haarlemmerweg 578",
+    "Haarlemmerweg 580",
+    "Haarlemmerweg 582",
+    "Haarlemmerweg 584",
+    "Haarlemmerweg 586",
+    "Haarlemmerweg 588",
+    "Haarlemmerweg 590",
+    "Haarlemmerweg 592",
+    "Haarlemmerweg 594",
+    "Haarlemmerweg 596",
+    "Haarlemmerweg 598",
+    "Haarlemmerweg 600",
+    "Haarlemmerweg 602",
+    "Haarlemmerweg 604",
+    "Haarlemmerweg 606",
+    "Haarlemmerweg 608",
+    "Haarlemmerweg 610",
+    "Haarlemmerweg 612",
+    "Haarlemmerweg 614",
+    "Haarlemmerweg 616",
+    "Haarlemmerweg 618",
+    "Haarlemmerweg 620",
+    "Haarlemmerweg 622",
+    "Haarlemmerweg 624",
+    "Haarlemmerweg 626",
+    "Haarlemmerweg 628",
+    "Haarlemmerweg 630",
+    "Haarlemmerweg 632",
+    "Haarlemmerweg 634",
+    "Haarlemmerweg 636",
+    "Haarlemmerweg 638",
+    "Haarlemmerweg 640",
+    "Haarlemmerweg 642",
+    "Haarlemmerweg 644",
+    "Haarlemmerweg 646",
+    "Haarlemmerweg 648",
+    "Haarlemmerweg 650",
+    "Haarlemmerweg 652",
+    "Haarlemmerweg 654",
+    "Haarlemmerweg 656",
+    "Haarlemmerweg 658",
+    "Haarlemmerweg 660",
+    "Haarlemmerweg 662",
+    "Haarlemmerweg 664",
+    "Haarlemmerweg 666",
+    "Haarlemmerweg 668",
+    "Haarlemmerweg 670",
+    "Haarlemmerweg 672",
+    "Haarlemmerweg 674",
+    "Haarlemmerweg 676",
+    "Haarlemmerweg 678",
+    "Haarlemmerweg 680",
+    "Haarlemmerweg 682",
+    "Haarlemmerweg 684",
+    "Haarlemmerweg 686",
+    "Haarlemmerweg 688",
+    "Haarlemmerweg 690",
+    "Haarlemmerweg 692",
+    "Haarlemmerweg 694",
+    "Haarlemmerweg 696",
+    "Haarlemmerweg 698",
+    "Haarlemmerweg 700",
+    "Haarlemmerweg 702",
+    "Haarlemmerweg 704",
+    "Haarlemmerweg 706",
+    "Haarlemmerweg 708",
+    "Haarlemmerweg 710",
+    "Haarlemmerweg 712",
+    "Haarlemmerweg 714",
+    "Haarlemmerweg 716",
+    "Haarlemmerweg 718",
+    "Haarlemmerweg 720",
+    "Haarlemmerweg 722",
+    "Haarlemmerweg 724",
+    "Haarlemmerweg 726",
+    "Haarlemmerweg 728",
+    "Haarlemmerweg 730",
+    "Haarlemmerweg 732",
+    "Haarlemmerweg 734",
+    "Haarlemmerweg 736",
+    "Haarlemmerweg 738",
+    "Haarlemmerweg 740",
+    "Haarlemmerweg 742",
+    "Haarlemmerweg 744",
+    "Haarlemmerweg 746",
+    "Haarlemmerweg 748",
+    "Haarlemmerweg 750",
+    "Haarlemmerweg 752",
+    "Haarlemmerweg 754",
+    "Haarlemmerweg 756",
+    "Haarlemmerweg 758",
+    "Haarlemmerweg 760",
+    "Haarlemmerweg 762",
+    "Haarlemmerweg 764",
+    "Haarlemmerweg 766",
+    "Haarlemmerweg 768",
+    "Haarlemmerweg 770",
+    "Haarlemmerweg 772",
+    "Haarlemmerweg 774",
+    "Haarlemmerweg 776"
+   ],
+   "addressCount": 137,
+   "side": "north",
+   "footprintM2": 905,
+   "heightM": 41.7,
+   "roofMaxM": 43.2,
+   "storeys": 13,
+   "groundLevelM": -0.25,
+   "roofType": "slanted",
+   "builtYear": 2023,
+   "archetype": "tower",
+   "uses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "streetWalls": 18,
+   "corridorFrontageM": 47.3,
+   "roadDistanceM": 3.6,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2022-12-06"
+    ],
+    "panoramas": [
+     "TMX7316010203-002829_pano_0007_000166"
+    ],
+    "maxDistM": 34.6
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "TRACK_M",
+   "reason": "905 m2, 13 storeys, 2023, 41.7 m, 47.3 m frontage, 3.6 m off the road axis, north side; overige gebruiksfunctie/woonfunctie; flat/low roof; 1 usable panorama wall(s)",
+   "anchor": [
+    4.8539742,
+    52.3855634
+   ]
+  },
+  {
+   "pand": "0363100012250971",
+   "addresses": [
+    "Haarlemmerweg 778",
+    "Haarlemmerweg 780",
+    "Haarlemmerweg 782",
+    "Haarlemmerweg 784",
+    "Haarlemmerweg 786",
+    "Haarlemmerweg 788",
+    "Haarlemmerweg 790",
+    "Haarlemmerweg 792",
+    "Haarlemmerweg 794",
+    "Haarlemmerweg 796",
+    "Haarlemmerweg 798",
+    "Haarlemmerweg 800",
+    "Haarlemmerweg 802",
+    "Haarlemmerweg 804",
+    "Haarlemmerweg 806",
+    "Haarlemmerweg 808",
+    "Haarlemmerweg 810",
+    "Haarlemmerweg 812",
+    "Haarlemmerweg 814",
+    "Haarlemmerweg 816",
+    "Haarlemmerweg 818",
+    "Haarlemmerweg 820",
+    "Haarlemmerweg 822",
+    "Haarlemmerweg 824",
+    "Haarlemmerweg 826",
+    "Haarlemmerweg 828",
+    "Haarlemmerweg 830",
+    "Haarlemmerweg 832",
+    "Haarlemmerweg 834",
+    "Haarlemmerweg 836",
+    "Haarlemmerweg 838",
+    "Haarlemmerweg 840",
+    "Haarlemmerweg 842",
+    "Haarlemmerweg 844",
+    "Haarlemmerweg 846",
+    "Haarlemmerweg 848",
+    "Haarlemmerweg 850",
+    "Haarlemmerweg 852",
+    "Haarlemmerweg 854",
+    "Haarlemmerweg 856",
+    "Haarlemmerweg 858",
+    "Haarlemmerweg 860",
+    "Haarlemmerweg 862",
+    "Haarlemmerweg 864",
+    "Haarlemmerweg 866",
+    "Haarlemmerweg 868",
+    "Haarlemmerweg 870",
+    "Haarlemmerweg 872",
+    "Haarlemmerweg 874",
+    "Haarlemmerweg 876",
+    "Haarlemmerweg 878",
+    "Haarlemmerweg 880",
+    "Haarlemmerweg 882",
+    "Haarlemmerweg 884",
+    "Haarlemmerweg 886",
+    "Haarlemmerweg 888",
+    "Haarlemmerweg 890",
+    "Haarlemmerweg 892",
+    "Haarlemmerweg 894",
+    "Haarlemmerweg 896",
+    "Haarlemmerweg 898",
+    "Haarlemmerweg 900",
+    "Haarlemmerweg 902",
+    "Haarlemmerweg 904",
+    "Haarlemmerweg 906",
+    "Haarlemmerweg 908",
+    "Haarlemmerweg 910",
+    "Haarlemmerweg 912",
+    "Haarlemmerweg 914",
+    "Haarlemmerweg 916",
+    "Haarlemmerweg 918",
+    "Haarlemmerweg 920",
+    "Haarlemmerweg 922",
+    "Haarlemmerweg 924",
+    "Haarlemmerweg 926",
+    "Haarlemmerweg 928",
+    "Haarlemmerweg 930",
+    "Haarlemmerweg 932",
+    "Haarlemmerweg 934",
+    "Haarlemmerweg 936",
+    "Haarlemmerweg 938"
+   ],
+   "addressCount": 81,
+   "side": "north",
+   "footprintM2": 749,
+   "heightM": 36,
+   "roofMaxM": 36.3,
+   "storeys": 12,
+   "groundLevelM": -0.41,
+   "roofType": "multiple horizontal",
+   "builtYear": 2023,
+   "archetype": "tower",
+   "uses": [
+    "woonfunctie",
+    "bijeenkomstfunctie"
+   ],
+   "streetWalls": 6,
+   "corridorFrontageM": 56.2,
+   "roadDistanceM": 7.7,
+   "panorama": {
+    "sampled": true,
+    "walls": 4,
+    "corridorWalls": 4,
+    "usable": 3,
+    "usableCorridor": 3,
+    "dates": [
+     "2019-01-07",
+     "2022-12-06",
+     "2025-07-01"
+    ],
+    "panoramas": [
+     "TMX7316010203-002829_pano_0007_000155",
+     "TMX7316010203-001040_pano_0003_000104",
+     "recording_2025-07-01_09-03-48_00786"
+    ],
+    "maxDistM": 34.9,
+    "wallEvidence": [
+     {
+      "wall": "w01-269",
+      "bearing": 269,
+      "lengthM": 34.4,
+      "crop": "0363100012250971/w01-269.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_00768",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 56,
+      "obliquityDeg": 38,
+      "foliage": 0.3665,
+      "washedOut": 0.0576,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": false
+     },
+     {
+      "wall": "w02-89",
+      "bearing": 89,
+      "lengthM": 21.9,
+      "crop": "0363100012250971/w02-89.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_00792",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 57,
+      "obliquityDeg": 22.6,
+      "foliage": 0.5298,
+      "washedOut": 0.0151,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": false
+     },
+     {
+      "wall": "w03-359",
+      "bearing": 359,
+      "lengthM": 21.8,
+      "crop": "0363100012250971/w03-359.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_00779",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 9.4,
+      "obliquityDeg": 3.6,
+      "foliage": 0.461,
+      "washedOut": 0.0414,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": false
+     },
+     {
+      "wall": "w04-89",
+      "bearing": 89,
+      "lengthM": 12.5,
+      "crop": "0363100012250971/w04-89.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_00786",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 24.5,
+      "obliquityDeg": 21.1,
+      "foliage": 0.6294,
+      "washedOut": 0.012,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": false
+     }
+    ],
+    "usableForMeasurement": 0,
+    "evidenceNote": "0 of 4 archived walls pass measure.ts's limits (post-build, foliage < 25%, washed-out < 35%, obliquity <= 45 deg)"
+   },
+   "status": "blocked-no-evidence",
+   "coveredBy": [],
+   "classification": "TRACK_M",
+   "reason": "749 m2, 12 storeys, 2023, 36 m, 56.2 m frontage, 7.7 m off the road axis, north side; woonfunctie/bijeenkomstfunctie; flat/low roof; 3 usable panorama wall(s)",
+   "anchor": [
+    4.8533217,
+    52.385742
+   ]
+  },
+  {
+   "pand": "0363100012066028",
+   "addresses": [
+    "Molenwerf 1"
+   ],
+   "addressCount": 1,
+   "side": "north",
+   "footprintM2": 2686,
+   "heightM": 20,
+   "roofMaxM": 32,
+   "storeys": 1,
+   "groundLevelM": 0.58,
+   "roofType": "slanted",
+   "builtYear": 1980,
+   "archetype": "modern-block",
+   "uses": [
+    "bijeenkomstfunctie,logiesfunctie"
+   ],
+   "streetWalls": 24,
+   "corridorFrontageM": 51,
+   "roadDistanceM": 29.4,
+   "panorama": {
+    "sampled": true,
+    "walls": 4,
+    "corridorWalls": 0,
+    "usable": 4,
+    "usableCorridor": 0,
+    "dates": [
+     "2022-05-02",
+     "2024-09-09",
+     "2025-07-01"
+    ],
+    "panoramas": [
+     "recording_2024-09-09_11-06-52_00668",
+     "TMX7316010203-002554_pano_0000_004009",
+     "recording_2025-07-01_09-03-48_01377",
+     "recording_2025-07-01_09-03-48_01361"
+    ],
+    "maxDistM": 34.8,
+    "wallEvidence": [
+     {
+      "wall": "w01-358",
+      "bearing": 358,
+      "lengthM": 32.5,
+      "crop": "0363100012066028/w01-358.jpg",
+      "panorama": "recording_2024-09-09_11-06-52_00668",
+      "capturedAt": "2024-09-09",
+      "cameraDistM": 12.4,
+      "obliquityDeg": 1.1,
+      "foliage": 0.3439,
+      "washedOut": 0.0173,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": false
+     },
+     {
+      "wall": "w02-88",
+      "bearing": 88,
+      "lengthM": 32.4,
+      "crop": "0363100012066028/w02-88.jpg",
+      "panorama": "TMX7316010203-002554_pano_0000_004009",
+      "capturedAt": "2022-05-02",
+      "cameraDistM": 20,
+      "obliquityDeg": 1.2,
+      "foliage": 0.0917,
+      "washedOut": 0.422,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 176.15,
+      "postDatesBuild": true,
+      "usableForMeasurement": false
+     },
+     {
+      "wall": "w03-358",
+      "bearing": 358,
+      "lengthM": 21.7,
+      "crop": "0363100012066028/w03-358.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_01377",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 12,
+      "obliquityDeg": 2.8,
+      "foliage": 0.343,
+      "washedOut": 0.002,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": false
+     },
+     {
+      "wall": "w04-268",
+      "bearing": 268,
+      "lengthM": 19.9,
+      "crop": "0363100012066028/w04-268.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_01355",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 51.6,
+      "obliquityDeg": 14.8,
+      "foliage": 0.0986,
+      "washedOut": 0.0002,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w05-178",
+      "bearing": 178,
+      "lengthM": 19.8,
+      "crop": "0363100012066028/w05-178.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_01398",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 24.2,
+      "obliquityDeg": 36.6,
+      "foliage": 0.0142,
+      "washedOut": 0.0609,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w06-178",
+      "bearing": 178,
+      "lengthM": 16.3,
+      "crop": "0363100012066028/w06-178.jpg",
+      "panorama": "recording_2024-12-23_09-14-39_09581",
+      "capturedAt": "2024-12-23",
+      "cameraDistM": 41,
+      "obliquityDeg": 0.9,
+      "foliage": 0.0534,
+      "washedOut": 0.2691,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w07-268",
+      "bearing": 268,
+      "lengthM": 11.7,
+      "crop": "0363100012066028/w07-268.jpg",
+      "panorama": "TMX7316010203-002491_pano_0004_000028",
+      "capturedAt": "2022-03-29",
+      "cameraDistM": 59.4,
+      "obliquityDeg": 44,
+      "foliage": 0.0412,
+      "washedOut": 0.0449,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 86.18,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w08-178",
+      "bearing": 178,
+      "lengthM": 11.3,
+      "crop": "0363100012066028/w08-178.jpg",
+      "panorama": "2025_09_26_05_36_39_00147",
+      "capturedAt": "2025-09-26",
+      "cameraDistM": 54.1,
+      "obliquityDeg": 1,
+      "foliage": 0.0073,
+      "washedOut": 0.1138,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w09-178",
+      "bearing": 178,
+      "lengthM": 10.8,
+      "crop": "0363100012066028/w09-178.jpg",
+      "panorama": "recording_2024-12-23_09-14-39_09578",
+      "capturedAt": "2024-12-23",
+      "cameraDistM": 46.5,
+      "obliquityDeg": 0.6,
+      "foliage": 0.055,
+      "washedOut": 0.347,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w10-268",
+      "bearing": 268,
+      "lengthM": 10.4,
+      "crop": "0363100012066028/w10-268.jpg",
+      "panorama": "TMX7316010203-002491_pano_0004_000022",
+      "capturedAt": "2022-03-29",
+      "cameraDistM": 59.2,
+      "obliquityDeg": 31.2,
+      "foliage": 0.0241,
+      "washedOut": 0.0109,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 86.7,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w11-178",
+      "bearing": 178,
+      "lengthM": 10.3,
+      "crop": "0363100012066028/w11-178.jpg",
+      "panorama": "2025_09_26_05_36_39_00149",
+      "capturedAt": "2025-09-26",
+      "cameraDistM": 55.6,
+      "obliquityDeg": 1.6,
+      "foliage": 0.0118,
+      "washedOut": 0.2359,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w12-358",
+      "bearing": 358,
+      "lengthM": 9.9,
+      "crop": "0363100012066028/w12-358.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_01374",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 19.4,
+      "obliquityDeg": 1.7,
+      "foliage": 0.0691,
+      "washedOut": 0.0005,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     }
+    ],
+    "usableForMeasurement": 9,
+    "evidenceNote": "9 of 12 archived walls pass measure.ts's limits (post-build, foliage < 25%, washed-out < 35%, obliquity <= 45 deg)"
+   },
+   "status": "held-gates",
+   "coveredBy": [],
+   "classification": "TRACK_M",
+   "reason": "2686 m2, 1 storeys, 1980, 20 m, 51 m frontage, 29.4 m off the road axis, north side; bijeenkomstfunctie,logiesfunctie; pitched roof; 4 usable panorama wall(s)",
+   "anchor": [
+    4.8467632,
+    52.3855072
+   ]
+  },
+  {
+   "pand": "0363100012250972",
+   "addresses": [
+    "Haarlemmerweg 940",
+    "Haarlemmerweg 942",
+    "Haarlemmerweg 944",
+    "Haarlemmerweg 946",
+    "Haarlemmerweg 948",
+    "Haarlemmerweg 950",
+    "Haarlemmerweg 952",
+    "Haarlemmerweg 954",
+    "Haarlemmerweg 956",
+    "Haarlemmerweg 958",
+    "Haarlemmerweg 960",
+    "Haarlemmerweg 962",
+    "Haarlemmerweg 964",
+    "Haarlemmerweg 966",
+    "Haarlemmerweg 968",
+    "Haarlemmerweg 970",
+    "Haarlemmerweg 972",
+    "Haarlemmerweg 974",
+    "Haarlemmerweg 976",
+    "Haarlemmerweg 978",
+    "Haarlemmerweg 980",
+    "Haarlemmerweg 982",
+    "Haarlemmerweg 984",
+    "Haarlemmerweg 986",
+    "Haarlemmerweg 988",
+    "Haarlemmerweg 990",
+    "Haarlemmerweg 992",
+    "Haarlemmerweg 994",
+    "Haarlemmerweg 996",
+    "Haarlemmerweg 998",
+    "Haarlemmerweg 1000",
+    "Haarlemmerweg 1002",
+    "Haarlemmerweg 1004",
+    "Haarlemmerweg 1006",
+    "Haarlemmerweg 1008",
+    "Haarlemmerweg 1010",
+    "Haarlemmerweg 1012",
+    "Haarlemmerweg 1014",
+    "Haarlemmerweg 1016",
+    "Haarlemmerweg 1018",
+    "Haarlemmerweg 1020",
+    "Haarlemmerweg 1022",
+    "Haarlemmerweg 1024",
+    "Haarlemmerweg 1026",
+    "Haarlemmerweg 1028",
+    "Haarlemmerweg 1030",
+    "Haarlemmerweg 1032",
+    "Haarlemmerweg 1034",
+    "Haarlemmerweg 1036",
+    "Haarlemmerweg 1038",
+    "Haarlemmerweg 1040",
+    "Haarlemmerweg 1042",
+    "Haarlemmerweg 1044",
+    "Haarlemmerweg 1046",
+    "Haarlemmerweg 1048",
+    "Haarlemmerweg 1050",
+    "Haarlemmerweg 1052",
+    "Haarlemmerweg 1054",
+    "Haarlemmerweg 1056",
+    "Haarlemmerweg 1058",
+    "Haarlemmerweg 1060",
+    "Haarlemmerweg 1062",
+    "Haarlemmerweg 1064",
+    "Haarlemmerweg 1066",
+    "Haarlemmerweg 1068",
+    "Haarlemmerweg 1070",
+    "Haarlemmerweg 1072",
+    "Haarlemmerweg 1074",
+    "Haarlemmerweg 1076",
+    "Haarlemmerweg 1078",
+    "Haarlemmerweg 1080",
+    "Haarlemmerweg 1082",
+    "Haarlemmerweg 1084",
+    "Haarlemmerweg 1086",
+    "Haarlemmerweg 1088",
+    "Haarlemmerweg 1090",
+    "Haarlemmerweg 1092",
+    "Haarlemmerweg 1094",
+    "Haarlemmerweg 1096",
+    "Haarlemmerweg 1098",
+    "Haarlemmerweg 1100",
+    "Haarlemmerweg 1102",
+    "Haarlemmerweg 1104",
+    "Haarlemmerweg 1106",
+    "Haarlemmerweg 1108",
+    "Haarlemmerweg 1110",
+    "Haarlemmerweg 1112",
+    "Haarlemmerweg 1114",
+    "Haarlemmerweg 1116",
+    "Haarlemmerweg 1118",
+    "Haarlemmerweg 1120",
+    "Haarlemmerweg 1122",
+    "Haarlemmerweg 1124",
+    "Haarlemmerweg 1126",
+    "Haarlemmerweg 1128",
+    "Haarlemmerweg 1130",
+    "Haarlemmerweg 1132",
+    "Haarlemmerweg 1134",
+    "Haarlemmerweg 1136",
+    "Haarlemmerweg 1138"
+   ],
+   "addressCount": 100,
+   "side": "north",
+   "footprintM2": 802,
+   "heightM": 46.6,
+   "roofMaxM": 48.1,
+   "storeys": 16,
+   "groundLevelM": -0.23,
+   "roofType": "slanted",
+   "builtYear": 2023,
+   "archetype": "tower",
+   "uses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 93.7,
+   "roadDistanceM": 4.6,
+   "panorama": {
+    "sampled": true,
+    "walls": 4,
+    "corridorWalls": 4,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2022-12-06",
+     "2024-09-09"
+    ],
+    "panoramas": [
+     "recording_2024-09-09_11-06-52_00853",
+     "TMX7316010203-002829_pano_0008_000034"
+    ],
+    "maxDistM": 34.6,
+    "wallEvidence": [
+     {
+      "wall": "w02-89",
+      "bearing": 89,
+      "lengthM": 35.5,
+      "crop": "0363100012250972/w02-89.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_00782",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 58.3,
+      "obliquityDeg": 51.6,
+      "foliage": 0.0856,
+      "washedOut": 0.0038,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": false
+     },
+     {
+      "wall": "w03-359",
+      "bearing": 359,
+      "lengthM": 22.6,
+      "crop": "0363100012250972/w03-359.jpg",
+      "panorama": "recording_2025-07-01_09-03-48_00772",
+      "capturedAt": "2025-07-01",
+      "cameraDistM": 35.9,
+      "obliquityDeg": 3.2,
+      "foliage": 0.2063,
+      "washedOut": 0.0203,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": true
+     },
+     {
+      "wall": "w04-179",
+      "bearing": 179,
+      "lengthM": 22.5,
+      "crop": "0363100012250972/w04-179.jpg",
+      "panorama": "2025_09_26_05_36_39_00285",
+      "capturedAt": "2025-09-26",
+      "cameraDistM": 50.8,
+      "obliquityDeg": 0.6,
+      "foliage": 0.2898,
+      "washedOut": 0.3665,
+      "missingFraction": 0,
+      "cameraHeadingDeg": 0,
+      "postDatesBuild": true,
+      "usableForMeasurement": false
+     }
+    ],
+    "usableForMeasurement": 1,
+    "evidenceNote": "1 of 3 archived walls pass measure.ts's limits (post-build, foliage < 25%, washed-out < 35%, obliquity <= 45 deg)"
+   },
+   "status": "held-budget",
+   "coveredBy": [
+    "recipe:haarlemmerweg-940"
+   ],
+   "classification": "ALREADY_MODELLED",
+   "reason": "802 m2, 16 storeys, 2023, 46.6 m, 93.7 m frontage, 4.6 m off the road axis, north side; already covered by recipe:haarlemmerweg-940",
+   "anchor": [
+    4.8528496,
+    52.3855436
+   ]
+  },
+  {
+   "pand": "0363100012148815",
+   "addresses": [
+    "Haarlemmerweg 507",
+    "Haarlemmerweg 509"
+   ],
+   "addressCount": 2,
+   "side": "south",
+   "footprintM2": 281,
+   "heightM": 15.3,
+   "roofMaxM": 17.5,
+   "storeys": 5,
+   "groundLevelM": 0.43,
+   "roofType": "slanted",
+   "builtYear": 1934,
+   "archetype": "school-block",
+   "uses": [
+    "winkelfunctie",
+    "bijeenkomstfunctie,woonfunctie"
+   ],
+   "streetWalls": 8,
+   "corridorFrontageM": 26,
+   "roadDistanceM": 7.2,
+   "panorama": {
+    "sampled": true,
+    "walls": 4,
+    "corridorWalls": 4,
+    "usable": 3,
+    "usableCorridor": 3,
+    "dates": [
+     "2024-11-21",
+     "2025-09-26"
+    ],
+    "panoramas": [
+     "2025_09_26_07_01_39_00947",
+     "terdam_21112024_Track07_Sphere_00019",
+     "2025_09_26_05_36_39_00316"
+    ],
+    "maxDistM": 19.3
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "281 m2, 5 storeys, 1934, 15.3 m, 26 m frontage, 7.2 m off the road axis, south side; winkelfunctie/bijeenkomstfunctie,woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8551663,
+    52.3843789
+   ]
+  },
+  {
+   "pand": "0363100012093859",
+   "addresses": [
+    "Haarlemmerweg 511",
+    "Haarlemmerweg 513-1",
+    "Haarlemmerweg 513-2",
+    "Haarlemmerweg 513-3",
+    "Haarlemmerweg 515-1",
+    "Haarlemmerweg 515-2",
+    "Haarlemmerweg 515-3",
+    "Haarlemmerweg 517"
+   ],
+   "addressCount": 8,
+   "side": "south",
+   "footprintM2": 137,
+   "heightM": 17.3,
+   "roofMaxM": 18,
+   "storeys": 5,
+   "groundLevelM": 0.43,
+   "roofType": "slanted",
+   "builtYear": 1934,
+   "archetype": "school-block",
+   "uses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 12.2,
+   "roadDistanceM": 7.3,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2025-09-26"
+    ],
+    "panoramas": [
+     "2025_09_26_05_36_39_00318"
+    ],
+    "maxDistM": 8.2
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "137 m2, 5 storeys, 1934, 17.3 m, 12.2 m frontage, 7.3 m off the road axis, south side; winkelfunctie/woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8550516,
+    52.384442
+   ]
+  },
+  {
+   "pand": "0363100012105266",
+   "addresses": [
+    "Haarlemmerweg 519",
+    "Haarlemmerweg 521-1",
+    "Haarlemmerweg 521-2",
+    "Haarlemmerweg 521-3",
+    "Haarlemmerweg 523-1",
+    "Haarlemmerweg 523-2",
+    "Haarlemmerweg 523-3",
+    "Haarlemmerweg 525",
+    "Haarlemmerweg 527",
+    "Haarlemmerweg 529-1",
+    "Haarlemmerweg 529-2",
+    "Haarlemmerweg 529-3",
+    "Haarlemmerweg 531-1",
+    "Haarlemmerweg 531-2",
+    "Haarlemmerweg 531-3",
+    "Solebaystraat 84-1",
+    "Solebaystraat 84-2",
+    "Solebaystraat 84-3",
+    "Solebaystraat 84-H",
+    "Solebaystraat 86-1",
+    "Solebaystraat 86-2",
+    "Solebaystraat 86-3",
+    "Solebaystraat 88"
+   ],
+   "addressCount": 23,
+   "side": "south",
+   "footprintM2": 446,
+   "heightM": 15.3,
+   "roofMaxM": 18.5,
+   "storeys": 5,
+   "groundLevelM": 0.42,
+   "roofType": "slanted",
+   "builtYear": 1934,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie",
+    "kantoorfunctie,woonfunctie",
+    "kantoorfunctie",
+    "winkelfunctie,woonfunctie"
+   ],
+   "streetWalls": 9,
+   "corridorFrontageM": 24.6,
+   "roadDistanceM": 7.3,
+   "panorama": {
+    "sampled": true,
+    "walls": 4,
+    "corridorWalls": 4,
+    "usable": 4,
+    "usableCorridor": 4,
+    "dates": [
+     "2016-06-15",
+     "2017-04-21",
+     "2019-04-16",
+     "2022-06-24"
+    ],
+    "panoramas": [
+     "TMX7316010203-000275_pano_0000_001521",
+     "TMX7315080123-000295_pano_0000_000189",
+     "TMX7316010203-002627_pano_0004_000399",
+     "TMX7316010203-001131_pano_0000_000782"
+    ],
+    "maxDistM": 33.8
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "446 m2, 5 storeys, 1934, 15.3 m, 24.6 m frontage, 7.3 m off the road axis, south side; woonfunctie/kantoorfunctie,woonfunctie/kantoorfunctie/winkelfunctie,woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.854728,
+    52.3843735
+   ]
+  },
+  {
+   "pand": "0363100012119323",
+   "addresses": [
+    "Haarlemmerweg 533",
+    "Solebaystraat 101-1",
+    "Solebaystraat 101-2",
+    "Solebaystraat 101-3"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 65,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.58,
+   "roofType": "slanted",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 6.1,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2021-03-24"
+    ],
+    "panoramas": [
+     "TMX7316010203-002058_pano_0000_001482"
+    ],
+    "maxDistM": 14.2
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "65 m2, 5 storeys, 1938, 15.3 m, 6.1 m frontage, 6.1 m off the road axis, south side; winkelfunctie/woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8542053,
+    52.3848432
+   ]
+  },
+  {
+   "pand": "0363100012097824",
+   "addresses": [
+    "Haarlemmerweg 563",
+    "Van Gentstraat 62-1",
+    "Van Gentstraat 62-2",
+    "Van Gentstraat 62-3"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 65,
+   "heightM": 15.4,
+   "roofMaxM": 15.6,
+   "storeys": 5,
+   "groundLevelM": 0.54,
+   "roofType": "horizontal",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 14.5,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track42_Sphere_00051"
+    ],
+    "maxDistM": 9
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "65 m2, 5 storeys, 1936, 15.4 m, 14.5 m frontage, 6 m off the road axis, south side; kantoorfunctie/woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8517504,
+    52.3848038
+   ]
+  },
+  {
+   "pand": "0363100012086599",
+   "addresses": [
+    "Haarlemmerweg 565",
+    "Van Gentstraat 61-1",
+    "Van Gentstraat 61-2",
+    "Van Gentstraat 61-3"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 65,
+   "heightM": 15.4,
+   "roofMaxM": 15.6,
+   "storeys": 5,
+   "groundLevelM": 0.69,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 14.4,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track42_Sphere_00051"
+    ],
+    "maxDistM": 9.5
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "65 m2, 5 storeys, 1936, 15.4 m, 14.4 m frontage, 6 m off the road axis, south side; bijeenkomstfunctie/woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8514312,
+    52.3847988
+   ]
+  },
+  {
+   "pand": "0363100012102782",
+   "addresses": [
+    "Haarlemmerweg 575",
+    "Haarlemmerweg 577-1",
+    "Haarlemmerweg 577-2",
+    "Haarlemmerweg 577-3"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 93,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.55,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 18.7,
+   "roadDistanceM": 6.4,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track41_Sphere_00083"
+    ],
+    "maxDistM": 15.8
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "93 m2, 5 storeys, 1936, 15.3 m, 18.7 m frontage, 6.4 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8504589,
+    52.3847715
+   ]
+  },
+  {
+   "pand": "0363100012087474",
+   "addresses": [
+    "Haarlemmerweg 583",
+    "Haarlemmerweg 585-1",
+    "Haarlemmerweg 585-2",
+    "Haarlemmerweg 585-3"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 84,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.53,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 8.4,
+   "roadDistanceM": 6.4,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2022-12-06"
+    ],
+    "panoramas": [
+     "TMX7316010203-002829_pano_0008_000070"
+    ],
+    "maxDistM": 25
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "84 m2, 5 storeys, 1936, 15.3 m, 8.4 m frontage, 6.4 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.850193,
+    52.3847572
+   ]
+  },
+  {
+   "pand": "0363100012075792",
+   "addresses": [
+    "Haarlemmerweg 595",
+    "Haarlemmerweg 597-1",
+    "Haarlemmerweg 597-2",
+    "Haarlemmerweg 597-3"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 84,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.44,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 8.4,
+   "roadDistanceM": 6.5,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2022-12-06"
+    ],
+    "panoramas": [
+     "TMX7316010203-002829_pano_0008_000075"
+    ],
+    "maxDistM": 25
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "84 m2, 5 storeys, 1936, 15.3 m, 8.4 m frontage, 6.5 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.849822,
+    52.3847512
+   ]
+  },
+  {
+   "pand": "0363100012073103",
+   "addresses": [
+    "Haarlemmerweg 603",
+    "Haarlemmerweg 605-1",
+    "Haarlemmerweg 605-2",
+    "Haarlemmerweg 605-3"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 94,
+   "heightM": 14.7,
+   "roofMaxM": 15.4,
+   "storeys": 4,
+   "groundLevelM": 0.51,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 8.4,
+   "roadDistanceM": 6.5,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2021-03-24",
+     "2025-09-26"
+    ],
+    "panoramas": [
+     "2025_09_26_05_36_39_00104",
+     "TMX7316010203-002058_pano_0000_001281"
+    ],
+    "maxDistM": 34.8
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "94 m2, 4 storeys, 1936, 14.7 m, 8.4 m frontage, 6.5 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8495344,
+    52.3847222
+   ]
+  },
+  {
+   "pand": "0363100012064039",
+   "addresses": [
+    "Haarlemmerweg 611",
+    "Haarlemmerweg 613-1",
+    "Haarlemmerweg 613-2",
+    "Haarlemmerweg 613-3"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 65,
+   "heightM": 15.9,
+   "roofMaxM": 17.8,
+   "storeys": 5,
+   "groundLevelM": 0.52,
+   "roofType": "slanted",
+   "builtYear": 1937,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 7.5,
+   "roadDistanceM": 6.5,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2025-06-18",
+     "2025-09-26"
+    ],
+    "panoramas": [
+     "recording_2025-06-18_07-44-47_00908",
+     "2025_09_26_05_36_39_00237"
+    ],
+    "maxDistM": 23
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "65 m2, 5 storeys, 1937, 15.9 m, 7.5 m frontage, 6.5 m off the road axis, south side; woonfunctie/kantoorfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8489952,
+    52.3847309
+   ]
+  },
+  {
+   "pand": "0363100012083564",
+   "addresses": [
+    "Haarlemmerweg 615",
+    "Haarlemmerweg 617-1",
+    "Haarlemmerweg 617-2",
+    "Haarlemmerweg 617-3"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 67,
+   "heightM": 15.8,
+   "roofMaxM": 17.8,
+   "storeys": 5,
+   "groundLevelM": 0.48,
+   "roofType": "slanted",
+   "builtYear": 1937,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 7.7,
+   "roadDistanceM": 6.5,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2022-01-04"
+    ],
+    "panoramas": [
+     "TMX7316010203-002386_pano_0000_000257"
+    ],
+    "maxDistM": 19.7
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "67 m2, 5 storeys, 1937, 15.8 m, 7.7 m frontage, 6.5 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8488861,
+    52.3847209
+   ]
+  },
+  {
+   "pand": "0363100012134867",
+   "addresses": [
+    "Haarlemmerweg 645"
+   ],
+   "addressCount": 1,
+   "side": "south",
+   "footprintM2": 249,
+   "heightM": 6.9,
+   "roofMaxM": 7.8,
+   "storeys": 1,
+   "groundLevelM": 0.63,
+   "roofType": "slanted",
+   "builtYear": 1981,
+   "archetype": "modern-house",
+   "uses": [
+    "bijeenkomstfunctie"
+   ],
+   "streetWalls": 9,
+   "corridorFrontageM": 28.6,
+   "roadDistanceM": 6.3,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-11-21"
+    ],
+    "panoramas": [
+     "terdam_21112024_Track03_Sphere_00020"
+    ],
+    "maxDistM": 18.8
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "249 m2, 1 storeys, 1981, 6.9 m, 28.6 m frontage, 6.3 m off the road axis, south side; bijeenkomstfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8484337,
+    52.3847025
+   ]
+  },
+  {
+   "pand": "0363100012570124",
+   "addresses": [
+    "Haarlemmerweg 1146A",
+    "Haarlemmerweg 1146B",
+    "Haarlemmerweg 1146C",
+    "Haarlemmerweg 1146D",
+    "Haarlemmerweg 1146E",
+    "Haarlemmerweg 1146F",
+    "Haarlemmerweg 1146G",
+    "Haarlemmerweg 1146H",
+    "Haarlemmerweg 1146K",
+    "Haarlemmerweg 1146L",
+    "Haarlemmerweg 1146M",
+    "Haarlemmerweg 1146N",
+    "Haarlemmerweg 1146P",
+    "Haarlemmerweg 1146R",
+    "Haarlemmerweg 1146S",
+    "Haarlemmerweg 1146T",
+    "Haarlemmerweg 1146U",
+    "Haarlemmerweg 1146V",
+    "Haarlemmerweg 1146W",
+    "Haarlemmerweg 1146X",
+    "Haarlemmerweg 1148A",
+    "Haarlemmerweg 1148B",
+    "Haarlemmerweg 1148C",
+    "Haarlemmerweg 1148D",
+    "Haarlemmerweg 1148E",
+    "Haarlemmerweg 1148F",
+    "Haarlemmerweg 1148G",
+    "Haarlemmerweg 1148H",
+    "Haarlemmerweg 1148K",
+    "Haarlemmerweg 1148L",
+    "Haarlemmerweg 1148M",
+    "Haarlemmerweg 1148N",
+    "Haarlemmerweg 1148P",
+    "Haarlemmerweg 1148R",
+    "Haarlemmerweg 1148S",
+    "Haarlemmerweg 1148T",
+    "Haarlemmerweg 1148U",
+    "Haarlemmerweg 1148V",
+    "Haarlemmerweg 1148W",
+    "Haarlemmerweg 1148X",
+    "Haarlemmerweg 1150A",
+    "Haarlemmerweg 1150B",
+    "Haarlemmerweg 1150C",
+    "Haarlemmerweg 1150D",
+    "Haarlemmerweg 1150E",
+    "Haarlemmerweg 1150F",
+    "Haarlemmerweg 1150G",
+    "Haarlemmerweg 1150H",
+    "Haarlemmerweg 1150K",
+    "Haarlemmerweg 1150L",
+    "Haarlemmerweg 1150M",
+    "Haarlemmerweg 1150N",
+    "Haarlemmerweg 1150P",
+    "Haarlemmerweg 1150R",
+    "Haarlemmerweg 1150S",
+    "Haarlemmerweg 1150T",
+    "Haarlemmerweg 1150U",
+    "Haarlemmerweg 1150V",
+    "Haarlemmerweg 1150W",
+    "Haarlemmerweg 1150X"
+   ],
+   "addressCount": 60,
+   "side": "north",
+   "footprintM2": 437,
+   "heightM": 3.2,
+   "roofMaxM": 3.4,
+   "storeys": 4,
+   "groundLevelM": -0.35,
+   "roofType": "slanted",
+   "builtYear": 2024,
+   "archetype": "modern-house",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 11,
+   "corridorFrontageM": 24.4,
+   "roadDistanceM": 6.6,
+   "panorama": {
+    "sampled": true,
+    "walls": 3,
+    "corridorWalls": 3,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2024-09-09"
+    ],
+    "panoramas": [
+     "recording_2024-09-09_11-06-52_00846",
+     "recording_2024-09-09_11-06-52_00853"
+    ],
+    "maxDistM": 34.7
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "437 m2, 4 storeys, 2024, 3.2 m, 24.4 m frontage, 6.6 m off the road axis, north side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8523513,
+    52.3857698
+   ]
+  },
+  {
+   "pand": "0363100012093724",
+   "addresses": [
+    "Haarlemmerweg 535-1",
+    "Haarlemmerweg 535-2",
+    "Haarlemmerweg 535-3",
+    "Haarlemmerweg 535-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 82,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 4,
+   "groundLevelM": 0.5,
+   "roofType": "slanted",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 7.4,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2019-04-16",
+     "2022-01-04"
+    ],
+    "panoramas": [
+     "TMX7316010203-002386_pano_0000_000328",
+     "TMX7316010203-001131_pano_0000_000776"
+    ],
+    "maxDistM": 34.6
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "82 m2, 4 storeys, 1938, 15.3 m, 7.4 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8540894,
+    52.3847999
+   ]
+  },
+  {
+   "pand": "0363100012073402",
+   "addresses": [
+    "Haarlemmerweg 537-1",
+    "Haarlemmerweg 537-2",
+    "Haarlemmerweg 537-3",
+    "Haarlemmerweg 537-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 73,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.48,
+   "roofType": "slanted",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 7.3,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-09-11"
+    ],
+    "panoramas": [
+     "recording_2024-09-11_07-28-02_01251"
+    ],
+    "maxDistM": 18.7
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "73 m2, 5 storeys, 1938, 15.3 m, 7.3 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8539804,
+    52.3848206
+   ]
+  },
+  {
+   "pand": "0363100012072689",
+   "addresses": [
+    "Haarlemmerweg 539-1",
+    "Haarlemmerweg 539-2",
+    "Haarlemmerweg 539-3",
+    "Haarlemmerweg 539-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 73,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.45,
+   "roofType": "multiple horizontal",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 7.3,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2022-01-04",
+     "2022-06-24"
+    ],
+    "panoramas": [
+     "TMX7316010203-002627_pano_0004_000478",
+     "TMX7316010203-002386_pano_0000_000325"
+    ],
+    "maxDistM": 34.3
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "73 m2, 5 storeys, 1938, 15.3 m, 7.3 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8538724,
+    52.3848186
+   ]
+  },
+  {
+   "pand": "0363100012084795",
+   "addresses": [
+    "Haarlemmerweg 541-1",
+    "Haarlemmerweg 541-2",
+    "Haarlemmerweg 541-3",
+    "Haarlemmerweg 541-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 82,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.47,
+   "roofType": "slanted",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 7.4,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2022-06-24",
+     "2024-09-11"
+    ],
+    "panoramas": [
+     "recording_2024-09-11_07-28-02_01248",
+     "TMX7316010203-002627_pano_0004_000479"
+    ],
+    "maxDistM": 33.5
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "82 m2, 5 storeys, 1938, 15.3 m, 7.4 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8537591,
+    52.3847943
+   ]
+  },
+  {
+   "pand": "0363100012134788",
+   "addresses": [
+    "Haarlemmerweg 545-1",
+    "Haarlemmerweg 545-2",
+    "Haarlemmerweg 545-3",
+    "Haarlemmerweg 545-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 82,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.51,
+   "roofType": "slanted",
+   "builtYear": 1937,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 7.4,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2020-05-14",
+     "2025-06-18"
+    ],
+    "panoramas": [
+     "recording_2025-06-18_07-44-47_00965",
+     "TMX7316010203-001714_pano_0000_003120"
+    ],
+    "maxDistM": 34.7
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "82 m2, 5 storeys, 1937, 15.3 m, 7.4 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8531796,
+    52.3847849
+   ]
+  },
+  {
+   "pand": "0363100012114807",
+   "addresses": [
+    "Haarlemmerweg 547-1",
+    "Haarlemmerweg 547-2",
+    "Haarlemmerweg 547-3",
+    "Haarlemmerweg 547-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 73,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.49,
+   "roofType": "slanted",
+   "builtYear": 1937,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 7.3,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2018-06-20",
+     "2020-05-08"
+    ],
+    "panoramas": [
+     "TMX7316010203-000798_pano_0000_000420",
+     "TMX7316010203-001700_pano_0000_003874"
+    ],
+    "maxDistM": 34.2
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "73 m2, 5 storeys, 1937, 15.3 m, 7.3 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8530704,
+    52.3848056
+   ]
+  },
+  {
+   "pand": "0363100012116910",
+   "addresses": [
+    "Haarlemmerweg 549-1",
+    "Haarlemmerweg 549-2",
+    "Haarlemmerweg 549-3",
+    "Haarlemmerweg 549-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 73,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.48,
+   "roofType": "slanted",
+   "builtYear": 1937,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 7.3,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2025-06-18"
+    ],
+    "panoramas": [
+     "recording_2025-06-18_07-44-47_00962"
+    ],
+    "maxDistM": 21.2
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "73 m2, 5 storeys, 1937, 15.3 m, 7.3 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8529624,
+    52.3848036
+   ]
+  },
+  {
+   "pand": "0363100012144541",
+   "addresses": [
+    "Haarlemmerweg 551-1",
+    "Haarlemmerweg 551-2",
+    "Haarlemmerweg 551-3",
+    "Haarlemmerweg 551-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 82,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.5,
+   "roofType": "slanted",
+   "builtYear": 1937,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 7.4,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2020-05-08",
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "TMX7316010203-001700_pano_0000_003871",
+     "MS_26112024_845_Track45_Sphere_00023"
+    ],
+    "maxDistM": 34
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "82 m2, 5 storeys, 1937, 15.3 m, 7.4 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8528491,
+    52.3847791
+   ]
+  },
+  {
+   "pand": "0363100012120419",
+   "addresses": [
+    "Haarlemmerweg 555-1",
+    "Haarlemmerweg 555-2",
+    "Haarlemmerweg 555-3",
+    "Haarlemmerweg 555-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 80,
+   "heightM": 15.4,
+   "roofMaxM": 15.6,
+   "storeys": 5,
+   "groundLevelM": 0.52,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 7.2,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2019-04-16",
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track47_Sphere_00065",
+     "TMX7316010203-001131_pano_0000_000364"
+    ],
+    "maxDistM": 24.5
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "80 m2, 5 storeys, 1936, 15.4 m, 7.2 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8522107,
+    52.3847691
+   ]
+  },
+  {
+   "pand": "0363100012103066",
+   "addresses": [
+    "Haarlemmerweg 557-1",
+    "Haarlemmerweg 557-2",
+    "Haarlemmerweg 557-3",
+    "Haarlemmerweg 557-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 72,
+   "heightM": 15.4,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.52,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 7.3,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2018-06-20",
+     "2024-11-21"
+    ],
+    "panoramas": [
+     "TMX7316010203-000798_pano_0000_000393",
+     "terdam_21112024_Track03_Sphere_00069"
+    ],
+    "maxDistM": 34.7
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "72 m2, 5 storeys, 1936, 15.4 m, 7.3 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8521038,
+    52.3847896
+   ]
+  },
+  {
+   "pand": "0363100012144993",
+   "addresses": [
+    "Haarlemmerweg 559-1",
+    "Haarlemmerweg 559-2",
+    "Haarlemmerweg 559-3",
+    "Haarlemmerweg 559-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 71,
+   "heightM": 15.4,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.57,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 7.2,
+   "roadDistanceM": 6.1,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2024-09-11",
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track42_Sphere_00046",
+     "recording_2024-09-11_07-28-02_01224"
+    ],
+    "maxDistM": 34.5
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "71 m2, 5 storeys, 1936, 15.4 m, 7.2 m frontage, 6.1 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8519972,
+    52.3847876
+   ]
+  },
+  {
+   "pand": "0363100012114729",
+   "addresses": [
+    "Haarlemmerweg 561-1",
+    "Haarlemmerweg 561-2",
+    "Haarlemmerweg 561-3",
+    "Haarlemmerweg 561-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 80,
+   "heightM": 15.4,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.56,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 7.2,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2020-05-08",
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "TMX7316010203-001700_pano_0000_003858",
+     "MS_26112024_845_Track42_Sphere_00045"
+    ],
+    "maxDistM": 34.1
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "80 m2, 5 storeys, 1936, 15.4 m, 7.2 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8518866,
+    52.3847634
+   ]
+  },
+  {
+   "pand": "0363100012126143",
+   "addresses": [
+    "Haarlemmerweg 567-1",
+    "Haarlemmerweg 567-2",
+    "Haarlemmerweg 567-3",
+    "Haarlemmerweg 567-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 80,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.61,
+   "roofType": "multiple horizontal",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 7.2,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2022-06-24",
+     "2024-11-21"
+    ],
+    "panoramas": [
+     "terdam_21112024_Track03_Sphere_00058",
+     "TMX7316010203-002627_pano_0004_000268"
+    ],
+    "maxDistM": 34.7
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "80 m2, 5 storeys, 1936, 15.3 m, 7.2 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8513077,
+    52.3847541
+   ]
+  },
+  {
+   "pand": "0363100012142797",
+   "addresses": [
+    "Haarlemmerweg 569-1",
+    "Haarlemmerweg 569-2",
+    "Haarlemmerweg 569-3",
+    "Haarlemmerweg 569-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 72,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.55,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 7.3,
+   "roadDistanceM": 6.1,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2025-06-18",
+     "2025-09-26"
+    ],
+    "panoramas": [
+     "2025_09_26_05_36_39_00505",
+     "recording_2025-06-18_07-44-47_00938"
+    ],
+    "maxDistM": 34.5
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "72 m2, 5 storeys, 1936, 15.3 m, 7.3 m frontage, 6.1 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8512008,
+    52.3847746
+   ]
+  },
+  {
+   "pand": "0363100012110767",
+   "addresses": [
+    "Haarlemmerweg 571-1",
+    "Haarlemmerweg 571-2",
+    "Haarlemmerweg 571-3",
+    "Haarlemmerweg 571-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 71,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.54,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 7.2,
+   "roadDistanceM": 6.2,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2022-12-12",
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track41_Sphere_00078",
+     "TMX7316010203-002850_pano_0010_000086"
+    ],
+    "maxDistM": 34
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "71 m2, 5 storeys, 1936, 15.3 m, 7.2 m frontage, 6.2 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8510942,
+    52.3847726
+   ]
+  },
+  {
+   "pand": "0363100012082414",
+   "addresses": [
+    "Haarlemmerweg 573-1",
+    "Haarlemmerweg 573-2",
+    "Haarlemmerweg 573-3",
+    "Haarlemmerweg 573-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 81,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.55,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 7.3,
+   "roadDistanceM": 6.2,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2022-06-24",
+     "2024-11-21"
+    ],
+    "panoramas": [
+     "terdam_21112024_Track03_Sphere_00054",
+     "TMX7316010203-002627_pano_0004_000047"
+    ],
+    "maxDistM": 24.3
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "81 m2, 5 storeys, 1936, 15.3 m, 7.3 m frontage, 6.2 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8509833,
+    52.3847484
+   ]
+  },
+  {
+   "pand": "0363100012102769",
+   "addresses": [
+    "Haarlemmerweg 579-1",
+    "Haarlemmerweg 579-2",
+    "Haarlemmerweg 579-3",
+    "Haarlemmerweg 581"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 94,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.54,
+   "roofType": "multiple horizontal",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 8.4,
+   "roadDistanceM": 6.4,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-11-21"
+    ],
+    "panoramas": [
+     "terdam_21112024_Track04_Sphere_00178"
+    ],
+    "maxDistM": 25
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "94 m2, 5 storeys, 1936, 15.3 m, 8.4 m frontage, 6.4 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8503476,
+    52.3847354
+   ]
+  },
+  {
+   "pand": "0363100012129399",
+   "addresses": [
+    "Haarlemmerweg 587-1",
+    "Haarlemmerweg 587-2",
+    "Haarlemmerweg 587-3",
+    "Haarlemmerweg 589"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 84,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.49,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 8.4,
+   "roadDistanceM": 6.5,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2020-05-08"
+    ],
+    "panoramas": [
+     "TMX7316010203-001700_pano_0000_001372"
+    ],
+    "maxDistM": 25
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "84 m2, 5 storeys, 1936, 15.3 m, 8.4 m frontage, 6.5 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.850069,
+    52.3847552
+   ]
+  },
+  {
+   "pand": "0363100012107945",
+   "addresses": [
+    "Haarlemmerweg 591-1",
+    "Haarlemmerweg 591-2",
+    "Haarlemmerweg 591-3",
+    "Haarlemmerweg 593"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 84,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.46,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 8.4,
+   "roadDistanceM": 6.5,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-09-11"
+    ],
+    "panoramas": [
+     "recording_2024-09-11_07-28-02_01196"
+    ],
+    "maxDistM": 20.5
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "84 m2, 5 storeys, 1936, 15.3 m, 8.4 m frontage, 6.5 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8499454,
+    52.3847532
+   ]
+  },
+  {
+   "pand": "0363100012092100",
+   "addresses": [
+    "Haarlemmerweg 599-1",
+    "Haarlemmerweg 599-2",
+    "Haarlemmerweg 599-3",
+    "Haarlemmerweg 601"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 84,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.48,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 8.4,
+   "roadDistanceM": 6.5,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2020-05-08"
+    ],
+    "panoramas": [
+     "TMX7316010203-001700_pano_0000_001377"
+    ],
+    "maxDistM": 25
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "84 m2, 5 storeys, 1936, 15.3 m, 8.4 m frontage, 6.5 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.849698,
+    52.3847492
+   ]
+  },
+  {
+   "pand": "0363100012139222",
+   "addresses": [
+    "Haarlemmerweg 607-1",
+    "Haarlemmerweg 607-2",
+    "Haarlemmerweg 607-3",
+    "Haarlemmerweg 609"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 92,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.53,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 18.6,
+   "roadDistanceM": 6.5,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2022-06-24"
+    ],
+    "panoramas": [
+     "TMX7316010203-002627_pano_0004_000128"
+    ],
+    "maxDistM": 15.9
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "92 m2, 5 storeys, 1936, 15.3 m, 18.6 m frontage, 6.5 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.849417,
+    52.3847527
+   ]
+  },
+  {
+   "pand": "0363100012089307",
+   "addresses": [
+    "Haarlemmerweg 619-1",
+    "Haarlemmerweg 619-2",
+    "Haarlemmerweg 619-3",
+    "Haarlemmerweg 619-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 71,
+   "heightM": 14.4,
+   "roofMaxM": 17.7,
+   "storeys": 5,
+   "groundLevelM": 0.51,
+   "roofType": "slanted",
+   "builtYear": 1937,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 17.7,
+   "roadDistanceM": 6.4,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2018-06-20"
+    ],
+    "panoramas": [
+     "TMX7316010203-000798_pano_0000_000703"
+    ],
+    "maxDistM": 24.5
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "71 m2, 5 storeys, 1937, 14.4 m, 17.7 m frontage, 6.4 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.848784,
+    52.3847284
+   ]
+  },
+  {
+   "pand": "0363100012068176",
+   "addresses": [
+    "Haarlemmerweg 651-1",
+    "Haarlemmerweg 651-2",
+    "Haarlemmerweg 651-3",
+    "Haarlemmerweg 651-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 76,
+   "heightM": 15.8,
+   "roofMaxM": 17.8,
+   "storeys": 5,
+   "groundLevelM": 0.64,
+   "roofType": "slanted",
+   "builtYear": 1934,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 8.7,
+   "roadDistanceM": 6.2,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2025-06-18",
+     "2025-09-26"
+    ],
+    "panoramas": [
+     "2025_09_26_05_36_39_00226",
+     "recording_2025-06-18_07-44-47_00897"
+    ],
+    "maxDistM": 23
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "76 m2, 5 storeys, 1934, 15.8 m, 8.7 m frontage, 6.2 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8481726,
+    52.384713
+   ]
+  },
+  {
+   "pand": "0363100012064393",
+   "addresses": [
+    "Van Gentstraat 60-1",
+    "Van Gentstraat 60-2",
+    "Van Gentstraat 60-H"
+   ],
+   "addressCount": 3,
+   "side": "south",
+   "footprintM2": 65,
+   "heightM": 12.4,
+   "roofMaxM": 15.6,
+   "storeys": 5,
+   "groundLevelM": 0.58,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 7.5,
+   "roadDistanceM": 15.3,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2017-04-21",
+     "2018-06-20"
+    ],
+    "panoramas": [
+     "TMX7316010203-000275_pano_0000_001446",
+     "TMX7316010203-000798_pano_0000_000834"
+    ],
+    "maxDistM": 35
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "65 m2, 5 storeys, 1936, 12.4 m, 7.5 m frontage, 15.3 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8518203,
+    52.3847044
+   ]
+  },
+  {
+   "pand": "0363100012071305",
+   "addresses": [
+    "Solebaystraat 73-1",
+    "Solebaystraat 73-2",
+    "Solebaystraat 73-3",
+    "Solebaystraat 73-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 61,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.61,
+   "roofType": "multiple horizontal",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 36.9,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2025-09-26"
+    ],
+    "panoramas": [
+     "2025_09_26_05_36_39_00332"
+    ],
+    "maxDistM": 14.2
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "61 m2, 5 storeys, 1938, 15.3 m, 6.1 m frontage, 36.9 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8542016,
+    52.384241
+   ]
+  },
+  {
+   "pand": "0363100012073075",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 71,
+   "heightM": 15.8,
+   "roofMaxM": 17.8,
+   "storeys": 5,
+   "groundLevelM": 0.51,
+   "roofType": "slanted",
+   "builtYear": 1934,
+   "archetype": "school-block",
+   "uses": [],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.2,
+   "roadDistanceM": 18.2,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2019-04-16",
+     "2025-09-26"
+    ],
+    "panoramas": [
+     "TMX7316010203-001130_pano_0001_000196",
+     "2025_09_26_05_36_39_00225"
+    ],
+    "maxDistM": 33
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "71 m2, 5 storeys, 1934, 15.8 m, 6.2 m frontage, 18.2 m off the road axis, south side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8480356,
+    52.384624
+   ]
+  },
+  {
+   "pand": "0363100012082451",
+   "addresses": [
+    "Livornostraat 22",
+    "Livornostraat 24-1",
+    "Livornostraat 24-2",
+    "Solebaystraat 77-1",
+    "Solebaystraat 77-2",
+    "Solebaystraat 77-3"
+   ],
+   "addressCount": 6,
+   "side": "south",
+   "footprintM2": 266,
+   "heightM": 10.1,
+   "roofMaxM": 15.4,
+   "storeys": 4,
+   "groundLevelM": 0.53,
+   "roofType": "multiple horizontal",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "streetWalls": 6,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 31.4,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 1,
+    "usable": 2,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track38_Sphere_00018",
+     "MS_26112024_845_Track45_Sphere_00056"
+    ],
+    "maxDistM": 15.1
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "266 m2, 4 storeys, 1938, 10.1 m, 6.1 m frontage, 31.4 m off the road axis, south side; industriefunctie/woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8540333,
+    52.3842914
+   ]
+  },
+  {
+   "pand": "0363100012084425",
+   "addresses": [
+    "Kijkduinstraat 100-1",
+    "Kijkduinstraat 100-2",
+    "Kijkduinstraat 100-3",
+    "Kijkduinstraat 100-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 73,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.49,
+   "roofType": "slanted",
+   "builtYear": 1937,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 6,
+   "corridorFrontageM": 8.2,
+   "roadDistanceM": 15.3,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track45_Sphere_00026"
+    ],
+    "maxDistM": 15.4
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "73 m2, 5 storeys, 1937, 15.3 m, 8.2 m frontage, 15.3 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8527821,
+    52.3847183
+   ]
+  },
+  {
+   "pand": "0363100012086739",
+   "addresses": [
+    "Kijkduinstraat 102-1",
+    "Kijkduinstraat 102-2",
+    "Kijkduinstraat 102-3",
+    "Kijkduinstraat 102-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 65,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.57,
+   "roofType": "slanted",
+   "builtYear": 1937,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 14.4,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2025-09-26"
+    ],
+    "panoramas": [
+     "2025_09_26_05_36_39_00398"
+    ],
+    "maxDistM": 15.6
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "65 m2, 5 storeys, 1937, 15.3 m, 14.4 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8527123,
+    52.3848196
+   ]
+  },
+  {
+   "pand": "0363100012087056",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 61,
+   "heightM": 15.4,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.62,
+   "roofType": "multiple horizontal",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 33.8,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2020-05-14"
+    ],
+    "panoramas": [
+     "TMX7316010203-001714_pano_0000_002807"
+    ],
+    "maxDistM": 15.6
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "61 m2, 5 storeys, 1936, 15.4 m, 6.1 m frontage, 33.8 m off the road axis, south side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8504402,
+    52.3845842
+   ]
+  },
+  {
+   "pand": "0363100012089048",
+   "addresses": [
+    "Van Gentstraat 56-1",
+    "Van Gentstraat 56-2",
+    "Van Gentstraat 56-H"
+   ],
+   "addressCount": 3,
+   "side": "south",
+   "footprintM2": 61,
+   "heightM": 12.3,
+   "roofMaxM": 12.5,
+   "storeys": 4,
+   "groundLevelM": 0.56,
+   "roofType": "multiple horizontal",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 35.1,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track42_Sphere_00047"
+    ],
+    "maxDistM": 9
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "61 m2, 4 storeys, 1936, 12.3 m, 6.1 m frontage, 35.1 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8518212,
+    52.3845924
+   ]
+  },
+  {
+   "pand": "0363100012089607",
+   "addresses": [
+    "Solebaystraat 87-1",
+    "Solebaystraat 87-2",
+    "Solebaystraat 87-3",
+    "Solebaystraat 87-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 61,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.55,
+   "roofType": "multiple horizontal",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 14.4,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track38_Sphere_00025"
+    ],
+    "maxDistM": 24.5
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "61 m2, 5 storeys, 1938, 15.3 m, 6.1 m frontage, 14.4 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8541868,
+    52.38457
+   ]
+  },
+  {
+   "pand": "0363100012089736",
+   "addresses": [
+    "Livornostraat 42-1",
+    "Livornostraat 42-2",
+    "Livornostraat 42-3",
+    "Livornostraat 42-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 65,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.56,
+   "roofType": "slanted",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 14.3,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2022-06-24"
+    ],
+    "panoramas": [
+     "TMX7316010203-002627_pano_0004_000473"
+    ],
+    "maxDistM": 9.4
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "65 m2, 5 storeys, 1938, 15.3 m, 14.3 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8536224,
+    52.3848348
+   ]
+  },
+  {
+   "pand": "0363100012089938",
+   "addresses": [
+    "Solebaystraat 79-1",
+    "Solebaystraat 79-2",
+    "Solebaystraat 79-3",
+    "Solebaystraat 79-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 62,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.58,
+   "roofType": "multiple horizontal",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 26,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2019-04-16"
+    ],
+    "panoramas": [
+     "TMX7316010203-001131_pano_0000_000781"
+    ],
+    "maxDistM": 14.6
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "62 m2, 5 storeys, 1938, 15.3 m, 6.1 m frontage, 26 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8541966,
+    52.3843508
+   ]
+  },
+  {
+   "pand": "0363100012092684",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 95,
+   "heightM": 9.4,
+   "roofMaxM": 9.5,
+   "storeys": 2,
+   "groundLevelM": 0.39,
+   "roofType": "slanted",
+   "builtYear": 1921,
+   "archetype": "school-block",
+   "uses": [],
+   "streetWalls": 5,
+   "corridorFrontageM": 20.2,
+   "roadDistanceM": 11.2,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2018-01-08",
+     "2018-07-09"
+    ],
+    "panoramas": [
+     "TMX7316010203-000832_pano_0000_003401",
+     "TMX7316010203-000535_pano_0000_009250"
+    ],
+    "maxDistM": 24.8
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "95 m2, 2 storeys, 1921, 9.4 m, 20.2 m frontage, 11.2 m off the road axis, south side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8457336,
+    52.3846483
+   ]
+  },
+  {
+   "pand": "0363100012093542",
+   "addresses": [
+    "Livornostraat 40-1",
+    "Livornostraat 40-2",
+    "Livornostraat 40-H"
+   ],
+   "addressCount": 3,
+   "side": "south",
+   "footprintM2": 73,
+   "heightM": 12.3,
+   "roofMaxM": 15.4,
+   "storeys": 4,
+   "groundLevelM": 0.52,
+   "roofType": "slanted",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 6,
+   "corridorFrontageM": 8.2,
+   "roadDistanceM": 15.3,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track45_Sphere_00046"
+    ],
+    "maxDistM": 9.8
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "73 m2, 4 storeys, 1938, 12.3 m, 8.2 m frontage, 15.3 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8536921,
+    52.3847334
+   ]
+  },
+  {
+   "pand": "0363100012094451",
+   "addresses": [
+    "Van Gentstraat 53-1",
+    "Van Gentstraat 53-2",
+    "Van Gentstraat 53-H"
+   ],
+   "addressCount": 3,
+   "side": "south",
+   "footprintM2": 61,
+   "heightM": 12.3,
+   "roofMaxM": 12.4,
+   "storeys": 4,
+   "groundLevelM": 0.59,
+   "roofType": "multiple horizontal",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 35,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2020-05-14"
+    ],
+    "panoramas": [
+     "TMX7316010203-001714_pano_0000_003016"
+    ],
+    "maxDistM": 9.3
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "61 m2, 4 storeys, 1936, 12.3 m, 6.1 m frontage, 35 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8514048,
+    52.3845308
+   ]
+  },
+  {
+   "pand": "0363100012109280",
+   "addresses": [
+    "Van Gentstraat 55-1",
+    "Van Gentstraat 55-2",
+    "Van Gentstraat 55-H"
+   ],
+   "addressCount": 3,
+   "side": "south",
+   "footprintM2": 61,
+   "heightM": 12.3,
+   "roofMaxM": 12.5,
+   "storeys": 4,
+   "groundLevelM": 0.59,
+   "roofType": "multiple horizontal",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6,
+   "roadDistanceM": 29,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track42_Sphere_00047"
+    ],
+    "maxDistM": 9.5
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "61 m2, 4 storeys, 1936, 12.3 m, 6 m frontage, 29 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8514022,
+    52.3845854
+   ]
+  },
+  {
+   "pand": "0363100012111191",
+   "addresses": [
+    "Van Gentstraat 54-1",
+    "Van Gentstraat 54-2",
+    "Van Gentstraat 54-H"
+   ],
+   "addressCount": 3,
+   "side": "south",
+   "footprintM2": 62,
+   "heightM": 12.3,
+   "roofMaxM": 12.5,
+   "storeys": 4,
+   "groundLevelM": 0.59,
+   "roofType": "multiple horizontal",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 35.1,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2022-06-24"
+    ],
+    "panoramas": [
+     "TMX7316010203-002627_pano_0004_000267"
+    ],
+    "maxDistM": 9.5
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "62 m2, 4 storeys, 1936, 12.3 m, 6.1 m frontage, 35.1 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8518236,
+    52.3845378
+   ]
+  },
+  {
+   "pand": "0363100012113015",
+   "addresses": [
+    "Livornostraat 39-1",
+    "Livornostraat 39-2",
+    "Livornostraat 39-3",
+    "Livornostraat 39-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 65,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.56,
+   "roofType": "slanted",
+   "builtYear": 1937,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2022-06-24"
+    ],
+    "panoramas": [
+     "TMX7316010203-002627_pano_0004_000473"
+    ],
+    "maxDistM": 9.1
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "65 m2, 5 storeys, 1937, 15.3 m, 6.1 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8533041,
+    52.3848296
+   ]
+  },
+  {
+   "pand": "0363100012117101",
+   "addresses": [
+    "Solebaystraat 93-2",
+    "Solebaystraat 93-3",
+    "Solebaystraat 95"
+   ],
+   "addressCount": 3,
+   "side": "north",
+   "footprintM2": 61,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.56,
+   "roofType": "multiple horizontal",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie",
+    "winkelfunctie,woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 16.5,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2021-03-24",
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track44_Sphere_00045",
+     "TMX7316010203-002058_pano_0000_001493"
+    ],
+    "maxDistM": 34.8
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "61 m2, 5 storeys, 1938, 15.3 m, 6.1 m frontage, 16.5 m off the road axis, north side; woonfunctie/winkelfunctie,woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8541822,
+    52.3846798
+   ]
+  },
+  {
+   "pand": "0363100012117422",
+   "addresses": [
+    "Van Gentstraat 59-1",
+    "Van Gentstraat 59-2",
+    "Van Gentstraat 59-H"
+   ],
+   "addressCount": 3,
+   "side": "south",
+   "footprintM2": 65,
+   "heightM": 12.4,
+   "roofMaxM": 15.6,
+   "storeys": 5,
+   "groundLevelM": 0.64,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 7.6,
+   "roadDistanceM": 15.3,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2016-06-15",
+     "2017-04-21"
+    ],
+    "panoramas": [
+     "TMX7316010203-000275_pano_0000_001446",
+     "TMX7315080123-000295_pano_0000_000933"
+    ],
+    "maxDistM": 24.7
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "65 m2, 5 storeys, 1936, 12.4 m, 7.6 m frontage, 15.3 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8513846,
+    52.3847017
+   ]
+  },
+  {
+   "pand": "0363100012117679",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 333,
+   "heightM": 15.5,
+   "roofMaxM": 17.8,
+   "storeys": 5,
+   "groundLevelM": 0.5,
+   "roofType": "slanted",
+   "builtYear": 1934,
+   "archetype": "school-block",
+   "uses": [],
+   "streetWalls": 11,
+   "corridorFrontageM": 7.1,
+   "roadDistanceM": 40.3,
+   "panorama": {
+    "sampled": true,
+    "walls": 4,
+    "corridorWalls": 1,
+    "usable": 4,
+    "usableCorridor": 1,
+    "dates": [
+     "2022-05-02",
+     "2022-06-24",
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "TMX7316010203-002627_pano_0004_000101",
+     "TMX7316010203-002554_pano_0000_003980",
+     "TMX7316010203-002554_pano_0000_004070",
+     "MS_26112024_845_Track41_Sphere_00010"
+    ],
+    "maxDistM": 32.1
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "333 m2, 5 storeys, 1934, 15.5 m, 7.1 m frontage, 40.3 m off the road axis, south side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8479423,
+    52.3843114
+   ]
+  },
+  {
+   "pand": "0363100012122012",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 71,
+   "heightM": 15.8,
+   "roofMaxM": 17.8,
+   "storeys": 5,
+   "groundLevelM": 0.54,
+   "roofType": "slanted",
+   "builtYear": 1934,
+   "archetype": "school-block",
+   "uses": [],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 12.2,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2022-05-02",
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "TMX7316010203-002554_pano_0000_003993",
+     "MS_26112024_845_Track41_Sphere_00021"
+    ],
+    "maxDistM": 24.5
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "71 m2, 5 storeys, 1934, 15.8 m, 6.1 m frontage, 12.2 m off the road axis, south side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8480413,
+    52.3846798
+   ]
+  },
+  {
+   "pand": "0363100012123065",
+   "addresses": [
+    "Solebaystraat 81-1",
+    "Solebaystraat 81-2",
+    "Solebaystraat 81-3",
+    "Solebaystraat 81-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 61,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.52,
+   "roofType": "slanted",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6,
+   "roadDistanceM": 21.3,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2022-12-12"
+    ],
+    "panoramas": [
+     "TMX7316010203-002850_pano_0009_000132"
+    ],
+    "maxDistM": 14.8
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "61 m2, 5 storeys, 1938, 15.3 m, 6 m frontage, 21.3 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8541942,
+    52.3844054
+   ]
+  },
+  {
+   "pand": "0363100012125418",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 83,
+   "heightM": 15.8,
+   "roofMaxM": 17.8,
+   "storeys": 5,
+   "groundLevelM": 0.59,
+   "roofType": "slanted",
+   "builtYear": 1934,
+   "archetype": "school-block",
+   "uses": [],
+   "streetWalls": 4,
+   "corridorFrontageM": 19,
+   "roadDistanceM": 6.1,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2022-05-02"
+    ],
+    "panoramas": [
+     "TMX7316010203-002554_pano_0000_005789"
+    ],
+    "maxDistM": 17.4
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "83 m2, 5 storeys, 1934, 15.8 m, 19 m frontage, 6.1 m off the road axis, south side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8480709,
+    52.3847214
+   ]
+  },
+  {
+   "pand": "0363100012126055",
+   "addresses": [
+    "Solebaystraat 83-1",
+    "Solebaystraat 83-2",
+    "Solebaystraat 83-3",
+    "Solebaystraat 83-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 61,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.53,
+   "roofType": "multiple horizontal",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 17.2,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2025-09-26"
+    ],
+    "panoramas": [
+     "2025_09_26_05_36_39_00327"
+    ],
+    "maxDistM": 15
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "61 m2, 5 storeys, 1938, 15.3 m, 6.1 m frontage, 17.2 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8541918,
+    52.3844602
+   ]
+  },
+  {
+   "pand": "0363100012126119",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 65,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.52,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 6.2,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2021-03-24"
+    ],
+    "panoramas": [
+     "TMX7316010203-002058_pano_0000_001248"
+    ],
+    "maxDistM": 8.2
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "65 m2, 5 storeys, 1936, 15.3 m, 6.1 m frontage, 6.2 m off the road axis, south side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8508492,
+    52.384788
+   ]
+  },
+  {
+   "pand": "0363100012135241",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 1420,
+   "heightM": 6.5,
+   "roofMaxM": 9.5,
+   "storeys": 1,
+   "groundLevelM": 0.38,
+   "roofType": "slanted",
+   "builtYear": 1921,
+   "archetype": "school-block",
+   "uses": [],
+   "streetWalls": 14,
+   "corridorFrontageM": 34.1,
+   "roadDistanceM": 13.6,
+   "panorama": {
+    "sampled": true,
+    "walls": 4,
+    "corridorWalls": 2,
+    "usable": 3,
+    "usableCorridor": 2,
+    "dates": [
+     "2018-01-08",
+     "2024-12-23"
+    ],
+    "panoramas": [
+     "recording_2024-12-23_09-14-39_09556",
+     "recording_2024-12-23_09-14-39_09544",
+     "TMX7316010203-000535_pano_0000_009257"
+    ],
+    "maxDistM": 34.9
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "1420 m2, 1 storeys, 1921, 6.5 m, 34.1 m frontage, 13.6 m off the road axis, south side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8458804,
+    52.3844188
+   ]
+  },
+  {
+   "pand": "0363100012140071",
+   "addresses": [
+    "Solebaystraat 85-1",
+    "Solebaystraat 85-2",
+    "Solebaystraat 85-3",
+    "Solebaystraat 85-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 61,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.55,
+   "roofType": "multiple horizontal",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 14.6,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2022-06-24"
+    ],
+    "panoramas": [
+     "TMX7316010203-002627_pano_0004_000406"
+    ],
+    "maxDistM": 16.9
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "61 m2, 5 storeys, 1938, 15.3 m, 6.1 m frontage, 14.6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8541892,
+    52.3845152
+   ]
+  },
+  {
+   "pand": "0363100012140221",
+   "addresses": [
+    "Van Gentstraat 57-1",
+    "Van Gentstraat 57-2",
+    "Van Gentstraat 57-H"
+   ],
+   "addressCount": 3,
+   "side": "south",
+   "footprintM2": 61,
+   "heightM": 12.3,
+   "roofMaxM": 12.5,
+   "storeys": 4,
+   "groundLevelM": 0.59,
+   "roofType": "multiple horizontal",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 22.9,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2020-05-14",
+     "2021-03-24"
+    ],
+    "panoramas": [
+     "TMX7316010203-001714_pano_0000_003001",
+     "TMX7316010203-002058_pano_0000_001352"
+    ],
+    "maxDistM": 34.9
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "61 m2, 4 storeys, 1936, 12.3 m, 6.1 m frontage, 22.9 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8513998,
+    52.3846402
+   ]
+  },
+  {
+   "pand": "0363100012143749",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 242,
+   "heightM": 9.8,
+   "roofMaxM": 12.6,
+   "storeys": 3,
+   "groundLevelM": 0.15,
+   "roofType": "slanted",
+   "builtYear": 1925,
+   "archetype": "school-block",
+   "uses": [],
+   "streetWalls": 6,
+   "corridorFrontageM": 13.8,
+   "roadDistanceM": 34.9,
+   "panorama": {
+    "sampled": true,
+    "walls": 3,
+    "corridorWalls": 1,
+    "usable": 3,
+    "usableCorridor": 1,
+    "dates": [
+     "2017-04-21",
+     "2018-06-20",
+     "2022-06-24"
+    ],
+    "panoramas": [
+     "TMX7316010203-002627_pano_0005_000505",
+     "TMX7316010203-000275_pano_0000_001188",
+     "TMX7316010203-000798_pano_0000_001609"
+    ],
+    "maxDistM": 33.4
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "242 m2, 3 storeys, 1925, 9.8 m, 13.8 m frontage, 34.9 m off the road axis, south side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8465756,
+    52.384334
+   ]
+  },
+  {
+   "pand": "0363100012145424",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 120,
+   "heightM": 15.2,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.32,
+   "roofType": "slanted",
+   "builtYear": 1934,
+   "archetype": "school-block",
+   "uses": [],
+   "streetWalls": 4,
+   "corridorFrontageM": 9.8,
+   "roadDistanceM": 35.7,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2019-04-16"
+    ],
+    "panoramas": [
+     "TMX7316010203-001131_pano_0000_001677"
+    ],
+    "maxDistM": 8.2
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "120 m2, 5 storeys, 1934, 15.2 m, 9.8 m frontage, 35.7 m off the road axis, south side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8561983,
+    52.3845874
+   ]
+  },
+  {
+   "pand": "0363100012147599",
+   "addresses": [
+    "Livornostraat 34-1",
+    "Livornostraat 34-2",
+    "Livornostraat 34-H"
+   ],
+   "addressCount": 3,
+   "side": "south",
+   "footprintM2": 62,
+   "heightM": 12.2,
+   "roofMaxM": 12.4,
+   "storeys": 4,
+   "groundLevelM": 0.47,
+   "roofType": "slanted",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 35.8,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track45_Sphere_00050"
+    ],
+    "maxDistM": 9.8
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "62 m2, 4 storeys, 1938, 12.2 m, 6.1 m frontage, 35.8 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8536956,
+    52.3845618
+   ]
+  },
+  {
+   "pand": "0363100012148506",
+   "addresses": [
+    "Van Gentstraat 51-1",
+    "Van Gentstraat 51-2",
+    "Van Gentstraat 51-H"
+   ],
+   "addressCount": 3,
+   "side": "south",
+   "footprintM2": 85,
+   "heightM": 10.1,
+   "roofMaxM": 12.5,
+   "storeys": 4,
+   "groundLevelM": 0.6,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 41.1,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2018-06-20"
+    ],
+    "panoramas": [
+     "TMX7316010203-000798_pano_0000_000591"
+    ],
+    "maxDistM": 9
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "85 m2, 4 storeys, 1936, 10.1 m, 6.1 m frontage, 41.1 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8513836,
+    52.3844756
+   ]
+  },
+  {
+   "pand": "0363100012148552",
+   "addresses": [
+    "Livornostraat 37-1",
+    "Livornostraat 37-2",
+    "Livornostraat 37-H"
+   ],
+   "addressCount": 3,
+   "side": "south",
+   "footprintM2": 73,
+   "heightM": 12.3,
+   "roofMaxM": 15.4,
+   "storeys": 4,
+   "groundLevelM": 0.52,
+   "roofType": "multiple horizontal",
+   "builtYear": 1937,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 6,
+   "corridorFrontageM": 8.2,
+   "roadDistanceM": 23.6,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2024-11-26"
+    ],
+    "panoramas": [
+     "MS_26112024_845_Track45_Sphere_00046"
+    ],
+    "maxDistM": 8.6
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "73 m2, 4 storeys, 1937, 12.3 m, 8.2 m frontage, 23.6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.853257,
+    52.3847304
+   ]
+  },
+  {
+   "pand": "0363100012150635",
+   "addresses": [
+    "Kijkduinstraat 143-1",
+    "Kijkduinstraat 143-2",
+    "Kijkduinstraat 143-3",
+    "Kijkduinstraat 143-H"
+   ],
+   "addressCount": 4,
+   "side": "south",
+   "footprintM2": 65,
+   "heightM": 15.4,
+   "roofMaxM": 15.6,
+   "storeys": 5,
+   "groundLevelM": 0.48,
+   "roofType": "slanted",
+   "builtYear": 1936,
+   "archetype": "school-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 6,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2021-03-24"
+    ],
+    "panoramas": [
+     "TMX7316010203-002058_pano_0000_001371"
+    ],
+    "maxDistM": 8.2
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "65 m2, 5 storeys, 1936, 15.4 m, 6.1 m frontage, 6 m off the road axis, south side; woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8523354,
+    52.3848133
+   ]
+  },
+  {
+   "pand": "0363100012151870",
+   "addresses": [
+    "Solebaystraat 89",
+    "Solebaystraat 91-1",
+    "Solebaystraat 91-2",
+    "Solebaystraat 91-3"
+   ],
+   "addressCount": 4,
+   "side": "north",
+   "footprintM2": 62,
+   "heightM": 15.3,
+   "roofMaxM": 15.5,
+   "storeys": 5,
+   "groundLevelM": 0.54,
+   "roofType": "slanted",
+   "builtYear": 1938,
+   "archetype": "school-block",
+   "uses": [
+    "winkelfunctie,woonfunctie",
+    "woonfunctie"
+   ],
+   "streetWalls": 4,
+   "corridorFrontageM": 6.1,
+   "roadDistanceM": 14.4,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 1,
+    "usableCorridor": 1,
+    "dates": [
+     "2022-06-24"
+    ],
+    "panoramas": [
+     "TMX7316010203-002627_pano_0004_000427"
+    ],
+    "maxDistM": 15
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "62 m2, 5 storeys, 1938, 15.3 m, 6.1 m frontage, 14.4 m off the road axis, north side; winkelfunctie,woonfunctie/woonfunctie — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8541846,
+    52.3846248
+   ]
+  },
+  {
+   "pand": "0363100012161433",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 357,
+   "heightM": 10.2,
+   "roofMaxM": 14.2,
+   "storeys": 3,
+   "groundLevelM": 0.2,
+   "roofType": "slanted",
+   "builtYear": 2009,
+   "archetype": "modern-block",
+   "uses": [],
+   "streetWalls": 8,
+   "corridorFrontageM": 13.4,
+   "roadDistanceM": 29.4,
+   "panorama": {
+    "sampled": true,
+    "walls": 3,
+    "corridorWalls": 1,
+    "usable": 2,
+    "usableCorridor": 1,
+    "dates": [
+     "2017-04-21",
+     "2021-07-12"
+    ],
+    "panoramas": [
+     "TMX7316010203-000275_pano_0000_001181",
+     "TMX7316010203-002228_pano_0007_000363"
+    ],
+    "maxDistM": 24.8
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "357 m2, 3 storeys, 2009, 10.2 m, 13.4 m frontage, 29.4 m off the road axis, south side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8463903,
+    52.3844468
+   ]
+  },
+  {
+   "pand": "0363100012216692",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 870,
+   "heightM": 4.3,
+   "roofMaxM": 17,
+   "storeys": 1,
+   "groundLevelM": 0.2,
+   "roofType": "slanted",
+   "builtYear": 1934,
+   "archetype": "school-block",
+   "uses": [],
+   "streetWalls": 10,
+   "corridorFrontageM": 4,
+   "roadDistanceM": 14,
+   "panorama": {
+    "sampled": true,
+    "walls": 3,
+    "corridorWalls": 1,
+    "usable": 3,
+    "usableCorridor": 1,
+    "dates": [
+     "2019-04-16",
+     "2020-05-14",
+     "2024-11-21"
+    ],
+    "panoramas": [
+     "TMX7316010203-001131_pano_0000_001676",
+     "terdam_21112024_Track12_Sphere_00028",
+     "TMX7316010203-001714_pano_0000_004120"
+    ],
+    "maxDistM": 34.8
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "870 m2, 1 storeys, 1934, 4.3 m, 4 m frontage, 14 m off the road axis, south side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8566069,
+    52.3845637
+   ]
+  },
+  {
+   "pand": "0363100012246191",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "north",
+   "footprintM2": 6362,
+   "heightM": 14,
+   "roofMaxM": 26.1,
+   "storeys": 1,
+   "groundLevelM": -0.63,
+   "roofType": "slanted",
+   "builtYear": 2003,
+   "archetype": "modern-block",
+   "uses": [],
+   "streetWalls": 22,
+   "corridorFrontageM": 119.3,
+   "roadDistanceM": 5.3,
+   "panorama": {
+    "sampled": true,
+    "walls": 4,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 0,
+    "dates": [
+     "2022-12-06"
+    ],
+    "panoramas": [
+     "TMX7316010203-002829_pano_0007_000107",
+     "TMX7316010203-002829_pano_0007_000117"
+    ],
+    "maxDistM": 18.7
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "6362 m2, 1 storeys, 2003, 14 m, 119.3 m frontage, 5.3 m off the road axis, north side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8504543,
+    52.3857605
+   ]
+  },
+  {
+   "pand": "0363100012249424",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 15,
+   "heightM": 3.8,
+   "roofMaxM": 3.9,
+   "storeys": 1,
+   "groundLevelM": 0.54,
+   "roofType": "horizontal",
+   "builtYear": 2016,
+   "archetype": "outbuilding",
+   "uses": [],
+   "streetWalls": 2,
+   "corridorFrontageM": 5,
+   "roadDistanceM": 3.9,
+   "panorama": {
+    "sampled": true,
+    "walls": 2,
+    "corridorWalls": 2,
+    "usable": 2,
+    "usableCorridor": 2,
+    "dates": [
+     "2019-04-16",
+     "2025-09-26"
+    ],
+    "panoramas": [
+     "2025_09_26_05_36_39_00912",
+     "TMX7316010203-001131_pano_0000_001685"
+    ],
+    "maxDistM": 16
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "STREET_SURVEY",
+   "reason": "15 m2, 1 storeys, 2016, 3.8 m, 5 m frontage, 3.9 m off the road axis, south side; no address — repetitive row, belongs to the block-face survey",
+   "anchor": [
+    4.8559554,
+    52.3848664
+   ]
+  },
+  {
+   "pand": "0363100012072477",
+   "addresses": [
+    "Haarlemmerweg 485A",
+    "Haarlemmerweg 485B",
+    "Haarlemmerweg 485C",
+    "Haarlemmerweg 485D",
+    "Haarlemmerweg 485E",
+    "Haarlemmerweg 485F",
+    "Haarlemmerweg 485G",
+    "Haarlemmerweg 485H",
+    "Haarlemmerweg 485K"
+   ],
+   "addressCount": 9,
+   "side": "south",
+   "footprintM2": 163,
+   "heightM": 14.5,
+   "roofMaxM": 14.5,
+   "storeys": 5,
+   "groundLevelM": 0.48,
+   "roofType": "slanted",
+   "builtYear": 1988,
+   "archetype": "modern-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 10.5,
+   "roadDistanceM": 13.4,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 0,
+    "usableCorridor": 0,
+    "dates": [],
+    "panoramas": [],
+    "maxDistM": null
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "NO_EVIDENCE",
+   "reason": "163 m2, 5 storeys, 1988, 14.5 m, 10.5 m frontage, 13.4 m off the road axis, south side; sampled, no usable panorama on any exposed wall",
+   "anchor": [
+    4.8577495,
+    52.3849005
+   ]
+  },
+  {
+   "pand": "0363100012073303",
+   "addresses": [
+    "Haarlemmerweg 487A",
+    "Haarlemmerweg 487B",
+    "Haarlemmerweg 487C",
+    "Haarlemmerweg 487D",
+    "Haarlemmerweg 487E",
+    "Haarlemmerweg 487F",
+    "Haarlemmerweg 487G",
+    "Haarlemmerweg 487H",
+    "Haarlemmerweg 487K"
+   ],
+   "addressCount": 9,
+   "side": "south",
+   "footprintM2": 156,
+   "heightM": 14.5,
+   "roofMaxM": 14.6,
+   "storeys": 5,
+   "groundLevelM": 0.51,
+   "roofType": "slanted",
+   "builtYear": 1988,
+   "archetype": "modern-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 9.9,
+   "roadDistanceM": 14.1,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 0,
+    "usableCorridor": 0,
+    "dates": [],
+    "panoramas": [],
+    "maxDistM": null
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "NO_EVIDENCE",
+   "reason": "156 m2, 5 storeys, 1988, 14.5 m, 9.9 m frontage, 14.1 m off the road axis, south side; sampled, no usable panorama on any exposed wall",
+   "anchor": [
+    4.8575621,
+    52.3848976
+   ]
+  },
+  {
+   "pand": "0363100012069886",
+   "addresses": [
+    "Haarlemmerweg 489A",
+    "Haarlemmerweg 489B",
+    "Haarlemmerweg 489C",
+    "Haarlemmerweg 489D",
+    "Haarlemmerweg 489E",
+    "Haarlemmerweg 489F",
+    "Haarlemmerweg 489G",
+    "Haarlemmerweg 489H",
+    "Haarlemmerweg 489K"
+   ],
+   "addressCount": 9,
+   "side": "south",
+   "footprintM2": 163,
+   "heightM": 14.5,
+   "roofMaxM": 14.6,
+   "storeys": 5,
+   "groundLevelM": 0.5,
+   "roofType": "slanted",
+   "builtYear": 1988,
+   "archetype": "modern-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 10.4,
+   "roadDistanceM": 14.1,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 0,
+    "usableCorridor": 0,
+    "dates": [],
+    "panoramas": [],
+    "maxDistM": null
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "NO_EVIDENCE",
+   "reason": "163 m2, 5 storeys, 1988, 14.5 m, 10.4 m frontage, 14.1 m off the road axis, south side; sampled, no usable panorama on any exposed wall",
+   "anchor": [
+    4.8573755,
+    52.3848946
+   ]
+  },
+  {
+   "pand": "0363100012114209",
+   "addresses": [
+    "Haarlemmerweg 491A",
+    "Haarlemmerweg 491B",
+    "Haarlemmerweg 491C",
+    "Haarlemmerweg 491D",
+    "Haarlemmerweg 491E",
+    "Haarlemmerweg 491F",
+    "Haarlemmerweg 491G",
+    "Haarlemmerweg 491H",
+    "Haarlemmerweg 491K",
+    "Haarlemmerweg 491L"
+   ],
+   "addressCount": 10,
+   "side": "south",
+   "footprintM2": 169,
+   "heightM": 14.5,
+   "roofMaxM": 14.5,
+   "storeys": 5,
+   "groundLevelM": 0.57,
+   "roofType": "multiple horizontal",
+   "builtYear": 1988,
+   "archetype": "modern-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 10.9,
+   "roadDistanceM": 14.1,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 0,
+    "usableCorridor": 0,
+    "dates": [],
+    "panoramas": [],
+    "maxDistM": null
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "NO_EVIDENCE",
+   "reason": "169 m2, 5 storeys, 1988, 14.5 m, 10.9 m frontage, 14.1 m off the road axis, south side; sampled, no usable panorama on any exposed wall",
+   "anchor": [
+    4.8571761,
+    52.3848915
+   ]
+  },
+  {
+   "pand": "0363100012129559",
+   "addresses": [
+    "Haarlemmerweg 493A",
+    "Haarlemmerweg 493B",
+    "Haarlemmerweg 493C",
+    "Haarlemmerweg 493D",
+    "Haarlemmerweg 493E",
+    "Haarlemmerweg 493F",
+    "Haarlemmerweg 493G",
+    "Haarlemmerweg 493H",
+    "Haarlemmerweg 493K"
+   ],
+   "addressCount": 9,
+   "side": "south",
+   "footprintM2": 162,
+   "heightM": 14.5,
+   "roofMaxM": 14.6,
+   "storeys": 5,
+   "groundLevelM": 0.57,
+   "roofType": "slanted",
+   "builtYear": 1988,
+   "archetype": "modern-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 10.4,
+   "roadDistanceM": 14,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 0,
+    "usableCorridor": 0,
+    "dates": [],
+    "panoramas": [],
+    "maxDistM": null
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "NO_EVIDENCE",
+   "reason": "162 m2, 5 storeys, 1988, 14.5 m, 10.4 m frontage, 14 m off the road axis, south side; sampled, no usable panorama on any exposed wall",
+   "anchor": [
+    4.8569771,
+    52.3848883
+   ]
+  },
+  {
+   "pand": "0363100012079124",
+   "addresses": [
+    "Haarlemmerweg 495A",
+    "Haarlemmerweg 495B",
+    "Haarlemmerweg 495C",
+    "Haarlemmerweg 495D",
+    "Haarlemmerweg 495E",
+    "Haarlemmerweg 495F",
+    "Haarlemmerweg 495G",
+    "Haarlemmerweg 495H",
+    "Haarlemmerweg 495K"
+   ],
+   "addressCount": 9,
+   "side": "south",
+   "footprintM2": 157,
+   "heightM": 14.5,
+   "roofMaxM": 14.6,
+   "storeys": 5,
+   "groundLevelM": 0.47,
+   "roofType": "slanted",
+   "builtYear": 1988,
+   "archetype": "modern-block",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 5,
+   "corridorFrontageM": 9.8,
+   "roadDistanceM": 13.6,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 0,
+    "usableCorridor": 0,
+    "dates": [],
+    "panoramas": [],
+    "maxDistM": null
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "NO_EVIDENCE",
+   "reason": "157 m2, 5 storeys, 1988, 14.5 m, 9.8 m frontage, 13.6 m off the road axis, south side; sampled, no usable panorama on any exposed wall",
+   "anchor": [
+    4.8567813,
+    52.3848864
+   ]
+  },
+  {
+   "pand": "0363100012570119",
+   "addresses": [
+    "Haarlemmerweg 1140A",
+    "Haarlemmerweg 1140B",
+    "Haarlemmerweg 1140C",
+    "Haarlemmerweg 1140D",
+    "Haarlemmerweg 1140E",
+    "Haarlemmerweg 1140F",
+    "Haarlemmerweg 1140G",
+    "Haarlemmerweg 1140H",
+    "Haarlemmerweg 1140K",
+    "Haarlemmerweg 1140L",
+    "Haarlemmerweg 1140M",
+    "Haarlemmerweg 1140N",
+    "Haarlemmerweg 1140P",
+    "Haarlemmerweg 1140R",
+    "Haarlemmerweg 1140S",
+    "Haarlemmerweg 1140T",
+    "Haarlemmerweg 1140U",
+    "Haarlemmerweg 1140V",
+    "Haarlemmerweg 1140W",
+    "Haarlemmerweg 1140X",
+    "Haarlemmerweg 1142A",
+    "Haarlemmerweg 1142B",
+    "Haarlemmerweg 1142C",
+    "Haarlemmerweg 1142D",
+    "Haarlemmerweg 1142E",
+    "Haarlemmerweg 1142F",
+    "Haarlemmerweg 1142G",
+    "Haarlemmerweg 1142H",
+    "Haarlemmerweg 1142K",
+    "Haarlemmerweg 1142L",
+    "Haarlemmerweg 1142M",
+    "Haarlemmerweg 1142N",
+    "Haarlemmerweg 1142P",
+    "Haarlemmerweg 1142R",
+    "Haarlemmerweg 1142S",
+    "Haarlemmerweg 1142T",
+    "Haarlemmerweg 1142U",
+    "Haarlemmerweg 1142V",
+    "Haarlemmerweg 1142W",
+    "Haarlemmerweg 1142X",
+    "Haarlemmerweg 1144A",
+    "Haarlemmerweg 1144B",
+    "Haarlemmerweg 1144C",
+    "Haarlemmerweg 1144D",
+    "Haarlemmerweg 1144E",
+    "Haarlemmerweg 1144F",
+    "Haarlemmerweg 1144G",
+    "Haarlemmerweg 1144H",
+    "Haarlemmerweg 1144K",
+    "Haarlemmerweg 1144L",
+    "Haarlemmerweg 1144M",
+    "Haarlemmerweg 1144N",
+    "Haarlemmerweg 1144P",
+    "Haarlemmerweg 1144R",
+    "Haarlemmerweg 1144S",
+    "Haarlemmerweg 1144T",
+    "Haarlemmerweg 1144U",
+    "Haarlemmerweg 1144V",
+    "Haarlemmerweg 1144W",
+    "Haarlemmerweg 1144X"
+   ],
+   "addressCount": 60,
+   "side": "north",
+   "footprintM2": 440,
+   "heightM": 3.4,
+   "roofMaxM": 6.4,
+   "storeys": 4,
+   "groundLevelM": 0,
+   "roofType": "slanted",
+   "builtYear": 2024,
+   "archetype": "modern-house",
+   "uses": [
+    "woonfunctie"
+   ],
+   "streetWalls": 11,
+   "corridorFrontageM": 29.4,
+   "roadDistanceM": 4.9,
+   "panorama": {
+    "sampled": true,
+    "walls": 3,
+    "corridorWalls": 3,
+    "usable": 0,
+    "usableCorridor": 0,
+    "dates": [],
+    "panoramas": [],
+    "maxDistM": null
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "NO_EVIDENCE",
+   "reason": "440 m2, 4 storeys, 2024, 3.4 m, 29.4 m frontage, 4.9 m off the road axis, north side; sampled, no usable panorama on any exposed wall",
+   "anchor": [
+    4.8521437,
+    52.3854974
+   ]
+  },
+  {
+   "pand": "0363100012083481",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 81,
+   "heightM": 15.3,
+   "roofMaxM": 15.4,
+   "storeys": 5,
+   "groundLevelM": 0.17,
+   "roofType": "slanted",
+   "builtYear": 1934,
+   "archetype": "school-block",
+   "uses": [],
+   "streetWalls": 3,
+   "corridorFrontageM": 3.1,
+   "roadDistanceM": 13.6,
+   "panorama": {
+    "sampled": true,
+    "walls": 0,
+    "corridorWalls": 0,
+    "usable": 0,
+    "usableCorridor": 0,
+    "dates": [],
+    "panoramas": [],
+    "maxDistM": null
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "NO_EVIDENCE",
+   "reason": "81 m2, 5 storeys, 1934, 15.3 m, 3.1 m frontage, 13.6 m off the road axis, south side; sampled, no usable panorama on any exposed wall",
+   "anchor": [
+    4.8565693,
+    52.3848523
+   ]
+  },
+  {
+   "pand": "0363100012098958",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 84,
+   "heightM": 15.8,
+   "roofMaxM": 17.7,
+   "storeys": 5,
+   "groundLevelM": 0.45,
+   "roofType": "slanted",
+   "builtYear": 1934,
+   "archetype": "school-block",
+   "uses": [],
+   "streetWalls": 4,
+   "corridorFrontageM": 3.3,
+   "roadDistanceM": 35.7,
+   "panorama": {
+    "sampled": true,
+    "walls": 1,
+    "corridorWalls": 1,
+    "usable": 0,
+    "usableCorridor": 0,
+    "dates": [],
+    "panoramas": [],
+    "maxDistM": null
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "NO_EVIDENCE",
+   "reason": "84 m2, 5 storeys, 1934, 15.8 m, 3.3 m frontage, 35.7 m off the road axis, south side; sampled, no usable panorama on any exposed wall",
+   "anchor": [
+    4.8479872,
+    52.3844423
+   ]
+  },
+  {
+   "pand": "0363100012151539",
+   "addresses": [
+    "Molenwerf 2",
+    "Molenwerf 2A",
+    "Molenwerf 4A-1",
+    "Molenwerf 4A-2",
+    "Molenwerf 4A-3",
+    "Molenwerf 4A-4",
+    "Molenwerf 4A-5",
+    "Molenwerf 4A-6",
+    "Molenwerf 4B-1",
+    "Molenwerf 4B-2",
+    "Molenwerf 4B-3",
+    "Molenwerf 4B-4",
+    "Molenwerf 4B-5",
+    "Molenwerf 4B-6",
+    "Molenwerf 4B-7",
+    "Molenwerf 4B-8",
+    "Molenwerf 4C-1",
+    "Molenwerf 4C-2",
+    "Molenwerf 4C-3",
+    "Molenwerf 4C-4",
+    "Molenwerf 4C-5",
+    "Molenwerf 4C-6",
+    "Molenwerf 4C-7",
+    "Molenwerf 4C-8",
+    "Molenwerf 4D-1",
+    "Molenwerf 4D-2",
+    "Molenwerf 4D-3",
+    "Molenwerf 4D-4",
+    "Molenwerf 4D-5",
+    "Molenwerf 4D-6",
+    "Molenwerf 4D-7",
+    "Molenwerf 4D-8",
+    "Molenwerf 4E-1",
+    "Molenwerf 4E-2",
+    "Molenwerf 4E-3",
+    "Molenwerf 4E-4",
+    "Molenwerf 4E-5",
+    "Molenwerf 4E-6",
+    "Molenwerf 4E-7",
+    "Molenwerf 4E-8",
+    "Molenwerf 4F-1",
+    "Molenwerf 4F-2",
+    "Molenwerf 4F-3",
+    "Molenwerf 4F-4",
+    "Molenwerf 4F-5",
+    "Molenwerf 4F-6",
+    "Molenwerf 4F-7",
+    "Molenwerf 4F-8",
+    "Molenwerf 4G-1",
+    "Molenwerf 4G-2",
+    "Molenwerf 4G-3",
+    "Molenwerf 4G-4",
+    "Molenwerf 4G-5",
+    "Molenwerf 6A-1",
+    "Molenwerf 6A-2",
+    "Molenwerf 6A-3",
+    "Molenwerf 6B-1",
+    "Molenwerf 6B-2",
+    "Molenwerf 6B-3",
+    "Molenwerf 6B-4",
+    "Molenwerf 6B-5",
+    "Molenwerf 6B-6",
+    "Molenwerf 6B-7",
+    "Molenwerf 6C-1",
+    "Molenwerf 6C-2",
+    "Molenwerf 6C-3",
+    "Molenwerf 6C-4",
+    "Molenwerf 6C-5",
+    "Molenwerf 6C-6",
+    "Molenwerf 6C-7",
+    "Molenwerf 6C-8",
+    "Molenwerf 6D-1",
+    "Molenwerf 6D-2",
+    "Molenwerf 6D-3",
+    "Molenwerf 6D-4",
+    "Molenwerf 6D-5",
+    "Molenwerf 6D-6",
+    "Molenwerf 6D-7",
+    "Molenwerf 6D-8",
+    "Molenwerf 6E-1",
+    "Molenwerf 6E-2",
+    "Molenwerf 6E-3",
+    "Molenwerf 6E-4",
+    "Molenwerf 6E-5",
+    "Molenwerf 6E-6",
+    "Molenwerf 6E-7",
+    "Molenwerf 6E-8",
+    "Molenwerf 6F-1",
+    "Molenwerf 6F-2",
+    "Molenwerf 6F-3",
+    "Molenwerf 6F-4",
+    "Molenwerf 6F-5",
+    "Molenwerf 6F-6",
+    "Molenwerf 6F-7",
+    "Molenwerf 6F-8",
+    "Molenwerf 6G-1",
+    "Molenwerf 6G-2",
+    "Molenwerf 6G-3",
+    "Molenwerf 6G-4",
+    "Molenwerf 6G-5",
+    "Molenwerf 6G-6",
+    "Molenwerf 8A-1",
+    "Molenwerf 8A-2",
+    "Molenwerf 8A-3",
+    "Molenwerf 8B-1",
+    "Molenwerf 8B-2",
+    "Molenwerf 8B-3",
+    "Molenwerf 8B-4",
+    "Molenwerf 8B-5",
+    "Molenwerf 8B-6",
+    "Molenwerf 8C-1",
+    "Molenwerf 8C-2",
+    "Molenwerf 8C-3",
+    "Molenwerf 8C-4",
+    "Molenwerf 8C-5",
+    "Molenwerf 8C-6",
+    "Molenwerf 8D-1",
+    "Molenwerf 8D-2",
+    "Molenwerf 8D-3",
+    "Molenwerf 8D-4",
+    "Molenwerf 8D-5",
+    "Molenwerf 8D-6",
+    "Molenwerf 8E-1",
+    "Molenwerf 8E-2",
+    "Molenwerf 8E-3",
+    "Molenwerf 8E-4",
+    "Molenwerf 8E-5",
+    "Molenwerf 8E-6",
+    "Molenwerf 8F-1",
+    "Molenwerf 8F-2",
+    "Molenwerf 8F-3",
+    "Molenwerf 8F-4",
+    "Molenwerf 8F-5",
+    "Molenwerf 8F-6",
+    "Molenwerf 8G-1",
+    "Molenwerf 8G-2",
+    "Molenwerf 8G-3",
+    "Molenwerf 8G-4",
+    "Molenwerf 10A-1",
+    "Molenwerf 10A-2",
+    "Molenwerf 10A-3",
+    "Molenwerf 10A-4",
+    "Molenwerf 10A-5",
+    "Molenwerf 10A-6",
+    "Molenwerf 10B-1",
+    "Molenwerf 10B-2",
+    "Molenwerf 10B-3",
+    "Molenwerf 10B-4",
+    "Molenwerf 10B-5",
+    "Molenwerf 10B-6",
+    "Molenwerf 10B-7",
+    "Molenwerf 10B-8",
+    "Molenwerf 10C-1",
+    "Molenwerf 10C-2",
+    "Molenwerf 10C-3",
+    "Molenwerf 10C-4",
+    "Molenwerf 10C-5",
+    "Molenwerf 10C-6",
+    "Molenwerf 10C-7",
+    "Molenwerf 10C-8",
+    "Molenwerf 10D-1",
+    "Molenwerf 10D-2",
+    "Molenwerf 10D-3",
+    "Molenwerf 10D-4",
+    "Molenwerf 10D-5",
+    "Molenwerf 10D-6",
+    "Molenwerf 10D-7",
+    "Molenwerf 10D-8",
+    "Molenwerf 10E-1",
+    "Molenwerf 10E-2",
+    "Molenwerf 10E-3",
+    "Molenwerf 10E-4",
+    "Molenwerf 10E-5",
+    "Molenwerf 10E-6",
+    "Molenwerf 10E-7",
+    "Molenwerf 10E-8",
+    "Molenwerf 10F-1",
+    "Molenwerf 10F-2",
+    "Molenwerf 10F-3",
+    "Molenwerf 10F-4",
+    "Molenwerf 10F-5",
+    "Molenwerf 10F-6",
+    "Molenwerf 10F-7",
+    "Molenwerf 10G-1",
+    "Molenwerf 10G-2",
+    "Molenwerf 10G-3",
+    "Molenwerf 10G-4"
+   ],
+   "addressCount": 187,
+   "side": "north",
+   "footprintM2": 4299,
+   "heightM": 27,
+   "roofMaxM": 34.3,
+   "storeys": 1,
+   "groundLevelM": -2.06,
+   "roofType": "slanted",
+   "builtYear": 2003,
+   "archetype": "modern-block",
+   "uses": [
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "streetWalls": 36,
+   "corridorFrontageM": 107.2,
+   "roadDistanceM": 38.3,
+   "panorama": {
+    "sampled": true,
+    "walls": 4,
+    "corridorWalls": 2,
+    "usable": 0,
+    "usableCorridor": 0,
+    "dates": [],
+    "panoramas": [],
+    "maxDistM": null
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "NO_EVIDENCE",
+   "reason": "4299 m2, 1 storeys, 2003, 27 m, 107.2 m frontage, 38.3 m off the road axis, north side; sampled, no usable panorama on any exposed wall",
+   "anchor": [
+    4.8486468,
+    52.3855524
+   ]
+  },
+  {
+   "pand": "0363100012202026",
+   "addresses": [],
+   "addressCount": 0,
+   "side": "south",
+   "footprintM2": 9,
+   "heightM": 3.6,
+   "roofMaxM": 3.7,
+   "storeys": 1,
+   "groundLevelM": 0.8,
+   "roofType": "horizontal",
+   "builtYear": 1925,
+   "archetype": "outbuilding",
+   "uses": [],
+   "streetWalls": 2,
+   "corridorFrontageM": 3.3,
+   "roadDistanceM": 18.7,
+   "panorama": {
+    "sampled": true,
+    "walls": 0,
+    "corridorWalls": 0,
+    "usable": 0,
+    "usableCorridor": 0,
+    "dates": [],
+    "panoramas": [],
+    "maxDistM": null
+   },
+   "status": "grey",
+   "coveredBy": [],
+   "classification": "NO_EVIDENCE",
+   "reason": "9 m2, 1 storeys, 1925, 3.6 m, 3.3 m frontage, 18.7 m off the road axis, south side; sampled, no usable panorama on any exposed wall",
+   "anchor": [
+    4.846929,
+    52.3846004
+   ]
+  }
+ ],
+ "phase2": {
+  "note": "Track M batch taken in this lane: the TRACK_M pands with a post-build, measurable corridor wall. Wall evidence is per crop in rows[].panorama.wallEvidence (all-walls.ts --archive, --min-len=8 --max=12 --max-dist=60).",
+  "candidates": [
+   {
+    "pand": "0363100012250971",
+    "addresses": [
+     "Haarlemmerweg 778",
+     "Haarlemmerweg 938"
+    ],
+    "houseId": "haarlemmerweg-778",
+    "footprintM2": 749,
+    "heightM": 36,
+    "storeys": 12,
+    "builtYear": 2023,
+    "side": "north",
+    "usableWalls": 0,
+    "triangles": 13462,
+    "likeness": "walls[0] NO EVIDENCE (foliage 42%), walls[1] NO EVIDENCE (foliage 31%, storey pitch read as 5.83 m), walls[2] NO EVIDENCE (foliage 46%), walls[3] NO PHOTO",
+    "outcome": "blocked (no measurable evidence)",
+    "reason": "the only post-build capture is one 2025-07-01 pass and every wall crop is through summer trees (31-46% foliage), so measure.ts refuses all three walls; older crops show the 1980s office block this tower replaced. It also compiles to 13,462 tris (11 storeys x 7-9 bays on four faces), over the budget.",
+    "walls": [
+     {
+      "wall": "w01-269",
+      "bearing": 269,
+      "capturedAt": "2025-07-01",
+      "usable": false
+     },
+     {
+      "wall": "w02-89",
+      "bearing": 89,
+      "capturedAt": "2025-07-01",
+      "usable": false
+     },
+     {
+      "wall": "w03-359",
+      "bearing": 359,
+      "capturedAt": "2025-07-01",
+      "usable": false
+     },
+     {
+      "wall": "w04-89",
+      "bearing": 89,
+      "capturedAt": "2025-07-01",
+      "usable": false
+     }
+    ]
+   },
+   {
+    "pand": "0363100012250972",
+    "addresses": [
+     "Haarlemmerweg 940",
+     "Haarlemmerweg 1138"
+    ],
+    "houseId": "haarlemmerweg-940",
+    "footprintM2": 802,
+    "heightM": 46.6,
+    "storeys": 16,
+    "builtYear": 2023,
+    "side": "north",
+    "usableWalls": 1,
+    "triangles": 18145,
+    "likeness": "walls[0] FAIL (blue-cast crop, wall family and glazing band off by 0.21), walls[1] FAIL (glazing band 0.22, columns 9 vs photo 3), walls[2] NO EVIDENCE (51.6 deg obliquity), walls[3] NO PHOTO",
+    "outcome": "do not install",
+    "reason": "triangle budget: 18,145 tris for 16 storeys x 8 bays on four faces (520 recessed openings); no face of this tower reaches 12k at the measured 2.68 m pitch, and two of the four faces have no usable post-build crop.",
+    "walls": [
+     {
+      "wall": "w02-89",
+      "bearing": 89,
+      "capturedAt": "2025-07-01",
+      "usable": false
+     },
+     {
+      "wall": "w03-359",
+      "bearing": 359,
+      "capturedAt": "2025-07-01",
+      "usable": true
+     },
+     {
+      "wall": "w04-179",
+      "bearing": 179,
+      "capturedAt": "2025-09-26",
+      "usable": false
+     }
+    ]
+   },
+   {
+    "pand": "0363100012116511",
+    "addresses": [
+     "Haarlemmerweg 290",
+     "Haarlemmerweg 488"
+    ],
+    "houseId": "haarlemmerweg-290",
+    "footprintM2": 450,
+    "heightM": 45.7,
+    "storeys": 14,
+    "builtYear": 1970,
+    "side": "south",
+    "usableWalls": 3,
+    "triangles": 15262,
+    "likeness": "not judged: the house was held before measure --write (the measured rhythm needs more openings than the budget allows)",
+    "outcome": "held (triangle budget, not built)",
+    "reason": "14 storeys x 7 bays on four faces needs 279-377 recessed openings = 15.3k tris, 3.3k over the 12k budget; the balcony-band reading is the kit balcony plus glass rail, which is the expensive form.",
+    "walls": [
+     {
+      "wall": "w01-89",
+      "bearing": 89,
+      "capturedAt": "2019-01-07",
+      "usable": true
+     },
+     {
+      "wall": "w02-269",
+      "bearing": 269,
+      "capturedAt": "2025-07-01",
+      "usable": false
+     },
+     {
+      "wall": "w03-179",
+      "bearing": 179,
+      "capturedAt": "2025-09-26",
+      "usable": true
+     },
+     {
+      "wall": "w04-359",
+      "bearing": 359,
+      "capturedAt": "2019-11-07",
+      "usable": true
+     }
+    ]
+   },
+   {
+    "pand": "0363100012066028",
+    "addresses": [
+     "Molenwerf 1",
+     "Molenwerf 1"
+    ],
+    "houseId": "molenwerf-1-066028",
+    "footprintM2": 2686,
+    "heightM": 20,
+    "storeys": 1,
+    "builtYear": 1980,
+    "side": "north",
+    "usableWalls": 9,
+    "triangles": 8828,
+    "likeness": "walls[0] FAIL (wall dL +0.20, glazing storey band 0.45 vs photo 0.54; columns 6 vs 6, shape wide vs wide, IoU 0.63), walls[1] NO PHOTO (the 30 m wing)",
+    "outcome": "held (gates)",
+    "reason": "fits the budget (8,828 tris) and the measured bay rhythm, but eaves-vs-3dbag fails on both groups (group 0 model 19.47 m against a sampled LoD2.2 roof at 4.02 m; group 1 29.73 m against 19.40 m) and one opening sits 1.19 m2 outside a wall; seen at build time, not resolved.",
+    "walls": [
+     {
+      "wall": "w01-358",
+      "bearing": 358,
+      "capturedAt": "2024-09-09",
+      "usable": false
+     },
+     {
+      "wall": "w02-88",
+      "bearing": 88,
+      "capturedAt": "2022-05-02",
+      "usable": false
+     },
+     {
+      "wall": "w03-358",
+      "bearing": 358,
+      "capturedAt": "2025-07-01",
+      "usable": false
+     },
+     {
+      "wall": "w04-268",
+      "bearing": 268,
+      "capturedAt": "2025-07-01",
+      "usable": true
+     },
+     {
+      "wall": "w05-178",
+      "bearing": 178,
+      "capturedAt": "2025-07-01",
+      "usable": true
+     },
+     {
+      "wall": "w06-178",
+      "bearing": 178,
+      "capturedAt": "2024-12-23",
+      "usable": true
+     },
+     {
+      "wall": "w07-268",
+      "bearing": 268,
+      "capturedAt": "2022-03-29",
+      "usable": true
+     },
+     {
+      "wall": "w08-178",
+      "bearing": 178,
+      "capturedAt": "2025-09-26",
+      "usable": true
+     },
+     {
+      "wall": "w09-178",
+      "bearing": 178,
+      "capturedAt": "2024-12-23",
+      "usable": true
+     },
+     {
+      "wall": "w10-268",
+      "bearing": 268,
+      "capturedAt": "2022-03-29",
+      "usable": true
+     },
+     {
+      "wall": "w11-178",
+      "bearing": 178,
+      "capturedAt": "2025-09-26",
+      "usable": true
+     },
+     {
+      "wall": "w12-358",
+      "bearing": 358,
+      "capturedAt": "2025-07-01",
+      "usable": true
+     }
+    ]
+   }
+  ]
+ },
+ "nextSteps": {
+  "STREET_SURVEY": "The 1934-38 rows on the south side (Haarlemmerweg 507-651, and the Gibraltarstraat / Van Gentstraat / Kijkduinstraat / Livornostraat / Solebaystraat corners) and the 1988 row at 477-495 are repetitive frontages: one rhythm per block face, shared facade recipe (street-survey / block-face pipeline), not one large recipe per address. Those blocks carry the shopfronts the user photographed (Stichting De Gibraltar, Amsterdam Skin care, Taco Lindo West, Dojo Doorje).",
+  "TRACK_L": "No pand in this window is a pre-1900 ornamented historic front, so this corridor produced no TRACK_L row. If the 1934 decorative brick fronts at 507-519 are judged too ornamented for the block-face survey they are the only Track L candidates here, and need a Track L lane with its own inventory and elevations.",
+  "NO_EVIDENCE": "Molenwerf 1 and Molenwerf 2 (the 1980/2003 office campus behind the north-side frontage: Kennedy Van der Laan, WJ Digital Marketing, MB limousines, Gymbase Westerpark in the user screenshot) have no panorama reaching a corridor-facing wall (29-38 m back behind their forecourt), and Haarlemmerweg 518A has only a 2022 construction crop. Haarlemmerweg 1140A is a 2024 cycle shed. They stay unbuilt until a newer capture or a survey route exists.",
+  "TRACK_M_REMAINING": "Molenwerf 1 stays TRACK_M but unbuilt (no corridor panorama); 518A needs a post-2023 capture of its Haarlemmerweg front before it can be measured.",
+  "userTypo": "The user typed \"Haarlemmerdijk\"; the screenshot and the corridor coordinates are the Haarlemmerweg between Molenwerf and Solebaystraat, which is what this inventory covers."
+ }
+}
