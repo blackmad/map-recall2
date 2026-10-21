@@ -765,9 +765,9 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     (3) canalrecall.blackmad.com now 301s to rideamsterdam.nl in Firebase but
     its Namecheap DNS still points at 45.63.21.43: replace that A record with
     CNAME `canalrecall-blackmad.web.app`; optionally edumap.blackmad.com;
-    (4) DONE 2026-10-21: rideamsterdam.nl (Porkbun) attached, Auth domains and
-    reCAPTCHA key updated; waiting on the .nl delegation and the Firebase
-    certificate; (5) real Google sign-in test across /ride, /quiz/, /progress
+    (4) DONE 2026-10-21: rideamsterdam.nl served by Cloudflare Pages (HISTORY);
+    open: a www → apex redirect rule, and retire the Firebase Hosting deploy
+    once Pages has run clean for a while; (5) real Google sign-in test across /ride, /quiz/, /progress
     on rideamsterdam.nl; (6) DONE: domain bought (rideamsterdam.nl).
   - Decisions pending: clarity finding 16 (HUD names the start street);
     whether this session or integrator-f5 runs the recipe-tile compile pass

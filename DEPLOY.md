@@ -18,13 +18,28 @@ opened the ride before (localStorage `canalRecall.returningPlayer.v1`), to
 
 | Hostname | Firebase site | Serves | Built from |
 | --- | --- | --- | --- |
-| `rideamsterdam.nl` | `canalrecall-blackmad` | Everything above | `dist-canalrecall/` |
-| `www.rideamsterdam.nl` | `canalrecall-blackmad` | Firebase custom-domain redirect to `rideamsterdam.nl` | — |
+| `rideamsterdam.nl` | Cloudflare Pages `rideamsterdam` (Firebase `canalrecall-blackmad` is the fallback) | Everything above | `dist-pages/` from `dist-canalrecall/` |
+| `www.rideamsterdam.nl` | Cloudflare Pages `rideamsterdam` | Same site (canonical tags name the apex) | `dist-pages/` |
 | `canalrecall.blackmad.com` | `canalrecall-blackmad` | Firebase custom-domain redirect to `rideamsterdam.nl` (needs its Namecheap CNAME) | — |
 | `mapquest.blackmad.com` | `canalrecall-blackmad` | Same site | `dist-canalrecall/` |
 | `edumap.blackmad.com` | `edumap-blackmad` | 301 to `rideamsterdam.nl/quiz/…` | `dist-edumap/` (placeholder only) |
 
-DNS for `rideamsterdam.nl` is at Porkbun (apex A `199.36.158.100`, TXT
+**Serving host (2026-10-21): Cloudflare Pages**, project `rideamsterdam`
+(`rideamsterdam.pages.dev`), because Pages charges nothing for bandwidth and a
+ride downloads ~14 MB. The deploy workflow builds once and publishes to both
+Firebase and Pages; `scripts/hosting/build-pages-site.mjs` turns
+`dist-canalrecall/` into `dist-pages/` and translates `firebase.json`'s
+redirects, rewrites and headers into `_redirects` / `_headers` (catch-alls get
+pass-through rules for real files, because Pages applies `_redirects` before
+static files; a `404.html` stops Pages' SPA fallback). Secrets:
+`CLOUDFLARE_API_TOKEN` (Pages Edit + DNS Edit), `CLOUDFLARE_ACCOUNT_ID`.
+`rideamsterdam.nl` is registered at Porkbun with nameservers
+`hassan`/`paloma.ns.cloudflare.com`; the Cloudflare zone has proxied CNAMEs
+for the apex and `www` onto `rideamsterdam.pages.dev`, both attached as Pages
+custom domains. Firebase Hosting keeps receiving every deploy as a fallback
+(`canalrecall-blackmad.web.app`).
+
+Before the move, DNS for `rideamsterdam.nl` was at Porkbun (apex A `199.36.158.100`, TXT
 `hosting-site=canalrecall-blackmad`, `www` CNAME `canalrecall-blackmad.web.app`);
 `blackmad.com` is at Namecheap. Firebase Auth authorized domains and the
 reCAPTCHA (App Check) key list both `rideamsterdam.nl` and `www`.

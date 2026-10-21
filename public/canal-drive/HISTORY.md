@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## 2026-10-21 — rideamsterdam.nl moves to Cloudflare Pages
+
+Firebase was on the free plan (360 MB/day of Hosting transfer), and one ride
+downloads ~14 MB (landing 0.5 MB, setup 7.8 MB, start + 25 s of riding
+14.3 MB, measured with CDP on the live site), so a Reddit post would have
+shut the site off within minutes. The user chose Cloudflare Pages over
+Firebase Blaze, Vercel (same per-GB price plus a fee) and S3/CloudFront.
+`scripts/hosting/build-pages-site.mjs` derives the Pages build and its
+`_redirects`/`_headers` from firebase.json; two Pages behaviours needed
+handling (rules run before static files, so `/quiz/*` swallowed Map Quest's
+JS until pass-through rules were generated; no `404.html` means every
+missing file is a 200 landing page). `canal-site.spec.ts` passed 8/8 in
+`wrangler pages dev` and again against production `rideamsterdam.pages.dev`.
+Uploading from the Mac stalled (14 of 7,234 files in minutes, connection
+resets, no rate limiting): CI deploys instead. Gotchas: the `cf` CLI's OAuth
+login cannot mint API tokens (the user made one in the dashboard);
+`wrangler pages project create` ran Cloudflare's auto-setup, which rewrote
+package.json, the lockfile and vite.config.ts and replaced the node_modules
+symlink with a real install (all reverted; use `cf pages projects create`).
+Nameservers switched at Porkbun via its API to the Cloudflare zone; Firebase
+still receives every deploy as a fallback.
+
 ## 2026-10-21 — Ride Amsterdam: new name and domain
 
 The product is now **Ride Amsterdam** at `rideamsterdam.nl` (user bought it on
