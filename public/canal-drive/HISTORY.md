@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Setup: the 2D/3D View row is back (2026-10-22)
+
+User: "okay now you can bring back 2d/3d buttons in the UI" — the setup card had
+dropped the View row on 2026-10-21 to fit Start on a 14" Mac. With the City,
+Destination and Tours rows gone there is room again: Travel, View, Route and
+Difficulty now fit with Start visible at 1512x860, 1280x720, 1440x900 and
+390x844 (no rail scroll, checked with real screenshots). The four view buttons
+are North up / Heading up (flat 2D) and Chase / Cockpit (3D), as before; the
+ride still starts Boat + North up, and a view picked here or in the in-ride
+settings is kept.
+
 ## Ride: enamel favicon and a real-ride preview card (2026-10-22)
 
 The ride page had no icon at all (the landing linked Map Quest's compass), and
