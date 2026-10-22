@@ -726,7 +726,14 @@ export function OverlayApp({
 }) {
   const state = useSyncExternalStore(store.subscribe, store.getState, store.getState);
   const t = useT();
-  const accountSignedIn = state.account.signedIn ?? state.account.buttonLabel === 'Sign out';
+  const accountSignedIn = state.account.signedIn === true;
+  // Account labels that arrive as `#key` are catalog messages (they outlive a
+  // language switch, so their words cannot be baked in by the host).
+  const accountValue = (value: string, params?: Record<string, string | number>) =>
+    value.startsWith('#') ? t(value.slice(1) as Parameters<Translate>[0], params) : value;
+  const accountLabel = accountValue(state.account.label);
+  const accountNote = accountValue(state.account.note, { count: state.account.noteCount ?? 0 });
+  const accountButton = accountValue(state.account.buttonLabel);
   const prefs = state.prefs;
   const [knowledgeRefresh, setKnowledgeRefresh] = useState(0);
   const knowledgeNow = useMemo(() => Date.now(), [knowledgeRefresh]);
@@ -796,8 +803,8 @@ export function OverlayApp({
 
             <div className="setup-account" id="account-row">
               <div className="setup-account-copy">
-                <strong id="account-label">{state.account.label}</strong>
-                <small id="account-note">{state.account.note}</small>
+                <strong id="account-label">{accountLabel}</strong>
+                <small id="account-note">{accountNote}</small>
               </div>
               <div className="setup-account-actions">
                 <button
@@ -810,7 +817,7 @@ export function OverlayApp({
                 </button>
                 <AccountChip
                   id="account-button"
-                  user={accountSignedIn ? { label: state.account.label, photoURL: state.account.photoURL } : null}
+                  user={accountSignedIn ? { label: accountLabel, photoURL: state.account.photoURL } : null}
                   available={state.account.available !== false}
                   busy={state.account.busy}
                   onSignIn={() => callbacks.onAccountClick()}
@@ -1083,8 +1090,8 @@ export function OverlayApp({
           <SiteSwitch links={siteLinksHere} current="ride" id="settings-site-switch" />
           <div className="setup-account" id="settings-account-row">
             <div className="setup-account-copy" role="status" aria-live="polite">
-              <strong id="settings-account-label">{state.account.buttonLabel === 'Sign out' ? t('settings.signedInAs', { name: state.account.label }) : state.account.label}</strong>
-              <small>{state.account.note}</small>
+              <strong id="settings-account-label">{accountSignedIn ? t('settings.signedInAs', { name: accountLabel }) : accountLabel}</strong>
+              <small>{accountNote}</small>
             </div>
             <div className="setup-account-actions">
               <a id="settings-progress-link" className="account-button enamel-quiet" href={siteLinksHere.progress}>{t('settings.progress')}</a>
@@ -1095,7 +1102,7 @@ export function OverlayApp({
                 disabled={state.account.busy}
                 onClick={() => callbacks.onAccountClick()}
               >
-                {state.account.buttonLabel}
+                {accountButton}
               </button>
             </div>
           </div>

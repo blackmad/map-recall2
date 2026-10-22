@@ -513,6 +513,44 @@ export const en = {
   'quiz.postcardOpen': 'Greetings from {name}: open the postcard',
   'quiz.dueTodayLabel': 'Due today',
 
+  'account.guest': 'Playing as guest',
+  'account.guestNote': 'Sign in to keep your progress on every device',
+  'account.signIn': 'Sign in',
+  'account.signOut': 'Sign out',
+  'account.signingIn': 'Signing in…',
+  'account.syncNote': 'Progress syncs to every device',
+  'account.signInTitle': 'Sign in with Google to keep your progress on every device',
+  'account.unavailable': 'Sign-in is not configured on this build',
+  'account.fallback': 'Account',
+
+  'account.masteredSynced': '{count} synced',
+
+  'onb.close': 'Close the intro',
+  'onb.skip': 'Skip',
+  'onb.back': 'Back',
+  'onb.gotIt': 'Got it',
+  'onb.next': 'Next',
+  'onb.step': 'Step {current} of {total}',
+  'onb.rideTitle': 'Ride the real city',
+  'onb.rideBody': 'Pick Boat or Bike and press Start route. Ride to the destination named in the top-right corner; the orange arrow points the way.',
+  'onb.ringCaption': 'Hold the ring at the bottom and slide: sideways steers, up speeds up, back brakes.',
+  'onb.keysCaption': 'Arrow keys or WASD steer. Space brakes.',
+  'onb.nameTitle': 'Name it',
+  'onb.nameBody': 'When you turn onto a new canal or street, the ride stops and asks its name. The card in the top-left shows ? ? ? until you answer. Not sure? Choose No idea. You see the answer either way.',
+  'onb.tapCaption': 'Tap a name to answer. On Hard you type it.',
+  'onb.pressCaption': 'Press 1–4 to pick a name, 0 for No idea. On Hard you type it.',
+  'onb.scoreTitle': 'Points and names learned',
+  'onb.scoreBody': 'A right answer earns points: more on harder settings, in a streak, and for a name that is new to you. Names you get right come back later for review, so they stick.',
+  'onb.tally': '3/4 named · 290 pts',
+  'onb.scoreCaption': '3 named out of 4 asked. Knowledge, on the start screen, lists every name you have learned.',
+
+  'site.home': 'Home',
+  'site.ride': 'Ride',
+  'site.quiz': 'Quiz',
+  'site.progress': 'Progress',
+  'site.buildings': 'Buildings',
+  'site.label': 'Map Recall',
+
 } as const;
 
 export type MessageKey = keyof typeof en;

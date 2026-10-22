@@ -55,7 +55,7 @@ export function finishStory(input: FinishStoryInput): FinishStory {
   const streak = placeStreakLabel(placeStreak);
 
   const guestTease = !input.signedIn && input.recallAvailable
-    ? 'Sign in to keep your progress on every device'
+    ? '#account.guestNote'
     : null;
 
   return { headline, detail, passport, streak, guestTease };

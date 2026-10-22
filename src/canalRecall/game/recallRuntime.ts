@@ -192,17 +192,18 @@ export class GameRecallRuntime {
         overlay.store.setAccount({
           visible: true,
           label: user.label,
-          note: `${recall.masteredCount} synced`,
-          buttonLabel: 'Sign out',
+          note: '#account.masteredSynced',
+          noteCount: recall.masteredCount,
+          buttonLabel: '#account.signOut',
           signedIn: true,
           photoURL: user.photoURL,
         });
       } else {
         overlay.store.setAccount({
           visible: true,
-          label: 'Playing as guest',
-          note: 'Sign in to keep your progress on every device',
-          buttonLabel: 'Sign in',
+          label: '#account.guest',
+          note: '#account.guestNote',
+          buttonLabel: '#account.signIn',
           signedIn: false,
           photoURL: null,
         });
