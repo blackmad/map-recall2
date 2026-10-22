@@ -92,7 +92,17 @@ for (const spot of SPOTS) {
       page.on('requestfailed', r => console.log(`FAILED ${r.url()} ${r.failure()?.errorText}`));
       page.on('console', m => { if (m.type() === 'error' || /ordinary|recipe-large/i.test(m.text())) console.log(`CONSOLE ${m.type()} ${m.text().slice(0, 300)}`); });
     }
-    await openRoute(page, { travelMode: 'car', viewMode: spot.view ?? 'chase', query: spot.query ?? '', abortHeavyTiles: true });
+    await openRoute(page, { travelMode: 'car', query: spot.query ?? '', abortHeavyTiles: true });
+    // Cockpit is no longer a player choice; these street captures still set
+    // the camera directly for the low view.
+    if (spot.view === 'cockpit') {
+      await page.evaluate(() => {
+        const g = (window as any).canalRecallGame;
+        g.viewMode = 'cockpit';
+        g.camera.viewMode = 'cockpit';
+        g.camera.northUp = false;
+      });
+    }
     const p = standpoint(spot);
     await teleport(page, p);
     await page.waitForTimeout(2500);

@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Cockpit view retired; rides start in Chase (2026-10-22)
+
+User: "get rid of the cockpit view" and "default to chase". The preference
+list (`VIEW_MODES`) is North up, Heading up and Chase; setup and the in-ride
+settings show three view buttons, and `defaultPreferences` starts every ride in
+Chase. A stored `cockpit` is no longer a valid preference, so `parseMode` reads
+it as the default (Chase) — the same fallback rule that retires any removed
+mode. The engine keeps the cockpit camera for internal street captures
+(`demo-shots`, `own-ground-paint`, `mood-shots` set `game.viewMode` directly
+after the ride starts), and `isPitchedView()` now owns the "3D view" checks.
+The help table's tilt row says "Chase view". Verified in the browser: setup and
+settings list `north/heading/chase`, a seeded `cockpit` preference loads as
+Chase, and the boot + Amsterdam-lock e2e cases pass.
+
 ## Setup: the 2D/3D View row is back (2026-10-22)
 
 User: "okay now you can bring back 2d/3d buttons in the UI" — the setup card had

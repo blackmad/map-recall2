@@ -7,6 +7,7 @@ import {
   ASK_BUDGETS,
   CAMERA_TILT_MAX,
   CAMERA_TILT_MIN,
+  isPitchedView,
   playableCities,
   type CanalPreferences,
   type ZoomClamp,
@@ -269,7 +270,6 @@ const VIEW: Choice<CanalPreferences['viewMode']>[] = [
   { value: 'north', title: 'North up', hint: 'Flat map, north at top' },
   { value: 'heading', title: 'Heading up', hint: 'Flat map, turns with you' },
   { value: 'chase', title: 'Chase', hint: 'High 3D, behind the vehicle' },
-  { value: 'cockpit', title: 'Cockpit', hint: 'Low 3D, over the bumper' },
 ];
 
 const BUILDING_LOOK: Choice<CanalPreferences['buildingLook']>[] = [
@@ -321,7 +321,7 @@ function RideOptions({
   const set = (next: Partial<CanalPreferences>) => patch(next, live);
   const id = (setupId: string, liveId: string) => (live ? liveId : setupId);
   const name = (base: string) => (live ? `live-${base}` : base);
-  const threeD = prefs.viewMode === 'chase' || prefs.viewMode === 'cockpit';
+  const threeD = isPitchedView(prefs.viewMode);
   return (
     <>
       {live ? (
@@ -809,7 +809,6 @@ export function OverlayApp({
               <option value="north">North-up</option>
               <option value="heading">Heading-up</option>
               <option value="chase">Chase</option>
-              <option value="cockpit">Cockpit</option>
             </select>
             <select id="max-asks-per-minute" hidden value={String(prefs.maxAsksPerMinute)} onChange={event => patch({ maxAsksPerMinute: Number(event.target.value) as CanalPreferences['maxAsksPerMinute'] })}>
               {ASK_BUDGETS.map(budget => <option key={budget} value={String(budget)}>{budget === 0 ? 'Off' : String(budget)}</option>)}

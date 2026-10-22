@@ -5,11 +5,11 @@ try{
   const context=await browser.newContext({viewport:{width,height}}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   if(savedOff)await context.addInitScript(()=>localStorage.setItem('canalRecall.preferences.v1',JSON.stringify({trees:false,viewMode:'north'})));
   await page.goto('http://127.0.0.1:5196/canal-drive/');await page.waitForFunction(()=>window.canalRecallGame?.vectorMap?._inventoryTrees?.ready,{timeout:60000});
-  assert.equal(await page.evaluate(()=>canalRecallGame._prefs().trees),!savedOff);assert.equal(await page.evaluate(()=>canalRecallGame.viewMode),'north');
+  assert.equal(await page.evaluate(()=>canalRecallGame._prefs().trees),!savedOff);assert.equal(await page.evaluate(()=>canalRecallGame.viewMode),'chase');
   await page.locator('#route-card').evaluate(f=>f.requestSubmit());await page.waitForFunction(()=>canalRecallGame.state===4&&canalRecallGame.camera.introOverview===0,{timeout:60000});await page.waitForTimeout(2000);
   if(savedOff)assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._inventoryTrees.meshes.length),0);else await page.waitForFunction(()=>canalRecallGame.vectorMap._inventoryTrees.debugTrees>10,{timeout:60000});
   await page.evaluate(()=>canalRecallGame._overlay.store.setSettingsOpen(true));await page.waitForSelector('#live-trees');const toggle=page.locator('label').filter({has:page.locator('#live-trees')});assert.equal(await toggle.isVisible(),true);assert.match((await toggle.innerText()).trim(),/^Trees$/i);assert.equal(await page.locator('#live-trees').isChecked(),!savedOff);
-  for(const mode of ['north','heading','chase','cockpit']){
+  for(const mode of ['north','heading','chase']){
    await page.locator('[data-choice="live-view:'+mode+'"]').click();await page.waitForFunction(mode=>canalRecallGame.viewMode===mode,mode);
    if(await page.locator('#live-trees').isChecked())await toggle.click();assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._inventoryTrees.enabled),false);assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._inventoryTrees.meshes.length),0);
    await toggle.click();await page.waitForFunction(()=>canalRecallGame.vectorMap._inventoryTrees.enabled&&canalRecallGame.vectorMap._inventoryTrees.debugTrees>0,{timeout:60000});

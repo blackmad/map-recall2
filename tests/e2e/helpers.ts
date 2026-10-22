@@ -18,7 +18,7 @@ export async function setHiddenSelect(page: Page, id: string, value: string): Pr
 
 export type OpenRouteOptions = {
   travelMode?: 'boat' | 'car' | 'transit';
-  viewMode?: 'north' | 'heading' | 'chase' | 'cockpit';
+  viewMode?: 'north' | 'heading' | 'chase';
   seedRandom?: boolean;
   abortHeavyTiles?: boolean;
   /** Jump straight into racing after the player spawns. */

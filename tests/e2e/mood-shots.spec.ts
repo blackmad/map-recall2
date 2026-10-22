@@ -102,7 +102,17 @@ for (const query of QUERIES) for (const view of ['chase', 'cockpit', 'aerial'] a
     {
       const spots = MOOD_SPOTS.filter(s => s.view === view && (!ONLY || ONLY.includes(s.name)));
       test.skip(!spots.length, 'no spots for this view');
-      await openRoute(page, { travelMode: 'car', viewMode: view === 'aerial' ? 'chase' : view, query, abortHeavyTiles: true });
+      await openRoute(page, { travelMode: 'car', query, abortHeavyTiles: true });
+      // Cockpit is no longer a player choice; these captures still set the
+      // camera directly for the low view.
+      if (view === 'cockpit') {
+        await page.evaluate(() => {
+          const g = (window as any).canalRecallGame;
+          g.viewMode = 'cockpit';
+          g.camera.viewMode = 'cockpit';
+          g.camera.northUp = false;
+        });
+      }
       await page.evaluate(() => {
         const map = (window as any).canalRecallGame.vectorMap.map;
         for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');

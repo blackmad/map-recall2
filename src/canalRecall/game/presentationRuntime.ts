@@ -36,7 +36,7 @@ import { introFrame, introOverview, introPlan, playerZoom } from './introFlight'
 import { boatZoomScale, ferryZoomScale, transitZoomScale, vehicleZoomScale } from './vehicleZoomScale';
 import { glyphBox, startTagCentreY, type ScreenBox } from './vehicleScreenBox';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
-import { isCar, isBoat, isTransit } from './modes';
+import { isCar, isBoat, isTransit, isPitchedView } from './modes';
 import { zoomBadgeShouldFlash, zoomBadgeText } from '../hudCopy';
 import { travelProfile } from './travelProfile';
 import { routePlaqueName } from './recallRules';
@@ -317,7 +317,7 @@ export class GamePresentationRuntime {
     };
     // Twist orbits chase/cockpit (see trackpadTwist.ts). The bearing is
     // persisted once the gesture settles, not on every event.
-    const twistable = () => this.state !== GameState.MENU && (this.viewMode === 'chase' || this.viewMode === 'cockpit');
+    const twistable = () => this.state !== GameState.MENU && isPitchedView(this.viewMode);
     let persistTwistTimer = 0;
     const twist = (clockwiseDeg: number) => {
       if (!clockwiseDeg) return;
@@ -659,7 +659,7 @@ export class GamePresentationRuntime {
     this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
     // Both travel modes have a real model now; the canvas glyph stays only as
     // the loading fallback, and is not painted over a mesh that is ready.
-    const pitched = this.viewMode === 'chase' || this.viewMode === 'cockpit';
+    const pitched = isPitchedView(this.viewMode);
     const byFerry = !!player.ferryOrigin;
     const byBoat = isBoat(this.travelMode);
     const byTransit = isTransit(this.travelMode);

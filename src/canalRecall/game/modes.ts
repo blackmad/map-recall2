@@ -16,8 +16,17 @@ export type AnswerMode = typeof ANSWER_MODES[number];
 export const CONTROL_MODES = ['relative', 'absolute'] as const;
 export type ControlMode = typeof CONTROL_MODES[number];
 
-export const VIEW_MODES = ['north', 'heading', 'chase', 'cockpit'] as const;
-export type ViewMode = typeof VIEW_MODES[number];
+// Cockpit was retired as a player choice (2026-10-22, user): setup and the
+// in-ride settings offer North up, Heading up and Chase. The engine still
+// understands the cockpit camera for internal street captures, so `ViewMode`
+// keeps it while `VIEW_MODES` (what a preference may hold) does not.
+export const VIEW_MODES = ['north', 'heading', 'chase'] as const;
+export type ViewMode = typeof VIEW_MODES[number] | 'cockpit';
+
+/** The pitched 3D cameras: chase, and cockpit for internal captures. */
+export function isPitchedView(view: string | null | undefined): boolean {
+  return view === 'chase' || view === 'cockpit';
+}
 
 // Photo is the default; Untextured is the plain, cheapest look. The old MapLibre pattern layer
 // ('default') is no longer offered (user request 2026-10-02); a saved 'default' reads as Photo.

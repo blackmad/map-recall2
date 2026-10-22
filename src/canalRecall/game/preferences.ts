@@ -23,6 +23,7 @@ export {
   isBoat,
   isCar,
   isTransit,
+  isPitchedView,
   type AnswerMode,
   type ControlMode,
   type RouteDifficulty,
@@ -154,10 +155,10 @@ export interface CanalPreferences {
   zoomDefaultVersion: typeof ZOOM_DEFAULT_VERSION;
   /**
    * Extra MapLibre pitch (degrees) on top of the view-mode default.
-   * Chase/cockpit use this as a live tilt control; 2D modes ignore it.
+   * The 3D views use this as a live tilt control; 2D modes ignore it.
    */
   cameraTilt: number;
-  /** Orbit angle around the vehicle in chase/cockpit view, in degrees. */
+  /** Orbit angle around the vehicle in a 3D view, in degrees. */
   cameraBearing: number;
 }
 
@@ -174,11 +175,11 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     cityId: DEFAULT_CITY_ID,
     difficulty: 'medium',
     ...DIFFICULTY_PRESETS.medium,
-    // Boat and North up are the product start (2026-10-22, user's call;
-    // setup offers no view picker, the in-ride settings do).
+    // Boat and Chase are the product start (2026-10-22, user's call; cockpit
+    // is retired and the setup View row offers the 2D and 3D views).
     travelMode: 'boat',
     controlMode: 'relative',
-    viewMode: 'north',
+    viewMode: 'chase',
     themeMode: 'clean',
     buildingLook: 'photo',
     routePattern: 'surprise',

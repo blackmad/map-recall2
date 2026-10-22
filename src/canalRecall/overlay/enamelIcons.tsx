@@ -3,7 +3,6 @@ import {
   Bike,
   Compass,
   Crosshair,
-  Gauge,
   Home,
   LocateFixed,
   Navigation2,
@@ -27,11 +26,10 @@ export const TRAVEL_ICONS: Record<CanalPreferences['travelMode'], LucideIcon> = 
   transit: Train,
 };
 
-export const VIEW_ICONS: Record<CanalPreferences['viewMode'], LucideIcon> = {
+export const VIEW_ICONS: Partial<Record<CanalPreferences['viewMode'], LucideIcon>> = {
   north: Compass,
   heading: Navigation2,
   chase: Crosshair,
-  cockpit: Gauge,
 };
 
 export const ROUTE_ICONS: Record<CanalPreferences['routePattern'], LucideIcon> = {

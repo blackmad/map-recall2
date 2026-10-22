@@ -41,7 +41,15 @@ async function boot(page: Page): Promise<string[]> {
   // look v2 (surveyMarkings.ts: the OSM crossing nodes here are zebras with crossing:signals=yes, so zebras and stop
   // lines on the carriageway polygons); ROADS=0 pins the band fallback's paint instead (cells without the survey).
   if (process.env.ROADS === '0') await page.addInitScript(() => { (window as any).__canalRecallRoads = false; });
-  await openRoute(page, { travelMode: 'car', viewMode: 'cockpit', abortHeavyTiles: false, enterRacing: false, query: '?ownGround=1' });
+  await openRoute(page, { travelMode: 'car', abortHeavyTiles: false, enterRacing: false, query: '?ownGround=1' });
+  // Cockpit is no longer a player choice; this probe keeps its measured low
+  // view (the chase camera's trees hide the junction mouth).
+  await page.evaluate(() => {
+    const g = (window as any).canalRecallGame;
+    g.viewMode = 'cockpit';
+    g.camera.viewMode = 'cockpit';
+    g.camera.northUp = false;
+  });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   return errors;
 }
