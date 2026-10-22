@@ -1,5 +1,6 @@
 import React from 'react';
 import { formatDay } from '../mapRecall/dailyFive';
+import { useT } from '../i18n/useT';
 
 /**
  * The start rail's "Daily five": today's date and the streak, or "Done today"
@@ -12,6 +13,7 @@ export const DailyFiveTile: React.FC<{
   nearHome: boolean;
   onStart: () => void;
 }> = ({ today, streak, done, nearHome, onStart }) => {
+  const t = useT();
   const where = nearHome ? 'near home' : 'near the centre';
   return <button
     type="button"
@@ -23,7 +25,7 @@ export const DailyFiveTile: React.FC<{
   >
     <span className="text-xl text-[#8a4a18]" aria-hidden>✦</span>
     <span className="min-w-0 flex-1">
-      <span className="enamel-brand block text-lg text-white">Daily five</span>
+      <span className="enamel-brand block text-lg text-white">{t('quiz.dailyFive')}</span>
       <span className="block text-xs text-white/65 mt-0.5">
         {done ? <>Done today · streak {streak}</> : <>{formatDay(today)} · five mixed places {where}</>}
       </span>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { formatDistance } from '../utils/geo';
 import type { DistanceUnit } from '../types';
+import { useT } from '../i18n/useT';
 
 export type BonusPhase = 'offer' | 'active' | 'done' | 'skipped';
 
@@ -28,19 +29,20 @@ export const BonusPinPanel: React.FC<{
   onStart: () => void;
   onSkip: () => void;
 }> = ({ bonus, unit, onStart, onSkip }) => {
+  const t = useT();
   if (!bonus || bonus.phase === 'skipped') return null;
-  const skip = <button type="button" onClick={onSkip} className="qf-bonus-skip text-white/55 hover:text-white cursor-pointer">Skip</button>;
+  const skip = <button type="button" onClick={onSkip} className="qf-bonus-skip text-white/55 hover:text-white cursor-pointer">{t('quiz.skip')}</button>;
   if (bonus.phase === 'offer') {
     return <div data-testid="bonus-pin" data-phase="offer" className="qf-bonus-line">
       <button type="button" onClick={onStart} className="qf-bonus-start cursor-pointer">
-        <span className="font-bold text-[#8a4a18]">Bonus</span> · where is {bonus.label}?
+        <span className="font-bold text-[#8a4a18]">{t('quiz.bonus')}</span> · {t('quiz.bonusWhere', { place: bonus.label })}
       </button>
       {skip}
     </div>;
   }
   if (bonus.phase === 'active') {
     return <div data-testid="bonus-pin" data-phase="active" className="qf-bonus-line" role="status">
-      <span className="font-semibold text-white"><span className="text-[#8a4a18]">Tap the map</span> where {bonus.label} is</span>
+      <span className="font-semibold text-white"><span className="text-[#8a4a18]">{t('quiz.tapMap')}</span> {t('quiz.bonusTapWhere', { place: bonus.label })}</span>
       {skip}
     </div>;
   }

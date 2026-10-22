@@ -1,3 +1,5 @@
+import { featureTypeBadge } from './featureTypeBadge';
+import { useT } from '../i18n/useT';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { StreetFeature, DistanceUnit } from '../types';
 import { calculateHaversineDistanceMeters, calculatePinpointScore, formatDistance } from '../utils/geo';
@@ -43,31 +45,6 @@ interface PinpointModeOverlayProps {
 // One chip style for every kind. Per-type pastel tints (sky-700 on cobalt,
 // indigo-800 on cobalt) were unreadable on the enamel card; the glyph and the
 // word already tell the kinds apart.
-function getFeatureTypeBadge(type: string) {
-  switch (type) {
-    case 'canal':
-    case 'water':
-      return { label: 'Canal / Waterway', icon: '≈' };
-    case 'bridge':
-      return { label: 'Bridge', icon: '⌁' };
-    case 'square':
-      return { label: 'Square / Plaza', icon: '□' };
-    case 'park':
-      return { label: 'Park / Greenway', icon: '♧' };
-    case 'museum':
-    case 'landmark':
-    case 'monument':
-      return { label: 'Landmark', icon: '◆' };
-    case 'neighborhood':
-      return { label: 'Neighborhood', icon: '⬡' };
-    case 'avenue':
-    case 'boulevard':
-    case 'street':
-    default:
-      return { label: 'Street', icon: '╱' };
-  }
-}
-
 export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   currentFeature,
   userPinnedLocation,
@@ -94,7 +71,8 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   const [hintsOpened, setHintsOpened] = useState(false);
   const scrollerRef = useRef<HTMLDivElement>(null);
 
-  const badge = getFeatureTypeBadge(currentFeature.type);
+  const t = useT();
+  const badge = featureTypeBadge(currentFeature.type, t);
   // Hints that name places come first; bearings from the search centre fill in
   // when the extract has too little nearby to name (src/mapRecall/locateHints.ts).
   const [placeHints, setPlaceHints] = useState<{ featureId: string; hints: string[] } | null>(null);
@@ -211,12 +189,12 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                     if (!showClues) setHintsOpened(true);
                     setShowClues(!showClues);
                   }}
-                  aria-label={showClues ? 'Hide hint' : 'Show hint'}
+                  aria-label={showClues ? t('quiz.hideHint') : t('quiz.showHint')}
                   className={`enamel-chip ${showClues ? 'active' : ''} flex items-center gap-1 text-xs font-bold px-2 py-1 sm:px-2.5 transition cursor-pointer`}
                 >
                   <HelpCircle className="w-3.5 h-3.5 text-[#8a4a18]" />
                   <span className="hidden sm:inline">
-                    {hintsOpened ? `Hint · up to ${hintCeiling.toLocaleString('en-US')}` : 'Hint'}
+                    {hintsOpened ? t('quiz.hintWithCeiling', { points: hintCeiling.toLocaleString() }) : t('quiz.hint')}
                   </span>
                 </button>
 
@@ -285,10 +263,10 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
 
                 <div className="min-w-0">
                   <p className="text-xs sm:text-sm font-bold text-white truncate">
-                    {userPinnedLocation ? 'Pin placed' : 'Tap the map to place a pin'}
+                    {userPinnedLocation ? t('quiz.pinPlaced') : t('quiz.tapToPlace')}
                   </p>
                   <p className="hidden sm:block text-xs text-white/75 truncate">
-                    {userPinnedLocation ? 'Tap again to move it' : 'Anywhere you think it is'}
+                    {userPinnedLocation ? t('quiz.tapToMove') : t('quiz.anywhere')}
                   </p>
                 </div>
               </div>
@@ -304,13 +282,13 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   id="confirm-pinpoint-btn"
                   disabled={!userPinnedLocation}
                   onClick={onConfirmGuess}
-                  aria-label={userPinnedLocation ? 'Confirm pin location' : 'Place a pin on the map first'}
-                  title={userPinnedLocation ? 'Confirm pin location' : 'Place a pin on the map first'}
+                  aria-label={userPinnedLocation ? t('quiz.confirmPin') : t('quiz.placeFirst')}
+                  title={userPinnedLocation ? t('quiz.confirmPin') : t('quiz.placeFirst')}
                   className={`button-primary flex-1 sm:flex-none justify-center px-4 sm:px-6 py-2.5 sm:py-3 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all ${
                     userPinnedLocation ? 'cursor-pointer hover:scale-[1.03] active:scale-95' : 'cursor-not-allowed'
                   }`}
                 >
-                  <span>{userPinnedLocation ? 'Confirm' : 'Place a pin first'}</span>
+                  <span>{userPinnedLocation ? t('quiz.confirm') : t('quiz.placePinFirst')}</span>
                   {userPinnedLocation ? <ArrowRight className="w-4 h-4" /> : null}
                 </button>
               </div>
@@ -333,7 +311,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
                       <h2 className="enamel-brand text-sm sm:text-lg text-white leading-tight whitespace-nowrap">
-                        {wasSkipped ? 'Skipped' : scoreResult.tierLabel}
+                        {wasSkipped ? t('quiz.skipped') : scoreResult.tierLabel}
                       </h2>
                       <span className="enamel-chip hidden sm:inline-flex text-xs px-2 py-0.5 font-mono font-bold">
                         {wasSkipped ? '0' : scoreResult.accuracyPercentage}%
@@ -356,7 +334,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   <div className="text-right">
                     <div className="text-sm sm:text-base font-black text-[#8a4a18] tracking-tight">
                       +{wasSkipped ? '0' : scoreResult.score.toLocaleString()}{' '}
-                      <span className="text-xs font-normal text-white/70">PTS</span>
+                      <span className="text-xs font-normal text-white/70">{t('quiz.pts')}</span>
                     </div>
                   </div>
 
@@ -365,13 +343,13 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                     onClick={onNextRound}
                     className="button-primary px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm flex items-center gap-1.5 transition cursor-pointer whitespace-nowrap"
                   >
-                    <span>{isLastRound ? 'See score' : nextNearby ? 'Next · nearby' : 'Next'}</span>
+                    <span>{isLastRound ? t('quiz.seeScore') : nextNearby ? t('quiz.nextNearby') : t('quiz.next')}</span>
                   </button>
                 </div>
               </div>
 
               {hasPin && (
-                <p className="text-xs text-white/60 italic hidden sm:block">Dashed line shows distance on map</p>
+                <p className="text-xs text-white/60 italic hidden sm:block">{t('quiz.distanceLine')}</p>
               )}
               <AnswerDetails feature={currentFeature} factSeed={factSeed} roundIndex={roundNumber - 1} />
             </div>

@@ -21,6 +21,8 @@ import { sounds } from '../utils/audio';
 import { mapQuestSite } from '../mapQuestSite';
 import { SiteSwitch } from './SiteSwitch';
 import { AccountChip, type AccountChipUser } from './AccountChip';
+import { LanguageSwitch } from './LanguageSwitch';
+import { useT } from '../i18n/useT';
 
 interface GameHeaderProps {
   cities: City[];
@@ -108,6 +110,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
   roundActive = false,
   startOpen = false,
 }) => {
+  const t = useT();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchAreaOpen, setIsSearchAreaOpen] = useState(false);
   const [locationQuery, setLocationQuery] = useState('');
@@ -170,7 +173,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 value={currentCity.id}
                 onChange={(e) => onSelectCity(e.target.value)}
                 className="enamel-chip w-full pl-2 pr-5 py-1 text-xs font-semibold focus:outline-none cursor-pointer appearance-none truncate"
-                title={`Current Location: ${currentCity.name}`}
+                title={t('quiz.currentLocation', { city: currentCity.name })}
               >
                 {cities.map((city) => (
                   <option key={city.id} value={city.id}>
@@ -185,10 +188,10 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               <button
                 onClick={() => setIsSearchAreaOpen((open) => !open)}
                 className={`enamel-chip flex items-center gap-1 px-2 py-1 text-xs font-semibold whitespace-nowrap cursor-pointer${showSearchBoundary ? ' active' : ''}`}
-                title="Adjust search radius or administrative boundary"
+                title={t('quiz.adjustRadius')}
               >
                 <Ruler className="w-3 h-3" />
-                <span className="hidden sm:block max-w-28 truncate">{activeAdministrativeArea ? activeAdministrativeArea.name : `${(searchRadiusMeters / 1000).toFixed(1)} km radius`}</span>
+                <span className="hidden sm:block max-w-28 truncate">{activeAdministrativeArea ? activeAdministrativeArea.name : t('quiz.radiusKm', { km: (searchRadiusMeters / 1000).toFixed(1) })}</span>
               </button>
             )}
 
@@ -199,10 +202,10 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   sounds.playPinDrop();
                   onChangeLocationScope(locationScope === 'neighborhood' ? 'city' : locationScope === 'city' ? 'region' : 'neighborhood');
                 }}
-                title="Cycle administrative scope"
+                title={t('quiz.cycleScope')}
                 className="enamel-chip flex items-center gap-1 px-2 py-1 text-xs font-bold flex-shrink-0 cursor-pointer"
               >
-                <span>{locationScope === 'neighborhood' ? '🏘️ Hood' : locationScope === 'region' ? '🗺️ Region' : '🏙️ City'}</span>
+                <span>{locationScope === 'neighborhood' ? `🏘️ ${t('quiz.hood')}` : locationScope === 'region' ? `🗺️ ${t('quiz.region')}` : `🏙️ ${t('quiz.city')}`}</span>
               </button>
             )}
 
@@ -213,7 +216,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 value={selectedCategory}
                 onChange={(e) => onChangeCategory(e.target.value as FeatureCategory)}
                 className={`enamel-chip w-full pl-2 pr-5 py-1 text-xs font-semibold focus:outline-none cursor-pointer appearance-none truncate${selectedCategory !== 'all' ? ' active' : ''}`}
-                title={`Feature Type Filter: ${activeCategoryInfo.label}`}
+                title={t('quiz.featureFilter', { label: activeCategoryInfo.label })}
               >
                 {FEATURE_CATEGORIES.map((cat) => {
                   const count = categoryCounts[cat.id] || 0;
@@ -229,9 +232,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             {selectedCategory !== 'neighborhoods' && <button
               onClick={onToggleLinkedFeaturesOnly}
               className={`enamel-chip hidden sm:block px-2 py-1 text-xs font-bold cursor-pointer${linkedFeaturesOnly ? ' active' : ''}`}
-              title="Only quiz features that have an encyclopedia page"
+              title={t('quiz.encyclopediaOnlyTitle')}
             >
-              Encyclopedia
+              {t('quiz.encyclopedia')}
             </button>}
               </div>
             )}
@@ -250,12 +253,12 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   }
                 }}
                 aria-pressed={gameMode === 'pinpoint'}
-                aria-label="Pinpoint: place the named feature on the map"
-                title="Pinpoint: place the named feature on the map"
+                aria-label={`${t('quiz.pinpoint')}: ${t('quiz.pinpointHint')}`}
+                title={`${t('quiz.pinpoint')}: ${t('quiz.pinpointHint')}`}
                 className="flex items-center gap-1 px-1.5 sm:px-2.5 py-1 text-xs font-semibold cursor-pointer"
               >
                 <MapPin className="w-3.5 h-3.5 sm:w-3 sm:h-3" />
-                <span className="hidden sm:inline">Pinpoint</span>
+                <span className="hidden sm:inline">{t('quiz.pinpoint')}</span>
               </button>
 
               <button
@@ -266,12 +269,12 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   }
                 }}
                 aria-pressed={gameMode === 'guess_name'}
-                aria-label="Guess Name: name the feature highlighted on the map"
-                title="Guess Name: name the feature highlighted on the map"
+                aria-label={`${t('quiz.guessName')}: ${t('quiz.guessNameHint')}`}
+                title={`${t('quiz.guessName')}: ${t('quiz.guessNameHint')}`}
                 className="flex items-center gap-1 px-1.5 sm:px-2.5 py-1 text-xs font-semibold cursor-pointer"
               >
                 <Eye className="w-3.5 h-3.5 sm:w-3 sm:h-3" />
-                <span className="hidden sm:inline">Guess Name</span>
+                <span className="hidden sm:inline">{t('quiz.guessName')}</span>
               </button>
             </div>
             )}
@@ -281,11 +284,11 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             <div
               id="header-score-badge"
               className="flex items-center gap-1 px-0.5 sm:gap-1.5 sm:px-1 text-xs"
-              title={`Round ${currentRound} of ${totalRounds}`}
+              title={t('quiz.roundOf', { round: currentRound, total: totalRounds })}
             >
               <span className="text-white font-bold whitespace-nowrap font-mono">
                 {totalScore.toLocaleString()}
-                <span className="hidden sm:inline text-xs font-normal text-[#8a4a18]"> pts</span>
+                <span className="hidden sm:inline text-xs font-normal text-[#8a4a18]"> {t('quiz.points')}</span>
               </span>
             </div>
             )}
@@ -294,14 +297,15 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             {!startOpen && blindMapMode && (
               <button
                 onClick={onToggleBlindMap}
-                title="Blind Map Mode active (labels hidden). Click to toggle."
+                title={t('quiz.blindMapOn')}
                 className="enamel-chip active flex items-center gap-1 px-1.5 py-1 text-xs font-bold uppercase tracking-wider cursor-pointer"
               >
                 <EyeOff className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">No Labels</span>
+                <span className="hidden sm:inline">{t('quiz.noLabels')}</span>
               </button>
             )}
 
+            <LanguageSwitch compact idPrefix="header-language" />
             <AccountChip
               id="header-account-chip"
               user={accountUser}
@@ -316,7 +320,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             <button
               id="header-menu-btn"
               onClick={() => setIsMenuOpen(true)}
-              title="Open Menu & Settings"
+              title={t('quiz.menu')}
               className="enamel-chip p-1.5 flex items-center justify-center cursor-pointer"
             >
               <MoreVertical className="w-4 h-4 text-white" />
@@ -328,7 +332,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
       {isSearchAreaOpen && searchRadiusMeters && (
         <div className="app-dialog fixed top-14 sm:top-16 left-2 sm:left-1/2 sm:-translate-x-1/2 z-50 w-[calc(100%-1rem)] sm:w-80 p-3.5 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-bold flex items-center gap-2"><Ruler className="w-4 h-4 text-[#8a4a18]" />Search area</span>
+            <span className="text-sm font-bold flex items-center gap-2"><Ruler className="w-4 h-4 text-[#8a4a18]" />{t('quiz.searchArea')}</span>
             <button onClick={() => setIsSearchAreaOpen(false)} className="text-white/60 hover:text-white cursor-pointer"><X className="w-4 h-4" /></button>
           </div>
           <form
@@ -343,15 +347,15 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             <input
               value={locationQuery}
               onChange={(event) => setLocationQuery(event.target.value)}
-              placeholder="City, address, or postcode"
-              aria-label="Search location"
+              placeholder={t('quiz.searchPlaceholder')}
+              aria-label={t('quiz.searchLocation')}
               className="enamel-chip min-w-0 flex-1 px-3 py-2 text-xs text-white placeholder:text-white/50 focus:outline-none"
             />
             <button
               type="submit"
               disabled={!locationQuery.trim() || isLocating}
               className="button-primary px-3 disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
-              title="Find this location using the selected radius"
+              title={t('quiz.findThisLocation')}
             >
               <Search className="w-4 h-4" />
             </button>
@@ -373,7 +377,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               onChange={(event) => onSelectAdministrativeArea?.(event.target.value ? Number(event.target.value) : null)}
               className="enamel-chip w-full px-3 py-2 text-xs cursor-pointer"
             >
-              <option value="">Custom radius circle</option>
+              <option value="">{t('quiz.customRadius')}</option>
               {administrativeAreas.map((area) => <option key={area.id} value={area.id}>{area.name} · {area.kind || `level ${area.adminLevel}`}</option>)}
             </select>
           )}
@@ -381,7 +385,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             onClick={onToggleSearchBoundary}
             className="enamel-chip w-full flex items-center justify-between px-3 py-2 text-xs cursor-pointer"
           >
-            <span>Show boundary on map</span><span className={showSearchBoundary ? 'text-[#8a4a18] font-bold' : 'text-white/50'}>{showSearchBoundary ? 'On' : 'Off'}</span>
+            <span>{t('quiz.showBoundary')}</span><span className={showSearchBoundary ? 'text-[#8a4a18] font-bold' : 'text-white/50'}>{showSearchBoundary ? t('quiz.on') : t('quiz.off')}</span>
           </button>
         </div>
       )}
@@ -403,7 +407,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 <div className="w-7 h-7 rounded-md border border-white/40 bg-white/10 flex items-center justify-center text-white">
                   <Compass className="w-4 h-4" />
                 </div>
-                <h3 className="font-bold text-sm sm:text-base text-white">Map Recall Options</h3>
+                <h3 className="font-bold text-sm sm:text-base text-white">{t('quiz.optionsTitle')}</h3>
               </div>
               <button
                 onClick={() => setIsMenuOpen(false)}
@@ -420,22 +424,22 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               <div className="mb-2 flex items-center gap-2">
                 <Cloud className={`h-4 w-4 ${accountEmail ? 'text-[#8a4a18]' : 'text-white/60'}`} />
                 <div className="min-w-0">
-                  <div className="truncate text-xs font-semibold text-white">{accountEmail || 'Guest progress'}</div>
-                  <div className="text-xs text-white/60">{accountEmail ? 'Progress sync is active' : 'Reviews are saved on this device'}</div>
+                  <div className="truncate text-xs font-semibold text-white">{accountEmail || t('quiz.guestProgress')}</div>
+                  <div className="text-xs text-white/60">{accountEmail ? t('quiz.syncActive') : t('quiz.savedHere')}</div>
                 </div>
               </div>
               {accountEmail ? (
                 <div className="grid grid-cols-2 gap-2">
                   <a href={mapQuestSite.progress} className="button-secondary flex items-center justify-center gap-2 py-2 text-xs font-semibold no-underline">
-                    My progress
+                    {t('quiz.myProgress')}
                   </a>
                   <button onClick={() => { onSignOut?.(); setIsMenuOpen(false); }} className="button-secondary flex w-full items-center justify-center gap-2 py-2 text-xs font-semibold">
-                    <LogOut className="h-3.5 w-3.5" /> Sign out
+                    <LogOut className="h-3.5 w-3.5" /> {t('quiz.signOut')}
                   </button>
                 </div>
               ) : (
-                <button disabled={!isCloudConfigured} onClick={() => { onOpenAuth?.(); setIsMenuOpen(false); }} className="button-primary flex w-full items-center justify-center gap-2 py-2 text-xs disabled:cursor-not-allowed" title={isCloudConfigured ? 'Sign in to sync progress' : 'Add Firebase environment variables to enable cloud sync'}>
-                  <LogIn className="h-3.5 w-3.5" /> {isCloudConfigured ? 'Sign in to sync' : 'Cloud sync not configured'}
+                <button disabled={!isCloudConfigured} onClick={() => { onOpenAuth?.(); setIsMenuOpen(false); }} className="button-primary flex w-full items-center justify-center gap-2 py-2 text-xs disabled:cursor-not-allowed" title={isCloudConfigured ? t('quiz.signInToSyncTitle') : t('quiz.addFirebase')}>
+                  <LogIn className="h-3.5 w-3.5" /> {isCloudConfigured ? t('quiz.signInToSync') : t('quiz.cloudNotConfigured')}
                 </button>
               )}
             </div>
@@ -494,18 +498,18 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               <div className="flex items-center justify-between">
                 <label className="text-xs font-bold uppercase tracking-wider text-white/70 flex items-center gap-1.5">
                   <Filter className="w-3 h-3 text-[#8a4a18]" />
-                  <span>Question pool</span>
+                  <span>{t('quiz.questionPool')}</span>
                 </label>
                 <span className="text-xs text-white/70 font-medium">
-                  {categoryCounts[selectedCategory] || 0} features
+                  {t('quiz.featureCount', { count: categoryCounts[selectedCategory] || 0 })}
                 </span>
               </div>
               <button
                 onClick={onToggleLinkedFeaturesOnly}
                 className={`enamel-tile w-full p-2.5 text-left text-xs cursor-pointer${linkedFeaturesOnly ? ' active' : ''}`}
               >
-                <span className="font-bold">Encyclopedia only</span>
-                <span className="mt-0.5 block text-xs opacity-75">Only quiz places with an encyclopedia page</span>
+                <span className="font-bold">{t('quiz.encyclopedia')}</span>
+                <span className="mt-0.5 block text-xs opacity-75">{t('quiz.encyclopediaOnlyHint')}</span>
               </button>
               <div className="hidden">
                 {FEATURE_CATEGORIES.map((cat) => {
@@ -548,9 +552,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
 
             {/* Game Mode Selection */}
             <div className="space-y-1.5">
-              <label className="text-xs font-bold uppercase tracking-wider text-white/70">Game mode</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-white/70">{t('quiz.gameMode')}</label>
               <p className="text-xs text-white/70 leading-relaxed">
-                Pinpoint places a named spot on the map. Guess Name names what the map highlights. Neighborhood places area boundaries.
+                {t('quiz.modeExplainer')}
               </p>
               <div className="grid grid-cols-2 gap-2">
                 <button
@@ -562,8 +566,8 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   className={`enamel-tile p-2.5 text-xs font-semibold flex flex-col items-center gap-1 cursor-pointer${gameMode === 'pinpoint' ? ' active' : ''}`}
                 >
                   <MapPin className="w-4 h-4" />
-                  <span>Pinpoint</span>
-                  <span className="font-normal text-white/70">Locate on map</span>
+                  <span>{t('quiz.pinpoint')}</span>
+                  <span className="font-normal text-white/70">{t('quiz.locateOnMap')}</span>
                 </button>
 
                 <button
@@ -575,8 +579,8 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   className={`enamel-tile p-2.5 text-xs font-semibold flex flex-col items-center gap-1 cursor-pointer${gameMode === 'guess_name' ? ' active' : ''}`}
                 >
                   <Eye className="w-4 h-4" />
-                  <span>Guess Name</span>
-                  <span className="font-normal text-white/70">Name the highlight</span>
+                  <span>{t('quiz.guessName')}</span>
+                  <span className="font-normal text-white/70">{t('quiz.nameTheHighlight')}</span>
                 </button>
               </div>
             </div>
@@ -584,7 +588,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             {/* City Selector & Geolocation */}
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold uppercase tracking-wider text-white/70">City / Location</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-white/70">{t('quiz.cityLocation')}</label>
                 {onLocateUser && (
                   <button
                     onClick={() => {
@@ -594,7 +598,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                     className="text-xs text-[#8a4a18] hover:text-white flex items-center gap-1 font-semibold cursor-pointer"
                   >
                     <LocateFixed className="w-3 h-3" />
-                    <span>{isLocating ? 'Locating...' : 'Use My Location'}</span>
+                    <span>{isLocating ? t('quiz.locating') : t('quiz.useMyLocation')}</span>
                   </button>
                 )}
               </div>
@@ -619,9 +623,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               <div className="space-y-0.5 pr-2">
                 <div className="font-semibold text-xs text-white flex items-center gap-1.5">
                   <EyeOff className="w-3.5 h-3.5 text-[#8a4a18]" />
-                  <span>Label-less Base Map</span>
+                  <span>{t('quiz.blankBaseMap')}</span>
                 </div>
-                <p className="text-xs text-white/60">Hides text labels on map tiles (Default: Active)</p>
+                <p className="text-xs text-white/60">{t('quiz.blankBaseMapHint')}</p>
               </div>
               <button
                 onClick={onToggleBlindMap}
@@ -639,7 +643,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
 
             {/* Tile Style Theme */}
             <div className="hidden">
-              <label className="text-xs font-bold uppercase tracking-wider text-white/70">Map Style</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-white/70">{t('quiz.mapStyle')}</label>
               <div className="grid grid-cols-2 gap-1.5">
                 {(
                   [
@@ -666,7 +670,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             <div className="hidden">
               <div className="font-semibold text-xs text-white flex items-center gap-1.5">
                 <Ruler className="w-3.5 h-3.5 text-[#8a4a18]" />
-                <span>Units</span>
+                <span>{t('quiz.units')}</span>
               </div>
               <div className="enamel-segment flex">
                 <button
@@ -710,7 +714,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               className="button-secondary w-full py-2.5 text-xs font-semibold flex items-center justify-center gap-2 transition cursor-pointer"
             >
               <Settings className="w-3.5 h-3.5 text-white/60" />
-              <span>Quiz and map settings</span>
+              <span>{t('quiz.quizAndMapSettings')}</span>
             </button>
           </div>
         </div>

@@ -30,6 +30,7 @@ import { PostcardRack } from './components/PostcardRack';
 import { ProgressLine } from './components/ProgressLine';
 import { LoadingProgressModal } from './components/LoadingProgressModal';
 import { useAuth } from './AuthContext';
+import { useT } from './i18n/useT';
 import { loadLocalReviewStates, recordReview, syncProgress } from './progressRepository';
 import { ReviewState, selectReviewFeatures } from './spacedRepetition';
 import { focusImportantWaters } from './mapRecall/waterImportance';
@@ -103,6 +104,7 @@ const distanceToQuizFeature = (point: [number, number], feature: StreetFeature) 
     : calculateShortestDistanceToFeature(point, feature.center, feature.path, feature.paths);
 
 export default function App() {
+  const t = useT();
   const { user, configured: isCloudConfigured, signOutUser } = useAuth();
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   // Home is shared with Canal Recall through its localStorage keys.
@@ -424,8 +426,8 @@ export default function App() {
       setDataError(null);
       setLoadingProgress({
         percent: 15,
-        message: 'Requesting device geolocation...',
-        subMessage: 'Pinpointing coordinates...',
+        message: t('quiz.geolocation'),
+        subMessage: t('quiz.geolocationCoords'),
       });
 
       navigator.geolocation.getCurrentPosition(
@@ -438,7 +440,7 @@ export default function App() {
           try {
             setLoadingProgress({
               percent: 30,
-              message: 'Reverse geocoding local district...',
+              message: t('quiz.reverseGeocode'),
               subMessage: `Targeting ${targetScope === 'neighborhood' ? 'neighborhood' : 'city'} area...`,
             });
 
@@ -505,7 +507,7 @@ export default function App() {
             console.warn('Error configuring local location city:', err);
             setIsLocating(false);
             setLoadingProgress(null);
-            setDataError(err instanceof Error ? err.message : 'Could not load OpenStreetMap features.');
+            setDataError(err instanceof Error ? err.message : t('quiz.couldNotLoadFeatures'));
           }
         },
         (error) => {
@@ -661,14 +663,14 @@ export default function App() {
     if (isLocating) return;
     setIsLocating(true);
     setDataError(null);
-    setLoadingProgress({ percent: 15, message: 'Finding location…', subMessage: query });
+    setLoadingProgress({ percent: 15, message: t('quiz.loadingLocation'), subMessage: query });
     try {
       const result = await geocodeLocationSearch(query);
       if (!result) throw new Error('No matching location found');
       const coords: [number, number] = [result.lat, result.lon];
       setUserLocation(coords);
       setSelectedAdministrativeAreaId(null);
-      setLoadingProgress({ percent: 30, message: 'Discovering local boundaries…', subMessage: result.name });
+      setLoadingProgress({ percent: 30, message: t('quiz.loadingBoundaries'), subMessage: result.name });
       const areas = (await fetchQuizAreas('my_location', coords))
         ?? await fetchContainingAdministrativeAreas(result.lat, result.lon);
       setAdministrativeAreas(areas);
@@ -700,8 +702,8 @@ export default function App() {
       setLocationToast(`Ready near ${result.name.split(',')[0]}`);
       setTimeout(() => setLocationToast(null), 2500);
     } catch (error) {
-      setDataError(error instanceof Error ? error.message : 'Could not load this location');
-      setLocationToast(error instanceof Error ? error.message : 'Could not find that location');
+      setDataError(error instanceof Error ? error.message : t('quiz.couldNotLoadLocation'));
+      setLocationToast(error instanceof Error ? error.message : t('quiz.couldNotFindLocation'));
       setTimeout(() => setLocationToast(null), 4000);
     } finally {
       setIsLocating(false);
@@ -1031,7 +1033,7 @@ export default function App() {
         )}
         {startUndoVisible && !!currentFeature && !isGameOver && (
           <div className="enamel-float absolute top-3 right-3 z-30 flex items-center gap-2 px-3 py-1.5 text-xs sm:left-1/2 sm:right-auto sm:-translate-x-1/2">
-            <span className="text-white/80">Quiz started</span>
+            <span className="text-white/80">{t('quiz.started')}</span>
             <button
               type="button"
               onClick={returnToStart}
@@ -1083,7 +1085,7 @@ export default function App() {
         {dataError && !isLocating && (
           <div className="absolute inset-x-3 top-3 z-40 mx-auto max-w-xl" role="alert">
             <div className="app-dialog p-4 text-sm">
-              <div className="font-bold text-white">Couldn’t load map features</div>
+              <div className="font-bold text-white">{t('quiz.couldNotLoad')}</div>
               <p className="mt-1 text-xs leading-relaxed text-white/75">{dataError}</p>
               <div className="mt-3 flex gap-2">
                 <button
@@ -1122,7 +1124,7 @@ export default function App() {
               </div>
 
               <div className="space-y-2">
-                <p className="enamel-brand text-sm text-white tracking-wide">Start with</p>
+                <p className="enamel-brand text-sm text-white tracking-wide">{t('quiz.startWith')}</p>
                 <div className="grid grid-cols-1 gap-2.5">
                   <DailyFiveTile
                     today={today}
@@ -1153,7 +1155,7 @@ export default function App() {
               <PostcardRack placement="rail" cityId={currentCityId} cityCenter={currentCity.center} states={reviewStates} />
 
               <div className="space-y-2 pt-1">
-                <p className="text-xs font-bold uppercase tracking-wider text-white/45">Also</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-white/45">{t('quiz.also')}</p>
                 <div className="grid grid-cols-2 gap-1.5">
                   {FEATURE_CATEGORIES.filter((c) => !['all', 'water', 'streets', 'neighborhoods'].includes(c.id)).map((category) => (
                     <button
@@ -1179,12 +1181,12 @@ export default function App() {
               </div>
 
               <div className="shrink-0 space-y-1.5 border-t border-white/10 px-4 py-3 sm:px-5">
-                <p className="text-xs text-white/45">Mode</p>
+                <p className="text-xs text-white/45">{t('quiz.mode')}</p>
                 <div className="enamel-segment flex w-full">
                   {(
                     [
-                      { id: 'pinpoint' as const, label: 'Pinpoint' },
-                      { id: 'guess_name' as const, label: 'Guess Name' },
+                      { id: 'pinpoint' as const, label: t('quiz.pinpoint') },
+                      { id: 'guess_name' as const, label: t('quiz.guessName') },
                     ]
                   ).map((mode) => (
                     <button
@@ -1210,7 +1212,7 @@ export default function App() {
                       className="mt-0.5"
                     />
                     <span>
-                      <span className="font-semibold">Start near home</span>
+                      <span className="font-semibold">{t('quiz.startNearHome')}</span>
                       <span className="block text-white/55">
                         {sharedHome.address}: begins within 1 km and widens as you learn what is nearby.
                       </span>

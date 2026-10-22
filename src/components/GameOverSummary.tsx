@@ -18,6 +18,7 @@ import { loadLocalReviewEvents, loadLocalReviewStates } from '../progressReposit
 import { newlyEarned, postcardProgress, sessionGroups } from '../mapRecall/progress';
 import { PostcardHeader } from './PostcardHeader';
 import { postcardCityName, postcardPhotosFor } from '../mapRecall/postcardPhotos';
+import { useT } from '../i18n/useT';
 
 interface GameOverSummaryProps {
   currentCity: City;
@@ -41,10 +42,11 @@ interface GameOverSummaryProps {
   now?: number;
 }
 
+/** Review groups, labelled inside the component so the words follow the language. */
 const GROUPS = [
-  { id: 'known', title: 'Known', hint: 'answered well again' },
-  { id: 'shaky', title: 'Still shaky', hint: 'back soon' },
-  { id: 'fresh', title: 'New', hint: 'first time right' },
+  { id: 'known', title: 'quiz.known', hint: 'quiz.knownHint' },
+  { id: 'shaky', title: 'quiz.shaky', hint: 'quiz.shakyHint' },
+  { id: 'fresh', title: 'quiz.new', hint: 'quiz.newHint' },
 ] as const;
 
 export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
@@ -62,6 +64,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
   reviewEvents,
   now,
 }) => {
+  const t = useT();
   const [sessionNow] = useState(() => now ?? Date.now());
   const [statesAfter] = useState(() => reviewStatesAfter ?? loadLocalReviewStates());
   const [events] = useState(() => reviewEvents ?? loadLocalReviewEvents());
@@ -102,7 +105,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
   const subtitle = [
     `${roundResults.length} ${roundResults.length === 1 ? 'round' : 'rounds'}`,
     currentCity.name,
-    selectedCategory === 'all' ? 'Mixed' : activeCategoryInfo.shortLabel,
+    selectedCategory === 'all' ? t('quiz.mixed') : activeCategoryInfo.shortLabel,
   ].join(' · ');
 
   // Trigger celebration confetti. The ref keeps the fanfare to one play per
@@ -127,17 +130,17 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
   }, []);
 
   // Title / Rank
-  let rankTitle = 'A useful first pass';
+  let rankTitle = t('quiz.rankFirst');
   let rankColor = 'text-white/75';
 
   if (percentage >= 90) {
-    rankTitle = 'You know this map';
+    rankTitle = t('quiz.rankKnowMap');
     rankColor = 'text-[#8a4a18]';
   } else if (percentage >= 70) {
-    rankTitle = 'Strong sense of place';
+    rankTitle = t('quiz.rankStrong');
     rankColor = 'text-[#8a4a18]';
   } else if (percentage >= 45) {
-    rankTitle = 'Getting your bearings';
+    rankTitle = t('quiz.rankBearings');
     rankColor = 'text-white/85';
   }
 
@@ -161,7 +164,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
             className="enamel-float px-4 py-2 text-xs sm:text-sm font-semibold flex items-center gap-2 transition cursor-pointer"
           >
             <Layers className="w-4 h-4 text-[#8a4a18]" />
-            <span>Show Results Summary</span>
+            <span>{t('quiz.showResults')}</span>
           </button>
         </div>
       )}
@@ -171,7 +174,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
         <div className="fixed top-14 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
           <div className="enamel-float rounded-full px-4 py-1.5 text-xs font-semibold flex items-center gap-2 animate-fadeIn">
             <span className="w-2 h-2 rounded-full bg-[#b4682c] animate-ping" />
-            <span>Map Review: Explore your pins & correct street lines</span>
+            <span>{t('quiz.mapReview')}</span>
           </div>
         </div>
       )}
@@ -210,7 +213,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
                   <Trophy className="w-6 h-6" />
                 </div>
               )}
-              <h2 className="enamel-brand text-2xl sm:text-3xl text-white">Session complete</h2>
+              <h2 className="enamel-brand text-2xl sm:text-3xl text-white">{t('quiz.sessionComplete')}</h2>
               <p className="text-xs sm:text-sm text-white/60" data-testid="game-over-subtitle">{subtitle}</p>
               <div className={`text-sm sm:text-base font-bold ${rankColor}`}>{rankTitle}</div>
               {onTheirWay > 0 && <p className="text-xs text-white/60" data-testid="game-over-postcard-progress">
@@ -221,7 +224,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
             {/* Stats Row */}
             <div className="grid grid-cols-3 gap-2">
               <div className="enamel-chip p-2.5 text-center">
-                <div className="text-xs text-white/60 font-medium">Final Score</div>
+                <div className="text-xs text-white/60 font-medium">{t('quiz.finalScore')}</div>
                 <div className="text-lg sm:text-xl font-black text-[#8a4a18] tracking-tight">
                   {totalScore.toLocaleString()}
                 </div>
@@ -229,16 +232,16 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
               </div>
 
               <div className="enamel-chip p-2.5 text-center">
-                <div className="text-xs text-white/60 font-medium">Accuracy</div>
+                <div className="text-xs text-white/60 font-medium">{t('quiz.accuracy')}</div>
                 <div className="text-lg sm:text-xl font-black text-white tracking-tight">
                   {percentage}%
                 </div>
-                <div className="text-xs text-white/50">Overall</div>
+                <div className="text-xs text-white/50">{t('quiz.overall')}</div>
               </div>
 
               <div className="enamel-chip p-2.5 text-center">
                 <div className="text-xs text-white/60 font-medium">
-                  {gameMode !== 'guess_name' ? 'Avg. Error' : 'City'}
+                  {gameMode !== 'guess_name' ? t('quiz.avgError') : t('quiz.city')}
                 </div>
                 <div className="text-xs sm:text-sm font-black text-white tracking-tight truncate pt-1">
                   {gameMode !== 'guess_name' && averageDistanceError !== null
@@ -246,7 +249,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
                     : currentCity.name}
                 </div>
                 <div className="text-xs text-white/50 capitalize">
-                  {gameMode !== 'guess_name' ? 'Average distance' : 'Guess mode'}
+                  {gameMode !== 'guess_name' ? t('quiz.averageDistance') : t('quiz.guessMode')}
                 </div>
               </div>
             </div>
@@ -257,9 +260,9 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
                 <section key={id} className="space-y-1.5" data-testid={`session-group-${id}`}>
                   <div className="flex items-baseline justify-between gap-2 px-1">
                     <h3 className="text-xs font-bold uppercase tracking-wider text-white/70">
-                      {title} <span className="text-white/45">{groups[id].length}</span>
+                      {t(title)} <span className="text-white/45">{groups[id].length}</span>
                     </h3>
-                    <span className="text-xs text-white/45">{hint}</span>
+                    <span className="text-xs text-white/45">{t(hint)}</span>
                   </div>
                   <ul className="enamel-chip divide-y divide-white/10 overflow-hidden">
                     {groups[id].map((item) => (
@@ -269,7 +272,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
                           <div className="flex flex-wrap items-center gap-x-1.5 text-xs text-white/60">
                             <span className="capitalize">{item.type}</span>
                             <span aria-hidden="true">·</span>
-                            <span>Round {roundIndex.get(item.result) ?? item.result.roundNumber}</span>
+                            <span>{t('quiz.roundWord', { round: roundIndex.get(item.result) ?? item.result.roundNumber })}</span>
                             <span aria-hidden="true">·</span>
                             {item.result.distanceErrorMeters !== undefined ? (
                               <span className="font-mono">{formatDistance(item.result.distanceErrorMeters, unit)}</span>
@@ -299,7 +302,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
                 className="button-primary w-full sm:flex-1 py-2.5 text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer"
               >
                 <RotateCcw className="w-4 h-4" />
-                <span>Play Again</span>
+                <span>{t('quiz.playAgain')}</span>
               </button>
 
               <button
@@ -308,7 +311,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
                 className="button-secondary w-full sm:flex-1 py-2.5 font-semibold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer"
               >
                 {gameMode === 'pinpoint' ? <Target className="w-3.5 h-3.5 text-[#8a4a18]" /> : <MapPin className="w-3.5 h-3.5 text-[#8a4a18]" />}
-                <span>Try {gameMode === 'pinpoint' ? 'Guess Name' : 'Pinpoint'}</span>
+                <span>{t('quiz.tryOther', { mode: gameMode === 'pinpoint' ? t('quiz.guessName') : t('quiz.pinpoint') })}</span>
               </button>
 
               <button
@@ -317,7 +320,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
                 className="button-secondary w-full sm:flex-1 py-2.5 font-semibold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer"
               >
                 <Map className="w-3.5 h-3.5 text-[#8a4a18]" />
-                <span>Review on map</span>
+                <span>{t('quiz.reviewOnMap')}</span>
               </button>
             </div>
           </div>

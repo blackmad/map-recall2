@@ -6,6 +6,7 @@ import type { RelationQuestion } from '../mapRecall/relationQuestions';
 import { offsetMetres } from '../mapRecall/relationQuestions';
 import { formatDistance } from '../utils/geo';
 import type { DistanceUnit } from '../types';
+import { useT } from '../i18n/useT';
 
 interface RelationQuestionOverlayProps {
   question: RelationQuestion;
@@ -47,6 +48,7 @@ export const RelationQuestionOverlay: React.FC<RelationQuestionOverlayProps> = (
   question, selectedName, wasSkipped, isRoundComplete, onSelect, onNoIdea, onNextRound, isLastRound,
   roundNumber, totalRounds, factSeed, unit, seenBefore, nextNearby, bonusSlot,
 }) => {
+  const t = useT();
   const isCorrect = selectedName === question.answer;
   usePreparePostcard(question.target);
 
@@ -70,9 +72,9 @@ export const RelationQuestionOverlay: React.FC<RelationQuestionOverlayProps> = (
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="enamel-chip px-2 py-0.5 text-xs font-bold uppercase tracking-wider flex items-center gap-1">
                     <span className="text-[#8a4a18]">⇄</span>
-                    <span>Two places</span>
+                    <span>{t('quiz.twoPlaces')}</span>
                   </span>
-                  <span className="hidden sm:inline text-xs text-white/70 font-semibold uppercase tracking-wider">Both highlighted</span>
+                  <span className="hidden sm:inline text-xs text-white/70 font-semibold uppercase tracking-wider">{t('quiz.bothHighlighted')}</span>
                   <SeenBeforeChip label={seenBefore} />
                 </div>
                 <h1 className="enamel-brand text-base sm:text-xl text-white leading-snug">{question.prompt}</h1>
@@ -109,7 +111,7 @@ export const RelationQuestionOverlay: React.FC<RelationQuestionOverlayProps> = (
                 </div>
                 <div className="min-w-0">
                   <h2 className={`enamel-brand text-base sm:text-lg truncate ${isCorrect ? 'text-[#8a4a18]' : 'text-white'}`}>
-                    {wasSkipped ? 'Skipped' : isCorrect ? 'Correct' : 'Not quite'}
+                    {wasSkipped ? t('quiz.skipped') : isCorrect ? t('quiz.correct') : t('quiz.notQuite')}
                   </h2>
                   <p data-testid="relation-explanation" className="text-xs sm:text-sm text-white/80 font-semibold">{explanation(question, unit)}</p>
                   {bonusSlot}
@@ -117,10 +119,10 @@ export const RelationQuestionOverlay: React.FC<RelationQuestionOverlayProps> = (
               </div>
               <div className="flex items-center gap-3 flex-shrink-0">
                 <div className="text-sm sm:text-base font-black text-[#8a4a18] tracking-tight text-right">
-                  {isCorrect ? '+5,000' : '+0'} <span className="text-xs font-normal text-white/70">PTS</span>
+                  {isCorrect ? '+5,000' : '+0'} <span className="text-xs font-normal text-white/70">{t('quiz.pts')}</span>
                 </div>
                 <button id="guess-next-round-btn" onClick={onNextRound} className="button-primary px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm flex items-center gap-1.5 transition cursor-pointer whitespace-nowrap">
-                  <span>{isLastRound ? 'See score' : nextNearby ? 'Next · nearby' : 'Next'}</span>
+                  <span>{isLastRound ? t('quiz.seeScore') : nextNearby ? t('quiz.nextNearby') : t('quiz.next')}</span>
                 </button>
               </div>
             </div>

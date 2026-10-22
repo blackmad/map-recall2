@@ -27,8 +27,8 @@ import {
   TRAVEL_ICONS,
   VIEW_ICONS,
 } from './enamelIcons.tsx';
-import { LANGUAGES, setLanguage, type Language } from '../../i18n/index.ts';
-import { useLanguage, useT, type Translate } from '../../i18n/useT.ts';
+import { useT, type Translate } from '../../i18n/useT.ts';
+import { LanguageSwitch } from '../../components/LanguageSwitch.tsx';
 
 /** The ride's own links to the landing page and Map Quest, by where this page is served. */
 const siteLinksHere = canalPageLinks(typeof location === 'undefined' ? '/' : location.pathname);
@@ -190,45 +190,6 @@ function ChoiceRow<T extends string>({
                   {showHint ? <small>{option.hint}</small> : null}
                 </span>
               )}
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-/**
- * The language switch. Drawn as the same paper tile pair as every other
- * choice, and present both on route setup and in the live settings panel so a
- * player can change language without leaving the ride.
- */
-function LanguageRow({ idPrefix = '' }: { idPrefix?: string }) {
-  const t = useT();
-  const active = useLanguage();
-  return (
-    <div className="setup-choice-row toggles language-row" role="radiogroup" aria-label={t('language.label')}>
-      <div className="setup-choice-label"><span>{t('language.label')}</span></div>
-      <div className="setup-choice-options">
-        {LANGUAGES.map(code => {
-          const name = t(code === 'nl' ? 'language.nl' : 'language.en');
-          return (
-            <button
-              key={code}
-              id={`${idPrefix}language-${code}`}
-              type="button"
-              className={`setup-choice enamel-tile${active === code ? ' active' : ''}`}
-              aria-pressed={active === code}
-              aria-label={name}
-              title={name}
-              lang={code}
-              data-choice={`language:${code}`}
-              onClick={() => setLanguage(code as Language)}
-            >
-              <span className="setup-choice-text">
-                <strong>{t(code === 'nl' ? 'language.nlShort' : 'language.enShort')}</strong>
-                <small>{name}</small>
-              </span>
             </button>
           );
         })}
@@ -831,7 +792,7 @@ export function OverlayApp({
         <div className="enamel-setup-rail">
           <form id="route-card" className="enamel-setup-form" onSubmit={start}>
             <h1 className="enamel-plaque enamel-framed enamel-title">Canal Recall</h1>
-            <LanguageRow idPrefix="setup-" />
+            <LanguageSwitch idPrefix="setup-language" />
 
             <div className="setup-account" id="account-row">
               <div className="setup-account-copy">
@@ -1118,7 +1079,7 @@ export function OverlayApp({
       <div id="settings-panel" className="utility-panel enamel-utility" style={{ display: state.settingsOpen ? 'flex' : 'none' }}>
         <div className="utility-card enamel-plaque enamel-framed enamel-panel">
           <h2>{t('settings.title')}</h2>
-          <LanguageRow idPrefix="live-" />
+          <LanguageSwitch idPrefix="live-language" />
           <SiteSwitch links={siteLinksHere} current="ride" id="settings-site-switch" />
           <div className="setup-account" id="settings-account-row">
             <div className="setup-account-copy" role="status" aria-live="polite">

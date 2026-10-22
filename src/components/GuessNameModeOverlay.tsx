@@ -3,6 +3,8 @@ import { AnswerDetails, usePreparePostcard } from './AnswerDetails';
 import { StreetFeature } from '../types';
 import { CheckCircle2, XCircle } from 'lucide-react';
 import { SeenBeforeChip } from './SeenBeforeChip';
+import { featureTypeBadge } from './featureTypeBadge';
+import { useT } from '../i18n/useT';
 
 interface GuessNameModeOverlayProps {
   currentFeature: StreetFeature;
@@ -25,31 +27,6 @@ interface GuessNameModeOverlayProps {
 }
 
 // One chip style for every kind; see PinpointModeOverlay for why.
-function getFeatureTypeBadge(type: string) {
-  switch (type) {
-    case 'canal':
-    case 'water':
-      return { label: 'Canal / Waterway', icon: '≈' };
-    case 'bridge':
-      return { label: 'Bridge', icon: '⌁' };
-    case 'square':
-      return { label: 'Square / Plaza', icon: '□' };
-    case 'park':
-      return { label: 'Park / Greenway', icon: '♧' };
-    case 'museum':
-    case 'landmark':
-    case 'monument':
-      return { label: 'Landmark', icon: '◆' };
-    case 'neighborhood':
-      return { label: 'Neighborhood', icon: '⬡' };
-    case 'avenue':
-    case 'boulevard':
-    case 'street':
-    default:
-      return { label: 'Street', icon: '╱' };
-  }
-}
-
 export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
   currentFeature,
   onSelectGuess,
@@ -76,8 +53,9 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
     return pool;
   }, [currentFeature.id]);
 
+  const t = useT();
   const isCorrect = selectedGuessName === currentFeature.name;
-  const badge = getFeatureTypeBadge(currentFeature.type);
+  const badge = featureTypeBadge(currentFeature.type, t);
   // The containing area is safe context for any question except a neighbourhood one.
   const context = currentFeature.type !== 'neighborhood' ? currentFeature.neighborhood?.trim() : undefined;
 
@@ -112,13 +90,13 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                     <span>{badge.label}</span>
                   </span>
                   <span className="hidden sm:inline text-xs text-white/70 font-semibold uppercase tracking-wider">
-                    Highlighted on the map
+                    {t('quiz.highlighted')}
                   </span>
                   <SeenBeforeChip label={seenBefore} />
                 </div>
 
                 <h1 className="enamel-brand text-base sm:text-xl text-white leading-snug">
-                  Which {badge.label.toLowerCase()} is this?
+                  {t('quiz.which', { kind: badge.label.toLowerCase() })}
                 </h1>
                 {context && (
                   <p data-testid="guess-context" className="text-xs sm:text-sm text-white/80 font-semibold">
@@ -155,7 +133,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
               onClick={onNoIdea}
               className="button-secondary w-full py-2 text-xs font-semibold transition cursor-pointer"
             >
-              No idea — reveal the answer
+              {t('quiz.noIdeaReveal')}
             </button>
           </div>
         ) : (
@@ -181,11 +159,11 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5">
                     <h2 className={`enamel-brand text-base sm:text-lg truncate ${isCorrect ? 'text-[#8a4a18]' : 'text-white'}`}>
-                      {wasSkipped ? 'Skipped' : isCorrect ? 'Correct' : 'Not quite'}
+                      {wasSkipped ? t('quiz.skipped') : isCorrect ? t('quiz.correct') : t('quiz.notQuite')}
                     </h2>
                   </div>
                   <p className="text-xs sm:text-sm text-white/80 font-bold truncate">
-                    It's <span className="text-white underline">{currentFeature.name}</span>
+                    {t('quiz.answerWas', { name: '' })}<span className="text-white underline">{currentFeature.name}</span>
                   </p>
                   {bonusSlot}
                 </div>
@@ -196,7 +174,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                 <div className="text-right">
                   <div className="text-sm sm:text-base font-black text-[#8a4a18] tracking-tight">
                     {isCorrect ? '+5,000' : '+0'}{' '}
-                    <span className="text-xs font-normal text-white/70">PTS</span>
+                    <span className="text-xs font-normal text-white/70">{t('quiz.pts')}</span>
                   </div>
                 </div>
 
@@ -205,7 +183,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                   onClick={onNextRound}
                   className="button-primary px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm flex items-center gap-1.5 transition cursor-pointer whitespace-nowrap"
                 >
-                  <span>{isLastRound ? 'See score' : nextNearby ? 'Next · nearby' : 'Next'}</span>
+                  <span>{isLastRound ? t('quiz.seeScore') : nextNearby ? t('quiz.nextNearby') : t('quiz.next')}</span>
                 </button>
               </div>
             </div>
