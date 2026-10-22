@@ -15,6 +15,13 @@
  * Idempotent: re-running replaces `nl` rather than appending. Names the cache
  * does not cover keep English-only cards (the card still names its source).
  *
+ * The register is not a reliable text: `docs/amsterdam-street-name-register-errors.md`
+ * records where it is filed under the wrong name, is a fragment, stops
+ * mid-sentence or states something false. For every name that document does not
+ * mark "kept", the Dutch column is withheld, so Dutch mode falls back to the
+ * corrected English card instead of printing a sentence we know to be wrong
+ * (scripts/dutch-street-origin-corrections.json, derived from that document).
+ *
  * Usage: npm run add:dutch-street-origins [-- --check]
  */
 import { createHash } from 'node:crypto';
@@ -31,6 +38,30 @@ const check = process.argv.includes('--check');
 
 const published = JSON.parse(await readFile(publishedFile, 'utf8')) as { origins: PublishedOrigin[] } & Record<string, unknown>;
 const cache = JSON.parse(await readFile(cacheFile, 'utf8')) as CachedTranslation[];
+const correctionsFile = path.resolve('scripts/dutch-street-origin-corrections.json');
+const corrections = JSON.parse(await readFile(correctionsFile, 'utf8')) as {
+  source: string;
+  withheldNl: Record<string, { handling?: string }>;
+  corrections?: Record<string, { replace?: Array<[string, string]>; note?: string }>;
+};
+/**
+ * Targeted Dutch fixes for names where the register's fault is a wrong token
+ * (a date, a name, a country). The pairs come from the error register's own
+ * quoted Dutch, so a replacement that no longer occurs means the register text
+ * changed under us and the build stops rather than shipping either version.
+ */
+function applyDutchCorrections(name: string, dutch: string): string {
+  const entry = corrections.corrections?.[name];
+  if (!entry?.replace?.length) return dutch;
+  let text = dutch;
+  for (const [find, replacement] of entry.replace) {
+    if (!text.includes(find)) {
+      throw new Error(`${name}: correction target not found in the register text: ${JSON.stringify(find)}`);
+    }
+    text = text.replace(find, replacement);
+  }
+  return text;
+}
 
 const hashOf = (row: CachedTranslation): string => createHash('sha1').update(`${row.name}\u0000${row.nl}`).digest('hex').slice(0, 12);
 
@@ -48,10 +79,18 @@ for (const row of cache) {
 
 let added = 0;
 let kept = 0;
+let withheld = 0;
 const missing: string[] = [];
 for (const origin of published.origins) {
-  const dutch = dutchByName.get(origin.name);
-  if (!dutch) { missing.push(origin.name); continue; }
+  // A name the error register does not mark "kept" must not show its Dutch.
+  if (corrections.withheldNl[origin.name]) {
+    if (origin.nl) { delete origin.nl; added += 1; }
+    withheld += 1;
+    continue;
+  }
+  const cached = dutchByName.get(origin.name);
+  if (!cached) { missing.push(origin.name); continue; }
+  const dutch = applyDutchCorrections(origin.name, cached);
   if (origin.nl === dutch) kept += 1;
   else added += 1;
   origin.nl = dutch;
@@ -59,7 +98,8 @@ for (const origin of published.origins) {
 
 const covered = published.origins.filter(origin => origin.nl).length;
 const report = `${check ? 'check' : 'write'}: ${covered}/${published.origins.length} origins have Dutch`
-  + ` (${added} added, ${kept} unchanged, ${missing.length} without a cached Dutch source`
+  + ` (${added} added, ${kept} unchanged, ${withheld} withheld as documented register errors,`
+  + ` ${missing.length} without a cached Dutch source`
   + `${unverified ? `, ${unverified} cache rows failed their hash` : ''})`;
 
 if (check) {

@@ -61,6 +61,7 @@ export function originKindFor(type: FeatureType): 'street' | 'water' | 'bridge' 
 const key = (kind: string, name: string) => `${kind}:${name.trim().toLowerCase()}`;
 
 export const BAG_SOURCE_LABEL = 'Gemeente Amsterdam street-name register';
+export const BAG_SOURCE_LABEL_NL = 'Gemeente Amsterdam (straatnamenregister)';
 export const bagRecordUrl = (bagId: string) => `https://api.data.amsterdam.nl/v1/bag/openbareruimtes/${bagId}/`;
 
 /**
@@ -86,19 +87,29 @@ export function attachNameOrigins<T extends TriviaBearing>(features: readonly T[
         ...(origin.nl ? { textNl: origin.nl } : {}),
         sourceUrl: origin.bagId ? bagRecordUrl(origin.bagId) : 'https://api.data.amsterdam.nl/v1/bag/openbareruimtes/',
         sourceLabel: BAG_SOURCE_LABEL,
+        sourceLabelNl: origin.nl ? BAG_SOURCE_LABEL_NL : `${BAG_SOURCE_LABEL_NL} — Engels` ,
       },
     };
   });
 }
 
 const label = (text: PublishedText) => text.sourceLabel && text.kind === 'derived' ? text.sourceLabel : text.lang === 'nl' ? 'Wikipedia (translated from Dutch)' : 'Wikipedia';
-const asTrivia = (text: PublishedText | undefined): TriviaText | undefined =>
-  text ? {
+/** Dutch attribution, and whether the sentence shown is Dutch or the English fallback. */
+const labelNl = (text: PublishedText, hasDutch: boolean) =>
+  text.sourceLabel && text.kind === 'derived'
+    ? text.sourceLabel
+    : hasDutch ? 'Wikipedia (Nederlands)' : 'Wikipedia (Engels)';
+const asTrivia = (text: PublishedText | undefined): TriviaText | undefined => {
+  if (!text) return undefined;
+  const dutch = text.nl ?? text.original;
+  return {
     text: text.en,
-    ...(text.nl || text.original ? { textNl: text.nl ?? text.original } : {}),
+    ...(dutch ? { textNl: dutch } : {}),
     sourceUrl: text.sourceUrl,
     sourceLabel: label(text),
-  } : undefined;
+    sourceLabelNl: labelNl(text, !!dutch),
+  };
+};
 /**
  * A history may be a canal's or a street's in the area: `borrowedFrom` says whose, and the
  * older "Schinkel (waterway here): " prefix is read the same way, so both forms render alike.
@@ -300,6 +311,12 @@ export function placeCluesEnabled(difficulty: MapDifficulty): boolean {
 export function triviaText(value: { text?: string; textNl?: string } | null | undefined): string | undefined {
   if (!value?.text) return undefined;
   return language() === 'nl' && value.textNl ? value.textNl : value.text;
+}
+
+/** The attribution to print, in the interface's language. */
+export function triviaSourceLabel(value: { sourceLabel?: string; sourceLabelNl?: string } | null | undefined): string | undefined {
+  if (!value) return undefined;
+  return language() === 'nl' ? (value.sourceLabelNl ?? value.sourceLabel) : value.sourceLabel;
 }
 
 /** Whether the card is showing a Dutch source rather than an English fallback. */

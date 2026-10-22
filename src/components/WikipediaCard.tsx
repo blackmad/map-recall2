@@ -3,7 +3,8 @@ import { StreetFeature, TriviaText } from '../types';
 import { FACT_KIND_LABELS } from '../canalRecall/facts/factTypes';
 import { neighborhoodFactForRound } from '../mapRecall/neighborhoodStories';
 import { triviaForRound } from '../mapRecall/localFacts';
-import { descriptionWithoutOrigin, featureDescription, triviaText } from '../mapRecall/trivia';
+import { language } from '../i18n/index';
+import { descriptionWithoutOrigin, featureDescription, triviaSourceLabel, triviaText } from '../mapRecall/trivia';
 import { PostcardHeader } from './PostcardHeader';
 import { PostcardExport } from './PostcardExport';
 import { postcardCaptionFor, postcardPhotosFor } from '../mapRecall/postcardPhotos';
@@ -90,7 +91,12 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
   // Some extracts carry a bare string here ("translated"); only an object names a source.
   const extractSource = typeof feature.wikipediaExtractSource === 'object' ? feature.wikipediaExtractSource : undefined;
   const descriptionSource = extractSource
-    ? { href: extractSource.sourceUrl, label: extractSource.sourceLabel === 'Wikipedia' ? 'From Wikipedia' : extractSource.sourceLabel }
+    ? {
+      href: extractSource.sourceUrl,
+      label: extractSource.sourceLabel === 'Wikipedia'
+        ? (language() === 'nl' && feature.wikipediaExtractNl ? 'Wikipedia (Nederlands)' : language() === 'nl' ? 'Wikipedia (Engels)' : 'From Wikipedia')
+        : extractSource.sourceLabel,
+    }
     : { href: feature.wikipediaUrl, label: feature.wikipediaUrl?.includes('nl.wikipedia') ? 'Wikipedia (translated from Dutch)' : 'From Wikipedia' };
   if (!hasStory && !localFact && !origin && !facts.length && !description && !history && !feature.wikipediaImageUrl) return null;
   // Neighbourhoods open with a postcard cut from their own photographs and those of the places in them.
@@ -105,7 +111,7 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
     {feature.wikipediaImageUrl && postcardPhotos.length < 2 && <img src={feature.wikipediaImageUrl} referrerPolicy="no-referrer" alt="" className="h-12 w-16 flex-none rounded-md object-cover sm:h-16 sm:w-20" />}
     <div className="min-w-0 flex-1 space-y-1.5">
       {origin && <p className="text-xs leading-relaxed text-white" data-testid="answer-name-origin">
-        <Chip>Name</Chip>{originText}{' '}<Source href={origin.sourceUrl}>{origin.sourceLabel}</Source>
+        <Chip>Name</Chip>{originText}{' '}<Source href={origin.sourceUrl}>{triviaSourceLabel(origin)}</Source>
       </p>}
       {topFacts?.map((fact, i) => <p key={fact.text} className="text-xs font-semibold leading-relaxed text-white" data-testid="answer-top-fact">
         {i === 0 && <Chip>About here</Chip>}{fact.text}{' '}<Source href={fact.sourceUrl}>{fact.sourceLabel}</Source>

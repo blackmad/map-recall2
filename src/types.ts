@@ -174,6 +174,9 @@ export interface TriviaText {
   sourceUrl: string;
   /** "Wikipedia", "Wikipedia (translated from Dutch)", "Gemeente Amsterdam"… */
   sourceLabel: string;
+  /** The same attribution written for a Dutch reader, including whether the
+   *  sentence on screen is Dutch or an English fallback. */
+  sourceLabelNl?: string;
   /**
    * Set when the text is another place's history shown for an area, as "<Name> (<kind>)" with kind
    * waterway | street | park | bridge | square: "Schinkel (waterway)". The card heads it

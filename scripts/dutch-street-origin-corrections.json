@@ -1,0 +1,737 @@
+{
+ "source": "docs/amsterdam-street-name-register-errors.md",
+ "reviewedAt": "2026-10-22",
+ "policy": "The Dutch column of a card shows the register sentence only when the register text is sound. Rows the error register marks as withheld, a fragment, a repair, a replacement or a factual correction keep English: showing a known-wrong Dutch sentence in Dutch mode is worse than showing the corrected English one. A name listed here is verified again by scripts/add-dutch-street-origins.ts.",
+ "withheldNl": {
+  "Adriaan van Oordthof": {
+   "handling": "Corrected (repeat dropped)"
+  },
+  "Alcantarastraat": {
+   "handling": "Corrected (\"in Extremadura\")"
+  },
+  "Allenstraat": {
+   "handling": "Corrected"
+  },
+  "Amelandstraat (shared with Texelplein": {
+   "handling": "Corrected (\"One of the Wadden Islands\")"
+  },
+  "Amundsenweg": {
+   "handling": "Corrected"
+  },
+  "Anne Frankstraat": {
+   "handling": "Corrected"
+  },
+  "Aragohof": {
+   "handling": "Corrected"
+  },
+  "Archangelkade": {
+   "handling": "Corrected"
+  },
+  "Archangelweg": {
+   "handling": "Corrected"
+  },
+  "Avogadrostraat": {
+   "handling": "Corrected"
+  },
+  "Bachplein": {
+   "handling": "Corrected (\"some two hundred surviving cantatas\")"
+  },
+  "Bachstraat": {
+   "handling": "Corrected (\"some two hundred surviving cantatas\")"
+  },
+  "Badhuiskade": {
+   "handling": "Translated from the surviving part (\"Named after the former Obelt bathhouse…\"), which reads complete."
+  },
+  "Bastingstraat": {
+   "handling": "Broken edge trimmed; the card says only that the neighbourhood's streets are named after Amsterdam-Noord housing architects. No source found for Basting himself."
+  },
+  "Beloegastraat": {
+   "handling": "Corrected (the white whale; Wikipedia)"
+  },
+  "Ben Viljoenstraat": {
+   "handling": "Corrected (Wikipedia)"
+  },
+  "Bert Haanstrakade": {
+   "handling": "Corrected (\"an Oscar for his 1958 documentary\")"
+  },
+  "Bickersgracht (water)": {
+   "handling": "Translated without the broken edge."
+  },
+  "Bodenseehof": {
+   "handling": "Corrected"
+  },
+  "Bontekoestraat": {
+   "handling": "Corrected (Wikipedia)"
+  },
+  "Carolina MacGillavrylaan": {
+   "handling": "\"KNWA\" for KNAW."
+  },
+  "Dirk de Waterduikerbrug": {
+   "handling": "Repaired: joined with the next row's text."
+  },
+  "Dirk van Hasseltssteeg": {
+   "handling": "Replaced by a sourced supplement (Wikipedia)."
+  },
+  "Dokter Meurerlaan": {
+   "handling": "Translated without the broken edge."
+  },
+  "Eilandsgracht": {
+   "handling": "Replaced by a sourced supplement (Wikipedia)."
+  },
+  "Elim": {
+   "handling": "Replaced by a sourced supplement (Wikipedia)."
+  },
+  "Enneüs Heermabrug": {
+   "handling": "Repaired: joined with the next row's text."
+  },
+  "Enny Vredestraat": {
+   "handling": "Replaced by a sourced supplement (Wikipedia)."
+  },
+  "Eva Schalkbrug": {
+   "handling": "Translated without the broken edge."
+  },
+  "Frank Martinus Arionstraat": {
+   "handling": "\"een he kolonisatie\" (herkolonisatie)."
+  },
+  "G.T. Ketjenweg": {
+   "handling": "Corrected"
+  },
+  "Gerrie Mührenbrug": {
+   "handling": "Replaced by a sourced supplement (Wikipedia)."
+  },
+  "Gran Paradiso": {
+   "handling": "Corrected (\"highest entirely within Italy\")"
+  },
+  "H. Diesveldsingel": {
+   "handling": "The text opens \"De naam is foutief gespeld\": the man was Diesveldt."
+  },
+  "Haarlemmersluis": {
+   "handling": "Translated without the broken edge."
+  },
+  "Hamerstraat": {
+   "handling": "Replaced by a sourced supplement (Wikipedia); the paragraph is restored to the Piet Meerburgbrug's card."
+  },
+  "Hederabrug": {
+   "handling": "Translated without the broken edge."
+  },
+  "Jaap Edenstraat": {
+   "handling": "Corrected"
+  },
+  "Jaap Kunstbrug": {
+   "handling": "Repaired: joined with the next two rows' text."
+  },
+  "Jaap Nunes Vazstraat": {
+   "handling": "Replaced by a sourced supplement (Wikipedia)."
+  },
+  "Jaap Speyerstraat": {
+   "handling": "Replaced by a sourced supplement (Wikipedia)."
+  },
+  "Jacob Bontiusplaats": {
+   "handling": "Batavia, \"het bestuurlijk Amsterdam-Centrum van de voormalige kolonie\""
+  },
+  "Jan Poytstraat": {
+   "handling": "Translated without the stray sentence."
+  },
+  "Johannes Vermeerplein": {
+   "handling": "Corrected"
+  },
+  "Joseph Scaligerstraat": {
+   "handling": "Corrected"
+  },
+  "Karveelstraat": {
+   "handling": "Corrected"
+  },
+  "Kinkerbrug": {
+   "handling": "Corrected"
+  },
+  "Kinkerstraat": {
+   "handling": "Sourced supplement from Wikipedia."
+  },
+  "Korte Van Eeghenstraat": {
+   "handling": "Corrected"
+  },
+  "Le Mairegracht": {
+   "handling": "Corrected"
+  },
+  "Leeuwenhoekstraat": {
+   "handling": "Corrected"
+  },
+  "Lizzy Ansinghstraat": {
+   "handling": "Translated without the spliced text."
+  },
+  "Lord Kelvinstraat": {
+   "handling": "Corrected"
+  },
+  "Louvrelaan": {
+   "handling": "Corrected"
+  },
+  "Makassarplein": {
+   "handling": "Corrected"
+  },
+  "Marathonweg": {
+   "handling": "Corrected"
+  },
+  "Mariotteplein": {
+   "handling": "Translated without the broken edge."
+  },
+  "Maritzstraat": {
+   "handling": "Corrected"
+  },
+  "Mata Harihof": {
+   "handling": "Corrected"
+  },
+  "Max Planckstraat": {
+   "handling": "Corrected"
+  },
+  "Milovan Djilasstraat": {
+   "handling": "Corrected"
+  },
+  "Na Druk Gelukbrug": {
+   "handling": "Replaced by a sourced supplement (nl.wikipedia, Olympisch Kwartier)."
+  },
+  "Nelson Mandelapark": {
+   "handling": "Corrected"
+  },
+  "Nicolaas Maesstraat": {
+   "handling": "Corrected"
+  },
+  "Nieuwe Vaart (street)": {
+   "handling": "Completed from the Nieuwevaart record (0363300000003876)."
+  },
+  "Nobelweg": {
+   "handling": "Corrected"
+  },
+  "Okeghemstraat": {
+   "handling": "Corrected"
+  },
+  "Oranje-Vrijstaatkade": {
+   "handling": "Corrected"
+  },
+  "Passeerdersgracht": {
+   "handling": "\"…in de Amsterdam-Centrum werd verboden\" (the same text in Passeerdersstraat, Nieuwe Passeerdersstraat and the Eerste and Tweede Passeerdersdwarsstraat)"
+  },
+  "Philip Vingboonsstraat": {
+   "handling": "Corrected"
+  },
+  "Piet Bakkerbrug": {
+   "handling": "Translated without the broken edge."
+  },
+  "Piet Kranenbergpad": {
+   "handling": "Replaced by a sourced supplement (Wikipedia)."
+  },
+  "Piet Meerburgbrug": {
+   "handling": "Repaired: the Hamerstraat paragraph is appended."
+  },
+  "Piet Wiedijkstraat": {
+   "handling": "Replaced by a sourced supplement (Wikipedia)."
+  },
+  "Pieter de Hoochstraat": {
+   "handling": "Corrected"
+  },
+  "Plutostraat": {
+   "handling": "Corrected"
+  },
+  "Pradolaan": {
+   "handling": "Corrected"
+  },
+  "Robijnstraat": {
+   "handling": "Translated without the broken edge (\"a hard, red gemstone\")."
+  },
+  "Rooseveltlaan": {
+   "handling": "Corrected"
+  },
+  "Rutherfordstraat": {
+   "handling": "Corrected"
+  },
+  "Scharwouderstraat": {
+   "handling": "Withheld."
+  },
+  "Scheepmakerskade": {
+   "handling": "Withheld."
+  },
+  "Schopenhauerhof": {
+   "handling": "Corrected"
+  },
+  "Shackletonstraat": {
+   "handling": "Corrected"
+  },
+  "Silvretta": {
+   "handling": "Corrected"
+  },
+  "Sint Anthoniesluis": {
+   "handling": "Translated without the broken edge."
+  },
+  "Sint Antoniesbreestraat": {
+   "handling": "Completed from the Sint Antoniesluis's text, which gives the same origin (the Sint Antoniesdijk)."
+  },
+  "Slijkstraat": {
+   "handling": "\"In de Amsterdam-Centrum geven verschillende straatnamen…\""
+  },
+  "Smallepadsgracht": {
+   "handling": "Withheld."
+  },
+  "Smaragdplein": {
+   "handling": "Withheld."
+  },
+  "Snelliusstraat": {
+   "handling": "Replaced with his law of refraction and triangulation"
+  },
+  "Sontvaarderstraat": {
+   "handling": "Corrected"
+  },
+  "Spitsbergenstraat": {
+   "handling": "Corrected"
+  },
+  "Stephensonstraat": {
+   "handling": "Corrected"
+  },
+  "Stuyvesantstraat": {
+   "handling": "Corrected"
+  },
+  "Tasmanstraat": {
+   "handling": "Corrected"
+  },
+  "Tempelhofstraat": {
+   "handling": "Corrected"
+  },
+  "Texelweg)": {
+   "handling": "Corrected (\"One of the Wadden Islands\")"
+  },
+  "Thomas à Kempisstraat": {
+   "handling": "Corrected"
+  },
+  "Tienraaikade": {
+   "handling": "Corrected"
+  },
+  "Titiaanstraat": {
+   "handling": "Corrected"
+  },
+  "Titus van Rijnstraat": {
+   "handling": "Corrected"
+  },
+  "Torresstraat": {
+   "handling": "Corrected"
+  },
+  "Trimurtistraat": {
+   "handling": "Replaced"
+  },
+  "Tweede Jacob van Campenstraat": {
+   "handling": "Year dropped"
+  },
+  "VOC-kade": {
+   "handling": "\"Batavia, het bestuurlijke Amsterdam-Centrum Azië\""
+  },
+  "Van Diemenkade": {
+   "handling": "Corrected"
+  },
+  "Van Effenstraat": {
+   "handling": "Corrected"
+  },
+  "Van Musschenbroekstraat": {
+   "handling": "Corrected; Leyden jar added"
+  },
+  "Van Reigersbergenstraat": {
+   "handling": "Corrected"
+  },
+  "Van Rensselaerstraat": {
+   "handling": "Corrected"
+  },
+  "Van Woustraat": {
+   "handling": "Corrected"
+  },
+  "Vancouverstraat": {
+   "handling": "Corrected"
+  },
+  "Vasco da Gamastraat": {
+   "handling": "Corrected"
+  },
+  "Volewijckbrug": {
+   "handling": "Completed with \"were displayed\", as the Volewijkshof's text says."
+  },
+  "Vredenburgerbrug": {
+   "handling": "Completed from the Vredenburgersteeg's text, which is the whole of the same entry."
+  },
+  "Waterlooplein": {
+   "handling": "Corrected"
+  },
+  "Wigbolt Ripperdastraat": {
+   "handling": "Corrected"
+  },
+  "Wim Suurbierbrug": {
+   "handling": "Completed from the identical Ajax paragraph on the Ruud Krolbrug."
+  },
+  "Zacharias Jansestraat": {
+   "handling": "Corrected"
+  }
+ },
+ "keptNl": {
+  "Elandsgracht": "Kept.",
+  "Groene Ridderhof": "Kept (right year unknown)",
+  "Guggenheimlaan": "Kept (construction did start in 1956)",
+  "Nieuwendammerkade": "Uses the Nieuwendammerdijk record's explanation of Nieuwendam (0363300000003870).",
+  "Rembrandtpark": "Kept only the opening sentence about Rembrandt.",
+  "Utrechtsedwarsstraat": "Kept only \"After the city of Utrecht\"."
+ },
+ "corrections": {
+  "Accason": {
+   "replace": [
+    [
+     "Archachon",
+     "Arcachon"
+    ]
+   ]
+  },
+  "Amelandstraat": {
+   "replace": [
+    [
+     "Waddeneiland (Noord-Holland)",
+     "Waddeneiland (Friesland)"
+    ]
+   ]
+  },
+  "Bartholomeus Diazstraat": {
+   "replace": [
+    [
+     "in 1486",
+     "in 1488"
+    ]
+   ]
+  },
+  "Beringhaven": {
+   "replace": [
+    [
+     "In 1741 ontdekt",
+     "In 1728 ontdekt"
+    ]
+   ]
+  },
+  "Berzeliusstraat": {
+   "replace": [
+    [
+     "Johannes Jacob Berzelius",
+     "Jöns Jacob Berzelius"
+    ]
+   ]
+  },
+  "Caroline Herschelbrug": {
+   "replace": [
+    [
+     "17e eeuw",
+     "18e eeuw"
+    ]
+   ]
+  },
+  "Dachstein": {
+   "replace": [
+    [
+     "1995 meter",
+     "2995 meter"
+    ]
+   ]
+  },
+  "De Tourton Bruynsstraat": {
+   "replace": [
+    [
+     "vernietigingskamp Buchenwald",
+     "concentratiekamp Buchenwald"
+    ]
+   ]
+  },
+  "Dulongstraat": {
+   "replace": [
+    [
+     "atoomtemperatuur",
+     "atoomwarmte"
+    ]
+   ]
+  },
+  "Ferrarisstraat": {
+   "replace": [
+    [
+     "Giorgi Ferraris",
+     "Galileo Ferraris"
+    ]
+   ]
+  },
+  "Geerdinkhof": {
+   "replace": [
+    [
+     "(Gelderland)",
+     "(Overijssel)"
+    ]
+   ]
+  },
+  "George Gershwinlaan": {
+   "replace": [
+    [
+     "(1898-1990)",
+     "(1898-1937)"
+    ]
+   ]
+  },
+  "Hegelhof": {
+   "replace": [
+    [
+     "(1841-1926)",
+     "(1770-1831)"
+    ]
+   ]
+  },
+  "Hudsonhof": {
+   "replace": [
+    [
+     "(1550-1611)",
+     "(c. 1565-1611)"
+    ],
+    [
+     "in dienst van de Verenigde Oostindische Compagnie",
+     "in 1609 in dienst van de VOC en in 1610 in Engelse dienst"
+    ]
+   ]
+  },
+  "James Wattstraat": {
+   "replace": [
+    [
+     "Engels natuurkundige",
+     "Schotse ingenieur"
+    ],
+    [
+     "uitvinder van de stoommachine",
+     "die de stoommachine sterk verbeterde"
+    ]
+   ]
+  },
+  "Jan Luijkenstraat": {
+   "replace": [
+    [
+     "samen met zijn broer Caspar",
+     "samen met zijn zoon Caspar"
+    ]
+   ]
+  },
+  "Jan van Goyenkade": {
+   "replace": [
+    [
+     "(1595-1635)",
+     "(1596-1656)"
+    ]
+   ]
+  },
+  "Johann Keplerstraat": {
+   "replace": [
+    [
+     "Boheems astronoom",
+     "Duits astronoom"
+    ]
+   ]
+  },
+  "John Coltranestraat": {
+   "replace": [
+    [
+     "William John Coltrane",
+     "John William Coltrane"
+    ]
+   ]
+  },
+  "Lise Meitnerpad": {
+   "replace": [
+    [
+     "kernfusie",
+     "kernsplijting"
+    ]
+   ]
+  },
+  "Lodewijk Boisotstraat": {
+   "replace": [
+    [
+     "in 1572 Leiden",
+     "in 1574 Leiden"
+    ]
+   ]
+  },
+  "Majubastraat": {
+   "replace": [
+    [
+     "op de grens van Transvaal en Oranje Vrijstaat",
+     "in Natal, aan de grens met Transvaal"
+    ]
+   ]
+  },
+  "Marconistraat": {
+   "replace": [
+    [
+     "Guilielmo Marconi",
+     "Guglielmo Marconi"
+    ]
+   ]
+  },
+  "Maxwellstraat": {
+   "replace": [
+    [
+     "De Engelse natuurkundige",
+     "De Schotse natuurkundige"
+    ]
+   ]
+  },
+  "Pasteurstraat": {
+   "replace": [
+    [
+     "Vond een serum tegen hondsdolheid",
+     "Ontwikkelde in 1885 een vaccin tegen hondsdolheid"
+    ]
+   ]
+  },
+  "Pieter van der Werfstraat": {
+   "replace": [
+    [
+     "beleg van Leiden in 1572",
+     "beleg van Leiden (1573-1574)"
+    ]
+   ]
+  },
+  "Raphaëlplein": {
+   "replace": [
+    [
+     "Raffaëllo di Senti",
+     "Raffaello Santi"
+    ]
+   ]
+  },
+  "Rousseaustraat": {
+   "replace": [
+    [
+     "(1711-1778)",
+     "(1712-1778)"
+    ]
+   ]
+  },
+  "Sara Burgerhartstraat": {
+   "replace": [
+    [
+     "uit 1872",
+     "uit 1782"
+    ]
+   ]
+  },
+  "Senefelderstraat": {
+   "replace": [
+    [
+     "Oostenrijks typograaf",
+     "in Praag geboren Duits acteur en drukker"
+    ]
+   ]
+  },
+  "Sophialaan": {
+   "replace": [
+    [
+     "(1817-1877)",
+     "(1818-1877)"
+    ]
+   ]
+  },
+  "Spaanse Brabanderstraat": {
+   "replace": [
+    [
+     "Naar de roman van",
+     "Naar het blijspel van"
+    ]
+   ]
+  },
+  "Suze Robertsonstraat": {
+   "replace": [
+    [
+     "(1856-1922)",
+     "(1855-1922)"
+    ]
+   ]
+  },
+  "Teniersstraat": {
+   "replace": [
+    [
+     "Brusselse Academie",
+     "Antwerpse Academie"
+    ]
+   ]
+  },
+  "Teslastraat": {
+   "replace": [
+    [
+     "Joegoslavisch ingenieur",
+     "Servisch-Amerikaans ingenieur"
+    ]
+   ]
+  },
+  "Thérèse Schwartzeplein": {
+   "replace": [
+    [
+     "(1852-1918)",
+     "(1851-1918)"
+    ]
+   ]
+  },
+  "Valeriusplein": {
+   "replace": [
+    [
+     "(1575-1626)",
+     "(1575-1625)"
+    ]
+   ]
+  },
+  "Vespuccistraat": {
+   "replace": [
+    [
+     "(1451- 1512)",
+     "(1454-1512)"
+    ]
+   ]
+  },
+  "Weissenbruchstraat": {
+   "replace": [
+    [
+     "(1825-1903)",
+     "(1824-1903)"
+    ]
+   ]
+  },
+  "Willem Schoutenstraat": {
+   "replace": [
+    [
+     "(1580-1625)",
+     "(c. 1567-1625)"
+    ]
+   ]
+  },
+  "William Boothstraat": {
+   "replace": [
+    [
+     "(1829-1914)",
+     "(1829-1912)"
+    ]
+   ]
+  },
+  "Zennehof": {
+   "replace": [
+    [
+     "Kanaal in België, nabij Brussel.",
+     "Rivier in België, die door Brussel stroomt."
+    ]
+   ]
+  },
+  "Zenostraat": {
+   "replace": [
+    [
+     "(342-270 v. Chr.)",
+     "(c. 334 - c. 262 v. Chr.)"
+    ]
+   ]
+  },
+  "Zilverschoonstraat": {
+   "replace": [
+    [
+     "ranonkelfamilie",
+     "rozenfamilie"
+    ]
+   ]
+  }
+ }
+}
