@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Ride: enamel favicon and a real-ride preview card (2026-10-22)
+
+The ride page had no icon at all (the landing linked Map Quest's compass), and
+its `og:image` was a top-down map frame. Now `assets/brand/icon.svg` is a navy
+enamel plaque with a cream canal boat and wave, with `favicon-32.png` and a
+full-bleed `apple-touch-icon.png`; the ride and landing both link all three and
+the ride sets `theme-color` to the plaque navy. The preview card is rebuilt from
+a real ride frame (canal, bridge and terraces with the "which waterway are you
+on now?" card open)
+with the plaque, "Ride the real canals", "Name each one before the map does."
+and the domain. `scripts/landing/render-share-images.mjs` gained
+`CARDS=ride|landing` so a fresh ride frame does not overwrite the landing card.
+The source frame is `artifacts/share-capture/ride-frame.png` (temporary).
+
 ## Setup: Amsterdam only, no destination or tour pickers, three questions a minute (2026-10-22)
 
 User: "get rid of the city selector on the main page, lock to Amsterdam", then
