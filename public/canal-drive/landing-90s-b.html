@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+// Prototype of the landing page in a mid-90s reference-book style (variant B: Encarta-leaning).
+// Standalone and unlinked; landing.html stays the live page. Same root redirect as landing.html.
+(function () {
+  var dev = location.pathname.indexOf('/canal-drive/') >= 0;
+  var params = new URLSearchParams(location.search);
+  if (params.has('home')) {
+    history.replaceState(null, '', location.pathname);
+    return;
+  }
+  if (dev || !/^\/(index\.html)?$/.test(location.pathname)) return;
+  if (location.search || location.hash) location.replace('/ride' + location.search + location.hash);
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ride Amsterdam — learn the city by name</title>
+<meta name="description" content="Ride Amsterdam's real canals and streets in 3D and name each one before the map gives it away. A free learning game built from open city data.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1f6e6e">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ride Amsterdam">
+<meta property="og:title" content="Ride Amsterdam — learn the city by name">
+<meta property="og:description" content="Ride a boat or a bike through a 3D Amsterdam built from open city data, and name each canal and street before the map gives it away.">
+<meta property="og:image" content="https://rideamsterdam.nl/assets/landing/share-landing.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ride Amsterdam: a boat on the Prinsengracht beside the Westerkerk, under a blue enamel street-plaque title">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ride Amsterdam — learn the city by name">
+<meta name="twitter:description" content="Ride a boat or a bike through a 3D Amsterdam built from open city data, and name each canal and street before the map gives it away.">
+<meta name="twitter:image" content="https://rideamsterdam.nl/assets/landing/share-landing.jpg">
+<link rel="icon" type="image/svg+xml" href="quiz/app-icon.svg" data-dev-href="../app-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
+<link href="css/enamel.css" rel="stylesheet">
+<link rel="preload" as="image" href="assets/landing/question-desktop.webp" type="image/webp">
+<style>
+/* Reference-book page: white paper, a serif for the article voice, a humanist sans for
+   captions and apparatus, one category colour (the enamel blue) and the copper stamp. */
+:root {
+  --paper: #ffffff;
+  --paper-2: #f6f4ee;
+  --ink: #1b1a17;
+  --ink-2: #4a4740;
+  --rule: #c9c5bb;
+  --rule-2: #8f8a7e;
+  --cat: #0b3a8c;            /* the category band: enamel blue */
+  --cat-ink: #ffffff;
+  --note: #fff6d2;           /* "Did you know?" panel */
+  --note-ink: #4a3a00;
+  --note-rule: #e2c768;
+  --sepia: #3b2f23;          /* diagram ink */
+  --copper: #b4682c;
+  --copper-ink: #8a4a18;
+  --gutter: clamp(16px, 4.5vw, 56px);
+  --serif: "EB Garamond", Garamond, "Times New Roman", Georgia, serif;
+  --sans: "Source Sans 3", "Source Sans Pro", "Segoe UI", Tahoma, Verdana, system-ui, sans-serif;
+  --plaque: var(--font-plaque);
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 19px/1.5 var(--serif); -webkit-font-smoothing: antialiased; }
+::selection { background: #dbe4f7; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--copper-ink); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--cat); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+.wrap { width: min(1240px, 100%); margin: 0 auto; padding: 0 var(--gutter); }
+h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 500; letter-spacing: -0.005em; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+p + p { margin-top: 0.75em; }
+.sans { font-family: var(--sans); }
+
+/* The category band along the top of the page, as on a DK spread: section, running head, folio. */
+.band { background: var(--cat); color: var(--cat-ink); font: 600 13px/1 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; }
+.band .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 34px; padding-top: max(0px, env(safe-area-inset-top)); }
+.band span + span { font-weight: 400; letter-spacing: 0.08em; text-transform: none; opacity: .9; }
+
+/* Masthead: the enamel plaque stays as the brand accent; the contents list is set in small caps. */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+.wordmark { display: inline-flex; align-items: center; padding: calc(10px - .05em) calc(18px - .04em) calc(10px + .05em) calc(18px + .04em); font: 800 18px/1 var(--plaque); letter-spacing: 0.08em; text-transform: uppercase; color: #fff; text-decoration: none; }
+.top nav { display: flex; align-items: center; gap: clamp(12px, 2.4vw, 28px); }
+.top nav a { font: 600 14px/1 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 10px 0; border-bottom: 2px solid transparent; }
+.top nav a:hover { border-bottom-color: var(--cat); }
+
+/* Buttons: the copper Start stamp from the ride, and a plain paper twin. */
+.stamp { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 13px 28px 12px; border-radius: 4px;
+  font: 800 19px/1 var(--plaque); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: #2a1606;
+  background: linear-gradient(180deg, var(--enamel-copper-hi) 0%, var(--enamel-copper) 48%, var(--enamel-copper-deep) 100%);
+  box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 4px 12px rgba(138,85,36,.28); transition: transform 160ms, box-shadow 160ms; }
+.stamp::before { content: ''; position: absolute; inset: 5px; border: 1px solid rgba(255,244,222,.8); border-radius: 2px; pointer-events: none; }
+.stamp:hover { transform: translateY(-1px); text-decoration: none; }
+.stamp:active { transform: translateY(1px); }
+.stamp svg, .quiet svg { width: 20px; height: 20px; flex: none; }
+.quiet { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 52px; padding: 12px 22px; border-radius: 4px; border: 1px solid var(--rule-2); background: var(--paper);
+  font: 700 17px/1 var(--plaque); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; cursor: pointer; transition: border-color 140ms, background 140ms; }
+.quiet:hover { border-color: var(--cat); color: var(--cat); text-decoration: none; }
+button.quiet { font-family: var(--plaque); }
+
+/* Article head: title, deck and calls to action, with the fact file as a sidebar box. */
+.article { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: clamp(28px, 5vw, 72px); align-items: start; padding-top: clamp(28px, 4vw, 48px); }
+.kicker { font: 600 13px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--cat); }
+.kicker b { font-weight: 600; color: var(--ink-2); }
+h1 { margin-top: 10px; font-size: clamp(2.6rem, 5.4vw, 4.3rem); line-height: 1.02; }
+h1 em { font-style: italic; font-weight: 400; }
+.lede { margin-top: 20px; max-width: 36rem; font-size: clamp(20px, 1.7vw, 23px); line-height: 1.45; }
+.lede strong { font-weight: 600; }
+.lede small { display: block; margin-top: 2px; font: 400 15px/1.4 var(--sans); color: var(--ink-2); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.fine { margin-top: 14px; font: 400 15px/1.4 var(--sans); color: var(--ink-2); }
+
+/* Fact file: the DK sidebar box, a thick colour head and ruled rows. The rows are generated. */
+.factfile { border: 1px solid var(--rule); border-top: 6px solid var(--cat); background: var(--paper-2); padding: 14px 18px 8px; }
+.factfile h2 { font: 700 14px/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--cat); padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+.stats-grid { list-style: none; margin: 0; padding: 0; }
+.stats-grid li { display: grid; grid-template-columns: 6.2rem minmax(0, 1fr); align-items: baseline; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--rule); }
+.stats-grid li:last-child { border-bottom: 0; }
+.stat-n { font: 600 1.7rem/1 var(--serif); font-variant-numeric: tabular-nums lining-nums; color: var(--ink); white-space: nowrap; text-align: right; }
+.stats-grid span { font: 400 15px/1.3 var(--sans); color: var(--ink-2); }
+.factfile p { margin-top: 10px; font: 400 12.5px/1.4 var(--sans); color: var(--ink-2); }
+
+/* The specimen plate: the screenshot floated on the white page with leader lines to numbered callouts.
+   Geometry is fixed in a 1600×680 box so the SVG leaders and the HTML labels agree. */
+.plate { margin: clamp(36px, 5vw, 60px) auto 0; }
+.plate .title { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid var(--ink); padding-top: 8px; font: 600 13px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
+.plate .title b { color: var(--cat); }
+.plate .stage { position: relative; aspect-ratio: 1600 / 680; margin-top: 8px; }
+.plate .specimen { position: absolute; left: 19%; top: 4.4%; width: 62%; aspect-ratio: 1200 / 750; }
+.plate .specimen img { width: 100%; height: 100%; object-fit: cover; outline: 1px solid rgba(27,26,23,.25); box-shadow: 0 10px 18px -6px rgba(27,26,23,.28), 0 30px 60px -20px rgba(27,26,23,.35); }
+.plate .leaders { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.plate .leaders line { stroke: var(--ink); stroke-width: 1.25; vector-effect: non-scaling-stroke; }
+.plate .leaders circle.tip { fill: var(--ink); }
+.plate .leaders circle { fill: var(--paper); stroke: var(--ink); stroke-width: 1.25; vector-effect: non-scaling-stroke; }
+.pin { display: none; position: absolute; z-index: 2; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; background: var(--cat); color: #fff; font: 700 12px/22px var(--sans); text-align: center; box-shadow: 0 0 0 2px #fff; }
+.plate .key { list-style: none; margin: 0; padding: 0; }
+.plate .key li { position: absolute; width: 15.5%; font: 400 14px/1.35 var(--sans); color: var(--ink-2); }
+.plate .key li b { display: block; font-weight: 700; color: var(--ink); }
+.plate .key li b::before { content: attr(data-n); display: inline-block; min-width: 1.4em; margin-right: 6px; border-radius: 50%; background: var(--cat); color: #fff; font-size: 11px; line-height: 1.4em; text-align: center; vertical-align: 2px; padding: 0 .1em; }
+.plate .key li.l { left: 0; text-align: right; }
+.plate .key li.r { left: 84.5%; }
+.plate figcaption { margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--rule); font: 400 14px/1.45 var(--sans); color: var(--ink-2); max-width: 60rem; }
+.plate figcaption b { color: var(--ink); font-weight: 700; }
+
+/* Sections of the article */
+section.sec { padding-top: clamp(44px, 6vw, 80px); }
+.sechead { display: flex; align-items: baseline; gap: 14px; border-top: 1px solid var(--ink); padding-top: 10px; }
+.sechead h2 { font-size: clamp(1.9rem, 3.2vw, 2.7rem); line-height: 1.1; }
+.sechead small { font: 600 12.5px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--cat); white-space: nowrap; }
+.prose { max-width: 34rem; }
+.prose h3 { font-size: 1.55rem; line-height: 1.2; }
+.prose h3 + p { margin-top: 8px; }
+.prose p strong { font-weight: 600; }
+.dropcap::first-letter { float: left; font-size: 3.3em; line-height: .82; padding: .07em .08em 0 0; font-weight: 500; }
+.cap { font: 400 14px/1.45 var(--sans); color: var(--ink-2); }
+.cap b { color: var(--ink); font-weight: 700; }
+
+.how { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(24px, 4vw, 64px); align-items: start; margin-top: 24px; }
+.how + .how { margin-top: clamp(40px, 6vw, 64px); }
+.how.flip .prose { order: 2; }
+.fig { margin: 0; }
+.fig img { width: 100%; outline: 1px solid rgba(27,26,23,.2); box-shadow: 0 8px 14px -6px rgba(27,26,23,.25), 0 24px 44px -20px rgba(27,26,23,.3); }
+.fig figcaption { margin-top: 10px; }
+.fig.small { margin-top: 22px; }
+.frame.film { aspect-ratio: 1200 / 750; outline: 1px solid rgba(27,26,23,.2); box-shadow: 0 8px 14px -6px rgba(27,26,23,.25), 0 24px 44px -20px rgba(27,26,23,.3); }
+.frame.film img { object-position: center; }
+.diagram { width: 100%; height: auto; display: block; }
+.diagram text { font-family: var(--sans); fill: var(--sepia); }
+
+/* "Did you know?" panel: a pale note with a run-in head and a citation line. */
+.dyk { margin-top: clamp(36px, 5vw, 56px); background: var(--note); border: 1px solid var(--note-rule); color: var(--note-ink); padding: 18px 22px 16px; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; align-items: start; }
+.dyk svg { width: 44px; height: 44px; }
+.dyk h2 { font: 700 14px/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--note-ink); }
+.dyk p { margin-top: 8px; font-size: 18px; }
+.dyk p b { font-weight: 600; }
+.dyk .src { margin-top: 10px; font: 400 13px/1.4 var(--sans); }
+.dyk .src a { color: inherit; }
+
+/* Media panels: two ways in, as the encyclopedia's media windows with a thin grey bevel. */
+.ways { display: grid; grid-template-columns: 1fr 1fr 0.5fr; gap: clamp(20px, 3vw, 40px); margin-top: 24px; }
+.media { border: 1px solid var(--rule-2); background: #e8e6e0; padding: 6px; box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #b9b5aa; }
+.media .bar { display: flex; align-items: center; gap: 8px; padding: 2px 4px 7px; font: 700 12px/1 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); }
+.media .bar svg { width: 14px; height: 14px; }
+.media .bar span:last-child { margin-left: auto; font-weight: 400; letter-spacing: .02em; text-transform: none; }
+.frame { position: relative; overflow: hidden; background: #ddd; aspect-ratio: 16 / 10; outline: 1px solid var(--rule-2); }
+.frame img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.frame.tall { aspect-ratio: 600 / 1298; }
+.pocket .frame.tall { aspect-ratio: auto; height: 100%; }
+.pocket .media { display: flex; flex-direction: column; flex: 1; }
+.pocket .frame { flex: 1; }
+.way { display: flex; flex-direction: column; gap: 14px; }
+.way h3 { font-size: 1.55rem; }
+.way p { max-width: 32rem; }
+.way .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 2px; }
+
+/* Guided tours: one tap starts the tour in the ride. Titles only; the stops are the ride's surprise. */
+.tours { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 10px 14px; margin: 24px 0 0; padding: 0; }
+.tour { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 4px; border-bottom: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+.tour:hover { border-bottom-color: var(--cat); text-decoration: none; }
+.tour:hover strong { color: var(--cat); }
+.tour svg { width: 26px; height: 26px; margin-top: 2px; }
+.tour strong { display: block; font: 500 1.25rem/1.15 var(--serif); }
+.tour small { font: 400 13.5px/1.3 var(--sans); color: var(--ink-2); }
+
+.help { display: grid; grid-template-columns: minmax(0, 1.2fr) auto; gap: 24px 48px; align-items: end; margin-top: 20px; }
+.help .row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+footer { margin-top: clamp(48px, 7vw, 90px); border-top: 3px double var(--rule-2); padding: 22px 0 max(28px, env(safe-area-inset-bottom)); font: 400 14px/1.5 var(--sans); color: var(--ink-2); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; align-items: baseline; }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+footer nav a { font: 600 13px/1 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 6px 0; }
+footer nav a:hover { color: var(--cat); }
+footer p { max-width: 46rem; }
+footer p a { color: inherit; }
+
+/* Video loops: laid over the still, shown only once frames are playing; the still is the poster and the fallback. */
+video.loop { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; opacity: 0; transition: opacity 400ms; pointer-events: none; }
+video.loop.on { opacity: 1; }
+.cf-launch { display: none !important; }
+
+@media (max-width: 1100px) {
+  .plate .key li { font-size: 13px; }
+}
+@media (max-width: 960px) {
+  .article { grid-template-columns: 1fr; }
+  .factfile { max-width: 36rem; }
+  /* The plate collapses: the specimen full width with its numbered pins, the key as a list below. */
+  .plate .stage { aspect-ratio: auto; }
+  .plate .specimen { position: relative; left: 0; top: 0; width: 100%; }
+  .plate .leaders { display: none; }
+  .pin { display: block; }
+  .plate .key { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; margin-top: 18px; }
+  .plate .key li, .plate .key li.l, .plate .key li.r { position: static; width: auto; text-align: left; }
+  .how, .how.flip { grid-template-columns: 1fr; }
+  .how.flip .prose { order: 0; }
+  .help { grid-template-columns: 1fr; align-items: start; }
+}
+@media (max-width: 759px) {
+  body { font-size: 17.5px; }
+  .band { font-size: 11px; }
+  .band span + span { display: none; }
+  .top nav .hide-sm { display: none; }
+  .wordmark { font-size: 16px; }
+  h1 { font-size: 2.5rem; }
+  .ctas > * { flex: 1 1 100%; }
+  .plate .key { grid-template-columns: 1fr; }
+  .plate .title span + span { display: none; }
+  .ways { grid-template-columns: 1fr; }
+  .pocket .frame.tall { aspect-ratio: 600 / 1298; height: auto; max-width: 300px; margin: 0 auto; }
+  .way .row > *, .help .row > * { flex: 1 1 100%; }
+  .dyk { grid-template-columns: 1fr; padding: 16px; }
+  .dyk svg { width: 32px; height: 32px; }
+  .stats-grid li { grid-template-columns: 5.2rem minmax(0, 1fr); }
+  .stat-n { font-size: 1.5rem; }
+}
+</style>
+<style>
+/* Variant B: the article sits in an application window on a desktop, as the CD-ROM
+   encyclopedias did. Chrome is grey and bevelled, used only for the frame, toolbar,
+   outline pane and status bar; the article page inside stays white. */
+:root { --desk: #1f6e6e; --chrome: #c6c6c6; --chrome-hi: #ffffff; --chrome-lo: #808080; --chrome-dk: #404040; --title-a: #0b2a72; --title-b: #1565c0; }
+body { background: var(--desk); font-size: 18px; }
+.window { width: min(1320px, 100%); margin: 0 auto; background: var(--chrome); padding: 3px; border: 1px solid var(--chrome-dk);
+  box-shadow: inset 1px 1px 0 var(--chrome-hi), inset -1px -1px 0 var(--chrome-lo), 0 0 0 1px var(--chrome-hi), 10px 12px 0 rgba(0,0,0,.25); }
+@media (min-width: 760px) { .window { margin: clamp(16px, 3vw, 36px) auto; } }
+.titlebar { display: flex; align-items: center; gap: 8px; padding: 3px 4px 3px 8px; background: linear-gradient(90deg, var(--title-a), var(--title-b)); color: #fff; font: 700 13.5px/1 var(--sans); letter-spacing: .01em; }
+.titlebar .ico { width: 16px; height: 16px; flex: none; }
+.titlebar span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wb { width: 18px; height: 16px; background: var(--chrome); border: 1px solid; border-color: var(--chrome-hi) var(--chrome-dk) var(--chrome-dk) var(--chrome-hi); box-shadow: inset -1px -1px 0 var(--chrome-lo); color: #000; font: 700 11px/14px var(--sans); text-align: center; }
+.toolbar { display: flex; align-items: center; gap: 2px; padding: 4px 4px; border-bottom: 1px solid var(--chrome-lo); box-shadow: 0 1px 0 var(--chrome-hi); overflow-x: auto; }
+.toolbar nav { display: flex; gap: 2px; }
+.toolbar a, .toolbar .tb { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 4px 10px; border: 1px solid transparent; color: #000; text-decoration: none; font: 400 13.5px/1 var(--sans); white-space: nowrap; }
+.toolbar a:hover { border-color: var(--chrome-hi) var(--chrome-lo) var(--chrome-lo) var(--chrome-hi); }
+.toolbar a:active { border-color: var(--chrome-lo) var(--chrome-hi) var(--chrome-hi) var(--chrome-lo); }
+.toolbar a svg { width: 18px; height: 18px; }
+.toolbar .sep { width: 1px; align-self: stretch; margin: 2px 4px; background: var(--chrome-lo); box-shadow: 1px 0 0 var(--chrome-hi); }
+.toolbar .wordmark { margin-left: auto; font-size: 14px; padding: 8px 16px; }
+.pane { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 3px; margin-top: 3px; }
+.outline { padding: 6px; }
+.outline .stick { position: sticky; top: 8px; }
+.outline h2 { font: 700 12.5px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; padding: 6px 2px 8px; color: #000; }
+.outline ol { list-style: none; margin: 0; padding: 4px 0; background: #fff; border: 1px solid; border-color: var(--chrome-lo) var(--chrome-hi) var(--chrome-hi) var(--chrome-lo); box-shadow: inset 1px 1px 0 var(--chrome-dk), inset -1px -1px 0 var(--chrome); }
+.outline li a { display: block; padding: 6px 10px 6px 12px; font: 400 14.5px/1.25 var(--sans); color: #000; text-decoration: none; }
+.outline li a:hover { background: var(--title-a); color: #fff; }
+.outline li small { display: block; font-size: 12.5px; color: var(--ink-2); }
+.outline li a:hover small { color: #d8e0f5; }
+.outline .ad { margin: 12px 0 0; padding: 10px; background: #fff; border: 1px solid; border-color: var(--chrome-lo) var(--chrome-hi) var(--chrome-hi) var(--chrome-lo); font: 400 13px/1.4 var(--sans); color: var(--ink-2); }
+.doc { background: var(--paper); border: 1px solid; border-color: var(--chrome-lo) var(--chrome-hi) var(--chrome-hi) var(--chrome-lo); box-shadow: inset 1px 1px 0 var(--chrome-dk); min-width: 0; padding-bottom: 8px; }
+.doc .wrap { padding: 0 clamp(16px, 3vw, 40px); }
+.band { display: none; }
+.top { display: none; }
+.statusbar { display: flex; gap: 3px; margin-top: 3px; font: 400 12.5px/1 var(--sans); color: #000; }
+.statusbar span { padding: 4px 8px; border: 1px solid; border-color: var(--chrome-lo) var(--chrome-hi) var(--chrome-hi) var(--chrome-lo); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.statusbar span:first-child { flex: 1; min-width: 0; }
+.statusbar a { color: inherit; }
+
+/* Inside the document: sunken fact file, media windows with their own title strips, plainer rules. */
+.article { padding-top: clamp(22px, 3vw, 34px); }
+.factfile { border: 1px solid; border-color: var(--chrome-lo) var(--chrome-hi) var(--chrome-hi) var(--chrome-lo); border-top-width: 1px; box-shadow: inset 1px 1px 0 var(--chrome-dk); background: var(--paper-2); }
+.factfile h2 { color: #000; }
+.kicker { color: var(--title-a); }
+.plate .title b, .sechead small, .dyk h2 { color: var(--title-a); }
+.pin, .plate .key li b::before { background: var(--title-a); }
+.top nav a:hover, footer nav a:hover, .tour:hover strong { color: var(--title-a); }
+.media { background: var(--chrome); border: 1px solid var(--chrome-dk); padding: 2px; box-shadow: inset 1px 1px 0 var(--chrome-hi), inset -1px -1px 0 var(--chrome-lo); }
+.media .bar { margin: 0 0 2px; padding: 3px 6px; background: linear-gradient(90deg, var(--title-a), var(--title-b)); color: #fff; letter-spacing: .04em; }
+.media .bar span:last-child { opacity: .9; }
+.media .frame { outline: 0; border: 1px solid; border-color: var(--chrome-lo) var(--chrome-hi) var(--chrome-hi) var(--chrome-lo); }
+.plate .specimen img { outline: 0; border: 1px solid var(--chrome-dk); box-shadow: 4px 4px 0 rgba(0,0,0,.18); }
+footer { margin-top: clamp(36px, 5vw, 60px); border-top: 1px solid var(--rule); padding-bottom: 20px; }
+
+@media (max-width: 960px) {
+  .pane { grid-template-columns: 1fr; }
+  .outline { display: none; }
+}
+@media (max-width: 759px) {
+  .window { padding: 2px; border-left: 0; border-right: 0; }
+  .toolbar { padding: 3px 2px; }
+  .toolbar a { padding: 4px 8px; }
+  .toolbar .wordmark { display: none; }
+  .statusbar span + span { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="window">
+  <div class="titlebar" aria-hidden="true">
+    <svg class="ico" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="2" width="14" height="12" fill="#0b3a8c" stroke="#fff"/><path d="M3 11l3-4 3 3 2-2 2 3" stroke="#fff" stroke-width="1.2" fill="none"/></svg>
+    <span>Ride Amsterdam — An interactive guide to the streets and canals</span>
+    <b class="wb">_</b><b class="wb">□</b><b class="wb">×</b>
+  </div>
+  <div class="toolbar">
+    <nav aria-label="Site">
+      <a href="/ride" data-dev-href="./"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20c2 1 4 1 6-1 2 2 4 2 6 0 2 2 4 2 6 1"/><path d="M4 16l2-6h12l2 6"/><path d="M12 10V5h4"/></svg>Ride</a>
+      <a href="/quiz/" data-dev-href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg>Quiz</a>
+      <a href="explore.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/><path d="M4 21h16"/></svg>Buildings</a>
+      <a href="#tours"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h10M4 12h16M4 18h12"/><circle cx="18" cy="6" r="2"/></svg>Tours</a>
+      <a href="/progress" data-dev-href="../progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>Progress</a>
+    </nav>
+    <span class="sep" aria-hidden="true"></span>
+    <a href="https://github.com/blackmad/map-recall2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>Source</a>
+    <a class="wordmark enamel-plaque enamel-framed" href="/?home" data-dev-href="landing-90s-b.html" aria-label="Ride Amsterdam home">Ride Amsterdam</a>
+  </div>
+  <div class="pane">
+    <aside class="outline" aria-labelledby="outline-title">
+      <div class="stick">
+      <h2 id="outline-title">Contents</h2>
+      <ol>
+        <li><a href="#top-of-article">Amsterdam, learn it by name<small>Article</small></a></li>
+        <li><a href="#plate-title">Plate 1 · The ride<small>Annotated screen</small></a></li>
+        <li><a href="#idea-title">How it works<small>Answer first</small></a></li>
+        <li><a href="#dyk-title">Did you know?<small>Street names</small></a></li>
+        <li><a href="#ways-title">Media<small>Ride, quiz, phone</small></a></li>
+        <li><a href="#tours-title">Guided tours<small>8 tours</small></a></li>
+        <li><a href="#help-title">Corrections<small>Report a problem</small></a></li>
+      </ol>
+      <p class="ad">Free, in the browser, on desktop or phone. No account needed.</p>
+      </div>
+    </aside>
+    <div class="doc">
+<div class="band"><div class="wrap"><span>Geography · The Netherlands · Amsterdam</span><span>An interactive guide to the streets and canals</span></div></div>
+<header class="wrap top">
+  <a class="wordmark enamel-plaque enamel-framed" href="/?home" data-dev-href="landing-90s-b.html" aria-label="Ride Amsterdam home">Ride Amsterdam</a>
+  <nav aria-label="Site">
+    <a href="/quiz/" data-dev-href="../">Quiz</a>
+    <a class="hide-sm" href="explore.html">Buildings</a>
+    <a class="hide-sm" href="#tours">Tours</a>
+    <a href="/progress" data-dev-href="../progress">Progress</a>
+    <a href="/ride" data-dev-href="./">Ride</a>
+  </nav>
+</header>
+
+<main id="top-of-article">
+  <div class="wrap article">
+    <div>
+      <p class="kicker">Article <b>· Learning game · Free · Browser</b></p>
+      <h1>Amsterdam, <em>learn it by name</em></h1>
+      <p class="lede"><strong>Ride Amsterdam</strong> is a boat or a bike in a 3D Amsterdam built from open city data. <strong>Every canal and street you pass is a question</strong>, and the map keeps the name to itself until you answer.<small>Dutch pronunciation: [ˌɑmstərˈdɑm].</small></p>
+      <div class="ctas">
+        <a class="stamp" href="/ride" data-dev-href="./">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76"/><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"/><path d="M12 10v4"/><path d="M12 2v3"/></svg>
+          Start a ride
+        </a>
+        <a class="quiet" href="/quiz/" data-dev-href="../">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>
+          Map quiz
+        </a>
+      </div>
+      <p class="fine">Free, in the browser, on desktop or phone. No account needed.</p>
+    </div>
+    <aside class="factfile" aria-labelledby="factfile-title">
+      <h2 id="factfile-title">Fact file</h2>
+      <!-- content-stats:start -->
+      <!-- Generated by scripts/landing/content-stats.ts from the shipped data; exact counts in data/content-stats.json. -->
+      <ul class="stats-grid">
+        <li data-stat="buildingsModelled"><strong class="stat-n" data-count="480" data-plus>480+</strong><span>buildings modelled by hand</span></li>
+        <li data-stat="placesToVisit"><strong class="stat-n" data-count="370" data-plus>370+</strong><span>places to ride to</span></li>
+        <li data-stat="factsToDiscover"><strong class="stat-n" data-count="8100" data-plus>8,100+</strong><span>facts to discover</span></li>
+        <li data-stat="streetsAndCanals"><strong class="stat-n" data-count="5500" data-plus>5,500+</strong><span>streets and canals to name</span></li>
+        <li data-stat="neighbourhoods"><strong class="stat-n" data-count="78">78</strong><span>neighbourhoods to collect</span></li>
+        <li data-stat="zooAnimals"><strong class="stat-n" data-count="39">39</strong><span>animals in the zoo</span></li>
+      </ul>
+      <!-- content-stats:end -->
+      <p>Counted from the data the game ships. Map data from OpenStreetMap; buildings from BAG and 3DBAG.</p>
+    </aside>
+  </div>
+
+  <figure class="wrap plate" aria-labelledby="plate-title">
+    <div class="title"><span id="plate-title"><b>Plate 1</b> · The ride, seen from above</span><span>Desktop, waterway question</span></div>
+    <div class="stage">
+      <div class="specimen">
+        <img src="assets/landing/question-desktop.webp" width="1200" height="750" alt="Ride Amsterdam on a desktop: a boat on a wide waterway in Zuid, a question card asking which waterway it is, the minimap, and the HUD showing the current name as question marks" fetchpriority="high">
+        <span class="pin" style="left:2.2%;top:2.6%" aria-hidden="true">1</span>
+        <span class="pin" style="left:50.4%;top:30%" aria-hidden="true">2</span>
+        <span class="pin" style="left:54.5%;top:64%" aria-hidden="true">3</span>
+        <span class="pin" style="left:3%;top:72.5%" aria-hidden="true">4</span>
+        <span class="pin" style="left:72.6%;top:2.6%" aria-hidden="true">5</span>
+        <span class="pin" style="left:72.8%;top:35.4%" aria-hidden="true">6</span>
+        <span class="pin" style="left:74.4%;top:60.8%" aria-hidden="true">7</span>
+      </div>
+      <svg class="leaders" viewBox="0 0 1600 680" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="329" y1="82" x2="262" y2="55"/><circle class="tip" cx="329" cy="82" r="3"/><circle cx="262" cy="55" r="3.5"/>
+        <line x1="804" y1="216" x2="262" y2="218"/><circle class="tip" cx="804" cy="216" r="3"/><circle cx="262" cy="218" r="3.5"/>
+        <line x1="785" y1="427" x2="262" y2="388"/><circle class="tip" cx="785" cy="427" r="3"/><circle cx="262" cy="388" r="3.5"/>
+        <line x1="329" y1="557" x2="262" y2="551"/><circle class="tip" cx="329" cy="557" r="3"/><circle cx="262" cy="551" r="3.5"/>
+        <line x1="1281" y1="49" x2="1338" y2="55"/><circle class="tip" cx="1281" cy="49" r="3"/><circle cx="1338" cy="55" r="3.5"/>
+        <line x1="1276" y1="300" x2="1338" y2="259"/><circle class="tip" cx="1276" cy="300" r="3"/><circle cx="1338" cy="259" r="3.5"/>
+        <line x1="1266" y1="408" x2="1338" y2="442"/><circle class="tip" cx="1266" cy="408" r="3"/><circle cx="1338" cy="442" r="3.5"/>
+      </svg>
+      <ol class="key">
+        <li class="l" style="top:6%"><b data-n="1">The name, withheld</b>The canal or street you are on is printed as <code>???</code> until you answer.</li>
+        <li class="l" style="top:30%"><b data-n="2">Your route</b>A blue line to the destination. Follow it or wander; the questions come either way.</li>
+        <li class="l" style="top:55%"><b data-n="3">You</b>A boat on the canals, or a bike on the streets. Arrow keys or the on-screen pad.</li>
+        <li class="l" style="top:79%"><b data-n="4">Minimap</b>North-up, with the route drawn in and no names on it.</li>
+        <li class="r" style="top:6%"><b data-n="5">Destination</b>A place to ride to and the distance left: here De Vondeltuin, 4.1 km.</li>
+        <li class="r" style="top:36%"><b data-n="6">The question card</b>Which waterway are you on now? Three names from nearby; harder settings make you type it.</li>
+        <li class="r" style="top:63%"><b data-n="7">No idea, tell me</b>Costs the point, not the lesson: the card then says a little about the place.</li>
+      </ol>
+    </div>
+    <figcaption><b>A boat somewhere in Zuid.</b> The card asks which waterway this is, and the answer is withheld here too. The HUD never prints a name before you have given one; the water carries no labels and the route no street names.</figcaption>
+  </figure>
+
+  <section class="wrap sec" aria-labelledby="idea-title">
+    <div class="sechead"><small>How it works</small><h2 id="idea-title">Answer first. Then the map tells you.</h2></div>
+    <div class="how">
+      <div class="prose">
+        <p class="dropcap">Ride along a real canal and a question card asks which one you are on. <strong>Nothing on screen gives it away:</strong> no labels on the water, no street names on the route. Pick from the choices, or type it on harder settings, and only then does the name appear.</p>
+        <p>Guessing wrong is part of it. The card tells you a little about the place, so the name has something to stick to.</p>
+      </div>
+      <figure class="fig">
+        <div class="frame film" data-loop="desk"><img src="assets/landing/ride-desktop.webp" width="1200" height="750" loading="lazy" decoding="async" alt="After an answer: the HUD now reads Prinsengracht, the boat passes the Westerkerk, and a card about the Anne Frank House is open"></div>
+        <figcaption class="cap"><b>Fig. 2 · After the answer.</b> The HUD now reads Prinsengracht; a card about the Anne Frank House opens as the boat passes the Westerkerk.</figcaption>
+      </figure>
+    </div>
+
+    <div class="how flip">
+      <div class="prose">
+        <h3>Wrong today, back tomorrow</h3>
+        <p>Every name you meet joins your knowledge. The ones you miss come back on a later ride, spaced out until you know them; the ones you know stop being asked.</p>
+        <p>Ride from your own address and the first routes stay close to home, then widen as the neighbourhood sticks.</p>
+      </div>
+      <figure class="fig">
+        <!-- Spaced review, drawn as an annotated timeline: the gaps widen with each correct answer. -->
+        <svg class="diagram" viewBox="0 0 640 240" role="img" aria-labelledby="sr-title">
+          <title id="sr-title">Timeline of one name: missed on the first ride, asked again the next day, then after four days, two weeks, and finally not asked at all</title>
+          <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3b2f23"/></marker></defs>
+          <line x1="30" y1="150" x2="620" y2="150" stroke="#3b2f23" stroke-width="1.5" marker-end="url(#arr)"/>
+          <g stroke="#3b2f23" stroke-width="1.5" fill="#fff">
+            <circle cx="60" cy="150" r="7" fill="#b4682c"/>
+            <circle cx="120" cy="150" r="7" fill="#b4682c"/>
+            <circle cx="235" cy="150" r="7"/>
+            <circle cx="420" cy="150" r="7"/>
+          </g>
+          <g fill="none" stroke="#3b2f23" stroke-width="1.25" stroke-dasharray="4 3">
+            <path d="M60 143 Q90 95 120 143"/>
+            <path d="M120 143 Q177 60 235 143"/>
+            <path d="M235 143 Q327 30 420 143"/>
+            <path d="M420 143 Q500 40 580 110"/>
+          </g>
+          <g font-size="15" text-anchor="middle">
+            <text x="60" y="176">ride 1</text><text x="60" y="191" font-weight="700">missed</text>
+            <text x="120" y="176">next day</text><text x="120" y="191" font-weight="700">missed</text>
+            <text x="235" y="176">4 days</text><text x="235" y="191" font-weight="700">right</text>
+            <text x="420" y="176">2 weeks</text><text x="420" y="191" font-weight="700">right</text>
+          </g>
+          <g font-size="15">
+            <text x="470" y="86" font-weight="700">known</text>
+            <text x="470" y="101">no longer asked;</text>
+            <text x="470" y="116">a new name takes its turn</text>
+            <text x="90" y="88" font-style="italic">Prinsengracht?</text>
+            <text x="30" y="22" font-weight="700">One name, five rides</text>
+            <text x="30" y="38">Each right answer earns a longer gap before it is asked again.</text>
+          </g>
+        </svg>
+        <figcaption class="cap"><b>Fig. 3 · Spaced review.</b> A name missed today is asked again tomorrow; each right answer earns a longer gap.</figcaption>
+      </figure>
+    </div>
+
+    <div class="how">
+      <div class="prose">
+        <h3>A city you will recognise</h3>
+        <p>The canals, streets and bridges come from OpenStreetMap; the buildings from the Dutch building registry and its 3D heights. Landmarks and canal houses are modelled from photographs, one by one, so the Westerkerk looks like the Westerkerk.</p>
+        <p><a href="explore.html">Explore the modelled buildings</a></p>
+        <figure class="fig small">
+        <!-- Exploded view of the city's layers, in the manner of a cutaway diagram. -->
+        <svg class="diagram" viewBox="0 0 640 330" role="img" aria-labelledby="ex-title">
+          <title id="ex-title">Exploded view of four layers: OpenStreetMap canals and streets at the bottom, BAG building footprints above, 3DBAG heights above that, and hand-modelled landmarks on top</title>
+          <g stroke="#3b2f23" stroke-width="1.5" stroke-linejoin="round">
+            <!-- layer 1: OSM -->
+            <path d="M60 300 L240 240 L420 300 L240 360 Z" fill="#f3ecda" transform="translate(0,-40)"/>
+            <path d="M110 262 L300 300" stroke="#8fbfe0" stroke-width="7" stroke-linecap="round" fill="none" transform="translate(0,-40)"/>
+            <path d="M150 300 L330 240" stroke="#c9c1b0" stroke-width="5" stroke-linecap="round" fill="none" transform="translate(0,-40)"/>
+            <path d="M200 320 L380 260" stroke="#c9c1b0" stroke-width="5" stroke-linecap="round" fill="none" transform="translate(0,-40)"/>
+            <!-- layer 2: BAG footprints -->
+            <path d="M60 230 L240 170 L420 230 L240 290 Z" fill="#f3ecda" transform="translate(0,-40)"/>
+            <g fill="#e2cdb4" transform="translate(0,-40)">
+              <path d="M150 218 L180 208 L200 215 L170 225 Z"/><path d="M200 232 L230 222 L250 229 L220 239 Z"/><path d="M250 248 L280 238 L300 245 L270 255 Z"/>
+              <path d="M230 190 L262 179 L282 186 L250 197 Z"/><path d="M285 207 L315 197 L335 204 L305 214 Z"/>
+            </g>
+            <!-- layer 3: 3DBAG heights -->
+            <path d="M60 160 L240 100 L420 160 L240 220 Z" fill="#f3ecda" transform="translate(0,-40)"/>
+            <g transform="translate(0,-40)">
+              <path d="M150 148 L180 138 L200 145 L170 155 Z M150 148 L150 128 L180 118 L200 125 L200 145 M180 138 L180 118" fill="#e2cdb4"/>
+              <path d="M205 165 L235 155 L255 162 L225 172 Z M205 165 L205 140 L235 130 L255 137 L255 162 M235 155 L235 130" fill="#e2cdb4"/>
+              <path d="M262 184 L292 174 L312 181 L282 191 Z M262 184 L262 162 L292 152 L312 159 L312 181 M292 174 L292 152" fill="#e2cdb4"/>
+              <path d="M240 120 L272 109 L292 116 L260 127 Z M240 120 L240 92 L272 81 L292 88 L292 116 M272 109 L272 81" fill="#e2cdb4"/>
+            </g>
+            <!-- layer 4: hand-modelled landmark, a tower -->
+            <path d="M60 90 L240 30 L420 90 L240 150 Z" fill="#f3ecda" transform="translate(0,-40)"/>
+            <g transform="translate(0,-40)" fill="#c6866a">
+              <path d="M222 112 L258 100 L258 50 L222 62 Z"/>
+              <path d="M258 100 L274 106 L274 56 L258 50 Z" fill="#a66b52"/>
+              <path d="M222 62 L240 20 L258 50 L240 44 Z" fill="#6f8db0"/>
+              <path d="M258 50 L240 20 L274 56 L258 50 Z" fill="#5a7596"/>
+              <path d="M232 98 L240 95 L240 80 L232 83 Z M246 93 L254 90 L254 75 L246 78 Z" fill="#fff"/>
+            </g>
+          </g>
+          <g fill="none" stroke="#3b2f23" stroke-width="1" stroke-dasharray="3 3">
+            <path d="M330 60 L470 40"/><path d="M330 130 L470 112"/><path d="M330 200 L470 184"/><path d="M330 270 L470 256"/>
+          </g>
+          <g font-size="15.5">
+            <text x="476" y="36" font-weight="700">Landmarks</text><text x="476" y="51">modelled by hand</text><text x="476" y="66">from photographs</text>
+            <text x="476" y="108" font-weight="700">Heights</text><text x="476" y="123">3DBAG, per building</text>
+            <text x="476" y="180" font-weight="700">Footprints</text><text x="476" y="195">BAG, the Dutch</text><text x="476" y="210">building registry</text>
+            <text x="476" y="252" font-weight="700">Canals, streets, bridges</text><text x="476" y="267">OpenStreetMap</text>
+            <text x="30" y="318" font-style="italic">Each layer is open data; the game stacks them.</text>
+          </g>
+        </svg>
+        <figcaption class="cap"><b>Fig. 4 · What the city is made of.</b> Four open-data layers, stacked: canals and streets, footprints, heights, and the hand-modelled landmarks on top.</figcaption>
+      </figure>
+      </div>
+      <figure class="fig">
+        <div class="frame film" data-loop="landmark"><img src="assets/landing/buildings.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Canal houses, houseboats and bridges along the Prinsengracht, seen from the boat"></div>
+        <figcaption class="cap"><b>Fig. 5 · The Prinsengracht from the water.</b> Canal houses, houseboats and bridges, each from its own open record.</figcaption>
+      </figure>
+    </div>
+
+    <aside class="dyk" aria-labelledby="dyk-title">
+      <svg viewBox="0 0 44 44" fill="none" stroke="#4a3a00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 32h12M18 37h8"/><path d="M22 5a11 11 0 0 0-6.5 19.8c1.3 1 2 2.2 2.2 3.7h8.6c.2-1.5.9-2.7 2.2-3.7A11 11 0 0 0 22 5z"/><path d="M22 12v6M19 15h6"/></svg>
+      <div>
+        <h2 id="dyk-title">Did you know?</h2>
+        <p><b>Keizersgracht</b> is named after Emperor Maximilian, Archduke of Austria, who in 1489 granted Amsterdam the privilege of bearing the imperial crown on its coat of arms. And the <b>Elandsgracht</b> remembers the tanneries that once worked the hides of elk (<i>elanden</i>), deer and bears in the Jordaan.</p>
+        <p class="src">Source: Gemeente Amsterdam, BAG register of public spaces (<i>beschrijvingNaam</i>), retrieved 29 September 2026; in the game's street-name origins. The ride tells you the origin of a name once you have given it.</p>
+      </div>
+    </aside>
+  </section>
+
+  <section class="wrap sec" aria-labelledby="ways-title">
+    <div class="sechead"><small>Media</small><h2 id="ways-title">Two ways in</h2></div>
+    <div class="ways">
+      <article class="way">
+        <div class="media">
+          <div class="bar"><svg viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M3 2l9 5-9 5z"/></svg><span>Video</span><span>The ride, by bike</span></div>
+          <div class="frame" data-loop="ride"><img src="assets/landing/ride-wide.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Cycling along the Prinsengracht quay in Ride Amsterdam"></div>
+        </div>
+        <h3>Ride</h3>
+        <p>A boat on the canals or a bike on the streets, from a surprise start, your home, or wherever you are standing.</p>
+        <div class="row"><a class="stamp" href="/ride" data-dev-href="./">Start a ride</a></div>
+      </article>
+      <article class="way">
+        <div class="media">
+          <div class="bar"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1.5 3.5l4-2 3 2 4-2v9l-4 2-3-2-4 2z"/><path d="M5.5 1.5v9M8.5 3.5v9"/></svg><span>Interactive map</span><span>The quiz, one canal at a time</span></div>
+          <div class="frame"><img src="assets/landing/quiz.webp" width="1200" height="750" loading="lazy" decoding="async" alt="A map quiz round: one canal highlighted on the map of the canal ring, four names to choose from"></div>
+        </div>
+        <h3>Quiz</h3>
+        <p>The quick version on a flat map: one street, canal or neighbourhood at a time, name it or find it. What you learn in one counts in the other.</p>
+        <div class="row"><a class="quiet" href="/quiz/" data-dev-href="../">Open the quiz</a></div>
+      </article>
+      <article class="way pocket">
+        <div class="media">
+          <div class="bar"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3.5" y="1" width="7" height="12" rx="1.2"/><path d="M6 11h2"/></svg><span>Pocket</span><span>Phone</span></div>
+          <div class="frame tall" data-loop="phone"><img src="assets/landing/ride-phone.webp" width="600" height="1298" loading="lazy" decoding="async" alt="Ride Amsterdam on a phone: a boat on the Prinsengracht, with the on-screen steering pad"></div>
+        </div>
+        <h3>On a phone, too</h3>
+        <p>The same ride, steered with a thumb. Nothing to install.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="tours" aria-labelledby="tours-title">
+    <div class="sechead"><small>Guided tours</small><h2 id="tours-title">Tours</h2></div>
+    <div class="prose" style="margin-top:14px">
+      <p>Ride a theme stop by stop, by bike. Each arrival says why the place is on the list, with its source; finish them all for a tour stamp. The stops stay a surprise until you reach them.</p>
+    </div>
+    <!-- Titles from public/data/extracts/amsterdam/tours.json; the ride reads ?tour=<id>. -->
+    <ul class="tours">
+      <li><a class="tour" href="/ride?tour=jewish-amsterdam" data-dev-href="./?tour=jewish-amsterdam"><svg viewBox="0 0 26 26" fill="none" stroke="#0b3a8c" stroke-width="1.5" aria-hidden="true"><path d="M13 3l9 16H4z"/><path d="M13 23L4 7h18z"/></svg><span><strong>Jewish Amsterdam</strong><small>7 stops</small></span></a></li>
+      <li><a class="tour" href="/ride?tour=golden-age-canal-ring" data-dev-href="./?tour=golden-age-canal-ring"><svg viewBox="0 0 26 26" fill="none" stroke="#0b3a8c" stroke-width="1.5" aria-hidden="true"><path d="M5 20c0-6 3-10 8-13 5 3 8 7 8 13z"/><path d="M8 20c0-4 2-7 5-9 3 2 5 5 5 9"/></svg><span><strong>Golden Age canal ring</strong><small>5 stops</small></span></a></li>
+      <li><a class="tour" href="/ride?tour=art-museums" data-dev-href="./?tour=art-museums"><svg viewBox="0 0 26 26" fill="none" stroke="#0b3a8c" stroke-width="1.5" aria-hidden="true"><rect x="4" y="5" width="18" height="14"/><path d="M4 16l5-5 4 4 3-3 6 6"/></svg><span><strong>Art museums</strong><small>7 stops</small></span></a></li>
+      <li><a class="tour" href="/ride?tour=churches-and-towers" data-dev-href="./?tour=churches-and-towers"><svg viewBox="0 0 26 26" fill="none" stroke="#0b3a8c" stroke-width="1.5" aria-hidden="true"><path d="M9 23V11l4-4 4 4v12z"/><path d="M13 3v4M11 5h4"/><path d="M12 23v-4h2v4"/></svg><span><strong>Churches and towers</strong><small>7 stops</small></span></a></li>
+      <li><a class="tour" href="/ride?tour=markets" data-dev-href="./?tour=markets"><svg viewBox="0 0 26 26" fill="none" stroke="#0b3a8c" stroke-width="1.5" aria-hidden="true"><path d="M4 10l2-5h14l2 5"/><path d="M4 10h18v3H4z"/><path d="M6 13v9h14v-9"/></svg><span><strong>Markets</strong><small>5 stops</small></span></a></li>
+      <li><a class="tour" href="/ride?tour=ice-cream" data-dev-href="./?tour=ice-cream"><svg viewBox="0 0 26 26" fill="none" stroke="#0b3a8c" stroke-width="1.5" aria-hidden="true"><path d="M8 11a5 5 0 0 1 10 0z"/><path d="M8 11l5 12 5-12"/></svg><span><strong>Ice cream</strong><small>5 stops · checked 2026-10-17</small></span></a></li>
+      <li><a class="tour" href="/ride?tour=pizza" data-dev-href="./?tour=pizza"><svg viewBox="0 0 26 26" fill="none" stroke="#0b3a8c" stroke-width="1.5" aria-hidden="true"><path d="M4 5l18 8-10 10z"/><circle cx="10" cy="10" r="1.2"/><circle cx="13" cy="15" r="1.2"/></svg><span><strong>Pizza</strong><small>6 stops · checked 2026-10-17</small></span></a></li>
+      <li><a class="tour" href="/ride?tour=brown-cafes" data-dev-href="./?tour=brown-cafes"><svg viewBox="0 0 26 26" fill="none" stroke="#0b3a8c" stroke-width="1.5" aria-hidden="true"><path d="M5 9h13v7a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5z"/><path d="M18 11h2a2 2 0 0 1 0 4h-2"/></svg><span><strong>Brown cafés</strong><small>5 stops · checked 2026-10-17</small></span></a></li>
+    </ul>
+  </section>
+
+  <section class="wrap sec" aria-labelledby="help-title">
+    <div class="sechead"><small>Corrections</small><h2 id="help-title">Spot something wrong?</h2></div>
+    <div class="help">
+      <div class="prose">
+        <p>A canal with the wrong name, a bridge you can't cross, a building that doesn't look like itself, or one you'd like to see modelled next. Tell us: reports go straight to the people building it.</p>
+      </div>
+      <div class="row">
+        <button class="quiet" type="button" id="report-problem">Report a problem</button>
+        <button class="quiet" type="button" id="request-building">Request a building</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="About">
+      <a href="credits.html">Credits</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="explore.html">Buildings</a>
+      <a href="/quiz/" data-dev-href="../">Quiz</a>
+      <a href="/progress" data-dev-href="../progress">My progress</a>
+      <a href="https://github.com/blackmad/map-recall2">Source on GitHub</a>
+    </nav>
+    <p>Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors. Buildings from BAG and 3DBAG. Adapted from <a href="https://github.com/a1anw2/smokeysandthebandit">Smokey’s and the Bandit</a> (GPL-3.0).</p>
+  </div>
+</footer>
+    </div>
+  </div>
+  <div class="statusbar"><span>Ride Amsterdam · Open-data edition · Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors</span><span>Buildings: BAG, 3DBAG</span><span>rideamsterdam.nl</span></div>
+</div>
+
+<script>
+(function () {
+  // Dev server and legacy builds: this page is canal-drive/landing-90s-b.html, the
+  // ride is the directory index and Map Quest is the parent.
+  if (location.pathname.indexOf('/canal-drive/') >= 0) {
+    document.querySelectorAll('[data-dev-href]').forEach(function (el) { el.setAttribute('href', el.getAttribute('data-dev-href')); });
+  }
+  // The shared feedback form, loaded only when asked for (Firebase loads later still, on save).
+  var loading;
+  function feedback(target) {
+    loading = loading || new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = 'js/feedback/browser.js';
+      s.onload = resolve; s.onerror = reject;
+      document.head.appendChild(s);
+    });
+    loading.then(function () { window.CanalFeedback.open(target); }, function () {
+      loading = null;
+      alert('The feedback form could not load. Please try again in a moment.');
+    });
+  }
+  document.getElementById('report-problem').addEventListener('click', function () {
+    feedback({ id: 'landing:problem', label: 'Problem report (from the landing page)' });
+  });
+  document.getElementById('request-building').addEventListener('click', function () {
+    feedback({ id: 'landing:building-request', label: 'Building request (from the landing page)' });
+  });
+})();
+</script>
+<script>
+// Video loops over the stills, only when the visitor allows motion. Without JS, with
+// prefers-reduced-motion, or without IntersectionObserver the page stays as authored.
+// (The live page's section reveals and counting numbers are left out on purpose: a
+// reference book does not animate.)
+(function () {
+  var LOOP_DIR = 'https://media.rideamsterdam.nl/loops/'; // R2 bucket; videos are not in git
+  var LOOPS = {
+    desk: 'ride-question',    // Fig. 2, after the answer (Plate 1 stays a still: its callouts are placed on it)
+    phone: 'phone-ride',      // Media: Pocket
+    ride: 'boat-bridge',      // Media: Ride
+    landmark: 'intro-flight'  // Fig. 5, "A city you will recognise"
+  };
+  var FORMATS = [['webm', 'video/webm'], ['mp4', 'video/mp4']];
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!('IntersectionObserver' in window) || (reduce && reduce.matches)) return;
+  var videos = [];
+  if (reduce && reduce.addEventListener) reduce.addEventListener('change', function (e) {
+    if (!e.matches) return;
+    videos.forEach(function (v) { v.pause(); v.classList.remove('on'); });
+  });
+  var still = function () { return reduce && reduce.matches; };
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (saveData) return;
+  var probe = document.createElement('video');
+  var types = FORMATS.filter(function (f) { return probe.canPlayType && probe.canPlayType(f[1]); }).map(function (f) { return f[0]; });
+  if (!types.length) return;
+  var player = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var v = e.target._loop;
+      if (!v) return;
+      if (e.isIntersecting && !still()) {
+        if (!v.getAttribute('src')) v.src = v._srcs[v._i];
+        var p = v.play();
+        if (p && p.catch) p.catch(function () { /* autoplay refused: the still stays */ });
+      } else if (!v.paused) v.pause();
+    });
+  }, { rootMargin: '200px 0px' });
+  document.querySelectorAll('[data-loop]').forEach(function (frame) {
+    var name = LOOPS[frame.getAttribute('data-loop')];
+    var img = frame.querySelector('img');
+    if (!name || !img) return;
+    var v = document.createElement('video');
+    v.className = 'loop';
+    v.muted = v.defaultMuted = v.loop = v.playsInline = true;
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+    v.preload = 'none';
+    v.poster = img.currentSrc || img.src;
+    v._srcs = types.map(function (ext) { return LOOP_DIR + name + '.' + ext; });
+    v._i = 0;
+    v.addEventListener('playing', function () { v.classList.add('on'); });
+    v.addEventListener('error', function () {
+      v._i += 1;
+      if (v._i < v._srcs.length) { v.src = v._srcs[v._i]; v.play().catch(function () {}); return; }
+      player.unobserve(frame); frame._loop = null; v.remove();
+      videos = videos.filter(function (x) { return x !== v; });
+    });
+    frame._loop = v;
+    frame.appendChild(v);
+    videos.push(v);
+    player.observe(frame);
+  });
+})();
+</script>
+</body>
+</html>
