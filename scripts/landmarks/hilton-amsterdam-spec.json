@@ -44,8 +44,8 @@
     "title": "Hilton Amsterdam",
     "author": "Map Recall",
     "sourceUrl": "https://kennis.cultureelerfgoed.nl/index.php/Monumenten/532205",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free geometry on the 3DBAG LoD2.2 massing of BAG pand 0363100012078084; storey grid, window ribbons, lift-core bay, entrance canopy and podium cladding measured by eye from the 2021 and 2025 municipal panoramas and the RCE register description, no pixels or meshes imported."
   },
   "buildingFootprint": {

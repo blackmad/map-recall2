@@ -22,8 +22,8 @@
       "title": "Rialto",
       "author": "Map Recall",
       "sourceUrl": "https://depijp.rialtofilm.nl/en/information/about-rialto",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     },
     "surveyed": {
@@ -59,8 +59,8 @@
       "title": "Kriterion",
       "author": "Map Recall",
       "sourceUrl": "https://www.stichtingkriterion.nl/geschiedenis",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     },
     "surveyed": {
@@ -119,8 +119,8 @@
       "title": "De Bijenkorf",
       "author": "Map Recall",
       "sourceUrl": "https://www.cultureelerfgoeddebijenkorf.nl/architectuur/bouwfasesamsterdam",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly reconstruction of full historic Damrak and Dam fronts, curved pediments, mansard dormers, paired-window/pilaster rhythm, surveyed cupola and separate rear extension. Supplied SketchUp preview used as visual reference only; no imported mesh or texture."
     },
     "spatialSuppression": false,

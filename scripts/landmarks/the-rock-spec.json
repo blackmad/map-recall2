@@ -31,8 +31,8 @@
     "title": "The Rock / Erick van Egeraat",
     "author": "Map Recall",
     "sourceUrl": "https://therock-zuidas.nl/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free flat-color surveyed footprint shells, continuous articulated glass/aluminium curtain fields, clustered broad/slit glazing in deep layered stone frames and bounded surveyed roof heights; photo-guided dark charcoal/brown stone; no imported meshes or photo pixels."
   },
   "materialOverrides": {

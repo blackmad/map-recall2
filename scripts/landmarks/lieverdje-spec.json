@@ -34,8 +34,8 @@
     "title": "Het Lieverdje (Spui) - reconstruction from photographs",
     "author": "Map Recall; sculpture by Carel Kneulman (1960); figure reconstructed from photographs by Ceescamel",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(D).jpg",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"2024 Lieverdje, Amsterdam (D).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(D).jpg); \"2024 Lieverdje, Amsterdam (E).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(E).jpg); \"2024 Lieverdje, Amsterdam (G).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(G).jpg); \"2024 Lieverdje, Amsterdam (F).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(F).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/lieverdje.json."
   }
 }

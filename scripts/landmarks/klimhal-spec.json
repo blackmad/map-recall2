@@ -39,8 +39,8 @@
     "title": "Klimhal Amsterdam",
     "author": "Map Recall",
     "sourceUrl": "https://www.fijnuit.nl/3680/klimhal-amsterdam",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
   },
   "buildingFootprint": {

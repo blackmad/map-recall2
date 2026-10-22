@@ -31,8 +31,8 @@
       "title": "Buiksloterkerk",
       "author": "Map Recall",
       "sourceUrl": "https://buiksloterkerk.nl/gebouw/",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
     }
   },
@@ -69,8 +69,8 @@
       "title": "English Reformed Church",
       "author": "Map Recall",
       "sourceUrl": "https://www.erc.amsterdam/about",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
     }
   },
@@ -106,8 +106,8 @@
       "title": "De Papegaai",
       "author": "Map Recall",
       "sourceUrl": "https://www.nicolaas-parochie.nl/papegaai/over-ons/gebouw/",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
     }
   }

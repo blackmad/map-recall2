@@ -44,8 +44,8 @@
     "title": "Brandweerkazerne IJsbrand",
     "author": "Map Recall",
     "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-ijsbrand/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free reconstruction of surveyed stepped volumes, red metal upper facade, projecting louvred glazing, stair tower and three apparatus bays. No third-party geometry or pixels."
   },
   "buildingFootprint": {

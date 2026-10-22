@@ -30,8 +30,8 @@
     "title": "Kesbeke factory and office",
     "author": "Map Recall",
     "sourceUrl": "https://www.kesbeke.nl/contact-keuze/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original native flat-color reconstruction with sharp original vector signage following actual walls; reference photos inform geometry only; no photo pixels or imported mesh."
   },
   "materialOverrides": {

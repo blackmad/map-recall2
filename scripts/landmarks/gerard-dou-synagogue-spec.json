@@ -37,8 +37,8 @@
     "title": "Gerard Dou Synagogue",
     "author": "Map Recall",
     "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original native-scale flat-colour geometry guided by survey and facade references, no imported meshes or pixels."
   },
   "materialOverrides": {

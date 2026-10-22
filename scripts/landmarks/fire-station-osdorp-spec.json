@@ -43,8 +43,8 @@
     "title": "Kazerne Osdorp",
     "author": "Map Recall",
     "sourceUrl": "https://arcam.nl/architectuur-gids/brandweerkazerne-osdorp/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native BAG geometry; curved sedum-roof glass hall, glazing connector, dark-brick open terrace accommodation block. No third-party mesh or pixels."
   }
 }

@@ -62,7 +62,7 @@ export function chunkSpecFor(c: ChunkManifestEntry): SignatureModelSpec {
     // Its walls were matched to the face's photo strip: the sunny look draws them at the strip colour normalised to sunlight.
     wallExposure: chunkWallExposure(c.name),
     surveyed: {anchor: c.instance.anchor, northOffsetDegrees: c.instance.northOffsetDegrees, source: 'Street chunk: one mesh per block face, compiled from the houses\' intent recipes and 3DBAG LoD2.2.'},
-    attribution: {title: c.name, author: 'Ride Amsterdam', sourceUrl: 'https://data.amsterdam.nl/', licence: 'Original project asset', licenceUrl: './LICENSE', modifications: 'Block face compiled from per-house recipes on native surveyed footprints; party walls between neighbours omitted.'},
+    attribution: {title: c.name, author: 'Ride Amsterdam', sourceUrl: 'https://data.amsterdam.nl/', licence: 'CC BY 4.0', licenceUrl: 'https://creativecommons.org/licenses/by/4.0/', modifications: 'Block face compiled from per-house recipes on native surveyed footprints; party walls between neighbours omitted.'},
   };
 }
 

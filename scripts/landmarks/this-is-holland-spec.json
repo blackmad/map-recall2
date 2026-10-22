@@ -32,8 +32,8 @@
     "title": "This is Holland pavilion",
     "author": "Map Recall",
     "sourceUrl": "https://www.damastarchitects.nl/this-is-holland-amsterdam",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original native surveyed faceted metal drum, sawtooth glass foyer, mushroom columns, roof solar field and source-visible smooth sans-serif signs; no imported meshes or image textures. Approximate Arial Bold/Arial Regular source signage match."
   },
   "materialOverrides": {

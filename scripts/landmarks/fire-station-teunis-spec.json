@@ -43,8 +43,8 @@
     "title": "Kazerne Teunis",
     "author": "Map Recall",
     "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-teunis/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native surveyed footprint; recessed three-bay hall, red soffits and open upper terrace. No third-party mesh or pixels."
   }
 }

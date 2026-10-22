@@ -44,8 +44,8 @@
     "title": "Hotel Jakarta",
     "author": "Map Recall",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Hotel_Jakarta",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing; glazed plinth, timber-lined loggia grid, perforated copper-coloured panels, rotating-door drum and timber-and-glass atrium roof measured by eye from Commons photographs (2022, 2023) and municipal panoramas (2024, 2025), no pixels or meshes imported."
   }
 }

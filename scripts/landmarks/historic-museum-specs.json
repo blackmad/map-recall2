@@ -31,8 +31,8 @@
       "title": "H'ART Museum \u2014 Amstelhof",
       "author": "Map Recall",
       "sourceUrl": "https://www.hartmuseum.nl/en/",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
     }
   },
@@ -68,8 +68,8 @@
       "title": "Amsterdam Museum \u2014 Burgerweeshuis",
       "author": "Map Recall",
       "sourceUrl": "https://www.amsterdammuseum.nl/en/het-nieuwe-amsterdam-museum",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
     }
   }

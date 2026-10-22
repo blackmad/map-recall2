@@ -46,8 +46,8 @@
     "title": "Domūs Houthaven original architecture",
     "author": "Map Recall",
     "sourceUrl": "https://www.shift-au.com/projects/xs-deluxe-houthaven/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free metre geometry; one requested physical BAG parent, no invented POI identity. Source archive 09b242cbc167782d6532ac5d4778021592b83af6 models/haparandaweg-8-338."
   },
   "buildingFootprint": {

@@ -43,8 +43,8 @@
     "title": "De School (Tilla Tec)",
     "author": "Map Recall",
     "sourceUrl": "https://en.wikipedia.org/wiki/De_School",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; glazing ribbons, stair core, fascia, entrance porch and pavilion measured by eye from the 2017 and 2025 municipal panoramas, no pixels or meshes imported."
   },
   "buildingFootprint": {

@@ -43,8 +43,8 @@
     "title": "Oudemanhuispoort",
     "author": "Map Recall",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native-scale model of the Oudemanhuispoort gate on the Oudezijds Achterburgwal with the two houses that hold its piers (nos. 229 and Oudemanhuispoort 1A) on their BAG footprints and 3DBAG LoD2.2 solids; portal, windows, roof and chimneys from 2025 municipal panoramas. The alley behind the gate and the university complex are left to the city layer. No imported mesh or photograph pixels."
   },
   "buildingFootprint": {

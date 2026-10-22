@@ -33,8 +33,8 @@
     "title": "UvA Roeterseiland native campus",
     "author": "Map Recall",
     "sourceUrl": "https://www.ahmm.co.uk/projects/reuse/university-of-amsterdam/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original native textured-free flat-colour draft using surveyed footprint shells, exposed facade glazing and source-derived assemblies. No photo pixels or imported meshes. Draft notaccepted for full composite suppression."
   },
   "scopeWarning": "Suppression is planned only and unsafe until full composite physical parent is modeled and bridge/courtyard/annex acceptance complete. CREA Pand0363100012164972 retained. Do not register this source-only spec.",

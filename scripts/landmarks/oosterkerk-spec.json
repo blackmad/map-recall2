@@ -40,8 +40,8 @@
     "title": "Oosterkerk",
     "author": "Map Recall",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Oosterkerk_(Amsterdam)",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free flat-colour geometry: plan from the BAG footprint, heights from 3DBAG LoD2.2, roofs, windows, porch, annex and lantern tower modelled from photographs (Wikimedia Commons, RCE, Amsterdam panoramas). No pixels or meshes imported."
   }
 }

@@ -46,8 +46,8 @@
     "title": "Haparandaweg 9 original architecture",
     "author": "Map Recall",
     "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012122663",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native metre geometry. Private source archive e8a5653bd166de54478f2bd11eea59ca38fe21d9 models/haparandaweg-9. Ordinary requested building; no automatic POI added."
   },
   "buildingFootprint": {

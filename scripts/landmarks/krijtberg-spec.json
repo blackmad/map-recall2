@@ -428,8 +428,8 @@
     "title": "De Krijtberg - original low-poly reconstruction",
     "author": "Map Recall; church by Alfred Tepe (1881-1883)",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Krijtberg",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original geometry from the BAG/3DBAG massing and measurements read from Commons photographs (Zairon, CC BY-SA 4.0; Alf van Beem, CC0; RCE 20369642, CC BY-SA 4.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
   }
 }

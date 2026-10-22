@@ -31,8 +31,8 @@
       "title": "ARTIS Groote Museum",
       "author": "Map Recall",
       "sourceUrl": "https://www.artis.nl/en/artis-groote-museum/to-see-in-artis-groote-museum/building",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
     }
   },
@@ -68,8 +68,8 @@
       "title": "ARTIS Library — Fauna Building",
       "author": "Map Recall",
       "sourceUrl": "https://www.allardpierson.nl/en/artis-library",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
     }
   }

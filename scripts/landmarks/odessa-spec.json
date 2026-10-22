@@ -41,8 +41,8 @@
     "title": "Odessa",
     "author": "Map Recall",
     "sourceUrl": "https://www.inyourpocket.com/netherlands/amsterdam/venues/Odessa",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free geometry on the OSM ship outline: black plank hull, bamboo-screened bow and stern decks with glass dome, funnel and ODESSA lettering, and a glazed lounge with six scalloped roof segments; measured by eye from municipal panoramas, no pixels or meshes imported."
   },
   "buildingFootprint": {

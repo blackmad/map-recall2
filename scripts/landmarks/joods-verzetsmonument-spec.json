@@ -35,8 +35,8 @@
     "title": "Joods Verzetsmonument - original low-poly reconstruction",
     "author": "Map Recall; commemorated monument unveiled 16 October 1988",
     "sourceUrl": "https://www.openstreetmap.org/search?query=Jewish%20WW2%20resistance%20memorial%20Amsterdam",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free low-poly stele and plinth. Proportions and the placement of the gilt text from Gemeente Amsterdam panoramas (CC BY 4.0); the wording is not legible and is not reproduced. No pixels or third-party meshes imported."
   }
 }

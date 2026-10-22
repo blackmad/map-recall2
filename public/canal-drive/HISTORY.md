@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## 2026-10-22 — Models are CC BY 4.0; repo tidy
+
+User's call: the original 3D models carry CC BY 4.0. Every model attribution
+said "Original project asset" with `licenceUrl: './LICENSE'`, which resolved
+to the game's GPL-3.0 file; 288 specs, catalogues and the builders now say
+CC BY 4.0 and link the licence, and `public/canal-drive/models/LICENSE.md`
+states the scope, the suggested credit, the open-data inputs (3DBAG CC BY,
+BAG/BGT CC0, OSM ODbL produced works) and the one exception (the CC0 pink
+city bicycle). The lab-only own-ground and renderer-spike bundles have no
+build script and still carry the old string.
+
+Same day: `docs/START-HERE-buildings.md` is the entry doc for outside
+contributors' agents (AGENTS.md was a stale Codex memo pointing at a
+superseded recipe); the README was rewritten; 53 superseded handoffs and
+closeouts moved to `docs/archive/`; 361 force-added review/staging outputs
+under the gitignored `artifacts/` and `staging/` were untracked (50 files
+that code or work-queue evidence reads stay tracked; `check:canal` passed on
+a clean checkout); 38 merged remote branches were deleted (SHAs in
+`~/Code/map-recall2-archive/deleted-merged-branches-20261022.txt`). The
+homepage gained the content-stats strip (`build:content-stats`, checked in
+`check:canal`), count-up and reveal motion, and video slots.
+
 ## 2026-10-21 — The missing boat was a saved zoom stuck at the minimum
 
 User report: sometimes no boat under START (Amstel at Carré, Chase). Saving

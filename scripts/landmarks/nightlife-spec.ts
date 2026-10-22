@@ -26,7 +26,7 @@ const spec = {
   surveyed: {anchor, northOffsetDegrees: 0, source: meta.surveySource},
   groundAltitudeMetres: 0, facingOffsetDegrees: 0,
   materialOverrides: meta.materialOverrides,
-  attribution: {title: meta.name, author: 'Map Recall', sourceUrl: meta.sourceUrl, licence: 'Original project asset', licenceUrl: './LICENSE', modifications: meta.modifications},
+  attribution: {title: meta.name, author: 'Map Recall', sourceUrl: meta.sourceUrl, licence: 'CC BY 4.0', licenceUrl: 'https://creativecommons.org/licenses/by/4.0/', modifications: meta.modifications},
   buildingFootprint: {type: 'Polygon', coordinates: [ring]},
 };
 fs.writeFileSync(`${dir}${id}-spec.json`, JSON.stringify(spec, null, 2) + '\n');

@@ -46,8 +46,8 @@
     "title": "Lekstraatsynagoge",
     "author": "Map Recall",
     "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526707",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native-survey reconstruction; register526707, dated exterior photos and3DBAG roof semantics. Hebrew inscription uses approximate Arial Bold outlines. No imported meshes/photo pixels. Draft requires nativegallery/live acceptance and sourcepack publication."
   }
 }

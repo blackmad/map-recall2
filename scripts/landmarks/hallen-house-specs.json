@@ -35,8 +35,8 @@
       "title": "De Hallen / Foodhallen / Filmhallen",
       "author": "Map Recall",
       "sourceUrl": "https://www.dehallen-amsterdam.nl/historie",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
     }
   },
@@ -73,8 +73,8 @@
       "title": "Huis Bartolotti",
       "author": "Map Recall",
       "sourceUrl": "https://www.hendrickdekeyser.nl/de-huizen/huis-bartolotti",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
     }
   }

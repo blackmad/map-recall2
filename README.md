@@ -130,6 +130,10 @@ Details, domains and DNS: [`DEPLOY.md`](DEPLOY.md).
 
 ## Licence and attribution
 
+- **3D models are CC BY 4.0.** The original building, landmark, bridge and
+  vehicle models are licensed under Creative Commons Attribution 4.0: reuse
+  them freely with credit to Ride Amsterdam and the open-data sources. See
+  [`public/canal-drive/models/LICENSE.md`](public/canal-drive/models/LICENSE.md).
 - The ride's runtime is adapted from the open-source game *Smokeys and the
   Bandit*, under GPL-3.0 ([`public/canal-drive/LICENSE`](public/canal-drive/LICENSE)),
   credited in the game.

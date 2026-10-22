@@ -50,8 +50,8 @@
     "title": "Royal Palace Amsterdam",
     "author": "Map Recall",
     "sourceUrl": "https://www.paleisamsterdam.nl/en/discover-palace/new-town-hall-amsterdam/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free stone classical facade, mapped slate roof wings, corner pavilions, two open courtyards, central pediment and open 55m domed clock tower. Exact OSM/BAG footprint; original ornaments approximated from official Palace photograph. No copied imported geometry or reference pixels."
   }
 }

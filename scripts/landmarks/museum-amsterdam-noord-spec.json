@@ -40,8 +40,8 @@
     "title": "Museum Amsterdam Noord",
     "author": "Map Recall",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Museum_Amsterdam_Noord",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native-scale hipped-roof bath house on the exact BAG footprint; buff brick, pantile hip with white fascia and dormers, chimney. Openings simplified from one 2025 municipal panorama; no imported mesh or photograph pixels."
   },
   "buildingFootprint": {

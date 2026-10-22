@@ -45,8 +45,8 @@
     "title": "Nationaal Holocaust Namenmonument \u2014 original native memorial geometry",
     "author": "Map Recall; memorial architecture Daniel Libeskind / Rijnboutt",
     "sourceUrl": "https://libeskind.com/work/names-monument/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free four current surveyed hollow steel-letter volumes, native thin paving and source-plan traced discontinuous brick walls. Steel taper directions checked againstengineeringdrawings/current2021photos; wall endpoints and central-north crest approximate. No imported mesh/photo pixels; no invented inscriptions."
   },
   "geometryExport": {

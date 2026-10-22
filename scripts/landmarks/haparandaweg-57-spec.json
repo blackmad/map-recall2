@@ -46,8 +46,8 @@
     "title": "Haparandaweg 57 original architecture",
     "author": "Map Recall",
     "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012071094",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native metre geometry. BAG/3DBAG and municipal panorama sources archived at private commit16d644906c974150de90690eca7a8918e154cd6c/models/haparandaweg-57. Ordinary requested industrial building; no invented POI. Native acceptance pending."
   },
   "buildingFootprint": {

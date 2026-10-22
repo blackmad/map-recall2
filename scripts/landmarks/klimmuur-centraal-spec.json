@@ -31,8 +31,8 @@
     "title": "Klimmuur Centraal Dijksgracht2",
     "author": "Map Recall",
     "sourceUrl": "https://www.deklimmuur.nl/klimmen/klimmuur-centraal/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original house-style geometry; no photo textures or imported asset mesh. Only exact BAG host replaced."
   }
 }

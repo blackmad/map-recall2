@@ -68,8 +68,8 @@
       "title": "Museum Het Schip",
       "author": "Map Recall",
       "sourceUrl": "https://www.hetschip.nl/",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
     },
     "spatialSuppression": false
@@ -104,8 +104,8 @@
       "title": "Scheepvaarthuis",
       "author": "Map Recall",
       "sourceUrl": "https://www.amrathamsterdam.com/en/information/history/the-scheepvaarthuis",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
     },
     "spatialSuppression": false

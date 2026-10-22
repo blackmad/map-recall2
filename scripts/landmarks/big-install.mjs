@@ -29,7 +29,7 @@ const spec = {
   surveyed: {anchor, northOffsetDegrees: 0, source: `PDOK BAG ${bag} footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean.`},
   ...(mats !== '-' ? {materialOverrides: JSON.parse(mats)} : {}),
   preservePositionPrecision: true,
-  attribution: {title: `${name} original architecture`, author: 'Map Recall', sourceUrl: `https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${bag}`, licence: 'Original project asset', licenceUrl: './LICENSE', modifications: 'Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination.'},
+  attribution: {title: `${name} original architecture`, author: 'Map Recall', sourceUrl: `https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${bag}`, licence: 'CC BY 4.0', licenceUrl: 'https://creativecommons.org/licenses/by/4.0/', modifications: 'Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination.'},
   buildingFootprint: {type: 'Polygon', coordinates: [ringLL]},
 };
 fs.writeFileSync(`${dir}${id}-spec.json`, JSON.stringify(spec, null, 2) + '\n');

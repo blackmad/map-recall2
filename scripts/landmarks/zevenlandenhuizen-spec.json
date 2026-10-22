@@ -55,8 +55,8 @@
     "title": "Zevenlandenhuizen",
     "author": "Map Recall",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Zevenlandenhuizen",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free geometry on the seven BAG footprints and 3DBAG LoD2.2 massing; the seven national front compositions (Germany, France, Spain, Italy, Russia, the Netherlands, England) measured by eye from RCE and Commons photographs, no pixels or meshes imported."
   },
   "buildingFootprint": {

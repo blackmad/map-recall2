@@ -31,8 +31,8 @@
       "title": "Willet-Holthuysen House",
       "author": "Map Recall",
       "sourceUrl": "https://www.amsterdammuseum.nl/en/tickets-and-visit/locations/huis-willet-holthuysen/3632",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen’s open French garden and the Pipe Museum’s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
     }
   },
@@ -68,8 +68,8 @@
       "title": "Amsterdam Pipe Museum",
       "author": "Map Recall",
       "sourceUrl": "https://pipemuseum.nl/en/article/de-geschiedenis-van-het-pijpenkabinet-van-particuliere-collectie-tot-nationaal-museum",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen’s open French garden and the Pipe Museum’s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
     }
   }

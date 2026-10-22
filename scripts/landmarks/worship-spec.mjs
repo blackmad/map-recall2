@@ -10,6 +10,6 @@ const spec = {
   surveyed: {anchor: f.anchor, northOffsetDegrees: 0, source: `Current BAG ${f.bagId} footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor.`},
   groundAltitudeMetres: 0, facingOffsetDegrees: 0,
   materialOverrides: JSON.parse(mats),
-  attribution: {title: name, author: 'Map Recall', sourceUrl, licence: 'Original project asset', licenceUrl: './LICENSE', modifications: 'Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported.'},
+  attribution: {title: name, author: 'Map Recall', sourceUrl, licence: 'CC BY 4.0', licenceUrl: 'https://creativecommons.org/licenses/by/4.0/', modifications: 'Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported.'},
 };
 fs.writeFileSync(`scripts/landmarks/${id}-spec.json`, JSON.stringify(spec, null, 2) + '\n');

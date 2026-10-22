@@ -39,8 +39,8 @@
     "title": "Levend Paardenmuseum",
     "author": "Map Recall",
     "sourceUrl": "https://en.wikipedia.org/wiki/Hollandsche_Manege",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native-scale massing from the exact BAG footprint and 3DBAG LoD2.2 walls and roofs, plus an authored Vondelstraat 140 stucco gateway with arched timber doors from one 2025 municipal panorama. The Levend Paardenmuseum POI is placed on the manege because the museum is a tenant of that building. No imported mesh or photograph pixels."
   },
   "buildingFootprint": {

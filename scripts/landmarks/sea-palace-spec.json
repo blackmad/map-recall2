@@ -44,8 +44,8 @@
     "title": "Sea Palace",
     "author": "Map Recall",
     "sourceUrl": "https://seapalace.nl/en/about-us/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free geometry on the OSM houseboat outline: pontoon deck and balustrades, three storeys of columns and glazing, and three curved green-tile eaves with upswept corners; measured by eye from municipal panoramas, no pixels or meshes imported."
   },
   "buildingFootprint": {

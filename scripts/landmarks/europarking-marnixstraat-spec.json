@@ -48,8 +48,8 @@
   "title": "Europarking (Parkeergarage Marnixstraat) and the Waterkant",
   "author": "Map Recall",
   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Europarking_Marnixstraat.jpg",
-  "licence": "Original project asset",
-  "licenceUrl": "./LICENSE",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
   "modifications": "Original texture-free flat-colour geometry on the BAG footprints (CC0) of the car park and its undercroft pands: two banded ramp drums and the deck block swept from a measured band section (openDeckStack.ts), the Waterkant pavilion, its sign and terrace. Band levels from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs (CC BY-SA 4.0 / CC BY 2.0) read for proportion only; no pixels or meshes imported."
  },
  "category": "ordinary",

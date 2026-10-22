@@ -320,8 +320,8 @@
     "title": "Noorderkerk - original low-poly reconstruction",
     "author": "Map Recall; church by Hendrick de Keyser (1620-1623)",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Noorderkerk_(Amsterdam)",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original geometry from the BAG/3DBAG massing and measurements read from RCE photographs (Commons, CC BY-SA 4.0, Han van Gool and W. Kramer), Hnapel and Marcelmulder68 photographs (CC BY-SA) and Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or third-party meshes imported."
   }
 }

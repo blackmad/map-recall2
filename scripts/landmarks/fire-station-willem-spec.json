@@ -43,8 +43,8 @@
     "title": "Kazerne Willem",
     "author": "Map Recall",
     "sourceUrl": "https://www.zwarthout.org/nl/project/63/brandweerkazerne-willem-in-amsterdam",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free reconstruction from exact BAG footprint, semantic AHN roof parts, current city panorama and supplier detail photos; no reference image pixels imported."
   },
   "buildingFootprint": {

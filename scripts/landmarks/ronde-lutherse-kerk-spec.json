@@ -41,8 +41,8 @@
     "title": "Ronde Lutherse Kerk",
     "author": "Map Recall",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Ronde_Lutherse_Kerk",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free flat-colour geometry: round drum, dome and lantern measured from the BAG circle and 3DBAG roof planes; window bays, cornices and lantern read from photographs; the annex is the BAG polygon extruded to the 3DBAG roof height. No pixels or meshes imported."
   }
 }

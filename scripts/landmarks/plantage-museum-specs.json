@@ -33,8 +33,8 @@
       "title": "National Holocaust Museum",
       "author": "Map Recall",
       "sourceUrl": "https://www.winhov.com/en/projects/national-holocaust-museum/",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
     }
   },
@@ -71,8 +71,8 @@
       "title": "Hollandsche Schouwburg",
       "author": "Map Recall",
       "sourceUrl": "https://www.winhov.com/en/projects/national-holocaust-museum/",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
     }
   }

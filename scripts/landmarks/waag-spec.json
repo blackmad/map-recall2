@@ -58,8 +58,8 @@
     "title": "De Waag (Sint-Antoniespoort)",
     "author": "Map Recall",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Waag_(Amsterdam)",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the two stone-banded round towers with corbelled arcades, the four conical caps, the central gate arch, mullioned windows with red shutters and the roof dormers measured by eye from the 2020-2025 municipal panoramas, no pixels or meshes imported."
   },
   "buildingFootprint": {
