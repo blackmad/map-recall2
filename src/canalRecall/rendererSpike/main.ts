@@ -1,7 +1,7 @@
 // Own-renderer spike (2026-10-09): one neighbourhood drawn by three.js alone,
 // from our own extracts, with the lighting MapLibre's custom-layer model makes
 // awkward (sun shadows, sky light + IBL, fog, tone mapping, AO, water).
-// Not wired into the game. See docs/research/own-renderer-spike-20261009.md.
+// Not wired into the game. See docs/archive/research/own-renderer-spike-20261009.md.
 //
 // Build: npx esbuild src/canalRecall/rendererSpike/main.ts --bundle --format=esm \
 //          --loader:.json=json --outfile=public/canal-drive/js/renderer-spike.bundle.js

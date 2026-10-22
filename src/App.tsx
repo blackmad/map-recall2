@@ -1026,7 +1026,7 @@ export default function App() {
             href={canalRecallUrl}
             className="enamel-float enamel-brand absolute top-3 left-3 z-30 px-2.5 py-1.5 text-xs transition sm:top-auto sm:bottom-4 sm:left-4 sm:px-3 sm:py-2"
           >
-            Canal Recall →
+            Ride Amsterdam →
           </a>
         )}
         {startUndoVisible && !!currentFeature && !isGameOver && (
@@ -1116,7 +1116,7 @@ export default function App() {
               <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-4 py-4 sm:gap-5 sm:px-5 sm:py-6">
               <div className="space-y-2">
                 <h1 className="enamel-plaque enamel-framed enamel-brand px-4 py-3 text-center text-xl sm:text-2xl text-white">
-                  Map Recall
+                  Map Quest
                 </h1>
                 <ProgressLine states={reviewStates} mode={gameMode} cityId={currentCityId} />
               </div>

@@ -31,8 +31,8 @@
     "title": "Mediamatic Biotoop Dijkspark",
     "author": "Map Recall",
     "sourceUrl": "https://www.mediamatic.net/en/page/86200/mediamatic-biotoop",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original surveyed/native1 flat-colour geometry with separate greenhouse/office zones. No reference photo pixels or imported mesh. Approximate greenhouse heights and bay cadence; visual/game acceptance pending."
   },
   "heightMetres": 10.65,

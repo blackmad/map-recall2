@@ -43,8 +43,8 @@
     "title": "Artis Aquarium",
     "author": "Map Recall",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Aquariumgebouw",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the portico, stairs, wings and pavilions measured by eye from the 2016 municipal panoramas of Plantage Middenlaan, no pixels or meshes imported; the inscription follows the real frieze lettering."
   },
   "buildingFootprint": {

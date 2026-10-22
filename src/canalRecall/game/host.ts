@@ -294,6 +294,8 @@ export interface RecallHost extends GameCoreHost {
   /** Keyed per crossing, not per bridge: one OSM feature named "Zuiderzeeweg"
    *  is four separate bridges over three different waters. */
   _quizzedCrossings: Map<string, 'water' | 'bridge'>;
+  /** The rider's recent track, for judging bridge crossings (recallRules.TrackTrail). */
+  _crossingTrail?: import('./recallRules').TrackTrail;
   _learnedBridges: Map<string, { name: string; labelPoint?: WorldPoint }>;
   _pendingCrossing: PendingCrossing | null;
   _lastBridgeQuizAt: number;
@@ -438,6 +440,8 @@ export interface PresentationHost extends GameCoreHost {
   /** Cache for `_destinationLabel`: the masked name and what it was built from. */
   _destinationLabelKey?: string;
   _destinationLabelText?: string;
+  /** Per asked name: which raw street-label texts would spell it (see `mapLabelSpoils`). */
+  _labelSpoilCache?: { asked: string; spoils: Map<string, boolean> };
   _resize?(): void;
 
   learnedNames: Set<string>;

@@ -1,6 +1,6 @@
 // One three.js frame inside MapLibre: one WebGLRenderer, one scene graph, one
 // light rig and one sun shadow map for every three.js layer the game draws.
-// Phase 1 of docs/research/own-renderer-spike-20261009.md.
+// Phase 1 of docs/archive/research/own-renderer-spike-20261009.md.
 //
 // Before this, each layer (facades, landmarks — one THREE.Scene *per model* —
 // trees, roofs, the zoo, four vehicles) was its own MapLibre custom layer with

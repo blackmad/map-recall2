@@ -60,7 +60,7 @@ export function canalFirebase(): Promise<CanalFirebase | null> {
   if (typeof window === 'undefined') return Promise.resolve(null);
   if (!window.__canalFirebase) {
     window.__canalFirebase = create().catch((reason) => {
-      console.warn('Canal Recall: Firebase unavailable, progress stays on this device.', reason);
+      console.warn('Ride Amsterdam: Firebase unavailable, progress stays on this device.', reason);
       window.__canalFirebase = undefined; // a later call may retry
       return null;
     });

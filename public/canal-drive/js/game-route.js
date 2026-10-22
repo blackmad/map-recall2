@@ -73,7 +73,8 @@ class GameRouteRuntime {
       minimap: this.showMiniMap,
       gamey: this.gameyFeatures,
       sound: !this.sound.muted,
-      zoom: this.camera.zoom,
+      // The player's zoom, not the start flight's overview (presentationRuntime.ts _playerZoom).
+      zoom: this._playerZoom ? this._playerZoom() : this.camera.zoom,
       cameraTilt: (this.vectorMap && Number.isFinite(this.vectorMap._cameraTilt))
         ? this.vectorMap._cameraTilt
         : current.cameraTilt,
@@ -161,7 +162,8 @@ class GameRouteRuntime {
     } else if (previousTravelMode !== this.travelMode && this.state === GameState.MENU) {
       this._loadRoutePoiCatalog();
     }
-    this.camera.zoom = prefs.zoom;
+    if (this._setPlayerZoom) this._setPlayerZoom(prefs.zoom);
+    else this.camera.zoom = prefs.zoom;
     if (typeof this.vectorMap.setCameraTilt === 'function') {
       this.vectorMap.setCameraTilt(prefs.cameraTilt || 0);
     }
@@ -228,7 +230,8 @@ class GameRouteRuntime {
       gamey: this.gameyFeatures,
       sound: !this.sound.muted,
       reducedMotion: !!this.camera.reducedMotion,
-      zoom: this.camera.zoom,
+      // The player's zoom, not the start flight's overview (presentationRuntime.ts _playerZoom).
+      zoom: this._playerZoom ? this._playerZoom() : this.camera.zoom,
       cameraTilt: (this.vectorMap && this.vectorMap._cameraTilt) || current.cameraTilt || 0,
       cameraBearing: Number.isFinite(this.camera.bearingOffset)
         ? this.camera.bearingOffset * 180 / Math.PI
@@ -839,7 +842,14 @@ class GameRouteRuntime {
     if (feature.manualPoi) poi.manualPoi = feature.manualPoi;
   }
 
-  async _loadRoutePoiCatalog() {
+  /** Loads the destination pool; `_routePoiCatalogReady` lets a share-link boot wait for it to name its ends. */
+  _loadRoutePoiCatalog() {
+    const ready = this._loadRoutePoiCatalogNow();
+    this._routePoiCatalogReady = ready.catch(() => {});
+    return ready;
+  }
+
+  async _loadRoutePoiCatalogNow() {
     const city = this._activeCity();
     if (this.travelMode === 'transit') {
       await this._loadTransitRoutePois(city);
@@ -1048,6 +1058,17 @@ class GameRouteRuntime {
     }
     console.info(`Transit leg 2: riding ${advanced.lineName} to destination`);
     return true;
+  }
+
+  _resolveSharedEndpoints() {
+    const R = window.CanalRecallRoute;
+    if (!R || typeof R.resolveSharedEndpoint !== 'function') return;
+    if (this.routeTo && this.routeTo.unresolved) {
+      this.routeTo = R.resolveSharedEndpoint(this.routePois || [], this.routeTo, 'finish');
+    }
+    if (this.routeFrom && this.routeFrom.unresolved) {
+      this.routeFrom = R.resolveSharedEndpoint(this.routePois || [], this.routeFrom, 'start', { excludeId: this.routeTo && this.routeTo.id });
+    }
   }
 
   _isGenerousSnapOrigin(poi) {
@@ -1305,7 +1326,13 @@ class GameRouteRuntime {
     const privateStart = new URLSearchParams(window.location.search).get('start');
     if (privateStart === 'home' || privateStart === 'here') {
       this.routeFrom = { id: privateStart, name: privateStart === 'home' ? 'Home' : 'Here', lat: startLat, lng: startLng };
+    } else {
+      this.routeFrom = { id: 'shared-start', name: 'Shared start', lat: startLat, lng: startLng, sharedEndpoint: true, unresolved: true };
     }
+    // The hash holds points, not POIs: the setup screen's routeTo (by default the Rijksmuseum) must not
+    // name a finish on the Amstel (teaser capture 2026-10-22). _onLocationSelected names both ends from
+    // their coordinates once the destination pool has loaded (CanalRecallRoute.resolveSharedEndpoint).
+    this.routeTo = { id: 'shared-finish', name: 'Shared finish', lat: finishLat, lng: finishLng, sharedEndpoint: true, unresolved: true };
     this._overlay.store.setSetupOpen(false);
     this._onLocationSelected(lat, lng, { lat: startLat, lng: startLng }, { lat: finishLat, lng: finishLng });
   }
@@ -1573,6 +1600,13 @@ class GameRouteRuntime {
       // Step 4: Find start/finish — use user-picked points or auto-find
       this.loadingMessage = `Choosing a starting ${profile.networkNounSingular}...`;
       this.loadingProgress = 0.6;
+
+      // A share-link boot names its ends from their own coordinates (see _checkShareLink).
+      if ((this.routeFrom && this.routeFrom.unresolved) || (this.routeTo && this.routeTo.unresolved)) {
+        if (this._routePoiCatalogReady) await this._routePoiCatalogReady;
+        if (stale()) return;
+        this._resolveSharedEndpoints();
+      }
 
       let start, finish;
       if (startLL && finishLL) {

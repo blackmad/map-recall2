@@ -657,6 +657,49 @@ export function nearestSnappableDestination(
   return null;
 }
 
+/** A share-link endpoint this close to a destination is that destination (the link keeps 4 decimals, ≤ 8 m). */
+export const SHARED_ENDPOINT_NAME_KM = 0.06;
+/** Further out but within this, the endpoint is labelled "<destination> (nearby)". */
+export const SHARED_ENDPOINT_NEAR_KM = 0.5;
+
+export interface SharedEndpoint extends RoutePoi {
+  /** Set on every endpoint resolved from `#race=` coordinates. */
+  sharedEndpoint: true;
+}
+
+/**
+ * Name a share-link (`#race=centre,start,finish`) endpoint from its own
+ * coordinates. The hash carries points, not POIs, so the ride's routeFrom /
+ * routeTo (whatever the setup screen last held, by default Anne Frank House →
+ * Rijksmuseum) must not label it: a boat link ending on the Amstel was shown
+ * "to Rijksmuseum" (teaser capture, 2026-10-22). A point on a destination is
+ * that destination; one near it is "<name> (nearby)", never the bare name; one
+ * near nothing is an honest "Shared finish".
+ */
+export function resolveSharedEndpoint(
+  pois: readonly RoutePoi[],
+  point: { lat: number; lng: number },
+  role: 'start' | 'finish',
+  { excludeId = null as string | null } = {},
+): SharedEndpoint {
+  let best: RoutePoi | null = null;
+  let bestKm = Infinity;
+  for (const poi of pois) {
+    if (!poi || poi.id === excludeId || !poi.name || !Number.isFinite(poi.lat) || !Number.isFinite(poi.lng)) continue;
+    if (poi.id === 'home' || poi.id === 'here') continue;
+    const km = kmBetween(poi, point);
+    if (km < bestKm) { best = poi; bestKm = km; }
+  }
+  if (best && bestKm <= SHARED_ENDPOINT_NAME_KM) {
+    return { ...best, lat: point.lat, lng: point.lng, sharedEndpoint: true };
+  }
+  const id = `shared-${role}`;
+  if (best && bestKm <= SHARED_ENDPOINT_NEAR_KM) {
+    return { id, name: `${best.name} (nearby)`, lat: point.lat, lng: point.lng, sharedEndpoint: true };
+  }
+  return { id, name: role === 'start' ? 'Shared start' : 'Shared finish', lat: point.lat, lng: point.lng, sharedEndpoint: true };
+}
+
 /**
  * Rank stand-ins for an unroutable destination: reachable-looking POIs, sorted
  * by how near they are to the destination the player was actually given, and

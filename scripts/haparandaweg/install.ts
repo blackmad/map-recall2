@@ -35,7 +35,7 @@ for (const id of ids) {
     materialOverrides: spec.palette, preservePositionPrecision: true,
     attribution: {
       title: `${spec.name} original architecture`, author: 'Map Recall',
-      sourceUrl: `https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${spec.pandId}`, licence: 'Original project asset', licenceUrl: './LICENSE',
+      sourceUrl: `https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${spec.pandId}`, licence: 'CC BY 4.0', licenceUrl: 'https://creativecommons.org/licenses/by/4.0/',
       modifications: `Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). ${report.gates.triangles} triangles. Rear and party walls are unmeasured. No invented POI.`,
     },
     buildingFootprint: { type: 'Polygon', coordinates: rings }, heightMetres: +set.heightMax.toFixed(2),

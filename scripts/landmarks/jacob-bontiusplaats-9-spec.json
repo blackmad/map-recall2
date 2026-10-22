@@ -31,8 +31,8 @@
     "title": "Jacob Bontiusplaats 9 offices original architecture",
     "author": "Map Recall",
     "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165819",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
   },
   "buildingFootprint": {

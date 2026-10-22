@@ -47,8 +47,8 @@
         "title": "Gashouder",
         "author": "Map Recall",
         "sourceUrl": "https://gashouder.nl/",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
         "modifications": "Original flat-colour low-poly reconstruction using museum and venue photographs for architectural silhouette and OpenStreetMap polygons for placement. Includes the full mapped venue footprint; dimensions and roof ornament are approximate."
       },
       "staticPoiAudit": {
@@ -111,8 +111,8 @@
         "title": "Het Ketelhuis",
         "author": "Map Recall",
         "sourceUrl": "https://westergas.nl/map/",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
         "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
       },
       "staticPoiAudit": {
@@ -198,8 +198,8 @@
         "title": "Zuiveringshal West · Fabrique des Lumières",
         "author": "Map Recall",
         "sourceUrl": "https://www.fabrique-lumieres.com/en",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
         "modifications": "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
       },
       "staticPoiAudit": {
@@ -298,8 +298,8 @@
         "title": "Amsterdam in Motion · Zuiveringshal Oost",
         "author": "Map Recall",
         "sourceUrl": "https://www.amsterdammuseum.nl/tickets-en-bezoek/locaties/amsterdam-in-motion/228553",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
         "modifications": "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
       },
       "staticPoiAudit": {
@@ -380,8 +380,8 @@
         "title": "Theater De Krakeling",
         "author": "Map Recall",
         "sourceUrl": "https://krakeling.nl/over-ons",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
         "modifications": "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
       },
       "staticPoiAudit": {
@@ -449,8 +449,8 @@
         "title": "Machinegebouw · Cantine",
         "author": "Map Recall",
         "sourceUrl": "https://cantine.nl/",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
         "modifications": "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
       },
       "staticPoiAudit": {
@@ -507,8 +507,8 @@
         "title": "De Wester · Transformatorhuis",
         "author": "Map Recall",
         "sourceUrl": "https://westergas.nl/en/de-wester-as-event-venue/",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
         "modifications": "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
       },
       "staticPoiAudit": {

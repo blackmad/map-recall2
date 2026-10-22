@@ -53,6 +53,113 @@
     }
     return null;
   }
+  var CROSSING_TRAIL_METRES = 18;
+  var CROSSING_MIN_ANGLE_DEG = 35;
+  var CROSSING_DECK_METRES = 14;
+  var TrackTrail = class {
+    constructor(keepPx, stepPx = 3) {
+      this.keepPx = keepPx;
+      this.stepPx = stepPx;
+    }
+    points = [];
+    reset() {
+      this.points = [];
+    }
+    push(point) {
+      const last = this.points[this.points.length - 1];
+      if (last && Math.hypot(point.x - last.x, point.y - last.y) < this.stepPx) return;
+      this.points.push({ x: point.x, y: point.y });
+      let length = 0;
+      for (let i = this.points.length - 1; i > 0; i--) {
+        length += Math.hypot(this.points[i].x - this.points[i - 1].x, this.points[i].y - this.points[i - 1].y);
+        if (length >= this.keepPx) {
+          this.points.splice(0, i - 1);
+          break;
+        }
+      }
+    }
+    /** The point about `backPx` of travel behind `current` (the oldest kept when the trail is shorter). */
+    pointBack(current, backPx) {
+      let left = backPx;
+      let at = current;
+      for (let i = this.points.length - 1; i >= 0; i--) {
+        const p = this.points[i];
+        const d = Math.hypot(p.x - at.x, p.y - at.y);
+        if (d >= left) {
+          const f = left / (d || 1);
+          return { x: at.x + (p.x - at.x) * f, y: at.y + (p.y - at.y) * f };
+        }
+        left -= d;
+        at = p;
+      }
+      return at;
+    }
+  };
+  function crossingAngleDeg(p, q, a, b) {
+    const ux = q.x - p.x, uy = q.y - p.y, vx = b.x - a.x, vy = b.y - a.y;
+    const cross = Math.abs(ux * vy - uy * vx);
+    const dot = Math.abs(ux * vx + uy * vy);
+    return Math.atan2(cross, dot) * 180 / Math.PI;
+  }
+  function intersection(p, q, a, b) {
+    const d = (q.x - p.x) * (b.y - a.y) - (q.y - p.y) * (b.x - a.x);
+    const t = d ? ((a.x - p.x) * (b.y - a.y) - (a.y - p.y) * (b.x - a.x)) / d : 0;
+    return { x: p.x + (q.x - p.x) * t, y: p.y + (q.y - p.y) * t };
+  }
+  function isClosedRing(line) {
+    if (line.length < 4) return false;
+    const a = line[0], b = line[line.length - 1];
+    return Math.abs(a.x - b.x) < 1e-6 && Math.abs(a.y - b.y) < 1e-6;
+  }
+  function insideRing(point, ring) {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const a = ring[i], b = ring[j];
+      if (a.y > point.y !== b.y > point.y && point.x < (b.x - a.x) * (point.y - a.y) / (b.y - a.y) + a.x) inside = !inside;
+    }
+    return inside;
+  }
+  function onBridgeDeck(lines, point, rangePx) {
+    for (const line of lines) {
+      if (isClosedRing(line) && insideRing(point, line)) return true;
+      for (let i = 1; i < line.length; i++) if (distanceToSegment(point, line[i - 1], line[i]) <= rangePx) return true;
+    }
+    return false;
+  }
+  function findWaterCrossing(bridges, previous, current, { trailStart, deckRangePx, minAngleDeg = CROSSING_MIN_ANGLE_DEG, searchPx }) {
+    for (const bridge of bridges) {
+      for (const crossing of bridge.crossings) {
+        if (!crossing.waterLines || !crossing.waterLines.length) continue;
+        if (Math.hypot(crossing.x - current.x, crossing.y - current.y) > searchPx) continue;
+        for (const line of crossing.waterLines) {
+          for (let i = 1; i < line.length; i++) {
+            const a = line[i - 1], b = line[i];
+            if (!segmentsIntersect(previous, current, a, b)) continue;
+            if (!segmentsIntersect(trailStart, current, a, b)) continue;
+            if (crossingAngleDeg(trailStart, current, a, b) < minAngleDeg) continue;
+            if (!onBridgeDeck(bridge.lines, intersection(previous, current, a, b), deckRangePx)) continue;
+            return { bridge, crossing };
+          }
+        }
+      }
+    }
+    return null;
+  }
+  function findGateCrossing(bridges, previous, current, trailStart, gateHalfWidth, maxOffAxisDeg = 90 - CROSSING_MIN_ANGLE_DEG) {
+    for (const bridge of bridges) {
+      for (const line of bridge.lines) {
+        if (isClosedRing(line)) continue;
+        for (let i = 1; i < line.length; i++) {
+          const a = line[i - 1], b = line[i];
+          const gate = bridgeGate(a, b, gateHalfWidth);
+          if (!segmentsIntersect(previous, current, gate[0], gate[1])) continue;
+          if (crossingAngleDeg(trailStart, current, a, b) > maxOffAxisDeg) continue;
+          return bridge;
+        }
+      }
+    }
+    return null;
+  }
   function crossingQuestionKind(input) {
     if (input.hasWater && !input.waterKnownHere) {
       if (!input.byBoat && input.alreadyAsked !== "water" && !input.waterSuppressedHere) return "water";
@@ -236,7 +343,7 @@
     amsterdam: {
       id: "amsterdam",
       name: "Amsterdam",
-      productName: "Canal Recall",
+      productName: "Ride Amsterdam",
       center: { lat: 52.372851, lng: 4.8936 },
       extractPath: "../data/extracts/amsterdam",
       geocodeSuffix: ", Amsterdam",
@@ -250,7 +357,7 @@
     utrecht: {
       id: "utrecht",
       name: "Utrecht",
-      productName: "Canal Recall",
+      productName: "Ride Utrecht",
       center: { lat: 52.0907374, lng: 5.1214201 },
       extractPath: "../data/extracts/utrecht",
       geocodeSuffix: ", Utrecht",
@@ -275,7 +382,7 @@
     rotterdam: {
       id: "rotterdam",
       name: "Rotterdam",
-      productName: "Canal Recall",
+      productName: "Ride Rotterdam",
       center: { lat: 51.9225, lng: 4.47917 },
       extractPath: "../data/extracts/rotterdam",
       geocodeSuffix: ", Rotterdam",
@@ -294,7 +401,7 @@
     "den-haag": {
       id: "den-haag",
       name: "Den Haag",
-      productName: "Canal Recall",
+      productName: "Ride Den Haag",
       center: { lat: 52.0705, lng: 4.3007 },
       extractPath: "../data/extracts/den-haag",
       geocodeSuffix: ", Den Haag",
@@ -327,6 +434,8 @@
       cityId: DEFAULT_CITY_ID,
       difficulty: "medium",
       ...DIFFICULTY_PRESETS.medium,
+      // Boat and North up are the product start (2026-10-22, user's call;
+      // setup offers no view picker, the in-ride settings do).
       travelMode: "boat",
       controlMode: "relative",
       viewMode: "north",
@@ -4001,7 +4110,7 @@ Sign-in and your route settings stay. This cannot be undone.`
         overlay.callbacks.onClearAllData = async () => {
           const cloud = recall.signedIn ? " and your signed-in cloud copy" : "";
           const ok = window.confirm(
-            `Clear everything Canal Recall stores on this device${cloud}?
+            `Clear everything Ride Amsterdam stores on this device${cloud}?
 
 Learned names, exploration collection, personal bests, route settings and the home-address cache all go. Sign-in stays. This cannot be undone.`
           );
@@ -4025,7 +4134,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
             recall.enabled = defaults.skipMastered;
             this._refreshMasteredLabels();
             overlay.callbacks.onLiveChange();
-            this._setRouteError("Cleared all local Canal Recall data.");
+            this._setRouteError("Cleared all local Ride Amsterdam data.");
           } catch (error) {
             this._setRouteError(error.message || "Could not clear data.");
           } finally {
@@ -4816,27 +4925,51 @@ Learned names, exploration collection, personal bests, route settings and the ho
      */
     _updateBridgeQuiz(previousPosition) {
       if (isTransit(this.travelMode)) return;
+      const trail = this._crossingTrail || (this._crossingTrail = new TrackTrail(CROSSING_TRAIL_METRES * PIXELS_PER_METER * 1.5));
+      if (previousPosition && this.player) {
+        if (Math.hypot(this.player.x - previousPosition.x, this.player.y - previousPosition.y) > 40 * PIXELS_PER_METER) trail.reset();
+        trail.push(previousPosition);
+      }
       if (this.quizPromptName || !this.bridges.length || !previousPosition || !this.player) return;
       if (Math.abs(this.player.speed) < 5) return;
       if (!gapElapsed("bridge-quiz", this._lastBridgeQuizAt, this.raceTime)) return;
       const movedBy = Math.hypot(this.player.x - previousPosition.x, this.player.y - previousPosition.y);
       if (movedBy <= 0) return;
       const byBoat = isBoat(this.travelMode);
-      const closest = findCrossedBridge(
-        this.bridges,
-        previousPosition,
-        this.player,
-        byBoat,
-        BRIDGE_GATE_HALF_WIDTH
-      );
-      if (!closest) return;
-      const crossing = CanalRecallBridges.nearestCrossing(
-        closest.crossings,
-        this.player.x,
-        this.player.y,
-        CROSSING_MATCH_RANGE
-      );
-      if (!crossing) return;
+      let closest;
+      let crossing;
+      if (byBoat) {
+        closest = findCrossedBridge(this.bridges, previousPosition, this.player, true, BRIDGE_GATE_HALF_WIDTH);
+        if (!closest) return;
+        crossing = CanalRecallBridges.nearestCrossing(
+          closest.crossings,
+          this.player.x,
+          this.player.y,
+          CROSSING_MATCH_RANGE
+        );
+      } else {
+        const trailStart = trail.pointBack(this.player, CROSSING_TRAIL_METRES * PIXELS_PER_METER);
+        const water2 = findWaterCrossing(this.bridges, previousPosition, this.player, {
+          trailStart,
+          deckRangePx: CROSSING_DECK_METRES * PIXELS_PER_METER,
+          searchPx: CROSSING_MATCH_RANGE
+        });
+        if (water2) {
+          closest = water2.bridge;
+          crossing = water2.crossing;
+        } else {
+          closest = findGateCrossing(this.bridges, previousPosition, this.player, trailStart, BRIDGE_GATE_HALF_WIDTH);
+          if (!closest) return;
+          crossing = CanalRecallBridges.nearestCrossing(
+            closest.crossings,
+            this.player.x,
+            this.player.y,
+            CROSSING_MATCH_RANGE
+          );
+          if (crossing && crossing.waterLines && crossing.waterLines.length) return;
+        }
+      }
+      if (!closest || !crossing) return;
       const key = `${closest.id}#${crossing.index}`;
       const water = crossing.waterway ? {
         name: crossing.waterway,

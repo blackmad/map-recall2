@@ -50,7 +50,7 @@ out over this worktree.
 | `fix/appearance-residency-sol` | 1 / 1200 | 7-line change keeping study meshes resident through camera updates (`vector-map.js` and 4 study browsers) |
 
 On main, the `src/canalRecall/facade/*` modules the brief names come from mixed authorship. `ROOFLINE_FROM_PHOTOS_PLAN.md`
-assigns G2/A-tasks to DeepSeek/Sonnet lanes, and `docs/plans/appearance-programme.md` gives Sol T2.4 (opening lattice)
+assigns G2/A-tasks to DeepSeek/Sonnet lanes, and `docs/archive/plans/appearance-programme.md` gives Sol T2.4 (opening lattice)
 and wall-colour reviews. They are assessed in §2 because the brief asks, without claiming they are all Sol's.
 
 ## 2. Each piece: what, how mature, overlap with today's pipeline, recommendation

@@ -44,8 +44,8 @@
       "title": "Oude Kerk",
       "author": "Map Recall",
       "sourceUrl": "https://www.oudekerk.nl/nu-te-zien/evenementen/bezoek-oudekerkstoren/39591",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free Gothic reconstruction using museum photographic references and actual OpenStreetMap church/chapel/tower polygons. Surveyed placement in metres; decorative tracery and roof details are approximate."
     }
   },
@@ -96,8 +96,8 @@
       "title": "Nieuwe Kerk",
       "author": "Map Recall",
       "sourceUrl": "https://www.nieuwekerk.nl/de-nieuwe-kerk/",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free Gothic reconstruction using museum photographic references and actual OpenStreetMap church/chapel/tower polygons. Surveyed placement in metres; decorative tracery and roof details are approximate."
     }
   }

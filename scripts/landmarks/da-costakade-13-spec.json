@@ -43,8 +43,8 @@
     "title": "Da Costakade 13 original architecture",
     "author": "Map Recall",
     "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012166570",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native metre geometry on the BAG footprint with 3DBAG eave/ridge heights; roof modelled from intent (mansard plus gable saddle), facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported."
   },
   "buildingFootprint": {

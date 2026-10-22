@@ -1,6 +1,6 @@
 # Own ground on AHN relief (2026-10-09)
 
-Phase 2 of `own-renderer-spike-20261009.md`: can three.js draw the riding-view
+Phase 2 of `docs/archive/research/own-renderer-spike-20261009.md`: can three.js draw the riding-view
 ground itself, with height, so streets, the route, bridges and quays agree?
 With `?elevation=1` MapLibre paints roads, casings and the route line flat at
 z = 0: street lines run straight across sunken water, bridge decks are grey

@@ -43,8 +43,8 @@
     "title": "Club Panama",
     "author": "Map Recall",
     "sourceUrl": "https://arcam.nl/architectuur-gids/panama/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; windows, awnings, entrance gable, machine-house gable details, clerestory and rooftop sign measured by eye from the 2021-2022 municipal panoramas, no pixels or meshes imported."
   },
   "buildingFootprint": {

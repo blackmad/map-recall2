@@ -39,8 +39,8 @@
     "title": "Booking.com headquarters",
     "author": "Map Recall",
     "sourceUrl": "https://en.wikipedia.org/wiki/Booking.com",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free geometry on the 3DBAG LoD2.2 massing of BAG pand 0363100012250152; curtain-wall bands, residential tower grid and sign measured by eye from the 2025 municipal panoramas, no pixels or meshes imported."
   },
   "buildingFootprint": {

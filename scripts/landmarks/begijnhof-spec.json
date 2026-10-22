@@ -74,8 +74,8 @@
     "title": "Begijnhof court houses - original low-poly interpretation",
     "author": "Map Recall",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam_(NL),_Begijnhof_--_2015_--_7220.jpg",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free houses extruded from BAG footprints and 3DBAG heights. Gable types, window rhythm, fences, trees and statue read from CC BY-SA photographs by Dietmar Rabich and Dennis G. Jarvis and Gemeente Amsterdam panoramas (CC BY 4.0); no pixels or third-party meshes imported."
   },
   "siteModel": true

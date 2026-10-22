@@ -762,7 +762,7 @@ export function OverlayApp({
       <div id="route-setup" className="enamel-setup" inert={state.knowledgeOpen} style={{ display: state.setupOpen ? 'flex' : 'none' }}>
         <div className="enamel-setup-rail">
           <form id="route-card" className="enamel-setup-form" onSubmit={start}>
-            <h1 className="enamel-plaque enamel-framed enamel-title">Canal Recall</h1>
+            <h1 className="enamel-plaque enamel-framed enamel-title">Ride Amsterdam</h1>
 
             <div className="setup-account" id="account-row">
               <div className="setup-account-copy">
@@ -842,18 +842,6 @@ export function OverlayApp({
               options={TRAVEL}
               icons={TRAVEL_ICONS}
               layout="strip"
-            />
-            <ChoiceRow
-              label="View"
-              name="view"
-              value={prefs.viewMode}
-              onChange={value => patch({ viewMode: value })}
-              options={VIEW}
-              icons={VIEW_ICONS}
-              layout="icons"
-              showCurrent
-              gloss={VIEW.find(option => option.value === prefs.viewMode)?.hint}
-              keepGloss
             />
             <ChoiceRow
               label="Route"

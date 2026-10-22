@@ -55,8 +55,8 @@
     "title": "Stadhuis / Nationale Opera & Ballet",
     "author": "Map Recall",
     "sourceUrl": "https://www.operaballet.nl/stopera-amsterdam",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free shared-palette city-hall and opera ensemble, rebuilt against native current roof/part polygons. Curved marble foyer bays, brick auditorium, stepped office wings, glazed passage canopy and raised volumes preserve source apertures. No imported geometry/textures, whole-parcel cap or proposed future garden interiors."
   }
 }

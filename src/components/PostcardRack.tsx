@@ -221,7 +221,7 @@ export const PostcardRack: React.FC<{
           <PostcardHeader name={open.name} cityName={cityName} photos={open.photos} className="h-full w-full" />
         </CardFrame>
         <PostcardExport name={open.name} cityName={cityName} photos={open.photos} className="inline-flex min-h-[36px] items-center gap-1.5 rounded-md px-3 text-xs font-bold text-[#8a4a18] underline-offset-2 hover:underline disabled:opacity-60 cursor-pointer" />
-        <p className="text-xs text-white/55">Collected in {cityName}. Your postcards are shared with Canal Recall.</p>
+        <p className="text-xs text-white/55">Collected in {cityName}. Your postcards are shared with the ride.</p>
       </div>
     </div>}
   </div>;

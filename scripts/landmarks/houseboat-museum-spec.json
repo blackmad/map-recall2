@@ -40,8 +40,8 @@
     "title": "Houseboat Museum (Hendrika Maria)",
     "author": "Map Recall",
     "sourceUrl": "https://en.wikipedia.org/wiki/Woonbootmuseum",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free barge model: black steel hull with cream waterline band, cream cabin with portholes, dark hatch roof and mast. Proportions approximate, from a 2021 street-level panorama. No imported mesh or photo textures."
   },
   "buildingFootprint": {

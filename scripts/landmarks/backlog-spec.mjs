@@ -26,7 +26,7 @@ const spec = {
   footprint: {centre: [lng, lat], headingDegrees: heading, lengthMetres: +L.toFixed(2), widthMetres: +W.toFixed(2)},
   surveyed: {anchor: a, northOffsetDegrees: 0, source: `Current BAG ${fp.bagId} footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.`},
   groundAltitudeMetres: 0, facingOffsetDegrees: 0, materialOverrides: meta.materialOverrides,
-  attribution: {title: meta.name, author: 'Map Recall', sourceUrl: meta.sourceUrl, licence: 'Original project asset', licenceUrl: './LICENSE', modifications: meta.modifications},
+  attribution: {title: meta.name, author: 'Map Recall', sourceUrl: meta.sourceUrl, licence: 'CC BY 4.0', licenceUrl: 'https://creativecommons.org/licenses/by/4.0/', modifications: meta.modifications},
   buildingFootprint: fp.buildingFootprint,
 };
 fs.writeFileSync(`${dir}${id}-spec.json`, JSON.stringify(spec, null, 2) + '\n');

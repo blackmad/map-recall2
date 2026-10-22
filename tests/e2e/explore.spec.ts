@@ -85,7 +85,7 @@ test('a pin opens the 3D viewer, download and report', async ({ page, request })
   await expect(download).toContainText(/Download GLB · \d+ KB/);
   const head = await request.head(new URL('models/westerkerk.glb', page.url()).href);
   expect(head.status()).toBe(200);
-  await expect(page.locator('.licence')).toContainText('CC BY 4.0 · credit Canal Recall, 3DBAG, BAG and OpenStreetMap contributors; see credits.html');
+  await expect(page.locator('.licence')).toContainText('CC BY 4.0 · credit Ride Amsterdam, 3DBAG, BAG and OpenStreetMap contributors; see credits.html');
 
   await page.waitForTimeout(600);
   if (SHOTS) await page.screenshot({ path: `${SHOTS}/explore-${test.info().project.name}-panel.png` });
@@ -163,7 +163,7 @@ for (const [slug, path] of [['rijnbuurt-oost', 'chunk'], ['bellamybuurt-zuid', '
     }
     await expect(page.locator('#l-sw-own .sw').first()).toBeVisible();
     await expect(page.locator('#l-sw-city .sw').first()).toBeAttached();
-    await expect(page.locator('#l-licence-line')).toContainText('CC BY 4.0 · credit Canal Recall, 3DBAG, BAG and OpenStreetMap contributors');
+    await expect(page.locator('#l-licence-line')).toContainText('CC BY 4.0 · credit Ride Amsterdam, 3DBAG, BAG and OpenStreetMap contributors');
     const href = await page.locator('#l-download').getAttribute('href');
     expect((await request.head(new URL(href!, page.url()).href)).status()).toBe(200);
     expect(new URL(page.url()).searchParams.get('buurt')).toBe(slug);

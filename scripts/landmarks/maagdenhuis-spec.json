@@ -35,8 +35,8 @@
     "title": "Maagdenhuis, Spui 21",
     "author": "Map Recall",
     "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167925",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus hand-modelled plinth, string course, keystone consoles, entrance stair, pediment and tympanum relief read from Gemeente Amsterdam panoramas (CC BY 4.0) and Commons photographs RCE 20014425 (G.Th. Delemarre, CC BY-SA 4.0), 20408833 (Sergé Technau, CC BY-SA 4.0) and UvAMaagdenhuis.jpg (Mtcv, CC BY-SA 3.0). No pixels or meshes imported."
   },
   "bagYear": 1787

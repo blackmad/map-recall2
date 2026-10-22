@@ -33,8 +33,8 @@
     "title": "EYE Filmmuseum",
     "author": "Map Recall",
     "sourceUrl": "https://www.dmaa.at/work/eye-film-institute",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free folded-shell reconstruction. Current BAG parent scope, recorded lower-level outline and approximate roof heights constrain original rounded control points. White inclined panels, southern glass ribbon, recessed lower storey and eastern cantilever are interpreted from architect photographs and the supplied Warehouse viewer. Individual roof folds, glazing contours, mullion spacing and stairs remain approximations. No imported Warehouse or survey mesh geometry; no photo pixels. The extract teaching ID681957397 is retained only as teaching identity, not suppressed as a current OSM way: current OSM way681957397 is in another country. Only verified EYE parent/levels are suppressed; A\u2019DAM, promenade and park remain separate."
   }
 }

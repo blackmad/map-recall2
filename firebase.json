@@ -15,7 +15,7 @@
       "redirects": [
         {
           "regex": "^/(?P<rest>.*)$",
-          "destination": "https://canalrecall.blackmad.com/quiz/:rest",
+          "destination": "https://rideamsterdam.nl/quiz/:rest",
           "type": 301
         }
       ]

@@ -31,7 +31,7 @@ const spec={id,name:c.name,landmarkId:c.landmarkId,modelUrl:`./models/${id}.glb`
  footprint:{centre:anchor,headingDegrees:+heading.toFixed(3),lengthMetres:+length.toFixed(2),widthMetres:+width.toFixed(2)},
  surveyed:{anchor,northOffsetDegrees:0,source:`BAG pand ${fp.bagId} with 3DBAG LoD2.2 roofs; native east/south metres, scale 1.`},
  groundAltitudeMetres:0,facingOffsetDegrees:0,materialOverrides:c.colours,
- attribution:{title:c.name,author:'Map Recall',sourceUrl:c.sourceUrl,licence:'Original project asset',licenceUrl:'./LICENSE',modifications:c.mods}};
+ attribution:{title:c.name,author:'Map Recall',sourceUrl:c.sourceUrl,licence:'CC BY 4.0',licenceUrl:'https://creativecommons.org/licenses/by/4.0/',modifications:c.mods}};
 if(fp.ringWGS84)spec.buildingFootprint={type:'Polygon',coordinates:fp.ringWGS84};
 fs.writeFileSync(`scripts/landmarks/${id}-spec.json`,JSON.stringify(spec,null,2)+'\n');
 // Append-only text edits keep the large shared JSON files diff-minimal. Re-running replaces

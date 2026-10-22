@@ -40,7 +40,7 @@ as pure refactors with identical output.
    fog / tone mapping targets, palette and saturation rules, outline rule per
    look, what is textured at what distance, what the driving corridor must
    keep readable, how gallery reviews cite it. Derive the numbers from the
-   shared-frame spike measurements in `docs/research/own-renderer-spike-20261009.md`.
+   shared-frame spike measurements in `docs/archive/research/own-renderer-spike-20261009.md`.
 4. A ride-perf comparison `?sharedFrame=1` on vs off on the iPhone 4× oracle
    (`scripts/ride-perf-fixed-route.mjs`), numbers in the report. The real
    iPhone GPU test remains the user's; say so.

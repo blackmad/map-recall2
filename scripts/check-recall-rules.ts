@@ -4,6 +4,7 @@
 // reached by driving a boat at a bridge.
 
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 import {
   advanceRouteQuiz,
@@ -14,6 +15,11 @@ import {
   crossingQuestionKind,
   findBridgeRouteAt,
   findCrossedBridge,
+  findGateCrossing,
+  findWaterCrossing,
+  TrackTrail,
+  CROSSING_DECK_METRES,
+  CROSSING_TRAIL_METRES,
   headingOffRoad,
   hudWithholdsRouteName,
   isPlaceKnown,
@@ -27,6 +33,8 @@ import {
   type WorldOrigin,
 } from '../src/canalRecall/game/recallRules';
 import type { WorldPoint } from '../src/canalRecall/game/worldTypes';
+import { buildBridges } from '../src/canalRecall/game/landmarkData';
+import { nearestCrossing } from '../src/canalRecall/bridgeCrossings';
 import { buildSpoilerIndex } from '../src/canalRecall/orientationPois';
 import { labelAllowed, labelBudget, planLabels, VENUE_RADIUS_M, type LabelRules, type ScreenCandidate } from '../src/canalRecall/labels/labelPlan';
 
@@ -459,6 +467,139 @@ check('labels stay within the budget, clear of the HUD, and venues stay near the
   const hidden = planLabels({ candidates: [screenLabel('Westerkerk', { cls: 'landmark', occluded: true })], rules: labelRules(), cameraHeightM: 2, viewport: { width: 1440, height: 900 }, hud: [] });
   assert.equal(hidden.length, 0, 'a label whose anchor a building hides is not drawn');
 });
+
+// ---- Street crossings cross the water (teaser ride 2026-10-22) ----
+// Riding straight down the Prinsengracht quay past the Westertoren, over the
+// end of the Nieuwe-Wercksbrug deck (extract_bridges_1079333700, the
+// Westermarkt-Rozengracht bridge), asked "Which waterway are you crossing?
+// Prinsengracht". The deck outline's bank-side edge runs along the quay and its
+// gate lay across it. The street rule now asks only when the rider's track
+// crosses the waterway's centreline, steeply, on the deck. Real geometry from
+// the Amsterdam extract; routes are routing-extract nodes, ridden in 1 m steps
+// as runtime does (recallRuntime._updateBridgeQuiz).
+{
+  const base = 'public/data/extracts/amsterdam';
+  const read = (file: string) => JSON.parse(readFileSync(`${base}/${file}`, 'utf8'));
+  const PPM = 3, LAT0 = 52.37, LNG0 = 4.89;
+  const mLat = 111_320, mLng = 111_320 * Math.cos(LAT0 * Math.PI / 180);
+  type LL = [number, number];
+  const project = ([lat, lng]: LL): WorldPoint => ({ x: (lng - LNG0) * mLng * PPM, y: -(lat - LAT0) * mLat * PPM });
+  const realBridges = buildBridges(read('bridges.json'), read('bridge-crossings.json'), project, read('water.json'));
+  /** Every crossing question a street ride along `route` would fire: "bridge name|water". */
+  const ride = (route: LL[]): string[] => {
+    const points = route.map(project);
+    const trail = new TrackTrail(CROSSING_TRAIL_METRES * PPM * 1.5);
+    const asked: string[] = [];
+    let previous = points[0];
+    for (let i = 1; i < points.length; i++) {
+      const a = points[i - 1], b = points[i];
+      const length = Math.hypot(b.x - a.x, b.y - a.y);
+      for (let d = Math.min(PPM, length); d <= length; d += PPM) {
+        const current = { x: a.x + (b.x - a.x) * d / length, y: a.y + (b.y - a.y) * d / length };
+        trail.push(previous);
+        const trailStart = trail.pointBack(current, CROSSING_TRAIL_METRES * PPM);
+        const water = findWaterCrossing(realBridges, previous, current, { trailStart, deckRangePx: CROSSING_DECK_METRES * PPM, searchPx: 900 });
+        if (water) asked.push(`${water.bridge.name}|${water.crossing.waterway}`);
+        else {
+          const gated = findGateCrossing(realBridges, previous, current, trailStart, 26);
+          const near = gated && nearestCrossing(gated.crossings, current.x, current.y, 900);
+          if (gated && near && !(near.waterLines && near.waterLines.length)) asked.push(`${gated.name}|${near.waterway}`);
+        }
+        previous = current;
+      }
+    }
+    return [...new Set(asked)];
+  };
+  const both = (route: LL[]) => [ride(route), ride([...route].reverse())];
+
+  // Prinsengracht, east quay, north to south past the Westermarkt end of the deck (and back).
+  const eastQuay: LL[] = [[52.374566, 4.883391], [52.374263, 4.883363], [52.374198, 4.883358], [52.374099, 4.883347],
+    [52.373984, 4.883334], [52.373916, 4.883327], [52.372406, 4.883179]];
+  // Prinsengracht, west quay, past the Rozengracht end.
+  const westQuay: LL[] = [[52.373195, 4.882729], [52.373816, 4.882776], [52.37394, 4.8828], [52.374041, 4.88282], [52.374478, 4.882874]];
+  // Westermarkt to Rozengracht over the Nieuwe-Wercksbrug: a real crossing of the Prinsengracht.
+  const acrossNieuweWercksbrug: LL[] = [[52.373985, 4.883448], [52.373984, 4.883334], [52.373966, 4.883203],
+    [52.373902, 4.882909], [52.373926, 4.882797], [52.373902, 4.882696], [52.37361, 4.881533]];
+
+  check('regression: riding along the Prinsengracht over the Nieuwe-Wercksbrug deck end asks nothing (teaser 2026-10-22)', () => {
+    for (const asked of [...both(eastQuay), ...both(westQuay)]) assert.deepEqual(asked, [], `asked ${asked} riding along the canal`);
+  });
+  check('positive control: Westermarkt to Rozengracht over the Nieuwe-Wercksbrug asks for the Prinsengracht', () => {
+    for (const asked of both(acrossNieuweWercksbrug)) assert.deepEqual(asked, ['Nieuwe-Wercksbrug|Prinsengracht']);
+  });
+
+  // The canal-ring survey: every routing way of the four ring quays, chained
+  // straight on through junction nodes (so a deck mapped as its own way is
+  // ridden over), in both directions. Before the fix, 20 junction bridges asked
+  // for the canal being ridden along (Walenweeshuissluis, De Duifbrug,
+  // Torensluis, Muntsluis, Johanna Borskibrug, Isa van Eeghenbrug, ...); side
+  // canals crossed at their mouths (Leliegracht, Leidsegracht, Brouwersgracht)
+  // are real crossings and must still ask.
+  const routing: Array<{ name: string; path?: LL[]; paths?: LL[][] }> = read('streets-routing.json');
+  const nodeKey = (p: LL) => `${p[0].toFixed(6)},${p[1].toFixed(6)}`;
+  const leaving = new Map<string, LL[][]>();
+  for (const way of routing) for (const path of way.paths || (way.path ? [way.path] : [])) {
+    if (!path || path.length < 2) continue;
+    for (const run of [path, [...path].reverse()]) {
+      const k = nodeKey(run[0]);
+      if (!leaving.has(k)) leaving.set(k, []);
+      leaving.get(k)!.push(run);
+    }
+  }
+  const bearing = (a: LL, b: LL) => Math.atan2((b[0] - a[0]) * mLat, (b[1] - a[1]) * mLng);
+  const straightOn = (run: LL[], metres: number): LL[] => {
+    const out = [...run];
+    for (let left = metres; left > 0;) {
+      const a = out[out.length - 2], b = out[out.length - 1];
+      let next: LL[] | null = null, bestTurn = 35 * Math.PI / 180;
+      for (const candidate of leaving.get(nodeKey(b)) || []) {
+        const delta = bearing(candidate[0], candidate[1]) - bearing(a, b);
+        const turn = Math.abs(Math.atan2(Math.sin(delta), Math.cos(delta)));
+        if (turn < bestTurn && nodeKey(candidate[1]) !== nodeKey(a)) { bestTurn = turn; next = candidate; }
+      }
+      if (!next) break;
+      for (let i = 1; i < next.length; i++) { left -= Math.hypot((next[i][0] - next[i - 1][0]) * mLat, (next[i][1] - next[i - 1][1]) * mLng); out.push(next[i]); }
+    }
+    return out;
+  };
+  /** Each routing path of `street`, both ways, carried 40 m back and 60 m on. */
+  const streetRuns = (street: string): LL[][] => {
+    const runs: LL[][] = [];
+    for (const way of routing) {
+      if (way.name !== street) continue;
+      for (const path of way.paths || (way.path ? [way.path] : [])) {
+        if (!path || path.length < 2) continue;
+        for (const run of [path, [...path].reverse()]) runs.push(straightOn(straightOn([...run].reverse(), 40).reverse(), 60));
+      }
+    }
+    return runs;
+  };
+
+  check('regression: no canal-ring junction bridge asks for the canal being ridden along (Prinsengracht, Keizersgracht, Herengracht, Singel)', () => {
+    const sameCanal = new Set<string>();
+    const sideCanals = new Set<string>();
+    for (const canal of ['Prinsengracht', 'Keizersgracht', 'Herengracht', 'Singel']) {
+      for (const run of streetRuns(canal)) for (const asked of ride(run)) (asked.endsWith(`|${canal}`) ? sameCanal : sideCanals).add(asked);
+    }
+    assert.deepEqual([...sameCanal], [], 'riding along a ring canal is not crossing it');
+    for (const real of ['Grote Brouwerssluis|Leliegracht', 'Beudekerbrug|Leidsegracht', 'Pieter Goemansbrug|Leidsegracht', 'Papiermolensluis|Brouwersgracht']) {
+      assert.ok(sideCanals.has(real), `${real}: crossing a side canal's mouth along the quay still asks`);
+    }
+  });
+
+  check('positive controls: cross streets over the ring still ask for each canal they cross', () => {
+    const expected: Record<string, string[]> = {
+      Vijzelstraat: ['Walenweeshuissluis|Prinsengracht', 'Johanna Borskibrug|Keizersgracht', 'Isa van Eeghenbrug|Herengracht', 'Muntsluis|Singel'],
+      Raadhuisstraat: ['Niek Engelschmanbrug|Keizersgracht', 'Warmoesbrug|Herengracht', 'Huiszittenbrug|Singel'],
+      Reestraat: ['Reesluis|Prinsengracht', 'Kees Fensbrug|Keizersgracht'],
+      Berenstraat: ['Berensluis|Prinsengracht', 'Marten Toonderbrug|Keizersgracht'],
+    };
+    for (const [street, crossings] of Object.entries(expected)) {
+      const asked = new Set(streetRuns(street).flatMap(ride));
+      for (const want of crossings) assert.ok(asked.has(want), `${street}: ${want} should still ask (asked: ${[...asked].join(', ')})`);
+    }
+  });
+}
 
 console.log(`Recall rules OK: ${checks.length} checks.`);
 for (const name of checks) console.log(`  · ${name}`);

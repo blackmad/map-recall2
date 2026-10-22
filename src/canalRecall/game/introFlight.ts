@@ -109,6 +109,26 @@ export function introFrame(plan: IntroPlan, to: IntroCamera, elapsed: number): I
   };
 }
 
+/**
+ * The zoom the player rides at, whatever the camera shows this frame.
+ *
+ * From `_prepareIntro` (still on the loading screen) until the flight lands,
+ * the camera holds the overview's zoom: 0.012–0.13, below the slider's own
+ * minimum. Settings saved in that window (B, L, [ ], R, G, the ride's own
+ * bearing reset) used to write that zoom into the preferences, clamped to the
+ * 0.1 minimum, and every later ride opened 2.7 map levels out with the boat a
+ * few pixels long under its START tag (user report 2026-10-21, Amstel at
+ * Carré). While a flight owns the camera, its landing zoom is the player's.
+ */
+export function playerZoom(
+  cameraZoom: number,
+  intro?: { playZoom: number } | null,
+  prepared?: { playZoom: number } | null,
+): number {
+  const flight = intro ?? prepared;
+  return flight && Number.isFinite(flight.playZoom) && flight.playZoom > 0 ? flight.playZoom : cameraZoom;
+}
+
 /** A lng/lat box, west/south/east/north in degrees. */
 export type LngLatBounds = { west: number; south: number; east: number; north: number };
 

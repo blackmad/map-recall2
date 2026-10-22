@@ -40,8 +40,8 @@
     "title": "Posthoornkerk",
     "author": "Map Recall",
     "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1289",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native church reconstruction from BAG/3DBAG and operator/register references, cross-checked against dated 2025 municipal panoramas. Adjacent presbytery, school and street buildings retained; no name lettering."
   }
 }

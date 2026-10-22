@@ -31,8 +31,8 @@
       "title": "Oost-Indisch Huis and Bushuis",
       "author": "Map Recall",
       "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/2012",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free reconstruction of the current Oost-Indisch Huis/Bushuis university complex from exact mapped geometry and original primary photographer references, cross-checked against current PDOK BAG and its Kloveniersburgwal48 onderwijsfunctie VBO. Height references measured from 3DBAG AHN5 LoD2.2 planes (NAP ground0.834; Bushuis roof about14.2–21.7m relative, historic courtyard wings about10.3–17.1m); mesh uses original authored simplified roofs and details, no imported source triangles. The single actual courtyard hole and west perimeter notches remain open; adjoining Waalse Kerk and neighboring houses are retained. The historical courtyard Renaissance gable and separate 1890/1891 Peters Bushuis23-bay Neo-Renaissance canal facade have distinct silhouettes."
     }
   }

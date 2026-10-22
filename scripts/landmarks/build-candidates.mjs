@@ -106136,7 +106136,7 @@ var keith_haring_mural_spec_default = {
     author: "Map Recall; mural composition after Keith Haring (1986)",
     sourceUrl: "https://www.amsterdam.nl/stadsdelen/west/nieuws/fantasiebeest-keith-haring/",
     licence: "Original project geometry; underlying artwork by Keith Haring",
-    licenceUrl: "./LICENSE",
+    licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
     modifications: "Original texture-free surveyed building and hand-authored white stroke interpretation; no reference pixels or imported mesh."
   },
   galleryView: {
@@ -152762,8 +152762,8 @@ var concertgebouw_spec_default = {
     title: "Royal Concertgebouw",
     author: "Map Recall",
     sourceUrl: "https://www.concertgebouw.nl/en/our-history/history",
-    licence: "Original project asset",
-    licenceUrl: "./LICENSE",
+    licence: "CC BY 4.0",
+    licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
     modifications: "Original project-native pale-stone/red-brick classical facade, columned pediment, golden lyre, four roof pavilions and Pi de Bruijn glass promenade. No imported legacy mesh or textures; roof contours derived from open surveyed data."
   }
 };
@@ -174683,7 +174683,7 @@ function buildMuiderpoort(_w, _d, b) {
 import * as T57 from "three";
 
 // scripts/landmarks/idfa-pavilion-spec.json
-var idfa_pavilion_spec_default = { id: "idfa-pavilion", name: "IDFA Het Documentaire Paviljoen", landmarkId: "osm-way-57857054", modelUrl: "./models/idfa-pavilion.glb", suppressOsmIds: ["w57857054", "NL.IMBAG.Pand.0363100012237216"], footprint: { centre: [4.875, 52.36108], headingDegrees: 116.4, lengthMetres: 44.1, widthMetres: 29.8 }, spatialSuppression: false, groundAltitudeMetres: 0, facingOffsetDegrees: 0, surveyed: { anchor: [4.875, 52.36108], northOffsetDegrees: 26.4, source: "Current BAG parent0363100012237216; native facade xaxis116.4degrees/+Z206.4degrees. AHN5 surveyed roof planes relative to groundNAP-1.514m. RCE504833 and Arcam photographs guide original exposed loggias, domes and terrace." }, attribution: { title: "IDFA Het Documentaire Paviljoen", author: "Map Recall", sourceUrl: "https://www.idfa.nl/en/vondelpark/", licence: "Original project asset", licenceUrl: "./LICENSE", modifications: "Original texture-free plaster/brick pavilion with exposed arched loggias, balustrades, corner domes, central classical facade and native surveyed roof contours. No imported mesh or photo pixels." } };
+var idfa_pavilion_spec_default = { id: "idfa-pavilion", name: "IDFA Het Documentaire Paviljoen", landmarkId: "osm-way-57857054", modelUrl: "./models/idfa-pavilion.glb", suppressOsmIds: ["w57857054", "NL.IMBAG.Pand.0363100012237216"], footprint: { centre: [4.875, 52.36108], headingDegrees: 116.4, lengthMetres: 44.1, widthMetres: 29.8 }, spatialSuppression: false, groundAltitudeMetres: 0, facingOffsetDegrees: 0, surveyed: { anchor: [4.875, 52.36108], northOffsetDegrees: 26.4, source: "Current BAG parent0363100012237216; native facade xaxis116.4degrees/+Z206.4degrees. AHN5 surveyed roof planes relative to groundNAP-1.514m. RCE504833 and Arcam photographs guide original exposed loggias, domes and terrace." }, attribution: { title: "IDFA Het Documentaire Paviljoen", author: "Map Recall", sourceUrl: "https://www.idfa.nl/en/vondelpark/", licence: "CC BY 4.0", licenceUrl: "https://creativecommons.org/licenses/by/4.0/", modifications: "Original texture-free plaster/brick pavilion with exposed arched loggias, balustrades, corner domes, central classical facade and native surveyed roof contours. No imported mesh or photo pixels." } };
 
 // scripts/landmarks/idfa-pavilion-footprints.json
 var idfa_pavilion_footprints_default = {
@@ -186011,8 +186011,8 @@ var retail_cinema_specs_default = [
       title: "Rialto",
       author: "Map Recall",
       sourceUrl: "https://depijp.rialtofilm.nl/en/information/about-rialto",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     },
     surveyed: {
@@ -186048,8 +186048,8 @@ var retail_cinema_specs_default = [
       title: "Kriterion",
       author: "Map Recall",
       sourceUrl: "https://www.stichtingkriterion.nl/geschiedenis",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     },
     surveyed: {
@@ -186108,8 +186108,8 @@ var retail_cinema_specs_default = [
       title: "De Bijenkorf",
       author: "Map Recall",
       sourceUrl: "https://www.cultureelerfgoeddebijenkorf.nl/architectuur/bouwfasesamsterdam",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction of full historic Damrak and Dam fronts, curved pediments, mansard dormers, paired-window/pilaster rhythm, surveyed cupola and separate rear extension. Supplied SketchUp preview used as visual reference only; no imported mesh or texture."
     },
     spatialSuppression: false,
@@ -197332,8 +197332,8 @@ var industrial_theater_specs_default = [
       title: "Gashouder",
       author: "Map Recall",
       sourceUrl: "https://gashouder.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour low-poly reconstruction using museum and venue photographs for architectural silhouette and OpenStreetMap polygons for placement. Includes the full mapped venue footprint; dimensions and roof ornament are approximate."
     }
   },
@@ -197369,8 +197369,8 @@ var industrial_theater_specs_default = [
       title: "Stadsschouwburg Amsterdam",
       author: "Map Recall",
       sourceUrl: "https://ita.nl/nl/stadsschouwburg-amsterdam/geschiedenis-van-het-huis",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour low-poly reconstruction using museum and venue photographs for architectural silhouette and OpenStreetMap polygons for placement. Includes the full mapped venue footprint; dimensions and roof ornament are approximate."
     }
   }
@@ -197766,8 +197766,8 @@ var cinema_palace_specs_default = [
       title: "Path\xE9 Tuschinski",
       author: "Map Recall",
       sourceUrl: "https://pers.pathe.nl/koninklijk-theater-tuschinski/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     },
     surveyed: {
@@ -197803,8 +197803,8 @@ var cinema_palace_specs_default = [
       title: "Path\xE9 City",
       author: "Map Recall",
       sourceUrl: "https://www.pathe.nl/en/cinemas/pathe-city",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     },
     spatialSuppression: false
@@ -203802,8 +203802,8 @@ var hallen_house_specs_default = [
       title: "De Hallen / Foodhallen / Filmhallen",
       author: "Map Recall",
       sourceUrl: "https://www.dehallen-amsterdam.nl/historie",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
     }
   },
@@ -203840,8 +203840,8 @@ var hallen_house_specs_default = [
       title: "Huis Bartolotti",
       author: "Map Recall",
       sourceUrl: "https://www.hendrickdekeyser.nl/de-huizen/huis-bartolotti",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
     }
   }
@@ -206772,8 +206772,8 @@ var plantage_museum_specs_default = [
       title: "National Holocaust Museum",
       author: "Map Recall",
       sourceUrl: "https://www.winhov.com/en/projects/national-holocaust-museum/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
     }
   },
@@ -206810,8 +206810,8 @@ var plantage_museum_specs_default = [
       title: "Hollandsche Schouwburg",
       author: "Map Recall",
       sourceUrl: "https://www.winhov.com/en/projects/national-holocaust-museum/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
     }
   }
@@ -208789,8 +208789,8 @@ var memorial_specs_default = [
       title: "Homomonument",
       author: "Map Recall",
       sourceUrl: "https://www.cultureelerfgoed.nl/onderwerpen/p/post-65-erfgoed/verhalen-en-tijdlijnen/beschrijvingen-post-65-objecten/homomonument-amsterdam",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original geometric interpretation of the mapped whole-monument outline and primary RCE overhead photograph. Waterside stair-platform projection into Keizersgracht retained intentionally. OSM maps the whole arrangement, not three individual stone polygons; individual 10 m triangles/heights/stair treads approximate. No surrounding ground or host buildings replaced."
     }
   }
@@ -208876,8 +208876,8 @@ var artis_entry_specs_default = [
       title: "ARTIS Micropia / Ledenlokalen",
       author: "Map Recall",
       sourceUrl: "https://www.rappange.nl/projecten/ledenlokalen-artis-micropia/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction; no imported meshes or textures. Individual footprints preserve public Artisplein and neighboring Groote Museum."
     }
   },
@@ -208916,8 +208916,8 @@ var artis_entry_specs_default = [
       title: "ARTIS entrance gate and kiosks",
       author: "Map Recall",
       sourceUrl: "https://www.monumenten.nl/monument/4103",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction; no imported meshes or textures. Individual footprints preserve public Artisplein and neighboring Groote Museum."
     }
   }
@@ -211403,8 +211403,8 @@ var carre_spec_default = {
     title: "Royal Theater Carr\xE9",
     author: "Map Recall",
     sourceUrl: "https://arcam.nl/architectuur-gids/koninklijk-theater-carre/",
-    licence: "Original project asset",
-    licenceUrl: "./LICENSE",
+    licence: "CC BY 4.0",
+    licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
     modifications: "Original texture-free low-poly theatre, facade and ornament geometry. No imported mesh or image; exact current parent replacement preserves neighboring Amstel houses and Onbekendegracht."
   }
 };
@@ -297407,8 +297407,8 @@ var amstel_towers_specs_default = [
       title: "Rembrandt Tower",
       author: "Map Recall",
       sourceUrl: "https://arcam.nl/architectuur-gids/rembrandttoren/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
     }
   },
@@ -297454,8 +297454,8 @@ var amstel_towers_specs_default = [
       title: "Breitner Tower / Breitner Center",
       author: "Map Recall",
       sourceUrl: "https://www.zzdp.nl/nl/project/de-omval",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
     }
   },
@@ -297501,8 +297501,8 @@ var amstel_towers_specs_default = [
       title: "Mondriaan Tower",
       author: "Map Recall",
       sourceUrl: "https://www.mondriaan-tower.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
     }
   }
@@ -300359,8 +300359,8 @@ var piramides_spec_default = {
     title: "De Piramides",
     author: "Map Recall",
     sourceUrl: "https://pphp.nl/project/piramides-amsterdam-concept/",
-    licence: "Original project asset",
-    licenceUrl: "./LICENSE",
+    licence: "CC BY 4.0",
+    licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
     modifications: "Original texture-free low-poly reconstruction of the actual twin stepped residential building. Adjacent Marcanti College and surrounding low-rise housing remain separate."
   }
 };
@@ -309816,8 +309816,8 @@ var sloterdijk_specs_default = [
       title: "Amsterdam Sloterdijk Station",
       author: "Map Recall",
       sourceUrl: "https://arcam.nl/architectuur-gids/station-sloterdijk/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original glass hall, open white table trusses and raised deck; open circulation below retained. Separate platform canopies, Orlyplein public space and adjacent hotel not suppressed."
     }
   },
@@ -309854,8 +309854,8 @@ var sloterdijk_specs_default = [
       title: "HNK Amsterdam Sloterdijk",
       author: "Map Recall",
       sourceUrl: "https://hnk.nl/en/locations/amsterdam-sloterdijk",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original white pronged office block, curved glazing, exposed escape stairs and measured roof plant. Former FNV/ArboNed labels are historical occupants, not additional destinations or exterior architect attribution."
     }
   }
@@ -314732,8 +314732,8 @@ var pending_venues_specs_default = [
       title: "Sexmuseum Venustempel",
       author: "Map Recall",
       sourceUrl: "https://sexmuseumamsterdam.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
     }
   },
@@ -314770,8 +314770,8 @@ var pending_venues_specs_default = [
       title: "Oude Lutherse Kerk",
       author: "Map Recall",
       sourceUrl: "https://www.luthersamsterdam.nl/orgel",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
     }
   }
@@ -316365,8 +316365,8 @@ var historic_civic_specs_default = [
       title: "Walloon Church",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/50",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
     }
   },
@@ -316403,8 +316403,8 @@ var historic_civic_specs_default = [
       title: "Schreierstoren / Weepers Tower",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/4148",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
     }
   },
@@ -316441,8 +316441,8 @@ var historic_civic_specs_default = [
       title: "Huize Lydia / Huis van de Wijk Lydia",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/505630",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
     }
   }
@@ -320227,8 +320227,8 @@ var warehouse_theatre_specs_default = [
       title: "Werkgebouw Het Veem / Oranje Nassau warehouse",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/526741",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
     }
   },
@@ -320265,8 +320265,8 @@ var warehouse_theatre_specs_default = [
       title: "TOBACCO Theater / former Gebing tobacco office",
       author: "Map Recall",
       sourceUrl: "https://tobacco.nl/historie/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
     }
   },
@@ -320303,8 +320303,8 @@ var warehouse_theatre_specs_default = [
       title: "Plein Theater / shared residential building",
       author: "Map Recall",
       sourceUrl: "https://www.plein-theater.nl/over-ons",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
     }
   }
@@ -323289,8 +323289,8 @@ var park_pavilion_specs_default = [
       title: "Vondelpark Muziektent / iron bandstand",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/504754",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly pavilion geometry. No meshes or images imported. Existing park island, footbridge and audience grounds retained."
     }
   }
@@ -323654,8 +323654,8 @@ var canal_stage_buildings_specs_default = [
       title: "De Rode Hoed / former Remonstrant church",
       author: "Map Recall",
       sourceUrl: "https://rodehoed.nl/index.php/over-rode-hoed/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
     }
   },
@@ -323692,8 +323692,8 @@ var canal_stage_buildings_specs_default = [
       title: "Theater Amsterdam",
       author: "Map Recall",
       sourceUrl: "https://dedato.com/project/een-theater-voor-anne-frank/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
     }
   },
@@ -323729,8 +323729,8 @@ var canal_stage_buildings_specs_default = [
       title: "Vondelpark Open Air Theater / stage canopy",
       author: "Map Recall",
       sourceUrl: "https://www.openluchttheater.nl/techniek/plattegronden/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
     }
   }
@@ -326179,8 +326179,8 @@ var community_music_specs_default = [
       title: "OT301 / former Film Academy",
       author: "Map Recall",
       sourceUrl: "https://www.ot301.nl/about-contact",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
     }
   },
@@ -326221,8 +326221,8 @@ var community_music_specs_default = [
       title: "Filmhuis Cavia / former twin-school complex",
       author: "Map Recall",
       sourceUrl: "https://filmhuiscavia.nl/over-cavia/about-cavia",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
     }
   },
@@ -326259,8 +326259,8 @@ var community_music_specs_default = [
       title: "Orgelpark / Parkkerk",
       author: "Map Recall",
       sourceUrl: "https://stadsherstel.nl/monumenten/orgelpark/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
     }
   }
@@ -327988,8 +327988,8 @@ var bookshops_station_specs_default = [
       title: "Athenaeum bookshop / Nieuwscentrum",
       author: "Map Recall",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Amsterdam_Athenaeum_Boekhandel.jpg",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
     },
     relatedLandmarkIds: [
@@ -328029,8 +328029,8 @@ var bookshops_station_specs_default = [
       title: "Scheltema / Rokin 9\u201315",
       author: "Map Recall",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:2022_Rokin_9-15,_Asd_(01).jpg",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
     }
   },
@@ -328067,8 +328067,8 @@ var bookshops_station_specs_default = [
       title: "Haarlemmermeerstation",
       author: "Map Recall",
       sourceUrl: "https://www.museumtramlijn.org/station/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
     }
   }
@@ -330062,8 +330062,8 @@ var arcam_spec_default = {
     title: "Arcam",
     author: "Map Recall",
     sourceUrl: "https://www.renevanzuuk.nl/arcam",
-    licence: "Original project asset",
-    licenceUrl: "./LICENSE",
+    licence: "CC BY 4.0",
+    licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
     modifications: "Original simplified curved shell and window reconstruction. Footprint and height sourced; folds, seams and glass-opening contours approximate. No imported mesh or photo texture."
   }
 };
@@ -330527,8 +330527,8 @@ var independent_cinemas_specs_default = [
       title: "LAB111 / Pathological Anatomical Laboratory",
       author: "Map Recall",
       sourceUrl: "https://www.lab111.nl/over-ons/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
     }
   },
@@ -330565,8 +330565,8 @@ var independent_cinemas_specs_default = [
       title: "OCCII / former horse-tram coach house",
       author: "Map Recall",
       sourceUrl: "https://occii.org/hut-chicken-legs-occiis-architecture/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
     }
   },
@@ -330603,8 +330603,8 @@ var independent_cinemas_specs_default = [
       title: "Het Ketelhuis",
       author: "Map Recall",
       sourceUrl: "https://westergas.nl/map/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
     }
   }
@@ -337675,8 +337675,8 @@ var neighbourhood_venues_specs_default = [
       title: "Badhuistheater / Boerhaaveplein bath house",
       author: "Map Recall",
       sourceUrl: "https://items.amsterdamse-school.nl/details/objects/892",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
     }
   },
@@ -337713,8 +337713,8 @@ var neighbourhood_venues_specs_default = [
       title: "Cinecenter",
       author: "Map Recall",
       sourceUrl: "https://www.cinecenter.nl/info/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
     }
   },
@@ -337751,8 +337751,8 @@ var neighbourhood_venues_specs_default = [
       title: "Timorplein school / Studio K",
       author: "Map Recall",
       sourceUrl: "https://arcam.nl/architectuur-gids/voormalige-technische-school-timorplein/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
     }
   }
@@ -339166,8 +339166,8 @@ var nes_rozentheater_specs_default = [
       title: "Vlaams Cultuurhuis de Brakke Grond",
       author: "Map Recall",
       sourceUrl: "https://brakkegrond.nl/over-ons/de-geschiedenis-van-de-brakke-grond",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
     }
   },
@@ -339204,8 +339204,8 @@ var nes_rozentheater_specs_default = [
       title: "Frascati",
       author: "Map Recall",
       sourceUrl: "https://www.frascatitheater.nl/nl/contact-en-route-hvkz",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
     }
   },
@@ -339242,8 +339242,8 @@ var nes_rozentheater_specs_default = [
       title: "Boom Chicago / Rozentheater",
       author: "Map Recall",
       sourceUrl: "https://arcam.nl/architectuur-gids/rozentheater-2/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
     }
   }
@@ -355354,8 +355354,8 @@ var manualCatalogue_default = [
       title: "Van Gogh Museum",
       author: "Map Recall",
       sourceUrl: "https://www.vangoghmuseum.nl/nl/over/organisatie/het-gebouw",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
     }
   },
@@ -355382,8 +355382,8 @@ var manualCatalogue_default = [
       title: "Stedelijk Museum",
       author: "Map Recall",
       sourceUrl: "https://www.benthemcrouwel.com/projects/stedelijk-museum",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
     }
   },
@@ -355410,8 +355410,8 @@ var manualCatalogue_default = [
       title: "A\u2019DAM Tower",
       author: "Map Recall",
       sourceUrl: "https://adamtoren.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
     }
   },
@@ -355438,8 +355438,8 @@ var manualCatalogue_default = [
       title: "Pontsteiger",
       author: "Map Recall",
       sourceUrl: "https://arcam.nl/architectuur-gids/pontsteiger/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
     }
   },
@@ -355477,8 +355477,8 @@ var manualCatalogue_default = [
       title: "OBA Oosterdok",
       author: "Map Recall",
       sourceUrl: "https://oba.nl/nl/locaties/oba-oosterdok",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native surveyed model: pale limestone portal and thin cantilever canopy, recessed cedar square window bays, glass plinth and stairs, open side terraces, stepped restaurant/theatre roofs and separate north stair core. Current OSM footprint parts own scope; model scale1. Upper facade arrangements and roof thickness approximate from architect photographs; no imported mesh or photo pixels."
     },
     spatialSuppression: false,
@@ -355515,8 +355515,8 @@ var manualCatalogue_default = [
       title: "REM-eiland",
       author: "Map Recall",
       sourceUrl: "https://www.remeiland.nl/nl/historie",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
     },
     surveyed: {
@@ -355552,8 +355552,8 @@ var manualCatalogue_default = [
       title: "Paradiso",
       author: "Map Recall",
       sourceUrl: "https://www.paradiso.nl/en/info/about-us/paradiso-vandaag",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
     }
   },
@@ -355580,8 +355580,8 @@ var manualCatalogue_default = [
       title: "Melkweg",
       author: "Map Recall",
       sourceUrl: "https://www.melkweg.nl/en/info/about-us/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
     }
   },
@@ -355611,8 +355611,8 @@ var manualCatalogue_default = [
       title: "Embassy of the Free Mind",
       author: "Map Recall",
       sourceUrl: "https://www.embassyofthefreemind.com/house-with-the-heads",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     },
     spatialSuppression: false
@@ -355640,8 +355640,8 @@ var manualCatalogue_default = [
       title: "The Movies",
       author: "Map Recall",
       sourceUrl: "https://themovies.nl/special/the-movies-renoveert-2/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     }
   },
@@ -355668,8 +355668,8 @@ var manualCatalogue_default = [
       title: "DeLaMar",
       author: "Map Recall",
       sourceUrl: "https://delamar.nl/en/business/about-us/history/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     }
   },
@@ -355698,8 +355698,8 @@ var manualCatalogue_default = [
       title: "Magna Plaza",
       author: "Map Recall",
       sourceUrl: "https://www.magnaplaza.nl/the-story-behind-magna-plaza/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     }
   },
@@ -355726,8 +355726,8 @@ var manualCatalogue_default = [
       title: "Felix Meritis",
       author: "Map Recall",
       sourceUrl: "https://felixmeritis.nl/over-felix-meritis/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     }
   },
@@ -355754,8 +355754,8 @@ var manualCatalogue_default = [
       title: "De Kleine Komedie",
       author: "Map Recall",
       sourceUrl: "https://www.dekleinekomedie.nl/over-de-kleine-komedie-q9t1",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     }
   },
@@ -355782,8 +355782,8 @@ var manualCatalogue_default = [
       title: "De Balie",
       author: "Map Recall",
       sourceUrl: "https://debalie.nl/geschiedenis/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     }
   },
@@ -355810,8 +355810,8 @@ var manualCatalogue_default = [
       title: "Anne Frank House",
       author: "Map Recall",
       sourceUrl: "https://www.annefrank.org/en/anne-frank/front-section/prinsengracht-263/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour reconstruction guided by museum photographs and OpenStreetMap building geometry. Historic building only; adjoining museum extensions and neighboring houses retain their own geometry."
     },
     surveyed: {
@@ -355846,8 +355846,8 @@ var manualCatalogue_default = [
       title: "Rembrandt House",
       author: "Map Recall",
       sourceUrl: "https://www.rembrandthuis.nl/en/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour reconstruction guided by museum photographs and OpenStreetMap building geometry. Historic building only; adjoining museum extensions and neighboring houses retain their own geometry."
     },
     surveyed: {
@@ -355882,8 +355882,8 @@ var manualCatalogue_default = [
       title: "Moco Museum",
       author: "Map Recall",
       sourceUrl: "https://www.mocomuseum.com/amsterdam/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour reconstruction guided by museum photographs and OpenStreetMap building geometry. Historic building only; adjoining museum extensions and neighboring houses retain their own geometry."
     },
     surveyed: {
@@ -355918,8 +355918,8 @@ var manualCatalogue_default = [
       title: "Museum Van Loon",
       author: "Map Recall",
       sourceUrl: "https://www.museumvanloon.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour reconstruction guided by museum photographs and OpenStreetMap building geometry. Historic building only; adjoining museum extensions and neighboring houses retain their own geometry."
     },
     surveyed: {
@@ -355954,8 +355954,8 @@ var manualCatalogue_default = [
       title: "Amstelkerk",
       author: "Map Recall",
       sourceUrl: "https://stadsherstel.nl/monumenten/de-amstelkerk/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     }
   },
@@ -355982,8 +355982,8 @@ var manualCatalogue_default = [
       title: "Fo Guang Shan He Hua Temple",
       author: "Map Recall",
       sourceUrl: "https://ibps.nl/he-hua-temple/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     }
   },
@@ -356010,8 +356010,8 @@ var manualCatalogue_default = [
       title: "Haarlemmerpoort",
       author: "Map Recall",
       sourceUrl: "https://stadsherstel.nl/monumenten/haarlemmerpoort/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     }
   },
@@ -356084,8 +356084,8 @@ var manualCatalogue_default = [
       title: "Museum Het Schip",
       author: "Map Recall",
       sourceUrl: "https://www.hetschip.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
     },
     spatialSuppression: false
@@ -356120,8 +356120,8 @@ var manualCatalogue_default = [
       title: "Scheepvaarthuis",
       author: "Map Recall",
       sourceUrl: "https://www.amrathamsterdam.com/en/information/history/the-scheepvaarthuis",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
     },
     spatialSuppression: false
@@ -356149,8 +356149,8 @@ var manualCatalogue_default = [
       title: "Rialto",
       author: "Map Recall",
       sourceUrl: "https://depijp.rialtofilm.nl/en/information/about-rialto",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     },
     surveyed: {
@@ -356188,8 +356188,8 @@ var manualCatalogue_default = [
       title: "Kriterion",
       author: "Map Recall",
       sourceUrl: "https://www.stichtingkriterion.nl/geschiedenis",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native reconstruction of the current cinema and shared residential/hall parents. Surveyed roof zones and current municipal panorama references guide the original facade geometry, concrete entrance and approximate real-sign lettering."
     },
     surveyed: {
@@ -356252,8 +356252,8 @@ var manualCatalogue_default = [
       title: "De Bijenkorf",
       author: "Map Recall",
       sourceUrl: "https://www.cultureelerfgoeddebijenkorf.nl/architectuur/bouwfasesamsterdam",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction of full historic Damrak and Dam fronts, curved pediments, mansard dormers, paired-window/pilaster rhythm, surveyed cupola and separate rear extension. Supplied SketchUp preview used as visual reference only; no imported mesh or texture."
     },
     spatialSuppression: false,
@@ -356303,8 +356303,8 @@ var manualCatalogue_default = [
       title: "Gashouder",
       author: "Map Recall",
       sourceUrl: "https://gashouder.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour low-poly reconstruction using museum and venue photographs for architectural silhouette and OpenStreetMap polygons for placement. Includes the full mapped venue footprint; dimensions and roof ornament are approximate."
     }
   },
@@ -356340,8 +356340,8 @@ var manualCatalogue_default = [
       title: "Stadsschouwburg Amsterdam",
       author: "Map Recall",
       sourceUrl: "https://ita.nl/nl/stadsschouwburg-amsterdam/geschiedenis-van-het-huis",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-colour low-poly reconstruction using museum and venue photographs for architectural silhouette and OpenStreetMap polygons for placement. Includes the full mapped venue footprint; dimensions and roof ornament are approximate."
     }
   },
@@ -356368,8 +356368,8 @@ var manualCatalogue_default = [
       title: "Path\xE9 Tuschinski",
       author: "Map Recall",
       sourceUrl: "https://pers.pathe.nl/koninklijk-theater-tuschinski/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     },
     surveyed: {
@@ -356405,8 +356405,8 @@ var manualCatalogue_default = [
       title: "Path\xE9 City",
       author: "Map Recall",
       sourceUrl: "https://www.pathe.nl/en/cinemas/pathe-city",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     },
     spatialSuppression: false
@@ -356456,8 +356456,8 @@ var manualCatalogue_default = [
       title: "Oude Kerk",
       author: "Map Recall",
       sourceUrl: "https://www.oudekerk.nl/nu-te-zien/evenementen/bezoek-oudekerkstoren/39591",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free Gothic reconstruction using museum photographic references and actual OpenStreetMap church/chapel/tower polygons. Surveyed placement in metres; decorative tracery and roof details are approximate."
     }
   },
@@ -356513,8 +356513,8 @@ var manualCatalogue_default = [
       title: "Nieuwe Kerk",
       author: "Map Recall",
       sourceUrl: "https://www.nieuwekerk.nl/pers/beeldbank/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free Gothic stone-striped brick church rebuilt from exact current roof/chapel polygons and official church exterior/restoration photos. Pointed tracery, rose, portals, balustrades, mapped tourelles and gilded crossing finial approximated with shared-palette meshes; no imported geometry or copied photograph pixels. Adjacent Palace, shops and streets retained."
     }
   },
@@ -356550,8 +356550,8 @@ var manualCatalogue_default = [
       title: "Buiksloterkerk",
       author: "Map Recall",
       sourceUrl: "https://buiksloterkerk.nl/gebouw/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
     }
   },
@@ -356588,8 +356588,8 @@ var manualCatalogue_default = [
       title: "English Reformed Church",
       author: "Map Recall",
       sourceUrl: "https://www.erc.amsterdam/about",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
     }
   },
@@ -356625,8 +356625,8 @@ var manualCatalogue_default = [
       title: "De Papegaai",
       author: "Map Recall",
       sourceUrl: "https://www.nicolaas-parochie.nl/papegaai/over-ons/gebouw/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
     }
   },
@@ -356666,8 +356666,8 @@ var manualCatalogue_default = [
       title: "De Hallen / Foodhallen / Filmhallen",
       author: "Map Recall",
       sourceUrl: "https://www.dehallen-amsterdam.nl/historie",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
     }
   },
@@ -356704,8 +356704,8 @@ var manualCatalogue_default = [
       title: "Huis Bartolotti",
       author: "Map Recall",
       sourceUrl: "https://www.hendrickdekeyser.nl/de-huizen/huis-bartolotti",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
     }
   },
@@ -356741,8 +356741,8 @@ var manualCatalogue_default = [
       title: "H'ART Museum \u2014 Amstelhof",
       author: "Map Recall",
       sourceUrl: "https://www.hartmuseum.nl/en/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
     }
   },
@@ -356778,8 +356778,8 @@ var manualCatalogue_default = [
       title: "Amsterdam Museum \u2014 Burgerweeshuis",
       author: "Map Recall",
       sourceUrl: "https://www.amsterdammuseum.nl/en/het-nieuwe-amsterdam-museum",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
     }
   },
@@ -356817,8 +356817,8 @@ var manualCatalogue_default = [
       title: "National Holocaust Museum",
       author: "Map Recall",
       sourceUrl: "https://www.winhov.com/en/projects/national-holocaust-museum/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
     }
   },
@@ -356855,8 +356855,8 @@ var manualCatalogue_default = [
       title: "Hollandsche Schouwburg",
       author: "Map Recall",
       sourceUrl: "https://www.winhov.com/en/projects/national-holocaust-museum/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
     }
   },
@@ -356894,8 +356894,8 @@ var manualCatalogue_default = [
       title: "Jewish Museum",
       author: "Map Recall",
       sourceUrl: "https://jck.nl/en/location/jewish-museum",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction of the surveyed historic synagogue complex from actual OpenStreetMap polygons and official Jewish Cultural Quarter exterior photographs. Separate historic roof volumes, arched windows, classical stone cornices and entrance details; Esnoga courtyard kept open. Heights and ornament approximate."
     }
   },
@@ -356939,8 +356939,8 @@ var manualCatalogue_default = [
       title: "Portuguese Synagogue",
       author: "Map Recall",
       sourceUrl: "https://jck.nl/en/press/beeldmateriaal/portuguese-synagogue",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction of the surveyed historic synagogue complex from actual OpenStreetMap polygons and official Jewish Cultural Quarter exterior photographs. Separate historic roof volumes, arched windows, classical stone cornices and entrance details; Esnoga courtyard kept open. Heights and ornament approximate."
     }
   },
@@ -356977,8 +356977,8 @@ var manualCatalogue_default = [
       title: "Homomonument",
       author: "Map Recall",
       sourceUrl: "https://www.cultureelerfgoed.nl/onderwerpen/p/post-65-erfgoed/verhalen-en-tijdlijnen/beschrijvingen-post-65-objecten/homomonument-amsterdam",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original geometric interpretation of the mapped whole-monument outline and primary RCE overhead photograph. Waterside stair-platform projection into Keizersgracht retained intentionally. OSM maps the whole arrangement, not three individual stone polygons; individual 10 m triangles/heights/stair treads approximate. No surrounding ground or host buildings replaced."
     }
   },
@@ -357015,8 +357015,8 @@ var manualCatalogue_default = [
       title: "ARTIS Micropia / Ledenlokalen",
       author: "Map Recall",
       sourceUrl: "https://www.rappange.nl/projecten/ledenlokalen-artis-micropia/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction; no imported meshes or textures. Individual footprints preserve public Artisplein and neighboring Groote Museum."
     }
   },
@@ -357055,8 +357055,8 @@ var manualCatalogue_default = [
       title: "ARTIS entrance gate and kiosks",
       author: "Map Recall",
       sourceUrl: "https://www.monumenten.nl/monument/4103",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction; no imported meshes or textures. Individual footprints preserve public Artisplein and neighboring Groote Museum."
     }
   },
@@ -357096,8 +357096,8 @@ var manualCatalogue_default = [
       title: "Hortus Botanicus \u2014 greenhouses and orangery",
       author: "Map Recall",
       sourceUrl: "https://www.dehortus.nl/en/garden-and-greenhouses/climate-house/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction of three separate surveyed buildings with no garden parcel fill: the 1911 Palm House circular dome/perpendicular wings, 2025 Climate House ETFE canopy and retained external steel cable skeleton, and historic orangery. Actual OpenStreetMap building outlines; official Hortus aerial photography and ZJA 2025 architect plan/section references. Heights and ornamental details approximate."
     }
   },
@@ -357134,8 +357134,8 @@ var manualCatalogue_default = [
       title: "Arcam",
       author: "Map Recall",
       sourceUrl: "https://www.renevanzuuk.nl/arcam",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original simplified curved shell and window reconstruction. Footprint and height sourced; folds, seams and glass-opening contours approximate. No imported mesh or photo texture."
     }
   },
@@ -357172,8 +357172,8 @@ var manualCatalogue_default = [
       title: "Vlaams Cultuurhuis de Brakke Grond",
       author: "Map Recall",
       sourceUrl: "https://brakkegrond.nl/over-ons/de-geschiedenis-van-de-brakke-grond",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
     }
   },
@@ -357210,8 +357210,8 @@ var manualCatalogue_default = [
       title: "Frascati",
       author: "Map Recall",
       sourceUrl: "https://www.frascatitheater.nl/nl/contact-en-route-hvkz",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
     }
   },
@@ -357248,8 +357248,8 @@ var manualCatalogue_default = [
       title: "Boom Chicago / Rozentheater",
       author: "Map Recall",
       sourceUrl: "https://arcam.nl/architectuur-gids/rozentheater-2/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
     }
   },
@@ -357289,8 +357289,8 @@ var manualCatalogue_default = [
       title: "Foam \u2014 Fodor Museum canal houses",
       author: "Map Recall",
       sourceUrl: "https://www.benthemcrouwel.com/projects/foam",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
     }
   },
@@ -357328,8 +357328,8 @@ var manualCatalogue_default = [
       title: "Huis Marseille \u2014 two canal houses",
       author: "Map Recall",
       sourceUrl: "https://huismarseille.nl/en/history/the-house/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
     }
   },
@@ -357366,8 +357366,8 @@ var manualCatalogue_default = [
       title: "Agnietenkapel",
       author: "Map Recall",
       sourceUrl: "https://arcam.nl/architectuur-gids/agnietenkapel/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Exact mapped chapel plan and courtyard wall; roof divisions, tracery and carved gate details approximate. Reference photos guide geometry only."
     }
   },
@@ -357404,8 +357404,8 @@ var manualCatalogue_default = [
       title: "LAB111 / Pathological Anatomical Laboratory",
       author: "Map Recall",
       sourceUrl: "https://www.lab111.nl/over-ons/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
     }
   },
@@ -357442,8 +357442,8 @@ var manualCatalogue_default = [
       title: "OCCII / former horse-tram coach house",
       author: "Map Recall",
       sourceUrl: "https://occii.org/hut-chicken-legs-occiis-architecture/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
     }
   },
@@ -357480,8 +357480,8 @@ var manualCatalogue_default = [
       title: "Het Ketelhuis",
       author: "Map Recall",
       sourceUrl: "https://westergas.nl/map/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
     }
   },
@@ -357555,8 +357555,8 @@ var manualCatalogue_default = [
       title: "Wereldmuseum Amsterdam \u2014 KIT complex",
       author: "Map Recall",
       sourceUrl: "https://amsterdam.wereldmuseum.nl/en/whats-on/exhibitions/building-full-stories",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Exact OpenStreetMap parent/parts polygons cross-checked against current PDOK BAG footprints; original texture-free meshes informed by primary architecture photographs. Whole actual cadastral building is represented with separate measured roof/body portions, preserving genuine open courts."
     }
   },
@@ -357593,8 +357593,8 @@ var manualCatalogue_default = [
       title: "Dutch Resistance Museum \u2014 Plancius",
       author: "Map Recall",
       sourceUrl: "https://www.verzetsmuseum.org/en/history-of-the-museum",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Exact OpenStreetMap parent/parts polygons cross-checked against current PDOK BAG footprints; original texture-free meshes informed by primary architecture photographs. Whole actual cadastral building is represented with separate measured roof/body portions, preserving genuine open courts."
     }
   },
@@ -357633,8 +357633,8 @@ var manualCatalogue_default = [
       title: "Allard Pierson museum and heritage-library complex",
       author: "Map Recall",
       sourceUrl: "https://www.atelierpro.nl/en/projecten/bibliotheek-bijzondere-collecties-uva",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original native full-current-BAG parent architecture: museum127, merchant heritage library129, extended SaintBernard139, photo/official-address-registered141\u2013149fronts, rear and covered court. Native outer+two holes, bounded open gateway/court. July2025real ALLARD PIERSON fascia uses recorded Arial Narrow Regular native-outline approximation fitted to actual panel. Heights/relief/stoops and unresolved rear upper roof semantics documented; no downloaded mesh or photo textures."
     },
     relatedLandmarkIds: [
@@ -358495,8 +358495,8 @@ var manualCatalogue_default = [
       title: "Dominicuskerk",
       author: "Map Recall",
       sourceUrl: "https://dominicusamsterdam.nl/gebouw-en-historie/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction. Exact current church parent and four contained roof/body parts. Mapped church roof part w749599657 is rebuilt above21m and clipped to the current parent to avoid encroaching on adjacent BAG0363100012179327; no neighboring building is suppressed. Parent height28.6m and historical part tags up to29m differ; decorative divisions approximate. Unfinished hexagonal tower stump retained; no proposed85m tower built."
     }
   },
@@ -358536,8 +358536,8 @@ var manualCatalogue_default = [
       title: "Vredeskerk",
       author: "Map Recall",
       sourceUrl: "https://www.amsterdam.vredeskerk.nl/his.index.htm",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction. Exact church parent and tower parts. Parish/diocese describe50m including iron spire; historical mapped tower part49m. Nave roof/wall division and checkerboard tile details approximate. No plaza trees or fountain positions invented."
     }
   },
@@ -358574,8 +358574,8 @@ var manualCatalogue_default = [
       title: "Badhuistheater / Boerhaaveplein bath house",
       author: "Map Recall",
       sourceUrl: "https://items.amsterdamse-school.nl/details/objects/892",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
     }
   },
@@ -358612,8 +358612,8 @@ var manualCatalogue_default = [
       title: "Cinecenter",
       author: "Map Recall",
       sourceUrl: "https://www.cinecenter.nl/info/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
     }
   },
@@ -358650,8 +358650,8 @@ var manualCatalogue_default = [
       title: "Timorplein school / Studio K",
       author: "Map Recall",
       sourceUrl: "https://arcam.nl/architectuur-gids/voormalige-technische-school-timorplein/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
     }
   },
@@ -358687,8 +358687,8 @@ var manualCatalogue_default = [
       title: "ARTIS Groote Museum",
       author: "Map Recall",
       sourceUrl: "https://www.artis.nl/en/artis-groote-museum/to-see-in-artis-groote-museum/building",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
     }
   },
@@ -358724,8 +358724,8 @@ var manualCatalogue_default = [
       title: "ARTIS Library \u2014 Fauna Building",
       author: "Map Recall",
       sourceUrl: "https://www.allardpierson.nl/en/artis-library",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
     }
   },
@@ -358762,8 +358762,8 @@ var manualCatalogue_default = [
       title: "De Dokwerker \u2014 original faceted interpretation",
       author: "Map Recall; commemorated sculpture by Mari Andriessen",
       sourceUrl: "https://www.4en5mei.nl/oorlogsmonumenten/zoeken/1434/amsterdam-de-dokwerker",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free geometric silhouette with documented1.60m pedestal and2.60m standing figure; body/pose divisions and facing approximate. Exact node position. No surrounding buildings or plaza replaced."
     }
   },
@@ -358799,8 +358799,8 @@ var manualCatalogue_default = [
       title: "Willet-Holthuysen House",
       author: "Map Recall",
       sourceUrl: "https://www.amsterdammuseum.nl/en/tickets-and-visit/locations/huis-willet-holthuysen/3632",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen\u2019s open French garden and the Pipe Museum\u2019s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
     }
   },
@@ -358836,8 +358836,8 @@ var manualCatalogue_default = [
       title: "Amsterdam Pipe Museum",
       author: "Map Recall",
       sourceUrl: "https://pipemuseum.nl/en/article/de-geschiedenis-van-het-pijpenkabinet-van-particuliere-collectie-tot-nationaal-museum",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen\u2019s open French garden and the Pipe Museum\u2019s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
     }
   },
@@ -358874,8 +358874,8 @@ var manualCatalogue_default = [
       title: "Athenaeum bookshop / Nieuwscentrum",
       author: "Map Recall",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Amsterdam_Athenaeum_Boekhandel.jpg",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
     },
     relatedLandmarkIds: [
@@ -358915,8 +358915,8 @@ var manualCatalogue_default = [
       title: "Scheltema / Rokin 9\u201315",
       author: "Map Recall",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:2022_Rokin_9-15,_Asd_(01).jpg",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
     }
   },
@@ -358953,8 +358953,8 @@ var manualCatalogue_default = [
       title: "Haarlemmermeerstation",
       author: "Map Recall",
       sourceUrl: "https://www.museumtramlijn.org/station/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
     }
   },
@@ -358991,8 +358991,8 @@ var manualCatalogue_default = [
       title: "Begijnhofkapel",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/368",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction. Exact sharedBAG plan, two bent three-bay fronts, Empire windows and projecting stone portal. Authored simplified rear roof/wall divisions within current3DBAG height; church has no spire. EnglishReformedChurch and neighboring houses retained."
     }
   },
@@ -359028,8 +359028,8 @@ var manualCatalogue_default = [
       title: "Huis De Pinto",
       author: "Map Recall",
       sourceUrl: "https://stadsherstel.nl/monumenten/huis-de-pinto/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction of the exact mapped museum/cultural-house building, cross-checked against current PDOK BAG. Pinto\u2019s twin historic roofs remain behind the monumental parapet; the Tulip Museum occupies the actual combined 1927 Prinsengracht116\u2013118 apartment/shop block with straight brick cornice. Neighboring buildings and any open rear spaces are retained."
     }
   },
@@ -359065,8 +359065,8 @@ var manualCatalogue_default = [
       title: "Amsterdam Tulip Museum",
       author: "Map Recall",
       sourceUrl: "https://amsterdamtulipmuseum.com/pages/about-amsterdam-tulip-museum",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction of the exact mapped museum/cultural-house building, cross-checked against current PDOK BAG. Pinto\u2019s twin historic roofs remain behind the monumental parapet; the Tulip Museum occupies the actual combined 1927 Prinsengracht116\u2013118 apartment/shop block with straight brick cornice. Neighboring buildings and any open rear spaces are retained."
     }
   },
@@ -359103,8 +359103,8 @@ var manualCatalogue_default = [
       title: "OT301 / former Film Academy",
       author: "Map Recall",
       sourceUrl: "https://www.ot301.nl/about-contact",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
     }
   },
@@ -359145,8 +359145,8 @@ var manualCatalogue_default = [
       title: "Filmhuis Cavia / former twin-school complex",
       author: "Map Recall",
       sourceUrl: "https://filmhuiscavia.nl/over-cavia/about-cavia",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
     }
   },
@@ -359183,8 +359183,8 @@ var manualCatalogue_default = [
       title: "Orgelpark / Parkkerk",
       author: "Map Recall",
       sourceUrl: "https://stadsherstel.nl/monumenten/orgelpark/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
     }
   },
@@ -359221,8 +359221,8 @@ var manualCatalogue_default = [
       title: "Houten Huys",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/371",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly model: narrow black timber gables, overhanging upper front, white masonry base and leaded windows. Exact BAG plan and current3DBAG height; side/rear details and roof are simplified. No photograph pixels or downloaded mesh geometry. Courtyard statue, trees, fences and neighboring houses retained."
     }
   },
@@ -359259,8 +359259,8 @@ var manualCatalogue_default = [
       title: "Herepoort / Bergpoort",
       author: "Map Recall",
       sourceUrl: "https://www.rijksmuseum.nl/en/collection/object/Facade-van-de-Herenpoort--63cb930a4b01ebfb38602d3c669c8ce2",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction of pairedmuseumgardenfacades: openarch passage, sandstoneHerepoort with pairedcolumns/niches and brick/stoneBergpoort reverse. Surveyedparent and publisheddimensions; carvedreliefs, roof and archproportions simplified from photos. No downloadedmesh geometry or referenceimage pixels. Othermuseumgarden objects retained."
     }
   },
@@ -359296,8 +359296,8 @@ var manualCatalogue_default = [
       title: "Huis aan de Drie Grachten",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/6096",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction from primary monument descriptions and original photographer references, scoped to current PDOK BAG. Huis aan de Drie Grachten retains three stepped gables and transverse tiled roofs; De Dolphijn models both current restored Renaissance facade halves within ONE actual parent whose VBO addresses are Singel140 and142. Adjacent Singel138/BAG0363100012167969 and house247/BAG0363100012179859 are retained. Current photographic silhouette takes priority over older register wording about incomplete/restored tops."
     }
   },
@@ -359333,8 +359333,8 @@ var manualCatalogue_default = [
       title: "De Dolphijn",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/5303",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction from primary monument descriptions and original photographer references, scoped to current PDOK BAG. Huis aan de Drie Grachten retains three stepped gables and transverse tiled roofs; De Dolphijn models both current restored Renaissance facade halves within ONE actual parent whose VBO addresses are Singel140 and142. Adjacent Singel138/BAG0363100012167969 and house247/BAG0363100012179859 are retained. Current photographic silhouette takes priority over older register wording about incomplete/restored tops."
     }
   },
@@ -359371,8 +359371,8 @@ var manualCatalogue_default = [
       title: "De Rode Hoed / former Remonstrant church",
       author: "Map Recall",
       sourceUrl: "https://rodehoed.nl/index.php/over-rode-hoed/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
     }
   },
@@ -359409,8 +359409,8 @@ var manualCatalogue_default = [
       title: "Theater Amsterdam",
       author: "Map Recall",
       sourceUrl: "https://dedato.com/project/een-theater-voor-anne-frank/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
     }
   },
@@ -359446,8 +359446,8 @@ var manualCatalogue_default = [
       title: "Vondelpark Open Air Theater / stage canopy",
       author: "Map Recall",
       sourceUrl: "https://www.openluchttheater.nl/techniek/plattegronden/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
     }
   },
@@ -359483,8 +359483,8 @@ var manualCatalogue_default = [
       title: "Vondelpark Muziektent / iron bandstand",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/504754",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly pavilion geometry. No meshes or images imported. Existing park island, footbridge and audience grounds retained."
     }
   },
@@ -359520,8 +359520,8 @@ var manualCatalogue_default = [
       title: "Oost-Indisch Huis and Bushuis",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/2012",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction of the current Oost-Indisch Huis/Bushuis university complex from exact mapped geometry and original primary photographer references, cross-checked against current PDOK BAG and its Kloveniersburgwal48 onderwijsfunctie VBO. Height references measured from 3DBAG AHN5 LoD2.2 planes (NAP ground0.834; Bushuis roof about14.2\u201321.7m relative, historic courtyard wings about10.3\u201317.1m); mesh uses original authored simplified roofs and details, no imported source triangles. The single actual courtyard hole and west perimeter notches remain open; adjoining Waalse Kerk and neighboring houses are retained. The historical courtyard Renaissance gable and separate 1890/1891 Peters Bushuis23-bay Neo-Renaissance canal facade have distinct silhouettes."
     }
   },
@@ -359558,8 +359558,8 @@ var manualCatalogue_default = [
       title: "Werkgebouw Het Veem / Oranje Nassau warehouse",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/526741",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
     }
   },
@@ -359596,8 +359596,8 @@ var manualCatalogue_default = [
       title: "TOBACCO Theater / former Gebing tobacco office",
       author: "Map Recall",
       sourceUrl: "https://tobacco.nl/historie/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
     }
   },
@@ -359634,8 +359634,8 @@ var manualCatalogue_default = [
       title: "Plein Theater / shared residential building",
       author: "Map Recall",
       sourceUrl: "https://www.plein-theater.nl/over-ons",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
     }
   },
@@ -359671,8 +359671,8 @@ var manualCatalogue_default = [
       title: "Hash Marihuana & Hemp Museum",
       author: "Map Recall",
       sourceUrl: "https://hashmuseum.com/en/amsterdam/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction of the actual narrow red-brick three-bay Oudezijds Achterburgwal148 house, cross-checked against the museum owner\u2019s original frontage photographs and current148H VBO/Pand records. The adjoining black Sensi Seeds146 house is retained. Exact mapped rear recesses remain open. Height references use 3DBAG AHN5 relative roofmax16.672m; simplified roof and facade meshes are authored originally, with no imported source faces or textures."
     }
   },
@@ -359708,8 +359708,8 @@ var manualCatalogue_default = [
       title: "Hemp Gallery",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/518459",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction of the single actual five-bay Oudezijds Achterburgwal128\u2013132 block containing Hemp Gallery130, verified against RCE518459, the museum owner and current original photographer reference. Rademaker\u2019s1879\u20131881 neo-Renaissance facade has a rusticated ground floor, three full upper floors and mezzanine, with white pilasters and projecting cornices. The OSM1993 date is a register mismatch, not the architectural date. Exact rear return remains scoped to the actual building; adjoining houses remain unsuppressed. Roof reference measured from3DBAG AHN5 maxrelative19.311m; all asset meshes are original simplified geometry."
     }
   },
@@ -359745,8 +359745,8 @@ var manualCatalogue_default = [
       title: "Madame Tussauds / Peek & Cloppenburg",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/518421",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction of Joling\u2019s1914\u20131917 Peek & Cloppenburg department-store building occupied in part by Madame Tussauds. RCE518421 and original photographer frontage guide the stone11-bay Dam facade,9-bay Rokin facade,colossal pilasters,open balconies,rose-window central gable,dormers and decorative roof vents. CurrentPDOK confirms single actualBAG2175378 with Dam20,Rokin6,Kromelleboogsteeg2 VBOs; mapped1900 date is not the architecturaldate. ExactL-shaped parent outline and rear recesses are retained. Original simplified roof regions follow AHN5 approximate21.8m eaves,31.3m mainhips,33.9m vents, and lower innerrear rooms13.85/17.3m. No imported source faces or textures; exact-only suppression retains all neighboring buildings."
     }
   },
@@ -359784,8 +359784,8 @@ var manualCatalogue_default = [
       title: "Amsterdam Dungeon / Nieuwezijds Kapel",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/518455",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free model scoped to the two actual buildings used by Amsterdam Dungeon: currentPDOK Rokin78 bijeenkomstfunctie1277m\xB2 VBO0363010003702386 is linked to both BAG2168346 (chapel/side rooms) and2175269 (entrance wing). Other RCE518455 compound buildings including Rokin80/82 BAG2175268 andKalverstraat81/87 BAG2168348 remain visible and unsuppressed. PrimaryArcam exterior confirms two gabled venue wings and portal; the neighboring streetcorner dome is outside model scope. Original octagonal chapel,tent roof/open lantern,sculpted brick gables,stone bands and measured lower wings refer to Posthumus Meyjes\u20191908\u20131912 architecture. Heights approximate13.3\u201317.8m front,7\u201316m side rooms,18m chapel eaves,24.7m truncated tent roof and29m lantern: AHN5 raw height26.9m and reconstructedplanepeaks29.1m differ; OSM32.3m is not used as a flat mass. Exact mapped recesses retained; no imported mesh faces or textures."
     }
   },
@@ -359822,8 +359822,8 @@ var manualCatalogue_default = [
       title: "Sint Jorishof / historic courtyard complex",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/5550",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original simplified reconstruction of current shared courtyard complex. Exact current PDOK perimeter remains concave and open, retaining Waalse Kerk and Oost-Indisch Huis. AHN5/3DBAG ground NAP0.611 and reference roofs range roughly8.1\u201320.1m above ground; original separate authored roof zones avoid treating the 20.1m maximum as every wall height. Primary heritage photos guide three-storey courtyard facades, white cornices and entrance portal. Portal position is the first intersection of the mapped alley axis with the exact parent, local[-15.8236,-13.9174]; direct RD survey polygon containment confirms its low9.059\u201311.236m roof. The small cupola position local[-15.9283,-11.0778] is explicitly inferred from primary photographs plus the tiny elevated survey roof227(0.87m2,15.322\u201316.838m). Its simplified open stage/finial are visual approximations, not exact survey measurements. Survey measurements are references, not imported roof triangles. Current BAG year1005 is not treated as historical architectural evidence; RCE records1579/1747 and earlier than1700 wings. The central courtyard axis includes the photographed1747 stone tablet and restrained original reliefs."
     }
   },
@@ -359865,8 +359865,8 @@ var manualCatalogue_default = [
       title: "Walloon Church",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/50",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
     }
   },
@@ -359903,8 +359903,8 @@ var manualCatalogue_default = [
       title: "Schreierstoren / Weepers Tower",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/4148",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
     }
   },
@@ -359941,8 +359941,8 @@ var manualCatalogue_default = [
       title: "Huize Lydia / Huis van de Wijk Lydia",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/505630",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
     }
   },
@@ -359981,8 +359981,8 @@ var manualCatalogue_default = [
       title: "EYE Filmmuseum",
       author: "Map Recall",
       sourceUrl: "https://www.dmaa.at/work/eye-film-institute",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free folded-shell reconstruction. Current BAG parent scope, recorded lower-level outline and approximate roof heights constrain original rounded control points. White inclined panels, southern glass ribbon, recessed lower storey and eastern cantilever are interpreted from architect photographs and the supplied Warehouse viewer. Individual roof folds, glazing contours, mullion spacing and stairs remain approximations. No imported Warehouse or survey mesh geometry; no photo pixels. The extract teaching ID681957397 is retained only as teaching identity, not suppressed as a current OSM way: current OSM way681957397 is in another country. Only verified EYE parent/levels are suppressed; A\u2019DAM, promenade and park remain separate."
     }
   },
@@ -360019,8 +360019,8 @@ var manualCatalogue_default = [
       title: "Royal Theater Carr\xE9",
       author: "Map Recall",
       sourceUrl: "https://arcam.nl/architectuur-gids/koninklijk-theater-carre/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly theatre, facade and ornament geometry. No imported mesh or image; exact current parent replacement preserves neighboring Amstel houses and Onbekendegracht."
     }
   },
@@ -360069,8 +360069,8 @@ var manualCatalogue_default = [
       title: "Sint Nicolaas Basilica",
       author: "Map Recall",
       sourceUrl: "https://nicolaas-parochie.nl/nicolaas/over-ons/gebouw/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction of Bleijs\u2019s1884\u20131887 SintNicolaas basilica. Native geometry retains the actual52.45\xD722.87m church plan, thirteen measured in-parent OSM building parts, staggered twin6m west towers,13m octagonal crossing drum and stepped aisle/nave/transept/apse roofs. The parish documents58m dome height; modeled58m cross and56m tower crowns extend above AHN5 bulkroofmax50.889m, which does not capture fine lantern crosses. Ornament/curved metal crowns/rose window/arcaded entrance and clerestory are original simplified geometry from primary parish and architecture photographer references, with no imported source meshes/textures. Five adjacent rectory/side-annex parts outside the exact church parent and ordinary neighbors remain unsuppressed. Same-part proceduralSintNicolaas kit is replaced by this model; currentBAG1875 date is not treated as architectural evidence."
     }
   },
@@ -360136,8 +360136,8 @@ var manualCatalogue_default = [
       title: "Rijksmuseum",
       author: "Map Recall",
       sourceUrl: "https://www.rijksmuseum.nl/en/visitor-information/inside-the-rijksmuseum/-the-building-from-the-exterior",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free shared-palette reconstruction of Cuypers museum from official exterior imagery and exact current OpenStreetMap polygons/heights. Open central bicycle passage, hollow roofed atria, tall paired towers and Philips wing retained. Warehouse reference viewed only; no imported geometry or photo textures."
     }
   },
@@ -360168,8 +360168,8 @@ var manualCatalogue_default = [
       title: "Silodam",
       author: "Map Recall",
       sourceUrl: "https://www.mvrdv.com/projects/163/silodam",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction rebuilt from MVRDV primary exterior photographs and the supplied SketchUp thumbnail as visual references only. No imported SketchUp/Warehouse geometry or photo textures. Native mapped parent and three building parts retain the ten-storey 20m-deep housing, 29m flat roof, open piles, and separate mapped 3\u20137m projecting office/public balcony. Four distinct facade neighbourhoods include continuous red gallery strips, yellow-framed double-height glass, corrugated silver cladding, large white-framed lower panes, and orange-base cladding represented by the shared warm-gold project palette. Exact current BAG/OSM identities suppress only this building; neighboring historic silos remain."
     },
     spatialSuppression: false,
@@ -360226,8 +360226,8 @@ var manualCatalogue_default = [
       title: "Westerkerk / Westertoren",
       author: "Map Recall",
       sourceUrl: "https://westerkerk.nl/bezoek-de-westerkerk-amsterdam/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free shared-palette reconstruction from current mapped church/tower polygons and official church/municipal exterior references. Double-cross roof plan, Renaissance arched windows/pilasters, stone clock tiers and blue-gold imperial crown. No imported geometry or reference pixels. Ornamental details approximate; exact source grounds and neighboring buildings retained."
     }
   },
@@ -360264,8 +360264,8 @@ var manualCatalogue_default = [
       title: "Sexmuseum Venustempel",
       author: "Map Recall",
       sourceUrl: "https://sexmuseumamsterdam.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
     }
   },
@@ -360302,8 +360302,8 @@ var manualCatalogue_default = [
       title: "Oude Lutherse Kerk",
       author: "Map Recall",
       sourceUrl: "https://www.luthersamsterdam.nl/orgel",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
     }
   },
@@ -360339,8 +360339,8 @@ var manualCatalogue_default = [
       title: "KattenKabinet",
       author: "Map Recall",
       sourceUrl: "https://kattenkabinet.nl/over/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original low-poly reconstruction of Herengracht497: exact currentBAG parent, six-bay doublehouse with central classicalpediment, nineteenth-centuryT-windows, currentground-levelentrance and hippedroof withtwo dormers/twochimneys. Historicaldouble stoopremoved1837 is not invented; neighboringHerengracht495/499 remain. Native roofenvelope calibrated to AHN5 approximate13.86m eaves/19.53m ridge andlower rearreturns, sourceimages visualreference only, no imported mesh/texture."
     }
   },
@@ -360376,8 +360376,8 @@ var manualCatalogue_default = [
       title: "Pianola Museum",
       author: "Map Recall",
       sourceUrl: "https://pianolamuseum.online/en/about-us/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original low-poly reconstruction of the1905former police stationWesterstraat106/currentPianolaMuseum parent: exactcurrentBAGplan with projectingoriel, asymmetricfivebaystreetfront, centralcrenellatedtower, round-head dormers, reddishtile roof andlowerrearflatwings. Actual3DBAGapprox12.84m eaves/16.37m ridge, currentmuseumground-levelentrance; adjacentparents retained. Sourcesvisualreferenceonly; no importedmesh/texture."
     }
   },
@@ -360418,8 +360418,8 @@ var manualCatalogue_default = [
       title: "Montelbaanstoren",
       author: "Map Recall",
       sourceUrl: "https://www.archivolt.eu/files/projects/028/amsterdam-montelbaanstoren-a4_w.pdf",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free shared-palette reconstruction from exact current mapped footing/steppedtiers and restorationarchitect exteriorphotograph. Redbrick roundbase, white Renaissance lanterns, gilded open-finial silhouette. Window/ornament details approximate. No imported geometry/photo texture; adjacent houses/canal retained."
     }
   },
@@ -360464,8 +360464,8 @@ var manualCatalogue_default = [
       title: "Munttoren / Muntgebouw",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/3729",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free shared-palette reconstruction from exact current mapped footing/host/tier polygons and current conservation expert photographs. Round brick base, octagonal stone/lead tiers, large black/gold dials and open bell/pear-shaped finial. Window/ornament details approximate; no imported geometry/photo texture. Covered ground link retained; bridge, streets and neighbors omitted."
     }
   },
@@ -360506,8 +360506,8 @@ var manualCatalogue_default = [
       title: "National Monument on the Dam",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/530906",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free shared-palette reconstruction from the exact mapped podium, curved wall, pylon/relief base and separate lion positions, primary heritage description and Committee photographs. Six concentric steps, pale conical pylon, curved urn wall and original faceted sculpture silhouettes. Internal details approximate; surrounding Dam square and host buildings retained. No downloaded geometry or photo pixels."
     }
   },
@@ -360584,8 +360584,8 @@ var manualCatalogue_default = [
       title: "Beurs van Berlage",
       author: "Map Recall",
       sourceUrl: "https://beursvanberlage.com/a-building-like-the-beurs-deserves-care/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free shared-palette reconstruction from exact current mapped parent/forty parts and official restored-exterior photographs. Brick facades, stone-framed paired windows, entrance arches, low inner roofs and 40 m clock tower with original blue/red/gold dial interpretation. Window/ornament details approximate. No imported mesh or photo pixels; adjacent streets and buildings retained."
     }
   },
@@ -360621,8 +360621,8 @@ var manualCatalogue_default = [
       title: "Amsta De Poort",
       author: "Map Recall",
       sourceUrl: "https://www.amsta.nl/locaties/de-poort",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original low-poly reconstruction of actual1966 nursing-home parent with1969 operation recorded separately: six occupied facade rows, recessed brick-column ground storey, ochre-panel glass room strips, projecting front bays, rooftop ribbon/setback, actual14.1m rear wing and23.65/27.75m main roofs. Small service structure reaches31.7m; whole footprint is not extruded to the old31.7m OSM maximum. Official facade imagery is visual reference only, no imported mesh or photo texture. CurrentBAG and AHN5 survey calibrate native massing; attached neighboring residential/school parents and courtyard void remain. Front glazing follows the owner facade photograph; rear/side window rhythm is inferred rather than measured. Explicit roof panels own upward caps to avoid coplanar flicker."
     }
   },
@@ -360670,8 +360670,8 @@ var manualCatalogue_default = [
       title: "Rembrandt Tower",
       author: "Map Recall",
       sourceUrl: "https://arcam.nl/architectuur-gids/rembrandttoren/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
     }
   },
@@ -360717,8 +360717,8 @@ var manualCatalogue_default = [
       title: "Breitner Tower / Breitner Center",
       author: "Map Recall",
       sourceUrl: "https://www.zzdp.nl/nl/project/de-omval",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
     }
   },
@@ -360764,8 +360764,8 @@ var manualCatalogue_default = [
       title: "Mondriaan Tower",
       author: "Map Recall",
       sourceUrl: "https://www.mondriaan-tower.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
     }
   },
@@ -360816,8 +360816,8 @@ var manualCatalogue_default = [
       title: "De Piramides",
       author: "Map Recall",
       sourceUrl: "https://pphp.nl/project/piramides-amsterdam-concept/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly reconstruction of the actual twin stepped residential building. Adjacent Marcanti College and surrounding low-rise housing remain separate."
     }
   },
@@ -360881,8 +360881,8 @@ var manualCatalogue_default = [
       title: "Zuiveringshal West \xB7 Fabrique des Lumi\xE8res",
       author: "Map Recall",
       sourceUrl: "https://www.fabrique-lumieres.com/en",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
     }
   },
@@ -360932,8 +360932,8 @@ var manualCatalogue_default = [
       title: "Amsterdam in Motion \xB7 Zuiveringshal Oost",
       author: "Map Recall",
       sourceUrl: "https://www.amsterdammuseum.nl/tickets-en-bezoek/locaties/amsterdam-in-motion/228553",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
     }
   },
@@ -360979,8 +360979,8 @@ var manualCatalogue_default = [
       title: "Theater De Krakeling",
       author: "Map Recall",
       sourceUrl: "https://krakeling.nl/over-ons",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
     }
   },
@@ -361027,8 +361027,8 @@ var manualCatalogue_default = [
       title: "NEMO Science Museum",
       author: "Map Recall",
       sourceUrl: "https://www.rpbw.com/project/nemo-national-center-for-science-and-technology",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction from current mapped parent/ten parts and primary architect/museum exterior photographs. Copper-green flared wedge, ascending roof stairs, mapped green roof and glazed lobby. Curvature and ornaments approximate; no downloaded mesh or photo pixels. Bridge, tunnel approaches and nearby buildings retained."
     }
   },
@@ -361065,8 +361065,8 @@ var manualCatalogue_default = [
       title: "Amsterdam Sloterdijk Station",
       author: "Map Recall",
       sourceUrl: "https://arcam.nl/architectuur-gids/station-sloterdijk/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original glass hall, open white table trusses and raised deck; open circulation below retained. Separate platform canopies, Orlyplein public space and adjacent hotel not suppressed."
     }
   },
@@ -361103,8 +361103,8 @@ var manualCatalogue_default = [
       title: "HNK Amsterdam Sloterdijk",
       author: "Map Recall",
       sourceUrl: "https://hnk.nl/en/locations/amsterdam-sloterdijk",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original white pronged office block, curved glazing, exposed escape stairs and measured roof plant. Former FNV/ArboNed labels are historical occupants, not additional destinations or exterior architect attribution."
     }
   },
@@ -361160,8 +361160,8 @@ var manualCatalogue_default = [
       title: "Royal Palace Amsterdam",
       author: "Map Recall",
       sourceUrl: "https://www.paleisamsterdam.nl/en/discover-palace/new-town-hall-amsterdam/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free stone classical facade, mapped slate roof wings, corner pavilions, two open courtyards, central pediment and open 55m domed clock tower. Exact OSM/BAG footprint; original ornaments approximated from official Palace photograph. No copied imported geometry or reference pixels."
     }
   },
@@ -361197,8 +361197,8 @@ var manualCatalogue_default = [
       title: "Machinegebouw \xB7 Cantine",
       author: "Map Recall",
       sourceUrl: "https://cantine.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
     }
   },
@@ -361234,8 +361234,8 @@ var manualCatalogue_default = [
       title: "De Wester \xB7 Transformatorhuis",
       author: "Map Recall",
       sourceUrl: "https://westergas.nl/en/de-wester-as-event-venue/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
     }
   },
@@ -361271,8 +361271,8 @@ var manualCatalogue_default = [
       title: "Amstel Hotel",
       author: "Map Recall",
       sourceUrl: "https://www.amstelhotel.com/history/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly architecture calibrated to the current canonical PDOK parent and large AHN5/3DBAG roof levels. Principal mansard roofs25.3\u201327.1m, end pavilions28.35m and central pavilion29.54m retain low3.5m terrace and8.5\u201311.5m river conservatory. Primary hotel/Intercontinental photos guide original masonry/window/dormer rhythm and simplified corner lion sculptures. Ornament and turrets approximate from photographs; no imported mesh or texture and no neighboring suppression."
     }
   },
@@ -361321,8 +361321,8 @@ var manualCatalogue_default = [
       title: "Royal Concertgebouw",
       author: "Map Recall",
       sourceUrl: "https://www.concertgebouw.nl/en/our-history/history",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original project-native pale-stone/red-brick classical facade, columned pediment, golden lyre, four roof pavilions and Pi de Bruijn glass promenade. No imported legacy mesh or textures; roof contours derived from open surveyed data."
     }
   },
@@ -361383,8 +361383,8 @@ var manualCatalogue_default = [
       title: "Stadhuis / Nationale Opera & Ballet",
       author: "Map Recall",
       sourceUrl: "https://www.operaballet.nl/stopera-amsterdam",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free shared-palette city-hall and opera ensemble, rebuilt against native current roof/part polygons. Curved marble foyer bays, brick auditorium, stepped office wings, glazed passage canopy and raised volumes preserve source apertures. No imported geometry/textures, whole-parcel cap or proposed future garden interiors."
     }
   },
@@ -361420,8 +361420,8 @@ var manualCatalogue_default = [
       title: "Heineken Experience",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/complexen/527808",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original manual facade details and regional massing. AHN5 2023 roof-plane samples calibrate rebuilt roof patch surfaces; no imported asset mesh. Current single BAG parent encloses three surviving historic fronts and low museum wings; surrounding 1990s residences/retail stay outside exact suppression. BAG nominal 1886 does not date all present parts: RCE identifies 1911\u201313/1925/1933\u201334."
     }
   },
@@ -361458,8 +361458,8 @@ var manualCatalogue_default = [
       title: "Faralda Crane Hotel",
       author: "Map Recall",
       sourceUrl: "https://www.iaa-architecten.nl/projecten/feralda-crane-hotel/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original project-native open steel crane, red hotel suites/lifts, yellow lattice boom and counterweight. No imported meshes/textures."
     }
   },
@@ -361496,8 +361496,8 @@ var manualCatalogue_default = [
       title: "ING House / Infinity",
       author: "Map Recall",
       sourceUrl: "https://mvsa-architects.com/en/projects/ing-house/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free flat-color glass/aluminium wedge, rounded auditorium nose, 16steel supports, double-skin facade and ground lobby. Exact surveyed BAG boundary, open undercroft. Heights use real roof planes;equipment peaks excluded. No imported third-party meshes or image pixels."
     }
   },
@@ -361534,8 +361534,8 @@ var manualCatalogue_default = [
       title: "Muiderpoort",
       author: "Map Recall",
       sourceUrl: "https://stadsherstel.nl/monumenten/muiderpoort/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original surveyedtexture-free citygate with openarchedpassage, sandstoneDoricorders, heraldicpediments, brickwings, offsetoctagonal dome and clocklantern. Photos guideoriginalgeometry only; no downloadedmeshes or photopixels. Carvings/vault simplified; stageheights estimated."
     }
   },
@@ -361572,8 +361572,8 @@ var manualCatalogue_default = [
       title: "IDFA Het Documentaire Paviljoen",
       author: "Map Recall",
       sourceUrl: "https://www.idfa.nl/en/vondelpark/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free plaster/brick pavilion with exposed arched loggias, balustrades, corner domes, central classical facade and native surveyed roof contours. No imported mesh or photo pixels."
     }
   },
@@ -361610,8 +361610,8 @@ var manualCatalogue_default = [
       title: "International Institute of Social History",
       author: "Map Recall",
       sourceUrl: "https://www.atelierpro.nl/projecten/internationaal-instituut-voor-sociale-geschiedenis",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction of the1961 concrete cocoa warehouse transformed by AtelierPRO in1989; off-white vertical ribs, blind archives, raised entrance, library cantilever, tall harbour atrium and rounded glass pavilion. No imported meshes or image pixels. Exact BAG/OSM suppression preserves the adjacent historic warehouse and waterfront."
     }
   },
@@ -361647,8 +361647,8 @@ var manualCatalogue_default = [
       title: "Museum De Dageraad",
       author: "Map Recall",
       sourceUrl: "https://www.hetschip.nl/de-dageraad",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free low-poly corner parent only, with rounded stepped brickwork, scalloped narrow tower crown, horizontal white window rods and green shop entrances. Native survey17.56m main roof and21.34m narrow tower. Museum-name lettering omitted. Operator/heritage photographs guide geometry; no imported mesh or photo pixels. Adjoining estate parents and court remain."
     }
   },
@@ -361686,8 +361686,8 @@ var manualCatalogue_default = [
       title: "Ons\u2019 Lieve Heer op Solder \u2014 historic church and entrance",
       author: "Map Recall",
       sourceUrl: "https://opsolder.nl/en/the-monument/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free surveyed reconstruction of historic museum and separate modern entrance. Exact OSM/BAG identity suppression; open Heintje Hoekssteeg preserved. Photo-derived sash and modern facade assemblies, bounded upward roof planes and gables; dimensions above surveyed plan approximate."
     },
     relatedLandmarkIds: [
@@ -361725,8 +361725,8 @@ var manualCatalogue_default = [
       title: "Museum of the Canals",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/1828",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native BAG footprint model; source-supported pilaster facade and central pediment. Dimensions/ornament approximate. Current facade checked against operator photo; removed inter-pilaster festoons omitted."
     }
   },
@@ -361762,8 +361762,8 @@ var manualCatalogue_default = [
       title: "NIOD Institute for War, Holocaust, and Genocide Studies",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/1826",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free sandstone French neo-Renaissance double house. Exact BAG perimeter at scale1 with separately low middle/rear roof zones. Salm1888drawing resolves window groups, carriage entry, dormer assemblies;2016municipalphoto overrides obsolete standing ridge figures and small dormers. AHN5roof levels guide heights; carved reliefs and skylight are visual approximations. No imported mesh or reference-photo pixels."
     }
   },
@@ -361799,8 +361799,8 @@ var manualCatalogue_default = [
       title: "Multatuli Museum",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/3133",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native current BAG house, restrained bell gable and cream timber pui after2022facade photos. Coherent main gable and lower rear extensions informed by AHN5survey; facade details and fine ornament approximate. No photo pixels or third-party mesh."
     }
   },
@@ -361839,8 +361839,8 @@ var manualCatalogue_default = [
       title: "Singelkerk",
       author: "Map Recall",
       sourceUrl: "https://www.doopsgezindamsterdam.nl/historie/singelkerk-4/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free hidden church and domestic Singel 452 frontage, sourced straight cornices, round-head tracery, open forecourt, iron rail and surveyed intersecting hipped roofs. No imported render meshes or photo pixels. Tiny reliefs and roof details simplified; source pack archived privately."
     }
   },
@@ -361879,8 +361879,8 @@ var manualCatalogue_default = [
       title: "Sint-Agneskerk",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/505910",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original native-scale texture-free geometry using current BAG plan, researched neo-Romanesque basilica and detached open campanile. Pastorie and neighboring school preserved; no photo pixels or downloaded meshes."
     }
   },
@@ -361917,8 +361917,8 @@ var manualCatalogue_default = [
       title: "Petruskerk",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/6775",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free geometry from native BAG footprint, operator facade photographs and roof survey. Separate houses, tomb parents and open churchyard preserved."
     }
   },
@@ -361955,8 +361955,8 @@ var manualCatalogue_default = [
       title: "Boomkerk",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/529085",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native BAG church reconstruction; separate presbytery and school retained. Roof heights from AHN5/3DBAG, architectural detail from RCE and reference photographs."
     }
   },
@@ -361992,8 +361992,8 @@ var manualCatalogue_default = [
       title: "W139 restored neoclassical front and former theatre",
       author: "Map Recall",
       sourceUrl: "https://www.smuldersarchitecten.nl/projecten/w139-amsterdam",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native current BAG complex with interpreted AHN5 bounded roof surfaces; restored four-storey plaster three-bay front, low bent-cornice entrance wing, red deep-house roof and low rear theatre. Fine facade detail approximate. No imported mesh or photo pixels."
     }
   },
@@ -362029,8 +362029,8 @@ var manualCatalogue_default = [
       title: "Mandarin Oriental Conservatorium, Amsterdam",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/287",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free flat-color architecture built at native surveyed BAG scope and scale1 with coherent footprint-clipped gable, hip and flattened-tent roofs calibrated to major AHN5 measurements, exposed arches and dormers, pale stone main gable, open polygonal corner turret and transparent courtyard frame. Thin ornament heights/spacing approximate from source photos. No neighboring rectangular suppression."
     }
   },
@@ -362069,8 +362069,8 @@ var manualCatalogue_default = [
       title: "Kinderkookkaf\xE9 / paired Vondelpark manure sheds",
       author: "Map Recall",
       sourceUrl: "https://stadsherstel.nl/monumenten/vondelpark-6b/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native survey reconstruction. No reference pixels or downloaded meshes. Gable/entrance relief and pane divisions photographic approximations."
     }
   },
@@ -362106,8 +362106,8 @@ var manualCatalogue_default = [
       title: "Beta Boulders / The Garage north Citroen complex",
       author: "Map Recall",
       sourceUrl: "https://betaboulders.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original native texture-free surveyed shared building and photo-guided curtain walls. No imported mesh/photo pixels. Exact BAG parent only; other tenants retained."
     }
   },
@@ -362143,8 +362143,8 @@ var manualCatalogue_default = [
       title: "Beest Boulders Amsterdam shared industrial host",
       author: "Map Recall",
       sourceUrl: "https://beestboulders.com/beest-boulders-amsterdam/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original native shared-host geometry with the source-observed complete western frontage and user-authorized real vector sign graphics. Reference photos guide geometry only. Preserve genuine Beest and Padel identities."
     },
     relatedLandmarkIds: [
@@ -362189,8 +362189,8 @@ var manualCatalogue_default = [
       title: "Klimmuur Centraal Dijksgracht2",
       author: "Map Recall",
       sourceUrl: "https://www.deklimmuur.nl/klimmen/klimmuur-centraal/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original house-style geometry; no photo textures or imported asset mesh. Only exact BAG host replaced."
     }
   },
@@ -362226,8 +362226,8 @@ var manualCatalogue_default = [
       title: "Mountain Network Amsterdam / De Tribune",
       author: "Map Recall",
       sourceUrl: "https://arcam.nl/architectuur-gids/de-tribune/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free house-style reconstruction of surveyed full host; no source photo pixels or third-party artistic mesh."
     }
   },
@@ -362264,7 +362264,7 @@ var manualCatalogue_default = [
       author: "Map Recall; mural composition after Keith Haring (1986)",
       sourceUrl: "https://www.amsterdam.nl/stadsdelen/west/nieuws/fantasiebeest-keith-haring/",
       licence: "Original project geometry; underlying artwork by Keith Haring",
-      licenceUrl: "./LICENSE",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free surveyed building and hand-authored white stroke interpretation; no reference pixels or imported mesh."
     },
     galleryView: {
@@ -362305,8 +362305,8 @@ var manualCatalogue_default = [
       title: "Valley Amsterdam",
       author: "Map Recall",
       sourceUrl: "https://www.mvrdv.com/projects/233/valley-t",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free house-style reconstruction; surveyed tier contours and photo-guided stone/glass assemblies. No downloaded render mesh or photograph pixels."
     }
   },
@@ -362343,8 +362343,8 @@ var manualCatalogue_default = [
       title: "NDSM Scheepsbouwloods",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/528251",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-color native shipbuilding warehouse; survey-derived six-bay rooflights, high transverse mallenzolder and low attached halls. Brick/steel grid, tall glazed groups and blue doors, physical open entry. Independent shipyard buildings and existing Faralda/Treehouse retained; no downloaded mesh or photo pixels."
     }
   },
@@ -362381,8 +362381,8 @@ var manualCatalogue_default = [
       title: "MidWest",
       author: "Map Recall",
       sourceUrl: "https://www.inmidwest.nl/cabralstraat-1-het-monument/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native scale school reconstruction, surveyed stepped roofs, twin open-headed towers and facade rhythms from archived references."
     }
   },
@@ -362419,8 +362419,8 @@ var manualCatalogue_default = [
       title: "Heilige Nikolaas van Myrakerk / Tichelkerk",
       author: "Map Recall",
       sourceUrl: "https://orthodox-amsterdam.nl/wie-wijzijn/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free surveyed church and former monastery, grouped round-headed windows, oculus, open slate bell lantern, courtyard and iron entrance. Photographic proportions approximate small details. No source mesh or photo pixels."
     }
   },
@@ -362457,8 +362457,8 @@ var manualCatalogue_default = [
       title: "NACO-house",
       author: "Map Recall",
       sourceUrl: "https://stadsherstel.nl/monumenten/de-ruijterkade-naco-huisje/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free timber office on five concrete supports, open ground-floor passage, orange curved-gable/hip roof, white glazing and sawtooth trims. No third-party pixels/meshes."
     }
   },
@@ -362496,8 +362496,8 @@ var manualCatalogue_default = [
       title: "Jeruzalemkerk",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/527155",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-color native surveyed church and corner residences, stepped cubic masses, projecting brick window piers, stained glazing, three entrances and squat open bell tower. No imported meshes/photo pixels; lettering omitted."
     }
   },
@@ -362534,8 +362534,8 @@ var manualCatalogue_default = [
       title: "Blauwe Theehuis",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/504760",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free geometry. Exact BAG ground core and OSM terrace; upper dodecagon/window partitions/vertical tiers estimated from register/photo ratios under surveyed overall height."
     }
   },
@@ -362572,8 +362572,8 @@ var manualCatalogue_default = [
       title: "Groot Melkhuis",
       author: "Map Recall",
       sourceUrl: "https://grootmelkhuis.nl/historie/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction with exact BAG ground footprint, photo-backed hipped upper house/veranda/awnings. Roof surface simplified from photo with survey envelope; no imported mesh or pixels."
     }
   },
@@ -362609,8 +362609,8 @@ var manualCatalogue_default = [
       title: "Beest Boulders Het Lab",
       author: "Map Recall",
       sourceUrl: "https://beestboulders.com/boulderen/het-lab-amsterdam/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free geometry based on survey polygons and municipal panorama observations; exact source suppression preserves adjacent east warehouse."
     }
   },
@@ -362646,8 +362646,8 @@ var manualCatalogue_default = [
       title: "Kesbeke factory and office",
       author: "Map Recall",
       sourceUrl: "https://www.kesbeke.nl/contact-keuze/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original native flat-color reconstruction with sharp original vector signage following actual walls; reference photos inform geometry only; no photo pixels or imported mesh."
     },
     materialOverrides: {
@@ -362687,8 +362687,8 @@ var manualCatalogue_default = [
       title: "Kesbeke shop and its residential BAG parent",
       author: "Map Recall",
       sourceUrl: "https://www.kesbeke.nl/ons-winkeltje/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original native flat-color reconstruction with sharp original vector signage following actual walls; reference photos inform geometry only; no photo pixels or imported mesh."
     },
     materialOverrides: {
@@ -362736,8 +362736,8 @@ var manualCatalogue_default = [
       title: "De Containerboog \u2014 FIRESTARTER (2026)",
       author: "Map Recall",
       sourceUrl: "https://www.ndsm.nl/en/kunst/firestarter",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original nine separate native-scale containers with open wedge spacers, open central passage and simplified original flat-colour FIRESTARTER-inspired turquoise/magenta/yellow motifs. No third-party pixels, meshes or identification text."
     }
   },
@@ -362773,8 +362773,8 @@ var manualCatalogue_default = [
       title: "Wijnkopersgildehuis",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/3051",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free flat-colour house style; actual BAG holed plan and variable measured roof regions constrain newly generated geometry. Principal facade follows actual northeast13.856m street boundary0\u21929 with source-supported six sash groups, three reconstructed neck tops, sober block ornament and right-half1633 Saint Urbanus portal. Thin front masonry support stays on true perimeter. No neighboring buildings or source pixels/lettering/imported mesh. Superseded partywall9\u219210 and rear10\u219214 facade placements failed native acceptance."
     }
   },
@@ -362811,8 +362811,8 @@ var manualCatalogue_default = [
       title: "The Rock / Erick van Egeraat",
       author: "Map Recall",
       sourceUrl: "https://therock-zuidas.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free flat-color surveyed footprint shells, continuous articulated glass/aluminium curtain fields, clustered broad/slit glazing in deep layered stone frames and bounded surveyed roof heights; photo-guided dark charcoal/brown stone; no imported meshes or photo pixels."
     },
     materialOverrides: {
@@ -362867,8 +362867,8 @@ var manualCatalogue_default = [
       title: "RAI Elicium, Europacomplex, Westhal, Amstelhal and Het Signaal",
       author: "Map Recall",
       sourceUrl: "https://www.benthemcrouwel.com/projects/rai-elicium",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original native flat-color texture-free Elicium, Europacomplex barrel and surrounding halls,1963 Westhal,1969 Amstelhal and Signaal. Source-supported exact named hall/strip outlines; OSM heights and repeated glazing approximate. Full RAI coverage including separate Amtrium/Hollandcomplex/Congress Centre pending. Broad partially owned compoundw807090334 remains unsuppressed."
     }
   },
@@ -362905,8 +362905,8 @@ var manualCatalogue_default = [
       title: "Pulitzer Amsterdam",
       author: "Map Recall",
       sourceUrl: "https://www.pulitzeramsterdam.com/nl/over-het-hotel/onze-geschiedenis/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free flat-color connected historic canal houses. Native currentBAG exteriors; original shells constructed from clipped survey roof-plane regions, four preserved sourcecourts, independently authored street elevations/windows/entries/plinths/crowns. Modern2016black entrance; diverse tuit/hals/klok/lijst family mixture; Saxenburg four-bay sandstonefront with attiek; Jansz corner/Reestraat row. Tinycarvedrelief and joinery spacing photo-guided; retiredaddress fuzzyfallbacks rejected. No downloadedmesh or photo pixels."
     }
   },
@@ -362943,8 +362943,8 @@ var manualCatalogue_default = [
       title: "De Gooyer",
       author: "Map Recall",
       sourceUrl: "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native-scale square brick base, thatched octagons, open gallery, rounded cap, old-Dutch lattice sails; no imported meshes or photo pixels."
     }
   },
@@ -362981,8 +362981,8 @@ var manualCatalogue_default = [
       title: "Former Nieuw Dakota shared warehouse",
       author: "Map Recall",
       sourceUrl: "https://www.nieuwdakota.com/nl/over/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free reconstruction of measured twin-gabled host, pale metal corrugation, blue front and green glazing; preserves northern tenant front and low extension. No copied source pixels or meshes; painted name words omitted."
     }
   },
@@ -363019,8 +363019,8 @@ var manualCatalogue_default = [
       title: "Pllek",
       author: "Map Recall",
       sourceUrl: "https://pllek.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-color container restaurant compound with two red barrelvaults and waterfront glass,source-supported tall yellowtower; nativeplan/exactIDs retain Treehouse,NDSMbeach and shipyardneighbors. No photo textures or copiedmeshes."
     }
   },
@@ -363057,8 +363057,8 @@ var manualCatalogue_default = [
       title: "Monk Amsterdam shared industrial host",
       author: "Map Recall",
       sourceUrl: "https://monk.nl/amsterdam/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free full shared factory geometry; black folded steel, exposed window ribbon, differentiated loading and tenant openings. Monk remains one venue identity within the host."
     },
     scopeWarning: "Fullhost draft replaces only w280838840 / BAG0363100012136881 after visual acceptance and successful model load. Never describe entire host as Monk-owned. Neighboring parents and exterior lanes retained; gallery/game review pending.",
@@ -363102,8 +363102,8 @@ var manualCatalogue_default = [
       title: "STRAAT Museum / Lasloods",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/528252",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-color reconstruction using survey dimensions and primary current photographs. Four flattened roof lights, brick walls, annex glazing and restrained original geometric mural interpretation; no copied mesh or photo pixels."
     }
   },
@@ -363170,8 +363170,8 @@ var manualCatalogue_default = [
       title: "Treehouse NDSM",
       author: "Map Recall",
       sourceUrl: "https://www.treehousendsm.com/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free studio/container village;16nativeseparatefootprints,sourcewhitepitchedcabinsandlargeworkhalls,observedcoloredcorrugationandnorthblackslats. Source-derivedroofplanes,notimportedmesh. Courtyards/alleys/Pllekneighbors retained."
     }
   },
@@ -363208,8 +363208,8 @@ var manualCatalogue_default = [
       title: "De Vondeltuin",
       author: "Map Recall",
       sourceUrl: "https://doorarchitecten.nl/portfolio/horecapaviljoen-vondeltuin-gemeente-amsterdam/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-color reconstruction of surveyed shell and source-backed glazing/shingle/sunshade assemblies. No copied reference pixels or third-party mesh. Fine pane/slat divisions photographic approximations."
     }
   },
@@ -363260,8 +363260,8 @@ var manualCatalogue_default = [
       title: "Centrale Markthal original surveyed reconstruction",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/526739",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-color texture-free geometry based on current BAG footprint, AHN5 roof massing, RCE architectural description and Museum Het Schip facade photos. No imported mesh or image pixels. Demolished northeast clock tower omitted. Fine facade and upper footprint details approximate."
     }
   },
@@ -363295,8 +363295,8 @@ var manualCatalogue_default = [
       title: "Rasphuispoort",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/1482",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free additive gate with open round arch, half-columns, colored cart relief and three-figure crown. Native exact host-edge opening available only with the loaded model; no whole-host suppression. Approximate elevations; no photo pixels or imported geometry."
     },
     hostWallOpenings: [
@@ -363374,8 +363374,8 @@ var manualCatalogue_default = [
       title: "Brouwerij \u2019t IJ former Funen bathhouse",
       author: "Map Recall",
       sourceUrl: "https://www.brouwerijhetij.nl/proeflokalen/proeflokaal-de-molen",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original native texture-free surveyed bathhouse with twin roof pavilions, nine upper windows, dark upper annex, current awning and source-supported smooth approximate sign lettering. Public SketchUp inspected as historical reference only, no copied mesh/photo pixels."
     },
     scopeWarning: "Accepted original native bathhouse replaces only w269052426/BAG0363100012169757 after successful model availability. Independent De Gooyer replacement BAG9758/w269052487 and ordinary neighbor BAG9759/w269052518 retained; terrace stays open. Genuine n332059860 manual destination, geographic pin and meaningful physical-click card verified locally. Hosted acceptance pending publication.",
@@ -363426,8 +363426,8 @@ var manualCatalogue_default = [
       title: "Vi\xF1oly/Mahler4 Amsterdam",
       author: "Map Recall",
       sourceUrl: "https://vinoly.com/works/mahler-4-office-tower/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free surveyed-footprint reconstruction with photo-guided sculptural stair recesses and aluminium fins; no third-party render mesh/photo pixels."
     }
   },
@@ -363471,8 +363471,8 @@ var manualCatalogue_default = [
       title: "El Tawheed former factory",
       author: "Map Recall",
       sourceUrl: "https://dareltawheed.nl/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original flat-color native reconstruction, survey bounded stepped roofs and photographed factory cornice and opening assemblies. No third-party pixels or meshes."
     }
   },
@@ -363523,8 +363523,8 @@ var manualCatalogue_default = [
       title: "Het4eGymnasium source-derived school host",
       author: "Map Recall",
       sourceUrl: "https://paulderuiter.nl/projects/het-4th-vierde-gymnasium",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free metre geometry; architectural references guide geometry only. Requested Haparandaweg2/4 share single BAGparent."
     },
     preservePositionPrecision: true,
@@ -363563,8 +363563,8 @@ var manualCatalogue_default = [
       title: "Afrikahuis",
       author: "Map Recall",
       sourceUrl: "https://amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native reconstruction of raised octagonal church, limestone facades, glazed stairs and taller presbytery. Source archive c3ffff8f22f2261b6869975cf8453ba11eecaa5f models/afrikahuis. Photo-guided undercroft supports and seven-riser fan stairs; no third-party meshes or pixels."
     }
   },
@@ -363616,8 +363616,8 @@ var manualCatalogue_default = [
       title: "Dom\u016Bs Houthaven original architecture",
       author: "Map Recall",
       sourceUrl: "https://www.shift-au.com/projects/xs-deluxe-houthaven/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free metre geometry; one requested physical BAG parent, no invented POI identity. Source archive 09b242cbc167782d6532ac5d4778021592b83af6 models/haparandaweg-8-338."
     },
     buildingFootprint: {
@@ -364099,8 +364099,8 @@ var manualCatalogue_default = [
       title: "Haparandaweg 9 original architecture",
       author: "Map Recall",
       sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012122663",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native metre geometry. Private source archive e8a5653bd166de54478f2bd11eea59ca38fe21d9 models/haparandaweg-9. Ordinary requested building; no automatic POI added."
     },
     buildingFootprint: {
@@ -364196,8 +364196,8 @@ var manualCatalogue_default = [
       title: "Haparandaweg 11 original architecture",
       author: "Map Recall",
       sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012104965",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native metre geometry. Private source archive 999a83d778cd61615a3d1b2521d7605e4121437b models/haparandaweg-11; supplementary current six-window source evidence 77019d7c738212ccec9a5c8c58e6ce3749ed7bc4 models/haparandaweg-11/supplemental/2026-10-07-six-window. Ordinary building; no automatic POI added."
     },
     buildingFootprint: {
@@ -364285,8 +364285,8 @@ var manualCatalogue_default = [
       title: "Haparandaweg 13 original architecture",
       author: "Map Recall",
       sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012104964",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native metre geometry. Private source archive 77019d7c738212ccec9a5c8c58e6ce3749ed7bc4 models/haparandaweg-13. Ordinary requested building, no automatic POI added."
     },
     buildingFootprint: {
@@ -364365,8 +364365,8 @@ var manualCatalogue_default = [
       title: "Electric Ladyland ensemble",
       author: "Map Recall",
       sourceUrl: "https://amsterdamopdekaart.nl/1850-1940/Tweede_Leliedwarsstraat/3-9",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native two-parent ensemble, interpreted from BAG/3DBAG, municipal monument212005 and dated references. Museum occupancy only number5; dimensions/joinery approximate."
     }
   },
@@ -364409,8 +364409,8 @@ var manualCatalogue_default = [
       title: "Caf\xE9 Kobalt / Singel 2",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/5249",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Reconstructedoriginalnativeflatcolourwarehouse;photoreferencesonly,noimportedpixels/mesh."
     },
     materialOverrides: {
@@ -364462,8 +364462,8 @@ var manualCatalogue_default = [
       title: "Podium Moza\xEFek",
       author: "Map Recall",
       sourceUrl: "https://data.amsterdam.nl/monumenten/f3d3ac3d-299c-4e46-9fdc-06abe8606e48",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native geometry; reference images guide shapes only."
     },
     materialOverrides: {
@@ -364513,8 +364513,8 @@ var manualCatalogue_default = [
       title: "Helofytenfilter Erasmusgracht \u2014 Dorus Theus Brug",
       author: "Map Recall",
       sourceUrl: "https://weerproof.nl/project/helofytenfilter-erasmusgracht/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original native-scale texture-free planted filter beds, gabion rims, wooden footwalks and piers using surveyed OSM outlines and source-guided original geometry; no reference pixels or imported meshes."
     },
     identity: {
@@ -364575,8 +364575,8 @@ var manualCatalogue_default = [
       title: "Collectie Six / Amstel 218",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/230",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native interpretation of source footprint/roof planes, current facade photos and municipal/register description; joinery/stoop/dormer proportions approximate. No photo pixels or third-party mesh imported."
     }
   },
@@ -364623,8 +364623,8 @@ var manualCatalogue_default = [
       title: "Oosterparkkerk",
       author: "Map Recall",
       sourceUrl: "https://www.oosterparkkerk.nl/het-gebouw-en-geschiedenis",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original native texture-free reconstruction of church and linked kosterij. Current BAG/OSM andAHN5roof survey; source-confirmed stepped front crown, three large side windows, six buttresses, plaque, canopy, parapet, dakruiter. Private source and native acceptance archive3de4a3326; source approximations and failed assemblies preserved. No imported meshes/photo pixels. Plaque uses an explicitly approximate Anton condensed font."
     },
     routeCenter: [
@@ -364665,8 +364665,8 @@ var manualCatalogue_default = [
       title: "Mediamatic Biotoop Dijkspark",
       author: "Map Recall",
       sourceUrl: "https://www.mediamatic.net/en/page/86200/mediamatic-biotoop",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original surveyed/native1 flat-colour geometry with separate greenhouse/office zones. No reference photo pixels or imported mesh. Approximate greenhouse heights and bay cadence; visual/game acceptance pending."
     },
     heightMetres: 10.65,
@@ -364713,8 +364713,8 @@ var manualCatalogue_default = [
       title: "Keizersgrachtkerk \u2014 original surveyed neo-Venetian church",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/518347",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original native texture-free flat-color geometry; photos and survey evidence guide architectural construction."
     },
     materialOverrides: {
@@ -364767,8 +364767,8 @@ var manualCatalogue_default = [
       title: "Gerard Dou Synagogue",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original native-scale flat-colour geometry guided by survey and facade references, no imported meshes or pixels."
     },
     materialOverrides: {
@@ -364835,8 +364835,8 @@ var manualCatalogue_default = [
       title: "Lekstraatsynagoge",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/526707",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native-survey reconstruction; register526707, dated exterior photos and3DBAG roof semantics. Hebrew inscription uses approximate Arial Bold outlines. No imported meshes/photo pixels. Draft requires nativegallery/live acceptance and sourcepack publication."
     }
   },
@@ -364886,8 +364886,8 @@ var manualCatalogue_default = [
       title: "Sint-Petrus-en-Pauluskerk Ruysdaelstraat",
       author: "Map Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/504689",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free draft guided by native BAG/OSM, semantic roof measurements and archived facade originals; no imported photo pixels or third-party mesh."
     },
     draftAcceptance: "SOURCE/CPU SCOPED PASS. Native gallery/game/suppression/fallback/route/pin/card/performance pending.",
@@ -364929,8 +364929,8 @@ var manualCatalogue_default = [
       title: "Torture Museum Singel449",
       author: "Map Recall",
       sourceUrl: "https://torturemuseum.org/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free native BAG building. Gray upper roof and neutral gray upper walls; source-supported glass pergola with five narrow crossbars. Cladding and canopy lift are photo-guided approximations; draft still awaits gallery/game acceptance."
     },
     materialOverrides: {
@@ -364998,8 +364998,8 @@ var manualCatalogue_default = [
       title: "Max Euwe Centrum \u2014 original Kruisgebouw",
       author: "Map Recall",
       sourceUrl: "https://maxeuwe.nl/geschiedenis/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original native-scale texture-free surveyed Kruisgebouw with source-supported roof families, recessed courtyard clerestories, glazed central pyramid, portico, shop canopies and mapped covered passages. Simplified interior framing and uncertain localized pyramid crest retained in source record; native acceptance pending."
     }
   },
@@ -365050,8 +365050,8 @@ var manualCatalogue_default = [
       title: "Nationaal Holocaust Namenmonument \u2014 original native memorial geometry",
       author: "Map Recall; memorial architecture Daniel Libeskind / Rijnboutt",
       sourceUrl: "https://libeskind.com/work/names-monument/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free four current surveyed hollow steel-letter volumes, native thin paving and source-plan traced discontinuous brick walls. Steel taper directions checked againstengineeringdrawings/current2021photos; wall endpoints and central-north crest approximate. No imported mesh/photo pixels; no invented inscriptions."
     },
     geometryExport: {
@@ -365106,7 +365106,7 @@ var manualCatalogue_default = [
       author: "Canal Recall",
       sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/2587",
       licence: "Original project geometry",
-      licenceUrl: "./LICENSE",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Native original gate with three arches, side grilles, source-supported Vondel Roman-serif inscription and carved scrolls. Body width reconciled to adjoining official BAG corners; gate pose, height/depth are source/photo inferences. All neighboring buildings retained; no replacement identity invented."
     }
   },
@@ -365156,8 +365156,8 @@ var manualCatalogue_default = [
       title: "Academie voor Theater en Dans native1996 building",
       author: "Map Recall",
       sourceUrl: "https://www.atd.ahk.nl/de-atd/voorzieningen/",
-      licence: "Original project asset",
-      licenceUrl: "./LICENSE",
+      licence: "CC BY 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by/4.0/",
       modifications: "Original texture-free current native BAG perimeter and roof regions. Source-guided differentiated curtainwall/ribbon windows, recessed curved two-level foyer, open terrace/glazed pavilion, local tall white corner brow, supported rooftop equipment and current-aerial solar field. Independent source/CPU review c0d686cd passes; actual native/game/POI/performance pending. No imported mesh or photo pixels."
     },
     relatedLandmarkIds: [
@@ -365520,7 +365520,7 @@ var manualCatalogue_default = [
 ];
 
 // src/canalRecall/landmarks/manualModels.ts
-var ownAttribution = (title, sourceUrl) => ({ title, author: "Map Recall", sourceUrl, licence: "Original project asset", licenceUrl: "./LICENSE", modifications: "Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate." });
+var ownAttribution = (title, sourceUrl) => ({ title, author: "Map Recall", sourceUrl, licence: "CC BY 4.0", licenceUrl: "https://creativecommons.org/licenses/by/4.0/", modifications: "Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate." });
 var MANUAL_LANDMARKS = [
   {
     id: "centraal-station",

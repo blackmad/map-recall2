@@ -43,8 +43,8 @@
     "title": "Royal Concertgebouw",
     "author": "Map Recall",
     "sourceUrl": "https://www.concertgebouw.nl/en/our-history/history",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original project-native pale-stone/red-brick classical facade, columned pediment, golden lyre, four roof pavilions and Pi de Bruijn glass promenade. No imported legacy mesh or textures; roof contours derived from open surveyed data."
   }
 }

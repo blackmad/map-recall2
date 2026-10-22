@@ -45,8 +45,8 @@
     "title": "Het4eGymnasium source-derived school host",
     "author": "Map Recall",
     "sourceUrl": "https://paulderuiter.nl/projects/het-4th-vierde-gymnasium",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free metre geometry; architectural references guide geometry only. Requested Haparandaweg2/4 share single BAGparent."
   },
   "preservePositionPrecision": true,

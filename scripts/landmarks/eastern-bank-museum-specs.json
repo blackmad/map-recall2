@@ -69,8 +69,8 @@
       "title": "Wereldmuseum Amsterdam — KIT complex",
       "author": "Map Recall",
       "sourceUrl": "https://amsterdam.wereldmuseum.nl/en/whats-on/exhibitions/building-full-stories",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Exact OpenStreetMap parent/parts polygons cross-checked against current PDOK BAG footprints; original texture-free meshes informed by primary architecture photographs. Whole actual cadastral building is represented with separate measured roof/body portions, preserving genuine open courts."
     }
   },
@@ -107,8 +107,8 @@
       "title": "Dutch Resistance Museum — Plancius",
       "author": "Map Recall",
       "sourceUrl": "https://www.verzetsmuseum.org/en/history-of-the-museum",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Exact OpenStreetMap parent/parts polygons cross-checked against current PDOK BAG footprints; original texture-free meshes informed by primary architecture photographs. Whole actual cadastral building is represented with separate measured roof/body portions, preserving genuine open courts."
     }
   },
@@ -144,8 +144,8 @@
       "title": "Allard Pierson Museum",
       "author": "Map Recall",
       "sourceUrl": "https://www.atelierpro.nl/en/projecten/allard-pierson",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Exact OpenStreetMap parent/parts polygons cross-checked against current PDOK BAG footprints; original texture-free meshes informed by primary architecture photographs. Whole actual cadastral building is represented with separate measured roof/body portions, preserving genuine open courts."
     }
   }

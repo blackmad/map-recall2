@@ -45,8 +45,8 @@
     "title": "Kazerne Driemond",
     "author": "Map Recall",
     "sourceUrl": "https://www.brandweer.nl/kazerne/driemond/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original native BAG/3DBAG texture-free reconstruction guided by 2021/2022 municipal panoramas and current station photograph. Paired red glazed apparatus portals, taller brick/glazed office wing, ribbed canal rear and native low-slope roofs. No imported meshes or photo pixels."
   },
   "buildingFootprint": {

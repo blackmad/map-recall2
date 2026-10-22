@@ -54,7 +54,7 @@ jobs:
       # root, so the build keeps Vite's default '/' base.
       - run: npm run build
         env:
-          VITE_CANAL_RECALL_URL: https://canalrecall.blackmad.com/
+          VITE_CANAL_RECALL_URL: https://rideamsterdam.nl/
           VITE_CARTO_API_KEY: ${{ secrets.VITE_CARTO_API_KEY }}
           VITE_GOOGLE_MAPS_EMBED_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_EMBED_API_KEY }}
           VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
@@ -109,6 +109,26 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-service-account.json
         run: npx firebase-tools@15 deploy --only hosting --project map-recall2-blackmad --non-interactive
+      # The same build on Cloudflare Pages (project `rideamsterdam`), which serves
+      # rideamsterdam.nl without bandwidth charges (2026-10-21). Routing comes from
+      # firebase.json through build-pages-site.mjs. Skipped until both secrets exist.
+      - name: Deploy to Cloudflare Pages
+        if: env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != ''
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          node scripts/hosting/build-pages-site.mjs
+          for attempt in 1 2 3; do
+            npx --yes wrangler@4 pages deploy dist-pages --project-name rideamsterdam --branch main --commit-hash "$GITHUB_SHA" && break
+            if [ "$attempt" = 3 ]; then exit 1; fi
+            sleep 10
+          done
+          for attempt in 1 2 3 4 5; do
+            if curl --fail --silent --show-error "https://rideamsterdam.pages.dev/deployment.json?sha=${GITHUB_SHA}" | grep -q "$GITHUB_SHA"; then exit 0; fi
+            sleep 10
+          done
+          exit 1
       - name: Verify live revision on both sites
         run: |
           for site in edumap-blackmad canalrecall-blackmad; do

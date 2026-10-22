@@ -46,8 +46,8 @@
     "title": "Kazerne Anton",
     "author": "Map Recall",
     "sourceUrl": "https://www.me-2.nl/project/kazerne-anton-amsterdam-amstelland/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free BAG reconstruction; source-guided gray bands, timber terrace, red/white bays and entrance overhang. No reference pixels or third-party mesh imported."
   }
 }

@@ -50,8 +50,8 @@
     "title": "Nieuwe Kerk",
     "author": "Map Recall",
     "sourceUrl": "https://www.nieuwekerk.nl/pers/beeldbank/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free Gothic stone-striped brick church rebuilt from exact current roof/chapel polygons and official church exterior/restoration photos. Pointed tracery, rose, portals, balustrades, mapped tourelles and gilded crossing finial approximated with shared-palette meshes; no imported geometry or copied photograph pixels. Adjacent Palace, shops and streets retained."
   }
 }

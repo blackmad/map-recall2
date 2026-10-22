@@ -31,8 +31,8 @@
     "title": "De Gooyer",
     "author": "Map Recall",
     "sourceUrl": "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native-scale square brick base, thatched octagons, open gallery, rounded cap, old-Dutch lattice sails; no imported meshes or photo pixels."
   }
 }

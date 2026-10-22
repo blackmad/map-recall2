@@ -377,6 +377,10 @@
       done: false
     };
   }
+  function playerZoom(cameraZoom, intro, prepared) {
+    const flight = intro ?? prepared;
+    return flight && Number.isFinite(flight.playZoom) && flight.playZoom > 0 ? flight.playZoom : cameraZoom;
+  }
 
   // src/canalRecall/game/vehicleZoomScale.ts
   var VEHICLE_ZOOM_EXPONENT = 0.65;
@@ -386,6 +390,27 @@
     if (!(zoom > 0) || !(defaultZoom > 0)) return 1;
     const scale = (defaultZoom / zoom) ** VEHICLE_ZOOM_EXPONENT;
     return Math.max(VEHICLE_ZOOM_MIN_SCALE, Math.min(VEHICLE_ZOOM_MAX_SCALE, scale));
+  }
+  var BOAT_REFERENCE_ZOOM = 0.65;
+  function boatZoomScale(zoom, referenceZoom = BOAT_REFERENCE_ZOOM) {
+    return Math.max(1, vehicleZoomScale(zoom, referenceZoom));
+  }
+  var ferryZoomScale = boatZoomScale;
+  var transitZoomScale = boatZoomScale;
+
+  // src/canalRecall/game/vehicleScreenBox.ts
+  function glyphBox(x, y, radius) {
+    return { left: x - radius, top: y - radius, right: x + radius, bottom: y + radius };
+  }
+  function boxesIntersect(a, b) {
+    return a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
+  }
+  var START_TAG_GAP_PX = 4;
+  function startTagCentreY(centreX, defaultCentreY, pill, avoid, gap = START_TAG_GAP_PX) {
+    if (!avoid) return defaultCentreY;
+    const box = { left: centreX - pill.width / 2, right: centreX + pill.width / 2, top: defaultCentreY - pill.height / 2 - gap, bottom: defaultCentreY + pill.height / 2 + gap };
+    if (!boxesIntersect(box, avoid)) return defaultCentreY;
+    return Math.min(defaultCentreY, avoid.top - gap - pill.height / 2);
   }
 
   // src/canalRecall/game/coldOpenReview.ts
@@ -971,8 +996,61 @@
 
   // src/canalRecall/orientationPois.ts
   var SPOILER_MIN_LENGTH = 5;
+  var SPOILER_MAX_WORDS = 5;
+  var DUTCH_NAME_SUFFIXES = [
+    "dwarsstraat",
+    "burgwal",
+    "gracht",
+    "straat",
+    "kanaal",
+    "sloot",
+    "steeg",
+    "plein",
+    "kade",
+    "brug",
+    "laan",
+    "dijk",
+    "weg",
+    "pad",
+    "hof"
+  ];
   function normaliseSpoilerName(name) {
     return name.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+  function buildSpoilerIndex(names) {
+    const index = /* @__PURE__ */ new Set();
+    const lowerRaw = /* @__PURE__ */ new Set();
+    const full = /* @__PURE__ */ new Set();
+    for (const raw of names) {
+      if (!raw) continue;
+      const name = normaliseSpoilerName(raw);
+      if (name.length >= SPOILER_MIN_LENGTH) lowerRaw.add(raw.trim().toLowerCase());
+      if (name.length < SPOILER_MIN_LENGTH) continue;
+      index.add(name);
+      full.add(name);
+      for (const suffix of DUTCH_NAME_SUFFIXES) {
+        if (!name.endsWith(suffix)) continue;
+        const stem = name.slice(0, -suffix.length).trim();
+        if (stem.length >= SPOILER_MIN_LENGTH) index.add(stem);
+        break;
+      }
+    }
+    return { names: index, lowerRaw, full };
+  }
+  function poiNameSpoils(label, index) {
+    if (!label || !index || index.names.size === 0) return false;
+    const words2 = normaliseSpoilerName(label).split(" ").filter(Boolean);
+    for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words2.length); size++) {
+      for (let start = 0; start + size <= words2.length; start++) {
+        if (index.names.has(words2.slice(start, start + size).join(" "))) return true;
+      }
+    }
+    if (index.full && index.full.size) {
+      for (const word of words2) {
+        for (let n = SPOILER_MIN_LENGTH; n < word.length; n++) if (index.full.has(word.slice(0, n))) return true;
+      }
+    }
+    return false;
   }
   function maskSpoiledName(label, names, fallback = "your destination") {
     if (!label) return label;
@@ -1009,6 +1087,16 @@
     }
     out += label.slice(cursor);
     return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
+  }
+  function mapLabelSpoils(raw, printed, asked) {
+    if (!asked || !raw) return false;
+    const index = buildSpoilerIndex([asked]);
+    if (!index.names.size) return normaliseSpoilerName(raw) === normaliseSpoilerName(asked);
+    for (const text of printed && printed !== raw ? [raw, printed] : [raw]) {
+      if (poiNameSpoils(text, index)) return true;
+      if (maskSpoiledName(text, [asked], "") !== text) return true;
+    }
+    return false;
   }
 
   // src/canalRecall/answerPath.ts
@@ -4767,6 +4855,17 @@
   function revealOnEnter(enteringTuckable, introRunning) {
     return enteringTuckable && !introRunning;
   }
+  var UTILITY_CARD_CLEARANCE = 6;
+  function utilityBlockedByCards(buttons, cards, clearance = UTILITY_CARD_CLEARANCE) {
+    for (const card of cards) {
+      if (!card || card.right <= card.left || card.bottom <= card.top) continue;
+      for (const b of buttons) {
+        if (b.right <= b.left || b.bottom <= b.top) continue;
+        if (b.left < card.right + clearance && b.right > card.left - clearance && b.top < card.bottom + clearance && b.bottom > card.top - clearance) return true;
+      }
+    }
+    return false;
+  }
 
   // src/canalRecall/game/presentationRuntime.ts
   var INK = "#1f1c17";
@@ -4865,6 +4964,19 @@
       this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
       this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
       return true;
+    }
+    /** The zoom to save as the player's: the flight's landing zoom while one owns the camera (introFlight.ts playerZoom). */
+    _playerZoom() {
+      return playerZoom(this.camera.zoom, this._intro, this.state === GameState.LOADING ? this._introPrepared : null);
+    }
+    /** Apply a saved zoom. A flight in progress keeps the camera and lands on it instead. */
+    _setPlayerZoom(zoom) {
+      if (this._intro) {
+        this._intro.playZoom = zoom;
+        return;
+      }
+      if (this._introPrepared) this._introPrepared.playZoom = zoom;
+      this.camera.zoom = zoom;
     }
     _applyIntroCamera(x, y, zoom) {
       this.camera.x = x;
@@ -5245,7 +5357,12 @@
         if (pointer && pointer.x >= box.left - 8 && pointer.x <= box.right + 8 && pointer.y >= box.top - 8 && pointer.y <= box.bottom + 8) {
           this._utilityRevealUntil = Math.max(this._utilityRevealUntil || 0, now + 600);
         }
-        const revealed = !riding || now < (this._utilityRevealUntil || 0);
+        let revealed = !riding || now < (this._utilityRevealUntil || 0);
+        if (revealed && riding && this._prompt && this._prompt.style.display !== "none" && this._prompt.style.display !== "") {
+          const card = document.getElementById("canal-card");
+          const buttons = [...utility.children].map((child) => child.getBoundingClientRect());
+          if (card && utilityBlockedByCards(buttons, [card.getBoundingClientRect()])) revealed = false;
+        }
         utility.classList.toggle("tucked-all", true);
         utility.classList.toggle("tucked", !revealed);
       }
@@ -5282,8 +5399,8 @@
         pitched && showBike,
         vehicleZoomScale(this.camera.zoom, this._defaultZoom ?? this.camera.zoom)
       );
-      this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
-      this.vectorMap.setPlayerFerry?.(player, this.osmLoader, pitched && byFerry);
+      this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat, boatZoomScale(this.camera.zoom));
+      this.vectorMap.setPlayerFerry?.(player, this.osmLoader, pitched && byFerry, ferryZoomScale(this.camera.zoom));
       if (typeof this.vectorMap.setPlayerTransit === "function") {
         let underground = false;
         if (byTransit && this.track && typeof this.track.getNearestRoad === "function") {
@@ -5291,7 +5408,7 @@
           const seg = contact && this.track.segments ? this.track.segments[contact.segIdx] : null;
           underground = !!(seg && seg.type === "metro");
         }
-        this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground);
+        this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground, transitZoomScale(this.camera.zoom));
       }
       this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
       const reveal = this.quizPromptName ? null : this._answerReveal;
@@ -5333,14 +5450,40 @@
         else this.renderer.drawPlayerCar(player, this.camera);
       }
       this.renderer.drawParticles(this.particles, this.camera);
+      const kind = byFerry ? "ferry" : byBoat ? "boat" : byTransit ? "transit" : "bike";
+      let vehicleBox = null;
+      const meshBox = meshReady ? this.vectorMap.playerScreenBox?.(kind) ?? null : null;
+      const rect = meshBox ? this.canvas.getBoundingClientRect() : null;
+      if (meshBox && rect && rect.width > 0 && rect.height > 0) {
+        const sx = CANVAS_W / rect.width, sy = CANVAS_H / rect.height;
+        vehicleBox = { left: meshBox.left * sx, right: meshBox.right * sx, top: meshBox.top * sy, bottom: meshBox.bottom * sy };
+      }
+      if (!vehicleBox) {
+        const at = this.camera.worldToScreen(player.x, player.y);
+        const p = player;
+        vehicleBox = glyphBox(at.x, at.y, (Math.max(p.length || 30, p.width || 12) / 2 * 1.35 + 3) * (this.camera.zoom || 1));
+      }
+      this.track.placeStartTag = (centreX, defaultCentreY, pill) => startTagCentreY(centreX, defaultCentreY, pill, vehicleBox);
+      const asked = this.quizPromptName || this.quizCandidateName || "";
+      const shownText = (text) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text);
+      if (!this._labelSpoilCache || this._labelSpoilCache.asked !== asked) this._labelSpoilCache = { asked, spoils: /* @__PURE__ */ new Map() };
+      const spoilCache = this._labelSpoilCache.spoils;
+      const spoils = (text) => {
+        let hit = spoilCache.get(text);
+        if (hit === void 0) {
+          hit = mapLabelSpoils(text, shownText(text), asked);
+          spoilCache.set(text, hit);
+        }
+        return hit;
+      };
       this.track.drawLabels(
         ctx,
         this.camera,
-        (text, x, y) => this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y),
-        this.quizPromptName || this.quizCandidateName,
+        (text, x, y) => (this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y)) && !(asked && spoils(text)),
+        asked,
         player,
         (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates()).candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach),
-        (text) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text)
+        shownText
       );
       if (this.state === GameState.FINISHED) {
         this._renderFinish();

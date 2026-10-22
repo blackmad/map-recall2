@@ -548,7 +548,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Open Air...") and the Feedback widget overlaps the card near "Share this
   route"; the questions-a-minute setting has no bottom-HUD check row (Off
   shows no band, which existing rows cover).
-- **Renderer: give three.js the frame** (`docs/research/own-renderer-spike-20261009.md`,
+- **Renderer: give three.js the frame** (`docs/archive/research/own-renderer-spike-20261009.md`,
   `renderer-spike.html`): spike shows lighting is the visible gap — shadows,
   sky, fog, tone mapping, sunken water — at ~2.6 ms CPU per throttled phone
   frame vs 7.1 ms for MapLibre's render. Phase 1 (days, reversible): merge
@@ -679,6 +679,11 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+- **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
+  Seen in the teaser phone shot: the card hides and the view jumps to a
+  different zoom in one frame as the d-pad returns. Ease the zoom/padding
+  change instead of snapping. The start-of-ride overview flight also hitches
+  as it hands over (about 0.4 s frozen, then a jump).
 - **Road rendering: surveyed BGT surfaces replace OSM bands (user, 2026-10-16;
   plan `docs/plans/road-surfaces-roof-rules-20261016.md` Part 1, approved
   2026-10-16, user chose BGT polygons over patching the band model).**
@@ -762,12 +767,13 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     Enterprise key (`gcloud recaptcha keys create …`, docs/MONITORING.md) →
     secret APPCHECK_SITE_KEY, register both web apps in Firebase App Check
     (monitor first, enforce Firestore after a week of clean metrics);
-    (3) canalrecall.blackmad.com DNS points at 45.63.21.43, not Firebase —
-    re-add the records from Hosting → custom domain (deploy "verify live"
-    step fails until then), optionally edumap.blackmad.com; (4) Auth →
-    authorized domains include canalrecall.blackmad.com; (5) real Google
-    sign-in test across /ride, /quiz/, /progress; (6) buy a .amsterdam domain
-    (ride.amsterdam / canalrecall.amsterdam; Gandi or Namecheap).
+    (3) canalrecall.blackmad.com now 301s to rideamsterdam.nl in Firebase but
+    its Namecheap DNS still points at 45.63.21.43: replace that A record with
+    CNAME `canalrecall-blackmad.web.app`; optionally edumap.blackmad.com;
+    (4) DONE 2026-10-21: rideamsterdam.nl served by Cloudflare Pages (HISTORY);
+    open: a www → apex redirect rule, and retire the Firebase Hosting deploy
+    once Pages has run clean for a while; (5) real Google sign-in test across /ride, /quiz/, /progress
+    on rideamsterdam.nl; (6) DONE: domain bought (rideamsterdam.nl).
   - Decisions pending: clarity finding 16 (HUD names the start street);
     whether this session or integrator-f5 runs the recipe-tile compile pass
     (district libraries + stale pilots, width quantisation) and step 4 (mid

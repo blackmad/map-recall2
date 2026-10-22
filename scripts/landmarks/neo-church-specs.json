@@ -37,8 +37,8 @@
       "title": "Dominicuskerk",
       "author": "Map Recall",
       "sourceUrl": "https://dominicusamsterdam.nl/gebouw-en-historie/",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free reconstruction. Exact current church parent and four contained roof/body parts. Mapped church roof part w749599657 is rebuilt above21m and clipped to the current parent to avoid encroaching on adjacent BAG0363100012179327; no neighboring building is suppressed. Parent height28.6m and historical part tags up to29m differ; decorative divisions approximate. Unfinished hexagonal tower stump retained; no proposed85m tower built."
     }
   },
@@ -78,8 +78,8 @@
       "title": "Vredeskerk",
       "author": "Map Recall",
       "sourceUrl": "https://www.amsterdam.vredeskerk.nl/his.index.htm",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free reconstruction. Exact church parent and tower parts. Parish/diocese describe50m including iron spire; historical mapped tower part49m. Nave roof/wall division and checkerboard tile details approximate. No plaza trees or fountain positions invented."
     }
   }

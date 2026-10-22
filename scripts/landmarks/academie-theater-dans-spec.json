@@ -44,8 +44,8 @@
     "title": "Academie voor Theater en Dans native1996 building",
     "author": "Map Recall",
     "sourceUrl": "https://www.atd.ahk.nl/de-atd/voorzieningen/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free current native BAG perimeter and roof regions. Source-guided differentiated curtainwall/ribbon windows, recessed curved two-level foyer, open terrace/glazed pavilion, local tall white corner brow, supported rooftop equipment and current-aerial solar field. Independent source/CPU review c0d686cd passes; actual native/game/POI/performance pending. No imported mesh or photo pixels."
   },
   "relatedLandmarkIds": [

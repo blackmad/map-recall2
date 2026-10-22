@@ -39,8 +39,8 @@
     "title": "Shell Technology Centre Amsterdam",
     "author": "Map Recall",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Energy_Transition_Campus_Amsterdam",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free geometry on the 3DBAG LoD2.2 massing of BAG pand 0363100012202175; window ribbons and brick piers measured by eye from two municipal panoramas, remaining faces inferred, no pixels or meshes imported."
   },
   "buildingFootprint": {

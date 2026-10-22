@@ -45,8 +45,8 @@
     "title": "Vondelkerk",
     "author": "Map Recall",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Vondelkerk",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free flat-colour geometry built in the church's own axis frame from the BAG ring and 3DBAG roof planes; west front, towers, chapels, apse and crossing tower measured by eye from photographs, no pixels or meshes imported. Shows the church as it stood before the 2026 New Year's fire."
   }
 }

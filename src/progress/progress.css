@@ -29,7 +29,7 @@ body.pg-body {
 
 /* Top bar, as on the landing page, with the account chip at the end. */
 .pg-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: max(16px, env(safe-area-inset-top)); padding-bottom: 8px; }
-.pg-wordmark { display: inline-flex; align-items: center; padding: 12px 20px 11px; font: 800 20px/1 var(--pg-display); letter-spacing: 0.08em; text-transform: uppercase; color: #fff !important; text-decoration: none !important; white-space: nowrap; }
+.pg-wordmark { display: inline-flex; align-items: center; padding: calc(11.5px - .05em) calc(20px - .04em) calc(11.5px + .05em) calc(20px + .04em); font: 800 20px/1 var(--pg-display); letter-spacing: 0.08em; text-transform: uppercase; color: #fff !important; text-decoration: none !important; white-space: nowrap; }
 .pg-nav { display: flex; align-items: center; gap: clamp(8px, 2.2vw, 24px); }
 .pg-nav > a { font: 700 15px/1 var(--pg-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--day-ink); text-decoration: none; padding: 10px 2px; }
 .pg-nav > a:hover { color: var(--day-accent-ink); }
@@ -131,7 +131,7 @@ body.pg-body {
 
 @media (max-width: 760px) {
   .pg { font-size: 15px; }
-  .pg-wordmark { font-size: 16px; padding: 10px 13px 9px; }
+  .pg-wordmark { font-size: 16px; padding: calc(9.5px - .05em) calc(13px - .04em) calc(9.5px + .05em) calc(13px + .04em); }
   .pg-nav { gap: 10px; }
   .pg-nav > a { font-size: 14px; }
   .pg-ride { grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; align-items: start; }

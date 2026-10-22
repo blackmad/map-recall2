@@ -40,8 +40,8 @@
     "title": "Pathé de Munt",
     "author": "Map Recall",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Path%C3%A9_de_Munt",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): grey-brick multiplex with notched pitched volumes, glazed slits, lower entrance bays and the vertical Pathé sign. Dimensions approximate, measured from 2025 panoramas. No imported mesh or photo textures."
   },
   "buildingFootprint": {

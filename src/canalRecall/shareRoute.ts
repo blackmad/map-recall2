@@ -147,8 +147,8 @@ export function buildRouteShare(input: ShareRouteInput): RouteShare | null {
   if (input.tourId) {
     return {
       url: `${base}?tour=${encodeURIComponent(input.tourId)}`,
-      title: 'Canal Recall tour',
-      text: 'Ride this Amsterdam tour with me in Canal Recall.',
+      title: 'Ride Amsterdam tour',
+      text: 'Ride this Amsterdam tour with me in Ride Amsterdam.',
       neutralised: false,
     };
   }
@@ -182,8 +182,8 @@ export function buildRouteShare(input: ShareRouteInput): RouteShare | null {
   const route = start.name && finish.name ? ` from ${start.name} to ${finish.name}` : '';
   return {
     url: `${base}?travel=${mode}${hash}`,
-    title: 'Canal Recall route',
-    text: `Ride${route} ${MODE_WORDS[mode]} in Canal Recall and learn the streets and canals on the way.`,
+    title: 'Ride Amsterdam route',
+    text: `Ride${route} ${MODE_WORDS[mode]} in Ride Amsterdam and learn the streets and canals on the way.`,
     neutralised,
   };
 }

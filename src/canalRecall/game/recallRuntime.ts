@@ -17,6 +17,11 @@ import {
   crossingQuestionKind,
   findBridgeRouteAt,
   findCrossedBridge,
+  findGateCrossing,
+  findWaterCrossing,
+  TrackTrail,
+  CROSSING_DECK_METRES,
+  CROSSING_TRAIL_METRES,
   headingOffRoad,
   isPlaceKnown,
   pickDistractors,
@@ -145,7 +150,7 @@ export class GameRecallRuntime {
       overlay.callbacks.onClearAllData = async () => {
         const cloud = recall.signedIn ? ' and your signed-in cloud copy' : '';
         const ok = window.confirm(
-          `Clear everything Canal Recall stores on this device${cloud}?\n\n`
+          `Clear everything Ride Amsterdam stores on this device${cloud}?\n\n`
           + 'Learned names, exploration collection, personal bests, route settings '
           + 'and the home-address cache all go. Sign-in stays. This cannot be undone.',
         );
@@ -166,7 +171,7 @@ export class GameRecallRuntime {
           recall.enabled = defaults.skipMastered;
           this._refreshMasteredLabels();
           overlay.callbacks.onLiveChange();
-          this._setRouteError('Cleared all local Canal Recall data.');
+          this._setRouteError('Cleared all local Ride Amsterdam data.');
         } catch (error) {
           this._setRouteError((error as Error).message || 'Could not clear data.');
         } finally {
@@ -1083,6 +1088,14 @@ export class GameRecallRuntime {
    */
   _updateBridgeQuiz(previousPosition: WorldPoint | null): void {
     if (isTransit(this.travelMode)) return;
+    // The recent track, kept every frame (questions or not), so a crossing is
+    // judged on how the rider moved over the last CROSSING_TRAIL_METRES.
+    const trail = this._crossingTrail || (this._crossingTrail = new TrackTrail(CROSSING_TRAIL_METRES * PIXELS_PER_METER * 1.5));
+    if (previousPosition && this.player) {
+      // A respawn or a new ride is a jump, not a track.
+      if (Math.hypot(this.player.x - previousPosition.x, this.player.y - previousPosition.y) > 40 * PIXELS_PER_METER) trail.reset();
+      trail.push(previousPosition);
+    }
     if (this.quizPromptName || !this.bridges.length || !previousPosition || !this.player) return;
     if (Math.abs(this.player.speed) < 5) return;
     // Bridge questions are rationed. Crossing five bridges in a minute along a
@@ -1093,16 +1106,37 @@ export class GameRecallRuntime {
     if (movedBy <= 0) return;
 
     const byBoat = isBoat(this.travelMode);
-    const closest = findCrossedBridge(
-      this.bridges, previousPosition, this.player, byBoat, BRIDGE_GATE_HALF_WIDTH);
-    if (!closest) return;
-
-    // Which of this bridge's crossings was it? "IJburglaan" is 66 mapped ways
-    // making five separate bridges kilometres apart, and being asked for it
-    // once taught one of them.
-    const crossing = CanalRecallBridges.nearestCrossing(
-      closest.crossings, this.player.x, this.player.y, CROSSING_MATCH_RANGE) as BridgeCrossing | null;
-    if (!crossing) return;
+    let closest: Bridge | null;
+    let crossing: BridgeCrossing | null;
+    if (byBoat) {
+      closest = findCrossedBridge(this.bridges, previousPosition, this.player, true, BRIDGE_GATE_HALF_WIDTH);
+      if (!closest) return;
+      // Which of this bridge's crossings was it? "IJburglaan" is 66 mapped ways
+      // making five separate bridges kilometres apart, and being asked for it
+      // once taught one of them.
+      crossing = CanalRecallBridges.nearestCrossing(
+        closest.crossings, this.player.x, this.player.y, CROSSING_MATCH_RANGE) as BridgeCrossing | null;
+    } else {
+      // On the street a crossing must cross the water: riding along a canal
+      // over a junction deck is not crossing it (Prinsengracht at the
+      // Nieuwe-Wercksbrug, teaser 2026-10-22; recallRules.findWaterCrossing).
+      const trailStart = trail.pointBack(this.player, CROSSING_TRAIL_METRES * PIXELS_PER_METER);
+      const water = findWaterCrossing(this.bridges, previousPosition, this.player, {
+        trailStart, deckRangePx: CROSSING_DECK_METRES * PIXELS_PER_METER, searchPx: CROSSING_MATCH_RANGE,
+      });
+      if (water) {
+        closest = water.bridge;
+        crossing = water.crossing;
+      } else {
+        closest = findGateCrossing(this.bridges, previousPosition, this.player, trailStart, BRIDGE_GATE_HALF_WIDTH);
+        if (!closest) return;
+        crossing = CanalRecallBridges.nearestCrossing(
+          closest.crossings, this.player.x, this.player.y, CROSSING_MATCH_RANGE) as BridgeCrossing | null;
+        // Where the water is mapped, only the water test may ask.
+        if (crossing && crossing.waterLines && crossing.waterLines.length) return;
+      }
+    }
+    if (!closest || !crossing) return;
     const key = `${closest.id}#${crossing.index}`;
 
     const water: RecallFeature | null = crossing.waterway ? {

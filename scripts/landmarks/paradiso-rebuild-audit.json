@@ -25,8 +25,8 @@
       "title": "Paradiso",
       "author": "Map Recall",
       "sourceUrl": "https://www.paradiso.nl/en/info/about-us/paradiso-vandaag",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
     }
   },

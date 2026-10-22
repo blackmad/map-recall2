@@ -26,7 +26,7 @@ export const ordinarySpecFor = (m: Entry): SignatureModelSpec => ({
   footprint: { centre: m.anchor, headingDegrees: 90, lengthMetres: m.bounds.max[0] - m.bounds.min[0], widthMetres: m.bounds.max[2] - m.bounds.min[2] },
   ...(m.instance ? { sharedModel: true, ...(m.instance.mirror ? { mirror: true } : {}) } : {}),
   surveyed: { anchor: m.instance?.anchor ?? m.anchor, northOffsetDegrees: m.instance?.northOffsetDegrees ?? 0, source: 'Installed native footprint; source-specific facade and roof recipe. Heights/details retain documented approximations.' },
-  attribution: { title: m.name, author: 'Map Recall', sourceUrl: m.sourceUrls?.[0] ?? 'https://data.amsterdam.nl/', licence: 'Original project asset', licenceUrl: './LICENSE', modifications: 'Original procedural facade patterns and shallow geometry on native surveyed footprints. No reference-photo pixels or imported model geometry. See ordinary building recipe for source/height uncertainties.' },
+  attribution: { title: m.name, author: 'Ride Amsterdam', sourceUrl: m.sourceUrls?.[0] ?? 'https://data.amsterdam.nl/', licence: 'CC BY 4.0', licenceUrl: 'https://creativecommons.org/licenses/by/4.0/', modifications: 'Original procedural facade patterns and shallow geometry on native surveyed footprints. No reference-photo pixels or imported model geometry. See ordinary building recipe for source/height uncertainties.' },
 });
 /** Catalogue installs whose pand a bespoke landmark model already draws: the landmark wins and the install is not drawn
  * (both drew on the same ground). Keyed by ordinary id, valued by the landmark id; modelOverlap.test.ts pins each pair. */

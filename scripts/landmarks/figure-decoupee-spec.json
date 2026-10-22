@@ -33,8 +33,8 @@
     "title": "Figure decoupee - original low-poly reconstruction",
     "author": "Map Recall; after the 1965 sculpture by Pablo Picasso and Carl Nesjar",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Figure_d%C3%A9coup%C3%A9e_in_2019_(1).jpg",
-    "licence": "Original project asset (outline traced from a CC BY-SA 4.0 photograph by Cees)",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0 (outline traced from a CC BY-SA 4.0 photograph by Cees)",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free extruded outline with engraved line strips, hand-traced from a CC BY-SA 4.0 Commons photo and Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or third-party meshes imported."
   }
 }

@@ -163,7 +163,7 @@ minimap per frame. GPU time not measured (no timer queries).
 | iPhone 4×, game rules | 16.7 / 16.8 / 33.3 | **5.8** / 8.0 / 9.9 / 43.6 | 1.1 / 2.9 | 2 / 15 | 32 / 1.30 M | 111 MB |
 | iPhone 4×, every name labelled | 16.7 / 33.4 / 33.4 | 7.3 / 10.5 / 11.5 / 24.3 | 2.3 / 4.9 | 3 / 19 | 32 / 1.30 M | 109 MB |
 
-For scale (different scene, `own-renderer-spike-20261009.md`): the game's
+For scale (different scene, `docs/archive/research/own-renderer-spike-20261009.md`): the game's
 `map._render` alone is 7.1 ms median on the iPhone 4× ride.
 
 **Data and load** (unthrottled, local server; transfer sizes from resource timing):

@@ -180,7 +180,7 @@ export class SignatureLandmarks {
             modelUrl: '', suppressOsmIds: api.suppressionIds(list), spatialSuppression: false, heightMetres: 17, heightToleranceMetres: 1, groundAltitudeMetres: 0, facingOffsetDegrees: 0,
             footprint: { centre: anchor, headingDegrees: 90, lengthMetres: radius * 2, widthMetres: radius * 2 },
             surveyed: { anchor, northOffsetDegrees: 0, source: 'Building types: one shared unit mesh per design, instance list from BAG footprints and 3DBAG roofs.' },
-            attribution: { title: `Building types: ${area}`, author: 'Map Recall', sourceUrl: 'https://data.amsterdam.nl/', licence: 'Original project asset', licenceUrl: './LICENSE', modifications: 'Parametric facade types fitted to BAG footprints; photo-confirmed per building.' },
+            attribution: { title: `Building types: ${area}`, author: 'Ride Amsterdam', sourceUrl: 'https://data.amsterdam.nl/', licence: 'CC BY 4.0', licenceUrl: 'https://creativecommons.org/licenses/by/4.0/', modifications: 'Parametric facade types fitted to BAG footprints; photo-confirmed per building.' },
             sceneFactory: async () => {
               const loader = this._loader;
               const loadUnit = async unit => {

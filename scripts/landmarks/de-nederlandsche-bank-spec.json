@@ -40,8 +40,8 @@
     "title": "De Nederlandsche Bank",
     "author": "Map Recall",
     "sourceUrl": "https://arcam.nl/architectuur-gids/de-nederlandsche-bank-2/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 massing; podium storeys, tile fascias, pilotis, tower window strips measured by eye from Commons photographs (2018, 2022, 2025), no pixels or meshes imported."
   },
   "buildingFootprint": {

@@ -31,6 +31,153 @@ spacing rule follows the cap (10 s between asks at 3/min), and the budget unit
 tests now derive their expectations from the cap where they used to hard-code
 two. `preferences.bundle.js` and `overlay.bundle.js` were rebuilt and their
 cache-busting query bumped to `20261022a`.
+## 2026-10-22 — Bridge questions only on a real crossing
+
+User (teaser frame): "what waterway are you crossing" fired while the bike
+rode straight along the Prinsengracht over the Nieuwe-Wercksbrug deck. The
+street crossing gate was drawn across every edge of a bridge's geometry,
+including deck outlines (158 of 415 bridges are outline-only), so a quay-side
+edge put a gate across the quay. Now the rider's last 18 m must cross the
+waterway centreline at 35° or more, on the deck (`findWaterCrossing`,
+`TrackTrail`); outline edges no longer gate. False asks at 20 ring junction
+bridges went to 0; real side-canal and cross-street crossings still ask (four
+more now do). Named regressions in check-recall-rules. Not yet confirmed in
+a live browser run.
+
+## 2026-10-22 — Share links name their real ends; phone cluster stays off question cards; wider spoiler filter
+
+Seen while filming the teaser. (1) `#race=` share links carry only
+coordinates, and `_checkShareLink` never set the route ends, so every shared
+ride kept game.js's default Anne Frank House → Rijksmuseum names; ends are
+now named from their own coordinates (`resolveSharedEndpoint`: a destination
+within 60 m, "<name> (nearby)" within 500 m, else "Shared start/finish").
+(2) On phones a map tap or digit key revealed the utility cluster for 3 s
+over the open question card ("Report a problem" covered answer 4); it now
+stays hidden while it would touch the card (`utilityBlockedByCards`). (3) The
+"Prinsengracht" label during the Spiegelgracht question was a learned street,
+not a leak; the label filter now also hides aliases, prefix compounds
+("Keizersgrachtkerk"), bridge namesakes and bridges whose name contains the
+asked one (`mapLabelSpoils`). Regressions in check-route-selection,
+share-route.spec, utilityTuck.test, mobile-overlays.spec and
+check-orientation-pois.
+
+## 2026-10-22 — Back to Boat and North up; the View picker stays off setup
+
+User: "maybe bring back boat/north-up view too? I just hated the intro
+control for it, and the way it pushed the controls to need to scroll on my
+14\" mac". Defaults return to Boat + North up; setup keeps no View row (Start
+Route fits at 1512x860, 1512x780 and 1280x720); a view picked in the in-ride
+settings is now kept between rides (the Chase-on-load reset is gone). The
+bike/Chase defaults had also broken the deploy smoke on CI (the default ride
+sat on "Rendering streets…" past 60 s under CI's software GL; locally
+SwiftShader spawned in 17 s either way, so the CI cause is unconfirmed).
+The landing footer and credits now link the GitHub repo.
+
+## 2026-10-22 — Teaser video and landing loops
+
+A ~49 s 90s-CD-ROM teaser (Win95 window, boot screen, starburst captions)
+cut from real captured gameplay: rides steered along the game's planned
+route with real key presses, Map Quest from production (the local copy has
+no map key), the explorer from the dev server. 1080p and vertical cuts, each
+with and without the synthesized FM soundtrack (user: "the trailer really
+does not need music"), in `public/canal-drive/media/teaser/`; four silent
+seamless loops in `media/loops/` feed the landing hero and cards. Regenerate
+with `teaser:capture`, `teaser:edit [h] [v] [--no-music|--music-only]`,
+`teaser:loops` (capture through /tmp/canal-pw.sh when present); the edit cuts
+on event markers the capture records. Fonts are OFL; the music is original.
+
+## 2026-10-22 — Models are CC BY 4.0; repo tidy
+
+User's call: the original 3D models carry CC BY 4.0. Every model attribution
+said "Original project asset" with `licenceUrl: './LICENSE'`, which resolved
+to the game's GPL-3.0 file; 288 specs, catalogues and the builders now say
+CC BY 4.0 and link the licence, and `public/canal-drive/models/LICENSE.md`
+states the scope, the suggested credit, the open-data inputs (3DBAG CC BY,
+BAG/BGT CC0, OSM ODbL produced works) and the one exception (the CC0 pink
+city bicycle). The lab-only own-ground and renderer-spike bundles have no
+build script and still carry the old string.
+
+Same day: `docs/START-HERE-buildings.md` is the entry doc for outside
+contributors' agents (AGENTS.md was a stale Codex memo pointing at a
+superseded recipe); the README was rewritten; 53 superseded handoffs and
+closeouts moved to `docs/archive/`; 361 force-added review/staging outputs
+under the gitignored `artifacts/` and `staging/` were untracked (50 files
+that code or work-queue evidence reads stay tracked; `check:canal` passed on
+a clean checkout); 38 merged remote branches were deleted (SHAs in
+`~/Code/map-recall2-archive/deleted-merged-branches-20261022.txt`). The
+homepage gained the content-stats strip (`build:content-stats`, checked in
+`check:canal`), count-up and reveal motion, and video slots.
+
+## 2026-10-21 — The missing boat was a saved zoom stuck at the minimum
+
+User report: sometimes no boat under START (Amstel at Carré, Chase). Saving
+any setting during the start overview flight (B, L, [ ], R, G) wrote the
+flight's wide camera zoom, clamped to 0.1, into preferences; every later ride
+opened 2.7 levels out, where the world-scaled boat is ~9 px while the START
+tag keeps its screen size. Saves and applies now go through `_playerZoom()` /
+`_setPlayerZoom()` (the flight's landing zoom while it owns the camera), and
+`boatZoomScale` grows the boat when zoomed out (never below its tuned size).
+Pinned in `tests/e2e/boat-start-zoom.spec.ts` (forces the flight on, which
+automated browsers skip by default) and `check-intro-flight.ts`. Follow-up the
+same day: the START tag now sits above the vehicle's projected screen box
+(`vehicleScreenBox.ts`), ferry and transit grow when zoomed out like the
+boat, and `boat-model.spec` asserts the shared-frame boat instead of the
+retired `player-boat-3d` layer.
+
+## 2026-10-21 — Rides start on the bike, in Chase
+
+User's call: setup drops the View picker and every ride starts in Chase;
+a fresh player starts on the bike. A stored view is dropped on load (a
+returning player who once picked North up still starts in Chase); the
+in-ride settings can still switch view for the session. A stored vehicle is
+kept. Pinned in `startDefaults.test.ts` (`npm run test:canal-preferences`).
+Eight keyboard-ride / named-bridge e2e cases fail on main before this change
+too ("question pending but not on screen", bridge register text); not caused
+here.
+
+## 2026-10-21 — rideamsterdam.nl moves to Cloudflare Pages
+
+Firebase was on the free plan (360 MB/day of Hosting transfer), and one ride
+downloads ~14 MB (landing 0.5 MB, setup 7.8 MB, start + 25 s of riding
+14.3 MB, measured with CDP on the live site), so a Reddit post would have
+shut the site off within minutes. The user chose Cloudflare Pages over
+Firebase Blaze, Vercel (same per-GB price plus a fee) and S3/CloudFront.
+`scripts/hosting/build-pages-site.mjs` derives the Pages build and its
+`_redirects`/`_headers` from firebase.json; two Pages behaviours needed
+handling (rules run before static files, so `/quiz/*` swallowed Map Quest's
+JS until pass-through rules were generated; no `404.html` means every
+missing file is a 200 landing page). `canal-site.spec.ts` passed 8/8 in
+`wrangler pages dev` and again against production `rideamsterdam.pages.dev`.
+Uploading from the Mac stalled (14 of 7,234 files in minutes, connection
+resets, no rate limiting): CI deploys instead. Gotchas: the `cf` CLI's OAuth
+login cannot mint API tokens (the user made one in the dashboard);
+`wrangler pages project create` ran Cloudflare's auto-setup, which rewrote
+package.json, the lockfile and vite.config.ts and replaced the node_modules
+symlink with a real install (all reverted; use `cf pages projects create`).
+Nameservers switched at Porkbun via its API to the Cloudflare zone; Firebase
+still receives every deploy as a fallback.
+
+## 2026-10-21 — Ride Amsterdam: new name and domain
+
+The product is now **Ride Amsterdam** at `rideamsterdam.nl` (user bought it on
+Porkbun and chose the name). Firebase Hosting site `canalrecall-blackmad` has
+custom domains `rideamsterdam.nl` (serves) and `www.rideamsterdam.nl`
+(redirects), and `canalrecall.blackmad.com` now redirects there too (its
+Namecheap DNS still needs the CNAME). Porkbun DNS was set through the v3 API:
+apex A 199.36.158.100, TXT `hosting-site=canalrecall-blackmad`, `www` CNAME
+`canalrecall-blackmad.web.app`; the parking ALIAS and wildcard CNAME were
+removed. Auth authorized domains and the reCAPTCHA Enterprise key gained both
+names; the browser API key has no referrer restriction, so no change there.
+
+User-facing names: landing, ride setup plaque, `/explore`, credits, privacy,
+What's new, progress page, share texts, explorer licence line, model
+attribution author, manifest, and per-city `productName` (Ride Utrecht, Ride
+Rotterdam, Ride Den Haag). Map Quest's own header says "Map Quest" instead of
+"Map Recall". Canonical/OG URLs, `VITE_CANAL_RECALL_URL`, the edumap redirect
+and the share cards (re-rendered from the landing's ride frame) use
+rideamsterdam.nl. Not renamed on purpose: code identifiers, globals
+(`CanalRecall*`), storage keys (`canalRecall.*`, `mapRecall_*`, renaming them
+would wipe progress), and the internal lab/review pages.
 
 ## Westerkerk aisles and windows, Magna Plaza caps, zebras city-wide (2026-10-17)
 
@@ -213,7 +360,7 @@ Thorbecke, Rembrandt and Sarphati are by sculptors dead over 70 years.
 
 ## Verified dead-code cleanup (2026-10-17)
 
-649 lines / 42 KB removed in four batches (`docs/dead-code-cleanup-2026-10-17.md`
+649 lines / 42 KB removed in four batches (`docs/archive/dead-code-cleanup-2026-10-17.md`
 has the zero-hit evidence per item): the orphaned canalhouse-recipe preview
 script and its two private modules, `scripts/landmarks/modern-fit.ts`, 21
 uncalled exported functions, 9 unused constants/types, 5 unused script
@@ -10675,7 +10822,7 @@ reference/current/trial/identity evidence. Generated imagery stays local.
 A ten-image cheap-vision pilot is recorded with observed timing/tokens/reported
 cost. It made a target-identity error and remains triage, not a trained or validated
 citywide classifier. The next work and reproduction commands are in
-`docs/plans/wall-material-demo.md`. The full `check:canal` gate, library checks, TypeScript lint and four isolated
+`docs/archive/plans/wall-material-demo.md`. The full `check:canal` gate, library checks, TypeScript lint and four isolated
 port desktop/phone demo/report checks pass.
 
 ## 2026-09-26 — stable camera detail and reviewed colour expansion

@@ -42,8 +42,8 @@
     "title": "West India House",
     "author": "Map Recall",
     "sourceUrl": "https://en.wikipedia.org/wiki/West-Indisch_Huis",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roofs, sliver spikes removed): grey-plastered pedimented north front with arched door, brown-brick west front, sash-windowed south and east ranges and courtyard with a Peter Stuyvesant statue; window rhythm measured by eye from rectified 2021-25 municipal panoramas. No imported mesh or photo textures."
   },
   "buildingFootprint": {

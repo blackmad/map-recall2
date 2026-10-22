@@ -9,7 +9,7 @@ async function quietExternalRequests(page: Page) {
 test('first launch is playable without an account', async ({ page }) => {
   await quietExternalRequests(page);
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: 'Map Recall' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Map Quest' })).toBeVisible();
   await expect(page.getByRole('button', { name: /Canals & Water/ })).toBeVisible();
   // The enamel restyle (2026-09-04) dropped the 'Learn Amsterdam' tagline; a fresh profile is pointed at canals instead.
   await expect(page.getByText(/0 known yet — start with canals/)).toBeVisible();

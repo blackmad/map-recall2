@@ -29,8 +29,8 @@
     "title": "Museum of the Canals",
     "author": "Map Recall",
     "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1828",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native BAG footprint model; source-supported pilaster facade and central pediment. Dimensions/ornament approximate. Current facade checked against operator photo; removed inter-pilaster festoons omitted."
   }
 }

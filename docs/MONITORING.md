@@ -49,7 +49,7 @@ enabled on `map-recall2-blackmad`). Create a score-based website key:
 ```sh
 gcloud recaptcha keys create --project=map-recall2-blackmad \
   --display-name="canal-recall web" --web --integration-type=score \
-  --domains=canalrecall.blackmad.com,canalrecall-blackmad.web.app,edumap-blackmad.web.app,localhost
+  --domains=rideamsterdam.nl,www.rideamsterdam.nl,canalrecall.blackmad.com,canalrecall-blackmad.web.app,edumap-blackmad.web.app,localhost
 ```
 
 or Google Cloud console → Security → reCAPTCHA → **Create key** (Website,

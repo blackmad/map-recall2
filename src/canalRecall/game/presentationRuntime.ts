@@ -32,8 +32,9 @@ import {
 } from './neighborhoodPassport';
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
-import { introFrame, introOverview, introPlan } from './introFlight';
-import { vehicleZoomScale } from './vehicleZoomScale';
+import { introFrame, introOverview, introPlan, playerZoom } from './introFlight';
+import { boatZoomScale, ferryZoomScale, transitZoomScale, vehicleZoomScale } from './vehicleZoomScale';
+import { glyphBox, startTagCentreY, type ScreenBox } from './vehicleScreenBox';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { zoomBadgeShouldFlash, zoomBadgeText } from '../hudCopy';
@@ -47,13 +48,13 @@ import type { PresentationHost, Vehicle } from './host';
 import type { Landmark } from './worldTypes';
 import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teachingSurface';
 import { bicycleRestrictionNotice } from '../routing/bikeAccess';
-import { maskSpoiledName } from '../orientationPois';
+import { mapLabelSpoils, maskSpoiledName } from '../orientationPois';
 import { isReviewStop, REVIEW_STOP_LABEL } from './routeSelection';
 import { bearingAfterTwist, startTwist, twistStep, wheelTwistDegrees, WHEEL_PINCH_GRACE_MS } from './trackpadTwist';
 import { easeSightline, landmarkSightline, relativeTo, NO_SIGHTLINE, type SightlineView } from './landmarkSightline';
 import { nearestRouteIndex, RADAR_RADIUS_M, radarLocal, radarRadiusForSpeed, RadarMap } from './radar';
 import { gameWorldToLngLat, type GameLoaderFrame } from '../ownMap/frame';
-import { revealOnEnter, utilityVisibility } from './utilityTuck';
+import { revealOnEnter, utilityBlockedByCards, utilityVisibility } from './utilityTuck';
 
 /** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
 interface SafariGestureEvent extends UIEvent { rotation: number; scale: number }
@@ -181,6 +182,19 @@ export class GamePresentationRuntime {
     this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
     this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
     return true;
+  }
+
+  /** The zoom to save as the player's: the flight's landing zoom while one owns the camera (introFlight.ts playerZoom). */
+  _playerZoom(): number {
+    // A prepared flight holds the camera only on the loading screen; one left by an abandoned load does not.
+    return playerZoom(this.camera.zoom, this._intro, this.state === GameState.LOADING ? this._introPrepared : null);
+  }
+
+  /** Apply a saved zoom. A flight in progress keeps the camera and lands on it instead. */
+  _setPlayerZoom(zoom: number): void {
+    if (this._intro) { this._intro.playZoom = zoom; return; }
+    if (this._introPrepared) this._introPrepared.playZoom = zoom;
+    this.camera.zoom = zoom;
   }
 
   _applyIntroCamera(x: number, y: number, zoom: number): void {
@@ -601,7 +615,15 @@ export class GamePresentationRuntime {
       if (pointer && pointer.x >= box.left - 8 && pointer.x <= box.right + 8 && pointer.y >= box.top - 8 && pointer.y <= box.bottom + 8) {
         this._utilityRevealUntil = Math.max(this._utilityRevealUntil || 0, now + 600);
       }
-      const revealed = !riding || now < (this._utilityRevealUntil || 0);
+      let revealed = !riding || now < (this._utilityRevealUntil || 0);
+      // An open question card wins over any reveal when the cluster would
+      // sit on it: on a phone it covered the fourth answer and "No idea"
+      // (teaser 2026-10-22). Keys G and ? still open settings and help.
+      if (revealed && riding && this._prompt && this._prompt.style.display !== 'none' && this._prompt.style.display !== '') {
+        const card = document.getElementById('canal-card');
+        const buttons = [...utility.children].map(child => child.getBoundingClientRect());
+        if (card && utilityBlockedByCards(buttons, [card.getBoundingClientRect()])) revealed = false;
+      }
       // The whole cluster tucks (feedback, build stamp too). A phone used to
       // keep Feedback up, and it sat on a quiz answer ("Plantage Kerklaan",
       // 390×844 frame 2026-10-16); a tap on the map brings it back.
@@ -644,8 +666,9 @@ export class GamePresentationRuntime {
     const showBike = !byBoat && !byTransit && !byFerry;
     this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike,
       vehicleZoomScale(this.camera.zoom, this._defaultZoom ?? this.camera.zoom));
-    this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
-    this.vectorMap.setPlayerFerry?.(player, this.osmLoader, pitched && byFerry);
+    // Grows as the camera zooms out, so a zoomed-out chase still shows the boat (vehicleZoomScale.ts boatZoomScale).
+    this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat, boatZoomScale(this.camera.zoom));
+    this.vectorMap.setPlayerFerry?.(player, this.osmLoader, pitched && byFerry, ferryZoomScale(this.camera.zoom));
     if (typeof this.vectorMap.setPlayerTransit === 'function') {
       let underground = false;
       if (byTransit && this.track && typeof this.track.getNearestRoad === 'function') {
@@ -653,7 +676,7 @@ export class GamePresentationRuntime {
         const seg = contact && this.track.segments ? this.track.segments[contact.segIdx] : null;
         underground = !!(seg && seg.type === 'metro');
       }
-      this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground);
+      this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground, transitZoomScale(this.camera.zoom));
     }
     this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
     // While a question is open this is the feature being asked about; for the
@@ -698,6 +721,22 @@ export class GamePresentationRuntime {
       else this.renderer.drawPlayerCar(player, this.camera);
     }
     this.renderer.drawParticles(this.particles, this.camera);
+    // The START tag keeps off the vehicle at every zoom: the mesh's own screen box, or the canvas glyph's.
+    const kind = byFerry ? 'ferry' : byBoat ? 'boat' : byTransit ? 'transit' : 'bike';
+    let vehicleBox: ScreenBox | null = null;
+    const meshBox = meshReady ? this.vectorMap.playerScreenBox?.(kind) ?? null : null;
+    const rect = meshBox ? this.canvas.getBoundingClientRect() : null;
+    if (meshBox && rect && rect.width > 0 && rect.height > 0) {
+      // The mesh box is in CSS pixels; the canvas draws in its logical space (CANVAS_W × CANVAS_H).
+      const sx = CANVAS_W / rect.width, sy = CANVAS_H / rect.height;
+      vehicleBox = { left: meshBox.left * sx, right: meshBox.right * sx, top: meshBox.top * sy, bottom: meshBox.bottom * sy };
+    }
+    if (!vehicleBox) {
+      const at = this.camera.worldToScreen(player.x, player.y);
+      const p = player as { length?: number; width?: number };
+      vehicleBox = glyphBox(at.x, at.y, (Math.max(p.length || 30, p.width || 12) / 2 * 1.35 + 3) * (this.camera.zoom || 1));
+    }
+    this.track.placeStartTag = (centreX, defaultCentreY, pill) => startTagCentreY(centreX, defaultCentreY, pill, vehicleBox);
 
 
     // Streets stay named on the map once you have been told the name, in the
@@ -706,12 +745,23 @@ export class GamePresentationRuntime {
     // answering the question for you. A label is earned per place, not per
     // name: knowing the Overtoom at the Vondelpark must not write it across
     // the Kinkerbuurt end that has never been asked.
+    // Withheld in every form, not only the exact way name: a compound, a stem
+    // or a bridge's printed official name that says it (mapLabelSpoils).
+    const asked = this.quizPromptName || this.quizCandidateName || '';
+    const shownText = (text: string) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text);
+    if (!this._labelSpoilCache || this._labelSpoilCache.asked !== asked) this._labelSpoilCache = { asked, spoils: new Map() };
+    const spoilCache = this._labelSpoilCache.spoils;
+    const spoils = (text: string) => {
+      let hit = spoilCache.get(text);
+      if (hit === undefined) { hit = mapLabelSpoils(text, shownText(text), asked); spoilCache.set(text, hit); }
+      return hit;
+    };
     this.track.drawLabels(ctx, this.camera,
-      (text, x, y) => this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y),
-      this.quizPromptName || this.quizCandidateName, player,
+      (text, x, y) => (this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y)) && !(asked && spoils(text)),
+      asked, player,
       (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates())
         .candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach),
-      (text) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text));
+      shownText);
 
     // Results replace the live HUD rather than competing with it.
     if (this.state === GameState.FINISHED) { this._renderFinish(); return; }

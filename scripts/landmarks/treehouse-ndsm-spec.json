@@ -61,8 +61,8 @@
     "title": "Treehouse NDSM",
     "author": "Map Recall",
     "sourceUrl": "https://www.treehousendsm.com/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free studio/container village;16nativeseparatefootprints,sourcewhitepitchedcabinsandlargeworkhalls,observedcoloredcorrugationandnorthblackslats. Source-derivedroofplanes,notimportedmesh. Courtyards/alleys/Pllekneighbors retained."
   }
 }

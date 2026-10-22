@@ -20,6 +20,7 @@ import {
   rememberDestination,
   recentRankNear,
   resolveRecentPois,
+  resolveSharedEndpoint,
   HOME_NEXT_MIN_KM,
   HOME_RADIUS_OVERSHOOT,
   type DuePlace,
@@ -507,6 +508,42 @@ check('next home ride starts at the arrival, leaves it, and stays in the home ri
     assert.ok(kmBetween(pick.poi, arrival) >= HOME_NEXT_MIN_KM, `${pick.poi.name} is next door`);
     assert.ok(kmBetween(pick.poi, DA_COSTAKADE) <= radiusKm * HOME_RADIUS_OVERSHOOT + 1e-9, `${pick.poi.name} left the ring`);
   }
+});
+
+// ---------------------------------------------------------------------------
+// Share-link endpoint names (teaser capture 2026-10-22): `#race=` boots kept the
+// setup screen's routeTo, so a boat link from the Stopera up the Amstel past the
+// Amstel Hotel showed "to Rijksmuseum" and "Anne Frank House → Rijksmuseum".
+// ---------------------------------------------------------------------------
+check('share-link boat ride on the Amstel (Stopera → Amstel Hotel) is not named Rijksmuseum', () => {
+  const to = resolveSharedEndpoint(AMS_POIS, { lat: 52.3587, lng: 4.9043 }, 'finish');
+  const from = resolveSharedEndpoint(AMS_POIS, { lat: 52.3676, lng: 4.9002 }, 'start', { excludeId: to.id });
+  for (const end of [from, to]) {
+    assert.ok(!/Rijksmuseum|Anne Frank/.test(end.name), `${end.name} is the setup default, not this place`);
+  }
+  assert.equal(to.id, 'shared-finish', 'an Amstel quay is not itself a destination');
+  assert.match(to.name, / \(nearby\)$/, `${to.name} must say it is only near the named place`);
+  assert.deepEqual([to.lat, to.lng], [52.3587, 4.9043], 'the finish stays where the link put it');
+});
+
+check('share-link Herengracht boat ride names neither end after the setup defaults', () => {
+  const to = resolveSharedEndpoint(AMS_POIS, { lat: 52.3656, lng: 4.8915 }, 'finish');
+  const from = resolveSharedEndpoint(AMS_POIS, { lat: 52.38, lng: 4.8895 }, 'start', { excludeId: to.id });
+  assert.ok(!/^(Rijksmuseum|Anne Frank House)$/.test(to.name), to.name);
+  assert.ok(!/^(Rijksmuseum|Anne Frank House)$/.test(from.name), from.name);
+});
+
+check('a share link that ends on a destination is that destination (stamps still count)', () => {
+  const rijks = AMS_POIS.find(poi => poi.name === 'Rijksmuseum')!;
+  const at = { lat: Number(rijks.lat.toFixed(4)), lng: Number(rijks.lng.toFixed(4)) };
+  const to = resolveSharedEndpoint(AMS_POIS, at, 'finish');
+  assert.equal(to.id, rijks.id);
+  assert.equal(to.name, 'Rijksmuseum');
+});
+
+check('a share link far from every destination gets an honest generic name', () => {
+  assert.equal(resolveSharedEndpoint(POIS, { lat: 52.40, lng: 4.80 }, 'finish').name, 'Shared finish');
+  assert.equal(resolveSharedEndpoint(POIS, { lat: 52.40, lng: 4.80 }, 'start').name, 'Shared start');
 });
 
 console.log(`Route selection OK: ${checks.length} checks.`);

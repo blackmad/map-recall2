@@ -2,7 +2,7 @@
 
 One page, numbers first. Gallery and release reviews cite sections of this
 file ("LOOK §Light", "LOOK §Corridor") instead of re-arguing taste. Values
-come from the shared-frame spike (`docs/research/own-renderer-spike-20261009.md`)
+come from the shared-frame spike (`docs/archive/research/own-renderer-spike-20261009.md`)
 and the look-consistency lane (2026-10-13). Code owners: `src/canalRecall/look/palette.ts`
 (colour), `src/canalRecall/rendererShared/lightRig.ts` (light).
 

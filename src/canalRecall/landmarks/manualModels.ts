@@ -2,7 +2,7 @@ import type {SignatureModelSpec} from './signaturePlacement';
 import culturalCatalogue from './manualCatalogue.json';
 import {manualEntryCategory} from '../buildingCategory';
 import hospitals from '../../../scripts/landmarks/hospital-footprints.json';
-const ownAttribution=(title:string,sourceUrl:string)=>({title,author:'Map Recall',sourceUrl,licence:'Original project asset',licenceUrl:'./LICENSE',modifications:'Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate.'});
+const ownAttribution=(title:string,sourceUrl:string)=>({title,author:'Ride Amsterdam',sourceUrl,licence:'CC BY 4.0',licenceUrl:'https://creativecommons.org/licenses/by/4.0/',modifications:'Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate.'});
 /** Hospital-survey ids that match no BAG tile feature and no pand alias (check:covers, 2026-10-13): nothing to hide. */
 const OLVG_STALE_SUPPRESS=new Set(['w274704704','NL.IMBAG.Pand.0363100012186327','w1837609','w12206467']);
 /** Every catalogued model, held ones included: the GLB builder needs them. */

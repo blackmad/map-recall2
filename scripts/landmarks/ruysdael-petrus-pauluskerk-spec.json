@@ -44,8 +44,8 @@
     "title": "Sint-Petrus-en-Pauluskerk Ruysdaelstraat",
     "author": "Map Recall",
     "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504689",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free draft guided by native BAG/OSM, semantic roof measurements and archived facade originals; no imported photo pixels or third-party mesh."
   },
   "draftAcceptance": "SOURCE/CPU SCOPED PASS. Native gallery/game/suppression/fallback/route/pin/card/performance pending.",

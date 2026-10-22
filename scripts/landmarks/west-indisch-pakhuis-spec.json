@@ -44,8 +44,8 @@
     "title": "West Indian Warehouse",
     "author": "Map Recall",
     "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1222",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; window axes, shutters, loading doors, string courses, trapezium gables with oeils-de-boeuf, the WIC pediment and cartouche measured by eye from municipal panoramas and the photographs listed in the research record, no pixels or meshes imported."
   },
   "buildingFootprint": {

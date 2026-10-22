@@ -30,8 +30,8 @@
     "title": "Beest Boulders Het Lab",
     "author": "Map Recall",
     "sourceUrl": "https://beestboulders.com/boulderen/het-lab-amsterdam/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free geometry based on survey polygons and municipal panorama observations; exact source suppression preserves adjacent east warehouse."
   }
 }

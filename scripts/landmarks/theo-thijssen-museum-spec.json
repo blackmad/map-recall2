@@ -39,8 +39,8 @@
     "title": "Theo Thijssen Museum",
     "author": "Map Recall",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Theo_Thijssen_Museum",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): brick corner house with bowed ground-floor shop window, cream cornice, white-framed upper windows and the birth plaque. Dimensions approximate, measured from a 2025 street-level panorama. No imported mesh or photo textures."
   },
   "buildingFootprint": {

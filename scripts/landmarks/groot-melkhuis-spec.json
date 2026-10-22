@@ -31,8 +31,8 @@
     "title": "Groot Melkhuis",
     "author": "Map Recall",
     "sourceUrl": "https://grootmelkhuis.nl/historie/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free reconstruction with exact BAG ground footprint, photo-backed hipped upper house/veranda/awnings. Roof surface simplified from photo with survey envelope; no imported mesh or pixels."
   }
 }

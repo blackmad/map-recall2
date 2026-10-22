@@ -19,23 +19,23 @@
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Canal Recall — learn Amsterdam by name</title>
+<title>Ride Amsterdam — learn the city by name</title>
 <meta name="description" content="Ride Amsterdam's real canals and streets in 3D and name each one before the map gives it away. A free learning game built from open city data.">
-<link rel="canonical" href="https://canalrecall.blackmad.com/">
+<link rel="canonical" href="https://rideamsterdam.nl/">
 <meta name="theme-color" content="#f4efe5">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Canal Recall">
-<meta property="og:title" content="Canal Recall — learn Amsterdam by name">
+<meta property="og:site_name" content="Ride Amsterdam">
+<meta property="og:title" content="Ride Amsterdam — learn the city by name">
 <meta property="og:description" content="Ride a boat or a bike through a 3D Amsterdam built from open city data, and name each canal and street before the map gives it away.">
-<meta property="og:url" content="https://canalrecall.blackmad.com/">
-<meta property="og:image" content="https://canalrecall.blackmad.com/assets/landing/share-landing.jpg">
+<meta property="og:url" content="https://rideamsterdam.nl/">
+<meta property="og:image" content="https://rideamsterdam.nl/assets/landing/share-landing.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Canal Recall: a boat on the Prinsengracht beside the Westerkerk, under a blue enamel street-plaque title">
+<meta property="og:image:alt" content="Ride Amsterdam: a boat on the Prinsengracht beside the Westerkerk, under a blue enamel street-plaque title">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Canal Recall — learn Amsterdam by name">
+<meta name="twitter:title" content="Ride Amsterdam — learn the city by name">
 <meta name="twitter:description" content="Ride a boat or a bike through a 3D Amsterdam built from open city data, and name each canal and street before the map gives it away.">
-<meta name="twitter:image" content="https://canalrecall.blackmad.com/assets/landing/share-landing.jpg">
+<meta name="twitter:image" content="https://rideamsterdam.nl/assets/landing/share-landing.jpg">
 <link rel="icon" type="image/svg+xml" href="quiz/app-icon.svg" data-dev-href="../app-icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,7 +74,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* Top bar */
 .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: max(16px, env(safe-area-inset-top)); padding-bottom: 8px; }
-.wordmark { display: inline-flex; align-items: center; padding: 12px 20px 11px; font: 800 20px/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: #fff; text-decoration: none; }
+.wordmark { display: inline-flex; align-items: center; padding: calc(11.5px - .05em) calc(20px - .04em) calc(11.5px + .05em) calc(20px + .04em); font: 800 20px/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: #fff; text-decoration: none; }
 .top nav { display: flex; align-items: center; gap: clamp(10px, 2.4vw, 26px); }
 .top nav a { font: 700 15px/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 10px 2px; }
 .top nav a:hover { color: var(--copper-ink); }
@@ -153,6 +153,28 @@ footer p a { color: var(--muted); }
 .tour strong { font: 800 20px/1 var(--display); letter-spacing: 0.04em; text-transform: uppercase; }
 .tour small { font-size: 14px; color: var(--muted); }
 
+/* Stats strip: counted from the shipped data by scripts/landing/content-stats.ts. */
+section.stats { padding: 0 0 clamp(44px, 6vw, 80px); }
+.stats-grid { list-style: none; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); margin: 0; padding: clamp(20px, 2.6vw, 30px) 0 0; border-top: 2px solid var(--ink); }
+.stats-grid li { display: flex; flex-direction: column; gap: 6px; min-width: 0; padding: 0 clamp(10px, 1.4vw, 20px); border-left: 1px solid var(--line-strong); }
+.stats-grid li:first-child { border-left: 0; padding-left: 0; }
+.stat-n { font: 800 clamp(2.5rem, 4.2vw, 3.6rem)/0.9 var(--display); letter-spacing: -0.01em; color: var(--enamel); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stats-grid span { font: 700 15px/1.15 var(--display); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-wrap: balance; }
+
+/* Motion, only when the visitor allows it (the script adds .motion to <html>). */
+.motion .reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms cubic-bezier(.2,.8,.2,1), transform 600ms cubic-bezier(.2,.8,.2,1); }
+.motion .reveal.in { opacity: 1; transform: none; }
+.stamp:active { transform: translateY(1px) scale(.985); box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 3px 8px rgba(138,85,36,.3); transition-duration: 60ms; }
+.quiet { transition: border-color 140ms, background 140ms, transform 160ms cubic-bezier(.2,.8,.2,1); }
+.quiet:hover { transform: translateY(-1px); }
+.quiet:active { transform: translateY(1px) scale(.985); background: var(--sunk); transition-duration: 60ms; }
+
+/* Video loops: laid over the still, shown only once frames are playing; the still is the poster and the fallback. */
+.hero .desk, .way .frame, .idea .frame { position: relative; } /* .hero .phone is already positioned */
+video.loop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 400ms; pointer-events: none; }
+.way video.loop { object-position: center top; }
+video.loop.on { opacity: 1; }
+
 /* The feedback module adds its own floating launcher; this page has a button for it. */
 .cf-launch { display: none !important; }
 
@@ -162,11 +184,13 @@ footer p a { color: var(--muted); }
   .idea, .idea.flip { grid-template-columns: 1fr; }
   .idea.flip .prose { order: 0; }
   .help { grid-template-columns: 1fr; align-items: start; }
+  .stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 24px; }
+  .stats-grid li:nth-child(3n+1) { border-left: 0; padding-left: 0; }
 }
 @media (max-width: 759px) {
   body { font-size: 16px; }
   .top nav .hide-sm { display: none; }
-  .wordmark { font-size: 17px; padding: 11px 16px 10px; }
+  .wordmark { font-size: 17px; padding: calc(10.5px - .05em) calc(16px - .04em) calc(10.5px + .05em) calc(16px + .04em); }
   .hero { padding-top: 20px; gap: 28px; }
   .hero .shot { padding: 0; width: min(100%, 360px); margin: 0 auto; }
   .hero .desk { display: none; }
@@ -175,12 +199,17 @@ footer p a { color: var(--muted); }
   .ways { grid-template-columns: 1fr; }
   .way .row > * { flex: 1 1 auto; }
   .help .row > * { flex: 1 1 100%; }
+  .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
+  .stats-grid li:nth-child(3n+1) { border-left: 1px solid var(--line-strong); padding-left: clamp(10px, 1.4vw, 20px); }
+  .stats-grid li:nth-child(2n+1) { border-left: 0; padding-left: 0; }
+  .stat-n { font-size: 2.6rem; }
+  .stats-grid span { font-size: 14px; }
 }
 </style>
 </head>
 <body>
 <header class="wrap top">
-  <a class="wordmark enamel-plaque enamel-framed" href="/?home" data-dev-href="landing.html" aria-label="Canal Recall home">Canal Recall</a>
+  <a class="wordmark enamel-plaque enamel-framed" href="/?home" data-dev-href="landing.html" aria-label="Ride Amsterdam home">Ride Amsterdam</a>
   <nav aria-label="Site">
     <a href="/quiz/" data-dev-href="../">Quiz</a>
     <a class="hide-sm" href="explore.html">Buildings</a>
@@ -208,14 +237,30 @@ footer p a { color: var(--muted); }
       <p class="fine">Free, in the browser, on desktop or phone. No account needed.</p>
     </div>
     <div class="shot">
-      <div class="frame desk"><img src="assets/landing/ride-desktop.webp" width="1200" height="750" alt="Canal Recall on a desktop: a boat on the Prinsengracht beside the Westerkerk tower, with a card about the Anne Frank House" fetchpriority="high"></div>
-      <div class="frame phone"><img src="assets/landing/ride-phone.webp" width="600" height="1298" alt="Canal Recall on a phone: a boat on the Prinsengracht, with the on-screen steering pad"></div>
+      <div class="frame desk" data-loop="desk"><img src="assets/landing/ride-desktop.webp" width="1200" height="750" alt="Ride Amsterdam on a desktop: a boat on the Prinsengracht beside the Westerkerk tower, with a card about the Anne Frank House" fetchpriority="high"></div>
+      <div class="frame phone" data-loop="phone"><img src="assets/landing/ride-phone.webp" width="600" height="1298" alt="Ride Amsterdam on a phone: a boat on the Prinsengracht, with the on-screen steering pad"></div>
     </div>
   </div>
 
+  <section class="stats" aria-label="What is in the game">
+    <div class="wrap">
+      <!-- content-stats:start -->
+      <!-- Generated by scripts/landing/content-stats.ts from the shipped data; exact counts in data/content-stats.json. -->
+      <ul class="stats-grid">
+        <li data-stat="buildingsModelled"><strong class="stat-n" data-count="480" data-plus>480+</strong><span>buildings modelled by hand</span></li>
+        <li data-stat="placesToVisit"><strong class="stat-n" data-count="370" data-plus>370+</strong><span>places to ride to</span></li>
+        <li data-stat="factsToDiscover"><strong class="stat-n" data-count="8100" data-plus>8,100+</strong><span>facts to discover</span></li>
+        <li data-stat="streetsAndCanals"><strong class="stat-n" data-count="5500" data-plus>5,500+</strong><span>streets and canals to name</span></li>
+        <li data-stat="neighbourhoods"><strong class="stat-n" data-count="78">78</strong><span>neighbourhoods to collect</span></li>
+        <li data-stat="zooAnimals"><strong class="stat-n" data-count="39">39</strong><span>animals in the zoo</span></li>
+      </ul>
+      <!-- content-stats:end -->
+    </div>
+  </section>
+
   <section class="band" aria-labelledby="idea-title">
     <div class="wrap">
-      <div class="idea">
+      <div class="idea reveal">
         <div class="prose">
           <h2 id="idea-title">Answer first. Then the map tells&nbsp;you.</h2>
           <p>Ride along a real canal and a question card asks which one you are on. <strong>Nothing on screen gives it away:</strong> no labels on the water, no street names on the route. Pick from the choices, or type it on harder settings, and only then does the name appear.</p>
@@ -226,7 +271,7 @@ footer p a { color: var(--muted); }
         </figure>
       </div>
 
-      <div class="idea flip">
+      <div class="idea flip reveal">
         <div class="prose">
           <h3>Wrong today, back tomorrow</h3>
           <p>Every name you meet joins your knowledge. The ones you miss come back on a later ride, spaced out until you know them; the ones you know stop being asked.</p>
@@ -237,14 +282,14 @@ footer p a { color: var(--muted); }
         </figure>
       </div>
 
-      <div class="idea">
+      <div class="idea reveal">
         <div class="prose">
           <h3>A city you will recognise</h3>
           <p>The canals, streets and bridges come from OpenStreetMap; the buildings from the Dutch building registry and its 3D heights. Landmarks and canal houses are modelled from photographs, one by one, so the Westerkerk looks like the Westerkerk.</p>
           <p><a href="explore.html">Explore the modelled buildings</a></p>
         </div>
         <figure>
-          <div class="frame"><img src="assets/landing/buildings.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Canal houses, houseboats and bridges along the Prinsengracht, seen from the boat"></div>
+          <div class="frame" data-loop="landmark"><img src="assets/landing/buildings.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Canal houses, houseboats and bridges along the Prinsengracht, seen from the boat"></div>
         </figure>
       </div>
     </div>
@@ -253,9 +298,9 @@ footer p a { color: var(--muted); }
   <section aria-labelledby="ways-title">
     <div class="wrap">
       <h2 id="ways-title">Two ways in</h2>
-      <div class="ways">
+      <div class="ways reveal">
         <article class="way">
-          <div class="frame"><img src="assets/landing/ride-wide.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Cycling along the Prinsengracht quay in Canal Recall"></div>
+          <div class="frame" data-loop="ride"><img src="assets/landing/ride-wide.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Cycling along the Prinsengracht quay in Ride Amsterdam"></div>
           <h3>Ride</h3>
           <p>A boat on the canals or a bike on the streets, from a surprise start, your home, or wherever you are standing.</p>
           <div class="row"><a class="stamp" href="/ride" data-dev-href="./">Start a ride</a></div>
@@ -277,7 +322,7 @@ footer p a { color: var(--muted); }
         <p>Ride a theme stop by stop, by bike. Each arrival says why the place is on the list, with its source; finish them all for a tour stamp. The stops stay a surprise until you reach them.</p>
       </div>
       <!-- Titles from public/data/extracts/amsterdam/tours.json; the ride reads ?tour=<id>. -->
-      <ul class="tours">
+      <ul class="tours reveal">
         <li><a class="tour" href="/ride?tour=jewish-amsterdam" data-dev-href="./?tour=jewish-amsterdam"><strong>Jewish Amsterdam</strong><small>7 stops</small></a></li>
         <li><a class="tour" href="/ride?tour=golden-age-canal-ring" data-dev-href="./?tour=golden-age-canal-ring"><strong>Golden Age canal ring</strong><small>5 stops</small></a></li>
         <li><a class="tour" href="/ride?tour=art-museums" data-dev-href="./?tour=art-museums"><strong>Art museums</strong><small>7 stops</small></a></li>
@@ -291,7 +336,7 @@ footer p a { color: var(--muted); }
   </section>
 
   <section class="band" aria-labelledby="help-title">
-    <div class="wrap help">
+    <div class="wrap help reveal">
       <div class="prose">
         <h2 id="help-title">Spot something wrong?</h2>
         <p>A canal with the wrong name, a bridge you can't cross, a building that doesn't look like itself, or one you'd like to see modelled next. Tell us: reports go straight to the people building it.</p>
@@ -312,6 +357,7 @@ footer p a { color: var(--muted); }
       <a href="explore.html">Buildings</a>
       <a href="/quiz/" data-dev-href="../">Quiz</a>
       <a href="/progress" data-dev-href="../progress">My progress</a>
+      <a href="https://github.com/blackmad/map-recall2">Source on GitHub</a>
     </nav>
     <p>Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors. Buildings from BAG and 3DBAG. Adapted from <a href="https://github.com/a1anw2/smokeysandthebandit">Smokey’s and the Bandit</a> (GPL-3.0).</p>
   </div>
@@ -343,6 +389,106 @@ footer p a { color: var(--muted); }
   });
   document.getElementById('request-building').addEventListener('click', function () {
     feedback({ id: 'landing:building-request', label: 'Building request (from the landing page)' });
+  });
+})();
+</script>
+<script>
+// Motion: section reveals, the stats counting up, and video loops over the stills.
+// Without JS, with prefers-reduced-motion, or without IntersectionObserver the page
+// stays as authored: final numbers, every section visible, still images.
+(function () {
+  // Video loops, keyed by each frame's data-loop. Rename here at merge time.
+  // Each name is tried as <dir><name>.webm then .mp4; a missing file leaves the still.
+  var LOOP_DIR = 'https://media.rideamsterdam.nl/loops/'; // R2 bucket; videos are not in git
+  var LOOPS = {
+    desk: 'ride-question',    // .hero .desk
+    phone: 'phone-ride',      // .hero .phone
+    ride: 'boat-bridge',      // "Two ways in": Ride card
+    landmark: 'intro-flight'  // "A city you will recognise"
+  };
+  var FORMATS = [['webm', 'video/webm'], ['mp4', 'video/mp4']];
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!('IntersectionObserver' in window) || (reduce && reduce.matches)) return;
+  var root = document.documentElement;
+  root.classList.add('motion');
+  var videos = [];
+  if (reduce && reduce.addEventListener) reduce.addEventListener('change', function (e) {
+    if (!e.matches) return;
+    root.classList.remove('motion');
+    videos.forEach(function (v) { v.pause(); v.classList.remove('on'); });
+  });
+  var still = function () { return reduce && reduce.matches; };
+
+  // Reveals: once, as each block scrolls in.
+  var revealer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); revealer.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { revealer.observe(el); });
+
+  // Stats: count up from zero the first time the strip is on screen.
+  var fmt = function (n, plus) { return n.toLocaleString('en-GB') + (plus ? '+' : ''); };
+  var counter = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      counter.unobserve(e.target);
+      var el = e.target, to = +el.getAttribute('data-count'), plus = el.hasAttribute('data-plus'), t0 = 0;
+      var step = function (t) {
+        t0 = t0 || t;
+        var k = Math.min(1, (t - t0) / 1100);
+        el.textContent = fmt(k < 1 ? Math.round(to * (1 - Math.pow(1 - k, 3))) : to, plus);
+        if (k < 1 && !still()) requestAnimationFrame(step); else el.textContent = fmt(to, plus);
+      };
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.stat-n[data-count]').forEach(function (el) {
+    if (!(+el.getAttribute('data-count') > 0)) return;
+    el.textContent = fmt(0, el.hasAttribute('data-plus'));
+    counter.observe(el);
+  });
+
+  // Loops: created lazily, loaded when near the viewport, paused off it. The still
+  // underneath is the poster; the video fades in only once it is actually playing.
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (saveData) return;
+  var probe = document.createElement('video');
+  var types = FORMATS.filter(function (f) { return probe.canPlayType && probe.canPlayType(f[1]); }).map(function (f) { return f[0]; });
+  if (!types.length) return;
+  var player = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var v = e.target._loop;
+      if (!v) return;
+      if (e.isIntersecting && !still()) {
+        if (!v.getAttribute('src')) v.src = v._srcs[v._i];
+        var p = v.play();
+        if (p && p.catch) p.catch(function () { /* autoplay refused: the still stays */ });
+      } else if (!v.paused) v.pause();
+    });
+  }, { rootMargin: '200px 0px' });
+  document.querySelectorAll('[data-loop]').forEach(function (frame) {
+    var name = LOOPS[frame.getAttribute('data-loop')];
+    var img = frame.querySelector('img');
+    if (!name || !img) return;
+    var v = document.createElement('video');
+    v.className = 'loop';
+    v.muted = v.defaultMuted = v.loop = v.playsInline = true;
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+    v.preload = 'none';
+    v.poster = img.currentSrc || img.src;
+    v._srcs = types.map(function (ext) { return LOOP_DIR + name + '.' + ext; });
+    v._i = 0;
+    v.addEventListener('playing', function () { v.classList.add('on'); });
+    v.addEventListener('error', function () {
+      v._i += 1;
+      if (v._i < v._srcs.length) { v.src = v._srcs[v._i]; v.play().catch(function () {}); return; }
+      player.unobserve(frame); frame._loop = null; v.remove();
+      videos = videos.filter(function (x) { return x !== v; });
+    });
+    frame._loop = v;
+    frame.appendChild(v);
+    videos.push(v);
+    player.observe(frame);
   });
 })();
 </script>

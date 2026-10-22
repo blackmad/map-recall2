@@ -46,8 +46,8 @@
     "title": "Haparandaweg 13 original architecture",
     "author": "Map Recall",
     "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012104964",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native metre geometry. Private source archive 77019d7c738212ccec9a5c8c58e6ce3749ed7bc4 models/haparandaweg-13. Ordinary requested building, no automatic POI added."
   },
   "buildingFootprint": {

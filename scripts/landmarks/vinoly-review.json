@@ -120,7 +120,7 @@
     "desktopPanScope": "Actual gameplay pan and retained textured ordinary frontages/doors; original unpaused rider drift 0.001097 world units within driver0.01 tolerance, not an exact stationary assertion.",
     "performance": "runtime-followup/report.json viOnlyComparison: four90-frame samples;29 other signature entries invariant; current Vi replacement versus restored ordinary fallback; median16.7ms andp95~16.8ms both. Scene/VSync-limited comparison, not standalone model GPU timing.",
     "streetEyeScope": "Requested1.8m public Claude Debussylaan eye, actualpitch87.96 andzoom22; transient diagnostic maxPitch89; doors exposed without foreground neighbor. Zoom max clamp means pose approximate, not calibrated photograph match or default gameplay camera setting.",
-    "independentReview": "docs/landmarks/vinoly-independent-current-e25e6203-20261007.md",
+    "independentReview": "docs/archive/landmarks/vinoly-independent-current-e25e6203-20261007.md",
     "terminal": "Shared fulltower/wide/near native wrappers and affected followup exit0/browser closed; first runtime exit1/browserclosed preserved."
   },
   "preservedCurrentFailures": [

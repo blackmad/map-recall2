@@ -31,8 +31,8 @@
     "title": "Afrikahuis",
     "author": "Map Recall",
     "sourceUrl": "https://amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native reconstruction of raised octagonal church, limestone facades, glazed stairs and taller presbytery. Source archive c3ffff8f22f2261b6869975cf8453ba11eecaa5f models/afrikahuis. Photo-guided undercroft supports and seven-riser fan stairs; no third-party meshes or pixels."
   }
 }

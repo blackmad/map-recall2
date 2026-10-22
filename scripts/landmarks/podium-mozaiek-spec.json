@@ -39,8 +39,8 @@
     "title": "Podium Mozaïek",
     "author": "Map Recall",
     "sourceUrl": "https://data.amsterdam.nl/monumenten/f3d3ac3d-299c-4e46-9fdc-06abe8606e48",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native geometry; reference images guide shapes only."
   },
   "materialOverrides": {

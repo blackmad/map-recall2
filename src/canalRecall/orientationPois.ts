@@ -127,6 +127,9 @@ export interface SpoilerIndex {
   /** Lower-cased raw names, for the basemap's exact-match filter, which can
    *  only `downcase` (not strip punctuation or accents). */
   lowerRaw: Set<string>;
+  /** Normalised full names only (no stems), for compound prefixes: a word
+   *  that starts with one ("keizersgrachtkerk") names it. */
+  full?: Set<string>;
 }
 
 export function normaliseSpoilerName(name: string): string {
@@ -143,12 +146,14 @@ export function normaliseSpoilerName(name: string): string {
 export function buildSpoilerIndex(names: Iterable<string>): SpoilerIndex {
   const index = new Set<string>();
   const lowerRaw = new Set<string>();
+  const full = new Set<string>();
   for (const raw of names) {
     if (!raw) continue;
     const name = normaliseSpoilerName(raw);
     if (name.length >= SPOILER_MIN_LENGTH) lowerRaw.add(raw.trim().toLowerCase());
     if (name.length < SPOILER_MIN_LENGTH) continue;
     index.add(name);
+    full.add(name);
     for (const suffix of DUTCH_NAME_SUFFIXES) {
       if (!name.endsWith(suffix)) continue;
       const stem = name.slice(0, -suffix.length).trim();
@@ -156,17 +161,25 @@ export function buildSpoilerIndex(names: Iterable<string>): SpoilerIndex {
       break;
     }
   }
-  return { names: index, lowerRaw };
+  return { names: index, lowerRaw, full };
 }
 
 /** True when any run of 1–5 consecutive words in the label is a quiz name or
- *  its stem. */
+ *  its stem, or a word is a Dutch compound that starts with a full quiz name:
+ *  "Keizersgrachtkerk" on the Keizersgracht said the answer while the n-grams
+ *  passed it (spoiler audit 2026-10-22). Stems are not prefix-matched, or
+ *  "Herenhuis" would count for the Herengracht. */
 export function poiNameSpoils(label: string | null | undefined, index: SpoilerIndex | null): boolean {
   if (!label || !index || index.names.size === 0) return false;
   const words = normaliseSpoilerName(label).split(' ').filter(Boolean);
   for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words.length); size++) {
     for (let start = 0; start + size <= words.length; start++) {
       if (index.names.has(words.slice(start, start + size).join(' '))) return true;
+    }
+  }
+  if (index.full && index.full.size) {
+    for (const word of words) {
+      for (let n = SPOILER_MIN_LENGTH; n < word.length; n++) if (index.full.has(word.slice(0, n))) return true;
     }
   }
   return false;
@@ -229,6 +242,28 @@ export function maskSpoiledName(
   }
   out += label.slice(cursor);
   return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
+}
+
+/**
+ * Whether a street label on the ride's map would spell out the name being
+ * asked. The map keeps the names the rider has learned (other streets may
+ * show: Prinsengracht stays written while Spiegelgracht is asked, teaser
+ * 2026-10-22), but never the asked one, in any form: the same name with other
+ * case or punctuation, a compound that starts with it ("Keizersgrachtbrug",
+ * "Nieuwe Prinsengracht"), a label whose words are the asked name's stem
+ * ("Majoor Bosshardt" for the Majoor Bosshardtbrug), or a bridge whose
+ * printed official name says it while its raw way name does not.
+ * `printed` is what the label would show; `raw` is the way's own name.
+ */
+export function mapLabelSpoils(raw: string, printed: string | null | undefined, asked: string | null | undefined): boolean {
+  if (!asked || !raw) return false;
+  const index = buildSpoilerIndex([asked]);
+  if (!index.names.size) return normaliseSpoilerName(raw) === normaliseSpoilerName(asked);
+  for (const text of printed && printed !== raw ? [raw, printed] : [raw]) {
+    if (poiNameSpoils(text, index)) return true;
+    if (maskSpoiledName(text, [asked], '') !== text) return true;
+  }
+  return false;
 }
 
 // ---------------------------------------------------------------------------

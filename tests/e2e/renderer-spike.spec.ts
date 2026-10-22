@@ -2,7 +2,7 @@ import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
 
-// Own-renderer spike (docs/research/own-renderer-spike-20261009.md). Opt-in:
+// Own-renderer spike (docs/archive/research/own-renderer-spike-20261009.md). Opt-in:
 //   RENDERER_SPIKE=1 PW_PORT=4415 npx playwright test renderer-spike --project=desktop
 //   RENDERER_SPIKE=1 PW_PORT=4415 npx playwright test renderer-spike --project=iphone
 // "same viewpoint" puts the game's bike on Raadhuisstraat by the Westerkerk,

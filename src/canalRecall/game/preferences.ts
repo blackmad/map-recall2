@@ -174,6 +174,8 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     cityId: DEFAULT_CITY_ID,
     difficulty: 'medium',
     ...DIFFICULTY_PRESETS.medium,
+    // Boat and North up are the product start (2026-10-22, user's call;
+    // setup offers no view picker, the in-ride settings do).
     travelMode: 'boat',
     controlMode: 'relative',
     viewMode: 'north',

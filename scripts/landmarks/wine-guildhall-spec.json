@@ -30,8 +30,8 @@
     "title": "Wijnkopersgildehuis",
     "author": "Map Recall",
     "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/3051",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free flat-colour house style; actual BAG holed plan and variable measured roof regions constrain newly generated geometry. Principal facade follows actual northeast13.856m street boundary0\u21929 with source-supported six sash groups, three reconstructed neck tops, sober block ornament and right-half1633 Saint Urbanus portal. Thin front masonry support stays on true perimeter. No neighboring buildings or source pixels/lettering/imported mesh. Superseded partywall9\u219210 and rear10\u219214 facade placements failed native acceptance."
   }
 }

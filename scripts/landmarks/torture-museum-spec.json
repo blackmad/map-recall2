@@ -40,8 +40,8 @@
     "title": "Torture Museum",
     "author": "Map Recall",
     "sourceUrl": "https://en.wikipedia.org/wiki/Torture_Museum,_Amsterdam",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): dark steel-and-glass shopfront, three brick storeys with white-framed windows, stone cornice and blade sign. Window positions approximate, measured from a 2025 street-level panorama. No imported mesh or photo textures."
   },
   "buildingFootprint": {

@@ -25,7 +25,7 @@ export function attributionFor(name: string, prov: Provenance, rec: NonNullable<
   const lic = photos.map(p => p.licence);
   const licence = lic.some(l => /BY-SA/i.test(l)) ? {licence: 'CC BY-SA 4.0', licenceUrl: 'https://creativecommons.org/licenses/by-sa/4.0/'}
     : lic.some(l => /^CC BY/i.test(l)) ? {licence: 'CC BY 4.0', licenceUrl: 'https://creativecommons.org/licenses/by/4.0/'}
-      : {licence: 'Original project asset', licenceUrl: './LICENSE'};
+      : {licence: 'CC BY 4.0', licenceUrl: 'https://creativecommons.org/licenses/by/4.0/'};
   const routes = [...new Set(rec.figures.map(f => /TRELLIS/.test(prov.figures[f.name]?.route ?? f.route ?? '') ? 'TRELLIS.2 multi-view' : 'TripoSR single-view'))].join(' and ');
   const authors = [...new Set(photos.map(p => p.author.replace(/ \(uploader; no Artist field\)$/, '')))];
   const sculptor = prov.sculptor ? `${prov.sculptor.name}${prov.sculptor.year ? ` (${prov.sculptor.year})` : ''}` : 'unknown sculptor';

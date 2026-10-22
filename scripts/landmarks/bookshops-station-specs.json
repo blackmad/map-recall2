@@ -32,8 +32,8 @@
       "title": "Athenaeum bookshop / Nieuwscentrum",
       "author": "Map Recall",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam_Athenaeum_Boekhandel.jpg",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
     },
     "relatedLandmarkIds": [
@@ -73,8 +73,8 @@
       "title": "Scheltema / Rokin 9\u201315",
       "author": "Map Recall",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:2022_Rokin_9-15,_Asd_(01).jpg",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
     }
   },
@@ -111,8 +111,8 @@
       "title": "Haarlemmermeerstation",
       "author": "Map Recall",
       "sourceUrl": "https://www.museumtramlijn.org/station/",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
     }
   }

@@ -68,7 +68,7 @@ test('the panel offers the GLB with its size and the licence line', () => {
   assert.deepEqual(view.pandLines, ['BAG pand 0363100012164998', 'BAG pand 0363100012168591', 'BAG pand 0363100012174220', '+1 more']);
   assert.equal(view.wiki, 'https://en.wikipedia.org/wiki/Westerkerk');
   assert.equal(view.licence, LICENCE);
-  assert.equal(LICENCE_LINE, 'CC BY 4.0 · credit Canal Recall, 3DBAG, BAG and OpenStreetMap contributors; see credits.html');
+  assert.equal(LICENCE_LINE, 'CC BY 4.0 · credit Ride Amsterdam, 3DBAG, BAG and OpenStreetMap contributors; see credits.html');
   assert.equal(view.kindLabel, 'Landmark');
   assert.equal(downloadName({ id: 'a b/c' }), 'canal-recall-a-b-c.glb');
 });

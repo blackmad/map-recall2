@@ -44,8 +44,8 @@
     "title": "Brandweerkazerne Victor",
     "author": "Map Recall",
     "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-victor/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original native BAG/3DBAG texturefree reconstruction guided by2025 municipality views and2021 photographs. Exact roof surfaces, paired arched apparatus portals, twin corner gables, balcony and authentic small Roman-serif sign. No thirdparty meshes/pixels. Rear stair/room and terrace opening groups follow2024existingsections A/B/E, crosscheckedagainst1911ACHTERGEVEL drawing; precisehorizontalproportions approximated. Northschoolpartywall remainsblank."
   },
   "buildingFootprint": {

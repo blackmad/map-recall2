@@ -124,6 +124,175 @@ export function findCrossedBridge<T extends CrossableBridge>(
   return null;
 }
 
+// ---- Crossing the water, not just the deck ----
+//
+// The gate test above fires for any step through a gate drawn across any edge
+// of a bridge's geometry, and 158 of Amsterdam's 415 bridges are mapped only as
+// deck outlines. Where a cross street's bridge meets a quay, the outline's
+// bank-side edge runs along the quay, its gate lies across the quay, and a
+// rider going straight along the canal was asked "Which waterway are you
+// crossing?" for the canal beside them: Prinsengracht at the
+// Nieuwe-Wercksbrug (Westermarkt), teaser ride 2026-10-22. So a street
+// crossing with a known waterway asks only when the rider's track crosses that
+// waterway's centreline, steeply enough, on the deck.
+
+/** The track is judged over this much riding, so a wiggle on the deck does not count. */
+export const CROSSING_TRAIL_METRES = 18;
+/** The smoothed track must cross the water centreline at least this steeply (degrees). */
+export const CROSSING_MIN_ANGLE_DEG = 35;
+/** The water crossing must lie on (or this close to) the bridge's mapped geometry. */
+export const CROSSING_DECK_METRES = 14;
+
+/** A short memory of where the rider has been, by distance travelled. */
+export class TrackTrail {
+  private points: WorldPoint[] = [];
+  constructor(private readonly keepPx: number, private readonly stepPx = 3) {}
+
+  reset(): void { this.points = []; }
+
+  push(point: WorldPoint): void {
+    const last = this.points[this.points.length - 1];
+    if (last && Math.hypot(point.x - last.x, point.y - last.y) < this.stepPx) return;
+    this.points.push({ x: point.x, y: point.y });
+    // Trim from the front while the rest still covers `keepPx`.
+    let length = 0;
+    for (let i = this.points.length - 1; i > 0; i--) {
+      length += Math.hypot(this.points[i].x - this.points[i - 1].x, this.points[i].y - this.points[i - 1].y);
+      if (length >= this.keepPx) { this.points.splice(0, i - 1); break; }
+    }
+  }
+
+  /** The point about `backPx` of travel behind `current` (the oldest kept when the trail is shorter). */
+  pointBack(current: WorldPoint, backPx: number): WorldPoint {
+    let left = backPx;
+    let at = current;
+    for (let i = this.points.length - 1; i >= 0; i--) {
+      const p = this.points[i];
+      const d = Math.hypot(p.x - at.x, p.y - at.y);
+      if (d >= left) {
+        const f = left / (d || 1);
+        return { x: at.x + (p.x - at.x) * f, y: at.y + (p.y - at.y) * f };
+      }
+      left -= d;
+      at = p;
+    }
+    return at;
+  }
+}
+
+function crossingAngleDeg(p: WorldPoint, q: WorldPoint, a: WorldPoint, b: WorldPoint): number {
+  const ux = q.x - p.x, uy = q.y - p.y, vx = b.x - a.x, vy = b.y - a.y;
+  const cross = Math.abs(ux * vy - uy * vx);
+  const dot = Math.abs(ux * vx + uy * vy);
+  return Math.atan2(cross, dot) * 180 / Math.PI;
+}
+
+function intersection(p: WorldPoint, q: WorldPoint, a: WorldPoint, b: WorldPoint): WorldPoint {
+  const d = (q.x - p.x) * (b.y - a.y) - (q.y - p.y) * (b.x - a.x);
+  const t = d ? ((a.x - p.x) * (b.y - a.y) - (a.y - p.y) * (b.x - a.x)) / d : 0;
+  return { x: p.x + (q.x - p.x) * t, y: p.y + (q.y - p.y) * t };
+}
+
+function isClosedRing(line: readonly WorldPoint[]): boolean {
+  if (line.length < 4) return false;
+  const a = line[0], b = line[line.length - 1];
+  return Math.abs(a.x - b.x) < 1e-6 && Math.abs(a.y - b.y) < 1e-6;
+}
+
+function insideRing(point: WorldPoint, ring: readonly WorldPoint[]): boolean {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const a = ring[i], b = ring[j];
+    if ((a.y > point.y) !== (b.y > point.y) && point.x < (b.x - a.x) * (point.y - a.y) / (b.y - a.y) + a.x) inside = !inside;
+  }
+  return inside;
+}
+
+/** Whether `point` is on the bridge: inside a deck outline, or within `rangePx` of any of its lines. */
+export function onBridgeDeck(lines: readonly (readonly WorldPoint[])[], point: WorldPoint, rangePx: number): boolean {
+  for (const line of lines) {
+    if (isClosedRing(line) && insideRing(point, line)) return true;
+    for (let i = 1; i < line.length; i++) if (distanceToSegment(point, line[i - 1], line[i]) <= rangePx) return true;
+  }
+  return false;
+}
+
+export interface WaterCrossable extends CrossableBridge {
+  crossings: ReadonlyArray<WorldPoint & { waterLines?: WorldPoint[][] }>;
+}
+
+export interface WaterCrossingOptions {
+  /** Where the rider was CROSSING_TRAIL_METRES of travel ago (TrackTrail.pointBack). */
+  trailStart: WorldPoint;
+  deckRangePx: number;
+  minAngleDeg?: number;
+  /** Crossings further than this from the rider are not tested. */
+  searchPx: number;
+}
+
+/**
+ * The crossing whose water this step actually crossed: the step and the
+ * smoothed track (trail start → now) both cross a centreline segment of the
+ * crossing's waterway, at `minAngleDeg` or steeper, at a point on the deck.
+ * Riding along the canal, on a quay or over a junction deck, never crosses
+ * its centreline.
+ */
+export function findWaterCrossing<T extends WaterCrossable>(
+  bridges: readonly T[],
+  previous: WorldPoint,
+  current: WorldPoint,
+  { trailStart, deckRangePx, minAngleDeg = CROSSING_MIN_ANGLE_DEG, searchPx }: WaterCrossingOptions,
+): { bridge: T; crossing: T['crossings'][number] } | null {
+  for (const bridge of bridges) {
+    for (const crossing of bridge.crossings) {
+      if (!crossing.waterLines || !crossing.waterLines.length) continue;
+      if (Math.hypot(crossing.x - current.x, crossing.y - current.y) > searchPx) continue;
+      for (const line of crossing.waterLines) {
+        for (let i = 1; i < line.length; i++) {
+          const a = line[i - 1], b = line[i];
+          if (!segmentsIntersect(previous, current, a, b)) continue;
+          if (!segmentsIntersect(trailStart, current, a, b)) continue;
+          if (crossingAngleDeg(trailStart, current, a, b) < minAngleDeg) continue;
+          if (!onBridgeDeck(bridge.lines, intersection(previous, current, a, b), deckRangePx)) continue;
+          return { bridge, crossing };
+        }
+      }
+    }
+  }
+  return null;
+}
+
+/**
+ * The gate test for crossings with no water geometry (no waterway identified,
+ * or none mapped nearby). Deck outlines are skipped when the bridge has a
+ * mapped way, since an outline's bank-side edge runs along the quay; and the
+ * smoothed track must run along the gated span (within `maxOffAxisDeg`), not
+ * across it. A bridge mapped only as an outline has no travel axis to trust
+ * and asks nothing here.
+ */
+export function findGateCrossing<T extends CrossableBridge>(
+  bridges: readonly T[],
+  previous: WorldPoint,
+  current: WorldPoint,
+  trailStart: WorldPoint,
+  gateHalfWidth: number,
+  maxOffAxisDeg = 90 - CROSSING_MIN_ANGLE_DEG,
+): T | null {
+  for (const bridge of bridges) {
+    for (const line of bridge.lines) {
+      if (isClosedRing(line)) continue;
+      for (let i = 1; i < line.length; i++) {
+        const a = line[i - 1], b = line[i];
+        const gate = bridgeGate(a, b, gateHalfWidth);
+        if (!segmentsIntersect(previous, current, gate[0], gate[1])) continue;
+        if (crossingAngleDeg(trailStart, current, a, b) > maxOffAxisDeg) continue;
+        return bridge;
+      }
+    }
+  }
+  return null;
+}
+
 // ---- What a crossing asks ----
 
 export type CrossingQuestionKind = 'water' | 'bridge';

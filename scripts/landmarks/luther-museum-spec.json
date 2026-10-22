@@ -39,8 +39,8 @@
     "title": "Wittenberg / Luther Museum Amsterdam",
     "author": "Map Recall",
     "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/525060",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native BAG parent with two courtyards and later wing; surveyed supported roof domains, photo-guided original apertures and stone entrances. Scale1. Window dimensions and trim depths approximate; no imported mesh or photo textures."
   }
 }

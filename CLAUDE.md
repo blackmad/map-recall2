@@ -80,6 +80,12 @@ working behavior, and leave it easier for the next session to continue.
   bridges, boundaries, and split same-name ways, use measured tolerances,
   hysteresis, deduplication, and regression coverage rather than assumptions.
 
+## Building work
+
+- Adding or improving buildings (landmarks, large recipes, block faces, house
+  types): start with `docs/START-HERE-buildings.md`. It holds the setup, the
+  three kinds of building work, the acceptance bar and the hand-back report.
+
 ## Current architecture notes
 
 - Canal Recall is served from `public/canal-drive/`; much of its runtime is

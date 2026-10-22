@@ -32,8 +32,8 @@
       "title": "Sexmuseum Venustempel",
       "author": "Map Recall",
       "sourceUrl": "https://sexmuseumamsterdam.nl/",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
     }
   },
@@ -70,8 +70,8 @@
       "title": "Oude Lutherse Kerk",
       "author": "Map Recall",
       "sourceUrl": "https://www.luthersamsterdam.nl/orgel",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "modifications": "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
     }
   }

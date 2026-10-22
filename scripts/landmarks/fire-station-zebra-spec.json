@@ -43,8 +43,8 @@
     "title": "Kazerne Zebra",
     "author": "Map Recall",
     "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-zebra/",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Original texture-free native BAG brick station, three red truck doors, gray metal office bay and ribbon clerestory, offset hose tower. No third-party meshes or photo pixels."
   }
 }

@@ -13,7 +13,7 @@ Inputs: `scripts/ride-perf-fixed-route.mjs` (Anne Frank Huis →
 Rijksmuseum, map render / three layers / draw calls / heap),
 `tests/e2e/ride-perf.spec.ts`, `docs/performance/` (method, earlier
 numbers), the memory note on profiling (CDP `Profiler.start` stalls
-~1.7 s; ignore), `docs/research/own-renderer-spike-20261009.md`. Lane owns
+~1.7 s; ignore), `docs/archive/research/own-renderer-spike-20261009.md`. Lane owns
 the perf scripts, `docs/performance/desktop-20261013.md`, and the fixes it
 makes in the modules it names (one commit per fix, each with its own
 before/after); ≤ 10 reported lines in `vector-map.js`. Do not edit

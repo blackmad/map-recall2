@@ -17,7 +17,7 @@ const BUILDING_FADE_IN = ['interpolate', ['linear'], ['zoom'], 15, 0, 15.6, 1];
 // before load) bring back the old flat look for A/B comparison.
 const GENERIC_FACADES_DEFAULT = true;
 const STYLISED_TREES_DEFAULT = true;
-// Phase 1 of docs/research/own-renderer-spike-20261009.md (2026-10-10): every
+// Phase 1 of docs/archive/research/own-renderer-spike-20261009.md (2026-10-10): every
 // three.js layer (facades, landmarks, trees, pyramidal roofs, ARTIS, vehicles)
 // draws through one renderer / scene / light rig (src/canalRecall/
 // rendererShared/), with lit facades and sun shadows. On in practice: the own
@@ -2246,8 +2246,9 @@ class VectorBasemap {
     );
   }
 
-  setPlayerBoat(player, loader, visible) {
+  setPlayerBoat(player, loader, visible, zoomScale = 1) {
     if (!this._playerBoat || !player || !loader) return;
+    this._playerBoat.zoomScale = zoomScale;
     const surface = this._riderSurface();
     if (surface && visible && typeof this._playerBoat.setAltitude === 'function') {
       // Per-polder water (own ground): the boat floats at the level of the water it is on, not one city-wide plane.
@@ -2284,17 +2285,25 @@ class VectorBasemap {
     }
   }
 
-  setPlayerFerry(player, loader, visible) {
+  setPlayerFerry(player, loader, visible, zoomScale = 1) {
+    if (this._playerFerry) this._playerFerry.zoomScale = zoomScale;
     // Own ground: the ferry floats on the sunken water like the boat, not at street level.
     const surface = this._ownGround && this._ownGround.ready ? this._ownGround : null;
     if (this._playerFerry && typeof this._playerFerry.setAltitude === 'function') this._playerFerry.setAltitude(surface ? surface.waterLevelAt(this.worldToLngLat(player.x, player.y, loader)) + 0.22 : 0.22);
     this._playerFerry?.update(this.worldToLngLat(player.x, player.y, loader), player.angle, visible);
   }
 
+  /** CSS-pixel box of the drawn chase mesh (`bike`, `boat`, `ferry`, `transit`), or null while it is not drawn. */
+  playerScreenBox(kind) {
+    const vehicle = { bike: this._playerBike, boat: this._playerBoat, ferry: this._playerFerry, transit: this._playerTransit }[kind];
+    return vehicle && vehicle.ready && vehicle.visible ? vehicle.screenBox || null : null;
+  }
+
   isPlayerFerryReady() { return !!this._playerFerry?.ready; }
 
-  setPlayerTransit(player, loader, visible, underground = false) {
+  setPlayerTransit(player, loader, visible, underground = false, zoomScale = 1) {
     if (!this._playerTransit || !player || !loader) return;
+    this._playerTransit.zoomScale = zoomScale;
     if (typeof this._playerTransit.setAltitude === 'function') {
       // Metro GTFS shapes are ground projections of tunnels — drop the mesh so
       // it does not sit inside extruded buildings along the corridor.

@@ -36,3 +36,33 @@ export function utilityVisibility({ state, utilityOpen }: UtilityInput): Utility
 export function revealOnEnter(enteringTuckable: boolean, introRunning: boolean): boolean {
   return enteringTuckable && !introRunning;
 }
+
+export interface ScreenRect { left: number; top: number; right: number; bottom: number }
+
+/** Clearance kept between a utility button and a card it would touch, in CSS px. */
+export const UTILITY_CARD_CLEARANCE = 6;
+
+/**
+ * Whether any utility button would sit on (or within `clearance` of) an open
+ * card, such as the question card. Then the cluster stays tucked whatever
+ * reveal is running: on a 390×844 phone "Report a problem" covered the fourth
+ * answer and settings / help covered "No idea" (teaser capture 2026-10-22;
+ * a tap on the map or a key press revealed them over the card). Measured from
+ * the live layout, so a docked desktop card that does not reach the corner
+ * leaves the cluster alone.
+ */
+export function utilityBlockedByCards(
+  buttons: readonly ScreenRect[],
+  cards: readonly (ScreenRect | null | undefined)[],
+  clearance = UTILITY_CARD_CLEARANCE,
+): boolean {
+  for (const card of cards) {
+    if (!card || card.right <= card.left || card.bottom <= card.top) continue;
+    for (const b of buttons) {
+      if (b.right <= b.left || b.bottom <= b.top) continue;
+      if (b.left < card.right + clearance && b.right > card.left - clearance
+        && b.top < card.bottom + clearance && b.bottom > card.top - clearance) return true;
+    }
+  }
+  return false;
+}
