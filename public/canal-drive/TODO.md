@@ -679,6 +679,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+- **Seen while filming the teaser (2026-10-22, unverified in code):**
+  (1) boat rides show the destination as "Rijksmuseum" / "Anne Frank House →
+  Rijksmuseum" while the route ends on the Amstel or Herengracht; the share
+  link seems to keep the old destination name. (2) Phone layout: "Report a
+  problem" covers the fourth answer button (`media/loops/phone-ride.jpg`).
+  (3) A "Prinsengracht" map label was on screen while the Spiegelgracht
+  question was open: a different street, but check it against the
+  never-reveal rule. Pin each as a named regression before fixing.
 - **Road rendering: surveyed BGT surfaces replace OSM bands (user, 2026-10-16;
   plan `docs/plans/road-surfaces-roof-rules-20261016.md` Part 1, approved
   2026-10-16, user chose BGT polygons over patching the band model).**

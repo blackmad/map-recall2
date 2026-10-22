@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## 2026-10-22 — Teaser video and landing loops
+
+A ~49 s 90s-CD-ROM teaser (Win95 window, boot screen, starburst captions)
+cut from real captured gameplay: rides steered along the game's planned
+route with real key presses, Map Quest from production (the local copy has
+no map key), the explorer from the dev server. 1080p and vertical cuts, each
+with and without the synthesized FM soundtrack (user: "the trailer really
+does not need music"), in `public/canal-drive/media/teaser/`; four silent
+seamless loops in `media/loops/` feed the landing hero and cards. Regenerate
+with `teaser:capture`, `teaser:edit [h] [v] [--no-music|--music-only]`,
+`teaser:loops` (capture through /tmp/canal-pw.sh when present); the edit cuts
+on event markers the capture records. Fonts are OFL; the music is original.
+
 ## 2026-10-22 — Models are CC BY 4.0; repo tidy
 
 User's call: the original 3D models carry CC BY 4.0. Every model attribution
