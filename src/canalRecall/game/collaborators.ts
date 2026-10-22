@@ -124,6 +124,8 @@ export interface Track {
   roadIndex?: RoadSpatialIndex | null;
   startPoint: WorldPoint;
   finishPoint: WorldPoint;
+  /** Set per frame by the presentation: the START pill's centre y, kept off the vehicle (vehicleScreenBox.ts). */
+  placeStartTag?: ((centreX: number, defaultCentreY: number, pill: { width: number; height: number }) => number) | null;
   /** The name of the way under a point, or '' where nothing is mapped. */
   /** Prefer `preferredAngle` at junctions so the cross street is not named. */
   getRoadName(x: number, y: number, preferredAngle?: number | null): string;
@@ -246,10 +248,12 @@ export interface VectorMap {
   setLandmarkView?(view: { pitchDeg: number; leadM: number }): void;
   setPlayerBike(player: unknown, loader: OsmLoader, visible: boolean, zoomScale?: number): void;
   setFerryTerminals?(track: Track, loader: OsmLoader): void;
-  setPlayerFerry?(player: unknown, loader: OsmLoader, visible: boolean): void;
+  setPlayerFerry?(player: unknown, loader: OsmLoader, visible: boolean, zoomScale?: number): void;
   isPlayerFerryReady?(): boolean;
   setPlayerBoat(player: unknown, loader: OsmLoader, visible: boolean, zoomScale?: number): void;
-  setPlayerTransit?(player: unknown, loader: OsmLoader, visible: boolean, underground?: boolean): void;
+  setPlayerTransit?(player: unknown, loader: OsmLoader, visible: boolean, underground?: boolean, zoomScale?: number): void;
+  /** CSS-pixel box of the drawn chase mesh of this kind, or null when it is not on screen. */
+  playerScreenBox?(kind: 'bike' | 'boat' | 'ferry' | 'transit'): import('./vehicleScreenBox').ScreenBox | null;
   isPlayerBikeReady(): boolean;
   isPlayerBoatReady(): boolean;
   isPlayerTransitReady?(): boolean;

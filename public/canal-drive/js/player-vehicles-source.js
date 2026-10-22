@@ -1,5 +1,6 @@
 // three.js is shared across the 3D bundles — see three-runtime-source.js.
 import { enuDirectionInLocal, SUN_DIRECTION } from '../../../src/canalRecall/rendererShared/lightRig.ts';
+import { multiplyMat4, projectLocalBox } from '../../../src/canalRecall/game/vehicleScreenBox.ts';
 
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 
@@ -111,6 +112,9 @@ class Vehicle3D {
     this.surfacePitch = 0;
     /** Set per frame by the game for the camera zoom; see vehicleZoomScale.ts. */
     this.zoomScale = 1;
+    /** CSS-pixel box of the drawn mesh, updated each frame it draws; null otherwise. */
+    this.screenBox = null;
+    this._localBox = null;
     this.layer = this._makeLayer();
     // `?sharedFrame=1`: draw in the shared frame's overlay pass, which runs
     // last in MapLibre's frame (so the x-ray still sees every building's
@@ -142,10 +146,11 @@ class Vehicle3D {
     this.sharedFrame.register(id, {
       root: this._scene,
       onAttach: frame => { this._renderer = frame.renderer; this._loadModel(modelUrl); },
-      beforeRender: () => {
-        if (!this.ready || !this.visible || !this.lngLat || !this._modelRoot) return false;
+      beforeRender: (ctx) => {
+        if (!this.ready || !this.visible || !this.lngLat || !this._modelRoot) { this.screenBox = null; return false; }
         this._modelRoot.scale.setScalar(this.options.gameScale * this.viewportScale() * (this.zoomScale || 1));
         this._pose(this._modelRoot);
+        if (ctx && ctx.clipFromWorld && ctx.worldFromMercator) this._updateScreenBox(multiplyMat4(ctx.clipFromWorld.elements, ctx.worldFromMercator.elements));
         this.map.triggerRepaint();
         return true;
       },
@@ -190,6 +195,18 @@ class Vehicle3D {
       .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
   }
 
+  /**
+   * The mesh's CSS-pixel box this frame (`screenBox`, null while not drawn), from its local bounds, scale and
+   * pose transform under the frame's clip-from-Mercator matrix. The START tag keeps off it (vehicleScreenBox.ts).
+   */
+  _updateScreenBox(clipFromMercator) {
+    const box = this._localBox;
+    const container = this.map.getContainer && this.map.getContainer();
+    if (!box || !container) { this.screenBox = null; return; }
+    const clipFromLocal = multiplyMat4(clipFromMercator, this._transform().elements);
+    this.screenBox = projectLocalBox(clipFromLocal, box.min, box.max, this._modelRoot.scale.x, container.clientWidth, container.clientHeight);
+  }
+
   setAltitude(metres) {
     const value = Number(metres);
     this.altitudeM = Number.isFinite(value) ? value : 0.22;
@@ -204,6 +221,7 @@ class Vehicle3D {
     this.lngLat = lngLat;
     this.angle = angle || 0;
     this.visible = !!visible;
+    if (!this.visible) this.screenBox = null;
     this.map.triggerRepaint();
   }
 
@@ -268,6 +286,10 @@ class Vehicle3D {
     this._xrayTwins = this._twins.length > 0;
     const model = new THREE.Group();
     model.add(imported);
+    // Bounds in the model frame (before the per-frame game scale): what `_updateScreenBox` projects.
+    model.updateMatrixWorld(true);
+    const local = new THREE.Box3().setFromObject(imported);
+    this._localBox = { min: [local.min.x, local.min.y, local.min.z], max: [local.max.x, local.max.y, local.max.z] };
     this._bind(imported);
     model.scale.setScalar(gameScale);
     this._scene.add(model);
@@ -353,6 +375,7 @@ class Vehicle3D {
         owner._modelRoot.scale.setScalar(owner.options.gameScale * owner.viewportScale() * (owner.zoomScale || 1));
         owner._pose(owner._modelRoot);
         const transform = owner._transform();
+        owner._updateScreenBox(Array.from(args.defaultProjectionData.mainMatrix));
         camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(transform);
         sun.position.fromArray(enuDirectionInLocal(transform.elements, SUN_DIRECTION));
         sky.position.fromArray(enuDirectionInLocal(transform.elements, [0, 0, 1]));
