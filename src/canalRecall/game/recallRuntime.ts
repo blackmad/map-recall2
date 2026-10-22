@@ -8,6 +8,7 @@
 // Methods are copied onto `Game.prototype` by `game.js`, so `this` is the Game
 // instance. The interface merged into the class below is what types it.
 
+import { t } from '../../i18n/index.ts';
 import {
   advanceRouteQuiz,
   ROUTE_QUIZ_RETEST_METRES,
@@ -72,6 +73,17 @@ function shuffle<T>(items: T[]): T[] {
 }
 
 export interface GameRecallRuntime extends RecallHost {}
+
+
+/** The quiz chip's words, by subject; the icon and kind stay in `QUIZ_SUBJECTS`. */
+const SUBJECT_I18N = {
+  street: { label: 'prompt.label.street', placeholder: 'prompt.placeholder.street' },
+  waterway: { label: 'prompt.label.waterway', placeholder: 'prompt.placeholder.waterway' },
+  water: { label: 'prompt.label.water', placeholder: 'prompt.placeholder.water' },
+  bridge: { label: 'prompt.label.bridge', placeholder: 'prompt.placeholder.bridge' },
+  line: { label: 'prompt.label.line', placeholder: 'prompt.placeholder.line' },
+  stop: { label: 'prompt.label.stop', placeholder: 'prompt.placeholder.stop' },
+} as const;
 
 export class GameRecallRuntime {
   // ---- Store and account row ----
@@ -508,7 +520,7 @@ export class GameRecallRuntime {
       kind: 'route',
       name: decision.name,
       subject: routeBridge ? 'bridge' : profile.quizRouteSubject,
-      question: routeBridge ? 'Which bridge are you on?' : profile.quizRouteQuestion,
+      question: routeBridge ? t('ride.question.bridge') : profile.quizRouteQuestion,
       context: routeQuizContext({
         onBridge: !!routeBridge,
         transit: isTransit(this.travelMode),
@@ -931,11 +943,15 @@ export class GameRecallRuntime {
     const chip = QUIZ_SUBJECTS[subject] || QUIZ_SUBJECTS.water;
     this._promptKind.dataset.kind = chip.kind;
     (this._promptKind.firstElementChild as HTMLElement).innerHTML = chip.icon;
-    this._promptKindLabel.textContent = chip.label;
+    // The chip's own label and placeholder are read at ask time, so a question
+    // asked after a language switch speaks the new language; a question already
+    // on screen keeps the words it was asked in.
+    const subjectKey = (SUBJECT_I18N[subject] ? subject : 'water') as keyof typeof SUBJECT_I18N;
+    this._promptKindLabel.textContent = t(SUBJECT_I18N[subjectKey].label);
     this._promptHeading.textContent = question;
     this._promptQuestion.textContent = context;
-    this._promptInput.setAttribute('aria-label', `${chip.label} name`);
-    this._promptInput.placeholder = chip.placeholder;
+    this._promptInput.setAttribute('aria-label', t(SUBJECT_I18N[subjectKey].placeholder));
+    this._promptInput.placeholder = t(SUBJECT_I18N[subjectKey].placeholder);
     this._prompt.style.display = 'flex';
     const playerScreen = this.camera.worldToScreen(this.player.x, this.player.y);
     this._prompt.classList.toggle('dock-left', playerScreen.x > CANVAS_W / 2);

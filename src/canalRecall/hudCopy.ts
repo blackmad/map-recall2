@@ -2,6 +2,11 @@
 //
 // Gameplay clarity review 2026-10-17: a bare "0 / 0 · 0 pts" on the plaque
 // read as a mystery fraction. "named" says what the left number counts.
+//
+// The words themselves come from the message catalog, so the plaque follows
+// the player's language without the canvas runtime knowing any English.
+
+import { t } from '../i18n/index.ts';
 
 export interface TallyInput {
   correct: number;
@@ -14,14 +19,15 @@ export interface TallyInput {
 }
 
 export function scoreTally({ correct, attempts, points, gamey, compact = false }: TallyInput): string {
-  const fraction = compact ? `${correct}/${attempts} named` : `${correct} / ${attempts} named`;
+  const fraction = compact ? t('hud.tallyCompact', { correct, attempts }) : t('hud.tally', { correct, attempts });
   if (!gamey) return fraction;
-  return compact ? `${fraction} · ${points} pts` : `${fraction}  ·  ${points} pts`;
+  const points_ = t('hud.points', { points });
+  return compact ? `${fraction} · ${points_}` : `${fraction}  ·  ${points_}`;
 }
 
 /** The camera zoom flash. A lone "65%" read as a loading bar. */
 export function zoomBadgeText(zoom: number): string {
-  return `Zoom ${Math.round(zoom * 100)}%`;
+  return t('hud.zoom', { percent: Math.round(zoom * 100) });
 }
 
 /**

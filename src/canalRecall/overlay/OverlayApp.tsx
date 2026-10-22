@@ -27,6 +27,8 @@ import {
   TRAVEL_ICONS,
   VIEW_ICONS,
 } from './enamelIcons.tsx';
+import { LANGUAGES, setLanguage, type Language } from '../../i18n/index.ts';
+import { useLanguage, useT, type Translate } from '../../i18n/useT.ts';
 
 /** The ride's own links to the landing page and Map Quest, by where this page is served. */
 const siteLinksHere = canalPageLinks(typeof location === 'undefined' ? '/' : location.pathname);
@@ -196,6 +198,45 @@ function ChoiceRow<T extends string>({
   );
 }
 
+/**
+ * The language switch. Drawn as the same paper tile pair as every other
+ * choice, and present both on route setup and in the live settings panel so a
+ * player can change language without leaving the ride.
+ */
+function LanguageRow({ idPrefix = '' }: { idPrefix?: string }) {
+  const t = useT();
+  const active = useLanguage();
+  return (
+    <div className="setup-choice-row toggles language-row" role="radiogroup" aria-label={t('language.label')}>
+      <div className="setup-choice-label"><span>{t('language.label')}</span></div>
+      <div className="setup-choice-options">
+        {LANGUAGES.map(code => {
+          const name = t(code === 'nl' ? 'language.nl' : 'language.en');
+          return (
+            <button
+              key={code}
+              id={`${idPrefix}language-${code}`}
+              type="button"
+              className={`setup-choice enamel-tile${active === code ? ' active' : ''}`}
+              aria-pressed={active === code}
+              aria-label={name}
+              title={name}
+              lang={code}
+              data-choice={`language:${code}`}
+              onClick={() => setLanguage(code as Language)}
+            >
+              <span className="setup-choice-text">
+                <strong>{t(code === 'nl' ? 'language.nlShort' : 'language.enShort')}</strong>
+                <small>{name}</small>
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function CitySelect({
   value,
   onChange,
@@ -205,14 +246,15 @@ function CitySelect({
   onChange: (value: CanalPreferences['cityId']) => void;
   options: readonly Choice<CanalPreferences['cityId']>[];
 }) {
+  const t = useT();
   return (
     <label className="setup-field enamel-field setup-city-select">
-      <span className="setup-choice-label">City</span>
+      <span className="setup-choice-label">{t('setup.city')}</span>
       <select
         id="city-id"
         value={value}
         onChange={event => onChange(event.target.value as CanalPreferences['cityId'])}
-        aria-label="City"
+        aria-label={t('setup.city')}
       >
         {options.map(option => (
           <option key={option.value} value={option.value}>{option.title}</option>
@@ -227,48 +269,65 @@ const CITY_OPTIONS: Choice<CanalPreferences['cityId']>[] = playableCities().map(
   title: city.name,
 }));
 
-const TRAVEL: Choice<CanalPreferences['travelMode']>[] = [
-  { value: 'boat', title: 'Boat' },
-  { value: 'car', title: 'Bike' },
-  { value: 'transit', title: 'Transit' },
+/**
+ * Choice rows are built from the catalog rather than declared as constants:
+ * a module-level `title: 'Boat'` would be frozen in the language that happened
+ * to be active when the bundle loaded, and a toggle would leave the setup
+ * screen half translated.
+ */
+const travelChoices = (t: Translate): Choice<CanalPreferences['travelMode']>[] => [
+  { value: 'boat', title: t('setup.travel.boat') },
+  { value: 'car', title: t('setup.travel.bike') },
+  { value: 'transit', title: t('setup.travel.transit') },
 ];
 
-const VIEW: Choice<CanalPreferences['viewMode']>[] = [
-  { value: 'north', title: 'North up', hint: 'Flat map, north at top' },
-  { value: 'heading', title: 'Heading up', hint: 'Flat map, turns with you' },
-  { value: 'chase', title: 'Chase', hint: 'High 3D, behind the vehicle' },
-  { value: 'cockpit', title: 'Cockpit', hint: 'Low 3D, over the bumper' },
+const viewChoices = (t: Translate): Choice<CanalPreferences['viewMode']>[] => [
+  { value: 'north', title: t('setup.view.north'), hint: t('setup.view.northHint') },
+  { value: 'heading', title: t('setup.view.heading'), hint: t('setup.view.headingHint') },
+  { value: 'chase', title: t('setup.view.chase'), hint: t('setup.view.chaseHint') },
+  { value: 'cockpit', title: t('setup.view.cockpit'), hint: t('setup.view.cockpitHint') },
 ];
 
-const BUILDING_LOOK: Choice<CanalPreferences['buildingLook']>[] = [
-  { value: 'photo', title: 'Photo', hint: 'Brick and sash windows' },
-  { value: 'procedural', title: 'Painted', hint: 'Fitted windows and doors' },
-  { value: 'storybook', title: 'Storybook', hint: 'Softly painted, natural colours' },
-  { value: 'cartoon', title: 'Cartoon', hint: 'Flat, bold, cel-shaded' },
-  { value: 'untextured', title: 'Untextured', hint: 'Plain colours, lightest on the phone' },
+const buildingLookChoices = (t: Translate): Choice<CanalPreferences['buildingLook']>[] => [
+  { value: 'photo', title: t('setup.look.photo'), hint: t('setup.look.photoHint') },
+  { value: 'procedural', title: t('setup.look.procedural'), hint: t('setup.look.proceduralHint') },
+  { value: 'storybook', title: t('setup.look.storybook'), hint: t('setup.look.storybookHint') },
+  { value: 'cartoon', title: t('setup.look.cartoon'), hint: t('setup.look.cartoonHint') },
+  { value: 'untextured', title: t('setup.look.untextured'), hint: t('setup.look.untexturedHint') },
 ];
 
-const ROUTE: Choice<CanalPreferences['routePattern']>[] = [
-  { value: 'surprise', title: 'Surprise', hint: 'Landmark to landmark' },
-  { value: 'home', title: 'Home', hint: 'Nearby first, expands as you learn' },
-  { value: 'here', title: 'Here', hint: 'Start from where you are now' },
+const routeChoices = (t: Translate): Choice<CanalPreferences['routePattern']>[] => [
+  { value: 'surprise', title: t('setup.route.surprise'), hint: t('setup.route.surpriseHint') },
+  { value: 'home', title: t('setup.route.home'), hint: t('setup.route.homeHint') },
+  { value: 'here', title: t('setup.route.here'), hint: t('setup.route.hereHint') },
 ];
 
-const CONTROLS: Choice<CanalPreferences['controlMode']>[] = [
-  { value: 'relative', title: 'Steer', hint: 'Left and right turn the vehicle' },
-  { value: 'absolute', title: 'Point', hint: 'Push the way you want to go' },
+const controlChoices = (t: Translate): Choice<CanalPreferences['controlMode']>[] => [
+  { value: 'relative', title: t('options.controls.steer'), hint: t('options.controls.steerHint') },
+  { value: 'absolute', title: t('options.controls.point'), hint: t('options.controls.pointHint') },
 ];
 
-const ASK_BUDGET_CHOICES: Choice<string>[] = [
+const askBudgetChoices = (t: Translate): Choice<string>[] => [
   { value: '1', title: '1' },
   { value: '2', title: '2' },
   { value: '3', title: '3' },
-  { value: '0', title: 'Off' },
+  { value: '0', title: t('common.off') },
 ];
 
-const ANSWERS: Choice<CanalPreferences['answerMode']>[] = [
-  { value: 'multiple', title: 'Choose', hint: 'Pick from a few names' },
-  { value: 'typing', title: 'Type', hint: 'Spell the name yourself' },
+const answerChoices = (t: Translate): Choice<CanalPreferences['answerMode']>[] => [
+  { value: 'multiple', title: t('options.answers.choose'), hint: t('options.answers.chooseHint') },
+  { value: 'typing', title: t('options.answers.type'), hint: t('options.answers.typeHint') },
+];
+
+const difficultyMain = (t: Translate): Choice<CanalPreferences['difficulty']>[] => [
+  { value: 'easy', title: t('setup.difficulty.easy') },
+  { value: 'medium', title: t('setup.difficulty.medium') },
+  { value: 'hard', title: t('setup.difficulty.hard') },
+];
+
+const difficultyExtra = (t: Translate): Choice<CanalPreferences['difficulty']>[] => [
+  { value: 'expert', title: t('setup.difficulty.expert') },
+  { value: 'custom', title: t('setup.difficulty.custom') },
 ];
 
 /**
@@ -290,71 +349,73 @@ function RideOptions({
   const id = (setupId: string, liveId: string) => (live ? liveId : setupId);
   const name = (base: string) => (live ? `live-${base}` : base);
   const threeD = prefs.viewMode === 'chase' || prefs.viewMode === 'cockpit';
+  const t = useT();
+  const views = viewChoices(t);
   return (
     <>
       {live ? (
         <ChoiceRow
-          label="View"
+          label={t('setup.view')}
           name={name('view')}
           value={prefs.viewMode}
           onChange={value => set({ viewMode: value })}
-          options={VIEW}
+          options={views}
           icons={VIEW_ICONS}
           layout="icons"
           showCurrent
-          gloss={VIEW.find(option => option.value === prefs.viewMode)?.hint}
+          gloss={views.find(option => option.value === prefs.viewMode)?.hint}
           keepGloss
         />
       ) : null}
       {live && threeD ? (
         <>
-          <RangeRow label="3D tilt" keys="[ ]" id="live-tilt" min={CAMERA_TILT_MIN} max={CAMERA_TILT_MAX} step="1"
+          <RangeRow label={t('options.tilt')} keys="[ ]" id="live-tilt" min={CAMERA_TILT_MIN} max={CAMERA_TILT_MAX} step="1"
             value={prefs.cameraTilt} onChange={cameraTilt => set({ cameraTilt })} />
-          <RangeRow label="3D spin" keys="Shift + [ ]" id="live-bearing" min="-180" max="180" step="5"
+          <RangeRow label={t('options.spin')} keys="Shift + [ ]" id="live-bearing" min="-180" max="180" step="5"
             value={prefs.cameraBearing} onChange={cameraBearing => set({ cameraBearing })} />
         </>
       ) : null}
-      <RangeRow label="Zoom" id={id('camera-zoom', 'live-zoom')} min="0.1" max="1.3" step="0.05"
+      <RangeRow label={t('options.zoom')} id={id('camera-zoom', 'live-zoom')} min="0.1" max="1.3" step="0.05"
         value={prefs.zoom} onChange={zoom => set({ zoom })} />
       <ChoiceRow
-        label="Building look"
+        label={t('setup.look')}
         name={name('building-look')}
         value={prefs.buildingLook}
         onChange={value => set({ buildingLook: value })}
-        options={BUILDING_LOOK}
+        options={buildingLookChoices(t)}
       />
       <ChoiceRow
-        label="Controls"
+        label={t('options.controls')}
         name={name('controls')}
         value={prefs.controlMode}
         onChange={value => set({ controlMode: value })}
-        options={CONTROLS}
+        options={controlChoices(t)}
       />
       <ChoiceRow
-        label="Answers"
+        label={t('options.answers')}
         name={name('answers')}
         value={prefs.answerMode}
         onChange={value => set({ answerMode: value })}
-        options={ANSWERS}
+        options={answerChoices(t)}
       />
       <ChoiceRow
-        label="Questions a minute"
+        label={t('options.asksPerMinute')}
         name={name('asks-per-minute')}
         value={String(prefs.maxAsksPerMinute)}
         onChange={value => set({ maxAsksPerMinute: Number(value) as CanalPreferences['maxAsksPerMinute'] })}
-        options={ASK_BUDGET_CHOICES}
+        options={askBudgetChoices(t)}
         layout="strip"
-        gloss="Route questions asked per minute while you ride. Off still shows each street name after you pass it."
+        gloss={t('options.asksPerMinuteGloss')}
       />
-      <ToggleGroup label="On the map">
-        <ToggleTile id={id('assist-line', 'live-line')} checked={prefs.line} onChange={line => set({ line })} title="Route line" />
-        <ToggleTile id={id('assist-arrow', 'live-arrow')} checked={prefs.arrow} onChange={arrow => set({ arrow })} title="Arrow" hint="Points at the destination" />
-        <ToggleTile id={id('assist-minimap', 'live-minimap')} checked={prefs.minimap} onChange={minimap => set({ minimap })} title="Minimap" />
-        <ToggleTile id={id('gamey-features', 'live-gamey')} checked={prefs.gamey} onChange={gamey => set({ gamey })} title="Scores" hint="Points, streaks and ribbons" />
+      <ToggleGroup label={t('options.onTheMap')}>
+        <ToggleTile id={id('assist-line', 'live-line')} checked={prefs.line} onChange={line => set({ line })} title={t('options.routeLine')} />
+        <ToggleTile id={id('assist-arrow', 'live-arrow')} checked={prefs.arrow} onChange={arrow => set({ arrow })} title={t('options.arrow')} hint={t('options.arrowHint')} />
+        <ToggleTile id={id('assist-minimap', 'live-minimap')} checked={prefs.minimap} onChange={minimap => set({ minimap })} title={t('options.minimap')} />
+        <ToggleTile id={id('gamey-features', 'live-gamey')} checked={prefs.gamey} onChange={gamey => set({ gamey })} title={t('options.scores')} hint={t('options.scoresHint')} />
       </ToggleGroup>
-      <ToggleGroup label="Comfort & detail">
-        <ToggleTile id={id('reduced-motion', 'live-reduced-motion')} checked={prefs.reducedMotion} onChange={reducedMotion => set({ reducedMotion })} title="Less motion" />
-        <ToggleTile id={id('trees-enabled', 'live-trees')} checked={prefs.trees} onChange={trees => set({ trees })} title="Trees" />
+      <ToggleGroup label={t('options.comfort')}>
+        <ToggleTile id={id('reduced-motion', 'live-reduced-motion')} checked={prefs.reducedMotion} onChange={reducedMotion => set({ reducedMotion })} title={t('options.lessMotion')} />
+        <ToggleTile id={id('trees-enabled', 'live-trees')} checked={prefs.trees} onChange={trees => set({ trees })} title={t('options.trees')} />
       </ToggleGroup>
     </>
   );
@@ -362,8 +423,8 @@ function RideOptions({
 
 const HOME_RADIUS_STORAGE_KEY = 'canalRecall.homeLearningRadius.v1';
 
-function homeLearningNote(prefs: CanalPreferences): string {
-  const base = 'Saved · starts nearby, expands as you learn · boats use nearby water';
+function homeLearningNote(prefs: CanalPreferences, t: Translate): string {
+  const base = t('setup.homeAddress.saved');
   if (prefs.routePattern !== 'home') return base;
   try {
     const raw = localStorage.getItem(HOME_RADIUS_STORAGE_KEY);
@@ -372,13 +433,13 @@ function homeLearningNote(prefs: CanalPreferences): string {
     const address = (prefs.homeAddress || '').trim();
     if (!address || saved.address !== address || saved.cityId !== prefs.cityId) return base;
     if (!(typeof saved.radiusKm === 'number') || !(saved.radiusKm > 0)) return base;
-    return `Learning near home · ~${saved.radiusKm.toFixed(1)} km · expands as you learn`;
+    return t('setup.homeAddress.learning', { km: saved.radiusKm.toFixed(1) });
   } catch {
     return base;
   }
 }
 
-function briefingMission(prefs: CanalPreferences): string {
+function briefingMission(prefs: CanalPreferences, t: Translate): string {
   const city = playableCities().find((entry) => entry.id === prefs.cityId);
   let homeKm = 0;
   try {
@@ -391,38 +452,31 @@ function briefingMission(prefs: CanalPreferences): string {
     }
   } catch { /* ignore */ }
   const brief = missionBrief({
-    destinationName: prefs.routePattern === 'home' ? 'home' : 'your destination',
+    // A named home rides the Home pattern, which never prints the destination;
+    // an unnamed one lets the brief use its own localized placeholder.
+    destinationName: prefs.routePattern === 'home' ? t('mission.home') : '',
     travelMode: prefs.travelMode === 'boat' ? 'boat'
       : prefs.travelMode === 'transit' ? 'transit' : 'car',
     routePattern: prefs.routePattern,
-    cityName: city?.name || 'the city',
+    cityName: city?.name || t('mission.city'),
     homeLearningRadiusKm: homeKm,
   });
   return brief.tease ? `${brief.line} · ${brief.tease}` : brief.line;
 }
 
-const DIFFICULTY_MAIN: Choice<CanalPreferences['difficulty']>[] = [
-  { value: 'easy', title: 'Easy' },
-  { value: 'medium', title: 'Medium' },
-  { value: 'hard', title: 'Hard' },
-];
-
-const DIFFICULTY_EXTRA: Choice<CanalPreferences['difficulty']>[] = [
-  { value: 'expert', title: 'Expert' },
-  { value: 'custom', title: 'Custom' },
-];
-
 type KnowledgeFilter = KnowledgeStatus | 'all';
 
-const KNOWLEDGE_FILTERS: Array<{ value: KnowledgeFilter; label: string }> = [
-  { value: 'due', label: 'Due' },
-  { value: 'learning', label: 'Learning' },
-  { value: 'known', label: 'Known' },
-  { value: 'mastered', label: 'Mastered' },
-  { value: 'all', label: 'All' },
-];
+function knowledgeFilters(t: Translate): Array<{ value: KnowledgeFilter; label: string }> {
+  return [
+    { value: 'due', label: t('knowledge.filter.due') },
+    { value: 'learning', label: t('knowledge.filter.learning') },
+    { value: 'known', label: t('knowledge.filter.known') },
+    { value: 'mastered', label: t('knowledge.filter.mastered') },
+    { value: 'all', label: t('knowledge.filter.all') },
+  ];
+}
 
-function relativeReviewTime(item: KnowledgeItem, now: number): string {
+function relativeReviewTime(item: KnowledgeItem, now: number, t: Translate): string {
   const difference = item.dueAt - now;
   const absolute = Math.abs(difference);
   const amount = absolute < 3_600_000
@@ -430,9 +484,19 @@ function relativeReviewTime(item: KnowledgeItem, now: number): string {
     : absolute < 86_400_000
       ? Math.round(absolute / 3_600_000)
       : Math.round(absolute / 86_400_000);
-  const unit = absolute < 3_600_000 ? 'min' : absolute < 86_400_000 ? 'hr' : 'day';
-  if (difference <= 0) return `${amount} ${unit}${amount === 1 ? '' : 's'} overdue`;
-  return `in ${amount} ${unit}${amount === 1 ? '' : 's'}`;
+  const unit = absolute < 3_600_000
+    ? t('knowledge.unit.min')
+    : absolute < 86_400_000 ? t('knowledge.unit.hour') : t('knowledge.unit.day');
+  if (difference <= 0) return t('knowledge.overdue', { amount, unit });
+  return t('knowledge.inFuture', { amount, unit });
+}
+
+/** A route error either arrives as text (a network message) or as `#key` from
+ *  the legacy runtime, so a language switch re-reads it instead of leaving the
+ *  visible line in the other language. */
+function routeErrorText(error: string, t: Translate): string {
+  if (!error) return '';
+  return error.startsWith('#') ? t(error.slice(1) as Parameters<Translate>[0]) : error;
 }
 
 function cityLabel(cityId: string): string {
@@ -459,6 +523,8 @@ function KnowledgeReviewScreen({
 }) {
   const [filter, setFilter] = useState<KnowledgeFilter>(review.due ? 'due' : 'all');
   const [query, setQuery] = useState('');
+  const t = useT();
+  const filters = knowledgeFilters(t);
   const visibleItems = useMemo(() => {
     const term = query.trim().toLocaleLowerCase();
     return review.items.filter(item => (filter === 'all' || item.status === filter)
@@ -482,8 +548,8 @@ function KnowledgeReviewScreen({
           {backLabel}
         </button>
         <div>
-          <h1 id="knowledge-review-title">Your city knowledge</h1>
-          <p>What is sticking, what is fading, and what to ride next.</p>
+          <h1 id="knowledge-review-title">{t('knowledge.title')}</h1>
+          <p>{t('knowledge.subtitle')}</p>
         </div>
         <button
           type="button"
@@ -492,57 +558,59 @@ function KnowledgeReviewScreen({
           disabled={review.due === 0}
         >
           <BookOpenCheck aria-hidden="true" />
-          {review.due ? `Plan review · ${review.due} due` : 'Nothing due now'}
+          {review.due ? t('knowledge.plan', { count: review.due }) : t('knowledge.nothingDue')}
         </button>
       </header>
 
       {review.tracked === 0 ? (
         <div className="knowledge-empty">
           <div className="knowledge-empty-mark" aria-hidden="true"><BookOpenCheck /></div>
-          <h2>Your map starts with one answer</h2>
-          <p>Complete a route and recall a street, canal, bridge, stop, or line. It will appear here with its next review time.</p>
-          <button type="button" className="enamel-plaque enamel-framed knowledge-plan" onClick={onClose}>Choose a first route</button>
+          <h2>{t('knowledge.emptyTitle')}</h2>
+          <p>{t('knowledge.emptyBody')}</p>
+          <button type="button" className="enamel-plaque enamel-framed knowledge-plan" onClick={onClose}>{t('knowledge.firstRoute')}</button>
         </div>
       ) : (
         <div className="knowledge-layout">
-          <aside className="knowledge-summary" aria-label="Knowledge summary">
+          <aside className="knowledge-summary" aria-label={t('knowledge.summary')}>
             <div className="knowledge-due-block">
               <strong>{review.due}</strong>
-              <span>due now</span>
-              <p>{review.due ? 'These names have reached their review window.' : 'You are caught up. New reviews will appear here.'}</p>
+              <span>{t('knowledge.dueNow')}</span>
+              <p>{review.due ? t('knowledge.dueNowBody') : t('knowledge.caughtUp')}</p>
             </div>
             <dl className="knowledge-stat-list">
-              <div><dt>Names tracked</dt><dd>{review.tracked}</dd></div>
-              <div><dt>Mastered</dt><dd>{review.mastered}</dd></div>
+              <div><dt>{t('knowledge.tracked')}</dt><dd>{review.tracked}</dd></div>
+              <div><dt>{t('knowledge.mastered')}</dt><dd>{review.mastered}</dd></div>
               <div>
-                <dt>Recall rate</dt>
+                <dt>{t('knowledge.recallRate')}</dt>
                 <dd>{review.accuracy === null ? '—' : `${Math.round(review.accuracy * 100)}%`}</dd>
               </div>
-              <div><dt>Reviews logged</dt><dd>{review.reviews}</dd></div>
+              <div><dt>{t('knowledge.reviewsLogged')}</dt><dd>{review.reviews}</dd></div>
             </dl>
             <div className="knowledge-legend">
-              <h2>Map key</h2>
-              <div><i data-status="due" />Due for review</div>
-              <div><i data-status="learning" />Learning</div>
-              <div><i data-status="known" />Known</div>
-              <div><i data-status="mastered" />Mastered</div>
+              <h2>{t('knowledge.mapKey')}</h2>
+              <div><i data-status="due" />{t('knowledge.status.due')}</div>
+              <div><i data-status="learning" />{t('knowledge.status.learning')}</div>
+              <div><i data-status="known" />{t('knowledge.status.known')}</div>
+              <div><i data-status="mastered" />{t('knowledge.status.mastered')}</div>
             </div>
           </aside>
 
           <main className="knowledge-queue">
             <div className="knowledge-queue-head">
               <div>
-                <h2>Review queue</h2>
-                <p>{visibleItems.length} {visibleItems.length === 1 ? 'name' : 'names'} in this view</p>
+                <h2>{t('knowledge.queue')}</h2>
+                <p>{visibleItems.length === 1
+                  ? t('knowledge.count.one', { count: visibleItems.length })
+                  : t('knowledge.count.other', { count: visibleItems.length })}</p>
               </div>
               <label className="knowledge-search">
                 <Search aria-hidden="true" />
-                <span className="sr-only">Search knowledge</span>
-                <input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search names or cities" />
+                <span className="sr-only">{t('knowledge.search')}</span>
+                <input value={query} onChange={event => setQuery(event.target.value)} placeholder={t('knowledge.searchPlaceholder')} />
               </label>
             </div>
-            <div className="knowledge-tabs" role="tablist" aria-label="Knowledge status">
-              {KNOWLEDGE_FILTERS.map(option => (
+            <div className="knowledge-tabs" role="tablist" aria-label={t('knowledge.statusLabel')}>
+              {filters.map(option => (
                 <button
                   key={option.value}
                   type="button"
@@ -561,17 +629,19 @@ function KnowledgeReviewScreen({
                   <i className="knowledge-status" data-status={item.status} aria-label={item.status} />
                   <div className="knowledge-item-name">
                     <h3>{item.name}</h3>
-                    <p>{cityLabel(item.cityId)} · {item.type}{item.places > 1 ? ` · ${item.places} places` : ''}</p>
+                    <p>{cityLabel(item.cityId)} · {item.type}{item.places > 1 ? ` · ${t('knowledge.places.other', { count: item.places })}` : ''}</p>
                   </div>
-                  <div className="knowledge-mastery" aria-label={`${Math.round(item.mastery * 100)} percent mastery`}>
+                  <div className="knowledge-mastery" aria-label={t('knowledge.masteryPercent', { percent: Math.round(item.mastery * 100) })}>
                     <span style={{ width: `${Math.max(4, item.mastery * 100)}%` }} />
                   </div>
                   <div className="knowledge-item-due">
                     <Clock3 aria-hidden="true" />
-                    <span>{relativeReviewTime(item, now)}</span>
+                    <span>{relativeReviewTime(item, now, t)}</span>
                   </div>
                   <div className="knowledge-item-history">
-                    {item.repetitions} successful · {item.lapses} {item.lapses === 1 ? 'lapse' : 'lapses'}
+                    {t('knowledge.successful', { count: item.repetitions })} · {item.lapses === 1
+                      ? t('knowledge.lapse.one', { count: item.lapses })
+                      : t('knowledge.lapse.other', { count: item.lapses })}
                   </div>
                   <div className="knowledge-item-actions">
                     <button
@@ -583,21 +653,21 @@ function KnowledgeReviewScreen({
                         onPracticeAgain(item.key);
                       }}
                     >
-                      {item.status === 'due' ? 'Queued' : 'Practice again'}
+                      {item.status === 'due' ? t('knowledge.queued') : t('knowledge.practiceAgain')}
                     </button>
                     <button
                       type="button"
                       className="knowledge-forget"
                       onClick={() => onForgetItem(item.key, item.name)}
                     >
-                      Forget
+                      {t('knowledge.forget')}
                     </button>
                   </div>
                 </article>
               )) : (
                 <div className="knowledge-no-results">
-                  <h3>No names here</h3>
-                  <p>{query ? 'Try another search or status.' : 'Your answers will move names into this group.'}</p>
+                  <h3>{t('knowledge.noNames')}</h3>
+                  <p>{query ? t('knowledge.noNamesSearch') : t('knowledge.noNamesBody')}</p>
                 </div>
               )}
             </div>
@@ -605,30 +675,35 @@ function KnowledgeReviewScreen({
 
           <aside className="knowledge-context">
             <section>
-              <h2>Past 7 days</h2>
-              <div className="knowledge-activity" aria-label="Reviews in the past seven days">
+              <h2>{t('knowledge.activity')}</h2>
+              <div className="knowledge-activity" aria-label={t('knowledge.activityLabel')}>
                 {review.activity.map(day => (
                   <div key={day.day}>
-                    <span className="knowledge-activity-bar" style={{ height: `${Math.max(3, day.reviews / maxActivity * 100)}%` }} title={`${day.reviews} reviews`} />
+                    <span className="knowledge-activity-bar" style={{ height: `${Math.max(3, day.reviews / maxActivity * 100)}%` }} title={day.reviews === 1
+                      ? t('knowledge.reviews.one', { count: day.reviews })
+                      : t('knowledge.reviews.other', { count: day.reviews })} />
                     <small>{day.label}</small>
                   </div>
                 ))}
               </div>
-              <p>{review.activity.reduce((sum, day) => sum + day.reviews, 0)} reviews this week</p>
+              <p>{(() => {
+                const total = review.activity.reduce((sum, day) => sum + day.reviews, 0);
+                return total === 1 ? t('knowledge.weekTotal.one', { count: total }) : t('knowledge.weekTotal.other', { count: total });
+              })()}</p>
             </section>
             <section>
-              <h2>By city</h2>
+              <h2>{t('knowledge.byCity')}</h2>
               <div className="knowledge-cities">
                 {review.cities.map(city => (
                   <div key={city.cityId}>
                     <strong>{cityLabel(city.cityId)}</strong>
-                    <span>{city.tracked} tracked</span>
-                    <small>{city.due} due · {city.mastered} mastered</small>
+                    <span>{t('knowledge.cityTracked', { count: city.tracked })}</span>
+                    <small>{t('knowledge.cityDue', { due: city.due, mastered: city.mastered })}</small>
                   </div>
                 ))}
               </div>
             </section>
-            <p className="knowledge-explainer">Mastery rises across successful reviews. A name turns copper when its spaced-review interval expires.</p>
+            <p className="knowledge-explainer">{t('knowledge.explainer')}</p>
           </aside>
         </div>
       )}
@@ -689,6 +764,7 @@ export function OverlayApp({
   callbacks: OverlayCallbacks;
 }) {
   const state = useSyncExternalStore(store.subscribe, store.getState, store.getState);
+  const t = useT();
   const accountSignedIn = state.account.signedIn ?? state.account.buttonLabel === 'Sign out';
   const prefs = state.prefs;
   const [knowledgeRefresh, setKnowledgeRefresh] = useState(0);
@@ -755,6 +831,7 @@ export function OverlayApp({
         <div className="enamel-setup-rail">
           <form id="route-card" className="enamel-setup-form" onSubmit={start}>
             <h1 className="enamel-plaque enamel-framed enamel-title">Canal Recall</h1>
+            <LanguageRow idPrefix="setup-" />
 
             <div className="setup-account" id="account-row">
               <div className="setup-account-copy">
@@ -768,7 +845,7 @@ export function OverlayApp({
                   className="account-button enamel-quiet"
                   onClick={() => openKnowledge()}
                 >
-                  Knowledge
+                  {t('settings.knowledge')}
                 </button>
                 <AccountChip
                   id="account-button"
@@ -792,30 +869,30 @@ export function OverlayApp({
             {/* Hidden selects keep Playwright and any legacy getElementById wiring working.
                 City uses the visible #city-id select below. */}
             <select id="travel-mode" hidden value={prefs.travelMode} onChange={event => patch({ travelMode: event.target.value as CanalPreferences['travelMode'] })}>
-              <option value="boat">Boat</option>
-              <option value="car">Bike</option>
-              <option value="transit">Transit</option>
+              <option value="boat">{t('setup.travel.boat')}</option>
+              <option value="car">{t('setup.travel.bike')}</option>
+              <option value="transit">{t('setup.travel.transit')}</option>
             </select>
             <select id="view-mode" hidden value={prefs.viewMode} onChange={event => patch({ viewMode: event.target.value as CanalPreferences['viewMode'] })}>
-              <option value="north">North-up</option>
-              <option value="heading">Heading-up</option>
-              <option value="chase">Chase</option>
-              <option value="cockpit">Cockpit</option>
+              <option value="north">{t('setup.view.north')}</option>
+              <option value="heading">{t('setup.view.heading')}</option>
+              <option value="chase">{t('setup.view.chase')}</option>
+              <option value="cockpit">{t('setup.view.cockpit')}</option>
             </select>
             <select id="max-asks-per-minute" hidden value={String(prefs.maxAsksPerMinute)} onChange={event => patch({ maxAsksPerMinute: Number(event.target.value) as CanalPreferences['maxAsksPerMinute'] })}>
-              {ASK_BUDGETS.map(budget => <option key={budget} value={String(budget)}>{budget === 0 ? 'Off' : String(budget)}</option>)}
+              {ASK_BUDGETS.map(budget => <option key={budget} value={String(budget)}>{budget === 0 ? t('common.off') : String(budget)}</option>)}
             </select>
             <select id="route-pattern" hidden value={prefs.routePattern} onChange={event => patch({ routePattern: event.target.value as CanalPreferences['routePattern'] })}>
-              <option value="surprise">Surprise</option>
-              <option value="home">Home</option>
-              <option value="here">Here</option>
+              <option value="surprise">{t('setup.route.surprise')}</option>
+              <option value="home">{t('setup.route.home')}</option>
+              <option value="here">{t('setup.route.here')}</option>
             </select>
             <select id="route-difficulty" hidden value={prefs.difficulty} onChange={event => patch({ difficulty: event.target.value as CanalPreferences['difficulty'] })}>
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-              <option value="expert">Expert</option>
-              <option value="custom">Custom</option>
+              <option value="easy">{t('setup.difficulty.easy')}</option>
+              <option value="medium">{t('setup.difficulty.medium')}</option>
+              <option value="hard">{t('setup.difficulty.hard')}</option>
+              <option value="expert">{t('setup.difficulty.expert')}</option>
+              <option value="custom">{t('setup.difficulty.custom')}</option>
             </select>
 
             <CitySelect
@@ -824,7 +901,7 @@ export function OverlayApp({
               options={CITY_OPTIONS}
             />
             <ChoiceRow
-              label="Travel"
+              label={t('setup.travel')}
               name="travel"
               value={prefs.travelMode}
               onChange={value => {
@@ -833,24 +910,24 @@ export function OverlayApp({
                 if (value === 'transit' && prefs.cityId !== 'amsterdam') next.cityId = 'amsterdam';
                 patch(next, true);
               }}
-              options={TRAVEL}
+              options={travelChoices(t)}
               icons={TRAVEL_ICONS}
               layout="strip"
             />
             <ChoiceRow
-              label="View"
+              label={t('setup.view')}
               name="view"
               value={prefs.viewMode}
               onChange={value => patch({ viewMode: value })}
-              options={VIEW}
+              options={viewChoices(t)}
               icons={VIEW_ICONS}
               layout="icons"
               showCurrent
-              gloss={VIEW.find(option => option.value === prefs.viewMode)?.hint}
+              gloss={viewChoices(t).find(option => option.value === prefs.viewMode)?.hint}
               keepGloss
             />
             <ChoiceRow
-              label="Route"
+              label={t('setup.route')}
               name="route"
               value={prefs.routePattern}
               onChange={value => {
@@ -866,31 +943,31 @@ export function OverlayApp({
                   });
                 }
               }}
-              options={ROUTE}
+              options={routeChoices(t)}
               icons={ROUTE_ICONS}
               layout="strip"
             />
             <ChoiceRow
-              label="Difficulty"
+              label={t('setup.difficulty')}
               name="difficulty"
               value={prefs.difficulty}
               onChange={value => patch({ difficulty: value })}
               options={
                 prefs.difficulty === 'expert' || prefs.difficulty === 'custom'
-                  ? [...DIFFICULTY_MAIN, ...DIFFICULTY_EXTRA.filter(d => d.value === prefs.difficulty)]
-                  : DIFFICULTY_MAIN
+                  ? [...difficultyMain(t), ...difficultyExtra(t).filter(d => d.value === prefs.difficulty)]
+                  : difficultyMain(t)
               }
               compact
               icons={DIFFICULTY_ICONS}
-              gloss={difficultyGloss(prefs.difficulty)}
+              gloss={difficultyGloss(prefs.difficulty, t)}
               keepGloss
             />
 
             <div className={`setup-pair${state.tours.length ? '' : ' setup-pair-single'}`} style={{ marginTop: 10 }}>
               <label className="setup-field enamel-field">
-                <span>Destination</span>
+                <span>{t('setup.destination')}</span>
                 <select id="poi-destination" value={state.destinationId} disabled={!!state.tourId} onChange={event => store.setDestinationId(event.target.value)}>
-                  <option value="">{state.tourId ? 'Tour stops' : 'Surprise me'}</option>
+                  <option value="">{state.tourId ? t('setup.destination.tourStops') : t('setup.destination.surprise')}</option>
                   {[...state.routePois].sort((a, b) => a.name.localeCompare(b.name)).map(poi => (
                     <option key={poi.id} value={poi.id}>{poi.name}</option>
                   ))}
@@ -898,9 +975,9 @@ export function OverlayApp({
               </label>
               {state.tours.length ? (
                 <label className="setup-field enamel-field" id="tour-field">
-                  <span>Tours</span>
+                  <span>{t('setup.tours')}</span>
                   <select id="tour-picker" value={state.tourId} onChange={event => store.setTourId(event.target.value)}>
-                    <option value="">No tour</option>
+                    <option value="">{t('setup.tours.none')}</option>
                     {state.tours.map(tour => (
                       <option key={tour.id} value={tour.id}>{tour.title}</option>
                     ))}
@@ -910,29 +987,29 @@ export function OverlayApp({
             </div>
             {selectedTour ? (
               <p id="tour-note" className="setup-choice-gloss keep" role="status">
-                {selectedTour.stopCount} stops by bike, one leg at a time{selectedTour.checked ? ` · ${selectedTour.checked}, shops change` : ''}
+                {t('setup.tours.stops', { count: selectedTour.stopCount })}{selectedTour.checked ? t('setup.tours.checked', { checked: selectedTour.checked }) : ''}
               </p>
             ) : null}
             <label id="home-address-field" className="setup-field enamel-field" style={{ display: prefs.routePattern === 'home' ? 'flex' : 'none', marginTop: 10 }}>
-              HOME ADDRESS
+              {t('setup.homeAddress')}
               <input
                 id="home-address"
                 type="text"
                 autoComplete="street-address"
-                placeholder={`Street and number, ${cityName}`}
+                placeholder={t('setup.homeAddress.placeholder', { city: cityName })}
                 value={prefs.homeAddress}
                 onChange={event => patch({ homeAddress: event.target.value })}
               />
-              <span className="enamel-field-note">{homeLearningNote(prefs)}</span>
+              <span className="enamel-field-note">{homeLearningNote(prefs, t)}</span>
             </label>
             <div
               id="gps-origin-note"
               className="setup-field enamel-field"
               style={{ display: prefs.routePattern === 'here' ? 'flex' : 'none', marginTop: 10 }}
             >
-              LIVE LOCATION
+              {t('setup.liveLocation')}
               <span className="enamel-field-note">
-                Starts from where you are now — not a saved home address. Allow location when asked.
+                {t('setup.liveLocation.note')}
               </span>
             </div>
 
@@ -947,18 +1024,18 @@ export function OverlayApp({
                 if (details.open) revealOpenedSection(details);
               }}
             >
-              <summary>More options</summary>
+              <summary>{t('setup.moreOptions')}</summary>
               <ChoiceRow
-                label="Harder difficulties"
+                label={t('setup.difficulty.harder')}
                 name="difficulty-extra"
                 value={prefs.difficulty}
                 onChange={value => patch({ difficulty: value })}
-                options={DIFFICULTY_EXTRA}
+                options={difficultyExtra(t)}
                 compact
                 icons={DIFFICULTY_ICONS}
-                gloss="Expert hides assists. Custom appears when you tweak assists below."
+                gloss={t('setup.difficulty.harderGloss')}
               />
-              <ToggleGroup label="Review">
+              <ToggleGroup label={t('setup.review')}>
                 <ToggleTile
                   id="skip-mastered"
                   checked={prefs.skipMastered}
@@ -966,19 +1043,19 @@ export function OverlayApp({
                     patch({ skipMastered });
                     callbacks.onSkipMastered(skipMastered);
                   }}
-                  title="Due names only"
-                  hint="Ask only names due for review"
+                  title={t('setup.review.dueOnly')}
+                  hint={t('setup.review.dueOnlyHint')}
                 />
                 <ToggleTile id="measured-colours-only" checked={prefs.measuredColoursOnly}
                   onChange={measuredColoursOnly => patch({ measuredColoursOnly }, true)}
-                  title="Reviewed colours" hint="Only buildings with checked wall colours" />
+                  title={t('setup.review.measuredColours')} hint={t('setup.review.measuredColoursHint')} />
               </ToggleGroup>
-              {prefs.measuredColoursOnly && <p className="setup-choice-gloss" role="status">Buildings without reviewed wall colours are hidden. Coverage may be empty.</p>}
+              {prefs.measuredColoursOnly && <p className="setup-choice-gloss" role="status">{t('setup.review.measuredColoursHidden')}</p>}
               <RideOptions prefs={prefs} patch={patch} />
               {/* Destructive, so fenced off and labelled rather than sitting as
                   two more quiet buttons just above Start. Both still confirm. */}
               <div className="setup-danger" role="group" aria-labelledby="setup-danger-title">
-                  <p id="setup-danger-title" className="setup-danger-title">Your saved data</p>
+                  <p id="setup-danger-title" className="setup-danger-title">{t('setup.savedData')}</p>
                 <button
                   id="clear-knowledge-button"
                   type="button"
@@ -986,7 +1063,7 @@ export function OverlayApp({
                   disabled={state.account.busy}
                   onClick={() => callbacks.onClearKnowledge()}
                 >
-                  Reset knowledge…
+                  {t('setup.resetKnowledge')}
                 </button>
                 <button
                   id="clear-all-data-button"
@@ -995,7 +1072,7 @@ export function OverlayApp({
                   disabled={state.account.busy}
                   onClick={() => callbacks.onClearAllData()}
                 >
-                  Clear all data…
+                  {t('setup.clearAll')}
                 </button>
               </div>
             </details>
@@ -1010,17 +1087,17 @@ export function OverlayApp({
               aria-hidden={setupScroll.edges.below ? undefined : true}
               tabIndex={setupScroll.edges.below ? undefined : -1}
               onClick={setupScroll.scrollOn}
-              aria-label="Scroll for more options"
+              aria-label={t('setup.scrollMoreOptions')}
             >
-              More <ChevronDown aria-hidden="true" size={14} strokeWidth={2.5} />
+              {t('common.more')} <ChevronDown aria-hidden="true" size={14} strokeWidth={2.5} />
             </button>
             </div>
             <div className="enamel-setup-footer">
               <p className="enamel-field-note" id="mission-brief">
-                {selectedTour ? `Ride the ${selectedTour.title} tour stop by stop. Each arrival tells you why it is on the list.` : briefingMission(prefs)}
+                {selectedTour ? t('setup.tours.brief', { tour: selectedTour.title }) : briefingMission(prefs, t)}
               </p>
-              <button id="route-start" className="enamel-plaque enamel-framed enamel-start" type="submit">{selectedTour ? 'Start tour' : 'Start route'}</button>
-              <div id="route-error" aria-live="polite">{state.routeError}</div>
+              <button id="route-start" className="enamel-plaque enamel-framed enamel-start" type="submit">{selectedTour ? t('setup.startTour') : t('setup.startRoute')}</button>
+              <div id="route-error" aria-live="polite">{routeErrorText(state.routeError, t)}</div>
               <SiteSwitch links={siteLinksHere} current="ride" id="setup-site-switch" />
             </div>
           </form>
@@ -1032,7 +1109,7 @@ export function OverlayApp({
           review={knowledgeReview}
           now={knowledgeNow}
           onClose={closeKnowledge}
-          backLabel={state.setupOpen ? 'Route setup' : 'Back to ride'}
+          backLabel={state.setupOpen ? t('knowledge.backToSetup') : t('knowledge.backToRide')}
           onPlanReview={planReview}
           onPracticeAgain={practiceAgain}
           onForgetItem={forgetItem}
@@ -1040,15 +1117,16 @@ export function OverlayApp({
       ) : null}
       <div id="settings-panel" className="utility-panel enamel-utility" style={{ display: state.settingsOpen ? 'flex' : 'none' }}>
         <div className="utility-card enamel-plaque enamel-framed enamel-panel">
-          <h2>Ride settings</h2>
+          <h2>{t('settings.title')}</h2>
+          <LanguageRow idPrefix="live-" />
           <SiteSwitch links={siteLinksHere} current="ride" id="settings-site-switch" />
           <div className="setup-account" id="settings-account-row">
             <div className="setup-account-copy" role="status" aria-live="polite">
-              <strong id="settings-account-label">{state.account.buttonLabel === 'Sign out' ? `Signed in as ${state.account.label}` : state.account.label}</strong>
+              <strong id="settings-account-label">{state.account.buttonLabel === 'Sign out' ? t('settings.signedInAs', { name: state.account.label }) : state.account.label}</strong>
               <small>{state.account.note}</small>
             </div>
             <div className="setup-account-actions">
-              <a id="settings-progress-link" className="account-button enamel-quiet" href={siteLinksHere.progress}>My progress</a>
+              <a id="settings-progress-link" className="account-button enamel-quiet" href={siteLinksHere.progress}>{t('settings.progress')}</a>
               <button
                 id="settings-account-button"
                 type="button"
@@ -1079,7 +1157,7 @@ export function OverlayApp({
               aria-hidden={settingsScroll.edges.below ? undefined : true}
               tabIndex={settingsScroll.edges.below ? undefined : -1}
               onClick={settingsScroll.scrollOn}
-              aria-label="Scroll for more settings"
+              aria-label={t('settings.scrollMore')}
             >
               More <ChevronDown aria-hidden="true" size={14} strokeWidth={2.5} />
             </button>
@@ -1092,17 +1170,17 @@ export function OverlayApp({
                 type="button"
                 onClick={() => openKnowledge('live-knowledge-button')}
               >
-                Your knowledge
+                {t('settings.knowledge')}
               </button>
               <button
                 className="enamel-plaque enamel-framed enamel-secondary"
               type="button"
               onClick={() => callbacks.onNewRoute()}
             >
-                Route setup
+                {t('settings.routeSetup')}
               </button>
             </div>
-            <button className="utility-close enamel-plaque enamel-framed enamel-start" type="button" onClick={() => callbacks.onCloseSettings()}>Done</button>
+            <button className="utility-close enamel-plaque enamel-framed enamel-start" type="button" onClick={() => callbacks.onCloseSettings()}>{t('common.done')}</button>
           </div>
         </div>
       </div>
