@@ -47,6 +47,7 @@ test('Share this route on arrival copies a link that boots the same route; a Hom
   await openRoute(page, { travelMode: 'boat', viewMode: 'chase' });
   await arrive(page);
   const ride = await page.evaluate(() => ({ raceKey: window.canalRecallGame._raceKey, travelMode: window.canalRecallGame.travelMode }));
+  const rideTo = await page.evaluate(() => window.canalRecallGame.routeTo.name);
 
   await page.keyboard.press('KeyC');
   await expect(page.locator('#canal-share-toast')).toHaveText('Link copied');
@@ -86,7 +87,24 @@ test('Share this route on arrival copies a link that boots the same route; a Hom
   await other.waitForFunction(() => window.canalRecallGame?.state === 4, null, { timeout: 150_000 });
   const replay = await other.evaluate(() => ({ raceKey: window.canalRecallGame._raceKey, travelMode: window.canalRecallGame.travelMode }));
   expect(replay).toEqual(ride);
+  // The link carries points, not names: the replay names its finish from them, not from the setup default.
+  expect(await other.evaluate(() => window.canalRecallGame.routeTo.name)).toBe(rideTo);
   await fresh.close();
+});
+
+// Named regression (teaser capture 2026-10-22): a boat share link from the
+// Stopera up the Amstel booted with the setup screen's default pair and showed
+// "to Rijksmuseum" and "Anne Frank House → Rijksmuseum" on the HUD.
+test('a share link names its ends from its own points, not the setup default (Amstel boat link)', async ({ page }) => {
+  test.skip(test.info().project.name !== 'desktop', 'naming is layout-independent');
+  test.setTimeout(240_000);
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  await page.goto('/canal-drive/?travel=boat#race=52.36315,4.90225,52.36760,4.90020,52.35870,4.90430');
+  await page.waitForFunction(() => window.canalRecallGame?.state === 4, null, { timeout: 180_000 });
+  const ends = await page.evaluate(() => ({ from: window.canalRecallGame.routeFrom.name, to: window.canalRecallGame.routeTo.name }));
+  expect(ends.to).not.toMatch(/Rijksmuseum/);
+  expect(ends.from).not.toMatch(/Anne Frank/);
+  expect(ends.to).toMatch(/\(nearby\)$|^Shared finish$/);
 });
 
 test('My progress shares public rides and keeps Home rides private', async ({ page, context }) => {

@@ -48,13 +48,13 @@ import type { PresentationHost, Vehicle } from './host';
 import type { Landmark } from './worldTypes';
 import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teachingSurface';
 import { bicycleRestrictionNotice } from '../routing/bikeAccess';
-import { maskSpoiledName } from '../orientationPois';
+import { mapLabelSpoils, maskSpoiledName } from '../orientationPois';
 import { isReviewStop, REVIEW_STOP_LABEL } from './routeSelection';
 import { bearingAfterTwist, startTwist, twistStep, wheelTwistDegrees, WHEEL_PINCH_GRACE_MS } from './trackpadTwist';
 import { easeSightline, landmarkSightline, relativeTo, NO_SIGHTLINE, type SightlineView } from './landmarkSightline';
 import { nearestRouteIndex, RADAR_RADIUS_M, radarLocal, radarRadiusForSpeed, RadarMap } from './radar';
 import { gameWorldToLngLat, type GameLoaderFrame } from '../ownMap/frame';
-import { revealOnEnter, utilityVisibility } from './utilityTuck';
+import { revealOnEnter, utilityBlockedByCards, utilityVisibility } from './utilityTuck';
 
 /** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
 interface SafariGestureEvent extends UIEvent { rotation: number; scale: number }
@@ -615,7 +615,15 @@ export class GamePresentationRuntime {
       if (pointer && pointer.x >= box.left - 8 && pointer.x <= box.right + 8 && pointer.y >= box.top - 8 && pointer.y <= box.bottom + 8) {
         this._utilityRevealUntil = Math.max(this._utilityRevealUntil || 0, now + 600);
       }
-      const revealed = !riding || now < (this._utilityRevealUntil || 0);
+      let revealed = !riding || now < (this._utilityRevealUntil || 0);
+      // An open question card wins over any reveal when the cluster would
+      // sit on it: on a phone it covered the fourth answer and "No idea"
+      // (teaser 2026-10-22). Keys G and ? still open settings and help.
+      if (revealed && riding && this._prompt && this._prompt.style.display !== 'none' && this._prompt.style.display !== '') {
+        const card = document.getElementById('canal-card');
+        const buttons = [...utility.children].map(child => child.getBoundingClientRect());
+        if (card && utilityBlockedByCards(buttons, [card.getBoundingClientRect()])) revealed = false;
+      }
       // The whole cluster tucks (feedback, build stamp too). A phone used to
       // keep Feedback up, and it sat on a quiz answer ("Plantage Kerklaan",
       // 390×844 frame 2026-10-16); a tap on the map brings it back.
@@ -737,12 +745,23 @@ export class GamePresentationRuntime {
     // answering the question for you. A label is earned per place, not per
     // name: knowing the Overtoom at the Vondelpark must not write it across
     // the Kinkerbuurt end that has never been asked.
+    // Withheld in every form, not only the exact way name: a compound, a stem
+    // or a bridge's printed official name that says it (mapLabelSpoils).
+    const asked = this.quizPromptName || this.quizCandidateName || '';
+    const shownText = (text: string) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text);
+    if (!this._labelSpoilCache || this._labelSpoilCache.asked !== asked) this._labelSpoilCache = { asked, spoils: new Map() };
+    const spoilCache = this._labelSpoilCache.spoils;
+    const spoils = (text: string) => {
+      let hit = spoilCache.get(text);
+      if (hit === undefined) { hit = mapLabelSpoils(text, shownText(text), asked); spoilCache.set(text, hit); }
+      return hit;
+    };
     this.track.drawLabels(ctx, this.camera,
-      (text, x, y) => this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y),
-      this.quizPromptName || this.quizCandidateName, player,
+      (text, x, y) => (this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y)) && !(asked && spoils(text)),
+      asked, player,
       (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates())
         .candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach),
-      (text) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text));
+      shownText);
 
     // Results replace the live HUD rather than competing with it.
     if (this.state === GameState.FINISHED) { this._renderFinish(); return; }
