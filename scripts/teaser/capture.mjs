@@ -69,21 +69,31 @@ function watchRide(page, rec, { answer = true, readMs = 1700, wrongEvery = 0, ta
 }
 
 
+// Sombre places (war, Holocaust, memorials) never get a card in a playful teaser.
+const SOMBRE = /NIOD|holocaust|genocide|oorlog|war\b|verzet|resistance|memorial|monument|gedenk|anne frank|homomonument|walraven|joods|jewish|slavery|slavernij/i;
+
 /**
- * Capture-time only: no landmark or neighbourhood cards, so the question card
- * is the only card on screen (otherwise drive-by cards read as the questions).
- * The street card the game shows for a just-answered name is kept.
+ * Capture-time only (no game change). Sombre landmark cards are always
+ * blocked. `quiet` also drops every landmark and neighbourhood card except the
+ * street card for a name that was just asked, so the question card is the only
+ * card on screen (otherwise drive-by cards read as the questions).
  */
-async function quietInfoCards(page) {
-  await page.evaluate(() => {
+async function filterInfoCards(page, { quiet }) {
+  await page.evaluate(({ quiet, sombre }) => {
     const g = window.canalRecallGame;
+    const isSombre = new RegExp(sombre, 'i');
     const asked = new Set();
     const poll = () => { if (g.quizPromptName) asked.add(g.quizPromptName); requestAnimationFrame(poll); };
     poll();
     const show = g._showLandmarkNotice.bind(g);
-    g._showLandmarkNotice = (notice, ...rest) => (asked.has(notice?.name) ? show(notice, ...rest) : undefined);
-    Object.defineProperty(g, '_neighborhoodNotice', { get: () => null, set: () => {}, configurable: true });
-  });
+    g._showLandmarkNotice = (notice, ...rest) => {
+      const name = notice?.name || '';
+      if (isSombre.test(`${name} ${notice?.detail || ''}`)) return undefined;
+      if (quiet && !asked.has(name)) return undefined;
+      return show(notice, ...rest);
+    };
+    if (quiet) Object.defineProperty(g, '_neighborhoodNotice', { get: () => null, set: () => {}, configurable: true });
+  }, { quiet, sombre: SOMBRE.source });
 }
 
 async function rideShot(name, { start, finish, travel = 'car', intro = false, seconds = 60, cruise = 150, mobile = false, viewport, query = '', beforeRide, duringRide, settleMs = 5000, scale = 1, zoomIn = 0, quietCards = false }) {
@@ -91,7 +101,7 @@ async function rideShot(name, { start, finish, travel = 'car', intro = false, se
   const page = await T.newPage(browser, viewport ? { ...viewport, mobile, dpr: scale } : {});
   try {
     await T.bootRide(page, { start, finish, travel, intro, waitIntro: false, query });
-    if (quietCards) await quietInfoCards(page);
+    await filterInfoCards(page, { quiet: quietCards });
     let rec;
     if (intro) {
       // The flight starts the moment the route is ready: record from boot.
@@ -207,20 +217,27 @@ const SHOTS = {
   ride: () => rideShot('ride', { start: [52.37660, 4.88445], finish: [52.36000, 4.88520], intro: true, seconds: 70, viewport: { width: 1536, height: 864 }, quietCards: true }),
   // Boat up the Amstel under the Magere Brug.
   boat: () => rideShot('boat', { start: [52.36760, 4.90020], finish: [52.35870, 4.90430], travel: 'boat', seconds: 30, cruise: 170, zoomIn: 250 }),
-  // Boat along the Herengracht: canal houses both sides.
+  // Boat along the Herengracht: canal houses both sides, ending at the Cat
+  // Cabinet (DISCOVER! uses its card: a museum founded for a red tomcat).
   herengracht: () => rideShot('herengracht', { start: [52.38000, 4.88950], finish: [52.36560, 4.89150], travel: 'boat', seconds: 70, cruise: 170, zoomIn: 250 }),
   // The Map Quest quiz, from the live site (its basemap needs the production key).
   quiz: () => quizShot('quiz'),
   // The explorer: pick the Westerkerk and turn it in 3D.
   explore: () => exploreShot('explore'),
-  // The phone layout: a short bike ride, questions answered by tapping.
+  // LEARN!: down the Utrechtsestraat, which crosses the Herengracht,
+  // Keizersgracht and Prinsengracht at right angles, so a waterway question
+  // comes while the bike visibly crosses the water.
+  learn: () => rideShot('learn', { start: [52.36020, 4.89830], finish: [52.36630, 4.89660], seconds: 45, viewport: { width: 1536, height: 864 }, quietCards: true }),
+  vlearn: () => rideShot('vlearn', { start: [52.36020, 4.89830], finish: [52.36630, 4.89660], seconds: 45, quietCards: true, ...VERTICAL }),
   vride: () => rideShot('vride', { start: [52.37660, 4.88445], finish: [52.36000, 4.88520], intro: true, seconds: 70, quietCards: true, ...VERTICAL }),
   vboat: () => rideShot('vboat', { start: [52.36760, 4.90020], finish: [52.35870, 4.90430], travel: 'boat', seconds: 22, cruise: 170, settleMs: 9000, ...VERTICAL }),
   vquiz: () => quizShot('vquiz', VERTICAL),
   vexplore: () => exploreShot('vexplore', VERTICAL),
   // Landing-page loops, filmed at the hero image's 16:10 so the HUD lays itself out for it.
-  lride: () => rideShot('lride', { start: [52.37660, 4.88445], finish: [52.36000, 4.88520], intro: true, seconds: 30, viewport: { width: 1280, height: 800 }, quietCards: true }),
+  lride: () => rideShot('lride', { start: [52.37660, 4.88445], finish: [52.36000, 4.88520], intro: true, seconds: 40, viewport: { width: 1280, height: 800 }, quietCards: true }),
+  llearn: () => rideShot('llearn', { start: [52.36020, 4.89830], finish: [52.36630, 4.89660], seconds: 16, viewport: { width: 1280, height: 800 }, quietCards: true }),
   lboat: () => rideShot('lboat', { start: [52.36760, 4.90020], finish: [52.35870, 4.90430], travel: 'boat', seconds: 16, cruise: 170, viewport: { width: 1280, height: 800 } }),
+  // The phone layout: a short bike ride, questions answered by tapping.
   phone: () => rideShot('phone', { start: [52.37200, 4.88510], finish: [52.36500, 4.88800], seconds: 40, viewport: { width: 390, height: 844 }, mobile: true, cruise: 140, scale: 1.5, settleMs: 9000 }),
 };
 
@@ -233,3 +250,5 @@ for (const name of wanted) {
   console.log(`== ${name} done in ${((Date.now() - t0) / 1000).toFixed(0)} s`);
 }
 writeFileSync(`${RAW}/.captured`, new Date().toISOString());
+// A shot that failed mid-way can leave its browser open; don't hang on it.
+process.exit(process.exitCode ?? 0);
