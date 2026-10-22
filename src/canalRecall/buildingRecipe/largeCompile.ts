@@ -14,11 +14,15 @@ import type {BuildingFacts} from './facts.ts';
 import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
+import {applyCrownCantilever, type CrownReport} from './crownCantilever.ts';
 
-export interface LargeComponentCounts { arcades?: number; glazedHalls?: number; glassColumns?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { arcades?: number; glazedHalls?: number; glassColumns?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; crowns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
+  /** the crown cantilever this house opted into (`intent.crown`), for the report */
+  crown?: CrownReport;
+
   /** the triangle budget this house is gated on: `intent.budgetTriangles` (opt-in, up to 40,000), else 12,000 */
   budgetTriangles: number;
   /** block-kit wall panels (index = `recipe.panelGroup` index) */
@@ -357,6 +361,10 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
   for (const l of recipe.lanterns ?? []) { drawLantern(res.mesh, l, {glass: 'glass', frame: 'frame', stone: 'stone'}); counts.lanterns = (counts.lanterns ?? 0) + 1; }
   applyWallSplits(res.mesh, recipe.groups, res.panels);
   hooks.afterCompose?.(res.mesh, recipe, res.panels);
+  // `crown`: the top storeys cantilever over the shell on the photographed bearings (Salt, Haarlemmerweg 940).
+  // Opt-in: without the field nothing here runs and the output is unchanged.
+  let crown: CrownReport | undefined;
+  if (intent.crown) { crown = applyCrownCantilever(res.mesh, recipe, intent.crown, res.panels); counts.crowns = (counts.crowns ?? 0) + 1; }
   const blockGates = runGates(res.mesh, recipe.set, {budget: budgetTriangles});
-  return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, budgetTriangles, panels: res.panels};
+  return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, budgetTriangles, panels: res.panels, ...(crown ? {crown} : {})};
 }
