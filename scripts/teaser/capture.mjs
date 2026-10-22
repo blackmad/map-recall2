@@ -68,11 +68,30 @@ function watchRide(page, rec, { answer = true, readMs = 1700, wrongEvery = 0, ta
   return { async stop() { stop = true; await loop; } };
 }
 
-async function rideShot(name, { start, finish, travel = 'car', intro = false, seconds = 60, cruise = 150, mobile = false, viewport, query = '', beforeRide, duringRide, settleMs = 5000, scale = 1, zoomIn = 0 }) {
+
+/**
+ * Capture-time only: no landmark or neighbourhood cards, so the question card
+ * is the only card on screen (otherwise drive-by cards read as the questions).
+ * The street card the game shows for a just-answered name is kept.
+ */
+async function quietInfoCards(page) {
+  await page.evaluate(() => {
+    const g = window.canalRecallGame;
+    const asked = new Set();
+    const poll = () => { if (g.quizPromptName) asked.add(g.quizPromptName); requestAnimationFrame(poll); };
+    poll();
+    const show = g._showLandmarkNotice.bind(g);
+    g._showLandmarkNotice = (notice, ...rest) => (asked.has(notice?.name) ? show(notice, ...rest) : undefined);
+    Object.defineProperty(g, '_neighborhoodNotice', { get: () => null, set: () => {}, configurable: true });
+  });
+}
+
+async function rideShot(name, { start, finish, travel = 'car', intro = false, seconds = 60, cruise = 150, mobile = false, viewport, query = '', beforeRide, duringRide, settleMs = 5000, scale = 1, zoomIn = 0, quietCards = false }) {
   const browser = await T.launch();
   const page = await T.newPage(browser, viewport ? { ...viewport, mobile, dpr: scale } : {});
   try {
     await T.bootRide(page, { start, finish, travel, intro, waitIntro: false, query });
+    if (quietCards) await quietInfoCards(page);
     let rec;
     if (intro) {
       // The flight starts the moment the route is ready: record from boot.
@@ -179,12 +198,13 @@ async function exploreShot(name, { viewport, mobile = false, scale = 1 } = {}) {
 }
 
 // The vertical cut is filmed in a phone-shaped viewport that fills its window exactly.
-const VERTICAL = { viewport: { width: 397, height: 632 }, mobile: true, scale: 2.5 };
+const VERTICAL = { viewport: { width: 397, height: 632 }, mobile: true, scale: 2 };
 
 const SHOTS = {
   // Bike down the Prinsengracht from the Westerkerk towards the Rijksmuseum,
   // opening on the real start-of-ride overview flight.
-  ride: () => rideShot('ride', { start: [52.37660, 4.88445], finish: [52.36000, 4.88520], intro: true, seconds: 70 }),
+  // Filmed at the teaser window's footage size (1536x864) so it is shown 1:1 and the HUD stays legible.
+  ride: () => rideShot('ride', { start: [52.37660, 4.88445], finish: [52.36000, 4.88520], intro: true, seconds: 70, viewport: { width: 1536, height: 864 }, quietCards: true }),
   // Boat up the Amstel under the Magere Brug.
   boat: () => rideShot('boat', { start: [52.36760, 4.90020], finish: [52.35870, 4.90430], travel: 'boat', seconds: 30, cruise: 170, zoomIn: 250 }),
   // Boat along the Herengracht: canal houses both sides.
@@ -194,14 +214,14 @@ const SHOTS = {
   // The explorer: pick the Westerkerk and turn it in 3D.
   explore: () => exploreShot('explore'),
   // The phone layout: a short bike ride, questions answered by tapping.
-  vride: () => rideShot('vride', { start: [52.37660, 4.88445], finish: [52.36000, 4.88520], intro: true, seconds: 70, ...VERTICAL }),
+  vride: () => rideShot('vride', { start: [52.37660, 4.88445], finish: [52.36000, 4.88520], intro: true, seconds: 70, quietCards: true, ...VERTICAL }),
   vboat: () => rideShot('vboat', { start: [52.36760, 4.90020], finish: [52.35870, 4.90430], travel: 'boat', seconds: 22, cruise: 170, settleMs: 9000, ...VERTICAL }),
   vquiz: () => quizShot('vquiz', VERTICAL),
   vexplore: () => exploreShot('vexplore', VERTICAL),
   // Landing-page loops, filmed at the hero image's 16:10 so the HUD lays itself out for it.
-  lride: () => rideShot('lride', { start: [52.37660, 4.88445], finish: [52.36000, 4.88520], intro: true, seconds: 30, viewport: { width: 1280, height: 800 } }),
+  lride: () => rideShot('lride', { start: [52.37660, 4.88445], finish: [52.36000, 4.88520], intro: true, seconds: 30, viewport: { width: 1280, height: 800 }, quietCards: true }),
   lboat: () => rideShot('lboat', { start: [52.36760, 4.90020], finish: [52.35870, 4.90430], travel: 'boat', seconds: 16, cruise: 170, viewport: { width: 1280, height: 800 } }),
-  phone: () => rideShot('phone', { start: [52.37200, 4.88510], finish: [52.36500, 4.88800], seconds: 40, viewport: { width: 390, height: 844 }, mobile: true, cruise: 140, scale: 2, settleMs: 9000 }),
+  phone: () => rideShot('phone', { start: [52.37200, 4.88510], finish: [52.36500, 4.88800], seconds: 40, viewport: { width: 390, height: 844 }, mobile: true, cruise: 140, scale: 1.5, settleMs: 9000 }),
 };
 
 const wanted = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(SHOTS);

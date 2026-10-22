@@ -2,14 +2,14 @@
 // Short silent landing-page loops from the raw captures (capture.mjs shots
 // lride, lboat, phone). No 90s styling: clean gameplay, end crossfaded into
 // the start so it loops without a jump. Writes H.264 MP4, VP9 WebM and a
-// poster JPG per loop to public/canal-drive/media/loops/.
+// poster JPG per loop to artifacts/teaser/out/loops/ (not committed).
 //
 //   node scripts/teaser/loops.mjs
-import { mkdirSync, readFileSync, statSync } from 'node:fs';
+import { mkdirSync, readFileSync, statSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 
 const RAW = process.env.TEASER_RAW || 'artifacts/teaser/raw';
-const OUT = 'public/canal-drive/media/loops';
+const OUT = process.env.TEASER_LOOPS_OUT || 'artifacts/teaser/out/loops';
 mkdirSync(OUT, { recursive: true });
 
 const mark = (clip, re) => {
@@ -27,11 +27,24 @@ const LOOPS = [
 ];
 const X = 0.6; // crossfade length
 
+// Screenshot-grabbed clips (the phone) run at ~20-30 fps with uneven spacing:
+// re-time them evenly and motion-interpolate to 30 fps, as edit.mjs does.
+function sourceOf(clip) {
+  const info = JSON.parse(readFileSync(`${RAW}/${clip}.json`, 'utf8'));
+  if (info.fps >= 28) return `${RAW}/${clip}.mp4`;
+  const out = `${RAW}/${clip}-smooth.mp4`;
+  if (existsSync(out) && statSync(out).mtimeMs > statSync(`${RAW}/${clip}.json`).mtimeMs) return out;
+  execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', `${info.frames}/${info.seconds.toFixed(4)}`, '-i', `${RAW}/${clip}-frames/f%06d.jpg`,
+    '-vf', 'minterpolate=fps=30:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1,scale=trunc(iw/2)*2:trunc(ih/2)*2,format=yuv420p',
+    '-c:v', 'libx264', '-preset', 'medium', '-crf', '14', out], { stdio: ['ignore', 'ignore', 'inherit'] });
+  return out;
+}
+
 for (const l of LOOPS) {
   const graph = `[0:v]fps=30,scale=${l.w}:${l.h}:flags=lanczos,setsar=1,split[a][b];`
     + `[a]trim=${X}:${l.dur + X},setpts=PTS-STARTPTS[main];[b]trim=0:${X},setpts=PTS-STARTPTS[head];`
     + `[main][head]xfade=transition=fade:duration=${X}:offset=${l.dur - X},format=yuv420p[v]`;
-  const input = ['-ss', l.start.toFixed(3), '-t', (l.dur + X + 0.2).toFixed(3), '-i', `${RAW}/${l.clip}.mp4`];
+  const input = ['-ss', l.start.toFixed(3), '-t', (l.dur + X + 0.2).toFixed(3), '-i', sourceOf(l.clip)];
   const base = `${OUT}/${l.name}`;
   // Budget: ~1.3 MB per loop (the landing page asks for under 1.5 MB).
   const kbps = Math.floor(1300 * 8 / l.dur);
