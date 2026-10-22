@@ -70,8 +70,8 @@ export function renderMusic({ out, duration = 47, musicStart = 3.5, bpm = 128, e
   // ---- boot: PC-speaker beep, then the CD spinning up ----
   if (bootBeep != null) { const i0 = Math.floor(bootBeep * SR); for (let k = 0; k < 0.16 * SR; k++) add(i0 + k, ((k * 1000 / SR) % 1 < 0.5 ? 1 : -1) * 0.07); }
   // drive seek clicks while the text types
-  for (let t = 0.5; t < discAt[0]; t += 0.11 + ((t * 7) % 0.13)) { const i0 = Math.floor(t * SR); for (let k = 0; k < 0.012 * SR; k++) add(i0 + k, noise() * 0.05 * Math.exp(-k / (0.003 * SR))); }
-  { const [a, b] = discAt; const i0 = Math.floor(a * SR); let ph = 0, lp = 0; for (let k = 0; k < (b - a) * SR; k++) { const u = k / ((b - a) * SR); const f = 90 + 900 * u * u; ph += f / SR; lp += (noise() - lp) * 0.08; add(i0 + k, (Math.sin(TAU * ph) * 0.05 + lp * 0.12) * Math.min(1, u * 4) * (1 - Math.max(0, (u - 0.85) / 0.15))); } }
+  if (discAt) for (let t = 0.5; t < discAt[0]; t += 0.11 + ((t * 7) % 0.13)) { const i0 = Math.floor(t * SR); for (let k = 0; k < 0.012 * SR; k++) add(i0 + k, noise() * 0.05 * Math.exp(-k / (0.003 * SR))); }
+  if (discAt) { const [a, b] = discAt; const i0 = Math.floor(a * SR); let ph = 0, lp = 0; for (let k = 0; k < (b - a) * SR; k++) { const u = k / ((b - a) * SR); const f = 90 + 900 * u * u; ph += f / SR; lp += (noise() - lp) * 0.08; add(i0 + k, (Math.sin(TAU * ph) * 0.05 + lp * 0.12) * Math.min(1, u * 4) * (1 - Math.max(0, (u - 0.85) / 0.15))); } }
 
   // ---- music ----
   const stop = endAt ?? duration;

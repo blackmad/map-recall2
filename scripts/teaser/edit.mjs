@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 // Cut the teaser from the raw captures (scripts/teaser/capture.mjs).
 //
-//   node scripts/teaser/edit.mjs [h|v …] [--no-music] [--music-only]
+//   node scripts/teaser/edit.mjs [h|v …] [--no-music|--music-only] [--no-boot|--boot-only]
 //
-// h = 1920x1080 (teaser-1080p.mp4), v = 1080x1920 (teaser-vertical.mp4).
-// Every cut is exported twice by default: with the synthesised soundtrack and
-// as *-nomusic.mp4 with a silent audio track. --no-music / --music-only pick
-// one. Title cards come from cards.html rendered by Playwright; footage
+// h = 1920x1080 (teaser-1080p*.mp4), v = 1080x1920 (teaser-vertical*.mp4).
+// By default every cut is exported four ways: with and without the opening
+// CD-ROM boot screen (-noboot opens on the logo) x with the synthesised
+// soundtrack and with a silent track (-nomusic). The flags pick a subset. Title cards come from cards.html rendered by Playwright; footage
 // segments are picked by the event marks the capture wrote, so a re-capture
-// re-cuts itself. Output: public/canal-drive/media/teaser/.
+// re-cuts itself. Output: artifacts/teaser/out/ (TEASER_OUT); the videos are
+// published as release assets, not committed.
 import { mkdirSync, existsSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { resolve, join } from 'node:path';
@@ -18,12 +19,14 @@ import { renderMusic } from './music.mjs';
 
 const RAW = process.env.TEASER_RAW || 'artifacts/teaser/raw';
 const WORK = process.env.TEASER_WORK || 'artifacts/teaser/work';
-const OUT = 'public/canal-drive/media/teaser';
+const OUT = process.env.TEASER_OUT || 'artifacts/teaser/out';
 const FPS = 30;
 const args = process.argv.slice(2);
 const layouts = args.filter(a => a === 'h' || a === 'v');
 const withMusic = !args.includes('--no-music');
 const withoutMusic = !args.includes('--music-only');
+const withBoot = !args.includes('--no-boot');
+const withoutBoot = !args.includes('--boot-only');
 mkdirSync(WORK, { recursive: true });
 mkdirSync(OUT, { recursive: true });
 
@@ -38,8 +41,8 @@ const PLAN = {
     { card: 'boot', dur: 3.4, tr: ['fadewhite', 0.3] },
     { card: 'logo', dur: 4.0, tr: ['star', 0.7] },
     { clip: 'ride', at: [/^intro$/, 0.2], dur: 5.0, title: 'RIDE AMSTERDAM — Start of the ride', word: 'EXPLORE!', sub: 'A whole city to ride, <b>built from open data</b>', tr: ['circleopen', 0.5] },
-    { clip: 'ride', at: [/^question:/, -2.4], dur: 6.2, title: 'RIDE AMSTERDAM — Prinsengracht', word: 'LEARN!', sub: 'Every canal and street you pass <b>is a question</b>', ding: /^answered:/, tr: ['pixelize', 0.5] },
-    { clip: 'ride', at: [/^question:route/, -0.9], dur: 4.6, title: 'RIDE AMSTERDAM — Spiegelgracht', word: 'REMEMBER!', sub: 'Get it right and the name is <b>painted on the street</b>', ding: /^answered:/, tr: ['wipeleft', 0.5] },
+    { clip: 'ride', at: [/^question:/, -2.4], dur: 6.2, title: 'RIDE AMSTERDAM — By bike', word: 'LEARN!', sub: 'Every canal and street you pass <b>is a question</b>', ding: /^answered:/, tr: ['pixelize', 0.5] },
+    { clip: 'ride', at: [/^question:route/, -0.9], dur: 4.6, title: 'RIDE AMSTERDAM — By bike', word: 'REMEMBER!', sub: 'Get it right and the name is <b>painted on the street</b>', ding: /^answered:/, tr: ['wipeleft', 0.5] },
     { clip: 'boat', at: [/^racing$/, 4.6], dur: 5.0, title: 'RIDE AMSTERDAM — Amstel by boat', word: 'SAIL!', sub: 'Swap the bike for a boat and <b>cruise the Amstel</b>', tr: ['circleclose', 0.5] },
     { clip: 'herengracht', at: [/^landmark:NIOD/, -0.6], dur: 4.6, title: 'RIDE AMSTERDAM — Herengracht', word: 'DISCOVER!', sub: 'Landmarks and neighbourhoods <b>tell their stories</b>', tr: ['star', 0.7] },
     { clip: 'quiz', at: [/^quiz-question:/, -0.8], dur: 4.6, title: 'MAP QUEST — Canals &amp; Water', word: 'QUIZ!', sub: '<b>Map Quest</b> drills every canal on the map', ding: /^quiz-answered:/, tr: ['pixelize', 0.5] },
@@ -76,6 +79,23 @@ function findMark(clip, re, after = 0) {
   const m = marksOf(clip).marks.find(m => re.test(m.label) && m.t >= after);
   if (!m) throw new Error(`no mark ${re} in ${clip}`);
   return m.t;
+}
+
+/**
+ * Clips grabbed with screenshots (phone-shaped viewports) arrive at ~20-25 fps
+ * with uneven spacing; resampled to 30 fps that repeats every third frame and
+ * judders. Re-time those frames evenly and motion-interpolate to 30 fps.
+ */
+function sourceOf(clip) {
+  const info = marksOf(clip);
+  if (info.fps >= 28) return `${RAW}/${clip}.mp4`;
+  const out = `${RAW}/${clip}-smooth.mp4`;
+  if (existsSync(out) && statSync(out).mtimeMs > statSync(`${RAW}/${clip}.json`).mtimeMs) return out;
+  console.log(`   smoothing ${clip} (${info.fps.toFixed(1)} fps captured)`);
+  ff(['-framerate', `${info.frames}/${info.seconds.toFixed(4)}`, '-i', `${RAW}/${clip}-frames/f%06d.jpg`,
+    '-vf', `minterpolate=fps=${FPS}:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1,scale=trunc(iw/2)*2:trunc(ih/2)*2,format=yuv420p`,
+    '-c:v', 'libx264', '-preset', 'medium', '-crf', '14', out]);
+  return out;
 }
 
 async function renderCards(lay) {
@@ -123,7 +143,7 @@ function buildSegments(lay) {
     // The caption PNG is full-frame; it slides in from the nearest edge.
     const slide = `${lay === 'v' ? -280 : 220}*pow(1-min(1\\,max(0\\,(t-0.3)/0.35))\\,2)`;
     const fc2 = `[1:v]fps=${FPS},scale=${f.w}:${f.h}:flags=lanczos,setsar=1[f];[0:v][f]overlay=${f.x}:${f.y}[a];[a][2:v]overlay=x=0:y='${slide}':eval=frame[o]`;
-    ff(['-loop', '1', '-framerate', String(FPS), '-i', `${dir}/bg.png`, '-ss', start.toFixed(3), '-i', `${RAW}/${s.clip}.mp4`, '-loop', '1', '-framerate', String(FPS), '-i', `${dir}/cap.png`,
+    ff(['-loop', '1', '-framerate', String(FPS), '-i', `${dir}/bg.png`, '-ss', start.toFixed(3), '-i', sourceOf(s.clip), '-loop', '1', '-framerate', String(FPS), '-i', `${dir}/cap.png`,
       '-filter_complex', fc2, '-map', '[o]', '-t', String(s.dur), ...enc, out]);
     const dings = [];
     if (s.ding) for (const m of marksOf(s.clip).marks) if (s.ding.test(m.label) && m.t >= start && m.t < start + s.dur) dings.push(m.t - start);
@@ -132,7 +152,7 @@ function buildSegments(lay) {
   return segs;
 }
 
-function assemble(lay, segs) {
+function assemble(lay, segs, tag) {
   const L = LAYOUT[lay];
   // xfade chain
   const inputs = segs.flatMap(s => ['-i', s.file]);
@@ -154,13 +174,14 @@ function assemble(lay, segs) {
   const scan = `${WORK}/scan-${lay}.png`;
   ff(['-f', 'lavfi', '-i', `color=c=black:s=${L.W}x${L.H},format=rgba,geq=r=0:g=0:b=0:a='if(eq(mod(Y\\,3)\\,0)\\,34\\,0)'`, '-frames:v', '1', scan]);
   chain += `[x]rgbashift=rh=-1:bh=1,vignette=angle=PI/6[c];[c][${segs.length}:v]overlay=0:0,format=yuv420p[v]`;
-  const video = `${WORK}/${lay}-video.mp4`;
-  writeFileSync(`${WORK}/${lay}-graph.txt`, chain);
-  ff([...inputs, '-loop', '1', '-i', scan, '-/filter_complex', `${WORK}/${lay}-graph.txt`, '-map', '[v]', '-t', total.toFixed(3), '-r', String(FPS), '-c:v', 'libx264', '-preset', 'medium', '-crf', '14', '-pix_fmt', 'yuv420p', video]);
+  const video = `${WORK}/${lay}${tag}-video.mp4`;
+  writeFileSync(`${WORK}/${lay}${tag}-graph.txt`, chain);
+  ff([...inputs, '-loop', '1', '-i', scan, '-/filter_complex', `${WORK}/${lay}${tag}-graph.txt`, '-map', '[v]', '-t', total.toFixed(3), '-r', String(FPS), '-c:v', 'libx264', '-preset', 'medium', '-crf', '14', '-pix_fmt', 'yuv420p', video]);
   const dings = segs.flatMap((s, i) => (s.dings || []).map(d => starts[i] + d + 0.05));
-  const musicStart = starts[1] + 0.05;
+  const boot = segs[0].card === 'boot';
+  const musicStart = (boot ? starts[1] : 0) + 0.05;
   const endStart = starts[starts.length - 1];
-  return { video, total, dings, whooshes, musicStart, endStart, starts };
+  return { video, total, dings, whooshes, musicStart, endStart, starts, boot };
 }
 
 function encodeFinal(video, audio, out, total, kbps) {
@@ -177,23 +198,26 @@ for (const lay of layouts.length ? layouts : ['h', 'v']) {
   await renderCards(lay);
   console.log(`== ${lay}: segments`);
   const segs = buildSegments(lay);
-  console.log(`== ${lay}: assemble`);
-  const a = assemble(lay, segs);
-  writeFileSync(`${WORK}/${lay}-timeline.json`, JSON.stringify({ total: a.total, starts: a.starts, shots: segs.map((s, i) => ({ at: +a.starts[i].toFixed(2), card: s.card, clip: s.clip, word: s.word })) }, null, 2));
-  const name = lay === 'h' ? 'teaser-1080p' : 'teaser-vertical';
-  const kbps = lay === 'h' ? 3600 : 3600;
-  if (withMusic) {
-    const wav = `${WORK}/${lay}-music.wav`;
-    const bars = Math.max(1, Math.round((a.endStart - a.musicStart) / 1.875));
-    const bpm = 240 * bars / (a.endStart - a.musicStart);
-    renderMusic({ out: wav, duration: a.total, musicStart: a.musicStart, bpm, endAt: a.endStart + 0.02, dings: a.dings, whooshes: a.whooshes });
-    encodeFinal(a.video, wav, `${OUT}/${name}.mp4`, a.total, kbps);
-  }
-  if (withoutMusic) encodeFinal(a.video, null, `${OUT}/${name}-nomusic.mp4`, a.total, kbps);
-  if (lay === 'h') {
+  for (const boot of [...(withBoot ? [true] : []), ...(withoutBoot ? [false] : [])]) {
+    const tag = boot ? '' : '-noboot';
+    const use = boot ? segs : segs.filter(x => x.card !== 'boot');
+    console.log(`== ${lay}${tag}: assemble`);
+    const a = assemble(lay, use, tag);
+    writeFileSync(`${WORK}/${lay}${tag}-timeline.json`, JSON.stringify({ total: a.total, starts: a.starts, shots: use.map((x, i) => ({ at: +a.starts[i].toFixed(2), card: x.card, clip: x.clip, word: x.word })) }, null, 2));
+    const name = (lay === 'h' ? 'teaser-1080p' : 'teaser-vertical') + tag;
+    const kbps = 3400; // keeps every file under 24 MB
+    if (withMusic) {
+      const wav = `${WORK}/${lay}${tag}-music.wav`;
+      // Re-time the track so the final chord lands on the end card.
+      const bars = Math.max(1, Math.round((a.endStart - a.musicStart) / 1.875));
+      const bpm = 240 * bars / (a.endStart - a.musicStart);
+      renderMusic({ out: wav, duration: a.total, musicStart: a.musicStart, bpm, endAt: a.endStart + 0.02, dings: a.dings, whooshes: a.whooshes,
+        ...(a.boot ? {} : { bootBeep: null, discAt: null }) });
+      encodeFinal(a.video, wav, `${OUT}/${name}.mp4`, a.total, kbps);
+    }
+    if (withoutMusic) encodeFinal(a.video, null, `${OUT}/${name}-nomusic.mp4`, a.total, kbps);
     // Poster: the logo card at rest.
-    ff(['-ss', (a.starts[2] - 0.9).toFixed(2), '-i', a.video, '-frames:v', '1', '-q:v', '3', `${OUT}/teaser-poster.jpg`]);
-  } else {
-    ff(['-ss', (a.starts[2] - 0.9).toFixed(2), '-i', a.video, '-frames:v', '1', '-q:v', '3', `${OUT}/teaser-vertical-poster.jpg`]);
+    const logo = use.findIndex(x => x.card === 'logo');
+    ff(['-ss', (a.starts[logo + 1] - 0.9).toFixed(2), '-i', a.video, '-frames:v', '1', '-q:v', '3', `${OUT}/${lay === 'h' ? 'teaser' : 'teaser-vertical'}-poster.jpg`]);
   }
 }
