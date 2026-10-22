@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## 2026-10-22 — Back to Boat and North up; the View picker stays off setup
+
+User: "maybe bring back boat/north-up view too? I just hated the intro
+control for it, and the way it pushed the controls to need to scroll on my
+14\" mac". Defaults return to Boat + North up; setup keeps no View row (Start
+Route fits at 1512x860, 1512x780 and 1280x720); a view picked in the in-ride
+settings is now kept between rides (the Chase-on-load reset is gone). The
+bike/Chase defaults had also broken the deploy smoke on CI (the default ride
+sat on "Rendering streets…" past 60 s under CI's software GL; locally
+SwiftShader spawned in 17 s either way, so the CI cause is unconfirmed).
+The landing footer and credits now link the GitHub repo.
+
 ## 2026-10-22 — Teaser video and landing loops
 
 A ~49 s 90s-CD-ROM teaser (Win95 window, boot screen, starburst captions)

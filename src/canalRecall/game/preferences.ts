@@ -174,10 +174,11 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     cityId: DEFAULT_CITY_ID,
     difficulty: 'medium',
     ...DIFFICULTY_PRESETS.medium,
-    // Bike and Chase are the product start (2026-10-21, user's call).
-    travelMode: 'car',
+    // Boat and North up are the product start (2026-10-22, user's call;
+    // setup offers no view picker, the in-ride settings do).
+    travelMode: 'boat',
     controlMode: 'relative',
-    viewMode: 'chase',
+    viewMode: 'north',
     themeMode: 'clean',
     buildingLook: 'photo',
     routePattern: 'surprise',
@@ -281,10 +282,7 @@ export function parsePreferences(raw: unknown, zoom: ZoomClamp): CanalPreference
     : { ...base, difficulty, ...DIFFICULTY_PRESETS[difficulty] };
   // A save from before 2026-10-01 may hold the retired 'study' pattern;
   // parseMode rejects it and the default pattern applies.
-  // Every ride starts in Chase: setup no longer offers a view (2026-10-21,
-  // user's call). A stored view is dropped on load; the in-ride settings can
-  // still switch view for the session.
-  return { ...fillPreferences(source, withDifficulty, zoom), viewMode: base.viewMode };
+  return fillPreferences(source, withDifficulty, zoom);
 }
 
 /**

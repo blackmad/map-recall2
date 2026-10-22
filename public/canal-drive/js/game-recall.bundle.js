@@ -327,10 +327,11 @@
       cityId: DEFAULT_CITY_ID,
       difficulty: "medium",
       ...DIFFICULTY_PRESETS.medium,
-      // Bike and Chase are the product start (2026-10-21, user's call).
-      travelMode: "car",
+      // Boat and North up are the product start (2026-10-22, user's call;
+      // setup offers no view picker, the in-ride settings do).
+      travelMode: "boat",
       controlMode: "relative",
-      viewMode: "chase",
+      viewMode: "north",
       themeMode: "clean",
       buildingLook: "photo",
       routePattern: "surprise",
