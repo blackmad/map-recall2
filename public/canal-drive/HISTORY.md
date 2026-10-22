@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## 2026-10-22 — Bridge questions only on a real crossing
+
+User (teaser frame): "what waterway are you crossing" fired while the bike
+rode straight along the Prinsengracht over the Nieuwe-Wercksbrug deck. The
+street crossing gate was drawn across every edge of a bridge's geometry,
+including deck outlines (158 of 415 bridges are outline-only), so a quay-side
+edge put a gate across the quay. Now the rider's last 18 m must cross the
+waterway centreline at 35° or more, on the deck (`findWaterCrossing`,
+`TrackTrail`); outline edges no longer gate. False asks at 20 ring junction
+bridges went to 0; real side-canal and cross-street crossings still ask (four
+more now do). Named regressions in check-recall-rules. Not yet confirmed in
+a live browser run.
+
 ## 2026-10-22 — Share links name their real ends; phone cluster stays off question cards; wider spoiler filter
 
 Seen while filming the teaser. (1) `#race=` share links carry only
