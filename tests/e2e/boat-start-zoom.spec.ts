@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { setHiddenSelect } from './helpers';
+import { openRoute, setHiddenSelect } from './helpers';
 
 // Named regression (user report 2026-10-21, "why are we sometimes not seeing the boat?"): a boat
 // ride in chase view from the Amstel at Royal Theater Carré (Weesperbuurt) to the Raw Aron Schuster
@@ -111,4 +111,80 @@ test('a zoomed-out chase grows the boat instead of losing it', async ({ page }) 
   expect(await scaleAt(0.65), 'default zoom: the tuned size').toBeCloseTo(1, 5);
   expect(await scaleAt(1.2), 'zoomed in: never smaller').toBeCloseTo(1, 5);
   expect(await scaleAt(0.1), 'slider minimum: grown').toBeGreaterThan(2);
+});
+
+// Follow-up (user, 2026-10-22): zoomed out, the screen-sized START tag sat a few pixels above the
+// start point and covered the (grown) boat. The tag now keeps off the vehicle's projected mesh box
+// (vehicleScreenBox.ts) for every chase vehicle, from the slider minimum to zoomed in.
+type Kind = 'boat' | 'bike' | 'ferry' | 'transit';
+const TAG_ZOOMS = [0.1, 0.65, 1.2];
+
+async function tagAndVehicle(page: Page, kind: Kind, zoom: number) {
+  await page.evaluate((z) => { (window as any).canalRecallGame.camera.zoom = z; }, zoom);
+  await page.waitForTimeout(700);
+  return page.evaluate((k) => {
+    const g = (window as any).canalRecallGame;
+    // The tag is drawn in the canvas's logical space; the mesh box is CSS pixels (they differ on desktop).
+    const rect = g.canvas.getBoundingClientRect();
+    const sx = rect.width / (0, eval)('CANVAS_W'), sy = rect.height / (0, eval)('CANVAS_H');
+    const t = g.track._lastStartTagBox;
+    const tag = t ? { left: t.left * sx, right: t.right * sx, top: t.top * sy, bottom: t.bottom * sy } : null;
+    return { tag, vehicle: g.vectorMap.playerScreenBox(k) };
+  }, kind);
+}
+
+async function expectTagClear(page: Page, kind: Kind, testInfo: import('@playwright/test').TestInfo) {
+  for (const zoom of TAG_ZOOMS) {
+    const { tag, vehicle } = await tagAndVehicle(page, kind, zoom);
+    await page.screenshot({ path: testInfo.outputPath(`start-tag-${kind}-${zoom}.png`) });
+    console.log(JSON.stringify({ kind, zoom, tag, vehicle }));
+    expect(vehicle, `${kind} mesh drawn at zoom ${zoom}`).not.toBeNull();
+    expect(tag, `START tag drawn at zoom ${zoom}`).not.toBeNull();
+    // The tag stands over the vehicle (same columns), so clearing it is not an accident of a side offset.
+    expect(tag.left < vehicle.right && vehicle.left < tag.right, `START tag above the ${kind} at zoom ${zoom}`).toBe(true);
+    const overlap = tag.left < vehicle.right && vehicle.left < tag.right && tag.top < vehicle.bottom && vehicle.top < tag.bottom;
+    expect(overlap, `START tag clear of the ${kind} at zoom ${zoom}`).toBe(false);
+  }
+}
+
+test('the START tag never covers the boat, zoomed out or in', async ({ page }, testInfo) => {
+  test.setTimeout(180_000);
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  await page.goto('/canal-drive/');
+  await page.waitForFunction(() => !!(window as any).canalRecallGame);
+  await setHiddenSelect(page, 'travel-mode', 'boat');
+  await setHiddenSelect(page, 'view-mode', 'chase');
+  await page.evaluate(([from, to]) => { (window as any).canalRecallGame._launchPoiRoute(from, to, { explicitDestination: true }); }, [CARRE, SYNAGOGUE] as const);
+  await page.waitForFunction(() => (window as any).canalRecallGame?.state === 4 && (window as any).canalRecallGame.vectorMap.isPlayerBoatReady(), null, { timeout: 120_000 });
+  await expectTagClear(page, 'boat', testInfo);
+});
+
+for (const kind of ['bike', 'ferry', 'transit'] as const) {
+  test(`the START tag never covers the ${kind}, zoomed out or in`, async ({ page }, testInfo) => {
+    test.setTimeout(180_000);
+    await openRoute(page, { travelMode: kind === 'transit' ? 'transit' : 'car', viewMode: 'chase' });
+    const ready = kind === 'ferry' ? 'isPlayerFerryReady' : kind === 'transit' ? 'isPlayerTransitReady' : 'isPlayerBikeReady';
+    if (kind === 'ferry') {
+      // Aboard a ferry from the spawn: the IJ ferry mesh is what the chase draws (presentationRuntime byFerry).
+      await page.evaluate(() => { const p = (window as any).canalRecallGame.player; p.ferryOrigin = { id: 'start-tag-test', name: 'Test pier', x: p.x, y: p.y }; p.ferryDestinations = []; });
+    }
+    await page.waitForFunction((r) => (window as any).canalRecallGame.vectorMap[r]?.(), ready, { timeout: 120_000 });
+    await expectTagClear(page, kind, testInfo);
+  });
+}
+
+test('ferry and transit chase meshes grow when zoomed out, like the boat', async ({ page }) => {
+  test.setTimeout(180_000);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+  const scales = (zoom: number) => page.evaluate(async (z) => {
+    const g = (window as any).canalRecallGame;
+    g.camera.zoom = z;
+    await new Promise(r => setTimeout(r, 400));
+    return { ferry: g.vectorMap._playerFerry?.zoomScale as number, transit: g.vectorMap._playerTransit?.zoomScale as number };
+  }, zoom);
+  for (const [zoom, check] of [[0.65, (v: number) => expect(v).toBeCloseTo(1, 5)], [1.2, (v: number) => expect(v).toBeCloseTo(1, 5)], [0.1, (v: number) => expect(v).toBeGreaterThan(2)]] as const) {
+    const s = await scales(zoom);
+    check(s.ferry);
+    check(s.transit);
+  }
 });

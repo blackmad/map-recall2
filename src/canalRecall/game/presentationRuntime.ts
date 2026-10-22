@@ -33,7 +33,8 @@ import {
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
 import { introFrame, introOverview, introPlan, playerZoom } from './introFlight';
-import { boatZoomScale, vehicleZoomScale } from './vehicleZoomScale';
+import { boatZoomScale, ferryZoomScale, transitZoomScale, vehicleZoomScale } from './vehicleZoomScale';
+import { glyphBox, startTagCentreY, type ScreenBox } from './vehicleScreenBox';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { zoomBadgeShouldFlash, zoomBadgeText } from '../hudCopy';
@@ -659,7 +660,7 @@ export class GamePresentationRuntime {
       vehicleZoomScale(this.camera.zoom, this._defaultZoom ?? this.camera.zoom));
     // Grows as the camera zooms out, so a zoomed-out chase still shows the boat (vehicleZoomScale.ts boatZoomScale).
     this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat, boatZoomScale(this.camera.zoom));
-    this.vectorMap.setPlayerFerry?.(player, this.osmLoader, pitched && byFerry);
+    this.vectorMap.setPlayerFerry?.(player, this.osmLoader, pitched && byFerry, ferryZoomScale(this.camera.zoom));
     if (typeof this.vectorMap.setPlayerTransit === 'function') {
       let underground = false;
       if (byTransit && this.track && typeof this.track.getNearestRoad === 'function') {
@@ -667,7 +668,7 @@ export class GamePresentationRuntime {
         const seg = contact && this.track.segments ? this.track.segments[contact.segIdx] : null;
         underground = !!(seg && seg.type === 'metro');
       }
-      this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground);
+      this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground, transitZoomScale(this.camera.zoom));
     }
     this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
     // While a question is open this is the feature being asked about; for the
@@ -712,6 +713,22 @@ export class GamePresentationRuntime {
       else this.renderer.drawPlayerCar(player, this.camera);
     }
     this.renderer.drawParticles(this.particles, this.camera);
+    // The START tag keeps off the vehicle at every zoom: the mesh's own screen box, or the canvas glyph's.
+    const kind = byFerry ? 'ferry' : byBoat ? 'boat' : byTransit ? 'transit' : 'bike';
+    let vehicleBox: ScreenBox | null = null;
+    const meshBox = meshReady ? this.vectorMap.playerScreenBox?.(kind) ?? null : null;
+    const rect = meshBox ? this.canvas.getBoundingClientRect() : null;
+    if (meshBox && rect && rect.width > 0 && rect.height > 0) {
+      // The mesh box is in CSS pixels; the canvas draws in its logical space (CANVAS_W × CANVAS_H).
+      const sx = CANVAS_W / rect.width, sy = CANVAS_H / rect.height;
+      vehicleBox = { left: meshBox.left * sx, right: meshBox.right * sx, top: meshBox.top * sy, bottom: meshBox.bottom * sy };
+    }
+    if (!vehicleBox) {
+      const at = this.camera.worldToScreen(player.x, player.y);
+      const p = player as { length?: number; width?: number };
+      vehicleBox = glyphBox(at.x, at.y, (Math.max(p.length || 30, p.width || 12) / 2 * 1.35 + 3) * (this.camera.zoom || 1));
+    }
+    this.track.placeStartTag = (centreX, defaultCentreY, pill) => startTagCentreY(centreX, defaultCentreY, pill, vehicleBox);
 
 
     // Streets stay named on the map once you have been told the name, in the

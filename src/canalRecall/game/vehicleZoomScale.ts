@@ -35,3 +35,11 @@ export const BOAT_REFERENCE_ZOOM = 0.65;
 export function boatZoomScale(zoom: number, referenceZoom = BOAT_REFERENCE_ZOOM): number {
   return Math.max(1, vehicleZoomScale(zoom, referenceZoom));
 }
+
+/**
+ * The IJ ferry and the transit car take the boat's rule (2026-10-22): they are
+ * world-space pieces tuned at the default zoom too, and vanished the same way
+ * when the camera was zoomed out.
+ */
+export const ferryZoomScale = boatZoomScale;
+export const transitZoomScale = boatZoomScale;

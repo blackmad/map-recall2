@@ -694,7 +694,10 @@ class RoadNetwork {
     const screen = camera.worldToScreen(point.x, point.y);
     const screenX = screen.x;
     const screenY = screen.y;
-    if (screenX < -150 || screenX > CANVAS_W + 150 || screenY < -150 || screenY > CANVAS_H + 150) return;
+    if (screenX < -150 || screenX > CANVAS_W + 150 || screenY < -150 || screenY > CANVAS_H + 150) {
+      if (text === 'START') this._lastStartTagBox = null;
+      return;
+    }
 
     ctx.save();
     const fs = Math.max(9, Math.round(12 * z));
@@ -704,11 +707,15 @@ class RoadNetwork {
 
     const info = this.getNearestRoad(point.x, point.y);
     const w = info ? info.width : DEFAULT_ROAD_WIDTH;
-    const labelY = screenY - (w + 20) * z;
-
     // Background pill
     const tw = ctx.measureText(text).width;
     const pw = tw + 16, ph = fs + 8;
+    // The presentation moves the START tag above the vehicle when they would overlap (vehicleScreenBox.ts).
+    const defaultY = screenY - (w + 20) * z;
+    const labelY = text === 'START' && typeof this.placeStartTag === 'function'
+      ? this.placeStartTag(screenX, defaultY, { width: pw, height: ph })
+      : defaultY;
+    this._lastStartTagBox = text === 'START' ? { left: screenX - pw / 2, top: labelY - ph / 2, right: screenX + pw / 2, bottom: labelY + ph / 2 } : this._lastStartTagBox;
     ctx.fillStyle = 'rgba(0,0,0,0.75)';
     roundRect(ctx, screenX - pw / 2, labelY - ph / 2, pw, ph, 5);
     ctx.fill();
