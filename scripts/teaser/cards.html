@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- Teaser title cards and frames. Rendered to PNG frames by render-cards.mjs:
+     window.setup({ card, layout, ...params }) then window.renderAt(seconds).
+     Fonts: Anton and Archivo Black (repo, SIL OFL 1.1), VT323 and Barlow
+     Condensed (Google Fonts, SIL OFL 1.1). -->
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=VT323&display=block" rel="stylesheet">
+<style>
+@font-face { font-family: Anton; src: url(../../public/canal-drive/fonts/Anton-Regular.ttf); font-display: block; }
+@font-face { font-family: 'Archivo Black'; src: url(../../public/canal-drive/fonts/ArchivoBlack-Regular.ttf); font-display: block; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: transparent; overflow: hidden; }
+#stage { position: relative; overflow: hidden; }
+.desktop { position: absolute; inset: 0; background-color: #17797f;
+  background-image: repeating-conic-gradient(#1a8389 0 25%, #157278 0 50%); background-size: 4px 4px; }
+.desktop::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 40%, rgba(255,255,255,.10), rgba(0,0,0,.28)); }
+/* Win95-style window */
+.win { position: absolute; background: #c3c3c3; box-shadow: inset -2px -2px 0 #0a0a0a, inset 2px 2px 0 #ffffff, inset -4px -4px 0 #808080, inset 4px 4px 0 #dfdfdf, 8px 10px 0 rgba(0,0,0,.35); }
+.win .title { position: absolute; left: 4px; right: 4px; top: 4px; height: 30px; background: linear-gradient(90deg, #000a80, #1a6fd0); color: #fff; font: 700 21px/30px 'Barlow Condensed', sans-serif; letter-spacing: .04em; padding-left: 40px; white-space: nowrap; }
+.win .title .ico { position: absolute; left: 7px; top: 4px; width: 22px; height: 22px; border-radius: 50%; background: conic-gradient(#ffd23f, #ff7a1a, #e8336d, #5b5bd6, #2bb3c0, #ffd23f); box-shadow: 0 0 0 2px #fff inset; }
+.win .title .btns { position: absolute; right: 4px; top: 4px; display: flex; gap: 3px; }
+.win .title .btns i { width: 26px; height: 22px; background: #c3c3c3; box-shadow: inset -1px -1px 0 #0a0a0a, inset 1px 1px 0 #fff, inset -2px -2px 0 #808080; color: #000; font: 900 15px/22px Arial, sans-serif; font-style: normal; text-align: center; }
+.win .menu { position: absolute; left: 4px; right: 4px; top: 34px; height: 24px; font: 600 19px/24px 'Barlow Condensed', sans-serif; color: #111; display: flex; gap: 22px; padding-left: 12px; }
+.win .menu u { text-decoration-thickness: 2px; }
+.win .well { position: absolute; background: #000; box-shadow: 0 0 0 2px #808080, 0 0 0 3px #fff; }
+/* Phone bezel */
+.phone { position: absolute; background: #2b2b33; border-radius: 46px; box-shadow: inset 0 0 0 3px #555, inset 0 0 0 6px #1a1a1f, 10px 12px 0 rgba(0,0,0,.35); }
+.phone .screen { position: absolute; background: #000; border-radius: 22px; }
+/* Caption plaque */
+.cap { position: absolute; display: flex; align-items: center; gap: 0; }
+.burst { position: relative; flex: none; }
+.burst svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.burst span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: Anton, sans-serif; color: #ffe14d; transform: rotate(-6deg); letter-spacing: .02em;
+  -webkit-text-stroke: 5px #3a0d4a; paint-order: stroke fill; text-shadow: 3px 3px 0 #d6336c, 6px 6px 0 #3a0d4a; }
+.bar { flex: 1; margin-left: -18px; background: linear-gradient(#2c2fa8, #1a1c78); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: .01em; display: flex; align-items: center;
+  box-shadow: inset -3px -3px 0 #0b0c3c, inset 3px 3px 0 #6f74ff, 6px 7px 0 rgba(0,0,0,.35); text-shadow: 2px 2px 0 #0b0c3c; }
+.bar b { color: #ffe14d; font-weight: 800; }
+/* Logo */
+.logo { position: absolute; left: 50%; top: 50%; transform-origin: 50% 50%; text-align: center; white-space: nowrap; }
+.logo .ride, .logo .ams { font-family: Anton, sans-serif; display: block; line-height: .92; color: #ffe14d; -webkit-text-stroke: 5px #2a0838; paint-order: stroke fill; transform: skewX(-8deg); }
+.logo .ride { letter-spacing: .08em; }
+.plaque { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; letter-spacing: .14em; color: #fff; background: linear-gradient(#174bb8, #0b2a78); border: 3px solid #e7c873; border-radius: 10px; box-shadow: 0 0 0 4px #0b2a78, 0 8px 0 rgba(0,0,0,.35); }
+.sky { position: absolute; inset: 0; background: linear-gradient(#1b0b4a 0%, #4a1680 38%, #c43c7a 70%, #ff9a3c 100%); }
+.sky::after { content: ''; position: absolute; inset: 0; background-image: repeating-conic-gradient(rgba(0,0,0,.10) 0 25%, transparent 0 50%); background-size: 4px 4px; }
+.sun { position: absolute; border-radius: 50%; background: repeating-linear-gradient(#ffe14d 0 14px, #ff8a3c 14px 20px); }
+.water { position: absolute; left: 0; right: 0; bottom: 0; background: linear-gradient(#2a2a8a, #0d0d3a); }
+.water i { position: absolute; height: 4px; background: rgba(255,225,77,.55); border-radius: 2px; }
+.spark { position: absolute; width: 40px; height: 40px; margin: -20px; }
+.spark::before, .spark::after { content: ''; position: absolute; left: 50%; top: 0; width: 6px; height: 100%; margin-left: -3px; background: #fff; border-radius: 3px; box-shadow: 0 0 10px #fff; }
+.spark::after { transform: rotate(90deg); }
+.boot { position: absolute; inset: 0; background: #000; color: #b8b8b8; font-family: VT323, monospace; white-space: pre; }
+.boot .hl { color: #fff; }
+.boot .ok { color: #5fe35f; }
+.disc { position: absolute; border-radius: 50%; background: conic-gradient(from 0deg, #d9d9e8, #a8f0ff, #f7b6ff, #fff3a8, #b6ffcf, #d9d9e8, #a8f0ff, #f7b6ff, #fff3a8, #d9d9e8); box-shadow: 0 0 0 4px #777 inset; }
+.disc::after { content: ''; position: absolute; left: 50%; top: 50%; width: 26%; height: 26%; margin: -13%; border-radius: 50%; background: #000; box-shadow: 0 0 0 10px #bbb, 0 0 0 12px #888; }
+.url { display: inline-block; font-family: 'Archivo Black', sans-serif; color: #111; background: #fff; box-shadow: inset 2px 2px 0 #808080, inset -2px -2px 0 #dfdfdf, 0 0 0 4px #c3c3c3, 0 0 0 6px #0a0a0a, 8px 10px 0 6px rgba(0,0,0,.3); }
+.small { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: #fff; text-shadow: 2px 2px 0 #2a0838; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+const $ = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstChild; };
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const ease = (t) => 1 - Math.pow(1 - clamp(t), 3);
+const back = (t) => { t = clamp(t); const c = 1.9; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); };
+let cfg = null, stage = document.getElementById('stage'), draw = () => {};
+
+// Gabled canal-house skyline, drawn once as an SVG path.
+function skyline(w, h, seed = 7) {
+  let x = 0, d = `M0 ${h}`, r = seed;
+  const rnd = () => (r = (r * 9301 + 49297) % 233280) / 233280;
+  while (x < w) {
+    const bw = 46 + rnd() * 40, bh = h * (0.45 + rnd() * 0.4), kind = Math.floor(rnd() * 3);
+    d += ` L${x} ${h - bh}`;
+    if (kind === 0) { // step gable
+      const s = bw / 5; d += ` L${x + s} ${h - bh} L${x + s} ${h - bh - s} L${x + 2 * s} ${h - bh - s} L${x + 2 * s} ${h - bh - 2 * s} L${x + 3 * s} ${h - bh - 2 * s} L${x + 3 * s} ${h - bh - s} L${x + 4 * s} ${h - bh - s} L${x + 4 * s} ${h - bh}`;
+    } else if (kind === 1) { // neck gable
+      d += ` L${x + bw * .25} ${h - bh} L${x + bw * .3} ${h - bh - bw * .55} L${x + bw * .5} ${h - bh - bw * .75} L${x + bw * .7} ${h - bh - bw * .55} L${x + bw * .75} ${h - bh}`;
+    } else { // spout/pointed gable
+      d += ` L${x + bw / 2} ${h - bh - bw * .45}`;
+    }
+    d += ` L${x + bw} ${h - bh}`; x += bw;
+  }
+  return `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" style="position:absolute;left:0;bottom:0"><path d="${d} L${w} ${h} Z" fill="#1a0630"/></svg>`;
+}
+
+function burstSvg(points = 14) {
+  let d = '';
+  for (let i = 0; i < points * 2; i++) {
+    const a = (i / (points * 2)) * Math.PI * 2 - Math.PI / 2, r = i % 2 ? 0.74 : 1;
+    d += `${i ? 'L' : 'M'}${(50 + Math.cos(a) * 50 * r).toFixed(2)} ${(50 + Math.sin(a) * 50 * r).toFixed(2)}`;
+  }
+  return `<svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="${d}Z" fill="#ff7a1a" stroke="#3a0d4a" stroke-width="2.4" vector-effect="non-scaling-stroke" transform="translate(3 4)" opacity=".55"/><path d="${d}Z" fill="#fff36b" stroke="#3a0d4a" stroke-width="4" vector-effect="non-scaling-stroke"/></svg>`;
+}
+
+function sparks(n, w, h, seed) {
+  let r = seed; const rnd = () => (r = (r * 9301 + 49297) % 233280) / 233280;
+  return Array.from({ length: n }, () => ({ x: rnd() * w, y: rnd() * h * 0.6, p: rnd(), s: 0.5 + rnd() * 0.8 }));
+}
+
+const CARDS = {
+  // Desktop + window chrome (or phone bezel) behind the footage. Static.
+  frame(c) {
+    const L = c.L;
+    stage.append($(`<div class="desktop"></div>`));
+    if (c.device === 'phone') {
+      const f = c.footage, pad = 16;
+      stage.append($(`<div class="phone" style="left:${f.x - pad}px;top:${f.y - pad - 10}px;width:${f.w + pad * 2}px;height:${f.h + pad * 2 + 20}px"></div>`));
+      stage.append($(`<div style="position:absolute;left:${f.x}px;top:${f.y}px;width:${f.w}px;height:${f.h}px;background:#000;border-radius:18px"></div>`));
+      return;
+    }
+    const w = c.win, f = c.footage;
+    const el = $(`<div class="win" style="left:${w.x}px;top:${w.y}px;width:${w.w}px;height:${w.h}px">
+      <div class="title"><div class="ico"></div>${c.title || 'RIDE AMSTERDAM'}<div class="btns"><i>_</i><i>&#9633;</i><i>&#215;</i></div></div>
+      <div class="menu"><span><u>F</u>ile</span><span><u>R</u>ide</span><span><u>B</u>oat</span><span><u>Q</u>uiz</span><span><u>M</u>ap</span><span><u>H</u>elp</span></div>
+    </div>`);
+    stage.append(el);
+    stage.append($(`<div class="well" style="left:${f.x}px;top:${f.y}px;width:${f.w}px;height:${f.h}px"></div>`));
+  },
+  // The caption plaque: a starburst word and a subline bar. Transparent.
+  caption(c) {
+    const k = c.cap, v = c.layout === 'v';
+    const bw = v ? 360 : 340, bh = v ? 210 : 136, fs = v ? 80 : 64;
+    const wordSize = Math.min(fs, (bw * 0.7) / (c.word.length * 0.4));
+    const el = $(`<div class="cap" style="left:${k.x}px;top:${k.y}px;width:${k.w}px;height:${k.h}px">
+      <div class="burst" style="width:${bw}px;height:${bh}px">${burstSvg(v ? 16 : 14)}<span style="font-size:${wordSize}px">${c.word}</span></div>
+      <div class="bar" style="height:${v ? 168 : 92}px;font-size:${v ? 50 : 40}px;line-height:1.08;padding:0 ${v ? 28 : 26}px 0 ${v ? 40 : 38}px"><span>${c.sub}</span></div>
+    </div>`);
+    stage.append(el);
+  },
+  boot(c) {
+    const W = c.W, H = c.H, v = c.layout === 'v';
+    const fs = v ? 46 : 56;
+    const lines = [
+      ['hl', 'RIDE AMSTERDAM  CD-ROM  Version 1.0'],
+      ['', 'Open-data edition  ·  rideamsterdam.nl'],
+      ['', ''],
+      ['', 'Checking canals .......... ', 'OK'],
+      ['', 'Counting bridges ......... ', 'OK'],
+      ['', 'Pumping up tyres ......... ', 'OK'],
+      ['', 'Loading the Amstel ....... ', 'OK'],
+      ['', ''],
+      ['hl', 'Please insert Disc 1'],
+    ];
+    const box = $(`<div class="boot" style="font-size:${fs}px;line-height:1.12;padding:${v ? '420px 60px' : '90px 120px'}"></div>`);
+    stage.append(box);
+    const disc = $(`<div class="disc" style="width:${v ? 360 : 300}px;height:${v ? 360 : 300}px;left:${v ? W / 2 - 180 : W - 470}px;top:${v ? 1220 : H - 420}px"></div>`);
+    stage.append(disc);
+    const flash = $(`<div style="position:absolute;inset:0;background:#fff;opacity:0"></div>`);
+    stage.append(flash);
+    draw = (t) => {
+      const cps = 150; let budget = Math.max(0, t - 0.15) * cps; let html = '';
+      for (const [cls, text, ok] of lines) {
+        const full = text + (ok || '');
+        if (budget <= 0) break;
+        const shown = full.slice(0, Math.floor(budget));
+        budget -= full.length + 6;
+        const a = shown.slice(0, text.length), b = shown.slice(text.length);
+        html += `<span class="${cls}">${a}</span>${b ? `<span class="ok">${b}</span>` : ''}\n`;
+      }
+      const cursor = Math.floor(t * 3) % 2 ? '&#9608;' : ' ';
+      box.innerHTML = html + cursor;
+      const d = clamp((t - 2.0) / 0.4);
+      disc.style.opacity = d;
+      disc.style.transform = `translateX(${(1 - ease(d)) * (v ? 0 : 300)}px) translateY(${(1 - ease(d)) * (v ? 300 : 0)}px) rotate(${t * 900}deg)`;
+      flash.style.opacity = clamp((t - (c.dur - 0.35)) / 0.3);
+    };
+  },
+  logo(c) {
+    const W = c.W, H = c.H, v = c.layout === 'v';
+    stage.append($(`<div class="sky"></div>`));
+    const sunD = v ? 620 : 560;
+    const sun = $(`<div class="sun" style="width:${sunD}px;height:${sunD}px;left:${W / 2 - sunD / 2}px;top:${H * (v ? .42 : .30)}px"></div>`);
+    stage.append(sun);
+    const waterH = H * (v ? .22 : .2);
+    const sk = $(`<div style="position:absolute;left:0;right:0;bottom:${waterH}px;height:${v ? 260 : 200}px">${skyline(W, v ? 260 : 200)}</div>`);
+    stage.append(sk);
+    const water = $(`<div class="water" style="height:${waterH}px"></div>`);
+    const ripples = Array.from({ length: 14 }, (_, i) => { const r = $(`<i></i>`); water.append(r); return { r, y: 10 + (i * 37) % (waterH - 20), x: (i * 211) % W, w: 60 + (i * 53) % 160 }; });
+    stage.append(water);
+    const sp = sparks(14, W, H, 11).map(s => { const e = $(`<div class="spark"></div>`); stage.append(e); return { ...s, e }; });
+    const big = v ? 250 : 230;
+    const logo = $(`<div class="logo">
+      <span class="ride" style="font-size:${big * 0.72}px;text-shadow:${extrude(10, '#d6336c', '#2a0838')}">RIDE</span>
+      <span class="ams" style="font-size:${v ? big * 0.62 : big}px;text-shadow:${extrude(14, '#d6336c', '#2a0838')}">AMSTERDAM</span>
+      <div style="margin-top:${v ? 34 : 26}px"><span class="plaque" style="font-size:${v ? 46 : 40}px;padding:8px 26px">${c.tagline || 'THE CANAL &amp; STREET EXPLORER'}</span></div>
+    </div>`);
+    stage.append(logo);
+    draw = (t) => {
+      const s = back(t / 0.7) * (1 + 0.012 * Math.sin(t * 4));
+      logo.style.transform = `translate(-50%, -58%) scale(${s}) rotate(${(1 - ease(t / 0.7)) * -12}deg)`;
+      sun.style.transform = `translateY(${(1 - ease(t / 1.2)) * 220}px)`;
+      ripples.forEach(({ r, y, x, w }, i) => { r.style.top = `${y}px`; r.style.width = `${w}px`; r.style.left = `${(x + t * (40 + i * 7)) % (W + 200) - 200}px`; });
+      sp.forEach(s => { const ph = (t * 1.3 + s.p) % 1; s.e.style.left = `${s.x}px`; s.e.style.top = `${s.y}px`; s.e.style.opacity = Math.sin(ph * Math.PI); s.e.style.transform = `scale(${s.s * Math.sin(ph * Math.PI)}) rotate(${ph * 90}deg)`; });
+    };
+  },
+  end(c) {
+    const W = c.W, H = c.H, v = c.layout === 'v';
+    stage.append($(`<div class="sky"></div>`));
+    const sunD = v ? 620 : 520;
+    stage.append($(`<div class="sun" style="width:${sunD}px;height:${sunD}px;left:${W / 2 - sunD / 2}px;top:${H * (v ? .64 : .36)}px"></div>`));
+    const waterH = H * (v ? .2 : .18);
+    stage.append($(`<div style="position:absolute;left:0;right:0;bottom:${waterH}px;height:${v ? 240 : 180}px">${skyline(W, v ? 240 : 180, 3)}</div>`));
+    stage.append($(`<div class="water" style="height:${waterH}px"></div>`));
+    const sp = sparks(12, W, H, 5).map(s => { const e = $(`<div class="spark"></div>`); stage.append(e); return { ...s, e }; });
+    const big = v ? 170 : 150;
+    const logo = $(`<div class="logo" style="top:${v ? 26 : 25}%">
+      <span class="ride" style="font-size:${big * 0.72}px;text-shadow:${extrude(8, '#d6336c', '#2a0838')}">RIDE</span>
+      <span class="ams" style="font-size:${v ? big * 0.9 : big}px;text-shadow:${extrude(10, '#d6336c', '#2a0838')}">AMSTERDAM</span>
+    </div>`);
+    stage.append(logo);
+    const url = $(`<div style="position:absolute;left:50%;top:${v ? 47 : 56}%;transform:translateX(-50%)"><span class="url" style="font-size:${v ? 70 : 76}px;padding:10px 34px">rideamsterdam.nl</span></div>`);
+    stage.append(url);
+    const lines = $(`<div class="small" style="position:absolute;left:0;right:0;top:${v ? 56 : 71}%;text-align:center;font-size:${v ? 52 : 46}px;line-height:1.25">${v ? 'Free in your browser<br>on desktop &amp; phone' : 'Free in your browser &middot; on desktop &amp; phone'}</div>`);
+    stage.append(lines);
+    const credit = $(`<div class="small" style="position:absolute;left:0;right:0;bottom:${v ? 70 : 34}px;text-align:center;font-size:${v ? 32 : 28}px;font-weight:600;opacity:.9">Built from OpenStreetMap &amp; open Amsterdam city data</div>`);
+    stage.append(credit);
+    draw = (t) => {
+      logo.style.transform = `translate(-50%, -50%) scale(${back(t / 0.6)})`;
+      url.style.transform = `translateX(-50%) scale(${back((t - 0.35) / 0.5)})`;
+      lines.style.opacity = clamp((t - 0.8) / 0.4);
+      credit.style.opacity = clamp((t - 1.1) / 0.4) * 0.9;
+      sp.forEach(s => { const ph = (t * 1.1 + s.p) % 1; s.e.style.left = `${s.x}px`; s.e.style.top = `${s.y}px`; s.e.style.opacity = Math.sin(ph * Math.PI); s.e.style.transform = `scale(${s.s * Math.sin(ph * Math.PI)}) rotate(${ph * 90}deg)`; });
+    };
+  },
+  // A white five-point star on black, for the star wipe's mask.
+  star(c) {
+    const W = c.W, H = c.H;
+    stage.style.background = '#000';
+    const pts = []; for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, r = i % 2 ? 0.42 : 1; pts.push(`${(Math.cos(a) * r * 50 + 50).toFixed(2)},${(Math.sin(a) * r * 50 + 50).toFixed(2)}`); }
+    const el = $(`<svg viewBox="0 0 100 100" style="position:absolute;left:50%;top:50%;width:100px;height:100px;margin:-50px;overflow:visible"><polygon points="${pts.join(' ')}" fill="#fff"/></svg>`);
+    stage.append(el);
+    draw = (t) => { const k = Math.pow(clamp(t / c.dur), 1.6) * Math.hypot(W, H) * 2.6 / 100; el.style.transform = `scale(${k}) rotate(${t * 140}deg)`; };
+  },
+};
+
+function extrude(n, mid, edge) {
+  const out = [];
+  for (let i = 1; i <= n; i++) out.push(`${i}px ${i}px 0 ${i === n ? edge : mid}`);
+  out.push(`${n + 4}px ${n + 6}px 0 rgba(0,0,0,.35)`);
+  return out.join(',');
+}
+
+window.setup = (c) => {
+  cfg = c; stage.innerHTML = ''; stage.style.width = `${c.W}px`; stage.style.height = `${c.H}px`; draw = () => {};
+  CARDS[c.card](c);
+  return document.fonts.ready.then(() => true);
+};
+window.renderAt = (t) => { draw(t); };
+</script>
+</body>
+</html>
