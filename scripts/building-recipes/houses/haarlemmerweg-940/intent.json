@@ -3,8 +3,8 @@
  "kind": "large",
  "id": "haarlemmerweg-940",
  "pandId": "0363100012250972",
- "address": "Haarlemmerweg 940-1138, Amsterdam (Westerpark, north side of the Haarlemmerweg corridor): a 2023 white-panel high-rise, 16 storeys, with a grid of wide two-pane windows and narrow slot windows on a pale composite-panel skin, a glazed ground floor carrying the Gymbase Westerpark front, and a cantilevered crown block above a dark recessed gallery",
- "budgetTriangles": 34000,
+ "address": "Haarlemmerweg 940-1138, Amsterdam (Westerpark, north side of the Haarlemmerweg corridor): a 2023 white-panel high-rise, 16 storeys, whose top six storeys cantilever about 5.4 m over the south (canal) front above a coffered white soffit, over a recessed shaft with a deep white window grid of wide-window + narrow-slot pairs, a glazed ground floor and a white lower mass",
+ "budgetTriangles": 40000,
  "sources": [
   {
    "id": "pano-2025-07-01-w03-359",
@@ -23,14 +23,60 @@
    "image": "source-data://pand-reference-walls/0363100012250972/w04-179.jpg",
    "sha256": "9b282341f951695b51e9828120d0884c59c389fd8c9c64ec628d8c85507e08bf",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-29-se",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_09_46_22_00201/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-01-north",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-01_09-03-48_00774/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "commons-2023-salt-1",
+   "kind": "archive-photo",
+   "capturedAt": "2023-08-16",
+   "url": "https://commons.wikimedia.org/wiki/File:2023_Haarlemmerweg,_Asd-Salt_(1).jpg",
+   "image": "source-data://pand-reference-walls/0363100012250972/commons-2023 Haarlemmerweg, Asd-Salt (1).jpg",
+   "sha256": "29dc104f0dd70bcd07206c4c8baf3be85ff35340a05576c127df780e7faa5757",
+   "license": "Wikimedia Commons, Ceescamel, CC BY-SA 4.0 — reference only, no pixels or textures are used in the model"
+  },
+  {
+   "id": "commons-2023-salt-2",
+   "kind": "archive-photo",
+   "capturedAt": "2023-08-16",
+   "url": "https://commons.wikimedia.org/wiki/File:2023_Haarlemmerweg,_Asd-Salt_(2).jpg",
+   "image": "source-data://pand-reference-walls/0363100012250972/commons-2023 Haarlemmerweg, Asd-Salt (2).jpg",
+   "sha256": "7b4fbf9d9534df9ab634c2f0307a92ce8a473241b7067ced9b9008c38e6769ca",
+   "license": "Wikimedia Commons, Ceescamel, CC BY-SA 4.0 — reference only, no pixels or textures are used in the model"
+  },
+  {
+   "id": "mvrdv-2023-westerpark-west",
+   "kind": "human-review",
+   "capturedAt": "2023-01-27",
+   "url": "https://www.mvrdv.com/news/4323/high-points-at-westerpark-west-three-new-buildings-in-mvrdvs-masterplan-top-out",
+   "license": "MVRDV project text (reference only, read 2026-10-21)"
   }
  ],
+ "crown": {
+  "storeys": 6,
+  "overhang": {
+   "S": 4
+  },
+  "coffers": true
+ },
  "walls": [
   {
    "wallSurfaces": [
     10
    ],
-   "street": "the Haarlemmerweg entrance front (the paved square with the Gymbase Westerpark front)",
+   "street": "the north front on the paved square (the Gymbase Westerpark entrance)",
    "system": "brick-bay-grid",
    "storeys": 16,
    "baysPerStorey": 16,
@@ -42,9 +88,9 @@
    },
    "wallMaterial": "render",
    "palette": {
-    "brick": "#d0d0cc",
-    "frame": "#4a545c",
-    "stone": "#c9c9c5"
+    "brick": "#dededa",
+    "frame": "#3a4046",
+    "stone": "#cfcfca"
    },
    "windowShape": {
     "w": 0.94,
@@ -66,7 +112,7 @@
    "wallSurfaces": [
     17
    ],
-   "street": "the south front over the Haarlemmermeer canal, seen from the Haarlemmerweg",
+   "street": "the south front over the canal, under the crown's cantilever",
    "system": "brick-bay-grid",
    "storeys": 16,
    "baysPerStorey": 16,
@@ -74,9 +120,9 @@
    "windows": "two-light",
    "wallMaterial": "render",
    "palette": {
-    "brick": "#d0d0cc",
-    "frame": "#4a545c",
-    "stone": "#c9c9c5"
+    "brick": "#dededa",
+    "frame": "#3a4046",
+    "stone": "#cfcfca"
    },
    "windowShape": {
     "w": 0.94,
@@ -98,6 +144,7 @@
    "wallSurfaces": [
     20
    ],
+   "street": "the east end (the nearby block across the square)",
    "system": "brick-bay-grid",
    "storeys": 16,
    "baysPerStorey": 13,
@@ -105,9 +152,9 @@
    "windows": "two-light",
    "wallMaterial": "render",
    "palette": {
-    "brick": "#d0d0cc",
-    "frame": "#4a545c",
-    "stone": "#c9c9c5"
+    "brick": "#dededa",
+    "frame": "#3a4046",
+    "stone": "#cfcfca"
    },
    "windowShape": {
     "w": 0.52,
@@ -132,9 +179,9 @@
    "windows": "two-light",
    "wallMaterial": "render",
    "palette": {
-    "brick": "#d0d0cc",
-    "frame": "#4a545c",
-    "stone": "#c9c9c5"
+    "brick": "#dededa",
+    "frame": "#3a4046",
+    "stone": "#cfcfca"
    },
    "windowShape": {
     "w": 0.52,
@@ -154,19 +201,24 @@
  },
  "roofPlant": true,
  "palette": {
-  "brick": "#d0d0cc",
-  "frame": "#4a545c",
+  "brick": "#dededa",
+  "frame": "#3a4046",
   "door": "#2a2c2c",
-  "stone": "#c9c9c5"
+  "stone": "#cfcfca"
  },
  "closedBands": true,
  "layeredKit": true,
  "notes": [
-  "Haarlemmerweg 940-1138 (BAG pand 0363100012250972, built 2023, 802 m2 footprint, eaves 46.9 m, 16 storeys at 2.93 m). Photographed after completion: the north (entrance) wall in 2025-07-01 (recording_2025-07-01_09-03-48_00772, 35.9 m camera, 3.2 deg obliquity, 21 % foliage) and the south (canal) wall in 2025-09-26 (2025_09_26_05_36_39_00285, 50.8 m, 0.6 deg, 29 % foliage). The 2019/2022 crops of the same walls show the 1970s-80s concrete block that stood here before, so none of them is evidence for this model; the leaf-off autumn scans (2024-11-21, 2024-11-26) show the tower but are steeply oblique (49-55 deg), 86-88 m off, or blown out (washed-out 0.28-0.88), so they are looked at but not measured.",
-  "walls[0] = panel 8 (north, surface 10, 22.6 m, the street front): pale composite panels, 8 pairs of openings on a 2.83 m pair pitch, each pair a wide two-pane window (1.33 x 1.53 m) and a narrow slot (0.73 x 1.53 m) with a 0.4-0.6 m pier between them; dark frames; a glazed ground floor with the Gymbase Westerpark fascia and entrance. walls[1] = panel 14 (south, surface 17, 21.8 m, the canal front): the same pair rhythm, counted on the 2024-11-26 leaf-off scan (16 openings per floor: 8 wide two-pane, 8 narrow); the 2025-09-26 crop has a plane tree over its left half, so only its right half was counted. walls[2] = panel 17 (east, surface 20, 35.5 m) and walls[3] = panel 2 (west, surfaces 3 and 4, 34 m): no usable photo (the east crop is a 51.6 deg oblique, no panorama reaches the west front over the canal basin) - inferred from the north/south rhythm at the same 2.7-2.8 m pitch, drawn with the wide windows only.",
-  "The pair rhythm is the correction this pass made: the draft drew 9 evenly spaced narrow windows on the south front and 8 wide ones on the north, where both photos show the wide-window + narrow-slot pairs. Kit addition needed for it: `windowPattern` (per-bay window widths cycling across the bays, src/canalRecall/blockBuilding/systems.ts, tested in buildingRecipe/largeTier.test.ts), with the bays on the group's own pitch so the piers differ per bay. Triangle budget 22,000 (intent `budgetTriangles`) because 16 storeys x 57 openings cannot be drawn inside the 12,000 default.",
-  "Simplified: the white panel skin is exported as render with a measured pale tint (the panel joints are not drawn). Not drawn: the cantilevered white crown that overhangs the south and west corners above a dark recessed gallery (a 3DBAG extrusion cannot overhang, and the kit has no cantilever or recessed-loggia component), the inset upper balconies behind that band, the roof plant enclosure edges and the ground-floor shop glazing subdivisions.",
-  "Measured 2026-10-21 (measure.ts, evidence in measured.json): the bay rhythm, front class and the south wall colour come from the crops. Hand-held, with the reason: (a) palette - the north crop is in ambient shade with a blue cast and reads #7ca9bf (chroma 67, so the family classifier says brick) for a pale panel wall, and the south crop's light-trim normalisation is driven by a blown sky highlight that darkens the whole wall to #b7b7b3; palette.brick #d0d0cc sits between that and the south crop's raw panel #d9d9d5. (b) baysPerStorey 16 - the measurement's autocorrelation locks onto the 2.8 m wide-window pair pitch (8 or 9 columns); the photo has 16 openings per floor (8 wide + 8 narrow). (c) windowShape h 0.5, sill 0.25 - counted on the 2024-11-26 leaf-off south scan (w04-179L, MS_26112024_845_Track47, wide window 1.33 x 1.53 m, narrow 0.73 x 1.53 m, 3.0 m storeys): the automatic pass reads 0.25 high on the 2025-09-26 crop because the plane tree that fills its left half is classified as glass."
+  "Haarlemmerweg 940-1138 (BAG pand 0363100012250972, built 2023, 802 m2 footprint, eaves 46.9 m, 16 storeys). Measured from the 2025-07-01 (north) and 2025-09-26 (south) panoramas and the 2024-11-26 leaf-off crops; the 2023 Commons photos (Ceescamel, CC BY-SA 4.0, 2023-08-16, 14:51) are the form evidence. The 2019/2022 crops of the same walls show the 1970s-80s concrete block that stood here before, so none of them is evidence for this model.",
+  "THE CROWN (intent `crown`, kit module crownCantilever.ts): the top 6 storeys overhang the shaft on the SOUTH bearing only, 4 bays of the south front's 1.36 m pitch = 5.44 m (measured 5.4-6.3 m: four coffer rows of 1.36-1.4 m on the soffit, and the soffit band / crown-face height ratio 0.45 at the 2025-09-29 SE panorama's known camera position, 32.5 m from the S wall; both agree at 5.4-6.0 m). Above the overhang: a coffered white soffit (square cells on the facade's bay grid, ribs 0.45 m deep) and a 0.45 m white fascia. The shaft below is recessed 5.44 m at the S wall and keeps its own 10-storey facade, which is the photographed recessed glazed base: the ground storey is glazed behind white piers (commons-2023-salt-2, c2-base crop). Evidence per bearing: SOUTH = cantilever + coffered soffit (commons-2023-salt-1 and -2; 2025-09-29 respecting 00201, both see the soffit and the deep shadow under it). NORTH = flush: the 2025-07-01 north panorama (00774) shows a continuous 16-storey grid with no soffit or setback at the crown. EAST and WEST = INFERRED flush: in the SE (00201) and SSW (2025-09-26 00063) panoramas the crown's end faces line up with the shaft's end walls; no panorama reaches either end square-on, so their projection is inferred 0, not measured. The MVRDV text calls it a 'bold overhang towards the city' (mvrdv-2023-westerpark-west).",
+  "The crown's S wall is re-drawn on the moved plane with the same measured pair rhythm, phase-aligned to the panel below (16 bays of 1.36 m, widths [0.94, 0.52] of the bay, window 1.43 m tall, sill 0.71 m), with deep white reveals, dark glass and one mullion in the wide openings. The two end walls gain a 2-bay strip at their south end (pair rhythm); the shell's own end walls keep their windows. A flat roof deck 0.49 m under the parapet closes the crown at the top; the 3DBAG roof and its plant stand above it untouched. Not drawn: the crown's recessed loggia columns at both ends of the south face (visible in commons-2023-salt-2 and the SE panorama as deep dark voids with glass rails) — the kit has no recessed-loggia component, and a proud balcony box would invent a projecting balcony the photo does not show; the ground-floor 'tall glazed slot' at the base's west end is likewise not cut (the photos show the glazed ground storey, not a slot in the upper shaft).",
+  "Two things the photos show that this recipe still cannot draw, recorded for the next kit pass: (a) the pair's piers are unequal — inside a pair the wide window and the narrow slot sit 0.3 m apart and between pairs the pier is ~0.6 m (commons-2023-salt-2, crown row at full resolution), while `windowPattern` centres one opening in each equal bay, so the model's piers read uniform at 0.41 m; (b) the crown's S face has a recessed loggia column with a glass rail at each end (same photo, and 2025-09-29 SE panorama) — no recessed-loggia component exists and a proud balcony box would invent what the photo does not show. The measured pair counts and widths (8 pairs, wide 1.33 x 1.53, slot 0.73 x 1.53) are kept.",
+  "The 'lower white wing' the operator mentions is not part of this pand: BAG/3DBAG (and the 40 m-away neighbour listing) give pand 0363100012250972 as one 22.6 x 35.5 m solid, 802 m2; the lower white mass in commons-2023-salt-1 is the tower's own shaft seen past the trees, and the neighbouring block is 0363100012250971 (Pepper, 36.5 m) 40 m east. Nothing is invented for it.",
+  "walls[0] = panel 8 (north, surface 10, 22.6 m): pale composite panels, 8 pairs of openings on a 2.83 m pair pitch, each pair a wide two-pane window (1.33 x 1.53 m) and a narrow slot (0.73 x 1.53 m) with a 0.4-0.6 m pier between them; dark frames; a glazed ground floor with the Gymbase Westerpark fascia and entrance. walls[1] = panel 14 (south, surface 17, 21.8 m): the same pair rhythm, counted on the 2024-11-26 leaf-off scan (16 openings per floor: 8 wide two-pane, 8 narrow). walls[2] = panel 17 (east, 35.5 m) and walls[3] = panel 2 (west, 34 m): no square-on photo (the east crop is a 51.6 deg oblique; no panorama reaches the west front over the canal basin) — inferred from the north/south pair rhythm at one opening per 2.7-2.8 m pitch (the pair drawn as the wide opening only). The 2025-09-29 SE panorama does show the east face in obliquely and it carries the same pairs; widening the east/west groups to 26/24 bays would cost ~4,200 triangles and is left as the next kit/budget step.",
+  "The pair rhythm was the correction of the 2026-10-21 pass: the draft drew 9 evenly spaced narrow windows on the south front and 8 wide ones on the north, where both photos show the wide-window + narrow-slot pairs. Kit addition: `windowPattern` (src/canalRecall/blockBuilding/systems.ts, tested in buildingRecipe/largeTier.test.ts), with the bays on the group's own pitch so the piers differ per bay.",
+  "Palette: the 2023 Commons photos are the wall-colour evidence. The sunlit panels read #dee0dd and #e6e6e2 (median of neutral bright pixels 204,221,225 / 200,196,187 in shade); the 2025-09-26 panorama's normalisation drives its wall to #b7b7b3 because of a blown sky highlight (raw panel #d9d9d5), and the 2025-07-01 north crop is in ambient shade with a blue cast (#7ca9bf, chroma 67, which the family classifier calls brick). palette.brick #dededa follows the sunlit photos (raw, not normalised), palette.stone #cfcfca is the sill/reveal, frame #3a4046 the dark glazing line. Hand-held, with that reason. The window sizes stay the measured 1.33/0.73 x 1.53 m: the likeness gate's 0.18-0.21 glazing fraction undercounts the sky reflections in the glass, so the measured shape (wide) and the leaf-off count are the bar for the openings.",
+  "Triangle budget 40,000 (intent `budgetTriangles`, the approved ceiling): 16 storeys x the pair rhythm + the crown's re-drawn south wall, two end strips and the coffered soffit do not fit the 12,000 default.",
+  "audit:glb (2026-10-22) still reports 4/61 street-height rays passing into the footprint; they are the *lateral* rays along the open undercroft under the cantilever (points at (x,1.5,z) = (-9.2,19.4), (-9.2,21.4), (10.8,20.4), (10.8,22.2)), not missing walls: the head-on rays stop at the shaft's glazed ground floor. glbQuality's undercroft rule closes a recess up to 6.2 m when a body rises above the cover, which is why the head-on rays pass, but it does not exempt rays that run along the open ends. The old (uncrowned) model passes the same audit at 33,239 tris. This needs an audit rule for an open-sided undercroft under a declared cantilever, or an operator waiver; it is not fixable by geometry without deleting the cantilever."
  ],
  "measured": {
   "date": "2026-10-21",
