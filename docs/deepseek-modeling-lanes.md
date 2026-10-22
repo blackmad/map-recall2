@@ -1,6 +1,6 @@
 # DeepSeek modeling lanes: landmarks and mid-tier buildings
 
-Written 2026-10-19. This replaces `docs/landmark-deepseek-handoff.md`, which
+Written 2026-10-19. This replaces `docs/archive/landmark-deepseek-handoff.md`, which
 covered one building (Muiderpoort, since done) and predates the inventory
 gate, the likeness gate and the z-fight gate.
 

@@ -6,7 +6,7 @@ The scope is exactly SHA-256 `e25e62032c28211db0729dec875b2d783fe8a9d37a34e78d61
 
 ## Evidence inspected
 
-Private `models/vinoly/raw/current-context.jpg`, `current-front.jpg`, `front.jpg`, `side.jpg`, and `sketch.jpg`; preparation `docs/landmarks/vinoly-release-preparation-20261007.md`; current `artifacts/vinoly-release-review-20261007/fulltower/artifacts/vinoly-review/gallery.png` and all four `gallery-angle-0…3.png`; `wide/artifacts/vinoly-review/neutral-front.png`; `near-facade/artifacts/vinoly-review/neutral-front.png`; matching wide fingerprint proof and near placement proof. Remaining paths below are relative to `artifacts/vinoly-release-review-20261007/`.
+Private `models/vinoly/raw/current-context.jpg`, `current-front.jpg`, `front.jpg`, `side.jpg`, and `sketch.jpg`; preparation `docs/archive/landmarks/vinoly-release-preparation-20261007.md`; current `artifacts/vinoly-release-review-20261007/fulltower/artifacts/vinoly-review/gallery.png` and all four `gallery-angle-0…3.png`; `wide/artifacts/vinoly-review/neutral-front.png`; `near-facade/artifacts/vinoly-review/neutral-front.png`; matching wide fingerprint proof and near placement proof. Remaining paths below are relative to `artifacts/vinoly-release-review-20261007/`.
 
 ## Independent findings and bounded acceptance
 

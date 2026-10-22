@@ -20,7 +20,7 @@ Read full notes, screenshots, anchors, model fingerprints and hosted build conte
 
 Full notes, screenshots, private user identity and Firestore update times remain in the private local pull files. Recover/re-pull at the next checkpoint because another worker or the user may have changed the queue.
 
-The landmark continuation is in `docs/landmark-finish-nine-handoff-20261006.md`. Keep periodic feedback checks alongside those existing tasks.
+The landmark continuation is in `docs/archive/landmark-finish-nine-handoff-20261006.md`. Keep periodic feedback checks alongside those existing tasks.
 
 
 ## Hosted checkpoint — 2026-10-07

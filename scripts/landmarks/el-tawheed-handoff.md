@@ -29,4 +29,4 @@ Earlier draft/pending paragraphs above preserve failure history. Current product
 
 Private accepted archive d4c2880119aef096f16e139bff475a4a28d5671b pushed, models/el-tawheed/checkpoint-f39; 121objects/138records/354requiredpaths verified, zero missing local files. Route-start desktop smoke passed1test. Public release/hosted current verification remains pending.
 
-Final scoped hosted closeout: model05cbf49, Firebase37608599008SUCCESS; fresh exactSHA83264B/gallery/game route/pin/physicalcard/masks/neighbors verified. Hosted source/evidence197e8b pushed. See docs/landmarks/el-tawheed-hosted-closeout-20261007.md. Earlier pending paragraphs preserve checkpoint history; limitations remain.
+Final scoped hosted closeout: model05cbf49, Firebase37608599008SUCCESS; fresh exactSHA83264B/gallery/game route/pin/physicalcard/masks/neighbors verified. Hosted source/evidence197e8b pushed. See docs/archive/landmarks/el-tawheed-hosted-closeout-20261007.md. Earlier pending paragraphs preserve checkpoint history; limitations remain.

@@ -46,7 +46,7 @@ plus one architecture review, all checked against code, TODO.md and HISTORY.md.
   so no highlight or fact card. The user's open-data rule closes it for good.
 - What those demos have that we lack is **lighting**: sun shadows, sky, fog,
   tone mapping, real water, ground textures with scale. The own-renderer spike
-  (`docs/research/own-renderer-spike-20261009.md`) showed the same buildings in
+  (`docs/archive/research/own-renderer-spike-20261009.md`) showed the same buildings in
   a lit three.js frame read "like a game" at 2.6 ms CPU per throttled phone
   frame vs 7.1 ms for MapLibre's render. That frame exists (`?sharedFrame=1`)
   and is off.

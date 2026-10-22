@@ -56,7 +56,7 @@ of returns per side, which is enough for a real mesh.
 
 The files cannot be fetched. Every `url` in the catalogue is on
 `files.lidar.data.amsterdam.nl`, which is NXDOMAIN, also through 8.8.8.8. This
-is the same blocker recorded in September (`docs/plans/appearance-programme.md`
+is the same blocker recorded in September (`docs/archive/plans/appearance-programme.md`
 §7). Guessed alternative paths on `api.data.amsterdam.nl` and
 `data.amsterdam.nl` return 404. The 2024 table is empty. The only public
 municipal tiles are the two Oud-Zuid demo tiles on GitHub, and neither covers
