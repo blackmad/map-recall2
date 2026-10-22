@@ -1,66 +1,50 @@
-# Canal Recall project memory
+# Agents: start here
 
-## Source access retries
+This repository is Ride Amsterdam (the 3D ride, `public/canal-drive/` plus
+`src/canalRecall/`) and Map Quest (the 2D quiz, `src/`). Any coding agent
+(Claude, Codex, others) should read, in this order:
 
-DNS and network failures can be transient. Retry failed source requests with bounded backoff, reuse successful cached responses, and continue independent work between attempts. A failed request is not evidence that a source is permanently unavailable. Record the attempt time and current access state; retry on later passes before treating source acquisition as blocked. The user explicitly requested this behavior on 2026-10-06.
+1. [`CLAUDE.md`](CLAUDE.md): the working agreement, product principles and
+   verification rules. They apply to every agent, not only Claude.
+2. [`docs/START-HERE-buildings.md`](docs/START-HERE-buildings.md), if you are
+   adding or improving buildings: setup, the three kinds of building work,
+   the acceptance bar, what you may edit, and how to hand work back.
+3. [`docs/README.md`](docs/README.md): the index of living docs, plans and
+   dated research.
+4. [`public/canal-drive/TODO.md`](public/canal-drive/TODO.md) for open work,
+   and [`public/canal-drive/HISTORY.md`](public/canal-drive/HISTORY.md) for
+   why things are the way they are.
 
-Distinguish host connectivity from tool and worker restrictions. If a worker reports `CODEX_SANDBOX_NETWORK_DISABLED=1`, route authorized downloads through a working root tool context and let the worker parse cached inputs. Keep raw API responses, photos and catalogue records in the companion `map-recall2-source-data` repository; main-repo `artifacts/` is temporary acquisition staging only. Verify and push the source pack, record its commit/path, then remove duplicated staged originals.
+## Durable rules not covered elsewhere
 
-## Street rhythm work
-
-Read `public/canal-drive/street-rhythm-work.json` before selecting, implementing or accepting a neighborhood rhythm. Maintain a scoped coverage inventory, source-derived critical architectural traits, fixed representative/transition/heldout samples, capability gaps and per-cycle visual decisions. Neighborhoods are discovery regions; profiles belong to observed street-side groups. Missing critical facade assemblies require generator improvements, not palette tuning. Judge success by recognizable street-row composition: frontage widths, white trim, window groups, roof-family mixture and balcony frequency. Exact corner wrapping, individual attic counts and photographed-building matching are secondary; do not let perfection delay useful block-level rhythm improvements. Root must inspect reference/render comparisons and use an independent reviewer to seek failures. Failed heldouts prevent accepting the affected transfer. Tests, source admission, timing improvements and a completed cycle count are not visual acceptance. Preserve failed evidence and report it prominently. Require actual game-scene and performance evidence before marking scoped work complete. The 2026-10-04 pilot's expansion acceptance was withdrawn after the De Wallen balcony/window comparison failed; correct and re-review before expanding.
-
-## Amsterdam POI work
-
-The user authorizes ongoing landmark work, parallel agents, and periodic commits and pushes. Keep requested tasks and deferred work in `public/canal-drive/poi-work-queue.json`; regenerate `public/canal-drive/landmark-backlog.json` with `scripts/landmarks/build-poi-backlog.ts` as assets and POI coverage change. Do not drop earlier requests when the user adds another building or reports a bug.
-
-Preserve the current visual quality and researched/gallery/live-game acceptance bar while reducing overhead. Use fresh workers with short scoped context (`fork_turns="none"` and an explicit handoff for new Codex workers), cached source records, bounded tool output, and batched shared generation/checks. Do not keep reusing a long worker conversation across unrelated buildings. Follow `docs/landmark-building-recipe.md`; `docs/landmark-deepseek-handoff.md` is a self-contained external-worker trial. Do not lower model detail or omit required acceptance checks to save budget.
-
-Do not add painted building-name words for identification. Keep only source-supported real signage that is a defining architectural feature, fitted to its actual panel and wall plane. Use the game map label for the POI name.
-
-For source-supported real signs, match the observed lettering family, letter shapes, weight, proportions and spacing as closely as the native geometry allows. Use the actual panel and wall plane; record an approximate font match when the exact typeface is unknown. Do not replace distinctive signage with generic pixel lettering.
-
-Every modeled POI building must be integrated into all three game surfaces:
-1. A selectable POI route destination.
-2. A geographically correct map pin and label.
-3. A meaningful info/trivia card with research source links.
-
-Audit these together before declaring a POI complete. Reuse genuine extract identities and preserve existing researched facts. An asset belonging to an already selectable complex can share that POI identity; do not manufacture duplicate destinations for aliases or multiple mesh parts. Muziekgebouw and Bimhuis remain distinct genuine destinations despite sharing a mesh. Year-built-only generic building metadata is not meaningful trivia: clicking it must not select or highlight the building. If the clicked building contains a genuine POI, show that POI's useful card instead.
-
-An explicitly selected destination must never silently become another POI when the travel network cannot reach it. Keep a chosen home/GPS origin fixed; a Surprise origin may retry within the existing bound. Show a clear route failure when necessary. Large complexes can use a sourced public entrance for their destination pin instead of an inaccessible building centroid. Manual POI pins remain visible even when broad street-name spoiler filtering would match them.
-
-For ordinary clicked buildings, use mapped place information only from points inside the actual installed footprint, excluding courtyard holes. Prefer researched landmark cards, validate website links, and keep basic mapped-place info separate from the curated automatic route pool. Never substitute a nearby POI for the clicked building.
-
-Author landmarks in the established texture-free, flat-color house style using native surveyed footprints, scale 1, and current OSM/BAG identities. Rebuild legacy imports in this style, beginning with Westerkerk. Reference photos guide original geometry; do not copy downloaded meshes or photo pixels into original assets. Verify actual scope, heights, open courts, underpasses, and neighboring buildings. Suppress exact replaced identities after the GLB loads, preserve fallback on load failure, and avoid padded rectangular suppression.
-
-Reuse the `BuildingTools` primitives/materials and `scripts/landmarks/house-geometry.ts` footprint shells/upward roof planes. Explicit roof surfaces own their tops; overlapping wall-colored caps and downward roof normals are recurring errors. Keep source polygons, primary references, semantic height notes, and geometry/browser checks with each builder. Verify first-hit facade visibility, supported roof profiles, and open spaces; decorative panes/columns can be buried by an otherwise correct parent extrusion. AHN/3DBAG equipment maxima or fitted crest planes must not become whole-building heights or unsupported roof plates.
-
-Signature replacement suppression applies to every ordinary building layer, including the independent pyramidal-roof renderer. Hide those roofs only after the replacement loads, preserve neighbors, and restore fallback when the replacement is disabled/unavailable. Use visibility updates rather than rebuilding every roof per model-load callback.
-
-The manual asset generator also refreshes `modelAssetVersions.json`. Rebuild the signature browser/runtime bundles after model changes so gallery and game request the current content fingerprint rather than a cached older mesh.
-
-Use the POI Destinations list and explicit requested additions as the main work queue. Regenerate `public/canal-drive/dominant-building-backlog.json` with `scripts/landmarks/build-dominant-building-backlog.ts` for large ordinary buildings. Thresholds live in the work queue (currently net footprint 2,500 m² or height 35 m); constrain candidates to the Amsterdam municipality, exclude modeled identities, group duplicate outlines/raised parts, and preserve separate courtyard buildings. Do not treat unnamed candidates as researched POIs automatically.
-
-The progress dashboard is `public/canal-drive/landmark-queue.html`: model coverage, work tasks, dominant building candidates, and requested street buildings are separate inventories. Street requests live in `requested-street-buildings.json`, resolved through explicit official address/VBO/BAG parent relationships with reproducible source snapshots. Group apartments by physical building; defer permit-only parents and do not invent built geometry. Candidate ranking is not an exhaustive audit of gray buildings in the renderer.
-
-LOD and startup optimizations must retain textured windows and ground-floor doors in surrounding building shells. Verify an actual gameplay camera pan away from a stationary rider on desktop and touch: reviewing only the rider detail tiles misses blank-wall regressions. Cheap roofs and reduced relief are acceptable; removing ordinary facade identity from normal views is not. Regression evidence: artifacts/street-appearance/emergency/index.html.
-
-Photo buildings mode should use realistic material colors. Mode changes must update geometry and color consistently, including streamed tiles and cached/in-flight worker results. Distinguish source detail, fallback extrusions, and render defects before deciding a gray building needs a custom landmark.
-
-Coordinate source ownership, shared registration, GPU browser reviews, and git-index windows between agents. One agent owns shared catalogue/dispatcher/bundle registration at a time. Preserve unrelated files and drafts. Review native-scale gallery and live-game views, exact suppression/neighbor retention, and appropriate meaningful regression checks before commit. Keep reporting useful progress during long work.
-
-Large ordinary candidates may use the user-authorized standard-building loop only after recorded visual recognition/open-space review in `public/canal-drive/dominant-building-fidelity.json`. Follow the standard-treatment section of `docs/landmark-building-recipe.md`. Geometry screening is a suggestion, not acceptance. Distinctive/requested landmarks (including ING House), mapped POIs and raised structures keep the full loop. Preserve native scope, correct colors/roof/open spaces, exact suppression and gallery/live neighbor checks in both loops.
-
-For each new historic landmark, make one bounded address-based Beeldbank search and read its monument-register description early. Cache drawings/photos and explicit architectural assertions with their source, building part, date and confidence; compare dated drawings with current photos/alterations. Use Data Amsterdam Bouwdossiers1905–2010 for unresolved details, recording access state honestly; ask the user for specific useful sheets when email access is needed, and keep independent builds moving. Distinguish BAG VBO usable area from Pand footprint. Follow the reference workflow in docs/landmark-building-recipe.md.
-
-Every landmark build must archive task-relevant raw sources per canonical model ID in the private GitHub repository blackmad/map-recall2-source-data (local sibling /Users/blackmad/Code/map-recall2-source-data). Save original photos/scans, register descriptions/pages, survey/API responses and imported reference inputs before extraction; retain provenance/checksums/access state and distinguish raw from processed. Sync and commit the private source pack before the model commit, record its source commit/path, and reuse it in worker handoffs. Follow the source-archive section of docs/landmark-building-recipe.md; do not archive secrets or unrelated personal files.
-
-For new landmark reference photos, use a bounded Amsterdam Beeldbank address/name search as a standard research step. Preserve original images and catalogue/page captures in the private source pack; record dates, rights and access gaps. Cross-check historical features against current photos and BAG/roof evidence.
-
-During the user-authorized continuous landmark queue run, keep progressing through batch checkpoints and assign the next bounded POIs while integration/review proceeds. Source archival and documentation support building work; they do not replace it. Do not end at each single-model checkpoint or imply workers are active when they are idle. Use fresh short-context workers and keep shared GPU/git mutations coordinated.
-
-## Submitted feedback
-
-When asked to review or fix feedback submitted from the game or image galleries, use `.agents/skills/canal-feedback/SKILL.md` and `npm run feedback:queue -- pull`. Read the full saved note, screenshot, image anchor, host and build context before claiming work. Preserve user evidence, claim with the note's Firestore update-time precondition, and resolve only after the relevant behavior/visual checks. Keep landmark and street tasks in their existing inventories as well; cloud feedback does not replace them.
-
-During active landmark/game work, pull Firebase feedback at session start, at batch checkpoints, before release, and at least every 30 minutes during longer uninterrupted work. Recover `in-progress` claims as well as `open` notes. Record the last successful pull and actionable feedback in the handoff; keep existing POI/street tasks. This is an active-work checkpoint, not an unattended background service. Follow the canal-feedback skill for full evidence review, conditional claims and verified resolutions. User requested periodic checks on 2026-10-07.
+- **Network sources.** DNS and network failures are often transient. Retry
+  with bounded backoff, reuse cached responses (`.cache/`), and keep working
+  on independent tasks between attempts. One failed request doesn't mean a
+  source is permanently unavailable.
+- **Queues.** Requested landmarks and deferred work live in
+  `public/canal-drive/poi-work-queue.json`. Large ordinary candidates are in
+  `public/canal-drive/dominant-building-backlog.json`, built by
+  `scripts/landmarks/build-dominant-building-backlog.ts`; its thresholds live
+  in the work queue. Requested street buildings are in
+  `public/canal-drive/requested-street-buildings.json`. Don't drop an earlier request when a new
+  one arrives. Ranking a candidate is not researching it.
+- **Street rhythm.** Read `public/canal-drive/street-rhythm-work.json` before
+  choosing or accepting a neighbourhood rhythm. Judge success by street-row
+  composition: frontage widths, white trim, window groups, roof mixture and
+  balcony frequency. Missing facade assemblies need generator improvements,
+  not palette tuning.
+- **Clicked buildings.** An ordinary building's card uses only mapped places
+  inside its installed footprint (excluding courtyard holes). Never
+  substitute a nearby POI.
+- **Routes.** An explicitly chosen destination never silently becomes
+  another POI when the network can't reach it; show a clear route failure.
+  A chosen home or GPS origin stays fixed.
+- **Performance work keeps facades.** LOD and startup optimisations must keep
+  textured windows and ground-floor doors on surrounding buildings. Verify
+  with a real camera pan on desktop and touch, not only rider-detail tiles.
+- **Building-look modes** (photo, painted, storybook, …) must update geometry
+  and colour consistently, including streamed tiles and in-flight worker
+  results.
+- **Shared files.** One agent at a time owns shared catalogue, dispatcher and
+  bundle registration. Leaf agents work in their own worktree and branch,
+  and return a commit SHA plus their verification results (see `CLAUDE.md`).

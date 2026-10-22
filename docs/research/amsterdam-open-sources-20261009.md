@@ -5,7 +5,7 @@ Key finding: the repo already uses the panorama API, monument register, 3DBAG an
 ## 1. Amsterdam/panorama-textures
 - Python (NumPy/SciPy/Pillow; GDAL only for BAG loading). MPL-2.0. Archived Nov 2020, small, proof-of-concept. 
 - Does: samples a grid on a vertical wall plane, subtracts camera position, maps the directions into an equirectangular panorama, samples pixels, writes a JPG texture (.obj output from 3D Amsterdam digital twin). Files: src/texture.py, array_math.py, sample.py (Palace/Tussauds RD examples).
-- Limits: hardcoded 8000x4000; wall from two opposing corners (vertical rectangle only); no vehicle heading/pitch/roll, no occlusion, no multi-view choice. Our repo's own note (docs/amsterdam-panorama-building-treatment-handoff.md) already analysed it and our rectifier (scripts/pano-facades/build-pano-facade.ts, scripts/build-panorama-facade-review.ts) does the same job with the repo's world-aligned convention.
+- Limits: hardcoded 8000x4000; wall from two opposing corners (vertical rectangle only); no vehicle heading/pitch/roll, no occlusion, no multi-view choice. Our repo's own note (docs/archive/amsterdam-panorama-building-treatment-handoff.md) already analysed it and our rectifier (scripts/pano-facades/build-pano-facade.ts, scripts/build-panorama-facade-review.ts) does the same job with the repo's world-aligned convention.
 - Verdict: do not import; it is the same math we already have. Use only as an independent cross-check fixture.
 - Pipeline sketch for a per-BAG-pand frontal crop: BAG pand -> 3DBAG LoD2.2 wall polygons facing a street -> pick the longest street-facing wall -> API `near=` lookup (below) with `newest_in_range=true` and radius ~25 m -> choose pano whose camera-to-wall-normal angle is smallest and distance 8-25 m -> fetch equirectangular_full (8000 px) -> project wall quad (vertical plane) -> 1 px/cm crop. Flag occlusion by trees/cars by also rendering a second year's pano (`mission_year` tags) and comparing. Feed both crops plus the Beeldbank photo to the LLM.
 
@@ -41,7 +41,7 @@ Amsterdam-AI-Team (Python, mostly 2020-2022 research, a few 2024-26 chatbot/prot
 - scripts/fetch-amsterdam-monuments.ts, fetch-monument-gables.ts, monument-register/: monument snapshot with BAG pand links and gable types.
 - scripts/audit-amsterdam-point-cloud-catalog.ts: puntenwolk v2 catalogue.
 - scripts/import-amsterdam-trees.mjs, fetch-amsterdam-bridge-register.ts, fetch-street-name-origins.ts (memory note: BAG openbareruimtes `beschrijvingNaam`, 5,349/5,671 streets; Dutch only; licence not verified).
-- docs/amsterdam-panorama-building-treatment-handoff.md: pano API lookup, 2025 base path, history pagination capped at 500, private source-pack repo; docs/references/*beeldbank*.json and next-batch-archive-research.json: manual Beeldbank research with no automation.
+- docs/archive/amsterdam-panorama-building-treatment-handoff.md: pano API lookup, 2025 base path, history pagination capped at 500, private source-pack repo; docs/references/*beeldbank*.json and next-batch-archive-research.json: manual Beeldbank research with no automation.
 - scripts/ordinary-buildings/, docs/plans/district-rectification-*.md: ordinary-building pilots and rectification expansion.
 
 ## Ranked: what to integrate first

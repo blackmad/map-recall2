@@ -548,7 +548,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Open Air...") and the Feedback widget overlaps the card near "Share this
   route"; the questions-a-minute setting has no bottom-HUD check row (Off
   shows no band, which existing rows cover).
-- **Renderer: give three.js the frame** (`docs/research/own-renderer-spike-20261009.md`,
+- **Renderer: give three.js the frame** (`docs/archive/research/own-renderer-spike-20261009.md`,
   `renderer-spike.html`): spike shows lighting is the visible gap — shadows,
   sky, fog, tone mapping, sunken water — at ~2.6 ms CPU per throttled phone
   frame vs 7.1 ms for MapLibre's render. Phase 1 (days, reversible): merge

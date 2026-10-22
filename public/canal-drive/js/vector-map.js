@@ -17,7 +17,7 @@ const BUILDING_FADE_IN = ['interpolate', ['linear'], ['zoom'], 15, 0, 15.6, 1];
 // before load) bring back the old flat look for A/B comparison.
 const GENERIC_FACADES_DEFAULT = true;
 const STYLISED_TREES_DEFAULT = true;
-// Phase 1 of docs/research/own-renderer-spike-20261009.md (2026-10-10): every
+// Phase 1 of docs/archive/research/own-renderer-spike-20261009.md (2026-10-10): every
 // three.js layer (facades, landmarks, trees, pyramidal roofs, ARTIS, vehicles)
 // draws through one renderer / scene / light rig (src/canalRecall/
 // rendererShared/), with lit facades and sun shadows. On in practice: the own

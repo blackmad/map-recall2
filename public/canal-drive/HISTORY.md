@@ -250,7 +250,7 @@ Thorbecke, Rembrandt and Sarphati are by sculptors dead over 70 years.
 
 ## Verified dead-code cleanup (2026-10-17)
 
-649 lines / 42 KB removed in four batches (`docs/dead-code-cleanup-2026-10-17.md`
+649 lines / 42 KB removed in four batches (`docs/archive/dead-code-cleanup-2026-10-17.md`
 has the zero-hit evidence per item): the orphaned canalhouse-recipe preview
 script and its two private modules, `scripts/landmarks/modern-fit.ts`, 21
 uncalled exported functions, 9 unused constants/types, 5 unused script
@@ -10712,7 +10712,7 @@ reference/current/trial/identity evidence. Generated imagery stays local.
 A ten-image cheap-vision pilot is recorded with observed timing/tokens/reported
 cost. It made a target-identity error and remains triage, not a trained or validated
 citywide classifier. The next work and reproduction commands are in
-`docs/plans/wall-material-demo.md`. The full `check:canal` gate, library checks, TypeScript lint and four isolated
+`docs/archive/plans/wall-material-demo.md`. The full `check:canal` gate, library checks, TypeScript lint and four isolated
 port desktop/phone demo/report checks pass.
 
 ## 2026-09-26 — stable camera detail and reviewed colour expansion
