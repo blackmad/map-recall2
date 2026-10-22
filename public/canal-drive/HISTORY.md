@@ -10,9 +10,11 @@ tag keeps its screen size. Saves and applies now go through `_playerZoom()` /
 `_setPlayerZoom()` (the flight's landing zoom while it owns the camera), and
 `boatZoomScale` grows the boat when zoomed out (never below its tuned size).
 Pinned in `tests/e2e/boat-start-zoom.spec.ts` (forces the flight on, which
-automated browsers skip by default) and `check-intro-flight.ts`. Open: the
-START tag can still overlap a small boat at minimum zoom; ferry/transit get
-no zoom compensation; `boat-model.spec` asserts a retired map layer.
+automated browsers skip by default) and `check-intro-flight.ts`. Follow-up the
+same day: the START tag now sits above the vehicle's projected screen box
+(`vehicleScreenBox.ts`), ferry and transit grow when zoomed out like the
+boat, and `boat-model.spec` asserts the shared-frame boat instead of the
+retired `player-boat-3d` layer.
 
 ## 2026-10-21 — Rides start on the bike, in Chase
 

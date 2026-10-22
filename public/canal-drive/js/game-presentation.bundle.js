@@ -395,6 +395,23 @@
   function boatZoomScale(zoom, referenceZoom = BOAT_REFERENCE_ZOOM) {
     return Math.max(1, vehicleZoomScale(zoom, referenceZoom));
   }
+  var ferryZoomScale = boatZoomScale;
+  var transitZoomScale = boatZoomScale;
+
+  // src/canalRecall/game/vehicleScreenBox.ts
+  function glyphBox(x, y, radius) {
+    return { left: x - radius, top: y - radius, right: x + radius, bottom: y + radius };
+  }
+  function boxesIntersect(a, b) {
+    return a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
+  }
+  var START_TAG_GAP_PX = 4;
+  function startTagCentreY(centreX, defaultCentreY, pill, avoid, gap = START_TAG_GAP_PX) {
+    if (!avoid) return defaultCentreY;
+    const box = { left: centreX - pill.width / 2, right: centreX + pill.width / 2, top: defaultCentreY - pill.height / 2 - gap, bottom: defaultCentreY + pill.height / 2 + gap };
+    if (!boxesIntersect(box, avoid)) return defaultCentreY;
+    return Math.min(defaultCentreY, avoid.top - gap - pill.height / 2);
+  }
 
   // src/canalRecall/game/coldOpenReview.ts
   var COLD_OPEN_ENABLED = false;
@@ -5304,7 +5321,7 @@
         vehicleZoomScale(this.camera.zoom, this._defaultZoom ?? this.camera.zoom)
       );
       this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat, boatZoomScale(this.camera.zoom));
-      this.vectorMap.setPlayerFerry?.(player, this.osmLoader, pitched && byFerry);
+      this.vectorMap.setPlayerFerry?.(player, this.osmLoader, pitched && byFerry, ferryZoomScale(this.camera.zoom));
       if (typeof this.vectorMap.setPlayerTransit === "function") {
         let underground = false;
         if (byTransit && this.track && typeof this.track.getNearestRoad === "function") {
@@ -5312,7 +5329,7 @@
           const seg = contact && this.track.segments ? this.track.segments[contact.segIdx] : null;
           underground = !!(seg && seg.type === "metro");
         }
-        this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground);
+        this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground, transitZoomScale(this.camera.zoom));
       }
       this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
       const reveal = this.quizPromptName ? null : this._answerReveal;
@@ -5354,6 +5371,20 @@
         else this.renderer.drawPlayerCar(player, this.camera);
       }
       this.renderer.drawParticles(this.particles, this.camera);
+      const kind = byFerry ? "ferry" : byBoat ? "boat" : byTransit ? "transit" : "bike";
+      let vehicleBox = null;
+      const meshBox = meshReady ? this.vectorMap.playerScreenBox?.(kind) ?? null : null;
+      const rect = meshBox ? this.canvas.getBoundingClientRect() : null;
+      if (meshBox && rect && rect.width > 0 && rect.height > 0) {
+        const sx = CANVAS_W / rect.width, sy = CANVAS_H / rect.height;
+        vehicleBox = { left: meshBox.left * sx, right: meshBox.right * sx, top: meshBox.top * sy, bottom: meshBox.bottom * sy };
+      }
+      if (!vehicleBox) {
+        const at = this.camera.worldToScreen(player.x, player.y);
+        const p = player;
+        vehicleBox = glyphBox(at.x, at.y, (Math.max(p.length || 30, p.width || 12) / 2 * 1.35 + 3) * (this.camera.zoom || 1));
+      }
+      this.track.placeStartTag = (centreX, defaultCentreY, pill) => startTagCentreY(centreX, defaultCentreY, pill, vehicleBox);
       this.track.drawLabels(
         ctx,
         this.camera,
