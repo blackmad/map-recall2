@@ -113,6 +113,10 @@ export interface BridgeCrossing extends WorldPoint {
   waterwayType: string | null;
   waterDistractors: string[];
   spans: number;
+  /** The crossed waterway's centreline near this crossing, in world pixels
+   *  (buildBridges). A street crossing asks only when the rider's track
+   *  crosses it; see recallRules.findWaterCrossing. */
+  waterLines?: WorldPoint[][];
 }
 
 export interface Bridge {

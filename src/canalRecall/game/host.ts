@@ -294,6 +294,8 @@ export interface RecallHost extends GameCoreHost {
   /** Keyed per crossing, not per bridge: one OSM feature named "Zuiderzeeweg"
    *  is four separate bridges over three different waters. */
   _quizzedCrossings: Map<string, 'water' | 'bridge'>;
+  /** The rider's recent track, for judging bridge crossings (recallRules.TrackTrail). */
+  _crossingTrail?: import('./recallRules').TrackTrail;
   _learnedBridges: Map<string, { name: string; labelPoint?: WorldPoint }>;
   _pendingCrossing: PendingCrossing | null;
   _lastBridgeQuizAt: number;

@@ -276,10 +276,53 @@ export function buildNeighborhoods(
  * the Westelijke Ringspoorbaan alone. Bridges that carry a road as well as
  * rails keep their question.
  */
+/** Water centreline kept around each crossing: enough to span a wide junction deck. */
+export const CROSSING_WATER_LINE_METERS = 90;
+
+/** A waterway's centreline pieces, as `water.json` publishes them. */
+export interface WaterLineFeature {
+  name: string;
+  path?: LatLng[];
+  paths?: LatLng[][];
+}
+
+/**
+ * The named waterway's centreline segments within `radiusMeters` of a crossing
+ * centre, in world pixels, as short polylines (each kept segment on its own, so
+ * a gap in the data cannot join two banks).
+ */
+export function crossingWaterLines(
+  waters: readonly WaterLineFeature[],
+  waterway: string,
+  center: LatLng,
+  toWorld: WorldProjection,
+  radiusMeters = CROSSING_WATER_LINE_METERS,
+): WorldPoint[][] {
+  const lines: WorldPoint[][] = [];
+  const mLat = 111_320;
+  const mLng = 111_320 * Math.cos(center[0] * Math.PI / 180);
+  const local = ([lat, lng]: LatLng) => ({ x: (lng - center[1]) * mLng, y: (lat - center[0]) * mLat });
+  for (const water of waters) {
+    if (water.name !== waterway) continue;
+    for (const path of water.paths || (water.path ? [water.path] : [])) {
+      for (let i = 1; i < (path || []).length; i++) {
+        const a = local(path[i - 1]), b = local(path[i]);
+        const dx = b.x - a.x, dy = b.y - a.y;
+        const len2 = dx * dx + dy * dy;
+        const t = len2 ? Math.max(0, Math.min(1, -(a.x * dx + a.y * dy) / len2)) : 0;
+        if (Math.hypot(a.x + dx * t, a.y + dy * t) > radiusMeters) continue;
+        lines.push([toWorld(path[i - 1]), toWorld(path[i])]);
+      }
+    }
+  }
+  return lines;
+}
+
 export function buildBridges(
   features: readonly BridgeFeature[],
   crossingIndex: BridgeCrossingIndex,
   toWorld: WorldProjection,
+  waters: readonly WaterLineFeature[] = [],
 ): Bridge[] {
   const bridges: Bridge[] = [];
   for (const feature of features) {
@@ -313,7 +356,11 @@ export function buildBridges(
       name: feature.name,
       ...(feature.displayName ? { displayName: feature.displayName } : {}),
       lines,
-      crossings: source.map(crossing => ({ ...crossing, ...toWorld(crossing.center) })),
+      crossings: source.map(crossing => {
+        const waterLines = crossing.waterway && waters.length
+          ? crossingWaterLines(waters, crossing.waterway, crossing.center, toWorld) : [];
+        return { ...crossing, ...toWorld(crossing.center), ...(waterLines.length ? { waterLines } : {}) };
+      }),
       distractors: (feature.distractors || []).filter(name => !GENERIC_BRIDGE_NAME_PATTERN.test(name)),
       wikipediaUrl: feature.wikipediaUrl || '',
       detail: splitDetail(feature.wikipediaExtract).detail,

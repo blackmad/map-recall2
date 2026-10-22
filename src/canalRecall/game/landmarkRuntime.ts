@@ -11,6 +11,7 @@
 
 import {
   buildBridges,
+  type WaterLineFeature,
   buildLandmarks,
   buildNeighborhoods,
   isWorthACard,
@@ -435,7 +436,9 @@ export class GameLandmarkRuntime {
       this._landmarkImageRequests = new Set();
 
       this.neighborhoods = buildNeighborhoods(boundaries, neighborhoodEnriched, toWorld);
-      this.bridges = buildBridges(bridgeFeatures, crossingIndex, toWorld);
+      // Water centrelines go in too: a street crossing asks only when the
+      // rider's track actually crosses the water (recallRules.findWaterCrossing).
+      this.bridges = buildBridges(bridgeFeatures, crossingIndex, toWorld, waterFeatures as WaterLineFeature[]);
 
       // Read-only street centrelines for transit corridor quizzes — never
       // driveable, only nearest-name lookup along the rails.
