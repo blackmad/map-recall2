@@ -8,6 +8,7 @@ import {
   DEFAULT_CELL_METRES,
   poiNameSpoils,
   maskSpoiledName,
+  mapLabelSpoils,
   thinOrientationPois,
   roofLiftPixels,
   roofLiftTranslate,
@@ -121,6 +122,29 @@ assert.equal(
   assert.equal(maskSpoiledName('Prinsenkeizersgracht', route), 'Prinsenkeizersgracht', 'mid-word containment is not a start');
   assert.equal(maskSpoiledName('Leliegracht', route), 'your destination', 'nothing left falls back');
   assert.equal(maskSpoiledName('Café Lelieg\u0072acht', route), 'Café …', 'accents and escapes normalise');
+}
+
+// Named regressions (spoiler audit 2026-10-22, teaser bike ride Westerkerk →
+// Rijksmuseum): "Prinsengracht" was written on the map while the Spiegelgracht
+// question was open. Prinsengracht had been answered one question earlier, so
+// that label is allowed; the asked name must never show in any form.
+{
+  assert.ok(!mapLabelSpoils('Prinsengracht', null, 'Spiegelgracht'), 'a learned other street stays labelled (the teaser frame)');
+  assert.ok(mapLabelSpoils('Spiegelgracht', null, 'Spiegelgracht'), 'the asked street');
+  assert.ok(mapLabelSpoils('spiegelgracht ', null, 'Spiegelgracht'), 'a same-name segment spelled differently');
+  assert.ok(mapLabelSpoils('Brug 73', 'Spiegelgrachtbrug', 'Spiegelgracht'), 'a bridge whose printed official name says it');
+  assert.ok(mapLabelSpoils('Keizersgrachtbrug', null, 'Keizersgracht'), 'a compound that starts with it');
+  assert.ok(mapLabelSpoils('Nieuwe Prinsengracht', null, 'Prinsengracht'), 'a longer name that contains it');
+  assert.ok(mapLabelSpoils('Majoor Bosshardt', null, 'Majoor Bosshardtbrug'), 'the stem a bridge is named after');
+  assert.ok(!mapLabelSpoils('Prinsengracht', null, 'Nieuwe Prinsengracht'), 'a shorter, different street is not the asked one');
+  assert.ok(!mapLabelSpoils('Nieuwe Spiegelstraat', null, 'Spiegelgracht'), 'sharing a stem word-internally is not a spoiler');
+  assert.ok(!mapLabelSpoils('Spiegelgracht', null, ''), 'no question, nothing withheld');
+  // A POI label that compounds the asked name ("Keizersgrachtkerk") passed the n-gram test.
+  const index = buildSpoilerIndex(['Keizersgracht', 'Herengracht', 'Spiegelgracht']);
+  assert.ok(poiNameSpoils('Keizersgrachtkerk', index), 'a landmark compounded onto the canal spoils it');
+  assert.ok(poiNameSpoils('Spiegelgrachtgalerie', index), 'a gallery compounded onto the street spoils it');
+  assert.ok(!poiNameSpoils('Herenhuis Café', index), 'stems are not prefix-matched (Herenhuis is not the Herengracht)');
+  assert.ok(!poiNameSpoils('Westerkerk', index));
 }
 
 // Named regression (user report 2026-09-29, "move the map POI labels up onto

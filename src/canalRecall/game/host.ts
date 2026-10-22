@@ -438,6 +438,8 @@ export interface PresentationHost extends GameCoreHost {
   /** Cache for `_destinationLabel`: the masked name and what it was built from. */
   _destinationLabelKey?: string;
   _destinationLabelText?: string;
+  /** Per asked name: which raw street-label texts would spell it (see `mapLabelSpoils`). */
+  _labelSpoilCache?: { asked: string; spoils: Map<string, boolean> };
   _resize?(): void;
 
   learnedNames: Set<string>;

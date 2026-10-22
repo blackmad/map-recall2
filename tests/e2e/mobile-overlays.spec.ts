@@ -375,6 +375,40 @@ test('settings and help stay tucked while riding until the map is tapped', async
   await expect.poll(tucked, { timeout: 6000 }).toBe(true);
 });
 
+// Named regression (teaser capture 2026-10-22, 390×844): a map tap or a key
+// press revealed the corner cluster over an open question, and "Report a
+// problem" covered the fourth answer, settings and help covered "No idea".
+// Long answer names make the card its tallest. Checked at 360×740 too.
+for (const size of [{ width: 390, height: 844 }, { width: 360, height: 740 }]) {
+  test(`the corner cluster never reveals over a question card (${size.width}x${size.height})`, async ({ page }) => {
+    await page.setViewportSize(size);
+    await drive(page);
+    await page.evaluate(() => {
+      const game = window.canalRecallGame;
+      game.routeOptions.answerMode = 'multiple';
+      game._openQuizPrompt({
+        kind: 'route', name: 'Eerste Constantijn Huygensstraat', subject: 'street',
+        question: 'Which street are you on now?', context: 'The street name changed',
+        choices: ['Nieuwe Keizersgracht', 'Oudezijds Achterburgwal', 'Prins Hendrikkade', 'Eerste Constantijn Huygensstraat'],
+      });
+    });
+    await expect(page.locator('#canal-card')).toBeVisible();
+    await page.touchscreen.tap(size.width / 2, size.height * 0.3);
+    await page.keyboard.press('x');
+    await page.waitForTimeout(400);
+    const report = await page.evaluate(() => {
+      const util = document.getElementById('utility-buttons')!;
+      const hits = (a: DOMRect, b: DOMRect) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+      const card = document.getElementById('canal-card')!.getBoundingClientRect();
+      const shown = [...util.children].filter(child => (child as HTMLElement).offsetWidth > 0
+        && getComputedStyle(child).opacity !== '0' && getComputedStyle(child).pointerEvents !== 'none');
+      return { overlapping: shown.filter(child => hits(child.getBoundingClientRect(), card)).map(child => child.id || child.className) };
+    });
+    expect(report.overlapping, 'no utility button is live over the question card').toEqual([]);
+    await page.screenshot({ path: `artifacts/mobile-overlays/question-cluster-${size.width}x${size.height}.png` });
+  });
+}
+
 // Named regression (user report 2026-09-28, "can't really turn around").
 // Measured before: full left for 3 s turned 12° and locked off the street;
 // pulling back reversed in circles. Now full lock turns right round within
