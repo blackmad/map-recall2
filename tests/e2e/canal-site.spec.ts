@@ -15,6 +15,12 @@ test('landing page leads to the ride and the quiz on the same origin', async ({ 
   const origin = new URL(site!).origin;
   await page.goto(`${site}/`);
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Learn Amsterdam');
+  // The stats strip (scripts/landing/content-stats.ts): six counted figures, none zero once the count-up settles.
+  const stats = page.locator('.stats-grid .stat-n');
+  await expect(stats).toHaveCount(6);
+  await stats.first().scrollIntoViewIfNeeded();
+  await expect.poll(async () => (await stats.allTextContents()).map((t) => Number(t.replace(/[^0-9]/g, ''))).every((n) => n > 0)).toBe(true);
+  await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: `${shots}/landing-top-${info.project.name}.png` });
   // Screenshots below the fold are lazy: scroll them in, then wait for every image to decode.
   for (let y = 0; y < 20; y += 1) { await page.mouse.wheel(0, 600); await page.waitForTimeout(100); }
