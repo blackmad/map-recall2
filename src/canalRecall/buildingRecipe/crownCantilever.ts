@@ -141,11 +141,20 @@ export function resolveCrown(recipe: LargeBuildingRecipe, crown: CrownIntent, pa
   const [nx, nz] = panel ? norm2(panel.n[0], panel.n[2]) : [0, 1];
   const o: V3 = panel ? [panel.o[0], 0, panel.o[2]] : [0, 0, 0];
   const frame: Frame = {o, u: [ux, 0, uz], n: [nx, 0, nz]};
-  // the plan's extent along the wall: the overhung panel's own span (its corners are the building's corners; the
-  // survey footprint reaches ~0.15 m past them at the chamfers, and a strip there would float outside the shell)
+  // The plan's extent along the wall: the building's two end-wall planes projected on u. The overhung panel alone
+  // stops short of them (Haarlemmerweg 940's south panel ends 0.83 m east of the west wall above the notch), so a
+  // crown drawn to the panel's span leaves an open vertical slot at the corner, which the photos do not show.
   const sAll = recipe.set.ground.flatMap(g => g.rings.flat().map(p => (p[0] - o[0]) * ux + (p[2] - o[2]) * uz));
-  return {group, panel, frame, sMin: panel ? panel.uMin : Math.min(...sAll), sMax: panel ? panel.uMax : Math.max(...sAll),
-    soffitM: soffit, cutM: soffit + SOFFIT_RIB_M, eavesM: group.eavesM};
+  const planeAt = (bearing: number): number | null => {
+    const dist = (g: LargeGroupFit) => Math.abs((((g.bearingDeg ?? bearing) - bearing + 540) % 360) - 180);
+    const g = [...recipe.groups].sort((a, b) => dist(a) - dist(b))[0];
+    const q = g?.mainPanel === null || g?.mainPanel === undefined ? undefined : panels.find(r => r.index === g.mainPanel);
+    return q ? (q.o[0] - o[0]) * ux + (q.o[2] - o[2]) * uz : null;
+  };
+  const sW = planeAt(270), sE = planeAt(90);
+  const sMin = sW !== null && sW < (panel ? panel.uMin : Math.min(...sAll)) ? sW : panel ? panel.uMin : Math.min(...sAll);
+  const sMax = sE !== null && sE > (panel ? panel.uMax : Math.max(...sAll)) ? sE : panel ? panel.uMax : Math.max(...sAll);
+  return {group, panel, frame, sMin, sMax, soffitM: soffit, cutM: soffit + SOFFIT_RIB_M, eavesM: group.eavesM};
 }
 
 const at = (f: Frame, s: number, y: number, v = 0): V3 => [f.o[0] + f.u[0] * s + f.n[0] * v, y, f.o[2] + f.u[2] * s + f.n[2] * v];
@@ -192,7 +201,19 @@ export function applyCrownCantilever(mesh: MeshBuilder, recipe: LargeBuildingRec
     return out.sort((a, b) => a.u0 - b.u0);
   };
   const baysAcross = Math.max(1, group.bays);
-  addCrownWall(mesh, frame, front, sMin, sMax, cutM, floors, panelBays(baysAcross), win, slots(sGroup));
+  const panelSpan: [number, number] = [plan.panel ? plan.panel.uMin : sMin, plan.panel ? plan.panel.uMax : sMax];
+  addCrownWall(mesh, frame, front, panelSpan[0], panelSpan[1], cutM, floors, panelBays(baysAcross), win, slots(sGroup));
+  // the building's end-wall planes stand up to 0.9 m outside the overhung panel: a plain white corner pier closes
+  // the crown's corner there (the photos show a solid white corner, not an open slot)
+  if (sMin < panelSpan[0] - 0.02) {
+    addPanel(mesh, frame, front, sMin, panelSpan[0], cutM, eavesM, sGroup.slots.wall, 1);
+    // and its return on the shell's own wall plane, closing the crown's corner over the base's notch
+    addPanel(mesh, frame, {where: 'front', at: 0, outward: 1}, sMin, panelSpan[0], cutM, eavesM, sGroup.slots.wall, 1);
+  }
+  if (sMax > panelSpan[1] + 0.02) {
+    addPanel(mesh, frame, front, panelSpan[1], sMax, cutM, eavesM, sGroup.slots.wall, 1);
+    addPanel(mesh, frame, {where: 'front', at: 0, outward: 1}, panelSpan[1], sMax, cutM, eavesM, sGroup.slots.wall, 1);
+  }
   // the shell's own S wall now stops at the cut: close the band behind the soffit with the wall colour (its top edge
   // is the soffit ceiling's north edge, its bottom edge the shell wall's cut line)
   addPanel(mesh, frame, {where: 'front', at: 0, outward: 1}, sMin, sMax, soffitM, cutM, sGroup.slots.wall, 1);
