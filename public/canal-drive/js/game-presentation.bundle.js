@@ -996,8 +996,61 @@
 
   // src/canalRecall/orientationPois.ts
   var SPOILER_MIN_LENGTH = 5;
+  var SPOILER_MAX_WORDS = 5;
+  var DUTCH_NAME_SUFFIXES = [
+    "dwarsstraat",
+    "burgwal",
+    "gracht",
+    "straat",
+    "kanaal",
+    "sloot",
+    "steeg",
+    "plein",
+    "kade",
+    "brug",
+    "laan",
+    "dijk",
+    "weg",
+    "pad",
+    "hof"
+  ];
   function normaliseSpoilerName(name) {
     return name.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+  function buildSpoilerIndex(names) {
+    const index = /* @__PURE__ */ new Set();
+    const lowerRaw = /* @__PURE__ */ new Set();
+    const full = /* @__PURE__ */ new Set();
+    for (const raw of names) {
+      if (!raw) continue;
+      const name = normaliseSpoilerName(raw);
+      if (name.length >= SPOILER_MIN_LENGTH) lowerRaw.add(raw.trim().toLowerCase());
+      if (name.length < SPOILER_MIN_LENGTH) continue;
+      index.add(name);
+      full.add(name);
+      for (const suffix of DUTCH_NAME_SUFFIXES) {
+        if (!name.endsWith(suffix)) continue;
+        const stem = name.slice(0, -suffix.length).trim();
+        if (stem.length >= SPOILER_MIN_LENGTH) index.add(stem);
+        break;
+      }
+    }
+    return { names: index, lowerRaw, full };
+  }
+  function poiNameSpoils(label, index) {
+    if (!label || !index || index.names.size === 0) return false;
+    const words2 = normaliseSpoilerName(label).split(" ").filter(Boolean);
+    for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words2.length); size++) {
+      for (let start = 0; start + size <= words2.length; start++) {
+        if (index.names.has(words2.slice(start, start + size).join(" "))) return true;
+      }
+    }
+    if (index.full && index.full.size) {
+      for (const word of words2) {
+        for (let n = SPOILER_MIN_LENGTH; n < word.length; n++) if (index.full.has(word.slice(0, n))) return true;
+      }
+    }
+    return false;
   }
   function maskSpoiledName(label, names, fallback = "your destination") {
     if (!label) return label;
@@ -1034,6 +1087,16 @@
     }
     out += label.slice(cursor);
     return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
+  }
+  function mapLabelSpoils(raw, printed, asked) {
+    if (!asked || !raw) return false;
+    const index = buildSpoilerIndex([asked]);
+    if (!index.names.size) return normaliseSpoilerName(raw) === normaliseSpoilerName(asked);
+    for (const text of printed && printed !== raw ? [raw, printed] : [raw]) {
+      if (poiNameSpoils(text, index)) return true;
+      if (maskSpoiledName(text, [asked], "") !== text) return true;
+    }
+    return false;
   }
 
   // src/canalRecall/answerPath.ts
@@ -4792,6 +4855,17 @@
   function revealOnEnter(enteringTuckable, introRunning) {
     return enteringTuckable && !introRunning;
   }
+  var UTILITY_CARD_CLEARANCE = 6;
+  function utilityBlockedByCards(buttons, cards, clearance = UTILITY_CARD_CLEARANCE) {
+    for (const card of cards) {
+      if (!card || card.right <= card.left || card.bottom <= card.top) continue;
+      for (const b of buttons) {
+        if (b.right <= b.left || b.bottom <= b.top) continue;
+        if (b.left < card.right + clearance && b.right > card.left - clearance && b.top < card.bottom + clearance && b.bottom > card.top - clearance) return true;
+      }
+    }
+    return false;
+  }
 
   // src/canalRecall/game/presentationRuntime.ts
   var INK = "#1f1c17";
@@ -5283,7 +5357,12 @@
         if (pointer && pointer.x >= box.left - 8 && pointer.x <= box.right + 8 && pointer.y >= box.top - 8 && pointer.y <= box.bottom + 8) {
           this._utilityRevealUntil = Math.max(this._utilityRevealUntil || 0, now + 600);
         }
-        const revealed = !riding || now < (this._utilityRevealUntil || 0);
+        let revealed = !riding || now < (this._utilityRevealUntil || 0);
+        if (revealed && riding && this._prompt && this._prompt.style.display !== "none" && this._prompt.style.display !== "") {
+          const card = document.getElementById("canal-card");
+          const buttons = [...utility.children].map((child) => child.getBoundingClientRect());
+          if (card && utilityBlockedByCards(buttons, [card.getBoundingClientRect()])) revealed = false;
+        }
         utility.classList.toggle("tucked-all", true);
         utility.classList.toggle("tucked", !revealed);
       }
@@ -5385,14 +5464,26 @@
         vehicleBox = glyphBox(at.x, at.y, (Math.max(p.length || 30, p.width || 12) / 2 * 1.35 + 3) * (this.camera.zoom || 1));
       }
       this.track.placeStartTag = (centreX, defaultCentreY, pill) => startTagCentreY(centreX, defaultCentreY, pill, vehicleBox);
+      const asked = this.quizPromptName || this.quizCandidateName || "";
+      const shownText = (text) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text);
+      if (!this._labelSpoilCache || this._labelSpoilCache.asked !== asked) this._labelSpoilCache = { asked, spoils: /* @__PURE__ */ new Map() };
+      const spoilCache = this._labelSpoilCache.spoils;
+      const spoils = (text) => {
+        let hit = spoilCache.get(text);
+        if (hit === void 0) {
+          hit = mapLabelSpoils(text, shownText(text), asked);
+          spoilCache.set(text, hit);
+        }
+        return hit;
+      };
       this.track.drawLabels(
         ctx,
         this.camera,
-        (text, x, y) => this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y),
-        this.quizPromptName || this.quizCandidateName,
+        (text, x, y) => (this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y)) && !(asked && spoils(text)),
+        asked,
         player,
         (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates()).candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach),
-        (text) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text)
+        shownText
       );
       if (this.state === GameState.FINISHED) {
         this._renderFinish();

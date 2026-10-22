@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## 2026-10-22 — Share links name their real ends; phone cluster stays off question cards; wider spoiler filter
+
+Seen while filming the teaser. (1) `#race=` share links carry only
+coordinates, and `_checkShareLink` never set the route ends, so every shared
+ride kept game.js's default Anne Frank House → Rijksmuseum names; ends are
+now named from their own coordinates (`resolveSharedEndpoint`: a destination
+within 60 m, "<name> (nearby)" within 500 m, else "Shared start/finish").
+(2) On phones a map tap or digit key revealed the utility cluster for 3 s
+over the open question card ("Report a problem" covered answer 4); it now
+stays hidden while it would touch the card (`utilityBlockedByCards`). (3) The
+"Prinsengracht" label during the Spiegelgracht question was a learned street,
+not a leak; the label filter now also hides aliases, prefix compounds
+("Keizersgrachtkerk"), bridge namesakes and bridges whose name contains the
+asked one (`mapLabelSpoils`). Regressions in check-route-selection,
+share-route.spec, utilityTuck.test, mobile-overlays.spec and
+check-orientation-pois.
+
 ## 2026-10-22 — Back to Boat and North up; the View picker stays off setup
 
 User: "maybe bring back boat/north-up view too? I just hated the intro
