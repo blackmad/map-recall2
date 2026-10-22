@@ -34,17 +34,24 @@ export async function newPage(browser, { width = 1920, height = 1080, mobile = f
  */
 export async function bootRide(page, { start, finish, travel = 'car', view = 'chase', intro = false, waitIntro = true, query = '' }) {
   const centre = [(start[0] + finish[0]) / 2, (start[1] + finish[1]) / 2];
-  await page.addInitScript(({ intro, view }) => {
+  await page.addInitScript(({ intro, view, travel }) => {
     if (intro) window.__canalRecallForceIntro = true;
     try {
       // First-run onboarding and what's-new would cover the ride.
       localStorage.setItem('canalRecall.onboarding.v1', 'done');
+      // A fresh profile's defaults (view, mode) change over time: pin them.
+      if (!sessionStorage.getItem('teaser.prefs')) {
+        const key = 'canalRecall.preferences.v1';
+        const prefs = JSON.parse(localStorage.getItem(key) || '{}');
+        localStorage.setItem(key, JSON.stringify({ ...prefs, viewMode: view, travelMode: travel, zoomDefaultVersion: 4 }));
+        sessionStorage.setItem('teaser.prefs', '1');
+      }
     } catch {}
     window.__teaserView = view;
-  }, { intro, view });
+  }, { intro, view, travel });
   const hash = [...centre, ...start, ...finish].map(n => n.toFixed(5)).join(',');
   const q = new URLSearchParams(query);
-  if (travel !== 'car') q.set('travel', travel);
+  q.set('travel', travel); // always explicit: otherwise the saved preference decides
   const qs = q.toString() ? `?${q}` : '';
   await page.goto(`${BASE}/canal-drive/${qs}#race=${hash}`);
   await page.waitForFunction(() => window.canalRecallGame?.player?.x, null, { timeout: 180_000 });
@@ -170,7 +177,7 @@ export async function startRecording(page, dir, { quality = 92, maxWidth, maxHei
   let n = 0;
   // Screencast frames come at CSS-pixel size; a phone at devicePixelRatio > 1
   // is grabbed with scaled screenshots instead (slower, but sharp).
-  let shooting = false, shotLoop = null;
+  let shooting = false, shotLoop = null, stopped = false;
   if (scale > 1) {
     shooting = true;
     shotLoop = (async () => {
@@ -185,6 +192,8 @@ export async function startRecording(page, dir, { quality = 92, maxWidth, maxHei
     })();
   } else {
     cdp.on('Page.screencastFrame', async ({ data, metadata, sessionId }) => {
+      // A straggler after stop() can carry a far-off timestamp (seen: +899 s).
+      if (stopped) return;
       const file = join(resolve(dir), `f${String(n++).padStart(6, '0')}.jpg`);
       writeFileSync(file, Buffer.from(data, 'base64'));
       frames.push({ file, t: metadata.timestamp });
@@ -198,7 +207,7 @@ export async function startRecording(page, dir, { quality = 92, maxWidth, maxHei
     frames,
     mark(label) { const t = scale > 1 ? Date.now() / 1000 : (frames.length ? frames[frames.length - 1].t : 0); marks.push({ label, t, wall: (Date.now() - started) / 1000 }); console.log(`[mark] ${label} @${((Date.now() - started) / 1000).toFixed(1)}s`); },
     async stop(outFile, { fps = 30 } = {}) {
-      shooting = false; if (shotLoop) await shotLoop;
+      shooting = false; stopped = true; if (shotLoop) await shotLoop;
       await cdp.send('Page.stopScreencast').catch(() => {});
       await new Promise(r => setTimeout(r, 300));
       if (frames.length < 2) throw new Error('no frames recorded');
