@@ -399,7 +399,7 @@ video.loop.on { opacity: 1; }
 (function () {
   // Video loops, keyed by each frame's data-loop. Rename here at merge time.
   // Each name is tried as <dir><name>.webm then .mp4; a missing file leaves the still.
-  var LOOP_DIR = 'media/loops/';
+  var LOOP_DIR = 'https://media.rideamsterdam.nl/loops/'; // R2 bucket; videos are not in git
   var LOOPS = {
     desk: 'ride-question',    // .hero .desk
     phone: 'phone-ride',      // .hero .phone
