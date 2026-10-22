@@ -1,7 +1,0 @@
-{
- "id": "distelweg-88-114605",
- "pandId": "0363100012114605",
- "date": "2026-10-14",
- "method": "measureFacade.ts (k=4 clusters on smoothed normalised Lab + texture, wall = clusters enriched in the floor zones, mixed edge cells by nearest pure colour, light-trim exposure normalisation, autocorrelated bay/storey rhythm, colour split along u) on all-walls.ts --archive crops paired by cropToPanel.ts; likeness.ts against the model elevation",
- "groups": []
-}
