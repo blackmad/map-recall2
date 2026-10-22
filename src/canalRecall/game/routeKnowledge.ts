@@ -1,4 +1,5 @@
 import type { StreetKnowledgeEntry } from './extracts';
+import { language } from '../../i18n/index.ts';
 import { sentencesUpTo } from './landmarkData';
 import { describeRegisteredBridge, type BridgeRegisterFact } from '../bridgeRegister';
 import { ledeSentences } from '../bridgeLedeRepair';
@@ -6,7 +7,7 @@ import { ledeSentences } from '../bridgeLedeRepair';
 export type RouteKnowledgeType = 'street' | 'water' | 'bridge';
 export type RouteKnowledgeIndex = Map<string, StreetKnowledgeEntry>;
 
-const eligible = (entry: StreetKnowledgeEntry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin;
+const eligible = (entry: StreetKnowledgeEntry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin || entry.nameOriginNl;
 
 /** What a `bridges.json` feature contributes to its card. */
 export interface BridgeKnowledgeSource {
@@ -25,6 +26,8 @@ export interface StreetNameOrigin {
   name: string;
   kind: 'street' | 'water' | 'bridge';
   en: string;
+  /** The register's own Dutch sentence, printed when the interface is Dutch. */
+  nl?: string;
 }
 
 /** Join answer names to exact extract identities without merging street/water homonyms. */
@@ -68,7 +71,10 @@ export function buildRouteKnowledgeIndex(
     const type: RouteKnowledgeType = origin.kind;
     const key = `${type}:${normalise(origin.name)}`;
     const existing = index.get(key);
-    index.set(key, existing ? { ...existing, nameOrigin: origin.en } : { name: origin.name, type, nameOrigin: origin.en });
+    const dutch = origin.nl ? { nameOriginNl: origin.nl } : {};
+    index.set(key, existing
+      ? { ...existing, nameOrigin: origin.en, ...dutch }
+      : { name: origin.name, type, nameOrigin: origin.en, ...dutch });
   }
   // The register describes 235 of 300 named bridges against 203 with an
   // origin, so a bridge card can stand on it alone.
@@ -105,7 +111,11 @@ export const STREET_CARD_LONG_CHARS = 280;
  * A first sentence like "Legume." is too thin alone, so the short text takes
  * sentences until it is full.
  */
-export function streetCardText(entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 'wikipediaExtract' | 'structureFact'>): { detail: string; longDetail: string } {
+/** The origin sentence in the interface's language, English when no Dutch one exists. */
+const originOf = (entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 'nameOriginNl'>): string | undefined =>
+  language() === 'nl' && entry.nameOriginNl ? entry.nameOriginNl : entry.nameOrigin;
+
+export function streetCardText(entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 'nameOriginNl' | 'wikipediaExtract' | 'structureFact'>): { detail: string; longDetail: string } {
   const fact = (entry.structureFact || '').trim();
   const text = structureLessCardText(entry);
   if (!fact) return text;
@@ -113,12 +123,12 @@ export function streetCardText(entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 
   // the origin gives up room for it in the long text.
   if (!text.detail) return { detail: fact, longDetail: fact };
   const room = STREET_CARD_LONG_CHARS - fact.length - 1;
-  const lead = sentencesUpTo(sentencesOf(`${entry.nameOrigin || ''} ${entry.wikipediaExtract || ''}`), room);
+  const lead = sentencesUpTo(sentencesOf(`${originOf(entry) || ''} ${entry.wikipediaExtract || ''}`), room);
   return { detail: text.detail, longDetail: lead ? `${lead} ${fact}` : fact };
 }
 
-function structureLessCardText(entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 'wikipediaExtract'>): { detail: string; longDetail: string } {
-  const origin = sentencesOf(entry.nameOrigin || '');
+function structureLessCardText(entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 'nameOriginNl' | 'wikipediaExtract'>): { detail: string; longDetail: string } {
+  const origin = sentencesOf(originOf(entry) || '');
   const extract = sentencesOf(entry.wikipediaExtract || '');
   if (!origin.length) {
     return { detail: sentencesUpTo(extract.slice(0, 1), STREET_CARD_DETAIL_CHARS), longDetail: sentencesUpTo(extract.slice(0, 3), STREET_CARD_LONG_CHARS) };

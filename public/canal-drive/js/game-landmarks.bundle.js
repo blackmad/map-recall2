@@ -483,9 +483,9 @@ Map source: ${osmUrl(places[i][0])}`);
     return { detail: `${lead} ${factText}`, opening: lead };
   }
   var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
-  function loadRotationState(storage) {
+  function loadRotationState(storage2) {
     try {
-      const raw = storage?.getItem(ROTATION_STORAGE_KEY);
+      const raw = storage2?.getItem(ROTATION_STORAGE_KEY);
       if (!raw) return emptyRotationState();
       const parsed = JSON.parse(raw);
       return {
@@ -497,9 +497,9 @@ Map source: ${osmUrl(places[i][0])}`);
       return emptyRotationState();
     }
   }
-  function saveRotationState(storage, state) {
+  function saveRotationState(storage2, state) {
     try {
-      storage?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
+      storage2?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
     } catch {
     }
   }
@@ -524,10 +524,549 @@ Map source: ${osmUrl(places[i][0])}`);
       }
     };
   }
-  function commitShownFact(storage, state, choice) {
+  function commitShownFact(storage2, state, choice) {
     const next = recordShown(state, choice);
-    saveRotationState(storage, next);
+    saveRotationState(storage2, next);
     return next;
+  }
+
+  // src/i18n/messages/en.ts
+  var en = {
+    // --- Language switch ------------------------------------------------------
+    "language.label": "Language",
+    "language.en": "English",
+    "language.nl": "Nederlands",
+    "language.enShort": "EN",
+    "language.nlShort": "NL",
+    "language.switchedTo": "Language: {language}",
+    // --- Shared words ---------------------------------------------------------
+    "common.more": "More",
+    "common.done": "Done",
+    "common.off": "Off",
+    "common.back": "Back",
+    // --- Route setup ----------------------------------------------------------
+    "setup.city": "City",
+    "setup.travel": "Travel",
+    "setup.travel.boat": "Boat",
+    "setup.travel.bike": "Bike",
+    "setup.travel.transit": "Transit",
+    "setup.view": "View",
+    "setup.view.north": "North up",
+    "setup.view.northHint": "Flat map, north at top",
+    "setup.view.heading": "Heading up",
+    "setup.view.headingHint": "Flat map, turns with you",
+    "setup.view.chase": "Chase",
+    "setup.view.chaseHint": "High 3D, behind the vehicle",
+    "setup.view.cockpit": "Cockpit",
+    "setup.view.cockpitHint": "Low 3D, over the bumper",
+    "setup.look": "Building look",
+    "setup.look.photo": "Photo",
+    "setup.look.photoHint": "Brick and sash windows",
+    "setup.look.procedural": "Painted",
+    "setup.look.proceduralHint": "Fitted windows and doors",
+    "setup.look.storybook": "Storybook",
+    "setup.look.storybookHint": "Softly painted, natural colours",
+    "setup.look.cartoon": "Cartoon",
+    "setup.look.cartoonHint": "Flat, bold, cel-shaded",
+    "setup.look.untextured": "Untextured",
+    "setup.look.untexturedHint": "Plain colours, lightest on the phone",
+    "setup.route": "Route",
+    "setup.route.surprise": "Surprise",
+    "setup.route.surpriseHint": "Landmark to landmark",
+    "setup.route.home": "Home",
+    "setup.route.homeHint": "Nearby first, expands as you learn",
+    "setup.route.here": "Here",
+    "setup.route.hereHint": "Start from where you are now",
+    "setup.difficulty": "Difficulty",
+    "setup.difficulty.easy": "Easy",
+    "setup.difficulty.medium": "Medium",
+    "setup.difficulty.hard": "Hard",
+    "setup.difficulty.expert": "Expert",
+    "setup.difficulty.custom": "Custom",
+    "setup.difficulty.harder": "Harder difficulties",
+    "setup.difficulty.harderGloss": "Expert hides assists. Custom appears when you tweak assists below.",
+    "setup.difficulty.customGloss": "Your own mix of help, set under More options.",
+    "setup.difficulty.chooseName": "Pick the name from a list.",
+    "setup.difficulty.typeName": "Type each name.",
+    "setup.difficulty.assistsOff": "No {assists}.",
+    "setup.difficulty.assistsOffList": "{list} or {last}",
+    "setup.difficulty.lineOn": "Route line shown.",
+    "setup.assist.routeLine": "route line",
+    "setup.assist.arrow": "arrow",
+    "setup.assist.minimap": "minimap",
+    "setup.destination": "Destination",
+    "setup.destination.surprise": "Surprise me",
+    "setup.destination.tourStops": "Tour stops",
+    "setup.tours": "Tours",
+    "setup.tours.none": "No tour",
+    "setup.tours.stops": "{count} stops by bike, one leg at a time",
+    "setup.tours.checked": " \xB7 {checked}, shops change",
+    "setup.tours.brief": "Ride the {tour} tour stop by stop. Each arrival tells you why it is on the list.",
+    "setup.homeAddress": "Home address",
+    "setup.homeAddress.placeholder": "Street and number, {city}",
+    "setup.homeAddress.saved": "Saved \xB7 starts nearby, expands as you learn \xB7 boats use nearby water",
+    "setup.homeAddress.learning": "Learning near home \xB7 ~{km} km \xB7 expands as you learn",
+    "setup.liveLocation": "Live location",
+    "setup.liveLocation.note": "Starts from where you are now \u2014 not a saved home address. Allow location when asked.",
+    "setup.moreOptions": "More options",
+    "setup.review": "Review",
+    "setup.review.dueOnly": "Due names only",
+    "setup.review.dueOnlyHint": "Ask only names due for review",
+    "setup.review.measuredColours": "Reviewed colours",
+    "setup.review.measuredColoursHint": "Only buildings with checked wall colours",
+    "setup.review.measuredColoursHidden": "Buildings without reviewed wall colours are hidden. Coverage may be empty.",
+    "setup.savedData": "Your saved data",
+    "setup.resetKnowledge": "Reset knowledge\u2026",
+    "setup.clearAll": "Clear all data\u2026",
+    "setup.startRoute": "Start route",
+    "setup.startTour": "Start tour",
+    "setup.scrollMoreOptions": "Scroll for more options",
+    // --- Ride options (setup + live settings) ---------------------------------
+    "options.tilt": "3D tilt",
+    "options.spin": "3D spin",
+    "options.zoom": "Zoom",
+    "options.controls": "Controls",
+    "options.controls.steer": "Steer",
+    "options.controls.steerHint": "Left and right turn the vehicle",
+    "options.controls.point": "Point",
+    "options.controls.pointHint": "Push the way you want to go",
+    "options.answers": "Answers",
+    "options.answers.choose": "Choose",
+    "options.answers.chooseHint": "Pick from a few names",
+    "options.answers.type": "Type",
+    "options.answers.typeHint": "Spell the name yourself",
+    "options.asksPerMinute": "Questions a minute",
+    "options.asksPerMinuteGloss": "Route questions asked per minute while you ride. Off still shows each street name after you pass it.",
+    "options.onTheMap": "On the map",
+    "options.routeLine": "Route line",
+    "options.arrow": "Arrow",
+    "options.arrowHint": "Points at the destination",
+    "options.minimap": "Minimap",
+    "options.scores": "Scores",
+    "options.scoresHint": "Points, streaks and ribbons",
+    "options.comfort": "Comfort & detail",
+    "options.lessMotion": "Less motion",
+    "options.trees": "Trees",
+    // --- Ride settings panel --------------------------------------------------
+    "settings.title": "Ride settings",
+    "settings.progress": "My progress",
+    "settings.knowledge": "Your knowledge",
+    "settings.routeSetup": "Route setup",
+    "settings.scrollMore": "Scroll for more settings",
+    "settings.signedInAs": "Signed in as {name}",
+    // --- Knowledge screen -----------------------------------------------------
+    "knowledge.title": "Your city knowledge",
+    "knowledge.subtitle": "What is sticking, what is fading, and what to ride next.",
+    "knowledge.plan": "Plan review \xB7 {count} due",
+    "knowledge.nothingDue": "Nothing due now",
+    "knowledge.emptyTitle": "Your map starts with one answer",
+    "knowledge.emptyBody": "Complete a route and recall a street, canal, bridge, stop, or line. It will appear here with its next review time.",
+    "knowledge.firstRoute": "Choose a first route",
+    "knowledge.summary": "Knowledge summary",
+    "knowledge.dueNow": "due now",
+    "knowledge.dueNowBody": "These names have reached their review window.",
+    "knowledge.caughtUp": "You are caught up. New reviews will appear here.",
+    "knowledge.tracked": "Names tracked",
+    "knowledge.mastered": "Mastered",
+    "knowledge.recallRate": "Recall rate",
+    "knowledge.reviewsLogged": "Reviews logged",
+    "knowledge.mapKey": "Map key",
+    "knowledge.status.due": "Due for review",
+    "knowledge.status.learning": "Learning",
+    "knowledge.status.known": "Known",
+    "knowledge.status.mastered": "Mastered",
+    "knowledge.queue": "Review queue",
+    "knowledge.search": "Search knowledge",
+    "knowledge.searchPlaceholder": "Search names or cities",
+    "knowledge.statusLabel": "Knowledge status",
+    "knowledge.filter.due": "Due",
+    "knowledge.filter.learning": "Learning",
+    "knowledge.filter.known": "Known",
+    "knowledge.filter.mastered": "Mastered",
+    "knowledge.filter.all": "All",
+    "knowledge.queued": "Queued",
+    "knowledge.practiceAgain": "Practice again",
+    "knowledge.noNames": "No names here",
+    "knowledge.noNamesSearch": "Try another search or status.",
+    "knowledge.noNamesBody": "Your answers will move names into this group.",
+    "knowledge.activity": "Past 7 days",
+    "knowledge.activityLabel": "Reviews in the past seven days",
+    "knowledge.byCity": "By city",
+    "knowledge.explainer": "Mastery rises across successful reviews. A name turns copper when its spaced-review interval expires.",
+    "knowledge.backToSetup": "Route setup",
+    "knowledge.backToRide": "Back to ride",
+    "knowledge.count.one": "{count} name in this view",
+    "knowledge.count.other": "{count} names in this view",
+    "knowledge.masteryPercent": "{percent} percent mastery",
+    "knowledge.successful": "{count} successful",
+    "knowledge.lapse.one": "{count} lapse",
+    "knowledge.lapse.other": "{count} lapses",
+    "knowledge.forget": "Forget",
+    "knowledge.places.one": "{count} place",
+    "knowledge.places.other": "{count} places",
+    "knowledge.reviews.one": "{count} review",
+    "knowledge.reviews.other": "{count} reviews",
+    "knowledge.weekTotal.one": "{count} review this week",
+    "knowledge.weekTotal.other": "{count} reviews this week",
+    "knowledge.cityTracked": "{count} tracked",
+    "knowledge.cityDue": "{due} due \xB7 {mastered} mastered",
+    "knowledge.unit.min": "min",
+    "knowledge.unit.hour": "hr",
+    "knowledge.unit.day": "day",
+    "knowledge.overdue": "{amount} {unit} overdue",
+    "knowledge.inFuture": "in {amount} {unit}",
+    // --- HUD (canvas) ---------------------------------------------------------
+    "hud.tally": "{correct} / {attempts} named",
+    "hud.tallyCompact": "{correct}/{attempts} named",
+    "hud.points": "{points} pts",
+    "hud.zoom": "Zoom {percent}%",
+    "hud.streak": "{streak} streak \xB7 {mult}\xD7",
+    "hud.streakCompact": "{streak}\xD7streak",
+    "hud.toDestination": "to {name}",
+    "hud.lap": "LAP {current} / {total}",
+    "hud.complete": "{percent}% COMPLETE",
+    "hud.ordinal.one": "{position}st",
+    "hud.ordinal.two": "{position}nd",
+    "hud.ordinal.three": "{position}rd",
+    "hud.ordinal.other": "{position}th",
+    "hud.recall": "RECALL",
+    "hud.street": "STREET",
+    // --- Quiz card ------------------------------------------------------------
+    "card.noIdea": "No idea",
+    "card.submit": "Check",
+    "card.correct": "Correct",
+    "card.wrong": "Not quite",
+    "card.answerWas": "It was {name}",
+    "card.continue": "Continue",
+    // --- Ride errors and status ----------------------------------------------
+    "ride.question.waterway": "Which waterway are you on now?",
+    "ride.question.street": "Which street are you on now?",
+    "ride.question.line": "Which line are you on now?",
+    "ride.question.bridge": "Which bridge are you on?",
+    "ride.context.bridge": "Crossing a waterway",
+    "ride.context.transit": "Riding the corridor",
+    "ride.context.start": "Where you set off",
+    "ride.context.turn": "You made a turn",
+    "ride.context.nameChanged": "The street name changed",
+    "ride.noun.canals": "Canals",
+    "ride.noun.streets": "Streets",
+    "ride.noun.lines": "Lines",
+    "ride.noun.linesAndStops": "lines and stops",
+    "ride.network.waterways": "waterways",
+    "ride.network.waterway": "waterway",
+    "ride.network.streets": "streets",
+    "ride.network.street": "street",
+    "ride.network.tramLines": "tram lines",
+    "ride.network.line": "line",
+    "ride.load.city": "Loading {city} {network}\u2026",
+    "ride.load.noNamed": "No named {noun} found here.",
+    "ride.load.buildingNetwork": "Building the {noun} network\u2026",
+    "ride.load.preparingMap": "Preparing the vector map\u2026",
+    "ride.load.choosingStart": "Choosing a starting {noun}\u2026",
+    "ride.load.renderingStreets": "Rendering streets\u2026",
+    "ride.load.renderingTrams": "Rendering tram lines\u2026",
+    "ride.load.renderingWaterways": "Rendering waterways\u2026",
+    "ride.load.settling": "Settling the map\u2026",
+    "ride.load.ready": "Ready!",
+    "ride.load.findingWay": "Finding your way\u2026",
+    "ride.error.noStartPoint": "No reachable starting point is available for this destination.",
+    "ride.error.transitAnchors": "Transit stop anchors failed to load for {city}.",
+    "ride.error.notEnoughLandmarks": "Not enough landmarks loaded for {city}.",
+    "ride.error.tourUnavailable": "That tour is unavailable. Pick another below.",
+    "ride.error.tourUnavailableShort": "That tour is unavailable.",
+    "ride.error.snapFailed": "Could not snap your location to a mapped street or waterway. Move closer to the network, or try Surprise.",
+    "ride.error.addressTooFar": "That address is too far from a connected mapped waterway. Try a nearby bridge or canal-side address.",
+    "ride.error.startFinishClose": "Start and finish are too close. Try different points.",
+    "ride.error.routeNotFound": "Route not found between start and finish \u2014 the route line will not display",
+    "ride.error.exactAddress": "Could not find that exact {city} address",
+    "ride.error.unreachableDestination": "Could not reach {destination} on the mapped {network}. Try another travel mode or destination.",
+    "ride.error.addressSearch": "Address search is unavailable right now",
+    "ride.error.areaTooSmall": "Area too small. Try a different area.",
+    "ride.error.network": "Could not build the canal network.",
+    "ride.error.addressNotFound": "Could not find that address.",
+    "ride.error.placeRoute": "Could not place start/finish. Try different points.",
+    "ride.error.planRoute": "Could not plan a ride from your location. Try Surprise or Home.",
+    "ride.error.location": "Could not read your location.",
+    "ride.error.homeAddress": "Enter a home address first.",
+    "ride.error.waterways": "Failed to load waterways",
+    "ride.status.findingYou": "Finding where you are\u2026",
+    "ride.status.findingHome": "Finding your home base\u2026",
+    "ride.holdSteer": "hold here to drive \u2014 slide to steer, pull back to brake",
+    "ride.holdPoint": "hold here and point where you want to go",
+    // --- Help panel -----------------------------------------------------------
+    "help.keyboard": "Keyboard",
+    "help.rideSection": "Ride",
+    "help.answerSection": "Answer",
+    "help.viewSection": "View",
+    "help.arrows": "Steer and accelerate / brake",
+    "help.space": "Handbrake",
+    "help.pause": "Pause",
+    "help.routeSetup": "Route setup",
+    "help.settings": "Settings",
+    "help.sound": "Sound",
+    "help.multipleChoice": "Multiple-choice answer",
+    "help.noIdeaTellMe": "No idea \u2014 tell me",
+    "help.wikipediaLandmark": "Wikipedia for the on-screen landmark",
+    "help.fullArticle": "Full landmark article",
+    "help.minimap": "Minimap",
+    "help.routeLine": "Route line",
+    "help.destinationArrow": "Destination arrow",
+    "help.northUpToggle": "North-up / heading-up",
+    "help.zoom": "Zoom (or pinch)",
+    "help.panCamera": "Pan camera",
+    "help.recenter": "Recenter",
+    "help.tilt3d": "3D tilt (chase / cockpit)",
+    "help.spin3d": "Spin 3D camera around vehicle",
+    "help.spinTrackpad": "Spin 3D camera (trackpad twist in Safari)",
+    "help.developerKeys": "Developer keys",
+    "help.roadNames": "Road name labels",
+    "help.buildingLook": "Building look",
+    "help.panCameraKeys": "Pan camera",
+    "help.debugOverlay": "Debug overlay",
+    "help.close": "Close",
+    "prompt.label.street": "Street",
+    "prompt.label.waterway": "Waterway",
+    "prompt.label.water": "Water",
+    "prompt.label.bridge": "Bridge",
+    "prompt.label.line": "Line",
+    "prompt.label.stop": "Stop",
+    "prompt.placeholder.street": "Street name",
+    "prompt.placeholder.waterway": "Waterway name",
+    "prompt.placeholder.water": "Canal or river name",
+    "prompt.placeholder.bridge": "Bridge name",
+    "prompt.placeholder.line": "Line name",
+    "prompt.placeholder.stop": "Stop name",
+    "prompt.waterway": "Waterway",
+    "prompt.turn": "You made a turn",
+    "prompt.submit": "Submit answer",
+    "prompt.noIdea": "No idea \u2014 tell me",
+    "prompt.ridingOn": "Riding on",
+    "utility.settings": "Settings",
+    "utility.help": "How to play",
+    "landmark.readArticle": "Read the full article on Wikipedia",
+    "help.title": "How to play",
+    "help.replayIntro": "Show the 3-step intro",
+    "help.rideTitle": "Ride",
+    "help.rideTouch": "Hold the ring at the bottom of the screen and slide. Sideways steers, up goes faster, back brakes. In compass mode, point where you want to go.",
+    "help.ridePointer": "Arrow keys or WASD steer. In compass mode they point the way instead: \u2192 rides east on a north-up map.",
+    "help.nameTitle": "Name it",
+    "help.nameBody": "Turn onto a new canal or street and the ride stops to ask its name. Pick it, type it, or choose No idea \u2014 either way the answer is shown, and the right one lights up on the map. Nothing on screen names it before you answer.",
+    "help.rememberTitle": "Remember it",
+    "help.rememberBody": "Names you get right come back later, just before you would forget them (spaced review). Knowledge on the setup screen shows what is due. \u201C% new\u201D on the destination card is how much of the route you have not ridden before.",
+    // --- Mission briefing -----------------------------------------------------
+    "mission.destination": "your destination",
+    "mission.city": "the city",
+    "mission.home": "home",
+    "mission.boat.1": "Find your way to {destination} by water",
+    "mission.boat.2": "Canal hop to {destination}",
+    "mission.boat.3": "Drift toward {destination} \u2014 name what you ride",
+    "mission.bike.1": "Ride toward {destination}",
+    "mission.bike.2": "Pedal to {destination} \u2014 learn the turns",
+    "mission.bike.3": "Learn the way to {destination}",
+    "mission.transit.1": "Ride the line toward {destination}",
+    "mission.transit.2": "One hop to {destination} \u2014 own the corridor",
+    "mission.transit.3": "Transfer-ready: get to {destination}",
+    "mission.home.1": "Learn the streets within ~{km} km of home",
+    "mission.home.2": "Rides from home reach further as you learn",
+    "mission.home.3": "Errand mode: leave knowing the way back",
+    "mission.here.1": "From here toward {destination}",
+    "mission.here.2": "Start from where you are",
+    "mission.here.3": "Start from where you are \u2014 not a saved address",
+    "mission.reviewOne": "Review ride: 1 overdue name on the way",
+    "mission.reviewMany": "Review ride: {count} overdue names on the way",
+    "mission.reviewFirstMinute": "A review waits in the first minute",
+    "mission.warmUp": "Warm up with one overdue name",
+    "mission.arrive": "Arrive knowing more of {city}",
+    // --- Map Recall quiz ------------------------------------------------------
+    "quiz.pinpoint": "Pinpoint",
+    "quiz.pinpointHint": "Place the named feature on the map",
+    "quiz.guessName": "Guess Name",
+    "quiz.guessNameHint": "Name the feature highlighted on the map",
+    "quiz.highlighted": "Highlighted on the map",
+    "quiz.which": "Which {kind} is this?",
+    "quiz.inContext": "In {context}",
+    "quiz.noIdeaReveal": "No idea \u2014 reveal the answer",
+    "quiz.skipped": "Skipped",
+    "quiz.correct": "Correct",
+    "quiz.notQuite": "Not quite",
+    "quiz.answerWas": "It is {name}",
+    "quiz.pts": "PTS",
+    "quiz.points": "pts",
+    "quiz.seeScore": "See score",
+    "quiz.next": "Next",
+    "quiz.nextNearby": "Next \xB7 nearby",
+    "quiz.hint": "Hint",
+    "quiz.hintWithCeiling": "Hint \xB7 up to {points}",
+    "quiz.hideHint": "Hide hint",
+    "quiz.showHint": "Show hint",
+    "quiz.pinPlaced": "Pin placed",
+    "quiz.tapToPlace": "Tap the map to place a pin",
+    "quiz.tapToMove": "Tap again to move it",
+    "quiz.anywhere": "Anywhere you think it is",
+    "quiz.confirmPin": "Confirm pin location",
+    "quiz.placeFirst": "Place a pin on the map first",
+    "quiz.confirm": "Confirm",
+    "quiz.placePinFirst": "Place a pin first",
+    "quiz.distanceLine": "Dashed line shows distance on map",
+    "quiz.sessionComplete": "Session complete",
+    "quiz.accuracy": "Accuracy",
+    "quiz.finalScore": "Final Score",
+    "quiz.missed": "Missed",
+    "quiz.overall": "Overall",
+    "quiz.playAgain": "Play Again",
+    "quiz.reviewOnMap": "Review on map",
+    "quiz.showResults": "Show Results Summary",
+    "quiz.mapReview": "Map Review: Explore your pins & correct street lines",
+    "quiz.greetingsFrom": "Greetings from",
+    "quiz.nameLabel": "Name:",
+    "quiz.nothingDue": "Nothing due \xB7 0 known yet \u2014 start with canals",
+    "quiz.dailyFive": "Daily five",
+    "quiz.twoPlaces": "Two places",
+    "quiz.bothHighlighted": "Both highlighted",
+    "quiz.bonus": "Bonus",
+    "quiz.skip": "Skip",
+    "quiz.tapMap": "Tap the map",
+    "quiz.loadingOsm": "OpenStreetMap data",
+    "quiz.cancelAnytime": "You can cancel at any time",
+    "quiz.cancelLoading": "Cancel Loading",
+    "quiz.startWith": "Start with",
+    "quiz.also": "Also",
+    "quiz.mode": "Mode",
+    "quiz.startNearHome": "Start near home",
+    "quiz.started": "Quiz started",
+    "quiz.couldNotLoad": "Couldn\u2019t load map features",
+    "quiz.loadingLocation": "Finding location\u2026",
+    "quiz.loadingBoundaries": "Discovering local boundaries\u2026",
+    "quiz.geolocation": "Requesting device geolocation...",
+    "quiz.geolocationCoords": "Pinpointing coordinates...",
+    "quiz.reverseGeocode": "Reverse geocoding local district...",
+    "quiz.couldNotLoadFeatures": "Could not load OpenStreetMap features.",
+    "quiz.couldNotLoadLocation": "Could not load this location",
+    "quiz.couldNotFindLocation": "Could not find that location",
+    "quiz.seenBefore": "Seen before",
+    "quiz.currentLocation": "Current Location: {city}",
+    "quiz.adjustRadius": "Adjust search radius or administrative boundary",
+    "quiz.cycleScope": "Cycle administrative scope",
+    "quiz.radiusKm": "{km} km radius",
+    "quiz.hood": "Hood",
+    "quiz.region": "Region",
+    "quiz.city": "City",
+    "quiz.featureFilter": "Feature Type Filter: {label}",
+    "quiz.encyclopedia": "Encyclopedia",
+    "quiz.encyclopediaOnlyTitle": "Only quiz features that have an encyclopedia page",
+    "quiz.roundOf": "Round {round} of {total}",
+    "quiz.blindMapOn": "Blind Map Mode active (labels hidden). Click to toggle.",
+    "quiz.noLabels": "No Labels",
+    "quiz.menu": "Open Menu & Settings",
+    "quiz.searchArea": "Search area",
+    "quiz.searchPlaceholder": "City, address, or postcode",
+    "quiz.searchLocation": "Search location",
+    "quiz.findThisLocation": "Find this location using the selected radius",
+    "quiz.customRadius": "Custom radius circle",
+    "quiz.showBoundary": "Show boundary on map",
+    "quiz.optionsTitle": "Map Recall Options",
+    "quiz.guestProgress": "Guest progress",
+    "quiz.syncActive": "Progress sync is active",
+    "quiz.savedHere": "Reviews are saved on this device",
+    "quiz.myProgress": "My progress",
+    "quiz.signOut": "Sign out",
+    "quiz.signInToSync": "Sign in to sync",
+    "quiz.cloudNotConfigured": "Cloud sync not configured",
+    "quiz.signInToSyncTitle": "Sign in to sync progress",
+    "quiz.addFirebase": "Add Firebase environment variables to enable cloud sync",
+    "quiz.questionPool": "Question pool",
+    "quiz.featureCount": "{count} features",
+    "quiz.encyclopediaOnlyHint": "Only quiz places with an encyclopedia page",
+    "quiz.gameMode": "Game mode",
+    "quiz.modeExplainer": "Pinpoint places a named spot on the map. Guess Name names what the map highlights. Neighborhood places area boundaries.",
+    "quiz.locateOnMap": "Locate on map",
+    "quiz.nameTheHighlight": "Name the highlight",
+    "quiz.cityLocation": "City / Location",
+    "quiz.useMyLocation": "Use My Location",
+    "quiz.locating": "Locating...",
+    "quiz.blankBaseMap": "Label-less Base Map",
+    "quiz.blankBaseMapHint": "Hides text labels on map tiles (Default: Active)",
+    "quiz.mapStyle": "Map Style",
+    "quiz.units": "Units",
+    "quiz.quizAndMapSettings": "Quiz and map settings",
+    "quiz.on": "On",
+    "quiz.off": "Off",
+    "quiz.kind.water": "Canal / Waterway",
+    "quiz.kind.bridge": "Bridge",
+    "quiz.kind.square": "Square / Plaza",
+    "quiz.kind.park": "Park / Greenway",
+    "quiz.kind.landmark": "Landmark",
+    "quiz.kind.neighborhood": "Neighborhood",
+    "quiz.kind.street": "Street",
+    "quiz.known": "Known",
+    "quiz.knownHint": "answered well again",
+    "quiz.shaky": "Still shaky",
+    "quiz.shakyHint": "back soon",
+    "quiz.mixed": "Mixed",
+    "quiz.rankFirst": "A useful first pass",
+    "quiz.rankKnowMap": "You know this map",
+    "quiz.rankStrong": "Strong sense of place",
+    "quiz.rankBearings": "Getting your bearings",
+    "quiz.avgError": "Avg. Error",
+    "quiz.averageDistance": "Average distance",
+    "quiz.guessMode": "Guess mode",
+    "quiz.tryOther": "Try {mode}",
+    "quiz.moreAbout": "More about {name}",
+    "quiz.nothingDueShort": "Nothing due",
+    "quiz.currentLocationLabel": "Current Location",
+    "quiz.bonusWhere": "where is {place}?",
+    "quiz.bonusTapWhere": "where {place} is",
+    "quiz.new": "New",
+    "quiz.newHint": "first time right",
+    "quiz.roundWord": "Round {round}",
+    "quiz.postcardOpen": "Greetings from {name}: open the postcard",
+    "quiz.dueTodayLabel": "Due today"
+  };
+
+  // src/i18n/language.ts
+  var LANGUAGE_STORAGE_KEY = "canalRecall.language.v1";
+  function isLanguage(value) {
+    return value === "en" || value === "nl";
+  }
+  function languageFromTags(tags) {
+    for (const tag of tags || []) {
+      if (typeof tag !== "string") continue;
+      const base = tag.trim().toLowerCase().split(/[-_]/)[0];
+      if (base === "nl") return "nl";
+      if (base === "en") return "en";
+    }
+    return "en";
+  }
+  function browserLanguage() {
+    if (typeof navigator === "undefined") return "en";
+    const tags = Array.isArray(navigator.languages) && navigator.languages.length ? navigator.languages : [navigator.language];
+    return languageFromTags(tags);
+  }
+  function readLanguage(store) {
+    try {
+      const raw = store?.getItem(LANGUAGE_STORAGE_KEY);
+      return isLanguage(raw) ? raw : browserLanguage();
+    } catch {
+      return browserLanguage();
+    }
+  }
+
+  // src/i18n/index.ts
+  var LANGUAGE_NAMES = {
+    en: en["language.en"],
+    nl: en["language.nl"]
+  };
+  var current = null;
+  function storage() {
+    try {
+      return typeof localStorage === "undefined" ? null : localStorage;
+    } catch {
+      return null;
+    }
+  }
+  function language() {
+    if (!current) current = readLanguage(storage());
+    return current;
   }
 
   // src/canalRecall/bridgeRegister.ts
@@ -556,7 +1095,7 @@ Map source: ${osmUrl(places[i][0])}`);
   }
 
   // src/canalRecall/game/routeKnowledge.ts
-  var eligible = (entry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin;
+  var eligible = (entry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin || entry.nameOriginNl;
   function buildRouteKnowledgeIndex(legacy, streets, waters, normalise, origins = [], bridgeRegister = {}, bridges = []) {
     const index = /* @__PURE__ */ new Map();
     const add = (entry, type) => {
@@ -582,7 +1121,8 @@ Map source: ${osmUrl(places[i][0])}`);
       const type = origin.kind;
       const key = `${type}:${normalise(origin.name)}`;
       const existing = index.get(key);
-      index.set(key, existing ? { ...existing, nameOrigin: origin.en } : { name: origin.name, type, nameOrigin: origin.en });
+      const dutch = origin.nl ? { nameOriginNl: origin.nl } : {};
+      index.set(key, existing ? { ...existing, nameOrigin: origin.en, ...dutch } : { name: origin.name, type, nameOrigin: origin.en, ...dutch });
     }
     for (const [name, fact] of Object.entries(bridgeRegister)) {
       const structureFact = describeRegisteredBridge(fact);
@@ -602,17 +1142,18 @@ Map source: ${osmUrl(places[i][0])}`);
   var sentencesOf = (text) => ledeSentences(text).map((part) => part.trim()).filter(Boolean);
   var STREET_CARD_DETAIL_CHARS = 150;
   var STREET_CARD_LONG_CHARS = 280;
+  var originOf = (entry) => language() === "nl" && entry.nameOriginNl ? entry.nameOriginNl : entry.nameOrigin;
   function streetCardText(entry) {
     const fact = (entry.structureFact || "").trim();
     const text = structureLessCardText(entry);
     if (!fact) return text;
     if (!text.detail) return { detail: fact, longDetail: fact };
     const room = STREET_CARD_LONG_CHARS - fact.length - 1;
-    const lead = sentencesUpTo(sentencesOf(`${entry.nameOrigin || ""} ${entry.wikipediaExtract || ""}`), room);
+    const lead = sentencesUpTo(sentencesOf(`${originOf(entry) || ""} ${entry.wikipediaExtract || ""}`), room);
     return { detail: text.detail, longDetail: lead ? `${lead} ${fact}` : fact };
   }
   function structureLessCardText(entry) {
-    const origin = sentencesOf(entry.nameOrigin || "");
+    const origin = sentencesOf(originOf(entry) || "");
     const extract = sentencesOf(entry.wikipediaExtract || "");
     if (!origin.length) {
       return { detail: sentencesUpTo(extract.slice(0, 1), STREET_CARD_DETAIL_CHARS), longDetail: sentencesUpTo(extract.slice(0, 3), STREET_CARD_LONG_CHARS) };
@@ -4032,20 +4573,20 @@ Map source: ${osmUrl(places[i][0])}`);
 
   // src/canalRecall/game/postcardPacing.ts
   var storageKey = (cityId) => `canalRecall.neighborhoodEntries.${cityId}`;
-  function loadEntryCounts(storage, cityId) {
+  function loadEntryCounts(storage2, cityId) {
     try {
-      const raw = storage?.getItem(storageKey(cityId));
+      const raw = storage2?.getItem(storageKey(cityId));
       const parsed = raw ? JSON.parse(raw) : {};
       return new Map(Object.entries(parsed).filter((e) => typeof e[1] === "number"));
     } catch {
       return /* @__PURE__ */ new Map();
     }
   }
-  function recordEntry(storage, cityId, counts, name) {
+  function recordEntry(storage2, cityId, counts, name) {
     const prior = counts.get(name) ?? 0;
     counts.set(name, prior + 1);
     try {
-      storage?.setItem(storageKey(cityId), JSON.stringify(Object.fromEntries(counts)));
+      storage2?.setItem(storageKey(cityId), JSON.stringify(Object.fromEntries(counts)));
     } catch {
     }
     return prior;

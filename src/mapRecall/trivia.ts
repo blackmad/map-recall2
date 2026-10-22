@@ -1,17 +1,24 @@
 import type { FeatureType, TriviaText } from '../types';
 import { placeKindTier, splitBorrowedHistory, tidyLede } from './answerText';
+import { language } from '../i18n/index.ts';
 
 /** One entry of `street-name-origins.json` (Gemeente Amsterdam BAG register). */
 export interface StreetNameOrigin {
   name: string;
   kind: 'street' | 'water' | 'bridge' | string;
   en?: string;
+  /** The register's own Dutch wording, shown when the interface is Dutch. */
+  nl?: string;
   bagId?: string;
 }
 
 /** One entry of `neighborhood-history.json` (see scripts/fetch-neighborhood-history.ts). */
 export interface PublishedText {
-  en: string; sourceUrl: string; lang: 'en' | 'nl'; original?: string;
+  en: string;
+  /** Dutch wording of the same statement: the source text itself when the
+   *  article was Dutch, or the matching Dutch article's sentence. */
+  nl?: string;
+  sourceUrl: string; lang: 'en' | 'nl'; original?: string;
   /** Set for text composed from data rather than quoted from an article (see scripts/fill-neighborhood-gaps.ts). */
   sourceLabel?: string;
   kind?: 'wikipedia' | 'derived';
@@ -33,6 +40,7 @@ export interface NeighborhoodPhoto { name: string; imageUrl?: string }
 interface TriviaBearing {
   name: string;
   type: FeatureType;
+  wikipediaExtractNl?: string;
   nameOrigin?: TriviaText;
   history?: TriviaText;
   localFact?: TriviaText;
@@ -75,6 +83,7 @@ export function attachNameOrigins<T extends TriviaBearing>(features: readonly T[
       ...feature,
       nameOrigin: {
         text: origin.en,
+        ...(origin.nl ? { textNl: origin.nl } : {}),
         sourceUrl: origin.bagId ? bagRecordUrl(origin.bagId) : 'https://api.data.amsterdam.nl/v1/bag/openbareruimtes/',
         sourceLabel: BAG_SOURCE_LABEL,
       },
@@ -84,7 +93,12 @@ export function attachNameOrigins<T extends TriviaBearing>(features: readonly T[
 
 const label = (text: PublishedText) => text.sourceLabel && text.kind === 'derived' ? text.sourceLabel : text.lang === 'nl' ? 'Wikipedia (translated from Dutch)' : 'Wikipedia';
 const asTrivia = (text: PublishedText | undefined): TriviaText | undefined =>
-  text ? { text: text.en, sourceUrl: text.sourceUrl, sourceLabel: label(text) } : undefined;
+  text ? {
+    text: text.en,
+    ...(text.nl || text.original ? { textNl: text.nl ?? text.original } : {}),
+    sourceUrl: text.sourceUrl,
+    sourceLabel: label(text),
+  } : undefined;
 /**
  * A history may be a canal's or a street's in the area: `borrowedFrom` says whose, and the
  * older "Schinkel (waterway here): " prefix is read the same way, so both forms render alike.
@@ -93,7 +107,16 @@ const asHistory = (text: PublishedText | undefined): TriviaText | undefined => {
   const trivia = asTrivia(text);
   if (!trivia) return undefined;
   const borrowed = splitBorrowedHistory(trivia.text, text?.borrowedFrom);
-  return borrowed.borrowedFrom ? { ...trivia, text: borrowed.text, borrowedFrom: borrowed.borrowedFrom } : trivia;
+  if (!borrowed.borrowedFrom) return trivia;
+  // The Dutch sentence carries the same "Name (kind here): " prefix, so it is
+  // split the same way rather than left with the heading in the body.
+  const dutch = trivia.textNl ? splitBorrowedHistory(trivia.textNl, borrowed.borrowedFrom) : undefined;
+  return {
+    ...trivia,
+    text: borrowed.text,
+    ...(dutch?.text && !dutch.borrowedFrom ? { textNl: dutch.text } : {}),
+    borrowedFrom: borrowed.borrowedFrom,
+  };
 };
 
 /** A neighbourhood's local fact, description, photo, history and name origin, by exact name. */
@@ -117,6 +140,8 @@ export function attachNeighborhoodTrivia<T extends TriviaBearing>(
     return {
       ...feature,
       wikipediaExtract: feature.wikipediaExtract || lede?.text,
+      wikipediaExtractNl: feature.wikipediaExtractNl
+        || (!feature.wikipediaExtract ? (description?.nl ?? description?.original) : undefined),
       wikipediaUrl: feature.wikipediaUrl || (description && description.kind !== 'derived' ? description.sourceUrl : articleUrl),
       wikipediaExtractSource: feature.wikipediaExtract || !description ? feature.wikipediaExtractSource
         : { sourceUrl: description.sourceUrl, sourceLabel: label(description), ...(lede?.borrowedFrom ? { borrowedFrom: lede.borrowedFrom } : {}) },
@@ -262,4 +287,28 @@ export const MAP_DIFFICULTIES: readonly MapDifficulty[] = ['easy', 'medium', 'ha
 /** Landmark and shop clues inside a neighbourhood help on easy and medium; hard drops them. */
 export function placeCluesEnabled(difficulty: MapDifficulty): boolean {
   return difficulty !== 'hard';
+}
+
+/**
+ * The wording a card should print in the interface's language.
+ *
+ * Dutch is used only when the data actually has Dutch: the register's own text,
+ * a Dutch article's sentence, or the reviewed Dutch original. Falling back to
+ * English is deliberate — a sourced English sentence is better than a machine
+ * translation wearing a Dutch label.
+ */
+export function triviaText(value: { text?: string; textNl?: string } | null | undefined): string | undefined {
+  if (!value?.text) return undefined;
+  return language() === 'nl' && value.textNl ? value.textNl : value.text;
+}
+
+/** Whether the card is showing a Dutch source rather than an English fallback. */
+export function triviaIsDutch(value: { text?: string; textNl?: string } | null | undefined): boolean {
+  return language() === 'nl' && !!value?.textNl;
+}
+
+/** A feature's description lede, in the language it can honestly be shown in. */
+export function featureDescription(feature: { wikipediaExtract?: string; wikipediaExtractNl?: string }): string | undefined {
+  if (language() === 'nl' && feature.wikipediaExtractNl) return feature.wikipediaExtractNl;
+  return feature.wikipediaExtract;
 }

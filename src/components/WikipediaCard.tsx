@@ -3,7 +3,7 @@ import { StreetFeature, TriviaText } from '../types';
 import { FACT_KIND_LABELS } from '../canalRecall/facts/factTypes';
 import { neighborhoodFactForRound } from '../mapRecall/neighborhoodStories';
 import { triviaForRound } from '../mapRecall/localFacts';
-import { descriptionWithoutOrigin } from '../mapRecall/trivia';
+import { descriptionWithoutOrigin, featureDescription, triviaText } from '../mapRecall/trivia';
 import { PostcardHeader } from './PostcardHeader';
 import { PostcardExport } from './PostcardExport';
 import { postcardCaptionFor, postcardPhotosFor } from '../mapRecall/postcardPhotos';
@@ -77,8 +77,11 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
   const roundFact = triviaForRound(feature.localFacts, factSeed, roundIndex);
   const facts = roundFact ? [roundFact, ...(feature.localFacts ?? []).filter((fact) => fact !== roundFact)] : [];
   const origin: TriviaText | undefined = feature.nameOrigin;
-  const originText = origin ? withNamedSubject(feature.name, origin.text) : undefined;
-  const description = descriptionWithoutOrigin(feature.wikipediaExtract, origin?.text);
+  // Dutch mode reads the Dutch wording where the data has it; the source line
+  // still names the article, so a card never pretends to be sourced in Dutch.
+  const originBody = triviaText(origin);
+  const originText = originBody ? withNamedSubject(feature.name, originBody) : undefined;
+  const description = descriptionWithoutOrigin(featureDescription(feature), originBody);
   const history = feature.history;
   const localFact = hasStory ? undefined : feature.localFact;
   const where = hints ? whereItIs(hints, feature.name) : undefined;
@@ -123,7 +126,7 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
       {!description && !facts.length && !origin && feature.wikipediaUrl && <Source href={feature.wikipediaUrl}>View photo on Wikipedia</Source>}
       {history && <details open={!hasStory} className="text-xs leading-relaxed text-white" data-testid={hasStory ? 'answer-story-background' : 'answer-history'}>
         <summary className="cursor-pointer font-bold text-white/80">{historyHeading(history.borrowedFrom)}</summary>
-        <p className="mt-1">{history.text}</p>
+        <p className="mt-1">{triviaText(history)}</p>
         <Source href={history.sourceUrl}>{history.sourceLabel}</Source>
       </details>}
       <PlacesHere places={feature.notablePlaces} showPhotos={postcardPhotos.length < 2} />

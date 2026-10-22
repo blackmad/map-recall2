@@ -318,6 +318,7 @@
     "build:canal-ui": "esbuild src/canalRecall/gameUi.ts --bundle --format=iife --global-name=CanalRecallUi --outfile=public/canal-drive/js/game-ui.bundle.js --minify",
     "build:canal-i18n": "esbuild src/i18n/legacy.ts --bundle --format=iife --global-name=CanalI18n --outfile=public/canal-drive/js/i18n.bundle.js --minify",
     "test:canal-i18n": "tsx --test src/i18n/messages.test.ts",
+    "add:dutch-street-origins": "tsx scripts/add-dutch-street-origins.ts",
     "test:mobile-hud": "node --experimental-strip-types scripts/check-mobile-hud.ts",
     "build:signature-landmark-model": "tsx scripts/build-signature-landmark.ts",
     "build:vehicle-models": "blender --background --python scripts/build-omafiets-bike.py -- --out=public/canal-drive/omafiets-runtime.glb && blender --background --python scripts/build-swapfiets-bike.py -- --out=public/canal-drive/swapfiets-runtime.glb",
