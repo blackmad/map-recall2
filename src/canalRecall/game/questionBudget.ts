@@ -41,7 +41,7 @@ export interface QuestionBudgetSettings {
   maxAsksPerMinute: number;
 }
 
-export const DEFAULT_MAX_ASKS_PER_MINUTE = 2;
+export const DEFAULT_MAX_ASKS_PER_MINUTE = 3;
 export const BUDGET_WINDOW_SECONDS = 60;
 
 export interface QuestionBudgetState {

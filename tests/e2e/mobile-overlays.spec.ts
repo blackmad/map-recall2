@@ -274,17 +274,6 @@ test('the phone HUD lays out for the real screen, and pause is a paper card', as
 });
 
 // Named regressions (UI review leftovers, 2026-09-26).
-test('the city field is one 44px tap target', async ({ page }) => {
-  await page.goto('/canal-drive/');
-  const field = page.locator('.setup-city-select');
-  await expect(field).toBeVisible();
-  const fieldBox = (await field.boundingBox())!;
-  const selectBox = (await page.locator('#city-id').boundingBox())!;
-  expect(fieldBox.height).toBeGreaterThanOrEqual(44);
-  expect(selectBox.height, 'the select covers the whole field').toBeGreaterThanOrEqual(fieldBox.height - 2);
-  expect(selectBox.width).toBeGreaterThanOrEqual(fieldBox.width - 2);
-});
-
 test('the knowledge review opens mid-ride and returns to the ride', async ({ page }) => {
   await drive(page);
   await openSettings(page);

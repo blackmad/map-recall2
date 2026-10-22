@@ -205,7 +205,7 @@ test('the questions-per-minute setting reaches the budget and persists', async (
   await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame))).toBe(true);
-  await expect(page.locator('#max-asks-per-minute')).toHaveValue('2');
+  await expect(page.locator('#max-asks-per-minute')).toHaveValue('3');
   for (const [value, expected] of [['1', 1], ['3', 3], ['0', 0]] as const) {
     await page.locator('#max-asks-per-minute').selectOption(value, { force: true });
     const seen = await page.evaluate(() => {

@@ -59,8 +59,14 @@ export const GUEST_ACCOUNT: AccountState = {
 };
 
 export function createOverlayStore(initial: CanalPreferences) {
+  // Amsterdam-only (2026-10-22): the ride has no city picker, and a value
+  // stored before the picker went away must not start another extract.
+  const locked = (prefs: CanalPreferences): CanalPreferences => ({
+    ...prefs,
+    cityId: 'amsterdam',
+  });
   let state: OverlayState = {
-    prefs: initial,
+    prefs: locked(initial),
     setupOpen: true,
     settingsOpen: false,
     knowledgeOpen: false,
@@ -84,11 +90,11 @@ export function createOverlayStore(initial: CanalPreferences) {
       return () => { listeners.delete(listener); };
     },
     replacePrefs(prefs: CanalPreferences): void {
-      state = { ...state, prefs };
+      state = { ...state, prefs: locked(prefs) };
       emit();
     },
     patchPrefs(patch: Partial<CanalPreferences>, zoom: ZoomClamp): void {
-      state = { ...state, prefs: patchLivePreferences(state.prefs, patch, zoom) };
+      state = { ...state, prefs: locked(patchLivePreferences(state.prefs, patch, zoom)) };
       emit();
     },
     setSetupOpen(setupOpen: boolean): void {

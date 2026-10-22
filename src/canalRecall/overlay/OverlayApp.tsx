@@ -11,7 +11,6 @@ import {
   type CanalPreferences,
   type ZoomClamp,
 } from '../game/preferences.ts';
-import { missionBrief } from '../game/missionBrief.ts';
 import { difficultyGloss } from '../game/setupCopy.ts';
 import {
   loadKnowledgeReview,
@@ -196,36 +195,69 @@ function ChoiceRow<T extends string>({
   );
 }
 
-function CitySelect({
-  value,
-  onChange,
-  options,
+/** The ride is Amsterdam-only (2026-10-22): the city picker is gone, and no
+    stored, shared or patched preference may start another extract. */
+const RIDE_CITY = 'amsterdam' as const;
+const RIDE_CITY_NAME = 'Amsterdam';
+
+/** Off-screen controls for the review scripts and Playwright: they drive
+    destinations and tours by id, so the elements stay in the DOM while the
+    setup card itself no longer shows either picker. */
+function AutomationSelects({
+  store,
+  routePois,
+  destinationId,
+  tours,
+  tourId,
 }: {
-  value: CanalPreferences['cityId'];
-  onChange: (value: CanalPreferences['cityId']) => void;
-  options: readonly Choice<CanalPreferences['cityId']>[];
+  store: OverlayStore;
+  routePois: readonly { id: string; name: string }[];
+  destinationId: string;
+  tours: readonly { id: string; title: string }[];
+  tourId: string;
 }) {
   return (
-    <label className="setup-field enamel-field setup-city-select">
-      <span className="setup-choice-label">City</span>
+    <div className="setup-automation-controls">
       <select
         id="city-id"
-        value={value}
-        onChange={event => onChange(event.target.value as CanalPreferences['cityId'])}
-        aria-label="City"
+        hidden
+        value={RIDE_CITY}
+        aria-hidden="true"
+        tabIndex={-1}
       >
-        {options.map(option => (
-          <option key={option.value} value={option.value}>{option.title}</option>
+        <option value={RIDE_CITY}>{RIDE_CITY_NAME}</option>
+      </select>
+      <select
+        id="poi-destination"
+        value={destinationId}
+        aria-label="Destination"
+        aria-hidden="true"
+        tabIndex={-1}
+        onChange={event => store.setDestinationId(event.target.value)}
+      >
+        <option value="">Surprise me</option>
+        {[...routePois].sort((a, b) => a.name.localeCompare(b.name)).map(poi => (
+          <option key={poi.id} value={poi.id}>{poi.name}</option>
         ))}
       </select>
-    </label>
+      {tours.length ? (
+        <select
+          id="tour-picker"
+          value={tourId}
+          aria-label="Tours"
+          aria-hidden="true"
+          tabIndex={-1}
+          onChange={event => store.setTourId(event.target.value)}
+        >
+          <option value="">No tour</option>
+          {tours.map(tour => (
+            <option key={tour.id} value={tour.id}>{tour.title}</option>
+          ))}
+        </select>
+      ) : null}
+    </div>
   );
 }
-
-const CITY_OPTIONS: Choice<CanalPreferences['cityId']>[] = playableCities().map(city => ({
-  value: city.id,
-  title: city.name,
-}));
 
 const TRAVEL: Choice<CanalPreferences['travelMode']>[] = [
   { value: 'boat', title: 'Boat' },
@@ -376,29 +408,6 @@ function homeLearningNote(prefs: CanalPreferences): string {
   } catch {
     return base;
   }
-}
-
-function briefingMission(prefs: CanalPreferences): string {
-  const city = playableCities().find((entry) => entry.id === prefs.cityId);
-  let homeKm = 0;
-  try {
-    const raw = localStorage.getItem(HOME_RADIUS_STORAGE_KEY);
-    if (raw) {
-      const saved = JSON.parse(raw) as { cityId?: string; address?: string; radiusKm?: number };
-      if (saved.cityId === prefs.cityId && saved.address === (prefs.homeAddress || '').trim()) {
-        homeKm = typeof saved.radiusKm === 'number' ? saved.radiusKm : 0;
-      }
-    }
-  } catch { /* ignore */ }
-  const brief = missionBrief({
-    destinationName: prefs.routePattern === 'home' ? 'home' : 'your destination',
-    travelMode: prefs.travelMode === 'boat' ? 'boat'
-      : prefs.travelMode === 'transit' ? 'transit' : 'car',
-    routePattern: prefs.routePattern,
-    cityName: city?.name || 'the city',
-    homeLearningRadiusKm: homeKm,
-  });
-  return brief.tease ? `${brief.line} · ${brief.tease}` : brief.line;
 }
 
 const DIFFICULTY_MAIN: Choice<CanalPreferences['difficulty']>[] = [
@@ -697,8 +706,7 @@ export function OverlayApp({
     () => loadKnowledgeReview(localStorage, knowledgeNow),
     [knowledgeNow],
   );
-  const cityName = CITY_OPTIONS.find(option => option.value === prefs.cityId)?.title
-    || prefs.cityId;
+  const cityName = RIDE_CITY_NAME;
   const setupScroll = useScrollEdges(state.setupOpen);
   const selectedTour = state.tours.find(tour => tour.id === state.tourId) || null;
   const settingsScroll = useScrollEdges(state.settingsOpen);
@@ -790,7 +798,8 @@ export function OverlayApp({
               data-more-below={setupScroll.edges.below ? '' : undefined}
             >
             {/* Hidden selects keep Playwright and any legacy getElementById wiring working.
-                City uses the visible #city-id select below. */}
+                City, destination and tours are in AutomationSelects: off-screen,
+                because the setup card no longer shows them. */}
             <select id="travel-mode" hidden value={prefs.travelMode} onChange={event => patch({ travelMode: event.target.value as CanalPreferences['travelMode'] })}>
               <option value="boat">Boat</option>
               <option value="car">Bike</option>
@@ -818,21 +827,18 @@ export function OverlayApp({
               <option value="custom">Custom</option>
             </select>
 
-            <CitySelect
-              value={prefs.cityId}
-              onChange={value => patch({ cityId: value }, true)}
-              options={CITY_OPTIONS}
+            <AutomationSelects
+              store={store}
+              routePois={state.routePois}
+              destinationId={state.destinationId}
+              tours={state.tours}
+              tourId={state.tourId}
             />
             <ChoiceRow
               label="Travel"
               name="travel"
               value={prefs.travelMode}
-              onChange={value => {
-                const next: Partial<CanalPreferences> = { travelMode: value };
-                // Transit extract is Amsterdam-only for now.
-                if (value === 'transit' && prefs.cityId !== 'amsterdam') next.cityId = 'amsterdam';
-                patch(next, true);
-              }}
+              onChange={value => patch({ travelMode: value }, true)}
               options={TRAVEL}
               icons={TRAVEL_ICONS}
               layout="strip"
@@ -886,33 +892,6 @@ export function OverlayApp({
               keepGloss
             />
 
-            <div className={`setup-pair${state.tours.length ? '' : ' setup-pair-single'}`} style={{ marginTop: 10 }}>
-              <label className="setup-field enamel-field">
-                <span>Destination</span>
-                <select id="poi-destination" value={state.destinationId} disabled={!!state.tourId} onChange={event => store.setDestinationId(event.target.value)}>
-                  <option value="">{state.tourId ? 'Tour stops' : 'Surprise me'}</option>
-                  {[...state.routePois].sort((a, b) => a.name.localeCompare(b.name)).map(poi => (
-                    <option key={poi.id} value={poi.id}>{poi.name}</option>
-                  ))}
-                </select>
-              </label>
-              {state.tours.length ? (
-                <label className="setup-field enamel-field" id="tour-field">
-                  <span>Tours</span>
-                  <select id="tour-picker" value={state.tourId} onChange={event => store.setTourId(event.target.value)}>
-                    <option value="">No tour</option>
-                    {state.tours.map(tour => (
-                      <option key={tour.id} value={tour.id}>{tour.title}</option>
-                    ))}
-                  </select>
-                </label>
-              ) : null}
-            </div>
-            {selectedTour ? (
-              <p id="tour-note" className="setup-choice-gloss keep" role="status">
-                {selectedTour.stopCount} stops by bike, one leg at a time{selectedTour.checked ? ` · ${selectedTour.checked}, shops change` : ''}
-              </p>
-            ) : null}
             <label id="home-address-field" className="setup-field enamel-field" style={{ display: prefs.routePattern === 'home' ? 'flex' : 'none', marginTop: 10 }}>
               HOME ADDRESS
               <input
@@ -1016,9 +995,6 @@ export function OverlayApp({
             </button>
             </div>
             <div className="enamel-setup-footer">
-              <p className="enamel-field-note" id="mission-brief">
-                {selectedTour ? `Ride the ${selectedTour.title} tour stop by stop. Each arrival tells you why it is on the list.` : briefingMission(prefs)}
-              </p>
               <button id="route-start" className="enamel-plaque enamel-framed enamel-start" type="submit">{selectedTour ? 'Start tour' : 'Start route'}</button>
               <div id="route-error" aria-live="polite">{state.routeError}</div>
               <SiteSwitch links={siteLinksHere} current="ride" id="setup-site-switch" />

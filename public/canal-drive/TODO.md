@@ -2708,9 +2708,11 @@ historical issue while defining new work against identified evidence.
 
 
 **11. Other cities: content, not plumbing.**
-Utrecht, Rotterdam and Den Haag are playable from the City row (see HISTORY,
-"Full city selector"), and `other-cities.spec.ts` rides each one. What is
-left is content:
+The ride is locked to Amsterdam (2026-10-22): the setup City row, the
+Destination picker, the Tours picker and the briefing line are gone, and
+`ride-locked-to-amsterdam.spec.ts` checks a stored other-city preference still
+rides Amsterdam. The quiz and card gallery still read the other extracts; what
+is left for them is content:
 - 275 of Utrecht's 380 landmarks have no text, and Rotterdam and Den Haag
   have had no landmark-text pass at all;
 - the teaching data is Amsterdam-only so far: street-name origins, the

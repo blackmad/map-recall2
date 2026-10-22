@@ -220,22 +220,6 @@ test('a tour rides by bike without overwriting the player\'s settings', async ({
   expect(await livePrefs(page)).toEqual({ travelMode: 'boat', routePattern: 'here', cityId: 'amsterdam' });
 });
 
-test('the Tours picker sits beside Destination and lists no stop names', async ({ page }) => {
-  await page.goto('/canal-drive/');
-  const picker = page.locator('#tour-picker');
-  await expect(picker.locator('option')).toHaveCount(9);
-  const options = await picker.locator('option').allTextContents();
-  for (const name of ['Jodenbreestraat', 'Golden Bend', 'Magere Brug', 'Waterlooplein']) {
-    expect(options.join('|')).not.toContain(name);
-  }
-  await picker.selectOption('ice-cream');
-  await expect(page.locator('#tour-note')).toContainText('checked 2026-10-17');
-  await expect(page.locator('#route-start')).toHaveText('Start tour');
-  await expect(page.locator('#poi-destination')).toBeDisabled();
-  await page.locator('#tour-picker').scrollIntoViewIfNeeded();
-  await page.screenshot({ path: shot('tours-picker') });
-});
-
 test('on a phone the five-item site switch fits and Report a problem covers neither it nor Start', async ({ page }) => {
   test.skip(test.info().project.name !== 'iphone', 'phone layout');
   await page.goto('/canal-drive/');

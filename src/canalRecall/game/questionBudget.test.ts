@@ -14,8 +14,8 @@ function ridden(asks: number[]): QuestionBudgetState {
   return { asks };
 }
 
-test('default budget is two asks a minute', () => {
-  assert.equal(resolveSettings().maxAsksPerMinute, 2);
+test('default budget is three asks a minute', () => {
+  assert.equal(resolveSettings().maxAsksPerMinute, 3);
   assert.equal(resolveSettings({ maxAsksPerMinute: -3 }).maxAsksPerMinute, 0);
 });
 
@@ -28,9 +28,9 @@ test('a fresh ride asks the first teaching name', () => {
 });
 
 test('once the minute is spent a new name is revealed after passing, a review stays due', () => {
-  const state = ridden([10, 40]);
-  assert.deepEqual(decideQuestion(state, fresh, 50), { action: 'reveal-after-pass', reason: 'budget' });
-  assert.deepEqual(decideQuestion(state, due, 50), { action: 'skip', reason: 'budget' });
+  const state = ridden([1, 20, 40]);
+  assert.deepEqual(decideQuestion(state, fresh, 55), { action: 'reveal-after-pass', reason: 'budget' });
+  assert.deepEqual(decideQuestion(state, due, 55), { action: 'skip', reason: 'budget' });
 });
 
 test('the window slides: an old ask frees a slot', () => {
@@ -40,18 +40,18 @@ test('the window slides: an old ask frees a slot', () => {
 
 test('asks cannot land back to back', () => {
   const state = ridden([10]);
-  assert.equal(minGapSeconds(resolveSettings()), 15);
-  assert.deepEqual(decideQuestion(state, due, 20), { action: 'skip', reason: 'spacing' });
-  assert.deepEqual(decideQuestion(state, fresh, 20), { action: 'reveal-after-pass', reason: 'spacing' });
-  assert.equal(decideQuestion(state, due, 26).action, 'ask');
+  assert.equal(minGapSeconds(resolveSettings()), 10);
+  assert.deepEqual(decideQuestion(state, due, 19), { action: 'skip', reason: 'spacing' });
+  assert.deepEqual(decideQuestion(state, fresh, 19), { action: 'reveal-after-pass', reason: 'spacing' });
+  assert.equal(decideQuestion(state, due, 21).action, 'ask');
 });
 
 test('the last slot is kept for a review or a teaching street, not a side street', () => {
-  const state = ridden([10]);
-  assert.deepEqual(decideQuestion(state, side, 30), { action: 'reveal-after-pass', reason: 'reserved' });
-  assert.equal(decideQuestion(state, due, 30).action, 'ask');
-  assert.equal(decideQuestion(state, fresh, 30).action, 'ask');
-  // With both slots free a side street may still be asked.
+  const state = ridden([10, 25]);
+  assert.deepEqual(decideQuestion(state, side, 40), { action: 'reveal-after-pass', reason: 'reserved' });
+  assert.equal(decideQuestion(state, due, 40).action, 'ask');
+  assert.equal(decideQuestion(state, fresh, 40).action, 'ask');
+  // With every slot free a side street may still be asked.
   assert.deepEqual(decideQuestion(EMPTY_BUDGET, side, 30), { action: 'ask', priority: 'rest' });
 });
 
@@ -84,6 +84,7 @@ test('asks from an earlier ride (clock restarted) do not count', () => {
 test('a simulated ten-minute ride never exceeds the cap in any rolling minute', () => {
   let state = EMPTY_BUDGET;
   const asked: number[] = [];
+  const cap = resolveSettings().maxAsksPerMinute;
   // A new street every 7 s, a mix of kinds.
   const kinds: NameEvent[] = [fresh, side, due, known, side, fresh];
   for (let t = 0, i = 0; t < 600; t += 7, i++) {
@@ -92,7 +93,8 @@ test('a simulated ten-minute ride never exceeds the cap in any rolling minute', 
   }
   for (let start = 0; start + 60 <= 600; start += 1) {
     const inMinute = asked.filter(at => at >= start && at < start + 60).length;
-    assert.ok(inMinute <= 2, `${inMinute} asks in the minute from ${start}s`);
+    assert.ok(inMinute <= cap, `${inMinute} asks in the minute from ${start}s`);
   }
   assert.ok(asked.length >= 15, `the ride should still ask regularly, asked ${asked.length}`);
 });
+

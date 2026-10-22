@@ -105,7 +105,7 @@ export const LEGACY_ZOOM_DEFAULT = 0.65;
 export const ASK_BUDGETS = [1, 2, 3, 0] as const;
 export type AskBudget = (typeof ASK_BUDGETS)[number];
 /** Mirrors `DEFAULT_MAX_ASKS_PER_MINUTE` in game/questionBudget.ts. */
-export const DEFAULT_ASK_BUDGET: AskBudget = 2;
+export const DEFAULT_ASK_BUDGET: AskBudget = 3;
 
 function parseAskBudget(value: unknown, fallback: AskBudget): AskBudget {
   return ASK_BUDGETS.find(budget => budget === value) ?? fallback;

@@ -48,6 +48,12 @@ class GameRouteRuntime {
     const Prefs = window.CanalRecallPreferences;
     if (!Prefs || !this._overlay) return;
     const prefs = Prefs.readPreferences(localStorage, this._overlayZoom());
+    // Amsterdam-only (2026-10-22): a saved city from before the picker went
+    // away is corrected here, so the stored copy agrees with the ride.
+    if (prefs.cityId !== 'amsterdam') {
+      prefs.cityId = 'amsterdam';
+      Prefs.writePreferences(localStorage, prefs);
+    }
     this._overlay.callbacks.zoom = this._overlayZoom();
     this._overlay.store.replacePrefs(prefs);
     this._pendingSkipMastered = prefs.skipMastered;
@@ -123,7 +129,9 @@ class GameRouteRuntime {
     this.gameyFeatures = prefs.gamey;
     this.camera.reducedMotion = prefs.reducedMotion;
     this.travelMode = prefs.travelMode;
-    this.cityId = prefs.cityId || (window.CanalRecallPreferences && window.CanalRecallPreferences.DEFAULT_CITY_ID) || 'amsterdam';
+    // Amsterdam-only (2026-10-22): the setup card has no city picker, and a
+    // stored or shared city must not start another extract.
+    this.cityId = 'amsterdam';
     // Warm the cache with this city's start files while the setup screen is up.
     if (typeof this._prefetchCityExtracts === 'function') this._prefetchCityExtracts();
     this.controlMode = prefs.controlMode;

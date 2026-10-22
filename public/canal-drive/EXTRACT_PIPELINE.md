@@ -142,8 +142,9 @@ A municipality is not always mapped under the name people call it — The Hague 
 `'s-Gravenhage` in OSM — so the boundary lookup matches `name`, `name:nl`,
 `name:en`, `official_name` or `alt_name`.
 
-The briefing City selector picks among Amsterdam, Utrecht, Rotterdam and Den
-Haag; this command refreshes the data for all four.
+The ride is locked to Amsterdam (2026-10-22): the briefing's City picker is
+gone and saved preferences are corrected to `amsterdam`, but the extractor
+still refreshes Utrecht, Rotterdam and Den Haag for the quiz and card gallery.
 
 ## Adding a city
 

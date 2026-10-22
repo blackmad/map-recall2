@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+## Setup: Amsterdam only, no destination or tour pickers, three questions a minute (2026-10-22)
+
+User: "get rid of the city selector on the main page, lock to Amsterdam", then
+"get rid of destination and tours in there too", "get rid of 'Canal hop to your
+destination · Arrive knowing more of Amsterdam'", and "raise default to 3
+questions per minute".
+
+Route setup now shows Travel, View, Route and Difficulty only. The City row is
+gone and the ride is locked: `createOverlayStore` clamps every replace/patch to
+`cityId: 'amsterdam'`, `_applyPrefsToRuntime` sets `this.cityId = 'amsterdam'`,
+and `_loadPreferences` rewrites a saved other-city preference so the stored copy
+agrees. The Destination and Tours fields and the `#tour-note` line are gone from
+the card, and the mission-brief paragraph under Start is gone from the footer
+(Start reads "Start route" unless a `?tour=` link selected one). Tours still
+start from `?tour=` and still ride Amsterdam.
+
+The three controls stay in the DOM, clipped to a pixel inside
+`.setup-automation-controls` with `aria-hidden` and `tabIndex={-1}`: the
+landmark review scripts and Playwright drive `#poi-destination` and
+`#tour-picker` by id, and `selectOption` needs a laid-out element (`hidden`
+fails actionability). `#city-id` keeps one Amsterdam option. Tests updated:
+`other-cities.spec.ts` became `ride-locked-to-amsterdam.spec.ts` (a stored
+Utrecht preference still rides Amsterdam and no city/destination/tours field or
+briefing line is present), the tours-picker and 44 px city-field regressions
+were removed, and the question-budget default assertion moved to 3.
+
+`DEFAULT_ASK_BUDGET` and `DEFAULT_MAX_ASKS_PER_MINUTE` are 3 (was 2); the
+spacing rule follows the cap (10 s between asks at 3/min), and the budget unit
+tests now derive their expectations from the cap where they used to hard-code
+two. `preferences.bundle.js` and `overlay.bundle.js` were rebuilt and their
+cache-busting query bumped to `20261022a`.
+
 ## Westerkerk aisles and windows, Magna Plaza caps, zebras city-wide (2026-10-17)
 
 User screenshots: gaps in the Westerkerk aisle roofs and weak windows; Magna
