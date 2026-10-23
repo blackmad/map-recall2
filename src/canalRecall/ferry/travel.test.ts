@@ -47,6 +47,15 @@ assert.equal(beginFerryFrame(game({ x: 0, y: 2, angle: -Math.PI / 2 + 0.9 }), wa
 assert.equal(beginFerryFrame(game({ x: 0, y: 2, angle: 0 }), water), false, 'parallel to the quay');
 assert.equal(beginFerryFrame(game({ x: 0, y: 2, angle: Math.PI }), water), false, 'parallel the other way');
 
+// Centraal F3 (feedback 05a7d02a): a quay cycleway passes 1.6 m from the stop
+// and is what the nearest-road lookup returns there. A rider at the stop
+// facing the water boards all the same.
+const quay = game({ x: 2.4, y: 1.5, angle: -Math.PI / 2 + 0.12 });
+quay.track = { ...quay.track, segments: [...segments, { points: [{ x: -90, y: 5 }, { x: 90, y: 5 }], type: 'cycleway', width: 12, name: 'Quay' }],
+  getNearestRoad: () => ({ segIdx: 4 }) };
+assert.equal(beginFerryFrame(quay, water), true, 'boards beside a quay path the nearest-road lookup prefers');
+assert.equal(quay.player.ferryOrigin?.id, 'A');
+
 // Not when backing away from the water, stopped, short of the end, or not cycling.
 assert.equal(beginFerryFrame(game({ x: 0, y: 2, angle: Math.PI / 2 }), water), false, 'facing land');
 assert.equal(beginFerryFrame(game({ x: 0, y: 2, speed: 0 }), water), false, 'stopped');

@@ -28,6 +28,25 @@ export function nearestOnLand(point: Point, segments: readonly Segment[]): Point
   return best;
 }
 
+/**
+ * Around each stop the vessel is still at its pier: a ferry counts as departed
+ * once it is this far out (travel.ts DEPART_RADIUS uses the same 30 m).
+ */
+export const BERTH_RADIUS = 90;
+
+/**
+ * GTFS shapes include the berth manoeuvre, and at Centraal F3 those points run
+ * 27 m west along the pier itself, 1-2 m from its cycleway, before the line
+ * heads out over the IJ. Drawn as the route, that line led riders past the
+ * boarding point to the pier tip, where they stayed on the bike (feedback
+ * 05a7d02a, 2026-10-23). Inside the berth radius the crossing therefore runs
+ * straight from the stop to the first shape point beyond it, which is where
+ * the rider turns towards the water to board.
+ */
+export function outsideBerths(shape: readonly Point[], from: Point, to: Point): Point[] {
+  return shape.filter(p => distance(p, from) > BERTH_RADIUS && distance(p, to) > BERTH_RADIUS);
+}
+
 /** GTFS stop identities refer to physical piers; parent stations would merge
  * the separate Centraal departures and wrongly allow switching services. */
 export function ferrySegments(network: TransitNetwork, land: readonly Segment[], project: (lat: number, lng: number) => Point): Segment[] {
@@ -57,7 +76,7 @@ export function ferrySegments(network: TransitNetwork, land: readonly Segment[],
       const a = nearestIndex(from), b = nearestIndex(to);
       const middle = shape.slice(Math.min(a, b), Math.max(a, b) + 1);
       if (a > b) middle.reverse();
-      const points = [from, ...middle, to];
+      const points = [from, ...outsideBerths(middle, from, to), to];
       const ferryLink = { id: `${line.ref}:${from.id}:${to.id}`, ref: line.ref, from, to, points };
       links.push({ points, type: 'ferry', width: 45, name: '', label: `${line.ref} · ${from.name} – ${to.name}`, ferryLink });
     }
@@ -76,10 +95,20 @@ export function connectFerryGraph<T>(graph: RoadGraph<T>, segments: readonly Seg
     const endpoints = [segment.points[0], segment.points[segment.points.length - 1]];
     const ends = endpoints.map(point => graph.allNodes.reduce<RoadGraphNode<T> | undefined>((best, n) => !best || distance(point, n) < distance(point, best) ? n : best, undefined));
     if (!ends[0] || !ends[1] || ends.some((n, i) => distance(n!, endpoints[i]) > 24)) return;
-    const chain = [ends[0], ...segment.points.slice(1, -1).map((p, i) => {
-      const node: RoadGraphNode<T> = { ...p, key: `ferry:${segmentIndex}:${i}`, edges: [] };
+    const add = (p: Point, key: string): RoadGraphNode<T> => {
+      const node: RoadGraphNode<T> = { x: p.x, y: p.y, key: `ferry:${segmentIndex}:${key}`, edges: [] };
       nodes.set(node.key, node); allNodes.push(node); return node;
-    }), ends[1]];
+    };
+    // The junction grid (mergeSize 18) can fold a short terminal access into
+    // its land node; Centraal F3's 3 m access did, so the planned line left
+    // from the quay and passed 3.1 m from the stop, outside boarding reach.
+    // Route through the stop itself, where boarding happens.
+    const stop = (end: RoadGraphNode<T>, point: Point, key: string) => (distance(end, point) > 0.5 ? [add(point, key)] : []);
+    const chain = [
+      ends[0], ...stop(ends[0], endpoints[0], 'from'),
+      ...segment.points.slice(1, -1).map((p, i) => add(p, String(i))),
+      ...stop(ends[1], endpoints[1], 'to'), ends[1],
+    ];
     const metadata = { segmentIndex, name: '', ferryId: segment.ferryLink.id } as T;
     for (let i = 1; i < chain.length; i++) {
       const a = chain[i - 1]!, b = chain[i]!;
