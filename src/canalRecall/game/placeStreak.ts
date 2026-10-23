@@ -4,6 +4,7 @@
  */
 
 import type { KeyValueStore } from './progressStore';
+import { t } from '../../i18n/index.ts';
 
 export const PLACE_STREAK_STORAGE_KEY = 'canalRecall.placeStreak.v1';
 
@@ -86,6 +87,6 @@ export function clearPlaceStreak(store: KeyValueStore): void {
 
 export function placeStreakLabel(streak: PlaceStreak): string | null {
   if (streak.current <= 0) return null;
-  if (streak.current === 1) return 'First new place today';
-  return `${streak.current}-day place streak`;
+  if (streak.current === 1) return t('finish.streakFirst');
+  return t('finish.streakDays', { count: streak.current });
 }

@@ -54,6 +54,7 @@ import { easeSightline, landmarkSightline, relativeTo, NO_SIGHTLINE, type Sightl
 import { nearestRouteIndex, RADAR_RADIUS_M, radarLocal, radarRadiusForSpeed, RadarMap } from './radar';
 import { gameWorldToLngLat, type GameLoaderFrame } from '../ownMap/frame';
 import { revealOnEnter, utilityVisibility } from './utilityTuck';
+import { t as tr } from '../../i18n/index.ts';
 
 /** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
 interface SafariGestureEvent extends UIEvent { rotation: number; scale: number }
@@ -833,7 +834,7 @@ export class GamePresentationRuntime {
         restrictionNote = bicycleRestrictionNotice({
           bicycleRestricted: 'yes',
           bicycle: segment.bicycle || 'no',
-        }) || 'No cycling in real life';
+        }) || tr('ride.noCycling');
       }
     }
     // The home radius is fixed for the ride and the setup screen already says
@@ -1081,8 +1082,8 @@ export class GamePresentationRuntime {
     const tagline = isTransit(this.travelMode)
       ? 'Ride real tram corridors and name the lines and stops'
       : isCar(this.travelMode)
-        ? 'Navigate the real street network and name each street after you turn'
-        : 'Navigate the real canal network and name each waterway after you turn';
+        ? tr('ride.introStreets')
+        : tr('ride.introCanals');
     ctx.fillText(tagline, cx, 100);
 
     ctx.fillStyle = 'rgba(11,58,140,0.88)';
@@ -1097,7 +1098,7 @@ export class GamePresentationRuntime {
     const rulesX = cx - 290;
     ctx.fillStyle = '#c4a35a';
     ctx.font = 'bold 13px "Barlow Condensed", sans-serif';
-    ctx.fillText('HOW TO PLAY', rulesX, 145);
+    ctx.fillText(tr('ride.rules.title'), rulesX, 145);
     ctx.fillStyle = 'rgba(255,255,255,0.88)';
     ctx.font = '12px system-ui, sans-serif';
     const rules = isTransit(this.travelMode)
@@ -1111,20 +1112,20 @@ export class GamePresentationRuntime {
       ]
       : isCar(this.travelMode)
         ? [
-          '1. Use WASD or the arrow keys to steer the bike',
-          '2. Stay on mapped streets; the road guard keeps you on the network',
-          '3. After entering a differently named street, type its name',
-          '4. Map labels are hidden: navigate from the shape of the city',
-          '5. TAB toggles the overview map; -/+ changes zoom',
-          '6. This is an early prototype — feedback is the point',
+          tr('ride.rules.bike1'),
+          tr('ride.rules.bike2'),
+          tr('ride.rules.bike3'),
+          tr('ride.rules.labels'),
+          tr('ride.rules.map'),
+          tr('ride.rules.prototype'),
         ]
         : [
-          '1. Use WASD or the arrow keys to steer the boat',
-          '2. The boat slows dramatically when it leaves mapped water',
-          '3. After entering a differently named waterway, type its name',
-          '4. Map labels are hidden: navigate from the shape of the city',
-          '5. TAB toggles the overview map; -/+ changes zoom',
-          '6. This is an early prototype — feedback is the point',
+          tr('ride.rules.boat1'),
+          tr('ride.rules.boat2'),
+          tr('ride.rules.boat3'),
+          tr('ride.rules.labels'),
+          tr('ride.rules.map'),
+          tr('ride.rules.prototype'),
         ];
     rules.forEach((line, index) => ctx.fillText(line, rulesX, 165 + index * 18));
 
@@ -1132,8 +1133,8 @@ export class GamePresentationRuntime {
     ctx.font = '11px system-ui, sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText(this.input.isMobile
-      ? 'Left side: Steer    Right side: Gas/Brake    Double-tap: Drift'
-      : 'Arrow Keys / WASD - Drive    SPACE - Drift    TAB - Map    -/+ Zoom', cx, 298);
+      ? tr('ride.hint.touch')
+      : tr('ride.hint.keys'), cx, 298);
 
     ctx.fillStyle = 'rgba(255,255,255,0.9)';
     ctx.font = 'bold 22px "Barlow Condensed", sans-serif';
@@ -1291,7 +1292,7 @@ export class GamePresentationRuntime {
       actions.push({
         id: 'copy',
         key: 'C',
-        caption: this._copiedTimer > 0 ? 'Link copied' : 'Share this route',
+        caption: this._copiedTimer > 0 ? tr('ride.linkCopied') : tr('ride.shareRoute'),
       });
     }
 
@@ -1331,7 +1332,7 @@ export class GamePresentationRuntime {
           ctx.lineWidth = 1;
           ctx.stroke();
         }
-        ctx.fillStyle = primary ? '#1f1c17' : (action.caption === 'Link copied' ? GOOD : INK);
+        ctx.fillStyle = primary ? '#1f1c17' : (action.id === 'copy' && this._copiedTimer > 0 ? GOOD : INK);
         ctx.font = '700 14px system-ui, sans-serif';
         ctx.fillText(action.caption, bounds.x + bounds.w / 2, y + 28);
         pauseButtons.push({ ...bounds, id: action.id });
@@ -1350,7 +1351,7 @@ export class GamePresentationRuntime {
         ctx.fillText(action.key, ax + 7, y + 16);
         const captionX = ax + keyW + 8;
         ctx.font = '12px system-ui, sans-serif';
-        ctx.fillStyle = action.caption === 'Link copied' ? GOOD : MUTED;
+        ctx.fillStyle = action.id === 'copy' && this._copiedTimer > 0 ? GOOD : MUTED;
         ctx.fillText(action.caption, captionX, y + 16);
         const captionW = ctx.measureText(action.caption).width;
         pauseButtons.push({
@@ -1595,10 +1596,10 @@ export class GamePresentationRuntime {
           ctx.fillText('CITY KNOWLEDGE', cardX + padX, top + 12);
           ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
           if (knowledgeStacked) {
-            ctx.fillText(totals.join('  ·  ') || 'Start exploring', cardX + padX, top + 30);
+            ctx.fillText(totals.join('  ·  ') || tr('ride.startExploring'), cardX + padX, top + 30);
           } else {
             ctx.textAlign = 'right';
-            ctx.fillText(totals.join('  ·  ') || 'Start exploring', cardX + cardW - padX, top + 12);
+            ctx.fillText(totals.join('  ·  ') || tr('ride.startExploring'), cardX + cardW - padX, top + 12);
           }
           let y = top + (knowledgeStacked ? 48 : 30);
           if (fresh.length) {
@@ -1656,14 +1657,14 @@ export class GamePresentationRuntime {
       const actions: FinishAction[] = [
         // Say what happens: 'again' deals another route with these settings,
         // 'route' goes back to setup. "Continue" / "Finish" said neither.
-        { id: 'again', key: 'ENTER', caption: tour && !tour.completed ? 'Next stop' : 'Next route' },
+        { id: 'again', key: 'ENTER', caption: tour && !tour.completed ? tr('ride.nextStop') : tr('ride.nextRoute') },
       ];
       // Route setup on both layouts: a tap target on the phone, M on desktop,
       // the same key as the pause menu. Escape stays unbound here (user
       // request 2026-09-28); desktop lacked the action (clarity review 14).
       actions.push({ id: 'route', key: compact ? '' : 'M', caption: 'Route setup' });
       if (this._shareUrl) {
-        actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? 'Link copied' : 'Share this route' });
+        actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? tr('ride.linkCopied') : tr('ride.shareRoute') });
       }
       const BUTTON_H = 44, BUTTON_GAP = 8;
       // A short phone pairs the secondary actions on one row rather than

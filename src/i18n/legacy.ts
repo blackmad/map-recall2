@@ -61,16 +61,30 @@ export function localizeDom(root: ParentNode | null = typeof document === 'undef
   }
 }
 
+/**
+ * The feedback launcher is appended by `js/feedback/browser.js`, which is a
+ * built file of its own. Relabelling it here keeps its words in step without
+ * rebuilding that bundle.
+ */
+function localizeFeedbackLaunchers(): void {
+  if (typeof document === 'undefined') return;
+  for (const button of Array.from(document.querySelectorAll('.cf-launch'))) {
+    button.textContent = t('feedback.reportProblem');
+  }
+}
+
 let domInstalled = false;
 
 /** Wire the document: set `<html lang>`, translate marked nodes, keep both in step. */
 export function installDocumentLanguage(): void {
   applyDocumentLanguage();
   localizeDom();
+  localizeFeedbackLaunchers();
   if (!domInstalled) {
     domInstalled = true;
     subscribe(() => {
       localizeDom();
+      localizeFeedbackLaunchers();
       if (typeof document !== 'undefined') {
         document.documentElement?.setAttribute('lang', language());
       }

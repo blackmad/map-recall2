@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { preparePostcard } from '../mapRecall/livePostcard';
 import outlineFontUrl from '../mapRecall/fonts/Anton-Regular.ttf?url';
+import { useT } from '../i18n/useT';
 
 /** The saved card's size: twice the on-screen postcard (640 × 400). */
 export const POSTCARD_EXPORT_WIDTH = 1280;
@@ -155,6 +156,7 @@ export const PostcardExport: React.FC<{
   photos: string[];
   className?: string;
 }> = ({ name, cityName, photos, className }) => {
+  const t = useT();
   const [available, setAvailable] = useState(false);
   const [status, setStatus] = useState<Status>('idle');
   const key = `${name}|${cityName ?? ''}|${photos.join('|')}`;
@@ -191,6 +193,6 @@ export const PostcardExport: React.FC<{
     <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M3 13h10" />
     </svg>
-    {status === 'saving' ? 'Saving…' : status === 'error' ? 'Could not save, try again' : 'Save postcard'}
+    {status === 'saving' ? t('postcard.saving') : status === 'error' ? t('postcard.saveError') : t('postcard.save')}
   </button>;
 };

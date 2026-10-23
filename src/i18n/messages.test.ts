@@ -41,7 +41,7 @@ test('only deliberate cognates remain identical in Dutch', () => {
   const allowed = new Set([
     'Route', 'Scores', 'Zoom', 'Zoom {percent}%',
     'Start route', 'Start tour',
-    'EN', 'NL', 'English', 'Nederlands', 'Cockpit', 'Expert', 'Cartoon', 'Tours', 'Tour', 'min', 'Water', 'In {context}', 'Hint', 'Bonus', 'Account', 'Quiz', 'Map Recall', '{km} km radius', 'Landmark', 'Park',
+    'EN', 'NL', 'English', 'Nederlands', 'Cockpit', 'Expert', 'Cartoon', 'Tours', 'Tour', 'min', 'Water', 'In {context}', 'Hint', 'Bonus', '{count} landmark', '{count} landmarks', 'Wikipedia ↗', 'Account', 'Quiz', 'Map Recall', '{km} km radius', 'Landmark', 'Park',
   ]);
   const suspicious = untranslatedKeys().filter((key) => !allowed.has(en[key]));
   assert.deepEqual(suspicious, []);

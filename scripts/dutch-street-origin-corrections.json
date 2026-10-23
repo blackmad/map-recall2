@@ -3,23 +3,11 @@
  "reviewedAt": "2026-10-22",
  "policy": "The Dutch column of a card shows the register sentence only when the register text is sound. Rows the error register marks as withheld, a fragment, a repair, a replacement or a factual correction keep English: showing a known-wrong Dutch sentence in Dutch mode is worse than showing the corrected English one. A name listed here is verified again by scripts/add-dutch-street-origins.ts.",
  "withheldNl": {
-  "Dirk van Hasseltssteeg": {
-   "handling": "Replaced by a sourced supplement (Wikipedia)."
-  },
-  "Eilandsgracht": {
-   "handling": "Replaced by a sourced supplement (Wikipedia)."
-  },
   "Elim": {
    "handling": "Replaced by a sourced supplement (Wikipedia)."
   },
   "Enneüs Heermabrug": {
    "handling": "Repaired: joined with the next row's text."
-  },
-  "Enny Vredestraat": {
-   "handling": "Replaced by a sourced supplement (Wikipedia)."
-  },
-  "Gerrie Mührenbrug": {
-   "handling": "Replaced by a sourced supplement (Wikipedia)."
   },
   "H. Diesveldsingel": {
    "handling": "The text opens \"De naam is foutief gespeld\": the man was Diesveldt."
@@ -30,22 +18,10 @@
   "Jaap Kunstbrug": {
    "handling": "Repaired: joined with the next two rows' text."
   },
-  "Jaap Nunes Vazstraat": {
-   "handling": "Replaced by a sourced supplement (Wikipedia)."
-  },
-  "Jaap Speyerstraat": {
-   "handling": "Replaced by a sourced supplement (Wikipedia)."
-  },
-  "Kinkerstraat": {
-   "handling": "Sourced supplement from Wikipedia."
-  },
   "Na Druk Gelukbrug": {
    "handling": "Replaced by a sourced supplement (nl.wikipedia, Olympisch Kwartier)."
   },
   "Piet Kranenbergpad": {
-   "handling": "Replaced by a sourced supplement (Wikipedia)."
-  },
-  "Piet Wiedijkstraat": {
    "handling": "Replaced by a sourced supplement (Wikipedia)."
   },
   "Scharwouderstraat": {
@@ -1248,6 +1224,38 @@
   "Piet Meerburgbrug": {
    "nl": "Deze brug is vernoemd naar Piet Meerburg, die in 1919 geboren werd in De Bilt en in 2010 in Amsterdam overleed. Hij was in de Tweede Wereldoorlog betrokken bij het redden van Joodse kinderen, waarvoor hij de Yad Vashem onderscheiding kreeg. Een van die kinderen was de latere burgemeester Ed van Thijn. Hij was tevens een prominente theaterondernemer in Amsterdam. Zo was hij jarenlang directeur van het Nieuwe de la Mar theater en produceerde hij de musical My Fair Lady. Hij redde tijdens de Duitse bezetting samen met onder meer Lau Mazirel en Walter Süskind veel volwassenen en kinderen uit de Hollandse Schouwburg en de daar tegenover gelegen crèche. Ook was hij één van de oprichters van de nabijgelegen bioscoop Kriterion, die door studenten van de Universiteit van Amsterdam geëxploiteerd wordt.",
    "source": "BAG openbareruimtes, Meerburg-paragraaf die onder de Hamerstraat stond"
+  },
+  "Dirk van Hasseltssteeg": {
+   "nl": "De steeg is vernoemd naar schipper Dirk van Hasselt. Uit archiefstukken blijkt dat Van Hasselt zelf ook een hoekpand bezat in deze steeg. Onder de panden 2 tot en met 6 liggen funderingsresten, mogelijk van het 13e-eeuwse kasteel van de heren van Amstel.",
+   "source": "https://nl.wikipedia.org/wiki/Dirk_van_Hasseltssteeg"
+  },
+  "Eilandsgracht": {
+   "nl": "De Eilandsgracht is een gracht in Amsterdam tussen de eilanden en het vasteland. Oorspronkelijk liep hij tussen het vasteland en twee van de eilanden, het Prinseneiland en het Bickerseiland. In 1928 werd het gedeelte langs het Bickerseiland gedempt.",
+   "source": "https://nl.wikipedia.org/wiki/Eilandsgracht"
+  },
+  "Enny Vredestraat": {
+   "nl": "Enny Vrede, artiestennaam van Maria Magdalena Müller (Utrecht, 3 november 1883 - 2 april 1919), was een Nederlandse actrice.",
+   "source": "https://nl.wikipedia.org/wiki/Enny_Vrede"
+  },
+  "Gerrie Mührenbrug": {
+   "nl": "Gerrie Mühren (Volendam, 2 februari 1946 - aldaar, 19 september 2013) was een Nederlands voetballer. Hij kwam in zijn 22-jarige loopbaan uit voor Volendam, Ajax, Real Betis, MVV, Seiko SA en DS '79. Met Ajax won hij drie keer de Europa Cup I en werd driemaal landskampioen. Hij speelde tien interlands voor het Nederlands elftal.",
+   "source": "https://nl.wikipedia.org/wiki/Gerrie_M%C3%BChren"
+  },
+  "Jaap Nunes Vazstraat": {
+   "nl": "Jacob (Jaap) Nunes Vaz (Amsterdam, 20 september 1906 - Sobibór, 13 maart 1943) was een Nederlandse journalist van Joodse afkomst. Hij was een van de oprichters van de verzetskrant Het Parool.",
+   "source": "https://nl.wikipedia.org/wiki/Jaap_Nunes_Vaz"
+  },
+  "Jaap Speyerstraat": {
+   "nl": "Jaap Speyer (Amsterdam, 29 november 1891 - Amsterdam, 17 september 1952) was een Nederlands filmregisseur.",
+   "source": "https://nl.wikipedia.org/wiki/Jaap_Speyer"
+  },
+  "Kinkerstraat": {
+   "nl": "Johannes Kinker (Nieuwer-Amstel, 1 januari 1764 - Amsterdam, 16 september 1845) was een Nederlands dichter, filosoof en advocaat.",
+   "source": "https://nl.wikipedia.org/wiki/Johannes_Kinker"
+  },
+  "Piet Wiedijkstraat": {
+   "nl": "Straat en park zijn genoemd naar de apotheker en publicist Piet Wiedijk (overleden 1938), die onder het pseudoniem J. Saks de eerste biografie van Multatuli schreef.",
+   "source": "https://nl.wikipedia.org/wiki/Piet_Wiedijkpark"
   }
  }
 }

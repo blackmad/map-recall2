@@ -151,127 +151,6 @@
     };
   }
 
-  // src/canalRecall/game/placeStreak.ts
-  var PLACE_STREAK_STORAGE_KEY = "canalRecall.placeStreak.v1";
-  function emptyPlaceStreak() {
-    return { days: [], current: 0, best: 0 };
-  }
-  function utcDayKey(now = Date.now()) {
-    return new Date(now).toISOString().slice(0, 10);
-  }
-  function dayOffset(key, delta) {
-    const date = /* @__PURE__ */ new Date(`${key}T12:00:00.000Z`);
-    date.setUTCDate(date.getUTCDate() + delta);
-    return date.toISOString().slice(0, 10);
-  }
-  function recompute(days) {
-    const unique = [...new Set(days)].sort();
-    if (unique.length === 0) return emptyPlaceStreak();
-    const today = utcDayKey();
-    const yesterday = dayOffset(today, -1);
-    let current2 = 0;
-    let cursor = unique.includes(today) ? today : unique.includes(yesterday) ? yesterday : "";
-    while (cursor && unique.includes(cursor)) {
-      current2 += 1;
-      cursor = dayOffset(cursor, -1);
-    }
-    let best = current2;
-    let run = 1;
-    for (let i = 1; i < unique.length; i++) {
-      if (unique[i] === dayOffset(unique[i - 1], 1)) run += 1;
-      else run = 1;
-      if (run > best) best = run;
-    }
-    return { days: unique.slice(-90), current: current2, best: Math.max(best, current2) };
-  }
-  function readPlaceStreak(store) {
-    try {
-      const raw = store.getItem(PLACE_STREAK_STORAGE_KEY);
-      if (!raw) return emptyPlaceStreak();
-      const parsed = JSON.parse(raw);
-      return recompute(Array.isArray(parsed.days) ? parsed.days.map(String) : []);
-    } catch {
-      return emptyPlaceStreak();
-    }
-  }
-  function notePlaceDay(store, now = Date.now()) {
-    const day = utcDayKey(now);
-    const prior = readPlaceStreak(store);
-    if (prior.days.includes(day)) return prior;
-    const next = recompute([...prior.days, day]);
-    try {
-      store.setItem(PLACE_STREAK_STORAGE_KEY, JSON.stringify(next));
-    } catch {
-    }
-    return next;
-  }
-  function placeStreakLabel(streak) {
-    if (streak.current <= 0) return null;
-    if (streak.current === 1) return "First new place today";
-    return `${streak.current}-day place streak`;
-  }
-
-  // src/canalRecall/game/neighborhoodPassport.ts
-  var PASSPORT_STORAGE_KEY = "canalRecall.neighborhoodPassport.v1";
-  var PASSPORT_MIN_NAMES = 8;
-  function emptyPassport() {
-    return { stamped: [] };
-  }
-  function readPassport(store) {
-    try {
-      const raw = store.getItem(PASSPORT_STORAGE_KEY);
-      if (!raw) return emptyPassport();
-      const parsed = JSON.parse(raw);
-      return { stamped: Array.isArray(parsed.stamped) ? parsed.stamped.map(String) : [] };
-    } catch {
-      return emptyPassport();
-    }
-  }
-  function savePassport(store, passport) {
-    try {
-      store.setItem(PASSPORT_STORAGE_KEY, JSON.stringify(passport));
-    } catch {
-    }
-  }
-  function stampNewNeighborhoods(exploration, visitedThisRoute, prior, minNames = PASSPORT_MIN_NAMES) {
-    const known = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
-    if (known < minNames) return { passport: prior, fresh: [] };
-    const stamped = new Set(prior.stamped);
-    const fresh = [];
-    for (const hood of visitedThisRoute) {
-      if (!hood || stamped.has(hood)) continue;
-      if (!exploration.visitedNeighborhoods.includes(hood)) continue;
-      stamped.add(hood);
-      fresh.push(hood);
-    }
-    return { passport: { stamped: [...stamped].sort() }, fresh };
-  }
-
-  // src/canalRecall/game/finishStory.ts
-  function finishStory(input) {
-    const { gain, destinationName, cityName, newPassportStamps, placeStreak } = input;
-    const dest = destinationName || "your destination";
-    const bits = [];
-    if (gain.newNames > 0) bits.push(`${gain.newNames} new name${gain.newNames === 1 ? "" : "s"}`);
-    if (gain.newNeighborhoods > 0) {
-      bits.push(`${gain.newNeighborhoods} new neighborhood${gain.newNeighborhoods === 1 ? "" : "s"}`);
-    }
-    if (gain.newLandmarks > 0) {
-      bits.push(`${gain.newLandmarks} landmark${gain.newLandmarks === 1 ? "" : "s"}`);
-    }
-    let headline;
-    if (bits.length) {
-      headline = `You made it to ${dest} \xB7 ${bits.join(", ")}`;
-    } else {
-      headline = `Arrived at ${dest}`;
-    }
-    const detail = bits.length ? `That knowledge sticks on your ${cityName} map.` : "A clean ride \u2014 review something overdue next time.";
-    const passport = newPassportStamps.length ? `Passport: ${newPassportStamps.slice(0, 3).join(", ")}${newPassportStamps.length > 3 ? "\u2026" : ""}` : null;
-    const streak = placeStreakLabel(placeStreak);
-    const guestTease = !input.signedIn && input.recallAvailable ? "#account.guestNote" : null;
-    return { headline, detail, passport, streak, guestTease };
-  }
-
   // src/i18n/messages/en.ts
   var en = {
     // --- Language switch ------------------------------------------------------
@@ -796,7 +675,90 @@
     "site.quiz": "Quiz",
     "site.progress": "Progress",
     "site.buildings": "Buildings",
-    "site.label": "Map Recall"
+    "site.label": "Map Recall",
+    "settings.quizTitle": "Quiz & Map Configuration",
+    "settings.locationScope": "Location Quiz Scope",
+    "settings.neighborhoodScope": "Neighbourhood (~2.2 km)",
+    "settings.neighborhoodScopeBody": "A walkable set of streets, canals and landmarks around you.",
+    "settings.regionScope": "Region (~15 km)",
+    "settings.regionScopeBody": "Uses the county or province returned for your position.",
+    "settings.cityScope": "Whole City (~4.5 km)",
+    "settings.cityScopeBody": "Encompasses major city canals, bridges, plazas, and citywide landmarks.",
+    "settings.boundary": "Administrative Boundary",
+    "settings.boundaryBody": "Use an exact OpenStreetMap political boundary, or switch back to the custom radius.",
+    "settings.boundaryAdminLevel": "{name} \u2014 admin level {level}",
+    "settings.radius": "Search Radius",
+    "settings.radiusBody": "Administrative scope chooses the place name; radius controls the actual circular OSM query independently.",
+    "settings.importantWaters": "Important canals & waters first",
+    "settings.blankMap": "Label-less Base Map (Default)",
+    "settings.blankMapBody": "Hides text labels on map tiles; the quiz is about names, not reading them off the map.",
+    "settings.mapTheme": "Map Style Theme",
+    "settings.units": "Distance Units",
+    "settings.unitsBody": "Metric (m / km) or Imperial (ft / mi)",
+    "settings.difficulty": "Difficulty",
+    "settings.difficultyBody": "Hard hides the landmark and shop clues inside a neighbourhood",
+    "settings.rounds": "Rounds per Quiz",
+    "settings.roundsBody": "Number of street features per session",
+    "settings.cache": "Offline Feature Cache",
+    "settings.cacheBody": "Caches queried neighbourhoods, street geometry, and clues locally to provide instant load times and reduce network requests.",
+    "settings.cacheCount": "{features} cached places across {entries} area queries",
+    "settings.clearCache": "Clear Cache",
+    "settings.clearCacheConfirm": "Clear all cached map features? Locations will be re-fetched on demand.",
+    "settings.apply": "Apply & Continue",
+    "auth.createAccount": "Create account",
+    "auth.signIn": "Sign in",
+    "auth.email": "Email",
+    "auth.password": "Password",
+    "auth.pleaseWait": "Please wait\u2026",
+    "auth.haveAccount": "Already have an account? Sign in",
+    "auth.newHere": "New here? Create an account",
+    "auth.couldNotSignIn": "Could not sign in.",
+    "postcard.saving": "Saving\u2026",
+    "postcard.saveError": "Could not save, try again",
+    "postcard.save": "Save postcard",
+    "feedback.reportProblem": "Report a problem",
+    "ride.hint.keys": "Arrow Keys / WASD - Drive    SPACE - Drift    TAB - Map    -/+ Zoom",
+    "ride.hint.touch": "Left side: Steer    Right side: Gas/Brake    Double-tap: Drift",
+    "ride.introStreets": "Navigate the real street network and name each street after you turn",
+    "ride.introCanals": "Navigate the real canal network and name each waterway after you turn",
+    "ride.introTransit": "Ride real tram corridors and name the lines and stops",
+    "ride.nextRoute": "Next route",
+    "ride.nextStop": "Next stop",
+    "ride.routeSetup": "Route setup",
+    "ride.shareRoute": "Share this route",
+    "ride.linkCopied": "Link copied",
+    "ride.startExploring": "Start exploring",
+    "ride.noCycling": "No cycling in real life",
+    "ride.wikipediaLink": "Wikipedia \u2197",
+    "ride.researchSource": "Research source \u2197",
+    "ride.rules.title": "HOW TO PLAY",
+    "ride.rules.bike1": "1. Use WASD or the arrow keys to steer the bike",
+    "ride.rules.bike2": "2. Stay on mapped streets; the road guard keeps you on the network",
+    "ride.rules.bike3": "3. After entering a differently named street, name it",
+    "ride.rules.boat1": "1. Use WASD or the arrow keys to steer the boat",
+    "ride.rules.boat2": "2. The boat slows dramatically when it leaves mapped water",
+    "ride.rules.boat3": "3. After entering a differently named waterway, name it",
+    "ride.rules.transit1": "1. Follow the mapped corridor toward the destination",
+    "ride.rules.transit2": "2. Stops and line names are the questions here",
+    "ride.rules.transit3": "3. After entering a differently named line, name it",
+    "ride.rules.labels": "4. Map labels are hidden: navigate from the shape of the city",
+    "ride.rules.map": "5. TAB toggles the overview map; -/+ changes zoom",
+    "ride.rules.prototype": "6. This is an early prototype \u2014 feedback is the point",
+    "finish.destination": "your destination",
+    "finish.newNames.one": "{count} new name",
+    "finish.newNames.other": "{count} new names",
+    "finish.newNeighborhoods.one": "{count} new neighbourhood",
+    "finish.newNeighborhoods.other": "{count} new neighbourhoods",
+    "finish.newLandmarks.one": "{count} landmark",
+    "finish.newLandmarks.other": "{count} landmarks",
+    "finish.arrivedWith": "You made it to {destination} \xB7 {bits}",
+    "finish.arrived": "Arrived at {destination}",
+    "finish.sticks": "That knowledge sticks on your {city} map.",
+    "finish.cleanRide": "A clean ride \u2014 review something overdue next time.",
+    "finish.passport": "Passport: {stamps}",
+    "finish.youKnow": "You know {name}",
+    "finish.streakFirst": "First new place today",
+    "finish.streakDays": "{count}-day place streak"
   };
 
   // src/i18n/messages/nl.ts
@@ -1323,7 +1285,90 @@
     "site.quiz": "Quiz",
     "site.progress": "Voortgang",
     "site.buildings": "Gebouwen",
-    "site.label": "Map Recall"
+    "site.label": "Map Recall",
+    "settings.quizTitle": "Quiz- en kaartinstellingen",
+    "settings.locationScope": "Gebied voor de quiz",
+    "settings.neighborhoodScope": "Buurt (~2,2 km)",
+    "settings.neighborhoodScopeBody": "Een beloopbare set straten, grachten en landmarks om je heen.",
+    "settings.regionScope": "Regio (~15 km)",
+    "settings.regionScopeBody": "Gebruikt de provincie of regio die bij je positie hoort.",
+    "settings.cityScope": "Hele stad (~4,5 km)",
+    "settings.cityScopeBody": "Omvat de grote grachten, bruggen, pleinen en landmarks van de stad.",
+    "settings.boundary": "Bestuurlijke grens",
+    "settings.boundaryBody": "Gebruik een exacte OpenStreetMap-grens, of ga terug naar de eigen radius.",
+    "settings.boundaryAdminLevel": "{name} \u2014 bestuursniveau {level}",
+    "settings.radius": "Zoekradius",
+    "settings.radiusBody": "Het gebiedsniveau kiest de plaatsnaam; de radius bepaalt los daarvan de cirkelvormige OSM-zoekopdracht.",
+    "settings.importantWaters": "Belangrijke grachten en wateren eerst",
+    "settings.blankMap": "Kaart zonder labels (standaard)",
+    "settings.blankMapBody": "Verbergt tekstlabels op de kaarttegels; de quiz gaat over namen, niet over ze van de kaart lezen.",
+    "settings.mapTheme": "Kaartstijl",
+    "settings.units": "Afstandseenheden",
+    "settings.unitsBody": "Metrisch (m / km) of imperiaal (ft / mi)",
+    "settings.difficulty": "Moeilijkheid",
+    "settings.difficultyBody": "Moeilijk verbergt de hints over landmarks en winkels in een buurt",
+    "settings.rounds": "Rondes per quiz",
+    "settings.roundsBody": "Aantal straatonderdelen per sessie",
+    "settings.cache": "Offline cache",
+    "settings.cacheBody": "Bewaart opgevraagde buurten, straatgeometrie en hints lokaal, zodat alles direct laadt en er minder netwerkverkeer nodig is.",
+    "settings.cacheCount": "{features} plekken in cache over {entries} zoekopdrachten",
+    "settings.clearCache": "Cache wissen",
+    "settings.clearCacheConfirm": "Alle gecachte kaartonderdelen wissen? Ze worden zo nodig opnieuw opgehaald.",
+    "settings.apply": "Toepassen en verder",
+    "auth.createAccount": "Account aanmaken",
+    "auth.signIn": "Inloggen",
+    "auth.email": "E-mail",
+    "auth.password": "Wachtwoord",
+    "auth.pleaseWait": "Even geduld\u2026",
+    "auth.haveAccount": "Heb je al een account? Log in",
+    "auth.newHere": "Nieuw hier? Maak een account aan",
+    "auth.couldNotSignIn": "Inloggen is niet gelukt.",
+    "postcard.saving": "Opslaan\u2026",
+    "postcard.saveError": "Opslaan mislukte, probeer opnieuw",
+    "postcard.save": "Postkaart opslaan",
+    "feedback.reportProblem": "Meld een probleem",
+    "ride.hint.keys": "Pijltjes / WASD - Rijden    SPATIE - Driften    TAB - Kaart    -/+ Zoom",
+    "ride.hint.touch": "Links: Sturen    Rechts: Gas/Rem    Dubbeltik: Driften",
+    "ride.introStreets": "Rijd door het echte stratennetwerk en benoem elke straat na de bocht",
+    "ride.introCanals": "Rijd door het echte grachtennetwerk en benoem elke waterweg na de bocht",
+    "ride.introTransit": "Rijd echte tramcorridors en benoem de lijnen en haltes",
+    "ride.nextRoute": "Volgende route",
+    "ride.nextStop": "Volgende stop",
+    "ride.routeSetup": "Route instellen",
+    "ride.shareRoute": "Deel deze route",
+    "ride.linkCopied": "Link gekopieerd",
+    "ride.startExploring": "Begin met verkennen",
+    "ride.noCycling": "Geen fietsen in het echt",
+    "ride.wikipediaLink": "Wikipedia \u2197",
+    "ride.researchSource": "Bron \u2197",
+    "ride.rules.title": "HOE SPEEL JE",
+    "ride.rules.bike1": "1. Stuur de fiets met WASD of de pijltjestoetsen",
+    "ride.rules.bike2": "2. Blijf op gemapte straten; de wegbeveiliging houdt je op het netwerk",
+    "ride.rules.bike3": "3. Sla je een anders genoemde straat in, benoem die dan",
+    "ride.rules.boat1": "1. Stuur de boot met WASD of de pijltjestoetsen",
+    "ride.rules.boat2": "2. De boot vertraagt sterk zodra hij gemapt water verlaat",
+    "ride.rules.boat3": "3. Vaar je een anders genoemde waterweg in, benoem die dan",
+    "ride.rules.transit1": "1. Volg de gemapte corridor richting de bestemming",
+    "ride.rules.transit2": "2. Haltes en lijnnamen zijn hier de vragen",
+    "ride.rules.transit3": "3. Stap je over op een anders genoemde lijn, benoem die dan",
+    "ride.rules.labels": "4. Kaartlabels zijn verborgen: navigeer op de vorm van de stad",
+    "ride.rules.map": "5. TAB wisselt de overzichtskaart; -/+ verandert de zoom",
+    "ride.rules.prototype": "6. Dit is een vroeg prototype \u2014 feedback is het doel",
+    "finish.destination": "je bestemming",
+    "finish.newNames.one": "{count} nieuwe naam",
+    "finish.newNames.other": "{count} nieuwe namen",
+    "finish.newNeighborhoods.one": "{count} nieuwe buurt",
+    "finish.newNeighborhoods.other": "{count} nieuwe buurten",
+    "finish.newLandmarks.one": "{count} landmark",
+    "finish.newLandmarks.other": "{count} landmarks",
+    "finish.arrivedWith": "Je bent bij {destination} \xB7 {bits}",
+    "finish.arrived": "Aangekomen bij {destination}",
+    "finish.sticks": "Die kennis blijft hangen op je kaart van {city}.",
+    "finish.cleanRide": "Een schone rit \u2014 herhaal de volgende keer iets dat te laat is.",
+    "finish.passport": "Paspoort: {stamps}",
+    "finish.youKnow": "Je kent {name}",
+    "finish.streakFirst": "Eerste nieuwe plek vandaag",
+    "finish.streakDays": "{count} dagen op rij nieuwe plekken"
   };
 
   // src/i18n/language.ts
@@ -1388,6 +1433,119 @@
       return String(key);
     }
     return fill(template, params);
+  }
+
+  // src/canalRecall/game/placeStreak.ts
+  var PLACE_STREAK_STORAGE_KEY = "canalRecall.placeStreak.v1";
+  function emptyPlaceStreak() {
+    return { days: [], current: 0, best: 0 };
+  }
+  function utcDayKey(now = Date.now()) {
+    return new Date(now).toISOString().slice(0, 10);
+  }
+  function dayOffset(key, delta) {
+    const date = /* @__PURE__ */ new Date(`${key}T12:00:00.000Z`);
+    date.setUTCDate(date.getUTCDate() + delta);
+    return date.toISOString().slice(0, 10);
+  }
+  function recompute(days) {
+    const unique = [...new Set(days)].sort();
+    if (unique.length === 0) return emptyPlaceStreak();
+    const today = utcDayKey();
+    const yesterday = dayOffset(today, -1);
+    let current2 = 0;
+    let cursor = unique.includes(today) ? today : unique.includes(yesterday) ? yesterday : "";
+    while (cursor && unique.includes(cursor)) {
+      current2 += 1;
+      cursor = dayOffset(cursor, -1);
+    }
+    let best = current2;
+    let run = 1;
+    for (let i = 1; i < unique.length; i++) {
+      if (unique[i] === dayOffset(unique[i - 1], 1)) run += 1;
+      else run = 1;
+      if (run > best) best = run;
+    }
+    return { days: unique.slice(-90), current: current2, best: Math.max(best, current2) };
+  }
+  function readPlaceStreak(store) {
+    try {
+      const raw = store.getItem(PLACE_STREAK_STORAGE_KEY);
+      if (!raw) return emptyPlaceStreak();
+      const parsed = JSON.parse(raw);
+      return recompute(Array.isArray(parsed.days) ? parsed.days.map(String) : []);
+    } catch {
+      return emptyPlaceStreak();
+    }
+  }
+  function notePlaceDay(store, now = Date.now()) {
+    const day = utcDayKey(now);
+    const prior = readPlaceStreak(store);
+    if (prior.days.includes(day)) return prior;
+    const next = recompute([...prior.days, day]);
+    try {
+      store.setItem(PLACE_STREAK_STORAGE_KEY, JSON.stringify(next));
+    } catch {
+    }
+    return next;
+  }
+  function placeStreakLabel(streak) {
+    if (streak.current <= 0) return null;
+    if (streak.current === 1) return t("finish.streakFirst");
+    return t("finish.streakDays", { count: streak.current });
+  }
+
+  // src/canalRecall/game/neighborhoodPassport.ts
+  var PASSPORT_STORAGE_KEY = "canalRecall.neighborhoodPassport.v1";
+  var PASSPORT_MIN_NAMES = 8;
+  function emptyPassport() {
+    return { stamped: [] };
+  }
+  function readPassport(store) {
+    try {
+      const raw = store.getItem(PASSPORT_STORAGE_KEY);
+      if (!raw) return emptyPassport();
+      const parsed = JSON.parse(raw);
+      return { stamped: Array.isArray(parsed.stamped) ? parsed.stamped.map(String) : [] };
+    } catch {
+      return emptyPassport();
+    }
+  }
+  function savePassport(store, passport) {
+    try {
+      store.setItem(PASSPORT_STORAGE_KEY, JSON.stringify(passport));
+    } catch {
+    }
+  }
+  function stampNewNeighborhoods(exploration, visitedThisRoute, prior, minNames = PASSPORT_MIN_NAMES) {
+    const known = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
+    if (known < minNames) return { passport: prior, fresh: [] };
+    const stamped = new Set(prior.stamped);
+    const fresh = [];
+    for (const hood of visitedThisRoute) {
+      if (!hood || stamped.has(hood)) continue;
+      if (!exploration.visitedNeighborhoods.includes(hood)) continue;
+      stamped.add(hood);
+      fresh.push(hood);
+    }
+    return { passport: { stamped: [...stamped].sort() }, fresh };
+  }
+
+  // src/canalRecall/game/finishStory.ts
+  function finishStory(input) {
+    const { gain, destinationName, cityName, newPassportStamps, placeStreak } = input;
+    const dest = destinationName || t("finish.destination");
+    const bits = [];
+    const count = (one, other, value) => bits.push(t(value === 1 ? one : other, { count: value }));
+    if (gain.newNames > 0) count("finish.newNames.one", "finish.newNames.other", gain.newNames);
+    if (gain.newNeighborhoods > 0) count("finish.newNeighborhoods.one", "finish.newNeighborhoods.other", gain.newNeighborhoods);
+    if (gain.newLandmarks > 0) count("finish.newLandmarks.one", "finish.newLandmarks.other", gain.newLandmarks);
+    const headline = bits.length ? t("finish.arrivedWith", { destination: dest, bits: bits.join(", ") }) : t("finish.arrived", { destination: dest });
+    const detail = bits.length ? t("finish.sticks", { city: cityName }) : t("finish.cleanRide");
+    const passport = newPassportStamps.length ? t("finish.passport", { stamps: `${newPassportStamps.slice(0, 3).join(", ")}${newPassportStamps.length > 3 ? "\u2026" : ""}` }) : null;
+    const streak = placeStreakLabel(placeStreak);
+    const guestTease = !input.signedIn && input.recallAvailable ? t("account.guestNote") : null;
+    return { headline, detail, passport, streak, guestTease };
   }
 
   // src/canalRecall/game/missionBrief.ts
@@ -6575,7 +6733,7 @@
           restrictionNote = bicycleRestrictionNotice({
             bicycleRestricted: "yes",
             bicycle: segment.bicycle || "no"
-          }) || "No cycling in real life";
+          }) || t("ride.noCycling");
         }
       }
       const homeLearningNote = this.routePattern === "home" && this.viewport.mode === "compact" && Number.isFinite(this._homeLearningRadiusKm) && this._homeLearningRadiusKm > 0 ? `Learning near home \xB7 ~${this._homeLearningRadiusKm.toFixed(1)} km` : "";
@@ -6799,7 +6957,7 @@
       ctx.textAlign = "center";
       ctx.fillStyle = "rgba(255,255,255,0.72)";
       ctx.font = "14px system-ui, sans-serif";
-      const tagline = isTransit(this.travelMode) ? "Ride real tram corridors and name the lines and stops" : isCar(this.travelMode) ? "Navigate the real street network and name each street after you turn" : "Navigate the real canal network and name each waterway after you turn";
+      const tagline = isTransit(this.travelMode) ? "Ride real tram corridors and name the lines and stops" : isCar(this.travelMode) ? t("ride.introStreets") : t("ride.introCanals");
       ctx.fillText(tagline, cx, 100);
       ctx.fillStyle = "rgba(11,58,140,0.88)";
       roundRect(ctx, cx - 320, 120, 640, 160, 10);
@@ -6812,7 +6970,7 @@
       const rulesX = cx - 290;
       ctx.fillStyle = "#c4a35a";
       ctx.font = 'bold 13px "Barlow Condensed", sans-serif';
-      ctx.fillText("HOW TO PLAY", rulesX, 145);
+      ctx.fillText(t("ride.rules.title"), rulesX, 145);
       ctx.fillStyle = "rgba(255,255,255,0.88)";
       ctx.font = "12px system-ui, sans-serif";
       const rules = isTransit(this.travelMode) ? [
@@ -6823,25 +6981,25 @@
         "5. TAB toggles the overview map; -/+ changes zoom",
         "6. Transit: tram + metro; change lines at hubs"
       ] : isCar(this.travelMode) ? [
-        "1. Use WASD or the arrow keys to steer the bike",
-        "2. Stay on mapped streets; the road guard keeps you on the network",
-        "3. After entering a differently named street, type its name",
-        "4. Map labels are hidden: navigate from the shape of the city",
-        "5. TAB toggles the overview map; -/+ changes zoom",
-        "6. This is an early prototype \u2014 feedback is the point"
+        t("ride.rules.bike1"),
+        t("ride.rules.bike2"),
+        t("ride.rules.bike3"),
+        t("ride.rules.labels"),
+        t("ride.rules.map"),
+        t("ride.rules.prototype")
       ] : [
-        "1. Use WASD or the arrow keys to steer the boat",
-        "2. The boat slows dramatically when it leaves mapped water",
-        "3. After entering a differently named waterway, type its name",
-        "4. Map labels are hidden: navigate from the shape of the city",
-        "5. TAB toggles the overview map; -/+ changes zoom",
-        "6. This is an early prototype \u2014 feedback is the point"
+        t("ride.rules.boat1"),
+        t("ride.rules.boat2"),
+        t("ride.rules.boat3"),
+        t("ride.rules.labels"),
+        t("ride.rules.map"),
+        t("ride.rules.prototype")
       ];
       rules.forEach((line, index) => ctx.fillText(line, rulesX, 165 + index * 18));
       ctx.fillStyle = "rgba(255,255,255,0.45)";
       ctx.font = "11px system-ui, sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText(this.input.isMobile ? "Left side: Steer    Right side: Gas/Brake    Double-tap: Drift" : "Arrow Keys / WASD - Drive    SPACE - Drift    TAB - Map    -/+ Zoom", cx, 298);
+      ctx.fillText(this.input.isMobile ? t("ride.hint.touch") : t("ride.hint.keys"), cx, 298);
       ctx.fillStyle = "rgba(255,255,255,0.9)";
       ctx.font = 'bold 22px "Barlow Condensed", sans-serif';
       ctx.fillText(this.input.isMobile ? "TAP TO START" : "PRESS ENTER TO START", cx, CANVAS_H / 2 + 55);
@@ -6982,7 +7140,7 @@
         actions.push({
           id: "copy",
           key: "C",
-          caption: this._copiedTimer > 0 ? "Link copied" : "Share this route"
+          caption: this._copiedTimer > 0 ? t("ride.linkCopied") : t("ride.shareRoute")
         });
       }
       const BUTTON_H = 44;
@@ -7012,7 +7170,7 @@
             ctx.lineWidth = 1;
             ctx.stroke();
           }
-          ctx.fillStyle = primary ? "#1f1c17" : action.caption === "Link copied" ? GOOD : INK;
+          ctx.fillStyle = primary ? "#1f1c17" : action.id === "copy" && this._copiedTimer > 0 ? GOOD : INK;
           ctx.font = "700 14px system-ui, sans-serif";
           ctx.fillText(action.caption, bounds.x + bounds.w / 2, y + 28);
           pauseButtons.push({ ...bounds, id: action.id });
@@ -7031,7 +7189,7 @@
           ctx.fillText(action.key, ax + 7, y + 16);
           const captionX = ax + keyW + 8;
           ctx.font = "12px system-ui, sans-serif";
-          ctx.fillStyle = action.caption === "Link copied" ? GOOD : MUTED;
+          ctx.fillStyle = action.id === "copy" && this._copiedTimer > 0 ? GOOD : MUTED;
           ctx.fillText(action.caption, captionX, y + 16);
           const captionW = ctx.measureText(action.caption).width;
           pauseButtons.push({
@@ -7249,10 +7407,10 @@
             ctx.fillStyle = BODY;
             ctx.font = "12px system-ui, sans-serif";
             if (knowledgeStacked) {
-              ctx.fillText(totals.join("  \xB7  ") || "Start exploring", cardX + padX, top + 30);
+              ctx.fillText(totals.join("  \xB7  ") || t("ride.startExploring"), cardX + padX, top + 30);
             } else {
               ctx.textAlign = "right";
-              ctx.fillText(totals.join("  \xB7  ") || "Start exploring", cardX + cardW - padX, top + 12);
+              ctx.fillText(totals.join("  \xB7  ") || t("ride.startExploring"), cardX + cardW - padX, top + 12);
             }
             let y2 = top + (knowledgeStacked ? 48 : 30);
             if (fresh.length) {
@@ -7300,11 +7458,11 @@
         const actions = [
           // Say what happens: 'again' deals another route with these settings,
           // 'route' goes back to setup. "Continue" / "Finish" said neither.
-          { id: "again", key: "ENTER", caption: tour && !tour.completed ? "Next stop" : "Next route" }
+          { id: "again", key: "ENTER", caption: tour && !tour.completed ? t("ride.nextStop") : t("ride.nextRoute") }
         ];
         actions.push({ id: "route", key: compact ? "" : "M", caption: "Route setup" });
         if (this._shareUrl) {
-          actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? "Link copied" : "Share this route" });
+          actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? t("ride.linkCopied") : t("ride.shareRoute") });
         }
         const BUTTON_H = 44, BUTTON_GAP = 8;
         const pairSecondary = compact && level2 >= 2 && actions.length === 3;

@@ -5,6 +5,7 @@
 import type { ExplorationGain } from './progressStore';
 import type { PlaceStreak } from './placeStreak';
 import { placeStreakLabel } from './placeStreak';
+import { t } from '../../i18n/index.ts';
 
 export interface FinishStoryInput {
   gain: ExplorationGain;
@@ -27,35 +28,31 @@ export interface FinishStory {
 
 export function finishStory(input: FinishStoryInput): FinishStory {
   const { gain, destinationName, cityName, newPassportStamps, placeStreak } = input;
-  const dest = destinationName || 'your destination';
+  const dest = destinationName || t('finish.destination');
   const bits: string[] = [];
-  if (gain.newNames > 0) bits.push(`${gain.newNames} new name${gain.newNames === 1 ? '' : 's'}`);
-  if (gain.newNeighborhoods > 0) {
-    bits.push(`${gain.newNeighborhoods} new neighborhood${gain.newNeighborhoods === 1 ? '' : 's'}`);
-  }
-  if (gain.newLandmarks > 0) {
-    bits.push(`${gain.newLandmarks} landmark${gain.newLandmarks === 1 ? '' : 's'}`);
-  }
+  const count = (one: 'finish.newNames.one' | 'finish.newNeighborhoods.one' | 'finish.newLandmarks.one',
+    other: 'finish.newNames.other' | 'finish.newNeighborhoods.other' | 'finish.newLandmarks.other',
+    value: number) => bits.push(t(value === 1 ? one : other, { count: value }));
+  if (gain.newNames > 0) count('finish.newNames.one', 'finish.newNames.other', gain.newNames);
+  if (gain.newNeighborhoods > 0) count('finish.newNeighborhoods.one', 'finish.newNeighborhoods.other', gain.newNeighborhoods);
+  if (gain.newLandmarks > 0) count('finish.newLandmarks.one', 'finish.newLandmarks.other', gain.newLandmarks);
 
-  let headline: string;
-  if (bits.length) {
-    headline = `You made it to ${dest} · ${bits.join(', ')}`;
-  } else {
-    headline = `Arrived at ${dest}`;
-  }
+  const headline = bits.length
+    ? t('finish.arrivedWith', { destination: dest, bits: bits.join(', ') })
+    : t('finish.arrived', { destination: dest });
 
   const detail = bits.length
-    ? `That knowledge sticks on your ${cityName} map.`
-    : 'A clean ride — review something overdue next time.';
+    ? t('finish.sticks', { city: cityName })
+    : t('finish.cleanRide');
 
   const passport = newPassportStamps.length
-    ? `Passport: ${newPassportStamps.slice(0, 3).join(', ')}${newPassportStamps.length > 3 ? '…' : ''}`
+    ? t('finish.passport', { stamps: `${newPassportStamps.slice(0, 3).join(', ')}${newPassportStamps.length > 3 ? '…' : ''}` })
     : null;
 
   const streak = placeStreakLabel(placeStreak);
 
   const guestTease = !input.signedIn && input.recallAvailable
-    ? '#account.guestNote'
+    ? t('account.guestNote')
     : null;
 
   return { headline, detail, passport, streak, guestTease };
@@ -64,5 +61,5 @@ export function finishStory(input: FinishStoryInput): FinishStory {
 /** Quiet HUD wink when re-entering a mastered stretch (name already known). */
 export function knowThisCornerFeedback(name: string): string {
   const short = name.length > 28 ? `${name.slice(0, 26)}…` : name;
-  return `You know ${short}`;
+  return t('finish.youKnow', { name: short });
 }

@@ -52,6 +52,7 @@ import type { BridgeRegisterFile } from '../bridgeRegister';
 import { cardCollapsed, foldedCardLine, FOLDED_BODY_LINES } from './teachingPacer';
 import { loadEntryCounts, postcardForLull, postcardOnEntry, recordEntry } from './postcardPacing';
 import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
+import { t as tr } from '../../i18n/index.ts';
 import {
   buildCorridorStreetIndex,
   distanceToPath,
@@ -736,7 +737,7 @@ export class GameLandmarkRuntime {
     const link = panel.querySelector('#landmark-panel-link') as HTMLAnchorElement;
     if (lm.wikipediaUrl || lm.sourceUrl) {
       link.href = lm.wikipediaUrl || lm.sourceUrl!;
-      link.textContent = lm.wikipediaUrl ? 'Wikipedia ↗' : 'Research source ↗';
+      link.textContent = lm.wikipediaUrl ? tr('ride.wikipediaLink') : tr('ride.researchSource');
       link.hidden = false;
     } else {
       link.removeAttribute('href');
@@ -756,7 +757,7 @@ export class GameLandmarkRuntime {
     research.hidden = !researchUrl || researchUrl === (lm.wikipediaUrl || lm.sourceUrl);
     if (researchUrl) research.href = researchUrl;
     else research.removeAttribute('href');
-    research.textContent = 'Research source ↗';
+    research.textContent = tr('ride.researchSource');
 
     (panel.querySelector('#landmark-panel-scroll') as HTMLElement).scrollTop = 0;
     this._toggleUtilityPanel(panel);

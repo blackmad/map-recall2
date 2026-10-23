@@ -50,7 +50,7 @@ The Dutch column of a card is never a machine translation of the English. It is
 used only when the data carries Dutch, and English is the fallback:
 
 - Street, water and bridge name origins: the BAG register's own sentence
-  (`nl` in `street-name-origins.json`, 5,381 of 5,429 names; 22 withheld as
+  (`nl` in `street-name-origins.json`, 5,389 of 5,429 names; 14 withheld as
   documented register errors, 26 without a cached Dutch source).
 - Neighbourhood description, history, name origin and local fact: `nl` in
   `neighborhood-history.json`, from the Dutch article or the reviewed Dutch
@@ -93,13 +93,17 @@ commands. Do not hand-edit the published JSON.
 - The 795 facts without Dutch evidence (English Wikipedia, data-composed text)
   show in English. A later pass can mine Dutch articles for them, but that is a
   sourcing job, not a translation one.
-- Quiz settings/danger modals, the debug places modal, the postcard export and
-  the feedback launch button are still English.
-- The 22 withheld rows are the sourced supplements (whose cited Dutch article
-  has only a one-line summary, so writing a Dutch card from it would be
-  invention), four register texts filed under the wrong name, and names that are
-  not in the extract. They keep the corrected English card; 26 names have no
-  cached Dutch at all.
+- The debug places modal (a developer tool) is still English; everything a
+  player sees on the ride and the quiz now follows the language.
+- The withheld rows that are in the extract are `Elim`, `Hamerstraat`,
+  `Na Druk Gelukbrug`, `Piet Kranenbergpad` (no Dutch article that states the
+  fact), four register texts filed under the wrong name (`Bickersgracht`,
+  `Nieuwe Vaart`, `Enneüs Heermabrug`, `Jaap Kunstbrug`), and `H. Diesveldsingel`
+  (kept Dutch, see below). They show the corrected English card with an English
+  source line; 26 names have no cached Dutch at all.
+- Two of the sourced supplements now have Dutch from their own article
+  (`Piet Wiedijkstraat`, and the eight person/place cards listed in
+  `nlOverrides`), because the Dutch article states the fact directly.
 - The published `street-name-origins.json` is ~2.2 MB (was ~1.3 MB) because it
   now carries both languages. It is fetched after the ride starts; split it into
   a lazily loaded sidecar if that ever matters.
