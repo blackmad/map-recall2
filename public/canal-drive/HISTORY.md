@@ -1,5 +1,38 @@
 # Canal Recall — what is built
 
+## Phones render fewer pixels, and a lost GPU now says why (2026-10-23)
+
+Follow-up to the dead-GPU guard. Measured on the production ride with a Pixel 5
+profile (Chromium, counting resident GL objects, not upload traffic): the setup
+screen holds 11 MB of textures and 10 MB of buffers, a started ride settles at
+47 MB of textures and 90 MB of buffers with a 150–210 MB JS heap, and it
+plateaus at about 20 s — the moment the "crashes after ~20 s" reports describe.
+MapLibre's logged failure was earlier (a dead GPU process at ~5 s, before the
+heavy content), so these are two different events: the first is a driver /
+GPU-process failure that can only be tolerated, the second is memory pressure.
+
+Three phone budgets, each with an override for A/B shots:
+- `pixelRatio` on coarse pointers goes 1.5 → 1.25 (`?dpr=`). On a 390×844 phone
+  that is −31% pixels in the drawing buffer, its MSAA and the fill rate.
+- MSAA is off when `navigator.deviceMemory` reports ≤3 GB (`?msaa=0/1`):
+  Android's low-memory killer is where phone GPU processes usually go.
+- Resident z14 building tiles go 12 → 9 on touch (`?tileBudget=`; exposed as
+  `status().budget`). The 3D city chunks are per tile, so this is the main
+  geometry lever behind the 90 MB of in-ride buffers.
+
+And the missing evidence: `mapGuard` now reports `webglcontextlost` as its own
+one-shot Sentry warning even when no shader threw, carrying the GPU renderer and
+vendor, `performance.memory.usedJSHeapSize`, `navigator.deviceMemory`,
+`hardwareConcurrency`, the canvas CSS/backing sizes and the drawing buffer. The
+next phone crash will say whether it was the GPU process or memory, and on
+which hardware. Before this the only options were a shader throw or silence.
+
+Verified: `npm run test:map-guard` (7 tests), `tsc`, and Playwright on the local
+ride — backing ratio 1.249 by default (`?dpr=1.5` still 1.499), one context-loss
+report with the full payload after two events, `status().budget` 9 — and the
+explorer still wraps its map. The DPR/MSAA changes still need a real
+iPhone/Android pass before they can be called done.
+
 ## The land stops poking through the grass (2026-10-23)
 
 Follow-up to the Rembrandtplein cut: beige specks inside the lawns were the bare
@@ -14,6 +47,42 @@ Vondelpark cell with land above the fill: 355 over 2 cm and 144 over 5 cm
 before, 6 and 1 after; p99 7.0 cm → 0.1 cm. Triangles cost 1–10 % (crests pay).
 Regression test on the streamed Vondelpark cell; the ground-places shots gained
 the Blauwe Theehuis.
+
+## A dead GPU no longer floods the ride with shader errors (2026-10-23)
+
+Sentry CANAL-RECALL-1 (`Error: Could not compile fragment shader: `, 7 events,
+1–2 devices over six days) was not a shader bug. The empty info log is the
+signature of a dead GPU process: every GL query answers 0/false and
+`isContextLost()` only flips a moment later. MapLibre 5.24.0 reads
+`COMPILE_STATUS` straight after `compileShader` and throws from
+`Painter.useProgram` inside the animation frame; because a failed program is
+never cached, it rebuilds and throws the same error every frame. The Android
+event logged 94 of them in 20 s, on both the ride raster layer and (on a
+different release) the `explore` map. Both affected devices were low-end/older
+Android (Firefox Mobile 158 on Android 17; Chrome Mobile 155 on Android 10),
+which is consistent with the GPU process dying under memory pressure rather
+than with anything in our style.
+
+Upstream #8607 describes the same failure and was fixed in maplibre-gl 6.13.0
+(#8633): link first, and treat a failed link with zero attached shaders as a
+context loss instead of throwing. We still pin 5.24.0 (the last 5.x, April
+2026), and 6.x is ESM-only with `map.transform` removed, so a bump is a
+migration rather than a version change. `src/canalRecall/mapGuard.ts` therefore
+applies the 6.13 rule around `map._render` now: only empty-log compile/link
+errors are swallowed, drawing pauses for 2 s so `webglcontextlost` can arrive,
+the loop retries once, one Sentry message carries `RENDERER`/`VENDOR`/
+`isContextLost`, and a reload notice appears if the GPU never returns. Errors
+with a real GLSL log still throw. The ride (`vector-map.js`) and the explorer
+(`explorer/browser.ts`) install it; `monitoring.ts` also drops empty-log shader
+errors from Sentry as a backstop for unguarded demo pages.
+
+Verified: `npm run test:map-guard` (dead-GPU signature, real-log errors,
+single report, frame hold and retry) and Playwright against the local ride and
+explore pages — both maps wrap `_render`, a simulated `webglcontextlost` shows
+the notice after 8 s, `webglcontextrestored` clears it, and neither page logs a
+page error. The tab crash itself is the GPU process dying; this stops the
+error storm and lets MapLibre's own loss/restore path run, but it does not make
+a broken GPU render. Migrate to ≥6.13 or finish the drop-MapLibre lane (TODO).
 
 ## The ride's errors finally point at TypeScript (2026-10-23)
 

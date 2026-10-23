@@ -146,6 +146,21 @@ export const STYLE_BUDGET_MS = 5;
 /** Half-size of a look-ahead area: enough to touch the next z14 tile (about 1.5 km) a little early. */
 const LOOK_AHEAD_HALF_M = 150;
 
+/**
+ * Resident z14 tiles: 12 on desktop, 9 on touch (2026-10-23). At street level
+ * the viewport covers one tile; the rest is route look-ahead. The 3D city
+ * chunks are per tile, so this is the main geometry-memory lever on phones.
+ * `?tileBudget=N` overrides it for before/after measurement.
+ */
+function residentTileBudget(): number {
+  if (typeof window === 'undefined') return 12;
+  try {
+    const asked = Number(new URLSearchParams(window.location.search).get('tileBudget'));
+    if (Number.isFinite(asked) && asked >= 4) return Math.min(asked, 24);
+  } catch (_) { /* no window */ }
+  return window.matchMedia?.('(pointer: coarse)')?.matches ? 9 : 12;
+}
+
 export class BuildingTileStreamer {
   /** Which published tile set this streamer reads; 'bag-tiles' only after a successful bag probe under `?bagTiles=1`. */
   private tileDir: TileSetDir = 'building-tiles';
@@ -185,6 +200,9 @@ export class BuildingTileStreamer {
     private readonly baseUrl: string,
     private readonly zoom = BUILDING_TILE_ZOOM
   ) {}
+
+  /** Resident z14 tile budget; 9 on touch, 12 on desktop (see residentTileBudget). */
+  private readonly tileBudget = residentTileBudget();
 
   /**
    * Is the complete city published? Resolves false when it is not, and the
@@ -430,7 +448,7 @@ export class BuildingTileStreamer {
     // The LoD1 city is the gap-free fallback beneath optional detail. At game
     // zoom the viewport itself covers every required z14 tile; a neighbour
     // ring only multiplies residency during low-pitch clearance adjustments.
-    const plan = planTilesAhead(this.preloadBounds ?? this.bounds(), this.preloadBounds ? [] : this.lookAhead, this.cache.heldKeys, { zoom: this.zoom, margin: 0, budget: 12 });
+    const plan = planTilesAhead(this.preloadBounds ?? this.bounds(), this.preloadBounds ? [] : this.lookAhead, this.cache.heldKeys, { zoom: this.zoom, margin: 0, budget: this.tileBudget });
     const wantedKeys = new Set(plan.wanted);
 
     let changed = false;
@@ -690,10 +708,11 @@ export class BuildingTileStreamer {
   private sampleCache:{list:BuildingFeature[];version:number;limit:number;out:BuildingFeature[]}|null=null;
   private styleVersion=0;
 
-  status(): { tiles: number; features: number; styledFeatures:number; contextualFeatures:number; contextualGrounds:number; contextualRoofs:number; inFlight: number; available: boolean; queued: number } {
+  status(): { tiles: number; budget: number; features: number; styledFeatures:number; contextualFeatures:number; contextualGrounds:number; contextualRoofs:number; inFlight: number; available: boolean; queued: number } {
     this.refreshCounts();
     return {
       tiles: this.cache.size,
+      budget: this.tileBudget,
       features: this.cache.collection().features.length,
       styledFeatures:this.styledFeatures,contextualFeatures:this.contextualFeatures,contextualGrounds:this.contextualGrounds,contextualRoofs:this.contextualRoofs,
       inFlight: this.inFlight,

@@ -54,6 +54,30 @@ function canalRecallLookFlag(param, global, fallback) {
   return fallback;
 }
 
+// Phone GPU budget (2026-10-23). A started ride holds ~47 MB of textures and
+// ~90 MB of buffers on top of ~200 MB of heap; the old 1.5x cap rendered 1.44x
+// the pixels a 1.25x cap needs on a 390x844 phone. `?dpr=` overrides for
+// before/after shots.
+const PHONE_PIXEL_RATIO = 1.25;
+function canalRecallPixelRatio() {
+  const coarse = window.matchMedia('(pointer: coarse)').matches;
+  const dpr = window.devicePixelRatio || 1;
+  let cap = coarse ? PHONE_PIXEL_RATIO : dpr;
+  try {
+    const asked = Number(new URLSearchParams(window.location.search).get('dpr'));
+    if (Number.isFinite(asked) && asked > 0) cap = asked;
+  } catch (_) { /* no window */ }
+  return Math.min(dpr, cap);
+}
+
+// MSAA costs a second full-size colour buffer (and bandwidth) on phones.
+// Keep it unless the device reports <=3 GB of RAM; `?msaa=0/1` overrides.
+function canalRecallAntialias() {
+  const memory = Number(typeof navigator === 'undefined' ? NaN : navigator.deviceMemory);
+  const fallback = !(Number.isFinite(memory) && memory > 0 && memory <= 3);
+  return canalRecallLookFlag('msaa', '__canalRecallMsaa', fallback);
+}
+
 // `?buildings3d=1` (procedural cells), `=cartoon` or `=photo` (the rendering
 // spike's bay drawings). window.__canalRecallBuildings3d takes the same values.
 function canalRecallBuildings3dLook() {
@@ -155,15 +179,19 @@ class VectorBasemap {
     this.map = new maplibregl.Map({
       container,
       // Native Three.js layers share this context; MSAA must be requested here.
-      canvasContextAttributes: { antialias: true },
+      canvasContextAttributes: { antialias: canalRecallAntialias() },
       style: 'https://tiles.openfreemap.org/styles/liberty',
       center: [4.9041, 52.3676],
       zoom: 17,
       interactive: false,
-      pixelRatio: window.matchMedia('(pointer: coarse)').matches ? Math.min(window.devicePixelRatio || 1, 1.5) : window.devicePixelRatio || 1,
+      pixelRatio: canalRecallPixelRatio(),
       attributionControl: false,
       fadeDuration: 0
     });
+    // MapLibre 5 throws from the render loop when the GPU process dies mid-shader
+    // (empty info log). Hold a frame, report once and offer a reload instead of
+    // rebuilding the same program every frame until the tab dies.
+    if (window.CanalMapGuard) window.CanalMapGuard.guardMapRender(this.map);
 
     this.map.on('load', () => {
       this._hideLabels();

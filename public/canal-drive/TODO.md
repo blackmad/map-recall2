@@ -2857,6 +2857,21 @@ Not milestones — standing obligations with live guards.
   fragments.
 - Keep `npm run check:map-recall` green (lint, Map Recall unit tests, trivia,
   postcard and neighbourhood text/story checks) alongside `check:canal`.
+- P2: The phone GPU budget (2026-10-23) is measured only on desktop Chromium
+  with a Pixel 5 profile: coarse-pointer DPR 1.25 (`?dpr=`), MSAA off at
+  ≤3 GB (`?msaa=`), 9 resident z14 building tiles (`?tileBudget=`,
+  `status().budget`). Run the ride on a real iPhone and a low-end Android,
+  check the reload notice and the `webglcontextlost` diagnostics in Sentry,
+  then accept or tune the visual tradeoff.
+- P2: MapLibre stays on 5.24.0 (last 5.x, April 2026) only because 6.x is a
+  migration: ESM-only distribution, `map.transform` removed (used by
+  `labels/labelOverlay.ts`), style-spec 25 and a changed
+  `zoomLevelsToOverscale` default that shifts `queryRenderedFeatures`. 5.x has
+  no fix for upstream #8607 (a dead GPU throws `Could not compile fragment
+  shader: ` every frame); `src/canalRecall/mapGuard.ts` is the stopgap until we
+  either migrate to ≥6.13.0 or finish the drop-MapLibre lane
+  (`docs/research/drop-maplibre-20261010.md`) — the latter is the cheaper
+  long-term path.
 
 - P2: Landmark fronts (Bijenkorf, Beurs hall, Royal Palace, Concertgebouw, Tuschinski) and kits (Westerkerk, Zuiderkerk, Montelbaanstoren, Noorderkerk, Royal Palace dome, Waag, Beurs, Centraal, Rijksmuseum, Sint-Nicolaas, Munttoren, Krijtberg) are in the game. Oude Kerk, Nieuwe Kerk and NEMO (colour only; its skillion roof terrace is still flat) are done too. Next: Stopera, Carré, Stadsschouwburg, Stedelijk, Scheepvaartmuseum; Centraal's long front and Rijksmuseum's gate front as fronts (references: `build-pano-facade.ts --toward=lng,lat --max-panos=3`; the Rijksmuseum pick lands inside the passage, so choose the Museumplein wall with `--wall`); Beurs Damrak front; Anne Frank House needs a reference (Mapillary token via env `MAPILLARY_TOKEN`, never committed). Front ids must be the game tiles' ids.
 - P2: Hand-modelled storefronts for notable businesses (Kema Vlees, 't Mandje, De Jaren, Winkel 43, Hoppe done). Next: Massimo Gelato branches (identify which shop in each panorama), Papeneiland, Café 't Smalle, Brouwerij Troost, Lastage/Vermeer etc. via their hotels; hotel facades (Amstel Hotel, Krasnapolsky, De L'Europe, Doelen, Pulitzer, Conservatorium). Reference: `build-pano-facade.ts --ids=<pand> --near=<poi lng,lat> --ppm=50 --min-standoff=2 --max-dist=40 --max-obl=60`.
