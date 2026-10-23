@@ -36,7 +36,7 @@ import { crossSection, isFietsstraat, type OsmGroundExtract } from '../../src/ca
 import { classOf, fallbackClasses, ownClasses, type SurfaceClass } from '../../src/canalRecall/ownGround/bgtWidth.ts';
 import { distToLine, encodeLine, inRings, interiorPoint, polygonArea } from '../../src/canalRecall/ownGround/parks.ts';
 import { TopoSimplifier, vertexKey } from '../../src/canalRecall/ownGround/topoSimplify.ts';
-import { ROADS_ATTRIBUTION, ROAD_CELL_BUDGET_GZ, fietsstraatSection, kerbBetween, roadCellProblems, roadMesh, type RoadCell, type RoadClass, type RoadSurface, type RoadsManifest } from '../../src/canalRecall/ownGround/roadCells.ts';
+import { ROADS_ATTRIBUTION, ROAD_CELL_BUDGET_GZ, ROAD_CELL_VERSION, ancillaryClass, fietsstraatSection, kerbBetween, roadCellProblems, roadMesh, type RoadCell, type RoadClass, type RoadSurface, type RoadsManifest } from '../../src/canalRecall/ownGround/roadCells.ts';
 
 type Vec2 = [number, number];
 type LngLat = [number, number];
@@ -97,6 +97,10 @@ interface Poly {
   cls: RoadClass;
   h: number;
   fv: string | null;
+  /** plus_fysiek_voorkomen (asfalt, tegels, gebakken klinkers, ...), when the bronhouder filled it. */
+  pfv: string | null;
+  /** Ancillary (version-2) polygon: its BGT collection; null for a wegdeel. */
+  ancillary: 'ondersteunendwegdeel' | 'onbegroeidterreindeel' | null;
   /** Local metres, closed rings as the API gave them. */
   rings: Vec2[][];
   /** Exact vertex keys of the raw lng/lat rings (1e-7°, topoSimplify vertexKey): the kerb edge hash and the topology. */
@@ -122,6 +126,8 @@ const cellBox = (key: string): Box => {
 };
 
 const rawCache = new Map<string, { polys: Poly[]; dropped: Dropped; fetched: string } | null>();
+/** Ancillary collections (roads lane R1): the cells each one has in the cache, for the report. */
+const ancillaryCells: Record<'ondersteunendwegdeel' | 'onbegroeidterreindeel', Set<string>> = { ondersteunendwegdeel: new Set(), onbegroeidterreindeel: new Set() };
 function loadRaw(key: string): { polys: Poly[]; dropped: Dropped; fetched: string } | null {
   if (rawCache.has(key)) return rawCache.get(key)!;
   const cell = readRawRoadsCell(key);
@@ -129,6 +135,17 @@ function loadRaw(key: string): { polys: Poly[]; dropped: Dropped; fetched: strin
   if (cell) {
     const dropped: Dropped = { status: 0, ended: 0, functie: {}, below: 0, degenerate: 0 };
     const polys: Poly[] = [];
+    const add = (f: RawWegdeel, cls: RoadClass, ancillary: Poly['ancillary']) => {
+      f.g.forEach((poly, part) => {
+        const rings = poly.map(r => r.map(([x, y]) => toLocal(x, y)));
+        if (rings[0].length < 4) { dropped.degenerate++; return; }
+        const at = interiorPoint(rings);
+        if (!at) { dropped.degenerate++; return; }
+        // Ancillary ids are prefixed: a verge and a wegdeel never share a lokaal_id in the topology graph.
+        const id = `${ancillary ? `${ancillary}:` : ''}${f.id}${f.g.length > 1 ? `#${part}` : ''}`;
+        polys.push({ id, cls, h: f.h, fv: f.fv, pfv: f.pfv, ancillary, rings, keys: poly.map(r => r.map(([x, y]) => vertexKey(x, y))), bbox: bboxOf(rings), at, owner: ownerOf(at) });
+      });
+    };
     for (const f of cell.features as RawWegdeel[]) {
       if (f.status && f.status !== 'bestaand') { dropped.status++; continue; }
       if (f.eind && f.eind < cell.fetched) { dropped.ended++; continue; }
@@ -136,13 +153,21 @@ function loadRaw(key: string): { polys: Poly[]; dropped: Dropped; fetched: strin
       const cls = classOf(f.functie);
       if (cls === 'other') { dropped.functie[f.functie] = (dropped.functie[f.functie] ?? 0) + 1; continue; }
       if (f.h < 0) { dropped.below++; continue; }
-      f.g.forEach((poly, part) => {
-        const rings = poly.map(r => r.map(([x, y]) => toLocal(x, y)));
-        if (rings[0].length < 4) { dropped.degenerate++; return; }
-        const at = interiorPoint(rings);
-        if (!at) { dropped.degenerate++; return; }
-        polys.push({ id: f.g.length > 1 ? `${f.id}#${part}` : f.id, cls, h: f.h, fv: f.fv, rings, keys: poly.map(r => r.map(([x, y]) => vertexKey(x, y))), bbox: bboxOf(rings), at, owner: ownerOf(at) });
-      });
+      add(f, cls, null);
+    }
+    // Ancillary collections (version 2): traffic islands and berms, verges, paved squares (roadCells ancillaryClass).
+    for (const coll of ['ondersteunendwegdeel', 'onbegroeidterreindeel'] as const) {
+      const anc = readRawRoadsCell(key, coll);
+      if (!anc) continue;
+      ancillaryCells[coll].add(key);
+      for (const f of anc.features as RawWegdeel[]) {
+        if (f.status && f.status !== 'bestaand') { dropped.status++; continue; }
+        if (f.eind && f.eind < anc.fetched) { dropped.ended++; continue; }
+        if (f.h < 0) { dropped.below++; continue; }
+        const cls = ancillaryClass(coll, f.functie, f.fv, f.pfv);
+        if (!cls) { dropped.functie[`${coll}:${f.functie}`] = (dropped.functie[`${coll}:${f.functie}`] ?? 0) + 1; continue; }
+        add(f, cls, coll);
+      }
     }
     out = { polys, dropped, fetched: cell.fetched };
   }
@@ -186,7 +211,7 @@ function loadDecks(): Grid<Deck> {
 // ------------------------------------------------------------------ kerbs
 
 /** Kerb runs (vertex keys; positions in `at`) among `polys`, kept where the edge midpoint lies in `box`. */
-function kerbRuns(polys: readonly Poly[], box: Box): { runs: number[][]; at: Map<number, Vec2>; edges: number; shared: number } {
+function kerbRuns(polys: readonly Poly[], box: Box, drawn: (owner: string) => boolean): { runs: number[][]; at: Map<number, Vec2>; edges: number; shared: number } {
   const edges = new Map<string, Poly[]>();
   const at = new Map<number, Vec2>();
   for (const p of polys) p.keys.forEach((ring, ri) => {
@@ -208,6 +233,9 @@ function kerbRuns(polys: readonly Poly[], box: Box): { runs: number[][]; at: Map
     if (ps.length < 2) continue;
     shared++;
     if (ps.length !== 2 || !kerbBetween({ c: ps[0].cls, h: ps[0].h }, { c: ps[1].cls, h: ps[1].h })) continue;
+    // A kerb along a polygon no published cell draws (its owner lies outside the game, e.g. -12_7 beside -11_6) would hang in the air:
+    // roads-v2 measured 9 such vertices in -11_6 (the test's border allowance is 5 %), so the run is not drawn.
+    if (!ps.every(p => drawn(p.owner))) continue;
     const [a, b] = k.split('|').map(Number), pa = at.get(a)!, pb = at.get(b)!;
     const mx = (pa[0] + pb[0]) / 2, my = (pa[1] + pb[1]) / 2;
     if (mx < box[0] || mx >= box[2] || my < box[1] || my >= box[3]) continue;
@@ -273,6 +301,9 @@ function main(): void {
   let polygons = 0, rawVertices = 0, simplifiedVertices = 0, encodedVertices = 0, kerbRunsN = 0, kerbM = 0, kerbEdges = 0, sharedEdges = 0;
   const emptyCells: string[] = [];
   let graphPolys = 0, greyRails = 0, greyOther = 0;
+  // Ancillary (version 2) polygons: count, by class, and how many lie under a wegdeel's interior point (a z-fight to measure).
+  let ancCount = 0, ancOverWegdeel = 0, ancOverM2 = 0, ancAreaM2 = 0;
+  const ancByClass: Record<string, number> = {}, ancPairs: Record<string, number> = {};
   let fietsstraatPolys = 0, highOverDeck = 0, highNoDeckArea = 0, areaM2 = 0, coverTotal = 0, crossings = 0, fetched = '';
   const t0 = Date.now();
 
@@ -385,9 +416,9 @@ function main(): void {
           rings.push(e);
         }
         if (!rings.length) continue;
-        surfaces.push({ k: roadMesh(p.cls, p.fv, red.has(p)), c: p.cls, h: p.h, r: rings });
+        surfaces.push({ k: roadMesh(p.cls, p.fv, red.has(p), p.pfv), c: p.cls, h: p.h, r: rings });
       }
-      const kr = kerbRuns(own.polys, box);
+      const kr = kerbRuns(own.polys, box, owner => gameCells.has(owner));
       // A kerb keeps the vertices its polygons kept (the shared chain is simplified once), and its own ends.
       const kept = new Set<number>();
       for (const p of own.polys) for (const r of simplifiedOf(p)) if (r) for (const k of r.keys) kept.add(k);
@@ -401,7 +432,7 @@ function main(): void {
         kerbs.push(e);
       }
       kerbEdgesCell = kr.edges; sharedEdgesCell = kr.shared;
-      return { cell: { version: 1, key, surfaces, kerbs, coverWays: cover }, simplified, encoded, kerbRuns: kerbs.length, kerbM: metres };
+      return { cell: { version: ROAD_CELL_VERSION, key, surfaces, kerbs, coverWays: cover }, simplified, encoded, kerbRuns: kerbs.length, kerbM: metres };
     };
     let kerbEdgesCell = 0, sharedEdgesCell = 0;
     let built = encodeAll(TOL);
@@ -431,6 +462,13 @@ function main(): void {
       byClass[s.c] = (byClass[s.c] ?? 0) + 1; byH[s.h] = (byH[s.h] ?? 0) + 1; byMesh[s.k] = (byMesh[s.k] ?? 0) + 1;
       byClassH[`${s.c}/${s.h}`] = (byClassH[`${s.c}/${s.h}`] ?? 0) + 1;
       if (s.k === 'cycle' && s.c === 'carriage') fietsstraatPolys++;
+    }
+    for (const p of owned) if (p.ancillary) {
+      ancCount++; ancByClass[p.cls] = (ancByClass[p.cls] ?? 0) + 1;
+      const a = polygonArea(p.rings); ancAreaM2 += a;
+      // Under a wegdeel at the same height (a deck over a square is no overlap): counted by pair for the report.
+      const under = polysAt(p.at[0], p.at[1]).filter(q => !q.ancillary && q.h === p.h);
+      if (under.length) { ancOverWegdeel++; ancOverM2 += a; for (const q of under) { const k = `${p.cls}<${q.cls}`; ancPairs[k] = (ancPairs[k] ?? 0) + 1; } }
     }
     for (const p of owned) {
       const a = polygonArea(p.rings); areaM2 += a;
@@ -464,6 +502,7 @@ function main(): void {
     kerbs: { runs: kerbRunsN, km: +(kerbM / 1000).toFixed(1), ringEdges: kerbEdges, sharedEdges },
     fietsstraat: { ways: fietsstraatWays.size, polygonsTurnedRed: fietsstraatPolys, keptGreyTramTrack: greyRails, keptGreyOtherCarriageway: greyOther, names: fietsstraatNames },
     topology: { method: 'shared chains simplified once (topoSimplify.ts)', graphPolygonsPerCellMean: Math.round(graphPolys / Math.max(1, keys.length)) },
+    ancillary: { cellsCached: Object.fromEntries(Object.entries(ancillaryCells).map(([c, s]) => [c, s.size])), polygons: ancCount, byClass: ancByClass, areaHa: +(ancAreaM2 / 1e4).toFixed(2), underWegdeelSameH: ancOverWegdeel, underWegdeelSameHM2: Math.round(ancOverM2), overlapPairs: ancPairs },
     coverWays: { total: coverTotal, uniqueWays: allWays, uniqueCovered: allCovered, share: +(allCovered / Math.max(1, allWays)).toFixed(3), crossingsSeen: crossings, byHighway: coverByHighway },
     highOverDeck: { overDeck: highOverDeck, noDeck: highNoDeck.length, noDeckAreaM2: Math.round(highNoDeckArea), samples: highNoDeck.slice(0, 60) },
   };

@@ -15,6 +15,7 @@ export const GROUND_SOURCES = [
   'osmArea', // OSM area fills (squares, parking, area:highway, green fills)
   'park', // BGT parks-v1 surfaces and courtyards-v1
   'bgtCarriage', 'bgtParking', 'bgtFoot', 'bgtPedestrian', 'bgtCycle', 'bgtDriveway', // roads-v1 wegdeel polygons by class
+  'bgtIsland', 'bgtBerm', 'bgtVerge', 'bgtSquare', // roads-v1 ondersteunendwegdeel islands and berms, verhard squares (roadCells ancillaryClass)
   'fietsstraat', // a roads-v1 rijbaan section the extract paints red (roadCells fietsstraatSection)
   'bgtKerb', // roads-v1 kerb faces, lines and their bollards
   'band', // OSM street bands (ways the survey does not cover, the far ring, cells without the extract), their kerbs

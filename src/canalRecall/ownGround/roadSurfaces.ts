@@ -29,18 +29,20 @@
 import { densify, edgeWall, emptyMesh, ribbon, stations, vertex, type MeshArrays } from './drape.js';
 import { interiorPoint, SurfaceIndex, type SurfaceRaster } from './parks.js';
 import { bollards, LIFT, ROAD_MARK_LIFT } from './streets.js';
-import { KERB_LOW_CLASSES, type RoadCell, type RoadClass, type RoadMesh, type RoadSurface } from './roadCells.js';
+import { ANCILLARY_CLASSES, KERB_LOW_CLASSES, type RoadCell, type RoadClass, type RoadMesh, type RoadSurface } from './roadCells.js';
 import { GroundSurface, type HeightFn, type Vec2 } from './surface.js';
 import { traceMark, type GroundSource } from './sourceTrace.js';
 
 /** The trace source of a polygon by class (sourceTrace.ts; a red rijbaan section is 'fietsstraat'). */
-const BGT_SOURCE: Record<RoadClass, GroundSource> = { carriage: 'bgtCarriage', parking: 'bgtParking', foot: 'bgtFoot', pedestrian: 'bgtPedestrian', cycle: 'bgtCycle', driveway: 'bgtDriveway' };
+const BGT_SOURCE: Record<RoadClass, GroundSource> = { carriage: 'bgtCarriage', parking: 'bgtParking', foot: 'bgtFoot', pedestrian: 'bgtPedestrian', cycle: 'bgtCycle', driveway: 'bgtDriveway', island: 'bgtIsland', berm: 'bgtBerm', verge: 'bgtVerge', square: 'bgtSquare' };
 
 /** Sidewalk top over the relief: osmGround's raised sidewalk band (LIFT.raisedBase + KERB_M 0.11). */
 export const SIDEWALK_TOP = LIFT.raisedBase + 0.11;
 /** Lift over the relief per class, metres: the same planes the OSM bands use, so a band and a polygon never z-fight by class. */
 export const ROAD_LIFT: Record<RoadClass, number> = {
   carriage: LIFT.carriageway, parking: LIFT.carriageway, cycle: LIFT.path, foot: SIDEWALK_TOP, pedestrian: SIDEWALK_TOP, driveway: SIDEWALK_TOP,
+  // Version-2 classes (roads lane R1): at pavement level, the kerb against the carriageway as the footway has it.
+  island: SIDEWALK_TOP, berm: SIDEWALK_TOP, verge: SIDEWALK_TOP, square: SIDEWALK_TOP,
 };
 /** The kerb face runs from the sidewalk top down to just under the carriageway plane. */
 export const KERB_FACE_BOTTOM = LIFT.carriageway - 0.01;
@@ -66,6 +68,7 @@ export const FAST_RES_M = 0.5;
 export const DRAPE_TOL: Record<RoadClass, { sag: number; float: number }> = {
   carriage: { sag: ROAD_LIFT.carriage - 0.008, float: 0.02 }, parking: { sag: ROAD_LIFT.parking - 0.008, float: Infinity }, cycle: { sag: ROAD_LIFT.cycle - 0.008, float: Infinity },
   foot: { sag: 0.1, float: 0.03 }, pedestrian: { sag: 0.1, float: 0.03 }, driveway: { sag: 0.1, float: 0.03 },
+  island: { sag: 0.1, float: 0.03 }, berm: { sag: 0.1, float: 0.03 }, verge: { sag: 0.1, float: 0.03 }, square: { sag: 0.1, float: 0.03 },
 };
 export const DRAPE_MAX_EDGE_M = 24, DRAPE_MIN_EDGE_M = 3;
 /**
@@ -372,7 +375,7 @@ export interface RoadBuildStats {
   ms: number;
 }
 
-export type RoadLayer = RoadMesh | 'brick' | 'kerb' | 'bollard';
+export type RoadLayer = RoadMesh | 'brick' | 'kerb' | 'bollard' | 'lawn';
 
 /**
  * The layer a polygon draws in: its mesh, except klinker inritten and parking bays (and the footway islands drawn
@@ -380,7 +383,10 @@ export type RoadLayer = RoadMesh | 'brick' | 'kerb' | 'bollard';
  * brick close to the pavement; drawn as the klinker carriageway they were saturated brown wedges across pavements).
  */
 export function surfaceLayer(cls: RoadClass, mesh: RoadMesh): RoadLayer {
-  return mesh === 'klinker' && (cls === 'driveway' || cls === 'parking') ? 'brick' : mesh;
+  // The park grass material (the `lawn` layer parks-v1 draws) for green verges and grass islands (roads lane R1).
+  if (mesh === 'grass') return 'lawn';
+  const brick = cls === 'driveway' || cls === 'parking' || (ANCILLARY_CLASSES as readonly RoadClass[]).includes(cls);
+  return mesh === 'klinker' && brick ? 'brick' : mesh;
 }
 
 export interface RoadBuildInput {
@@ -428,7 +434,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   const t0 = Date.now();
   const layers: Partial<Record<RoadLayer, MeshArrays>> = {};
   const get = (l: RoadLayer) => (layers[l] ??= emptyMesh());
-  const stats: RoadBuildStats = { drawn: { carriage: 0, foot: 0, cycle: 0, pedestrian: 0, parking: 0, driveway: 0 }, onDeck: 0, skippedHigh: 0, degenerate: 0, kerbs: 0, kerbM: 0, kerbUnsided: 0, bollards: 0, ms: 0 };
+  const stats: RoadBuildStats = { drawn: { carriage: 0, foot: 0, cycle: 0, pedestrian: 0, parking: 0, driveway: 0, island: 0, berm: 0, verge: 0, square: 0 }, onDeck: 0, skippedHigh: 0, degenerate: 0, kerbs: 0, kerbM: 0, kerbUnsided: 0, bollards: 0, ms: 0 };
   const skipped = new Set<number>();
   const far = input.lod === 1;
   // The drape carries each corner's height and asks once per corner and tested point (drapeAdaptive); a 1 cm memo

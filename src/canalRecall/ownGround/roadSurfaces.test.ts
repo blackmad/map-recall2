@@ -61,7 +61,7 @@ test('road surfaces: the partition drapes without coplanar overlaps, at the clas
   const cell = cellOf(CROSS), index = new RoadIndex([cell]);
   const { layers, stats, skipped } = buildRoadSurfaces(cell, index, input);
   assert.equal(skipped.size, 0);
-  assert.deepEqual(stats.drawn, { carriage: 3, foot: 4, cycle: 1, pedestrian: 0, parking: 0, driveway: 0 });
+  assert.deepEqual(stats.drawn, { carriage: 3, foot: 4, cycle: 1, pedestrian: 0, parking: 0, driveway: 0, island: 0, berm: 0, verge: 0, square: 0 });
   const road = ['asphalt', 'klinker', 'cycle', 'paving'] as const;
   for (const a of road) for (const b of road) if (a !== b) assert.equal(overlaps(layers[a] ?? emptyMesh(), layers[b] ?? emptyMesh()), 0, `${a} centroids inside ${b} triangles`);
   for (const c of centroids(layers.asphalt!)) assert.ok(Math.abs(c[2] - ROAD_LIFT.carriage) < 1e-6);

@@ -21,7 +21,7 @@ import { GroundSurface, type DeckSurface, type Vec2 } from './surface.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { ParksCell, ParksManifest } from './parks.js';
 import { decodePhotoEvidence, EMPTY_EVIDENCE, isPhotoEvidence, PHOTO_EVIDENCE_FILE, type PhotoEvidence } from './photoEvidence.js';
-import { decodeRoadLine, type RoadCell, type RoadsManifest } from './roadCells.js';
+import { decodeRoadLine, ROAD_CELL_VERSIONS, type RoadCell, type RoadsManifest } from './roadCells.js';
 import { decodeMarks, isRoadMarksCell, type RoadMark, type RoadMarksManifest } from './roadMarks.js';
 import type { CourtyardsCell, CourtyardsManifest } from './courtyards.js';
 import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } from './water.js';
@@ -512,7 +512,7 @@ export class GroundStore {
     let p = this.roads.get(key);
     if (!p) {
       p = this.roadCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.roads}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)) as RoadCell; return c.version === 1 ? c : null; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.roads}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)) as RoadCell; return ROAD_CELL_VERSIONS.includes(c.version) ? c : null; }).catch(() => null)
         : Promise.resolve(null);
       this.roads.set(key, p);
     }

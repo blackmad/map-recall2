@@ -27,6 +27,7 @@ import { GROUND_SOURCES, setSourceTracing, sourceCode, sourceOfCode, type Ground
 import { fillPolygons, layerOfId, rasterLayerIds } from '../../src/canalRecall/overviewTiles/raster.ts';
 import { fromLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { OrthoTiles, ORTHO_ATTRIBUTION } from './ortho.ts';
+import { cellBounds, elevationIndex } from './game-cells.ts';
 
 const arg = (k: string, d: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.slice(k.length + 3) ?? d;
 const OUT = arg('out', 'artifacts/roads/diagnose'), RES = Number(arg('res', '0.1'));
@@ -52,6 +53,7 @@ const BRIGHT_LOCAL_SHARE = 0.3, BRIGHT_LOCAL_MIN = 12;
 type RGB = readonly [number, number, number];
 const SOURCE_RGB: Record<GroundSource, RGB> = {
   land: [214, 200, 170], osmArea: [190, 160, 220], park: [120, 170, 90],
+  bgtIsland: [150, 200, 120], bgtBerm: [210, 200, 185], bgtVerge: [120, 170, 90], bgtSquare: [225, 215, 200],
   bgtCarriage: [70, 72, 78], bgtParking: [110, 110, 140], bgtFoot: [200, 196, 188], bgtPedestrian: [176, 170, 150], bgtCycle: [190, 60, 50], bgtDriveway: [150, 110, 80],
   fietsstraat: [255, 120, 0], bgtKerb: [250, 250, 245],
   band: [0, 150, 255], junctionFill: [0, 90, 180],
@@ -70,14 +72,14 @@ const HOUSE_RGB: RGB = [60, 40, 70];
 const RED_SOURCES: ReadonlySet<GroundSource> = new Set(['laneRibbon', 'cyclePaint', 'cycleCross', 'fietsstraat']);
 const PAINT_SOURCES: readonly GroundSource[] = ['nodePaint', 'photoPaint', 'graphPaint', 'bandPaint', 'cycleCross'];
 
-async function roadCellsFor(keys: Iterable<string>): Promise<RoadCell[]> {
+export async function roadCellsFor(keys: Iterable<string>): Promise<RoadCell[]> {
   const out: RoadCell[] = [];
   for (const k of keys) { const f = join(ROOT, 'roads-v1/cells', `${k}.json.gz`); if (existsSync(f)) out.push(JSON.parse(gunzipSync(readFileSync(f)).toString())); }
   return out;
 }
 
 /** Building footprints (building-tiles z14, the 3D city's source) over the view: the land under a house is no gap. */
-function buildingMask(x0: number, y0: number, w: number, res: number): Uint8Array {
+export function buildingMask(x0: number, y0: number, w: number, res: number): Uint8Array {
   const dir = join(ROOT, 'building-tiles'), list = new Set((JSON.parse(readFileSync(join(dir, 'index-z14.json'), 'utf8')) as { tileList: string[] }).tileList);
   const tileOf = (lng: number, lat: number) => [Math.floor((lng + 180) / 360 * 2 ** 14), Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * 2 ** 14)];
   const [lw, ls] = fromLocal(x0, y0), [le, ln] = fromLocal(x0 + w * res, y0 + w * res), [tx0, ty0] = tileOf(lw, ln), [tx1, ty1] = tileOf(le, ls);
@@ -96,7 +98,7 @@ function buildingMask(x0: number, y0: number, w: number, res: number): Uint8Arra
 }
 
 /** Chamfer distance (metres) from every pixel to the nearest `on` pixel, capped. */
-function distanceTo(on: Uint8Array, w: number, h: number, res: number): Float32Array {
+export function distanceTo(on: Uint8Array, w: number, h: number, res: number): Float32Array {
   const INF = 1e9, d = new Float32Array(w * h);
   for (let i = 0; i < d.length; i++) d[i] = on[i] ? 0 : INF;
   const a = res, b = res * Math.SQRT2;
@@ -116,6 +118,41 @@ function distanceTo(on: Uint8Array, w: number, h: number, res: number): Float32A
 }
 
 const round = (v: number, k = 1) => Math.round(v * 10 ** k) / 10 ** k;
+
+/**
+ * Bare land within GAP_REACH_M of a carriageway in one whole game cell (the city-wide metric of check-ground-cells
+ * --bare-land, roads lane R1 2026-10-23): the cell built with roads and source tracing as the game builds it, rasterised
+ * at `res` over the cell's own square, the carriageways as diagnose() has them (BGT rijbaan, OSM bands on asphalt /
+ * klinker), the building footprints excluded. The cell's own 1 km box: a carriageway in the next cell counts through
+ * the neighbours' roads-v1 cells, but a band or fill there does not (the metric reads one cell's ground).
+ */
+export async function bareLandCell(store: GroundStore, key: string, res = 0.5): Promise<{ bareM2: number; carriageM2: number; cellM2: number; ms: number }> {
+  const t0 = Date.now();
+  const [lx0, ly0, lx1, ly1] = cellBounds(elevationIndex(), key);
+  const [a0, a1] = [toLocal(lx0, ly0), toLocal(lx1, ly1)];
+  const x0 = Math.min(a0[0], a1[0]), y0 = Math.min(a0[1], a1[1]), w = Math.round(Math.max(Math.abs(a1[0] - a0[0]), Math.abs(a1[1] - a0[1])) / res);
+  setSourceTracing(true);
+  const built = buildCell(await store.cellInput(key, 0));
+  setSourceTracing(false);
+  const src = new Uint8Array(w * w), ids = rasterLayerIds([built], x0, y0, w, w, res, new Set(), src);
+  const index = new RoadIndex(await roadCellsFor([key, ...GroundStore.neighbours(key)]), [x0 - 5, y0 - 5, x0 + w * res + 5, y0 + w * res + 5]);
+  const carriage = new Uint8Array(w * w);
+  for (let i = 0; i < w * w; i++) {
+    const px_ = x0 + (i % w + 0.5) * res, py_ = y0 + w * res - (Math.floor(i / w) + 0.5) * res;
+    const c_ = index.classAt(px_, py_), s_ = sourceOfCode(src[i]), layer = layerOfId(ids[i]);
+    if (c_ === 'carriage' || (!c_ && (s_ === 'band' || s_ === 'junctionFill') && (layer === 'asphalt' || layer === 'klinker'))) carriage[i] = 1;
+  }
+  const dist = distanceTo(carriage, w, w, res), house = buildingMask(x0, y0, w, res);
+  const a = res * res;
+  let bare = 0, car = 0;
+  for (let i = 0; i < w * w; i++) {
+    if (carriage[i]) car += a;
+    const s_ = sourceOfCode(src[i]);
+    if ((s_ === 'land' || !ids[i]) && !house[i] && dist[i] <= GAP_REACH_M) bare += a;
+  }
+  return { bareM2: bare, carriageM2: car, cellM2: w * w * a, ms: Date.now() - t0 };
+}
+
 
 interface SpotTable {
   id: string; label: string; at: [number, number]; halfM: number; res: number; cells: number;

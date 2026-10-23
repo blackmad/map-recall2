@@ -29,7 +29,7 @@ import { buildParks, cullCovered, decodeLine, drapeBisect, flatten, CULL_MARGIN_
 import { COURTYARD_SURFACES, type CourtyardsCell } from './courtyards.js';
 import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats, type SurveyGap, SURVEY_GAP_MIN_R } from './pockets.js';
 import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } from './roadSurfaces.js';
-import type { RoadCell } from './roadCells.js';
+import { ANCILLARY_CLASSES, type RoadCell } from './roadCells.js';
 import type { RoadMark } from './roadMarks.js';
 import type { PhotoEvidence } from './photoEvidence.js';
 import { buildSurveyMarkings, crossingStripPoints, SURVEY_MARKINGS, type SurveyMarkingStats } from './surveyMarkings.js';
@@ -258,6 +258,8 @@ export function buildCell(input: CellInput): BuiltCell {
     if (box[2] > box[0] && box[3] > box[1]) cover = surveyed.raster(box, CULL_RES_M);
   }
   let landCulled = 0;
+  /** OSM area fills that lie under a drawn BGT polygon are not drawn (roads lane R1: the Amstelstraat fill over the rijbaan). */
+  let osmRoadCulled = 0;
   // Roads (roads-v1): the surveyed partition drawn before the land, so the land can be culled under the cell's own
   // polygons as under the park surfaces (never under a deck polygon that was not drawn: roadSurfaces skipped).
   phase('prepare');
@@ -367,6 +369,18 @@ export function buildCell(input: CellInput): BuiltCell {
       && g.pts.every(([x, y]) => pointInRing(pts, x, y) && edgeDistance(pts, x, y) >= HOLE_CLEARANCE_M)).map(g => g.pts);
   };
   let parkFillCulled = 0, greenCut = 0;
+  // Culls an OSM fill's triangles wholly under drawn roads polygons (the fill would show as wiggly patches on the survey).
+  const cullUnderRoads = (m: MeshArrays): MeshArrays => {
+    if (!roadCover || !roadDrawn || !m.indices.length) return m;
+    const p = m.positions, keep: number[] = [];
+    for (let t = 0; t < m.indices.length; t += 3) {
+      const a = m.indices[t] * 3, b = m.indices[t + 1] * 3, c = m.indices[t + 2] * 3;
+      const cx = (p[a] + p[b] + p[c]) / 3, cy = (p[a + 1] + p[b + 1] + p[c + 1]) / 3;
+      if (roadCover.find(cx, cy) >= 0 && roadCover.every(Math.min(p[a], p[b], p[c]) - CULL_MARGIN_M, Math.min(p[a + 1], p[b + 1], p[c + 1]) - CULL_MARGIN_M, Math.max(p[a], p[b], p[c]) + CULL_MARGIN_M, Math.max(p[a + 1], p[b + 1], p[c + 1]) + CULL_MARGIN_M, roadDrawn)) { osmRoadCulled++; continue; }
+      keep.push(m.indices[t], m.indices[t + 1], m.indices[t + 2]);
+    }
+    return keep.length === m.indices.length ? m : { ...m, indices: keep };
+  };
   for (const a of areas) {
     const layer = a.kind === 'paved' ? pavedAreaSurface(a) : areaLayer[a.kind];
     if (!layer) continue;
@@ -385,6 +399,7 @@ export function buildCell(input: CellInput): BuiltCell {
       drapeBisect(m, flat, earcut(flat, holeAt), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), lod === 0 ? 8 : 16, clearance, lod === 0 ? 1 : 2, step);
     }
     if (cover && layer === 'park') { const r = cullCovered(m, cover); m = r.mesh; parkFillCulled += r.dropped; }
+    m = cullUnderRoads(m);
     add(layer, m, 'osmArea');
   }
 
@@ -511,7 +526,10 @@ export function buildCell(input: CellInput): BuiltCell {
       const r = Math.max(SURVEY_GAP_MIN_R, streets.junctionReach[i] ?? 0);
       if (r > 0 && [[r, 0], [-r, 0], [0, r], [0, -r]].some(([dx, dy]) => roadIndex.find(p[0] + dx, p[1] + dy) >= 0)) gaps.push({ p, r });
     });
-    const r = fillPockets(cover, rect, seeds, onLand, POCKET_LIFT, { gaps });
+    // Version-2 surfaces (verges, islands, squares) that the partition drew leave no pocket (roadCells ANCILLARY_CLASSES).
+    const ancillaryDrawn = roadIndex && roadDrawn ? (x: number, y: number): boolean => { const k = roadIndex.findFast(x, y); return k >= 0 && roadDrawn(k) && ANCILLARY_CLASSES.includes(roadIndex.drawClass(k)); } : undefined;
+    const occupied = ancillaryDrawn && roadIndex!.records.some(r => ANCILLARY_CLASSES.includes(r.c)) ? ancillaryDrawn : undefined;
+    const r = fillPockets(cover, rect, seeds, onLand, POCKET_LIFT, { gaps, occupied });
     for (const [s, m] of Object.entries(r.meshes)) add(s as PocketSurface, m as MeshArrays, 'pocket');
     pockets = r.stats;
   }
