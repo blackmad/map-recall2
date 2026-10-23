@@ -13051,7 +13051,7 @@
         "min": [
           -22.972003936767578,
           -0.00047493790043517947,
-          -9.948567390441895
+          -9.988052368164062
         ],
         "max": [
           8.9888334274292,
@@ -13072,11 +13072,11 @@
       "extent": {
         "widthMetres": 31.960837364196777,
         "heightMetres": 16.066324242099654,
-        "depthMetres": 20.48665142059326,
-        "depthCoverage": 0.9755548295520601
+        "depthMetres": 20.52613639831543,
+        "depthCoverage": 0.9774350665864491
       },
       "triangles": 1600,
-      "bytes": 36036,
+      "bytes": 36004,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "mountain-network": {
@@ -46949,13 +46949,13 @@
         "depthCoverage": 1.0098763957497998
       },
       "triangles": 12770,
-      "bytes": 184576,
+      "bytes": 183348,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "6a157de55857fe89",
+        "sourceHash": "8894397f4fe52c1a",
         "buildVersion": 2,
-        "bytes": 64404,
-        "triangles": 3349
+        "bytes": 63216,
+        "triangles": 3356
       }
     },
     "jodenbreestraat-11": {

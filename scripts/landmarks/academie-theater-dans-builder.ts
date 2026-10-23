@@ -97,7 +97,7 @@ export function buildAcademieTheaterDans(_width:number,_depth:number,{add}:Build
  // Canal elevation in original2025panorama (left acrosswater), cross-checked
  // with current orthophoto. Brick piers frame repeating pale grouped glazing.
  const rear=facade(local(4.9028132,52.3695642),local(4.9020272,52.3698889),false,.35),R=rear.length;
- rear.panel(R/2,.20,R,19.7,'ochre',.02);
+ rear.panel(R/2,.20,R,19.7,'white',.05);
  for(let bay=0;bay<5;bay++){const u=(bay+.5)*R/5,w=R/5*.71;for(let j=0;j<4;j++){rear.panel(u,2.8+j*4.0,w+.65,3.80,'white',.10);rear.glazing(u,3.30+j*4.0,w,2.45,3,1);}}
  rear.block(R/2,.15,R,1.8,.25,'stone',.24);rear.block(R/2,19.65,R,.4,.4,'white',.27);
 
