@@ -39,11 +39,11 @@ Open, in order:
   not written.
 - **feedback queue (Firebase, 8 open notes 2026-10-23, pulled with
   `npm run feedback:queue -- pull`)**, routed:
-  - gables pointing the wrong way (74dc761d, Marnixstraat × Lijnbaansgracht):
-    systemic; `planRoof` lets the ridge follow the fitted box's long axis, so
-    a canal/c19 pand wider than deep gets its gable ends toward the
-    neighbours → lane `lane/gable-orientation-20261023` (opus): ridge
-    perpendicular to the street front, transverse saddles for wide fronts.
+  - gables pointing the wrong way (74dc761d): fixed 2026-10-23 (HISTORY,
+    `streetRidge.ts`; 13 → 1 at the spot). Open: rear wings of L-shaped
+    pands still run along the street (interior ends); single-saddle turns
+    go up to 14 m (`TURN_MAX_FRONT_M`, maybe split from ~10 m); the user
+    looks at the Marnixstraat frame after deploy and closes the note.
   - got stuck at the Centraal ferry pier, never boarded (05a7d02a, De
     Ruijterkade → OBA Van der Pek): lane `lane/ferry-stuck-20261023` (opus),
     Playwright regression first, fix in `src/canalRecall/ferry/`.

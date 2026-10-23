@@ -36,6 +36,25 @@ Integrator (this session, worktree `integrator-plan`), merged into `main`:
   brick palette are far redder than the photo, a tone fix for R3. The
   Rembrandtplein green patches are real OSM lawn beds; 31 m² of OSM fill over
   the BGT carriageway on Amstelstraat is the artefact (R1 culls it).
+- **gable-orientation** (opus, feedback 74dc761d): `src/canalRecall/streetRidge.ts`.
+  A canal/c19 saddle whose long side is its only street front turns its
+  ridge across that front; fronts up to 14 m get one gable saddle, wider
+  fronts split into ~6 m saddles each crowned to the street with a plain
+  rear; narrow corner houses keep their narrow front; boxes deeper than
+  12 m (Pijp blocks) and hipped/mansard-hip/register-measured roofs are
+  untouched; byte-identical when no street test is given. OSM
+  `roofShapeTag=gabled` (4,127 tile features) says nothing about ridge
+  direction, so it may turn too. At the user's spot 13 → 1 of 54 saddles
+  ran along the street; Prinsengracht 23 → 20, Pijp 16 → 12, Kinkerstraat
+  13 → 7. Regression: `npx tsx scripts/audit-gable-orientation.ts --rows`.
+  Two failures were already on HEAD and need an owner: audit-frontages
+  "installed baked street cohorts reproduce" and
+  `check-roof-exterior-support` (`0 !== 2`).
+- **perf**: governor settles 12 s through the load (`renderGovernor.ts`
+  `settleMs`; the emulator showed it stepping to 0.75 in the first 15 s and
+  never back); a frame error no longer freezes the ride (`game.js` `_loop`
+  try/finally, rethrown once per message). Emulator pass numbers in the
+  perf brief; the ride-start memory peak is the previous session's leaf lane.
 - **z-fighting on small models** (user, Anne Frank statue card): see the
   commit of the same name; the audit's warn now scales with the model.
 - **feedback queue**: eight open Firestore notes read with
