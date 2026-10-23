@@ -57,7 +57,7 @@ interface Candidate {
 }
 interface Backlog { candidates: Candidate[]; [key: string]: unknown }
 interface Feature { id: string; geometry: { type: string; coordinates: any }; properties: Record<string, any> }
-interface Named { id: string; kind: 'way' | 'relation' | 'node'; tags: Record<string, string>; rep: LngLat; polygon: LngLat[][][] | null; bbox: number[] }
+interface Named { id: string; kind: 'way' | 'relation' | 'node'; osmId: number; tags: Record<string, string>; rep: LngLat; polygon: LngLat[][][] | null; bbox: number[] }
 interface Monument { number: number | null; status: string; name: string; architect: string; yearFrom: string; yearTo: string; fn: string; panden: string[] }
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -139,7 +139,16 @@ function metresBetween(a: LngLat, b: LngLat): number {
   return Math.hypot(dx, dy);
 }
 
-const idKind = (id: string): Named['kind'] => (id.startsWith('w') ? 'way' : id.startsWith('r') ? 'relation' : 'node');
+// osmium --add-unique-id=type_id: n/w/r prefixes are plain; a<N> is an area, even N = way N/2, odd N = relation (N-1)/2.
+const osmRef = (id: string): { kind: Named['kind']; osmId: number } => {
+  const m = /^([nwra])(\d+)$/.exec(id);
+  if (!m) throw new Error(`unknown osm id ${id}`);
+  const n = Number(m[2]);
+  if (m[1] === 'n') return { kind: 'node', osmId: n };
+  if (m[1] === 'w') return { kind: 'way', osmId: n };
+  if (m[1] === 'r') return { kind: 'relation', osmId: n };
+  return n % 2 === 0 ? { kind: 'way', osmId: n / 2 } : { kind: 'relation', osmId: (n - 1) / 2 };
+};
 
 async function streamOsm(files: string[], wanted: Candidate[]): Promise<{ buildings: Named[]; named: Named[] }> {
   const pands = new Set(wanted.map(c => pandCode(c.id)));
@@ -158,7 +167,7 @@ async function streamOsm(files: string[], wanted: Candidate[]): Promise<{ buildi
       const near = boxes.some(({ box }) => bbox[0] <= box[2] && bbox[2] >= box[0] && bbox[1] <= box[3] && bbox[3] >= box[1]);
       if (!near && !pands.has(ref)) continue;
       const item: Named = {
-        id: f.id, kind: idKind(f.id), tags: Object.fromEntries(Object.entries(tags).map(([k, v]) => [k, String(v)])),
+        id: f.id, ...osmRef(f.id), tags: Object.fromEntries(Object.entries(tags).map(([k, v]) => [k, String(v)])),
         rep: representative(f.geometry), polygon: ringsOf(f.geometry), bbox,
       };
       if (tags.building !== undefined || tags['ref:bag'] !== undefined) buildings.push(item);
@@ -269,6 +278,7 @@ const monuments = loadMonuments();
 const index: Record<string, unknown> = {};
 
 for (const [i, c] of top.entries()) {
+  delete (c as Record<string, unknown>).lookup;
   const pand = pandCode(c.id);
   const center = c.center;
 
@@ -297,7 +307,8 @@ for (const [i, c] of top.entries()) {
   const withName = candidates.find(n => n.tags.name && n.tags['ref:bag'] === pand) ?? candidates.find(n => n.tags.name);
   const operator = candidates.find(n => !n.tags.name && n.tags.operator);
 
-  const osmUrl = (n: Named) => `https://www.openstreetmap.org/${n.kind}/${n.id.replace(/^[wrn]/, '')}`;
+  const osmUrl = (n: Named) => `https://www.openstreetmap.org/${n.kind}/${n.osmId}`;
+  const osmObject = (n: Named) => `${n.kind}/${n.osmId}`;
   const row = c as Candidate & Record<string, any>;
   row.function = bagSummary.function;
   row.address = bagSummary.address;
@@ -305,6 +316,8 @@ for (const [i, c] of top.entries()) {
     bagUnits: bag?.units.length ?? 0,
     bagUrl: bag?.url ?? null,
     osmFootprint: footprint ? footprint.id : null,
+    osmObject: null as string | null,
+    sharedWith: null as number | null,
     tenantNames: tenants,
     monument: monument ? { number: monument.number, architect: monument.architect || null, yearFrom: monument.yearFrom || null, status: monument.status } : null,
   };
@@ -319,12 +332,14 @@ for (const [i, c] of top.entries()) {
     row.nameSource = 'osm';
     row.confidence = 1.0;
     row.sourceUrl = osmUrl(withName);
+    row.identity.osmObject = osmObject(withName);
     row.identity.osmTags = { amenity: withName.tags.amenity, building: withName.tags.building, operator: withName.tags.operator };
   } else if (operator) {
     row.name = operator.tags.operator;
     row.nameSource = 'osm';
     row.confidence = 0.6;
     row.sourceUrl = osmUrl(operator);
+    row.identity.osmObject = osmObject(operator);
     row.identity.operatorOnly = true;
   } else if (bagSummary.address) {
     row.name = null;
@@ -338,6 +353,11 @@ for (const [i, c] of top.entries()) {
   }
   index[c.id] = { row: i + 1, nameSource: row.nameSource, confidence: row.confidence, osmFootprint: row.identity.osmFootprint, bagUnits: row.identity.bagUnits };
 }
+
+// sharedWith: how many backlog rows in this run took their name from the same OSM object
+const sharedCount = new Map<string, number>();
+for (const c of top as Array<Candidate & Record<string, any>>) if (c.nameSource === 'osm' && c.identity.osmObject) sharedCount.set(c.identity.osmObject, (sharedCount.get(c.identity.osmObject) ?? 0) + 1);
+for (const c of top as Array<Candidate & Record<string, any>>) if (c.nameSource === 'osm' && c.identity.osmObject) c.identity.sharedWith = sharedCount.get(c.identity.osmObject);
 
 // Lookup pass
 const streetOf = (c: Candidate) => ((c as any).address as string | null)?.replace(/ \d.*$/, '') ?? null;
