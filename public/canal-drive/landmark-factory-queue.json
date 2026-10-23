@@ -5368,7 +5368,14 @@
     4.945501,
     52.3621105
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-080601",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:12:22.228Z",
+   "notes": [
+    "2026-10-23T22:12 crops: 3 usable walls in 10 s"
+   ],
+   "updatedAt": "2026-10-23T22:12:32.270Z"
   },
   {
    "id": "0363100012131508",
@@ -5385,7 +5392,14 @@
     4.920552499999999,
     52.4036375
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-131508",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:12:32.271Z",
+   "notes": [
+    "2026-10-23T22:12 crops: 12 usable walls in 23 s"
+   ],
+   "updatedAt": "2026-10-23T22:12:55.361Z"
   },
   {
    "id": "0363100012064727",
@@ -5402,7 +5416,14 @@
     4.92324,
     52.403839500000004
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-064727",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:12:55.362Z",
+   "notes": [
+    "2026-10-23T22:13 crops: 12 usable walls in 12 s"
+   ],
+   "updatedAt": "2026-10-23T22:13:07.536Z"
   },
   {
    "id": "0363100012124847",
@@ -5419,7 +5440,14 @@
     4.9036105,
     52.4005795
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-124847",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:13:07.536Z",
+   "notes": [
+    "2026-10-23T22:13 crops: 8 usable walls in 14 s"
+   ],
+   "updatedAt": "2026-10-23T22:13:21.053Z"
   },
   {
    "id": "0363100012122004",
@@ -5436,7 +5464,14 @@
     4.928227,
     52.363665999999995
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-122004",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:13:21.054Z",
+   "notes": [
+    "2026-10-23T22:13 crops: 17 usable walls in 32 s"
+   ],
+   "updatedAt": "2026-10-23T22:13:53.355Z"
   },
   {
    "id": "0363100012083604",
@@ -5453,7 +5488,14 @@
     4.89393,
     52.403522
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-083604",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:13:53.356Z",
+   "notes": [
+    "2026-10-23T22:14 crops: 7 usable walls in 24 s"
+   ],
+   "updatedAt": "2026-10-23T22:14:17.579Z"
   },
   {
    "id": "0363100012064292",
@@ -5470,7 +5512,14 @@
     4.939719,
     52.357525499999994
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-064292",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:14:17.580Z",
+   "notes": [
+    "2026-10-23T22:14 crops: 8 usable walls in 6 s"
+   ],
+   "updatedAt": "2026-10-23T22:14:23.516Z"
   },
   {
    "id": "0363100012248827",
@@ -5487,7 +5536,14 @@
     4.8799695,
     52.395964000000006
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "pand-248827",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:14:23.518Z",
+   "notes": [
+    "2026-10-23T22:14 no usable panorama crop for any exposed wall (0 walls listed)"
+   ],
+   "updatedAt": "2026-10-23T22:14:23.897Z"
   },
   {
    "id": "0363100012165818",
@@ -5504,7 +5560,14 @@
     4.9218305,
     52.366517
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-165818",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:14:23.899Z",
+   "notes": [
+    "2026-10-23T22:14 crops: 11 usable walls in 13 s"
+   ],
+   "updatedAt": "2026-10-23T22:14:36.936Z"
   },
   {
    "id": "0363100012239704",
@@ -5521,7 +5584,14 @@
     4.8583305,
     52.36890045
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-239704",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:14:36.936Z",
+   "notes": [
+    "2026-10-23T22:15 crops: 14 usable walls in 29 s"
+   ],
+   "updatedAt": "2026-10-23T22:15:05.897Z"
   },
   {
    "id": "0363100012141601",
@@ -5538,7 +5608,14 @@
     4.839648,
     52.3567865
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-141601",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:15:05.898Z",
+   "notes": [
+    "2026-10-23T22:15 crops: 15 usable walls in 42 s"
+   ],
+   "updatedAt": "2026-10-23T22:15:47.420Z"
   },
   {
    "id": "0363100012071645",
@@ -5555,7 +5632,14 @@
     4.854717,
     52.3362645
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-071645",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:15:47.421Z",
+   "notes": [
+    "2026-10-23T22:16 crops: 15 usable walls in 25 s"
+   ],
+   "updatedAt": "2026-10-23T22:16:12.221Z"
   },
   {
    "id": "0363100012240481",
@@ -5572,7 +5656,14 @@
     4.8398635,
     52.360992
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-240481",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:16:12.222Z",
+   "notes": [
+    "2026-10-23T22:16 crops: 8 usable walls in 20 s"
+   ],
+   "updatedAt": "2026-10-23T22:16:32.160Z"
   },
   {
    "id": "0363100012237884",
@@ -5589,7 +5680,14 @@
     4.858578,
     52.334250499999996
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-237884",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:16:32.160Z",
+   "notes": [
+    "2026-10-23T22:16 crops: 11 usable walls in 11 s"
+   ],
+   "updatedAt": "2026-10-23T22:16:43.413Z"
   },
   {
    "id": "0363100012169284",
@@ -5606,7 +5704,14 @@
     4.9219455,
     52.3674135
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-169284",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:16:43.414Z",
+   "notes": [
+    "2026-10-23T22:16 crops: 10 usable walls in 15 s"
+   ],
+   "updatedAt": "2026-10-23T22:16:58.570Z"
   },
   {
    "id": "0363100012252498",
@@ -5623,7 +5728,14 @@
     4.9316805,
     52.4039225
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-252498",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:16:58.570Z",
+   "notes": [
+    "2026-10-23T22:17 crops: 14 usable walls in 34 s"
+   ],
+   "updatedAt": "2026-10-23T22:17:32.865Z"
   },
   {
    "id": "0363100012110208",
@@ -5640,7 +5752,14 @@
     4.8413664999999995,
     52.355788000000004
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-110208",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:17:32.865Z",
+   "notes": [
+    "2026-10-23T22:18 crops: 12 usable walls in 32 s"
+   ],
+   "updatedAt": "2026-10-23T22:18:04.769Z"
   },
   {
    "id": "0363100012114770",
@@ -5657,7 +5776,14 @@
     4.8436805,
     52.366522
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-114770",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:18:04.770Z",
+   "notes": [
+    "2026-10-23T22:18 crops: 15 usable walls in 39 s"
+   ],
+   "updatedAt": "2026-10-23T22:18:43.420Z"
   },
   {
    "id": "0363100012112409",
@@ -5674,7 +5800,14 @@
     4.8648495,
     52.3345405
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-112409",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:18:43.421Z",
+   "notes": [
+    "2026-10-23T22:18 crops: 4 usable walls in 1 s"
+   ],
+   "updatedAt": "2026-10-23T22:18:44.404Z"
   },
   {
    "id": "0363100012105061",
@@ -5691,7 +5824,14 @@
     4.84454,
     52.348979
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-105061",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:18:44.405Z",
+   "notes": [
+    "2026-10-23T22:18 crops: 3 usable walls in 6 s"
+   ],
+   "updatedAt": "2026-10-23T22:18:50.254Z"
   },
   {
    "id": "0363100012114072",
@@ -5708,7 +5848,14 @@
     4.8849635,
     52.335246
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-114072",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:18:50.254Z",
+   "notes": [
+    "2026-10-23T22:19 crops: 12 usable walls in 32 s"
+   ],
+   "updatedAt": "2026-10-23T22:19:21.764Z"
   },
   {
    "id": "0363100012063071",
@@ -5725,7 +5872,14 @@
     4.8905495000000005,
     52.406246499999995
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-063071",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:19:21.765Z",
+   "notes": [
+    "2026-10-23T22:19 crops: 5 usable walls in 14 s"
+   ],
+   "updatedAt": "2026-10-23T22:19:35.442Z"
   },
   {
    "id": "0363100012241772",
@@ -5742,7 +5896,14 @@
     4.9081665,
     52.3589415
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-241772",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:19:35.443Z",
+   "notes": [
+    "2026-10-23T22:19 crops: 7 usable walls in 13 s"
+   ],
+   "updatedAt": "2026-10-23T22:19:48.254Z"
   },
   {
    "id": "0363100012094874",
@@ -5759,7 +5920,14 @@
     4.8836835,
     52.33395385
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-094874",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:19:48.255Z",
+   "notes": [
+    "2026-10-23T22:20 crops: 17 usable walls in 32 s"
+   ],
+   "updatedAt": "2026-10-23T22:20:20.409Z"
   },
   {
    "id": "0363100012063603",
@@ -5776,7 +5944,14 @@
     4.848681,
     52.392539
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-063603",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:20:20.410Z",
+   "notes": [
+    "2026-10-23T22:20 crops: 14 usable walls in 35 s"
+   ],
+   "updatedAt": "2026-10-23T22:20:54.968Z"
   },
   {
    "id": "0363100012252819",
@@ -5793,7 +5968,14 @@
     4.927046,
     52.371829
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-252819",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:20:54.969Z",
+   "notes": [
+    "2026-10-23T22:21 crops: 3 usable walls in 8 s"
+   ],
+   "updatedAt": "2026-10-23T22:21:03.263Z"
   },
   {
    "id": "0363100012132433",
@@ -5810,7 +5992,14 @@
     4.8410225,
     52.36779799999999
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-132433",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:21:03.264Z",
+   "notes": [
+    "2026-10-23T22:21 crops: 5 usable walls in 14 s"
+   ],
+   "updatedAt": "2026-10-23T22:21:17.755Z"
   },
   {
    "id": "0363100012246469",
@@ -5827,7 +6016,14 @@
     4.890438,
     52.405223
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-246469",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:21:17.756Z",
+   "notes": [
+    "2026-10-23T22:21 crops: 9 usable walls in 20 s"
+   ],
+   "updatedAt": "2026-10-23T22:21:37.936Z"
   },
   {
    "id": "0363100012143384",
@@ -5844,7 +6040,14 @@
     4.825613,
     52.3623945
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-143384",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:21:37.937Z",
+   "notes": [
+    "2026-10-23T22:22 crops: 19 usable walls in 41 s"
+   ],
+   "updatedAt": "2026-10-23T22:22:19.154Z"
   },
   {
    "id": "0363100012245915",
@@ -5861,7 +6064,14 @@
     4.8399395,
     52.363596
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-245915",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:22:19.155Z",
+   "notes": [
+    "2026-10-23T22:22 crops: 7 usable walls in 19 s"
+   ],
+   "updatedAt": "2026-10-23T22:22:38.246Z"
   },
   {
    "id": "0363100012169282",
@@ -5878,7 +6088,14 @@
     4.919981,
     52.3670475
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-169282",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:22:38.247Z",
+   "notes": [
+    "2026-10-23T22:22 crops: 3 usable walls in 4 s"
+   ],
+   "updatedAt": "2026-10-23T22:22:42.716Z"
   },
   {
    "id": "0363100012237888",
@@ -5895,7 +6112,14 @@
     4.8373785,
     52.350618
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-237888",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:22:42.717Z",
+   "notes": [
+    "2026-10-23T22:23 crops: 11 usable walls in 22 s"
+   ],
+   "updatedAt": "2026-10-23T22:23:04.884Z"
   },
   {
    "id": "0363100012237887",
@@ -5912,7 +6136,14 @@
     4.838736,
     52.350627
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-237887",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:23:04.885Z",
+   "notes": [
+    "2026-10-23T22:23 crops: 12 usable walls in 21 s"
+   ],
+   "updatedAt": "2026-10-23T22:23:25.676Z"
   },
   {
    "id": "0363100012240480",
@@ -5929,7 +6160,14 @@
     4.839847499999999,
     52.361875
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-240480",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:23:25.676Z",
+   "notes": [
+    "2026-10-23T22:23 crops: 9 usable walls in 24 s"
+   ],
+   "updatedAt": "2026-10-23T22:23:50.119Z"
   },
   {
    "id": "0363100012141929",
@@ -5946,7 +6184,14 @@
     4.8482705,
     52.391348
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-141929",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:23:50.119Z",
+   "notes": [
+    "2026-10-23T22:24 crops: 20 usable walls in 40 s"
+   ],
+   "updatedAt": "2026-10-23T22:24:30.339Z"
   },
   {
    "id": "0363100012134888",
@@ -5963,7 +6208,14 @@
     4.8209420000000005,
     52.3786115
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-134888",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:24:30.339Z",
+   "notes": [
+    "2026-10-23T22:24 crops: 8 usable walls in 18 s"
+   ],
+   "updatedAt": "2026-10-23T22:24:48.598Z"
   },
   {
    "id": "0363100012241496",
@@ -5980,7 +6232,14 @@
     4.82817,
     52.350532
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-241496",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:24:48.598Z",
+   "notes": [
+    "2026-10-23T22:24 crops: 7 usable walls in 10 s"
+   ],
+   "updatedAt": "2026-10-23T22:24:58.551Z"
   },
   {
    "id": "0363100012148603",
@@ -5997,7 +6256,14 @@
     4.837018499999999,
     52.3855555
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-148603",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:24:58.551Z",
+   "notes": [
+    "2026-10-23T22:25 crops: 15 usable walls in 21 s"
+   ],
+   "updatedAt": "2026-10-23T22:25:19.995Z"
   },
   {
    "id": "0363100012138900",
@@ -6014,7 +6280,14 @@
     4.8461795,
     52.3925205
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-138900",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:25:19.996Z",
+   "notes": [
+    "2026-10-23T22:25 crops: 18 usable walls in 39 s"
+   ],
+   "updatedAt": "2026-10-23T22:25:59.222Z"
   },
   {
    "id": "0363100012237793",
@@ -6031,7 +6304,14 @@
     4.840128,
     52.350635
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-237793",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:25:59.223Z",
+   "notes": [
+    "2026-10-23T22:26 crops: 11 usable walls in 22 s"
+   ],
+   "updatedAt": "2026-10-23T22:26:21.470Z"
   },
   {
    "id": "0363100012143167",
@@ -6048,7 +6328,14 @@
     4.885498,
     52.334072
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-143167",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:26:21.471Z",
+   "notes": [
+    "2026-10-23T22:26 crops: 12 usable walls in 25 s"
+   ],
+   "updatedAt": "2026-10-23T22:26:46.210Z"
   },
   {
    "id": "0363100012242987",
@@ -6065,7 +6352,14 @@
     4.842753500000001,
     52.343079
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-242987",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:26:46.211Z",
+   "notes": [
+    "2026-10-23T22:27 crops: 6 usable walls in 14 s"
+   ],
+   "updatedAt": "2026-10-23T22:27:00.082Z"
   },
   {
    "id": "0363100012208268",
@@ -6082,7 +6376,14 @@
     4.875738500000001,
     52.340663
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "pand-208268",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:27:00.082Z",
+   "notes": [
+    "2026-10-23T22:27 no usable panorama crop for any exposed wall (0 walls listed)"
+   ],
+   "updatedAt": "2026-10-23T22:27:00.482Z"
   },
   {
    "id": "0363100012253708",
@@ -6099,7 +6400,14 @@
     4.9070235,
     52.398078
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-253708",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:27:00.483Z",
+   "notes": [
+    "2026-10-23T22:27 crops: 6 usable walls in 19 s"
+   ],
+   "updatedAt": "2026-10-23T22:27:19.049Z"
   },
   {
    "id": "0363100012195030",
@@ -6116,7 +6424,14 @@
     4.84335615,
     52.370526600000005
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-195030",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:27:19.050Z",
+   "notes": [
+    "2026-10-23T22:27 crops: 16 usable walls in 26 s"
+   ],
+   "updatedAt": "2026-10-23T22:27:44.765Z"
   },
   {
    "id": "0363100012095940",
@@ -6133,7 +6448,14 @@
     4.849928,
     52.3913055
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-095940",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:27:44.766Z",
+   "notes": [
+    "2026-10-23T22:28 crops: 20 usable walls in 37 s"
+   ],
+   "updatedAt": "2026-10-23T22:28:22.044Z"
   },
   {
    "id": "0363100012093565",
@@ -6150,7 +6472,14 @@
     4.9154695,
     52.406993
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-093565",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:28:22.044Z",
+   "notes": [
+    "2026-10-23T22:28 crops: 6 usable walls in 11 s"
+   ],
+   "updatedAt": "2026-10-23T22:28:32.866Z"
   },
   {
    "id": "0363100012165552",
@@ -6167,7 +6496,14 @@
     4.9123145,
     52.362539999999996
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-165552",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:28:32.866Z",
+   "notes": [
+    "2026-10-23T22:28 crops: 1 usable walls in 2 s"
+   ],
+   "updatedAt": "2026-10-23T22:28:34.801Z"
   },
   {
    "id": "0363100012072045",
@@ -6184,7 +6520,14 @@
     4.944539499999999,
     52.349281500000004
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-072045",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:28:34.802Z",
+   "notes": [
+    "2026-10-23T22:28 crops: 7 usable walls in 8 s"
+   ],
+   "updatedAt": "2026-10-23T22:28:43.255Z"
   },
   {
    "id": "0363100012571849",
@@ -6201,7 +6544,14 @@
     4.8358975,
     52.3653175
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-571849",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:28:43.256Z",
+   "notes": [
+    "2026-10-23T22:29 crops: 10 usable walls in 25 s"
+   ],
+   "updatedAt": "2026-10-23T22:29:08.744Z"
   },
   {
    "id": "0363100012247188",
@@ -6218,7 +6568,14 @@
     4.852881,
     52.341429500000004
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-247188",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:29:08.745Z",
+   "notes": [
+    "2026-10-23T22:29 crops: 12 usable walls in 31 s"
+   ],
+   "updatedAt": "2026-10-23T22:29:39.568Z"
   },
   {
    "id": "0363100012254552",
@@ -6235,7 +6592,14 @@
     4.83613,
     52.3865845
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-254552",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:29:39.568Z",
+   "notes": [
+    "2026-10-23T22:30 crops: 14 usable walls in 29 s"
+   ],
+   "updatedAt": "2026-10-23T22:30:08.666Z"
   },
   {
    "id": "0363100012253362",
@@ -6252,7 +6616,14 @@
     4.834823500000001,
     52.3867535
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-253362",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:30:08.667Z",
+   "notes": [
+    "2026-10-23T22:30 crops: 9 usable walls in 24 s"
+   ],
+   "updatedAt": "2026-10-23T22:30:32.326Z"
   },
   {
    "id": "0363100012126563",
@@ -6269,7 +6640,14 @@
     4.8426035,
     52.34213
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-126563",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:30:32.327Z",
+   "notes": [
+    "2026-10-23T22:30 crops: 5 usable walls in 20 s"
+   ],
+   "updatedAt": "2026-10-23T22:30:52.398Z"
   },
   {
    "id": "0363100012077602",
@@ -6286,7 +6664,14 @@
     4.8444585,
     52.3596175
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-077602",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:30:52.399Z",
+   "notes": [
+    "2026-10-23T22:30 crops: 12 usable walls in 6 s"
+   ],
+   "updatedAt": "2026-10-23T22:30:57.947Z"
   },
   {
    "id": "0363100012085297",
@@ -6303,7 +6688,14 @@
     4.856673499999999,
     52.393052999999995
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-085297",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:30:57.948Z",
+   "notes": [
+    "2026-10-23T22:31 crops: 8 usable walls in 17 s"
+   ],
+   "updatedAt": "2026-10-23T22:31:15.169Z"
   },
   {
    "id": "0363100012144276",
@@ -6320,7 +6712,14 @@
     4.83714395,
     52.36758105
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-144276",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:31:15.169Z",
+   "notes": [
+    "2026-10-23T22:31 crops: 14 usable walls in 26 s"
+   ],
+   "updatedAt": "2026-10-23T22:31:41.393Z"
   },
   {
    "id": "0363100012112686",
@@ -6337,7 +6736,14 @@
     4.8393075,
     52.391050500000006
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-112686",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:31:41.394Z",
+   "notes": [
+    "2026-10-23T22:32 crops: 12 usable walls in 20 s"
+   ],
+   "updatedAt": "2026-10-23T22:32:01.645Z"
   },
   {
    "id": "0363100012246632",
@@ -6354,7 +6760,14 @@
     4.837168999999999,
     52.363130999999996
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-246632",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:32:01.646Z",
+   "notes": [
+    "2026-10-23T22:32 crops: 10 usable walls in 27 s"
+   ],
+   "updatedAt": "2026-10-23T22:32:28.875Z"
   },
   {
    "id": "0363100012105094",
@@ -6371,7 +6784,14 @@
     4.841673,
     52.3911255
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-105094",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:32:28.876Z",
+   "notes": [
+    "2026-10-23T22:32 crops: 10 usable walls in 20 s"
+   ],
+   "updatedAt": "2026-10-23T22:32:49.153Z"
   },
   {
    "id": "0363100012109322",
@@ -6388,7 +6808,14 @@
     4.8514385,
     52.390848500000004
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-109322",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:32:49.153Z",
+   "notes": [
+    "2026-10-23T22:33 crops: 18 usable walls in 30 s"
+   ],
+   "updatedAt": "2026-10-23T22:33:18.902Z"
   },
   {
    "id": "0363100012065279",
@@ -6405,7 +6832,14 @@
     4.83581265,
     52.361194600000005
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-065279",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:33:18.903Z",
+   "notes": [
+    "2026-10-23T22:33 crops: 9 usable walls in 13 s"
+   ],
+   "updatedAt": "2026-10-23T22:33:31.761Z"
   },
   {
    "id": "0363100012164353",
@@ -6422,7 +6856,14 @@
     4.853298000000001,
     52.348575499999995
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-164353",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:33:31.762Z",
+   "notes": [
+    "2026-10-23T22:33 crops: 15 usable walls in 22 s"
+   ],
+   "updatedAt": "2026-10-23T22:33:54.242Z"
   },
   {
    "id": "0363100012083151",
@@ -6439,7 +6880,14 @@
     4.8681175,
     52.3954375
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-083151",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:33:54.242Z",
+   "notes": [
+    "2026-10-23T22:34 crops: 14 usable walls in 28 s"
+   ],
+   "updatedAt": "2026-10-23T22:34:22.507Z"
   },
   {
    "id": "0363100012126767",
@@ -6456,7 +6904,14 @@
     4.837531,
     52.36626
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-126767",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:34:22.507Z",
+   "notes": [
+    "2026-10-23T22:35 crops: 19 usable walls in 45 s"
+   ],
+   "updatedAt": "2026-10-23T22:35:07.577Z"
   },
   {
    "id": "0363100012239598",
@@ -6473,7 +6928,14 @@
     4.841604,
     52.3650875
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-239598",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:35:07.578Z",
+   "notes": [
+    "2026-10-23T22:35 crops: 12 usable walls in 29 s"
+   ],
+   "updatedAt": "2026-10-23T22:35:36.843Z"
   },
   {
    "id": "0363100012179691",
@@ -6490,7 +6952,14 @@
     4.8953465000000005,
     52.381319000000005
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-179691",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:35:36.844Z",
+   "notes": [
+    "2026-10-23T22:35 crops: 4 usable walls in 1 s"
+   ],
+   "updatedAt": "2026-10-23T22:35:37.836Z"
   },
   {
    "id": "0363100012074840",
@@ -6507,7 +6976,14 @@
     4.8412698,
     52.39288185
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-074840",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:35:37.837Z",
+   "notes": [
+    "2026-10-23T22:35 crops: 1 usable walls in 1 s"
+   ],
+   "updatedAt": "2026-10-23T22:35:38.427Z"
   },
   {
    "id": "0363100012254404",
@@ -6524,7 +7000,14 @@
     4.8768275,
     52.397711
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-254404",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:35:38.428Z",
+   "notes": [
+    "2026-10-23T22:35 crops: 9 usable walls in 8 s"
+   ],
+   "updatedAt": "2026-10-23T22:35:46.732Z"
   },
   {
    "id": "0363100012243686",
@@ -6541,7 +7024,14 @@
     4.904494,
     52.3957575
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-243686",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:35:46.733Z",
+   "notes": [
+    "2026-10-23T22:36 crops: 5 usable walls in 15 s"
+   ],
+   "updatedAt": "2026-10-23T22:36:01.413Z"
   },
   {
    "id": "0363100012127007",
@@ -6558,7 +7048,14 @@
     4.902626,
     52.3459225
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-127007",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:36:01.414Z",
+   "notes": [
+    "2026-10-23T22:36 crops: 7 usable walls in 19 s"
+   ],
+   "updatedAt": "2026-10-23T22:36:20.745Z"
   },
   {
    "id": "0363100012242098",
@@ -6575,7 +7072,14 @@
     4.9473044999999995,
     52.347417
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-242098",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:36:20.746Z",
+   "notes": [
+    "2026-10-23T22:36 crops: 5 usable walls in 11 s"
+   ],
+   "updatedAt": "2026-10-23T22:36:31.957Z"
   },
   {
    "id": "0363100012069797",
@@ -6592,7 +7096,14 @@
     4.9307935,
     52.337894
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-069797",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:36:31.958Z",
+   "notes": [
+    "2026-10-23T22:36 crops: 17 usable walls in 28 s"
+   ],
+   "updatedAt": "2026-10-23T22:36:59.522Z"
   },
   {
    "id": "0363100012092290",
@@ -6609,7 +7120,14 @@
     4.890794,
     52.4065755
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-092290",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:36:59.523Z",
+   "notes": [
+    "2026-10-23T22:37 crops: 3 usable walls in 9 s"
+   ],
+   "updatedAt": "2026-10-23T22:37:08.047Z"
   },
   {
    "id": "0363100012243124",
@@ -6626,7 +7144,14 @@
     4.840251,
     52.3545
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-243124",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:37:08.048Z",
+   "notes": [
+    "2026-10-23T22:37 crops: 8 usable walls in 18 s"
+   ],
+   "updatedAt": "2026-10-23T22:37:25.888Z"
   },
   {
    "id": "0363100012093690",
@@ -6643,7 +7168,14 @@
     4.8513085,
     52.339180999999996
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-093690",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:37:25.889Z",
+   "notes": [
+    "2026-10-23T22:37 crops: 5 usable walls in 1 s"
+   ],
+   "updatedAt": "2026-10-23T22:37:26.641Z"
   },
   {
    "id": "0363100012241720",
@@ -6660,7 +7192,14 @@
     4.8401745,
     52.3549595
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-241720",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:37:26.641Z",
+   "notes": [
+    "2026-10-23T22:37 crops: 3 usable walls in 8 s"
+   ],
+   "updatedAt": "2026-10-23T22:37:34.881Z"
   },
   {
    "id": "0363100012239207",
@@ -6677,7 +7216,14 @@
     4.8388895000000005,
     52.37514
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "pand-239207",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:37:34.881Z",
+   "notes": [
+    "2026-10-23T22:37 no usable panorama crop for any exposed wall (0 walls listed)"
+   ],
+   "updatedAt": "2026-10-23T22:37:35.268Z"
   },
   {
    "id": "0363100012246549",
@@ -6694,7 +7240,14 @@
     4.870302000000001,
     52.340465
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-246549",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:37:35.269Z",
+   "notes": [
+    "2026-10-23T22:37 crops: 2 usable walls in 8 s"
+   ],
+   "updatedAt": "2026-10-23T22:37:43.057Z"
   },
   {
    "id": "0363100012238742",
@@ -6711,7 +7264,14 @@
     4.8402595,
     52.3542055
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-238742",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:37:43.058Z",
+   "notes": [
+    "2026-10-23T22:37 crops: 6 usable walls in 12 s"
+   ],
+   "updatedAt": "2026-10-23T22:37:55.512Z"
   },
   {
    "id": "0363100012250984",
@@ -6728,7 +7288,14 @@
     4.855423,
     52.3437705
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "pand-250984",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:37:55.512Z",
+   "notes": [
+    "2026-10-23T22:37 no usable panorama crop for any exposed wall (0 walls listed)"
+   ],
+   "updatedAt": "2026-10-23T22:37:55.820Z"
   },
   {
    "id": "0363100012081222",
@@ -6745,7 +7312,14 @@
     4.871017,
     52.340036999999995
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-081222",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:37:55.821Z",
+   "notes": [
+    "2026-10-23T22:38 crops: 7 usable walls in 7 s"
+   ],
+   "updatedAt": "2026-10-23T22:38:02.416Z"
   },
   {
    "id": "0363100012120865",
@@ -6762,7 +7336,14 @@
     4.840268,
     52.353911499999995
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-120865",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:38:02.417Z",
+   "notes": [
+    "2026-10-23T22:38 crops: 8 usable walls in 18 s"
+   ],
+   "updatedAt": "2026-10-23T22:38:19.968Z"
   },
   {
    "id": "0363100012090220",
@@ -6779,7 +7360,14 @@
     4.9358665,
     52.3372975
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-090220",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:38:19.968Z",
+   "notes": [
+    "2026-10-23T22:38 crops: 7 usable walls in 10 s"
+   ],
+   "updatedAt": "2026-10-23T22:38:30.057Z"
   },
   {
    "id": "0363100012251218",
@@ -6796,7 +7384,14 @@
     4.8294995,
     52.355716
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-251218",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:38:30.058Z",
+   "notes": [
+    "2026-10-23T22:38 crops: 5 usable walls in 14 s"
+   ],
+   "updatedAt": "2026-10-23T22:38:43.836Z"
   },
   {
    "id": "0363100012074933",
@@ -6813,7 +7408,14 @@
     4.8399375,
     52.35362
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-074933",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:38:43.837Z",
+   "notes": [
+    "2026-10-23T22:39 crops: 8 usable walls in 18 s"
+   ],
+   "updatedAt": "2026-10-23T22:39:01.651Z"
   },
   {
    "id": "0363100012140686",
@@ -6830,7 +7432,14 @@
     4.8653465,
     52.394469
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-140686",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:39:01.652Z",
+   "notes": [
+    "2026-10-23T22:39 crops: 12 usable walls in 23 s"
+   ],
+   "updatedAt": "2026-10-23T22:39:24.959Z"
   },
   {
    "id": "0363100012150639",
@@ -6847,7 +7456,14 @@
     4.942658,
     52.3573465
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-150639",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:39:24.960Z",
+   "notes": [
+    "2026-10-23T22:39 crops: 13 usable walls in 10 s"
+   ],
+   "updatedAt": "2026-10-23T22:39:35.286Z"
   },
   {
    "id": "0363100012254300",
@@ -6864,7 +7480,14 @@
     4.8414405,
     52.3637785
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-254300",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:39:35.287Z",
+   "notes": [
+    "2026-10-23T22:39 crops: 5 usable walls in 6 s"
+   ],
+   "updatedAt": "2026-10-23T22:39:41.463Z"
   },
   {
    "id": "0363100012068941",
@@ -6881,7 +7504,14 @@
     4.870760000000001,
     52.3972395
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-068941",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:39:41.464Z",
+   "notes": [
+    "2026-10-23T22:40 crops: 10 usable walls in 20 s"
+   ],
+   "updatedAt": "2026-10-23T22:40:01.338Z"
   },
   {
    "id": "0363100012216977",
@@ -6898,7 +7528,14 @@
     4.856458,
     52.3361865
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "pand-216977",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:40:01.339Z",
+   "notes": [
+    "2026-10-23T22:40 no usable panorama crop for any exposed wall (0 walls listed)"
+   ],
+   "updatedAt": "2026-10-23T22:40:01.661Z"
   },
   {
    "id": "0363100012239262",
@@ -6915,7 +7552,14 @@
     4.840565,
     52.374982
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-239262",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:40:01.662Z",
+   "notes": [
+    "2026-10-23T22:40 crops: 2 usable walls in 4 s"
+   ],
+   "updatedAt": "2026-10-23T22:40:06.161Z"
   },
   {
    "id": "0363100012125830",
@@ -6932,7 +7576,14 @@
     4.9542185,
     52.392117999999996
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-125830",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:40:06.162Z",
+   "notes": [
+    "2026-10-23T22:40 crops: 3 usable walls in 10 s"
+   ],
+   "updatedAt": "2026-10-23T22:40:16.054Z"
   },
   {
    "id": "0363100012079952",
@@ -6949,7 +7600,14 @@
     4.8524655,
     52.3909565
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-079952",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:40:16.055Z",
+   "notes": [
+    "2026-10-23T22:40 crops: 9 usable walls in 19 s"
+   ],
+   "updatedAt": "2026-10-23T22:40:34.757Z"
   },
   {
    "id": "0363100012196327",
@@ -6966,7 +7624,14 @@
     4.8304659999999995,
     52.372104
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-196327",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T22:40:34.757Z",
+   "notes": [
+    "2026-10-23T22:40 crops: 1 usable walls in 3 s"
+   ],
+   "updatedAt": "2026-10-23T22:40:37.747Z"
   }
  ]
 }

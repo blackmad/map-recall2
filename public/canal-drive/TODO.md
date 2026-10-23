@@ -30,9 +30,12 @@ Open, in order:
   `error` row; the factory retries network errors once and re-queues them on
   the next run. The 23 authored-but-uninstalled recipes are the zero-network
   first batch (`politie-west-overtoomsesluis` fails its own footprint gate,
-  IoU 0.749). Next: `npm run factory -- --stage=crops --ids=320 --owner=crops`
-  (skips pands already in the archive) once 3DBAG is back, then
-  `--stage=all --ids=20` batches per the brief.
+  IoU 0.749). The crops archive run finished 2026-10-24 00:40: 296 of 311 pands
+  have wall crops in the source archive, 15 are `no-evidence` (not in the
+  building tiles or no usable panorama). Next, once 3DBAG answers again:
+  `npm run factory -- --stage=all --ids=20 --owner=factory-1` batches per
+  the brief (crops are skipped, so a batch is facts → draft → measure →
+  compile only).
   11 POI rows have no pand (`needs-pand`: Pathé de Munt, DeLaMar West, Levend
   Paardenmuseum, WTC, …); OBA Banne's pand is not in the building tiles.
 - **kits-review**: 546 kit buildings have no review record; `kit-sheets.ts`
