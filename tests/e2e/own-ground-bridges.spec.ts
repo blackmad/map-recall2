@@ -3,6 +3,9 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
 import { bridgesFromExtract, type Bridge } from './ownGroundBridges';
 
+// Phones free the ground's vertex arrays after upload; layersAt() walks them.
+test.beforeEach(({ page }) => page.addInitScript(() => { (window as any).__canalRecallKeepGroundArrays = true; }));
+
 // Bridge decks on the own ground (`?ownGround=1`), lane bridges-elevation
 // 2026-10-13 (docs/handoffs/lane-bridges-elevation-20261013.md). Opt-in, needs
 // the GPU and the network basemap:

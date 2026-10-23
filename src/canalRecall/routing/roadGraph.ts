@@ -237,26 +237,21 @@ function* roadGraphStages<TMetadata>(
       if (!existingForward.segmentIndexes.includes(segmentIndex)) {
         (existingForward.segmentIndexes as number[]).push(segmentIndex);
         (existingForward.segmentMetadata as (TMetadata | undefined)[]).push(segments[segmentIndex]?.metadata);
-        (existingReverse.segmentIndexes as number[]).push(segmentIndex);
-        (existingReverse.segmentMetadata as (TMetadata | undefined)[]).push(segments[segmentIndex]?.metadata);
+        // The two directions of a link share their arrays (below); push once.
+        if (existingReverse.segmentIndexes !== existingForward.segmentIndexes) {
+          (existingReverse.segmentIndexes as number[]).push(segmentIndex);
+          (existingReverse.segmentMetadata as (TMetadata | undefined)[]).push(segments[segmentIndex]?.metadata);
+        }
       }
       return;
     }
     const distance = distanceBetween(a, b);
-    const forward: RoadGraphEdge<TMetadata> = {
-      node: b,
-      distance,
-      kind,
-      segmentIndexes: [segmentIndex],
-      segmentMetadata: [segments[segmentIndex]?.metadata],
-    };
-    const reverse: RoadGraphEdge<TMetadata> = {
-      node: a,
-      distance,
-      kind,
-      segmentIndexes: [segmentIndex],
-      segmentMetadata: [segments[segmentIndex]?.metadata],
-    };
+    // One pair of arrays per link, shared by both directions: they always held
+    // the same values, and a city graph has ~10^5 links (phone heap, 2026-10-23).
+    const segmentIndexes = [segmentIndex];
+    const segmentMetadata = [segments[segmentIndex]?.metadata];
+    const forward: RoadGraphEdge<TMetadata> = { node: b, distance, kind, segmentIndexes, segmentMetadata };
+    const reverse: RoadGraphEdge<TMetadata> = { node: a, distance, kind, segmentIndexes, segmentMetadata };
     a.edges.push(forward);
     b.edges.push(reverse);
   };

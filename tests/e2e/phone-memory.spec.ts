@@ -75,6 +75,8 @@ test('phone memory over a ride', async ({ page }, info) => {
   const rideS = Number(process.env.RIDE_S ?? 60);
   test.setTimeout(240_000 + rideS * 1000);
   await page.addInitScript(GL_TRACKER);
+  // PHONE_KEEP_ARRAYS=1: the own ground keeps its vertex arrays (the pre-2026-10-23 behaviour).
+  if (process.env.PHONE_KEEP_ARRAYS) await page.addInitScript(() => { (window as any).__canalRecallKeepGroundArrays = true; });
   const cdp = await page.context().newCDPSession(page);
   const heapProfile = !!process.env.PHONE_HEAP;
   if (heapProfile) { await cdp.send('HeapProfiler.enable'); await cdp.send('HeapProfiler.startSampling', { samplingInterval: 65536 }); }
@@ -83,6 +85,8 @@ test('phone memory over a ride', async ({ page }, info) => {
   await cdp.send('HeapProfiler.enable');
   const sample = async (label: string) => {
     await cdp.send('HeapProfiler.collectGarbage');
+    // ArrayBuffer backing stores (typed vertex arrays) are outside the JS heap figure.
+    const usage = await cdp.send('Runtime.getHeapUsage') as { backingStorageSize?: number };
     const metrics = Object.fromEntries(((await cdp.send('Performance.getMetrics')) as any).metrics.map((m: any) => [m.name, m.value]));
     const gl = await page.evaluate(() => {
       const w = window as any, t = w.__glTally, vm = w.canalRecallGame?.vectorMap;
@@ -97,7 +101,7 @@ test('phone memory over a ride', async ({ page }, info) => {
       return { ...t, tiles: vm?._buildingTiles?.status?.()?.tiles ?? null, landmarks: vm?._signatureLandmarks?.shown?.size ?? null, evicted: vm?._signatureLandmarks?.evictions ?? null, pixelRatio: vm?.map?.getPixelRatio?.() ?? null, landmarkGeomMB: Math.round(landmarkGeom / 1048576), ground: (() => { const g = vm?._ownGround?.status?.(); return g ? { radiusM: g.radiusM, cells: Object.keys(g.cells).length, lod0: Object.values(g.cells).filter((l: any) => l === 0).length, geometryMB: g.geometryMB, far: g.far.geometryMB, farRadiusM: g.far.radiusM } : null; })(), state: w.canalRecallGame?.state, player: w.canalRecallGame?.player ? [Math.round(w.canalRecallGame.player.x), Math.round(w.canalRecallGame.player.y)] : null };
     });
     const mb = (n: number) => Math.round(n / 1048576);
-    const row = { label, heapMB: mb(metrics.JSHeapUsedSize), heapTotalMB: mb(metrics.JSHeapTotalSize), texturesMB: mb(gl.textures), buffersMB: mb(gl.buffers), nTextures: gl.nTextures, nBuffers: gl.nBuffers, nodes: metrics.Nodes, tiles: gl.tiles, landmarks: gl.landmarks, evicted: gl.evicted, pixelRatio: gl.pixelRatio, landmarkGeomMB: gl.landmarkGeomMB, ground: gl.ground, state: gl.state, player: gl.player };
+    const row = { label, heapMB: mb(metrics.JSHeapUsedSize), arrayBuffersMB: usage.backingStorageSize == null ? null : mb(usage.backingStorageSize), heapTotalMB: mb(metrics.JSHeapTotalSize), texturesMB: mb(gl.textures), buffersMB: mb(gl.buffers), nTextures: gl.nTextures, nBuffers: gl.nBuffers, nodes: metrics.Nodes, tiles: gl.tiles, landmarks: gl.landmarks, evicted: gl.evicted, pixelRatio: gl.pixelRatio, landmarkGeomMB: gl.landmarkGeomMB, ground: gl.ground, state: gl.state, player: gl.player };
     console.log(JSON.stringify(row));
     return row;
   };

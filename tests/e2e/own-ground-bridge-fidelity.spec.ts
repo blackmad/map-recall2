@@ -5,6 +5,9 @@ import { openRoute } from './helpers';
 import { bridgesFromExtract, type Bridge } from './ownGroundBridges';
 import { PINNED_CROWNS, crownOverHigherEnd } from '../../src/canalRecall/ownGround/bridgeCrowns';
 
+// Phones free the ground's vertex arrays after upload; layersAt() walks them.
+test.beforeEach(({ page }) => page.addInitScript(() => { (window as any).__canalRecallKeepGroundArrays = true; }));
+
 // Named bridge-fidelity regressions on the own ground (`?ownGround=1`), lane bridge-fidelity 2026-10-14.
 // Opt-in, needs the GPU and the network basemap:
 //   OWN_GROUND=1 PW_PORT=4510 npx playwright test own-ground-bridge-fidelity --project=desktop

@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+## Phone memory: −51 MB of heap and −65 MB of vertex arrays (2026-10-23)
+
+Follow-up to the landmark eviction, on the two biggest owners the phone
+probe found (`tests/e2e/phone-memory.spec.ts`, iPhone profile, forced GC,
+same spot 10 s into the ride; `arrayBuffersMB` is CDP `backingStorageSize`,
+the typed arrays the JS heap figure leaves out):
+
+- **Road network** (`road-network.js`): every OSM point carried three `{x,y}`
+  objects (normal, left and right edge), 47 MB of heap, read only by
+  `preRender`, which the ride never calls (the network is an open track). Only
+  the per-segment box stays; `preRender` derives edges on demand.
+- **Road graph** (`routing/roadGraph.ts`): the two directions of a link now
+  share one `segmentIndexes`/`segmentMetadata` pair (they always held the same
+  values).
+- **Own ground** (`releaseArrays`, phones only): each cell's vertex and index
+  arrays (~12 MB per resident cell) lived on beside their GPU copy; three's
+  `onUpload` now drops them. Only the diagnostics walk `layersAt` read them;
+  the three specs that use it set `__canalRecallKeepGroundArrays`. Screenshots
+  with and without are identical.
+
+| at ride + 10 s | before | after |
+|---|---|---|
+| JS heap (after GC) | 334 MB | 283 MB |
+| ArrayBuffers | 254 MB | 189 MB |
+| GL buffers / textures | ~150 / ~62 MB | unchanged |
+
+Routing checks (`test:reachability`, `test:canal-car`, `test:city-startup`),
+`test:own-ground` (140) and `check:canal` pass. Still unverified on a real
+phone. The shared frame does not rebuild its three.js state after a context
+restore (it never did; with released arrays the ground could not re-upload
+either) — TODO.
+
 ## Landmarks stop piling up, and nothing loads behind the setup card (2026-10-23)
 
 Users reported the game crashing phones and running far too slowly on ordinary

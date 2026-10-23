@@ -77,12 +77,18 @@ function canalRecallPixelRatio() {
 // a 1 km cap saved 18 MB (9 cells instead of 11), not enough to accept an
 // unjudged horizon, so phones keep the default ring. `?groundRadius=N` fixes the
 // ring at N metres for before/after shots.
+//
+// Phones also free each ground cell's vertex arrays once uploaded (~12 MB per
+// resident cell lived on beside the GPU copy). `window.__canalRecallKeepGroundArrays`
+// keeps them for specs that walk `_ownGround.layersAt()`.
 function canalRecallOwnGroundBudget() {
+  const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  const budget = { releaseArrays: !!coarse && window.__canalRecallKeepGroundArrays !== true };
   try {
     const asked = Number(new URLSearchParams(window.location.search).get('groundRadius'));
-    if (Number.isFinite(asked) && asked >= 400) return { radiusM: Math.min(asked, 2000), aerialRadiusM: Math.min(asked, 2000) };
+    if (Number.isFinite(asked) && asked >= 400) { budget.radiusM = Math.min(asked, 2000); budget.aerialRadiusM = Math.min(asked, 2000); }
   } catch (_) { /* no window */ }
-  return {};
+  return budget;
 }
 
 // MSAA costs a second full-size colour buffer (and bandwidth) on phones.

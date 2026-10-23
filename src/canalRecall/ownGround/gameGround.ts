@@ -62,6 +62,12 @@ export interface OwnGroundOptions {
   parks?: boolean;
   /** The far ring beyond the resident cells from the air (default on). */
   far?: boolean;
+  /**
+   * Free each vertex/index array once three has uploaded it (default off; the
+   * ride turns it on for phones). A resident cell's typed arrays (~12 MB) lived
+   * on beside their GPU copy; only `layersAt`, a diagnostics walk, reads them.
+   */
+  releaseArrays?: boolean;
   /** Ground palette (groundLook.ts; GROUND_LOOK_DEFAULT unless given). Colour only. */
   groundLook?: GroundLook;
   /** The surveyed road partition from roads-v1 (roadSurfaces.ts). On by default (2026-10-16); `?roads=0` draws the OSM bands. */
@@ -114,6 +120,9 @@ const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
 /** Materials that are objects on the ground, not the ground: lit by the rig as is (no FLAT_GROUND_GAIN). */
 const UNGAINED = new Set(['hedge', 'furniture', 'bollard', 'tram']);
 const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, brick: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
+
+/** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */
+function releaseArray(this: { array: unknown }): void { this.array = null; }
 
 export class OwnGround {
   readonly root: any;
@@ -173,7 +182,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, ...options };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -735,6 +744,16 @@ export class OwnGround {
   }
 
   private geometry(p: PackedMesh): any {
+    const g = this.packedGeometry(p);
+    if (this.opts.releaseArrays) {
+      // `count` stays; the bounding sphere is already set; nothing marks these
+      // attributes for re-upload, so the CPU copy has no reader after this.
+      for (const attribute of [...Object.values(g.attributes), g.index] as any[]) attribute?.onUpload(releaseArray);
+    }
+    return g;
+  }
+
+  private packedGeometry(p: PackedMesh): any {
     const THREE = this.THREE;
     const g = new THREE.BufferGeometry();
     g.setAttribute('position', new THREE.BufferAttribute(p.positions, 3));
@@ -986,6 +1005,7 @@ export class OwnGround {
       r.group.traverse((o: any) => {
         if (!o.isMesh) return;
         const layer = o.name as GroundLayer, pos = o.geometry.attributes.position.array as Float32Array, idx = o.geometry.index.array as Uint32Array;
+        if (!pos || !idx) return; // released after upload (releaseArrays)
         for (let t = 0; t < idx.length; t += 3) {
           const a = idx[t] * 3, b = idx[t + 1] * 3, c = idx[t + 2] * 3;
           const d = (pos[b + 1] - pos[c + 1]) * (pos[a] - pos[c]) + (pos[c] - pos[b]) * (pos[a + 1] - pos[c + 1]);

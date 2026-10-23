@@ -47,7 +47,7 @@ class RoadNetwork {
 
   constructor(segments, startPoint, finishPoint, tiles, routingGraph = null, surfaceIndex = null) {
     this.isOpenTrack = true;
-    this.segments = segments; // [{points, width, type, normals, leftBound, rightBound}]
+    this.segments = segments; // [{points, width, type, bounds}]
     this.tiles = tiles || []; // [{img, gameX, gameY, gameW, gameH}]
     this.startPoint = { ...startPoint };
     this.finishPoint = { ...finishPoint };
@@ -89,29 +89,37 @@ class RoadNetwork {
     this._computeEndpointAngles();
   }
 
+  // Only the per-segment box stays resident. The per-point normals and edge
+  // polylines (three {x,y} objects per OSM point, ~47 MB of heap on a phone
+  // at ride start, 2026-10-23) were read only by preRender, which the ride
+  // never calls (the network is an open track); it derives them on demand.
   _computeSegmentGeometry() {
     for (const seg of this.segments) {
-      seg.normals = [];
-      seg.leftBound = [];
-      seg.rightBound = [];
       seg.bounds = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
-
-      for (let i = 0; i < seg.points.length; i++) {
-        const prev = i > 0 ? seg.points[i - 1] : seg.points[i];
-        const next = i < seg.points.length - 1 ? seg.points[i + 1] : seg.points[i];
-        const dx = next.x - prev.x;
-        const dy = next.y - prev.y;
-        const len = Math.sqrt(dx * dx + dy * dy) || 1;
-        const nx = -dy / len, ny = dx / len;
-        seg.normals.push({ x: nx, y: ny });
-        seg.leftBound.push({ x: seg.points[i].x + nx * seg.width, y: seg.points[i].y + ny * seg.width });
-        seg.rightBound.push({ x: seg.points[i].x - nx * seg.width, y: seg.points[i].y - ny * seg.width });
-        seg.bounds.minX = Math.min(seg.bounds.minX, seg.points[i].x - seg.width);
-        seg.bounds.minY = Math.min(seg.bounds.minY, seg.points[i].y - seg.width);
-        seg.bounds.maxX = Math.max(seg.bounds.maxX, seg.points[i].x + seg.width);
-        seg.bounds.maxY = Math.max(seg.bounds.maxY, seg.points[i].y + seg.width);
+      for (const p of seg.points) {
+        seg.bounds.minX = Math.min(seg.bounds.minX, p.x - seg.width);
+        seg.bounds.minY = Math.min(seg.bounds.minY, p.y - seg.width);
+        seg.bounds.maxX = Math.max(seg.bounds.maxX, p.x + seg.width);
+        seg.bounds.maxY = Math.max(seg.bounds.maxY, p.y + seg.width);
       }
     }
+  }
+
+  /** Per-point unit normals and the two edge polylines of one segment (for preRender). */
+  _segmentEdges(seg) {
+    const normals = [], leftBound = [], rightBound = [];
+    for (let i = 0; i < seg.points.length; i++) {
+      const prev = i > 0 ? seg.points[i - 1] : seg.points[i];
+      const next = i < seg.points.length - 1 ? seg.points[i + 1] : seg.points[i];
+      const dx = next.x - prev.x;
+      const dy = next.y - prev.y;
+      const len = Math.sqrt(dx * dx + dy * dy) || 1;
+      const nx = -dy / len, ny = dx / len;
+      normals.push({ x: nx, y: ny });
+      leftBound.push({ x: seg.points[i].x + nx * seg.width, y: seg.points[i].y + ny * seg.width });
+      rightBound.push({ x: seg.points[i].x - nx * seg.width, y: seg.points[i].y - ny * seg.width });
+    }
+    return { normals, leftBound, rightBound };
   }
 
   _buildGrid() {
@@ -479,15 +487,16 @@ class RoadNetwork {
     for (const seg of sortedSegs) {
       if (seg.points.length < 2) continue;
 
+      const edges = this._segmentEdges(seg);
       // Road surface — color by road type
       const roadCol = ROAD_COLORS[seg.type] || { fill: COLORS.road, light: COLORS.roadLight };
       tc.beginPath();
-      tc.moveTo(seg.leftBound[0].x, seg.leftBound[0].y);
-      for (let i = 1; i < seg.leftBound.length; i++) {
-        tc.lineTo(seg.leftBound[i].x, seg.leftBound[i].y);
+      tc.moveTo(edges.leftBound[0].x, edges.leftBound[0].y);
+      for (let i = 1; i < edges.leftBound.length; i++) {
+        tc.lineTo(edges.leftBound[i].x, edges.leftBound[i].y);
       }
-      for (let i = seg.rightBound.length - 1; i >= 0; i--) {
-        tc.lineTo(seg.rightBound[i].x, seg.rightBound[i].y);
+      for (let i = edges.rightBound.length - 1; i >= 0; i--) {
+        tc.lineTo(edges.rightBound[i].x, edges.rightBound[i].y);
       }
       tc.closePath();
       tc.fillStyle = roadCol.fill;
@@ -497,19 +506,19 @@ class RoadNetwork {
       tc.beginPath();
       const innerFrac = 0.7;
       tc.moveTo(
-        seg.points[0].x + seg.normals[0].x * seg.width * innerFrac,
-        seg.points[0].y + seg.normals[0].y * seg.width * innerFrac
+        seg.points[0].x + edges.normals[0].x * seg.width * innerFrac,
+        seg.points[0].y + edges.normals[0].y * seg.width * innerFrac
       );
       for (let i = 1; i < seg.points.length; i++) {
         tc.lineTo(
-          seg.points[i].x + seg.normals[i].x * seg.width * innerFrac,
-          seg.points[i].y + seg.normals[i].y * seg.width * innerFrac
+          seg.points[i].x + edges.normals[i].x * seg.width * innerFrac,
+          seg.points[i].y + edges.normals[i].y * seg.width * innerFrac
         );
       }
       for (let i = seg.points.length - 1; i >= 0; i--) {
         tc.lineTo(
-          seg.points[i].x - seg.normals[i].x * seg.width * innerFrac,
-          seg.points[i].y - seg.normals[i].y * seg.width * innerFrac
+          seg.points[i].x - edges.normals[i].x * seg.width * innerFrac,
+          seg.points[i].y - edges.normals[i].y * seg.width * innerFrac
         );
       }
       tc.closePath();
@@ -537,15 +546,16 @@ class RoadNetwork {
     tc.lineWidth = 1.5;
     for (const seg of this.segments) {
       if (seg.points.length < 2) continue;
+      const edges = this._segmentEdges(seg);
       // Left edge
       tc.beginPath();
-      tc.moveTo(seg.leftBound[0].x, seg.leftBound[0].y);
-      for (let i = 1; i < seg.leftBound.length; i++) tc.lineTo(seg.leftBound[i].x, seg.leftBound[i].y);
+      tc.moveTo(edges.leftBound[0].x, edges.leftBound[0].y);
+      for (let i = 1; i < edges.leftBound.length; i++) tc.lineTo(edges.leftBound[i].x, edges.leftBound[i].y);
       tc.stroke();
       // Right edge
       tc.beginPath();
-      tc.moveTo(seg.rightBound[0].x, seg.rightBound[0].y);
-      for (let i = 1; i < seg.rightBound.length; i++) tc.lineTo(seg.rightBound[i].x, seg.rightBound[i].y);
+      tc.moveTo(edges.rightBound[0].x, edges.rightBound[0].y);
+      for (let i = 1; i < edges.rightBound.length; i++) tc.lineTo(edges.rightBound[i].x, edges.rightBound[i].y);
       tc.stroke();
     }
 

@@ -2868,15 +2868,26 @@ Not milestones — standing obligations with live guards.
   fragments.
 - Keep `npm run check:map-recall` green (lint, Map Recall unit tests, trivia,
   postcard and neighbourhood text/story checks) alongside `check:canal`.
-- P1: Phone memory, next levers (2026-10-23, HISTORY "Landmarks stop piling
-  up"): live heap at ride start is ~330 MB, mostly whole-city roads
-  (`road-network.js` `_computeSegmentGeometry` 47 MB, road graph 43 MB,
-  `osm-loader.js` 23 MB) — stream or pack them per tile. The own ground holds
-  ~12 MB of geometry per resident cell (`_ownGround.status().geometryMB`);
-  shrink per-cell buffers (drop CPU copies after upload where nothing reads
-  them, quantise) rather than the ring. Per-frame allocation churn is ~4 MB/s
-  while riding (heap grows until GC) — profile and pool. Measure with
-  `PERF_PHONE_MEMORY=1 PHONE_HEAP=1 npx playwright test phone-memory --project=iphone`.
+- P0: Real-device pass for the 2026-10-23 phone/slow-machine work (HISTORY
+  "Phone memory", "Landmarks stop piling up", "Slow machines step their render
+  cost down"): ride 5+ minutes on a real iPhone and a low-end Android, and on
+  an Intel/AMD laptop at 150 % scaling. Watch Sentry for the
+  `graphics-failure` warnings (they carry GPU, heap and deviceMemory) and the
+  governor's `render budget step` log. Nothing here has run on real hardware.
+- P1: Phone memory, next levers (2026-10-23): after GC ~283 MB of JS heap and
+  ~189 MB of ArrayBuffers 10 s into a ride (90 MB of ArrayBuffers already at
+  ride start, before any ground cell: unattributed). Heap owners left: road
+  graph ~41 MB, `osm-loader.js` ~21 MB, own ground 27 MB, road surface 16 MB —
+  stream or pack roads per tile. Own-ground GL buffers ~57 MB: quantise.
+  Per-frame allocation churn ~4 MB/s while riding (heap grows until GC):
+  profile and pool. Measure with
+  `PERF_PHONE_MEMORY=1 PHONE_HEAP=1 npx playwright test phone-memory --project=iphone`
+  (`PHONE_KEEP_ARRAYS=1` for the old own-ground behaviour).
+- P1: The shared frame never rebuilds its three.js renderer or resources after
+  `webglcontextrestored` (only `threeBuildingsBrowser` and the facade recipe
+  layer listen), so a phone that loses and regains its GPU keeps a blank 3D
+  layer until reload; with `releaseArrays` the own ground cannot re-upload
+  either. Rebuild on restore (own ground: drop and re-request resident cells).
 - P1: Firebase App Check answers 403 in production (Sentry breadcrumb
   2026-10-23, Safari/Mac: `appCheck/throttled` for 24 h). Check the site key /
   registered domain for rideamsterdam.nl.

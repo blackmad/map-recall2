@@ -2,6 +2,9 @@ import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
 
+// Phones free the ground's vertex arrays after upload; layersAt() walks them.
+test.beforeEach(({ page }) => page.addInitScript(() => { (window as any).__canalRecallKeepGroundArrays = true; }));
+
 // City-wide own ground (`?ownGround=1`): ride screenshots in districts outside
 // the first streaming area (`west`), and the BRU0067 deck top. Opt-in:
 //   OWN_GROUND=1 PW_PORT=4425 npx playwright test own-ground-citywide --project=desktop
