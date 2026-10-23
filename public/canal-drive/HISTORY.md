@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## Felix Meritis: the length complaint was already fixed; the rear house returns (2026-10-23)
+
+Open feedback (2026-10-11, `e508bdc`): "why was this building modeled twice as
+long as it is in real life? it shouldn't reach all the way to the behind
+street". The length fix landed two days later (`06d1373ea` massing, rebuilt
+`49e4ef44c` 2026-10-13): the BAG plot is 86 m deep but only its canal half is
+built, so the builder now stands the 22 m front house and the oval concert hall
+directly behind it and lays a garden over the rear. The current gallery and
+ride frames show that mass stopping at the hall; the feedback build predates
+it. The PDOK 2023 aerial confirms the layout: front house, oval hall, garden,
+then a separate rear house on the north edge of the plot.
+
+That rear house (BAG `0363100012174322`, 14.66 m) was still in the model's
+`suppressOsmIds` while the GLB covered 0 % of it (the TODO's over-suppression
+list), so the city layer hid a real back-street building. It is removed from
+the list (the model footprint stays the 86 m plot for placement); the ordinary
+building layer now draws it over the garden. Manifest and signature bundles
+rebuilt; `check:manual-landmarks` passes and `check:covers` lists Felix as
+"covered, not hidden" (expected for the plot-wide footprint) with the other
+advisory hidden bugs unchanged. Gallery and chase-view frames at
+`artifacts/felix-feedback/`.
+
 ## Cockpit view retired; rides start in Chase (2026-10-22)
 
 User: "get rid of the cockpit view" and "default to chase". The preference

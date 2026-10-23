@@ -494,9 +494,10 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   old lanes; triage them next), disk ~146 GB free. Merged 2026-10-13 by the
   integrator after review-sheet checks: `feat/kit-only-churches-20261011`,
   `fix/europe-window-grid-20261011`, `feat/da-costakade-13-20261013`,
-  `gameplay/riding-prompts-20261013`, `ground/data-20261013`. Still open:
-  `fix/felix-meritis-20261011` (audit FAIL: 12 floating openings, zfight
-  regression 0.9 m² — cleanup lane), `big/ordinary-a2-20261013`
+  `gameplay/riding-prompts-20261013`, `ground/data-20261013`. Merged
+  2026-10-13: `fix/felix-meritis-20261011` (rebuilt after review; z-fight 0.9
+  → 0 m²; the model no longer suppresses rear pand 174322, which the city
+  layer now draws). Still open: `big/ordinary-a2-20261013`
   (Jodenbreestraat 11 WIP: 116 open loops, 1,494 m² blank NW wall, 118 m²
   z-fight — not installable as is), `qa/detached-openings-sweep-20261013`
   (handed to the cleanup lane to merge or cherry-pick),
@@ -1678,9 +1679,12 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   complexes over 5,000 m² (e.g. 0363100012241555, 3.2 ha at the Zuidas) and the
   130 half-drawn pands need a look; fills are flat boxes with no roof shape;
   Prinsengracht 221-227 deserves a kit/recipe front. Models that suppress pands
-  their GLB barely covers need a per-model photo review: felix-meritis 174322
-  (0 %), westerkerk 174220/174222 (10 %) and w749287964 (25 %), sint-agneskerk
+  their GLB barely covers need a per-model photo review: westerkerk
+  174220/174222 (10 %) and w749287964 (25 %), sint-agneskerk
   197426, vriesseveem-9 w755510629, dominicuskerk w749599657, vinoly w754894011.
+  Felix Meritis's rear pand 174322 (0 %) is no longer suppressed: the city
+  layer draws that back-street building over the plot's garden, which is the
+  correct fallback (2026-10-23).
 
 - **Bridge railings after the water-side fix (2026-10-16, HISTORY "Bridge
   railings stop at the water")**: gates remain on 12 bridges (worst BRU0981, a
