@@ -60,6 +60,32 @@ Also open from the previous session's board: the shared-frame context
 restore (item 2), an App Check 403 in prod, and the render governor measured
 on a real Intel laptop.
 
+## Android emulator pass (2026-10-23, read-only, previous perf session)
+
+AVD canal-phone (Pixel 5, Android 15, 4 GB, Chrome 124), `main` b28eeac58,
+7-minute chase ride with 15 jumps round nine centre spots. No context loss,
+no errors, no low-memory kills; landmark residency held 20–27 against a
+budget of 24 (194 evicted). Renderer PSS 1,154–1,764 MB with no upward
+trend; GPU process 366–594 MB; GL buffers 75–278 MB rising and falling
+with each jump's tile load. GPU is the host M4, so fps and GPU budget say
+nothing about a phone GPU; JS heap not measurable there. Raw JSON and the
+probe script: the previous session's scratchpad (`emu-ride3.json`,
+`emu-ride.ts`). Findings, now items 5–7:
+
+5. **Governor never steps back up.** It took all three steps (pixel ratio,
+   shadows off, 0.75) within 15 s of ride start while tiles and landmarks
+   were landing, and stayed at 0.75 for the whole ride. Ignore the first
+   ~10 s after ride start and after a jump, and allow stepping up after a
+   sustained good stretch (`src/canalRecall/renderGovernor.ts`, with its
+   test).
+6. **Renderer PSS ~1.5 GB at ride start, 1.76 GB peak at 30 s**: the
+   OOM-kill zone on a 3–4 GB phone; ties to item 4 (90 MB ArrayBuffers).
+7. **Loop hardening**: `Game._loop` re-armed `requestAnimationFrame` only
+   after `_update` and `_render` returned, so one exception froze the game
+   for good with the map still showing. Fixed by the integrator 2026-10-23:
+   the loop always reschedules (try/finally) and reports the error once per
+   message.
+
 ## Checks
 
 `npm run lint`; `PW_PORT=<port> npx playwright test tests/e2e/phone-memory.spec.ts tests/e2e/weak-gpu-perf.spec.ts --project=iphone` alone; desktop

@@ -348,10 +348,28 @@ class Game {
       this.track.clearFrameCache();
     }
 
-    this._update(dt);
-    this._render();
-    this.input.clear();
-    requestAnimationFrame(t => this._loop(t));
+    // The next frame is always scheduled, even when this one throws: one bad
+    // frame instead of a game frozen behind a live map (Android emulator pass,
+    // 2026-10-23). The error is reported once per message, not once per frame.
+    try {
+      this._update(dt);
+      this._render();
+    } catch (error) {
+      this._reportFrameError(error);
+    } finally {
+      this.input.clear();
+      requestAnimationFrame(t => this._loop(t));
+    }
+  }
+
+  _reportFrameError(error) {
+    const message = error && error.message ? error.message : String(error);
+    this._frameErrorsSeen = this._frameErrorsSeen || new Set();
+    if (this._frameErrorsSeen.has(message)) return;
+    this._frameErrorsSeen.add(message);
+    console.error('Canal Recall frame error (loop kept running):', error);
+    // Rethrown off the frame so the page's error listener (monitoring.ts) reports it with the route tags.
+    setTimeout(() => { throw error; }, 0);
   }
 
   _update(dt) {

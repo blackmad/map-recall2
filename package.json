@@ -216,7 +216,7 @@
     "test:facade-extras": "tsx scripts/check-facade-extras.ts",
     "test:houseboats": "tsx scripts/check-houseboats.ts",
     "test:houseboat-kinds": "tsx scripts/check-houseboat-hull-classification.ts",
-    "test:street-gables": "node --import tsx --test src/canalRecall/streetGableEnds.test.ts src/canalRecall/buildingRecipe/neckEntablature.test.ts",
+    "test:street-gables": "node --import tsx --test src/canalRecall/streetGableEnds.test.ts src/canalRecall/streetRidge.test.ts src/canalRecall/buildingRecipe/neckEntablature.test.ts",
     "build:overview-tiles": "node --import tsx scripts/overview-tiles/build-overview-tiles.ts",
     "test:hud": "node --import tsx --test src/canalRecall/game/radar.test.ts src/canalRecall/game/utilityTuck.test.ts",
     "build:houseboats": "tsx scripts/build-houseboats.ts",
