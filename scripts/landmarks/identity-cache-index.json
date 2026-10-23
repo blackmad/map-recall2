@@ -1,0 +1,4567 @@
+{
+ "version": 1,
+ "date": "2026-10-23",
+ "pbf": "Amsterdam.osm.pbf",
+ "rows": {
+  "NL.IMBAG.Pand.0363100012185418": {
+   "row": 1,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a537564720",
+   "bagUnits": 14,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012098925": {
+   "row": 2,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a557357990",
+   "bagUnits": 215,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012186093": {
+   "row": 3,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7208451",
+   "bagUnits": 340,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012243823": {
+   "row": 4,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a851259464",
+   "bagUnits": 67,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012185844": {
+   "row": 5,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a537565034",
+   "bagUnits": 3,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012165293": {
+   "row": 6,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a533881948",
+   "bagUnits": 15,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1489746218": {
+   "row": 7,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a69909678",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012087570": {
+   "row": 8,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7411955",
+   "bagUnits": 61,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1489746219": {
+   "row": 9,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a69909678",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012165077": {
+   "row": 10,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a229084712",
+   "bagUnits": 2
+  },
+  "NL.IMBAG.Pand.0363100012111954": {
+   "row": 11,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a552545942",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1489746221": {
+   "row": 12,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a69909678",
+   "bagUnits": 0
+  },
+  "w1489746222": {
+   "row": 13,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a69909678",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012164930": {
+   "row": 14,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7209591",
+   "bagUnits": 158,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012169550": {
+   "row": 15,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115718748",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012165086": {
+   "row": 16,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a533816048",
+   "bagUnits": 72
+  },
+  "NL.IMBAG.Pand.0363100012165488": {
+   "row": 17,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a229076694",
+   "bagUnits": 9
+  },
+  "NL.IMBAG.Pand.0363100012168172": {
+   "row": 18,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7166389",
+   "bagUnits": 10,
+   "lookup": "none found 2026-10-23"
+  },
+  "w268998785": {
+   "row": 19,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a537997570",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012165748": {
+   "row": 20,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a7208449",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012242075": {
+   "row": 21,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554209560",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012168734": {
+   "row": 22,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a535131688",
+   "bagUnits": 2,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012244160": {
+   "row": 23,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a998786382",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012171179": {
+   "row": 24,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a7166465",
+   "bagUnits": 7
+  },
+  "NL.IMBAG.Pand.0363100012243487": {
+   "row": 25,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2977302604",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012236693": {
+   "row": 26,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a189034532",
+   "bagUnits": 30
+  },
+  "NL.IMBAG.Pand.0363100012169214": {
+   "row": 27,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a534233534",
+   "bagUnits": 13
+  },
+  "NL.IMBAG.Pand.0363100012079326": {
+   "row": 28,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561296284",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012184747": {
+   "row": 29,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a536918494",
+   "bagUnits": 4,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012242951": {
+   "row": 30,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a778802734",
+   "bagUnits": 165
+  },
+  "w511478570": {
+   "row": 31,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1022957138",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012247342": {
+   "row": 32,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1022957140",
+   "bagUnits": 195,
+   "lookup": "none found 2026-10-23"
+  },
+  "w57864988": {
+   "row": 33,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115729976",
+   "bagUnits": 0
+  },
+  "r3604837": {
+   "row": 34,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a7209675",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012096613": {
+   "row": 35,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554347058",
+   "bagUnits": 441,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012238702": {
+   "row": 36,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a561239404",
+   "bagUnits": 35
+  },
+  "NL.IMBAG.Pand.0363100012092384": {
+   "row": 37,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a24472711",
+   "bagUnits": 4,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012245513": {
+   "row": 38,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1955761346",
+   "bagUnits": 1
+  },
+  "w449011926": {
+   "row": 39,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a898023852",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012253630": {
+   "row": 40,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2468824632",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012066028": {
+   "row": 41,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7300277",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012246291": {
+   "row": 42,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a984818986",
+   "bagUnits": 88,
+   "lookup": "none found 2026-10-23"
+  },
+  "w755504254": {
+   "row": 43,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554174370",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012088027": {
+   "row": 44,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552545498",
+   "bagUnits": 13,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012165427": {
+   "row": 45,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7179347",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012145366": {
+   "row": 46,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561560904",
+   "bagUnits": 96,
+   "lookup": "none found 2026-10-23"
+  },
+  "w807090334": {
+   "row": 47,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554541806",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012240435": {
+   "row": 48,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": null,
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012134507": {
+   "row": 49,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a97088474",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012080943": {
+   "row": 50,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552496060",
+   "bagUnits": 209,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012244270": {
+   "row": 51,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a115727354",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012252557": {
+   "row": 52,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1800655134",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012170299": {
+   "row": 53,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7208397",
+   "bagUnits": 4,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012253824": {
+   "row": 54,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a7208397",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012133211": {
+   "row": 55,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561296270",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012084286": {
+   "row": 56,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552496050",
+   "bagUnits": 9,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012247112": {
+   "row": 57,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1100921166",
+   "bagUnits": 20,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012233471": {
+   "row": 58,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554209488",
+   "bagUnits": 7,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012084999": {
+   "row": 59,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a305016396",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012240015": {
+   "row": 60,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a775617990",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012086968": {
+   "row": 61,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561296312",
+   "bagUnits": 5,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012167466": {
+   "row": 62,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a533379466",
+   "bagUnits": 61,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012185422": {
+   "row": 63,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a7209689",
+   "bagUnits": 2
+  },
+  "NL.IMBAG.Pand.0363100012111255": {
+   "row": 64,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552504456",
+   "bagUnits": 148,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012236788": {
+   "row": 65,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a7394685",
+   "bagUnits": 39
+  },
+  "NL.IMBAG.Pand.0363100012130580": {
+   "row": 66,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554439230",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012164938": {
+   "row": 67,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a7208389",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012239853": {
+   "row": 68,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a217793566",
+   "bagUnits": 2,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012185420": {
+   "row": 69,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a7208447",
+   "bagUnits": 11
+  },
+  "NL.IMBAG.Pand.0363100012253754": {
+   "row": 70,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a7208447",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012186290": {
+   "row": 71,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a534233888",
+   "bagUnits": 3,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012084650": {
+   "row": 72,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554346808",
+   "bagUnits": 4,
+   "lookup": "none found 2026-10-23"
+  },
+  "w277117928": {
+   "row": 73,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": null,
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012135250": {
+   "row": 74,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a40336779",
+   "bagUnits": 56
+  },
+  "NL.IMBAG.Pand.0363100012128727": {
+   "row": 75,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561296734",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012137448": {
+   "row": 76,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7371605",
+   "bagUnits": 37,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012090791": {
+   "row": 77,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7347853",
+   "bagUnits": 3,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012151539": {
+   "row": 78,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115733338",
+   "bagUnits": 187,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012118320": {
+   "row": 79,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115725290",
+   "bagUnits": 128
+  },
+  "NL.IMBAG.Pand.0363100012571499": {
+   "row": 80,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2887376440",
+   "bagUnits": 232,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012251533": {
+   "row": 81,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2472819012",
+   "bagUnits": 30
+  },
+  "NL.IMBAG.Pand.0363100012110408": {
+   "row": 82,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a442755864",
+   "bagUnits": 3
+  },
+  "NL.IMBAG.Pand.0363100012233657": {
+   "row": 83,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a7352589",
+   "bagUnits": 313
+  },
+  "NL.IMBAG.Pand.0363100012093853": {
+   "row": 84,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a552561974",
+   "bagUnits": 119
+  },
+  "NL.IMBAG.Pand.0363100012154874": {
+   "row": 85,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a7363065",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012169731": {
+   "row": 86,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a537998202",
+   "bagUnits": 56,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012076454": {
+   "row": 87,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a55307102",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012148630": {
+   "row": 88,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": null,
+   "bagUnits": 6,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012247688": {
+   "row": 89,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1038069450",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012119260": {
+   "row": 90,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115735734",
+   "bagUnits": 6,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012139498": {
+   "row": 91,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a187200394",
+   "bagUnits": 146
+  },
+  "NL.IMBAG.Pand.0363100012142095": {
+   "row": 92,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a115715146",
+   "bagUnits": 158
+  },
+  "NL.IMBAG.Pand.0363100012165687": {
+   "row": 93,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a533882040",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012167944": {
+   "row": 94,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a533122900",
+   "bagUnits": 21
+  },
+  "w449011929": {
+   "row": 95,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a898023858",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012070306": {
+   "row": 96,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554346286",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012247952": {
+   "row": 97,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1069802694",
+   "bagUnits": 503,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012165098": {
+   "row": 98,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7161111",
+   "bagUnits": 16,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012125840": {
+   "row": 99,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a554341900",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012202277": {
+   "row": 100,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552545952",
+   "bagUnits": 6,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012153698": {
+   "row": 101,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a554341780",
+   "bagUnits": 4
+  },
+  "w1487606275": {
+   "row": 102,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "w152508198": {
+   "row": 103,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": null,
+   "bagUnits": 0
+  },
+  "w492409467": {
+   "row": 104,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a984818934",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012244662": {
+   "row": 105,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a977818826",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012182840": {
+   "row": 106,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a537998408",
+   "bagUnits": 28
+  },
+  "w754717732": {
+   "row": 107,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a90240364",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012136232": {
+   "row": 108,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a7373841",
+   "bagUnits": 3
+  },
+  "w488909416": {
+   "row": 109,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a977818832",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012236735": {
+   "row": 110,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a552844668",
+   "bagUnits": 62
+  },
+  "NL.IMBAG.Pand.0363100012240319": {
+   "row": 111,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a349566770",
+   "bagUnits": 158
+  },
+  "NL.IMBAG.Pand.0363100012165158": {
+   "row": 112,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a40673661",
+   "bagUnits": 8
+  },
+  "NL.IMBAG.Pand.0363100012246191": {
+   "row": 113,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a2932032210",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012239633": {
+   "row": 114,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a554760542",
+   "bagUnits": 7
+  },
+  "w425629733": {
+   "row": 115,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a851259466",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012238656": {
+   "row": 116,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a538064586",
+   "bagUnits": 97,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012236656": {
+   "row": 117,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a2369613280",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012080492": {
+   "row": 118,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a552658780",
+   "bagUnits": 3
+  },
+  "w754299893": {
+   "row": 119,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a89017638",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012101771": {
+   "row": 120,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a561685586",
+   "bagUnits": 2
+  },
+  "NL.IMBAG.Pand.0363100012165746": {
+   "row": 121,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a533279114",
+   "bagUnits": 3,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012239388": {
+   "row": 122,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a554174390",
+   "bagUnits": 19
+  },
+  "NL.IMBAG.Pand.0363100012247232": {
+   "row": 123,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1225511868",
+   "bagUnits": 132
+  },
+  "NL.IMBAG.Pand.0363100012129127": {
+   "row": 124,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a88903246",
+   "bagUnits": 167,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012239387": {
+   "row": 125,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a408484760",
+   "bagUnits": 101
+  },
+  "NL.IMBAG.Pand.0363100012236811": {
+   "row": 126,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552658894",
+   "bagUnits": 11,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012138843": {
+   "row": 127,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7364053",
+   "bagUnits": 212,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012240368": {
+   "row": 128,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1768536894",
+   "bagUnits": 7,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012088496": {
+   "row": 129,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": null,
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012077450": {
+   "row": 130,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554736432",
+   "bagUnits": 324,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012119827": {
+   "row": 131,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a89648804",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012118358": {
+   "row": 132,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552471162",
+   "bagUnits": 28,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012186086": {
+   "row": 133,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a538592870",
+   "bagUnits": 378,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1489470850": {
+   "row": 134,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a536921394",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w511478569": {
+   "row": 135,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1022957138",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012242039": {
+   "row": 136,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a14461269",
+   "bagUnits": 130,
+   "lookup": "none found 2026-10-23"
+  },
+  "w754299892": {
+   "row": 137,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a89017638",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012165051": {
+   "row": 138,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a7166729",
+   "bagUnits": 2
+  },
+  "NL.IMBAG.Pand.0363100012148632": {
+   "row": 139,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a7369233",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012085815": {
+   "row": 140,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a553661578",
+   "bagUnits": 91,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012240382": {
+   "row": 141,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552496020",
+   "bagUnits": 93,
+   "lookup": "none found 2026-10-23"
+  },
+  "w754717724": {
+   "row": 142,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a90240364",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012236799": {
+   "row": 143,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552608560",
+   "bagUnits": 71,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012186003": {
+   "row": 144,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7213679",
+   "bagUnits": 232,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012202175": {
+   "row": 145,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a110168550",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012248597": {
+   "row": 146,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1340585400",
+   "bagUnits": 244,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012104065": {
+   "row": 147,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a89959512",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012078546": {
+   "row": 148,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a556412506",
+   "bagUnits": 1
+  },
+  "w1244980636": {
+   "row": 149,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a2489961274",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012250187": {
+   "row": 150,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1360665850",
+   "bagUnits": 143,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012064800": {
+   "row": 151,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7459925",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012252166": {
+   "row": 152,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1226141814",
+   "bagUnits": 333,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012249707": {
+   "row": 153,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1057319888",
+   "bagUnits": 88,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012080770": {
+   "row": 154,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a7366727",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012238726": {
+   "row": 155,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a90075906",
+   "bagUnits": 71
+  },
+  "NL.IMBAG.Pand.0363100012080490": {
+   "row": 156,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115726050",
+   "bagUnits": 7
+  },
+  "NL.IMBAG.Pand.0363100012236683": {
+   "row": 157,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552839216",
+   "bagUnits": 15,
+   "lookup": "none found 2026-10-23"
+  },
+  "w277272774": {
+   "row": 158,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554545548",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012085366": {
+   "row": 159,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a549409670",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012184746": {
+   "row": 160,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7213681",
+   "bagUnits": 274,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012142901": {
+   "row": 161,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1240925236",
+   "bagUnits": 5
+  },
+  "NL.IMBAG.Pand.0363100012080532": {
+   "row": 162,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a343680414",
+   "bagUnits": 248
+  },
+  "NL.IMBAG.Pand.0363100012254400": {
+   "row": 163,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552425086",
+   "bagUnits": 389,
+   "lookup": "none found 2026-10-23"
+  },
+  "w754512895": {
+   "row": 164,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1117977870",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012069991": {
+   "row": 165,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552562586",
+   "bagUnits": 82,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012169224": {
+   "row": 166,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a115723544",
+   "bagUnits": 42
+  },
+  "NL.IMBAG.Pand.0363100100092333": {
+   "row": 167,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a556412438",
+   "bagUnits": 211,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012113136": {
+   "row": 168,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a343655536",
+   "bagUnits": 33
+  },
+  "NL.IMBAG.Pand.0363100012233585": {
+   "row": 169,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a115718680",
+   "bagUnits": 133
+  },
+  "NL.IMBAG.Pand.0363100012247056": {
+   "row": 170,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1204736966",
+   "bagUnits": 5,
+   "lookup": "none found 2026-10-23"
+  },
+  "w754856621": {
+   "row": 171,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a55359886",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012093150": {
+   "row": 172,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a561155584",
+   "bagUnits": 225
+  },
+  "w995298752": {
+   "row": 173,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2872639",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012253656": {
+   "row": 174,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2454352934",
+   "bagUnits": 152,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012239386": {
+   "row": 175,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a296973116",
+   "bagUnits": 105
+  },
+  "w1487642120": {
+   "row": 176,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012105724": {
+   "row": 177,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552505364",
+   "bagUnits": 123,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012237537": {
+   "row": 178,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a552436846",
+   "bagUnits": 17
+  },
+  "NL.IMBAG.Pand.0363100012133123": {
+   "row": 179,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561650322",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w274869328": {
+   "row": 180,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a549738656",
+   "bagUnits": 0
+  },
+  "w1148325404": {
+   "row": 181,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a549738656",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012078084": {
+   "row": 182,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a115713984",
+   "bagUnits": 3
+  },
+  "NL.IMBAG.Pand.0363100012119145": {
+   "row": 183,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554642194",
+   "bagUnits": 3,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012126319": {
+   "row": 184,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552527984",
+   "bagUnits": 163,
+   "lookup": "none found 2026-10-23"
+  },
+  "w145629045": {
+   "row": 185,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a291258090",
+   "bagUnits": 0
+  },
+  "w1487642116": {
+   "row": 186,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012114605": {
+   "row": 187,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561286098",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w26401769": {
+   "row": 188,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a52803538",
+   "bagUnits": 0
+  },
+  "w460712628": {
+   "row": 189,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a921425256",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w754594746": {
+   "row": 190,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a217275684",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012254687": {
+   "row": 191,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2790080392",
+   "bagUnits": 233,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012173447": {
+   "row": 192,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a535131330",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "w806961002": {
+   "row": 193,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": null,
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w280779907": {
+   "row": 194,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a561559814",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012247938": {
+   "row": 195,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1226141816",
+   "bagUnits": 365
+  },
+  "NL.IMBAG.Pand.0363100012246555": {
+   "row": 196,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a914012690",
+   "bagUnits": 147
+  },
+  "NL.IMBAG.Pand.0363100012112179": {
+   "row": 197,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a549383198",
+   "bagUnits": 174
+  },
+  "w289543438": {
+   "row": 198,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554746386",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w754894015": {
+   "row": 199,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554746386",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012093716": {
+   "row": 200,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115730364",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "w280779881": {
+   "row": 201,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a561559762",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012076543": {
+   "row": 202,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554246932",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012071927": {
+   "row": 203,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a549738694",
+   "bagUnits": 169,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012186002": {
+   "row": 204,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a538592874",
+   "bagUnits": 59,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012061445": {
+   "row": 205,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a89648642",
+   "bagUnits": 1
+  },
+  "w754852672": {
+   "row": 206,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554746386",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012150568": {
+   "row": 207,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a89648710",
+   "bagUnits": 2,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "w95593965": {
+   "row": 208,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a191187930",
+   "bagUnits": 0
+  },
+  "w1487642112": {
+   "row": 209,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012246848": {
+   "row": 210,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1756010680",
+   "bagUnits": 47,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012129398": {
+   "row": 211,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a115723714",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012249726": {
+   "row": 212,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1500803946",
+   "bagUnits": 10,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "w1001115825": {
+   "row": 213,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a554746408",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012243844": {
+   "row": 214,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2854495688",
+   "bagUnits": 4,
+   "lookup": "none found 2026-10-23"
+  },
+  "r3674619": {
+   "row": 215,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a7349239",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012254654": {
+   "row": 216,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2764738632",
+   "bagUnits": 219
+  },
+  "NL.IMBAG.Pand.0363100012253954": {
+   "row": 217,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1996266736",
+   "bagUnits": 199,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012116511": {
+   "row": 218,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115730944",
+   "bagUnits": 98
+  },
+  "w806904235": {
+   "row": 219,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1613808456",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1487642118": {
+   "row": 220,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012241220": {
+   "row": 221,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a751527702",
+   "bagUnits": 80,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012179689": {
+   "row": 222,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a115725026",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012184743": {
+   "row": 223,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a54144832",
+   "bagUnits": 348,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012119117": {
+   "row": 224,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554439132",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012067917": {
+   "row": 225,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a30942963",
+   "bagUnits": 4,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012061212": {
+   "row": 226,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a319674016",
+   "bagUnits": 36
+  },
+  "NL.IMBAG.Pand.0363100012237535": {
+   "row": 227,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a318612196",
+   "bagUnits": 60
+  },
+  "w1083228240": {
+   "row": 228,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a2182581086",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012072084": {
+   "row": 229,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a549738710",
+   "bagUnits": 3
+  },
+  "w364317348": {
+   "row": 230,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": null,
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012070336": {
+   "row": 231,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115733570",
+   "bagUnits": 8
+  },
+  "NL.IMBAG.Pand.0363100012216927": {
+   "row": 232,
+   "nameSource": "osm",
+   "confidence": 0.6,
+   "osmFootprint": "a554832078",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012242874": {
+   "row": 233,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a9461855",
+   "bagUnits": 805
+  },
+  "w1212880968": {
+   "row": 234,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a2425761936",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1487642115": {
+   "row": 235,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012252015": {
+   "row": 236,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1111589700",
+   "bagUnits": 156
+  },
+  "w754852671": {
+   "row": 237,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554746386",
+   "bagUnits": 0,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012107360": {
+   "row": 238,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552528092",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012095578": {
+   "row": 239,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a549409190",
+   "bagUnits": 215,
+   "lookup": "none found 2026-10-23"
+  },
+  "w901217191": {
+   "row": 240,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1802434382",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012061961": {
+   "row": 241,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a555903060",
+   "bagUnits": 98,
+   "lookup": "none found 2026-10-23"
+  },
+  "w897251397": {
+   "row": 242,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": null,
+   "bagUnits": 0,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "r3674868": {
+   "row": 243,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a7349737",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w806904231": {
+   "row": 244,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1613808456",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012202381": {
+   "row": 245,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552545770",
+   "bagUnits": 13,
+   "lookup": "none found 2026-10-23"
+  },
+  "w806837634": {
+   "row": 246,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a2937228670",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012115242": {
+   "row": 247,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a556413784",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012073586": {
+   "row": 248,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7364059",
+   "bagUnits": 135,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012238493": {
+   "row": 249,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": null,
+   "bagUnits": 124,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012239389": {
+   "row": 250,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552425012",
+   "bagUnits": 44,
+   "lookup": "none found 2026-10-23"
+  },
+  "w277270888": {
+   "row": 251,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1613808456",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012134773": {
+   "row": 252,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554488606",
+   "bagUnits": 16,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1533893131": {
+   "row": 253,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115729374",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012154521": {
+   "row": 254,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115713842",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012244546": {
+   "row": 255,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a962531802",
+   "bagUnits": 178
+  },
+  "NL.IMBAG.Pand.0363100012250162": {
+   "row": 256,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1057320146",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012164981": {
+   "row": 257,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7209671",
+   "bagUnits": 185,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1487606284": {
+   "row": 258,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "r14957303": {
+   "row": 259,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a914012692",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012240149": {
+   "row": 260,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a92548270",
+   "bagUnits": 1
+  },
+  "w751713223": {
+   "row": 261,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a534246956",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012104501": {
+   "row": 262,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a556782142",
+   "bagUnits": 114,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1088833543": {
+   "row": 263,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a370248384",
+   "bagUnits": 0
+  },
+  "w27653886": {
+   "row": 264,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a55307772",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012137174": {
+   "row": 265,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a555901490",
+   "bagUnits": 59
+  },
+  "w1204459162": {
+   "row": 266,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2408918324",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012241221": {
+   "row": 267,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a751527706",
+   "bagUnits": 79,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012246893": {
+   "row": 268,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1036701452",
+   "bagUnits": 877
+  },
+  "w1163718016": {
+   "row": 269,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2327436032",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012067741": {
+   "row": 270,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1038206250",
+   "bagUnits": 2
+  },
+  "NL.IMBAG.Pand.0363100012245338": {
+   "row": 271,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a998786390",
+   "bagUnits": 4,
+   "lookup": "none found 2026-10-23"
+  },
+  "w779659694": {
+   "row": 272,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012117498": {
+   "row": 273,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a7349239",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012250607": {
+   "row": 274,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1793524368",
+   "bagUnits": 47,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012106929": {
+   "row": 275,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a88902462",
+   "bagUnits": 4
+  },
+  "NL.IMBAG.Pand.0363100012091320": {
+   "row": 276,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552436566",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w977822523": {
+   "row": 277,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1955645046",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012237143": {
+   "row": 278,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115715832",
+   "bagUnits": 101
+  },
+  "r3674867": {
+   "row": 279,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a7349735",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w548202714": {
+   "row": 280,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554642082",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012244547": {
+   "row": 281,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2251847216",
+   "bagUnits": 3,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1487642117": {
+   "row": 282,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012249646": {
+   "row": 283,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a17705297",
+   "bagUnits": 131,
+   "lookup": "none found 2026-10-23"
+  },
+  "w753541322": {
+   "row": 284,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554642112",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012111806": {
+   "row": 285,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561286364",
+   "bagUnits": 11,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012243737": {
+   "row": 286,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a775617992",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012249709": {
+   "row": 287,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1761493788",
+   "bagUnits": 229
+  },
+  "w240467636": {
+   "row": 288,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012240148": {
+   "row": 289,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a496101620",
+   "bagUnits": 1
+  },
+  "w248050810": {
+   "row": 290,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a496101620",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012121704": {
+   "row": 291,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554217880",
+   "bagUnits": 61,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012243287": {
+   "row": 292,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2327436032",
+   "bagUnits": 9
+  },
+  "w1001115823": {
+   "row": 293,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a554746408",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012144991": {
+   "row": 294,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a552468212",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012063809": {
+   "row": 295,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a549409212",
+   "bagUnits": 215,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012250970": {
+   "row": 296,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1955645046",
+   "bagUnits": 137
+  },
+  "w754512896": {
+   "row": 297,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1117977870",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012165821": {
+   "row": 298,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7209141",
+   "bagUnits": 156,
+   "lookup": "none found 2026-10-23"
+  },
+  "w457006345": {
+   "row": 299,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": null,
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012127804": {
+   "row": 300,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a37625589",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1118615045": {
+   "row": 301,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a914012692",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1118615047": {
+   "row": 302,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a914012692",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1487729876": {
+   "row": 303,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1954954468",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012092403": {
+   "row": 304,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a292509000",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012245324": {
+   "row": 305,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a998786396",
+   "bagUnits": 110,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012141457": {
+   "row": 306,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115727180",
+   "bagUnits": 127
+  },
+  "w619383681": {
+   "row": 307,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1238767362",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012151987": {
+   "row": 308,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a549409218",
+   "bagUnits": 215,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1090841842": {
+   "row": 309,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a3017783236",
+   "bagUnits": 0
+  },
+  "w1236668684": {
+   "row": 310,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1226141810",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "r3686922": {
+   "row": 311,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a7373845",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w753577524": {
+   "row": 312,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554488592",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012251732": {
+   "row": 313,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1947218004",
+   "bagUnits": 79,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012253541": {
+   "row": 314,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1954950262",
+   "bagUnits": 130,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012250971": {
+   "row": 315,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2408918320",
+   "bagUnits": 81
+  },
+  "NL.IMBAG.Pand.0363100012119400": {
+   "row": 316,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7347119",
+   "bagUnits": 44,
+   "lookup": "none found 2026-10-23"
+  },
+  "w280780185": {
+   "row": 317,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a561559762",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012133302": {
+   "row": 318,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115731318",
+   "bagUnits": 2
+  },
+  "NL.IMBAG.Pand.0363100012242083": {
+   "row": 319,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a788955774",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012252442": {
+   "row": 320,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2246744898",
+   "bagUnits": 460
+  },
+  "NL.IMBAG.Pand.0363100012085900": {
+   "row": 321,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a559666916",
+   "bagUnits": 84,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012253661": {
+   "row": 322,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2167722298",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1487729877": {
+   "row": 323,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1954954468",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012103159": {
+   "row": 324,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561229968",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012080966": {
+   "row": 325,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a18524951",
+   "bagUnits": 3
+  },
+  "w995816138": {
+   "row": 326,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a26247393",
+   "bagUnits": 0
+  },
+  "w280780158": {
+   "row": 327,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a561559814",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1193499090": {
+   "row": 328,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115725080",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012165747": {
+   "row": 329,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a533296960",
+   "bagUnits": 7,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012089681": {
+   "row": 330,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a556595754",
+   "bagUnits": 116,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012242968": {
+   "row": 331,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a943907630",
+   "bagUnits": 147,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012238346": {
+   "row": 332,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a319052580",
+   "bagUnits": 80
+  },
+  "w481265901": {
+   "row": 333,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a962531802",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012133666": {
+   "row": 334,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a71402002",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012246472": {
+   "row": 335,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1238767362",
+   "bagUnits": 87
+  },
+  "w499396495": {
+   "row": 336,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a998792990",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012120246": {
+   "row": 337,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a115723070",
+   "bagUnits": 148
+  },
+  "NL.IMBAG.Pand.0363100012117753": {
+   "row": 338,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561315458",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012250972": {
+   "row": 339,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2408918324",
+   "bagUnits": 100
+  },
+  "NL.IMBAG.Pand.0363100012180196": {
+   "row": 340,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a115716776",
+   "bagUnits": 2
+  },
+  "w1487729878": {
+   "row": 341,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1954954468",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012246583": {
+   "row": 342,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1800657080",
+   "bagUnits": 20,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012242134": {
+   "row": 343,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a783608256",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012251313": {
+   "row": 344,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a538105194",
+   "bagUnits": 1,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "w1005659801": {
+   "row": 345,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a2011319602",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1487642119": {
+   "row": 346,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012242116": {
+   "row": 347,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a962531230",
+   "bagUnits": 135
+  },
+  "w1001115828": {
+   "row": 348,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a217788258",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012130710": {
+   "row": 349,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554562052",
+   "bagUnits": 18,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012173457": {
+   "row": 350,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115726230",
+   "bagUnits": 0
+  },
+  "w1302881959": {
+   "row": 351,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a53205592",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012247673": {
+   "row": 352,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1057319896",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012082192": {
+   "row": 353,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a552436612",
+   "bagUnits": 2
+  },
+  "w807090338": {
+   "row": 354,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554541806",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012103794": {
+   "row": 355,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7363819",
+   "bagUnits": 14,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012240959": {
+   "row": 356,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a998793006",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w753532585": {
+   "row": 357,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554642118",
+   "bagUnits": 0,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012252989": {
+   "row": 358,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2387862492",
+   "bagUnits": 12
+  },
+  "NL.IMBAG.Pand.0363100012076903": {
+   "row": 359,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115732138",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012109285": {
+   "row": 360,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a549709604",
+   "bagUnits": 156,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012123762": {
+   "row": 361,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a554661452",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012244540": {
+   "row": 362,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a998788732",
+   "bagUnits": 423,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012150906": {
+   "row": 363,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7462871",
+   "bagUnits": 138,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012082246": {
+   "row": 364,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554439266",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012078713": {
+   "row": 365,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561527298",
+   "bagUnits": 111,
+   "lookup": "none found 2026-10-23"
+  },
+  "w880746894": {
+   "row": 366,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": null,
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012098805": {
+   "row": 367,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115711994",
+   "bagUnits": 5
+  },
+  "NL.IMBAG.Pand.0363100012080601": {
+   "row": 368,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a557359092",
+   "bagUnits": 44,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012124153": {
+   "row": 369,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554171190",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012131508": {
+   "row": 370,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561314936",
+   "bagUnits": 89,
+   "lookup": "none found 2026-10-23"
+  },
+  "w280657737": {
+   "row": 371,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a561315474",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012064727": {
+   "row": 372,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561323672",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012124847": {
+   "row": 373,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561323410",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w754594743": {
+   "row": 374,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a217275690",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012122004": {
+   "row": 375,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a556593088",
+   "bagUnits": 121,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012083604": {
+   "row": 376,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a561239350",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012064292": {
+   "row": 377,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a562821542",
+   "bagUnits": 4,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012248827": {
+   "row": 378,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1037007074",
+   "bagUnits": 30,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012165818": {
+   "row": 379,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a538105194",
+   "bagUnits": 2,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012239704": {
+   "row": 380,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a7363063",
+   "bagUnits": 131
+  },
+  "w1487642114": {
+   "row": 381,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012141601": {
+   "row": 382,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115719286",
+   "bagUnits": 4
+  },
+  "NL.IMBAG.Pand.0363100012071645": {
+   "row": 383,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554832656",
+   "bagUnits": 6,
+   "lookup": "none found 2026-10-23"
+  },
+  "w146558154": {
+   "row": 384,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a3017783236",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012240481": {
+   "row": 385,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a906949802",
+   "bagUnits": 108,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012237884": {
+   "row": 386,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1793479164",
+   "bagUnits": 3,
+   "lookup": "none found 2026-10-23"
+  },
+  "w274870239": {
+   "row": 387,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a549740486",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012169284": {
+   "row": 388,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a538105122",
+   "bagUnits": 106,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012252498": {
+   "row": 389,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1761490586",
+   "bagUnits": 358,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1487606295": {
+   "row": 390,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a538176358",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012110208": {
+   "row": 391,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a549738688",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w518350726": {
+   "row": 392,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": null,
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012114770": {
+   "row": 393,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": null,
+   "bagUnits": 183,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012112409": {
+   "row": 394,
+   "nameSource": "osm",
+   "confidence": 0.6,
+   "osmFootprint": "a53624748",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012105061": {
+   "row": 395,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a552436616",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012090318": {
+   "row": 396,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a7459919",
+   "bagUnits": 1
+  },
+  "w481265616": {
+   "row": 397,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a962531232",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1533847438": {
+   "row": 398,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a7197373",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012114072": {
+   "row": 399,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a42343357",
+   "bagUnits": 4
+  },
+  "NL.IMBAG.Pand.0363100012063071": {
+   "row": 400,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561239402",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012241772": {
+   "row": 401,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1283213714",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012094874": {
+   "row": 402,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a7372759",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012063603": {
+   "row": 403,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1234170054",
+   "bagUnits": 34
+  },
+  "w753577533": {
+   "row": 404,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a88902816",
+   "bagUnits": 0,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012252819": {
+   "row": 405,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1784874010",
+   "bagUnits": 92
+  },
+  "w1302928107": {
+   "row": 406,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2605856214",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012137990": {
+   "row": 407,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552682932",
+   "bagUnits": 85,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012132433": {
+   "row": 408,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a549708642",
+   "bagUnits": 117,
+   "lookup": "none found 2026-10-23"
+  },
+  "w280779906": {
+   "row": 409,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a561559812",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012246469": {
+   "row": 410,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1036684468",
+   "bagUnits": 405
+  },
+  "w1233871708": {
+   "row": 411,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2467743416",
+   "bagUnits": 0
+  },
+  "w753559712": {
+   "row": 412,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554642218",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012170734": {
+   "row": 413,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a7208445",
+   "bagUnits": 1
+  },
+  "w985562283": {
+   "row": 414,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a217788258",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012143384": {
+   "row": 415,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a489370742",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012245915": {
+   "row": 416,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a998796216",
+   "bagUnits": 507,
+   "lookup": "none found 2026-10-23"
+  },
+  "w640102319": {
+   "row": 417,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a536921374",
+   "bagUnits": 0,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012169282": {
+   "row": 418,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a90077406",
+   "bagUnits": 54
+  },
+  "NL.IMBAG.Pand.0363100012237888": {
+   "row": 419,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552436554",
+   "bagUnits": 111,
+   "lookup": "none found 2026-10-23"
+  },
+  "w280783002": {
+   "row": 420,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a561567022",
+   "bagUnits": 0
+  },
+  "w548207840": {
+   "row": 421,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1613808456",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1244980638": {
+   "row": 422,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a2489961274",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012237887": {
+   "row": 423,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552436560",
+   "bagUnits": 107,
+   "lookup": "none found 2026-10-23"
+  },
+  "w277270889": {
+   "row": 424,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1613808456",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012240480": {
+   "row": 425,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a629153722",
+   "bagUnits": 55,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012098847": {
+   "row": 426,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554432648",
+   "bagUnits": 21,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012141929": {
+   "row": 427,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115733518",
+   "bagUnits": 3,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012134888": {
+   "row": 428,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115729644",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012241496": {
+   "row": 429,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a788955770",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012148603": {
+   "row": 430,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a536921400",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w44532022": {
+   "row": 431,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a89064044",
+   "bagUnits": 0
+  },
+  "w57863651": {
+   "row": 432,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115727302",
+   "bagUnits": 0
+  },
+  "w269074668": {
+   "row": 433,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a538149542",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012138900": {
+   "row": 434,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115733916",
+   "bagUnits": 2
+  },
+  "NL.IMBAG.Pand.0363100012237793": {
+   "row": 435,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a552436562",
+   "bagUnits": 180,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012143167": {
+   "row": 436,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a554662696",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012242987": {
+   "row": 437,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1015827208",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012208268": {
+   "row": 438,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554346750",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012137257": {
+   "row": 439,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115726490",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012134024": {
+   "row": 440,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a561286110",
+   "bagUnits": 60
+  },
+  "w425629742": {
+   "row": 441,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a851259484",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012253708": {
+   "row": 442,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2230414626",
+   "bagUnits": 99,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012195030": {
+   "row": 443,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7358055",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012095940": {
+   "row": 444,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115733166",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012093565": {
+   "row": 445,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561315410",
+   "bagUnits": 169,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012099348": {
+   "row": 446,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115730034",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012165552": {
+   "row": 447,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a538011958",
+   "bagUnits": 1
+  },
+  "w518342228": {
+   "row": 448,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1036684440",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012165819": {
+   "row": 449,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115722628",
+   "bagUnits": 19
+  },
+  "NL.IMBAG.Pand.0363100012072045": {
+   "row": 450,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a89959312",
+   "bagUnits": 4
+  },
+  "NL.IMBAG.Pand.0363100012571849": {
+   "row": 451,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2782847848",
+   "bagUnits": 149,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012247188": {
+   "row": 452,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1360133858",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012254552": {
+   "row": 453,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2201758120",
+   "bagUnits": 146,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012253362": {
+   "row": 454,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1801890604",
+   "bagUnits": 175
+  },
+  "w274869327": {
+   "row": 455,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": null,
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012126563": {
+   "row": 456,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a553807882",
+   "bagUnits": 3,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1148324856": {
+   "row": 457,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a2296649712",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012077602": {
+   "row": 458,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a549721944",
+   "bagUnits": 18
+  },
+  "NL.IMBAG.Pand.0363100012085297": {
+   "row": 459,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115733368",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012144276": {
+   "row": 460,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7316763",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012112686": {
+   "row": 461,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115734956",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012246632": {
+   "row": 462,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a998796218",
+   "bagUnits": 113,
+   "lookup": "none found 2026-10-23"
+  },
+  "w338972925": {
+   "row": 463,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a115710288",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012105094": {
+   "row": 464,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115729164",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012109322": {
+   "row": 465,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115733032",
+   "bagUnits": 5,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012065279": {
+   "row": 466,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7316759",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w481265615": {
+   "row": 467,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a962531230",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012164353": {
+   "row": 468,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115716024",
+   "bagUnits": 8
+  },
+  "w199405145": {
+   "row": 469,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554541806",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012240270": {
+   "row": 470,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a746781570",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012083151": {
+   "row": 471,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115732074",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w754717738": {
+   "row": 472,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a90240364",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012126767": {
+   "row": 473,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a549708316",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w754717725": {
+   "row": 474,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a90240364",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012239598": {
+   "row": 475,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": null,
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1392033869": {
+   "row": 476,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1793904466",
+   "bagUnits": 0
+  },
+  "w57858164": {
+   "row": 477,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a115716328",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012179691": {
+   "row": 478,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a533251920",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w995298746": {
+   "row": 479,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2872639",
+   "bagUnits": 0
+  },
+  "w995298753": {
+   "row": 480,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2872639",
+   "bagUnits": 0
+  },
+  "w1080814509": {
+   "row": 481,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1794496822",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1489791114": {
+   "row": 482,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a549740486",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w753100711": {
+   "row": 483,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a90240912",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012074840": {
+   "row": 484,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1797861",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012064810": {
+   "row": 485,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a561286066",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w750036047": {
+   "row": 486,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a86081260",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012254404": {
+   "row": 487,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2782844092",
+   "bagUnits": 6,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012209785": {
+   "row": 488,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a561285984",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w119760213": {
+   "row": 489,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a239520426",
+   "bagUnits": 0
+  },
+  "w750036048": {
+   "row": 490,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a86081260",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012243686": {
+   "row": 491,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a893132362",
+   "bagUnits": 38,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1458059065": {
+   "row": 492,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a556205868",
+   "bagUnits": 0,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "w754594744": {
+   "row": 493,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a217275690",
+   "bagUnits": 0
+  },
+  "w1193318899": {
+   "row": 494,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a2386637798",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w548202713": {
+   "row": 495,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554642082",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w280780437": {
+   "row": 496,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a561559812",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012127007": {
+   "row": 497,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a554552678",
+   "bagUnits": 24
+  },
+  "w1487606293": {
+   "row": 498,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a538176358",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012242098": {
+   "row": 499,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1956239092",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w453809679": {
+   "row": 500,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "w755935171": {
+   "row": 501,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115719380",
+   "bagUnits": 0
+  },
+  "w1489470849": {
+   "row": 502,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115732616",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012069797": {
+   "row": 503,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a559719630",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012092290": {
+   "row": 504,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561239348",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w159188976": {
+   "row": 505,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a318377952",
+   "bagUnits": 0
+  },
+  "w375490816": {
+   "row": 506,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a728634696",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012243124": {
+   "row": 507,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a549740420",
+   "bagUnits": 52,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012093690": {
+   "row": 508,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a54601698",
+   "bagUnits": 3,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1533877243": {
+   "row": 509,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1761493528",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012241720": {
+   "row": 510,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a959976892",
+   "bagUnits": 131,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1088842130": {
+   "row": 511,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a370248388",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1487606285": {
+   "row": 512,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012239207": {
+   "row": 513,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": null,
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1244980639": {
+   "row": 514,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1793544306",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012078289": {
+   "row": 515,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115721528",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012246549": {
+   "row": 516,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1800657082",
+   "bagUnits": 9,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012238742": {
+   "row": 517,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a549740458",
+   "bagUnits": 56,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012250984": {
+   "row": 518,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a197325688",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012081222": {
+   "row": 519,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a55307760",
+   "bagUnits": 101
+  },
+  "NL.IMBAG.Pand.0363100012120865": {
+   "row": 520,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a549740462",
+   "bagUnits": 54,
+   "lookup": "none found 2026-10-23"
+  },
+  "w753559713": {
+   "row": 521,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554642218",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012090220": {
+   "row": 522,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a559720758",
+   "bagUnits": 16,
+   "lookup": "none found 2026-10-23"
+  },
+  "w479988446": {
+   "row": 523,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a959976892",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w753068910": {
+   "row": 524,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554642118",
+   "bagUnits": 0,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "w753068911": {
+   "row": 525,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554642118",
+   "bagUnits": 0,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "r898908": {
+   "row": 526,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1797817",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1090854312": {
+   "row": 527,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a2181708624",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012251218": {
+   "row": 528,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2167722236",
+   "bagUnits": 152,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1489791117": {
+   "row": 529,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a549740486",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1487606316": {
+   "row": 530,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "w1427988150": {
+   "row": 531,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a39158965",
+   "bagUnits": 0
+  },
+  "w753541321": {
+   "row": 532,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554642112",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1001115827": {
+   "row": 533,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a217788258",
+   "bagUnits": 0
+  },
+  "w1487642121": {
+   "row": 534,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012074933": {
+   "row": 535,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a549738664",
+   "bagUnits": 111,
+   "lookup": "none found 2026-10-23"
+  },
+  "w274870210": {
+   "row": 536,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a549740420",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w274870229": {
+   "row": 537,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a549740458",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w274870231": {
+   "row": 538,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a549740462",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1090841846": {
+   "row": 539,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a2181683692",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012140686": {
+   "row": 540,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115735744",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012150639": {
+   "row": 541,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a562821442",
+   "bagUnits": 108
+  },
+  "NL.IMBAG.Pand.0363100012254300": {
+   "row": 542,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2185188296",
+   "bagUnits": 157,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012134667": {
+   "row": 543,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a90075564",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1487642113": {
+   "row": 544,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1522646834",
+   "bagUnits": 0
+  },
+  "w274869332": {
+   "row": 545,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a549738664",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w848528458": {
+   "row": 546,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1286991262",
+   "bagUnits": 0
+  },
+  "w1316205537": {
+   "row": 547,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a2887296826",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w548199506": {
+   "row": 548,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a90240680",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w806904234": {
+   "row": 549,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1613808456",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w269077753": {
+   "row": 550,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a538155566",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012068941": {
+   "row": 551,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a537016772",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012216977": {
+   "row": 552,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a554832750",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012239262": {
+   "row": 553,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": null,
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "w755504261": {
+   "row": 554,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a554174540",
+   "bagUnits": 0,
+   "lookup": "wikipedia hit 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012125830": {
+   "row": 555,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561560528",
+   "bagUnits": 105,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012079952": {
+   "row": 556,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a536978598",
+   "bagUnits": 2,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012196327": {
+   "row": 557,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a549409530",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012207510": {
+   "row": 558,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a7191725",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012075730": {
+   "row": 559,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2917365",
+   "bagUnits": 11
+  },
+  "NL.IMBAG.Pand.0363100012255036": {
+   "row": 560,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a2454900604",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012083133": {
+   "row": 561,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1797859",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w1084722912": {
+   "row": 562,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": null,
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012197116": {
+   "row": 563,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115735520",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012239990": {
+   "row": 564,
+   "nameSource": "osm",
+   "confidence": 0.6,
+   "osmFootprint": "a327716264",
+   "bagUnits": 5,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012132727": {
+   "row": 565,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a242817056",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012075163": {
+   "row": 566,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2887332398",
+   "bagUnits": 30
+  },
+  "NL.IMBAG.Pand.0363100012081033": {
+   "row": 567,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115720306",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012108397": {
+   "row": 568,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115706864",
+   "bagUnits": 128
+  },
+  "NL.IMBAG.Pand.0363100012253072": {
+   "row": 569,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1800859924",
+   "bagUnits": 3,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012079333": {
+   "row": 570,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a1797831",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012239975": {
+   "row": 571,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a943019588",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012165195": {
+   "row": 572,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115733704",
+   "bagUnits": 16
+  },
+  "NL.IMBAG.Pand.0363100012240255": {
+   "row": 573,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a556780260",
+   "bagUnits": 1
+  },
+  "w57861817": {
+   "row": 574,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a1613808456",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012253651": {
+   "row": 575,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1580910198",
+   "bagUnits": 6,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012250574": {
+   "row": 576,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1443939014",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "w641241323": {
+   "row": 577,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a7496159",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012202273": {
+   "row": 578,
+   "nameSource": null,
+   "confidence": 0,
+   "osmFootprint": "a46966958",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012224088": {
+   "row": 579,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115717696",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012137864": {
+   "row": 580,
+   "nameSource": "osm",
+   "confidence": 0.6,
+   "osmFootprint": "a115734690",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012252150": {
+   "row": 581,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1267360420",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012102977": {
+   "row": 582,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": null,
+   "bagUnits": 23,
+   "lookup": "none found 2026-10-23"
+  },
+  "w680866792": {
+   "row": 583,
+   "nameSource": "osm",
+   "confidence": 0.6,
+   "osmFootprint": "a1361733584",
+   "bagUnits": 0,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012186469": {
+   "row": 584,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115708558",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012202271": {
+   "row": 585,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a115709250",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012204406": {
+   "row": 586,
+   "nameSource": "monument",
+   "confidence": 1,
+   "osmFootprint": "a115734526",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012243832": {
+   "row": 587,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a832463876",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012238416": {
+   "row": 588,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a561320848",
+   "bagUnits": 196,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012074056": {
+   "row": 589,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a55307776",
+   "bagUnits": 90
+  },
+  "NL.IMBAG.Pand.0363100012126254": {
+   "row": 590,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a7496571",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012079569": {
+   "row": 591,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115732948",
+   "bagUnits": 2
+  },
+  "w1429306856": {
+   "row": 592,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a2858613712",
+   "bagUnits": 0
+  },
+  "NL.IMBAG.Pand.0363100012242031": {
+   "row": 593,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a536732476",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012239568": {
+   "row": 594,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a450824722",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012068390": {
+   "row": 595,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a244323634",
+   "bagUnits": 5,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012131205": {
+   "row": 596,
+   "nameSource": "osm",
+   "confidence": 1,
+   "osmFootprint": "a115712838",
+   "bagUnits": 1
+  },
+  "NL.IMBAG.Pand.0363100012249125": {
+   "row": 597,
+   "nameSource": "osm",
+   "confidence": 0.6,
+   "osmFootprint": "a1267360222",
+   "bagUnits": 4,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012135580": {
+   "row": 598,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": null,
+   "bagUnits": 185,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012239396": {
+   "row": 599,
+   "nameSource": "osm",
+   "confidence": 0.6,
+   "osmFootprint": "a338987720",
+   "bagUnits": 1,
+   "lookup": "none found 2026-10-23"
+  },
+  "NL.IMBAG.Pand.0363100012250973": {
+   "row": 600,
+   "nameSource": "bag-address",
+   "confidence": 0.3,
+   "osmFootprint": "a1267360228",
+   "bagUnits": 4,
+   "lookup": "none found 2026-10-23"
+  }
+ }
+}
