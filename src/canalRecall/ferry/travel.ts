@@ -1,4 +1,4 @@
-import { connectedTerminals, type FerryLink, type Point, type Segment, type Terminal } from './network';
+import { BERTH_RADIUS, connectedTerminals, type FerryLink, type Point, type Segment, type Terminal } from './network';
 
 /**
  * Boarding, sailing and docking for the cycling IJ ferries. Cycling stays the
@@ -25,7 +25,7 @@ export const BOARD_WATER_RADIUS = 90;
  */
 export const BOARD_HEADING_TOLERANCE = (60 * Math.PI) / 180;
 /** The vessel has left its own pier once it is this far from it. */
-export const DEPART_RADIUS = 90;
+export const DEPART_RADIUS = BERTH_RADIUS;
 /** Within this radius of an allowed pier the quay is passable for the vessel. */
 export const PIER_APPROACH_RADIUS = 48;
 /** Docking happens within this radius of the pier, or on touching its quay within the approach radius. */
@@ -57,6 +57,7 @@ export interface FerryTrack {
   getNearestRoad(x: number, y: number, angle: number | null): { segIdx: number } | null;
   getSurface?(x: number, y: number): string;
   _ferryLinks?: FerryLink[];
+  _ferryAccesses?: Segment[];
 }
 
 export interface FerryGame {
@@ -69,6 +70,11 @@ export type WaterTest = (x: number, y: number) => boolean;
 
 export function ferryLinksOf(track: FerryTrack): FerryLink[] {
   return (track._ferryLinks ||= track.segments.flatMap(s => (s.ferryLink ? [s.ferryLink] : [])));
+}
+
+/** The terminal accesses (a dozen at most), cached on the track like its links. */
+export function ferryAccessesOf(track: FerryTrack): Segment[] {
+  return (track._ferryAccesses ||= track.segments.filter(s => s.type === 'ferry-access' && s.ferryTerminal));
 }
 
 export type Shore = Point & { angle: number | null; distance: number };
@@ -182,11 +188,17 @@ export function beginFerryFrame(game: FerryGame, isWater: WaterTest): boolean {
   if (player.ferryOrigin) return true;
   const links = ferryLinksOf(game.track);
   if (!links.length) return false;
-  const road = game.track.getNearestRoad(player.x, player.y, player.angle);
-  const boarding = road ? boardingTerminal(player, game.track.segments[road.segIdx], isWater) : null;
-  if (!boarding) return false;
-  board(player, boarding, links);
-  return true;
+  // Every pier in reach, not only the nearest road's: at Centraal F3 a quay
+  // cycleway passes 1.6 m from the stop, and the heading-aware nearest-road
+  // lookup chose it over the 3 m access, so a rider 0.9 m from the stop and
+  // facing the water stayed on the bike (feedback 05a7d02a, 2026-10-23).
+  for (const access of ferryAccessesOf(game.track)) {
+    const boarding = boardingTerminal(player, access, isWater);
+    if (!boarding) continue;
+    board(player, boarding, links);
+    return true;
+  }
+  return false;
 }
 
 /** Free steering on water: no street-heading assistance towards the nearest bank. */
