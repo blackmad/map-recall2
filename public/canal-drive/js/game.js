@@ -348,10 +348,27 @@ class Game {
       this.track.clearFrameCache();
     }
 
-    this._update(dt);
-    this._render();
-    this.input.clear();
-    requestAnimationFrame(t => this._loop(t));
+    // One throw used to end the loop for good: the map stayed up and the ride
+    // froze, which on a phone reads as a hang (emulator pass, 2026-10-23).
+    // Always schedule the next frame; report each distinct error once.
+    try {
+      this._update(dt);
+      this._render();
+    } catch (error) {
+      this._reportLoopError(error);
+    } finally {
+      this.input.clear();
+      requestAnimationFrame(t => this._loop(t));
+    }
+  }
+
+  _reportLoopError(error) {
+    const key = String(error?.message ?? error);
+    this._loopErrors ??= new Set();
+    if (this._loopErrors.has(key) || this._loopErrors.size >= 5) return;
+    this._loopErrors.add(key);
+    // Rethrown off the loop so the window error handler (Sentry) sees it.
+    setTimeout(() => { throw error; });
   }
 
   _update(dt) {

@@ -57,7 +57,7 @@ test('governMapRender applies steps to the map and stops when exhausted', () => 
     getPixelRatio: () => ratio,
     setPixelRatio: (r: number) => { ratio = r; },
   };
-  governMapRender(map, { now: () => t, setShadows: on => { shadows = on; } });
+  governMapRender(map, { now: () => t, setShadows: on => { shadows = on; }, settleMs: 0 });
   for (let i = 0; i < 2000 && listeners.size; i++) { t += 60; for (const f of [...listeners]) f(); }
   assert.equal(ratio, 0.75);
   assert.equal(shadows, false);
@@ -68,7 +68,7 @@ test('frames outside the active state never count', () => {
   let t = 0, ratio = 2, riding = false;
   const listeners = new Set<() => void>();
   const map = { on: (_: 'render', f: () => void) => listeners.add(f), getPixelRatio: () => ratio, setPixelRatio: (r: number) => { ratio = r; } };
-  const g = governMapRender(map, { now: () => t, active: () => riding });
+  const g = governMapRender(map, { now: () => t, active: () => riding, settleMs: 0 });
   const run = (frames: number) => { for (let i = 0; i < frames; i++) { t += 50; for (const f of listeners) f(); } };
   run(1000);
   assert.equal(ratio, 2, 'a slow load does not step');
@@ -86,4 +86,30 @@ test('a 2 fps machine steps within seconds, not minutes', () => {
   while (!g.steps.length && elapsed < 60_000) { g.frame(500); elapsed += 500; }
   assert.equal(g.steps.length, 1);
   assert.ok(elapsed <= 6000, `stepped after ${elapsed} ms`);
+});
+
+test('the loading stretch after a start or a pause is not judged', () => {
+  const g = new RenderGovernor({ initialPixelRatio: 2, shadows: true, settleMs: 12_000 });
+  // 10 s of 50 ms loading frames: inside the settle period, no step.
+  assert.equal(feed(g, 50, 200).length, 0);
+  // Once loaded the ride holds 60 Hz: still no step.
+  assert.equal(feed(g, 16.7, 600).length, 0);
+  assert.deepEqual(g.steps, []);
+  // A machine that stays slow past the settle period still steps (two 1.5 s windows).
+  assert.equal(feed(g, 33, 92).length, 1);
+  // A pause starts a fresh settle period.
+  g.frame(GAP_MS + 1);
+  assert.equal(feed(g, 50, 200).length, 0);
+});
+
+test('governMapRender settles 12 s by default', () => {
+  let t = 0, ratio = 1.5;
+  const listeners = new Set<() => void>();
+  const map = { on: (_: 'render', f: () => void) => listeners.add(f), getPixelRatio: () => ratio, setPixelRatio: (r: number) => { ratio = r; } };
+  governMapRender(map, { now: () => t });
+  const run = (ms: number, frames: number) => { for (let i = 0; i < frames; i++) { t += ms; for (const f of listeners) f(); } };
+  run(50, 230); // 11.5 s of slow loading
+  assert.equal(ratio, 1.5);
+  run(50, 120); // still slow 6 s later: now it steps
+  assert.equal(ratio, 1.13);
 });
