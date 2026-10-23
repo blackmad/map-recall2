@@ -508,5 +508,12 @@
    "reason": "Housing block with shops.",
    "evidence": "ortho artifacts/landmark-abutters/crops/petrus-en-paulus-kerk__NL_IMBAG_Pand_0363100012070855__ortho.jpg; pano b_20241211_0838_Track15_Sphere_00050 (2024, 10 m, heading 158) artifacts/landmark-abutters/crops/petrus-en-paulus-kerk__NL_IMBAG_Pand_0363100012070855__pano1.jpg; pano TMX7316010203-002454_pano_0000_000713 (2022, 15 m, heading 211) artifacts/landmark-abutters/crops/petrus-en-paulus-kerk__NL_IMBAG_Pand_0363100012070855__pano2.jpg"
   }
+ },
+ "felix-meritis": {
+  "NL.IMBAG.Pand.0363100012174322": {
+   "verdict": "fine",
+   "reason": "Separate rear house on the north edge of the Felix Meritis plot (BAG 0363100012174322, 14.66 m), behind the garden. The GLB covers 0 % of it; it sits in the hull only because the model's placement footprint is the whole 86 m plot. Deliberately un-suppressed on 2026-10-23 (4fe12b6c4) so the ordinary layer draws it; front house, oval hall, garden, rear house matches the PDOK 2023 aerial.",
+   "evidence": "commit 4fe12b6c4 and HISTORY 'Felix Meritis: the length complaint was already fixed; the rear house returns'; ortho artifacts/landmark-abutters/felix-meritis.jpg; game frame integrator-lanes artifacts/felix-feedback/game-rear.png (rear house drawn past the garden)"
+  }
  }
 }

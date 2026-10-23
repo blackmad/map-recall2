@@ -35,6 +35,23 @@ it was never installed); OBA Banne's backlog pand is not in the building tiles
 `install-large.ts --install` by the batch lane; the review turn is the only
 writer of verdicts. Next: the first Haiku batch, the kits strips, S1.
 
+## check:canal green again: rewrite-erased export dates, Felix's rear house (2026-10-23)
+
+Two landmark gates failed on `main` for reasons outside any landmark lane.
+`check:landmark-inventory` dates a model by the commit that first added its GLB;
+the 2026-10-22 history rewrite stripped the first-add blobs of club-panama,
+compagnietheater, west-india-house (2026-10-09) and holocaust-namenmonument
+(2026-10-13), so the gate read them as never exported and demanded an
+inventory, though all four predate the 2026-10-14 cutoff. Their dates, read
+from the pre-rewrite backup, are pinned in
+`scripts/landmarks/first-export-dates-pre-rewrite.json`; the gate falls back to
+it only when git shows no add. `check:landmark-abutters` flagged Felix
+Meritis's rear house (BAG 0363100012174322), un-suppressed that afternoon
+because the GLB covers none of it; it sits in the hull only because the
+placement footprint is the 86 m plot. Reviewed `fine` with the aerial and
+game-frame evidence. Two stale Centraal Station `unclear` reviews remain for
+that lane to prune.
+
 ## Ride and Map Quest speak Dutch (2026-10-23)
 
 Merged `lane/nl-localization-20261022`: one English/Dutch message catalog
