@@ -34047,8 +34047,8 @@
   },
   {
     "id": "da-costakade-13",
+    "category": "ordinary",
     "name": "Da Costakade 13",
-    "landmarkId": "da-costakade-13",
     "modelUrl": "./models/da-costakade-13.glb",
     "suppressOsmIds": [
       "NL.IMBAG.Pand.0363100012166570"

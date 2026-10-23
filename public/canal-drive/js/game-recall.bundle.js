@@ -434,11 +434,11 @@
       cityId: DEFAULT_CITY_ID,
       difficulty: "medium",
       ...DIFFICULTY_PRESETS.medium,
-      // Boat and North up are the product start (2026-10-22, user's call;
-      // setup offers no view picker, the in-ride settings do).
+      // Boat and Chase are the product start (2026-10-22, user's call; cockpit
+      // is retired and the setup View row offers the 2D and 3D views).
       travelMode: "boat",
       controlMode: "relative",
-      viewMode: "north",
+      viewMode: "chase",
       themeMode: "clean",
       buildingLook: "photo",
       routePattern: "surprise",
@@ -3772,19 +3772,6 @@
       additionalSources: [
         "https://www.wikidata.org/wiki/Q2466999",
         "https://en.wikipedia.org/wiki/De_Waag"
-      ],
-      preferDescription: true
-    },
-    {
-      modelId: "da-costakade-13",
-      landmarkId: "da-costakade-13",
-      name: "Da Costakade 13",
-      description: "Da Costakade 13 is the corner building that heads a curved row of houses on the Da Costakade in Oud-West. The national building register (BAG) dates it to 1904 and records it as a head building (kopgebouw) holding five homes; the 3D building survey counts five storeys. Its two street fronts are dark brown brick picked out with green glazed brick: a pointed gable over two bays of French windows with stone balconies, and beside it the entrance, a red double door under a round stone arch. The end wall facing the garden has no windows. It is not a listed monument.",
-      funFact: "The building is the head of its block, so its garden side stands free: from the street you can see the blank end wall and the steep slate roof rising behind the gable.",
-      sourceUrl: "https://api.data.amsterdam.nl/v1/bag/panden/0363100012166570/?_format=json",
-      additionalSources: [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012166570",
-        "https://api.data.amsterdam.nl/v1/monumenten/monumenten/?betreftBagPand.identificatie=0363100012166570&_format=json"
       ],
       preferDescription: true
     },

@@ -417,6 +417,9 @@
   var COLD_OPEN_ENABLED = false;
 
   // src/canalRecall/game/modes.ts
+  function isPitchedView(view) {
+    return view === "chase" || view === "cockpit";
+  }
   function isCar(mode) {
     return mode === "car";
   }
@@ -4049,19 +4052,6 @@
       preferDescription: true
     },
     {
-      modelId: "da-costakade-13",
-      landmarkId: "da-costakade-13",
-      name: "Da Costakade 13",
-      description: "Da Costakade 13 is the corner building that heads a curved row of houses on the Da Costakade in Oud-West. The national building register (BAG) dates it to 1904 and records it as a head building (kopgebouw) holding five homes; the 3D building survey counts five storeys. Its two street fronts are dark brown brick picked out with green glazed brick: a pointed gable over two bays of French windows with stone balconies, and beside it the entrance, a red double door under a round stone arch. The end wall facing the garden has no windows. It is not a listed monument.",
-      funFact: "The building is the head of its block, so its garden side stands free: from the street you can see the blank end wall and the steep slate roof rising behind the gable.",
-      sourceUrl: "https://api.data.amsterdam.nl/v1/bag/panden/0363100012166570/?_format=json",
-      additionalSources: [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012166570",
-        "https://api.data.amsterdam.nl/v1/monumenten/monumenten/?betreftBagPand.identificatie=0363100012166570&_format=json"
-      ],
-      preferDescription: true
-    },
-    {
       modelId: "hoofdbureau-elandsgracht",
       landmarkId: "n11117002807",
       name: "Hoofdbureau van Politie",
@@ -5074,7 +5064,7 @@
           if (input) input.value = String(this.camera.zoom);
         }
       };
-      const twistable = () => this.state !== GameState.MENU && (this.viewMode === "chase" || this.viewMode === "cockpit");
+      const twistable = () => this.state !== GameState.MENU && isPitchedView(this.viewMode);
       let persistTwistTimer = 0;
       const twist = (clockwiseDeg) => {
         if (!clockwiseDeg) return;
@@ -5388,7 +5378,7 @@
       this._updateLandmarkSightline();
       this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
       this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
-      const pitched = this.viewMode === "chase" || this.viewMode === "cockpit";
+      const pitched = isPitchedView(this.viewMode);
       const byFerry = !!player.ferryOrigin;
       const byBoat = isBoat(this.travelMode);
       const byTransit = isTransit(this.travelMode);

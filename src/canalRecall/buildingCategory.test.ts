@@ -61,3 +61,14 @@ test('no destination, card or route candidate comes from a non-landmark model', 
   for (const id of manualPoiModelIds()) assert.ok(!nonLandmark.has(id), id);
   for (const f of mergeManualPoiFeatures([])) assert.ok(!nonLandmark.has(String((f as {modelId?: string}).modelId)), f.id);
 });
+
+test('regression: Da Costakade 13 is drawn as an ordinary hand model, never a landmark', () => {
+  const id = 'da-costakade-13';
+  const spec = MANUAL_LANDMARKS.find(m => m.id === id);
+  assert.equal(spec?.buildingCategory, 'ordinary');
+  assert.equal(spec?.landmarkId, undefined, 'no landmark identity survives the demotion');
+  assert.ok(GAME_BUILDING_MODELS.some(m => m.id === id), 'the hand-built GLB is still drawn');
+  assert.ok(!SIGNATURE_MODELS.some(m => m.id === id), 'no landmark card, pin or route destination');
+  assert.ok(!manualPoiModelIds().includes(id));
+  assert.ok(!mergeManualPoiFeatures([]).some(f => (f as {modelId?: string}).modelId === id));
+});

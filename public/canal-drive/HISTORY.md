@@ -28,8 +28,9 @@ game still draws the hand-built GLB and suppresses its BAG pand, but
 `SIGNATURE_MODELS` no longer offers it a landmark card, discovery/quiz entry,
 map pin or route destination. Its now-unreachable `manual-poi-data.json` card
 copy is removed. Content stats follow: 327 landmark models, 378 places to
-visit. `signature-placement`, `game-landmarks`, `game-presentation` and
-`game-recall` bundles rebuilt and cache-busted to `20261023b`.
+visit. `signature-placement`, `game-landmarks` and `game-presentation` bundles
+rebuilt and cache-busted to `20261023b`; `game-recall` to `20261023c` after a
+concurrent commit rebuilt the older card list.
 
 ## Questions a minute: 5 is the default (2026-10-23)
 
