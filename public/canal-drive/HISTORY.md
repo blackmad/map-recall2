@@ -32,6 +32,51 @@ phone. The shared frame does not rebuild its three.js state after a context
 restore (it never did; with released arrays the ground could not re-upload
 either) — TODO.
 
+## The 1000-building programme: factory, census, queue, lane briefs (2026-10-23)
+
+User: get to 1000 fully modelled landmark buildings and per-buurt looks on the
+Claude Code Max plan this month, Opus orchestrating, Haiku where possible; say
+where the pipeline is dumb; decide the three off-by-default building switches;
+fix the roads. Plan `docs/plans/thousand-buildings-20261023.md` (approved),
+rules `docs/handoffs/LANE-RULES.md`, thirteen briefs
+`docs/handoffs/lane-*-20261023.md`. Decisions: a building counts when it is a
+**named POI or a ride-visible dominant building** with a model that passes the
+`audit:glb` hard gates and a **recorded photo-likeness review**; the switches
+flip in the order BAG tiles → recipe tiles → city look, each after a desktop
+measurement and one strip the user looks at (the city look is re-levelled
+against the sunny frame first: it reads 5–6 luma darker under it today).
+
+Landed, no LLM call in any of it: `npm run factory:queue` builds
+`public/canal-drive/landmark-factory-queue.json` (325 rows: 36 pending POI
+buildings with pand ids, 289 ride-visible dominant buildings by
+`rideVisibility.score`; 112 already-covered pands left out, 23 rows keep an
+authored-but-uninstalled recipe); `npm run factory` chains crops → facts
+(routing streets within 30 m) → draft (`src/canalRecall/buildingRecipe/draftLarge.ts`:
+one `brick-bay-grid` group per exposed street-facing panel, tested against the
+installed police station) → `measure.ts --write` → `large.ts --strict` per
+row and writes status, report, sheets and notes back; `npm run factory:strip`
+pages four houses' wall sheets with a header line for the review turn, plus
+the verdict template; `npm run census` counts the definition: **386** today
+with the historical gallery reviews grandfathered (327 bespoke, 12 ride-visible
+hand-built, 47 large recipes past the likeness gate), **47** strict; 546 kit
+buildings and 18 gates-only recipes are modelled and unreviewed. Smoke run:
+the authored `politie-west-overtoomsesluis` went crops 27 s → measure 10 s →
+compile 7 s (its own `footprint-vs-bag` gate fails at IoU 0.749, which is why
+it was never installed); OBA Banne's backlog pand is not in the building tiles
+(now `no-evidence`, not `error`). Reviewed-pass rows are installed with
+`install-large.ts --install` by the batch lane; the review turn is the only
+writer of verdicts. Next: the first Haiku batch, the kits strips, S1.
+
+Landed the same evening: the factory's strip pager (`strip.ts`, every wall
+sheet of a house under one header, four houses a page), a one-time retry
+and automatic re-queue on network errors, and `landmark-queue.html`
+leading with the census (386 of 1000, 47 strict) and the factory queue.
+The 3DBAG API was down for the whole evening (TLS connect timeout while
+PDOK answered in 0.2 s), so no dominant pand got past `facts`; there is no
+local LoD2 surface dump to fall back to (`building-tiles` is compiled
+output, `bag3d-volume-rank` holds attributes only), so the facts step keeps
+depending on the API and the queue absorbs outages as retryable rows.
+
 ## Landmarks stop piling up, and nothing loads behind the setup card (2026-10-23)
 
 Users reported the game crashing phones and running far too slowly on ordinary
@@ -2701,7 +2746,6 @@ doc `docs/kinkerstraat-faces-even-20261014.md`. Checks: lint, block-face
 86, fit-golden 156 identical. The GATES FAIL header is the inferred-rear
 z-fight (rear-facade lane running).
 
-
 ## Mercatorplein: both towers built bespoke from a photo-first inventory (2026-10-14)
 
 Lane `lane/mercatorplein-20261014` (plan Part 2 step 8). Photo-first
@@ -2750,7 +2794,6 @@ audits PASS. OBA Mercatorplein was uninstalled by the large-tier triage
 (ornamented Amsterdam School front, no matching photo); its inventory is
 in `scripts/landmarks/oba-mercatorplein-inventory.json` for a bespoke
 builder.
-
 
 ## Large tier triaged: 95 houses measured, 54 re-fitted to the photo, 12 uninstalled (2026-10-14)
 
@@ -2826,7 +2869,6 @@ fit-golden and 112 meshes identical after the golden update (each batch's
 diff touched only that batch), stale-installs strict 0, covers, osm-under
 0, audit:glb per re-installed house.
 
-
 ## Jan Evertsenstraat surveyed: 148 pands, 19 faces, the De Baarsjes type sketch (2026-10-14)
 
 Lane `lane/jan-evertsen-survey-20261014` (plan Part 2 step 7, survey
@@ -2881,7 +2923,6 @@ strips), merged to source-data main 8e36d460. Files:
 `docs/jan-evertsenstraat-survey-20261014.md`,
 `scripts/street-surveys/streets/jan-evertsenstraat.json`,
 `scripts/block-face/faces/evertsen-*/`. Nothing authored or installed.
-
 
 ## Ride review, Jordaan and Plantage: three fixes, seventeen rows (2026-10-14)
 
@@ -2939,7 +2980,6 @@ vanished when the dev server died mid-run, and early Bloemgracht frames
 rode on the routing extract's straight two-node line. Checks: own-ground
 71, canal-elevation 11, look 59, own-ground-cells 0 FAIL.
 
-
 ## Kinkerstraat odd side authored: eight faces, 76 pands, 184,519 tris (2026-10-14)
 
 Lane `lane/kinkerstraat-odd-20261014` (plan Part 2 step 4). Faces
@@ -2989,7 +3029,6 @@ lights, plain flat dormer, corbel-table cornice, chimney beside a gable.
 Library candidates: `kinker-1885-wall-dormer`, `kinker-1893-plain-step-gable`.
 Checks: lint, block-face 84, fit-golden 153 identical; no kit or src
 change, so every other face's chunk is unchanged.
-
 
 ## De Hallen measured and staged behind its landmark; the two Kinkerstraat halls installed (2026-10-14)
 
@@ -3046,7 +3085,6 @@ covers, stale-installs strict 0, osm-under-models 0, audit:glb PASS.
 Near-miss: two Kinkerstraat `walls.json` were reverted by accident and
 rebuilt byte-identical (74 crops, same row counts).
 
-
 ## The bridge e2e reads deck crowns in metres, not pixels (2026-10-14)
 
 Lane `lane/bridge-crowns-20261014`. The pixel hump reading in
@@ -3068,7 +3106,6 @@ information; arch counts, bascules and screenshots unchanged. Three
 consecutive desktop runs green (Seven Bridges read 2.136, 2.018, 1.703,
 1.786, 1.301, 1.498; BRU0009 1.658); pinning BRU0009 at 1.20 fails with
 "crown 1.658 m vs pinned 1.2 m". No game source changed, no bundles.
-
 
 ## White accents read white: painted stone tint, springer rows, round arches with dark tympana, measured head lines (2026-10-14, user)
 
@@ -3132,7 +3169,6 @@ building-recipes 168, block-face 82, look 41, with named regressions on
 painted-stone tints, `paintFromFrames`. Bundles rebuilt here for the
 look change.
 
-
 ## Bridge regressions on main were two readings, not the bridges (2026-10-14)
 
 Lane `lane/bridge-regressions-20261014`. After the bridges merge met the
@@ -3167,7 +3203,6 @@ findings, all reviewed (KNOWN)", cells, own-ground 78, canal-elevation
 11, census 0 new, both e2e on desktop. Also noted: the bundles committed
 at the bridges lane tip did not match that commit's own source; main's
 bundles match main's source, so the integrator's rebuild was right.
-
 
 ## Ground from the terrain everywhere, with a reach test: 312 pands corrected, 98 split-level pands restored (2026-10-14)
 
@@ -3227,7 +3262,6 @@ has a 5–8 m inflation; the closest were 4.1 and 3.2 m). Checks:
 bag-tiles 22, tile-buildings 18, street-appearance 98, building-recipes
 166, block-face 71, building-types 39, street-rendering-core 69,
 osm-under-models 0.
-
 
 ## Nassaukade 506: the user's benchmark block in the kit; white courses on Kinkerstraat (2026-10-14, user)
 
@@ -3312,7 +3346,6 @@ blocks; named regressions in `kinkerstraat.test.ts` and `oudWest.test.ts`.
 The user's benchmark block is now the named regression for the Oud-West
 kit (memory `nassaukade-506-benchmark`).
 
-
 ## Ground tones measured from the orthophoto; `bright` is the ground look; measured glass keeps the sky (2026-10-14, user)
 
 **Ground look** (lane `lane/ground-look-20261014`, user "city too
@@ -3376,7 +3409,6 @@ pin), fit-golden 153 identical, 112 meshes identical, Playwright
 Houthavenkade (L within −0.03..+0.09 of max(hex L, 0.40), hue within
 10°). Eight bundles carry the palette change.
 
-
 ## Bridges per bridge: 255 with facts, 43 of 48 named sheets pass, 190 more decks measured, bascules as the panoramas show them (2026-10-14, user)
 
 Lane `lane/bridge-fidelity-20261014` (plan Part 3; the user's three bridge
@@ -3433,7 +3465,6 @@ bridge-keeper's houses, tram wires over the Bullebak. Inputs archived in
 source-data `datasets/bridges-20261014/{flat-decks,panoramas}/`. The
 own-ground bundles are rebuilt here.
 
-
 ## 3DBAG ground outliers: 540 pands drawn 3–12 m too tall, the rule and the patch; the lock island stays; two stale tests (2026-10-14)
 
 Lane `lane/water-anomalies-20261014`. **The grey box in the Singelgracht**
@@ -3480,7 +3511,6 @@ only the first `import` of `pyramidal-roofs-source.js` before loading it
 in a VM; a second import and a `THREE.Scene` added in 1c78b5a5 threw a
 SyntaxError before any assertion; it now strips every import and stubs
 `Scene`, 8/8). Frames in `docs/images/live-play-20261014/anomaly-*.jpg`.
-
 
 ## Large tier reconciled: measured values on the kit systems, five pilots installed, three schools uninstalled (2026-10-14)
 
@@ -3539,7 +3569,6 @@ building-recipes 152, fit-golden 145 identical, large meshes 112
 identical, geometry-audit 47, stale-installs strict 0, covers,
 osm-under-models 0, audit:glb PASS on the five.
 
-
 ## Statue batch 1: one command, 13 statues, five beat the kit, none shipped (2026-10-14)
 
 Lane `lane/sculpture-batch-20261014` (plan Part 4, route B). `node
@@ -3583,7 +3612,6 @@ strips are on the demo page for a pick. Caveats: Commons rate-limits
 within 1.8 m; the Theo man and boy are separate GLBs on the kit block and
 need hand placement. Doc section "Batch 1" in
 `docs/sculpture-reconstruction-20261014.md`.
-
 
 ## Kinkerstraat type library: seven Oud-West types, two proof faces (2026-10-14)
 
@@ -3641,7 +3669,6 @@ dark roof-box fronts, wall anchors, narrow centre French windows (1902
 type), brick flat-arch lintels. Checks: lint, block-face 69/69,
 building-recipes 144/144 (new `kinkerstraat.test.ts`).
 
-
 ## Multi-view tools: TRELLIS.2 with four photos gives the statue a back (2026-10-14, user)
 
 Lane `lane/multiview-tools-20261014`, from the user's questions ("tripoSR,
@@ -3680,7 +3707,6 @@ without them. Tools, venvs and 17 GB of weights in
 `~/Code/map-recall2-sculpt/mv/`, outside the repo.
 `decimate_scale_glb.py` gained welding, fragment filtering, `--remesh`
 and `--plinth`. The batch lane was switched to this route.
-
 
 ## Live play at the Singelgracht: road paint, light, near detail, the brick quay, houseboat berths (2026-10-14, user)
 
@@ -3757,7 +3783,6 @@ e2e. Merge conflicts (bundles, the shots script added on all three
 branches, one import, the ride-perf filename) resolved by hand; the
 own-ground, worker and three-buildings bundles rebuilt here.
 
-
 ## Canal-house windows and white accents measured into the kit (2026-10-14, user)
 
 Lane `lane/canal-windows-20261014`, from the user's priority ("window shape
@@ -3807,7 +3832,6 @@ and scrolls, wall anchors, basement doors and double stoops, frame width
 open-edges gate. The Nassaukade 506 and Oud-West type lanes build on
 these keys.
 
-
 ## Own ground on by default; the start faces the first leg, not the snapped node (2026-10-14, user)
 
 Lane `lane/own-ground-default-20261014`. **Own ground default** (user:
@@ -3851,7 +3875,6 @@ vite dev server with ELOOP in any worktree with a `.cache` link
 notice-cards, orientation-pois, recall-store, three), rebuilt and
 committed here.
 
-
 ## Measured glass reaches the game; the sheet's city-look column was the liar (2026-10-14)
 
 Lane `lane/measured-look-20261014` (plan Part 1 lane B, second pass). The
@@ -3893,7 +3916,6 @@ on six installed models is pixel-identical (no installed model carries
 `tintSource` yet). Atlas +1/12 (~0.5 MB at 256 px). `docs/LOOK.md` gained
 "Measured colours". The re-fits still wait for the reconciliation lane
 (lane A's measured values on lane C's systems) before they install.
-
 
 ## Kinkerstraat surveyed (217 pands, 28 faces); Object Capture tried on the statues (2026-10-14)
 
@@ -3944,7 +3966,6 @@ cheap position and height check (column top 4.2–4.3 m vs the 4.13 m kit).
 TripoSR stays the route; a closed figure would need a dedicated walk-around
 capture of ~40 photos. Strips on the demo page and under
 `docs/images/sculptures/`.
-
 
 ## Amsterdam School components for block faces; the Street-View pilot retired (2026-10-14)
 
@@ -4003,7 +4024,6 @@ suites were already red on main before this merge and stay on the board:
 mismatches across files no lane touched) and the pyramid case in
 `surveyedEnvelopeTransport.test.ts`.
 
-
 ## Large kit vocabulary: glazed hall, glazed columns, French-window ledge; the three complaint houses re-fitted (2026-10-14)
 
 Lane `lane/large-vocabulary-20261014` (plan Part 1 lane C), on lane A's
@@ -4053,7 +4073,6 @@ brick shop piers; Waagdragerhof's paired small arches, hoist-door axes,
 spandrel panels, dentil cornice, PAKHUIS WILHELMINA lettering, the bridge
 volume and stepped tower top.
 
-
 ## Hosting: auto-prune after every deploy, bursts deploy once (2026-10-14)
 
 Deploys failed on the 10 GB Hosting quota again this morning (24 failed
@@ -4067,7 +4086,6 @@ release and the newest three per site, never fails the deploy), and
 `cancel-in-progress: true` so a burst of pushes deploys once. The manual
 "Prune Firebase Hosting versions" workflow and `npm run hosting:prune`
 stay for emergencies.
-
 
 ## Texture prototype: the kit wins on all three complaint houses (2026-10-14, night)
 
@@ -4100,7 +4118,6 @@ spring leaves. Also: the `tileBuildings` golden was re-recorded for three
 large recipes installed since (Da Costakade 146, Hirschpassage 2,
 Leidsekade 106) and one changed row, De Balie (uninstalled recipe compiled
 by the tile compiler, 1,307 → 1,733 tris from kit changes in the batches).
-
 
 ## Measured tint, the shared house-type library, the sculpture prototype, motorkade-1 restored (2026-10-14, night)
 
@@ -4166,7 +4183,6 @@ merge dropped its entry from `signature-landmarks.json` (the lane rebuilt
 the manifest from a branch that predated the model), so
 `modelAssetVersions.json` lost its fingerprint and `check:manual-landmarks`
 failed on main; rebuilt with `--only=motorkade-1`.
-
 
 ## User review: the large-tier batches and the kit statues are rejected; the plan (2026-10-14, night)
 
@@ -4263,7 +4279,6 @@ Carmiggelt, Winkler Prins, Anne Frank, Walraven van Hall and Multatuli as
 pending though they exist; `build-manual-landmarks.ts` carries duplicated
 Thijssen/Jordaan import and dispatch lines.
 
-
 ## Desktop perf, third pass (2026-10-14, night)
 
 Lane `perf/desktop-3-20261014`, `docs/performance/desktop-20261014.md`
@@ -4296,7 +4311,6 @@ per-frame overhead (`hasTransitions` 0.3–0.4, tile culling and clip masks
 Per-layer GPU timer queries are unusable on this Mac (ANGLE on Metal).
 `DESKTOP_BUDGET` unchanged: no 2× headroom on the loaded machine.
 
-
 ## Dominant buildings, batch 6 (2026-10-14, night)
 
 Lane `large/dominant-6-20261014`, twelve layered recipes from the 3 km
@@ -4326,7 +4340,6 @@ Probed but unexamined after the probe's storey-height noise: Silodam
 Koivistokade 34, Nieuwpoortkade 2A. Not modelled: Revaleiland's slot-window
 blocks, Wibautstraat's cone piers, Louise Wentstraat's glazed stair
 columns, Haarlemmerweg's tenant signs.
-
 
 ## Figures, second pass: clothing, instrument and animal kits (2026-10-14, night)
 
@@ -4358,7 +4371,6 @@ gable's brick; they are now their own 3-storey, 2-bay group (6.0k → 5.9k,
 like a helmet from the side, the dove is small at gallery size, Johnny
 Meijer and Walraven van Hall untouched.
 
-
 ## 3DBAG shell repair (2026-10-14, night)
 
 Lane `domain/shell-repair-20261014`. `shellRepair: true` on a large
@@ -4389,7 +4401,6 @@ stay dropped. New scripts `shell-survey.ts`, `shell-debug.ts`,
 `shell-footprint.ts`; twelve synthetic-shell unit tests. Houses without
 either flag are byte-identical.
 
-
 ## Stale-install check made exact (2026-10-14, night)
 
 `install-large.ts` now records `meshHash` (the golden's compiled-mesh hash,
@@ -4404,7 +4415,6 @@ with their golden hash; the seven the ancestry check still flagged were
 re-installed (five whose golden was recorded after the install, and the
 two byte-identical ones). `npm run check:stale-installs` (`--strict`) is in
 `check:canal`.
-
 
 ## Layered re-installs, part two: the 58 stale houses (2026-10-14, night)
 
@@ -4430,7 +4440,6 @@ Passeerdersstraat, Politie West, Social History, Roeterseiland REC-A). The
 one remaining coplanar FAIL, Stadhouderskade 111 (2.6 m², glass against
 brick where a 4-storey grid ran into the gable), is fixed in the figures
 lane that follows.
-
 
 ## Dominant buildings, batch 5 (2026-10-14, night)
 
@@ -4464,7 +4473,6 @@ Handelskade oriel stacks (a reusable oriel-stack component would help),
 the Waagdragerhof double-height arches with per-arch lettering,
 Spinozastraat's green ceramic roofs.
 
-
 ## Landmark queue, batch 9: the blurred statues from Commons (2026-10-14, night)
 
 Lane `landmarks/queue-9-20261014`. Six models from licensed Wikimedia
@@ -4492,7 +4500,6 @@ Jordaan 160 ± 20 from a panorama, Thijssen 0 ± 40 (weakest), Carmiggelt
 Left: the couple and bass player are blocky, Tante Leen has no face
 features, the squirrels read as a pile of spheres, the two north-end
 Kinderbrug groups have no usable open photo.
-
 
 ## layeredKit is the default; parts follow leaning and bent walls (2026-10-14, night)
 
@@ -4528,7 +4535,6 @@ still carry the old geometry until re-installed. Seven new
 `largeTier.test.ts` cases (leaning wall, sill vs reveal, curtain grid on
 a bent member, mesh plinth, 3 cm arch ring, lettering, the default).
 
-
 ## UvA Roeterseiland REC-A surveyed and built (2026-10-14, night)
 
 Lane `landmarks/roeterseiland-20261014`. BAG records REC A/B/C/D and De
@@ -4554,7 +4560,6 @@ defeat the wall raster), the west-beige top row, panels under 6 m; raked
 reveals, the diamond lattice and round-ended windows simplified; no
 four-side or street strips yet.
 
-
 ## Landmark queue, batch 8 (2026-10-14, night)
 
 Lane `landmarks/queue-8-20261014`. The Spinoza statue on the
@@ -4579,7 +4584,6 @@ face-blurred in every panorama (Commons photos are the route); the
 Dokwerker, Homomonument, Schreierstoren, De Munt and Mozes en Aäronkerk
 are already bespoke. Debug helpers `audit-parts.ts` and `audit-geo.ts`
 committed. The Spinoza inventory `how` text still describes the cone.
-
 
 ## Dominant buildings, batch 4 (2026-10-14, night)
 
@@ -4611,7 +4615,6 @@ samples the lowest roof along a panel so mixed-height panels must be
 listed by surface; `baysPerStorey` counts on the widest split panel so
 surface lists make bays expensive (22 bays on 24 m cost 16k tris).
 
-
 ## Tropenmuseum, second pass (2026-10-14, night)
 
 Lane `landmarks/tropenmuseum-2-20261014`. Three faces measured at
@@ -4639,7 +4642,6 @@ block above its 12 m panel, the south pavilion (oblique crop) and the
 risalit gable (no panorama), the lion masks; debug env toggles
 `TROP_ONLY`/`TROP_SKIP`/`TROP_NO_FACES` to tidy.
 
-
 ## Layered kit re-installs (2026-10-14, night)
 
 Lane `large/layered-reinstall-20261014`. `install-large.ts` now has
@@ -4661,7 +4663,6 @@ Oost-Watergraafsmeer 2.8 → 0, Nieuwezijds Voorburgwal 8.5 → 0, Zuidoost
 Gaasperdam 1.3 → 0. Distelweg 88 is `render` + `stucco`. The residue on
 Berlage, Montessori, Amsterdams Lyceum and Stadsloket West is stone/brick
 band overlap that `closedBands` does not close.
-
 
 ## Own ground: belt audit clean, pockets, water under footbridges, park cull, far ring (2026-10-14, night)
 
@@ -4702,7 +4703,6 @@ subtly against the recoloured basemap; residual land over BGT road away
 from junctions (Oud-West 11.6k m²) needs a BGT-driven fill; pocket build
 time; iPhone unmeasured.
 
-
 ## Layered kit: the large-tier overlaps closed (2026-10-14, night)
 
 Lane `large/layered-kit-20261014`. Behind a new top-level intent field
@@ -4731,7 +4731,6 @@ doors. Eight older houses use these features without the flag
 Entrepotdok with the flag goes 55.8 → 0 m² but 11.2k → 16.0k tris, over
 budget; `install-large.ts` also drops the `bagYear` six of them carry.
 
-
 ## Tropenmuseum surveyed and built (2026-10-14, night)
 
 Lane `landmarks/tropenmuseum-20261014`. The whole complex is BAG pand
@@ -4757,7 +4756,6 @@ generic windows and rule-based ornament where the photos show round-arched
 triple windows, souterrain arches, relief panels and a dentil cornice;
 812 of 908 panels are blank; the Mauritskade corner has no dedicated
 sheet; no `tropenmuseum-spec.json`; not in `SNAP_OPENING_IDS`.
-
 
 ## Inward-facing normals: the Palace and the shared hip() helper (2026-10-14, night)
 
@@ -4791,7 +4789,6 @@ inflated; shares are consistent. Note: `OVER_BUDGET` names `royal-palace`
 but the model id is `palace-on-the-dam` (425 KB, 30k tris, within the
 default budget anyway).
 
-
 ## Schools as large recipes; hospitals surveyed (2026-10-14, night)
 
 Lane `public/schools-20261014`. Eight `kind: large` recipes: the
@@ -4816,7 +4813,6 @@ OBA Javaplein and Stadsloket Noord (1.5–51.9 m²): a kit cause, fixed by
 the layered kit (next entry) and to be re-installed with `layeredKit`.
 Roeterseiland REC-A (pand 0363100012185420: 672 surfaces, tower to 59 m,
 eaves 8–51 m in one panel) needs its own survey lane.
-
 
 ## Desktop perf, second pass (2026-10-14, night)
 
@@ -4848,7 +4844,6 @@ MapLibre's own render (1.0–1.9 ms) is now the largest owner; the legacy
 signature-landmarks layer renders once per model (0.30 chase / 0.73
 aerial); the shared frame still draws the bike x-ray as a second pass;
 city prism picks 0.07–0.10 ms; iPhone unmeasured.
-
 
 ## Dominant buildings, batch 3 (2026-10-14, night)
 
@@ -4882,7 +4877,6 @@ intent's `wallSurfaces` splits groups per height; white concrete is
 Walls without a current photo stay blank (Hamerkanaal N/E/W, Funenpark
 and Westerdok courtyards, Plantage Middenlaan SW, Weteringstraat N).
 
-
 ## The black blocks under the shared frame were a depth-range bug (2026-10-14, night)
 
 Lane `look/shadow-fill-20261014`. MapLibre draws its 3D custom layer with
@@ -4911,7 +4905,6 @@ configurations) and a "shadow fill" case in `building-look.spec.ts`;
 gets worse with normal bias ≥ 0.5, which hints at inward-facing normals
 in that GLB.
 
-
 ## Landmark queue, batch 7: five memorials (2026-10-14, night)
 
 Lane `landmarks/queue-7-20261014`. The lane checked the backlog's
@@ -4934,7 +4927,6 @@ swept hair mass) and the Walraven tree read as a centipede (now a tapered
 trunk with five thick forking branches). Facings are visual estimates;
 the Wertheimpark monument is hidden from every panorama so its pane and
 plate sizes come from Commons photos; figures have no faces.
-
 
 ## Parks from the BGT survey (2026-10-14, night)
 
@@ -4964,7 +4956,6 @@ height, the hidden OSM park fill still drawn under the BGT surfaces
 (20–160k tris per park cell, the next saving), large paved courts read
 grey because the survey says so, iPhone unmeasured.
 
-
 ## American Hotel rebuilt from measured facades (2026-10-14, night)
 
 Lane `rework/american-hotel-20261014`. The user's "poor reconstruction"
@@ -4983,7 +4974,6 @@ skipped). Inferred: tower stage heights (±0.4 m from pitched views), the
 Marnixstraat main block, loggia depths. Open: the tower drum sits ~1.3 m
 north of the footprint's bulge below 28 m, so the faceted shell shows
 there; inventory items have no `sheetBox`.
-
 
 ## Landmark queue, batch 6 (2026-10-14, night)
 
@@ -5005,7 +4995,6 @@ greenhouses already exist. The Tropenmuseum needs its own survey lane: its
 BAG pand is a 4-vertex rhombus and the rest is ~25 OSM stand-in ways.
 Statue facings are visual estimates; figures have no faces or drapery;
 the Noorderkerk's unphotographed gables are inferred.
-
 
 ## Large-tier components the batches kept asking for (2026-10-14, night)
 
@@ -5033,7 +5022,6 @@ marked party wall (needs a per-group override). `install-large.ts`
 replaces a catalogue entry in place. `large-mesh-golden.json` was stale
 since the frame-sheet merge (22 of 38 hashes) and is re-recorded.
 
-
 ## Small targets under the coral highlight (2026-10-14, night)
 
 Lane `look/highlight-small-target-20261014`. When the lit building's
@@ -5054,7 +5042,6 @@ measuring script records accent share and boost. Still open: 3DBAG
 detailed mode untested live, `building-3d` basemap targets get no casing,
 iPhone profile, perf with the wash pass not re-measured (one draw per lit
 mesh while boosted).
-
 
 ## Street-survey chunks retired; why the block was black (2026-10-14, night)
 
@@ -5079,7 +5066,6 @@ casts find fewer occluders than the screen shows, unexplained. Recipe
 tiles stay behind the flag: they exist only inside the shared frame, which
 is off by default, and the pilot has no tiles for Nassaukade or De
 Clercqstraat; ride perf is within noise in every mode.
-
 
 ## A bridge kit by type (2026-10-14, night)
 
@@ -5109,7 +5095,6 @@ Named regressions: Reesluis and the West-Indische Huisbrug as arches, the
 Melkmeisjesbrug as a footbridge open under its middle, the Torensluis
 (masonry) and the Magere Brug (timber) typed by the register.
 
-
 ## Desktop ride profiled by owner; three fixes (2026-10-14, night)
 
 Lane `perf/desktop-ride-20261013` (user: "there's still perf work to do").
@@ -5135,7 +5120,6 @@ frame (0.4–1.3 ms; a grid index was no faster), landmark ray picks need a
 bounds pre-test, static landmark scenes update matrices per frame, the
 bike is drawn twice (0.4 ms); the iPhone profile is still pending.
 
-
 ## A figure kit, and four memorials with real figures (2026-10-14, night)
 
 Lane `landmarks/memorial-figures-20261013`. `scripts/landmarks/figure-kit.ts`
@@ -5154,7 +5138,6 @@ De Dokwerker (boots apart, chin up, cap, 1941 on the pedestal; 516). All
 pass `audit:glb` at slots 100 %. Night Watch plan positions come from two
 photos, not a measured plan; faces, costume detail, the dog and the
 chicken are not modelled.
-
 
 ## Libraries and stadsloketten as large recipes (2026-10-13, evening)
 
@@ -5181,7 +5164,6 @@ matches landmarks only, so ordinary entries get the shell audit by
 glass/frame overlap per opening (0.8 m² on the 48-opening Zeeburg police
 bureau), a kit-level item.
 
-
 ## Begijnhof and the Slavernijverleden memorial (2026-10-13, evening)
 
 Lane `landmarks/queue-5a-20261013`, continued. The Begijnhof is one
@@ -5198,7 +5180,6 @@ Slavernijverleden (Oosterpark, 2,400 tris): the platform on its apron, the
 great leaning figure, the post figure with raised arms and twelve roped
 walkers, from CC0 and CC BY-SA photos; the figures are rough tapered limbs
 and the platform heading is a visual estimate.
-
 
 ## Dominant buildings, batch 2: ten large recipes installed (2026-10-13, evening)
 
@@ -5224,7 +5205,6 @@ quad within the 1.5 cm default, a closed box beyond it; all 71 house
 recipes, the 27 earlier large meshes and both landmark GLBs stay
 byte-identical.
 
-
 ## The frame-sheet z-fight class, fixed in the helpers (2026-10-13, evening)
 
 Lane `glb/zfight-frames-20261013`. The survey's biggest class was frames,
@@ -5246,7 +5226,6 @@ tints a few pixels at 1,800 m, so 4.5 cm may not be fully clean that far.
 false, nothing suppressed, finite surveyed anchor) and records a ceiling
 for the two over-budget legacy models; it passes end to end again.
 
-
 ## Coral highlight is the default (2026-10-13, evening)
 
 Lane `look/highlight-default-a-20261013`. `highlightStyle()` returns `a`
@@ -5266,7 +5245,6 @@ else outlines the building; 3DBAG detailed mode outlines the hit feature
 only. Desktop cost: +22–26 draw calls, MapLibre render within yellow's own
 spread. The known gap: a terrace house at chase distance reads 0.08 %
 accent pixels vs 0.55 % under yellow (on the board).
-
 
 ## Hoofdbureau rebuilt from measured facades; Maagdenhuis and two memorials (2026-10-13, evening)
 
@@ -5301,7 +5279,6 @@ identical; both GLBs re-export byte-identical to the lanes').
 standalone structure, the three vessels, Sloterdijk station) instead of
 failing on `homomonument` as it had since 94e7780f.
 
-
 ## Own ground: junction strays, area:highway, dissolve, the edge from the air (2026-10-13, evening)
 
 Lane `ground/own-ground-defects-20261013`. The Rozengracht × Marnixstraat
@@ -5325,7 +5302,6 @@ memory 69 → 124 MB). New e2e `own-ground-defects.spec.ts` with the aerial
 pin; `vector-map.js` +10 lines (basemap patches, zoom passed to the
 residency update).
 
-
 ## Integrator pass after the nine merges (2026-10-13, evening)
 
 - **One flat-roof table**: `FLAT_ROOF_TONES` now derives from
@@ -5345,7 +5321,6 @@ residency update).
 - **Orthophoto cache** (64,937 PDOK tiles, 822 MB, CC BY 4.0) committed to the
   source archive (`datasets/luchtfoto-20261013`).
 - npm scripts `test:roofs`, `check:roof-attachment`, `check:garden-sheds`.
-
 
 ## Map Recall quiz: wave 2, the review's longlist (2026-10-13)
 
@@ -5466,7 +5441,6 @@ beside the top-down render for review. Two flat-roof tables now coexist
 (`FLAT_ROOF_TONES` from the mood pass for unmeasured roofs, slot tones for
 measured ones); reconciling them is on the board.
 
-
 ## Z-fighting found by audit, not by eye (2026-10-13)
 
 User: "is it possible to automatically find instances of texture fighting
@@ -5502,7 +5476,6 @@ sets); the 14 batch-3 models were re-baselined under the new metric. The
 rest of the ranked list is a board item: the "frame 2 cm proud" class is a
 builder-library fix (hole the wall or lift the frame 3 cm), not per-model
 work.
-
 
 ## One world-fixed sun and the mood pass (2026-10-13)
 
@@ -5710,7 +5683,6 @@ Jodenbreestraat 11; catalogue 307 → 312 entries, merged by id. Integrator:
 fingerprints and manifests refreshed, covers rebuilt, `check:covers` and
 `check:osm-under-models` clean, `check:landmark-inventory` 312/0 fail.
 
-
 ## Hosting: deploys failing on the storage quota again (2026-10-13)
 
 Every "Deploy to Firebase Hosting" run since 14:27 (the push after 922de98,
@@ -5727,7 +5699,6 @@ own prune was stopped by the session's permission policy (mass delete), so
 the prune is the user's call; after it, re-run the newest failed deploy.
 The deploy workflow now skips pushes that only touch `docs/**`, `*.md` or
 `artifacts/**`.
-
 
 ## Own ground: bridges with real elevation, the belt reviewed, roads redrawn (2026-10-13)
 
@@ -5806,7 +5777,6 @@ updated; `scripts/worktrees/triage.sh` no longer removes a merged-clean
 worktree whose branch still carries the agent auto-name (a fresh lane was
 removed under its agent; the directory survived because the process held it).
 
-
 ## A stopped boat turns on the spot promptly (2026-10-13)
 
 User: "boat needs to be able to do a stopped turn when up against a wall
@@ -5852,7 +5822,6 @@ crossing question (`crossingQuestionKind.bridgeAskable`, the water under it
 is still taught); hard and expert ask every bridge, custom follows the
 answer mode. `docs/gameplay/loop.md` rewritten accordingly.
 
-
 ## `check:signature-fallback` back in the gate (2026-10-13)
 
 `scripts/check-signature-fallback-refresh.mjs` had crashed since the recipe
@@ -5863,7 +5832,6 @@ global only carried `SIGNATURE_MODELS`. The check now loads
 model list. It was wired to nothing; it is now `npm run check:signature-fallback`
 and the last step of `check:canal` (streamed/static/no-style masks,
 unload/reload, neighbours, basemap composition; < 2 s).
-
 
 ## Sculptures: De Dokwerker as a seven-view photo impostor behind `?sculptures=1` (2026-10-13)
 
@@ -5897,7 +5865,6 @@ in `~/Code/map-recall2-source-data/experiments/sculptures/dokwerker/`
 (images 82 MB, COLMAP model, pilot splat, impostor layouts, shots).
 Integrator: `build:canal-sculptures`, `test:sculptures` scripts; merged with
 the recipe-tiles mount in `vector-map.js`.
-
 
 ## City look review: shaded highlight, luma in the band, era brick, 311-model gallery triage (2026-10-13)
 
@@ -5933,7 +5900,6 @@ desktop first. Integrator: `scripts/landmarks/landmark-bag-years.ts` run
 (238 manual + 77 ordinary entries got `bagYear`; 57 without), bundles
 rebuilt, `test:look` 28, look e2e 15 passed.
 
-
 ## Large tier: arched openings; Entrepotdok, Reade, Eden Hotel, Nieuwpoortstraat (2026-10-13)
 
 Lane `large/arches-entrepotdok-20261013` (Opus). `src/canalRecall/blockBuilding/arch.ts`:
@@ -5963,7 +5929,6 @@ Nieuwpoortstraat 80-98 (7,198; ACTION lettered). Gillis van
 Ledenberchstraat 38 authored but not installed (placement/footprint
 inconsistent with the tiles, see board). `fit-golden` 59 identical,
 `block-kit-installed` identical, `building-recipes` 84.
-
 
 ## Bespoke landmark process: photo-first brief, signature inventory gate; six ornament retro-fits (2026-10-13)
 
@@ -6009,7 +5974,6 @@ Shared helper `scripts/landmarks/ornament-kit.ts` (`raisedLettering`,
 re-export of vondelkerk in a six-id process failed the audit (see board,
 export determinism), a single-id export is deterministic and passes.
 
-
 ## Police bureaus, pass 2: twelve more bureaus as large recipes (2026-10-13)
 
 Lane `landmarks/police-bureaus-2-20261013` (Sonnet). All through the
@@ -6031,7 +5995,6 @@ own `system: blank` group. Ornament lists per bureau are in each
 integrator added five OSM ways under the Zuid-De Pijp pand to its aliases
 and suppress so `check:osm-under-models` stays at 0, rebuilt covers and the
 signature bundle. `fit-golden` 54 identical. Panoramas CC BY 4.0, BAG, 3DBAG.
-
 
 ## Migration step 3 behind `?recipeTiles=1`: recipe tiles, compiler, `TileBuildings` near tier (2026-10-13)
 
@@ -6071,7 +6034,6 @@ for the Hoofdbureau relief), `tests/e2e/recipe-tiles.spec.ts` off/on/types.
 Integrator: `tile-buildings.bundle.js` (34 KB), `test:tile-buildings` in
 `check:canal`, `build:canal-tile-buildings`, `build:recipe-tiles`, pilots
 recompiled from main and published to `public/canal-drive/recipe-tiles/`.
-
 
 ## Hoofdbureau van Politie: ribbon fronts and the corner relief (2026-10-13)
 
@@ -6137,7 +6099,6 @@ haparandaweg-2-4, petrus-en-paulus-kerk, booking-hq (held). Integrator
 regenerated the manifests for 25 ids, rebuilt 25 lod1 models, the signature
 bundle and covers; `check:canal` 154/154.
 
-
 ## Large tier, second customers: Kattenburg quadrangle and Heinekenplein block; courtyard footprints, sealed slivers, closed boxes (2026-10-13)
 
 Lane `lane/dominant-large-20261013` (Sonnet) after the elevation-skeleton
@@ -6164,7 +6125,6 @@ walls (`partyWallBearings` from a large `report.json` next to the GLB) from
 the 600 m² blank-wall limit; `scripts/pand-reference/all-walls.ts` gives one
 rectified crop per exposed wall. `fit-golden` 41 identical, block-kit 8
 identical, building-recipes 77, geometry-audit 36.
-
 
 ## Gameplay follow-ups: review-ride planner, exposure scheduling, questions-a-minute setting, finish-card story, ferry prompts (2026-10-13)
 
@@ -6217,7 +6177,6 @@ Checks: lint, 42 game unit tests, answer-path, bottom-HUD (160 + 384
 scenarios), route-selection, road-graph, preferences, play-delight,
 road-name-heading, Storybook build, `riding-pacing`/`review-ride`/
 `storybook-visual` e2e (54): all pass.
-
 
 ## Migration steps 1 and 2 behind flags: BAG tiles + covers, cityLook atlas; Hoofdbureau van Politie (2026-10-13)
 
@@ -6279,7 +6238,6 @@ plate; sunken ramp clipped at y = 0; 26,552 tris, 38 gates PASS,
 16-bit quantization entries by the integrator. Panoramas CC BY 4.0
 (2016–2025), BAG, 3DBAG; Beeldbank refused automated fetch.
 
-
 ## Checks lane: baselines re-recorded, stale rules fixed, docs index (2026-10-13)
 
 Lane `process/checks-and-docs-20261013` (Sonnet, `docs/handoffs/lane-checks-and-docs-20261013.md`).
@@ -6307,7 +6265,6 @@ research list with "superseded by" marks; `docs/gameplay/loop.md` written
 from `questionBudget.ts`, `ridingPrompt.ts`, `teachingPacer.ts`. Nothing
 moved or deleted.
 
-
 ## Police bureaus: 17 matched, two more large recipes installed (2026-10-13)
 
 Lane `content/police-bureaus-20261013` (Sonnet, `docs/handoffs/lane-police-bureaus-20261013.md`).
@@ -6325,7 +6282,6 @@ as `ordinary-0363100012253728` and `ordinary-0363100012064423`. Oost
 Watergraafsmeer was built and dropped: no panorama covers its 34 m east wall
 and the blank-wall gate fails. Checks: lint, building-recipes 74, fit-golden
 39 identical, osm-under-models 0 unsuppressed.
-
 
 ## GLB cleanup batch 1: hard attachment gates, snapOpenings, material slots, 15 worst offenders (2026-10-13)
 
@@ -6361,7 +6317,6 @@ Checks: geometry-audit 36, glb-quality 30, snapOpenings+materialSlots 6,
 osm-under-models 0 unsuppressed, lint. Integrator regenerated the manifests
 and LOD table and rebuilt `signature-placement.bundle.js`.
 
-
 ## One palette, one rig: look consistency behind the shared frame (2026-10-13)
 
 Lane `look/consistency-20261013` (Opus, `docs/handoffs/lane-look-consistency-20261013.md`).
@@ -6386,7 +6341,6 @@ ways, three.js layers 0.64→0.86 ms, heap 640→790 MB, 26 shadow redraws per
 12 s; iPhone 4× profile (secondary) p99 16.8→33.3 ms. Integrator rebuilt 13
 bundles, added `test:look` to `check:canal`; look-consistency and look-parity
 e2e pass on merged main, Storybook builds.
-
 
 ## Large tier: `fitLarge()`, `kind: large` recipes, civic components, first police station (2026-10-13)
 
@@ -6457,7 +6411,6 @@ branch's entries for the merged ids, then regenerating manifests and bundles;
 the helper lives in the integrator's scratch and should become
 `scripts/landmarks/merge-landmark-branch.ts` if a third lane needs it.
 
-
 ## Five hand-built churches replace their procedural kits (2026-10-13)
 
 `feat/kit-only-churches-20261011` (killed mid-lane 2026-10-13, salvaged and
@@ -6475,7 +6428,6 @@ photo specs, so they got first-record entries in
 the fixes. Merge resolution took main for the shared registry/catalogue/LOD
 files and re-added the five entries; the manifest and
 `signature-placement.bundle.js` were regenerated.
-
 
 ## Own ground: per-polder water, BGT widths per way, 202 more measured bridges (2026-10-13)
 
@@ -6511,7 +6463,6 @@ fully measured, own-ground-game e2e 8/8 (lane) and 4/4 desktop (integrator),
 lint. Raw inputs archived to `map-recall2-source-data/datasets/own-ground-20261013/`.
 `docs/elevation.md` updated.
 
-
 ## Route questions no longer freeze the rider; spaced repetition budgets them (2026-10-13)
 
 Assessment finding: every route question zeroed the bike's speed and `game.js`
@@ -6540,7 +6491,6 @@ turn-question-timing e2e. Also 2026-10-13 (user): no cap on bespoke landmark
 builders (the "~100 icons" tiering is dropped); desktop performance outranks
 iPhone ~10x, iPhone measurements come later; the integrator merges on its own
 judgement.
-
 
 ## Housekeeping sweep: worktrees, caches, source archive (2026-10-13)
 
@@ -6578,7 +6528,6 @@ upstream by blob hash and their differing files archived under
 `kerk206-details-report.json` over GitHub's 100 MB limit were gzipped.
 Result: 15 worktrees, 164 branches, 148 GB free. The approved direction plan
 is `docs/plans/digital-twin-direction-20261013.md`.
-
 
 ## Scheepvaartmuseum and Waag replace their native kits (2026-10-13)
 
@@ -8743,7 +8692,6 @@ Boat rides happened to face right with or without the fix on those two seeds.
 ## Panorama facade textures (spike)
 
 `scripts/pano-facades/build-pano-facade.ts` builds a photographic elevation of a building's best street-facing wall from Gemeente Amsterdam panoramas: it ranks exposed footprint edges by panorama coverage, rectifies up to five captures with `rectifyFacade` (world-aligned camera) and fuses them with a per-pixel median, which removes cars and people. Output goes to `public/data/landmark-facades/<name>.jpg` plus a JSON record (wall endpoints, panorama ids, attribution). First run on the "Anne Frank House" ids gave a clean 18 m elevation, but the ids resolve to the museum's modern extension (brick + glass entrance), not the canal house, so the right BAG parts still need choosing. The 8000 px image 404s for some panoramas; the script falls back to 4000/2000. Windows show glass reflections smeared by the median; the licence (publisher says open data) is still to be confirmed before shipping textures.
-
 
 ## 2026-10-02 — Neighbourhood gap-fill pipeline
 
@@ -11107,7 +11055,6 @@ original appearance for eleven unknown and four unsupported cases. The default
 ten-case experiment and default game remain unchanged. Focused worker, mask,
 rectification retry and scope checks pass; complete render acceptance remains open.
 
-
 ## 2026-09-26 — exhaustive district rectification and local material benchmark
 
 The former five-street source sample is replaced by an exact municipal-boundary
@@ -11131,7 +11078,6 @@ The coverage-gap audit identifies 355 owners failing address/height eligibility
 and 328 passing those initial gates without an inventory frontage. The 49
 addressless owners taller than five metres form a possible isolated next test;
 no nearest-building identity guess or blanket height relaxation was introduced.
-
 
 ## 2026-09-27 — phone choices no longer pre-tint an answer
 
@@ -12431,7 +12377,6 @@ evidence, and case 27 still renders its ground-floor door. Original candidate
 geometry, active release and spend were unchanged. The next roof correction
 pass is recorded in [ROOF_REVIEW_HANDOFF.md](../../scripts/review/ROOF_REVIEW_HANDOFF.md).
 
-
 ## 2026-09-13 — Show the current repairs in the reconstruction workbench
 
 Case 27 appeared to lose its doors and finish work because the first workbench
@@ -12447,7 +12392,6 @@ mode keeps the existing render controls and uses the parent notes workflow.
 New case-27 checks verify actual door meshes, candidate identity, case switching
 and historical-image separation on desktop and phone; the standalone viewer's
 notes remain available. No candidate geometry or release data was regenerated.
-
 
 ## 2026-09-13 — First reconstruction implementation wave
 
@@ -12477,7 +12421,6 @@ The source-tier test mismatch is resolved with explicit ground-only, missing,
 failed, ambiguous, stale, revoked, overlapping and gap-interval tests; no
 compiler behavior was changed for that correction. Fidelity and repair checks
 now pass. Moeders game tile residency and full-device profiling remain open.
-
 
 ## 2026-09-13 — Reconstruction project audit and delivery guide
 
@@ -12567,7 +12510,6 @@ Still gated on the owner or hardware: physical desktop/phone profiling;
 photo-redistribution rights decision; the 100-block scale-up.
 
 </details>
-
 
 ## 2026-09-10 — Owner decision: machine-observed tier; coverage before calibration
 
@@ -13542,7 +13484,6 @@ overview (`routeReviewDue` → `reviewDueNetwork` / `reviewDueWater`), above the
 green mastery bands. Cache key includes due-count so answering a due place
 repaints without changing the track. Dedicated review screen still open.
 
-
 ## Border + top-clip P0 — 2026-09-06
 
 User catch: fat cream mat + greeting/letter tops sliced by the paper clip —
@@ -14087,7 +14028,6 @@ Hand-built `omafiets-runtime.glb` is the game bike (deep step-through, blue
 front tyre, `Lenker`/`RadVorn`/`RadHinten`). Sketchfab Swapfiets native meshes
 are not clean wheel/frame splits; cutting verts tore fenders and bars apart.
 Preview keeps the intact baked body for look comparison only.
-
 
 ## Street-mode bicycle is a Swapfiets omafiets
 
@@ -16554,7 +16494,6 @@ Use Crazy Taxi as the primary reference for pace, readability, and session struc
 - Reserve exaggerated arrows, voice barks, combo typography, destination gates, pickups, boosts, and celebratory arrival effects for `Game-y features: On`.
 - Add a short “quick fare” mode alongside deliberate study routes. The same map, graph, facts, and recall questions should power both.
 - Keep collisions forgiving. The fun should come from flow, turns, geographic decisions, and chaining successful trips—not punishing vehicle damage.
-
 
 ## 2026-09-12 — Da Costabuurt + Jordaan evaluable release
 
