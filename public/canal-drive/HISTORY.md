@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+## The land stops poking through the grass (2026-10-23)
+
+Follow-up to the Rembrandtplein cut: beige specks inside the lawns were the bare
+land grid showing through the green. A fill drapes the 5 m land grid at its own
+vertices, so where the grid crests, the plane between them dips under it — 7 cm
+at p99, 15 cm at p99.9, 73 cm at the worst bank — and the land won the depth
+test. `drapeBisect` now splits a fill triangle whose plane would sit more than
+2 mm under the land at a land grid node inside it (over one grid cell both are
+planes, so the deepest sag is at a node, or where a triangle edge crosses a grid
+line), down to 1 m edges; the far ring allows 1 cm. Green nodes in the
+Vondelpark cell with land above the fill: 355 over 2 cm and 144 over 5 cm
+before, 6 and 1 after; p99 7.0 cm → 0.1 cm. Triangles cost 1–10 % (crests pay).
+Regression test on the streamed Vondelpark cell; the ground-places shots gained
+the Blauwe Theehuis.
+
 ## The ride's errors finally point at TypeScript (2026-10-23)
 
 Map Quest had Sentry source maps since the monitoring work; the ride did not.

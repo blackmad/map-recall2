@@ -25,7 +25,7 @@ import { bandCorridor, COVERED_TOP_SINK_M, DECK_REACH_MAX_M, deckReach, deckWidt
 import { crossingWays } from './railingRuns.js';
 import { inLandedPlatform } from './landedPlatforms.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
-import { buildParks, cullCovered, decodeLine, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
+import { buildParks, cullCovered, decodeLine, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, CLEARANCE_M, CLEARANCE_FAR_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
 import { COURTYARD_SURFACES, type CourtyardsCell } from './courtyards.js';
 import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats, type SurveyGap, SURVEY_GAP_MIN_R } from './pockets.js';
 import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } from './roadSurfaces.js';
@@ -342,6 +342,9 @@ export function buildCell(input: CellInput): BuiltCell {
   for (const a of areas) {
     const layer = a.kind === 'paved' ? pavedAreaSurface(a) : areaLayer[a.kind];
     if (!layer) continue;
+    // Only the green fills need the clearance refinement (see drapeBisect): the land under a street or a square is
+    // culled by the road partition or sits under paving that is already 3-4 cm clear.
+    const clearance = layer === 'park' || layer === 'wood' ? (lod === 0 ? CLEARANCE_M : CLEARANCE_FAR_M) : undefined;
     let m = emptyMesh();
     for (const r of a.rings) {
       const pts = r.slice(0, -1).map(input.project);
@@ -351,7 +354,7 @@ export function buildCell(input: CellInput): BuiltCell {
       const flat = pts.concat(...holes).flatMap(p => [p[0], p[1]]);
       greenCut += holes.length;
       // Longest-edge bisection (parks.ts): the n² split cost Westerpark's cell 159k triangles of park fill on earcut slivers.
-      drapeBisect(m, flat, earcut(flat, holeAt), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), lod === 0 ? 8 : 16);
+      drapeBisect(m, flat, earcut(flat, holeAt), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), lod === 0 ? 8 : 16, clearance, lod === 0 ? 1 : 2, step);
     }
     if (cover && layer === 'park') { const r = cullCovered(m, cover); m = r.mesh; parkFillCulled += r.dropped; }
     add(layer, m);
@@ -375,7 +378,7 @@ export function buildCell(input: CellInput): BuiltCell {
     const { flat, holes } = flatten(a.r.map(decodeLine));
     if (flat.length < 6) continue;
     const m = emptyMesh();
-    drapeBisect(m, flat, earcut(flat, holes), onLand, PARK_LIFT[a.k], lod === 0 ? 8 : 16);
+    drapeBisect(m, flat, earcut(flat, holes), onLand, PARK_LIFT[a.k], lod === 0 ? 8 : 16, lod === 0 ? CLEARANCE_M : CLEARANCE_FAR_M, lod === 0 ? 1 : 2, step);
     add(SURFACE_LAYER[a.k], m);
     courtyards++;
   }

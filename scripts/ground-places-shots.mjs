@@ -14,6 +14,7 @@ const PLACES = {
   'allotments-westerpark': [4.8590, 52.3860, 0],         // Westerpark / Sloterdijkermeer allotments
   'allotments-chasse': [4.8527, 52.3735, 90],
   'rembrandtplein': [4.8966, 52.3662, 200],             // mapped grass beds inside the paved square (flicker, 2026-10-23)
+  'vondelpark-blauwe-theehuis': [4.8720, 52.3586, 80],  // relief under the lawns: land poked through the green fills
   'BRU0166': [4.87445, 52.37286, 40],
 };
 fs.mkdirSync(`artifacts/ground-places/${tag}`, { recursive: true });

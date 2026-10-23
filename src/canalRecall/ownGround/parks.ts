@@ -249,10 +249,50 @@ export function playgroundKit(rings: readonly (readonly Vec2[])[], ok: (x: numbe
  * the triangles: a Vondelpark cell went from 0.39 M to 0.80 M). Shared
  * vertices are reused per triangle; neighbours may meet at T-junctions a few
  * millimetres apart, hidden by the lawn and park fill beneath.
+ *
+ * `clearanceM` keeps a fill from sagging under the surface it covers: a plane
+ * through three vertices of a crest of the 5 m land grid dips under the grid
+ * between them (9 cm at p99, more on a canal bank), so the bare land poked
+ * through the fill in beige specks. A triangle whose plane would sit more than
+ * `clearanceM` under `height` at a land grid node inside it (within one grid
+ * cell both are planes, so the deepest sag is at a node) is split further,
+ * down to `minEdge`; only crests pay the extra triangles.
  */
-export function drapeBisect(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number): void {
-  const max2 = maxEdge * maxEdge;
+export function drapeBisect(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number, clearanceM?: number, minEdge = 1, landStep = 5): void {
+  const max2 = maxEdge * maxEdge, min2 = Math.min(minEdge, maxEdge) ** 2;
   const stack: number[] = [];
+  const sags = (x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): boolean => {
+    if (clearanceM === undefined) return false;
+    const z1 = height(x1, y1), z2 = height(x2, y2), z3 = height(x3, y3);
+    const d = (y2 - y3) * (x1 - x3) + (x3 - x2) * (y1 - y3);
+    if (Math.abs(d) < 1e-12) return false;
+    const u = (px: number, py: number) => ((y2 - y3) * (px - x3) + (x3 - x2) * (py - y3)) / d;
+    const v = (px: number, py: number) => ((y3 - y1) * (px - x3) + (x1 - x3) * (py - y3)) / d;
+    const plane = (px: number, py: number) => { const a = u(px, py), b = v(px, py); return a * z1 + b * z2 + (1 - a - b) * z3 + lift; };
+    const minX = Math.min(x1, x2, x3), maxX = Math.max(x1, x2, x3), minY = Math.min(y1, y2, y3), maxY = Math.max(y1, y2, y3);
+    const below = (px: number, py: number) => plane(px, py) < height(px, py) - clearanceM;
+    for (let gx = Math.ceil(minX / landStep) * landStep; gx <= maxX; gx += landStep) for (let gy = Math.ceil(minY / landStep) * landStep; gy <= maxY; gy += landStep) {
+      if (!below(gx, gy)) continue;
+      const a = u(gx, gy), b = v(gx, gy);
+      if (a >= -1e-6 && b >= -1e-6 && a + b <= 1 + 1e-6) return true;
+    }
+    // The sag of two planes over one grid cell peaks at a corner of their intersection, which can also be where a
+    // triangle edge crosses a grid line: check those crossings (a crest running along an edge is missed otherwise).
+    const edges: [number, number, number, number][] = [[x1, y1, x2, y2], [x2, y2, x3, y3], [x3, y3, x1, y1]];
+    for (const [ax, ay, bx, by] of edges) {
+      for (let gx = Math.ceil(Math.min(ax, bx) / landStep) * landStep; gx <= Math.max(ax, bx); gx += landStep) {
+        const t = bx === ax ? -1 : (gx - ax) / (bx - ax);
+        if (t >= 0 && t <= 1 && below(gx, ay + t * (by - ay))) return true;
+      }
+      for (let gy = Math.ceil(Math.min(ay, by) / landStep) * landStep; gy <= Math.max(ay, by); gy += landStep) {
+        const t = by === ay ? -1 : (gy - ay) / (by - ay);
+        if (t >= 0 && t <= 1 && below(ax + t * (bx - ax), gy)) return true;
+      }
+    }
+    // A crease can also cross an edge between nodes; the centroid catches the rest (and smooth, deck-blended ground).
+    const cx = (x1 + x2 + x3) / 3, cy = (y1 + y2 + y3) / 3;
+    return plane(cx, cy) < height(cx, cy) - clearanceM;
+  };
   for (let t = 0; t < tris.length; t += 3) {
     const ax = coords[tris[t] * 2], ay = coords[tris[t] * 2 + 1], bx = coords[tris[t + 1] * 2], by = coords[tris[t + 1] * 2 + 1], cx = coords[tris[t + 2] * 2], cy = coords[tris[t + 2] * 2 + 1];
     // CCW from above.
@@ -261,7 +301,8 @@ export function drapeBisect(m: MeshArrays, coords: ArrayLike<number>, tris: Arra
       const y3 = stack.pop()!, x3 = stack.pop()!, y2 = stack.pop()!, x2 = stack.pop()!, y1 = stack.pop()!, x1 = stack.pop()!;
       const e1 = (x2 - x1) ** 2 + (y2 - y1) ** 2, e2 = (x3 - x2) ** 2 + (y3 - y2) ** 2, e3 = (x1 - x3) ** 2 + (y1 - y3) ** 2;
       const longest = Math.max(e1, e2, e3);
-      if (longest <= max2 || stack.length > 6e5) {
+      const refine = longest > max2 || (longest > min2 && sags(x1, y1, x2, y2, x3, y3));
+      if (!refine || stack.length > 6e5) {
         const i = vertex(m, x1, y1, height(x1, y1) + lift), j = vertex(m, x2, y2, height(x2, y2) + lift), k = vertex(m, x3, y3, height(x3, y3) + lift);
         m.indices.push(i, j, k);
         continue;
@@ -285,6 +326,9 @@ export const PARK_LIFT: Record<ParkSurface, number> = {
 export const SURFACE_LAYER: Record<ParkSurface, ParkLayer | SharedLayer> = {
   lawn: 'lawn', bed: 'bed', shrub: 'shrub', bark: 'bark', sand: 'sand', gravel: 'parkGravel', path: 'parkPath', paving: 'paving', cycle: 'cycle', pond: 'pond',
 };
+/** How far (m) a fill may sag under the land surface it covers before drapeBisect splits it. Land pokes through at about a centimetre and reads as a beige speck in the grass. */
+/** How far (m) a fill may sag under the land surface it covers before drapeBisect splits it. Land pokes through at about a centimetre and reads as a beige speck in the grass; the far ring may sag more, where a centimetre is under a pixel. */
+export const CLEARANCE_M = 0.002, CLEARANCE_FAR_M = 0.01;
 
 type RGB = [number, number, number];
 /** Furniture colours (sRGB 0..1), vertex-coloured into one layer per cell. */
@@ -488,7 +532,7 @@ export function buildParks(cell: ParksCell, height: HeightFn, lod: 0 | 1, isWate
       const at = interiorPoint(rings);
       if (at && isWater(at[0], at[1])) { stats.pondsInWater++; continue; }
     }
-    drapeBisect(get(SURFACE_LAYER[s.k]), flat, tris, height, PARK_LIFT[s.k], lod === 0 ? 8 : 20);
+    drapeBisect(get(SURFACE_LAYER[s.k]), flat, tris, height, PARK_LIFT[s.k], lod === 0 ? 8 : 20, lod === 0 ? CLEARANCE_M : CLEARANCE_FAR_M, lod === 0 ? 1 : 2, lod === 0 ? 5 : 10);
     stats.surfaces++;
   }
   const hedge = get('hedge', true);

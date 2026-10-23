@@ -1653,6 +1653,50 @@ test('regression (streamed cell): Rembrandtplein\'s grass beds are cut out of th
   assert.ok(probes > 200, `probes inside the beds (${probes})`);
 });
 
+// A fill drapes the 5 m land grid at its own vertices, so on a crest of that grid the plane between them dipped
+// under it — 9 cm at p99 in the park cells — and the bare land poked through the grass as beige specks (the
+// Vondelpark lawn once its fill stopped hiding them). drapeBisect now splits a fill that would sag under the land.
+test('regression (streamed cell): no green fill sags under the land it covers (Vondelpark)', { skip: !haveCells }, async () => {
+  const store = fsStore();
+  await store.init();
+  const [x, y] = storeToLocal(4.8780, 52.35385), key = store.cellAt(x, y);
+  const input = await store.cellInput(key, 0);
+  const cell = buildCell(input);
+  const rings = [
+    ...(input.osm?.areas ?? []).filter(a => a.kind === 'grass' || a.kind === 'park' || a.kind === 'wood')
+      .flatMap(a => a.rings.map(r => r.slice(0, -1).map(q => input.project(q)))),
+    ...(input.parks?.surfaces ?? []).flatMap(s => s.r.map(decodeLine)),
+  ];
+  const inside = (p: Vec2, ring: Vec2[]) => {
+    let hit = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [xi, yi] = ring[i], [xj, yj] = ring[j];
+      if ((yi > p[1]) !== (yj > p[1]) && p[0] < (xj - xi) * (p[1] - yi) / (yj - yi) + xi) hit = !hit;
+    }
+    return hit;
+  };
+  const green: string[] = ['park', 'lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'wood'];
+  let probes = 0;
+  const sags: number[] = [];
+  for (const ring of rings) {
+    const xs = ring.map(p => p[0]), ys = ring.map(p => p[1]);
+    for (let px = Math.ceil(Math.min(...xs) / 5) * 5; px < Math.max(...xs); px += 5) for (let py = Math.ceil(Math.min(...ys) / 5) * 5; py < Math.max(...ys); py += 5) {
+      if (!inside([px, py], ring)) continue;
+      const hits = layersAt(cell, px, py).hits.filter(h => !h.cut);
+      const land = hits.find(h => h.layer === 'land'), fills = hits.filter(h => green.includes(h.layer));
+      if (!land || !fills.length) continue;
+      probes++;
+      sags.push(land.z - Math.max(...fills.map(h => h.z)));
+    }
+  }
+  sags.sort((a, b) => a - b);
+  assert.ok(probes > 500, `green nodes sampled (${probes})`);
+  const at = (q: number) => sags[Math.min(sags.length - 1, Math.floor(q * sags.length))];
+  assert.ok(at(0.999) < 0.02, `the land stays under the green fills at p99.9 (${(at(0.999) * 100).toFixed(1)} cm)`);
+  // A bank steeper than the 1 m refinement floor still cuts a corner: a handful of nodes, never a field.
+  assert.ok(sags.filter(s => s > 0.05).length <= 2, `no more than two bank corners over 5 cm (${sags.filter(s => s > 0.05).length})`);
+});
+
 // Landed platforms (landedPlatforms.ts, 2026-10-16): the Homomonument's stepped stone brings its own granite walls from the quay
 // into the Keizersgracht, so the municipal quay wall skips the shore across it, as it does under a bridge deck.
 test('landed platform: the quay wall leaves out the shore across the Homomonument steps, pinned to the builder', async () => {
