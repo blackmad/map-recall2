@@ -24,6 +24,7 @@ import type {Lantern} from '../blockBuilding/components.ts';
 import {MESH_SCREEN} from '../blockBuilding/components.ts';
 import {roofHeightAt} from './facts.ts';
 import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellRepair.ts';
+import {levelRoofAbove, rooftopLevel, type RoofLevelReport} from './roofLevel.ts';
 
 /** The kit's dark glass, when the intent has no (measured) `palette.glass`. */
 export const KIT_GLASS = '#2a3a42';
@@ -107,6 +108,8 @@ export interface LargeFitReport {
   warnings: string[];
   /** only with `shellRepair` / `footprint: "bag"` (shellRepair.ts) */
   shellRepair?: ShellRepairReport;
+  /** only with `roof.levelRooftop` (roofLevel.ts) */
+  roofLevel?: RoofLevelReport;
 }
 
 /**
@@ -253,14 +256,17 @@ export function placeLantern(facts: BuildingFacts, anchorRD: [number, number], p
 }
 
 /** The facts the fit works on: the shell-repaired facts when the intent opts in (shellRepair.ts), else the input. */
-export function largeShellFacts(intent: LargeBuildingIntent, facts: BuildingFacts): {facts: BuildingFacts; shell?: ShellRepairReport} {
-  if (!intent.shellRepair && intent.footprint !== 'bag') return {facts};
-  const r = prepareShell(facts, {repair: !!intent.shellRepair, footprint: intent.footprint ?? 'lod22'});
-  return {facts: r.facts, shell: r.report};
+export function largeShellFacts(intent: LargeBuildingIntent, facts: BuildingFacts): {facts: BuildingFacts; shell?: ShellRepairReport; roofLevel?: RoofLevelReport} {
+  const shelled: {facts: BuildingFacts; shell?: ShellRepairReport} = !intent.shellRepair && intent.footprint !== 'bag' ? {facts}
+    : (r => ({facts: r.facts, shell: r.report}))(prepareShell(facts, {repair: !!intent.shellRepair, footprint: intent.footprint ?? 'lod22'}));
+  if (!intent.roof?.levelRooftop) return shelled;
+  // roof.levelRooftop (roofLevel.ts): the rooftop above the photographed fronts becomes one flat level, after any shell repair
+  const levelled = levelRoofAbove(shelled.facts, rooftopLevel(shelled.facts, intent.walls.flatMap(w => w.wallSurfaces)));
+  return {...shelled, facts: levelled.facts, roofLevel: levelled.report};
 }
 
 export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts): {recipe: LargeBuildingRecipe; report: LargeFitReport; facts: BuildingFacts} {
-  const {facts, shell} = largeShellFacts(intent, inputFacts);
+  const {facts, shell, roofLevel} = largeShellFacts(intent, inputFacts);
   const warnings: string[] = [];
   const {set, anchorRD} = largeSurfaceSet(facts, intent.groundClamp ? {groundClamp: true} : {});
   const known = new Set(set.walls.map(w => w.surface!));
@@ -432,7 +438,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
   const report: LargeFitReport = {
     groups: groups.map(g => ({index: g.index, system: g.system, panels: g.panels.length, surfaces: g.surfaces.length, widthM: g.widthM, eavesM: g.eavesM, storeys: g.storeys, storeyHeightsM: g.storeyHeightsM, bays: g.bays, pitchM: g.pitchM, entrance: !!g.entrance, garageDoors: g.garage?.bays.length ?? 0})),
     panels: panels.map(p => ({index: p.index, group: panelGroup[p.index], system: panelGroup[p.index] >= 0 ? groups[panelGroup[p.index]].system : otherName, widthM: r3(p.uMax - p.uMin), heightM: r3(p.vMax), bearingDeg: Math.round(bearingOfNormal(p.n)), surfaces: p.walls.map(wi => set.walls[wi].surface!)})),
-    unlistedSurfaces, warnings, ...(shell ? {shellRepair: shell} : {}),
+    unlistedSurfaces, warnings, ...(shell ? {shellRepair: shell} : {}), ...(roofLevel ? {roofLevel} : {}),
   };
   return {recipe, report, facts};
 }

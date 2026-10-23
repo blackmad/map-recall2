@@ -8,6 +8,7 @@
  * terra/facade-component-contract: the model selects and classifies, a
  * compiler builds geometry.
  */
+import type {RoofLevelIntent} from './roofLevel.ts';
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
@@ -1048,6 +1049,12 @@ export interface LargeRoofIntent {
   surfaces?: {roofSurfaces: number[]; material: RoofMaterial; evidence: string}[];
   /** measured flat-roof colour, `#rrggbb` (see `LargeBuildingIntent.roof`) */
   flatHex?: string;
+  /**
+   * Replace every 3DBAG roof plane above the photographed fronts (`walls[]`) with one flat level at their area-weighted
+   * median height (roofLevel.ts): for a rooftop the LoD2.2 shell reconstructs as dozens of small tilted planes. Absent:
+   * unchanged output.
+   */
+  levelRooftop?: RoofLevelIntent;
 }
 
 export type BuildingIntent = CanalHouseIntent | LargeBuildingIntent;

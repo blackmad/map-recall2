@@ -65,7 +65,11 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
   if (intent?.roof !== undefined) {
     const r = intent.roof;
     oneOf(r?.material, ROOF_MATERIALS, 'roof.material');
-    for (const k of Object.keys(r ?? {})) if (!['material', 'flat', 'surfaces', 'flatHex'].includes(k)) problems.push(`roof.${k}: unknown field (material, flat, surfaces, flatHex)`);
+    for (const k of Object.keys(r ?? {})) if (!['material', 'flat', 'surfaces', 'flatHex', 'levelRooftop'].includes(k)) problems.push(`roof.${k}: unknown field (material, flat, surfaces, flatHex, levelRooftop)`);
+    if (r?.levelRooftop !== undefined) {
+      for (const k of Object.keys(r.levelRooftop ?? {})) if (k !== 'evidence') problems.push(`roof.levelRooftop.${k}: unknown field (evidence)`);
+      if (typeof r.levelRooftop?.evidence !== 'string' || !r.levelRooftop.evidence.trim()) problems.push('roof.levelRooftop.evidence: say what shows the rooftop is not the 3DBAG plane field (photo ids, user note)');
+    }
     if (r?.flat !== undefined) oneOf(r.flat, ROOF_MATERIALS, 'roof.flat');
     if (r?.flatHex !== undefined && !/^#[0-9a-f]{6}$/i.test(r.flatHex)) problems.push(`roof.flatHex: a measured #rrggbb (roof-flat.ts), got ${JSON.stringify(r.flatHex)}`);
     if (r?.surfaces !== undefined && !Array.isArray(r.surfaces)) problems.push('roof.surfaces: list of {roofSurfaces, material, evidence}');
