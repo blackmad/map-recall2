@@ -29,6 +29,7 @@ import { findChamfer, inscribedRects, insetRing, openRing, parapetRingOk, perime
 import { gableAccents, outlineBand, vergeBoards } from './gableTrim.js';
 import { repeatedTerraceRoofTriangles, type RepeatedTerraceRoof } from './repeatedTerraceRoof.js';
 import { streetGableEnds, type StreetFacing } from './streetGableEnds.js';
+import { turnRidgeToStreet } from './streetRidge.js';
 
 export type RoofKind = 'gable' | 'pitched' | 'mansard' | 'mansardHip' | 'hipped' | 'halfHipped' | 'school' | 'sawtooth' | 'parapet';
 export type GableShape = 'step' | 'neck' | 'bell' | 'spout' | 'plain' | 'clock' | 'raisedNeck' | 'cornice';
@@ -44,6 +45,9 @@ export type RoofPlan = {
   /** Ends that face a street (streetGableEnds.ts): an ornamental crown stands only there, the other end is a plain
    *  gable under the saddle. Absent = unknown, both ends crowned as before. */
   streetEnds?: [boolean, boolean];
+  /** A pre-1940 saddle (canal, c19) whose ridge turns across its street front when a long side is the front
+   *  (streetRidge.ts); `gables` are the crowns of the second and later split saddles. Absent = never turned. */
+  streetRidge?: { gables: GableShape[] };
   /** Roof rise above the eaves, metres (for a gable plate, the roof's own rise; the plate stands higher). */
   riseM: number;
   /** Source-admitted crown geometry must fit the native total-height envelope. */
@@ -158,6 +162,8 @@ const TAGGED: Record<string, RoofKind[]> = {
   hipped: ['hipped'], quadruple_saltbox: ['mansardHip', 'hipped'], 'half-hipped': ['halfHipped'],
   mansard: ['mansardHip', 'mansard'], gambrel: ['mansard'],
 };
+/** Mapped roof shapes whose ridge direction is free: a pre-1940 street house may turn it across its front (streetRidge.ts). */
+const TURNABLE_TAGS: ReadonlySet<string> = new Set(['gabled', 'double_saltbox']);
 export const honouredRoofTag = (tag: unknown): boolean => typeof tag === 'string' && tag in TAGGED;
 
 const riseFor = (kind: RoofKind, wid: number): number =>
@@ -215,6 +221,14 @@ export function planRoof(id: string, style: string, heightM: number, minHeightM:
   if (kind === 'sawtooth') plan.chimney = false;
   if (accents) { plan.accents = true; plan.trimHex = hash01(`${id}:trim`) < 0.8 ? TRIM_WHITE : TRIM_CREAM; }
   if (kind === 'gable' && gable === 'spout') { plan.shutters = true; plan.shutterHex = pick(hash01(`${id}:shut`), [['#2f4a3a', 0.5], ['#6e2620', 0.3], ['#253129', 0.2]]); }
+  // A pre-1940 street house turns its ridge across its street front (streetRidge.ts, decided in the mesh with the street
+  // test); split saddles after the first take these crowns, in the style's and year's odds.
+  // A mapped `gabled` or `double_saltbox` shape says nothing about the ridge's direction (OSM keeps that in
+  // roof:orientation, which the tiles do not carry), so it may turn too; every other tag keeps its roof as planned.
+  if ((style === 'canal' || style === 'c19') && (!tag || TURNABLE_TAGS.has(tag)) && !measured && (kind === 'pitched' || kind === 'mansard' || kind === 'gable')) {
+    const weights = gableWeightsForYear(styleWeights, year).filter(([shape]) => shape !== 'spout');
+    plan.streetRidge = { gables: [1, 2, 3].map(k => pick(hash01(`${id}:gable${k}`), weights)) };
+  }
   return plan;
 }
 
@@ -891,8 +905,8 @@ export function roofTrianglesForOutline(outer: readonly number[][], origin: { ln
   const out: RoofTri[] = [];
   // The admitted exact frontage owns its street crown. Inscribed roof ends
   // behind it are plain closures, never a second shaped crown in the sky.
-  for (const piece of plan.pieces) {
-    const rect=mapRect(piece.rect);
+  for (const piece of meshPieces(plan, plan.pieces, mapRect, facing)) {
+    const rect=piece.rect;
     const innerPlan = plan.sourceCrownFront ? {...piece.plan, kind: piece.plan.kind === 'gable' ? 'pitched' as const : piece.plan.kind, accents:false, sourceCrownFront:undefined} : withStreetEnds(piece.plan, rect, facing);
     const triangles=roofTriangles(rect,innerPlan,h0,dims);
     out.push(...(!plan.sourceCrownFront&&['gable','pitched','halfHipped','mansard'].includes(piece.plan.kind)?gablePieceOnNativeWalls(triangles,rect,mesh,piece.plan):triangles));
@@ -962,7 +976,26 @@ export function gablePiecesForOutline(outer: readonly number[][], origin: { lng:
   const mesh = outer.map(([lng, lat]): Vec2 => [(lng - origin.lng) * kx, (lat - origin.lat) * M_PER_DEG_LAT]);
   if (!plan.pieces) { const rect = fitRect(mesh); return rect && plan.kind === 'gable' ? [{ rect, plan: withStreetEnds(plan, rect, facing) }] : []; }
   const { mapRect } = footprintToMesh(outer, mesh, kx);
-  return plan.pieces.filter(piece => piece.plan.kind === 'gable').map(piece => { const rect = mapRect(piece.rect); return { rect, plan: withStreetEnds(piece.plan, rect, facing) }; });
+  return meshPieces(plan, plan.pieces, mapRect, facing).filter(piece => piece.plan.kind === 'gable').map(({ rect, plan: p }) => ({ rect, plan: withStreetEnds(p, rect, facing) }));
+}
+
+/** Every roof piece of a plan in the mesh frame, as `roofTrianglesForOutline` builds them (audits read ridge directions). */
+export function roofPiecesForOutline(outer: readonly number[][], origin: { lng: number; lat: number }, plan: RoofPlan, kx: number, facing?: StreetFacing): Array<{ rect: Rect; plan: RoofPlan }> {
+  if (outer.length < 4 || plan.repeatedTerrace || plan.perimeterInsetM !== undefined || plan.kind === 'parapet') return [];
+  const mesh = outer.map(([lng, lat]): Vec2 => [(lng - origin.lng) * kx, (lat - origin.lat) * M_PER_DEG_LAT]);
+  if (!plan.pieces) { const rect = fitRect(mesh); return rect ? [{ rect, plan: withStreetEnds(plan, rect, facing) }] : []; }
+  const { mapRect } = footprintToMesh(outer, mesh, kx);
+  return meshPieces(plan, plan.pieces, mapRect, facing).map(({ rect, plan: p }) => ({ rect, plan: withStreetEnds(p, rect, facing) }));
+}
+
+/** A plan's pieces, each in the mesh frame, with a `streetRidge` saddle turned across its street front (streetRidge.ts).
+ *  Only a single-piece roof turns (an inscribed wing's ends are interior walls); no `facing`, nothing turns. */
+function meshPieces(plan: RoofPlan, pieces: NonNullable<RoofPlan['pieces']>, mapRect: (r: Rect) => Rect, facing: StreetFacing | undefined): Array<{ rect: Rect; plan: RoofPlan }> {
+  return pieces.flatMap(piece => {
+    const rect = mapRect(piece.rect);
+    const turned = facing && pieces.length === 1 && !plan.keepLid && !plan.sourceCrownFront ? turnRidgeToStreet(rect, piece.plan, facing) : null;
+    return turned ?? [{ rect, plan: piece.plan }];
+  });
 }
 
 /** A crowned gable piece learns which of its ends face a street; every other plan is returned as is (same object). */
