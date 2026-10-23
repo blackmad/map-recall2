@@ -6,6 +6,18 @@ DNS and network failures can be transient. Retry failed source requests with bou
 
 Distinguish host connectivity from tool and worker restrictions. If a worker reports `CODEX_SANDBOX_NETWORK_DISABLED=1`, route authorized downloads through a working root tool context and let the worker parse cached inputs. Keep raw API responses, photos and catalogue records in the companion `map-recall2-source-data` repository; main-repo `artifacts/` is temporary acquisition staging only. Verify and push the source pack, record its commit/path, then remove duplicated staged originals.
 
+## Dutch localization
+
+The game speaks English and Dutch behind a live toggle (`src/i18n`), and Dutch
+trivia comes from Dutch sources, never machine translation. Read
+`docs/nl-localization-handoff.md` for the current state and next steps, and
+`docs/nl-localization.md` for the rules: `#key` for data-borne text, render-time
+pickers, `data-i18n` markup, the municipal-register error policy
+(`docs/amsterdam-street-name-register-errors.md` →
+`scripts/dutch-street-origin-corrections.json`), and the fact provenance
+requirements checked by `npm run test:dutch-facts` and
+`npm run test:dutch-street-origins`.
+
 ## Street rhythm work
 
 Read `public/canal-drive/street-rhythm-work.json` before selecting, implementing or accepting a neighborhood rhythm. Maintain a scoped coverage inventory, source-derived critical architectural traits, fixed representative/transition/heldout samples, capability gaps and per-cycle visual decisions. Neighborhoods are discovery regions; profiles belong to observed street-side groups. Missing critical facade assemblies require generator improvements, not palette tuning. Judge success by recognizable street-row composition: frontage widths, white trim, window groups, roof-family mixture and balcony frequency. Exact corner wrapping, individual attic counts and photographed-building matching are secondary; do not let perfection delay useful block-level rhythm improvements. Root must inspect reference/render comparisons and use an independent reviewer to seek failures. Failed heldouts prevent accepting the affected transfer. Tests, source admission, timing improvements and a completed cycle count are not visual acceptance. Preserve failed evidence and report it prominently. Require actual game-scene and performance evidence before marking scoped work complete. The 2026-10-04 pilot's expansion acceptance was withdrawn after the De Wallen balcony/window comparison failed; correct and re-review before expanding.
