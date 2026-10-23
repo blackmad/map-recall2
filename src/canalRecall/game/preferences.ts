@@ -103,10 +103,10 @@ export const CAMERA_BEARING_KEY_STEP = 15;
 export const LEGACY_ZOOM_DEFAULT = 0.65;
 
 /** Route questions per minute the rider can choose; 0 is off. */
-export const ASK_BUDGETS = [1, 2, 3, 0] as const;
+export const ASK_BUDGETS = [1, 2, 3, 5, 0] as const;
 export type AskBudget = (typeof ASK_BUDGETS)[number];
 /** Mirrors `DEFAULT_MAX_ASKS_PER_MINUTE` in game/questionBudget.ts. */
-export const DEFAULT_ASK_BUDGET: AskBudget = 3;
+export const DEFAULT_ASK_BUDGET: AskBudget = 5;
 
 function parseAskBudget(value: unknown, fallback: AskBudget): AskBudget {
   return ASK_BUDGETS.find(budget => budget === value) ?? fallback;

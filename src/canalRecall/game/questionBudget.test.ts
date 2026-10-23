@@ -14,8 +14,8 @@ function ridden(asks: number[]): QuestionBudgetState {
   return { asks };
 }
 
-test('default budget is three asks a minute', () => {
-  assert.equal(resolveSettings().maxAsksPerMinute, 3);
+test('default budget is five asks a minute', () => {
+  assert.equal(resolveSettings().maxAsksPerMinute, 5);
   assert.equal(resolveSettings({ maxAsksPerMinute: -3 }).maxAsksPerMinute, 0);
 });
 
@@ -28,26 +28,26 @@ test('a fresh ride asks the first teaching name', () => {
 });
 
 test('once the minute is spent a new name is revealed after passing, a review stays due', () => {
-  const state = ridden([1, 20, 40]);
+  const state = ridden([1, 10, 20, 30, 40]);
   assert.deepEqual(decideQuestion(state, fresh, 55), { action: 'reveal-after-pass', reason: 'budget' });
   assert.deepEqual(decideQuestion(state, due, 55), { action: 'skip', reason: 'budget' });
 });
 
 test('the window slides: an old ask frees a slot', () => {
-  const state = ridden([10, 40]);
-  assert.equal(decideQuestion(state, fresh, 71).action, 'ask');
+  const state = ridden([10, 16, 22, 28, 34]);
+  assert.equal(decideQuestion(state, fresh, 70).action, 'ask');
 });
 
 test('asks cannot land back to back', () => {
   const state = ridden([10]);
-  assert.equal(minGapSeconds(resolveSettings()), 10);
-  assert.deepEqual(decideQuestion(state, due, 19), { action: 'skip', reason: 'spacing' });
-  assert.deepEqual(decideQuestion(state, fresh, 19), { action: 'reveal-after-pass', reason: 'spacing' });
-  assert.equal(decideQuestion(state, due, 21).action, 'ask');
+  assert.equal(minGapSeconds(resolveSettings()), 6);
+  assert.deepEqual(decideQuestion(state, due, 15), { action: 'skip', reason: 'spacing' });
+  assert.deepEqual(decideQuestion(state, fresh, 15), { action: 'reveal-after-pass', reason: 'spacing' });
+  assert.equal(decideQuestion(state, due, 16).action, 'ask');
 });
 
 test('the last slot is kept for a review or a teaching street, not a side street', () => {
-  const state = ridden([10, 25]);
+  const state = ridden([10, 16, 22, 28]);
   assert.deepEqual(decideQuestion(state, side, 40), { action: 'reveal-after-pass', reason: 'reserved' });
   assert.equal(decideQuestion(state, due, 40).action, 'ask');
   assert.equal(decideQuestion(state, fresh, 40).action, 'ask');

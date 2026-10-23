@@ -422,7 +422,7 @@
   // src/canalRecall/game/preferences.ts
   var PREFERENCES_STORAGE_KEY = "canalRecall.preferences.v1";
   var ZOOM_DEFAULT_VERSION = 4;
-  var DEFAULT_ASK_BUDGET = 2;
+  var DEFAULT_ASK_BUDGET = 5;
   var DIFFICULTY_PRESETS = {
     easy: { answerMode: "multiple", line: true, arrow: true, minimap: true },
     medium: { answerMode: "multiple", line: false, arrow: true, minimap: true },
@@ -592,7 +592,7 @@
   }
 
   // src/canalRecall/game/questionBudget.ts
-  var DEFAULT_MAX_ASKS_PER_MINUTE = 2;
+  var DEFAULT_MAX_ASKS_PER_MINUTE = 5;
   var BUDGET_WINDOW_SECONDS = 60;
   var EMPTY_BUDGET = { asks: [] };
   function resolveSettings(settings) {

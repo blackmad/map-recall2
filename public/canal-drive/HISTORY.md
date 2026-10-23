@@ -1,5 +1,47 @@
 # Canal Recall — what is built
 
+## The square stops flickering green through its grass (2026-10-23)
+
+User: "what are these green patches and why are they wiggling?" — the mapped
+grass beds on Rembrandtplein, drawn flat by the own ground. The OSM square's
+paved area and the grass area inside it are two fills of the same relief, each
+draped on its own triangulation, so on a few metres of slope their heights
+cross (measured ±13 mm at Rembrandtplein); the square sits 4 mm higher with the
+same draw rank, and at 300 m one depth quantum is ~4 mm, so the pair
+interleaved per triangle and the grass shimmered through the paving in shards
+that crawled with the camera (worst at the low chase pitch). Every paved area
+fill now cuts the OSM green rings out of its triangulation (`groundCell.ts`
+`greenCuts`/`holesIn`, earcut holes): nothing is drawn over the grass, so
+there is no coplanar pair to fight over, and the grass reads as its mapped
+shape. A ring the BGT survey re-draws (parks-v1, which culls the OSM green fill
+under it) keeps its paving, or the cut would expose the land. New
+`stats.greenCut`; regression test on the streamed Rembrandtplein cell; shots in
+`artifacts/ground-places/{before,after}/rembrandtplein.png`
+(`node scripts/ground-places-shots.mjs <tag> "?ownGround=1&sharedFrame=1" rembrandtplein`).
+
+## Da Costakade 13 stays drawn; it is no longer a destination (2026-10-23)
+
+User: "keep da costakade 13 as a hand-modeled building, but remove it as a
+POI/landmark/destination". Its `manualCatalogue.json` entry now says
+`"category": "ordinary"`, the category the Haparandaweg blocks already use: the
+game still draws the hand-built GLB and suppresses its BAG pand, but
+`SIGNATURE_MODELS` no longer offers it a landmark card, discovery/quiz entry,
+map pin or route destination. Its now-unreachable `manual-poi-data.json` card
+copy is removed. Content stats follow: 327 landmark models, 378 places to
+visit. `signature-placement`, `game-landmarks`, `game-presentation` and
+`game-recall` bundles rebuilt and cache-busted to `20261023b`.
+
+## Questions a minute: 5 is the default (2026-10-23)
+
+User: "raise the maximum questions per minute ... like 5 for the default". The
+rider setting gains a 5 choice (1 / 2 / 3 / 5 / off) and starts at 5, so
+`minGapSeconds` is 6 s and `DEFAULT_MAX_ASKS_PER_MINUTE` is 5. The unit tests
+now fill the budget at the cap instead of assuming three asks; the question
+budget e2e expects 5 selected. `preferences` and `overlay` bundles rebuilt and
+the `game-recall` bundle's fallback budget updated in place; all three
+cache-busted to `20261023a`; the advanced-options phone snapshot re-captured
+(it also picks up the current ride branding and nav).
+
 ## Felix Meritis: the length complaint was already fixed; the rear house returns (2026-10-23)
 
 Open feedback (2026-10-11, `e508bdc`): "why was this building modeled twice as

@@ -10,14 +10,14 @@ const zoom = { min: 0.2, max: 1.5, defaultZoom: 0.65 };
 
 test('the preference default is the budget default, so a fresh rider is unchanged', () => {
   assert.equal(DEFAULT_ASK_BUDGET, DEFAULT_MAX_ASKS_PER_MINUTE);
-  assert.equal(defaultPreferences(zoom).maxAsksPerMinute, 3);
+  assert.equal(defaultPreferences(zoom).maxAsksPerMinute, 5);
 });
 
-test('only 1, 2, 3 and off (0) are accepted; anything else reads as the default', () => {
-  assert.deepEqual([...ASK_BUDGETS], [1, 2, 3, 0]);
+test('only 1, 2, 3, 5 and off (0) are accepted; anything else reads as the default', () => {
+  assert.deepEqual([...ASK_BUDGETS], [1, 2, 3, 5, 0]);
   for (const budget of ASK_BUDGETS) assert.equal(parsePreferences({ maxAsksPerMinute: budget }, zoom).maxAsksPerMinute, budget);
   for (const bad of [4, -1, 1.5, '2', null, undefined, Infinity, NaN]) {
-    assert.equal(parsePreferences({ maxAsksPerMinute: bad }, zoom).maxAsksPerMinute, 3, `${String(bad)} is ignored`);
+    assert.equal(parsePreferences({ maxAsksPerMinute: bad }, zoom).maxAsksPerMinute, 5, `${String(bad)} is ignored`);
   }
 });
 

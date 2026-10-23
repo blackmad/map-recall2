@@ -130,7 +130,7 @@ out and, through the one-card rule, blocked every card until the next question.
   their schedule. A parked name counts as "answered near here recently", so
   the same ride does not ask it straight away; after the interval it is an
   ordinary unlearned name. `buildKnowledgeReview` skips exposure-only states.
-- **Setting**: "Questions a minute" (1 / 2 / 3 / Off, default 2) in the ride
+- **Setting**: "Questions a minute" (1 / 2 / 3 / 5 / Off, default 5) in the ride
   options and the live settings panel, persisted as `maxAsksPerMinute`;
   `_askBudgetPerMinute()` reads it, an explicit `game.maxAsksPerMinute` still
   wins as a test hook.
