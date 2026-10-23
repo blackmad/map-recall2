@@ -70,6 +70,21 @@ function canalRecallPixelRatio() {
   return Math.min(dpr, cap);
 }
 
+// Own-ground ring A/B (2026-10-23). The own ground is the biggest GPU consumer
+// on a phone ride (~57 MB of GL buffers and ~28 MB of textures at the Dam,
+// iPhone profile; `status().geometryMB` ~12 MB per resident cell). In the chase
+// view the ring follows the camera's reach, so only the cap changes residency:
+// a 1 km cap saved 18 MB (9 cells instead of 11), not enough to accept an
+// unjudged horizon, so phones keep the default ring. `?groundRadius=N` fixes the
+// ring at N metres for before/after shots.
+function canalRecallOwnGroundBudget() {
+  try {
+    const asked = Number(new URLSearchParams(window.location.search).get('groundRadius'));
+    if (Number.isFinite(asked) && asked >= 400) return { radiusM: Math.min(asked, 2000), aerialRadiusM: Math.min(asked, 2000) };
+  } catch (_) { /* no window */ }
+  return {};
+}
+
 // MSAA costs a second full-size colour buffer (and bandwidth) on phones.
 // Keep it unless the device reports <=3 GB of RAM; `?msaa=0/1` overrides.
 function canalRecallAntialias() {
@@ -192,6 +207,21 @@ class VectorBasemap {
     // (empty info log). Hold a frame, report once and offer a reload instead of
     // rebuilding the same program every frame until the tab dies.
     if (window.CanalMapGuard) window.CanalMapGuard.guardMapRender(this.map);
+    // Slow machines (integrated GPUs at 150-200 % scaling, older phones): after
+    // two slow windows of riding, pixel ratio steps towards 1x, then the sun
+    // shadows go, then 0.75x. Never steps back up. `?governor=0` turns it off;
+    // an explicit `?dpr=` keeps its ratio. Status: `vectorMap._renderGovernor`.
+    if (window.CanalMapGuard && window.CanalMapGuard.governMapRender && canalRecallLookFlag('governor', '__canalRecallGovernor', true)) {
+      const explicitDpr = new URLSearchParams(window.location.search).has('dpr');
+      const shadows = this._sharedFrameEnabled && canalRecallLookFlag('shadows', '__canalRecallShadows', true);
+      this._renderGovernor = window.CanalMapGuard.governMapRender(this.map, {
+        fixedPixelRatio: explicitDpr,
+        // Riding only: loading and the intro fly-in are busy for other reasons.
+        active: () => !!window.canalRecallGame && window.canalRecallGame.state === 4,
+        setShadows: shadows ? on => { if (this._sharedFrame) this._sharedFrame.setShadows(on); } : undefined,
+        onStep: step => console.info('[canal-recall] render budget step', step),
+      });
+    }
 
     this.map.on('load', () => {
       this._hideLabels();
@@ -244,6 +274,11 @@ class VectorBasemap {
           // The recipe tiles (opt-in) carry the building types themselves; drawing both would double them.
           buildingTypes: !this._recipeTilesEnabled,
           loadVisibleOnly: true,
+          // Nothing to load until a ride's camera takes over: the setup card covers
+          // the map (on a phone, all of it), yet the default Damrak view pulled in
+          // 21 landmark GLBs behind it (2026-10-23). `sync` resumes loading once
+          // the start flight has landed (introFlat 0).
+          suspended: true,
           depthBiasEnabled: !this._completeCityHasBuildings,
           manageBasemapFilter: false,
           onSuppressionChanged: () => this._refreshBuildingSuppression(),
@@ -2087,7 +2122,7 @@ class VectorBasemap {
         repaint: () => this.map && this.map.triggerRepaint(),
         setBasemapGroundHidden: hidden => this._setBasemapGroundHidden(hidden),
       };
-      this._ownGround = new api.OwnGround(three.THREE, frame, host, { workerUrl: new URL(OWN_GROUND_WORKER, window.location.href).href });
+      this._ownGround = new api.OwnGround(three.THREE, frame, host, { workerUrl: new URL(OWN_GROUND_WORKER, window.location.href).href, ...canalRecallOwnGroundBudget() });
       await this._ownGround.load(this._absoluteExtractRoot());
       this._syncElevationConsumers();
       this._ownGroundReplay();
