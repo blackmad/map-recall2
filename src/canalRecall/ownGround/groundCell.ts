@@ -54,7 +54,7 @@ export interface BuiltCell {
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number; /** Footway strips across the road at a crossing drawn as carriageway. */ crossingStrips?: number; /** surveyMarkings.ts: what the survey-aware markings drew. */ markings?: SurveyMarkingStats | null }) | null; courtyards?: number };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** OSM green rings cut out of the paved area fills (areas + holes). */ greenCut?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number; /** Footway strips across the road at a crossing drawn as carriageway. */ crossingStrips?: number; /** surveyMarkings.ts: what the survey-aware markings drew. */ markings?: SurveyMarkingStats | null }) | null; courtyards?: number };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -311,7 +311,34 @@ export function buildCell(input: CellInput): BuiltCell {
   phase('land');
 
   // Areas.
-  let parkFillCulled = 0;
+  // A paved fill is cut where OSM green covers it. Both drape the same relief on their own triangulations, so on a
+  // slope their heights cross by up to 2 cm (a square's 4 mm lift does not survive that), and at 300 m one depth
+  // quantum is ~4 mm: the pair then interleaves per triangle, and the green shimmers through the paving in shards
+  // that crawl as the camera moves (Rembrandtplein square, 2026-10-23). The green ring becomes a hole in the paving,
+  // so there is no coplanar pair to fight over; what shows through is the green fill, or the BGT park surface that
+  // replaced it (parks-v1 always draws one where its cover reaches), never the land.
+  const greenCuts = greenAreas.filter(a => areaLayer[a.kind] === 'park' || areaLayer[a.kind] === 'wood')
+    .flatMap(a => a.rings.slice(0, 1).map(r => r.slice(0, -1).map(input.project)))
+    .filter(pts => pts.length >= 3)
+    .map(pts => ({ pts, bb: [Math.min(...pts.map(p => p[0])), Math.min(...pts.map(p => p[1])), Math.max(...pts.map(p => p[0])), Math.max(...pts.map(p => p[1]))] as [number, number, number, number] }));
+  /** A ring touching the paved outline would leave earcut a degenerate hole bridge; such a ring keeps its paving. */
+  const HOLE_CLEARANCE_M = 0.05;
+  const edgeDistance = (pts: Vec2[], x: number, y: number): number => {
+    let best = Infinity;
+    for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) {
+      const ax = pts[j][0], ay = pts[j][1], dx = pts[i][0] - ax, dy = pts[i][1] - ay, l2 = dx * dx + dy * dy;
+      const t = l2 ? Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / l2)) : 0;
+      best = Math.min(best, Math.hypot(x - ax - t * dx, y - ay - t * dy));
+    }
+    return best;
+  };
+  const holesIn = (layer: GroundLayer, pts: Vec2[]): Vec2[][] => {
+    if (layer === 'park' || layer === 'wood' || !greenCuts.length) return [];
+    const bb: [number, number, number, number] = [Math.min(...pts.map(p => p[0])), Math.min(...pts.map(p => p[1])), Math.max(...pts.map(p => p[0])), Math.max(...pts.map(p => p[1]))];
+    return greenCuts.filter(g => g.bb[0] >= bb[0] && g.bb[1] >= bb[1] && g.bb[2] <= bb[2] && g.bb[3] <= bb[3]
+      && g.pts.every(([x, y]) => pointInRing(pts, x, y) && edgeDistance(pts, x, y) >= HOLE_CLEARANCE_M)).map(g => g.pts);
+  };
+  let parkFillCulled = 0, greenCut = 0;
   for (const a of areas) {
     const layer = a.kind === 'paved' ? pavedAreaSurface(a) : areaLayer[a.kind];
     if (!layer) continue;
@@ -319,9 +346,12 @@ export function buildCell(input: CellInput): BuiltCell {
     for (const r of a.rings) {
       const pts = r.slice(0, -1).map(input.project);
       if (pts.length < 3) continue;
-      const flat = pts.flatMap(p => [p[0], p[1]]);
+      const holes = holesIn(layer, pts), holeAt: number[] = [];
+      for (let h = 0, at = pts.length; h < holes.length; h++) { holeAt.push(at); at += holes[h].length; }
+      const flat = pts.concat(...holes).flatMap(p => [p[0], p[1]]);
+      greenCut += holes.length;
       // Longest-edge bisection (parks.ts): the n² split cost Westerpark's cell 159k triangles of park fill on earcut slivers.
-      drapeBisect(m, flat, earcut(flat), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), lod === 0 ? 8 : 16);
+      drapeBisect(m, flat, earcut(flat, holeAt), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), lod === 0 ? 8 : 16);
     }
     if (cover && layer === 'park') { const r = cullCovered(m, cover); m = r.mesh; parkFillCulled += r.dropped; }
     add(layer, m);
@@ -474,7 +504,7 @@ export function buildCell(input: CellInput): BuiltCell {
   phase('pack');
   return {
     key, lod, rect, layers: packed, mask: maskOut,
-    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, roads, phases, courtyards },
+    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, greenCut, roads, phases, courtyards },
   };
 }
 

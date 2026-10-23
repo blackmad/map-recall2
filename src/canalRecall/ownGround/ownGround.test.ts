@@ -1615,6 +1615,44 @@ test('regression (streamed cell): a courtyards-v1 lawn draws in the lawn layer o
   assert.ok(!layersAt(cell, x - 25, y - 25).hits.some(h => h.layer === 'land'), 'the land under a 30 m yard is culled');
 });
 
+// A mapped square paints its whole area, grass beds included. The two fills drape the same relief on their own
+// triangulations, so on a few metres of slope they cross by up to 2 cm, and at 300 m one depth quantum is ~4 mm:
+// the pair interleaved per triangle and the grass shimmered through the paving in shards that crawled with the
+// camera (Rembrandtplein, 2026-10-23). The paved fill is cut where the green is, so nothing is drawn over it.
+test('regression (streamed cell): Rembrandtplein\'s grass beds are cut out of the square\'s paving', { skip: !haveCells }, async () => {
+  const store = fsStore();
+  await store.init();
+  const [x, y] = storeToLocal(4.8966, 52.3662), key = store.cellAt(x, y);
+  const input = await store.cellInput(key, 0);
+  const cell = buildCell(input);
+  assert.ok((cell.stats.greenCut ?? 0) > 0, 'green rings are cut out of the paved fills');
+  assert.ok((cell.stats.byLayer.square ?? 0) > 0, 'the square itself is still drawn');
+  // Every OSM green ring near the square: no paved area triangle covers any point inside it.
+  const green = (input.osm?.areas ?? []).filter(a => a.kind === 'grass' || a.kind === 'park' || a.kind === 'wood');
+  const inRing = (p: Vec2, ring: Vec2[]) => {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [xi, yi] = ring[i], [xj, yj] = ring[j];
+      if ((yi > p[1]) !== (yj > p[1]) && p[0] < (xj - xi) * (p[1] - yi) / (yj - yi) + xi) inside = !inside;
+    }
+    return inside;
+  };
+  let probes = 0;
+  for (const a of green) for (const r of a.rings) {
+    const ring = r.slice(0, -1).map(q => input.project(q));
+    const cx = ring.reduce((s, p) => s + p[0], 0) / ring.length, cy = ring.reduce((s, p) => s + p[1], 0) / ring.length;
+    if (Math.hypot(cx - x, cy - y) > 220) continue;
+    const xs = ring.map(p => p[0]), ys = ring.map(p => p[1]);
+    for (let px = Math.min(...xs) + 0.5; px < Math.max(...xs) - 0.5; px += 1.5) for (let py = Math.min(...ys) + 0.5; py < Math.max(...ys) - 0.5; py += 1.5) {
+      if (!inRing([px, py], ring)) continue;
+      probes++;
+      const paved = layersAt(cell, px, py).hits.filter(h => h.layer === 'square' || h.layer === 'parking');
+      assert.equal(paved.length, 0, `no paved fill at (${px.toFixed(1)}, ${py.toFixed(1)}): ${paved.map(h => `${h.layer}@${h.z}`).join(' ')}`);
+    }
+  }
+  assert.ok(probes > 200, `probes inside the beds (${probes})`);
+});
+
 // Landed platforms (landedPlatforms.ts, 2026-10-16): the Homomonument's stepped stone brings its own granite walls from the quay
 // into the Keizersgracht, so the municipal quay wall skips the shore across it, as it does under a bridge deck.
 test('landed platform: the quay wall leaves out the shore across the Homomonument steps, pinned to the builder', async () => {
