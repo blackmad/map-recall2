@@ -50,8 +50,10 @@ The Dutch column of a card is never a machine translation of the English. It is
 used only when the data carries Dutch, and English is the fallback:
 
 - Street, water and bridge name origins: the BAG register's own sentence
-  (`nl` in `street-name-origins.json`, 5,389 of 5,429 names; 14 withheld as
-  documented register errors, 26 without a cached Dutch source).
+  (`nl` in `street-name-origins.json`, 5,428 of 5,429 names). The one gap,
+  `Hamerstraat`, has no Dutch source that states its origin, so it shows the
+  corrected English card; the register text filed under that name is Piet
+  Meerburg's biography and must never be shown.
 - Neighbourhood description, history, name origin and local fact: `nl` in
   `neighborhood-history.json`, from the Dutch article or the reviewed Dutch
   original.
@@ -95,15 +97,14 @@ commands. Do not hand-edit the published JSON.
   sourcing job, not a translation one.
 - The debug places modal (a developer tool) is still English; everything a
   player sees on the ride and the quiz now follows the language.
-- The withheld rows that are in the extract are `Elim`, `Hamerstraat`,
-  `Na Druk Gelukbrug`, `Piet Kranenbergpad` (no Dutch article that states the
-  fact), four register texts filed under the wrong name (`Bickersgracht`,
-  `Nieuwe Vaart`, `Enneüs Heermabrug`, `Jaap Kunstbrug`), and `H. Diesveldsingel`
-  (kept Dutch, see below). They show the corrected English card with an English
-  source line; 26 names have no cached Dutch at all.
-- Two of the sourced supplements now have Dutch from their own article
-  (`Piet Wiedijkstraat`, and the eight person/place cards listed in
-  `nlOverrides`), because the Dutch article states the fact directly.
+- Rows the error register covers are fixed (`corrections`), composed from the
+  counterpart record or the Dutch article (`nlOverrides`, each with its source),
+  kept when the Dutch is sound (`keptNl`, each with a reason — Enneüs
+  Heermabrug, Jaap Kunstbrug, H. Diesveldsingel), or withheld (Hamerstraat).
+- Names the translation cache never covered (mostly bridges whose extract
+  spelling differs, "Katten brug" against "Kattenbrug") are read straight from
+  the BAG record by id and cached under staging; that is also the repair for a
+  spelling variant the cache missed.
 - The published `street-name-origins.json` is ~2.2 MB (was ~1.3 MB) because it
   now carries both languages. It is fetched after the ride starts; split it into
   a lazily loaded sidecar if that ever matters.

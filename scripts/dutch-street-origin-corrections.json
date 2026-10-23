@@ -3,26 +3,8 @@
  "reviewedAt": "2026-10-22",
  "policy": "The Dutch column of a card shows the register sentence only when the register text is sound. Rows the error register marks as withheld, a fragment, a repair, a replacement or a factual correction keep English: showing a known-wrong Dutch sentence in Dutch mode is worse than showing the corrected English one. A name listed here is verified again by scripts/add-dutch-street-origins.ts.",
  "withheldNl": {
-  "Elim": {
-   "handling": "Replaced by a sourced supplement (Wikipedia)."
-  },
-  "Enneüs Heermabrug": {
-   "handling": "Repaired: joined with the next row's text."
-  },
-  "H. Diesveldsingel": {
-   "handling": "The text opens \"De naam is foutief gespeld\": the man was Diesveldt."
-  },
   "Hamerstraat": {
    "handling": "Replaced by a sourced supplement (Wikipedia); the paragraph is restored to the Piet Meerburgbrug's card."
-  },
-  "Jaap Kunstbrug": {
-   "handling": "Repaired: joined with the next two rows' text."
-  },
-  "Na Druk Gelukbrug": {
-   "handling": "Replaced by a sourced supplement (nl.wikipedia, Olympisch Kwartier)."
-  },
-  "Piet Kranenbergpad": {
-   "handling": "Replaced by a sourced supplement (Wikipedia)."
   },
   "Scharwouderstraat": {
    "handling": "Withheld."
@@ -38,12 +20,6 @@
   },
   "Smaragdplein": {
    "handling": "Withheld."
-  },
-  "Bickersgracht": {
-   "handling": "Translated without the broken edge."
-  },
-  "Nieuwe Vaart": {
-   "handling": "Completed from the Nieuwevaart record (0363300000003876)."
   }
  },
  "keptNl": {
@@ -52,7 +28,10 @@
   "Guggenheimlaan": "Kept (construction did start in 1956)",
   "Nieuwendammerkade": "Uses the Nieuwendammerdijk record's explanation of Nieuwendam (0363300000003870).",
   "Rembrandtpark": "Kept only the opening sentence about Rembrandt.",
-  "Utrechtsedwarsstraat": "Kept only \"After the city of Utrecht\"."
+  "Utrechtsedwarsstraat": "Kept only \"After the city of Utrecht\".",
+  "H. Diesveldsingel": "The register itself says the official spelling is wrong; its Dutch sentence is otherwise sound and explains the man behind the name.",
+  "Jaap Kunstbrug": "The Dutch sentence is complete and reads correctly; the English was joined with later rows only to add career detail.",
+  "Enneüs Heermabrug": "The Dutch sentence is complete and correct; the English was joined with the next row only to add detail about his career."
  },
  "corrections": {
   "Accason": {
@@ -1256,6 +1235,26 @@
   "Piet Wiedijkstraat": {
    "nl": "Straat en park zijn genoemd naar de apotheker en publicist Piet Wiedijk (overleden 1938), die onder het pseudoniem J. Saks de eerste biografie van Multatuli schreef.",
    "source": "https://nl.wikipedia.org/wiki/Piet_Wiedijkpark"
+  },
+  "Bickersgracht": {
+   "nl": "Deze straten zijn gelegen op het Bickerseiland. Dit eiland was oorspronkelijk eigendom van dr. Johan Bicker (1591-1653), scheepsbouwer en koopman, schepen en burgemeester van Amsterdam, die het in 1631 kocht. De straten die naderhand op dit eiland werden aangelegd, kregen automatisch de naam van de stichter.",
+   "source": "BAG openbareruimtes 0363300000002930 (het straatrecord dat wel compleet is)"
+  },
+  "Nieuwe Vaart": {
+   "nl": "Naar de Nieuwe Vaart, omstreeks 1650 gegraven om het IJ en het Oosterdok langs de kortst mogelijke route te verbinden met de IJ-mond bij Zeeburg.",
+   "source": "BAG openbareruimtes 0363300000003876 (record van de Nieuwevaart)"
+  },
+  "Piet Kranenbergpad": {
+   "nl": "Vernoemd naar Piet Kranenberg, een van de redders van het Olympisch Stadion. In 1996 werd met Bram Mulder en stadiondirecteur Otto Roffel een reddings- en exploitatieplan opgezet; in 1998 begon de renovatie.",
+   "source": "https://nl.wikipedia.org/wiki/Olympisch_Stadion_(Amsterdam)"
+  },
+  "Na Druk Gelukbrug": {
+   "nl": "Na druk geluk was een boerderij die tot begin twintigste eeuw langs de Amstelveenseweg stond, ongeveer op de plek van het huidige huizenblok Stadionplein, Stadionkade, Jasonstraat en Argonautenstraat. De naam is door bewoners van het stadsdeel gekozen na een prijsvraag.",
+   "source": "https://nl.wikipedia.org/wiki/Olympisch_Kwartier"
+  },
+  "Elim": {
+   "nl": "Genoemd naar Elim, een dorp in de Zuid-Afrikaanse provincie West-Kaap.",
+   "source": "https://nl.wikipedia.org/wiki/Elim_(Overberg)"
   }
  }
 }

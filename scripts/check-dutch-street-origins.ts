@@ -52,15 +52,22 @@ const corrections = JSON.parse(await readFile(correctionsFile, 'utf8')) as {
   withheldNl: Record<string, { handling?: string }>;
   corrections?: Record<string, { replace?: Array<[string, string]> }>;
   nlOverrides?: Record<string, { nl: string; source: string }>;
+  /** Documented rows whose Dutch is sound as it stands, with the reason. */
+  keptNl?: Record<string, string>;
 };
 const expected = new Set(rows
   .filter((row) => !/^kept\b/i.test(row.handling) && !/nieuwendammerdijk/i.test(row.handling))
   .map((row) => row.name));
 
 for (const name of expected) {
-  if (!corrections.withheldNl[name] && !corrections.corrections?.[name] && !corrections.nlOverrides?.[name]) {
-    problems.push(`documented error neither fixed nor withheld: ${name}`);
+  if (!corrections.withheldNl[name] && !corrections.corrections?.[name]
+    && !corrections.nlOverrides?.[name] && !corrections.keptNl?.[name]) {
+    problems.push(`documented error neither fixed, kept nor withheld: ${name}`);
   }
+}
+for (const [name, reason] of Object.entries(corrections.keptNl ?? {})) {
+  if (!reason?.trim()) problems.push(`kept Dutch without a reason: ${name}`);
+  if (corrections.withheldNl[name]) problems.push(`kept and withheld: ${name}`);
 }
 for (const name of Object.keys(corrections.withheldNl)) {
   if (!expected.has(name)) problems.push(`withheld but no longer documented as an error: ${name}`);
