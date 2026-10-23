@@ -55,6 +55,12 @@ used only when the data carries Dutch, and English is the fallback:
 - Neighbourhood description, history, name origin and local fact: `nl` in
   `neighborhood-history.json`, from the Dutch article or the reviewed Dutch
   original.
+- Landmark facts: `textNl` on a fact (plus `openingNl` per feature) is the
+  source article's **own Dutch sentence**, taken from the exact evidence quote
+  that already backs the fact (`scripts/add-dutch-facts.ts`). It is a quote, not
+  a translation of the English summary; 1,556 of 2,351 facts have one, and the
+  rest stay English with an English source line. Dutch cards never mix: a Dutch
+  fact with no Dutch lede arrives without the framing line.
 - Cards pick at render time (`triviaText`, `featureDescription`,
   `triviaSourceLabel` in `src/mapRecall/trivia.ts`), so a toggle flips a card
   that is already open.
@@ -84,9 +90,9 @@ commands. Do not hand-edit the published JSON.
 
 ## Known gaps
 
-- Landmark trivia (`facts.json`) is still generated from English sources; Dutch
-  mode shows those cards in English. Regenerating with Dutch articles is the
-  next content pass.
+- The 795 facts without Dutch evidence (English Wikipedia, data-composed text)
+  show in English. A later pass can mine Dutch articles for them, but that is a
+  sourcing job, not a translation one.
 - Quiz settings/danger modals, the debug places modal, the postcard export and
   the feedback launch button are still English.
 - The 22 withheld rows are the sourced supplements (whose cited Dutch article

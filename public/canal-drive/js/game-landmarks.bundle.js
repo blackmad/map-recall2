@@ -389,147 +389,6 @@ Map source: ${osmUrl(places[i][0])}`);
     return shared2 / Math.min(left.size, right.size);
   }
 
-  // src/canalRecall/facts/factTypes.ts
-  var FACT_KIND_LABELS = {
-    naming: "Name",
-    history: "History",
-    people: "People",
-    design: "Design",
-    culture: "Culture",
-    surprise: "Curiosity"
-  };
-
-  // src/canalRecall/facts/factStore.ts
-  function buildFactIndex(file) {
-    const index = /* @__PURE__ */ new Map();
-    for (const feature of file?.features || []) {
-      if (feature?.id && feature.facts?.length) {
-        index.set(feature.id, {
-          facts: feature.facts,
-          opening: feature.opening?.trim() || void 0
-        });
-      }
-    }
-    return index;
-  }
-  function openingSentence(text, maxChars = 160) {
-    const trimmed = (text || "").replace(/\s+/g, " ").trim();
-    if (!trimmed) return "";
-    const abbreviations = /* @__PURE__ */ new Set([
-      "st",
-      "sint",
-      "ste",
-      "mr",
-      "mrs",
-      "ms",
-      "dr",
-      "prof",
-      "ir",
-      "ing",
-      "drs",
-      "jr",
-      "sr",
-      "nr",
-      "no",
-      "vs",
-      "ca",
-      "ong",
-      "bijv",
-      "nl",
-      "oa",
-      "dwz",
-      "zgn",
-      "etc",
-      "incl",
-      "excl",
-      "eeuw",
-      "eeuwse"
-    ]);
-    const isSentenceEnd = (index) => {
-      if (trimmed[index] !== ".") return true;
-      const before = /([\p{L}]+)$/u.exec(trimmed.slice(0, index));
-      if (!before) return true;
-      const word = before[1];
-      if (word.length === 1) return false;
-      if (/^\p{Lu}\p{L}*sz$/u.test(word)) return false;
-      return !abbreviations.has(word.toLocaleLowerCase());
-    };
-    let end = -1;
-    for (const match of trimmed.matchAll(/[.!?](?=\s|$)/g)) {
-      if (isSentenceEnd(match.index)) {
-        end = match.index + 1;
-        break;
-      }
-    }
-    const sentence = (end > 0 ? trimmed.slice(0, end) : trimmed).trim();
-    if (sentence.length <= maxChars) return sentence;
-    const window2 = sentence.slice(0, maxChars);
-    let boundary = -1;
-    for (const match of window2.matchAll(/[.!?](?=\s|$)/g)) {
-      if (isSentenceEnd(match.index)) boundary = match.index + 1;
-    }
-    if (boundary > maxChars * 0.5) return window2.slice(0, boundary).trim();
-    const cut = Math.max(window2.lastIndexOf(", "), window2.lastIndexOf(" "));
-    return `${(cut > maxChars * 0.5 ? window2.slice(0, cut) : window2).trim()}\u2026`;
-  }
-  function composeFactWithOpening(factText, opening) {
-    const lead = openingSentence(opening);
-    if (!lead) return { detail: factText };
-    if (similarity(lead, factText) >= 0.55) return { detail: factText };
-    const leadStem = lead.replace(/[.!?…]+$/, "").toLowerCase();
-    if (leadStem.length >= 24 && factText.toLowerCase().includes(leadStem.slice(0, Math.min(48, leadStem.length)))) {
-      return { detail: factText };
-    }
-    return { detail: `${lead} ${factText}`, opening: lead };
-  }
-  var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
-  function loadRotationState(storage2) {
-    try {
-      const raw = storage2?.getItem(ROTATION_STORAGE_KEY);
-      if (!raw) return emptyRotationState();
-      const parsed = JSON.parse(raw);
-      return {
-        history: parsed.history && typeof parsed.history === "object" ? parsed.history : {},
-        shown: Number.isFinite(parsed.shown) ? Number(parsed.shown) : 0,
-        recentKinds: Array.isArray(parsed.recentKinds) ? parsed.recentKinds.slice(0, 3) : []
-      };
-    } catch {
-      return emptyRotationState();
-    }
-  }
-  function saveRotationState(storage2, state) {
-    try {
-      storage2?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
-    } catch {
-    }
-  }
-  function factCardText(featureId, index, state, fallbackOpening) {
-    const entry = index.get(featureId);
-    if (!entry?.facts?.length) return null;
-    const choice = chooseFact(featureId, entry.facts, state);
-    if (!choice) return null;
-    const composed = composeFactWithOpening(
-      choice.fact.text,
-      entry.opening || fallbackOpening
-    );
-    const others = expandedFacts(entry.facts, choice.fact.text);
-    const all = composed.opening ? [composed.opening, choice.fact.text, ...others.map((fact) => fact.text)] : [choice.fact.text, ...others.map((fact) => fact.text)];
-    return {
-      choice,
-      text: {
-        detail: composed.detail,
-        longDetail: all.join(" "),
-        factTexts: all,
-        factKind: FACT_KIND_LABELS[choice.fact.kind]
-      }
-    };
-  }
-  function commitShownFact(storage2, state, choice) {
-    const next = recordShown(state, choice);
-    saveRotationState(storage2, next);
-    return next;
-  }
-
   // src/i18n/messages/en.ts
   var en = {
     // --- Language switch ------------------------------------------------------
@@ -1020,7 +879,41 @@ Map source: ${osmUrl(places[i][0])}`);
     "quiz.newHint": "first time right",
     "quiz.roundWord": "Round {round}",
     "quiz.postcardOpen": "Greetings from {name}: open the postcard",
-    "quiz.dueTodayLabel": "Due today"
+    "quiz.dueTodayLabel": "Due today",
+    "account.guest": "Playing as guest",
+    "account.guestNote": "Sign in to keep your progress on every device",
+    "account.signIn": "Sign in",
+    "account.signOut": "Sign out",
+    "account.signingIn": "Signing in\u2026",
+    "account.syncNote": "Progress syncs to every device",
+    "account.signInTitle": "Sign in with Google to keep your progress on every device",
+    "account.unavailable": "Sign-in is not configured on this build",
+    "account.fallback": "Account",
+    "account.masteredSynced": "{count} synced",
+    "onb.close": "Close the intro",
+    "onb.skip": "Skip",
+    "onb.back": "Back",
+    "onb.gotIt": "Got it",
+    "onb.next": "Next",
+    "onb.step": "Step {current} of {total}",
+    "onb.rideTitle": "Ride the real city",
+    "onb.rideBody": "Pick Boat or Bike and press Start route. Ride to the destination named in the top-right corner; the orange arrow points the way.",
+    "onb.ringCaption": "Hold the ring at the bottom and slide: sideways steers, up speeds up, back brakes.",
+    "onb.keysCaption": "Arrow keys or WASD steer. Space brakes.",
+    "onb.nameTitle": "Name it",
+    "onb.nameBody": "When you turn onto a new canal or street, the ride stops and asks its name. The card in the top-left shows ? ? ? until you answer. Not sure? Choose No idea. You see the answer either way.",
+    "onb.tapCaption": "Tap a name to answer. On Hard you type it.",
+    "onb.pressCaption": "Press 1\u20134 to pick a name, 0 for No idea. On Hard you type it.",
+    "onb.scoreTitle": "Points and names learned",
+    "onb.scoreBody": "A right answer earns points: more on harder settings, in a streak, and for a name that is new to you. Names you get right come back later for review, so they stick.",
+    "onb.tally": "3/4 named \xB7 290 pts",
+    "onb.scoreCaption": "3 named out of 4 asked. Knowledge, on the start screen, lists every name you have learned.",
+    "site.home": "Home",
+    "site.ride": "Ride",
+    "site.quiz": "Quiz",
+    "site.progress": "Progress",
+    "site.buildings": "Buildings",
+    "site.label": "Map Recall"
   };
 
   // src/i18n/language.ts
@@ -1067,6 +960,165 @@ Map source: ${osmUrl(places[i][0])}`);
   function language() {
     if (!current) current = readLanguage(storage());
     return current;
+  }
+
+  // src/canalRecall/facts/factTypes.ts
+  var FACT_KIND_LABELS = {
+    naming: "Name",
+    history: "History",
+    people: "People",
+    design: "Design",
+    culture: "Culture",
+    surprise: "Curiosity"
+  };
+  var FACT_KIND_LABELS_NL = {
+    naming: "Naam",
+    history: "Geschiedenis",
+    people: "Mensen",
+    design: "Ontwerp",
+    culture: "Cultuur",
+    surprise: "Weetje"
+  };
+  function factKindLabel(kind) {
+    return language() === "nl" ? FACT_KIND_LABELS_NL[kind] : FACT_KIND_LABELS[kind];
+  }
+  function factText(fact) {
+    return language() === "nl" && fact.textNl ? fact.textNl : fact.text;
+  }
+
+  // src/canalRecall/facts/factStore.ts
+  function buildFactIndex(file) {
+    const index = /* @__PURE__ */ new Map();
+    for (const feature of file?.features || []) {
+      if (feature?.id && feature.facts?.length) {
+        index.set(feature.id, {
+          facts: feature.facts,
+          opening: feature.opening?.trim() || void 0,
+          openingNl: feature.openingNl?.trim() || void 0
+        });
+      }
+    }
+    return index;
+  }
+  function openingSentence(text, maxChars = 160) {
+    const trimmed = (text || "").replace(/\s+/g, " ").trim();
+    if (!trimmed) return "";
+    const abbreviations = /* @__PURE__ */ new Set([
+      "st",
+      "sint",
+      "ste",
+      "mr",
+      "mrs",
+      "ms",
+      "dr",
+      "prof",
+      "ir",
+      "ing",
+      "drs",
+      "jr",
+      "sr",
+      "nr",
+      "no",
+      "vs",
+      "ca",
+      "ong",
+      "bijv",
+      "nl",
+      "oa",
+      "dwz",
+      "zgn",
+      "etc",
+      "incl",
+      "excl",
+      "eeuw",
+      "eeuwse"
+    ]);
+    const isSentenceEnd = (index) => {
+      if (trimmed[index] !== ".") return true;
+      const before = /([\p{L}]+)$/u.exec(trimmed.slice(0, index));
+      if (!before) return true;
+      const word = before[1];
+      if (word.length === 1) return false;
+      if (/^\p{Lu}\p{L}*sz$/u.test(word)) return false;
+      return !abbreviations.has(word.toLocaleLowerCase());
+    };
+    let end = -1;
+    for (const match of trimmed.matchAll(/[.!?](?=\s|$)/g)) {
+      if (isSentenceEnd(match.index)) {
+        end = match.index + 1;
+        break;
+      }
+    }
+    const sentence = (end > 0 ? trimmed.slice(0, end) : trimmed).trim();
+    if (sentence.length <= maxChars) return sentence;
+    const window2 = sentence.slice(0, maxChars);
+    let boundary = -1;
+    for (const match of window2.matchAll(/[.!?](?=\s|$)/g)) {
+      if (isSentenceEnd(match.index)) boundary = match.index + 1;
+    }
+    if (boundary > maxChars * 0.5) return window2.slice(0, boundary).trim();
+    const cut = Math.max(window2.lastIndexOf(", "), window2.lastIndexOf(" "));
+    return `${(cut > maxChars * 0.5 ? window2.slice(0, cut) : window2).trim()}\u2026`;
+  }
+  function composeFactWithOpening(factText2, opening) {
+    const lead = openingSentence(opening);
+    if (!lead) return { detail: factText2 };
+    if (similarity(lead, factText2) >= 0.55) return { detail: factText2 };
+    const leadStem = lead.replace(/[.!?…]+$/, "").toLowerCase();
+    if (leadStem.length >= 24 && factText2.toLowerCase().includes(leadStem.slice(0, Math.min(48, leadStem.length)))) {
+      return { detail: factText2 };
+    }
+    return { detail: `${lead} ${factText2}`, opening: lead };
+  }
+  var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
+  function loadRotationState(storage2) {
+    try {
+      const raw = storage2?.getItem(ROTATION_STORAGE_KEY);
+      if (!raw) return emptyRotationState();
+      const parsed = JSON.parse(raw);
+      return {
+        history: parsed.history && typeof parsed.history === "object" ? parsed.history : {},
+        shown: Number.isFinite(parsed.shown) ? Number(parsed.shown) : 0,
+        recentKinds: Array.isArray(parsed.recentKinds) ? parsed.recentKinds.slice(0, 3) : []
+      };
+    } catch {
+      return emptyRotationState();
+    }
+  }
+  function saveRotationState(storage2, state) {
+    try {
+      storage2?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
+    } catch {
+    }
+  }
+  function factCardText(featureId, index, state, fallbackOpening) {
+    const entry = index.get(featureId);
+    if (!entry?.facts?.length) return null;
+    const choice = chooseFact(featureId, entry.facts, state);
+    if (!choice) return null;
+    const dutch = language() === "nl";
+    const dutchFact = dutch && !!choice.fact.textNl;
+    const factBody = dutchFact ? choice.fact.textNl : choice.fact.text;
+    const composed = composeFactWithOpening(
+      factBody,
+      dutchFact ? entry.openingNl : entry.opening || fallbackOpening
+    );
+    const others = expandedFacts(entry.facts, choice.fact.text);
+    const all = composed.opening ? [composed.opening, factBody, ...others.map((fact) => factText(fact))] : [factBody, ...others.map((fact) => factText(fact))];
+    return {
+      choice,
+      text: {
+        detail: composed.detail,
+        longDetail: all.join(" "),
+        factTexts: all,
+        factKind: factKindLabel(choice.fact.kind)
+      }
+    };
+  }
+  function commitShownFact(storage2, state, choice) {
+    const next = recordShown(state, choice);
+    saveRotationState(storage2, next);
+    return next;
   }
 
   // src/canalRecall/bridgeRegister.ts

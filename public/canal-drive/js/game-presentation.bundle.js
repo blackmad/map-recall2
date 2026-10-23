@@ -1707,6 +1707,20 @@
     culture: "Culture",
     surprise: "Curiosity"
   };
+  var FACT_KIND_LABELS_NL = {
+    naming: "Naam",
+    history: "Geschiedenis",
+    people: "Mensen",
+    design: "Ontwerp",
+    culture: "Cultuur",
+    surprise: "Weetje"
+  };
+  function factKindLabel(kind) {
+    return language() === "nl" ? FACT_KIND_LABELS_NL[kind] : FACT_KIND_LABELS[kind];
+  }
+  function factText(fact) {
+    return language() === "nl" && fact.textNl ? fact.textNl : fact.text;
+  }
 
   // src/canalRecall/facts/factStore.ts
   function openingSentence(text, maxChars = 160) {
@@ -1769,15 +1783,15 @@
     const cut = Math.max(window2.lastIndexOf(", "), window2.lastIndexOf(" "));
     return `${(cut > maxChars * 0.5 ? window2.slice(0, cut) : window2).trim()}\u2026`;
   }
-  function composeFactWithOpening(factText, opening) {
+  function composeFactWithOpening(factText2, opening) {
     const lead = openingSentence(opening);
-    if (!lead) return { detail: factText };
-    if (similarity(lead, factText) >= 0.55) return { detail: factText };
+    if (!lead) return { detail: factText2 };
+    if (similarity(lead, factText2) >= 0.55) return { detail: factText2 };
     const leadStem = lead.replace(/[.!?…]+$/, "").toLowerCase();
-    if (leadStem.length >= 24 && factText.toLowerCase().includes(leadStem.slice(0, Math.min(48, leadStem.length)))) {
-      return { detail: factText };
+    if (leadStem.length >= 24 && factText2.toLowerCase().includes(leadStem.slice(0, Math.min(48, leadStem.length)))) {
+      return { detail: factText2 };
     }
-    return { detail: `${lead} ${factText}`, opening: lead };
+    return { detail: `${lead} ${factText2}`, opening: lead };
   }
   var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
   function saveRotationState(storage2, state) {
@@ -1791,19 +1805,22 @@
     if (!entry?.facts?.length) return null;
     const choice = chooseFact(featureId, entry.facts, state);
     if (!choice) return null;
+    const dutch = language() === "nl";
+    const dutchFact = dutch && !!choice.fact.textNl;
+    const factBody = dutchFact ? choice.fact.textNl : choice.fact.text;
     const composed = composeFactWithOpening(
-      choice.fact.text,
-      entry.opening || fallbackOpening
+      factBody,
+      dutchFact ? entry.openingNl : entry.opening || fallbackOpening
     );
     const others = expandedFacts(entry.facts, choice.fact.text);
-    const all = composed.opening ? [composed.opening, choice.fact.text, ...others.map((fact) => fact.text)] : [choice.fact.text, ...others.map((fact) => fact.text)];
+    const all = composed.opening ? [composed.opening, factBody, ...others.map((fact) => factText(fact))] : [factBody, ...others.map((fact) => factText(fact))];
     return {
       choice,
       text: {
         detail: composed.detail,
         longDetail: all.join(" "),
         factTexts: all,
-        factKind: FACT_KIND_LABELS[choice.fact.kind]
+        factKind: factKindLabel(choice.fact.kind)
       }
     };
   }

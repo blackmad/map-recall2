@@ -532,7 +532,9 @@
     "check:signature-bundle": "npm run -s build:canal-signature-landmarks && node --import tsx scripts/landmarks/check-signature-bundle.ts",
     "check:bag-gaps": "node --import tsx scripts/check-bag-gaps.ts",
     "test:landmark-cards": "node --import tsx --test src/canalRecall/facts/landmarkCardAudit.test.ts",
-    "check:manual-landmarks": "node --import tsx scripts/landmarks/check-manual-landmarks.ts"
+    "check:manual-landmarks": "node --import tsx scripts/landmarks/check-manual-landmarks.ts",
+    "add:dutch-facts": "tsx scripts/add-dutch-facts.ts",
+    "test:dutch-facts": "tsx scripts/add-dutch-facts.ts --check"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

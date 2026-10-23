@@ -4,6 +4,7 @@ import { FACT_KIND_LABELS } from '../canalRecall/facts/factTypes';
 import { neighborhoodFactForRound } from '../mapRecall/neighborhoodStories';
 import { triviaForRound } from '../mapRecall/localFacts';
 import { language } from '../i18n/index';
+import { factKindLabel as factKindChip, factSourceLabel, factText } from '../canalRecall/facts/factTypes';
 import { descriptionWithoutOrigin, featureDescription, triviaSourceLabel, triviaText } from '../mapRecall/trivia';
 import { PostcardHeader } from './PostcardHeader';
 import { PostcardExport } from './PostcardExport';
@@ -114,19 +115,19 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
         <Chip>Name</Chip>{originText}{' '}<Source href={origin.sourceUrl}>{triviaSourceLabel(origin)}</Source>
       </p>}
       {topFacts?.map((fact, i) => <p key={fact.text} className="text-xs font-semibold leading-relaxed text-white" data-testid="answer-top-fact">
-        {i === 0 && <Chip>About here</Chip>}{fact.text}{' '}<Source href={fact.sourceUrl}>{fact.sourceLabel}</Source>
+        {i === 0 && <Chip>About here</Chip>}{factText(fact)}{' '}<Source href={fact.sourceUrl}>{fact.sourceLabel}</Source>
       </p>)}
       {storyFact && <p className="text-xs leading-relaxed text-white" data-testid="answer-rotating-fact">
-        <Chip>Did you know</Chip>{storyFact.text}{' '}<Source href={storyFact.sourceUrl}>{storyFact.sourceLabel}</Source>
+        <Chip>Did you know</Chip>{factText(storyFact)}{' '}<Source href={storyFact.sourceUrl}>{storyFact.sourceLabel}</Source>
       </p>}
       {localFact && <p className="text-xs font-semibold leading-relaxed text-white" data-testid="answer-local-fact">
-        <Chip>Local</Chip>{localFact.text}{' '}<Source href={localFact.sourceUrl}>{localFact.sourceLabel}</Source>
+        <Chip>Local</Chip>{triviaText(localFact)}{' '}<Source href={localFact.sourceUrl}>{localFact.sourceLabel}</Source>
       </p>}
       {where && <p className="text-xs leading-relaxed text-white" data-testid="answer-where">
         <Chip>Where</Chip>{where}
       </p>}
       {facts.map((fact) => <p key={fact.text} className="text-xs leading-relaxed text-white" data-testid="answer-fact">
-        <Chip>{FACT_KIND_LABELS[fact.kind]}</Chip>{fact.text}{' '}<Source href={fact.sourceUrl}>Wikipedia · {fact.license}</Source>
+        <Chip>{factKindChip(fact.kind)}</Chip>{factText(fact)}{' '}<Source href={fact.sourceUrl}>{factSourceLabel(fact)}</Source>
       </p>)}
       {description && <Lede text={description} source={descriptionSource} heading={ledeHeading(extractSource?.borrowedFrom)} />}
       {!description && !facts.length && !origin && feature.wikipediaUrl && <Source href={feature.wikipediaUrl}>View photo on Wikipedia</Source>}
