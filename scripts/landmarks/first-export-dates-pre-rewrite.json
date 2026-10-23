@@ -1,0 +1,9 @@
+{
+  "note": "First-export dates the 2026-10-22 history rewrite erased: filter-repo stripped the blob these GLBs were first added with, so git log no longer shows an add. Dates read from ~/Code/map-recall2-archive/git-backup-20261022 (git log --all --diff-filter=A). Only GLBs with no add in current history belong here.",
+  "dates": {
+    "club-panama": "2026-10-09T21:04:58+02:00",
+    "compagnietheater": "2026-10-09T20:51:50+02:00",
+    "holocaust-namenmonument": "2026-10-13T12:04:31+02:00",
+    "west-india-house": "2026-10-09T20:51:50+02:00"
+  }
+}

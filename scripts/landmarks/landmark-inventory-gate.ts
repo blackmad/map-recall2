@@ -4,7 +4,8 @@
  * src/canalRecall/landmarks/ornamentInventory.ts; process: docs/buildings-pipeline.md, "Bespoke landmark lane".
  *
  * "First exported" is the first commit that added `public/canal-drive/models/<id>.glb` (git history). model-dates.json
- * cannot answer it: it records the latest rebuild, which every re-export touches.
+ * cannot answer it: it records the latest rebuild, which every re-export touches. GLBs whose first add the 2026-10-22
+ * history rewrite erased take their date from first-export-dates-pre-rewrite.json.
  */
 import {execFileSync} from 'node:child_process';
 import fs from 'node:fs';
@@ -31,6 +32,9 @@ export function firstExportDates(): Map<string, string> {
     const m = line.match(/^public\/canal-drive\/models\/([^/]+)\.glb$/);
     if (m && !m[1].endsWith('.lod1') && !firstAdded.has(m[1])) firstAdded.set(m[1], date);
   }
+  // The 2026-10-22 history rewrite stripped some first-add blobs, so those GLBs show no add; their dates are pinned.
+  const pinned = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/landmarks/first-export-dates-pre-rewrite.json'), 'utf8')).dates as Record<string, string>;
+  for (const [id, date] of Object.entries(pinned)) if (!firstAdded.has(id)) firstAdded.set(id, date);
   return firstAdded;
 }
 
