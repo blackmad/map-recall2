@@ -66,7 +66,14 @@ let withDutch = 0;
 let withoutDutch = 0;
 for (const feature of file.features) {
   for (const fact of feature.facts) {
+    // A reviewed, agent-written Dutch sentence outranks the quote cut: it has
+    // its own evidence, writer and verdict, and this script must not wipe it.
+    const reviewed = fact.textNl && fact.textNlEvidence && fact.textNlWriter && fact.textNlVerification === 'grounded';
     const usable = fact.sourceLanguage === 'nl' && fact.sourceQuote ? dutchSentence(fact.sourceQuote) : undefined;
+    if (reviewed) {
+      withDutch += 1;
+      continue;
+    }
     if (usable) {
       fact.textNl = usable;
       withDutch += 1;
@@ -164,9 +171,12 @@ if (!check) {
       if (fact.textNl === fact.text) problems.push(`Dutch equals English: ${feature.name}`);
       if (!/[.!?…]$/.test(fact.textNl.trim())) problems.push(`Dutch does not end a sentence: ${feature.name}`);
       if (!fact.sourceLanguage || fact.sourceLanguage !== 'nl') {
-        // A matched sentence is Dutch evidence too: it must name the article it
-        // came from, and the matcher only accepts year-anchored single hits.
-        if (!(fact.textNlMatched && /^https:\/\/nl\.wikipedia\.org\//.test(fact.textNlSourceUrl || ''))) {
+        // A written Dutch sentence is Dutch evidence too when it records the
+        // exact evidence, its article, its writer and a grounded verdict.
+        if (!(fact.textNlEvidence?.trim()
+          && /^https:\/\/nl\.wikipedia\.org\//.test(fact.textNlSourceUrl || '')
+          && fact.textNlWriter
+          && fact.textNlVerification === 'grounded')) {
           problems.push(`Dutch without Dutch evidence: ${feature.name}`);
         }
       }

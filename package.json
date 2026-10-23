@@ -534,7 +534,8 @@
     "test:landmark-cards": "node --import tsx --test src/canalRecall/facts/landmarkCardAudit.test.ts",
     "check:manual-landmarks": "node --import tsx scripts/landmarks/check-manual-landmarks.ts",
     "add:dutch-facts": "tsx scripts/add-dutch-facts.ts",
-    "test:dutch-facts": "tsx scripts/add-dutch-facts.ts --check"
+    "test:dutch-facts": "tsx scripts/add-dutch-facts.ts --check",
+    "apply:dutch-facts": "tsx scripts/apply-dutch-facts.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

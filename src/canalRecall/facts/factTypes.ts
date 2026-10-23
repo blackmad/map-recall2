@@ -79,6 +79,14 @@ export interface Fact {
    * `text`; it is a quote, not a translation of the English summary.
    */
   textNl?: string;
+  /** The exact Dutch evidence sentence `textNl` was written from. */
+  textNlEvidence?: string;
+  /** The Dutch article that evidence came from. */
+  textNlSourceUrl?: string;
+  /** Who wrote the Dutch sentence, e.g. `agent:dutch-pass-2026-10-23`. */
+  textNlWriter?: string;
+  /** The independent pass that checked it; only `grounded` may be shown. */
+  textNlVerification?: 'grounded';
   kind: FactKind;
   /** Article heading the source passage came from; `''` for the lede. */
   section: string;

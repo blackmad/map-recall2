@@ -93,11 +93,20 @@ commands. Do not hand-edit the published JSON.
 ## Known gaps
 
 - The 795 facts without Dutch evidence (English Wikipedia, data-composed text)
-  show in English. Mining Dutch articles for them needs the facts pipeline's
+  show in English. A pilot on 2026-10-23 showed the no-key route works: the
+  agent writes the Dutch sentence from the Dutch article's exact evidence, a
+  fresh-context verifier agent checks entailment, and only `grounded` rows are
+  merged by `npm run apply:dutch-facts -- <reviewed.json>` with the evidence,
+  article URL, writer and verdict recorded on the fact. Eight facts landed that
+  way (Schiphollijn, Utrechtboog, Hoge Sluis, Torensluis, Magere Brug,
+  Oude Lijn, Nesciobrug ×2); the verifier caught two English claims the Dutch
+  source does not make ("fully automatic" after 1994, "London" architect) and
+  the Dutch cards omit them rather than repeating them. Mining Dutch articles for them needs the facts pipeline's
   writer **and its entailment verifier**: a mechanical year/anchor match was
   tried on 2026-10-23 and rejected — 1 in 4 picks stated a different claim
   (the Utrechtboog card matched a sentence about the *planned* 2006 opening
-  against the fact that it opened in March 2006). Run
+  against the fact that it opened in March 2006). A model remains the faster
+  route for the backlog; run
   `npm run facts:articles -- --directory=public/data/extracts/amsterdam` then
   `npm run facts:build -- --directory=public/data/extracts/amsterdam
   --city=amsterdam` with a model available (Ollama locally, or
