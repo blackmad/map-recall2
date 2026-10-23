@@ -17,6 +17,9 @@ interface CanalRuntimeConfig {
 declare global {
   interface Window {
     CANAL_RUNTIME_CONFIG?: CanalRuntimeConfig;
+    canalRecallMonitoring?: {
+      reportGraphicsFailure(detail: Record<string, unknown>): void;
+    };
   }
 }
 
@@ -40,8 +43,30 @@ if (enabled) {
     // Sentry v11 equivalent of `sendDefaultPii: false`: do not attach user PII.
     dataCollection: { userInfo: false },
     initialScope: { tags: { app: 'canal-recall' } },
+    // A dead GPU process makes every shader query answer false with an empty
+    // info log; MapLibre 5 then throws this from every render frame. `mapGuard`
+    // handles maps we own, and this keeps unguarded pages from flooding the
+    // project. A real shader bug carries a GLSL log and still reports.
+    ignoreErrors: [/Could not compile (fragment|vertex) shader:\s*(null)?$/, /Program failed to link:\s*(null)?$/],
   });
 }
+
+/** One diagnostics hook for `mapGuard`; it reports once per event, not per frame. */
+window.canalRecallMonitoring = {
+  reportGraphicsFailure(detail) {
+    if (!enabled) return;
+    const contextLost = detail.event === 'webgl-context-lost';
+    Sentry.captureMessage(
+      contextLost ? 'MapLibre lost the WebGL context' : 'MapLibre lost the GPU while compiling a shader',
+      {
+        level: 'warning',
+        tags: { ...routeTags(), graphics: contextLost ? 'context-lost' : 'dead-gpu' },
+        extra: { ...detail },
+        fingerprint: ['canal-recall', 'graphics-failure', String(detail.event)],
+      },
+    );
+  },
+};
 
 /** Cheap route/mode tags from the legacy game global, when it exists. */
 function routeTags(): Record<string, string> {

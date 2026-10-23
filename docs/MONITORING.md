@@ -107,6 +107,22 @@ The debug token is never read in production builds.
   has empty values, so nothing activates without keys. `index.html` loads
   `runtime-config.js` then `monitoring.bundle.js` (built by
   `npm run build:monitoring`) at the top of `<head>`.
+- **A dead GPU is reported once, not once per frame**: MapLibre 5.24 throws
+  `Could not compile fragment shader: ` from its render loop when the device's
+  GPU process dies (the info log is empty because no query answers).
+  `src/canalRecall/mapGuard.ts` wraps `map._render` on the ride and explorer
+  maps: it swallows only those empty-log errors, holds a frame, and sends one
+  warning ("MapLibre lost the GPU while compiling a shader", fingerprint
+  `canal-recall / graphics-failure / dead-gpu-shader`) with the GPU
+  renderer/vendor and `isContextLost`. It also reports `webglcontextlost` as
+  its own one-shot warning ("MapLibre lost the WebGL context", fingerprint
+  `… / webgl-context-lost`) even when no shader threw — that is what a GPU
+  process killed for memory looks like from inside the page — with
+  `performance.memory.usedJSHeapSize`, `navigator.deviceMemory`,
+  `hardwareConcurrency`, the canvas CSS/backing sizes and the drawing buffer.
+  `monitoring.ts` also lists the empty-log shader errors in `ignoreErrors` as a
+  backstop for pages without the guard. Real GLSL errors keep their log and
+  still report.
 - **Source maps**: `vite.config.ts` sets `build.sourcemap: 'hidden'` for Map
   Quest, and every Canal Recall esbuild bundle is built with
   `--sourcemap=external` / `sourcemap: 'external'`, so neither writes a

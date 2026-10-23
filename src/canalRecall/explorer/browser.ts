@@ -20,6 +20,7 @@ import {
 import { ELSEWHERE, type ExplorerIndex, type ExplorerKind, type ExplorerModel, type LngLat } from './types';
 import type { ModelViewer } from './viewer';
 import { LiveRecipeTiles, liveCamera, liveRideHref } from './liveTiles';
+import { guardMapRender } from '../mapGuard';
 
 declare const maplibregl: any;
 const w = window as any;
@@ -209,6 +210,8 @@ class Explorer {
       container: 'map', style: STYLE, bounds: lookBbox ?? this.buurtBounds(this.buurt ?? link.buurt) ?? AMSTERDAM, fitBoundsOptions: { padding: this.padding() },
       attributionControl: { compact: true }, maxBounds: [[4.6, 52.22], [5.15, 52.5]], minZoom: 10, maxPitch: 60,
     });
+    // A dead GPU process makes MapLibre 5 throw from every frame; see mapGuard.
+    guardMapRender(this.map);
     this.map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
     w.__explorerMap = this.map;
     this.map.on('load', () => {
