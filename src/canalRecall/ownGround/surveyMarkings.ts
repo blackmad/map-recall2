@@ -31,6 +31,7 @@ import type { RoadIndex } from './roadSurfaces.js';
 import type { LocalWay } from './streets.js';
 import type { RoadMark } from './roadMarks.js';
 import { convexOverlap, lineAngle } from './crossingAudit.js';
+import { traceMark } from './sourceTrace.js';
 import { BLOCK, isSignalCrossing, mouthMarking, rankOf, sharkTeeth, SIGNAL_REACH_M, STOP_LINE_M, type MarkFrame } from './roadMarkings.js';
 
 /** The surveyed carriageway draws these marks (streets.ts PAINT_ON_SURVEY keeps the old band paint off there). */
@@ -675,12 +676,14 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
     const n = left(c.r);
     addCrossing(add(c.centre, n, c.from), add(c.centre, n, c.to), ZEBRA.len / 2);
   }
+  traceMark(mk.paint, 'nodePaint');
   for (const c of plans) {
     if (!c.owned) continue;
     if (zebra(c) && c.signalised && c.road) crossingStops(c.centre, c.road);
   }
 
   // ---- cycle crossings: red with blocks along both edges, where a cycle path crosses a carriageway
+  traceMark(mk.paint, 'cycleCross'); traceMark(mk.red, 'cycleCross');
   for (const w of ways) {
     if (!isCycleWay(w) || isBridge(w) || !input.ownsWay(w)) continue;
     if (w.tags.crossing === 'unmarked' || w.tags['crossing:markings'] === 'no') continue;
@@ -713,6 +716,7 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
   }
 
   // ---- signal, stop and give-way nodes on the road
+  traceMark(mk.paint, 'nodePaint');
   for (const m of marks) {
     if (m.kind !== 'signals' && m.kind !== 'stop' && m.kind !== 'giveWay') continue;
     if (!input.ownsPoint(m.p)) continue;
@@ -724,6 +728,7 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
   }
 
   // ---- junction mouths: give-way teeth on the minor arms of junctions nothing is mapped at
+  traceMark(mk.paint, 'graphPaint');
   const signalPts = [...ways.filter(w => isSignalCrossing(w.tags)).flatMap(w => w.points), ...marks.filter(m => m.signalised).map(m => m.p)];
   const ruled = marks.filter(m => m.kind === 'signals' || m.kind === 'stop' || m.kind === 'giveWay').map(m => m.p);
   const mouths: { p: Vec2; r: number }[] = [];
