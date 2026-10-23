@@ -17,7 +17,7 @@
       this.moveHandler = () => this.updateViewport();
       this.visibilityHandler = () => {
         this.updateTunnelFilters();
-        if (!map.getLayer('park-landscape-ground')) return;
+        if (!map.style || !map.getLayer('park-landscape-ground')) return;
         const visible = map.getLayoutProperty('park-landscape-ground','visibility') !== 'none';
         if (visible !== this.enabled) this.setEnabled(visible);
       };
@@ -77,7 +77,9 @@
     // exact mapped boundaries. Filters operate on whole tile-clipped features, so
     // an intersecting below-ground segment may also disappear beyond the boundary.
     updateTunnelFilters() {
-      if (this.updatingTunnelFilters) return;
+      // A removed map (or one between styles) has no style: getLayer throws
+      // (Sentry CANAL-RECALL-4, Safari, from a frame after the map was gone).
+      if (this.updatingTunnelFilters || !this.map?.style) return;
       this.updatingTunnelFilters = true;
       try {
         const active = !this.destroyed && this.enabled && this.root?.endsWith('/amsterdam')
