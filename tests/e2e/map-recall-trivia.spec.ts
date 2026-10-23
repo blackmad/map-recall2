@@ -155,16 +155,21 @@ test('a neighbourhood answer opens folded, its postcard ready, above the outline
   expect(rounds, 'a neighbourhood with a postcard within ten rounds').toBeGreaterThan(0);
   const viewport = page.viewportSize()!;
   const card = (await page.locator('[data-result-card]').boundingBox())!;
-  expect(card.height, 'the folded answer card leaves most of the map visible').toBeLessThan(viewport.height * 0.5);
   // The revealed area is fitted clear of the card, not under it: above a bottom card, or beside a docked one.
   // An area's name is its plaque (the marker anchor is zero-size); lines and points use the marker.
   const docked = card.x > viewport.width / 2;
+  if (docked) {
+    // The dock has room beside the map, so the answer opens at once rather than leaving the column empty.
+    await expect(page.getByTestId('answer-details')).toHaveAttribute('data-expanded', 'yes');
+  } else {
+    expect(card.height, 'the folded answer card leaves most of the map visible').toBeLessThan(viewport.height * 0.5);
+  }
   await expect.poll(async () => {
     const plaque = page.locator('.area-plaque');
     const label = (await ((await plaque.count()) ? plaque : page.locator('.custom-true-target-icon')).first().boundingBox())!;
     return docked ? label.x + label.width < card.x : label.y + label.height < card.y;
   }, { timeout: 8_000 }).toBe(true);
-  await page.getByTestId('answer-details').click();
+  if (!docked) await page.getByTestId('answer-details').click();
   const postcard = page.locator('[data-testid="answer-postcard"]');
   await expect(postcard).toHaveAttribute('data-painted', 'yes');
   // One photo window per run of 2–4 letters, each a plain image the browser loads on its own.

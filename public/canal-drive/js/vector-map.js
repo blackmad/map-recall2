@@ -492,7 +492,7 @@ class VectorBasemap {
     const base = cockpit
       ? (typeof COCKPIT_PITCH_DEGREES === 'number' ? COCKPIT_PITCH_DEGREES : 84)
       : chase
-        ? (typeof CHASE_PITCH_DEGREES === 'number' ? CHASE_PITCH_DEGREES : 48)
+        ? (typeof CHASE_PITCH_DEGREES === 'number' ? CHASE_PITCH_DEGREES : 12)
         : (typeof TOPDOWN_TILT_DEGREES === 'number' ? TOPDOWN_TILT_DEGREES : 14);
     if (!chase && !cockpit) return base;
     return Math.max(0, Math.min(85, base + (this._cameraTilt || 0)));

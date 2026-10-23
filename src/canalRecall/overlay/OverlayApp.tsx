@@ -269,7 +269,7 @@ const TRAVEL: Choice<CanalPreferences['travelMode']>[] = [
 const VIEW: Choice<CanalPreferences['viewMode']>[] = [
   { value: 'north', title: 'North up', hint: 'Flat map, north at top' },
   { value: 'heading', title: 'Heading up', hint: 'Flat map, turns with you' },
-  { value: 'chase', title: 'Chase', hint: 'High 3D, behind the vehicle' },
+  { value: 'chase', title: 'Chase', hint: 'Low 3D, behind the vehicle' },
 ];
 
 const BUILDING_LOOK: Choice<CanalPreferences['buildingLook']>[] = [

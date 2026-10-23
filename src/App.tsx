@@ -13,10 +13,10 @@ import {
   AdministrativeArea,
 } from './types';
 import { CITIES } from './data/cities';
-import { calculateShortestDistanceToFeature, calculatePinpointScore, calculateHaversineDistanceMeters } from './utils/geo';
+import { calculateShortestDistanceToFeature, calculatePinpointScore } from './utils/geo';
 import { applyHintCeiling, applyHintCeilingToAccuracy } from './mapRecall/hintCost';
 import { reverseGeocodeLocation, fetchContainingAdministrativeAreas, geocodeLocationSearch } from './utils/osm';
-import { fetchHintReferences, fetchQuizAreas, fetchQuizFeatures } from './dataSources/featureProvider';
+import { fetchQuizAreas, fetchQuizFeatures } from './dataSources/featureProvider';
 import { sounds } from './utils/audio';
 import confetti from 'canvas-confetti';
 
@@ -38,13 +38,8 @@ import { MAP_DIFFICULTIES, placeCluesEnabled, type MapDifficulty } from './mapRe
 import { getFeatureKey } from './utils/featureIdentity';
 import { isAdjacent, planChain } from './mapRecall/questionPlan';
 import { buildRelationQuestion, RELATION_POINTS } from './mapRecall/relationQuestions';
-import { bonusPoints, pickBonusTarget } from './mapRecall/bonusPin';
-import { buildLocateHints } from './mapRecall/locateHints';
-import { amsterdamDay, completeDaily, currentStreak, doneToday, readDaily, selectDailyFive, writeDaily, type DailyRecord } from './mapRecall/dailyFive';
 import { seenBeforeLabel } from './mapRecall/progress';
 import { RelationQuestionOverlay } from './components/RelationQuestionOverlay';
-import { BonusPinPanel, type BonusPinState } from './components/BonusPinPanel';
-import { DailyFiveTile } from './components/DailyFiveTile';
 
 const SettingsModal = lazy(() => import('./components/SettingsModal').then(({ SettingsModal }) => ({ default: SettingsModal })));
 const DebugPlacesModal = lazy(() => import('./components/DebugPlacesModal').then(({ DebugPlacesModal }) => ({ default: DebugPlacesModal })));
@@ -124,11 +119,6 @@ export default function App() {
   useEffect(() => {
     try { localStorage.setItem('mapRecall.chainNearby.v1', chainNearby ? '1' : '0'); } catch { /* storage unavailable */ }
   }, [chainNearby]);
-  // Daily five (src/mapRecall/dailyFive.ts): the day being played, if this session is one.
-  const [dailyDay, setDailyDay] = useState<string | null>(null);
-  const pendingDailyRef = useRef<string | null>(null);
-  const [dailyRecord, setDailyRecord] = useState<DailyRecord>(() => readDaily(typeof localStorage === 'undefined' ? null : localStorage));
-  const today = amsterdamDay();
   // Config state - Label-less base map by default
   const initialCityId = requestedCityId === 'my_location' && !hasUsableBookmarkedLocation
     ? 'amsterdam'
@@ -201,8 +191,6 @@ export default function App() {
     setIsRoundComplete(false);
     setWasRoundSkipped(false);
     setIsGameOver(false);
-    setDailyDay(null);
-    pendingDailyRef.current = null;
   }, [currentCityId]);
 
   // Keep the complete quiz setup bookmarkable without polluting browser history
@@ -377,18 +365,13 @@ export default function App() {
     let pool = importantWatersOnly ? focusImportantWaters(filteredCityFeatures) : filteredCityFeatures;
     const now = Date.now();
     const chain = (selected: StreetFeature[]) => chainNearby ? planChain(selected, { states: reviewStates, mode: gameMode, now }) : selected;
-    if (dailyDay) {
-      // Today's five near home, or near the centre without one; the same five all day.
-      const origin: [number, number] = sharedHome ? [sharedHome.lat, sharedHome.lng] : currentCity.center;
-      return chain(selectDailyFive(pool, origin, dailyDay));
-    }
     if (nearHome && sharedHome) {
       const learned = new Set(reviewStates.filter(state => state.mode === gameMode).map(state => state.featureKey));
       const scoped = scopeToHome(pool, sharedHome, learned, Math.max(roundsPerGame * 2, 10)).features;
       if (scoped.length) pool = scoped;
     }
     return chain(selectReviewFeatures(pool, reviewStates, gameMode, Math.min(roundsPerGame, pool.length), now, gameSeed));
-  }, [filteredCityFeatures, importantWatersOnly, reviewStates, gameMode, roundsPerGame, gameSeed, nearHome, sharedHome, chainNearby, dailyDay, currentCity.center]);
+  }, [filteredCityFeatures, importantWatersOnly, reviewStates, gameMode, roundsPerGame, gameSeed, nearHome, sharedHome, chainNearby, currentCity.center]);
 
   const currentFeature: StreetFeature | null =
     featuresForGame[currentRoundIndex] || featuresForGame[0] || null;
@@ -544,7 +527,7 @@ export default function App() {
 
   // Total score
   const totalScore = useMemo(() => {
-    return roundResults.reduce((acc, r) => acc + r.pointsEarned + (r.bonusPoints ?? 0), 0);
+    return roundResults.reduce((acc, r) => acc + r.pointsEarned, 0);
   }, [roundResults]);
 
   const maxPossibleScore = featuresForGame.length * 5000;
@@ -555,9 +538,6 @@ export default function App() {
       if (newCityId) setCurrentCityId(newCityId);
       if (newMode) setGameMode(newMode);
       if (newCategory) setSelectedCategory(newCategory);
-      // A daily five starts through a category load, which resets here; any other reset ends it.
-      setDailyDay(pendingDailyRef.current);
-      pendingDailyRef.current = null;
       setGameSeed((prev) => prev + 1);
       setReviewStates(loadLocalReviewStates());
       setCurrentRoundIndex(0);
@@ -898,68 +878,10 @@ export default function App() {
     setIsRoundComplete(true);
   };
 
-  // Bonus pin after the reveal (src/mapRecall/bonusPin.ts): one nearby place, asked once the answer is on the map.
-  const [bonus, setBonus] = useState<BonusPinState | null>(null);
-  useEffect(() => {
-    setBonus(null);
-    if (!isRoundComplete || isGameOver || !currentFeature) return;
-    let cancelled = false;
-    const roundNumber = currentRoundIndex + 1;
-    fetchHintReferences(currentFeature.cityId, currentFeature.center)
-      .catch(() => [])
-      .then((references) => {
-        if (cancelled) return;
-        const hintNames = buildLocateHints(currentFeature, references).map((hint) => hint.reference);
-        // Places drawn as labelled clues (before an area is named, or around it after the reveal) are not worth asking.
-        const shownBeforeAnswer = placeCluesEnabled(difficulty) ? (currentFeature.notablePlaces ?? []).map((place) => place.name) : [];
-        const target = pickBonusTarget({ feature: currentFeature, references, hintNames, shownBeforeAnswer });
-        if (target) setBonus({ roundNumber, name: target.name, label: target.label, center: target.center, phase: 'offer' });
-      });
-    return () => { cancelled = true; };
-  }, [isRoundComplete, isGameOver, currentFeature, currentRoundIndex, difficulty]);
-  const bonusRef = useRef(bonus);
-  bonusRef.current = bonus;
-  const handleBonusClick = useCallback((latlng: [number, number]) => {
-    const current = bonusRef.current;
-    if (!current || current.phase !== 'active') return;
-    const distanceMeters = Math.round(calculateHaversineDistanceMeters(latlng, current.center));
-    const points = bonusPoints(distanceMeters);
-    // Counted in the total; never a review record (practice, not the question).
-    setRoundResults((results) => results.map((result) => result.roundNumber === current.roundNumber
-      ? { ...result, bonusPoints: points, bonus: { name: current.name, distanceMeters } }
-      : result));
-    if (points > 0) sounds.playSuccess(); else sounds.playMiss();
-    setBonus({ ...current, phase: 'done', guess: latlng, distanceMeters, points });
-  }, []);
-  const bonusPin = useMemo(
-    () => bonus && (bonus.phase === 'active' || bonus.phase === 'done') ? { name: bonus.name, center: bonus.center, guess: bonus.guess ?? null } : null,
-    [bonus],
-  );
-  const bonusSlot = (
-    <BonusPinPanel
-      bonus={bonus}
-      unit={unit}
-      onStart={() => setBonus((current) => current && current.phase === 'offer' ? { ...current, phase: 'active' } : current)}
-      onSkip={() => setBonus((current) => current ? { ...current, phase: 'skipped' } : current)}
-    />
-  );
-
-  // Daily five: today's tile on the start rail.
-  const startDailyFive = () => {
-    pendingDailyRef.current = today;
-    if (selectedCategory === 'all') handleRefetchCategory('all', false);
-    else handleSelectCategory('all');
-  };
-
   // Next round or complete game
   const handleNextRound = () => {
     if (currentRoundIndex + 1 >= featuresForGame.length) {
       // Game Over
-      if (dailyDay) {
-        const record = completeDaily(readDaily(localStorage), dailyDay);
-        writeDaily(localStorage, record);
-        setDailyRecord(record);
-      }
       setIsGameOver(true);
     } else {
       setCurrentRoundIndex((prev) => prev + 1);
@@ -1056,8 +978,6 @@ export default function App() {
           blindMapMode={blindMapMode}
           showPlaceClues={placeCluesEnabled(difficulty)}
           relationPair={!isGameOver ? relationPair : null}
-          bonusPin={bonusPin}
-          onBonusClick={handleBonusClick}
           tileStyle={tileStyle}
           allRoundResults={roundResults}
           isGameOver={isGameOver}
@@ -1124,13 +1044,6 @@ export default function App() {
               <div className="space-y-2">
                 <p className="enamel-brand text-sm text-white tracking-wide">Start with</p>
                 <div className="grid grid-cols-1 gap-2.5">
-                  <DailyFiveTile
-                    today={today}
-                    streak={currentStreak(dailyRecord, today)}
-                    done={doneToday(dailyRecord, today)}
-                    nearHome={!!sharedHome}
-                    onStart={startDailyFive}
-                  />
                   {FEATURE_CATEGORIES.filter((c) => c.id === 'water' || c.id === 'streets' || c.id === 'neighborhoods').map((category) => (
                     <button
                       key={category.id}
@@ -1254,7 +1167,6 @@ export default function App() {
             searchCenter={searchBoundary?.center || currentCity.center}
             seenBefore={seenBefore}
             nextNearby={nextNearby}
-            bonusSlot={bonusSlot}
           />
         )}
 
@@ -1275,7 +1187,6 @@ export default function App() {
             unit={unit}
             seenBefore={seenBefore}
             nextNearby={nextNearby}
-            bonusSlot={bonusSlot}
           />
         )}
         {!isGameOver && gameMode === 'guess_name' && currentFeature && !relationQuestion && (
@@ -1293,7 +1204,6 @@ export default function App() {
             factSeed={gameSeed}
             seenBefore={seenBefore}
             nextNearby={nextNearby}
-            bonusSlot={bonusSlot}
           />
         )}
 

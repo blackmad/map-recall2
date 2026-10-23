@@ -20,8 +20,6 @@ interface GuessNameModeOverlayProps {
   seenBefore?: string | null;
   /** The next question is adjacent to this answer (src/mapRecall/questionPlan.ts); only said after the reveal. */
   nextNearby?: boolean;
-  /** The bonus pin row (BonusPinPanel), shown on the answer card. */
-  bonusSlot?: React.ReactNode;
 }
 
 // One chip style for every kind; see PinpointModeOverlay for why.
@@ -64,7 +62,6 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
   factSeed,
   seenBefore,
   nextNearby,
-  bonusSlot,
 }) => {
   // Generate randomized 4 options: 1 correct + 3 distractors
   const options = useMemo(() => {
@@ -187,7 +184,6 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                   <p className="text-xs sm:text-sm text-white/80 font-bold truncate">
                     It's <span className="text-white underline">{currentFeature.name}</span>
                   </p>
-                  {bonusSlot}
                 </div>
               </div>
 

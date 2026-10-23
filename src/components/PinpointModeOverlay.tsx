@@ -36,8 +36,6 @@ interface PinpointModeOverlayProps {
   seenBefore?: string | null;
   /** The next question is adjacent to this answer (src/mapRecall/questionPlan.ts); only said after the reveal. */
   nextNearby?: boolean;
-  /** The bonus pin row (BonusPinPanel), shown on the answer card. */
-  bonusSlot?: React.ReactNode;
 }
 
 // One chip style for every kind. Per-type pastel tints (sky-700 on cobalt,
@@ -86,7 +84,6 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   searchCenter,
   seenBefore,
   nextNearby,
-  bonusSlot,
 }) => {
   const [showClues, setShowClues] = useState(false);
   const [revealedClueIndex, setRevealedClueIndex] = useState(1);
@@ -141,7 +138,6 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
     accuracyPercentage: applyHintCeilingToAccuracy(rawScore.accuracyPercentage, hintsUsed),
   };
   const capApplied = !!rawScore && !!scoreResult && !wasSkipped && scoreResult.score < rawScore.score;
-  const hasPin = !!userPinnedLocation && !wasSkipped;
 
   usePreparePostcard(currentFeature);
 
@@ -347,7 +343,6 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                         {describeHintCap(hintsUsed)}
                       </p>
                     )}
-                    {bonusSlot}
                   </div>
                 </div>
 
@@ -370,9 +365,6 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                 </div>
               </div>
 
-              {hasPin && (
-                <p className="text-xs text-white/60 italic hidden sm:block">Dashed line shows distance on map</p>
-              )}
               <AnswerDetails feature={currentFeature} factSeed={factSeed} roundIndex={roundNumber - 1} />
             </div>
           )

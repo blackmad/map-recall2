@@ -1239,14 +1239,10 @@ initials ("A.J. Ernststraat").
 
 **Map Recall quiz pass, wave 3 (review 2026-10-13; waves 1 and 2 shipped,
 see HISTORY).** Still open, in order:
-- *Question forms:* the daily five plays in the current mode, not a mix of
-  Pinpoint and Guess Name; a chains toggle in the settings modal (today URL
+- *Question forms:* a chains toggle in the settings modal (today URL
   `chain=off` or localStorage `mapRecall.chainNearby.v1`); the relation form
   covers 64 of 177 obscure Amsterdam streets (the rest have no distractor
-  250 m clear on an axis; the buurt form or four names stand in); the CARTO
-  label tiles stay visible while the bonus offer shows, so a square or
-  landmark answer can be on the map before the player taps Bonus (hidden
-  only once the tap is awaited); the bonus line wraps to two lines on phones.
+  250 m clear on an axis; the buurt form or four names stand in).
 - *Desktop dock:* the game-over map review is not docked (the summary modal
   hides in review mode, so nothing covers the map; docking it needs the
   header offset handled); the "Quiz started · Back to start" pill is centred

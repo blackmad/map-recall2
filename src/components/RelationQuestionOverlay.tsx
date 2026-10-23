@@ -22,8 +22,6 @@ interface RelationQuestionOverlayProps {
   unit: DistanceUnit;
   seenBefore?: string | null;
   nextNearby?: boolean;
-  /** The bonus pin row (BonusPinPanel), shown on the answer card. */
-  bonusSlot?: React.ReactNode;
 }
 
 /** Why the answer is right, in one line: "Chris Lebeaustraat is 680 m further west." */
@@ -45,7 +43,7 @@ function explanation(question: RelationQuestion, unit: DistanceUnit): string {
  */
 export const RelationQuestionOverlay: React.FC<RelationQuestionOverlayProps> = ({
   question, selectedName, wasSkipped, isRoundComplete, onSelect, onNoIdea, onNextRound, isLastRound,
-  roundNumber, totalRounds, factSeed, unit, seenBefore, nextNearby, bonusSlot,
+  roundNumber, totalRounds, factSeed, unit, seenBefore, nextNearby,
 }) => {
   const isCorrect = selectedName === question.answer;
   usePreparePostcard(question.target);
@@ -112,7 +110,6 @@ export const RelationQuestionOverlay: React.FC<RelationQuestionOverlayProps> = (
                     {wasSkipped ? 'Skipped' : isCorrect ? 'Correct' : 'Not quite'}
                   </h2>
                   <p data-testid="relation-explanation" className="text-xs sm:text-sm text-white/80 font-semibold">{explanation(question, unit)}</p>
-                  {bonusSlot}
                 </div>
               </div>
               <div className="flex items-center gap-3 flex-shrink-0">

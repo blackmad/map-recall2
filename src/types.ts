@@ -260,10 +260,6 @@ export interface RoundResult {
   hintsUsed?: number; // hints revealed this round (caps the score and the review rating)
   /** How a Guess Name round asked: four names (default) or a two-place relation (src/mapRecall/relationQuestions.ts). */
   questionForm?: 'choices' | 'relation';
-  /** Points from the bonus pin after the reveal (src/mapRecall/bonusPin.ts); counted in the total, never reviewed. */
-  bonusPoints?: number;
-  /** The bonus landmark and how far the bonus pin was from it. */
-  bonus?: { name: string; distanceMeters: number };
 }
 
 export interface GameState {

@@ -199,15 +199,18 @@ const QUIZ_SUBJECTS = {
 // the city to read as a city; not enough to lose the plan-view legibility the
 // map quiz depends on.
 const TOPDOWN_TILT_DEGREES = 14;
-// Chase stays high and readable; cockpit drops in close over the bumper so the
-// two 3D modes no longer share nearly the same frustum.
+// Chase follows low behind the vehicle; cockpit drops in close over the bumper
+// so the two 3D modes no longer share nearly the same frustum.
 // Chase was reading as a distant aerial — bump zoom so the vehicle fills the
 // frame. Cockpit lookahead is a soft lead ahead of the bumper, not a far shove.
 // 2026-10-01 (user): "chase camera is a little too close, follow cam a little
 // too far, both are slightly too high angle" — the follow cam being Chase and
 // the close one Cockpit. Chase comes in (zoom 0.55 -> 0.7) and lowers
 // (42° -> 48°); Cockpit steps back (1.65 -> 1.45) and lowers (82° -> 84°).
-const CHASE_PITCH_DEGREES = 48;
+// 2026-10-23 (user): "make the angle of chase lower; whatever the minimum in
+// the game is now". 48° is the base and the live tilt slider drops to -36°, so
+// the lowest reachable chase pitch was 12°: Chase now starts there.
+const CHASE_PITCH_DEGREES = 12;
 const COCKPIT_PITCH_DEGREES = 84;
 const CHASE_ZOOM_OFFSET = 0.7;
 const COCKPIT_ZOOM_OFFSET = 1.45;

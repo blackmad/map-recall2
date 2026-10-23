@@ -412,31 +412,11 @@ input {
   main:has([data-quiz-dock]) #map-locate-me-btn { right: calc(26rem + 0.625rem); }
 }
 
-/* ---- Question forms (wave 2, 2026-10-13): seen-before chip, bonus pin, relation choices, daily tile. ---- */
+/* ---- Question forms (wave 2, 2026-10-13): seen-before chip, relation choices. ---- */
 .qf-seen-chip {
   display: inline-flex; align-items: center; gap: 4px; padding: 1px 7px; border-radius: 999px;
   border: 1px solid rgb(138 74 24 / 0.28); background: rgb(180 104 44 / 0.08);
   color: #6b4a2c; font-size: 11px; font-weight: 600; line-height: 1.5; white-space: nowrap;
 }
 .qf-seen-chip.is-missed { border-color: rgb(168 50 31 / 0.35); background: rgb(168 50 31 / 0.07); color: #8c2d1c; }
-/* While the bonus waits for its tap, the reveal's place-name tiles would answer it. */
-.qf-bonus-armed .reveal-labels { visibility: hidden; }
-.qf-bonus-armed.leaflet-container,
-.qf-bonus-armed.leaflet-container .leaflet-interactive { cursor: crosshair; }
-.qf-bonus-guess {
-  position: absolute; left: 0; top: 0; width: 16px; height: 16px; transform: translate(-50%, -50%);
-  border: 2.5px solid #fff; border-radius: 999px; background: #c75f43; box-shadow: 0 1px 4px rgb(0 0 0 / 0.45);
-}
-.qf-bonus-line {
-  display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 10px; row-gap: 2px; margin-top: 3px;
-  font-size: 12px; line-height: 1.35;
-}
-.qf-bonus-start {
-  text-align: left; color: var(--color-white); font-weight: 600;
-  text-decoration: underline dotted rgb(138 74 24 / 0.6); text-underline-offset: 3px;
-}
-.qf-bonus-start:hover { text-decoration-style: solid; }
-.qf-bonus-skip { font-weight: 600; }
 .qf-relation-choice { min-height: 44px; }
-.qf-daily-tile { border-color: rgb(138 74 24 / 0.45); }
-.qf-daily-tile[aria-disabled='true'] { cursor: default; opacity: 0.85; }

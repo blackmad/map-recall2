@@ -44,9 +44,6 @@ interface MapComponentProps {
   showLocate?: boolean;
   /** Question forms (wave 2): a relation question's second candidate, drawn like the highlight and unnamed until the answer. */
   relationPair?: { other: StreetFeature } | null;
-  /** Question forms (wave 2): the bonus pin after the reveal; `guess` is null while waiting for the tap. */
-  bonusPin?: { name: string; center: [number, number]; guess: [number, number] | null } | null;
-  onBonusClick?: (latlng: [number, number]) => void;
 }
 
 function getFeatureColors(type: string) {
@@ -328,8 +325,6 @@ export const MapComponent: React.FC<MapComponentProps> = ({
   showSearchBoundary,
   showLocate = true,
   relationPair,
-  bonusPin,
-  onBonusClick,
 }) => {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
@@ -512,21 +507,19 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     return () => { cancelAnimationFrame(frame); map.off('zoomend', schedule); };
   }, [currentFeature, gameMode, isRoundComplete, isGameOver, showPlaceClues]);
 
-  // Question forms (wave-2 lane, 2026-10-13), self-contained: its own layer group and click handler.
-  // A relation question's second candidate is drawn exactly like the Guess Name highlight (in the
-  // target's colours, so the style never tells them apart) and named only after the answer; the
-  // bonus pin after the reveal takes one tap, then shows the pin, the landmark's true dot and the
-  // gap. Both re-fit, after the reveal effect's own fit, to include everything they drew.
+  // Question forms (wave-2 lane, 2026-10-13), self-contained: its own layer group. A relation
+  // question's second candidate is drawn exactly like the Guess Name highlight (in the target's
+  // colours, so the style never tells them apart) and named only after the answer; it re-fits, after
+  // the reveal effect's own fit, to include the extra candidate.
   const questionFormsRef = useRef<L.LayerGroup | null>(null);
   useEffect(() => {
     const map = mapInstanceRef.current;
     if (!map) return;
     questionFormsRef.current?.remove();
     questionFormsRef.current = null;
-    if (isGameOver || !currentFeature || (!relationPair && !bonusPin)) return;
+    if (isGameOver || !currentFeature || !relationPair) return;
     const group = L.layerGroup().addTo(map);
     questionFormsRef.current = group;
-    const cleanups: Array<() => void> = [];
     const extend: L.LatLngBounds[] = [];
 
     if (relationPair) {
@@ -560,26 +553,6 @@ export const MapComponent: React.FC<MapComponentProps> = ({
       }
     }
 
-    if (bonusPin && isRoundComplete) {
-      if (!bonusPin.guess) {
-        const handleBonusClick = (event: L.LeafletMouseEvent) => onBonusClick?.([event.latlng.lat, event.latlng.lng]);
-        map.on('click', handleBonusClick);
-        map.getContainer().classList.add('qf-bonus-armed');
-        cleanups.push(() => { map.off('click', handleBonusClick); map.getContainer().classList.remove('qf-bonus-armed'); });
-      } else {
-        if (L.latLng(bonusPin.guess).distanceTo(bonusPin.center) > 25) {
-          group.addLayer(L.polyline([bonusPin.guess, bonusPin.center], { color: '#c4a35a', weight: 3, dashArray: '6, 8', opacity: 0.9, interactive: false }));
-        }
-        group.addLayer(L.marker(bonusPin.guess, {
-          icon: L.divIcon({ className: 'custom-map-icon', html: '<div class="qf-bonus-guess"></div>', iconSize: [0, 0], iconAnchor: [0, 0] }),
-          interactive: false,
-        }));
-        group.addLayer(L.circleMarker(bonusPin.center, { radius: 7, color: '#fff', weight: 2.5, fillColor: '#8a4a18', fillOpacity: 1, className: 'qf-bonus-target' })
-          .bindTooltip(escapeHtml(bonusPin.name), { permanent: true, direction: 'top', offset: [0, -8], className: 'notable-place-label qf-bonus-label' }));
-        extend.push(L.latLngBounds([bonusPin.guess, bonusPin.center]));
-      }
-    }
-
     // After the reveal effect's fit (it runs later in this commit): fit what this effect added too.
     let frame = 0;
     if (extend.length) {
@@ -595,11 +568,10 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     }
     return () => {
       cancelAnimationFrame(frame);
-      cleanups.forEach((cleanup) => cleanup());
       group.remove();
       if (questionFormsRef.current === group) questionFormsRef.current = null;
     };
-  }, [currentFeature, relationPair, bonusPin, onBonusClick, isRoundComplete, isGameOver]);
+  }, [currentFeature, relationPair, isRoundComplete, isGameOver]);
 
   // Both location-based modes use a dropped pin. Keep this list in sync with
   // the crosshair cursor below so a map that looks clickable is clickable.

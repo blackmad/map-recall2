@@ -80,14 +80,16 @@ const PostcardStrip: React.FC<{ name: string; photo?: string; onOpen: () => void
 };
 
 /**
- * What the answer teaches, folded so the map keeps the answer in view: for a neighbourhood its
- * postcard (card width from `sm` on a tall enough window, a one-line strip on phones and short windows), then two lines of the
- * opening text and "More" for the full card with history, places and Street View. Folded again
- * on every new round.
+ * What the answer teaches, folded so a bottom card keeps the map's answer in view: for a
+ * neighbourhood its postcard (card width from `sm` on a tall enough window, a one-line strip on
+ * phones and short windows), then two lines of the opening text and "More" for the full card with
+ * history, places and Street View. In the dock the map sits beside it, so it opens at once. Folded
+ * again on every new round.
  */
 export const AnswerDetails: React.FC<{ feature: StreetFeature; factSeed: number; roundIndex: number }> = ({ feature, factSeed, roundIndex }) => {
-  const [expanded, setExpanded] = useState(false);
-  useEffect(() => setExpanded(false), [feature.id]);
+  // `null` follows the layout; only an explicit More/Less overrides it.
+  const [expanded, setExpanded] = useState<boolean | null>(null);
+  useEffect(() => setExpanded(null), [feature.id]);
   const foldRef = useRef<HTMLDivElement>(null);
   const { wide, docked } = useWideCard(foldRef);
   const hints = useAnswerHints(feature);
@@ -98,7 +100,7 @@ export const AnswerDetails: React.FC<{ feature: StreetFeature; factSeed: number;
   const isNeighborhood = feature.type === 'neighborhood';
   if (!teaser && !thumbnail && !isNeighborhood) return <LookAroundLink feature={feature} />;
 
-  if (expanded) return <div className="space-y-2" data-testid="answer-details" data-expanded="yes">
+  if (expanded ?? docked) return <div ref={foldRef} className="space-y-2" data-testid="answer-details" data-expanded="yes">
     <button
       type="button"
       onClick={() => setExpanded(false)}
