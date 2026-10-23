@@ -106,6 +106,14 @@ MB after a long Android ride, never measured before), a smaller resident
 own-ground ring on phones or lazy cell builds on frustum entry, Uint16 field
 tiles (24 → 12 MB).
 
+Worker heaps at ride +10 s (iPhone profile, after GC): MapLibre workers
+44.7 + 46.3 + 5.4 MB (parsed vector tiles, scales with the tile cache),
+own-ground worker #1 41.3 MB plus 29.2 MB ArrayBuffer backing (its cell
+cache), own-ground worker #2 0.5 MB (idle), three-buildings worker 8.5 MB;
+147 MB in all (244 MB after a long Android ride). No cheap lever: the next
+lane snapshots own-ground worker #1 (bound the cell cache) and asks whether
+the second own-ground worker earns its fixed cost on phones.
+
 ## Checks
 
 `npm run lint`; `PW_PORT=<port> npx playwright test tests/e2e/phone-memory.spec.ts tests/e2e/weak-gpu-perf.spec.ts --project=iphone` alone; desktop
