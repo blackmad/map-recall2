@@ -43,6 +43,8 @@ const corrections = JSON.parse(await readFile(correctionsFile, 'utf8')) as {
   source: string;
   withheldNl: Record<string, { handling?: string }>;
   corrections?: Record<string, { replace?: Array<[string, string]>; note?: string }>;
+  /** A whole Dutch sentence composed from another register record, with its source. */
+  nlOverrides?: Record<string, { nl: string; source: string }>;
 };
 /**
  * Targeted Dutch fixes for names where the register's fault is a wrong token
@@ -51,9 +53,10 @@ const corrections = JSON.parse(await readFile(correctionsFile, 'utf8')) as {
  * changed under us and the build stops rather than shipping either version.
  */
 function applyDutchCorrections(name: string, dutch: string): string {
+  // The register writes "..", " ." and similar; a card prints one full stop.
+  let text = dutch.replace(/\s+\.\s*$/, '.').replace(/\.\.\s*$/, '.');
   const entry = corrections.corrections?.[name];
-  if (!entry?.replace?.length) return dutch;
-  let text = dutch;
+  if (!entry?.replace?.length) return text;
   for (const [find, replacement] of entry.replace) {
     if (!text.includes(find)) {
       throw new Error(`${name}: correction target not found in the register text: ${JSON.stringify(find)}`);
@@ -88,9 +91,10 @@ for (const origin of published.origins) {
     withheld += 1;
     continue;
   }
+  const override = corrections.nlOverrides?.[origin.name];
   const cached = dutchByName.get(origin.name);
-  if (!cached) { missing.push(origin.name); continue; }
-  const dutch = applyDutchCorrections(origin.name, cached);
+  if (!override && !cached) { missing.push(origin.name); continue; }
+  const dutch = override ? override.nl : applyDutchCorrections(origin.name, cached!);
   if (origin.nl === dutch) kept += 1;
   else added += 1;
   origin.nl = dutch;

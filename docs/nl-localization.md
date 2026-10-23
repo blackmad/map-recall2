@@ -50,7 +50,8 @@ The Dutch column of a card is never a machine translation of the English. It is
 used only when the data carries Dutch, and English is the fallback:
 
 - Street, water and bridge name origins: the BAG register's own sentence
-  (`nl` in `street-name-origins.json`, ~5,280 of 5,429 names).
+  (`nl` in `street-name-origins.json`, 5,381 of 5,429 names; 22 withheld as
+  documented register errors, 26 without a cached Dutch source).
 - Neighbourhood description, history, name origin and local fact: `nl` in
   `neighborhood-history.json`, from the Dutch article or the reviewed Dutch
   original.
@@ -68,7 +69,10 @@ mid-word, and factual mistakes. Dutch mode must not copy those.
   - `withheldNl`: names whose Dutch is not shown at all (the card falls back to
     the corrected English, and the source line says `— Engels`);
   - `corrections`: targeted Dutch replacements taken from the register's quoted
-    wording (e.g. a wrong date or name).
+    wording (e.g. a wrong date or name), and trailing-junk trims.
+  - `nlOverrides`: a whole Dutch sentence composed from another register record
+    (Vredenburgerbrug, Sint Antoniesbreestraat, Piet Meerburgbrug), each with its
+    source.
 - `npm run add:dutch-street-origins` re-joins the cache and applies both; a
   replacement that no longer matches the register text fails the run.
 - `npm run test:dutch-street-origins` fails if a name documented as an error is
@@ -85,8 +89,11 @@ commands. Do not hand-edit the published JSON.
   next content pass.
 - Quiz settings/danger modals, the debug places modal, the postcard export and
   the feedback launch button are still English.
-- Withheld register rows (120) could be rewritten in Dutch from their cited
-  sources instead of falling back; 28 names have no cached Dutch at all.
+- The 22 withheld rows are the sourced supplements (whose cited Dutch article
+  has only a one-line summary, so writing a Dutch card from it would be
+  invention), four register texts filed under the wrong name, and names that are
+  not in the extract. They keep the corrected English card; 26 names have no
+  cached Dutch at all.
 - The published `street-name-origins.json` is ~2.2 MB (was ~1.3 MB) because it
   now carries both languages. It is fetched after the ride starts; split it into
   a lazily loaded sidecar if that ever matters.

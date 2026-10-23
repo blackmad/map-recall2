@@ -34,7 +34,13 @@ async function documentedRows(): Promise<Array<{ name: string; handling: string 
     if (cells.every((cell) => /^[-: ]*$/.test(cell))) continue;
     if (cells[0] === 'Name') { inTable = true; continue; }
     if (!inTable) continue;
-    const names = cells[0].split(',').map((name) => name.trim()).filter(Boolean);
+    // "Bickersgracht (water)" and "Amelandstraat (shared with …)" name one
+    // record; the parenthetical says which, not another name.
+    const names = cells[0]
+      .replace(/\s*\([^)]*\)/g, '')
+      .split(',')
+      .map((name) => name.trim())
+      .filter(Boolean);
     for (const name of names) rows.push({ name, handling: cells[cells.length - 1]! });
   }
   return rows;
@@ -45,18 +51,25 @@ const rows = await documentedRows();
 const corrections = JSON.parse(await readFile(correctionsFile, 'utf8')) as {
   withheldNl: Record<string, { handling?: string }>;
   corrections?: Record<string, { replace?: Array<[string, string]> }>;
+  nlOverrides?: Record<string, { nl: string; source: string }>;
 };
 const expected = new Set(rows
   .filter((row) => !/^kept\b/i.test(row.handling) && !/nieuwendammerdijk/i.test(row.handling))
   .map((row) => row.name));
 
 for (const name of expected) {
-  if (!corrections.withheldNl[name] && !corrections.corrections?.[name]) {
+  if (!corrections.withheldNl[name] && !corrections.corrections?.[name] && !corrections.nlOverrides?.[name]) {
     problems.push(`documented error neither fixed nor withheld: ${name}`);
   }
 }
 for (const name of Object.keys(corrections.withheldNl)) {
   if (!expected.has(name)) problems.push(`withheld but no longer documented as an error: ${name}`);
+}
+// A whole-sentence override must name its source.
+for (const [name, entry] of Object.entries(corrections.nlOverrides ?? {})) {
+  if (!entry.nl?.trim()) problems.push(`empty Dutch override: ${name}`);
+  if (!/^https?:|^BAG /.test(entry.source || '')) problems.push(`override without a source: ${name}`);
+  if (corrections.withheldNl[name]) problems.push(`overridden and withheld: ${name}`);
 }
 // A name with a Dutch fix-up is not withheld, and its fix-ups must be non-empty.
 for (const [name, entry] of Object.entries(corrections.corrections ?? {})) {
