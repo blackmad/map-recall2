@@ -55,6 +55,18 @@ Integrator (this session, worktree `integrator-plan`), merged into `main`:
   never back); a frame error no longer freezes the ride (`game.js` `_loop`
   try/finally, rethrown once per message). Emulator pass numbers in the
   perf brief; the ride-start memory peak is the previous session's leaf lane.
+- **ferry-stuck** (opus, feedback 05a7d02a "got stuck here, didn't turn into a
+  ferry"): three faults at Centraal F3, any one enough. The GTFS shape's
+  berth manoeuvre ran 27 m along the pier, so the planned line led riders
+  to the pier tip; the 18 px junction grid folded the 3 m access into its
+  land node, so the crossing left from the quay 3.1 m from the stop, just
+  outside BOARD_RADIUS; and at the stop `getNearestRoad` returned the quay
+  cycleway, not the `ferry-access` segment. Fixes in `src/canalRecall/ferry`:
+  shape points within 90 px of either stop are dropped (`outsideBerths`),
+  the chain routes through a node at the stop, and boarding checks every
+  terminal access in reach (`ferryAccessesOf`). No tolerance changed. The
+  rider now boards 0.54 m from the stop; regression
+  `tests/e2e/ferry-centraal-pier.spec.ts` (De Ruijterkade → OBA Van der Pek).
 - **z-fighting on small models** (user, Anne Frank statue card): see the
   commit of the same name; the audit's warn now scales with the model.
 - **feedback queue**: eight open Firestore notes read with

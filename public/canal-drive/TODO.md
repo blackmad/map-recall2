@@ -44,9 +44,10 @@ Open, in order:
     pands still run along the street (interior ends); single-saddle turns
     go up to 14 m (`TURN_MAX_FRONT_M`, maybe split from ~10 m); the user
     looks at the Marnixstraat frame after deploy and closes the note.
-  - got stuck at the Centraal ferry pier, never boarded (05a7d02a, De
-    Ruijterkade → OBA Van der Pek): lane `lane/ferry-stuck-20261023` (opus),
-    Playwright regression first, fix in `src/canalRecall/ferry/`.
+  - got stuck at the Centraal ferry pier (05a7d02a): fixed 2026-10-23
+    (HISTORY; three faults, e2e `ferry-centraal-pier.spec.ts`). Open: the
+    iPhone project of the ferry specs was not run; the user rides it after
+    deploy and closes the note.
   - wiggly green patches on J.D. Meijerplein (53b04137) and the user's
     Spiegelgracht × Prinsengracht frame (one brown klinker mass, no kerb or
     sidewalk tone, red cycle fragments): added as spots to R0
