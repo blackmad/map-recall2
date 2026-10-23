@@ -68,7 +68,8 @@ jobs:
           VITE_RELEASE: ${{ github.sha }}
           VITE_APPCHECK_SITE_KEY: ${{ secrets.APPCHECK_SITE_KEY }}
       # Upload Vite source maps to Sentry, then delete them so they never deploy.
-      # Skipped until the Sentry auth token secret exists.
+      # Both upload steps are gated on the SENTRY_AUTH_TOKEN secret; with no
+      # token the maps are simply deleted and nothing symbolicates.
       - name: Upload source maps to Sentry
         if: env.SENTRY_AUTH_TOKEN != ''
         env:
@@ -78,8 +79,28 @@ jobs:
           # Map Quest is served from the /quiz/ build (dist-quiz).
           npx @sentry/cli sourcemaps inject dist-quiz
           npx @sentry/cli sourcemaps upload --release "$GITHUB_SHA" dist-quiz
-      # Hidden source maps are never served, uploaded or not.
-      - run: find dist dist-quiz -name '*.map' -delete
+      # Canal Recall is a static page outside Vite: its ride scripts are esbuild
+      # bundles under dist/canal-drive/js. The collector takes only the scripts
+      # index.html loads (plus the lazily loaded monitoring bundle); the gallery
+      # harnesses never initialise Sentry, so their maps would be dead weight.
+      # Library code also reports through the ride's own bundles, so one project
+      # covers the whole surface.
+      - name: Upload Canal Recall source maps to Sentry
+        if: env.SENTRY_AUTH_TOKEN != ''
+        env:
+          SENTRY_ORG: whizziwig
+          SENTRY_PROJECT: canal-recall
+        run: |
+          node scripts/sentry/collect-canal-bundles.mjs
+          npx @sentry/cli sourcemaps inject .tmp/sentry-canal-recall
+          npx @sentry/cli sourcemaps upload --release "$GITHUB_SHA" .tmp/sentry-canal-recall
+          # Serve exactly the debug-id-injected scripts the uploaded maps belong to.
+          cp -R .tmp/sentry-canal-recall/js/. dist/canal-drive/js/
+      # Hidden source maps are never served, uploaded or not. The esbuild ride
+      # bundles write external maps next to their output in public/, so those go
+      # too: they must not be assembled into a deploy by a later re-run either.
+      - run: find dist dist-quiz public/canal-drive/js -name '*.map' -delete
+      - run: rm -rf .tmp/sentry-canal-recall
       - run: node scripts/assemble-canalrecall-site.mjs
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e:smoke

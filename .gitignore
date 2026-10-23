@@ -8,6 +8,10 @@ storybook-static/
 .env.local
 .env.*.local
 
+# Hidden and external source maps are deploy-time artefacts for the Sentry
+# upload (scripts/sentry/collect-canal-bundles.mjs); never commit them.
+public/canal-drive/js/**/*.map
+
 # Generated from .env for the static Canal Recall page
 public/canal-drive/firebase-config.json
 public/canal-drive/google-tiles-config.json

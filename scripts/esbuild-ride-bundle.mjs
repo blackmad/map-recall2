@@ -40,6 +40,9 @@ const result = await build({
   bundle: true,
   format: 'iife',
   minify: flags.includes('--minify'),
+  // External maps (no sourceMappingURL comment) for the deploy-time Sentry
+  // upload; the workflow deletes them before the site is assembled.
+  sourcemap: 'external',
   globalName,
   plugins: [sharedManualModels],
   logLevel: 'info',

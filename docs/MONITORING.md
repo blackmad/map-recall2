@@ -30,10 +30,10 @@ npx sentry@latest project view whizziwig/map-quest
 | --- | --- | --- |
 | `SENTRY_DSN` | `canal-recall` DSN | Canal Recall's runtime config |
 | `SENTRY_DSN_MAP_QUEST` | `map-quest` DSN | `VITE_SENTRY_DSN` (Map Quest) |
-| `SENTRY_AUTH_TOKEN` | org auth token (Settings → Auth Tokens, scope `project:releases`) | Map Quest source-map upload; gates the upload step |
+| `SENTRY_AUTH_TOKEN` | org auth token (Settings → Auth Tokens, scope `project:releases`) | source-map uploads for both projects; gates both upload steps |
 
-The org slug (`whizziwig`) and upload project (`map-quest`) are written in the
-workflow; they are not secrets.
+The org slug (`whizziwig`) and upload projects (`map-quest`, `canal-recall`)
+are written in the workflow; they are not secrets.
 
 The deploy workflow maps `GITHUB_SHA` to `VITE_RELEASE` and to the release used
 by `npx @sentry/cli sourcemaps upload`, so every deployed revision gets its own
@@ -107,6 +107,22 @@ The debug token is never read in production builds.
   has empty values, so nothing activates without keys. `index.html` loads
   `runtime-config.js` then `monitoring.bundle.js` (built by
   `npm run build:monitoring`) at the top of `<head>`.
-- **Source maps**: `vite.config.ts` sets `build.sourcemap: 'hidden'`. The deploy
-  workflow runs `@sentry/cli sourcemaps inject` + `upload`, then deletes every
-  `.map` from `dist/` so maps never deploy.
+- **Source maps**: `vite.config.ts` sets `build.sourcemap: 'hidden'` for Map
+  Quest, and every Canal Recall esbuild bundle is built with
+  `--sourcemap=external` / `sourcemap: 'external'`, so neither writes a
+  `sourceMappingURL` comment. The deploy workflow runs `@sentry/cli sourcemaps
+  inject` + `upload` for `dist-quiz` (`map-quest`) and for the collected ride
+  scripts (`canal-recall`), then deletes every `.map` from `dist/`, `dist-quiz/`
+  and `public/canal-drive/js/` so maps never deploy. See the next bullet.
+- **Canal Recall source maps**: `scripts/sentry/collect-canal-bundles.mjs` copies
+  the scripts `index.html` loads (scripts referenced with a `?v=` query
+  included), the lazily loaded `monitoring.bundle.js`, and any relative ESM
+  imports (split `recall-store` chunks) that have a `.map`, into
+  `.tmp/sentry-canal-recall/`. Checked-in scripts such as `game.js` ship readable
+  source and are left out. Only those files are uploaded: the gallery and
+  evaluation pages never initialise Sentry, so their maps would be uploaded on
+  every deploy for nothing. The step fails when a `*.bundle.js` the ride loads
+  has no map, which is how a build step that lost `--sourcemap=external` gets
+  caught. Upload injects debug IDs into the staged copies; the workflow then
+  copies them back over `dist/canal-drive/js/` so the deployed JavaScript is
+  byte-identical to what Sentry holds.

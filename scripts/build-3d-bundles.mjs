@@ -93,6 +93,9 @@ for (const target of selected) {
     format: target.format || 'iife',
     ...(target.globalName ? { globalName: target.globalName } : {}),
     minify: true,
+    // External maps (no sourceMappingURL comment) for the deploy-time Sentry
+    // upload; the workflow deletes them before the site is assembled.
+    sourcemap: 'external',
     plugins: [shareThree],
     logLevel: 'warning',
   });

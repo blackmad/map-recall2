@@ -763,6 +763,10 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   - Explorer looks: Rivierenbuurt/Spaarndammer/Indische types lack kit
     thumbs (rerun `scripts/coverage/build-look-thumbs.ts`); design kit keys
     are thin; rerun `build:explorer-looks` after coverage/chunk/index regen.
+  - Sentry symbolication for the ride is wired but unverified end-to-end
+    (2026-10-23): the next error after a deploy should show TypeScript frames
+    for `js/*.bundle.js` in the `canal-recall` project's release for the
+    deployed SHA. Check it, then drop this item.
   - **Owner setup (not code):** (1) `bash scripts/setup-sentry.sh` → secrets
     SENTRY_DSN, SENTRY_DSN_MAP_QUEST, SENTRY_AUTH_TOKEN; (2) reCAPTCHA
     Enterprise key (`gcloud recaptcha keys create …`, docs/MONITORING.md) →

@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## The ride's errors finally point at TypeScript (2026-10-23)
+
+Map Quest had Sentry source maps since the monitoring work; the ride did not.
+Its scripts are esbuild IIFE bundles in `public/canal-drive/js/`, built with
+`--minify` and no `--sourcemap`, and the deploy uploaded only `dist-quiz`. Every
+error from rideamsterdam.nl/ride arrived as minified frames with no artifact in
+the `canal-recall` project, while `src/canalRecall/monitoring.ts` still tagged
+the release with the commit SHA — so releases looked connected and nothing
+symbolicated. Now every bundle that writes into `public/canal-drive/js/` builds
+with external maps (no `sourceMappingURL` comment, so nothing points at them),
+`scripts/sentry/collect-canal-bundles.mjs` stages the scripts `index.html`
+actually loads plus their maps, and the deploy injects debug IDs, uploads them
+to `canal-recall`, copies the injected scripts back over `dist/`, and deletes
+every `.map` before the site is assembled. The collector fails when a ride
+bundle has no map, so a new build step cannot quietly regress to minified
+frames. Only ride scripts are uploaded: the galleries never initialise
+monitoring, so their maps would be sent on every deploy for nothing. The four
+ride bundles that used to be built out of band — collection, tours, street
+overlay style, signature placement — are now part of `npm run build` too, so a
+deploy cannot ship an older copy of one of them without a map. (They rebuilt
+byte-identical to the committed files on 2026-10-23, so nothing served changed.)
+
 ## The square stops flickering green through its grass (2026-10-23)
 
 User: "what are these green patches and why are they wiggling?" — the mapped
