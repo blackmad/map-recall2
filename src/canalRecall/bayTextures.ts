@@ -550,3 +550,15 @@ export function bayTextures(v: BayVariant, brick: CanvasImageSource, look: Look)
   cache.set(key, out);
   return out;
 }
+
+/**
+ * Free every cached bay canvas once its pixels are copied into a texture array.
+ * The ride's building textures paint ~190 variants, two 520×310–340 canvases
+ * each: kept in the cache that was ~250 MB of 2D canvas backing store on a
+ * phone for pixels already on the GPU (memory-infra dump, 2026-10-23). A zero
+ * size releases the backing store even if something still holds the element.
+ */
+export function releaseBayTextures(): void {
+  for (const { colour, mask } of cache.values()) for (const canvas of [colour, mask]) { canvas.width = 0; canvas.height = 0; }
+  cache.clear();
+}
