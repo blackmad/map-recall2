@@ -71,18 +71,35 @@ Open, in order:
     either lift the near-band gate for small models or fix the gallery
     camera's near/far. A resting part's opposite-facing underside cannot show
     (its own top covers it), so that class is not gated.
-- **identity**: the 289 dominant rows are unnamed; `identify-dominant.ts`
-  not written.
+- **identity**: done 2026-10-23 (strict rule, 46 % of the top 250 named with
+  a URL, 100 queue rows named; the 70 % gate is not met). Open: review the
+  27 OSM objects shared by several pands (`identity.sharedWith`), the name
+  "A" on two rows, and whether address-only rows should get a POI card
+  without a name.
 - **bagtiles-default** (S1) → **recipe-tiles-default** (S2, needs the 5 cm
   width quantisation and the `kind: glb` conversion) → **citylook-relevel**
   (S3, user strip). None started.
 - **district-style** (B1), **buurt-designs** (B2: Tuindorp Oostzaan-Oost,
   Gein 3, Holendrecht-Oost, Blauwe Zand first), **buurt-autoplace** (B3).
-- **roads**: diagnose (R0) → gaps (R1: `ondersteunendwegdeel` and verhard
-  `onbegroeidterreindeel` never fetched) → lanes and paint (R2+R3: OSM cycle
-  ribbons, part-covered bands and the far ring still draw over the BGT
-  polygons; grey and red decided with the user on a strip).
-- **build-hash-skip**: `build-manual-landmarks` still rebuilds all 355.
+- **roads**: R0 done 2026-10-23 (HISTORY): R1 gaps is the largest cause at
+  all ten spots. R1 lane running (`lane/roads-gaps-20261023`, haiku). Next,
+  R2+R3 in one opus lane: De Clercqstraat's fallback band and red pieces,
+  the `cycleway=lane` ribbons, a less saturated klinker/brick tone measured
+  from the orthophoto medians (rijbaan klinker 143,137,133 vs today's
+  147,110,90), the Spiegelgracht red ring and zebra bits west of the
+  junction pinned as a spot; the user decides grey and red on the strip.
+  Also: the Dokwerker card shows while standing on the Rembrandtplein
+  (landmark placement, content lane).
+- **build-hash-skip**: done 2026-10-23 (3 s no-change run). Open: four
+  committed GLBs (compagnietheater, levend-paardenmuseum, mountain-network,
+  pathe-de-munt) are not reproducible from current source; 8 haparandaweg-*
+  ids are external to the driver; duplicate catalogue ids
+  (johnny-jordaan-groep ×6, theo-thijssen-standbeeld ×5,
+  carmiggelt-borstbeeld ×4, winkler-prins-monument ×3) rebuild on every
+  full run.
+- **perf-phones**: taken over 2026-10-23; brief
+  `docs/handoffs/lane-perf-phones-20261023.md`; the previous session runs
+  one read-only Android emulator ride and reports numbers.
 
 ---
 

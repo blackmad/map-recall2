@@ -1,5 +1,51 @@
 # Canal Recall — what is built
 
+## Night of 2026-10-23: lanes land, the feedback queue is routed, perf is folded in
+
+Integrator (this session, worktree `integrator-plan`), merged into `main`:
+- **identity** (haiku): `scripts/landmarks/identify-dominant.ts` names the top
+  600 dominant pands from the monument registers, OSM building objects
+  (way/relation URLs, `identity.sharedWith` when one footprint covers many
+  pands) and a Dutch Wikipedia geosearch for the rest; BAG verblijfsobjecten
+  give function and address. Strict rule: tenant names (Albert Heijn, Gall &
+  Gall) never name a block. Result: top 250 46 % named (monument 27, OSM 77,
+  Wikipedia 10), top 600 267 named, every name with a source URL; 100 factory
+  queue rows gained a name. The 70 % gate is not met under the strict rule
+  (the lax rule gave 82 % and was rejected).
+- **build-hash-skip** (haiku): `build-manual-landmarks` skips a model whose
+  source hash (`modelSourceHashes.json`), GLB and fingerprint all match.
+  Full run 624 s (358 built); no-change run 3 s (4 always-rebuilt, 354
+  skipped, 0 bytes changed); one-builder change 4 s. Found on the way: the
+  committed GLBs of compagnietheater, levend-paardenmuseum, mountain-network
+  and pathe-de-munt are not reproducible from current source (the skip trusts
+  the committed bytes); 8 haparandaweg-* ids have no in-driver builder and
+  are kept as external; four catalogue ids are duplicated in the driver loop.
+- **roads-diagnose** (opus, R0): `sourceTrace.ts` tags every ground triangle
+  with its builder (off by default, byte-identical test);
+  `scripts/own-ground/render-road-sources.ts` renders sources | 8 cm
+  orthophoto | chase frame per spot and a table; 11 `ROAD_SPOTS`. Verdict:
+  R1 (bare land within 6 m of a carriageway, 178–682 m² per 80 m view, 95 %
+  paved in the photo: `ondersteunendwegdeel` verges, islands, tree strips,
+  never fetched) is the largest cause at all ten measured spots; R2 is
+  concentrated at De Clercqstraat (a part-covered cycleway's fallback band
+  plus red pieces across the rijbaan, photo red on 3 %), elsewhere ~13 m² of
+  `cycleway=lane` ribbons the photo never shows red; R3 is zebras and stop
+  lines the photo does not show, about half in shaded Oud-West. The
+  Spiegelgracht "one brown mass": every voetpad already draws as pavement
+  with kerbs; the carriageway klinker (photo median RGB 143,137,133) and
+  brick palette are far redder than the photo, a tone fix for R3. The
+  Rembrandtplein green patches are real OSM lawn beds; 31 m² of OSM fill over
+  the BGT carriageway on Amstelstraat is the artefact (R1 culls it).
+- **z-fighting on small models** (user, Anne Frank statue card): see the
+  commit of the same name; the audit's warn now scales with the model.
+- **feedback queue**: eight open Firestore notes read with
+  `feedback:queue`, screenshots viewed, each routed to a lane and its status
+  set with the routing note (TODO, Programme section).
+- **perf lane taken over** from the standing perf session at the user's
+  request; its open items, probes and the Android emulator path are in
+  `docs/handoffs/lane-perf-phones-20261023.md`; that session runs one
+  read-only emulator ride and reports numbers here.
+
 ## Phone memory: −51 MB of heap and −65 MB of vertex arrays (2026-10-23)
 
 Follow-up to the landmark eviction, on the two biggest owners the phone

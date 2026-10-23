@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-23T21:22:48.722Z",
+ "generatedAt": "2026-10-23T20:36:20.484Z",
  "method": "factory-queue.ts: landmark-backlog pending building|review (by queueRank), then dominant-building-backlog by rideVisibility.score; pands drawn by covers.json, the ordinary catalogue, manualCatalogue suppress ids or building-type instances left out; authored recipes keep their house",
  "items": [
   {
@@ -820,7 +820,7 @@
   {
    "id": "0363100012165086",
    "pand": "0363100012165086",
-   "name": "Kalverpassage",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 1121536,
@@ -845,7 +845,7 @@
   {
    "id": "0363100012165488",
    "pand": "0363100012165488",
-   "name": "Hirschgebouw",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 1075478,
@@ -893,7 +893,7 @@
   {
    "id": "0363100012244160",
    "pand": "0363100012244160",
-   "name": "Atrium Parkeergarage",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 887928,
@@ -941,7 +941,7 @@
   {
    "id": "0363100012242951",
    "pand": "0363100012242951",
-   "name": "De Makroon",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 769592,
@@ -1014,7 +1014,7 @@
   {
    "id": "0363100012238702",
    "pand": "0363100012238702",
-   "name": "Y-Helling",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 682272,
@@ -1326,7 +1326,7 @@
   {
    "id": "0363100012240015",
    "pand": "0363100012240015",
-   "name": "AkzoNobel Center",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 472267,
@@ -1422,7 +1422,7 @@
   {
    "id": "0363100012239853",
    "pand": "0363100012239853",
-   "name": "Sint-Nicolaaslyceum",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 418806,
@@ -1494,7 +1494,7 @@
   {
    "id": "0363100012135250",
    "pand": "0363100012135250",
-   "name": "Byzantium",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 392579,
@@ -1638,7 +1638,7 @@
   {
    "id": "0363100012251533",
    "pand": "0363100012251533",
-   "name": "De Valerius",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 377313,
@@ -1662,7 +1662,7 @@
   {
    "id": "0363100012154874",
    "pand": "0363100012154874",
-   "name": "Het Sieraad",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 336694,
@@ -1803,7 +1803,7 @@
   {
    "id": "0363100012139498",
    "pand": "0363100012139498",
-   "name": "Pakhuis Australië",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 325532,
@@ -1827,7 +1827,7 @@
   {
    "id": "0363100012142095",
    "pand": "0363100012142095",
-   "name": "Loods 6",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 316120,
@@ -1899,7 +1899,7 @@
   {
    "id": "0363100012125840",
    "pand": "0363100012125840",
-   "name": "Forum",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 298673,
@@ -1923,7 +1923,7 @@
   {
    "id": "0363100012153698",
    "pand": "0363100012153698",
-   "name": "Gebouw Parnas",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 285371,
@@ -1971,7 +1971,7 @@
   {
    "id": "0363100012182840",
    "pand": "0363100012182840",
-   "name": "Sarphati Plaza",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 269136,
@@ -1995,7 +1995,7 @@
   {
    "id": "0363100012136232",
    "pand": "0363100012136232",
-   "name": "Hoofdgebouw",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 266579,
@@ -2019,7 +2019,7 @@
   {
    "id": "0363100012236735",
    "pand": "0363100012236735",
-   "name": "Autopon",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 261450,
@@ -2043,7 +2043,7 @@
   {
    "id": "0363100012165158",
    "pand": "0363100012165158",
-   "name": "KPN Teleport",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 249241,
@@ -2091,7 +2091,7 @@
   {
    "id": "0363100012239633",
    "pand": "0363100012239633",
-   "name": "The Edge",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 241007,
@@ -2115,7 +2115,7 @@
   {
    "id": "0363100012236656",
    "pand": "0363100012236656",
-   "name": "Strafgevangenis",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 237463,
@@ -2139,7 +2139,7 @@
   {
    "id": "0363100012080492",
    "pand": "0363100012080492",
-   "name": "Atlanta",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 234505,
@@ -2163,7 +2163,7 @@
   {
    "id": "0363100012165746",
    "pand": "0363100012165746",
-   "name": "Brand bij C&A",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 231267,
@@ -2187,7 +2187,7 @@
   {
    "id": "0363100012236811",
    "pand": "0363100012236811",
-   "name": "Byzantium (gebouw)",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 226165,
@@ -2307,7 +2307,7 @@
   {
    "id": "0363100012119827",
    "pand": "0363100012119827",
-   "name": "Tolhuis Paviljoen",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 215989,
@@ -2355,7 +2355,7 @@
   {
    "id": "0363100012165051",
    "pand": "0363100012165051",
-   "name": "Effectenbeurs",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 206441,
@@ -2379,7 +2379,7 @@
   {
    "id": "0363100012148632",
    "pand": "0363100012148632",
-   "name": "Apollo",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 206242,
@@ -2475,7 +2475,7 @@
   {
    "id": "0363100012078546",
    "pand": "0363100012078546",
-   "name": "Pieter Nieuwlandcollege",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 196009,
@@ -2595,7 +2595,7 @@
   {
    "id": "0363100012080770",
    "pand": "0363100012080770",
-   "name": "Burgerweeshuis",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 187237,
@@ -2619,7 +2619,7 @@
   {
    "id": "0363100012080490",
    "pand": "0363100012080490",
-   "name": "Olympic Amsterdam 1931",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 186874,
@@ -2691,7 +2691,7 @@
   {
    "id": "0363100012142901",
    "pand": "0363100012142901",
-   "name": "The Edge Olympic",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 179274,
@@ -2715,7 +2715,7 @@
   {
    "id": "0363100012080532",
    "pand": "0363100012080532",
-   "name": "Scala",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 176184,
@@ -2727,7 +2727,14 @@
     4.837974,
     52.377593
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-080532",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:29:39.490Z",
+   "notes": [
+    "2026-10-23T21:30 crops: 19 usable walls in 42 s"
+   ],
+   "updatedAt": "2026-10-23T21:30:21.352Z"
   },
   {
    "id": "0363100012254400",
@@ -2744,7 +2751,14 @@
     4.8329605,
     52.3506105
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-254400",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:30:21.353Z",
+   "notes": [
+    "2026-10-23T21:31 crops: 16 usable walls in 48 s"
+   ],
+   "updatedAt": "2026-10-23T21:31:09.467Z"
   },
   {
    "id": "0363100012069991",
@@ -2761,7 +2775,14 @@
     4.8724755,
     52.379549
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-069991",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:31:09.468Z",
+   "notes": [
+    "2026-10-23T21:31 crops: 6 usable walls in 15 s"
+   ],
+   "updatedAt": "2026-10-23T21:31:24.057Z"
   },
   {
    "id": "0363100100092333",
@@ -2778,12 +2799,19 @@
     4.9210095,
     52.3490885
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-092333",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:31:24.058Z",
+   "notes": [
+    "2026-10-23T21:31 crops: 7 usable walls in 25 s"
+   ],
+   "updatedAt": "2026-10-23T21:31:49.049Z"
   },
   {
    "id": "0363100012113136",
    "pand": "0363100012113136",
-   "name": "vm RK Technische School Dominicus Savius, nu Vliegbasis De Huygens",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 169335,
@@ -2795,12 +2823,16 @@
     4.835585999999999,
     52.3694975
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-113136",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:31:49.049Z",
+   "updatedAt": "2026-10-23T21:31:49.051Z"
   },
   {
    "id": "0363100012233585",
    "pand": "0363100012233585",
-   "name": "Graansilo Korthals Altes",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 166883,
@@ -2812,12 +2844,19 @@
     4.891170499999999,
     52.390919999999994
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-233585",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:31:49.052Z",
+   "notes": [
+    "2026-10-23T21:32 crops: 13 usable walls in 29 s"
+   ],
+   "updatedAt": "2026-10-23T21:32:18.165Z"
   },
   {
    "id": "0363100012093150",
    "pand": "0363100012093150",
-   "name": "Stellingwegflat",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 161901,
@@ -2829,7 +2868,14 @@
     4.894207,
     52.4170355
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-093150",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:32:18.165Z",
+   "notes": [
+    "2026-10-23T21:32 crops: 7 usable walls in 22 s"
+   ],
+   "updatedAt": "2026-10-23T21:32:40.096Z"
   },
   {
    "id": "0363100012253656",
@@ -2846,7 +2892,14 @@
     4.893369,
     52.3372285
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-253656",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:32:40.097Z",
+   "notes": [
+    "2026-10-23T21:33 crops: 7 usable walls in 21 s"
+   ],
+   "updatedAt": "2026-10-23T21:33:01.471Z"
   },
   {
    "id": "0363100012105724",
@@ -2868,7 +2921,7 @@
   {
    "id": "0363100012237537",
    "pand": "0363100012237537",
-   "name": "Opvang HVOQuerido Poeldijkstraat",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 156820,
@@ -2957,7 +3010,7 @@
   {
    "id": "0363100012247938",
    "pand": "0363100012247938",
-   "name": "The Fizz",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 126945,
@@ -2974,7 +3027,7 @@
   {
    "id": "0363100012246555",
    "pand": "0363100012246555",
-   "name": "Xavier",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 126922,
@@ -2991,7 +3044,7 @@
   {
    "id": "0363100012112179",
    "pand": "0363100012112179",
-   "name": "Winkelcentrum Plein '40-'45",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 125089,
@@ -3076,7 +3129,7 @@
   {
    "id": "0363100012061445",
    "pand": "0363100012061445",
-   "name": "Timmerwerkplaats NDSM werf",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 118283,
@@ -3093,7 +3146,7 @@
   {
    "id": "0363100012150568",
    "pand": "0363100012150568",
-   "name": "Ziekenhuis Amsterdam-Noord",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 117039,
@@ -3127,7 +3180,7 @@
   {
    "id": "0363100012249726",
    "pand": "0363100012249726",
-   "name": "Pathé Amsterdam Noord",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 114290,
@@ -3165,7 +3218,7 @@
   {
    "id": "0363100012254654",
    "pand": "0363100012254654",
-   "name": "Stepstone",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 107177,
@@ -3199,7 +3252,7 @@
   {
    "id": "0363100012116511",
    "pand": "0363100012116511",
-   "name": "De Voortuinen",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 106870,
@@ -3237,7 +3290,7 @@
   {
    "id": "0363100012179689",
    "pand": "0363100012179689",
-   "name": "Havengebouw",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 103191,
@@ -3288,7 +3341,7 @@
   {
    "id": "0363100012061212",
    "pand": "0363100012061212",
-   "name": "Crystal Court",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 98050,
@@ -3305,7 +3358,7 @@
   {
    "id": "0363100012237535",
    "pand": "0363100012237535",
-   "name": "New Kit",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 97706,
@@ -3322,7 +3375,7 @@
   {
    "id": "0363100012072084",
    "pand": "0363100012072084",
-   "name": "Queens Towers",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 94783,
@@ -3339,7 +3392,7 @@
   {
    "id": "0363100012070336",
    "pand": "0363100012070336",
-   "name": "Orly Plaza",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 93727,
@@ -3356,7 +3409,7 @@
   {
    "id": "0363100012216927",
    "pand": "0363100012216927",
-   "name": "Waternet",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 93377,
@@ -3373,7 +3426,7 @@
   {
    "id": "0363100012242874",
    "pand": "0363100012242874",
-   "name": "Ravel Residence",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 93335,
@@ -3390,7 +3443,7 @@
   {
    "id": "0363100012252015",
    "pand": "0363100012252015",
-   "name": "Westbeat",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 90732,
@@ -3526,7 +3579,7 @@
   {
    "id": "0363100012244546",
    "pand": "0363100012244546",
-   "name": "Intermezzo",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 79539,
@@ -3560,7 +3613,7 @@
   {
    "id": "0363100012240149",
    "pand": "0363100012240149",
-   "name": "AkzoNobel Center",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 77062,
@@ -3594,7 +3647,7 @@
   {
    "id": "0363100012137174",
    "pand": "0363100012137174",
-   "name": "Watertoren Entrepot-West",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 72784,
@@ -3628,7 +3681,7 @@
   {
    "id": "0363100012246893",
    "pand": "0363100012246893",
-   "name": "Little Manhattan",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 71309,
@@ -3645,7 +3698,7 @@
   {
    "id": "0363100012067741",
    "pand": "0363100012067741",
-   "name": "Medische Faculteit",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 70459,
@@ -3717,7 +3770,7 @@
   {
    "id": "0363100012106929",
    "pand": "0363100012106929",
-   "name": "Tramremise Lekstraat",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 67817,
@@ -3751,7 +3804,7 @@
   {
    "id": "0363100012237143",
    "pand": "0363100012237143",
-   "name": "Betonnen silo",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 66741,
@@ -3836,7 +3889,7 @@
   {
    "id": "0363100012249709",
    "pand": "0363100012249709",
-   "name": "Pulse",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 61474,
@@ -3853,7 +3906,7 @@
   {
    "id": "0363100012240148",
    "pand": "0363100012240148",
-   "name": "Lab O|2",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 60659,
@@ -3887,7 +3940,7 @@
   {
    "id": "0363100012243287",
    "pand": "0363100012243287",
-   "name": "Nieuw Universiteitsgebouw",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 56980,
@@ -3904,7 +3957,7 @@
   {
    "id": "0363100012144991",
    "pand": "0363100012144991",
-   "name": "Vm. school voor technisch onderwijs Hendrick de Keyser",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 56313,
@@ -3938,7 +3991,7 @@
   {
    "id": "0363100012250970",
    "pand": "0363100012250970",
-   "name": "Blend",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 55004,
@@ -4044,7 +4097,7 @@
   {
    "id": "0363100012253541",
    "pand": "0363100012253541",
-   "name": "Lycka",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 45680,
@@ -4061,7 +4114,7 @@
   {
    "id": "0363100012250971",
    "pand": "0363100012250971",
-   "name": "Pepper",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 45680,
@@ -4116,7 +4169,7 @@
   {
    "id": "0363100012252442",
    "pand": "0363100012252442",
-   "name": "Het Dok",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 44829,
@@ -4184,7 +4237,7 @@
   {
    "id": "0363100012080966",
    "pand": "0363100012080966",
-   "name": "Energiecentrum",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 43477,
@@ -4256,7 +4309,7 @@
   {
    "id": "0363100012238346",
    "pand": "0363100012238346",
-   "name": "Piri Reïs",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 40746,
@@ -4273,7 +4326,7 @@
   {
    "id": "0363100012133666",
    "pand": "0363100012133666",
-   "name": "Busgarage West",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 40011,
@@ -4290,7 +4343,7 @@
   {
    "id": "0363100012246472",
    "pand": "0363100012246472",
-   "name": "George",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 39363,
@@ -4307,7 +4360,7 @@
   {
    "id": "0363100012120246",
    "pand": "0363100012120246",
-   "name": "De Klokkenhof",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 38815,
@@ -4341,7 +4394,7 @@
   {
    "id": "0363100012250972",
    "pand": "0363100012250972",
-   "name": "Salt",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 38743,
@@ -4396,7 +4449,7 @@
   {
    "id": "0363100012242116",
    "pand": "0363100012242116",
-   "name": "900 Mahler",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 37640,
@@ -4447,7 +4500,7 @@
   {
    "id": "0363100012082192",
    "pand": "0363100012082192",
-   "name": "Flatgebouw Poeldijkstraat / Mr. August Povelhuis",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 34372,
@@ -4515,7 +4568,7 @@
   {
    "id": "0363100012123762",
    "pand": "0363100012123762",
-   "name": "Anadolubank Nederland N.V.",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 31935,
@@ -4600,7 +4653,7 @@
   {
    "id": "0363100012098805",
    "pand": "0363100012098805",
-   "name": "Triade",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 31013,
@@ -4753,7 +4806,7 @@
   {
    "id": "0363100012165818",
    "pand": "0363100012165818",
-   "name": "Energetica (museum)",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 28797,
@@ -4770,7 +4823,7 @@
   {
    "id": "0363100012239704",
    "pand": "0363100012239704",
-   "name": "De Wending",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 28761,
@@ -4787,7 +4840,7 @@
   {
    "id": "0363100012141601",
    "pand": "0363100012141601",
-   "name": "Koningshof",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 27554,
@@ -4923,7 +4976,7 @@
   {
    "id": "0363100012112409",
    "pand": "0363100012112409",
-   "name": "Vrije Universiteit Amsterdam",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 22863,
@@ -4940,7 +4993,7 @@
   {
    "id": "0363100012105061",
    "pand": "0363100012105061",
-   "name": "Galerijwoningen Voorburgstraat / Edith Steinhuis",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 22845,
@@ -4957,7 +5010,7 @@
   {
    "id": "0363100012114072",
    "pand": "0363100012114072",
-   "name": "Turmacgebouw",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 21737,
@@ -4991,7 +5044,7 @@
   {
    "id": "0363100012241772",
    "pand": "0363100012241772",
-   "name": "Q-Park Weesperplein",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 21224,
@@ -5008,7 +5061,7 @@
   {
    "id": "0363100012094874",
    "pand": "0363100012094874",
-   "name": "Vreugdehof",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 20763,
@@ -5025,7 +5078,7 @@
   {
    "id": "0363100012063603",
    "pand": "0363100012063603",
-   "name": "Ibis Amsterdam City West",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 20476,
@@ -5042,7 +5095,7 @@
   {
    "id": "0363100012252819",
    "pand": "0363100012252819",
-   "name": "De Admiraal",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 19860,
@@ -5076,7 +5129,7 @@
   {
    "id": "0363100012246469",
    "pand": "0363100012246469",
-   "name": "Nautique Living/Student Experience",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 18872,
@@ -5127,7 +5180,7 @@
   {
    "id": "0363100012169282",
    "pand": "0363100012169282",
-   "name": "Kalenderpanden",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 17245,
@@ -5263,7 +5316,7 @@
   {
    "id": "0363100012138900",
    "pand": "0363100012138900",
-   "name": "Coengebouw",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 14976,
@@ -5416,7 +5469,7 @@
   {
    "id": "0363100012165552",
    "pand": "0363100012165552",
-   "name": "B",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 12671,
@@ -5433,7 +5486,7 @@
   {
    "id": "0363100012072045",
    "pand": "0363100012072045",
-   "name": "Jaap Eden-hal",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 12043,
@@ -5501,7 +5554,7 @@
   {
    "id": "0363100012253362",
    "pand": "0363100012253362",
-   "name": "Vertical",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 11676,
@@ -5535,7 +5588,7 @@
   {
    "id": "0363100012077602",
    "pand": "0363100012077602",
-   "name": "Ringpark",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 10864,
@@ -5586,7 +5639,7 @@
   {
    "id": "0363100012112686",
    "pand": "0363100012112686",
-   "name": "UWV A",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 10071,
@@ -5671,7 +5724,7 @@
   {
    "id": "0363100012164353",
    "pand": "0363100012164353",
-   "name": "Remise Havenstraat",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 8610,
@@ -5807,7 +5860,7 @@
   {
    "id": "0363100012127007",
    "pand": "0363100012127007",
-   "name": "Wolkenkrabber",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 5618,
@@ -5977,7 +6030,7 @@
   {
    "id": "0363100012250984",
    "pand": "0363100012250984",
-   "name": "Marathontoren",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 2999,
@@ -5994,7 +6047,7 @@
   {
    "id": "0363100012081222",
    "pand": "0363100012081222",
-   "name": "Two Amsterdam",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 2995,
@@ -6096,7 +6149,7 @@
   {
    "id": "0363100012150639",
    "pand": "0363100012150639",
-   "name": "Milos",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 1239,
@@ -6147,7 +6200,7 @@
   {
    "id": "0363100012216977",
    "pand": "0363100012216977",
-   "name": "Watertoren Amstelveenseweg",
+   "name": null,
    "source": "dominant",
    "rideVisibility": {
     "score": 588,
