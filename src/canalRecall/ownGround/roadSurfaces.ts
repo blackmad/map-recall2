@@ -31,6 +31,10 @@ import { interiorPoint, SurfaceIndex, type SurfaceRaster } from './parks.js';
 import { bollards, LIFT, ROAD_MARK_LIFT } from './streets.js';
 import { KERB_LOW_CLASSES, type RoadCell, type RoadClass, type RoadMesh, type RoadSurface } from './roadCells.js';
 import { GroundSurface, type HeightFn, type Vec2 } from './surface.js';
+import { traceMark, type GroundSource } from './sourceTrace.js';
+
+/** The trace source of a polygon by class (sourceTrace.ts; a red rijbaan section is 'fietsstraat'). */
+const BGT_SOURCE: Record<RoadClass, GroundSource> = { carriage: 'bgtCarriage', parking: 'bgtParking', foot: 'bgtFoot', pedestrian: 'bgtPedestrian', cycle: 'bgtCycle', driveway: 'bgtDriveway' };
 
 /** Sidewalk top over the relief: osmGround's raised sidewalk band (LIFT.raisedBase + KERB_M 0.11). */
 export const SIDEWALK_TOP = LIFT.raisedBase + 0.11;
@@ -431,6 +435,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     }
     const cls = index.drawClass(k);
     const layer = get(surfaceLayer(cls, index.mesh(k)));
+    traceMark(layer, cls === 'carriage' && index.mesh(k) === 'cycle' ? 'fietsstraat' : BGT_SOURCE[cls]);
     if (rec.h >= 1) drapeAdaptive(layer, flat, tris, height, ROAD_LIFT[cls], far ? 2 * DECK_DRAPE_MAX_EDGE_M : DECK_DRAPE_MAX_EDGE_M, DECK_DRAPE_TOL_M, 1.5);
     else {
       const tol = DRAPE_TOL[cls], low = isLow(cls);
@@ -440,6 +445,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   }
   // Kerbs: the face toward the lower side, the granite line on the upper edge, posts along canal-side pavements.
   const kerb = get('kerb');
+  traceMark(kerb, 'bgtKerb');
   for (const e of cell.kerbs) {
     const line = decodeKerb(e);
     if (line.length < 2) continue;
@@ -466,6 +472,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     ribbon(kerb, line, into * KERB_LINE_M / 2, KERB_LINE_M, height, KERB_LINE_Z, { step: KERB_STEP_M });
     if (input.canalSide && input.lod === 0) {
       const before = get('bollard').positions.length;
+      traceMark(get('bollard'), 'bgtKerb');
       bollards(get('bollard'), line, into * 0.3, height, KERB_TOP, input.canalSide);
       stats.bollards += (get('bollard').positions.length - before) / 27;
     }

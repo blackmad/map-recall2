@@ -18,16 +18,17 @@ export const RASTER_ORDER: readonly GroundLayer[] = [...GROUND_LAYERS.filter(l =
 
 /**
  * Rasterise built cells over [x0, y0]–[x0 + w·res, y0 + h·res] (game frame metres, north up: row 0 is the north
- * edge). `skip`: layers left out (the layer beneath shows). Returns one layer id per pixel.
+ * edge). `skip`: layers left out (the layer beneath shows). Returns one layer id per pixel. `sourceOut` (w·h): the
+ * winning triangle's source code (BuiltCell.sources, sourceTrace.ts; 0 where the cell was built untraced).
  */
-export function rasterLayerIds(cells: readonly BuiltCell[], x0: number, y0: number, w: number, h: number, res: number, skip: ReadonlySet<GroundLayer> = new Set()): Uint8Array {
+export function rasterLayerIds(cells: readonly BuiltCell[], x0: number, y0: number, w: number, h: number, res: number, skip: ReadonlySet<GroundLayer> = new Set(), sourceOut?: Uint8Array): Uint8Array {
   const zbuf = new Float32Array(w * h).fill(-Infinity), rank = new Int8Array(w * h).fill(-1), out = new Uint8Array(w * h);
   const top = y0 + h * res;
   for (const cell of cells) for (const layer of RASTER_ORDER) {
     if (skip.has(layer)) continue;
     const m = cell.layers[layer];
     if (!m) continue;
-    const p = m.positions, idx = m.indices, rk = DRAW_RANK[layer] ?? 0, ch = CUT_CHANNEL[layer], id = layerId(layer);
+    const p = m.positions, idx = m.indices, rk = DRAW_RANK[layer] ?? 0, ch = CUT_CHANNEL[layer], id = layerId(layer), src = sourceOut ? cell.sources?.[layer] : undefined;
     for (let t = 0; t < idx.length; t += 3) {
       const a = idx[t] * 3, b = idx[t + 1] * 3, c = idx[t + 2] * 3;
       const ax = (p[a] - x0) / res, ay = (top - p[a + 1]) / res, bx = (p[b] - x0) / res, by = (top - p[b + 1]) / res, cx = (p[c] - x0) / res, cy = (top - p[c + 1]) / res;
@@ -45,6 +46,7 @@ export function rasterLayerIds(cells: readonly BuiltCell[], x0: number, y0: numb
         if (!(z > zi + 0.02 || (Math.abs(z - zi) <= 0.02 && rk > rank[i]))) continue;
         if (ch !== undefined && cell.mask && maskChannelAt(cell.mask, x0 + sx * res, top - sy * res, ch) < 0.5) continue;
         zbuf[i] = z; rank[i] = rk; out[i] = id;
+        if (sourceOut) sourceOut[i] = src ? src[t / 3] : 0;
       }
     }
   }

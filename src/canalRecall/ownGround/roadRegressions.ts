@@ -464,3 +464,35 @@ export function deckEndMisses(cells: readonly BuiltCell[], deck: DeckLine, offse
   }
   return { probes, misses };
 }
+
+/**
+ * Road spots judged beside the 8 cm PDOK orthophoto (lane roads-diagnose 2026-10-23; user: "our roads still look like
+ * shit: too many weird gaps and strange paints and multiple lanes where people don't expect"). Each is a junction
+ * centre (`at`, the OSM node the named ways share) with the bearing a rider looks along; scripts/own-ground/
+ * render-road-sources.ts renders `halfM` around `at` coloured by source layer beside the orthophoto and the game
+ * frame (artifacts/roads/diagnose/<id>.png) and measures the three complaints there (gaps R1, lanes R2, paint R3).
+ * tests/e2e/own-ground-roads.spec.ts shoots the frame from `backM` behind `at` along the bearing.
+ */
+export interface RoadSpot { id: string; label: string; at: [number, number]; bearing: number; halfM: number; backM: number }
+export const ROAD_SPOTS: RoadSpot[] = [
+  { id: 'kinkerstraat-bilderdijkstraat', label: 'Kinkerstraat × Bilderdijkstraat (tram junction by the Bilderdijkgracht)', at: [4.87215, 52.36727], bearing: 60, halfM: 40, backM: 30 },
+  { id: 'marnixstraat-busway', label: 'Marnixstraat busway × the red fietsstraat (Frederik Hendrikplantsoen)', at: [4.87673, 52.374747], bearing: 20, halfM: 40, backM: 30 },
+  { id: 'rozengracht-marnixstraat', label: 'Rozengracht × Marnixstraat', at: [4.87575, 52.37209], bearing: 70, halfM: 40, backM: 30 },
+  { id: 'de-clercqstraat-bilderdijkstraat', label: 'De Clercqstraat × Bilderdijkstraat', at: [4.87059, 52.37102], bearing: 70, halfM: 40, backM: 30 },
+  { id: 'linnaeusstraat-wijttenbachstraat', label: 'Linnaeusstraat × Wijttenbachstraat (Oost)', at: [4.92545, 52.36001], bearing: 160, halfM: 40, backM: 30 },
+  { id: 'mosplein', label: 'Mosplein (Noord)', at: [4.9119, 52.3915], bearing: 0, halfM: 40, backM: 30 },
+  { id: 'osdorper-ban-meer-en-vaart', label: 'Osdorper Ban × Meer en Vaart (Nieuw-West)', at: [4.80540, 52.36320], bearing: 90, halfM: 40, backM: 30 },
+  { id: 'ceintuurbaan-van-woustraat', label: 'Ceintuurbaan × Van Woustraat (Zuid)', at: [4.90127, 52.35481], bearing: 80, halfM: 40, backM: 30 },
+  // User screenshots 2026-10-23: the junction, bridge and both quays one saturated brown klinker mass, red cycle
+  // fragments mid-junction, a ring of red and zebra bits round a green centre (by Hans en Grietje, Spiegelgracht 27).
+  { id: 'spiegelgracht-prinsengracht', label: 'Spiegelgracht × Prinsengracht (Hans en Grietje, looking north)', at: [4.88729, 52.36173], bearing: 0, halfM: 40, backM: 25 },
+  // User 2026-10-23: "what's with the wiggly green patches?" on the square with the Dokwerker. The brief's point
+  // (4.89628, 52.36622) is the Rembrandtplein; the square is east of the Portuguese Synagogue.
+  { id: 'jonas-daniel-meijerplein', label: 'Jonas Daniël Meijerplein (the Dokwerker)', at: [4.90490, 52.36715], bearing: 90, halfM: 50, backM: 25 },
+  { id: 'rembrandtplein', label: 'Rembrandtplein (the point first given for the Dokwerker complaint)', at: [4.89628, 52.36622], bearing: 0, halfM: 40, backM: 25 },
+];
+/** Where a rider stands to look at a spot: `backM` behind `at` along the bearing (lng/lat, bearing degrees from north). */
+export function spotViewpoint(s: RoadSpot): { lng: number; lat: number; bearing: number } {
+  const b = s.bearing * Math.PI / 180, mLat = 111320, mLng = 111320 * Math.cos(s.at[1] * Math.PI / 180);
+  return { lng: s.at[0] - Math.sin(b) * s.backM / mLng, lat: s.at[1] - Math.cos(b) * s.backM / mLat, bearing: s.bearing };
+}

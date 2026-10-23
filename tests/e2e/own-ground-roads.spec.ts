@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
+import { ROAD_SPOTS as DIAGNOSE_SPOTS, spotViewpoint } from '../../src/canalRecall/ownGround/roadRegressions';
 
 // Roads under own ground (`?ownGround=1`): the user's three road spots, the
 // De Clercqstraat block and the three named deck regressions, chase view,
@@ -26,6 +27,8 @@ export const ROAD_SPOTS: [string, Place][] = [
   // the Marnixstraat busway crossing the red fietsstraat at the Frederik Hendrikplantsoen, looking north.
   ['kinkerstraat-dacostagracht', { lng: 4.87243, lat: 52.36731, bearing: 64 }],
   ['marnixstraat-plantsoen', { lng: 4.87643, lat: 52.37421, bearing: 20 }],
+  // The road-diagnose spots (roadRegressions ROAD_SPOTS, 2026-10-23): judged beside the orthophoto.
+  ...DIAGNOSE_SPOTS.map(s => [s.id, spotViewpoint(s)] as [string, Place]),
 ];
 
 async function boot(page: Page, viewMode = 'chase'): Promise<string[]> {

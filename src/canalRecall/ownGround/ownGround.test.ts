@@ -1721,3 +1721,27 @@ test('landed platform: the quay wall leaves out the shore across the Homomonumen
   for (let i = 0; i < walled.positions.length; i += 3) assert.ok(Math.hypot(walled.positions[i] - cx, walled.positions[i + 1] - cy) > 1.5, 'no wall vertex at the platform\'s middle');
   assert.ok(Array.from({length: plain.positions.length / 3}, (_, k) => k).some(k => Math.hypot(plain.positions[k * 3] - cx, plain.positions[k * 3 + 1] - cy) <= 1.5), 'without the skip the wall runs through it');
 });
+
+// Road diagnosis by source (sourceTrace.ts, lane roads-diagnose 2026-10-23): tracing must not change a byte of the
+// build, must tag every triangle, and must tell the BGT fietspad, the cycle-lane ribbons and the paint apart.
+test('source tracing: byte-identical build, every triangle tagged (De Clercqstraat × Bilderdijkstraat, roads-v1)', { skip: !haveCells }, async () => {
+  const { setSourceTracing, sourceOfCode } = await import('./sourceTrace');
+  const store = new GroundStore(async path => { const b = readFileSync(`public/data/extracts/amsterdam/${path}`); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); }, { roads: true });
+  await store.init();
+  const [x, y] = storeToLocal(4.87059, 52.37102), key = store.cellAt(x, y);
+  const plain = buildCell(await store.cellInput(key, 0));
+  setSourceTracing(true);
+  let traced: ReturnType<typeof buildCell>;
+  try { traced = buildCell(await store.cellInput(key, 0)); } finally { setSourceTracing(false); }
+  assert.equal(plain.sources, undefined);
+  const seen = new Set<string>();
+  for (const [layer, m] of Object.entries(plain.layers)) {
+    const t = traced.layers[layer as keyof typeof traced.layers]!;
+    assert.deepEqual(Buffer.from(t.positions.buffer), Buffer.from(m!.positions.buffer), `${layer} positions`);
+    assert.deepEqual(Buffer.from(t.indices.buffer), Buffer.from(m!.indices.buffer), `${layer} indices`);
+    const src = traced.sources![layer as keyof typeof traced.layers]!;
+    assert.equal(src.length, m!.indices.length / 3, `${layer}: one source per triangle`);
+    for (const c of src) { assert.ok(c > 0, `${layer}: untagged triangle`); seen.add(`${layer}:${sourceOfCode(c)}`); }
+  }
+  for (const k of ['asphalt:bgtCarriage', 'cycle:bgtCycle', 'paving:bgtFoot', 'land:land', 'paint:nodePaint']) assert.ok(seen.has(k), `${k} in ${[...seen].sort().join(' ')}`);
+});

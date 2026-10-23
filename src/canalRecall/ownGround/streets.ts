@@ -23,6 +23,7 @@ import type { HeightFn, Vec2 } from './surface.js';
 import earcut from 'earcut';
 import { bar, blocks, crossingStation, isSignalCrossing, mouthMarking, rankOf, sharkTeeth, strip, CROSSING_REACH_M, SIGNAL_REACH_M, STOP_LINE_M, type Keep } from './roadMarkings.js';
 import type { RoadIndex } from './roadSurfaces.js';
+import { traceMark } from './sourceTrace.js';
 
 /** Height above the relief per layer (metres): later layers win the depth test. */
 /**
@@ -452,12 +453,14 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
     const covered = !!bgt && bgt.covered.has(w.id);
     if (covered) {
       clipped.coveredWays++;
+      traceMark(out.cycle, 'laneRibbon');
       if (carriage) for (const band of w.section.bands) if (band.kind === 'cycle_lane') clipped.lanes += laneRibbon(out.cycle, w, band, road, bgt!.index, height, step);
     }
     for (const band of w.section.bands) {
       if (crossing || covered) break;
       out.stats.bands++;
       const m = out[band.surface];
+      traceMark(m, 'band'); traceMark(out.kerb, 'band'); traceMark(out.bollard, 'band');
       const onRoad = band.kind === 'carriageway' || band.kind === 'cycle_lane';
       let cuts = !carriage ? path : onRoad ? road : sides[band.offset > 0 ? 1 : -1];
       // roads-v1: a way the polygons cover for part of its length (a cycleway that is fietspad for 60 % and crosses
@@ -499,9 +502,11 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
           for (const r of onRoadPieces) {
             const st = stations(r);
             if (!carriage && st[st.length - 1] < CYCLE_PAINT_MIN_M) { clipped.cyclePaintDropped++; continue; }
+            traceMark(m, 'cyclePaint');
             ribbon(m, r, band.offset, band.width, height, ROAD_MARK_LIFT.lane, { step, across: acrossOf(band.width) });
             clipped.cyclePaint++;
           }
+          traceMark(m, 'band');
           for (const o of off) ribbon(m, o, band.offset, band.width, height, lift, { step, across: acrossOf(band.width) });
           continue;
         }
@@ -521,6 +526,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
         }
       }
     }
+    traceMark(out.paint, 'bandPaint');
     for (const line of w.section.paint) {
       // Paint lies on a band and stops where that band stops (road paint at the junction edge).
       const host = w.section.bands.find(b => Math.abs(line.offset - b.offset) <= b.width / 2 + 0.01) ?? w.section.bands[0];
@@ -537,14 +543,18 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
     // is dropped where the survey has no carriageway under it (1 m stations off the rijbaan).
     const railPieces = bgt && w.section.rails?.length ? railIntervals(w, bgt.index, isBridgeWay(w)) : null;
     if (railPieces) clipped.rails += railPieces.dropped;
+    traceMark(out.tram, 'rails');
     for (const o of w.section.rails ?? []) for (const r of [-0.7175, 0.7175]) for (const piece of railPieces ? railPieces.pieces : [w.points]) if (piece.length >= 2) ribbon(out.tram, piece, o + r, 0.07, height, railLift, { step });
     // A separate cycle path crossing a carriageway untagged leaves a gap there (pathCuts): mark it as a cycle crossing.
+    traceMark(out.cycle, 'cycleCross'); traceMark(out.paint, 'cycleCross');
     if (opts.markings !== false && !carriage && w.section.bands[0]?.kind === 'cycleway' && !isCrossing(w)) out.stats.markings.blocks += cyclePathCrossings(out, w, nodes, st, height, bgt);
   }
   // Junction fills and kerb corners: emitted once, by the node's owner way.
   for (const n of nodes.values()) {
     if (n.kind === 'junction') { out.junctionPoints.push(n.p); out.junctionReach.push(1 + Math.max(0, ...n.arms.map(a => Math.max(a.left, a.right)))); }
     if (n.kind === 'none' || !n.polygon.length) continue;
+    for (const l of ['asphalt', 'klinker', 'cycle', 'paving', 'gravel', 'kerb'] as const) traceMark(out[l], 'junctionFill');
+    traceMark(out.paint, 'bandPaint');
     const owner = byId.get(n.owner);
     if (!owner || (opts.only && !opts.only(owner))) continue;
     // roads-v1: a node inside a surveyed polygon has its surface already; no fill, no corner patches (the wedges).
@@ -558,6 +568,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
     if (n.kind !== 'junction') continue;
     out.stats.junctions++;
     if (!surveyed) for (const c of n.corners) out.stats.corners += cornerPatches(out, n, c, height, step);
+    traceMark(out.cycle, 'band');
     if (opts.markings !== false) junctionMarkings(out, n, signalPoints, crossingWays, height, bgt && surveyed ? bgt : null);
   }
   return out;

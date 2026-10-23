@@ -33,6 +33,7 @@ import type { RoadCell } from './roadCells.js';
 import type { RoadMark } from './roadMarks.js';
 import { buildSurveyMarkings, crossingStripPoints, SURVEY_MARKINGS, type SurveyMarkingStats } from './surveyMarkings.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
+import { sourceTracing, triangleSources, type GroundSource } from './sourceTrace.js';
 import type { Rect } from './groundStore.js';
 
 export type GroundLayer =
@@ -54,6 +55,8 @@ export interface BuiltCell {
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
+  /** Source code per triangle per layer (sourceTrace.ts), only when tracing is on (diagnostics). */
+  sources?: Partial<Record<GroundLayer, Uint8Array>>;
   stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** OSM green rings cut out of the paved area fills (areas + holes). */ greenCut?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number; /** Footway strips across the road at a crossing drawn as carriageway. */ crossingStrips?: number; /** surveyMarkings.ts: what the survey-aware markings drew. */ markings?: SurveyMarkingStats | null }) | null; courtyards?: number };
 }
 
@@ -171,7 +174,8 @@ export function buildCell(input: CellInput): BuiltCell {
   const { key, lod, rect, surface } = input;
   const [x0, y0, x1, y1] = rect;
   const parts: Partial<Record<GroundLayer, MeshArrays[]>> = {};
-  const add = (layer: GroundLayer, m: MeshArrays) => { if (m.indices.length) (parts[layer] ??= []).push(m); };
+  const tracing = sourceTracing(), from: Partial<Record<GroundLayer, GroundSource[]>> = {};
+  const add = (layer: GroundLayer, m: MeshArrays, src: GroundSource = 'other') => { if (m.indices.length) { (parts[layer] ??= []).push(m); if (tracing) (from[layer] ??= []).push(src); } };
   const phases: Record<string, number> = {};
   let tPhase = t0;
   const phase = (name: string) => { const now = Date.now(); phases[name] = (phases[name] ?? 0) + now - tPhase; tPhase = now; };
@@ -251,7 +255,7 @@ export function buildCell(input: CellInput): BuiltCell {
   const canalSide = lod === 0 && mask ? (x: number, y: number) => { const d = maskDistance(mask, x, y); return d > 0 && d < MASK_RANGE_M - 0.2; } : undefined;
   if (roadIndex && input.roads) {
     const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, canalSide, ...(input.drape ?? {}) });
-    for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!);
+    for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!, 'bgtCarriage');
     roadSkipped = built.skipped;
     roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, parkingIslands, crossingStrips, markings: null };
   }
@@ -307,7 +311,7 @@ export function buildCell(input: CellInput): BuiltCell {
     return false;
   };
   const keepLand = (x: number, y: number) => inCell(x, y) && (!mask || maskDistance(mask, x, y) > -(step * 0.71 + 0.2)) && !underOwnSurface(x, y) && !underGreen(x, y);
-  add('land', reliefGrid(gx0, gy0, Math.ceil(x1 / step) * step, Math.ceil(y1 / step) * step, step, surface.ground, keepLand));
+  add('land', reliefGrid(gx0, gy0, Math.ceil(x1 / step) * step, Math.ceil(y1 / step) * step, step, surface.ground, keepLand), 'land');
   phase('land');
 
   // Areas.
@@ -357,7 +361,7 @@ export function buildCell(input: CellInput): BuiltCell {
       drapeBisect(m, flat, earcut(flat, holeAt), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), lod === 0 ? 8 : 16, clearance, lod === 0 ? 1 : 2, step);
     }
     if (cover && layer === 'park') { const r = cullCovered(m, cover); m = r.mesh; parkFillCulled += r.dropped; }
-    add(layer, m);
+    add(layer, m, 'osmArea');
   }
 
   phase('areas');
@@ -366,7 +370,7 @@ export function buildCell(input: CellInput): BuiltCell {
   if (input.parks) {
     const tp = Date.now();
     const built = input.parks.version === 2 ? buildParks(input.parks, onLand, lod, overWater) : { layers: {}, stats: null };
-    for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!);
+    for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!, 'park');
     if (built.stats) parkStats = { ...built.stats, ms: Date.now() - tp };
   }
 
@@ -379,7 +383,7 @@ export function buildCell(input: CellInput): BuiltCell {
     if (flat.length < 6) continue;
     const m = emptyMesh();
     drapeBisect(m, flat, earcut(flat, holes), onLand, PARK_LIFT[a.k], lod === 0 ? 8 : 16, lod === 0 ? CLEARANCE_M : CLEARANCE_FAR_M, lod === 0 ? 1 : 2, step);
-    add(SURFACE_LAYER[a.k], m);
+    add(SURFACE_LAYER[a.k], m, 'park');
     courtyards++;
   }
 
@@ -396,7 +400,7 @@ export function buildCell(input: CellInput): BuiltCell {
   // Across, a vertex every 2 m (3 m far): a deck narrower than its mapped carriageway left the band's edges on the
   // relief beside it and the band sagged under the deck top (BRU0292 by 0.15 m; +1.8 % triangles per belt cell).
   const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 0.75 : 3, only: only(true), acrossStep: lod === 0 ? 2 : 3, markings: lod === 0, roads: roadsOpt });
-  for (const s of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint', 'tram', 'bollard'] as const) { add(s, streets[s]); add(s, onBridges[s]); }
+  for (const s of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint', 'tram', 'bollard'] as const) { add(s, streets[s], 'band'); add(s, onBridges[s], 'band'); }
   phase('bridgeStreets');
   // roads-v1: markings placed from the mapped crossings and the junction graph, measured on and clipped to the
   // surveyed carriageway polygons (surveyMarkings.ts; the old band paint stays off there, streets.ts PAINT_ON_SURVEY).
@@ -404,7 +408,7 @@ export function buildCell(input: CellInput): BuiltCell {
   if (roadIndex && lod === 0 && SURVEY_MARKINGS) {
     const inCell = (p: Vec2) => p[0] >= x0 && p[0] < x1 && p[1] >= y0 && p[1] < y1;
     const mk = buildSurveyMarkings({ ways, ownsWay: w => own.has(w.id), ownsPoint: inCell, marks: input.marks ?? [], box: [rb[0] - 30, rb[1] - 30, rb[2] + 30, rb[3] + 30], index: roadIndex, height: onLand, lift: { paint: ROAD_MARK_LIFT.paint, red: ROAD_MARK_LIFT.lane } });
-    add('paint', mk.paint); add('cycle', mk.red);
+    add('paint', mk.paint, 'nodePaint'); add('cycle', mk.red, 'cycleCross');
     surveyMarks = mk.stats;
   }
   phase('surveyMarkings');
@@ -417,10 +421,10 @@ export function buildCell(input: CellInput): BuiltCell {
 
   // Water, quays, decks.
   if (input.water) {
-    add('water', waterSurfaceMesh(input.water, CANAL_WATER_Z));
+    add('water', waterSurfaceMesh(input.water, CANAL_WATER_Z), 'water');
     // No municipal quay wall under a bridge deck (its arches) or across a landed platform (the Homomonument's steps bring their own walls).
     const underDecks = input.decks.length ? underDeck(input.decks) : undefined, onPlatform = inLandedPlatform(input.landedPlatforms ?? []);
-    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores, shoreLevels: input.water.shoreLevels }, surface.height, CANAL_WATER_Z, lod === 0 ? 4 : 8, QUAY_CAP_M, (x, y) => onPlatform(x, y) || !!underDecks?.(x, y)));
+    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores, shoreLevels: input.water.shoreLevels }, surface.height, CANAL_WATER_Z, lod === 0 ? 4 : 8, QUAY_CAP_M, (x, y) => onPlatform(x, y) || !!underDecks?.(x, y)), 'quay');
   }
   const bridges: BridgeStats = { tops: 0, railed: 0, railingPosts: 0, piers: 0, arches: 0, abutments: 0, frames: 0, decks: [], flat: [], floating: [] };
   // The street bands of the bridge ways: on land the deck top stays under them (decks.ts deckWidths, ride review J6).
@@ -440,11 +444,11 @@ export function buildCell(input: CellInput): BuiltCell {
     const xs = deck.profile.x, ys = deck.profile.y, mid = xs.length >> 1;
     const { reach } = deckReach(deck, overWater);
     for (const f of floatingEnds(deck, overWater, surface.height, surface.ground)) bridges.floating.push(`${deck.profile.id}:${f.end}:${f.reason}`);
-    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing));
+    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing), 'deck');
     const covered = roadsOnDeck(deck);
     if (covered && roads) roads.decksCovered++;
     const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, covered ? { left: deck.profile.halfWidth, right: deck.profile.halfWidth } : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined, covered && input.deckEnds !== false ? COVERED_TOP_SINK_M : 0);
-    if (top.indices.length) { add('deckTop', top); bridges.tops++; }
+    if (top.indices.length) { add('deckTop', top, 'deck'); bridges.tops++; }
   }
   for (const d of bridges.decks) { bridges.railingPosts += d.railingPosts; bridges.piers += d.piers; bridges.arches += d.arches; bridges.abutments += d.abutments; if (d.railingPosts) bridges.railed++; }
   // Bridge ways near the flat footprints give their crossing axis (movable frames).
@@ -456,12 +460,12 @@ export function buildCell(input: CellInput): BuiltCell {
     const axis = footprintAxis(ring, through).u, movingThrough = movableLines.filter(l => through.includes(l));
     const { top, body, railingPosts, floating } = flatDeckBody(ring, surface.height, overWater, 0.02, 0.45, { railings: lod === 0, axis, movableWays: movingThrough, crossing });
     if (floating) bridges.floating.push(`${input.flatDeckMeta?.[k]?.id ?? 'flat'}:${floating} end(s) over water past ${DECK_REACH_MAX_M} m`);
-    add('deckTop', top); add('deckBody', body);
+    add('deckTop', top, 'deck'); add('deckBody', body, 'deck');
     bridges.tops++; bridges.railingPosts += railingPosts; if (railingPosts) bridges.railed++;
     let frames = 0;
     if (input.flatDeckMeta?.[k]?.movable) {
       const frame = movableFrame(ring, surface.height, through, 0.02, lod === 0, movableLeaves(ring, axis, movingThrough));
-      add('deckBody', frame.mesh); frames = frame.units; bridges.frames += frames;
+      add('deckBody', frame.mesh, 'deck'); frames = frame.units; bridges.frames += frames;
     }
     bridges.flat.push({ id: input.flatDeckMeta?.[k]?.id ?? '', railingPosts, frames });
   });
@@ -484,12 +488,12 @@ export function buildCell(input: CellInput): BuiltCell {
       if (r > 0 && [[r, 0], [-r, 0], [0, r], [0, -r]].some(([dx, dy]) => roadIndex.find(p[0] + dx, p[1] + dy) >= 0)) gaps.push({ p, r });
     });
     const r = fillPockets(cover, rect, seeds, onLand, POCKET_LIFT, { gaps });
-    for (const [s, m] of Object.entries(r.meshes)) add(s as PocketSurface, m as MeshArrays);
+    for (const [s, m] of Object.entries(r.meshes)) add(s as PocketSurface, m as MeshArrays, 'pocket');
     pockets = r.stats;
   }
 
   phase('pockets');
-  const packed: Partial<Record<GroundLayer, PackedMesh>> = {};
+  const packed: Partial<Record<GroundLayer, PackedMesh>> = {}, sources: Partial<Record<GroundLayer, Uint8Array>> = {};
   const byLayer: Record<string, number> = {};
   let triangles = 0, bytes = 0;
   for (const layer of GROUND_LAYERS) {
@@ -498,6 +502,7 @@ export function buildCell(input: CellInput): BuiltCell {
     const m = list.length === 1 ? list[0] : merge(list);
     const p = packMesh(m);
     packed[layer] = p;
+    if (tracing) sources[layer] = triangleSources(list, from[layer] ?? []);
     byLayer[layer] = packedTriangles(p);
     triangles += byLayer[layer];
     bytes += packedBytes(p);
@@ -506,7 +511,7 @@ export function buildCell(input: CellInput): BuiltCell {
   if (maskOut) bytes += maskOut.texels.byteLength;
   phase('pack');
   return {
-    key, lod, rect, layers: packed, mask: maskOut,
+    key, lod, rect, layers: packed, mask: maskOut, ...(tracing ? { sources } : {}),
     stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, greenCut, roads, phases, courtyards },
   };
 }
