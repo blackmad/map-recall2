@@ -12,6 +12,8 @@
  * along: showing a player the naming story on one pass and a construction
  * detail on the next teaches more than showing two dates.
  */
+import { language } from '../../i18n/index.ts';
+
 export type FactKind =
   /** Where the name comes from, and what it means. */
   | 'naming'
@@ -40,9 +42,51 @@ export const FACT_KIND_LABELS: Readonly<Record<FactKind, string>> = {
   surprise: 'Curiosity',
 };
 
+const FACT_KIND_LABELS_NL: Readonly<Record<FactKind, string>> = {
+  naming: 'Naam',
+  history: 'Geschiedenis',
+  people: 'Mensen',
+  design: 'Ontwerp',
+  culture: 'Cultuur',
+  surprise: 'Weetje',
+};
+
+/** The kind chip in the interface's language. */
+export function factKindLabel(kind: FactKind): string {
+  return language() === 'nl' ? FACT_KIND_LABELS_NL[kind] : FACT_KIND_LABELS[kind];
+}
+
+/**
+ * The sentence a card prints. Dutch only when the catalog has the Dutch
+ * article's own sentence; an English fact stays English rather than being
+ * machine-translated into a language its evidence is not in.
+ */
+export function factText(fact: Pick<Fact, 'text' | 'textNl'>): string {
+  return language() === 'nl' && fact.textNl ? fact.textNl : fact.text;
+}
+
+/** Attribution that names the language of the sentence shown. */
+export function factSourceLabel(fact: Pick<Fact, 'textNl'>): string {
+  return language() === 'nl' && fact.textNl ? 'Wikipedia (Nederlands)' : 'Wikipedia · CC BY-SA 4.0';
+}
+
 export interface Fact {
-  /** One self-contained sentence, display length, no markup. */
+  /** One self-contained sentence, display length, no markup (English). */
   text: string;
+  /**
+   * The same claim in the source article's own Dutch sentence, when the article
+   * was Dutch (`scripts/add-dutch-facts.ts`). Dutch mode prints this instead of
+   * `text`; it is a quote, not a translation of the English summary.
+   */
+  textNl?: string;
+  /** The exact Dutch evidence sentence `textNl` was written from. */
+  textNlEvidence?: string;
+  /** The Dutch article that evidence came from. */
+  textNlSourceUrl?: string;
+  /** Who wrote the Dutch sentence, e.g. `agent:dutch-pass-2026-10-23`. */
+  textNlWriter?: string;
+  /** The independent pass that checked it; only `grounded` may be shown. */
+  textNlVerification?: 'grounded';
   kind: FactKind;
   /** Article heading the source passage came from; `''` for the lede. */
   section: string;
@@ -56,7 +100,7 @@ export interface Fact {
   license: string;
   /** ISO date the source article was retrieved. */
   retrievedAt: string;
-  /** Language of the exact evidence; displayed facts are always English. */
+  /** Language of the exact evidence. `text` is English; `textNl` quotes Dutch evidence. */
   sourceLanguage?: 'en' | 'nl';
   /** Local translation tool used before summarization, for Dutch evidence. */
   translator?: string;
@@ -82,6 +126,8 @@ export interface FeatureFacts {
    * feature's published encyclopedia lede when this is absent.
    */
   opening?: string;
+  /** The Dutch article's first lede sentence, when there is a Dutch fact. */
+  openingNl?: string;
   facts: Fact[];
 }
 

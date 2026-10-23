@@ -6,18 +6,19 @@
  */
 import type { StreetFeature } from '../types';
 import { triviaForRound } from './localFacts';
-import { descriptionWithoutOrigin } from './trivia';
+import { descriptionWithoutOrigin, featureDescription, triviaText } from './trivia';
 import { firstSentence, withNamedSubject } from './answerText';
 
 export function answerTeaser(
-  feature: Pick<StreetFeature, 'neighborhoodTopFacts' | 'localFact' | 'nameOrigin' | 'localFacts' | 'wikipediaExtract' | 'history'> & { name?: string },
+  feature: Pick<StreetFeature, 'neighborhoodTopFacts' | 'localFact' | 'nameOrigin' | 'localFacts' | 'wikipediaExtract' | 'wikipediaExtractNl' | 'history'> & { name?: string },
   factSeed = 0,
   roundIndex = 0,
 ): string | undefined {
-  if (feature.nameOrigin?.text) return firstSentence(withNamedSubject(feature.name, feature.nameOrigin.text));
+  const origin = triviaText(feature.nameOrigin);
+  if (origin) return firstSentence(withNamedSubject(feature.name, origin));
   if (feature.neighborhoodTopFacts?.[0]?.text) return feature.neighborhoodTopFacts[0].text;
-  if (feature.localFact?.text) return feature.localFact.text;
+  if (feature.localFact?.text) return triviaText(feature.localFact);
   const trivia = triviaForRound(feature.localFacts, factSeed, roundIndex);
   if (trivia) return trivia.text;
-  return descriptionWithoutOrigin(feature.wikipediaExtract, undefined) ?? feature.history?.text;
+  return descriptionWithoutOrigin(featureDescription(feature), undefined) ?? triviaText(feature.history);
 }

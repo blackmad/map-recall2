@@ -69,6 +69,41 @@ iOS Low Power Mode caps rAF at 30 fps, so the governor also steps there.
 Also seen in that session: Firebase App Check answering 403 in production
 (`appCheck/throttled` for 24 h) — see TODO.
 
+## check:canal green again: rewrite-erased export dates, Felix's rear house (2026-10-23)
+
+Two landmark gates failed on `main` for reasons outside any landmark lane.
+`check:landmark-inventory` dates a model by the commit that first added its GLB;
+the 2026-10-22 history rewrite stripped the first-add blobs of club-panama,
+compagnietheater, west-india-house (2026-10-09) and holocaust-namenmonument
+(2026-10-13), so the gate read them as never exported and demanded an
+inventory, though all four predate the 2026-10-14 cutoff. Their dates, read
+from the pre-rewrite backup, are pinned in
+`scripts/landmarks/first-export-dates-pre-rewrite.json`; the gate falls back to
+it only when git shows no add. `check:landmark-abutters` flagged Felix
+Meritis's rear house (BAG 0363100012174322), un-suppressed that afternoon
+because the GLB covers none of it; it sits in the hull only because the
+placement footprint is the 86 m plot. Reviewed `fine` with the aerial and
+game-frame evidence. Two stale Centraal Station `unclear` reviews remain for
+that lane to prune.
+
+## Ride and Map Quest speak Dutch (2026-10-23)
+
+Merged `lane/nl-localization-20261022`: one English/Dutch message catalog
+(`src/i18n`) behind a live toggle on the ride setup screen and in the Map Quest
+header, with the legacy canvas HUD reading it through `i18n.bundle.js`
+(`CanalI18n`). Dutch trivia comes from Dutch sources, never machine
+translation: street-name origins use BAG's own Dutch text (5,428/5,429; six
+documented register errors withheld or corrected in
+`scripts/dutch-street-origin-corrections.json`), and 1,564/2,351 facts carry the
+Dutch article's own sentence with provenance (`test:dutch-facts`). English
+fallbacks are labelled "(Engels)" in Dutch — the merge extended that to derived
+local facts such as Buitenveldert's, which main had added since the lane forked.
+Merge notes: main had removed cockpit view, the visible city/destination
+pickers, the mission brief, Daily Five and the bonus pin, and rebranded to Ride
+Amsterdam / Map Quest; the merge keeps main's structure and translates its
+strings, drops the lane's edits to the deleted pieces, and fixes the stale brand
+and chase-view strings in the catalog. Rules and state: `docs/nl-localization.md`,
+`docs/nl-localization-handoff.md`.
 ## Phones render fewer pixels, and a lost GPU now says why (2026-10-23)
 
 Follow-up to the dead-GPU guard. Measured on the production ride with a Pixel 5

@@ -8,6 +8,7 @@ import { answerHints, useAnswerHints } from '../mapRecall/useAnswerHints';
 import { WikipediaCard } from './WikipediaCard';
 import { LookAroundLink } from './LookAroundLink';
 import { PostcardHeader } from './PostcardHeader';
+import { useT } from '../i18n/useT';
 
 /**
  * Start the round's postcard while the player is still guessing: its frame is composed (with the
@@ -65,16 +66,17 @@ function useWideCard(ref: React.RefObject<HTMLDivElement | null>): { wide: boole
  * cannot spare while the map shows the answer (review 2026-10-13).
  */
 const PostcardStrip: React.FC<{ name: string; photo?: string; onOpen: () => void }> = ({ name, photo, onOpen }) => {
+  const t = useT();
   useEffect(() => { void loadPostcardFaces().catch(() => undefined); }, []);
   return <button
     type="button"
     onClick={onOpen}
-    aria-label={`Greetings from ${name}: open the postcard`}
+    aria-label={t('quiz.postcardOpen', { name })}
     data-testid="answer-postcard-strip"
     className="relative flex h-11 w-full items-center gap-2 overflow-hidden rounded-lg bg-[#f3e6c8] px-3 text-left shadow-md"
   >
     {photo && <img src={photo} referrerPolicy="no-referrer" alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25" />}
-    <span className="relative flex-none text-[15px] leading-none text-[#1f4f7a]" style={{ fontFamily: 'Pacifico, cursive' }}>Greetings from</span>
+    <span className="relative flex-none text-[15px] leading-none text-[#1f4f7a]" style={{ fontFamily: 'Pacifico, cursive' }}>{t('quiz.greetingsFrom')}</span>
     <span className="relative min-w-0 truncate text-[20px] uppercase leading-none tracking-wide text-[#b5441b]" style={{ fontFamily: 'Anton, Impact, sans-serif', WebkitTextStroke: '0.6px #2b1a0c' }}>{name}</span>
   </button>;
 };
@@ -87,6 +89,7 @@ const PostcardStrip: React.FC<{ name: string; photo?: string; onOpen: () => void
  * again on every new round.
  */
 export const AnswerDetails: React.FC<{ feature: StreetFeature; factSeed: number; roundIndex: number }> = ({ feature, factSeed, roundIndex }) => {
+  const t = useT();
   // `null` follows the layout; only an explicit More/Less overrides it.
   const [expanded, setExpanded] = useState<boolean | null>(null);
   useEffect(() => setExpanded(null), [feature.id]);
@@ -129,7 +132,7 @@ export const AnswerDetails: React.FC<{ feature: StreetFeature; factSeed: number;
     className="answer-detail-card flex w-full items-center gap-2.5 p-2 text-left"
   >
     {!isNeighborhood && thumbnail && <img src={thumbnail} referrerPolicy="no-referrer" alt="" className="h-12 w-[77px] flex-none rounded-md object-cover shadow-sm sm:h-14 sm:w-[90px]" />}
-    <span data-testid={feature.nameOrigin ? 'answer-name-origin-summary' : undefined} className="line-clamp-2 min-w-0 flex-1 text-xs leading-snug text-white">{feature.nameOrigin && <strong>Name: </strong>}{teaser ?? `More about ${feature.name}`}</span>
+    <span data-testid={feature.nameOrigin ? 'answer-name-origin-summary' : undefined} className="line-clamp-2 min-w-0 flex-1 text-xs leading-snug text-white">{feature.nameOrigin && <strong>{t('quiz.nameLabel')} </strong>}{teaser ?? t('quiz.moreAbout', { name: feature.name })}</span>
     <span className="flex flex-none items-center gap-0.5 text-[11px] font-bold text-[#8a4a18]">
       More <ChevronDown className="h-3.5 w-3.5" />
     </span>

@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { ChevronDown, LogIn, LogOut, Route } from 'lucide-react';
+import { useT } from '../i18n/useT';
 
 export interface AccountChipUser {
   /** Display name, else email. */
@@ -53,6 +54,7 @@ function Avatar({ user }: { user: AccountChipUser }) {
  * src/theme/enamel-chrome.css.
  */
 export function AccountChip({ user, available = true, busy = false, onSignIn, onSignOut, progressHref, id, compact = false, defaultOpen = false }: AccountChipProps) {
+  const t = useT();
   const [open, setOpen] = useState(defaultOpen);
   const root = useRef<HTMLDivElement>(null);
   const menuId = useId();
@@ -78,13 +80,13 @@ export function AccountChip({ user, available = true, busy = false, onSignIn, on
           id={id}
           type="button"
           className={`account-chip-button account-chip-signin${compact ? ' account-chip-icon' : ''}`}
-          aria-label={compact ? 'Sign in' : undefined}
+          aria-label={compact ? t('account.signIn') : undefined}
           disabled={busy || !available}
-          title={available ? 'Sign in with Google to keep your progress on every device' : 'Sign-in is not configured on this build'}
+          title={available ? t('account.signInTitle') : t('account.unavailable')}
           onClick={() => onSignIn()}
         >
           <LogIn aria-hidden="true" strokeWidth={2.25} />
-          {compact ? null : <span>{busy ? 'Signing in…' : 'Sign in'}</span>}
+          {compact ? null : <span>{busy ? t('account.signingIn') : t('account.signIn')}</span>}
         </button>
       </div>
     );
@@ -111,7 +113,7 @@ export function AccountChip({ user, available = true, busy = false, onSignIn, on
         <div className="account-chip-menu" id={menuId} role="menu" aria-label="Account">
           <div className="account-chip-who">
             <strong>{user.label}</strong>
-            {user.email && user.email !== user.label ? <small>{user.email}</small> : <small>Progress syncs to every device</small>}
+            {user.email && user.email !== user.label ? <small>{user.email}</small> : <small>{t('account.syncNote')}</small>}
           </div>
           <a role="menuitem" className="account-chip-item" href={progressHref}>
             <Route aria-hidden="true" strokeWidth={2.25} /> My progress

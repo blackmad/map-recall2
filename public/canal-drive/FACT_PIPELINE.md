@@ -160,6 +160,18 @@ native form—`Magere Brug (“Skinny Bridge”)`—never as a replacement headi
 9. **Editorial checks:** reject unsafe, promotional, temporally fragile, overly long, or location-ambiguous facts. Maintain a small curation override file.
 10. **Export:** write versioned, deterministic city JSON plus a manifest containing source versions, licenses, timestamps, and attribution text.
 
+## Dutch display
+
+The interface has an English and a Dutch mode. A fact carries `text` (the
+written English sentence) and, when its evidence is Dutch, `textNl`: the source
+article's own sentence, cut like any card text
+(`npm run add:dutch-facts`, checked by `npm run test:dutch-facts`). The Dutch
+column is a quote from the evidence, never a machine translation of the English
+summary, and a feature whose article is Dutch also gets `openingNl` from that
+article's lede. Cards pick at render time (`factText`), so switching language
+re-reads a card that is already open; a Dutch fact without a Dutch opening is
+shown without the framing line rather than in two languages.
+
 ## Runtime behavior
 
 - Build a spatial index over fact locations and geometries.

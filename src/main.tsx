@@ -6,6 +6,11 @@ import './index.css';
 import { AuthProvider } from './AuthContext';
 import { CardGallery } from './CardGallery';
 import { isProgressPath } from './progress/route';
+import { applyDocumentLanguage } from './i18n/index';
+
+// Dutch browsers get a Dutch interface before the first paint, and `<html lang>`
+// matches it for screen readers and hyphenation.
+applyDocumentLanguage();
 
 const ProgressPage = React.lazy(() => import('./progress/ProgressPage').then(({ ProgressPage }) => ({ default: ProgressPage })));
 

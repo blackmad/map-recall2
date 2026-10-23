@@ -5,6 +5,7 @@
  * `travelProfile(mode)` so a third mode does not need another boolean fork.
  */
 import { type QuizSubject, type TravelMode } from './modes.ts';
+import { t } from '../../i18n/index.ts';
 
 export type LearnedKind = 'water' | 'street' | 'transit';
 export type MotionKind = 'water' | 'road' | 'corridor';
@@ -31,59 +32,78 @@ export interface TravelProfile {
   usesWaterTest: boolean;
 }
 
-const PROFILES: Record<TravelMode, TravelProfile> = {
+/**
+ * Copy that changes with the interface language is stored as catalog keys and
+ * resolved in `travelProfile()`: a module-level `quizRouteQuestion: 'Which…'`
+ * would be frozen in whichever language the bundle loaded with.
+ */
+type ProfileTemplate = Omit<TravelProfile, 'label' | 'quizRouteQuestion' | 'recallNoun' | 'exploreNoun'> & {
+  labelKey: 'setup.travel.boat' | 'setup.travel.bike' | 'setup.travel.transit';
+  quizRouteQuestionKey: 'ride.question.waterway' | 'ride.question.street' | 'ride.question.line';
+  recallNounKey: 'ride.noun.canals' | 'ride.noun.streets' | 'ride.noun.lines';
+  exploreNounKey: 'ride.noun.canals' | 'ride.noun.streets' | 'ride.noun.linesAndStops';
+};
+
+const PROFILES: Record<TravelMode, ProfileTemplate> = {
   boat: {
     id: 'boat',
-    label: 'Boat',
+    labelKey: 'setup.travel.boat',
     extractFile: 'water',
     quizRouteSubject: 'waterway',
-    quizRouteQuestion: 'Which waterway are you on now?',
+    quizRouteQuestionKey: 'ride.question.waterway',
     learnedKind: 'water',
     motion: 'water',
     vehicle: 'boat',
     networkNoun: 'waterways',
     networkNounSingular: 'waterway',
-    recallNoun: 'Canals',
-    exploreNoun: 'waterways',
+    recallNounKey: 'ride.noun.canals',
+    exploreNounKey: 'ride.noun.canals',
     usesRoadConstraint: false,
     usesWaterTest: true,
   },
   car: {
     id: 'car',
-    label: 'Bike',
+    labelKey: 'setup.travel.bike',
     extractFile: 'streets-routing',
     quizRouteSubject: 'street',
-    quizRouteQuestion: 'Which street are you on now?',
+    quizRouteQuestionKey: 'ride.question.street',
     learnedKind: 'street',
     motion: 'road',
     vehicle: 'bike',
     networkNoun: 'streets',
     networkNounSingular: 'street',
-    recallNoun: 'Streets',
-    exploreNoun: 'streets',
+    recallNounKey: 'ride.noun.streets',
+    exploreNounKey: 'ride.noun.streets',
     usesRoadConstraint: true,
     usesWaterTest: false,
   },
   transit: {
     id: 'transit',
-    label: 'Transit',
+    labelKey: 'setup.travel.transit',
     extractFile: 'transit-network',
     quizRouteSubject: 'line',
-    quizRouteQuestion: 'Which line are you on now?',
+    quizRouteQuestionKey: 'ride.question.line',
     learnedKind: 'transit',
     motion: 'corridor',
     vehicle: 'transit',
     networkNoun: 'tram lines',
     networkNounSingular: 'line',
-    recallNoun: 'Lines',
-    exploreNoun: 'lines and stops',
+    recallNounKey: 'ride.noun.lines',
+    exploreNounKey: 'ride.noun.linesAndStops',
     usesRoadConstraint: true,
     usesWaterTest: false,
   },
 };
 
 export function travelProfile(mode: TravelMode): TravelProfile {
-  return PROFILES[mode] ?? PROFILES.boat;
+  const template = PROFILES[mode] ?? PROFILES.boat;
+  return {
+    ...template,
+    label: t(template.labelKey),
+    quizRouteQuestion: t(template.quizRouteQuestionKey),
+    recallNoun: t(template.recallNounKey),
+    exploreNoun: t(template.exploreNounKey),
+  };
 }
 
 export function usesRoadConstraint(mode: TravelMode): boolean {

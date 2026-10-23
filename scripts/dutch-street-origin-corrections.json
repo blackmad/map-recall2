@@ -1,0 +1,1260 @@
+{
+ "source": "docs/amsterdam-street-name-register-errors.md",
+ "reviewedAt": "2026-10-22",
+ "policy": "The Dutch column of a card shows the register sentence only when the register text is sound. Rows the error register marks as withheld, a fragment, a repair, a replacement or a factual correction keep English: showing a known-wrong Dutch sentence in Dutch mode is worse than showing the corrected English one. A name listed here is verified again by scripts/add-dutch-street-origins.ts.",
+ "withheldNl": {
+  "Hamerstraat": {
+   "handling": "Replaced by a sourced supplement (Wikipedia); the paragraph is restored to the Piet Meerburgbrug's card."
+  },
+  "Scharwouderstraat": {
+   "handling": "Withheld."
+  },
+  "Scheepmakerskade": {
+   "handling": "Withheld."
+  },
+  "Sint Anthoniesluis": {
+   "handling": "Translated without the broken edge."
+  },
+  "Smallepadsgracht": {
+   "handling": "Withheld."
+  },
+  "Smaragdplein": {
+   "handling": "Withheld."
+  }
+ },
+ "keptNl": {
+  "Elandsgracht": "Kept.",
+  "Groene Ridderhof": "Kept (right year unknown)",
+  "Guggenheimlaan": "Kept (construction did start in 1956)",
+  "Nieuwendammerkade": "Uses the Nieuwendammerdijk record's explanation of Nieuwendam (0363300000003870).",
+  "Rembrandtpark": "Kept only the opening sentence about Rembrandt.",
+  "Utrechtsedwarsstraat": "Kept only \"After the city of Utrecht\".",
+  "H. Diesveldsingel": "The register itself says the official spelling is wrong; its Dutch sentence is otherwise sound and explains the man behind the name.",
+  "Jaap Kunstbrug": "The Dutch sentence is complete and reads correctly; the English was joined with later rows only to add career detail.",
+  "Enneüs Heermabrug": "The Dutch sentence is complete and correct; the English was joined with the next row only to add detail about his career."
+ },
+ "corrections": {
+  "Accason": {
+   "replace": [
+    [
+     "Archachon",
+     "Arcachon"
+    ]
+   ]
+  },
+  "Amelandstraat": {
+   "replace": [
+    [
+     "Waddeneiland (Noord-Holland).",
+     "Een van de Waddeneilanden."
+    ]
+   ]
+  },
+  "Bartholomeus Diazstraat": {
+   "replace": [
+    [
+     "in 1486",
+     "in 1488"
+    ]
+   ]
+  },
+  "Beringhaven": {
+   "replace": [
+    [
+     "In 1741 ontdekt",
+     "In 1728 ontdekt"
+    ]
+   ]
+  },
+  "Berzeliusstraat": {
+   "replace": [
+    [
+     "Johannes Jacob Berzelius",
+     "Jöns Jacob Berzelius"
+    ]
+   ]
+  },
+  "Caroline Herschelbrug": {
+   "replace": [
+    [
+     "17e eeuw",
+     "18e eeuw"
+    ]
+   ]
+  },
+  "Dachstein": {
+   "replace": [
+    [
+     "1995 meter",
+     "2995 meter"
+    ]
+   ]
+  },
+  "De Tourton Bruynsstraat": {
+   "replace": [
+    [
+     "vernietigingskamp Buchenwald",
+     "concentratiekamp Buchenwald"
+    ]
+   ]
+  },
+  "Dulongstraat": {
+   "replace": [
+    [
+     "atoomtemperatuur",
+     "atoomwarmte"
+    ]
+   ]
+  },
+  "Ferrarisstraat": {
+   "replace": [
+    [
+     "Giorgi Ferraris",
+     "Galileo Ferraris"
+    ]
+   ]
+  },
+  "Geerdinkhof": {
+   "replace": [
+    [
+     "(Gelderland)",
+     "(Overijssel)"
+    ]
+   ]
+  },
+  "George Gershwinlaan": {
+   "replace": [
+    [
+     "(1898-1990)",
+     "(1898-1937)"
+    ]
+   ]
+  },
+  "Hegelhof": {
+   "replace": [
+    [
+     "(1841-1926)",
+     "(1770-1831)"
+    ]
+   ]
+  },
+  "Hudsonhof": {
+   "replace": [
+    [
+     "(1550-1611)",
+     "(c. 1565-1611)"
+    ],
+    [
+     "in dienst van de Verenigde Oostindische Compagnie",
+     "in 1609 in dienst van de VOC en in 1610 in Engelse dienst"
+    ]
+   ]
+  },
+  "James Wattstraat": {
+   "replace": [
+    [
+     "Engels natuurkundige",
+     "Schotse ingenieur"
+    ],
+    [
+     "uitvinder van de stoommachine",
+     "die de stoommachine sterk verbeterde"
+    ]
+   ]
+  },
+  "Jan Luijkenstraat": {
+   "replace": [
+    [
+     "samen met zijn broer Caspar",
+     "samen met zijn zoon Caspar"
+    ]
+   ]
+  },
+  "Jan van Goyenkade": {
+   "replace": [
+    [
+     "(1595-1635)",
+     "(1596-1656)"
+    ]
+   ]
+  },
+  "Johann Keplerstraat": {
+   "replace": [
+    [
+     "Boheems astronoom",
+     "Duits astronoom"
+    ]
+   ]
+  },
+  "John Coltranestraat": {
+   "replace": [
+    [
+     "William John Coltrane",
+     "John William Coltrane"
+    ]
+   ]
+  },
+  "Lise Meitnerpad": {
+   "replace": [
+    [
+     "kernfusie",
+     "kernsplijting"
+    ]
+   ]
+  },
+  "Lodewijk Boisotstraat": {
+   "replace": [
+    [
+     "in 1572 Leiden",
+     "in 1574 Leiden"
+    ]
+   ]
+  },
+  "Majubastraat": {
+   "replace": [
+    [
+     "op de grens van Transvaal en Oranje Vrijstaat",
+     "in Natal, aan de grens met Transvaal"
+    ]
+   ]
+  },
+  "Marconistraat": {
+   "replace": [
+    [
+     "Guilielmo Marconi",
+     "Guglielmo Marconi"
+    ]
+   ]
+  },
+  "Maxwellstraat": {
+   "replace": [
+    [
+     "De Engelse natuurkundige",
+     "De Schotse natuurkundige"
+    ]
+   ]
+  },
+  "Pasteurstraat": {
+   "replace": [
+    [
+     "Vond een serum tegen hondsdolheid",
+     "Ontwikkelde in 1885 een vaccin tegen hondsdolheid"
+    ]
+   ]
+  },
+  "Pieter van der Werfstraat": {
+   "replace": [
+    [
+     "beleg van Leiden in 1572",
+     "beleg van Leiden (1573-1574)"
+    ]
+   ]
+  },
+  "Raphaëlplein": {
+   "replace": [
+    [
+     "Raffaëllo di Senti",
+     "Raffaello Santi"
+    ]
+   ]
+  },
+  "Rousseaustraat": {
+   "replace": [
+    [
+     "(1711-1778)",
+     "(1712-1778)"
+    ]
+   ]
+  },
+  "Sara Burgerhartstraat": {
+   "replace": [
+    [
+     "uit 1872",
+     "uit 1782"
+    ]
+   ]
+  },
+  "Senefelderstraat": {
+   "replace": [
+    [
+     "Oostenrijks typograaf",
+     "in Praag geboren Duits acteur en drukker"
+    ]
+   ]
+  },
+  "Sophialaan": {
+   "replace": [
+    [
+     "(1817-1877)",
+     "(1818-1877)"
+    ]
+   ]
+  },
+  "Spaanse Brabanderstraat": {
+   "replace": [
+    [
+     "Naar de roman van",
+     "Naar het blijspel van"
+    ]
+   ]
+  },
+  "Suze Robertsonstraat": {
+   "replace": [
+    [
+     "(1856-1922)",
+     "(1855-1922)"
+    ]
+   ]
+  },
+  "Teniersstraat": {
+   "replace": [
+    [
+     "Brusselse Academie",
+     "Antwerpse Academie"
+    ]
+   ]
+  },
+  "Teslastraat": {
+   "replace": [
+    [
+     "Joegoslavisch ingenieur",
+     "Servisch-Amerikaans ingenieur"
+    ]
+   ]
+  },
+  "Thérèse Schwartzeplein": {
+   "replace": [
+    [
+     "(1852-1918)",
+     "(1851-1918)"
+    ]
+   ]
+  },
+  "Valeriusplein": {
+   "replace": [
+    [
+     "(1575-1626)",
+     "(1575-1625)"
+    ]
+   ]
+  },
+  "Vespuccistraat": {
+   "replace": [
+    [
+     "(1451- 1512)",
+     "(1454-1512)"
+    ]
+   ]
+  },
+  "Weissenbruchstraat": {
+   "replace": [
+    [
+     "(1825-1903)",
+     "(1824-1903)"
+    ]
+   ]
+  },
+  "Willem Schoutenstraat": {
+   "replace": [
+    [
+     "(1580-1625)",
+     "(c. 1567-1625)"
+    ]
+   ]
+  },
+  "William Boothstraat": {
+   "replace": [
+    [
+     "(1829-1914)",
+     "(1829-1912)"
+    ]
+   ]
+  },
+  "Zennehof": {
+   "replace": [
+    [
+     "Kanaal in België, nabij Brussel.",
+     "Rivier in België, die door Brussel stroomt."
+    ]
+   ]
+  },
+  "Zenostraat": {
+   "replace": [
+    [
+     "(342-270 v. Chr.)",
+     "(c. 334 - c. 262 v. Chr.)"
+    ]
+   ]
+  },
+  "Zilverschoonstraat": {
+   "replace": [
+    [
+     "ranonkelfamilie",
+     "rozenfamilie"
+    ]
+   ]
+  },
+  "Adriaan van Oordthof": {
+   "replace": [
+    [
+     "Tachtigers (1865-1910).",
+     "Tachtigers (ca. 1880-1895)."
+    ]
+   ]
+  },
+  "Alcantarastraat": {
+   "replace": [
+    [
+     "in de provincie Extremadura",
+     "in Extremadura"
+    ]
+   ]
+  },
+  "Allenstraat": {
+   "replace": [
+    [
+     "Loch Allen",
+     "Lough Allen"
+    ],
+    [
+     "county Leitrim, Noord-Ierland",
+     "county Leitrim, Ierland"
+    ]
+   ]
+  },
+  "Texelplein": {
+   "replace": [
+    [
+     "Waddeneiland (Noord-Holland).",
+     "Een van de Waddeneilanden."
+    ]
+   ]
+  },
+  "Texelweg": {
+   "replace": [
+    [
+     "Waddeneiland (Noord-Holland).",
+     "Een van de Waddeneilanden."
+    ]
+   ]
+  },
+  "Amundsenweg": {
+   "replace": [
+    [
+     "Ontdekte in 1903 de noordwestelijke doorvaart.",
+     "Was in 1903-1906 de eerste die de noordwestelijke doorvaart bevoer."
+    ]
+   ]
+  },
+  "Anne Frankstraat": {
+   "replace": [
+    [
+     "vernietigingskamp Bergen Belsen",
+     "concentratiekamp Bergen-Belsen"
+    ]
+   ]
+  },
+  "Aragohof": {
+   "replace": [
+    [
+     "ontdekker van het elektromagnetisme",
+     "deed vroeg onderzoek naar het elektromagnetisme (Ørsted, 1820)"
+    ]
+   ]
+  },
+  "Archangelkade": {
+   "replace": [
+    [
+     "aan de Barentsz Zee",
+     "aan de Witte Zee"
+    ]
+   ]
+  },
+  "Archangelweg": {
+   "replace": [
+    [
+     "aan de Barentsz Zee",
+     "aan de Witte Zee"
+    ]
+   ]
+  },
+  "Avogadrostraat": {
+   "replace": [
+    [
+     "Wet van Avogadro uit 1814",
+     "Wet van Avogadro uit 1811"
+    ]
+   ]
+  },
+  "Bachplein": {
+   "replace": [
+    [
+     "meer dan vierhonderd cantates",
+     "ongeveer tweehonderd bewaarde cantates"
+    ]
+   ]
+  },
+  "Bachstraat": {
+   "replace": [
+    [
+     "meer dan vierhonderd cantates",
+     "ongeveer tweehonderd bewaarde cantates"
+    ]
+   ]
+  },
+  "Beloegastraat": {
+   "replace": [
+    [
+     "Ook wel witte dolfijn kan tien tot twaalf meter lang worden, tot 1400 kilo wegen en wordt ten minste honderd jaar. Leeft in de Kaspische en in de Zwarte Zee.",
+     "De beloega of witte dolfijn (Delphinapterus leucas) is een tandwalvis uit de Noordelijke IJszee."
+    ]
+   ]
+  },
+  "Ben Viljoenstraat": {
+   "replace": [
+    [
+     "(sterfjaar onbekend)",
+     "in 1917 in La Mesilla, New Mexico"
+    ]
+   ]
+  },
+  "Bert Haanstrakade": {
+   "replace": [
+    [
+     "waaronder in 1958 een Oscar voor zijn documentaire 'Glas'",
+     "waaronder in 1960 een Oscar voor zijn documentaire 'Glas' uit 1958"
+    ]
+   ]
+  },
+  "Bodenseehof": {
+   "replace": [
+    [
+     "op de grens tussen Duitsland en Zwitserland",
+     "op de grens van Duitsland, Zwitserland en Oostenrijk"
+    ]
+   ]
+  },
+  "Bontekoestraat": {
+   "replace": [
+    [
+     "(1587-1618)",
+     "(1587-1657)"
+    ]
+   ]
+  },
+  "Carolina MacGillavrylaan": {
+   "replace": [
+    [
+     "(KNWA)",
+     "(KNAW)"
+    ]
+   ]
+  },
+  "G.T. Ketjenweg": {
+   "replace": [
+    [
+     "In 1935 richtte hij",
+     "In 1835 richtte hij"
+    ]
+   ]
+  },
+  "Gran Paradiso": {
+   "replace": [
+    [
+     "Hoogste berg van Italië",
+     "Hoogste berg die geheel in Italië ligt"
+    ]
+   ]
+  },
+  "Jaap Edenstraat": {
+   "replace": [
+    [
+     "Van 1896 tot 1914 wereldkampioen schaatsen op de 5000 m.",
+     "Wereldkampioen schaatsen in 1893, 1895 en 1896; zijn wereldrecord op de 5000 m uit 1894 bleef zeventien jaar staan."
+    ]
+   ]
+  },
+  "Johannes Vermeerplein": {
+   "replace": [
+    [
+     "schilderde voornamelijk landschappen en binnenhuizen",
+     "schilderde voornamelijk binnenhuizen en stadsgezichten"
+    ]
+   ]
+  },
+  "Joseph Scaligerstraat": {
+   "replace": [
+    [
+     "Vluchtte als hugenoot na de Bartholomeusnacht naar Holland, was daarna hoogleraar te Leiden.",
+     "Vluchtte als hugenoot in 1572 naar Genève en kwam in 1593 naar Leiden, waar hij hoogleraar werd."
+    ]
+   ]
+  },
+  "Karveelstraat": {
+   "replace": [
+    [
+     "Zeilschip uit de negentiende eeuw, een snelle zeiler met overwegend grootzeil.",
+     "Laatmiddeleeuws zeilschip; Columbus voer met twee karvelen, de Niña en de Pinta (1492)."
+    ]
+   ]
+  },
+  "Kinkerbrug": {
+   "replace": [
+    [
+     "(1765-1845)",
+     "(1764-1845)"
+    ]
+   ]
+  },
+  "Korte Van Eeghenstraat": {
+   "replace": [
+    [
+     "Genoemd naar Isabelle Henriette van Eeghen (1913-1996), archivaris en historica.",
+     "Genoemd naar Christiaan Pieter van Eeghen (1816-1889), net als de Van Eeghenstraat."
+    ]
+   ]
+  },
+  "Le Mairegracht": {
+   "replace": [
+    [
+     "naar zijn vaderstad Hoorn",
+     "naar de geboortestad van Willem Schouten, Hoorn"
+    ]
+   ]
+  },
+  "Leeuwenhoekstraat": {
+   "replace": [
+    [
+     "uitvinder van de microscoop",
+     "bouwde verbeterde microscopen met één lens"
+    ]
+   ]
+  },
+  "Lord Kelvinstraat": {
+   "replace": [
+    [
+     "Engels natuurkundige",
+     "Brits natuurkundige"
+    ],
+    [
+     "Ontwierp vele elektrische meetinstrumenten en ontdekte het element argon.",
+     "Ontwierp vele elektrische meetinstrumenten; argon werd in 1894 door Rayleigh en Ramsay geïsoleerd."
+    ]
+   ]
+  },
+  "Louvrelaan": {
+   "replace": [
+    [
+     "kunstschatten van Lodewijk XV",
+     "kunstschatten van Frans I en Lodewijk XIV"
+    ]
+   ]
+  },
+  "Makassarplein": {
+   "replace": [
+    [
+     "Heet thans Ujung Pandang.",
+     "Heette van 1971 tot 1999 Ujung Pandang en heet weer Makassar."
+    ]
+   ]
+  },
+  "Marathonweg": {
+   "replace": [
+    [
+     "Diomedon bracht dit bericht in snelle loop naar Athene (42 km).",
+     "Volgens de overlevering bracht Pheidippides dit bericht in snelle loop naar Athene (42 km)."
+    ]
+   ]
+  },
+  "Maritzstraat": {
+   "replace": [
+    [
+     "Versloeg in 1937 de Matabellen.",
+     "Versloeg in 1837 de Matabellen."
+    ]
+   ]
+  },
+  "Mata Harihof": {
+   "replace": [
+    [
+     "Vanwege haar spionageactiviteiten gericht tegen de Duitsers",
+     "Vanwege spionage voor Duitsland"
+    ]
+   ]
+  },
+  "Max Planckstraat": {
+   "replace": [
+    [
+     "hoogleraar te Berlijn en Wenen",
+     "hoogleraar te Kiel en Berlijn"
+    ]
+   ]
+  },
+  "Milovan Djilasstraat": {
+   "replace": [
+    [
+     "(1911-1997)",
+     "(1911-1995)"
+    ],
+    [
+     "een van de naaste medewerkers van Josip Tito, secretaris-generaal van de Joegoslavische Communistische Partij.",
+     "een van de naaste medewerkers van Josip Tito, de partijleider van Joegoslavië."
+    ]
+   ]
+  },
+  "Nelson Mandelapark": {
+   "replace": [
+    [
+     "in 1963 veroordeeld",
+     "in 1964 veroordeeld"
+    ]
+   ]
+  },
+  "Nicolaas Maesstraat": {
+   "replace": [
+    [
+     "(1632-1693)",
+     "(1634-1693)"
+    ]
+   ]
+  },
+  "Nobelweg": {
+   "replace": [
+    [
+     "uitvinder van het dynamiet en de nitroglycerine",
+     "uitvinder van het dynamiet"
+    ],
+    [
+     "sinds 1901 jaarlijks zes Nobelprijzen",
+     "sinds 1901 jaarlijks vijf Nobelprijzen en sinds 1969 de prijs voor economie"
+    ]
+   ]
+  },
+  "Okeghemstraat": {
+   "replace": [
+    [
+     "was de leermeester van Dufay en Obrecht",
+     "was de leermeester van Obrecht"
+    ]
+   ]
+  },
+  "Oranje-Vrijstaatkade": {
+   "replace": [
+    [
+     "De in 1842 gestichte Boeren republiek",
+     "De in 1854 gestichte Boerenrepubliek"
+    ]
+   ]
+  },
+  "Philip Vingboonsstraat": {
+   "replace": [
+    [
+     "(1613-1678)",
+     "(ca. 1607-1678)"
+    ],
+    [
+     "Hij bouwde onder meer het Trippenhuis",
+     "Zijn broer Justus ontwierp het Trippenhuis; Philip bouwde"
+    ]
+   ]
+  },
+  "Pieter de Hoochstraat": {
+   "replace": [
+    [
+     "(1639-1684)",
+     "(gedoopt 1629, overleden na 1679)"
+    ]
+   ]
+  },
+  "Plutostraat": {
+   "replace": [
+    [
+     "De planeet die het verst van de zon afstaat.",
+     "De dwergplaneet die het verst van de zon afstaat (sinds 2006)."
+    ]
+   ]
+  },
+  "Pradolaan": {
+   "replace": [
+    [
+     "geopend in 1918",
+     "geopend in 1819"
+    ]
+   ]
+  },
+  "Rooseveltlaan": {
+   "replace": [
+    [
+     "vanaf 1932 president",
+     "van november 1932 gekozen en vanaf maart 1933 president"
+    ]
+   ]
+  },
+  "Rutherfordstraat": {
+   "replace": [
+    [
+     "Engels natuur-en scheikundige",
+     "in Nieuw-Zeeland geboren Brits natuur- en scheikundige"
+    ]
+   ]
+  },
+  "Schopenhauerhof": {
+   "replace": [
+    [
+     "(1778-1860)",
+     "(1788-1860)"
+    ]
+   ]
+  },
+  "Shackletonstraat": {
+   "replace": [
+    [
+     "Engels zuidpoolonderzoeker",
+     "Iers-Brits zuidpoolonderzoeker"
+    ],
+    [
+     "Bereikte in 1909 de magnetische zuidpool.",
+     "Leidde in 1908-1909 de Nimrod-expeditie; de poolgroep met David, Mawson en Mackay bereikte de magnetische zuidpool."
+    ]
+   ]
+  },
+  "Silvretta": {
+   "replace": [
+    [
+     "Bergtop in Zwitserland, 3411 meter hoog.",
+     "Bergketen op de grens van Zwitserland en Oostenrijk; de hoogste top, de Piz Linard, is 3411 meter."
+    ]
+   ]
+  },
+  "Snelliusstraat": {
+   "replace": [
+    [
+     "richtte de eerste Europese sterrenwacht in",
+     "formuleerde de wet van Snellius en deed aan driehoeksmeting"
+    ]
+   ]
+  },
+  "Sontvaarderstraat": {
+   "replace": [
+    [
+     "Een sontvaarder is een binnenschip dat vaart tussen Nederland en de Zweedse zuidkust.",
+     "Een sontvaarder is een zeeschip dat via de Sont handeldreef met de Oostzee."
+    ]
+   ]
+  },
+  "Spitsbergenstraat": {
+   "replace": [
+    [
+     "die er de nederzetting Smeerenburg liet bouwen ten behoeve van de walvisvangst",
+     "die het in 1596 ontdekte; de nederzetting Smeerenburg dateert van 1619"
+    ]
+   ]
+  },
+  "Stephensonstraat": {
+   "replace": [
+    [
+     "uitvinder van de locomotief (1814)",
+     "bouwde in 1814 een van de eerste bruikbare locomotieven; Trevithicks locomotief reed al in 1804"
+    ]
+   ]
+  },
+  "Stuyvesantstraat": {
+   "replace": [
+    [
+     "(1592-1672)",
+     "(1611/12-1672)"
+    ]
+   ]
+  },
+  "Tasmanstraat": {
+   "replace": [
+    [
+     "Ontdekte in 1642 en 1644 het naar hem genoemde eiland Tasmanië en Nieuw-Zeeland.",
+     "Ontdekte in 1642 Tasmanië en Nieuw-Zeeland; in 1644 verkende hij de noordkust van Australië."
+    ]
+   ]
+  },
+  "Tempelhofstraat": {
+   "replace": [
+    [
+     "Naam van de luchthaven van Berlijn.",
+     "Naam van de Berlijnse luchthaven, die in 2008 sloot."
+    ]
+   ]
+  },
+  "Thomas à Kempisstraat": {
+   "replace": [
+    [
+     "in het land van Kleef",
+     "in het keurvorstendom Keulen"
+    ]
+   ]
+  },
+  "Tienraaikade": {
+   "replace": [
+    [
+     "Dorp in de gemeente Mierlo, ten oosten van Venray (Limburg).",
+     "Dorp in de gemeente Horst aan de Maas (Limburg), ten oosten van Venray."
+    ]
+   ]
+  },
+  "Titiaanstraat": {
+   "replace": [
+    [
+     "(1477-1576)",
+     "(ca. 1488-1576)"
+    ]
+   ]
+  },
+  "Titus van Rijnstraat": {
+   "replace": [
+    [
+     "Runde na Rembrandts dood met stiefmoeder Hendrikje Stoffels een kunsthandel",
+     "Runde vanaf 1660 met Hendrikje Stoffels een kunsthandel"
+    ]
+   ]
+  },
+  "Torresstraat": {
+   "replace": [
+    [
+     "(1728-1779)",
+     "(ca. 1565-1613)"
+    ],
+    [
+     "Ontdekte de naar hem genoemde Torresstraat",
+     "Bevoer in 1606 de naar hem genoemde Torresstraat"
+    ]
+   ]
+  },
+  "Tweede Jacob van Campenstraat": {
+   "replace": [
+    [
+     "en voor prins Frederik Hendrik in 1657 een paleis in Rijswijk",
+     "en een paleis in Rijswijk voor prins Frederik Hendrik"
+    ]
+   ]
+  },
+  "Van Diemenkade": {
+   "replace": [
+    [
+     "Samen met Tasman ontdekte hij Nieuw Holland (Australië) en Van Diemensland.",
+     "Hij stuurde Tasman op expeditie; die ontdekte Van Diemensland en Nieuw-Zeeland."
+    ]
+   ]
+  },
+  "Van Effenstraat": {
+   "replace": [
+    [
+     "Verzorgde onder meer de eerste Nederlandse vertaling van Defoe's 'Robinson Crusoë'.",
+     "Vertaalde Defoe's 'Robinson Crusoe' in het Frans."
+    ]
+   ]
+  },
+  "Van Musschenbroekstraat": {
+   "replace": [
+    [
+     "hoogleraar te Londen, Utrecht en Leiden",
+     "hoogleraar te Duisburg, Utrecht en Leiden"
+    ],
+    [
+     "Hij toonde de lengtevermeerdering van een verwarmde staaf.",
+     "Hij toonde de lengtevermeerdering van een verwarmde staaf en vond de Leidse fles uit."
+    ]
+   ]
+  },
+  "Van Reigersbergenstraat": {
+   "replace": [
+    [
+     "(1589-1643)",
+     "(1589-1653)"
+    ]
+   ]
+  },
+  "Van Rensselaerstraat": {
+   "replace": [
+    [
+     "(1580-1646)",
+     "(ca. 1586-1643)"
+    ]
+   ]
+  },
+  "Van Woustraat": {
+   "replace": [
+    [
+     "(1460-1524)",
+     "(ca. 1450-1527)"
+    ]
+   ]
+  },
+  "Vancouverstraat": {
+   "replace": [
+    [
+     "(1758-1790)",
+     "(1757-1798)"
+    ]
+   ]
+  },
+  "Vasco da Gamastraat": {
+   "replace": [
+    [
+     "vond in 1497 de zeeweg rond Kaap de Goede Hoop",
+     "opende in 1497-1498 de zeeweg naar India; Dias rondde de Kaap al in 1488"
+    ]
+   ]
+  },
+  "Waterlooplein": {
+   "replace": [
+    [
+     "Het plein is ontstaan in 1874 door demping van de Houtgracht en de Leprozengracht.",
+     "Het plein is ontstaan in 1882 door demping van de Houtgracht en de Leprozengracht."
+    ]
+   ]
+  },
+  "Wigbolt Ripperdastraat": {
+   "replace": [
+    [
+     "beleg van 1672 op 1673",
+     "beleg van 1572-1573"
+    ]
+   ]
+  },
+  "Zacharias Jansestraat": {
+   "replace": [
+    [
+     "(1580-1620), uitvinder van de verrekijker",
+     "(ca. 1585-ca. 1632); de uitvinding van de verrekijker is omstreden"
+    ]
+   ]
+  },
+  "Trimurtistraat": {
+   "replace": [
+    [
+     "Trimur: onafhankelijkheid",
+     "S.K. Trimurti (1912-2008), Indonesisch onafhankelijkheidsstrijder en eerste minister van arbeid."
+    ]
+   ]
+  },
+  "Slijkstraat": {
+   "replace": [
+    [
+     "In de Amsterdam-Centrum",
+     "In het centrum"
+    ]
+   ]
+  },
+  "Passeerdersgracht": {
+   "replace": [
+    [
+     "in de Amsterdam-Centrum werd verboden",
+     "in het centrum werd verboden"
+    ]
+   ]
+  },
+  "Jacob Bontiusplaats": {
+   "replace": [
+    [
+     "het bestuurlijk Amsterdam-Centrum van de voormalige kolonie",
+     "het bestuurlijke centrum van de voormalige kolonie"
+    ]
+   ]
+  },
+  "VOC-kade": {
+   "replace": [
+    [
+     "het bestuurlijke Amsterdam-Centrum Azië",
+     "het bestuurlijke centrum van Azië"
+    ]
+   ]
+  },
+  "Badhuiskade": {
+   "replace": [
+    [
+     "vroegere badinrichting Obelt",
+     "De kade is vernoemd naar de vroegere badinrichting Obelt"
+    ]
+   ]
+  },
+  "Bastingstraat": {
+   "replace": [
+    [
+     "het Mosplein. Voor deze buurt",
+     "Voor deze buurt"
+    ]
+   ]
+  },
+  "Dirk de Waterduikerbrug": {
+   "replace": [
+    [
+     " Hij was daarom een zeer gerespecteerd figuur in",
+     ""
+    ]
+   ]
+  },
+  "Dokter Meurerlaan": {
+   "replace": [
+    [
+     "bureau. M",
+     "bureau."
+    ]
+   ]
+  },
+  "Eva Schalkbrug": {
+   "replace": [
+    [
+     "waterschapsbestuur Ze was",
+     "waterschapsbestuur. Ze was"
+    ],
+    [
+     " en 21 jaar lang hoofdingeland van het Hoogheemraadschap",
+     "."
+    ]
+   ]
+  },
+  "Haarlemmersluis": {
+   "replace": [
+    [
+     "die de uitvalsweg van Amsterdam naar Haarlem",
+     "de uitvalsweg van Amsterdam naar Haarlem was."
+    ]
+   ]
+  },
+  "Hederabrug": {
+   "replace": [
+    [
+     " Waterland",
+     ""
+    ]
+   ]
+  },
+  "Mariotteplein": {
+   "replace": [
+    [
+     " Marisplein, Jacob Oud-Zuid Rb. 26-1-1922 15: m 9",
+     ""
+    ]
+   ]
+  },
+  "Robijnstraat": {
+   "replace": [
+    [
+     " De gemeente Nieuwer-Amstel gaf de straat bij de aanleg de naam Tweede De",
+     ""
+    ]
+   ]
+  },
+  "Volewijckbrug": {
+   "replace": [
+    [
+     "die op de Dam waren opgehangen,",
+     "die op de Dam waren opgehangen, werden tentoongesteld."
+    ]
+   ]
+  },
+  "Wim Suurbierbrug": {
+   "replace": [
+    [
+     "zowel onaantastbaar als toonaangevend",
+     "zowel onaantastbaar als toonaangevend was."
+    ]
+   ]
+  },
+  "Piet Bakkerbrug": {
+   "replace": [
+    [
+     " In de omgeving",
+     ""
+    ]
+   ]
+  },
+  "Lizzy Ansinghstraat": {
+   "replace": [
+    [
+     " Anslijnstraat, Nicolaas Osdorp Rb. 15-4-1959 14: l 6 Onderwijshervormer (1778-1838). Schrijver van schoolleesboekjes, onder andere 'De brave Hendrik'.",
+     ""
+    ]
+   ]
+  },
+  "Jan Poytstraat": {
+   "replace": [
+    [
+     " Simon van Woerden (1902-1998)heeft rond 1958 de Bethelkerk ontworpen.",
+     ""
+    ]
+   ]
+  },
+  "Frank Martinus Arionstraat": {
+   "replace": [
+    [
+     "een he kolonisatie",
+     "een herkolonisatie"
+    ]
+   ]
+  }
+ },
+ "nlOverrides": {
+  "Vredenburgerbrug": {
+   "nl": "In de zeventiende eeuw een zeer bekende herberg, die stond op de plaats waar in 1835 het rooms-katholieke bejaardenhuis Vredenburg werd gebouwd. Thans tot woningen verbouwd. Vóór de herberg waren hier achtereenvolgens een bierbrouwerij van burgemeester Kornelis Jacobsz en een zoutkoperij gevestigd. Vandaar de vroegere namen Cornelis Jacobsz Brouwersteeg en Zoutkoperssteeg. Ook de naam Rottenest kwam voor.",
+   "source": "BAG openbareruimtes, record van de Vredenburgersteeg (zelfde registertekst)"
+  },
+  "Sint Antoniesbreestraat": {
+   "nl": "Genoemd naar de Sint Antoniesdijk, de tot de zeventiende eeuw buiten de stad gelegen zeedijk, die op zijn beurt de naam ontleende aan het Sint Antoniesgasthuis of Leprozenhuis.",
+   "source": "BAG openbareruimtes, record van de Sint Antoniesluis (zelfde herkomst)"
+  },
+  "Piet Meerburgbrug": {
+   "nl": "Deze brug is vernoemd naar Piet Meerburg, die in 1919 geboren werd in De Bilt en in 2010 in Amsterdam overleed. Hij was in de Tweede Wereldoorlog betrokken bij het redden van Joodse kinderen, waarvoor hij de Yad Vashem onderscheiding kreeg. Een van die kinderen was de latere burgemeester Ed van Thijn. Hij was tevens een prominente theaterondernemer in Amsterdam. Zo was hij jarenlang directeur van het Nieuwe de la Mar theater en produceerde hij de musical My Fair Lady. Hij redde tijdens de Duitse bezetting samen met onder meer Lau Mazirel en Walter Süskind veel volwassenen en kinderen uit de Hollandse Schouwburg en de daar tegenover gelegen crèche. Ook was hij één van de oprichters van de nabijgelegen bioscoop Kriterion, die door studenten van de Universiteit van Amsterdam geëxploiteerd wordt.",
+   "source": "BAG openbareruimtes, Meerburg-paragraaf die onder de Hamerstraat stond"
+  },
+  "Dirk van Hasseltssteeg": {
+   "nl": "De steeg is vernoemd naar schipper Dirk van Hasselt. Uit archiefstukken blijkt dat Van Hasselt zelf ook een hoekpand bezat in deze steeg. Onder de panden 2 tot en met 6 liggen funderingsresten, mogelijk van het 13e-eeuwse kasteel van de heren van Amstel.",
+   "source": "https://nl.wikipedia.org/wiki/Dirk_van_Hasseltssteeg"
+  },
+  "Eilandsgracht": {
+   "nl": "De Eilandsgracht is een gracht in Amsterdam tussen de eilanden en het vasteland. Oorspronkelijk liep hij tussen het vasteland en twee van de eilanden, het Prinseneiland en het Bickerseiland. In 1928 werd het gedeelte langs het Bickerseiland gedempt.",
+   "source": "https://nl.wikipedia.org/wiki/Eilandsgracht"
+  },
+  "Enny Vredestraat": {
+   "nl": "Enny Vrede, artiestennaam van Maria Magdalena Müller (Utrecht, 3 november 1883 - 2 april 1919), was een Nederlandse actrice.",
+   "source": "https://nl.wikipedia.org/wiki/Enny_Vrede"
+  },
+  "Gerrie Mührenbrug": {
+   "nl": "Gerrie Mühren (Volendam, 2 februari 1946 - aldaar, 19 september 2013) was een Nederlands voetballer. Hij kwam in zijn 22-jarige loopbaan uit voor Volendam, Ajax, Real Betis, MVV, Seiko SA en DS '79. Met Ajax won hij drie keer de Europa Cup I en werd driemaal landskampioen. Hij speelde tien interlands voor het Nederlands elftal.",
+   "source": "https://nl.wikipedia.org/wiki/Gerrie_M%C3%BChren"
+  },
+  "Jaap Nunes Vazstraat": {
+   "nl": "Jacob (Jaap) Nunes Vaz (Amsterdam, 20 september 1906 - Sobibór, 13 maart 1943) was een Nederlandse journalist van Joodse afkomst. Hij was een van de oprichters van de verzetskrant Het Parool.",
+   "source": "https://nl.wikipedia.org/wiki/Jaap_Nunes_Vaz"
+  },
+  "Jaap Speyerstraat": {
+   "nl": "Jaap Speyer (Amsterdam, 29 november 1891 - Amsterdam, 17 september 1952) was een Nederlands filmregisseur.",
+   "source": "https://nl.wikipedia.org/wiki/Jaap_Speyer"
+  },
+  "Kinkerstraat": {
+   "nl": "Johannes Kinker (Nieuwer-Amstel, 1 januari 1764 - Amsterdam, 16 september 1845) was een Nederlands dichter, filosoof en advocaat.",
+   "source": "https://nl.wikipedia.org/wiki/Johannes_Kinker"
+  },
+  "Piet Wiedijkstraat": {
+   "nl": "Straat en park zijn genoemd naar de apotheker en publicist Piet Wiedijk (overleden 1938), die onder het pseudoniem J. Saks de eerste biografie van Multatuli schreef.",
+   "source": "https://nl.wikipedia.org/wiki/Piet_Wiedijkpark"
+  },
+  "Bickersgracht": {
+   "nl": "Deze straten zijn gelegen op het Bickerseiland. Dit eiland was oorspronkelijk eigendom van dr. Johan Bicker (1591-1653), scheepsbouwer en koopman, schepen en burgemeester van Amsterdam, die het in 1631 kocht. De straten die naderhand op dit eiland werden aangelegd, kregen automatisch de naam van de stichter.",
+   "source": "BAG openbareruimtes 0363300000002930 (het straatrecord dat wel compleet is)"
+  },
+  "Nieuwe Vaart": {
+   "nl": "Naar de Nieuwe Vaart, omstreeks 1650 gegraven om het IJ en het Oosterdok langs de kortst mogelijke route te verbinden met de IJ-mond bij Zeeburg.",
+   "source": "BAG openbareruimtes 0363300000003876 (record van de Nieuwevaart)"
+  },
+  "Piet Kranenbergpad": {
+   "nl": "Vernoemd naar Piet Kranenberg, een van de redders van het Olympisch Stadion. In 1996 werd met Bram Mulder en stadiondirecteur Otto Roffel een reddings- en exploitatieplan opgezet; in 1998 begon de renovatie.",
+   "source": "https://nl.wikipedia.org/wiki/Olympisch_Stadion_(Amsterdam)"
+  },
+  "Na Druk Gelukbrug": {
+   "nl": "Na druk geluk was een boerderij die tot begin twintigste eeuw langs de Amstelveenseweg stond, ongeveer op de plek van het huidige huizenblok Stadionplein, Stadionkade, Jasonstraat en Argonautenstraat. De naam is door bewoners van het stadsdeel gekozen na een prijsvraag.",
+   "source": "https://nl.wikipedia.org/wiki/Olympisch_Kwartier"
+  },
+  "Elim": {
+   "nl": "Genoemd naar Elim, een dorp in de Zuid-Afrikaanse provincie West-Kaap.",
+   "source": "https://nl.wikipedia.org/wiki/Elim_(Overberg)"
+  }
+ }
+}

@@ -6,6 +6,7 @@
 // be worth asking about. Each of those was previously reachable only by
 // driving a boat at it.
 
+import { t } from '../../i18n/index.ts';
 import type { WorldPoint } from './worldTypes';
 
 /** Extract and store coordinates are `[lat, lon]`. */
@@ -521,16 +522,16 @@ export function routeQuizContext(input: {
   corridorHeading: number | null;
   heading: number;
 }): string {
-  if (input.onBridge) return 'Crossing a waterway';
-  if (input.transit) return 'Riding the corridor';
+  if (input.onBridge) return t('ride.context.bridge');
+  if (input.transit) return t('ride.context.transit');
   // The first ask of a ride follows no turn; saying so was false.
-  if (!input.hadCorridor) return 'Where you set off';
-  if (input.corridorHeading === null) return 'You made a turn';
+  if (!input.hadCorridor) return t('ride.context.start');
+  if (input.corridorHeading === null) return t('ride.context.turn');
   const change = Math.abs(Math.atan2(
     Math.sin(input.heading - input.corridorHeading),
     Math.cos(input.heading - input.corridorHeading),
   ));
-  return change > ROUTE_QUIZ_TURN_RADIANS ? 'You made a turn' : 'The street name changed';
+  return change > ROUTE_QUIZ_TURN_RADIANS ? t('ride.context.turn') : t('ride.context.nameChanged');
 }
 
 /** How far the vehicle's heading is from the road's, folded into [0, π/2]. */

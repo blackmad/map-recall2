@@ -3,6 +3,7 @@ import { MAP_DIFFICULTIES, type MapDifficulty } from '../mapRecall/trivia';
 import { TileStyle, DistanceUnit, FeatureCategory, FEATURE_CATEGORIES, City, LocationScope, AdministrativeArea } from '../types';
 import { X, Map, EyeOff, Ruler, Layers, Filter, Compass, HardDrive, Trash2 } from 'lucide-react';
 import { getCacheStorageStats, clearAllFeatureCache } from '../utils/featureCache';
+import { useT } from '../i18n/useT';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -57,6 +58,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   selectedAdministrativeAreaId,
   onSelectAdministrativeArea,
 }) => {
+  const t = useT();
   const [cacheStats, setCacheStats] = useState(() => getCacheStorageStats());
 
   useEffect(() => {
@@ -66,7 +68,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   }, [isOpen]);
 
   const handleClearCache = () => {
-    if (window.confirm('Clear all cached map features? Locations will be re-fetched on demand.')) {
+    if (window.confirm(t('settings.clearCacheConfirm'))) {
       clearAllFeatureCache();
       setCacheStats(getCacheStorageStats());
     }
@@ -112,7 +114,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="w-8 h-8 rounded-xl border border-white/40 bg-white/10 flex items-center justify-center text-[#8a4a18]">
               <Layers className="w-4 h-4" />
             </div>
-            <h3 id="settings-modal-title" className="text-lg font-bold text-white">Quiz & Map Configuration</h3>
+            <h3 id="settings-modal-title" className="text-lg font-bold text-white">{t('settings.quizTitle')}</h3>
           </div>
 
           <button
@@ -131,7 +133,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="flex items-center justify-between">
               <div className="font-semibold text-white flex items-center gap-2">
                 <Compass className="w-4 h-4 text-[#8a4a18]" />
-                <span>Location Quiz Scope</span>
+                <span>{t('settings.locationScope')}</span>
               </div>
               <span className="text-xs text-[#8a4a18] font-semibold uppercase tracking-wider">
                 {locationScope === 'neighborhood' ? '🏘️ Neighborhood' : locationScope === 'region' ? '🗺️ Region' : '🏙️ City'}
@@ -152,7 +154,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               >
                 <div className="font-bold text-xs flex items-center gap-1.5">
                   <span>🏘️</span>
-                  <span>Neighborhood (~2.2 km)</span>
+                  <span>{t('settings.neighborhoodScope')}</span>
                 </div>
                 <span className="text-xs text-white/60">
                   Focuses on streets and places right around your immediate vicinity.
@@ -167,8 +169,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     : 'enamel-chip text-white/80 hover:bg-white/10 hover:text-white'
                 }`}
               >
-                <div className="font-bold text-xs flex items-center gap-1.5"><span>🗺️</span><span>Region (~15 km)</span></div>
-                <span className="text-xs text-white/60">Uses the county or province returned for your position.</span>
+                <div className="font-bold text-xs flex items-center gap-1.5"><span>🗺️</span><span>{t('settings.regionScope')}</span></div>
+                <span className="text-xs text-white/60">{t('settings.regionScopeBody')}</span>
               </button>
 
               <button
@@ -181,10 +183,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               >
                 <div className="font-bold text-xs flex items-center gap-1.5">
                   <span>🏙️</span>
-                  <span>Whole City (~4.5 km)</span>
+                  <span>{t('settings.cityScope')}</span>
                 </div>
                 <span className="text-xs text-white/60">
-                  Encompasses major city canals, bridges, plazas, and citywide landmarks.
+                  {t('settings.cityScopeBody')}
                 </span>
               </button>
             </div>
@@ -194,20 +196,20 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="enamel-chip p-3.5 space-y-2.5">
               <div className="font-semibold text-white flex items-center gap-2">
                 <Map className="w-4 h-4 text-[#8a4a18]" />
-                <span>Administrative Boundary</span>
+                <span>{t('settings.boundary')}</span>
               </div>
               <p className="text-xs text-white/60">
-                Use an exact OpenStreetMap political boundary, or switch back to the custom radius.
+                {t('settings.boundaryBody')}
               </p>
               <select
                 value={selectedAdministrativeAreaId ?? ''}
                 onChange={(event) => onSelectAdministrativeArea(event.target.value ? Number(event.target.value) : null)}
                 className="enamel-chip w-full px-3 py-2.5 text-sm text-white focus:outline-none cursor-pointer"
               >
-                <option value="">Custom radius circle</option>
+                <option value="">{t('quiz.customRadius')}</option>
                 {administrativeAreas.map((area) => (
                   <option key={area.id} value={area.id}>
-                    {area.name} — admin level {area.adminLevel}
+                    {t('settings.boundaryAdminLevel', { name: area.name, level: area.adminLevel })}
                   </option>
                 ))}
               </select>
@@ -218,14 +220,14 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="flex items-center justify-between">
               <div className="font-semibold text-white flex items-center gap-2">
                 <Ruler className="w-4 h-4 text-[#8a4a18]" />
-                <span>Search Radius</span>
+                <span>{t('settings.radius')}</span>
               </div>
               <span className="text-xs text-[#8a4a18] font-semibold">
                 {(searchRadiusMeters / 1000).toFixed(1)} km
               </span>
             </div>
             <p className="text-xs text-white/60">
-              Administrative scope chooses the place name; radius controls the actual circular OSM query independently.
+              {t('settings.radiusBody')}
             </p>
             <div className="grid grid-cols-5 gap-1.5">
               {[1000, 2200, 4500, 8000, 15000].map((radius) => (
@@ -305,7 +307,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <label className="enamel-chip flex items-start gap-3 p-3.5">
             <input type="checkbox" className="mt-1" checked={importantWatersOnly} onChange={event => onChangeImportantWaters(event.target.checked)} />
             <span>
-              <span className="block font-semibold">Important canals & waters first</span>
+              <span className="block font-semibold">{t('settings.importantWaters')}</span>
               <span className="block text-xs text-white/60">Focus on up to 40 notable waters. Amsterdam favours Centrum and the main canals; tiny waters and Noord rank lower. Turn off to include every named water.</span>
             </span>
           </label>
@@ -315,7 +317,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="space-y-0.5 pr-3">
               <div className="font-semibold text-white flex items-center gap-2">
                 <EyeOff className="w-4 h-4 text-[#8a4a18]" />
-                <span>Label-less Base Map (Default)</span>
+                <span>{t('settings.blankMap')}</span>
               </div>
               <p className="text-xs text-white/60">
                 Hides road names and place text labels on map tiles for a pure visual quiz.
@@ -340,7 +342,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <div className="enamel-chip p-3.5 space-y-2">
             <div className="font-semibold text-white flex items-center gap-2">
               <Map className="w-4 h-4 text-[#8a4a18]" />
-              <span>Map Style Theme</span>
+              <span>{t('settings.mapTheme')}</span>
             </div>
             <div className="grid grid-cols-2 gap-2">
               {(
@@ -371,9 +373,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="space-y-0.5">
               <div className="font-semibold text-white flex items-center gap-2">
                 <Ruler className="w-4 h-4 text-[#8a4a18]" />
-                <span>Distance Units</span>
+                <span>{t('settings.units')}</span>
               </div>
-              <p className="text-xs text-white/60">Metric (m / km) or Imperial (ft / mi)</p>
+              <p className="text-xs text-white/60">{t('settings.unitsBody')}</p>
             </div>
             <div className="enamel-chip flex p-1">
               <button
@@ -398,8 +400,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           {/* Difficulty */}
           <div className="flex items-center justify-between enamel-chip p-3.5">
             <div className="space-y-0.5">
-              <div className="font-semibold text-white">Difficulty</div>
-              <p className="text-xs text-white/60">Hard hides the landmark and shop clues inside a neighbourhood</p>
+              <div className="font-semibold text-white">{t('settings.difficulty')}</div>
+              <p className="text-xs text-white/60">{t('settings.difficultyBody')}</p>
             </div>
             <div className="enamel-chip flex p-1">
               {MAP_DIFFICULTIES.map((level) => (
@@ -420,8 +422,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           {/* Rounds per Game */}
           <div className="flex items-center justify-between enamel-chip p-3.5">
             <div className="space-y-0.5">
-              <div className="font-semibold text-white">Rounds per Quiz</div>
-              <p className="text-xs text-white/60">Number of street features per session</p>
+              <div className="font-semibold text-white">{t('settings.rounds')}</div>
+              <p className="text-xs text-white/60">{t('settings.roundsBody')}</p>
             </div>
             <div className="flex gap-1.5">
               {[3, 5, 8].map((r) => (
@@ -444,19 +446,18 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="flex items-center justify-between">
               <div className="font-semibold text-white flex items-center gap-2">
                 <HardDrive className="w-4 h-4 text-[#8a4a18]" />
-                <span>Offline Feature Cache</span>
+                <span>{t('settings.cache')}</span>
               </div>
               <span className="enamel-chip text-xs font-mono font-bold text-[#8a4a18] px-2 py-0.5">
                 {cacheStats.formattedSize}
               </span>
             </div>
             <p className="text-xs text-white/60">
-              Caches queried neighborhoods, street geometry, and clues locally to provide instant load times and reduce network requests.
+              {t('settings.cacheBody')}
             </p>
             <div className="flex items-center justify-between pt-1 text-xs">
               <span className="text-white/60">
-                <strong className="text-white font-mono">{cacheStats.totalFeatures}</strong> cached places across{' '}
-                <strong className="text-white font-mono">{cacheStats.totalEntries}</strong> area queries
+                {t('settings.cacheCount', { features: cacheStats.totalFeatures, entries: cacheStats.totalEntries })}
               </span>
               {cacheStats.totalEntries > 0 && (
                 <button
@@ -464,7 +465,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   className="button-secondary px-2.5 py-1 text-xs flex items-center gap-1.5 cursor-pointer"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
-                  <span>Clear Cache</span>
+                  <span>{t('settings.clearCache')}</span>
                 </button>
               )}
             </div>
@@ -477,7 +478,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             onClick={onClose}
             className="button-primary w-full py-3 text-sm font-bold cursor-pointer"
           >
-            Apply & Continue
+            {t('settings.apply')}
           </button>
         </div>
       </div>

@@ -11,6 +11,26 @@ const DEBUG_TOOL_LINKS = [
   { label: 'Map placement', href: 'signature-landmark-demo.html' },
 ];
 
+// The interface language, for the strings this legacy runtime sets itself.
+// `routeKey` marks a message that should be re-rendered when the player flips
+// the language toggle while it is still on screen (route errors sit on the
+// setup screen until the next action; loading lines are replaced constantly).
+const routeText = (key, params) => (window.CanalI18n ? window.CanalI18n.t(key, params) : key);
+const routeKey = (key) => `#${key}`;
+const ROUTE_NOUN_KEYS = {
+  'waterways': 'ride.network.waterways',
+  'waterway': 'ride.network.waterway',
+  'streets': 'ride.network.streets',
+  'street': 'ride.network.street',
+  'tram lines': 'ride.network.tramLines',
+  'line': 'ride.network.line',
+};
+const routeNoun = (profile, plural) => {
+  const raw = plural ? profile.networkNoun : profile.networkNounSingular;
+  const key = ROUTE_NOUN_KEYS[raw];
+  return key ? routeText(key) : raw;
+};
+
 class GameRouteRuntime {
   _overlayZoom() {
     return { min: this.camera.minZoom, max: this.camera.maxZoom, defaultZoom: CAMERA_ZOOM_INITIAL };
@@ -451,7 +471,7 @@ class GameRouteRuntime {
       const [west, north, east, south] = city.geocodeViewbox;
       const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&countrycodes=nl&limit=3&bounded=1&viewbox=${west},${north},${east},${south}&q=${encodeURIComponent(query)}`;
       const response = await fetch(url);
-      if (!response.ok) throw new Error('Address search is unavailable right now');
+      if (!response.ok) throw new Error(routeText('ride.error.addressSearch'));
       const results = await response.json();
       const result = results.find(item => item.type === 'house') || results[0];
       if (result) resolved = { lat: Number(result.lat), lng: Number(result.lon), label: result.display_name };
@@ -492,17 +512,17 @@ class GameRouteRuntime {
     } else {
       this._setRouteError(
         this.travelMode === 'transit'
-          ? 'Transit stop anchors failed to load for Amsterdam.'
-          : `Not enough landmarks loaded for ${this._cityDisplayName()}.`,
+          ? routeText('ride.error.transitAnchors', { city: 'Amsterdam' })
+          : routeText('ride.error.notEnoughLandmarks', { city: this._cityDisplayName() }),
       );
       return;
     }
     this.routePattern = prefs.routePattern;
     if (this.routePattern === 'home') {
       const address = (prefs.homeAddress || '').trim();
-      if (!address) { this._setRouteError('Enter a home address first.'); return; }
+      if (!address) { this._setRouteError(routeKey('ride.error.homeAddress')); return; }
       try {
-        this._setRouteError('Finding your home base…');
+        this._setRouteError(routeKey('ride.status.findingHome'));
         // Learning history (signed-in cloud pull) must land before the first
         // home pick, or novelty sees an empty past. Short, bounded wait that
         // overlaps the geocode round trip.
@@ -513,7 +533,7 @@ class GameRouteRuntime {
         this.homeLeg = 'outbound';
       } catch (error) {
         this._homeLearningRadiusKm = null;
-        this._setRouteError(error.message || 'Could not find that address.');
+        this._setRouteError(error.message || routeKey('ride.error.addressNotFound'));
         return;
       }
     } else {
@@ -524,7 +544,7 @@ class GameRouteRuntime {
     if (this.routePattern === 'here') {
       try {
         if (!(isReroll && this.gpsOrigin)) {
-          this._setRouteError('Finding where you are…');
+          this._setRouteError(routeKey('ride.status.findingYou'));
           const city = this._activeCity();
           const Route = window.CanalRecallRoute;
           this.gpsOrigin = await Route.resolveGpsOrigin({
@@ -535,7 +555,7 @@ class GameRouteRuntime {
         }
       } catch (error) {
         this.gpsOrigin = null;
-        this._setRouteError(error.message || 'Could not read your location.');
+        this._setRouteError(error.message || routeKey('ride.error.location'));
         return;
       }
     } else {
@@ -548,7 +568,7 @@ class GameRouteRuntime {
         : this.routePattern === 'here' ? this.gpsOrigin
           : this._pickDestinationNear(selectedDestination);
       if (from) this._launchPoiRoute(from, selectedDestination, { explicitDestination: true });
-      else this._setRouteError('No reachable starting point is available for this destination.');
+      else this._setRouteError(routeKey('ride.error.noStartPoint'));
       return;
     }
     if (this.travelMode === 'transit' && this.routePattern === 'surprise') {
@@ -576,8 +596,8 @@ class GameRouteRuntime {
     if (!from || !dest) {
       this._setRouteError(
         this.routePattern === 'here'
-          ? 'Could not plan a ride from your location. Try Surprise or Home.'
-          : `Not enough landmarks loaded for ${this._cityDisplayName()}.`,
+          ? routeKey('ride.error.planRoute')
+          : routeKey('ride.error.notEnoughLandmarks'),
       );
       return;
     }
@@ -1118,7 +1138,7 @@ class GameRouteRuntime {
   async _startTourFromLink(tourId) {
     const tours = await this._loadTourCatalog();
     if (!tours.some(tour => tour.id === tourId)) {
-      this._setRouteError('That tour is unavailable. Pick another below.');
+      this._setRouteError(routeKey('ride.error.tourUnavailable'));
       return;
     }
     this._overlay.store.setTourId(tourId);
@@ -1130,7 +1150,7 @@ class GameRouteRuntime {
     const T = window.CanalRecallTours;
     const tours = await this._loadTourCatalog();
     const tour = T && tours.find(candidate => candidate.id === tourId);
-    if (!tour) { this._tour = null; this._setRouteError('That tour is unavailable.'); return; }
+    if (!tour) { this._tour = null; this._setRouteError(routeKey('ride.error.tourUnavailableShort')); return; }
     // Tours ride by bike in Amsterdam, leading in to the first stop from the
     // rider's location (only when location is already allowed) or a hub. That is the tour's setting, not the player's:
     // snapshot what it changes, restore it when the tour ends, never save it.
@@ -1545,8 +1565,8 @@ class GameRouteRuntime {
           networkNounSingular: this.travelMode === 'car' ? 'street' : 'waterway' };
     const networkNoun = profile.networkNoun;
     this.loadingMessage = this.travelMode === 'transit'
-      ? `Mapping ${this._activeCity().name} tram lines...`
-      : `Loading ${this._activeCity().name} ${networkNoun}...`;
+      ? routeText('ride.load.city', { city: this._activeCity().name, network: routeText('ride.network.tramLines') })
+      : routeText('ride.load.city', { city: this._activeCity().name, network: routeNoun(profile, true) });
 
     try {
       let segments;
@@ -1565,13 +1585,13 @@ class GameRouteRuntime {
         if (this.vectorMap && this.vectorMap.setStreetFronts) this.vectorMap.setStreetFronts(this.travelMode === 'car' ? ways : []);
 
         if (ways.length === 0) {
-          this.loadingMessage = `No named ${networkNoun} found here.`;
+          this.loadingMessage = routeText('ride.load.noNamed', { noun: routeNoun(profile, true) });
           setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
           return;
         }
 
         // Step 2: Build road segments
-        this.loadingMessage = `Building ${profile.networkNounSingular} network...`;
+        this.loadingMessage = routeText('ride.load.buildingNetwork', { noun: routeNoun(profile, false) });
         this.loadingProgress = 0.3;
         segments = await this.osmLoader.buildRoadSegmentsAsync(ways, lat, lng, stale);
         if (stale()) return;
@@ -1585,7 +1605,7 @@ class GameRouteRuntime {
         }
 
         if (segments.length === 0) {
-          this.loadingMessage = 'Could not build the canal network.';
+          this.loadingMessage = routeText('ride.error.network');
           setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
           return;
         }
@@ -1593,12 +1613,12 @@ class GameRouteRuntime {
         if (stale()) return;
 
         // Step 3: MapLibre supplies a continuously rendered vector basemap.
-        this.loadingMessage = 'Preparing vector map...';
+        this.loadingMessage = routeText('ride.load.preparingMap');
         this.loadingProgress = 0.45;
       }
 
       // Step 4: Find start/finish — use user-picked points or auto-find
-      this.loadingMessage = `Choosing a starting ${profile.networkNounSingular}...`;
+      this.loadingMessage = routeText('ride.load.choosingStart', { noun: routeNoun(profile, false) });
       this.loadingProgress = 0.6;
 
       // A share-link boot names its ends from their own coordinates (see _checkShareLink).
@@ -1643,37 +1663,37 @@ class GameRouteRuntime {
         finish = result.finish;
         const sfDist = result.distance;
         if (!start || !finish || sfDist < 200) {
-          fail('Area too small. Try a different area.');
+          fail(routeText('ride.error.areaTooSmall'));
           return;
         }
       }
 
       if (!start || !finish) {
         if (explicitDestination && !finish) {
-          fail(`Could not reach ${this.routeTo.name} on the mapped ${networkNoun}. Try another travel mode or destination.`);
+          fail(routeText('ride.error.unreachableDestination', { destination: this.routeTo.name, network: routeNoun(profile, true) }));
           return;
         }
         fail(this.routePattern === 'home'
-          ? 'That address is too far from a connected mapped waterway. Try a nearby bridge or canal-side address.'
+          ? routeText('ride.error.addressTooFar')
           : this.routePattern === 'here'
-            ? 'Could not snap your location to a mapped street or waterway. Move closer to the network, or try Surprise.'
-            : 'Could not place start/finish. Try different points.');
+            ? routeText('ride.error.snapFailed')
+            : routeText('ride.error.placeRoute'));
         return;
       }
 
       // Validate minimum distance between start and finish
       const sfDist2 = Math.sqrt((start.x - finish.x) ** 2 + (start.y - finish.y) ** 2);
       if (sfDist2 < MIN_START_FINISH_DIST) {
-        fail('Start and finish are too close. Try different points.');
+        fail(routeText('ride.error.startFinishClose'));
         return;
       }
 
       // Step 5: Create the waterway network using Smokey's spatial engine.
       this.loadingMessage = this.travelMode === 'transit'
-        ? 'Rendering tram lines...'
+        ? routeText('ride.load.renderingTrams')
         : this.travelMode === 'car'
-          ? 'Rendering streets...'
-          : 'Rendering waterways...';
+          ? routeText('ride.load.renderingStreets')
+          : routeText('ride.load.renderingWaterways');
       this.loadingProgress = 0.8;
 
       if (world) {
@@ -1852,7 +1872,7 @@ class GameRouteRuntime {
       this.renderer.preRenderTrack(this.track);
 
       // Step 5: Setup race
-      this.loadingMessage = 'Settling the map...';
+      this.loadingMessage = routeText('ride.load.settling');
       this.loadingProgress = 0.92;
       this._setupRace();
 
@@ -1864,7 +1884,7 @@ class GameRouteRuntime {
         if (stale()) return;
       }
 
-      this.loadingMessage = 'Ready!';
+      this.loadingMessage = routeText('ride.load.ready');
       this.loadingProgress = 1.0;
 
       // Generate leaderboard key from route coordinates
@@ -1894,7 +1914,7 @@ class GameRouteRuntime {
       // Load the start flight's overview tiles while the loading screen is
       // still up; see _prepareIntro.
       if (!world && this._prepareIntro()) {
-        this.loadingMessage = 'Finding your way...';
+        this.loadingMessage = routeText('ride.load.findingWay');
         await this._waitForMapSettle(1800);
         if (stale()) return;
       }
@@ -1905,7 +1925,7 @@ class GameRouteRuntime {
     } catch (err) {
       if (stale()) return;
       console.error('OSM loading error:', err);
-      fail('Error: ' + (err.message || 'Failed to load waterways'), 3000);
+      fail('Error: ' + (err.message || routeText('ride.error.waterways')), 3000);
     }
   }
 

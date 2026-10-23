@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <script src="js/runtime-config.js"></script>
+<script src="js/i18n.bundle.js?v=20261022a"></script>
+<script>/* Language before paint: Dutch browsers open in Dutch, and `lang` matches. */if(window.CanalI18n)CanalI18n.applyDocumentLanguage();</script>
 <script>/* Sentry loads only once a DSN is configured, off the critical path. */(function(){var c=window.CANAL_RUNTIME_CONFIG;if(!c||!c.sentryDsn)return;var s=document.createElement("script");s.src="js/monitoring.bundle.js";s.async=true;document.head.appendChild(s);})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ride Amsterdam</title>
@@ -1256,71 +1258,71 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
 <select id="route-from" hidden></select>
 <select id="route-to" hidden></select>
 <div id="canal-overlay-root"></div>
-<div id="utility-buttons"><button id="open-settings" title="Settings (G)" aria-label="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></button><button id="open-help" title="How to play (?)" aria-label="How to play"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></button></div>
+<div id="utility-buttons"><button id="open-settings" title="Settings (G)" aria-label="Settings" data-i18n-title="utility.settings" data-i18n-aria="utility.settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></button><button id="open-help" title="How to play (?)" aria-label="How to play" data-i18n-title="utility.help" data-i18n-aria="utility.help"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></button></div>
 <div id="help-panel" class="utility-panel enamel-utility"><div class="utility-card enamel-plaque enamel-framed enamel-panel">
-  <h2>How to play</h2>
+  <h2 data-i18n="help.title">How to play</h2>
   <div class="utility-scroll">
-    <button id="replay-intro" class="help-replay enamel-quiet" type="button">Show the 3-step intro</button>
+    <button id="replay-intro" class="help-replay enamel-quiet" type="button" data-i18n="help.replayIntro">Show the 3-step intro</button>
     <section class="help-section">
-      <h3>Ride</h3>
-      <p class="help-touch">Hold the ring at the bottom of the screen and slide. Sideways steers, up goes faster, back brakes. In compass mode, point where you want to go.</p>
-      <p class="help-pointer">Arrow keys or WASD steer. In compass mode they point the way instead: → rides east on a north-up map.</p>
+      <h3 data-i18n="help.rideSection">Ride</h3>
+      <p class="help-touch" data-i18n="help.rideTouch">Hold the ring at the bottom of the screen and slide. Sideways steers, up goes faster, back brakes. In compass mode, point where you want to go.</p>
+      <p class="help-pointer" data-i18n="help.ridePointer">Arrow keys or WASD steer. In compass mode they point the way instead: → rides east on a north-up map.</p>
     </section>
     <section class="help-section">
-      <h3>Name it</h3>
-      <p>Turn onto a new canal or street and the ride stops to ask its name. Pick it, type it, or choose <em>No idea</em> — either way the answer is shown, and the right one lights up on the map. Nothing on screen names it before you answer.</p>
+      <h3 data-i18n="help.nameTitle">Name it</h3>
+      <p data-i18n="help.nameBody">Turn onto a new canal or street and the ride stops to ask its name. Pick it, type it, or choose No idea — either way the answer is shown, and the right one lights up on the map. Nothing on screen names it before you answer.</p>
     </section>
     <section class="help-section">
-      <h3>Remember it</h3>
-      <p>Names you get right come back later, just before you would forget them (spaced review). <em>Knowledge</em> on the setup screen shows what is due. “% new” on the destination card is how much of the route you have not ridden before.</p>
+      <h3 data-i18n="help.rememberTitle">Remember it</h3>
+      <p data-i18n="help.rememberBody">Names you get right come back later, just before you would forget them (spaced review). Knowledge on the setup screen shows what is due. “% new” on the destination card is how much of the route you have not ridden before.</p>
     </section>
     <!-- Grouped by what you are doing; the debug keys sit behind a
          disclosure. A flat 21-row table hid steer and answer among them
          (clarity review 15). -->
-    <h3 class="help-pointer">Keyboard</h3>
+    <h3 class="help-pointer" data-i18n="help.keyboard">Keyboard</h3>
     <div class="help-pointer help-keys">
-      <h4>Ride</h4>
+      <h4 data-i18n="help.rideSection">Ride</h4>
       <table>
-        <tr><td>Arrows</td><td>Steer and accelerate / brake</td></tr>
-        <tr><td>Space</td><td>Handbrake</td></tr>
-        <tr><td>P / Esc</td><td>Pause</td></tr>
-        <tr><td>M (paused or arrived)</td><td>Route setup</td></tr>
-        <tr><td>G</td><td>Settings</td></tr>
-        <tr><td>N</td><td>Sound</td></tr>
+        <tr><td>Arrows</td><td data-i18n="help.arrows">Steer and accelerate / brake</td></tr>
+        <tr><td>Space</td><td data-i18n="help.space">Handbrake</td></tr>
+        <tr><td>P / Esc</td><td data-i18n="help.pause">Pause</td></tr>
+        <tr><td>M (paused or arrived)</td><td data-i18n="help.routeSetup">Route setup</td></tr>
+        <tr><td>G</td><td data-i18n="help.settings">Settings</td></tr>
+        <tr><td>N</td><td data-i18n="help.sound">Sound</td></tr>
       </table>
-      <h4>Answer</h4>
+      <h4 data-i18n="help.answerSection">Answer</h4>
       <table>
-        <tr><td>1 – 4</td><td>Multiple-choice answer</td></tr>
-        <tr><td>0</td><td>No idea — tell me</td></tr>
-        <tr><td>W</td><td>Wikipedia for the on-screen landmark</td></tr>
-        <tr><td>Click card</td><td>Full landmark article</td></tr>
+        <tr><td>1 – 4</td><td data-i18n="help.multipleChoice">Multiple-choice answer</td></tr>
+        <tr><td>0</td><td data-i18n="help.noIdeaTellMe">No idea — tell me</td></tr>
+        <tr><td>W</td><td data-i18n="help.wikipediaLandmark">Wikipedia for the on-screen landmark</td></tr>
+        <tr><td>Click card</td><td data-i18n="help.fullArticle">Full landmark article</td></tr>
       </table>
-      <h4>View</h4>
+      <h4 data-i18n="help.viewSection">View</h4>
       <table>
-        <tr><td>M / Tab</td><td>Minimap</td></tr>
-        <tr><td>L</td><td>Route line</td></tr>
-        <tr><td>F</td><td>Destination arrow</td></tr>
-        <tr><td>O</td><td>North-up / heading-up</td></tr>
-        <tr><td>− / +</td><td>Zoom (or pinch)</td></tr>
-        <tr><td>Drag</td><td>Pan camera</td></tr>
-        <tr><td>R</td><td>Recenter</td></tr>
-        <tr><td>[ / ]</td><td>3D tilt (Chase view)</td></tr>
-        <tr><td>Shift + [ / ]</td><td>Spin 3D camera around vehicle</td></tr>
-        <tr><td>Twist / ⌥ + scroll</td><td>Spin 3D camera (trackpad twist in Safari)</td></tr>
+        <tr><td>M / Tab</td><td data-i18n="help.minimap">Minimap</td></tr>
+        <tr><td>L</td><td data-i18n="help.routeLine">Route line</td></tr>
+        <tr><td>F</td><td data-i18n="help.destinationArrow">Destination arrow</td></tr>
+        <tr><td>O</td><td data-i18n="help.northUpToggle">North-up / heading-up</td></tr>
+        <tr><td>− / +</td><td data-i18n="help.zoom">Zoom (or pinch)</td></tr>
+        <tr><td>Drag</td><td data-i18n="help.panCamera">Pan camera</td></tr>
+        <tr><td>R</td><td data-i18n="help.recenter">Recenter</td></tr>
+        <tr><td>[ / ]</td><td data-i18n="help.tilt3d">3D tilt (Chase view)</td></tr>
+        <tr><td>Shift + [ / ]</td><td data-i18n="help.spin3d">Spin 3D camera around vehicle</td></tr>
+        <tr><td>Twist / ⌥ + scroll</td><td data-i18n="help.spinTrackpad">Spin 3D camera (trackpad twist in Safari)</td></tr>
       </table>
       <details class="help-dev-keys">
-        <summary>Developer keys</summary>
+        <summary data-i18n="help.developerKeys">Developer keys</summary>
         <table>
-          <tr><td>D</td><td>Road name labels</td></tr>
-          <tr><td>B</td><td>Building look</td></tr>
-          <tr><td>IJKU</td><td>Pan camera</td></tr>
-          <tr><td>`</td><td>Debug overlay</td></tr>
+          <tr><td>D</td><td data-i18n="help.roadNames">Road name labels</td></tr>
+          <tr><td>B</td><td data-i18n="help.buildingLook">Building look</td></tr>
+          <tr><td>IJKU</td><td data-i18n="help.panCameraKeys">Pan camera</td></tr>
+          <tr><td>`</td><td data-i18n="help.debugOverlay">Debug overlay</td></tr>
         </table>
       </details>
     </div>
     <p class="help-credits"><a href="credits.html">Credits</a> · <a href="privacy.html">Privacy</a> · Adapted from <a href="https://github.com/a1anw2/smokeysandthebandit">Smokey’s</a> (GPL-3.0) · © OSM · OpenFreeMap · © OpenMapTiles</p>
   </div>
-  <button class="utility-close enamel-plaque enamel-framed enamel-start" type="button">Close</button>
+  <button class="utility-close enamel-plaque enamel-framed enamel-start" type="button" data-i18n="help.close">Close</button>
 </div></div>
 <div id="landmark-panel" class="utility-panel enamel-utility"><div class="utility-card enamel-plaque enamel-framed enamel-panel">
   <div id="landmark-panel-badges"></div>
@@ -1328,23 +1330,23 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
   <div id="landmark-panel-scroll">
     <img id="landmark-panel-image" alt="" hidden>
     <div id="landmark-panel-body"></div>
-    <a id="landmark-panel-link" target="_blank" rel="noopener" hidden>Read the full article on Wikipedia &rarr;</a>
+    <a id="landmark-panel-link" target="_blank" rel="noopener" hidden data-i18n="landmark.readArticle">Read the full article on Wikipedia &rarr;</a>
   </div>
   <button class="utility-close enamel-plaque enamel-framed enamel-start" type="button">Close</button>
 </div></div>
 <div id="canal-prompt">
   <form id="canal-card">
-    <span id="canal-kind" class="prompt-kind" data-kind="water"><span class="prompt-kind-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></span><span id="canal-kind-label">Waterway</span></span>
-    <h2>Which waterway are you on now?</h2>
-    <p>You made a turn</p>
+    <span id="canal-kind" class="prompt-kind" data-kind="water"><span class="prompt-kind-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></span><span id="canal-kind-label" data-i18n="prompt.waterway">Waterway</span></span>
+    <h2 data-i18n="ride.question.waterway">Which waterway are you on now?</h2>
+    <p data-i18n="prompt.turn">You made a turn</p>
     <!-- Directly under the question: a correction below the choices sat under
          the card's scroll fold in landscape, and it is the lesson. -->
     <div id="canal-feedback" aria-live="polite"></div>
     <input id="canal-answer" autocomplete="off" autocapitalize="words" aria-label="Waterway name">
     <div id="canal-choices"></div>
-    <button id="canal-submit" type="submit">Submit answer</button>
-    <button id="canal-no-idea" type="button">No idea — tell me <span class="canal-choice-key">0</span></button>
-    <div id="canal-riding-on" aria-hidden="true"><span>Riding on</span><i></i></div>
+    <button id="canal-submit" type="submit" data-i18n="prompt.submit">Submit answer</button>
+    <button id="canal-no-idea" type="button"><span data-i18n="prompt.noIdea">No idea — tell me</span> <span class="canal-choice-key">0</span></button>
+    <div id="canal-riding-on" aria-hidden="true"><span data-i18n="prompt.ridingOn">Riding on</span><i></i></div>
   </form>
 </div>
 <div id="map-attribution">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM</a> · <a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> · © <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a><span id="municipal-tree-attribution" hidden> · Trees © <a href="https://maps.amsterdam.nl/bomen/" target="_blank" rel="noopener">Gemeente Amsterdam</a></span></div>
@@ -1427,5 +1429,6 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
      is on screen. Hidden by default; the tiles layer fills and shows it. -->
 <div id="google-tiles-attribution" style="display:none"></div>
 <script src="js/feedback/browser.js"></script>
+<script>/* Fill the static copy marked with data-i18n, and keep it in step with the toggle. */if(window.CanalI18n)CanalI18n.installDocumentLanguage();</script>
 </body>
 </html>

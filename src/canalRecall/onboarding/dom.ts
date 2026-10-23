@@ -3,6 +3,7 @@
 // `maybeShowOnboarding()` on load, `openOnboarding()` from How to play.
 
 import { readWindowViewport } from '../viewport.ts';
+import { t as message } from '../../i18n/index.ts';
 import {
   markOnboardingSeen,
   onboardingSteps,
@@ -167,7 +168,7 @@ export function openOnboarding(options: OnboardingOptions = {}): () => void {
   const card = el(doc, 'div', 'onb-card');
   const close = el(doc, 'button', 'onb-close');
   close.type = 'button';
-  close.setAttribute('aria-label', 'Close the intro');
+  close.setAttribute('aria-label', message('onb.close'));
   close.dataset.onboarding = 'close';
   close.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
   const specimenSlot = el(doc, 'div');
@@ -179,10 +180,10 @@ export function openOnboarding(options: OnboardingOptions = {}): () => void {
   caption.dataset.onboarding = 'hint';
   const foot = el(doc, 'div', 'onb-foot');
   const dots = el(doc, 'ol', 'onb-dots');
-  const skip = el(doc, 'button', 'onb-quiet', 'Skip');
+  const skip = el(doc, 'button', 'onb-quiet', message('onb.skip'));
   skip.type = 'button';
   skip.dataset.onboarding = 'skip';
-  const back = el(doc, 'button', 'onb-quiet', 'Back');
+  const back = el(doc, 'button', 'onb-quiet', message('onb.back'));
   back.type = 'button';
   back.dataset.onboarding = 'back';
   const next = el(doc, 'button', 'onb-next enamel-plaque enamel-framed enamel-start');
@@ -209,7 +210,7 @@ export function openOnboarding(options: OnboardingOptions = {}): () => void {
     title.textContent = step.title;
     body.textContent = step.body;
     caption.textContent = step.specimen.caption;
-    dots.setAttribute('aria-label', `Step ${index + 1} of ${steps.length}`);
+    dots.setAttribute('aria-label', message('onb.step', { current: index + 1, total: steps.length }));
     dots.replaceChildren(...steps.map((_, i) => {
       const dot = el(doc, 'li');
       if (i === index) dot.setAttribute('aria-current', 'step');
@@ -218,7 +219,7 @@ export function openOnboarding(options: OnboardingOptions = {}): () => void {
     const last = index === steps.length - 1;
     back.hidden = index === 0;
     skip.hidden = last;
-    next.textContent = last ? 'Got it' : 'Next';
+    next.textContent = last ? message('onb.gotIt') : message('onb.next');
   };
 
   const go = (delta: number) => {

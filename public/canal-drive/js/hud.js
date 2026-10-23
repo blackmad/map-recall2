@@ -1,6 +1,10 @@
 // ============================================================
 // HUD
 // ============================================================
+// Canvas copy follows the language toggle: read at draw time rather than
+// cached, so a card already on screen changes with the next frame.
+const hudText = (key, params) => (window.CanalI18n ? window.CanalI18n.t(key, params) : key);
+
 class HUD {
   constructor() {
     // Canvas text never triggers a web-font download, so ask for the HUD faces
@@ -335,7 +339,7 @@ class HUD {
       ctx.textAlign = 'right';
       ctx.fillStyle = surface.accent;
       ctx.font = this._font(700, 11, surface.fontMono);
-      ctx.fillText(`${streak} streak · ${mult}×`, right, y);
+      ctx.fillText(hudText('hud.streak', { streak, mult }), right, y);
       ctx.textAlign = 'left';
     }
 
@@ -405,11 +409,11 @@ class HUD {
     // never moves; the neighbourhood and destination name trim to fit.
     y += 20;
     const tally = window.CanalRecallUi.scoreTally({ correct, attempts, points, gamey, compact: true });
-    const streakText = gamey && streak >= 2 ? `  ${streak}×streak` : '';
+    const streakText = gamey && streak >= 2 ? `  ${hudText('hud.streakCompact', { streak })}` : '';
     ctx.font = this._font(700, 11, surface.fontMono);
     const tallyWidth = ctx.measureText(tally + streakText).width;
     let destWidth = 0;
-    const destName = destination?.name ? `to ${destination.name}` : '';
+    const destName = destination?.name ? hudText('hud.toDestination', { name: destination.name }) : '';
     if (destName) {
       ctx.font = this._font(500, 12, surface.fontUi);
       const room = Math.max(60, inner * 0.45);
@@ -459,7 +463,7 @@ class HUD {
     ctx.fillStyle = '#FFF';
     ctx.font = `700 16px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'right';
-    ctx.fillText(`LAP  ${Math.min(currentLap + 1, totalLaps)} / ${totalLaps}`, CANVAS_W - 25, 42);
+    ctx.fillText(hudText('hud.lap', { current: Math.min(currentLap + 1, totalLaps), total: totalLaps }), CANVAS_W - 25, 42);
   }
 
   // Progress bar for point-to-point mode
@@ -486,19 +490,20 @@ class HUD {
     ctx.fillStyle = '#FFF';
     ctx.font = `700 12px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'right';
-    ctx.fillText(`${Math.round(pct * 100)}% COMPLETE`, CANVAS_W - 25, 50);
+    ctx.fillText(hudText('hud.complete', { percent: Math.round(pct * 100) }), CANVAS_W - 25, 50);
   }
 
   drawPosition(ctx, position, total) {
     ctx.fillStyle = 'rgba(0,0,0,0.5)';
     roundRect(ctx, CANVAS_W - 160, 62, 145, 40, 6);
     ctx.fill();
-    const suffix = position === 1 ? 'st' : position === 2 ? 'nd' : position === 3 ? 'rd' : 'th';
+    const suffixKey = position === 1 ? 'hud.ordinal.one' : position === 2 ? 'hud.ordinal.two'
+      : position === 3 ? 'hud.ordinal.three' : 'hud.ordinal.other';
     const colors = { 1: '#FFD700', 2: '#C0C0C0', 3: '#CD7F32' };
     ctx.fillStyle = colors[position] || '#FFF';
     ctx.font = `700 22px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'right';
-    ctx.fillText(`${position}${suffix}`, CANVAS_W - 60, 90);
+    ctx.fillText(hudText(suffixKey, { position }), CANVAS_W - 60, 90);
     ctx.fillStyle = '#AAA';
     ctx.font = `14px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.fillText(`/ ${total}`, CANVAS_W - 25, 90);
