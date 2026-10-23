@@ -153,7 +153,14 @@
     4.9535813,
     52.3153892
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "oba-bijlmerplein-079410",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:54:51.004Z",
+   "notes": [
+    "2026-10-23T20:54 crops failed: /Users/blackmad/Code/map-recall2-worktrees/integrator-plan/scripts/pand-reference/all-walls.ts:42 | if (!fp) throw new Error(`pand not in building tiles: ${pand}`); |                ^ | Error: pand not in building tiles: NL.IMBAG.Pand.0363100012079410 | Node.js v26.8.1"
+   ],
+   "updatedAt": "2026-10-23T20:54:51.220Z"
   },
   {
    "id": "0363100012135359",
@@ -166,7 +173,14 @@
     4.8759451,
     52.3326071
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "oba-buitenveldert-135359",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:54:51.221Z",
+   "notes": [
+    "2026-10-23T20:55 crops: 7 usable walls in 12 s"
+   ],
+   "updatedAt": "2026-10-23T20:55:03.239Z"
   },
   {
    "id": "0363100012131914",
@@ -179,7 +193,14 @@
     4.9758804,
     52.322699
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "oba-ganzenhoef-131914",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:55:03.240Z",
+   "notes": [
+    "2026-10-23T20:55 crops failed: /Users/blackmad/Code/map-recall2-worktrees/integrator-plan/scripts/pand-reference/all-walls.ts:42 | if (!fp) throw new Error(`pand not in building tiles: ${pand}`); |                ^ | Error: pand not in building tiles: NL.IMBAG.Pand.0363100012131914 | Node.js v26.8.1"
+   ],
+   "updatedAt": "2026-10-23T20:55:03.467Z"
   },
   {
    "id": "0363100012121137",
@@ -192,7 +213,14 @@
     4.8025806,
     52.3780277
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "oba-geuzenveld-121137",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:55:03.467Z",
+   "notes": [
+    "2026-10-23T20:55 crops: 8 usable walls in 25 s"
+   ],
+   "updatedAt": "2026-10-23T20:55:28.172Z"
   },
   {
    "id": "0363100012070481",
@@ -205,7 +233,14 @@
     4.996847,
     52.3566548
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "oba-ijburg-070481",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:55:28.172Z",
+   "notes": [
+    "2026-10-23T20:55 crops: 7 usable walls in 8 s"
+   ],
+   "updatedAt": "2026-10-23T20:55:36.667Z"
   },
   {
    "id": "0363100012098534",
@@ -218,7 +253,14 @@
     4.8929718,
     52.4178054
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "oba-molenwijk-098534",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:55:36.667Z",
+   "notes": [
+    "2026-10-23T20:55 crops: 5 usable walls in 11 s"
+   ],
+   "updatedAt": "2026-10-23T20:55:47.579Z"
   },
   {
    "id": "poi:library-oba-next",
@@ -244,7 +286,14 @@
     4.9081983,
     52.3762463
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "oba-oosterdok-164964",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:55:47.580Z",
+   "notes": [
+    "2026-10-23T20:55 crops failed: /Users/blackmad/Code/map-recall2-worktrees/integrator-plan/scripts/pand-reference/all-walls.ts:42 | if (!fp) throw new Error(`pand not in building tiles: ${pand}`); |                ^ | Error: pand not in building tiles: NL.IMBAG.Pand.0363100012164964 | Node.js v26.8.1"
+   ],
+   "updatedAt": "2026-10-23T20:55:47.842Z"
   },
   {
    "id": "0363100012085435",
@@ -257,11 +306,15 @@
     4.8068695,
     52.3589218
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "oba-osdorp",
    "notes": [
-    "authored recipe houses/oba-osdorp exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+    "authored recipe houses/oba-osdorp exists and is not installed: the factory keeps its intent, measures and compiles it",
+    "2026-10-23T20:55 crops: 10 usable walls in 11 s"
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:55:47.843Z",
+   "updatedAt": "2026-10-23T20:55:58.741Z"
   },
   {
    "id": "0363100012248844",
@@ -274,7 +327,14 @@
     4.8350577,
     52.364284
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "oba-postjesweg-248844",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:55:58.742Z",
+   "notes": [
+    "2026-10-23T20:56 crops: 7 usable walls in 16 s"
+   ],
+   "updatedAt": "2026-10-23T20:56:14.477Z"
   },
   {
    "id": "0363100012073560",
@@ -287,7 +347,14 @@
     4.9764586,
     52.2962871
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "oba-reigersbos-073560",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:56:14.477Z",
+   "notes": [
+    "2026-10-23T20:56 crops: 8 usable walls in 18 s"
+   ],
+   "updatedAt": "2026-10-23T20:56:32.791Z"
   },
   {
    "id": "0363100012241007",
@@ -300,7 +367,14 @@
     4.8199166,
     52.3786962
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "oba-slotermeer-241007",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:56:32.792Z",
+   "notes": [
+    "2026-10-23T20:56 crops: 6 usable walls in 9 s"
+   ],
+   "updatedAt": "2026-10-23T20:56:41.302Z"
   },
   {
    "id": "0363100012239985",
@@ -313,7 +387,14 @@
     4.9548315,
     52.3931152
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "oba-waterlandplein-239985",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:56:41.303Z",
+   "notes": [
+    "2026-10-23T20:56 crops failed: /Users/blackmad/Code/map-recall2-worktrees/integrator-plan/scripts/pand-reference/all-walls.ts:42 | if (!fp) throw new Error(`pand not in building tiles: ${pand}`); |                ^ | Error: pand not in building tiles: NL.IMBAG.Pand.0363100012239985 | Node.js v26.8.1"
+   ],
+   "updatedAt": "2026-10-23T20:56:41.734Z"
   },
   {
    "id": "0363100012186092",
@@ -326,7 +407,14 @@
     4.9002256,
     52.3676842
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "stadsloket-centrum-186092",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:56:41.736Z",
+   "notes": [
+    "2026-10-23T20:56 crops failed: /Users/blackmad/Code/map-recall2-worktrees/integrator-plan/scripts/pand-reference/all-walls.ts:42 | if (!fp) throw new Error(`pand not in building tiles: ${pand}`); |                ^ | Error: pand not in building tiles: NL.IMBAG.Pand.0363100012186092 | Node.js v26.8.1"
+   ],
+   "updatedAt": "2026-10-23T20:56:42.047Z"
   },
   {
    "id": "0363100012253671",
@@ -339,7 +427,14 @@
     4.8053967,
     52.3580513
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "stadsloket-nieuw-west-253671",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:56:42.048Z",
+   "notes": [
+    "2026-10-23T20:57 crops: 19 usable walls in 39 s"
+   ],
+   "updatedAt": "2026-10-23T20:57:21.477Z"
   },
   {
    "id": "0363100012090647",
@@ -352,7 +447,14 @@
     4.8939533,
     52.3404776
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "stadsloket-zuid-090647",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:57:21.479Z",
+   "notes": [
+    "2026-10-23T20:57 crops failed: /Users/blackmad/Code/map-recall2-worktrees/integrator-plan/scripts/pand-reference/all-walls.ts:42 | if (!fp) throw new Error(`pand not in building tiles: ${pand}`); |                ^ | Error: pand not in building tiles: NL.IMBAG.Pand.0363100012090647 | Node.js v26.8.1"
+   ],
+   "updatedAt": "2026-10-23T20:57:21.964Z"
   },
   {
    "id": "0363100012116268",
@@ -365,7 +467,14 @@
     4.8599263,
     52.3345352
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "amsterdam-umc-locatie-vumc-116268",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:57:21.965Z",
+   "notes": [
+    "2026-10-23T20:57 crops failed: /Users/blackmad/Code/map-recall2-worktrees/integrator-plan/scripts/pand-reference/all-walls.ts:42 | if (!fp) throw new Error(`pand not in building tiles: ${pand}`); |                ^ | Error: pand not in building tiles: NL.IMBAG.Pand.0363100012116268 | Node.js v26.8.1"
+   ],
+   "updatedAt": "2026-10-23T20:57:22.283Z"
   },
   {
    "id": "poi:hospital-amsterdam-umc-locatie-amc",
@@ -391,7 +500,14 @@
     4.8257571,
     52.3502898
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "antoni-van-leeuwenhoek-149452",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:57:22.283Z",
+   "notes": [
+    "2026-10-23T20:57 crops failed: /Users/blackmad/Code/map-recall2-worktrees/integrator-plan/scripts/pand-reference/all-walls.ts:42 | if (!fp) throw new Error(`pand not in building tiles: ${pand}`); |                ^ | Error: pand not in building tiles: NL.IMBAG.Pand.0363100012149452 | Node.js v26.8.1"
+   ],
+   "updatedAt": "2026-10-23T20:57:22.513Z"
   },
   {
    "id": "0363100012090318",
@@ -404,7 +520,14 @@
     4.9219157,
     52.4046484
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "bovenij-ziekenhuis-090318",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:57:22.516Z",
+   "notes": [
+    "2026-10-23T20:57 crops: 12 usable walls in 4 s"
+   ],
+   "updatedAt": "2026-10-23T20:57:26.265Z"
   },
   {
    "id": "0363100012149878",
@@ -417,11 +540,14 @@
     4.8648434,
     52.3513403
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "amsterdams-lyceum",
    "notes": [
     "authored recipe houses/amsterdams-lyceum exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:57:26.266Z",
+   "updatedAt": "2026-10-23T20:57:26.267Z"
   },
   {
    "id": "poi:school-berlage-lyceum-tijdelijke-locatie-bovenbouw",
@@ -447,7 +573,14 @@
     4.9619003,
     52.2926611
    ],
-   "status": "queued"
+   "status": "no-evidence",
+   "house": "hogeschool-van-amsterdam-096559",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:57:26.267Z",
+   "notes": [
+    "2026-10-23T20:57 crops failed: /Users/blackmad/Code/map-recall2-worktrees/integrator-plan/scripts/pand-reference/all-walls.ts:42 | if (!fp) throw new Error(`pand not in building tiles: ${pand}`); |                ^ | Error: pand not in building tiles: NL.IMBAG.Pand.0363100012096559 | Node.js v26.8.1"
+   ],
+   "updatedAt": "2026-10-23T20:57:26.497Z"
   },
   {
    "id": "poi:school-hogeschool-van-amsterdam-bsv",
@@ -473,11 +606,14 @@
     4.9254033,
     52.3586234
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "metis-montessori-080098",
    "notes": [
     "authored recipe houses/metis-montessori-080098 exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:57:26.497Z",
+   "updatedAt": "2026-10-23T20:57:26.498Z"
   },
   {
    "id": "0363100012080630",
@@ -490,11 +626,14 @@
     4.9438059,
     52.363092
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "oostpoort-montessori-080630",
    "notes": [
     "authored recipe houses/oostpoort-montessori-080630 exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:57:26.499Z",
+   "updatedAt": "2026-10-23T20:57:26.499Z"
   },
   {
    "id": "poi:school-rietveldschool",
@@ -546,7 +685,14 @@
     4.9254988,
     52.336456
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "spinoza20first-253721",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:57:26.500Z",
+   "notes": [
+    "2026-10-23T20:57 crops: 8 usable walls in 11 s"
+   ],
+   "updatedAt": "2026-10-23T20:57:37.463Z"
   },
   {
    "id": "0363100012098925",
@@ -590,11 +736,14 @@
     4.91451535,
     52.3648261
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "plantage-middenlaan-52-186093",
    "notes": [
     "authored recipe houses/plantage-middenlaan-52-186093 exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:57:37.463Z",
+   "updatedAt": "2026-10-23T20:57:37.464Z"
   },
   {
    "id": "0363100012243823",
@@ -611,7 +760,14 @@
     4.914284500000001,
     52.3909635
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-243823",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:57:37.465Z",
+   "notes": [
+    "2026-10-23T20:58 crops: 20 usable walls in 57 s"
+   ],
+   "updatedAt": "2026-10-23T20:58:34.636Z"
   },
   {
    "id": "0363100012087570",
@@ -628,7 +784,14 @@
     4.94556505,
     52.3656765
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-087570",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:58:34.636Z",
+   "notes": [
+    "2026-10-23T20:58 crops: 11 usable walls in 25 s"
+   ],
+   "updatedAt": "2026-10-23T20:58:59.478Z"
   },
   {
    "id": "0363100012111954",
@@ -645,7 +808,14 @@
     4.865425999999999,
     52.3760895
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-111954",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:58:59.478Z",
+   "notes": [
+    "2026-10-23T20:59 crops: 16 usable walls in 37 s"
+   ],
+   "updatedAt": "2026-10-23T20:59:36.157Z"
   },
   {
    "id": "0363100012165086",
@@ -662,11 +832,15 @@
     4.891564000000001,
     52.367475
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "singel-457-165086",
    "notes": [
-    "authored recipe houses/singel-457-165086 exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+    "authored recipe houses/singel-457-165086 exists and is not installed: the factory keeps its intent, measures and compiles it",
+    "2026-10-23T20:59 crops: 8 usable walls in 14 s"
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:59:36.157Z",
+   "updatedAt": "2026-10-23T20:59:50.444Z"
   },
   {
    "id": "0363100012165488",
@@ -683,11 +857,14 @@
     4.8824705,
     52.3633065
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "hirschpassage-2-165488",
    "notes": [
     "authored recipe houses/hirschpassage-2-165488 exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:59:50.444Z",
+   "updatedAt": "2026-10-23T20:59:50.446Z"
   },
   {
    "id": "0363100012242075",
@@ -704,7 +881,14 @@
     4.884439,
     52.3591625
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-242075",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T20:59:50.446Z",
+   "notes": [
+    "2026-10-23T21:00 crops: 21 usable walls in 50 s"
+   ],
+   "updatedAt": "2026-10-23T21:00:40.293Z"
   },
   {
    "id": "0363100012244160",
@@ -721,7 +905,14 @@
     4.8696885000000005,
     52.340113
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-244160",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:00:40.294Z",
+   "notes": [
+    "2026-10-23T21:01 crops: 12 usable walls in 31 s"
+   ],
+   "updatedAt": "2026-10-23T21:01:11.234Z"
   },
   {
    "id": "0363100012079326",
@@ -738,7 +929,14 @@
     4.907833500000001,
     52.395438
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-079326",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:01:11.235Z",
+   "notes": [
+    "2026-10-23T21:01 crops: 17 usable walls in 37 s"
+   ],
+   "updatedAt": "2026-10-23T21:01:48.336Z"
   },
   {
    "id": "0363100012242951",
@@ -755,11 +953,15 @@
     4.878467499999999,
     52.3668545
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "passeerdersstraat-242951",
    "notes": [
-    "authored recipe houses/passeerdersstraat-242951 exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+    "authored recipe houses/passeerdersstraat-242951 exists and is not installed: the factory keeps its intent, measures and compiles it",
+    "2026-10-23T21:02 crops: 11 usable walls in 30 s"
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:01:48.336Z",
+   "updatedAt": "2026-10-23T21:02:18.128Z"
   },
   {
    "id": "0363100012247342",
@@ -776,7 +978,14 @@
     4.964149,
     52.3730145
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-247342",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:02:18.129Z",
+   "notes": [
+    "2026-10-23T21:02 crops: 16 usable walls in 36 s"
+   ],
+   "updatedAt": "2026-10-23T21:02:54.546Z"
   },
   {
    "id": "0363100012096613",
@@ -793,7 +1002,14 @@
     4.874995,
     52.340247500000004
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-096613",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:02:54.547Z",
+   "notes": [
+    "2026-10-23T21:03 crops: 18 usable walls in 42 s"
+   ],
+   "updatedAt": "2026-10-23T21:03:36.079Z"
   },
   {
    "id": "0363100012238702",
@@ -810,7 +1026,14 @@
     4.8955605,
     52.4001685
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-238702",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:03:36.080Z",
+   "notes": [
+    "2026-10-23T21:03 crops: 13 usable walls in 16 s"
+   ],
+   "updatedAt": "2026-10-23T21:03:52.206Z"
   },
   {
    "id": "0363100012092384",
@@ -827,7 +1050,14 @@
     4.875666799999999,
     52.34141705
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-092384",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:03:52.207Z",
+   "notes": [
+    "2026-10-23T21:04 crops: 10 usable walls in 26 s"
+   ],
+   "updatedAt": "2026-10-23T21:04:17.929Z"
   },
   {
    "id": "0363100012253630",
@@ -844,7 +1074,14 @@
     4.907059500000001,
     52.3968225
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-253630",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:04:17.930Z",
+   "notes": [
+    "2026-10-23T21:04 crops: 4 usable walls in 4 s"
+   ],
+   "updatedAt": "2026-10-23T21:04:21.981Z"
   },
   {
    "id": "0363100012066028",
@@ -861,11 +1098,14 @@
     4.846671049999999,
     52.3854768
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "molenwerf-1-066028",
    "notes": [
     "authored recipe houses/molenwerf-1-066028 exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:04:21.982Z",
+   "updatedAt": "2026-10-23T21:04:21.983Z"
   },
   {
    "id": "0363100012246291",
@@ -882,7 +1122,14 @@
     4.964822,
     52.3759335
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-246291",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:04:21.984Z",
+   "notes": [
+    "2026-10-23T21:04 crops: 6 usable walls in 15 s"
+   ],
+   "updatedAt": "2026-10-23T21:04:37.046Z"
   },
   {
    "id": "0363100012165427",
@@ -899,7 +1146,14 @@
     4.88297355,
     52.365377050000006
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-165427",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:04:37.046Z",
+   "notes": [
+    "2026-10-23T21:05 crops: 23 usable walls in 49 s"
+   ],
+   "updatedAt": "2026-10-23T21:05:26.064Z"
   },
   {
    "id": "0363100012145366",
@@ -916,7 +1170,14 @@
     4.95778,
     52.390988500000006
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-145366",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:05:26.065Z",
+   "notes": [
+    "2026-10-23T21:05 crops: 5 usable walls in 14 s"
+   ],
+   "updatedAt": "2026-10-23T21:05:40.235Z"
   },
   {
    "id": "0363100012240435",
@@ -933,7 +1194,14 @@
     4.890703,
     52.3538935
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-240435",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:05:40.236Z",
+   "notes": [
+    "2026-10-23T21:06 crops: 22 usable walls in 49 s"
+   ],
+   "updatedAt": "2026-10-23T21:06:29.356Z"
   },
   {
    "id": "0363100012252557",
@@ -950,7 +1218,14 @@
     4.8673505,
     52.339994000000004
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-252557",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:06:29.357Z",
+   "notes": [
+    "2026-10-23T21:06 crops: 6 usable walls in 13 s"
+   ],
+   "updatedAt": "2026-10-23T21:06:42.627Z"
   },
   {
    "id": "0363100012133211",
@@ -967,7 +1242,14 @@
     4.904248,
     52.397852
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-133211",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:06:42.628Z",
+   "notes": [
+    "2026-10-23T21:06 crops: 4 usable walls in 3 s"
+   ],
+   "updatedAt": "2026-10-23T21:06:46.016Z"
   },
   {
    "id": "0363100012084286",
@@ -984,7 +1266,14 @@
     4.844019,
     52.37753
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-084286",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:06:46.016Z",
+   "notes": [
+    "2026-10-23T21:07 crops: 13 usable walls in 33 s"
+   ],
+   "updatedAt": "2026-10-23T21:07:19.472Z"
   },
   {
    "id": "0363100012247112",
@@ -1001,7 +1290,14 @@
     4.8679225,
     52.3370415
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-247112",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:07:19.473Z",
+   "notes": [
+    "2026-10-23T21:07 crops: 6 usable walls in 13 s"
+   ],
+   "updatedAt": "2026-10-23T21:07:32.209Z"
   },
   {
    "id": "0363100012233471",
@@ -1018,11 +1314,14 @@
     4.8830355,
     52.361340999999996
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "stadhouderskade-25-233471",
    "notes": [
     "authored recipe houses/stadhouderskade-25-233471 exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:07:32.210Z",
+   "updatedAt": "2026-10-23T21:07:32.211Z"
   },
   {
    "id": "0363100012240015",
@@ -1039,7 +1338,14 @@
     4.8781245,
     52.340528
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-240015",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:07:32.211Z",
+   "notes": [
+    "2026-10-23T21:08 crops: 17 usable walls in 31 s"
+   ],
+   "updatedAt": "2026-10-23T21:08:03.441Z"
   },
   {
    "id": "0363100012086968",
@@ -1056,7 +1362,14 @@
     4.9087879999999995,
     52.3961635
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-086968",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:08:03.442Z",
+   "notes": [
+    "2026-10-23T21:08 crops: 6 usable walls in 7 s"
+   ],
+   "updatedAt": "2026-10-23T21:08:10.928Z"
   },
   {
    "id": "0363100012167466",
@@ -1073,7 +1386,14 @@
     4.879906,
     52.367644
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-167466",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:08:10.929Z",
+   "notes": [
+    "2026-10-23T21:08 crops: 12 usable walls in 33 s"
+   ],
+   "updatedAt": "2026-10-23T21:08:43.853Z"
   },
   {
    "id": "0363100012111255",
@@ -1090,7 +1410,14 @@
     4.847092,
     52.377413000000004
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-111255",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:08:43.854Z",
+   "notes": [
+    "2026-10-23T21:09 crops: 14 usable walls in 32 s"
+   ],
+   "updatedAt": "2026-10-23T21:09:15.385Z"
   },
   {
    "id": "0363100012239853",
@@ -1107,7 +1434,14 @@
     4.877822,
     52.341357
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-239853",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:09:15.385Z",
+   "notes": [
+    "2026-10-23T21:09 crops: 9 usable walls in 21 s"
+   ],
+   "updatedAt": "2026-10-23T21:09:36.628Z"
   },
   {
    "id": "0363100012186290",
@@ -1124,11 +1458,14 @@
     4.8987365,
     52.3665855
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "amstel-142-186290",
    "notes": [
     "authored recipe houses/amstel-142-186290 exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:09:36.628Z",
+   "updatedAt": "2026-10-23T21:09:36.629Z"
   },
   {
    "id": "0363100012084650",
@@ -1145,7 +1482,14 @@
     4.8697865,
     52.3412105
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-084650",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:09:36.629Z",
+   "notes": [
+    "2026-10-23T21:10 crops: 16 usable walls in 38 s"
+   ],
+   "updatedAt": "2026-10-23T21:10:14.523Z"
   },
   {
    "id": "0363100012135250",
@@ -1162,7 +1506,14 @@
     4.88017535,
     52.361774499999996
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-135250",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:10:14.523Z",
+   "notes": [
+    "2026-10-23T21:10 crops: 12 usable walls in 26 s"
+   ],
+   "updatedAt": "2026-10-23T21:10:40.690Z"
   },
   {
    "id": "0363100012128727",
@@ -1179,7 +1530,14 @@
     4.910587,
     52.395441000000005
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-128727",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:10:40.691Z",
+   "notes": [
+    "2026-10-23T21:10 crops: 6 usable walls in 12 s"
+   ],
+   "updatedAt": "2026-10-23T21:10:52.724Z"
   },
   {
    "id": "0363100012137448",
@@ -1196,11 +1554,14 @@
     4.8973054000000005,
     52.3573234
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "stadhouderskade-111-137448",
    "notes": [
     "authored recipe houses/stadhouderskade-111-137448 exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:10:52.725Z",
+   "updatedAt": "2026-10-23T21:10:52.726Z"
   },
   {
    "id": "0363100012090791",
@@ -1217,7 +1578,14 @@
     4.85908175,
     52.38450695
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-090791",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:10:52.726Z",
+   "notes": [
+    "2026-10-23T21:11 crops: 9 usable walls in 16 s"
+   ],
+   "updatedAt": "2026-10-23T21:11:08.684Z"
   },
   {
    "id": "0363100012151539",
@@ -1234,7 +1602,14 @@
     4.8488145,
     52.3855325
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-151539",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:11:08.685Z",
+   "notes": [
+    "2026-10-23T21:11 crops: 13 usable walls in 7 s"
+   ],
+   "updatedAt": "2026-10-23T21:11:15.196Z"
   },
   {
    "id": "0363100012571499",
@@ -1251,7 +1626,14 @@
     4.913963,
     52.3481345
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-571499",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:11:15.197Z",
+   "notes": [
+    "2026-10-23T21:11 crops: 5 usable walls in 16 s"
+   ],
+   "updatedAt": "2026-10-23T21:11:30.889Z"
   },
   {
    "id": "0363100012251533",
@@ -1268,7 +1650,14 @@
     4.8649215,
     52.352657
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-251533",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:11:30.889Z",
+   "notes": [
+    "2026-10-23T21:12 crops: 16 usable walls in 38 s"
+   ],
+   "updatedAt": "2026-10-23T21:12:09.236Z"
   },
   {
    "id": "0363100012154874",
@@ -1285,7 +1674,14 @@
     4.8589525,
     52.3643586
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-154874",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:12:09.237Z",
+   "notes": [
+    "2026-10-23T21:12 crops: 8 usable walls in 12 s"
+   ],
+   "updatedAt": "2026-10-23T21:12:21.639Z"
   },
   {
    "id": "0363100012169731",
@@ -1302,7 +1698,14 @@
     4.905797,
     52.36401
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-169731",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:12:21.639Z",
+   "notes": [
+    "2026-10-23T21:12 crops: 10 usable walls in 25 s"
+   ],
+   "updatedAt": "2026-10-23T21:12:46.209Z"
   },
   {
    "id": "0363100012076454",
@@ -1319,7 +1722,14 @@
     4.871646,
     52.338863
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-076454",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:12:46.209Z",
+   "notes": [
+    "2026-10-23T21:13 crops: 17 usable walls in 41 s"
+   ],
+   "updatedAt": "2026-10-23T21:13:27.313Z"
   },
   {
    "id": "0363100012148630",
@@ -1336,7 +1746,11 @@
     4.8438245,
     52.3685015
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-148630",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:13:27.314Z",
+   "updatedAt": "2026-10-23T21:13:27.316Z"
   },
   {
    "id": "0363100012247688",
@@ -1353,7 +1767,14 @@
     4.930776,
     52.39531100000001
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-247688",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:13:27.316Z",
+   "notes": [
+    "2026-10-23T21:13 crops: 15 usable walls in 23 s"
+   ],
+   "updatedAt": "2026-10-23T21:13:50.697Z"
   },
   {
    "id": "0363100012119260",
@@ -1370,7 +1791,14 @@
     4.848699,
     52.3860645
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-119260",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:13:50.698Z",
+   "notes": [
+    "2026-10-23T21:14 crops: 15 usable walls in 26 s"
+   ],
+   "updatedAt": "2026-10-23T21:14:16.482Z"
   },
   {
    "id": "0363100012139498",
@@ -1387,7 +1815,14 @@
     4.9263825,
     52.3760035
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-139498",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:14:16.482Z",
+   "notes": [
+    "2026-10-23T21:14 crops: 15 usable walls in 38 s"
+   ],
+   "updatedAt": "2026-10-23T21:14:54.765Z"
   },
   {
    "id": "0363100012142095",
@@ -1404,7 +1839,14 @@
     4.9389585,
     52.377356000000006
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-142095",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:14:54.765Z",
+   "notes": [
+    "2026-10-23T21:15 crops: 16 usable walls in 34 s"
+   ],
+   "updatedAt": "2026-10-23T21:15:28.832Z"
   },
   {
    "id": "0363100012070306",
@@ -1421,7 +1863,14 @@
     4.871908,
     52.341269499999996
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-070306",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:15:28.832Z",
+   "notes": [
+    "2026-10-23T21:15 crops: 10 usable walls in 26 s"
+   ],
+   "updatedAt": "2026-10-23T21:15:54.953Z"
   },
   {
    "id": "0363100012247952",
@@ -1438,7 +1887,14 @@
     4.8432224999999995,
     52.349686
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-247952",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:15:54.953Z",
+   "notes": [
+    "2026-10-23T21:16 crops: 10 usable walls in 16 s"
+   ],
+   "updatedAt": "2026-10-23T21:16:10.817Z"
   },
   {
    "id": "0363100012125840",
@@ -1455,7 +1911,14 @@
     4.85868,
     52.3416215
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-125840",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:16:10.817Z",
+   "notes": [
+    "2026-10-23T21:16 crops: 8 usable walls in 21 s"
+   ],
+   "updatedAt": "2026-10-23T21:16:31.344Z"
   },
   {
    "id": "0363100012153698",
@@ -1472,7 +1935,14 @@
     4.867531,
     52.340961
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-153698",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:16:31.346Z",
+   "notes": [
+    "2026-10-23T21:17 crops: 18 usable walls in 49 s"
+   ],
+   "updatedAt": "2026-10-23T21:17:20.167Z"
   },
   {
    "id": "0363100012244662",
@@ -1489,7 +1959,14 @@
     4.857755,
     52.343588499999996
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-244662",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:17:20.167Z",
+   "notes": [
+    "2026-10-23T21:17 crops: 9 usable walls in 25 s"
+   ],
+   "updatedAt": "2026-10-23T21:17:45.428Z"
   },
   {
    "id": "0363100012182840",
@@ -1506,7 +1983,14 @@
     4.907496,
     52.3608205
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-182840",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:17:45.429Z",
+   "notes": [
+    "2026-10-23T21:18 crops: 8 usable walls in 15 s"
+   ],
+   "updatedAt": "2026-10-23T21:18:00.746Z"
   },
   {
    "id": "0363100012136232",
@@ -1523,7 +2007,14 @@
     4.866779899999999,
     52.33421965
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-136232",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:18:00.747Z",
+   "notes": [
+    "2026-10-23T21:18 crops: 16 usable walls in 29 s"
+   ],
+   "updatedAt": "2026-10-23T21:18:29.719Z"
   },
   {
    "id": "0363100012236735",
@@ -1540,7 +2031,14 @@
     4.8560099999999995,
     52.3574975
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-236735",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:18:29.719Z",
+   "notes": [
+    "2026-10-23T21:19 crops: 17 usable walls in 46 s"
+   ],
+   "updatedAt": "2026-10-23T21:19:15.538Z"
   },
   {
    "id": "0363100012165158",
@@ -1557,7 +2055,14 @@
     4.8417815,
     52.388118399999996
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-165158",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:19:15.538Z",
+   "notes": [
+    "2026-10-23T21:19 crops: 9 usable walls in 21 s"
+   ],
+   "updatedAt": "2026-10-23T21:19:36.228Z"
   },
   {
    "id": "0363100012246191",
@@ -1574,7 +2079,14 @@
     4.8506665,
     52.385729999999995
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-246191",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:19:36.228Z",
+   "notes": [
+    "2026-10-23T21:19 crops: 13 usable walls in 16 s"
+   ],
+   "updatedAt": "2026-10-23T21:19:52.526Z"
   },
   {
    "id": "0363100012239633",
@@ -1591,7 +2103,14 @@
     4.8619555000000005,
     52.337149499999995
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-239633",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:19:52.527Z",
+   "notes": [
+    "2026-10-23T21:20 crops: 9 usable walls in 21 s"
+   ],
+   "updatedAt": "2026-10-23T21:20:13.586Z"
   },
   {
    "id": "0363100012236656",
@@ -1608,7 +2127,14 @@
     4.855887,
     52.3500095
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-236656",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:20:13.586Z",
+   "notes": [
+    "2026-10-23T21:20 crops: 16 usable walls in 25 s"
+   ],
+   "updatedAt": "2026-10-23T21:20:38.279Z"
   },
   {
    "id": "0363100012080492",
@@ -1625,7 +2151,14 @@
     4.879169,
     52.363166500000005
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-080492",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:20:38.280Z",
+   "notes": [
+    "2026-10-23T21:20 crops: 2 usable walls in 6 s"
+   ],
+   "updatedAt": "2026-10-23T21:20:44.753Z"
   },
   {
    "id": "0363100012165746",
@@ -1642,11 +2175,14 @@
     4.8942435,
     52.3745945
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "damrak-77-165746",
    "notes": [
     "authored recipe houses/damrak-77-165746 exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:20:44.753Z",
+   "updatedAt": "2026-10-23T21:20:44.754Z"
   },
   {
    "id": "0363100012236811",
@@ -1663,7 +2199,14 @@
     4.8805505,
     52.362161
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-236811",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:20:44.755Z",
+   "notes": [
+    "2026-10-23T21:20 crops: 2 usable walls in 5 s"
+   ],
+   "updatedAt": "2026-10-23T21:20:50.232Z"
   },
   {
    "id": "0363100012138843",
@@ -1680,7 +2223,14 @@
     4.85656075,
     52.34663065
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-138843",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:20:50.233Z",
+   "notes": [
+    "2026-10-23T21:21 crops: 8 usable walls in 24 s"
+   ],
+   "updatedAt": "2026-10-23T21:21:14.276Z"
   },
   {
    "id": "0363100012240368",
@@ -1697,7 +2247,14 @@
     4.8404755,
     52.373037
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-240368",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:21:14.277Z",
+   "notes": [
+    "2026-10-23T21:21 crops: 5 usable walls in 16 s"
+   ],
+   "updatedAt": "2026-10-23T21:21:30.343Z"
   },
   {
    "id": "0363100012088496",
@@ -1714,7 +2271,14 @@
     4.8302320000000005,
     52.388254
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-088496",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:21:30.344Z",
+   "notes": [
+    "2026-10-23T21:22 crops: 13 usable walls in 32 s"
+   ],
+   "updatedAt": "2026-10-23T21:22:02.747Z"
   },
   {
    "id": "0363100012077450",
@@ -1731,7 +2295,14 @@
     4.87306,
     52.3347385
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-077450",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:22:02.748Z",
+   "notes": [
+    "2026-10-23T21:23 crops: 20 usable walls in 65 s"
+   ],
+   "updatedAt": "2026-10-23T21:23:07.556Z"
   },
   {
    "id": "0363100012119827",
@@ -1748,7 +2319,14 @@
     4.9033545,
     52.3832095
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-119827",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:23:07.556Z",
+   "notes": [
+    "2026-10-23T21:23 crops: 11 usable walls in 17 s"
+   ],
+   "updatedAt": "2026-10-23T21:23:24.809Z"
   },
   {
    "id": "0363100012242039",
@@ -1765,7 +2343,14 @@
     4.9225284,
     52.34919025
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-242039",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:23:24.810Z",
+   "notes": [
+    "2026-10-23T21:23 crops: 4 usable walls in 11 s"
+   ],
+   "updatedAt": "2026-10-23T21:23:35.534Z"
   },
   {
    "id": "0363100012165051",
@@ -1782,11 +2367,14 @@
     4.89596465,
     52.3741502
    ],
-   "status": "queued",
+   "status": "crops",
    "house": "beursplein-5-165051",
    "notes": [
     "authored recipe houses/beursplein-5-165051 exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ]
+   ],
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:23:35.534Z",
+   "updatedAt": "2026-10-23T21:23:35.536Z"
   },
   {
    "id": "0363100012148632",
@@ -1803,7 +2391,14 @@
     4.88504955,
     52.3486361
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-148632",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:23:35.537Z",
+   "notes": [
+    "2026-10-23T21:23 crops: 10 usable walls in 20 s"
+   ],
+   "updatedAt": "2026-10-23T21:23:55.310Z"
   },
   {
    "id": "0363100012240382",
@@ -1820,7 +2415,14 @@
     4.8395755000000005,
     52.373121
    ],
-   "status": "queued"
+   "status": "crops",
+   "house": "pand-240382",
+   "owner": "crops-20261023",
+   "claimedAt": "2026-10-23T21:23:55.311Z",
+   "notes": [
+    "2026-10-23T21:24 crops: 10 usable walls in 30 s"
+   ],
+   "updatedAt": "2026-10-23T21:24:25.449Z"
   },
   {
    "id": "0363100012248597",
