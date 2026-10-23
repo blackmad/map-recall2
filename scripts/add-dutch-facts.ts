@@ -163,7 +163,13 @@ if (!check) {
       if (!fact.textNl.trim()) problems.push(`empty Dutch: ${feature.name}`);
       if (fact.textNl === fact.text) problems.push(`Dutch equals English: ${feature.name}`);
       if (!/[.!?…]$/.test(fact.textNl.trim())) problems.push(`Dutch does not end a sentence: ${feature.name}`);
-      if (!fact.sourceLanguage || fact.sourceLanguage !== 'nl') problems.push(`Dutch without Dutch evidence: ${feature.name}`);
+      if (!fact.sourceLanguage || fact.sourceLanguage !== 'nl') {
+        // A matched sentence is Dutch evidence too: it must name the article it
+        // came from, and the matcher only accepts year-anchored single hits.
+        if (!(fact.textNlMatched && /^https:\/\/nl\.wikipedia\.org\//.test(fact.textNlSourceUrl || ''))) {
+          problems.push(`Dutch without Dutch evidence: ${feature.name}`);
+        }
+      }
     }
     if (feature.openingNl && feature.openingNl === feature.opening) problems.push(`opening is English: ${feature.name}`);
   }

@@ -93,8 +93,16 @@ commands. Do not hand-edit the published JSON.
 ## Known gaps
 
 - The 795 facts without Dutch evidence (English Wikipedia, data-composed text)
-  show in English. A later pass can mine Dutch articles for them, but that is a
-  sourcing job, not a translation one.
+  show in English. Mining Dutch articles for them needs the facts pipeline's
+  writer **and its entailment verifier**: a mechanical year/anchor match was
+  tried on 2026-10-23 and rejected — 1 in 4 picks stated a different claim
+  (the Utrechtboog card matched a sentence about the *planned* 2006 opening
+  against the fact that it opened in March 2006). Run
+  `npm run facts:articles -- --directory=public/data/extracts/amsterdam` then
+  `npm run facts:build -- --directory=public/data/extracts/amsterdam
+  --city=amsterdam` with a model available (Ollama locally, or
+  `--provider=openrouter` with a key) and review the Dutch output as usual;
+  `textNl` then comes from that reviewed catalog rather than from a match.
 - The debug places modal (a developer tool) is still English; everything a
   player sees on the ride and the quiz now follows the language.
 - Rows the error register covers are fixed (`corrections`), composed from the
@@ -105,6 +113,9 @@ commands. Do not hand-edit the published JSON.
   spelling differs, "Katten brug" against "Kattenbrug") are read straight from
   the BAG record by id and cached under staging; that is also the repair for a
   spelling variant the cache missed.
-- The published `street-name-origins.json` is ~2.2 MB (was ~1.3 MB) because it
-  now carries both languages. It is fetched after the ride starts; split it into
-  a lazily loaded sidecar if that ever matters.
+- The published `street-name-origins.json` is 2.2 MB raw / **667 KB gzipped**,
+  against 367 KB for the English-only column. Measured 2026-10-23: the Dutch
+  column costs ~300 KB once, on a request that is already deferred until after
+  the ride starts. Splitting it into a sidecar would save that at the price of a
+  second request and a reload path for live language switching, so it stays one
+  file until the payload actually hurts.
