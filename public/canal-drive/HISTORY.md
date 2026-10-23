@@ -35,6 +35,16 @@ it was never installed); OBA Banne's backlog pand is not in the building tiles
 `install-large.ts --install` by the batch lane; the review turn is the only
 writer of verdicts. Next: the first Haiku batch, the kits strips, S1.
 
+Landed the same evening: the factory's strip pager (`strip.ts`, every wall
+sheet of a house under one header, four houses a page), a one-time retry
+and automatic re-queue on network errors, and `landmark-queue.html`
+leading with the census (386 of 1000, 47 strict) and the factory queue.
+The 3DBAG API was down for the whole evening (TLS connect timeout while
+PDOK answered in 0.2 s), so no dominant pand got past `facts`; there is no
+local LoD2 surface dump to fall back to (`building-tiles` is compiled
+output, `bag3d-volume-rank` holds attributes only), so the facts step keeps
+depending on the API and the queue absorbs outages as retryable rows.
+
 ## check:canal green again: rewrite-erased export dates, Felix's rear house (2026-10-23)
 
 Two landmark gates failed on `main` for reasons outside any landmark lane.

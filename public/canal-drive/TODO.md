@@ -22,9 +22,17 @@ one brief per lane in `docs/handoffs/lane-*-20261023.md`. Census baseline
 2026-10-23: 386 counted (grandfathered gallery reviews), 47 strict; target
 1000. Queue `public/canal-drive/landmark-factory-queue.json` (325 rows).
 Open, in order:
-- **factory** (haiku batches of 20, opus review turns): first batch not run;
-  the 23 authored-but-uninstalled recipes are the zero-network first batch
-  (`politie-west-overtoomsesluis` fails its own footprint gate, IoU 0.749).
+- **factory** (haiku batches of 20, opus review turns): first batch not run.
+  Smoke 2026-10-23: `politie-west-overtoomsesluis` crops 27 s → measure 10 s
+  → compile 7 s, strip rendered (`npm run factory:strip`); the first dominant
+  pand (0363100012098925) got 13 crops but `facts` hit a 3DBAG API outage
+  (TLS connect timeout on api.3dbag.nl, PDOK fine) and sits as a retryable
+  `error` row; the factory retries network errors once and re-queues them on
+  the next run. The 23 authored-but-uninstalled recipes are the zero-network
+  first batch (`politie-west-overtoomsesluis` fails its own footprint gate,
+  IoU 0.749). Next: `npm run factory -- --stage=crops --ids=320 --owner=crops`
+  (skips pands already in the archive) once 3DBAG is back, then
+  `--stage=all --ids=20` batches per the brief.
   11 POI rows have no pand (`needs-pand`: Pathé de Munt, DeLaMar West, Levend
   Paardenmuseum, WTC, …); OBA Banne's pand is not in the building tiles.
 - **kits-review**: 546 kit buildings have no review record; `kit-sheets.ts`
@@ -41,7 +49,6 @@ Open, in order:
   ribbons, part-covered bands and the far ring still draw over the BGT
   polygons; grey and red decided with the user on a strip).
 - **build-hash-skip**: `build-manual-landmarks` still rebuilds all 355.
-- `landmark-queue.html` does not show the census or the queue yet.
 
 ---
 
