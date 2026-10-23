@@ -18,6 +18,7 @@ import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
 import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlotInference.ts';
 import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlightLandmarks.ts';
 import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
+import { landmarkResidencyBudget, pickEvictions } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
 import { LANDMARK_SEQUENCE, anchorWorldFromMercator, bySequence, mercatorFromAnchorWorld, multiplyMat4, needsRebase, painterSortStable, reversePainterSortStable } from '../../../src/canalRecall/landmarks/batchedLegacyFrame.ts';
 import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
@@ -90,6 +91,8 @@ export class SignatureLandmarks {
     this.manageBasemapFilter = options.manageBasemapFilter !== false;
     this.getBasemapBaseFilter = options.getBasemapBaseFilter || null;
     this.loadVisibleOnly = options.loadVisibleOnly === true;
+    /** Start with loading held (see setSuspended); the game resumes it when a ride's camera takes over. */
+    this._suspended = options.suspended === true;
     this.depthBiasEnabled = options.depthBiasEnabled !== false;
     this.streetChunks = options.streetChunks === true;
     this.buildingTypes = options.buildingTypes !== false;
@@ -99,7 +102,20 @@ export class SignatureLandmarks {
     this._sharedAssets = new window.CanalRecallSignatureLandmarks.SharedAssetCache();
     this._generation = 0;
     this._removed = false;
-    this._onMove = () => { this._requestModels(); this._updateLevels(); };
+    this._onMove = () => { this._evictFar(); this._requestModels(); this._updateLevels(); };
+    /** Resident model budget (landmarks/landmarkResidency.ts): 24 on touch, 72 on desktop; `?landmarkBudget=`. */
+    this.residencyBudget = options.residencyBudget ?? landmarkResidencyBudget(window.location?.search ?? '', !!window.matchMedia?.('(pointer: coarse)')?.matches);
+    this._lastEvictCheck = 0;
+    /**
+     * No model loads below this zoom (2026-10-23). The overview raster draws the
+     * city to z15.6; below z15 "visible" is every landmark in Amsterdam, which is
+     * how the setup screen, route previews and zoomed-out views pulled in dozens
+     * of GLBs nobody could see (a Safari session lost its GPU after 30 in 30 s).
+     * The start flight also suspends loading (setSuspended); this covers the rest.
+     */
+    this.minLoadZoom = options.minLoadZoom ?? 15;
+    /** Models given back to their extrusion because they were far off-view over budget. */
+    this.evictions = 0;
     // The view's bounds, computed once per camera change (see _viewBounds).
     this._viewBoundsCache = null;
     this._dropViewBounds = () => { this._viewBoundsCache = null; };
@@ -569,8 +585,38 @@ export class SignatureLandmarks {
     return this._viewBoundsCache ??= plainBounds(this.map.getBounds());
   }
 
+  /**
+   * Give back far, off-view models once more than `residencyBudget` are drawn
+   * (at most twice a second). Without it residency grew with the ride until
+   * the GPU gave up (landmarks/landmarkResidency.ts). Only with
+   * `loadVisibleOnly`: the demo pages draw their whole list on purpose.
+   */
+  _evictFar() {
+    if (!this.loadVisibleOnly || this._removed || !this._entries || this._entries.length <= this.residencyBudget) return;
+    const now = performance.now();
+    if (now - this._lastEvictCheck < 500) return;
+    this._lastEvictCheck = now;
+    const center = this.map.getCenter(), cos = Math.cos(center.lat * Math.PI / 180);
+    const models = this._entries.map(entry => {
+      const anchor = entry.placement?.anchor || entry.spec.surveyed?.anchor || entry.spec.footprint?.centre;
+      const highlighted = entry.highlighted || (this.activeLandmarkId && entry.spec.landmarkId === this.activeLandmarkId);
+      return {
+        id: entry.spec.id,
+        distanceSq: anchor ? ((anchor[0] - center.lng) * cos) ** 2 + (anchor[1] - center.lat) ** 2 : 0,
+        inView: !anchor || this._nearby(entry.spec, anchor),
+        // Procedural building types rebuild a whole instanced scene; a level swap in flight owns its entry.
+        evictable: !!anchor && !entry.spec.sceneFactory && !entry.levelLoading && !highlighted,
+      };
+    });
+    const ids = new Set(pickEvictions(models, { budget: this.residencyBudget }));
+    if (!ids.size) return;
+    this.evictions += ids.size;
+    this._dropEntries(ids);
+  }
+
   _requestModels() {
     if (this._removed || !this.enabled || this._suspended || !this._loader || this._pending.size >= 2) return;
+    if (this.loadVisibleOnly && this.map.getZoom() < this.minLoadZoom) return;
     const candidates = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) &&
       !this._failed.has(spec.id) && (!this.loadVisibleOnly || this._nearby(spec)));
     const bounds = this.map.getBounds();

@@ -45,6 +45,75 @@ local LoD2 surface dump to fall back to (`building-tiles` is compiled
 output, `bag3d-volume-rank` holds attributes only), so the facts step keeps
 depending on the API and the queue absorbs outages as retryable rows.
 
+## Landmarks stop piling up, and nothing loads behind the setup card (2026-10-23)
+
+Users reported the game crashing phones and running far too slowly on ordinary
+computers. Sentry had the evidence: a Safari/Mac session (CANAL-RECALL-5, -4)
+lost its WebGL context after 30 landmark GLBs landed in 30 s, spread across the
+whole centre (Begijnhof, Madame Tussauds, Fatih Moskee, the Dam). The landmark
+layer loaded every model that came into view and never gave one back; only a
+street-chunk swap ever dropped an entry, so residency grew with the ride.
+
+- **Eviction** (`landmarks/landmarkResidency.ts`): above a resident budget (24 on
+  touch, 72 on desktop; `?landmarkBudget=`) the furthest off-view models give
+  their extrusion back, down to budget − 4, at most twice a second. In-view,
+  highlighted, mid-level-swap and procedural building-type entries never go.
+  An evicted model reloads (HTTP cache) when it is in view again.
+  `_signatureLandmarks.evictions` counts them.
+- **No loading below z15**: the overview raster draws the city to z15.6, and
+  below z15 "visible" meant every landmark in Amsterdam.
+- **Nothing behind the setup card**: the default Damrak view pulled in 21
+  landmark GLBs behind the route card, which covers the whole screen on a
+  phone. The layer is now built suspended; `sync` resumes it when the start
+  flight lands, as it already did after the flight.
+
+Measured with `tests/e2e/phone-memory.spec.ts` (iPhone profile, forced GC per
+sample): setup 21 → 0 landmarks; a ride's first 10 s draws 30 and gives back
+15–18. After GC the live heap is flat at ~330 MB over a 30 s ride — the 4 MB/s
+growth seen without GC is per-frame garbage, not a leak. GPU at the Dam:
+~60 MB textures, ~130–150 MB buffers; landmarks hold 16 MB of that, the own
+ground ~57 MB of buffers and ~28 MB of textures (`?ownGround=0`). Live heap at
+ride start is dominated by whole-city roads (road-network segment geometry
+47 MB, road graph 43 MB, OSM loader 23 MB) and the own ground (28 MB).
+
+A 1 km own-ground cap on phones saved only 18 MB (9 cells instead of 11;
+~12 MB of geometry per cell) and the far ring is off at chase zoom, so phones
+keep the default ring; `?groundRadius=N` fixes the ring for A/B shots.
+
+## Slow machines step their render cost down (2026-10-23)
+
+"Fine on my M4": desktop renders at the full device pixel ratio with MSAA and a
+2048² shadow map, so a laptop at 150–200 % scaling with an integrated GPU draws
+2.25–4× the pixels of a 1× canvas. `renderGovernor.ts` watches the map's render
+cadence while riding (game state 4 only; loading and the intro fly-in do not
+count) and after two consecutive slow windows (90 frames or 1.5 s, whichever
+comes first; p75 over 26 ms; intervals over 1 s are a hidden tab) steps:
+pixel ratio ×0.75 down to 1, then sun shadows off, then 0.75× only if p75 is
+over 40 ms. It never steps back up; a pause or leaving the ride resets the run.
+`?governor=0` turns it off, an explicit `?dpr=` keeps its ratio. Steps log
+`[canal-recall] render budget step`; status is `vectorMap._renderGovernor`.
+Shipped in `map-guard.bundle.js` (entry `mapHealthBrowser.ts`). On the M4 it
+never steps. `tests/e2e/weak-gpu-perf.spec.ts` (SwiftShader, 1440×900 at
+1.5×) is the weak-GPU proxy: it runs at ~2 fps, so it ranks costs rather than
+predicting a laptop. Median frame 507 ms default, 332 ms at `?dpr=1` (−35 %),
+286 ms with `?msaa=0`; shadows-off was bimodal and inconclusive. It also caught
+the first governor draft never stepping there (90-frame windows and a 250 ms gap
+cutoff); with time-bounded windows it went 1.5 → 1.13 → 1 inside a 12 s ride.
+iOS Low Power Mode caps rAF at 30 fps, so the governor also steps there.
+
+## Sentry: three unhandled errors fixed (2026-10-23)
+
+- CANAL-RECALL-3 (Chrome Mobile, Android 10): a brick photo in the 'broken'
+  state threw from `drawImage` in bay textures; such a wall draws its coursing.
+- CANAL-RECALL-4 (Safari/Mac): `park-landscape` touched a map whose style was
+  gone; it returns when `map.style` is null.
+- CANAL-RECALL-5 (Safari/Mac): three compiled shaders on a lost context
+  (`createShader` → null); the shared frame skips drawing while
+  `gl.isContextLost()`. The cause is the context loss above.
+
+Also seen in that session: Firebase App Check answering 403 in production
+(`appCheck/throttled` for 24 h) — see TODO.
+
 ## check:canal green again: rewrite-erased export dates, Felix's rear house (2026-10-23)
 
 Two landmark gates failed on `main` for reasons outside any landmark lane.

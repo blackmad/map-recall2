@@ -106,11 +106,21 @@ class Painter {
   }
 }
 
+/**
+ * A brick photo that failed to load or decode is an `HTMLImageElement` in the
+ * 'broken' state, and `drawImage` throws on it (Sentry CANAL-RECALL-3, Chrome
+ * Mobile on a low-end Android 10). Such a wall falls back to drawn coursing.
+ */
+export function isDrawable(source: CanvasImageSource): boolean {
+  if (typeof HTMLImageElement !== 'undefined' && source instanceof HTMLImageElement) return source.complete && source.naturalWidth > 0;
+  return true;
+}
+
 function wall(p: Painter, w: number, h: number, brick: CanvasImageSource, archetype: Archetype, material?: 'brick' | 'smooth'): void {
   const { ctx } = p;
   if (p.pass === 'mask') { p.fill('wall', ''); ctx.fillRect(0, 0, w, h); return; }
   const smooth = material === 'smooth' || archetype === 'modern' && material !== 'brick';
-  if (p.cartoon || smooth) {
+  if (p.cartoon || smooth || !isDrawable(brick)) {
     ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);
     if (p.toon && !smooth) return; // cartoon walls are flat colour
     ctx.strokeStyle = smooth ? 'rgba(0,0,0,0.05)' : 'rgba(60,30,20,0.16)'; ctx.lineWidth = 2;

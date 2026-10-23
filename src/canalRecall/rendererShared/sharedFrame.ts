@@ -269,6 +269,9 @@ export class SharedFrame {
   private renderPass(pass: FramePass, gl: WebGL2RenderingContext, args: any): void {
     const renderer = this.renderer;
     if (!renderer) return;
+    // A lost context answers createShader with null and three throws from
+    // every frame (Sentry CANAL-RECALL-5, Safari/Mac); MapLibre restores it.
+    if (gl.isContextLost?.()) return;
     const main: Mat4 | undefined = args?.defaultProjectionData?.mainMatrix ?? args;
     if (!main || (main as any).length !== 16) return;
     const fm = frameMatrices(main);

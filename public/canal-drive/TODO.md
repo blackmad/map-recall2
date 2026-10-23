@@ -474,7 +474,8 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   recipes need `repeat` along a frontage, compiled once and instanced. Build
   on the installed Marnixstraat pilot (`repeatedTerraceRoof.ts`).
 - **Perf cycle**: landmark layer renders one `THREE.Scene` per model with a
-  `getBounds()` per entry per frame, no frustum cull, no eviction
+  `getBounds()` per entry per frame, no frustum cull (eviction landed
+  2026-10-23, `landmarks/landmarkResidency.ts`)
   (`signature-landmarks-source.js`). Re-baseline against
   `docs/performance/2026-10-06/` first.
 - **Recipe pipeline next steps** (pipeline on main, see HISTORY 2026-10-09):
@@ -2904,6 +2905,21 @@ Not milestones — standing obligations with live guards.
   fragments.
 - Keep `npm run check:map-recall` green (lint, Map Recall unit tests, trivia,
   postcard and neighbourhood text/story checks) alongside `check:canal`.
+- P1: Phone memory, next levers (2026-10-23, HISTORY "Landmarks stop piling
+  up"): live heap at ride start is ~330 MB, mostly whole-city roads
+  (`road-network.js` `_computeSegmentGeometry` 47 MB, road graph 43 MB,
+  `osm-loader.js` 23 MB) — stream or pack them per tile. The own ground holds
+  ~12 MB of geometry per resident cell (`_ownGround.status().geometryMB`);
+  shrink per-cell buffers (drop CPU copies after upload where nothing reads
+  them, quantise) rather than the ring. Per-frame allocation churn is ~4 MB/s
+  while riding (heap grows until GC) — profile and pool. Measure with
+  `PERF_PHONE_MEMORY=1 PHONE_HEAP=1 npx playwright test phone-memory --project=iphone`.
+- P1: Firebase App Check answers 403 in production (Sentry breadcrumb
+  2026-10-23, Safari/Mac: `appCheck/throttled` for 24 h). Check the site key /
+  registered domain for rideamsterdam.nl.
+- P2: The render governor (`renderGovernor.ts`) is unit-tested and quiet on the
+  M4; confirm on a real Intel/AMD laptop at 150 % scaling that it steps (and
+  where it settles) and that the step is not visible as a pop mid-question.
 - P2: The phone GPU budget (2026-10-23) is measured only on desktop Chromium
   with a Pixel 5 profile: coarse-pointer DPR 1.25 (`?dpr=`), MSAA off at
   ≤3 GB (`?msaa=`), 9 resident z14 building tiles (`?tileBudget=`,
