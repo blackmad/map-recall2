@@ -25,7 +25,7 @@ import { withMonumentGable } from './monumentGables.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
 import { paintGlassBlockCell } from './glassBlockTexture.js';
-import { bayTextures, type Look } from './bayTextures.js';
+import { bayTextures, releaseBayTextures, type Look } from './bayTextures.js';
 import { KITS, KIT_HIDE_IDS, KIT_MODELLED_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
 import { FRONT_LIST, FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
 import { frontKitGeometry } from './landmarkFronts.js';
@@ -305,17 +305,26 @@ export async function buildLookTextures(THREE: any, look: 'procedural' | Look, m
     if (look !== 'procedural') calmBayLayers(colour.subarray(layer * px * 4, (layer + 1) * px * 4), mask.subarray(layer * px * 2, (layer + 1) * px * 2), 1, bayLook, size);
     await yieldBudget();
   }
+  // The canvases' pixels now live in `colour`/`mask`; the cache would keep them for the session.
+  releaseBayTextures();
   const array = (data: Uint8Array, format: any) => {
     const t = new THREE.DataArrayTexture(data, size, size, total);
     t.format = format; t.type = THREE.UnsignedByteType;
     t.wrapS = t.wrapT = THREE.RepeatWrapping; t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter;
     t.userData = { bytes: data.byteLength };
-    t.onUpdate = () => { t.image.data = null; };
+    t.onUpdate = releaseTextureData;
     t.generateMipmaps = true; t.anisotropy = maxAnisotropy; t.unpackAlignment = 1; t.needsUpdate = true;
     return t;
   };
   return { colour: array(colour, THREE.RGBAFormat), mask: array(mask, THREE.RGFormat), slotBase: layers };
 }
+
+/**
+ * Drops a texture array's CPU copy after upload (three calls `onUpdate(texture)`).
+ * Module-level on purpose: an arrow inside the builder kept the builder's scope,
+ * and with it the full colour and mask arrays (~18 MB on a phone), alive.
+ */
+function releaseTextureData(texture: { image: { data: unknown } }): void { texture.image.data = null; }
 
 /** Own ground: a feature's base height (metres), undefined while its relief is not resident, null where there is none. */
 export type GroundBaseFn = (feature: Feature) => number | null | undefined;
