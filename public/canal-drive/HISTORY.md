@@ -67,6 +67,11 @@ Integrator (this session, worktree `integrator-plan`), merged into `main`:
   terminal access in reach (`ferryAccessesOf`). No tolerance changed. The
   rider now boards 0.54 m from the stop; regression
   `tests/e2e/ferry-centraal-pier.spec.ts` (De Ruijterkade → OBA Van der Pek).
+- **perf, ride-start memory** (previous perf session as a leaf lane): 272 MB
+  of cached bay-texture canvases and ~20 MB of texture arrays freed after
+  the building texture build (`releaseBayTextures`); phone-memory spec
+  ArrayBuffers at ride start 88 → 67 MB, emulator renderer PSS at ride
+  start 1,567 → 1,313 MB. Attribution table and next levers in the perf brief.
 - **z-fighting on small models** (user, Anne Frank statue card): see the
   commit of the same name; the audit's warn now scales with the model.
 - **feedback queue**: eight open Firestore notes read with

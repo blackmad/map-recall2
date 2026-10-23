@@ -86,6 +86,26 @@ probe script: the previous session's scratchpad (`emu-ride3.json`,
    the loop always reschedules (try/finally) and reports the error once per
    message.
 
+## Ride-start memory (2026-10-24, previous perf session, merged)
+
+Attribution at ride +10 s (iPhone profile, renderer process): partition_alloc
+468 MB (ArrayBuffers inside ~228 MB), v8 453 MB (main 275, workers 172), 2D
+canvas 272 MB, malloc 213 MB, webgl 108 MB. The 272 MB of canvas were ~380
+cached bay-texture canvases (`bayTextures()` keeps every painted variant for
+the session; the texture build paints ~190 only to copy their pixels into
+the DataArrayTextures), and the `onUpdate` closure kept the builder's colour
+and mask arrays alive. Fixed: `releaseBayTextures()` after the copy loop,
+module-level `releaseTextureData`. Canvas 272 → 20 MB; phone-memory spec
+ArrayBuffers at ride start 88 → 67 MB, heap 273 → 245 MB, GL buffers 150 →
+140 MB; emulator renderer PSS at ride start 1,567 → 1,313 MB, peak 1,764 →
+1,650 MB. The "90 MB unattributed" were ArrayBuffers arriving from workers
+and fetch: own-ground meshes (70–137 MB of vertex arrays, only ~1 of 9
+resident cells ever drawn in chase view), 24 MB of field height tiles, 19 MB
+of DataTexture data. Next levers (item 4 continues): the worker heaps (244
+MB after a long Android ride, never measured before), a smaller resident
+own-ground ring on phones or lazy cell builds on frustum entry, Uint16 field
+tiles (24 → 12 MB).
+
 ## Checks
 
 `npm run lint`; `PW_PORT=<port> npx playwright test tests/e2e/phone-memory.spec.ts tests/e2e/weak-gpu-perf.spec.ts --project=iphone` alone; desktop
