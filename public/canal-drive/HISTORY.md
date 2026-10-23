@@ -1,5 +1,40 @@
 # Canal Recall — what is built
 
+## The 1000-building programme: factory, census, queue, lane briefs (2026-10-23)
+
+User: get to 1000 fully modelled landmark buildings and per-buurt looks on the
+Claude Code Max plan this month, Opus orchestrating, Haiku where possible; say
+where the pipeline is dumb; decide the three off-by-default building switches;
+fix the roads. Plan `docs/plans/thousand-buildings-20261023.md` (approved),
+rules `docs/handoffs/LANE-RULES.md`, thirteen briefs
+`docs/handoffs/lane-*-20261023.md`. Decisions: a building counts when it is a
+**named POI or a ride-visible dominant building** with a model that passes the
+`audit:glb` hard gates and a **recorded photo-likeness review**; the switches
+flip in the order BAG tiles → recipe tiles → city look, each after a desktop
+measurement and one strip the user looks at (the city look is re-levelled
+against the sunny frame first: it reads 5–6 luma darker under it today).
+
+Landed, no LLM call in any of it: `npm run factory:queue` builds
+`public/canal-drive/landmark-factory-queue.json` (325 rows: 36 pending POI
+buildings with pand ids, 289 ride-visible dominant buildings by
+`rideVisibility.score`; 112 already-covered pands left out, 23 rows keep an
+authored-but-uninstalled recipe); `npm run factory` chains crops → facts
+(routing streets within 30 m) → draft (`src/canalRecall/buildingRecipe/draftLarge.ts`:
+one `brick-bay-grid` group per exposed street-facing panel, tested against the
+installed police station) → `measure.ts --write` → `large.ts --strict` per
+row and writes status, report, sheets and notes back; `npm run factory:strip`
+pages four houses' wall sheets with a header line for the review turn, plus
+the verdict template; `npm run census` counts the definition: **386** today
+with the historical gallery reviews grandfathered (327 bespoke, 12 ride-visible
+hand-built, 47 large recipes past the likeness gate), **47** strict; 546 kit
+buildings and 18 gates-only recipes are modelled and unreviewed. Smoke run:
+the authored `politie-west-overtoomsesluis` went crops 27 s → measure 10 s →
+compile 7 s (its own `footprint-vs-bag` gate fails at IoU 0.749, which is why
+it was never installed); OBA Banne's backlog pand is not in the building tiles
+(now `no-evidence`, not `error`). Reviewed-pass rows are installed with
+`install-large.ts --install` by the batch lane; the review turn is the only
+writer of verdicts. Next: the first Haiku batch, the kits strips, S1.
+
 ## Ride and Map Quest speak Dutch (2026-10-23)
 
 Merged `lane/nl-localization-20261022`: one English/Dutch message catalog

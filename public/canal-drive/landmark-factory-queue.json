@@ -1,0 +1,5547 @@
+{
+ "version": 1,
+ "generatedAt": "2026-10-23T20:36:20.484Z",
+ "method": "factory-queue.ts: landmark-backlog pending building|review (by queueRank), then dominant-building-backlog by rideVisibility.score; pands drawn by covers.json, the ordinary catalogue, manualCatalogue suppress ids or building-type instances left out; authored recipes keep their house",
+ "items": [
+  {
+   "id": "poi:lm-extract_landmarks_257271103",
+   "pand": "",
+   "name": "Pathé de Munt",
+   "source": "poi",
+   "poiId": "lm-extract_landmarks_257271103",
+   "type": "cinema",
+   "rideVisibility": null,
+   "center": [
+    4.8934706,
+    52.3664519
+   ],
+   "status": "needs-pand"
+  },
+  {
+   "id": "poi:lm-extract_landmarks_994708838",
+   "pand": "",
+   "name": "DeLaMar (West)",
+   "source": "poi",
+   "poiId": "lm-extract_landmarks_994708838",
+   "type": "landmark",
+   "rideVisibility": null,
+   "center": [
+    4.8403867,
+    52.3733459
+   ],
+   "status": "needs-pand"
+  },
+  {
+   "id": "poi:lm-extract_landmarks_82936853",
+   "pand": "",
+   "name": "Levend Paardenmuseum",
+   "source": "poi",
+   "poiId": "lm-extract_landmarks_82936853",
+   "type": "museum",
+   "rideVisibility": null,
+   "center": [
+    4.8721123,
+    52.361191
+   ],
+   "status": "needs-pand"
+  },
+  {
+   "id": "poi:requested-world-trade-center-amsterdam",
+   "pand": "",
+   "name": "World Trade Center Amsterdam",
+   "source": "poi",
+   "poiId": "requested-world-trade-center-amsterdam",
+   "rideVisibility": null,
+   "center": [
+    null,
+    null
+   ],
+   "status": "needs-pand"
+  },
+  {
+   "id": "0363100012080943",
+   "pand": "0363100012080943",
+   "name": "Politiebureau West Overtoomsesluis",
+   "source": "poi",
+   "poiId": "police-politiebureau-west-overtoomsesluis",
+   "rideVisibility": null,
+   "center": [
+    4.8463635,
+    52.3767444
+   ],
+   "status": "compiled",
+   "house": "politie-west-overtoomsesluis",
+   "notes": [
+    "authored recipe houses/politie-west-overtoomsesluis exists and is not installed: the factory keeps its intent, measures and compiles it",
+    "2026-10-23T20:36 crops: 13 usable walls in 27 s",
+    "2026-10-23T20:36 draft: hand-authored intent kept",
+    "2026-10-23T20:36 measured groups 0,1,2 in 10 s",
+    "2026-10-23T20:37 compiled: 9326 tris, gates FAIL footprint-vs-bag, likeness g0:- g1:- g2:- (large.ts exited non-zero:     walls[1] FAIL: wall #6e584d vs #6e584d (dL 0), glazing 0.254 vs 0.406, columns null vs 6, shape null vs tall, IoU 0.273 — glazing storey band off by 0.24 me)",
+    "2026-10-23T20:41 compiled: 9326 tris, gates FAIL footprint-vs-bag, likeness g0:FAIL g1:FAIL g2:FAIL (large.ts exited non-zero:     walls[1] FAIL: wall #6e584d vs #6e584d (dL 0), glazing 0.254 vs 0.406, columns null vs 6, shape null vs tall, IoU 0.273 — glazing storey band off by 0.24 me)"
+   ],
+   "owner": "plan-session",
+   "claimedAt": "2026-10-23T20:36:20.872Z",
+   "updatedAt": "2026-10-23T20:41:15.536Z",
+   "report": {
+    "triangles": 9326,
+    "bytes": 723176,
+    "gatesFailing": [
+     "footprint-vs-bag"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.27"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.24 mean 0.41 vs photo 0.25"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.29",
+       "window shape tall vs photo square"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-23T20:41"
+   },
+   "sheets": [
+    "artifacts/building-recipes/politie-west-overtoomsesluis/contact-walls-0.png",
+    "artifacts/building-recipes/politie-west-overtoomsesluis/contact-walls-1.png",
+    "artifacts/building-recipes/politie-west-overtoomsesluis/contact-walls-2.png",
+    "artifacts/building-recipes/politie-west-overtoomsesluis/contact-aerial.png"
+   ]
+  },
+  {
+   "id": "0363100012239467",
+   "pand": "0363100012239467",
+   "name": "OBA Banne",
+   "source": "poi",
+   "poiId": "library-oba-banne",
+   "rideVisibility": null,
+   "center": [
+    4.9168938,
+    52.4080958
+   ],
+   "status": "error",
+   "house": "oba-banne-239467",
+   "owner": "plan-session",
+   "claimedAt": "2026-10-23T20:33:56.171Z",
+   "notes": [
+    "2026-10-23T20:33 crops failed: /Users/blackmad/Code/map-recall2-worktrees/integrator-plan/scripts/pand-reference/all-walls.ts:42 | if (!fp) throw new Error(`pand not in building tiles: ${pand}`); |                ^ | Error: pand not in building tiles: NL.IMBAG.Pand.0363100012239467 |     at <anonymous> (/Users/blackmad/Code/map-recall2-worktrees/integrator-plan/scripts/pand-reference/all-walls.ts:42:16) | Node.js v26.8.1"
+   ],
+   "updatedAt": "2026-10-23T20:33:56.503Z"
+  },
+  {
+   "id": "0363100012079410",
+   "pand": "0363100012079410",
+   "name": "OBA Bijlmerplein",
+   "source": "poi",
+   "poiId": "library-oba-bijlmerplein",
+   "rideVisibility": null,
+   "center": [
+    4.9535813,
+    52.3153892
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012135359",
+   "pand": "0363100012135359",
+   "name": "OBA Buitenveldert",
+   "source": "poi",
+   "poiId": "library-oba-buitenveldert",
+   "rideVisibility": null,
+   "center": [
+    4.8759451,
+    52.3326071
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012131914",
+   "pand": "0363100012131914",
+   "name": "OBA Ganzenhoef",
+   "source": "poi",
+   "poiId": "library-oba-ganzenhoef",
+   "rideVisibility": null,
+   "center": [
+    4.9758804,
+    52.322699
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012121137",
+   "pand": "0363100012121137",
+   "name": "OBA Geuzenveld",
+   "source": "poi",
+   "poiId": "library-oba-geuzenveld",
+   "rideVisibility": null,
+   "center": [
+    4.8025806,
+    52.3780277
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012070481",
+   "pand": "0363100012070481",
+   "name": "OBA IJburg",
+   "source": "poi",
+   "poiId": "library-oba-ijburg",
+   "rideVisibility": null,
+   "center": [
+    4.996847,
+    52.3566548
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012098534",
+   "pand": "0363100012098534",
+   "name": "OBA Molenwijk",
+   "source": "poi",
+   "poiId": "library-oba-molenwijk",
+   "rideVisibility": null,
+   "center": [
+    4.8929718,
+    52.4178054
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "poi:library-oba-next",
+   "pand": "",
+   "name": "OBA Next",
+   "source": "poi",
+   "poiId": "library-oba-next",
+   "rideVisibility": null,
+   "center": [
+    4.9798658,
+    52.3167638
+   ],
+   "status": "needs-pand"
+  },
+  {
+   "id": "0363100012164964",
+   "pand": "0363100012164964",
+   "name": "OBA Oosterdok",
+   "source": "poi",
+   "poiId": "library-oba-oosterdok",
+   "rideVisibility": null,
+   "center": [
+    4.9081983,
+    52.3762463
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012085435",
+   "pand": "0363100012085435",
+   "name": "OBA Osdorp",
+   "source": "poi",
+   "poiId": "library-oba-osdorp",
+   "rideVisibility": null,
+   "center": [
+    4.8068695,
+    52.3589218
+   ],
+   "status": "queued",
+   "house": "oba-osdorp",
+   "notes": [
+    "authored recipe houses/oba-osdorp exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012248844",
+   "pand": "0363100012248844",
+   "name": "OBA Postjesweg",
+   "source": "poi",
+   "poiId": "library-oba-postjesweg",
+   "rideVisibility": null,
+   "center": [
+    4.8350577,
+    52.364284
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012073560",
+   "pand": "0363100012073560",
+   "name": "OBA Reigersbos",
+   "source": "poi",
+   "poiId": "library-oba-reigersbos",
+   "rideVisibility": null,
+   "center": [
+    4.9764586,
+    52.2962871
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012241007",
+   "pand": "0363100012241007",
+   "name": "OBA Slotermeer",
+   "source": "poi",
+   "poiId": "library-oba-slotermeer",
+   "rideVisibility": null,
+   "center": [
+    4.8199166,
+    52.3786962
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012239985",
+   "pand": "0363100012239985",
+   "name": "OBA Waterlandplein",
+   "source": "poi",
+   "poiId": "library-oba-waterlandplein",
+   "rideVisibility": null,
+   "center": [
+    4.9548315,
+    52.3931152
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012186092",
+   "pand": "0363100012186092",
+   "name": "Stadsloket Centrum",
+   "source": "poi",
+   "poiId": "civic-stadsloket-centrum",
+   "rideVisibility": null,
+   "center": [
+    4.9002256,
+    52.3676842
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012253671",
+   "pand": "0363100012253671",
+   "name": "Stadsloket Nieuw-West",
+   "source": "poi",
+   "poiId": "civic-stadsloket-nieuw-west",
+   "rideVisibility": null,
+   "center": [
+    4.8053967,
+    52.3580513
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012090647",
+   "pand": "0363100012090647",
+   "name": "Stadsloket Zuid",
+   "source": "poi",
+   "poiId": "civic-stadsloket-zuid",
+   "rideVisibility": null,
+   "center": [
+    4.8939533,
+    52.3404776
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012116268",
+   "pand": "0363100012116268",
+   "name": "Amsterdam UMC - locatie VUMC",
+   "source": "poi",
+   "poiId": "hospital-amsterdam-umc-locatie-vumc",
+   "rideVisibility": null,
+   "center": [
+    4.8599263,
+    52.3345352
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "poi:hospital-amsterdam-umc-locatie-amc",
+   "pand": "",
+   "name": "Amsterdam UMC locatie AMC",
+   "source": "poi",
+   "poiId": "hospital-amsterdam-umc-locatie-amc",
+   "rideVisibility": null,
+   "center": [
+    4.9569165,
+    52.2925002
+   ],
+   "status": "needs-pand"
+  },
+  {
+   "id": "0363100012149452",
+   "pand": "0363100012149452",
+   "name": "Antoni van Leeuwenhoek",
+   "source": "poi",
+   "poiId": "hospital-antoni-van-leeuwenhoek",
+   "rideVisibility": null,
+   "center": [
+    4.8257571,
+    52.3502898
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012090318",
+   "pand": "0363100012090318",
+   "name": "BovenIJ Ziekenhuis",
+   "source": "poi",
+   "poiId": "hospital-bovenij-ziekenhuis",
+   "rideVisibility": null,
+   "center": [
+    4.9219157,
+    52.4046484
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012149878",
+   "pand": "0363100012149878",
+   "name": "Amsterdams Lyceum",
+   "source": "poi",
+   "poiId": "school-amsterdams-lyceum",
+   "rideVisibility": null,
+   "center": [
+    4.8648434,
+    52.3513403
+   ],
+   "status": "queued",
+   "house": "amsterdams-lyceum",
+   "notes": [
+    "authored recipe houses/amsterdams-lyceum exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "poi:school-berlage-lyceum-tijdelijke-locatie-bovenbouw",
+   "pand": "",
+   "name": "Berlage Lyceum (tijdelijke locatie bovenbouw)",
+   "source": "poi",
+   "poiId": "school-berlage-lyceum-tijdelijke-locatie-bovenbouw",
+   "rideVisibility": null,
+   "center": [
+    4.9051555,
+    52.3393321
+   ],
+   "status": "needs-pand"
+  },
+  {
+   "id": "0363100012096559",
+   "pand": "0363100012096559",
+   "name": "Hogeschool van Amsterdam",
+   "source": "poi",
+   "poiId": "school-hogeschool-van-amsterdam",
+   "rideVisibility": null,
+   "center": [
+    4.9619003,
+    52.2926611
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "poi:school-hogeschool-van-amsterdam-bsv",
+   "pand": "",
+   "name": "Hogeschool van Amsterdam (BSV)",
+   "source": "poi",
+   "poiId": "school-hogeschool-van-amsterdam-bsv",
+   "rideVisibility": null,
+   "center": [
+    4.8061424,
+    52.3679382
+   ],
+   "status": "needs-pand"
+  },
+  {
+   "id": "0363100012080098",
+   "pand": "0363100012080098",
+   "name": "Metis Montessori Lyceum",
+   "source": "poi",
+   "poiId": "school-metis-montessori-lyceum",
+   "rideVisibility": null,
+   "center": [
+    4.9254033,
+    52.3586234
+   ],
+   "status": "queued",
+   "house": "metis-montessori-080098",
+   "notes": [
+    "authored recipe houses/metis-montessori-080098 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012080630",
+   "pand": "0363100012080630",
+   "name": "Montessori Lyceum Oostpoort",
+   "source": "poi",
+   "poiId": "school-montessori-lyceum-oostpoort",
+   "rideVisibility": null,
+   "center": [
+    4.9438059,
+    52.363092
+   ],
+   "status": "queued",
+   "house": "oostpoort-montessori-080630",
+   "notes": [
+    "authored recipe houses/oostpoort-montessori-080630 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "poi:school-rietveldschool",
+   "pand": "",
+   "name": "Rietveldschool",
+   "source": "poi",
+   "poiId": "school-rietveldschool",
+   "rideVisibility": null,
+   "center": [
+    4.7742458,
+    52.34152
+   ],
+   "status": "needs-pand"
+  },
+  {
+   "id": "poi:school-roeterseiland-uva",
+   "pand": "",
+   "name": "Roeterseiland (UvA)",
+   "source": "poi",
+   "poiId": "school-roeterseiland-uva",
+   "rideVisibility": null,
+   "center": [
+    4.913226,
+    52.3637653
+   ],
+   "status": "needs-pand"
+  },
+  {
+   "id": "poi:school-spinoza-lyceum",
+   "pand": "",
+   "name": "Spinoza Lyceum",
+   "source": "poi",
+   "poiId": "school-spinoza-lyceum",
+   "rideVisibility": null,
+   "center": [
+    4.8663613,
+    52.3429479
+   ],
+   "status": "needs-pand"
+  },
+  {
+   "id": "0363100012253721",
+   "pand": "0363100012253721",
+   "name": "Spinoza20first",
+   "source": "poi",
+   "poiId": "school-spinoza20first",
+   "rideVisibility": null,
+   "center": [
+    4.9254988,
+    52.336456
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012098925",
+   "pand": "0363100012098925",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 2418030,
+    "rank": 2
+   },
+   "footprintM2": 4701,
+   "heightM": 36.3,
+   "center": [
+    4.9467385,
+    52.365508
+   ],
+   "status": "error",
+   "house": "pand-098925",
+   "owner": "smoke",
+   "claimedAt": "2026-10-23T20:41:15.814Z",
+   "notes": [
+    "2026-10-23T20:41 crops: 13 usable walls in 41 s",
+    "2026-10-23T20:42 facts failed:       at Immediate._onImmediate (node:internal/deps/undici/undici:2387:11) |       at process.processImmediate (node:internal/timers:574:21) { |     code: 'UND_ERR_CONNECT_TIMEOUT' |   } | } | Node.js v26.8.1",
+    "2026-10-23T20:45 crops: 13 usable walls in 16 s",
+    "2026-10-23T20:45 facts failed: [TypeError: fetch failed] { |   [cause]: ConnectTimeoutError: Connect Timeout Error (attempted address: api.3dbag.nl:443, timeout: 10000ms) |     code: 'UND_ERR_CONNECT_TIMEOUT' |   } | } | Node.js v26.8.1"
+   ],
+   "updatedAt": "2026-10-23T20:45:50.616Z"
+  },
+  {
+   "id": "0363100012186093",
+   "pand": "0363100012186093",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 2382907,
+    "rank": 3
+   },
+   "footprintM2": 6543,
+   "heightM": 22.4,
+   "center": [
+    4.91451535,
+    52.3648261
+   ],
+   "status": "queued",
+   "house": "plantage-middenlaan-52-186093",
+   "notes": [
+    "authored recipe houses/plantage-middenlaan-52-186093 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012243823",
+   "pand": "0363100012243823",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 2379678,
+    "rank": 4
+   },
+   "footprintM2": 6370,
+   "heightM": 13.9,
+   "center": [
+    4.914284500000001,
+    52.3909635
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012087570",
+   "pand": "0363100012087570",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 2153482,
+    "rank": 8
+   },
+   "footprintM2": 3314,
+   "heightM": 26.1,
+   "center": [
+    4.94556505,
+    52.3656765
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012111954",
+   "pand": "0363100012111954",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 2049149,
+    "rank": 11
+   },
+   "footprintM2": 5369,
+   "heightM": 6,
+   "center": [
+    4.865425999999999,
+    52.3760895
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012165086",
+   "pand": "0363100012165086",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 1121536,
+    "rank": 16
+   },
+   "footprintM2": 5475,
+   "heightM": 29.4,
+   "center": [
+    4.891564000000001,
+    52.367475
+   ],
+   "status": "queued",
+   "house": "singel-457-165086",
+   "notes": [
+    "authored recipe houses/singel-457-165086 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012165488",
+   "pand": "0363100012165488",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 1075478,
+    "rank": 17
+   },
+   "footprintM2": 2738,
+   "heightM": 27.5,
+   "center": [
+    4.8824705,
+    52.3633065
+   ],
+   "status": "queued",
+   "house": "hirschpassage-2-165488",
+   "notes": [
+    "authored recipe houses/hirschpassage-2-165488 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012242075",
+   "pand": "0363100012242075",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 939790,
+    "rank": 21
+   },
+   "footprintM2": 3392,
+   "heightM": 4.9,
+   "center": [
+    4.884439,
+    52.3591625
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012244160",
+   "pand": "0363100012244160",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 887928,
+    "rank": 23
+   },
+   "footprintM2": 6681,
+   "heightM": 67.4,
+   "center": [
+    4.8696885000000005,
+    52.340113
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012079326",
+   "pand": "0363100012079326",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 814708,
+    "rank": 28
+   },
+   "footprintM2": 2607,
+   "heightM": 7.1,
+   "center": [
+    4.907833500000001,
+    52.395438
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012242951",
+   "pand": "0363100012242951",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 769592,
+    "rank": 30
+   },
+   "footprintM2": 6249,
+   "heightM": 21.3,
+   "center": [
+    4.878467499999999,
+    52.3668545
+   ],
+   "status": "queued",
+   "house": "passeerdersstraat-242951",
+   "notes": [
+    "authored recipe houses/passeerdersstraat-242951 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012247342",
+   "pand": "0363100012247342",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 756488,
+    "rank": 32
+   },
+   "footprintM2": 2849,
+   "heightM": 25.2,
+   "center": [
+    4.964149,
+    52.3730145
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012096613",
+   "pand": "0363100012096613",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 703622,
+    "rank": 35
+   },
+   "footprintM2": 13813,
+   "heightM": 66.8,
+   "center": [
+    4.874995,
+    52.340247500000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012238702",
+   "pand": "0363100012238702",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 682272,
+    "rank": 36
+   },
+   "footprintM2": 4393,
+   "heightM": 4.3,
+   "center": [
+    4.8955605,
+    52.4001685
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012092384",
+   "pand": "0363100012092384",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 681400,
+    "rank": 37
+   },
+   "footprintM2": 2679,
+   "heightM": 17.4,
+   "center": [
+    4.875666799999999,
+    52.34141705
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012253630",
+   "pand": "0363100012253630",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 652963,
+    "rank": 40
+   },
+   "footprintM2": 5683,
+   "heightM": 27,
+   "center": [
+    4.907059500000001,
+    52.3968225
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012066028",
+   "pand": "0363100012066028",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 592956,
+    "rank": 41
+   },
+   "footprintM2": 2568,
+   "heightM": 22.5,
+   "center": [
+    4.846671049999999,
+    52.3854768
+   ],
+   "status": "queued",
+   "house": "molenwerf-1-066028",
+   "notes": [
+    "authored recipe houses/molenwerf-1-066028 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012246291",
+   "pand": "0363100012246291",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 575169,
+    "rank": 42
+   },
+   "footprintM2": 819,
+   "heightM": 46.9,
+   "center": [
+    4.964822,
+    52.3759335
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012165427",
+   "pand": "0363100012165427",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 560046,
+    "rank": 45
+   },
+   "footprintM2": 4575,
+   "heightM": 18.5,
+   "center": [
+    4.88297355,
+    52.365377050000006
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012145366",
+   "pand": "0363100012145366",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 550347,
+    "rank": 46
+   },
+   "footprintM2": 2632,
+   "heightM": 12.4,
+   "center": [
+    4.95778,
+    52.390988500000006
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012240435",
+   "pand": "0363100012240435",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 538324,
+    "rank": 48
+   },
+   "footprintM2": 3717,
+   "heightM": 18.3,
+   "center": [
+    4.890703,
+    52.3538935
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012252557",
+   "pand": "0363100012252557",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 499661,
+    "rank": 52
+   },
+   "footprintM2": 9416,
+   "heightM": 54.2,
+   "center": [
+    4.8673505,
+    52.339994000000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012133211",
+   "pand": "0363100012133211",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 491250,
+    "rank": 55
+   },
+   "footprintM2": 2791,
+   "heightM": 8.5,
+   "center": [
+    4.904248,
+    52.397852
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012084286",
+   "pand": "0363100012084286",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 485056,
+    "rank": 56
+   },
+   "footprintM2": 1699,
+   "heightM": 41.4,
+   "center": [
+    4.844019,
+    52.37753
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012247112",
+   "pand": "0363100012247112",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 480775,
+    "rank": 57
+   },
+   "footprintM2": 2693,
+   "heightM": 47.5,
+   "center": [
+    4.8679225,
+    52.3370415
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012233471",
+   "pand": "0363100012233471",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 478000,
+    "rank": 58
+   },
+   "footprintM2": 2584,
+   "heightM": 23.4,
+   "center": [
+    4.8830355,
+    52.361340999999996
+   ],
+   "status": "queued",
+   "house": "stadhouderskade-25-233471",
+   "notes": [
+    "authored recipe houses/stadhouderskade-25-233471 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012240015",
+   "pand": "0363100012240015",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 472267,
+    "rank": 60
+   },
+   "footprintM2": 9719,
+   "heightM": 41.5,
+   "center": [
+    4.8781245,
+    52.340528
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012086968",
+   "pand": "0363100012086968",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 472000,
+    "rank": 61
+   },
+   "footprintM2": 3491,
+   "heightM": 8.7,
+   "center": [
+    4.9087879999999995,
+    52.3961635
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012167466",
+   "pand": "0363100012167466",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 452110,
+    "rank": 62
+   },
+   "footprintM2": 2789,
+   "heightM": 18.2,
+   "center": [
+    4.879906,
+    52.367644
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012111255",
+   "pand": "0363100012111255",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 429999,
+    "rank": 64
+   },
+   "footprintM2": 5470,
+   "heightM": 23.8,
+   "center": [
+    4.847092,
+    52.377413000000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012239853",
+   "pand": "0363100012239853",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 418806,
+    "rank": 68
+   },
+   "footprintM2": 3154,
+   "heightM": 22.4,
+   "center": [
+    4.877822,
+    52.341357
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012186290",
+   "pand": "0363100012186290",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 404584,
+    "rank": 71
+   },
+   "footprintM2": 2644,
+   "heightM": 19.3,
+   "center": [
+    4.8987365,
+    52.3665855
+   ],
+   "status": "queued",
+   "house": "amstel-142-186290",
+   "notes": [
+    "authored recipe houses/amstel-142-186290 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012084650",
+   "pand": "0363100012084650",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 404305,
+    "rank": 72
+   },
+   "footprintM2": 3690,
+   "heightM": 17.1,
+   "center": [
+    4.8697865,
+    52.3412105
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012135250",
+   "pand": "0363100012135250",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 392579,
+    "rank": 74
+   },
+   "footprintM2": 3502,
+   "heightM": 21.3,
+   "center": [
+    4.88017535,
+    52.361774499999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012128727",
+   "pand": "0363100012128727",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 388956,
+    "rank": 75
+   },
+   "footprintM2": 3107,
+   "heightM": 7.7,
+   "center": [
+    4.910587,
+    52.395441000000005
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012137448",
+   "pand": "0363100012137448",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 388668,
+    "rank": 76
+   },
+   "footprintM2": 3974,
+   "heightM": 14.5,
+   "center": [
+    4.8973054000000005,
+    52.3573234
+   ],
+   "status": "queued",
+   "house": "stadhouderskade-111-137448",
+   "notes": [
+    "authored recipe houses/stadhouderskade-111-137448 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012090791",
+   "pand": "0363100012090791",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 388517,
+    "rank": 77
+   },
+   "footprintM2": 3319,
+   "heightM": 11.3,
+   "center": [
+    4.85908175,
+    52.38450695
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012151539",
+   "pand": "0363100012151539",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 384197,
+    "rank": 78
+   },
+   "footprintM2": 4299,
+   "heightM": 29.3,
+   "center": [
+    4.8488145,
+    52.3855325
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012571499",
+   "pand": "0363100012571499",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 379875,
+    "rank": 80
+   },
+   "footprintM2": 3692,
+   "heightM": 35.3,
+   "center": [
+    4.913963,
+    52.3481345
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012251533",
+   "pand": "0363100012251533",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 377313,
+    "rank": 81
+   },
+   "footprintM2": 3426,
+   "heightM": 19.3,
+   "center": [
+    4.8649215,
+    52.352657
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012154874",
+   "pand": "0363100012154874",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 336694,
+    "rank": 85
+   },
+   "footprintM2": 3229,
+   "heightM": 18.1,
+   "center": [
+    4.8589525,
+    52.3643586
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012169731",
+   "pand": "0363100012169731",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 335988,
+    "rank": 86
+   },
+   "footprintM2": 567,
+   "heightM": 35,
+   "center": [
+    4.905797,
+    52.36401
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012076454",
+   "pand": "0363100012076454",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 334767,
+    "rank": 87
+   },
+   "footprintM2": 53195,
+   "heightM": 11.2,
+   "center": [
+    4.871646,
+    52.338863
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012148630",
+   "pand": "0363100012148630",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 329414,
+    "rank": 88
+   },
+   "footprintM2": 14248,
+   "heightM": 72.6,
+   "center": [
+    4.8438245,
+    52.3685015
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012247688",
+   "pand": "0363100012247688",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 327277,
+    "rank": 89
+   },
+   "footprintM2": 2877,
+   "heightM": 13.8,
+   "center": [
+    4.930776,
+    52.39531100000001
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012119260",
+   "pand": "0363100012119260",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 325789,
+    "rank": 90
+   },
+   "footprintM2": 4909,
+   "heightM": 19.2,
+   "center": [
+    4.848699,
+    52.3860645
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012139498",
+   "pand": "0363100012139498",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 325532,
+    "rank": 91
+   },
+   "footprintM2": 3149,
+   "heightM": 34,
+   "center": [
+    4.9263825,
+    52.3760035
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012142095",
+   "pand": "0363100012142095",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 316120,
+    "rank": 92
+   },
+   "footprintM2": 6975,
+   "heightM": 15.9,
+   "center": [
+    4.9389585,
+    52.377356000000006
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012070306",
+   "pand": "0363100012070306",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 311247,
+    "rank": 96
+   },
+   "footprintM2": 2962,
+   "heightM": 15.6,
+   "center": [
+    4.871908,
+    52.341269499999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012247952",
+   "pand": "0363100012247952",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 305558,
+    "rank": 97
+   },
+   "footprintM2": 2938,
+   "heightM": 22.7,
+   "center": [
+    4.8432224999999995,
+    52.349686
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012125840",
+   "pand": "0363100012125840",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 298673,
+    "rank": 99
+   },
+   "footprintM2": 5660,
+   "heightM": 29.9,
+   "center": [
+    4.85868,
+    52.3416215
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012153698",
+   "pand": "0363100012153698",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 285371,
+    "rank": 101
+   },
+   "footprintM2": 4337,
+   "heightM": 29.9,
+   "center": [
+    4.867531,
+    52.340961
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012244662",
+   "pand": "0363100012244662",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 274529,
+    "rank": 105
+   },
+   "footprintM2": 3484,
+   "heightM": 15.3,
+   "center": [
+    4.857755,
+    52.343588499999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012182840",
+   "pand": "0363100012182840",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 269136,
+    "rank": 106
+   },
+   "footprintM2": 890,
+   "heightM": 39.1,
+   "center": [
+    4.907496,
+    52.3608205
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012136232",
+   "pand": "0363100012136232",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 266579,
+    "rank": 108
+   },
+   "footprintM2": 12051,
+   "heightM": 64.7,
+   "center": [
+    4.866779899999999,
+    52.33421965
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012236735",
+   "pand": "0363100012236735",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 261450,
+    "rank": 110
+   },
+   "footprintM2": 2958,
+   "heightM": 23.7,
+   "center": [
+    4.8560099999999995,
+    52.3574975
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012165158",
+   "pand": "0363100012165158",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 249241,
+    "rank": 112
+   },
+   "footprintM2": 3691,
+   "heightM": 28.9,
+   "center": [
+    4.8417815,
+    52.388118399999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012246191",
+   "pand": "0363100012246191",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 245471,
+    "rank": 113
+   },
+   "footprintM2": 6361,
+   "heightM": 19.8,
+   "center": [
+    4.8506665,
+    52.385729999999995
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012239633",
+   "pand": "0363100012239633",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 241007,
+    "rank": 114
+   },
+   "footprintM2": 6249,
+   "heightM": 55.3,
+   "center": [
+    4.8619555000000005,
+    52.337149499999995
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012236656",
+   "pand": "0363100012236656",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 237463,
+    "rank": 117
+   },
+   "footprintM2": 4702,
+   "heightM": 14.5,
+   "center": [
+    4.855887,
+    52.3500095
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012080492",
+   "pand": "0363100012080492",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 234505,
+    "rank": 118
+   },
+   "footprintM2": 870,
+   "heightM": 35.4,
+   "center": [
+    4.879169,
+    52.363166500000005
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012165746",
+   "pand": "0363100012165746",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 231267,
+    "rank": 121
+   },
+   "footprintM2": 2868,
+   "heightM": 32.2,
+   "center": [
+    4.8942435,
+    52.3745945
+   ],
+   "status": "queued",
+   "house": "damrak-77-165746",
+   "notes": [
+    "authored recipe houses/damrak-77-165746 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012236811",
+   "pand": "0363100012236811",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 226165,
+    "rank": 126
+   },
+   "footprintM2": 320,
+   "heightM": 38.9,
+   "center": [
+    4.8805505,
+    52.362161
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012138843",
+   "pand": "0363100012138843",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 225346,
+    "rank": 127
+   },
+   "footprintM2": 4039,
+   "heightM": 19.2,
+   "center": [
+    4.85656075,
+    52.34663065
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012240368",
+   "pand": "0363100012240368",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 218237,
+    "rank": 128
+   },
+   "footprintM2": 4523,
+   "heightM": 25.8,
+   "center": [
+    4.8404755,
+    52.373037
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012088496",
+   "pand": "0363100012088496",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 217249,
+    "rank": 129
+   },
+   "footprintM2": 3212,
+   "heightM": 10.7,
+   "center": [
+    4.8302320000000005,
+    52.388254
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012077450",
+   "pand": "0363100012077450",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 216341,
+    "rank": 130
+   },
+   "footprintM2": 5681,
+   "heightM": 26.9,
+   "center": [
+    4.87306,
+    52.3347385
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012119827",
+   "pand": "0363100012119827",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 215989,
+    "rank": 131
+   },
+   "footprintM2": 2703,
+   "heightM": 9.2,
+   "center": [
+    4.9033545,
+    52.3832095
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012242039",
+   "pand": "0363100012242039",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 211984,
+    "rank": 136
+   },
+   "footprintM2": 1183,
+   "heightM": 62.1,
+   "center": [
+    4.9225284,
+    52.34919025
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012165051",
+   "pand": "0363100012165051",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 206441,
+    "rank": 138
+   },
+   "footprintM2": 3424,
+   "heightM": 25.3,
+   "center": [
+    4.89596465,
+    52.3741502
+   ],
+   "status": "queued",
+   "house": "beursplein-5-165051",
+   "notes": [
+    "authored recipe houses/beursplein-5-165051 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012148632",
+   "pand": "0363100012148632",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 206242,
+    "rank": 139
+   },
+   "footprintM2": 3014,
+   "heightM": 24.5,
+   "center": [
+    4.88504955,
+    52.3486361
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012240382",
+   "pand": "0363100012240382",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 204314,
+    "rank": 141
+   },
+   "footprintM2": 5008,
+   "heightM": 18.1,
+   "center": [
+    4.8395755000000005,
+    52.373121
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012248597",
+   "pand": "0363100012248597",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 199792,
+    "rank": 146
+   },
+   "footprintM2": 7362,
+   "heightM": 25.7,
+   "center": [
+    4.84328,
+    52.3788215
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012104065",
+   "pand": "0363100012104065",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 199067,
+    "rank": 147
+   },
+   "footprintM2": 6946,
+   "heightM": 5.9,
+   "center": [
+    4.9266135,
+    52.348565
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012078546",
+   "pand": "0363100012078546",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 196009,
+    "rank": 148
+   },
+   "footprintM2": 3200,
+   "heightM": 12.1,
+   "center": [
+    4.923640499999999,
+    52.349658500000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012250187",
+   "pand": "0363100012250187",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 193985,
+    "rank": 150
+   },
+   "footprintM2": 4416,
+   "heightM": 18.2,
+   "center": [
+    4.8793165,
+    52.393032500000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012064800",
+   "pand": "0363100012064800",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 193232,
+    "rank": 151
+   },
+   "footprintM2": 4580,
+   "heightM": 17,
+   "center": [
+    4.90796475,
+    52.4044248
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012252166",
+   "pand": "0363100012252166",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 191925,
+    "rank": 152
+   },
+   "footprintM2": 6215,
+   "heightM": 28.6,
+   "center": [
+    4.837832499999999,
+    52.373307
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012249707",
+   "pand": "0363100012249707",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 190676,
+    "rank": 153
+   },
+   "footprintM2": 2936,
+   "heightM": 20,
+   "center": [
+    4.8785095,
+    52.3941705
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012080770",
+   "pand": "0363100012080770",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 187237,
+    "rank": 154
+   },
+   "footprintM2": 5037,
+   "heightM": 3.9,
+   "center": [
+    4.85628915,
+    52.340513650000005
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012080490",
+   "pand": "0363100012080490",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 186874,
+    "rank": 156
+   },
+   "footprintM2": 3081,
+   "heightM": 14.6,
+   "center": [
+    4.856466,
+    52.343173
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012085366",
+   "pand": "0363100012085366",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 181804,
+    "rank": 159
+   },
+   "footprintM2": 7506,
+   "heightM": 18.3,
+   "center": [
+    4.8304504999999995,
+    52.373211
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012184746",
+   "pand": "0363100012184746",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 179389,
+    "rank": 160
+   },
+   "footprintM2": 6282,
+   "heightM": 35.5,
+   "center": [
+    4.8921421,
+    52.38384645
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012142901",
+   "pand": "0363100012142901",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 179274,
+    "rank": 161
+   },
+   "footprintM2": 3525,
+   "heightM": 21.1,
+   "center": [
+    4.858916000000001,
+    52.3406645
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012080532",
+   "pand": "0363100012080532",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 176184,
+    "rank": 162
+   },
+   "footprintM2": 5187,
+   "heightM": 22.3,
+   "center": [
+    4.837974,
+    52.377593
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012254400",
+   "pand": "0363100012254400",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 173129,
+    "rank": 163
+   },
+   "footprintM2": 4713,
+   "heightM": 25.1,
+   "center": [
+    4.8329605,
+    52.3506105
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012069991",
+   "pand": "0363100012069991",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 172151,
+    "rank": 165
+   },
+   "footprintM2": 3941,
+   "heightM": 19.8,
+   "center": [
+    4.8724755,
+    52.379549
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100100092333",
+   "pand": "0363100100092333",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 171217,
+    "rank": 167
+   },
+   "footprintM2": 1416,
+   "heightM": 49.9,
+   "center": [
+    4.9210095,
+    52.3490885
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012113136",
+   "pand": "0363100012113136",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 169335,
+    "rank": 168
+   },
+   "footprintM2": 2717,
+   "heightM": 17.2,
+   "center": [
+    4.835585999999999,
+    52.3694975
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012233585",
+   "pand": "0363100012233585",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 166883,
+    "rank": 169
+   },
+   "footprintM2": 2668,
+   "heightM": 34.5,
+   "center": [
+    4.891170499999999,
+    52.390919999999994
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012093150",
+   "pand": "0363100012093150",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 161901,
+    "rank": 172
+   },
+   "footprintM2": 1578,
+   "heightM": 48.2,
+   "center": [
+    4.894207,
+    52.4170355
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012253656",
+   "pand": "0363100012253656",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 158709,
+    "rank": 174
+   },
+   "footprintM2": 3103,
+   "heightM": 32.8,
+   "center": [
+    4.893369,
+    52.3372285
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012105724",
+   "pand": "0363100012105724",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 157389,
+    "rank": 177
+   },
+   "footprintM2": 4121,
+   "heightM": 25.6,
+   "center": [
+    4.8476405,
+    52.376357
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012237537",
+   "pand": "0363100012237537",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 156820,
+    "rank": 178
+   },
+   "footprintM2": 1470,
+   "heightM": 40.1,
+   "center": [
+    4.8432759999999995,
+    52.350398
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012133123",
+   "pand": "0363100012133123",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 156297,
+    "rank": 179
+   },
+   "footprintM2": 2665,
+   "heightM": 4.9,
+   "center": [
+    4.926997,
+    52.396319500000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012119145",
+   "pand": "0363100012119145",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 145858,
+    "rank": 183
+   },
+   "footprintM2": 2846,
+   "heightM": 15.6,
+   "center": [
+    4.890186,
+    52.3371675
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012254687",
+   "pand": "0363100012254687",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 132187,
+    "rank": 191
+   },
+   "footprintM2": 8526,
+   "heightM": 4.5,
+   "center": [
+    4.898093,
+    52.3949225
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012173447",
+   "pand": "0363100012173447",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 131659,
+    "rank": 192
+   },
+   "footprintM2": 2780,
+   "heightM": 19.4,
+   "center": [
+    4.8822019999999995,
+    52.362656
+   ],
+   "status": "queued",
+   "house": "leidsekade-106-173447",
+   "notes": [
+    "authored recipe houses/leidsekade-106-173447 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012247938",
+   "pand": "0363100012247938",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 126945,
+    "rank": 195
+   },
+   "footprintM2": 2049,
+   "heightM": 47.9,
+   "center": [
+    4.836338,
+    52.3736005
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012246555",
+   "pand": "0363100012246555",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 126922,
+    "rank": 196
+   },
+   "footprintM2": 1624,
+   "heightM": 74.3,
+   "center": [
+    4.8754915,
+    52.336314
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012112179",
+   "pand": "0363100012112179",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 125089,
+    "rank": 197
+   },
+   "footprintM2": 17927,
+   "heightM": 11,
+   "center": [
+    4.8229735,
+    52.380234
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012093716",
+   "pand": "0363100012093716",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 124313,
+    "rank": 200
+   },
+   "footprintM2": 4971,
+   "heightM": 13.6,
+   "center": [
+    4.8414585,
+    52.385581
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012076543",
+   "pand": "0363100012076543",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 121179,
+    "rank": 202
+   },
+   "footprintM2": 2884,
+   "heightM": 19.1,
+   "center": [
+    4.8782795,
+    52.3521255
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012071927",
+   "pand": "0363100012071927",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 119894,
+    "rank": 203
+   },
+   "footprintM2": 5423,
+   "heightM": 15.5,
+   "center": [
+    4.8280575,
+    52.3553595
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012186002",
+   "pand": "0363100012186002",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 119747,
+    "rank": 204
+   },
+   "footprintM2": 915,
+   "heightM": 38.3,
+   "center": [
+    4.892125500000001,
+    52.3874175
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012061445",
+   "pand": "0363100012061445",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 118283,
+    "rank": 205
+   },
+   "footprintM2": 3006,
+   "heightM": 13.6,
+   "center": [
+    4.8932195,
+    52.4015135
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012150568",
+   "pand": "0363100012150568",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 117039,
+    "rank": 207
+   },
+   "footprintM2": 2887,
+   "heightM": 27.1,
+   "center": [
+    4.9110105,
+    52.3923775
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012246848",
+   "pand": "0363100012246848",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 115669,
+    "rank": 210
+   },
+   "footprintM2": 2725,
+   "heightM": 14.1,
+   "center": [
+    4.912523,
+    52.356573999999995
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012249726",
+   "pand": "0363100012249726",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 114290,
+    "rank": 212
+   },
+   "footprintM2": 6018,
+   "heightM": 23.5,
+   "center": [
+    4.934774,
+    52.401039499999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012243844",
+   "pand": "0363100012243844",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 108130,
+    "rank": 214
+   },
+   "footprintM2": 3920,
+   "heightM": 16.3,
+   "center": [
+    4.8718532,
+    52.37697225
+   ],
+   "status": "queued",
+   "house": "ledenberch-38-243844",
+   "notes": [
+    "authored recipe houses/ledenberch-38-243844 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012254654",
+   "pand": "0363100012254654",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 107177,
+    "rank": 216
+   },
+   "footprintM2": 560,
+   "heightM": 43.1,
+   "center": [
+    4.8655159999999995,
+    52.336936
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012253954",
+   "pand": "0363100012253954",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 107048,
+    "rank": 217
+   },
+   "footprintM2": 2836,
+   "heightM": 55.9,
+   "center": [
+    4.832134999999999,
+    52.3855785
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012116511",
+   "pand": "0363100012116511",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 106870,
+    "rank": 218
+   },
+   "footprintM2": 450,
+   "heightM": 45.4,
+   "center": [
+    4.85478,
+    52.385600499999995
+   ],
+   "status": "queued",
+   "house": "haarlemmerweg-290",
+   "notes": [
+    "authored recipe houses/haarlemmerweg-290 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012241220",
+   "pand": "0363100012241220",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 103640,
+    "rank": 221
+   },
+   "footprintM2": 3073,
+   "heightM": 15.2,
+   "center": [
+    4.922489000000001,
+    52.3559785
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012179689",
+   "pand": "0363100012179689",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 103191,
+    "rank": 222
+   },
+   "footprintM2": 794,
+   "heightM": 53,
+   "center": [
+    4.895519500000001,
+    52.3815365
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012119117",
+   "pand": "0363100012119117",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 100204,
+    "rank": 224
+   },
+   "footprintM2": 101,
+   "heightM": 42,
+   "center": [
+    4.8910125,
+    52.3574325
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012067917",
+   "pand": "0363100012067917",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 98591,
+    "rank": 225
+   },
+   "footprintM2": 2655,
+   "heightM": 7.6,
+   "center": [
+    4.8528435000000005,
+    52.3924647
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012061212",
+   "pand": "0363100012061212",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 98050,
+    "rank": 226
+   },
+   "footprintM2": 3250,
+   "heightM": 18.9,
+   "center": [
+    4.876422,
+    52.3297715
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012237535",
+   "pand": "0363100012237535",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 97706,
+    "rank": 227
+   },
+   "footprintM2": 1075,
+   "heightM": 57.5,
+   "center": [
+    4.8385725,
+    52.379093
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012072084",
+   "pand": "0363100012072084",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 94783,
+    "rank": 229
+   },
+   "footprintM2": 5095,
+   "heightM": 55,
+   "center": [
+    4.841253999999999,
+    52.3570595
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012070336",
+   "pand": "0363100012070336",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 93727,
+    "rank": 231
+   },
+   "footprintM2": 1182,
+   "heightM": 37.2,
+   "center": [
+    4.837574,
+    52.3881745
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012216927",
+   "pand": "0363100012216927",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 93377,
+    "rank": 232
+   },
+   "footprintM2": 4802,
+   "heightM": 6.5,
+   "center": [
+    4.8555790000000005,
+    52.336303
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012242874",
+   "pand": "0363100012242874",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 93335,
+    "rank": 233
+   },
+   "footprintM2": 5731,
+   "heightM": 16.4,
+   "center": [
+    4.88346055,
+    52.33559735
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012252015",
+   "pand": "0363100012252015",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 90732,
+    "rank": 236
+   },
+   "footprintM2": 3234,
+   "heightM": 41.2,
+   "center": [
+    4.8398915,
+    52.3574415
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012095578",
+   "pand": "0363100012095578",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 88187,
+    "rank": 239
+   },
+   "footprintM2": 1990,
+   "heightM": 43.8,
+   "center": [
+    4.830474499999999,
+    52.3716085
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012061961",
+   "pand": "0363100012061961",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 87884,
+    "rank": 241
+   },
+   "footprintM2": 3245,
+   "heightM": 16.3,
+   "center": [
+    4.9393775,
+    52.3707805
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012115242",
+   "pand": "0363100012115242",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 82438,
+    "rank": 247
+   },
+   "footprintM2": 730,
+   "heightM": 37.3,
+   "center": [
+    4.919945500000001,
+    52.3489605
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012238493",
+   "pand": "0363100012238493",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 81466,
+    "rank": 249
+   },
+   "footprintM2": 3769,
+   "heightM": 42.1,
+   "center": [
+    4.846694,
+    52.3574415
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012239389",
+   "pand": "0363100012239389",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 81413,
+    "rank": 250
+   },
+   "footprintM2": 1976,
+   "heightM": 39,
+   "center": [
+    4.8329555,
+    52.349523500000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012134773",
+   "pand": "0363100012134773",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 80565,
+    "rank": 252
+   },
+   "footprintM2": 2577,
+   "heightM": 16.8,
+   "center": [
+    4.8923635,
+    52.351136999999994
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012154521",
+   "pand": "0363100012154521",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 80044,
+    "rank": 254
+   },
+   "footprintM2": 3473,
+   "heightM": 17.6,
+   "center": [
+    4.8628325,
+    52.3418055
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012244546",
+   "pand": "0363100012244546",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 79539,
+    "rank": 255
+   },
+   "footprintM2": 2427,
+   "heightM": 78.2,
+   "center": [
+    4.87197,
+    52.3363035
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012250162",
+   "pand": "0363100012250162",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 79454,
+    "rank": 256
+   },
+   "footprintM2": 2799,
+   "heightM": 17.3,
+   "center": [
+    4.8805405,
+    52.3928745
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012240149",
+   "pand": "0363100012240149",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 77062,
+    "rank": 260
+   },
+   "footprintM2": 1741,
+   "heightM": 42.7,
+   "center": [
+    4.8779699999999995,
+    52.3401525
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012104501",
+   "pand": "0363100012104501",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 76196,
+    "rank": 262
+   },
+   "footprintM2": 2532,
+   "heightM": 15.1,
+   "center": [
+    4.9370995,
+    52.358447999999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012137174",
+   "pand": "0363100012137174",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 72784,
+    "rank": 265
+   },
+   "footprintM2": 391,
+   "heightM": 59.5,
+   "center": [
+    4.938082,
+    52.3702
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012241221",
+   "pand": "0363100012241221",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 71356,
+    "rank": 267
+   },
+   "footprintM2": 2802,
+   "heightM": 15.3,
+   "center": [
+    4.92354,
+    52.356277
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012246893",
+   "pand": "0363100012246893",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 71309,
+    "rank": 268
+   },
+   "footprintM2": 3038,
+   "heightM": 61.4,
+   "center": [
+    4.8354859999999995,
+    52.35716
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012067741",
+   "pand": "0363100012067741",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 70459,
+    "rank": 270
+   },
+   "footprintM2": 6910,
+   "heightM": 29.8,
+   "center": [
+    4.862959999999999,
+    52.333218
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012245338",
+   "pand": "0363100012245338",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 70074,
+    "rank": 271
+   },
+   "footprintM2": 5316,
+   "heightM": 31.4,
+   "center": [
+    4.861803500000001,
+    52.341746
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012117498",
+   "pand": "0363100012117498",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 69088,
+    "rank": 273
+   },
+   "footprintM2": 3490,
+   "heightM": 11.1,
+   "center": [
+    4.871783499999999,
+    52.3770605
+   ],
+   "status": "queued",
+   "house": "gillis-van-ledenberchstraat-34-117498",
+   "notes": [
+    "authored recipe houses/gillis-van-ledenberchstraat-34-117498 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012250607",
+   "pand": "0363100012250607",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 68552,
+    "rank": 274
+   },
+   "footprintM2": 1946,
+   "heightM": 41.2,
+   "center": [
+    4.876378,
+    52.3357335
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012106929",
+   "pand": "0363100012106929",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 67817,
+    "rank": 275
+   },
+   "footprintM2": 17350,
+   "heightM": 20.2,
+   "center": [
+    4.9102725,
+    52.345698999999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012091320",
+   "pand": "0363100012091320",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 67070,
+    "rank": 276
+   },
+   "footprintM2": 749,
+   "heightM": 43.1,
+   "center": [
+    4.8413285,
+    52.3511805
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012237143",
+   "pand": "0363100012237143",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 66741,
+    "rank": 278
+   },
+   "footprintM2": 955,
+   "heightM": 48.5,
+   "center": [
+    4.8914835,
+    52.390162000000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012244547",
+   "pand": "0363100012244547",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 64837,
+    "rank": 281
+   },
+   "footprintM2": 3090,
+   "heightM": 22.2,
+   "center": [
+    4.932537,
+    52.402139500000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012249646",
+   "pand": "0363100012249646",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 64009,
+    "rank": 283
+   },
+   "footprintM2": 3714,
+   "heightM": 15.6,
+   "center": [
+    4.9390643999999995,
+    52.365086000000005
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012111806",
+   "pand": "0363100012111806",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 63086,
+    "rank": 285
+   },
+   "footprintM2": 2913,
+   "heightM": 11.5,
+   "center": [
+    4.903069,
+    52.394343500000005
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012243737",
+   "pand": "0363100012243737",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 62683,
+    "rank": 286
+   },
+   "footprintM2": 2272,
+   "heightM": 39.8,
+   "center": [
+    4.877897,
+    52.3406715
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012249709",
+   "pand": "0363100012249709",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 61474,
+    "rank": 287
+   },
+   "footprintM2": 2366,
+   "heightM": 73.2,
+   "center": [
+    4.933515,
+    52.4015915
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012240148",
+   "pand": "0363100012240148",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 60659,
+    "rank": 289
+   },
+   "footprintM2": 3167,
+   "heightM": 57.2,
+   "center": [
+    4.860971,
+    52.335658499999994
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012121704",
+   "pand": "0363100012121704",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 58725,
+    "rank": 291
+   },
+   "footprintM2": 3363,
+   "heightM": 25.3,
+   "center": [
+    4.8858255,
+    52.356094999999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012243287",
+   "pand": "0363100012243287",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 56980,
+    "rank": 292
+   },
+   "footprintM2": 3997,
+   "heightM": 51.4,
+   "center": [
+    4.8640905,
+    52.3345955
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012144991",
+   "pand": "0363100012144991",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 56313,
+    "rank": 294
+   },
+   "footprintM2": 4178,
+   "heightM": 9.7,
+   "center": [
+    4.8459905,
+    52.3823745
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012063809",
+   "pand": "0363100012063809",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 55752,
+    "rank": 295
+   },
+   "footprintM2": 2012,
+   "heightM": 43.8,
+   "center": [
+    4.829277,
+    52.3724985
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012250970",
+   "pand": "0363100012250970",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 55004,
+    "rank": 296
+   },
+   "footprintM2": 905,
+   "heightM": 42.1,
+   "center": [
+    4.8540145,
+    52.385566
+   ],
+   "status": "queued",
+   "house": "haarlemmerweg-518",
+   "notes": [
+    "authored recipe houses/haarlemmerweg-518 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012127804",
+   "pand": "0363100012127804",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 53226,
+    "rank": 300
+   },
+   "footprintM2": 7652,
+   "heightM": 11.5,
+   "center": [
+    4.857030549999999,
+    52.3912613
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012092403",
+   "pand": "0363100012092403",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 51313,
+    "rank": 304
+   },
+   "footprintM2": 3381,
+   "heightM": 12.1,
+   "center": [
+    4.846038,
+    52.371599
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012245324",
+   "pand": "0363100012245324",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 50301,
+    "rank": 305
+   },
+   "footprintM2": 1334,
+   "heightM": 38.6,
+   "center": [
+    4.861814000000001,
+    52.341466499999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012151987",
+   "pand": "0363100012151987",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 46628,
+    "rank": 308
+   },
+   "footprintM2": 2032,
+   "heightM": 44.1,
+   "center": [
+    4.8280785,
+    52.3733715
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012251732",
+   "pand": "0363100012251732",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 45790,
+    "rank": 313
+   },
+   "footprintM2": 3702,
+   "heightM": 18.7,
+   "center": [
+    4.943363,
+    52.359156
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012253541",
+   "pand": "0363100012253541",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 45680,
+    "rank": 314
+   },
+   "footprintM2": 930,
+   "heightM": 50.5,
+   "center": [
+    4.837343499999999,
+    52.386377
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012250971",
+   "pand": "0363100012250971",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 45680,
+    "rank": 315
+   },
+   "footprintM2": 749,
+   "heightM": 36.5,
+   "center": [
+    4.8533,
+    52.385718
+   ],
+   "status": "queued",
+   "house": "haarlemmerweg-778",
+   "notes": [
+    "authored recipe houses/haarlemmerweg-778 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012119400",
+   "pand": "0363100012119400",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 45252,
+    "rank": 316
+   },
+   "footprintM2": 6271,
+   "heightM": 13.2,
+   "center": [
+    4.843379049999999,
+    52.3825947
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012242083",
+   "pand": "0363100012242083",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 44965,
+    "rank": 319
+   },
+   "footprintM2": 7364,
+   "heightM": 37.8,
+   "center": [
+    4.833216,
+    52.3490565
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012252442",
+   "pand": "0363100012252442",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 44829,
+    "rank": 320
+   },
+   "footprintM2": 3347,
+   "heightM": 64.9,
+   "center": [
+    4.894075,
+    52.4040535
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012085900",
+   "pand": "0363100012085900",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 44795,
+    "rank": 321
+   },
+   "footprintM2": 2924,
+   "heightM": 29.4,
+   "center": [
+    4.9492575,
+    52.344312
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012253661",
+   "pand": "0363100012253661",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 44171,
+    "rank": 322
+   },
+   "footprintM2": 4528,
+   "heightM": 7.2,
+   "center": [
+    4.9046405,
+    52.393712
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012103159",
+   "pand": "0363100012103159",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 43978,
+    "rank": 324
+   },
+   "footprintM2": 5938,
+   "heightM": 8.2,
+   "center": [
+    4.8965320000000006,
+    52.4037235
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012080966",
+   "pand": "0363100012080966",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 43477,
+    "rank": 325
+   },
+   "footprintM2": 5053,
+   "heightM": 15.6,
+   "center": [
+    4.862513099999999,
+    52.334329499999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012165747",
+   "pand": "0363100012165747",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 41938,
+    "rank": 329
+   },
+   "footprintM2": 4152,
+   "heightM": 20.8,
+   "center": [
+    4.8943005,
+    52.375771
+   ],
+   "status": "queued",
+   "house": "nieuwendijk-hm-165747",
+   "notes": [
+    "authored recipe houses/nieuwendijk-hm-165747 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012089681",
+   "pand": "0363100012089681",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 40929,
+    "rank": 330
+   },
+   "footprintM2": 3811,
+   "heightM": 15.3,
+   "center": [
+    4.927895,
+    52.3643815
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012242968",
+   "pand": "0363100012242968",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 40821,
+    "rank": 331
+   },
+   "footprintM2": 3466,
+   "heightM": 18,
+   "center": [
+    4.9322230000000005,
+    52.358051
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012238346",
+   "pand": "0363100012238346",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 40746,
+    "rank": 332
+   },
+   "footprintM2": 4396,
+   "heightM": 16.5,
+   "center": [
+    4.8600385,
+    52.366224
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012133666",
+   "pand": "0363100012133666",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 40011,
+    "rank": 334
+   },
+   "footprintM2": 14455,
+   "heightM": 7.7,
+   "center": [
+    4.836389499999999,
+    52.3710825
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012246472",
+   "pand": "0363100012246472",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 39363,
+    "rank": 335
+   },
+   "footprintM2": 1204,
+   "heightM": 39.8,
+   "center": [
+    4.869439,
+    52.3357025
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012120246",
+   "pand": "0363100012120246",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 38815,
+    "rank": 337
+   },
+   "footprintM2": 962,
+   "heightM": 41.2,
+   "center": [
+    4.850806,
+    52.357559499999994
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012117753",
+   "pand": "0363100012117753",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 38794,
+    "rank": 338
+   },
+   "footprintM2": 2941,
+   "heightM": 8.3,
+   "center": [
+    4.912556,
+    52.400375
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012250972",
+   "pand": "0363100012250972",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 38743,
+    "rank": 339
+   },
+   "footprintM2": 802,
+   "heightM": 46.9,
+   "center": [
+    4.8528175000000005,
+    52.385510999999994
+   ],
+   "status": "queued",
+   "house": "haarlemmerweg-940",
+   "notes": [
+    "authored recipe houses/haarlemmerweg-940 exists and is not installed: the factory keeps its intent, measures and compiles it"
+   ]
+  },
+  {
+   "id": "0363100012246583",
+   "pand": "0363100012246583",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 38293,
+    "rank": 342
+   },
+   "footprintM2": 1736,
+   "heightM": 66.3,
+   "center": [
+    4.8692340000000005,
+    52.33985
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012242134",
+   "pand": "0363100012242134",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 38152,
+    "rank": 343
+   },
+   "footprintM2": 4085,
+   "heightM": 11,
+   "center": [
+    4.8316275,
+    52.355875
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012242116",
+   "pand": "0363100012242116",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 37640,
+    "rank": 347
+   },
+   "footprintM2": 2434,
+   "heightM": 35.4,
+   "center": [
+    4.870197,
+    52.336298
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012130710",
+   "pand": "0363100012130710",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 36726,
+    "rank": 349
+   },
+   "footprintM2": 2551,
+   "heightM": 14.9,
+   "center": [
+    4.904228,
+    52.3469635
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012247673",
+   "pand": "0363100012247673",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 34382,
+    "rank": 352
+   },
+   "footprintM2": 2567,
+   "heightM": 8.3,
+   "center": [
+    4.8790890000000005,
+    52.3939215
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012082192",
+   "pand": "0363100012082192",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 34372,
+    "rank": 353
+   },
+   "footprintM2": 130,
+   "heightM": 39,
+   "center": [
+    4.8445165,
+    52.350425
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012103794",
+   "pand": "0363100012103794",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 34055,
+    "rank": 355
+   },
+   "footprintM2": 7815,
+   "heightM": 10.4,
+   "center": [
+    4.8446166,
+    52.339713700000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012240959",
+   "pand": "0363100012240959",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 33546,
+    "rank": 356
+   },
+   "footprintM2": 3786,
+   "heightM": 15.6,
+   "center": [
+    4.870414500000001,
+    52.378073
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012109285",
+   "pand": "0363100012109285",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 32153,
+    "rank": 360
+   },
+   "footprintM2": 3118,
+   "heightM": 25.4,
+   "center": [
+    4.841055,
+    52.3667025
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012123762",
+   "pand": "0363100012123762",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 31935,
+    "rank": 361
+   },
+   "footprintM2": 1577,
+   "heightM": 37.6,
+   "center": [
+    4.886404499999999,
+    52.334378
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012244540",
+   "pand": "0363100012244540",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 31815,
+    "rank": 362
+   },
+   "footprintM2": 3369,
+   "heightM": 21.9,
+   "center": [
+    4.8330125,
+    52.352632
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012150906",
+   "pand": "0363100012150906",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 31554,
+    "rank": 363
+   },
+   "footprintM2": 4486,
+   "heightM": 32.7,
+   "center": [
+    4.92240355,
+    52.38772685000001
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012082246",
+   "pand": "0363100012082246",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 31246,
+    "rank": 364
+   },
+   "footprintM2": 138,
+   "heightM": 41.9,
+   "center": [
+    4.89113,
+    52.35745300000001
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012078713",
+   "pand": "0363100012078713",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 31155,
+    "rank": 365
+   },
+   "footprintM2": 2049,
+   "heightM": 45.4,
+   "center": [
+    4.9357875,
+    52.4020115
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012098805",
+   "pand": "0363100012098805",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 31013,
+    "rank": 367
+   },
+   "footprintM2": 4507,
+   "heightM": 15.7,
+   "center": [
+    4.843949,
+    52.371541500000006
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012080601",
+   "pand": "0363100012080601",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 31012,
+    "rank": 368
+   },
+   "footprintM2": 526,
+   "heightM": 35.5,
+   "center": [
+    4.945501,
+    52.3621105
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012131508",
+   "pand": "0363100012131508",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 30077,
+    "rank": 370
+   },
+   "footprintM2": 4037,
+   "heightM": 13.9,
+   "center": [
+    4.920552499999999,
+    52.4036375
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012064727",
+   "pand": "0363100012064727",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 29932,
+    "rank": 372
+   },
+   "footprintM2": 2633,
+   "heightM": 7.2,
+   "center": [
+    4.92324,
+    52.403839500000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012124847",
+   "pand": "0363100012124847",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 29720,
+    "rank": 373
+   },
+   "footprintM2": 2725,
+   "heightM": 6.6,
+   "center": [
+    4.9036105,
+    52.4005795
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012122004",
+   "pand": "0363100012122004",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 29293,
+    "rank": 375
+   },
+   "footprintM2": 2892,
+   "heightM": 14.5,
+   "center": [
+    4.928227,
+    52.363665999999995
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012083604",
+   "pand": "0363100012083604",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 29275,
+    "rank": 376
+   },
+   "footprintM2": 3250,
+   "heightM": 8.1,
+   "center": [
+    4.89393,
+    52.403522
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012064292",
+   "pand": "0363100012064292",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 29263,
+    "rank": 377
+   },
+   "footprintM2": 3259,
+   "heightM": 8.6,
+   "center": [
+    4.939719,
+    52.357525499999994
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012248827",
+   "pand": "0363100012248827",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 28965,
+    "rank": 378
+   },
+   "footprintM2": 678,
+   "heightM": 42.7,
+   "center": [
+    4.8799695,
+    52.395964000000006
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012165818",
+   "pand": "0363100012165818",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 28797,
+    "rank": 379
+   },
+   "footprintM2": 2663,
+   "heightM": 8.2,
+   "center": [
+    4.9218305,
+    52.366517
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012239704",
+   "pand": "0363100012239704",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 28761,
+    "rank": 380
+   },
+   "footprintM2": 2740,
+   "heightM": 16.1,
+   "center": [
+    4.8583305,
+    52.36890045
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012141601",
+   "pand": "0363100012141601",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 27554,
+    "rank": 382
+   },
+   "footprintM2": 5345,
+   "heightM": 15.3,
+   "center": [
+    4.839648,
+    52.3567865
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012071645",
+   "pand": "0363100012071645",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 27272,
+    "rank": 383
+   },
+   "footprintM2": 5025,
+   "heightM": 31.6,
+   "center": [
+    4.854717,
+    52.3362645
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012240481",
+   "pand": "0363100012240481",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 26132,
+    "rank": 385
+   },
+   "footprintM2": 4550,
+   "heightM": 15.7,
+   "center": [
+    4.8398635,
+    52.360992
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012237884",
+   "pand": "0363100012237884",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 24953,
+    "rank": 386
+   },
+   "footprintM2": 7219,
+   "heightM": 27.3,
+   "center": [
+    4.858578,
+    52.334250499999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012169284",
+   "pand": "0363100012169284",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 24311,
+    "rank": 388
+   },
+   "footprintM2": 3308,
+   "heightM": 20.8,
+   "center": [
+    4.9219455,
+    52.3674135
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012252498",
+   "pand": "0363100012252498",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 23716,
+    "rank": 389
+   },
+   "footprintM2": 1188,
+   "heightM": 48.3,
+   "center": [
+    4.9316805,
+    52.4039225
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012110208",
+   "pand": "0363100012110208",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 23553,
+    "rank": 391
+   },
+   "footprintM2": 2242,
+   "heightM": 35.8,
+   "center": [
+    4.8413664999999995,
+    52.355788000000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012114770",
+   "pand": "0363100012114770",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 23509,
+    "rank": 393
+   },
+   "footprintM2": 6125,
+   "heightM": 48.5,
+   "center": [
+    4.8436805,
+    52.366522
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012112409",
+   "pand": "0363100012112409",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 22863,
+    "rank": 394
+   },
+   "footprintM2": 1840,
+   "heightM": 46.7,
+   "center": [
+    4.8648495,
+    52.3345405
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012105061",
+   "pand": "0363100012105061",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 22845,
+    "rank": 395
+   },
+   "footprintM2": 132,
+   "heightM": 39.9,
+   "center": [
+    4.84454,
+    52.348979
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012114072",
+   "pand": "0363100012114072",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 21737,
+    "rank": 399
+   },
+   "footprintM2": 2646,
+   "heightM": 11,
+   "center": [
+    4.8849635,
+    52.335246
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012063071",
+   "pand": "0363100012063071",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 21540,
+    "rank": 400
+   },
+   "footprintM2": 2973,
+   "heightM": 9,
+   "center": [
+    4.8905495000000005,
+    52.406246499999995
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012241772",
+   "pand": "0363100012241772",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 21224,
+    "rank": 401
+   },
+   "footprintM2": 3623,
+   "heightM": 6.5,
+   "center": [
+    4.9081665,
+    52.3589415
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012094874",
+   "pand": "0363100012094874",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 20763,
+    "rank": 402
+   },
+   "footprintM2": 4935,
+   "heightM": 37,
+   "center": [
+    4.8836835,
+    52.33395385
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012063603",
+   "pand": "0363100012063603",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 20476,
+    "rank": 403
+   },
+   "footprintM2": 9766,
+   "heightM": 31.8,
+   "center": [
+    4.848681,
+    52.392539
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012252819",
+   "pand": "0363100012252819",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 19860,
+    "rank": 405
+   },
+   "footprintM2": 644,
+   "heightM": 48.4,
+   "center": [
+    4.927046,
+    52.371829
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012132433",
+   "pand": "0363100012132433",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 19102,
+    "rank": 408
+   },
+   "footprintM2": 3505,
+   "heightM": 22.1,
+   "center": [
+    4.8410225,
+    52.36779799999999
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012246469",
+   "pand": "0363100012246469",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 18872,
+    "rank": 410
+   },
+   "footprintM2": 1136,
+   "heightM": 40.3,
+   "center": [
+    4.890438,
+    52.405223
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012143384",
+   "pand": "0363100012143384",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 17790,
+    "rank": 415
+   },
+   "footprintM2": 3053,
+   "heightM": 12.5,
+   "center": [
+    4.825613,
+    52.3623945
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012245915",
+   "pand": "0363100012245915",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 17673,
+    "rank": 416
+   },
+   "footprintM2": 2155,
+   "heightM": 54.3,
+   "center": [
+    4.8399395,
+    52.363596
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012169282",
+   "pand": "0363100012169282",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 17245,
+    "rank": 418
+   },
+   "footprintM2": 3166,
+   "heightM": 14.7,
+   "center": [
+    4.919981,
+    52.3670475
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012237888",
+   "pand": "0363100012237888",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 17233,
+    "rank": 419
+   },
+   "footprintM2": 3726,
+   "heightM": 15.9,
+   "center": [
+    4.8373785,
+    52.350618
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012237887",
+   "pand": "0363100012237887",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 16573,
+    "rank": 423
+   },
+   "footprintM2": 3437,
+   "heightM": 15.9,
+   "center": [
+    4.838736,
+    52.350627
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012240480",
+   "pand": "0363100012240480",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 16405,
+    "rank": 425
+   },
+   "footprintM2": 2572,
+   "heightM": 15.7,
+   "center": [
+    4.839847499999999,
+    52.361875
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012141929",
+   "pand": "0363100012141929",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 16227,
+    "rank": 427
+   },
+   "footprintM2": 2695,
+   "heightM": 5,
+   "center": [
+    4.8482705,
+    52.391348
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012134888",
+   "pand": "0363100012134888",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 16107,
+    "rank": 428
+   },
+   "footprintM2": 2695,
+   "heightM": 12.5,
+   "center": [
+    4.8209420000000005,
+    52.3786115
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012241496",
+   "pand": "0363100012241496",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 16021,
+    "rank": 429
+   },
+   "footprintM2": 3529,
+   "heightM": 18.7,
+   "center": [
+    4.82817,
+    52.350532
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012148603",
+   "pand": "0363100012148603",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 15600,
+    "rank": 430
+   },
+   "footprintM2": 3817,
+   "heightM": 13.7,
+   "center": [
+    4.837018499999999,
+    52.3855555
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012138900",
+   "pand": "0363100012138900",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 14976,
+    "rank": 434
+   },
+   "footprintM2": 5581,
+   "heightM": 32.1,
+   "center": [
+    4.8461795,
+    52.3925205
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012237793",
+   "pand": "0363100012237793",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 14852,
+    "rank": 435
+   },
+   "footprintM2": 3875,
+   "heightM": 30.7,
+   "center": [
+    4.840128,
+    52.350635
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012143167",
+   "pand": "0363100012143167",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 14718,
+    "rank": 436
+   },
+   "footprintM2": 3379,
+   "heightM": 10.9,
+   "center": [
+    4.885498,
+    52.334072
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012242987",
+   "pand": "0363100012242987",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 14709,
+    "rank": 437
+   },
+   "footprintM2": 3911,
+   "heightM": 14,
+   "center": [
+    4.842753500000001,
+    52.343079
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012208268",
+   "pand": "0363100012208268",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 14131,
+    "rank": 438
+   },
+   "footprintM2": 14,
+   "heightM": 39.6,
+   "center": [
+    4.875738500000001,
+    52.340663
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012253708",
+   "pand": "0363100012253708",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 13250,
+    "rank": 442
+   },
+   "footprintM2": 3496,
+   "heightM": 16.9,
+   "center": [
+    4.9070235,
+    52.398078
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012195030",
+   "pand": "0363100012195030",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 12963,
+    "rank": 443
+   },
+   "footprintM2": 5327,
+   "heightM": 6.2,
+   "center": [
+    4.84335615,
+    52.370526600000005
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012095940",
+   "pand": "0363100012095940",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 12839,
+    "rank": 444
+   },
+   "footprintM2": 3490,
+   "heightM": 6.7,
+   "center": [
+    4.849928,
+    52.3913055
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012093565",
+   "pand": "0363100012093565",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 12782,
+    "rank": 445
+   },
+   "footprintM2": 670,
+   "heightM": 42.5,
+   "center": [
+    4.9154695,
+    52.406993
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012165552",
+   "pand": "0363100012165552",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 12671,
+    "rank": 447
+   },
+   "footprintM2": 2206,
+   "heightM": 44.5,
+   "center": [
+    4.9123145,
+    52.362539999999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012072045",
+   "pand": "0363100012072045",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 12043,
+    "rank": 450
+   },
+   "footprintM2": 5275,
+   "heightM": 12.4,
+   "center": [
+    4.944539499999999,
+    52.349281500000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012571849",
+   "pand": "0363100012571849",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 11979,
+    "rank": 451
+   },
+   "footprintM2": 2793,
+   "heightM": 17,
+   "center": [
+    4.8358975,
+    52.3653175
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012247188",
+   "pand": "0363100012247188",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 11946,
+    "rank": 452
+   },
+   "footprintM2": 1986,
+   "heightM": 47.6,
+   "center": [
+    4.852881,
+    52.341429500000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012254552",
+   "pand": "0363100012254552",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 11939,
+    "rank": 453
+   },
+   "footprintM2": 2765,
+   "heightM": 20.4,
+   "center": [
+    4.83613,
+    52.3865845
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012253362",
+   "pand": "0363100012253362",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 11676,
+    "rank": 454
+   },
+   "footprintM2": 2680,
+   "heightM": 83.2,
+   "center": [
+    4.834823500000001,
+    52.3867535
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012126563",
+   "pand": "0363100012126563",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 11491,
+    "rank": 456
+   },
+   "footprintM2": 2830,
+   "heightM": 9.3,
+   "center": [
+    4.8426035,
+    52.34213
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012077602",
+   "pand": "0363100012077602",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 10864,
+    "rank": 458
+   },
+   "footprintM2": 3627,
+   "heightM": 50.7,
+   "center": [
+    4.8444585,
+    52.3596175
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012085297",
+   "pand": "0363100012085297",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 10792,
+    "rank": 459
+   },
+   "footprintM2": 6313,
+   "heightM": 6,
+   "center": [
+    4.856673499999999,
+    52.393052999999995
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012144276",
+   "pand": "0363100012144276",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 10232,
+    "rank": 460
+   },
+   "footprintM2": 3159,
+   "heightM": 12.9,
+   "center": [
+    4.83714395,
+    52.36758105
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012112686",
+   "pand": "0363100012112686",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 10071,
+    "rank": 461
+   },
+   "footprintM2": 1200,
+   "heightM": 59.4,
+   "center": [
+    4.8393075,
+    52.391050500000006
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012246632",
+   "pand": "0363100012246632",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 10004,
+    "rank": 462
+   },
+   "footprintM2": 2668,
+   "heightM": 16.9,
+   "center": [
+    4.837168999999999,
+    52.363130999999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012105094",
+   "pand": "0363100012105094",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 9816,
+    "rank": 464
+   },
+   "footprintM2": 2090,
+   "heightM": 36.4,
+   "center": [
+    4.841673,
+    52.3911255
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012109322",
+   "pand": "0363100012109322",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 9416,
+    "rank": 465
+   },
+   "footprintM2": 11720,
+   "heightM": 8.4,
+   "center": [
+    4.8514385,
+    52.390848500000004
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012065279",
+   "pand": "0363100012065279",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 9250,
+    "rank": 466
+   },
+   "footprintM2": 2863,
+   "heightM": 4.2,
+   "center": [
+    4.83581265,
+    52.361194600000005
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012164353",
+   "pand": "0363100012164353",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 8610,
+    "rank": 468
+   },
+   "footprintM2": 13788,
+   "heightM": 18.6,
+   "center": [
+    4.853298000000001,
+    52.348575499999995
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012083151",
+   "pand": "0363100012083151",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 8352,
+    "rank": 471
+   },
+   "footprintM2": 3726,
+   "heightM": 7.7,
+   "center": [
+    4.8681175,
+    52.3954375
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012126767",
+   "pand": "0363100012126767",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 7818,
+    "rank": 473
+   },
+   "footprintM2": 2864,
+   "heightM": 15.2,
+   "center": [
+    4.837531,
+    52.36626
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012239598",
+   "pand": "0363100012239598",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 7622,
+    "rank": 475
+   },
+   "footprintM2": 4886,
+   "heightM": 28.3,
+   "center": [
+    4.841604,
+    52.3650875
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012179691",
+   "pand": "0363100012179691",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 7489,
+    "rank": 478
+   },
+   "footprintM2": 348,
+   "heightM": 50.6,
+   "center": [
+    4.8953465000000005,
+    52.381319000000005
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012074840",
+   "pand": "0363100012074840",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 7047,
+    "rank": 484
+   },
+   "footprintM2": 12180,
+   "heightM": 25,
+   "center": [
+    4.8412698,
+    52.39288185
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012254404",
+   "pand": "0363100012254404",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 7014,
+    "rank": 487
+   },
+   "footprintM2": 3731,
+   "heightM": 6.4,
+   "center": [
+    4.8768275,
+    52.397711
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012243686",
+   "pand": "0363100012243686",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 6298,
+    "rank": 491
+   },
+   "footprintM2": 386,
+   "heightM": 40.7,
+   "center": [
+    4.904494,
+    52.3957575
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012127007",
+   "pand": "0363100012127007",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 5618,
+    "rank": 497
+   },
+   "footprintM2": 356,
+   "heightM": 40.3,
+   "center": [
+    4.902626,
+    52.3459225
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012242098",
+   "pand": "0363100012242098",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 5213,
+    "rank": 499
+   },
+   "footprintM2": 2670,
+   "heightM": 10.4,
+   "center": [
+    4.9473044999999995,
+    52.347417
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012069797",
+   "pand": "0363100012069797",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 4605,
+    "rank": 503
+   },
+   "footprintM2": 8873,
+   "heightM": 8.4,
+   "center": [
+    4.9307935,
+    52.337894
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012092290",
+   "pand": "0363100012092290",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 4413,
+    "rank": 504
+   },
+   "footprintM2": 3234,
+   "heightM": 8.8,
+   "center": [
+    4.890794,
+    52.4065755
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012243124",
+   "pand": "0363100012243124",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 4120,
+    "rank": 507
+   },
+   "footprintM2": 547,
+   "heightM": 45.6,
+   "center": [
+    4.840251,
+    52.3545
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012093690",
+   "pand": "0363100012093690",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 3950,
+    "rank": 508
+   },
+   "footprintM2": 6077,
+   "heightM": 16.4,
+   "center": [
+    4.8513085,
+    52.339180999999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012241720",
+   "pand": "0363100012241720",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 3766,
+    "rank": 510
+   },
+   "footprintM2": 835,
+   "heightM": 53.3,
+   "center": [
+    4.8401745,
+    52.3549595
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012239207",
+   "pand": "0363100012239207",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 3656,
+    "rank": 513
+   },
+   "footprintM2": 3256,
+   "heightM": 21,
+   "center": [
+    4.8388895000000005,
+    52.37514
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012246549",
+   "pand": "0363100012246549",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 3402,
+    "rank": 516
+   },
+   "footprintM2": 1090,
+   "heightM": 43.6,
+   "center": [
+    4.870302000000001,
+    52.340465
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012238742",
+   "pand": "0363100012238742",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 3120,
+    "rank": 517
+   },
+   "footprintM2": 545,
+   "heightM": 45.6,
+   "center": [
+    4.8402595,
+    52.3542055
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012250984",
+   "pand": "0363100012250984",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 2999,
+    "rank": 518
+   },
+   "footprintM2": 17,
+   "heightM": 44.4,
+   "center": [
+    4.855423,
+    52.3437705
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012081222",
+   "pand": "0363100012081222",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 2995,
+    "rank": 519
+   },
+   "footprintM2": 1200,
+   "heightM": 74.2,
+   "center": [
+    4.871017,
+    52.340036999999995
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012120865",
+   "pand": "0363100012120865",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 2882,
+    "rank": 520
+   },
+   "footprintM2": 546,
+   "heightM": 45.6,
+   "center": [
+    4.840268,
+    52.353911499999995
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012090220",
+   "pand": "0363100012090220",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 2727,
+    "rank": 522
+   },
+   "footprintM2": 2511,
+   "heightM": 11.6,
+   "center": [
+    4.9358665,
+    52.3372975
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012251218",
+   "pand": "0363100012251218",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 2112,
+    "rank": 528
+   },
+   "footprintM2": 2704,
+   "heightM": 16.5,
+   "center": [
+    4.8294995,
+    52.355716
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012074933",
+   "pand": "0363100012074933",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 1707,
+    "rank": 535
+   },
+   "footprintM2": 1132,
+   "heightM": 45.6,
+   "center": [
+    4.8399375,
+    52.35362
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012140686",
+   "pand": "0363100012140686",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 1339,
+    "rank": 540
+   },
+   "footprintM2": 4151,
+   "heightM": 7.1,
+   "center": [
+    4.8653465,
+    52.394469
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012150639",
+   "pand": "0363100012150639",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 1239,
+    "rank": 541
+   },
+   "footprintM2": 3154,
+   "heightM": 16.3,
+   "center": [
+    4.942658,
+    52.3573465
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012254300",
+   "pand": "0363100012254300",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 1218,
+    "rank": 542
+   },
+   "footprintM2": 564,
+   "heightM": 62,
+   "center": [
+    4.8414405,
+    52.3637785
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012068941",
+   "pand": "0363100012068941",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 595,
+    "rank": 551
+   },
+   "footprintM2": 2773,
+   "heightM": 7.4,
+   "center": [
+    4.870760000000001,
+    52.3972395
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012216977",
+   "pand": "0363100012216977",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 588,
+    "rank": 552
+   },
+   "footprintM2": 239,
+   "heightM": 36.1,
+   "center": [
+    4.856458,
+    52.3361865
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012239262",
+   "pand": "0363100012239262",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 577,
+    "rank": 553
+   },
+   "footprintM2": 3624,
+   "heightM": 27.2,
+   "center": [
+    4.840565,
+    52.374982
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012125830",
+   "pand": "0363100012125830",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 133,
+    "rank": 555
+   },
+   "footprintM2": 660,
+   "heightM": 48,
+   "center": [
+    4.9542185,
+    52.392117999999996
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012079952",
+   "pand": "0363100012079952",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 131,
+    "rank": 556
+   },
+   "footprintM2": 3206,
+   "heightM": 7.5,
+   "center": [
+    4.8524655,
+    52.3909565
+   ],
+   "status": "queued"
+  },
+  {
+   "id": "0363100012196327",
+   "pand": "0363100012196327",
+   "name": null,
+   "source": "dominant",
+   "rideVisibility": {
+    "score": 58,
+    "rank": 557
+   },
+   "footprintM2": 48,
+   "heightM": 43.7,
+   "center": [
+    4.8304659999999995,
+    52.372104
+   ],
+   "status": "queued"
+  }
+ ]
+}

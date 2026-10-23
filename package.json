@@ -542,7 +542,11 @@
     "check:manual-landmarks": "node --import tsx scripts/landmarks/check-manual-landmarks.ts",
     "add:dutch-facts": "tsx scripts/add-dutch-facts.ts",
     "test:dutch-facts": "tsx scripts/add-dutch-facts.ts --check",
-    "apply:dutch-facts": "tsx scripts/apply-dutch-facts.ts"
+    "apply:dutch-facts": "tsx scripts/apply-dutch-facts.ts",
+    "factory:queue": "node --import tsx scripts/landmarks/factory-queue.ts",
+    "factory": "node --import tsx scripts/landmarks/factory.ts",
+    "factory:strip": "node --import tsx scripts/building-recipes/strip.ts",
+    "census": "node --import tsx scripts/landmarks/census.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

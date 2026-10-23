@@ -15,6 +15,36 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Programme (2026-10-23) — 1000 reviewed buildings, per-buurt looks, switches, roads
+
+Plan `docs/plans/thousand-buildings-20261023.md`; rules `docs/handoffs/LANE-RULES.md`;
+one brief per lane in `docs/handoffs/lane-*-20261023.md`. Census baseline
+2026-10-23: 386 counted (grandfathered gallery reviews), 47 strict; target
+1000. Queue `public/canal-drive/landmark-factory-queue.json` (325 rows).
+Open, in order:
+- **factory** (haiku batches of 20, opus review turns): first batch not run;
+  the 23 authored-but-uninstalled recipes are the zero-network first batch
+  (`politie-west-overtoomsesluis` fails its own footprint gate, IoU 0.749).
+  11 POI rows have no pand (`needs-pand`: Pathé de Munt, DeLaMar West, Levend
+  Paardenmuseum, WTC, …); OBA Banne's pand is not in the building tiles.
+- **kits-review**: 546 kit buildings have no review record; `kit-sheets.ts`
+  not written.
+- **identity**: the 289 dominant rows are unnamed; `identify-dominant.ts`
+  not written.
+- **bagtiles-default** (S1) → **recipe-tiles-default** (S2, needs the 5 cm
+  width quantisation and the `kind: glb` conversion) → **citylook-relevel**
+  (S3, user strip). None started.
+- **district-style** (B1), **buurt-designs** (B2: Tuindorp Oostzaan-Oost,
+  Gein 3, Holendrecht-Oost, Blauwe Zand first), **buurt-autoplace** (B3).
+- **roads**: diagnose (R0) → gaps (R1: `ondersteunendwegdeel` and verhard
+  `onbegroeidterreindeel` never fetched) → lanes and paint (R2+R3: OSM cycle
+  ribbons, part-covered bands and the far ring still draw over the BGT
+  polygons; grey and red decided with the user on a strip).
+- **build-hash-skip**: `build-manual-landmarks` still rebuilds all 355.
+- `landmark-queue.html` does not show the census or the queue yet.
+
+---
+
 ## Direction (2026-10-13) — approved plan
 
 `docs/plans/digital-twin-direction-20261013.md` is the assessment and plan the
