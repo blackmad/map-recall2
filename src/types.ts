@@ -167,9 +167,16 @@ export interface SearchHistoryEntry {
 /** One sourced piece of trivia, already in English. */
 export interface TriviaText {
   text: string;
+  /** The Dutch wording, when the source is Dutch or a Dutch source exists for
+   *  the same statement. The card shows this in Dutch and `text` in English;
+   *  neither is a machine translation of the other. */
+  textNl?: string;
   sourceUrl: string;
   /** "Wikipedia", "Wikipedia (translated from Dutch)", "Gemeente Amsterdam"… */
   sourceLabel: string;
+  /** The same attribution written for a Dutch reader, including whether the
+   *  sentence on screen is Dutch or an English fallback. */
+  sourceLabelNl?: string;
   /**
    * Set when the text is another place's history shown for an area, as "<Name> (<kind>)" with kind
    * waterway | street | park | bridge | square: "Schinkel (waterway)". The card heads it
@@ -200,6 +207,9 @@ export interface StreetFeature {
   wikidataSitelinks?: number;
   encyclopediaScore?: number;
   wikipediaExtract?: string;
+  /** The same lede in Dutch, when the source article was Dutch or a matching
+   *  Dutch article exists. Printed instead of `wikipediaExtract` in NL mode. */
+  wikipediaExtractNl?: string;
   /** Set when the stored extract is not English, so the translation pass can find it. */
   wikipediaExtractLang?: string;
   wikipediaUrl?: string;

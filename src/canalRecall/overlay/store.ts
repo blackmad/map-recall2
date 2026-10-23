@@ -14,6 +14,8 @@ export interface AccountState {
   visible: boolean;
   label: string;
   note: string;
+  /** Filled into a `note` placeholder, e.g. how many names sync. */
+  noteCount?: number;
   buttonLabel: string;
   busy: boolean;
   /** Set by the recall store's user listener; older callers infer it from `buttonLabel`. */
@@ -48,11 +50,15 @@ export interface OverlayState {
   account: AccountState;
 }
 
+/**
+ * Labels prefixed `#` are catalog keys, resolved where they are drawn: the
+ * account state survives a language switch, so its words cannot be baked in.
+ */
 export const GUEST_ACCOUNT: AccountState = {
   visible: true,
-  label: 'Playing as guest',
-  note: 'Sign in to keep your progress on every device',
-  buttonLabel: 'Sign in',
+  label: '#account.guest',
+  note: '#account.guestNote',
+  buttonLabel: '#account.signIn',
   busy: false,
   signedIn: false,
   photoURL: null,

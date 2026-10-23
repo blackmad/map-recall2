@@ -1648,6 +1648,16 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Dutch facts backlog (2026-10-23, HISTORY "Ride and Map Quest speak Dutch")**:
+  1,564/2,351 facts carry a Dutch sentence; 787 still fall back to English
+  labelled "(Engels)". Next: more agent-writer + fresh-verifier batches via
+  `npm run apply:dutch-facts`, preferring features with rich Dutch articles;
+  `docs/nl-localization-handoff.md` has both routes and the gotchas. The lane
+  was a DeepSeek run, so review its Dutch phrasing with a native reader before
+  calling the register done. Brand strings in the catalog were stale on merge
+  (Map Recall → Ride Amsterdam / Map Quest); new UI copy must go through
+  `src/i18n/messages/{en,nl}.ts`, not literals.
+
 - **Full e2e on CI (2026-10-17, HISTORY "CI green again")**: the suite runs
   nightly in `e2e-full.yml`; triage its first full report. On the 09:21 run it
   failed in askable-bridges (Noordsche Compagniebrug, Vingboomsbrug),

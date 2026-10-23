@@ -1,6 +1,7 @@
 import React from 'react';
 import { LoadingProgress, LocationScope } from '../types';
 import { Compass, MapPin, X } from 'lucide-react';
+import { useT } from '../i18n/useT';
 
 interface LoadingProgressModalProps {
   isOpen: boolean;
@@ -17,6 +18,7 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
   locationName,
   onCancel,
 }) => {
+  const t = useT();
   if (!isOpen || !progress) return null;
 
   const percent = Math.min(100, Math.max(5, progress.percent));
@@ -41,7 +43,7 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-white/60 font-medium">
                 <MapPin className="w-3.5 h-3.5 text-[#8a4a18]" />
-                <span>{locationName || 'Current Location'}</span>
+                <span>{locationName || t('quiz.currentLocationLabel')}</span>
                 <span>•</span>
                 <span className="enamel-chip capitalize px-1.5 py-0.5 font-semibold text-xs">
                   {scope === 'neighborhood' ? '🏘️ Neighborhood' : '🏙️ Whole City'}
@@ -53,7 +55,7 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
           {onCancel && (
             <button
               onClick={onCancel}
-              title="Cancel Loading"
+              title={t('quiz.cancelLoading')}
               className="p-1.5 rounded-xl text-white/60 hover:text-white hover:bg-white/10 transition cursor-pointer"
             >
               <X className="w-5 h-5" />
@@ -82,8 +84,8 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
         </div>
 
         <div className="flex items-center justify-between text-xs text-white/50 pt-1">
-          <span>OpenStreetMap data</span>
-          <span>You can cancel at any time</span>
+          <span>{t('quiz.loadingOsm')}</span>
+          <span>{t('quiz.cancelAnytime')}</span>
         </div>
       </div>
     </div>

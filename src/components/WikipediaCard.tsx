@@ -3,7 +3,9 @@ import { StreetFeature, TriviaText } from '../types';
 import { FACT_KIND_LABELS } from '../canalRecall/facts/factTypes';
 import { neighborhoodFactForRound } from '../mapRecall/neighborhoodStories';
 import { triviaForRound } from '../mapRecall/localFacts';
-import { descriptionWithoutOrigin } from '../mapRecall/trivia';
+import { language } from '../i18n/index';
+import { factKindLabel as factKindChip, factSourceLabel, factText } from '../canalRecall/facts/factTypes';
+import { descriptionWithoutOrigin, featureDescription, triviaSourceLabel, triviaText } from '../mapRecall/trivia';
 import { PostcardHeader } from './PostcardHeader';
 import { PostcardExport } from './PostcardExport';
 import { postcardCaptionFor, postcardPhotosFor } from '../mapRecall/postcardPhotos';
@@ -77,8 +79,11 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
   const roundFact = triviaForRound(feature.localFacts, factSeed, roundIndex);
   const facts = roundFact ? [roundFact, ...(feature.localFacts ?? []).filter((fact) => fact !== roundFact)] : [];
   const origin: TriviaText | undefined = feature.nameOrigin;
-  const originText = origin ? withNamedSubject(feature.name, origin.text) : undefined;
-  const description = descriptionWithoutOrigin(feature.wikipediaExtract, origin?.text);
+  // Dutch mode reads the Dutch wording where the data has it; the source line
+  // still names the article, so a card never pretends to be sourced in Dutch.
+  const originBody = triviaText(origin);
+  const originText = originBody ? withNamedSubject(feature.name, originBody) : undefined;
+  const description = descriptionWithoutOrigin(featureDescription(feature), originBody);
   const history = feature.history;
   const localFact = hasStory ? undefined : feature.localFact;
   const where = hints ? whereItIs(hints, feature.name) : undefined;
@@ -87,7 +92,12 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
   // Some extracts carry a bare string here ("translated"); only an object names a source.
   const extractSource = typeof feature.wikipediaExtractSource === 'object' ? feature.wikipediaExtractSource : undefined;
   const descriptionSource = extractSource
-    ? { href: extractSource.sourceUrl, label: extractSource.sourceLabel === 'Wikipedia' ? 'From Wikipedia' : extractSource.sourceLabel }
+    ? {
+      href: extractSource.sourceUrl,
+      label: extractSource.sourceLabel === 'Wikipedia'
+        ? (language() === 'nl' && feature.wikipediaExtractNl ? 'Wikipedia (Nederlands)' : language() === 'nl' ? 'Wikipedia (Engels)' : 'From Wikipedia')
+        : extractSource.sourceLabel,
+    }
     : { href: feature.wikipediaUrl, label: feature.wikipediaUrl?.includes('nl.wikipedia') ? 'Wikipedia (translated from Dutch)' : 'From Wikipedia' };
   if (!hasStory && !localFact && !origin && !facts.length && !description && !history && !feature.wikipediaImageUrl) return null;
   // Neighbourhoods open with a postcard cut from their own photographs and those of the places in them.
@@ -102,28 +112,28 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
     {feature.wikipediaImageUrl && postcardPhotos.length < 2 && <img src={feature.wikipediaImageUrl} referrerPolicy="no-referrer" alt="" className="h-12 w-16 flex-none rounded-md object-cover sm:h-16 sm:w-20" />}
     <div className="min-w-0 flex-1 space-y-1.5">
       {origin && <p className="text-xs leading-relaxed text-white" data-testid="answer-name-origin">
-        <Chip>Name</Chip>{originText}{' '}<Source href={origin.sourceUrl}>{origin.sourceLabel}</Source>
+        <Chip>Name</Chip>{originText}{' '}<Source href={origin.sourceUrl}>{triviaSourceLabel(origin)}</Source>
       </p>}
       {topFacts?.map((fact, i) => <p key={fact.text} className="text-xs font-semibold leading-relaxed text-white" data-testid="answer-top-fact">
-        {i === 0 && <Chip>About here</Chip>}{fact.text}{' '}<Source href={fact.sourceUrl}>{fact.sourceLabel}</Source>
+        {i === 0 && <Chip>About here</Chip>}{factText(fact)}{' '}<Source href={fact.sourceUrl}>{fact.sourceLabel}</Source>
       </p>)}
       {storyFact && <p className="text-xs leading-relaxed text-white" data-testid="answer-rotating-fact">
-        <Chip>Did you know</Chip>{storyFact.text}{' '}<Source href={storyFact.sourceUrl}>{storyFact.sourceLabel}</Source>
+        <Chip>Did you know</Chip>{factText(storyFact)}{' '}<Source href={storyFact.sourceUrl}>{storyFact.sourceLabel}</Source>
       </p>}
       {localFact && <p className="text-xs font-semibold leading-relaxed text-white" data-testid="answer-local-fact">
-        <Chip>Local</Chip>{localFact.text}{' '}<Source href={localFact.sourceUrl}>{localFact.sourceLabel}</Source>
+        <Chip>Local</Chip>{triviaText(localFact)}{' '}<Source href={localFact.sourceUrl}>{localFact.sourceLabel}</Source>
       </p>}
       {where && <p className="text-xs leading-relaxed text-white" data-testid="answer-where">
         <Chip>Where</Chip>{where}
       </p>}
       {facts.map((fact) => <p key={fact.text} className="text-xs leading-relaxed text-white" data-testid="answer-fact">
-        <Chip>{FACT_KIND_LABELS[fact.kind]}</Chip>{fact.text}{' '}<Source href={fact.sourceUrl}>Wikipedia · {fact.license}</Source>
+        <Chip>{factKindChip(fact.kind)}</Chip>{factText(fact)}{' '}<Source href={fact.sourceUrl}>{factSourceLabel(fact)}</Source>
       </p>)}
       {description && <Lede text={description} source={descriptionSource} heading={ledeHeading(extractSource?.borrowedFrom)} />}
       {!description && !facts.length && !origin && feature.wikipediaUrl && <Source href={feature.wikipediaUrl}>View photo on Wikipedia</Source>}
       {history && <details open={!hasStory} className="text-xs leading-relaxed text-white" data-testid={hasStory ? 'answer-story-background' : 'answer-history'}>
         <summary className="cursor-pointer font-bold text-white/80">{historyHeading(history.borrowedFrom)}</summary>
-        <p className="mt-1">{history.text}</p>
+        <p className="mt-1">{triviaText(history)}</p>
         <Source href={history.sourceUrl}>{history.sourceLabel}</Source>
       </details>}
       <PlacesHere places={feature.notablePlaces} showPhotos={postcardPhotos.length < 2} />

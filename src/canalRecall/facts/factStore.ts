@@ -19,13 +19,16 @@ import {
   type RotationState,
 } from './factRotation';
 import { similarity } from './factQuality';
-import { FACT_KIND_LABELS, type Fact, type FactsFile } from './factTypes';
+import { factKindLabel, factText, type Fact, type FactsFile } from './factTypes';
+import { language } from '../../i18n/index.ts';
 
 /** Facts and optional article opening, keyed by feature id. */
 export interface FeatureFactEntry {
   facts: Fact[];
   /** Same-article framing sentence; see `FeatureFacts.opening`. */
   opening?: string;
+  /** The Dutch article's own lede sentence, when there is a Dutch fact. */
+  openingNl?: string;
 }
 
 /** Facts by feature id, as the runtime holds them. */
@@ -38,6 +41,7 @@ export function buildFactIndex(file: FactsFile | null | undefined): FactIndex {
       index.set(feature.id, {
         facts: feature.facts,
         opening: feature.opening?.trim() || undefined,
+        openingNl: feature.openingNl?.trim() || undefined,
       });
     }
   }
@@ -176,21 +180,26 @@ export function factCardText(
   if (!entry?.facts?.length) return null;
   const choice = chooseFact(featureId, entry.facts, state);
   if (!choice) return null;
+  // Dutch and English never mix inside one card: a Dutch fact with no Dutch
+  // opening simply arrives without the framing line.
+  const dutch = language() === 'nl';
+  const dutchFact = dutch && !!choice.fact.textNl;
+  const factBody = dutchFact ? choice.fact.textNl! : choice.fact.text;
   const composed = composeFactWithOpening(
-    choice.fact.text,
-    entry.opening || fallbackOpening,
+    factBody,
+    dutchFact ? entry.openingNl : (entry.opening || fallbackOpening),
   );
   const others = expandedFacts(entry.facts, choice.fact.text);
   const all = composed.opening
-    ? [composed.opening, choice.fact.text, ...others.map((fact) => fact.text)]
-    : [choice.fact.text, ...others.map((fact) => fact.text)];
+    ? [composed.opening, factBody, ...others.map((fact) => factText(fact))]
+    : [factBody, ...others.map((fact) => factText(fact))];
   return {
     choice,
     text: {
       detail: composed.detail,
       longDetail: all.join(' '),
       factTexts: all,
-      factKind: FACT_KIND_LABELS[choice.fact.kind],
+      factKind: factKindLabel(choice.fact.kind),
     },
   };
 }

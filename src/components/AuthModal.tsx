@@ -1,8 +1,10 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import { useAuth } from '../AuthContext';
+import { useT } from '../i18n/useT';
 
 export function AuthModal({ onClose }: { onClose: () => void }) {
+  const t = useT();
   const { createAccount, signInWithEmail, signInWithGoogle } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,7 +27,7 @@ export function AuthModal({ onClose }: { onClose: () => void }) {
       else await signInWithEmail(email, password);
       onClose();
     } catch (reason) {
-      setError(reason instanceof Error ? reason.message.replace('Firebase: ', '') : 'Could not sign in.');
+      setError(reason instanceof Error ? reason.message.replace('Firebase: ', '') : t('auth.couldNotSignIn'));
     } finally {
       setBusy(false);
     }
@@ -46,7 +48,7 @@ export function AuthModal({ onClose }: { onClose: () => void }) {
         <div className="flex items-center justify-between mb-4">
           <div>
             <h2 id="auth-modal-title" className="font-bold text-white">
-              {creating ? 'Create account' : 'Sign in'}
+              {creating ? t('auth.createAccount') : t('auth.signIn')}
             </h2>
             <p className="text-xs text-white/60">
               Optional: sync progress across devices. Guest play always works.
@@ -81,7 +83,7 @@ export function AuthModal({ onClose }: { onClose: () => void }) {
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            placeholder="Email"
+            placeholder={t('auth.email')}
             className="enamel-chip w-full p-2.5 text-sm text-white outline-none placeholder:text-white/50"
           />
           <input
@@ -90,19 +92,19 @@ export function AuthModal({ onClose }: { onClose: () => void }) {
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            placeholder="Password"
+            placeholder={t('auth.password')}
             className="enamel-chip w-full p-2.5 text-sm text-white outline-none placeholder:text-white/50"
           />
           {error && <p className="text-xs text-white/80">{error}</p>}
           <button disabled={busy} className="button-primary w-full py-2.5 text-sm font-bold disabled:opacity-50">
-            {busy ? 'Please wait…' : creating ? 'Create account' : 'Sign in'}
+            {busy ? t('auth.pleaseWait') : creating ? t('auth.createAccount') : t('auth.signIn')}
           </button>
         </form>
         <button
           onClick={() => setCreating((value) => !value)}
           className="mt-3 w-full text-xs text-[#8a4a18] hover:text-white"
         >
-          {creating ? 'Already have an account? Sign in' : 'New here? Create an account'}
+          {creating ? t('auth.haveAccount') : t('auth.newHere')}
         </button>
       </div>
     </div>

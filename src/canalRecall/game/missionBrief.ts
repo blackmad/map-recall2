@@ -4,6 +4,7 @@
  */
 
 import type { RoutePattern, TravelMode } from './modes.ts';
+import { t } from '../../i18n/index.ts';
 
 export interface MissionBriefInput {
   destinationName: string;
@@ -25,33 +26,13 @@ export interface MissionBrief {
   tease?: string;
 }
 
-const BOAT = [
-  (d: string) => `Find your way to ${d} by water`,
-  (d: string) => `Canal hop to ${d}`,
-  (d: string) => `Drift toward ${d} — name what you ride`,
-];
-const BIKE = [
-  (d: string) => `Ride toward ${d}`,
-  (d: string) => `Pedal to ${d} — learn the turns`,
-  // Neutral on purpose: destinations include memorials ("Make Dam Square
-  // Victims 7 mei 1945 feel like home" was the review's example).
-  (d: string) => `Learn the way to ${d}`,
-];
-const TRANSIT = [
-  (d: string) => `Ride the line toward ${d}`,
-  (d: string) => `One hop to ${d} — own the corridor`,
-  (d: string) => `Transfer-ready: get to ${d}`,
-];
-const HOME = [
-  (km: number) => km > 0
-    ? `Learn the streets within ~${km.toFixed(1)} km of home`
-    : 'Rides from home reach further as you learn',
-  () => 'Errand mode: leave knowing the way back',
-];
-const HERE = [
-  (d: string) => d && d !== 'your destination' ? `From here toward ${d}` : 'Start from where you are',
-  (_d: string) => 'Start from where you are — not a saved address',
-];
+// Each pool is a set of catalog keys: the salted pick must stay stable for a
+// given route across languages (the salt is the city/destination/mode, not the
+// copy), so only the rendered sentence changes.
+const BOAT = ['mission.boat.1' as const, 'mission.boat.2' as const, 'mission.boat.3' as const];
+const BIKE = ['mission.bike.1' as const, 'mission.bike.2' as const, 'mission.bike.3' as const];
+const TRANSIT = ['mission.transit.1' as const, 'mission.transit.2' as const, 'mission.transit.3' as const];
+const HERE = ['mission.here.1' as const, 'mission.here.2' as const, 'mission.here.3' as const];
 
 function pick<T>(items: T[], salt: string): T {
   let h = 0;
@@ -63,40 +44,50 @@ function pick<T>(items: T[], salt: string): T {
 export function missionBrief(input: MissionBriefInput): MissionBrief {
   const brief = composeBrief(input);
   const due = input.reviewDueNearRoute ?? 0;
-  if (due > 0) return { ...brief, tease: due === 1 ? 'Review ride: 1 overdue name on the way' : `Review ride: ${due} overdue names on the way` };
+  if (due > 0) return {
+    ...brief,
+    tease: due === 1 ? t('mission.reviewOne') : t('mission.reviewMany', { count: due }),
+  };
   return brief;
 }
 
 function composeBrief(input: MissionBriefInput): MissionBrief {
-  const dest = (input.destinationName || 'your destination').trim();
+  const rawDestination = (input.destinationName || '').trim();
+  const dest = rawDestination || t('mission.destination');
   const salt = `${input.cityName}|${dest}|${input.travelMode}|${input.routePattern}`;
 
   if (input.routePattern === 'home') {
-    const line = pick(HOME, salt)(input.homeLearningRadiusKm || 0);
+    const km = input.homeLearningRadiusKm || 0;
+    // Two formats: a radius when one is known, the general promise otherwise.
+    const key = pick([0, 1] as const, salt) === 0
+      ? (km > 0 ? 'mission.home.1' as const : 'mission.home.2' as const)
+      : 'mission.home.3' as const;
     return {
-      line,
-      tease: input.hasColdOpenReview ? 'A review waits in the first minute' : undefined,
+      line: t(key, { km: km.toFixed(1) }),
+      tease: input.hasColdOpenReview ? t('mission.reviewFirstMinute') : undefined,
     };
   }
 
   if (input.routePattern === 'here') {
-    const line = pick(HERE, salt)(dest);
+    // An unnamed destination keeps the generic "start from where you are".
+    const key = rawDestination ? pick(HERE, salt) : 'mission.here.2';
+    const line = t(key, { destination: dest });
     return {
       line,
       tease: input.hasColdOpenReview
-        ? 'Warm up with one overdue name'
-        : `Arrive knowing more of ${input.cityName}`,
+        ? t('mission.warmUp')
+        : t('mission.arrive', { city: input.cityName }),
     };
   }
 
   const pool = input.travelMode === 'boat' ? BOAT
     : input.travelMode === 'transit' ? TRANSIT
       : BIKE;
-  const line = pick(pool, salt)(dest);
+  const line = t(pick(pool, salt), { destination: dest });
   return {
     line,
     tease: input.hasColdOpenReview
-      ? 'Warm up with one overdue name'
-      : `Arrive knowing more of ${input.cityName}`,
+      ? t('mission.warmUp')
+      : t('mission.arrive', { city: input.cityName }),
   };
 }

@@ -136,6 +136,6 @@ assert.match(publishableFact({ ...pick, approve: true }, () => 'The article was 
 assert.match(publishableFact({ ...pick, en: 'Its first synagogue opened in 1965.', approve: true }, () => buitenveldertEn.text).problem!, /1965/, 'no number the sources do not state');
 const [withFact] = attachNeighborhoodTrivia([{ name: 'Buitenveldert', type: 'neighborhood' as const }],
   [{ name: 'Buitenveldert', localFact: { ...publishableFact({ ...pick, approve: true }, () => buitenveldertEn.text).fact! } }], []);
-assert.deepEqual(withFact.localFact, { text: pick.en, sourceUrl: buitenveldertEn.url, sourceLabel: 'Wikipedia' });
+assert.deepEqual(withFact.localFact, { text: pick.en, sourceUrl: buitenveldertEn.url, sourceLabel: 'Wikipedia', sourceLabelNl: 'Wikipedia (Engels)' });
 
 console.log('Map Recall trivia checks passed.');

@@ -6,6 +6,8 @@
 // words, and the control hint for the device in hand — keys on a keyboard,
 // the ring on a phone. Nothing here may name a real street or canal.
 
+import { t } from '../../i18n/index.ts';
+
 export const ONBOARDING_STORAGE_KEY = 'canalRecall.onboarding.v1';
 
 export type OnboardingInput = 'keyboard' | 'touch';
@@ -29,33 +31,31 @@ export function onboardingSteps(input: OnboardingInput): OnboardingStep[] {
   return [
     {
       id: 'ride',
-      title: 'Ride the real city',
-      body: 'Pick Boat or Bike and press Start route. Ride to the destination named in the top-right corner; the orange arrow points the way.',
+      title: t('onb.rideTitle'),
+      body: t('onb.rideBody'),
       specimen: touch
-        ? { kind: 'ring', caption: 'Hold the ring at the bottom and slide: sideways steers, up speeds up, back brakes.' }
-        : { kind: 'keys', keys: [['↑'], ['←', '↓', '→']], caption: 'Arrow keys or WASD steer. Space brakes.' },
+        ? { kind: 'ring', caption: t('onb.ringCaption') }
+        : { kind: 'keys', keys: [['↑'], ['←', '↓', '→']], caption: t('onb.keysCaption') },
     },
     {
       id: 'name-it',
-      title: 'Name it',
-      body: 'When you turn onto a new canal or street, the ride stops and asks its name. The card in the top-left shows ? ? ? until you answer. Not sure? Choose No idea. You see the answer either way.',
+      title: t('onb.nameTitle'),
+      body: t('onb.nameBody'),
       specimen: {
         kind: 'question',
         plaque: '? ? ?',
         choices: ['1', '2', '3', '4'],
-        caption: touch
-          ? 'Tap a name to answer. On Hard you type it.'
-          : 'Press 1–4 to pick a name, 0 for No idea. On Hard you type it.',
+        caption: touch ? t('onb.tapCaption') : t('onb.pressCaption'),
       },
     },
     {
       id: 'score',
-      title: 'Points and names learned',
-      body: 'A right answer earns points: more on harder settings, in a streak, and for a name that is new to you. Names you get right come back later for review, so they stick.',
+      title: t('onb.scoreTitle'),
+      body: t('onb.scoreBody'),
       specimen: {
         kind: 'score',
-        tally: '3/4 named · 290 pts',
-        caption: '3 named out of 4 asked. Knowledge, on the start screen, lists every name you have learned.',
+        tally: t('onb.tally'),
+        caption: t('onb.scoreCaption'),
       },
     },
   ];

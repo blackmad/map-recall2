@@ -48,3 +48,15 @@ This repository is Ride Amsterdam (the 3D ride, `public/canal-drive/` plus
 - **Shared files.** One agent at a time owns shared catalogue, dispatcher and
   bundle registration. Leaf agents work in their own worktree and branch,
   and return a commit SHA plus their verification results (see `CLAUDE.md`).
+
+## Dutch localization
+
+The game speaks English and Dutch behind a live toggle (`src/i18n`), and Dutch
+trivia comes from Dutch sources, never machine translation. Read
+`docs/nl-localization-handoff.md` for the current state and next steps, and
+`docs/nl-localization.md` for the rules: `#key` for data-borne text, render-time
+pickers, `data-i18n` markup, the municipal-register error policy
+(`docs/amsterdam-street-name-register-errors.md` →
+`scripts/dutch-street-origin-corrections.json`), and the fact provenance
+requirements checked by `npm run test:dutch-facts` and
+`npm run test:dutch-street-origins`.
