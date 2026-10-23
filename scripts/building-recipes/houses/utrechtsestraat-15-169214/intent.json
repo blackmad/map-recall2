@@ -121,7 +121,10 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "zinc"
+  "material": "zinc",
+  "levelRooftop": {
+   "evidence": "User note 0132871b (2026-10-23, Rembrandtplein): the 3DBAG LoD2.2 rooftop above the fronts (about 90 small tilted planes, 32.9-40.7 m) drew as a crumpled triangle field. The photographed fronts all end flat under a cornice (w01-257 with a set-back glazed pavilion, w03-258, w02-3); BAG gives the block as 36 m."
+  }
  },
  "palette": {
   "brick": "#4c382e",
@@ -133,7 +136,8 @@
   "Utrechtsestraat 15 (BAG: built 1932; four offices, five shops, two assembly and two other units; 3,221 m2 footprint, 36 m): an Amsterdam School office block on the Rembrandtplein, now the Booking.com head office. Three fronts are photographed: the west street front (w01-257, panorama 2024-12-03: five floors of triple tall windows between vertical brick piers over a granite base with deep open loggias under green copper canopies, a copper cornice and a glass roof pavilion), the Booking.com corner (w03-258, 2020-04-21: a granite rusticated base with Starbucks and shop glazing, four floors of triple windows, two recessed attic floors with the lettering Booking.com) and the north front (w02-3, 2021-03-08: granite base with Vapiano, four rows of triple windows, a stair tower at the right).",
   "Modelled: the west street front (panels 49, 94, 165) as a 6-storey brick-bay-grid with stone ground, piers and cornice; the Booking.com wall (panel 523) as 7 storeys with a stone ground storey, cornice and the lettering Booking.com on the wall; the north front (panel 502 with the stair tower) as 5 storeys with a stone ground storey, piers and cornice. Roofs and unlisted walls are the 3DBAG LoD2.2 shell in the brick colour.",
   "Simplified: the triple windows are one wide window per 1.7 bays, the open loggia arcade under copper canopies is a plain ground row, the glass roof pavilion over the west front and the recessed attic floors are the 3DBAG roof/wall geometry only, the copper trim is not coloured. Not modelled: the upper west panels 525, 205, 415, 89 (stepped tower floors, no frontal photograph) and the east side (w04-77, party/courtyard).",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #414142 not used (not darker than the wall #5b564e by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #414142 not used (not darker than the wall #5b564e by 10 L*, or tinted): kit glass kept.",
+  "Roof levelled 2026-10-23 (roof.levelRooftop, roofLevel.ts; user note 0132871b): every 3DBAG roof plane wholly above the photographed fronts (from 31.88 m: the Booking.com front's 30.5 m top raised past the lower tilted planes that start under it) is one flat level at the area-weighted median of those planes, 35.62 m; walls between those planes are dropped and walls rising through the level end at it. The lower roofs (22.3-31.9 m) and every front are unchanged. The two small 39-41 m tops (planes 733, 774; 16 m2, no photograph) are levelled too."
  ],
  "closedBands": true,
  "measured": {
