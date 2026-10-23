@@ -34,6 +34,21 @@ export function buildAcademieTheaterDans(_width:number,_depth:number,{add}:Build
   if([2,7,12].includes(id)){const underside:number[]=[];for(let i=0;i<top.length;i+=9)for(const j of [0,2,1])underside.push(top[i+3*j],top[i+3*j+1]-.08,top[i+3*j+2]);const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(underside,3));g.computeVertexNormals();g.userData.role='cantilever-underside';add(g,'dark');}
   for(const [positions,c,role] of [[top,'stone','survey-roof'],[skirts,'white','roof-skirt']] as const){const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(positions,3));g.computeVertexNormals();g.userData.role=role;g.userData.surveyPart=id;add(g,c);}
  }
+ // The measured 26-28 m roofs 2/7/12 reach the northwest end (3DBAG), but
+ // the recessed core below them stops at u=15, so their northwest edges
+ // hung over nothing and riders saw the dark underside through a gap (user
+ // note 44bb1126). Close every northwest edge (both ends u<15) that is not
+ // shared between the three high roofs or closed by the corner brow, from the higher of the 21.4 m
+ // terrace datum and the neighbouring measured region up to the roof.
+ const high=roofFits.filter(r=>[2,7,12].includes(r.id)),uOf=(p:number[])=>new T.Vector2(p[0],p[2]).sub(streetA).dot(streetT);
+ const onRing=(p:number[],ring:number[][])=>ring.some((a,i)=>{const b=ring[(i+1)%ring.length],ab=new T.Vector2(b[0]-a[0],b[2]-a[2]),ap=new T.Vector2(p[0]-a[0],p[2]-a[2]),L=ab.lengthSq();if(L<1e-9)return ap.length()<.05;const k=Math.max(0,Math.min(1,ap.dot(ab)/L));return ap.sub(ab.multiplyScalar(k)).length()<.05});
+ const northwestSkirts:number[]=[];
+ for(const r of high){const ring=r.rings[0];for(let i=0;i<ring.length;i++){const p=ring[i],q=ring[(i+1)%ring.length];if(Math.hypot(q[0]-p[0],q[2]-p[2])<.05||uOf(p)>=15||uOf(q)>=15||(r.id===2&&i>=ring.length-2))continue;
+  if(high.some(o=>o!==r&&onRing(p,o.rings[0])&&onRing(q,o.rings[0])))continue;
+  let base=21.4;for(const [k,o] of source.roofRegions.entries())if(![2,7,12].includes(k)&&onRing(p,o.rings[0])&&onRing(q,o.rings[0]))base=Math.max(base,...o.rings[0].map(v=>v[1]));
+  if(base>=Math.min(p[1],q[1])-.05)continue;
+  northwestSkirts.push(p[0],base,p[2],q[0],base,q[2],q[0],q[1],q[2],p[0],base,p[2],q[0],q[1],q[2],p[0],p[1],p[2]);}}
+ {const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(northwestSkirts,3));g.computeVertexNormals();g.userData.role='northwest-upper-wall';add(g,'white');}
  // Source-facing regional white corner brow closes ONLY the principal
  // upper facade edge of roof2; the northwest terrace remains open behind it.
  const cornerRoof=roofFits.find(r=>r.id===2)!,cornerRing=cornerRoof.rings[0];

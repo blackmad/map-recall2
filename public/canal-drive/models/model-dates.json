@@ -2,8 +2,8 @@
   "description": "Model asset update dates, not historical building construction dates.",
   "models": {
     "academie-theater-dans": {
-      "updatedAt": "2026-10-20T10:01:49.386Z",
-      "version": "6a157de55857fe89",
+      "updatedAt": "2026-10-23T21:20:33.294Z",
+      "version": "d8abfa92db6923d7",
       "dateSource": "asset-update"
     },
     "academie-theater-dans.lod1": {
