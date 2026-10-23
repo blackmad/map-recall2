@@ -98,6 +98,17 @@ Open, in order:
   (johnny-jordaan-groep ×6, theo-thijssen-standbeeld ×5,
   carmiggelt-borstbeeld ×4, winkler-prins-monument ×3) rebuild on every
   full run.
+- **audit:glb sweep (2026-10-23)**: of the 194 models the full
+  `audit:glb` run got through before it was stopped, 136 fail a hard gate
+  against `geometry-audit-baseline.json` (detached 76, holes 34,
+  geometry-regression 35 with `opening-buried`, `zfight-m2` and
+  `opening-outside` growth, zfight 26, see-through 24); nemo fails the same
+  way with the pre-tonight code, so this is drift since the baseline was
+  recorded, not the new threshold. Nobody runs the sweep: `check:canal`
+  does not include it. Haiku lane: run the sweep to the end, table the
+  grown keys per model, and split "baseline was recorded on an older
+  export" from "the model got worse"; the integrator decides a
+  re-baseline per model with the reason in the file.
 - **perf-phones**: taken over 2026-10-23; brief
   `docs/handoffs/lane-perf-phones-20261023.md`; the previous session runs
   one read-only Android emulator ride and reports numbers.
