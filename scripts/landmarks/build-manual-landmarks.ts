@@ -320,6 +320,7 @@ import {buildWaterdraagsterBellamyplein} from './waterdraagster-bellamyplein-bui
 import {buildMamaBaranka} from './mama-baranka-builder';
 import {buildSpanjemonument} from './spanjemonument-builder';
 import {applyInstalledFigures} from './installed-figures';
+import {computeSourceHashes,ALWAYS_REBUILD,type SourceHashes} from './manual-source-hash';
 const out=path.resolve('public/canal-drive/models');
 const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871'};
 type Colour=keyof typeof palette;
@@ -486,19 +487,38 @@ const plantageMuseumIds=new Set(['national-holocaust-museum','hollandsche-schouw
 const jewishQuarterIds=new Set(['jewish-museum','portuguese-synagogue']);
 const selectedIds = process.argv.flatMap((arg, index, args) => arg === '--only' ? (args[index + 1] ?? '').split(',').filter(Boolean) : arg.startsWith('--only=') ? arg.slice(7).split(',').filter(Boolean) : []);
 if (process.argv.includes('--help')) {
-  console.log('Usage: build-manual-landmarks.ts [--only model-id[,model-id]]');
+  console.log('Usage: build-manual-landmarks.ts [--only model-id[,model-id]] [--no-skip]');
+  console.log('Models whose source hash, GLB and modelAssetVersions fingerprint still match are skipped; --only and --no-skip rebuild.');
   process.exit(0);
 }
-for (const arg of process.argv.slice(2)) if (arg.startsWith('--') && arg !== '--only' && arg !== '--help' && !arg.startsWith('--only=')) throw new Error(`Unknown option: ${arg}`);
+for (const arg of process.argv.slice(2)) if (arg.startsWith('--') && arg !== '--only' && arg !== '--help' && arg !== '--no-skip' && !arg.startsWith('--only=')) throw new Error(`Unknown option: ${arg}`);
 if (process.argv.some(arg => arg === '--only' || arg.startsWith('--only=')) && !selectedIds.length) throw new Error('--only requires at least one model ID');
 for (const id of selectedIds) if (!MANUAL_LANDMARKS.some(model => model.id === id)) throw new Error(`Unknown manual landmark: ${id}`);
+const startedAt=Date.now();
+// Source-hash skip (scripts/landmarks/manual-source-hash.ts): a model is rebuilt unless its recorded hash, its GLB and its modelAssetVersions fingerprint all match.
+const hashFile='src/canalRecall/landmarks/modelSourceHashes.json';
+const sourceHashes=computeSourceHashes(process.cwd(),MANUAL_LANDMARKS);
+const priorHashes:Partial<SourceHashes>=fs.existsSync(hashFile)?JSON.parse(fs.readFileSync(hashFile,'utf8')):{};
+const priorVersions:Record<string,string>=JSON.parse(fs.readFileSync('src/canalRecall/landmarks/modelAssetVersions.json','utf8'));
+const noSkip=process.argv.includes('--no-skip');
+const skipReady=(id:string)=>{
+  if(noSkip||selectedIds.length||ALWAYS_REBUILD(id)||priorHashes.models?.[id]!==sourceHashes.models[id]||!manifest.models?.[id])return false;
+  const glb=path.join(out,`${id}.glb`);
+  return fs.existsSync(glb)&&priorVersions[id]===createHash('sha256').update(fs.readFileSync(glb)).digest('hex').slice(0,16);
+};
+const built:string[]=[],skipped:string[]=[],externals:string[]=[];
 for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || selectedIds.includes(model.id))){
   const id=spec.id;
   // Signature-inventory gate (landmark-inventory-gate.ts): a landmark first exported after 2026-10-13 needs a resolved scripts/landmarks/<id>-inventory.json.
   assertInventoryForExport(id);
+  if(skipReady(id)){skipped.push(id);continue;}
+  built.push(id);
   parts=[];
   // The Cuypersgebouw and its east wing (centraal-cuypers-builder.ts, 2026-10-16; it replaced a parametric box whose front stood
   // 11.5 m out on the Stationsplein) and the four train/bus roofs.
+  let external=false;
+  // A catalogued model with no builder here (ordinary blocks such as haparandaweg-902-950 come from their own pipeline) keeps its existing GLB.
+  try{
   if(id==='centraal-station'){buildCentraalCuypers(helpers);buildCentraalComplex(helpers);}
   else if(id==='muziekgebouw-bimhuis')music();
   else if(id.startsWith('olvg-'))hospital(id);
@@ -803,9 +823,21 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='spanjemonument')buildSpanjemonument(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
+  }catch(e){
+    if(!String(e).includes('No builder for')||!fs.existsSync(`${out}/${id}.glb`))throw e;
+    external=true;
+  }
+  if(external){built.pop();externals.push(id);console.log(id,'no in-driver builder; GLB kept from its own pipeline');continue;}
   // Installed statue reconstructions (installed-figures.ts): the kit figure is swapped for the user-picked TRELLIS.2/TripoSR mesh.
   {const swap=await applyInstalledFigures(id,parts);if(swap)console.log(id,'installed figures',JSON.stringify(swap));}
   {const lod1=manifest.models[id]?.lod1;manifest.models[id]=await save(id);if(lod1)manifest.models[id].lod1=lod1;}// keep the lod1 record; build:landmark-lods / check:landmark-lods catch it going stale
+}
+// Record the source hash of every model this run built; skipped models already match. Models outside this run keep their recorded hash.
+{
+  const models:Record<string,string>={...priorHashes.models};
+  for(const id of built)models[id]=sourceHashes.models[id];
+  for(const id of Object.keys(models))if(!MANUAL_LANDMARKS.some(spec=>spec.id===id))delete models[id];
+  fs.writeFileSync(hashFile,JSON.stringify({toolchain:sourceHashes.toolchain,models:Object.fromEntries(Object.entries(models).sort(([a],[b])=>a.localeCompare(b)))},null,2)+'\n');
 }
 // Held models keep their manifest entry (rebuildable) but are flagged so
 // listing pages like whats-new.html leave them out.
@@ -823,3 +855,4 @@ for(const id of Object.keys(manifest.models).sort()){
 fs.writeFileSync('src/canalRecall/landmarks/modelAssetVersions.json',JSON.stringify(versions,null,2)+'\n');
 
 refreshModelDates(out);
+console.log(`build-manual-landmarks: built ${built.length}, skipped ${skipped.length}, external ${externals.length}, ${((Date.now()-startedAt)/1000).toFixed(1)} s`);
