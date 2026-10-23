@@ -15,6 +15,12 @@
  * and oscillating between sharp and blurry is worse than staying blurry — and
  * a fast machine never meets the threshold (M4: ~4 ms of work per frame).
  *
+ * The first `settleMs` of riding after the ride starts (or after any pause) is
+ * not judged: that is when tiles, landmarks and the own ground land, and those
+ * stalls are main-thread work a lower pixel ratio does not buy back. The
+ * Android emulator pass (2026-10-23) stepped all three rungs within 15 s of
+ * ride start while the city loaded, then sat at 0.75x for the whole ride.
+ *
  * `?governor=0` turns it off; an explicit `?dpr=` keeps the pixel ratio the
  * caller asked for and leaves only the shadow step.
  */
@@ -38,6 +44,8 @@ export interface GovernorOptions {
   /** The last resort below 1×; applied only when a window is this slow. */
   verySlowP75Ms?: number;
   floorPixelRatio?: number;
+  /** Riding time not judged after a start or a gap (loading, not drawing). */
+  settleMs?: number;
 }
 
 export type GovernorStep =
@@ -60,6 +68,7 @@ export class RenderGovernor {
   private window: number[] = [];
   private windowMs = 0;
   private slowRun = 0;
+  private settleLeft: number;
 
   constructor(options: GovernorOptions) {
     this.o = {
@@ -70,11 +79,13 @@ export class RenderGovernor {
       slowWindows: 2,
       verySlowP75Ms: 40,
       floorPixelRatio: 0.75,
+      settleMs: 0,
       fixedPixelRatio: false,
       ...options,
     };
     this.pixelRatio = options.initialPixelRatio;
     this.shadows = options.shadows ?? false;
+    this.settleLeft = this.o.settleMs;
   }
 
   /** Feed one frame interval; returns the step to apply, if any. */
@@ -84,6 +95,11 @@ export class RenderGovernor {
       this.window = [];
       this.windowMs = 0;
       this.slowRun = 0;
+      this.settleLeft = this.o.settleMs;
+      return null;
+    }
+    if (this.settleLeft > 0) {
+      this.settleLeft -= intervalMs;
       return null;
     }
     this.window.push(intervalMs);
@@ -145,6 +161,8 @@ export interface GovernorInstallOptions {
   fixedPixelRatio?: boolean;
   /** Count frames only while this holds (riding, not loading or the intro). */
   active?: () => boolean;
+  /** Riding time not judged after the ride starts or resumes; default 12 s. */
+  settleMs?: number;
   now?: () => number;
   onStep?: (step: GovernorStep, governor: RenderGovernor) => void;
 }
@@ -156,6 +174,7 @@ export function governMapRender(map: GovernableMap, options: GovernorInstallOpti
     initialPixelRatio: map.getPixelRatio(),
     fixedPixelRatio: options.fixedPixelRatio,
     shadows: !!options.setShadows,
+    settleMs: options.settleMs ?? 12_000,
   });
   let last = 0;
   const onRender = () => {
