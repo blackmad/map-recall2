@@ -24,7 +24,7 @@ export function buildAnneFrankMerwedeplein(_w: number, _d: number, b: BuildingTo
   lettering('ANNE FRANK', 0.1, 0.56, 0, 0.82, 0.37, 'front', 'white', 0.02);
   lettering('1929 - 1945', 0.1, 0.5, 0, 0.62, 0.37, 'front', 'white', 0.02);
   const base = 1.41;
-  box(0, base, 0, 0.55, 0.05, 0.42, 'bronze');                       // foot plate
+  box(0, base - 0.01, 0, 0.55, 0.06, 0.42, 'bronze');                // foot plate, sunk 1 cm into the cap so its underside is inside the stone (its coplanar underside z-fought the cap top: feedback 2026-10-23)
   // ---- girl, 1.5 m: weight on the left leg
   const pose: Pose = {
     ...POSES.standing(), height: 1.5, stout: 0.9, chest: 1.0, skirt: {len: 0.4, flare: 1.3}, head: {yaw: -0.15, pitch: -0.03},

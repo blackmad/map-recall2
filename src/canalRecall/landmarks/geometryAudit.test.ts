@@ -121,6 +121,20 @@ test('two slab tops at the same height z-fight; the same overlap buried inside a
   assert.ok(hidden.hiddenArea > 1);
 });
 
+test('a plate resting on a plinth: the opposite-facing tie cannot show; the near band 5 cm up is what a card camera sees (Anne Frank, 2026-10-23)', () => {
+  const soup = boxes({min: [0, 0, 0], max: [1, 1, 1], mat: 'stone'}, {min: [0.2, 1, 0.2], max: [0.8, 1.05, 0.8], mat: 'brick'});
+  for (const m of soup.materials) (m as {doubleSided?: boolean}).doubleSided = true;
+  const z = auditZFight(soup);
+  assert.equal(z.area, 0, 'the plate underside is covered by its own top from above and by the plinth from below');
+  assert.ok(Math.abs(z.nearArea - 0.36) < 0.03, `the plate top 5 cm over the plinth top is a near-band patch (${z.nearArea} m2)`);
+  // The warn threshold scales with the model: on a few square metres a 0.2 m2 coplanar tie is most of the top.
+  const flat = boxes({min: [0, 0, 0], max: [1, 1, 1], mat: 'stone'}, {min: [0.2, 0.9, 0.2], max: [0.8, 1, 0.8], mat: 'brick'});
+  for (const m of flat.materials) (m as {doubleSided?: boolean}).doubleSided = true;
+  const report = geometryAudit(flat, {skipRhythm: true});
+  assert.ok(auditZFight(flat).area > 0.3, 'two tops in one plane tie');
+  assert.ok(report.findings.some(f => f.kind === 'zfight'), 'a small model warns under the 0.25 m2 absolute threshold');
+});
+
 test('rhythm: a skipped column and an odd-sized window are flagged', () => {
   const row = (y: number, ts: number[], w = 1.2): Opening[] => ts.map(t => ({t0: t, t1: t + w, y0: y, y1: y + 2, area: w * 2}));
   const regular = [...row(1, [1, 4, 7, 10, 13]), ...row(5, [1, 4, 7, 10, 13])];

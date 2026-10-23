@@ -37,6 +37,40 @@ Open, in order:
   Paardenmuseum, WTC, …); OBA Banne's pand is not in the building tiles.
 - **kits-review**: 546 kit buildings have no review record; `kit-sheets.ts`
   not written.
+- **feedback queue (Firebase, 8 open notes 2026-10-23, pulled with
+  `npm run feedback:queue -- pull`)**, routed:
+  - gables pointing the wrong way (74dc761d, Marnixstraat × Lijnbaansgracht):
+    systemic; `planRoof` lets the ridge follow the fitted box's long axis, so
+    a canal/c19 pand wider than deep gets its gable ends toward the
+    neighbours → lane `lane/gable-orientation-20261023` (opus): ridge
+    perpendicular to the street front, transverse saddles for wide fronts.
+  - got stuck at the Centraal ferry pier, never boarded (05a7d02a, De
+    Ruijterkade → OBA Van der Pek): lane `lane/ferry-stuck-20261023` (opus),
+    Playwright regression first, fix in `src/canalRecall/ferry/`.
+  - wiggly green patches on J.D. Meijerplein (53b04137) and the user's
+    Spiegelgracht × Prinsengracht frame (one brown klinker mass, no kerb or
+    sidewalk tone, red cycle fragments): added as spots to R0
+    (`lane/roads-diagnose-20261023`); R3 gains a function-aware tone (voetpad
+    lighter/greyer than rijbaan, kerb line at their edge).
+  - hole in the ATD roof (44bb1126, `academie-theater-dans`), crumpled dark
+    roof on the Rembrandtplein corner block (0132871b), roof wedge above a
+    Nassaukade crown by the Bellamyplein (ba8499fa): lane
+    `lane/feedback-models-20261023` (opus), one commit each, before/after.
+  - Centraal from the IJ side needs real work (091d8bb3): deferred, a bespoke
+    `centraal-station` session (north facade, bus platform roof); Living by
+    Numbers (1c5d9c04, sculpture POI 264245976): deferred to a memorial-kit
+    turn. Both carry the deferral in Firestore.
+  - z-fighting on statue bases (user, Anne Frank Merwedeplein): the audit's
+    0.25 m² warn never fires on a 12 m² statue, so a 0.2 m² tie that is the
+    whole plinth top passed. 2026-10-23: the warn now scales (0.5 % of the
+    visible surface, floor 0.05 m²). What shows on that model is the near
+    band (the bronze plate's top 5 cm over the red cap, 0.21 m²), which the
+    audit calls safe from the driving camera (calibrated 2026-10-13: ≥3 cm
+    never bleeds at 900 m) but the card/gallery camera draws differently:
+    measure with `zfight-validate.ts --ids=anne-frank-merwedeplein`, then
+    either lift the near-band gate for small models or fix the gallery
+    camera's near/far. A resting part's opposite-facing underside cannot show
+    (its own top covers it), so that class is not gated.
 - **identity**: the 289 dominant rows are unnamed; `identify-dominant.ts`
   not written.
 - **bagtiles-default** (S1) → **recipe-tiles-default** (S2, needs the 5 cm

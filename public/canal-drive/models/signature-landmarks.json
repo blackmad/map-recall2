@@ -45839,7 +45839,8 @@
         "buildVersion": 2,
         "bytes": 44644,
         "triangles": 1747
-      }
+      },
+      "category": "ordinary"
     },
     "hoofdbureau-elandsgracht": {
       "id": "hoofdbureau-elandsgracht",
@@ -49793,14 +49794,14 @@
         "depthMetres": 1.2817127704620361,
         "depthCoverage": 0.9155091217585973
       },
-      "triangles": 7034,
-      "bytes": 53248,
+      "triangles": 7038,
+      "bytes": 53296,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "5e2a5a2077afe355",
+        "sourceHash": "e8078b785e2c999d",
         "buildVersion": 2,
-        "bytes": 35116,
-        "triangles": 1606
+        "bytes": 35444,
+        "triangles": 1628
       }
     },
     "walraven-van-hall": {

@@ -73,11 +73,14 @@ export interface GeometryAuditThresholds {
   /** Total coplanar overlap area (m^2) that warns / fails. */
   zWarnArea: number;
   zFailArea: number;
+  /** Small models warn earlier: the warn area is the smaller of `zWarnArea` and this fraction of the visible surface (never under
+   *  `zMinPatch`). A 0.23 m2 plate fighting the top of a 12 m2 statue plinth is the whole picture; on a 10,000 m2 block it is a sliver. */
+  zWarnFraction: number;
 }
 
 export const GEOMETRY_THRESHOLDS: GeometryAuditThresholds = {
   weld: 0.001, touchTol: 0.03, floatTol: 0.03, joinTol: 0.03, floatFail: 0.1, overhangWarn: 0.12, overhangFail: 0.35, balconyMax: 2, buriedWarn: 0.3,
-  maxOpeningDiag: 14, glazedSkinArea: 24, zPlaneTol: 0.02, zAbut: 0.005, zNearTol: 0.08, zAngleTol: 2.5, zMinPatch: 0.05, zNewExportFail: 0.5, zTightTol: 0.03, zWarnArea: 0.25, zFailArea: 2,
+  maxOpeningDiag: 14, glazedSkinArea: 24, zPlaneTol: 0.02, zAbut: 0.005, zNearTol: 0.08, zAngleTol: 2.5, zMinPatch: 0.05, zNewExportFail: 0.5, zTightTol: 0.03, zWarnArea: 0.25, zFailArea: 2, zWarnFraction: 0.005,
 };
 
 /** Materials that make up openings and their trim. Kits glaze in `glass`/`dark`, frame in `frame`/`white`. */
@@ -1107,7 +1110,9 @@ export function auditZFight(s: MaterialSoup, th: GeometryAuditThresholds = GEOME
       if (b <= a || stamp[b] === a) continue;
       stamp[b] = a;
       const B = tris[b];
-      if (A.n[0] * B.n[0] + A.n[1] * B.n[1] + A.n[2] * B.n[2] < cosTol) continue;
+      // Same-facing only. A part resting flat on another (a plate on a plinth: opposite normals on one plane) cannot show its
+      // tie: the resting part's own top covers it from above and the host covers it from below (checked 2026-10-23, Anne
+      // Frank's foot plate); what shows on such a model is the near band, the plate's top 5 cm over the plinth top.
       if (B.min[0] > A.max[0] + th.zNearTol || A.min[0] > B.max[0] + th.zNearTol || B.min[1] > A.max[1] + th.zNearTol || A.min[1] > B.max[1] + th.zNearTol || B.min[2] > A.max[2] + th.zNearTol || A.min[2] > B.max[2] + th.zNearTol) continue;
       // The larger triangle carries the plane; the smaller one's corners are measured against it. A narrow strip's own normal
       // is noisy in a quantised GLB (3 mm of position error over a 20 cm strip tilts it 1.5 degrees), and extrapolating that
@@ -1464,7 +1469,10 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     findings.push({kind: 'opening-outside', severity: 'warn', message: `${withinWalls.outside.length} opening parts a sliver (<= ${withinWalls.options.failM2} m2) past their wall (${withinWalls.outsideM2} m2 in all)`});
   }
   const real = zfight.patches.filter(p => !p.near && !p.sameMaterial), near = zfight.patches.filter(p => p.near);
-  if (zfight.area >= th.zWarnArea) {
+  const slots = materialSlotCoverage(s);
+  // Small models warn earlier (zWarnFraction of the visible surface): a 0.2 m2 fight is the whole top of a statue plinth.
+  const zWarn = Math.max(th.zMinPatch, Math.min(th.zWarnArea, th.zWarnFraction * slots.area));
+  if (zfight.area >= zWarn) {
     const top = real[0];
     findings.push({kind: 'zfight', severity: zfight.area >= th.zFailArea ? 'fail' : 'warn', message: `${zfight.area.toFixed(1)} m2 coplanar overlap in ${real.length} patches (${zfight.pairs} triangle pairs); worst ${top.area.toFixed(1)} m2 ${top.orientation} ${top.materials.join('/')} at (${top.centre.map(v => v.toFixed(1)).join(', ')})`});
   }
@@ -1477,7 +1485,6 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     const v = rhythmVerdict(f);
     findings.push({kind: 'window-rhythm', severity: v.fail ? 'fail' : 'warn', message: `${f.name}: ${f.openings} openings in ${f.rows.length} rows; ${odd} off-size/off-level (${Math.round(v.oddFraction * 100)}%), ${miss} predicted missing, ${f.misaligned} off-axis${f.fromSpec ? ` (photo-spec facade; fails above ${RHYTHM_FAIL.oddFraction * 100}% off-size or any missing)` : ' (inferred facade)'}`});
   }
-  const slots = materialSlotCoverage(s);
   if (slots.ratio < 1) {
     findings.push({kind: 'material-slot-coverage', severity: 'warn', message: `${(slots.ratio * 100).toFixed(1)}% of ${slots.area} m2 visible surface carries materialSlot+tint; untagged: ${slots.untagged.slice(0, 4).map(u => `${u.material} ${u.area} m2`).join(', ')}`});
   }
