@@ -60,15 +60,16 @@ export interface ModelElevation {
 }
 
 /** The model's elevation of one panel on the box (panel u, height above ground), classed like the photo. */
-export function modelElevation(soup: MaterialSoup, panel: PanelFrame, box: FacadeBox, lines: number[], cell = 0.1, measuredTints?: Set<string>): ModelElevation {
+export function modelElevation(soup: MaterialSoup, panel: PanelFrame, box: FacadeBox, lines: number[], cell = 0.1, measuredTints?: Set<string>, behindM = 1.5): ModelElevation {
   const bearing = (Math.atan2(panel.n[0], -panel.n[2]) * 180 / Math.PI + 360) % 360;
   const nx = Math.sin(bearing * Math.PI / 180), nz = -Math.cos(bearing * Math.PI / 180), tx = nz, tz = -nx;
   const tOf = (u: number) => (panel.o[0] + panel.r[0] * u) * tx + (panel.o[2] + panel.r[2] * u) * tz;
   const t0 = Math.min(tOf(box.u0), tOf(box.u1)), t1 = Math.max(tOf(box.u0), tOf(box.u1));
   // the band is pinned to the panel's own plane (+1 m for canopies, balconies, column bays standing proud), not to the
-  // front-most geometry in the span: Waagdragerhof's warehouse front (walls[2]) sits 10+ m behind a nearer volume
+  // front-most geometry in the span: Waagdragerhof's warehouse front (walls[2]) sits 10+ m behind a nearer volume;
+  // 1.5 m behind the plane, or `behindM` for a group with deeper loggias (their glazing is the facade the photo shows)
   const frontDepth = panel.o[0] * nx + panel.o[2] * nz + 1;
-  const el = renderElevation(soup, {name: 'panel', bearing, span: [t0 - 0.05, t1 + 0.05], depthBand: 2.5, frontDepth}, cell);
+  const el = renderElevation(soup, {name: 'panel', bearing, span: [t0 - 0.05, t1 + 0.05], depthBand: 1 + Math.max(1.5, behindM), frontDepth}, cell);
   const cols = Math.max(1, Math.floor((box.u1 - box.u0) / cell)), rows = Math.max(1, Math.floor((box.v1 - box.v0) / cell)), N = cols * rows;
   const matAt = new Int32Array(N).fill(-1), shade = new Float32Array(N);
   for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {

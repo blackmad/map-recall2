@@ -18,7 +18,7 @@ import {buildHost, insidePanel, pointInRing, type Panel} from '../blockBuilding/
 import {MeshBuilder} from '../blockBuilding/mesh.ts';
 import type {P3, SurfaceSet} from '../blockBuilding/types.ts';
 import type {BlockSpec, System} from '../blockBuilding/spec.ts';
-import {ARCADE_PROPORTIONS, DEFAULT_PITCH_M, largeSystem, SOUTERRAIN, type ArcadeFit, type LargeGround, type LargeSystemName} from '../blockBuilding/systems.ts';
+import {ARCADE_PROPORTIONS, DEFAULT_PITCH_M, largeSystem, LOGGIA, PLINTH, SOUTERRAIN, type ArcadeFit, type LargeGround, type LargeSystemName} from '../blockBuilding/systems.ts';
 import {panelRuns, runBayAxes} from '../blockBuilding/curve.ts';
 import type {Lantern} from '../blockBuilding/components.ts';
 import {MESH_SCREEN} from '../blockBuilding/components.ts';
@@ -77,6 +77,8 @@ export interface LargeGroupFit {
   columns?: {bays: number[]; share: number; from: number; slabs: boolean; glass?: string};
   /** ground `arcade`: the fitted opening measures and whether the lintel band and pier facings are drawn */
   arcade?: ArcadeFit & {facing: boolean};
+  /** loggias: the deepest loggia's back plane behind the wall face (m), so the likeness elevation sees its glazing */
+  loggiaDepthM?: number;
 }
 export interface LargeBuildingRecipe {
   id: string; pandId: string; anchorRD: [number, number]; set: SurfaceSet; spec: BlockSpec;
@@ -183,8 +185,9 @@ export function panelEaves(p: Panel): number {
 }
 
 /** Storey lines: N storeys under `eaves` (ground storey `gw` units tall), then the same unit up to `maxTop`. */
-export function storeyLines(eaves: number, flatTop: boolean, storeys: number | undefined, civicM: number, gw: number, maxTop: number, parapetM?: number) {
+export function storeyLines(eaves: number, flatTop: boolean, storeys: number | undefined, civicM: number, gw: number, maxTop: number, parapetM?: number, weights?: Record<number, number>) {
   const parapet = parapetM ?? (flatTop ? 0.5 : 0.15), usable = Math.max(2.5, eaves - parapet);
+  if (weights && Object.keys(weights).length) return weightedLines(usable, storeys, civicM, gw, maxTop, weights);
   const n = storeys ?? Math.max(1, Math.round(usable / civicM - (gw - 1)));
   const unit = usable / (n - 1 + gw), ground = unit * gw;
   const lines = [0, ground];
@@ -193,6 +196,23 @@ export function storeyLines(eaves: number, flatTop: boolean, storeys: number | u
   while (lines[lines.length - 1] + unit < maxTop - 1.0) lines.push(lines[lines.length - 1] + unit);
   lines.push(Math.max(maxTop, lines[lines.length - 1] + 0.01));
   return {lines: lines.map(r3), storeys: n, heights: [ground, ...Array(n - 1).fill(unit)].map(r3)};
+}
+
+/**
+ * Storey lines with some upper storeys `weights[k]` units tall (a glazed plinth storey over the ground, intent
+ * `plinth.factor`): N storeys under the usable height, the ground `gw` units, storey k `weights[k]` (default 1).
+ */
+function weightedLines(usable: number, storeys: number | undefined, civicM: number, gw: number, maxTop: number, weights: Record<number, number>) {
+  const extra = Object.entries(weights).reduce((a, [, v]) => a + (v - 1), 0);
+  const n = storeys ?? Math.max(1, Math.round(usable / civicM - (gw - 1) - extra));
+  const wt = (k: number) => (k === 0 ? gw : weights[k] ?? 1);
+  let sum = 0;
+  for (let k = 0; k < n; k++) sum += wt(k);
+  const unit = usable / sum, heights = Array.from({length: n}, (_, k) => unit * wt(k)), lines = [0];
+  for (const h of heights) lines.push(lines[lines.length - 1] + h);
+  while (lines[lines.length - 1] + unit < maxTop - 1.0) lines.push(lines[lines.length - 1] + unit);
+  lines.push(Math.max(maxTop, lines[lines.length - 1] + 0.01));
+  return {lines: lines.map(r3), storeys: n, heights: heights.map(r3)};
 }
 
 /** Another group's storey lines, re-closed at this group's top (more storeys at the same height where it is taller). */
@@ -346,6 +366,9 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     const plinthSlot = w.palette?.plinth ? `plinth@g${gi}` : undefined;
     if (plinthSlot) { palette[plinthSlot] = swatch(w.palette!.plinth!); if (measuredGroups.has(gi)) measuredSlots.push(plinthSlot); }
     const spandrelSlot = w.spandrels ? `spandrel@g${gi}` : undefined;
+    // A loggia balustrade in its own colour (loggias.colour): a rail slot (joinery) of its own; otherwise the frame slot.
+    const railSlot = w.loggias?.colour ? `rail@g${gi}` : undefined;
+    if (railSlot) palette[railSlot] = swatch(w.loggias!.colour!);
     const screenSlot = w.meshScreen ? `screen@g${gi}` : undefined;
     if (screenSlot) { palette[screenSlot] = swatch(w.meshScreen!.colour); if (measuredGroups.has(gi)) measuredSlots.push(screenSlot); }
     if (spandrelSlot) { palette[spandrelSlot] = w.spandrels!.colour ? swatch(w.spandrels!.colour) : palette[slots.frame]; if (measuredGroups.has(gi) && w.spandrels!.colour) measuredSlots.push(spandrelSlot); }
@@ -360,15 +383,18 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     const main = [...own].sort((a, b) => Number(b.vMin < 0.6) - Number(a.vMin < 0.6) || (b.uMax - b.uMin) - (a.uMax - a.uMin) || a.index - b.index)[0];
     if (!main) warnings.push(`walls[${gi}]: no panel takes this group (its surfaces are minorities of other panels)`);
     const widthM = main ? main.uMax - main.uMin : 0, eaves = main ? panelEaves(main) : 0, flatTop = main ? main.vMax - eaves < 0.5 : true;
-    const gw = w.groundFactor !== undefined ? w.groundFactor : w.souterrain ? SOUTERRAIN.factor : ground === 'arcade' ? w.arcade?.storeyFactor ?? 1.6 : ground === 'plinth-shopfronts' || ground === 'glazed' ? 1.25 : year !== null && year < 1945 ? 1.15 : 1;
+    const plinthFactor = w.plinth?.factor, plinthStoreys = w.plinth ? w.plinth.storeys ?? [0] : [];
+    const gw = plinthFactor !== undefined && plinthStoreys.includes(0) ? plinthFactor : w.groundFactor !== undefined ? w.groundFactor : w.souterrain ? SOUTERRAIN.factor : ground === 'arcade' ? w.arcade?.storeyFactor ?? 1.6 : ground === 'plinth-shopfronts' || ground === 'glazed' ? 1.25 : year !== null && year < 1945 ? 1.15 : 1;
     const maxTop = Math.max(eaves, ...own.map(p => p.vMax));
     // alignWith: share another group's storey lines (wings whose windows line up with the centre block), extended to this group's top.
     const ref = w.alignWith !== undefined ? aligned.get(w.alignWith) : undefined;
     if (w.alignWith !== undefined && !ref) throw Error(`${intent.id}: walls[${gi}].alignWith ${w.alignWith} must name an earlier group without alignWith`);
     // A curtain wall with spandrels runs to the roof edge: its top storey's head spandrel covers the slab and parapet (no parapet allowance).
-    const st = ref ? alignLines(ref, maxTop) : storeyLines(eaves, flatTop, w.storeys, civicM, gw, maxTop, w.spandrels ? 0 : undefined);
+    const st = ref ? alignLines(ref, maxTop) : storeyLines(eaves, flatTop, w.storeys, civicM, gw, maxTop, w.spandrels ? 0 : undefined,
+      plinthFactor !== undefined ? Object.fromEntries(plinthStoreys.filter(k => k > 0).map(k => [k, plinthFactor])) : undefined);
     if (w.alignWith === undefined) aligned.set(gi, st);
-    const uppers = st.heights.slice(1);
+    // the upper storeys (window sills in metres): past any taller plinth storey
+    const uppers = st.heights.slice(1).filter((_, k) => plinthFactor === undefined || !plinthStoreys.includes(k + 1));
     if (main && uppers.some(h => h < 2.3 || h > 6.2)) warnings.push(`walls[${gi}]: upper storeys ${uppers[0]} m (storeys ${st.storeys} under ${eaves.toFixed(2)} m eaves)`);
     const bays = w.baysPerStorey ?? Math.max(1, Math.round(widthM / DEFAULT_PITCH_M[w.system]));
     const pitchM = widthM > 0 ? widthM / bays : DEFAULT_PITCH_M[w.system];
@@ -397,7 +423,9 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.windowShape ? {shape: {w: w.windowShape.w, h: w.windowShape.h, sillM: r3(w.windowShape.sill * (uppers[0] ?? st.heights[0]))}} : {}),
       ...(w.windowPattern ? {windowPattern: [...w.windowPattern]} : {}),
       ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {}),
-      ...(w.glazing === 'panes' ? {paneSplit: true} : {}), ...(w.courses ? {courses: [...w.courses]} : {}), ...(w.souterrain ? {souterrain: w.souterrain} : {}), ...(w.openBays ? {openBays: w.openBays, bays} : {})});
+      ...(w.glazing === 'panes' ? {paneSplit: true} : {}), ...(w.courses ? {courses: [...w.courses]} : {}), ...(w.souterrain ? {souterrain: w.souterrain} : {}), ...(w.openBays ? {openBays: w.openBays, bays} : {}),
+      ...(w.plinth ? {plinth: {storeys: [...plinthStoreys], ...(w.plinth.bays ? {bays: [...w.plinth.bays]} : {}), lights: w.plinth.lights, sill: w.plinth.sill ?? PLINTH.sill, h: w.plinth.h ?? PLINTH.h, pier: w.plinth.pier ?? PLINTH.pier, transom: w.plinth.transom ?? PLINTH.transom}, bays} : {}),
+      ...(w.loggias ? {loggias: {storeys: [...w.loggias.storeys], ...(w.loggias.bays ? {bays: [...w.loggias.bays]} : {}), w: w.loggias.w ?? LOGGIA.w, h: w.loggias.h ?? LOGGIA.h, sill: w.loggias.sill ?? LOGGIA.sill, deep: w.loggias.deep ?? LOGGIA.deep, rail: w.loggias.rail ?? LOGGIA.rail, lights: w.loggias.lights ?? LOGGIA.lights, railSlot: railSlot ?? slots.frame}, bays} : {})});
     // Curved front: one bay rhythm along each run of linked facets (two or more panels of this group), at the group's pitch.
     let curve: LargeGroupFit['curve'];
     if (w.curve) {
@@ -418,7 +446,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.columns ? {columns: {bays: [...w.columns.bays], share: w.columns.share ?? 0.9, from: w.columns.from ?? 1, slabs: !!w.columns.slabs, ...(colGlass ? {glass: colGlass} : {})}} : {}),
       ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}),
       ...(w.wallSplit && main && splitSlot ? {split: {panel: main.index, uM: splitAtBay(main.uMin, main.uMax, pitchM, w.wallSplit.at), slot: splitSlot}} : {}),
-      ...(arcade ? {arcade: {...arcade, facing: w.arcade?.facing !== false}} : {}), slots});
+      ...(arcade ? {arcade: {...arcade, facing: w.arcade?.facing !== false}} : {}),
+      ...(w.loggias ? {loggiaDepthM: r3(Math.max(...w.loggias.storeys.map(k => (st.lines[k + 1] ?? st.lines[k]) - st.lines[k])) * (w.loggias.deep ?? LOGGIA.deep))} : {}), slots});
   });
   // Unlisted walls: one system at the civic storey height and the system's default pitch.
   const otherName = intent.otherWalls ?? 'blank', otherTop = Math.max(0, ...panels.map(p => p.vMax));

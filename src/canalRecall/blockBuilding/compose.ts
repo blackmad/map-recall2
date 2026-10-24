@@ -408,7 +408,7 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   const part = c.part();
   if (corners) {
     c.stats.recessed++;
-    const R = c.recess, inner = corners.map(q => add(q, scale(n, -R))), [bl, br, tr, tl] = corners, [ibl, ibr, itr, itl] = inner;
+    const R = w.loggia?.depth ?? c.recess, inner = corners.map(q => add(q, scale(n, -R))), [bl, br, tr, tl] = corners, [ibl, ibr, itr, itl] = inner;
     c.mesh.quad(c.wallSlot, bl, br, ibr, ibl, part, UP);
     c.mesh.quad(c.wallSlot, tl, tr, itr, itl, part, DOWN);
     c.mesh.quad(c.wallSlot, bl, tl, itl, ibl, part, c.p.r);
@@ -460,7 +460,29 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   }
   if (w.headSlot) { const sp = c.part(); c.box(w.headSlot, u0 - 0.06, u1 + 0.06, v1, v1 + 0.12, 0, 0.08, sp); }
   if (w.tilt) drawTilt(c, u0, u1, v0, v1, w.tilt);
+  if (w.loggia?.rail && corners) drawLoggiaRail(c, Q, u0, u1, v0, v1, -back, w.loggia.rail, w.frame ?? 'frame');
   return back;
+}
+
+/** Loggia balustrade: bar pitch (m) for `bars` rails, bar width, sheet thickness and the top rail height (m). */
+export const LOGGIA_RAIL = { barPitchM: 1.0, barW: 0.04, sheetT: 0.02, topH: 0.05 };
+
+/**
+ * A loggia's balustrade (`WinParams.loggia.rail`) across the opening, `inset` behind the wall face of a recess `depth`
+ * deep (`Q` maps onto the back plane, `d` m out): a glass or solid sheet under a top rail, or a top rail on bars, all
+ * closed solids standing on the loggia floor between the side returns (no open edge).
+ */
+function drawLoggiaRail(c: Ctx, Q: (u: number, v: number, d: number) => V3, u0: number, u1: number, v0: number, v1: number,
+  depth: number, rail: NonNullable<NonNullable<WinParams['loggia']>['rail']>, frameSlot: string) {
+  const d = Math.max(0.08, depth - (rail.inset ?? 0.12)), top = Math.min(v1 - 0.1, v0 + rail.h), part = c.part(), L = LOGGIA_RAIL;
+  if (top - v0 < 0.3) return;
+  const box = (slot: string, a: number, b: number, lo: number, hi: number, d0: number, d1: number) =>
+    solid(c, slot, (i, j, k) => Q(i ? b : a, j ? hi : lo, k ? d1 : d0), part);
+  if (rail.kind === 'bars') {
+    const n = Math.max(2, Math.round((u1 - u0) / L.barPitchM));
+    for (let k = 1; k < n; k++) { const u = u0 + (u1 - u0) * k / n; box(rail.slot, u - L.barW / 2, u + L.barW / 2, v0, top - L.topH, d - L.barW, d); }
+  } else box(rail.slot, u0, u1, v0, top - L.topH, d - L.sheetT, d);
+  box(rail.kind === 'bars' ? rail.slot : frameSlot, u0, u1, top - L.topH, top, d - 0.05, d + 0.01);
 }
 
 /** Arched opening (`WinParams.arch`): arch.ts cuts it (recess mode) or lays it proud; sill as for a rectangular one. */

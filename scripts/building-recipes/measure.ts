@@ -37,7 +37,7 @@ import type {IntentSource, LargeBuildingIntent, LargeWallIntent} from '../../src
 import {requireSourceData} from './sourceData.ts';
 import {compileBuilding} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import {LARGE_BUDGET_TRIANGLES} from '../../src/canalRecall/buildingRecipe/largeGates.ts';
-import {cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, majoritySystem, photoBays} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
+import {cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
 import {draftBudgetCap, inheritedWall, isDraftIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
 
 const HOUSES = 'scripts/building-recipes/houses';
@@ -111,6 +111,13 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: Propose
     patch.windowShape = {w: clamp(pb.window.w, 0.08, 0.98), h: +h.toFixed(3), sill: +sill.toFixed(3)};
   }
   if (opts.bays && pb.bays && !maskDistrusted && system !== 'curtain-wall' && !hand.has('baysPerStorey') && w.alignWith === undefined) patch.baysPerStorey = clamp(pb.bays, 1, 80);
+  // a glazed ground band far above the upper storeys: a plinth on storey 0 (glazedPlinth); never over a hand plinth,
+  // a ground system of its own or a wall without a face for it
+  const groundFree = (w.ground ?? 'system') === 'system' && !w.hoist && !w.gateways && !w.hallDoors && !w.souterrain && !w.loggias?.storeys.includes(0);
+  if (w.plinth === undefined && !hand.has('plinth') && groundFree && !['curtain-wall', 'glazed-hall', 'glazed-columns'].includes(system) && !w.screen) {
+    const gp = glazedPlinth({ground: m.ground, storeyGlazing: m.storeyGlazing, glass: m.glass, wall: m.wall, usable: Math.min(m.usable, L.evidence.usable), foliage: m.foliage, washedOut: m.washedOut});
+    if (gp.plinth) { patch.plinth = gp.plinth; notes.push(`glazed plinth: ground band ${Math.round((m.ground ?? 0) * 100)} % over upper storeys ${(m.storeyGlazing ?? []).slice(1).filter(v => v !== null).map(v => Math.round(v! * 100)).join('/')} %`); }
+  }
   return {patch, notes};
 }
 

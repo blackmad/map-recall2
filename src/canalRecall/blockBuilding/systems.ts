@@ -98,7 +98,31 @@ export interface SystemFit {
    * `h` and `sill` stay the group's (`windowShape`).
    */
   windowPattern?: number[];
+  /** recessed balconies on some storeys (intent `loggias`; fitLarge fills the defaults, LOGGIA) */
+  loggias?: LoggiaFit;
+  /** a glazed plinth with its own mullion pitch on the lowest storeys (intent `plinth`; fitLarge fills the defaults, PLINTH) */
+  plinth?: PlinthFit;
 }
+
+/**
+ * Loggias (recessed balconies) in a punched grid: on each listed storey (0 = ground) one opening per bay (or the listed
+ * bays) `w` of the bay wide and `h` of the storey tall from `sill` (fractions), cut `deep` x the storey height into the
+ * wall, `lights` glazed leaves at the back and a `rail` balustrade across the front in `railSlot` (none on the ground).
+ */
+export interface LoggiaFit { storeys: number[]; bays?: number[]; w: number; h: number; sill: number; deep: number; rail: 'glass' | 'bars' | 'solid' | 'none'; lights: number; railSlot: string }
+/**
+ * OBA IJburg (2019 crops w03-221L, w04-41L): 4.4 m loggias on a 5.6 m bay (0.78), 0.72-0.8 of a 3 m storey from the slab,
+ * about 1.5 m deep (0.5 of the storey), two-leaf glazing at the back, pale glass balustrades about 1 m tall.
+ */
+export const LOGGIA = { w: 0.78, h: 0.8, sill: 0.03, deep: 0.5, rail: 'glass' as const, lights: 2, railM: 1.0 };
+/**
+ * A glazed plinth: on each listed storey (0 = ground) one glazed opening per bay (or the listed bays) leaving `pier` of
+ * the bay as wall between bays, from `sill` to `sill + h` of the storey, split into `lights` equal lights (its own
+ * mullion pitch, independent of the upper grid's windows) with an optional transom at `transom` of the glazing height.
+ */
+export interface PlinthFit { storeys: number[]; bays?: number[]; lights: number; sill: number; h: number; pier: number; transom: number }
+/** Plinth defaults: a low kerb, glazing to 0.88 of the storey, 8 % piers (OBA IJburg's library storey, Reigersbos shops). */
+export const PLINTH = { sill: 0.04, h: 0.84, pier: 0.08, transom: 0 };
 
 /**
  * A souterrain (raised basement) under the piano nobile: the storey is `factor` of an upper storey, and each bay has a pair of
@@ -348,6 +372,31 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
     const wrap = (r: Row): Row => (r.kind === 'punched' && r.win ? { kind: 'wall', cycle: f.windowPattern!.map(w => ({ ...r, win: { ...r.win!, w } })) } : r);
     typical = wrap(typical); ground = wrap(ground);
     for (const k of Object.keys(rowOverrides)) rowOverrides[k] = wrap(rowOverrides[k]);
+  }
+  // Glazed plinth and loggias: the last step, so no later pass (windowPattern, paneSplit) reshapes them. In listed bays only,
+  // the other bays keep the storey's row (one bay of a per-bay cycle each).
+  const storeyH = (st: number) => (st + 1 < f.lines.length ? f.lines[st + 1] - f.lines[st] : 0);
+  const inBays = (under: Row, row: Row, bays?: number[]): Row => {
+    if (!bays) return row;
+    const every = Math.max(1, f.bays ?? 1, ...bays.map(b => b + 1), under.cycle?.length ?? 1);
+    return { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (bays.includes(k) ? row : under.cycle ? under.cycle[k % under.cycle.length] : under)) };
+  };
+  const put = (st: number, row: (under: Row) => Row) => { if (st === 0) ground = row(ground); else rowOverrides[String(st)] = row(rowOverrides[String(st)] ?? typical); };
+  if (f.plinth) for (const st of f.plinth.storeys) {
+    const P = f.plinth, sh = storeyH(st);
+    if (sh <= 0) continue;
+    const lights = Math.max(1, P.lights);
+    const win: WinParams = { w: +(1 - P.pier).toFixed(3), h: P.h, sill: +(P.sill * sh).toFixed(3), ...(lights > 1 ? { mullAt: Array.from({ length: lights - 1 }, (_, k) => +((k + 1) / lights).toFixed(4)) } : {}),
+      ...(P.transom > 0 ? { rowsAt: [P.transom] } : {}), frame: s.frame, glass: s.glass, sillSlot: null, frameW: f.frames === false ? 0 : 0.06, ...(f.deepBars ? { barD: 0.035 } : {}) };
+    put(st, under => inBays(under, { kind: 'punched', win }, P.bays));
+  }
+  if (f.loggias) for (const st of f.loggias.storeys) {
+    const L = f.loggias, sh = storeyH(st);
+    if (sh <= 0) continue;
+    const rail = L.rail !== 'none' && st > 0 ? { rail: { kind: L.rail, h: LOGGIA.railM, slot: L.railSlot } } : {};
+    const win: WinParams = { w: L.w, h: L.h, sill: +(L.sill * sh).toFixed(3), mull: Math.max(1, L.lights) - 1, frame: s.frame, glass: s.glass, sillSlot: null, frameW: f.frames === false ? 0 : 0.06,
+      ...(f.deepBars ? { barD: 0.035 } : {}), loggia: { depth: +(L.deep * sh).toFixed(3), ...rail } };
+    put(st, under => inBays(under, { kind: 'punched', win }, L.bays));
   }
   return { pitch: f.pitchM, lines: f.lines, ground, typical, bands, piers, ...(Object.keys(rowOverrides).length ? { rowOverrides } : {}) };
 }

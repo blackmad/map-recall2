@@ -85,7 +85,7 @@
    "wallSurfaces": [
     2
    ],
-   "system": "ribbon-windows",
+   "system": "brick-bay-grid",
    "palette": {
     "brick": "#725c50",
     "glass": "#201a1b"
@@ -95,7 +95,81 @@
     "h": 0.603,
     "sill": 0.2
    },
-   "baysPerStorey": 10
+   "baysPerStorey": 10,
+   "groundFactor": 1.2,
+   "openBays": [
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "bays": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ]
+    }
+   ],
+   "plinth": {
+    "storeys": [
+     1
+    ],
+    "bays": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "lights": 3,
+    "sill": 0.08,
+    "h": 0.78,
+    "pier": 0.15,
+    "factor": 1.65
+   },
+   "loggias": {
+    "storeys": [
+     0,
+     2,
+     3,
+     4
+    ],
+    "bays": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "w": 0.78,
+    "h": 0.78,
+    "sill": 0.02,
+    "deep": 0.5,
+    "rail": "glass",
+    "lights": 2
+   },
+   "hand": [
+    "storeys",
+    "system",
+    "groundFactor",
+    "openBays",
+    "plinth",
+    "loggias"
+   ],
+   "storeys": 5
   },
   {
    "wallSurfaces": [
@@ -112,7 +186,81 @@
     "h": 0.8,
     "sill": 0.18
    },
-   "baysPerStorey": 10
+   "baysPerStorey": 10,
+   "groundFactor": 1.2,
+   "openBays": [
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "bays": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ]
+    }
+   ],
+   "plinth": {
+    "storeys": [
+     1
+    ],
+    "bays": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "lights": 3,
+    "sill": 0.08,
+    "h": 0.78,
+    "pier": 0.15,
+    "factor": 1.65
+   },
+   "loggias": {
+    "storeys": [
+     0,
+     2,
+     3,
+     4
+    ],
+    "bays": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "w": 0.78,
+    "h": 0.78,
+    "sill": 0.02,
+    "deep": 0.5,
+    "rail": "glass",
+    "lights": 2
+   },
+   "hand": [
+    "storeys",
+    "system",
+    "groundFactor",
+    "openBays",
+    "plinth",
+    "loggias"
+   ],
+   "storeys": 5
   },
   {
    "wallSurfaces": [
@@ -153,7 +301,8 @@
   "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
   "Panels left blank by the draft: 12 (12.2 m, over 8 groups); 62 (23.4 m, over 8 groups); 6 (4.9 m, unnamed panel under 8 m); 45 (4.4 m, unnamed panel under 8 m); 35 (4.4 m, unnamed panel under 8 m); 13 (22.7 m, under 3 m tall); 28 (20 m, under 3 m tall); 9 (3.1 m, unnamed panel under 8 m); 38 (2.8 m, unnamed panel under 8 m); 30 (38.4 m, under 3 m tall); 74 (23.4 m, under 3 m tall); 5 (16.6 m, under 3 m tall); 27 (6.6 m, under 3 m tall); 61 (6.8 m, under 3 m tall); 51 (7.4 m, under 3 m tall); 2 (3.7 m, under 3 m tall); 39 (2.8 m, under 3 m tall); 14 (3.1 m, under 3 m tall); 31 (2.8 m, under 3 m tall); 53 (2.1 m, under 3 m tall).",
   "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] system brick-bay-grid -> ribbon-windows (measured ribbon); walls[3] bays 10 from the likeness grid (padded measurement 53); unphotographed walls take #746053 (brick), the area-weighted median of groups 0, 2, 3.",
-  "Triangle budget: 12412 > 12000; unphotographed groups 1 drawn blank (draftBudgetCap)."
+  "Triangle budget: 12412 > 12000; unphotographed groups 1 drawn blank (draftBudgetCap).",
+  "Hand 2026-10-24 (kit lane loggias/plinth, crops w03-221L and w04-41L): walls[2] and [3] are the same front: eight 5.6 m bays between blank brick end bays; three storeys of loggias about 1.5 m deep with pale glass balustrades (loggias storeys 2-4), a 5 m library storey glazed in three lights per bay (plinth storey 1, factor 1.65), recessed shopfronts and doors in the ground (loggias storey 0, no rail). walls[2] was measured ribbon-windows from the dark loggia shadows; drawn brick-bay-grid."
  ],
  "measured": {
   "date": "2026-10-24",

@@ -13,6 +13,9 @@
  *   the panel's own box), not from the padded measurement, when that grid found a rhythm; the two disagree on mullion
  *   pitch vs bay pitch (OBA IJburg walls[3] 53 vs 10, Metis Montessori 5 vs 29).
  * - `majoritySystem`: the system a rejected curtain group falls back to.
+ * - `glazedPlinth`: a ground band glazed far above the upper storeys (OBA Buitenveldert walls[4], 100 % vs 0-44 %)
+ *   proposes a `plinth` on storey 0; loggias are never proposed (their shadowed returns read as glazing or as wall
+ *   depending on the light, so deep loggias stay hand intents).
  */
 import {LIKENESS} from './likeness.ts';
 import {rgbToLab} from './measureFacade.ts';
@@ -74,4 +77,39 @@ export function majoritySystem(rows: readonly {system: LargeSystemName; areaM2: 
   for (const r of rows) { const e = by.get(r.system) ?? {a: 0, max: 0}; e.a += r.areaM2; e.max = Math.max(e.max, r.areaM2); by.set(r.system, e); }
   const best = [...by].sort((x, y) => y[1].a - x[1].a || y[1].max - x[1].max || Number(y[0] === 'brick-bay-grid') - Number(x[0] === 'brick-bay-grid'))[0];
   return best ? best[0] : fallback;
+}
+
+/** Glazed plinth evidence: the ground band's not-wall share at least this ... */
+export const PLINTH_MIN_GROUND = 0.7;
+/** ... and this far above the mean of the measured upper storeys. */
+export const PLINTH_MIN_LIFT = 0.3;
+export interface PlinthInputs {
+  /** measured not-wall share of the ground band (`measured.ground`) */
+  ground: number | null | undefined;
+  /** measured not-wall share per storey band (`measured.storeyGlazing`, ground first; nulls where no band was read) */
+  storeyGlazing: readonly (number | null)[] | null | undefined;
+  glass: string | null | undefined; wall: string;
+  usable: number; foliage: number; washedOut: number;
+}
+/**
+ * A glazed plinth proposal (`plinth: {lights}` on the ground) or why not. The ground band must be glazed
+ * (>= PLINTH_MIN_GROUND), clearly more than the upper storeys (>= PLINTH_MIN_LIFT over their mean; a group with no
+ * measured upper storey is a one-storey front and has nothing to stand out from), the crop clean by the likeness
+ * thresholds and the not-wall cells glass (`glassReadsAsGlass`): dark paint, cars and shade otherwise read as a
+ * glazed ground. Lights are a measurement the crop does not give reliably, so the proposal takes 2 per bay (the
+ * shopfront default); a hand intent refines them.
+ */
+export function glazedPlinth(m: PlinthInputs): {plinth: {lights: number; sill: number; h: number} | null; why: string[]} {
+  const why: string[] = [];
+  const uppers = (m.storeyGlazing ?? []).slice(1).filter((v): v is number => typeof v === 'number');
+  if (m.ground == null) why.push('no ground band measured');
+  else if (m.ground < PLINTH_MIN_GROUND) why.push(`ground band ${Math.round(m.ground * 100)} % < ${PLINTH_MIN_GROUND * 100} %`);
+  if (!uppers.length) why.push('no upper storey measured');
+  const mean = uppers.length ? uppers.reduce((a, b) => a + b, 0) / uppers.length : 0;
+  if (m.ground != null && uppers.length && m.ground - mean < PLINTH_MIN_LIFT) why.push(`ground band ${Math.round(m.ground * 100)} % not ${PLINTH_MIN_LIFT * 100} points over the upper storeys (${Math.round(mean * 100)} %)`);
+  if (m.usable < LIKENESS.minUsable) why.push(`usable ${Math.round(m.usable * 100)} % < ${LIKENESS.minUsable * 100} %`);
+  if (m.foliage > LIKENESS.maxFoliage) why.push(`foliage ${Math.round(m.foliage * 100)} % > ${LIKENESS.maxFoliage * 100} %`);
+  if (m.washedOut > LIKENESS.maxWashedOut) why.push(`washed out ${Math.round(m.washedOut * 100)} % > ${LIKENESS.maxWashedOut * 100} %`);
+  if (!glassReadsAsGlass(m.glass, m.wall)) why.push(`not-wall ${m.glass ?? 'none'} does not read as glass on ${m.wall}`);
+  return {plinth: why.length ? null : {lights: 2, sill: 0.04, h: 0.84}, why};
 }
