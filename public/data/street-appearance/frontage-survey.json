@@ -8,43 +8,43 @@
   "sources": [
     {
       "file": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz",
-      "sha256": "19eb2536da086b6bab90f86e806b88290a01f8c9a69cda5904085aac97887e3c"
+      "sha256": "d4daee40f2ee6c1ff52a62d85f17576c2ac82f1249f4fba3f399f3134a9ff726"
     },
     {
       "file": "public/data/extracts/amsterdam/building-facts/14/8413/5383.json.gz",
-      "sha256": "65376bd851b35bcc8885d46f9316ca9dfb78159cadf1d63a3c863f6ef83c6382"
+      "sha256": "4fb16410a08819e22785511c9efd25b191c4e4625f980238022905b333ffe30e"
     },
     {
       "file": "public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz",
-      "sha256": "2bf316480b3a71cfad0d813cba5f439a401f20e1badcb559b115f02af3b880d6"
+      "sha256": "8379f774cc7a3b207a401ee346dfae3934298de4ecbb184325757e0e74fc7087"
     },
     {
       "file": "public/data/extracts/amsterdam/building-facts/14/8413/5384.json.gz",
-      "sha256": "0624a9caef4e83b5996aceb58da91ee8025f60f17e9343daa67bbe3a774fe089"
+      "sha256": "1b454ae1f566de20cd2845cdfbc8fd1bb205ade2cb110935dadcb21a19d7f545"
     },
     {
       "file": "public/data/extracts/amsterdam/building-tiles/14/8414/5383.geojson.gz",
-      "sha256": "562529a581806d8938dc983670f8db6b0a510c05f22821a0cf7d08c2022b4337"
+      "sha256": "92d5578488c15c71d8da44051580afe687b02573a3c82a52f2dc837893165014"
     },
     {
       "file": "public/data/extracts/amsterdam/building-facts/14/8414/5383.json.gz",
-      "sha256": "0156e8b35e367ec7e20ee54ebd6ecad9af248b25468bc3c925fd3adc7b684037"
+      "sha256": "ac47c31882f637c5bdf10283db3846feab5eb31c6a122783f0d02a42a44932fa"
     },
     {
       "file": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
-      "sha256": "b0ca4d40d6c75a761f90f360f68ecce9852505e58b694b6105069e9920059cfa"
+      "sha256": "f08c2d74c46e14e7d14c2d0a0d17b5285ec15c1cfc17cf69e709cc6681e2a863"
     },
     {
       "file": "public/data/extracts/amsterdam/building-facts/14/8414/5384.json.gz",
-      "sha256": "3b7df2ccc54bfde567aef0cef9039d6612d8a4e1052e2022d7dfbca9c5a0a8ed"
+      "sha256": "1f582446e46dc59e30b2726fd11c026efc50e87baa7bf3524479e95b1730ca06"
     },
     {
       "file": "public/data/extracts/amsterdam/building-tiles/14/8415/5384.geojson.gz",
-      "sha256": "2588efa4197b33251158ba4ad652ea0191902e017d2a36849496bba19212c7fb"
+      "sha256": "bb776cc3c3a17148aaeabb46bee502a99550fd069fab23149a69b53573c1dce5"
     },
     {
       "file": "public/data/extracts/amsterdam/building-facts/14/8415/5384.json.gz",
-      "sha256": "1846624425891e9140cbdb85ee1041be8364670d06f314bd4e5c23ad536a06b3"
+      "sha256": "664f0f5a59570aac6201d9e983f2ca134ca61397df51d1776fc6cc044877d120"
     }
   ],
   "admissionInputs": [
@@ -54,7 +54,7 @@
     },
     {
       "file": "public/canal-drive/models/signature-landmarks.json",
-      "sha256": "b926ceca2dcaea897d3c8b948fe7d7b03ba2917413387c35e51dc046b8cef1e8"
+      "sha256": "4f47855c21a8393fab18211972163e8e0f8daa4a705bf30c1098108c41543f32"
     },
     {
       "file": "scripts/street-appearance/bake-frontages.ts",
@@ -66,19 +66,19 @@
     },
     {
       "file": "src/canalRecall/streetFacadeRendering.ts",
-      "sha256": "f8eaae312bced6420fc8e9bb4284ff16deb7e955c83e13bbef2691312d07a0e0"
+      "sha256": "94eb3e7bfa36a06781487f8377ddca58147deb2b5213011b56dd3e232289aa57"
     },
     {
       "file": "src/canalRecall/threeBuildingFeatures.ts",
-      "sha256": "bd2391fdf34be637b5a1d7af03bb38dfcc21427e0bd2fbe8471fa5bef28d0646"
+      "sha256": "90b9cd707ad276a5d187fdf9038df663a2c6d0c9a13453820d438902dcd08a2b"
     },
     {
       "file": "src/canalRecall/threeBuildingMesh.ts",
-      "sha256": "655c0f39daaaec94c814afebbc3c24462410919f8bec3333b34039addf90ba43"
+      "sha256": "fcefc320a46ad505233b915821e78f41e86b2321fbf9eb848c634e2399cc8498"
     },
     {
       "file": "src/canalRecall/genericFacades.ts",
-      "sha256": "173b5dee12fc658a42504c8fc343a60c1b4974b077353d12b56c7a9ac1d68c58"
+      "sha256": "76dd7b16728240100db136c9f05435ffe521f50b3f41bdc9fdcd3d5b18ddd802"
     },
     {
       "file": "src/canalRecall/streetFronts.ts",
@@ -86,7 +86,7 @@
     },
     {
       "file": "src/canalRecall/threeBuildingsBrowser.ts",
-      "sha256": "a191b490f1ab0fc59347a13583b265871c27c326e098f1a27b94becefcd3ffbb"
+      "sha256": "d720d1b789d8085b7042a4e08a5c2983129559f654e20d7e58ee5de8b7e5889b"
     },
     {
       "file": "src/canalRecall/streetCrown.ts",
@@ -94,15 +94,15 @@
     },
     {
       "file": "src/canalRecall/bayLook.ts",
-      "sha256": "fd445782f265c8d07b107206d9247074f28c871a9e8846d052456088f12cd7bc"
+      "sha256": "3bd05277c0e0f538853acd05a42501a6abfc3a53fb081b06b593d7f6b2daf419"
     },
     {
       "file": "src/canalRecall/bayTextures.ts",
-      "sha256": "0bd8d500f55db373c2db56c3bf874c0a093a6376a5fd8f0e93dad6078a81d65d"
+      "sha256": "c31d074ee70b9ae1a2363ac42e7e956ca4633c30e9a6794635993f33dabeb7aa"
     },
     {
       "file": "src/canalRecall/facadeOrnaments.ts",
-      "sha256": "0f8646161a2484861eca4eb0717643b10421bbf2a410e0192ab85a418f8166eb"
+      "sha256": "8657106ea13122713f6313fe88e2b7f79f49d4eddfc19a11ae9db5a7c854036a"
     },
     {
       "file": "src/canalRecall/facadeExtras.ts",
@@ -134,13 +134,13 @@
     },
     {
       "file": "src/canalRecall/roofMesh.ts",
-      "sha256": "01bc06f2bd8007e3cc6153c5cfff8e23f994dc8e7cf3784094059359c2dc25f0"
+      "sha256": "ca778f668feef4a9ab3fbcf1b0673a01cc1fc6cc75ffee3269e80b8dde5f9a8f"
     }
   ],
   "streetFrontPathsSha256": "8bc67d18dfd30b51e795bb7973589ca8c63d43565c9913d41723e03ec8bd7078",
   "streetSegments": 153,
   "neighborHaloM": 25,
-  "features": 361,
+  "features": 360,
   "exposedRuns": 34,
   "assignments": 33,
   "profiles": [

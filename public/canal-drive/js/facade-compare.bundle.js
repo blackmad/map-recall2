@@ -1,5 +1,38 @@
 "use strict";
 (() => {
+  // src/canalRecall/facade/materials.ts
+  function wallFamily(rgb) {
+    const [r, g, b] = rgb;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    const chroma = max - min;
+    const light = (r + g + b) / 3;
+    if (light < 52) return "paint";
+    if (chroma < 16 && light > 155) return "paint";
+    if (chroma < 24 && light > 180) return "stone";
+    if (r > b + 6) return "brick";
+    return chroma < 14 ? "paint" : "brick";
+  }
+
+  // src/canalRecall/look/brickTone.ts
+  var lin = (v) => {
+    const s = v / 255;
+    return s <= 0.04045 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+  };
+  var unlin = (c) => 255 * (c <= 31308e-7 ? c * 12.92 : 1.055 * c ** (1 / 2.4) - 0.055);
+  function rgbToLab2(c) {
+    const [r, g, b] = c.map(lin);
+    const x = (0.4124 * r + 0.3576 * g + 0.1805 * b) / 0.95047, y = 0.2126 * r + 0.7152 * g + 0.0722 * b, z = (0.0193 * r + 0.1192 * g + 0.9505 * b) / 1.08883;
+    const f = (t) => t > 216 / 24389 ? Math.cbrt(t) : (24389 / 27 * t + 16) / 116;
+    return [116 * f(y) - 16, 500 * (f(x) - f(y)), 200 * (f(y) - f(z))];
+  }
+  function labToRgb([L, a, b]) {
+    const fy = (L + 16) / 116, fx = fy + a / 500, fz = fy - b / 200;
+    const inv = (t) => t ** 3 > 216 / 24389 ? t ** 3 : (116 * t - 16) / (24389 / 27);
+    const x = inv(fx) * 0.95047, y = inv(fy), z = inv(fz) * 1.08883;
+    const r = 3.2406 * x - 1.5372 * y - 0.4986 * z, g = -0.9689 * x + 1.8758 * y + 0.0415 * z, bb = 0.0557 * x - 0.204 * y + 1.057 * z;
+    return [r, g, bb].map((v) => Math.round(Math.max(0, Math.min(255, unlin(Math.max(0, v))))));
+  }
+
   // src/canalRecall/look/palette.ts
   var PHOTO_WALL_CELL_MEAN = 225;
   var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
@@ -184,9 +217,9 @@
   var FACADE_MAX_TILE_ZOOM = 16 + Math.log2(FACADE_PIXELS_PER_M);
 
   // src/canalRecall/roofSink.ts
-  var sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
-  var cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
-  var dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  var sub2 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  var cross2 = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  var dot2 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
   var RoofSink = class {
     constructor(rect, h0, dims) {
       this.rect = rect;
@@ -204,11 +237,11 @@
     }
     /** One triangle from local points, wound so its normal agrees with `hint` (local). Degenerate ones are dropped. */
     tri(a, b, c, ua, ub, uc, part, hint, hex2) {
-      let n = cross(sub(b, a), sub(c, a));
+      let n = cross2(sub2(b, a), sub2(c, a));
       const l = Math.hypot(n[0], n[1], n[2]);
       if (l < 1e-7) return;
       let B = b, C = c, UB = ub, UC = uc;
-      if (dot(n, hint) < 0) {
+      if (dot2(n, hint) < 0) {
         B = c;
         C = b;
         UB = uc;
@@ -233,8 +266,8 @@
     }
     /** A roof face triangle (tiles, slates) with automatic coordinates. */
     slopeTri(a, b, c, hint, part = "slope", hex2) {
-      let n = cross(sub(b, a), sub(c, a));
-      if (dot(n, hint) < 0) n = [-n[0], -n[1], -n[2]];
+      let n = cross2(sub2(b, a), sub2(c, a));
+      if (dot2(n, hint) < 0) n = [-n[0], -n[1], -n[2]];
       const l = Math.hypot(n[0], n[1], n[2]) || 1;
       n = [n[0] / l, n[1] / l, n[2] / l];
       this.tri(a, b, c, this.slopeUv(a, n), this.slopeUv(b, n), this.slopeUv(c, n), part, hint, hex2);
@@ -887,15 +920,15 @@
   }
   function earcut(pts) {
     const idx = pts.map((_, i) => i), tris = [];
-    const cross3 = (a, b, c) => (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]);
-    const inside = (p, a, b, c) => cross3(a, b, p) > 1e-9 && cross3(b, c, p) > 1e-9 && cross3(c, a, p) > 1e-9;
+    const cross4 = (a, b, c) => (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]);
+    const inside = (p, a, b, c) => cross4(a, b, p) > 1e-9 && cross4(b, c, p) > 1e-9 && cross4(c, a, p) > 1e-9;
     let guard = pts.length * pts.length + 10;
     while (idx.length > 3 && guard-- > 0) {
       let clipped = false;
       for (let k = 0; k < idx.length; k++) {
         const i0 = idx[(k + idx.length - 1) % idx.length], i1 = idx[k], i2 = idx[(k + 1) % idx.length];
         const a = pts[i0], b = pts[i1], c = pts[i2];
-        const turn = cross3(a, b, c);
+        const turn = cross4(a, b, c);
         if (turn <= 1e-9) {
           if (Math.abs(turn) <= 1e-9) {
             idx.splice(k, 1);
@@ -915,10 +948,10 @@
     for (let k = 1; k + 1 < idx.length; k++) tris.push([idx[0], idx[k], idx[k + 1]]);
     return tris;
   }
-  var sub2 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  var sub3 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
   var crossV = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
   function tri(out, a, b, c, ua, ub, uc, layer, hex2, hint) {
-    let n = crossV(sub2(b, a), sub2(c, a)), B = b, C = c, UB = ub, UC = uc;
+    let n = crossV(sub3(b, a), sub3(c, a)), B = b, C = c, UB = ub, UC = uc;
     if (n[0] * hint[0] + n[1] * hint[1] + n[2] * hint[2] < 0) {
       B = c;
       C = b;
@@ -1833,39 +1866,6 @@
     }
   };
 
-  // src/canalRecall/look/brickTone.ts
-  var lin = (v) => {
-    const s = v / 255;
-    return s <= 0.04045 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
-  };
-  var unlin = (c) => 255 * (c <= 31308e-7 ? c * 12.92 : 1.055 * c ** (1 / 2.4) - 0.055);
-  function rgbToLab(c) {
-    const [r, g, b] = c.map(lin);
-    const x = (0.4124 * r + 0.3576 * g + 0.1805 * b) / 0.95047, y = 0.2126 * r + 0.7152 * g + 0.0722 * b, z = (0.0193 * r + 0.1192 * g + 0.9505 * b) / 1.08883;
-    const f = (t) => t > 216 / 24389 ? Math.cbrt(t) : (24389 / 27 * t + 16) / 116;
-    return [116 * f(y) - 16, 500 * (f(x) - f(y)), 200 * (f(y) - f(z))];
-  }
-  function labToRgb([L, a, b]) {
-    const fy = (L + 16) / 116, fx = fy + a / 500, fz = fy - b / 200;
-    const inv = (t) => t ** 3 > 216 / 24389 ? t ** 3 : (116 * t - 16) / (24389 / 27);
-    const x = inv(fx) * 0.95047, y = inv(fy), z = inv(fz) * 1.08883;
-    const r = 3.2406 * x - 1.5372 * y - 0.4986 * z, g = -0.9689 * x + 1.8758 * y + 0.0415 * z, bb = 0.0557 * x - 0.204 * y + 1.057 * z;
-    return [r, g, bb].map((v) => Math.round(Math.max(0, Math.min(255, unlin(Math.max(0, v))))));
-  }
-
-  // src/canalRecall/facade/materials.ts
-  function wallFamily(rgb) {
-    const [r, g, b] = rgb;
-    const max = Math.max(r, g, b), min = Math.min(r, g, b);
-    const chroma = max - min;
-    const light = (r + g + b) / 3;
-    if (light < 52) return "paint";
-    if (chroma < 16 && light > 155) return "paint";
-    if (chroma < 24 && light > 180) return "stone";
-    if (r > b + 6) return "brick";
-    return chroma < 14 ? "paint" : "brick";
-  }
-
   // src/canalRecall/publicBuildingFacts.ts
   var SCHOOL_PERIOD_WALLS = { "c19": ["#4d423c", "#56453f", "#64544d", "#675a4f", "#655d56", "#68655a", "#847465"], "school": ["#443a35", "#494134", "#4a473f", "#5d4b47", "#5b5049", "#645c54", "#81766b"], "modern": ["#443d35", "#524542", "#585046", "#655949", "#6f6054", "#736f69", "#8f8781"] };
   var PUBLIC_FACTS = [
@@ -2416,7 +2416,7 @@
   var KIT_FACTS = new Map(PUBLIC_FACTS.map((e) => [e[0], schoolFacts(e)]));
   var PANORAMA_BRICK = { from: 50, keep: 0.4, maxL: 55, minC: 6 };
   function panoramaBrickHue(hex2) {
-    const [L, a, b] = rgbToLab(hexToRgb(hex2)), C = Math.hypot(a, b), h = Math.atan2(b, a) * 180 / Math.PI;
+    const [L, a, b] = rgbToLab2(hexToRgb(hex2)), C = Math.hypot(a, b), h = Math.atan2(b, a) * 180 / Math.PI;
     if (L >= PANORAMA_BRICK.maxL || C < PANORAMA_BRICK.minC || h <= PANORAMA_BRICK.from || h > 120) return hex2;
     const h2 = (PANORAMA_BRICK.from + (h - PANORAMA_BRICK.from) * PANORAMA_BRICK.keep) * Math.PI / 180;
     return rgbToHex(labToRgb([L, C * Math.cos(h2), C * Math.sin(h2)]));
@@ -3801,15 +3801,15 @@
   var KIT_ROOF = new Map(KITS.flatMap((k) => k.roofs.map((r) => [r.id, { roof: r, wall: k.wall }])));
   var KIT_HALLS = new Map(KITS.flatMap((k) => (k.halls ?? []).map((h) => [h.id, { halls: h, wall: k.wall }])));
   var KIT_BODY = new Map(KITS.flatMap((k) => k.wall ? (k.body ?? []).map((id) => [id, k.wall]) : []));
-  var sub3 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
-  var cross2 = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
-  var dot2 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  var sub4 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  var cross3 = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  var dot3 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
   var layerFor = (mat) => mat === "brick" ? "plain" : "flat";
   var TriSink = class {
     out = [];
     tri(a, b, c, ua, ub, uc, layer, hex2, hint) {
-      let n = cross2(sub3(b, a), sub3(c, a)), B = b, C = c, UB = ub, UC = uc;
-      if (dot2(n, hint) < 0) {
+      let n = cross3(sub4(b, a), sub4(c, a)), B = b, C = c, UB = ub, UC = uc;
+      if (dot3(n, hint) < 0) {
         B = c;
         C = b;
         UB = uc;
@@ -4221,8 +4221,8 @@
       const rise = Math.min(riseM, t * tanOf(HIP_MAX_PITCH_DEG));
       const out = [], z0 = eavesM, z1 = eavesM + rise;
       const tri2 = (a, b, c, part) => {
-        const u = sub3(b, a), v = sub3(c, a);
-        let n = cross2(u, v);
+        const u = sub4(b, a), v = sub4(c, a);
+        let n = cross3(u, v);
         if (n[2] < 0) {
           n = [-n[0], -n[1], -n[2]];
           [b, c] = [c, b];

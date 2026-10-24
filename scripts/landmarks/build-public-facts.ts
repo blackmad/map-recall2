@@ -30,16 +30,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
-import sharp from 'sharp';
 import { WORSHIP_BUILDINGS } from '../../src/canalRecall/worshipBuildingData.ts';
 import { decodeRoofFactTile, roofSlotHex, type RoofFact } from '../../src/canalRecall/roofs/roofSlots.ts';
 import { worshipKit } from '../../src/canalRecall/worshipBuildings.ts';
 import { publicKit, schoolFacts } from '../../src/canalRecall/publicBuildings.ts';
 import type { RoofPitch } from '../../src/canalRecall/facade/roofPitch.ts';
 import { PUBLIC_BUILDINGS } from '../../src/canalRecall/publicBuildingData.ts';
-import { combineBrickTones, pixelKind } from '../../src/canalRecall/look/brickTone.ts';
-import { cropNormaliser, glazingProfile, isOliveShade, masonryFamily, type GlazingProfile } from '../../src/canalRecall/facade/cropWallColour.ts';
-import { dominantWallColour } from '../../src/canalRecall/facade/dominantWallColour.ts';
+import { combineBrickTones } from '../../src/canalRecall/look/brickTone.ts';
+import { readCropWall, type CropReading } from '../lib/cropWallReading.ts';
 import { periodForYear, rgbToHex, type Period } from '../../src/canalRecall/look/palette.ts';
 import { shortBuildingId } from '../../src/canalRecall/buildingFacts.ts';
 import { hipAround } from '../../src/canalRecall/landmarkKits.ts';
@@ -48,16 +46,8 @@ const ROOT = path.resolve(import.meta.dirname, '../..');
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const wallsRoots = arg('walls', 'artifacts/strips/kit-walls').split(',').filter(Boolean).map(p => path.resolve(ROOT, p));
 const STAGING = path.join(ROOT, 'tmp/public/public-facts.json'), PUBLISHED = path.join(ROOT, 'src/canalRecall/publicBuildingFacts.ts');
-/** A crop counts when its winning cluster holds this share of the usable (unmasked, not glass/trim) pixels. */
-const MIN_WALL_SHARE = 0.3;
-/** Crops this leafy (all-walls' own foliage estimate) show the tree, not the school. */
-const MAX_FOLIAGE = 0.6;
-/** Rows of the crop measured: the top is sky and roof edge, the bottom fences, bikes and cars. */
-const BAND: [number, number] = [0.12, 0.8];
 /** A crop's glazing verdict counts when it read this many 0.1 m rows of the wall. */
 const MIN_GLAZING_ROWS = 15;
-/** The wall cluster's share of the whole measured band (masked pixels included). */
-const MIN_BAND_SHARE = 0.06;
 
 const schools = PUBLIC_BUILDINGS.filter(e => e[1] === 's').map(e => e[0]);
 const schoolSet = new Set(schools);
@@ -99,10 +89,6 @@ for (const x of fs.readdirSync(factRoot)) for (const file of fs.readdirSync(path
 }
 
 // --- Wall colour from the crops ----------------------------------------------------------------------------------
-type CropReading = {
-  file: string; tag: string; foliage: number | null; wallShare?: number; bandShare?: number; brick?: string; family?: string | null;
-  norm?: { ref: number[] | null; gain: number; wb: number[] }; glazing?: GlazingProfile; used: boolean; why?: string;
-};
 type PandReading = { hex: string | null; crops: CropReading[]; glazing: 0 | 1 | 2 | 3; topBandHex: string | null; frameHex: string | null };
 async function measure(pand: string): Promise<PandReading> {
   const digits = pand.replace('NL.IMBAG.Pand.', ''), crops: CropReading[] = [], tones: number[][] = [];
@@ -114,43 +100,8 @@ async function measure(pand: string): Promise<PandReading> {
       if (!fs.existsSync(file)) continue;
       const reading: CropReading = { file: path.relative(ROOT, file), tag: w.tag, foliage: typeof w.foliage === 'number' ? w.foliage : null, used: false };
       crops.push(reading);
-      if (reading.foliage !== null && reading.foliage > MAX_FOLIAGE) { reading.why = `foliage ${reading.foliage.toFixed(2)}`; continue; }
-      const { data, info } = await sharp(file).removeAlpha().raw().toBuffer({ resolveWithObject: true });
-      const ch = info.channels, ppm = typeof w.ppm === 'number' ? w.ppm : info.width / (w.wallWidthM ?? info.width / 50);
-      const y0 = Math.floor(info.height * BAND[0]), y1 = Math.ceil(info.height * BAND[1]);
-      // 1. Exposure and white balance from the crop's light trim (measureFacade's rule), applied before measuring.
-      const norm = cropNormaliser(data, info.width, info.height, ch, ppm, [y0, y1]);
-      reading.norm = { ref: norm.ref ? norm.ref.map(Math.round) : null, gain: +norm.gain.toFixed(3), wb: norm.wb.map(v => +v.toFixed(3)) };
-      const width = info.width, height = y1 - y0, band = new Uint8Array(width * height * 3), mask = new Uint8Array(width * height);
-      for (let i = 0; i < mask.length; i++) {
-        const o = (y0 * width + i) * ch, r = data[o], g = data[o + 1], b = data[o + 2], c = norm.apply([r, g, b]);
-        band[i * 3] = c[0]; band[i * 3 + 1] = c[1]; band[i * 3 + 2] = c[2];
-        // 2. pixelKind drops sky, leaves and burnt-out pixels; isOliveShade the shaded and autumn leaves it lets through.
-        mask[i] = pixelKind(r, g, b) === 'candidate' && !isOliveShade(c[0], c[1], c[2]) ? 1 : 0;
-      }
-      const wall = dominantWallColour({ data: band, width, height, channels: 3 }, mask);
-      if (!wall) { reading.why = 'no wall pixels'; continue; }
-      reading.brick = wall.hex;
-      reading.wallShare = Math.round(wall.fraction * 1000) / 1000;
-      reading.family = masonryFamily(wall.rgb);
-      if (!wall.reliable) { reading.why = `unreliable: ${wall.review.join('; ')}`; continue; }
-      if (reading.wallShare < MIN_WALL_SHARE) { reading.why = `wall share ${reading.wallShare}`; continue; }
-      // 3. Brick, buff brick, render or concrete, or not this school's wall: a mural (sheet row 35, #f7c386), painted
-      // cladding, glass, a hedge read as wall (row 3's shaded brick under blue zinc, row 23's olive).
-      if (!reading.family) { reading.why = `no masonry family ${wall.hex}`; continue; }
-      // Brick, concrete and render in daylight read warm or neutral; a cluster bluer than it is red is glass, a
-      // shadowed recess or the panorama's cast (sheet rows 34 and 40: blue-grey on a brick and a pale-brick front).
-      if (wall.rgb[2] > wall.rgb[0]) { reading.why = `cool cast ${wall.hex}`; continue; }
-      // Green at or over red is a hedge or its shade, not masonry (sheet row 1: #393a34 olive on a red-brown front).
-      if (wall.rgb[1] >= wall.rgb[0]) { reading.why = `green cast ${wall.hex}`; continue; }
-      // The wall must be a real part of the crop, not a strip of shaded brick under blue cladding (row 3's w02).
-      reading.bandShare = Math.round(wall.pixels / (width * height) * 1000) / 1000;
-      if (reading.bandShare < MIN_BAND_SHARE) { reading.why = `band share ${reading.bandShare}`; continue; }
-      // 4. Ribbon windows and a pale band under the eaves, read row by row against this wall colour.
-      const eaves = typeof w.height === 'number' ? w.height : info.height / ppm;
-      reading.glazing = glazingProfile({ data, width: info.width, height: info.height, channels: ch, ppm, topM: info.height / ppm, eavesM: eaves, wall: wall.rgb, norm: norm.apply });
-      reading.used = true;
-      tones.push(wall.rgb);
+      const rgb = await readCropWall(file, w, reading);
+      if (rgb) tones.push(rgb);
     }
     if (crops.length) break; // the first walls root that has this pand is its source
   }
