@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+**Bridge cards keep their register line (2026-10-24, #26).** Since
+565cefb13 bridge ledes were indexed under their extract ids, which join the
+reviewed trivia catalogue, so the rotated trivia replaced the whole card and
+the Blauwbrug lost its name origin and its bridge-register sentence. The
+rotation now takes only the encyclopedia lede's place
+(`streetCardWithRotatedFact` in `routeKnowledge.ts`): origin first, trivia,
+register line last. Street and water cards with both an origin and trivia
+now lead with the origin. Unit regression in `bridgeData.test.ts` (inside
+check:canal); the e2e spec stays outside the gate, which runs no Playwright.
+
 **PDOK blades cached (2026-10-24, #19).** The 88 PDOK 3D Basisvoorziening
 2025 blades that intersect Amsterdam (not the 56 first estimated; the 133 in
 the bounding box were clipped to the buurten boundary) are committed to the

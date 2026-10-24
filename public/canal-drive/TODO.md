@@ -207,9 +207,8 @@ Open, in order:
   ("lower angle" read as smaller pitch); now 60° with the slider covering
   12–60° (`chasePitch()` in preferences.ts). Desktop ride-perf at 60°:
   frames 16.7 / p99 16.8 ms, 0 over 50 ms, mapRender 2.4 ms, 851 draws
-  (vsync-bound; roads run at 48°-era code had mapRender 1.8–2.2). Saved tilts not migrated. Pre-existing
-  failure seen: canal-recall.spec "named bridge card" (Blauwbrug shows the
-  encyclopedia text, not the register line), #26.
+  (vsync-bound; roads run at 48°-era code had mapRender 1.8–2.2). Saved tilts not migrated. The
+  Blauwbrug card failure seen then is fixed (#26, b1eb68865).
 - **kit: loggias + glazed plinth** (merged 2026-10-24, #13): opt-in
   wall-group fields `loggias` (recessed balconies, side returns, rail) and
   `plinth` (glazed storeys with own lights/pier/height factor); measure
