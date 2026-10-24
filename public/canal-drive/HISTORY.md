@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+**Kits round 4: data and looks (2026-10-24, #36, #37).** Data: OSM-only kit
+parts are joined to BAG pands (`kit-pands.json`, 123 of 124 resolved; Avontuur
+is a church ship); 114 kits that only stand in for a live bespoke GLB leave the
+census (landmarkKit rows 546 → 422); 18 wrong kit types fixed at the source
+(`kitTypeOverrides.ts`, checked against BAG use: housing blocks lose worship
+kits, Zonnehuis becomes a hipped 1932 school); the sheet renderer culls context
+in front of the camera; Oude Kerk part w747868995 is now suppressed by the
+GLB. Looks: cinema and worship kits take measured wall colour (91 of 244) and
+window rows from their crops; every school, church and cinema takes flat or
+pitched from its own LoD2.2 roof planes in the cached PDOK blades (the BAG
+tile roof code said "slanted" on 29 of 30 flat-roof holds); pitched roofs take
+an aerial roof tint (371); 152 pands get white frames. 220 of 562 kit specs
+changed, the rest byte-identical. Not yet: the newly located OSM-part kits
+have no measured facts (the facts builder does not read `kit-pands.json`);
+mono-pitch roofs; pitched roofs behind parapet fronts; crops full of trees
+still tint some walls olive.
+
 **Audit drift after the 2026-10-20 regeneration (2026-10-24, #32).** Of
 74 landmark models that grew past `geometry-audit-baseline.json`, 30 were an
 audit bug: 6b41a2c3b had dropped the 2.5° same-facing filter in the z-fight
