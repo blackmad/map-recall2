@@ -13,6 +13,8 @@ import {bearingOfNormal, largeSurfaceSet} from './fitLarge.ts';
 import type {BuildingFacts} from './facts.ts';
 import type {IntentSource, LargeBuildingIntent, LargeWallIntent} from './intent.ts';
 import {validateLargeIntent} from './largeIntent.ts';
+import {PERIOD_PRIORS, periodForYear, UNKNOWN_WALL_HEX} from '../look/palette.ts';
+import {rgbToLab} from './measureFacade.ts';
 
 /** One archived crop row (`all-walls.ts --archive`, walls.json) the draft cites as a source. */
 export interface DraftCrop { tag: string; panoId: string; capturedAt: string; crop?: boolean }
@@ -31,6 +33,75 @@ export interface DraftResult { intent: LargeBuildingIntent; groups: DraftGroup[]
 
 /** shell-survey.ts's placeholders; `measure.ts --write` replaces `brick` per group from the crop */
 export const DRAFT_PALETTE = {brick: '#8a5a44', frame: '#efece4', door: '#2a2a2a'} as const;
+
+/**
+ * The wall colour a draft starts from before any photo is measured: the era default of the look palette
+ * (`PERIOD_PRIORS[period].wall` for the BAG construction year: buff for post-war, brick red before 1945), or the
+ * look's neutral `UNKNOWN_WALL_HEX` without a year. Not the old orange placeholder, which every unphotographed wall
+ * kept (factory batch 1, 2026-10-24: grey and black libraries drawn as orange blocks).
+ */
+export function draftWallPrior(facts: Pick<BuildingFacts, 'heights'>): string {
+  const y = facts.heights?.builtYear;
+  return (y != null && Number.isFinite(y) ? PERIOD_PRIORS[periodForYear(y)].wall : UNKNOWN_WALL_HEX).toLowerCase();
+}
+
+/**
+ * True for an intent `draftLargeIntent` wrote: `draftedBy: "factory"`, or (factory batch 1, drafted before the field)
+ * the draft note. Hand-authored intents are neither.
+ */
+export const isDraftIntent = (intent: Pick<LargeBuildingIntent, 'notes' | 'draftedBy'> | null | undefined) =>
+  !!intent && (intent.draftedBy === 'factory' || !!intent.notes?.some(n => n.startsWith('Drafted by draftLarge.ts')));
+
+/**
+ * Whether the factory may write a house's intent, facts or measured.json: only a house it has no intent for yet, or one
+ * whose intent it drafted. A hand-authored house is read-only to the factory (batch 1, 2026-10-24, rewrote Metis and
+ * Oostpoort's intents and two authored houses' measured.json); it measures into artifacts/ instead.
+ */
+export const factoryMayWrite = (existing: Pick<LargeBuildingIntent, 'notes' | 'draftedBy'> | null | undefined) => !existing || isDraftIntent(existing);
+
+/** The factory's measure.ts arguments: `--write` for a drafted intent only; a hand-authored house measures into artifacts/. */
+export function factoryMeasureArgs(house: string, intent: Pick<LargeBuildingIntent, 'notes' | 'draftedBy'> | null, artifactsDir = 'artifacts/building-recipes'): string[] {
+  return intent && isDraftIntent(intent) ? [`--house=${house}`, '--write'] : [`--house=${house}`, `--measured-out=${artifactsDir}/${house}/measured.json`];
+}
+
+/** One photographed wall group's measured wall for `inheritedWall`: its colour, its photo family, its panel area. */
+export interface MeasuredWallRow { hex: string; family: string | null; areaM2: number }
+
+/**
+ * The house wall for the groups no photo shows (NO PHOTO / NO EVIDENCE groups and `otherWalls`): the area-weighted
+ * median of the photographed walls, taken as the measured colour where the cumulative panel area, sorted by CIE L*,
+ * first reaches half (a real measured colour, never a mix), and `stucco` when the photo families resolved on most of
+ * that area are paint or stone (no brick courses: painted or panelled walls), else brick. null without a row.
+ */
+export function inheritedWall(rows: readonly MeasuredWallRow[]): {brick: string; wallMaterial: 'brick' | 'stucco'} | null {
+  const ok = rows.filter(r => /^#[0-9a-f]{6}$/i.test(r.hex) && r.areaM2 > 0);
+  if (!ok.length) return null;
+  const L = (h: string) => rgbToLab([1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) as [number, number, number])[0];
+  const sorted = [...ok].sort((a, b) => L(a.hex) - L(b.hex) || a.hex.localeCompare(b.hex)), total = ok.reduce((s, r) => s + r.areaM2, 0);
+  let acc = 0, med = sorted[0];
+  for (const r of sorted) { acc += r.areaM2; med = r; if (acc >= total / 2) break; }
+  const resolved = ok.filter(r => r.family && r.family !== 'unresolved'), resolvedArea = resolved.reduce((s, r) => s + r.areaM2, 0);
+  const nonBrick = resolved.filter(r => r.family !== 'brick').reduce((s, r) => s + r.areaM2, 0);
+  return {brick: med.hex.toLowerCase(), wallMaterial: resolvedArea > 0 && nonBrick > resolvedArea / 2 ? 'stucco' : 'brick'};
+}
+
+/** One wall group's triangle cost for `draftBudgetCap`: what the house loses when the group is drawn blank. */
+export interface GroupCost { group: number; cost: number; measured: boolean; entrance: boolean }
+
+/**
+ * Bring a draft under the large-tier triangle budget (12,000, `largeGates.ts`; never raised here) by drawing its
+ * unphotographed groups blank, most expensive first: their windows are the kit's default pitch on a wall no photo
+ * shows, the first thing a wrong model invents. The entrance group is blanked last. Photographed groups are never
+ * touched; `over` is what is still above the budget after every unphotographed group is blank (a measured bay count
+ * that is itself too dense: the report names it, the review decides).
+ */
+export function draftBudgetCap(costs: readonly GroupCost[], total: number, budget: number): {blank: number[]; over: number} {
+  const blank: number[] = [];
+  let t = total;
+  const order = costs.filter(c => !c.measured && c.cost > 0).sort((a, b) => Number(a.entrance) - Number(b.entrance) || b.cost - a.cost || a.group - b.group);
+  for (const c of order) { if (t <= budget) break; blank.push(c.group); t -= c.cost; }
+  return {blank, over: Math.max(0, t - budget)};
+}
 export const DRAFT_NOTE = 'Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.';
 /** a panel faces a front when its bearing is within this of the front's outward normal */
 export const FRONT_BEARING_TOLERANCE_DEG = 35;
@@ -97,7 +168,7 @@ export function draftLargeIntent(facts: BuildingFacts, opts: DraftOptions): Draf
   if (skipped.length) notes.push(`Panels left blank by the draft: ${skipped.map(s => `${s.panel} (${s.widthM} m, ${s.reason})`).join('; ')}.`);
   const intent: LargeBuildingIntent = {
     schemaVersion: 1, kind: 'large', id: opts.id, pandId: opts.pandId, address: opts.address ?? `BAG pand ${opts.pandId}`,
-    sources, walls, otherWalls: 'blank', palette: {...DRAFT_PALETTE}, notes,
+    sources, walls, otherWalls: 'blank', palette: {...DRAFT_PALETTE, brick: draftWallPrior(facts)}, draftedBy: 'factory', notes,
   };
   return {
     intent: validateLargeIntent(intent),

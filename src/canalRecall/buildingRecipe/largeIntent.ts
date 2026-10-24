@@ -9,7 +9,7 @@ import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
 const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen'];
-const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'notes'];
+const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
 export function validateLargeIntent(input: unknown): LargeBuildingIntent {
@@ -53,6 +53,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     bool(m?.otherWalls, 'measured.otherWalls');
     for (const k of Object.keys(m ?? {})) if (!['date', 'groups', 'otherWalls'].includes(k)) problems.push(`measured.${k}: unknown field (date, groups, otherWalls)`);
   }
+  if (intent?.draftedBy !== undefined) oneOf(intent.draftedBy, ['factory'], 'draftedBy');
   if (intent?.otherWalls !== undefined) oneOf(intent.otherWalls, LARGE_SYSTEMS, 'otherWalls');
   bool(intent?.roofPlant, 'roofPlant'); bool(intent?.closedBands, 'closedBands'); bool(intent?.layeredKit, 'layeredKit'); bool(intent?.shellRepair, 'shellRepair');
   if (intent?.footprint !== undefined) oneOf(intent.footprint, ['lod22', 'bag'], 'footprint');

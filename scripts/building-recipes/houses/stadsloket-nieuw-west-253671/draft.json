@@ -1,0 +1,586 @@
+{
+ "date": "2026-10-24",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 137,
+   "bearing": 162,
+   "widthM": 74.2,
+   "heightM": 23.4,
+   "street": null
+  },
+  {
+   "group": 1,
+   "panel": 27,
+   "bearing": 72,
+   "widthM": 57.2,
+   "heightM": 23.4,
+   "street": null
+  },
+  {
+   "group": 2,
+   "panel": 125,
+   "bearing": 342,
+   "widthM": 59.5,
+   "heightM": 19.2,
+   "street": null
+  },
+  {
+   "group": 3,
+   "panel": 92,
+   "bearing": 252,
+   "widthM": 53.3,
+   "heightM": 20.7,
+   "street": null
+  },
+  {
+   "group": 4,
+   "panel": 4,
+   "bearing": 72,
+   "widthM": 25.3,
+   "heightM": 19.6,
+   "street": null
+  },
+  {
+   "group": 5,
+   "panel": 74,
+   "bearing": 162,
+   "widthM": 52.6,
+   "heightM": 8.2,
+   "street": null
+  },
+  {
+   "group": 6,
+   "panel": 9,
+   "bearing": 162,
+   "widthM": 20.5,
+   "heightM": 20.7,
+   "street": null
+  },
+  {
+   "group": 7,
+   "panel": 119,
+   "bearing": 342,
+   "widthM": 32.4,
+   "heightM": 11.7,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 212,
+   "widthM": 29.3,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 238,
+   "widthM": 29.1,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 32,
+   "widthM": 13.6,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 243,
+   "widthM": 12.2,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 200,
+   "widthM": 25.7,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 61,
+   "widthM": 24.9,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 120,
+   "widthM": 17,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 152,
+   "widthM": 22.4,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 192,
+   "widthM": 22.4,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 48,
+   "widthM": 14,
+   "reason": "party wall"
+  },
+  {
+   "panel": 211,
+   "widthM": 31,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 225,
+   "widthM": 19.9,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 56,
+   "widthM": 7.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 58,
+   "widthM": 9.9,
+   "reason": "party wall"
+  },
+  {
+   "panel": 47,
+   "widthM": 16.2,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 91,
+   "widthM": 45.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 62,
+   "widthM": 17.8,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 124,
+   "widthM": 11,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 134,
+   "widthM": 10.2,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 18,
+   "widthM": 13.2,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 105,
+   "widthM": 15.7,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 57,
+   "widthM": 8,
+   "reason": "party wall"
+  },
+  {
+   "panel": 111,
+   "widthM": 10,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 131,
+   "widthM": 5.7,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 135,
+   "widthM": 6.5,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 24,
+   "widthM": 6.7,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 0,
+   "widthM": 17.6,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 52,
+   "widthM": 18.7,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 39,
+   "widthM": 11.6,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 38,
+   "widthM": 10.4,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 3,
+   "widthM": 5.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 271,
+   "widthM": 13.4,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 29,
+   "widthM": 9.7,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 50,
+   "widthM": 17.4,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 121,
+   "widthM": 9.1,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 41,
+   "widthM": 8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 260,
+   "widthM": 7.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 206,
+   "widthM": 5.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 59,
+   "widthM": 4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 90,
+   "widthM": 3.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 187,
+   "widthM": 4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 95,
+   "widthM": 2.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 241,
+   "widthM": 8.8,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 165,
+   "widthM": 4.9,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 136,
+   "widthM": 9.2,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 72,
+   "widthM": 9.4,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 85,
+   "widthM": 2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 242,
+   "widthM": 6.2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 198,
+   "widthM": 6.2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 214,
+   "widthM": 7.7,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 237,
+   "widthM": 5.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 273,
+   "widthM": 2.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 272,
+   "widthM": 2.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 274,
+   "widthM": 2.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 7,
+   "widthM": 2.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 275,
+   "widthM": 2.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 87,
+   "widthM": 7.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 254,
+   "widthM": 6,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 201,
+   "widthM": 5.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 189,
+   "widthM": 6.7,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 245,
+   "widthM": 2.5,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 45,
+   "widthM": 5,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 70,
+   "widthM": 2.6,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 46,
+   "widthM": 2.6,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 202,
+   "widthM": 4.4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 79,
+   "widthM": 5.6,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 5,
+   "widthM": 2.9,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 153,
+   "widthM": 6,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 235,
+   "widthM": 5.6,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 267,
+   "widthM": 4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 93,
+   "widthM": 2.2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 160,
+   "widthM": 4.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 51,
+   "widthM": 6.8,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 208,
+   "widthM": 12.5,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 227,
+   "widthM": 4.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 194,
+   "widthM": 4.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 148,
+   "widthM": 4,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 196,
+   "widthM": 4.1,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 71,
+   "widthM": 7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 209,
+   "widthM": 3.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 144,
+   "widthM": 3.8,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 228,
+   "widthM": 3.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 49,
+   "widthM": 2.5,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 107,
+   "widthM": 3.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 118,
+   "widthM": 3.4,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 193,
+   "widthM": 2.2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 167,
+   "widthM": 3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 69,
+   "widthM": 3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 269,
+   "widthM": 2.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 220,
+   "widthM": 3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 73,
+   "widthM": 2.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 236,
+   "widthM": 2.6,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 172,
+   "widthM": 3.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 219,
+   "widthM": 2.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 80,
+   "widthM": 3.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 244,
+   "widthM": 3.1,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 218,
+   "widthM": 2.1,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 257,
+   "widthM": 2,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 158,
+   "widthM": 3.5,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 203,
+   "widthM": 6.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 223,
+   "widthM": 2.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 178,
+   "widthM": 2.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 239,
+   "widthM": 3.2,
+   "reason": "under 3 m tall"
+  }
+ ]
+}

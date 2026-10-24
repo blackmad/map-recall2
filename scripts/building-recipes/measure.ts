@@ -35,18 +35,41 @@ import {closeRenderer} from './render.ts';
 import {validateLargeIntent} from '../../src/canalRecall/buildingRecipe/largeIntent.ts';
 import type {IntentSource, LargeBuildingIntent, LargeWallIntent} from '../../src/canalRecall/buildingRecipe/intent.ts';
 import {requireSourceData} from './sourceData.ts';
-import {rgbToLab} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
+import {compileBuilding} from '../../src/canalRecall/buildingRecipe/compile.ts';
+import {LARGE_BUDGET_TRIANGLES} from '../../src/canalRecall/buildingRecipe/largeGates.ts';
+import {cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, majoritySystem, photoBays} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
+import {draftBudgetCap, inheritedWall, isDraftIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
 
 const HOUSES = 'scripts/building-recipes/houses';
 const today = () => new Date().toISOString().slice(0, 10);
 const SYSTEM_OF = {punched: 'brick-bay-grid', ribbon: 'ribbon-windows', curtain: 'curtain-wall'} as const;
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
-const hexRgb = (h: string): [number, number, number] => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) as [number, number, number];
+
+export interface ProposeOpts {
+  system: boolean; bays: boolean;
+  /** BAG construction year (facts.heights.builtYear): a crop taken in or before it is not evidence */
+  builtYear?: number | null;
+  /** the system a curtain class falls back to when its crop is not trusted (measureHouse: the building's majority) */
+  fallbackSystem?: LargeWallIntent['system'];
+}
+
+/** The system a group's front class proposes and, for a curtain class, why it is not trusted (`curtainEvidence`). */
+export function proposedSystem(w: LargeWallIntent, g: GroupLikeness): {system: LargeWallIntent['system'] | null; distrust: string[]} {
+  const m = g.measured, L = g.likeness;
+  if (!m || !L || m.frontClass === 'blank' || m.frontClass === 'columns' || !SYSTEM_OF[m.frontClass]) return {system: null, distrust: []};
+  const system = SYSTEM_OF[m.frontClass];
+  const distrust = system === 'curtain-wall' ? curtainEvidence({glass: m.glass, wall: m.wall, usable: m.usable, likenessUsable: L.evidence.usable, foliage: m.foliage, washedOut: m.washedOut}) : [];
+  return {system, distrust};
+}
 
 /** The intent fields a measurement proposes for one group (nothing for groups without evidence). */
-export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: {system: boolean; bays: boolean}): {patch: Partial<LargeWallIntent>; notes: string[]} {
+export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: ProposeOpts): {patch: Partial<LargeWallIntent>; notes: string[]} {
   const m = g.measured, L = g.likeness, notes: string[] = [];
   if (!m || !L || L.verdict === 'NO EVIDENCE') return {patch: {}, notes};
+  if (cropPredatesBuilding(g.crop?.capturedAt, opts.builtYear)) {
+    notes.push(`crop ${g.crop!.tag} (${g.crop!.capturedAt}) was taken in or before the construction year ${opts.builtYear}: not evidence, nothing written`);
+    return {patch: {}, notes};
+  }
   const hand = new Set(w.hand ?? []), patch: Partial<LargeWallIntent> = {};
   const palette = {...(w.palette ?? {})};
   if (!hand.has('palette.brick') && !hand.has('palette')) palette.brick = m.wall;
@@ -56,15 +79,21 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: {system
   // script, lifts it to the sky-lit pane (look/palette.ts `cityMeasuredGlassTint`, L >= MEASURED_GLASS_MIN_L), so the
   // intents keep the evidence and the fit hashes do not move when the look is retuned.
   if (!hand.has('palette.glass') && !hand.has('palette') && m.glass) {
-    const gl = rgbToLab(hexRgb(m.glass)), wl = rgbToLab(hexRgb(m.wall));
-    if (gl[0] <= wl[0] - 10 && Math.hypot(gl[1], gl[2]) < 15) palette.glass = m.glass;
+    if (glassReadsAsGlass(m.glass, m.wall)) palette.glass = m.glass;
     else { delete palette.glass; notes.push(`glass ${m.glass} not used (not darker than the wall ${m.wall} by 10 L*, or tinted): kit glass kept`); }
   }
   patch.palette = palette;
   let system = w.system;
+  // a curtain class from a crop that is not trusted: the not-wall mask is what is in doubt, so neither the system nor the
+  // bays and window shape folded from that mask are written (the wall colour, from the wall cells, still is)
+  const {system: proposed, distrust} = proposedSystem(w, g), maskDistrusted = proposed === 'curtain-wall' && distrust.length > 0;
   if (opts.system && !hand.has('system')) {
     if (m.frontClass === 'columns' && w.system !== 'glazed-columns') notes.push(`walls: glazed columns measured; ${w.system} kept (glazed-columns needs its column bays placed by hand)`);
-    else if (m.frontClass !== 'blank' && SYSTEM_OF[m.frontClass] && SYSTEM_OF[m.frontClass] !== w.system && w.system !== 'plinth-shopfronts') system = SYSTEM_OF[m.frontClass];
+    else if (proposed === 'curtain-wall' && distrust.length) {
+      const fb = opts.fallbackSystem ?? w.system;
+      if (w.system !== 'plinth-shopfronts') system = fb;
+      notes.push(`curtain class not trusted (${distrust.join('; ')}): ${system} kept from the building's majority`);
+    } else if (proposed && proposed !== w.system && w.system !== 'plinth-shopfronts') system = proposed;
     if (system !== w.system) { patch.system = system; notes.push(`system ${w.system} -> ${system} (measured ${m.frontClass})`); }
   }
   // two wall materials along the main panel: left = palette.brick, right = wallSplit.brick (bay-snapped in the fit)
@@ -72,12 +101,16 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: {system
     palette.brick = m.split.left; patch.wallSplit = {at: m.split.at, brick: m.split.right};
     notes.push(`wall split ${m.split.left} | ${m.split.right} at ${Math.round(m.split.at * 100)} % (dE ${m.split.dE})`);
   }
+  // bays and window from the photo grid the likeness gate judges (photoBays), else the padded measurement
+  const pb = photoBays({measuredBays: m.bays, measuredWindow: m.window, gridColumns: L.columns.photo, gridWindow: L.photoGrid?.window});
+  if (pb.source === 'grid' && m.bays !== pb.bays && !maskDistrusted) notes.push(`bays ${pb.bays} from the likeness grid (padded measurement ${m.bays ?? '-'})`);
   const shaped = ['brick-bay-grid', 'ribbon-windows', 'plinth-shopfronts', 'glazed-columns', 'french-window-ledge'].includes(system) && !w.screen;
-  if (shaped && m.window && !hand.has('windowShape')) {
-    const h = clamp(m.window.h, 0.08, 0.98), sill = clamp(Math.min(m.window.sill, 0.98 - h), 0, 0.9);
-    patch.windowShape = {w: clamp(m.window.w, 0.08, 0.98), h: +h.toFixed(3), sill: +sill.toFixed(3)};
+  if (maskDistrusted) notes.push('bays and window shape not written (folded from the distrusted not-wall mask)');
+  if (shaped && pb.window && !hand.has('windowShape') && !maskDistrusted) {
+    const h = clamp(pb.window.h, 0.08, 0.98), sill = clamp(Math.min(pb.window.sill, 0.98 - h), 0, 0.9);
+    patch.windowShape = {w: clamp(pb.window.w, 0.08, 0.98), h: +h.toFixed(3), sill: +sill.toFixed(3)};
   }
-  if (opts.bays && m.bays && system !== 'curtain-wall' && !hand.has('baysPerStorey') && w.alignWith === undefined) patch.baysPerStorey = clamp(m.bays, 1, 80);
+  if (opts.bays && pb.bays && !maskDistrusted && system !== 'curtain-wall' && !hand.has('baysPerStorey') && w.alignWith === undefined) patch.baysPerStorey = clamp(pb.bays, 1, 80);
   return {patch, notes};
 }
 
@@ -118,7 +151,10 @@ async function refineGlazing(id: string, file: string) {
       if (m < 0.02 || Math.abs(p - m) <= 0.05) continue;
       // width first (the storey lines fix the folded height better than the bay pitch fixes the width); height only for
       // what the width cannot take within its range
-      const s = w.windowShape, ww = clamp(+(s.w * p / m).toFixed(3), 0.08, 0.98), rest = (p / m) / (ww / s.w), h = clamp(+(s.h * rest).toFixed(3), 0.08, 0.98 - s.sill);
+      // where the photo's window shape class is known and the model already matches it, scale width and height together
+      // (the aspect, so the class, is kept: OBA IJburg walls[2] went square -> wide under width-first); else width first
+      const s = w.windowShape, keepAspect = L.shape.photo !== null && L.shape.pass === true;
+      const ww = clamp(+(s.w * (keepAspect ? Math.sqrt(p / m) : p / m)).toFixed(3), 0.08, 0.98), rest = (p / m) / (ww / s.w), h = clamp(+(s.h * rest).toFixed(3), 0.08, 0.98 - s.sill);
       if (Math.abs(h - s.h) < 0.005 && Math.abs(ww - s.w) < 0.005) continue;
       console.log(`  refine walls[${g.group}] round ${round}: glazing model ${m.toFixed(2)} vs photo ${p.toFixed(2)}; windowShape ${s.w}x${s.h} -> ${ww}x${h}`);
       w.windowShape = {...s, w: ww, h}; changed++;
@@ -129,7 +165,36 @@ async function refineGlazing(id: string, file: string) {
   }
 }
 
-export async function measureHouse(id: string, opts: {write: boolean; system: boolean; bays: boolean; debug?: boolean}) {
+/** Triangles of a compiled group (the GLB export keeps every triangle: the same count as report.json `triangles`). */
+function groupTriangles(g: {traverse(f: (o: any) => void): void}): number {
+  let n = 0;
+  g.traverse(o => { const geo = o.geometry; if (geo) n += geo.index ? geo.index.count / 3 : geo.attributes.position.count / 3; });
+  return n;
+}
+
+/**
+ * A drafted intent over its triangle budget: blank its unphotographed groups, most expensive first (draftBudgetCap).
+ * Each group's cost is what the house loses when that group alone is drawn blank.
+ */
+async function capDraftBudget(id: string, file: string) {
+  const intent: LargeBuildingIntent = JSON.parse(await fs.readFile(file, 'utf8')), facts = JSON.parse(await fs.readFile(path.join(HOUSES, id, 'facts.json'), 'utf8'));
+  const budget = intent.budgetTriangles ?? LARGE_BUDGET_TRIANGLES, total = groupTriangles(compileBuilding(intent, facts).group);
+  if (total <= budget) return;
+  const measured = new Set(intent.measured?.groups ?? []);
+  const costs = intent.walls.map((w, gi) => {
+    if (w.system === 'blank' || measured.has(gi)) return {group: gi, cost: 0, measured: measured.has(gi), entrance: !!w.entrance};
+    const x: LargeBuildingIntent = structuredClone(intent); x.walls[gi] = {...x.walls[gi], system: 'blank'};
+    return {group: gi, cost: total - groupTriangles(compileBuilding(x, facts).group), measured: false, entrance: !!w.entrance};
+  });
+  const {blank, over} = draftBudgetCap(costs, total, budget);
+  for (const gi of blank) intent.walls[gi].system = 'blank';
+  intent.notes = [...(intent.notes ?? []).filter(t => !t.startsWith('Triangle budget: ')), `Triangle budget: ${total} > ${budget}; unphotographed groups ${blank.join(', ') || 'none'} drawn blank (draftBudgetCap)${over ? `; still ${over} over from the photographed groups` : ''}.`];
+  validateLargeIntent(intent);
+  await fs.writeFile(file, JSON.stringify(intent, null, 1));
+  console.log(`  budget: ${total} > ${budget}: blanked groups ${blank.join(', ') || 'none'}${over ? `, still ${over} over` : ''}`);
+}
+
+export async function measureHouse(id: string, opts: {write: boolean; system: boolean; bays: boolean; debug?: boolean; measuredFile?: string}) {
   requireSourceData();
   const {likeness, report} = await compileLargeHouse(id);
   if (!likeness) throw Error(`${id}: no archived crops for pand ${report.pandId} (all-walls.ts --pand=${report.pandId} --archive)`);
@@ -137,7 +202,9 @@ export async function measureHouse(id: string, opts: {write: boolean; system: bo
   const summary = likenessSummary(likeness);
   const out = {id, pandId: intent.pandId, date: today(), method: 'measureFacade.ts (k=4 clusters on smoothed normalised Lab + texture, wall = clusters enriched in the floor zones, mixed edge cells by nearest pure colour, light-trim exposure normalisation, autocorrelated bay/storey rhythm, colour split along u) on all-walls.ts --archive crops paired by cropToPanel.ts; likeness.ts against the model elevation',
     groups: summary.map((row, i) => ({...row, gaps: groupGaps(intent.walls[likeness[i].group], likeness[i])}))};
-  await fs.writeFile(path.join(HOUSES, id, 'measured.json'), JSON.stringify(out, null, 1) + '\n');
+  const measuredFile = opts.measuredFile ?? path.join(HOUSES, id, 'measured.json');
+  await fs.mkdir(path.dirname(measuredFile), {recursive: true});
+  await fs.writeFile(measuredFile, JSON.stringify(out, null, 1) + '\n');
   for (const g of likeness) {
     if (!g.measured) { console.log(`  walls[${g.group}] panel ${g.panel}: no matched photo`); continue; }
     const m = g.measured, L = g.likeness!;
@@ -156,23 +223,45 @@ export async function measureHouse(id: string, opts: {write: boolean; system: bo
   }
   if (!opts.write) return out;
   const measuredGroups: number[] = [], sources: IntentSource[] = [], notes: string[] = [];
+  const builtYear: number | null = JSON.parse(await fs.readFile(path.join(HOUSES, id, 'facts.json'), 'utf8')).heights?.builtYear ?? null;
+  const areaOf = (g: GroupLikeness) => (g.box ? (g.box.u1 - g.box.u0) * (g.box.v1 - g.box.v0) : 0);
+  // the building's majority measured system: the trusted proposals of the groups with evidence (a distrusted curtain falls back to it)
+  const trusted = likeness.flatMap(g => {
+    if (!g.likeness || g.likeness.verdict === 'NO EVIDENCE' || cropPredatesBuilding(g.crop?.capturedAt, builtYear)) return [];
+    const {system, distrust} = proposedSystem(intent.walls[g.group], g);
+    // a curtain wall is never the fallback for a distrusted curtain class: the majority of the other trusted systems
+    return system && system !== 'curtain-wall' && !distrust.length ? [{system, areaM2: areaOf(g)}] : [];
+  });
   for (const g of likeness) {
-    const w = intent.walls[g.group], {patch, notes: n} = proposeGroup(w, g, opts);
-    if (!Object.keys(patch).length) continue;
+    const w = intent.walls[g.group], {patch, notes: n} = proposeGroup(w, g, {...opts, builtYear, fallbackSystem: trusted.length ? majoritySystem(trusted, w.system) : undefined});
+    if (!Object.keys(patch).length) { notes.push(...n.map(t => `walls[${g.group}] ${t}`)); continue; }
     Object.assign(w, patch); measuredGroups.push(g.group); notes.push(...n.map(t => `walls[${g.group}] ${t}`));
     for (const src of cropSources(g)) if (!sources.some(s => s.id === src.id)) sources.push(src);
   }
   if (measuredGroups.length) {
+    // a drafted intent: the walls no photo shows take the photographed walls' area-weighted median colour and family
+    // (inheritedWall), drawn as measured (`measured.otherWalls`); a hand-authored house palette is never touched
+    let inherited: ReturnType<typeof inheritedWall> = null;
+    if (isDraftIntent(intent)) {
+      inherited = inheritedWall(likeness.filter(g => measuredGroups.includes(g.group)).map(g => ({hex: g.measured!.wall, family: g.likeness!.wall.photoFamily, areaM2: areaOf(g)})));
+      if (inherited) {
+        intent.palette = {...intent.palette, brick: inherited.brick, ...(inherited.wallMaterial === 'stucco' ? {wallMaterial: 'stucco' as const} : {})};
+        // under a stucco house the groups whose own photo shows brick courses keep brick
+        if (inherited.wallMaterial === 'stucco') for (const g of likeness) if (measuredGroups.includes(g.group) && g.likeness!.wall.photoFamily === 'brick' && !intent.walls[g.group].wallMaterial) intent.walls[g.group].wallMaterial = 'brick';
+        notes.push(`unphotographed walls take ${inherited.brick} (${inherited.wallMaterial}), the area-weighted median of groups ${measuredGroups.join(', ')}`);
+      }
+    }
     // keep sources that are not staging crops (other evidence); the archived crops replace the staging ones
     intent.sources = [...sources, ...intent.sources.filter(s => !s.image?.startsWith('staging/pand-reference-walls/') && !sources.some(n => n.id === s.id))];
     // groups measured earlier by hand from the crops (a palette colour kept in `hand`) stay measured
     const kept = (intent.measured?.groups ?? []).filter(gi => !measuredGroups.includes(gi) && intent.walls[gi]?.hand?.some(k => k === 'palette' || k.startsWith('palette.')));
-    intent.measured = {date: today(), groups: [...measuredGroups, ...kept].sort((a, b) => a - b)};
+    intent.measured = {date: today(), groups: [...measuredGroups, ...kept].sort((a, b) => a - b), ...(inherited ? {otherWalls: true} : {})};
     intent.notes = [...(intent.notes ?? []).filter(t => !t.startsWith('Measured ')), `Measured ${today()} (measure.ts, evidence in measured.json): groups ${measuredGroups.join(', ')} take the photo's wall and glass colour, window shape, bay count and front class${notes.length ? '; ' + notes.join('; ') : ''}.`];
     validateLargeIntent(intent);
     await fs.writeFile(file, JSON.stringify(intent, null, 1));
     console.log(`  wrote ${file}: groups ${measuredGroups.join(', ')}`);
     await refineGlazing(id, file);
+    if (isDraftIntent(intent)) await capDraftBudget(id, file);
   }
   return out;
 }
@@ -181,6 +270,8 @@ if (process.argv[1]?.endsWith('building-recipes/measure.ts')) {
   const ids = (process.argv.find(a => a.startsWith('--house='))?.slice(8) ?? '').split(',').filter(Boolean);
   if (!ids.length) throw Error('Use --house=<id>[,<id>...]');
   try {
-    for (const id of ids) { console.log(id); await measureHouse(id, {write: process.argv.includes('--write'), system: !process.argv.includes('--no-system'), bays: !process.argv.includes('--no-bays'), debug: process.argv.includes('--debug')}); }
+    const measuredOut = process.argv.find(a => a.startsWith('--measured-out='))?.slice(15);
+    if (measuredOut && ids.length > 1) throw Error('--measured-out takes one --house');
+    for (const id of ids) { console.log(id); await measureHouse(id, {write: process.argv.includes('--write'), system: !process.argv.includes('--no-system'), bays: !process.argv.includes('--no-bays'), debug: process.argv.includes('--debug'), measuredFile: measuredOut}); }
   } finally { await closeRenderer(); }
 }

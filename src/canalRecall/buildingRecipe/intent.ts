@@ -1040,6 +1040,11 @@ export interface LargeBuildingIntent {
    * `houses/<id>/measured.json`): the date of that run and the wall groups it wrote.
    */
   measured?: {date: string; groups: number[]; /** `palette.brick` (the unlisted walls' colour) was measured too, so it is drawn as is */ otherWalls?: boolean};
+  /**
+   * `factory`: written by the landmark factory's draft (`draftLarge.ts`), so the factory may redraft and measure it
+   * (`--write`). Absent: hand-authored, and the factory never writes the intent, its facts or its measured.json.
+   */
+  draftedBy?: 'factory';
   notes?: string[];
 }
 export type RoofMaterial = typeof ROOF_MATERIALS[number];
