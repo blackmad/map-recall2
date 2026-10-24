@@ -252,10 +252,11 @@
    ],
    "verdict": {
     "outcome": "fix",
-    "note": "unphotographed walls default to orange brick; photo walls are grey brick/painted grey: inherit the measured wall family",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "note": "grey family now right; walls[3] glass band reads as blank, walls[4] 3 vs 9 columns",
+    "sheet": "artifacts/strips/factory-batch-1b",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 2
    }
   },
   {
@@ -381,10 +382,11 @@
    ],
    "verdict": {
     "outcome": "fix",
-    "note": "tower reads right in massing; low wing orange vs grey photo; glazing band off",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "note": "tower massing right but photo tower is orange-brown, model dark grey (inherited from a shaded crop)",
+    "sheet": "artifacts/strips/factory-batch-1b",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 2
    }
   },
   {
@@ -476,10 +478,11 @@
    ],
    "verdict": {
     "outcome": "fix",
-    "note": "triangle budget; window shape square vs photo wide, columns 53 vs 10 on walls[3]: apply measured columns",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "note": "colour and 10 columns right; kit gap: deep loggias and a glazed ground floor read flat",
+    "sheet": "artifacts/strips/factory-batch-1b",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 2
    }
   },
   {
@@ -559,10 +562,11 @@
    ],
    "verdict": {
     "outcome": "fix",
-    "note": "walls not drawn (curtain-wall class on a painted-black brick front with a shop band)",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "note": "walls[0] measured the red sign band (photo painted black); walls[1] still curtain",
+    "sheet": "artifacts/strips/factory-batch-1b",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 2
    }
   },
   {
@@ -680,10 +684,11 @@
    ],
    "verdict": {
     "outcome": "fix",
-    "note": "closest of the batch (all WARN): mask IoU low, wall too light vs photo painted-black on walls[1]",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "note": "massing right; walls[0] photo dark grey + metal panel, model beige",
+    "sheet": "artifacts/strips/factory-batch-1b",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 2
    }
   },
   {
@@ -775,10 +780,11 @@
    ],
    "verdict": {
     "outcome": "no-evidence",
-    "note": "2018 photos show the building under construction; need a newer panorama",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "note": "only crops predate construction; inherited near-black from a glass gap",
+    "sheet": "artifacts/strips/factory-batch-1b",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 2
    }
   },
   {
@@ -882,10 +888,11 @@
    ],
    "verdict": {
     "outcome": "fix",
-    "note": "photo walls are grey stone/brick; model orange; eaves gate on walls[3]",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "note": "grey stone right on walls[3]; walls[4] glass-block stair tower missing; eaves gate",
+    "sheet": "artifacts/strips/factory-batch-1b",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 2
    }
   },
   {
@@ -986,10 +993,11 @@
    ],
    "verdict": {
     "outcome": "fix",
-    "note": "walls[1] classed curtain-wall from a foliage-occluded crop; brick-grey in photo",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "note": "closest: dark brick, 12 bays, set-back top all right; eaves-vs-3dbag gate on walls[2,3,5]",
+    "sheet": "artifacts/strips/factory-batch-1b",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 2
    }
   },
   {
@@ -1133,10 +1141,11 @@
    ],
    "verdict": {
     "outcome": "no-evidence",
-    "note": "2021-22 photos are scaffolding and a site hut; need a newer panorama",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "note": "photos predate the 2022 building",
+    "sheet": "artifacts/strips/factory-batch-1b",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 2
    }
   },
   {
@@ -1351,10 +1360,11 @@
    ],
    "verdict": {
     "outcome": "fix",
-    "note": "dark brick right; columns 5 vs photo 29 and window wide vs tall: apply measured columns and window shape",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "note": "hand-authored intent: wall #917e69 vs photo #3c4240 and 9 vs 30 columns; needs a hand edit",
+    "sheet": "artifacts/strips/factory-batch-1b",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 2
    }
   },
   {
@@ -1416,10 +1426,11 @@
    ],
    "verdict": {
     "outcome": "fix",
-    "note": "brick, roof and storeys right; window shape wide vs photo square on walls[0]; close to pass",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "note": "hand-authored intent: wall too red vs photo purple-brown; window wide vs tall",
+    "sheet": "artifacts/strips/factory-batch-1b",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 2
    }
   },
   {
@@ -1564,10 +1575,11 @@
    ],
    "verdict": {
     "outcome": "fix",
-    "note": "photo is white/grey panel and glass; model orange brick on unphotographed walls and paint-grey green on walls[6]",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "note": "kit gap: white panel facade with glass bays drawn as grey brick; eaves gate",
+    "sheet": "artifacts/strips/factory-batch-1b",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 2
    }
   },
   {

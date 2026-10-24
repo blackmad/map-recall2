@@ -180,7 +180,18 @@ Open, in order:
   applied (Metis 5 vs photo 29 columns, wide vs tall); (3) curtain-wall
   is chosen from foliage- or scaffold-occluded crops; (4) four
   triangle-budget failures. Closest: Oostpoort Montessori, OBA Osdorp,
-  Metis. Draft-fix lane (opus) running; batch 1 is re-run after it. Strip
+  Metis. Draft fixed 2026-10-24 (lane/factory-draft-fix @ 49c14cf1c: era
+  prior + inherited measured colour for unphotographed walls, gate photo
+  grid written back as columns/window, curtain-wall needs usable evidence
+  and crops after the build year, budget cap by blanking unphotographed
+  groups, factory never writes hand-authored intents). Round 2: colour
+  coherence fixed everywhere, triangle gate 4 → 0, columns right on
+  IJburg; still 0 pass: 11 fix, 2 no-evidence. What blocks passing now is
+  kit gaps (loggias, glazed plinths, panel facades: `docs/handoffs/kit-gaps.md`),
+  eaves-vs-3DBAG gates on 4 houses, and Metis/Oostpoort, whose intents are
+  hand-authored and need hand edits. Next: one opus kit session on the
+  top two gaps, then batch 2 on a different mix (canal-belt and 19th-c
+  pands, where the kit is strongest). Strip
   pages now show the two best-evidenced walls per house (~2,000 px).
 - **kits-review (K)**: Role A done 2026-10-24 (`npm run kit:sheets`, run
   under the browser lock; 546 kits on 137 pages in
