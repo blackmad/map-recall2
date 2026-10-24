@@ -37,7 +37,12 @@ export function census(): {headline: number; strict: number; rows: CensusRow[]; 
   // this programme's review records: queue verdicts (by pand) and landmark-reviews.json (by key)
   const reviews = new Map<string, {outcome: string; date?: string}>();
   try { for (const i of read('public/canal-drive/landmark-factory-queue.json').items) if (i.verdict?.outcome === 'pass' || i.status === 'reviewed-pass' || i.status === 'installed') reviews.set(`pand:${i.pand}`, {outcome: 'pass', date: i.verdict?.date}); } catch { /* no queue yet */ }
-  try { for (const r of read('public/canal-drive/landmark-reviews.json').reviews ?? []) if (r.verdict === 'pass') reviews.set(r.key, {outcome: 'pass', date: r.date}); } catch { /* no reviews yet */ }
+  // the latest round decides: a kit that passed once and was held later does not count
+  try {
+    const latest = new Map<string, {verdict: string; date: string}>();
+    for (const r of read('public/canal-drive/landmark-reviews.json').reviews ?? []) latest.set(r.key, r);
+    for (const [key, r] of latest) if (r.verdict === 'pass') reviews.set(key, {outcome: 'pass', date: r.date});
+  } catch { /* no reviews yet */ }
   const stripReviewed = (key: string, pands: string[]) => reviews.get(key) ?? pands.map(p => reviews.get(`pand:${p}`)).find(Boolean);
 
   const rows: CensusRow[] = [];

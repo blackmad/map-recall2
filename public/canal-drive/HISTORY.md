@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**Every landmark kit reviewed (2026-10-24, round 3).** All 546 kits were
+re-sheeted on main after the school fixes (`kits-r3-1..137`, 20 s with the
+cached crops) and two Opus turns gave each a verdict, merged into
+`landmark-reviews.json` as round 3 (`weakEvidence` marks ten tight-crop
+passes). Latest verdict per kit: 45 pass, 243 hold, 258 no evidence (96 OSM
+parts with no location, eight famous landmarks with no resolved pand, the
+rest foliage, wrong building or no photo). The census now takes the latest
+round per kit, so a kit passed once and held later no longer counts.
+Headline 388 → 431 (strict 49 → 92). Top hold reasons: wall colour family
+on church/cinema kits (~60), curtain-wall/framed glazing (~30), windowless
+shells (~32), pitched vs flat roof (~40 both ways), wrong kit type on
+housing (13).
+
 **School kits round 2 (2026-10-24, #34).** The olive in measured school
 walls was mostly shaded and autumn leaves joining the wall cluster, not a
 camera cast; panoramas also render mid/dark brick past Lab hue ~78 as khaki.
