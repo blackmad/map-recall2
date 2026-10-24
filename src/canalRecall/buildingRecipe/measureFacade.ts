@@ -16,7 +16,8 @@
  * - **grid**: the column profile of not-wall cells (plus half its vertical-edge energy) over the upper storeys is
  *   autocorrelated for the bay pitch (0.8..8 m; the shortest lag within 85 % of the best, so harmonics lose); the
  *   storey height the same way on the rows (2.4..6.5 m). Folding the mask at the pitch and over the fit's storeys gives
- *   window width (fraction of the bay), height and sill (fractions of the storey).
+ *   window width (fraction of the bay), height and sill (fractions of the storey); a bay holding a group of alike windows
+ *   (paired sashes) counts each (`windowGroupOf`: `window.perBay`, `windowColumns`).
  * - **class**: curtain wall (glazing >= 0.68), ribbon (windows span >= 85 % of the bay, or no column contrast), glazed
  *   columns (windows >= 92 % of the storey: glass runs through the floor lines), else a punched grid. Shape class from
  *   the window aspect (height / width): tall > 1.4, wide < 0.7, else square.
@@ -111,7 +112,11 @@ export interface FacadeMeasurement {
   ground: {glazing: number | null; usable: number};
   pitchM: number | null; pitchScore: number; columns: number | null;
   storeyM: number | null;
-  window: {w: number; h: number; sill: number; aspect: number; shape: ShapeClass} | null;
+  /** w: the windows' share of the bay (all windows of a group together), aspect per window; perBay: windows grouped in each
+   *  bay (paired windows = 2; absent = 1) */
+  window: {w: number; h: number; sill: number; aspect: number; shape: ShapeClass; perBay?: number} | null;
+  /** window columns: `columns` bays x the windows grouped in each bay (`window.perBay`) */
+  windowColumns?: number | null;
   frontClass: FrontClass;
   /** two wall materials side by side along the front (two bricks on one 3DBAG plane): where (fraction of the box width
    *  from u0) and the colour each side; null when the wall is one colour. The kit has no per-group split yet: a named gap. */
@@ -432,6 +437,12 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
       // a second continuous body spanning the height (two bricks on one 3DBAG plane)
       || (share[i] >= 0.1 && shape[i].conn >= 0.6 && shape[i].spanH >= 0.6 && shape[i].spanW >= 0.3 && (!glassy(i) || share[i] < share[wallC] * 1.5)));
   }
+  // Same material in other light: a lighter not-wall cluster with a warm wall's chromaticity (the r, g, b shares of its
+  // median colour) is that wall in sun where the wall cluster is its shade (the sunlit brick piers and frieze beside
+  // the shaded wall of pand-233585 walls[1], read as glazing), not glazing or trim: shading scales the channels together,
+  // while glass shows the sky or the street (pand-233585: lit brick 1.8, glass 12..13 from the wall's chromaticity, x100).
+  const sameMaterial = sameMaterialClusters(pool.map(k => norm(mean[k])), label, centres.length, wallSet, wallC);
+  sameMaterial.forEach((m, i) => { if (m) wallSet[i] = true; });
   const wallLab = centres[wallC]; // the pre-opening wall centre: dark / light split of the not-wall cells
   const wallCentres = fc.filter((_, i) => wallSet[i]);
   const allUsable = allIdx.filter(k => usable[k]);
@@ -506,7 +517,8 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   // the interior cells of every body cluster (a multi-tone brick is one wall: Waagdragerhof's tower is red and dark bricks
   // mixed); cells round the openings (reveal shadow, frames) are left out by `interior`
   // and not a thin cluster (< 15 % solid: stone bands, mortar-shadow speckle) unless the wall cluster itself is one
-  const bodyC = (c: number) => c >= 0 && wallSet[c] && !op.frameLike[c] && (solid[c] >= 0.15 || c === wallC);
+  // (the wall in other light, `sameMaterial`, is wall in the mask but not a colour sample: the colour stays the body's)
+  const bodyC = (c: number) => c >= 0 && wallSet[c] && !sameMaterial[c] && !op.frameLike[c] && (solid[c] >= 0.15 || c === wallC);
   // the body's solid parts first (0.2 m clear of anything else: piers, not the 0.3 m stone bands between storeys), else 0.1 m
   const bodyCells = allUsable.filter(k => mask[k] === MASK.wall && bodyC(fullLabel[k]) && isUpper(Math.floor(k / cols)));
   const solid2 = bodyCells.filter(k => interior(k, 2)), inner0 = solid2.length >= Math.max(30, bodyCells.length * 0.1) ? solid2 : bodyCells.filter(k => interior(k));
@@ -520,7 +532,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   const glassRaw = darkCells.length >= 20 ? medRgb(darkCells.map(k => mean[k])) : null;
   const trimN = trimCells.length >= 20 ? norm(medRgb(trimCells.map(k => mean[k]))) : null;
   const grid = analyseMask({mask, cols, rows, cell, box, lines: input.lines, groundBandM: gb, edgeX, edgeY});
-  const {glazing, storeyGlazing, ground, pitchM, pitchScore, columns, storeyM, window, frontClass} = grid;
+  const {glazing, storeyGlazing, ground, pitchM, pitchScore, columns, storeyM, window, frontClass, windowColumns} = grid;
 
   // Material: texture pooled over the interior wall cells; when the courses are resolved, the colour is the brick faces'
   const tex = cellTexture(im, box, cell), wallTex = wallCells.length ? poolTexture(tex, wallCells) : null;
@@ -539,7 +551,33 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
     openings: {count: op.openings.length, regularity: op.regularity, surrounds: op.surrounds, range: op.range, abstain: op.abstain, frameLike: op.frameLike.flatMap((f, i) => (f ? [i] : [])), accessory: op.accessory, secondMaterial: op.secondMaterial, bands: op.bands, ambiguous: op.ambiguous},
     glass: glassRaw && glassN ? {raw: glassRaw.map(Math.round) as Rgb, normalised: glassN.map(Math.round) as Rgb, hex: hex(glassN), rawHex: hex(glassRaw), cells: darkCells.length} : null,
     trim: trimN ? {normalised: trimN.map(Math.round) as Rgb, hex: hex(trimN), cells: trimCells.length} : null,
-    glazing, storeyGlazing, ground, pitchM, pitchScore, columns, storeyM, window, frontClass, split, rowJoints};
+    glazing, storeyGlazing, ground, pitchM, pitchScore, columns, windowColumns, storeyM, window, frontClass, split, rowJoints};
+}
+
+/** Chromaticity (r, g, b shares x 100) of a colour. */
+export const chromaticity = (c: Rgb): Rgb => { const t = Math.max(1, c[0] + c[1] + c[2]); return [c[0] / t * 100, c[1] / t * 100, c[2] / t * 100]; };
+export const SAME_MATERIAL = {minWarmth: 10, maxDist: 0.3, minChromaShare: 0.6, minLift: 3} as const;
+/**
+ * Clusters (by `label` over `colours`) that are the wall cluster `wallC` lit where the wall cluster is in shade: not in
+ * `wallSet`, lighter than the wall (>= `minLift` L*), their median chromaticity within `maxDist` x the wall's distance
+ * from neutral of the wall's own, and at least `minChromaShare` as far from neutral (a pale tint of a neutral is not the
+ * brick). Only on a warm wall (red share - blue share >= `minWarmth`, x100: brick, sandstone): glass mirrors the sky or
+ * the street, neutral to cool, so a warm chromaticity is the material's; on a grey or cool wall (metal panels, render)
+ * the glass shares its chromaticity (pand-083151). Never a darker cluster: dark panes mirroring the brick opposite share
+ * its chromaticity (Houthavenkade 26 walls[0]).
+ */
+export function sameMaterialClusters(colours: readonly Rgb[], label: ArrayLike<number>, nC: number, wallSet: readonly boolean[], wallC: number): boolean[] {
+  const out = new Array(nC).fill(false), N3 = 100 / 3;
+  const med = Array.from({length: nC}, (_, c) => { const m: Rgb[] = []; for (let n = 0; n < colours.length; n++) if (label[n] === c) m.push(colours[n]); return m.length ? medRgb(m) : null; });
+  const chroma = med.map(m => (m ? chromaticity(m) : null)), light = med.map(m => (m ? rgbToLab(m)[0] : 0));
+  const fromNeutral = (q: Rgb) => Math.hypot(q[0] - N3, q[1] - N3, q[2] - N3), w = chroma[wallC];
+  if (!w || w[0] - w[2] < SAME_MATERIAL.minWarmth) return out;
+  const wn = fromNeutral(w);
+  for (let c = 0; c < nC; c++) {
+    const q = chroma[c]; if (wallSet[c] || !q || light[c] < light[wallC] + SAME_MATERIAL.minLift) continue;
+    out[c] = Math.hypot(q[0] - w[0], q[1] - w[1], q[2] - w[2]) <= SAME_MATERIAL.maxDist * wn && fromNeutral(q) >= SAME_MATERIAL.minChromaShare * wn;
+  }
+  return out;
 }
 
 /**
@@ -580,6 +618,40 @@ export interface MaskGrid {
   glazing: number; storeyGlazing: (number | null)[]; ground: {glazing: number | null; usable: number};
   pitchM: number | null; pitchScore: number; columns: number | null; storeyM: number | null;
   window: FacadeMeasurement['window']; frontClass: FrontClass;
+  /** window columns: bays x windows per bay (paired windows count twice); null without a bay pitch */
+  windowColumns: number | null;
+}
+
+/**
+ * Windows grouped in one bay (`n`) and one window's width (`widthM`, the runs' mean; null for one window): the
+ * opening profile (not-wall share per column) folded at the bay pitch at cell resolution (circular), its runs above
+ * the half-contrast line. Two to four runs, each >= 0.3 m wide and >= 0.6 x the widest (alike windows), parted by >= 0.2 m of wall, are
+ * that many windows per bay (a pair or triple of windows between piers: Stadhouderskade 111's paired sashes, the kit's
+ * `windowGroup`); one run, or runs too unequal (an irregular front folded at a long pitch: Quellijnstraat 36) or too
+ * close (a mullion inside one window), is one window. The aspect then uses the runs' mean width, one window's.
+ */
+export function windowGroupOf(cp: readonly number[], pitchCells: number, cell: number): {n: number; widthM: number | null} {
+  const one = {n: 1, widthM: null};
+  const nb = Math.max(4, Math.round(pitchCells)), fb = new Array(nb).fill(0), fn = new Array(nb).fill(0);
+  cp.forEach((v, i) => { if (!Number.isFinite(v)) return; const b = Math.floor((((i + 0.5) / pitchCells) % 1) * nb); fb[b] += v; fn[b]++; });
+  const f = fb.map((v, b) => (fn[b] ? v / fn[b] : NaN));
+  if (f.some(v => !Number.isFinite(v))) return one;
+  const lo = Math.min(...f), hi = Math.max(...f); if (hi - lo < 0.15) return one;
+  const thr = (lo + hi) / 2, on = f.map(v => v > thr);
+  if (on.every(Boolean) || !on.some(Boolean)) return one;
+  // runs on the circle, starting after a gap
+  const start = on.findIndex((v, b) => v && !on[(b - 1 + nb) % nb]);
+  const runs: number[] = [], gaps: number[] = [];
+  let b = start;
+  for (let n = 0; n < nb;) {
+    let r = 0; while (n < nb && on[b]) { r++; b = (b + 1) % nb; n++; }
+    let g = 0; while (n < nb && !on[b]) { g++; b = (b + 1) % nb; n++; }
+    runs.push(r); gaps.push(g);
+  }
+  const wide = Math.max(...runs);
+  if (runs.length < 2 || runs.length > 4) return one;
+  if (runs.some(r => r * cell < 0.3 - 1e-9 || r < 0.6 * wide) || gaps.some(g => g * cell < 0.2 - 1e-9)) return one;
+  return {n: runs.length, widthM: runs.reduce((x, r) => x + r, 0) / runs.length * cell};
 }
 /**
  * The grid of a wall/not-wall cell mask (`MASK` values, row 0 at `box.v1`): glazing per upper storey of `lines` and of the
@@ -656,13 +728,16 @@ export function analyseMask(a: {mask: Uint8Array; cols: number; rows: number; ce
       const h = first < 0 ? 0 : (last - first + 1) / B, sill = first < 0 ? 0 : first / B;
       const storeyH = lines.length > 2 ? lines[lines.length - 1] - lines[lines.length - 2] : 3;
       const unit = (() => { const ups = lines.slice(1).map((l, s) => lines[s + 2] - l).filter(v => Number.isFinite(v) && v > 0); return ups.length ? median(ups) : storeyH; })();
-      const aspect = wFrac > 0 ? (h * unit) / (wFrac * pitchM) : 0;
-      window = {w: +wFrac.toFixed(3), h: +h.toFixed(3), sill: +sill.toFixed(3), aspect: +aspect.toFixed(2), shape: aspect > 1.4 ? 'tall' : aspect < 0.7 ? 'wide' : 'square'};
+      // per window: in a bay holding a group of windows (perBay > 1) the aspect is one window's (windowGroupOf)
+      const grp = windowGroupOf(cp, P, cell), perBay = grp.n;
+      const aspect = wFrac > 0 ? (h * unit) / (grp.widthM ?? wFrac * pitchM) : 0;
+      window = {w: +wFrac.toFixed(3), h: +h.toFixed(3), sill: +sill.toFixed(3), aspect: +aspect.toFixed(2), shape: aspect > 1.4 ? 'tall' : aspect < 0.7 ? 'wide' : 'square', ...(perBay > 1 ? {perBay} : {})};
     }
   }
   const contrast = (() => { const v = cp.filter(Number.isFinite); return v.length ? quant(v, 0.9) - quant(v, 0.1) : 0; })();
   const frontClass: FrontClass = glazing < 0.05 ? 'blank' : glazing >= 0.68 ? 'curtain'
     : (!window && contrast < 0.15 && glazing >= 0.2) || (window && window.w >= 0.85) ? 'ribbon'
     : window && window.h >= 0.92 ? 'columns' : 'punched';
-  return {glazing: +glazing.toFixed(3), storeyGlazing, ground, pitchM: pitchM ? +pitchM.toFixed(3) : null, pitchScore: per?.score ?? 0, columns, storeyM, window, frontClass};
+  const windowColumns = columns === null ? null : columns * (window?.perBay ?? 1);
+  return {glazing: +glazing.toFixed(3), storeyGlazing, ground, pitchM: pitchM ? +pitchM.toFixed(3) : null, pitchScore: per?.score ?? 0, columns, storeyM, window, frontClass, windowColumns};
 }

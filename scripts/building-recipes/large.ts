@@ -131,7 +131,7 @@ if (process.argv[1]?.endsWith('building-recipes/large.ts')) {
       console.log(`${id}: ${report.triangles} tris, ${report.bytes} B, ${(report.timings.fitCompileMs + report.timings.exportGateMs).toFixed(0)} ms, openings ${report.compose.recessed ?? 0} recessed / ${report.compose.proud ?? 0} flush, components ${JSON.stringify(report.components)}, gates ${bad.length ? 'FAIL ' + bad.map(g => `${g.id}=${JSON.stringify(g.value)}`).join('; ') : 'pass'}`);
       for (const w of report.fit.warnings) console.log(`  warn: ${w}`);
       console.log(`  ${likenessLine(likeness)}`);
-      for (const g of likeness ?? []) if (g.likeness) { const L = g.likeness; console.log(`    walls[${g.group}] ${L.verdict}: wall ${L.wall.photo} vs ${L.wall.model} (dL ${L.wall.dL}), glazing ${L.glazing.photoMean} vs ${L.glazing.modelMean}, columns ${L.columns.photo} vs ${L.columns.model}, shape ${L.shape.photo} vs ${L.shape.model}, IoU ${L.iou}${L.reasons.length ? ' — ' + L.reasons.join('; ') : ''}`); }
+      for (const g of likeness ?? []) if (g.likeness) { const L = g.likeness; console.log(`    walls[${g.group}] ${L.verdict}: wall ${L.wall.photo} vs ${L.wall.model} (dL ${L.wall.dL}), glazing ${L.glazing.photoMean} vs ${L.glazing.modelMean}, columns ${L.columns.photo} vs ${L.columns.model} (windows ${L.columns.windows?.photo ?? '-'} vs ${L.columns.windows?.model ?? '-'}), shape ${L.shape.photo} vs ${L.shape.model}, IoU ${L.iou}${L.reasons.length ? ' — ' + L.reasons.join('; ') : ''}`); }
       if (!process.argv.includes('--no-render')) for (const s of await largeContactSheets(id, built, intent, likeness)) console.log(`  ${s}`);
     }
   } finally { await closeRenderer(); }

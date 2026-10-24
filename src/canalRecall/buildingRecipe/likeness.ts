@@ -12,8 +12,9 @@
  *   photo's light-trim-normalised wall and the model's game wall colour; hue within 12 degrees only when both
  *   saturations exceed 0.08 (as blockFace/wallColour.ts);
  * - glazing: not-wall share per upper storey band within 0.15, and the upper-storey mean within 0.10;
- * - columns: the column count (autocorrelation of the upper-storey not-wall profile) within 20 %, and the same window
- *   shape class (tall > 1.4 / square / wide < 0.7, height over width);
+ * - columns: the window-column count (bays from the autocorrelation of the upper-storey not-wall profile, times the
+ *   windows grouped in each bay: measureFacade `windowGroupOf`) within 20 %, and the same window shape class (tall > 1.4
+ *   / square / wide < 0.7, height over one window's width);
  * - report only: not-wall mask IoU (WARN under 0.45), glass colour, the ground band (0..2.5 m, never pooled).
  *
  * NO EVIDENCE (abstain) when under 40 % of the upper cells are usable, foliage covers over 25 %, over 30 % is
@@ -116,7 +117,9 @@ export interface LikenessResult {
   wall: {photo: string; photoRaw: string; model: string | null; modelToday: string | null; photoFamily: string; modelFamily: string | null; photoMaterial: string; modelMaterial: string | null; dL: number | null; dHue: number | null; pass: boolean};
   glass: {photo: string | null; model: string | null};
   glazing: {photo: (number | null)[]; model: (number | null)[]; photoMean: number; modelMean: number; maxDiff: number | null; meanDiff: number; pass: boolean};
-  columns: {photo: number | null; model: number | null; pass: boolean | null};
+  /** photo / model: bays (the grid pitch; measure.ts proposes bays from it); windows: window columns (bays x windows per
+   *  bay), what `pass` judges, so paired windows in a bay compare with a photo whose pitch is the single window */
+  columns: {photo: number | null; model: number | null; windows?: {photo: number | null; model: number | null}; pass: boolean | null};
   /** the photo's grid on the model's box after the shift (what `columns` and `shape` are judged on): its bay pitch and folded window */
   photoGrid: {pitchM: number | null; window: MaskGrid['window']};
   shape: {photo: string | null; model: string | null; pass: boolean | null};
@@ -204,7 +207,8 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   const glazingPass = glazingAbstain !== null || ((maxDiff === null || maxDiff <= LIKENESS.storeyGlazing) && meanDiff <= LIKENESS.meanGlazing);
   // columns and window shape (not where the photo shows no rhythm: curtain walls, blank fronts)
   const rhythmic = pg.frontClass !== 'curtain' && pg.frontClass !== 'blank';
-  const colPass = !rhythmic || pg.columns === null ? null : mg.columns !== null && Math.abs(mg.columns - pg.columns) <= LIKENESS.columns * pg.columns;
+  const pW = pg.windowColumns, mW = mg.windowColumns;
+  const colPass = !rhythmic || pW === null ? null : mW !== null && Math.abs(mW - pW) <= LIKENESS.columns * pW;
   const shapePass = !rhythmic || !pg.window ? null : !!mg.window && mg.window.shape === pg.window.shape;
   const reasons: string[] = [];
   if (!wallPass) reasons.push(`wall ${!mw ? 'not drawn' : !famPass ? `family ${mFam} vs photo ${pFam}` : Math.abs(dL!) > LIKENESS.dL ? `dL ${dL! > 0 ? '+' : ''}${dL!.toFixed(2)}` : `hue ${dHue!.toFixed(0)} deg`}`);
@@ -214,7 +218,7 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   const warns: string[] = [];
   if (glazingAbstain) warns.push(`glazing not judged (${glazingAbstain})`);
   if (pFamResolved === null) warns.push(`wall family unresolved (${hex(pw)} is dark and neutral, brick courses not resolved): lightness and hue judged only`);
-  if (colPass === false) warns.push(`columns ${mg.columns ?? 'none'} vs photo ${pg.columns}`);
+  if (colPass === false) warns.push(`columns ${mW ?? 'none'} vs photo ${pW}`);
   if (shapePass === false) reasons.push(`window shape ${mg.window?.shape ?? 'none'} vs photo ${pg.window!.shape}`);
   const iou = best.iou >= 0 ? +best.iou.toFixed(3) : null;
   const verdict = likenessVerdict({abstain, fails: reasons, warns, iou});
@@ -225,7 +229,7 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
     wall: {photo: photo.wall.hex, photoRaw: photo.wall.rawHex, model: mw ? hex(mw) : null, modelToday: model.wallToday ? hex(model.wallToday) : null, photoFamily: pFamResolved ?? 'unresolved', modelFamily: mFam, photoMaterial: pm.material.id, modelMaterial: mm?.material.id ?? null, dL: dL === null ? null : +dL.toFixed(3), dHue: dHue === null ? null : +dHue.toFixed(1), pass: wallPass},
     glass: {photo: photo.glass?.hex ?? null, model: model.glass ? hex(model.glass) : null},
     glazing: {photo: pg.storeyGlazing, model: mg.storeyGlazing, photoMean: pg.glazing, modelMean: mg.glazing, maxDiff: maxDiff === null ? null : +maxDiff.toFixed(3), meanDiff: +meanDiff.toFixed(3), pass: glazingPass},
-    columns: {photo: pg.columns, model: mg.columns, pass: colPass}, photoGrid: {pitchM: pg.pitchM, window: pg.window}, shape: {photo: pg.window?.shape ?? null, model: mg.window?.shape ?? null, pass: shapePass},
+    columns: {photo: pg.columns, model: mg.columns, windows: {photo: pW, model: mW}, pass: colPass}, photoGrid: {pitchM: pg.pitchM, window: pg.window}, shape: {photo: pg.window?.shape ?? null, model: mg.window?.shape ?? null, pass: shapePass},
     classes: {photo: pg.frontClass, model: mg.frontClass}, ground: {photo: pg.ground.glazing, model: mg.ground.glazing},
     evidence: {usable: +usable.toFixed(3), foliage: photo.foliageFraction, washedOut: photo.washedOutFraction, obliquityDeg: a.obliquityDeg ?? null, cameraDistM: a.cameraDistM ?? null, widthM: +widthM.toFixed(2), abstain}};
 }

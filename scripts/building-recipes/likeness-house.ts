@@ -163,7 +163,7 @@ export async function likenessRows(g: GroupLikeness, maxWidth = 640): Promise<{r
   const lines = [
     `wall: photo ${L.wall.photoFamily} (${L.wall.photoMaterial}) vs model ${L.wall.modelFamily ?? '-'} (${L.wall.modelMaterial ?? '-'}), dL ${L.wall.dL ?? '-'}${L.wall.dHue !== null ? `, dHue ${L.wall.dHue}` : ''} ${L.wall.pass ? 'ok' : 'FAIL'}`,
     `glazing % per upper storey: photo ${L.glazing.photo.slice(1).map(pct).join(' ')} | model ${L.glazing.model.slice(1).map(pct).join(' ')}; mean ${pct(L.glazing.photoMean)} vs ${pct(L.glazing.modelMean)} ${L.glazing.pass ? 'ok' : 'FAIL'}`,
-    `columns ${L.columns.photo ?? '-'} vs ${L.columns.model ?? '-'} ${L.columns.pass === null ? 'n/a' : L.columns.pass ? 'ok' : 'FAIL'}; window ${L.shape.photo ?? '-'} vs ${L.shape.model ?? '-'} ${L.shape.pass === null ? 'n/a' : L.shape.pass ? 'ok' : 'FAIL'}; class ${L.classes.photo} vs ${L.classes.model}`,
+    `window columns ${L.columns.windows?.photo ?? '-'} vs ${L.columns.windows?.model ?? '-'} (bays ${L.columns.photo ?? '-'} vs ${L.columns.model ?? '-'}) ${L.columns.pass === null ? 'n/a' : L.columns.pass ? 'ok' : 'FAIL'}; window ${L.shape.photo ?? '-'} vs ${L.shape.model ?? '-'} ${L.shape.pass === null ? 'n/a' : L.shape.pass ? 'ok' : 'FAIL'}; class ${L.classes.photo} vs ${L.classes.model}`,
     `mask IoU ${L.iou ?? '-'} (report only, warn < 0.45); ground band glazing ${pct(L.ground.photo)} vs ${pct(L.ground.model)} %; usable ${pct(L.evidence.usable)} %, foliage ${pct(L.evidence.foliage)} %, washed ${pct(L.evidence.washedOut)} %`,
   ];
   const h2 = 200;
