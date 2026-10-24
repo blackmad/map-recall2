@@ -208,8 +208,9 @@ Open, in order:
   landmark article and D toggled street labels while steering (both
   steering keys); now E and T. Chase pitch had been set to 12° on 10-23
   ("lower angle" read as smaller pitch); now 60° with the slider covering
-  12–60° (`chasePitch()` in preferences.ts). Not measured yet: desktop
-  frame cost at 60° vs the old 48°. Saved tilts not migrated. Pre-existing
+  12–60° (`chasePitch()` in preferences.ts). Desktop ride-perf at 60°:
+  frames 16.7 / p99 16.8 ms, 0 over 50 ms, mapRender 2.4 ms, 851 draws
+  (vsync-bound; roads run at 48°-era code had mapRender 1.8–2.2). Saved tilts not migrated. Pre-existing
   failure seen: canal-recall.spec "named bridge card" (Blauwbrug shows the
   encyclopedia text, not the register line), #26.
 - **kit: loggias + glazed plinth** (merged 2026-10-24, #13): opt-in
