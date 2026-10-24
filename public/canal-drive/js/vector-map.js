@@ -898,13 +898,15 @@ class VectorBasemap {
   }
 
   _refreshBuildingSuppression() {
-    // A landmark model that lands while the context is lost: the restored
-    // style is the snapshot from before it, so redo the masks once it loads.
-    if (this._styleGone()) { this._suppressionStale = true; return; }
     this._syncHostWallOpenings();
     // Streamed buildings still need their replacement mask refreshed when a
     // signature model loads or becomes unavailable; only the basemap is skipped.
+    // The three.js masks need no style, so they refresh even while the context
+    // is lost; otherwise a landmark landing then draws over its fallback.
     this._refreshColoredBuildingFilter();
+    // A landmark model that lands while the context is lost: the restored
+    // style is the snapshot from before it, so redo the map filters once it loads.
+    if (this._styleGone()) { this._suppressionStale = true; return; }
     if (this._buildingsFromTiles) return;
     if (!this.map || !this.map.getStyle()) return;
     if (this.map.getLayer('building-3d') && window.CanalRecallBuildings) {
@@ -1412,6 +1414,9 @@ class VectorBasemap {
     const kitApi = window.CanalRecallThreeBuildings;
     const kitHide = this._buildings3dEnabled && kitApi && kitApi.KIT_HIDE_IDS ? kitApi.KIT_HIDE_IDS.filter(id => !(this._kitAnswerIds && this._kitAnswerIds.has(id))) : [];
     const hide = kitHide.length ? [...signatureHide, ...kitHide] : signatureHide;
+    // Map layer filters need a style (none while the context is lost);
+    // mark them stale and _afterStyleRestored redoes them with the basemap.
+    if (this._styleGone()) { this._suppressionStale = true; return; }
     const helpers = window.CanalRecallBuildings;
     for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-facades', 'osm-colored-building-roofs']) {
       if (!this.map.getLayer(id)) continue;

@@ -34,6 +34,9 @@ function fixture({ tiles, style = true, sidecar = [] }) {
   const writes = [];
   const base = ['==', ['get', 'extrude'], true];
   const map = {
+    // MapLibre's `map.style` is what the host reads to tell a lost context
+    // (no style) from a live one; mirror getStyle() so both paths are real.
+    style: style ? {} : undefined,
     getStyle: () => style ? {} : null,
     getLayer: id => style && (id === 'building-3d' || coloredLayers.includes(id)),
     getFilter: id => filters.get(id) ?? base,
