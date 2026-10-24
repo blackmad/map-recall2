@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Kit review round 4 (2026-10-24).** Opus reviewed all 421 census kits on
+the `kits-r5` sheets (after #36, #37, #41): 110 pass (51 weak evidence),
+172 hold, 139 no evidence; 48 round-3 holds now pass. Census headline 431 →
+496. The new measured windows and roof planes regressed 13 kits: openings
+and window grids on blank-walled churches, cinemas and a synagogue (220, 279,
+356, 421), ribbon glass on brick schools with punched windows (109, 166,
+200, 240), a LoD2.2 hipped roof over a flat street front (161, 172, 178), a
+pitched school drawn flat (78); 316 is a 0-triangle cinema drawn as a 30 m
+pillar. Gaps by count: wall colour (95), window shape (53), roof form (44),
+glazing fraction (38). Fix lane: blank-wall guard, glazing cap, front
+evidence over LoD2.2 for the roof.
+
 **Sentry, Valley, Felix Meritis, likeness (2026-10-24, #9, #40, #38).**
 Sentry: every error was sent twice (monitoring's own listeners plus the SDK),
 and the Microsoft link-scanner rejections (about 100 events) are now filtered.

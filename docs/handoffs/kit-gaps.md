@@ -74,3 +74,21 @@ Added: `dressings.piers` `to/deep/capital/base/flutes/stone/ends`, `dressings.co
 - Stadhouderskade's red segmental heads and rendered risalit within 12k triangles; three windows per bay on every Hirschpassage facet (~3k over budget);
 - Damrak: one opening across several bays, an offset bay grid.
 Measurement: the likeness grid merges paired windows into one column and reads a dark frieze or dark sandstone as glazing.
+
+## Kit review round 4 (2026-10-24)
+
+Sheets `kits-r5-*.png`, verdicts in `landmark-reviews.json` round 4 (row
+numbers are sheet rows). Regressions from #36/#37/#41 measurement:
+- Window placer has no blank-wall guard: 220, 279, 356, 421 (blank brick or
+  panels now carry window grids); 5, 23, 67, 125, 127, 153 near-blank halls.
+- Glazing goes to ribbons on punched-window brick schools: 109, 166, 200, 240.
+- LoD2.2 hipped roof wins over a flat parapet street front: 142, 150, 157,
+  160, 161 (pyramid taller than the walls), 172, 178, 188, 205; the reverse
+  on 70, 78, 98.
+- Windowless boxes: 54, 65, 93, 94, 108.
+- 316 (pand 0363100012079990): 0 triangles, renders as a 30 m pillar.
+- One pand, five OSM ways in different colours: 42–46.
+Still not expressible: curtain walls, sawtooth/folded/parabolic roofs, metal
+rib or louvre cladding, timber slats, ridge turrets and bell towers, drum
+churches, stepped gables on schools, arched heads in the school kit, mosque
+portals and pointed arches, pilotis, external stair galleries.

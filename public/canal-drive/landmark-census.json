@@ -1,10 +1,10 @@
 {
  "version": 1,
- "generatedAt": "2026-10-24T18:56:04.737Z",
+ "generatedAt": "2026-10-24T19:57:28.221Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
- "headline": 431,
- "strict": 92,
+ "headline": 496,
+ "strict": 157,
  "byTier": {
   "bespoke": {
    "models": 334,
@@ -26,16 +26,16 @@
   },
   "landmarkKit": {
    "models": 421,
-   "counts": 45,
-   "strict": 45,
-   "unreviewed": 376
+   "counts": 110,
+   "strict": 110,
+   "unreviewed": 311
   }
  },
  "byReview": {
   "legacy-gallery": 403,
   "likeness-gate": 74,
-  "none": 394,
-  "strip-review": 45
+  "none": 329,
+  "strip-review": 110
  },
  "rows": [
   {
@@ -230,8 +230,7 @@
    "tier": "bespoke",
    "pands": [
     "0363100012174401",
-    "0363100012168556",
-    "0363100012174322"
+    "0363100012168556"
    ],
    "namedPoi": true,
    "rideVisible": false,
@@ -6976,9 +6975,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Gerardus Majellakerk",
@@ -7097,9 +7097,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic church NL.IMBAG.Pand.0362100001077847",
@@ -7157,9 +7158,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic church NL.IMBAG.Pand.0363100012069508",
@@ -7193,9 +7195,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic church NL.IMBAG.Pand.0363100012078085",
@@ -7337,10 +7340,9 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-24",
-   "counts": true,
-   "countsStrict": true
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
   },
   {
    "key": "kit:Generic church NL.IMBAG.Pand.0363100012103534",
@@ -7350,9 +7352,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic church NL.IMBAG.Pand.0363100012109328",
@@ -7374,9 +7377,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic mosque NL.IMBAG.Pand.0363100012119483",
@@ -7434,9 +7438,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic temple NL.IMBAG.Pand.0363100012124586",
@@ -7555,9 +7560,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic church NL.IMBAG.Pand.0363100012137946",
@@ -7567,9 +7573,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic mosque NL.IMBAG.Pand.0363100012143236",
@@ -7761,9 +7768,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic church NL.IMBAG.Pand.0363100012239394",
@@ -7773,9 +7781,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic church NL.IMBAG.Pand.0363100012240297",
@@ -8001,9 +8010,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic church w1435276700",
@@ -8145,9 +8155,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic church w314261187",
@@ -8253,9 +8264,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0358100020881991",
@@ -8277,9 +8289,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0358100021569571",
@@ -8313,9 +8326,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0362100001054502",
@@ -8361,9 +8375,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0362100001057631",
@@ -8409,9 +8424,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0362100001071115",
@@ -8554,10 +8570,9 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-24",
-   "counts": true,
-   "countsStrict": true
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012062340",
@@ -8677,9 +8692,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012068625",
@@ -8726,9 +8742,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012072950",
@@ -8824,9 +8841,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012075737",
@@ -8933,9 +8951,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012080150",
@@ -8981,9 +9000,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012081651",
@@ -9006,9 +9026,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012083302",
@@ -9066,9 +9087,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic cinema NL.IMBAG.Pand.0363100012085435",
@@ -9102,9 +9124,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012087388",
@@ -9114,10 +9137,9 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-24",
-   "counts": true,
-   "countsStrict": true
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012087825",
@@ -9139,9 +9161,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012089331",
@@ -9175,9 +9198,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012090993",
@@ -9212,9 +9236,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012091522",
@@ -9407,9 +9432,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012100351",
@@ -9431,10 +9457,9 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-24",
-   "counts": true,
-   "countsStrict": true
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012101375",
@@ -9480,9 +9505,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012104151",
@@ -9676,9 +9702,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012112357",
@@ -9688,9 +9715,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012112403",
@@ -9774,9 +9802,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic cinema NL.IMBAG.Pand.0363100012116155",
@@ -9858,9 +9887,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012117953",
@@ -9882,9 +9912,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012118764",
@@ -9919,9 +9950,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012122517",
@@ -9931,9 +9963,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012123040",
@@ -9967,9 +10000,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012126767",
@@ -10015,9 +10049,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012129398",
@@ -10027,9 +10062,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012131629",
@@ -10051,9 +10087,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012133077",
@@ -10063,9 +10100,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012133123",
@@ -10087,9 +10125,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012134381",
@@ -10135,9 +10174,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012137446",
@@ -10147,10 +10187,9 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-24",
-   "counts": true,
-   "countsStrict": true
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012137724",
@@ -10196,9 +10235,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012143192",
@@ -10257,9 +10297,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012143944",
@@ -10281,9 +10322,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012145699",
@@ -10293,9 +10335,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012147735",
@@ -10305,9 +10348,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012148474",
@@ -10353,9 +10397,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012149878",
@@ -10389,9 +10434,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012152606",
@@ -10450,9 +10496,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012155572",
@@ -10498,9 +10545,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012156882",
@@ -10522,9 +10570,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012158248",
@@ -10756,9 +10805,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012168811",
@@ -10817,9 +10867,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic cinema NL.IMBAG.Pand.0363100012170259",
@@ -10914,9 +10965,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic cinema NL.IMBAG.Pand.0363100012179384",
@@ -10951,9 +11003,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012180835",
@@ -10963,10 +11016,9 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-24",
-   "counts": true,
-   "countsStrict": true
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012182486",
@@ -11074,9 +11126,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012236586",
@@ -11099,9 +11152,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012236816",
@@ -11111,10 +11165,9 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-24",
-   "counts": true,
-   "countsStrict": true
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012236840",
@@ -11124,10 +11177,9 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-24",
-   "counts": true,
-   "countsStrict": true
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
   },
   {
    "key": "kit:Generic cinema NL.IMBAG.Pand.0363100012236988",
@@ -11149,9 +11201,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012237203",
@@ -11161,9 +11214,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012237336",
@@ -11185,9 +11239,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic cinema NL.IMBAG.Pand.0363100012240368",
@@ -11209,9 +11264,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic cinema NL.IMBAG.Pand.0363100012249726",
@@ -11221,9 +11277,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic cinema NL.IMBAG.Pand.0363100012254404",
@@ -11461,9 +11518,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0424100000001256",
@@ -11857,9 +11915,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school w1488019298",
@@ -11869,9 +11928,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school w1488019299",
@@ -11881,9 +11941,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school w1488019300",
@@ -11893,9 +11954,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school w1488019301",
@@ -11905,9 +11967,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school w1488019303",
@@ -12013,9 +12076,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school w52296553",
