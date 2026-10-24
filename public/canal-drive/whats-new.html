@@ -73,6 +73,13 @@
   .more:hover{border-color:var(--accent)}
   h2.sec{font:700 26px/1.2 Georgia,serif;margin:56px 0 6px}
   .sec-note{margin:0 0 14px;color:var(--mut);max-width:70ch}
+  .changes{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:8px}
+  .changes li{display:grid;grid-template-columns:7.5em 1fr;gap:10px;padding:10px 12px;border:1px solid var(--line, #e5e1d8);border-radius:10px;background:var(--card, #fff)}
+  .changes time{color:var(--mut);font-variant-numeric:tabular-nums;font-size:.92em}
+  .changes b{display:block;margin-bottom:2px}
+  .changes p{margin:0;color:var(--mut)}
+  .changes a.where{margin-left:6px;white-space:nowrap}
+  @media (max-width:560px){.changes li{grid-template-columns:1fr}}
   .wip-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr))}
   .wip{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:12px 14px;min-width:0}
   .wip h3{margin:0 0 4px;font-size:14.5px;line-height:1.3;overflow-wrap:anywhere}
@@ -120,6 +127,11 @@
   </div>
 </div>
 <main class="wrap">
+  <section id="changes-sec" hidden>
+    <h2 class="sec" id="changes-title">Changes you can see</h2>
+    <p class="sec-note">Fixes and improvements to the ride itself, not single models: roads, roofs, the ferry, how the city is drawn. Newest first.</p>
+    <ul class="changes" id="changes"></ul>
+  </section>
   <div id="feed"></div>
   <button type="button" class="more" id="more" hidden>Show older</button>
 
@@ -369,7 +381,7 @@ function renderWip() {
   const q = state.q.trim().toLowerCase();
   const list = state.tasks.filter(t => !q || t.name.toLowerCase().includes(q));
   const box = $('#wip'); box.textContent = '';
-  $('#wip-title').hidden = $('.sec-note').hidden = !state.tasks.length;
+  $('#wip-title').hidden = $('#wip-title + .sec-note').hidden = !state.tasks.length;
   if (!list.length) { box.innerHTML = '<p class="empty">Nothing in progress matches.</p>'; return; }
   for (const t of list) {
     const d = document.createElement('div'); d.className = 'wip';
@@ -388,7 +400,23 @@ function wipLabel(status) {
   if (/in-progress/.test(status)) return 'Being built';
   return status.replace(/-/g, ' ');
 }
+// Hand-written notes (public/canal-drive/whats-new-notes.json): one entry per
+// visible change the integrator ships; models are listed by the feed below.
+function renderChanges(notes) {
+  const list = (notes || []).filter(n => n && n.date && n.title).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 12);
+  const sec = $('#changes-sec'); sec.hidden = !list.length; if (!list.length) return;
+  const ul = $('#changes'); ul.replaceChildren();
+  for (const n of list) {
+    const li = document.createElement('li');
+    const t = document.createElement('time'); t.dateTime = n.date; t.textContent = dayLabel(n.date).replace(/^(Today|Yesterday) · /, '$1, ');
+    const body = document.createElement('div'); const b = document.createElement('b'); b.textContent = n.title; body.append(b);
+    const p = document.createElement('p'); p.textContent = n.text || '';
+    if (Array.isArray(n.where) && n.where.length === 2) { const a = document.createElement('a'); a.className = 'where'; a.href = gameUrl(n.where[0], n.where[1]); a.textContent = 'Ride there'; p.append(a); }
+    body.append(p); li.append(t, body); ul.append(li);
+  }
+}
 async function init() {
+  fetchJson('./whats-new-notes.json').then(j => renderChanges(j.notes)).catch(() => {});
   const [dates, firstAddedJson, sig, ord, queueJson, chunkJson] = await Promise.all([
     fetchJson('./models/model-dates.json'), fetchJson('./models/model-first-added.json').catch(() => ({ models: {} })),
     fetchJson('./models/signature-landmarks.json'),

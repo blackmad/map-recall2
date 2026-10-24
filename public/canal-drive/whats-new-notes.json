@@ -1,0 +1,29 @@
+{
+ "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional.",
+ "notes": [
+  {
+   "date": "2026-10-24",
+   "title": "Phones use far less memory",
+   "text": "The map no longer keeps a second copy of every streamed building on phones, and the painted facade canvases are freed once their textures are built. A frame error no longer freezes the ride."
+  },
+  {
+   "date": "2026-10-24",
+   "title": "Three roofs fixed from your feedback",
+   "text": "The Academie voor Theater en Dans roof had an open edge; the Booking.com block on Utrechtsestraat had a crumpled rooftop and is now flat above its fronts; the Anne Frank statue plate no longer flickers against its plinth."
+  },
+  {
+   "date": "2026-10-23",
+   "title": "Gables face the street",
+   "text": "Canal and 19th-century houses whose only street front was the long side had their ridge running along the street, so the gable faced the neighbour. Ridges now turn across the front; wide fronts split into several gables."
+  },
+  {
+   "date": "2026-10-23",
+   "title": "The ferry at Centraal works again",
+   "text": "Boarding at the Centraal pier could leave you stuck on a berth. The pier's berth shapes, the chain of stops and the access check were all fixed.",
+   "where": [
+    4.9003,
+    52.3804
+   ]
+  }
+ ]
+}

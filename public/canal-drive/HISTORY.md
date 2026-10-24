@@ -15,6 +15,19 @@ Mosplein grows red fragments nobody can explain yet. The audit:glb sweep
 finished: 196 of 352 fail hard gates, 74 drifted past the 2026-10-13
 baseline, mostly GLBs regenerated 2026-10-20.
 
+**Later on 2026-10-24.** 3DBAG stayed down all day, so the factory got a
+second source: Kadaster republishes the same LoD2.2 reconstruction on PDOK
+as 2 km CityJSON blades, and `facts.ts` now falls back to it (measured
+identical heights and roof area on Bloemgracht 80; storeys are the one field
+PDOK lacks, and wall-surface indices differ between the sources, so cached
+API facts are never refreshed from PDOK). The audit:glb report writer no
+longer dies on the full run (per-model JSON files instead of one 1.7 GB
+string). The What's New page gained a hand-written "Changes you can see"
+feed (`whats-new-notes.json`) so visible fixes such as the gables, the
+ferry and the roof repairs are announced beside the model feed; and the
+TODO Programme section now opens with the recipe for resuming the
+programme if the integrating session dies.
+
 ## Night of 2026-10-23: lanes land, the feedback queue is routed, perf is folded in
 
 Integrator (this session, worktree `integrator-plan`), merged into `main`:

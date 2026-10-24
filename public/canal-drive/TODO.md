@@ -17,6 +17,23 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ## Programme (2026-10-23) — 1000 reviewed buildings, per-buurt looks, switches, roads
 
+**If the integrating session dies, resume like this.** The programme runs
+from the worktree `map-recall2-worktrees/integrator-plan` (branch
+`plan/thousand-buildings-20261023`, port 4471); main is pushed from there
+as a fast-forward after every integration, so `origin/main` is never behind
+by more than one unpushed step. Leaf lanes live on `lane/*-2026MMDD` and
+`perf/*` branches in their own worktrees under `map-recall2-worktrees/`;
+`/usr/bin/git branch -r | grep -E 'lane/|perf/'` lists them, each lane's
+brief is `docs/handoffs/lane-<name>-<date>.md`, and a branch not yet in
+main is a hand-back to inspect (`git log main..<branch>`), not work to
+redo. Subagents do not survive a session: re-spawn a lane from its brief
+with "continue from the branch", model per `LANE-RULES.md`. The plan is
+`docs/plans/thousand-buildings-20261023.md`; the state of each lane is the
+bullet list below; the per-building state is
+`public/canal-drive/landmark-factory-queue.json` and the census. Visible
+changes go to `public/canal-drive/whats-new-notes.json` in the same commit
+that ships them (the What's New page renders it).
+
 Plan `docs/plans/thousand-buildings-20261023.md`; rules `docs/handoffs/LANE-RULES.md`;
 one brief per lane in `docs/handoffs/lane-*-20261023.md`. Census baseline
 2026-10-23: 386 counted (grandfathered gallery reviews), 47 strict; target
@@ -133,9 +150,26 @@ Open, in order:
   audit-glb-quality.ts:337) and needs
   `NODE_OPTIONS=--max-old-space-size=16384`. Table:
   `map-recall2-worktrees/audit-sweep-20261023/artifacts/audit-sweep/drift.md`.
-  Next: fix the report writer (per-model files), per-entry dates in the
-  baseline, then one opus review of the 2026-10-20 regeneration before any
-  re-baseline.
+  Report writer fixed 2026-10-24 (`<out>/index.json` + `models/<id>.json`,
+  summary.md unchanged; the full run takes ~28 min and 16 GB heap, exit 0).
+  Next: per-entry dates in the baseline, then one opus review of the
+  2026-10-20 regeneration before any re-baseline.
+- **3DBAG outage → PDOK fallback** (2026-10-24): api.3dbag.nl and
+  data.3dbag.nl have refused TCP connections since the night of 10-23.
+  `facts.ts` now falls back (or `--source=pdok`) to Kadaster's 3D
+  Basisvoorziening on PDOK: the same TU Delft LoD2.2 reconstruction, CC BY
+  4.0, 2 km CityJSON blades per year (`src/canalRecall/buildingRecipe/pdokLod2.ts`,
+  cache `npm run pdok:tiles -- --pand=<id>|--blade=<x>_<y>` into
+  `map-recall2-source-data/datasets/pdok-3d-gebouwen-2025/`; 56 Amsterdam
+  blades = 254 MB zipped, 1.3 GB unzipped; two cached so far). Measured on
+  Bloemgracht 80: heights equal, roof area 119.9 vs 120.0 m², front width
+  identical, normal 0.3° apart. Known gaps: `b3_bouwlagen` (storeys) has no
+  PDOK field → null; PDOK 2025 is a newer AHN5 reconstruction, so wall
+  surface indices differ from the API copy: never `--refresh` an existing
+  large intent from PDOK (its `wallSurfaces` indices would point at other
+  walls). Factory batches may run on PDOK facts; compile/gates on
+  PDOK-derived facts not yet exercised. Open: fetch all 56 blades once so
+  the pipeline has no runtime dependency on either host.
 - **perf-phones**: taken over 2026-10-23; brief
   `docs/handoffs/lane-perf-phones-20261023.md`; the previous session runs
   one read-only Android emulator ride and reports numbers.
