@@ -250,6 +250,14 @@ Open, in order:
   walls). Factory batches may run on PDOK facts; compile/gates on
   PDOK-derived facts not yet exercised. Open: fetch all 56 blades once so
   the pipeline has no runtime dependency on either host.
+- **perf compact phone ground** (merged 2026-10-24, #28, e547d5166):
+  phones take compact worker meshes (uv from position, Int8 normals,
+  Uint16 colours and indices), same geometry; cell bytes on 7 cells 172.7
+  → 97.2 MB, ground GPU geometry at 22 road spots 1,908 → 968 MB summed
+  (−49 %), iPhone road frames match main (22/23, the 23rd a different
+  camera), context restore 365 ms. Desktop may take it later after
+  ride-perf and picking specs. Waiting on post-deploy Sentry phone crash
+  rates (#9 access, #10 real devices).
 - **perf no-change findings** (2026-10-24): own-ground worker #2 (relief)
   heap and ArrayBuffers 0 MB at 20 s and 50 s on the iPhone profile, kept
   (#21); MapLibre `maxTileCacheZoomLevels` 5 → 1 saves only 6 MB on phones,
