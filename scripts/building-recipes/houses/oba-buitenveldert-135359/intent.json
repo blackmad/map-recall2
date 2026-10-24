@@ -1,0 +1,120 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "oba-buitenveldert-135359",
+ "pandId": "0363100012135359",
+ "address": "OBA Buitenveldert (BAG pand 0363100012135359)",
+ "sources": [
+  {
+   "id": "pano-2022-03-29-w04-270L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002486_pano_0002_001564/",
+   "image": "source-data://pand-reference-walls/0363100012135359/w04-270L.jpg",
+   "sha256": "1f3e21c63999f8d1d42c874f97ad92f2be040d8d2b6ae35aaac9647f0683706d",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-04-11-w05-0",
+   "kind": "street-panorama",
+   "capturedAt": "2017-04-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000257_pano_0000_003860/",
+   "image": "source-data://pand-reference-walls/0363100012135359/w05-0.jpg",
+   "sha256": "9de47fa02af5ec61467c9795b4960cda5203d51e85f9481a5c1dd6e2048f0a13",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-29-w02-270",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-29_08-47-49_01179/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-03-29-w02-270L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002486_pano_0002_001558/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-29-w04-270",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-29_08-47-49_01173/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    1
+   ],
+   "system": "brick-bay-grid",
+   "entrance": true
+  },
+  {
+   "wallSurfaces": [
+    64,
+    67
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    112
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    61,
+    70
+   ],
+   "system": "ribbon-windows",
+   "palette": {
+    "brick": "#666051"
+   },
+   "wallMaterial": "brick"
+  },
+  {
+   "wallSurfaces": [
+    21
+   ],
+   "system": "ribbon-windows",
+   "palette": {
+    "brick": "#757c82",
+    "glass": "#303136"
+   },
+   "baysPerStorey": 9
+  },
+  {
+   "wallSurfaces": [
+    74,
+    84
+   ],
+   "system": "brick-bay-grid"
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#757c82",
+  "frame": "#efece4",
+  "door": "#2a2a2a",
+  "wallMaterial": "stucco"
+ },
+ "draftedBy": "factory",
+ "notes": [
+  "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
+  "Panels left blank by the draft: 48 (6.3 m, unnamed panel under 8 m); 20 (6.2 m, party wall); 87 (20.6 m, under 3 m tall); 28 (4.9 m, party wall); 58 (14.6 m, under 3 m tall); 24 (4.1 m, unnamed panel under 8 m); 16 (3.7 m, unnamed panel under 8 m); 19 (3.2 m, unnamed panel under 8 m); 7 (2.9 m, unnamed panel under 8 m); 25 (3 m, unnamed panel under 8 m); 10 (2.4 m, unnamed panel under 8 m); 77 (6.1 m, unnamed panel under 8 m); 70 (7.4 m, unnamed panel under 8 m); 14 (2 m, unnamed panel under 8 m); 60 (3.2 m, unnamed panel under 8 m); 66 (5.7 m, unnamed panel under 8 m); 50 (7 m, under 3 m tall); 65 (5 m, unnamed panel under 8 m); 69 (3.9 m, unnamed panel under 8 m); 29 (3.7 m, unnamed panel under 8 m); 8 (3.4 m, unnamed panel under 8 m); 61 (3.1 m, unnamed panel under 8 m); 11 (6.6 m, under 3 m tall); 62 (5.8 m, under 3 m tall); 23 (2.6 m, under 3 m tall); 52 (2.5 m, under 3 m tall); 80 (6.1 m, under 3 m tall); 49 (2.1 m, under 3 m tall); 4 (2.1 m, under 3 m tall); 46 (2.8 m, under 3 m tall); 79 (2.8 m, under 3 m tall); 12 (2.1 m, under 3 m tall).",
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 3, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[3] glass #615c5a not used (not darker than the wall #666051 by 10 L*, or tinted): kit glass kept; walls[3] curtain class not trusted (usable 39 % < 40 %; not-wall #615c5a does not read as glass on #666051 (>= 10 L* darker, chroma < 15)): ribbon-windows kept from the building's majority; walls[3] system brick-bay-grid -> ribbon-windows (measured curtain); walls[3] bays and window shape not written (folded from the distrusted not-wall mask); walls[4] system brick-bay-grid -> ribbon-windows (measured ribbon); unphotographed walls take #757c82 (stucco), the area-weighted median of groups 3, 4."
+ ],
+ "measured": {
+  "date": "2026-10-24",
+  "groups": [
+   3,
+   4
+  ],
+  "otherWalls": true
+ }
+}

@@ -116,6 +116,8 @@ export interface LikenessResult {
   glass: {photo: string | null; model: string | null};
   glazing: {photo: (number | null)[]; model: (number | null)[]; photoMean: number; modelMean: number; maxDiff: number | null; meanDiff: number; pass: boolean};
   columns: {photo: number | null; model: number | null; pass: boolean | null};
+  /** the photo's grid on the model's box after the shift (what `columns` and `shape` are judged on): its bay pitch and folded window */
+  photoGrid: {pitchM: number | null; window: MaskGrid['window']};
   shape: {photo: string | null; model: string | null; pass: boolean | null};
   classes: {photo: string; model: string};
   ground: {photo: number | null; model: number | null};
@@ -222,7 +224,7 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
     wall: {photo: photo.wall.hex, photoRaw: photo.wall.rawHex, model: mw ? hex(mw) : null, modelToday: model.wallToday ? hex(model.wallToday) : null, photoFamily: pFamResolved ?? 'unresolved', modelFamily: mFam, photoMaterial: pm.material.id, modelMaterial: mm?.material.id ?? null, dL: dL === null ? null : +dL.toFixed(3), dHue: dHue === null ? null : +dHue.toFixed(1), pass: wallPass},
     glass: {photo: photo.glass?.hex ?? null, model: model.glass ? hex(model.glass) : null},
     glazing: {photo: pg.storeyGlazing, model: mg.storeyGlazing, photoMean: pg.glazing, modelMean: mg.glazing, maxDiff: maxDiff === null ? null : +maxDiff.toFixed(3), meanDiff: +meanDiff.toFixed(3), pass: glazingPass},
-    columns: {photo: pg.columns, model: mg.columns, pass: colPass}, shape: {photo: pg.window?.shape ?? null, model: mg.window?.shape ?? null, pass: shapePass},
+    columns: {photo: pg.columns, model: mg.columns, pass: colPass}, photoGrid: {pitchM: pg.pitchM, window: pg.window}, shape: {photo: pg.window?.shape ?? null, model: mg.window?.shape ?? null, pass: shapePass},
     classes: {photo: pg.frontClass, model: mg.frontClass}, ground: {photo: pg.ground.glazing, model: mg.ground.glazing},
     evidence: {usable: +usable.toFixed(3), foliage: photo.foliageFraction, washedOut: photo.washedOutFraction, obliquityDeg: a.obliquityDeg ?? null, cameraDistM: a.cameraDistM ?? null, widthM: +widthM.toFixed(2), abstain}};
 }

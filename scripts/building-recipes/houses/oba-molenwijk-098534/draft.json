@@ -1,0 +1,79 @@
+{
+ "date": "2026-10-24",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 8,
+   "bearing": 358,
+   "widthM": 26.5,
+   "heightM": 4.5,
+   "street": null
+  },
+  {
+   "group": 1,
+   "panel": 10,
+   "bearing": 88,
+   "widthM": 24.2,
+   "heightM": 4.4,
+   "street": null
+  },
+  {
+   "group": 2,
+   "panel": 0,
+   "bearing": 268,
+   "widthM": 16.2,
+   "heightM": 3.5,
+   "street": null
+  },
+  {
+   "group": 3,
+   "panel": 2,
+   "bearing": 178,
+   "widthM": 16.2,
+   "heightM": 3.5,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 12,
+   "widthM": 7.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 13,
+   "widthM": 3.5,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 6,
+   "widthM": 3.5,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 15,
+   "widthM": 16.8,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 3,
+   "widthM": 16.1,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 1,
+   "widthM": 4.9,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 4,
+   "widthM": 2.4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 5,
+   "widthM": 3.7,
+   "reason": "under 3 m tall"
+  }
+ ]
+}

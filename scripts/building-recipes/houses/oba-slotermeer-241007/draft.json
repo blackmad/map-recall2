@@ -1,0 +1,196 @@
+{
+ "date": "2026-10-24",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 8,
+   "bearing": 15,
+   "widthM": 51.5,
+   "heightM": 22.3,
+   "street": null
+  },
+  {
+   "group": 1,
+   "panel": 3,
+   "bearing": 105,
+   "widthM": 38.4,
+   "heightM": 22.3,
+   "street": null
+  },
+  {
+   "group": 2,
+   "panel": 7,
+   "bearing": 286,
+   "widthM": 37.8,
+   "heightM": 19.3,
+   "street": null
+  },
+  {
+   "group": 3,
+   "panel": 11,
+   "bearing": 195,
+   "widthM": 21.4,
+   "heightM": 25.3,
+   "street": null
+  },
+  {
+   "group": 4,
+   "panel": 0,
+   "bearing": 195,
+   "widthM": 29.3,
+   "heightM": 10.5,
+   "street": null
+  },
+  {
+   "group": 5,
+   "panel": 68,
+   "bearing": 15,
+   "widthM": 30.5,
+   "heightM": 6.1,
+   "street": null
+  },
+  {
+   "group": 6,
+   "panel": 13,
+   "bearing": 286,
+   "widthM": 9.5,
+   "heightM": 6.1,
+   "street": null
+  },
+  {
+   "group": 7,
+   "panel": 32,
+   "bearing": 106,
+   "widthM": 17.6,
+   "heightM": 3.1,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 5,
+   "widthM": 25.4,
+   "reason": "party wall"
+  },
+  {
+   "panel": 15,
+   "widthM": 14.7,
+   "reason": "party wall"
+  },
+  {
+   "panel": 67,
+   "widthM": 15.7,
+   "reason": "party wall"
+  },
+  {
+   "panel": 10,
+   "widthM": 7.1,
+   "reason": "party wall"
+  },
+  {
+   "panel": 58,
+   "widthM": 4.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 25,
+   "widthM": 16.9,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 17,
+   "widthM": 5,
+   "reason": "party wall"
+  },
+  {
+   "panel": 28,
+   "widthM": 11.2,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 14,
+   "widthM": 3.5,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 77,
+   "widthM": 2.4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 60,
+   "widthM": 2.4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 66,
+   "widthM": 6,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 62,
+   "widthM": 3.1,
+   "reason": "party wall"
+  },
+  {
+   "panel": 51,
+   "widthM": 4.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 64,
+   "widthM": 3.6,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 43,
+   "widthM": 4.2,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 47,
+   "widthM": 4.2,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 46,
+   "widthM": 3.4,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 26,
+   "widthM": 4.5,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 52,
+   "widthM": 4.1,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 73,
+   "widthM": 4.2,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 53,
+   "widthM": 3.2,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 70,
+   "widthM": 2.5,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 19,
+   "widthM": 2.1,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 40,
+   "widthM": 2.2,
+   "reason": "under 3 m tall"
+  }
+ ]
+}

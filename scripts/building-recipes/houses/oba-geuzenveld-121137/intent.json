@@ -1,0 +1,152 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "oba-geuzenveld-121137",
+ "pandId": "0363100012121137",
+ "address": "OBA Geuzenveld (BAG pand 0363100012121137)",
+ "sources": [
+  {
+   "id": "pano-2022-04-19-w07-359",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002524_pano_0000_001228/",
+   "image": "source-data://pand-reference-walls/0363100012121137/w07-359.jpg",
+   "sha256": "be4ab9b873525aba093998c584b19768b4b19e2fcf78e7066c22fb776cec4fa2",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-09-19-w01-179",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20240919_0948_Track14_Sphere_00045/",
+   "image": "source-data://pand-reference-walls/0363100012121137/w01-179.jpg",
+   "sha256": "d324ffe8b594f854111b23d0e70bfe56e8aecb6fc78f296347bfb3cfae83520b",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-31-w01-179L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-31",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002075_pano_0000_002784/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-01-14-w02-359",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250114_1307_Track06_Sphere_00005/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-01-14-w05-359",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250114_1307_Track06_Sphere_00010/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-17-w06-178",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-17_04-06-15_01807/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-11-12-w07-359L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-11-12",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000483_pano_0001_001025/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    32,
+    64,
+    85,
+    123
+   ],
+   "system": "brick-bay-grid",
+   "entrance": true
+  },
+  {
+   "wallSurfaces": [
+    2,
+    44,
+    103
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    56,
+    81,
+    101,
+    122
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    11
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#3e4047"
+   },
+   "baysPerStorey": 7
+  },
+  {
+   "wallSurfaces": [
+    47,
+    70
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    99,
+    100
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#6f695f"
+   },
+   "baysPerStorey": 12
+  },
+  {
+   "wallSurfaces": [
+    6,
+    98
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    117
+   ],
+   "system": "brick-bay-grid"
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#3e4047",
+  "frame": "#efece4",
+  "door": "#2a2a2a"
+ },
+ "draftedBy": "factory",
+ "notes": [
+  "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
+  "Panels left blank by the draft: 57 (5.8 m, unnamed panel under 8 m); 30 (18.9 m, over 8 groups); 18 (18.8 m, over 8 groups); 91 (4.6 m, unnamed panel under 8 m); 20 (3.3 m, unnamed panel under 8 m); 26 (3.4 m, unnamed panel under 8 m); 16 (3.4 m, unnamed panel under 8 m); 32 (3.1 m, unnamed panel under 8 m); 15 (2.4 m, unnamed panel under 8 m); 44 (2.4 m, unnamed panel under 8 m); 76 (23.8 m, over 8 groups); 4 (15.7 m, over 8 groups); 60 (22.1 m, over 8 groups); 54 (10.3 m, over 8 groups); 81 (6.6 m, unnamed panel under 8 m); 61 (5.3 m, unnamed panel under 8 m); 85 (11.4 m, under 3 m tall); 79 (3.7 m, unnamed panel under 8 m); 78 (3.7 m, unnamed panel under 8 m); 17 (6.5 m, unnamed panel under 8 m); 62 (6.2 m, unnamed panel under 8 m); 12 (6.2 m, unnamed panel under 8 m); 86 (6.2 m, under 3 m tall); 80 (5.9 m, under 3 m tall); 63 (5.7 m, under 3 m tall); 74 (5.6 m, under 3 m tall); 87 (4.5 m, unnamed panel under 8 m); 38 (5 m, under 3 m tall); 56 (4.3 m, under 3 m tall); 70 (3.3 m, under 3 m tall); 36 (2.1 m, unnamed panel under 8 m); 73 (2.9 m, under 3 m tall); 67 (2 m, under 3 m tall).",
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 3, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[3] glass #464850 not used (not darker than the wall #3e4047 by 10 L*, or tinted): kit glass kept; walls[5] glass #51564a not used (not darker than the wall #6f695f by 10 L*, or tinted): kit glass kept; unphotographed walls take #3e4047 (brick), the area-weighted median of groups 3, 5."
+ ],
+ "measured": {
+  "date": "2026-10-24",
+  "groups": [
+   3,
+   5
+  ],
+  "otherWalls": true
+ }
+}

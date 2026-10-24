@@ -1,0 +1,176 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "oba-reigersbos-073560",
+ "pandId": "0363100012073560",
+ "address": "OBA Reigersbos (BAG pand 0363100012073560)",
+ "sources": [
+  {
+   "id": "pano-2019-06-17-w02-345",
+   "kind": "street-panorama",
+   "capturedAt": "2019-06-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001224_pano_0001_001874/",
+   "image": "source-data://pand-reference-walls/0363100012073560/w02-345.jpg",
+   "sha256": "e4a26f9e16221889e0edf2f10fac446176017ddc99807c98f007e30ad121af78",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-07-01-w07-165",
+   "kind": "street-panorama",
+   "capturedAt": "2020-07-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001783_pano_0001_005472/",
+   "image": "source-data://pand-reference-walls/0363100012073560/w07-165.jpg",
+   "sha256": "cda759d774fac24e5e3f746bbbad297d5c5c3f09976e89b2939180704e8c706e",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-12-30-w04-260L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002901_pano_0000_000097/",
+   "image": "source-data://pand-reference-walls/0363100012073560/w04-260L.jpg",
+   "sha256": "1995d87d4cb1fad09ac51a6b75ccf21d16809a7fcacd1f69faa1e2ced913c067",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2016-06-21-w01-75",
+   "kind": "street-panorama",
+   "capturedAt": "2016-06-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000089_pano_0000_006228/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-12-w04-260",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-12",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-12_13-25-57_00264/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-06-16-w05-250",
+   "kind": "street-panorama",
+   "capturedAt": "2022-06-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002604_pano_0007_000221/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-06-07-w06-255",
+   "kind": "street-panorama",
+   "capturedAt": "2021-06-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002159_pano_0000_006464/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    1,
+    51,
+    90,
+    99,
+    131
+   ],
+   "system": "brick-bay-grid",
+   "entrance": true
+  },
+  {
+   "wallSurfaces": [
+    27,
+    33,
+    49,
+    56,
+    59,
+    73,
+    74,
+    78,
+    113,
+    114
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    3,
+    47,
+    52,
+    54,
+    55,
+    66,
+    68,
+    77,
+    88,
+    89,
+    119,
+    135
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    53,
+    84,
+    85,
+    86
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#969285",
+    "glass": "#4b4e4c"
+   },
+   "baysPerStorey": 21
+  },
+  {
+   "wallSurfaces": [
+    42
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#796d65"
+   }
+  },
+  {
+   "wallSurfaces": [
+    94,
+    124
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    87
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    23,
+    24
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#28242a"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#796d65",
+  "frame": "#efece4",
+  "door": "#2a2a2a"
+ },
+ "draftedBy": "factory",
+ "notes": [
+  "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
+  "Panels left blank by the draft: 3 (19.3 m, party wall); 67 (23.6 m, over 8 groups); 27 (17.9 m, over 8 groups); 45 (6.3 m, unnamed panel under 8 m); 47 (14.5 m, over 8 groups); 30 (15 m, over 8 groups); 42 (14.9 m, over 8 groups); 69 (2.7 m, unnamed panel under 8 m); 4 (4.9 m, unnamed panel under 8 m); 74 (10.1 m, over 8 groups); 48 (5.6 m, unnamed panel under 8 m); 20 (5.5 m, unnamed panel under 8 m); 60 (6 m, unnamed panel under 8 m); 64 (5.5 m, unnamed panel under 8 m); 50 (4.9 m, unnamed panel under 8 m); 46 (9.9 m, under 3 m tall); 24 (9.8 m, under 3 m tall); 41 (9.9 m, under 3 m tall); 84 (3.5 m, unnamed panel under 8 m); 68 (7.2 m, under 3 m tall); 77 (3 m, unnamed panel under 8 m); 78 (4.9 m, under 3 m tall); 43 (9.9 m, under 3 m tall); 28 (9.9 m, under 3 m tall); 75 (9.8 m, under 3 m tall); 29 (9.9 m, under 3 m tall); 31 (3.9 m, under 3 m tall); 73 (2.5 m, under 3 m tall); 66 (2.1 m, under 3 m tall); 59 (3 m, under 3 m tall); 79 (3.2 m, under 3 m tall); 90 (2.6 m, under 3 m tall); 80 (2.6 m, under 3 m tall).",
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 3, 4, 7 take the photo's wall and glass colour, window shape, bay count and front class; walls[4] glass #706c6a not used (not darker than the wall #796d65 by 10 L*, or tinted): kit glass kept; walls[7] glass #2c2c2e not used (not darker than the wall #28242a by 10 L*, or tinted): kit glass kept; walls[7] curtain class not trusted (not-wall #2c2c2e does not read as glass on #28242a (>= 10 L* darker, chroma < 15)): brick-bay-grid kept from the building's majority; walls[7] bays and window shape not written (folded from the distrusted not-wall mask); unphotographed walls take #796d65 (brick), the area-weighted median of groups 3, 4, 7."
+ ],
+ "measured": {
+  "date": "2026-10-24",
+  "groups": [
+   3,
+   4,
+   7
+  ],
+  "otherWalls": true
+ }
+}

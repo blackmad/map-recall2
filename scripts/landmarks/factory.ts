@@ -19,7 +19,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
-import {draftLargeIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
+import {draftLargeIntent, factoryMayWrite, factoryMeasureArgs, isDraftIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
 import {lngLatToRd} from '../../src/canalRecall/facade/rdNew.ts';
 import {QUEUE_FILE, type Queue, type QueueItem, type QueueStatus} from './factory-queue.ts';
 
@@ -105,7 +105,8 @@ async function stageCrops(item: QueueItem, force: boolean): Promise<boolean> {
 
 async function stageFacts(item: QueueItem, force: boolean): Promise<boolean> {
   const house = item.house!, dir = path.join(HOUSES, house), factsFile = path.join(dir, 'facts.json');
-  if (!force && exists(factsFile)) return true;
+  // a hand-authored house's facts are its author's (factoryMayWrite): never refetched, even with --force
+  if (exists(factsFile) && (!force || !factoryMayWrite(exists(path.join(dir, 'intent.json')) ? read(path.join(dir, 'intent.json')) : null))) return true;
   // pass 1: the shell and the BAG footprint; pass 2 names the streets found within 30 m so facts.fronts exist
   let r = run('scripts/building-recipes/facts.ts', [`--house=${house}`, `--pand=${item.pand}`, '--large', '--no-photo', ...FACTS_SOURCE], TIMEOUT_S.facts);
   if (!r.ok) { item.status = 'error'; note(item, `facts failed: ${r.tail}`); return false; }
@@ -123,7 +124,9 @@ async function stageDraft(item: QueueItem, force: boolean): Promise<boolean> {
   const house = item.house!, dir = path.join(HOUSES, house), intentFile = path.join(dir, 'intent.json');
   if (exists(intentFile)) {
     const intent = read(intentFile);
-    if (!force || !intent.notes?.some((n: string) => n.startsWith('Drafted by draftLarge.ts'))) { if (!item.notes?.some(n => n.includes('hand-authored intent kept'))) note(item, 'draft: hand-authored intent kept'); return true; }
+    // only an intent the factory drafted is ever redrafted (with --force); a hand-authored one is read-only
+    if (!factoryMayWrite(intent)) { if (!item.notes?.some(n => n.includes('hand-authored intent kept'))) note(item, 'draft: hand-authored intent kept'); return true; }
+    if (!force) return true;
   }
   if (has('--dry')) { console.log('    dry: draftLargeIntent'); return true; }
   try {
@@ -138,8 +141,16 @@ async function stageDraft(item: QueueItem, force: boolean): Promise<boolean> {
 
 async function stageMeasure(item: QueueItem, force: boolean): Promise<boolean> {
   const house = item.house!, intentFile = path.join(HOUSES, house, 'intent.json');
-  if (!force && exists(intentFile) && read(intentFile).measured) return true;
-  const r = run('scripts/building-recipes/measure.ts', [`--house=${house}`, '--write'], TIMEOUT_S.measure);
+  // a hand-authored house is measured read-only: no --write, and measured.json goes to artifacts/, not houses/
+  const intentNow = exists(intentFile) ? read(intentFile) : null;
+  if (!isDraftIntent(intentNow)) {
+    const r = run('scripts/building-recipes/measure.ts', factoryMeasureArgs(house, intentNow, ARTIFACTS), TIMEOUT_S.measure);
+    if (!r.ok) { item.status = 'error'; note(item, `measure (read-only, hand-authored) failed: ${r.tail}`); return false; }
+    note(item, `measured read-only (hand-authored intent): ${path.join(ARTIFACTS, house, 'measured.json')}`);
+    return true;
+  }
+  if (!force && read(intentFile).measured) return true;
+  const r = run('scripts/building-recipes/measure.ts', factoryMeasureArgs(house, intentNow, ARTIFACTS), TIMEOUT_S.measure);
   if (!r.ok) { item.status = 'error'; note(item, `measure failed: ${r.tail}`); return false; }
   const measured = has('--dry') ? null : read(intentFile).measured;
   note(item, measured ? `measured groups ${measured.groups.join(',')} in ${Math.round(r.ms / 1000)} s` : `measure wrote nothing (no group matched a crop): ${r.tail.slice(0, 200)}`);
@@ -177,7 +188,7 @@ async function main() {
   // A row is claimable when nobody owns it, the caller owns it, or its claim is stale: a lane that claimed it more
   // than STALE_CLAIM_H hours ago and left it at a stage boundary has finished (the crops lane leaves rows at `crops`).
   const staleBefore = Date.now() - STALE_CLAIM_H * 3600e3;
-  const claimable = (i: Item) => !i.owner || i.owner === owner || i.status === 'queued' || (i.claimedAt != null && Date.parse(i.claimedAt) < staleBefore);
+  const claimable = (i: QueueItem) => !i.owner || i.owner === owner || i.status === 'queued' || (i.claimedAt != null && Date.parse(i.claimedAt) < staleBefore);
   const items = queue.items.filter(i => i.pand && (wanted ? wanted.has(i.pand) : (progressable.includes(i.status) || networkError(i)) && claimable(i))).slice(0, wanted ? undefined : n);
   if (!items.length) { console.log('factory: nothing to do'); return; }
   const save = () => { if (!has('--dry')) { queue.generatedAt = queue.generatedAt; fs.writeFileSync(file + '.tmp', JSON.stringify(queue, null, 1) + '\n'); fs.renameSync(file + '.tmp', file); } };

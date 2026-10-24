@@ -1,0 +1,225 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "pand-111954",
+ "pandId": "0363100012111954",
+ "address": "BAG pand 0363100012111954",
+ "sources": [
+  {
+   "id": "pano-2021-03-22-w04-168L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002055_pano_0000_002828/",
+   "image": "source-data://pand-reference-walls/0363100012111954/w04-168L.jpg",
+   "sha256": "9671b6c83b94fac9597efac151a45bc4b7191e43dbc8a60cf4a1c66fbf464bc7",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-29-w03-311",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002552_pano_0002_000728/",
+   "image": "source-data://pand-reference-walls/0363100012111954/w03-311.jpg",
+   "sha256": "40137ded9cfe6fc80e9f29884e81e7bf3bf97306d6d421c4c094d8d57c6e4e34",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-22-w09-168",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002055_pano_0000_002855/",
+   "image": "source-data://pand-reference-walls/0363100012111954/w09-168.jpg",
+   "sha256": "679324c42b2893ca7ae39487dabba3c707fbda1a0b11a02681fba242f2fba9aa",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w08-348L",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001630_pano_0001_000907/",
+   "image": "source-data://pand-reference-walls/0363100012111954/w08-348L.jpg",
+   "sha256": "cae4598164048e2a675066d88053dca295edf7c8b799b934eb3f3d141cc10d96",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w01-78",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001630_pano_0001_000947/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w02-348",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001630_pano_0001_000852/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w03-311L",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001630_pano_0001_000910/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-04-17-w04-168",
+   "kind": "street-panorama",
+   "capturedAt": "2019-04-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001132_pano_0000_001362/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-14-w05-258",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001952_pano_0000_000248/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w06-168",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001630_pano_0001_000881/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-21-w07-168",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/terdam_21112024_Track33_Sphere_00050/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-29-w08-348",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002552_pano_0002_000725/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-29-w10-258",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002552_pano_0002_000721/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w10-258L",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001630_pano_0001_000904/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w11-258",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001630_pano_0001_000897/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w12-78",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001630_pano_0001_000888/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    10,
+    65
+   ],
+   "system": "brick-bay-grid",
+   "entrance": true,
+   "palette": {
+    "brick": "#312b24",
+    "glass": "#1a1711"
+   },
+   "baysPerStorey": 26
+  },
+  {
+   "wallSurfaces": [
+    67
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    20
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#78726d",
+    "glass": "#4d4948"
+   },
+   "baysPerStorey": 11
+  },
+  {
+   "wallSurfaces": [
+    60,
+    64
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    1,
+    55
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    34,
+    41
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#3a3329"
+   }
+  },
+  {
+   "wallSurfaces": [
+    27,
+    29
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#736965",
+    "glass": "#4d4a47"
+   },
+   "baysPerStorey": 9
+  },
+  {
+   "wallSurfaces": [
+    32
+   ],
+   "system": "brick-bay-grid"
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#736965",
+  "frame": "#efece4",
+  "door": "#2a2a2a"
+ },
+ "draftedBy": "factory",
+ "notes": [
+  "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
+  "Panels left blank by the draft: 32 (48.4 m, party wall); 26 (10.7 m, over 8 groups); 8 (21.9 m, over 8 groups); 40 (21.9 m, over 8 groups); 35 (9.2 m, over 8 groups); 21 (15.3 m, over 8 groups); 33 (7.2 m, unnamed panel under 8 m); 10 (6.7 m, unnamed panel under 8 m); 20 (3.1 m, unnamed panel under 8 m); 22 (42.4 m, under 3 m tall); 43 (2.2 m, unnamed panel under 8 m); 49 (37.2 m, under 3 m tall); 3 (3.9 m, unnamed panel under 8 m); 16 (3.9 m, unnamed panel under 8 m); 17 (3.7 m, unnamed panel under 8 m); 34 (6.8 m, under 3 m tall); 52 (6.3 m, under 3 m tall); 47 (3.9 m, under 3 m tall); 2 (6.8 m, under 3 m tall); 56 (4.2 m, under 3 m tall); 37 (3.9 m, under 3 m tall); 38 (5.3 m, under 3 m tall); 6 (3.4 m, under 3 m tall); 51 (2.7 m, under 3 m tall); 48 (2.2 m, under 3 m tall).",
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 2, 5, 6 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] bays 11 from the likeness grid (padded measurement 20); walls[5] glass #3e3936 not used (not darker than the wall #3a3329 by 10 L*, or tinted): kit glass kept; walls[5] curtain class not trusted (not-wall #3e3936 does not read as glass on #3a3329 (>= 10 L* darker, chroma < 15)): brick-bay-grid kept from the building's majority; walls[5] bays and window shape not written (folded from the distrusted not-wall mask); walls[6] bays 9 from the likeness grid (padded measurement 18); unphotographed walls take #736965 (brick), the area-weighted median of groups 0, 2, 5, 6."
+ ],
+ "measured": {
+  "date": "2026-10-24",
+  "groups": [
+   0,
+   2,
+   5,
+   6
+  ],
+  "otherWalls": true
+ }
+}

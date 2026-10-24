@@ -1,0 +1,236 @@
+{
+ "date": "2026-10-24",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 29,
+   "bearing": 179,
+   "widthM": 16.7,
+   "heightM": 48.1,
+   "street": null
+  },
+  {
+   "group": 1,
+   "panel": 1,
+   "bearing": 359,
+   "widthM": 15.6,
+   "heightM": 45.2,
+   "street": null
+  },
+  {
+   "group": 2,
+   "panel": 51,
+   "bearing": 92,
+   "widthM": 15.3,
+   "heightM": 44.2,
+   "street": null
+  },
+  {
+   "group": 3,
+   "panel": 9,
+   "bearing": 359,
+   "widthM": 8.7,
+   "heightM": 45.2,
+   "street": null
+  },
+  {
+   "group": 4,
+   "panel": 42,
+   "bearing": 179,
+   "widthM": 8.7,
+   "heightM": 45.2,
+   "street": null
+  },
+  {
+   "group": 5,
+   "panel": 83,
+   "bearing": 179,
+   "widthM": 33.2,
+   "heightM": 8.1,
+   "street": null
+  },
+  {
+   "group": 6,
+   "panel": 5,
+   "bearing": 359,
+   "widthM": 33.2,
+   "heightM": 8.1,
+   "street": null
+  },
+  {
+   "group": 7,
+   "panel": 89,
+   "bearing": 89,
+   "widthM": 21.8,
+   "heightM": 11.7,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 57,
+   "widthM": 5.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 30,
+   "widthM": 18.9,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 18,
+   "widthM": 18.8,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 91,
+   "widthM": 4.6,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 20,
+   "widthM": 3.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 26,
+   "widthM": 3.4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 16,
+   "widthM": 3.4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 32,
+   "widthM": 3.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 15,
+   "widthM": 2.4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 44,
+   "widthM": 2.4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 76,
+   "widthM": 23.8,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 4,
+   "widthM": 15.7,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 60,
+   "widthM": 22.1,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 54,
+   "widthM": 10.3,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 81,
+   "widthM": 6.6,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 61,
+   "widthM": 5.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 85,
+   "widthM": 11.4,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 79,
+   "widthM": 3.7,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 78,
+   "widthM": 3.7,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 17,
+   "widthM": 6.5,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 62,
+   "widthM": 6.2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 12,
+   "widthM": 6.2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 86,
+   "widthM": 6.2,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 80,
+   "widthM": 5.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 63,
+   "widthM": 5.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 74,
+   "widthM": 5.6,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 87,
+   "widthM": 4.5,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 38,
+   "widthM": 5,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 56,
+   "widthM": 4.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 70,
+   "widthM": 3.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 36,
+   "widthM": 2.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 73,
+   "widthM": 2.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 67,
+   "widthM": 2,
+   "reason": "under 3 m tall"
+  }
+ ]
+}
