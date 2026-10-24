@@ -97,13 +97,10 @@
  "walls": [
   {
    "wallSurfaces": [
-    2,
     99,
     173,
-    174,
     210,
     376,
-    400,
     415
    ],
    "system": "brick-bay-grid",
@@ -120,13 +117,13 @@
     "stone": "#d6c8ae"
    },
    "windowShape": {
-    "w": 0.5,
+    "w": 0.62,
     "h": 0.92,
     "sill": 0.04
    },
    "baysPerStorey": 10,
    "storeys": 5,
-   "groundFactor": 1.8,
+   "groundFactor": 1.5,
    "ground": "portals",
    "windows": "three-light",
    "blankStoreys": [
@@ -143,7 +140,8 @@
    "dressings": {
     "piers": {
      "w": 0.22,
-     "from": 1
+     "from": 1,
+     "deep": 0.13
     },
     "bands": {
      "at": [
@@ -152,6 +150,13 @@
      "storeys": [
       1
      ]
+    },
+    "corbels": {
+     "storey": 4,
+     "foot": true,
+     "count": 4,
+     "stone": true,
+     "drop": 0.3
     }
    },
    "hand": [
@@ -190,12 +195,8 @@
   },
   {
    "wallSurfaces": [
-    13,
-    48,
-    178,
     323,
-    424,
-    435
+    424
    ],
    "system": "brick-bay-grid"
   },
@@ -224,13 +225,13 @@
     "glass": "#61564e"
    },
    "windowShape": {
-    "w": 0.5,
+    "w": 0.62,
     "h": 0.92,
     "sill": 0.04
    },
    "baysPerStorey": 3,
    "storeys": 5,
-   "groundFactor": 1.8,
+   "groundFactor": 1.5,
    "ground": "portals",
    "windows": "three-light",
    "blankStoreys": [
@@ -247,7 +248,8 @@
    "dressings": {
     "piers": {
      "w": 0.22,
-     "from": 1
+     "from": 1,
+     "deep": 0.13
     },
     "bands": {
      "at": [
@@ -256,6 +258,13 @@
      "storeys": [
       1
      ]
+    },
+    "corbels": {
+     "storey": 4,
+     "foot": true,
+     "count": 4,
+     "stone": true,
+     "drop": 0.3
     }
    },
    "hand": [
@@ -280,7 +289,8 @@
   "Panels left blank by the draft: 121 (20.4 m, over 8 groups); 140 (38 m, over 8 groups); 211 (7.8 m, unnamed panel under 8 m); 164 (7.3 m, unnamed panel under 8 m); 11 (6.8 m, unnamed panel under 8 m); 111 (5.7 m, unnamed panel under 8 m); 299 (16.2 m, over 8 groups); 127 (12 m, over 8 groups); 172 (6.4 m, unnamed panel under 8 m); 264 (6.5 m, unnamed panel under 8 m); 199 (6.1 m, unnamed panel under 8 m); 99 (7.2 m, unnamed panel under 8 m); 135 (4.6 m, unnamed panel under 8 m); 65 (4.4 m, unnamed panel under 8 m); 52 (4.5 m, unnamed panel under 8 m); 246 (31.4 m, under 3 m tall); 83 (4.1 m, unnamed panel under 8 m); 160 (4.1 m, unnamed panel under 8 m); 194 (4.2 m, unnamed panel under 8 m); 49 (4.3 m, unnamed panel under 8 m); 307 (35.8 m, under 3 m tall); 51 (3.6 m, unnamed panel under 8 m); 303 (3.2 m, unnamed panel under 8 m); 10 (2.2 m, unnamed panel under 8 m); 196 (2.5 m, unnamed panel under 8 m); 193 (2.8 m, unnamed panel under 8 m); 216 (7.9 m, unnamed panel under 8 m); 64 (2.8 m, unnamed panel under 8 m); 30 (2.6 m, unnamed panel under 8 m); 141 (2.8 m, unnamed panel under 8 m); 123 (2.3 m, unnamed panel under 8 m); 317 (2.5 m, unnamed panel under 8 m); 306 (2.3 m, unnamed panel under 8 m); 100 (2.9 m, unnamed panel under 8 m); 265 (17.2 m, under 3 m tall); 222 (2.2 m, unnamed panel under 8 m); 74 (6.9 m, unnamed panel under 8 m); 269 (2.1 m, unnamed panel under 8 m); 147 (6.4 m, unnamed panel under 8 m); 254 (2.2 m, unnamed panel under 8 m); 301 (2.3 m, unnamed panel under 8 m); 31 (7.7 m, unnamed panel under 8 m); 224 (5.6 m, unnamed panel under 8 m); 20 (38.7 m, under 3 m tall); 182 (13 m, under 3 m tall); 233 (6 m, unnamed panel under 8 m); 114 (8.8 m, under 3 m tall); 48 (8.1 m, under 3 m tall); 105 (7.9 m, under 3 m tall); 53 (5.4 m, unnamed panel under 8 m); 124 (5 m, unnamed panel under 8 m); 71 (7.6 m, under 3 m tall); 16 (3.8 m, unnamed panel under 8 m); 104 (3.7 m, unnamed panel under 8 m); 86 (3.7 m, unnamed panel under 8 m); 32 (8 m, under 3 m tall); 272 (4.2 m, unnamed panel under 8 m); 186 (6 m, under 3 m tall); 142 (4.1 m, unnamed panel under 8 m); 37 (3.7 m, unnamed panel under 8 m); 167 (5.2 m, under 3 m tall); 33 (3.8 m, unnamed panel under 8 m); 290 (5.5 m, under 3 m tall); 223 (5 m, under 3 m tall); 148 (5.2 m, under 3 m tall); 132 (6 m, under 3 m tall); 78 (2.3 m, unnamed panel under 8 m); 178 (6.5 m, under 3 m tall); 192 (5.9 m, under 3 m tall); 215 (3.2 m, unnamed panel under 8 m); 68 (7.5 m, under 3 m tall); 238 (3.1 m, unnamed panel under 8 m); 292 (3.9 m, under 3 m tall); 55 (2.5 m, unnamed panel under 8 m); 110 (4.9 m, under 3 m tall); 21 (5.2 m, under 3 m tall); 177 (6.3 m, under 3 m tall); 39 (2.4 m, unnamed panel under 8 m); 131 (5.1 m, under 3 m tall); 44 (2.4 m, unnamed panel under 8 m); 213 (3 m, under 3 m tall); 212 (4 m, under 3 m tall); 152 (4.8 m, under 3 m tall); 245 (4.2 m, under 3 m tall); 5 (2.3 m, unnamed panel under 8 m); 333 (2.3 m, unnamed panel under 8 m); 158 (2.3 m, unnamed panel under 8 m); 115 (3.6 m, under 3 m tall); 26 (3 m, under 3 m tall); 220 (2.4 m, under 3 m tall); 149 (4.3 m, under 3 m tall); 229 (2.6 m, under 3 m tall); 87 (2.3 m, under 3 m tall); 323 (5.5 m, under 3 m tall); 266 (2.5 m, under 3 m tall); 259 (3.4 m, under 3 m tall); 7 (2.1 m, under 3 m tall); 133 (2.3 m, under 3 m tall); 54 (3.3 m, under 3 m tall); 171 (2.9 m, under 3 m tall); 92 (2.5 m, under 3 m tall); 315 (2.2 m, under 3 m tall); 249 (2.1 m, under 3 m tall); 260 (4 m, under 3 m tall); 219 (2.4 m, under 3 m tall); 239 (4 m, under 3 m tall); 314 (2 m, under 3 m tall); 42 (4.1 m, under 3 m tall); 66 (3.2 m, under 3 m tall); 176 (3.6 m, under 3 m tall); 208 (2.8 m, under 3 m tall); 296 (2.2 m, under 3 m tall); 98 (2.4 m, under 3 m tall).",
   "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 1, 3, 7 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #545754 not used (not darker than the wall #6c5649 by 10 L*, or tinted): kit glass kept; walls[3] glass #434542 not used (not darker than the wall #655348 by 10 L*, or tinted): kit glass kept; walls[7] bays 3 from the likeness grid (padded measurement -); unphotographed walls take #6c5649 (brick), the area-weighted median of groups 1, 3, 7.",
   "Stone dressings lane (2026-10-24, issue #31): the long Westerdok warehouse front (w03-255, w02-255, 2018-05-02, sunlit, 42.4 px/m): brick #7d6050 sampled on the sunlit piers (was the overcast #6c5649/#655348/#936754), pale stone #d6c8ae from the cornice. walls[1] and walls[7]: a 5.4 m ground storey over the 1.3 m crop base (groundFactor 1.8) of segmental-arched openings in brick rings, three storeys of tall three-light glazing (windowShape 0.7 x 0.92 of the storey, the frames meeting at the floor lines) between brick piers 0.22 of the bay wide (dressings.piers from storey 1), a brick band over the ground storey, a blank frieze storey under the cornice. Still not said: the corbel tables (brick dentil arcades) over each glazing bay, the attic's small windows under pale hoods (they sit in the 3DBAG roof zone over the 17.4 m eaves), the narrow ground openings (the portal row is half a bay wide; the photo's are a quarter).",
-  "Review 2026-10-24 (held-review): walls[1] and walls[7] windowShape.w 0.7 -> 0.5: the three-light windows sit deep in the giant brick recesses and the w03-255 crop measures 48 % glazing on the full storeys against the model's 66 %."
+  "Review 2026-10-24 (held-review): walls[1] and walls[7] windowShape.w 0.7 -> 0.5: the three-light windows sit deep in the giant brick recesses and the w03-255 crop measures 48 % glazing on the full storeys against the model's 66 %.",
+  "Giant-order lane (2026-10-24, issue #35): walls[1] and walls[7] (w03-255, 42.4 px/m): the brick piers stand 0.13 of the bay proud (0.5 m; the recess cheeks read #564238 in shade against #7e6150 on the pier faces), a corbel table across each glazing bay on the frieze storey's floor line (dressings.corbels storey 4, foot, 0.3 of the storey, 4 corbels per bay in the pale stone: the dentil arcades' light tips; the photo shows about 6, 4 keeps the house inside 12k triangles), the windows 0.62 of the bay (the review's 0.5 left 0.55 m of brick between window and pier where the crop shows about 0.3 m), the ground storey 1.5 x an upper (the crop's ground band sits at 4.8 m, not 5.4 m). Eaves gate: walls[0] dropped surfaces 2, 174 and 400 (0.5 m tall plinth slivers, 83 m of the 106 m panel, whose roof probe read 0.55 m) and walls[4] dropped 13 (a 2.4 m piece topped at 18.3 m), 48, 178 and 435 (0.4-1.7 m returns): they fall to otherWalls (blank). Still not said: the corbels' small arches, the attic windows under hoods in the roof zone, the brick capitals of the piers, the east front's tower risalit (walls[0] w01-75 shows the same giant bays as the west front but 3DBAG's east wall is a set of short stepped surfaces)."
  ],
  "measured": {
   "date": "2026-10-24",

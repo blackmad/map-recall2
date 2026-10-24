@@ -1,15 +1,15 @@
 /**
  * Validation of a large-tier wall group's `dressings` (stone bands, speklagen, heads, surrounds, quoins, oriels, banded
- * arches, brick piers; geometry in blockBuilding/dressings.ts). Kept out of largeIntent.ts so that file does not grow.
+ * arches, brick piers (giant order: capitals, bases, flutes), corbel tables; geometry in blockBuilding/dressings.ts). Kept out of largeIntent.ts so that file does not grow.
  * Counts, storeys, bays and fractions only: no metres, no coordinates.
  */
 import {DRESSING_BAND_AT, DRESSING_HEADS, type StoneDressings} from '../blockBuilding/dressings.ts';
 
 const HEX = /^#[0-9a-f]{6}$/i;
-const KEYS = ['colour', 'bands', 'stripes', 'heads', 'surrounds', 'quoins', 'oriels', 'voussoirs', 'piers'];
+const KEYS = ['colour', 'bands', 'stripes', 'heads', 'surrounds', 'quoins', 'oriels', 'voussoirs', 'piers', 'corbels'];
 const SUB: Record<string, string[]> = {
   bands: ['at', 'storeys', 'double'], stripes: ['storeys', 'count'], heads: ['kind', 'storeys'], surrounds: ['storeys', 'eared'],
-  quoins: ['ends', 'joints'], oriels: ['bays', 'from', 'to', 'deep', 'canted'], voussoirs: ['storeys', 'jambs'], piers: ['w', 'from'],
+  quoins: ['ends', 'joints'], oriels: ['bays', 'from', 'to', 'deep', 'canted'], voussoirs: ['storeys', 'jambs'], piers: ['w', 'from', 'to', 'deep', 'capital', 'base', 'flutes', 'stone', 'ends'], corbels: ['storey', 'count', 'stone', 'drop', 'foot'],
 };
 
 /** Problems with `walls[i].dressings`; `storeys` is the group's storey count when the intent gives it. */
@@ -71,6 +71,18 @@ export function stoneDressingsProblems(input: unknown, at: string, storeys?: num
   if (pr) {
     if (pr.w !== undefined && !(typeof pr.w === 'number' && pr.w >= 0.08 && pr.w <= 0.5)) p.push(`${at}.dressings.piers.w: 0.08..0.5 of the bay`);
     if (pr.from !== undefined && !(Number.isInteger(pr.from) && (pr.from as number) >= 0 && (pr.from as number) <= max)) p.push(`${at}.dressings.piers.from: a storey 0..${max}`);
+    if (pr.to !== undefined && !(Number.isInteger(pr.to) && (pr.to as number) >= ((pr.from as number | undefined) ?? 1) && (pr.to as number) <= max)) p.push(`${at}.dressings.piers.to: a storey from..${max} (the piers stop at its top)`);
+    if (pr.deep !== undefined && !(typeof pr.deep === 'number' && pr.deep >= 0.04 && pr.deep <= 0.25)) p.push(`${at}.dressings.piers.deep: 0.04..0.25 of the bay (projection)`);
+    for (const k of ['capital', 'base', 'stone', 'ends']) bool(pr[k], `${at}.dressings.piers.${k}`);
+    if (pr.flutes !== undefined && !(Number.isInteger(pr.flutes) && (pr.flutes as number) >= 2 && (pr.flutes as number) <= 8)) p.push(`${at}.dressings.piers.flutes: 2..8 fillets up each shaft`);
+  }
+  const ct = obj('corbels');
+  if (ct) {
+    if (ct.storey !== undefined && !(Number.isInteger(ct.storey) && (ct.storey as number) >= 0 && (ct.storey as number) <= max)) p.push(`${at}.dressings.corbels.storey: a storey 0..${max} (the table runs under its top)`);
+    if (ct.count !== undefined && !(Number.isInteger(ct.count) && (ct.count as number) >= 1 && (ct.count as number) <= 16)) p.push(`${at}.dressings.corbels.count: 1..16 corbels per bay`);
+    bool(ct.stone, `${at}.dressings.corbels.stone`); bool(ct.foot, `${at}.dressings.corbels.foot`);
+    if (ct.foot && ct.storey === undefined) p.push(`${at}.dressings.corbels.foot needs storey`);
+    if (ct.drop !== undefined && !(typeof ct.drop === 'number' && ct.drop >= 0.1 && ct.drop <= 0.6)) p.push(`${at}.dressings.corbels.drop: 0.1..0.6 of the storey (the table's height)`);
   }
   return p;
 }

@@ -503,6 +503,15 @@ function drawArched(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: W
   return back;
 }
 
+/** One opening, or with `w.group` its `count` windows side by side across [u0, u1] with `gap` of wall between them. */
+function drawGrouped(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: WinParams, seed: number): number | null {
+  if (!w.group || w.group.count < 2) return drawOpening(c, u0, u1, v0, v1, w, seed);
+  const { count, gap } = w.group, lw = (u1 - u0 - gap * (count - 1)) / count, { group: _g, ...one } = w;
+  let back: number | null = null;
+  for (let k = 0; k < count; k++) { const a = u0 + k * (lw + gap), r = drawOpening(c, a, a + lw, v0, v1, one, seed); back = back ?? r; }
+  return back;
+}
+
 function winRect(cell: Cell, w: WinParams): [number, number, number, number] {
   const cw = cell.u1 - cell.u0, ch = cell.v1 - cell.v0, uc = (cell.u0 + cell.u1) / 2;
   const ww = Math.min(cw - 0.1, frac(w.w, cw, 0.5)), wh = Math.min(ch - 0.2, frac(w.h, ch, 0.6)), v0 = cell.v0 + (w.sill ?? 0.9);
@@ -516,7 +525,7 @@ function drawRow(c: Ctx, row: Row, cell: Cell, seed: number) {
   switch (row.kind) {
     case 'wall': return;
     case 'stack': { for (const it of row.stack ?? []) drawRow(c, it.row, { ...cell, v0: cell.v0 + it.v0, v1: Math.min(cell.v1, cell.v0 + it.v1) }, seed); return; }
-    case 'punched': { const w = row.win ?? {}; const [a, b, lo, hi] = winRect(cell, w); drawOpening(c, a, b, lo, hi, w, seed); return; }
+    case 'punched': { const w = row.win ?? {}; const [a, b, lo, hi] = winRect(cell, w); drawGrouped(c, a, b, lo, hi, w, seed); return; }
     case 'glazed': {
       const w = { w: 0.92, h: 0.86, sill: 0.12, ...(row.win ?? {}) };
       const [a, b, lo, hi] = winRect(cell, w);
@@ -704,7 +713,7 @@ function drawBalconyBack(c: Ctx, b: BalconyParams, cell: Cell, a0: number, a1: n
   if (b.back !== null) {
     const w = { w: 0.8, h: 0.72, sill: sh + 0.08, ...(b.back ?? {}) };
     const [a, bb, lo, hi] = winRect({ ...cell, u0: a0, u1: a1 }, w);
-    drawOpening(c, a, bb, lo, hi, w, seed);
+    drawGrouped(c, a, bb, lo, hi, w, seed);
   }
   if (b.piers) {
     const part = c.part();
