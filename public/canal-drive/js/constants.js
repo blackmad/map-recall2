@@ -208,9 +208,11 @@ const TOPDOWN_TILT_DEGREES = 14;
 // the close one Cockpit. Chase comes in (zoom 0.55 -> 0.7) and lowers
 // (42° -> 48°); Cockpit steps back (1.65 -> 1.45) and lowers (82° -> 84°).
 // 2026-10-23 (user): "make the angle of chase lower; whatever the minimum in
-// the game is now". 48° is the base and the live tilt slider drops to -36°, so
-// the lowest reachable chase pitch was 12°: Chase now starts there.
-const CHASE_PITCH_DEGREES = 12;
+// the game is now". That was first read as pitch 12°, which is flatter than
+// the 2D views and made Chase look top-down (issue #25). A lower camera is a
+// larger pitch; the lowest the map draws is 60°. The live value comes from
+// CanalRecallPreferences.chasePitch (src/canalRecall/game/preferences.ts).
+const CHASE_PITCH_DEGREES = 60;
 const COCKPIT_PITCH_DEGREES = 84;
 const CHASE_ZOOM_OFFSET = 0.7;
 const COCKPIT_ZOOM_OFFSET = 1.45;

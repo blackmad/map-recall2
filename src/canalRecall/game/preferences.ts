@@ -92,9 +92,27 @@ export const PREFERENCES_STORAGE_KEY = 'canalRecall.preferences.v1';
  * 1.5, so a chase ride on the web opened far from 50% (user request).
  */
 export const ZOOM_DEFAULT_VERSION = 4 as const;
-/** Degrees of extra pitch the live tilt slider may add or subtract. */
-export const CAMERA_TILT_MIN = -36;
-export const CAMERA_TILT_MAX = 36;
+/**
+ * Highest pitch the basemap draws (MapLibre's default `maxPitch`); a larger
+ * request is clamped to it.
+ */
+export const MAP_MAX_PITCH = 60;
+/**
+ * Chase pitch with the tilt slider at its default 0. MapLibre pitch is the
+ * camera's angle from straight down: 0 is plan view, 60 the lowest camera.
+ * 2026-10-23 (user): "make the angle of chase lower; whatever the minimum in
+ * the game is now" was read as pitch 12, flatter than the 14° 2D views, so
+ * Chase looked top-down (issue #25). On 2026-10-01 "lower" meant a larger
+ * pitch (42° -> 48°), and the lowest camera the game could reach was 60°.
+ */
+export const CHASE_PITCH_DEGREES = MAP_MAX_PITCH;
+/**
+ * Degrees of extra pitch the live tilt slider may add or subtract. The range
+ * spans exactly what the map can show from Chase (12°..60°): with ±36 around
+ * a 12° base, the left half of the slider clamped to 0° and did nothing.
+ */
+export const CAMERA_TILT_MIN = -48;
+export const CAMERA_TILT_MAX = 0;
 /** Degrees moved by each keyboard tilt nudge. */
 export const CAMERA_TILT_KEY_STEP = 6;
 /** Degrees moved by each Shift+[ / Shift+] orbit nudge. */
@@ -217,6 +235,16 @@ function clampZoom(value: number, zoom: ZoomClamp): number {
 function clampTilt(value: unknown, fallback: number): number {
   if (typeof value !== 'number' || !Number.isFinite(value)) return fallback;
   return Math.min(CAMERA_TILT_MAX, Math.max(CAMERA_TILT_MIN, value));
+}
+
+/**
+ * The pitch Chase asks the map for: base plus the clamped tilt, inside what
+ * the map can draw. Every tilt in [CAMERA_TILT_MIN, CAMERA_TILT_MAX] gives a
+ * different pitch, so the slider never has a dead zone.
+ */
+export function chasePitch(tilt: unknown): number {
+  const value = clampTilt(tilt, 0);
+  return Math.max(0, Math.min(MAP_MAX_PITCH, CHASE_PITCH_DEGREES + value));
 }
 
 function wrapBearing(value: unknown, fallback: number): number {
