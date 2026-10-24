@@ -241,6 +241,9 @@ export class SignatureLandmarks {
     this.sharedFrame.register('landmarks', {
       root,
       onAttach: () => this._setup(this.map, null),
+      // A context loss empties MapLibre's style until the restored one loads; models that landed in that gap
+      // failed on its calls (`getLayer` of a null style) and would keep their extrusions for the session.
+      onContextRestored: () => { this._failed.clear(); this._applyBasemapFilter(); this._requestModels(); },
       beforeRender: ctx => {
         if (this._removed || !this.enabled || !this._entries.length) return false;
         let any = false;

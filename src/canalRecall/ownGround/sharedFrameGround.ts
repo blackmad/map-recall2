@@ -34,10 +34,11 @@ export function groundMercatorFromLocal(): number[] {
  * the ground meshes (as built by ownGround/main.ts); `visible` lets the game
  * hide it (e.g. overview zoom, where MapLibre's flat cartography stays).
  */
-export function groundParticipant(root: any, opts: { visible?: (zoom: number) => boolean; onMainPass?: (clipFromLocal: Float64Array) => void } = {}): FrameParticipant {
+export function groundParticipant(root: any, opts: { visible?: (zoom: number) => boolean; onMainPass?: (clipFromLocal: Float64Array) => void; onContextRestored?: () => void } = {}): FrameParticipant {
   const m: Mat4 = groundMercatorFromLocal();
   return {
     root,
+    onContextRestored: opts.onContextRestored ? () => opts.onContextRestored!() : undefined,
     mercatorFromLocal: () => m,
     beforeRender: ctx => {
       if (ctx.pass === 'main' && opts.onMainPass) opts.onMainPass(mul4(mul4(ctx.clipFromWorld.elements, ctx.worldFromMercator.elements), m));

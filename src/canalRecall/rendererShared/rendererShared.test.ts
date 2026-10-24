@@ -262,7 +262,8 @@ function fakeMap() {
     moveLayer: (id: string) => { layers.splice(layers.indexOf(id), 1); layers.push(id); },
     getLayersOrder: () => [...layers],
     on: (type: string, fn: () => void) => { (handlers[type] ??= []).push(fn); },
-    fire: (type: string) => { for (const fn of handlers[type] ?? []) fn(); },
+    once: (type: string, fn: () => void) => { const h = handlers[type] ??= []; const w = () => { h.splice(h.indexOf(w), 1); fn(); }; h.push(w); },
+    fire: (type: string) => { for (const fn of [...(handlers[type] ?? [])]) fn(); },
     getCanvas: () => ({}),
     getZoom: () => 18,
     getCenter: () => ({ lng: 4.884, lat: 52.3745 }),
@@ -285,6 +286,44 @@ function fakeRenderer(log: string[], frame: SharedFrame) {
     dispose() {},
   };
 }
+
+test('shared frame: a lost and restored context re-adds both layers after the style reload and lets participants rebuild', () => {
+  const map = fakeMap();
+  map.layers.push('city-building-overview');
+  const frame = new SharedFrame(THREE, map, { beforeId: () => 'city-building-overview' });
+  frame.attach();
+  const log: string[] = [];
+  let disposed = 0;
+  frame.renderer = { ...fakeRenderer(log, frame), dispose() { disposed++; } };
+  const calls: string[] = [];
+  frame.register('ground', { root: new THREE.Group(), onAttach: () => calls.push('attach ground'), onContextRestored: f => calls.push(`restore ground ${f === frame}`) });
+  frame.register('trees', { root: new THREE.Group(), onAttach: () => calls.push('attach trees') });
+  assert.deepEqual(calls, ['attach ground', 'attach trees']);
+
+  // MapLibre: style.destroy() calls each custom layer's onRemove with the lost context, then fires the event.
+  const lostGl = { isContextLost: () => true } as any;
+  frame.mainLayer.onRemove(map, lostGl);
+  frame.overlayLayer.onRemove(map, lostGl);
+  map.layers.length = 0;
+  map.fire('webglcontextlost');
+  assert.equal(frame.renderer, null);
+  assert.equal(disposed, 1, 'the old renderer is disposed once');
+
+  // Restore: setStyle(serialised) rebuilds the style asynchronously; the layers return on style.load.
+  map.fire('webglcontextrestored');
+  assert.equal(map.layers.length, 0, 'nothing added before the style has loaded');
+  map.layers.push('city-building-overview');
+  map.fire('style.load');
+  assert.deepEqual(map.layers, [SHARED_FRAME_MAIN_ID, 'city-building-overview', SHARED_FRAME_OVERLAY_ID]);
+
+  // onAdd makes the new renderer (three cannot here): the same step, with a stand-in.
+  frame.renderer = fakeRenderer(log, frame);
+  (frame as any).rendererReady();
+  assert.deepEqual(calls, ['attach ground', 'attach trees', 'restore ground true'], 'onAttach is not repeated; onContextRestored runs once');
+  assert.deepEqual(frame.contextEvents, { lost: 1, restored: 1 });
+  map.fire('style.load');
+  assert.equal(map.layers.filter(id => id === SHARED_FRAME_MAIN_ID).length, 1, 'a later style load does not add the layers twice');
+});
 
 test('shared frame: two passes, one renderer, participants placed by their own local→Mercator', () => {
   const map = fakeMap();

@@ -146,6 +146,7 @@ class Vehicle3D {
     this.sharedFrame.register(id, {
       root: this._scene,
       onAttach: frame => { this._renderer = frame.renderer; this._loadModel(modelUrl); },
+      onContextRestored: frame => { this._renderer = frame.renderer; },
       beforeRender: (ctx) => {
         if (!this.ready || !this.visible || !this.lngLat || !this._modelRoot) { this.screenBox = null; return false; }
         this._modelRoot.scale.setScalar(this.options.gameScale * this.viewportScale() * (this.zoomScale || 1));
