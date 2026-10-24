@@ -44,24 +44,15 @@ one brief per lane in `docs/handoffs/lane-*-20261023.md`. Census baseline
 2026-10-23: 386 counted (grandfathered gallery reviews), 47 strict; target
 1000. Queue `public/canal-drive/landmark-factory-queue.json` (325 rows).
 Open, in order:
-- **factory** (haiku batches of 20, opus review turns): first batch not run.
-  Smoke 2026-10-23: `politie-west-overtoomsesluis` crops 27 s → measure 10 s
-  → compile 7 s, strip rendered (`npm run factory:strip`); the first dominant
-  pand (0363100012098925) got 13 crops but `facts` hit a 3DBAG API outage
-  (TLS connect timeout on api.3dbag.nl, PDOK fine) and sits as a retryable
-  `error` row; the factory retries network errors once and re-queues them on
-  the next run. The 23 authored-but-uninstalled recipes are the zero-network
-  first batch (`politie-west-overtoomsesluis` fails its own footprint gate,
-  IoU 0.749). The crops archive run finished 2026-10-24 00:40: 296 of 311 pands
-  have wall crops in the source archive, 15 are `no-evidence` (not in the
-  building tiles or no usable panorama). Next, once 3DBAG answers again:
-  `npm run factory -- --stage=all --ids=20 --owner=factory-1` batches per
-  the brief (crops are skipped, so a batch is facts → draft → measure →
-  compile only).
-  11 POI rows have no pand (`needs-pand`: Pathé de Munt, DeLaMar West, Levend
-  Paardenmuseum, WTC, …); OBA Banne's pand is not in the building tiles.
-- **kits-review**: 546 kit buildings have no review record; `kit-sheets.ts`
-  not written.
+- **factory**: batches 1–2 (28 houses) compiled and reviewed twice, 0 pass;
+  the user chose "kit first" (#23 A). Row split, stone dressings, giant
+  order, loggias/plinths and the likeness fixes have landed; the acceptance
+  re-run of batches 1–2 on the new kit runs as #45 (new batches resume at
+  ≥ 50 % pass). 265 rows have crops and wait; 11 `needs-pand`, 19
+  `no-evidence`, 2 `error`.
+- **kits-review**: round 4 done 2026-10-24 (421 kits: 110 pass, 172 hold,
+  139 no evidence; census 496). 13 regressions from the measured windows
+  and roofs are in fix lane #43; gaps in `docs/handoffs/kit-gaps.md`.
 - **feedback queue (Firebase, 8 open notes 2026-10-23, pulled with
   `npm run feedback:queue -- pull`)**, routed:
   - gables pointing the wrong way (74dc761d): fixed 2026-10-23 (HISTORY,
