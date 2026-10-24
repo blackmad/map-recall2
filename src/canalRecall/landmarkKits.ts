@@ -69,14 +69,26 @@ export type KitHalls = {
  * and the fill rows then leave that wall alone. On towers (`towerRows`) `count` windows go
  * centred on each of the four faces.
  */
-export type KitWindowRow = { z0: number; z1: number; widthM: number; bayM: number; head?: 'round' | 'pointed' | 'flat'; at?: [number, number]; count?: number };
+export type KitWindowRow = {
+  z0: number; z1: number; widthM: number; bayM: number; head?: 'round' | 'pointed' | 'flat'; at?: [number, number]; count?: number;
+  /**
+   * A ribbon (opt in, fill rows only): one continuous band of glass along each wall edge long enough for `widthM`, set
+   * in from the corners, with slim mullions `bayM` apart in the frame colour, instead of separate openings (the
+   * 1950s-80s school's strip windows and the Amsterdam School's banded narrow windows, kit review rows 8, 18, 37, 38).
+   */
+  ribbon?: boolean;
+};
 /** A round window on the nearest wall to `at`: glass, a stone ring, a hub and six spokes of tracery. */
 export type KitRose = { at: [number, number]; z: number; radiusM: number };
 /**
  * Cheap window geometry on a kit's walls: dark glass panes a hand's breadth proud of the wall,
  * optionally in a light `frameHex` surround, and a stone `plinth` band round the base.
  */
-export type KitWindows = { rows: KitWindowRow[]; /** Source-supported blind wall points; fill rows skip their nearest edge. */ blindWalls?: [number, number][]; towerRows?: KitWindowRow[]; roses?: KitRose[]; glassHex?: string; frameHex?: string; plinth?: { z1: number; hex: string } };
+export type KitWindows = {
+  rows: KitWindowRow[]; /** Source-supported blind wall points; fill rows skip their nearest edge. */ blindWalls?: [number, number][]; towerRows?: KitWindowRow[]; roses?: KitRose[]; glassHex?: string; frameHex?: string; plinth?: { z1: number; hex: string };
+  /** A band `m` deep round every wall right under the hall's eaves (opt in: the white top band of kit review rows 37, 38). */
+  topBand?: { m: number; hex: string };
+};
 /**
  * A pitched or hipped roof over one rectangle of the footprint, at the host's eaves: a nave, a
  * transept, a cross arm. `at` is its centre ([lng, lat]), `lenM` runs along the ridge, `bearingDeg`
@@ -807,6 +819,18 @@ function roseWindow(sink: TriSink, o: Vec2, t: Vec2, n: Vec2, s: number, rose: K
 
 type WallEdge = { o: Vec2; t: Vec2; n: Vec2; len: number };
 
+/** Ribbon glazing on one wall edge (KitWindowRow.ribbon): a frame band, the glass, and mullions every `bayM`. */
+function ribbon(sink: TriSink, e: WallEdge, row: KitWindowRow, glass: string, frame: string) {
+  const inset = Math.min(0.6, e.len * 0.1), s0 = inset, s1 = e.len - inset, f = 0.1;
+  wallPolygon(sink, e.o, e.t, e.n, OFF.frame, [[s0 - f, row.z0 - f], [s1 + f, row.z0 - f], [s1 + f, row.z1 + f], [s0 - f, row.z1 + f]], frame);
+  wallPolygon(sink, e.o, e.t, e.n, OFF.glass, [[s0, row.z0], [s1, row.z0], [s1, row.z1], [s0, row.z1]], glass);
+  const n = Math.max(1, Math.round((s1 - s0) / row.bayM));
+  for (let k = 1; k < n; k++) {
+    const s = s0 + ((s1 - s0) * k) / n;
+    wallPolygon(sink, e.o, e.t, e.n, OFF.tracery, [[s - 0.05, row.z0], [s + 0.05, row.z0], [s + 0.05, row.z1], [s - 0.05, row.z1]], frame);
+  }
+}
+
 /** The ring's edges with unit tangents and outward normals. */
 function wallEdges(ring: readonly Vec2[]): WallEdge[] {
   const pts = ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1] ? ring.slice(0, -1) : ring.slice();
@@ -834,6 +858,10 @@ function nearestEdge(edges: readonly WallEdge[], p: Vec2): { edge: number; s: nu
 function kitWindows(sink: TriSink, ring: readonly Vec2[], spec: KitHalls, win: KitWindows, towerAng: (t: KitTower) => number) {
   const edges = wallEdges(ring), glass = win.glassHex ?? GLASS_HEX, stone = win.frameHex ?? MAT_HEX.stone;
   if (win.plinth) for (const e of edges) if (e.len >= 0.2) wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, 0], [e.len, 0], [e.len, win.plinth.z1], [0, win.plinth.z1]], win.plinth.hex);
+  if (win.topBand) {
+    const z1 = spec.eavesM, z0 = Math.max(0, z1 - win.topBand.m);
+    for (const e of edges) if (e.len >= 0.2) wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, z0], [e.len, z0], [e.len, z1], [0, z1]], win.topBand.hex);
+  }
   // A window centre inside a tower's plan (plus a margin) is behind the tower's own wall.
   const inTower = (p: Vec2) => (spec.towers ?? []).some(t => {
     const [cx, cy] = toLocal(t.at), a = towerAng(t), dx = p[0] - cx, dy = p[1] - cy;
@@ -861,6 +889,7 @@ function kitWindows(sink: TriSink, ring: readonly Vec2[], spec: KitHalls, win: K
     if (row.at || row.z1 > spec.eavesM) continue;
     edges.forEach((e, i) => {
       if (claimed.has(i) || e.len < row.widthM + 1) return;
+      if (row.ribbon) { ribbon(sink, e, row, glass, win.frameHex ?? stone); return; }
       const n = Math.max(1, Math.floor(e.len / row.bayM));
       for (let k = 0; k < n; k++) {
         const s = ((k + 0.5) * e.len) / n;

@@ -259,6 +259,28 @@ function largestComponent(on: Uint8Array, cols: number, rows: number): {conn: nu
   return total ? {conn: best.n / total, spanW: (best.x1 - best.x0 + 1) / cols, spanH: (best.y1 - best.y0 + 1) / rows} : {conn: 0, spanW: 0, spanH: 0};
 }
 
+/**
+ * The exposure and white balance of a crop from its light trim (the header's "Exposure"), over the usable cells of
+ * one crop (`lab` and `rgb` index the same cells): the brightest near-neutral cells (white frames, sills, light
+ * curtains; glass is neutral too, so a high quantile) are a near-white reference scaled to 215/255, gain 0.75..1.45,
+ * with a white balance from the same cells clamped to +-8 %. Exported so other crop readers (the school walls,
+ * scripts/landmarks/build-public-facts.ts) normalise a crop the same way.
+ */
+export function lightTrimNormalisation(lab: readonly Rgb[], rgb: readonly Rgb[]): {ref: Rgb | null; gain: number; wb: [number, number, number]} {
+  const pool = lab.map((_, k) => k);
+  const neutral = pool.filter(k => Math.hypot(lab[k][1], lab[k][2]) < 12), refPool = neutral.length >= pool.length * 0.01 ? neutral : pool;
+  const Lref = quant(refPool.map(k => lab[k][0]), 0.97), refCells = refPool.filter(k => lab[k][0] >= Lref);
+  // A reference only when it is real light trim: clearly lighter than the typical cell (>= 25 L*). On a dull overcast
+  // front with no white frames the brightest neutral cells are just grey (Houthavenkade 26 g3: the gain hit the clamp and
+  // dark red-brown brick came out light mauve), so the exposure is left raw there.
+  const Lmid = median(pool.map(k => lab[k][0]));
+  const ref = refCells.length && Lref - Lmid >= 25 ? medRgb(refCells.map(k => rgb[k])) : null;
+  const refY = ref ? (ref[0] + ref[1] + ref[2]) / 3 : 0;
+  const gain = ref && refY > 1 ? Math.max(0.75, Math.min(1.45, 215 / refY)) : 1;
+  const wb: [number, number, number] = ref && refY > 1 ? [0, 1, 2].map(c => Math.max(0.92, Math.min(1.08, refY / Math.max(1, ref[c])))) as [number, number, number] : [1, 1, 1];
+  return {ref, gain, wb};
+}
+
 export function measureFacade(input: MeasureInput): FacadeMeasurement {
   const {image: im, box} = input, cell = input.cell ?? CELL_M, gb = input.groundBandM ?? GROUND_BAND_M;
   const cols = Math.max(1, Math.floor((box.u1 - box.u0) / cell)), rows = Math.max(1, Math.floor((box.v1 - box.v0) / cell));
@@ -310,16 +332,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   // Exposure: the light trim as a near-white reference.
   const pool = upperUsable.length >= 50 ? upperUsable : allIdx.filter(k => usable[k]);
   // the brightest near-neutral cells (white frames, sills, light curtains); glass is neutral too, so a high quantile
-  const neutral = pool.filter(k => Math.hypot(lab[k][1], lab[k][2]) < 12), refPool = neutral.length >= pool.length * 0.01 ? neutral : pool;
-  const Lref = quant(refPool.map(k => lab[k][0]), 0.97), refCells = refPool.filter(k => lab[k][0] >= Lref);
-  // A reference only when it is real light trim: clearly lighter than the typical cell (>= 25 L*). On a dull overcast
-  // front with no white frames the brightest neutral cells are just grey (Houthavenkade 26 g3: the gain hit the clamp and
-  // dark red-brown brick came out light mauve), so the exposure is left raw there.
-  const Lmid = median(pool.map(k => lab[k][0]));
-  const ref = refCells.length && Lref - Lmid >= 25 ? medRgb(refCells.map(k => mean[k])) : null;
-  const refY = ref ? (ref[0] + ref[1] + ref[2]) / 3 : 0;
-  const gain = ref && refY > 1 ? Math.max(0.75, Math.min(1.45, 215 / refY)) : 1;
-  const wb: [number, number, number] = ref && refY > 1 ? [0, 1, 2].map(c => Math.max(0.92, Math.min(1.08, refY / Math.max(1, ref[c])))) as [number, number, number] : [1, 1, 1];
+  const {ref, gain, wb} = lightTrimNormalisation(pool.map(k => lab[k]), pool.map(k => mean[k]));
   const norm = (c: Rgb): Rgb => c.map((v, i) => Math.max(0, Math.min(255, v * gain * wb[i]))) as Rgb;
 
   const mask = new Uint8Array(N).fill(MASK.unusable);

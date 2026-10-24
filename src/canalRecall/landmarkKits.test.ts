@@ -5,9 +5,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { HIP_MAX_PITCH_DEG, KITS, hipAround, kitGeometry, kitIds, simplifyRing, type PartInput } from './landmarkKits.js';
-import { PUBLIC_WALL, publicKit, schoolHipRoof, schoolWall, SCHOOL_HIP_MIN_EAVES_M, type SchoolFacts } from './publicBuildings.js';
+import { PANORAMA_BRICK, PUBLIC_WALL, SCHOOL_RIBBON_FRAME, panoramaBrickHue, publicKit, schoolHipRoof, schoolWall, schoolWallDisplay, SCHOOL_HIP_MIN_EAVES_M, type SchoolFacts } from './publicBuildings.js';
+import { isOliveShade, lch, masonryFamily } from './facade/cropWallColour.js';
 import { PUBLIC_BUILDINGS } from './publicBuildingData.js';
-import { PUBLIC_FACTS } from './publicBuildingFacts.js';
+import { PUBLIC_FACTS, SCHOOL_PERIOD_WALLS } from './publicBuildingFacts.js';
 import { PERIOD_WALLS, cityWallTint } from './look/palette.js';
 
 type V2 = [number, number];
@@ -40,14 +41,15 @@ test('a plain cinema or worship body draws its coping and plinth on the host wal
 
 test('school walls: measured colour, else the BAG year period palette, never the old fixed beige', () => {
   const measured = schoolWall('x', 'm', facts({ year: 1980, wallHex: '#5c504a' }));
-  assert.deepEqual(measured, { hex: cityWallTint('#5c504a'), source: 'measured' });
+  assert.deepEqual(measured, { hex: cityWallTint(panoramaBrickHue('#5c504a')), source: 'measured' });
   const white = schoolWall('x', 'm', facts({ year: 1980, wallHex: '#e8e6df' }));
   assert.equal(white.source, 'measured');
   assert.notEqual(white.hex, cityWallTint('#e8e6df'), 'a pale wall is not pulled into the brick range');
   const period = schoolWall('NL.IMBAG.Pand.1', 'm', facts({ year: 1975 }));
   assert.equal(period.source, 'period');
-  assert.ok(PERIOD_WALLS.photo.modern!.includes(period.hex));
-  assert.ok(PERIOD_WALLS.photo.school!.includes(schoolWall('NL.IMBAG.Pand.1', 'e', facts({ year: 1931 })).hex));
+  assert.ok(SCHOOL_PERIOD_WALLS.modern!.map(schoolWallDisplay).includes(period.hex), 'an unmeasured school takes a measured wall of its period');
+  assert.ok(SCHOOL_PERIOD_WALLS.school!.map(schoolWallDisplay).includes(schoolWall('NL.IMBAG.Pand.1', 'e', facts({ year: 1931 })).hex));
+  assert.ok(PERIOD_WALLS.photo.canal!.includes(schoolWall('NL.IMBAG.Pand.1', 'o', facts({ year: 1800 })).hex), 'a period with no measured schools keeps the city prior');
   assert.deepEqual(schoolWall('w1', 'm', undefined), { hex: PUBLIC_WALL.s.m, source: 'era' }, 'only a school with no facts at all keeps the era brick');
   // The published list: every school has facts, so none is left on the fixed era colour, and the walls vary.
   const schools = PUBLIC_BUILDINGS.filter(e => e[1] === 's');
@@ -91,4 +93,59 @@ test('hipAround roofs an L plan wing by wing, within the eaves and ridge, and lo
   const jog: V2[] = [[0, 0], [20, 0], [20, 0.8], [40, 0.8], [40, 14], [0, 14], [0, 0]];
   assert.equal(simplifyRing(jog, 1).length, 4);
   assert.ok(hipAround(jog, 6, 5));
+});
+
+// Kit colour round 2 (GitHub #34): the colour rules for school walls read off panorama crops.
+test('crop colour rules: leaf shade is masked, walls outside every masonry family are dropped', () => {
+  // Row 32's trees in front of the brick (pixel boxes on the crop) are leaf shade; its brick piers are not.
+  assert.ok(isOliveShade(74, 68, 37) && isOliveShade(85, 78, 53), 'dark olive leaves');
+  assert.ok(!isOliveShade(120, 94, 66), 'red-brown brick as the panorama reads it (h 72)');
+  assert.ok(!isOliveShade(184, 145, 110) && !isOliveShade(120, 100, 70), 'yellow brick, also in shade');
+  assert.ok(!isOliveShade(226, 213, 186) && !isOliveShade(160, 158, 150), 'cream render and concrete');
+  assert.equal(masonryFamily([176, 90, 64]), 'brick');
+  assert.equal(masonryFamily([120, 94, 66]), 'brick');
+  assert.equal(masonryFamily([66, 55, 50]), 'render', 'a dark brown brick with no chroma left is a neutral wall');
+  assert.equal(masonryFamily([211, 177, 132]), 'buff');
+  assert.equal(masonryFamily([226, 213, 186]), 'render');
+  assert.equal(masonryFamily([230, 230, 226]), 'render');
+  assert.equal(masonryFamily([0xf7, 0xc3, 0x86]), null, 'row 35: the mural');
+  assert.equal(masonryFamily([79, 72, 53]), null, 'row 3: shaded olive under blue cladding');
+  assert.equal(masonryFamily([87, 77, 52]), null, 'row 23: olive');
+  assert.equal(masonryFamily([0x3d, 0x6b, 0x90]), null, 'blue cladding');
+});
+
+test('panorama brick hue: khaki brick is pulled toward red, buff and grey are left alone', () => {
+  for (const khaki of ['#4f4a3f', '#514530', '#534b38', '#5e4b36']) {
+    const n = parseInt(khaki.slice(1), 16), before = lch([n >> 16, (n >> 8) & 255, n & 255]);
+    const m = parseInt(panoramaBrickHue(khaki).slice(1), 16), after = lch([m >> 16, (m >> 8) & 255, m & 255]);
+    assert.ok(after.h < before.h - 10 && after.h < 70, `${khaki}: h ${before.h.toFixed(0)} -> ${after.h.toFixed(0)}`);
+    assert.ok(Math.abs(after.L - before.L) < 1.5 && Math.abs(after.C - before.C) < 1.5, 'lightness and chroma kept');
+  }
+  assert.equal(panoramaBrickHue('#784e42'), '#784e42', 'a red brick under the threshold hue is untouched');
+  assert.equal(panoramaBrickHue('#b99072'), '#b99072', 'light yellow brick keeps its hue');
+  assert.equal(panoramaBrickHue('#413938'), '#413938', 'near-neutral dark brick');
+  assert.ok(PANORAMA_BRICK.keep > 0 && PANORAMA_BRICK.keep < 1);
+});
+
+test('school glazing: measured ribbon windows and a white top band, opt in', () => {
+  const entry = PUBLIC_BUILDINGS.find(e => e[1] === 's' && e[2] === 'f' && e[5] === 'm')!;
+  const plain = publicKit(entry, facts({ year: 1975, glazing: null, topBandHex: null }));
+  const strip = publicKit(entry, facts({ year: 1975, glazing: 'ribbon', topBandHex: '#f0f0ee' }));
+  const w0 = plain.halls![0].windows!, w1 = strip.halls![0].windows!;
+  assert.ok(w0.rows.every(r => !r.ribbon) && !w0.topBand, 'no measurement: the era windows');
+  assert.ok(w1.rows.length && w1.rows.every(r => r.ribbon), 'ribbon rows');
+  assert.equal(w1.frameHex, SCHOOL_RIBBON_FRAME);
+  assert.ok(w1.topBand && w1.topBand.m > 0);
+  assert.ok(w1.rows.every(r => r.z1 <= strip.halls![0].eavesM - w1.topBand!.m), 'no window runs into the band');
+  const ring = rect(30, 12), id = entry[0], parts = new Map([[id, { id, ring, minHeightM: 0, heightM: entry[3] }]]);
+  const geo = (k: typeof plain) => kitGeometry(k, parts)[0].tris;
+  const t1 = geo(strip);
+  assert.ok(t1.some(t => t.hex === w1.topBand!.hex && Math.max(...t.p.map(p => p[2])) === strip.halls![0].eavesM), 'the band tops the wall');
+  // A ribbon is continuous: on the 30 m wall the glass spans almost the whole edge in one piece.
+  const glass = t1.filter(t => t.hex === w1.glassHex && Math.abs(t.p[0][1]) < 0.2 && Math.abs(t.p[1][1]) < 0.2 && Math.abs(t.p[2][1]) < 0.2);
+  const xs = glass.flatMap(t => t.p.map(p => p[0]));
+  assert.ok(Math.max(...xs) - Math.min(...xs) > 27, 'glass runs the wall');
+  assert.ok(geo(plain).every(t => t.hex !== SCHOOL_RIBBON_FRAME));
+  const ribbons = PUBLIC_FACTS.filter(f => f[7] === 2).length, punched = PUBLIC_FACTS.filter(f => f[7] === 1).length;
+  assert.ok(ribbons > 20 && punched > 20, `the crops read both (${ribbons} ribbon, ${punched} punched)`);
 });

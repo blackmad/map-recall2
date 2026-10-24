@@ -17,12 +17,19 @@
 // its own measured colour (publicBuildingFacts.ts, from its panorama crops) or else its BAG year's period palette; a
 // flat pre-1940 school the 3DBAG says is roofed gets a hipped roof round its footprint; a cinema's plain body gets
 // a coping and plinth (landmarkKits.ts KitTrim).
+//
+// Kit colour round 2 (2026-10-24, GitHub #34): crops are white-balanced on their light trim and leaf shade is masked
+// before the wall is read (facade/cropWallColour.ts); a wall outside every masonry family (a mural) is dropped; the
+// panoramas' yellow brick hue is pulled back for display (panoramaBrickHue); the fallback for an unmeasured school is
+// the measured walls of its period (SCHOOL_PERIOD_WALLS), not the city prior; ribbon glazing and a white top band
+// where the crops show them.
 
-import type { Kit, KitWindowRow } from './landmarkKits.js';
+import type { Kit, KitWindowRow, KitWindows } from './landmarkKits.js';
 import { plainBodyTrim } from './worshipBuildings.js';
 import { PUBLIC_BUILDINGS, type PublicEntry } from './publicBuildingData.js';
-import { PUBLIC_FACTS, type PublicFactsEntry } from './publicBuildingFacts.js';
-import { PERIOD_WALLS, ROOF_TONES, cityStuccoTint, cityWallTint, hexToRgb, periodForYear } from './look/palette.js';
+import { PUBLIC_FACTS, SCHOOL_PERIOD_WALLS, type PublicFactsEntry } from './publicBuildingFacts.js';
+import { labToRgb, rgbToLab } from './look/brickTone.js';
+import { PERIOD_WALLS, ROOF_TONES, cityStuccoTint, cityWallTint, hexToRgb, periodForYear, rgbToHex } from './look/palette.js';
 import { wallFamily } from './facade/materials.js';
 
 export type PublicKind = 'c' | 's' | 'f' | 'p' | 'h' | 'o';
@@ -98,9 +105,15 @@ export function schoolWindows(eavesM: number, era: PublicEra): KitWindowRow[] {
 const KIND_NAME: Record<PublicKind, string> = { c: 'cinema', s: 'school', f: 'fire station', p: 'police station', h: 'hospital', o: 'civic office' };
 
 /** One school's facts (publicBuildingFacts.ts): BAG year, 3DBAG roof type, eaves and ridge, measured wall colour. */
-export type SchoolFacts = { year: number | null; roof: 0 | 1 | 2 | 3; eavesM: number | null; ridgeM: number | null; wallHex: string | null; roofFits: boolean };
-export const schoolFacts = ([, year, roof, eavesDm, ridgeDm, wallHex, roofFits]: PublicFactsEntry): SchoolFacts =>
-  ({ year: year || null, roof, eavesM: eavesDm ? eavesDm / 10 : null, ridgeM: ridgeDm ? ridgeDm / 10 : null, wallHex, roofFits: roofFits === 1 });
+export type SchoolFacts = {
+  year: number | null; roof: 0 | 1 | 2 | 3; eavesM: number | null; ridgeM: number | null; wallHex: string | null; roofFits: boolean;
+  /** As the crops read it (facade/cropWallColour.ts glazingProfile): ribbon, punched, or unknown. */
+  glazing?: 'ribbon' | 'punched' | null;
+  /** The pale band under the eaves, measured, or null. */
+  topBandHex?: string | null;
+};
+export const schoolFacts = ([, year, roof, eavesDm, ridgeDm, wallHex, roofFits, glazing, topBandHex]: PublicFactsEntry): SchoolFacts =>
+  ({ year: year || null, roof, eavesM: eavesDm ? eavesDm / 10 : null, ridgeM: ridgeDm ? ridgeDm / 10 : null, wallHex, roofFits: roofFits === 1, glazing: glazing === 2 ? 'ribbon' : glazing === 1 ? 'punched' : null, topBandHex });
 const FACTS: ReadonlyMap<string, SchoolFacts> = new Map(PUBLIC_FACTS.map(e => [e[0], schoolFacts(e)]));
 
 /** FNV-1a pick, stable per footprint id (look/palette.ts uses the same hash for its contextual priors). */
@@ -111,16 +124,38 @@ const stablePick = <T>(id: string, values: readonly T[]): T => {
 };
 
 /**
- * A school's wall colour and where it came from: its own panorama reading lifted into the city's display range
- * (brick by look/palette.ts cityWallTint, a pale or painted wall by cityStuccoTint, so white stays white), else a
- * stable pick from its BAG year's period palette (look/palette.ts PERIOD_WALLS.photo), else the coarse era brick.
+ * The municipal panoramas draw brick yellower than it is: the Tropenmuseum's brick reads Lab hue 55-65 in the
+ * panoramas and 2-35 in diffuse light in independent photos (look/brickTone.ts header), and kit review 2 (2026-10-24)
+ * read every school wall past hue ~78 as olive or khaki (rows 23, 27, 32: h 84-90) while those at h 30-62 read as the
+ * photo's brick (rows 10, 16, 19, 25, 37, 38). A mid or dark brick (L* under `maxL`, some chroma) keeps its hue up to
+ * `from`; past it the hue is pulled back by `(1 - keep)` of the excess. Light buff and yellow brick (row 3, L* 63)
+ * and near-neutral walls (grey concrete, row 33: C* 5.5) are left alone.
+ */
+export const PANORAMA_BRICK = { from: 50, keep: 0.4, maxL: 55, minC: 6 } as const;
+export function panoramaBrickHue(hex: string): string {
+  const [L, a, b] = rgbToLab(hexToRgb(hex)), C = Math.hypot(a, b), h = (Math.atan2(b, a) * 180) / Math.PI;
+  if (L >= PANORAMA_BRICK.maxL || C < PANORAMA_BRICK.minC || h <= PANORAMA_BRICK.from || h > 120) return hex;
+  const h2 = ((PANORAMA_BRICK.from + (h - PANORAMA_BRICK.from) * PANORAMA_BRICK.keep) * Math.PI) / 180;
+  return rgbToHex(labToRgb([L, C * Math.cos(h2), C * Math.sin(h2)]));
+}
+
+/** A raw panorama wall reading lifted into the city's display range: brick by look/palette.ts cityWallTint after the
+ *  panorama hue correction, a pale or painted wall by cityStuccoTint (so white stays white). */
+export function schoolWallDisplay(raw: string): string {
+  return wallFamily(hexToRgb(raw)) === 'brick' ? cityWallTint(panoramaBrickHue(raw)) : cityStuccoTint(raw);
+}
+
+/**
+ * A school's wall colour and where it came from: its own panorama reading (publicBuildingFacts.ts) lifted for display,
+ * else a stable pick from the measured walls of schools of its BAG period (SCHOOL_PERIOD_WALLS, lifted the same way),
+ * else from the city's period palette (look/palette.ts PERIOD_WALLS.photo), else the coarse era brick.
  */
 export function schoolWall(id: string, era: PublicEra, facts: SchoolFacts | undefined = FACTS.get(id)): { hex: string; source: 'measured' | 'period' | 'era' } {
-  if (facts?.wallHex) {
-    const rgb = hexToRgb(facts.wallHex);
-    return { hex: wallFamily(rgb) === 'brick' ? cityWallTint(facts.wallHex) : cityStuccoTint(facts.wallHex), source: 'measured' };
-  }
-  const walls = facts?.year ? PERIOD_WALLS.photo[periodForYear(facts.year)] : null;
+  if (facts?.wallHex) return { hex: schoolWallDisplay(facts.wallHex), source: 'measured' };
+  const period = facts?.year ? periodForYear(facts.year) : null;
+  const measured = period ? SCHOOL_PERIOD_WALLS[period] : undefined;
+  if (measured?.length) return { hex: schoolWallDisplay(stablePick(id, measured)), source: 'period' };
+  const walls = period ? PERIOD_WALLS.photo[period] : null;
   if (walls?.length) return { hex: stablePick(id, walls), source: 'period' };
   return { hex: PUBLIC_WALL.s[era], source: 'era' };
 }
@@ -149,6 +184,12 @@ export function schoolHipRoof(facts: SchoolFacts | undefined, heightM: number): 
   return { eavesM: round1(eaves), riseM: round1(rise) };
 }
 
+/** Ribbon glazing (a school whose crops read ribbon windows): mullions this far apart, white frames as the photos show
+ *  them (kit review rows 8, 18, 33, 37, 38). */
+export const SCHOOL_RIBBON_MULLION_M = 1.5, SCHOOL_RIBBON_FRAME = '#e4e0d6';
+/** Depth of the white top band: the 1920s-30s schools' deep parapet band (rows 37, 38: ~1.4 m), the later fascia. */
+export const SCHOOL_TOP_BAND_M = { o: 1.2, m: 0.7 } as const;
+
 export function publicKit([id, kind, mode, eavesM, riseM, era]: PublicEntry, facts: SchoolFacts | undefined = FACTS.get(id)): Kit {
   const name = `Generic ${KIND_NAME[kind]} ${id}`;
   if (kind === 'c' || mode === 'p') {
@@ -157,8 +198,16 @@ export function publicKit([id, kind, mode, eavesM, riseM, era]: PublicEntry, fac
   // A hip whose ring folds on this footprint (publicBuildingFacts.ts roofFits) keeps the flat roof at full height.
   const hip = mode === 'f' && facts?.roofFits !== false ? schoolHipRoof(facts, eavesM) : null;
   const eaves = hip?.eavesM ?? eavesM, rise = hip?.riseM ?? riseM;
-  const rows = schoolWindows(eaves, era);
-  const windows = { rows, glassHex: '#3a4650', frameHex: era === 'm' ? undefined : '#d8d2c4', plinth: era === 'm' ? undefined : { z1: 0.8, hex: '#8c877d' } };
+  const ribbon = facts?.glazing === 'ribbon';
+  const rows = ribbon ? schoolWindows(eaves, era).map(r => ({ ...r, ribbon: true, bayM: SCHOOL_RIBBON_MULLION_M })) : schoolWindows(eaves, era);
+  const windows: KitWindows = { rows, glassHex: '#3a4650', frameHex: ribbon ? SCHOOL_RIBBON_FRAME : era === 'm' ? undefined : '#d8d2c4', plinth: era === 'm' ? undefined : { z1: 0.8, hex: '#8c877d' } };
+  // The measured pale band under the eaves, on a flat-roofed school (a hipped roof's eaves have no parapet band).
+  // Window rows give way to it: a row whose head would run into the band is cut under it, or dropped when too short.
+  if (facts?.topBandHex && !hip && mode === 'f') {
+    const m = era === 'o' ? SCHOOL_TOP_BAND_M.o : SCHOOL_TOP_BAND_M.m, top = round1(eaves - m - 0.2);
+    windows.topBand = { m, hex: cityStuccoTint(facts.topBandHex) };
+    windows.rows = rows.map(r => (r.z1 > top ? { ...r, z1: top } : r)).filter(r => r.z1 - r.z0 >= 1);
+  }
   return {
     name, wall: { plain: true, hex: schoolWall(id, era, facts).hex }, tiers: [], stacks: [], roofs: [],
     halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === 'h', ...(hip ? { hip: true, roofHex: SCHOOL_HIP_TILE } : {}), eavesM: eaves, riseM: rise, mat: 'tile', windows }],
