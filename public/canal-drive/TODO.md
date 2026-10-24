@@ -204,6 +204,14 @@ Open, in order:
   is not an era signal); five were older hand-authored intents, also not
   good enough. Kit gaps appended. Route decision for the 1000 target is
   issue #23 (needs-david): factory yield 0/27 so far.
+- **kit: loggias + glazed plinth** (merged 2026-10-24, #13): opt-in
+  wall-group fields `loggias` (recessed balconies, side returns, rail) and
+  `plinth` (glazed storeys with own lights/pier/height factor); measure
+  proposes a plinth only on strong evidence. IJburg walls[2] FAIL → PASS;
+  IJburg walls[3], Reigersbos walls[7], Buitenveldert walls[4] still FAIL
+  (glare and dark fascias measured as glazing). Kit still cannot say:
+  shop canopies/fascia sign bands, striped tile cladding, concrete loggia
+  soffits, taller top storeys.
 - **kit review 1** (2026-10-24, opus, pages 1–10): 2 pass / 38 hold (6
   no photo); census 386 → 388. Estimated 5–10 % pass for the remaining 506
   until the kit gaps are fixed: generic schools are one fixed beige whatever
