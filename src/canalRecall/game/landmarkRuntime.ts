@@ -44,7 +44,7 @@ import type { FactsFile } from '../facts/factTypes';
 import type { FactChoice } from '../facts/factRotation';
 import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
-import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge, streetCardText, type StreetNameOrigin } from './routeKnowledge';
+import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge, streetCardText, streetCardWithRotatedFact, type StreetNameOrigin } from './routeKnowledge';
 import { canShowDriveByCard, canShowMiniMap, canShowPostcard, canShowTeachingCard } from './teachingSurface';
 import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
@@ -129,9 +129,9 @@ export class GameLandmarkRuntime {
    *  certain to be shown, and a fact must not be spent on a card that never
    *  appears: `factCardText` chooses, and `commitShownFact` is what marks the
    *  sentence as told. */
-  _showLandmarkNotice(notice: LandmarkNotice, hold: NoticeHold, source: NoticeSource = 'click'): void {
+  _showLandmarkNotice(notice: LandmarkNotice, hold: NoticeHold, source: NoticeSource = 'click', streetEntry?: StreetKnowledgeEntry): void {
     if (this._landmarkNotice) this.vectorMap?.setActiveLandmark(null);
-    this._landmarkNotice = this._withRotatedFact(notice);
+    this._landmarkNotice = this._withRotatedFact(notice, streetEntry);
     this._landmarkNoticeHold = hold;
     this._landmarkNoticeSource = source;
     this._landmarkNoticeState = openNotice();
@@ -155,7 +155,7 @@ export class GameLandmarkRuntime {
    * is the normal case until a batch has been reviewed and published — the
    * Wikipedia lede is the fallback, not an error.
    */
-  _withRotatedFact(notice: LandmarkNotice): LandmarkNotice {
+  _withRotatedFact(notice: LandmarkNotice, streetEntry?: StreetKnowledgeEntry): LandmarkNotice {
     if (!this._facts || !this._facts.size) return notice;
     // Prefer the catalog opening; fall back to the encyclopedia lede already
     // on this notice before rotation overwrites `detail`.
@@ -167,7 +167,9 @@ export class GameLandmarkRuntime {
     );
     if (!chosen) return notice;
     this._commitFact(chosen.choice);
-    return { ...notice, ...chosen.text };
+    // A street/bridge card keeps its name origin first and its register line.
+    const text = streetEntry ? streetCardWithRotatedFact(streetEntry, chosen.text) : chosen.text;
+    return { ...notice, ...text };
   }
 
   _commitFact(choice: FactChoice): void {
@@ -291,7 +293,7 @@ export class GameLandmarkRuntime {
       imageUrl: entry.wikipediaImageUrl || '',
       wikipediaUrl: entry.wikipediaUrl || '',
       extractLang: entry.wikipediaExtractLang || 'en',
-    }, { kind: 'sticky' }, 'street');
+    }, { kind: 'sticky' }, 'street', entry);
   }
 
   // ---- Loading the extract ----
