@@ -1,4 +1,5 @@
 import { BERTH_RADIUS, connectedTerminals, type FerryLink, type Point, type Segment, type Terminal } from './network';
+import { meanAngle, nearCluster, nearestBerth, onPierEdge, PIER_EDGE_WATER_AHEAD, pierClusters, pierEdge } from './pierEdge';
 
 /**
  * Boarding, sailing and docking for the cycling IJ ferries. Cycling stays the
@@ -58,6 +59,7 @@ export interface FerryTrack {
   getSurface?(x: number, y: number): string;
   _ferryLinks?: FerryLink[];
   _ferryAccesses?: Segment[];
+  _ferryPiers?: Terminal[][];
 }
 
 export interface FerryGame {
@@ -75,6 +77,11 @@ export function ferryLinksOf(track: FerryTrack): FerryLink[] {
 /** The terminal accesses (a dozen at most), cached on the track like its links. */
 export function ferryAccessesOf(track: FerryTrack): Segment[] {
   return (track._ferryAccesses ||= track.segments.filter(s => s.type === 'ferry-access' && s.ferryTerminal));
+}
+
+/** The terminals grouped by the quay they share, cached on the track. */
+export function ferryPiersOf(track: FerryTrack): Terminal[][] {
+  return (track._ferryPiers ||= pierClusters(ferryAccessesOf(track).map(s => s.ferryTerminal!)));
 }
 
 export type Shore = Point & { angle: number | null; distance: number };
@@ -137,15 +144,45 @@ export function boardingTerminal(player: FerryPlayer, access: Segment | undefine
   const water = pierShore(terminal, isWater);
   if (!water) return null;
   if (water.angle !== null && angleBetween(player.angle, water.angle) > BOARD_HEADING_TOLERANCE) return null;
-  // Launch with the stern ramp at the quay rather than half the hull ashore:
-  // move out along the heading by up to half a hull length while still afloat.
-  let berth = { x: water.x, y: water.y, angle: player.angle };
+  return { terminal, berth: launchBerth(water, player.angle, isWater) };
+}
+
+/**
+ * Launch with the stern ramp at the quay rather than half the hull ashore:
+ * move out along the heading by up to half a hull length while still afloat.
+ */
+function launchBerth(water: Point, angle: number, isWater: WaterTest): Point & { angle: number } {
+  let berth = { x: water.x, y: water.y, angle };
   for (let d = 6; d <= FERRY_SIZE.length / 2; d += 6) {
-    const x = water.x + Math.cos(player.angle) * d, y = water.y + Math.sin(player.angle) * d;
+    const x = water.x + Math.cos(angle) * d, y = water.y + Math.sin(angle) * d;
     if (!isWater(x, y)) break;
-    berth = { x, y, angle: player.angle };
+    berth = { x, y, angle };
   }
-  return { terminal, berth };
+  return berth;
+}
+
+/**
+ * Boarding anywhere along a ferry pier's edge (pierEdge.ts), not only at its
+ * stops: the rider stands on the quay line through the pier's stops, heads
+ * towards the water, and open water lies just ahead. The vessel belongs to the
+ * nearest stop along the quay. Geometry is checked before any water probe.
+ */
+export function edgeBoarding(player: FerryPlayer, track: FerryTrack, isWater: WaterTest): Boarding | null {
+  if (player.speed < 1) return null;
+  for (const pier of ferryPiersOf(track)) {
+    if (!nearCluster(pier, player)) continue;
+    const edge = pierEdge(pier, meanAngle(pier.map(t => pierShore(t, isWater)?.angle)));
+    if (!edge || !onPierEdge(edge, player)) continue;
+    if (angleBetween(player.angle, Math.atan2(edge.normal.y, edge.normal.x)) > BOARD_HEADING_TOLERANCE) continue;
+    let water: Point | null = null;
+    for (let d = 0; d <= PIER_EDGE_WATER_AHEAD && !water; d += 3) {
+      const x = player.x + Math.cos(player.angle) * d, y = player.y + Math.sin(player.angle) * d;
+      if (isWater(x, y)) water = { x, y };
+    }
+    if (!water) continue;
+    return { terminal: nearestBerth(edge, player), berth: launchBerth(water, player.angle, isWater) };
+  }
+  return null;
 }
 
 export function board(player: FerryPlayer, boarding: Boarding, links: readonly FerryLink[]): void {
@@ -198,7 +235,10 @@ export function beginFerryFrame(game: FerryGame, isWater: WaterTest): boolean {
     board(player, boarding, links);
     return true;
   }
-  return false;
+  const boarding = edgeBoarding(player, game.track, isWater);
+  if (!boarding) return false;
+  board(player, boarding, links);
+  return true;
 }
 
 /** Free steering on water: no street-heading assistance towards the nearest bank. */
