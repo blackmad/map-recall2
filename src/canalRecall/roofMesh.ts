@@ -201,6 +201,11 @@ export function planRoof(id: string, style: string, heightM: number, minHeightM:
   if (kind === 'flat') return null;
   if ((kind === 'mansard' || kind === 'mansardHip') && rect.wid < 5.2) kind = 'pitched';
   if ((kind === 'school' && rect.wid < 6) || (kind === 'halfHipped' && rect.wid < 5)) kind = 'pitched';
+  // A half-hip (wolfdak) belongs to a free-standing roof. On a narrow plot at least twice as deep as wide (a terraced
+  // house, its narrow end on the street) that end is a bare brick trapezoid under a hip, a brown wedge above the
+  // cornice between crowned neighbours (Nassaukade 171, note ba8499fa): it gets the row's gable crown instead.
+  // A mapped half-hip, and a shallow row lying along its street, keep theirs.
+  if (kind === 'halfHipped' && narrow && rect.len >= 2 * rect.wid && !allowed) kind = 'gable';
   const riseM = riseFor(kind, rect.wid);
   if (heightM - riseM < 4.5) return null;
   const g = hash01(`${id}:gable`);
