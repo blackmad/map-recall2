@@ -1113,6 +1113,7 @@ export function auditZFight(s: MaterialSoup, th: GeometryAuditThresholds = GEOME
       // Same-facing only. A part resting flat on another (a plate on a plinth: opposite normals on one plane) cannot show its
       // tie: the resting part's own top covers it from above and the host covers it from below (checked 2026-10-23, Anne
       // Frank's foot plate); what shows on such a model is the near band, the plate's top 5 cm over the plinth top.
+      if (A.n[0] * B.n[0] + A.n[1] * B.n[1] + A.n[2] * B.n[2] < cosTol) continue;
       if (B.min[0] > A.max[0] + th.zNearTol || A.min[0] > B.max[0] + th.zNearTol || B.min[1] > A.max[1] + th.zNearTol || A.min[1] > B.max[1] + th.zNearTol || B.min[2] > A.max[2] + th.zNearTol || A.min[2] > B.max[2] + th.zNearTol) continue;
       // The larger triangle carries the plane; the smaller one's corners are measured against it. A narrow strip's own normal
       // is noisy in a quantised GLB (3 mm of position error over a 20 cm strip tilts it 1.5 degrees), and extrapolating that

@@ -321,6 +321,7 @@ import {buildMamaBaranka} from './mama-baranka-builder';
 import {buildSpanjemonument} from './spanjemonument-builder';
 import {applyInstalledFigures} from './installed-figures';
 import {computeSourceHashes,ALWAYS_REBUILD,type SourceHashes} from './manual-source-hash';
+import {setSink} from './nearbar-kit';
 const out=path.resolve('public/canal-drive/models');
 const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871'};
 type Colour=keyof typeof palette;
@@ -384,7 +385,11 @@ function hospital(id:string){let s=hospitals.sites.find(s=>s.id===id)!;let spec=
 // Windows placed across a wall step/corner of the survey outline are dropped for these (see snapOpenings dropOverhang); listed so the removals are deliberate.
 const DROP_OVERHANG_IDS=new Map<string,number>([['fire-station-willem',4],['mountain-network',14],['valley',16],['rai-amsterdam',13],['beta-boulders',5],['stadhuis',6],['straat-museum',8],['hilton-amsterdam',5],['max-euwe-centrum',4]]); // id -> largest assembly (m) that may be dropped
 const DROP_MIN_OUTSIDE=new Map<string,number>([['beta-boulders',.25],['mountain-network',.15],['rai-amsterdam',.3],['max-euwe-centrum',.2]]); // default .35
-const SNAP_OPTS=new Map<string,{embed?:number;maxBuried?:number;maxFloat?:number;clearMargin?:number;keepLiftOverhang?:boolean;dropBuried?:{minHidden:number;maxExtent:number}}>([['oudemanhuispoort',{clearMargin:.08}],['haparandaweg-2-4',{maxBuried:1.2,keepLiftOverhang:true}],['american-hotel',{clearMargin:.08,keepLiftOverhang:true,dropBuried:{minHidden:.95,maxExtent:4}}],['hilton-amsterdam',{maxBuried:1.5,keepLiftOverhang:true}],['valley',{dropBuried:{minHidden:.95,maxExtent:14}}]]); // per-model snapOpenings overrides
+const SNAP_OPTS=new Map<string,{embed?:number;maxBuried?:number;maxFloat?:number;clearMargin?:number;keepLiftOverhang?:boolean;dropBuried?:{minHidden:number;maxExtent:number}}>([['oudemanhuispoort',{clearMargin:.08}],['haparandaweg-2-4',{maxBuried:1.2,keepLiftOverhang:true}],['american-hotel',{clearMargin:.08,keepLiftOverhang:true,dropBuried:{minHidden:.95,maxExtent:4}}],['hilton-amsterdam',{maxBuried:1.5,keepLiftOverhang:true}],['valley',{dropBuried:{minHidden:.95,maxExtent:14}}],
+  // Allard Pierson stands on the 4.5 cm layered sheets: its window frames are snapped to rest 5.5 cm proud of the brick. Embedded the
+  // default 2 cm they sat 2.1-2.8 cm off it after quantisation, 221 m2 of tight-band z-fight (2026-10-24, audit-regen review; the
+  // accepted 2026-10-13 export audits 1.9 m2, this one 1.9).
+  ['allard-pierson',{embed:-.055}]]); // per-model snapOpenings overrides
 const SNAP_OPENING_IDS=new Set(['hoofdbureau-elandsgracht','hotel-de-l-europe','max-euwe-centrum','academie-theater-dans','de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds','stadhuis','heineken-experience-amsterdam','nieuwe-kerk','jewish-museum','dutch-resistance-museum','allard-pierson','cinecenter','straat-museum','haparandaweg-2-4','fire-station-hendrik','fire-station-zebra','this-is-holland','posthoornkerk','petrus-en-paulus-kerk','oudemanhuispoort','american-hotel','krasnapolsky','hilton-amsterdam','booking-hq','scheepvaartmuseum','waag']);
 function snapPartOpenings(id:string){
  if(!SNAP_OPENING_IDS.has(id)||process.env.SNAP_SKIP===id)return;
@@ -514,6 +519,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   if(skipReady(id)){skipped.push(id);continue;}
   built.push(id);
   parts=[];
+  // nearbar-kit's sink is module state: a builder that sets it and returns without setSink(0) (artis-aquarium, american-hotel)
+  // sank every later model's slabs in a one-process build (Z1, 2026-10-20: Lloyd Hotel buried 9 -> 34, Vondelkerk overhang 0 -> 6).
+  setSink(0);
   // The Cuypersgebouw and its east wing (centraal-cuypers-builder.ts, 2026-10-16; it replaced a parametric box whose front stood
   // 11.5 m out on the Stationsplein) and the four train/bus roofs.
   let external=false;

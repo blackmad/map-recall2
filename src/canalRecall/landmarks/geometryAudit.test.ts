@@ -292,6 +292,18 @@ test('coplanarOverlap metric: two near-parallel planes far from the origin still
   assert.ok(z.nearArea > 1.5 && z.nearArea < 2.5, `near ${z.nearArea}`);
 });
 
+test('coplanarOverlap metric: faces more than zAngleTol apart are not coplanar, though both lie within the 8 cm band (2026-10-24)', () => {
+  // A 1.6 m glass strip tilted 5 degrees about its centre line, crossing a slate roof at y = 20: every corner is within 7 cm of the
+  // roof plane, but two faces 5 degrees apart cross along one line and never draw over each other. 6b41a2c3b dropped this filter
+  // by accident; the normal bins alone admit about 10 degrees, which let De Nederlandsche Bank read 22.4 -> 50.5 m2.
+  const t = Math.tan((5 * Math.PI) / 180), y = (x: number) => 20 + (x - 5.8) * t;
+  const strip = {p: [[5, y(5), 6], [6.6, y(6.6), 6], [6.6, y(6.6), 4], [5, y(5), 4]] as V3[], mat: 'glass'};
+  const z = auditZFight(quads(flat(0, 0, 20, 10, 20, 'slate'), strip));
+  assert.equal(z.area + z.nearArea, 0, `tilted strip: flush ${z.area}, near ${z.nearArea}`);
+  const level = {p: [[5, 20.01, 6], [6.6, 20.01, 6], [6.6, 20.01, 4], [5, 20.01, 4]] as V3[], mat: 'glass'};
+  assert.ok(auditZFight(quads(flat(0, 0, 20, 10, 20, 'slate'), level)).area > 2.5, 'the same strip laid level 1 cm up fights');
+});
+
 test('coplanarOverlap metric: a doubled face counts within one part and material; the two triangles of a quad do not', () => {
   assert.equal(auditZFight(quads(flat(0, 0, 4, 4, 10, 'slate'))).patches.length, 0, 'adjacent triangles share an edge, no overlap');
   const doubled = auditZFight(quads(flat(0, 0, 4, 4, 10, 'slate'), flat(0, 0, 4, 4, 10, 'slate')));
