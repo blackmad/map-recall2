@@ -211,6 +211,236 @@
     pond: "#46707c"
   };
 
+  // src/canalRecall/look/measuredPeriodWalls.ts
+  var MEASURED_PERIOD_WALL_LISTS = { "canal": ["#6e5352", "#8c7768", "#977f73", "#a79276", "#b8a17a", "#575245", "#60564b", "#62544d", "#61584c", "#655850", "#655b50", "#6a5454", "#6f6058", "#726359", "#726459", "#76615d", "#77685d", "#7a6c60", "#826c66", "#918174", "#9a887f", "#a89f8a", "#6b6163", "#dfdcd2"], "c19": ["#70564f", "#6f5b52", "#7a665c", "#86695b", "#886a5f", "#857266", "#8b746d", "#9b887e", "#a38e83", "#ad9585", "#61534a", "#63564e", "#685b52", "#6f6057", "#716259", "#75665c", "#7b6961", "#7c6962", "#7f6a64", "#7f7664", "#8e796f", "#9c9181", "#95787e", "#dad8cf"], "school": ["#665247", "#775744", "#735d52", "#786158", "#8c5957", "#896559", "#856f63", "#9d7f6d", "#ad997f", "#5c4f48", "#61564c", "#67564e", "#6b5554", "#6b5851", "#6b5b50", "#716057", "#745e5b", "#75655c", "#78665f", "#806d64", "#89706b", "#a19888", "#614a4e", "#a4a09f"], "modern": ["#715d53", "#7c6459", "#816b64", "#8f7265", "#9c8980", "#ac9a86", "#60594c", "#635c4e", "#6a5a50", "#6c5a54", "#6c5e55", "#6e6256", "#72675a", "#776a5d", "#7b6a61", "#7f6f64", "#807265", "#886f6b", "#8b7d6d", "#958b79", "#a29189", "#695256", "#a59b8d", "#c8c5ba"] };
+
+  // src/canalRecall/look/measuredWhitePoints.ts
+  var WALL_WHITE_POINTS = {
+    "#4f4834": [215, 215, 215],
+    "#463823": [216, 215, 215],
+    "#5f5950": [215, 215, 215],
+    "#a69873": [215, 215, 215],
+    "#57423e": [215, 215, 215],
+    "#473c3b": [215, 215, 215],
+    "#5d5d5c": [214, 215, 215],
+    "#7e573b": [215, 215, 215],
+    "#705449": [215, 215, 215],
+    "#7f8283": [215, 214, 215],
+    "#796764": [215, 215, 215],
+    "#5d534b": [215, 215, 215],
+    "#7d6e52": [215, 215, 215],
+    "#88735e": [215, 215, 215],
+    "#88715f": [215, 215, 215],
+    "#736352": [215, 215, 215],
+    "#241d1c": [172, 172, 172],
+    "#4b3f37": [215, 215, 215],
+    "#615551": [215, 215, 215],
+    "#595651": [214, 215, 214],
+    "#423931": [215, 215, 215],
+    "#7b6d6a": [215, 214, 216],
+    "#382418": [215, 215, 215],
+    "#866343": [215, 215, 215],
+    "#6e6256": [215, 215, 215],
+    "#625650": [205, 205, 205],
+    "#252c24": [185, 185, 186],
+    "#2d281b": [215, 214, 215],
+    "#3b342b": [215, 215, 215],
+    "#6f5c56": [215, 215, 215],
+    "#393535": [215, 215, 215],
+    "#786357": [215, 215, 215],
+    "#383d43": [205, 215, 215],
+    "#554e4a": [215, 216, 215],
+    "#3d3432": [215, 215, 215],
+    "#3d353c": [215, 215, 215],
+    "#4e443f": [215, 215, 215],
+    "#70574d": [207, 207, 207],
+    "#d49662": [215, 215, 215],
+    "#917b5c": [215, 215, 215],
+    "#494341": [215, 215, 215],
+    "#645f5f": [215, 215, 214],
+    "#342a18": [215, 215, 215],
+    "#825746": [215, 216, 215],
+    "#99604e": [212, 215, 215],
+    "#706868": [215, 215, 215],
+    "#786b61": [215, 215, 214],
+    "#5c5b57": [215, 215, 215],
+    "#7a655b": [215, 215, 215],
+    "#6f5b54": [215, 215, 215],
+    "#4a3f3a": [215, 214, 215],
+    "#614f44": [216, 215, 215],
+    "#654e44": [215, 215, 215],
+    "#6f5f53": [215, 215, 216],
+    "#584d49": [215, 215, 215],
+    "#d3c9b2": [215, 215, 215],
+    "#544b46": [215, 215, 215],
+    "#929289": [215, 215, 215],
+    "#68584f": [215, 215, 216],
+    "#574d47": [215, 215, 215],
+    "#5e4e41": [215, 215, 215],
+    "#6e605a": [215, 215, 215],
+    "#605d5c": [215, 215, 215],
+    "#8c7a6f": [215, 215, 215],
+    "#4a3832": [165, 165, 166],
+    "#81614f": [215, 215, 215],
+    "#3d3533": [215, 215, 215],
+    "#6d5351": [215, 215, 215],
+    "#5c3d33": [214, 214, 215],
+    "#906553": [215, 215, 215],
+    "#65493d": [215, 215, 215],
+    "#8e5f49": [215, 215, 215],
+    "#8c6858": [215, 215, 215],
+    "#8b5946": [215, 215, 215],
+    "#665253": [209, 209, 209],
+    "#3e3222": [215, 215, 215],
+    "#000000": [197, 198, 197],
+    "#7b081b": [215, 215, 215],
+    "#383131": [215, 215, 215],
+    "#3d3b37": [211, 215, 215],
+    "#877d76": [214, 215, 215],
+    "#191d0c": [215, 214, 213],
+    "#bcab88": [215, 215, 215],
+    "#656462": [215, 215, 215],
+    "#3f3634": [174, 174, 175],
+    "#463e3c": [197, 197, 198],
+    "#453d3a": [177, 177, 176],
+    "#1f1a1b": [156, 156, 157],
+    "#615450": [214, 215, 215],
+    "#5b4f4b": [215, 215, 215],
+    "#574c4a": [215, 215, 215],
+    "#413333": [215, 215, 215],
+    "#7b5c53": [215, 215, 215],
+    "#5f342b": [216, 215, 215],
+    "#4e2422": [215, 215, 215],
+    "#5b4b44": [209, 209, 209],
+    "#493d32": [215, 215, 215],
+    "#6a5048": [216, 216, 215],
+    "#5e5855": [215, 215, 215],
+    "#5e3f35": [215, 215, 215],
+    "#68564f": [215, 215, 215],
+    "#6b3e33": [215, 214, 215],
+    "#5f3c30": [215, 214, 215],
+    "#929191": [215, 215, 215],
+    "#a2acb3": [215, 215, 215],
+    "#8f7b65": [215, 215, 215],
+    "#988e7d": [215, 215, 215],
+    "#726d60": [215, 215, 215],
+    "#584c45": [215, 214, 215],
+    "#594643": [216, 215, 215],
+    "#5e5750": [212, 215, 215],
+    "#78645b": [215, 215, 215],
+    "#484440": [215, 215, 215],
+    "#73645e": [215, 215, 215],
+    "#5c4f47": [215, 215, 215],
+    "#3c3d39": [215, 215, 215],
+    "#645451": [215, 215, 214],
+    "#37333d": [179, 179, 178],
+    "#a6856f": [215, 215, 215],
+    "#574d4d": [205, 205, 205],
+    "#393737": [215, 215, 215],
+    "#6f4a3b": [215, 214, 215],
+    "#ffa169": [212, 215, 215],
+    "#576465": [216, 215, 216],
+    "#71614a": [215, 215, 215],
+    "#6c584f": [215, 215, 215],
+    "#5b463e": [215, 216, 215],
+    "#765e52": [214, 215, 215],
+    "#4f4e4c": [215, 215, 215],
+    "#544945": [215, 215, 215],
+    "#504140": [194, 195, 194],
+    "#51514f": [215, 215, 215],
+    "#74665f": [215, 215, 215],
+    "#735c59": [215, 215, 215],
+    "#474d56": [215, 215, 215],
+    "#7d6e5a": [215, 215, 215],
+    "#514a43": [215, 215, 215],
+    "#4e4e49": [215, 215, 215],
+    "#745c51": [215, 215, 215],
+    "#47403c": [215, 215, 215],
+    "#4c3a37": [215, 215, 215],
+    "#675d5a": [215, 215, 215],
+    "#574e48": [215, 215, 215],
+    "#686360": [215, 215, 215],
+    "#4a413f": [215, 215, 215],
+    "#423735": [215, 215, 215],
+    "#756860": [215, 215, 215],
+    "#5e5144": [215, 215, 215]
+  };
+
+  // src/canalRecall/ownGround/groundLook.ts
+  var DEFAULT_PALETTE = { street: { ...STREET_GROUND, brick: STREET_GROUND.klinker }, tones: GROUND_TONES };
+
+  // src/canalRecall/look/sunny.ts
+  var srgbToLinear = (v) => {
+    const s = v / 255;
+    return s <= 0.04045 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+  };
+  var linearToSrgb = (c) => 255 * (c <= 31308e-7 ? c * 12.92 : 1.055 * c ** (1 / 2.4) - 0.055);
+  var hexRgb = (hex2) => {
+    const n = parseInt(hex2.replace("#", ""), 16);
+    return [n >> 16 & 255, n >> 8 & 255, n & 255];
+  };
+  var rgbHex = (c) => "#" + c.map((v) => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, "0")).join("");
+  var Y = (c) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  var linY = (hex2) => Y(hexRgb(hex2).map(srgbToLinear));
+  var SKY = { zenith: "#9ec3ed", horizon: "#a1c6e5" };
+  function rigIrradiance(rig) {
+    const el = rig.sunElevationDeg * Math.PI / 180, sun = linY(rig.sunColour) * rig.sunIntensity / Math.PI;
+    const sky = linY(rig.skyColour) * rig.skyIntensity / Math.PI, ground = linY(rig.groundColour) * rig.skyIntensity / Math.PI;
+    const hemiWall = (sky + ground) / 2;
+    return { flat: sun * Math.sin(el) + sky, sunWall: sun * Math.cos(el) + hemiWall, shadeWall: hemiWall };
+  }
+  var SUNNY_SHADE_RATIO = 0.55;
+  function sunnyBase(sunColour = "#ffe2bf", groundColour = "#aca497", ratio = SUNNY_SHADE_RATIO) {
+    const el = 40 * Math.PI / 180;
+    const build = (t) => {
+      const skyColour = rgbHex(hexRgb(SKY.horizon).map((v) => v + (255 - v) * t));
+      const sun = linY(sunColour) * 2.15 / Math.PI * Math.cos(el), hemiPerUnit = (linY(skyColour) + linY(groundColour)) / 2 / Math.PI;
+      const skyIntensity = ratio * sun / (1 - ratio) / hemiPerUnit;
+      return { sunColour, sunIntensity: 2.15, skyColour, groundColour, skyIntensity, sunElevationDeg: 40 };
+    };
+    const flatRB = (t) => {
+      const r = build(t), s = hexRgb(r.sunColour).map(srgbToLinear), k = hexRgb(r.skyColour).map(srgbToLinear);
+      const c = [0, 2].map((i) => s[i] * r.sunIntensity * Math.sin(el) + k[i] * r.skyIntensity);
+      return c[0] / c[1];
+    };
+    let lo = 0, hi = 1;
+    for (let i = 0; i < 40; i++) {
+      const m = (lo + hi) / 2;
+      if (flatRB(m) < 1) lo = m;
+      else hi = m;
+    }
+    return { ...build(hi), whiteMix: +hi.toFixed(3) };
+  }
+  var SUNNY_BASE = sunnyBase();
+  var SUNNY_EXPOSURE = 1 / rigIrradiance(SUNNY_BASE).sunWall;
+  var SUNNY_LIGHT = {
+    sunColour: SUNNY_BASE.sunColour,
+    sunIntensity: +(SUNNY_BASE.sunIntensity * SUNNY_EXPOSURE).toFixed(4),
+    skyColour: SUNNY_BASE.skyColour,
+    groundColour: SUNNY_BASE.groundColour,
+    skyIntensity: +(SUNNY_BASE.skyIntensity * SUNNY_EXPOSURE).toFixed(4)
+  };
+  function scaleLinear(hex2, k) {
+    const lin2 = hexRgb(hex2).map((v) => srgbToLinear(v) * k), over = Math.max(1, ...lin2);
+    return rgbHex(lin2.map((c) => linearToSrgb(c / over)));
+  }
+  var MEDIAN_MEASURED_WALL = (() => {
+    const walls = Object.keys(WALL_WHITE_POINTS).map(hexRgb), med = (a) => a.slice().sort((p, q2) => p - q2)[a.length >> 1];
+    return rgbHex([0, 1, 2].map((i) => med(walls.map((w) => w[i]))));
+  })();
+
+  // src/canalRecall/look/measuredWalls.ts
+  var PERIOD_WALL_GAIN = 2;
+  var PALE_L = 0.62;
+  function sunlitPeriodWall(hex2, gain = PERIOD_WALL_GAIN) {
+    const lit = scaleLinear(hex2, gain);
+    if (rgbToHsl(hexToRgb(hex2))[2] >= PALE_L) return lit;
+    const [h, s, l] = rgbToHsl(hexToRgb(lit));
+    return l <= CITY_BRICK_LIGHTNESS[1] ? lit : rgbToHex(hslToRgb([h, s, CITY_BRICK_LIGHTNESS[1]]));
+  }
+  var sunlitLists = (lists) => Object.fromEntries(Object.entries(lists).map(([p, l]) => [p, l ? l.map((hex2) => sunlitPeriodWall(hex2)) : null]));
+  var SUNLIT_PERIOD_WALL_LISTS = sunlitLists(MEASURED_PERIOD_WALL_LISTS);
+
   // src/canalRecall/genericFacades.ts
   var FACADE_STYLES = ["canal", "c19", "school", "postwar", "modern", "tower"];
   var FACADE_PIXELS_PER_M = 8;
@@ -4330,216 +4560,6 @@
     }
     return out;
   }
-
-  // src/canalRecall/look/measuredWhitePoints.ts
-  var WALL_WHITE_POINTS = {
-    "#4f4834": [215, 215, 215],
-    "#463823": [216, 215, 215],
-    "#5f5950": [215, 215, 215],
-    "#a69873": [215, 215, 215],
-    "#57423e": [215, 215, 215],
-    "#473c3b": [215, 215, 215],
-    "#5d5d5c": [214, 215, 215],
-    "#7e573b": [215, 215, 215],
-    "#705449": [215, 215, 215],
-    "#7f8283": [215, 214, 215],
-    "#796764": [215, 215, 215],
-    "#5d534b": [215, 215, 215],
-    "#7d6e52": [215, 215, 215],
-    "#88735e": [215, 215, 215],
-    "#88715f": [215, 215, 215],
-    "#736352": [215, 215, 215],
-    "#241d1c": [172, 172, 172],
-    "#4b3f37": [215, 215, 215],
-    "#615551": [215, 215, 215],
-    "#595651": [214, 215, 214],
-    "#423931": [215, 215, 215],
-    "#7b6d6a": [215, 214, 216],
-    "#382418": [215, 215, 215],
-    "#866343": [215, 215, 215],
-    "#6e6256": [215, 215, 215],
-    "#625650": [205, 205, 205],
-    "#252c24": [185, 185, 186],
-    "#2d281b": [215, 214, 215],
-    "#3b342b": [215, 215, 215],
-    "#6f5c56": [215, 215, 215],
-    "#393535": [215, 215, 215],
-    "#786357": [215, 215, 215],
-    "#383d43": [205, 215, 215],
-    "#554e4a": [215, 216, 215],
-    "#3d3432": [215, 215, 215],
-    "#3d353c": [215, 215, 215],
-    "#4e443f": [215, 215, 215],
-    "#70574d": [207, 207, 207],
-    "#d49662": [215, 215, 215],
-    "#917b5c": [215, 215, 215],
-    "#494341": [215, 215, 215],
-    "#645f5f": [215, 215, 214],
-    "#342a18": [215, 215, 215],
-    "#825746": [215, 216, 215],
-    "#99604e": [212, 215, 215],
-    "#706868": [215, 215, 215],
-    "#786b61": [215, 215, 214],
-    "#5c5b57": [215, 215, 215],
-    "#7a655b": [215, 215, 215],
-    "#6f5b54": [215, 215, 215],
-    "#4a3f3a": [215, 214, 215],
-    "#614f44": [216, 215, 215],
-    "#654e44": [215, 215, 215],
-    "#6f5f53": [215, 215, 216],
-    "#584d49": [215, 215, 215],
-    "#d3c9b2": [215, 215, 215],
-    "#544b46": [215, 215, 215],
-    "#929289": [215, 215, 215],
-    "#68584f": [215, 215, 216],
-    "#574d47": [215, 215, 215],
-    "#5e4e41": [215, 215, 215],
-    "#6e605a": [215, 215, 215],
-    "#605d5c": [215, 215, 215],
-    "#8c7a6f": [215, 215, 215],
-    "#4a3832": [165, 165, 166],
-    "#81614f": [215, 215, 215],
-    "#3d3533": [215, 215, 215],
-    "#6d5351": [215, 215, 215],
-    "#5c3d33": [214, 214, 215],
-    "#906553": [215, 215, 215],
-    "#65493d": [215, 215, 215],
-    "#8e5f49": [215, 215, 215],
-    "#8c6858": [215, 215, 215],
-    "#8b5946": [215, 215, 215],
-    "#665253": [209, 209, 209],
-    "#3e3222": [215, 215, 215],
-    "#000000": [197, 198, 197],
-    "#7b081b": [215, 215, 215],
-    "#383131": [215, 215, 215],
-    "#3d3b37": [211, 215, 215],
-    "#877d76": [214, 215, 215],
-    "#191d0c": [215, 214, 213],
-    "#bcab88": [215, 215, 215],
-    "#656462": [215, 215, 215],
-    "#3f3634": [174, 174, 175],
-    "#463e3c": [197, 197, 198],
-    "#453d3a": [177, 177, 176],
-    "#1f1a1b": [156, 156, 157],
-    "#615450": [214, 215, 215],
-    "#5b4f4b": [215, 215, 215],
-    "#574c4a": [215, 215, 215],
-    "#413333": [215, 215, 215],
-    "#7b5c53": [215, 215, 215],
-    "#5f342b": [216, 215, 215],
-    "#4e2422": [215, 215, 215],
-    "#5b4b44": [209, 209, 209],
-    "#493d32": [215, 215, 215],
-    "#6a5048": [216, 216, 215],
-    "#5e5855": [215, 215, 215],
-    "#5e3f35": [215, 215, 215],
-    "#68564f": [215, 215, 215],
-    "#6b3e33": [215, 214, 215],
-    "#5f3c30": [215, 214, 215],
-    "#929191": [215, 215, 215],
-    "#a2acb3": [215, 215, 215],
-    "#8f7b65": [215, 215, 215],
-    "#988e7d": [215, 215, 215],
-    "#726d60": [215, 215, 215],
-    "#584c45": [215, 214, 215],
-    "#594643": [216, 215, 215],
-    "#5e5750": [212, 215, 215],
-    "#78645b": [215, 215, 215],
-    "#484440": [215, 215, 215],
-    "#73645e": [215, 215, 215],
-    "#5c4f47": [215, 215, 215],
-    "#3c3d39": [215, 215, 215],
-    "#645451": [215, 215, 214],
-    "#37333d": [179, 179, 178],
-    "#a6856f": [215, 215, 215],
-    "#574d4d": [205, 205, 205],
-    "#393737": [215, 215, 215],
-    "#6f4a3b": [215, 214, 215],
-    "#ffa169": [212, 215, 215],
-    "#576465": [216, 215, 216],
-    "#71614a": [215, 215, 215],
-    "#6c584f": [215, 215, 215],
-    "#5b463e": [215, 216, 215],
-    "#765e52": [214, 215, 215],
-    "#4f4e4c": [215, 215, 215],
-    "#544945": [215, 215, 215],
-    "#504140": [194, 195, 194],
-    "#51514f": [215, 215, 215],
-    "#74665f": [215, 215, 215],
-    "#735c59": [215, 215, 215],
-    "#474d56": [215, 215, 215],
-    "#7d6e5a": [215, 215, 215],
-    "#514a43": [215, 215, 215],
-    "#4e4e49": [215, 215, 215],
-    "#745c51": [215, 215, 215],
-    "#47403c": [215, 215, 215],
-    "#4c3a37": [215, 215, 215],
-    "#675d5a": [215, 215, 215],
-    "#574e48": [215, 215, 215],
-    "#686360": [215, 215, 215],
-    "#4a413f": [215, 215, 215],
-    "#423735": [215, 215, 215],
-    "#756860": [215, 215, 215],
-    "#5e5144": [215, 215, 215]
-  };
-
-  // src/canalRecall/ownGround/groundLook.ts
-  var DEFAULT_PALETTE = { street: { ...STREET_GROUND, brick: STREET_GROUND.klinker }, tones: GROUND_TONES };
-
-  // src/canalRecall/look/sunny.ts
-  var srgbToLinear = (v) => {
-    const s = v / 255;
-    return s <= 0.04045 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
-  };
-  var hexRgb = (hex2) => {
-    const n = parseInt(hex2.replace("#", ""), 16);
-    return [n >> 16 & 255, n >> 8 & 255, n & 255];
-  };
-  var rgbHex = (c) => "#" + c.map((v) => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, "0")).join("");
-  var Y = (c) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
-  var linY = (hex2) => Y(hexRgb(hex2).map(srgbToLinear));
-  var SKY = { zenith: "#9ec3ed", horizon: "#a1c6e5" };
-  function rigIrradiance(rig) {
-    const el = rig.sunElevationDeg * Math.PI / 180, sun = linY(rig.sunColour) * rig.sunIntensity / Math.PI;
-    const sky = linY(rig.skyColour) * rig.skyIntensity / Math.PI, ground = linY(rig.groundColour) * rig.skyIntensity / Math.PI;
-    const hemiWall = (sky + ground) / 2;
-    return { flat: sun * Math.sin(el) + sky, sunWall: sun * Math.cos(el) + hemiWall, shadeWall: hemiWall };
-  }
-  var SUNNY_SHADE_RATIO = 0.55;
-  function sunnyBase(sunColour = "#ffe2bf", groundColour = "#aca497", ratio = SUNNY_SHADE_RATIO) {
-    const el = 40 * Math.PI / 180;
-    const build = (t) => {
-      const skyColour = rgbHex(hexRgb(SKY.horizon).map((v) => v + (255 - v) * t));
-      const sun = linY(sunColour) * 2.15 / Math.PI * Math.cos(el), hemiPerUnit = (linY(skyColour) + linY(groundColour)) / 2 / Math.PI;
-      const skyIntensity = ratio * sun / (1 - ratio) / hemiPerUnit;
-      return { sunColour, sunIntensity: 2.15, skyColour, groundColour, skyIntensity, sunElevationDeg: 40 };
-    };
-    const flatRB = (t) => {
-      const r = build(t), s = hexRgb(r.sunColour).map(srgbToLinear), k = hexRgb(r.skyColour).map(srgbToLinear);
-      const c = [0, 2].map((i) => s[i] * r.sunIntensity * Math.sin(el) + k[i] * r.skyIntensity);
-      return c[0] / c[1];
-    };
-    let lo = 0, hi = 1;
-    for (let i = 0; i < 40; i++) {
-      const m = (lo + hi) / 2;
-      if (flatRB(m) < 1) lo = m;
-      else hi = m;
-    }
-    return { ...build(hi), whiteMix: +hi.toFixed(3) };
-  }
-  var SUNNY_BASE = sunnyBase();
-  var SUNNY_EXPOSURE = 1 / rigIrradiance(SUNNY_BASE).sunWall;
-  var SUNNY_LIGHT = {
-    sunColour: SUNNY_BASE.sunColour,
-    sunIntensity: +(SUNNY_BASE.sunIntensity * SUNNY_EXPOSURE).toFixed(4),
-    skyColour: SUNNY_BASE.skyColour,
-    groundColour: SUNNY_BASE.groundColour,
-    skyIntensity: +(SUNNY_BASE.skyIntensity * SUNNY_EXPOSURE).toFixed(4)
-  };
-  var MEDIAN_MEASURED_WALL = (() => {
-    const walls = Object.keys(WALL_WHITE_POINTS).map(hexRgb), med = (a) => a.slice().sort((p, q2) => p - q2)[a.length >> 1];
-    return rgbHex([0, 1, 2].map((i) => med(walls.map((w) => w[i]))));
-  })();
 
   // src/canalRecall/rendererShared/lightRig.ts
   var SHADOW_FILL = 0.5;

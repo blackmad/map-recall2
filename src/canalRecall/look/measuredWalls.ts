@@ -16,8 +16,9 @@
  */
 import { masonryFamily } from '../facade/cropWallColour.js';
 import { rgbToLab } from './brickTone.js';
-import { PERIOD_WALLS, hexToRgb, hslToRgb, periodForYear, rgbToHex, rgbToHsl, type Period } from './palette.js';
+import { CITY_BRICK_LIGHTNESS, PERIOD_WALLS, hexToRgb, hslToRgb, periodForYear, rgbToHex, rgbToHsl, type Period } from './palette.js';
 import { MEASURED_PERIOD_WALL_LISTS } from './measuredPeriodWalls.js';
+import { scaleLinear } from './sunny.js';
 
 /**
  * How a measured (normalised raw) wall reading is reported: brick, dull brick, buff brick, light paint/render, grey
@@ -55,10 +56,39 @@ export function jitterTone(hex: string, seed: number): string {
 }
 
 /**
+ * Sunlit exposure of the measured period walls (GitHub #50, 2026-10-24). The lists are panorama crop readings under the
+ * crop's own light-trim white, lifted by kitFacts.measuredWallDisplay into the city's brick range; drawn as they are,
+ * four of the five strip streets read darker than the guessed palette (De Pijp frame wall luma 131 -> 116) and darker
+ * than the real street's walls in the municipal panoramas, after the user had called the city "dark and dour"
+ * (2026-10-16). The lift keeps every measured hue and the order of the walls: one linear-light gain (sunny.ts
+ * scaleLinear, as sunlitMeasuredWall does for the recipe walls). Measured on the strip (period-walls-luma.ts, mean
+ * frame wall luma over five streets): gain 1 (#46) 109, 1.6 120, 2 124; flag off 122; the panoramas 138 (median 131).
+ * Gain 2 brings each period list's mean luma to 140-149 (c19 148, the guessed list's 148) and puts the frame above
+ * the flag-off frame on four of five streets; past it the brick cap below flattens the rows. A brick wall stays inside the city's brick lightness (CITY_BRICK_LIGHTNESS: a light brick
+ * lifted past it read as cream, the false colour #46 removed); a pale render or painted front (HSL L >= PALE_L) takes
+ * the gain alone, so white stays white. No saturation boost: the panoramas' walls measured less chroma than the
+ * frame's already (scripts/look/period-walls-luma.ts, mean C 22 against 29-47), so the colour brightens, it does not
+ * get louder.
+ */
+export const PERIOD_WALL_GAIN = 2;
+/** A display wall this light is render or paint, not brick. */
+const PALE_L = 0.62;
+export function sunlitPeriodWall(hex: string, gain: number = PERIOD_WALL_GAIN): string {
+  const lit = scaleLinear(hex, gain);
+  if (rgbToHsl(hexToRgb(hex))[2] >= PALE_L) return lit;
+  const [h, s, l] = rgbToHsl(hexToRgb(lit));
+  return l <= CITY_BRICK_LIGHTNESS[1] ? lit : rgbToHex(hslToRgb([h, s, CITY_BRICK_LIGHTNESS[1]]));
+}
+const sunlitLists = (lists: Readonly<Record<Period, readonly string[] | null>>) =>
+  Object.fromEntries(Object.entries(lists).map(([p, l]) => [p, l ? l.map(hex => sunlitPeriodWall(hex)) : null])) as Record<Period, readonly string[] | null>;
+/** The measured lists at sunlit exposure (the guessed prior of an unmeasured period is authored, never lifted). */
+export const SUNLIT_PERIOD_WALL_LISTS = sunlitLists(MEASURED_PERIOD_WALL_LISTS);
+
+/**
  * The measured wall of an unmeasured building: its period's measured list, picked by its row (`rowSeed`, from the
  * building-facts tile) with a small per-building variation, or by its own id when it stands alone or breaks the row.
  */
-export function measuredPeriodWall(id: string, period: Period, rowSeed?: string | null, lists: Readonly<Record<Period, readonly string[] | null>> = MEASURED_PERIOD_WALL_LISTS): string {
+export function measuredPeriodWall(id: string, period: Period, rowSeed?: string | null, lists: Readonly<Record<Period, readonly string[] | null>> = SUNLIT_PERIOD_WALL_LISTS): string {
   // A period with too few measured pands keeps the guessed photo list, but still row by row.
   const list = lists[period] ?? PERIOD_WALLS.photo[period]!, own = fnv(id);
   const breaks = (own % 1000) / 1000 < ROW_BREAK;

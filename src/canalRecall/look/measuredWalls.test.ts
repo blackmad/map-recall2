@@ -72,3 +72,24 @@ test('facts tile rows round-trip by key order', () => {
   assert.equal(decoded.get('P1'), rowSeedKey('P1')); assert.equal(decoded.get('P3'), rowSeedKey('P1')); assert.equal(decoded.has('P2'), false);
   assert.equal(decodeWallRows(buildings, undefined).size, 0);
 });
+
+test('sunlit period walls (#50): brighter, hue kept, brick capped, white stays white, the flag-off prior untouched', async () => {
+  const { sunlitPeriodWall, SUNLIT_PERIOD_WALL_LISTS } = await import('./measuredWalls.js');
+  const sun = 1.6;
+  const brick = '#70564f', lit = sunlitPeriodWall(brick, sun);
+  const [h0, s0, l0] = rgbToHsl(hexToRgb(brick)), [h1, s1, l1] = rgbToHsl(hexToRgb(lit));
+  assert.ok(l1 > l0 + 0.03, `lighter ${brick} -> ${lit}`);
+  assert.ok(Math.abs(s1 - s0) < 0.12, 'saturation about held');
+  assert.ok(rgbToHsl(hexToRgb(sunlitPeriodWall('#b8a17a', 2)))[2] <= 0.6 + 0.005, 'a light brick stays brick, not cream');
+  assert.ok(Math.abs(h1 - h0) <= 3, `hue held ${h0} -> ${h1}`);
+  assert.equal(sunlitPeriodWall('#ffffff', sun), '#ffffff');
+  const chroma = (hex: string) => { const c = hexToRgb(hex); return Math.max(...c) - Math.min(...c); };
+  assert.ok(chroma(sunlitPeriodWall('#e8e7e3', sun)) <= chroma('#e8e7e3') + 3, 'a pale render gains no cream');
+  assert.equal(sunlitPeriodWall(brick, 1), brick);
+  for (const p of PERIODS) {
+    const m = MEASURED_PERIOD_WALL_LISTS[p];
+    assert.equal(SUNLIT_PERIOD_WALL_LISTS[p]?.length ?? null, m?.length ?? null);
+  }
+  // The guessed prior (flag off) is never lifted.
+  assert.ok(PERIOD_WALLS.photo.c19!.includes('#b05a40'));
+});
