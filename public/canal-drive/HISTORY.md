@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+**Evening merges (2026-10-24, #42, #43, #45, #46).** Zaanhof: white gables
+close into cross roofs under one long saddle roof (`recipeRoof` cross gables,
+rear pitch, attic rise), one eaves line per face, brick #a57a5c from the
+crops; all six faces rebuilt, other faces' chunks identical. Kit
+regressions: window rows need glass behind them, measured low LoD2.2
+pitches, a 50 m² floor for cinema parts (row 316's 30 m pillar gone); 171 of
+517 kit specs changed, rows to re-review in round 5. Measured period walls
+behind `?walls=measured` (off): 531 pands measured, the guessed c19 list was
+~50 % cream/buff/ochre against a measured 6 % light paint; rows of party-wall
+pands share a base colour; with it on four of five test streets get darker,
+so it waits for a brightness pass. Crop reading is shared in
+`scripts/lib/cropWallReading.ts`. Factory acceptance (kit first, #23 A):
+`walls[].storeyShapes`, measure.ts proposes `windowGroup`; Opus passed 3 of
+28 but the likeness gate refuses all three on their street walls, so none is
+installed. The pilot tile golden had been failing on main; re-recorded for
+the two factory houses. Still failing on main and in check:canal:
+`check-signature-fallback-refresh.mjs` ("loaded replacement hides resident
+fallback").
+
 **Kit review round 4 (2026-10-24).** Opus reviewed all 421 census kits on
 the `kits-r5` sheets (after #36, #37, #41): 110 pass (51 weak evidence),
 172 hold, 139 no evidence; 48 round-3 holds now pass. Census headline 431 →
