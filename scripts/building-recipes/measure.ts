@@ -14,6 +14,7 @@
  *   baysPerStorey (the measured pitch over the main panel; --no-bays keeps the count), system from the front class
  *   (punched -> brick-bay-grid, ribbon -> ribbon-windows, curtain -> curtain-wall; measured glazed columns keep the
  *   group's system: `glazed-columns` needs its column bays placed by hand; --no-system keeps the system), plus
+ *   windowGroup (2..4 alike windows folded into one bay of the photo grid: measureWriteback `windowGroupProposal`),
  *   `measured: {date, groups}` and the crops as sources. Groups measured before whose `hand` keeps a palette colour
  *   (hand-sampled from the crops) stay in `measured.groups` when this run has no evidence for them.
  * Storey counts are reported, never written (the fit's storey lines come from 3DBAG eaves; the hand count stays).
@@ -39,7 +40,7 @@ import {requireSourceData} from './sourceData.ts';
 import {compileBuilding} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import {LARGE_BUDGET_TRIANGLES} from '../../src/canalRecall/buildingRecipe/largeGates.ts';
 import {proposeBands} from '../../src/canalRecall/buildingRecipe/lightBands.ts';
-import {cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
+import {cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays, windowGroupProposal} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
 import {draftBudgetCap, inheritedWall, isDraftIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
 import {proposeHouses, roofProfile, roofSteps} from '../../src/canalRecall/buildingRecipe/rowSplit.ts';
 
@@ -123,6 +124,11 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: Propose
   if (shaped && pb.window && !hand.has('windowShape') && !maskDistrusted) {
     const h = clamp(pb.window.h, 0.08, 0.98), sill = clamp(Math.min(pb.window.sill, 0.98 - h), 0, 0.9);
     patch.windowShape = {w: clamp(pb.window.w, 0.08, 0.98), h: +h.toFixed(3), sill: +sill.toFixed(3)};
+  }
+  // paired (2..4) windows per bay in the photo grid: a grouped window row, never over a hand windowGroup
+  if (shaped && pb.window && !maskDistrusted && w.windowGroup === undefined && !hand.has('windowGroup')) {
+    const wg = windowGroupProposal({window: pb.window, system, usable: Math.min(m.usable, L.evidence.usable), foliage: m.foliage, washedOut: m.washedOut});
+    if (wg.windowGroup) { patch.windowGroup = wg.windowGroup; notes.push(`${wg.windowGroup.count} windows per bay in the photo grid: windowGroup`); }
   }
   if (opts.bays && pb.bays && !maskDistrusted && system !== 'curtain-wall' && !hand.has('baysPerStorey') && w.alignWith === undefined) patch.baysPerStorey = clamp(pb.bays, 1, 80);
   // a glazed ground band far above the upper storeys: a plinth on storey 0 (glazedPlinth); never over a hand plinth,

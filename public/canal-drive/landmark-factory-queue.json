@@ -180,7 +180,7 @@
     4.8759451,
     52.3326071
    ],
-   "status": "compiled",
+   "status": "no-evidence",
    "house": "oba-buitenveldert-135359",
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:56:14.050Z",
@@ -194,12 +194,13 @@
     "2026-10-24T06:12 measured groups 3,4 in 2 s",
     "2026-10-24T06:14 draft: 6 groups (0 on a street), 32 panels blank",
     "2026-10-24T06:14 measured groups 3,4 in 1 s",
-    "2026-10-24T06:16 compiled: 3555 tris, gates pass, likeness g0:NO PHOTO g1:NO PHOTO g2:NO PHOTO g3:FAIL g4:FAIL g5:NO PHOTO"
+    "2026-10-24T06:16 compiled: 3555 tris, gates pass, likeness g0:NO PHOTO g1:NO PHOTO g2:NO PHOTO g3:FAIL g4:FAIL g5:NO PHOTO",
+    "2026-10-24T20:16 compiled: 2813 tris, gates pass, likeness g0:NO PHOTO g1:NO PHOTO g2:NO PHOTO g3:FAIL g4:FAIL g5:NO PHOTO"
    ],
-   "updatedAt": "2026-10-24T06:16:33.666Z",
+   "updatedAt": "2026-10-24T20:16:18.126Z",
    "report": {
-    "triangles": 3555,
-    "bytes": 271896,
+    "triangles": 2813,
+    "bytes": 218508,
     "gatesFailing": [],
     "passed": true,
     "likeness": [
@@ -229,8 +230,7 @@
       "group": 4,
       "verdict": "FAIL",
       "reasons": [
-       "glazing storey band off by 0.44 mean 0.45 vs photo 0.27",
-       "columns 3 vs photo 9"
+       "glazing storey band off by 0.44 mean 0.04 vs photo 0.29"
       ]
      },
      {
@@ -239,7 +239,7 @@
       "reasons": []
      }
     ],
-    "compiledAt": "2026-10-24T06:16"
+    "compiledAt": "2026-10-24T20:16"
    },
    "sheets": [
     "artifacts/building-recipes/oba-buitenveldert-135359/contact-walls-0.png",
@@ -251,12 +251,13 @@
     "artifacts/building-recipes/oba-buitenveldert-135359/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "grey family now right; walls[3] glass band reads as blank, walls[4] 3 vs 9 columns",
-    "sheet": "artifacts/strips/factory-batch-1b",
+    "outcome": "no-evidence",
+    "note": "walls[3] crop is tree-occluded, walls[4] crop is sun glare over parked cars; other groups no photo",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
     "model": "opus",
-    "round": 2
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -290,7 +291,7 @@
     4.8025806,
     52.3780277
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "oba-geuzenveld-121137",
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:56:22.185Z",
@@ -304,9 +305,11 @@
     "2026-10-24T06:12 measured groups 3,5 in 3 s",
     "2026-10-24T06:14 draft: 8 groups (0 on a street), 33 panels blank",
     "2026-10-24T06:14 measured groups 3,5 in 3 s",
-    "2026-10-24T06:16 compiled: 10866 tris, gates pass, likeness g0:NO PHOTO g1:NO EVIDENCE g2:NO PHOTO g3:FAIL g4:NO EVIDENCE g5:FAIL g6:NO EVIDENCE g7:NO PHOTO"
+    "2026-10-24T06:16 compiled: 10866 tris, gates pass, likeness g0:NO PHOTO g1:NO EVIDENCE g2:NO PHOTO g3:FAIL g4:NO EVIDENCE g5:FAIL g6:NO EVIDENCE g7:NO PHOTO",
+    "2026-10-24T20:11 measured groups 3,5 in 4 s",
+    "2026-10-24T20:11 compiled: 10866 tris, gates pass, likeness g0:NO PHOTO g1:NO EVIDENCE g2:NO PHOTO g3:FAIL g4:NO EVIDENCE g5:FAIL g6:NO EVIDENCE g7:NO PHOTO"
    ],
-   "updatedAt": "2026-10-24T06:16:39.130Z",
+   "updatedAt": "2026-10-24T20:11:33.160Z",
    "report": {
     "triangles": 10866,
     "bytes": 794660,
@@ -367,7 +370,7 @@
       "reasons": []
      }
     ],
-    "compiledAt": "2026-10-24T06:16"
+    "compiledAt": "2026-10-24T20:11"
    },
    "sheets": [
     "artifacts/building-recipes/oba-geuzenveld-121137/contact-walls-0.png",
@@ -381,12 +384,13 @@
     "artifacts/building-recipes/oba-geuzenveld-121137/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "tower massing right but photo tower is orange-brown, model dark grey (inherited from a shaded crop)",
-    "sheet": "artifacts/strips/factory-batch-1b",
+    "outcome": "hold",
+    "note": "45 m tower photographed only on an 8.7 m north slice (dark brick, staggered paired windows); the south crop shows an orange balconied tower in front whose pand is unresolved",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
     "model": "opus",
-    "round": 2
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -400,7 +404,7 @@
     4.996847,
     52.3566548
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "oba-ijburg-070481",
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:56:34.060Z",
@@ -414,12 +418,14 @@
     "2026-10-24T06:13 measured groups 0,2,3 in 15 s",
     "2026-10-24T06:14 draft: 8 groups (0 on a street), 20 panels blank",
     "2026-10-24T06:15 measured groups 0,2,3 in 15 s",
-    "2026-10-24T06:16 compiled: 8153 tris, gates pass, likeness g0:PASS g2:FAIL g3:FAIL g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO"
+    "2026-10-24T06:16 compiled: 8153 tris, gates pass, likeness g0:PASS g2:FAIL g3:FAIL g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO",
+    "2026-10-24T20:16 compiled: 9005 tris, gates pass, likeness g0:PASS g2:PASS g3:FAIL g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO",
+    "2026-10-24T20:22 compiled: 9005 tris, gates pass, likeness g0:PASS g2:PASS g3:FAIL g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO"
    ],
-   "updatedAt": "2026-10-24T06:16:47.336Z",
+   "updatedAt": "2026-10-24T20:22:31.330Z",
    "report": {
-    "triangles": 8153,
-    "bytes": 603196,
+    "triangles": 9005,
+    "bytes": 664512,
     "gatesFailing": [],
     "passed": true,
     "likeness": [
@@ -430,16 +436,14 @@
      },
      {
       "group": 2,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.27"
-      ]
+      "verdict": "PASS",
+      "reasons": []
      },
      {
       "group": 3,
       "verdict": "FAIL",
       "reasons": [
-       "glazing storey band off by 0.28"
+       "glazing storey band off by 0.19"
       ]
      },
      {
@@ -463,7 +467,7 @@
       "reasons": []
      }
     ],
-    "compiledAt": "2026-10-24T06:16"
+    "compiledAt": "2026-10-24T20:22"
    },
    "sheets": [
     "artifacts/building-recipes/oba-ijburg-070481/contact-walls-0.png",
@@ -477,12 +481,13 @@
     "artifacts/building-recipes/oba-ijburg-070481/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "colour and 10 columns right; kit gap: deep loggias and a glazed ground floor read flat",
-    "sheet": "artifacts/strips/factory-batch-1b",
+    "outcome": "hold",
+    "note": "loggia fronts walls[2,3] read right (walls[2] PASS), but walls[1] is an 80 m x 18.6 m NW front with no photo drawn blank (budget); needs a crop",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
     "model": "opus",
-    "round": 2
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -496,7 +501,7 @@
     4.8929718,
     52.4178054
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "oba-molenwijk-098534",
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:57:04.998Z",
@@ -510,9 +515,11 @@
     "2026-10-24T06:13 measured groups 0,1 in 2 s",
     "2026-10-24T06:14 draft: 4 groups (0 on a street), 8 panels blank",
     "2026-10-24T06:15 measured groups 0,1 in 2 s",
-    "2026-10-24T06:16 compiled: 960 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO EVIDENCE g3:NO EVIDENCE"
+    "2026-10-24T06:16 compiled: 960 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO EVIDENCE g3:NO EVIDENCE",
+    "2026-10-24T20:11 measured groups 0,1 in 2 s",
+    "2026-10-24T20:11 compiled: 960 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO EVIDENCE g3:NO EVIDENCE"
    ],
-   "updatedAt": "2026-10-24T06:16:50.788Z",
+   "updatedAt": "2026-10-24T20:11:38.684Z",
    "report": {
     "triangles": 960,
     "bytes": 77572,
@@ -551,7 +558,7 @@
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:16"
+    "compiledAt": "2026-10-24T20:11"
    },
    "sheets": [
     "artifacts/building-recipes/oba-molenwijk-098534/contact-walls-0.png",
@@ -561,12 +568,13 @@
     "artifacts/building-recipes/oba-molenwijk-098534/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "walls[0] measured the red sign band (photo painted black); walls[1] still curtain",
-    "sheet": "artifacts/strips/factory-batch-1b",
+    "outcome": "hold",
+    "note": "re-measured; walls[0] still reads the sign band over a painted-black front (paint over brick not expressible), walls[1] curtain wall still a brick grid",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
     "model": "opus",
-    "round": 2
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -613,7 +621,7 @@
     4.8068695,
     52.3589218
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "oba-osdorp",
    "notes": [
     "authored recipe houses/oba-osdorp exists and is not installed: the factory keeps its intent, measures and compiles it",
@@ -622,11 +630,12 @@
     "2026-10-24T05:57 compiled: 5005 tris, gates pass, likeness g0:WARN g1:WARN g2:WARN g3:WARN g4:WARN",
     "2026-10-24T06:13 measured read-only (hand-authored intent): artifacts/building-recipes/oba-osdorp/measured.json",
     "2026-10-24T06:15 measured read-only (hand-authored intent): artifacts/building-recipes/oba-osdorp/measured.json",
-    "2026-10-24T06:16 compiled: 5005 tris, gates pass, likeness g0:WARN g1:WARN g2:WARN g3:WARN g4:WARN"
+    "2026-10-24T06:16 compiled: 5005 tris, gates pass, likeness g0:WARN g1:WARN g2:WARN g3:WARN g4:WARN",
+    "2026-10-24T20:16 compiled: 5005 tris, gates pass, likeness g0:WARN g1:WARN g2:WARN g3:WARN g4:WARN"
    ],
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:57:12.919Z",
-   "updatedAt": "2026-10-24T06:16:56.656Z",
+   "updatedAt": "2026-10-24T20:16:34.418Z",
    "report": {
     "triangles": 5005,
     "bytes": 386732,
@@ -672,7 +681,7 @@
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:16"
+    "compiledAt": "2026-10-24T20:16"
    },
    "sheets": [
     "artifacts/building-recipes/oba-osdorp/contact-walls-0.png",
@@ -683,12 +692,13 @@
     "artifacts/building-recipes/oba-osdorp/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "massing right; walls[0] photo dark grey + metal panel, model beige",
-    "sheet": "artifacts/strips/factory-batch-1b",
+    "outcome": "hold",
+    "note": "Meervaart/library complex: horizontal metal cladding on the upper box, beige panels, dark painted volumes; model all beige brick grid",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
     "model": "opus",
-    "round": 2
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -702,7 +712,7 @@
     4.8350577,
     52.364284
    ],
-   "status": "compiled",
+   "status": "no-evidence",
    "house": "oba-postjesweg-248844",
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:57:19.209Z",
@@ -716,9 +726,11 @@
     "2026-10-24T06:13 measured groups 7 in 10 s",
     "2026-10-24T06:14 draft: 8 groups (0 on a street), 55 panels blank",
     "2026-10-24T06:15 measured groups 7 in 10 s",
-    "2026-10-24T06:17 compiled: 9511 tris, gates FAIL eaves-vs-3dbag/walls[1],eaves-vs-3dbag/walls[2], likeness g0:FAIL g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/oba-postjesweg-248844/contact-walls-3.png |   artifacts/building-recipes/oba-postjesweg-248844/contact-walls-4.png |   artifacts/bu)"
+    "2026-10-24T06:17 compiled: 9511 tris, gates FAIL eaves-vs-3dbag/walls[1],eaves-vs-3dbag/walls[2], likeness g0:FAIL g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/oba-postjesweg-248844/contact-walls-3.png |   artifacts/building-recipes/oba-postjesweg-248844/contact-walls-4.png |   artifacts/bu)",
+    "2026-10-24T20:11 measured groups 7 in 5 s",
+    "2026-10-24T20:11 compiled: 9511 tris, gates FAIL eaves-vs-3dbag/walls[1],eaves-vs-3dbag/walls[2], likeness g0:FAIL g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/oba-postjesweg-248844/contact-walls-3.png |   artifacts/building-recipes/oba-postjesweg-248844/contact-walls-4.png |   artifacts/bu)"
    ],
-   "updatedAt": "2026-10-24T06:17:02.694Z",
+   "updatedAt": "2026-10-24T20:11:49.941Z",
    "report": {
     "triangles": 9511,
     "bytes": 703728,
@@ -765,7 +777,7 @@
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:17"
+    "compiledAt": "2026-10-24T20:11"
    },
    "sheets": [
     "artifacts/building-recipes/oba-postjesweg-248844/contact-walls-0.png",
@@ -780,11 +792,12 @@
    ],
    "verdict": {
     "outcome": "no-evidence",
-    "note": "only crops predate construction; inherited near-black from a glass gap",
-    "sheet": "artifacts/strips/factory-batch-1b",
+    "note": "crops for the main fronts predate construction (2018 vs 2019); walls[7] 2024 crop is a narrow slice",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
     "model": "opus",
-    "round": 2
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -798,7 +811,7 @@
     4.9764586,
     52.2962871
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "oba-reigersbos-073560",
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:57:41.567Z",
@@ -812,12 +825,13 @@
     "2026-10-24T06:13 measured groups 3,4,7 in 4 s",
     "2026-10-24T06:14 draft: 8 groups (0 on a street), 33 panels blank",
     "2026-10-24T06:15 measured groups 3,4,7 in 4 s",
-    "2026-10-24T06:17 compiled: 10228 tris, gates FAIL eaves-vs-3dbag/walls[3], likeness g0:NO EVIDENCE g1:NO PHOTO g2:NO PHOTO g3:FAIL g4:FAIL g5:NO PHOTO g6:NO PHOTO g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/oba-reigersbos-073560/contact-walls-3.png |   artifacts/building-recipes/oba-reigersbos-073560/contact-walls-4.png |   artifacts/bu)"
+    "2026-10-24T06:17 compiled: 10228 tris, gates FAIL eaves-vs-3dbag/walls[3], likeness g0:NO EVIDENCE g1:NO PHOTO g2:NO PHOTO g3:FAIL g4:FAIL g5:NO PHOTO g6:NO PHOTO g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/oba-reigersbos-073560/contact-walls-3.png |   artifacts/building-recipes/oba-reigersbos-073560/contact-walls-4.png |   artifacts/bu)",
+    "2026-10-24T20:16 compiled: 10284 tris, gates FAIL eaves-vs-3dbag/walls[3], likeness g0:NO EVIDENCE g1:NO PHOTO g2:NO PHOTO g3:FAIL g4:FAIL g5:NO PHOTO g6:NO PHOTO g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/oba-reigersbos-073560/contact-walls-3.png |   artifacts/building-recipes/oba-reigersbos-073560/contact-walls-4.png |   artifacts/bu)"
    ],
-   "updatedAt": "2026-10-24T06:17:08.827Z",
+   "updatedAt": "2026-10-24T20:16:40.509Z",
    "report": {
-    "triangles": 10228,
-    "bytes": 753220,
+    "triangles": 10284,
+    "bytes": 757076,
     "gatesFailing": [
      "eaves-vs-3dbag/walls[3]"
     ],
@@ -868,12 +882,12 @@
       "group": 7,
       "verdict": "FAIL",
       "reasons": [
-       "glazing  mean 0.14 vs photo 0.85",
+       "glazing  mean 0.19 vs photo 0.85",
        "wall family unresolved (#28242a is dark and neutral, brick courses not resolved): lightness and hue judged only"
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:17"
+    "compiledAt": "2026-10-24T20:16"
    },
    "sheets": [
     "artifacts/building-recipes/oba-reigersbos-073560/contact-walls-0.png",
@@ -887,12 +901,13 @@
     "artifacts/building-recipes/oba-reigersbos-073560/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "grey stone right on walls[3]; walls[4] glass-block stair tower missing; eaves gate",
-    "sheet": "artifacts/strips/factory-batch-1b",
+    "outcome": "hold",
+    "note": "gate eaves-vs-3dbag walls[3]; glass-block stair tower walls[4] not expressible",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
     "model": "opus",
-    "round": 2
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -906,45 +921,43 @@
     4.8199166,
     52.3786962
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "oba-slotermeer-241007",
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:57:54.280Z",
    "notes": [
-    "2026-10-23T20:56 crops: 6 usable walls in 9 s",
-    "2026-10-24T05:57 facts: no routing street within 30 m; groups will be unnamed",
-    "2026-10-24T05:57 draft: 8 groups (0 on a street), 25 panels blank",
     "2026-10-24T05:58 measured groups 0,1 in 5 s",
     "2026-10-24T05:58 compiled: 6730 tris, gates FAIL eaves-vs-3dbag/walls[2],eaves-vs-3dbag/walls[3],eaves-vs-3dbag/walls[5], likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-3.png |   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-4.png |   artifacts/bu)",
     "2026-10-24T06:12 draft: 8 groups (0 on a street), 25 panels blank",
     "2026-10-24T06:13 measured groups 0,1 in 7 s",
     "2026-10-24T06:14 draft: 8 groups (0 on a street), 25 panels blank",
     "2026-10-24T06:15 measured groups 0,1 in 5 s",
-    "2026-10-24T06:17 compiled: 8397 tris, gates FAIL eaves-vs-3dbag/walls[2],eaves-vs-3dbag/walls[3],eaves-vs-3dbag/walls[5], likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-3.png |   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-4.png |   artifacts/bu)"
+    "2026-10-24T06:17 compiled: 8397 tris, gates FAIL eaves-vs-3dbag/walls[2],eaves-vs-3dbag/walls[3],eaves-vs-3dbag/walls[5], likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-3.png |   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-4.png |   artifacts/bu)",
+    "2026-10-24T20:11 measured groups 0,1 in 6 s",
+    "2026-10-24T20:12 compiled: 8397 tris, gates FAIL eaves-vs-3dbag/walls[2],eaves-vs-3dbag/walls[3],eaves-vs-3dbag/walls[5], likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-3.png |   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-4.png |   artifacts/bu)",
+    "2026-10-24T20:35 compiled: 5709 tris, gates FAIL eaves-vs-3dbag/walls[2],eaves-vs-3dbag/walls[3],eaves-vs-3dbag/walls[5], likeness g0:FAIL g1:FAIL g4:NO PHOTO g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-3.png |   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-4.png |   artifacts/bu)",
+    "2026-10-24T20:35 compiled: 5709 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:NO PHOTO g4:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-0.png |   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-1.png |   artifacts/bu)",
+    "2026-10-24T20:36 compiled: 5631 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:NO PHOTO g4:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-0.png |   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-1.png |   artifacts/bu)"
    ],
-   "updatedAt": "2026-10-24T06:17:15.125Z",
+   "updatedAt": "2026-10-24T20:36:18.518Z",
    "report": {
-    "triangles": 8397,
-    "bytes": 620084,
-    "gatesFailing": [
-     "eaves-vs-3dbag/walls[2]",
-     "eaves-vs-3dbag/walls[3]",
-     "eaves-vs-3dbag/walls[5]"
-    ],
-    "passed": false,
+    "triangles": 5631,
+    "bytes": 421916,
+    "gatesFailing": [],
+    "passed": true,
     "likeness": [
      {
       "group": 0,
       "verdict": "FAIL",
       "reasons": [
-       "glazing storey band off by 0.41 mean 0.28 vs photo 0.53"
+       "glazing storey band off by 0.38 mean 0.30 vs photo 0.53"
       ]
      },
      {
       "group": 1,
       "verdict": "FAIL",
       "reasons": [
-       "glazing storey band off by 0.68 mean 0.29 vs photo 0.79"
+       "glazing storey band off by 0.68 mean 0.31 vs photo 0.79"
       ]
      },
      {
@@ -961,24 +974,9 @@
       "group": 4,
       "verdict": "NO PHOTO",
       "reasons": []
-     },
-     {
-      "group": 5,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     },
-     {
-      "group": 6,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     },
-     {
-      "group": 7,
-      "verdict": "NO PHOTO",
-      "reasons": []
      }
     ],
-    "compiledAt": "2026-10-24T06:17"
+    "compiledAt": "2026-10-24T20:36"
    },
    "sheets": [
     "artifacts/building-recipes/oba-slotermeer-241007/contact-walls-0.png",
@@ -992,12 +990,13 @@
     "artifacts/building-recipes/oba-slotermeer-241007/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "closest: dark brick, 12 bays, set-back top all right; eaves-vs-3dbag gate on walls[2,3,5]",
-    "sheet": "artifacts/strips/factory-batch-1b",
+    "outcome": "hold",
+    "note": "dark brick and glazed plinth right on walls[0,1]; the S (panel 11) and W (panel 7) faces have no photo and fail eaves-vs-3dbag as window groups, so they draw as 25 m blank brick",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
     "model": "opus",
-    "round": 2
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -1051,7 +1050,7 @@
     4.8053967,
     52.3580513
    ],
-   "status": "compiled",
+   "status": "no-evidence",
    "house": "stadsloket-nieuw-west-253671",
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:58:07.448Z",
@@ -1065,9 +1064,11 @@
     "2026-10-24T06:13 measured groups 7 in 9 s",
     "2026-10-24T06:14 draft: 8 groups (0 on a street), 103 panels blank",
     "2026-10-24T06:15 measured groups 7 in 9 s",
-    "2026-10-24T06:17 compiled: 10949 tris, gates pass, likeness g0:WARN g1:FAIL g2:NO PHOTO g4:FAIL g5:NO PHOTO g6:FAIL g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-3.png |   artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-4.png | )"
+    "2026-10-24T06:17 compiled: 10949 tris, gates pass, likeness g0:WARN g1:FAIL g2:NO PHOTO g4:FAIL g5:NO PHOTO g6:FAIL g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-3.png |   artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-4.png | )",
+    "2026-10-24T20:12 measured groups 7 in 7 s",
+    "2026-10-24T20:12 compiled: 10949 tris, gates pass, likeness g0:WARN g1:FAIL g2:NO PHOTO g4:FAIL g5:NO PHOTO g6:FAIL g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-3.png |   artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-4.png | )"
    ],
-   "updatedAt": "2026-10-24T06:17:22.068Z",
+   "updatedAt": "2026-10-24T20:12:16.703Z",
    "report": {
     "triangles": 10949,
     "bytes": 818256,
@@ -1126,7 +1127,7 @@
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:17"
+    "compiledAt": "2026-10-24T20:12"
    },
    "sheets": [
     "artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-0.png",
@@ -1141,11 +1142,12 @@
    ],
    "verdict": {
     "outcome": "no-evidence",
-    "note": "photos predate the 2022 building",
-    "sheet": "artifacts/strips/factory-batch-1b",
+    "note": "crops predate the 2022 building (site huts, the old block)",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
     "model": "opus",
-    "round": 2
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -1323,7 +1325,7 @@
     4.9254033,
     52.3586234
    ],
-   "status": "compiled",
+   "status": "reviewed-pass",
    "house": "metis-montessori-080098",
    "notes": [
     "authored recipe houses/metis-montessori-080098 exists and is not installed: the factory keeps its intent, measures and compiles it",
@@ -1332,14 +1334,19 @@
     "2026-10-24T05:58 compiled: 900 tris, gates pass, likeness g0:FAIL",
     "2026-10-24T06:13 measured read-only (hand-authored intent): artifacts/building-recipes/metis-montessori-080098/measured.json",
     "2026-10-24T06:15 measured read-only (hand-authored intent): artifacts/building-recipes/metis-montessori-080098/measured.json",
-    "2026-10-24T06:17 compiled: 1494 tris, gates pass, likeness g0:FAIL"
+    "2026-10-24T06:17 compiled: 1494 tris, gates pass, likeness g0:FAIL",
+    "2026-10-24T20:16 compiled: 1494 tris, gates pass, likeness g0:FAIL",
+    "2026-10-24T20:29 compiled: 1630 tris, gates pass, likeness g0:FAIL",
+    "2026-10-24T20:29 compiled: 1630 tris, gates pass, likeness g0:FAIL",
+    "2026-10-24T20:37 compiled: 2522 tris, gates pass, likeness g0:FAIL g1:FAIL",
+    "2026-10-24T20:37 compiled: 2892 tris, gates pass, likeness g0:FAIL g1:FAIL"
    ],
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:58:40.800Z",
-   "updatedAt": "2026-10-24T06:17:24.897Z",
+   "updatedAt": "2026-10-24T20:37:18.750Z",
    "report": {
-    "triangles": 1494,
-    "bytes": 112040,
+    "triangles": 2892,
+    "bytes": 211136,
     "gatesFailing": [],
     "passed": true,
     "likeness": [
@@ -1347,24 +1354,34 @@
       "group": 0,
       "verdict": "FAIL",
       "reasons": [
-       "wall dL +0.24",
-       "columns 9 vs photo 30"
+       "wall dL +0.14",
+       "glazing  mean 0.33 vs photo 0.44",
+       "window shape wide vs photo tall"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "window shape tall vs photo square"
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:17"
+    "compiledAt": "2026-10-24T20:37"
    },
    "sheets": [
     "artifacts/building-recipes/metis-montessori-080098/contact-walls-0.png",
+    "artifacts/building-recipes/metis-montessori-080098/contact-walls-1.png",
     "artifacts/building-recipes/metis-montessori-080098/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "hand-authored intent: wall #917e69 vs photo #3c4240 and 9 vs 30 columns; needs a hand edit",
-    "sheet": "artifacts/strips/factory-batch-1b",
+    "outcome": "pass",
+    "note": "brown-grey brick, 10 wide blue-framed windows per storey, canopy entrance; schoolyard wall added from w02-247L; SE wall blank as photographed (vents)",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
     "model": "opus",
-    "round": 2
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -1378,23 +1395,28 @@
     4.9438059,
     52.363092
    ],
-   "status": "compiled",
+   "status": "reviewed-pass",
    "house": "oostpoort-montessori-080630",
    "notes": [
-    "authored recipe houses/oostpoort-montessori-080630 exists and is not installed: the factory keeps its intent, measures and compiles it",
     "2026-10-24T05:58 draft: hand-authored intent kept",
     "2026-10-24T05:58 measured groups 0,1 in 3 s",
     "2026-10-24T05:58 compiled: 4119 tris, gates pass, likeness g0:FAIL g1:WARN",
     "2026-10-24T06:13 measured read-only (hand-authored intent): artifacts/building-recipes/oostpoort-montessori-080630/measured.json",
     "2026-10-24T06:15 measured read-only (hand-authored intent): artifacts/building-recipes/oostpoort-montessori-080630/measured.json",
-    "2026-10-24T06:17 compiled: 3795 tris, gates pass, likeness g0:FAIL g1:FAIL"
+    "2026-10-24T06:17 compiled: 3795 tris, gates pass, likeness g0:FAIL g1:FAIL",
+    "2026-10-24T20:16 compiled: 3795 tris, gates pass, likeness g0:FAIL g1:FAIL",
+    "2026-10-24T20:23 compiled: 3795 tris, gates pass, likeness g0:WARN g1:FAIL",
+    "2026-10-24T20:26 compiled: 4767 tris, gates pass, likeness g0:FAIL g1:FAIL",
+    "2026-10-24T20:27 compiled: 4767 tris, gates pass, likeness g0:FAIL g1:FAIL",
+    "2026-10-24T20:28 compiled: 5199 tris, gates pass, likeness g0:FAIL g1:FAIL",
+    "2026-10-24T20:37 compiled: 5529 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO EVIDENCE"
    ],
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:58:45.273Z",
-   "updatedAt": "2026-10-24T06:17:28.645Z",
+   "updatedAt": "2026-10-24T20:37:39.669Z",
    "report": {
-    "triangles": 3795,
-    "bytes": 287864,
+    "triangles": 5529,
+    "bytes": 410652,
     "gatesFailing": [],
     "passed": true,
     "likeness": [
@@ -1402,35 +1424,43 @@
       "group": 0,
       "verdict": "FAIL",
       "reasons": [
-       "glazing storey band off by 0.16 mean 0.28 vs photo 0.39",
-       "window shape tall vs photo wide",
-       "columns 8 vs photo 4"
+       "wall hue 12 deg",
+       "glazing storey band off by 0.22 mean 0.25 vs photo 0.40",
+       "window shape tall vs photo square"
       ]
      },
      {
       "group": 1,
       "verdict": "FAIL",
       "reasons": [
-       "wall dL +0.15",
-       "glazing storey band off by 0.23 mean 0.28 vs photo 0.48",
-       "columns 10 vs photo 16"
+       "wall dL +0.16",
+       "glazing storey band off by 0.38 mean 0.28 vs photo 0.49"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "obliquity 45.9 deg > 45"
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:17"
+    "compiledAt": "2026-10-24T20:37"
    },
    "sheets": [
     "artifacts/building-recipes/oostpoort-montessori-080630/contact-walls-0.png",
     "artifacts/building-recipes/oostpoort-montessori-080630/contact-walls-1.png",
+    "artifacts/building-recipes/oostpoort-montessori-080630/contact-walls-2.png",
     "artifacts/building-recipes/oostpoort-montessori-080630/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "hand-authored intent: wall too red vs photo purple-brown; window wide vs tall",
-    "sheet": "artifacts/strips/factory-batch-1b",
+    "outcome": "pass",
+    "note": "purple-brown brick, two storeys of square sashes under a frieze of small paired attic windows, red tile hipped roof; south walls blank (no crop); tall stair window not drawn",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
     "model": "opus",
-    "round": 2
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -1483,12 +1513,11 @@
     4.9254988,
     52.336456
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "spinoza20first-253721",
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:58:52.273Z",
    "notes": [
-    "2026-10-23T20:57 crops: 8 usable walls in 11 s",
     "2026-10-24T05:58 facts: no routing street within 30 m; groups will be unnamed",
     "2026-10-24T05:58 draft: 8 groups (0 on a street), 82 panels blank",
     "2026-10-24T05:59 measured groups 0,6 in 8 s",
@@ -1497,12 +1526,15 @@
     "2026-10-24T06:13 measured groups 0,6 in 8 s",
     "2026-10-24T06:14 draft: 8 groups (0 on a street), 82 panels blank",
     "2026-10-24T06:15 measured groups 0,6 in 8 s",
-    "2026-10-24T06:17 compiled: 10809 tris, gates FAIL eaves-vs-3dbag/walls[2], likeness g0:FAIL g1:NO PHOTO g2:NO EVIDENCE g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:FAIL g7:NO EVIDENCE (large.ts exited non-zero:   artifacts/building-recipes/spinoza20first-253721/contact-walls-3.png |   artifacts/building-recipes/spinoza20first-253721/contact-walls-4.png |   artifacts/bu)"
+    "2026-10-24T06:17 compiled: 10809 tris, gates FAIL eaves-vs-3dbag/walls[2], likeness g0:FAIL g1:NO PHOTO g2:NO EVIDENCE g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:FAIL g7:NO EVIDENCE (large.ts exited non-zero:   artifacts/building-recipes/spinoza20first-253721/contact-walls-3.png |   artifacts/building-recipes/spinoza20first-253721/contact-walls-4.png |   artifacts/bu)",
+    "2026-10-24T20:12 measured groups 0,6 in 6 s",
+    "2026-10-24T20:12 compiled: 11415 tris, gates FAIL eaves-vs-3dbag/walls[0].houses[0],eaves-vs-3dbag/walls[2], likeness g0:FAIL g1:NO PHOTO g2:NO EVIDENCE g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:FAIL g7:NO EVIDENCE (large.ts exited non-zero:   artifacts/building-recipes/spinoza20first-253721/contact-walls-3.png |   artifacts/building-recipes/spinoza20first-253721/contact-walls-4.png |   artifacts/bu)",
+    "2026-10-24T20:38 compiled: 10809 tris, gates FAIL eaves-vs-3dbag/walls[2], likeness g0:FAIL g1:NO PHOTO g2:NO EVIDENCE g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:FAIL g7:NO EVIDENCE (large.ts exited non-zero:   artifacts/building-recipes/spinoza20first-253721/contact-walls-3.png |   artifacts/building-recipes/spinoza20first-253721/contact-walls-4.png |   artifacts/bu)"
    ],
-   "updatedAt": "2026-10-24T06:17:35.260Z",
+   "updatedAt": "2026-10-24T20:38:10.981Z",
    "report": {
     "triangles": 10809,
-    "bytes": 803700,
+    "bytes": 803640,
     "gatesFailing": [
      "eaves-vs-3dbag/walls[2]"
     ],
@@ -1512,7 +1544,8 @@
       "group": 0,
       "verdict": "FAIL",
       "reasons": [
-       "wall family paint vs photo brick"
+       "wall family paint vs photo brick",
+       "glazing storey band off by 0.19"
       ]
      },
      {
@@ -1560,7 +1593,7 @@
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:17"
+    "compiledAt": "2026-10-24T20:38"
    },
    "sheets": [
     "artifacts/building-recipes/spinoza20first-253721/contact-walls-0.png",
@@ -1574,12 +1607,13 @@
     "artifacts/building-recipes/spinoza20first-253721/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "kit gap: white panel facade with glass bays drawn as grey brick; eaves gate",
-    "sheet": "artifacts/strips/factory-batch-1b",
+    "outcome": "hold",
+    "note": "white panel facade with dark glass bays drawn as grey brick grid; gate eaves-vs-3dbag walls[2]; bogus measured row split removed",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
     "model": "opus",
-    "round": 2
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -1653,7 +1687,7 @@
     4.914284500000001,
     52.3909635
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-243823",
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:59:16.399Z",
@@ -1667,12 +1701,14 @@
     "2026-10-24T06:14 measured groups 1,3,6,7 in 12 s",
     "2026-10-24T06:14 draft: 8 groups (0 on a street), 27 panels blank",
     "2026-10-24T06:16 measured groups 1,3,6,7 in 12 s",
-    "2026-10-24T06:17 compiled: 9041 tris, gates FAIL footprint-vs-bag, likeness g0:NO PHOTO g1:FAIL g2:NO PHOTO g3:WARN g4:NO PHOTO g5:NO PHOTO g6:FAIL g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-243823/contact-walls-3.png |   artifacts/building-recipes/pand-243823/contact-walls-4.png |   artifacts/building-recipes/pand-)"
+    "2026-10-24T06:17 compiled: 9041 tris, gates FAIL footprint-vs-bag, likeness g0:NO PHOTO g1:FAIL g2:NO PHOTO g3:WARN g4:NO PHOTO g5:NO PHOTO g6:FAIL g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-243823/contact-walls-3.png |   artifacts/building-recipes/pand-243823/contact-walls-4.png |   artifacts/building-recipes/pand-)",
+    "2026-10-24T20:12 measured groups 1,3,6,7 in 14 s",
+    "2026-10-24T20:12 compiled: 9347 tris, gates FAIL footprint-vs-bag, likeness g0:NO PHOTO g1:FAIL g2:NO PHOTO g3:WARN g4:NO PHOTO g5:NO PHOTO g6:FAIL g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-243823/contact-walls-3.png |   artifacts/building-recipes/pand-243823/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-24T06:17:42.030Z",
+   "updatedAt": "2026-10-24T20:12:52.051Z",
    "report": {
-    "triangles": 9041,
-    "bytes": 664060,
+    "triangles": 9347,
+    "bytes": 685992,
     "gatesFailing": [
      "footprint-vs-bag"
     ],
@@ -1717,7 +1753,7 @@
       "group": 6,
       "verdict": "FAIL",
       "reasons": [
-       "glazing storey band off by 0.22"
+       "glazing storey band off by 0.21"
       ]
      },
      {
@@ -1730,7 +1766,7 @@
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:17"
+    "compiledAt": "2026-10-24T20:12"
    },
    "sheets": [
     "artifacts/building-recipes/pand-243823/contact-walls-0.png",
@@ -1744,11 +1780,13 @@
     "artifacts/building-recipes/pand-243823/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "dark brick fronts right; side walls default orange; footprint gate red",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "outcome": "hold",
+    "note": "gate footprint-vs-bag; walls[6] measured paired windows (windowGroup) but crop too small to confirm",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -1766,7 +1804,7 @@
     4.94556505,
     52.3656765
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-087570",
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:59:35.975Z",
@@ -1780,9 +1818,11 @@
     "2026-10-24T06:14 measured groups 0,1,3,5 in 12 s",
     "2026-10-24T06:14 draft: 8 groups (0 on a street), 53 panels blank",
     "2026-10-24T06:16 measured groups 0,1,3,5 in 13 s",
-    "2026-10-24T06:17 compiled: 11283 tris, gates pass, likeness g0:PASS g1:FAIL g3:WARN g4:NO PHOTO g5:FAIL g6:NO PHOTO g7:NO PHOTO"
+    "2026-10-24T06:17 compiled: 11283 tris, gates pass, likeness g0:PASS g1:FAIL g3:WARN g4:NO PHOTO g5:FAIL g6:NO PHOTO g7:NO PHOTO",
+    "2026-10-24T20:13 measured groups 0,1,3,5 in 9 s",
+    "2026-10-24T20:13 compiled: 11283 tris, gates pass, likeness g0:PASS g1:FAIL g3:WARN g4:NO PHOTO g5:FAIL g6:NO PHOTO g7:NO PHOTO"
    ],
-   "updatedAt": "2026-10-24T06:17:49.673Z",
+   "updatedAt": "2026-10-24T20:13:09.434Z",
    "report": {
     "triangles": 11283,
     "bytes": 833764,
@@ -1833,7 +1873,7 @@
       "reasons": []
      }
     ],
-    "compiledAt": "2026-10-24T06:17"
+    "compiledAt": "2026-10-24T20:13"
    },
    "sheets": [
     "artifacts/building-recipes/pand-087570/contact-walls-0.png",
@@ -1847,11 +1887,13 @@
     "artifacts/building-recipes/pand-087570/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "yellow-brown brick photo vs orange model; window shape tall vs photo square; triangle budget",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "outcome": "hold",
+    "note": "the walls[1] crop shows only the lower three of seven storeys (ribbon windows between pilasters); the rest cannot be judged",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -1869,7 +1911,7 @@
     4.865425999999999,
     52.3760895
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-111954",
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:59:54.856Z",
@@ -1883,12 +1925,14 @@
     "2026-10-24T06:14 measured groups 0,2,5,6 in 3 s",
     "2026-10-24T06:14 draft: 8 groups (0 on a street), 25 panels blank",
     "2026-10-24T06:16 measured groups 0,2,5,6 in 3 s",
-    "2026-10-24T06:17 compiled: 4539 tris, gates pass, likeness g0:FAIL g1:NO EVIDENCE g2:FAIL g3:NO PHOTO g4:NO EVIDENCE g5:FAIL g6:FAIL g7:NO PHOTO"
+    "2026-10-24T06:17 compiled: 4539 tris, gates pass, likeness g0:FAIL g1:NO EVIDENCE g2:FAIL g3:NO PHOTO g4:NO EVIDENCE g5:FAIL g6:FAIL g7:NO PHOTO",
+    "2026-10-24T20:13 measured groups 0,2,5,6 in 4 s",
+    "2026-10-24T20:13 compiled: 4573 tris, gates pass, likeness g0:FAIL g1:NO EVIDENCE g2:FAIL g3:NO PHOTO g4:NO EVIDENCE g5:FAIL g6:FAIL g7:NO PHOTO"
    ],
-   "updatedAt": "2026-10-24T06:17:55.156Z",
+   "updatedAt": "2026-10-24T20:13:18.723Z",
    "report": {
-    "triangles": 4539,
-    "bytes": 343632,
+    "triangles": 4573,
+    "bytes": 346104,
     "gatesFailing": [],
     "passed": true,
     "likeness": [
@@ -1938,7 +1982,7 @@
       "group": 6,
       "verdict": "FAIL",
       "reasons": [
-       "glazing  mean 0.34 vs photo 0.53"
+       "glazing  mean 0.34 vs photo 0.51"
       ]
      },
      {
@@ -1947,7 +1991,7 @@
       "reasons": []
      }
     ],
-    "compiledAt": "2026-10-24T06:17"
+    "compiledAt": "2026-10-24T20:13"
    },
    "sheets": [
     "artifacts/building-recipes/pand-111954/contact-walls-0.png",
@@ -1961,11 +2005,13 @@
     "artifacts/building-recipes/pand-111954/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "photo walls grey/black low hall; model orange block on unphotographed walls; columns 20 vs 11",
-    "sheet": "artifacts/strips/factory-batch-1",
+    "outcome": "hold",
+    "note": "low grey/black hall; unphotographed walls carry the inherited grid; walls[0,2] fail columns and glazing",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -2010,20 +2056,21 @@
     4.8824705,
     52.3633065
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "hirschpassage-2-165488",
    "notes": [
     "authored recipe houses/hirschpassage-2-165488 exists and is not installed: the factory keeps its intent, measures and compiles it",
     "2026-10-24T06:51 draft: hand-authored intent kept",
     "2026-10-24T06:51 measured read-only (hand-authored intent): artifacts/building-recipes/hirschpassage-2-165488/measured.json",
-    "2026-10-24T06:51 compiled: 10116 tris, gates pass, likeness g0:NO PHOTO g1:FAIL g2:NO PHOTO (large.ts exited non-zero: hirschpassage-2-165488: 10116 tris, 792380 B, 1657 ms, openings 84 recessed / 0 flush, components {\"nameBoards\":0,\"entrances\":0,\"halls\":0,\"canopies\":0,\"garageDo)"
+    "2026-10-24T06:51 compiled: 10116 tris, gates pass, likeness g0:NO PHOTO g1:FAIL g2:NO PHOTO (large.ts exited non-zero: hirschpassage-2-165488: 10116 tris, 792380 B, 1657 ms, openings 84 recessed / 0 flush, components {\"nameBoards\":0,\"entrances\":0,\"halls\":0,\"canopies\":0,\"garageDo)",
+    "2026-10-24T20:16 compiled: 11300 tris, gates pass, likeness g0:NO PHOTO g1:FAIL g2:NO PHOTO g3:NO PHOTO"
    ],
    "owner": "factory-2",
    "claimedAt": "2026-10-24T06:51:13.453Z",
-   "updatedAt": "2026-10-24T06:51:20.064Z",
+   "updatedAt": "2026-10-24T20:16:51.182Z",
    "report": {
-    "triangles": 10116,
-    "bytes": 792380,
+    "triangles": 11300,
+    "bytes": 882052,
     "gatesFailing": [],
     "passed": true,
     "likeness": [
@@ -2036,29 +2083,36 @@
       "group": 1,
       "verdict": "FAIL",
       "reasons": [
-       "wall dL +0.51",
-       "glazing storey band off by 0.40",
-       "wall family unresolved (#3c342a is dark and neutral, brick courses not resolved): lightness and hue judged only"
+       "wall dL +0.14",
+       "glazing storey band off by 0.56 mean 0.25 vs photo 0.66",
+       "window shape tall vs photo square"
       ]
      },
      {
       "group": 2,
       "verdict": "NO PHOTO",
       "reasons": []
+     },
+     {
+      "group": 3,
+      "verdict": "NO PHOTO",
+      "reasons": []
      }
     ],
-    "compiledAt": "2026-10-24T06:51"
+    "compiledAt": "2026-10-24T20:16"
    },
    "sheets": [
     "artifacts/building-recipes/hirschpassage-2-165488/contact-walls-1.png",
     "artifacts/building-recipes/hirschpassage-2-165488/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "hand-authored: beige stucco vs photo dark sandstone; 2 vs 3 columns",
-    "sheet": "artifacts/strips/factory-batch-2",
+    "outcome": "hold",
+    "note": "wall reads beige-brown vs dark sandstone photo; 2 vs 3 windows per bay (3 per bay over budget); balustrades missing",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -2341,7 +2395,7 @@
     4.88297355,
     52.365377050000006
    ],
-   "status": "compiled",
+   "status": "reviewed-pass",
    "house": "pand-165427",
    "owner": "factory-2",
    "claimedAt": "2026-10-24T06:51:20.065Z",
@@ -2350,23 +2404,25 @@
     "2026-10-24T06:51 facts: no routing street within 30 m; groups will be unnamed",
     "2026-10-24T06:51 draft: 8 groups (0 on a street), 170 panels blank",
     "2026-10-24T06:51 measured groups 0,1,4,5,6 in 13 s",
-    "2026-10-24T06:51 compiled: 7934 tris, gates FAIL eaves-vs-3dbag/walls[3], likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-165427/contact-walls-3.png |   artifacts/building-recipes/pand-165427/contact-walls-4.png |   artifacts/building-recipes/pand-)"
+    "2026-10-24T06:51 compiled: 7934 tris, gates FAIL eaves-vs-3dbag/walls[3], likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-165427/contact-walls-3.png |   artifacts/building-recipes/pand-165427/contact-walls-4.png |   artifacts/building-recipes/pand-)",
+    "2026-10-24T20:17 compiled: 8683 tris, gates pass, likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO",
+    "2026-10-24T20:19 compiled: 9623 tris, gates pass, likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO",
+    "2026-10-24T20:20 compiled: 9529 tris, gates pass, likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO",
+    "2026-10-24T20:20 compiled: 8859 tris, gates pass, likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO"
    ],
-   "updatedAt": "2026-10-24T06:51:43.568Z",
+   "updatedAt": "2026-10-24T20:20:41.969Z",
    "report": {
-    "triangles": 7934,
-    "bytes": 622416,
-    "gatesFailing": [
-     "eaves-vs-3dbag/walls[3]"
-    ],
-    "passed": false,
+    "triangles": 8859,
+    "bytes": 692056,
+    "gatesFailing": [],
+    "passed": true,
     "likeness": [
      {
       "group": 0,
       "verdict": "WARN",
       "reasons": [
        "wall family unresolved (#4f4c4d is dark and neutral, brick courses not resolved): lightness and hue judged only",
-       "mask IoU 0.374 < 0.45"
+       "mask IoU 0.436 < 0.45"
       ]
      },
      {
@@ -2408,7 +2464,7 @@
       "group": 6,
       "verdict": "WARN",
       "reasons": [
-       "mask IoU 0.406 < 0.45"
+       "mask IoU 0.42 < 0.45"
       ]
      },
      {
@@ -2417,7 +2473,7 @@
       "reasons": []
      }
     ],
-    "compiledAt": "2026-10-24T06:51"
+    "compiledAt": "2026-10-24T20:20"
    },
    "sheets": [
     "artifacts/building-recipes/pand-165427/contact-walls-0.png",
@@ -2431,11 +2487,13 @@
     "artifacts/building-recipes/pand-165427/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "closest: dark row front, 12 bays right, WARN; but a row of separate canal houses drawn as one flat block (no gables, no per-house heights)",
-    "sheet": "artifacts/strips/factory-batch-2",
+    "outcome": "pass",
+    "note": "canal front reads right: dark brick, 12 bays, row of four fronts with the tall left house arched on top, red-brown frames; courtyard walls blank (no photo); dormers and oculus not drawn",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -2741,20 +2799,23 @@
     4.8987365,
     52.3665855
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "amstel-142-186290",
    "notes": [
     "authored recipe houses/amstel-142-186290 exists and is not installed: the factory keeps its intent, measures and compiles it",
     "2026-10-24T06:51 draft: hand-authored intent kept",
     "2026-10-24T06:51 measured read-only (hand-authored intent): artifacts/building-recipes/amstel-142-186290/measured.json",
-    "2026-10-24T06:51 compiled: 5013 tris, gates pass, likeness g0:FAIL g1:NO PHOTO"
+    "2026-10-24T06:51 compiled: 5013 tris, gates pass, likeness g0:FAIL g1:NO PHOTO",
+    "2026-10-24T20:17 compiled: 5013 tris, gates pass, likeness g0:FAIL g1:NO PHOTO",
+    "2026-10-24T20:31 compiled: 6096 tris, gates pass, likeness g0:FAIL g1:NO PHOTO",
+    "2026-10-24T20:32 compiled: 5976 tris, gates pass, likeness g0:FAIL g1:NO PHOTO"
    ],
    "owner": "factory-2",
    "claimedAt": "2026-10-24T06:51:43.569Z",
-   "updatedAt": "2026-10-24T06:51:48.322Z",
+   "updatedAt": "2026-10-24T20:32:15.722Z",
    "report": {
-    "triangles": 5013,
-    "bytes": 400824,
+    "triangles": 5976,
+    "bytes": 473156,
     "gatesFailing": [],
     "passed": true,
     "likeness": [
@@ -2762,9 +2823,9 @@
       "group": 0,
       "verdict": "FAIL",
       "reasons": [
-       "wall hue 12 deg",
-       "glazing storey band off by 0.54 mean 0.28 vs photo 0.61",
-       "window shape square vs photo wide"
+       "glazing storey band off by 0.42 mean 0.38 vs photo 0.62",
+       "window shape tall vs photo wide",
+       "columns 12 vs photo 2"
       ]
      },
      {
@@ -2773,7 +2834,7 @@
       "reasons": []
      }
     ],
-    "compiledAt": "2026-10-24T06:51"
+    "compiledAt": "2026-10-24T20:32"
    },
    "sheets": [
     "artifacts/building-recipes/amstel-142-186290/contact-walls-0.png",
@@ -2781,11 +2842,13 @@
     "artifacts/building-recipes/amstel-142-186290/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "hand-authored: brick red ok, window shape square vs wide; walls[1] no photo",
-    "sheet": "artifacts/strips/factory-batch-2",
+    "outcome": "hold",
+    "note": "walls[0] split into its two houses with bands; but walls[1] (Amstelstraat, Eden Hotel) has no photo and draws a large red block; tile panels between storeys not drawn",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -2875,77 +2938,66 @@
     4.8973054000000005,
     52.3573234
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "stadhouderskade-111-137448",
    "notes": [
     "authored recipe houses/stadhouderskade-111-137448 exists and is not installed: the factory keeps its intent, measures and compiles it",
     "2026-10-24T06:51 draft: hand-authored intent kept",
     "2026-10-24T06:51 measured read-only (hand-authored intent): artifacts/building-recipes/stadhouderskade-111-137448/measured.json",
-    "2026-10-24T06:51 compiled: 5876 tris, gates pass, likeness g0:NO EVIDENCE g1:FAIL g2:FAIL g3:FAIL g4:WARN (large.ts exited non-zero:     walls[4] WARN: wall #8e7561 vs #b8785f (dL 0.078), glazing 0.279 vs 0.356, columns null vs 3, shape null vs square, IoU 0.349 — mask IoU 0.349 < 0.45 |   ar)"
+    "2026-10-24T06:51 compiled: 5876 tris, gates pass, likeness g0:NO EVIDENCE g1:FAIL g2:FAIL g3:FAIL g4:WARN (large.ts exited non-zero:     walls[4] WARN: wall #8e7561 vs #b8785f (dL 0.078), glazing 0.279 vs 0.356, columns null vs 3, shape null vs square, IoU 0.349 — mask IoU 0.349 < 0.45 |   ar)",
+    "2026-10-24T20:17 compiled: 11547 tris, gates FAIL eaves-vs-3dbag/walls[0].houses[6],eaves-vs-3dbag/walls[0].houses[9], likeness g0:FAIL g1:WARN g2:WARN (large.ts exited non-zero:     walls[1] WARN: wall #73615b vs #8a746d (dL 0.08), glazing 0.434 vs 0.365, columns 28 vs 13 (windows 28 vs 26), shape tall vs tall, IoU 0.239 — mask IoU 0.23)"
    ],
    "owner": "factory-2",
    "claimedAt": "2026-10-24T06:51:48.322Z",
-   "updatedAt": "2026-10-24T06:51:55.688Z",
+   "updatedAt": "2026-10-24T20:17:09.103Z",
    "report": {
-    "triangles": 5876,
-    "bytes": 461904,
-    "gatesFailing": [],
-    "passed": true,
+    "triangles": 11547,
+    "bytes": 905068,
+    "gatesFailing": [
+     "eaves-vs-3dbag/walls[0].houses[6]",
+     "eaves-vs-3dbag/walls[0].houses[9]"
+    ],
+    "passed": false,
     "likeness": [
      {
       "group": 0,
-      "verdict": "NO EVIDENCE",
+      "verdict": "FAIL",
       "reasons": [
-       "foliage 34 % > 25 %"
+       "glazing  mean 0.38 vs photo 0.21",
+       "columns 11 vs photo 50"
       ]
      },
      {
       "group": 1,
-      "verdict": "FAIL",
+      "verdict": "WARN",
       "reasons": [
-       "glazing storey band off by 0.15 mean 0.41 vs photo 0.26"
+       "mask IoU 0.239 < 0.45"
       ]
      },
      {
       "group": 2,
-      "verdict": "FAIL",
-      "reasons": [
-       "window shape none vs photo tall",
-       "columns none vs photo 4"
-      ]
-     },
-     {
-      "group": 3,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.18 mean 0.28 vs photo 0.43",
-       "window shape square vs photo tall",
-       "columns 9 vs photo 28"
-      ]
-     },
-     {
-      "group": 4,
       "verdict": "WARN",
       "reasons": [
        "mask IoU 0.349 < 0.45"
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:51"
+    "compiledAt": "2026-10-24T20:17"
    },
    "sheets": [
     "artifacts/building-recipes/stadhouderskade-111-137448/contact-walls-0.png",
     "artifacts/building-recipes/stadhouderskade-111-137448/contact-walls-1.png",
-    "artifacts/building-recipes/stadhouderskade-111-137448/contact-walls-3.png",
-    "artifacts/building-recipes/stadhouderskade-111-137448/contact-walls-4.png",
+    "artifacts/building-recipes/stadhouderskade-111-137448/contact-walls-2.png",
     "artifacts/building-recipes/stadhouderskade-111-137448/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "hand-authored: row of distinct houses drawn as one orange block",
-    "sheet": "artifacts/strips/factory-batch-2",
+    "outcome": "hold",
+    "note": "gates fail: eaves-vs-3dbag walls[0].houses[6] and [9], openings-within-walls",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -3512,7 +3564,7 @@
     4.855887,
     52.3500095
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-236656",
    "owner": "factory-2",
    "claimedAt": "2026-10-24T06:51:55.689Z",
@@ -3521,9 +3573,11 @@
     "2026-10-24T06:51 facts: no routing street within 30 m; groups will be unnamed",
     "2026-10-24T06:51 draft: 8 groups (0 on a street), 62 panels blank",
     "2026-10-24T06:52 measured groups 2 in 4 s",
-    "2026-10-24T06:52 compiled: 7436 tris, gates pass, likeness g0:NO PHOTO g1:NO PHOTO g2:FAIL g3:NO PHOTO g4:NO EVIDENCE g5:NO PHOTO g6:NO PHOTO g7:NO EVIDENCE"
+    "2026-10-24T06:52 compiled: 7436 tris, gates pass, likeness g0:NO PHOTO g1:NO PHOTO g2:FAIL g3:NO PHOTO g4:NO EVIDENCE g5:NO PHOTO g6:NO PHOTO g7:NO EVIDENCE",
+    "2026-10-24T20:13 measured groups 2 in 4 s",
+    "2026-10-24T20:13 compiled: 7436 tris, gates pass, likeness g0:NO PHOTO g1:NO PHOTO g2:FAIL g3:NO PHOTO g4:NO EVIDENCE g5:NO PHOTO g6:NO PHOTO g7:NO EVIDENCE"
    ],
-   "updatedAt": "2026-10-24T06:52:09.299Z",
+   "updatedAt": "2026-10-24T20:13:29.108Z",
    "report": {
     "triangles": 7436,
     "bytes": 553784,
@@ -3577,7 +3631,7 @@
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:52"
+    "compiledAt": "2026-10-24T20:13"
    },
    "sheets": [
     "artifacts/building-recipes/pand-236656/contact-walls-0.png",
@@ -3591,11 +3645,13 @@
     "artifacts/building-recipes/pand-236656/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "dark brick and bays near right; vertical window bands in photo, punched in model",
-    "sheet": "artifacts/strips/factory-batch-2",
+    "outcome": "hold",
+    "note": "1980s school: full-height brick piers with an arched (scalloped) parapet over round-headed top windows; walls[2] mostly blank with one window block; six groups no photo",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -3637,20 +3693,22 @@
     4.8942435,
     52.3745945
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "damrak-77-165746",
    "notes": [
     "authored recipe houses/damrak-77-165746 exists and is not installed: the factory keeps its intent, measures and compiles it",
     "2026-10-24T06:52 draft: hand-authored intent kept",
     "2026-10-24T06:52 measured read-only (hand-authored intent): artifacts/building-recipes/damrak-77-165746/measured.json",
-    "2026-10-24T06:52 compiled: 3266 tris, gates pass, likeness g0:NO EVIDENCE g1:FAIL"
+    "2026-10-24T06:52 compiled: 3266 tris, gates pass, likeness g0:NO EVIDENCE g1:FAIL",
+    "2026-10-24T20:17 compiled: 7718 tris, gates pass, likeness g0:NO EVIDENCE g1:FAIL",
+    "2026-10-24T20:21 compiled: 7718 tris, gates pass, likeness g0:NO EVIDENCE g1:FAIL"
    ],
    "owner": "factory-2",
    "claimedAt": "2026-10-24T06:52:09.299Z",
-   "updatedAt": "2026-10-24T06:52:14.757Z",
+   "updatedAt": "2026-10-24T20:21:34.839Z",
    "report": {
-    "triangles": 3266,
-    "bytes": 261780,
+    "triangles": 7718,
+    "bytes": 573408,
     "gatesFailing": [],
     "passed": true,
     "likeness": [
@@ -3665,24 +3723,26 @@
       "group": 1,
       "verdict": "FAIL",
       "reasons": [
-       "wall dL +0.30",
+       "wall dL +0.15",
        "glazing  mean 0.23 vs photo 0.34",
        "wall family unresolved (#3e2a1a is dark and neutral, brick courses not resolved): lightness and hue judged only"
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:52"
+    "compiledAt": "2026-10-24T20:21"
    },
    "sheets": [
     "artifacts/building-recipes/damrak-77-165746/contact-walls-0.png",
     "artifacts/building-recipes/damrak-77-165746/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "hand-authored: flat red brick vs dark brick with white stone bands and oriels (Nassaukade-506 class)",
-    "sheet": "artifacts/strips/factory-batch-2",
+    "outcome": "hold",
+    "note": "brick now darker (#57291f) but still reads red after tint; one arch over several bays (Beurspassage) and the offset bay grid missing; large blank flank",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -3868,20 +3928,23 @@
     4.89596465,
     52.3741502
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "beursplein-5-165051",
    "notes": [
     "authored recipe houses/beursplein-5-165051 exists and is not installed: the factory keeps its intent, measures and compiles it",
     "2026-10-24T06:52 draft: hand-authored intent kept",
     "2026-10-24T06:52 measured read-only (hand-authored intent): artifacts/building-recipes/beursplein-5-165051/measured.json",
-    "2026-10-24T06:52 compiled: 8953 tris, gates pass, likeness g0:NO EVIDENCE g1:NO EVIDENCE g2:NO EVIDENCE g3:NO EVIDENCE"
+    "2026-10-24T06:52 compiled: 8953 tris, gates pass, likeness g0:NO EVIDENCE g1:NO EVIDENCE g2:NO EVIDENCE g3:NO EVIDENCE",
+    "2026-10-24T20:17 compiled: 8953 tris, gates pass, likeness g0:NO EVIDENCE g1:NO EVIDENCE g2:NO EVIDENCE g3:NO EVIDENCE",
+    "2026-10-24T20:30 compiled: 11269 tris, gates pass, likeness g0:NO EVIDENCE g1:NO EVIDENCE g2:NO EVIDENCE g3:NO EVIDENCE",
+    "2026-10-24T20:31 compiled: 11269 tris, gates pass, likeness g0:NO EVIDENCE g1:NO EVIDENCE g2:NO EVIDENCE g3:NO EVIDENCE"
    ],
    "owner": "factory-2",
    "claimedAt": "2026-10-24T06:52:14.757Z",
-   "updatedAt": "2026-10-24T06:52:23.441Z",
+   "updatedAt": "2026-10-24T20:31:15.705Z",
    "report": {
-    "triangles": 8953,
-    "bytes": 699228,
+    "triangles": 11269,
+    "bytes": 864040,
     "gatesFailing": [],
     "passed": true,
     "likeness": [
@@ -3915,7 +3978,7 @@
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:52"
+    "compiledAt": "2026-10-24T20:31"
    },
    "sheets": [
     "artifacts/building-recipes/beursplein-5-165051/contact-walls-0.png",
@@ -3925,11 +3988,13 @@
     "artifacts/building-recipes/beursplein-5-165051/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "hand-authored: orange/beige vs dark brick photo",
-    "sheet": "artifacts/strips/factory-batch-2",
+    "outcome": "hold",
+    "note": "every group NO EVIDENCE (obliquity > 45 deg); crops disagree on the brick (sunlit orange-red vs overcast dark brown); surrounds added but read thin",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -4400,39 +4465,44 @@
     4.891170499999999,
     52.390919999999994
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-233585",
    "owner": "factory-2",
    "claimedAt": "2026-10-24T06:52:23.442Z",
    "notes": [
-    "2026-10-23T21:32 crops: 13 usable walls in 29 s",
     "2026-10-24T06:52 facts: no routing street within 30 m; groups will be unnamed",
     "2026-10-24T06:52 draft: 8 groups (0 on a street), 113 panels blank",
     "2026-10-24T06:52 measured groups 1,3,7 in 10 s",
-    "2026-10-24T06:52 compiled: 8426 tris, gates FAIL eaves-vs-3dbag/walls[0],eaves-vs-3dbag/walls[4], likeness g0:NO EVIDENCE g1:FAIL g2:NO PHOTO g3:FAIL g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-233585/contact-walls-3.png |   artifacts/building-recipes/pand-233585/contact-walls-4.png |   artifacts/building-recipes/pand-)"
+    "2026-10-24T06:52 compiled: 8426 tris, gates FAIL eaves-vs-3dbag/walls[0],eaves-vs-3dbag/walls[4], likeness g0:NO EVIDENCE g1:FAIL g2:NO PHOTO g3:FAIL g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-233585/contact-walls-3.png |   artifacts/building-recipes/pand-233585/contact-walls-4.png |   artifacts/building-recipes/pand-)",
+    "2026-10-24T20:17 compiled: 11998 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL",
+    "2026-10-24T20:33 compiled: 13010 tris, gates FAIL open-edges, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-233585/contact-walls-3.png |   artifacts/building-recipes/pand-233585/contact-walls-4.png |   artifacts/building-recipes/pand-)",
+    "2026-10-24T20:33 compiled: 12816 tris, gates FAIL open-edges, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-233585/contact-walls-3.png |   artifacts/building-recipes/pand-233585/contact-walls-4.png |   artifacts/building-recipes/pand-)",
+    "2026-10-24T20:33 compiled: 12792 tris, gates FAIL open-edges, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-233585/contact-walls-3.png |   artifacts/building-recipes/pand-233585/contact-walls-4.png |   artifacts/building-recipes/pand-)",
+    "2026-10-24T20:33 compiled: 12740 tris, gates FAIL open-edges, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-233585/contact-walls-3.png |   artifacts/building-recipes/pand-233585/contact-walls-4.png |   artifacts/building-recipes/pand-)",
+    "2026-10-24T20:34 compiled: 13096 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL",
+    "2026-10-24T20:34 compiled: 19055 tris, gates FAIL triangle-budget,storey-height/walls[3],open-edges, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-233585/contact-walls-3.png |   artifacts/building-recipes/pand-233585/contact-walls-4.png |   artifacts/building-recipes/pand-)",
+    "2026-10-24T20:34 compiled: 13096 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL"
    ],
-   "updatedAt": "2026-10-24T06:52:45.124Z",
+   "updatedAt": "2026-10-24T20:34:40.667Z",
    "report": {
-    "triangles": 8426,
-    "bytes": 648200,
-    "gatesFailing": [
-     "eaves-vs-3dbag/walls[0]",
-     "eaves-vs-3dbag/walls[4]"
-    ],
-    "passed": false,
+    "triangles": 13096,
+    "bytes": 996444,
+    "gatesFailing": [],
+    "passed": true,
     "likeness": [
      {
       "group": 0,
-      "verdict": "NO EVIDENCE",
+      "verdict": "FAIL",
       "reasons": [
-       "usable upper cells 16 % < 40 %"
+       "glazing storey band off by 0.18"
       ]
      },
      {
       "group": 1,
       "verdict": "FAIL",
       "reasons": [
-       "glazing storey band off by 0.26"
+       "glazing storey band off by 0.37 mean 0.39 vs photo 0.26",
+       "window shape square vs photo wide"
       ]
      },
      {
@@ -4442,16 +4512,16 @@
      },
      {
       "group": 3,
-      "verdict": "FAIL",
+      "verdict": "WARN",
       "reasons": [
-       "glazing  mean 0.19 vs photo 0.00"
+       "mask IoU 0 < 0.45"
       ]
      },
      {
       "group": 4,
       "verdict": "NO EVIDENCE",
       "reasons": [
-       "washed out 39 % > 30 %"
+       "washed out 45 % > 30 %"
       ]
      },
      {
@@ -4470,11 +4540,13 @@
       "group": 7,
       "verdict": "FAIL",
       "reasons": [
-       "glazing storey band off by 0.30"
+       "glazing storey band off by 0.38 mean 0.40 vs photo 0.23",
+       "window shape tall vs photo square",
+       "columns 3 vs photo 2"
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:52"
+    "compiledAt": "2026-10-24T20:34"
    },
    "sheets": [
     "artifacts/building-recipes/pand-233585/contact-walls-0.png",
@@ -4488,11 +4560,13 @@
     "artifacts/building-recipes/pand-233585/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "dark red-brown brick right; tall arched windows and stone dressings missing",
-    "sheet": "artifacts/strips/factory-batch-2",
+    "outcome": "hold",
+    "note": "giant-order warehouse bays right on walls[1,7] and now walls[0]; the tower and the right wing of the east front stay plain draft grids, and walls[3] is a low strip; budget 16k",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -7130,7 +7204,7 @@
     4.89393,
     52.403522
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-083604",
    "owner": "factory-2",
    "claimedAt": "2026-10-24T06:52:45.125Z",
@@ -7139,21 +7213,24 @@
     "2026-10-24T06:52 facts: no routing street within 30 m; groups will be unnamed",
     "2026-10-24T06:52 draft: 6 groups (0 on a street), 5 panels blank",
     "2026-10-24T06:52 measured groups 0,1,5 in 5 s",
-    "2026-10-24T06:52 compiled: 5320 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO EVIDENCE g3:NO EVIDENCE g4:NO PHOTO g5:FAIL"
+    "2026-10-24T06:52 compiled: 5320 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO EVIDENCE g3:NO EVIDENCE g4:NO PHOTO g5:FAIL",
+    "2026-10-24T20:13 measured groups 0,1,5 in 7 s",
+    "2026-10-24T20:13 compiled: 5320 tris, gates pass, likeness g0:WARN g1:FAIL g2:NO EVIDENCE g3:NO EVIDENCE g4:NO PHOTO g5:WARN"
    ],
-   "updatedAt": "2026-10-24T06:52:57.955Z",
+   "updatedAt": "2026-10-24T20:13:42.070Z",
    "report": {
     "triangles": 5320,
-    "bytes": 396204,
+    "bytes": 396492,
     "gatesFailing": [],
     "passed": true,
     "likeness": [
      {
       "group": 0,
-      "verdict": "FAIL",
+      "verdict": "WARN",
       "reasons": [
-       "window shape square vs photo wide",
-       "wall family unresolved (#93928d is dark and neutral, brick courses not resolved): lightness and hue judged only"
+       "wall family unresolved (#93928d is dark and neutral, brick courses not resolved): lightness and hue judged only",
+       "columns 11 vs photo 15",
+       "mask IoU 0.158 < 0.45"
       ]
      },
      {
@@ -7184,14 +7261,13 @@
      },
      {
       "group": 5,
-      "verdict": "FAIL",
+      "verdict": "WARN",
       "reasons": [
-       "glazing storey band off by 0.24",
-       "window shape tall vs photo square"
+       "mask IoU 0.237 < 0.45"
       ]
      }
     ],
-    "compiledAt": "2026-10-24T06:52"
+    "compiledAt": "2026-10-24T20:13"
    },
    "sheets": [
     "artifacts/building-recipes/pand-083604/contact-walls-0.png",
@@ -7203,11 +7279,13 @@
     "artifacts/building-recipes/pand-083604/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "modern industrial shed, not pre-1920 (BAG year wrong for this pand or wrong pand); grey family right",
-    "sheet": "artifacts/strips/factory-batch-2",
+    "outcome": "hold",
+    "note": "modern industrial shed (BAG year wrong); metal cladding not expressible",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -7801,7 +7879,7 @@
     4.919981,
     52.3670475
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-169282",
    "owner": "factory-2",
    "claimedAt": "2026-10-24T06:52:57.956Z",
@@ -7810,9 +7888,11 @@
     "2026-10-24T06:53 facts: no routing street within 30 m; groups will be unnamed",
     "2026-10-24T06:53 draft: 3 groups (0 on a street), 50 panels blank",
     "2026-10-24T06:53 measured groups 0 in 6 s",
-    "2026-10-24T06:53 compiled: 3333 tris, gates FAIL footprint-vs-bag, likeness g0:FAIL g1:NO PHOTO g2:NO PHOTO (large.ts exited non-zero:   likeness g0 FAIL |     walls[0] FAIL: wall #a4a6a5 vs #a4a6a5 (dL 0), glazing 0.489 vs 0.444, columns 12 vs 12, shape tall vs square, IoU 0.339 — glazing stor)"
+    "2026-10-24T06:53 compiled: 3333 tris, gates FAIL footprint-vs-bag, likeness g0:FAIL g1:NO PHOTO g2:NO PHOTO (large.ts exited non-zero:   likeness g0 FAIL |     walls[0] FAIL: wall #a4a6a5 vs #a4a6a5 (dL 0), glazing 0.489 vs 0.444, columns 12 vs 12, shape tall vs square, IoU 0.339 — glazing stor)",
+    "2026-10-24T20:13 measured groups 0 in 7 s",
+    "2026-10-24T20:13 compiled: 3333 tris, gates FAIL footprint-vs-bag, likeness g0:FAIL g1:NO PHOTO g2:NO PHOTO (large.ts exited non-zero:   likeness g0 FAIL |     walls[0] FAIL: wall #a4a6a5 vs #a4a6a5 (dL 0), glazing 0.489 vs 0.444, columns 12 vs 12 (windows 12 vs 12), shape tall vs square, IoU 0)"
    ],
-   "updatedAt": "2026-10-24T06:53:11.258Z",
+   "updatedAt": "2026-10-24T20:13:54.748Z",
    "report": {
     "triangles": 3333,
     "bytes": 263408,
@@ -7840,7 +7920,7 @@
       "reasons": []
      }
     ],
-    "compiledAt": "2026-10-24T06:53"
+    "compiledAt": "2026-10-24T20:13"
    },
    "sheets": [
     "artifacts/building-recipes/pand-169282/contact-walls-0.png",
@@ -7849,11 +7929,13 @@
     "artifacts/building-recipes/pand-169282/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "modern grey housing block with sawtooth roof; column count ok, footprint gate red",
-    "sheet": "artifacts/strips/factory-batch-2",
+    "outcome": "hold",
+    "note": "gate footprint-vs-bag; sawtooth roof not expressible",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -8039,7 +8121,7 @@
     4.8461795,
     52.3925205
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-138900",
    "owner": "factory-2",
    "claimedAt": "2026-10-24T06:53:11.259Z",
@@ -8048,12 +8130,14 @@
     "2026-10-24T06:53 facts: no routing street within 30 m; groups will be unnamed",
     "2026-10-24T06:53 draft: 8 groups (0 on a street), 68 panels blank",
     "2026-10-24T06:53 measured groups 4,5 in 12 s",
-    "2026-10-24T06:53 compiled: 11770 tris, gates FAIL open-edges, likeness g0:NO PHOTO g2:NO PHOTO g4:FAIL g5:FAIL g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-138900/contact-walls-3.png |   artifacts/building-recipes/pand-138900/contact-walls-4.png |   artifacts/building-recipes/pand-)"
+    "2026-10-24T06:53 compiled: 11770 tris, gates FAIL open-edges, likeness g0:NO PHOTO g2:NO PHOTO g4:FAIL g5:FAIL g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-138900/contact-walls-3.png |   artifacts/building-recipes/pand-138900/contact-walls-4.png |   artifacts/building-recipes/pand-)",
+    "2026-10-24T20:14 measured groups 4,5 in 8 s",
+    "2026-10-24T20:14 compiled: 11770 tris, gates FAIL open-edges, likeness g0:NO PHOTO g2:NO PHOTO g4:FAIL g5:FAIL g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-138900/contact-walls-3.png |   artifacts/building-recipes/pand-138900/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-24T06:53:31.243Z",
+   "updatedAt": "2026-10-24T20:14:08.872Z",
    "report": {
     "triangles": 11770,
-    "bytes": 869864,
+    "bytes": 869856,
     "gatesFailing": [
      "open-edges"
     ],
@@ -8073,8 +8157,7 @@
       "group": 4,
       "verdict": "FAIL",
       "reasons": [
-       "glazing storey band off by 0.16",
-       "window shape wide vs photo tall",
+       "window shape square vs photo wide",
        "wall family unresolved (#8f8c8a is dark and neutral, brick courses not resolved): lightness and hue judged only"
       ]
      },
@@ -8097,7 +8180,7 @@
       "reasons": []
      }
     ],
-    "compiledAt": "2026-10-24T06:53"
+    "compiledAt": "2026-10-24T20:14"
    },
    "sheets": [
     "artifacts/building-recipes/pand-138900/contact-walls-0.png",
@@ -8111,11 +8194,13 @@
     "artifacts/building-recipes/pand-138900/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "modern office tower: blue-glass stair stripes and white frame not expressed; open-edges gate",
-    "sheet": "artifacts/strips/factory-batch-2",
+    "outcome": "hold",
+    "note": "gate open-edges; blue-glass stair stripes and white frame not expressible",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {
@@ -8709,7 +8794,7 @@
     4.8681175,
     52.3954375
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-083151",
    "owner": "factory-2",
    "claimedAt": "2026-10-24T06:53:31.244Z",
@@ -8718,12 +8803,14 @@
     "2026-10-24T06:53 facts: no routing street within 30 m; groups will be unnamed",
     "2026-10-24T06:53 draft: 8 groups (0 on a street), 40 panels blank",
     "2026-10-24T06:53 measured groups 1,2,4,5,7 in 9 s",
-    "2026-10-24T06:53 compiled: 6631 tris, gates pass, likeness g0:NO EVIDENCE g1:WARN g2:FAIL g3:NO EVIDENCE g4:WARN g5:WARN g6:NO EVIDENCE g7:PASS"
+    "2026-10-24T06:53 compiled: 6631 tris, gates pass, likeness g0:NO EVIDENCE g1:WARN g2:FAIL g3:NO EVIDENCE g4:WARN g5:WARN g6:NO EVIDENCE g7:PASS",
+    "2026-10-24T20:14 measured groups 1,2,4,5,7 in 8 s",
+    "2026-10-24T20:14 compiled: 6699 tris, gates pass, likeness g0:NO EVIDENCE g1:WARN g2:FAIL g3:NO EVIDENCE g4:WARN g5:WARN g6:NO EVIDENCE g7:PASS"
    ],
-   "updatedAt": "2026-10-24T06:53:47.589Z",
+   "updatedAt": "2026-10-24T20:14:23.239Z",
    "report": {
-    "triangles": 6631,
-    "bytes": 490848,
+    "triangles": 6699,
+    "bytes": 495608,
     "gatesFailing": [],
     "passed": true,
     "likeness": [
@@ -8767,7 +8854,7 @@
       "group": 5,
       "verdict": "WARN",
       "reasons": [
-       "mask IoU 0.293 < 0.45"
+       "mask IoU 0.291 < 0.45"
       ]
      },
      {
@@ -8783,7 +8870,7 @@
       "reasons": []
      }
     ],
-    "compiledAt": "2026-10-24T06:53"
+    "compiledAt": "2026-10-24T20:14"
    },
    "sheets": [
     "artifacts/building-recipes/pand-083151/contact-walls-0.png",
@@ -8797,11 +8884,13 @@
     "artifacts/building-recipes/pand-083151/contact-aerial.png"
    ],
    "verdict": {
-    "outcome": "fix",
-    "note": "modern metal-clad hall: horizontal cladding not expressed, blue tone guessed",
-    "sheet": "artifacts/strips/factory-batch-2",
+    "outcome": "hold",
+    "note": "horizontal metal cladding on a hall not expressible; blue tone guessed",
+    "sheet": "artifacts/strips/accept-r1",
     "date": "2026-10-24",
-    "model": "opus"
+    "model": "opus",
+    "round": 3,
+    "lane": "factory-acceptance-20261024"
    }
   },
   {

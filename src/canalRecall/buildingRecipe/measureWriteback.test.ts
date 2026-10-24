@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, majoritySystem, photoBays} from './measureWriteback.ts';
+import {cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, majoritySystem, photoBays, windowGroupProposal} from './measureWriteback.ts';
 
 test('cropPredatesBuilding: a crop in or before the construction year is not evidence', () => {
   assert.equal(cropPredatesBuilding('2018-01-08', 2019), true); // OBA Postjesweg
@@ -39,4 +39,16 @@ test('majoritySystem: area-weighted, fallback without trusted groups', () => {
   assert.equal(majoritySystem([], 'brick-bay-grid'), 'brick-bay-grid');
   assert.equal(majoritySystem([{system: 'ribbon-windows', areaM2: 300}, {system: 'brick-bay-grid', areaM2: 200}, {system: 'brick-bay-grid', areaM2: 150}], 'curtain-wall'), 'brick-bay-grid');
   assert.equal(majoritySystem([{system: 'ribbon-windows', areaM2: 300}], 'brick-bay-grid'), 'ribbon-windows');
+});
+
+test('windowGroupProposal: paired windows in the photo grid group a punched front; one window, other systems or a dirty crop do not', () => {
+  const clean = {window: {w: 0.62, h: 0.55, sill: 0.25, perBay: 2}, system: 'brick-bay-grid' as const, usable: 0.8, foliage: 0.05, washedOut: 0.02};
+  assert.deepEqual(windowGroupProposal(clean).windowGroup, {count: 2}); // Stadhouderskade 111 walls[1]: 13 bays, 26 sashes
+  assert.deepEqual(windowGroupProposal({...clean, system: 'plinth-shopfronts'}).windowGroup, {count: 2});
+  assert.equal(windowGroupProposal({...clean, window: {w: 0.5, h: 0.5, sill: 0.3}}).windowGroup, null);
+  assert.equal(windowGroupProposal({...clean, window: null}).windowGroup, null);
+  assert.match(windowGroupProposal({...clean, window: {...clean.window, perBay: 5}}).why.join(), /5 windows per bay/);
+  assert.match(windowGroupProposal({...clean, system: 'ribbon-windows'}).why.join(), /not grouped/);
+  assert.match(windowGroupProposal({...clean, foliage: 0.4}).why.join(), /foliage 40 %/);
+  assert.match(windowGroupProposal({...clean, usable: 0.2}).why.join(), /usable 20 %/);
 });

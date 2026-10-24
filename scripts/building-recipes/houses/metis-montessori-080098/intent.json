@@ -21,19 +21,59 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 2,
-   "baysPerStorey": 9,
+   "baysPerStorey": 10,
    "ground": "system",
    "windows": "wide",
    "entrance": {
     "bay": 4,
     "canopy": true
    },
-   "stringCourses": true,
    "palette": {
-    "brick": "#7a6a58",
+    "brick": "#524946",
     "frame": "#1e3a6a",
     "stone": "#b8b4a8"
+   },
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.5,
+    "sill": 0.25
    }
+  },
+  {
+   "wallSurfaces": [
+    17
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 10,
+   "ground": "system",
+   "windows": "wide",
+   "palette": {
+    "brick": "#524946",
+    "frame": "#1e3a6a",
+    "stone": "#b8b4a8"
+   },
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "openBays": [
+    {
+     "storeys": [
+      1
+     ],
+     "bays": [
+      0,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -41,7 +81,7 @@
   "material": "bitumen"
  },
  "palette": {
-  "brick": "#7a6a58",
+  "brick": "#524946",
   "frame": "#1e3a6a",
   "door": "#1e3a6a",
   "stone": "#b8b4a8"
@@ -51,6 +91,8 @@
  "notes": [
   "Metis Montessori Lyceum (BAG pand 0363100012080098, built 1991, 20 3DBAG wall surfaces, roof max 7.2 m), Derde Oosterparkstraat 360: the 36 m north-west front (w01-337, 2025): two storeys of grey-brown brick, nine bays of blue-framed double windows over a deep brick course and a recessed entrance under a dark canopy band (surface 9). The tagline lettered on the canopy is illegible and the school is not named on the wall.",
   "w02-247 (sun-flared) and w03-67 (a neighbouring red-and-white banded building, not this pand) are not used; the other walls stay blank.",
-  "Uninstalled 2026-10-14 (photo review, reconcile lane): walls[0] FAIL against w01-337 (2025-06-20): the photo's brick is dark grey-brown (#3d4341, family paint) and the model's tan brick #917e69 reads wrong at gallery size; columns 9 vs 27 counted. Not a kit gap: re-fit the palette from the crop (measure.ts) before re-installing."
+  "Uninstalled 2026-10-14 (photo review, reconcile lane): walls[0] FAIL against w01-337 (2025-06-20): the photo's brick is dark grey-brown (#3d4341, family paint) and the model's tan brick #917e69 reads wrong at gallery size; columns 9 vs 27 counted. Not a kit gap: re-fit the palette from the crop (measure.ts) before re-installing.",
+  "Acceptance pass 2026-10-24 (issue #45, w01-337L 2025-06-20): brick #7a6a58 -> #524946 (brown-grey brick under overcast; the beige read wrong), 10 wide blue-framed windows per storey (was 9), windowShape 0.8 x 0.5 sill 0.25; no string courses on the photo.",
+  "Acceptance pass 2026-10-24 (issue #45): walls[1] added for the SW schoolyard wall (surface 17, w02-247L): the same brick, two storeys of blue-framed windows in 10 narrow tall bays (photo grid 10 columns), the first floor blank over its left third (a mural); the SE walls stay blank as the w04-157L crop shows (louvred vents only); the NE wall stays blank (its crop w03-67 shows the neighbour)."
  ]
 }

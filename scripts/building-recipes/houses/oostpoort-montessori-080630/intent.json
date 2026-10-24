@@ -43,9 +43,31 @@
    },
    "cornice": true,
    "palette": {
-    "brick": "#5e2c28",
+    "brick": "#4e3a36",
     "frame": "#e8e0c0",
     "stone": "#d8d0b0"
+   },
+   "windowShape": {
+    "w": 0.62,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      2
+     ],
+     "w": 0.6,
+     "h": 0.26,
+     "sill": 0.58
+    }
+   ],
+   "windowGroup": {
+    "count": 2,
+    "gap": 0.12,
+    "storeys": [
+     2
+    ]
    }
   },
   {
@@ -54,14 +76,49 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 3,
-   "baysPerStorey": 10,
+   "baysPerStorey": 16,
    "ground": "system",
    "windows": "cross",
    "cornice": true,
    "palette": {
-    "brick": "#5a2a26",
+    "brick": "#4e3a36",
     "frame": "#e8e0c0",
     "stone": "#d8d0b0"
+   },
+   "windowShape": {
+    "w": 0.62,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      2
+     ],
+     "w": 0.6,
+     "h": 0.28,
+     "sill": 0.55
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    7
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 2,
+   "ground": "system",
+   "windows": "cross",
+   "palette": {
+    "brick": "#4e3a36",
+    "frame": "#e8e0c0",
+    "stone": "#d8d0b0"
+   },
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.2
    }
   }
  ],
@@ -70,7 +127,7 @@
   "material": "red-tile"
  },
  "palette": {
-  "brick": "#5a2a26",
+  "brick": "#4e3a36",
   "frame": "#e8e0c0",
   "door": "#6a1e18",
   "stone": "#d8d0b0"
@@ -80,6 +137,8 @@
  "notes": [
   "Soembawastraat 63 (BAG pand 0363100012080630, built 1932): OSM maps the Montessori Lyceum Oostpoort here; the building itself carries a Valentijnschool sign (w02-283, 2018), an Amsterdam School building of dark purple-brown brick, three storeys of cream-framed multi-pane windows under a deep cream cornice with an attic frieze of small windows and a hipped tile roof. walls[0] = west front (panel 4, surface 6): entrance in a stone portal, VALENTIJNSCHOOL sign; walls[1] = north front (panel 12, surface 17, w01-13).",
   "Simplified: the oval sign plate, the stair window at the left edge, the attic frieze (three real window pitches 6/9/12 averaged to ten bays); the south and east walls (party and court) stay blank.",
-  "Uninstalled 2026-10-14 (photo review, reconcile lane): walls[0] FAIL against w02-283 (window shape tall vs photo square, 8 vs 4 columns), walls[1] FAIL against w01-13 (dark purple-brown #352d2f vs the model's saturated red #7c3a34, glazing 0.30 vs 0.62). At gallery size the model reads bright red where the photos read dark purple-brown, and the top storey is a frieze of small square windows, not full windows. Re-fit colour and the frieze storey before re-installing."
+  "Uninstalled 2026-10-14 (photo review, reconcile lane): walls[0] FAIL against w02-283 (window shape tall vs photo square, 8 vs 4 columns), walls[1] FAIL against w01-13 (dark purple-brown #352d2f vs the model's saturated red #7c3a34, glazing 0.30 vs 0.62). At gallery size the model reads bright red where the photos read dark purple-brown, and the top storey is a frieze of small square windows, not full windows. Re-fit colour and the frieze storey before re-installing.",
+  "Acceptance pass 2026-10-24 (issue #45, w02-283 2018-05-24, w01-13 2016-05-11): brick #5e2c28/#5a2a26 -> #4e3a36, the purple-brown of the sunlit crop (measured #4c3b38 raw, #695556 normalised); windows wide multi-pane sashes, windowShape 0.72 x 0.55 sill 0.22 of the bay/storey (were tall preset crosses). Top storey: a frieze of small square attic windows (storeyShapes [2]); walls[1] 16 narrow tall windows per storey (w01-13 grid 16 columns).",
+  "Acceptance pass 2026-10-24 (issue #45): walls[2] added for the east wall (surface 7, w04-103): the same brick with two white-framed sash windows per storey; the south walls (surfaces 2, 8, 13, 14) have no crop and stay blank."
  ]
 }

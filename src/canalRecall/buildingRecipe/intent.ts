@@ -867,6 +867,14 @@ export interface LargeWallIntent {
    * Stadhouderskade 111's school pairs and the Hirsch building's three windows per bay. Absent: byte-identical.
    */
   windowGroup?: {count: number; gap?: number; storeys?: number[]};
+  /**
+   * Window proportions per storey (factory acceptance #45, 2026-10-24): on each entry's upper `storeys` (1 = first floor)
+   * the punched windows take `w` of the bay, `h` of that storey and a sill at `sill` of that storey, in place of
+   * `windowShape` (which still sets every other storey). A school's tall first-floor windows under a frieze of small
+   * square attic windows (Oostpoort), a warehouse's tall glazing under a low top row. brick-bay-grid and
+   * plinth-shopfronts only; storeys of the entries must not overlap. Absent: byte-identical.
+   */
+  storeyShapes?: {storeys: number[]; w: number; h: number; sill: number}[];
   /** Storeys (0 = ground) with no openings (a blank floor over a shop, a plant floor). */
   blankStoreys?: number[];
   /** Upper storeys (1 = first floor) glazed across every bay like a shop ground (a glazed mezzanine over the shops). */

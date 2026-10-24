@@ -47,7 +47,7 @@
    "windows": "cross",
    "cornice": true,
    "palette": {
-    "brick": "#a8523a",
+    "brick": "#8c4a3a",
     "frame": "#4a2a22",
     "stone": "#b9ad98"
    },
@@ -57,7 +57,37 @@
     3
    ],
    "pilasters": true,
-   "lantern": true
+   "lantern": true,
+   "dressings": {
+    "surrounds": {
+     "storeys": [
+      1,
+      2
+     ]
+    }
+   },
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.62,
+    "sill": 0.22
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      3
+     ],
+     "w": 0.7,
+     "h": 0.45,
+     "sill": 0.25
+    }
+   ],
+   "windowGroup": {
+    "count": 3,
+    "gap": 0.1,
+    "storeys": [
+     3
+    ]
+   }
   },
   {
    "wallSurfaces": [
@@ -70,7 +100,7 @@
    "ground": "system",
    "windows": "cross",
    "palette": {
-    "brick": "#a8523a",
+    "brick": "#8c4a3a",
     "frame": "#4a2a22",
     "stone": "#b9ad98"
    },
@@ -79,7 +109,37 @@
     0,
     3
    ],
-   "pilasters": true
+   "pilasters": true,
+   "dressings": {
+    "surrounds": {
+     "storeys": [
+      1,
+      2
+     ]
+    }
+   },
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.62,
+    "sill": 0.22
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      3
+     ],
+     "w": 0.7,
+     "h": 0.45,
+     "sill": 0.25
+    }
+   ],
+   "windowGroup": {
+    "count": 3,
+    "gap": 0.1,
+    "storeys": [
+     3
+    ]
+   }
   },
   {
    "wallSurfaces": [
@@ -122,7 +182,7 @@
    "windows": "cross",
    "cornice": true,
    "palette": {
-    "brick": "#a8523a",
+    "brick": "#8c4a3a",
     "frame": "#4a2a22",
     "stone": "#b9ad98"
    },
@@ -131,7 +191,37 @@
     0,
     3
    ],
-   "pilasters": true
+   "pilasters": true,
+   "dressings": {
+    "surrounds": {
+     "storeys": [
+      1,
+      2
+     ]
+    }
+   },
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.62,
+    "sill": 0.22
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      3
+     ],
+     "w": 0.7,
+     "h": 0.45,
+     "sill": 0.25
+    }
+   ],
+   "windowGroup": {
+    "count": 3,
+    "gap": 0.1,
+    "storeys": [
+     3
+    ]
+   }
   }
  ],
  "otherWalls": "blank",
@@ -139,7 +229,7 @@
   "material": "slate"
  },
  "palette": {
-  "brick": "#a8523a",
+  "brick": "#8c4a3a",
   "frame": "#4a2a22",
   "door": "#2a2a2a",
   "stone": "#b9ad98"
@@ -151,7 +241,8 @@
   "Entrance, canopy and BEURSPLEIN 5 lettering on walls[2] (panel 180, w06-314) restored with the closed 3.5 cm entrance bars (deepBars); the revolving door is drawn as the kit's glazed door pair, the real door is a revolving drum.",
   "walls[2] (the Beursplein 5 front, w06-314) is grey granite floor to cornice in the photo, so its wall colour is a granite grey rather than the brick of the Warmoesstraat run. The slab canopy requested on the entrance did not fit the panel (components.canopies = 0 in the report); it is not drawn.",
   "Components lane (2026-10-13): the street run (walls[0], [1], [3]; w03-314, w04-314, w01-309) now has the granite ground storey and the ashlar attic as stone-faced storeys (stoneStoreys 0 and 3), banded two-tone stone pilasters at both ends of every unit, cross windows with 3.5 cm bars, and the glazed roof lantern behind walls[0] (w03-314 shows it on the mansard ridge). walls[2] (Beursplein 5 front, w06-314) is granite (wallMaterial stone) with a carved portal round the entrance: stone jambs, an entablature lettered BEURSPLEIN 5, a pediment block with a crest. closedBands closes the cornices. Still simplified: the portal stands for the three granite portals and their carved roundels; the corbelled balcony, the attic pediment relief and the mansard dormers are not modelled; the pilaster banding is two-tone courses, not rustication.",
-  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): every street wall is NO EVIDENCE (obliquity 48-49 deg, foliage) and the crops show the 1913 bank block's dark brick with stone dressings, carved bays and balconies, drawn as red and cream bands. Ornament: a bespoke builder if it returns (ride-visible: 61 sampled routes)."
+  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): every street wall is NO EVIDENCE (obliquity 48-49 deg, foliage) and the crops show the 1913 bank block's dark brick with stone dressings, carved bays and balconies, drawn as red and cream bands. Ornament: a bespoke builder if it returns (ride-visible: 61 sampled routes).",
+  "Acceptance pass 2026-10-24 (issue #45, w04-314L): walls[0], [1], [3] white stone surrounds round the two brick floors (dressings.surrounds storeys 1-2), tall windows 0.42 x 0.62 of the bay/storey, the attic three windows per bay (windowGroup 3 on storey 3) under a lower window head (storeyShapes [3]). Brick #a8523a -> #8c4a3a: the sunlit w04-314L reads orange-red, the overcast w02-314 (2019-01-15) dark brown #44322c; #a8523a drew a saturated orange after the game tint."
  ],
  "closedBands": true
 }

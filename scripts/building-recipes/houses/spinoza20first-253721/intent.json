@@ -53,11 +53,14 @@
     "glass": "#5b6165"
    },
    "windowShape": {
-    "w": 0.609,
-    "h": 0.918,
+    "w": 0.65,
+    "h": 0.98,
     "sill": 0
    },
-   "baysPerStorey": 22
+   "baysPerStorey": 22,
+   "hand": [
+    "houses"
+   ]
   },
   {
    "wallSurfaces": [
@@ -129,7 +132,8 @@
  "notes": [
   "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
   "Panels left blank by the draft: 51 (21.8 m, over 8 groups); 96 (22.3 m, over 8 groups); 12 (20.1 m, over 8 groups); 66 (16.4 m, over 8 groups); 129 (15.8 m, over 8 groups); 14 (29.4 m, over 8 groups); 36 (21.1 m, over 8 groups); 94 (25.9 m, under 3 m tall); 110 (19.1 m, over 8 groups); 33 (14.6 m, over 8 groups); 16 (14.8 m, over 8 groups); 123 (10.7 m, over 8 groups); 111 (17.3 m, over 8 groups); 183 (19.2 m, under 3 m tall); 24 (10.8 m, over 8 groups); 71 (5 m, unnamed panel under 8 m); 5 (7.8 m, unnamed panel under 8 m); 112 (12.7 m, under 3 m tall); 87 (11.5 m, over 8 groups); 41 (5.8 m, unnamed panel under 8 m); 58 (3.6 m, unnamed panel under 8 m); 11 (6.1 m, unnamed panel under 8 m); 98 (9.4 m, over 8 groups); 120 (3.3 m, unnamed panel under 8 m); 35 (7.3 m, unnamed panel under 8 m); 189 (6.9 m, unnamed panel under 8 m); 22 (8.7 m, over 8 groups); 15 (8.7 m, over 8 groups); 59 (7.5 m, unnamed panel under 8 m); 76 (8.2 m, under 3 m tall); 23 (7.5 m, unnamed panel under 8 m); 55 (7.4 m, under 3 m tall); 10 (6.2 m, unnamed panel under 8 m); 2 (7.6 m, under 3 m tall); 47 (6.3 m, unnamed panel under 8 m); 118 (7.1 m, under 3 m tall); 46 (8.3 m, under 3 m tall); 124 (6.5 m, under 3 m tall); 132 (6.4 m, under 3 m tall); 187 (5.5 m, unnamed panel under 8 m); 105 (2 m, unnamed panel under 8 m); 73 (5.8 m, under 3 m tall); 85 (3.8 m, unnamed panel under 8 m); 131 (5.7 m, under 3 m tall); 48 (4.1 m, unnamed panel under 8 m); 147 (5.6 m, under 3 m tall); 144 (6.5 m, under 3 m tall); 6 (2.6 m, unnamed panel under 8 m); 79 (3.4 m, unnamed panel under 8 m); 95 (3.3 m, unnamed panel under 8 m); 100 (3 m, unnamed panel under 8 m); 34 (3.1 m, unnamed panel under 8 m); 145 (4.5 m, under 3 m tall); 125 (4.4 m, under 3 m tall); 174 (4.4 m, under 3 m tall); 81 (2.8 m, unnamed panel under 8 m); 92 (3.9 m, under 3 m tall); 7 (3.3 m, unnamed panel under 8 m); 114 (4.4 m, under 3 m tall); 176 (3.6 m, under 3 m tall); 101 (2.6 m, unnamed panel under 8 m); 134 (3.3 m, under 3 m tall); 72 (3.5 m, under 3 m tall); 4 (3.3 m, under 3 m tall); 53 (2.1 m, unnamed panel under 8 m); 1 (8 m, under 3 m tall); 37 (2.7 m, unnamed panel under 8 m); 149 (3.1 m, under 3 m tall); 148 (3 m, under 3 m tall); 141 (6.9 m, under 3 m tall); 163 (2.7 m, under 3 m tall); 38 (2.5 m, under 3 m tall); 127 (2.6 m, under 3 m tall); 39 (2.5 m, under 3 m tall); 82 (2.4 m, under 3 m tall); 49 (2.4 m, under 3 m tall); 88 (2.1 m, unnamed panel under 8 m); 54 (2 m, unnamed panel under 8 m); 121 (2.3 m, under 3 m tall); 42 (5.3 m, under 3 m tall); 74 (2.8 m, under 3 m tall); 113 (4.4 m, under 3 m tall).",
-  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 6 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand); walls[6] glass #3b4954 not used (not darker than the wall #505d58 by 10 L*, or tinted): kit glass kept; walls[6] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand); walls[6] bays 5 from the likeness grid (padded measurement 3); unphotographed walls take #b8bab7 (brick), the area-weighted median of groups 0, 6."
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 6 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand); walls[0] row of 3 houses: joints 46 % (colour dE 30), 61 % (colour dE 30); walls[6] glass #3b4954 not used (not darker than the wall #505d58 by 10 L*, or tinted): kit glass kept; walls[6] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand); walls[6] bays 5 from the likeness grid (padded measurement 3); unphotographed walls take #b8bab7 (brick), the area-weighted median of groups 0, 6.",
+  "Acceptance pass 2026-10-24 (issue #45): the measured row split on walls[0] (three \"houses\" #abacab | #403f3d | #adb0ae) dropped and pinned off (hand: houses): it is one white panel front with a dark glass bay, not a row of houses, and its first house failed eaves-vs-3dbag."
  ],
  "measured": {
   "date": "2026-10-24",

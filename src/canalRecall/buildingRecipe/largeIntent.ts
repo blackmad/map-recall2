@@ -9,7 +9,7 @@ import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -368,6 +368,22 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       }
       if (!['brick-bay-grid', 'plinth-shopfronts'].includes(w.system)) problems.push(`${at}.windowGroup: only brick-bay-grid and plinth-shopfronts windows are grouped`);
       if (w.screen) problems.push(`${at}.windowGroup: not with screen (glass-block perforations)`);
+    }
+    if (w.storeyShapes !== undefined) {
+      const list = w.storeyShapes, seen = new Set<number>();
+      if (!Array.isArray(list) || list.length < 1 || list.length > 8) problems.push(`${at}.storeyShapes: 1..8 entries {storeys, w, h, sill}`);
+      else list.forEach((e, k) => {
+        const where = `${at}.storeyShapes[${k}]`;
+        if (!e || typeof e !== 'object' || Array.isArray(e)) { problems.push(`${where}: an object {storeys, w, h, sill}`); return; }
+        for (const key of Object.keys(e)) if (!['storeys', 'w', 'h', 'sill'].includes(key)) problems.push(`${where}.${key}: unknown field (storeys, w, h, sill)`);
+        if (!Array.isArray(e.storeys) || !e.storeys.length) problems.push(`${where}.storeys: list of upper storeys (1 = first floor)`);
+        else e.storeys.forEach(s => { count(s, `${where}.storeys`, 1, 39); if (seen.has(s)) problems.push(`${where}.storeys: storey ${s} in two entries`); seen.add(s); });
+        const frac = (v: unknown, n: string, lo: number, hi: number) => { if (!(typeof v === 'number' && v >= lo && v <= hi)) problems.push(`${where}.${n}: fraction ${lo}..${hi}`); };
+        frac(e.w, 'w', 0.08, 0.98); frac(e.h, 'h', 0.08, 0.98); frac(e.sill, 'sill', 0, 0.9);
+        if (typeof e.h === 'number' && typeof e.sill === 'number' && e.h + e.sill > 0.98) problems.push(`${where}: sill + h must leave a head (<= 0.98 of the storey)`);
+      });
+      if (!['brick-bay-grid', 'plinth-shopfronts'].includes(w.system)) problems.push(`${at}.storeyShapes: only brick-bay-grid and plinth-shopfronts windows take a shape per storey`);
+      if (w.screen) problems.push(`${at}.storeyShapes: not with screen (glass-block perforations)`);
     }
     if (w.windowPattern !== undefined) {
       const p = w.windowPattern;

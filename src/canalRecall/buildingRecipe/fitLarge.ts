@@ -446,6 +446,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.columns ? {columnBays: w.columns.bays, bays} : {}),
       ...(w.windowShape ? {shape: {w: w.windowShape.w, h: w.windowShape.h, sillM: r3(w.windowShape.sill * (uppers[0] ?? st.heights[0]))}} : {}),
       ...(w.windowPattern ? {windowPattern: [...w.windowPattern]} : {}),
+      ...(w.storeyShapes ? {storeyShapes: w.storeyShapes.flatMap(e => e.storeys.filter(q => q < st.heights.length).map(q => ({storey: q, w: e.w, h: e.h, sillM: r3(e.sill * st.heights[q])})))} : {}),
       ...(w.windowGroup ? {windowGroup: {count: w.windowGroup.count, gapM: r3((w.windowGroup.gap ?? 0.06) * pitchM), ...(w.windowGroup.storeys ? {storeys: [...w.windowGroup.storeys]} : {})}} : {}),
       ...(balconyRail ? {balconyRailSlot: balconyRail} : {}), ...(w.balconies?.deep !== undefined ? {balconyDeepM: r3(w.balconies.deep * (uppers[0] ?? st.heights[0]))} : {}), ...(w.balconies?.windows ? {balconyOnWindows: true} : {}),
       ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {}),
