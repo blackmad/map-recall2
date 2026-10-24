@@ -3,9 +3,11 @@
  * per buurt group x report period, the pands already cropped (pand-reference-walls archive, kit-walls caches, this
  * lane's own crops) and a seeded draw of ordinary pands to fill each cell to `--per-cell`, at most `--max` new pands.
  *
- *   node --import tsx scripts/look/period-walls-sample.ts [--per-cell=10] [--max=300] [--crops=<dir>,...]
+ *   node --import tsx scripts/look/period-walls-sample.ts [--per-cell=10] [--max=300] [--crops=<dir>,...] [--period=canal] [--group=de-pijp] [--out=<json>]
  *
  * Writes artifacts/period-walls/sample.json: { existing: {pand: dir}, fetch: [pand...], cells: {...counts} }.
+ * `--period=` / `--group=` draw only that report period's / buurt group's cells (GitHub #50: the canal period had 12 measured pands);
+ * `--out=` writes elsewhere (artifacts/period-walls/canal-sample.json), so the original sample stays as it was.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -13,7 +15,7 @@ import { BUURT_GROUPS, loadCity, reportPeriod, type CityBuilding } from './cityI
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
-const perCell = Number(arg('per-cell', '10')), max = Number(arg('max', '300'));
+const perCell = Number(arg('per-cell', '10')), max = Number(arg('max', '300')), onlyPeriod = arg('period'), onlyGroup = arg('group');
 const SOURCE = process.env.MAP_RECALL_SOURCE_DATA ?? '/Users/blackmad/Code/map-recall2-source-data';
 const cropRoots = arg('crops', [path.join(SOURCE, 'pand-reference-walls'), path.join(ROOT, 'artifacts/period-walls/crops')].join(',')).split(',').filter(d => fs.existsSync(d));
 
@@ -40,7 +42,7 @@ const fnv = (s: string) => { let h = 2166136261; for (const c of s) { h ^= c.cha
 const perCellPicks: string[][] = [], report: Record<string, { population: number; have: number; draw: number }> = {};
 const groups = [...Object.keys(BUURT_GROUPS)];
 for (const [k, cell] of [...cells].sort()) {
-  if (!groups.includes(k.split('|')[0])) continue;
+  if (!groups.includes(k.split('|')[0]) || (onlyPeriod && k.split('|')[1] !== onlyPeriod) || (onlyGroup && k.split('|')[0] !== onlyGroup)) continue;
   const population = cell.all.length + cell.have.length;
   const draw = population >= 30 ? Math.max(0, perCell - cell.have.length) : 0;
   const picks = [...cell.all].sort((a, b) => fnv(a.id) - fnv(b.id)).slice(0, draw).map(b => b.id.slice(14));
@@ -50,7 +52,7 @@ for (const [k, cell] of [...cells].sort()) {
 // Round-robin over the cells, so a --max cut thins every cell instead of dropping the last ones.
 const fetch: string[] = [];
 for (let i = 0; perCellPicks.some(p => i < p.length); i++) for (const p of perCellPicks) if (i < p.length) fetch.push(p[i]);
-const out = path.join(ROOT, 'artifacts/period-walls/sample.json');
+const out = path.resolve(ROOT, arg('out', 'artifacts/period-walls/sample.json'));
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify({ cropRoots, existing: Object.fromEntries(existing), fetch: fetch.slice(0, max), cells: report }, null, 1));
 console.table(report);

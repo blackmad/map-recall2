@@ -2,7 +2,7 @@
  * The measured wall mix per period and buurt group, from rectified panorama crops (lane measured-period-walls,
  * 2026-10-24: "these buildings are basically all the same colour — are we doing too much false colouring?").
  *
- *   node --import tsx scripts/look/measure-period-walls.ts [--publish]
+ *   node --import tsx scripts/look/measure-period-walls.ts [--reuse] [--publish]
  *
  * Reads the crops artifacts/period-walls/sample.json lists (pand-reference-walls archive + this lane's own
  * all-walls.ts crops), measures each crop with the kit facts' reading (scripts/lib/cropWallReading.ts: light-trim
@@ -31,18 +31,30 @@ const landmark = new Set<string>();
 for (const m of Object.values(covers.models ?? {}) as { p?: string[] }[]) for (const p of m.p ?? []) landmark.add(p.replace(/^NL\.IMBAG\.Pand\./, ''));
 
 const roots = new Map<string, string>(Object.entries(sample.existing));
+// GitHub #50: the canal-period and De Pijp draws (period-walls-sample.ts --period / --group --out=...), archived with
+// all-walls.ts --archive into the pand-reference-walls archive.
+const ARCHIVE = path.join(process.env.MAP_RECALL_SOURCE_DATA ?? '/Users/blackmad/Code/map-recall2-source-data', 'pand-reference-walls');
+for (const extra of ['canal-sample.json', 'pijp-sample.json']) {
+  const f = path.join(ROOT, 'artifacts/period-walls', extra);
+  if (!fs.existsSync(f)) continue;
+  const s = JSON.parse(fs.readFileSync(f, 'utf8')) as { existing: Record<string, string>; fetch: string[] };
+  for (const [d, r] of Object.entries(s.existing)) if (!roots.has(d)) roots.set(d, r);
+  for (const d of s.fetch) if (!roots.has(d) && fs.existsSync(path.join(ARCHIVE, d, 'walls.json'))) roots.set(d, ARCHIVE);
+}
 if (fs.existsSync(ownCrops)) for (const d of fs.readdirSync(ownCrops)) if (/^\d{16}$/.test(d) && !roots.has(d)) roots.set(d, ownCrops);
 const city = new Map(loadCity().map(b => [b.id.slice(14), b]));
 
 type PandRow = { pand: string; year: number | null; period: ReportPeriod | null; group: string; source: string; landmark: boolean; raw: string | null; cls: WallClass | null; display: string | null; L?: number; C?: number; h?: number; crops: CropReading[] };
 const rows: PandRow[] = [];
-// --reuse: classify the readings measured.json already holds (the crop reading is the slow part: ~14 min).
+// --reuse: classify the readings measured.json already holds (the crop reading is the slow part: ~14 min); pands
+// it does not hold yet are read.
 const reuse = process.argv.includes('--reuse') ? JSON.parse(fs.readFileSync(path.join(ROOT, 'artifacts/period-walls/measured.json'), 'utf8')) as PandRow[] : null;
 if (reuse) for (const r of reuse) {
   const rgb = r.raw ? hexRgb(r.raw) : null;
   rows.push({ ...r, cls: rgb ? wallClassOf(rgb) : null, display: r.raw ? measuredWallDisplay(r.raw) : null });
 }
-for (const [digits, root] of reuse ? [] : roots) {
+const reused = new Set(reuse?.map(r => r.pand) ?? []);
+for (const [digits, root] of [...roots].filter(([d]) => !reused.has(d))) {
   const json = path.join(root, digits, 'walls.json');
   const walls = JSON.parse(fs.readFileSync(json, 'utf8')).walls ?? [];
   const crops: CropReading[] = [], tones: number[][] = [];
@@ -63,7 +75,7 @@ for (const [digits, root] of reuse ? [] : roots) {
     ...(rgb ? { L: +L.toFixed(1), C: +Math.hypot(a, bb).toFixed(1), h: +(((Math.atan2(bb, a) * 180) / Math.PI + 360) % 360).toFixed(0) } : {}), crops,
   });
 }
-if (!reuse) fs.writeFileSync(path.join(ROOT, 'artifacts/period-walls/measured.json'), JSON.stringify(rows, null, 1));
+fs.writeFileSync(path.join(ROOT, 'artifacts/period-walls/measured.json'), JSON.stringify(rows, null, 1));
 
 // --- Distribution ---------------------------------------------------------------------------------------------------
 const ordinary = rows.filter(r => r.raw && r.period && !r.landmark);

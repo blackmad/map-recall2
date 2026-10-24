@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
 import { CAMERAS, WALL_PLACES } from './periodWallPlaces';
 
@@ -10,6 +10,9 @@ const OUT = process.env.WALLS_OUT || 'artifacts/period-walls/strip/off';
 const QUERY = process.env.WALLS_QUERY || '';
 
 const ONLY = (process.env.WALLS_PLACES || '').split(',').filter(Boolean);
+// WALLS_MASK=1: also a region mask per shot (<place>-<camera>.mask.png, scripts/look/region-mask.js) for the wall-luma
+// measurement (scripts/look/period-walls-luma.ts).
+const MASK = !!process.env.WALLS_MASK;
 
 async function settle(page: Page): Promise<void> {
   await page.waitForFunction(() => {
@@ -54,6 +57,13 @@ test('period walls strip', async ({ page }, info) => {
     });
     await page.waitForTimeout(1200);
     await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: `${OUT}/${place.name}-${kind}.png` });
+    if (MASK) {
+      await page.evaluate(src => (0, eval)(src), readFileSync('scripts/look/region-mask.js', 'utf8'));
+      await page.waitForTimeout(800);
+      await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: `${OUT}/${place.name}-${kind}.mask.png` });
+      await page.evaluate(() => (window as any).__regionMaskRestore());
+      await page.waitForTimeout(600);
+    }
   }
   writeFileSync(`${OUT}/meta.json`, JSON.stringify(meta, null, 1));
 });
