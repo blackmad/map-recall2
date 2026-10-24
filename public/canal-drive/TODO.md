@@ -204,6 +204,14 @@ Open, in order:
   is not an era signal); five were older hand-authored intents, also not
   good enough. Kit gaps appended. Route decision for the 1000 target is
   issue #23 (needs-david): factory yield 0/27 so far.
+- **kit review 1** (2026-10-24, opus, pages 1–10): 2 pass / 38 hold (6
+  no photo); census 386 → 388. Estimated 5–10 % pass for the remaining 506
+  until the kit gaps are fixed: generic schools are one fixed beige whatever
+  the photo (16 of 40), uniform small square windows where photos show
+  ribbons or curtain wall (13), cinema/church/temple kits render 0
+  triangles (6), flat roofs on pre-war schools, Amsterdam School banding,
+  buff-brick and modernist worship. Fixing the beige default and the
+  0-triangle kits first should lift it to 25–40 %.
 - **kits-review (K)**: Role A done 2026-10-24 (`npm run kit:sheets`, run
   under the browser lock; 546 kits on 137 pages in
   `map-recall2-worktrees/kit-sheets-20261024/artifacts/strips/kits-N.png`,
