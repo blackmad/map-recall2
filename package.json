@@ -334,7 +334,7 @@
     "teaser:loops": "node scripts/teaser/loops.mjs",
     "build:content-stats": "node --import tsx scripts/landing/content-stats.ts",
     "check:content-stats": "node --import tsx scripts/landing/content-stats.ts --check",
-    "test:canal-preferences": "node --import tsx --test src/canalRecall/game/startDefaults.test.ts && tsx scripts/check-canal-preferences.ts",
+    "test:canal-preferences": "node --import tsx --test src/canalRecall/game/startDefaults.test.ts src/canalRecall/game/steeringShortcuts.test.ts && tsx scripts/check-canal-preferences.ts",
     "test:canal-cities": "tsx scripts/check-canal-cities.ts",
     "build:canal-photoreal-gate": "esbuild src/canalRecall/building/photorealGate.ts --bundle --format=iife --global-name=CanalRecallPhotorealGate --outfile=public/canal-drive/js/photoreal-gate.bundle.js --sourcemap=external --minify",
     "test:photoreal-gate": "tsx scripts/check-photoreal-gate.ts",
