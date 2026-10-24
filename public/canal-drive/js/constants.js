@@ -212,9 +212,11 @@ const TOPDOWN_TILT_DEGREES = 14;
 // the 2D views and made Chase look top-down (issue #25). A lower camera is a
 // larger pitch; the lowest the map draws is 60°. The live value comes from
 // CanalRecallPreferences.chasePitch (src/canalRecall/game/preferences.ts).
+// 2026-10-24 (user): "chase cam should start more zoomed out": zoom offset 0.7 -> 0.3
+// (about 1.3x the ground on screen).
 const CHASE_PITCH_DEGREES = 60;
 const COCKPIT_PITCH_DEGREES = 84;
-const CHASE_ZOOM_OFFSET = 0.7;
+const CHASE_ZOOM_OFFSET = 0.3;
 const COCKPIT_ZOOM_OFFSET = 1.45;
 const COCKPIT_LOOKAHEAD = 160; // px — camera centre ahead of the vehicle
 // Chase view: a constant lead puts the rider below centre, so more of the

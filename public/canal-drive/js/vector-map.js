@@ -605,7 +605,7 @@ class VectorBasemap {
       return typeof COCKPIT_ZOOM_OFFSET === 'number' ? COCKPIT_ZOOM_OFFSET : 1.45;
     }
     if (viewMode === 'chase') {
-      return typeof CHASE_ZOOM_OFFSET === 'number' ? CHASE_ZOOM_OFFSET : 0.7;
+      return typeof CHASE_ZOOM_OFFSET === 'number' ? CHASE_ZOOM_OFFSET : 0.3;
     }
     return 0;
   }

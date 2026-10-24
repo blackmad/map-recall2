@@ -3,6 +3,11 @@
  "notes": [
   {
    "date": "2026-10-24",
+   "title": "The chase camera starts further out",
+   "text": "The chase view now shows about a third more street around the bike, so you can see the junction coming before you reach it."
+  },
+  {
+   "date": "2026-10-24",
    "title": "The ride recovers after a graphics hiccup",
    "text": "When the browser briefly loses its graphics context, your route, street highlights and nearby landmark models now come back. Before, up to eight landmarks stayed missing for the rest of the ride. A browser that blocks 3D graphics now opens the ride with a notice and no longer stops at a blank screen."
   },
