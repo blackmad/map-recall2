@@ -360,7 +360,8 @@ export class OwnGround {
       const key = `${cx + dx}_${cy + dy}`;
       if (!this.store.covers(key)) continue;
       const rect = this.store.cellRect(key), d = this.rectDistance(rect, this.centre);
-      if (d > R) continue;
+      // The rider's cell and its 8 neighbours always (coversRider hides the basemap's ground only then), however small R is.
+      if (d > R && (Math.abs(dx) > 1 || Math.abs(dy) > 1)) continue;
       const near: [number, number] = [Math.max(rect[0], Math.min(rect[2], x)), Math.max(rect[1], Math.min(rect[3], y))];
       out.push({ key, lod: d <= this.opts.nearM ? 0 : 1, d, rank: direction ? aheadRankXY(this.centre, near, direction) : d });
     }
