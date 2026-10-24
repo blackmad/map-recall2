@@ -38,8 +38,11 @@ const pand = normId(arg('pand')), minLen = Number(arg('min-len', '14')), max = N
 const root = archive ? path.join(process.env.MAP_RECALL_SOURCE_DATA!, 'pand-reference-walls') : arg('out', 'staging/pand-reference-walls');
 const out = path.resolve(root, pand.replace('NL.IMBAG.Pand.', ''));
 await fs.mkdir(out, { recursive: true });
-const fp = (await findPands([pand])).get(pand);
-if (!fp) throw new Error(`pand not in building tiles: ${pand}`);
+// `--footprint=w123`: walls from that tile feature instead (a pand the tiles draw as OSM parts; the crops still file
+// under the pand). kit-sheets.ts passes the largest OSM part of a kit whose parts kit-pands.json joins to the pand.
+const footprintId = arg('footprint') || pand;
+const fp = (await findPands([footprintId])).get(/^[wr]\d+$/.test(footprintId) ? footprintId : normId(footprintId));
+if (!fp) throw new Error(`pand not in building tiles: ${footprintId}`);
 const centre = { x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length };
 const walls = exposedWalls(fp, await neighbourhood(centre)).filter(w => w.len >= minLen).sort((a, b) => b.len - a.len).slice(0, max);
 const panoFilter = parsePanoFilter(process.argv), segM = Number(arg('segment', '0')), suffix = arg('suffix');

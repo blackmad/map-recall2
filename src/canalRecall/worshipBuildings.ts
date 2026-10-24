@@ -17,6 +17,7 @@
 import type { Kit, KitTrim, KitWindowRow } from './landmarkKits.js';
 import { CITY_STONE } from './look/palette.js';
 import { WORSHIP_BUILDINGS, type WorshipEntry } from './worshipBuildingData.js';
+import { NOT_WORSHIP_FORM } from './kitTypeOverrides.js';
 
 export type WorshipEra = 'o' | 'e' | 'm';
 /** Wall brick per era: pre-1900 dark red-brown, 1900-1959 brown, 1960 on a lighter brown. */
@@ -94,4 +95,5 @@ export function worshipKit([id, kind, mode, eavesM, riseM, era]: WorshipEntry): 
   };
 }
 
-export const GENERIC_WORSHIP_KITS: Kit[] = WORSHIP_BUILDINGS.map(worshipKit);
+// Footprints whose OSM worship tag sits on a house, school or housing block (kitTypeOverrides.ts) take no worship kit.
+export const GENERIC_WORSHIP_KITS: Kit[] = WORSHIP_BUILDINGS.filter(e => !NOT_WORSHIP_FORM[e[0]]).map(worshipKit);

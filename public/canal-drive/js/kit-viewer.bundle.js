@@ -1807,6 +1807,32 @@
     // Vredeskerk, 1925, 40 m, 45 m2
   ];
 
+  // src/canalRecall/kitTypeOverrides.ts
+  var OVR = "NL.IMBAG.Pand.";
+  var NOT_WORSHIP_FORM = {
+    [`${OVR}0363100012237810`]: "Blauwe Moskee: the pand is the housing block round it (27 live VBOs, 68% living area); review row 51 photo a 4-5 storey brick block with balconies",
+    [`${OVR}0363100012148521`]: "1927 block, 11 VBOs, 59% living area; review row 87 photo a 5-storey dark brick front with white-framed window rows",
+    [`${OVR}0363100012083695`]: "1927 Betondorp house, office and living use; review row 113 photo dark brick and grey render with white-framed rectangular windows",
+    [`${OVR}0363100012130941`]: "Kuba Camii Moskee in a 1955 building registered for education; review row 165 photo a house-type front with dormers",
+    [`${OVR}0363100012108972`]: "Moskee an-Nour in a 1921 flat-roofed building; review row 172 photo yellow-grey brick with white rectangular windows",
+    [`${OVR}0363100012233557`]: "Vincentiuskerk in a 1990 housing block (69 live VBOs, 94% living area); review row 175 photo a 6-storey residential block",
+    [`${OVR}0363100012246231`]: "Gerardus Majellakerk OSM tag on a building registered as offices; review row 234 photo a 3-storey house-type front with an arcaded base",
+    [`${OVR}0363100012142532`]: "1896 canal house (149 m2) holding a mosque; review row 293 photo a 4-storey house front with sash windows",
+    [`${OVR}0363100012237290`]: "Masjid Al-Karam in a 1904 building registered for industry; review row 307 photo a residential block front with sash windows"
+  };
+  var NOT_PUBLIC_FORM = {
+    [`${OVR}0363100012090063`]: "SOB school tag on a 1976 housing block (39 live VBOs, 63% living area); review row 284 photo a housing/shop front with balconies"
+  };
+  var PUBLIC_RETYPE = {
+    // planPublic({kind: 's', heightM: 11.2, year: 1932, ...}) -> flat plan, era e; the 3DBAG roof (type 3, eaves 4.1,
+    // ridge 15.9) gives the pre-1940 school hip (schoolHipRoof: eaves 6, rise 9.9), which hipAround fits on its footprint.
+    [`${OVR}0363100012092742`]: {
+      entry: [`${OVR}0363100012092742`, "s", "f", 11.2, 0, "e"],
+      facts: { year: 1932, roof: 3, eavesM: 4.1, ridgeM: 15.9, wallHex: null, roofFits: true },
+      why: "Zonnehuis (Noord): a 1932 school-type building under a tall hipped roof, tagged amenity=theatre for its current use; review asked for a school with a hipped roof, not a windowless theatre box"
+    }
+  };
+
   // src/canalRecall/worshipBuildings.ts
   var WORSHIP_WALL = { o: "#7a4535", e: "#83503d", m: "#9b7a62" };
   var FIT_COVERAGE = 0.78;
@@ -1835,7 +1861,7 @@
       halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === "h", eavesM, riseM, mat: era === "o" ? "slate" : "tile", windows: rows.length ? { rows, glassHex: "#3a434c" } : void 0 }]
     };
   }
-  var GENERIC_WORSHIP_KITS = WORSHIP_BUILDINGS.map(worshipKit);
+  var GENERIC_WORSHIP_KITS = WORSHIP_BUILDINGS.filter((e) => !NOT_WORSHIP_FORM[e[0]]).map(worshipKit);
 
   // src/canalRecall/publicBuildingData.ts
   var PUBLIC_BUILDINGS = [
@@ -2907,7 +2933,10 @@
       halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === "h", ...hip ? { hip: true, roofHex: SCHOOL_HIP_TILE } : {}, eavesM: eaves, riseM: rise, mat: "tile", windows }]
     };
   }
-  var GENERIC_PUBLIC_KITS = PUBLIC_BUILDINGS.map((e) => publicKit(e));
+  var GENERIC_PUBLIC_KITS = PUBLIC_BUILDINGS.filter((e) => !NOT_PUBLIC_FORM[e[0]]).map((e) => {
+    const r = PUBLIC_RETYPE[e[0]];
+    return r ? publicKit(r.entry, r.facts) : publicKit(e);
+  });
 
   // src/canalRecall/landmarkKits.ts
   var MAT_HEX = {

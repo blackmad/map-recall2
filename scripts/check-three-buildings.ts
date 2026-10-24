@@ -911,8 +911,11 @@ for (const c of [0.64, 1.4]) {
   const ids = WORSHIP_BUILDINGS.map(e => e[0]);
   assert.equal(new Set(ids).size, ids.length, 'worship ids are unique');
   assert.ok(ids.length > 150, `the generic rule covers the city's worship buildings (${ids.length})`);
+  const { NOT_WORSHIP_FORM, NOT_PUBLIC_FORM } = await import('../src/canalRecall/kitTypeOverrides.ts');
   for (const id of ids) {
     assert.ok(!handIds.has(id), `${id}: a hand kit owns it, not the generic rule`);
+    // Kit review round 3 (GitHub #37): a worship or school tag on a house or housing block draws no kit (kitTypeOverrides.ts).
+    if (NOT_WORSHIP_FORM[id] || NOT_PUBLIC_FORM[id]) { assert.ok(!modelled.has(id), `${id}: not that building form, no kit`); continue; }
     assert.ok(modelled.has(id), `${id}: the landmark fallback leaves it to its kit`);
   }
   const houseFront = (f: any) => ({ ...f, properties: { ...f.properties, facade: 'canal-priorBrickRed', facadeStyle: 'canal', roofPlanned: true } });
@@ -978,8 +981,11 @@ for (const c of [0.64, 1.4]) {
   assert.equal(new Set(ids).size, ids.length, 'public ids are unique');
   assert.ok(PUBLIC_BUILDINGS.filter(e => e[1] === 's').length > 200, 'the generic rule covers the city\'s schools');
   assert.ok(PUBLIC_BUILDINGS.filter(e => e[1] === 'c').length > 30, 'and its big cinemas and theatres');
+  const { NOT_WORSHIP_FORM: notWorship, NOT_PUBLIC_FORM: notPublic } = await import('../src/canalRecall/kitTypeOverrides.ts');
   for (const id of ids) {
     assert.ok(!handIds.has(id), `${id}: a hand kit owns it, not the generic rule`);
+    // Kit review round 3 (GitHub #37): a worship or school tag on a house or housing block draws no kit (kitTypeOverrides.ts).
+    if (notWorship[id] || notPublic[id]) { assert.ok(!modelled.has(id), `${id}: not that building form, no kit`); continue; }
     assert.ok(modelled.has(id), `${id}: the landmark fallback leaves it to its kit`);
   }
   // Real buildings.

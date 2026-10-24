@@ -72,7 +72,8 @@ export async function loadTile(x: number, y: number): Promise<Footprint[]> {
 export const normId = (id: string) => id.startsWith('NL.IMBAG.Pand.') ? id : `NL.IMBAG.Pand.${id}`;
 /** Locate BAG pand ids by scanning the tile set text for the id (cheap enough for a handful of ids). */
 export async function findPands(ids: string[]): Promise<Map<string, Footprint>> {
-  const want = new Set(ids.map(normId));
+  // OSM building(-part) ids (w123, r123) are tile features too: kit parts drawn as OSM-only outlines (GitHub #37).
+  const want = new Set(ids.map(id => /^[wr]\d+$/.test(id) ? id : normId(id)));
   const found = new Map<string, Footprint>();
   const root = path.join(EXTRACT, 'building-tiles/14');
   for (const xd of await fs.readdir(root)) for (const f of await fs.readdir(path.join(root, xd))) {
