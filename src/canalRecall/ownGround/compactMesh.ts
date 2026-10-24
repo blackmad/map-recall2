@@ -1,12 +1,12 @@
-// Compact ground meshes for phones (lane perf-phones item 3, 2026-10-24). A built cell's layers carry float normals,
+// Compact ground meshes (lane perf-phones item 3, 2026-10-24; desktop too since the desktop A/B, issue #28 follow-up). A built cell's layers carry float normals,
 // float sRGB colours, 32-bit indices and a uv per vertex that is always its own x, y (drape.ts `vertex`, parks.ts,
 // streets.ts bollards). On the GPU that is ~80 bytes a triangle; a centre cell is 28 MB. The worker compacts the
-// meshes before transfer when the game asks (gameGround `releaseArrays`, phones):
+// meshes before transfer when the game asks (gameGround `compactFlag`, every device unless turned off):
 //   normals  Int8 normalised (3 bytes, not 12): under half a degree off, invisible in the ground's lighting;
 //   colours  linear Uint16 normalised (the sRGB → linear the main thread did, here; 6 bytes, not 12, no banding);
 //   indices  Uint16 when the layer has under 65,536 vertices;
 //   uvs      dropped: the game reads the uv as the position's x, y from the same GPU buffer (an interleaved view).
-// The geometry the GPU draws is the same; desktop keeps the float arrays (no `compact` in the worker's init).
+// The geometry the GPU draws is the same.
 
 import type { BuiltCell, PackedMesh } from './groundCell.js';
 import type { BuiltFar } from './farRing.js';

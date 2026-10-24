@@ -37,6 +37,8 @@ async function boot(page: Page, viewMode = 'chase'): Promise<string[]> {
   await page.addInitScript(() => { (window as any).__canalRecallOwnGround = true; });
   // The BGT road partition is the default since 2026-10-16; ROADS=0 draws the OSM bands (before/after shots in separate directories).
   if (process.env.ROADS === '0') await page.addInitScript(() => { (window as any).__canalRecallRoads = false; });
+  // COMPACT_GROUND=1|0: force the compact ground meshes on or off (compactMesh.ts; phones default on), for a like-for-like A/B.
+  if (process.env.COMPACT_GROUND) await page.addInitScript((on: boolean) => { (window as any).__canalRecallCompactGround = on; }, process.env.COMPACT_GROUND === '1');
   await openRoute(page, { travelMode: 'car', viewMode, abortHeavyTiles: false, enterRacing: false });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   return errors;

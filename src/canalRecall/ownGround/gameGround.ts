@@ -89,6 +89,15 @@ function roadsFlag(): boolean {
   return !/[?&]roads=(0|false|off|bands)\b/.test(g.location?.search ?? '');
 }
 
+/**
+ * Compact ground meshes (compactMesh.ts), on every device: desktop at the 22 road spots holds the same cells in half
+ * the ground bytes (3,257 → 1,628 MB summed over 18 like-for-like spots) at the same frame time. `window.__canalRecallCompactGround = false` draws the float arrays (A/B).
+ */
+function compactFlag(): boolean {
+  const g = globalThis as { __canalRecallCompactGround?: boolean };
+  return g.__canalRecallCompactGround !== false;
+}
+
 /** The parks flag from the page: `?parks=0` or `window.__canalRecallParks = false` turns parks off. */
 function parksFlag(): boolean {
   const g = globalThis as { __canalRecallParks?: boolean; location?: { search?: string } };
@@ -206,8 +215,8 @@ export class OwnGround {
       this.worker = new Worker(this.opts.workerUrl);
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
-      // Phones (releaseArrays) take compact meshes: the same geometry in ~half the GPU bytes (compactMesh.ts).
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: this.opts.releaseArrays });
+      // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag() });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
