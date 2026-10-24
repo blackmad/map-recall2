@@ -22,6 +22,7 @@ import {ARCADE_PROPORTIONS, DEFAULT_PITCH_M, largeSystem, LOGGIA, PLINTH, SOUTER
 import {panelRuns, runBayAxes} from '../blockBuilding/curve.ts';
 import type {Lantern} from '../blockBuilding/components.ts';
 import {MESH_SCREEN} from '../blockBuilding/components.ts';
+import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {roofHeightAt} from './facts.ts';
 import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellRepair.ts';
 import {levelRoofAbove, rooftopLevel, type RoofLevelReport} from './roofLevel.ts';
@@ -61,6 +62,8 @@ export interface LargeGroupFit {
   entrance: {panel: number; bay: number; storeys: number; canopy: boolean; portal?: boolean} | null;
   /** storeys faced in stone, banded end pilasters (with the darker band slot) */
   stoneStoreys?: number[]; pilasters?: string;
+  /** stone dressings (intent `dressings`, drawn by blockBuilding/dressings.ts) and their slot: the group's stone, or `dress@g<i>` in `dressings.colour` */
+  dressings?: StoneDressings & {slot: string};
   garage: {panel: number; bays: number[]} | null;
   signage: {text: string; colour: string; mount: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice'} | null;
   police: {stripe: boolean; lamp: boolean} | null;
@@ -418,6 +421,9 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     // Banded pilasters: their darker course slot.
     let pilasters: string | undefined;
     if (w.pilasters) { pilasters = `band@g${gi}`; palette[pilasters] = shade(palette[slots.stone] ?? palette.stone, 0.7); }
+    // Stone dressings: the group's stone, or their own colour.
+    let dressings: LargeGroupFit['dressings'];
+    if (w.dressings) { const slot = w.dressings.colour ? `dress@g${gi}` : slots.stone; if (w.dressings.colour) palette[slot] = w.dressings.colour; dressings = {...w.dressings, slot}; }
     // A portal's crest: carved in the group's stone a shade darker, so it reads against the tympanum.
     if (entrance?.portal) palette[`crest@g${gi}`] = shade(palette[slots.stone] ?? palette.stone, 0.68);
     if (w.lantern && main) { const l = placeLantern(facts, anchorRD, main); if (l) lanterns.push(l); else warnings.push(`walls[${gi}].lantern: no roof behind the main panel`); }
@@ -487,7 +493,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     }
     groups.push({index: gi, system: w.system, specSystem, panels: own.map(p => p.index), surfaces: [...w.wallSurfaces], mainPanel: main?.index ?? null, bearingDeg: main ? Math.round(bearingOfNormal(main.n)) : null,
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
-      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(plinthSlot ? {plinthSlot} : {}), ...(spandrelSlot ? {spandrels: {sill: w.spandrels!.sill ?? 0, head: w.spandrels!.head ?? 0, slot: spandrelSlot}} : {}), ...(screenSlot ? {meshScreen: {storeys: [...w.meshScreen!.storeys], from: w.meshScreen!.from ?? MESH_SCREEN.from, to: w.meshScreen!.to ?? MESH_SCREEN.to, joint: w.meshScreen!.joint ?? MESH_SCREEN.joint, slot: screenSlot}} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(pilasters ? {pilasters} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
+      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(plinthSlot ? {plinthSlot} : {}), ...(spandrelSlot ? {spandrels: {sill: w.spandrels!.sill ?? 0, head: w.spandrels!.head ?? 0, slot: spandrelSlot}} : {}), ...(screenSlot ? {meshScreen: {storeys: [...w.meshScreen!.storeys], from: w.meshScreen!.from ?? MESH_SCREEN.from, to: w.meshScreen!.to ?? MESH_SCREEN.to, joint: w.meshScreen!.joint ?? MESH_SCREEN.joint, slot: screenSlot}} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(pilasters ? {pilasters} : {}), ...(dressings ? {dressings} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
       ...(w.hall ? {hall: {baseM: r3(w.hall.base * eaves), lights: w.hall.lights, rows: w.hall.rows}} : {}),
       ...(w.columns ? {columns: {bays: [...w.columns.bays], share: w.columns.share ?? 0.9, from: w.columns.from ?? 1, slabs: !!w.columns.slabs, ...(colGlass ? {glass: colGlass} : {})}} : {}),
       ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}),

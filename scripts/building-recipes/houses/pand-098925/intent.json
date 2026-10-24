@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "pand-098925",
+ "pandId": "0363100012098925",
+ "address": "BAG pand 0363100012098925",
+ "sources": [
+  {
+   "id": "pano-2024-09-16-w01-90",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-16_07-18-19_01916/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-04-04-w02-270",
+   "kind": "street-panorama",
+   "capturedAt": "2017-04-04",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000243_pano_0001_000380/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-09-16-w03-360",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-16_07-18-19_01952/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-03-w03-360L",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-03",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001617_pano_0009_000009/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w04-90",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-26_13-32-36_00185/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-05-23-w05-270",
+   "kind": "street-panorama",
+   "capturedAt": "2018-05-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000747_pano_0000_000333/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2016-05-12-w06-360",
+   "kind": "street-panorama",
+   "capturedAt": "2016-05-12",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000048_pano_0000_004294/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-03-w06-360L",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-03",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001617_pano_0009_000004/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-05-28-w07-270",
+   "kind": "street-panorama",
+   "capturedAt": "2021-05-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002140_pano_0001_001516/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w08-179",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-26_07-29-39_00589/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-09-16-w09-90",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-16_07-18-19_01897/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-08-31-w10-180",
+   "kind": "street-panorama",
+   "capturedAt": "2022-08-31",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002778_pano_0002_000046/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-05-18-w11-180",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002585_pano_0002_002988/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    194
+   ],
+   "system": "brick-bay-grid",
+   "entrance": true
+  },
+  {
+   "wallSurfaces": [
+    100,
+    136
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    46,
+    118
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    65
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    145
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    80
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    68,
+    158
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    12
+   ],
+   "system": "brick-bay-grid"
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#8a5a44",
+  "frame": "#efece4",
+  "door": "#2a2a2a"
+ },
+ "notes": [
+  "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
+  "Panels left blank by the draft: 37 (9.6 m, over 8 groups); 10 (9 m, over 8 groups); 39 (7 m, unnamed panel under 8 m); 2 (6.9 m, unnamed panel under 8 m); 94 (7.9 m, unnamed panel under 8 m); 166 (59.5 m, over 8 groups); 12 (6.7 m, unnamed panel under 8 m); 54 (6.6 m, unnamed panel under 8 m); 56 (6.3 m, unnamed panel under 8 m); 101 (6 m, unnamed panel under 8 m); 75 (33 m, over 8 groups); 50 (4.9 m, unnamed panel under 8 m); 121 (5.2 m, unnamed panel under 8 m); 132 (4.1 m, unnamed panel under 8 m); 115 (4.7 m, unnamed panel under 8 m); 33 (4.7 m, unnamed panel under 8 m); 131 (4.6 m, unnamed panel under 8 m); 112 (4 m, unnamed panel under 8 m); 125 (4.5 m, unnamed panel under 8 m); 119 (4.4 m, unnamed panel under 8 m); 44 (3.8 m, unnamed panel under 8 m); 45 (33.5 m, over 8 groups); 93 (3.7 m, unnamed panel under 8 m); 43 (3.2 m, unnamed panel under 8 m); 19 (27.1 m, over 8 groups); 8 (26.8 m, over 8 groups); 59 (3.1 m, unnamed panel under 8 m); 49 (2.9 m, unnamed panel under 8 m); 53 (2.5 m, unnamed panel under 8 m); 81 (19.8 m, over 8 groups); 5 (18.9 m, over 8 groups); 114 (2.3 m, unnamed panel under 8 m); 126 (2.1 m, unnamed panel under 8 m); 65 (13.2 m, over 8 groups); 140 (12.8 m, over 8 groups); 16 (6.9 m, unnamed panel under 8 m); 21 (6.4 m, unnamed panel under 8 m); 80 (6.4 m, unnamed panel under 8 m); 118 (7.6 m, unnamed panel under 8 m); 96 (6.8 m, unnamed panel under 8 m); 164 (21.2 m, under 3 m tall); 139 (5.8 m, unnamed panel under 8 m); 22 (5.6 m, unnamed panel under 8 m); 70 (5.4 m, unnamed panel under 8 m); 159 (5.5 m, unnamed panel under 8 m); 116 (5.4 m, unnamed panel under 8 m); 51 (4.4 m, unnamed panel under 8 m); 146 (4.4 m, unnamed panel under 8 m); 67 (4.6 m, unnamed panel under 8 m); 147 (4.1 m, unnamed panel under 8 m); 120 (4.5 m, unnamed panel under 8 m); 41 (4 m, unnamed panel under 8 m); 30 (3.7 m, unnamed panel under 8 m); 122 (3.8 m, unnamed panel under 8 m); 87 (6.4 m, under 3 m tall); 82 (7.6 m, under 3 m tall); 141 (6.2 m, under 3 m tall); 68 (7.5 m, under 3 m tall); 108 (2.4 m, unnamed panel under 8 m); 133 (2.4 m, unnamed panel under 8 m); 124 (2.4 m, unnamed panel under 8 m); 3 (2.3 m, unnamed panel under 8 m); 162 (8.1 m, under 3 m tall); 36 (2.4 m, unnamed panel under 8 m); 134 (2.2 m, unnamed panel under 8 m); 113 (2.1 m, unnamed panel under 8 m); 46 (5.6 m, under 3 m tall); 138 (7.1 m, under 3 m tall); 85 (2.7 m, unnamed panel under 8 m); 55 (2.6 m, unnamed panel under 8 m); 14 (4.5 m, under 3 m tall); 106 (4.7 m, under 3 m tall); 105 (3.3 m, under 3 m tall); 130 (8 m, under 3 m tall); 27 (9.1 m, under 3 m tall); 32 (2.4 m, under 3 m tall); 64 (4 m, under 3 m tall); 160 (2.2 m, under 3 m tall); 99 (2.3 m, under 3 m tall); 100 (2.2 m, under 3 m tall); 135 (5.6 m, under 3 m tall); 74 (2.4 m, under 3 m tall); 63 (2.3 m, under 3 m tall); 23 (2.8 m, under 3 m tall)."
+ ]
+}

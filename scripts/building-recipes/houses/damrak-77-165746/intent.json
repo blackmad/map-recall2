@@ -21,22 +21,97 @@
     59
    ],
    "system": "brick-bay-grid",
-   "storeys": 6,
-   "baysPerStorey": 7,
+   "storeys": 5,
+   "baysPerStorey": 10,
    "ground": "plinth-shopfronts",
    "deepBars": true,
-   "windows": "two-light",
+   "windows": "cross",
    "cornice": true,
    "palette": {
-    "brick": "#8e4638",
+    "brick": "#6a3a2a",
     "frame": "#ece8dc",
-    "stone": "#e8e2d4"
+    "stone": "#e6dfcc"
    },
    "signage": {
     "text": "PRIMARK",
     "colour": "#e9e4d0"
    },
-   "stringCourses": true
+   "groundFactor": 2,
+   "openBays": [
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "bays": [
+      0,
+      1,
+      3,
+      4,
+      6,
+      7,
+      8
+     ]
+    }
+   ],
+   "dressings": {
+    "oriels": {
+     "bays": [
+      0,
+      1,
+      3,
+      4
+     ],
+     "from": 1,
+     "to": 4,
+     "deep": 0.3,
+     "canted": true
+    },
+    "quoins": {
+     "joints": [
+      3,
+      6
+     ]
+    },
+    "stripes": {
+     "storeys": [
+      0
+     ],
+     "count": 6
+    },
+    "bands": {
+     "at": [
+      "floor"
+     ],
+     "storeys": [
+      1,
+      3
+     ],
+     "double": true
+    },
+    "surrounds": {
+     "storeys": [
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   },
+   "hand": [
+    "palette.brick",
+    "palette.stone",
+    "baysPerStorey",
+    "windowShape",
+    "dressings"
+   ],
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.62,
+    "sill": 0.2
+   }
   },
   {
    "wallSurfaces": [
@@ -48,9 +123,9 @@
    "ground": "blank",
    "windows": "plain",
    "palette": {
-    "brick": "#8e4638",
+    "brick": "#6a3a2a",
     "frame": "#ece8dc",
-    "stone": "#e8e2d4"
+    "stone": "#e6dfcc"
    }
   }
  ],
@@ -59,10 +134,10 @@
   "material": "slate"
  },
  "palette": {
-  "brick": "#8e4638",
+  "brick": "#6a3a2a",
   "frame": "#ece8dc",
   "door": "#2a2a2a",
-  "stone": "#e8e2d4"
+  "stone": "#e6dfcc"
  },
  "notes": [
   "Damrak 77 / Beurspassage / Nieuwendijk 187 (BAG), built 1893 (rebuilt as the Primark and Beurspassage block): red brick with white stone bands, a 26.6 m Damrak front (3DBAG panel 46, bearing 128; w01-128, panorama 2020-04-21) with seven window axes: two bay-windowed pairs on the left, a stepped three-window part with a corner tower on the right, and a banded round-arch passage into the Beurspassage at the right end.",
@@ -70,7 +145,8 @@
   "Only the Damrak front has a panorama; the rear (Nieuwendijk side, NW), the upper setback (panel 65) and the court walls are party or unphotographed and stay blank.",
   "Ground floor is now the plinth-shopfronts system with 3.5 cm closed bars (deepBars reaches the glazed/plinth rows) and the PRIMARK fascia lettering; string courses stay off (open edge at the arch side).",
   "Components lane (2026-10-13): the white bands are back as stone string courses at every storey line (stringCourses), closed with closedBands so their ends at the Beurspassage arch side leave no open edge (was 2.0 m). Supersedes the note that string courses stay off.",
-  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): against w01-128L (2025-01-08) the 1893 front is dark brick with stone-banded gothic-revival bays and tall mullioned windows, drawn as a red brick grid. Ornament: a bespoke builder if it returns (ride-visible: 58 sampled routes)."
+  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): against w01-128L (2025-01-08) the 1893 front is dark brick with stone-banded gothic-revival bays and tall mullioned windows, drawn as a red brick grid. Ornament: a bespoke builder if it returns (ride-visible: 58 sampled routes).",
+  "Stone dressings lane (2026-10-24, issue #31): colours from the 2025-01-08 overcast crop (w01-128L) lifted by its stone white (#9c937c -> #e6dfcc: brick #452f20 -> #6a3a2a; the sunlit 2020 crop is 42 % washed out). Five storeys with a double-height shop storey (groundFactor 2: 9.3 m, the oriel corbels at 9.4 m on the crop), ten bays on the crop's 2.65 m window pitch (the grid sits about 0.87 m left of the photo's: the panel's first bay is a part bay that the fit cannot offset). dressings: four canted stone oriels (bays 0, 1, 3, 4, storeys 1-4) with white frames, stone chains up the brick piers at the joints of bays 3 and 6, speklagen across the shop-storey piers, double white bands at the first and third storey lines, stone surrounds round the stepped part's windows; bays 2, 5 and 9 are blank brick (openBays). Still not said: the banded round arch of the Beurspassage (6 m wide over a 2.65 m bay grid: no bay pair forms one opening), the stepped gables and the tower (3DBAG massing), the shopfront's mezzanine windows."
  ],
  "closedBands": true
 }

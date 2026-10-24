@@ -5,6 +5,7 @@
  * FAIL / NO EVIDENCE on a photographed group). Crops come from `$MAP_RECALL_SOURCE_DATA/pand-reference-walls/<pand>/`
  * (`all-walls.ts --archive`); without that variable the house has no likeness (`null`).
  */
+import {lightBands, type LightBand} from '../../src/canalRecall/buildingRecipe/lightBands.ts';
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
@@ -34,7 +35,9 @@ export interface GroupLikeness {
     /** two wall materials along the panel (at = fraction of the panel width from uMin), null when one colour */
     split: FacadeMeasurement['split'];
     /** the front's colour segments along the panel (fractions of the panel width from uMin; rowSplit.ts) */
-    rowJoints?: NonNullable<FacadeMeasurement['rowJoints']>};
+    rowJoints?: NonNullable<FacadeMeasurement['rowJoints']>;
+    /** light horizontal bands across the wall (lightBands.ts), bottom to top; absent in older reports */
+    lightBands?: LightBand[]};
 }
 
 const r3 = (v: number) => Math.round(v * 1000) / 1000;
@@ -103,6 +106,7 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
       measured: {wall: photo.wall.hex, wallRaw: photo.wall.rawHex, glass: photo.glass?.hex ?? null, trim: photo.trim?.hex ?? null, glazing: photo.glazing, storeyGlazing: photo.storeyGlazing, ground: photo.ground.glazing, bays,
         pitchM: photo.pitchM, storeyM: photo.storeyM, window: photo.window, frontClass: photo.frontClass, normalisation: photo.normalisation, usable: photo.usableFraction, foliage: photo.foliageFraction, washedOut: photo.washedOutFraction,
         // the colour split as a fraction of the panel width from uMin (the photo box is padded by PAD_M)
+        lightBands: lightBands(photo, g.lines, {image, wall: photo.wall.raw}),
         split: photo.split ? {...photo.split, at: r3(Math.max(0, Math.min(1, (box.u0 - PAD_M + photo.split.at * W - p.uMin) / Math.max(1e-6, p.uMax - p.uMin))))} : null,
         ...(photo.rowJoints ? {rowJoints: photo.rowJoints.map(s => ({...s, from: toPanel(s.from), to: toPanel(s.to)}))} : {})}});
   }
