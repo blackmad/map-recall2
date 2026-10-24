@@ -44,6 +44,13 @@ export interface WinParams {
   tilt?: { slot: Slot; t: number; outTop: number; outBottom: number };
   /** arched head (round, segmental or pointed) with reveals and an optional arch band (opt-in, arch.ts) */
   arch?: import('./arch.ts').ArchParams;
+  /**
+   * recess mode, a loggia (recessed balcony, opt-in): the opening is cut `depth` m deep instead of the wall's recess, so
+   * its floor, soffit and side returns read as an outdoor room, the glazing at the back; `rail` is a balustrade across
+   * the front `inset` m behind the wall face (default 0.12), `h` m tall: one glass or solid sheet, or a top rail with
+   * bars about every `BAR_PITCH_M`. Where the opening cannot be cut it is laid flat like any window and has no rail.
+   */
+  loggia?: { depth: number; rail?: { kind: 'glass' | 'bars' | 'solid'; h: number; slot: Slot; inset?: number } };
 }
 
 /**

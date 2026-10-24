@@ -84,7 +84,7 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
     const photoBox: FacadeBox = {u0: 0, u1: W, v0: box.v0 - PAD_M, v1: topM};
     const inside = (u: number, v: number) => insidePanel(p, [u + box.u0 - PAD_M, v]);
     const photo = measureFacade({image, box: photoBox, lines: g.lines, inside});
-    const model = modelElevation(soup, p, box, g.lines, 0.1, measuredTints);
+    const model = modelElevation(soup, p, box, g.lines, 0.1, measuredTints, g.loggiaDepthM !== undefined ? g.loggiaDepthM + 0.1 : undefined);
     const main = [...pieces].sort((a, b) => (b.u1 - b.u0) - (a.u1 - a.u0))[0];
     const replay = {soup, panel: p, measuredTints, obliquityDeg: Math.max(...pieces.map(q => q.crop.obliquityDeg ?? 0)), cameraDistM: Math.min(...pieces.map(q => q.crop.cameraDistM ?? 99)),
       ...(pieces.length > 1 ? {cameraSpanM: closeCameraSpan(pieces)} : {})};

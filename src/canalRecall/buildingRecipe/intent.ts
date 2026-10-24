@@ -954,6 +954,23 @@ export interface LargeWallIntent {
    */
   openBays?: {storeys: number[]; bays: number[]}[];
   /**
+   * Loggias (recessed balconies) on the listed `storeys` (0 = ground): in every bay, or only the listed `bays` (the other
+   * bays keep the storey's row), an opening `w` of the bay wide and `h` of the storey tall from `sill` (fractions) cut
+   * `deep` x the storey height into the wall (0.25..0.8; 0.5 is 1.5 m on a 3 m storey), so its floor, soffit and side
+   * returns show, with `lights` glazed leaves at the back and a `rail` balustrade (glass, bars, solid or none; never on
+   * the ground) in `colour` (default the frame colour). Defaults in systems.ts `LOGGIA` (OBA IJburg, 2019 crops).
+   * brick-bay-grid, ribbon-windows or blank groups. Absent: byte-identical.
+   */
+  loggias?: {storeys: number[]; bays?: number[]; w?: number; h?: number; sill?: number; deep?: number; rail?: 'glass' | 'bars' | 'solid' | 'none'; lights?: number; colour?: string};
+  /**
+   * A glazed plinth under the group's system: on the listed `storeys` (default [0]; 0 = ground) one glazed opening per bay
+   * (or the listed `bays`) leaving `pier` of the bay as wall, from `sill` to `sill + h` of the storey, in `lights` equal
+   * lights with its own mullion pitch, optionally a transom at `transom` of the glazing height; the plinth storeys are
+   * `factor` x an upper storey tall (0.6..2.5; on storey 0 it is `groundFactor`'s alternative). Shop and library grounds
+   * under a punched grid or a blank wall (OBA IJburg's library storey, Reigersbos shops, Buitenveldert). Absent: byte-identical.
+   */
+  plinth?: {storeys?: number[]; bays?: number[]; lights: number; sill?: number; h?: number; pier?: number; transom?: number; factor?: number};
+  /**
    * A layered screen of pale panels over the wall on the listed `storeys` (expanded-metal mesh, perforated sheet): one panel
    * per bay, `joint` m apart (default 0.06), from `from` to `to` of the storey's height (defaults 0.15 and 0.92, leaving
    * the slab edges in the wall colour), in `colour`; bays with an opening are left open (the window shows). The 2006
