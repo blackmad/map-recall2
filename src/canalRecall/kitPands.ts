@@ -31,3 +31,35 @@ export function pickKitPand(part: readonly Ring[], candidates: readonly KitPandC
   const r2 = (v: number) => Math.round(v * 100) / 100;
   return { pand: best.pand, share: r2(best.share), pandShare: r2(best.pandShare), others };
 }
+
+/** public/data/extracts/amsterdam/kit-pands.json `ids`: OSM part id -> the pand digits it stands on (or null). */
+export type KitPandJoins = Readonly<Record<string, { pand: string | null }>>;
+const PAND_PREFIX = 'NL.IMBAG.Pand.';
+
+/**
+ * The BAG pand whose measurements (wall crops, LoD2.2 roof planes) a kit id reads: the id itself when it is a pand, the
+ * pand kit-pands.json joins it to when it is an OSM part (w..., r...), else null. kit-pands.json is the one source of
+ * truth for the join (GitHub #41): scripts/landmarks/kit-roof-pitch.ts and build-public-facts.ts both read it here.
+ */
+export function measuredPandFor(id: string, joins: KitPandJoins): string | null {
+  if (id.startsWith(PAND_PREFIX)) return id;
+  const pand = joins[id]?.pand;
+  return pand ? `${PAND_PREFIX}${pand}` : null;
+}
+
+/**
+ * The joined pand's roof planes over one OSM part: those whose centroid lies inside the part's outline (both in the
+ * same planar frame, e.g. RD). Most OSM kit parts are a small share of their pand (a church tower, one of the
+ * Bijlmerbios' ten parts), so the pand's whole roof would put the nave's roof on the tower (GitHub #41).
+ */
+export function planesOverPart<P extends { centroid: readonly [number, number] }>(planes: readonly P[], part: readonly (readonly [number, number])[]): P[] {
+  const inside = ([x, y]: readonly [number, number]) => {
+    let hit = false;
+    for (let i = 0, j = part.length - 1; i < part.length; j = i++) {
+      const [xi, yi] = part[i], [xj, yj] = part[j];
+      if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) hit = !hit;
+    }
+    return hit;
+  };
+  return planes.filter(p => inside(p.centroid));
+}
