@@ -239,7 +239,15 @@ export type ThreeBuildingStats = { kitVertices: number; chunks: number; building
  * appended after the bay cells; `slotBase` is where they start. Without it the arrays are
  * exactly the bay cells, as before.
  */
-export async function buildLookTextures(THREE: any, look: 'procedural' | Look, maxAnisotropy: number, size = CELL_PX, options: { slotLayers?: { colour: Uint8Array; mask: Uint8Array } } = {}): Promise<{ colour: any; mask: any; slotBase: number }> {
+/** Painting time per main-thread slice while the facade textures build (first load: never more than a frame's share). */
+const TEXTURE_SLICE_MS = 6;
+/**
+ * The same after a WebGL context restore, when the city has no facades until the build ends: each yield waits a whole
+ * frame, so at 6 ms the ~200 bay cells took ~32 s in headless Chromium (issue #20). Longer slices, still bounded.
+ */
+export const RESTORE_TEXTURE_SLICE_MS = 32;
+
+export async function buildLookTextures(THREE: any, look: 'procedural' | Look, maxAnisotropy: number, size = CELL_PX, options: { slotLayers?: { colour: Uint8Array; mask: Uint8Array }; sliceMs?: number } = {}): Promise<{ colour: any; mask: any; slotBase: number }> {
   if (size !== CELL_PX && size !== CELL_PX / 2) throw new Error('Unsupported building texture size');
   const layers = (look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET + BAY_LAYER_COUNT : BAY_LAYER_COUNT + ROOF_LAYER_COUNT) + 1;
   // Facade chunks store their layer as a byte; slot meshes carry their own (small) slot ordinal.
@@ -249,7 +257,7 @@ export async function buildLookTextures(THREE: any, look: 'procedural' | Look, m
   if (options.slotLayers) { colour.set(options.slotLayers.colour, px * 4 * layers); mask.set(options.slotLayers.mask, px * 2 * layers); }
   let batchStart = performance.now();
   const yieldBudget = async () => {
-    if (performance.now() - batchStart < 6) return;
+    if (performance.now() - batchStart < (options.sliceMs ?? TEXTURE_SLICE_MS)) return;
     await new Promise<void>(resolve => setTimeout(resolve, 0));
     batchStart = performance.now();
   };
@@ -593,16 +601,16 @@ export class ThreeBuildings {
   /** Build (once) the colour and tint-mask texture arrays for a look. */
   private texturesFor(look: 'procedural' | Look): Promise<{ colour: any; mask: any; slotBase: number }> {
     let set = this.textureSets.get(look);
-    if (!set) this.textureSets.set(look, set = this.buildTextures(look));
+    if (!set) { this.textureSets.set(look, set = this.buildTextures(look, this.restoring ? RESTORE_TEXTURE_SLICE_MS : undefined)); this.restoring = false; }
     return set;
   }
 
-  private async buildTextures(look: 'procedural' | Look): Promise<{ colour: any; mask: any; slotBase: number }> {
+  private async buildTextures(look: 'procedural' | Look, sliceMs?: number): Promise<{ colour: any; mask: any; slotBase: number }> {
     const size = this.detailZoom === 17 ? CELL_PX / 2 : CELL_PX;
     // The slot layers join this array only in the shared frame, where slot meshes sample it (one renderer, one
     // upload). Legacy layers each own a renderer, so there slot meshes keep the city look's small slot-only array.
     const slotLayers = this.cityLook && this.sharedFrame ? paintSlotLayers(document, await loadCityBrick(document), size) : undefined;
-    return buildLookTextures(this.THREE, look, Math.min(this.renderer.capabilities.getMaxAnisotropy(), this.detailZoom === 17 ? 4 : 16), size, { slotLayers });
+    return buildLookTextures(this.THREE, look, Math.min(this.renderer.capabilities.getMaxAnisotropy(), this.detailZoom === 17 ? 4 : 16), size, { slotLayers, sliceMs });
   }
 
   setVisible(visible: boolean): void {
@@ -1387,8 +1395,12 @@ export class ThreeBuildings {
   /** Bumped whenever suppressed/answer walls change (they cast differently). */
   private hiddenRevision = 0;
 
+  /** The next texture build is a context restore's (RESTORE_TEXTURE_SLICE_MS). */
+  private restoring = false;
+
   private rebuildAfterContextLoss(): void {
     this.ready = false;
+    this.restoring = true;
     this.textureSets.clear();
     for (const key of [...this.chunks.keys()]) this.dropChunk(key);
     for (const material of this.materials.values()) material.dispose();
