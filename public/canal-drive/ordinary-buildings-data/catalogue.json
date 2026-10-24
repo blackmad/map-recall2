@@ -35111,10 +35111,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012169214",
       "name": "Utrechtsestraat 15 / Rembrandtplein, Amsterdam (Booking.com HQ): 1932 Amsterdam School office block, brick with granite base, stepped to 36 m",
-      "hash": "1b821810c6ed99e10a5663efe672469fe64a8c38fda1379ce28784db5fe18a20",
-      "sha256": "1b821810c6ed99e10a5663efe672469fe64a8c38fda1379ce28784db5fe18a20",
-      "bytes": 738804,
-      "triangles": 9395,
+      "hash": "46a93faaa7bc39983a8080082bf2f1a31d276a14d9ca178af79917e1eac2b2a1",
+      "sha256": "46a93faaa7bc39983a8080082bf2f1a31d276a14d9ca178af79917e1eac2b2a1",
+      "bytes": 620084,
+      "triangles": 8719,
       "materials": 11,
       "textures": 0,
       "scale": 1,
@@ -35126,7 +35126,7 @@
         ],
         "max": [
           24.984,
-          40.718,
+          35.62,
           38.289
         ]
       },
@@ -35253,8 +35253,8 @@
           ]
         ]
       },
-      "nativeHeight": 40.72,
-      "height": 40.72,
+      "nativeHeight": 35.62,
+      "height": 35.62,
       "modelUrl": "./models/ordinary-buildings/recipe-large-utrechtsestraat-15-169214.glb",
       "suppress": [
         "NL.IMBAG.Pand.0363100012169214"
@@ -35281,7 +35281,8 @@
           "storey-height/walls[2]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 6st 6b",
@@ -35291,9 +35292,9 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (NO EVIDENCE (foliage 31 % > 25 %)); inferred: the photo cannot judge (foliage 31 % > 25 %), kept as fitted after review of the sheet",
-        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.21; window shape square vs photo wide)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.21, window shape square vs photo wide) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[2] not confirmed by the photo (FAIL (window shape square vs photo wide; columns 11 vs photo 6)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (window shape square vs photo wide, columns 11 vs photo 6) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[0] not confirmed by the photo (NO EVIDENCE (foliage 31 % > 25 %)); inferred: foliage hides 31 percent of the Utrechtsestraat front, wall unchanged from the 2026-10-14 install and reinstalled 2026-10-24 only for the levelled roof (feedback 0132871b)",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.28 mean 0.25 vs photo 0.38; window shape tall vs photo wide; columns 9 vs photo 4)); inferred: glazing band and column count still off the photo as on 2026-10-14, wall unchanged, reinstall is for the roof only",
+        "walls[2] not confirmed by the photo (FAIL (window shape square vs photo wide; columns 11 vs photo 6)); inferred: window shape and column count still off the photo as on 2026-10-14, wall unchanged, reinstall is for the roof only",
         "Simplified: the triple windows are one wide window per 1.7 bays, the open loggia arcade under copper canopies is a plain ground row, the glass roof pavilion over the west front and the recessed attic floors are the 3DBAG roof/wall geometry only, the copper trim is not coloured. Not modelled: the upper west panels 525, 205, 415, 89 (stepped tower floors, no frontal photograph) and the east side (w04-77, party/courtyard).",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #414142 not used (not darker than the wall #5b564e by 10 L*, or tinted): kit glass kept."
       ],
@@ -35302,8 +35303,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169214",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T13:50:33.152Z",
-      "meshHash": "7a84d8814b5d0783"
+      "updatedAt": "2026-10-24T05:02:31.516Z",
+      "meshHash": "9fa1198a94b0c1be"
     },
     {
       "id": "ordinary-0363100012185422",
