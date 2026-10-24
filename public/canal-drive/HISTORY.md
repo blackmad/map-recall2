@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+**Ferry boarding along the pier (2026-10-25, #54).** User: "this whole dock
+should let me turn into a boat". `src/canalRecall/ferry/pierEdge.ts` derives a
+boarding edge from the stops: stops within 80 m are one quay, the edge runs
+through them (or across the water direction for a single stop), 20 m past the
+outer stops and 6 m either side; a moving rider on it heading within 60° of the
+water with water within 15 m ahead boards the nearest stop's ferry. Ordinary
+quays never board (geometry before any water probe). e2e: a middle Centraal
+ramp 13–14 m from both stops boards (failed on the old bundle).
+
 **Evening merges (2026-10-24, #42, #43, #45, #46).** Zaanhof: white gables
 close into cross roofs under one long saddle roof (`recipeRoof` cross gables,
 rear pitch, attic rise), one eaves line per face, brick #a57a5c from the

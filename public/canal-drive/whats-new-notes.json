@@ -2,6 +2,15 @@
  "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional.",
  "notes": [
   {
+   "date": "2026-10-25",
+   "title": "Board the ferry anywhere along the Centraal pier",
+   "text": "Ride onto the edge of a ferry pier and you turn into a boat, not only at the two stop markers. At Centraal the whole quay behind the station works.",
+   "where": [
+    4.9006,
+    52.3801
+   ]
+  },
+  {
    "date": "2026-10-24",
    "title": "The chase camera starts further out",
    "text": "The chase view now shows about a third more street around the bike, so you can see the junction coming before you reach it."
