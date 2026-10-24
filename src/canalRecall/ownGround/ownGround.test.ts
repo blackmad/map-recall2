@@ -7,7 +7,7 @@ import { deflateSync, gunzipSync, inflateSync } from 'node:zlib';
 import { readGeoTiff, undoFloatPredictor } from './geotiff';
 import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extendTile, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
 import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
-import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, merge, reliefGrid, ribbon, type MeshArrays } from './drape';
+import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, merge, reliefGrid, ribbon, vertex, type MeshArrays } from './drape';
 import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, KNOWN_SPOT_M, RAIL_ON_BAND_M, shoreSamples, spotDistanceM } from './roadRegressions';
 import { crossSection, parseMetres, areaKind, pavedAreaSurface, carriagewayClass, SURFACE_LEGEND } from './osmGround';
 import { herringboneBricks, KLINKER_TONES } from './streetTextures';
@@ -871,7 +871,7 @@ test('regression: relief is present (Postjeskade polder side lower than the Here
 
 // ------------------------------------------------------------- streaming in the game (groundStore / groundCell)
 import { GroundStore, toLocal as storeToLocal, fromLocal as storeFromLocal, GAME_ORIGIN } from './groundStore';
-import { buildCell, layersAt, vertexNormals } from './groundCell';
+import { buildCell, layersAt, packMesh, vertexNormals } from './groundCell';
 import { ORIGIN } from '../threeBuildingFeatures';
 
 test('ground frame is the facades\' frame (duplicated to keep the worker bundle small)', () => {
@@ -1762,4 +1762,31 @@ test('source tracing: byte-identical build, every triangle tagged (De Clercqstra
     for (const c of src) { assert.ok(c > 0, `${layer}: untagged triangle`); seen.add(`${layer}:${sourceOfCode(c)}`); }
   }
   for (const k of ['asphalt:bgtCarriage', 'cycle:bgtCycle', 'paving:bgtFoot', 'land:land', 'paint:nodePaint']) assert.ok(seen.has(k), `${k} in ${[...seen].sort().join(' ')}`);
+});
+
+test('compact meshes (phones): the same vertices, normals within a degree, linear colours, 16-bit indices, uv from the position', async () => {
+  const { compactMesh, compactCell, isCompact, gpuMeshBytes, cellGpuTransferables } = await import('./compactMesh');
+  const m = emptyMesh(true);
+  for (let i = 0; i < 40; i++) vertex(m, i, i * 0.5, Math.sin(i) * 0.3, [i / 40, 0.5, 1]);
+  for (let i = 0; i + 2 < 40; i++) m.indices.push(i, i + 1, i + 2);
+  const p = packMesh(m), c = compactMesh(p);
+  assert.ok(isCompact(c) && !isCompact(p));
+  assert.equal(c.positions, p.positions, 'positions shared, not copied');
+  assert.ok(c.indices instanceof Uint16Array); assert.deepEqual([...c.indices], [...p.indices]);
+  for (let v = 0; v < 40; v++) {
+    // The uv the game reads from the position buffer is the uv the build wrote.
+    assert.equal(p.uvs[v * 2], c.positions[v * 3]); assert.equal(p.uvs[v * 2 + 1], c.positions[v * 3 + 1]);
+    const a = [p.normals[v * 3], p.normals[v * 3 + 1], p.normals[v * 3 + 2]], b = [c.normals[v * 3] / 127, c.normals[v * 3 + 1] / 127, c.normals[v * 3 + 2] / 127];
+    const cos = (a[0] * b[0] + a[1] * b[1] + a[2] * b[2]) / Math.hypot(...b);
+    assert.ok(cos > Math.cos(Math.PI / 180), `normal ${v} within a degree`);
+    for (let k = 0; k < 3; k++) assert.ok(Math.abs(c.colors![v * 3 + k] / 65535 - Math.pow(p.colors![v * 3 + k], 2.2)) < 1e-4);
+  }
+  assert.ok(gpuMeshBytes(c) < 0.6 * gpuMeshBytes(p), `${gpuMeshBytes(c)} vs ${gpuMeshBytes(p)}`);
+  // Over 65,536 vertices the indices stay 32-bit.
+  const big = emptyMesh();
+  for (let i = 0; i < 70000; i++) vertex(big, i % 300, Math.floor(i / 300), 0);
+  big.indices.push(0, 1, 69999);
+  assert.ok(compactMesh(packMesh(big)).indices instanceof Uint32Array);
+  const cell = compactCell({ key: '0_0', lod: 0, rect: [0, 0, 1, 1], layers: { land: p }, mask: null, stats: { bytes: 0 } } as never);
+  assert.equal(cell.stats.bytes, gpuMeshBytes(cell.layers.land as never)); assert.equal(cellGpuTransferables(cell).length, 4);
 });

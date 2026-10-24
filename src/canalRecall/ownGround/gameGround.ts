@@ -24,7 +24,8 @@
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
 import { readGroundTile } from './heightField.js';
 import { boundingSphereOf } from '../geometryBounds.js';
-import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type GroundLayer, type PackedMesh } from './groundCell.js';
+import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type GroundLayer } from './groundCell.js';
+import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
 import { residentRadius, viewReachM } from './residency.js';
@@ -205,7 +206,8 @@ export class OwnGround {
       this.worker = new Worker(this.opts.workerUrl);
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, roads: this.opts.roads, groundLook: this.opts.groundLook });
+      // Phones (releaseArrays) take compact meshes: the same geometry in ~half the GPU bytes (compactMesh.ts).
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: this.opts.releaseArrays });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -766,19 +768,31 @@ export class OwnGround {
     this.host.repaint();
   }
 
-  private geometry(p: PackedMesh): any {
+  private geometry(p: GpuMesh): any {
     const g = this.packedGeometry(p);
     if (this.opts.releaseArrays) {
       // `count` stays; the bounding sphere is already set; nothing marks these
       // attributes for re-upload, so the CPU copy has no reader after this.
-      for (const attribute of [...Object.values(g.attributes), g.index] as any[]) attribute?.onUpload(releaseArray);
+      for (const attribute of [...Object.values(g.attributes), g.index] as any[]) (attribute?.isInterleavedBufferAttribute ? attribute.data : attribute)?.onUpload(releaseArray);
     }
     return g;
   }
 
-  private packedGeometry(p: PackedMesh): any {
+  private packedGeometry(p: GpuMesh): any {
     const THREE = this.THREE;
     const g = new THREE.BufferGeometry();
+    if (isCompact(p)) {
+      // The uv is the position's x, y (compactMesh.ts): one GPU buffer, two views. Normals and linear colours normalised.
+      const shared = new THREE.InterleavedBuffer(p.positions, 3);
+      g.setAttribute('position', new THREE.InterleavedBufferAttribute(shared, 3, 0));
+      g.setAttribute('uv', new THREE.InterleavedBufferAttribute(shared, 2, 0));
+      g.setAttribute('normal', new THREE.BufferAttribute(p.normals, 3, true));
+      if (p.colors) g.setAttribute('color', new THREE.BufferAttribute(p.colors, 3, true));
+      g.setIndex(new THREE.BufferAttribute(p.indices, 1));
+      const sphere = boundingSphereOf(p.positions);
+      g.boundingSphere = new THREE.Sphere(new THREE.Vector3(...sphere.center), sphere.radius);
+      return g;
+    }
     g.setAttribute('position', new THREE.BufferAttribute(p.positions, 3));
     g.setAttribute('normal', new THREE.BufferAttribute(p.normals, 3));
     g.setAttribute('uv', new THREE.BufferAttribute(p.uvs, 2));
@@ -831,7 +845,7 @@ export class OwnGround {
       mesh.renderOrder = layer === 'water' || layer === 'quay' ? 0 : layer === 'land' ? 1 : 2;
       group.add(mesh);
       triangles += p.indices.length / 3;
-      bytes += p.positions.byteLength * 2 + p.uvs.byteLength + p.indices.byteLength + (p.colors?.byteLength ?? 0);
+      bytes += gpuMeshBytes(p as GpuMesh);
     }
     group.matrixAutoUpdate = false;
     this.root.add(group);

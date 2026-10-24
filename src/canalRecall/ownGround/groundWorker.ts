@@ -2,7 +2,8 @@
 // thread (all ground modules are DOM-free). Bundled as
 // public/canal-drive/js/own-ground-worker.bundle.js (scripts/build-3d-bundles.mjs).
 //
-// Messages in:  { type: 'init', root, parks, roads, groundLook }  extract root URL (absolute); parks: load parks-v1; roads: load roads-v1; far-ring palette
+// Messages in:  { type: 'init', root, parks, roads, groundLook, compact }  extract root URL (absolute); parks: load parks-v1; roads: load roads-v1; far-ring palette;
+//                                                           compact: send compact meshes (compactMesh.ts, phones)
 //               { type: 'build', key, lod, gen }  build one cell
 //               { type: 'far', key, gen }         build one far block (farRing.ts)
 //               { type: 'evict', x, y, keepM, keep: string[] }
@@ -22,9 +23,10 @@ import { buildCell, cellTransferables } from './groundCell.js';
 import { buildFarBlock, farColours, farTransferables, type FarColours } from './farRing.js';
 import { groundPalette, type GroundLook } from './groundLook.js';
 import { GroundBuildQueue } from './buildQueue.js';
+import { cellGpuTransferables, compactCell, compactFar, farGpuTransferables } from './compactMesh.js';
 
 type In =
-  | { type: 'init'; root: string; parks?: boolean; roads?: boolean; groundLook?: GroundLook }
+  | { type: 'init'; root: string; parks?: boolean; roads?: boolean; groundLook?: GroundLook; compact?: boolean }
   | { type: 'build'; key: string; lod: 0 | 1; gen: number }
   | { type: 'far'; key: string; gen: number }
   | { type: 'evict'; x: number; y: number; keepM: number; keep: string[] }
@@ -35,6 +37,7 @@ const ctx = self as unknown as { postMessage(message: unknown, transfer?: Transf
 let store: GroundStore | null = null;
 let ready: Promise<void> | null = null;
 let colours: FarColours | undefined;
+let compact = false;
 // One build at a time: cells are big and the order matters (nearest ahead first, buildQueue.ts).
 const queue = new GroundBuildQueue();
 const evictions: Array<() => void> = [];
@@ -52,16 +55,16 @@ async function pump(s: GroundStore): Promise<void> {
       if (job.kind === 'cell') {
         try {
           const input = await s.cellInput(job.key, job.lod);
-          const cell = buildCell(input);
-          ctx.postMessage({ type: 'cell', gen: job.gen, cell }, cellTransferables(cell));
+          const built = buildCell(input), cell = compact ? compactCell(built) : built;
+          ctx.postMessage({ type: 'cell', gen: job.gen, cell }, compact ? cellGpuTransferables(cell) : cellTransferables(cell));
         } catch (error) {
           ctx.postMessage({ type: 'error', key: job.key, gen: job.gen, message: String((error as Error)?.stack ?? error) });
         }
       } else {
         try {
           const input = await s.farInput(job.key);
-          const far = input ? buildFarBlock(input, colours) : null;
-          ctx.postMessage({ type: 'far', gen: job.gen, key: job.key, far }, far ? farTransferables(far) : []);
+          const built = input ? buildFarBlock(input, colours) : null, far = built && compact ? compactFar(built) : built;
+          ctx.postMessage({ type: 'far', gen: job.gen, key: job.key, far }, far ? (compact ? farGpuTransferables(far) : farTransferables(far)) : []);
         } catch (error) {
           ctx.postMessage({ type: 'error', far: job.key, gen: job.gen, message: String((error as Error)?.stack ?? error) });
         }
@@ -76,6 +79,7 @@ ctx.onmessage = event => {
   const msg = event.data;
   if (msg.type === 'init') {
     store = new GroundStore(httpFetchBytes(msg.root), { parks: msg.parks !== false, roads: msg.roads === true });
+    compact = msg.compact === true;
     colours = msg.groundLook && msg.groundLook !== 'default' ? farColours(groundPalette(msg.groundLook)) : undefined;
     ready = store.init().then(() => ctx.postMessage({ type: 'ready', cells: [...store!.osmCells] }))
       .catch(error => ctx.postMessage({ type: 'error', message: `init: ${String(error?.message ?? error)}` }));
