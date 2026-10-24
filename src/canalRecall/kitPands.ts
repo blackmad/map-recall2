@@ -63,3 +63,15 @@ export function planesOverPart<P extends { centroid: readonly [number, number] }
   };
   return planes.filter(p => inside(p.centroid));
 }
+
+/** An OSM part this many times its pand's main roof height may be a tower (kit-roof-pitch.ts). */
+export const TOWER_RATIO = 1.5;
+/**
+ * A tower on its pand, which the pand's wall crops do not show: it rises TOWER_RATIO over the pand's main roof, holds a
+ * small share of the pand, and is slender (height over 2.2 times the side of its plan, worshipBuildings.ts planWorship's
+ * tower test). Kit review round 4 (GitHub #43, row 54): De Nieuwe Stad's 592 m2, 9 m main hall over 3 m wings passed
+ * the first two and lost its window rows as a "tower".
+ */
+export function towerPart(heightM: number, mainM: number, pandShare: number, areaM2: number): boolean {
+  return heightM > TOWER_RATIO * mainM && pandShare < KIT_PAND_SHARE && heightM > 2.2 * Math.sqrt(areaM2);
+}

@@ -60,6 +60,12 @@ export type KitHalls = {
    * rectangle, and then to the host's flat lid at the eaves, when the footprint will not take one.
    */
   hip?: boolean;
+  /**
+   * The hip's measured pitch (kit review round 4, GitHub #43: a 17 degree LoD2.2 roof drawn at the kit's 50 degrees read
+   * as a tall grey hood, rows 160, 178, 188). The slopes keep this pitch; where the plan is too narrow for `riseM` at it,
+   * the rise is lowered instead of the pitch raised. Absent: HIP_PITCH_DEG, steepening to HIP_MAX_PITCH_DEG.
+   */
+  pitchDeg?: number;
 };
 /**
  * A row of window openings, `z0` (sill) to `z1` (top of the head), `widthM` wide, `bayM` apart,
@@ -985,7 +991,7 @@ export function kitGeometry(kit: Kit, parts: ReadonlyMap<string, PartInput>): Ki
       }
     }
     if (spec.hip && spec.riseM > 0) {
-      const tris = hipAround(part.ring, spec.eavesM, spec.riseM) ?? hipOverRect(part.ring, plan, spec.eavesM);
+      const tris = hipAround(part.ring, spec.eavesM, spec.riseM, spec.pitchDeg) ?? hipOverRect(part.ring, plan, spec.eavesM);
       for (const t of tris) {
         const slope = t.part === 'slope';
         sink.out.push({ p: t.p, uv: t.uv, layer: slope ? 'slope' : 'plain', hex: slope ? hex : gable, n: t.n });
@@ -1060,15 +1066,15 @@ export function simplifyRing(ring: readonly Vec2[], tol: number): Vec2[] {
  * (roofFootprint.ts insetRing); where that takes it under the HIP_MAX_PITCH_DEG distance (a narrow wing), the rise is
  * lowered to that pitch over the inset that fits. Null when even HIP_MIN_INSET_M folds.
  */
-export function hipAround(ring: readonly Vec2[], eavesM: number, riseM: number): RoofTri[] | null {
+export function hipAround(ring: readonly Vec2[], eavesM: number, riseM: number, pitchDeg?: number): RoofTri[] | null {
   const pts = simplifyRing(ring, HIP_SIMPLIFY_M);
   if (pts.length < 3 || riseM <= 0) return null;
-  const tanOf = (deg: number) => Math.tan((deg * Math.PI) / 180), want = riseM / tanOf(HIP_PITCH_DEG);
+  const tanOf = (deg: number) => Math.tan((deg * Math.PI) / 180), want = riseM / tanOf(pitchDeg ?? HIP_PITCH_DEG);
   const sign = Math.sign(signedArea(pts));
   for (let t = want; t >= HIP_MIN_INSET_M - 1e-9; t *= 0.92) {
     const inner = insetRing(pts, t);
     if (!inner || Math.sign(signedArea(inner)) !== sign || Math.abs(signedArea(inner)) < 1) continue;
-    const rise = Math.min(riseM, t * tanOf(HIP_MAX_PITCH_DEG));
+    const rise = Math.min(riseM, t * tanOf(pitchDeg ?? HIP_MAX_PITCH_DEG));
     const out: RoofTri[] = [], z0 = eavesM, z1 = eavesM + rise;
     const tri = (a: Vec3, b: Vec3, c: Vec3, part: RoofTri['part']) => {
       const u = sub(b, a), v = sub(c, a);

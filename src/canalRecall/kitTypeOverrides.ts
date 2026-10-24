@@ -36,6 +36,10 @@ export const NOT_WORSHIP_FORM: Readonly<Record<string, string>> = {
 /** OSM school/cinema/theatre footprints whose building is not that form: no public kit. */
 export const NOT_PUBLIC_FORM: Readonly<Record<string, string>> = {
   [`${OVR}0363100012090063`]: 'SOB school tag on a 1976 housing block (39 live VBOs, 63% living area); review row 284 photo a housing/shop front with balconies',
+  // Kit review round 4 (GitHub #43, row 316): planPublic's height escape took a 20 m2 part of the Bijlmerbios complex as a
+  // film house; publicBuildings.ts CINEMA_MIN_PART_AREA_M2 now refuses it, and this drops it until publicBuildingData.ts
+  // is regenerated (the generator's other output has drifted, so it is not regenerated here).
+  w1488019256: 'Bijlmerbios cinema tag on a 20 m2, 30 m OSM building part (a core or pylon of pand 0363100012079990, 0 kit triangles); drawn as a free-standing windowless pillar in review row 316',
 };
 
 /** A footprint the OSM use tag files under the wrong kind: the entry and facts it is drawn with instead. */

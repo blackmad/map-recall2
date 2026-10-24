@@ -6,9 +6,9 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { HIP_MAX_PITCH_DEG, KITS, hipAround, kitGeometry, kitIds, simplifyRing, type PartInput } from './landmarkKits.js';
 import { PANORAMA_BRICK, PUBLIC_WALL, SCHOOL_RIBBON_FRAME, panoramaBrickHue, planPublic, publicKit, schoolHipRoof, schoolRoof, schoolWall, schoolWallDisplay, SCHOOL_HIP_MIN_EAVES_M, type SchoolFacts } from './publicBuildings.js';
-import { FRAME_LIGHT, MAX_LEAF_PIXEL_SHARE, WINDOW_ROWS, glazingProfile, isOliveShade, lch, leafDominated, masonryFamily } from './facade/cropWallColour.js';
+import { FRAME_LIGHT, MAX_LEAF_PIXEL_SHARE, WINDOW_ROWS, glassVisible, glazingProfile, isOliveShade, lch, leafDominated, masonryFamily, mergeSpans } from './facade/cropWallColour.js';
 import { roofPitch, type RoofPlane } from './facade/roofPitch.js';
-import { measuredWallDisplay } from './kitFacts.js';
+import { LOW_PITCH_DEG, measuredRows, measuredWallDisplay, pitchedHip, schoolFacts } from './kitFacts.js';
 import { PUBLIC_BUILDINGS } from './publicBuildingData.js';
 import { WORSHIP_BUILDINGS } from './worshipBuildingData.js';
 import { worshipKit } from './worshipBuildings.js';
@@ -16,7 +16,7 @@ import { PUBLIC_FACTS, SCHOOL_PERIOD_WALLS } from './publicBuildingFacts.js';
 import { PERIOD_WALLS, cityWallTint, hexToRgb } from './look/palette.js';
 import fs from 'node:fs';
 import { NOT_PUBLIC_FORM, NOT_WORSHIP_FORM, PUBLIC_RETYPE } from './kitTypeOverrides.js';
-import { measuredPandFor, pickKitPand, planesOverPart } from './kitPands.js';
+import { measuredPandFor, pickKitPand, planesOverPart, towerPart } from './kitPands.js';
 
 type V2 = [number, number];
 const rect = (w: number, d: number, x = 0, y = 0): V2[] => [[x, y], [x + w, y], [x + w, y + d], [x, y + d], [x, y]];
@@ -184,7 +184,8 @@ test('crop window rows and frames: windows with pale frames on brick, a blank wa
     return glazingProfile({ data, width: W, height: H, channels: 3, ppm, topM: H / ppm, eavesM: H / ppm, wall, norm: c => [c[0], c[1], c[2]] });
   };
   const win = img(true), blank = img(false);
-  assert.ok(win.windowBands!.length === 1 && win.windowBands![0][0] <= 1.6 && win.windowBands![0][1] >= 3.4, JSON.stringify(win.windowBands));
+  // Round 4: a window row needs glass, so the all-frame head rows (3.35-3.5 m) end the band at 3.3 m.
+  assert.ok(win.windowBands!.length === 1 && win.windowBands![0][0] <= 1.6 && win.windowBands![0][1] >= 3.3, JSON.stringify(win.windowBands));
   assert.ok(win.frameHex, 'pale frames read');
   assert.equal(blank.windowBands!.length, 0); assert.equal(blank.frameHex, null);
   assert.ok(FRAME_LIGHT.dL > 0 && WINDOW_ROWS.framePale > 0);
@@ -312,4 +313,76 @@ test('round 4: a crop that is mostly leaves gives no wall colour (Generic church
   assert.equal(leafDominated(40, 100), false);
   assert.equal(leafDominated(0, 0), false);
   assert.equal(PUBLIC_FACTS.find(e => e[0] === 'NL.IMBAG.Pand.0363100012098124')![5], null, 'falls back to the period palette');
+});
+
+// Kit review round 4 (2026-10-24, GitHub #43): regressions from the measured windows and the LoD2.2 roof form.
+test('round 4: a blank hall before a pale backdrop and blue sky reads no window rows; real glazing still does', () => {
+  const W = 300, H = 200, ppm = 20, wall = [97, 77, 70];
+  // A 9.5 m brick hall in the middle third over 5 m wings: blue sky above the left wing, a grey block behind the right.
+  const img = (windows: boolean) => {
+    const data = new Uint8Array(W * H * 3);
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const z = (H - y) / ppm, hall = x >= 100 && x < 200;
+      let c = wall;
+      if (z > 9.5 || (x < 100 && z > 5)) c = [110, 160, 225];
+      else if (!hall && z > 5) c = [150, 150, 150];
+      if (windows && z > 1.5 && z < 3.5 && x % 40 >= 8 && x % 40 < 32) c = [40, 48, 56];
+      data.set(c, (y * W + x) * 3);
+    }
+    return glazingProfile({ data, width: W, height: H, channels: 3, ppm, topM: H / ppm, eavesM: 9.5, wall, norm: c => [c[0], c[1], c[2]] });
+  };
+  const blank = img(false), win = img(true);
+  assert.deepEqual(blank.windowBands, [], `backdrop is not windows (rows 220, 279, 356, 421): ${JSON.stringify(blank.windowBands)}`);
+  assert.deepEqual(blank.ribbons, []);
+  assert.ok(win.windowBands!.some(([a, b]) => a <= 1.7 && b >= 3.3), JSON.stringify(win.windowBands));
+  assert.ok(WINDOW_ROWS.glass > 0 && glassVisible([149, 134, 129]) && !glassVisible([89, 77, 70]));
+});
+
+test('round 4: storey rows only where light-walled crops saw windows; none on a blank wall; all without a reading', () => {
+  assert.deepEqual(mergeSpans([[6.2, 7.3], [1, 5], [4.9, 5.2]]), [[1, 5.2], [6.2, 7.3]]);
+  const rows = [{ z0: 0.8, z1: 2.5 }, { z0: 4.6, z1: 6.3 }, { z0: 8.3, z1: 10 }];
+  assert.deepEqual(measuredRows(rows, facts({ windowSpans: [[1, 5], [6.2, 7.3]] })), [rows[0]], 'row 127: the glazed ground floor alone');
+  assert.deepEqual(measuredRows(rows, facts({ windowSpans: [[8, 9.9]] })), [rows[2]], 'row 125: the clerestory alone');
+  assert.deepEqual(measuredRows(rows, facts({ windowSpans: [] })), []);
+  assert.deepEqual(measuredRows(rows, facts({})), rows);
+  const parsed = schoolFacts(['x', 1986, 3, 76, 0, null, 1, 2, null, 1, 0, 0, null, null, '80-99,110-130', 17.4]);
+  assert.deepEqual(parsed.windowSpans, [[8, 9.9], [11, 13]]);
+  assert.equal(parsed.pitchSlopeDeg, 17.4);
+  const school = PUBLIC_BUILDINGS.find(e => e[1] === 's' && e[2] === 'f' && e[3] > 9)!;
+  const blank = publicKit(school, facts({ year: 1986, windowSpans: [] }));
+  assert.ok(blank.body && blank.trim, 'a blank light wall: the plain body with its trim');
+});
+
+test('round 4: a low LoD2.2 roof keeps its measured pitch; steep roofs keep the kit hip', () => {
+  const low = pitchedHip(facts({ pitch: 'pitched', pitchEavesM: 5.8, pitchRidgeM: 8.3, pitchSlopeDeg: 17.8 }), 8.2, 3)!;
+  assert.equal(low.pitchDeg, 17.8, 'row 178');
+  assert.equal(pitchedHip(facts({ pitch: 'pitched', pitchEavesM: 7.3, pitchRidgeM: 14.9, pitchSlopeDeg: 53.2 }), 12, 3)!.pitchDeg, undefined, 'row 13 keeps its look');
+  assert.ok(LOW_PITCH_DEG < 28);
+  const top = (t: { p: number[][] }[]) => Math.max(...t.flatMap(x => x.p.map(q => q[2])));
+  const wing = rect(60, 10);
+  assert.ok(top(hipAround(wing, 5.8, 2.5)!) - 5.8 > 2.4, 'the kit hip reaches its rise on a 10 m wing');
+  const measured = hipAround(wing, 5.8, 2.5, 17.8)!, rise = top(measured) - 5.8;
+  assert.ok(rise < 5 * Math.tan((17.8 * Math.PI) / 180) + 0.05 && rise > 1, `17.8 degrees over a 5 m half-width: ${rise.toFixed(2)} m`);
+});
+
+test('round 4: an early school planned hipped is flat where its LoD2.2 planes are flat or mixed', () => {
+  const entry = PUBLIC_BUILDINGS.find(e => e[0] === 'NL.IMBAG.Pand.0363100012109215')!;
+  assert.equal(entry[2], 'h');
+  const kit = publicKit(entry, facts({ year: 1924, pitch: 'flat', pitchEavesM: 2.2, pitchRidgeM: 3.8 }));
+  const hall = kit.halls![0];
+  assert.ok(!hall.fit && !hall.hip && hall.riseM === 0 && hall.eavesM === 14.3, `row 161: ${JSON.stringify({ fit: hall.fit, eaves: hall.eavesM })}`);
+  assert.ok(publicKit(entry, facts({ year: 1924, pitch: 'pitched', pitchEavesM: 10.8, pitchRidgeM: 15.8 })).halls![0].fit, 'pitched planes keep the fitted roof');
+});
+
+test('round 4: data defects behind a pillar and a windowless hall', () => {
+  // Row 316: a 20 m2, 30 m cinema-tagged part is no film house.
+  assert.equal(planPublic({ kind: 'c', heightM: 30, year: 1987, areaM2: 20, rect: null }), null);
+  assert.ok(planPublic({ kind: 'c', heightM: 21, year: 1987, areaM2: 200, rect: null }));
+  assert.ok(NOT_PUBLIC_FORM.w1488019256 && !KITS.some(k => k.name === 'Generic cinema w1488019256'));
+  // Row 54: De Nieuwe Stad's 592 m2, 9 m hall over 3 m wings is no tower; a slender spire is.
+  assert.equal(towerPart(9, 4, 0.46, 592), false);
+  assert.equal(towerPart(40, 12, 0.05, 36), true);
+  // Row 356: white panels read #fdfadf stay white, not wallFamily's brick lifted to yellow.
+  const white = lch(hexToRgb(measuredWallDisplay('#fdfadf')));
+  assert.ok(white.L > 90 && white.C < 10, JSON.stringify(white));
 });
