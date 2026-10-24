@@ -43,6 +43,7 @@ import type { RoofPitch } from '../../src/canalRecall/facade/roofPitch.ts';
 import { PUBLIC_BUILDINGS } from '../../src/canalRecall/publicBuildingData.ts';
 import { combineBrickTones } from '../../src/canalRecall/look/brickTone.ts';
 import { readCropWall, type CropReading } from '../lib/cropWallReading.ts';
+import { mergeSpans } from '../../src/canalRecall/facade/cropWallColour.ts';
 import { periodForYear, rgbToHex, type Period } from '../../src/canalRecall/look/palette.ts';
 import { shortBuildingId } from '../../src/canalRecall/buildingFacts.ts';
 import { hipAround } from '../../src/canalRecall/landmarkKits.ts';
@@ -98,9 +99,11 @@ for (const x of fs.readdirSync(factRoot)) for (const file of fs.readdirSync(path
 }
 
 // --- Wall colour from the crops ----------------------------------------------------------------------------------
-type PandReading = { hex: string | null; crops: CropReading[]; glazing: 0 | 1 | 2 | 3; topBandHex: string | null; frameHex: string | null };
+type PandReading = { hex: string | null; crops: CropReading[]; glazing: 0 | 1 | 2 | 3; topBandHex: string | null; frameHex: string | null; windowSpans: string | null };
+/** Window spans as published: `z0-z1` in decimetres, comma separated; '' none (a blank wall); null not readable. */
+const spansText = (spans: [number, number][] | null): string | null => (spans ? spans.map(([a, b]) => `${Math.round(a * 10)}-${Math.round(b * 10)}`).join(',') : null);
 async function measure(pand: string | null): Promise<PandReading> {
-  if (!pand) return { hex: null, crops: [], glazing: 0, topBandHex: null, frameHex: null };
+  if (!pand) return { hex: null, crops: [], glazing: 0, topBandHex: null, frameHex: null, windowSpans: null };
   const digits = pand.replace('NL.IMBAG.Pand.', ''), crops: CropReading[] = [], tones: number[][] = [];
   for (const root of wallsRoots) {
     const json = path.join(root, digits, 'walls.json');
@@ -116,7 +119,7 @@ async function measure(pand: string | null): Promise<PandReading> {
     if (crops.length) break; // the first walls root that has this pand is its source
   }
   // Glazing: ribbon when most crops that read enough rows found a ribbon band, punched when most did not.
-  const read = crops.filter(c => c.used && c.glazing && c.glazing.rowsRead >= MIN_GLAZING_ROWS);
+  const read = crops.filter(c => (c.used || c.glazingOnly) && c.glazing && c.glazing.rowsRead >= MIN_GLAZING_ROWS);
   const ribbon = read.filter(c => c.glazing!.ribbons.length).length;
   let glazing: 0 | 1 | 2 | 3 = !read.length ? 0 : ribbon * 2 > read.length ? 2 : ribbon * 2 < read.length ? 1 : 0;
   const bands = read.map(c => c.glazing!.topBandHex).filter((h): h is string => !!h);
@@ -128,9 +131,14 @@ async function measure(pand: string | null): Promise<PandReading> {
     glazing = windowed.length * 2 < read.length ? 3 : windowed.filter(c => c.glazing!.ribbons.length).length * 2 > windowed.length ? 2 : 1;
   }
   // Frames: the median pale frame colour when most crops that read window rows show pale frames.
-  const windowed = read.filter(c => c.glazing!.windowBands?.length), frames = windowed.map(c => c.glazing!.frameHex).filter((h): h is string => !!h);
+  // (Over the rows the frames were read on: round 4's glass test decides window rows, not frames.)
+  const windowed = read.filter(c => c.glazing!.frameRows), frames = windowed.map(c => c.glazing!.frameHex).filter((h): h is string => !!h);
   const frameHex = windowed.length && frames.length * 2 >= windowed.length ? frames.sort()[frames.length >> 1] : null;
-  return { hex: tones.length ? rgbToHex(combineBrickTones(tones) as [number, number, number]) : null, crops, glazing, topBandHex: bands.length * 2 > read.length ? bands.sort()[bands.length >> 1] : null, frameHex };
+  // Round 4 (GitHub #43): where the windows are, from the crops whose wall is light enough for glass to show
+  // (cropWallColour.ts glassVisible): the union of their window and ribbon bands; '' when they read none (a blank wall).
+  const lit = read.filter(c => c.glassVisible);
+  const windowSpans = lit.length ? spansText(mergeSpans(lit.flatMap(c => [...(c.glazing!.windowBands ?? []), ...c.glazing!.ribbons]))) : null;
+  return { hex: tones.length ? rgbToHex(combineBrickTones(tones) as [number, number, number]) : null, crops, glazing, topBandHex: bands.length * 2 > read.length ? bands.sort()[bands.length >> 1] : null, frameHex, windowSpans };
 }
 
 // --- LoD2.2 roof form and the orthophoto roof tint --------------------------------------------------------------
@@ -169,12 +177,12 @@ function roofFits(id: string, entry: Entry): { fits: boolean; why?: string } {
   if (!hall?.hip) return { fits: true };
   const ring = rings.get(id);
   if (!ring) return { fits: false, why: 'no footprint' };
-  return hipAround(ring, hall.eavesM, hall.riseM) ? { fits: true } : { fits: false, why: 'hip ring folds' };
+  return hipAround(ring, hall.eavesM, hall.riseM, hall.pitchDeg) ? { fits: true } : { fits: false, why: 'hip ring folds' };
 }
 const entryFor = (id: string, f: TileFacts | null, r: PandReading, fits: 0 | 1): Entry => {
   // kit-roof-pitch.ts keys an OSM part by its own id (its pand's planes over the part's outline).
   const pand = pandOf.get(id) ?? null, p = pitchOf[id], pr = p && !('missing' in p) ? p : null;
-  return [id, f?.year ?? 0, (f?.roof ?? 0) as 0 | 1 | 2 | 3, dm(f?.eaves), dm(f?.ridge), r.hex, fits, r.glazing, r.topBandHex, pitchCode(p), dm(pr?.eavesM), dm(pr?.ridgeM), roofTint(id) ?? (pand && pand !== id ? roofTint(pand) : null), r.frameHex];
+  return [id, f?.year ?? 0, (f?.roof ?? 0) as 0 | 1 | 2 | 3, dm(f?.eaves), dm(f?.ridge), r.hex, fits, r.glazing, r.topBandHex, pitchCode(p), dm(pr?.eavesM), dm(pr?.ridgeM), roofTint(id) ?? (pand && pand !== id ? roofTint(pand) : null), r.frameHex, r.windowSpans, pr?.slopeDeg ?? 0];
 };
 
 const rows: ({ id: string; pand: string | null; facts: TileFacts | null; roofFits: boolean; roofWhy?: string; entry: Entry } & PandReading)[] = [];
@@ -182,7 +190,7 @@ for (const id of pands) {
   const measured = await measure(pandOf.get(id) ?? null), p = pitchOf[id];
   // An OSM part the pand's crops do not show (a church tower on the nave's pand, kit-roof-pitch.ts notCropped) takes
   // the pand's wall colour but not the window rows and frames read off the pand's main walls.
-  const reading = p?.notCropped ? { ...measured, glazing: 0 as const, topBandHex: null, frameHex: null } : measured;
+  const reading = p?.notCropped ? { ...measured, glazing: 0 as const, topBandHex: null, frameHex: null, windowSpans: null } : measured;
   const f = facts.get(id) ?? null, fit = roofFits(id, entryFor(id, f, reading, 1));
   rows.push({ id, pand: pandOf.get(id) ?? null, facts: f, roofFits: fit.fits, roofWhy: fit.why, entry: entryFor(id, f, reading, fit.fits ? 1 : 0), ...reading });
 }
@@ -219,7 +227,7 @@ console.log(`school glazing: ribbon ${schoolRows.filter(r => r.glazing === 2).le
 if (process.argv.includes('--publish')) {
   const q = (v: string | null) => (v ? `'${v}'` : 'null');
   const lines = rows.filter(r => r.facts || r.hex).sort((a, b) => a.id.localeCompare(b.id)).map(({ entry: e }) =>
-    `  ['${e[0]}', ${e[1]}, ${e[2]}, ${e[3]}, ${e[4]}, ${q(e[5])}, ${e[6]}, ${e[7]}, ${q(e[8])}, ${e[9]}, ${e[10]}, ${e[11]}, ${q(e[12])}, ${q(e[13])}],`);
+    `  ['${e[0]}', ${e[1]}, ${e[2]}, ${e[3]}, ${e[4]}, ${q(e[5])}, ${e[6]}, ${e[7]}, ${q(e[8])}, ${e[9]}, ${e[10]}, ${e[11]}, ${q(e[12])}, ${q(e[13])}${e[15] ? `, ${q(e[14] ?? null)}, ${e[15]}` : e[14] === null || e[14] === undefined ? '' : `, '${e[14]}'`}],`);
   const text = `// Generated by scripts/landmarks/build-public-facts.ts --publish. Do not edit by hand.
 // Per-pand facts for the generic school, cinema and worship kits (kitFacts.ts): BAG year (0 unknown), the 3DBAG roof type
 // (0 unknown, 1 flat, 2 several flats, 3 slanted), eaves and ridge in decimetres (0 unknown), and the wall colour
@@ -232,7 +240,10 @@ if (process.argv.includes('--publish')) {
 // Round 3 (GitHub #36): glazing 3 a blank wall (cinema and worship only); the LoD2.2 roof form (facade/roofPitch.ts:
 // 0 unknown, 1 flat, 2 mixed, 3 pitched, 4 mono-pitch) with the pitched planes' median eaves and ridge in decimetres;
 // the measured pitched-roof tint (roofs/roofSlots.ts roofSlotHex) or null; the pale window frame colour or null.
-export type PublicFactsEntry = readonly [id: string, year: number, roof: 0 | 1 | 2 | 3, eavesDm: number, ridgeDm: number, wallHex: string | null, roofFits: 0 | 1, glazing: 0 | 1 | 2 | 3, topBandHex: string | null, pitch?: 0 | 1 | 2 | 3 | 4, pitchEavesDm?: number, pitchRidgeDm?: number, roofHex?: string | null, frameHex?: string | null];
+// Round 4 (GitHub #43): where the crops whose wall is light enough for glass to show read window rows, as 'z0-z1'
+// decimetre spans above ground ('' a blank wall), null or absent when no such crop; the pitched planes' mean slope in
+// degrees (facade/roofPitch.ts), absent when none.
+export type PublicFactsEntry = readonly [id: string, year: number, roof: 0 | 1 | 2 | 3, eavesDm: number, ridgeDm: number, wallHex: string | null, roofFits: 0 | 1, glazing: 0 | 1 | 2 | 3, topBandHex: string | null, pitch?: 0 | 1 | 2 | 3 | 4, pitchEavesDm?: number, pitchRidgeDm?: number, roofHex?: string | null, frameHex?: string | null, windowSpans?: string | null, slopeDeg?: number];
 /** The fallback for a school with no usable crop: measured school walls of its period, by lightness quantile (raw readings). */
 export const SCHOOL_PERIOD_WALLS: Readonly<Partial<Record<'canal' | 'c19' | 'school' | 'modern', readonly string[]>>> = ${JSON.stringify(palettes)};
 export const PUBLIC_FACTS: readonly PublicFactsEntry[] = [

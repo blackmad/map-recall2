@@ -9,7 +9,7 @@
  */
 import sharp from 'sharp';
 import { pixelKind } from '../../src/canalRecall/look/brickTone.ts';
-import { cropNormaliser, glazingProfile, isOliveShade, leafDominated, masonryFamily, type GlazingProfile } from '../../src/canalRecall/facade/cropWallColour.ts';
+import { cropNormaliser, glassVisible, glazingProfile, isOliveShade, leafDominated, masonryFamily, type GlazingProfile } from '../../src/canalRecall/facade/cropWallColour.ts';
 import { dominantWallColour } from '../../src/canalRecall/facade/dominantWallColour.ts';
 
 /** A crop counts when its winning cluster holds this share of the usable (unmasked, not glass/trim) pixels. */
@@ -23,7 +23,7 @@ export const MIN_BAND_SHARE = 0.06;
 
 export type CropReading = {
   file: string; tag: string; foliage: number | null; wallShare?: number; bandShare?: number; brick?: string; family?: string | null;
-  norm?: { ref: number[] | null; gain: number; wb: number[] }; leafShare?: number; glazing?: GlazingProfile; used: boolean; why?: string;
+  norm?: { ref: number[] | null; gain: number; wb: number[] }; leafShare?: number; glazing?: GlazingProfile; glassVisible?: boolean; glazingOnly?: true; used: boolean; why?: string;
 };
 /** A walls.json row as all-walls.ts writes it (the fields the reading uses). */
 export type WallRow = { tag: string; foliage?: number; ppm?: number; wallWidthM?: number; height?: number };
@@ -62,18 +62,28 @@ export async function readCropWall(file: string, w: WallRow, reading: CropReadin
   if (reading.wallShare < MIN_WALL_SHARE) { reading.why = `wall share ${reading.wallShare}`; return null; }
   // 3. Brick, buff brick, render or concrete, or not this building's wall: a mural (sheet row 35, #f7c386), painted
   // cladding, glass, a hedge read as wall (row 3's shaded brick under blue zinc, row 23's olive).
-  if (!reading.family) { reading.why = `no masonry family ${wall.hex}`; return null; }
+  // Round 4 (GitHub #43, rows 93, 94, 108): a crop whose wall colour is dropped for its family or cast (a mural, a
+  // grey-lilac render, shaded brick) still shows where the windows are: its rows are read against that cluster for
+  // glazing alone, never for colour.
+  const eaves = typeof w.height === 'number' ? w.height : info.height / ppm;
+  const glazingOnly = (why: string) => {
+    reading.why = why;
+    reading.glazing = glazingProfile({ data, width: info.width, height: info.height, channels: ch, ppm, topM: info.height / ppm, eavesM: eaves, wall: wall.rgb, norm: norm.apply });
+    reading.glazingOnly = true; reading.glassVisible = glassVisible(wall.rgb);
+    return null;
+  };
+  if (!reading.family) return glazingOnly(`no masonry family ${wall.hex}`);
   // Brick, concrete and render in daylight read warm or neutral; a cluster bluer than it is red is glass, a
   // shadowed recess or the panorama's cast (sheet rows 34 and 40: blue-grey on a brick and a pale-brick front).
-  if (wall.rgb[2] > wall.rgb[0]) { reading.why = `cool cast ${wall.hex}`; return null; }
+  if (wall.rgb[2] > wall.rgb[0]) return glazingOnly(`cool cast ${wall.hex}`);
   // Green at or over red is a hedge or its shade, not masonry (sheet row 1: #393a34 olive on a red-brown front).
-  if (wall.rgb[1] >= wall.rgb[0]) { reading.why = `green cast ${wall.hex}`; return null; }
+  if (wall.rgb[1] >= wall.rgb[0]) return glazingOnly(`green cast ${wall.hex}`);
   // The wall must be a real part of the crop, not a strip of shaded brick under blue cladding (row 3's w02).
   reading.bandShare = Math.round(wall.pixels / (width * height) * 1000) / 1000;
   if (reading.bandShare < MIN_BAND_SHARE) { reading.why = `band share ${reading.bandShare}`; return null; }
   // 4. Ribbon windows and a pale band under the eaves, read row by row against this wall colour.
-  const eaves = typeof w.height === 'number' ? w.height : info.height / ppm;
   reading.glazing = glazingProfile({ data, width: info.width, height: info.height, channels: ch, ppm, topM: info.height / ppm, eavesM: eaves, wall: wall.rgb, norm: norm.apply });
   reading.used = true;
+  reading.glassVisible = glassVisible(wall.rgb);
   return wall.rgb;
 }

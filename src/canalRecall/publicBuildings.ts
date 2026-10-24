@@ -30,7 +30,7 @@ import { PUBLIC_BUILDINGS, type PublicEntry } from './publicBuildingData.js';
 import { NOT_PUBLIC_FORM, PUBLIC_RETYPE } from './kitTypeOverrides.js';
 import { SCHOOL_PERIOD_WALLS } from './publicBuildingFacts.js';
 import { PERIOD_WALLS, ROOF_TONES, cityStuccoTint, periodForYear } from './look/palette.js';
-import { KIT_FACTS as FACTS, PANORAMA_BRICK, RIBBON_FRAME, RIBBON_MULLION_M, SASH, measuredFrame, measuredOpenings, measuredWallDisplay, panoramaBrickHue, pitchedHip, schoolFacts, storeyWindows, type SchoolFacts } from './kitFacts.js';
+import { KIT_FACTS as FACTS, PANORAMA_BRICK, RIBBON_FRAME, RIBBON_MULLION_M, SASH, measuredFrame, measuredOpenings, measuredRows, measuredWallDisplay, panoramaBrickHue, pitchedHip, schoolFacts, storeyWindows, type SchoolFacts } from './kitFacts.js';
 
 export { PANORAMA_BRICK, panoramaBrickHue, schoolFacts, type SchoolFacts };
 /** A raw panorama wall reading lifted into the city's display range (kitFacts.ts measuredWallDisplay). */
@@ -50,6 +50,12 @@ export const PUBLIC_WALL: Record<'c' | 's', Record<PublicEra, string>> = {
 
 /** A cinema or theatre part this big (footprint) or this tall gets plain walls; smaller ones in old buildings stay houses. */
 export const CINEMA_MIN_AREA_M2 = 800, CINEMA_MIN_HEIGHT_M = 20;
+/**
+ * Under this footprint a cinema-tagged part is a lift core, a pylon or a sign, whatever its height: the height escape
+ * above (CINEMA_MIN_HEIGHT_M) took the Bijlmerbios complex's 20 m2, 30 m part w1488019256 as a film house (kit review
+ * round 4, GitHub #43, row 316: a free-standing windowless pillar). kitTypeOverrides.ts drops it from the published data.
+ */
+export const CINEMA_MIN_PART_AREA_M2 = 50;
 /** Taller than this and the footprint is a tower or office block that merely holds a screen or a stage. */
 export const CINEMA_MAX_HEIGHT_M = 30;
 /** A roofed school needs a rectangle covering this much of the footprint, with no vertex further out than the deviation. */
@@ -69,7 +75,7 @@ export function planPublic(input: PublicInput): PublicPlan | null {
   const { kind, heightM, year, areaM2, rect } = input, era = eraOf(year);
   if (areaM2 > PUBLIC_MAX_AREA_M2) return null;
   if (kind === 'c') {
-    if ((areaM2 < CINEMA_MIN_AREA_M2 && heightM < CINEMA_MIN_HEIGHT_M) || heightM > CINEMA_MAX_HEIGHT_M) return null;
+    if ((areaM2 < CINEMA_MIN_AREA_M2 && heightM < CINEMA_MIN_HEIGHT_M) || heightM > CINEMA_MAX_HEIGHT_M || areaM2 < CINEMA_MIN_PART_AREA_M2) return null;
     return { mode: 'p', eavesM: round1(heightM), riseM: 0, era };
   }
   if (kind === 's') {
@@ -155,7 +161,7 @@ export const SCHOOL_TOP_BAND_M = { o: 1.2, m: 0.7 } as const;
  * flat (rows 301, 304) and a pitched 1979 pavilion is roofed (row 520). A pand outside the cached blades keeps the
  * kit review 1 rule (schoolHipRoof).
  */
-export function schoolRoof(facts: SchoolFacts | undefined, heightM: number): { eavesM: number; riseM: number } | null {
+export function schoolRoof(facts: SchoolFacts | undefined, heightM: number): { eavesM: number; riseM: number; pitchDeg?: number } | null {
   if (facts?.pitch === undefined || facts.pitch === null) return schoolHipRoof(facts, heightM);
   return pitchedHip(facts, heightM, (facts.year ?? 0) < SCHOOL_HIP_BEFORE ? SCHOOL_HIP_MIN_EAVES_M : SCHOOL_PITCHED_MIN_EAVES_M);
 }
@@ -175,18 +181,26 @@ function cinemaKit(name: string, id: string, eavesM: number, era: PublicEra, fac
   if (windows && era !== 'm') windows.plinth = { z1: 0.6, hex: '#8c877d' };
   return {
     name, wall: { plain: true, hex }, tiers: [], stacks: [], roofs: [],
-    halls: [{ id, widthM: 0, anchor: [0, 0], ...(hip ? { hip: true, roofHex: facts?.roofHex ?? SCHOOL_HIP_TILE } : {}), eavesM: eaves, riseM: hip?.riseM ?? 0, mat: 'slate', ...(windows ? { windows } : {}) }],
+    halls: [{ id, widthM: 0, anchor: [0, 0], ...(hip ? { hip: true, roofHex: facts?.roofHex ?? SCHOOL_HIP_TILE, ...(hip.pitchDeg ? { pitchDeg: hip.pitchDeg } : {}) } : {}), eavesM: eaves, riseM: hip?.riseM ?? 0, mat: 'slate', ...(windows ? { windows } : {}) }],
   };
 }
 
 export function publicKit([id, kind, mode, eavesM, riseM, era]: PublicEntry, facts: SchoolFacts | undefined = FACTS.get(id)): Kit {
   const name = `Generic ${KIND_NAME[kind]} ${id}`;
   if (kind === 'c' || mode === 'p') return cinemaKit(name, id, eavesM, era, facts);
+  // Kit review round 4 (GitHub #43, rows 161, 172): planPublic roofs a pre-1930 rectangle from the tile roof code alone;
+  // where the LoD2.2 planes say flat or only partly pitched (the rule schoolRoof applies to flat plans), the school is
+  // drawn flat at its tile height (eaves + the 70th-percentile share of the planned rise, as planPublic split it).
+  if (mode === 'h' && (facts?.pitch === 'flat' || facts?.pitch === 'mixed')) {
+    const share = /^w\d+$/.test(id) ? 1 : 0.7;
+    return publicKit([id, kind, 'f', round1(eavesM + share * riseM), 0, era], facts);
+  }
   // A hip whose ring folds on this footprint (publicBuildingFacts.ts roofFits) keeps the flat roof at full height.
   const hip = mode === 'f' && facts?.roofFits !== false ? schoolRoof(facts, eavesM) : null;
   const eaves = hip?.eavesM ?? eavesM, rise = hip?.riseM ?? riseM;
   const ribbon = facts?.glazing === 'ribbon', frame = measuredFrame(facts);
-  const rows = ribbon ? schoolWindows(eaves, era).map(r => ({ ...r, ribbon: true, bayM: SCHOOL_RIBBON_MULLION_M })) : schoolWindows(eaves, era);
+  // Round 4 (GitHub #43): only the storeys where light-walled crops saw windows (kitFacts.ts measuredRows).
+  const rows = measuredRows(ribbon ? schoolWindows(eaves, era).map(r => ({ ...r, ribbon: true, bayM: SCHOOL_RIBBON_MULLION_M })) : schoolWindows(eaves, era), facts);
   const windows: KitWindows = { rows, glassHex: '#3a4650', frameHex: ribbon ? SCHOOL_RIBBON_FRAME : frame ?? (era === 'm' ? undefined : '#d8d2c4'), plinth: era === 'm' ? undefined : { z1: 0.8, hex: '#8c877d' } };
   // Round 3 (rows 337, 344, 345, 482, 488, 491, 494, 495, 519): punched windows whose crops read pale frames are framed
   // in that colour and divided into panes.
@@ -198,12 +212,14 @@ export function publicKit([id, kind, mode, eavesM, riseM, era]: PublicEntry, fac
     windows.topBand = { m, hex: cityStuccoTint(facts.topBandHex) };
     windows.rows = rows.map(r => (r.z1 > top ? { ...r, z1: top } : r)).filter(r => r.z1 - r.z0 >= 1);
   }
+  // A light wall the crops read blank (round 4: no measured row survives) and nothing else to draw: the plain body.
+  if (!windows.rows.length && !hip && mode === 'f' && !windows.topBand) return { name, wall: { plain: true, hex: schoolWall(id, era, facts).hex }, tiers: [], stacks: [], roofs: [], body: [id], trim: plainBodyTrim(era) };
   // The orthophoto's tint on a pitched school roof, where measured (round 3, review A rows 117-285: salmon where the
   // photo is dark slate); else the dark pantile.
   const roofHex = hip || mode === 'h' ? facts?.roofHex ?? (hip ? SCHOOL_HIP_TILE : undefined) : undefined;
   return {
     name, wall: { plain: true, hex: schoolWall(id, era, facts).hex }, tiers: [], stacks: [], roofs: [],
-    halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === 'h', ...(hip ? { hip: true } : {}), ...(roofHex ? { roofHex } : {}), eavesM: eaves, riseM: rise, mat: 'tile', windows }],
+    halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === 'h', ...(hip ? { hip: true } : {}), ...(hip?.pitchDeg ? { pitchDeg: hip.pitchDeg } : {}), ...(roofHex ? { roofHex } : {}), eavesM: eaves, riseM: rise, mat: 'tile', windows }],
   };
 }
 

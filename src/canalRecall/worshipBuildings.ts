@@ -108,7 +108,7 @@ export function worshipKit([id, kind, mode, eavesM, riseM, era]: WorshipEntry, f
   if (!hip && (mode === 'b' || (mode === 'w' && !rows.length)) && !measured) return { name, wall: { plain: true, hex }, tiers: [], stacks: [], roofs: [], body: [id], trim: plainBodyTrim(era) };
   return {
     name, wall: { plain: true, hex }, tiers: [], stacks: [], roofs: [],
-    halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === 'h', ...(hip ? { hip: true } : {}), eavesM: eaves, riseM: rise, mat: era === 'o' ? 'slate' : 'tile', ...(roofHex ? { roofHex } : {}), windows }],
+    halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === 'h', ...(hip ? { hip: true } : {}), ...(hip?.pitchDeg ? { pitchDeg: hip.pitchDeg } : {}), eavesM: eaves, riseM: rise, mat: era === 'o' ? 'slate' : 'tile', ...(roofHex ? { roofHex } : {}), windows }],
   };
 }
 

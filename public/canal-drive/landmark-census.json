@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-24T19:57:28.221Z",
+ "generatedAt": "2026-10-24T20:42:12.980Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
  "headline": 496,
@@ -25,16 +25,16 @@
    "unreviewed": 18
   },
   "landmarkKit": {
-   "models": 421,
+   "models": 420,
    "counts": 110,
    "strict": 110,
-   "unreviewed": 311
+   "unreviewed": 310
   }
  },
  "byReview": {
   "legacy-gallery": 403,
   "likeness-gate": 74,
-  "none": 329,
+  "none": 328,
   "strip-review": 110
  },
  "rows": [
@@ -11850,18 +11850,6 @@
   {
    "key": "kit:Generic cinema w1488019255",
    "name": "Generic cinema w1488019255",
-   "tier": "landmarkKit",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
-  },
-  {
-   "key": "kit:Generic cinema w1488019256",
-   "name": "Generic cinema w1488019256",
    "tier": "landmarkKit",
    "pands": [],
    "namedPoi": true,

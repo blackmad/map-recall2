@@ -20,7 +20,7 @@ import { WORSHIP_BUILDINGS } from '../../src/canalRecall/worshipBuildingData.ts'
 import { bladeFor } from '../../src/canalRecall/buildingRecipe/pdokLod2.ts';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { roofPitch, type RoofPlane } from '../../src/canalRecall/facade/roofPitch.ts';
-import { KIT_PAND_SHARE, measuredPandFor, planesOverPart } from '../../src/canalRecall/kitPands.ts';
+import { measuredPandFor, planesOverPart, towerPart } from '../../src/canalRecall/kitPands.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const SOURCE = process.env.MAP_RECALL_SOURCE_DATA ?? '/Users/blackmad/Code/map-recall2-source-data';
@@ -28,8 +28,6 @@ const DIR = path.join(SOURCE, 'datasets/pdok-3d-gebouwen-2025');
 const OUT = path.join(ROOT, 'tmp/public/kit-roof-pitch.json');
 /** An OSM part this far above the top of its pand's planes over it is not described by them. */
 const PART_ABOVE_PLANES_M = 3;
-/** An OSM part this many times its pand's main roof height is a tower. */
-const TOWER_RATIO = 1.5;
 const kitPands = JSON.parse(fs.readFileSync(path.join(ROOT, 'public/data/extracts/amsterdam/kit-pands.json'), 'utf8'));
 const kitIdsAll = [...PUBLIC_BUILDINGS, ...WORSHIP_BUILDINGS].map(e => e[0]);
 // OSM part -> its joined pand; the part's roof form is read from that pand's planes over the part's own outline.
@@ -116,10 +114,10 @@ for (const [part, pand] of partPand) {
   // (build-public-facts.ts gives it the pand's wall colour but not its window rows).
   if (top !== null && height !== undefined && height - top > PART_ABOVE_PLANES_M) { out[part] = { missing: `part ${height} m over its planes' ${top.toFixed(1)} m`, notCropped: true }; continue; }
   out[part] = pitch ?? { missing: 'no roof plane of its pand over the part' };
-  // A tower on its pand (a small share of it, TOWER_RATIO times the pand's main roof height) is not the walls the
-  // pand's crops show either.
+  // A tower on its pand (kitPands.ts towerPart: tall over the main roof, a small and slender share of the pand) is not
+  // the walls the pand's crops show either.
   const main = medianTop(planes);
-  if (height !== undefined && main !== null && height > TOWER_RATIO * main && kitPands.ids[part].pandShare < KIT_PAND_SHARE) out[part] = { ...out[part], notCropped: true };
+  if (height !== undefined && main !== null && towerPart(height, main, kitPands.ids[part].pandShare, kitPands.ids[part].areaM2)) out[part] = { ...out[part], notCropped: true };
 }
 for (const id of ids) if (!out[id]) out[id] = { missing: 'no footprint in the BAG tiles' };
 fs.mkdirSync(path.dirname(OUT), { recursive: true });

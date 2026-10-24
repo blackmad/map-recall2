@@ -20,6 +20,7 @@
  *     schools, rows 23, 37, 38).
  */
 import { lightTrimNormalisation, rgbToLab, type Rgb } from '../buildingRecipe/measureFacade.ts';
+import { pixelKind } from '../look/brickTone.ts';
 
 /** Lab lightness, chroma and hue (degrees 0..360) of an sRGB colour. */
 export function lch(rgb: readonly number[]): { L: number; C: number; h: number } {
@@ -98,7 +99,7 @@ export const NOT_WALL_DE = 18;
  * A ribbon: a band of rows at least `minM` tall, from `fromM` up, in which `open` of the readable width is not wall and
  * under `pale` of it is pale (a row of punched windows keeps its piers: 30-60 % wall; a white band is pale, not open).
  */
-export const RIBBON = { minM: 0.6, fromM: 0.8, open: 0.65, pale: 0.5 } as const;
+export const RIBBON = { minM: 0.6, fromM: 0.8, open: 0.65, pale: 0.5, glass: 0.35 } as const;
 /** A white top band: rows within `searchM` under the eaves, at least `minM` tall, this share pale (L* >= 70, C* < 14). */
 export const TOP_BAND = { searchM: 2.5, minM: 0.3, pale: 0.55, minL: 70, maxC: 14 } as const;
 /**
@@ -106,8 +107,15 @@ export const TOP_BAND = { searchM: 2.5, minM: 0.3, pale: 0.55, minL: 70, maxC: 1
  * frames the photos show): a band of rows at least `minM` tall in which `open` of the readable width is not wall and
  * under `pale` is pale holds windows, punched or ribbon. Pale pixels inside those rows are the window frames when they
  * average `framePale` of the readable width; their median colour is the frame colour.
+ *
+ * Kit review round 4 (GitHub #43): a band of rows that differs from the wall only by being lighter is not windows. Blank
+ * brick halls and panel walls read "window rows" where the overcast sky, a pale neighbour or a white block behind them
+ * fills the crop's width beside a narrower hall (rows 220, 279, 356, 421, 23, 67: glass 0.00-0.06 of the row), and blue
+ * sky above a low roof read as "cool glass" (row 5). A window row now needs `WINDOW_ROWS.glass` of the readable width
+ * darker than the wall or cool (the glass itself); a ribbon `RIBBON.glass`, since a ribbon is mostly glass. Sky joined
+ * to the crop's top edge (pixelKind sky or burnt, flood-filled down each column) is not read at all.
  */
-export const WINDOW_ROWS = { minM: 0.6, open: 0.25, pale: 0.5, framePale: 0.06 } as const;
+export const WINDOW_ROWS = { minM: 0.6, open: 0.25, pale: 0.5, framePale: 0.06, glass: 0.1 } as const;
 /**
  * A frame pixel is near-neutral and clearly lighter than the wall: L* at least `minL` and `dL` over the wall's. Relative,
  * not TOP_BAND's absolute L* 70, because most crops are dim (shaded fronts, no light trim to balance on): the reviewed
@@ -130,6 +138,8 @@ export type GlazingProfile = {
   frameHex?: string | null;
   /** The mean light (FRAME_LIGHT) share of the window rows: the frame evidence frameHex is judged on. */
   framePale?: number;
+  /** Round 4: rows (0.1 m) the frames were read over (the round 3 window rows, no glass test). */
+  frameRows?: number;
 };
 
 /**
@@ -142,6 +152,13 @@ export function glazingProfile(a: { data: ArrayLike<number>; width: number; heig
   const { data, width, channels, ppm, topM, eavesM, norm } = a, wallLab = rgbToLab([a.wall[0], a.wall[1], a.wall[2]]);
   const rowOf = (m: number) => Math.round((topM - m) * ppm), step = Math.max(1, Math.round(ppm * 0.1)), xStep = Math.max(1, Math.round(ppm * 0.05));
   const from = a.fromM ?? 1, top = Math.min(eavesM, topM - 0.1);
+  // The sky line per sampled column: the first pixel row from the top that is not sky (blue or burnt out).
+  const skyTo = new Map<number, number>();
+  for (let x = 0; x < width; x += xStep) {
+    let y = 0;
+    for (; y < a.height; y++) { const i = (y * width + x) * channels, k = pixelKind(data[i], data[i + 1], data[i + 2]); if (k !== 'sky' && k !== 'burnt') break; }
+    skyTo.set(x, y);
+  }
   type Row = { z: number; open: number; glass: number; pale: number; paleRgb: Rgb | null; light: number; lightRgb: Rgb | null };
   const rows: Row[] = [];
   for (let z = from; z + 0.1 <= top + 1e-6; z += 0.1) {
@@ -149,6 +166,7 @@ export function glazingProfile(a: { data: ArrayLike<number>; width: number; heig
     let read = 0, total = 0, notWall = 0, glass = 0, pale = 0, light = 0; const paleSum = [0, 0, 0], lightSum = [0, 0, 0];
     for (let x = 0; x < width; x += xStep) {
       total++;
+      if (y0 < skyTo.get(x)!) continue; // sky above the roof line
       let r = 0, g = 0, b = 0, n = 0;
       for (let y = y0; y < y1; y++) { const i = (y * width + x) * channels; r += data[i]; g += data[i + 1]; b += data[i + 2]; n++; }
       if (!n) continue;
@@ -177,7 +195,7 @@ export function glazingProfile(a: { data: ArrayLike<number>; width: number; heig
     if (span(cur) >= minM - 1e-6) out.push(cur);
     return out;
   };
-  const ribbons = runs(r => r.z >= RIBBON.fromM && r.open >= RIBBON.open && r.pale < RIBBON.pale, RIBBON.minM).map(run => [run[0].z, +(run[run.length - 1].z + 0.1).toFixed(1)] as [number, number]);
+  const ribbons = runs(r => r.z >= RIBBON.fromM && r.open >= RIBBON.open && r.glass >= RIBBON.glass && r.pale < RIBBON.pale, RIBBON.minM).map(run => [run[0].z, +(run[run.length - 1].z + 0.1).toFixed(1)] as [number, number]);
   const bands = runs(r => r.z >= eavesM - TOP_BAND.searchM && r.pale >= TOP_BAND.pale, TOP_BAND.minM);
   const band = bands.length ? bands[bands.length - 1] : null;
   let topBandHex: string | null = null;
@@ -187,8 +205,11 @@ export function glazingProfile(a: { data: ArrayLike<number>; width: number; heig
   }
   // Window rows under any top band; pale pixels in them are frames.
   const bandFrom = band ? band[0].z - 1e-6 : Infinity;
-  const winRuns = runs(r => r.z < bandFrom && r.open >= WINDOW_ROWS.open && r.pale < WINDOW_ROWS.pale, WINDOW_ROWS.minM);
-  const winRows = winRuns.flat();
+  const winRuns = runs(r => r.z < bandFrom && r.open >= WINDOW_ROWS.open && r.glass >= WINDOW_ROWS.glass && r.pale < WINDOW_ROWS.pale, WINDOW_ROWS.minM);
+  // Frames are read over the round 3 rows (no glass test): on dark brick the glass falls inside the wall colour and the
+  // white frames are all that shows (the reviewed white-framed schools, rows 337, 344, 345), and the frame colour is
+  // judged on its own share there.
+  const winRows = runs(r => r.z < bandFrom && r.open >= WINDOW_ROWS.open && r.pale < WINDOW_ROWS.pale, WINDOW_ROWS.minM).flat();
   let frameHex: string | null = null;
   const framePale = winRows.length ? winRows.reduce((s, r) => s + r.light, 0) / winRows.length : 0;
   if (winRows.length && framePale >= WINDOW_ROWS.framePale) {
@@ -199,6 +220,25 @@ export function glazingProfile(a: { data: ArrayLike<number>; width: number; heig
   }
   return {
     rowsRead: rows.length, ribbons, topBand: band ? [band[0].z, +(band[band.length - 1].z + 0.1).toFixed(1)] : null, topBandHex,
-    windowBands: winRuns.map(run => [run[0].z, +(run[run.length - 1].z + 0.1).toFixed(1)] as [number, number]), frameHex, framePale: Math.round(framePale * 1000) / 1000,
+    windowBands: winRuns.map(run => [run[0].z, +(run[run.length - 1].z + 0.1).toFixed(1)] as [number, number]), frameHex, framePale: Math.round(framePale * 1000) / 1000, frameRows: winRows.length,
   };
+}
+
+/**
+ * Kit review round 4 (GitHub #43): the glass test sees windows only against a wall they differ from. On a wall at least
+ * this light (L*, the normalised wall cluster) dark glass stands clear of the brick, so a crop that reads no window rows
+ * shows a blank wall (rows 125, 127: near-blank halls with a clerestory or a glazed ground floor); on darker brick the
+ * glass falls inside NOT_WALL_DE of the wall and an empty reading says nothing (dark-brick schools with white frames).
+ */
+export const GLASS_VISIBLE_MIN_WALL_L = 45;
+export const glassVisible = (wall: readonly number[]): boolean => lch(wall).L >= GLASS_VISIBLE_MIN_WALL_L;
+
+/** Spans (metres above ground) merged where they overlap or lie within `gapM`, sorted. */
+export function mergeSpans(spans: readonly (readonly [number, number])[], gapM = 0.3): [number, number][] {
+  const out: [number, number][] = [];
+  for (const [a, b] of spans.slice().sort((p, q) => p[0] - q[0])) {
+    const last = out[out.length - 1];
+    if (last && a <= last[1] + gapM + 1e-9) last[1] = Math.max(last[1], b); else out.push([a, b]);
+  }
+  return out;
 }
