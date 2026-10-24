@@ -31,6 +31,8 @@ type Stage = typeof STAGES[number];
 const AFTER: Record<Stage, QueueStatus> = {crops: 'crops', facts: 'facts', draft: 'drafted', measure: 'measured', compile: 'compiled'};
 const ORDER: QueueStatus[] = ['queued', 'crops', 'facts', 'drafted', 'measured', 'compiled'];
 const TIMEOUT_S: Record<Stage, number> = {crops: 900, facts: 600, draft: 60, measure: 1500, compile: 1500};
+// --source=pdok goes to the facts step only (skips the 3DBAG API, which waits before falling back); every other step is unchanged
+const FACTS_SOURCE: string[] = process.argv.some(a => a === '--source=pdok') ? ['--source=pdok'] : [];
 
 const sourceData = process.env.MAP_RECALL_SOURCE_DATA ?? (fs.existsSync('/Users/blackmad/Code/map-recall2-source-data') ? '/Users/blackmad/Code/map-recall2-source-data' : '');
 if (!sourceData) throw Error('MAP_RECALL_SOURCE_DATA is not set and the default checkout is missing: crops and likeness need the source-data archive');
@@ -103,12 +105,12 @@ async function stageFacts(item: QueueItem, force: boolean): Promise<boolean> {
   const house = item.house!, dir = path.join(HOUSES, house), factsFile = path.join(dir, 'facts.json');
   if (!force && exists(factsFile)) return true;
   // pass 1: the shell and the BAG footprint; pass 2 names the streets found within 30 m so facts.fronts exist
-  let r = run('scripts/building-recipes/facts.ts', [`--house=${house}`, `--pand=${item.pand}`, '--large', '--no-photo'], TIMEOUT_S.facts);
+  let r = run('scripts/building-recipes/facts.ts', [`--house=${house}`, `--pand=${item.pand}`, '--large', '--no-photo', ...FACTS_SOURCE], TIMEOUT_S.facts);
   if (!r.ok) { item.status = 'error'; note(item, `facts failed: ${r.tail}`); return false; }
   if (has('--dry')) return true;
   const facts = read(factsFile), streets = nearbyStreets(facts.bagFootprintRD.flat());
   if (streets.length) {
-    r = run('scripts/building-recipes/facts.ts', [`--house=${house}`, `--pand=${item.pand}`, '--large', `--street=${streets.join('|')}`], TIMEOUT_S.facts);
+    r = run('scripts/building-recipes/facts.ts', [`--house=${house}`, `--pand=${item.pand}`, '--large', `--street=${streets.join('|')}`, ...FACTS_SOURCE], TIMEOUT_S.facts);
     if (!r.ok) note(item, `facts with streets ${streets.join('|')} failed (${r.tail.slice(0, 200)}); kept the street-less facts`);
     else note(item, `facts: fronts on ${read(factsFile).fronts.map((f: any) => f.street).join(', ') || 'no street'}`);
   } else note(item, 'facts: no routing street within 30 m; groups will be unnamed');
