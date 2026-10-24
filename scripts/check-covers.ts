@@ -9,7 +9,7 @@
  *                so they hide nothing in the BAG-keyed tiles today but covers will hide the pand
  *   stale        suppress ids that match no tile feature and no pand alias (no covering pand)
  * and fails (exit 1) on covers.json inconsistencies: a pand listed that is not in the tiles,
- * a directly-suppressed pand missing from its model's entry, or a model with no entry at all
+ * a directly-suppressed pand missing from its model's entry, a pand listed that covers-review.json keeps drawn, or a model with no entry at all
  * whose suppress list resolves to something. `--strict` also fails on hidden bugs.
  *
  * Usage: tsx scripts/check-covers.ts [--tiles=dir] [--covers=file] [--strict] [--verbose]
@@ -44,6 +44,9 @@ for (const spec of allSpecs()) {
   for (const id of covered) if (!index.pands.has(id)) problems.push(`${spec.id}: covers lists ${id}, which is not in the tiles`);
   for (const id of resolved.pands) if (!covered.has(id)) problems.push(`${spec.id}: suppresses ${id} but covers does not list it`);
   for (const id of resolved.osmOnly) if (!entry?.o?.includes(id)) problems.push(`${spec.id}: suppresses OSM-only ${id} but covers does not keep it`);
+  // A pand reviewed 'keep' for this model is a neighbour that stays drawn: listing it hides a real building (Felix Meritis's rear house,
+  // un-suppressed 2026-10-23, was still hidden by a covers.json built the week before).
+  for (const id of covered) if (review[reviewKey(spec.id, id)]?.decision === 'keep') problems.push(`${spec.id}: covers lists ${id}, reviewed 'keep' (a neighbour that stays drawn) in scripts/covers-review.json: rebuild covers.json`);
   const today = new Set(resolved.direct);
   const viaAlias = new Set(resolved.viaAlias);
   for (const id of covered) {
