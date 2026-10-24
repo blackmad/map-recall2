@@ -4,8 +4,8 @@
  * building tiles around the kit. Bundled by kit-sheets.ts with esbuild (global `KitSheets`); not imported by the game.
  */
 import * as THREE from 'three';
-import { KITS, kitGeometry, kitIds, type PartInput } from '../../src/canalRecall/landmarkKits.js';
-import { buildKitChunk } from '../../src/canalRecall/threeBuildingMesh.js';
+import { KITS, decorateKitRoof, kitGeometry, kitIds, type PartInput } from '../../src/canalRecall/landmarkKits.js';
+import { buildKitChunk, wallTopHeightM } from '../../src/canalRecall/threeBuildingMesh.js';
 
 export type RenderRequest = { kit: string; centre: [number, number]; azDeg: number; elDeg?: number; w: number; h: number };
 export type RenderResult = { png: string; parts: number; tris: number; top: number; contextBuildings: number };
@@ -98,13 +98,13 @@ export async function renderKit(req: RenderRequest): Promise<RenderResult> {
   }
   // Hosts: in the game the plain building layer draws the pand under a kit (roof hosts to the eaves, the rest to full height);
   // here they are drawn in the kit wall colour so a generic kit reads as the building it sits on.
+  // Wall tops as the game puts them (decorateKitRoof, then wallTopHeightM): a roof or hall host stops at its kit eaves.
   const towerIds = new Set([...kit.tiers.map(t => t.id), ...kit.stacks.map(s => s.onId)]);
-  const riseOf = new Map(kit.roofs.map(r => [r.id, r.riseM]));
-  const hosts = [...parts.keys()].filter(id => !towerIds.has(id)).map(id => ({id, riseM: riseOf.get(id) ?? 0}));
-  for (const roof of hosts) {
-    const part = parts.get(roof.id); if (!part) continue;
+  for (const id of [...parts.keys()].filter(id => !towerIds.has(id))) {
+    const part = parts.get(id); if (!part) continue;
+    const wallTop = wallTopHeightM(decorateKitRoof({ type: 'Feature', properties: { id, height: part.heightM, minHeight: part.minHeightM }, geometry: null }).properties);
     const shape = new THREE.Shape(part.ring.map(([x, y]) => new THREE.Vector2(x, y)));
-    const g = new THREE.ExtrudeGeometry(shape, { depth: Math.max(0.5, part.heightM - roof.riseM - part.minHeightM), bevelEnabled: false });
+    const g = new THREE.ExtrudeGeometry(shape, { depth: Math.max(0.5, wallTop - part.minHeightM), bevelEnabled: false });
     g.rotateX(-Math.PI / 2); g.translate(0, part.minHeightM, 0);
     scene.add(new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color: kit.wall?.hex ?? "#9a5240", side: THREE.DoubleSide })));
   }

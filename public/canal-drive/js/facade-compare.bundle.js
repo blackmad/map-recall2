@@ -1,5 +1,183 @@
 "use strict";
 (() => {
+  // src/canalRecall/look/palette.ts
+  var PHOTO_WALL_CELL_MEAN = 225;
+  var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
+  var DRAWN_CALM = { wallPull: 0.35, glassLift: 0.25, liftBrick: false };
+  var LOOK_VARIANTS = {
+    photo: { cells: "photo", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 255 / PHOTO_WALL_CELL_MEAN },
+    procedural: { cells: "procedural", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    untextured: { cells: "procedural", shadeBands: 0, flatColour: true, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    // Storybook warms and lifts the natural palette a little, as an illustrator would.
+    storybook: {
+      cells: "storybook",
+      shadeBands: 0,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: false,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: -4, satMul: 1.15, satAdd: 0, keepDarkBelow: 0, lightMul: 1, lightAdd: 0.03, lightMax: 0.9 }
+    },
+    // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
+    cartoon: {
+      cells: "cartoon",
+      shadeBands: 3,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: true,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: 0, satMul: 1.7, satAdd: 0.08, keepDarkBelow: 0.35, lightMul: 1.08, lightAdd: 0, lightMax: 0.85 }
+    }
+  };
+  var clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+  function hexToRgb(hex2) {
+    const m = /^#?([0-9a-f]{6})$/i.exec(hex2.trim());
+    if (!m) throw Error(`Bad colour ${hex2}`);
+    const v = parseInt(m[1], 16);
+    return [v >> 16 & 255, v >> 8 & 255, v & 255];
+  }
+  var rgbToHex = (c) => "#" + c.map((v) => Math.round(clamp(v, 0, 255)).toString(16).padStart(2, "0")).join("");
+  function rgbToHsl([r, g, b]) {
+    const R = r / 255, G2 = g / 255, B = b / 255, max = Math.max(R, G2, B), min = Math.min(R, G2, B), l = (max + min) / 2;
+    if (max === min) return [0, 0, l];
+    const d = max - min, s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    const h = max === R ? (G2 - B) / d + (G2 < B ? 6 : 0) : max === G2 ? (B - R) / d + 2 : (R - G2) / d + 4;
+    return [h * 60, s, l];
+  }
+  function hslToRgb([h, s, l]) {
+    const c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs(h / 60 % 2 - 1)), m = l - c / 2;
+    const [r, g, b] = h < 60 ? [c, x, 0] : h < 120 ? [x, c, 0] : h < 180 ? [0, c, x] : h < 240 ? [0, x, c] : h < 300 ? [x, 0, c] : [c, 0, x];
+    return [(r + m) * 255, (g + m) * 255, (b + m) * 255];
+  }
+  var PERIOD_FROM = { canal: -Infinity, c19: 1860, school: 1915, modern: 1945 };
+  function periodForYear(year) {
+    return year < PERIOD_FROM.c19 ? "canal" : year < PERIOD_FROM.school ? "c19" : year < PERIOD_FROM.modern ? "school" : "modern";
+  }
+  var MEASURED_SLATE = ["#76808f", "#606b79", "#8c939c"];
+  var ROOF_TONES = {
+    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
+    cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
+  };
+  var ROOF_SLOT_TONES = {
+    "gravel": { hex: "#9e9281", luma: [112, 156], cell: "flat" },
+    "bitumen-dark": { hex: "#56585e", luma: [62, 96], cell: "flat" },
+    "bitumen-light": { hex: "#a99b84", luma: [150, 182], cell: "flat" },
+    "white-membrane": { hex: "#d9d9d3", luma: [196, 228], cell: "flat" },
+    "pantile-red": { hex: "#b5543a", luma: [84, 124], cell: "tile" },
+    "pantile-dark": { hex: "#6a5248", luma: [64, 98], cell: "tile" },
+    "slate": { hex: "#76808f", luma: [62, 140], cell: "slate" },
+    "zinc": { hex: "#9aa1a6", luma: [138, 176], cell: "slate" },
+    "sedum": { hex: "#7a8350", luma: [96, 132], cell: "flat" },
+    "solar": { hex: "#2e3a52", luma: [44, 70], cell: "flat" },
+    "terrace": { hex: "#a38d74", luma: [124, 162], cell: "flat" },
+    "glass": { hex: "#8fa3ad", luma: [130, 170], cell: "flat" }
+  };
+  var FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES["white-membrane"].hex, bitumen: ROOF_SLOT_TONES["bitumen-dark"].hex, pebble: ROOF_SLOT_TONES["bitumen-light"].hex };
+  var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
+  var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
+  var PERIOD_WALLS = {
+    photo: {
+      canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
+      c19: ["#b05a40", "#b05a40", "#bd6a45", "#a24d38", "#c58b5e", "#d3b184", "#e2d5ba", "#e2d5ba", "#d9c5a4", "#9a5846"],
+      school: ["#8c4a38", "#7a4535", "#9a5240", "#6e3d33", "#a85a3c", "#5e3a32", "#b0603f"],
+      modern: ["#c9b79a", "#b9ad9a", "#a8a49c", "#d3c6ad", "#8f8a82", "#bfb3a0", "#9c7a62", "#b05a40"]
+    },
+    storybook: {
+      canal: ["#b9583f", "#9a4a38", "#7a4a3c", "#4a5048", "#3f4a5a", "#ead9b0", "#c8664a"],
+      c19: ["#c8664a", "#d98b5f", "#e0b36a", "#ead9b0", "#d9b995", "#c9a08c", "#c8664a"],
+      school: ["#a8553f", "#9a5a48", "#b87a5c", "#c8664a", "#8a4e40"],
+      modern: null
+    },
+    cartoon: {
+      canal: ["#d9453d", "#a8433a", "#3b3b4a", "#2a9d8f", "#4672b0", "#fffaf0", "#e8573d"],
+      c19: ["#e8573d", "#ee7f2c", "#f2b92e", "#f3e6c8", "#d96a4d", "#f2b92e"],
+      school: ["#d96a4d", "#e8573d", "#b9583f", "#ee7f2c"],
+      modern: null
+    }
+  };
+  var PERIOD_PRIORS = {
+    canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
+    c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },
+    school: { label: "Amsterdamse School (1915-1944)", wall: PERIOD_WALLS.photo.school[0], roof: ROOF_TONES.photo.slate[0] },
+    modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
+  };
+  var CITY_BRICK_LIGHTNESS = [0.3, 0.6];
+  var CITY_STONE = "#cfc8b8";
+  function cityWallTint(hex2) {
+    const [h, s, l] = rgbToHsl(hexToRgb(hex2));
+    const lifted = clamp(0.12 + l * 0.9, CITY_BRICK_LIGHTNESS[0], CITY_BRICK_LIGHTNESS[1]);
+    return rgbToHex(hslToRgb([h, clamp(s, 0.12, 0.5), lifted]));
+  }
+  function cityStuccoTint(hex2) {
+    const [h, s, l] = rgbToHsl(hexToRgb(hex2));
+    return rgbToHex(hslToRgb([h, clamp(s, 0, 0.55), clamp(l * 1.06 + 0.03, 0.4, 0.97)]));
+  }
+  var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
+  var GLASS_TINT_CELL_W = 32;
+  var GLASS_TINT_CELL_H = 64;
+  var PANE_LUMA = [157.19, 92.83, 69.17];
+  var STREAK_LUMA = 240.95;
+  var STREAK_ALPHA = 0.16;
+  var PANE_SCALE = 255 / (PANE_LUMA[0] + (STREAK_LUMA - PANE_LUMA[0]) * STREAK_ALPHA);
+  function glassTintCellValue(x, y) {
+    const t = y / (GLASS_TINT_CELL_H - 1);
+    const base = t < 0.5 ? PANE_LUMA[0] + (PANE_LUMA[1] - PANE_LUMA[0]) * (t / 0.5) : PANE_LUMA[1] + (PANE_LUMA[2] - PANE_LUMA[1]) * ((t - 0.5) / 0.5);
+    const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
+    return Math.min(255, Math.round((streak ? base + (STREAK_LUMA - base) * STREAK_ALPHA : base) * PANE_SCALE));
+  }
+  var GLASS_TINT_CELL_MEAN = (() => {
+    let sum = 0;
+    for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
+    return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
+  })();
+  var STONE_CELL_MEAN = 228 / 255;
+  var STREET_GROUND = {
+    // Was [72, 74, 78]: under the rig it drew at luma 67 in sun and 59 in shade, "near-black" (user live play
+    // 2026-10-14). Lifted to a sunlit-grey 88 (just under the klinker carriageway's 91, still cooler than it); with
+    // ownGround/groundLight.ts it draws 88 in sun and 78 in cast shadow, above LOOK's road floor of 65–75.
+    asphalt: { base: [86, 88, 93] },
+    cycle: { base: [150, 66, 58] },
+    // Was [128, 82, 66]: as saturated as the cycle red, so a brick quay read as one wide cycle path from the boat
+    // (user 2026-10-14, Houtmankade). Brick-brown, less saturated; herringbone in mixed tones (ownGround/streetTextures.ts).
+    klinker: { base: [122, 90, 80], joint: "#4b3d38" },
+    pavement: { base: [174, 162, 152], joint: "#7f756b" },
+    kerb: "#cfcac0",
+    paint: "#f2f0ea",
+    rail: "#6c6e72",
+    bollard: "#5a2a26"
+  };
+  var GROUND_TONES = {
+    land: { base: [168, 158, 142], joint: "#857b6d" },
+    paving: { base: [184, 174, 158], joint: "#8f8577" },
+    square: { base: [190, 179, 161], joint: "#958a7c" },
+    // Klinker warm grey-rose, asphalt darker and cooler than it ("so much grey": they shared one band).
+    klinker: { base: [158, 124, 114], joint: "#7a6660" },
+    asphalt: [68, 72, 80],
+    cycle: [156, 76, 66],
+    gravel: [180, 166, 136],
+    park: [96, 140, 70],
+    wood: [70, 112, 58],
+    parking: [102, 102, 105],
+    kerb: "#aaa498",
+    water: "#46707c",
+    // Parks (parks-v1, ownGround/parks.ts, 2026-10-13): mown lawn fresher than the park fill under it, planting beds
+    // as soil with green dabs, shrub planting darker and clumped, bark mulch, play sand, shell/half-paved paths lighter
+    // than street gravel, park asphalt lighter than the road's, ponds the canal tone (a greener one read as a shadow).
+    lawn: [110, 154, 74],
+    bed: { soil: [98, 80, 60], leaf: [84, 122, 58] },
+    shrub: { base: [56, 92, 46], leaf: [76, 116, 56] },
+    bark: [118, 84, 58],
+    sand: [212, 194, 150],
+    parkGravel: [198, 184, 152],
+    parkPath: [110, 110, 112],
+    pond: "#46707c"
+  };
+
   // src/canalRecall/genericFacades.ts
   var FACADE_STYLES = ["canal", "c19", "school", "postwar", "modern", "tower"];
   var FACADE_PIXELS_PER_M = 8;
@@ -87,6 +265,43 @@
       f("v1", P(u0, v1, z0), P(u1, v1, z0), P(u1, v1, z1), P(u0, v1, z1), [0, 1, 0]);
     }
   };
+
+  // src/canalRecall/roofFootprint.ts
+  function openRing(points) {
+    const pts = [];
+    for (const p of points) if (!pts.length || Math.hypot(p[0] - pts[pts.length - 1][0], p[1] - pts[pts.length - 1][1]) > 0.05) pts.push([p[0], p[1]]);
+    while (pts.length > 1 && Math.hypot(pts[0][0] - pts[pts.length - 1][0], pts[0][1] - pts[pts.length - 1][1]) <= 0.05) pts.pop();
+    return pts;
+  }
+  function signedArea(pts) {
+    let a = 0;
+    for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) a += pts[j][0] * pts[i][1] - pts[i][0] * pts[j][1];
+    return a / 2;
+  }
+  function insetRing(ring, t) {
+    const pts = openRing(ring);
+    if (pts.length < 3) return null;
+    const ccw = signedArea(pts) > 0, n = pts.length, out = [];
+    const normalIn = (a, b) => {
+      const dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy);
+      return ccw ? [-dy / l, dx / l] : [dy / l, -dx / l];
+    };
+    for (let i = 0; i < n; i++) {
+      const prev = pts[(i - 1 + n) % n], cur = pts[i], next = pts[(i + 1) % n];
+      const n0 = normalIn(prev, cur), n1 = normalIn(cur, next);
+      const mx = n0[0] + n1[0], my = n0[1] + n1[1], ml = Math.hypot(mx, my);
+      if (ml < 1e-6) return null;
+      const cosHalf = (mx * n0[0] + my * n0[1]) / ml;
+      if (cosHalf < 0.25) return null;
+      const k = t / cosHalf;
+      out.push([cur[0] + mx / ml * k, cur[1] + my / ml * k]);
+    }
+    for (let i = 0; i < n; i++) {
+      const a = pts[i], b = pts[(i + 1) % n], a2 = out[i], b2 = out[(i + 1) % n];
+      if ((b[0] - a[0]) * (b2[0] - a2[0]) + (b[1] - a[1]) * (b2[1] - a2[1]) <= 0) return null;
+    }
+    return out;
+  }
 
   // src/canalRecall/gableTrim.ts
   var PROUD = 0.012;
@@ -572,13 +787,13 @@
       halfHipSlopes(s, L, W, R, zc, ov);
       for (const e of [-1, 1]) {
         const f = e * L / 2;
-        if (cornice && plan.gableEnds?.[e < 0 ? 0 : 1] !== false) {
+        if (cornice && plan.gableEnds?.[e < 0 ? 0 : 1] !== false && plan.streetEnds?.[e < 0 ? 0 : 1] !== false) {
           const prof = gableProfile("cornice", W, R);
           gableSlab(s, prof, e, L, accents ? "trim" : "plate", trim);
           if (accents) gableAccents(s, { shape: "cornice", prof, f, e, W, R, trimHex: trim, shutterHex: "", shutters: false });
         } else {
           s.quad([f, -W / 2, 0], [f, W / 2, 0], [f, vc, zc], [f, -vc, zc], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(vc, zc), s.wallUv(-vc, zc), "plate", [e, 0, 0]);
-          if (accents && plan.gableEnds?.[e < 0 ? 0 : 1] !== false) vergeBoards(s, f, e, [[[-W / 2, 0], [-vc, zc]], [[vc, zc], [W / 2, 0]]], trim);
+          if (accents && plan.gableEnds?.[e < 0 ? 0 : 1] !== false && plan.streetEnds?.[e < 0 ? 0 : 1] !== false) vergeBoards(s, f, e, [[[-W / 2, 0], [-vc, zc]], [[vc, zc], [W / 2, 0]]], trim);
         }
       }
       const d = vc;
@@ -592,9 +807,10 @@
     for (const e of [-1, 1]) {
       const f = e * L / 2;
       const exterior = plan.gableEnds?.[e < 0 ? 0 : 1] !== false;
-      if (plan.kind === "pitched" || !exterior) {
+      const rear = plan.kind === "gable" && plan.streetEnds?.[e < 0 ? 0 : 1] === false;
+      if (plan.kind === "pitched" || !exterior || rear) {
         s.tri([f, -W / 2, 0], [f, W / 2, 0], [f, 0, R], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(0, R), "plate", [e, 0, 0]);
-        if (accents && exterior) vergeBoards(s, f, e, [[[-W / 2, 0], [0, R]], [[0, R], [W / 2, 0]]], trim);
+        if (accents && exterior && !rear) vergeBoards(s, f, e, [[[-W / 2, 0], [0, R]], [[0, R], [W / 2, 0]]], trim);
         continue;
       }
       const prof = gableProfile(plan.gable, W, R);
@@ -616,7 +832,7 @@
     return triangles.map((t) => {
       const nz = t.n[2] / scale, length = Math.hypot(t.n[0], t.n[1], nz);
       const endDot = t.n[0] * rect.ux + t.n[1] * rect.uy;
-      const sourceCrownShape = plan.kind === "gable" && t.part === "plate" && Math.abs(endDot) > 0.9 && plan.gableEnds?.[endDot < 0 ? 0 : 1] !== false ? plan.gable : void 0;
+      const sourceCrownShape = plan.kind === "gable" && t.part === "plate" && Math.abs(endDot) > 0.9 && plan.gableEnds?.[endDot < 0 ? 0 : 1] !== false && plan.streetEnds?.[endDot < 0 ? 0 : 1] !== false ? plan.gable : void 0;
       return {
         ...t,
         sourceCrownShape,
@@ -1603,10 +1819,13 @@
     return [{ z0: round1(z0), z1: round1(z1), widthM: round1(widthM), bayM: round1(Math.max(3.2, widthM * 2.6)), head: "round" }];
   }
   var KIND_NAME = { c: "church", m: "mosque", s: "synagogue", t: "temple" };
+  function plainBodyTrim(era) {
+    return era === "m" ? { coping: { m: 0.6, hex: "#4a4744" } } : { coping: { m: 0.4, hex: CITY_STONE }, plinth: { z1: 0.6, hex: "#8c877d" } };
+  }
   function worshipKit([id, kind, mode, eavesM, riseM, era]) {
     const name2 = `Generic ${KIND_NAME[kind]} ${id}`, hex2 = WORSHIP_WALL[era];
     const rows = worshipWindows(eavesM);
-    if (mode === "b" || mode === "w" && !rows.length) return { name: name2, wall: { plain: true, hex: hex2 }, tiers: [], stacks: [], roofs: [], body: [id] };
+    if (mode === "b" || mode === "w" && !rows.length) return { name: name2, wall: { plain: true, hex: hex2 }, tiers: [], stacks: [], roofs: [], body: [id], trim: plainBodyTrim(era) };
     return {
       name: name2,
       wall: { plain: true, hex: hex2 },
@@ -2280,6 +2499,306 @@
     // (unnamed), 1974, 9 m, 1689 m2
   ];
 
+  // src/canalRecall/publicBuildingFacts.ts
+  var PUBLIC_FACTS = [
+    ["NL.IMBAG.Pand.0305100000000252", 1981, 3, 35, 0, null, 1],
+    ["NL.IMBAG.Pand.0305100000001060", 1955, 3, 32, 73, null, 1],
+    ["NL.IMBAG.Pand.0305100000001188", 1985, 3, 31, 129, null, 1],
+    ["NL.IMBAG.Pand.0358100019106022", 1960, 3, 36, 57, null, 1],
+    ["NL.IMBAG.Pand.0358100020880018", 1990, 3, 35, 78, "#534743", 1],
+    ["NL.IMBAG.Pand.0358100020881991", 1974, 3, 44, 0, "#423d39", 1],
+    ["NL.IMBAG.Pand.0358100021235050", 1933, 3, 38, 87, null, 1],
+    ["NL.IMBAG.Pand.0358100021569571", 1971, 3, 45, 0, "#635444", 1],
+    ["NL.IMBAG.Pand.0362100001054252", 1958, 3, 34, 139, null, 1],
+    ["NL.IMBAG.Pand.0362100001054264", 1981, 3, 37, 83, "#6e5c4d", 1],
+    ["NL.IMBAG.Pand.0362100001054502", 1974, 3, 35, 0, "#5d5650", 1],
+    ["NL.IMBAG.Pand.0362100001056681", 1955, 3, 52, 122, "#968761", 1],
+    ["NL.IMBAG.Pand.0362100001056689", 1940, 3, 35, 127, null, 1],
+    ["NL.IMBAG.Pand.0362100001056925", 1926, 3, 41, 106, "#45423e", 1],
+    ["NL.IMBAG.Pand.0362100001057631", 1955, 3, 33, 113, null, 1],
+    ["NL.IMBAG.Pand.0362100001060286", 1972, 3, 37, 70, "#544b4b", 1],
+    ["NL.IMBAG.Pand.0362100001060288", 1974, 3, 43, 0, "#49423d", 1],
+    ["NL.IMBAG.Pand.0362100001063786", 1993, 2, 34, 0, "#4e4b4a", 1],
+    ["NL.IMBAG.Pand.0362100001071115", 1988, 3, 39, 49, "#7e796c", 1],
+    ["NL.IMBAG.Pand.0362100001077423", 1952, 3, 34, 109, null, 1],
+    ["NL.IMBAG.Pand.0362100001079502", 1956, 2, 36, 0, null, 1],
+    ["NL.IMBAG.Pand.0362100001081052", 1954, 2, 27, 0, null, 1],
+    ["NL.IMBAG.Pand.0362100001091554", 1989, 3, 44, 0, "#565141", 1],
+    ["NL.IMBAG.Pand.0362100001094331", 1973, 3, 40, 0, null, 1],
+    ["NL.IMBAG.Pand.0362100001110286", 1968, 3, 33, 124, null, 1],
+    ["NL.IMBAG.Pand.0363100012061252", 1916, 3, 134, 115, null, 1],
+    ["NL.IMBAG.Pand.0363100012061926", 1924, 3, 32, 70, "#423a38", 1],
+    ["NL.IMBAG.Pand.0363100012061961", 1994, 3, 68, 174, "#534643", 1],
+    ["NL.IMBAG.Pand.0363100012062340", 1928, 3, 48, 133, "#534640", 1],
+    ["NL.IMBAG.Pand.0363100012063764", 1983, 3, 37, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012064693", 1931, 3, 35, 169, "#4f4032", 1],
+    ["NL.IMBAG.Pand.0363100012065279", 1982, 2, 28, 0, "#666056", 1],
+    ["NL.IMBAG.Pand.0363100012065903", 1985, 3, 92, 0, "#706d68", 1],
+    ["NL.IMBAG.Pand.0363100012066710", 1976, 3, 39, 0, "#6d6251", 1],
+    ["NL.IMBAG.Pand.0363100012067061", 1991, 1, 75, 0, "#6e584b", 1],
+    ["NL.IMBAG.Pand.0363100012068181", 1977, 3, 37, 39, null, 1],
+    ["NL.IMBAG.Pand.0363100012068345", 1971, 2, 31, 0, "#d7c4aa", 1],
+    ["NL.IMBAG.Pand.0363100012068581", 1990, 3, 35, 0, "#7a6d68", 1],
+    ["NL.IMBAG.Pand.0363100012068625", 1932, 3, 29, 150, "#564533", 1],
+    ["NL.IMBAG.Pand.0363100012069994", 1956, 3, 54, 111, "#7d6d65", 1],
+    ["NL.IMBAG.Pand.0363100012070769", 1983, 3, 63, 118, null, 1],
+    ["NL.IMBAG.Pand.0363100012071822", 1928, 3, 28, 178, null, 1],
+    ["NL.IMBAG.Pand.0363100012072950", 1933, 3, 136, 0, "#413938", 1],
+    ["NL.IMBAG.Pand.0363100012073434", 1900, 3, 33, 0, "#9f9b8e", 1],
+    ["NL.IMBAG.Pand.0363100012074274", 1922, 3, 33, 166, "#524644", 1],
+    ["NL.IMBAG.Pand.0363100012074804", 1977, 3, 33, 0, "#f7c386", 1],
+    ["NL.IMBAG.Pand.0363100012074914", 1954, 3, 33, 131, null, 1],
+    ["NL.IMBAG.Pand.0363100012075047", 1983, 3, 33, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012075161", 1975, 3, 38, 0, "#756355", 1],
+    ["NL.IMBAG.Pand.0363100012075686", 1976, 3, 36, 53, "#706460", 1],
+    ["NL.IMBAG.Pand.0363100012075737", 1927, 3, 110, 191, "#5a504f", 1],
+    ["NL.IMBAG.Pand.0363100012076543", 1926, 3, 44, 191, "#5c4a4e", 1],
+    ["NL.IMBAG.Pand.0363100012077054", 1956, 3, 36, 113, null, 1],
+    ["NL.IMBAG.Pand.0363100012077177", 1986, 3, 34, 112, null, 1],
+    ["NL.IMBAG.Pand.0363100012078294", 1965, 3, 35, 0, "#5c5756", 1],
+    ["NL.IMBAG.Pand.0363100012079617", 1987, 3, 71, 0, "#7a6e55", 1],
+    ["NL.IMBAG.Pand.0363100012079921", 1967, 3, 37, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012079924", 1973, 3, 33, 42, "#5d5448", 1],
+    ["NL.IMBAG.Pand.0363100012080098", 1991, 2, 71, 0, "#8a8784", 1],
+    ["NL.IMBAG.Pand.0363100012080150", 1982, 3, 32, 0, "#4f4a3f", 1],
+    ["NL.IMBAG.Pand.0363100012080302", 1974, 3, 34, 0, "#534b38", 1],
+    ["NL.IMBAG.Pand.0363100012080308", 1924, 3, 50, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012080630", 1932, 3, 127, 186, "#4d4241", 1],
+    ["NL.IMBAG.Pand.0363100012081651", 1932, 2, 34, 0, "#9c7166", 1],
+    ["NL.IMBAG.Pand.0363100012082745", 1959, 3, 34, 93, "#392e2b", 1],
+    ["NL.IMBAG.Pand.0363100012083302", 1983, 3, 92, 132, "#646159", 1],
+    ["NL.IMBAG.Pand.0363100012083832", 1953, 3, 44, 0, "#9d8e6f", 1],
+    ["NL.IMBAG.Pand.0363100012085252", 1962, 3, 36, 127, null, 1],
+    ["NL.IMBAG.Pand.0363100012085366", 1969, 3, 39, 190, "#4f423b", 1],
+    ["NL.IMBAG.Pand.0363100012086684", 1931, 3, 56, 149, "#48413d", 1],
+    ["NL.IMBAG.Pand.0363100012087388", 1931, 3, 100, 194, "#4c4438", 0],
+    ["NL.IMBAG.Pand.0363100012087825", 1912, 3, 162, 233, null, 1],
+    ["NL.IMBAG.Pand.0363100012088641", 1927, 3, 51, 0, "#615852", 1],
+    ["NL.IMBAG.Pand.0363100012089331", 1984, 3, 21, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012089596", 1980, 3, 39, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012089744", 1989, 3, 68, 113, "#645f58", 1],
+    ["NL.IMBAG.Pand.0363100012090063", 1976, 3, 33, 0, "#443b39", 1],
+    ["NL.IMBAG.Pand.0363100012090993", 1932, 3, 36, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012091041", 1978, 3, 36, 91, null, 1],
+    ["NL.IMBAG.Pand.0363100012091321", 1971, 3, 67, 127, "#4f4441", 1],
+    ["NL.IMBAG.Pand.0363100012091522", 1931, 3, 32, 0, "#5f4636", 1],
+    ["NL.IMBAG.Pand.0363100012091856", 1956, 3, 84, 222, "#695d59", 1],
+    ["NL.IMBAG.Pand.0363100012093296", 1987, 3, 35, 0, "#4c4742", 1],
+    ["NL.IMBAG.Pand.0363100012093382", 1925, 3, 49, 0, "#655b54", 1],
+    ["NL.IMBAG.Pand.0363100012093415", 1982, 3, 37, 65, "#695a55", 1],
+    ["NL.IMBAG.Pand.0363100012094306", 1971, 3, 38, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012095378", 1930, 3, 59, 130, null, 1],
+    ["NL.IMBAG.Pand.0363100012095474", 1986, 3, 35, 0, "#605c59", 1],
+    ["NL.IMBAG.Pand.0363100012097095", 1982, 3, 74, 35, "#554842", 1],
+    ["NL.IMBAG.Pand.0363100012097934", 1957, 3, 93, 114, "#72604b", 1],
+    ["NL.IMBAG.Pand.0363100012098037", 1959, 3, 30, 0, "#48413c", 1],
+    ["NL.IMBAG.Pand.0363100012098213", 1960, 3, 31, 0, "#5c554f", 1],
+    ["NL.IMBAG.Pand.0363100012100220", 1975, 3, 39, 0, "#4a4742", 1],
+    ["NL.IMBAG.Pand.0363100012100351", 1912, 3, 161, 192, null, 1],
+    ["NL.IMBAG.Pand.0363100012100376", 1930, 3, 126, 205, "#534944", 1],
+    ["NL.IMBAG.Pand.0363100012101375", 1988, 3, 29, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012101771", 1936, 3, 35, 275, null, 1],
+    ["NL.IMBAG.Pand.0363100012102419", 1922, 3, 101, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012102814", 1983, 3, 40, 169, "#5e5c5a", 1],
+    ["NL.IMBAG.Pand.0363100012104151", 1959, 1, 113, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012104990", 1924, 3, 133, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012105242", 1988, 3, 111, 120, "#554c4d", 1],
+    ["NL.IMBAG.Pand.0363100012105310", 1972, 3, 48, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012106094", 1981, 3, 38, 83, "#686764", 1],
+    ["NL.IMBAG.Pand.0363100012108191", 1983, 3, 42, 0, "#7a6166", 1],
+    ["NL.IMBAG.Pand.0363100012108564", 1935, 3, 85, 186, null, 0],
+    ["NL.IMBAG.Pand.0363100012108636", 1928, 3, 82, 132, "#585048", 1],
+    ["NL.IMBAG.Pand.0363100012109215", 1924, 3, 28, 158, "#57493a", 1],
+    ["NL.IMBAG.Pand.0363100012109431", 1985, 3, 37, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012110771", 1979, 3, 34, 89, "#605d5b", 1],
+    ["NL.IMBAG.Pand.0363100012111095", 1992, 3, 33, 60, "#544d4a", 1],
+    ["NL.IMBAG.Pand.0363100012111133", 1929, 3, 25, 148, "#5b4b45", 1],
+    ["NL.IMBAG.Pand.0363100012112062", 1985, 3, 65, 0, "#767972", 1],
+    ["NL.IMBAG.Pand.0363100012112226", 1983, 3, 77, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012112291", 1968, 3, 34, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012112357", 1955, 3, 36, 97, "#685c4f", 1],
+    ["NL.IMBAG.Pand.0363100012112403", 1933, 3, 35, 119, "#5f574f", 1],
+    ["NL.IMBAG.Pand.0363100012113048", 1937, 3, 36, 190, null, 1],
+    ["NL.IMBAG.Pand.0363100012113669", 1921, 3, 60, 83, "#57504c", 1],
+    ["NL.IMBAG.Pand.0363100012115235", 2004, 3, 47, 96, "#7c7876", 1],
+    ["NL.IMBAG.Pand.0363100012115402", 1933, 3, 45, 79, "#473d3a", 1],
+    ["NL.IMBAG.Pand.0363100012115532", 1994, 3, 39, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012116143", 1983, 3, 30, 61, "#41383c", 1],
+    ["NL.IMBAG.Pand.0363100012116483", 1978, 3, 37, 0, "#6b5e4c", 1],
+    ["NL.IMBAG.Pand.0363100012116722", 1955, 3, 31, 79, "#4d3d3b", 1],
+    ["NL.IMBAG.Pand.0363100012116795", 1992, 3, 65, 72, null, 1],
+    ["NL.IMBAG.Pand.0363100012117108", 1913, 3, 32, 0, "#fbeecb", 1],
+    ["NL.IMBAG.Pand.0363100012117415", 1976, 3, 31, 0, "#5c5043", 1],
+    ["NL.IMBAG.Pand.0363100012117753", 1980, 3, 45, 104, "#5e554d", 1],
+    ["NL.IMBAG.Pand.0363100012117953", 1991, 3, 108, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012118525", 1927, 3, 49, 0, "#736a66", 1],
+    ["NL.IMBAG.Pand.0363100012118764", 1973, 3, 106, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012120896", 1928, 3, 41, 242, "#6e625b", 1],
+    ["NL.IMBAG.Pand.0363100012121569", 1931, 3, 26, 190, "#5d564e", 1],
+    ["NL.IMBAG.Pand.0363100012122517", 1964, 3, 32, 96, "#403d3b", 1],
+    ["NL.IMBAG.Pand.0363100012123040", 1939, 3, 95, 153, "#4b453e", 1],
+    ["NL.IMBAG.Pand.0363100012125752", 1975, 3, 37, 44, "#897269", 1],
+    ["NL.IMBAG.Pand.0363100012126767", 1960, 3, 97, 165, "#615a3a", 1],
+    ["NL.IMBAG.Pand.0363100012126872", 1976, 3, 36, 37, null, 1],
+    ["NL.IMBAG.Pand.0363100012127997", 1924, 3, 115, 0, "#fcf7df", 1],
+    ["NL.IMBAG.Pand.0363100012128730", 1991, 3, 33, 0, "#585150", 1],
+    ["NL.IMBAG.Pand.0363100012129398", 1957, 3, 94, 160, null, 1],
+    ["NL.IMBAG.Pand.0363100012131629", 1988, 3, 31, 92, null, 1],
+    ["NL.IMBAG.Pand.0363100012132628", 1957, 3, 32, 95, "#514530", 1],
+    ["NL.IMBAG.Pand.0363100012133077", 1990, 3, 87, 0, "#827c75", 1],
+    ["NL.IMBAG.Pand.0363100012133123", 1985, 3, 39, 54, null, 1],
+    ["NL.IMBAG.Pand.0363100012133297", 1935, 3, 55, 168, "#48423b", 0],
+    ["NL.IMBAG.Pand.0363100012134381", 1924, 3, 116, 188, null, 1],
+    ["NL.IMBAG.Pand.0363100012134530", 1977, 2, 43, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012134770", 1986, 3, 88, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012137219", 1956, 3, 29, 90, "#474442", 1],
+    ["NL.IMBAG.Pand.0363100012137446", 1960, 3, 44, 95, "#625651", 1],
+    ["NL.IMBAG.Pand.0363100012137724", 1956, 3, 27, 88, "#635743", 1],
+    ["NL.IMBAG.Pand.0363100012138092", 1954, 3, 76, 134, null, 1],
+    ["NL.IMBAG.Pand.0363100012139793", 1992, 3, 35, 0, "#625750", 1],
+    ["NL.IMBAG.Pand.0363100012142124", 1978, 3, 33, 0, "#8a6a60", 1],
+    ["NL.IMBAG.Pand.0363100012143192", 1965, 2, 70, 0, "#915145", 1],
+    ["NL.IMBAG.Pand.0363100012143384", 1962, 3, 70, 0, "#837b78", 1],
+    ["NL.IMBAG.Pand.0363100012143434", 1988, 3, 32, 0, "#58514d", 1],
+    ["NL.IMBAG.Pand.0363100012143602", 1956, 3, 28, 89, "#6d6152", 1],
+    ["NL.IMBAG.Pand.0363100012143874", 1980, 3, 38, 82, null, 1],
+    ["NL.IMBAG.Pand.0363100012143944", 1973, 3, 70, 0, "#4f4c4a", 1],
+    ["NL.IMBAG.Pand.0363100012144879", 1964, 3, 95, 0, "#666059", 1],
+    ["NL.IMBAG.Pand.0363100012145699", 1927, 3, 49, 107, "#5f4c42", 1],
+    ["NL.IMBAG.Pand.0363100012147735", 1987, 3, 32, 0, "#5d554f", 1],
+    ["NL.IMBAG.Pand.0363100012148474", 1987, 3, 53, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012148715", 1961, 3, 140, 0, "#625a4a", 1],
+    ["NL.IMBAG.Pand.0363100012148948", 1992, 3, 35, 0, "#453a2f", 1],
+    ["NL.IMBAG.Pand.0363100012149675", 1993, 3, 40, 0, "#58493d", 1],
+    ["NL.IMBAG.Pand.0363100012149878", 1920, 3, 129, 183, "#3f362e", 1],
+    ["NL.IMBAG.Pand.0363100012150241", 1985, 2, 38, 0, "#646260", 1],
+    ["NL.IMBAG.Pand.0363100012151320", 1980, 3, 35, 50, "#4a433d", 1],
+    ["NL.IMBAG.Pand.0363100012152606", 1909, 3, 101, 110, "#4b413e", 1],
+    ["NL.IMBAG.Pand.0363100012152781", 1917, 3, 81, 0, "#554942", 1],
+    ["NL.IMBAG.Pand.0363100012154481", 1984, 3, 36, 0, "#6c6a65", 1],
+    ["NL.IMBAG.Pand.0363100012154521", 1987, 3, 32, 210, null, 1],
+    ["NL.IMBAG.Pand.0363100012154937", 1994, 3, 28, 0, "#784e42", 1],
+    ["NL.IMBAG.Pand.0363100012155572", 1994, 3, 68, 0, "#58514a", 1],
+    ["NL.IMBAG.Pand.0363100012155611", 1904, 3, 156, 234, null, 1],
+    ["NL.IMBAG.Pand.0363100012155763", 1888, 3, 84, 159, "#4c4040", 1],
+    ["NL.IMBAG.Pand.0363100012156533", 1925, 3, 58, 205, "#5d5654", 1],
+    ["NL.IMBAG.Pand.0363100012156882", 1930, 3, 38, 74, "#838475", 1],
+    ["NL.IMBAG.Pand.0363100012157107", 1929, 3, 34, 151, "#4d4640", 1],
+    ["NL.IMBAG.Pand.0363100012158248", 1929, 3, 31, 159, null, 1],
+    ["NL.IMBAG.Pand.0363100012158405", 1925, 3, 50, 197, "#5b5552", 1],
+    ["NL.IMBAG.Pand.0363100012158651", 1921, 3, 133, 158, "#453e39", 1],
+    ["NL.IMBAG.Pand.0363100012160100", 1890, 3, 62, 148, null, 1],
+    ["NL.IMBAG.Pand.0363100012163070", 1986, 2, 35, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012163079", 1934, 3, 35, 173, "#5b4f4a", 1],
+    ["NL.IMBAG.Pand.0363100012163104", 1899, 3, 98, 152, "#635754", 1],
+    ["NL.IMBAG.Pand.0363100012163664", 1911, 2, 87, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012163802", 1935, 3, 81, 0, "#797573", 1],
+    ["NL.IMBAG.Pand.0363100012164511", 1929, 3, 41, 192, "#5b4b4a", 1],
+    ["NL.IMBAG.Pand.0363100012164683", 1905, 3, 117, 196, "#fad8b6", 1],
+    ["NL.IMBAG.Pand.0363100012164714", 1888, 3, 59, 182, "#4c443f", 1],
+    ["NL.IMBAG.Pand.0363100012164850", 1903, 3, 139, 198, "#735e62", 1],
+    ["NL.IMBAG.Pand.0363100012164940", 1992, 3, 32, 0, "#4c3d39", 1],
+    ["NL.IMBAG.Pand.0363100012165625", 1921, 3, 52, 161, "#5c5752", 1],
+    ["NL.IMBAG.Pand.0363100012167253", 1929, 3, 73, 157, "#4d3a36", 1],
+    ["NL.IMBAG.Pand.0363100012167313", 1892, 3, 101, 169, "#645952", 1],
+    ["NL.IMBAG.Pand.0363100012168139", 1968, 3, 41, 151, null, 1],
+    ["NL.IMBAG.Pand.0363100012168811", 1874, 3, 30, 162, "#605551", 1],
+    ["NL.IMBAG.Pand.0363100012169564", 1866, 3, 212, 221, "#6d6461", 1],
+    ["NL.IMBAG.Pand.0363100012169565", 1885, 3, 193, 218, "#695d54", 1],
+    ["NL.IMBAG.Pand.0363100012169888", 1993, 1, 114, 0, "#47423f", 1],
+    ["NL.IMBAG.Pand.0363100012170167", 1892, 3, 80, 0, "#5e544d", 1],
+    ["NL.IMBAG.Pand.0363100012170328", 1982, 3, 38, 0, "#726f6a", 1],
+    ["NL.IMBAG.Pand.0363100012170573", 1994, 3, 65, 118, "#594e47", 1],
+    ["NL.IMBAG.Pand.0363100012171760", 1988, 3, 87, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012172090", 1905, 3, 64, 103, "#413f3f", 1],
+    ["NL.IMBAG.Pand.0363100012172975", 1988, 3, 73, 119, null, 1],
+    ["NL.IMBAG.Pand.0363100012173113", 1890, 3, 104, 0, "#524441", 1],
+    ["NL.IMBAG.Pand.0363100012180757", 1898, 3, 96, 143, "#4f4c49", 1],
+    ["NL.IMBAG.Pand.0363100012180835", 1882, 3, 94, 155, "#77594c", 1],
+    ["NL.IMBAG.Pand.0363100012182486", 1990, 3, 142, 213, "#968982", 1],
+    ["NL.IMBAG.Pand.0363100012183194", 1911, 3, 86, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012186868", 1986, 3, 76, 0, "#8a8588", 1],
+    ["NL.IMBAG.Pand.0363100012191081", 1973, 2, 80, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012208464", 1960, 3, 73, 85, "#523f39", 1],
+    ["NL.IMBAG.Pand.0363100012212122", 1925, 3, 31, 0, null, 1],
+    ["NL.IMBAG.Pand.0363100012233517", 1924, 3, 35, 42, "#403e3e", 1],
+    ["NL.IMBAG.Pand.0363100012233590", 1892, 3, 40, 165, "#7d7368", 1],
+    ["NL.IMBAG.Pand.0363100012236586", 1899, 3, 56, 181, "#c0a3a2", 1],
+    ["NL.IMBAG.Pand.0363100012236656", 1890, 3, 76, 208, "#6d6158", 1],
+    ["NL.IMBAG.Pand.0363100012236816", 1916, 3, 133, 0, "#7d6960", 1],
+    ["NL.IMBAG.Pand.0363100012236840", 1900, 3, 30, 199, "#6a5e54", 1],
+    ["NL.IMBAG.Pand.0363100012237030", 1896, 3, 38, 195, "#6a625e", 1],
+    ["NL.IMBAG.Pand.0363100012237203", 1912, 3, 151, 266, null, 1],
+    ["NL.IMBAG.Pand.0363100012237336", 1911, 3, 37, 0, null, 1],
+    ["NL.IMBAG.Pand.0384100000005587", 1960, 3, 36, 98, null, 1],
+    ["NL.IMBAG.Pand.0384100000005599", 1990, 3, 33, 65, null, 1],
+    ["NL.IMBAG.Pand.0384100000006041", 1981, 3, 33, 71, null, 1],
+    ["NL.IMBAG.Pand.0393100000000125", 1994, 3, 34, 97, null, 1],
+    ["NL.IMBAG.Pand.0393100000000414", 1981, 3, 37, 0, null, 1],
+    ["NL.IMBAG.Pand.0394100000207281", 1955, 3, 33, 68, null, 1],
+    ["NL.IMBAG.Pand.0394100000208189", 1963, 3, 30, 84, null, 1],
+    ["NL.IMBAG.Pand.0394100000208246", 1931, 3, 34, 90, null, 1],
+    ["NL.IMBAG.Pand.0394100000209255", 1973, 2, 33, 0, null, 1],
+    ["NL.IMBAG.Pand.0394100000209553", 1970, 3, 34, 0, null, 1],
+    ["NL.IMBAG.Pand.0394100000209846", 1962, 3, 38, 77, null, 1],
+    ["NL.IMBAG.Pand.0394100000217330", 1971, 2, 30, 0, null, 1],
+    ["NL.IMBAG.Pand.0394100000226772", 1931, 3, 42, 118, null, 1],
+    ["NL.IMBAG.Pand.0394100000242779", 1971, 3, 35, 50, null, 1],
+    ["NL.IMBAG.Pand.0394100000242783", 1971, 3, 34, 0, null, 1],
+    ["NL.IMBAG.Pand.0394100000258704", 1975, 3, 34, 0, null, 1],
+    ["NL.IMBAG.Pand.0415100000002681", 1984, 3, 33, 47, "#5c504c", 1],
+    ["NL.IMBAG.Pand.0415100000002748", 1979, 3, 34, 69, "#6c615a", 1],
+    ["NL.IMBAG.Pand.0424100000001256", 1980, 3, 30, 63, null, 1],
+    ["NL.IMBAG.Pand.0424100000004412", 1981, 3, 34, 0, null, 1],
+    ["NL.IMBAG.Pand.0437100000003305", 1977, 3, 33, 78, null, 1],
+    ["NL.IMBAG.Pand.0437100000003427", 1959, 3, 75, 0, null, 1],
+    ["NL.IMBAG.Pand.0437100000006427", 1977, 3, 34, 0, null, 1],
+    ["NL.IMBAG.Pand.0437100000007315", 1974, 3, 35, 45, null, 1],
+    ["NL.IMBAG.Pand.0457100000054413", 1933, 3, 47, 128, "#5f5b5b", 1],
+    ["NL.IMBAG.Pand.0457100000062574", 1956, 3, 31, 57, null, 1],
+    ["NL.IMBAG.Pand.0457100000063604", 1956, 3, 29, 57, null, 1],
+    ["NL.IMBAG.Pand.0479100000001512", 1984, 2, 32, 0, null, 1],
+    ["NL.IMBAG.Pand.0852100000007043", 1974, 3, 36, 66, null, 1],
+    ["NL.IMBAG.Pand.1696100000004556", 1976, 3, 28, 0, null, 1],
+    ["w1362284226", 1963, 0, 0, 0, null, 1],
+    ["w1362284227", 1963, 0, 0, 0, null, 1],
+    ["w1362309458", 1963, 0, 0, 0, null, 1],
+    ["w1362309461", 1963, 0, 0, 0, null, 1],
+    ["w1387551669", 1973, 0, 0, 0, null, 1],
+    ["w1421415124", 1973, 0, 0, 0, null, 1],
+    ["w1421415126", 1973, 0, 0, 0, null, 1],
+    ["w1423983489", 1973, 0, 0, 0, null, 1],
+    ["w1423983494", 1973, 0, 0, 0, null, 1],
+    ["w1488019297", 1987, 0, 0, 0, null, 1],
+    ["w1488019298", 1987, 0, 0, 0, null, 1],
+    ["w1488019299", 1987, 0, 0, 0, null, 1],
+    ["w1488019300", 1987, 0, 0, 0, null, 1],
+    ["w1488019301", 1987, 0, 0, 0, null, 1],
+    ["w1488019303", 1987, 0, 0, 0, null, 1],
+    ["w1488019306", 1987, 0, 0, 0, null, 1],
+    ["w1488019307", 1987, 0, 0, 0, null, 1],
+    ["w1488019308", 1987, 0, 0, 0, null, 1],
+    ["w267883763", 1964, 0, 0, 0, null, 1],
+    ["w280657731", 1930, 0, 0, 0, null, 1],
+    ["w283332324", 1935, 0, 0, 0, null, 1],
+    ["w285287131", 1962, 0, 0, 0, null, 1],
+    ["w44828165", 1984, 0, 0, 0, null, 1],
+    ["w52296553", 1974, 0, 0, 0, null, 1]
+  ];
+
+  // src/canalRecall/facade/materials.ts
+  function wallFamily(rgb) {
+    const [r, g, b] = rgb;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    const chroma = max - min;
+    const light = (r + g + b) / 3;
+    if (light < 52) return "paint";
+    if (chroma < 16 && light > 155) return "paint";
+    if (chroma < 24 && light > 180) return "stone";
+    if (r > b + 6) return "brick";
+    return chroma < 14 ? "paint" : "brick";
+  }
+
   // src/canalRecall/publicBuildings.ts
   var PUBLIC_WALL = {
     c: { o: "#8a6350", e: "#8f6b58", m: "#a8a6a0" },
@@ -2300,23 +2819,55 @@
     return rows;
   }
   var KIND_NAME2 = { c: "cinema", s: "school", f: "fire station", p: "police station", h: "hospital", o: "civic office" };
-  function publicKit([id, kind, mode, eavesM, riseM, era]) {
+  var schoolFacts = ([, year, roof, eavesDm, ridgeDm, wallHex, roofFits]) => ({ year: year || null, roof, eavesM: eavesDm ? eavesDm / 10 : null, ridgeM: ridgeDm ? ridgeDm / 10 : null, wallHex, roofFits: roofFits === 1 });
+  var FACTS = new Map(PUBLIC_FACTS.map((e) => [e[0], schoolFacts(e)]));
+  var stablePick = (id, values) => {
+    let hash = 2166136261;
+    for (const char of id) {
+      hash ^= char.charCodeAt(0);
+      hash = Math.imul(hash, 16777619);
+    }
+    return values[(hash >>> 0) % values.length];
+  };
+  function schoolWall(id, era, facts = FACTS.get(id)) {
+    if (facts?.wallHex) {
+      const rgb = hexToRgb(facts.wallHex);
+      return { hex: wallFamily(rgb) === "brick" ? cityWallTint(facts.wallHex) : cityStuccoTint(facts.wallHex), source: "measured" };
+    }
+    const walls = facts?.year ? PERIOD_WALLS.photo[periodForYear(facts.year)] : null;
+    if (walls?.length) return { hex: stablePick(id, walls), source: "period" };
+    return { hex: PUBLIC_WALL.s[era], source: "era" };
+  }
+  var SCHOOL_HIP_BEFORE = 1940;
+  var SCHOOL_HIP_MIN_RISE_M = 2.5;
+  var SCHOOL_HIP_TILE = ROOF_TONES.photo.tile[3];
+  var SCHOOL_HIP_MIN_EAVES_M = 6;
+  function schoolHipRoof(facts, heightM) {
+    if (!facts?.year || facts.year >= SCHOOL_HIP_BEFORE || facts.ridgeM === null || facts.eavesM === null) return null;
+    const eaves = Math.max(facts.eavesM, (heightM - 0.7 * facts.ridgeM) / 0.3, SCHOOL_HIP_MIN_EAVES_M);
+    const rise = facts.ridgeM - eaves;
+    if (rise < SCHOOL_HIP_MIN_RISE_M) return null;
+    return { eavesM: round12(eaves), riseM: round12(rise) };
+  }
+  function publicKit([id, kind, mode, eavesM, riseM, era], facts = FACTS.get(id)) {
     const name2 = `Generic ${KIND_NAME2[kind]} ${id}`;
     if (kind === "c" || mode === "p") {
-      return { name: name2, wall: { plain: true, hex: PUBLIC_WALL.c[era] }, tiers: [], stacks: [], roofs: [], body: [id] };
+      return { name: name2, wall: { plain: true, hex: PUBLIC_WALL.c[era] }, tiers: [], stacks: [], roofs: [], body: [id], trim: plainBodyTrim(era) };
     }
-    const rows = schoolWindows(eavesM, era);
+    const hip = mode === "f" && facts?.roofFits !== false ? schoolHipRoof(facts, eavesM) : null;
+    const eaves = hip?.eavesM ?? eavesM, rise = hip?.riseM ?? riseM;
+    const rows = schoolWindows(eaves, era);
     const windows = { rows, glassHex: "#3a4650", frameHex: era === "m" ? void 0 : "#d8d2c4", plinth: era === "m" ? void 0 : { z1: 0.8, hex: "#8c877d" } };
     return {
       name: name2,
-      wall: { plain: true, hex: PUBLIC_WALL.s[era] },
+      wall: { plain: true, hex: schoolWall(id, era, facts).hex },
       tiers: [],
       stacks: [],
       roofs: [],
-      halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === "h", eavesM, riseM, mat: "tile", windows }]
+      halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === "h", ...hip ? { hip: true, roofHex: SCHOOL_HIP_TILE } : {}, eavesM: eaves, riseM: rise, mat: "tile", windows }]
     };
   }
-  var GENERIC_PUBLIC_KITS = PUBLIC_BUILDINGS.map(publicKit);
+  var GENERIC_PUBLIC_KITS = PUBLIC_BUILDINGS.map((e) => publicKit(e));
 
   // src/canalRecall/landmarkKits.ts
   var MAT_HEX = {
@@ -2358,7 +2909,19 @@
       ],
       // BAG's own record for the church's east end (NL.IMBAG.Pand.0363100012164998, BAG year 1990): a 1.8 x 10 m sliver 35 m tall that stood as a bare beige slab beside
       // the OSM nave parts. Walled in the kit's brick to the nave's 27 m eaves under a slim slate ridge.
-      halls: [{ id: "NL.IMBAG.Pand.0363100012164998", widthM: 1.9, anchor: [4.884358, 52.374554], eavesM: 27, riseM: 1.5, mat: "slate" }]
+      halls: [{ id: "NL.IMBAG.Pand.0363100012164998", widthM: 1.9, anchor: [4.884358, 52.374554], eavesM: 27, riseM: 1.5, mat: "slate" }],
+      // The church's own lean-to shops between the buttresses (BAG 1990, 8-11 m², ~3.8 m): Westermarkt 66-74 on the
+      // south wall, 60-62 on the north. Under the 14 m² facade minimum they fell back to random prior colours, so the
+      // nave stood behind a row of teal/beige/tan boxes (user report 2026-10-10). They share the church's brick instead.
+      body: [
+        "NL.IMBAG.Pand.0363100012174406",
+        "NL.IMBAG.Pand.0363100012174405",
+        "NL.IMBAG.Pand.0363100012174404",
+        "NL.IMBAG.Pand.0363100012174226",
+        "NL.IMBAG.Pand.0363100012174225",
+        "NL.IMBAG.Pand.0363100012174224",
+        "NL.IMBAG.Pand.0363100012168591"
+      ]
     },
     {
       // The tower is 80 m; OSM stops at 30, so the octagonal stage, lantern and needle spire are stacked on.
@@ -2585,7 +3148,9 @@
       tiers: [],
       stacks: [],
       roofs: [],
-      body: ["w1390692763", "w1390692767", "w1390692768", "w1390692769", "w1390692770", "w1390692771", "w1390692772", "w1390692766", "w1390692764", "w1390692765"]
+      body: ["w1390692763", "w1390692767", "w1390692768", "w1390692769", "w1390692770", "w1390692771", "w1390692772", "w1390692766", "w1390692764", "w1390692765"],
+      // The copper skin's darker capping round each part's top edge (kit review 1: a body-only kit drew nothing of its own).
+      trim: { coping: { m: 0.5, hex: "#3d7a66" } }
     },
     // Museums and cinemas: the Van Gogh Museum, the Stedelijk, Eye, Tuschinski, the Maritime Museum, H'ART (museumKits.ts).
     ...MUSEUM_KITS,
@@ -3156,7 +3721,13 @@
           sink.out.push({ p: t.p, uv: t.uv, layer: slope ? "slope" : "plain", hex: slope ? hex2 : gable, n: t.n });
         }
       }
-      if (spec.fit) {
+      if (spec.hip && spec.riseM > 0) {
+        const tris = hipAround(part.ring, spec.eavesM, spec.riseM) ?? hipOverRect(part.ring, plan, spec.eavesM);
+        for (const t of tris) {
+          const slope = t.part === "slope";
+          sink.out.push({ p: t.p, uv: t.uv, layer: slope ? "slope" : "plain", hex: slope ? hex2 : gable, n: t.n });
+        }
+      } else if (spec.fit) {
         const rect = fitRect(part.ring, 200);
         if (rect && rect.coverage >= FIT_COVERAGE && rect.maxDev <= FIT_MAX_DEV_M && spec.riseM > 0) {
           for (const t of roofTriangles(rect, plan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
@@ -3187,7 +3758,106 @@
       const part = parts.get(form.on);
       if (part) sinkFor(form.on).out.push(...formTriangles(form, part.ring, toLocal));
     }
+    if (kit.trim) for (const id of kit.body ?? []) {
+      const part = parts.get(id);
+      if (part) bodyTrim(sinkFor(id), part, kit.trim);
+    }
     return [...out].map(([id, sink]) => ({ id, tris: sink.out }));
+  }
+  function bodyTrim(sink, part, trim) {
+    const z0 = part.minHeightM, z1 = part.heightM;
+    for (const e of wallEdges(part.ring)) {
+      if (e.len < 0.2) continue;
+      if (trim.plinth && trim.plinth.z1 < z1 - z0) wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, z0], [e.len, z0], [e.len, z0 + trim.plinth.z1], [0, z0 + trim.plinth.z1]], trim.plinth.hex);
+      if (trim.coping) {
+        const c = Math.min(trim.coping.m, (z1 - z0) / 2);
+        wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, z1 - c], [e.len, z1 - c], [e.len, z1], [0, z1]], trim.coping.hex);
+      }
+    }
+  }
+  var HIP_PITCH_DEG = 50;
+  var HIP_MAX_PITCH_DEG = 65;
+  var HIP_SIMPLIFY_M = 1;
+  var HIP_MIN_INSET_M = 1.2;
+  function simplifyRing(ring, tol) {
+    const pts = openRing(ring);
+    const off = (a, b, c) => {
+      const l = Math.hypot(c[0] - a[0], c[1] - a[1]);
+      return l < 1e-9 ? Math.hypot(b[0] - a[0], b[1] - a[1]) : Math.abs((c[0] - a[0]) * (b[1] - a[1]) - (c[1] - a[1]) * (b[0] - a[0])) / l;
+    };
+    while (pts.length > 4) {
+      let best = -1, bestD = tol;
+      for (let i = 0; i < pts.length; i++) {
+        const d = off(pts[(i + pts.length - 1) % pts.length], pts[i], pts[(i + 1) % pts.length]);
+        if (d < bestD) {
+          bestD = d;
+          best = i;
+        }
+      }
+      if (best < 0) break;
+      pts.splice(best, 1);
+    }
+    return pts;
+  }
+  function hipAround(ring, eavesM, riseM) {
+    const pts = simplifyRing(ring, HIP_SIMPLIFY_M);
+    if (pts.length < 3 || riseM <= 0) return null;
+    const tanOf = (deg) => Math.tan(deg * Math.PI / 180), want = riseM / tanOf(HIP_PITCH_DEG);
+    const sign = Math.sign(signedArea(pts));
+    for (let t = want; t >= HIP_MIN_INSET_M - 1e-9; t *= 0.92) {
+      const inner = insetRing(pts, t);
+      if (!inner || Math.sign(signedArea(inner)) !== sign || Math.abs(signedArea(inner)) < 1) continue;
+      const rise = Math.min(riseM, t * tanOf(HIP_MAX_PITCH_DEG));
+      const out = [], z0 = eavesM, z1 = eavesM + rise;
+      const tri2 = (a, b, c, part) => {
+        const u = sub3(b, a), v = sub3(c, a);
+        let n = cross2(u, v);
+        if (n[2] < 0) {
+          n = [-n[0], -n[1], -n[2]];
+          [b, c] = [c, b];
+        }
+        const l = Math.hypot(n[0], n[1], n[2]);
+        if (l < 1e-9) return;
+        out.push({ p: [a, b, c], uv: [[a[0] / 1.2, a[1] / 1.2], [b[0] / 1.2, b[1] / 1.2], [c[0] / 1.2, c[1] / 1.2]], part, n: [n[0] / l, n[1] / l, n[2] / l] });
+      };
+      for (let i = 0; i < pts.length; i++) {
+        const j = (i + 1) % pts.length, a = [...pts[i], z0], b = [...pts[j], z0], c = [...inner[j], z1], d = [...inner[i], z1];
+        tri2(a, b, c, "slope");
+        tri2(a, c, d, "slope");
+      }
+      for (const [a, b, c] of earClip(inner)) tri2([...a, z1], [...b, z1], [...c, z1], "slope");
+      return out;
+    }
+    return null;
+  }
+  function hipOverRect(ring, plan, eavesM) {
+    const rect = fitRect(ring, 200);
+    if (!rect || rect.coverage < FIT_COVERAGE || rect.maxDev > FIT_MAX_DEV_M) return [];
+    return roofTriangles(rect, { ...plan, kind: "hipped" }, eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 });
+  }
+  function earClip(poly) {
+    const idx = poly.map((_, i) => i), out = [], ccw = signedArea(poly) > 0;
+    const turn = (a, b, c) => ((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])) * (ccw ? 1 : -1);
+    const inside = (p, a, b, c) => turn(a, b, p) > 0 && turn(b, c, p) > 0 && turn(c, a, p) > 0;
+    let guard = 0;
+    while (idx.length > 3 && guard++ < 1e4) {
+      let clipped = false;
+      for (let k = 0; k < idx.length; k++) {
+        const a = poly[idx[(k + idx.length - 1) % idx.length]], b = poly[idx[k]], c = poly[idx[(k + 1) % idx.length]];
+        if (turn(a, b, c) <= 1e-9) continue;
+        if (idx.some((i) => {
+          const p = poly[i];
+          return p !== a && p !== b && p !== c && inside(p, a, b, c);
+        })) continue;
+        out.push([a, b, c]);
+        idx.splice(k, 1);
+        clipped = true;
+        break;
+      }
+      if (!clipped) break;
+    }
+    if (idx.length === 3) out.push([poly[idx[0]], poly[idx[1]], poly[idx[2]]]);
+    return out;
   }
   var KIT_ORIGIN = { lng: 4.9, lat: 52.37 };
   var toLocal = ([lng, lat]) => [(lng - KIT_ORIGIN.lng) * 111320 * Math.cos(KIT_ORIGIN.lat * Math.PI / 180), (lat - KIT_ORIGIN.lat) * 110540];
@@ -3225,6 +3895,259 @@
     }
     return out;
   }
+
+  // src/canalRecall/look/measuredWhitePoints.ts
+  var WALL_WHITE_POINTS = {
+    "#4f4834": [215, 215, 215],
+    "#463823": [216, 215, 215],
+    "#5f5950": [215, 215, 215],
+    "#a69873": [215, 215, 215],
+    "#57423e": [215, 215, 215],
+    "#473c3b": [215, 215, 215],
+    "#5d5d5c": [214, 215, 215],
+    "#7e573b": [215, 215, 215],
+    "#705449": [215, 215, 215],
+    "#7f8283": [215, 214, 215],
+    "#796764": [215, 215, 215],
+    "#5d534b": [215, 215, 215],
+    "#7d6e52": [215, 215, 215],
+    "#88735e": [215, 215, 215],
+    "#88715f": [215, 215, 215],
+    "#736352": [215, 215, 215],
+    "#241d1c": [172, 172, 172],
+    "#4b3f37": [215, 215, 215],
+    "#615551": [215, 215, 215],
+    "#595651": [214, 215, 214],
+    "#423931": [215, 215, 215],
+    "#7b6d6a": [215, 214, 216],
+    "#382418": [215, 215, 215],
+    "#866343": [215, 215, 215],
+    "#6e6256": [215, 215, 215],
+    "#625650": [205, 205, 205],
+    "#252c24": [185, 185, 186],
+    "#2d281b": [215, 214, 215],
+    "#3b342b": [215, 215, 215],
+    "#6f5c56": [215, 215, 215],
+    "#393535": [215, 215, 215],
+    "#786357": [215, 215, 215],
+    "#383d43": [205, 215, 215],
+    "#554e4a": [215, 216, 215],
+    "#3d3432": [215, 215, 215],
+    "#3d353c": [215, 215, 215],
+    "#4e443f": [215, 215, 215],
+    "#70574d": [207, 207, 207],
+    "#d49662": [215, 215, 215],
+    "#917b5c": [215, 215, 215],
+    "#494341": [215, 215, 215],
+    "#645f5f": [215, 215, 214],
+    "#342a18": [215, 215, 215],
+    "#825746": [215, 216, 215],
+    "#99604e": [212, 215, 215],
+    "#706868": [215, 215, 215],
+    "#786b61": [215, 215, 214],
+    "#5c5b57": [215, 215, 215],
+    "#7a655b": [215, 215, 215],
+    "#6f5b54": [215, 215, 215],
+    "#4a3f3a": [215, 214, 215],
+    "#614f44": [216, 215, 215],
+    "#654e44": [215, 215, 215],
+    "#6f5f53": [215, 215, 216],
+    "#584d49": [215, 215, 215],
+    "#d3c9b2": [215, 215, 215],
+    "#544b46": [215, 215, 215],
+    "#929289": [215, 215, 215],
+    "#68584f": [215, 215, 216],
+    "#574d47": [215, 215, 215],
+    "#5e4e41": [215, 215, 215],
+    "#6e605a": [215, 215, 215],
+    "#605d5c": [215, 215, 215],
+    "#8c7a6f": [215, 215, 215],
+    "#4a3832": [165, 165, 166],
+    "#81614f": [215, 215, 215],
+    "#3d3533": [215, 215, 215],
+    "#6d5351": [215, 215, 215],
+    "#5c3d33": [214, 214, 215],
+    "#906553": [215, 215, 215],
+    "#65493d": [215, 215, 215],
+    "#8e5f49": [215, 215, 215],
+    "#8c6858": [215, 215, 215],
+    "#8b5946": [215, 215, 215],
+    "#665253": [209, 209, 209],
+    "#3e3222": [215, 215, 215],
+    "#000000": [197, 198, 197],
+    "#7b081b": [215, 215, 215],
+    "#383131": [215, 215, 215],
+    "#3d3b37": [211, 215, 215],
+    "#877d76": [214, 215, 215],
+    "#191d0c": [215, 214, 213],
+    "#bcab88": [215, 215, 215],
+    "#656462": [215, 215, 215],
+    "#3f3634": [174, 174, 175],
+    "#463e3c": [197, 197, 198],
+    "#453d3a": [177, 177, 176],
+    "#1f1a1b": [156, 156, 157],
+    "#615450": [214, 215, 215],
+    "#5b4f4b": [215, 215, 215],
+    "#574c4a": [215, 215, 215],
+    "#413333": [215, 215, 215],
+    "#7b5c53": [215, 215, 215],
+    "#5f342b": [216, 215, 215],
+    "#4e2422": [215, 215, 215],
+    "#5b4b44": [209, 209, 209],
+    "#493d32": [215, 215, 215],
+    "#6a5048": [216, 216, 215],
+    "#5e5855": [215, 215, 215],
+    "#5e3f35": [215, 215, 215],
+    "#68564f": [215, 215, 215],
+    "#6b3e33": [215, 214, 215],
+    "#5f3c30": [215, 214, 215],
+    "#929191": [215, 215, 215],
+    "#a2acb3": [215, 215, 215],
+    "#8f7b65": [215, 215, 215],
+    "#988e7d": [215, 215, 215],
+    "#726d60": [215, 215, 215],
+    "#584c45": [215, 214, 215],
+    "#594643": [216, 215, 215],
+    "#5e5750": [212, 215, 215],
+    "#78645b": [215, 215, 215],
+    "#484440": [215, 215, 215],
+    "#73645e": [215, 215, 215],
+    "#5c4f47": [215, 215, 215],
+    "#3c3d39": [215, 215, 215],
+    "#645451": [215, 215, 214],
+    "#37333d": [179, 179, 178],
+    "#a6856f": [215, 215, 215],
+    "#574d4d": [205, 205, 205],
+    "#393737": [215, 215, 215],
+    "#6f4a3b": [215, 214, 215],
+    "#ffa169": [212, 215, 215],
+    "#576465": [216, 215, 216],
+    "#71614a": [215, 215, 215],
+    "#6c584f": [215, 215, 215],
+    "#5b463e": [215, 216, 215],
+    "#765e52": [214, 215, 215],
+    "#4f4e4c": [215, 215, 215],
+    "#544945": [215, 215, 215],
+    "#504140": [194, 195, 194],
+    "#51514f": [215, 215, 215],
+    "#74665f": [215, 215, 215],
+    "#735c59": [215, 215, 215],
+    "#474d56": [215, 215, 215],
+    "#7d6e5a": [215, 215, 215],
+    "#514a43": [215, 215, 215],
+    "#4e4e49": [215, 215, 215],
+    "#745c51": [215, 215, 215],
+    "#47403c": [215, 215, 215],
+    "#4c3a37": [215, 215, 215],
+    "#675d5a": [215, 215, 215],
+    "#574e48": [215, 215, 215],
+    "#686360": [215, 215, 215],
+    "#4a413f": [215, 215, 215],
+    "#423735": [215, 215, 215],
+    "#756860": [215, 215, 215],
+    "#5e5144": [215, 215, 215]
+  };
+
+  // src/canalRecall/ownGround/groundLook.ts
+  var DEFAULT_PALETTE = { street: { ...STREET_GROUND, brick: STREET_GROUND.klinker }, tones: GROUND_TONES };
+
+  // src/canalRecall/look/sunny.ts
+  var srgbToLinear = (v) => {
+    const s = v / 255;
+    return s <= 0.04045 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+  };
+  var hexRgb = (hex2) => {
+    const n = parseInt(hex2.replace("#", ""), 16);
+    return [n >> 16 & 255, n >> 8 & 255, n & 255];
+  };
+  var rgbHex = (c) => "#" + c.map((v) => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, "0")).join("");
+  var Y = (c) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  var linY = (hex2) => Y(hexRgb(hex2).map(srgbToLinear));
+  var SKY = { zenith: "#9ec3ed", horizon: "#a1c6e5" };
+  function rigIrradiance(rig) {
+    const el = rig.sunElevationDeg * Math.PI / 180, sun = linY(rig.sunColour) * rig.sunIntensity / Math.PI;
+    const sky = linY(rig.skyColour) * rig.skyIntensity / Math.PI, ground = linY(rig.groundColour) * rig.skyIntensity / Math.PI;
+    const hemiWall = (sky + ground) / 2;
+    return { flat: sun * Math.sin(el) + sky, sunWall: sun * Math.cos(el) + hemiWall, shadeWall: hemiWall };
+  }
+  var SUNNY_SHADE_RATIO = 0.55;
+  function sunnyBase(sunColour = "#ffe2bf", groundColour = "#aca497", ratio = SUNNY_SHADE_RATIO) {
+    const el = 40 * Math.PI / 180;
+    const build = (t) => {
+      const skyColour = rgbHex(hexRgb(SKY.horizon).map((v) => v + (255 - v) * t));
+      const sun = linY(sunColour) * 2.15 / Math.PI * Math.cos(el), hemiPerUnit = (linY(skyColour) + linY(groundColour)) / 2 / Math.PI;
+      const skyIntensity = ratio * sun / (1 - ratio) / hemiPerUnit;
+      return { sunColour, sunIntensity: 2.15, skyColour, groundColour, skyIntensity, sunElevationDeg: 40 };
+    };
+    const flatRB = (t) => {
+      const r = build(t), s = hexRgb(r.sunColour).map(srgbToLinear), k = hexRgb(r.skyColour).map(srgbToLinear);
+      const c = [0, 2].map((i) => s[i] * r.sunIntensity * Math.sin(el) + k[i] * r.skyIntensity);
+      return c[0] / c[1];
+    };
+    let lo = 0, hi = 1;
+    for (let i = 0; i < 40; i++) {
+      const m = (lo + hi) / 2;
+      if (flatRB(m) < 1) lo = m;
+      else hi = m;
+    }
+    return { ...build(hi), whiteMix: +hi.toFixed(3) };
+  }
+  var SUNNY_BASE = sunnyBase();
+  var SUNNY_EXPOSURE = 1 / rigIrradiance(SUNNY_BASE).sunWall;
+  var SUNNY_LIGHT = {
+    sunColour: SUNNY_BASE.sunColour,
+    sunIntensity: +(SUNNY_BASE.sunIntensity * SUNNY_EXPOSURE).toFixed(4),
+    skyColour: SUNNY_BASE.skyColour,
+    groundColour: SUNNY_BASE.groundColour,
+    skyIntensity: +(SUNNY_BASE.skyIntensity * SUNNY_EXPOSURE).toFixed(4)
+  };
+  var MEDIAN_MEASURED_WALL = (() => {
+    const walls = Object.keys(WALL_WHITE_POINTS).map(hexRgb), med = (a) => a.slice().sort((p, q2) => p - q2)[a.length >> 1];
+    return rgbHex([0, 1, 2].map((i) => med(walls.map((w) => w[i]))));
+  })();
+
+  // src/canalRecall/rendererShared/lightRig.ts
+  var SHADOW_FILL = 0.5;
+  var DEFAULT_LIGHT_RIG = {
+    // South-south-west afternoon sun: shadows fall north-north-east, so the
+    // canal-side facades that face the street on the main belt stay mostly lit.
+    sunAzimuthDeg: 215,
+    sunElevationDeg: 40,
+    // Mood pass (2026-10-13): a warmer afternoon sun (was #fff1dc), a less blue
+    // sky and a lighter, warmer street bounce (were #dbe8ff over #8d8270), so
+    // shade sides read as daylight rather than dusk. Bands: docs/LOOK.md §Parity.
+    sunColour: "#ffe9cc",
+    sunIntensity: 2.15,
+    skyColour: "#e3ebf6",
+    groundColour: "#998a72",
+    skyIntensity: 1.75,
+    shadows: true,
+    shadowMapSize: 2048,
+    shadowIntensity: 1 - SHADOW_FILL
+  };
+  var SUNNY_LIGHT_RIG = { ...DEFAULT_LIGHT_RIG, ...SUNNY_LIGHT };
+  function sunDirection(azimuthDeg, elevationDeg) {
+    const az = azimuthDeg * Math.PI / 180, el = elevationDeg * Math.PI / 180;
+    return [Math.sin(az) * Math.cos(el), Math.cos(az) * Math.cos(el), Math.sin(el)];
+  }
+  var SUN_DIRECTION = sunDirection(DEFAULT_LIGHT_RIG.sunAzimuthDeg, DEFAULT_LIGHT_RIG.sunElevationDeg);
+  var SUN_HORIZONTAL = (() => {
+    const a = DEFAULT_LIGHT_RIG.sunAzimuthDeg * Math.PI / 180;
+    return [Math.sin(a), Math.cos(a)];
+  })();
+  var BAKED_FACE_LIGHT = [SUN_HORIZONTAL[0] * 0.6, SUN_HORIZONTAL[1] * 0.6, 0.8];
+  var BAKED_WALL_MIN = 0.84;
+  function bakedFaceShade(n) {
+    const d = n[0] * BAKED_FACE_LIGHT[0] + n[1] * BAKED_FACE_LIGHT[1] + n[2] * BAKED_FACE_LIGHT[2];
+    return Math.max(0.5, Math.min(1, 0.58 + 0.42 * Math.max(0, d)));
+  }
+  var BAKED_LID_SHADE = bakedFaceShade([0, 0, 1]);
+  var glslFloat = (v) => Number.isInteger(v) ? v.toFixed(1) : String(+v.toFixed(6));
+  var BAKED_SHADE_GLSL = `
+  float shade;
+  if (abs(n.z) < 0.5) { vec2 h = normalize(n.xy + vec2(1e-6, 0.0)); shade = ${glslFloat(BAKED_WALL_MIN)} + ${glslFloat(1 - BAKED_WALL_MIN)} * (0.5 + 0.5 * dot(h, vec2(${glslFloat(SUN_HORIZONTAL[0])}, ${glslFloat(SUN_HORIZONTAL[1])}))); }
+  else if (n.z < 0.0) shade = 0.5;
+  else shade = clamp(0.58 + 0.42 * max(0.0, dot(n, vec3(${BAKED_FACE_LIGHT.map(glslFloat).join(", ")}))), 0.5, 1.0);`;
 
   // src/canalRecall/wallBays.ts
   function hashSeed(value) {
@@ -3272,82 +4195,6 @@
     const width = v.openingOccupancy !== void 0 ? BAY_PX * v.openingOccupancy / v.windows : (v.windows === 1 ? 150 : v.windows === 2 ? 112 : 82) * (v.proportions === "wide" ? 1.35 : v.proportions === "balanced" ? 1.12 : 1) * (look === "cartoon" ? 1.12 : 1);
     const height = v.openingHeight !== void 0 ? Math.min((y === 70 || y === 76 ? GROUND_PX : STOREY_PX) * v.openingHeight, h * 1.18) : h * (v.proportions === "wide" ? 0.76 : v.proportions === "balanced" ? 0.88 : 1);
     return { width, y: y + (h - height) / 2, height };
-  }
-
-  // src/canalRecall/landmarkFronts.ts
-  function arch(x0, x1, z, rise, segments = 8) {
-    const r = ((x1 - x0) ** 2 / 4 + rise ** 2) / (2 * rise), cx2 = (x0 + x1) / 2, cz = z + rise - r;
-    const half = Math.asin((x1 - x0) / 2 / r);
-    return Array.from({ length: segments + 1 }, (_, i) => {
-      const a = -half + 2 * half * i / segments;
-      return [cx2 + r * Math.sin(a), cz + r * Math.cos(a)];
-    });
-  }
-  function frontTriangles(front2, toWorld) {
-    const tris = [];
-    const quad = (a, b, c, d2, hex2, hint) => {
-      const [pa, pb, pc, pd] = [a, b, c, d2].map(([x, z, y]) => toWorld(x, z, y));
-      tris.push({ p: [pa, pb, pc], hex: hex2, hint }, { p: [pa, pc, pd], hex: hex2, hint });
-    };
-    const box = ({ x0, x1, z0, z1, out0 = 0, out1, hex: hex2, face }) => {
-      quad([x0, z0, out1], [x1, z0, out1], [x1, z1, out1], [x0, z1, out1], hex2, [0, 0, 1]);
-      if (face) return;
-      quad([x0, z0, out0], [x0, z0, out1], [x0, z1, out1], [x0, z1, out0], hex2, [-1, 0, 0]);
-      quad([x1, z0, out1], [x1, z0, out0], [x1, z1, out0], [x1, z1, out1], hex2, [1, 0, 0]);
-      quad([x0, z1, out1], [x1, z1, out1], [x1, z1, out0], [x0, z1, out0], hex2, [0, 1, 0]);
-      quad([x0, z0, out0], [x1, z0, out0], [x1, z0, out1], [x0, z0, out1], hex2, [0, -1, 0]);
-    };
-    const slab2 = (o, o0, o1, hex2) => {
-      for (let i = 1; i < o.length; i++) {
-        const [xa, za] = o[i - 1], [xb, zb] = o[i];
-        if (xb <= xa) continue;
-        quad([xa, 0, o1], [xb, 0, o1], [xb, zb, o1], [xa, za, o1], hex2, [0, 0, 1]);
-        quad([xa, za, o1], [xb, zb, o1], [xb, zb, o0], [xa, za, o0], hex2, [-(zb - za), xb - xa, 0]);
-      }
-      const [xs, zs] = o[0], [xe, ze] = o[o.length - 1];
-      quad([xs, 0, o0], [xs, 0, o1], [xs, zs, o1], [xs, zs, o0], hex2, [-1, 0, 0]);
-      quad([xe, 0, o1], [xe, 0, o0], [xe, ze, o0], [xe, ze, o1], hex2, [1, 0, 0]);
-    };
-    const d = front2.depthM;
-    slab2(front2.outline, 0, d, front2.hex);
-    for (const extra of front2.slabs ?? []) slab2(extra.outline, extra.out0 + d, extra.out1 + d, extra.hex);
-    for (const b of front2.boxes) box({ ...b, out0: (b.out0 ?? 0) + d, out1: b.out1 + d });
-    for (const e of front2.extrusions ?? []) {
-      const pr = e.profile;
-      for (let i = 1; i < pr.length; i++) {
-        const [oa, za] = pr[i - 1], [ob, zb] = pr[i];
-        quad([e.x0, za, oa + d], [e.x1, za, oa + d], [e.x1, zb, ob + d], [e.x0, zb, ob + d], e.hex, [0, ob - oa, -(zb - za)]);
-        quad([e.x0, za, oa + d], [e.x0, zb, ob + d], [e.x1, zb, ob + d], [e.x1, za, oa + d], e.hex, [0, -(ob - oa), zb - za]);
-      }
-      for (const [x, sgn] of [[e.x0, -1], [e.x1, 1]]) for (let i = 2; i < pr.length; i++) {
-        const [a, b, c] = [pr[0], pr[i - 1], pr[i]].map(([o, z]) => toWorld(x, z, o + d));
-        tris.push({ p: [a, b, c], hex: e.hex, hint: [sgn, 0, 0] });
-      }
-    }
-    for (const f of front2.faces ?? []) for (let i = 2; i < f.points.length; i++) {
-      const [a, b, c] = [f.points[0], f.points[i - 1], f.points[i]].map(([x, z]) => toWorld(x, z, f.out + d));
-      tris.push({ p: [a, b, c], hex: f.hex, hint: [0, 0, 1] });
-    }
-    for (const grid of front2.windows) for (const cx2 of grid.xs) for (const [z0, z1] of grid.rows) {
-      const x0 = cx2 - grid.w / 2, x1 = cx2 + grid.w / 2;
-      box({ x0: x0 - 0.12, x1: x1 + 0.12, z0: z0 - 0.12, z1: z1 + 0.12, out0: d, out1: d + 0.04, hex: grid.frameHex ?? "#d8d0c0" });
-      box({ x0, x1, z0, z1, out0: d, out1: d + 0.07, hex: grid.hex });
-      box({ x0: x0 - 0.2, x1: x1 + 0.2, z0: z0 - 0.3, z1: z0 - 0.12, out0: d, out1: d + 0.25, hex: front2.hex });
-    }
-    return tris;
-  }
-  function lettering(x0, x1, z0, z1, out, hex2, n) {
-    const step = (x1 - x0) / n;
-    return Array.from({ length: n }, (_, i) => ({ x0: x0 + i * step + step * 0.12, x1: x0 + (i + 1) * step - step * 0.12, z0, z1, out0: out, out1: out + 0.04, hex: hex2 }));
-  }
-  function stripedAwning(x0, x1, z, depth, a, b, stripeM = 0.45) {
-    const out = [];
-    for (let x = x0, i = 0; x < x1 - 1e-6; x += stripeM, i++) out.push({ x0: x, x1: Math.min(x1, x + stripeM), z0: z - 0.35, z1: z, out0: 0, out1: depth, hex: i % 2 ? b : a });
-    return out;
-  }
-  function along(start, end, lengthM, t) {
-    const k = t / lengthM;
-    return [start[0] + (end[0] - start[0]) * k, start[1] + (end[1] - start[1]) * k];
   }
 
   // src/canalRecall/bayLook.ts
@@ -4306,6 +5153,18 @@
   var ATOMIC = new Set(ORNAMENT_COMPONENTS.map((c) => c.id));
   var COMPONENT_COUNT = WALL_COMPONENTS.length + ROOF_COMPONENTS.length;
 
+  // src/canalRecall/roofs/roofFurniture.ts
+  var FURNITURE_UNITS = {
+    chimney: { h: 1.1, hex: "#6b5d55", min: 0.5, max: 1.4 },
+    vent: { h: 0.8, hex: "#6a6d70", min: 0.25, max: 0.6 },
+    skylight: { h: 0.32, hex: ROOF_SLOT_TONES.glass.hex, min: 0.5, max: 6 },
+    hvac: { h: 1.25, hex: "#c9cbcd", min: 0.8, max: 5 },
+    overrun: { h: 2.6, hex: "#a7a49c", min: 2, max: 9 },
+    solar: { h: 0.12, hex: ROOF_SLOT_TONES.solar.hex, min: 0.9, max: 30, lift: 0.25 },
+    railing: { h: 1, hex: "#9a9fa3", min: 0.04, max: 60 }
+  };
+  var DECK_HEX = ROOF_SLOT_TONES.terrace.hex;
+
   // src/canalRecall/threeBuildingMesh.ts
   var parseHex = (hex2) => {
     const m = /^#?([0-9a-f]{6})$/i.exec(hex2);
@@ -4313,7 +5172,6 @@
     const v = parseInt(m[1], 16);
     return [v >> 16 & 255, v >> 8 & 255, v & 255];
   };
-  var LID_SHADE = 0.58 + 0.42 * 0.8;
   var RUN_TURN_DEG = 25;
   var COS_RUN = Math.cos(RUN_TURN_DEG * Math.PI / 180);
   function buildKitChunk(parts, layers) {
@@ -4330,7 +5188,7 @@
       const start = v;
       for (const t of part.tris) {
         const [r, g, b] = parseHex(t.hex);
-        const shade = Math.max(0.5, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
+        const shade = bakedFaceShade(t.n);
         for (let k = 0; k < 3; k++) {
           positions[v * 3] = t.p[k][0];
           positions[v * 3 + 1] = t.p[k][1];
@@ -4349,6 +5207,82 @@
       ranges.push({ id: part.id, start, count: v - start });
     }
     return { positions, uvs, layers: layerArr, tints, accents, indices, ranges, vertexCount, quadCount: Math.ceil(tris / 2), wallCount: 0, buildingCount: ranges.length };
+  }
+
+  // src/canalRecall/landmarkFronts.ts
+  function arch(x0, x1, z, rise, segments = 8) {
+    const r = ((x1 - x0) ** 2 / 4 + rise ** 2) / (2 * rise), cx2 = (x0 + x1) / 2, cz = z + rise - r;
+    const half = Math.asin((x1 - x0) / 2 / r);
+    return Array.from({ length: segments + 1 }, (_, i) => {
+      const a = -half + 2 * half * i / segments;
+      return [cx2 + r * Math.sin(a), cz + r * Math.cos(a)];
+    });
+  }
+  function frontTriangles(front2, toWorld) {
+    const tris = [];
+    const quad = (a, b, c, d2, hex2, hint) => {
+      const [pa, pb, pc, pd] = [a, b, c, d2].map(([x, z, y]) => toWorld(x, z, y));
+      tris.push({ p: [pa, pb, pc], hex: hex2, hint }, { p: [pa, pc, pd], hex: hex2, hint });
+    };
+    const box = ({ x0, x1, z0, z1, out0 = 0, out1, hex: hex2, face }) => {
+      quad([x0, z0, out1], [x1, z0, out1], [x1, z1, out1], [x0, z1, out1], hex2, [0, 0, 1]);
+      if (face) return;
+      quad([x0, z0, out0], [x0, z0, out1], [x0, z1, out1], [x0, z1, out0], hex2, [-1, 0, 0]);
+      quad([x1, z0, out1], [x1, z0, out0], [x1, z1, out0], [x1, z1, out1], hex2, [1, 0, 0]);
+      quad([x0, z1, out1], [x1, z1, out1], [x1, z1, out0], [x0, z1, out0], hex2, [0, 1, 0]);
+      quad([x0, z0, out0], [x1, z0, out0], [x1, z0, out1], [x0, z0, out1], hex2, [0, -1, 0]);
+    };
+    const slab2 = (o, o0, o1, hex2) => {
+      for (let i = 1; i < o.length; i++) {
+        const [xa, za] = o[i - 1], [xb, zb] = o[i];
+        if (xb <= xa) continue;
+        quad([xa, 0, o1], [xb, 0, o1], [xb, zb, o1], [xa, za, o1], hex2, [0, 0, 1]);
+        quad([xa, za, o1], [xb, zb, o1], [xb, zb, o0], [xa, za, o0], hex2, [-(zb - za), xb - xa, 0]);
+      }
+      const [xs, zs] = o[0], [xe, ze] = o[o.length - 1];
+      quad([xs, 0, o0], [xs, 0, o1], [xs, zs, o1], [xs, zs, o0], hex2, [-1, 0, 0]);
+      quad([xe, 0, o1], [xe, 0, o0], [xe, ze, o0], [xe, ze, o1], hex2, [1, 0, 0]);
+    };
+    const d = front2.depthM;
+    slab2(front2.outline, 0, d, front2.hex);
+    for (const extra of front2.slabs ?? []) slab2(extra.outline, extra.out0 + d, extra.out1 + d, extra.hex);
+    for (const b of front2.boxes) box({ ...b, out0: (b.out0 ?? 0) + d, out1: b.out1 + d });
+    for (const e of front2.extrusions ?? []) {
+      const pr = e.profile;
+      for (let i = 1; i < pr.length; i++) {
+        const [oa, za] = pr[i - 1], [ob, zb] = pr[i];
+        quad([e.x0, za, oa + d], [e.x1, za, oa + d], [e.x1, zb, ob + d], [e.x0, zb, ob + d], e.hex, [0, ob - oa, -(zb - za)]);
+        quad([e.x0, za, oa + d], [e.x0, zb, ob + d], [e.x1, zb, ob + d], [e.x1, za, oa + d], e.hex, [0, -(ob - oa), zb - za]);
+      }
+      for (const [x, sgn] of [[e.x0, -1], [e.x1, 1]]) for (let i = 2; i < pr.length; i++) {
+        const [a, b, c] = [pr[0], pr[i - 1], pr[i]].map(([o, z]) => toWorld(x, z, o + d));
+        tris.push({ p: [a, b, c], hex: e.hex, hint: [sgn, 0, 0] });
+      }
+    }
+    for (const f of front2.faces ?? []) for (let i = 2; i < f.points.length; i++) {
+      const [a, b, c] = [f.points[0], f.points[i - 1], f.points[i]].map(([x, z]) => toWorld(x, z, f.out + d));
+      tris.push({ p: [a, b, c], hex: f.hex, hint: [0, 0, 1] });
+    }
+    for (const grid of front2.windows) for (const cx2 of grid.xs) for (const [z0, z1] of grid.rows) {
+      const x0 = cx2 - grid.w / 2, x1 = cx2 + grid.w / 2;
+      box({ x0: x0 - 0.12, x1: x1 + 0.12, z0: z0 - 0.12, z1: z1 + 0.12, out0: d, out1: d + 0.04, hex: grid.frameHex ?? "#d8d0c0" });
+      box({ x0, x1, z0, z1, out0: d, out1: d + 0.07, hex: grid.hex });
+      box({ x0: x0 - 0.2, x1: x1 + 0.2, z0: z0 - 0.3, z1: z0 - 0.12, out0: d, out1: d + 0.25, hex: front2.hex });
+    }
+    return tris;
+  }
+  function lettering(x0, x1, z0, z1, out, hex2, n) {
+    const step = (x1 - x0) / n;
+    return Array.from({ length: n }, (_, i) => ({ x0: x0 + i * step + step * 0.12, x1: x0 + (i + 1) * step - step * 0.12, z0, z1, out0: out, out1: out + 0.04, hex: hex2 }));
+  }
+  function stripedAwning(x0, x1, z, depth, a, b, stripeM = 0.45) {
+    const out = [];
+    for (let x = x0, i = 0; x < x1 - 1e-6; x += stripeM, i++) out.push({ x0: x, x1: Math.min(x1, x + stripeM), z0: z - 0.35, z1: z, out0: 0, out1: depth, hex: i % 2 ? b : a });
+    return out;
+  }
+  function along(start, end, lengthM, t) {
+    const k = t / lengthM;
+    return [start[0] + (end[0] - start[0]) * k, start[1] + (end[1] - start[1]) * k];
   }
 
   // src/canalRecall/pixelFont.ts

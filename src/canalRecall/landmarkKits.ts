@@ -13,7 +13,8 @@
 // the number of stages, the silhouette. They are not surveys. The licence is
 // clean, since nothing here is copied from a model or a photograph.
 
-import { fitRect, roofTriangles, type Rect, type RoofPlan } from './roofMesh.js';
+import { fitRect, roofTriangles, type Rect, type RoofPlan, type RoofTri } from './roofMesh.js';
+import { insetRing, openRing, signedArea } from './roofFootprint.js';
 import { formTriangles, type KitForm } from './landmarkForms.js';
 import { MUSEUM_KITS } from './museumKits.js';
 import { WORSHIP_KITS } from './worshipKits.js';
@@ -52,6 +53,13 @@ export type KitHalls = {
    * the rectangle covers the footprint poorly, so an odd plan keeps its flat lid at the eaves.
    */
   fit?: boolean;
+  /**
+   * A roof hipped all round the footprint instead: every wall rises `riseM` to a ring set in from the walls (about
+   * 50 degrees, steeper where the plan is narrow), flat on top, so an L- or U-shaped school is roofed wing by wing
+   * (the generic pre-war school, publicBuildings.ts schoolHipRoof). Falls back to a hipped roof over the fitted
+   * rectangle, and then to the host's flat lid at the eaves, when the footprint will not take one.
+   */
+  hip?: boolean;
 };
 /**
  * A row of window openings, `z0` (sill) to `z1` (top of the head), `widthM` wide, `bayM` apart,
@@ -96,7 +104,13 @@ export type KitTower = {
   /** `false`: no gilt finial on the cap (a minaret's balcony ring, which is a short wide tower of its own). */
   finial?: boolean;
 };
-export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[]; halls?: KitHalls[]; wall?: KitWall; hides?: string[]; body?: string[]; /** Hand-modelled volumes (landmarkForms.ts). */ forms?: KitForm[] };
+/**
+ * Bands on a `body` part's walls, a hand's breadth proud: a `coping` (or fascia) `m` tall under the wall top and a
+ * `plinth` from the foot to `z1`. A plain body kit (the generic cinema and worship bodies, NEMO) otherwise draws
+ * nothing of its own, only its host's recoloured walls.
+ */
+export type KitTrim = { coping?: { m: number; hex: string }; plinth?: { z1: number; hex: string } };
+export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[]; halls?: KitHalls[]; wall?: KitWall; hides?: string[]; body?: string[]; /** Hand-modelled volumes (landmarkForms.ts). */ forms?: KitForm[]; trim?: KitTrim };
 
 export const MAT_HEX: Record<Mat, string> = {
   brick: '#9a5240', blue: '#3f5f9a', stone: '#cfc2a6', lead: '#4d535c', gold: '#d9b24c', copper: '#6aa896', slate: '#4a525d', white: '#efe9db', tile: '#b5543a',
@@ -361,6 +375,8 @@ export const HAND_KITS: Kit[] = [
     stacks: [],
     roofs: [],
     body: ['w1390692763', 'w1390692767', 'w1390692768', 'w1390692769', 'w1390692770', 'w1390692771', 'w1390692772', 'w1390692766', 'w1390692764', 'w1390692765'],
+    // The copper skin's darker capping round each part's top edge (kit review 1: a body-only kit drew nothing of its own).
+    trim: { coping: { m: 0.5, hex: '#3d7a66' } },
   },
   // Museums and cinemas: the Van Gogh Museum, the Stedelijk, Eye, Tuschinski, the Maritime Museum, H'ART (museumKits.ts).
   ...MUSEUM_KITS,
@@ -923,7 +939,13 @@ export function kitGeometry(kit: Kit, parts: ReadonlyMap<string, PartInput>): Ki
         sink.out.push({ p: t.p, uv: t.uv, layer: slope ? 'slope' : 'plain', hex: slope ? hex : gable, n: t.n });
       }
     }
-    if (spec.fit) {
+    if (spec.hip && spec.riseM > 0) {
+      const tris = hipAround(part.ring, spec.eavesM, spec.riseM) ?? hipOverRect(part.ring, plan, spec.eavesM);
+      for (const t of tris) {
+        const slope = t.part === 'slope';
+        sink.out.push({ p: t.p, uv: t.uv, layer: slope ? 'slope' : 'plain', hex: slope ? hex : gable, n: t.n });
+      }
+    } else if (spec.fit) {
       const rect = fitRect(part.ring, 200);
       if (rect && rect.coverage >= FIT_COVERAGE && rect.maxDev <= FIT_MAX_DEV_M && spec.riseM > 0) {
         for (const t of roofTriangles(rect, plan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
@@ -949,7 +971,104 @@ export function kitGeometry(kit: Kit, parts: ReadonlyMap<string, PartInput>): Ki
     if (spec.windows) kitWindows(sink, part.ring, spec, spec.windows, towerAng);
   }
   for (const form of kit.forms ?? []) { const part = parts.get(form.on); if (part) sinkFor(form.on).out.push(...formTriangles(form, part.ring, toLocal)); }
+  if (kit.trim) for (const id of kit.body ?? []) { const part = parts.get(id); if (part) bodyTrim(sinkFor(id), part, kit.trim); }
   return [...out].map(([id, sink]) => ({ id, tris: sink.out }));
+}
+
+/** A body part's coping and plinth bands (KitTrim), on every wall edge long enough to carry one. */
+function bodyTrim(sink: TriSink, part: PartInput, trim: KitTrim) {
+  const z0 = part.minHeightM, z1 = part.heightM;
+  for (const e of wallEdges(part.ring)) {
+    if (e.len < 0.2) continue;
+    if (trim.plinth && trim.plinth.z1 < z1 - z0) wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, z0], [e.len, z0], [e.len, z0 + trim.plinth.z1], [0, z0 + trim.plinth.z1]], trim.plinth.hex);
+    if (trim.coping) { const c = Math.min(trim.coping.m, (z1 - z0) / 2); wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, z1 - c], [e.len, z1 - c], [e.len, z1], [0, z1]], trim.coping.hex); }
+  }
+}
+
+/** Pitch a hipped school roof aims for, and the steepest it takes before it is lowered to fit a narrow plan. */
+export const HIP_PITCH_DEG = 50, HIP_MAX_PITCH_DEG = 65;
+/** Footprint jogs shallower than this are smoothed out before the hip ring is set in (a BAG outline's 0.7-0.9 m steps fold the ring at a metre's inset; 0.6 m left 9 of 40 hipped schools without a roof). */
+export const HIP_SIMPLIFY_M = 1;
+/** The narrowest inset a hip ring may take; a plan that folds even here keeps a fitted or flat roof. */
+export const HIP_MIN_INSET_M = 1.2;
+
+/** The ring with every vertex closer than `tol` to the line through its neighbours removed, smallest first. */
+export function simplifyRing(ring: readonly Vec2[], tol: number): Vec2[] {
+  const pts = openRing(ring);
+  const off = (a: Vec2, b: Vec2, c: Vec2) => { const l = Math.hypot(c[0] - a[0], c[1] - a[1]); return l < 1e-9 ? Math.hypot(b[0] - a[0], b[1] - a[1]) : Math.abs((c[0] - a[0]) * (b[1] - a[1]) - (c[1] - a[1]) * (b[0] - a[0])) / l; };
+  while (pts.length > 4) {
+    let best = -1, bestD = tol;
+    for (let i = 0; i < pts.length; i++) {
+      const d = off(pts[(i + pts.length - 1) % pts.length], pts[i], pts[(i + 1) % pts.length]);
+      if (d < bestD) { bestD = d; best = i; }
+    }
+    if (best < 0) break;
+    pts.splice(best, 1);
+  }
+  return pts;
+}
+
+/**
+ * A roof hipped round the whole footprint: each wall's slope rises from the eaves to a ring inset from the walls,
+ * and a flat deck closes the top (KitHalls.hip). The footprint is smoothed first (simplifyRing, HIP_SIMPLIFY_M). The
+ * inset starts at the HIP_PITCH_DEG distance for `riseM` and shrinks until the ring no longer folds over itself
+ * (roofFootprint.ts insetRing); where that takes it under the HIP_MAX_PITCH_DEG distance (a narrow wing), the rise is
+ * lowered to that pitch over the inset that fits. Null when even HIP_MIN_INSET_M folds.
+ */
+export function hipAround(ring: readonly Vec2[], eavesM: number, riseM: number): RoofTri[] | null {
+  const pts = simplifyRing(ring, HIP_SIMPLIFY_M);
+  if (pts.length < 3 || riseM <= 0) return null;
+  const tanOf = (deg: number) => Math.tan((deg * Math.PI) / 180), want = riseM / tanOf(HIP_PITCH_DEG);
+  const sign = Math.sign(signedArea(pts));
+  for (let t = want; t >= HIP_MIN_INSET_M - 1e-9; t *= 0.92) {
+    const inner = insetRing(pts, t);
+    if (!inner || Math.sign(signedArea(inner)) !== sign || Math.abs(signedArea(inner)) < 1) continue;
+    const rise = Math.min(riseM, t * tanOf(HIP_MAX_PITCH_DEG));
+    const out: RoofTri[] = [], z0 = eavesM, z1 = eavesM + rise;
+    const tri = (a: Vec3, b: Vec3, c: Vec3, part: RoofTri['part']) => {
+      const u = sub(b, a), v = sub(c, a);
+      let n = cross(u, v);
+      if (n[2] < 0) { n = [-n[0], -n[1], -n[2]]; [b, c] = [c, b]; }
+      const l = Math.hypot(n[0], n[1], n[2]);
+      if (l < 1e-9) return;
+      out.push({ p: [a, b, c], uv: [[a[0] / 1.2, a[1] / 1.2], [b[0] / 1.2, b[1] / 1.2], [c[0] / 1.2, c[1] / 1.2]], part, n: [n[0] / l, n[1] / l, n[2] / l] });
+    };
+    for (let i = 0; i < pts.length; i++) {
+      const j = (i + 1) % pts.length, a: Vec3 = [...pts[i], z0], b: Vec3 = [...pts[j], z0], c: Vec3 = [...inner[j], z1], d: Vec3 = [...inner[i], z1];
+      tri(a, b, c, 'slope'); tri(a, c, d, 'slope');
+    }
+    // The deck: a fan from the first inner vertex is only right on a convex ring, so ear-clip it.
+    for (const [a, b, c] of earClip(inner)) tri([...a, z1], [...b, z1], [...c, z1], 'slope');
+    return out;
+  }
+  return null;
+}
+
+/** A hipped roof over the footprint's fitted rectangle, when it covers the plan well enough; else nothing. */
+function hipOverRect(ring: readonly Vec2[], plan: RoofPlan, eavesM: number): RoofTri[] {
+  const rect = fitRect(ring, 200);
+  if (!rect || rect.coverage < FIT_COVERAGE || rect.maxDev > FIT_MAX_DEV_M) return [];
+  return roofTriangles(rect, { ...plan, kind: 'hipped' }, eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 });
+}
+
+/** Triangles of a simple polygon (either winding), by ear clipping. */
+function earClip(poly: readonly Vec2[]): [Vec2, Vec2, Vec2][] {
+  const idx = poly.map((_, i) => i), out: [Vec2, Vec2, Vec2][] = [], ccw = signedArea(poly) > 0;
+  const turn = (a: Vec2, b: Vec2, c: Vec2) => ((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])) * (ccw ? 1 : -1);
+  const inside = (p: Vec2, a: Vec2, b: Vec2, c: Vec2) => turn(a, b, p) > 0 && turn(b, c, p) > 0 && turn(c, a, p) > 0;
+  let guard = 0;
+  while (idx.length > 3 && guard++ < 10_000) {
+    let clipped = false;
+    for (let k = 0; k < idx.length; k++) {
+      const a = poly[idx[(k + idx.length - 1) % idx.length]], b = poly[idx[k]], c = poly[idx[(k + 1) % idx.length]];
+      if (turn(a, b, c) <= 1e-9) continue;
+      if (idx.some(i => { const p = poly[i]; return p !== a && p !== b && p !== c && inside(p, a, b, c); })) continue;
+      out.push([a, b, c]); idx.splice(k, 1); clipped = true; break;
+    }
+    if (!clipped) break;
+  }
+  if (idx.length === 3) out.push([poly[idx[0]], poly[idx[1]], poly[idx[2]]]);
+  return out;
 }
 
 // Kit parts arrive in the three layer's local metres (ORIGIN in threeBuildingFeatures.ts).

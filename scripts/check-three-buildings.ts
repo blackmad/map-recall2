@@ -312,10 +312,11 @@ for (const c of [0.64, 1.4]) {
     for (const roof of kit.roofs) parts.set(roof.id, { id: roof.id, ring: square(40, 0, 12, 30), minHeightM: 0, heightM: 20 });
     for (const hall of kit.halls ?? []) parts.set(hall.id, { id: hall.id, ring: square(0, 80, 40, 60), minHeightM: 0, heightM: 10 });
     for (const form of kit.forms ?? []) if (!parts.has(form.on)) parts.set(form.on, { id: form.on, ring: square(-80, 0, 30, 20), minHeightM: 0, heightM: 10 });
+    for (const id of kit.body ?? []) if (!parts.has(id)) parts.set(id, { id, ring: square(0, -80, 30, 20), minHeightM: 0, heightM: 10 });
     const geometry = kitGeometry(kit, parts);
-    // A body-only kit (NEMO: just its walls recoloured) builds no geometry of its own.
-    const bodyOnly = !kit.tiers.length && !kit.stacks.length && !kit.roofs.length && !kit.halls?.length && !kit.forms?.length;
-    assert.ok(bodyOnly ? geometry.length === 0 && (kit.body?.length ?? 0) > 0 : geometry.length > 0 && geometry.every(g => g.tris.length > 0), `${kit.name}: builds geometry`);
+    // Every kit builds geometry of its own; a body-only kit (NEMO, the generic cinema and worship bodies) its trim
+    // (kit review 1, 2026-10-24: those drew nothing, only the recoloured host).
+    assert.ok(geometry.length > 0 && geometry.every(g => g.tris.length > 0), `${kit.name}: builds geometry`);
     for (const g of geometry) for (const t of g.tris) {
       assert.ok(t.p.flat().every(Number.isFinite) && t.uv.flat().every(Number.isFinite) && t.n.every(Number.isFinite), `${kit.name}: finite`);
       assert.ok(Math.abs(Math.hypot(...t.n) - 1) < 1e-6, `${kit.name}: unit normals`);
@@ -951,7 +952,7 @@ for (const c of [0.64, 1.4]) {
   // big cinemas and theatres get plain walls (no windows, no gable), schools a classroom-window
   // grid in their era's brick, by publicBuildings.ts and the list scripts/build-public-buildings.ts wrote.
   const { PUBLIC_BUILDINGS } = await import('../src/canalRecall/publicBuildingData.ts');
-  const { planPublic, schoolWindows, publicKit, PUBLIC_WALL } = await import('../src/canalRecall/publicBuildings.ts');
+  const { planPublic, schoolWindows, publicKit, schoolWall, PUBLIC_WALL } = await import('../src/canalRecall/publicBuildings.ts');
   const { KITS: kits, KIT_MODELLED_IDS: modelled, HAND_KIT_IDS: handIds, decorateKitRoof: decorate } = await import('../src/canalRecall/landmarkKits.ts');
   const entry = (id: string) => PUBLIC_BUILDINGS.find(e => e[0] === id);
   const rect = (len: number, wid: number, coverage = 0.95, maxDev = 0.5) => ({ len, wid, coverage, maxDev });
@@ -995,7 +996,8 @@ for (const c of [0.64, 1.4]) {
     const e = entry(id);
     assert.ok(e && e[1] === 's' && e[2] === mode && e[5] === era, `${why}: school ${mode} ${era}`);
     const kit = publicKit(e!), rows = kit.halls![0].windows!.rows;
-    assert.equal(kit.wall && kit.wall.plain && kit.wall.hex, PUBLIC_WALL.s[era], `${why}: era brick`);
+    assert.equal(kit.wall && kit.wall.plain && kit.wall.hex, schoolWall(id, era).hex, `${why}: measured or period wall`);
+    assert.notEqual(schoolWall(id, era).source, 'era', `${why}: not the fixed era brick`);
     assert.ok(rows.length >= 2 && rows.every(r => r.head === 'flat'), `${why}: classroom windows`);
     const out = decorate({ type: 'Feature', properties: { id, height: e![3], facade: 'canal-priorBrickRed', facadeStyle: 'canal' }, geometry: null });
     assert.equal(out.properties.kitWall, 'plain', `${why}: no house facade`);
