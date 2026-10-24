@@ -14,7 +14,7 @@ in the browser on desktop or phone, and needs no account.
 - **The ride** (`/ride`): cycle the streets or boat the canals to a
   destination. Street and canal names come up as questions along the way,
   with spaced review, so names you miss come back.
-- **A city you can recognise:** 300+ hand-modelled landmarks (churches,
+- **A city you can recognise:** 300+ individually modelled landmarks (churches,
   museums, theatres, stations) and kit-built streets of canal houses and
   1890s blocks, all on real BAG footprints and 3DBAG heights.
 - **Something to learn at every stop:** landmark and neighbourhood cards with

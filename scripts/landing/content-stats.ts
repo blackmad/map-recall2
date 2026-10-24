@@ -96,12 +96,12 @@ export function countStats(): Record<string, Stat> {
   return {
     buildingsModelled: {
       count: bespokeIds.size,
-      note: `Buildings with their own hand-built 3D model in the ride: ${landmarkModels} landmark models plus ${bespokeIds.size - landmarkModels} individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).`,
+      note: `Buildings with their own individually modelled 3D model in the ride: ${landmarkModels} landmark models plus ${bespokeIds.size - landmarkModels} individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).`,
       sources: ['src/canalRecall/landmarks/manualCatalogue.json', 'public/canal-drive/ordinary-buildings-data/catalogue.json'],
     },
     landmarkModels: {
       count: landmarkModels,
-      note: 'Of the hand-built models, the ones in the landmark category (museums, churches, stations, monuments…).',
+      note: 'Of the individually modelled buildings, the ones in the landmark category (museums, churches, stations, monuments…).',
       sources: ['src/canalRecall/landmarks/manualCatalogue.json'],
     },
     kitBuildings: {
@@ -116,7 +116,7 @@ export function countStats(): Record<string, Stat> {
     },
     placesToVisit: {
       count: pool.length,
-      note: 'Destinations you can ride to and collect a stamp at: the ride\'s stamp pool (teachable landmarks within 4 km of the centre plus the hand-modelled POIs, deduplicated).',
+      note: 'Destinations you can ride to and collect a stamp at: the ride\'s stamp pool (teachable landmarks within 4 km of the centre plus the individually modelled POIs, deduplicated).',
       sources: [`${EXTRACT}/landmarks.json`, 'src/canalRecall/game/manual-poi-data.json'],
     },
     factsToDiscover: {

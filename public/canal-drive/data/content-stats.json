@@ -21,7 +21,7 @@
   "stats": {
     "buildingsModelled": {
       "count": 485,
-      "note": "Buildings with their own hand-built 3D model in the ride: 327 landmark models plus 158 individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).",
+      "note": "Buildings with their own individually modelled 3D model in the ride: 327 landmark models plus 158 individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).",
       "sources": [
         "src/canalRecall/landmarks/manualCatalogue.json",
         "public/canal-drive/ordinary-buildings-data/catalogue.json"
@@ -29,7 +29,7 @@
     },
     "landmarkModels": {
       "count": 327,
-      "note": "Of the hand-built models, the ones in the landmark category (museums, churches, stations, monuments…).",
+      "note": "Of the individually modelled buildings, the ones in the landmark category (museums, churches, stations, monuments…).",
       "sources": [
         "src/canalRecall/landmarks/manualCatalogue.json"
       ]
@@ -50,7 +50,7 @@
     },
     "placesToVisit": {
       "count": 378,
-      "note": "Destinations you can ride to and collect a stamp at: the ride's stamp pool (teachable landmarks within 4 km of the centre plus the hand-modelled POIs, deduplicated).",
+      "note": "Destinations you can ride to and collect a stamp at: the ride's stamp pool (teachable landmarks within 4 km of the centre plus the individually modelled POIs, deduplicated).",
       "sources": [
         "public/data/extracts/amsterdam/landmarks.json",
         "src/canalRecall/game/manual-poi-data.json"

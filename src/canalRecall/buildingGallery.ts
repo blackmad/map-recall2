@@ -139,8 +139,8 @@ async function main() {
   }
 
   // 6. Landmark kits and the generator playground: their own pages (one shared WebGL context, deep links).
-  const kits = section('Landmark kits and the house playground (live 3D)', 'Two pages built from the game\'s own code. The landmark gallery shows every hand-modelled kit over grey context (?kit=Westerkerk opens one). The house playground builds a house or terrace with the generic facade, roof and shopfront generators, or loads a real building.');
-  for (const [href, title, blurb] of [['landmark-gallery.html', 'Landmark gallery', 'every hand-modelled landmark, orbit and zoom, triangle counts'], ['house-playground.html', 'House playground', 'period, year, size, look, gable, roof, shopfront, seed; or a real building']] as const) {
+  const kits = section('Landmark kits and the house playground (live 3D)', 'Two pages built from the game\'s own code. The landmark gallery shows every individually modelled kit over grey context (?kit=Westerkerk opens one). The house playground builds a house or terrace with the generic facade, roof and shopfront generators, or loads a real building.');
+  for (const [href, title, blurb] of [['landmark-gallery.html', 'Landmark gallery', 'every individually modelled landmark, orbit and zoom, triangle counts'], ['house-playground.html', 'House playground', 'period, year, size, look, gable, roof, shopfront, seed; or a real building']] as const) {
     kits.append(el('a', { href, cls: 'tilelink' } as any, el('b', {}, title), ` ${blurb}`));
   }
   const compare = section('Low-poly landmark reconstructions', 'Left to right: plain OSM prism, low-poly reconstruction (kit plus a measured front, flat colours, no textures), and the street panorama it was measured from, shown only as a reference. Panoramas: Gemeente Amsterdam.');
