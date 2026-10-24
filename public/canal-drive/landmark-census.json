@@ -1,10 +1,10 @@
 {
  "version": 1,
- "generatedAt": "2026-10-23T21:32:42.942Z",
+ "generatedAt": "2026-10-24T06:59:54.092Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
- "headline": 386,
- "strict": 47,
+ "headline": 388,
+ "strict": 49,
  "byTier": {
   "bespoke": {
    "models": 334,
@@ -26,15 +26,16 @@
   },
   "landmarkKit": {
    "models": 546,
-   "counts": 0,
-   "strict": 0,
-   "unreviewed": 546
+   "counts": 2,
+   "strict": 2,
+   "unreviewed": 544
   }
  },
  "byReview": {
   "legacy-gallery": 403,
   "likeness-gate": 74,
-  "none": 564
+  "none": 562,
+  "strip-review": 2
  },
  "rows": [
   {
@@ -10071,9 +10072,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012073434",
@@ -11403,9 +11405,10 @@
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012133077",

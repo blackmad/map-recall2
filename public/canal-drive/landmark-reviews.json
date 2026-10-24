@@ -1,0 +1,324 @@
+{
+ "reviews": [
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012143874",
+   "verdict": "hold",
+   "note": "beige render box with blue strips; photo is a low dark red-brown brick pavilion with a deep dark eave",
+   "sheet": "kits-1.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012068581",
+   "verdict": "hold",
+   "note": "beige walls; photo is red brick with lilac/yellow striped panels and tall white-framed windows",
+   "sheet": "kits-1.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012068625",
+   "verdict": "hold",
+   "note": "red brick 3-storey flat roof; photo shows yellow brick with an orange tiled pitched roof and blue metal cladding",
+   "sheet": "kits-1.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic church NL.IMBAG.Pand.0363100012072736",
+   "verdict": "hold",
+   "note": "no photo",
+   "sheet": "kits-1.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic cinema NL.IMBAG.Pand.0363100012092742",
+   "verdict": "hold",
+   "note": "kit renders 0 tris (only host extrusion); photo is a brick school with a large tiled hipped roof and chimneys",
+   "sheet": "kits-2.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic church NL.IMBAG.Pand.0363100012123194",
+   "verdict": "hold",
+   "note": "kit renders 0 tris (only host extrusion); photo is a low brick/concrete block with a ribbon of windows",
+   "sheet": "kits-2.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic cinema NL.IMBAG.Pand.0363100012084484",
+   "verdict": "hold",
+   "note": "kit renders 0 tris (only host extrusion); photo is a low white/grey block with red fascia and ribbon windows",
+   "sheet": "kits-2.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012075686",
+   "verdict": "hold",
+   "note": "beige walls with blue bands; photo is dark brown brick with white window bands and a red upper storey",
+   "sheet": "kits-2.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012133123",
+   "verdict": "hold",
+   "note": "photo shows only vegetation, no building visible; kit is a generic beige box",
+   "sheet": "kits-3.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012142124",
+   "verdict": "hold",
+   "note": "beige walls; photo is red brick with a clerestory window band under a dark fascia",
+   "sheet": "kits-3.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school w44828165",
+   "verdict": "hold",
+   "note": "no photo (pand unresolved, kit has no location and renders nothing)",
+   "sheet": "kits-3.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012075161",
+   "verdict": "hold",
+   "note": "beige punched-window box; photo is a mostly glazed pavilion with yellow frames and a red fascia",
+   "sheet": "kits-3.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic temple NL.IMBAG.Pand.0363100012153991",
+   "verdict": "hold",
+   "note": "kit renders 0 tris (only host extrusion); photo is brown brick with timber cladding panels",
+   "sheet": "kits-4.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012086684",
+   "verdict": "hold",
+   "note": "flat-roofed 4-storey grid; photo is a 2-storey brick school under a tall tiled hipped roof with dormers and chimneys",
+   "sheet": "kits-4.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012145699",
+   "verdict": "hold",
+   "note": "brick right but uniform square grid; photo has a ground window row and a high horizontal ribbon band",
+   "sheet": "kits-4.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012072950",
+   "verdict": "pass",
+   "note": "brick flat-roof school block, storeys and window rows match; windows squarer than photo's tall white-framed sashes",
+   "sheet": "kits-4.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012080308",
+   "verdict": "hold",
+   "note": "no photo",
+   "sheet": "kits-5.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012149675",
+   "verdict": "hold",
+   "note": "beige walls; photo is red-brown brick with long horizontal ribbon windows on two storeys",
+   "sheet": "kits-5.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012064693",
+   "verdict": "hold",
+   "note": "flat-roofed 4-storey grid; photo is a brick school under a steep tiled roof with small dormers",
+   "sheet": "kits-5.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012155572",
+   "verdict": "hold",
+   "note": "beige walls; photo is dark brown brick, 3-storey, strip windows",
+   "sheet": "kits-5.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic cinema NL.IMBAG.Pand.0363100012240368",
+   "verdict": "hold",
+   "note": "kit renders 0 tris (only host extrusion); photo is a red brick + grey-clad ROC college with banded windows",
+   "sheet": "kits-6.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012126872",
+   "verdict": "hold",
+   "note": "no photo",
+   "sheet": "kits-6.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012080302",
+   "verdict": "hold",
+   "note": "beige punched windows; photo is a 1960s white-banded block with continuous red-framed glazing",
+   "sheet": "kits-6.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012097095",
+   "verdict": "hold",
+   "note": "beige walls; photo is red brick with a white rendered panel",
+   "sheet": "kits-6.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012154937",
+   "verdict": "hold",
+   "note": "beige curved wing; photo is red brick with glass ribbons and a steel stair",
+   "sheet": "kits-7.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic church NL.IMBAG.Pand.0363100012144206",
+   "verdict": "hold",
+   "note": "massing, pitched roof and arched windows right but red brick; photo is yellow/buff brick with a dark tiled roof",
+   "sheet": "kits-7.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012080150",
+   "verdict": "hold",
+   "note": "beige walls; photo is brown-red brick (behind parking signs)",
+   "sheet": "kits-7.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012113048",
+   "verdict": "hold",
+   "note": "no photo",
+   "sheet": "kits-7.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012121569",
+   "verdict": "hold",
+   "note": "photo shows 1930s housing with bay windows, not the school; kit is a generic red grid block",
+   "sheet": "kits-8.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic church NL.IMBAG.Pand.0363100012078085",
+   "verdict": "hold",
+   "note": "kit renders 0 tris (only host extrusion); photo is a modernist buff brick church with a triple-arched parapet and tall glazing",
+   "sheet": "kits-8.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic mosque NL.IMBAG.Pand.0363100012143236",
+   "verdict": "hold",
+   "note": "red brick octagon with arched windows; photo is a dark brown near-blank modernist block with vertical fins",
+   "sheet": "kits-8.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012132628",
+   "verdict": "pass",
+   "note": "long 2-storey brick school, flat roof, two window rows match; photo windows larger with white frames",
+   "sheet": "kits-8.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012144879",
+   "verdict": "hold",
+   "note": "beige punched windows; photo is a grey concrete 3-storey with continuous ribbon glazing",
+   "sheet": "kits-9.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012117753",
+   "verdict": "hold",
+   "note": "beige walls; photo is red-brown brick with concrete ribbon panels",
+   "sheet": "kits-9.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012074804",
+   "verdict": "hold",
+   "note": "beige box; photo is a glazed entrance front and a mural wall",
+   "sheet": "kits-9.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012134530",
+   "verdict": "hold",
+   "note": "no photo",
+   "sheet": "kits-9.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012088641",
+   "verdict": "hold",
+   "note": "bright red square grid; photo is Amsterdam School brown brick with ribbon bands of narrow windows and a white top band",
+   "sheet": "kits-10.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012118525",
+   "verdict": "hold",
+   "note": "bright red square grid; photo is Amsterdam School brown brick with ribbon bands of narrow windows and a white top band",
+   "sheet": "kits-10.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012155611",
+   "verdict": "hold",
+   "note": "square grid; photo has white arched window surrounds, awnings and a raised plinth",
+   "sheet": "kits-10.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  },
+  {
+   "key": "kit:Generic school NL.IMBAG.Pand.0363100012116795",
+   "verdict": "hold",
+   "note": "beige punched windows; photo is pale brick with large blue-framed grid glazing",
+   "sheet": "kits-10.png",
+   "date": "2026-10-24",
+   "model": "opus"
+  }
+ ]
+}
