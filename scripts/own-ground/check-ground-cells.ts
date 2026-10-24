@@ -21,11 +21,14 @@ import { parapetCrossings, type ParapetPoint } from '../../src/canalRecall/ownGr
 // Named canal-belt bridges (bridgeHints BRIDGE_FACTS, lane bridge-fidelity 2026-10-14) take the named tier.
 const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.named, far: KIT_BUDGET.namedFar } : { near: KIT_BUDGET.near, far: KIT_BUDGET.far });
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
-import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, gapLand, surveyPaint, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_WAY_STRAYS, STRAYS, SURVEY_GAPS, SURVEY_PAINT, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, gapLand, surveyPaint, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_SPOTS, ROAD_WAY_STRAYS, STRAYS, SURVEY_GAPS, SURVEY_PAINT, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { auditBridgeSurfaces } from './audit-bridge-surfaces.ts';
 import { ROAD_CELL_BUDGET_GZ } from '../../src/canalRecall/ownGround/roadCells.ts';
-import { statSync } from 'node:fs';
+import { existsSync, statSync } from 'node:fs';
+import { probeSpot } from './probe-doubled-lanes.ts';
+import { writeVsOrtho } from './road-vs-ortho.ts';
+import { OrthoTiles } from './ortho.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
 const readExtract = async (path: string) => {
@@ -765,6 +768,17 @@ async function roadRegressions(): Promise<void> {
     const off = await neighbourhood(noEnds, x, y), offDeck = noEnds.surface.decks.find(d => d.profile.id === reg.id)!;
     const p = deckEndMisses(off.cells, offDeck);
     check(p.misses.length >= reg.pinMin, `${reg.id}: without the deck-end fix ${p.misses.length} misses (≥ ${reg.pinMin}, the pin is live)`);
+  }
+  // Doubled lanes (lane roads-lanes 2026-10-23, R2) and the R4 artefact: at every ROAD_SPOTS crop no red lane ribbon
+  // over a BGT cycle polygon and no OSM band surface over any BGT polygon; artifacts/roads/<spot>-vs-ortho.jpg written
+  // (orthophoto | own ground top-down | the latest game frame from own-ground-roads.spec, when there is one).
+  const ortho = new OrthoTiles();
+  for (const s of ROAD_SPOTS) {
+    const r = await probeSpot(roadsStore, s);
+    check(r.ribbonOverCycle === 0 && r.bandOverSurvey === 0, `${s.id} roads-v1 doubled lanes: ${r.ribbonOverCycle}/${r.ribbons} lane-ribbon triangles over a cycle polygon, ${r.bandOverSurvey}/${r.bands} band triangles over a BGT polygon (both 0)${r.samples.length ? ` ${JSON.stringify(r.samples.slice(0, 4))}` : ''}`);
+    let out = '';
+    try { out = await writeVsOrtho(r.cells, s, ortho, { note: `${s.label} · doubled lanes ${r.ribbonOverCycle} / ${r.bandOverSurvey}` }); } catch (e) { console.log(`      ${s.id}: ${(e as Error).message}`); }
+    check(!!out && existsSync(out), `${s.id}: ${out || 'vs-ortho image not written'}`);
   }
   // The pin is live: a pilot cell with roads draws polygons and culls land under them; without, no roads stats.
   const key = [...roadsStore.roadCells].sort()[0];

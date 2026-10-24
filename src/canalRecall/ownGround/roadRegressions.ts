@@ -486,6 +486,9 @@ export const ROAD_SPOTS: RoadSpot[] = [
   // User screenshots 2026-10-23: the junction, bridge and both quays one saturated brown klinker mass, red cycle
   // fragments mid-junction, a ring of red and zebra bits round a green centre (by Hans en Grietje, Spiegelgracht 27).
   { id: 'spiegelgracht-prinsengracht', label: 'Spiegelgracht × Prinsengracht (Hans en Grietje, looking north)', at: [4.88729, 52.36173], bearing: 0, halfM: 40, backM: 25 },
+  // User screenshot 2026-10-23 (same ride): the red ring and zebra bits round the green centre west of the Spiegelgracht
+  // junction, outside the spot above's crop (game frame at 4.8866, 52.3614; the crop is centred on the green centre 27 m south of it; lane roads-lanes).
+  { id: 'spiegelgracht-green-ring', label: 'Green centre west of the Spiegelgracht (Weteringschans / Lijnbaansgracht side)', at: [4.88666, 52.36116], bearing: 0, halfM: 40, backM: 25 },
   // User 2026-10-23: "what's with the wiggly green patches?" on the square with the Dokwerker. The brief's point
   // (4.89628, 52.36622) is the Rembrandtplein; the square is east of the Portuguese Synagogue.
   { id: 'jonas-daniel-meijerplein', label: 'Jonas Daniël Meijerplein (the Dokwerker)', at: [4.90490, 52.36715], bearing: 90, halfM: 50, backM: 25 },
