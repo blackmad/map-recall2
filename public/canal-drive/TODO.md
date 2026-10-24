@@ -204,6 +204,14 @@ Open, in order:
   is not an era signal); five were older hand-authored intents, also not
   good enough. Kit gaps appended. Route decision for the 1000 target is
   issue #23 (needs-david): factory yield 0/27 so far.
+- **player bugs** (merged 2026-10-24, #24 #25, 5bb2451c0): W opened the
+  landmark article and D toggled street labels while steering (both
+  steering keys); now E and T. Chase pitch had been set to 12° on 10-23
+  ("lower angle" read as smaller pitch); now 60° with the slider covering
+  12–60° (`chasePitch()` in preferences.ts). Not measured yet: desktop
+  frame cost at 60° vs the old 48°. Saved tilts not migrated. Pre-existing
+  failure seen: canal-recall.spec "named bridge card" (Blauwbrug shows the
+  encyclopedia text, not the register line), #26.
 - **kit: loggias + glazed plinth** (merged 2026-10-24, #13): opt-in
   wall-group fields `loggias` (recessed balconies, side returns, rail) and
   `plinth` (glazed storeys with own lights/pier/height factor); measure
