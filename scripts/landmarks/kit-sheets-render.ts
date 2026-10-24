@@ -4,7 +4,7 @@
  * building tiles around the kit. Bundled by kit-sheets.ts with esbuild (global `KitSheets`); not imported by the game.
  */
 import * as THREE from 'three';
-import { KITS, decorateKitRoof, kitGeometry, kitIds, type PartInput } from '../../src/canalRecall/landmarkKits.js';
+import { KITS, KIT_ORIGIN, decorateKitRoof, kitGeometry, kitIds, type PartInput } from '../../src/canalRecall/landmarkKits.js';
 import { buildKitChunk, wallTopHeightM } from '../../src/canalRecall/threeBuildingMesh.js';
 
 export type RenderRequest = { kit: string; centre: [number, number]; azDeg: number; elDeg?: number; w: number; h: number };
@@ -42,8 +42,11 @@ export async function renderKit(req: RenderRequest): Promise<RenderResult> {
   const kit = KITS.find(k => k.name === req.kit);
   if (!kit) throw new Error(`no kit ${req.kit}`);
   const [clng, clat] = req.centre;
-  const kx = 111_320 * Math.cos(clat * Math.PI / 180), ky = 110_540;
-  const local = (ring: number[][]) => ring.map(([lng, lat]) => [(lng - clng) * kx, (lat - clat) * ky] as [number, number]);
+  // Rings in the kit's own local frame (landmarkKits.ts KIT_ORIGIN), where its lng/lat anchors (wings, towers, form
+  // halves) land; a ring local to the kit centre put H'ART's wing roofs and NEMO's half-forms off the host (GitHub #36).
+  const kx = 111_320 * Math.cos(KIT_ORIGIN.lat * Math.PI / 180), ky = 110_540;
+  const local = (ring: number[][]) => ring.map(([lng, lat]) => [(lng - KIT_ORIGIN.lng) * kx, (lat - KIT_ORIGIN.lat) * ky] as [number, number]);
+  const [ox, oy] = local([[clng, clat]])[0];
   const [tx, ty] = tileOf(clng, clat);
   const features = (await Promise.all([-1, 0, 1].flatMap(dx => [-1, 0, 1].map(dy => loadTile(tx + dx, ty + dy))))).flat();
 
@@ -58,7 +61,7 @@ export async function renderKit(req: RenderRequest): Promise<RenderResult> {
     if (!ring?.length) continue;
     const id = String(f.properties.id), pts = local(ring);
     if (mine.has(id)) { parts.set(id, { id, ring: pts, minHeightM: Number(f.properties.minHeight) || 0, heightM: Number(f.properties.height) }); ringPoints.push(...pts); }
-    else if (Math.hypot(pts[0][0], pts[0][1]) < 70) context.push({ pts: pts as [number, number][], h: Number(f.properties.height) || 8, min: Number(f.properties.minHeight) || 0 });
+    else if (Math.hypot(pts[0][0] - ox, pts[0][1] - oy) < 70) context.push({ pts: pts as [number, number][], h: Number(f.properties.height) || 8, min: Number(f.properties.minHeight) || 0 });
   }
   // Frame the kit: centre on its own parts, distance from its height and its footprint radius.
   let cx = 0, cz = 0, top = 0, rad = 0;
@@ -99,8 +102,9 @@ export async function renderKit(req: RenderRequest): Promise<RenderResult> {
   // Hosts: in the game the plain building layer draws the pand under a kit (roof hosts to the eaves, the rest to full height);
   // here they are drawn in the kit wall colour so a generic kit reads as the building it sits on.
   // Wall tops as the game puts them (decorateKitRoof, then wallTopHeightM): a roof or hall host stops at its kit eaves.
-  const towerIds = new Set([...kit.tiers.map(t => t.id), ...kit.stacks.map(s => s.onId)]);
-  for (const id of [...parts.keys()].filter(id => !towerIds.has(id))) {
+  // A part the kit hides (its own forms replace it, NEMO's deck) has no host: drawing one z-fought the forms.
+  const towerIds = new Set([...kit.tiers.map(t => t.id), ...kit.stacks.map(s => s.onId)]), hidden = new Set(kit.hides ?? []);
+  for (const id of [...parts.keys()].filter(id => !towerIds.has(id) && !hidden.has(id))) {
     const part = parts.get(id); if (!part) continue;
     const wallTop = wallTopHeightM(decorateKitRoof({ type: 'Feature', properties: { id, height: part.heightM, minHeight: part.minHeightM }, geometry: null }).properties);
     const shape = new THREE.Shape(part.ring.map(([x, y]) => new THREE.Vector2(x, y)));
@@ -109,7 +113,7 @@ export async function renderKit(req: RenderRequest): Promise<RenderResult> {
     scene.add(new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color: kit.wall?.hex ?? "#9a5240", side: THREE.DoubleSide })));
   }
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(500, 500).rotateX(-Math.PI / 2), new THREE.MeshLambertMaterial({ color: '#ddd7c6' }));
-  ground.position.y = -0.05; scene.add(ground);
+  ground.position.set(cx, -0.05, cz); scene.add(ground);
 
   const size = `${req.w}x${req.h}`;
   if (!renderer || canvasSize !== size) {

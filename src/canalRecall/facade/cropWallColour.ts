@@ -89,6 +89,19 @@ export const NOT_WALL_DE = 18;
 export const RIBBON = { minM: 0.6, fromM: 0.8, open: 0.65, pale: 0.5 } as const;
 /** A white top band: rows within `searchM` under the eaves, at least `minM` tall, this share pale (L* >= 70, C* < 14). */
 export const TOP_BAND = { searchM: 2.5, minM: 0.3, pale: 0.55, minL: 70, maxC: 14 } as const;
+/**
+ * Window rows (GitHub #36, kit review round 3: windowless cinema and church shells, schools drawn without the white
+ * frames the photos show): a band of rows at least `minM` tall in which `open` of the readable width is not wall and
+ * under `pale` is pale holds windows, punched or ribbon. Pale pixels inside those rows are the window frames when they
+ * average `framePale` of the readable width; their median colour is the frame colour.
+ */
+export const WINDOW_ROWS = { minM: 0.6, open: 0.25, pale: 0.5, framePale: 0.06 } as const;
+/**
+ * A frame pixel is near-neutral and clearly lighter than the wall: L* at least `minL` and `dL` over the wall's. Relative,
+ * not TOP_BAND's absolute L* 70, because most crops are dim (shaded fronts, no light trim to balance on): the reviewed
+ * white-framed schools (rows 337, 344, 345) read their frames at L* 50-65.
+ */
+export const FRAME_LIGHT = { minL: 48, dL: 20, maxC: 14, liftTo: 235 } as const;
 
 export type GlazingProfile = {
   /** Rows (0.1 m) with enough readable width. */
@@ -99,6 +112,12 @@ export type GlazingProfile = {
   topBand: [number, number] | null;
   /** The band's median colour (normalised), when there is one. */
   topBandHex: string | null;
+  /** Bands of window rows (WINDOW_ROWS), metres above ground: punched or ribbon; none on a blank wall. */
+  windowBands?: [number, number][];
+  /** The window frames' median colour (normalised) inside those bands, when pale frames show; else null. */
+  frameHex?: string | null;
+  /** The mean light (FRAME_LIGHT) share of the window rows: the frame evidence frameHex is judged on. */
+  framePale?: number;
 };
 
 /**
@@ -111,11 +130,11 @@ export function glazingProfile(a: { data: ArrayLike<number>; width: number; heig
   const { data, width, channels, ppm, topM, eavesM, norm } = a, wallLab = rgbToLab([a.wall[0], a.wall[1], a.wall[2]]);
   const rowOf = (m: number) => Math.round((topM - m) * ppm), step = Math.max(1, Math.round(ppm * 0.1)), xStep = Math.max(1, Math.round(ppm * 0.05));
   const from = a.fromM ?? 1, top = Math.min(eavesM, topM - 0.1);
-  type Row = { z: number; open: number; glass: number; pale: number; paleRgb: Rgb | null };
+  type Row = { z: number; open: number; glass: number; pale: number; paleRgb: Rgb | null; light: number; lightRgb: Rgb | null };
   const rows: Row[] = [];
   for (let z = from; z + 0.1 <= top + 1e-6; z += 0.1) {
     const y1 = rowOf(z), y0 = Math.max(0, y1 - step);
-    let read = 0, total = 0, notWall = 0, glass = 0, pale = 0; const paleSum = [0, 0, 0];
+    let read = 0, total = 0, notWall = 0, glass = 0, pale = 0, light = 0; const paleSum = [0, 0, 0], lightSum = [0, 0, 0];
     for (let x = 0; x < width; x += xStep) {
       total++;
       let r = 0, g = 0, b = 0, n = 0;
@@ -127,11 +146,12 @@ export function glazingProfile(a: { data: ArrayLike<number>; width: number; heig
       read++;
       if (Math.hypot(L[0] - wallLab[0], L[1] - wallLab[1], L[2] - wallLab[2]) < NOT_WALL_DE) continue;
       notWall++;
+      if (L[0] >= Math.max(FRAME_LIGHT.minL, wallLab[0] + FRAME_LIGHT.dL) && C < FRAME_LIGHT.maxC) { light++; lightSum[0] += c[0]; lightSum[1] += c[1]; lightSum[2] += c[2]; }
       if (L[0] >= TOP_BAND.minL && C < TOP_BAND.maxC) { pale++; paleSum[0] += c[0]; paleSum[1] += c[1]; paleSum[2] += c[2]; }
       else if (L[0] < wallLab[0] || L[2] < -4) glass++;
     }
     if (read < total * 0.3 || read < 8) continue;
-    rows.push({ z: Math.round(z * 10) / 10, open: notWall / read, glass: glass / read, pale: pale / read, paleRgb: pale ? paleSum.map(v => v / pale) as Rgb : null });
+    rows.push({ z: Math.round(z * 10) / 10, open: notWall / read, glass: glass / read, pale: pale / read, paleRgb: pale ? paleSum.map(v => v / pale) as Rgb : null, light: light / read, lightRgb: light ? lightSum.map(v => v / light) as Rgb : null });
   }
   // Runs of passing rows; one failing or unread 0.1 m row inside a band (a transom, a lamp post) does not break it.
   const runs = (ok: (r: Row) => boolean, minM: number): Row[][] => {
@@ -153,5 +173,20 @@ export function glazingProfile(a: { data: ArrayLike<number>; width: number; heig
     const cs = band.map(r => r.paleRgb!).filter(Boolean), med = (i: number) => cs.map(c => c[i]).sort((p, q) => p - q)[cs.length >> 1];
     topBandHex = '#' + [0, 1, 2].map(i => Math.round(med(i)).toString(16).padStart(2, '0')).join('');
   }
-  return { rowsRead: rows.length, ribbons, topBand: band ? [band[0].z, +(band[band.length - 1].z + 0.1).toFixed(1)] : null, topBandHex };
+  // Window rows under any top band; pale pixels in them are frames.
+  const bandFrom = band ? band[0].z - 1e-6 : Infinity;
+  const winRuns = runs(r => r.z < bandFrom && r.open >= WINDOW_ROWS.open && r.pale < WINDOW_ROWS.pale, WINDOW_ROWS.minM);
+  const winRows = winRuns.flat();
+  let frameHex: string | null = null;
+  const framePale = winRows.length ? winRows.reduce((s, r) => s + r.light, 0) / winRows.length : 0;
+  if (winRows.length && framePale >= WINDOW_ROWS.framePale) {
+    // The frames' median hue, lifted to a painted white's brightness (a dim crop reads white frames grey).
+    const cs = winRows.filter(r => r.lightRgb).map(r => r.lightRgb!), med = (i: number) => cs.map(c => c[i]).sort((p, q) => p - q)[cs.length >> 1];
+    const m = [med(0), med(1), med(2)], k = FRAME_LIGHT.liftTo / Math.max(1, ...m);
+    frameHex = '#' + m.map(v => Math.round(Math.min(255, v * k)).toString(16).padStart(2, '0')).join('');
+  }
+  return {
+    rowsRead: rows.length, ribbons, topBand: band ? [band[0].z, +(band[band.length - 1].z + 0.1).toFixed(1)] : null, topBandHex,
+    windowBands: winRuns.map(run => [run[0].z, +(run[run.length - 1].z + 0.1).toFixed(1)] as [number, number]), frameHex, framePale: Math.round(framePale * 1000) / 1000,
+  };
 }

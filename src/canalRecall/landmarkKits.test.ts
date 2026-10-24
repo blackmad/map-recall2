@@ -5,15 +5,20 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { HIP_MAX_PITCH_DEG, KITS, hipAround, kitGeometry, kitIds, simplifyRing, type PartInput } from './landmarkKits.js';
-import { PANORAMA_BRICK, PUBLIC_WALL, SCHOOL_RIBBON_FRAME, panoramaBrickHue, publicKit, schoolHipRoof, schoolWall, schoolWallDisplay, SCHOOL_HIP_MIN_EAVES_M, type SchoolFacts } from './publicBuildings.js';
-import { isOliveShade, lch, masonryFamily } from './facade/cropWallColour.js';
+import { PANORAMA_BRICK, PUBLIC_WALL, SCHOOL_RIBBON_FRAME, panoramaBrickHue, publicKit, schoolHipRoof, schoolRoof, schoolWall, schoolWallDisplay, SCHOOL_HIP_MIN_EAVES_M, type SchoolFacts } from './publicBuildings.js';
+import { FRAME_LIGHT, WINDOW_ROWS, glazingProfile, isOliveShade, lch, masonryFamily } from './facade/cropWallColour.js';
+import { roofPitch, type RoofPlane } from './facade/roofPitch.js';
+import { measuredWallDisplay } from './kitFacts.js';
 import { PUBLIC_BUILDINGS } from './publicBuildingData.js';
+import { WORSHIP_BUILDINGS } from './worshipBuildingData.js';
+import { worshipKit } from './worshipBuildings.js';
 import { PUBLIC_FACTS, SCHOOL_PERIOD_WALLS } from './publicBuildingFacts.js';
-import { PERIOD_WALLS, cityWallTint } from './look/palette.js';
+import { PERIOD_WALLS, cityWallTint, hexToRgb } from './look/palette.js';
 
 type V2 = [number, number];
 const rect = (w: number, d: number, x = 0, y = 0): V2[] => [[x, y], [x + w, y], [x + w, y + d], [x, y + d], [x, y]];
 const L: V2[] = [[0, 0], [40, 0], [40, 12], [12, 12], [12, 30], [0, 30], [0, 0]];
+const NO_FACTS: SchoolFacts = { year: null, roof: 0, eavesM: null, ridgeM: null, wallHex: null, roofFits: true };
 const facts = (over: Partial<SchoolFacts>): SchoolFacts => ({ year: 1931, roof: 3, eavesM: 5.6, ridgeM: 14.9, wallHex: null, roofFits: true, ...over });
 
 test('every kit in KITS draws triangles of its own once its parts load', () => {
@@ -27,7 +32,8 @@ test('every kit in KITS draws triangles of its own once its parts load', () => {
 });
 
 test('a plain cinema or worship body draws its coping and plinth on the host walls', () => {
-  const cinema = KITS.find(k => k.name === 'Generic cinema NL.IMBAG.Pand.0363100012092742')!;
+  // Unmeasured (round 3 gives measured cinemas and churches walls, windows and roofs of their own).
+  const cinema = publicKit(PUBLIC_BUILDINGS.find(e => e[0] === 'NL.IMBAG.Pand.0363100012092742')!, NO_FACTS);
   assert.ok(cinema.trim?.coping && cinema.trim.plinth, 'pre-1960 body: stone coping and plinth');
   const ring = rect(30, 18), id = cinema.body![0];
   const tris = kitGeometry(cinema, new Map([[id, { id, ring, minHeightM: 0, heightM: 11.2 }]]))[0].tris;
@@ -35,7 +41,7 @@ test('a plain cinema or worship body draws its coping and plinth on the host wal
   assert.equal(Math.max(...zs), 11.2, 'the coping tops the wall');
   assert.equal(Math.min(...zs), 0, 'the plinth stands on the ground');
   assert.ok(tris.every(t => Math.abs(t.n[2]) < 1e-9), 'bands are vertical');
-  const modern = KITS.find(k => k.name === 'Generic church NL.IMBAG.Pand.0363100012123194')!;
+  const modern = worshipKit(WORSHIP_BUILDINGS.find(e => e[0] === 'NL.IMBAG.Pand.0363100012123194')!, NO_FACTS);
   assert.ok(modern.trim?.coping && !modern.trim.plinth, 'a 1967 body gets a fascia only');
 });
 
@@ -148,4 +154,70 @@ test('school glazing: measured ribbon windows and a white top band, opt in', () 
   assert.ok(geo(plain).every(t => t.hex !== SCHOOL_RIBBON_FRAME));
   const ribbons = PUBLIC_FACTS.filter(f => f[7] === 2).length, punched = PUBLIC_FACTS.filter(f => f[7] === 1).length;
   assert.ok(ribbons > 20 && punched > 20, `the crops read both (${ribbons} ribbon, ${punched} punched)`);
+});
+
+// Kit review round 3 (GitHub #36): roof form from the LoD2.2 planes, window rows and frames from the crops, measured
+// cinema and worship walls. Every rule is opt in on a measurement.
+test('roof pitch: flat, pitched, mono-pitch from LoD2.2 planes; the main roof sets eaves and ridge', () => {
+  const plane = (planM2: number, slopeDeg: number, azimuthDeg: number, zMin: number, zMax: number): RoofPlane => ({ planM2, slopeDeg, azimuthDeg, zMin, zMax });
+  assert.equal(roofPitch([plane(400, 2, 0, 15, 15.2), plane(20, 40, 90, 15, 17)])!.form, 'flat', 'a flat roof with a stair-house slope');
+  const gable = roofPitch([plane(200, 45, 90, 8, 14), plane(200, 45, 270, 8, 14), plane(10, 70, 0, 14, 40)])!;
+  assert.equal(gable.form, 'pitched'); assert.equal(gable.mono, false);
+  assert.equal(gable.eavesM, 8); assert.equal(gable.ridgeM, 14, 'a spire does not lift the ridge');
+  assert.ok(roofPitch([plane(300, 30, 180, 4, 12), plane(20, 3, 0, 4, 4)])!.mono, 'one facing: mono-pitch');
+  assert.equal(roofPitch([plane(100, 45, 0, 5, 9), plane(100, 3, 0, 9, 9)])!.form, 'mixed');
+  assert.equal(roofPitch([]), null);
+});
+
+test('crop window rows and frames: windows with pale frames on brick, a blank wall reads none', () => {
+  const W = 200, H = 100, ppm = 20, wall = [120, 60, 45];
+  const img = (windows: boolean) => {
+    const data = new Uint8Array(W * H * 3);
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const z = (H - y) / ppm, inRow = windows && z > 1.5 && z < 3.5, bay = x % 40;
+      const c = inRow && bay >= 8 && bay < 32 ? (bay < 11 || bay >= 29 || z < 1.65 || z > 3.35 ? [235, 235, 230] : [40, 48, 56]) : wall;
+      data.set(c, (y * W + x) * 3);
+    }
+    return glazingProfile({ data, width: W, height: H, channels: 3, ppm, topM: H / ppm, eavesM: H / ppm, wall, norm: c => [c[0], c[1], c[2]] });
+  };
+  const win = img(true), blank = img(false);
+  assert.ok(win.windowBands!.length === 1 && win.windowBands![0][0] <= 1.6 && win.windowBands![0][1] >= 3.4, JSON.stringify(win.windowBands));
+  assert.ok(win.frameHex, 'pale frames read');
+  assert.equal(blank.windowBands!.length, 0); assert.equal(blank.frameHex, null);
+  assert.ok(FRAME_LIGHT.dL > 0 && WINDOW_ROWS.framePale > 0);
+});
+
+test('school roof: the LoD2.2 form decides flat or hipped; unknown keeps the review 1 rule', () => {
+  const pre = facts({ year: 1921, eavesM: 5.2, ridgeM: 16.1 });
+  assert.ok(schoolRoof(pre, 15.1), 'no LoD2.2 form: the tile ridge hips a pre-war school');
+  assert.equal(schoolRoof({ ...pre, pitch: 'flat', pitchEavesM: 13.5, pitchRidgeM: 16.1 }, 15.1), null, 'flat planes: flat (row 301)');
+  assert.equal(schoolRoof({ ...pre, pitch: 'mixed', pitchEavesM: 10.8, pitchRidgeM: 14.3 }, 12.2), null, 'half pitched: flat (row 304)');
+  const late = schoolRoof(facts({ year: 1979, pitch: 'pitched', pitchEavesM: 3.8, pitchRidgeM: 6.5 }), 5.7)!;
+  assert.deepEqual(late, { eavesM: 3.8, riseM: 2.7 }, 'a pitched 1979 pavilion is roofed (row 520)');
+  assert.equal(schoolRoof(facts({ year: 1979, pitch: 'pitched', pitchEavesM: 3.8, pitchRidgeM: 5 }), 5.7), null, 'too low a rise: flat');
+});
+
+test('cinema and worship kits: measured wall, window rows, frames and roof; unmeasured stays the plain body', () => {
+  const cinemaEntry = PUBLIC_BUILDINGS.find(e => e[1] === 'c' && e[5] === 'm')!;
+  assert.ok(publicKit(cinemaEntry, NO_FACTS).body, 'no facts: plain body');
+  assert.ok(publicKit(cinemaEntry, { ...NO_FACTS, blank: true }).body, 'a blank wall: plain body');
+  const punched = publicKit(cinemaEntry, { ...NO_FACTS, wallHex: '#d7cdb0', glazing: 'punched', frameHex: '#e8ecec' });
+  const hall = punched.halls![0];
+  assert.ok(!punched.body && hall.windows!.rows.length && hall.windows!.sash, 'punched rows with sash bars');
+  assert.equal(punched.wall!.hex, measuredWallDisplay('#d7cdb0'));
+  assert.equal(hall.riseM, 0, 'a modern cinema keeps its flat lid');
+  const ribbon = publicKit(cinemaEntry, { ...NO_FACTS, glazing: 'ribbon' }).halls![0].windows!;
+  assert.ok(ribbon.rows.every(r => r.ribbon) && !ribbon.sash);
+  const white = measuredWallDisplay('#e8e6df');
+  assert.ok(lch(hexToRgb(white)).L > 85, `white render stays white (${white})`);
+  // Worship: a body under pitched planes is hipped at their eaves and ridge, tinted where measured (rows 299, 309).
+  const body = WORSHIP_BUILDINGS.find(e => e[2] === 'b' && e[3] > 8)!;
+  assert.ok(worshipKit(body, NO_FACTS).body);
+  const roofed = worshipKit(body, { ...NO_FACTS, pitch: 'pitched', pitchEavesM: 5, pitchRidgeM: 12, roofHex: '#55595e' }).halls![0];
+  assert.ok(roofed.hip && roofed.eavesM === 5 && roofed.riseM === 7 && roofed.roofHex === '#55595e');
+  assert.equal(worshipKit(body, { ...NO_FACTS, pitch: 'flat', pitchEavesM: 5, pitchRidgeM: 12 }).body?.[0], body[0], 'flat planes: no roof');
+  // Sash bars draw on the glass: frame colour triangles in front of the glass plane.
+  const ring = rect(30, 12), id = cinemaEntry[0], parts = new Map([[id, { id, ring, minHeightM: 0, heightM: cinemaEntry[3] }]]);
+  const tris = kitGeometry(punched, parts)[0].tris;
+  assert.ok(tris.filter(t => t.hex === hall.windows!.sash!.hex).length > tris.filter(t => t.hex === hall.windows!.glassHex).length, 'bars outnumber panes');
 });

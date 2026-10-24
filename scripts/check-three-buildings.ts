@@ -988,9 +988,14 @@ for (const c of [0.64, 1.4]) {
     assert.ok(e && e[1] === 'c' && e[2] === 'p', `${why}: plain cinema walls`);
     const out = decorate({ type: 'Feature', properties: { id, height: 20, facade: 'canal-priorBrickRed', facadeStyle: 'canal' }, geometry: null });
     assert.equal(out.properties.kitWall, 'plain', `${why}: plain, no house facade`);
-    assert.equal(out.properties.roofEavesHeightM, undefined, `${why}: no gable, its own height`);
-    assert.equal(out.properties.sideColour, PUBLIC_WALL.c[e![5]]);
-    assert.equal(publicKit(e!).halls, undefined, `${why}: no windows`);
+    // Round 3 (GitHub #36, kit review row 355: Pathé City's buff front has a glazing strip the plain box lacked): a
+    // cinema whose crops read window rows wears them under a flat lid at its own height, in its measured colour.
+    const kit = publicKit(e!), hall = kit.halls?.[0];
+    if (hall) {
+      assert.ok(hall.windows?.rows.length && hall.riseM === 0 && !hall.hip, `${why}: measured windows under the flat lid`);
+      assert.ok(out.properties.roofEavesHeightM === undefined || out.properties.roofEavesHeightM === hall.eavesM, `${why}: no gable, its own height`);
+    } else assert.equal(out.properties.roofEavesHeightM, undefined, `${why}: no gable, its own height`);
+    assert.equal(out.properties.sideColour, kit.wall!.hex);
   }
   for (const [id, mode, era, why] of [['NL.IMBAG.Pand.0363100012237203', 'f', 'o', 'Montessori Lyceum (1912)'], ['NL.IMBAG.Pand.0363100012076543', 'f', 'o', 'Fons Vitae Lyceum (1926)'], ['NL.IMBAG.Pand.0363100012112357', 'f', 'e', 'Slotermeerschool (1955)'], ['NL.IMBAG.Pand.0363100012129398', 'f', 'e', 'Spinoza Lyceum (1957)']] as const) {
     const e = entry(id);
