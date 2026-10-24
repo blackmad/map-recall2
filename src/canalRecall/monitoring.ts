@@ -1,4 +1,6 @@
 import * as Sentry from '@sentry/browser';
+import { PENDING_GRAPHICS_FAILURES } from './mapGuard';
+import { IGNORED_ERRORS } from './monitoringFilters';
 
 /**
  * Canal Recall error monitoring.
@@ -43,24 +45,35 @@ if (enabled) {
     // Sentry v11 equivalent of `sendDefaultPii: false`: do not attach user PII.
     dataCollection: { userInfo: false },
     initialScope: { tags: { app: 'canal-recall' } },
-    // A dead GPU process makes every shader query answer false with an empty
-    // info log; MapLibre 5 then throws this from every render frame. `mapGuard`
-    // handles maps we own, and this keeps unguarded pages from flooding the
-    // project. A real shader bug carries a GLSL log and still reports.
-    ignoreErrors: [/Could not compile (fragment|vertex) shader:\s*(null)?$/, /Program failed to link:\s*(null)?$/],
+    // Third-party and dead-GPU noise; see monitoringFilters.ts (unit-tested).
+    ignoreErrors: [...IGNORED_ERRORS],
+    // Sentry's own global handlers capture uncaught errors and unhandled
+    // rejections; the route tags ride on every event from here. (The page
+    // used to capture them a second time from its own listeners below, so
+    // every one arrived twice: CANAL-RECALL-F was -G's duplicate.)
+    beforeSend(event) {
+      event.tags = { ...routeTags(), ...event.tags };
+      return event;
+    },
   });
 }
+
+const GRAPHICS_FAILURES: Record<string, { message: string; tag: string }> = {
+  'webgl-context-lost': { message: 'MapLibre lost the WebGL context', tag: 'context-lost' },
+  'dead-gpu-shader': { message: 'MapLibre lost the GPU while compiling a shader', tag: 'dead-gpu' },
+  'webgl-unavailable': { message: 'The browser refused a WebGL context', tag: 'webgl-unavailable' },
+};
 
 /** One diagnostics hook for `mapGuard`; it reports once per event, not per frame. */
 window.canalRecallMonitoring = {
   reportGraphicsFailure(detail) {
     if (!enabled) return;
-    const contextLost = detail.event === 'webgl-context-lost';
+    const kind = GRAPHICS_FAILURES[String(detail.event)] ?? GRAPHICS_FAILURES['dead-gpu-shader'];
     Sentry.captureMessage(
-      contextLost ? 'MapLibre lost the WebGL context' : 'MapLibre lost the GPU while compiling a shader',
+      kind.message,
       {
         level: 'warning',
-        tags: { ...routeTags(), graphics: contextLost ? 'context-lost' : 'dead-gpu' },
+        tags: { ...routeTags(), graphics: kind.tag },
         extra: { ...detail },
         fingerprint: ['canal-recall', 'graphics-failure', String(detail.event)],
       },
@@ -90,16 +103,19 @@ function noteSevere(kind: string, detail: unknown): void {
   console.error(`[canal-recall:monitoring] ${kind} (#${severeCount})`, detail);
 }
 
+// Console only: Sentry's global handlers already send these (see `beforeSend`).
 window.addEventListener('error', (event) => {
-  if (enabled) {
-    Sentry.captureException(event.error ?? event.message, { tags: routeTags() });
-  }
   noteSevere('error', { message: event.message, filename: event.filename, lineno: event.lineno, colno: event.colno });
 });
 
 window.addEventListener('unhandledrejection', (event) => {
-  if (enabled) {
-    Sentry.captureException(event.reason, { tags: routeTags() });
-  }
   noteSevere('unhandledrejection', event.reason);
 });
+
+// Graphics failures from before this bundle arrived (it loads async; a WebGL refusal happens at `load`).
+{
+  const root = window as unknown as Record<string, Record<string, unknown>[] | undefined>;
+  const pending = root[PENDING_GRAPHICS_FAILURES];
+  root[PENDING_GRAPHICS_FAILURES] = undefined;
+  for (const detail of pending ?? []) window.canalRecallMonitoring?.reportGraphicsFailure(detail);
+}

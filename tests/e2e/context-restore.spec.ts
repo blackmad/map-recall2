@@ -9,6 +9,12 @@ import { openRoute } from './helpers';
 
 test('the 3D layer draws again after the WebGL context is lost and restored', async ({ page }) => {
   test.setTimeout(240_000);
+  // While the context is lost MapLibre has no style (map.style null): frame work that touched
+  // getLayer/getSource threw (Sentry CANAL-RECALL-A/-8/-4/-B, Android 10).
+  const styleless: string[] = [];
+  const styleError = /reading '(getLayer|getSource|layers)'|this\.style\.getLayer/;
+  page.on('pageerror', error => { if (styleError.test(error.message)) styleless.push(error.message); });
+  page.on('console', message => { if (styleError.test(message.text())) styleless.push(message.text()); });
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', playerTimeoutMs: 120_000 });
   await page.waitForFunction(() => (window as any).canalRecallGame?.state === 4, null, { timeout: 120_000 });
   await page.evaluate(() => { (window as any).canalRecallGame.maxAsksPerMinute = 0; });
@@ -38,6 +44,8 @@ test('the 3D layer draws again after the WebGL context is lost and restored', as
     (window as any).__loseContext.loseContext();
   });
   await expect.poll(async () => (await state()).renderer, { timeout: 5_000 }).toBe(false);
+  // Keep riding without a context for a moment, as a phone whose GPU process was killed does.
+  await page.waitForTimeout(1_500);
   await page.evaluate(() => (window as any).__loseContext.restoreContext());
 
   // The brief's bar: the 3D layer draws again within 5 s of the restore.
@@ -51,5 +59,11 @@ test('the 3D layer draws again after the WebGL context is lost and restored', as
   await expect.poll(async () => { const s = await state(); return s.groundCells > 0 && s.groundDrawn; }, { timeout: 30_000 }).toBe(true);
   const after = await state();
   expect(after.context).toEqual({ lost: 1, restored: 1 });
+  expect(styleless).toEqual([]);
+  // Map-side work deferred while the style was gone ran once the restored style loaded.
+  await expect.poll(() => page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap;
+    return [vm._suppressionStale, vm._detailedLayersStale, vm._modelShownStale].some(Boolean);
+  }), { timeout: 10_000 }).toBe(false);
   console.log(JSON.stringify({ project: test.info().project.name, drawnMs, groundCells: after.groundCells }));
 });

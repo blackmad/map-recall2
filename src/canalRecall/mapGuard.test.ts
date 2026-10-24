@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { guardMapRender, isDeadGpuShaderError, type GuardableMap } from './mapGuard';
+import { guardMapRender, isDeadGpuShaderError, reportWebglUnavailable, type GuardableMap, type GraphicsFailure } from './mapGuard';
 
 test('a dead GPU is recognised by its empty shader info log', () => {
   for (const message of [
@@ -132,4 +132,13 @@ test('does not wrap the same map twice or a map without a render loop', () => {
   assert.equal(guardMapRender(map), false);
   assert.equal(guardMapRender({}), false);
   assert.equal(guardMapRender(null), false);
+});
+
+test('a browser that refuses WebGL is reported once with its reason (CANAL-RECALL-C)', () => {
+  const reported: GraphicsFailure[] = [];
+  const refusal = new Error('{"statusMessage":"Web page caused context loss and was blocked","type":"webglcontextcreationerror","message":"Failed to initialize WebGL"}');
+  const failure = reportWebglUnavailable(null, refusal, detail => reported.push(detail));
+  assert.equal(reported.length, 1);
+  assert.equal(failure.event, 'webgl-unavailable');
+  assert.match(String(failure.message), /caused context loss and was blocked/);
 });
