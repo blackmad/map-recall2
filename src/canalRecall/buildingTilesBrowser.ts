@@ -309,7 +309,7 @@ export class BuildingTileStreamer {
     this.countsDirty = true;
     this.onFeatures?.(features);
     const source = this.map.getSource(this.sourceId);
-    if (!source) return;
+    if (!source || !this.publishing) return;
     const ids = changed.map(feature => String(feature.properties?.id ?? ''));
     if (!this.published || typeof source.updateData !== 'function' || ids.some(id => !id) || new Set(ids).size !== ids.length) {
       this.published = null;
@@ -637,6 +637,7 @@ export class BuildingTileStreamer {
    * published snapshot and resends everything.
    */
   private sendToSource(source: GeoJsonSource, features: BuildingFeature[]): void {
+    if (!this.publishing) return;
     const resident = this.cache.entries();
     const snapshot = new Map(resident);
     const full = () => {
@@ -657,6 +658,56 @@ export class BuildingTileStreamer {
       console.warn('Building source diff failed; resending the whole set', error);
       full();
     }
+  }
+
+  /**
+   * Whether MapLibre's GeoJSON source gets a copy of the resident buildings. On a phone, while the
+   * three.js layer draws every building, the copy only fed an opacity-0 layer, and MapLibre's index
+   * of it was ~110 MB of map-worker heap after a few tiles of the centre (2026-10-24). Off, the
+   * source is emptied and `featuresAt` / `featuresById` answer the lookups the map used to.
+   */
+  private publishing = true;
+  get isPublishing(): boolean { return this.publishing; }
+  setPublishing(on: boolean): void {
+    if (on === this.publishing) return;
+    this.publishing = on;
+    this.published = null;
+    const source = this.map.getSource(this.sourceId);
+    if (!source) return;
+    if (!on) { source.setData({ type: 'FeatureCollection', features: [] }); return; }
+    if (this.cache.size) this.sendToSource(source, this.cache.collection().features.map(feature => this.styled(feature)));
+  }
+
+  private readonly boxes = new WeakMap<BuildingFeature, readonly [number, number, number, number] | null>();
+  private boxOf(feature: BuildingFeature): readonly [number, number, number, number] | null {
+    let box = this.boxes.get(feature);
+    if (box !== undefined) return box;
+    let w = Infinity, s = Infinity, e = -Infinity, n = -Infinity;
+    const walk = (c: unknown): void => {
+      if (!Array.isArray(c)) return;
+      if (typeof c[0] === 'number') { const x = c[0], y = c[1] as number; if (x < w) w = x; if (x > e) e = x; if (y < s) s = y; if (y > n) n = y; return; }
+      for (const child of c) walk(child);
+    };
+    walk((feature.geometry as { coordinates?: unknown } | null)?.coordinates);
+    box = w <= e ? [w, s, e, n] as const : null;
+    this.boxes.set(feature, box);
+    return box;
+  }
+
+  /** Resident buildings (styled) whose footprint box holds a point; callers test the footprint itself. */
+  featuresAt(lng: number, lat: number): BuildingFeature[] {
+    const out: BuildingFeature[] = [];
+    for (const raw of this.cache.collection().features) {
+      const box = this.boxOf(raw);
+      if (box && lng >= box[0] && lng <= box[2] && lat >= box[1] && lat <= box[3]) out.push(this.styled(raw));
+    }
+    return out;
+  }
+
+  /** Resident buildings (styled) with these ids (`properties.id`, the source's promoted id). */
+  featuresById(ids: readonly (string | number)[]): BuildingFeature[] {
+    const wanted = new Set(ids.map(String));
+    return this.cache.collection().features.filter(raw => wanted.has(String(raw.properties?.id ?? ''))).map(raw => this.styled(raw));
   }
 
   private watchedSources = new WeakSet<GeoJsonSource>();

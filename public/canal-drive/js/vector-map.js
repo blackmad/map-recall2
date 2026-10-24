@@ -81,6 +81,17 @@ function canalRecallPixelRatio() {
 // Phones also free each ground cell's vertex arrays once uploaded (~12 MB per
 // resident cell lived on beside the GPU copy). `window.__canalRecallKeepGroundArrays`
 // keeps them for specs that walk `_ownGround.layersAt()`.
+/**
+ * Touch devices give MapLibre no copy of the streamed buildings while the three.js layer draws them
+ * all: the copy fed only an opacity-0 layer, and its GeoJSON index was ~110 MB of map-worker heap
+ * (2026-10-24). Desktop keeps it. `?buildingSource=1` keeps it, `=0` drops it, for measurement.
+ */
+function canalRecallDropsBuildingCopy() {
+  const asked = new URLSearchParams(window.location.search).get('buildingSource');
+  if (asked === '0' || asked === '1') return asked === '0';
+  return !!window.matchMedia?.('(pointer: coarse)')?.matches;
+}
+
 function canalRecallOwnGroundBudget() {
   const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
   const budget = { releaseArrays: !!coarse && window.__canalRecallKeepGroundArrays !== true };
@@ -253,7 +264,7 @@ class VectorBasemap {
       this._raisePoiLayers();
       this._ensureSharedFrame();
       const hl = window.CanalRecallThree; // `?highlight=a|b|c`: ground ring / beacon (src/canalRecall/look/highlightMarker.ts)
-      if (hl && hl.HighlightMarker && hl.highlightStyle() !== 'yellow') this._highlightMarker = new hl.HighlightMarker(hl.THREE, this.map, { sharedFrame: this._sharedFrame, heightAt: p => (this._ownGround && this._ownGround.ready ? this._ownGround.heightAt(p) : 0) });
+      if (hl && hl.HighlightMarker && hl.highlightStyle() !== 'yellow') this._highlightMarker = new hl.HighlightMarker(hl.THREE, this.map, { sharedFrame: this._sharedFrame, heightAt: p => (this._ownGround && this._ownGround.ready ? this._ownGround.heightAt(p) : 0), featuresById: ids => (this._completeCity && this._completeCity.isPublishing === false ? this._completeCity.featuresById(ids) : null) });
       if (window.CanalRecallDetailed3D && window.CanalRecallDetailed3D.DetailedBuildings) {
         this._detailedBuildings = new window.CanalRecallDetailed3D.DetailedBuildings(this.map, maplibregl, () => {
           this._syncDetailedBuildingLayers();
@@ -1281,6 +1292,8 @@ class VectorBasemap {
       const off = detail || (three && id !== 'osm-colored-buildings');
       if (this.map.getLayer(id) && this.map.getLayoutProperty(id, 'visibility') !== (off ? 'none' : 'visible')) this.map.setLayoutProperty(id, 'visibility', off ? 'none' : 'visible');
     }
+    // Picking (three.js), the covered-passage check and the highlight hull read the streamer instead.
+    if (this._completeCity?.setPublishing) this._completeCity.setPublishing(!(three && canalRecallDropsBuildingCopy()));
     if (this.map.getLayer('osm-colored-buildings') && this._wallsGhosted !== three) {
       this._wallsGhosted = three;
       this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-opacity', three ? 0 : BUILDING_FADE_IN);
@@ -3006,6 +3019,9 @@ class VectorBasemap {
           }
           const layers = this._riderCoverLayers;
           const features = layers.length ? this.map.queryRenderedFeatures([point.x, point.y], { layers }) : [];
+          // Without MapLibre's copy of the streamed buildings (phones), the streamer answers.
+          const city = this._completeCity;
+          if (city && city.isPublishing === false) features.push(...city.featuresAt(rider[0], rider[1]));
           const cover = helpers.coveringBuilding(features, rider);
           coveredNow = !!cover;
           if (cover) this._riderCoverId = String(cover.properties && cover.properties.id != null ? cover.properties.id : cover.id);
