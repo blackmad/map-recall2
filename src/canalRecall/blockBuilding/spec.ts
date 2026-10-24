@@ -26,6 +26,11 @@ export interface WinParams {
   mullAt?: number[];
   /** horizontal glazing bars at these fractions of the opening height; replaces `rows` (opt-in) */
   rowsAt?: number[];
+  /**
+   * Grouped windows (opt-in, issue #35): the opening `w` wide is drawn as `count` separate windows with `gap` m of wall
+   * between them (the paired and tripled windows of one bay: Stadhouderskade's school, the Hirsch building's bays).
+   */
+  group?: { count: number; gap: number };
   /** recess mode: stand the sill on the cut wall's own plane (3DBAG walls merged into a panel can sit cm off its plane; opt-in) */
   sillOnWall?: boolean;
   /** recess mode: glazing bars stand this far (m) in front of the glass (default 0.015; 0.035 clears the audit's z-fight band; opt-in) */

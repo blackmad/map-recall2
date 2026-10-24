@@ -13,7 +13,13 @@
  *   front face, on a corbel, under a cap;
  * - `voussoirs`: alternating stone and brick voussoirs round every arched opening of the listed storeys (a banded arch),
  *   optionally continued down the jambs;
- * - `piers`: brick pilasters at the bay joints from storey `from` up.
+ * - `piers`: brick pilasters at the bay joints from storey `from` up (to the top of storey `to`, default the wall top); a
+ *   giant order (opt-in, issue #35): a moulded `capital` and a `base` block in the dressing stone, `flutes` (raised
+ *   fillets up the shaft), the shaft itself in the dressing stone (`stone`: white plaster or sandstone pilasters on dark
+ *   brick), and pilasters at both `ends` of the panel too;
+ * - `corbels`: a brick corbel table (a run of small corbels under a projecting course) across the wall at the top of
+ *   storey `storey` (default under the wall top), broken by the piers: the dentil arcades over each glazing bay of the
+ *   1890s warehouses (pand-233585).
  *
  * Every part is a closed solid at least 4 cm proud (the z-fight band), parts that meet overlap by 2 cm instead of
  * sharing a face, and nothing is drawn across an opening. Geometry is in the panel's (u, v, d) frame.
@@ -37,7 +43,8 @@ export interface StoneDressings {
   quoins?: { ends?: boolean; joints?: number[] };
   oriels?: { bays: number[]; from: number; to: number; deep?: number; canted?: boolean };
   voussoirs?: { storeys?: number[]; jambs?: boolean };
-  piers?: { w?: number; from?: number };
+  piers?: { w?: number; from?: number; to?: number; /** projection as a fraction of the bay (default 0.22 m) */ deep?: number; capital?: boolean; base?: boolean; flutes?: number; stone?: boolean; ends?: boolean };
+  corbels?: { storey?: number; count?: number; stone?: boolean; /** the table's height (course and corbels) as a fraction of the storey (default 0.5 m) */ drop?: number; /** stand on the storey's floor line (the corbels just over the windows below) instead of hanging from its top */ foot?: boolean };
 }
 
 /** Sizes in metres (proportions where noted); measured on Damrak 77 (w01-128, 2020-04-21) and the Nassaukade benchmark. */
@@ -54,6 +61,12 @@ export const DRESS = {
   voussoir: { t: 0.42, block: 0.34, out: 0.05, jamb: 0.3 },
   /** pier width as a fraction of the bay (default) and projection */
   pier: { w: 0.18, out: 0.22 },
+  /** giant-order pier parts: capital (h, overhang each side, extra projection), necking ring under it, base block, fluting fillets */
+  capital: { h: 0.5, over: 0.1, out: 0.08, neckH: 0.12, neckOver: 0.03, neckOut: 0.04 },
+  base: { h: 0.45, over: 0.06, out: 0.05 },
+  flute: { w: 0.045, out: 0.05, inset: 0.15, min: 2, max: 8 },
+  /** corbel table: the course on top (h, projection), the corbels under it (w, h, projection) and their pitch when no count is given */
+  corbel: { courseH: 0.18, courseOut: 0.18, w: 0.16, h: 0.32, out: 0.14, pitch: 0.45 },
 } as const;
 
 export interface DressingSlots { stone: string; wall: string; frame: string; glass: string }
@@ -80,8 +93,10 @@ export function drawDressings(c: PanelCtx, info: { levels: number[]; cells: Cell
   const free = holes.filter(h => !covered(h));
   const orielSkip = (v0: number, v1: number): [number, number][] => oriels.filter(o => o[2] < v1 && o[3] > v0).map(o => [o[0] - 0.02, o[1] + 0.02]);
   const storeys = Math.max(0, levels.length - 1);
-  const pierOut = main && d.piers ? DRESS.pier.out : 0;
-  if (main && d.piers) n += drawPiers(c, info, free, d.piers, slots.wall, top);
+  const pierOut = main && d.piers ? (d.piers.deep ? d.piers.deep * Math.min(...info.cells.map(x => x.u1 - x.u0)) : DRESS.pier.out) : 0;
+  let pierSpans: [number, number][] = [];
+  if (main && d.piers) { const r = drawPiers(c, info, free, d.piers, slots, top); n += r.n; pierSpans = r.spans; }
+  if (main && d.corbels) n += drawCorbels(c, levels, free, d.corbels, slots, top, pierSpans);
 
   if (d.bands) {
     const B = DRESS.band, list = d.bands.storeys ?? Array.from({ length: Math.max(0, storeys - 1) }, (_, k) => k + 1);
@@ -145,19 +160,101 @@ export function drawDressings(c: PanelCtx, info: { levels: number[]; cells: Cell
   return n;
 }
 
-/** Brick pilasters at every bay joint of the panel from storey `from` (default 1) to `top`, narrowed to clear the openings. */
-function drawPiers(c: PanelCtx, info: { levels: number[]; cells: Cell[] }, holes: Hole[], pr: NonNullable<StoneDressings['piers']>, slot: string, top: number): number {
-  const p = c.p, from = pr.from ?? 1, v0 = Math.max(p.vMin, info.levels[from] ?? p.vMax), joints = jointUs(info.cells);
+/**
+ * Brick pilasters at every bay joint of the panel from storey `from` (default 1) to the top of storey `to` (default the
+ * wall top), narrowed to clear the openings; with `ends` also at both ends of the panel. The giant-order parts are
+ * opt-in: a `base` block and a `capital` (a necking ring under a wider moulded block) in the dressing stone, `flutes`
+ * raised fillets up the shaft, the shaft in the dressing stone (`stone`). Returns the parts drawn and each pier's u span.
+ */
+function drawPiers(c: PanelCtx, info: { levels: number[]; cells: Cell[] }, holes: Hole[], pr: NonNullable<StoneDressings['piers']>, slots: DressingSlots, top: number): { n: number; spans: [number, number][] } {
+  const p = c.p, from = pr.from ?? 1, v0 = Math.max(p.vMin, info.levels[from] ?? p.vMax), joints = jointUs(info.cells), spans: [number, number][] = [];
+  const v1 = pr.to === undefined ? top : Math.min(top, info.levels[pr.to + 1] ?? top), slot = pr.stone ? slots.stone : slots.wall;
   let n = 0;
-  if (top - v0 < 1) return 0;
+  if (v1 - v0 < 1) return { n: 0, spans };
+  const pitch = Math.min(...info.cells.map(x => x.u1 - x.u0)), out = pr.deep ? pr.deep * pitch : DRESS.pier.out;
+  const C = DRESS.capital, B = DRESS.base, F = DRESS.flute;
+  const shaft = (a: number, b: number) => {
+    // the base and capital overlap the shaft by 2 cm, so no two parts share a face
+    const s0 = pr.base ? v0 + B.h - 0.02 : v0, s1 = pr.capital ? v1 - C.h - C.neckH + 0.02 : v1;
+    const part = c.part();
+    c.box(slot, a, b, s0, s1, 0, out, part); n++;
+    if (pr.base && fitsPanel(p, rectPoly(a - B.over, b + B.over, v0, v0 + B.h))) { c.box(slots.stone, a - B.over, b + B.over, v0, v0 + B.h, 0, out + B.out, part); n++; }
+    if (pr.capital && fitsPanel(p, rectPoly(a - C.over, b + C.over, v1 - C.h, v1))) {
+      c.box(slots.stone, a - C.neckOver, b + C.neckOver, v1 - C.h - C.neckH, v1 - C.h + 0.02, 0, out + C.neckOut, part);
+      c.box(slots.stone, a - C.over, b + C.over, v1 - C.h, v1, 0, out + C.out, part); n++;
+    }
+    const k = pr.flutes ? Math.max(F.min, Math.min(F.max, Math.round(pr.flutes))) : 0;
+    if (k) {
+      const f0 = s0 + F.inset, f1 = s1 - F.inset;
+      for (let i = 1; i <= k; i++) { const u = a + (b - a) * i / (k + 1); if (f1 - f0 > 0.5) c.box(slot, u - F.w / 2, u + F.w / 2, f0, f1, out - 0.02, out + F.out, part); }
+    }
+    // a capital overhangs the shaft: a corbel course at its height ends inside the capital, not on its face
+    spans.push(pr.capital ? [a - C.over, b + C.over] : [a, b]);
+  };
   for (const u of joints) {
-    const pitch = Math.min(...info.cells.map(x => x.u1 - x.u0));
     let w = (pr.w ?? DRESS.pier.w) * pitch;
-    for (const h of holes) if (h[3] > v0 && h[2] < top) { if (h[1] <= u) w = Math.min(w, 2 * (u - h[1] - 0.04)); else if (h[0] >= u) w = Math.min(w, 2 * (h[0] - u - 0.04)); else w = 0; }
-    if (w < 0.2 || !fitsPanel(p, rectPoly(u - w / 2, u + w / 2, v0, top))) continue;
-    c.box(slot, u - w / 2, u + w / 2, v0, top, 0, DRESS.pier.out, c.part()); n++;
+    for (const h of holes) if (h[3] > v0 && h[2] < v1) { if (h[1] <= u) w = Math.min(w, 2 * (u - h[1] - 0.04)); else if (h[0] >= u) w = Math.min(w, 2 * (h[0] - u - 0.04)); else w = 0; }
+    if (w < 0.2 || !fitsPanel(p, rectPoly(u - w / 2, u + w / 2, v0, v1))) continue;
+    if (!pr.base && !pr.capital && !pr.flutes && !pr.stone && !pr.deep) { c.box(slot, u - w / 2, u + w / 2, v0, v1, 0, out, c.part()); n++; spans.push([u - w / 2, u + w / 2]); continue; }
+    shaft(u - w / 2, u + w / 2);
+  }
+  if (pr.ends) for (const side of [0, 1]) {
+    // an end pier stands inside the panel edge (the capital's overhang must stay on the wall), narrowed to clear the openings
+    const over = pr.capital ? C.over : pr.base ? B.over : 0, edge = side === 0 ? p.uMin + over + 0.02 : p.uMax - over - 0.02;
+    let w = (pr.w ?? DRESS.pier.w) * pitch;
+    for (const h of holes) if (h[3] > v0 && h[2] < v1) w = Math.min(w, side === 0 ? h[0] - 0.04 - edge : edge - h[1] - 0.04);
+    if (w < 0.2) continue;
+    const a = side === 0 ? edge : edge - w, b = a + w;
+    if (!fitsPanel(p, rectPoly(a, b, v0, v1))) continue;
+    shaft(a, b);
+  }
+  return { n, spans };
+}
+
+/**
+ * A corbel table at the top of storey `storey` (default under the wall top): a projecting course with a run of small
+ * corbels under it, `count` per bay (default one every 0.45 m), in the wall brick (or the dressing stone with `stone`),
+ * broken by the piers and clear of the openings.
+ */
+function drawCorbels(c: PanelCtx, levels: number[], holes: Hole[], t: NonNullable<StoneDressings['corbels']>, slots: DressingSlots, top: number, piers: [number, number][]): number {
+  const st = t.storey ?? levels.length - 2, storeyH = (levels[st + 1] ?? top) - (levels[st] ?? 0), K = DRESS.corbel, slot = t.stone ? slots.stone : slots.wall;
+  const kh = t.drop ? Math.max(K.h, t.drop * storeyH - K.courseH) : K.h;
+  const vTop = t.foot ? Math.min(top, (levels[st] ?? 0) + 0.02 + kh + K.courseH) : t.storey === undefined ? top : Math.min(top, levels[t.storey + 1] ?? top);
+  const c0 = vTop - K.courseH, k0 = c0 - kh, skip = piers.map(([a, b]) => [a + 0.02, b - 0.02] as [number, number]);
+  if (k0 < Math.max(0, c.p.vMin) + 0.5) return 0;
+  let n = drawBand(c, slot, c0, vTop, K.courseOut, skip);
+  // corbels: evenly in each run of the course between the piers (the runs are the same intervals the course was cut into)
+  const runs: [number, number][] = [];
+  for (const [a0, b0] of intervalsOf(c, c0, vTop)) {
+    let pieces: [number, number][] = [[a0, b0]];
+    for (const [s0, s1] of piers) pieces = pieces.flatMap(([a, b]) => (s1 <= a || s0 >= b ? [[a, b]] : [[a, s0], [s1, b]].filter(([x, y]) => y - x > 0.6)) as [number, number][]);
+    runs.push(...pieces);
+  }
+  // `count` per bay: the bay's clear width between two piers (or the run itself without piers) shared by `count` corbels
+  const bay = piers.length > 1 ? piers[1][0] - piers[0][1] : 0;
+  const part = c.part();
+  for (const [a, b] of runs) {
+    const m = Math.max(1, t.count ? Math.round((b - a) / (bay > 0.6 ? bay : b - a) * t.count) : Math.round((b - a) / K.pitch));
+    for (let i = 0; i < m; i++) {
+      const u = a + (b - a) * (i + 0.5) / m, u0 = u - K.w / 2, u1 = u + K.w / 2;
+      if (!fitsPanel(c.p, rectPoly(u0, u1, k0, c0 + 0.02), 0.01) || holes.some(h => overlaps(h, u0, u1, k0, c0, 0.03))) continue;
+      c.box(slot, u0, u1, k0, c0 + 0.02, 0, K.out, part); n++;
+    }
   }
   return n;
+}
+
+/** The runs of wall across the panel between v0 and v1 (the panel outline only; openings are skipped per part). */
+function intervalsOf(c: PanelCtx, v0: number, v1: number): [number, number][] {
+  const p = c.p, out: [number, number][] = [];
+  let start: number | null = null;
+  const W = p.uMax - p.uMin, steps = Math.max(1, Math.ceil(W / 0.25));
+  for (let i = 0; i <= steps; i++) {
+    const u = p.uMin + W * i / steps, ok = i < steps && fitsPanel(p, rectPoly(u, Math.min(p.uMax, u + W / steps), v0, v1), 0.01);
+    if (ok && start === null) start = u;
+    if (!ok && start !== null) { out.push([start, u]); start = null; }
+  }
+  return out;
 }
 
 /** u of the joints between neighbouring bays of the panel's cell grid (not its ends). */

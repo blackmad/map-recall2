@@ -857,7 +857,16 @@ export interface LargeWallIntent {
   piers?: boolean;
   /** Storeys (0 = ground) with a balcony in every bay, or only in every `every`-th bay from `first`, or the listed `bays`
    *  (of `baysPerStorey`, e.g. a balcony over the entrance); neighbouring balcony bays join into one balcony in the layered kit. */
-  balconies?: {storeys: number[]; rail?: 'glass' | 'bars' | 'solid'; every?: number; first?: number; bays?: number[]};
+  balconies?: {storeys: number[]; rail?: 'glass' | 'bars' | 'solid'; every?: number; first?: number; bays?: number[];
+    /** the rails' own colour (black iron balconies; default the frame colour) */ colour?: string;
+    /** projection as a fraction of the storey height (0.08..0.45; default 1.2 m): a shallow balcony on consoles */ deep?: number;
+    /** stand in front of the storey's own windows (an iron balcony on a window row) instead of one French window */ windows?: boolean};
+  /**
+   * Grouped windows (issue #35): each bay's opening (`windowShape.w` of the bay) is `count` separate windows with `gap`
+   * of the bay (default 0.06) of wall between them, on the listed `storeys` (default every upper storey; 0 = ground).
+   * Stadhouderskade 111's school pairs and the Hirsch building's three windows per bay. Absent: byte-identical.
+   */
+  windowGroup?: {count: number; gap?: number; storeys?: number[]};
   /** Storeys (0 = ground) with no openings (a blank floor over a shop, a plant floor). */
   blankStoreys?: number[];
   /** Upper storeys (1 = first floor) glazed across every bay like a shop ground (a glazed mezzanine over the shops). */
