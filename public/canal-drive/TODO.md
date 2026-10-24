@@ -222,6 +222,12 @@ Open, in order:
   walls). Factory batches may run on PDOK facts; compile/gates on
   PDOK-derived facts not yet exercised. Open: fetch all 56 blades once so
   the pipeline has no runtime dependency on either host.
+- **perf no-change findings** (2026-10-24): own-ground worker #2 (relief)
+  heap and ArrayBuffers 0 MB at 20 s and 50 s on the iPhone profile, kept
+  (#21); MapLibre `maxTileCacheZoomLevels` 5 → 1 saves only 6 MB on phones,
+  unchanged (#22). Left on phones: real-device rides (#10) and GPU buffers
+  (~134 MB; next lever fewer triangles per phone ground cell, 11–27 MB each).
+  The perf session takes roads R1 (#12) first.
 - **perf GPU loss and regain** (merged 2026-10-24, 1538978a4): MapLibre
   5.24 drops custom layers on a restored context; SharedFrame now re-adds
   both layers at style.load with a new renderer and calls a participant
