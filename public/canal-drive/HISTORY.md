@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+**PDOK blades cached (2026-10-24, #19).** The 88 PDOK 3D Basisvoorziening
+2025 blades that intersect Amsterdam (not the 56 first estimated; the 133 in
+the bounding box were clipped to the buurten boundary) are committed to the
+source-data repo as zips plus `index.json`, about 270 MB. The unzipped
+CityJSON, 1.6 GB, is gitignored because one tile is 114 MB, over GitHub's
+file limit; `pdok-tiles.ts` unzips a cached zip on first use. Building facts
+no longer depend on api.3dbag.nl or a live PDOK download.
+
 **Morning of 2026-10-24, additions.** Feedback notes A and B are installed:
 the Academie voor Theater en Dans roofs no longer run past the recessed core
 (lod1 rebuilt), and the Rembrandtplein "crumpled roof" turned out to be

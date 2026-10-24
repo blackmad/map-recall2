@@ -240,16 +240,16 @@ Open, in order:
   Basisvoorziening on PDOK: the same TU Delft LoD2.2 reconstruction, CC BY
   4.0, 2 km CityJSON blades per year (`src/canalRecall/buildingRecipe/pdokLod2.ts`,
   cache `npm run pdok:tiles -- --pand=<id>|--blade=<x>_<y>` into
-  `map-recall2-source-data/datasets/pdok-3d-gebouwen-2025/`; 56 Amsterdam
-  blades = 254 MB zipped, 1.3 GB unzipped; two cached so far). Measured on
+  `map-recall2-source-data/datasets/pdok-3d-gebouwen-2025/`; all 88 blades
+  that touch the municipality are cached and committed there as zips,
+  270 MB, and a missing CityJSON is unzipped from its zip on first use). Measured on
   Bloemgracht 80: heights equal, roof area 119.9 vs 120.0 m², front width
   identical, normal 0.3° apart. Known gaps: `b3_bouwlagen` (storeys) has no
   PDOK field → null; PDOK 2025 is a newer AHN5 reconstruction, so wall
   surface indices differ from the API copy: never `--refresh` an existing
   large intent from PDOK (its `wallSurfaces` indices would point at other
   walls). Factory batches may run on PDOK facts; compile/gates on
-  PDOK-derived facts not yet exercised. Open: fetch all 56 blades once so
-  the pipeline has no runtime dependency on either host.
+  PDOK-derived facts not yet exercised.
 - **perf compact phone ground** (merged 2026-10-24, #28, e547d5166):
   phones take compact worker meshes (uv from position, Int8 normals,
   Uint16 colours and indices), same geometry; cell bytes on 7 cells 172.7
