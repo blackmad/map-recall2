@@ -115,6 +115,20 @@ test('GeoTIFF reader decodes deflate + floating-point predictor strips and nodat
   const out = new Float32Array(2); undoFloatPredictor(new Uint8Array(8), 2, out, 0); assert.deepEqual([...out], [0, 0]);
 });
 
+test('GroundField keeps whole-centimetre tiles as int16 and returns the same heights', () => {
+  const n = 4, measured = decodeTile(encodeTile(Float32Array.from([1.23, -4.56, NaN, 0, 12.5, 7.01, -0.07, 3, 2.99, 0.1, 0.2, 0.3, 99.99, -6.5, 1, 2]), n), n);
+  const smooth = upsampleTile(Float32Array.from([0, 1.234567, 2.5, 3.333]), 2, 2);
+  const f = new GroundField(1, n);
+  f.addTile(0, 0, measured);
+  f.addTile(1, 0, smooth);
+  const stored = (f as unknown as { tiles: Map<number, ArrayLike<number> & { BYTES_PER_ELEMENT: number }> }).tiles;
+  assert.deepEqual([...stored.values()].map(t => t.BYTES_PER_ELEMENT), [2, 4]);
+  for (let k = 0; k < n * n; k++) {
+    assert.ok(Object.is(f.sampleAt(k % n, Math.floor(k / n)), measured[k]), `measured sample ${k}`);
+    assert.ok(Object.is(f.sampleAt(n + (k % n), Math.floor(k / n)), smooth[k]), `smooth sample ${k}`);
+  }
+});
+
 test('downsample flips to south-first rows and leaves sparse blocks as holes', () => {
   // 4×4 north-up raster, factor 2: top-left block measured, bottom-right has one valid pixel.
   const d = new Float32Array(16).fill(NaN);
