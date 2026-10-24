@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+**Morning of 2026-10-24, additions.** Feedback notes A and B are installed:
+the Academie voor Theater en Dans roofs no longer run past the recessed core
+(lod1 rebuilt), and the Rembrandtplein "crumpled roof" turned out to be
+Utrechtsestraat 15 (Booking.com, large recipe): a new opt-in kit pass
+`roof.levelRooftop` flattens the 3DBAG rooftop above the photographed fronts,
+and the house is reinstalled with its walls' 2026-10-14 inferred status
+carried in the catalogue notes. Note C (Nassaukade wedge) is still
+unidentified. The perf session's picking redesign is merged: phones drop the
+MapLibre building copy and hit-test the streamer's index (−190 MB renderer
+PSS on the emulator, desktop unchanged). The R1 roads-gaps cut stays on its
+branch: bare land −83 % at the spots but the triangle gate is red and
+Mosplein grows red fragments nobody can explain yet. The audit:glb sweep
+finished: 196 of 352 fail hard gates, 74 drifted past the 2026-10-13
+baseline, mostly GLBs regenerated 2026-10-20.
+
 ## Night of 2026-10-23: lanes land, the feedback queue is routed, perf is folded in
 
 Integrator (this session, worktree `integrator-plan`), merged into `main`:

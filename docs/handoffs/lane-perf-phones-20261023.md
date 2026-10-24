@@ -114,6 +114,18 @@ cache), own-ground worker #2 0.5 MB (idle), three-buildings worker 8.5 MB;
 lane snapshots own-ground worker #1 (bound the cell cache) and asks whether
 the second own-ground worker earns its fixed cost on phones.
 
+## Building picking without the MapLibre copy (2026-10-24, previous perf session, merged)
+
+MapLibre kept a GeoJSON copy of every streamed building (`osm-building-appearance`,
+~110 MB across its workers) only so the pick/highlight could hit-test it.
+Branch `perf/building-pick-index-20261024` (ca86562f7): on phones the copy is
+dropped and the highlight hit-tests the streamer's own index
+(`BuildingTileStreamer.setPublishing/featuresAt/featuresById`); desktop keeps
+the copy (`?buildingSource=1|0` forces either). MapLibre workers at ride +10 s
+171 + 55 + 7 → 37 + 50 + 7 MB; emulator renderer PSS −190 MB; desktop
+highlight pixel-identical. Known: the covered-passage highlight spec
+(Cuyperspassage, desktop) failed before this change too.
+
 ## Checks
 
 `npm run lint`; `PW_PORT=<port> npx playwright test tests/e2e/phone-memory.spec.ts tests/e2e/weak-gpu-perf.spec.ts --project=iphone` alone; desktop

@@ -56,10 +56,18 @@ Open, in order:
     sidewalk tone, red cycle fragments): added as spots to R0
     (`lane/roads-diagnose-20261023`); R3 gains a function-aware tone (voetpad
     lighter/greyer than rijbaan, kerb line at their edge).
-  - hole in the ATD roof (44bb1126, `academie-theater-dans`), crumpled dark
-    roof on the Rembrandtplein corner block (0132871b), roof wedge above a
-    Nassaukade crown by the Bellamyplein (ba8499fa): lane
-    `lane/feedback-models-20261023` (opus), one commit each, before/after.
+  - ATD roof hole (44bb1126): fixed 2026-10-24 (the 26–28 m roofs ran past
+    the recessed core; their open northwest edges are closed). Rembrandtplein
+    crumpled roof (0132871b): it is Utrechtsestraat 15 / Booking.com, large
+    recipe `utrechtsestraat-15-169214`; new opt-in kit pass
+    `roof.levelRooftop` (`buildingRecipe/roofLevel.ts`) flattens the 3DBAG
+    rooftop above the photographed fronts; reinstalled with the walls' 2026-10-14
+    inferred status carried. Kit cannot yet say: the lower set-back pavilion's
+    jagged outline, the copper-framed glass pavilion, recessed attic floors.
+    Nassaukade wedge (ba8499fa): not identified; the position sits on the
+    generic row north of the cross street, candidates 236122/236191 (tan
+    chimneys) and 163983's rear-wing flat top; the lane is reproducing the
+    note's exact frame to pin it.
   - Centraal from the IJ side needs real work (091d8bb3): deferred, a bespoke
     `centraal-station` session (north facade, bus platform roof); Living by
     Numbers (1c5d9c04, sculpture POI 264245976): deferred to a memorial-kit
@@ -86,8 +94,18 @@ Open, in order:
 - **district-style** (B1), **buurt-designs** (B2: Tuindorp Oostzaan-Oost,
   Gein 3, Holendrecht-Oost, Blauwe Zand first), **buurt-autoplace** (B3).
 - **roads**: R0 done 2026-10-23 (HISTORY): R1 gaps is the largest cause at
-  all ten spots. R1 lane running (`lane/roads-gaps-20261023`, haiku). Next,
-  R2+R3 in one opus lane: De Clercqstraat's fallback band and red pieces,
+  all ten spots. R1 first cut on `lane/roads-gaps-20261023` (haiku,
+  985766f97), NOT merged: roads-v2 adds island/berm/verge/square (+ grass)
+  from BGT `ondersteunendwegdeel` and verhard `onbegroeidterreindeel` and
+  culls OSM fills under drawn roads; per-spot bare land −83 % (3,252 → 547
+  m²), city-wide −30 % (12.7 → 8.9 M m²; the −80 % bar is not met: 'erf'
+  yards not fetched, unverhard ground). Blockers: triangle gate red (31
+  cells over 1.15×, worst 10_4 at 1.77× from verge lawns tessellated on
+  sparse land; build 1.30×) and new red fragments in the Mosplein frame,
+  unexplained. Next (opus): cap the lawn tessellation at the data step,
+  frame-level trace of the Mosplein red, by-functie split of the remaining
+  bare land, archive the raw BGT pulls, then merge. R2+R3 lane (opus)
+  running: De Clercqstraat's fallback band and red pieces,
   the `cycleway=lane` ribbons, a less saturated klinker/brick tone measured
   from the orthophoto medians (rijbaan klinker 143,137,133 vs today's
   147,110,90), the Spiegelgracht red ring and zebra bits west of the
@@ -101,17 +119,23 @@ Open, in order:
   (johnny-jordaan-groep ×6, theo-thijssen-standbeeld ×5,
   carmiggelt-borstbeeld ×4, winkler-prins-monument ×3) rebuild on every
   full run.
-- **audit:glb sweep (2026-10-23)**: of the 194 models the full
-  `audit:glb` run got through before it was stopped, 136 fail a hard gate
-  against `geometry-audit-baseline.json` (detached 76, holes 34,
-  geometry-regression 35 with `opening-buried`, `zfight-m2` and
-  `opening-outside` growth, zfight 26, see-through 24); nemo fails the same
-  way with the pre-tonight code, so this is drift since the baseline was
-  recorded, not the new threshold. Nobody runs the sweep: `check:canal`
-  does not include it. Haiku lane: run the sweep to the end, table the
-  grown keys per model, and split "baseline was recorded on an older
-  export" from "the model got worse"; the integrator decides a
-  re-baseline per model with the reason in the file.
+- **audit:glb sweep (2026-10-24)**: 352 models, 156 pass, 196 fail a hard
+  gate (detached 99, holes 57, opening-outside 55, zfight 53, zfight-tight
+  44, see-through 29, far-outside 25, overhang 21, rhythm 20); 74 models
+  grew past `geometry-audit-baseline.json` (111 rows: zfight-m2 32,
+  opening-outside 24, opening-buried 23, zfight-tight 20, overhang 10). The
+  baseline is dated 2026-10-13 and 54 of the 74 GLBs were regenerated
+  2026-10-20, so most growth is drift of the models, not the new
+  threshold. Biggest zfight growth: de-nederlandsche-bank +28 m²,
+  lloyd-hotel +13, the-rock +12, van-gendt-hallen +12, hilton +10. Nobody
+  runs the sweep (`check:canal` does not); the script dies writing its
+  JSON report (`RangeError: Invalid string length`,
+  audit-glb-quality.ts:337) and needs
+  `NODE_OPTIONS=--max-old-space-size=16384`. Table:
+  `map-recall2-worktrees/audit-sweep-20261023/artifacts/audit-sweep/drift.md`.
+  Next: fix the report writer (per-model files), per-entry dates in the
+  baseline, then one opus review of the 2026-10-20 regeneration before any
+  re-baseline.
 - **perf-phones**: taken over 2026-10-23; brief
   `docs/handoffs/lane-perf-phones-20261023.md`; the previous session runs
   one read-only Android emulator ride and reports numbers.
