@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+**Audit drift after the 2026-10-20 regeneration (2026-10-24, #32).** Of
+74 landmark models that grew past `geometry-audit-baseline.json`, 30 were an
+audit bug: 6b41a2c3b had dropped the 2.5° same-facing filter in the z-fight
+check (restored with a test; De Nederlandsche Bank 50.5 → 22.4 m² on an
+unchanged GLB). Two were real: batch builds leaked nearbar-kit's sink depth
+between models (reset per model; Lloyd Hotel, Vondelkerk and De School
+rebuilt) and Allard Pierson's snapped frames sat 2–3 cm off the brick
+(tight z-fight 221 → 1.9 m²). 39 baseline rows were re-recorded where the
+GLB is byte-identical and only the audit raster change 76a26204e moved the
+count, or the model had no entry (reasons appended per model). 14 rows
+where the export itself changed are held for the user (#39); Valley's
+balustrade glass regression is open. covers.json not republished: a fresh
+build would drop one Felix Meritis pand for reasons unrelated to this work.
+
 **Large kit: giant order, corbel tables, grouped windows, iron rails
 (2026-10-24, #35).** Fluted or stone pilasters with capitals and bases,
 corbel tables under the cornice, two to four windows per bay and balcony
