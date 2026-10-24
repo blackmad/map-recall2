@@ -36,7 +36,7 @@ import { crossSection, isFietsstraat, type OsmGroundExtract } from '../../src/ca
 import { classOf, fallbackClasses, ownClasses, type SurfaceClass } from '../../src/canalRecall/ownGround/bgtWidth.ts';
 import { distToLine, encodeLine, inRings, interiorPoint, polygonArea } from '../../src/canalRecall/ownGround/parks.ts';
 import { TopoSimplifier, vertexKey } from '../../src/canalRecall/ownGround/topoSimplify.ts';
-import { ROADS_ATTRIBUTION, ROAD_CELL_BUDGET_GZ, ROAD_CELL_VERSION, ancillaryClass, fietsstraatSection, kerbBetween, roadCellProblems, roadMesh, type RoadCell, type RoadClass, type RoadSurface, type RoadsManifest } from '../../src/canalRecall/ownGround/roadCells.ts';
+import { ROADS_ATTRIBUTION, ROAD_CELL_BUDGET_GZ, ROAD_CELL_VERSION, ANCILLARY_SQUARE_MAX_M2, ancillaryClass, fietsstraatSection, kerbBetween, roadCellProblems, roadMesh, type RoadCell, type RoadClass, type RoadSurface, type RoadsManifest } from '../../src/canalRecall/ownGround/roadCells.ts';
 
 type Vec2 = [number, number];
 type LngLat = [number, number];
@@ -166,6 +166,7 @@ function loadRaw(key: string): { polys: Poly[]; dropped: Dropped; fetched: strin
         if (f.h < 0) { dropped.below++; continue; }
         const cls = ancillaryClass(coll, f.functie, f.fv, f.pfv);
         if (!cls) { dropped.functie[`${coll}:${f.functie}`] = (dropped.functie[`${coll}:${f.functie}`] ?? 0) + 1; continue; }
+        if (cls === 'square' && f.g.some(poly => polygonArea(poly.map(r => r.map(([x, y]) => toLocal(x, y)))) > ANCILLARY_SQUARE_MAX_M2)) { dropped.functie[`${coll}:square>${ANCILLARY_SQUARE_MAX_M2}m2`] = (dropped.functie[`${coll}:square>${ANCILLARY_SQUARE_MAX_M2}m2`] ?? 0) + 1; continue; }
         add(f, cls, coll);
       }
     }

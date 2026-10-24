@@ -42,6 +42,12 @@ export const ROAD_CLASSES: readonly RoadClass[] = ['carriage', 'foot', 'cycle', 
  * (forecourt, plaza, yard). All sit at pavement level with a kerb against a carriageway.
  */
 export const ANCILLARY_CLASSES: readonly RoadClass[] = ['island', 'berm', 'verge', 'square'];
+/**
+ * Largest onbegroeidterreindeel paved area kept as a `square` (roads lane R1, 2026-10-24). BGT's verhard onbegroeid
+ * includes industrial yards of 0.3-0.5 km² with a hundred holes (-9_3: 468,000 m²; -11_4: 282,000 m²): not a road
+ * surface, and draped over the land they cost 398k triangles in one cell (4.1×). Plazas and forecourts are well under this.
+ */
+export const ANCILLARY_SQUARE_MAX_M2 = 20000;
 
 /** Classes drawn at carriageway level: the lower side of a kerb. */
 export const KERB_LOW_CLASSES: readonly RoadClass[] = ['carriage', 'parking', 'cycle'];
