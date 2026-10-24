@@ -1387,6 +1387,16 @@ export class ThreeBuildings {
   /** Bumped whenever suppressed/answer walls change (they cast differently). */
   private hiddenRevision = 0;
 
+  private rebuildAfterContextLoss(): void {
+    this.ready = false;
+    this.textureSets.clear();
+    for (const key of [...this.chunks.keys()]) this.dropChunk(key);
+    for (const material of this.materials.values()) material.dispose();
+    this.materials.clear();
+    this.material.uniforms.cells.value = null;
+    void this.setLook(this.requestedLook);
+  }
+
   /** One set-up for both the legacy layer and the shared frame. */
   private setup(map: MapLike, renderer: any, camera: any, scene: any): void {
     const THREE = this.THREE;
@@ -1394,16 +1404,9 @@ export class ThreeBuildings {
     this.camera = camera;
     this.scene = scene;
     this.renderer = renderer;
-    // CPU copies are freed after upload, so a restored context needs fresh meshes.
-    map.getCanvas().addEventListener('webglcontextrestored', () => {
-      this.ready = false;
-      this.textureSets.clear();
-      for (const key of [...this.chunks.keys()]) this.dropChunk(key);
-      for (const material of this.materials.values()) material.dispose();
-      this.materials.clear();
-      this.material.uniforms.cells.value = null;
-      void this.setLook(this.requestedLook);
-    });
+    // CPU copies are freed after upload, so a restored context needs fresh meshes. In the shared frame the frame
+    // calls rebuildAfterContextLoss once its new renderer exists (onContextRestored).
+    if (!this.sharedFrame) map.getCanvas().addEventListener('webglcontextrestored', () => this.rebuildAfterContextLoss());
     this.material = this.newMaterial();
     if (this.lit) this.depthMaterial = createFacadeDepthMaterial(THREE);
     this.materials.set(this.look, this.material);
@@ -1487,6 +1490,7 @@ export class ThreeBuildings {
     frame.register('facades', {
       root,
       onAttach: (f: any) => this.setup(this.map, f.renderer, camera, root),
+      onContextRestored: (f: any) => { this.renderer = f.renderer; this.rebuildAfterContextLoss(); },
       mercatorFromLocal: () => this.transform?.elements,
       revision: () => this.hiddenRevision,
       beforeRender: (ctx: any) => {

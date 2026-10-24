@@ -50,6 +50,12 @@ export interface FrameParticipant {
   xrayMaterial?(): any | null;
   /** Called once the renderer exists (immediately if it already does). */
   onAttach?(frame: SharedFrame): void;
+  /**
+   * After a WebGL context loss and restore the frame has a new renderer (`frame.renderer`) and nothing is on the
+   * GPU. three re-uploads whatever still has its CPU copy; a participant that freed CPU copies after upload (ground
+   * cells on phones, the facade chunks and textures) rebuilds them here. `onAttach` is not called again.
+   */
+  onContextRestored?(frame: SharedFrame): void;
 }
 
 export type SharedFrameOptions = {
@@ -97,6 +103,10 @@ export class SharedFrame {
   private viewport = [0, 0];
   private keepOverlayOnTop: (() => void) | null = null;
   private removedLayers = 0;
+  /** A context was lost: the next renderer `onAdd` creates is a restore (participants' `onContextRestored`). */
+  private restorePending = false;
+  /** Context losses and restores seen (diagnostics, the lose/restore spec). */
+  readonly contextEvents = { lost: 0, restored: 0 };
   private shadowsOn = true;
   /** Shadow-map reuse: the box and caster signature it was drawn for, and its age in frames. */
   private shadowKey = '';
@@ -123,6 +133,43 @@ export class SharedFrame {
     this.tmp = new THREE.Matrix4();
     this.mainLayer = this.makeLayer(SHARED_FRAME_MAIN_ID, 'main');
     this.overlayLayer = this.makeLayer(SHARED_FRAME_OVERLAY_ID, 'overlay');
+    // MapLibre rebuilds its style after a context loss (`setStyle` from a serialised copy) and drops custom layers
+    // ("cannot be restored after WebGL context loss"): until 2026-10-24 the 3D layer stayed blank until a reload.
+    this.map.on?.('webglcontextlost', () => this.contextLost());
+    this.map.on?.('webglcontextrestored', () => this.contextRestored());
+  }
+
+  private contextLost(): void {
+    this.contextEvents.lost++;
+    const old = this.renderer;
+    this.renderer = null;
+    this.restorePending = true;
+    this.removedLayers = 0;
+    this.shadowKey = '';
+    // Its GL objects are gone with the context; dispose drops its canvas listeners and caches.
+    try { old?.dispose(); } catch (_) { /* lost context */ }
+  }
+
+  private contextRestored(): void {
+    this.contextEvents.restored++;
+    // The restored style loads asynchronously; the layers go back once it has.
+    const reattach = () => this.attach();
+    if (this.map.isStyleLoaded?.()) reattach();
+    else if (this.map.once) this.map.once('style.load', reattach);
+    else this.map.on?.('style.load', reattach);
+  }
+
+  /** The renderer exists: attach new participants, or after a restore let every participant rebuild. */
+  private rendererReady(): void {
+    const restored = this.restorePending;
+    this.restorePending = false;
+    for (const entry of this.registry.all()) {
+      if (!entry.participant.attached) { this.attachParticipant(entry.participant); continue; }
+      if (!restored) continue;
+      try { entry.participant.participant.onContextRestored?.(this); }
+      catch (error) { console.warn(`Shared frame participant ${entry.id} failed to restore`, error); }
+    }
+    this.map.triggerRepaint?.();
   }
 
   /** Add both passes to the map. The overlay is kept last, like the vehicles were. */
@@ -224,11 +271,13 @@ export class SharedFrame {
           // overlay pass samples the same map.
           this.renderer.shadowMap.autoUpdate = false;
           fullDepthRangeForShadowMap(this.renderer, gl, range => { this.shadowDepthRange = range; });
-          for (const entry of this.registry.all()) this.attachParticipant(entry.participant);
+          this.rendererReady();
         }
         this.removedLayers = Math.max(0, this.removedLayers - 1);
       },
-      onRemove: () => {
+      onRemove: (_map: any, gl?: WebGL2RenderingContext) => {
+        // A lost context's style.destroy() removes the layers too: contextLost/contextRestored handle that.
+        if (gl?.isContextLost?.() || this.restorePending) return;
         this.removedLayers++;
         if (this.removedLayers >= 2) {
           this.renderer?.dispose();

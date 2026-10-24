@@ -205,6 +205,7 @@ export class DetailedBuildings {
     this.sharedFrame.register('detailed-buildings', {
       root,
       onAttach: frame => tiles.setResolutionFromRenderer(tilesCamera, frame.renderer),
+      onContextRestored: frame => tiles.setResolutionFromRenderer(tilesCamera, frame.renderer),
       mercatorFromLocal: () => localTransform ? localTransform.elements : null,
       beforeRender: ctx => {
         if (!owner.enabled) return false;

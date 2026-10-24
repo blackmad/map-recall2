@@ -213,6 +213,7 @@ export class OwnGround {
       this.unregister = this.frame.register('own-ground', groundParticipant(this.root, {
         visible: (zoom: number) => this.beforeRender(zoom),
         onMainPass: (clip: Float64Array) => { this.clipFromLocal = clip; },
+        onContextRestored: () => this.contextRestored(),
       }), { order: GROUND_ORDER });
     }
     this.ready = true;
@@ -271,6 +272,21 @@ export class OwnGround {
     this.workerReady = false;
     this.gen++;
     if (full) { this.unregister?.(); this.unregister = null; this.setBasemapHidden(false); for (const m of this.keepers) m.dispose(); this.keepers.length = 0; this.precompiled = false; }
+  }
+
+  /**
+   * A new renderer after a WebGL context loss. With `releaseArrays` (phones) the installed cells and far blocks
+   * have no CPU copy to upload again: drop them and let residency ask the worker for them anew. Builds still in
+   * flight or queued keep their arrays and install as usual. Otherwise three re-uploads what is resident.
+   */
+  private contextRestored(): void {
+    this.precompiled = false;
+    if (!this.opts.releaseArrays) { this.host.repaint(); return; }
+    for (const key of [...this.resident.keys()]) this.drop(key);
+    for (const key of [...this.far.keys()]) this.dropFar(key);
+    this.residencyAt = null;
+    if (this.centre && this.ready) this.updateResidency();
+    this.host.repaint();
   }
 
   setEnabled(enabled: boolean): void {
