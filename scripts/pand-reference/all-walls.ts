@@ -26,7 +26,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import sharp from 'sharp';
-import { findPands, neighbourhood, normId, rdToLngLat } from './core.ts';
+import { findPands, lngLatToRd, neighbourhood, normId, rdToLngLat } from './core.ts';
 import { exposedWalls, FACADE_WINDOW, listPanos, rankPanos } from './select.ts';
 import { loadPano, rectifyWall, aimedThumbnail } from './rectify.ts';
 import { filterPanos, mergeWallRows, parsePanoFilter, segmentTag, segmentWall } from '../../src/canalRecall/buildingRecipe/panoPick.ts';
@@ -40,8 +40,14 @@ const out = path.resolve(root, pand.replace('NL.IMBAG.Pand.', ''));
 await fs.mkdir(out, { recursive: true });
 // `--footprint=w123`: walls from that tile feature instead (a pand the tiles draw as OSM parts; the crops still file
 // under the pand). kit-sheets.ts passes the largest OSM part of a kit whose parts kit-pands.json joins to the pand.
+// `--kit-pand`: the pand's own outline from public/data/extracts/amsterdam/kit-pands.json (a pand the tiles draw only as
+// OSM parts, whose outlines are party walls of each other; build-kit-pands.ts writes it).
 const footprintId = arg('footprint') || pand;
-const fp = (await findPands([footprintId])).get(/^[wr]\d+$/.test(footprintId) ? footprintId : normId(footprintId));
+let fp = process.argv.includes('--kit-pand') ? null : (await findPands([footprintId])).get(/^[wr]\d+$/.test(footprintId) ? footprintId : normId(footprintId));
+if (process.argv.includes('--kit-pand')) {
+  const kitPand = JSON.parse(await fs.readFile(path.resolve(import.meta.dirname, '../../public/data/extracts/amsterdam/kit-pands.json'), 'utf8')).pands?.[pand.replace('NL.IMBAG.Pand.', '')];
+  if (kitPand) fp = { id: pand, ring: kitPand.ring.map((p: [number, number]) => lngLatToRd(p)), height: kitPand.heightM };
+}
 if (!fp) throw new Error(`pand not in building tiles: ${footprintId}`);
 const centre = { x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length };
 const walls = exposedWalls(fp, await neighbourhood(centre)).filter(w => w.len >= minLen).sort((a, b) => b.len - a.len).slice(0, max);

@@ -29,7 +29,7 @@ const r6 = (v: number) => Math.round(v * 1e6) / 1e6;
 
 // 1. Base tiles: the pand index (what already resolves) and the OSM-only outlines with their tile.
 const tileIndex = emptyIndex();
-const osmOnly = new Map<string, { rings: Ring[]; tile: string }>();
+const osmOnly = new Map<string, { rings: Ring[]; tile: string; heightM: number }>();
 const tilesDir = path.join(EXTRACTS, 'bag-tiles/14');
 for (const x of fs.readdirSync(tilesDir).filter(n => /^\d+$/.test(n))) {
   for (const file of fs.readdirSync(path.join(tilesDir, x)).filter(n => n.endsWith('.geojson.gz'))) {
@@ -37,7 +37,7 @@ for (const x of fs.readdirSync(tilesDir).filter(n => /^\d+$/.test(n))) {
     addFeatures(tileIndex, features);
     for (const f of features) {
       const id = String(f.properties?.id ?? '');
-      if (id && !id.startsWith('NL.') && !osmOnly.has(id)) osmOnly.set(id, { rings: outerRings(f.geometry), tile: `${x}/${file.replace('.geojson.gz', '')}` });
+      if (id && !id.startsWith('NL.') && !osmOnly.has(id)) osmOnly.set(id, { rings: outerRings(f.geometry), tile: `${x}/${file.replace('.geojson.gz', '')}`, heightM: Number(f.properties?.height) || 0 });
     }
   }
 }
@@ -79,22 +79,25 @@ const wfsAround = (x: number, y: number) => {
   }
 };
 const ids: Record<string, Entry> = {};
+// The joined pands' own outlines (all-walls.ts --kit-pand reads them: the parts' outlines are mostly party walls of
+// each other) and the tallest part on each.
+const pandRings = new Map<string, Ring>(), pandsOut: Record<string, { ring: [number, number][]; heightM: number }> = {};
 let matched = 0;
 for (const [id, kits] of [...wanted].sort(([a], [b]) => a.localeCompare(b))) {
-  const { rings, tile } = osmOnly.get(id)!;
+  const { rings, tile, heightM } = osmOnly.get(id)!;
   const [cx, cy] = ringCentroid(rings[0]);
   let pw = Infinity, ps = Infinity, pe = -Infinity, pn = -Infinity;
   for (const [x, y] of rings[0]) { pw = Math.min(pw, x); pe = Math.max(pe, x); ps = Math.min(ps, y); pn = Math.max(pn, y); }
-  const box = { w: pw, s: ps, e: pe, n: pn }, short = (p: { id: string; rings: Ring[] }) => ({ pand: p.id.replace('NL.IMBAG.Pand.', ''), rings: p.rings });
+  const box = { w: pw, s: ps, e: pe, n: pn }, short = (p: { id: string; rings: Ring[] }) => { const pand = p.id.replace('NL.IMBAG.Pand.', ''); if (!pandRings.has(pand)) pandRings.set(pand, p.rings[0]); return { pand, rings: p.rings }; };
   let match = pickKitPand(rings, nearbyPands(bag, box).map(short)), source: Entry['source'] = '3dbag';
   if (!match) { wfsAround(cx, cy); match = pickKitPand(rings, nearbyPands(wfs, box).map(short)); source = 'bag-wfs'; }
-  if (match) matched++;
+  if (match) { matched++; const prior = pandsOut[match.pand]; pandsOut[match.pand] = { ring: pandRings.get(match.pand)!.map(([x, y]) => [r6(x), r6(y)]), heightM: Math.max(prior?.heightM ?? 0, heightM) }; }
   const kx = 111_320 * Math.cos(cy * Math.PI / 180), ky = 110_540;
   let area = 0;
   for (let i = 0, ring = rings[0], j = ring.length - 1; i < ring.length; j = i++) area += (ring[j][0] * kx) * (ring[i][1] * ky) - (ring[i][0] * kx) * (ring[j][1] * ky);
   ids[id] = { tile, centre: [r6(cx), r6(cy)], areaM2: Math.round(Math.abs(area / 2)), pand: match?.pand ?? null, ...(match ? { source, share: match.share, pandShare: match.pandShare, ...(match.others.length ? { others: match.others } : {}) } : {}), kits };
 }
-const out = { version: 1, source: 'scripts/landmarks/build-kit-pands.ts: OSM-only kit parts in bag-tiles/14 joined to 3DBAG ' + BAG3D_VERSION, ids, unlocated };
+const out = { version: 1, source: 'scripts/landmarks/build-kit-pands.ts: OSM-only kit parts in bag-tiles/14 joined to 3DBAG ' + BAG3D_VERSION, ids, pands: pandsOut, unlocated };
 fs.mkdirSync(path.dirname(STAGING), { recursive: true });
 fs.writeFileSync(STAGING, JSON.stringify(out, null, 1) + '\n');
 console.log(`3DBAG pands in extent ${bagCount}; OSM-only kit parts ${wanted.size}, joined to a pand ${matched}, no pand ${wanted.size - matched}; ids in no tile ${unlocated.length}`);

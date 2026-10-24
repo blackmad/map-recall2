@@ -81,12 +81,12 @@ function bagIndex(): BagPandIndex {
 }
 
 /** One all-walls run per pand, cached: a walls.json (or an error.txt when the run failed, so it is not retried). */
-function wallsFor(pand: string, wallsErrors: string[], footprint?: string): {photos: {file: string; tag: string; date?: string}[]} {
+function wallsFor(pand: string, wallsErrors: string[], kitPand = false): {photos: {file: string; tag: string; date?: string}[]} {
   const dir = path.join(wallsRoot, digits(pand));
   const json = path.join(dir, 'walls.json');
   if (!fs.existsSync(json) && !fs.existsSync(path.join(dir, 'error.txt')) && !noWalls) {
     try {
-      execFileSync(process.execPath, ['--import', 'tsx', path.join(ROOT, 'scripts/pand-reference/all-walls.ts'), `--pand=${pand}`, ...(footprint ? [`--footprint=${footprint}`] : []), '--max=2', '--min-len=8', `--out=${wallsRoot}`],
+      execFileSync(process.execPath, ['--import', 'tsx', path.join(ROOT, 'scripts/pand-reference/all-walls.ts'), `--pand=${pand}`, ...(kitPand ? ['--kit-pand'] : []), '--max=2', '--min-len=8', `--out=${wallsRoot}`],
         {cwd: ROOT, timeout: 600_000, stdio: ['ignore', 'pipe', 'pipe']});
     } catch (e: any) {
       fs.mkdirSync(dir, {recursive: true});
@@ -178,11 +178,8 @@ async function main() {
         } else row.renderError = 'no location';
         let photo: Buffer | null = null;
         if (pand) {
-          // A pand joined through OSM parts is not a tile feature: its walls come from the largest OSM part on it (any kit's:
-          // Bijlmerbios is ten one-part kits on one pand).
-          const viaPart = pandCentres.length ? undefined : Object.keys(kitPands).filter(id => kitPands[id].pand && `NL.IMBAG.Pand.${kitPands[id].pand}` === pand)
-            .sort((a, b) => kitPands[b].areaM2 - kitPands[a].areaM2)[0];
-          const walls = wallsFor(pand, wallsErrors, viaPart);
+          // A pand joined through OSM parts is not a tile feature: its walls come from its own outline in kit-pands.json.
+          const walls = wallsFor(pand, wallsErrors, !pandCentres.length);
           if (walls.photos.length) {
             const panels = await Promise.all(walls.photos.map(p => sharp(p.file).resize(PHOTO_W / 2, CARD_H, {fit: 'contain', background: '#f4f4f2'}).flatten({background: '#f4f4f2'}).png().toBuffer()));
             row.photos = walls.photos.map(p => `${p.tag}${p.date ? ` ${p.date}` : ''}`);
