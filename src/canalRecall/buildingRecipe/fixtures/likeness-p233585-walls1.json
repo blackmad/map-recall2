@@ -1,0 +1,20 @@
+{
+ "source": "pand-233585 walls[1] photo mosaic (likeness-house.ts), u 8..16 m of the padded panel box, CC BY 4.0 Amsterdam panoramas",
+ "ppm": 50,
+ "topM": 17.890999999999956,
+ "box": {
+  "u0": 0,
+  "u1": 8,
+  "v0": -0.5,
+  "v1": 17.890999999999956
+ },
+ "lines": [
+  0,
+  4.702,
+  7.837,
+  10.972,
+  14.106,
+  17.241,
+  20.591
+ ]
+}
