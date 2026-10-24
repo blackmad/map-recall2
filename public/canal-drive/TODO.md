@@ -198,6 +198,12 @@ Open, in order:
   top two gaps, then batch 2 on a different mix (canal-belt and 19th-c
   pands, where the kit is strongest). Strip
   pages now show the two best-evidenced walls per house (~2,000 px).
+- **factory batch 2** (2026-10-24, 12 pands with BAG year < 1920, PDOK
+  facts): compiled 12/12, gates pass 8; review 0 pass (closest
+  pand-165427 WARN). Four "pre-1920" pands are modern (the BAG year filter
+  is not an era signal); five were older hand-authored intents, also not
+  good enough. Kit gaps appended. Route decision for the 1000 target is
+  issue #23 (needs-david): factory yield 0/27 so far.
 - **kits-review (K)**: Role A done 2026-10-24 (`npm run kit:sheets`, run
   under the browser lock; 546 kits on 137 pages in
   `map-recall2-worktrees/kit-sheets-20261024/artifacts/strips/kits-N.png`,

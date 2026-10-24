@@ -2052,7 +2052,14 @@
    "sheets": [
     "artifacts/building-recipes/hirschpassage-2-165488/contact-walls-1.png",
     "artifacts/building-recipes/hirschpassage-2-165488/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "hand-authored: beige stucco vs photo dark sandstone; 2 vs 3 columns",
+    "sheet": "artifacts/strips/factory-batch-2",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012242075",
@@ -2422,7 +2429,14 @@
     "artifacts/building-recipes/pand-165427/contact-walls-6.png",
     "artifacts/building-recipes/pand-165427/contact-walls-7.png",
     "artifacts/building-recipes/pand-165427/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "closest: dark row front, 12 bays right, WARN; but a row of separate canal houses drawn as one flat block (no gables, no per-house heights)",
+    "sheet": "artifacts/strips/factory-batch-2",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012145366",
@@ -2765,7 +2779,14 @@
     "artifacts/building-recipes/amstel-142-186290/contact-walls-0.png",
     "artifacts/building-recipes/amstel-142-186290/contact-walls-1.png",
     "artifacts/building-recipes/amstel-142-186290/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "hand-authored: brick red ok, window shape square vs wide; walls[1] no photo",
+    "sheet": "artifacts/strips/factory-batch-2",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012084650",
@@ -2918,7 +2939,14 @@
     "artifacts/building-recipes/stadhouderskade-111-137448/contact-walls-3.png",
     "artifacts/building-recipes/stadhouderskade-111-137448/contact-walls-4.png",
     "artifacts/building-recipes/stadhouderskade-111-137448/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "hand-authored: row of distinct houses drawn as one orange block",
+    "sheet": "artifacts/strips/factory-batch-2",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012090791",
@@ -3561,7 +3589,14 @@
     "artifacts/building-recipes/pand-236656/contact-walls-6.png",
     "artifacts/building-recipes/pand-236656/contact-walls-7.png",
     "artifacts/building-recipes/pand-236656/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "dark brick and bays near right; vertical window bands in photo, punched in model",
+    "sheet": "artifacts/strips/factory-batch-2",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012080492",
@@ -3641,7 +3676,14 @@
    "sheets": [
     "artifacts/building-recipes/damrak-77-165746/contact-walls-0.png",
     "artifacts/building-recipes/damrak-77-165746/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "hand-authored: flat red brick vs dark brick with white stone bands and oriels (Nassaukade-506 class)",
+    "sheet": "artifacts/strips/factory-batch-2",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012236811",
@@ -3881,7 +3923,14 @@
     "artifacts/building-recipes/beursplein-5-165051/contact-walls-2.png",
     "artifacts/building-recipes/beursplein-5-165051/contact-walls-3.png",
     "artifacts/building-recipes/beursplein-5-165051/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "hand-authored: orange/beige vs dark brick photo",
+    "sheet": "artifacts/strips/factory-batch-2",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012148632",
@@ -4437,7 +4486,14 @@
     "artifacts/building-recipes/pand-233585/contact-walls-6.png",
     "artifacts/building-recipes/pand-233585/contact-walls-7.png",
     "artifacts/building-recipes/pand-233585/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "dark red-brown brick right; tall arched windows and stone dressings missing",
+    "sheet": "artifacts/strips/factory-batch-2",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012093150",
@@ -7145,7 +7201,14 @@
     "artifacts/building-recipes/pand-083604/contact-walls-4.png",
     "artifacts/building-recipes/pand-083604/contact-walls-5.png",
     "artifacts/building-recipes/pand-083604/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "modern industrial shed, not pre-1920 (BAG year wrong for this pand or wrong pand); grey family right",
+    "sheet": "artifacts/strips/factory-batch-2",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012064292",
@@ -7784,7 +7847,14 @@
     "artifacts/building-recipes/pand-169282/contact-walls-1.png",
     "artifacts/building-recipes/pand-169282/contact-walls-2.png",
     "artifacts/building-recipes/pand-169282/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "modern grey housing block with sawtooth roof; column count ok, footprint gate red",
+    "sheet": "artifacts/strips/factory-batch-2",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012237888",
@@ -8039,7 +8109,14 @@
     "artifacts/building-recipes/pand-138900/contact-walls-6.png",
     "artifacts/building-recipes/pand-138900/contact-walls-7.png",
     "artifacts/building-recipes/pand-138900/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "modern office tower: blue-glass stair stripes and white frame not expressed; open-edges gate",
+    "sheet": "artifacts/strips/factory-batch-2",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012237793",
@@ -8718,7 +8795,14 @@
     "artifacts/building-recipes/pand-083151/contact-walls-6.png",
     "artifacts/building-recipes/pand-083151/contact-walls-7.png",
     "artifacts/building-recipes/pand-083151/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "modern metal-clad hall: horizontal cladding not expressed, blue tone guessed",
+    "sheet": "artifacts/strips/factory-batch-2",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012126767",
