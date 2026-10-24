@@ -10,6 +10,9 @@
  * `building-facts/`.
  *
  * Usage: npm run build:building-facts [-- --publish]
+ *
+ * The published tiles also carry `rows` (wall-colour row seeds, look/wallRows.ts); this build does not write them, so
+ * after a --publish run `node --import tsx scripts/look/build-wall-rows.ts --publish` again.
  */
 import { createReadStream } from 'node:fs';
 import { mkdir, readFile, readdir, rm, stat, writeFile, rename } from 'node:fs/promises';
@@ -131,5 +134,5 @@ if (process.argv.includes('--publish')) {
   const published = path.join(directory, 'building-facts');
   await rm(published, { recursive: true, force: true });
   await rename(staging, published);
-  process.stdout.write('published → building-facts/\n');
+  process.stdout.write('published → building-facts/ (now rerun scripts/look/build-wall-rows.ts --publish for the wall rows)\n');
 }

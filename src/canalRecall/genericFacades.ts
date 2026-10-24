@@ -32,6 +32,8 @@
 // These are display priors, not evidence: the period comes from the BAG
 // construction year (via `building-facts`), the rest is invented rhythm.
 
+import { measuredWallForYear, measuredWallsEnabled } from './look/measuredWalls.js';
+import { decodeWallRows } from './look/wallRows.js';
 import { CONTEXTUAL_BUILDING_COLOURS, FACADE_STYLE_COLOURS, PERIOD_FROM, materialWallDisplayPrior, type ContextualBuildingColour } from './look/palette.js';
 import { BUILDING_FACT_ZOOM, plausibleYear, shortBuildingId, type BuildingFactTile } from './buildingFacts.js';
 
@@ -185,16 +187,19 @@ async function readMaybeGzippedJson(response: Response): Promise<unknown> {
  * tile, and stamp `constructionYear` on each building it names. A missing or
  * unreadable facts tile leaves the buildings yearless (size-only styling).
  */
-export function constructionYearEnricher(baseUrl: string, fetchImpl: typeof fetch = (...args) => fetch(...args)) {
+export function constructionYearEnricher(baseUrl: string, fetchImpl: typeof fetch = (...args) => fetch(...args), measuredWalls = measuredWallsEnabled()) {
   const root = baseUrl.replace(/\/$/, '');
   return async (tile: { z: number; x: number; y: number }, signal?: AbortSignal) => {
     if (tile.z !== BUILDING_FACT_ZOOM) return (_features: Feature[]) => {};
     let rows: BuildingFactTile['buildings'] | null = null;
+    // `?walls=measured` (look/measuredWalls.ts): each dated building also takes its row's measured period wall.
+    let wallRows: Map<string, string> | null = null;
     try {
       const response = await fetchImpl(`${root}/building-facts/${tile.z}/${tile.x}/${tile.y}.json.gz`, { signal });
       if (response.ok) {
         const value = await readMaybeGzippedJson(response) as BuildingFactTile;
         if (value && value.version === 1 && value.buildings && typeof value.buildings === 'object') rows = value.buildings;
+        if (rows && measuredWalls) wallRows = decodeWallRows(rows, (value as { rows?: unknown }).rows);
       }
     } catch (error) {
       if ((error as Error)?.name === 'AbortError') throw error;
@@ -204,7 +209,10 @@ export function constructionYearEnricher(baseUrl: string, fetchImpl: typeof fetc
       for (const feature of features) {
         const id = String(feature.properties?.id ?? '');
         const row = rows[shortBuildingId(id)];
-        if (row && plausibleYear(row[0])) feature.properties.constructionYear = row[0];
+        if (row && plausibleYear(row[0])) {
+          feature.properties.constructionYear = row[0];
+          if (wallRows) feature.properties.periodWallHex = measuredWallForYear(id, row[0], wallRows.get(shortBuildingId(id)));
+        }
       }
     };
   };

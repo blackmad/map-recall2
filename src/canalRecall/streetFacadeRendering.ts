@@ -13,6 +13,8 @@ export type StreetFacadeContext = {
   streetCorner?: boolean;
   mappedWallHex?: string;
   shopfront?: Parameters<typeof bayLookFor>[4];
+  /** The measured period wall (`?walls=measured`), else the period prior. */
+  periodWallHex?: string;
 };
 
 const boundsCache = new WeakMap<object, Array<{ profile: StreetAppearanceProfile; west: number; east: number; south: number; north: number }>>();
@@ -60,7 +62,7 @@ export function streetWallBuilding(building: MeshBuilding, wall: {
   }, { id: building.id, year: context.year, heightM: context.sourceHeightM ?? building.heightM, streetCorner: context.streetCorner }) : undefined;
   if (!recipe) return building;
   const bay = bayLookFor(building.id, context.year, building.heightM,
-    context.look === 'procedural' ? 'photo' : context.look, context.shopfront, recipe);
+    context.look === 'procedural' ? 'photo' : context.look, context.shopfront, recipe, context.periodWallHex);
   const offset = context.look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET : 0;
   return {
     ...building, style: bay.layout, period: recipe.period,
@@ -104,7 +106,7 @@ function shortBakedFrontReturn(building:MeshBuilding, wall:{x0:number;y0:number;
     const ps=xy(profile.segment[0]),pe=xy(profile.segment[1]),dx=pe[0]-ps[0],dy=pe[1]-ps[1];
     const recipe=recipeForWall([profile],{...baked.frontage,frontage:baked.frontage,normal:[profile.side*dy,-profile.side*dx]},{id:building.id,year:context.year,heightM:context.sourceHeightM??building.heightM,streetCorner:context.streetCorner});
     if(!recipe?.openingGroup)continue;
-    const bay=bayLookFor(building.id,context.year,building.heightM,context.look==='procedural'?'photo':context.look,'quiet',recipe);
+    const bay=bayLookFor(building.id,context.year,building.heightM,context.look==='procedural'?'photo':context.look,'quiet',recipe,context.periodWallHex);
     const offset=context.look==='procedural'?PROCEDURAL_RECIPE_LAYER_OFFSET:0;
     const style=BAY_STYLES.canal.findIndex(v=>v.openingGroup==='canal-return');
     const upper=bayLayer('canal',style,'upper')+offset,ground=bayLayer('canal',style,'ground')+offset;

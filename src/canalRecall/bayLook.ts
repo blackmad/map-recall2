@@ -141,7 +141,8 @@ export function bayStyleForRecipe(id: string, archetype: Archetype, recipe?: Arc
 }
 
 /** Everything the mesh builder needs from a feature for a bay look. */
-export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe) {
+/** `periodWall`: the measured period wall the `?walls=measured` enricher stamped (photo look only; look/measuredWalls.ts). */
+export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string) {
   const archetype: Archetype = recipe?.facadeAssembly === 'stacked-iron-balcony' ? 'c19' : recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern') : archetypeFor(id, year, heightM);
   const h = hashSeed(id), style = bayStyleForRecipe(id, archetype, recipe);
   // Without the extract: a third of buildings, picking among the original four shopfronts.
@@ -150,6 +151,7 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const palette = paletteFor(id, archetype, look);
   const walls = PERIOD_WALLS[look][archetype];
   if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
+  if (periodWall && look === 'photo') palette.wall = periodWall;
   if (recipe?.wallHex) palette.wall = lookHex(recipe.wallHex, look);
   // A shop's ground floor is painted, and the paint is its own colour, not the brick's.
   const paints = GROUND_PAINTS[look];
