@@ -193,6 +193,22 @@ export class RoadIndex extends SurfaceIndex<RoadSurface> {
   /** The class polygon `k` is drawn and probed as (the extract's, unless overridden). */
   drawClass(k: number): RoadClass { return this.classOver.get(k) ?? this.records[k].c; }
   /**
+   * Rijbaan sections the extract paints red as a fietsstraat (roadCells fietsstraatSection) where the orthophoto shows
+   * grey asphalt (photoEvidence greyFiets: one interior point per section): drawn as asphalt. Lane roads-lanes
+   * 2026-10-23: the Marnixstraat busway by the Frederik Hendrikplantsoen read 44 % red in the photo against 77 % on the
+   * fietspad beside it. Returns the sections turned grey.
+   */
+  greyFietsstraat(points: readonly Vec2[]): number {
+    let n = 0;
+    for (const p of points) {
+      const k = this.findAtLevel(p[0], p[1], false);
+      if (k < 0 || this.records[k].h !== 0 || this.records[k].c !== 'carriage' || this.mesh(k) !== 'cycle') continue;
+      this.meshOver.set(k, 'asphalt'); n++;
+    }
+    return n;
+  }
+
+  /**
    * Small footway polygons between parking bays (the pale islands and tree pits between the bays of a quay street)
    * draw as part of the street: the parking bays' mesh, at road height, without kerbs. User 2026-10-16 on the
    * Prinsengracht by the Pulitzer: "I don't think we need to draw parking spots" — every bay read as a stripe

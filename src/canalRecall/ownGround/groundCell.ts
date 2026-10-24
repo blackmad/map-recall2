@@ -31,6 +31,7 @@ import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats, type Surv
 import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } from './roadSurfaces.js';
 import type { RoadCell } from './roadCells.js';
 import type { RoadMark } from './roadMarks.js';
+import type { PhotoEvidence } from './photoEvidence.js';
 import { buildSurveyMarkings, crossingStripPoints, SURVEY_MARKINGS, type SurveyMarkingStats } from './surveyMarkings.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import { sourceTracing, triangleSources, type GroundSource } from './sourceTrace.js';
@@ -57,7 +58,7 @@ export interface BuiltCell {
   mask: GroundMask | null;
   /** Source code per triangle per layer (sourceTrace.ts), only when tracing is on (diagnostics). */
   sources?: Partial<Record<GroundLayer, Uint8Array>>;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** OSM green rings cut out of the paved area fills (areas + holes). */ greenCut?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number; /** Footway strips across the road at a crossing drawn as carriageway. */ crossingStrips?: number; /** surveyMarkings.ts: what the survey-aware markings drew. */ markings?: SurveyMarkingStats | null }) | null; courtyards?: number };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** OSM green rings cut out of the paved area fills (areas + holes). */ greenCut?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number; /** Footway strips across the road at a crossing drawn as carriageway. */ crossingStrips?: number; /** Fietsstraat sections drawn grey on the photo's evidence. */ greyFiets?: number; /** surveyMarkings.ts: what the survey-aware markings drew. */ markings?: SurveyMarkingStats | null }) | null; courtyards?: number };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -101,6 +102,8 @@ export interface CellInput {
   marks?: readonly RoadMark[];
   /** OSM way ids the neighbourhood's road polygons cover (roadCells coverWays): no bands for them. */
   coverWays?: readonly number[];
+  /** What the orthophoto backs of the tag-driven paint (photoEvidence.ts): lane ribbons, centre dashes, grey fietsstraat sections. */
+  evidence?: PhotoEvidence;
   /** roads-v1 ground drape overrides for the measurement scripts (roadSurfaces RoadBuildInput). */
   drape?: { drapeTol?: number; drapeFloatTol?: number };
   /** OSM path ways the 3×3 neighbourhood's park path polygons replace (not drawn as bands). */
@@ -169,6 +172,23 @@ function farSection(w: LocalWay): LocalWay {
   return { ...w, section: { ...w.section, bands, paint: [], rails: [] } };
 }
 
+/**
+ * Where no survey draws the street (LOD 1 cells, and the cells without roads-v1): one grey carriageway per way
+ * (lane roads-lanes 2026-10-23, R2). The painted cycle lanes join the carriageway in its own grey (BGT's rijbaan
+ * holds them; the photo rarely shows them red) and the carriageway's paint goes (centre and edge lines from priors).
+ * A klinker carriageway stays klinker only when its `surface` tag says so; a fietsstraat (tagged) stays red. Paths
+ * keep their bands. The class-prior sidewalks stay: dropped, the De Clercqstraat LOD 1 regression read 20 % of its
+ * band probes as bare land between the road and the houses (a gap is the user's first complaint, R1).
+ */
+export function plainSection(w: LocalWay): LocalWay {
+  const own = w.section.bands[0];
+  if (own?.kind !== 'carriageway') return w;
+  const tagged = !!w.tags.surface || own.surface === 'cycle';
+  const surface = tagged ? own.surface : 'asphalt';
+  const bands = w.section.bands.map(b => (b.kind === 'carriageway' ? { ...b, surface } : b.kind === 'cycle_lane' ? { ...b, kind: 'carriageway' as const, surface } : b));
+  return { ...w, section: { ...w.section, bands, paint: [] } };
+}
+
 export function buildCell(input: CellInput): BuiltCell {
   const t0 = Date.now();
   const { key, lod, rect, surface } = input;
@@ -189,7 +209,9 @@ export function buildCell(input: CellInput): BuiltCell {
   }
   for (const w of input.osm?.ways ?? []) if (!dropped.has(w.id)) own.add(w.id);
   const resolved = resolvePriorSidewalks(all);
-  const ways = lod === 0 ? resolved : resolved.map(farSection);
+  // No survey under the cell's streets (LOD 1, or a cell without roads-v1 while roads are on): plainSection.
+  const unsurveyed = lod === 1 || (input.roadsAround !== undefined && !input.roads?.surfaces.length);
+  const ways = lod === 0 ? (unsurveyed ? resolved.map(plainSection) : resolved) : resolved.map(w => farSection(plainSection(w)));
   const areas = input.osm?.areas ?? [];
 
   // Mask extent: the cell plus what its ways and areas reach (capped).
@@ -247,6 +269,8 @@ export function buildCell(input: CellInput): BuiltCell {
   // Footway islands between parking bays draw as street (RoadIndex.parkingIslands). A fietsstraat's red is decided
   // per section in the extract (roadCells fietsstraatSection), so there is no runtime override under tram track.
   const parkingIslands = roadIndex ? roadIndex.parkingIslands() : 0;
+  // Fietsstraat sections the orthophoto shows grey draw as asphalt (photoEvidence greyFiets, RoadIndex.greyFietsstraat).
+  const greyFiets = roadIndex && input.evidence ? roadIndex.greyFietsstraat(input.evidence.greyFiets) : 0;
   // Footway strips BGT maps across the road at a mapped crossing draw as the carriageway, zebra on them (crossingStrips).
   const crossingStrips = roadIndex && SURVEY_MARKINGS ? roadIndex.crossingStrips(crossingStripPoints(ways, input.marks ?? [])) : 0;
   phase('roadIndex');
@@ -257,7 +281,7 @@ export function buildCell(input: CellInput): BuiltCell {
     const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, canalSide, ...(input.drape ?? {}) });
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!, 'bgtCarriage');
     roadSkipped = built.skipped;
-    roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, parkingIslands, crossingStrips, markings: null };
+    roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, parkingIslands, crossingStrips, greyFiets, markings: null };
   }
   // One raster serves the street pass's point lookups (RoadIndex.prepareFast) and the land culling under the own polygons.
   phase('roads');
@@ -391,7 +415,7 @@ export function buildCell(input: CellInput): BuiltCell {
   const only = (bridge: boolean) => (w: LocalWay) => own.has(w.id) && isBridgeWay(w) === bridge;
   // Canal-side pavements (kerb within 3.8 m of water; the mask saturates at MASK_RANGE_M) get Amsterdammertjes, near ring only.
   // roads-v1: covered ways emit no bands; paint, rails and fills are clipped by the polygons (streets.ts RoadsOption).
-  const roadsOpt = roadIndex ? { index: roadIndex, covered: new Set(input.coverWays ?? []) } : undefined;
+  const roadsOpt = roadIndex ? { index: roadIndex, covered: new Set(input.coverWays ?? []), ...(input.evidence ? { evidence: input.evidence } : {}) } : undefined;
   phase('parks');
   const streets = buildStreets(ways, onLand, { step: lod === 0 ? 3 : 6, only: only(false), canalSide, markings: lod === 0, roads: roadsOpt });
   phase('streets');
@@ -407,7 +431,7 @@ export function buildCell(input: CellInput): BuiltCell {
   let surveyMarks: SurveyMarkingStats | null = null;
   if (roadIndex && lod === 0 && SURVEY_MARKINGS) {
     const inCell = (p: Vec2) => p[0] >= x0 && p[0] < x1 && p[1] >= y0 && p[1] < y1;
-    const mk = buildSurveyMarkings({ ways, ownsWay: w => own.has(w.id), ownsPoint: inCell, marks: input.marks ?? [], box: [rb[0] - 30, rb[1] - 30, rb[2] + 30, rb[3] + 30], index: roadIndex, height: onLand, lift: { paint: ROAD_MARK_LIFT.paint, red: ROAD_MARK_LIFT.lane } });
+    const mk = buildSurveyMarkings({ ways, ownsWay: w => own.has(w.id), ownsPoint: inCell, marks: input.marks ?? [], box: [rb[0] - 30, rb[1] - 30, rb[2] + 30, rb[3] + 30], index: roadIndex, height: onLand, lift: { paint: ROAD_MARK_LIFT.paint, red: ROAD_MARK_LIFT.lane }, ...(input.evidence ? { evidence: input.evidence } : {}) });
     add('paint', mk.paint, 'nodePaint'); add('cycle', mk.red, 'cycleCross');
     surveyMarks = mk.stats;
   }

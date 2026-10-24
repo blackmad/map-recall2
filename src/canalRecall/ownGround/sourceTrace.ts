@@ -20,7 +20,7 @@ export const GROUND_SOURCES = [
   'band', // OSM street bands (ways the survey does not cover, the far ring, cells without the extract), their kerbs
   'junctionFill', // OSM junction polygons and kerb corner patches (nodes off the survey)
   'laneRibbon', // red cycleway=lane ribbons of covered carriageways (streets.ts laneRibbon)
-  'cyclePaint', // red band pieces of part-covered ways lying on a rijbaan / parkeervlak (streets.ts splitBySurvey)
+  'cyclePaint', // red band pieces of part-covered ways on a rijbaan / parkeervlak (none since R2 2026-10-23: such ways yield there)
   'cycleCross', // cycle crossings: red strips and their blocks (surveyMarkings, streets cyclePathCrossings)
   'nodePaint', // survey paint placed from mapped evidence: crossing nodes / crossing ways, signal, stop and give-way nodes
   'graphPaint', // survey paint inferred from the graph: junction-mouth teeth, centre dashes
@@ -29,6 +29,7 @@ export const GROUND_SOURCES = [
   'pocket', // pockets.ts fills (junction pockets and survey-gap discs)
   'water', 'quay', 'deck', // water surface, quay walls, deck tops and bodies
   'other',
+  'photoPaint', // survey paint the orthophoto backs (photoEvidence.ts: centre dashes on the photo's line); appended, codes stay
 ] as const;
 export type GroundSource = (typeof GROUND_SOURCES)[number];
 export const sourceCode = (s: GroundSource): number => GROUND_SOURCES.indexOf(s) + 1;

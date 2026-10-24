@@ -45,6 +45,9 @@ const isBright = (r: number, g: number, b: number) => Math.min(r, g, b) > 195;
 /** Paint is confirmed when the photo is bright within this (ortho registration and the 0.12 m dashes). */
 const PAINT_CONFIRM_M = 0.3;
 const BRIGHT_LOCAL = 30;
+// In a facade's shadow the contrast is compressed (lane roads-lanes 2026-10-23: Oud-West zebras in shade read ~25 over
+// their 2 m box, under the 30 the sun needs): there the step is a share of the box mean, at least BRIGHT_LOCAL_MIN.
+const BRIGHT_LOCAL_SHARE = 0.3, BRIGHT_LOCAL_MIN = 12;
 
 type RGB = readonly [number, number, number];
 const SOURCE_RGB: Record<GroundSource, RGB> = {
@@ -54,7 +57,7 @@ const SOURCE_RGB: Record<GroundSource, RGB> = {
   band: [0, 150, 255], junctionFill: [0, 90, 180],
   laneRibbon: [255, 0, 160], cyclePaint: [200, 0, 255], cycleCross: [255, 210, 0],
   nodePaint: [0, 230, 120], graphPaint: [0, 255, 255], bandPaint: [255, 255, 0],
-  rails: [20, 20, 20], pocket: [255, 160, 200],
+  rails: [20, 20, 20], pocket: [255, 160, 200], photoPaint: [120, 255, 200],
   water: [48, 75, 77], quay: [90, 80, 70], deck: [120, 100, 60], other: [128, 128, 128],
 };
 /** Bare land within GAP_REACH_M of a carriageway (drawn over the land colour). */
@@ -65,7 +68,7 @@ const OSM_GREEN_RGB: RGB = [170, 200, 40];
 /** Building footprints (not ground; drawn so a review sees what is a house). */
 const HOUSE_RGB: RGB = [60, 40, 70];
 const RED_SOURCES: ReadonlySet<GroundSource> = new Set(['laneRibbon', 'cyclePaint', 'cycleCross', 'fietsstraat']);
-const PAINT_SOURCES: readonly GroundSource[] = ['nodePaint', 'graphPaint', 'bandPaint', 'cycleCross'];
+const PAINT_SOURCES: readonly GroundSource[] = ['nodePaint', 'photoPaint', 'graphPaint', 'bandPaint', 'cycleCross'];
 
 async function roadCellsFor(keys: Iterable<string>): Promise<RoadCell[]> {
   const out: RoadCell[] = [];
@@ -138,7 +141,7 @@ interface SpotTable {
   ranked: string[];
 }
 
-async function diagnose(store: GroundStore, ortho: OrthoTiles, s: RoadSpot): Promise<{ table: SpotTable; sources: Uint8Array; w: number; orthoRgb: Uint8Array; gapPx: Uint8Array; ids: Uint8Array }> {
+async function diagnose(store: GroundStore, ortho: OrthoTiles, s: RoadSpot): Promise<{ table: SpotTable; sources: Uint8Array; w: number; orthoRgb: Uint8Array; gapPx: Uint8Array; ids: Uint8Array; paintPx: Uint8Array }> {
   const [x, y] = toLocal(s.at[0], s.at[1]), half = s.halfM, w = Math.round(2 * half / RES), x0 = x - half, y0 = y - half;
   const keys = new Set<string>([store.cellAt(x, y)]);
   for (const dx of [-half, half]) for (const dy of [-half, half]) keys.add(store.cellAt(x + dx, y + dy));
@@ -174,14 +177,14 @@ async function diagnose(store: GroundStore, ortho: OrthoTiles, s: RoadSpot): Pro
   for (let yy = 0; yy < w; yy++) for (let xx = 0; xx < w; xx++) {
     const i = yy * w + xx, xa = Math.max(0, xx - R), xb = Math.min(w, xx + R + 1), ya = Math.max(0, yy - R), yb = Math.min(w, yy + R + 1);
     const mean = (integral[yb * (w + 1) + xb] - integral[ya * (w + 1) + xb] - integral[yb * (w + 1) + xa] + integral[ya * (w + 1) + xa]) / ((xb - xa) * (yb - ya));
-    if (isBright(o[i * 3], o[i * 3 + 1], o[i * 3 + 2]) || lum[i] > mean + BRIGHT_LOCAL) bright[i] = 1;
+    if (isBright(o[i * 3], o[i * 3 + 1], o[i * 3 + 2]) || lum[i] > mean + Math.min(BRIGHT_LOCAL, Math.max(BRIGHT_LOCAL_MIN, BRIGHT_LOCAL_SHARE * mean))) bright[i] = 1;
   }
   const nearBright = distanceTo(bright, w, w, RES);
 
   const a = RES * RES, m2: SpotTable['m2'] = {}, redHits: Partial<Record<GroundSource, [number, number]>> = {};
   const gaps = { m2: 0, orthoGreen: 0, orthoPaved: 0, carriageM2: 0 };
   const paintM2 = { visible: 0, orthoWhite: 0, unconfirmed: 0, unconfirmedBySource: {} as Partial<Record<GroundSource, number>> };
-  const gapPx = new Uint8Array(w * w);
+  const gapPx = new Uint8Array(w * w), paintPx = new Uint8Array(w * w);
   let osmOverSurvey = 0;
   const samples: Record<string, [number, number, number][]> = {};
   const calibRed: Record<string, [number, number]> = {}, m2ByLayer: Record<string, number> = {}, orthoBy: Record<string, { green: number; bright: number; other: number }> = {};
@@ -202,6 +205,7 @@ async function diagnose(store: GroundStore, ortho: OrthoTiles, s: RoadSpot): Pro
     if (s_ === 'band' && layer === 'cycle') { const h = (redHits.band ??= [0, 0]); h[0]++; if (isRed(r, g, b)) h[1]++; }
     if (layer === 'paint') {
       paintM2.visible += a;
+      paintPx[i] = nearBright[i] <= PAINT_CONFIRM_M ? 1 : 2;
       if (nearBright[i] <= PAINT_CONFIRM_M) paintM2.orthoWhite += a;
       else { paintM2.unconfirmed += a; paintM2.unconfirmedBySource[s_ ?? 'other'] = (paintM2.unconfirmedBySource[s_ ?? 'other'] ?? 0) + a; }
     }
@@ -222,7 +226,7 @@ async function diagnose(store: GroundStore, ortho: OrthoTiles, s: RoadSpot): Pro
       if (!inView(cx, cy)) continue;
       const s_ = sourceOfCode(sources[t / 3]) ?? 'other';
       if (layer === 'cycle' && (s_ === 'laneRibbon' || s_ === 'cyclePaint')) { ribbonTris.total++; if (index.classAt(cx, cy) === 'cycle') ribbonTris.overCyclePolygon++; }
-      if (layer === 'paint') { paintTris[s_] = ((paintTris[s_] as number | undefined) ?? 0) + 1; if (s_ !== 'nodePaint') paintTris.offNodeEvidence++; }
+      if (layer === 'paint') { paintTris[s_] = ((paintTris[s_] as number | undefined) ?? 0) + 1; if (s_ !== 'nodePaint' && s_ !== 'photoPaint') paintTris.offNodeEvidence++; }
     }
   }
 
@@ -251,7 +255,7 @@ async function diagnose(store: GroundStore, ortho: OrthoTiles, s: RoadSpot): Pro
   table.orthoMedianRgb = Object.fromEntries(Object.entries(samples).filter(([, v]) => v.length * 3 * a >= 20).map(([k, v]) => [k, [0, 1, 2].map(c => med(v.map(p => p[c])))]));
   table.orthoRedBaseline = Object.fromEntries(Object.entries(calibRed).map(([k, [n, r]]) => [k, round(r / n, 2)]));
   for (let i = 0; i < w * w; i++) if (house[i]) gapPx[i] = 2;
-  return { table, sources: src, w, orthoRgb: o, gapPx, ids };
+  return { table, sources: src, w, orthoRgb: o, gapPx, ids, paintPx };
 }
 
 function sourceImage(src: Uint8Array, gapPx: Uint8Array, w: number, ids: Uint8Array): Uint8Array {
@@ -309,6 +313,10 @@ async function main(): Promise<void> {
     for (const c of d.sources) { const k = sourceOfCode(c); if (k) present.add(k); }
     const out = await sheet(d.table, sourceImage(d.sources, d.gapPx, d.w, d.ids), d.orthoRgb, d.w, present);
     tables.push(d.table);
+    // The game's paint over the orthophoto: green where the photo is bright within PAINT_CONFIRM_M, magenta where not.
+    const ov = new Uint8Array(d.orthoRgb);
+    for (let i = 0; i < d.w * d.w; i++) if (d.paintPx[i]) { const c = d.paintPx[i] === 1 ? [0, 230, 120] : [255, 0, 200]; for (let k = 0; k < 3; k++) ov[i * 3 + k] = Math.round(ov[i * 3 + k] * 0.35 + c[k] * 0.65); }
+    await sharp(Buffer.from(ov), { raw: { width: d.w, height: d.w, channels: 3 } }).png().toFile(join(OUT, `${s.id}-paint.png`));
     console.log(`${s.id}: ${out} (${((Date.now() - t0) / 1000).toFixed(1)} s) ${d.table.ranked.join(' > ')}`);
   }
   writeFileSync(join(OUT, 'table.json'), JSON.stringify({ source: ORTHO_ATTRIBUTION, gapReachM: GAP_REACH_M, redMin: RED_MIN, sources: GROUND_SOURCES, spots: tables }, null, 1));
