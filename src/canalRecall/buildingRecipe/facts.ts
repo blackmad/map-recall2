@@ -36,7 +36,8 @@ export interface FrontFacts {
 export interface BuildingFacts {
   schemaVersion: 1;
   pandId: string;
-  source: {threeDBag: string; fetchedAt: string; streets: string};
+  /** `threeDBag`: the item URL (API) or tile URL#pand (PDOK fallback); `dataset` names a non-API source, e.g. `pdok-3d-basisvoorziening-2025`. */
+  source: {threeDBag: string; dataset?: string; fetchedAt: string; streets: string};
   attributes: Record<string, unknown> & {b3_h_maaiveld: number};
   bagFootprintRD: RD[][];
   surveyFootprintPolygonsRD: RD[][][];

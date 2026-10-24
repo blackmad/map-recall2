@@ -5,6 +5,7 @@
  *
  *   node --import tsx scripts/building-recipes/facts.ts --house=bloemgracht-80 [--pand=0363...] [--street=Bloemgracht] [--refresh] [--no-photo]
  *   node --import tsx scripts/building-recipes/facts.ts --house=<id> --pand=0363... --large [--street=A|B]   # kind: large (walls + neighbours)
+ *   ... --source=pdok --refresh   # skip the 3DBAG API: LoD2.2 from Kadaster's 3D Basisvoorziening tile (also the automatic fallback)
  *
  * Without an intent.json, --pand and --street seed a new house directory.
  */
@@ -23,9 +24,9 @@ export const ARTIFACTS = 'artifacts/building-recipes';
 async function json<T>(file: string): Promise<T | null> {
   try { return JSON.parse(await fs.readFile(file, 'utf8')) as T; } catch (e) { if ((e as NodeJS.ErrnoException).code === 'ENOENT') return null; throw e; }
 }
-async function fetchBytes(url: string): Promise<Buffer> {
+async function fetchBytes(url: string, timeoutMs?: number): Promise<Buffer> {
   for (let attempt = 0; ; attempt++) {
-    const r = await fetch(url);
+    const r = await fetch(url, timeoutMs ? {signal: AbortSignal.timeout(timeoutMs)} : undefined);
     if (r.ok) return Buffer.from(await r.arrayBuffer());
     if (attempt >= 2) throw Error(`${r.status} ${url}`);
     await new Promise(res => setTimeout(res, 1000 * (attempt + 1)));
@@ -84,7 +85,26 @@ async function neighboursRD(pandId: string, item: CityJsonItem): Promise<NonNull
   }).map(f => ({id: f.id, heightM: f.height, ringRD: f.ring.map(p => [+p.x.toFixed(3), +p.y.toFixed(3)] as RD)}));
 }
 
-export async function prepareFacts(id: string, options: {pand?: string; streets?: string[]; refresh?: boolean; photo?: boolean; large?: boolean} = {}) {
+/** Raw item as cached in `<dir>/3dbag.json`; PDOK fallback items carry `source`/`sourceUrl` provenance. */
+type RawItem = CityJsonItem & {fetchedAt?: string; source?: string; sourceUrl?: string};
+
+/**
+ * 3DBAG API first; on any network error or non-200 (or `source: 'pdok'`), the same LoD2.2 reconstruction from
+ * Kadaster's 3D Basisvoorziening tile on PDOK (scripts/building-recipes/pdok-tiles.ts), renamed onto 3DBAG fields.
+ */
+async function fetchRawItem(pandId: string, url: string, source: '3dbag' | 'pdok'): Promise<RawItem> {
+  const fetchedAt = new Date().toISOString().slice(0, 10);
+  if (source !== 'pdok') {
+    try { return {...JSON.parse((await fetchBytes(url, 30_000)).toString()), fetchedAt}; } catch (e) {
+      console.warn(`3DBAG API failed for ${pandId} (${(e as Error).message}); falling back to PDOK 3D Basisvoorziening`);
+    }
+  }
+  const {pdokItem} = await import('./pdok-tiles.ts');
+  const p = await pdokItem(pandId);
+  return {...p.item, fetchedAt, source: p.source, sourceUrl: p.sourceUrl};
+}
+
+export async function prepareFacts(id: string, options: {pand?: string; streets?: string[]; refresh?: boolean; photo?: boolean; large?: boolean; source?: '3dbag' | 'pdok'} = {}) {
   const dir = path.join(HOUSES, id);
   await fs.mkdir(dir, {recursive: true});
   let intent = await json<any>(path.join(dir, 'intent.json'));
@@ -95,12 +115,15 @@ export async function prepareFacts(id: string, options: {pand?: string; streets?
   const frontStreets: string[] = options.streets ?? (large ? [...new Set<string>((intent?.walls ?? []).map((w: any) => w.street).filter(Boolean))] : intent?.fronts?.map((f: any) => f.street));
   if (!/^\d{16}$/.test(pandId ?? '') || !frontStreets || (!large && !frontStreets.length)) throw Error(`${id}: need intent.json or --pand/--street`);
   const rawFile = path.join(dir, '3dbag.json'), url = `https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${pandId}`;
-  let raw = options.refresh ? null : await json<CityJsonItem & {fetchedAt?: string}>(rawFile);
+  let raw = options.refresh ? null : await json<RawItem>(rawFile);
   if (!raw) {
-    raw = {...JSON.parse((await fetchBytes(url)).toString()), fetchedAt: new Date().toISOString().slice(0, 10)};
+    raw = await fetchRawItem(pandId, url, options.source ?? '3dbag');
     await fs.writeFile(rawFile, JSON.stringify(raw) + '\n');
   }
-  const facts = buildFacts(pandId, raw!, await streets(), frontStreets, toRD, {threeDBag: url, fetchedAt: (raw as any).fetchedAt ?? 'unknown', streets: 'public/data/extracts/amsterdam/streets-routing.json'}, {walls: large, terrainAt: sharedTerrain()});
+  const meta: BuildingFacts['source'] = raw.source
+    ? {threeDBag: raw.sourceUrl ?? raw.source, dataset: raw.source, fetchedAt: raw.fetchedAt ?? 'unknown', streets: 'public/data/extracts/amsterdam/streets-routing.json'}
+    : {threeDBag: url, fetchedAt: raw.fetchedAt ?? 'unknown', streets: 'public/data/extracts/amsterdam/streets-routing.json'};
+  const facts = buildFacts(pandId, raw, await streets(), frontStreets, toRD, meta, {walls: large, terrainAt: sharedTerrain()});
   if (large) facts.neighboursRD = await neighboursRD(pandId, raw!);
   await fs.writeFile(path.join(dir, 'facts.json'), JSON.stringify(facts, null, 1) + '\n');
   const photos: PanoramaReference[] = [];
@@ -121,7 +144,7 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
   if (!ids.length) throw Error('Use --house=<id>[,<id>...]');
   for (const id of ids) {
     const started = performance.now();
-    const {facts, photos} = await prepareFacts(id, {pand: arg('pand'), streets: arg('street')?.split('|'), refresh: process.argv.includes('--refresh'), photo: !process.argv.includes('--no-photo'), large: process.argv.includes('--large')});
+    const {facts, photos} = await prepareFacts(id, {pand: arg('pand'), streets: arg('street')?.split('|'), refresh: process.argv.includes('--refresh'), photo: !process.argv.includes('--no-photo'), large: process.argv.includes('--large'), source: arg('source') === 'pdok' ? 'pdok' : '3dbag'});
     console.log(JSON.stringify({id, seconds: +((performance.now() - started) / 1000).toFixed(2), fronts: facts.fronts.map(f => ({street: f.street, widthM: +f.widthM.toFixed(2), eavesM: +f.eavesM.toFixed(2), topM: +f.topM.toFixed(2), uncertainty: f.uncertainty.length})), ridgeM: +facts.heights.ridgeM.toFixed(2), photos: photos.map(p => `${p.timestamp.slice(0, 10)} ${p.distanceM.toFixed(1)}m`)}));
   }
 }
