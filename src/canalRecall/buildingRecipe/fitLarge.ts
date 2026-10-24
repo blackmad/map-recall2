@@ -382,6 +382,9 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     // A loggia balustrade in its own colour (loggias.colour): a rail slot (joinery) of its own; otherwise the frame slot.
     const railSlot = w.loggias?.colour ? `rail@g${gi}` : undefined;
     if (railSlot) palette[railSlot] = swatch(w.loggias!.colour!);
+    // Balcony rails in their own colour (black iron): a slot of their own, `rail@bg<i>`.
+    const balconyRail = w.balconies?.colour ? `rail@bg${gi}` : undefined;
+    if (balconyRail) palette[balconyRail] = swatch(w.balconies!.colour!);
     const screenSlot = w.meshScreen ? `screen@g${gi}` : undefined;
     if (screenSlot) { palette[screenSlot] = swatch(w.meshScreen!.colour); if (measuredGroups.has(gi)) measuredSlots.push(screenSlot); }
     if (spandrelSlot) { palette[spandrelSlot] = w.spandrels!.colour ? swatch(w.spandrels!.colour) : palette[slots.frame]; if (measuredGroups.has(gi) && w.spandrels!.colour) measuredSlots.push(spandrelSlot); }
@@ -443,6 +446,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.columns ? {columnBays: w.columns.bays, bays} : {}),
       ...(w.windowShape ? {shape: {w: w.windowShape.w, h: w.windowShape.h, sillM: r3(w.windowShape.sill * (uppers[0] ?? st.heights[0]))}} : {}),
       ...(w.windowPattern ? {windowPattern: [...w.windowPattern]} : {}),
+      ...(w.windowGroup ? {windowGroup: {count: w.windowGroup.count, gapM: r3((w.windowGroup.gap ?? 0.06) * pitchM), ...(w.windowGroup.storeys ? {storeys: [...w.windowGroup.storeys]} : {})}} : {}),
+      ...(balconyRail ? {balconyRailSlot: balconyRail} : {}), ...(w.balconies?.deep !== undefined ? {balconyDeepM: r3(w.balconies.deep * (uppers[0] ?? st.heights[0]))} : {}), ...(w.balconies?.windows ? {balconyOnWindows: true} : {}),
       ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {}),
       ...(w.glazing === 'panes' ? {paneSplit: true} : {}), ...(w.courses ? {courses: [...w.courses]} : {}), ...(w.souterrain ? {souterrain: w.souterrain} : {}), ...(w.openBays ? {openBays: w.openBays, bays} : {}),
       ...(w.plinth ? {plinth: {storeys: [...plinthStoreys], ...(w.plinth.bays ? {bays: [...w.plinth.bays]} : {}), lights: w.plinth.lights, sill: w.plinth.sill ?? PLINTH.sill, h: w.plinth.h ?? PLINTH.h, pier: w.plinth.pier ?? PLINTH.pier, transom: w.plinth.transom ?? PLINTH.transom}, bays} : {}),

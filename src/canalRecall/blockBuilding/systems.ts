@@ -51,6 +51,14 @@ export interface SystemFit {
   /** storeys (0 = ground) glazed like a shop ground across every bay (a glazed mezzanine over the shops) */
   glazedStoreys?: number[];
   balconyRail?: 'glass' | 'bars' | 'solid';
+  /** balcony rail (and top rail) slot when the rails have their own colour (black iron), default the frame slot (opt-in) */
+  balconyRailSlot?: string;
+  /** balcony projection (m) when not the default 1.2 m (a shallow iron balcony on consoles; opt-in) */
+  balconyDeepM?: number;
+  /** the balcony stands in front of the storey's own windows (an iron balcony on a window row) instead of a French window (opt-in) */
+  balconyOnWindows?: boolean;
+  /** grouped windows: each bay's opening is `count` windows with `gapM` of wall between them, on the listed storeys (default every upper storey; opt-in) */
+  windowGroup?: { count: number; gapM: number; storeys?: number[] };
   /** balconies only in every `every`-th bay from `first`, or the listed bays (of `bays` per storey); default every bay */
   balconyBays?: { every?: number; first?: number; bays?: number[] };
   /** slot names for this wall group (per-group palette overrides get their own slots) */
@@ -278,7 +286,10 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   const archedRow = (): Row => ({ ...typical, win: { ...typical.win!, ...archFor(f.arches!.windows, f) } });
   for (const st of archedStoreys) if (st > 0) rowOverrides[String(st)] = archedRow();
   if (f.balconyStoreys?.length && name !== 'blank') {
-    const balcony: Row = { kind: 'balcony', balcony: { depth: 1.2, slab: { h: 0.18, slot: s.stone }, rail: { kind: f.balconyRail ?? 'bars', h: 1.0, slot: s.frame, top: s.frame }, back: { w: 0.7, h: 0.72, sill: 0.25, frame: s.frame, glass: s.glass, mull: 1 } } };
+    const railSlot = f.balconyRailSlot ?? s.frame, onWin = f.balconyOnWindows && typical.win && !typical.cycle ? typical.win : null;
+    // on a window row the balcony spans the bay's windows and 0.2 m either side (the pilasters between bays stay clear)
+    const onW = onWin ? (onWin.w ?? 0.5) : 0, span = onWin ? Math.min(f.pitchM - 0.1, (onW <= 1 ? onW * f.pitchM : onW) + 0.4) : 0;
+    const balcony: Row = { kind: 'balcony', balcony: { ...(onWin ? { w: +span.toFixed(3) } : {}), depth: f.balconyDeepM ?? 1.2, slab: { h: 0.18, slot: s.stone }, rail: { kind: f.balconyRail ?? 'bars', h: 1.0, slot: railSlot, top: railSlot }, back: onWin ? { ...onWin, w: +(Math.min(span, onW <= 1 ? onW * f.pitchM : onW) / span).toFixed(4), sillSlot: null } : { w: 0.7, h: 0.72, sill: 0.25, frame: s.frame, glass: s.glass, mull: 1 } } };
     const sel = f.balconyBays, list = sel?.bays, every = list ? Math.max(1, f.bays ?? 1, ...list.map(b => b + 1)) : Math.max(1, sel?.every ?? 1), at = ((sel?.first ?? 0) % every + every) % every;
     // the storey's own row (an arched piano nobile) fills the bays without a balcony
     for (const st of f.balconyStoreys) { const under = rowOverrides[String(st)] ?? typical; rowOverrides[String(st)] = !sel ? balcony
@@ -372,6 +383,19 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
     const wrap = (r: Row): Row => (r.kind === 'punched' && r.win ? { kind: 'wall', cycle: f.windowPattern!.map(w => ({ ...r, win: { ...r.win!, w } })) } : r);
     typical = wrap(typical); ground = wrap(ground);
     for (const k of Object.keys(rowOverrides)) rowOverrides[k] = wrap(rowOverrides[k]);
+  }
+  // Grouped windows (pairs and triples per bay): after the per-bay widths, so each bay's opening is split into its windows.
+  if (f.windowGroup && f.windowGroup.count > 1 && name !== 'blank') {
+    const group = { count: f.windowGroup.count, gap: f.windowGroup.gapM };
+    const grp = (r: Row): Row => r.cycle ? { ...r, cycle: r.cycle.map(grp) }
+      : r.kind === 'punched' && r.win && !r.win.loggia ? { ...r, win: { ...r.win, group } }
+      : r.kind === 'balcony' && r.balcony?.back && f.balconyOnWindows ? { ...r, balcony: { ...r.balcony, back: { ...r.balcony.back, group } } } : r;
+    if (f.windowGroup.storeys) {
+      for (const st of f.windowGroup.storeys) { if (st === 0) ground = grp(ground); else rowOverrides[String(st)] = grp(rowOverrides[String(st)] ?? typical); }
+    } else {
+      typical = grp(typical);
+      for (const k of Object.keys(rowOverrides)) if (k !== '0') rowOverrides[k] = grp(rowOverrides[k]);
+    }
   }
   // Glazed plinth and loggias: the last step, so no later pass (windowPattern, paneSplit) reshapes them. In listed bays only,
   // the other bays keep the storey's row (one bay of a per-bay cycle each).

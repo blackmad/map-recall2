@@ -46,16 +46,17 @@
    ],
    "street": "Leidseplein",
    "system": "brick-bay-grid",
-   "storeys": 5,
+   "storeys": 6,
    "baysPerStorey": 1,
    "ground": "portals",
-   "windows": "three-light",
+   "windows": "transom",
    "wallMaterial": "stone",
    "deepBars": true,
    "cornice": true,
    "stringCourses": true,
    "blankStoreys": [
-    4
+    4,
+    5
    ],
    "arches": {
     "ground": "round",
@@ -70,37 +71,48 @@
     "stone": "#77705f"
    },
    "windowShape": {
-    "w": 0.8,
-    "h": 0.45,
-    "sill": 0.08
+    "w": 0.81,
+    "h": 0.58,
+    "sill": 0.3
    },
-   "groundFactor": 1.5,
+   "groundFactor": 1.8,
    "hand": [
+    "balconies",
+    "baysPerStorey",
+    "dressings",
     "palette.brick",
     "palette.stone",
+    "storeys",
     "windowShape"
-   ]
+   ],
+   "balconies": {
+    "storeys": [
+     2,
+     3
+    ],
+    "rail": "bars",
+    "colour": "#26292b",
+    "deep": 0.15,
+    "windows": true
+   }
   },
   {
    "wallSurfaces": [
-    431,
-    106,
-    23,
-    244,
-    397
+    431
    ],
    "street": "Leidsestraat",
    "system": "brick-bay-grid",
    "alignWith": 0,
-   "baysPerStorey": 3,
+   "baysPerStorey": 2,
    "ground": "portals",
-   "windows": "three-light",
+   "windows": "transom",
    "wallMaterial": "stone",
    "deepBars": true,
    "cornice": true,
    "stringCourses": true,
    "blankStoreys": [
-    4
+    4,
+    5
    ],
    "arches": {
     "ground": "round",
@@ -115,15 +127,46 @@
     "stone": "#77705f"
    },
    "windowShape": {
-    "w": 0.8,
-    "h": 0.45,
-    "sill": 0.08
+    "w": 0.57,
+    "h": 0.58,
+    "sill": 0.3
    },
    "hand": [
+    "balconies",
+    "baysPerStorey",
+    "dressings",
     "palette.brick",
     "palette.stone",
+    "storeys",
+    "windowGroup",
     "windowShape"
-   ]
+   ],
+   "balconies": {
+    "storeys": [
+     2,
+     3
+    ],
+    "rail": "bars",
+    "colour": "#26292b",
+    "deep": 0.15,
+    "windows": true
+   },
+   "windowGroup": {
+    "count": 3,
+    "gap": 0.08
+   },
+   "dressings": {
+    "piers": {
+     "w": 0.23,
+     "from": 1,
+     "to": 3,
+     "deep": 0.07,
+     "capital": true,
+     "base": true,
+     "flutes": 5,
+     "ends": true
+    }
+   }
   },
   {
    "wallSurfaces": [
@@ -140,13 +183,14 @@
    "alignWith": 0,
    "baysPerStorey": 1,
    "ground": "portals",
-   "windows": "three-light",
+   "windows": "transom",
    "wallMaterial": "stone",
    "deepBars": true,
    "cornice": true,
    "stringCourses": true,
    "blankStoreys": [
-    4
+    4,
+    5
    ],
    "arches": {
     "ground": "round",
@@ -161,15 +205,92 @@
     "stone": "#77705f"
    },
    "windowShape": {
-    "w": 0.8,
-    "h": 0.45,
-    "sill": 0.08
+    "w": 0.81,
+    "h": 0.58,
+    "sill": 0.3
    },
    "hand": [
+    "balconies",
+    "baysPerStorey",
+    "dressings",
     "palette.brick",
     "palette.stone",
+    "storeys",
     "windowShape"
-   ]
+   ],
+   "balconies": {
+    "storeys": [
+     2,
+     3
+    ],
+    "rail": "bars",
+    "colour": "#26292b",
+    "deep": 0.15,
+    "windows": true
+   }
+  },
+  {
+   "wallSurfaces": [
+    106,
+    23,
+    244,
+    397
+   ],
+   "system": "brick-bay-grid",
+   "alignWith": 0,
+   "baysPerStorey": 1,
+   "ground": "portals",
+   "windows": "transom",
+   "wallMaterial": "stone",
+   "deepBars": true,
+   "cornice": true,
+   "stringCourses": true,
+   "blankStoreys": [
+    4,
+    5
+   ],
+   "arches": {
+    "ground": "round",
+    "band": "voussoir",
+    "storeys": [
+     0
+    ]
+   },
+   "palette": {
+    "brick": "#5a5447",
+    "frame": "#efece4",
+    "stone": "#77705f"
+   },
+   "windowShape": {
+    "w": 0.81,
+    "h": 0.58,
+    "sill": 0.3
+   },
+   "hand": [
+    "balconies",
+    "baysPerStorey",
+    "dressings",
+    "palette.brick",
+    "palette.stone",
+    "storeys",
+    "windowGroup",
+    "windowShape"
+   ],
+   "balconies": {
+    "storeys": [
+     2,
+     3
+    ],
+    "rail": "bars",
+    "colour": "#26292b",
+    "deep": 0.15,
+    "windows": true
+   },
+   "street": "Leidsestraat",
+   "windowGroup": {
+    "count": 3,
+    "gap": 0.12
+   }
   }
  ],
  "otherWalls": "blank",
@@ -192,6 +313,7 @@
   "walls[0] = the ten Leidseplein bay facets (bearing 323, w16-322); walls[1] = the Leidsestraat bays and the 12.4 m facet before the curve (bearing 53, w02-52); walls[2] = the south-east bays (bearing 143, w19-142). All three share walls[0]'s storey lines: 5 storeys, the top one blank for the frieze. Each has one bay per pilaster facet (3 on the 12.4 m facet), a round-arched ground portal with a voussoir band, a wide window standing for the three windows of each bay, and iron balconies on storeys 1-3. The pilaster fronts and returns stay plain stone (otherWalls, house palette in the stone colour).",
   "Simplified: the giant Corinthian pilasters (the 3DBAG facets give their depth, no capitals), the stone balustrades over the arcade and on the attic (balcony rails stand for the first), and the dome (3DBAG roof mass). The curved corner facets are blank. The brick house on the Hirschpassage side (w01-233) is a separate front and is left blank.",
   "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): the 1912 Hirsch building's carved sandstone front with giant pilasters and a round-arched arcade was drawn as cream bands over a plain arcade; NO PHOTO on two of the three street groups and FAIL (dL +0.39) on the third, on a high-ride wall (236 of 2,000 sampled routes). Ornamented front: uninstalled; bespoke if it returns.",
-  "Stone dressings lane (2026-10-24, issue #31): the Leidsestraat front (w02-52 2020-04-24 and w02-52L 2021-12-29, 50 px/m) is a grey-brown weathered sandstone, #53544f-#5a5348 on the pilasters and #62594b-#67685f on the frieze in both crops (it faces north-east and is never sunlit on them): wall #5a5447, dressings #77705f, the cream #b9ae98 was 0.5 L too light. A 6.2 m arcade storey (groundFactor 1.5), three window storeys with three windows per bay (one three-light opening 0.8 of the bay, 0.45 of the storey from 0.08), a blank frieze-and-attic storey. The iron balconies are left out: the kit draws balcony rails in the frame colour, and the white slabs and rails read as cream bands across a dark front where the photo shows slim black ironwork. Still not said: the black iron balconies (no rail colour of their own), the fluted giant pilasters with Corinthian capitals, the balustrades, the separate windows of each bay (one opening stands for three)."
+  "Stone dressings lane (2026-10-24, issue #31): the Leidsestraat front (w02-52 2020-04-24 and w02-52L 2021-12-29, 50 px/m) is a grey-brown weathered sandstone, #53544f-#5a5348 on the pilasters and #62594b-#67685f on the frieze in both crops (it faces north-east and is never sunlit on them): wall #5a5447, dressings #77705f, the cream #b9ae98 was 0.5 L too light. A 6.2 m arcade storey (groundFactor 1.5), three window storeys with three windows per bay (one three-light opening 0.8 of the bay, 0.45 of the storey from 0.08), a blank frieze-and-attic storey. The iron balconies are left out: the kit draws balcony rails in the frame colour, and the white slabs and rails read as cream bands across a dark front where the photo shows slim black ironwork. Still not said: the black iron balconies (no rail colour of their own), the fluted giant pilasters with Corinthian capitals, the balustrades, the separate windows of each bay (one opening stands for three).",
+  "Giant-order lane (2026-10-24, issue #35, w02-52 / w02-52L at 50 px/m): six storeys on walls[0]'s line (a 6.1 m arcade storey, groundFactor 1.8; three 3.4 m window storeys; the entablature and the balustraded attic as two blank storeys), so the capitals sit at 16.3 m as on the crop. walls[1] is now only the 12.4 m facet (surface 431): two 6.2 m bays, fluted giant pilasters (dressings.piers 0.23 of the bay, 0.07 proud, 5 flutes, stone base and capital, at the joint and both ends) from storey 1 to the top of storey 3, three windows per bay (windowGroup 3, the span 0.57 of the bay, 0.08 of wall between; transom windows from 0.3 of the storey so they stand over the rails), black iron balconies on storeys 2 and 3 (#26292b sampled on the rails, 0.15 of the storey deep, spanning the window group). The four 4.3 m Leidsestraat facets moved to walls[3] (one bay each between the 3DBAG pilasters, three windows per bay). walls[0] and walls[2] (no photo) keep one wide opening per facet: three windows on them would cost about 3,000 triangles over the 12k budget. Still not said: Corinthian capitals on the 3DBAG pilaster facets, the stone balustrades over the arcade and on the attic, the ironwork's open pattern (the rail is a solid black sheet), the dome."
  ]
 }
