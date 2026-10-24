@@ -28,12 +28,14 @@ import {swatch} from '../../src/canalRecall/buildingRecipe/intent.ts';
 import {BRICK_CELL_MEAN, cityTint, hexToRgb} from '../../src/canalRecall/look/palette.ts';
 import {srgbToLinear} from '../../src/canalRecall/look/sunny.ts';
 import {chunkWallGain} from '../../src/canalRecall/look/chunkWallExposure.ts';
+import {CHUNK_WALL_EXPOSURE_DATA} from '../../src/canalRecall/look/chunkWallExposureData.ts';
 
 const FACES = 'scripts/block-face/faces', OUT = 'src/canalRecall/look/chunkWallExposureData.ts';
 const MANIFEST = 'public/canal-drive/ordinary-buildings-data/chunks.json';
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
-// The archive sits beside the main checkout (worktrees live under <main>/.claude/worktrees/<name>).
-const ARCHIVE = arg('archive') ?? path.resolve(process.cwd().replace(/\/\.claude\/worktrees\/[^/]+$/, ''), '../map-recall2-source-data/models');
+// The archive sits beside the main checkout (worktrees live under <main>/.claude/worktrees/<name> or
+// <main>-worktrees/<name>).
+const ARCHIVE = arg('archive') ?? path.resolve(process.cwd().replace(/\/\.claude\/worktrees\/[^/]+$/, '').replace(/-worktrees\/[^/]+$/, ''), '../map-recall2-source-data/models');
 type RGB = [number, number, number];
 const luma = (c: readonly number[]) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
 const med = (a: number[]) => { const s = a.filter(Number.isFinite).sort((p, q) => p - q); return s.length ? (s.length % 2 ? s[s.length >> 1] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : NaN; };
@@ -44,7 +46,14 @@ for (const chunk of JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).chunks as {nam
   const face = chunk.name.replace(/^face-/, ''), dir = path.join(FACES, face);
   if (!chunk.name.startsWith('face-') || !fs.existsSync(path.join(dir, 'strip.json'))) { rows.push(`${chunk.name}: no strip (fallback gain ${chunkWallGain(undefined).toFixed(3)})`); continue; }
   const strip = JSON.parse(fs.readFileSync(path.join(dir, 'strip.json'), 'utf8')), file = stripFile(face, strip);
-  if (!file) throw Error(`${chunk.name}: strip image missing (staging or ${ARCHIVE})`);
+  // A face whose strip is in neither staging nor the archive keeps the entry it was published with (2026-10-24: some
+  // older faces' strips were never archived, which used to stop every later face from being re-measured).
+  if (!file) {
+    const kept = (CHUNK_WALL_EXPOSURE_DATA as Record<string, {white: RGB | null; stripOverDrawn: number | null}>)[chunk.name];
+    if (kept) entries[chunk.name] = kept;
+    rows.push(`${chunk.name}: strip image missing (staging or ${ARCHIVE}); ${kept ? 'kept the published entry' : 'fallback gain'}`);
+    continue;
+  }
   const {data, info} = await sharp(file).removeAlpha().raw().toBuffer({resolveWithObject: true});
   const rgb = new Uint8Array(data.buffer, data.byteOffset, data.length);
   const intents = houseIntents(validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')), JSON.parse(fs.readFileSync(path.join(dir, 'discovery.json'), 'utf8')).members));
