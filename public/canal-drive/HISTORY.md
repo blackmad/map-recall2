@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+**Large kit: a row of houses on one pand (2026-10-24, #30).** A BAG pand
+that is really several houses can now say so: `walls[].houses` gives each its
+width, eaves, storeys, bays, window shape, crown and colour, reusing the
+large kit's bay and storey-line machinery (the block-face types are per pand
+with their own massing, so they could not sit inside a large shell). A lone
+unmeasured eaves > 0.8 m off the row line is clamped (row coherence), and the
+eaves gate checks each house. Stadhouderskade 111's 77.6 m north run is ten
+houses (wall dL 0.157 → 0.025, still FAIL on glazing because white frames
+read as trim); pand-165427 walls[0] mask IoU 0.374 → 0.436. Both held for
+review; only their fit and mesh goldens moved. Gaps in `kit-gaps.md`.
+
 **Landmark kits round 1 fixes (2026-10-24, #29).** Generic school kits no
 longer share one beige: 160 of 283 take a wall colour measured from their
 panorama crop (`scripts/landmarks/build-public-facts.ts` →

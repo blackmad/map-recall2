@@ -43,3 +43,13 @@ Review of kit sheets 1–10 (40 kits, `kit-sheets-20261024/artifacts/strips/kits
 | No photo / unresolved pand | 6 | 4 11 17 22 28 36 |
 
 Top fixes for the kit session: (1) school wall colour from the photo/BAG era instead of a fixed beige, with a brown-brick default for pre-1970 schools; (2) a ribbon-window / large-glazing facade option for post-war schools; (3) cinema/church/temple kits with no geometry (0 tris) must fall back to a massing or not be listed.
+
+## Large kit row split (#30, 2026-10-24)
+
+`walls[].houses` (rowSplit.ts) draws a row of houses on one pand: width, eaves, storeys, bays, window shape, crown (cornice | flat | gable) and colour per house. Proven by hand on `pand-165427` and `stadhouderskade-111-137448` (measure.ts proposes joints only on a ΔE76 ≥ 20 colour change, or a weaker one on a ≥ 1.5 m 3DBAG roof step; it found 5 of the 9 Stadhouderskade joints). Still cannot say:
+- step / neck / bell gable crowns per house (only cornice, flat, or the 3DBAG gable wall);
+- removing the 3DBAG gable triangles above a cornice crown (set-back roofs and dormers);
+- pilaster strips between houses;
+- white window surrounds, string courses and balconies per house;
+- a brick corbel cornice; arched top-storey windows and an oculus (pand-165427).
+Measurement gap: white-framed windows count as trim, so photo glazing reads low (Stadhouderskade 0.21 vs model 0.38).
