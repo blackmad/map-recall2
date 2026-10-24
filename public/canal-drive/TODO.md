@@ -229,8 +229,9 @@ Open, in order:
   rebuild, landmarks clear `_failed` and re-request, bike and tiles take
   the new renderer). `tests/e2e/context-restore.spec.ts` desktop + iphone:
   frame back in ~0.35 s. Gap: facade texture arrays repaint from scratch
-  (32 s headless); options are a bigger slice budget during restore or
-  untextured shells meanwhile.
+  (32 s headless). Fixed 2026-10-24 (#20, 4598403e9): a restore's texture
+  build runs in 32 ms slices (first load stays 6 ms, no CPU copy kept):
+  facades back in ~5.5 s desktop, 5.4–7.1 s iPhone profile.
 - **perf own-ground CPU** (merged 2026-10-24, 1fb293b85): relief tiles
   stored as int16 cm where exact (half the bytes, slightly faster), phone
   ring 400 m with the worker cache bounded by the same keep set; iPhone
