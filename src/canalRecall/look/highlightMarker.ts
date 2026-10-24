@@ -231,6 +231,8 @@ export interface HighlightMarkerOptions {
   style?: HighlightStyle;
   /** Ground height (own ground relief) at a point, metres. */
   heightAt?: (lngLat: LngLat) => number | undefined | null;
+  /** Building features by id when the map's building source holds no copy (phones, building-tiles `setPublishing`); null: read the source. */
+  featuresById?: (ids: readonly (string | number)[]) => readonly unknown[] | null;
 }
 
 export class HighlightMarker {
@@ -297,8 +299,9 @@ export class HighlightMarker {
       // building source's data, for the ring and the hull (querySourceFeatures and queryRenderedFeatures missed the
       // Oud-West house on screen; GeoJSONSource.getData() serves the promoted-id map, < 1 ms for 10k features).
       // Shown with a circle meanwhile; the answer re-enters set() with the footprint.
-      const source = this.map.getSource?.(HULL_SOURCE);
-      source?.getData?.().then((data: any) => {
+      const local = this.options.featuresById?.(asked.ids ?? []);
+      const data: Promise<any> | undefined = local ? Promise.resolve({ features: local }) : this.map.getSource?.(HULL_SOURCE)?.getData?.();
+      data?.then((data: any) => {
         const found = this.focus === asked ? footprintFromFeatures(data?.features ?? [], asked.ids ?? []) : null;
         if (found) this.set({ ...asked, polygons: found.polygons, heightM: asked.heightM ?? found.heightM, baseM: found.baseM });
       }, () => { /* no source */ });
