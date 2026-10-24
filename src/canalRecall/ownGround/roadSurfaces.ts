@@ -26,7 +26,7 @@
 // OSM stays for routing, paint and the fallback: covered ways (roadCells
 // coverWays) emit no bands; cells without the extract and the far ring keep bands.
 
-import { densify, edgeWall, emptyMesh, ribbon, stations, vertex, type MeshArrays } from './drape.js';
+import { densify, densifyOnRelief, edgeWall, emptyMesh, ribbon, stations, vertex, type MeshArrays } from './drape.js';
 import { interiorPoint, SurfaceIndex, type SurfaceRaster } from './parks.js';
 import { bollards, LIFT, ROAD_MARK_LIFT } from './streets.js';
 import { ANCILLARY_CLASSES, KERB_LOW_CLASSES, type RoadCell, type RoadClass, type RoadMesh, type RoadSurface } from './roadCells.js';
@@ -71,6 +71,8 @@ export const DRAPE_TOL: Record<RoadClass, { sag: number; float: number }> = {
   island: { sag: 0.1, float: 0.03 }, berm: { sag: 0.1, float: 0.03 }, verge: { sag: 0.1, float: 0.03 }, square: { sag: 0.1, float: 0.03 },
 };
 export const DRAPE_MAX_EDGE_M = 24, DRAPE_MIN_EDGE_M = 3;
+/** On coarse relief a triangle under this many square data steps is not split (drapeAdaptive `minArea`). */
+export const DRAPE_MIN_AREA_STEPS = 0.5;
 /**
  * The kerb wall's top and the granite line over SIDEWALK_TOP: the pavement plane may float DRAPE_TOL.foot.float over
  * the land, so the wall reaches above it (a kerb stone's lip where it does not) and the line lies over both.
@@ -78,8 +80,12 @@ export const DRAPE_MAX_EDGE_M = 24, DRAPE_MIN_EDGE_M = 3;
 export const KERB_TOP = SIDEWALK_TOP + DRAPE_TOL.foot.float, KERB_LINE_Z = KERB_TOP + 0.004;
 /** Deck polygons (h ≥ 1) follow the hump both ways: a 1 m hump over 20 m sags 25 cm under an 8 m chord. */
 export const DECK_DRAPE_TOL_M = 0.01, DECK_DRAPE_MAX_EDGE_M = 6;
-/** Kerb runs are simplified to this before drawing (the survey's 0.1 m vertices are 4 triangles each), then densified to KERB_STEP_M. */
-export const KERB_SIMPLIFY_M = 0.2, KERB_STEP_M = 4;
+/**
+ * Kerb runs are simplified to this before drawing (the survey's 0.1 m vertices are 4 triangles each), then
+ * densified where the relief bends more than KERB_RELIEF_TOL_M off the chord, no finer than the relief's data step
+ * and no coarser than DRAPE_MAX_EDGE_M (roads lane R1: a fixed 4 m step was 1.2 triangles per metre on graded streets).
+ */
+export const KERB_SIMPLIFY_M = 0.2, KERB_RELIEF_TOL_M = 0.02, KERB_PROBE_STEP_M = 4;
 
 /**
  * Earcut triangles draped where the relief needs it: a triangle is split at its longest edge while that edge is
@@ -88,10 +94,11 @@ export const KERB_SIMPLIFY_M = 0.2, KERB_STEP_M = 4;
  * a plane floating over a hollow is left). parks.ts drapeBisect splits by length alone (8 m), which on the survey's
  * slivers cost 3.4× the earcut triangles of a cell (203k against 60k on -2_-1); streets are graded flat, so most
  * triangles pass the test unsplit, and the ramps, humps and quay edges get the splits. Testing the longest edge alone
- * left the Kinkerstraat asphalt 2.3 cm under the land at a quay mouth. Winding CCW from above, as drapeBisect.
+ * left the Kinkerstraat asphalt 2.3 cm under the land at a quay mouth. A triangle under `minArea` m² splits by
+ * `maxEdge` alone. Winding CCW from above, as drapeBisect.
  */
-export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number, tol: number, minEdge: number, floatTol = tol): void {
-  const max2 = maxEdge * maxEdge, min2 = minEdge * minEdge;
+export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number, tol: number, minEdge: number, floatTol = tol, minArea = 0): void {
+  const max2 = maxEdge * maxEdge, min2 = minEdge * minEdge, area2 = 2 * minArea;
   // Each corner carries its height and its emitted vertex (-1: not yet): the earcut corners are drawn once and shared
   // by every triangle on them, and every height is asked once per corner (the tested midpoint becomes the split's).
   const nv = coords.length >> 1, zs = new Float64Array(nv), ids = new Int32Array(nv).fill(-1);
@@ -115,7 +122,7 @@ export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: Ar
       // The longest edge's midpoint first: its height is the split vertex's if the triangle splits.
       const mx = edge === 1 ? (x1 + x2) / 2 : edge === 2 ? (x2 + x3) / 2 : (x3 + x1) / 2, my = edge === 1 ? (y1 + y2) / 2 : edge === 2 ? (y2 + y3) / 2 : (y3 + y1) / 2;
       let mz = NaN, split = longest > max2;
-      if (!split && longest > min2) {
+      if (!split && longest > min2 && (!area2 || Math.abs((x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)) > area2)) {
         mz = height(mx, my);
         split = bad(mz - (edge === 1 ? (z1 + z2) : edge === 2 ? (z2 + z3) : (z3 + z1)) / 2)
           || (edge !== 1 && bad(height((x1 + x2) / 2, (y1 + y2) / 2) - (z1 + z2) / 2))
@@ -403,6 +410,11 @@ export interface RoadBuildInput {
   drapeFloatTol?: number;
   /** Canal-side test for the Amsterdammertjes (streets.ts bollards); near ring only. */
   canalSide?: (x: number, y: number) => boolean;
+  /**
+   * The relief's measured sample spacing under a point (GroundSurface.dataStepAt): the drape splits no finer than
+   * this, since detail between samples is interpolation (the coarse ring's 4 m tiles upsampled to the 2 m grid).
+   */
+  dataStep?: (x: number, y: number) => number;
 }
 
 /**
@@ -461,7 +473,10 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     if (rec.h >= 1) drapeAdaptive(layer, flat, tris, height, ROAD_LIFT[cls], far ? 2 * DECK_DRAPE_MAX_EDGE_M : DECK_DRAPE_MAX_EDGE_M, DECK_DRAPE_TOL_M, 1.5);
     else {
       const tol = DRAPE_TOL[cls], low = isLow(cls);
-      drapeAdaptive(layer, flat, tris, height, ROAD_LIFT[cls], far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, (low && input.drapeTol) || tol.sag, DRAPE_MIN_EDGE_M, far ? Infinity : (low && input.drapeFloatTol) || tol.float);
+      // Where the relief was measured coarser than the drape's own minimum (the 4 m ring), no triangle splits finer
+      // than a data sample: not by edge, and not by area, which on a verge strip's slivers is what the edge test misses.
+      const step = input.dataStep?.(flat[0], flat[1]) ?? 0, coarse = step > DRAPE_MIN_EDGE_M;
+      drapeAdaptive(layer, flat, tris, height, ROAD_LIFT[cls], far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, (low && input.drapeTol) || tol.sag, coarse ? step : DRAPE_MIN_EDGE_M, far ? Infinity : (low && input.drapeFloatTol) || tol.float, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0);
     }
     stats.drawn[cls]++;
   }
@@ -469,11 +484,12 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   const kerb = get('kerb');
   traceMark(kerb, 'bgtKerb');
   for (const e of cell.kerbs) {
-    const line = decodeKerb(e);
-    if (line.length < 2) continue;
-    const st = stations(line), total = st[st.length - 1];
+    const run = decodeKerb(e);
+    if (run.length < 2) continue;
+    const st = stations(run), total = st[st.length - 1];
     if (total < 0.3) continue;
-    const mid = Math.floor(line.length / 2), a = line[Math.max(0, mid - 1)], b = line[Math.min(line.length - 1, mid)];
+    // The sides are probed at the middle 4 m station, as before the relief-adaptive stations.
+    const probe = densify(run, KERB_PROBE_STEP_M), mid = Math.floor(probe.length / 2), a = probe[Math.max(0, mid - 1)], b = probe[Math.min(probe.length - 1, mid)];
     const cx = (a[0] + b[0]) / 2, cy = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
     const h = index.heightAt(cx, cy) ?? 0, bridge = h >= 1;
     const left = index.classAt(cx + nx * KERB_PROBE_M, cy + ny * KERB_PROBE_M, bridge), right = index.classAt(cx - nx * KERB_PROBE_M, cy - ny * KERB_PROBE_M, bridge);
@@ -482,17 +498,23 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     const lowLeft = isLow(left) && !isLow(right), lowRight = isLow(right) && !isLow(left);
     let height = landHeight;
     if (bridge) { const on = deckSurface([cx, cy]); if (!on) continue; height = on; }
+    // Decks hump within a span (DECK_DRAPE_MAX_EDGE_M); on land, no finer than the relief was measured.
+    const line = bridge ? densifyOnRelief(run, height, KERB_RELIEF_TOL_M, 1, DECK_DRAPE_MAX_EDGE_M)
+      : densifyOnRelief(run, height, KERB_RELIEF_TOL_M, Math.max(KERB_PROBE_STEP_M / 2, input.dataStep?.(cx, cy) ?? 0), DRAPE_MAX_EDGE_M);
     stats.kerbs++; stats.kerbM += total;
     if (!lowLeft && !lowRight) {
       // No face: the line alone (a kerb between two pavements of different heights the survey does not say).
       stats.kerbUnsided++;
-      ribbon(kerb, line, 0, KERB_LINE_M, height, KERB_LINE_Z, { step: KERB_STEP_M });
+      ribbon(kerb, line, 0, KERB_LINE_M, height, KERB_LINE_Z, { step: Infinity });
       continue;
     }
     const facing: 1 | -1 = lowLeft ? 1 : -1, into = lowLeft ? -1 : 1; // `into`: toward the upper side (way-left is +)
-    edgeWall(kerb, line, 0, height, KERB_TOP, KERB_FACE_BOTTOM, facing, { step: KERB_STEP_M });
-    ribbon(kerb, line, into * KERB_LINE_M / 2, KERB_LINE_M, height, KERB_LINE_Z, { step: KERB_STEP_M });
-    if (input.canalSide && input.lod === 0) {
+    edgeWall(kerb, line, 0, height, KERB_TOP, KERB_FACE_BOTTOM, facing, { step: Infinity });
+    ribbon(kerb, line, into * KERB_LINE_M / 2, KERB_LINE_M, height, KERB_LINE_Z, { step: Infinity });
+    // Posts along the pavement's kerb, not round the planted berms, islands and squares (roads lane R1 doubled the
+    // kerbs of -1_-1 with those; the bollards stay at main's count, 25k against 24k triangles).
+    const upper = lowLeft ? right : left;
+    if (input.canalSide && input.lod === 0 && !(upper && ANCILLARY_CLASSES.includes(upper))) {
       const before = get('bollard').positions.length;
       traceMark(get('bollard'), 'bgtKerb');
       bollards(get('bollard'), line, into * 0.3, height, KERB_TOP, input.canalSide);
@@ -504,12 +526,12 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   return { layers, stats, skipped };
 }
 
-/** A kerb run as metres (roadCells decodeRoadLine), simplified to KERB_SIMPLIFY_M and densified to KERB_STEP_M so the face follows the relief. */
+/** A kerb run as metres (roadCells decodeRoadLine), simplified to KERB_SIMPLIFY_M (densifyOnRelief adds the stations). */
 function decodeKerb(e: readonly number[]): Vec2[] {
   const out: Vec2[] = [];
   let x = 0, y = 0;
   for (let i = 0; i + 1 < e.length; i += 2) { x += e[i]; y += e[i + 1]; out.push([x / 10, y / 10]); }
-  return out.length >= 2 ? densify(simplifyLine(out, KERB_SIMPLIFY_M), KERB_STEP_M) : out;
+  return out.length >= 2 ? simplifyLine(out, KERB_SIMPLIFY_M) : out;
 }
 
 // ------------------------------------------------------------------ extractor helpers (also the fixture and tests)

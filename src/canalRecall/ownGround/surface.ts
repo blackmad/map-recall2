@@ -76,6 +76,12 @@ export class GroundSurface {
 
   constructor(readonly field: GroundField, readonly localToRd: LocalToRd, readonly datumNAP: number) {}
 
+  /** The relief's measured sample spacing under a scene point, metres (2 m in the measured centre, 4 m on the coarse ring). */
+  dataStepAt(x: number, y: number): number {
+    const [rx, ry] = applyLocalToRd(this.localToRd, x, y);
+    return this.field.dataStepRd(rx, ry);
+  }
+
   /** Relief only (no decks), scene z. */
   ground = (x: number, y: number): number => {
     const [rx, ry] = applyLocalToRd(this.localToRd, x, y);

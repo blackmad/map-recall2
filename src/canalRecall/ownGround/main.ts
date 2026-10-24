@@ -258,7 +258,7 @@ async function loadSurface(): Promise<GroundSurface> {
     bytes += raw.byteLength;
     const h = readGroundTile(index, entry, raw);
     if (opts.exag !== 1) for (let i = 0; i < h.length; i++) h[i] = index.sceneDatumNAP + (h[i] - index.sceneDatumNAP) * opts.exag;
-    field.addTile(tx, ty, h);
+    field.addTile(tx, ty, h, entry[3] ?? index.stepM);
   }));
   const surface = new GroundSurface(field, localToRd, index.sceneDatumNAP);
   if (!opts.relief) surface.ground = () => 0;

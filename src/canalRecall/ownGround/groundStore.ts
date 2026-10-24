@@ -237,8 +237,9 @@ export class GroundStore {
    */
   private synthesiseTile(k: string): void {
     const [tx, ty] = k.split('_').map(Number);
-    // Extract tiles only (never another extended tile): deterministic.
-    this.field.addTile(tx, ty, extendTile(this.field, tx, ty, (a, b) => this.hasReliefTile(tileKey(a, b))));
+    // Extract tiles only (never another extended tile): deterministic. Smooth fill, so no finer than the coarsest data.
+    const coarsest = this.relief.tiles.reduce((m, t) => Math.max(m, t[3] ?? this.relief.stepM), this.relief.stepM);
+    this.field.addTile(tx, ty, extendTile(this.field, tx, ty, (a, b) => this.hasReliefTile(tileKey(a, b))), coarsest);
     this.reliefTiles.add(k);
     this.synthesised.add(k);
   }
@@ -274,7 +275,7 @@ export class GroundStore {
         p = load.then(({ heights, bytes }) => {
           this.loadedBytes.relief += bytes;
           const [tx, ty] = k.split('_').map(Number);
-          this.field.addTile(tx, ty, heights);
+          this.field.addTile(tx, ty, heights, entry[3] ?? this.relief.stepM);
           this.reliefTiles.add(k);
         }).finally(() => this.reliefLoading.delete(k));
         this.reliefLoading.set(k, p);

@@ -68,6 +68,30 @@ export function densify(pts: readonly Vec2[], step: number): Vec2[] {
 }
 
 /**
+ * Resample a polyline where the relief bends: a segment is halved while it is longer than `maxStep`, or at least
+ * twice `minStep` with the surface at its midpoint or quarter points more than `tol` off the chord (keeps original
+ * vertices). A graded street's kerb keeps its own corners; a hump or a quay ramp gets the stations.
+ */
+export function densifyOnRelief(pts: readonly Vec2[], height: HeightFn, tol: number, minStep: number, maxStep: number): Vec2[] {
+  const out: Vec2[] = [];
+  const off = (a: Vec2, za: number, b: Vec2, zb: number, t: number) => Math.abs(height(a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t) - (za + (zb - za) * t)) > tol;
+  const run = (a: Vec2, za: number, b: Vec2, zb: number): void => {
+    const len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    if (len > maxStep || (len >= 2 * minStep && (off(a, za, b, zb, 0.5) || off(a, za, b, zb, 0.25) || off(a, za, b, zb, 0.75)))) {
+      const m: Vec2 = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], zm = height(m[0], m[1]);
+      run(a, za, m, zm); out.push(m); run(m, zm, b, zb);
+    }
+  };
+  let za = pts.length ? height(pts[0][0], pts[0][1]) : 0;
+  for (let i = 0; i + 1 < pts.length; i++) {
+    const zb = height(pts[i + 1][0], pts[i + 1][1]);
+    out.push(pts[i]); run(pts[i], za, pts[i + 1], zb); za = zb;
+  }
+  if (pts.length) out.push(pts[pts.length - 1]);
+  return out;
+}
+
+/**
  * Left normals per vertex with mitred joins (limited, so a hairpin does not
  * shoot a spike). Returns [nx, ny, miterScale] per vertex.
  */

@@ -6,8 +6,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { encodeLine } from './parks';
-import { emptyMesh, type MeshArrays } from './drape';
-import { buildRoadSurfaces, coveredShare, kerbEdges, RoadIndex, ROAD_LIFT, SIDEWALK_TOP, simplifyLine, simplifyRing } from './roadSurfaces';
+import { densifyOnRelief, emptyMesh, type MeshArrays } from './drape';
+import { buildRoadSurfaces, coveredShare, drapeAdaptive, kerbEdges, RoadIndex, ROAD_LIFT, SIDEWALK_TOP, simplifyLine, simplifyRing } from './roadSurfaces';
 import { buildStreets, carriageGrid, crossCuts, junctionGeometry, prepareWays, LIFT, PAINT_ON_SURVEY, ROAD_MARK_LIFT, type LocalWay } from './streets';
 import { stations } from './drape';
 import type { RoadCell, RoadClass, RoadMesh } from './roadCells';
@@ -188,4 +188,33 @@ test('parkingIslands: a small footway between two parking bays draws as street; 
   assert.equal(index.classAt(5.75, 1), 'parking');
   assert.equal(index.meshAt(5.75, 1), 'klinker');
   assert.equal(index.classAt(30, 3.5), 'foot');
+});
+
+test('roads R1 triangles: kerb stations follow the relief, coarse relief caps the drape, posts stay off the planted berms', () => {
+  // A graded street's 46 m kerb is its own two corners split at DRAPE_MAX_EDGE_M; a 0.3 m hump gets stations no closer than minStep.
+  const run: Vec2[] = [[4, 4], [50, 4]];
+  assert.equal(densifyOnRelief(run, flat, 0.02, 2, 24).length, 3);
+  const hump = (x: number) => 0.3 * Math.max(0, 1 - Math.abs(x - 27) / 6);
+  const humped = densifyOnRelief(run, (x) => hump(x), 0.02, 2, 24);
+  assert.ok(humped.length > 4, `hump stations ${humped.length}`);
+  for (let i = 1; i < humped.length; i++) assert.ok(humped[i][0] - humped[i - 1][0] >= 2 - 1e-9 || humped[i][0] === 50, 'no station closer than minStep');
+  // A 40 × 0.5 m sliver on a 4 m-period ripple: the area floor stops the splits a data step cannot resolve.
+  const coords = [0, 0, 40, 0, 40, 0.5, 0, 0.5], tris = [0, 1, 2, 0, 2, 3];
+  const ripple = (x: number, y: number) => 0.2 * Math.sin(x * Math.PI / 2) + 0 * y;
+  const fine = emptyMesh(), capped = emptyMesh();
+  drapeAdaptive(fine, coords, tris, ripple, 0, 24, 0.05, 4);
+  drapeAdaptive(capped, coords, tris, ripple, 0, 24, 0.05, 4, 0.05, 8);
+  assert.ok(capped.indices.length < fine.indices.length, `capped ${capped.indices.length / 3} < ${fine.indices.length / 3}`);
+  const byLength = emptyMesh(); drapeAdaptive(byLength, coords, tris, flat, 0, 24, 0.05, 4);
+  assert.equal(capped.indices.length, byLength.indices.length, 'split by maxEdge alone');
+  // Posts along the pavement's kerb, not along the berm's: a street between a footway (y > 4) and a berm (y < -4).
+  const polys: Poly[] = [
+    { c: 'carriage', k: 'asphalt', ring: [[0, -4], [40, -4], [40, 4], [0, 4]] },
+    { c: 'foot', k: 'paving', ring: [[0, 4], [40, 4], [40, 8], [0, 8]] },
+    { c: 'berm', k: 'grass', ring: [[0, -8], [40, -8], [40, -4], [0, -4]] },
+  ];
+  const cell = cellOf(polys), built = buildRoadSurfaces(cell, new RoadIndex([cell]), { ...input, canalSide: () => true });
+  assert.ok(built.stats.kerbs === 2 && built.stats.bollards > 0, `kerbs ${built.stats.kerbs}, bollards ${built.stats.bollards}`);
+  const bp = built.layers.bollard!.positions;
+  for (let i = 1; i < bp.length; i += 3) assert.ok(bp[i] > 0, `post at y ${bp[i]} by the berm`);
 });

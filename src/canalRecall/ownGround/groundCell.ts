@@ -280,7 +280,7 @@ export function buildCell(input: CellInput): BuiltCell {
   let roadCover: SurfaceRaster | null = null, roadSkipped: ReadonlySet<number> = new Set();
   const canalSide = lod === 0 && mask ? (x: number, y: number) => { const d = maskDistance(mask, x, y); return d > 0 && d < MASK_RANGE_M - 0.2; } : undefined;
   if (roadIndex && input.roads) {
-    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, canalSide, ...(input.drape ?? {}) });
+    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, canalSide, dataStep: (x, y) => surface.dataStepAt(x, y), ...(input.drape ?? {}) });
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!, 'bgtCarriage');
     roadSkipped = built.skipped;
     roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, parkingIslands, crossingStrips, greyFiets, markings: null };
