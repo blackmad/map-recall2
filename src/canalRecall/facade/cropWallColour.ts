@@ -40,6 +40,18 @@ export function isOliveShade(r: number, g: number, b: number): boolean {
 }
 
 /**
+ * A crop whose measured band is mostly leaves shows the tree, not the wall: what the leaf mask lets through is the wall
+ * in the canopy's shade (GitHub #41: Generic church NL.IMBAG.Pand.0363100012098124's only crop read very dark khaki
+ * #393730 beside a grey and brick photo). More than this share of the band's pixels masked as leaves (look/brickTone.ts
+ * pixelKind 'leaf' or isOliveShade; sky and burnt-out pixels do not count) and the crop is dropped; a pand with no
+ * other crop falls back to its period palette.
+ */
+export const MAX_LEAF_PIXEL_SHARE = 0.6;
+export function leafDominated(leafPixels: number, bandPixels: number): boolean {
+  return bandPixels > 0 && leafPixels / bandPixels > MAX_LEAF_PIXEL_SHARE;
+}
+
+/**
  * The masonry family a measured (normalised) wall colour can belong to, or null when it fits none: brick (red to
  * brown, hue 15-85), buff/yellow brick (hue 55-92, lighter), render and concrete (near-neutral, or pale cream).
  * Ranges from the reviewed schools' photos as the panoramas render them (red brick h 40-75, dark brown brick C* 6,

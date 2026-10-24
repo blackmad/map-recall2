@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { HIP_MAX_PITCH_DEG, KITS, hipAround, kitGeometry, kitIds, simplifyRing, type PartInput } from './landmarkKits.js';
 import { PANORAMA_BRICK, PUBLIC_WALL, SCHOOL_RIBBON_FRAME, panoramaBrickHue, planPublic, publicKit, schoolHipRoof, schoolRoof, schoolWall, schoolWallDisplay, SCHOOL_HIP_MIN_EAVES_M, type SchoolFacts } from './publicBuildings.js';
-import { FRAME_LIGHT, WINDOW_ROWS, glazingProfile, isOliveShade, lch, masonryFamily } from './facade/cropWallColour.js';
+import { FRAME_LIGHT, MAX_LEAF_PIXEL_SHARE, WINDOW_ROWS, glazingProfile, isOliveShade, lch, leafDominated, masonryFamily } from './facade/cropWallColour.js';
 import { roofPitch, type RoofPlane } from './facade/roofPitch.js';
 import { measuredWallDisplay } from './kitFacts.js';
 import { PUBLIC_BUILDINGS } from './publicBuildingData.js';
@@ -16,7 +16,7 @@ import { PUBLIC_FACTS, SCHOOL_PERIOD_WALLS } from './publicBuildingFacts.js';
 import { PERIOD_WALLS, cityWallTint, hexToRgb } from './look/palette.js';
 import fs from 'node:fs';
 import { NOT_PUBLIC_FORM, NOT_WORSHIP_FORM, PUBLIC_RETYPE } from './kitTypeOverrides.js';
-import { pickKitPand } from './kitPands.js';
+import { measuredPandFor, pickKitPand, planesOverPart } from './kitPands.js';
 
 type V2 = [number, number];
 const rect = (w: number, d: number, x = 0, y = 0): V2[] => [[x, y], [x + w, y], [x + w, y + d], [x, y + d], [x, y]];
@@ -278,4 +278,38 @@ test('round 3: kit-pands.json joins the named OSM-only landmark kits to their ca
   assert.equal(ids.w1488019247.pand, '0363100012079990');
   assert.equal(ids.w1362284226.pand, '0479100000000161');
   assert.equal(ids.w276686506.pand, null, 'Avontuur is a church ship: no pand');
+});
+
+// Round 4 (GitHub #41): an OSM-keyed kit reads the measurements of the pand kit-pands.json joins it to.
+test('round 4: an OSM-keyed kit is measured on its joined pand; a pand id on itself', () => {
+  const joins = { w1: { pand: '0363100012079990' }, w2: { pand: null } };
+  assert.equal(measuredPandFor('w1', joins), 'NL.IMBAG.Pand.0363100012079990');
+  assert.equal(measuredPandFor('w2', joins), null, 'joined to no pand');
+  assert.equal(measuredPandFor('r9', joins), null, 'not in the join');
+  assert.equal(measuredPandFor('NL.IMBAG.Pand.0363100012098124', joins), 'NL.IMBAG.Pand.0363100012098124', 'a pand id is its own');
+  const ids = JSON.parse(fs.readFileSync(new URL('../../public/data/extracts/amsterdam/kit-pands.json', import.meta.url), 'utf8')).ids;
+  const row = (id: string) => PUBLIC_FACTS.find(e => e[0] === id)!;
+  // Bijlmerbios (ten cinema parts on pand 0363100012079990): wall, ribbon glazing and roof form now measured.
+  assert.equal(measuredPandFor('w1488019247', ids), 'NL.IMBAG.Pand.0363100012079990');
+  assert.ok(row('w1488019247')[5], 'measured wall colour'); assert.equal(row('w1488019247')[7], 2, 'ribbon windows'); assert.ok(row('w1488019247')[9], 'roof form');
+  // A cinema the BAG tiles draw only as its OSM part takes the LoD2.2 roof form of the pand under it.
+  assert.ok(row('r3699016')[9], 'r3699016 roof form from pand 0363100012237325');
+});
+
+test('round 4: an OSM part takes the roof form of its pand\'s planes over the part only; a tower takes no crop windows', () => {
+  const plane = (x: number, y: number, slopeDeg: number) => ({ centroid: [x, y] as const, planM2: 10, slopeDeg, azimuthDeg: 0, zMin: 5, zMax: 9 });
+  const nave = [plane(5, 5, 40), plane(15, 5, 40)], tower = plane(25, 5, 0);
+  const part = rect(10, 10, 20, 0);
+  assert.deepEqual(planesOverPart([...nave, tower], part), [tower], 'the tower part sees only the plane over it');
+  assert.deepEqual(planesOverPart(nave, part), []);
+  // Vredeskerk: the 49 m tower part (2% of its pand) keeps the pand's wall colour but not the nave's window rows.
+  const vrede = PUBLIC_FACTS.find(e => e[0] === 'w995323510')!;
+  assert.ok(vrede[5], 'wall colour from the pand'); assert.equal(vrede[7], 0, 'no window rows from the nave crops'); assert.equal(vrede[9], 0, 'no roof form: it rises over its planes');
+});
+
+test('round 4: a crop that is mostly leaves gives no wall colour (Generic church 0363100012098124 was very dark khaki)', () => {
+  assert.ok(leafDominated(61, 100), `over ${MAX_LEAF_PIXEL_SHARE} leaves`);
+  assert.equal(leafDominated(40, 100), false);
+  assert.equal(leafDominated(0, 0), false);
+  assert.equal(PUBLIC_FACTS.find(e => e[0] === 'NL.IMBAG.Pand.0363100012098124')![5], null, 'falls back to the period palette');
 });

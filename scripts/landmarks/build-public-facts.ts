@@ -24,6 +24,11 @@
  * (tmp/public/kit-roof-pitch.json, scripts/landmarks/kit-roof-pitch.ts: run it first) and its measured pitched-roof
  * tint from the roof-facts sidecar (PDOK orthophoto). Schools alone feed the period fallback palettes.
  *
+ * Round 4 (GitHub #41): an OSM-keyed kit (w..., r...) reads the pand kit-pands.json joins it to (kitPands.ts
+ * measuredPandFor): its crops, orthophoto roof tint (when the OSM part has none) and BAG year (when the OSM part has
+ * none); the roof form from the pand's LoD2.2 planes over the part alone (kit-roof-pitch.ts). Facts stay keyed by the
+ * kit id.
+ *
  * Writes the staging report tmp/public/public-facts.json (per pand: every crop's reading and why it was dropped) and,
  * with --publish, src/canalRecall/publicBuildingFacts.ts.
  */
@@ -38,11 +43,12 @@ import { publicKit, schoolFacts } from '../../src/canalRecall/publicBuildings.ts
 import type { RoofPitch } from '../../src/canalRecall/facade/roofPitch.ts';
 import { PUBLIC_BUILDINGS } from '../../src/canalRecall/publicBuildingData.ts';
 import { combineBrickTones, pixelKind } from '../../src/canalRecall/look/brickTone.ts';
-import { cropNormaliser, glazingProfile, isOliveShade, masonryFamily, type GlazingProfile } from '../../src/canalRecall/facade/cropWallColour.ts';
+import { cropNormaliser, glazingProfile, isOliveShade, leafDominated, masonryFamily, type GlazingProfile } from '../../src/canalRecall/facade/cropWallColour.ts';
 import { dominantWallColour } from '../../src/canalRecall/facade/dominantWallColour.ts';
 import { periodForYear, rgbToHex, type Period } from '../../src/canalRecall/look/palette.ts';
 import { shortBuildingId } from '../../src/canalRecall/buildingFacts.ts';
 import { hipAround } from '../../src/canalRecall/landmarkKits.ts';
+import { measuredPandFor } from '../../src/canalRecall/kitPands.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
@@ -64,6 +70,9 @@ const schoolSet = new Set(schools);
 // Round 3: cinemas and worship buildings are measured the same way; schools stay first so their rows read as before.
 const pands = [...schools, ...PUBLIC_BUILDINGS.filter(e => e[1] === 'c').map(e => e[0]), ...WORSHIP_BUILDINGS.map(e => e[0])].filter((id, i, a) => a.indexOf(id) === i);
 const want = new Set(pands);
+// The pand each kit id is measured on: itself, or the pand kit-pands.json joins an OSM part to (null: none).
+const kitPands = JSON.parse(fs.readFileSync(path.join(ROOT, 'public/data/extracts/amsterdam/kit-pands.json'), 'utf8'));
+const pandOf = new Map(pands.map(id => [id, measuredPandFor(id, kitPands.ids)]));
 
 // --- BAG tile facts ----------------------------------------------------------------------------------------------
 type TileFacts = { year: number | null; roof: number; eaves: number | null; ridge: number | null };
@@ -92,7 +101,7 @@ for (const x of fs.readdirSync(factRoot)) for (const file of fs.readdirSync(path
   const bytes = fs.readFileSync(path.join(factRoot, x, file));
   const rows = JSON.parse((bytes[0] === 0x1f ? zlib.gunzipSync(bytes) : bytes).toString()).buildings as Record<string, number[]>;
   for (const id of pands) {
-    const row = rows[shortBuildingId(id)], known = facts.get(id);
+    const joined = pandOf.get(id), row = rows[shortBuildingId(id)] ?? (joined && joined !== id ? rows[shortBuildingId(joined)] : undefined), known = facts.get(id);
     if (!row || row[0] < 1200 || row[0] > 2030 || (known && known.year !== null)) continue;
     facts.set(id, { ...(known ?? { roof: 0, eaves: null, ridge: null }), year: row[0] });
   }
@@ -101,10 +110,11 @@ for (const x of fs.readdirSync(factRoot)) for (const file of fs.readdirSync(path
 // --- Wall colour from the crops ----------------------------------------------------------------------------------
 type CropReading = {
   file: string; tag: string; foliage: number | null; wallShare?: number; bandShare?: number; brick?: string; family?: string | null;
-  norm?: { ref: number[] | null; gain: number; wb: number[] }; glazing?: GlazingProfile; used: boolean; why?: string;
+  norm?: { ref: number[] | null; gain: number; wb: number[] }; leafShare?: number; glazing?: GlazingProfile; used: boolean; why?: string;
 };
 type PandReading = { hex: string | null; crops: CropReading[]; glazing: 0 | 1 | 2 | 3; topBandHex: string | null; frameHex: string | null };
-async function measure(pand: string): Promise<PandReading> {
+async function measure(pand: string | null): Promise<PandReading> {
+  if (!pand) return { hex: null, crops: [], glazing: 0, topBandHex: null, frameHex: null };
   const digits = pand.replace('NL.IMBAG.Pand.', ''), crops: CropReading[] = [], tones: number[][] = [];
   for (const root of wallsRoots) {
     const json = path.join(root, digits, 'walls.json');
@@ -121,13 +131,19 @@ async function measure(pand: string): Promise<PandReading> {
       // 1. Exposure and white balance from the crop's light trim (measureFacade's rule), applied before measuring.
       const norm = cropNormaliser(data, info.width, info.height, ch, ppm, [y0, y1]);
       reading.norm = { ref: norm.ref ? norm.ref.map(Math.round) : null, gain: +norm.gain.toFixed(3), wb: norm.wb.map(v => +v.toFixed(3)) };
+      let leaf = 0;
       const width = info.width, height = y1 - y0, band = new Uint8Array(width * height * 3), mask = new Uint8Array(width * height);
       for (let i = 0; i < mask.length; i++) {
         const o = (y0 * width + i) * ch, r = data[o], g = data[o + 1], b = data[o + 2], c = norm.apply([r, g, b]);
         band[i * 3] = c[0]; band[i * 3 + 1] = c[1]; band[i * 3 + 2] = c[2];
         // 2. pixelKind drops sky, leaves and burnt-out pixels; isOliveShade the shaded and autumn leaves it lets through.
-        mask[i] = pixelKind(r, g, b) === 'candidate' && !isOliveShade(c[0], c[1], c[2]) ? 1 : 0;
+        const kind = pixelKind(r, g, b);
+        mask[i] = kind === 'candidate' && !isOliveShade(c[0], c[1], c[2]) ? 1 : 0;
+        if (kind === 'leaf' || (kind === 'candidate' && !mask[i])) leaf++;
       }
+      // Mostly leaves: the wall left is the wall in the canopy's shade (#41).
+      reading.leafShare = Math.round(leaf / mask.length * 1000) / 1000;
+      if (leafDominated(leaf, mask.length)) { reading.why = `mostly leaves ${reading.leafShare}`; continue; }
       const wall = dominantWallColour({ data: band, width, height, channels: 3 }, mask);
       if (!wall) { reading.why = 'no wall pixels'; continue; }
       reading.brick = wall.hex;
@@ -175,7 +191,7 @@ async function measure(pand: string): Promise<PandReading> {
 // --- LoD2.2 roof form and the orthophoto roof tint --------------------------------------------------------------
 const PITCH_FILE = path.join(ROOT, 'tmp/public/kit-roof-pitch.json');
 if (!fs.existsSync(PITCH_FILE)) throw Error('run scripts/landmarks/kit-roof-pitch.ts first');
-const pitchOf = JSON.parse(fs.readFileSync(PITCH_FILE, 'utf8')).pands as Record<string, RoofPitch | { missing: string }>;
+const pitchOf = JSON.parse(fs.readFileSync(PITCH_FILE, 'utf8')).pands as Record<string, (RoofPitch | { missing: string }) & { notCropped?: true }>;
 const FORM_CODE = { flat: 1, mixed: 2, pitched: 3 } as const;
 const pitchCode = (p: RoofPitch | { missing: string } | undefined): 0 | 1 | 2 | 3 | 4 => (!p || 'missing' in p ? 0 : p.form === 'pitched' && p.mono ? 4 : FORM_CODE[p.form]);
 const roofFacts = new Map<string, RoofFact>();
@@ -211,14 +227,19 @@ function roofFits(id: string, entry: Entry): { fits: boolean; why?: string } {
   return hipAround(ring, hall.eavesM, hall.riseM) ? { fits: true } : { fits: false, why: 'hip ring folds' };
 }
 const entryFor = (id: string, f: TileFacts | null, r: PandReading, fits: 0 | 1): Entry => {
-  const p = pitchOf[id], pr = p && !('missing' in p) ? p : null;
-  return [id, f?.year ?? 0, (f?.roof ?? 0) as 0 | 1 | 2 | 3, dm(f?.eaves), dm(f?.ridge), r.hex, fits, r.glazing, r.topBandHex, pitchCode(p), dm(pr?.eavesM), dm(pr?.ridgeM), roofTint(id), r.frameHex];
+  // kit-roof-pitch.ts keys an OSM part by its own id (its pand's planes over the part's outline).
+  const pand = pandOf.get(id) ?? null, p = pitchOf[id], pr = p && !('missing' in p) ? p : null;
+  return [id, f?.year ?? 0, (f?.roof ?? 0) as 0 | 1 | 2 | 3, dm(f?.eaves), dm(f?.ridge), r.hex, fits, r.glazing, r.topBandHex, pitchCode(p), dm(pr?.eavesM), dm(pr?.ridgeM), roofTint(id) ?? (pand && pand !== id ? roofTint(pand) : null), r.frameHex];
 };
 
-const rows: ({ id: string; facts: TileFacts | null; roofFits: boolean; roofWhy?: string; entry: Entry } & PandReading)[] = [];
+const rows: ({ id: string; pand: string | null; facts: TileFacts | null; roofFits: boolean; roofWhy?: string; entry: Entry } & PandReading)[] = [];
 for (const id of pands) {
-  const reading = await measure(id), f = facts.get(id) ?? null, fit = roofFits(id, entryFor(id, f, reading, 1));
-  rows.push({ id, facts: f, roofFits: fit.fits, roofWhy: fit.why, entry: entryFor(id, f, reading, fit.fits ? 1 : 0), ...reading });
+  const measured = await measure(pandOf.get(id) ?? null), p = pitchOf[id];
+  // An OSM part the pand's crops do not show (a church tower on the nave's pand, kit-roof-pitch.ts notCropped) takes
+  // the pand's wall colour but not the window rows and frames read off the pand's main walls.
+  const reading = p?.notCropped ? { ...measured, glazing: 0 as const, topBandHex: null, frameHex: null } : measured;
+  const f = facts.get(id) ?? null, fit = roofFits(id, entryFor(id, f, reading, 1));
+  rows.push({ id, pand: pandOf.get(id) ?? null, facts: f, roofFits: fit.fits, roofWhy: fit.why, entry: entryFor(id, f, reading, fit.fits ? 1 : 0), ...reading });
 }
 fs.mkdirSync(path.dirname(STAGING), { recursive: true });
 fs.writeFileSync(STAGING, JSON.stringify({ generated: new Date().toISOString(), walls: wallsRoots.map(p => path.relative(ROOT, p) || p), rows }, null, 1) + '\n');
@@ -228,6 +249,8 @@ const slanted = schoolRows.filter(r => r.facts?.roof === 3 && (r.facts.year ?? 9
 console.log(`hipped roofs that do not fit their footprint (kept flat): ${rows.filter(r => !r.roofFits).map(r => r.id.slice(-10)).join(' ') || 'none'}`);
 console.log(`schools ${schoolRows.length}: BAG facts ${withFacts}, measured wall colour ${measured} (crops ${schoolRows.reduce((n, r) => n + r.crops.length, 0)}, used ${schoolRows.reduce((n, r) => n + r.crops.filter(c => c.used).length, 0)}), pre-1940 slanted roofs ${slanted}`);
 console.log(`cinema and worship ${otherRows.length}: measured wall colour ${otherRows.filter(r => r.hex).length}, glazing ribbon ${otherRows.filter(r => r.glazing === 2).length} punched ${otherRows.filter(r => r.glazing === 1).length} blank ${otherRows.filter(r => r.glazing === 3).length}; frames ${rows.filter(r => r.frameHex).length} (schools ${schoolRows.filter(r => r.frameHex).length}); roof form pitched ${rows.filter(r => r.entry[9] >= 3).length} flat ${rows.filter(r => r.entry[9] === 1).length} unknown ${rows.filter(r => !r.entry[9]).length}; roof tint ${rows.filter(r => r.entry[12]).length}`);
+const osm = rows.filter(r => !r.id.startsWith('NL.IMBAG.Pand.'));
+console.log(`OSM-keyed kits ${osm.length}: joined to a pand ${osm.filter(r => r.pand).length}; measured wall ${osm.filter(r => r.hex).length}, glazing ${osm.filter(r => r.glazing).length}, frames ${osm.filter(r => r.frameHex).length}, roof form ${osm.filter(r => r.entry[9]).length}, roof tint ${osm.filter(r => r.entry[12]).length}`);
 console.log(`staging: ${path.relative(ROOT, STAGING)}`);
 
 // --- The fallback palette for schools with no usable crop ---------------------------------------------------------
@@ -240,7 +263,9 @@ const PALETTE_PICKS = 7, PALETTE_MIN = 8;
 const lightness = (hex: string) => { const n = parseInt(hex.slice(1), 16); return 0.2126 * (n >> 16) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255); };
 const palettes: Partial<Record<Period, string[]>> = {};
 for (const period of ['canal', 'c19', 'school', 'modern'] as Period[]) {
-  const hexes = schoolRows.filter(r => r.hex && r.facts?.year && periodForYear(r.facts.year) === period).map(r => r.hex!).sort((p, q) => lightness(p) - lightness(q));
+  // Pand-keyed schools only: the OSM-keyed schools measured since round 4 (#41) would shift every unmeasured school's
+  // fallback colour without new evidence for those schools.
+  const hexes = schoolRows.filter(r => r.hex && r.id.startsWith('NL.IMBAG.Pand.') && r.facts?.year && periodForYear(r.facts.year) === period).map(r => r.hex!).sort((p, q) => lightness(p) - lightness(q));
   if (hexes.length >= PALETTE_MIN) palettes[period] = Array.from({ length: PALETTE_PICKS }, (_, k) => hexes[Math.floor(((k + 0.5) / PALETTE_PICKS) * hexes.length)]);
 }
 console.log(`fallback palettes: ${Object.entries(palettes).map(([k, v]) => `${k} ${v!.join(' ')}`).join('; ')}`);
