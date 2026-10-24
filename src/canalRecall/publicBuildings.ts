@@ -27,6 +27,7 @@
 import type { Kit, KitWindowRow, KitWindows } from './landmarkKits.js';
 import { plainBodyTrim } from './worshipBuildings.js';
 import { PUBLIC_BUILDINGS, type PublicEntry } from './publicBuildingData.js';
+import { NOT_PUBLIC_FORM, PUBLIC_RETYPE } from './kitTypeOverrides.js';
 import { PUBLIC_FACTS, SCHOOL_PERIOD_WALLS, type PublicFactsEntry } from './publicBuildingFacts.js';
 import { labToRgb, rgbToLab } from './look/brickTone.js';
 import { PERIOD_WALLS, ROOF_TONES, cityStuccoTint, cityWallTint, hexToRgb, periodForYear, rgbToHex } from './look/palette.js';
@@ -214,4 +215,6 @@ export function publicKit([id, kind, mode, eavesM, riseM, era]: PublicEntry, fac
   };
 }
 
-export const GENERIC_PUBLIC_KITS: Kit[] = PUBLIC_BUILDINGS.map(e => publicKit(e));
+// Wrong-form footprints (kitTypeOverrides.ts) are dropped or drawn as the kind they look like.
+export const GENERIC_PUBLIC_KITS: Kit[] = PUBLIC_BUILDINGS.filter(e => !NOT_PUBLIC_FORM[e[0]])
+  .map(e => { const r = PUBLIC_RETYPE[e[0]]; return r ? publicKit(r.entry, r.facts) : publicKit(e); });

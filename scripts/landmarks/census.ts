@@ -16,7 +16,7 @@
  */
 import fs from 'node:fs';
 import {ALL_MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels.ts';
-import {KITS, HAND_KITS} from '../../src/canalRecall/landmarkKits.ts';
+import {KITS, HAND_KITS, kitIds} from '../../src/canalRecall/landmarkKits.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const read = (f: string) => JSON.parse(fs.readFileSync(f, 'utf8'));
@@ -74,8 +74,15 @@ export function census(): {headline: number; strict: number; rows: CensusRow[]; 
   }
   // 3. landmark kits: named landmarks (churches, towers, public buildings) drawn by the parametric kit in the worker
   const hand = new Set(HAND_KITS.map(k => k.name));
+  // A kit whose every part a live bespoke model suppresses is only the stand-in until that model is resident (kit review
+  // round 3, GitHub #37: Royal Palace / palace-on-the-dam, Waag, Centraal and 104 generic worship/public kits on Oude Kerk,
+  // Nieuwe Kerk, Posthoornkerk, El Tawheed, Chassekerk, English Reformed Church... were sheeted as if they were the model).
+  const bespokeSuppressed = new Set<string>();
+  for (const spec of ALL_MANUAL_LANDMARKS as readonly any[]) if (spec.status !== 'held') for (const id of spec.suppressOsmIds ?? []) bespokeSuppressed.add(String(id));
   for (const k of KITS) {
     if (bespokeNames.has(norm(k.name))) continue; // the bespoke model wins; the kit adds no unit
+    const ids = kitIds(k);
+    if (ids.length && ids.every(id => bespokeSuppressed.has(id))) continue;
     const sr = reviews.get(`kit:${k.name}`);
     const review: ReviewKind = sr ? 'strip-review' : 'none';
     rows.push({key: `kit:${k.name}`, name: k.name, tier: 'landmarkKit', pands: [], namedPoi: true, rideVisible: false, held: false, review, reviewDate: sr?.date, counts: review !== 'none', countsStrict: review !== 'none', ...(hand.has(k.name) ? {} : {})});

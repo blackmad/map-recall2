@@ -12,6 +12,11 @@
  * at 1600 px: `<out>-<n>.png` and `<out>-<n>.json` per page. A kit with no pand gets "no photo"; a kit whose parts do not
  * resolve through the BAG index gets "pand unresolved" and still renders from its tile location.
  *
+ * Kits on OSM-only parts (GitHub #37: 114 generic worship/public kits and the hand kits of Centraal, Royal Palace, Waag...)
+ * take their location from the parts' outlines and their pand from the 3DBAG join in
+ * public/data/extracts/amsterdam/kit-pands.json (scripts/landmarks/build-kit-pands.ts): the pand most of the parts stand
+ * on. `--only` names kits outside the census too (kits a bespoke model stands in for).
+ *
  * Browser: one headless Chromium for the run (serialise with `bash /tmp/canal-pw.sh node --import tsx ...`).
  */
 import { chromium } from '@playwright/test';
@@ -47,7 +52,7 @@ const tileCentre = (x: number, y: number): [number, number] => {
 
 interface Row {
   n: number; kit: string; pand: string | null; centre: [number, number] | null; buurt: string | null; priority: number | null;
-  parts: number; tris: number; top: number; contextBuildings: number; photos: string[]; noPhoto: boolean; renderError?: string; wallsError?: string;
+  parts: number; tris: number; top: number; contextBuildings: number; contextCulled: number; photos: string[]; noPhoto: boolean; renderError?: string; wallsError?: string; pandVia?: string;
 }
 
 /** Kit priority: the highest buurt priority among the buurten whose content lists the kit. */
@@ -76,12 +81,12 @@ function bagIndex(): BagPandIndex {
 }
 
 /** One all-walls run per pand, cached: a walls.json (or an error.txt when the run failed, so it is not retried). */
-function wallsFor(pand: string, wallsErrors: string[]): {photos: {file: string; tag: string; date?: string}[]} {
+function wallsFor(pand: string, wallsErrors: string[], kitPand = false): {photos: {file: string; tag: string; date?: string}[]} {
   const dir = path.join(wallsRoot, digits(pand));
   const json = path.join(dir, 'walls.json');
   if (!fs.existsSync(json) && !fs.existsSync(path.join(dir, 'error.txt')) && !noWalls) {
     try {
-      execFileSync(process.execPath, ['--import', 'tsx', path.join(ROOT, 'scripts/pand-reference/all-walls.ts'), `--pand=${pand}`, '--max=2', '--min-len=8', `--out=${wallsRoot}`],
+      execFileSync(process.execPath, ['--import', 'tsx', path.join(ROOT, 'scripts/pand-reference/all-walls.ts'), `--pand=${pand}`, ...(kitPand ? ['--kit-pand'] : []), '--max=2', '--min-len=8', `--out=${wallsRoot}`],
         {cwd: ROOT, timeout: 600_000, stdio: ['ignore', 'pipe', 'pipe']});
     } catch (e: any) {
       fs.mkdirSync(dir, {recursive: true});
@@ -106,12 +111,13 @@ async function main() {
   const t0 = Date.now();
   const names = new Set(census().rows.filter(r => r.tier === 'landmarkKit').map(r => r.name as string));
   const priorities = kitPriorities();
-  let kits = KITS.filter(k => names.has(k.name) && (!only || only.includes(k.name)));
+  let kits = KITS.filter(k => (only ? only.includes(k.name) : names.has(k.name)));
   kits.sort((a, b) => (priorities.get(b.name)?.priority ?? -1) - (priorities.get(a.name)?.priority ?? -1) || a.name.localeCompare(b.name));
   kits = kits.slice(0, limit);
   console.log(`kits: ${kits.length} (census landmarkKit rows ${names.size})`);
   const index = bagIndex();
   const kitLocations = JSON.parse(fs.readFileSync(path.join(EXTRACTS, 'kit-locations.json'), 'utf8')).ids as Record<string, string>;
+  const kitPands = JSON.parse(fs.readFileSync(path.join(EXTRACTS, 'kit-pands.json'), 'utf8')).ids as Record<string, {centre: [number, number]; areaM2: number; pand: string | null}>;
   console.log(`bag index: ${index.pands.size} pands (${((Date.now() - t0) / 1000).toFixed(0)} s)`);
 
   const bundle = await build({entryPoints: [path.join(ROOT, 'scripts/landmarks/kit-sheets-render.ts')], bundle: true, format: 'iife', write: false, logLevel: 'error', platform: 'browser'});
@@ -142,31 +148,38 @@ async function main() {
         const resolved = resolveSuppressed(index, kitIds(kit));
         const pandCentres = resolved.pands.map(p => ({p, c: index.pands.get(p)?.centroid})).filter(x => x.c) as {p: string; c: [number, number]}[];
         let centre: [number, number] | null = null;
+        const osmParts = resolved.osmOnly.map(id => kitPands[id]).filter(Boolean);
         if (pandCentres.length) centre = [pandCentres.reduce((s, x) => s + x.c[0], 0) / pandCentres.length, pandCentres.reduce((s, x) => s + x.c[1], 0) / pandCentres.length];
+        else if (osmParts.length) centre = [osmParts.reduce((s, x) => s + x.centre[0], 0) / osmParts.length, osmParts.reduce((s, x) => s + x.centre[1], 0) / osmParts.length];
         else {
           const loc = kitIds(kit).map(id => kitLocations[id]).find(Boolean);
           if (loc) { const [x, y] = loc.split('/').map(Number); centre = tileCentre(x, y); }
         }
         const c0 = centre;
+        // The pand most of the OSM-only parts stand on (ties: the first part's), when no part is a pand itself.
+        const joined = new Map<string, number>();
+        for (const x of osmParts) if (x.pand) joined.set(x.pand, (joined.get(x.pand) ?? 0) + 1);
         const pand = pandCentres.length && c0
           ? pandCentres.reduce((best, x) => Math.hypot(x.c[0] - c0[0], x.c[1] - c0[1]) < Math.hypot(best.c[0] - c0[0], best.c[1] - c0[1]) ? x : best).p
-          : null;
+          : joined.size ? `NL.IMBAG.Pand.${[...joined].reduce((b, x) => (x[1] > b[1] ? x : b))[0]}` : null;
         const row: Row = {n: start + i + 1, kit: kit.name, pand: pand ? digits(pand) : null, centre, buurt: priorities.get(kit.name)?.buurt ?? null,
-          priority: priorities.get(kit.name)?.priority ?? null, parts: resolved.pands.length + resolved.osmOnly.length, tris: 0, top: 0, contextBuildings: 0, photos: [], noPhoto: true};
+          priority: priorities.get(kit.name)?.priority ?? null, parts: resolved.pands.length + resolved.osmOnly.length, tris: 0, top: 0, contextBuildings: 0, contextCulled: 0, photos: [], noPhoto: true,
+          ...(pand && !pandCentres.length ? {pandVia: 'kit-pands.json (OSM part joined to 3DBAG)'} : {})};
         let kitPng: Buffer | null = null, shadePng: Buffer | null = null;
         if (centre) {
           try {
             for (const [az, which] of [[SUN_AZ, 'sun'], [SHADE_AZ, 'shade']] as const) {
               const r = await page.evaluate(req => (window as any).KitSheets.renderKit(req), {kit: kit.name, centre, azDeg: az, w: CARD_W, h: CARD_H});
               const buf = Buffer.from(r.png.split(',')[1], 'base64');
-              if (which === 'sun') { kitPng = buf; row.parts = r.parts; row.tris = r.tris; row.top = r.top; row.contextBuildings = r.contextBuildings; }
+              if (which === 'sun') { kitPng = buf; row.parts = r.parts; row.tris = r.tris; row.top = r.top; row.contextBuildings = r.contextBuildings; row.contextCulled = r.contextCulled; }
               else shadePng = buf;
             }
           } catch (e: any) { row.renderError = String(e.message ?? e).slice(0, 300); renderErrors++; }
         } else row.renderError = 'no location';
         let photo: Buffer | null = null;
         if (pand) {
-          const walls = wallsFor(pand, wallsErrors);
+          // A pand joined through OSM parts is not a tile feature: its walls come from its own outline in kit-pands.json.
+          const walls = wallsFor(pand, wallsErrors, !pandCentres.length);
           if (walls.photos.length) {
             const panels = await Promise.all(walls.photos.map(p => sharp(p.file).resize(PHOTO_W / 2, CARD_H, {fit: 'contain', background: '#f4f4f2'}).flatten({background: '#f4f4f2'}).png().toBuffer()));
             row.photos = walls.photos.map(p => `${p.tag}${p.date ? ` ${p.date}` : ''}`);

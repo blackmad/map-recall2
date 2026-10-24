@@ -5,11 +5,15 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { HIP_MAX_PITCH_DEG, KITS, hipAround, kitGeometry, kitIds, simplifyRing, type PartInput } from './landmarkKits.js';
-import { PANORAMA_BRICK, PUBLIC_WALL, SCHOOL_RIBBON_FRAME, panoramaBrickHue, publicKit, schoolHipRoof, schoolWall, schoolWallDisplay, SCHOOL_HIP_MIN_EAVES_M, type SchoolFacts } from './publicBuildings.js';
+import { PANORAMA_BRICK, PUBLIC_WALL, SCHOOL_RIBBON_FRAME, panoramaBrickHue, planPublic, publicKit, schoolHipRoof, schoolWall, schoolWallDisplay, SCHOOL_HIP_MIN_EAVES_M, type SchoolFacts } from './publicBuildings.js';
 import { isOliveShade, lch, masonryFamily } from './facade/cropWallColour.js';
 import { PUBLIC_BUILDINGS } from './publicBuildingData.js';
 import { PUBLIC_FACTS, SCHOOL_PERIOD_WALLS } from './publicBuildingFacts.js';
 import { PERIOD_WALLS, cityWallTint } from './look/palette.js';
+import fs from 'node:fs';
+import { NOT_PUBLIC_FORM, NOT_WORSHIP_FORM, PUBLIC_RETYPE } from './kitTypeOverrides.js';
+import { pickKitPand } from './kitPands.js';
+import { WORSHIP_BUILDINGS } from './worshipBuildingData.js';
 
 type V2 = [number, number];
 const rect = (w: number, d: number, x = 0, y = 0): V2[] => [[x, y], [x + w, y], [x + w, y + d], [x, y + d], [x, y]];
@@ -27,12 +31,13 @@ test('every kit in KITS draws triangles of its own once its parts load', () => {
 });
 
 test('a plain cinema or worship body draws its coping and plinth on the host walls', () => {
-  const cinema = KITS.find(k => k.name === 'Generic cinema NL.IMBAG.Pand.0363100012092742')!;
+  // Amsterdams Theaterhuis, 1936 (was Zonnehuis, retyped a school in kit review round 3).
+  const cinema = KITS.find(k => k.name === 'Generic cinema NL.IMBAG.Pand.0363100012094391')!;
   assert.ok(cinema.trim?.coping && cinema.trim.plinth, 'pre-1960 body: stone coping and plinth');
   const ring = rect(30, 18), id = cinema.body![0];
-  const tris = kitGeometry(cinema, new Map([[id, { id, ring, minHeightM: 0, heightM: 11.2 }]]))[0].tris;
+  const tris = kitGeometry(cinema, new Map([[id, { id, ring, minHeightM: 0, heightM: 14.7 }]]))[0].tris;
   const zs = tris.flatMap(t => t.p.map(p => p[2]));
-  assert.equal(Math.max(...zs), 11.2, 'the coping tops the wall');
+  assert.equal(Math.max(...zs), 14.7, 'the coping tops the wall');
   assert.equal(Math.min(...zs), 0, 'the plinth stands on the ground');
   assert.ok(tris.every(t => Math.abs(t.n[2]) < 1e-9), 'bands are vertical');
   const modern = KITS.find(k => k.name === 'Generic church NL.IMBAG.Pand.0363100012123194')!;
@@ -148,4 +153,59 @@ test('school glazing: measured ribbon windows and a white top band, opt in', () 
   assert.ok(geo(plain).every(t => t.hex !== SCHOOL_RIBBON_FRAME));
   const ribbons = PUBLIC_FACTS.filter(f => f[7] === 2).length, punched = PUBLIC_FACTS.filter(f => f[7] === 1).length;
   assert.ok(ribbons > 20 && punched > 20, `the crops read both (${ribbons} ribbon, ${punched} punched)`);
+});
+
+// Kit review round 3 (2026-10-24, GitHub #37): wrong kit types fixed at the source (kitTypeOverrides.ts), and the OSM-only
+// kit parts joined to their BAG pand (kitPands.ts, public/data/extracts/amsterdam/kit-pands.json).
+test('round 3: OSM worship/school tags on houses and housing blocks take no kit; Zonnehuis is a hipped school', () => {
+  const names = new Set(KITS.map(k => k.name));
+  for (const [kind, pand] of [
+    ['mosque', '0363100012237810'], ['church', '0363100012148521'], ['temple', '0363100012083695'], ['mosque', '0363100012130941'],
+    ['mosque', '0363100012108972'], ['church', '0363100012233557'], ['church', '0363100012246231'], ['mosque', '0363100012142532'],
+    ['mosque', '0363100012237290'], ['school', '0363100012090063'],
+  ]) {
+    assert.ok(!names.has(`Generic ${kind} NL.IMBAG.Pand.${pand}`), `${pand} keeps no ${kind} kit`);
+    assert.ok(NOT_WORSHIP_FORM[`NL.IMBAG.Pand.${pand}`] || NOT_PUBLIC_FORM[`NL.IMBAG.Pand.${pand}`], `${pand} listed with a reason`);
+  }
+  // Real churches the review flagged keep their kit: BAG gives meeting use only (or a pastorie beside it).
+  for (const pand of ['0363100012062993', '0363100012089044', '0362100001054286', '0362100001055799']) assert.ok(names.has(`Generic church NL.IMBAG.Pand.${pand}`), pand);
+  assert.ok(!names.has('Generic cinema NL.IMBAG.Pand.0363100012092742'), 'Zonnehuis is no windowless theatre box');
+  const zonnehuis = KITS.find(k => k.name === 'Generic school NL.IMBAG.Pand.0363100012092742')!;
+  assert.ok(zonnehuis, 'Zonnehuis is drawn as a school');
+  const hall = zonnehuis.halls![0];
+  assert.equal(hall.hip, true, 'under its hipped roof');
+  assert.equal(hall.eavesM, 6); assert.equal(hall.riseM, 9.9);
+  const retype = PUBLIC_RETYPE['NL.IMBAG.Pand.0363100012092742'];
+  assert.deepEqual(planPublic({ kind: 's', heightM: 11.2, year: 1932, areaM2: 972, rect: null }), { mode: retype.entry[2], eavesM: retype.entry[3], riseM: retype.entry[4], era: retype.entry[5] });
+  for (const id of Object.keys({ ...NOT_WORSHIP_FORM, ...NOT_PUBLIC_FORM, ...PUBLIC_RETYPE })) {
+    assert.ok([...WORSHIP_BUILDINGS, ...PUBLIC_BUILDINGS].some(e => e[0] === id), `${id} is still in a generated list (else drop the override)`);
+  }
+});
+
+test('round 3: an OSM part takes the pand it stands in, else the pand inside it', () => {
+  const part = [rect(10, 10)], inPand = { pand: 'A', rings: [rect(20, 20, -5, -5)] }, beside = { pand: 'B', rings: [rect(10, 10, 9, 0)] };
+  assert.deepEqual(pickKitPand(part, [beside, inPand]), { pand: 'A', share: 1, pandShare: 0.25, others: [] });
+  const big = [rect(40, 10)], small = { pand: 'S', rings: [rect(8, 8, 1, 1)] }, sliver = { pand: 'T', rings: [rect(3, 10, 38, 0)] };
+  assert.equal(pickKitPand(big, [small, sliver])?.pand, 'S', 'a part over several small pands takes the one fully inside it');
+  assert.equal(pickKitPand(part, [{ pand: 'F', rings: [rect(5, 5, 30, 30)] }]), null);
+});
+
+test('round 3: kit-pands.json joins the named OSM-only landmark kits to their catalogue pands', () => {
+  const ids = JSON.parse(fs.readFileSync(new URL('../../public/data/extracts/amsterdam/kit-pands.json', import.meta.url), 'utf8')).ids as Record<string, { pand: string | null }>;
+  const mainPand = (name: string) => {
+    const counts = new Map<string, number>();
+    for (const id of kitIds(KITS.find(k => k.name === name)!)) { const p = ids[id]?.pand; if (p) counts.set(p, (counts.get(p) ?? 0) + 1); }
+    return [...counts].sort((a, b) => b[1] - a[1])[0]?.[0];
+  };
+  // Pands as the bespoke builders' footprint files and the landmark catalogue give them.
+  const expected: Record<string, string> = {
+    Centraal: '0363100012185598', Stedelijk: '0363100012077791', Krijtberg: '0363100012185920', Munttoren: '0363100012168045',
+    NEMO: '0363100012164988', 'NEMO deck': '0363100012164988', 'Royal Palace': '0363100012167579', Scheepvaartmuseum: '0363100012170236',
+    'Sint-Nicolaas': '0363100012165691', Waag: '0363100012171850',
+  };
+  for (const [name, pand] of Object.entries(expected)) assert.equal(mainPand(name), pand, name);
+  // Generic parts: Bijlmerbios (ten cinema parts, one pand), a Zaanstad school outside the 3DBAG cache (BAG WFS).
+  assert.equal(ids.w1488019247.pand, '0363100012079990');
+  assert.equal(ids.w1362284226.pand, '0479100000000161');
+  assert.equal(ids.w276686506.pand, null, 'Avontuur is a church ship: no pand');
 });

@@ -8,7 +8,7 @@ import { KITS, decorateKitRoof, kitGeometry, kitIds, type PartInput } from '../.
 import { buildKitChunk, wallTopHeightM } from '../../src/canalRecall/threeBuildingMesh.js';
 
 export type RenderRequest = { kit: string; centre: [number, number]; azDeg: number; elDeg?: number; w: number; h: number };
-export type RenderResult = { png: string; parts: number; tris: number; top: number; contextBuildings: number };
+export type RenderResult = { png: string; parts: number; tris: number; top: number; contextBuildings: number; contextCulled: number };
 
 const TILE_Z = 14;
 const cache = new Map<string, Promise<any[]>>();
@@ -89,8 +89,18 @@ export async function renderKit(req: RenderRequest): Promise<RenderResult> {
     geometry.setAttribute('color', new THREE.BufferAttribute(col, 3));
     scene.add(new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide })));
   }
-  // Context: grey prisms around the kit, drawn to their own height (the kit's hosts are drawn by the kit).
+  // Context: grey prisms around the kit, drawn to their own height (the kit's hosts are drawn by the kit). A prism between
+  // the camera and the kit that rises above the sight line to the kit's foot is left out (kit review round 3, GitHub #37:
+  // eleven sheets showed only the neighbours): the card is about the kit, the neighbours only give it scale.
+  const a = req.azDeg * Math.PI / 180, e = (req.elDeg ?? 18) * Math.PI / 180;
+  const toCam: [number, number] = [Math.sin(a), -Math.cos(a)];
+  const blocks = (c: { pts: [number, number][]; h: number }) => c.pts.some(([x, y]) => {
+    const dx = x - cx, dz = -y - cz, along = dx * toCam[0] + dz * toCam[1], across = Math.abs(dx * toCam[1] - dz * toCam[0]);
+    return along > 0 && across < rad + 8 && c.h > Math.max(0, along - rad) * Math.tan(e) + 1;
+  });
+  let culled = 0;
   for (const c of context) {
+    if (parts.size && blocks(c)) { culled++; continue; }
     const shape = new THREE.Shape(c.pts.map(([x, y]) => new THREE.Vector2(x, y)));
     const g = new THREE.ExtrudeGeometry(shape, { depth: Math.max(1, c.h - c.min), bevelEnabled: false });
     g.rotateX(-Math.PI / 2); g.translate(0, c.min, 0);
@@ -120,13 +130,13 @@ export async function renderKit(req: RenderRequest): Promise<RenderResult> {
   }
   const camera = new THREE.PerspectiveCamera(35, req.w / req.h, 1, 2000);
   const dist = Math.max(60, top * 1.7, rad * 2.4);
-  const focusY = top * 0.45, a = req.azDeg * Math.PI / 180, e = (req.elDeg ?? 18) * Math.PI / 180;
+  const focusY = top * 0.45;
   camera.position.set(cx + Math.sin(a) * Math.cos(e) * dist, focusY + Math.sin(e) * dist, cz - Math.cos(a) * Math.cos(e) * dist);
   camera.lookAt(cx, focusY, cz);
   renderer.render(scene, camera);
   const png = renderer.domElement.toDataURL('image/png');
   scene.traverse(o => { const m = o as THREE.Mesh; m.geometry?.dispose(); });
-  return { png, parts: parts.size, tris, top: Math.round(top * 10) / 10, contextBuildings: context.length };
+  return { png, parts: parts.size, tris, top: Math.round(top * 10) / 10, contextBuildings: context.length - culled, contextCulled: culled };
 }
 
 (globalThis as any).KitSheets = { renderKit };

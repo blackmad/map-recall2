@@ -29,6 +29,7 @@ import { planWorship, type WorshipPlan } from '../src/canalRecall/worshipBuildin
 import { FRONT_PART_IDS } from '../src/canalRecall/landmarkFrontData.ts';
 import { OLD_LANDMARK_MAX_M, fitRect } from '../src/canalRecall/roofMesh.ts';
 import { shortBuildingId } from '../src/canalRecall/buildingFacts.ts';
+import { NOT_WORSHIP_FORM } from '../src/canalRecall/kitTypeOverrides.ts';
 
 const BBOX = '52.28,4.75,52.43,5.05';
 const WORSHIP_BUILDING = 'church|chapel|cathedral|mosque|synagogue|temple|shrine|religious';
@@ -187,6 +188,8 @@ const WORSHIP_TAG = new RegExp(`^(${WORSHIP_BUILDING})$`);
 const EXCLUDED: Record<string, string> = {
   'NL.IMBAG.Pand.0363100012155412': 'de Appel arts centre, named "Tempel" in the landmark list',
   'NL.IMBAG.Pand.0363100012177995': 'a 1718 canal house next to the Fo Guang Shan temple (landmark resolver)',
+  // Kit review round 3 (GitHub #37): worship tags on a house, school or housing block.
+  ...NOT_WORSHIP_FORM,
 };
 const eligible = (r: Row) => r.treatment !== 'kit' && !EXCLUDED[r.id] && (WORSHIP_TAG.test(r.buildingTag) || (r.buildingTag === 'landmark' && r.areaM2 <= 4000));
 const plans = new Map<string, WorshipPlan>();
