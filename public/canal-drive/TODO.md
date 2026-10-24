@@ -119,18 +119,15 @@ Open, in order:
 - **district-style** (B1), **buurt-designs** (B2: Tuindorp Oostzaan-Oost,
   Gein 3, Holendrecht-Oost, Blauwe Zand first), **buurt-autoplace** (B3).
 - **roads**: R0 done 2026-10-23 (HISTORY): R1 gaps is the largest cause at
-  all ten spots. R1 first cut on `lane/roads-gaps-20261023` (haiku,
-  985766f97), NOT merged: roads-v2 adds island/berm/verge/square (+ grass)
-  from BGT `ondersteunendwegdeel` and verhard `onbegroeidterreindeel` and
-  culls OSM fills under drawn roads; per-spot bare land −83 % (3,252 → 547
-  m²), city-wide −30 % (12.7 → 8.9 M m²; the −80 % bar is not met: 'erf'
-  yards not fetched, unverhard ground). Blockers: triangle gate red (31
-  cells over 1.15×, worst 10_4 at 1.77× from verge lawns tessellated on
-  sparse land; build 1.30×) and new red fragments in the Mosplein frame,
-  unexplained. Next (opus): cap the lawn tessellation at the data step,
-  frame-level trace of the Mosplein red, by-functie split of the remaining
-  bare land, archive the raw BGT pulls, then merge; rebuild the worker
-  bundle before re-shooting Mosplein (its red came from a stale bundle).
+  all ten spots. R1 merged 2026-10-24 (#12, eb2902118, perf session):
+  BGT islands/berms/verges/squares fill bare land beside carriageways;
+  bare land at ROAD_SPOTS 3,775 → 888 m² (−76 %), Mosplein centre green
+  with no red; city-wide ground triangles 99.6 M → 90.2 M; ride-perf p95
+  16.8 ms unchanged. The roads-on/off triangle check is still red in 4 of
+  291 cells (10_4 1.252, already 1.231 on main; -1_1 1.206, 11_4 1.174,
+  1_0 1.155) and the build-time ratio is 1.52 (1.42 on main, bar 1.3);
+  neither is in check:canal. Metric question on #27. Spiegelgracht keeps
+  ~500 m² of paved corner outside BGT road classes.
   R2+R3 merged 2026-10-24 (lane/roads-lanes-20261023 @ 3587416d5): OSM
   bands yield per 1 m station to any BGT polygon, lane ribbons only where
   no BGT cycle polygon and the orthophoto shows red, LOD 1 draws one plain

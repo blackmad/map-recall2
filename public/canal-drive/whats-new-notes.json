@@ -3,6 +3,11 @@
  "notes": [
   {
    "date": "2026-10-24",
+   "title": "Pavements, islands and verges fill the gaps beside roads",
+   "text": "Traffic islands, berms, verges and paved squares from the city's surface survey now fill what used to show as bare land next to the road. At the regression spots bare land beside carriageways fell by three quarters, and Mosplein no longer shows stray red."
+  },
+  {
+   "date": "2026-10-24",
    "title": "Behind-bike camera tilts again; W no longer opens Wikipedia",
    "text": "The chase camera had been set flatter than the top-down views, so 'behind bike' looked top-down and half the tilt slider did nothing. It now starts low behind the bike and the whole slider tilts. Steering with W no longer opens monument articles (that moved to E), and D no longer toggles street labels (now T)."
   },
