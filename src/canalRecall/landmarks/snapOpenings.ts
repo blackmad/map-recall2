@@ -96,7 +96,7 @@ export function snapOpenings(soup: MaterialSoup, opts: SnapOptions = {}): SnapRe
     last = [];
   };
   for (let pass = 0; pass <= passes; pass++) {
-    const {issues} = auditOpenings(soup, th);
+    const {issues} = auditOpenings(soup, th, undefined, {thinStrips: false});
     verify(issues);
     if (pass === passes) break;
     report.skipped = {floating: 0, buried: 0, overhang: 0};
@@ -134,7 +134,7 @@ export function snapOpenings(soup: MaterialSoup, opts: SnapOptions = {}): SnapRe
     last = moves;
   }
   if (dropOverhang || dropBuried) {
-    for (const i of auditOpenings(soup, th).issues) {
+    for (const i of auditOpenings(soup, th, undefined, {thinStrips: false}).issues) {
       if (dropBuried && i.kind === 'buried' && i.buried >= dropBuried.minHidden && Math.max(i.max[0] - i.min[0], i.max[1] - i.min[1], i.max[2] - i.min[2]) <= dropBuried.maxExtent) { report.dropped.push(...i.triangles); report.droppedAt.push(i.centre); continue; }
       if (!dropOverhang) continue;
       const extent = Math.max(i.max[0] - i.min[0], i.max[1] - i.min[1], i.max[2] - i.min[2]);

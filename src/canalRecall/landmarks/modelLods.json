@@ -24,7 +24,7 @@
   "triangles": 2567
  },
  "oude-kerk": {
-  "sourceHash": "2a5a37ec68e797e1",
+  "sourceHash": "e25cd1845b99b169",
   "buildVersion": 2,
   "bytes": 90988,
   "triangles": 5002
@@ -210,7 +210,7 @@
   "triangles": 564
  },
  "scheepvaarthuis": {
-  "sourceHash": "87999690ef079260",
+  "sourceHash": "cbaf7d141ccf0ad1",
   "buildVersion": 2,
   "bytes": 99988,
   "triangles": 4974
@@ -258,7 +258,7 @@
   "triangles": 932
  },
  "nieuwe-kerk": {
-  "sourceHash": "5e2cf5172fe73710",
+  "sourceHash": "5ee4be33beed348c",
   "buildVersion": 2,
   "bytes": 84128,
   "triangles": 4849
@@ -402,7 +402,7 @@
   "triangles": 2904
  },
  "dominicuskerk": {
-  "sourceHash": "e232284172914435",
+  "sourceHash": "9208a4591318d8e9",
   "buildVersion": 2,
   "bytes": 47304,
   "triangles": 2376
@@ -588,9 +588,9 @@
   "triangles": 2119
  },
  "madame-tussauds": {
-  "sourceHash": "074df8703cfc2d0e",
+  "sourceHash": "42e701da9501a422",
   "buildVersion": 2,
-  "bytes": 48964,
+  "bytes": 48940,
   "triangles": 2788
  },
  "amsterdam-dungeon": {
@@ -828,9 +828,9 @@
   "triangles": 782
  },
  "beta-boulders": {
-  "sourceHash": "823e0b6492026375",
+  "sourceHash": "9db01712475e16f6",
   "buildVersion": 2,
-  "bytes": 60420,
+  "bytes": 60404,
   "triangles": 2842
  },
  "beest-boulders": {
@@ -840,9 +840,9 @@
   "triangles": 4819
  },
  "mountain-network": {
-  "sourceHash": "55f6dd481b8a4244",
+  "sourceHash": "3c9854b8fa07f8a1",
   "buildVersion": 2,
-  "bytes": 125016,
+  "bytes": 125208,
   "triangles": 6928
  },
  "keith-haring-mural": {
@@ -852,10 +852,10 @@
   "triangles": 877
  },
  "valley": {
-  "sourceHash": "86661c42f3565925",
+  "sourceHash": "b0fd184920c6d816",
   "buildVersion": 2,
-  "bytes": 153380,
-  "triangles": 11650
+  "bytes": 153008,
+  "triangles": 11624
  },
  "ndsm-warehouse-complex": {
   "sourceHash": "26713ac3d6ab6d35",
@@ -1128,7 +1128,7 @@
   "triangles": 2728
  },
  "this-is-holland": {
-  "sourceHash": "012aa7d0809e9c1e",
+  "sourceHash": "ecb2668aa414b89e",
   "buildVersion": 2,
   "bytes": 82700,
   "triangles": 4005

@@ -311,7 +311,7 @@ function asTriSoup(s: MaterialSoup, tris: number[]): TriSoup {
 
 interface WallRaster { seg: WallSegment; cell: number; u0: number; v0: number; nu: number; nv: number; occ: Uint8Array; colLo: Float64Array; colHi: Float64Array; tris: Set<number> }
 
-function rasterWall(s: MaterialSoup, seg: WallSegment, hostTris: number[], cell = 0.1): WallRaster {
+function rasterWall(s: MaterialSoup, seg: WallSegment, hostTris: number[], cell = 0.1, thinStrips = true): WallRaster {
   const u0 = seg.uMin - cell, v0 = seg.vMin - cell, nu = Math.ceil((seg.uMax - seg.uMin) / cell) + 3, nv = Math.ceil((seg.vMax - seg.vMin) / cell) + 3;
   const occ = new Uint8Array(nu * nv);
   for (const ti of seg.tris) {
@@ -328,8 +328,8 @@ function rasterWall(s: MaterialSoup, seg: WallSegment, hostTris: number[], cell 
       if (w0 >= -1e-6 && w1 >= -1e-6 && 1 - w0 - w1 >= -1e-6) occ[y * nu + x] = 1;
     }
     // A strip thinner than a cell covers no cell centre: its edges mark the cells they cross (a 2 cm lintel between a window head
-    // and the eaves is the wall's top in that column; Tropenmuseum pavilion, 2026-10-16).
-    for (let k = 0; k < 3; k++) {
+    // and the eaves is the wall's top in that column; Tropenmuseum pavilion, 2026-10-16). Off for the build-time snap (see auditOpenings).
+    if (thinStrips) for (let k = 0; k < 3; k++) {
       const a = p[k], b = p[(k + 1) % 3], n = Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) * 2) + 1;
       for (let i = 0; i <= n; i++) {
         const x = Math.floor(a[0] + (b[0] - a[0]) * i / n), y = Math.floor(a[1] + (b[1] - a[1]) * i / n);
@@ -414,7 +414,13 @@ export function nonOpeningShape(s: MaterialSoup, tris: number[], axis: [number, 
   return undefined;
 }
 
-export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEOMETRY_THRESHOLDS, part = partsOf(s, th.weld)): {assemblies: number; issues: OpeningIssue[]} {
+/**
+ * `thinStrips` (default on, the gate): wall rasters also mark the cells a thin strip's edges cross, which grows every wall's silhouette by
+ * up to a cell past its end and top and fills the rim of its cut holes. snapOpenings turns it off: it moves and drops assemblies on what a
+ * wall really covers. With it on, Valley's terrace balustrade glass (on the slab at a wall's top) fell under the 0.35 drop share and was
+ * kept hanging (overhang 6 -> 9, fail 1 -> 3 after 76a26204e; lane valley-felix 2026-10-24). The snap is then stricter than the gate.
+ */
+export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEOMETRY_THRESHOLDS, part = partsOf(s, th.weld), opts: {thinStrips?: boolean} = {}): {assemblies: number; issues: OpeningIssue[]} {
   const nTri = s.indices.length / 3;
   const isOpeningMat = s.materials.map(m => OPENING_MATERIAL.test(m.name));
   // Parts by id.
@@ -458,7 +464,7 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
   const wallTris = new Set<number>();
   for (const w of walls) for (const i of w.tris) wallTris.add(host[i]);
   const rasters = new Map<WallSegment, WallRaster>();
-  const raster = (w: WallSegment) => { let r = rasters.get(w); if (!r) { r = rasterWall(s, w, host); rasters.set(w, r); } return r; };
+  const raster = (w: WallSegment) => { let r = rasters.get(w); if (!r) { r = rasterWall(s, w, host, 0.1, opts.thinStrips ?? true); rasters.set(w, r); } return r; };
 
   const issues: OpeningIssue[] = [];
   for (const tris of groups.values()) {
