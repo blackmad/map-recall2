@@ -32,7 +32,12 @@ with "continue from the branch", model per `LANE-RULES.md`. The plan is
 bullet list below; the per-building state is
 `public/canal-drive/landmark-factory-queue.json` and the census. Visible
 changes go to `public/canal-drive/whats-new-notes.json` in the same commit
-that ships them (the What's New page renders it).
+that ships them (the What's New page renders it). Tracking (user, 2026-10-24):
+every question or action for the user is a GitHub issue labelled
+`needs-david` and assigned to blackmad, never only a chat line; each lane is
+an issue labelled `lane` (+ `programme`), commented with its hand-back and
+closed when merged. Inbox:
+https://github.com/blackmad/map-recall2/issues?q=is%3Aopen+label%3Aneeds-david
 
 Plan `docs/plans/thousand-buildings-20261023.md`; rules `docs/handoffs/LANE-RULES.md`;
 one brief per lane in `docs/handoffs/lane-*-20261023.md`. Census baseline
