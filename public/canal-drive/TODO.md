@@ -157,6 +157,18 @@ Open, in order:
   summary.md unchanged; the full run takes ~28 min and 16 GB heap, exit 0).
   Next: per-entry dates in the baseline, then one opus review of the
   2026-10-20 regeneration before any re-baseline.
+- **factory batch 1** (2026-10-24, PDOK facts): 20 pands → compiled 15,
+  no-evidence 4, error 1 (measure, pand 098925). Opus review: 0 pass, 13
+  fix, 2 no-evidence (Postjesweg 2018 and Stadsloket 2021-22 photos show
+  construction), 1 hold (politie-west, its own lane). The draft fails
+  systemically, not per house: (1) walls with no photo default to orange
+  brick, so the unphotographed sides dominate the 3/4 view of grey, black
+  or yellow buildings; (2) measured columns and window shape are not
+  applied (Metis 5 vs photo 29 columns, wide vs tall); (3) curtain-wall
+  is chosen from foliage- or scaffold-occluded crops; (4) four
+  triangle-budget failures. Closest: Oostpoort Montessori, OBA Osdorp,
+  Metis. Draft-fix lane (opus) running; batch 1 is re-run after it. Strip
+  pages now show the two best-evidenced walls per house (~2,000 px).
 - **kits-review (K)**: Role A done 2026-10-24 (`npm run kit:sheets`, run
   under the browser lock; 546 kits on 137 pages in
   `map-recall2-worktrees/kit-sheets-20261024/artifacts/strips/kits-N.png`,

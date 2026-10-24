@@ -120,7 +120,14 @@
     "artifacts/building-recipes/politie-west-overtoomsesluis/contact-walls-1.png",
     "artifacts/building-recipes/politie-west-overtoomsesluis/contact-walls-2.png",
     "artifacts/building-recipes/politie-west-overtoomsesluis/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "footprint-vs-bag gate red; hand-authored intent, not a factory draft: leave to its own lane",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012239467",
@@ -173,14 +180,79 @@
     4.8759451,
     52.3326071
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "oba-buitenveldert-135359",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:54:51.221Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:56:14.050Z",
    "notes": [
-    "2026-10-23T20:55 crops: 7 usable walls in 12 s"
+    "2026-10-23T20:55 crops: 7 usable walls in 12 s",
+    "2026-10-24T05:56 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:56 draft: 6 groups (0 on a street), 32 panels blank",
+    "2026-10-24T05:56 measured groups 3,4 in 2 s",
+    "2026-10-24T05:56 compiled: 3490 tris, gates pass, likeness g0:NO PHOTO g1:NO PHOTO g2:NO PHOTO g3:FAIL g4:FAIL g5:NO PHOTO"
    ],
-   "updatedAt": "2026-10-23T20:55:03.239Z"
+   "updatedAt": "2026-10-24T05:56:22.184Z",
+   "report": {
+    "triangles": 3490,
+    "bytes": 266960,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 1,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 2,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 3,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall not drawn"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall family brick vs photo paint",
+       "glazing storey band off by 0.44 mean 0.45 vs photo 0.27",
+       "columns 3 vs photo 9"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-10-24T05:56"
+   },
+   "sheets": [
+    "artifacts/building-recipes/oba-buitenveldert-135359/contact-walls-0.png",
+    "artifacts/building-recipes/oba-buitenveldert-135359/contact-walls-1.png",
+    "artifacts/building-recipes/oba-buitenveldert-135359/contact-walls-2.png",
+    "artifacts/building-recipes/oba-buitenveldert-135359/contact-walls-3.png",
+    "artifacts/building-recipes/oba-buitenveldert-135359/contact-walls-4.png",
+    "artifacts/building-recipes/oba-buitenveldert-135359/contact-walls-5.png",
+    "artifacts/building-recipes/oba-buitenveldert-135359/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "unphotographed walls default to orange brick; photo walls are grey brick/painted grey: inherit the measured wall family",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012131914",
@@ -213,14 +285,98 @@
     4.8025806,
     52.3780277
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "oba-geuzenveld-121137",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:55:03.467Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:56:22.185Z",
    "notes": [
-    "2026-10-23T20:55 crops: 8 usable walls in 25 s"
+    "2026-10-23T20:55 crops: 8 usable walls in 25 s",
+    "2026-10-24T05:56 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:56 draft: 8 groups (0 on a street), 33 panels blank",
+    "2026-10-24T05:56 measured groups 3,5 in 4 s",
+    "2026-10-24T05:56 compiled: 10866 tris, gates pass, likeness g0:NO PHOTO g1:NO EVIDENCE g2:NO PHOTO g3:FAIL g4:NO EVIDENCE g5:FAIL g6:NO EVIDENCE g7:NO PHOTO"
    ],
-   "updatedAt": "2026-10-23T20:55:28.172Z"
+   "updatedAt": "2026-10-24T05:56:34.059Z",
+   "report": {
+    "triangles": 10866,
+    "bytes": 795552,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 1,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "foliage 34 % > 25 %"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 3,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.41 mean 0.40 vs photo 0.02",
+       "wall family unresolved (#3e4047 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "usable upper cells 31 % < 40 %",
+       "foliage 35 % > 25 %",
+       "obliquity 49.8 deg > 45"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing  mean 0.23 vs photo 0.33"
+      ]
+     },
+     {
+      "group": 6,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "foliage 29 % > 25 %"
+      ]
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-10-24T05:56"
+   },
+   "sheets": [
+    "artifacts/building-recipes/oba-geuzenveld-121137/contact-walls-0.png",
+    "artifacts/building-recipes/oba-geuzenveld-121137/contact-walls-1.png",
+    "artifacts/building-recipes/oba-geuzenveld-121137/contact-walls-2.png",
+    "artifacts/building-recipes/oba-geuzenveld-121137/contact-walls-3.png",
+    "artifacts/building-recipes/oba-geuzenveld-121137/contact-walls-4.png",
+    "artifacts/building-recipes/oba-geuzenveld-121137/contact-walls-5.png",
+    "artifacts/building-recipes/oba-geuzenveld-121137/contact-walls-6.png",
+    "artifacts/building-recipes/oba-geuzenveld-121137/contact-walls-7.png",
+    "artifacts/building-recipes/oba-geuzenveld-121137/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "tower reads right in massing; low wing orange vs grey photo; glazing band off",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012070481",
@@ -233,14 +389,94 @@
     4.996847,
     52.3566548
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "oba-ijburg-070481",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:55:28.172Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:56:34.060Z",
    "notes": [
-    "2026-10-23T20:55 crops: 7 usable walls in 8 s"
+    "2026-10-23T20:55 crops: 7 usable walls in 8 s",
+    "2026-10-24T05:56 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:56 draft: 8 groups (0 on a street), 20 panels blank",
+    "2026-10-24T05:56 measured groups 0,2,3 in 18 s",
+    "2026-10-24T05:57 compiled: 19858 tris, gates FAIL triangle-budget, likeness g0:PASS g1:NO PHOTO g2:FAIL g3:FAIL g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/oba-ijburg-070481/contact-walls-3.png |   artifacts/building-recipes/oba-ijburg-070481/contact-walls-4.png |   artifacts/building-r)"
    ],
-   "updatedAt": "2026-10-23T20:55:36.667Z"
+   "updatedAt": "2026-10-24T05:57:04.998Z",
+   "report": {
+    "triangles": 19858,
+    "bytes": 1445496,
+    "gatesFailing": [
+     "triangle-budget"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "PASS",
+      "reasons": []
+     },
+     {
+      "group": 1,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.27",
+       "window shape square vs photo wide"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.21 mean 0.40 vs photo 0.56",
+       "window shape tall vs photo wide",
+       "columns 53 vs photo 10"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-10-24T05:57"
+   },
+   "sheets": [
+    "artifacts/building-recipes/oba-ijburg-070481/contact-walls-0.png",
+    "artifacts/building-recipes/oba-ijburg-070481/contact-walls-1.png",
+    "artifacts/building-recipes/oba-ijburg-070481/contact-walls-2.png",
+    "artifacts/building-recipes/oba-ijburg-070481/contact-walls-3.png",
+    "artifacts/building-recipes/oba-ijburg-070481/contact-walls-4.png",
+    "artifacts/building-recipes/oba-ijburg-070481/contact-walls-5.png",
+    "artifacts/building-recipes/oba-ijburg-070481/contact-walls-6.png",
+    "artifacts/building-recipes/oba-ijburg-070481/contact-walls-7.png",
+    "artifacts/building-recipes/oba-ijburg-070481/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "triangle budget; window shape square vs photo wide, columns 53 vs 10 on walls[3]: apply measured columns",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012098534",
@@ -253,14 +489,72 @@
     4.8929718,
     52.4178054
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "oba-molenwijk-098534",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:55:36.667Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:57:04.998Z",
    "notes": [
-    "2026-10-23T20:55 crops: 5 usable walls in 11 s"
+    "2026-10-23T20:55 crops: 5 usable walls in 11 s",
+    "2026-10-24T05:57 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:57 draft: 4 groups (0 on a street), 8 panels blank",
+    "2026-10-24T05:57 measured groups 0,1 in 2 s",
+    "2026-10-24T05:57 compiled: 851 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO EVIDENCE g3:NO EVIDENCE"
    ],
-   "updatedAt": "2026-10-23T20:55:47.579Z"
+   "updatedAt": "2026-10-24T05:57:12.919Z",
+   "report": {
+    "triangles": 851,
+    "bytes": 69364,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall not drawn",
+       "wall family unresolved (#611113 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall not drawn"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "usable upper cells 17 % < 40 %",
+       "foliage 26 % > 25 %"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "usable upper cells 35 % < 40 %",
+       "obliquity 54.9 deg > 45"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-24T05:57"
+   },
+   "sheets": [
+    "artifacts/building-recipes/oba-molenwijk-098534/contact-walls-0.png",
+    "artifacts/building-recipes/oba-molenwijk-098534/contact-walls-1.png",
+    "artifacts/building-recipes/oba-molenwijk-098534/contact-walls-2.png",
+    "artifacts/building-recipes/oba-molenwijk-098534/contact-walls-3.png",
+    "artifacts/building-recipes/oba-molenwijk-098534/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "walls not drawn (curtain-wall class on a painted-black brick front with a shop band)",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "poi:library-oba-next",
@@ -306,15 +600,79 @@
     4.8068695,
     52.3589218
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "oba-osdorp",
    "notes": [
     "authored recipe houses/oba-osdorp exists and is not installed: the factory keeps its intent, measures and compiles it",
-    "2026-10-23T20:55 crops: 10 usable walls in 11 s"
+    "2026-10-23T20:55 crops: 10 usable walls in 11 s",
+    "2026-10-24T05:57 draft: hand-authored intent kept",
+    "2026-10-24T05:57 compiled: 5005 tris, gates pass, likeness g0:WARN g1:WARN g2:WARN g3:WARN g4:WARN"
    ],
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:55:47.843Z",
-   "updatedAt": "2026-10-23T20:55:58.741Z"
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:57:12.919Z",
+   "updatedAt": "2026-10-24T05:57:19.208Z",
+   "report": {
+    "triangles": 5005,
+    "bytes": 386732,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.151 < 0.45"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "WARN",
+      "reasons": [
+       "wall family unresolved (#606163 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+       "mask IoU 0.194 < 0.45"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "WARN",
+      "reasons": [
+       "columns 3 vs photo 2",
+       "mask IoU 0.309 < 0.45"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.118 < 0.45"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "WARN",
+      "reasons": [
+       "wall family unresolved (#4e434c is dark and neutral, brick courses not resolved): lightness and hue judged only",
+       "mask IoU 0.37 < 0.45"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-24T05:57"
+   },
+   "sheets": [
+    "artifacts/building-recipes/oba-osdorp/contact-walls-0.png",
+    "artifacts/building-recipes/oba-osdorp/contact-walls-1.png",
+    "artifacts/building-recipes/oba-osdorp/contact-walls-2.png",
+    "artifacts/building-recipes/oba-osdorp/contact-walls-3.png",
+    "artifacts/building-recipes/oba-osdorp/contact-walls-4.png",
+    "artifacts/building-recipes/oba-osdorp/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "closest of the batch (all WARN): mask IoU low, wall too light vs photo painted-black on walls[1]",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012248844",
@@ -327,14 +685,101 @@
     4.8350577,
     52.364284
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "oba-postjesweg-248844",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:55:58.742Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:57:19.209Z",
    "notes": [
-    "2026-10-23T20:56 crops: 7 usable walls in 16 s"
+    "2026-10-23T20:56 crops: 7 usable walls in 16 s",
+    "2026-10-24T05:57 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:57 draft: 8 groups (0 on a street), 55 panels blank",
+    "2026-10-24T05:57 measured groups 0,1,7 in 10 s",
+    "2026-10-24T05:57 compiled: 19225 tris, gates FAIL triangle-budget,eaves-vs-3dbag/walls[1],eaves-vs-3dbag/walls[2], likeness g0:FAIL g1:FAIL g2:NO EVIDENCE g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/oba-postjesweg-248844/contact-walls-3.png |   artifacts/building-recipes/oba-postjesweg-248844/contact-walls-4.png |   artifacts/bu)"
    ],
-   "updatedAt": "2026-10-23T20:56:14.477Z"
+   "updatedAt": "2026-10-24T05:57:41.565Z",
+   "report": {
+    "triangles": 19225,
+    "bytes": 1384728,
+    "gatesFailing": [
+     "triangle-budget",
+     "eaves-vs-3dbag/walls[1]",
+     "eaves-vs-3dbag/walls[2]"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall not drawn",
+       "glazing storey band off by 0.70 mean 1.00 vs photo 0.72"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.19",
+       "wall family unresolved (#312f2b is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "obliquity 50.8 deg > 45"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall not drawn",
+       "glazing  mean 1.00 vs photo 0.89",
+       "wall family unresolved (#0e1411 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-24T05:57"
+   },
+   "sheets": [
+    "artifacts/building-recipes/oba-postjesweg-248844/contact-walls-0.png",
+    "artifacts/building-recipes/oba-postjesweg-248844/contact-walls-1.png",
+    "artifacts/building-recipes/oba-postjesweg-248844/contact-walls-2.png",
+    "artifacts/building-recipes/oba-postjesweg-248844/contact-walls-3.png",
+    "artifacts/building-recipes/oba-postjesweg-248844/contact-walls-4.png",
+    "artifacts/building-recipes/oba-postjesweg-248844/contact-walls-5.png",
+    "artifacts/building-recipes/oba-postjesweg-248844/contact-walls-6.png",
+    "artifacts/building-recipes/oba-postjesweg-248844/contact-walls-7.png",
+    "artifacts/building-recipes/oba-postjesweg-248844/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "no-evidence",
+    "note": "2018 photos show the building under construction; need a newer panorama",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012073560",
@@ -347,14 +792,97 @@
     4.9764586,
     52.2962871
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "oba-reigersbos-073560",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:56:14.477Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:57:41.567Z",
    "notes": [
-    "2026-10-23T20:56 crops: 8 usable walls in 18 s"
+    "2026-10-23T20:56 crops: 8 usable walls in 18 s",
+    "2026-10-24T05:57 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:57 draft: 8 groups (0 on a street), 33 panels blank",
+    "2026-10-24T05:57 measured groups 3,4,7 in 4 s",
+    "2026-10-24T05:57 compiled: 10145 tris, gates FAIL eaves-vs-3dbag/walls[3], likeness g0:NO EVIDENCE g1:NO PHOTO g2:NO PHOTO g3:FAIL g4:FAIL g5:NO PHOTO g6:NO PHOTO g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/oba-reigersbos-073560/contact-walls-3.png |   artifacts/building-recipes/oba-reigersbos-073560/contact-walls-4.png |   artifacts/bu)"
    ],
-   "updatedAt": "2026-10-23T20:56:32.791Z"
+   "updatedAt": "2026-10-24T05:57:54.279Z",
+   "report": {
+    "triangles": 10145,
+    "bytes": 746748,
+    "gatesFailing": [
+     "eaves-vs-3dbag/walls[3]"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "foliage 37 % > 25 %"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 2,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 3,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing  mean 0.36 vs photo 0.25"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.43 mean 0.29 vs photo 0.61"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall not drawn",
+       "glazing  mean 1.00 vs photo 0.89",
+       "wall family unresolved (#28242a is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-24T05:57"
+   },
+   "sheets": [
+    "artifacts/building-recipes/oba-reigersbos-073560/contact-walls-0.png",
+    "artifacts/building-recipes/oba-reigersbos-073560/contact-walls-1.png",
+    "artifacts/building-recipes/oba-reigersbos-073560/contact-walls-2.png",
+    "artifacts/building-recipes/oba-reigersbos-073560/contact-walls-3.png",
+    "artifacts/building-recipes/oba-reigersbos-073560/contact-walls-4.png",
+    "artifacts/building-recipes/oba-reigersbos-073560/contact-walls-5.png",
+    "artifacts/building-recipes/oba-reigersbos-073560/contact-walls-6.png",
+    "artifacts/building-recipes/oba-reigersbos-073560/contact-walls-7.png",
+    "artifacts/building-recipes/oba-reigersbos-073560/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "photo walls are grey stone/brick; model orange; eaves gate on walls[3]",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012241007",
@@ -367,14 +895,94 @@
     4.8199166,
     52.3786962
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "oba-slotermeer-241007",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:56:32.792Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:57:54.280Z",
    "notes": [
-    "2026-10-23T20:56 crops: 6 usable walls in 9 s"
+    "2026-10-23T20:56 crops: 6 usable walls in 9 s",
+    "2026-10-24T05:57 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:57 draft: 8 groups (0 on a street), 25 panels blank",
+    "2026-10-24T05:58 measured groups 0,1 in 5 s",
+    "2026-10-24T05:58 compiled: 6730 tris, gates FAIL eaves-vs-3dbag/walls[2],eaves-vs-3dbag/walls[3],eaves-vs-3dbag/walls[5], likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-3.png |   artifacts/building-recipes/oba-slotermeer-241007/contact-walls-4.png |   artifacts/bu)"
    ],
-   "updatedAt": "2026-10-23T20:56:41.302Z"
+   "updatedAt": "2026-10-24T05:58:07.447Z",
+   "report": {
+    "triangles": 6730,
+    "bytes": 492868,
+    "gatesFailing": [
+     "eaves-vs-3dbag/walls[2]",
+     "eaves-vs-3dbag/walls[3]",
+     "eaves-vs-3dbag/walls[5]"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.41 mean 0.28 vs photo 0.53"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall not drawn",
+       "glazing storey band off by 0.41 mean 1.00 vs photo 0.80"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 3,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-10-24T05:58"
+   },
+   "sheets": [
+    "artifacts/building-recipes/oba-slotermeer-241007/contact-walls-0.png",
+    "artifacts/building-recipes/oba-slotermeer-241007/contact-walls-1.png",
+    "artifacts/building-recipes/oba-slotermeer-241007/contact-walls-2.png",
+    "artifacts/building-recipes/oba-slotermeer-241007/contact-walls-3.png",
+    "artifacts/building-recipes/oba-slotermeer-241007/contact-walls-4.png",
+    "artifacts/building-recipes/oba-slotermeer-241007/contact-walls-5.png",
+    "artifacts/building-recipes/oba-slotermeer-241007/contact-walls-6.png",
+    "artifacts/building-recipes/oba-slotermeer-241007/contact-walls-7.png",
+    "artifacts/building-recipes/oba-slotermeer-241007/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "walls[1] classed curtain-wall from a foliage-occluded crop; brick-grey in photo",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012239985",
@@ -427,14 +1035,105 @@
     4.8053967,
     52.3580513
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "stadsloket-nieuw-west-253671",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:56:42.048Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:58:07.448Z",
    "notes": [
-    "2026-10-23T20:57 crops: 19 usable walls in 39 s"
+    "2026-10-23T20:57 crops: 19 usable walls in 39 s",
+    "2026-10-24T05:58 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:58 draft: 8 groups (0 on a street), 103 panels blank",
+    "2026-10-24T05:58 measured groups 0,1,3,4,6,7 in 12 s",
+    "2026-10-24T05:58 compiled: 14366 tris, gates FAIL triangle-budget, likeness g0:WARN g1:FAIL g2:NO PHOTO g3:FAIL g4:FAIL g5:NO PHOTO g6:WARN g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-3.png |   artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-4.png | )"
    ],
-   "updatedAt": "2026-10-23T20:57:21.477Z"
+   "updatedAt": "2026-10-24T05:58:31.227Z",
+   "report": {
+    "triangles": 14366,
+    "bytes": 1066584,
+    "gatesFailing": [
+     "triangle-budget"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "WARN",
+      "reasons": [
+       "wall family unresolved (#232122 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+       "mask IoU 0.29 < 0.45"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall not drawn",
+       "glazing  mean 1.00 vs photo 0.77",
+       "wall family unresolved (#39342e is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 3,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.34"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall dL +0.20",
+       "glazing storey band off by 0.31 mean 0.22 vs photo 0.04"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "WARN",
+      "reasons": [
+       "wall family unresolved (#292729 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+       "mask IoU 0.257 < 0.45"
+      ]
+     },
+     {
+      "group": 7,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall dL +0.28",
+       "wall family unresolved (#3a2e2c is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-24T05:58"
+   },
+   "sheets": [
+    "artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-0.png",
+    "artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-1.png",
+    "artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-2.png",
+    "artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-3.png",
+    "artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-4.png",
+    "artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-5.png",
+    "artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-6.png",
+    "artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-walls-7.png",
+    "artifacts/building-recipes/stadsloket-nieuw-west-253671/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "no-evidence",
+    "note": "2021-22 photos are scaffolding and a site hut; need a newer panorama",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012090647",
@@ -520,14 +1219,17 @@
     4.9219157,
     52.4046484
    ],
-   "status": "crops",
+   "status": "no-evidence",
    "house": "bovenij-ziekenhuis-090318",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:57:22.516Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:58:31.228Z",
    "notes": [
-    "2026-10-23T20:57 crops: 12 usable walls in 4 s"
+    "2026-10-23T20:57 crops: 12 usable walls in 4 s",
+    "2026-10-24T05:58 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:58 draft: 8 groups (0 on a street), 222 panels blank",
+    "2026-10-24T05:58 measure wrote nothing (no group matched a crop):   walls[2] no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 320 |   walls[3] no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 266 |   walls[4] no photo: no archived crop "
    ],
-   "updatedAt": "2026-10-23T20:57:26.265Z"
+   "updatedAt": "2026-10-24T05:58:39.490Z"
   },
   {
    "id": "0363100012149878",
@@ -540,14 +1242,16 @@
     4.8648434,
     52.3513403
    ],
-   "status": "crops",
+   "status": "no-evidence",
    "house": "amsterdams-lyceum",
    "notes": [
-    "authored recipe houses/amsterdams-lyceum exists and is not installed: the factory keeps its intent, measures and compiles it"
+    "authored recipe houses/amsterdams-lyceum exists and is not installed: the factory keeps its intent, measures and compiles it",
+    "2026-10-24T05:58 draft: hand-authored intent kept",
+    "2026-10-24T05:58 measure wrote nothing (no group matched a crop): amsterdams-lyceum |   walls[0] panel 47: no matched photo |   walls[1] panel 110: no matched photo |   walls[0] no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 47 |   walls[1] no photo"
    ],
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:57:26.266Z",
-   "updatedAt": "2026-10-23T20:57:26.267Z"
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:58:39.491Z",
+   "updatedAt": "2026-10-24T05:58:40.798Z"
   },
   {
    "id": "poi:school-berlage-lyceum-tijdelijke-locatie-bovenbouw",
@@ -606,14 +1310,45 @@
     4.9254033,
     52.3586234
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "metis-montessori-080098",
    "notes": [
-    "authored recipe houses/metis-montessori-080098 exists and is not installed: the factory keeps its intent, measures and compiles it"
+    "authored recipe houses/metis-montessori-080098 exists and is not installed: the factory keeps its intent, measures and compiles it",
+    "2026-10-24T05:58 draft: hand-authored intent kept",
+    "2026-10-24T05:58 measured groups 0 in 2 s",
+    "2026-10-24T05:58 compiled: 900 tris, gates pass, likeness g0:FAIL"
    ],
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:57:26.497Z",
-   "updatedAt": "2026-10-23T20:57:26.498Z"
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:58:40.800Z",
+   "updatedAt": "2026-10-24T05:58:45.272Z",
+   "report": {
+    "triangles": 900,
+    "bytes": 70936,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "window shape wide vs photo tall",
+       "columns 5 vs photo 29"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-24T05:58"
+   },
+   "sheets": [
+    "artifacts/building-recipes/metis-montessori-080098/contact-walls-0.png",
+    "artifacts/building-recipes/metis-montessori-080098/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "dark brick right; columns 5 vs photo 29 and window wide vs tall: apply measured columns and window shape",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012080630",
@@ -626,14 +1361,52 @@
     4.9438059,
     52.363092
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "oostpoort-montessori-080630",
    "notes": [
-    "authored recipe houses/oostpoort-montessori-080630 exists and is not installed: the factory keeps its intent, measures and compiles it"
+    "authored recipe houses/oostpoort-montessori-080630 exists and is not installed: the factory keeps its intent, measures and compiles it",
+    "2026-10-24T05:58 draft: hand-authored intent kept",
+    "2026-10-24T05:58 measured groups 0,1 in 3 s",
+    "2026-10-24T05:58 compiled: 4119 tris, gates pass, likeness g0:FAIL g1:WARN"
    ],
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:57:26.499Z",
-   "updatedAt": "2026-10-23T20:57:26.499Z"
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:58:45.273Z",
+   "updatedAt": "2026-10-24T05:58:52.272Z",
+   "report": {
+    "triangles": 4119,
+    "bytes": 312740,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "window shape wide vs photo square"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.391 < 0.45"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-24T05:58"
+   },
+   "sheets": [
+    "artifacts/building-recipes/oostpoort-montessori-080630/contact-walls-0.png",
+    "artifacts/building-recipes/oostpoort-montessori-080630/contact-walls-1.png",
+    "artifacts/building-recipes/oostpoort-montessori-080630/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "brick, roof and storeys right; window shape wide vs photo square on walls[0]; close to pass",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "poi:school-rietveldschool",
@@ -685,14 +1458,98 @@
     4.9254988,
     52.336456
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "spinoza20first-253721",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:57:26.500Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:58:52.273Z",
    "notes": [
-    "2026-10-23T20:57 crops: 8 usable walls in 11 s"
+    "2026-10-23T20:57 crops: 8 usable walls in 11 s",
+    "2026-10-24T05:58 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:58 draft: 8 groups (0 on a street), 82 panels blank",
+    "2026-10-24T05:59 measured groups 0,6 in 8 s",
+    "2026-10-24T05:59 compiled: 10673 tris, gates FAIL eaves-vs-3dbag/walls[2], likeness g0:FAIL g1:NO PHOTO g2:NO EVIDENCE g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:FAIL g7:NO EVIDENCE (large.ts exited non-zero:   artifacts/building-recipes/spinoza20first-253721/contact-walls-3.png |   artifacts/building-recipes/spinoza20first-253721/contact-walls-4.png |   artifacts/bu)"
    ],
-   "updatedAt": "2026-10-23T20:57:37.463Z"
+   "updatedAt": "2026-10-24T05:59:09.337Z",
+   "report": {
+    "triangles": 10673,
+    "bytes": 794768,
+    "gatesFailing": [
+     "eaves-vs-3dbag/walls[2]"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall family paint vs photo brick"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 2,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "foliage 51 % > 25 %",
+       "obliquity 47.4 deg > 45"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.34",
+       "window shape wide vs photo tall",
+       "wall family unresolved (#505d58 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 7,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "obliquity 49.7 deg > 45"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-24T05:59"
+   },
+   "sheets": [
+    "artifacts/building-recipes/spinoza20first-253721/contact-walls-0.png",
+    "artifacts/building-recipes/spinoza20first-253721/contact-walls-1.png",
+    "artifacts/building-recipes/spinoza20first-253721/contact-walls-2.png",
+    "artifacts/building-recipes/spinoza20first-253721/contact-walls-3.png",
+    "artifacts/building-recipes/spinoza20first-253721/contact-walls-4.png",
+    "artifacts/building-recipes/spinoza20first-253721/contact-walls-5.png",
+    "artifacts/building-recipes/spinoza20first-253721/contact-walls-6.png",
+    "artifacts/building-recipes/spinoza20first-253721/contact-walls-7.png",
+    "artifacts/building-recipes/spinoza20first-253721/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "photo is white/grey panel and glass; model orange brick on unphotographed walls and paint-grey green on walls[6]",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012098925",
@@ -709,17 +1566,20 @@
     4.9467385,
     52.365508
    ],
-   "status": "error",
+   "status": "no-evidence",
    "house": "pand-098925",
-   "owner": "smoke",
-   "claimedAt": "2026-10-23T20:41:15.814Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:59:09.338Z",
    "notes": [
     "2026-10-23T20:41 crops: 13 usable walls in 41 s",
     "2026-10-23T20:42 facts failed:       at Immediate._onImmediate (node:internal/deps/undici/undici:2387:11) |       at process.processImmediate (node:internal/timers:574:21) { |     code: 'UND_ERR_CONNECT_TIMEOUT' |   } | } | Node.js v26.8.1",
     "2026-10-23T20:45 crops: 13 usable walls in 16 s",
-    "2026-10-23T20:45 facts failed: [TypeError: fetch failed] { |   [cause]: ConnectTimeoutError: Connect Timeout Error (attempted address: api.3dbag.nl:443, timeout: 10000ms) |     code: 'UND_ERR_CONNECT_TIMEOUT' |   } | } | Node.js v26.8.1"
+    "2026-10-23T20:45 facts failed: [TypeError: fetch failed] { |   [cause]: ConnectTimeoutError: Connect Timeout Error (attempted address: api.3dbag.nl:443, timeout: 10000ms) |     code: 'UND_ERR_CONNECT_TIMEOUT' |   } | } | Node.js v26.8.1",
+    "2026-10-24T05:59 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:59 draft: 8 groups (0 on a street), 84 panels blank",
+    "2026-10-24T05:59 measure wrote nothing (no group matched a crop):   walls[2] no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 42 |   walls[3] no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 58 |   walls[4] no photo: no archived crop wi"
    ],
-   "updatedAt": "2026-10-23T20:45:50.616Z"
+   "updatedAt": "2026-10-24T05:59:13.904Z"
   },
   {
    "id": "0363100012186093",
@@ -736,14 +1596,16 @@
     4.91451535,
     52.3648261
    ],
-   "status": "crops",
+   "status": "no-evidence",
    "house": "plantage-middenlaan-52-186093",
    "notes": [
-    "authored recipe houses/plantage-middenlaan-52-186093 exists and is not installed: the factory keeps its intent, measures and compiles it"
+    "authored recipe houses/plantage-middenlaan-52-186093 exists and is not installed: the factory keeps its intent, measures and compiles it",
+    "2026-10-24T05:59 draft: hand-authored intent kept",
+    "2026-10-24T05:59 measure wrote nothing (no group matched a crop):   walls[0] panel 8: no matched photo |   walls[1] panel 98: no matched photo |   walls[2] panel 24: no matched photo |   walls[0] no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 8 |   "
    ],
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:57:37.463Z",
-   "updatedAt": "2026-10-23T20:57:37.464Z"
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:59:13.905Z",
+   "updatedAt": "2026-10-24T05:59:16.398Z"
   },
   {
    "id": "0363100012243823",
@@ -760,14 +1622,98 @@
     4.914284500000001,
     52.3909635
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "pand-243823",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:57:37.465Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:59:16.399Z",
    "notes": [
-    "2026-10-23T20:58 crops: 20 usable walls in 57 s"
+    "2026-10-23T20:58 crops: 20 usable walls in 57 s",
+    "2026-10-24T05:59 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:59 draft: 8 groups (0 on a street), 27 panels blank",
+    "2026-10-24T05:59 measured groups 1,3,6,7 in 10 s",
+    "2026-10-24T05:59 compiled: 9041 tris, gates FAIL footprint-vs-bag, likeness g0:NO PHOTO g1:FAIL g2:NO PHOTO g3:WARN g4:NO PHOTO g5:NO PHOTO g6:FAIL g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-243823/contact-walls-3.png |   artifacts/building-recipes/pand-243823/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T20:58:34.636Z"
+   "updatedAt": "2026-10-24T05:59:35.974Z",
+   "report": {
+    "triangles": 9041,
+    "bytes": 664916,
+    "gatesFailing": [
+     "footprint-vs-bag"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.19",
+       "wall family unresolved (#382a29 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 3,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.197 < 0.45"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.24"
+      ]
+     },
+     {
+      "group": 7,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.16",
+       "window shape none vs photo square",
+       "wall family unresolved (#3e2f2f is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-24T05:59"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-243823/contact-walls-0.png",
+    "artifacts/building-recipes/pand-243823/contact-walls-1.png",
+    "artifacts/building-recipes/pand-243823/contact-walls-2.png",
+    "artifacts/building-recipes/pand-243823/contact-walls-3.png",
+    "artifacts/building-recipes/pand-243823/contact-walls-4.png",
+    "artifacts/building-recipes/pand-243823/contact-walls-5.png",
+    "artifacts/building-recipes/pand-243823/contact-walls-6.png",
+    "artifacts/building-recipes/pand-243823/contact-walls-7.png",
+    "artifacts/building-recipes/pand-243823/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "dark brick fronts right; side walls default orange; footprint gate red",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012087570",
@@ -784,14 +1730,100 @@
     4.94556505,
     52.3656765
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "pand-087570",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:58:34.636Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:59:35.975Z",
    "notes": [
-    "2026-10-23T20:58 crops: 11 usable walls in 25 s"
+    "2026-10-23T20:58 crops: 11 usable walls in 25 s",
+    "2026-10-24T05:59 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:59 draft: 8 groups (0 on a street), 53 panels blank",
+    "2026-10-24T05:59 measured groups 0,1,3,5 in 9 s",
+    "2026-10-24T05:59 compiled: 12573 tris, gates FAIL triangle-budget, likeness g0:FAIL g1:FAIL g2:NO EVIDENCE g3:FAIL g4:NO PHOTO g5:FAIL g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-087570/contact-walls-3.png |   artifacts/building-recipes/pand-087570/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T20:58:59.478Z"
+   "updatedAt": "2026-10-24T05:59:54.856Z",
+   "report": {
+    "triangles": 12573,
+    "bytes": 927164,
+    "gatesFailing": [
+     "triangle-budget"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.17",
+       "window shape tall vs photo square"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.61 mean 0.28 vs photo 0.46"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "obliquity 52 deg > 45"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "FAIL",
+      "reasons": [
+       "window shape tall vs photo wide"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall dL +0.22",
+       "glazing  mean 0.19 vs photo 0.32",
+       "wall family unresolved (#404446 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-10-24T05:59"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-087570/contact-walls-0.png",
+    "artifacts/building-recipes/pand-087570/contact-walls-1.png",
+    "artifacts/building-recipes/pand-087570/contact-walls-2.png",
+    "artifacts/building-recipes/pand-087570/contact-walls-3.png",
+    "artifacts/building-recipes/pand-087570/contact-walls-4.png",
+    "artifacts/building-recipes/pand-087570/contact-walls-5.png",
+    "artifacts/building-recipes/pand-087570/contact-walls-6.png",
+    "artifacts/building-recipes/pand-087570/contact-walls-7.png",
+    "artifacts/building-recipes/pand-087570/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "yellow-brown brick photo vs orange model; window shape tall vs photo square; triangle budget",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012111954",
@@ -808,14 +1840,102 @@
     4.865425999999999,
     52.3760895
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "pand-111954",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:58:59.478Z",
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T05:59:54.856Z",
    "notes": [
-    "2026-10-23T20:59 crops: 16 usable walls in 37 s"
+    "2026-10-23T20:59 crops: 16 usable walls in 37 s",
+    "2026-10-24T05:59 facts: no routing street within 30 m; groups will be unnamed",
+    "2026-10-24T05:59 draft: 8 groups (0 on a street), 25 panels blank",
+    "2026-10-24T05:59 measured groups 0,2,5,6 in 3 s",
+    "2026-10-24T06:00 compiled: 5416 tris, gates pass, likeness g0:FAIL g1:NO EVIDENCE g2:FAIL g3:NO PHOTO g4:NO EVIDENCE g5:FAIL g6:FAIL g7:NO PHOTO"
    ],
-   "updatedAt": "2026-10-23T20:59:36.157Z"
+   "updatedAt": "2026-10-24T06:00:04.750Z",
+   "report": {
+    "triangles": 5416,
+    "bytes": 406428,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing  mean 0.34 vs photo 0.49",
+       "wall family unresolved (#312b24 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "obliquity 54.7 deg > 45"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing  mean 0.26 vs photo 0.39",
+       "columns 20 vs photo 11"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 4,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "foliage 35 % > 25 %"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall not drawn",
+       "glazing  mean 1.00 vs photo 0.76",
+       "wall family unresolved (#3a3329 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 6,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing  mean 0.35 vs photo 0.53",
+       "columns 18 vs photo 10"
+      ]
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-10-24T06:00"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-111954/contact-walls-0.png",
+    "artifacts/building-recipes/pand-111954/contact-walls-1.png",
+    "artifacts/building-recipes/pand-111954/contact-walls-2.png",
+    "artifacts/building-recipes/pand-111954/contact-walls-3.png",
+    "artifacts/building-recipes/pand-111954/contact-walls-4.png",
+    "artifacts/building-recipes/pand-111954/contact-walls-5.png",
+    "artifacts/building-recipes/pand-111954/contact-walls-6.png",
+    "artifacts/building-recipes/pand-111954/contact-walls-7.png",
+    "artifacts/building-recipes/pand-111954/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "fix",
+    "note": "photo walls grey/black low hall; model orange block on unphotographed walls; columns 20 vs 11",
+    "sheet": "artifacts/strips/factory-batch-1",
+    "date": "2026-10-24",
+    "model": "opus"
+   }
   },
   {
    "id": "0363100012165086",
@@ -832,15 +1952,17 @@
     4.891564000000001,
     52.367475
    ],
-   "status": "crops",
+   "status": "error",
    "house": "singel-457-165086",
    "notes": [
     "authored recipe houses/singel-457-165086 exists and is not installed: the factory keeps its intent, measures and compiles it",
-    "2026-10-23T20:59 crops: 8 usable walls in 14 s"
+    "2026-10-23T20:59 crops: 8 usable walls in 14 s",
+    "2026-10-24T06:00 draft: hand-authored intent kept",
+    "2026-10-24T06:00 measure failed:   walls[1] kit gap window-shape-range: measured 0.75x1 outside the windowShape range | /Users/blackmad/Code/map-recall2-worktrees/integrator-plan/scripts/building-recipes/measure.ts:171 |     intent.notes = [...(intent.notes ?? []).filter(t => !t.startsWith('Measured ')), `Measured ${today()} (measure.ts, evidence in measured.json): groups ${measuredGroups.join(', ')} take the photo's wall and glass colour, window shape, bay count and front class${notes.length ? '; ' + notes.join('; ') : ''}.`]; |                                             ^ | TypeError: (intent.notes ?? []).filter is not a function or its return value is not iterable | Node.js v26.8.1"
    ],
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T20:59:36.157Z",
-   "updatedAt": "2026-10-23T20:59:50.444Z"
+   "owner": "factory-1",
+   "claimedAt": "2026-10-24T06:00:04.750Z",
+   "updatedAt": "2026-10-24T06:00:08.424Z"
   },
   {
    "id": "0363100012165488",
