@@ -207,7 +207,10 @@ export class GroundField {
   // Keyed by `tx * 2^21 + ty` (tile indices are small and non-negative in RD), not a `${tx}_${ty}` string:
   // sampleAt runs millions of times while riding (footprint bases, decks, poses) and building the string key
   // per sample was most of its cost (docs/perf-motion-stutter-20261016.md).
-  private readonly tiles = new Map<number, Float32Array>();
+  // A measured tile is whole centimetres (decodeTile), so it is kept as its int16 cm samples (NODATA for NaN): half
+  // the Float32 bytes, the same heights (2026-10-24, phones: ~24 MB of resident relief per thread). Upsampled and
+  // extended tiles are not whole centimetres and stay Float32.
+  private readonly tiles = new Map<number, Int16Array | Float32Array>();
   private readonly n: number;
   constructor(readonly stepM: number, readonly tileSizeM: number) { this.n = Math.round(tileSizeM / stepM); }
   get samples(): number { return this.n; }
@@ -217,7 +220,7 @@ export class GroundField {
 
   addTile(tx: number, ty: number, heights: Float32Array): void {
     if (heights.length !== this.samples * this.samples) throw new Error('ground tile size mismatch');
-    this.tiles.set(GroundField.key(tx, ty), heights);
+    this.tiles.set(GroundField.key(tx, ty), wholeCentimetres(heights) ?? heights);
   }
 
   removeTile(tx: number, ty: number): void { this.tiles.delete(GroundField.key(tx, ty)); }
@@ -226,7 +229,10 @@ export class GroundField {
   sampleAt(gi: number, gj: number): number {
     const n = this.n, tx = Math.floor(gi / n), ty = Math.floor(gj / n);
     const t = this.tiles.get(GroundField.key(tx, ty));
-    return t ? t[(gj - ty * n) * n + (gi - tx * n)] : NaN;
+    if (!t) return NaN;
+    const v = t[(gj - ty * n) * n + (gi - tx * n)];
+    if (t.BYTES_PER_ELEMENT !== 2) return v;
+    return v === NODATA ? NaN : Math.fround(v / 100);
   }
 
   /** Bilinear height at RD (x, y), metres NAP; NaN outside loaded tiles. */
@@ -243,6 +249,19 @@ export class GroundField {
     }
     return (a * (1 - u) + b * u) * (1 - v) + (c * (1 - u) + d * u) * v;
   }
+}
+
+/** The tile as int16 centimetres when that is exact (every sample NaN or a Float32 `q / 100`), else null. */
+function wholeCentimetres(heights: Float32Array): Int16Array | null {
+  const out = new Int16Array(heights.length);
+  for (let k = 0; k < heights.length; k++) {
+    const v = heights[k];
+    if (v !== v) { out[k] = NODATA; continue; }
+    const q = Math.round(v * 100);
+    if (q < -32767 || q > 32767 || Math.fround(q / 100) !== v) return null;
+    out[k] = q;
+  }
+  return out;
 }
 
 /**

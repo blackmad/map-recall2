@@ -139,6 +139,8 @@ export class OwnGround {
   private workerReady = false;
   private readonly base: Record<string, any> = {};
   private readonly resident = new Map<string, Resident>();
+  /** The keys `wantedCells` gave at the last residency update (coversRider). */
+  private wantedKeys: ReadonlySet<string> = new Set();
   /** Keys of resident cells still dissolving in (empty when idle: no per-frame work). */
   private readonly fading = new Set<string>();
   private readonly pending = new Map<string, 0 | 1>();
@@ -320,11 +322,15 @@ export class OwnGround {
    */
   drapesOverlays(): boolean { return this.visibleAtZoom(this.zoom) && this.resident.size > 0 && this.coversRider(); }
 
-  /** The rider's cell and its 8 neighbours are drawn: the basemap's ground underneath is redundant. */
+  /**
+   * The rider's cell and those of its 8 neighbours the ring wants are drawn: the basemap's ground underneath is
+   * redundant. With the 1400 m desktop ring that is all 8; the phone ring (a few hundred metres, the chase view's
+   * reach) wants only the neighbours near the rider.
+   */
   private coversRider(): boolean {
     if (!this.centre || !this.ready) return false;
     const key = this.store.cellAt(this.centre[0], this.centre[1]);
-    return GroundStore.neighbours(key).every(k => this.resident.has(k) || !this.store.covers(k)) && this.resident.has(key);
+    return GroundStore.neighbours(key).every(k => this.resident.has(k) || !this.store.covers(k) || !this.wantedKeys.has(k)) && this.resident.has(key);
   }
 
   private setBasemapHidden(hidden: boolean): void {
@@ -360,8 +366,7 @@ export class OwnGround {
       const key = `${cx + dx}_${cy + dy}`;
       if (!this.store.covers(key)) continue;
       const rect = this.store.cellRect(key), d = this.rectDistance(rect, this.centre);
-      // The rider's cell and its 8 neighbours always (coversRider hides the basemap's ground only then), however small R is.
-      if (d > R && (Math.abs(dx) > 1 || Math.abs(dy) > 1)) continue;
+      if (d > R) continue;
       const near: [number, number] = [Math.max(rect[0], Math.min(rect[2], x)), Math.max(rect[1], Math.min(rect[3], y))];
       out.push({ key, lod: d <= this.opts.nearM ? 0 : 1, d, rank: direction ? aheadRankXY(this.centre, near, direction) : d });
     }
@@ -373,6 +378,7 @@ export class OwnGround {
     this.residencyAt = [this.centre[0], this.centre[1]];
     const wanted = this.wantedCells();
     const keep = new Set(wanted.map(w => w.key));
+    this.wantedKeys = keep;
     for (const key of [...this.resident.keys()]) if (!keep.has(key)) this.drop(key);
     for (const key of [...this.pending.keys()]) if (!keep.has(key)) this.pending.delete(key);
     for (let i = this.installQueue.length - 1; i >= 0; i--) if (!keep.has(this.installQueue[i].key)) this.installQueue.splice(i, 1);
