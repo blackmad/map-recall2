@@ -58,7 +58,7 @@ export interface PocketCover<S extends string> { meshes: readonly MeshArrays[]; 
  * round so no sliver of land is left under the bands' edges (the fill lies
  * under them). Returns a mesh per surface and what it did.
  */
-export function fillPockets<S extends string>(cover: readonly PocketCover<S>[], rect: readonly [number, number, number, number], junctions: readonly Vec2[], height: HeightFn, lift: number, opts: { res?: number; maxM2?: number; nearM?: number; gaps?: readonly SurveyGap[] } = {}): { meshes: Partial<Record<S, MeshArrays>>; stats: PocketStats } {
+export function fillPockets<S extends string>(cover: readonly PocketCover<S>[], rect: readonly [number, number, number, number], junctions: readonly Vec2[], height: HeightFn, lift: number, opts: { res?: number; maxM2?: number; nearM?: number; gaps?: readonly SurveyGap[]; /** Texels a drawn surface already covers (roads lane R1: the version-2 verges, islands and squares): never a pocket. */ occupied?: (x: number, y: number) => boolean } = {}): { meshes: Partial<Record<S, MeshArrays>>; stats: PocketStats } {
   const t0 = Date.now();
   const res = opts.res ?? POCKET_RES_M, maxM2 = opts.maxM2 ?? POCKET_MAX_M2, nearM = opts.nearM ?? POCKET_NEAR_M;
   const [x0, y0, x1, y1] = rect;
@@ -73,6 +73,8 @@ export function fillPockets<S extends string>(cover: readonly PocketCover<S>[], 
   const raster = new Uint8Array(W * H);
   const votes = cover.map(c => c.as);
   cover.forEach((c, k) => { for (const m of c.meshes) rasterise(m, raster, k + 1, x0, y0, W, H, res); });
+  // A texel under a surface the partition drew is not bare land: the pocket and the survey-gap discs leave it alone.
+  if (opts.occupied) for (let j = 0; j < H; j++) for (let i = 0; i < W; i++) if (raster[j * W + i] === 0 && opts.occupied(x0 + (i + 0.5) * res, y0 + (j + 0.5) * res)) raster[j * W + i] = 255;
   const grow = res / 2;
   /** Pave sorted pixel indices as row runs, each grown by half a pixel all round. */
   const pave = (as: S, members: number[]): void => {

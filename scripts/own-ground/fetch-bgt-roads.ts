@@ -6,6 +6,8 @@
 //   npx tsx scripts/own-ground/fetch-bgt-roads.ts --cells -3_-1,-2_0   # some cells
 //   npx tsx scripts/own-ground/fetch-bgt-roads.ts --offline            # report the cache only
 //   npx tsx scripts/own-ground/fetch-bgt-roads.ts --concurrency 4      # default 6 (the API's polite ceiling)
+//   npx tsx scripts/own-ground/fetch-bgt-roads.ts --collection ondersteunendwegdeel   # verges, islands (R1, 2026-10-23)
+//   npx tsx scripts/own-ground/fetch-bgt-roads.ts --collection onbegroeidterreindeel  # paved squares, verhard only
 //
 // Source: BGT (Basisregistratie Grootschalige Topografie), Kadaster, via PDOK
 //   https://api.pdok.nl/lv/bgt/ogc/v1/collections/wegdeel  (licence CC0 1.0)
@@ -19,11 +21,23 @@
 // registration end, and the bronhouder (kerb matching across its borders), for every
 // functie, so the build decides what to keep.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname } from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';
 import { cellBounds, elevationIndex } from './game-cells.ts';
 
-const API = 'https://api.pdok.nl/lv/bgt/ogc/v1/collections/wegdeel/items';
+const API_BASE = 'https://api.pdok.nl/lv/bgt/ogc/v1/collections';
 export const BGT_ROADS_CACHE = 'artifacts/own-ground/raw/bgt-roads';
+/**
+ * The collections a cell can be fetched from (roads lane R1, 2026-10-23): `wegdeel` is the roads-v1 base and keeps the
+ * cache root (the archive's 2026-10-16 pull); the verges, islands and paved squares go to a subdirectory each.
+ * onbegroeidterreindeel keeps the verhard classes only (open and closed paving, half paved): the `erf` yards and the
+ * unpaved ground are not roads, and the 6,500-feature `erf` cells would be most of the bytes.
+ */
+export const BGT_ROAD_COLLECTIONS = ['wegdeel', 'ondersteunendwegdeel', 'onbegroeidterreindeel'] as const;
+export type BgtRoadCollection = typeof BGT_ROAD_COLLECTIONS[number];
+const KEEP_FYSIEK: Partial<Record<BgtRoadCollection, RegExp>> = { onbegroeidterreindeel: /^(gesloten verharding|open verharding|half verhard)$/ };
+export const cachePathOf = (key: string, collection: BgtRoadCollection = 'wegdeel'): string =>
+  collection === 'wegdeel' ? `${BGT_ROADS_CACHE}/${key}.json.gz` : `${BGT_ROADS_CACHE}/${collection}/${key}.json.gz`;
 /** ~30 m in degrees at Amsterdam (lng, lat). */
 export const PAD_DEG: [number, number] = [0.00044, 0.00027];
 
@@ -49,8 +63,8 @@ export interface RawWegdeel {
 
 export interface RawRoadsCell { version: 1; key: string; bbox: [number, number, number, number]; fetched: string; features: RawWegdeel[] }
 
-export function readRawRoadsCell(key: string): RawRoadsCell | null {
-  const file = `${BGT_ROADS_CACHE}/${key}.json.gz`;
+export function readRawRoadsCell(key: string, collection: BgtRoadCollection = 'wegdeel'): RawRoadsCell | null {
+  const file = cachePathOf(key, collection);
   if (!existsSync(file)) return null;
   return JSON.parse(gunzipSync(readFileSync(file)).toString()) as RawRoadsCell;
 }
@@ -68,11 +82,12 @@ async function getJson(url: string): Promise<any> {
 
 const r7 = (v: number) => Math.round(v * 1e7) / 1e7;
 
-/** Fetch one cell (all current wegdeel features, every functie) and cache it. */
-export async function fetchRoadsCell(key: string, bbox: [number, number, number, number], now: string): Promise<RawRoadsCell> {
+/** Fetch one cell (all current features of the collection, every functie) and cache it. */
+export async function fetchRoadsCell(key: string, bbox: [number, number, number, number], now: string, collection: BgtRoadCollection = 'wegdeel'): Promise<RawRoadsCell> {
   const features: RawWegdeel[] = [];
   const seen = new Set<string>();
-  let url: string | null = `${API}?f=json&limit=1000&datetime=${now}&bbox=${bbox.map(v => v.toFixed(6)).join(',')}`;
+  const keep = KEEP_FYSIEK[collection];
+  let url: string | null = `${API_BASE}/${collection}/items?f=json&limit=1000&datetime=${now}&bbox=${bbox.map(v => v.toFixed(6)).join(',')}`;
   while (url) {
     const j = await getJson(url);
     for (const f of j.features as any[]) {
@@ -82,6 +97,7 @@ export async function fetchRoadsCell(key: string, bbox: [number, number, number,
       seen.add(id);
       const polys: number[][][][] = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : [];
       if (!polys.length) continue;
+      if (keep && !keep.test(p.fysiek_voorkomen ?? '')) continue;
       features.push({
         id, functie: p.functie ?? '', fv: p.fysiek_voorkomen ?? null, pfv: p.plus_fysiek_voorkomen ?? null,
         h: Number(p.relatieve_hoogteligging ?? 0), status: p.status ?? null, eind: p.eind_registratie ?? null, bh: p.bronhouder ?? null,
@@ -91,8 +107,9 @@ export async function fetchRoadsCell(key: string, bbox: [number, number, number,
     url = (j.links as any[] | undefined)?.find(l => l.rel === 'next')?.href ?? null;
   }
   const cell: RawRoadsCell = { version: 1, key, bbox, fetched: now, features };
-  mkdirSync(BGT_ROADS_CACHE, { recursive: true });
-  writeFileSync(`${BGT_ROADS_CACHE}/${key}.json.gz`, gzipSync(JSON.stringify(cell), { level: 6 }));
+  const file = cachePathOf(key, collection);
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, gzipSync(JSON.stringify(cell), { level: 6 }));
   return cell;
 }
 
@@ -105,16 +122,18 @@ async function main(): Promise<void> {
   const arg = (n: string) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : null; };
   const concurrency = Math.min(6, Math.max(1, Number(arg('--concurrency') ?? 6)));
   const offline = process.argv.includes('--offline');
+  const collection = (arg('--collection') ?? 'wegdeel') as BgtRoadCollection;
+  if (!BGT_ROAD_COLLECTIONS.includes(collection)) throw new Error(`--collection: ${collection} is not one of ${BGT_ROAD_COLLECTIONS.join(', ')}`);
   const manifest = JSON.parse(readFileSync('public/data/extracts/amsterdam/own-ground-osm-v1/cells.json', 'utf8')) as { cells: string[] };
   const only = arg('--cells')?.split(',').map(s => s.trim()).filter(Boolean);
   const keys = only ?? manifest.cells;
   for (const k of keys) if (!manifest.cells.includes(k)) console.warn(`warning: ${k} is not a game cell`);
   const now = new Date().toISOString().slice(0, 10) + 'T00:00:00Z';
-  const todo = keys.filter(k => !existsSync(`${BGT_ROADS_CACHE}/${k}.json.gz`));
+  const todo = keys.filter(k => !existsSync(cachePathOf(k, collection)));
   console.log(`${keys.length} cells, ${keys.length - todo.length} cached, ${todo.length} to fetch${offline ? ' (offline: skipped)' : ''}`);
   if (offline) {
     let features = 0;
-    for (const k of keys) features += readRawRoadsCell(k)?.features.length ?? 0;
+    for (const k of keys) features += readRawRoadsCell(k, collection)?.features.length ?? 0;
     console.log(`${features} cached features`);
     return;
   }
@@ -124,7 +143,7 @@ async function main(): Promise<void> {
   await Promise.all(Array.from({ length: concurrency }, async () => {
     for (let k = queue.shift(); k; k = queue.shift()) {
       try {
-        const c = await fetchRoadsCell(k, paddedBounds(k), now);
+        const c = await fetchRoadsCell(k, paddedBounds(k), now, collection);
         features += c.features.length;
       } catch (e) {
         failed++;

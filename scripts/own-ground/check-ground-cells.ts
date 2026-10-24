@@ -7,9 +7,10 @@
 //   npx tsx scripts/own-ground/check-ground-cells.ts --road-regressions  # only the roads-v1 named regressions
 //   npx tsx scripts/own-ground/check-ground-cells.ts --parapets # the canal-mouth parapet regressions alone
 //   npx tsx scripts/own-ground/check-ground-cells.ts --roads    # roads-v1 cells: before/after table (triangles, build ms, gz) against the budgets
+//   npx tsx scripts/own-ground/check-ground-cells.ts --bare-land --label=before   # city-wide bare land within 6 m of a carriageway (roads lane R1)
 //
 // Exit code 1 on a failed check.
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
@@ -29,6 +30,7 @@ import { existsSync, statSync } from 'node:fs';
 import { probeSpot } from './probe-doubled-lanes.ts';
 import { writeVsOrtho } from './road-vs-ortho.ts';
 import { OrthoTiles } from './ortho.ts';
+import { bareLandCell } from './render-road-sources.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
 const readExtract = async (path: string) => {
@@ -83,6 +85,7 @@ async function main(): Promise<void> {
   await store.init();
   console.log(JSON.stringify({ osmCells: store.osmCells.size, reliefTiles: store.relief.tiles.length }));
   if (process.argv.includes('--roads')) { await roadsTable(); return; }
+  if (process.argv.includes('--bare-land')) { await bareLandCity(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--road-regressions')) { await roadRegressions(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); await wayDeckHoleRegressions(); await wayDeckCarriageRegressions(); process.exitCode = failed ? 1 : 0; return; }
   if (process.argv.includes('--all')) {
@@ -785,6 +788,29 @@ async function roadRegressions(): Promise<void> {
   const on = buildCell(await roadsStore.cellInput(key, 0)), off = buildCell(await store.cellInput(key, 0));
   check(!!on.stats.roads && on.stats.roads.drawn.carriage > 0 && on.stats.roads.landCulled > 0 && !off.stats.roads, `${key}: roads-v1 draws ${on.stats.roads?.drawn.carriage ?? 0} carriageway polygons, ${on.stats.roads?.kerbs ?? 0} kerb runs, culls ${on.stats.roads?.landCulled ?? 0} land squares; the plain store none`);
   check((on.stats.roads?.skippedHigh ?? 0) < 40, `${key}: ${on.stats.roads?.skippedHigh} deck polygons (h ≥ 1) over no deck skipped and counted`);
+}
+
+/**
+ * City-wide bare land within 6 m of a carriageway (roads lane R1, 2026-10-23): every roads-v1 cell built with roads at
+ * 0.5 m (render-road-sources bareLandCell), summed, written to artifacts/roads/gaps/bare-land-<label>.json (the per-spot
+ * numbers are render-road-sources' table at 0.1 m). Printed per cell and in total.
+ */
+async function bareLandCity(): Promise<void> {
+  await roadsStore.init();
+  const label = process.argv.find(a => a.startsWith('--label='))?.slice(8) ?? 'run';
+  const keys = [...roadsStore.roadCells].sort().filter(k => roadsStore.covers(k));
+  const rows: { key: string; bareM2: number; carriageM2: number; cellM2: number; ms: number }[] = [];
+  const t0 = Date.now();
+  for (const key of keys) {
+    const r = await bareLandCell(roadsStore, key, 0.5);
+    rows.push({ key, ...r, bareM2: Math.round(r.bareM2), carriageM2: Math.round(r.carriageM2) });
+    console.log(JSON.stringify({ key, bareM2: Math.round(r.bareM2), carriageM2: Math.round(r.carriageM2), ms: r.ms }));
+  }
+  const bare = rows.reduce((s, r) => s + r.bareM2, 0), car = rows.reduce((s, r) => s + r.carriageM2, 0), area = rows.reduce((s, r) => s + r.cellM2, 0);
+  const total = { label, cells: rows.length, bareM2: bare, carriageM2: car, bareM2PerKm2: Math.round(bare / (area / 1e6)), seconds: Math.round((Date.now() - t0) / 1000) };
+  mkdirSync('artifacts/roads/gaps', { recursive: true });
+  writeFileSync(`artifacts/roads/gaps/bare-land-${label}.json`, JSON.stringify({ total, cells: rows }, null, 1));
+  console.log(JSON.stringify(total));
 }
 
 /** roads-v1 before/after per pilot cell: triangles, build time (median of 3), gz bytes; against the lane's budgets. */

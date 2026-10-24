@@ -11,7 +11,13 @@
 // 4.9 E 52.37 N) as whole decimetres, delta-encoded exactly as parks-v1 `EncodedLine`:
 // [x0, y0, dx1, dy1, ...]; rings are open (the closing vertex is not repeated).
 
-export const ROAD_CELL_VERSION = 1 as const;
+/**
+ * Cell schema versions. 2 (roads lane R1, 2026-10-23) adds the `island | berm | verge | square` classes and the `grass`
+ * mesh from BGT ondersteunendwegdeel and verhard onbegroeidterreindeel. A version-1 cell has only the wegdeel classes
+ * and reads unchanged, so an old extract stays valid until it is rebuilt.
+ */
+export const ROAD_CELL_VERSION = 2 as const;
+export const ROAD_CELL_VERSIONS: readonly number[] = [1, 2];
 export const ROADS_MANIFEST_VERSION = 1 as const;
 export const ROADS_EXTRACT = 'roads-v1';
 export const ROADS_ATTRIBUTION = 'BGT © Kadaster (CC0 1.0)';
@@ -24,17 +30,29 @@ export type Vec2 = [number, number];
 export type EncodedLine = number[];
 
 /** What the surface is made of: the mesh / palette layer the worker draws it with. */
-export type RoadMesh = 'asphalt' | 'klinker' | 'gravel' | 'paving' | 'cycle';
-export const ROAD_MESHES: readonly RoadMesh[] = ['asphalt', 'klinker', 'gravel', 'paving', 'cycle'];
+export type RoadMesh = 'asphalt' | 'klinker' | 'gravel' | 'paving' | 'cycle' | 'grass';
+export const ROAD_MESHES: readonly RoadMesh[] = ['asphalt', 'klinker', 'gravel', 'paving', 'cycle', 'grass'];
 
 /** What the surface is for (bgtWidth.ts `classOf`, without `other`): lifts, kerbs and cover tests key on it. */
-export type RoadClass = 'carriage' | 'foot' | 'cycle' | 'pedestrian' | 'parking' | 'driveway';
-export const ROAD_CLASSES: readonly RoadClass[] = ['carriage', 'foot', 'cycle', 'pedestrian', 'parking', 'driveway'];
+export type RoadClass = 'carriage' | 'foot' | 'cycle' | 'pedestrian' | 'parking' | 'driveway' | 'island' | 'berm' | 'verge' | 'square';
+export const ROAD_CLASSES: readonly RoadClass[] = ['carriage', 'foot', 'cycle', 'pedestrian', 'parking', 'driveway', 'island', 'berm', 'verge', 'square'];
+/**
+ * Version-2 classes (BGT ondersteunendwegdeel and verhard onbegroeidterreindeel): a traffic `island` (verkeerseiland), a
+ * paved `berm` (the parking verge, a kerb strip), a green `verge` (grass or groundcover berm), a paved `square`
+ * (forecourt, plaza, yard). All sit at pavement level with a kerb against a carriageway.
+ */
+export const ANCILLARY_CLASSES: readonly RoadClass[] = ['island', 'berm', 'verge', 'square'];
+/**
+ * Largest onbegroeidterreindeel paved area kept as a `square` (roads lane R1, 2026-10-24). BGT's verhard onbegroeid
+ * includes industrial yards of 0.3-0.5 km² with a hundred holes (-9_3: 468,000 m²; -11_4: 282,000 m²): not a road
+ * surface, and draped over the land they cost 398k triangles in one cell (4.1×). Plazas and forecourts are well under this.
+ */
+export const ANCILLARY_SQUARE_MAX_M2 = 20000;
 
 /** Classes drawn at carriageway level: the lower side of a kerb. */
 export const KERB_LOW_CLASSES: readonly RoadClass[] = ['carriage', 'parking', 'cycle'];
 /** Classes drawn at sidewalk level: the upper side of a kerb (an inrit is the lowered kerb across the pavement). */
-export const KERB_HIGH_CLASSES: readonly RoadClass[] = ['foot', 'pedestrian', 'driveway'];
+export const KERB_HIGH_CLASSES: readonly RoadClass[] = ['foot', 'pedestrian', 'driveway', ...ANCILLARY_CLASSES];
 
 export interface RoadSurface {
   /** Mesh. */
@@ -48,7 +66,7 @@ export interface RoadSurface {
 }
 
 export interface RoadCell {
-  version: typeof ROAD_CELL_VERSION;
+  version: 1 | 2;
   key: string;
   /** Polygons whose interior point lies in this cell. */
   surfaces: RoadSurface[];
@@ -76,8 +94,9 @@ export interface RoadsManifest {
  * (klinker or asphalt across the pavement), tiles when unknown. Cycle paths: red cycle.
  * `fietsstraat` (from the OSM way on top) turns a carriageway red.
  */
-export function roadMesh(cls: RoadClass, fysiekVoorkomen: string | null | undefined, fietsstraat = false): RoadMesh {
+export function roadMesh(cls: RoadClass, fysiekVoorkomen: string | null | undefined, fietsstraat = false, plusFysiekVoorkomen: string | null = null): RoadMesh {
   if (cls === 'cycle') return 'cycle';
+  if ((ANCILLARY_CLASSES as readonly RoadClass[]).includes(cls)) return ancillaryMesh(fysiekVoorkomen, plusFysiekVoorkomen);
   if (cls === 'foot' || cls === 'pedestrian') return 'paving';
   const fv = (fysiekVoorkomen ?? '').toLowerCase();
   if (cls === 'driveway') return fv.startsWith('gesloten') ? 'asphalt' : fv.startsWith('open') ? 'klinker' : fv.startsWith('half') || fv.startsWith('onverhard') ? 'gravel' : 'paving';
@@ -85,6 +104,31 @@ export function roadMesh(cls: RoadClass, fysiekVoorkomen: string | null | undefi
   if (fv.startsWith('open')) return 'klinker';
   if (fv.startsWith('half') || fv.startsWith('onverhard')) return 'gravel';
   return 'asphalt';
+}
+
+/** The materials a version-2 class draws in, from BGT's fysiek_voorkomen and plus_fysiek_voorkomen (roads lane R1, 2026-10-23). */
+export function ancillaryMesh(fysiekVoorkomen: string | null | undefined, plusFysiekVoorkomen: string | null | undefined = null): RoadMesh {
+  const fv = (fysiekVoorkomen ?? '').toLowerCase(), pfv = (plusFysiekVoorkomen ?? '').toLowerCase();
+  // Green: grass and groundcover berms (groenvoorziening), unpaved ground that is not sand.
+  if (fv === 'groenvoorziening' || (fv === 'onverhard' && pfv !== 'zand')) return 'grass';
+  if (fv.startsWith('half') || fv.startsWith('onverhard')) return 'gravel';
+  if (fv.startsWith('open')) return pfv.includes('klinker') ? 'klinker' : 'paving';
+  // Closed paving: concrete, tiles and synthetic pavers draw as paving; an unknown or asphalt surface as asphalt.
+  if (/cement|tegel|sierbestrating|kunststof|beton/.test(pfv)) return 'paving';
+  return 'asphalt';
+}
+
+/**
+ * The version-2 class of a BGT feature of the two ancillary collections (roads lane R1). `ondersteunendwegdeel`:
+ * a verkeerseiland is an `island`; a berm that is green (groenvoorziening, unpaved, not sand) is a `verge`, a paved one a
+ * `berm`. `onbegroeidterreindeel` (fetched verhard only): a `square`. null for a functie the build does not keep.
+ */
+export function ancillaryClass(collection: 'ondersteunendwegdeel' | 'onbegroeidterreindeel', functie: string, fysiekVoorkomen: string | null | undefined, plusFysiekVoorkomen: string | null | undefined = null): RoadClass | null {
+  if (collection === 'onbegroeidterreindeel') return 'square';
+  const f = functie.toLowerCase();
+  if (f.startsWith('verkeerseiland')) return 'island';
+  if (f.startsWith('berm')) return ancillaryMesh(fysiekVoorkomen, plusFysiekVoorkomen) === 'grass' ? 'verge' : 'berm';
+  return null;
 }
 
 /** Metres of tram track along a rijbaan section that keep it grey under a fietsstraat (the Marnixstraat busway). */
@@ -144,7 +188,7 @@ export function roadCellProblems(v: unknown, limit = 20): string[] {
   const bad = (m: string) => { if (out.length < limit) out.push(m); };
   if (!v || typeof v !== 'object') return ['not an object'];
   const c = v as Record<string, unknown>;
-  if (c.version !== ROAD_CELL_VERSION) bad(`version ${String(c.version)} (expected ${ROAD_CELL_VERSION})`);
+  if (!ROAD_CELL_VERSIONS.includes(c.version as number)) bad(`version ${String(c.version)} (expected one of ${ROAD_CELL_VERSIONS.join(', ')})`);
   if (typeof c.key !== 'string' || !/^-?\d+_-?\d+$/.test(c.key)) bad(`key ${String(c.key)}`);
   const line = (l: unknown, what: string, minPts: number): boolean => {
     if (!Array.isArray(l) || l.length % 2 !== 0 || l.length < minPts * 2) { bad(`${what}: not an even-length line of ≥ ${minPts} points`); return false; }

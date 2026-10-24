@@ -127,6 +127,10 @@ test('GroundField keeps whole-centimetre tiles as int16 and returns the same hei
     assert.ok(Object.is(f.sampleAt(k % n, Math.floor(k / n)), measured[k]), `measured sample ${k}`);
     assert.ok(Object.is(f.sampleAt(n + (k % n), Math.floor(k / n)), smooth[k]), `smooth sample ${k}`);
   }
+  // The measured spacing per tile: the grid's own step unless the tile was measured coarser.
+  f.addTile(1, 0, smooth, 2);
+  assert.equal(f.dataStepRd(0.5 * n, 0.5), 1); assert.equal(f.dataStepRd(1.5 * n, 0.5), 2); assert.equal(f.dataStepRd(9 * n, 0.5), 1);
+  f.removeTile(1, 0); assert.equal(f.dataStepRd(1.5 * n, 0.5), 1);
 });
 
 test('downsample flips to south-first rows and leaves sparse blocks as holes', () => {

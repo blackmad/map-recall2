@@ -211,6 +211,8 @@ export class GroundField {
   // the Float32 bytes, the same heights (2026-10-24, phones: ~24 MB of resident relief per thread). Upsampled and
   // extended tiles are not whole centimetres and stay Float32.
   private readonly tiles = new Map<number, Int16Array | Float32Array>();
+  /** The measured step of each tile where it is coarser than `stepM` (the coarse ring's 4 m tiles, upsampled to the grid). */
+  private readonly steps = new Map<number, number>();
   private readonly n: number;
   constructor(readonly stepM: number, readonly tileSizeM: number) { this.n = Math.round(tileSizeM / stepM); }
   get samples(): number { return this.n; }
@@ -218,12 +220,20 @@ export class GroundField {
 
   private static key(tx: number, ty: number): number { return tx * 2097152 + ty; }
 
-  addTile(tx: number, ty: number, heights: Float32Array): void {
+  /** `dataStepM`: the spacing the tile was measured at (its index entry), when coarser than the grid it is stored on. */
+  addTile(tx: number, ty: number, heights: Float32Array, dataStepM = this.stepM): void {
     if (heights.length !== this.samples * this.samples) throw new Error('ground tile size mismatch');
-    this.tiles.set(GroundField.key(tx, ty), wholeCentimetres(heights) ?? heights);
+    const key = GroundField.key(tx, ty);
+    this.tiles.set(key, wholeCentimetres(heights) ?? heights);
+    if (dataStepM > this.stepM) this.steps.set(key, dataStepM); else this.steps.delete(key);
   }
 
-  removeTile(tx: number, ty: number): void { this.tiles.delete(GroundField.key(tx, ty)); }
+  removeTile(tx: number, ty: number): void { const key = GroundField.key(tx, ty); this.tiles.delete(key); this.steps.delete(key); }
+
+  /** The measured sample spacing under RD (x, y), metres: finer detail between samples is interpolation, not data. */
+  dataStepRd(x: number, y: number): number {
+    return this.steps.get(GroundField.key(Math.floor(x / this.tileSizeM), Math.floor(y / this.tileSizeM))) ?? this.stepM;
+  }
 
   /** Grid sample by global column/row index, NaN if its tile is not loaded. */
   sampleAt(gi: number, gj: number): number {

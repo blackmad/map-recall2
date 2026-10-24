@@ -6,8 +6,8 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { encodeLine } from './parks';
 import {
-  KERB_HIGH_CLASSES, KERB_LOW_CLASSES, ROAD_CELL_BUDGET_GZ, ROAD_CLASSES, ROAD_MESHES, ROADS_ATTRIBUTION,
-  FIETSSTRAAT_RAIL_MAX_M, decodeRoadCell, decodeRoadLine, fietsstraatSection, isRoadCell, kerbBetween, roadCellProblems, roadMesh, roadsManifestProblems, type RoadCell,
+  KERB_HIGH_CLASSES, KERB_LOW_CLASSES, ROAD_CELL_BUDGET_GZ, ROAD_CLASSES, ROAD_MESHES, ROADS_ATTRIBUTION, ANCILLARY_CLASSES, ROAD_CELL_VERSIONS,
+  FIETSSTRAAT_RAIL_MAX_M, ancillaryClass, ancillaryMesh, decodeRoadCell, decodeRoadLine, fietsstraatSection, isRoadCell, kerbBetween, roadCellProblems, roadMesh, roadsManifestProblems, type RoadCell,
 } from './roadCells';
 
 const sample = (): RoadCell => ({
@@ -106,7 +106,7 @@ test('roadCellProblems: the sample is valid and each schema breach is named', ()
     assert.ok(problems.length > 0 && problems.some(p => expect.test(p)), `${expect}: ${problems.join('; ') || 'no problem found'}`);
     assert.ok(!isRoadCell(c));
   };
-  breach(c => { c.version = 2; }, /version/);
+  breach(c => { c.version = 3; }, /version/);
   breach(c => { c.key = 'abc'; }, /key/);
   breach(c => { c.surfaces[0].k = 'tarmac'; }, /\.k/);
   breach(c => { c.surfaces[0].c = 'other'; }, /\.c/);
@@ -184,4 +184,32 @@ test('roads-v1 extract: every listed cell file is a valid cell within budget, on
     // On the extract's border a kerb may follow a polygon owned by a cell outside the game (not published).
     assert.ok(total - near <= Math.max(unlisted ? 3 : 1, (unlisted ? 0.05 : 0.005) * total), `${key}: only ${near}/${total} kerb vertices lie on a polygon boundary`);
   }
+});
+
+test('roads lane R1: version-2 classes are classified from BGT fysiek_voorkomen, grass is the park grass, cells of both versions read', () => {
+  assert.deepEqual(ROAD_CELL_VERSIONS, [1, 2]);
+  // Verkeerseiland and berm: green groundcover, grass, unpaved (not sand) are verges; paved berms and islands are berms and islands.
+  assert.equal(ancillaryClass('ondersteunendwegdeel', 'berm', 'onverhard'), 'verge');
+  assert.equal(ancillaryClass('ondersteunendwegdeel', 'berm', 'groenvoorziening'), 'verge');
+  assert.equal(ancillaryClass('ondersteunendwegdeel', 'berm', 'onverhard', 'zand'), 'berm');
+  assert.equal(ancillaryClass('ondersteunendwegdeel', 'berm', 'open verharding', 'gebakken klinkers'), 'berm');
+  assert.equal(ancillaryClass('ondersteunendwegdeel', 'verkeerseiland', 'gesloten verharding'), 'island');
+  assert.equal(ancillaryClass('ondersteunendwegdeel', 'verkeersheuvel', 'onverhard'), null);
+  assert.equal(ancillaryClass('onbegroeidterreindeel', '', 'open verharding'), 'square');
+  for (const c of ANCILLARY_CLASSES) assert.ok(KERB_HIGH_CLASSES.includes(c), `${c} sits at pavement level`);
+  // Materials: grass for green, klinker for a gebakken-klinker open paving, tiles and concrete as paving, the rest asphalt.
+  assert.equal(ancillaryMesh('onverhard'), 'grass');
+  assert.equal(ancillaryMesh('onverhard', 'zand'), 'gravel');
+  assert.equal(ancillaryMesh('open verharding', 'gebakken klinkers'), 'klinker');
+  assert.equal(ancillaryMesh('open verharding', 'tegels'), 'paving');
+  assert.equal(ancillaryMesh('gesloten verharding', 'cementbeton'), 'paving');
+  assert.equal(ancillaryMesh('gesloten verharding'), 'asphalt');
+  assert.equal(roadMesh('island', 'onverhard'), 'grass');
+  assert.equal(roadMesh('square', 'open verharding', false, 'gebakken klinkers'), 'klinker');
+  for (const c of ANCILLARY_CLASSES) for (const fv of ['gesloten verharding', 'open verharding', 'half verhard', 'onverhard', 'groenvoorziening', null]) assert.ok(ROAD_MESHES.includes(roadMesh(c, fv)));
+  // A version-2 cell with the new classes validates; a version-1 cell with the old ones still does.
+  const v2: any = { version: 2, key: '-2_0', surfaces: [{ k: 'grass', c: 'verge', h: 0, r: [encodeLine([[0, 0], [10, 0], [10, 10]])] }], kerbs: [], coverWays: [] };
+  assert.deepEqual(roadCellProblems(v2), []);
+  const v1: any = { version: 1, key: '-2_0', surfaces: [{ k: 'asphalt', c: 'carriage', h: 0, r: [encodeLine([[0, 0], [10, 0], [10, 10]])] }], kerbs: [], coverWays: [] };
+  assert.deepEqual(roadCellProblems(v1), []);
 });

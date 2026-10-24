@@ -156,7 +156,7 @@ export function junctionCoverage(cells: readonly BuiltCell[], centre: [number, n
 }
 
 /** The layer a surveyed polygon's mesh draws as; paint, rails, kerb lines and posts may lie on any of them. */
-const MESH_LAYER: Record<RoadMesh, GroundLayer> = { asphalt: 'asphalt', klinker: 'klinker', cycle: 'cycle', paving: 'paving', gravel: 'gravel' };
+const MESH_LAYER: Record<RoadMesh, GroundLayer> = { asphalt: 'asphalt', klinker: 'klinker', cycle: 'cycle', paving: 'paving', gravel: 'gravel', grass: 'lawn' };
 const ON_ANY: ReadonlySet<string> = new Set(['paint', 'tram', 'kerb', 'bollard']);
 /**
  * roads-v1: share of probes on the disc whose top is what the survey says lies there (the polygon's mesh, or paint

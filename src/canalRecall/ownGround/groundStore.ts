@@ -21,7 +21,7 @@ import { GroundSurface, type DeckSurface, type Vec2 } from './surface.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { ParksCell, ParksManifest } from './parks.js';
 import { decodePhotoEvidence, EMPTY_EVIDENCE, isPhotoEvidence, PHOTO_EVIDENCE_FILE, type PhotoEvidence } from './photoEvidence.js';
-import { decodeRoadLine, type RoadCell, type RoadsManifest } from './roadCells.js';
+import { decodeRoadLine, ROAD_CELL_VERSIONS, type RoadCell, type RoadsManifest } from './roadCells.js';
 import { decodeMarks, isRoadMarksCell, type RoadMark, type RoadMarksManifest } from './roadMarks.js';
 import type { CourtyardsCell, CourtyardsManifest } from './courtyards.js';
 import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } from './water.js';
@@ -237,8 +237,9 @@ export class GroundStore {
    */
   private synthesiseTile(k: string): void {
     const [tx, ty] = k.split('_').map(Number);
-    // Extract tiles only (never another extended tile): deterministic.
-    this.field.addTile(tx, ty, extendTile(this.field, tx, ty, (a, b) => this.hasReliefTile(tileKey(a, b))));
+    // Extract tiles only (never another extended tile): deterministic. Smooth fill, so no finer than the coarsest data.
+    const coarsest = this.relief.tiles.reduce((m, t) => Math.max(m, t[3] ?? this.relief.stepM), this.relief.stepM);
+    this.field.addTile(tx, ty, extendTile(this.field, tx, ty, (a, b) => this.hasReliefTile(tileKey(a, b))), coarsest);
     this.reliefTiles.add(k);
     this.synthesised.add(k);
   }
@@ -274,7 +275,7 @@ export class GroundStore {
         p = load.then(({ heights, bytes }) => {
           this.loadedBytes.relief += bytes;
           const [tx, ty] = k.split('_').map(Number);
-          this.field.addTile(tx, ty, heights);
+          this.field.addTile(tx, ty, heights, entry[3] ?? this.relief.stepM);
           this.reliefTiles.add(k);
         }).finally(() => this.reliefLoading.delete(k));
         this.reliefLoading.set(k, p);
@@ -512,7 +513,7 @@ export class GroundStore {
     let p = this.roads.get(key);
     if (!p) {
       p = this.roadCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.roads}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)) as RoadCell; return c.version === 1 ? c : null; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.roads}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)) as RoadCell; return ROAD_CELL_VERSIONS.includes(c.version) ? c : null; }).catch(() => null)
         : Promise.resolve(null);
       this.roads.set(key, p);
     }
