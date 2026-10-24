@@ -546,6 +546,7 @@
     "apply:dutch-facts": "tsx scripts/apply-dutch-facts.ts",
     "factory:queue": "node --import tsx scripts/landmarks/factory-queue.ts",
     "factory": "node --import tsx scripts/landmarks/factory.ts",
+    "kit:sheets": "node --import tsx scripts/landmarks/kit-sheets.ts",
     "pdok:tiles": "node --import tsx scripts/building-recipes/pdok-tiles.ts",
     "factory:strip": "node --import tsx scripts/building-recipes/strip.ts",
     "census": "node --import tsx scripts/landmarks/census.ts"

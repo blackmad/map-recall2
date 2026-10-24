@@ -154,6 +154,14 @@ Open, in order:
   summary.md unchanged; the full run takes ~28 min and 16 GB heap, exit 0).
   Next: per-entry dates in the baseline, then one opus review of the
   2026-10-20 regeneration before any re-baseline.
+- **kits-review (K)**: Role A done 2026-10-24 (`npm run kit:sheets`, run
+  under the browser lock; 546 kits on 137 pages in
+  `map-recall2-worktrees/kit-sheets-20261024/artifacts/strips/kits-N.png`,
+  ~2.9 s per kit). 225 kits have no photo (124 with no resolvable pand, 101
+  where all-walls returned no crop); the crop is the longest wall of the
+  nearest pand, not always the street front, and the host pand is drawn as
+  a flat extrusion, not the game's plain layer. Role B (opus review turns,
+  ~20 kits each, verdicts into `landmark-reviews.json`) not started.
 - **3DBAG outage → PDOK fallback** (2026-10-24): api.3dbag.nl and
   data.3dbag.nl have refused TCP connections since the night of 10-23.
   `facts.ts` now falls back (or `--source=pdok`) to Kadaster's 3D
