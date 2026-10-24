@@ -8,6 +8,12 @@
  *   npx tsx scripts/audit-glb-quality.ts --set=kit [--only-geometry]  # installed kit houses + block-face chunks, geometry-audited
  *   flags: --shots (contact images of top offenders), --top=15, --out=artifacts/glb-audit, --quiet
  *
+ * Heap: a full run (every model) needs a 16 GB heap:
+ *   NODE_OPTIONS=--max-old-space-size=16384 npm run audit:glb -- --write
+ * Output with --write or a multi-model run: <out>/index.json ({thresholds, models: [{id, pass, failedGates, regressions, file}]}),
+ * <out>/models/<id>.json (the slimmed per-model row, written as each model finishes; ordinary-set files go to ordinary-models/),
+ * and summary.md. Readers take index.json and then the per-model file; there is no single report.json any more.
+ *
  * Landmark geometry audit (src/canalRecall/landmarks/geometryAudit.ts) runs on landmark GLBs too: detached openings
  * (window/door parts floating off, buried in, or hanging past their wall), openings past their wall's silhouette or through a
  * roof plane (`openingsWithinWalls`, hard: a new export fails on any part > 0.02 m2 outside), window rhythm per facade (photo
@@ -151,7 +157,7 @@ async function auditGeometry(id: string, file: string): Promise<GeometryAuditRep
 }
 
 /** Geometry findings join the report; within the baseline they stay warnings, growth past it fails the model. */
-function mergeGeometry(report: QualityReport, g: GeometryAuditReport, base: Record<string, number> | undefined): void {
+function mergeGeometry(report: QualityReport, g: GeometryAuditReport, base: Record<string, number> | undefined): string[] {
   const grown = regressions(g.counts, base);
   for (const f of g.findings) report.findings.push({kind: f.kind, severity: f.severity === 'fail' && grown.length ? 'fail' : 'warn', message: f.message + (f.severity === 'fail' && !grown.length ? ' [baselined]' : '')});
   if (grown.length) {
@@ -159,6 +165,7 @@ function mergeGeometry(report: QualityReport, g: GeometryAuditReport, base: Reco
     report.pass = false;
   }
   report.score += g.score / 10;
+  return grown;
 }
 
 /** Strip triangle lists from the JSON report (they are only needed for the evidence shots). */
@@ -167,6 +174,13 @@ function slim(g: GeometryAuditReport) {
     withinWalls: {...g.withinWalls, outside: g.withinWalls.outside.slice(0, 40).map(({triangles, ...o}) => ({...o, triangles: triangles.length})), failing: g.withinWalls.failing.length},
     zfight: {...g.zfight, patches: g.zfight.patches.slice(0, 40).map(({trisA, trisB, samples, ...p}) => ({...p, triangles: trisA.length + trisB.length}))},
     rhythm: g.rhythm.map(f => ({...f, mismatched: f.mismatched.slice(0, 20)}))};
+}
+
+/** What the summary tables read, kept in memory after a row's JSON is written: the same report with every triangle list emptied (failing parts keep their count). */
+function summaryView(g: GeometryAuditReport): GeometryAuditReport {
+  return {...g, normals: {...g.normals, inwardTriangles: []}, openings: {...g.openings, issues: []},
+    withinWalls: {...g.withinWalls, outside: [], failing: g.withinWalls.failing.map(o => ({...o, triangles: []}))},
+    zfight: {...g.zfight, patches: []}};
 }
 
 function arg(name: string): string | undefined {
@@ -288,6 +302,14 @@ async function main(): Promise<void> {
   const rows: Row[] = [];
   const baseline = readBaseline();
   const slotBaseline = readSlotBaseline();
+  // Multi-model runs and --write both leave output: index.json, models/<id>.json per row (written as each finishes), summary.md.
+  const writeOut = targets.length > 1 || flag('write');
+  const out = path.resolve(ROOT, arg('out') ?? 'artifacts/glb-audit');
+  const tag = arg('set') === 'ordinary' ? 'ordinary-' : '';
+  // --geometry-shots reads the evidence triangles after the loop, so those rows keep their full geometry.
+  const keepGeometry = flag('geometry-shots');
+  const index: {id: string; pass: boolean; failedGates: string[]; regressions: string[]; file: string}[] = [];
+  if (writeOut) fs.mkdirSync(path.join(out, `${tag}models`), {recursive: true});
   for (const t of targets) {
     const t0 = Date.now();
     let report: QualityReport;
@@ -300,10 +322,11 @@ async function main(): Promise<void> {
       report.findings.push({kind: 'unreadable', severity: 'fail', message: String(e)});
     }
     let geometry: GeometryAuditReport | undefined;
+    let regressed: string[] = [];
     if (!flag('no-geometry') && arg('set') !== 'ordinary') {
       try {
         geometry = await auditGeometry(t.id, t.file);
-        mergeGeometry(report, geometry, flag('write-baseline') ? geometry.counts : baseline?.models[t.id]);
+        regressed = mergeGeometry(report, geometry, flag('write-baseline') ? geometry.counts : baseline?.models[t.id]);
       } catch (e) { report.findings.push({kind: 'geometry-audit-error', severity: 'warn', message: String(e).slice(0, 200)}); }
     }
     let slots: SlotCoverage | undefined;
@@ -323,18 +346,23 @@ async function main(): Promise<void> {
         if (!g.pass) report.pass = false;
       } catch (e) { report.findings.push({kind: 'signature-inventory-error', severity: 'warn', message: String(e).slice(0, 200)}); }
     }
-    rows.push({id: t.id, file: path.relative(ROOT, t.file), status: t.status, report, ms: Date.now() - t0, geometry, slots});
+    const row: Row = {id: t.id, file: path.relative(ROOT, t.file), status: t.status, report, ms: Date.now() - t0, geometry, slots};
+    rows.push(row);
+    if (writeOut) {
+      // Per-model file now, while the full geometry is in hand; the row keeps only what the summary reads, so the heap stays bounded.
+      const rel = `${tag}models/${t.id}.json`;
+      fs.writeFileSync(path.join(out, rel), JSON.stringify({...row, geometry: row.geometry && slim(row.geometry)}, null, 1) + '\n');
+      index.push({id: t.id, pass: report.pass, failedGates: [...new Set(report.findings.filter(f => f.severity === 'fail').map(f => f.kind))], regressions: regressed, file: rel});
+      if (!keepGeometry && row.geometry) row.geometry = summaryView(row.geometry);
+    }
     if (!flag('quiet') || targets.length === 1) {
       console.log(`${report.pass ? 'PASS' : 'FAIL'} ${t.id} (${report.triangles} tris, score ${report.score.toFixed(1)}${slots ? `, slots ${(slots.coverage * 100).toFixed(1)}%` : ''}, ${Date.now() - t0} ms)`);
       for (const f of report.findings) console.log(`   ${f.severity === 'fail' ? 'FAIL' : 'warn'} ${f.kind}: ${f.message}`);
       if (targets.length === 1) for (const line of inventoryLines) console.log(`   ${line}`);
     }
   }
-  if (targets.length > 1 || flag('write')) {
-    const out = path.resolve(ROOT, arg('out') ?? 'artifacts/glb-audit');
-    fs.mkdirSync(out, {recursive: true});
-    const tag = arg('set') === 'ordinary' ? 'ordinary-' : '';
-    fs.writeFileSync(path.join(out, `${tag}report.json`), JSON.stringify({thresholds: th, models: rows.map(r => ({...r, geometry: r.geometry && slim(r.geometry)}))}, null, 1));
+  if (writeOut) {
+    fs.writeFileSync(path.join(out, `${tag}index.json`), JSON.stringify({thresholds: th, models: index}, null, 1) + '\n');
     fs.writeFileSync(path.join(out, `${tag}summary.md`), md(rows, th) + geometryMd(rows) + normalsMd(rows) + slotsMd(rows));
     if (flag('write-slot-baseline')) {
       const models: Record<string, number> = {...(slotBaseline?.models ?? {})};
@@ -357,7 +385,7 @@ async function main(): Promise<void> {
       const {geometryShots} = await import('./landmarks/geometry-audit-evidence');
       await geometryShots(rows.filter(r => r.geometry).map(r => ({id: r.id, file: path.join(ROOT, r.file), geometry: r.geometry!})), path.join(out, 'geometry'), Number(arg('top') ?? 15));
     }
-    console.log(`Wrote ${path.relative(ROOT, out)}/${tag}report.json and ${tag}summary.md`);
+    console.log(`Wrote ${path.relative(ROOT, out)}/${tag}index.json, ${tag}models/ (${index.length} files) and ${tag}summary.md`);
     if (flag('shots')) {
       const shotsModule = './audit-glb-quality-shots.mjs'; // untyped helper; keep the import dynamic
       const {renderContact} = await import(shotsModule);
