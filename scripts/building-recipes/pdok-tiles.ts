@@ -6,7 +6,8 @@
  *   node --import tsx scripts/building-recipes/pdok-tiles.ts --blade=118000_486000
  *
  * Files land in $MAP_RECALL_SOURCE_DATA/datasets/pdok-3d-gebouwen-<year>/<bladnr>.zip (+ the unzipped
- * .city.json and an index.json: blade → year, bytes, fetchedAt, download_link, cityJson). That directory is the
+ * .city.json and an index.json: blade → year, bytes, fetchedAt, download_link, cityJson; only the zips and the index are
+ * committed, and a missing .city.json is unzipped from its cached zip). That directory is the
  * source-data archive's own git repo; this script only writes files there.
  */
 import fs from 'node:fs/promises';
@@ -52,6 +53,12 @@ export async function ensureBlade(blade: string): Promise<{file: string; entry: 
     if (entry) {
       const file = path.join(datasetDir(year), entry.cityJson);
       if (await fs.stat(file).then(() => true, () => false)) return {file, entry};
+      // the source-data repo keeps only the zips (one unzipped tile is over GitHub's 100 MB limit): unzip on first use
+      const zip = path.join(datasetDir(year), `${blade}.zip`);
+      if (await fs.stat(zip).then(() => true, () => false)) {
+        execFileSync('unzip', ['-o', '-q', zip, entry.cityJson, '-d', datasetDir(year)]);
+        return {file, entry};
+      }
     }
   }
   const dl = await bladeDownload(blade), dir = datasetDir(dl.year), zip = path.join(dir, `${blade}.zip`);
