@@ -14,7 +14,8 @@
 // small parts (chapels of a bigger church), odd plans and modern buildings keep their height and
 // flat lid in plain walls: no openings is honest where we do not know them, and never a house.
 
-import type { Kit, KitWindowRow } from './landmarkKits.js';
+import type { Kit, KitTrim, KitWindowRow } from './landmarkKits.js';
+import { CITY_STONE } from './look/palette.js';
 import { WORSHIP_BUILDINGS, type WorshipEntry } from './worshipBuildingData.js';
 
 export type WorshipEra = 'o' | 'e' | 'm';
@@ -73,11 +74,20 @@ export function worshipWindows(eavesM: number): KitWindowRow[] {
 
 const KIND_NAME = { c: 'church', m: 'mosque', s: 'synagogue', t: 'temple' } as const;
 
+/**
+ * A plain body's roof edge and foot, for the generic worship and public (cinema) bodies (kit review 1, 2026-10-24:
+ * plain-body kits drew no geometry of their own, so the sheet showed the bare host extrusion): a dark fascia on a
+ * post-1960 building, a stone coping and a plinth before.
+ */
+export function plainBodyTrim(era: 'o' | 'e' | 'm'): KitTrim {
+  return era === 'm' ? { coping: { m: 0.6, hex: '#4a4744' } } : { coping: { m: 0.4, hex: CITY_STONE }, plinth: { z1: 0.6, hex: '#8c877d' } };
+}
+
 export function worshipKit([id, kind, mode, eavesM, riseM, era]: WorshipEntry): Kit {
   const name = `Generic ${KIND_NAME[kind]} ${id}`, hex = WORSHIP_WALL[era];
   const rows = worshipWindows(eavesM);
   // Walls too low for a window and no roof to add: plain walls are all there is.
-  if (mode === 'b' || (mode === 'w' && !rows.length)) return { name, wall: { plain: true, hex }, tiers: [], stacks: [], roofs: [], body: [id] };
+  if (mode === 'b' || (mode === 'w' && !rows.length)) return { name, wall: { plain: true, hex }, tiers: [], stacks: [], roofs: [], body: [id], trim: plainBodyTrim(era) };
   return {
     name, wall: { plain: true, hex }, tiers: [], stacks: [], roofs: [],
     halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === 'h', eavesM, riseM, mat: era === 'o' ? 'slate' : 'tile', windows: rows.length ? { rows, glassHex: '#3a434c' } : undefined }],

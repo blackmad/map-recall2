@@ -10,8 +10,20 @@
 // era's brick (or buff concrete) with a grid of large classroom windows, no doors, no stoops, and a
 // pitched roof only where the footprint is a plain rectangle in a pre-1930 building.
 
+//
+// Kit review 1 (2026-10-24, docs/handoffs/kit-gaps.md "Landmark kits (review 1)"): every post-1960 school was one
+// fixed beige (#b5a68e) whatever the photo, none of 16 reviewed photos matched it (10 red/brown brick); pre-war
+// schools whose 3DBAG roof rises 10 m stood flat-roofed; cinemas drew no geometry of their own. Now a school's wall is
+// its own measured colour (publicBuildingFacts.ts, from its panorama crops) or else its BAG year's period palette; a
+// flat pre-1940 school the 3DBAG says is roofed gets a hipped roof round its footprint; a cinema's plain body gets
+// a coping and plinth (landmarkKits.ts KitTrim).
+
 import type { Kit, KitWindowRow } from './landmarkKits.js';
+import { plainBodyTrim } from './worshipBuildings.js';
 import { PUBLIC_BUILDINGS, type PublicEntry } from './publicBuildingData.js';
+import { PUBLIC_FACTS, type PublicFactsEntry } from './publicBuildingFacts.js';
+import { PERIOD_WALLS, ROOF_TONES, cityStuccoTint, cityWallTint, hexToRgb, periodForYear } from './look/palette.js';
+import { wallFamily } from './facade/materials.js';
 
 export type PublicKind = 'c' | 's' | 'f' | 'p' | 'h' | 'o';
 export type PublicEra = 'o' | 'e' | 'm';
@@ -85,17 +97,72 @@ export function schoolWindows(eavesM: number, era: PublicEra): KitWindowRow[] {
 
 const KIND_NAME: Record<PublicKind, string> = { c: 'cinema', s: 'school', f: 'fire station', p: 'police station', h: 'hospital', o: 'civic office' };
 
-export function publicKit([id, kind, mode, eavesM, riseM, era]: PublicEntry): Kit {
+/** One school's facts (publicBuildingFacts.ts): BAG year, 3DBAG roof type, eaves and ridge, measured wall colour. */
+export type SchoolFacts = { year: number | null; roof: 0 | 1 | 2 | 3; eavesM: number | null; ridgeM: number | null; wallHex: string | null; roofFits: boolean };
+export const schoolFacts = ([, year, roof, eavesDm, ridgeDm, wallHex, roofFits]: PublicFactsEntry): SchoolFacts =>
+  ({ year: year || null, roof, eavesM: eavesDm ? eavesDm / 10 : null, ridgeM: ridgeDm ? ridgeDm / 10 : null, wallHex, roofFits: roofFits === 1 });
+const FACTS: ReadonlyMap<string, SchoolFacts> = new Map(PUBLIC_FACTS.map(e => [e[0], schoolFacts(e)]));
+
+/** FNV-1a pick, stable per footprint id (look/palette.ts uses the same hash for its contextual priors). */
+const stablePick = <T>(id: string, values: readonly T[]): T => {
+  let hash = 2166136261;
+  for (const char of id) { hash ^= char.charCodeAt(0); hash = Math.imul(hash, 16777619); }
+  return values[(hash >>> 0) % values.length];
+};
+
+/**
+ * A school's wall colour and where it came from: its own panorama reading lifted into the city's display range
+ * (brick by look/palette.ts cityWallTint, a pale or painted wall by cityStuccoTint, so white stays white), else a
+ * stable pick from its BAG year's period palette (look/palette.ts PERIOD_WALLS.photo), else the coarse era brick.
+ */
+export function schoolWall(id: string, era: PublicEra, facts: SchoolFacts | undefined = FACTS.get(id)): { hex: string; source: 'measured' | 'period' | 'era' } {
+  if (facts?.wallHex) {
+    const rgb = hexToRgb(facts.wallHex);
+    return { hex: wallFamily(rgb) === 'brick' ? cityWallTint(facts.wallHex) : cityStuccoTint(facts.wallHex), source: 'measured' };
+  }
+  const walls = facts?.year ? PERIOD_WALLS.photo[periodForYear(facts.year)] : null;
+  if (walls?.length) return { hex: stablePick(id, walls), source: 'period' };
+  return { hex: PUBLIC_WALL.s[era], source: 'era' };
+}
+
+/** A school built before this year whose 3DBAG roof rises at least SCHOOL_HIP_MIN_RISE_M gets a hipped roof. */
+export const SCHOOL_HIP_BEFORE = 1940, SCHOOL_HIP_MIN_RISE_M = 2.5;
+/**
+ * The hipped school roof's tile: the darkest of the city's pantiles (look/palette.ts ROOF_TONES), since the reviewed
+ * pre-war school roofs read dark red-brown to anthracite (sheet rows 5, 14, 19), never the bright default #b5543a.
+ */
+export const SCHOOL_HIP_TILE = ROOF_TONES.photo.tile[3];
+/** Pre-war schools stand at least two classroom storeys under the eaves (sheet rows 3, 14 and 19 all show two). */
+export const SCHOOL_HIP_MIN_EAVES_M = 6;
+
+/**
+ * The hipped roof of a flat-planned pre-1940 school whose 3DBAG ridge stands clear of its eaves, or null. The ridge
+ * is the 3DBAG ridge. The eaves: the 3DBAG eaves is the lowest roof edge anywhere on the pand (a porch, a lean-to),
+ * so it is raised to where the tile height (the 3DBAG 70th percentile, `heightM`) puts the main eaves on a roof
+ * rising evenly to the ridge, (h70 - 0.7 ridge) / 0.3, and to two storeys at least.
+ */
+export function schoolHipRoof(facts: SchoolFacts | undefined, heightM: number): { eavesM: number; riseM: number } | null {
+  if (!facts?.year || facts.year >= SCHOOL_HIP_BEFORE || facts.ridgeM === null || facts.eavesM === null) return null;
+  const eaves = Math.max(facts.eavesM, (heightM - 0.7 * facts.ridgeM) / 0.3, SCHOOL_HIP_MIN_EAVES_M);
+  const rise = facts.ridgeM - eaves;
+  if (rise < SCHOOL_HIP_MIN_RISE_M) return null;
+  return { eavesM: round1(eaves), riseM: round1(rise) };
+}
+
+export function publicKit([id, kind, mode, eavesM, riseM, era]: PublicEntry, facts: SchoolFacts | undefined = FACTS.get(id)): Kit {
   const name = `Generic ${KIND_NAME[kind]} ${id}`;
   if (kind === 'c' || mode === 'p') {
-    return { name, wall: { plain: true, hex: PUBLIC_WALL.c[era] }, tiers: [], stacks: [], roofs: [], body: [id] };
+    return { name, wall: { plain: true, hex: PUBLIC_WALL.c[era] }, tiers: [], stacks: [], roofs: [], body: [id], trim: plainBodyTrim(era) };
   }
-  const rows = schoolWindows(eavesM, era);
+  // A hip whose ring folds on this footprint (publicBuildingFacts.ts roofFits) keeps the flat roof at full height.
+  const hip = mode === 'f' && facts?.roofFits !== false ? schoolHipRoof(facts, eavesM) : null;
+  const eaves = hip?.eavesM ?? eavesM, rise = hip?.riseM ?? riseM;
+  const rows = schoolWindows(eaves, era);
   const windows = { rows, glassHex: '#3a4650', frameHex: era === 'm' ? undefined : '#d8d2c4', plinth: era === 'm' ? undefined : { z1: 0.8, hex: '#8c877d' } };
   return {
-    name, wall: { plain: true, hex: PUBLIC_WALL.s[era] }, tiers: [], stacks: [], roofs: [],
-    halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === 'h', eavesM, riseM, mat: 'tile', windows }],
+    name, wall: { plain: true, hex: schoolWall(id, era, facts).hex }, tiers: [], stacks: [], roofs: [],
+    halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === 'h', ...(hip ? { hip: true, roofHex: SCHOOL_HIP_TILE } : {}), eavesM: eaves, riseM: rise, mat: 'tile', windows }],
   };
 }
 
-export const GENERIC_PUBLIC_KITS: Kit[] = PUBLIC_BUILDINGS.map(publicKit);
+export const GENERIC_PUBLIC_KITS: Kit[] = PUBLIC_BUILDINGS.map(e => publicKit(e));
