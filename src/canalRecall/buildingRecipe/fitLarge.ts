@@ -25,6 +25,7 @@ import {MESH_SCREEN} from '../blockBuilding/components.ts';
 import {roofHeightAt} from './facts.ts';
 import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellRepair.ts';
 import {levelRoofAbove, rooftopLevel, type RoofLevelReport} from './roofLevel.ts';
+import {houseCuts, rowCoherence, spanEaves, spanTop} from './rowSplit.ts';
 
 /** The kit's dark glass, when the intent has no (measured) `palette.glass`. */
 export const KIT_GLASS = '#2a3a42';
@@ -79,6 +80,15 @@ export interface LargeGroupFit {
   arcade?: ArcadeFit & {facing: boolean};
   /** loggias: the deepest loggia's back plane behind the wall face (m), so the likeness elevation sees its glazing */
   loggiaDepthM?: number;
+  /** row split (intent `houses`): the main panel cut into houses, each with its own spec system, wall slot, eaves and crown */
+  houses?: {panel: number; segs: LargeHouseFit[]};
+}
+/** One house of a row split on the main panel (u in panel metres; bays numbered from `bayOffset` across the row). */
+export interface LargeHouseFit {
+  u0: number; u1: number; system: string; slot: string; eavesM: number; topM: number; storeys: number; lines: number[]; bays: number; bayOffset: number; pitchM: number;
+  crown: 'cornice' | 'flat' | 'gable';
+  /** the 3DBAG eaves when row coherence clamped it to the row line */
+  clampedFromM?: number;
 }
 export interface LargeBuildingRecipe {
   id: string; pandId: string; anchorRD: [number, number]; set: SurfaceSet; spec: BlockSpec;
@@ -396,7 +406,12 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     // the upper storeys (window sills in metres): past any taller plinth storey
     const uppers = st.heights.slice(1).filter((_, k) => plinthFactor === undefined || !plinthStoreys.includes(k + 1));
     if (main && uppers.some(h => h < 2.3 || h > 6.2)) warnings.push(`walls[${gi}]: upper storeys ${uppers[0]} m (storeys ${st.storeys} under ${eaves.toFixed(2)} m eaves)`);
-    const bays = w.baysPerStorey ?? Math.max(1, Math.round(widthM / DEFAULT_PITCH_M[w.system]));
+    // row split: each house's span and bays (default: the house width over the group's pitch); the row's bays are their sum
+    const cuts = w.houses && main ? houseCuts(main.uMin, main.uMax, w.houses.map(h => h.w)) : null;
+    const houseSpans = cuts && main ? w.houses!.map((_, k) => [k ? cuts[k - 1] : main.uMin, k < cuts.length ? cuts[k] : main.uMax] as [number, number]) : null;
+    const housePitch = widthM / (w.baysPerStorey ?? Math.max(1, Math.round(widthM / DEFAULT_PITCH_M[w.system])));
+    const houseBays = houseSpans ? w.houses!.map((h, k) => h.bays ?? Math.max(1, Math.round((houseSpans[k][1] - houseSpans[k][0]) / housePitch))) : null;
+    const bays = houseBays ? houseBays.reduce((a, b) => a + b, 0) : w.baysPerStorey ?? Math.max(1, Math.round(widthM / DEFAULT_PITCH_M[w.system]));
     const pitchM = widthM > 0 ? widthM / bays : DEFAULT_PITCH_M[w.system];
     const e = w.entrance === undefined || w.entrance === false ? null : w.entrance === true ? {} : w.entrance;
     const entrance = e && main ? {panel: main.index, bay: Math.min(bays - 1, e.bay ?? Math.floor((bays - 1) / 2)), storeys: Math.min(e.storeys ?? 1, st.storeys), canopy: !!e.canopy, ...(e.portal ? {portal: true} : {})} : null;
@@ -418,14 +433,45 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     // Recessed arcade: the intent's measures over the kit defaults (Mercatorplein); the facing flag rides on the group fit.
     const ap = ground === 'arcade' ? {...ARCADE_PROPORTIONS, ...Object.fromEntries(Object.entries(w.arcade ?? {}).filter(([k, v]) => k in ARCADE_PROPORTIONS && v !== undefined))} as typeof ARCADE_PROPORTIONS : undefined;
     const arcade: ArcadeFit | undefined = ap ? {pierM: r3(ap.pier * pitchM), depthM: r3(ap.walk * st.heights[0]), head: ap.head, rise: ap.rise, chamfer: ap.chamfer} : undefined;
-    systems[specSystem] = largeSystem(w.system, {pitchM, lines: st.lines, ground, windows: w.windows, stringCourses: w.stringCourses, piers: w.piers, balconyStoreys: w.balconies?.storeys, balconyRail: w.balconies?.rail, ...(w.balconies && (w.balconies.every !== undefined || w.balconies.bays) ? {balconyBays: {every: w.balconies.every, first: w.balconies.first, bays: w.balconies.bays}, bays} : {}), blankStoreys: w.blankStoreys, ...(w.glazedStoreys ? {glazedStoreys: w.glazedStoreys} : {}), slots: {...slots, ...(arch ? {arch} : {})},
+    const sysOpts: Parameters<typeof largeSystem>[1] = {pitchM, lines: st.lines, ground, windows: w.windows, stringCourses: w.stringCourses, piers: w.piers, balconyStoreys: w.balconies?.storeys, balconyRail: w.balconies?.rail, ...(w.balconies && (w.balconies.every !== undefined || w.balconies.bays) ? {balconyBays: {every: w.balconies.every, first: w.balconies.first, bays: w.balconies.bays}, bays} : {}), blankStoreys: w.blankStoreys, ...(w.glazedStoreys ? {glazedStoreys: w.glazedStoreys} : {}), slots: {...slots, ...(arch ? {arch} : {})},
       ...(w.columns ? {columnBays: w.columns.bays, bays} : {}),
       ...(w.windowShape ? {shape: {w: w.windowShape.w, h: w.windowShape.h, sillM: r3(w.windowShape.sill * (uppers[0] ?? st.heights[0]))}} : {}),
       ...(w.windowPattern ? {windowPattern: [...w.windowPattern]} : {}),
       ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {}),
       ...(w.glazing === 'panes' ? {paneSplit: true} : {}), ...(w.courses ? {courses: [...w.courses]} : {}), ...(w.souterrain ? {souterrain: w.souterrain} : {}), ...(w.openBays ? {openBays: w.openBays, bays} : {}),
       ...(w.plinth ? {plinth: {storeys: [...plinthStoreys], ...(w.plinth.bays ? {bays: [...w.plinth.bays]} : {}), lights: w.plinth.lights, sill: w.plinth.sill ?? PLINTH.sill, h: w.plinth.h ?? PLINTH.h, pier: w.plinth.pier ?? PLINTH.pier, transom: w.plinth.transom ?? PLINTH.transom}, bays} : {}),
-      ...(w.loggias ? {loggias: {storeys: [...w.loggias.storeys], ...(w.loggias.bays ? {bays: [...w.loggias.bays]} : {}), w: w.loggias.w ?? LOGGIA.w, h: w.loggias.h ?? LOGGIA.h, sill: w.loggias.sill ?? LOGGIA.sill, deep: w.loggias.deep ?? LOGGIA.deep, rail: w.loggias.rail ?? LOGGIA.rail, lights: w.loggias.lights ?? LOGGIA.lights, railSlot: railSlot ?? slots.frame}, bays} : {})});
+      ...(w.loggias ? {loggias: {storeys: [...w.loggias.storeys], ...(w.loggias.bays ? {bays: [...w.loggias.bays]} : {}), w: w.loggias.w ?? LOGGIA.w, h: w.loggias.h ?? LOGGIA.h, sill: w.loggias.sill ?? LOGGIA.sill, deep: w.loggias.deep ?? LOGGIA.deep, rail: w.loggias.rail ?? LOGGIA.rail, lights: w.loggias.lights ?? LOGGIA.lights, railSlot: railSlot ?? slots.frame}, bays} : {})};
+    systems[specSystem] = largeSystem(w.system, sysOpts);
+    // Row split: per house its own eaves (the 3DBAG wall over its span, row-coherent), storey lines, bays, window shape
+    // and wall slot, as a spec system of its own whose bays sit in the house's span (compose `segmentsFor`).
+    let houses: LargeGroupFit['houses'];
+    if (w.houses && main && houseSpans && houseBays) {
+      const raw = houseSpans.map(([a, b]) => spanEaves(main, a, b)), tops = houseSpans.map(([a, b]) => spanTop(main, a, b));
+      const coh = rowCoherence(raw, w.houses.map(h => h.storeys !== undefined || !!h.ownEaves));
+      for (const c of coh.clamps) warnings.push(`walls[${gi}].houses[${c.house}]: eaves ${c.fromM} m -> row line ${c.toM} m (row coherence)`);
+      let bayOffset = 0;
+      const segs = w.houses.map((h, k): LargeHouseFit => {
+        const [u0, u1] = houseSpans[k], eavesK = coh.eaves[k], topK = Math.max(tops[k], eavesK);
+        const storeysK = h.storeys ?? (Math.abs(eavesK - eaves) <= 0.8 ? st.storeys : undefined);
+        const stK = storeyLines(eavesK, topK - eavesK < 0.5, storeysK, civicM, gw, topK, undefined,
+          plinthFactor !== undefined ? Object.fromEntries(plinthStoreys.filter(q => q > 0).map(q => [q, plinthFactor])) : undefined);
+        let slot = slots.wall;
+        if (h.brick) {
+          slot = `wall@g${gi}h${k}`; palette[slot] = swatch(h.brick);
+          if (slotMaterial[slots.wall]) slotMaterial[slot] = slotMaterial[slots.wall];
+          if (measuredGroups.has(gi)) measuredSlots.push(slot);
+        }
+        const nb = houseBays[k], pk = (u1 - u0) / nb, shape = h.windowShape ?? w.windowShape, upK = stK.heights.slice(1).filter((_, q) => plinthFactor === undefined || !plinthStoreys.includes(q + 1));
+        const name = `${specSystem}h${k}`;
+        systems[name] = {...largeSystem(w.system, {...sysOpts, pitchM: pk, lines: stK.lines, bays: nb,
+          ...(shape ? {shape: {w: shape.w, h: shape.h, sillM: r3(shape.sill * (upK[0] ?? stK.heights[0]))}} : {})}), minWidth: 0.5, bays: {first: r3(u0 - main.uMin + pk / 2), pitch: r3(pk), count: nb}};
+        const fit: LargeHouseFit = {u0: r3(u0), u1: r3(u1), system: name, slot, eavesM: eavesK, topM: r3(topK), storeys: stK.storeys, lines: stK.lines, bays: nb, bayOffset, pitchM: r3(pk),
+          crown: h.crown ?? (w.cornice ? 'cornice' : 'flat'), ...(eavesK !== raw[k] ? {clampedFromM: raw[k]} : {})};
+        bayOffset += nb;
+        return fit;
+      });
+      houses = {panel: main.index, segs};
+    }
     // Curved front: one bay rhythm along each run of linked facets (two or more panels of this group), at the group's pitch.
     let curve: LargeGroupFit['curve'];
     if (w.curve) {
@@ -447,6 +493,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}),
       ...(w.wallSplit && main && splitSlot ? {split: {panel: main.index, uM: splitAtBay(main.uMin, main.uMax, pitchM, w.wallSplit.at), slot: splitSlot}} : {}),
       ...(arcade ? {arcade: {...arcade, facing: w.arcade?.facing !== false}} : {}),
+      ...(houses ? {houses} : {}),
       ...(w.loggias ? {loggiaDepthM: r3(Math.max(...w.loggias.storeys.map(k => (st.lines[k + 1] ?? st.lines[k]) - st.lines[k])) * (w.loggias.deep ?? LOGGIA.deep))} : {}), slots});
   });
   // Unlisted walls: one system at the civic storey height and the system's default pitch.

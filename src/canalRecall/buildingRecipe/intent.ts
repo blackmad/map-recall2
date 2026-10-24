@@ -803,6 +803,29 @@ export interface RoofIntent {
  */
 export interface LargeWindowShape {w: number; h: number; sill: number}
 export interface TiltedBaysIntent {every?: number; first?: number; bays?: number[]; storeys?: number[]}
+/** Crown of one house of a row split (`LargeWallIntent.houses`): `cornice` = a stone cornice at the house's own eaves;
+ *  `flat` = a plain parapet; `gable` = the 3DBAG gable wall over the eaves kept as the crown (no cornice). */
+export const LARGE_HOUSE_CROWNS = ['cornice', 'flat', 'gable'] as const;
+/**
+ * One house of a row split, left to right along the group's main panel. Shares and counts only, no metres: the fit
+ * cuts the main panel at the cumulative shares and takes each house's eaves from the 3DBAG wall over its own span.
+ */
+export interface LargeHouseIntent {
+  /** share of the main panel's width (the list is normalised; measured from the crop's vertical joints/colour changes) */
+  w: number;
+  /** window bays per upper storey (default: the house width over the group's pitch) */
+  bays?: number;
+  /** full storeys under the house's own eaves (default: the group's count when its eaves are on the row line, else from the eaves) */
+  storeys?: number;
+  /** default `cornice` when the group has `cornice`, else `flat` */
+  crown?: typeof LARGE_HOUSE_CROWNS[number];
+  /** the house's wall colour (default the group's) */
+  brick?: string;
+  /** the house's window proportions (default the group's `windowShape`) */
+  windowShape?: LargeWindowShape;
+  /** the photo skyline confirms this house's 3DBAG eaves off the row line: no row-coherence clamp */
+  ownEaves?: boolean;
+}
 export interface LargeWallIntent {
   /** 3DBAG LoD2.2 WallSurface indices (shell boundary index) of this wall group. */
   wallSurfaces: number[];
@@ -891,6 +914,13 @@ export interface LargeWallIntent {
    * group's `palette.brick`. Houthavenkade 26: yellow-brown and dark brick on one 3DBAG plane.
    */
   wallSplit?: {at: number; brick: string};
+  /**
+   * Row split (opt-in): the main panel is a row of separate houses on one BAG pand (Stadhouderskade 101-111, the
+   * canal row of pand 165427), each with its own width, eaves (3DBAG wall over its span), storeys, bays, crown and wall
+   * colour. Rows are coherent: an unmeasured eaves more than 0.8 m off the row line, between neighbours on the line, is
+   * clamped to it unless `ownEaves`. Absent: one grid across the panel, byte-identical.
+   */
+  houses?: LargeHouseIntent[];
   /**
    * Arched heads: on the upper-storey windows, on the ground openings (with `ground: "portals"` or a windowed ground),
    * and the band around each head: `brick` (a rowlock arch in the wall brick with stone imposts, default), `stone`,

@@ -9,6 +9,7 @@
  * sha256, panorama, date), its placement, the measurement and the likeness of the current model.
  *
  * --write, per group with evidence (not NO EVIDENCE), skipping any field the group lists in `hand`:
+ *   houses (a row of separate houses: rowSplit.ts `proposeHouses`, only on clear joints in the crop colour and the 3DBAG roof),
  *   palette.brick (the light-trim-normalised wall), palette.glass (the darker not-wall cells), windowShape (w, h, sill),
  *   baysPerStorey (the measured pitch over the main panel; --no-bays keeps the count), system from the front class
  *   (punched -> brick-bay-grid, ribbon -> ribbon-windows, curtain -> curtain-wall; measured glazed columns keep the
@@ -39,6 +40,7 @@ import {compileBuilding} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import {LARGE_BUDGET_TRIANGLES} from '../../src/canalRecall/buildingRecipe/largeGates.ts';
 import {cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
 import {draftBudgetCap, inheritedWall, isDraftIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
+import {proposeHouses, roofProfile, roofSteps} from '../../src/canalRecall/buildingRecipe/rowSplit.ts';
 
 const HOUSES = 'scripts/building-recipes/houses';
 const today = () => new Date().toISOString().slice(0, 10);
@@ -51,6 +53,8 @@ export interface ProposeOpts {
   builtYear?: number | null;
   /** the system a curtain class falls back to when its crop is not trusted (measureHouse: the building's majority) */
   fallbackSystem?: LargeWallIntent['system'];
+  /** row split evidence per group: the main panel's width and its 3DBAG roof steps (rowSplit `roofSteps`, fractions) */
+  rows?: Record<number, {widthM: number; roof: number[]}>;
 }
 
 /** The system a group's front class proposes and, for a curtain class, why it is not trusted (`curtainEvidence`). */
@@ -96,8 +100,17 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: Propose
     } else if (proposed && proposed !== w.system && w.system !== 'plinth-shopfronts') system = proposed;
     if (system !== w.system) { patch.system = system; notes.push(`system ${w.system} -> ${system} (measured ${m.frontClass})`); }
   }
+  // a row of separate houses (rowSplit `proposeHouses`, only on clear joints): replaces a two-colour split
+  const row = opts.rows?.[g.group], rowFree = !w.houses && !hand.has('houses') && !hand.has('palette.brick') && !hand.has('palette') && ['brick-bay-grid', 'plinth-shopfronts'].includes(system)
+    && !(['wallSplit', 'curve', 'columns', 'hall', 'screen', 'meshScreen', 'spandrels', 'alignWith', 'windowPattern', 'tiltedBays', 'openBays', 'hoist', 'gateways', 'hallDoors', 'garageBays', 'garageDoors', 'piers'] as const).some(k => w[k] !== undefined && w[k] !== false)
+    && !w.balconies?.bays && w.balconies?.every === undefined && !w.plinth?.bays && !w.loggias?.bays;
+  const proposal = row && rowFree && m.rowJoints ? proposeHouses({widthM: row.widthM, colour: m.rowJoints, roof: row.roof, pitchM: m.pitchM ?? row.widthM / Math.max(1, w.baysPerStorey ?? 1), usable: m.usable}) : null;
+  if (proposal) {
+    patch.houses = proposal.houses;
+    notes.push(`row of ${proposal.houses.length} houses: joints ${proposal.joints.map(j => `${Math.round(j.at * 100)} % (${j.by})`).join(', ')}`);
+  }
   // two wall materials along the main panel: left = palette.brick, right = wallSplit.brick (bay-snapped in the fit)
-  if (m.split && m.split.at >= 0.1 && m.split.at <= 0.9 && system !== 'curtain-wall' && !w.screen && !hand.has('wallSplit') && !hand.has('palette.brick') && !hand.has('palette')) {
+  if (!proposal && m.split && m.split.at >= 0.1 && m.split.at <= 0.9 && system !== 'curtain-wall' && !w.screen && !hand.has('wallSplit') && !hand.has('palette.brick') && !hand.has('palette')) {
     palette.brick = m.split.left; patch.wallSplit = {at: m.split.at, brick: m.split.right};
     notes.push(`wall split ${m.split.left} | ${m.split.right} at ${Math.round(m.split.at * 100)} % (dE ${m.split.dE})`);
   }
@@ -203,7 +216,7 @@ async function capDraftBudget(id: string, file: string) {
 
 export async function measureHouse(id: string, opts: {write: boolean; system: boolean; bays: boolean; debug?: boolean; measuredFile?: string}) {
   requireSourceData();
-  const {likeness, report} = await compileLargeHouse(id);
+  const {likeness, report, built} = await compileLargeHouse(id);
   if (!likeness) throw Error(`${id}: no archived crops for pand ${report.pandId} (all-walls.ts --pand=${report.pandId} --archive)`);
   const file = path.join(HOUSES, id, 'intent.json'), intent: LargeBuildingIntent = JSON.parse(await fs.readFile(file, 'utf8'));
   const summary = likenessSummary(likeness);
@@ -239,8 +252,11 @@ export async function measureHouse(id: string, opts: {write: boolean; system: bo
     // a curtain wall is never the fallback for a distrusted curtain class: the majority of the other trusted systems
     return system && system !== 'curtain-wall' && !distrust.length ? [{system, areaM2: areaOf(g)}] : [];
   });
+  // row split evidence: the 3DBAG roof steps behind each measured group's main panel
+  const rows: NonNullable<ProposeOpts['rows']> = {};
+  for (const g of likeness) { const p = built.panels[g.panel]; if (p) rows[g.group] = {widthM: p.uMax - p.uMin, roof: roofSteps(roofProfile(built.facts.roofsRD, built.facts.heights.groundNAP, built.anchorRD, p))}; }
   for (const g of likeness) {
-    const w = intent.walls[g.group], {patch, notes: n} = proposeGroup(w, g, {...opts, builtYear, fallbackSystem: trusted.length ? majoritySystem(trusted, w.system) : undefined});
+    const w = intent.walls[g.group], {patch, notes: n} = proposeGroup(w, g, {...opts, builtYear, rows, fallbackSystem: trusted.length ? majoritySystem(trusted, w.system) : undefined});
     if (!Object.keys(patch).length) { notes.push(...n.map(t => `walls[${g.group}] ${t}`)); continue; }
     Object.assign(w, patch); measuredGroups.push(g.group); notes.push(...n.map(t => `walls[${g.group}] ${t}`));
     for (const src of cropSources(g)) if (!sources.some(s => s.id === src.id)) sources.push(src);

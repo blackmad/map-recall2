@@ -32,7 +32,9 @@ export interface GroupLikeness {
   measured?: {wall: string; wallRaw: string; glass: string | null; trim: string | null; glazing: number; storeyGlazing: (number | null)[]; ground: number | null; bays: number | null; pitchM: number | null; storeyM: number | null;
     window: FacadeMeasurement['window']; frontClass: FacadeMeasurement['frontClass']; normalisation: FacadeMeasurement['normalisation']; usable: number; foliage: number; washedOut: number;
     /** two wall materials along the panel (at = fraction of the panel width from uMin), null when one colour */
-    split: FacadeMeasurement['split']};
+    split: FacadeMeasurement['split'];
+    /** the front's colour segments along the panel (fractions of the panel width from uMin; rowSplit.ts) */
+    rowJoints?: NonNullable<FacadeMeasurement['rowJoints']>};
 }
 
 const r3 = (v: number) => Math.round(v * 1000) / 1000;
@@ -94,13 +96,15 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
     const y0 = Math.max(0, Math.round((PAD_M - likeness.shift.vM) * PPM)), hpx = Math.min(height - y0, Math.round((box.v1 - box.v0) * PPM));
     const photoRgb = wpx > 4 && hpx > 4 ? {data: await sharp(Buffer.from(rgb), {raw: {width, height, channels: 3}}).extract({left: x0, top: y0, width: wpx, height: hpx}).raw().toBuffer(), width: wpx, height: hpx} : undefined;
     const bays = photo.pitchM ? Math.max(1, Math.round((box.u1 - box.u0) / photo.pitchM)) : null;
+    const toPanel = (f: number) => r3(Math.max(0, Math.min(1, (box.u0 - PAD_M + f * W - p.uMin) / Math.max(1e-6, p.uMax - p.uMin))));
     out.push({group: g.index, panel: p.index, status: 'measured', crop: {...main.crop, ref: sourceRef(pand, main.crop.file)}, match: main.match, coverage,
       pieces: pieces.map(q => ({tag: q.crop.tag, ref: sourceRef(pand, q.crop.file), sha256: q.crop.sha256, capturedAt: q.crop.capturedAt, u0: r3(q.u0 - p.uMin), u1: r3(q.u1 - p.uMin)})),
       box, photo, model, likeness, photoRgb, photoImage: {image, box: photoBox, lines: g.lines, inside}, replay,
       measured: {wall: photo.wall.hex, wallRaw: photo.wall.rawHex, glass: photo.glass?.hex ?? null, trim: photo.trim?.hex ?? null, glazing: photo.glazing, storeyGlazing: photo.storeyGlazing, ground: photo.ground.glazing, bays,
         pitchM: photo.pitchM, storeyM: photo.storeyM, window: photo.window, frontClass: photo.frontClass, normalisation: photo.normalisation, usable: photo.usableFraction, foliage: photo.foliageFraction, washedOut: photo.washedOutFraction,
         // the colour split as a fraction of the panel width from uMin (the photo box is padded by PAD_M)
-        split: photo.split ? {...photo.split, at: r3(Math.max(0, Math.min(1, (box.u0 - PAD_M + photo.split.at * W - p.uMin) / Math.max(1e-6, p.uMax - p.uMin))))} : null}});
+        split: photo.split ? {...photo.split, at: r3(Math.max(0, Math.min(1, (box.u0 - PAD_M + photo.split.at * W - p.uMin) / Math.max(1e-6, p.uMax - p.uMin))))} : null,
+        ...(photo.rowJoints ? {rowJoints: photo.rowJoints.map(s => ({...s, from: toPanel(s.from), to: toPanel(s.to)}))} : {})}});
   }
   return out;
 }

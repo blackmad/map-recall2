@@ -44,6 +44,12 @@ export interface ComposeOptions {
   wallSlotFor?: (p: Panel) => Slot;
   /** System per panel; replaces `spec.rules`/`spec.default` (large-tier recipes assign systems by 3DBAG wall surface). */
   systemFor?: (p: Panel) => string | null;
+  /**
+   * Row split (opt-in): spans of the panel drawn with their own system instead of the panel's (each system's `lines`,
+   * `bays` layout and bands; cells numbered from `bayOffset`, `bays` in the whole row). The panel's own system still
+   * sets the levels the panel hook sees. Absent or null for a panel: unchanged.
+   */
+  segmentsFor?: (p: Panel) => { system: string; u0: number; u1: number; top: number; bayOffset: number; bays: number }[] | null;
   /** Leave this cell empty so a component (entrance, garage door) can take it. */
   skipCell?: (p: Panel, floor: number, bay: number, bays: number) => boolean;
   /** Leave this panel's bands (string courses) out: a wall no one sees, a court face (opt-in). */
@@ -793,7 +799,7 @@ function stripBox(c: Ctx, slot: Slot, a: number, b: number, v0: number, v1: numb
   if (!joinB || c.closedBands) mesh.quad(slot, B0, oB0, oB1, B1, part, p.r);
 }
 
-function drawBands(c: Ctx, bands: Band[], levels: number[], sys: System, top = Infinity) {
+function drawBands(c: Ctx, bands: Band[], levels: number[], sys: System, top = Infinity, clip?: [number, number]) {
   void sys;
   for (const band of bands) {
     levels.forEach((L, f) => {
@@ -801,7 +807,10 @@ function drawBands(c: Ctx, bands: Band[], levels: number[], sys: System, top = I
       const next = levels[f + 1] ?? top;
       if (band.liftFrac !== undefined && !Number.isFinite(next)) return;
       const v0 = L + (band.lift ?? 0) + (band.liftFrac !== undefined ? band.liftFrac * (next - L) : 0) - band.h / 2, v1 = v0 + band.h;
-      for (const [a, b] of intervals(c.p, v0, v1)) if (b - a > (band.minRun ?? 0.2)) stripBox(c, band.slot, a, b, v0, v1, band.out);
+      for (const [a0, b0] of intervals(c.p, v0, v1)) {
+        const a = clip ? Math.max(a0, clip[0]) : a0, b = clip ? Math.min(b0, clip[1]) : b0;
+        if (b - a > (band.minRun ?? 0.2)) stripBox(c, band.slot, a, b, v0, v1, band.out);
+      }
     });
   }
 }
@@ -859,6 +868,33 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     if (!lineSet) for (let L = g + s; L < p.vMax - 1.0; L += s) levels.push(L);
     levels.push(Math.max(p.vMax, levels[levels.length - 1] + 0.01));
     const floors = levels.length - 1, nb = Math.max(1, Math.round(W / sys.pitch)), nbays = sys.bays ? sys.bays.centres?.length ?? sys.bays.count : nb;
+    const segs = opts.segmentsFor?.(p);
+    if (segs) {
+      // row split: every house span with its own system's storey lines (under its own top), bays and bands
+      for (const seg of segs) {
+        const hs: System | undefined = spec.systems[seg.system]; if (!hs?.lines || !hs.bays) throw new Error(`segment system ${seg.system} needs lines and a bay layout`);
+        const lv = hs.lines.slice(0, -1).filter((L, i) => i === 0 || L < seg.top - 0.8);
+        lv.push(Math.max(seg.top, lv[lv.length - 1] + 0.01));
+        const fl = lv.length - 1, lay = hs.bays;
+        for (let f = 0; f < fl; f++) {
+          const v0 = lv[f], v1 = lv[f + 1];
+          if (v1 <= p.vMin + 0.5 || v0 < p.partyH - 0.3) continue;
+          if (f === fl - 1 && v1 - v0 < 1.8) continue;
+          const topRow = hs.top && f >= fl - (hs.topCount ?? 1) && f > 0;
+          const row = hs.rowOverrides?.[String(f)] ?? (f === 0 ? hs.ground : topRow ? hs.top! : hs.typical);
+          for (let b = 0; b < lay.count; b++) {
+            const cell: Cell = { u0: p.uMin + lay.first + lay.pitch * (b - 0.5), u1: p.uMin + lay.first + lay.pitch * (b + 0.5), v0: Math.max(v0, p.vMin), v1, bay: seg.bayOffset + b, floor: f, bays: seg.bays };
+            cells.push(cell);
+            if (opts.skipCell?.(p, f, cell.bay, seg.bays)) continue;
+            drawRow(c, row, cell, p.index * 31 + 7);
+          }
+        }
+        if (hs.bands && !opts.skipBands?.(p)) drawBands(c, hs.bands, lv.slice(0, fl), hs, lv[fl], [seg.u0, seg.u1]);
+      }
+      if (c.layered) drawBalconyRuns(c);
+      finish(levels);
+      continue;
+    }
     for (let f = 0; f < floors; f++) {
       const v0 = levels[f], v1 = levels[f + 1];
       if (v1 <= p.vMin + 0.5 || v0 < p.partyH - 0.3) continue;

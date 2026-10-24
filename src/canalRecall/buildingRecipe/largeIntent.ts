@@ -3,12 +3,12 @@
  * validator: names, counts and component switches only; no coordinate or metric field anywhere. Wall surfaces are
  * checked against the facts when the fit runs (`fitLarge`), not here.
  */
-import {GROUP_WALL_MATERIALS, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
+import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
 import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/systems.ts';
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -391,6 +391,33 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (typeof s?.at !== 'number' || !(s.at >= 0.1 && s.at <= 0.9)) problems.push(`${at}.wallSplit.at: fraction 0.1..0.9 of the main panel`);
       colour(s?.brick, `${at}.wallSplit.brick`);
       if (w.system === 'curtain-wall' || w.screen) problems.push(`${at}.wallSplit: only on a wall with a brick face (not curtain-wall or screen)`);
+    }
+    if (w.houses !== undefined) {
+      const hs = w.houses;
+      if (!Array.isArray(hs) || hs.length < 2 || hs.length > 24) problems.push(`${at}.houses: a row of 2..24 houses`);
+      else {
+        const total = hs.reduce((a, h) => a + (typeof h?.w === 'number' ? h.w : 0), 0);
+        hs.forEach((h, k) => {
+          const hat = `${at}.houses[${k}]`;
+          for (const key of Object.keys(h ?? {})) if (!['w', 'bays', 'storeys', 'crown', 'brick', 'windowShape', 'ownEaves'].includes(key)) problems.push(`${hat}.${key}: unknown field (w, bays, storeys, crown, brick, windowShape, ownEaves)`);
+          if (typeof h?.w !== 'number' || !(h.w > 0) || (total > 0 && h.w / total < 0.02)) problems.push(`${hat}.w: a positive share of the panel, at least 2 % of the row`);
+          if (h?.bays !== undefined) count(h.bays, `${hat}.bays`, 1, 30);
+          if (h?.storeys !== undefined) count(h.storeys, `${hat}.storeys`, 1, 12);
+          if (h?.crown !== undefined) oneOf(h.crown, LARGE_HOUSE_CROWNS, `${hat}.crown`);
+          if (h?.brick !== undefined) colour(h.brick, `${hat}.brick`);
+          bool(h?.ownEaves, `${hat}.ownEaves`);
+          if (h?.windowShape !== undefined) {
+            const s = h.windowShape, frac = (v: unknown, key: string, lo: number, hi: number) => { if (typeof v !== 'number' || !(v >= lo && v <= hi)) problems.push(`${hat}.windowShape.${key}: fraction ${lo}..${hi}`); };
+            for (const key of Object.keys(s ?? {})) if (!['w', 'h', 'sill'].includes(key)) problems.push(`${hat}.windowShape.${key}: unknown field (w, h, sill)`);
+            frac(s?.w, 'w', 0.08, 0.98); frac(s?.h, 'h', 0.08, 0.98); frac(s?.sill, 'sill', 0, 0.9);
+            if (typeof s?.h === 'number' && typeof s?.sill === 'number' && s.h + s.sill > 0.98) problems.push(`${hat}.windowShape: sill + h must leave a head (<= 0.98 of the storey)`);
+          }
+        });
+      }
+      if (!['brick-bay-grid', 'plinth-shopfronts'].includes(w.system)) problems.push(`${at}.houses: only brick-bay-grid or plinth-shopfronts rows (a brick face with punched windows)`);
+      const clash = (['wallSplit', 'curve', 'columns', 'hall', 'screen', 'meshScreen', 'spandrels', 'alignWith', 'windowPattern', 'tiltedBays', 'openBays', 'hoist', 'gateways', 'hallDoors', 'garageBays', 'garageDoors', 'piers'] as const).filter(k => w[k] !== undefined && w[k] !== false);
+      if (clash.length) problems.push(`${at}.houses: not with ${clash.join(', ')} (they lay one bay rhythm across the panel)`);
+      if (w.balconies?.bays || w.balconies?.every !== undefined || w.plinth?.bays || w.loggias?.bays) problems.push(`${at}.houses: balconies, plinth and loggias run every bay of a row (no bay lists)`);
     }
     if (w.hand !== undefined) { if (!Array.isArray(w.hand)) problems.push(`${at}.hand: list of field paths`); else for (const k of w.hand) if (typeof k !== 'string' || !WALL_KEYS.includes(k.split('.')[0])) problems.push(`${at}.hand: ${JSON.stringify(k)} is not a wall-group field`); }
   });
