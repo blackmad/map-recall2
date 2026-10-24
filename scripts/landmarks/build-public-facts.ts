@@ -183,11 +183,16 @@ const roofRoot = path.join(ROOT, 'public/data/extracts/amsterdam/roof-facts/14')
 for (const x of fs.readdirSync(roofRoot).filter(n => /^\d+$/.test(n))) for (const file of fs.readdirSync(path.join(roofRoot, x))) {
   for (const [k, v] of decodeRoofFactTile(JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(roofRoot, x, file))).toString()))) roofFacts.set(String(k), v);
 }
-/** A pitched roof slot read with this confidence gives the roof its measured tint (roofs/roofSlots.ts roofSlotHex). */
-const PITCHED_SLOTS = new Set(['pantile-red', 'pantile-dark', 'slate', 'zinc']), MIN_ROOF_CONFIDENCE = 0.6;
+/**
+ * A pitched roof slot read with this confidence gives the roof its measured tint (roofs/roofSlots.ts roofSlotHex, which
+ * keeps it in the slot's band). The orthophoto sees a roof sunlit from straight above; from the street a pitched roof
+ * reads darker (the r4 sheet's first pass drew the reviewed dark slate roofs, rows 115, 125, 285, pale grey), so the
+ * reading is taken at STREET_ROOF_SHADE of its brightness before it is placed in its slot.
+ */
+const PITCHED_SLOTS = new Set(['pantile-red', 'pantile-dark', 'slate', 'zinc']), MIN_ROOF_CONFIDENCE = 0.6, STREET_ROOF_SHADE = 0.7;
 function roofTint(id: string): string | null {
   const f = roofFacts.get(id.replace('NL.IMBAG.Pand.', ''));
-  return f && PITCHED_SLOTS.has(f.slot) && f.confidence >= MIN_ROOF_CONFIDENCE ? roofSlotHex(f.slot, f.rgb) : null;
+  return f && PITCHED_SLOTS.has(f.slot) && f.confidence >= MIN_ROOF_CONFIDENCE ? roofSlotHex(f.slot, f.rgb.map(v => v * STREET_ROOF_SHADE) as [number, number, number]) : null;
 }
 
 // --- Does the planned hipped roof fit the footprint? -------------------------------------------------------------
