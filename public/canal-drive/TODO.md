@@ -81,10 +81,13 @@ Open, in order:
     rooftop above the photographed fronts; reinstalled with the walls' 2026-10-14
     inferred status carried. Kit cannot yet say: the lower set-back pavilion's
     jagged outline, the copper-framed glass pavilion, recessed attic floors.
-    Nassaukade wedge (ba8499fa): not identified; the position sits on the
-    generic row north of the cross street, candidates 236122/236191 (tan
-    chimneys) and 163983's rear-wing flat top; the lane is reproducing the
-    note's exact frame to pin it.
+    Nassaukade wedge (ba8499fa): fixed 2026-10-24. It was Nassaukade 171
+    (pand 153093), a generic worker facade whose seeded roof pick was
+    `halfHipped` (5 % odds on narrow c19 plots); the half-hip's bare street
+    end read as an orange wedge between the crowned neighbours. `planRoof`
+    now turns an unmapped half-hip on a plot at least twice as deep as wide
+    into a gable (`narrowHalfHip.test.ts` pins the footprint); mapped
+    half-hips, shallow row houses and villas unchanged.
   - Centraal from the IJ side needs real work (091d8bb3): deferred, a bespoke
     `centraal-station` session (north facade, bus platform roof); Living by
     Numbers (1c5d9c04, sculpture POI 264245976): deferred to a memorial-kit
@@ -178,6 +181,13 @@ Open, in order:
   walls). Factory batches may run on PDOK facts; compile/gates on
   PDOK-derived facts not yet exercised. Open: fetch all 56 blades once so
   the pipeline has no runtime dependency on either host.
+- **perf own-ground ring** (merged 2026-10-24, be8224ed2): touch devices
+  start the own-ground ring at 700 m (desktop 1400 m), always keeping the
+  rider's 3×3 cells; iPhone profile 11 → 9 cells, ground geometry 149 →
+  128 MB, main ArrayBuffers 167 → 142 MB; test:own-ground 141/141,
+  screenshots identical. Side finding: frustum-culled cells that never
+  upload keep their CPU arrays (~11 MB per cell); next is the own-ground
+  worker's cell cache bound.
 - **perf-phones**: taken over 2026-10-23; brief
   `docs/handoffs/lane-perf-phones-20261023.md`; the previous session runs
   one read-only Android emulator ride and reports numbers.

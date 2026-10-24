@@ -28,6 +28,16 @@ ferry and the roof repairs are announced beside the model feed; and the
 TODO Programme section now opens with the recipe for resuming the
 programme if the integrating session dies.
 
+**Nassaukade 171 and the phone ground ring (2026-10-24).** The last open
+feedback note from the Bellamyplein turned out not to be a model at all:
+Nassaukade 171 is a generic worker facade, and its seeded roof draw had
+landed on a half-hip, whose bare street end shows as an orange trapezoid
+when the neighbours wear tall crowns. Narrow plots at least twice as deep
+as wide now take a gable when nothing is mapped. The perf session also
+halved the own-ground ring on touch devices (700 m, rider's 3×3 always
+kept), 20 MB less ground geometry on the iPhone profile with identical
+frames.
+
 ## Night of 2026-10-23: lanes land, the feedback queue is routed, perf is folded in
 
 Integrator (this session, worktree `integrator-plan`), merged into `main`:
