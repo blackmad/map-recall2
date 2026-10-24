@@ -95,9 +95,9 @@ function canalRecallDropsBuildingCopy() {
 function canalRecallOwnGroundBudget() {
   const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
   const budget = { releaseArrays: !!coarse && window.__canalRecallKeepGroundArrays !== true };
-  // The phone chase camera (zoom ~18, pitch ~12°) sees a few hundred metres: the rider's 3×3 cells (always
-  // resident) cover it. The ring still grows with the view from the air (residency.ts). 1400 m kept 9–14 cells.
-  if (coarse) budget.radiusM = 700;
+  // The phone chase camera (zoom ~18, pitch ~12°) shows ~60 × 110 m: 400 m around the rider covers it with room
+  // for the build latency. The ring still grows with the view from the air (residency.ts). 1400 m kept 9–14 cells.
+  if (coarse) budget.radiusM = 400;
   try {
     const asked = Number(new URLSearchParams(window.location.search).get('groundRadius'));
     if (Number.isFinite(asked) && asked >= 400) { budget.radiusM = Math.min(asked, 2000); budget.aerialRadiusM = Math.min(asked, 2000); }
