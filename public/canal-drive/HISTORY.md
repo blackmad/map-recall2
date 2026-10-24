@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+**Sentry, Valley, Felix Meritis, likeness (2026-10-24, #9, #40, #38).**
+Sentry: every error was sent twice (monitoring's own listeners plus the SDK),
+and the Microsoft link-scanner rejections (about 100 events) are now filtered.
+Map code skips getLayer/getSource while the WebGL context is lost and
+re-runs the skipped work on `style.load`. With the context held lost in e2e,
+route, highlight and about 8 landmark models per loss used to fail for the
+rest of the session. A browser that refuses WebGL opens the ride without a
+basemap, shows a notice and reports once. 10 of 15 issues resolved; D, E, 9,
+6 and 7 stay open with notes. App Check returns 403 with a 24 h throttle in
+several sessions (site key or domain registration). Valley: the build-time
+snap judges walls without the thin-strip edge cells from 76a26204e (the audit
+gate keeps them), so the terrace balustrade glass is dropped again as in the
+reviewed state; overhang 9 → 4 (baseline 6). Felix Meritis: the published
+covers.json predated 4fe12b6c4 and still hid rear house 0363100012174322;
+covers republished (only Felix Meritis and the Oude Kerk part differ), and
+check:covers now fails when covers lists a pand reviewed `keep`. Likeness:
+paired windows count per window (2–4 per bay), and sunlit brick with the
+wall's chromaticity joins the wall; of 381 photographed groups 4 verdicts
+moved (3 better, 1 neutral), goldens identical. Not fixed: dark sandstone
+whose glass shares its colour (Hirschpassage 2), mosaic crops of several
+fronts sharing one wall cluster, the leaf test firing on colour fringes.
+
 **Kit facts for joined OSM parts (2026-10-24, #41).** The 113 OSM-only kit
 parts joined to pands in #37 now get measured facts: wall 72, glazing 65,
 frames 52, roof form 97, each part reading only the LoD2.2 planes over its
