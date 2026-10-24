@@ -229,7 +229,23 @@
  ],
  "continuity": {
   "streetLevel": "shared",
-  "corniceGroups": [],
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012094000",
+     "0363100012146841",
+     "0363100012142675",
+     "0363100012087177",
+     "0363100012123914",
+     "0363100012096324",
+     "0363100012147168",
+     "0363100012111405",
+     "0363100012103385",
+     "0363100012107452"
+    ],
+    "evidence": "strip 2021-03-19: one yellow gutter line along all ten fronts at the gable feet (row y ~243 px = 7.6 m), Zaanhof 7 (087177) on it too though 3DBAG puts its eaves 0.5 m higher"
+   }
+  ],
   "identical": [],
   "partyClip": true,
   "roof": {

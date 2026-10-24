@@ -147,7 +147,19 @@
  ],
  "continuity": {
   "streetLevel": "shared",
-  "corniceGroups": [],
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012114944",
+     "0363100012109995",
+     "0363100012074829",
+     "0363100012065518",
+     "0363100012097562",
+     "0363100012141963"
+    ],
+    "evidence": "strip 2021-03-19: one gutter line at the gable feet along the six fronts (Zaanhof 1919, one design)"
+   }
+  ],
   "identical": [],
   "partyClip": true,
   "roof": {

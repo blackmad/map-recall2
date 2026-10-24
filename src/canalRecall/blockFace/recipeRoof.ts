@@ -73,7 +73,28 @@ export interface FrontRoofSpec {
   /** The crown line this band stays under (saddle: the crown outline top); reported as the pand's `crownTopM`. */
   lineM?: number;
   note?: string;
+  /**
+   * Attic only (`RoofIntent.rise` x the top storey height): the measured rise of the main roof over the front eaves (m). Replaces the attic
+   * storey (`atticMinM..atticMaxM`) and the 3DBAG p95 cap; the 3DBAG max stays the bound. Absent = byte-identical.
+   */
+  riseM?: number;
+  /** Attic only (`RoofIntent.rearPitchDeg`): the rear face's own pitch (a long saddle's shallower back slope). */
+  rearPitchDeg?: number;
+  /**
+   * Attic only (`RoofIntent.crossGables`): pointed crowns on part of the front that are the ends of cross roofs. Each
+   * gives the crown's two feet and apex on the facade line (RD xy) and their heights (m above the pand ground); the roof
+   * behind the crown takes the crown's rakes (3 cm under them) back until they meet the attic face, so the gable is the
+   * end wall of a roof instead of a sheet standing in front of it (Zaanhof, 1919).
+   */
+  crossGables?: CrossGable[];
 }
+
+/** One cross-roof gable (see `FrontRoofSpec.crossGables`): feet `leftRD`/`rightRD` and `apexRD` on the facade line. */
+export interface CrossGable { leftRD: number[]; apexRD: number[]; rightRD: number[]; leftM: number; apexM: number; rightM: number }
+/** Cross roofs stay this far under the crown's rakes (the saddle's margin under a crown outline). */
+export const CROSS_GABLE_MARGIN_M = 0.03;
+/** Cross roofs start this far behind the frontage, behind the crown wall (fit.ts crown depth 0.18 m, bargeboards on it). */
+export const CROSS_GABLE_BEHIND_M = 0.25;
 
 export interface RecipeRoofReport {
   pandId: string;
@@ -335,11 +356,14 @@ export function footprintTriangles(rings: number[][][], tolM = 0.05): number[][]
   return out;
 }
 
-/** The main-body profile h(d): (a flat gutter `setbackM` deep,) steep up, flat top, steep down; knots [d, h]. */
-export function atticProfile(eavesM: number, ridgeM: number, mainDepthM: number, pitchDeg: number, setbackM = 0): [number, number][] {
+/**
+ * The main-body profile h(d): (a flat gutter `setbackM` deep,) steep up, flat top, steep down; knots [d, h]. The rear
+ * face takes `rearPitchDeg` when given (absent: the front pitch, byte-identical).
+ */
+export function atticProfile(eavesM: number, ridgeM: number, mainDepthM: number, pitchDeg: number, setbackM = 0, rearPitchDeg?: number): [number, number][] {
   if (ridgeM - eavesM < 0.05) return [[0, eavesM], [mainDepthM, eavesM]];
-  const run = (ridgeM - eavesM) / Math.tan(pitchDeg * Math.PI / 180);
-  return [[0, eavesM], ...(setbackM > 0 ? [[setbackM, eavesM] as [number, number]] : []), [setbackM + run, ridgeM], [mainDepthM - run, ridgeM], [mainDepthM, eavesM]];
+  const run = (ridgeM - eavesM) / Math.tan(pitchDeg * Math.PI / 180), rearRun = rearPitchDeg === undefined ? run : (ridgeM - eavesM) / Math.tan(rearPitchDeg * Math.PI / 180);
+  return [[0, eavesM], ...(setbackM > 0 ? [[setbackM, eavesM] as [number, number]] : []), [setbackM + run, ridgeM], [mainDepthM - rearRun, ridgeM], [mainDepthM, eavesM]];
 }
 
 /**
@@ -429,8 +453,8 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   if (flat) notes.push(`3DBAG main body flat (p95 ${r3(capM)} m vs eaves ${r3(E)} m): flat at the eaves`);
   else if (capM < E + attic) notes.push(`attic capped by 3DBAG p95 ${r3(capM)} m`);
   const cornerDepths = polys.flatMap(poly => poly.flat()).map(depth);
-  const makeProfile = (eaves: number, ridgeB = ridge, pitchB = o.frontPitchDeg) => {
-    const profile = atticProfile(eaves, Math.max(eaves, ridgeB), mainDepth, pitchB, setback);
+  const makeProfile = (eaves: number, ridgeB = ridge, pitchB = o.frontPitchDeg, rearB?: number) => {
+    const profile = atticProfile(eaves, Math.max(eaves, ridgeB), mainDepth, pitchB, setback, rearB);
     // A cut within 2 cm of a footprint corner passes through it: a sub-mm miss leaves slivers that invert when snapped.
     for (const k of profile) { const near = cornerDepths.find(d => Math.abs(d - k[0]) < 0.02); if (near !== undefined && k[0] > 0) k[0] = near; }
     // Knots within 2 cm of each other (a pitch whose faces meet with no flat top) become one: a corner snap moving only
@@ -479,13 +503,22 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
     if (spec.form === 'saddle') { const pitch = spec.pitchDeg ?? o.frontPitchDeg; return {...b, form: 'saddle' as FrontRoofForm, ridge: r3(spec.ridgeM ?? b.eaves), pitch, tan: Math.tan(pitch * Math.PI / 180), spec}; }
     // Attic: the recipe's steep face, capped by the hint's top (a photo row, a row ridge) and, unless the hint says otherwise, by the 3DBAG p95.
     const bandCapM = (b as {ownCapM?: number}).ownCapM ?? capM;
-    const pitch = spec.pitchDeg ?? o.frontPitchDeg, tb = Math.tan(pitch * Math.PI / 180), cap = Math.min(spec.capM ?? Infinity, spec.surveyCap === false ? surveyMaxM : bandCapM, input.ridgeCapM ?? Infinity);
+    const pitch = spec.pitchDeg ?? o.frontPitchDeg, tb = Math.tan(pitch * Math.PI / 180);
+    if (spec.riseM !== undefined) {
+      // A measured rise (RoofIntent.riseM): no attic-storey clamp and no p95 cap, the 3DBAG max and the group line still bound it;
+      // the two faces may meet at a ridge (each at its own pitch) but never cross.
+      const tr = Math.tan((spec.rearPitchDeg ?? pitch) * Math.PI / 180), meet = (mainDepth - setback) / (1 / tb + 1 / tr);
+      const rb = r3(Math.max(b.eaves, Math.min(b.eaves + spec.riseM, spec.capM ?? Infinity, surveyMaxM, input.ridgeCapM ?? Infinity, b.eaves + meet)));
+      return {...b, form: (rb - b.eaves < 0.05 ? 'flat' : 'attic') as FrontRoofForm, ridge: rb, pitch, tan: tb, spec};
+    }
+    const cap = Math.min(spec.capM ?? Infinity, spec.surveyCap === false ? surveyMaxM : bandCapM, input.ridgeCapM ?? Infinity);
     const flatB = spec.surveyCap !== false && bandCapM - b.eaves < o.flatRiseM;
     const rb = r3(flatB ? b.eaves : Math.max(b.eaves, Math.min(b.eaves + attic, cap, b.eaves + tb * (mainDepth - setback) / 2)));
     return {...b, form: (rb - b.eaves < 0.05 ? 'flat' : 'attic') as FrontRoofForm, ridge: rb, pitch, tan: tb, spec};
   });
   if (input.forms) for (let k = notes.length - 1; k >= 0; k--) if (/^(attic capped by 3DBAG|3DBAG main body flat|attic line of its cornice group)/.test(notes[k])) notes.splice(k, 1);
   for (const b of shaped) if (b.spec?.note) notes.push(`front ${b.id ?? ''}: ${b.spec.note}`);
+  for (const b of shaped) for (const g of b.form === 'attic' ? b.spec?.crossGables ?? [] : []) if (g.apexM - CROSS_GABLE_MARGIN_M > b.ridge + 1e-6) notes.push(`front ${b.id ?? ''}: cross gable apex ${r3(g.apexM)} m over the ridge ${r3(b.ridge)} m: no cross roof`);
   // Rear wings never rise over the lowest saddle eaves: a wing standing above a gable roof's sides would show beside the crown.
   const wingCapE = Math.min(E, ...shaped.filter(b => b.form === 'saddle').map(b => b.spec?.sideEavesM ?? (b.ridge - b.tan * Math.max(b.centre - (Number.isFinite(b.lo) ? b.lo : along(front.endpointsRD[0])), (Number.isFinite(b.hi) ? b.hi : along(front.endpointsRD[1])) - b.centre))));
 
@@ -576,7 +609,7 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   // Main body: footprint triangles cut at the profile knots; a footprint corner in front of the frontage stays at the eaves.
   const wingCut = mainDepth < plotDepth ? mainDepth : Infinity;
   for (const [bi, band] of shaped.entries()) {
-    const profile = makeProfile(band.eaves, band.ridge, band.pitch), knots = profile.map(p => p[0]), Eb = band.eaves;
+    const profile = makeProfile(band.eaves, band.ridge, band.pitch, band.form === 'attic' ? band.spec?.rearPitchDeg : undefined), knots = profile.map(p => p[0]), Eb = band.eaves;
     const heightIn = (k: number, d: number) => { const [d0, h0] = profile[k], [d1, h1] = profile[k + 1]; return d1 - d0 < 1e-9 ? h0 : h0 + (h1 - h0) * (d - d0) / (d1 - d0); };
     // A band boundary passes through its split point exactly (snapped to the outline above).
     const cut = (v: number) => { const c = corners.find(q => Math.abs(along(q) - v) < 0.02 && Math.abs(depth(q)) < 0.05); return c ? along(c) : v; };
@@ -601,11 +634,46 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
       // An outline that wanders a few mm either side of the frontage line is not cut there: the cut would leave a
       // metres-long mm-wide sliver along the front that the snaps turn into overlaps (marnix-124-138 at 30 degrees).
       const lead = Math.min(...tri.map(depth)) > -0.02;
+      const crossG = band.form === 'attic' ? band.spec?.crossGables : undefined;
+      /**
+       * Cross roofs (`FrontRoofSpec.crossGables`): within each half of a crown the roof is the higher of the crown's rake
+       * and the attic height `hk`; the piece is split along the valley where they meet (both planar: one straight cut).
+       * It is snapped first (as `push` snaps a whole piece): a corner snap after the split would move the shared point
+       * on one side of the valley only and the pieces would no longer tile the footprint.
+       */
+      const pushCross = (piece: number[][], hk: (p: number[]) => number, key: string) => {
+        let rest = [piece.length >= 3 ? snapRing(piece).map(onOutline) : piece];
+        for (const [gi, g] of crossG!.entries()) for (const [side, foot, footM] of [['L', g.leftRD, g.leftM], ['R', g.rightRD, g.rightM]] as const) {
+          // A crown standing over the ridge would carry its cross roof past the ridge line: left as it is (reported below).
+          if (g.apexM - CROSS_GABLE_MARGIN_M > band.ridge + 1e-6) continue;
+          const xf = along(foot), xa = along(g.apexRD), lo2 = Math.min(xf, xa), hi2 = Math.max(xf, xa);
+          if (hi2 - lo2 < 0.05) continue;
+          const rake = (p: number[]) => footM + (g.apexM - footM) * (along(p) - xf) / (xa - xf) - CROSS_GABLE_MARGIN_M;
+          const next: number[][][] = [];
+          for (const q of rest) {
+            const inSpan = clipBand(q, along, lo2, hi2);
+            next.push(clipBand(q, along, -Infinity, lo2), clipBand(q, along, hi2, Infinity), clipBand(inSpan, p => rake(p) - hk(p), -Infinity, 0));
+            // Behind the crown wall only: a roof edge on the facade line would raise a masonry closure into the crown's plane.
+            const above = clipBand(inSpan, p => rake(p) - hk(p), 0, Infinity), over = clipBand(above, depth, CROSS_GABLE_BEHIND_M, Infinity);
+            next.push(clipBand(above, depth, -Infinity, CROSS_GABLE_BEHIND_M));
+            if (over.length >= 3 && Math.abs(planArea(over)) > 1e-6) push(over, rake, `cross-${tag}-${gi}-${side}`);
+          }
+          rest = next.filter(q => q.length >= 3 && Math.abs(planArea(q)) > 1e-6);
+        }
+        for (const q of rest) push(q, hk, key);
+      };
       if (!lead) push(clipBand(tri, depth, -Infinity, Math.min(0, wingCut)), () => Eb, `front-${tag}`);
       for (let k = 0; k + 1 < knots.length; k++) {
         const lo = k === 0 && lead ? -Infinity : knots[k], hi = k + 2 === knots.length ? wingCut : knots[k + 1];
         if (hi - lo < 1e-9) continue;
-        push(clipBand(tri, depth, lo, hi), p => heightIn(k, Math.max(knots[k], Math.min(depth(p), knots[k + 1]))), `main-${tag}-${k}`);
+        const hk = (p: number[]) => heightIn(k, Math.max(knots[k], Math.min(depth(p), knots[k + 1])));
+        // Cross roofs run back from the front only: on the rear face the rake would stand over the falling attic again.
+        const piece = clipBand(tri, depth, lo, hi);
+        // The flat gutter in front of a cross-gabled attic is one plane with the outline strip in front of the frontage:
+        // one key, so they merge instead of meeting in millimetre slivers along the eaves.
+        const gutter = k === 0 && Math.abs(profile[1][1] - profile[0][1]) < 1e-9;
+        if (crossG?.length && profile[k + 1][1] >= profile[k][1] - 1e-9) pushCross(piece, hk, gutter ? `front-${tag}` : `main-${tag}-${k}`);
+        else push(piece, p => heightIn(k, Math.max(knots[k], Math.min(depth(p), knots[k + 1]))), `main-${tag}-${k}`);
       }
     }
     void bi;

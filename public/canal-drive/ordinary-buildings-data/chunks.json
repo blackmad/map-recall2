@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-17T09:56:52.101Z",
+ "generatedAt": "2026-10-24T20:37:47.152Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -48983,11 +48983,11 @@
    "id": "chunk-face-zaanhof-1-20",
    "category": "street-survey",
    "name": "face-zaanhof-1-20",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-1-20.glb?asset=b6c9028ce28e6df1",
-   "sha256": "b6c9028ce28e6df116c972c0b1aef38e33af04bb643bf3a4b9b5201528d2cf37",
-   "bytes": 498792,
-   "triangles": 7356,
-   "primitives": 10,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-1-20.glb?asset=170263e7376e2b71",
+   "sha256": "170263e7376e2b71ca928e5eb7bbfc8909643b8dd9fd7261042bd2dea766fadd",
+   "bytes": 517800,
+   "triangles": 7714,
+   "primitives": 9,
    "instance": {
     "anchor": [
      4.872272430776158,
@@ -49004,11 +49004,11 @@
     ],
     "max": [
      29.633,
-     12.309,
+     11.652,
      0.568
     ]
    },
-   "height": 12.309,
+   "height": 11.652,
    "suppress": [
     "NL.IMBAG.Pand.0363100012094000",
     "NL.IMBAG.Pand.0363100012146841",
@@ -49409,16 +49409,16 @@
       ],
       "max": [
        -23.738,
-       11.439,
+       11.652,
        0.568
       ]
      },
-     "triangles": 739,
+     "triangles": 788,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 0,
-       "triangleCount": 100
+       "triangleCount": 114
       },
       {
        "primitive": 1,
@@ -49453,17 +49453,12 @@
       {
        "primitive": 7,
        "firstTriangle": 0,
-       "triangleCount": 5
+       "triangleCount": 32
       },
       {
        "primitive": 8,
        "firstTriangle": 0,
-       "triangleCount": 1
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 9
+       "triangleCount": 18
       }
      ]
     },
@@ -49485,16 +49480,16 @@
       ],
       "max": [
        -17.694,
-       11.635,
+       11.636,
        0.486
       ]
      },
-     "triangles": 748,
+     "triangles": 760,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 100,
-       "triangleCount": 118
+       "firstTriangle": 114,
+       "triangleCount": 107
       },
       {
        "primitive": 1,
@@ -49528,18 +49523,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 5,
-       "triangleCount": 8
+       "firstTriangle": 32,
+       "triangleCount": 32
       },
       {
        "primitive": 8,
-       "firstTriangle": 1,
-       "triangleCount": 7
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 9,
-       "triangleCount": 11
+       "firstTriangle": 18,
+       "triangleCount": 17
       }
      ]
     },
@@ -49561,16 +49551,16 @@
       ],
       "max": [
        -11.828,
-       11.507,
+       11.649,
        0.492
       ]
      },
-     "triangles": 746,
+     "triangles": 785,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 218,
-       "triangleCount": 100
+       "firstTriangle": 221,
+       "triangleCount": 114
       },
       {
        "primitive": 1,
@@ -49604,18 +49594,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 13,
-       "triangleCount": 3
+       "firstTriangle": 64,
+       "triangleCount": 14
       },
       {
        "primitive": 8,
-       "firstTriangle": 8,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 20,
-       "triangleCount": 15
+       "firstTriangle": 35,
+       "triangleCount": 33
       }
      ]
     },
@@ -49637,16 +49622,16 @@
       ],
       "max": [
        -5.866,
-       12.309,
+       11.632,
        0.325
       ]
      },
-     "triangles": 698,
+     "triangles": 707,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 318,
-       "triangleCount": 57
+       "firstTriangle": 335,
+       "triangleCount": 51
       },
       {
        "primitive": 1,
@@ -49680,18 +49665,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 16,
-       "triangleCount": 6
+       "firstTriangle": 78,
+       "triangleCount": 14
       },
       {
        "primitive": 8,
-       "firstTriangle": 12,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 35,
-       "triangleCount": 7
+       "firstTriangle": 68,
+       "triangleCount": 18
       }
      ]
     },
@@ -49713,16 +49693,16 @@
       ],
       "max": [
        0.006,
-       11.548,
+       11.652,
        0.334
       ]
      },
-     "triangles": 738,
+     "triangles": 779,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 375,
-       "triangleCount": 94
+       "firstTriangle": 386,
+       "triangleCount": 102
       },
       {
        "primitive": 1,
@@ -49756,18 +49736,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 22,
-       "triangleCount": 3
+       "firstTriangle": 92,
+       "triangleCount": 30
       },
       {
        "primitive": 8,
-       "firstTriangle": 16,
-       "triangleCount": 3
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 42,
-       "triangleCount": 14
+       "firstTriangle": 86,
+       "triangleCount": 23
       }
      ]
     },
@@ -49789,16 +49764,16 @@
       ],
       "max": [
        5.945,
-       11.629,
+       11.632,
        0.225
       ]
      },
-     "triangles": 734,
+     "triangles": 784,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 469,
-       "triangleCount": 111
+       "firstTriangle": 488,
+       "triangleCount": 119
       },
       {
        "primitive": 1,
@@ -49832,18 +49807,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 25,
-       "triangleCount": 4
+       "firstTriangle": 122,
+       "triangleCount": 33
       },
       {
        "primitive": 8,
-       "firstTriangle": 19,
-       "triangleCount": 3
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 56,
-       "triangleCount": 12
+       "firstTriangle": 109,
+       "triangleCount": 28
       }
      ]
     },
@@ -49865,16 +49835,16 @@
       ],
       "max": [
        11.834,
-       11.566,
+       11.652,
        0.222
       ]
      },
-     "triangles": 743,
+     "triangles": 781,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 580,
-       "triangleCount": 99
+       "firstTriangle": 607,
+       "triangleCount": 109
       },
       {
        "primitive": 1,
@@ -49908,18 +49878,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 29,
-       "triangleCount": 3
+       "firstTriangle": 155,
+       "triangleCount": 22
       },
       {
        "primitive": 8,
-       "firstTriangle": 22,
-       "triangleCount": 7
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 68,
-       "triangleCount": 10
+       "firstTriangle": 137,
+       "triangleCount": 26
       }
      ]
     },
@@ -49941,16 +49906,16 @@
       ],
       "max": [
        17.743,
-       11.643,
+       11.632,
        0.091
       ]
      },
-     "triangles": 739,
+     "triangles": 769,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 679,
-       "triangleCount": 105
+       "firstTriangle": 716,
+       "triangleCount": 104
       },
       {
        "primitive": 1,
@@ -49984,18 +49949,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 32,
-       "triangleCount": 8
+       "firstTriangle": 177,
+       "triangleCount": 33
       },
       {
        "primitive": 8,
-       "firstTriangle": 29,
-       "triangleCount": 8
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 78,
-       "triangleCount": 14
+       "firstTriangle": 163,
+       "triangleCount": 28
       }
      ]
     },
@@ -50017,16 +49977,16 @@
       ],
       "max": [
        23.737,
-       11.569,
+       11.652,
        0.088
       ]
      },
-     "triangles": 728,
+     "triangles": 774,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 784,
-       "triangleCount": 104
+       "firstTriangle": 820,
+       "triangleCount": 118
       },
       {
        "primitive": 1,
@@ -50060,18 +50020,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 40,
-       "triangleCount": 3
+       "firstTriangle": 210,
+       "triangleCount": 24
       },
       {
        "primitive": 8,
-       "firstTriangle": 37,
-       "triangleCount": 3
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 92,
-       "triangleCount": 14
+       "firstTriangle": 191,
+       "triangleCount": 28
       }
      ]
     },
@@ -50093,16 +50048,16 @@
       ],
       "max": [
        29.633,
-       11.598,
+       11.632,
        -0.049
       ]
      },
-     "triangles": 743,
+     "triangles": 787,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 888,
-       "triangleCount": 117
+       "firstTriangle": 938,
+       "triangleCount": 129
       },
       {
        "primitive": 1,
@@ -50136,18 +50091,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 43,
-       "triangleCount": 6
+       "firstTriangle": 234,
+       "triangleCount": 20
       },
       {
        "primitive": 8,
-       "firstTriangle": 40,
-       "triangleCount": 11
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 106,
-       "triangleCount": 5
+       "firstTriangle": 219,
+       "triangleCount": 34
       }
      ]
     }
@@ -50157,11 +50107,11 @@
    "id": "chunk-face-zaanhof-23-34",
    "category": "street-survey",
    "name": "face-zaanhof-23-34",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-23-34.glb?asset=199e7be85e578d16",
-   "sha256": "199e7be85e578d167a434a3d0352c5e494bf55234044a90b35c4f977b4f0e761",
-   "bytes": 308492,
-   "triangles": 4485,
-   "primitives": 10,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-23-34.glb?asset=72023cd5768c7a57",
+   "sha256": "72023cd5768c7a57829b9827722150c47af5078a5d3c5a255f4f35a77018c2ed",
+   "bytes": 314072,
+   "triangles": 4655,
+   "primitives": 9,
    "instance": {
     "anchor": [
      4.872565915673397,
@@ -50178,11 +50128,11 @@
     ],
     "max": [
      17.743,
-     11.646,
+     11.689,
      0.261
     ]
    },
-   "height": 11.646,
+   "height": 11.689,
    "suppress": [
     "NL.IMBAG.Pand.0363100012114944",
     "NL.IMBAG.Pand.0363100012109995",
@@ -50439,16 +50389,16 @@
       ],
       "max": [
        -11.917,
-       11.646,
+       11.684,
        0.258
       ]
      },
-     "triangles": 776,
+     "triangles": 781,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 0,
-       "triangleCount": 120
+       "triangleCount": 122
       },
       {
        "primitive": 1,
@@ -50483,17 +50433,12 @@
       {
        "primitive": 7,
        "firstTriangle": 0,
-       "triangleCount": 8
+       "triangleCount": 16
       },
       {
        "primitive": 8,
        "firstTriangle": 0,
-       "triangleCount": 11
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 13
+       "triangleCount": 19
       }
      ]
     },
@@ -50515,16 +50460,16 @@
       ],
       "max": [
        -5.978,
-       11.535,
+       11.661,
        0.257
       ]
      },
-     "triangles": 737,
+     "triangles": 776,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 120,
-       "triangleCount": 96
+       "firstTriangle": 122,
+       "triangleCount": 106
       },
       {
        "primitive": 1,
@@ -50558,18 +50503,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 8,
-       "triangleCount": 3
+       "firstTriangle": 16,
+       "triangleCount": 26
       },
       {
        "primitive": 8,
-       "firstTriangle": 11,
-       "triangleCount": 8
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 13,
-       "triangleCount": 6
+       "firstTriangle": 19,
+       "triangleCount": 20
       }
      ]
     },
@@ -50591,16 +50531,16 @@
       ],
       "max": [
        -0.037,
-       11.535,
+       11.689,
        0.256
       ]
      },
-     "triangles": 722,
+     "triangles": 752,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 216,
-       "triangleCount": 95
+       "firstTriangle": 228,
+       "triangleCount": 99
       },
       {
        "primitive": 1,
@@ -50634,18 +50574,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 11,
-       "triangleCount": 3
+       "firstTriangle": 42,
+       "triangleCount": 26
       },
       {
        "primitive": 8,
-       "firstTriangle": 19,
-       "triangleCount": 9
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 19,
-       "triangleCount": 11
+       "firstTriangle": 39,
+       "triangleCount": 23
       }
      ]
     },
@@ -50667,16 +50602,16 @@
       ],
       "max": [
        5.993,
-       11.531,
+       11.664,
        0.257
       ]
      },
-     "triangles": 759,
+     "triangles": 796,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 311,
-       "triangleCount": 109
+       "firstTriangle": 327,
+       "triangleCount": 119
       },
       {
        "primitive": 1,
@@ -50710,18 +50645,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 14,
-       "triangleCount": 3
+       "firstTriangle": 68,
+       "triangleCount": 28
       },
       {
        "primitive": 8,
-       "firstTriangle": 28,
-       "triangleCount": 9
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 30,
-       "triangleCount": 14
+       "firstTriangle": 62,
+       "triangleCount": 25
       }
      ]
     },
@@ -50743,16 +50673,16 @@
       ],
       "max": [
        11.969,
-       11.263,
+       11.684,
        0.261
       ]
      },
-     "triangles": 747,
+     "triangles": 758,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 420,
-       "triangleCount": 111
+       "firstTriangle": 446,
+       "triangleCount": 114
       },
       {
        "primitive": 1,
@@ -50786,17 +50716,12 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 17,
-       "triangleCount": 8
+       "firstTriangle": 96,
+       "triangleCount": 25
       },
       {
        "primitive": 8,
-       "firstTriangle": 37,
-       "triangleCount": 9
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 44,
+       "firstTriangle": 87,
        "triangleCount": 15
       }
      ]
@@ -50819,16 +50744,16 @@
       ],
       "max": [
        17.743,
-       11.507,
+       11.666,
        0.261
       ]
      },
-     "triangles": 744,
+     "triangles": 792,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 531,
-       "triangleCount": 102
+       "firstTriangle": 560,
+       "triangleCount": 111
       },
       {
        "primitive": 1,
@@ -50862,18 +50787,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 25,
-       "triangleCount": 2
+       "firstTriangle": 121,
+       "triangleCount": 37
       },
       {
        "primitive": 8,
-       "firstTriangle": 46,
-       "triangleCount": 2
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 59,
-       "triangleCount": 14
+       "firstTriangle": 102,
+       "triangleCount": 20
       }
      ]
     }
@@ -50883,11 +50803,11 @@
    "id": "chunk-face-zaanhof-52-55",
    "category": "street-survey",
    "name": "face-zaanhof-52-55",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-52-55.glb?asset=5243c4dd1fbe45cf",
-   "sha256": "5243c4dd1fbe45cff9491dbbee5052610c35bba219605d0c4c7e73ea2fbbfbcd",
-   "bytes": 111780,
-   "triangles": 1536,
-   "primitives": 10,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-52-55.glb?asset=7e04d0e2fceca8f6",
+   "sha256": "7e04d0e2fceca8f6bf010b87a91eeda73a4df9ec53b2b5c47ea6e18b857cd725",
+   "bytes": 112320,
+   "triangles": 1576,
+   "primitives": 9,
    "instance": {
     "anchor": [
      4.872177334442794,
@@ -50904,11 +50824,11 @@
     ],
     "max": [
      5.954,
-     11.577,
+     11.757,
      0.203
     ]
    },
-   "height": 11.577,
+   "height": 11.757,
    "suppress": [
     "NL.IMBAG.Pand.0363100012127918",
     "NL.IMBAG.Pand.0363100012098344"
@@ -51021,16 +50941,16 @@
       ],
       "max": [
        -0.021,
-       11.529,
+       11.735,
        0.203
       ]
      },
-     "triangles": 735,
+     "triangles": 759,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 0,
-       "triangleCount": 94
+       "triangleCount": 99
       },
       {
        "primitive": 1,
@@ -51065,17 +50985,12 @@
       {
        "primitive": 7,
        "firstTriangle": 0,
-       "triangleCount": 4
+       "triangleCount": 17
       },
       {
        "primitive": 8,
        "firstTriangle": 0,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 9
+       "triangleCount": 19
       }
      ]
     },
@@ -51097,16 +51012,16 @@
       ],
       "max": [
        5.954,
-       11.577,
+       11.757,
        0.201
       ]
      },
-     "triangles": 801,
+     "triangles": 817,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 94,
-       "triangleCount": 145
+       "firstTriangle": 99,
+       "triangleCount": 147
       },
       {
        "primitive": 1,
@@ -51139,14 +51054,14 @@
        "triangleCount": 60
       },
       {
-       "primitive": 8,
-       "firstTriangle": 4,
-       "triangleCount": 6
+       "primitive": 7,
+       "firstTriangle": 17,
+       "triangleCount": 27
       },
       {
-       "primitive": 9,
-       "firstTriangle": 9,
-       "triangleCount": 26
+       "primitive": 8,
+       "firstTriangle": 19,
+       "triangleCount": 19
       }
      ]
     }
@@ -51156,11 +51071,11 @@
    "id": "chunk-face-zaanhof-71-78",
    "category": "street-survey",
    "name": "face-zaanhof-71-78",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-71-78.glb?asset=3e9b26eac4d4a3d5",
-   "sha256": "3e9b26eac4d4a3d550df7a025bcb6453fd9415a32b1ba24da07b95bb7734d92c",
-   "bytes": 210244,
-   "triangles": 3013,
-   "primitives": 10,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-71-78.glb?asset=ca27173fe22ce3c2",
+   "sha256": "ca27173fe22ce3c24e8f916ee8ab5be8c3807be913964e813463801188b85c0c",
+   "bytes": 216648,
+   "triangles": 3160,
+   "primitives": 9,
    "instance": {
     "anchor": [
      4.8717634831416845,
@@ -51177,11 +51092,11 @@
     ],
     "max": [
      11.942,
-     11.46,
+     11.67,
      0.284
     ]
    },
-   "height": 11.46,
+   "height": 11.67,
    "suppress": [
     "NL.IMBAG.Pand.0363100012085115",
     "NL.IMBAG.Pand.0363100012074750",
@@ -51362,16 +51277,16 @@
       ],
       "max": [
        -5.894,
-       11.445,
+       11.65,
        0.273
       ]
      },
-     "triangles": 723,
+     "triangles": 759,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 0,
-       "triangleCount": 103
+       "triangleCount": 112
       },
       {
        "primitive": 1,
@@ -51406,17 +51321,12 @@
       {
        "primitive": 7,
        "firstTriangle": 0,
-       "triangleCount": 4
+       "triangleCount": 23
       },
       {
        "primitive": 8,
        "firstTriangle": 0,
-       "triangleCount": 8
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 4
+       "triangleCount": 20
       }
      ]
     },
@@ -51438,16 +51348,16 @@
       ],
       "max": [
        -0.062,
-       11.4,
+       11.601,
        0.273
       ]
      },
-     "triangles": 799,
+     "triangles": 823,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 103,
-       "triangleCount": 137
+       "firstTriangle": 112,
+       "triangleCount": 142
       },
       {
        "primitive": 1,
@@ -51481,18 +51391,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 4,
-       "triangleCount": 3
+       "firstTriangle": 23,
+       "triangleCount": 24
       },
       {
        "primitive": 8,
-       "firstTriangle": 8,
-       "triangleCount": 7
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 4,
-       "triangleCount": 28
+       "firstTriangle": 20,
+       "triangleCount": 33
       }
      ]
     },
@@ -51514,16 +51419,16 @@
       ],
       "max": [
        5.891,
-       11.382,
+       11.589,
        0.284
       ]
      },
-     "triangles": 723,
+     "triangles": 767,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 240,
-       "triangleCount": 91
+       "firstTriangle": 254,
+       "triangleCount": 95
       },
       {
        "primitive": 1,
@@ -51557,18 +51462,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 7,
-       "triangleCount": 8
+       "firstTriangle": 47,
+       "triangleCount": 38
       },
       {
        "primitive": 8,
-       "firstTriangle": 15,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 32,
-       "triangleCount": 16
+       "firstTriangle": 53,
+       "triangleCount": 30
       }
      ]
     },
@@ -51590,16 +51490,16 @@
       ],
       "max": [
        11.942,
-       11.46,
+       11.67,
        0.278
       ]
      },
-     "triangles": 768,
+     "triangles": 811,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 331,
-       "triangleCount": 118
+       "firstTriangle": 349,
+       "triangleCount": 133
       },
       {
        "primitive": 1,
@@ -51633,18 +51533,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 15,
-       "triangleCount": 2
+       "firstTriangle": 85,
+       "triangleCount": 23
       },
       {
        "primitive": 8,
-       "firstTriangle": 19,
-       "triangleCount": 3
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 48,
-       "triangleCount": 21
+       "firstTriangle": 83,
+       "triangleCount": 31
       }
      ]
     }
@@ -51654,11 +51549,11 @@
    "id": "chunk-face-zaanhof-99-104",
    "category": "street-survey",
    "name": "face-zaanhof-99-104",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-99-104.glb?asset=c268a39204986537",
-   "sha256": "c268a392049865375c25db7148efc03d9caf99d6c0aae6d30d55330cbe7ddf02",
-   "bytes": 157688,
-   "triangles": 2216,
-   "primitives": 10,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-99-104.glb?asset=eba6c41c4e192e1b",
+   "sha256": "eba6c41c4e192e1b9c12a9ece7373af863b664a5a3132888b40f21b7c2803b91",
+   "bytes": 160756,
+   "triangles": 2314,
+   "primitives": 9,
    "instance": {
     "anchor": [
      4.871497534507225,
@@ -51675,11 +51570,11 @@
     ],
     "max": [
      8.847,
-     11.345,
+     11.545,
      0.28
     ]
    },
-   "height": 11.345,
+   "height": 11.545,
    "suppress": [
     "NL.IMBAG.Pand.0363100012066165",
     "NL.IMBAG.Pand.0363100012116074",
@@ -51826,16 +51721,16 @@
       ],
       "max": [
        -2.949,
-       11.272,
+       11.477,
        0.202
       ]
      },
-     "triangles": 736,
+     "triangles": 764,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 0,
-       "triangleCount": 105
+       "triangleCount": 114
       },
       {
        "primitive": 1,
@@ -51870,17 +51765,12 @@
       {
        "primitive": 7,
        "firstTriangle": 0,
-       "triangleCount": 2
+       "triangleCount": 18
       },
       {
        "primitive": 8,
        "firstTriangle": 0,
-       "triangleCount": 8
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 17
+       "triangleCount": 28
       }
      ]
     },
@@ -51902,16 +51792,16 @@
       ],
       "max": [
        3.047,
-       11.345,
+       11.545,
        0.279
       ]
      },
-     "triangles": 729,
+     "triangles": 761,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 105,
-       "triangleCount": 90
+       "firstTriangle": 114,
+       "triangleCount": 95
       },
       {
        "primitive": 1,
@@ -51945,18 +51835,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 2,
-       "triangleCount": 4
+       "firstTriangle": 18,
+       "triangleCount": 20
       },
       {
        "primitive": 8,
-       "firstTriangle": 8,
-       "triangleCount": 6
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 17,
-       "triangleCount": 5
+       "firstTriangle": 28,
+       "triangleCount": 22
       }
      ]
     },
@@ -51978,16 +51863,16 @@
       ],
       "max": [
        8.847,
-       11.266,
+       11.473,
        0.28
       ]
      },
-     "triangles": 751,
+     "triangles": 789,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 195,
-       "triangleCount": 122
+       "firstTriangle": 209,
+       "triangleCount": 133
       },
       {
        "primitive": 1,
@@ -52021,18 +51906,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 6,
-       "triangleCount": 2
+       "firstTriangle": 38,
+       "triangleCount": 34
       },
       {
        "primitive": 8,
-       "firstTriangle": 14,
-       "triangleCount": 2
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 22,
-       "triangleCount": 21
+       "firstTriangle": 50,
+       "triangleCount": 18
       }
      ]
     }
@@ -52042,11 +51922,11 @@
    "id": "chunk-face-zaanhof-125-134",
    "category": "street-survey",
    "name": "face-zaanhof-125-134",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-125-134.glb?asset=ce6bbeaec7a52bd4",
-   "sha256": "ce6bbeaec7a52bd4374016f6705afc9e95b20e08e63808edd32ad8df089385b9",
-   "bytes": 267232,
-   "triangles": 3854,
-   "primitives": 10,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-zaanhof-125-134.glb?asset=e7f558c700696be2",
+   "sha256": "e7f558c700696be2295c82d1ca9cd37ab9a9351efbddd32ed21499d88e22ec2b",
+   "bytes": 275892,
+   "triangles": 4031,
+   "primitives": 9,
    "instance": {
     "anchor": [
      4.872048031788851,
@@ -52063,11 +51943,11 @@
     ],
     "max": [
      14.907,
-     11.718,
+     11.699,
      0.299
     ]
    },
-   "height": 11.718,
+   "height": 11.699,
    "suppress": [
     "NL.IMBAG.Pand.0363100012127622",
     "NL.IMBAG.Pand.0363100012139676",
@@ -52294,16 +52174,16 @@
       ],
       "max": [
        -8.891,
-       11.647,
+       11.688,
        0.169
       ]
      },
-     "triangles": 775,
+     "triangles": 800,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 0,
-       "triangleCount": 129
+       "triangleCount": 134
       },
       {
        "primitive": 1,
@@ -52336,14 +52216,14 @@
        "triangleCount": 60
       },
       {
-       "primitive": 8,
+       "primitive": 7,
        "firstTriangle": 0,
-       "triangleCount": 7
+       "triangleCount": 20
       },
       {
-       "primitive": 9,
+       "primitive": 8,
        "firstTriangle": 0,
-       "triangleCount": 15
+       "triangleCount": 22
       }
      ]
     },
@@ -52365,16 +52245,16 @@
       ],
       "max": [
        -2.867,
-       11.718,
+       11.699,
        0.299
       ]
      },
-     "triangles": 767,
+     "triangles": 810,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 129,
-       "triangleCount": 125
+       "firstTriangle": 134,
+       "triangleCount": 141
       },
       {
        "primitive": 1,
@@ -52408,18 +52288,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 5
+       "firstTriangle": 20,
+       "triangleCount": 22
       },
       {
        "primitive": 8,
-       "firstTriangle": 7,
-       "triangleCount": 10
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 15,
-       "triangleCount": 3
+       "firstTriangle": 22,
+       "triangleCount": 23
       }
      ]
     },
@@ -52441,16 +52316,16 @@
       ],
       "max": [
        3.022,
-       11.665,
+       11.693,
        0.299
       ]
      },
-     "triangles": 755,
+     "triangles": 807,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 254,
-       "triangleCount": 107
+       "firstTriangle": 275,
+       "triangleCount": 115
       },
       {
        "primitive": 1,
@@ -52484,18 +52359,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 5,
-       "triangleCount": 10
+       "firstTriangle": 42,
+       "triangleCount": 41
       },
       {
        "primitive": 8,
-       "firstTriangle": 17,
-       "triangleCount": 2
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 18,
-       "triangleCount": 12
+       "firstTriangle": 45,
+       "triangleCount": 27
       }
      ]
     },
@@ -52517,16 +52387,16 @@
       ],
       "max": [
        8.861,
-       11.709,
+       11.684,
        0.271
       ]
      },
-     "triangles": 778,
+     "triangles": 793,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 361,
-       "triangleCount": 127
+       "firstTriangle": 390,
+       "triangleCount": 129
       },
       {
        "primitive": 1,
@@ -52560,18 +52430,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 15,
-       "triangleCount": 3
+       "firstTriangle": 83,
+       "triangleCount": 22
       },
       {
        "primitive": 8,
-       "firstTriangle": 19,
-       "triangleCount": 9
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 30,
-       "triangleCount": 15
+       "firstTriangle": 72,
+       "triangleCount": 18
       }
      ]
     },
@@ -52593,16 +52458,16 @@
       ],
       "max": [
        14.907,
-       11.641,
+       11.688,
        0.29
       ]
      },
-     "triangles": 779,
+     "triangles": 821,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 488,
-       "triangleCount": 125
+       "firstTriangle": 519,
+       "triangleCount": 137
       },
       {
        "primitive": 1,
@@ -52636,18 +52501,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 18,
-       "triangleCount": 10
+       "firstTriangle": 105,
+       "triangleCount": 33
       },
       {
        "primitive": 8,
-       "firstTriangle": 28,
-       "triangleCount": 3
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 45,
-       "triangleCount": 17
+       "firstTriangle": 90,
+       "triangleCount": 27
       }
      ]
     }
