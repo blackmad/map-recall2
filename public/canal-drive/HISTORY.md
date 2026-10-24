@@ -1,5 +1,12 @@
 # Canal Recall — what is built
 
+**Compact ground meshes on desktop too (2026-10-24, perf session,
+c656fa1ff).** The phone compact ground meshes (Int8 normals, Uint16 colours
+and indices, no uv) now load on every device. Desktop ground bytes summed
+over 18 like-for-like road spots 3,256.7 → 1,628.1 MB, frames p95 16.7 ms in
+both ride-perf A/B passes, ground pixels identical.
+`window.__canalRecallCompactGround = false` is the off switch.
+
 **Bridge cards keep their register line (2026-10-24, #26).** Since
 565cefb13 bridge ledes were indexed under their extract ids, which join the
 reviewed trivia catalogue, so the rotated trivia replaced the whole card and
