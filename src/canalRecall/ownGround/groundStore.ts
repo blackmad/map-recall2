@@ -20,6 +20,7 @@ import { applyLocalToRd, extendTile, fitLocalToRd, GroundField, readGroundTile, 
 import { GroundSurface, type DeckSurface, type Vec2 } from './surface.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { ParksCell, ParksManifest } from './parks.js';
+import { decodePhotoEvidence, EMPTY_EVIDENCE, isPhotoEvidence, PHOTO_EVIDENCE_FILE, type PhotoEvidence } from './photoEvidence.js';
 import { decodeRoadLine, type RoadCell, type RoadsManifest } from './roadCells.js';
 import { decodeMarks, isRoadMarksCell, type RoadMark, type RoadMarksManifest } from './roadMarks.js';
 import type { CourtyardsCell, CourtyardsManifest } from './courtyards.js';
@@ -83,6 +84,8 @@ export class GroundStore {
   /** road-marks-v1 (roadMarks.ts): crossing / signal / give-way nodes, loaded with the roads. */
   private readonly marks = new Map<string, Promise<RoadMark[]>>();
   markCells = new Set<string>();
+  /** road-marks-v1 photo-evidence.json (photoEvidence.ts), loaded with the roads. */
+  evidence: PhotoEvidence = EMPTY_EVIDENCE;
   private readonly courtyards = new Map<string, Promise<CourtyardsCell | null>>();
   /** Polder water levels (null: the extract has none, every polygon sits at WATER_Z). */
   waterLevels: WaterLevels | null = null;
@@ -139,6 +142,9 @@ export class GroundStore {
     this.roadCells = new Set(roads?.version === 1 ? roads.cells : []);
     const marks = this.options.roads === true ? await this.json<RoadMarksManifest>(`${EXTRACTS.marks}/cells.json`).catch(() => null) : null;
     this.markCells = new Set(marks?.version === 1 ? marks.cells : []);
+    // What the orthophoto backs of the tag-driven paint (photoEvidence.ts): absent → no lane ribbons, no centre dashes.
+    const evidence = this.options.roads === true ? await this.json<unknown>(`${EXTRACTS.marks}/${PHOTO_EVIDENCE_FILE}`).catch(() => null) : null;
+    this.evidence = decodePhotoEvidence(isPhotoEvidence(evidence) ? evidence : null);
     const courtyards = this.options.courtyards === false ? null : await this.json<CourtyardsManifest>(`${EXTRACTS.courtyards}/cells.json`).catch(() => null);
     this.courtyardCells = new Set(courtyards?.version === 1 ? courtyards.cells : []);
     this.waterLevels = levels?.version === 1 ? levels : null;
@@ -595,7 +601,7 @@ export class GroundStore {
       landedPlatforms: landedPlatformRings(toLocal).filter(r => near(r.reduce((b, p) => [Math.min(b[0], p[0]), Math.min(b[1], p[1]), Math.max(b[2], p[0]), Math.max(b[3], p[1])], [Infinity, Infinity, -Infinity, -Infinity] as [number, number, number, number]))),
       osm, osmAround: osmAround.filter((o): o is OsmGroundExtract => !!o),
       parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays, ...(this.options.clipDecks === false ? { clipDecks: false } : {}), ...(this.options.deckEnds === false ? { deckEnds: false } : {}),
-      ...(hasRoads ? { roads: roadsAround[around.indexOf(key)] ?? null, roadsAround, coverWays, marks: marksAround.flat() } : {}),
+      ...(hasRoads ? { roads: roadsAround[around.indexOf(key)] ?? null, roadsAround, coverWays, marks: marksAround.flat(), evidence: this.evidence } : {}),
       courtyards: courtyardsAround[around.indexOf(key)] ?? null, courtyardsAround,
       project: p => toLocal(p[0], p[1]),
     };

@@ -32,6 +32,7 @@ import type { LocalWay } from './streets.js';
 import type { RoadMark } from './roadMarks.js';
 import { convexOverlap, lineAngle } from './crossingAudit.js';
 import { traceMark } from './sourceTrace.js';
+import { inRuns, zebraEvidenceAt, type PhotoEvidence } from './photoEvidence.js';
 import { BLOCK, isSignalCrossing, mouthMarking, rankOf, sharkTeeth, SIGNAL_REACH_M, STOP_LINE_M, type MarkFrame } from './roadMarkings.js';
 
 /** The surveyed carriageway draws these marks (streets.ts PAINT_ON_SURVEY keeps the old band paint off there). */
@@ -76,10 +77,12 @@ export const TRAM_MARK_M = 2.0;
 export const JUNCTION_ROW_M = 12;
 /** A crossing node this close to a carriageway junction node lies on the junction, not on an arm (with JUNCTION_ROW_M). */
 export const JUNCTION_NODE_M = 5;
+/** Two crossings closer than this along the same road, rows overlapping by half: one crossing (planCrossings). */
+export const ZEBRA_CLUSTER_M = 8;
 /** The carriageway's shortest chord through a crossing is clear when under this share of the chord across it. */
 export const CHORD_CLEAR = 0.6;
 
-export interface SurveyMarkingStats { zebras: number; stripes: number; blockLines: number; cycleCrossings: number; blocks: number; stopLines: number; giveWays: number; teeth: number; centreDashes: number; ms: number }
+export interface SurveyMarkingStats { /** Planned crossings the photo moved / dropped (photoEvidence zebras). */ photoMoved?: number; photoDropped?: number; /** Cycleway runs over a carriageway with no crossing node or crossing tag: not marked. */ cycleUnbacked?: number; zebras: number; stripes: number; blockLines: number; cycleCrossings: number; blocks: number; stopLines: number; giveWays: number; teeth: number; centreDashes: number; ms: number }
 
 /**
  * A zebra (or block-line crossing) as drawn: what the crossing audit (crossingAudit.ts) measures. `r` is the stripe
@@ -130,6 +133,8 @@ export interface SurveyMarkingInput {
   box?: readonly [number, number, number, number];
   /** Lifts over the relief: paint, and the red of a cycle crossing (streets.ts ROAD_MARK_LIFT). */
   lift: { paint: number; red: number };
+  /** What the orthophoto shows (photoEvidence.ts): given, centre dashes draw only on a way's listed runs. */
+  evidence?: PhotoEvidence;
 }
 
 const isBridge = (w: LocalWay) => !!w.tags.bridge && w.tags.bridge !== 'no';
@@ -516,7 +521,15 @@ export function planCrossings(mk: SurveyMarker, input: SurveyMarkingInput, onCyc
   const out: CrossingPlan[] = [], feet: Vec2[][] = [];
   for (const c of cands) {
     const foot = planFoot(c);
-    const k = feet.findIndex(f => convexOverlap(f, foot));
+    let k = feet.findIndex(f => convexOverlap(f, foot));
+    // A cluster: another crossing within ZEBRA_CLUSTER_M along the same road whose row overlaps this one's is the same
+    // crossing mapped twice (a node per carriageway half or per tram track): drawn once (Linnaeusstraat, 2026-10-23).
+    if (k < 0) k = out.findIndex(a => {
+      if (lineAngle(a.r, c.r) >= 15 || Math.abs(dot(sub(c.centre, a.centre), a.r)) >= ZEBRA_CLUSTER_M) return false;
+      const n = left(a.r), v = dot(sub(c.centre, a.centre), n), same = dot(a.r, c.r) >= 0;
+      const lo = same ? v + c.from : v - c.to, hi = same ? v + c.to : v - c.from;
+      return Math.min(hi, a.to) - Math.max(lo, a.from) >= Math.min(hi - lo, a.to - a.from) * 0.5;
+    });
     if (k >= 0) {
       const a = out[k], n = left(a.r);
       if (lineAngle(a.r, c.r) < 15 && Math.abs(dot(sub(c.centre, a.centre), a.r)) < ZEBRA.len) {
@@ -532,6 +545,23 @@ export function planCrossings(mk: SurveyMarker, input: SurveyMarkingInput, onCyc
     }
     const { prio: _prio, ...plan } = c;
     out.push(plan); feet.push(foot);
+  }
+  return out;
+}
+
+/**
+ * Planned crossings against the orthophoto (photoEvidence zebras, lane roads-lanes 2026-10-23): moved along the road to
+ * where the photo's stripes are, or dropped where it shows none. A crossing with no entry stays as planned.
+ */
+export function placeByPhoto(plans: CrossingPlan[], ev: PhotoEvidence | undefined, st?: SurveyMarkingStats): CrossingPlan[] {
+  if (!ev || !ev.zebras.length) return plans;
+  const out: CrossingPlan[] = [];
+  for (const c of plans) {
+    const e = zebraEvidenceAt(ev, c.centre);
+    if (!e) { out.push(c); continue; }
+    if (e.du === null) { if (st) st.photoDropped = (st.photoDropped ?? 0) + 1; continue; }
+    if (e.du !== 0 && st) st.photoMoved = (st.photoMoved ?? 0) + 1;
+    out.push(e.du === 0 ? c : { ...c, centre: add(c.centre, c.r, e.du), road: c.road ? { ...c.road, at: add(c.road.at, c.r, e.du) } : null });
   }
   return out;
 }
@@ -671,7 +701,7 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
     }
   };
   const plan: CrossingPlanStats = { nodes: 0, offRoad: 0, onCycle: 0, tooLong: 0, tooShort: 0, inJunction: 0, ways: 0, merged: 0 };
-  const plans = planCrossings(mk, input, cycleVertexNear, plan);
+  const plans = placeByPhoto(planCrossings(mk, input, cycleVertexNear, plan), input.evidence, st);
   for (const c of plans) {
     const n = left(c.r);
     addCrossing(add(c.centre, n, c.from), add(c.centre, n, c.to), ZEBRA.len / 2);
@@ -683,7 +713,7 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
   }
 
   // ---- cycle crossings: red with blocks along both edges, where a cycle path crosses a carriageway
-  traceMark(mk.paint, 'cycleCross'); traceMark(mk.red, 'cycleCross');
+  traceMark(mk.paint, 'nodePaint'); traceMark(mk.red, 'cycleCross');
   for (const w of ways) {
     if (!isCycleWay(w) || isBridge(w) || !input.ownsWay(w)) continue;
     if (w.tags.crossing === 'unmarked' || w.tags['crossing:markings'] === 'no') continue;
@@ -698,6 +728,11 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
       // Clercqstraat: a cycleway through the node drew red over the junction asphalt).
       if (!road || Math.abs(dot(road.dir, u)) > 0.7) continue;
       if (junctions.some(j => segDist(j.p, run.a, run.b) < CYCLE_CROSS_JUNCTION_M)) continue;
+      // Node-backed only (R3, lane roads-lanes 2026-10-23): a crossing node on the run (road-marks-v1), or the way is
+      // itself mapped as the crossing. A cycleway merely passing over a carriageway polygon drew red and blocks the
+      // photo did not show (Kinkerstraat, De Clercqstraat: 14 % and 38 % red in the photo under them).
+      const node = marks.find(m => segDist(m.p, run.a, run.b) < 2 && (m.kind === 'zebra' || m.kind === 'blocks'));
+      if (!node && !isCrossingWay(w)) { st.cycleUnbacked = (st.cycleUnbacked ?? 0) + 1; continue; }
       const n = left(u);
       if (!mk.bar(mk.red, run.a, run.b, width, lift.red, 1.0)) continue;
       st.cycleCrossings++;
@@ -710,8 +745,7 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
           st.blocks += mk.bar(mk.paint, a, add(a, u, BLOCK.size), BLOCK.size, lift.paint, BLOCK.size * 0.75);
         }
       }
-      const kind = marks.find(m => segDist(m.p, run.a, run.b) < 2 && (m.kind === 'zebra' || m.kind === 'blocks'));
-      if (kind?.signalised || isSignalCrossing(w.tags)) crossingStops(mid, road);
+      if (node?.signalised || isSignalCrossing(w.tags)) crossingStops(mid, road);
     }
   }
 
@@ -749,7 +783,8 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
       if (half >= MAX_HALF_M) continue;
       const s = Math.min(20, half / sin + 0.6);
       mouthR = Math.max(mouthR, s);
-      if (signalised || mapped || !input.ownsPoint(j.p)) continue;
+      // With photo evidence only node-backed marks are drawn (R3, lane roads-lanes 2026-10-23): no teeth the graph infers.
+      if (signalised || mapped || !input.ownsPoint(j.p) || input.evidence) continue;
       const otherBest = Math.max(...others.filter(o => o.way !== a.way).map(o => rankOf(o.way.tags.highway)), -1);
       if (mouthMarking(a.way.tags.highway, otherBest, false) !== 'giveWay') continue;
       const line = armLine(a, s + 2), lst = stations(line);
@@ -763,6 +798,7 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
   }
 
   // ---- centre lines on wide two-way carriageways
+  traceMark(mk.paint, input.evidence ? 'photoPaint' : 'graphPaint');
   const trams = new SegGrid<true>(8);
   for (const w of ways) if (w.tags.railway || w.tags.embedded_rails) for (let i = 0; i + 1 < w.points.length; i++) trams.add(w.points[i], w.points[i + 1], true, 3);
   const nearTram = (p: Vec2) => trams.near(p).some(s => segDist(p, s.a, s.b) < 2.5);
@@ -773,6 +809,9 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
   for (const w of ways) {
     if (!isCarriageWay(w) || !input.ownsWay(w) || oneway(w) !== 0 || rankOf(w.tags.highway) < 1) continue;
     if (w.tags.cyclestreet === 'yes' || w.tags.bicycle_road === 'yes' || w.tags.junction === 'roundabout') continue;
+    // Only where the orthophoto shows a line along the middle (photoEvidence centre; lane roads-lanes 2026-10-23).
+    const shown = input.evidence ? input.evidence.centre.get(w.id) : undefined;
+    if (input.evidence && !shown) continue;
     const wst = stations(w.points), total = wst[wst.length - 1];
     if (total < CENTRE_DASH[0] + 2 * CENTRE_CUT_M) continue;
     // Measured middle every metre (null where narrower than the minimum, or off the carriageway).
@@ -794,6 +833,7 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
     for (let s0 = CENTRE_DASH[1] / 2; s0 + CENTRE_DASH[0] <= total; s0 += period) {
       const pts = smooth.slice(Math.round(s0), Math.round(s0 + CENTRE_DASH[0]) + 1);
       if (pts.length < 2 || pts.some(p => !p)) continue;
+      if (shown && !inRuns(shown, s0 + CENTRE_DASH[0] / 2)) continue;
       const line = pts as Vec2[];
       if (line.some(p => quietAt(p) || nearTram(p))) continue;
       let pieces = 0;

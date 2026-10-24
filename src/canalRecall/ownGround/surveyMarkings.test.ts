@@ -105,7 +105,12 @@ test('signals: a stop line on the inbound half before a signalised zebra, and no
 
 test('a cycle path across a side street: red under its width with blocks, clipped to the carriageway', () => {
   const ways = [...WAYS, ...prepareWays([{ id: 9, tags: { highway: 'cycleway' }, g: [[-30, -10], [-30, 10]] }], p => p as Vec2)];
-  const { paint, red, stats } = build([], ways);
+  // Node-backed only (lane roads-lanes 2026-10-23, R3): a cycleway merely passing over the carriageway is not marked;
+  // the crossing node on it (OSM highway=crossing, crossing=marked/dashes) is.
+  const bare = build([], ways);
+  assert.equal(bare.stats.cycleCrossings, 0);
+  assert.equal(bare.stats.cycleUnbacked, 1);
+  const { paint, red, stats } = build([{ p: [-30, 0], kind: 'blocks', signalised: false, dir: 0 }], ways);
   assert.equal(stats.cycleCrossings, 1);
   const r = centroids(red);
   assert.ok(r.length > 0 && r.every(c => Math.abs(c[1]) <= 4 && Math.abs(c[0] + 30) <= 1.01));
