@@ -225,6 +225,12 @@ Open, in order:
   triangles (6), flat roofs on pre-war schools, Amsterdam School banding,
   buff-brick and modernist worship. Fixing the beige default and the
   0-triangle kits first should lift it to 25–40 %.
+  **Fixed 2026-10-24 (#29, 56fc4a0bf):** schools measured per pand from
+  crops (160 of 283) else a period-palette pick, 0 on the old beige; every
+  kit draws geometry (143 empty kits → 0, trim added); 37 pre-1940 schools
+  hipped. Lane's own read of the 40: 7 look right, 13 better but hold, 9 not
+  fixed; re-review pending. Next: #34 (crop white balance, olive cast,
+  ribbon windows, top bands).
 - **kits-review (K)**: Role A done 2026-10-24 (`npm run kit:sheets`, run
   under the browser lock; 546 kits on 137 pages in
   `map-recall2-worktrees/kit-sheets-20261024/artifacts/strips/kits-N.png`,

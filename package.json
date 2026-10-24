@@ -224,7 +224,7 @@
     "test:generic-facades": "tsx scripts/check-generic-facades.ts",
     "test:coplanar-surfaces": "node --import tsx scripts/check-coplanar-surfaces.ts",
     "audit:building-coplanar": "node --import tsx scripts/audit-building-coplanar.ts --all",
-    "test:three-buildings": "tsx scripts/check-three-buildings.ts",
+    "test:three-buildings": "tsx scripts/check-three-buildings.ts && node --import tsx --test src/canalRecall/landmarkKits.test.ts",
     "test:roof-shapes": "tsx scripts/check-roof-shapes.ts",
     "build:supermarkets": "tsx scripts/build-supermarkets.ts",
     "build:worship-buildings": "tsx scripts/build-worship-buildings.ts",

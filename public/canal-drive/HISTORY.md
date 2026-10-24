@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**Landmark kits round 1 fixes (2026-10-24, #29).** Generic school kits no
+longer share one beige: 160 of 283 take a wall colour measured from their
+panorama crop (`scripts/landmarks/build-public-facts.ts` →
+`publicBuildingFacts.ts`), the rest a pick from their BAG year's period
+palette. 143 cinema/church/mosque/synagogue/temple kits drew no triangles
+(only the host extrusion showed); body-only kits now get coping and plinth
+trim, and a test asserts every kit draws > 0 triangles (now in check:canal
+via test:three-buildings). 37 pre-1940 schools under a 3DBAG ridge get a
+hipped roof. 136 other kits byte-identical (sha256 per kit). Measured
+colours carry the crops' yellow/olive cast; that is #34. `own-ground.bundle.js`
+and `renderer-spike.bundle.js` (lab pages, no npm script) still hold the old
+kit code.
+
 **Compact ground meshes on desktop too (2026-10-24, perf session,
 c656fa1ff).** The phone compact ground meshes (Int8 normals, Uint16 colours
 and indices, no uv) now load on every device. Desktop ground bytes summed

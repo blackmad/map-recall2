@@ -82,6 +82,7 @@ const CHECKS = [
   'test:drive-by-trigger',
   'test:postcard-pacing',
   'test:landmark-buildings',
+  'test:three-buildings',
   'test:landmark-fronts',
   'test:houseboats',
   'test:facade-extras',
