@@ -497,14 +497,18 @@ def build_bike() -> bpy.types.Object:
   bind_mesh(fork, steer)
 
   # Swept upright city bars — one continuous bevelled Bézier through stem + grips.
+  # Dutch omafiets bars (user photo 2026-10-24): forward out of the gooseneck stem, then swept back so the grips sit
+  # level, side by side, pointing at the rider. +x is forward, so the grips sit behind (-x) the stem.
   bar_ctrl = [
-    BARS + Vector((0.12, -0.38, 0.18)),
-    BARS + Vector((0.02, -0.26, 0.09)),
-    BARS + Vector((-0.03, 0.0, 0.03)),
-    BARS + Vector((0.02, 0.26, 0.09)),
-    BARS + Vector((0.12, 0.38, 0.18)),
+    BARS + Vector((-0.22, -0.29, 0.05)),
+    BARS + Vector((-0.07, -0.28, 0.06)),
+    BARS + Vector((0.07, -0.17, 0.05)),
+    BARS + Vector((0.10, 0.0, 0.03)),
+    BARS + Vector((0.07, 0.17, 0.05)),
+    BARS + Vector((-0.07, 0.28, 0.06)),
+    BARS + Vector((-0.22, 0.29, 0.05)),
   ]
-  stem_meet = bar_ctrl[2]
+  stem_meet = bar_ctrl[3]
   bars = join(
     'LenkerBars',
     [

@@ -480,14 +480,18 @@ def build_bike() -> bpy.types.Object:
   bind_mesh(fork, steer)
 
   # Chrome high-rise bars + black grips + bell (Sketchfab / Original cue).
+  # City-bike bars like the omafiets (user 2026-10-24): forward out of the gooseneck stem, then swept back so the grips sit
+  # level, side by side, pointing at the rider. +x is forward, so the grips sit behind (-x) the stem.
   bar_ctrl = [
-    BARS + Vector((0.10, -0.36, 0.16)),
-    BARS + Vector((0.02, -0.24, 0.08)),
-    BARS + Vector((-0.02, 0.0, 0.02)),
-    BARS + Vector((0.02, 0.24, 0.08)),
-    BARS + Vector((0.10, 0.36, 0.16)),
+    BARS + Vector((-0.18, -0.28, 0.05)),
+    BARS + Vector((-0.07, -0.28, 0.06)),
+    BARS + Vector((0.07, -0.17, 0.05)),
+    BARS + Vector((0.10, 0.0, 0.03)),
+    BARS + Vector((0.07, 0.17, 0.05)),
+    BARS + Vector((-0.07, 0.28, 0.06)),
+    BARS + Vector((-0.18, 0.28, 0.05)),
   ]
-  stem_meet = bar_ctrl[2]
+  stem_meet = bar_ctrl[3]
   grip_l0 = bar_ctrl[0]
   grip_l1 = bar_ctrl[0] + (bar_ctrl[0] - bar_ctrl[1]).normalized() * 0.07
   grip_r0 = bar_ctrl[-1]
