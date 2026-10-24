@@ -69,4 +69,34 @@ export class OrthoTiles {
     }
     return out;
   }
+
+  /** Tiles held for `rgbAt` (load with `hold`, free with `release`). */
+  private held = new Map<string, Uint8Array>();
+  /** Tile keys under a local-frame box. */
+  tilesUnder(x0: number, y0: number, x1: number, y1: number): string[] {
+    const out = new Set<string>();
+    for (const [x, y] of [[x0, y0], [x1, y0], [x0, y1], [x1, y1]]) { const [lng, lat] = fromLocal(x, y), [mx, my] = merc(lng, lat); out.add(`${Math.floor(mx / TILE_M)}_${Math.floor(my / TILE_M)}`); }
+    const ks = [...out].map(k => k.split('_').map(Number)), xs = ks.map(k => k[0]), ys = ks.map(k => k[1]), all: string[] = [];
+    for (let tx = Math.min(...xs); tx <= Math.max(...xs); tx++) for (let ty = Math.min(...ys); ty <= Math.max(...ys); ty++) all.push(`${tx}_${ty}`);
+    return all;
+  }
+  /** Is the tile already on disk? */
+  cached(key: string): boolean { return existsSync(join(this.cache, `${key}.jpg`)); }
+  /** Load tiles (fetching the missing ones) so `rgbAt` can read them synchronously. */
+  async hold(keys: Iterable<string>): Promise<void> {
+    for (const k of keys) { if (this.held.has(k)) continue; const [tx, ty] = k.split('_').map(Number); this.held.set(k, await this.fetchTile(tx, ty)); }
+  }
+  /** Free every held tile (and the crop cache). */
+  release(): void { this.held.clear(); this.tiles.clear(); }
+  /** Raw sRGB at a local-frame point (2 × 2 box as `crop`), or null when its tile is not held. */
+  rgbAt(x: number, y: number): [number, number, number] | null {
+    const [lng, lat] = fromLocal(x, y), [mx, my] = merc(lng, lat), step = TILE_M / TILE_PX, out: [number, number, number] = [0, 0, 0];
+    for (const [dx, dy] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) {
+      const ax = mx + dx * step / 2, ay = my + dy * step / 2, tx = Math.floor(ax / TILE_M), ty = Math.floor(ay / TILE_M), d = this.held.get(`${tx}_${ty}`);
+      if (!d) return null;
+      const px = Math.min(TILE_PX - 1, Math.max(0, Math.floor((ax - tx * TILE_M) / TILE_M * TILE_PX))), py = Math.min(TILE_PX - 1, Math.max(0, Math.floor(((ty + 1) * TILE_M - ay) / TILE_M * TILE_PX)));
+      for (let c = 0; c < 3; c++) out[c] += d[(py * TILE_PX + px) * 3 + c] / 4;
+    }
+    return out;
+  }
 }
