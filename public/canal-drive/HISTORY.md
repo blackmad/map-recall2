@@ -5,7 +5,11 @@ c656fa1ff).** The phone compact ground meshes (Int8 normals, Uint16 colours
 and indices, no uv) now load on every device. Desktop ground bytes summed
 over 18 like-for-like road spots 3,256.7 → 1,628.1 MB, frames p95 16.7 ms in
 both ride-perf A/B passes, ground pixels identical.
-`window.__canalRecallCompactGround = false` is the off switch.
+`window.__canalRecallCompactGround = false` is the off switch. Android
+emulator (2 GB, Chrome 124, 3-minute chase ride), b28eeac58 vs main after
+this: steady Chrome memory about 1.5 → 0.95 GB (renderer 1.1–1.3 → 0.7–0.9
+GB, GPU process 383 → 230 MB), ground 14 cells / 202 MB → 3 cells / 32.9 MB;
+neither build crashed, so post-deploy Sentry crash rates remain the check.
 
 **Bridge cards keep their register line (2026-10-24, #26).** Since
 565cefb13 bridge ledes were indexed under their extract ids, which join the
