@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+**Kit facts for joined OSM parts (2026-10-24, #41).** The 113 OSM-only kit
+parts joined to pands in #37 now get measured facts: wall 72, glazing 65,
+frames 52, roof form 97, each part reading only the LoD2.2 planes over its
+own outline (a tower does not take its nave's roof; towers and spires take
+the wall colour but no crop windows). Crops more than 60 % leaves are
+dropped (59 crops, 55 pands fall back to the period palette), which also
+nudges the unmeasured-school palette. 189 of 552 kit specs changed, 363
+identical. All 421 census kits re-sheeted (`kits-r5`), not yet reviewed.
+
 **Kits round 4: data and looks (2026-10-24, #36, #37).** Data: OSM-only kit
 parts are joined to BAG pands (`kit-pands.json`, 123 of 124 resolved; Avontuur
 is a church ship); 114 kits that only stand in for a live bespoke GLB leave the
