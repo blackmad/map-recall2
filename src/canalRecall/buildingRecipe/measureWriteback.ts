@@ -16,6 +16,9 @@
  * - `glazedPlinth`: a ground band glazed far above the upper storeys (OBA Buitenveldert walls[4], 100 % vs 0-44 %)
  *   proposes a `plinth` on storey 0; loggias are never proposed (their shadowed returns read as glazing or as wall
  *   depending on the light, so deep loggias stay hand intents).
+ * - `windowGroupProposal`: the photo grid folds two to four alike windows into one bay (measureFacade `windowGroupOf`,
+ *   `window.perBay`: Stadhouderskade 111's paired sashes, Overtoom 283) proposes `windowGroup: {count}` on a punched
+ *   group, so the model draws the pair instead of one wide window per bay (factory acceptance, 2026-10-24).
  */
 import {LIKENESS} from './likeness.ts';
 import {rgbToLab} from './measureFacade.ts';
@@ -58,7 +61,7 @@ export function curtainEvidence(m: CurtainInputs): string[] {
   return why;
 }
 
-type Win = {w: number; h: number; sill: number; aspect?: number; shape?: string} | null | undefined;
+type Win = {w: number; h: number; sill: number; aspect?: number; shape?: string; perBay?: number} | null | undefined;
 /**
  * Bays and window from the photo: the likeness grid's column count and folded window when it has a column count, else
  * the padded measurement's. `source` says which.
@@ -112,4 +115,29 @@ export function glazedPlinth(m: PlinthInputs): {plinth: {lights: number; sill: n
   if (m.washedOut > LIKENESS.maxWashedOut) why.push(`washed out ${Math.round(m.washedOut * 100)} % > ${LIKENESS.maxWashedOut * 100} %`);
   if (!glassReadsAsGlass(m.glass, m.wall)) why.push(`not-wall ${m.glass ?? 'none'} does not read as glass on ${m.wall}`);
   return {plinth: why.length ? null : {lights: 2, sill: 0.04, h: 0.84}, why};
+}
+
+/** The systems whose windows the kit can group (largeIntent.ts `windowGroup`). */
+export const WINDOW_GROUP_SYSTEMS: readonly LargeSystemName[] = ['brick-bay-grid', 'plinth-shopfronts'];
+export interface WindowGroupInputs {
+  /** the window the bays come from (`photoBays(...).window`): `perBay` = alike windows folded into one bay */
+  window: Win;
+  system: LargeSystemName;
+  usable: number; foliage: number; washedOut: number;
+}
+/**
+ * A grouped-window proposal (`windowGroup: {count}`, 2..4 windows per bay, every upper storey, the kit's default gap)
+ * or why not: the photo window must carry `perBay` >= 2, the group's system must group windows, and the crop must be
+ * clean by the likeness abstain thresholds (a tree trunk or a downpipe between two halves of one window otherwise
+ * reads as a pair). The gap is not written: the fold gives each window's width, not the pier between them reliably.
+ */
+export function windowGroupProposal(m: WindowGroupInputs): {windowGroup: {count: number} | null; why: string[]} {
+  const why: string[] = [], n = m.window?.perBay ?? 1;
+  if (n < 2) why.push('one window per bay');
+  else if (n > 4) why.push(`${n} windows per bay > 4`);
+  if (!WINDOW_GROUP_SYSTEMS.includes(m.system)) why.push(`${m.system} windows are not grouped`);
+  if (m.usable < LIKENESS.minUsable) why.push(`usable ${Math.round(m.usable * 100)} % < ${LIKENESS.minUsable * 100} %`);
+  if (m.foliage > LIKENESS.maxFoliage) why.push(`foliage ${Math.round(m.foliage * 100)} % > ${LIKENESS.maxFoliage * 100} %`);
+  if (m.washedOut > LIKENESS.maxWashedOut) why.push(`washed out ${Math.round(m.washedOut * 100)} % > ${LIKENESS.maxWashedOut * 100} %`);
+  return {windowGroup: why.length ? null : {count: n}, why};
 }

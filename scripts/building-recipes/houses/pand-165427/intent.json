@@ -189,7 +189,8 @@
    "system": "brick-bay-grid",
    "entrance": true,
    "palette": {
-    "brick": "#4f4c4d"
+    "brick": "#4f4c4d",
+    "frame": "#6a4536"
    },
    "windowShape": {
     "w": 0.6,
@@ -226,9 +227,18 @@
     }
    ],
    "hand": [
-    "houses"
+    "houses",
+    "palette.frame",
+    "arches"
    ],
-   "windows": "cross"
+   "windows": "cross",
+   "arches": {
+    "windows": "round",
+    "band": "brick",
+    "storeys": [
+     4
+    ]
+   }
   },
   {
    "wallSurfaces": [
@@ -328,7 +338,8 @@
   "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 1, 4, 5, 6 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #393e44 not used (not darker than the wall #4f4c4d by 10 L*, or tinted): kit glass kept; walls[1] glass #24323b not used (not darker than the wall #413f3d by 10 L*, or tinted): kit glass kept; walls[1] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand); walls[4] glass #2c3b4e not used (not darker than the wall #414040 by 10 L*, or tinted): kit glass kept; walls[4] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand); walls[5] glass #7e7d7c not used (not darker than the wall #756e77 by 10 L*, or tinted): kit glass kept; walls[5] wall split #938376 | #685f69 at 62 % (dE 19.1); walls[6] glass #4a4642 not used (not darker than the wall #574f49 by 10 L*, or tinted): kit glass kept; walls[6] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand); unphotographed walls take #4f4c4d (brick), the area-weighted median of groups 0, 1, 4, 5, 6.",
   "Row split 2026-10-24 (lane large-kit-row-split, issue #30): walls[0] (canal front, panel 42, 28.1 m) is four fronts set by hand from the rectified w01-47L crop: the tall left house (2 bays, 5 storeys, 3DBAG line 19.1 m), a 1-bay stair strip with narrow lights, the main block (6 bays, its corbelled brick cornice left as a flat crown: the kit's cornice is a light stone band) and the 2-bay risalit under the 3DBAG gable (crown gable). Same brick throughout (the crop's colour segmentation finds one material), so the split is by width, eaves, bays and crown only; measurement could not propose it (no colour joint; one 3DBAG roof step at 21 %).",
   "Review 2026-10-24 (held-review): walls[5] (w03-227) brick set to the crop's normalised wall swatch #756e77 and the wallSplit (#938376 | #685f69 at 0.616) dropped: the split followed the cast shadow across the right third of the 2021-09-09 crop, not a change of brick.",
-  "Giant-order lane (2026-10-24, issue #35): walls[3] (no photo) is surface 503 alone: surfaces 248 (2.2 m, 10.1-13.4 m) and 497 (0.9 m, 10-16.2 m) are set-back upper pieces off the footprint edge whose 13.4 m roof failed the eaves gate (16.1 vs 13.36 m); they fall to otherWalls. walls[0] windows cross (the w01-47L crop shows mullion-and-transom sashes). A corbel table under the main block's crown was tried and left out: brick corbels on the dark brick do not read in the game's flat colour."
+  "Giant-order lane (2026-10-24, issue #35): walls[3] (no photo) is surface 503 alone: surfaces 248 (2.2 m, 10.1-13.4 m) and 497 (0.9 m, 10-16.2 m) are set-back upper pieces off the footprint edge whose 13.4 m roof failed the eaves gate (16.1 vs 13.36 m); they fall to otherWalls. walls[0] windows cross (the w01-47L crop shows mullion-and-transom sashes). A corbel table under the main block's crown was tried and left out: brick corbels on the dark brick do not read in the game's flat colour.",
+  "Acceptance pass 2026-10-24 (issue #45, w01-47L 2021-01-22): walls[0] window frames reddish-brown #6a4536 (not white), round-arched heads on the tall left house top storey (arches.storeys [4])."
  ],
  "measured": {
   "date": "2026-10-24",

@@ -171,7 +171,7 @@
     "h": 0.75,
     "sill": 0.1
    },
-   "baysPerStorey": 17
+   "baysPerStorey": 18
   },
   {
    "wallSurfaces": [
@@ -205,7 +205,7 @@
  "notes": [
   "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
   "Panels left blank by the draft: 43 (15.9 m, under 3 m tall); 23 (15.9 m, under 3 m tall); 33 (6 m, under 3 m tall); 20 (15.9 m, under 3 m tall); 8 (15.9 m, under 3 m tall); 28 (15.9 m, under 3 m tall); 52 (15.9 m, under 3 m tall); 24 (14.7 m, under 3 m tall); 6 (15.5 m, under 3 m tall); 39 (15.6 m, under 3 m tall); 32 (15.7 m, under 3 m tall); 27 (15.9 m, under 3 m tall); 30 (15.7 m, under 3 m tall); 11 (15.8 m, under 3 m tall); 12 (15.6 m, under 3 m tall); 61 (5.5 m, under 3 m tall); 40 (13.7 m, under 3 m tall); 42 (13.8 m, under 3 m tall); 13 (3.5 m, under 3 m tall); 15 (3.4 m, under 3 m tall); 16 (2.8 m, under 3 m tall); 14 (2.4 m, under 3 m tall); 18 (2.3 m, under 3 m tall); 60 (2 m, under 3 m tall); 41 (2.7 m, under 3 m tall); 25 (2.4 m, under 3 m tall); 53 (2.6 m, under 3 m tall); 17 (2.6 m, under 3 m tall); 19 (2.6 m, under 3 m tall); 5 (2.4 m, under 3 m tall); 0 (2.6 m, under 3 m tall); 31 (2.5 m, under 3 m tall); 10 (2.4 m, under 3 m tall); 44 (2.2 m, under 3 m tall); 21 (2.4 m, under 3 m tall); 51 (2.4 m, under 3 m tall); 29 (2.3 m, under 3 m tall); 22 (2.2 m, under 3 m tall); 26 (2.2 m, under 3 m tall); 9 (2.3 m, under 3 m tall).",
-  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 1, 2, 4, 5, 7 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #57798f not used (not darker than the wall #79add3 by 10 L*, or tinted): kit glass kept; walls[1] curtain class not trusted (not-wall #57798f does not read as glass on #79add3 (>= 10 L* darker, chroma < 15)): brick-bay-grid kept from the building's majority; walls[1] bays and window shape not written (folded from the distrusted not-wall mask); walls[5] glass #668084 not used (not darker than the wall #82999c by 10 L*, or tinted): kit glass kept; walls[7] glass #728586 not used (not darker than the wall #7a9295 by 10 L*, or tinted): kit glass kept; unphotographed walls take #82999c (brick), the area-weighted median of groups 1, 2, 4, 5, 7."
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 1, 2, 4, 5, 7 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #57798f not used (not darker than the wall #79add3 by 10 L*, or tinted): kit glass kept; walls[1] curtain class not trusted (not-wall #57798f does not read as glass on #79add3 (>= 10 L* darker, chroma < 15)): brick-bay-grid kept from the building's majority; walls[1] bays and window shape not written (folded from the distrusted not-wall mask); walls[5] glass #668084 not used (not darker than the wall #82999c by 10 L*, or tinted): kit glass kept; walls[5] bays 18 from the likeness grid (padded measurement 17); walls[7] glass #728586 not used (not darker than the wall #7a9295 by 10 L*, or tinted): kit glass kept; unphotographed walls take #82999c (brick), the area-weighted median of groups 1, 2, 4, 5, 7."
  ],
  "measured": {
   "date": "2026-10-24",

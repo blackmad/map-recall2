@@ -91,7 +91,7 @@
  "notes": [
   "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
   "Panels left blank by the draft: 12 (7.3 m, unnamed panel under 8 m); 13 (3.5 m, unnamed panel under 8 m); 6 (3.5 m, unnamed panel under 8 m); 15 (16.8 m, under 3 m tall); 3 (16.1 m, under 3 m tall); 1 (4.9 m, unnamed panel under 8 m); 4 (2.4 m, unnamed panel under 8 m); 5 (3.7 m, under 3 m tall).",
-  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #303235 not used (not darker than the wall #611113 by 10 L*, or tinted): kit glass kept; walls[0] curtain class not trusted (not-wall #303235 does not read as glass on #611113 (>= 10 L* darker, chroma < 15)): brick-bay-grid kept from the building's majority; walls[0] bays and window shape not written (folded from the distrusted not-wall mask); walls[1] system brick-bay-grid -> curtain-wall (measured curtain); unphotographed walls take #611113 (brick), the area-weighted median of groups 0, 1."
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #303235 not used (not darker than the wall #611113 by 10 L*, or tinted): kit glass kept; walls[0] curtain class not trusted (not-wall #303235 does not read as glass on #611113 (>= 10 L* darker, chroma < 15)): brick-bay-grid kept from the building's majority; walls[0] bays and window shape not written (folded from the distrusted not-wall mask); unphotographed walls take #611113 (brick), the area-weighted median of groups 0, 1."
  ],
  "measured": {
   "date": "2026-10-24",

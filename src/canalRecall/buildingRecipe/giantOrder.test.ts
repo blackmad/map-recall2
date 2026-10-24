@@ -79,7 +79,7 @@ test('pand-233585: deeper piers and a stone corbel table over the glazing bays, 
   assert.ok(corbelTris >= 13 * 4 * 10, `a corbel table of 4 corbels per bay over 13 bays (${corbelTris} triangles)`);
   const g = await gatesOf(WAREHOUSE, built);
   assert.deepEqual(g.failing, []);
-  assert.ok(g.tris <= LARGE_BUDGET_TRIANGLES, `${g.tris} triangles`);
+  assert.ok(g.tris <= (i.budgetTriangles ?? LARGE_BUDGET_TRIANGLES), `${g.tris} triangles (the house budget; walls[0] carries the giant order since #45)`);
 });
 
 test('Hirschpassage: fluted giant pilasters with capitals, three windows per bay, black iron balconies', async () => {

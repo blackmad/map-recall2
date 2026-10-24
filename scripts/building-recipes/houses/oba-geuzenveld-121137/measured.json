@@ -70,15 +70,15 @@
     "wall": {
      "photo": "#272920",
      "photoRaw": "#272920",
-     "model": "#b8a07a",
-     "modelToday": "#b8a07a",
+     "model": "#3e4047",
+     "modelToday": "#3e4047",
      "photoFamily": "brick",
      "modelFamily": "brick",
      "photoMaterial": "brick-grey",
-     "modelMaterial": "brick-yellow",
-     "dL": 0.457,
-     "dHue": -36.6,
-     "pass": false
+     "modelMaterial": "brick-grey",
+     "dL": 0.118,
+     "dHue": null,
+     "pass": true
     },
     "glass": {
      "photo": "#1a1e17",
@@ -122,6 +122,10 @@
     "columns": {
      "photo": 12,
      "model": 5,
+     "windows": {
+      "photo": 12,
+      "model": 5
+     },
      "pass": false
     },
     "photoGrid": {
@@ -192,7 +196,15 @@
     "usable": 0.448,
     "foliage": 0.339,
     "washedOut": 0,
-    "split": null
+    "lightBands": [],
+    "split": null,
+    "rowJoints": [
+     {
+      "from": 0,
+      "to": 1,
+      "hex": "#272920"
+     }
+    ]
    },
    "gaps": {
     "kit": [],
@@ -218,8 +230,7 @@
    "panel": 9,
    "verdict": "FAIL",
    "reasons": [
-    "wall dL +0.34",
-    "glazing storey band off by 0.29 mean 0.28 vs photo 0.03",
+    "glazing storey band off by 0.41 mean 0.40 vs photo 0.02",
     "wall family unresolved (#3e4047 is dark and neutral, brick courses not resolved): lightness and hue judged only"
    ],
    "crop": {
@@ -250,8 +261,8 @@
      8.849
     ],
     "shift": {
-     "uM": 0.5,
-     "vM": -0.2
+     "uM": 0,
+     "vM": 0.5
     },
     "box": {
      "u0": 0,
@@ -262,22 +273,22 @@
    },
    "likeness": {
     "shift": {
-     "uM": 0.5,
-     "vM": -0.2
+     "uM": 0,
+     "vM": 0.5
     },
-    "iou": 0.028,
+    "iou": 0.033,
     "wall": {
      "photo": "#3e4047",
      "photoRaw": "#3e4047",
-     "model": "#b8a07a",
-     "modelToday": "#b8a07a",
+     "model": "#3e4047",
+     "modelToday": "#3e4047",
      "photoFamily": "unresolved",
      "modelFamily": "brick",
      "photoMaterial": "painted-black",
-     "modelMaterial": "brick-yellow",
-     "dL": 0.339,
+     "modelMaterial": "brick-grey",
+     "dL": 0,
      "dHue": null,
-     "pass": false
+     "pass": true
     },
     "glass": {
      "photo": "#464850",
@@ -286,14 +297,14 @@
     "glazing": {
      "photo": [
       null,
+      0.006,
+      0.156,
+      0.004,
       0,
-      0.126,
-      0.049,
       0,
-      0,
-      0,
-      0.012,
-      0,
+      0.003,
+      0.008,
+      null,
       null,
       null,
       null,
@@ -301,32 +312,36 @@
      ],
      "model": [
       null,
-      0.277,
-      0.277,
-      0.277,
-      0.289,
-      0.282,
-      0.277,
-      0.277,
-      0.277,
-      0.282,
-      0.277,
-      0.314,
+      0.394,
+      0.394,
+      0.394,
+      0.412,
+      0.401,
+      0.394,
+      0.394,
+      0.394,
+      0.401,
+      0.394,
+      0.448,
       null
      ],
-     "photoMean": 0.026,
-     "modelMean": 0.278,
-     "maxDiff": 0.289,
-     "meanDiff": 0.252,
+     "photoMean": 0.023,
+     "modelMean": 0.396,
+     "maxDiff": 0.412,
+     "meanDiff": 0.373,
      "pass": false
     },
     "columns": {
      "photo": 7,
-     "model": 3,
+     "model": 7,
+     "windows": {
+      "photo": 7,
+      "model": 7
+     },
      "pass": null
     },
     "photoGrid": {
-     "pitchM": 1.26,
+     "pitchM": 1.261,
      "window": null
     },
     "shape": {
@@ -339,11 +354,11 @@
      "model": "punched"
     },
     "ground": {
-     "photo": 0.081,
-     "model": 0.31
+     "photo": 0.088,
+     "model": 0.442
     },
     "evidence": {
-     "usable": 0.629,
+     "usable": 0.653,
      "foliage": 0.003,
      "washedOut": 0.001,
      "obliquityDeg": 7.7,
@@ -392,7 +407,15 @@
     "usable": 0.588,
     "foliage": 0.003,
     "washedOut": 0.001,
-    "split": null
+    "lightBands": [],
+    "split": null,
+    "rowJoints": [
+     {
+      "from": 0,
+      "to": 1,
+      "hex": "#494c54"
+     }
+    ]
    },
    "gaps": {
     "kit": [],
@@ -455,13 +478,13 @@
     "wall": {
      "photo": "#7b756a",
      "photoRaw": "#7b756a",
-     "model": "#b8a07a",
-     "modelToday": "#b8a07a",
+     "model": "#3e4047",
+     "modelToday": "#3e4047",
      "photoFamily": "brick",
      "modelFamily": "brick",
      "photoMaterial": "brick-grey",
-     "modelMaterial": "brick-yellow",
-     "dL": 0.151,
+     "modelMaterial": "brick-grey",
+     "dL": -0.188,
      "dHue": null,
      "pass": false
     },
@@ -509,6 +532,10 @@
     "columns": {
      "photo": null,
      "model": 3,
+     "windows": {
+      "photo": null,
+      "model": 3
+     },
      "pass": null
     },
     "photoGrid": {
@@ -588,12 +615,25 @@
     "usable": 0.27,
     "foliage": 0.345,
     "washedOut": 0.043,
+    "lightBands": [],
     "split": {
      "at": 0.871,
      "left": "#7c776c",
      "right": "#a2937d",
      "dE": 18.8
-    }
+    },
+    "rowJoints": [
+     {
+      "from": 0,
+      "to": 0.755,
+      "hex": "#7b766c"
+     },
+     {
+      "from": 0.755,
+      "to": 1,
+      "hex": "#938775"
+     }
+    ]
    },
    "gaps": {
     "kit": [],
@@ -607,7 +647,6 @@
    "panel": 83,
    "verdict": "FAIL",
    "reasons": [
-    "wall dL +0.20",
     "glazing  mean 0.23 vs photo 0.33"
    ],
    "crop": {
@@ -638,7 +677,7 @@
      33.039
     ],
     "shift": {
-     "uM": -0.5,
+     "uM": 0.2,
      "vM": 0.3
     },
     "box": {
@@ -650,22 +689,22 @@
    },
    "likeness": {
     "shift": {
-     "uM": -0.5,
+     "uM": 0.2,
      "vM": 0.3
     },
-    "iou": 0.3,
+    "iou": 0.234,
     "wall": {
      "photo": "#6f695f",
      "photoRaw": "#58544a",
-     "model": "#b8a07a",
-     "modelToday": "#b8a07a",
+     "model": "#6f695f",
+     "modelToday": "#6f695f",
      "photoFamily": "brick",
      "modelFamily": "brick",
      "photoMaterial": "brick-grey",
-     "modelMaterial": "brick-yellow",
-     "dL": 0.196,
+     "modelMaterial": "brick-grey",
+     "dL": 0,
      "dHue": null,
-     "pass": false
+     "pass": true
     },
     "glass": {
      "photo": "#51564a",
@@ -680,19 +719,23 @@
       null,
       null
      ],
-     "photoMean": 0.333,
-     "modelMean": 0.227,
+     "photoMean": 0.328,
+     "modelMean": 0.225,
      "maxDiff": null,
-     "meanDiff": 0.106,
+     "meanDiff": 0.103,
      "pass": false
     },
     "columns": {
      "photo": 12,
-     "model": 10,
+     "model": 12,
+     "windows": {
+      "photo": 12,
+      "model": 12
+     },
      "pass": true
     },
     "photoGrid": {
-     "pitchM": 2.844,
+     "pitchM": 2.841,
      "window": null
     },
     "shape": {
@@ -705,11 +748,11 @@
      "model": "punched"
     },
     "ground": {
-     "photo": 0.215,
-     "model": 0.328
+     "photo": 0.214,
+     "model": 0.326
     },
     "evidence": {
-     "usable": 0.646,
+     "usable": 0.656,
      "foliage": 0.214,
      "washedOut": 0.013,
      "obliquityDeg": 44.1,
@@ -751,7 +794,15 @@
     "usable": 0.627,
     "foliage": 0.214,
     "washedOut": 0.013,
-    "split": null
+    "lightBands": [],
+    "split": null,
+    "rowJoints": [
+     {
+      "from": 0,
+      "to": 1,
+      "hex": "#6e685f"
+     }
+    ]
    },
    "gaps": {
     "kit": [],
@@ -820,14 +871,14 @@
     "wall": {
      "photo": "#0f1408",
      "photoRaw": "#0a0e06",
-     "model": "#b8a07a",
-     "modelToday": "#b8a07a",
+     "model": "#3e4047",
+     "modelToday": "#3e4047",
      "photoFamily": "unresolved",
      "modelFamily": "brick",
      "photoMaterial": "painted-black",
-     "modelMaterial": "brick-yellow",
-     "dL": 0.545,
-     "dHue": -48.2,
+     "modelMaterial": "brick-grey",
+     "dL": 0.206,
+     "dHue": null,
      "pass": false
     },
     "glass": {
@@ -852,6 +903,10 @@
     "columns": {
      "photo": 23,
      "model": 10,
+     "windows": {
+      "photo": 23,
+      "model": 10
+     },
      "pass": false
     },
     "photoGrid": {
@@ -916,7 +971,15 @@
     "usable": 0.598,
     "foliage": 0.291,
     "washedOut": 0,
-    "split": null
+    "lightBands": [],
+    "split": null,
+    "rowJoints": [
+     {
+      "from": 0,
+      "to": 1,
+      "hex": "#1b1d11"
+     }
+    ]
    },
    "gaps": {
     "kit": [],

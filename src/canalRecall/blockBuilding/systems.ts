@@ -87,6 +87,8 @@ export interface SystemFit {
   layered?: boolean;
   /** measured window proportions (intent `windowShape`): width of the bay, height of the storey, sill in metres; overrides the `windows` preset's size */
   shape?: { w: number; h: number; sillM: number };
+  /** window proportions per upper storey (intent `storeyShapes`): width of the bay, height of the storey, sill in metres; opt-in */
+  storeyShapes?: { storey: number; w: number; h: number; sillM: number }[];
   /** glazed-columns: bays (of `bays` per storey, cycling) that carry a glass stripe instead of windows */
   columnBays?: number[];
   /** ground `arcade`: the opening geometry (fitLarge fills the defaults, ARCADE_DEFAULTS) */
@@ -281,10 +283,14 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   // Perforated screen: glass blocks in one bay of three, the pattern shifted by two bays per storey (scattered, as built).
   if (f.screen && name !== 'blank') typical = { kind: 'wall', cycle: [{ kind: 'punched', win: glassBlock(f) }, { kind: 'wall' }, { kind: 'wall' }], shift: 2 };
   const rowOverrides: Record<string, Row> = {};
+  // Window proportions per storey (tall first-floor windows under a frieze of small attic windows): the storey's own
+  // punched row, before every later pass (arches, balconies, openBays, groups, plinth) builds on it.
+  if (f.storeyShapes?.length && typical.kind === 'punched' && typical.win && !typical.cycle && !f.screen)
+    for (const e of f.storeyShapes) if (e.storey > 0) rowOverrides[String(e.storey)] = { ...typical, win: { ...typical.win, w: e.w, h: e.h, sill: e.sillM } };
   // Arched heads on chosen storeys only (a round-headed piano nobile between a square ground and attic).
   const archedStoreys = name === 'brick-bay-grid' && f.arches?.windows && f.arches.storeys ? f.arches.storeys : [];
-  const archedRow = (): Row => ({ ...typical, win: { ...typical.win!, ...archFor(f.arches!.windows, f) } });
-  for (const st of archedStoreys) if (st > 0) rowOverrides[String(st)] = archedRow();
+  const archedRow = (st: number): Row => { const r = rowOverrides[String(st)] ?? typical; return { ...r, win: { ...r.win!, ...archFor(f.arches!.windows, f) } }; };
+  for (const st of archedStoreys) if (st > 0) rowOverrides[String(st)] = archedRow(st);
   if (f.balconyStoreys?.length && name !== 'blank') {
     const railSlot = f.balconyRailSlot ?? s.frame, onWin = f.balconyOnWindows && typical.win && !typical.cycle ? typical.win : null;
     // on a window row the balcony spans the bay's windows and 0.2 m either side (the pilasters between bays stay clear)
@@ -311,7 +317,7 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
     }
   }
   let ground = name === 'curtain-wall' && f.layered && (f.ground === 'system' || f.ground === 'glazed') ? typical
-    : groundRow({ ...f, ground: name === 'plinth-shopfronts' && f.ground === 'system' ? 'plinth-shopfronts' : f.ground }, archedStoreys.includes(0) ? archedRow() : typical);
+    : groundRow({ ...f, ground: name === 'plinth-shopfronts' && f.ground === 'system' ? 'plinth-shopfronts' : f.ground }, archedStoreys.includes(0) ? archedRow(0) : typical);
   // Loading-door axis: a cycle of rows per bay with the hoist row at `first` (cycle index = bay % every).
   if (f.hoist && name !== 'blank') {
     const list = f.hoist.bays, every = list ? Math.max(1, f.bays ?? 1, ...list.map(b => b + 1)) : Math.max(1, f.hoist.every ?? 1), at = ((f.hoist.first ?? 0) % every + every) % every, kind = f.hoist.arch;
