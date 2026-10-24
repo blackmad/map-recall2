@@ -410,9 +410,12 @@ class Game {
       if (shiftDown) this._nudgeCameraBearing(bearingStep);
       else this._nudgeCameraTilt(tiltStep);
     }
-    if (this.input.wasPressed('KeyD')) this.vectorMap.toggleLabels();
+    // W/A/S/D steer (player.js), so no shortcut may share them: W opened the
+    // landmark's Wikipedia page mid-ride and D toggled road-name labels
+    // (issue #24). E is the article key, T the labels key.
+    if (this.input.wasPressed('KeyT')) this.vectorMap.toggleLabels();
     if (this.input.wasPressed('KeyB')) this._cycleBuildingLook();
-    if (this.input.wasPressed('KeyW')) this._openLandmarkArticle();
+    if (this.input.wasPressed('KeyE')) this._openLandmarkArticle();
     this._handleChoiceShortcut();
     if (this.input.wasPressed('Backquote')) this._toggleDebug();
     if (this.input.isDown('Minus') || this.input.isDown('NumpadSubtract')) { this.camera.zoomOut(); this._zoomTouchedByPlayer = true; this._playerZoomPending = true; }

@@ -6,6 +6,10 @@ import {
   nextBuildingLook,
   ZOOM_DEFAULT_VERSION,
   applyDifficulty,
+  CAMERA_TILT_MAX,
+  CAMERA_TILT_MIN,
+  MAP_MAX_PITCH,
+  chasePitch,
   coercePreferences,
   defaultPreferences,
   parsePreferences,
@@ -40,10 +44,27 @@ const memory = () => {
 }
 
 {
-  const prefs = parsePreferences({ cameraTilt: 12 }, zoom);
-  assert.equal(prefs.cameraTilt, 12);
+  const prefs = parsePreferences({ cameraTilt: -12 }, zoom);
+  assert.equal(prefs.cameraTilt, -12);
   const clamped = parsePreferences({ cameraTilt: 99 }, zoom);
-  assert.equal(clamped.cameraTilt, 36);
+  assert.equal(clamped.cameraTilt, CAMERA_TILT_MAX);
+  assert.equal(parsePreferences({ cameraTilt: -99 }, zoom).cameraTilt, CAMERA_TILT_MIN);
+}
+
+// Issue #25: Chase opened at 12°, flatter than the 14° 2D views, and the left
+// half of the tilt slider clamped to 0° and did nothing.
+{
+  assert.ok(chasePitch(0) > 30, `default chase pitch ${chasePitch(0)} must read as 3D`);
+  assert.ok(chasePitch(0) <= MAP_MAX_PITCH);
+  let previous = -Infinity;
+  for (let tilt = CAMERA_TILT_MIN; tilt <= CAMERA_TILT_MAX; tilt++) {
+    const pitch = chasePitch(tilt);
+    assert.ok(pitch > previous, `tilt ${tilt} -> ${pitch}° must move the camera (previous ${previous}°)`);
+    assert.ok(pitch >= 0 && pitch <= MAP_MAX_PITCH, `tilt ${tilt} -> ${pitch}° outside what the map draws`);
+    previous = pitch;
+  }
+  assert.equal(chasePitch(999), chasePitch(CAMERA_TILT_MAX));
+  assert.equal(chasePitch(Number.NaN), chasePitch(0));
 }
 
 {
