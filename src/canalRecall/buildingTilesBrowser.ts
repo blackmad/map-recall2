@@ -27,6 +27,7 @@ import {
 } from './buildingTileSource.js';
 import { bagTilesEnabled, hiddenIdsFor, type CoversFile } from './bagTiles.js';
 import { tileFor, tileKey, tilesCovering } from './slippyTiles.js';
+import { mapHasStyle, mapRemoved } from './mapStyle.js';
 import { introLandingArea } from './game/introFlight.js';
 import { MotionEstimate, boxAround, lookAheadEnabled, lookAheadPoints } from './streamingLookAhead.js';
 import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior, materialWallDisplayPrior } from './look/palette.js';
@@ -103,6 +104,9 @@ export type TileEnricher = (tile: { z: number; x: number; y: number }, signal: A
 
 /** A tile that has not arrived by now is retried rather than waited on. */
 const BUILDING_TILE_TIMEOUT_MS = 20_000;
+/** How often a streamer whose map lost its style (WebGL context loss) checks for it again. */
+const STYLE_WAIT_MS = 250;
+const STYLE_WAIT_SOURCE_TRIES = 40;
 const BUILDING_TILE_MAX_RETRIES = 4;
 
 export { bagTilesEnabled, hiddenIdsFor };
@@ -308,7 +312,7 @@ export class BuildingTileStreamer {
     const features = this.cache.collection().features.map(feature => this.styled(feature));
     this.countsDirty = true;
     this.onFeatures?.(features);
-    const source = this.map.getSource(this.sourceId);
+    const source = this.liveSource();
     if (!source || !this.publishing) return;
     const ids = changed.map(feature => String(feature.properties?.id ?? ''));
     if (!this.published || typeof source.updateData !== 'function' || ids.some(id => !id) || new Set(ids).size !== ids.length) {
@@ -324,6 +328,34 @@ export class BuildingTileStreamer {
       this.published = null;
       this.sendToSource(source, features);
     }
+  }
+
+  /**
+   * The building source, or null while the map has no style (a lost WebGL context, or a removed
+   * map; see mapStyle.ts). `getSource` throws then (Sentry CANAL-RECALL-8). The restored style
+   * carries a new source object, so the next publish is a full send, made once the style is back.
+   */
+  private liveSource(): GeoJsonSource | null {
+    if (mapHasStyle(this.map)) return this.map.getSource(this.sourceId) ?? null;
+    this.published = null;
+    this.republishWhenStyled();
+    return null;
+  }
+
+  private styleWait: ReturnType<typeof setTimeout> | null = null;
+  private republishWhenStyled(): void {
+    if (this.styleWait != null) return;
+    // The restored style loads its JSON a frame after `webglcontextrestored`, so wait for the source
+    // itself, not just the style; a style that never brings it back stops the wait after a while.
+    let sourceTries = 0;
+    const check = () => {
+      this.styleWait = null;
+      if (this.disposed || mapRemoved(this.map)) return;
+      const ready = mapHasStyle(this.map) && !!this.map.getSource(this.sourceId);
+      if (!ready && (!mapHasStyle(this.map) || ++sourceTries < STYLE_WAIT_SOURCE_TRIES)) { this.styleWait = setTimeout(check, STYLE_WAIT_MS); return; }
+      if (ready && this.cache.size) this.scheduleFlush();
+    };
+    this.styleWait = setTimeout(check, STYLE_WAIT_MS);
   }
 
   /** Tile → feature array MapLibre currently holds; null forces a full send. */
@@ -433,6 +465,8 @@ export class BuildingTileStreamer {
 
   dispose(): void {
     this.disposed = true;
+    if (this.styleWait != null) clearTimeout(this.styleWait);
+    this.styleWait = null;
     for (const controller of this.controllers.values()) controller.abort();
     this.controllers.clear();
     this.queue = [];
@@ -617,7 +651,7 @@ export class BuildingTileStreamer {
     // The three.js regroup (onFeatures) runs a frame after MapLibre's diff, so a tile's two main-thread
     // costs land in different frames instead of one (docs/perf-motion-stutter-20261016.md).
     this.deferFeatures(features);
-    const source = this.map.getSource(this.sourceId);
+    const source = this.liveSource();
     if (source) this.sendToSource(source, features);
     if (features.length > 0 && this.onFirstBuildings) {
       const announce = this.onFirstBuildings;
@@ -672,7 +706,7 @@ export class BuildingTileStreamer {
     if (on === this.publishing) return;
     this.publishing = on;
     this.published = null;
-    const source = this.map.getSource(this.sourceId);
+    const source = this.liveSource();
     if (!source) return;
     if (!on) { source.setData({ type: 'FeatureCollection', features: [] }); return; }
     if (this.cache.size) this.sendToSource(source, this.cache.collection().features.map(feature => this.styled(feature)));

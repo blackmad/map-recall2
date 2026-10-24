@@ -24,7 +24,7 @@
 export const DEAD_GPU_SHADER_ERROR = /^(?:Could not compile (?:fragment|vertex) shader|Program failed to link):\s*(?:null)?$/;
 
 export interface GraphicsFailure {
-  event: 'dead-gpu-shader' | 'webgl-context-lost';
+  event: 'dead-gpu-shader' | 'webgl-context-lost' | 'webgl-unavailable';
   /** How long drawing was paused after a shader failure (0 for a plain context loss). */
   holdMs: number;
   contextLost: boolean | null;
@@ -39,6 +39,8 @@ export interface GraphicsFailure {
   hardwareConcurrency: number | null;
   canvas: { width: number; height: number; cssWidth: number; cssHeight: number; dpr: number } | null;
   drawingBuffer: { width: number; height: number } | null;
+  /** The browser's refusal, for `webgl-unavailable` (MapLibre's JSON-encoded creation error). */
+  message?: string;
 }
 
 export interface GuardableMap {
@@ -194,17 +196,53 @@ function describeGraphics(map: GuardableMap, event: GraphicsFailure['event'], ho
   return failure;
 }
 
+/**
+ * Failures reported before `monitoring.bundle.js` arrived (it loads async, off the critical path, and
+ * a WebGL refusal happens at the page's `load`). The monitoring bundle drains this queue on start.
+ */
+export const PENDING_GRAPHICS_FAILURES = '__canalRecallPendingGraphicsFailures';
+
 function defaultReport(failure: GraphicsFailure): void {
-  const hook = (globalThis as { canalRecallMonitoring?: { reportGraphicsFailure?: (detail: GraphicsFailure) => void } })
-    .canalRecallMonitoring;
-  if (typeof hook?.reportGraphicsFailure === 'function') hook.reportGraphicsFailure(failure);
-  else if (typeof console !== 'undefined') console.warn('[canal-recall:monitoring] graphics failure', failure);
+  const root = globalThis as {
+    canalRecallMonitoring?: { reportGraphicsFailure?: (detail: GraphicsFailure) => void };
+    [PENDING_GRAPHICS_FAILURES]?: GraphicsFailure[];
+  };
+  const hook = root.canalRecallMonitoring;
+  if (typeof hook?.reportGraphicsFailure === 'function') {
+    hook.reportGraphicsFailure(failure);
+    return;
+  }
+  (root[PENDING_GRAPHICS_FAILURES] ??= []).push(failure);
+  if (typeof console !== 'undefined') console.warn('[canal-recall:monitoring] graphics failure', failure);
+}
+
+/**
+ * The browser refused to create a WebGL context at all (Sentry CANAL-RECALL-C: Chrome answers
+ * "Web page caused context loss and was blocked" once a page has lost its context too often, and
+ * keeps refusing until the browser restarts). `new maplibregl.Map` throws from the constructor, which
+ * used to take the whole game down at `load`. The caller keeps going without a map; this reports the
+ * refusal once and tells the rider what to do.
+ */
+export function reportWebglUnavailable(
+  container: HTMLElement | null | undefined,
+  error: unknown,
+  report: (failure: GraphicsFailure) => void = defaultReport,
+): GraphicsFailure {
+  const raw = error instanceof Error ? error.message : String(error);
+  const failure = describeGraphics({ getContainer: () => container ?? null }, 'webgl-unavailable', 0);
+  failure.message = raw.slice(0, 600);
+  report(failure);
+  mountNoticeIn(container, 'This browser has switched off 3D graphics for this page. Close and reopen the browser, then reload.');
+  return failure;
 }
 
 const NOTICE_ID = 'canal-graphics-restarted';
 
 function mountNotice(map: GuardableMap): void {
-  const container = map.getContainer?.();
+  mountNoticeIn(map.getContainer?.(), 'The 3D map stopped responding after the device restarted its graphics. Reload to carry on.');
+}
+
+function mountNoticeIn(container: HTMLElement | null | undefined, message: string): void {
   const doc = container?.ownerDocument;
   if (!container || !doc || doc.getElementById(NOTICE_ID)) return;
 
@@ -217,7 +255,7 @@ function mountNotice(map: GuardableMap): void {
     'font:13px/1.4 system-ui,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.28)';
 
   const text = doc.createElement('span');
-  text.textContent = 'The 3D map stopped responding after the device restarted its graphics. Reload to carry on.';
+  text.textContent = message;
   const reload = doc.createElement('button');
   reload.type = 'button';
   reload.textContent = 'Reload';

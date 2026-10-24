@@ -211,7 +211,24 @@ class VectorBasemap {
     this._pitchSmoothed = null;
     if (!container || typeof maplibregl === 'undefined') return;
 
-    this.map = new maplibregl.Map({
+    // A browser that has blocked WebGL for this page ("Web page caused context
+    // loss and was blocked", Chrome after repeated context losses) makes the
+    // Map constructor throw, which took the whole game down at `load`
+    // (Sentry CANAL-RECALL-C). Carry on without a basemap, as when MapLibre is
+    // missing, and tell the rider how to get it back.
+    try {
+      this.map = this._createMap(container);
+    } catch (error) {
+      this.map = undefined;
+      console.error('Canal Recall: no WebGL for the map; riding without the basemap.', error);
+      if (window.CanalMapGuard && window.CanalMapGuard.reportWebglUnavailable) window.CanalMapGuard.reportWebglUnavailable(container, error);
+      return;
+    }
+    this._installMap();
+  }
+
+  _createMap(container) {
+    return new maplibregl.Map({
       container,
       // Native Three.js layers share this context; MSAA must be requested here.
       canvasContextAttributes: { antialias: canalRecallAntialias() },
@@ -223,6 +240,10 @@ class VectorBasemap {
       attributionControl: false,
       fadeDuration: 0
     });
+  }
+
+  _installMap() {
+    this.map.on('style.load', () => this._afterStyleRestored());
     // MapLibre 5 throws from the render loop when the GPU process dies mid-shader
     // (empty info log). Hold a frame, report once and offer a reload instead of
     // rebuilding the same program every frame until the tab dies.
@@ -304,12 +325,7 @@ class VectorBasemap {
           onSuppressionChanged: () => this._refreshBuildingSuppression(),
           onHostWallOpeningsChanged: () => this._syncHostWallOpenings(),
           canShowModel: spec => !spec.hostWallOpenings?.length || (this._hostOpeningRendererActive() && !!this._threeBuildings.hostWallOpeningsVisible?.(spec.hostWallOpenings)),
-          onModelShown: () => {
-            this._syncHostWallOpenings();
-            this._syncDetailedBuildingLayers();
-            this._raisePoiLayers();
-            this.setActiveLandmark(this._activeLandmark);
-          },
+          onModelShown: () => this._onSignatureModelShown(),
         });
         this._signatureLandmarks.setEnabled(!this._detailedBuildingsVisible && !this._measuredColoursOnly);
       }
@@ -852,7 +868,39 @@ class VectorBasemap {
   // One owner per building: hide the basemap copy of every coloured-extract
   // building (by id and by measured proximity), and hide coloured extrusions
   // under any signature model that has loaded.
+  /**
+   * MapLibre has no style between `webglcontextlost` and the restore (it
+   * rebuilds one from a snapshot), and none after `remove()`: getLayer,
+   * getSource and getStyle().layers throw or answer undefined then (Sentry
+   * CANAL-RECALL-A/-B/-8/-4, Android 10). Entry points called from the frame
+   * loop, timers or model loads return early; `_afterStyleRestored` redoes
+   * what the snapshot cannot know about.
+   */
+  _styleGone() {
+    return !this.map || !this.map.style;
+  }
+
+  // A model that lands while the context is lost is placed in the three.js
+  // scene; its map-side follow-up waits for the restored style. Throwing here
+  // marked the model failed for the session (8 landmarks per context loss).
+  _onSignatureModelShown() {
+    this._syncHostWallOpenings();
+    if (this._styleGone()) { this._modelShownStale = true; return; }
+    this._syncDetailedBuildingLayers();
+    this._raisePoiLayers();
+    this.setActiveLandmark(this._activeLandmark);
+  }
+
+  _afterStyleRestored() {
+    if (this._modelShownStale) { this._modelShownStale = false; this._onSignatureModelShown(); }
+    if (this._detailedLayersStale) { this._detailedLayersStale = false; this._syncDetailedBuildingLayers(); }
+    if (this._suppressionStale) { this._suppressionStale = false; this._refreshBuildingSuppression(); }
+  }
+
   _refreshBuildingSuppression() {
+    // A landmark model that lands while the context is lost: the restored
+    // style is the snapshot from before it, so redo the masks once it loads.
+    if (this._styleGone()) { this._suppressionStale = true; return; }
     this._syncHostWallOpenings();
     // Streamed buildings still need their replacement mask refreshed when a
     // signature model loads or becomes unavailable; only the basemap is skipped.
@@ -2013,6 +2061,7 @@ class VectorBasemap {
 
   _syncDetailedBuildingLayers() {
     if (!this.map) return;
+    if (this._styleGone()) { this._detailedLayersStale = true; return; }
     const google = this._googleTilesActive;
     // 3DBAG and Google must never draw together: they are the same buildings
     // twice, z-fighting into a shimmer.
@@ -2173,6 +2222,14 @@ class VectorBasemap {
     this._overviewTiles = true;
     const root = this._absoluteExtractRoot();
     const manifest = await fetch(`${root}/${api.OVERVIEW_TILES_DIR}/manifest.json`).then(r => (r.ok ? r.json() : null)).catch(() => null);
+    // The context can be lost while the manifest is in flight: no style, so
+    // getStyle() is undefined (Sentry CANAL-RECALL-B). Try again once the
+    // restored style has loaded.
+    if (!this.map.style) {
+      this._overviewTiles = false;
+      if (!this.map._removed) this.map.once('style.load', () => { void this._ensureOverviewTiles(); });
+      return;
+    }
     const plan = api.overviewTilesPlan(manifest, root, this.map.getStyle().layers || []);
     if (plan.skip) { console.info(`Overview tiles off: ${plan.skip}`); return; }
     try {
@@ -2350,7 +2407,7 @@ class VectorBasemap {
   }
 
   setFerryTerminals(track, loader) {
-    if (!this.ready || !this.map || this._ferryTerminalTrack === track) return;
+    if (!this.ready || !this.map || this._styleGone() || this._ferryTerminalTrack === track) return;
     this._ferryTerminalTrack = track;
     const terminals = new Map();
     for (const segment of track.segments) if (segment.ferryLink) {
@@ -2474,7 +2531,7 @@ class VectorBasemap {
   }
 
   setRoute(routePath, loader, visible) {
-    if (!this.map || !loader || !this.map.getSource('navigation-route')) return;
+    if (!this.map || !loader || this._styleGone() || !this.map.getSource('navigation-route')) return;
     // Trees are thinned against the route whether or not its line is drawn.
     if (routePath && routePath.length > 1 && routePath !== this._treeRouteRef) {
       this._treeRouteRef = routePath;
@@ -2521,7 +2578,7 @@ class VectorBasemap {
   /** Paint the just-answered street's name on the road; null clears it. */
   setAnsweredStreetName(track, loader, stamp, rider = null) {
     const sourceId = window.CanalRecallStreets && window.CanalRecallStreets.ANSWERED_STREET_SOURCE_ID;
-    if (!this.ready || !track || !loader || !sourceId || !this.map.getSource(sourceId)) return;
+    if (!this.ready || !track || !loader || !sourceId || this._styleGone() || !this.map.getSource(sourceId)) return;
     const key = stamp ? `${stamp.name}:${stamp.segmentIndex}:${stamp.correct}` : '';
     if (key === this._answeredStreetKey) return;
     this._answeredStreetKey = key;
@@ -2545,7 +2602,7 @@ class VectorBasemap {
   }
 
   setStreetHighlights(track, loader, learnedNames, activeName, activeSegmentIndex, routePath = null) {
-    if (!this.ready || !track || !loader || !this.map.getSource('active-street')) return;
+    if (!this.ready || !track || !loader || this._styleGone() || !this.map.getSource('active-street')) return;
     const activeKey = `${activeName || ''}:${activeSegmentIndex}`;
     if (activeKey !== this._activeStreetKey || routePath !== this._activeStreetRoute) {
       this._activeStreetKey = activeKey;
@@ -2793,6 +2850,7 @@ class VectorBasemap {
    * resting state via `_labelsVisible`.
    */
   setQuizQuietMap(quiet) {
+    if (this._styleGone()) return;
     // Called every frame. Re-applying serialised the whole style (getStyle)
     // three times a frame; only act when the answer actually changes.
     const key = `${!!quiet}|${!!this._labelsVisible}`;
@@ -2836,6 +2894,11 @@ class VectorBasemap {
 
   sync(camera, loader, canvas) {
     if (!this.ready || !camera || !loader || !canvas || loader._lastCenterLat == null) return;
+    // Between `webglcontextlost` and the restore MapLibre has no style
+    // (map.style null): getLayer/getSource throw, and the `move` events
+    // jumpTo fires reach the park layer's getLayer too (Sentry CANAL-RECALL-A,
+    // -4, Android 10). Nothing draws until the restore, so skip the frame.
+    if (!this.map.style) return;
     const metersPerDegreeLat = 111320;
     const metersPerDegreeLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180);
     const lon = loader._lastCenterLng + (camera.x - loader._lastOffsetX) / (metersPerDegreeLng * PIXELS_PER_METER);
