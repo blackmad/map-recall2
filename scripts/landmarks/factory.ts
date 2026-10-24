@@ -42,6 +42,8 @@ const exists = (f: string) => fs.existsSync(f);
 const slug = (s: string | null | undefined) => (s ?? '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 28);
 
 /** Run a repo CLI under tsx; the tail of its output comes back for the queue notes. */
+const STALE_CLAIM_H = Number(process.env.FACTORY_STALE_CLAIM_H ?? 6);
+
 function run(script: string, args: string[], timeoutS: number): {ok: boolean; tail: string; ms: number} {
   const t0 = Date.now();
   if (has('--dry')) { console.log(`    dry: node --import tsx ${script} ${args.join(' ')}`); return {ok: true, tail: 'dry', ms: 0}; }
@@ -172,13 +174,17 @@ async function main() {
   const progressable: QueueStatus[] = ['queued', 'crops', 'facts', 'drafted', 'measured', ...(stageArg === 'all' ? [] : ['compiled', 'reviewed-fix', 'error', 'no-evidence'] as QueueStatus[])];
   // an `error` row whose last note is a network failure (3DBAG or panorama API down) is picked up again by the next run
   const networkError = (i: QueueItem) => i.status === 'error' && /UND_ERR|Connect Timeout|ECONNRESET|ETIMEDOUT|fetch failed|EAI_AGAIN/.test(i.notes?.at(-1) ?? '');
-  const items = queue.items.filter(i => i.pand && (wanted ? wanted.has(i.pand) : (progressable.includes(i.status) || networkError(i)) && !(i.owner && i.owner !== owner && i.status !== 'queued'))).slice(0, wanted ? undefined : n);
+  // A row is claimable when nobody owns it, the caller owns it, or its claim is stale: a lane that claimed it more
+  // than STALE_CLAIM_H hours ago and left it at a stage boundary has finished (the crops lane leaves rows at `crops`).
+  const staleBefore = Date.now() - STALE_CLAIM_H * 3600e3;
+  const claimable = (i: Item) => !i.owner || i.owner === owner || i.status === 'queued' || (i.claimedAt != null && Date.parse(i.claimedAt) < staleBefore);
+  const items = queue.items.filter(i => i.pand && (wanted ? wanted.has(i.pand) : (progressable.includes(i.status) || networkError(i)) && claimable(i))).slice(0, wanted ? undefined : n);
   if (!items.length) { console.log('factory: nothing to do'); return; }
   const save = () => { if (!has('--dry')) { queue.generatedAt = queue.generatedAt; fs.writeFileSync(file + '.tmp', JSON.stringify(queue, null, 1) + '\n'); fs.renameSync(file + '.tmp', file); } };
   const tally: Record<string, number> = {};
   for (const item of items) {
     item.house ??= `${slug(item.name) || 'pand'}-${item.pand.slice(-6)}`;
-    item.owner = owner; item.claimedAt ??= new Date().toISOString();
+    if (item.owner !== owner) item.claimedAt = new Date().toISOString(); item.owner = owner; item.claimedAt ??= new Date().toISOString();
     console.log(`${item.pand} ${item.house} [${item.status}]`);
     let ok = true;
     for (const stage of stages) {
