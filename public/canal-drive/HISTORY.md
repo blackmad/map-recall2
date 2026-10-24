@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Review of held houses and kits round 2 (2026-10-24, opus).** The five
+held large houses (pand-165427, Stadhouderskade 111, Damrak 77,
+pand-233585, Hirschpassage 2) stay held: colours fixed on three
+(165427 walls[5], Stadhouderskade walls[1]/[2], window width on 233585),
+but eaves gates on unphotographed groups and giant pilasters, corbel tables,
+paired windows and iron rails still block them; Damrak's brick reads orange
+against the photo's dark brown. Kits after #29: 2 pass / 30 hold / 8 no
+evidence (round 1: 2 / 38); #32 regressed to olive (in #34's scope). Top
+gap: ribbon glazing on school/church kits (~12 holds). The 25 large houses
+that had never been recorded in `large-mesh-golden.json` are now recorded
+(no existing entry changed).
+
 **Large kit: stone dressings (2026-10-24, #31).** Late-19th-century fronts
 can now carry white stone: `walls[].dressings` adds bands, speklagen, keystone
 heads, eared surrounds, quoins, oriels, banded arches and piers, byte-identical
