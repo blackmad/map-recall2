@@ -64,3 +64,13 @@ Measurement gap: white-framed windows count as trim, so photo glazing reads low 
 - balcony rails in their own colour (black iron reads white);
 - fluted giant pilasters with capitals, balustrades (Hirschpassage).
 Damrak's brick renders too orange beside the photo after the game tint (#6a3a2a → #8b4c37); review before install.
+
+## Large kit giant order (#35, 2026-10-24)
+
+Added: `dressings.piers` `to/deep/capital/base/flutes/stone/ends`, `dressings.corbels` (corbel tables broken by piers), `walls[].windowGroup` (2–4 windows per bay), `balconies.colour/deep/windows` (rails in their own slot, so iron reads black). Eaves gate fixed on pand-233585 and pand-165427 by dropping sliver/set-back surfaces with evidence in each house's notes. None of the five held houses passes yet. Still cannot say:
+- capitals on separate 3DBAG pilaster facets; balustrades; open ironwork (rails are a solid sheet);
+- the small arches of a corbel table; brick pier capitals; brick-on-brick relief does not read without a colour change;
+- a window shape per storey; mixed 2+1+2 groups per bay;
+- Stadhouderskade's red segmental heads and rendered risalit within 12k triangles; three windows per bay on every Hirschpassage facet (~3k over budget);
+- Damrak: one opening across several bays, an offset bay grid.
+Measurement: the likeness grid merges paired windows into one column and reads a dark frieze or dark sandstone as glazing.

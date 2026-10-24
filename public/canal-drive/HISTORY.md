@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Large kit: giant order, corbel tables, grouped windows, iron rails
+(2026-10-24, #35).** Fluted or stone pilasters with capitals and bases,
+corbel tables under the cornice, two to four windows per bay and balcony
+rails in their own colour, all extending the existing piers/balconies
+systems and byte-identical when absent. Applied to Hirschpassage 2,
+Stadhouderskade 111 (13 bays, white pilasters, paired windows: 26 window
+columns vs the photo's 28), pand-233585 and pand-165427; the eaves gate now
+passes on the last two after dropping sliver and set-back surfaces (gate
+unchanged). All still held: the likeness grid merges paired windows and
+reads dark friezes and sandstone as glass, and Stadhouderskade's row eaves
+gate still fails.
+
 **Every landmark kit reviewed (2026-10-24, round 3).** All 546 kits were
 re-sheeted on main after the school fixes (`kits-r3-1..137`, 20 s with the
 cached crops) and two Opus turns gave each a verdict, merged into
