@@ -321,6 +321,7 @@ import {buildMamaBaranka} from './mama-baranka-builder';
 import {buildSpanjemonument} from './spanjemonument-builder';
 import {applyInstalledFigures} from './installed-figures';
 import {computeSourceHashes,ALWAYS_REBUILD,type SourceHashes} from './manual-source-hash';
+import {setSink} from './nearbar-kit';
 const out=path.resolve('public/canal-drive/models');
 const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871'};
 type Colour=keyof typeof palette;
@@ -514,6 +515,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   if(skipReady(id)){skipped.push(id);continue;}
   built.push(id);
   parts=[];
+  // nearbar-kit's sink is module state: a builder that sets it and returns without setSink(0) (artis-aquarium, american-hotel)
+  // sank every later model's slabs in a one-process build (Z1, 2026-10-20: Lloyd Hotel buried 9 -> 34, Vondelkerk overhang 0 -> 6).
+  setSink(0);
   // The Cuypersgebouw and its east wing (centraal-cuypers-builder.ts, 2026-10-16; it replaced a parametric box whose front stood
   // 11.5 m out on the Stationsplein) and the four train/bus roofs.
   let external=false;

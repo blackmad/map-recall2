@@ -1326,10 +1326,10 @@
   "triangles": 4385
  },
  "de-school": {
-  "sourceHash": "17bcde25b1620990",
+  "sourceHash": "17951767e52d0e71",
   "buildVersion": 2,
-  "bytes": 45352,
-  "triangles": 1789
+  "bytes": 44892,
+  "triangles": 1785
  },
  "west-indisch-pakhuis": {
   "sourceHash": "8d2fd63ac1a874b4",
@@ -1350,16 +1350,16 @@
   "triangles": 1505
  },
  "vondelkerk": {
-  "sourceHash": "ab3b7f65b59ee607",
+  "sourceHash": "555ac8dda9d30fc7",
   "buildVersion": 2,
-  "bytes": 62572,
-  "triangles": 2777
+  "bytes": 62100,
+  "triangles": 2691
  },
  "lloyd-hotel": {
-  "sourceHash": "eac7b321289fac33",
+  "sourceHash": "b4bdac787a4d99e2",
   "buildVersion": 2,
-  "bytes": 95336,
-  "triangles": 4610
+  "bytes": 84620,
+  "triangles": 4228
  },
  "ronde-lutherse-kerk": {
   "sourceHash": "f3d12c730bac1273",
