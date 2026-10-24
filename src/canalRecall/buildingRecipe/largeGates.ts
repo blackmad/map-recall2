@@ -5,6 +5,7 @@
  * 2.3-6.2 m, no floating components, <= 2 m genuine open edge, and the block-kit attachment gate (every part within
  * 5 cm of the host or a part that is).
  */
+import {modalLine} from './rowSplit.ts';
 import {footprintIoU, topology, type Gate, type Tri} from './gates.ts';
 import {roofHeightAt} from './facts.ts';
 import type {CompiledLargeBuilding} from './largeCompile.ts';
@@ -44,15 +45,31 @@ export function evaluateLargeGates(tris: Tri[], built: CompiledLargeBuilding, op
   for (const grp of recipe.groups) {
     const p = grp.mainPanel === null ? undefined : panels.get(grp.mainPanel);
     if (!p) { g(`eaves-vs-3dbag/walls[${grp.index}]`, false, 'no panel', 'the group owns at least one panel'); continue; }
-    const hs: number[] = [];
-    for (let k = 0; k < 24; k++) {
-      const u = p.uMin + (p.uMax - p.uMin) * (k + 0.5) / 24, x = p.o[0] + p.r[0] * u - p.n[0] * 0.08, z = p.o[2] + p.r[2] * u - p.n[2] * 0.08;
-      const h = roofHeightAt(facts.roofsRD, [ax + x, ay - z], facts.heights.groundNAP);
-      if (h !== null) hs.push(h);
+    const roofP10 = (u0: number, u1: number, d = 0.08) => {
+      const hs: number[] = [];
+      for (let k = 0; k < 24; k++) {
+        const u = u0 + (u1 - u0) * (k + 0.5) / 24, x = p.o[0] + p.r[0] * u - p.n[0] * d, z = p.o[2] + p.r[2] * u - p.n[2] * d;
+        const h = roofHeightAt(facts.roofsRD, [ax + x, ay - z], facts.heights.groundNAP);
+        if (h !== null) hs.push(h);
+      }
+      hs.sort((a, b) => a - b);
+      return {roofEaves: hs[Math.floor(hs.length * 0.1)] as number | undefined, samples: hs.length, hs};
+    };
+    const houses = grp.houses?.panel === grp.mainPanel ? grp.houses : undefined;
+    if (houses) {
+      // row split: every house's eaves against the roof over its own span (a row-coherence clamp is reported, not failed)
+      // the roof edge's own line over the span (rowSplit `modalLine`, else p10), 8 cm inside the wall, or 30 cm where the
+      // house's wall stands proud of the roof edge (no roof within 8 cm)
+      houses.segs.forEach((h, k) => {
+        let probe = roofP10(h.u0, h.u1), probeM = 0.08;
+        if (!probe.samples) { probe = roofP10(h.u0, h.u1, 0.3); probeM = 0.3; }
+        const roofEaves = probe.samples ? modalLine(probe.hs) ?? probe.roofEaves : undefined, ref = h.clampedFromM ?? h.eavesM;
+        g(`eaves-vs-3dbag/walls[${grp.index}].houses[${k}]`, roofEaves !== undefined && Math.abs(ref - roofEaves) <= 0.3, {modelM: h.eavesM, threeDBagM: roofEaves === undefined ? null : +roofEaves.toFixed(2), samples: probe.samples, ...(probeM !== 0.08 ? {probeM} : {}), ...(h.clampedFromM !== undefined ? {rowLineFromM: h.clampedFromM} : {})}, '|Δ| <= 0.30 m (the house\'s wall eaves vs the LoD2.2 roof edge\'s line over its span, 8 cm inside the wall)');
+      });
+    } else {
+      const {roofEaves, samples} = roofP10(p.uMin, p.uMax);
+      g(`eaves-vs-3dbag/walls[${grp.index}]`, roofEaves !== undefined && Math.abs(grp.eavesM - roofEaves) <= 0.3, {modelM: grp.eavesM, threeDBagM: roofEaves === undefined ? null : +roofEaves.toFixed(2), samples}, '|Δ| <= 0.30 m (wall eaves vs LoD2.2 roof 8 cm inside the wall, p10, as the canal-house facts)');
     }
-    hs.sort((a, b) => a - b);
-    const roofEaves = hs[Math.floor(hs.length * 0.1)];
-    g(`eaves-vs-3dbag/walls[${grp.index}]`, roofEaves !== undefined && Math.abs(grp.eavesM - roofEaves) <= 0.3, {modelM: grp.eavesM, threeDBagM: roofEaves === undefined ? null : +roofEaves.toFixed(2), samples: hs.length}, '|Δ| <= 0.30 m (wall eaves vs LoD2.2 roof 8 cm inside the wall, p10, as the canal-house facts)');
     if (grp.system !== 'blank') {
       const uppers = grp.storeyHeightsM.slice(1);
       // A mesh plinth under a curtain wall is a closed panel, not a storey with openings: a raised plinth may be lower (the Rietveld building's 1.8 m).

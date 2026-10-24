@@ -41,64 +41,118 @@
  "walls": [
   {
    "wallSurfaces": [
+    2,
+    42,
+    43,
+    49,
+    50,
+    63,
+    64,
+    69,
+    83,
     95,
-    183,
-    166,
-    165,
-    83
-   ],
-   "system": "brick-bay-grid",
-   "storeys": 4,
-   "baysPerStorey": 5,
-   "ground": "plinth-shopfronts",
-   "windows": "plain",
-   "deepBars": true,
-   "cornice": true,
-   "stringCourses": true,
-   "palette": {
-    "brick": "#3a3a40",
-    "frame": "#f0ece0",
-    "stone": "#e4dcc8"
-   }
-  },
-  {
-   "wallSurfaces": [
     130,
+    144,
+    150,
+    165,
+    166,
+    171,
+    172,
+    183,
+    185,
+    202,
+    215,
+    216,
+    229,
+    231,
+    237,
+    238,
+    247,
+    252,
     352,
     353
    ],
    "system": "brick-bay-grid",
-   "storeys": 4,
-   "baysPerStorey": 4,
-   "ground": "plinth-shopfronts",
-   "windows": "plain",
-   "deepBars": true,
-   "cornice": true,
-   "stringCourses": true,
-   "palette": {
-    "brick": "#3a3a40",
-    "frame": "#f0ece0",
-    "stone": "#e4dcc8"
-   }
-  },
-  {
-   "wallSurfaces": [
-    185,
-    202
-   ],
-   "system": "brick-bay-grid",
    "storeys": 3,
-   "baysPerStorey": 2,
    "ground": "plinth-shopfronts",
    "windows": "plain",
    "deepBars": true,
    "cornice": true,
-   "stringCourses": true,
    "palette": {
-    "brick": "#3a3a40",
+    "brick": "#585650",
     "frame": "#f0ece0",
     "stone": "#e4dcc8"
-   }
+   },
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.62,
+    "sill": 0.25
+   },
+   "houses": [
+    {
+     "w": 0.3648,
+     "bays": 12,
+     "brick": "#736354",
+     "windowShape": {
+      "w": 0.5,
+      "h": 0.6,
+      "sill": 0.25
+     }
+    },
+    {
+     "w": 0.0245,
+     "bays": 1,
+     "brick": "#433731",
+     "crown": "flat"
+    },
+    {
+     "w": 0.1392,
+     "bays": 6,
+     "brick": "#585650"
+    },
+    {
+     "w": 0.0451,
+     "bays": 2,
+     "brick": "#2d2b2e"
+    },
+    {
+     "w": 0.0503,
+     "bays": 2,
+     "brick": "#afb0a3"
+    },
+    {
+     "w": 0.0438,
+     "bays": 2,
+     "brick": "#2f3031"
+    },
+    {
+     "w": 0.0915,
+     "bays": 4,
+     "brick": "#afb0a3"
+    },
+    {
+     "w": 0.0412,
+     "bays": 2,
+     "brick": "#383939"
+    },
+    {
+     "w": 0.1366,
+     "bays": 6,
+     "brick": "#5b6058"
+    },
+    {
+     "w": 0.0629,
+     "bays": 3,
+     "brick": "#826c50",
+     "storeys": 4,
+     "ownEaves": true
+    }
+   ],
+   "hand": [
+    "houses",
+    "palette.brick",
+    "windowShape"
+   ]
   },
   {
    "wallSurfaces": [
@@ -162,10 +216,15 @@
  "layeredKit": true,
  "notes": [
   "Stadhouderskade 111 (BAG, built 1872) is the De Pijp block round the Albert Heijn/Blokker yard between Stadhouderskade and Tweede Jan van der Heijdenstraat; 359 3DBAG wall surfaces, many party walls. Photographed fronts: w01-6 (north street run, 2021-04-26), w02-155 (the SE brick wing, 2021-04-23), w03-186 (the supermarket gate with the 1950s brick block, 2021-04-23). w04-6 and w05-186 are close-ups of the same fronts. Everything else stays blank (otherWalls).",
-  "walls[0] and walls[1] = the north run on the street, two sets of 3DBAG surfaces of the 14.5-15 m row-house fronts (surfaces 83, 95, 165, 166, 183 and 130, 185, 202, 352, 353): dark painted brick, cream window surrounds and cornice, glazed shopfronts. Drawn as 4 storeys, 5 and 4 bays, plain windows, a plinth-shopfront ground, cornice and string courses. The other row-house surfaces (12.2-13.7 m) and the differing rooflines are left blank/3DBAG roof; the individual gables and house-by-house colour changes are not modelled.",
-  "walls[2] = surface 104 of panel 8: the red-brick wing, 4 storeys x 9 bays of cross windows with cream string courses. walls[3] = surface 55 of panel 47: the 1950s block beside the Albert Heijn gate, a grey tiled base, 4 storeys of paired windows and a stack of balconies at the right-hand bay; drawn as 5 storeys x 3 bays with a bar balcony on storeys 2-4 of bay 2. Simplified: the tenant fascias (Albert Heijn, Blokker), the red doors, the tiled base colour; the Albert Heijn entrance gate itself is outside this pand.",
   "Not drawn: the courts, the south-east low supermarket wall (panel 47 surfaces 121 and 225, 4.6 m) and the party walls.",
-  "walls[2] = surfaces 185 and 202 of the north run, split out of walls[1]: that 5.7 m panel has its eaves at 12.06 m with a gable above, while the 4-storey grid of walls[1] put a 2.1 m window (11.93-14.02 m) across the eaves into the gable, flush with its brick (2.6 m2 coplanar glass against brick at 13.6, 13.0, -30.0). Drawn as 3 storeys x 2 bays so the windows stay below the eaves.",
-  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): an 1872 row of individually different brown-brick and buff houses (each crop shows several distinct fronts with balconies and ornamented heads) was drawn as one dark painted grid and one red grid; ride-visible (50 of 2,000 sampled routes). Irregular row: uninstalled; belongs to the per-house block-face tier."
- ]
+  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): an 1872 row of individually different brown-brick and buff houses (each crop shows several distinct fronts with balconies and ornamented heads) was drawn as one dark painted grid and one red grid; ride-visible (50 of 2,000 sampled routes). Irregular row: uninstalled; belongs to the per-house block-face tier.",
+  "Row split 2026-10-24 (lane large-kit-row-split, issue #30): walls[0] is the whole 77.6 m north run (panel of the 30 street surfaces) as `houses`, set by hand from the rectified w01-6 crop of the run (measure.ts rowJoints found the joints at 62.6/67.7/76.7/80.6/93.6 % and missed the brown|grey and grey|black ones, so the list is hand): the brown 1870s block with white surrounds (12 bays, 4 storeys on its own 17.0 m line), the 1.9 m glazed link, a grey 6-bay front, black/cream/black 2-bay fronts, a cream 4-bay front, a black 2-bay front, a grey 6-bay front and the taller brown corner house (4 storeys, own eaves; its window rows sit higher than its neighbours'). Colours are the crop's raw wall medians per house (2-means on luminance, the larger cluster), hence measured.groups [0]. Row coherence clamps house 5 (black, LoD2.2 13.5 m flat) to the 12.5 m row line the photo shows. walls[1] = surface 104 (red-brick wing), walls[2] = surface 55 (1950s block), as before.",
+  "Not expressed (row split): the 3DBAG gable triangles above the cornices (the photo shows set-back roofs and dormers), the white pilaster strips between houses, the brown block's white window surrounds and string courses, balconies per house, the black shop fascia band and the Albert Heijn canopy."
+ ],
+ "measured": {
+  "date": "2026-10-24",
+  "groups": [
+   0
+  ]
+ }
 }

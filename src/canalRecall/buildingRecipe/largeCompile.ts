@@ -107,8 +107,16 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
     const k = drawGlazedColumns(c, info.cells, levels, bay => col.bays.includes(bay % every), col.from, col.share, col.slabs, panelEaves(p) - 0.2, {glass: col.glass ?? s.glass, frame: s.frame, stone: s.stone});
     if (k) counts.glassColumns = (counts.glassColumns ?? 0) + k;
   }
-  if (g.cornice && !noBands) { const top = panelEaves(p); if (top - p.vMin > 3 && drawBand(c, s.stone, top - 0.45, top - 0.02, CORNICE_OUT)) counts.cornices++; }
-  if (g.ground === 'plinth-shopfronts' && groundTop - p.vMin > 3 && drawBand(c, s.stone, groundTop - 0.62, groundTop - 0.12, 0.1, entrance && g.entrance!.storeys > 1 ? skip : [])) {
+  // Row split: each house's cornice at its own eaves and shop fascia at its own ground line, inside its span.
+  const houses = g.houses?.panel === p.index ? g.houses.segs : null;
+  if (houses) for (const h of houses) {
+    const outside: [number, number][] = [[p.uMin - 1, h.u0], [h.u1, p.uMax + 1]];
+    if (h.crown === 'cornice' && !noBands && h.eavesM - p.vMin > 3 && drawBand(c, s.stone, h.eavesM - 0.45, h.eavesM - 0.02, CORNICE_OUT, outside)) counts.cornices++;
+    const gt = h.lines[1] ?? p.vMax;
+    if (g.ground === 'plinth-shopfronts' && gt - p.vMin > 3 && drawBand(c, s.stone, gt - 0.62, gt - 0.12, 0.1, [...outside, ...(entrance && g.entrance!.storeys > 1 ? skip : [])])) counts.fascias++;
+  }
+  if (g.cornice && !noBands && !houses) { const top = panelEaves(p); if (top - p.vMin > 3 && drawBand(c, s.stone, top - 0.45, top - 0.02, CORNICE_OUT)) counts.cornices++; }
+  if (g.ground === 'plinth-shopfronts' && !houses && groundTop - p.vMin > 3 && drawBand(c, s.stone, groundTop - 0.62, groundTop - 0.12, 0.1, entrance && g.entrance!.storeys > 1 ? skip : [])) {
     counts.fascias++;
     // A group without an entrance letters its shop fascia, centred on the widest panel.
     if (g.signage && g.signage.mount !== 'cornice' && !g.entrance && g.mainPanel === p.index) counts.letters += drawLettering(c, g.signage.text, (p.uMin + p.uMax) / 2, groundTop - 0.37, 0.115, 0.34, Math.min((p.uMax - p.uMin) * 0.6, 6), s.sign);
@@ -261,6 +269,53 @@ export function applyWallSplits(mesh: MeshBuilder, groups: LargeGroupFit[], pane
   return moved;
 }
 
+/**
+ * Row split wall colours (intent `houses`): the group's wall triangles on its main panel move to the slot of the house
+ * whose span holds them (within 1.5 m of the wall plane), clipped at every cut between houses of different slots so
+ * each colour change is a straight vertical line. Returns the triangles moved. No group with houses: nothing changes.
+ */
+export function applyHouseSplits(mesh: MeshBuilder, groups: LargeGroupFit[], panels: Panel[]): number {
+  let moved = 0;
+  for (const g of groups) {
+    const hs = g.houses?.segs;
+    if (!hs || hs.every(h => h.slot === g.slots.wall)) continue;
+    const p = panels.find(q => q.index === g.houses!.panel), src = mesh.slots.get(g.slots.wall);
+    if (!p || !src) continue;
+    // cuts only where the slot changes; runs of houses sharing a slot are one piece
+    const runs: {u1: number; slot: string}[] = [];
+    for (const h of hs) { if (runs.length && runs[runs.length - 1].slot === h.slot) runs[runs.length - 1].u1 = h.u1; else runs.push({u1: h.u1, slot: h.slot}); }
+    const cuts = runs.slice(0, -1).map(r => r.u1);
+    const outs = new Map<string, {positions: number[]; parts: number[]}>();
+    const dst = (slot: string) => { if (!outs.has(slot)) outs.set(slot, slot === g.slots.wall ? {positions: [], parts: []} : mesh.slots.get(slot) ?? {positions: [], parts: []}); return outs.get(slot)!; };
+    dst(g.slots.wall);
+    const uOf = (q: number[]) => (q[0] - p.o[0]) * p.r[0] + (q[1] - p.o[1]) * p.r[1] + (q[2] - p.o[2]) * p.r[2];
+    const nOf = (q: number[]) => (q[0] - p.o[0]) * p.n[0] + (q[1] - p.o[1]) * p.n[1] + (q[2] - p.o[2]) * p.n[2];
+    const emit = (slot: string, poly: number[][], part: number) => { const d = dst(slot); for (let i = 1; i + 1 < poly.length; i++) { d.positions.push(...poly[0], ...poly[i], ...poly[i + 1]); d.parts.push(part); } if (slot !== g.slots.wall) moved++; };
+    for (let t = 0; t < src.parts.length; t++) {
+      const v = [0, 1, 2].map(i => src.positions.slice(t * 9 + i * 3, t * 9 + i * 3 + 3)), part = src.parts[t];
+      const c = [0, 1, 2].map(i => (v[0][i] + v[1][i] + v[2][i]) / 3), us = v.map(uOf);
+      if (!(Math.abs(nOf(c)) <= 1.5 && Math.min(...us) <= p.uMax + 0.05 && Math.max(...us) >= p.uMin - 0.05)) { emit(g.slots.wall, v, part); continue; }
+      let poly = v;
+      for (let k = 0; k <= cuts.length && poly.length >= 3; k++) {
+        if (k === cuts.length) { emit(runs[k].slot, poly, part); break; }
+        const cut = cuts[k], pu = poly.map(uOf);
+        if (Math.max(...pu) <= cut + 1e-4) { emit(runs[k].slot, poly, part); poly = []; break; }
+        if (Math.min(...pu) >= cut - 1e-4) continue;
+        const left: number[][] = [], right: number[][] = [];
+        for (let i = 0; i < poly.length; i++) {
+          const a = poly[i], b = poly[(i + 1) % poly.length], ua = pu[i], ub = pu[(i + 1) % poly.length];
+          (ua <= cut ? left : right).push(a);
+          if ((ua - cut) * (ub - cut) < 0) { const x = (cut - ua) / (ub - ua), q = [0, 1, 2].map(j => a[j] + (b[j] - a[j]) * x); left.push(q); right.push(q); }
+        }
+        if (left.length >= 3) emit(runs[k].slot, left, part);
+        poly = right;
+      }
+    }
+    for (const [slot, d] of outs) if (d.parts.length || slot === g.slots.wall) mesh.slots.set(slot, d);
+  }
+  return moved;
+}
+
 /** MeshBuilder slots → Three meshes (one per slot; roofs one per slope class) tagged for the GLB exporter. */
 export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe): T.Group {
   const group = new T.Group(); group.name = recipe.id;
@@ -341,6 +396,8 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
     ...(hooks.glassBackM !== undefined ? {glassBackM: hooks.glassBackM} : {}),
     mergeKey: wi => recipe.wallGroup[wi],
     systemFor: p => recipe.panelSystem?.[p.index] ?? groupOf(p.index)?.specSystem ?? recipe.other.specSystem,
+    // row split: the houses of a group's main panel, each with its own system (only when a group has `houses`)
+    ...(recipe.groups.some(g => g.houses) ? {segmentsFor: (p: Panel) => { const h = groupOf(p.index)?.houses; return h?.panel === p.index ? h.segs.map(x => ({system: x.system, u0: x.u0, u1: x.u1, top: x.topM, bayOffset: x.bayOffset, bays: h.segs.reduce((a, y) => a + y.bays, 0)})) : null; }} : {}),
     // layered kit: a curtain wall's (and a glazed hall's) 3DBAG wall is its glass skin (the grid and the hall's brick base are drawn on it)
     wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? (intent.layeredKit !== false ? g.slots.glass : g.slots.curtain) : g.system === 'glazed-hall' && intent.layeredKit !== false ? g.slots.glass : g.slots.wall; },
     skipCell: (p, floor, bay, bays) => {
@@ -356,6 +413,7 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
   drawRoofBoxes(res.mesh, recipe.roofPlant, 'plant');
   for (const l of recipe.lanterns ?? []) { drawLantern(res.mesh, l, {glass: 'glass', frame: 'frame', stone: 'stone'}); counts.lanterns = (counts.lanterns ?? 0) + 1; }
   applyWallSplits(res.mesh, recipe.groups, res.panels);
+  applyHouseSplits(res.mesh, recipe.groups, res.panels);
   hooks.afterCompose?.(res.mesh, recipe, res.panels);
   const blockGates = runGates(res.mesh, recipe.set, {budget: budgetTriangles});
   return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, budgetTriangles, panels: res.panels};

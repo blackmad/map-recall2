@@ -27,6 +27,7 @@
 import {classifyOpenings} from './facadeOpenings.ts';
 import {brickFaceColour, cellTexture, poolTexture, type PooledTexture} from './facadeTexture.ts';
 import {wallFamily} from '../facade/materials.ts';
+import {rowSegments} from './rowSplit.ts';
 
 export type Rgb = [number, number, number];
 
@@ -115,6 +116,9 @@ export interface FacadeMeasurement {
   /** two wall materials side by side along the front (two bricks on one 3DBAG plane): where (fraction of the box width
    *  from u0) and the colour each side; null when the wall is one colour. The kit has no per-group split yet: a named gap. */
   split: WallSplit | null;
+  /** Row joints (rowSplit.ts `rowSegments`): the front's colour segments along u (fractions of the box from u0, each
+   *  with its median colour), from the upper storeys' wall and trim cells in 1 m strips; one entry = no joint. */
+  rowJoints?: {from: number; to: number; hex: string}[];
 }
 export interface WallSplit {at: number; left: string; right: string; dE: number}
 export type WallFamilyName = 'brick' | 'paint' | 'stone';
@@ -165,6 +169,20 @@ export function wallSplit(cells: number[], colOf: (k: number) => number, cols: n
   const side = (is: number[]) => hex(medRgb(is.flatMap(i => strips[i])));
   const cut = (idx[best.n - 1] + idx[best.n] + 1) / 2 * cellsPerStrip / cols;
   return {at: +cut.toFixed(3), left: side(idx.slice(0, best.n)), right: side(idx.slice(best.n)), dE: +best.d.toFixed(1)};
+}
+
+/** The front's colour segments along u (rowSplit.ts `rowSegments` over 1 m strips of the given cells), as fractions of
+ *  the columns with each segment's median colour. */
+export function frontRows(cells: number[], colOf: (k: number) => number, cols: number, colour: (k: number) => Rgb, cellsPerStrip = 10): {from: number; to: number; hex: string}[] {
+  const nS = Math.ceil(cols / cellsPerStrip), strips: Rgb[][] = Array.from({length: nS}, () => []);
+  for (const k of cells) strips[Math.floor(colOf(k) / cellsPerStrip)].push(colour(k));
+  const ok = strips.map(s => s.length >= cellsPerStrip * 2);
+  const segs = rowSegments(strips.map((s, i) => (ok[i] ? rgbToLab(medRgb(s)) : null)));
+  const toCol = (f: number) => Math.min(1, f * nS * cellsPerStrip / cols);
+  return segs.map(sg => {
+    const lo = Math.round(sg.from * nS), hi = Math.round(sg.to * nS), px = strips.slice(lo, hi).filter((_, i) => ok[lo + i]).flat();
+    return {from: +toCol(sg.from).toFixed(3), to: +toCol(sg.to).toFixed(3), hex: hex(medRgb(px.length ? px : [[0, 0, 0]]))};
+  });
 }
 
 // ---- colour helpers -------------------------------------------------------------------------------------------
@@ -499,6 +517,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   const material = wallMaterialOf(wallN, wallTex);
   const bands = bandMaterials({mask, label: fullLabel, cols, rows, cell, box, lines: input.lines, gb, colour: k => norm(mean[k]), tex, interior});
   const split = wallSplit(allUsable.filter(k => mask[k] === MASK.wall && isUpper(Math.floor(k / cols))), k => k % cols, cols, k => norm(mean[k]));
+  const rowJoints = frontRows(allUsable.filter(k => (mask[k] === MASK.wall || mask[k] === MASK.trim) && isUpper(Math.floor(k / cols))), k => k % cols, cols, k => norm(mean[k]));
   const clusters = centres.map((c, i) => ({solid: +solid[i].toFixed(2), lab: c.map(v => +v.toFixed(1)) as Rgb, share: +share[i].toFixed(3), warm: warm(c), score: +score[i].toFixed(4), mixed: mixed[i], enrich: +enrich[i].toFixed(2), conn: +shape[i].conn.toFixed(2), span: [+shape[i].spanW.toFixed(2), +shape[i].spanH.toFixed(2)], wall: wallSet[i]}));
   return {labels: Int8Array.from(cellOf), zoned, clusters, wallCluster: wallC, threshold: +tau.toFixed(1), cols, rows, cell, box, mask, usableFraction: +usableFraction.toFixed(3), foliageFraction: +foliageFraction.toFixed(3), washedOutFraction: +washedOutFraction.toFixed(3),
     normalisation: {method: 'light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)', ref: ref ? ref.map(Math.round) as Rgb : null, gain: +gain.toFixed(3), wb: wb.map(v => +v.toFixed(3)) as [number, number, number]},
@@ -507,7 +526,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
     openings: {count: op.openings.length, regularity: op.regularity, surrounds: op.surrounds, range: op.range, abstain: op.abstain, frameLike: op.frameLike.flatMap((f, i) => (f ? [i] : [])), accessory: op.accessory, secondMaterial: op.secondMaterial, bands: op.bands, ambiguous: op.ambiguous},
     glass: glassRaw && glassN ? {raw: glassRaw.map(Math.round) as Rgb, normalised: glassN.map(Math.round) as Rgb, hex: hex(glassN), rawHex: hex(glassRaw), cells: darkCells.length} : null,
     trim: trimN ? {normalised: trimN.map(Math.round) as Rgb, hex: hex(trimN), cells: trimCells.length} : null,
-    glazing, storeyGlazing, ground, pitchM, pitchScore, columns, storeyM, window, frontClass, split};
+    glazing, storeyGlazing, ground, pitchM, pitchScore, columns, storeyM, window, frontClass, split, rowJoints};
 }
 
 /**
