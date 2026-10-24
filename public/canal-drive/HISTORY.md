@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+**Large kit: stone dressings (2026-10-24, #31).** Late-19th-century fronts
+can now carry white stone: `walls[].dressings` adds bands, speklagen, keystone
+heads, eared surrounds, quoins, oriels, banded arches and piers, byte-identical
+when absent. Damrak 77 gets its four oriels and banded stripes, the Hirsch
+building its arched ground storey and dark sandstone (#b9ae98 → #5a5447),
+pand-233585 tall glazing between piers. All three held for review: likeness
+verdicts still FAIL / NO EVIDENCE, Damrak's brick reads too orange. The merge
+also commits two factory drafts (Bovenij hospital, pand-098925) that the fit
+golden had listed since e48b3bd94 without their folders, which failed
+test:building-recipes on clean checkouts.
+
 **Large kit: a row of houses on one pand (2026-10-24, #30).** A BAG pand
 that is really several houses can now say so: `walls[].houses` gives each its
 width, eaves, storeys, bays, window shape, crown and colour, reusing the

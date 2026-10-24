@@ -53,3 +53,14 @@ Top fixes for the kit session: (1) school wall colour from the photo/BAG era ins
 - white window surrounds, string courses and balconies per house;
 - a brick corbel cornice; arched top-storey windows and an oculus (pand-165427).
 Measurement gap: white-framed windows count as trim, so photo glazing reads low (Stadhouderskade 0.21 vs model 0.38).
+
+## Large kit stone dressings (#31, 2026-10-24)
+
+`walls[].dressings` (blockBuilding/dressings.ts, validator stoneDressingsIntent.ts): bands (floor/sill/head, double), speklagen stripes, heads (lintel/keystone), eared surrounds, quoins, canted/square oriels, voussoirs with jambs, piers, own colour slot. `lightBands.ts` proposes bands only when a light row repeats in ≥ 2 storeys (found none on Damrak 77, pand-233585, Hirschpassage 2: Damrak's oriels make every row half light). All three re-authored and held. Still cannot say:
+- one opening spanning several bays (Damrak's 6 m Beurspassage arch);
+- a bay grid offset from the panel edge;
+- brick corbel tables; attic windows under hoods in the roof zone (pand-233585);
+- a window shape per storey; glazing on oriel cheeks; narrow ground openings;
+- balcony rails in their own colour (black iron reads white);
+- fluted giant pilasters with capitals, balustrades (Hirschpassage).
+Damrak's brick renders too orange beside the photo after the game tint (#6a3a2a → #8b4c37); review before install.
