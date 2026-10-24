@@ -18,6 +18,7 @@ import type { Kit, KitTrim, KitWindowRow } from './landmarkKits.js';
 import { CITY_STONE } from './look/palette.js';
 import { WORSHIP_BUILDINGS, type WorshipEntry } from './worshipBuildingData.js';
 import { NOT_WORSHIP_FORM } from './kitTypeOverrides.js';
+import { KIT_FACTS, measuredOpenings, measuredWallDisplay, pitchedHip, type SchoolFacts } from './kitFacts.js';
 
 export type WorshipEra = 'o' | 'e' | 'm';
 /** Wall brick per era: pre-1900 dark red-brown, 1900-1959 brown, 1960 on a lighter brown. */
@@ -84,16 +85,32 @@ export function plainBodyTrim(era: 'o' | 'e' | 'm'): KitTrim {
   return era === 'm' ? { coping: { m: 0.6, hex: '#4a4744' } } : { coping: { m: 0.4, hex: CITY_STONE }, plinth: { z1: 0.6, hex: '#8c877d' } };
 }
 
-export function worshipKit([id, kind, mode, eavesM, riseM, era]: WorshipEntry): Kit {
-  const name = `Generic ${KIND_NAME[kind]} ${id}`, hex = WORSHIP_WALL[era];
-  const rows = worshipWindows(eavesM);
+/** A pitched worship roof's eaves stand at least this high (a chapel's low side walls). */
+export const WORSHIP_PITCHED_MIN_EAVES_M = 3;
+
+/**
+ * Round 3 (GitHub #36, kit review rows 299, 309, 313, 335, 369, 399, 401): the wall is the crops' measured colour
+ * (white render, buff brick and stone included) where read, else the era brick; a flat-lidded body or walled plan whose
+ * LoD2.2 planes are pitched is hipped round its footprint at the planes' eaves and ridge (a church's steep roof); a
+ * roof takes the orthophoto's measured tint; a body with no era windows takes the crops' window rows. Nothing
+ * measured: the kit is what it was.
+ */
+export function worshipKit([id, kind, mode, eavesM, riseM, era]: WorshipEntry, facts: SchoolFacts | undefined = KIT_FACTS.get(id)): Kit {
+  const name = `Generic ${KIND_NAME[kind]} ${id}`, hex = facts?.wallHex ? measuredWallDisplay(facts.wallHex) : WORSHIP_WALL[era];
+  const hip = mode !== 'h' && facts?.roofFits !== false ? pitchedHip(facts, eavesM, WORSHIP_PITCHED_MIN_EAVES_M) : null;
+  const eaves = hip?.eavesM ?? eavesM, rise = hip?.riseM ?? riseM;
+  // Era windows on an old building with a roof or a walled plan; the crops' rows on a body (a modern church, a tower).
+  const rows = mode === 'b' ? [] : worshipWindows(eaves);
+  const measured = rows.length ? null : measuredOpenings(eaves, era, facts, '#3a434c');
+  const windows = rows.length ? { rows, glassHex: '#3a434c' } : measured ?? undefined;
+  const roofHex = facts?.roofHex && (hip || mode === 'h') ? facts.roofHex : undefined;
   // Walls too low for a window and no roof to add: plain walls are all there is.
-  if (mode === 'b' || (mode === 'w' && !rows.length)) return { name, wall: { plain: true, hex }, tiers: [], stacks: [], roofs: [], body: [id], trim: plainBodyTrim(era) };
+  if (!hip && (mode === 'b' || (mode === 'w' && !rows.length)) && !measured) return { name, wall: { plain: true, hex }, tiers: [], stacks: [], roofs: [], body: [id], trim: plainBodyTrim(era) };
   return {
     name, wall: { plain: true, hex }, tiers: [], stacks: [], roofs: [],
-    halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === 'h', eavesM, riseM, mat: era === 'o' ? 'slate' : 'tile', windows: rows.length ? { rows, glassHex: '#3a434c' } : undefined }],
+    halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === 'h', ...(hip ? { hip: true } : {}), eavesM: eaves, riseM: rise, mat: era === 'o' ? 'slate' : 'tile', ...(roofHex ? { roofHex } : {}), windows }],
   };
 }
 
 // Footprints whose OSM worship tag sits on a house, school or housing block (kitTypeOverrides.ts) take no worship kit.
-export const GENERIC_WORSHIP_KITS: Kit[] = WORSHIP_BUILDINGS.filter(e => !NOT_WORSHIP_FORM[e[0]]).map(worshipKit);
+export const GENERIC_WORSHIP_KITS: Kit[] = WORSHIP_BUILDINGS.filter(e => !NOT_WORSHIP_FORM[e[0]]).map(e => worshipKit(e));

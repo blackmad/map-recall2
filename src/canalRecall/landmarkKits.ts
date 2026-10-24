@@ -88,6 +88,11 @@ export type KitWindows = {
   rows: KitWindowRow[]; /** Source-supported blind wall points; fill rows skip their nearest edge. */ blindWalls?: [number, number][]; towerRows?: KitWindowRow[]; roses?: KitRose[]; glassHex?: string; frameHex?: string; plinth?: { z1: number; hex: string };
   /** A band `m` deep round every wall right under the hall's eaves (opt in: the white top band of kit review rows 37, 38). */
   topBand?: { m: number; hex: string };
+  /**
+   * Sash bars on every punched (not ribbon, not tower) opening (opt in, GitHub #36: the white-framed multi-pane school
+   * windows of kit review round 3): a frame round the glass and `cols - 1` mullions and `rows - 1` transoms across it.
+   */
+  sash?: { hex: string; cols: number; rows: number };
 };
 /**
  * A pitched or hipped roof over one rectangle of the footprint, at the host's eaves: a nave, a
@@ -797,11 +802,22 @@ function wallPolygon(sink: TriSink, o: Vec2, t: Vec2, n: Vec2, off: number, pts:
   for (let k = 1; k + 1 < pts.length; k++) sink.tri(at(pts[0]), at(pts[k]), at(pts[k + 1]), [0, 0], [1, 0], [1, 1], 'flat', hex, hint);
 }
 
-/** A window at `s` along a wall: glass, and a light surround when the kit has one. */
-function opening(sink: TriSink, o: Vec2, t: Vec2, n: Vec2, s: number, row: KitWindowRow, glass: string, frame?: string) {
+/** A window at `s` along a wall: glass, and a light surround when the kit has one; sash bars when asked (KitWindows.sash). */
+function opening(sink: TriSink, o: Vec2, t: Vec2, n: Vec2, s: number, row: KitWindowRow, glass: string, frame?: string, sash?: KitWindows['sash']) {
   const head = row.head ?? 'round', w = row.widthM;
   if (frame) wallPolygon(sink, o, t, n, OFF.frame, openingOutline(s - w / 2 - 0.18, s + w / 2 + 0.18, row.z0 - 0.15, row.z1 + 0.18, head), frame);
   wallPolygon(sink, o, t, n, OFF.glass, openingOutline(s - w / 2, s + w / 2, row.z0, row.z1, head), glass);
+  if (sash) sashBars(sink, o, t, n, s - w / 2, s + w / 2, row.z0, head === 'flat' ? row.z1 : Math.min(row.z1, row.z0 + Math.max(0, row.z1 - row.z0 - w / 2)), sash);
+}
+
+/** Sash bars over a window's rectangular part: a frame `SASH_BAR_M` wide inside its edge, mullions and transoms. */
+const SASH_BAR_M = 0.08;
+function sashBars(sink: TriSink, o: Vec2, t: Vec2, n: Vec2, s0: number, s1: number, z0: number, z1: number, sash: NonNullable<KitWindows['sash']>) {
+  if (z1 - z0 < 0.3 || s1 - s0 < 0.3) return;
+  const b = SASH_BAR_M, bar = (a0: number, a1: number, b0: number, b1: number) => wallPolygon(sink, o, t, n, OFF.tracery, [[a0, b0], [a1, b0], [a1, b1], [a0, b1]], sash.hex);
+  bar(s0, s1, z0, z0 + b); bar(s0, s1, z1 - b, z1); bar(s0, s0 + b, z0 + b, z1 - b); bar(s1 - b, s1, z0 + b, z1 - b);
+  for (let k = 1; k < sash.cols; k++) { const s = s0 + ((s1 - s0) * k) / sash.cols; bar(s - b / 2, s + b / 2, z0 + b, z1 - b); }
+  for (let k = 1; k < sash.rows; k++) { const z = z0 + ((z1 - z0) * k) / sash.rows; bar(s0 + b, s1 - b, z - b / 2, z + b / 2); }
 }
 
 /** A rose window centred at `s`, height `z`: stone ring, glass, six spokes and a hub. */
@@ -883,7 +899,7 @@ function kitWindows(sink: TriSink, ring: readonly Vec2[], spec: KitHalls, win: K
   };
   for (const { row, edge, s } of placed) {
     const e = plane(edge), n = row.count ?? 1;
-    for (let k = 0; k < n; k++) opening(sink, e.o, e.t, e.n, s + (k - (n - 1) / 2) * row.bayM, row, glass, win.frameHex);
+    for (let k = 0; k < n; k++) opening(sink, e.o, e.t, e.n, s + (k - (n - 1) / 2) * row.bayM, row, glass, win.frameHex, win.sash);
   }
   for (const row of win.rows) {
     if (row.at || row.z1 > spec.eavesM) continue;
@@ -893,7 +909,7 @@ function kitWindows(sink: TriSink, ring: readonly Vec2[], spec: KitHalls, win: K
       const n = Math.max(1, Math.floor(e.len / row.bayM));
       for (let k = 0; k < n; k++) {
         const s = ((k + 0.5) * e.len) / n;
-        if (!inTower([e.o[0] + e.t[0] * s + e.n[0] * 0.5, e.o[1] + e.t[1] * s + e.n[1] * 0.5])) opening(sink, e.o, e.t, e.n, s, row, glass, win.frameHex);
+        if (!inTower([e.o[0] + e.t[0] * s + e.n[0] * 0.5, e.o[1] + e.t[1] * s + e.n[1] * 0.5])) opening(sink, e.o, e.t, e.n, s, row, glass, win.frameHex, win.sash);
       }
     });
   }
@@ -1101,7 +1117,8 @@ function earClip(poly: readonly Vec2[]): [Vec2, Vec2, Vec2][] {
 }
 
 // Kit parts arrive in the three layer's local metres (ORIGIN in threeBuildingFeatures.ts).
-const KIT_ORIGIN = { lng: 4.9, lat: 52.37 };
+/** The local metre frame kit anchors (`at`, `anchor`, `through`) are placed in; part rings must use the same frame. */
+export const KIT_ORIGIN = { lng: 4.9, lat: 52.37 } as const;
 const toLocal = ([lng, lat]: [number, number]): Vec2 => [(lng - KIT_ORIGIN.lng) * 111_320 * Math.cos(KIT_ORIGIN.lat * Math.PI / 180), (lat - KIT_ORIGIN.lat) * 110_540];
 
 /**
