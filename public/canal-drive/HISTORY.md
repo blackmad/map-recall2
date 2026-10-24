@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**School kits round 2 (2026-10-24, #34).** The olive in measured school
+walls was mostly shaded and autumn leaves joining the wall cluster, not a
+camera cast; panoramas also render mid/dark brick past Lab hue ~78 as khaki.
+`src/canalRecall/facade/cropWallColour.ts` masks dark-olive leaf pixels,
+rejects walls outside the brick/buff/render families (the mural), pulls
+khaki brick hue back, and unmeasured schools pick from measured schools of
+their period (`SCHOOL_PERIOD_WALLS`) instead of the city palette. Schools
+also get opt-in ribbon windows (51) and a white top band (22) from a
+row-by-row glazing profile of their crops. 152 of 283 measured; 279
+non-school kits byte-identical. Against the round-1 fix sheets: 13 rows
+better, 26 same, 1 worse (row 40, pale brick now brown). Weak: glazing
+detection behind trees or low-contrast glass.
+
 **Review of held houses and kits round 2 (2026-10-24, opus).** The five
 held large houses (pand-165427, Stadhouderskade 111, Damrak 77,
 pand-233585, Hirschpassage 2) stay held: colours fixed on three

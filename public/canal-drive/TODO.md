@@ -229,8 +229,10 @@ Open, in order:
   crops (160 of 283) else a period-palette pick, 0 on the old beige; every
   kit draws geometry (143 empty kits → 0, trim added); 37 pre-1940 schools
   hipped. Lane's own read of the 40: 7 look right, 13 better but hold, 9 not
-  fixed; re-review pending. Next: #34 (crop white balance, olive cast,
-  ribbon windows, top bands).
+  fixed. Round 2 review: 2 pass / 30 hold / 8 no evidence. #34 merged
+  (leaf mask, khaki correction, ribbons, top bands: 13 rows better, 1
+  worse); next: a round-3 review of `kits-r2-*` sheets, then curtain walls,
+  coloured fascias, Zonnehuis classed as theatre.
 - **kits-review (K)**: Role A done 2026-10-24 (`npm run kit:sheets`, run
   under the browser lock; 546 kits on 137 pages in
   `map-recall2-worktrees/kit-sheets-20261024/artifacts/strips/kits-N.png`,
