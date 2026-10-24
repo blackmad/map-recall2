@@ -1939,6 +1939,18 @@ Map source: ${osmUrl(places[i][0])}`);
     const lead = sentencesUpTo(sentencesOf(`${originOf(entry) || ""} ${entry.wikipediaExtract || ""}`), room);
     return { detail: text.detail, longDetail: lead ? `${lead} ${fact}` : fact };
   }
+  function streetCardWithRotatedFact(entry, rotated) {
+    const origin = (originOf(entry) || "").trim();
+    const fact = (entry.structureFact || "").trim();
+    if (!origin && !fact) return rotated;
+    const text = streetCardText({ ...entry, wikipediaExtract: rotated.longDetail });
+    return {
+      detail: origin ? text.detail : rotated.detail,
+      longDetail: text.longDetail,
+      factTexts: [origin, ...rotated.factTexts, fact].filter(Boolean),
+      factKind: rotated.factKind
+    };
+  }
   function structureLessCardText(entry) {
     const origin = sentencesOf(originOf(entry) || "");
     const extract = sentencesOf(entry.wikipediaExtract || "");
@@ -5637,9 +5649,9 @@ Map source: ${osmUrl(places[i][0])}`);
      *  certain to be shown, and a fact must not be spent on a card that never
      *  appears: `factCardText` chooses, and `commitShownFact` is what marks the
      *  sentence as told. */
-    _showLandmarkNotice(notice, hold, source = "click") {
+    _showLandmarkNotice(notice, hold, source = "click", streetEntry) {
       if (this._landmarkNotice) this.vectorMap?.setActiveLandmark(null);
-      this._landmarkNotice = this._withRotatedFact(notice);
+      this._landmarkNotice = this._withRotatedFact(notice, streetEntry);
       this._landmarkNoticeHold = hold;
       this._landmarkNoticeSource = source;
       this._landmarkNoticeState = openNotice();
@@ -5657,7 +5669,7 @@ Map source: ${osmUrl(places[i][0])}`);
      * is the normal case until a batch has been reviewed and published — the
      * Wikipedia lede is the fallback, not an error.
      */
-    _withRotatedFact(notice) {
+    _withRotatedFact(notice, streetEntry) {
       if (!this._facts || !this._facts.size) return notice;
       const chosen = factCardText(
         notice.id,
@@ -5667,7 +5679,8 @@ Map source: ${osmUrl(places[i][0])}`);
       );
       if (!chosen) return notice;
       this._commitFact(chosen.choice);
-      return { ...notice, ...chosen.text };
+      const text = streetEntry ? streetCardWithRotatedFact(streetEntry, chosen.text) : chosen.text;
+      return { ...notice, ...text };
     }
     _commitFact(choice) {
       this._factRotation = commitShownFact(
@@ -5770,7 +5783,7 @@ Map source: ${osmUrl(places[i][0])}`);
         imageUrl: entry.wikipediaImageUrl || "",
         wikipediaUrl: entry.wikipediaUrl || "",
         extractLang: entry.wikipediaExtractLang || "en"
-      }, { kind: "sticky" }, "street");
+      }, { kind: "sticky" }, "street", entry);
     }
     // ---- Loading the extract ----
     /**

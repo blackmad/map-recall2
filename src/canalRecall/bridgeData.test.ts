@@ -10,7 +10,7 @@ import {
 import { mergeSidecar, splitSidecar, updateSidecar } from './extractSidecar.ts';
 import { dropUnfinishedSentence, ledeSentences, repairBridgeLede } from './bridgeLedeRepair.ts';
 import { submitAnswer } from './answerPath.ts';
-import { buildRouteKnowledgeIndex, streetCardText } from './game/routeKnowledge.ts';
+import { buildRouteKnowledgeIndex, streetCardText, streetCardWithRotatedFact } from './game/routeKnowledge.ts';
 import { routePlaqueName } from './game/recallRules.ts';
 import { openingSentence } from './facts/factStore.ts';
 
@@ -157,4 +157,32 @@ test('named regression: the trivia opening keeps a patronymic whole', () => {
     'The Frans Hendricksz. Oetgensbrug (bridge 76) is a fixed bridge.');
   // A sentence that ends on an ordinary word ending in -sz is not a name.
   assert.equal(openingSentence('It was built in Gdańsk. Later moved.'), 'It was built in Gdańsk.');
+});
+
+// Issue #26: from 565cefb13 the Blauwbrug entry carried its extract id, which
+// joins to the trivia catalog, and the rotated fact replaced the whole card —
+// the register sentence and the name origin were gone.
+test('named regression: a rotated trivia fact keeps the origin first and the register line (Blauwbrug)', () => {
+  const register = "Bridge 236: a steel bridge for road traffic, dated 1884 in the city's bridge register.";
+  const rotated = {
+    detail: 'The Blauwbrug (English: Blue bridge) is a historic bridge in Amsterdam, Netherlands over the river Amstel. Stone bases mimic ship bows.',
+    longDetail: 'The Blauwbrug (English: Blue bridge) is a historic bridge in Amsterdam, Netherlands over the river Amstel. Stone bases mimic ship bows. The name comes from a blue wooden bridge.',
+    factTexts: ['The Blauwbrug (English: Blue bridge) is a historic bridge in Amsterdam, Netherlands over the river Amstel.', 'Stone bases mimic ship bows.', 'The name comes from a blue wooden bridge.'],
+    factKind: 'Design',
+  };
+  const withRegister = streetCardWithRotatedFact({ structureFact: register }, rotated);
+  assert.equal(withRegister.detail, rotated.detail);
+  assert.ok(withRegister.longDetail.endsWith(register), withRegister.longDetail);
+  assert.ok(withRegister.longDetail.startsWith('The Blauwbrug (English: Blue bridge)'), withRegister.longDetail);
+  assert.equal(withRegister.factTexts.at(-1), register);
+  assert.equal(withRegister.factKind, 'Design');
+
+  const withOrigin = streetCardWithRotatedFact({ nameOrigin: 'Named after a blue-painted wooden bridge.', structureFact: register }, rotated);
+  assert.equal(withOrigin.detail, 'Named after a blue-painted wooden bridge.');
+  assert.ok(withOrigin.longDetail.startsWith('Named after a blue-painted wooden bridge. The Blauwbrug'), withOrigin.longDetail);
+  assert.ok(withOrigin.longDetail.endsWith(register), withOrigin.longDetail);
+  assert.equal(withOrigin.factTexts[0], 'Named after a blue-painted wooden bridge.');
+
+  // No origin and no register: the catalog card is unchanged.
+  assert.deepEqual(streetCardWithRotatedFact({ wikipediaExtract: 'A lede.' }, rotated), rotated);
 });

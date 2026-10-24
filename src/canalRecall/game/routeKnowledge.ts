@@ -127,6 +127,40 @@ export function streetCardText(entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 
   return { detail: text.detail, longDetail: lead ? `${lead} ${fact}` : fact };
 }
 
+/** The rotated catalog text for a card (`factStore.factCardText`). */
+export interface RotatedCardText {
+  detail: string;
+  longDetail: string;
+  factTexts: string[];
+  factKind: string;
+}
+
+/**
+ * A street/water/bridge card when the reviewed fact catalog also has trivia
+ * for the same feature. The rotated fact takes the encyclopedia lede's place
+ * and nothing else: the name origin still leads and a bridge's register
+ * sentence still closes the long text. Before this, the rotation replaced the
+ * whole card, so from 565cefb13 (bridge ledes indexed under their extract
+ * ids, which join to the catalog) the Blauwbrug card lost its register line.
+ * An entry with neither an origin nor a register sentence is the catalog's
+ * card as before.
+ */
+export function streetCardWithRotatedFact(
+  entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 'nameOriginNl' | 'wikipediaExtract' | 'structureFact'>,
+  rotated: RotatedCardText,
+): RotatedCardText {
+  const origin = (originOf(entry) || '').trim();
+  const fact = (entry.structureFact || '').trim();
+  if (!origin && !fact) return rotated;
+  const text = streetCardText({ ...entry, wikipediaExtract: rotated.longDetail });
+  return {
+    detail: origin ? text.detail : rotated.detail,
+    longDetail: text.longDetail,
+    factTexts: [origin, ...rotated.factTexts, fact].filter(Boolean),
+    factKind: rotated.factKind,
+  };
+}
+
 function structureLessCardText(entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 'nameOriginNl' | 'wikipediaExtract'>): { detail: string; longDetail: string } {
   const origin = sentencesOf(originOf(entry) || '');
   const extract = sentencesOf(entry.wikipediaExtract || '');
