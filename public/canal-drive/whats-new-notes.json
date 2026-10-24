@@ -3,6 +3,11 @@
  "notes": [
   {
    "date": "2026-10-24",
+   "title": "The 3D city comes back after the graphics card resets",
+   "text": "When a phone dropped and regained its graphics context, the ground, trees, buildings and bike stayed blank until a reload. They now rebuild within a second; building facades repaint over the following seconds."
+  },
+  {
+   "date": "2026-10-24",
    "title": "Roads: no more doubled lanes or guessed paint",
    "text": "OSM road bands no longer draw over the measured road surfaces, so the stray red cycle pieces and double lanes are gone (De Clercqstraat, Rozengracht, Spiegelgracht). Cycle-lane red, centre dashes and zebras are now drawn only where the 8 cm aerial photo shows them; nearby zebras merge into one. Phones also keep only the ground they can see, which more than halves ground memory."
   },

@@ -222,6 +222,15 @@ Open, in order:
   walls). Factory batches may run on PDOK facts; compile/gates on
   PDOK-derived facts not yet exercised. Open: fetch all 56 blades once so
   the pipeline has no runtime dependency on either host.
+- **perf GPU loss and regain** (merged 2026-10-24, 1538978a4): MapLibre
+  5.24 drops custom layers on a restored context; SharedFrame now re-adds
+  both layers at style.load with a new renderer and calls a participant
+  `onContextRestored` hook (ground re-requests cells on phones, facades
+  rebuild, landmarks clear `_failed` and re-request, bike and tiles take
+  the new renderer). `tests/e2e/context-restore.spec.ts` desktop + iphone:
+  frame back in ~0.35 s. Gap: facade texture arrays repaint from scratch
+  (32 s headless); options are a bigger slice budget during restore or
+  untextured shells meanwhile.
 - **perf own-ground CPU** (merged 2026-10-24, 1fb293b85): relief tiles
   stored as int16 cm where exact (half the bytes, slightly faster), phone
   ring 400 m with the worker cache bounded by the same keep set; iPhone
