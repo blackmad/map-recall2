@@ -13,6 +13,7 @@ import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/s
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
+import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {awningProblems, deBaarsjesProblems} from './deBaarsjesIntent.ts';
 import {eavesOverhangProblems, type EavesOverhangIntent} from './eavesOverhangIntent.ts';
 import {groundCanopyProblems, type GroundCanopyIntent} from './groundCanopyIntent.ts';
@@ -897,6 +898,11 @@ export interface LargeWallIntent {
    * `voussoir` (stone with imposts and a keystone) or `none`.
    */
   arches?: {windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'blocks' | 'none'; /** Only these storeys (0 = ground) get arched heads (the rest stay square-headed); default every storey. */ storeys?: number[]};
+  /**
+   * Stone dressings on the wall (blockBuilding/dressings.ts): white bands at storey/sill/head lines, speklagen stripes,
+   * lintels and keystones, window surrounds, quoins and joint chains, oriels, banded arches, brick piers. Absent: byte-identical.
+   */
+  dressings?: StoneDressings;
   /** Loading-door axis (warehouses): every `every`-th bay from bay `first` (default 0), or the listed `bays` of the widest panel, is a tall door opening on every upper storey and a wide portal on the ground. */
   hoist?: {every?: number; first?: number; bays?: number[]; arch?: ArchKind};
   /** A carriage gateway through the ground storey in the listed bays of the widest panel (dark arched openings 92 % of a bay wide, plain wall between); default none. */

@@ -37,6 +37,7 @@ import type {IntentSource, LargeBuildingIntent, LargeWallIntent} from '../../src
 import {requireSourceData} from './sourceData.ts';
 import {compileBuilding} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import {LARGE_BUDGET_TRIANGLES} from '../../src/canalRecall/buildingRecipe/largeGates.ts';
+import {proposeBands} from '../../src/canalRecall/buildingRecipe/lightBands.ts';
 import {cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
 import {draftBudgetCap, inheritedWall, isDraftIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
 
@@ -117,6 +118,13 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: Propose
   if (w.plinth === undefined && !hand.has('plinth') && groundFree && !['curtain-wall', 'glazed-hall', 'glazed-columns'].includes(system) && !w.screen) {
     const gp = glazedPlinth({ground: m.ground, storeyGlazing: m.storeyGlazing, glass: m.glass, wall: m.wall, usable: Math.min(m.usable, L.evidence.usable), foliage: m.foliage, washedOut: m.washedOut});
     if (gp.plinth) { patch.plinth = gp.plinth; notes.push(`glazed plinth: ground band ${Math.round((m.ground ?? 0) * 100)} % over upper storeys ${(m.storeyGlazing ?? []).slice(1).filter(v => v !== null).map(v => Math.round(v! * 100)).join('/')} %`); }
+  }
+  // light bands across the wall (speklagen, stone courses) seen at the same place in two or more storeys: stone bands,
+  // never over bands drawn another way (string courses, courses) or a hand `dressings`
+  const bands = m.lightBands ? proposeBands(m.lightBands) : null;
+  if (bands && !hand.has('dressings') && !hand.has('dressings.bands') && !w.dressings?.bands && !w.stringCourses && !w.courses && !w.stoneStoreys) {
+    patch.dressings = {...(w.dressings ?? {}), bands};
+    notes.push(`light bands: ${bands.at.join('+')} on storeys ${bands.storeys.join(',')} (${m.lightBands!.map(b => `${b.at}@${b.v0}-${b.v1} m ${Math.round(b.share * 100)} %`).join(', ')})`);
   }
   return {patch, notes};
 }
