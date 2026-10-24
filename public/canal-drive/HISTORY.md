@@ -38,6 +38,18 @@ halved the own-ground ring on touch devices (700 m, rider's 3×3 always
 kept), 20 MB less ground geometry on the iPhone profile with identical
 frames.
 
+**Roads R2+R3 and the phone ground (2026-10-24).** Roads stopped guessing:
+OSM bands now give way to every measured BGT polygon, and red lanes, centre
+dashes and zebras come from a per-way evidence file measured on the PDOK 8 cm
+orthophoto, so 162 band triangles that drew over survey polygons and all
+paint without a crossing node are gone, gated at 13 spots. The colour of
+klinker, brick and cycle paths is left to the user from a four-way strip.
+The perf session shrank the phone ground to what the chase camera sees
+(400 m ring) and stored relief as int16 centimetres: ArrayBuffers on the
+iPhone profile fell from 137 to 62 MB. The first factory batch also showed
+that its measure step overwrote hand-authored intents; those were reverted
+and the draft-fix lane must stop it.
+
 ## Night of 2026-10-23: lanes land, the feedback queue is routed, perf is folded in
 
 Integrator (this session, worktree `integrator-plan`), merged into `main`:

@@ -124,8 +124,21 @@ Open, in order:
   sparse land; build 1.30×) and new red fragments in the Mosplein frame,
   unexplained. Next (opus): cap the lawn tessellation at the data step,
   frame-level trace of the Mosplein red, by-functie split of the remaining
-  bare land, archive the raw BGT pulls, then merge. R2+R3 lane (opus)
-  running: De Clercqstraat's fallback band and red pieces,
+  bare land, archive the raw BGT pulls, then merge; rebuild the worker
+  bundle before re-shooting Mosplein (its red came from a stale bundle).
+  R2+R3 merged 2026-10-24 (lane/roads-lanes-20261023 @ 3587416d5): OSM
+  bands yield per 1 m station to any BGT polygon, lane ribbons only where
+  no BGT cycle polygon and the orthophoto shows red, LOD 1 draws one plain
+  carriageway; marks from a photo-evidence extract
+  (`road-marks-v1/photo-evidence.json.gz`, PDOK 8 cm): zebras merged
+  within 8 m and moved or dropped by the photo, centre dashes only on
+  photo runs, grey fietsstraten as asphalt. Doubled-lanes probe 162 → 0 at
+  13 spots (gated in check-ground-cells), paint off a node → 0, ride-perf
+  unchanged. Bare land rises at De Clercq (+82 m²) and Spiegelgracht (+45)
+  where OSM bands hid BGT gaps: R1's job. OPEN, user decides: klinker /
+  brick / cycle tone from `demos/roads-20261024/strip-tones.jpg` (today
+  147,110,90; A photo 137,126,118; B middle 142,118,104; C legible
+  140,124,112). Previous note on R2+R3 for reference: De Clercqstraat's fallback band and red pieces,
   the `cycleway=lane` ribbons, a less saturated klinker/brick tone measured
   from the orthophoto medians (rijbaan klinker 143,137,133 vs today's
   147,110,90), the Spiegelgracht red ring and zebra bits west of the
@@ -193,6 +206,11 @@ Open, in order:
   walls). Factory batches may run on PDOK facts; compile/gates on
   PDOK-derived facts not yet exercised. Open: fetch all 56 blades once so
   the pipeline has no runtime dependency on either host.
+- **perf own-ground CPU** (merged 2026-10-24, 1fb293b85): relief tiles
+  stored as int16 cm where exact (half the bytes, slightly faster), phone
+  ring 400 m with the worker cache bounded by the same keep set; iPhone
+  profile ArrayBuffers 137 → 62 MB, ground geometry 128 → 54 MB, GL
+  buffers 152 → 134 MB, 2–4 cells on a 60 s ride, no holes.
 - **perf own-ground ring** (merged 2026-10-24, be8224ed2): touch devices
   start the own-ground ring at 700 m (desktop 1400 m), always keeping the
   rider's 3×3 cells; iPhone profile 11 → 9 cells, ground geometry 149 →

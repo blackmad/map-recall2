@@ -3,6 +3,11 @@
  "notes": [
   {
    "date": "2026-10-24",
+   "title": "Roads: no more doubled lanes or guessed paint",
+   "text": "OSM road bands no longer draw over the measured road surfaces, so the stray red cycle pieces and double lanes are gone (De Clercqstraat, Rozengracht, Spiegelgracht). Cycle-lane red, centre dashes and zebras are now drawn only where the 8 cm aerial photo shows them; nearby zebras merge into one. Phones also keep only the ground they can see, which more than halves ground memory."
+  },
+  {
+   "date": "2026-10-24",
    "title": "Nassaukade: the orange wedge above the cornice is gone",
    "text": "A narrow, deep row house with no mapped roof type could be dealt a half-hip roof, whose bare street end showed as an orange wedge between taller crowned neighbours. Such plots now get the row's gable crown instead. Phones also keep fewer ground cells resident behind the rider."
   },
