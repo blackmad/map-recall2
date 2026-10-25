@@ -416,7 +416,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#898b8f"
  },
  "palette": {
   "brick": "#5a4439",
@@ -440,7 +441,8 @@
   ]
  },
  "notes": [
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #49433e not used (not darker than the wall #5a4439 by 10 L*, or tinted): kit glass kept; walls[4] glass #45403d not used (not darker than the wall #5b4a45 by 10 L*, or tinted): kit glass kept; walls[5] glass #49525a not used (not darker than the wall #575256 by 10 L*, or tinted): kit glass kept; walls[6] glass #3f3d2f not used (not darker than the wall #403630 by 10 L*, or tinted): kit glass kept; walls[7] glass #30312f not used (not darker than the wall #372f2e by 10 L*, or tinted): kit glass kept; walls[8] wall split #5e4c31 | #65635d at 19 % (dE 18.5); walls[9] glass #776275 not used (not darker than the wall #786363 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #49433e not used (not darker than the wall #5a4439 by 10 L*, or tinted): kit glass kept; walls[4] glass #45403d not used (not darker than the wall #5b4a45 by 10 L*, or tinted): kit glass kept; walls[5] glass #49525a not used (not darker than the wall #575256 by 10 L*, or tinted): kit glass kept; walls[6] glass #3f3d2f not used (not darker than the wall #403630 by 10 L*, or tinted): kit glass kept; walls[7] glass #30312f not used (not darker than the wall #372f2e by 10 L*, or tinted): kit glass kept; walls[8] wall split #5e4c31 | #65635d at 19 % (dE 18.5); walls[9] glass #776275 not used (not darker than the wall #786363 by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #898b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5384: slot slate, rgb 148/148/148, confidence 0.8; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "groundClamp": true
 }

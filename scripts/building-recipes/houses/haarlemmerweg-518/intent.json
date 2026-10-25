@@ -244,7 +244,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#d7d7cf"
  },
  "roofPlant": true,
  "palette": {
@@ -262,6 +263,7 @@
   "No measured.json: no field here is a measurement. Every wall group lists its whole hand-held set in `hand`, and the colour, bay counts, storey splits and balcony frequency are read off the 2025 east crop only. Do not install on this evidence alone; a 2025+ panorama from the Haarlemmerweg front is what would settle it.",
   "The other 17 street walls of the pand are party walls in 3DBAG (the row), so the block is drawn as four bearing groups: south (the Haarlemmerweg front), north (the rear), east end and west end. The plinth is glazed with the entrance on the south front.",
   "Balcony bands are NOT drawn: on this shell the block-kit balcony row leaves parts on panels that do not host them (123 hostless parts, 160 m2 of openings outside their wall), because 3DBAG splits the 2023 block into 98 narrow planes. The 2025 crop shows glass-railed balcony bands on every storey, so this is a kit/shell gap, not a design choice: the plain wide-window grid is the honest stand-in until the shell or the balcony row is fixed.",
-  "Rendered 2026-10-21 (contact-aerial.png): most of the block still reads blank. Only the panels whose surfaces landed in a group with a workable width carry the window grid, and the four bearing groups cut across 98 small 3DBAG planes, so the big faces show as render with one band of windows near the top. The draft is a starting point for a shell/grouping pass, not a building."
+  "Rendered 2026-10-21 (contact-aerial.png): most of the block still reads blank. Only the panels whose surfaces landed in a group with a workable width carry the window grid, and the four bearing groups cut across 98 small 3DBAG planes, so the big faces show as render with one band of windows near the top. The draft is a starting point for a shell/grouping pass, not a building.",
+  "roof.flatHex #d7d7cf: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5383: slot white-membrane, rgb 214/214/206, confidence 0.5; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

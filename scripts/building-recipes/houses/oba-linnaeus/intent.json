@@ -94,7 +94,8 @@
  "otherWalls": "blank",
  "closedBands": true,
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#7a7c80"
  },
  "palette": {
   "brick": "#7a4034",
@@ -107,7 +108,8 @@
   "Pand 0363100012122086 (1916, 86 LoD2.2 surfaces) found by the OSM point: the OSM address (Linnaeusstraat 44) geocodes 434 m away in PDOK, so the match used the BAG pand under the mapped point. It is the OBA Linnaeus ground floor of a four-storey 1950s-style brick front (ten ribbon bays of white-framed windows between brick spandrels, 2022-05-18 panorama w01-70, 12 m away) with two 1916 brick houses attached at the right (gabled, balconies, stone window dressings).",
   "Signature (seen, 2022-05-18): (1) the red letter band across the shopfront fascia reading the alphabet in reverse, ZYXWVU TSRQP ONM LKJIHG FEDCBA, in mirrored/rotated glyphs: MODELLED as the kit fascia lettering with that text (the glyph rotation and mirroring SIMPLIFIED to plain capitals; the kit scales the text to the fascia, so it is small); (2) two red lower-case 'oba' logos, one over the left shop unit and a blade sign over the right unit: SIMPLIFIED (one 'OBA' fascia lettering over the right-hand unit, in logo red; the left logo SKIPPED: the group allows one sign); (3) tall glazed shopfront with stone piers: MODELLED (plinth-shopfronts); (4) the 1916 houses' stone window dressings, wrought balconies and gable: SKIPPED (too-small) except the 3DBAG gable and roof volume which are kept as surveyed.",
   "Ribbon windows are the kit ribbon system (10 bays) against the photographed 9 paired ribbons. The SW end (2025-06-20, w02-246) is a plain white rendered wall with two window columns: modelled as a plain brick-bay-grid wall (render colour SKIPPED: palette is one brick colour). closedBands closes the fascia bands (open-edge gate).",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #323235 not used (not darker than the wall #3d3533 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #323235 not used (not darker than the wall #3d3533 by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #7a7c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5385: slot slate, rgb 123/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

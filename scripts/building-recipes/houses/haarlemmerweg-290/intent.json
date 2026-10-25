@@ -226,7 +226,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#7a8380"
  },
  "roofPlant": true,
  "palette": {
@@ -243,7 +244,8 @@
   "2026-10-21 correction (this lane): the previous draft used `curtain-wall` with the layered kit, which draws the 3DBAG wall itself as the glass skin (likeness: wall not drawn, glazing 1.00 on all four groups, 2,640 tris, no balcony rows). It is now `brick-bay-grid` with `windows: wide`, `wallMaterial: render` and a glass-railed balcony row on storeys 1-13, measured from the 2025 south crop: continuous slab band, glass balustrade, recessed glazed wall with white piers. 18,536 tris under the house's own 40,000 budget (see intent.budgetTriangles).",
   "Bays from measure.ts, per wall: south 10 (2.00 m pitch), east 6, west 11, north 8. South storey 1 is set blank and storey 2 glazed on the crop's own reading (its first two bands measure 0.12 and 0.92 glazing): the lowest band above the plinth is a solid parapet, the next one a fully glazed band.",
   "Likeness 2026-10-21: 4 of 4 groups FAIL, and the reasons are declared, not hidden. walls[0] south: wall colour dL 0.094 (PASS), mean glazing 0.589 vs 0.614 (PASS), columns 10 vs 15 (WARN), IoU 0.489; the remaining failure is one storey band off by 0.25, because the 2022-01-04 crop covers only the lower part of a 45 m wall (61 % usable, top half outside the crop). walls[2] west: dL 0.067, mean 0.574 vs 0.616, columns 11 vs 11, one storey band off by 0.23. walls[1] east and walls[3] north are paired with PRE-RENOVATION 2019 crops (open galleries, glazing 0.42/0.23) while the model draws today's glazed balconies, so their measured comparison cannot pass by construction.",
-  "palette.brick = #707576 with wallMaterial render: the measured wall of the 2025 south crop is #595d5d (the recesses and soffits between the white bands dominate the floor-zone cells) and the west crop reads #68635c; #707576 is the measured family with dL +0.09/+0.07. The white slab edges and mullions are the frame/stone slots."
+  "palette.brick = #707576 with wallMaterial render: the measured wall of the 2025 south crop is #595d5d (the recesses and soffits between the white bands dominate the floor-zone cells) and the west crop reads #68635c; #707576 is the measured family with dL +0.09/+0.07. The white slab edges and mullions are the frame/stone slots.",
+  "roof.flatHex #7a8380: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5383: slot slate, rgb 123/132/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "budgetTriangles": 40000,
  "measured": {

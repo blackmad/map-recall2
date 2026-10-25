@@ -79,7 +79,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "zinc"
+  "material": "zinc",
+  "flatHex": "#d9d9d3"
  },
  "palette": {
   "brick": "#d8e0e6",
@@ -93,7 +94,8 @@
  "notes": [
   "Rigakade 8 (BAG pand 0363100012078289, built 1988, 58 3DBAG wall surfaces, roof max 10.9 m): the Jongeneel builders' merchant on the Rigakade, a long strip of pale ribbed-steel sheds about 94 m by 30 m. Photographed: the north-east end with four saw-tooth gables, a blue loading gate and a blue JONGENEEL sign (w03-27 2024) and the south-west shop front (w05-207): pale vertical-ribbed upper cladding, a blue band reading HOUT PLAAT SHOP BOUWMATERIALEN, and two windows flanking a glazed sliding entrance behind railings; the 94 m long flanks have no panorama (w01-297 and w02-117) and w04-207 is a plain cladded side.",
   "walls[0] = panels 26 and 17 (SW, 17 m, eaves 10.4 and 8.8; surfaces 36, 21, 49, 54): a glazed ground with an entrance in the middle bay and the name as a short fascia plate over the entrance (not the full-width blue band), blank upper storey; 2 storeys x 3 bays. walls[1] = panel 3 (NE end, 40 m, eaves 8.1 under 10.4 m gables; surfaces 4, 22, 32, 34, 35, 43, 47, 50): blank render with one blue loading gate (garage door) on the right. Simplified: the saw-tooth gables are the 3DBAG roof and walls, the railing and sign boards are not modelled; the fascia colour is the stone slot (blue). Not drawn: the 94 m flanks and the south-east end, which stay blank pale render.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #1c355c not used (not darker than the wall #a2acb3 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #1c355c not used (not darker than the wall #a2acb3 by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #d9d9d3: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5382: slot white-membrane, rgb 239/239/230, confidence 0.6; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

@@ -131,7 +131,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#87898d"
  },
  "palette": {
   "brick": "#9a4a38",
@@ -147,6 +148,7 @@
   "walls[1] = panel 121 (SW, w01-208): the 1970s concrete gallery wing on the Damstraat side: a shop arcade on slim piers, one storey of nine tall curved glass bays between brick-faced piers under a deep concrete fascia, and a blank attic band with eleven small vents. Drawn as ground glazed, one tall narrow-window storey in stone material and a blank attic storey. Simplified: the curved (barrel) glazing is flat, the stepped concrete corbels on the attic are not drawn.",
   "walls[2] = panel 475 (SW, w05-212): the hotel front on the Damstraat corner, a cream-painted stone front with a three-bay glazed ground floor under an awning, a signed fascia (HOTEL) and tall blue-grey framed windows. walls[3] = panel 80 (SW, w07-208): the red-framed Asian Spirit shopfront with a tall mullioned shop window and iron-red upper glazing. Both are drawn as glazed ground plus wide-window storeys; the shop lettering, awnings and the HOTEL fascia sign are not modelled (shop signage is tenant-specific and was changed within the capture year).",
   "Not photographed or not exposed: the courts, the Pijlsteeg side and the north-east wings (no panorama within 35 m or only over scaffolding); they stay blank.",
-  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): the Krasnapolsky block's grey stone hotel front with carved bays, the cast-iron glazed winter-garden range and the ornamented cafe front were drawn as a red brick grid and cream boxes (every street group FAIL, dL up to 0.78) on a high-ride wall (277 of 2,000 sampled routes). Ornamented historic front: uninstalled; bespoke if it returns."
+  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): the Krasnapolsky block's grey stone hotel front with carved bays, the cast-iron glazed winter-garden range and the ornamented cafe front were drawn as a red brick grid and cream boxes (every street group FAIL, dL up to 0.78) on a high-ride wall (277 of 2,000 sampled routes). Ornamented historic front: uninstalled; bespoke if it returns.",
+  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

@@ -108,7 +108,8 @@
  "otherWalls": "blank",
  "closedBands": true,
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#818387"
  },
  "palette": {
   "brick": "#6e5040",
@@ -121,6 +122,7 @@
   "The canopy did not fit the 5.7 m entrance facet (the kit's canopy runs 0.6 m past the entrance on both sides), so EDEN HOTEL is lettered on a fascia board over the entrance instead. closedBands: the 3DBAG faces of the canal house stand a few cm out of one plane, so string courses and the cornice are closed solids.",
   "Not modelled (the photos show them): the canopy over the hotel entrance, the yellow stucco bands and diamond panels of the hotel block (one string course per storey instead), the stone consoles and pediment of the canal house cornice, the stone stoop and its railings, the lantern, the flagpole on the hotel roof, the Gothic-revival neighbour at the corner (another pand). The Amstelstraat side (w02-19, w09-28 crops) shows neighbouring houses 176-178, not this pand, so it is blank; courtyard walls are blank.",
   "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): walls[0] FAILs against w04-6L (2021-01-22): an ornamented historic front (stone bands and dressings, tall decorated windows, a shop front) drawn as a plain brown brick grid. Ornament, not a kit gap: a bespoke builder if it returns (ride-visible: 161 of 2,000 sampled routes).",
-  "Acceptance pass 2026-10-24 (issue #45, w04-6L 2021-01-22): walls[0] is two houses on one panel (houses): left 47 %, red-brown brick #6b4339, three pairs of sashes per storey drawn as six narrow bays, flat crown; right 53 %, dark brown brick #4e3b36, three windows per storey under a white stucco cornice; white stone bands at every sill and head (dressings.bands, replacing stringCourses); white window frames (were dark red)."
+  "Acceptance pass 2026-10-24 (issue #45, w04-6L 2021-01-22): walls[0] is two houses on one panel (houses): left 47 %, red-brown brick #6b4339, three pairs of sashes per storey drawn as six narrow bays, flat crown; right 53 %, dark brown brick #4e3b36, three windows per storey under a white stucco cornice; white stone bands at every sill and head (dressings.bands, replacing stringCourses); white window frames (were dark red).",
+  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

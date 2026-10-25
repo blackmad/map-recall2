@@ -38,7 +38,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "zinc"
+  "material": "zinc",
+  "flatHex": "#818387"
  },
  "palette": {
   "brick": "#a3a29c",
@@ -51,6 +52,7 @@
   "Distelweg 88 (BAG: built 1948, one industrial unit, 12,545 m2 footprint, 8.3 m eaves): a single-storey distribution hall. The only panorama within 35 m is across the canal on the north-east front (w03-33, 2017-07-05): a continuous wall of grey vertical-ribbed sandwich panels with no windows, a low parapet, a pedestrian door at ground level and a round blue company emblem with a letter K high on the wall.",
   "Modelled: the north-east front (panels 0 and 71) as a blank wall group in the cladding grey with the K lettered high on the wall; the same grey is the house wall colour for every other wall (they are not photographed, but the cladding wraps the whole hall as far as the aerial shows) and the zinc-grey roof as surveyed by 3DBAG LoD2.2.",
   "Simplified: the vertical rib pattern of the cladding is a plain wall colour; the blue round emblem is not drawn; the pedestrian door and the bank-side fence are not drawn. Not modelled: loading docks and doors on the other fronts (no panorama within 35 m).",
-  "Wall material (2026-10-14): the cladding is smooth grey sandwich panel, not brick, so the group is wallMaterial render and the house palette wallMaterial stucco (fine-grain plaster texture) instead of the brick texture."
+  "Wall material (2026-10-14): the cladding is smooth grey sandwich panel, not brick, so the group is wallMaterial render and the house palette wallMaterial stucco (fine-grain plaster texture) instead of the brick texture.",
+  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5382: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

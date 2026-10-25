@@ -132,14 +132,16 @@
   "stone": "#c9bda8"
  },
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#74767a"
  },
  "notes": [
   "Nieuwe Achtergracht 127 (BAG; UvA Roeterseiland), built 1932: a brown-brick teaching wing with a curved NE end. South front on the canal (w03-163, 2021-01-22): four levels (a low ground row of small windows, three storeys of paired windows with red roller shutters, a roof-edge row of small gabled dormers). NE front (w05-30, 2021-01-22): three storeys of wide multi-pane windows in a brick grid under a steep slate roof, a brick chimney and a glazed stair tower at its east end. West end (w01-280, 2020-04-29): a tan rendered rounded block with glass-block panels and a wide curved roof.",
   "Modelled: brick-bay-grid with two-light windows (3.5 cm proud bars) and a cornice on the S and NE fronts (4 storeys, 13 and 12 bays), plain windows on the N and W end walls. Simplified: the low ground row is a full window storey; the red shutters, dormers and the glass stair tower are not drawn. The west block is brick-coloured although the photo shows tan render with glass blocks.",
   "The dark glass-based cantilevered tower on this footprint (twin footprint, pand 0363100012185420, 39 m) is a separate pand and not part of this recipe; panels 62/141 to the west and the east block (w02-253, w06-73) show it.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #493e34 not used (not darker than the wall #5e4e41 by 10 L*, or tinted): kit glass kept; walls[1] glass #62605b not used (not darker than the wall #6e605a by 10 L*, or tinted): kit glass kept.",
-  "Refit 2026-10-25 (issue #59): walls[1] (w05-30) re-read off the placed crop: 13 axes of white-framed multi-pane windows (three-light) between brick piers, a low ground row (w 0.7, h 0.35, sill 0.3), first-floor windows w 0.72 h 0.5, and taller second/third-floor windows w 0.78 h 0.72 (storeyShapes): likeness PASS (was FAIL on the storey glazing band)."
+  "Refit 2026-10-25 (issue #59): walls[1] (w05-30) re-read off the placed crop: 13 axes of white-framed multi-pane windows (three-light) between brick piers, a low ground row (w 0.7, h 0.35, sill 0.3), first-floor windows w 0.72 h 0.5, and taller second/third-floor windows w 0.78 h 0.72 (storeyShapes): likeness PASS (was FAIL on the storey glazing band).",
+  "roof.flatHex #74767a: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 115/115/115, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

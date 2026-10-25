@@ -214,7 +214,8 @@
  "otherWalls": "blank",
  "shellRepair": true,
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#747074"
  },
  "palette": {
   "brick": "#9b9086",
@@ -229,7 +230,8 @@
   "The dark painted walls (east #606163, west #4e434c) read as wall family unresolved in the likeness (dark neutral, brick courses not resolved): lightness and hue are judged only; this is a WARN, not a FAIL. All five street-facing groups land WARN (never FAIL): the reasons are low mask IoU (obliquity/foliage/shift on the archived crops), the two dark walls unresolved brick course, and walls[2] column count (3 vs 2).",
   "Set-back upper blocks and the 23 m tower are NOT modelled with windows (no panorama evidence at their setback plane): this is a limitation, not a likeness failure; the plain 3DBAG shell is retained rather than inventing an unverified facade (a wrong kit is worse than the plain box).",
   "Trial 2026-10-21 (this lane): walls[2] was rebuilt as ribbon-windows (one 0.93-of-bay opening per bay on storey 1, storey 2 left as plain wall, sill 0.05 h 0.9) to draw the photo's single deep glass band. It FAILED the likeness: mean glazing 0.47 vs photo 0.28, the storey band off by 0.57, model window shape square vs photo tall, IoU 0.259 - the drawn band is far more glass than the photograph measures. The brick-bay-grid configuration above was restored (5005 tris, 386732 B, gates pass, WARN x5), so the band cannot be expressed with numbers that pass on this 14.8 m section.",
-  "#49 2026-10-24: walls[2] (Tussenmeer east section, w07-72) is clad above the glazed ground in pale horizontal metal boards at 0.45 m (boards cladding from 27 %, lines #8b8f8e on the measured #a1a5a4). Still held: the deep band window is not drawn yet."
+  "#49 2026-10-24: walls[2] (Tussenmeer east section, w07-72) is clad above the glazed ground in pale horizontal metal boards at 0.45 m (boards cladding from 27 %, lines #8b8f8e on the measured #a1a5a4). Still held: the deep band window is not drawn yet.",
+  "roof.flatHex #747074: the PDOK orthophoto's reading of this pand (roof-facts 14/8410/5385: slot slate, rgb 115/107/107, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-19",

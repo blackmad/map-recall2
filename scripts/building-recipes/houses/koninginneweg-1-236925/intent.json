@@ -426,7 +426,8 @@
   "closedBands": true,
   "layeredKit": true,
   "roof": {
-    "material": "slate"
+    "material": "slate",
+    "flatHex": "#74767a"
   },
   "palette": {
     "brick": "#746861",
@@ -450,7 +451,8 @@
     "walls[2] south fronts on the west block (panels 185, 98; crops w03-155w 2019-01-17, w04-156w 2022-03-22): the same brick and speklagen, three window columns with segmental heads.",
     "walls[3] Van Eeghenstraat veranda fronts (panels 181, 15, 75; crops w07-160/w08-160 2023-01-10): three decks of white timber verandas, round arches on slender posts with turned balustrades, across the whole front (new `gallery` component).",
     "INFERRED: the courtyard and party walls (otherWalls, brick grid at the civic pitch).",
-    "budgetTriangles 21000: a 71 m, five-storey block on three street fronts with two veranda stacks (galleries) and speklagen; the 12k default cannot hold its storey and bay count. HOLD: the PDOK LoD2.2 shell (3DBAG API timed out) leaves a 2.3 m wall (surface 152) standing ground-to-roof inside the Van Eeghenstraat wing with no side walls under the 20.4 m roof: 40.8 m of vertical open edge that shellRepair cannot close (its seam rule pairs edges <= 0.6 m apart). Install after a 3DBAG refetch or a repair rule for walls under a flat roof."
+    "budgetTriangles 21000: a 71 m, five-storey block on three street fronts with two veranda stacks (galleries) and speklagen; the 12k default cannot hold its storey and bay count. HOLD: the PDOK LoD2.2 shell (3DBAG API timed out) leaves a 2.3 m wall (surface 152) standing ground-to-roof inside the Van Eeghenstraat wing with no side walls under the 20.4 m roof: 40.8 m of vertical open edge that shellRepair cannot close (its seam rule pairs edges <= 0.6 m apart). Install after a 3DBAG refetch or a repair rule for walls under a flat roof.",
+    "roof.flatHex #74767a: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 115/115/115, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
   ],
   "shellRepair": true,
   "budgetTriangles": 21000

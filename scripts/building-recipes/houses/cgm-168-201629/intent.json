@@ -58,7 +58,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#6e7074"
  },
  "palette": {
   "brick": "#e4e4dc",
@@ -71,6 +72,7 @@
  "layeredKit": true,
  "notes": [
   "Centrale Groothandelsmarkt 168 (BAG pand 0363100012201629, built 1935, 43 3DBAG wall surfaces, roof max 9.8 m): a wholesale distribution hall of the Food Center Amsterdam. Photographed: the 39 m south-east loading front (w01-131), the north-west flank (w02-311), the south-west and north-east ends (w03-221, w04-41, w07-131) and a canal-side view (w08-221). The south-east front has nine dock bays numbered 1-9 with blue sectional doors with a glazed strip, black dock-shelter surrounds and concrete dock plinths, a white eaves band, a ribbon of office windows with blinds at the upper floor and a glazed entrance bay at the right end.",
-  "walls[0] = panels 19 and 17 (SE, 39 m and 10 m, eaves 9.8; surfaces 22, 25, 20): 2 storeys of ribbon windows over a blank ground with eight garage doors (the intent limit) in the blue door colour, the ninth bay left plain and a white cornice band. walls[1] = panels 14 and 6 (NW flank, 36 m, eaves 9.7; surfaces 17, 8): blank white render. Simplified: the black dock shelters and the dock plinths are not modelled (the doors are plain recessed panels), the glazed strips in the doors are not drawn, the entrance bay at the right end is a plain bay. Not drawn: the clearly lower south-west and north-east wings (7.2 m and 5.9 m eaves), which stay blank white render, and the signs on the north-east end."
+  "walls[0] = panels 19 and 17 (SE, 39 m and 10 m, eaves 9.8; surfaces 22, 25, 20): 2 storeys of ribbon windows over a blank ground with eight garage doors (the intent limit) in the blue door colour, the ninth bay left plain and a white cornice band. walls[1] = panels 14 and 6 (NW flank, 36 m, eaves 9.7; surfaces 17, 8): blank white render. Simplified: the black dock shelters and the dock plinths are not modelled (the doors are plain recessed panels), the glazed strips in the doors are not drawn, the entrance bay at the right end is a plain bay. Not drawn: the clearly lower south-west and north-east wings (7.2 m and 5.9 m eaves), which stay blank white render, and the signs on the north-east end.",
+  "roof.flatHex #6e7074: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 107/107/107, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

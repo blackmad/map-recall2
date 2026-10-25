@@ -109,7 +109,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#74767a"
  },
  "palette": {
   "brick": "#8a3a2c",
@@ -122,7 +123,8 @@
  "notes": [
   "Revaleiland 437 (BAG pand 0363100012250186, built 2020, 372 3DBAG wall surfaces, roof max 19.7 m): a large perimeter block on the Revaleiland in the Java-eiland / Eastern Docklands, about 75 m square with a courtyard of lower inner blocks. Photographed (finished): the south-west front (w04-230 2020-05-15, w05-230 2022-06-22: red brick, cream-framed windows in pairs and triples, a stack of three glass-railed balconies in a recess, red and orange entrance doors, a white shopfront at the south-east end, a set-back top floor with slot windows and a curved parapet). The south-east front is seen in construction (w02-140, w03-140 2020-01-29: same brick, same balcony stack with the glass still missing). The north-west and north-east fronts have only 2017 site photographs and a 2019 scaffold (w01-320, w06-320, w07-50, w08-50), so those two stay blank.",
   "walls[0] = SW panels 129 and 68 (26.7 m and 25.2 m, eaves 16.2): 5 storeys x 7 bays with string courses and one glass-railed balcony stack on storeys 1-3 in bay 2 (a 6-bay rhythm left a 4.8 m2 flush-window overlap). walls[1] = SE panels 36 and 80 (29 m and 28 m): 5 storeys x 5 bays (budget), same balcony stack (construction view). Simplified: the plinth is the ground storey of the same brick (the photographed one is darker), window pairs and triples are evenly spaced wide windows, the red entrance doors and the white shopfront are plain bays. Not drawn: the north-west and north-east outer fronts (no finished photograph; an inferred copy of the other fronts cost 24k triangles and was dropped), the set-back top-floor blocks with slot windows and the curved parapet (3DBAG massing in brick colour), the courtyard walls and the inner blocks, which stay blank brick.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4f4f4e not used (not darker than the wall #6b3e33 by 10 L*, or tinted): kit glass kept; walls[1] glass #3f3834 not used (not darker than the wall #5f3c30 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4f4f4e not used (not darker than the wall #6b3e33 by 10 L*, or tinted): kit glass kept; walls[1] glass #3f3834 not used (not darker than the wall #5f3c30 by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #74767a: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5382: slot slate, rgb 115/115/115, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

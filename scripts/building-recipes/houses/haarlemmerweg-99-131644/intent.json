@@ -23,7 +23,8 @@
     "stone": "#cfc8b8"
   },
   "roof": {
-    "material": "bitumen"
+    "material": "bitumen",
+    "flatHex": "#8b8e89"
   },
   "walls": [
     {
@@ -128,7 +129,8 @@
     "walls[0] the Haarlemmerweg front (crop w01-359, square on): buff brick storeys 1-3 between a red-brown brick ground storey and top storey (brickStoreys), a pale coping, two white-panelled glazed bay-window stacks at the ends on storeys 1-3 (dressings.oriels), white-framed two-light windows on bays 1 and 3, a narrow stair slot window in the middle bay, the glazed entrance in the middle of the ground storey (hallDoors).",
     "NOT DRAWN (kit cannot say): the stair slot window running through three storeys as one tall light (drawn as one slot per storey); the bay stacks' white spandrel panels under the glass and the canopy over them; the two front doors in bay 1; the round vent tiles.",
     "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] bays 5 from the likeness grid (padded measurement 6).",
-    "Lit colour (2026-10-25 integrator review): the fronts face north and no usable sunlit crop exists (the sunlit 2025 east crop of 91 is 71 pct washed out), so the brightest north reading (99-103, 2020-02-07: buff #8b775e, red-brown #75564c) is used for all four identical blocks and left unmeasured, so the export brightens it like any shaded wall."
+    "Lit colour (2026-10-25 integrator review): the fronts face north and no usable sunlit crop exists (the sunlit 2025 east crop of 91 is 71 pct washed out), so the brightest north reading (99-103, 2020-02-07: buff #8b775e, red-brown #75564c) is used for all four identical blocks and left unmeasured, so the export brightens it like any shaded wall.",
+    "roof.flatHex #8b8e89: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot gravel, rgb 132/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
   ],
   "budgetTriangles": 12000
 }

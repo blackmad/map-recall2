@@ -78,7 +78,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#97948f"
  },
  "palette": {
   "brick": "#524946",
@@ -93,6 +94,7 @@
   "w02-247 (sun-flared) and w03-67 (a neighbouring red-and-white banded building, not this pand) are not used; the other walls stay blank.",
   "Uninstalled 2026-10-14 (photo review, reconcile lane): walls[0] FAIL against w01-337 (2025-06-20): the photo's brick is dark grey-brown (#3d4341, family paint) and the model's tan brick #917e69 reads wrong at gallery size; columns 9 vs 27 counted. Not a kit gap: re-fit the palette from the crop (measure.ts) before re-installing.",
   "Acceptance pass 2026-10-24 (issue #45, w01-337L 2025-06-20): brick #7a6a58 -> #524946 (brown-grey brick under overcast; the beige read wrong), 10 wide blue-framed windows per storey (was 9), windowShape 0.8 x 0.5 sill 0.25; no string courses on the photo.",
-  "Acceptance pass 2026-10-24 (issue #45): walls[1] added for the SW schoolyard wall (surface 17, w02-247L): the same brick, two storeys of blue-framed windows in 10 narrow tall bays (photo grid 10 columns), the first floor blank over its left third (a mural); the SE walls stay blank as the w04-157L crop shows (louvred vents only); the NE wall stays blank (its crop w03-67 shows the neighbour)."
+  "Acceptance pass 2026-10-24 (issue #45): walls[1] added for the SW schoolyard wall (surface 17, w02-247L): the same brick, two storeys of blue-framed windows in 10 narrow tall bays (photo grid 10 columns), the first floor blank over its left third (a mural); the SE walls stay blank as the w04-157L crop shows (louvred vents only); the NE wall stays blank (its crop w03-67 shows the neighbour).",
+  "roof.flatHex #97948f: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5385: slot gravel, rgb 148/148/148, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

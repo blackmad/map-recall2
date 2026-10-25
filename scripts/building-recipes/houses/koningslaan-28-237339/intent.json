@@ -156,10 +156,12 @@
     "Koningslaan 28A-30 (pand 0363100012237339): a pair of tall eclectic villa-houses on the Koningslaan, their gardens on the Vondelpark.",
     "walls[0] the wider house (surfaces 52, 62, 63, 92 of panel 27; crop w01-207 2025-01-29): dark red-brown brick, five storeys over a souterrain with segmental-arched windows in cream voussoirs, a white timber oriel on the second floor at the right, a round-arched entrance; curved and stepped gables over the cornice (3DBAG roof planes).",
     "walls[1] the narrower house with the corner turret (panel 35; same crop): two window columns, a wrought-iron balcony on the first floor.",
-    "INFERRED: surface 35 (the 4.3 m garden room at the west end of panel 27), the park-side rear (crop w02-27p is 81 % foliage) and the party walls (otherWalls brick grid)."
+    "INFERRED: surface 35 (the 4.3 m garden room at the west end of panel 27), the park-side rear (crop w02-27p is 81 % foliage) and the party walls (otherWalls brick grid).",
+    "roof.flatHex #6e6a74: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 107/99/107, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
   ],
   "roof": {
-    "material": "slate"
+    "material": "slate",
+    "flatHex": "#6e6a74"
   },
   "measured": {
     "date": "2026-10-25",

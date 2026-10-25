@@ -18,6 +18,7 @@ import {fitsPanel, pointInRing, rectPoly, type Panel} from '../blockBuilding/pan
 import type {BuildingFacts} from './facts.ts';
 import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
+import {FLAT_ROOF_TONES} from '../look/palette.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 
 export interface LargeComponentCounts { claddingLines?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; mansards?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
@@ -379,7 +380,7 @@ export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe)
       }
       for (const [m, cls] of by) for (const k of ['steep', 'low', 'flat'] as const) {
         const roofSlot = ['slate', 'zinc', 'bitumen', 'copper'].includes(m) ? 'slate' : 'roofTile';
-        add(m === recipe.roof.material ? `roof/${k}` : `roof/${k}/${m}`, cls[k], ROOF_COLOURS[m][k], k === 'flat' ? 'bitumen' : roofSlot, 'roof');
+        add(m === recipe.roof.material ? `roof/${k}` : `roof/${k}/${m}`, cls[k], largeRoofClassHex(recipe.roof, m, k), k === 'flat' ? 'bitumen' : roofSlot, 'roof');
       }
       if (flatHex) add('roof/flat', measuredFlat, flatHex, 'bitumen', 'roof', undefined, true);
       continue;
@@ -390,6 +391,22 @@ export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe)
     add(`${surface}/${slot}`, s.positions, colour, materialSlot, surface, slot);
   }
   return group;
+}
+
+/**
+ * The flat class of a bitumen roof with no orthophoto reading (`roof.flatHex`): the city's light flat-roof default
+ * (`FLAT_ROOF_TONES.gravel`, which `cityRoofTint` draws as gravel), not the kit's dark bitumen grey (#5d5f60, drawn as
+ * dark bitumen #56585e at luma ~88). Issue #71 (2026-10-25, "dark, dour"): 148 of the 156 large houses with a usable
+ * roof fact read a grey flat roof at luma ~120-140 from above, and the procedural city draws an unmeasured flat roof
+ * light three times in four; the dark default had no evidence behind it. Only the roof's default material: pitched
+ * classes, `roof.flat` and `roof.surfaces` materials (orthophoto readings: Entrepotdok's bitumen flats) keep their kit
+ * colours, and a measured `flatHex` still wins.
+ */
+export const UNMEASURED_FLAT_ROOF_HEX = FLAT_ROOF_TONES.gravel;
+
+/** The kit colour of one roof class of `roof`: the default material's bitumen flat class takes UNMEASURED_FLAT_ROOF_HEX. */
+export function largeRoofClassHex(roof: Pick<LargeRoofFit, 'material' | 'flat'>, m: RoofMaterial, k: 'steep' | 'low' | 'flat'): string {
+  return m === 'bitumen' && k === 'flat' && m === roof.material && !roof.flat ? UNMEASURED_FLAT_ROOF_HEX : ROOF_COLOURS[m][k];
 }
 
 /**

@@ -215,7 +215,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#6e767a"
  },
  "palette": {
   "brick": "#7a5240",
@@ -244,6 +245,7 @@
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 3, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #726f5d not used (not darker than the wall #917b5c by 10 L*, or tinted): kit glass kept; walls[1] glass #3f4248 not used (not darker than the wall #494341 by 10 L*, or tinted): kit glass kept; walls[3] glass #575960 not used (not darker than the wall #615b54 by 10 L*, or tinted): kit glass kept; walls[4] glass #2f557d not used (not darker than the wall #524c52 by 10 L*, or tinted): kit glass kept.",
   "Reconciled 2026-10-14 (lane A measurement on lane C's systems): lane C's two groups on the two 3DBAG surfaces of the north front replace lane A's wallSplit (hand wallSplit on both: the colour change is the group boundary). `hand` holds the system, bays and column placement of walls[0] and [1] (lane C). Walls measured from w01-2L (2019): walls[0] #917b5c (yellow-brown, lane C's hand #b4835c came from the 2025 low-sun crop), walls[1] #494341; walls[3] #615b54 with 6 measured bays (lane C kept the original 9), walls[4] #524c52 with 7. Glass: the measured window glass is not darker than the brick on any front (measure.ts keeps the kit's dark glass), while the balcony columns are reflective grey: the new `columns.glass` carries lane C's hand sample #8e9ea4 for the columns only. windowShape: walls[0] measured and refined (0.36 x 0.75: the narrow windows between the columns); walls[1] measured 0.65 x 0.65 kept by hand (the refinement loop shrank it to 0.2 wide slits because the photo classes those panes as trim and undercounts glazing at 0.33); walls[3] measured 0.65 x 0.60 kept by hand for the same reason (refined 0.34 read square, the photo is wide); walls[4] lane A's hand 0.35 x 0.80 (measured 0.30 x 0.20 misses the tall windows behind Juliet bars). On glazed-columns the measured mean glazing mixes the columns with the punched windows, so the refinement of windowShape there only means the windows between the columns.",
   "Kit gap: the columns' mid-height transoms and corner frames, Juliet bars on walls[4], brick shop piers on the glazed ground, the set-back roof storey's terraces.",
-  "Refit 2026-10-25 (issue #59): g1 punched balcony windows smaller (photo glazing 0.41), g3 12 tall cross windows over a windowed brick ground, g4 narrow windows shortening on the top two storeys over a brick ground with the shop (photo ground glazing 13 %), inside the 12k pilot budget. walls[2] has no reference panel."
+  "Refit 2026-10-25 (issue #59): g1 punched balcony windows smaller (photo glazing 0.41), g3 12 tall cross windows over a windowed brick ground, g4 narrow windows shortening on the top two storeys over a brick ground with the shop (photo ground glazing 13 %), inside the 12k pilot budget. walls[2] has no reference panel.",
+  "roof.flatHex #6e767a: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5382: slot slate, rgb 107/115/115, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

@@ -127,7 +127,8 @@
   "Panels left blank by the draft: 5 (25.4 m, party wall); 15 (14.7 m, party wall); 67 (15.7 m, party wall); 10 (7.1 m, party wall); 58 (4.3 m, unnamed panel under 8 m); 25 (16.9 m, over 8 groups); 17 (5 m, party wall); 28 (11.2 m, over 8 groups); 14 (3.5 m, unnamed panel under 8 m); 77 (2.4 m, unnamed panel under 8 m); 60 (2.4 m, unnamed panel under 8 m); 66 (6 m, unnamed panel under 8 m); 62 (3.1 m, party wall); 51 (4.8 m, unnamed panel under 8 m); 64 (3.6 m, under 3 m tall); 43 (4.2 m, under 3 m tall); 47 (4.2 m, under 3 m tall); 46 (3.4 m, under 3 m tall); 26 (4.5 m, under 3 m tall); 52 (4.1 m, under 3 m tall); 73 (4.2 m, under 3 m tall); 53 (3.2 m, under 3 m tall); 70 (2.5 m, under 3 m tall); 19 (2.1 m, under 3 m tall); 40 (2.2 m, under 3 m tall).",
   "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #3a3732 not used (not darker than the wall #463d38 by 10 L*, or tinted): kit glass kept; walls[1] glass #322d27 not used (not darker than the wall #3d342f by 10 L*, or tinted): kit glass kept; walls[1] curtain class not trusted (not-wall #322d27 does not read as glass on #3d342f (>= 10 L* darker, chroma < 15)): brick-bay-grid kept from the building's majority; walls[1] bays and window shape not written (folded from the distrusted not-wall mask); unphotographed walls take #3d342f (brick), the area-weighted median of groups 0, 1.",
   "Acceptance pass 2026-10-24 (issue #45): the unphotographed draft groups on panels 7, 11 and 68 (surfaces 10/11/53/78/79, 18/34, 96/111) dropped to otherWalls: each spans 3DBAG facets of different heights (a 5.1 m eaves under a 19.3 m top; a 25.3 m wall under a 22.3 m roof; a wall standing on the 16.3 m roof) and failed eaves-vs-3dbag by 3-11 m; no photo shows them.",
-  "Acceptance pass 2026-10-24 (issue #45, w02-15L 2019-01-02, w03-105L): glazed library/shop plinth on the ground storey of walls[0] and [1] (plinth, two lights per bay); walls[0] upper windows tall French windows, windowShape 0.42 x 0.68 sill 0.12 (were square)."
+  "Acceptance pass 2026-10-24 (issue #45, w02-15L 2019-01-02, w03-105L): glazed library/shop plinth on the ground storey of walls[0] and [1] (plinth, two lights per bay); walls[0] upper windows tall French windows, windowShape 0.42 x 0.68 sill 0.12 (were square).",
+  "roof.flatHex #878987: the PDOK orthophoto's reading of this pand (roof-facts 14/8411/5383: slot slate, rgb 140/140/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-24",
@@ -136,5 +137,9 @@
    1
   ],
   "otherWalls": true
+ },
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#878987"
  }
 }

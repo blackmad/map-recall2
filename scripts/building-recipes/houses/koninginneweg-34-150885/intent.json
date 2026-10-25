@@ -98,10 +98,15 @@
   "notes": [
     "Koninginneweg 34 (pand 0363100012150885, built 1983): the Park Plaza hotel's brick block on the Koninginneweg, south of the Vondelpark.",
     "walls[0] Koninginneweg front (panel 23, 11.4 m; crops w01-163 2024-11-12 and w01-163w 2022-03-21): red-brown brick over a glazed ground storey; on the right half a white canted bay-window stack through the first to third floors (stone-coloured oriel set), on the left half flat white-framed windows; thin cream bands at the floor lines, an attic storey; rooftop plant and masts not drawn.",
-    "INFERRED: the side, rear and roof-storey walls (otherWalls brick grid)."
+    "INFERRED: the side, rear and roof-storey walls (otherWalls brick grid).",
+    "roof.flatHex #5b5e61: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 82/82/82, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
   ],
   "measured": {
     "date": "2026-10-25",
     "groups": []
+  },
+  "roof": {
+    "material": "bitumen",
+    "flatHex": "#5b5e61"
   }
 }

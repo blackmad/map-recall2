@@ -32,7 +32,8 @@
     "stone": "#3b3e42"
   },
   "roof": {
-    "material": "bitumen"
+    "material": "bitumen",
+    "flatHex": "#87898d"
   },
   "walls": [
     {
@@ -100,7 +101,8 @@
     "NOT DRAWN (kit cannot say): the pale coping band; the windows' L-shaped frames.",
     "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class.",
     "Lit colour (2026-10-25 integrator review): the Haarlemmerweg fronts face north and every crop is in shade (#5d554b..#6b7777); the scheme brick is read off the sunlit east wall of Haarlemmerweg 63-71 (w04-89, 2020-08-14, pand 0363100012081533: #a5927b in full sun, #837361 lower down), #9a8770, kept measured.",
-    "Left unmeasured (2026-10-25, second pass): the in-game north faces render darker than the photo, so the sunlit reading also takes the export's brightening, in line with the neighbouring rows."
+    "Left unmeasured (2026-10-25, second pass): the in-game north faces render darker than the photo, so the sunlit reading also takes the export's brightening, in line with the neighbouring rows.",
+    "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
   ],
   "budgetTriangles": 12000
 }

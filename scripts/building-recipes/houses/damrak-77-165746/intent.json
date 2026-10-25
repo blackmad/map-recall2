@@ -131,7 +131,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#7a8387"
  },
  "palette": {
   "brick": "#57291f",
@@ -147,7 +148,8 @@
   "Components lane (2026-10-13): the white bands are back as stone string courses at every storey line (stringCourses), closed with closedBands so their ends at the Beurspassage arch side leave no open edge (was 2.0 m). Supersedes the note that string courses stay off.",
   "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): against w01-128L (2025-01-08) the 1893 front is dark brick with stone-banded gothic-revival bays and tall mullioned windows, drawn as a red brick grid. Ornament: a bespoke builder if it returns (ride-visible: 58 sampled routes).",
   "Stone dressings lane (2026-10-24, issue #31): colours from the 2025-01-08 overcast crop (w01-128L) lifted by its stone white (#9c937c -> #e6dfcc: brick #452f20 -> #6a3a2a; the sunlit 2020 crop is 42 % washed out). Five storeys with a double-height shop storey (groundFactor 2: 9.3 m, the oriel corbels at 9.4 m on the crop), ten bays on the crop's 2.65 m window pitch (the grid sits about 0.87 m left of the photo's: the panel's first bay is a part bay that the fit cannot offset). dressings: four canted stone oriels (bays 0, 1, 3, 4, storeys 1-4) with white frames, stone chains up the brick piers at the joints of bays 3 and 6, speklagen across the shop-storey piers, double white bands at the first and third storey lines, stone surrounds round the stepped part's windows; bays 2, 5 and 9 are blank brick (openBays). Still not said: the banded round arch of the Beurspassage (6 m wide over a 2.65 m bay grid: no bay pair forms one opening), the stepped gables and the tower (3DBAG massing), the shopfront's mezzanine windows.",
-  "Acceptance pass 2026-10-24 (issue #45): brick #6a3a2a -> #57291f, sampled on the sunlit piers of w01-128L (2025-01-08); #6a3a2a drew orange-red after the game tint beside the deep red-brown photo."
+  "Acceptance pass 2026-10-24 (issue #45): brick #6a3a2a -> #57291f, sampled on the sunlit piers of w01-128L (2025-01-08); #6a3a2a drew orange-red after the game tint beside the deep red-brown photo.",
+  "roof.flatHex #7a8387: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 123/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "closedBands": true
 }

@@ -41,7 +41,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "zinc"
+  "material": "zinc",
+  "flatHex": "#5f5f60"
  },
  "palette": {
   "brick": "#8e9296",
@@ -54,6 +55,7 @@
  "layeredKit": true,
  "notes": [
   "Asterweg 37 (BAG pand 0363100012240270, built 2014, 35 3DBAG wall surfaces, roof max 9.6 m): a grey sheet-steel distribution hall on the Buiksloot business park, about 70 m by 46 m. One panorama within 35 m shows it: the 70 m north flank (w02-344, one of the few views; the other three walls have none): a continuous wall of horizontally ribbed grey cladding with a curved roof edge, no openings, a few young street trees in front.",
-  "walls[0] = panels 2, 3, 24 and 13 (N, 70 m, 21 m, 23 m and 6 m, eaves 9.2-9.6; surfaces 3, 4, 28, 15): drawn as a grey render wall with string-course bands (147 triangles; the audit sees the bands 5 cm off the wall, 19.8 m2 of zfight-near warning). Simplified: the real ribs are a few centimetres deep and 20 cm apart, two bands stand in for them; the curved roof edge is the 3DBAG roof. Not drawn: the other three walls (no panorama), which stay blank grey render."
+  "walls[0] = panels 2, 3, 24 and 13 (N, 70 m, 21 m, 23 m and 6 m, eaves 9.2-9.6; surfaces 3, 4, 28, 15): drawn as a grey render wall with string-course bands (147 triangles; the audit sees the bands 5 cm off the wall, 19.8 m2 of zfight-near warning). Simplified: the real ribs are a few centimetres deep and 20 cm apart, two bands stand in for them; the curved roof edge is the 3DBAG roof. Not drawn: the other three walls (no panorama), which stay blank grey render.",
+  "roof.flatHex #5f5f60: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5382: slot bitumen-dark, rgb 115/115/115, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

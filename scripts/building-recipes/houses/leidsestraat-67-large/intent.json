@@ -102,7 +102,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "black-tile"
+  "material": "black-tile",
+  "flatHex": "#74767a"
  },
  "palette": {
   "brick": "#4a3a33",
@@ -115,6 +116,7 @@
   "Surface 28 is the narrow stair tower to 23.4 m: the street door (no. 69) at its foot, plain brick with small windows only near the top. Surface 48 (right, 20.7 m) is the brick part with one large window per floor over a shop.",
   "Kerkstraat (panel 2, 8.3 m): two neck-gabled fronts over a glazed shop + mezzanine base; six windows per storey; the gables come from the 3DBAG wall outline, so the attic row fills them where windows fit. The CHURCH door is the right-hand bay.",
   "Replaces the canal-house intent (leidsestraat-67-kerkstraat-50), which blew the 3k budget (4,324 tris) and approximated the ribbons with plain windows; that house dir stays as the canal-house record.",
-  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): every street-facing group FAILs against the archived crops (w01-323L, w02-46): an ornamented corner block (domed corner turret, a dark painted Kerkstraat front with tall arched windows, a shop arcade) drawn as red brick with white cross windows. Ornament, not a kit gap: a bespoke landmark builder if it is to come back (ride-visible: 54 of 2,000 sampled routes)."
+  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): every street-facing group FAILs against the archived crops (w01-323L, w02-46): an ornamented corner block (domed corner turret, a dark painted Kerkstraat front with tall arched windows, a shop arcade) drawn as red brick with white cross windows. Ornament, not a kit gap: a bespoke landmark builder if it is to come back (ride-visible: 54 of 2,000 sampled routes).",
+  "roof.flatHex #74767a: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 115/115/115, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

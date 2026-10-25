@@ -52,7 +52,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#818387"
  },
  "palette": {
   "brick": "#6a5650",
@@ -68,7 +69,8 @@
   "walls[0] = panel 119 (N, 45.4 m, eaves 23.8): brown-grey brick in five storeys, each with two ranges of four wide cream-framed multi-pane windows either side of a central stair tower (a bowed oriel at the first floor, a hexagonal window, small square stair lights and a timber entrance door), stone sill bands under each window row and an overhanging green-copper roof edge. Drawn as 5 storeys x 9 bays with wide windows, string courses, a cornice in a green copper colour and a portal entrance in the central bay.",
   "Simplified: the stair tower is the plain central bay with the entrance portal (the bowed oriel, the hexagonal window and the stair lights are not modelled), the paired window ranges are nine evenly spaced bays, the stone sill bands are string courses. Not drawn: the attic strip (panel 120), the west wall (washed out), the east and south walls (no usable panorama), which stay blank wall.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #554640 not used (not darker than the wall #574d47 by 10 L*, or tinted): kit glass kept.",
-  "Refit 2026-10-25 (issue #59, gate #58 crops): the crop w01-343 shows 10 columns of white-framed three-light windows about 3 m wide and 2 m tall (the model had 9 single narrow windows, glazing 0.21 vs photo 0.32): now 10 bays, 'three-light' windows w 0.62, h 0.5; glazing 0.29-0.32 and columns now match. The gate still FAILs the window shape ('square vs photo tall'): its window grid folds each three-light group into one light and calls it tall, while its own opening statistics read the photo's openings 60 % square and the crop plainly shows wide groups: a misread, allowed as inferred."
+  "Refit 2026-10-25 (issue #59, gate #58 crops): the crop w01-343 shows 10 columns of white-framed three-light windows about 3 m wide and 2 m tall (the model had 9 single narrow windows, glazing 0.21 vs photo 0.32): now 10 bays, 'three-light' windows w 0.62, h 0.5; glazing 0.29-0.32 and columns now match. The gate still FAILs the window shape ('square vs photo tall'): its window grid folds each three-light group into one light and calls it tall, while its own opening statistics read the photo's openings 60 % square and the crop plainly shows wide groups: a misread, allowed as inferred.",
+  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 132/132/132, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

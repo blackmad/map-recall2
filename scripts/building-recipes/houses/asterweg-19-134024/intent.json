@@ -53,7 +53,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#6e7074"
  },
  "palette": {
   "brick": "#7a3c30",
@@ -67,7 +68,8 @@
   "Asterweg 17-19 (BAG, 2006; Buiksloterham): a brick workshop-and-office block whose raised upper storey is carried over an open ground floor on diagonal steel trusses. 116 3DBAG wall surfaces; the east front (panel 0, w02-74, 2021-06-16, 60 m) is the only street front with a panorama within 35 m, the rest stays blank (otherWalls).",
   "walls[0] = panel 0: a brick storey with a continuous ribbon of low windows under the eaves (the ASTERWEG 17 - 19 sign sits on the wall below it), over a ground floor that is glazed at the left end and an open dark arcade with galvanised diagonal trusses to the right, closing in a brick ramp wall. Drawn as ribbon-windows, 2 storeys, 20 bays, ground storey blank brick with a glazed entrance in bay 1. Simplified: the open arcade and the truss legs (the wall is solid; steel bars under 3 cm and an open void cannot be cut into a 3DBAG wall), the glazed lobby beyond bay 1. Skipped: the ASTERWEG 17-19 wall lettering (the wall-mounted letters leave 32 m of open edge in the export).",
   "Not drawn: north, west and south fronts and the 33 m tower parts (no panorama).",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class.",
+  "roof.flatHex #6e7074: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5382: slot slate, rgb 107/107/107, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

@@ -50,7 +50,8 @@
  "otherWalls": "blank",
  "closedBands": true,
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#6e7074"
  },
  "palette": {
   "brick": "#a59d8f",
@@ -62,7 +63,8 @@
  "notes": [
   "Cygnus Gymnasium block, Vrolikstraat 8 (pand 0363100012109375, 1956, 188 LoD2.2 surfaces, roof max 32.6 m): a nine-storey concrete-frame slab. West front (2020-04-21 w01-260, 24 m away, 72.8 m long over surfaces 136/151/152 and 58): a ground storey of glazed bays between round pilotis columns, above it eight storeys of a square concrete grid with a glazed cell in every bay (about 1.8 m pitch), some coloured frames, a plain concrete end wall to the right with a relief, and a rooftop plant block. The east, south and north fronts have no usable panorama (the east has none in range, the south is washed out) and stay blank.",
   "MODELLED: the pilotis ground with glazed bays and columns (ground glazed + piers), eight upper storeys on a 26-bay grid of window cells in concrete-grey walls (stucco texture, group wallMaterial), the plant block and the stepped roof from the 3DBAG massing. SIMPLIFIED: the real concrete grid is a deep egg-crate (frames 40 cm deep, cells nearly all glass); ours are punched windows at 66 % of the cell in a flat wall, so the relief is shallower; the coloured frames (red, yellow) are not drawn; the pilotis are square projecting piers, not round columns. SKIPPED: the relief sculpture on the end wall (not resolvable in the crop), signs and bicycle racks (temporary), the north, east and south fronts (no panorama: blank).",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #3b4143 not used (not darker than the wall #43372e by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #3b4143 not used (not darker than the wall #43372e by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #6e7074: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5385: slot slate, rgb 107/107/107, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "layeredKit": true,
  "measured": {

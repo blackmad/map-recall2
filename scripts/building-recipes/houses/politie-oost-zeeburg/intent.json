@@ -58,7 +58,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#5b605d"
  },
  "palette": {
   "brick": "#9a9288",
@@ -72,7 +73,8 @@
   "The ground storey of this front is mostly a dark green ivy-clad wall (blank), with glazing only at the south-west curved end and tall glazed slots rising through the lower two storeys near the middle; the slots and the entrance end are not modelled (flat bay grid), so the ground is left blank.",
   "No striped band, blue lamp, canopy or garage doors are visible on this front; police components are not used.",
   "The north-west long wall (panel 27), the curved ends and the recessed upper level (panels 9, 13) have no panorama in the cache and are left to otherWalls (blank).",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #575d65 not used (not darker than the wall #665f58 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #575d65 not used (not darker than the wall #665f58 by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #5b605d: the PDOK orthophoto's reading of this pand (roof-facts 14/8418/5384: slot bitumen-dark, rgb 115/123/115, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

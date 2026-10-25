@@ -234,7 +234,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#6e767a"
  },
  "palette": {
   "brick": "#8a4a38",
@@ -251,7 +252,8 @@
   "Row split 2026-10-24 (lane large-kit-row-split, issue #30): walls[0] is the whole 77.6 m north run (panel of the 30 street surfaces) as `houses`, set by hand from the rectified w01-6 crop of the run (measure.ts rowJoints found the joints at 62.6/67.7/76.7/80.6/93.6 % and missed the brown|grey and grey|black ones, so the list is hand): the brown 1870s block with white surrounds (12 bays, 4 storeys on its own 17.0 m line), the 1.9 m glazed link, a grey 6-bay front, black/cream/black 2-bay fronts, a cream 4-bay front, a black 2-bay front, a grey 6-bay front and the taller brown corner house (4 storeys, own eaves; its window rows sit higher than its neighbours'). Colours are the crop's raw wall medians per house (2-means on luminance, the larger cluster), hence measured.groups [0]. Row coherence clamps house 5 (black, LoD2.2 13.5 m flat) to the 12.5 m row line the photo shows. walls[1] = surface 104 (red-brick wing), walls[2] = surface 55 (1950s block), as before.",
   "Not expressed (row split): the 3DBAG gable triangles above the cornices (the photo shows set-back roofs and dormers), the white pilaster strips between houses, the brown block's white window surrounds and string courses, balconies per house, the black shop fascia band and the Albert Heijn canopy.",
   "Review 2026-10-24 (held-review): walls[1] (w02-155) brick #8a4a38 -> #73615b and walls[2] (w03-186) brick #a8654a -> #8e7561, the crops' normalised wall swatches (the red tints read as orange brick against brown-purple brick in both photos).",
-  "Giant-order lane (2026-10-24, issue #35): walls[1] (w02-155, 60 px/m): 13 bays on the white pilaster pitch (about 3.1 m on the crop), white plastered pilasters from the ground to the eaves at every bay joint (dressings.piers stone, 0.16 of the bay, 0.05 proud), paired windows in every bay on every storey (windowGroup 2, the pair 0.66 of the bay with 0.07 of brick between, 0.64 of the storey tall from 0.15): 26 window columns against the crop's 28 (the wide bays' 2 + 1 + 2 rhythm is not said). Plain lights (the transom bars put the house over 12k triangles). Still not said: the red brick segmental heads, the white rendered risalit with its arch, the white entablature at the third storey line distinct from the string courses. Not fixed here: eaves-vs-3dbag on walls[0].houses[6] and houses[9] (row split lane, #30)."
+  "Giant-order lane (2026-10-24, issue #35): walls[1] (w02-155, 60 px/m): 13 bays on the white pilaster pitch (about 3.1 m on the crop), white plastered pilasters from the ground to the eaves at every bay joint (dressings.piers stone, 0.16 of the bay, 0.05 proud), paired windows in every bay on every storey (windowGroup 2, the pair 0.66 of the bay with 0.07 of brick between, 0.64 of the storey tall from 0.15): 26 window columns against the crop's 28 (the wide bays' 2 + 1 + 2 rhythm is not said). Plain lights (the transom bars put the house over 12k triangles). Still not said: the red brick segmental heads, the white rendered risalit with its arch, the white entablature at the third storey line distinct from the string courses. Not fixed here: eaves-vs-3dbag on walls[0].houses[6] and houses[9] (row split lane, #30).",
+  "roof.flatHex #6e767a: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5385: slot slate, rgb 107/115/115, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-24",

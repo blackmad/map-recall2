@@ -126,12 +126,14 @@
   "stone": "#6e6a66"
  },
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#7a7c7a"
  },
  "notes": [
   "De Makron, Nieuwe Passeerdersstraat 278 (BAG), built 2015: a U-shaped residential block. SE front (w01-155, 2023-03-06): shops on a plinth, four brick storeys with French balconies, a set-back yellow-brick top storey, a slate-clad central tower over a metal entrance canopy lettered de MAKRON. SW canal front (w04-240, 2017-03-10): same grammar over the Nieuwe Passeerdersstraat canal. NW and NE walls have no usable photograph (candidates 0 for w03-335, w05-65).",
   "Modelled: a one-storey ground row of recessed shop windows on the SE front (deepBars) and punched-window groups on the set-back upper walls (SE and SW). The 3DBAG LoD2.2 front wall has its eaves at 5 m (roof inside is low), so the group is one storey and the upper brick floors are blank wall (blankStoreys), which hides the real four balconied floors. Not drawn: the recessed entrance, the canopy and the DE MAKRON lettering. They were authored (entrance + canopy + signage) but the entrance component's glazing bars sit 1.5 cm proud of the glass and add 1.3 m2 of coplanar overlap, over the 0.5 m2 gate for a new export; it needs a deepBars path in blockBuilding/components.ts. Also not drawn: the slate tower, French balconies, awnings.",
   "Known gate false negative: footprint-vs-bag 0.674 (survey ground 4,219 m2 vs BAG LoD0 6,262 m2: the BAG ring spans the courtyard and set-backs). Every other gate passes.",
-  "GATE STATUS: authored but NOT installable. `footprint-vs-bag` fails at IoU 0.674: the 3DBAG LoD2.2 ground (4,219 m2, one ring, no courtyard) lies wholly inside the BAG/LoD0 outline (6,262 m2), so the shell itself omits a third of the BAG footprint. Needs a decision on which footprint is right before install."
+  "GATE STATUS: authored but NOT installable. `footprint-vs-bag` fails at IoU 0.674: the 3DBAG LoD2.2 ground (4,219 m2, one ring, no courtyard) lies wholly inside the BAG/LoD0 outline (6,262 m2), so the shell itself omits a third of the BAG footprint. Needs a decision on which footprint is right before install.",
+  "roof.flatHex #7a7c7a: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 123/123/115, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

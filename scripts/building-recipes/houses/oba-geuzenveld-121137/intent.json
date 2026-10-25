@@ -139,7 +139,8 @@
  "notes": [
   "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
   "Panels left blank by the draft: 57 (5.8 m, unnamed panel under 8 m); 30 (18.9 m, over 8 groups); 18 (18.8 m, over 8 groups); 91 (4.6 m, unnamed panel under 8 m); 20 (3.3 m, unnamed panel under 8 m); 26 (3.4 m, unnamed panel under 8 m); 16 (3.4 m, unnamed panel under 8 m); 32 (3.1 m, unnamed panel under 8 m); 15 (2.4 m, unnamed panel under 8 m); 44 (2.4 m, unnamed panel under 8 m); 76 (23.8 m, over 8 groups); 4 (15.7 m, over 8 groups); 60 (22.1 m, over 8 groups); 54 (10.3 m, over 8 groups); 81 (6.6 m, unnamed panel under 8 m); 61 (5.3 m, unnamed panel under 8 m); 85 (11.4 m, under 3 m tall); 79 (3.7 m, unnamed panel under 8 m); 78 (3.7 m, unnamed panel under 8 m); 17 (6.5 m, unnamed panel under 8 m); 62 (6.2 m, unnamed panel under 8 m); 12 (6.2 m, unnamed panel under 8 m); 86 (6.2 m, under 3 m tall); 80 (5.9 m, under 3 m tall); 63 (5.7 m, under 3 m tall); 74 (5.6 m, under 3 m tall); 87 (4.5 m, unnamed panel under 8 m); 38 (5 m, under 3 m tall); 56 (4.3 m, under 3 m tall); 70 (3.3 m, under 3 m tall); 36 (2.1 m, unnamed panel under 8 m); 73 (2.9 m, under 3 m tall); 67 (2 m, under 3 m tall).",
-  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 3, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[3] glass #464850 not used (not darker than the wall #3e4047 by 10 L*, or tinted): kit glass kept; walls[5] glass #51564a not used (not darker than the wall #6f695f by 10 L*, or tinted): kit glass kept; unphotographed walls take #3e4047 (brick), the area-weighted median of groups 3, 5."
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 3, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[3] glass #464850 not used (not darker than the wall #3e4047 by 10 L*, or tinted): kit glass kept; walls[5] glass #51564a not used (not darker than the wall #6f695f by 10 L*, or tinted): kit glass kept; unphotographed walls take #3e4047 (brick), the area-weighted median of groups 3, 5.",
+  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8410/5383: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-24",
@@ -148,5 +149,9 @@
    5
   ],
   "otherWalls": true
+ },
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#87898d"
  }
 }

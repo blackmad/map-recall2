@@ -68,7 +68,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#686a6e"
  },
  "palette": {
   "brick": "#5b7189",
@@ -79,7 +80,8 @@
  "notes": [
   "Aambeeldstraat 2 / Hamerstraat 2 (BAG), a large steel-framed hall complex (3DBAG: built 1910, roof max 18.9 m). North fronts (w04-349, 2022-05-11) and west fronts (w03-259, 2024-10-22) show blue-grey steel cladding with a white concrete pier every ~20 m and a continuous ribbon-window band under the eaves, behind a hedge.",
   "Modelled as ribbon-windows on the north and west runs (2 storeys, 12 bays, 3.5 cm proud bars), ground blank. The walls facing south and east (w02-169, w05-79, w06-259) have no panorama and stay blank. Not modelled: the pitched shed roof ribs, the loading doors, hedge and fence.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #5d6661 not used (not darker than the wall #585955 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #5d6661 not used (not darker than the wall #585955 by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #686a6e: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5383: slot slate, rgb 99/99/99, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",
