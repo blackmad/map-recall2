@@ -49054,6 +49054,525 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-17T09:01:23.834Z"
+    },
+    {
+      "id": "ordinary-0363100012080630",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012080630",
+      "name": "Soembawastraat 63, Amsterdam (Montessori Lyceum Oostpoort at this address; the building carries a Valentijnschool sign): a 1932 Amsterdam School school of dark purple-brown brick, three storeys of cream-framed multi-pane windows under a deep cream cornice with an attic frieze of small windows and a hipped tile roof, a stone-framed entrance beside a tall stair window",
+      "hash": "28b91ef54bdb814504686a10ce7d645a0e85ae490e64c701f9029cf988f7b21d",
+      "sha256": "28b91ef54bdb814504686a10ce7d645a0e85ae490e64c701f9029cf988f7b21d",
+      "meshHash": "a48b786009c7127a",
+      "bytes": 410844,
+      "triangles": 5529,
+      "materials": 10,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -16.739,
+          0,
+          -10.547
+        ],
+        "max": [
+          12.35,
+          18.573,
+          11.611
+        ]
+      },
+      "anchor": [
+        4.9439715,
+        52.3630648
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9441523,
+              52.3631111
+            ],
+            [
+              4.9440951,
+              52.3631188
+            ],
+            [
+              4.9440948,
+              52.3631181
+            ],
+            [
+              4.9437933,
+              52.3631584
+            ],
+            [
+              4.9437298,
+              52.3629807
+            ],
+            [
+              4.9438769,
+              52.3629601
+            ],
+            [
+              4.9439091,
+              52.36305
+            ],
+            [
+              4.9441203,
+              52.3630212
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 18.57,
+      "height": 18.57,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-oostpoort-montessori-080630.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012080630"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "oostpoort-montessori-080630",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012080630/w02-283.jpg",
+          "staging/pand-reference-walls/0363100012080630/w01-13.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 3st 8b",
+          "brick-bay-grid 3st 16b",
+          "brick-bay-grid 3st 2b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[1] not confirmed by the photo (FAIL (wall dL +0.16; glazing  mean 0.25 vs photo 0.39)); inferred: backlit crop with a lime tree in front, window heights measured from the panorama",
+        "walls[2] not confirmed by the photo (NO EVIDENCE (obliquity 45.9 deg > 45)); inferred: 45.9 deg oblique, same system as walls[1]",
+        "Simplified: the oval sign plate, the stair window at the left edge, the attic frieze (three real window pitches 6/9/12 averaged to ten bays); the south and east walls (party and court) stay blank.",
+        "Acceptance pass 2026-10-24 (issue #45): walls[2] added for the east wall (surface 7, w04-103): the same brick with two white-framed sash windows per storey; the south walls (surfaces 2, 8, 13, 14) have no crop and stay blank."
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012080630",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T02:17:44.727Z"
+    },
+    {
+      "id": "ordinary-0363100012165427",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012165427",
+      "name": "BAG pand 0363100012165427",
+      "hash": "341ed8deca604cc701d30781b510385b9ac298d50ec6a297297f3c6ce93c7406",
+      "sha256": "341ed8deca604cc701d30781b510385b9ac298d50ec6a297297f3c6ce93c7406",
+      "meshHash": "65e68496dad59138",
+      "bytes": 691928,
+      "triangles": 8859,
+      "materials": 14,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -58.679,
+          -0.001,
+          -59.039
+        ],
+        "max": [
+          62.113,
+          23.206,
+          64.47
+        ]
+      },
+      "anchor": [
+        4.8829485,
+        52.3654008
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8835071,
+              52.3649242
+            ],
+            [
+              4.8835716,
+              52.3649608
+            ],
+            [
+              4.883512,
+              52.3650004
+            ],
+            [
+              4.8836303,
+              52.365068
+            ],
+            [
+              4.8836286,
+              52.3650692
+            ],
+            [
+              4.8837256,
+              52.3651246
+            ],
+            [
+              4.8837883,
+              52.3650837
+            ],
+            [
+              4.8838635,
+              52.3651264
+            ],
+            [
+              4.8838339,
+              52.3651457
+            ],
+            [
+              4.8838328,
+              52.3651451
+            ],
+            [
+              4.8838028,
+              52.3651644
+            ],
+            [
+              4.8838199,
+              52.3651742
+            ],
+            [
+              4.8836893,
+              52.3652598
+            ],
+            [
+              4.8836722,
+              52.36525
+            ],
+            [
+              4.8834514,
+              52.3653941
+            ],
+            [
+              4.8834725,
+              52.3654061
+            ],
+            [
+              4.8833433,
+              52.3654914
+            ],
+            [
+              4.8833222,
+              52.3654794
+            ],
+            [
+              4.8832928,
+              52.3654988
+            ],
+            [
+              4.8832938,
+              52.3654994
+            ],
+            [
+              4.8831326,
+              52.3656044
+            ],
+            [
+              4.8831315,
+              52.3656038
+            ],
+            [
+              4.8831017,
+              52.3656232
+            ],
+            [
+              4.8831188,
+              52.3656331
+            ],
+            [
+              4.8829883,
+              52.3657177
+            ],
+            [
+              4.8829713,
+              52.3657079
+            ],
+            [
+              4.8829115,
+              52.3657471
+            ],
+            [
+              4.8829097,
+              52.3657461
+            ],
+            [
+              4.8826268,
+              52.36593
+            ],
+            [
+              4.8823896,
+              52.3658435
+            ],
+            [
+              4.8823888,
+              52.3658443
+            ],
+            [
+              4.8823023,
+              52.3658138
+            ],
+            [
+              4.8823031,
+              52.3658129
+            ],
+            [
+              4.8822272,
+              52.3657864
+            ],
+            [
+              4.882228,
+              52.3657856
+            ],
+            [
+              4.8821512,
+              52.3657587
+            ],
+            [
+              4.8821504,
+              52.3657595
+            ],
+            [
+              4.8820868,
+              52.3657372
+            ],
+            [
+              4.8820833,
+              52.3657238
+            ],
+            [
+              4.8821322,
+              52.3656901
+            ],
+            [
+              4.8821334,
+              52.3656908
+            ],
+            [
+              4.8821648,
+              52.3656696
+            ],
+            [
+              4.8821635,
+              52.365669
+            ],
+            [
+              4.8822112,
+              52.3656348
+            ],
+            [
+              4.8822125,
+              52.3656354
+            ],
+            [
+              4.8823859,
+              52.3655184
+            ],
+            [
+              4.8823847,
+              52.3655177
+            ],
+            [
+              4.882434,
+              52.365484
+            ],
+            [
+              4.8824352,
+              52.3654846
+            ],
+            [
+              4.8824391,
+              52.365482
+            ],
+            [
+              4.8824385,
+              52.3654816
+            ],
+            [
+              4.8825021,
+              52.3654379
+            ],
+            [
+              4.8825033,
+              52.3654386
+            ],
+            [
+              4.88263,
+              52.3653515
+            ],
+            [
+              4.8826546,
+              52.3653649
+            ],
+            [
+              4.8828739,
+              52.3652235
+            ],
+            [
+              4.882846,
+              52.3652078
+            ],
+            [
+              4.8829733,
+              52.3651212
+            ],
+            [
+              4.8830037,
+              52.3651379
+            ],
+            [
+              4.8832248,
+              52.3649939
+            ],
+            [
+              4.8831902,
+              52.3649745
+            ],
+            [
+              4.883314,
+              52.3648917
+            ],
+            [
+              4.8833128,
+              52.3648911
+            ],
+            [
+              4.8833764,
+              52.3648489
+            ],
+            [
+              4.8833775,
+              52.3648496
+            ],
+            [
+              4.883417,
+              52.3648233
+            ],
+            [
+              4.8835577,
+              52.3648907
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 23.21,
+      "height": 23.21,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-pand-165427.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012165427"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "pand-165427",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012165427/w01-47L.jpg",
+          "source-data://pand-reference-walls/0363100012165427/w02-47.jpg",
+          "source-data://pand-reference-walls/0363100012165427/w07-47L.jpg",
+          "source-data://pand-reference-walls/0363100012165427/w03-227.jpg",
+          "source-data://pand-reference-walls/0363100012165427/w05-330L.jpg",
+          "pano-2020-08-31-w01-47",
+          "pano-2021-12-29-w03-227L",
+          "pano-2021-09-09-w04-227",
+          "pano-2020-01-08-w04-227L",
+          "pano-2017-07-07-w05-330",
+          "pano-2021-09-09-w06-228",
+          "pano-2020-01-08-w06-228L",
+          "pano-2017-07-07-w07-47",
+          "pano-2017-07-07-w08-47",
+          "pano-2021-01-22-w08-47L",
+          "pano-2021-09-09-w09-229",
+          "pano-2020-01-08-w09-229L",
+          "pano-2021-09-09-w10-228",
+          "pano-2020-01-08-w10-228L",
+          "pano-2020-08-31-w11-47",
+          "pano-2021-01-22-w11-47L",
+          "pano-2020-08-31-w12-48",
+          "pano-2021-01-22-w12-48L"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0].houses[0]:pass",
+          "eaves-vs-3dbag/walls[0].houses[1]:pass",
+          "eaves-vs-3dbag/walls[0].houses[2]:pass",
+          "eaves-vs-3dbag/walls[0].houses[3]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
+          "eaves-vs-3dbag/walls[5]:pass",
+          "storey-height/walls[5]:pass",
+          "eaves-vs-3dbag/walls[6]:pass",
+          "storey-height/walls[6]:pass",
+          "eaves-vs-3dbag/walls[7]:pass",
+          "storey-height/walls[7]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 3st 11b",
+          "brick-bay-grid 4st 7b",
+          "brick-bay-grid 3st 5b",
+          "brick-bay-grid 4st 5b",
+          "brick-bay-grid 4st 5b",
+          "brick-bay-grid 2st 6b",
+          "brick-bay-grid 3st 8b",
+          "brick-bay-grid 4st 6b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] likeness WARN (wall family unresolved (#4f4c4d is dark and neutral, brick courses not resolved): lightness and hue judged only; mask IoU 0.436 < 0.45).",
+        "walls[1] likeness WARN (wall family unresolved (#413f3d is dark and neutral, brick courses not resolved): lightness and hue judged only; mask IoU 0.367 < 0.45).",
+        "walls[2] not confirmed by the photo (NO EVIDENCE (camera 5.1 m < 8 m from a 18 m wall)); inferred: camera 5 m from an 18 m wall, front judged by review against the panorama",
+        "walls[3] not confirmed by the photo (NO PHOTO); inferred: no photo archived for this wall",
+        "walls[4] likeness WARN (wall family unresolved (#414040 is dark and neutral, brick courses not resolved): lightness and hue judged only).",
+        "walls[5] likeness WARN (mask IoU 0.226 < 0.45).",
+        "walls[6] likeness WARN (mask IoU 0.42 < 0.45).",
+        "walls[7] not confirmed by the photo (NO PHOTO); inferred: no photo archived for this wall",
+        "Panels left blank by the draft: 77 (21.7 m, over 8 groups); 20 (12.9 m, over 8 groups); 14 (12.6 m, over 8 groups); 32 (12.9 m, over 8 groups); 71 (12.7 m, over 8 groups); 207 (14.3 m, over 8 groups); 217 (12.6 m, over 8 groups); 143 (13 m, over 8 groups); 5 (11 m, over 8 groups); 95 (11.1 m, over 8 groups); 3 (12.2 m, party wall); 185 (11 m, over 8 groups); 254 (10.5 m, over 8 groups); 76 (13 m, over 8 groups); 9 (9 m, over 8 groups); 227 (9.9 m, over 8 groups); 15 (7 m, party wall); 242 (9.5 m, over 8 groups); 107 (12.5 m, over 8 groups); 249 (12.6 m, over 8 groups); 48 (6.8 m, unnamed panel under 8 m); 272 (8.5 m, over 8 groups); 35 (6 m, unnamed panel under 8 m); 244 (7.6 m, unnamed panel under 8 m); 278 (7 m, unnamed panel under 8 m); 6 (6 m, unnamed panel under 8 m); 8 (6.2 m, unnamed panel under 8 m); 123 (5.2 m, unnamed panel under 8 m); 50 (6 m, unnamed panel under 8 m); 359 (5.6 m, unnamed panel under 8 m); 180 (5.1 m, unnamed panel under 8 m); 52 (6 m, unnamed panel under 8 m); 38 (5 m, unnamed panel under 8 m); 55 (5 m, unnamed panel under 8 m); 266 (5.5 m, unnamed panel under 8 m); 12 (6 m, unnamed panel under 8 m); 62 (6.5 m, unnamed panel under 8 m); 98 (19.4 m, over 8 groups); 223 (9.3 m, over 8 groups); 56 (5 m, unnamed panel under 8 m); 46 (5 m, unnamed panel under 8 m); 403 (7.3 m, unnamed panel under 8 m); 214 (18.5 m, over 8 groups); 379 (6.9 m, unnamed panel under 8 m); 340 (4 m, unnamed panel under 8 m); 402 (4.5 m, unnamed panel under 8 m); 75 (13.4 m, over 8 groups); 158 (5.1 m, unnamed panel under 8 m); 81 (6.4 m, unnamed panel under 8 m); 208 (7.4 m, unnamed panel under 8 m); 296 (9.3 m, over 8 groups); 193 (3 m, unnamed panel under 8 m); 17 (3 m, unnamed panel under 8 m); 124 (3.6 m, unnamed panel under 8 m); 252 (2.9 m, unnamed panel under 8 m); 406 (2.9 m, unnamed panel under 8 m); 309 (3.4 m, unnamed panel under 8 m); 66 (3.2 m, unnamed panel under 8 m); 240 (4.8 m, unnamed panel under 8 m); 384 (2.9 m, unnamed panel under 8 m); 247 (2.9 m, unnamed panel under 8 m); 132 (4.3 m, unnamed panel under 8 m); 389 (2.7 m, unnamed panel under 8 m); 352 (2.6 m, unnamed panel under 8 m); 106 (3.2 m, unnamed panel under 8 m); 181 (2.1 m, unnamed panel under 8 m); 292 (2.3 m, unnamed panel under 8 m); 241 (2.6 m, unnamed panel under 8 m); 351 (6.3 m, unnamed panel under 8 m); 4 (4 m, unnamed panel under 8 m); 171 (12.4 m, over 8 groups); 391 (2.5 m, unnamed panel under 8 m); 390 (2.5 m, unnamed panel under 8 m); 146 (3.9 m, unnamed panel under 8 m); 350 (2.4 m, unnamed panel under 8 m); 382 (10.4 m, over 8 groups); 93 (2.4 m, unnamed panel under 8 m); 405 (2.2 m, unnamed panel under 8 m); 103 (3.4 m, unnamed panel under 8 m); 91 (2.8 m, unnamed panel under 8 m); 145 (3.1 m, unnamed panel under 8 m); 79 (2.6 m, unnamed panel under 8 m); 300 (2.1 m, unnamed panel under 8 m); 101 (3.2 m, unnamed panel under 8 m); 399 (3.6 m, unnamed panel under 8 m); 330 (4.9 m, unnamed panel under 8 m); 326 (3 m, unnamed panel under 8 m); 310 (3.1 m, unnamed panel under 8 m); 256 (2.2 m, unnamed panel under 8 m); 97 (2.8 m, unnamed panel under 8 m); 10 (6.2 m, unnamed panel under 8 m); 100 (4.3 m, unnamed panel under 8 m); 285 (2.7 m, unnamed panel under 8 m); 328 (2.4 m, unnamed panel under 8 m); 157 (5.6 m, unnamed panel under 8 m); 88 (3.5 m, unnamed panel under 8 m); 92 (5.1 m, unnamed panel under 8 m); 128 (3 m, unnamed panel under 8 m); 67 (4.7 m, unnamed panel under 8 m); 215 (2.3 m, unnamed panel under 8 m); 142 (5.5 m, under 3 m tall); 129 (2.3 m, unnamed panel under 8 m); 133 (7.3 m, under 3 m tall); 383 (2.8 m, unnamed panel under 8 m); 253 (4.8 m, under 3 m tall); 331 (4 m, under 3 m tall); 327 (3.2 m, unnamed panel under 8 m); 149 (3.3 m, under 3 m tall); 354 (2.1 m, unnamed panel under 8 m); 112 (2.4 m, unnamed panel under 8 m); 365 (5.1 m, under 3 m tall); 243 (2.6 m, under 3 m tall); 159 (10.2 m, under 3 m tall); 110 (3 m, under 3 m tall); 370 (3 m, under 3 m tall); 179 (3.9 m, under 3 m tall); 281 (3.4 m, under 3 m tall); 269 (2.3 m, under 3 m tall); 284 (4.3 m, under 3 m tall); 368 (5 m, under 3 m tall); 231 (2.5 m, under 3 m tall); 86 (4.1 m, under 3 m tall); 63 (2.1 m, under 3 m tall); 139 (2.2 m, under 3 m tall); 117 (3 m, under 3 m tall); 347 (2.5 m, under 3 m tall); 212 (4.1 m, under 3 m tall); 204 (2.6 m, under 3 m tall); 147 (2.3 m, under 3 m tall); 195 (5.2 m, under 3 m tall); 72 (2.9 m, under 3 m tall); 2 (2.1 m, under 3 m tall); 283 (4 m, under 3 m tall); 22 (2.2 m, under 3 m tall); 191 (3.5 m, under 3 m tall); 307 (2.5 m, under 3 m tall); 150 (2 m, under 3 m tall); 162 (2.3 m, under 3 m tall); 0 (2.6 m, under 3 m tall); 141 (2.3 m, under 3 m tall); 228 (2.4 m, under 3 m tall); 163 (2.1 m, under 3 m tall); 120 (2.7 m, under 3 m tall); 122 (16.5 m, under 3 m tall); 308 (2.1 m, under 3 m tall); 168 (3 m, under 3 m tall); 229 (2.9 m, under 3 m tall); 400 (2.8 m, under 3 m tall); 148 (5.2 m, under 3 m tall); 87 (2.1 m, under 3 m tall); 386 (2.1 m, under 3 m tall); 216 (5.4 m, under 3 m tall); 341 (6 m, under 3 m tall); 130 (5 m, under 3 m tall); 69 (7.3 m, under 3 m tall); 238 (2.2 m, under 3 m tall); 197 (3.4 m, under 3 m tall); 213 (2 m, under 3 m tall); 135 (5 m, under 3 m tall); 324 (2.5 m, under 3 m tall); 332 (2.4 m, under 3 m tall); 37 (2.6 m, under 3 m tall); 372 (3.7 m, under 3 m tall); 220 (12.7 m, under 3 m tall); 360 (2 m, under 3 m tall); 355 (2.9 m, under 3 m tall); 219 (9 m, under 3 m tall); 329 (2 m, under 3 m tall); 395 (4.5 m, under 3 m tall); 325 (2.3 m, under 3 m tall).",
+        "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 1, 4, 5, 6 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #393e44 not used (not darker than the wall #4f4c4d by 10 L*, or tinted): kit glass kept; walls[1] glass #24323b not used (not darker than the wall #413f3d by 10 L*, or tinted): kit glass kept; walls[1] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand); walls[4] glass #2c3b4e not used (not darker than the wall #414040 by 10 L*, or tinted): kit glass kept; walls[4] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand); walls[5] glass #7e7d7c not used (not darker than the wall #756e77 by 10 L*, or tinted): kit glass kept; walls[5] wall split #938376 | #685f69 at 62 % (dE 19.1); walls[6] glass #4a4642 not used (not darker than the wall #574f49 by 10 L*, or tinted): kit glass kept; walls[6] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand); unphotographed walls take #4f4c4d (brick), the area-weighted median of groups 0, 1, 4, 5, 6."
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165427",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T02:17:53.984Z"
     }
   ]
 }

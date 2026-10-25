@@ -1396,7 +1396,7 @@
     4.9438059,
     52.363092
    ],
-   "status": "held",
+   "status": "installed",
    "house": "oostpoort-montessori-080630",
    "notes": [
     "2026-10-24T05:58 draft: hand-authored intent kept",
@@ -1411,7 +1411,8 @@
     "2026-10-24T20:27 compiled: 4767 tris, gates pass, likeness g0:FAIL g1:FAIL",
     "2026-10-24T20:28 compiled: 5199 tris, gates pass, likeness g0:FAIL g1:FAIL",
     "2026-10-24T20:37 compiled: 5529 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO EVIDENCE",
-    "2026-10-24 integrator: Opus review passed it, but the likeness gate refuses (street walls FAIL on glazing band and window shape); held until the gate or the intent agrees."
+    "2026-10-24 integrator: Opus review passed it, but the likeness gate refuses (street walls FAIL on glazing band and window shape); held until the gate or the intent agrees.",
+    "2026-10-25 installed with the likeness gate running (MAP_RECALL_SOURCE_DATA set); inferred groups per #48 review"
    ],
    "owner": "factory-1",
    "claimedAt": "2026-10-24T05:58:45.273Z",
@@ -2397,7 +2398,7 @@
     4.88297355,
     52.365377050000006
    ],
-   "status": "held",
+   "status": "installed",
    "house": "pand-165427",
    "owner": "factory-2",
    "claimedAt": "2026-10-24T06:51:20.065Z",
@@ -2411,7 +2412,8 @@
     "2026-10-24T20:19 compiled: 9623 tris, gates pass, likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO",
     "2026-10-24T20:20 compiled: 9529 tris, gates pass, likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO",
     "2026-10-24T20:20 compiled: 8859 tris, gates pass, likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO",
-    "2026-10-24 integrator: Opus review passed it, but the likeness gate refuses (street walls FAIL on glazing band and window shape); held until the gate or the intent agrees."
+    "2026-10-24 integrator: Opus review passed it, but the likeness gate refuses (street walls FAIL on glazing band and window shape); held until the gate or the intent agrees.",
+    "2026-10-25 installed with the likeness gate running (MAP_RECALL_SOURCE_DATA set); inferred groups per #48 review"
    ],
    "updatedAt": "2026-10-24T20:20:41.969Z",
    "report": {

@@ -1,10 +1,10 @@
 {
  "version": 1,
- "generatedAt": "2026-10-25T00:56:24.604Z",
+ "generatedAt": "2026-10-25T02:18:28.831Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
- "headline": 496,
- "strict": 157,
+ "headline": 497,
+ "strict": 158,
  "byTier": {
   "bespoke": {
    "models": 334,
@@ -19,9 +19,9 @@
    "unreviewed": 0
   },
   "largeRecipe": {
-   "models": 92,
-   "counts": 47,
-   "strict": 47,
+   "models": 94,
+   "counts": 48,
+   "strict": 48,
    "unreviewed": 18
   },
   "landmarkKit": {
@@ -35,7 +35,7 @@
   "legacy-gallery": 403,
   "likeness-gate": 74,
   "none": 328,
-  "strip-review": 110
+  "strip-review": 112
  },
  "rows": [
   {
@@ -6930,6 +6930,36 @@
    "review": "likeness-gate",
    "counts": false,
    "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012080630",
+   "name": "Soembawastraat 63, Amsterdam (Montessori Lyceum Oostpoort at this address; the building carries a Valentijnschool sign): a 1932 Amsterdam School school of dark purple-brown brick, three storeys of cream-framed multi-pane windows under a deep cream cornice with an attic frieze of small windows and a hipped tile roof, a stone-framed entrance beside a tall stair window",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012080630"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012165427",
+   "name": "BAG pand 0363100012165427",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012165427"
+   ],
+   "namedPoi": false,
+   "rideVisible": true,
+   "held": false,
+   "review": "strip-review",
+   "reviewDate": "2026-10-24",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Westerkerk",

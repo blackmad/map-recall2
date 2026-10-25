@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Centraal ground and two factory installs (2026-10-25, #53, #48).** AHN relief
+drew Stationsplein's stairwells as 3.7–4.5 m craters and filled Centraal's
+glass-roof holes from the +5 m track bed. `heightField.ts` gained findPits /
+dropSpecks / capLargeHoles (unit-tested); `repair-ground-pits.ts` levelled
+3,620 pits in 314 of 413 tiles without an AHN download; three named relief
+regressions in `check-ground-cells --relief` (2–98 % spread 2.11/1.57/3.20 m
+→ 0.44/0.76/1.17 m). The gate-vs-review lane made the likeness gate read
+Oostpoort Montessori as the review did; Oostpoort and pand 165427 installed
+with the gate running (`MAP_RECALL_SOURCE_DATA` set), inferred groups only
+where the photo cannot judge (oblique, no archived photo). Metis stays held.
+Census headline 497.
+
 **Cladding and curtain walls (2026-10-25, #49).** Large tier: `walls[].cladding`
 (ribs, boards, louvres, panels, paint) over a height band of a wall split,
 with proud profile lines kept round openings; byte-identical when absent.
