@@ -999,6 +999,18 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
         }
       }
     }
+    if (sys.groundPiers) {
+      const gp = sys.groundPiers, g0 = levels[0], top = Math.min(g0 + gp.top, p.vMax - 0.3);
+      // the strip as closed boxes of at most 8 m (no open boundary loop over the GLB audit's 30 m)
+      if (gp.plinth) for (const [a, b] of intervals(p, g0, g0 + gp.plinth.h)) if (b - a > 0.3) {
+        const n = Math.ceil((b - a) / 8);
+        for (let k = 0; k < n; k++) { const part = c.part(); c.box(gp.plinth.slot, a + (b - a) * k / n, a + (b - a) * (k + 1) / n, g0, g0 + gp.plinth.h, 0, 0.02, part); }
+      }
+      for (let b = gp.first; b <= nb; b += Math.max(1, gp.every)) {
+        const u = p.uMin + W * b / nb, a = Math.max(p.uMin, u - gp.w / 2), bb = Math.min(p.uMax, u + gp.w / 2);
+        if (bb - a > 0.05 && top > g0 + 0.5 && fitsPanel(p, rectPoly(a, bb, g0, top))) { const part = c.part(); c.box(gp.slot, a, bb, g0, top, 0, gp.out, part); }
+      }
+    }
     finish(levels);
   }
   // signs

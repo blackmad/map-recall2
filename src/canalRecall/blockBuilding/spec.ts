@@ -190,6 +190,8 @@ export interface System {
    * glazing at its back, a rail across it). The cells it covers draw nothing; panels with fewer bays or floors skip it.
    */
   recessBands?: RecessBand[];
+  /** dark columns standing in front of the ground storey on every `every`-th bay edge from `first`, and a strip along the ground (GitHub #86; opt-in) */
+  groundPiers?: GroundPiers;
 }
 
 export interface RecessBand { floors: [number, number]; bays: [number, number]; sill: number; head: number; inset: number; win: WinParams }
@@ -210,3 +212,10 @@ export interface BlockSpec {
   roofSlot?: Slot; wallSlot?: Slot;
   notes?: string;
 }
+
+/**
+ * Ground piers (GitHub #86, the Da Vinci south wing): boxes `w` m wide, `out` m proud, from the ground to `top` m, on bay
+ * edges `first`, `first + every`, ... (edge 0 = the panel's left end); with `plinth` a flat strip `h` m tall along the
+ * ground in its own slot (a vent grille under brick infill).
+ */
+export interface GroundPiers { every: number; first: number; w: number; out: number; top: number; slot: Slot; plinth?: { h: number; slot: Slot } }

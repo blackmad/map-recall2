@@ -14,7 +14,7 @@ import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -398,6 +398,21 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.baysPerStorey === undefined) problems.push(`${at}.loggiaBands needs baysPerStorey`);
       if (!['brick-bay-grid', 'ribbon-windows', 'blank'].includes(w.system)) problems.push(`${at}.loggiaBands: needs a brick-bay-grid, ribbon-windows or blank group (a wall to cut them into)`);
       if (w.houses) problems.push(`${at}.loggiaBands: not with houses (row segments)`);
+    }
+    if (w.groundPiers !== undefined) {
+      const gp = w.groundPiers, at2 = `${at}.groundPiers`;
+      for (const key of Object.keys(gp ?? {})) if (!['every', 'first', 'w', 'colour', 'plinth'].includes(key)) problems.push(`${at2}.${key}: unknown field (every, first, w, colour, plinth)`);
+      if (!(Number.isInteger(gp?.every) && gp.every >= 1 && gp.every <= 40)) problems.push(`${at2}.every: whole number of bays 1..40`);
+      if (gp?.first !== undefined && !(Number.isInteger(gp.first) && gp.first >= 0 && gp.first <= 80)) problems.push(`${at2}.first: bay edge 0..80`);
+      if (!(typeof gp?.w === 'number' && gp.w >= 0.03 && gp.w <= 0.6)) problems.push(`${at2}.w: fraction 0.03..0.6 of the bay`);
+      if (!(typeof gp?.colour === 'string' && /^#[0-9a-f]{6}$/i.test(gp.colour))) problems.push(`${at2}.colour: #rrggbb`);
+      if (gp?.plinth !== undefined) {
+        for (const key of Object.keys(gp.plinth ?? {})) if (!['h', 'colour'].includes(key)) problems.push(`${at2}.plinth.${key}: unknown field (h, colour)`);
+        if (!(typeof gp.plinth?.h === 'number' && gp.plinth.h >= 0.05 && gp.plinth.h <= 0.6)) problems.push(`${at2}.plinth.h: fraction 0.05..0.6 of the ground storey`);
+        if (!(typeof gp.plinth?.colour === 'string' && /^#[0-9a-f]{6}$/i.test(gp.plinth.colour))) problems.push(`${at2}.plinth.colour: #rrggbb`);
+      }
+      if (w.baysPerStorey === undefined) problems.push(`${at2} needs baysPerStorey`);
+      if (w.piers) problems.push(`${at2}: not with piers (full-height piers on every bay)`);
     }
     if (w.plinth !== undefined) {
       const pl = w.plinth, at2 = `${at}.plinth`;

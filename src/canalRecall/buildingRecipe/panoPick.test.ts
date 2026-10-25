@@ -54,3 +54,10 @@ test('closeCameraSpan: a segmented mosaic of near cameras is judged per crop, no
   assert.equal(closeCameraSpan([piece('a', 0, 10, 5), piece('b', 10, 30, 20), piece('a', 30, 38, 5)]), 18);
   assert.equal(closeCameraSpan([piece('b', 0, 30, 20)]), 0);
 });
+
+test('insetWall: the line moves inward against the normal, length and normal kept; 0 is the wall itself', async () => {
+  const {insetWall} = await import('./panoPick.ts');
+  const w = {a: {x: 0, y: 0}, b: {x: 10, y: 0}, len: 10, mid: {x: 5, y: 0}, nx: 0, ny: -1};
+  assert.equal(insetWall(w, 0), w);
+  assert.deepEqual(insetWall(w, 0.6), {...w, a: {x: 0, y: 0.6}, b: {x: 10, y: 0.6}, mid: {x: 5, y: 0.6}});
+});

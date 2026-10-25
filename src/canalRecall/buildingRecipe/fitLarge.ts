@@ -424,6 +424,9 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     // A side light's own frame colour (sideLight.colour, GitHub #86) and loggia-band rails in their own colour: joinery slots of their own.
     const sashSlot = w.sideLight ? `frame@sl${gi}` : undefined;
     if (sashSlot) palette[sashSlot] = swatch(w.sideLight!.colour);
+    const gpSlot = w.groundPiers ? `frame@gp${gi}` : undefined, gpPlinth = w.groundPiers?.plinth ? `frame@gpp${gi}` : undefined;
+    if (gpSlot) palette[gpSlot] = swatch(w.groundPiers!.colour);
+    if (gpPlinth) palette[gpPlinth] = swatch(w.groundPiers!.plinth!.colour);
     const bandRail = (k: number) => { const c = w.loggiaBands?.[k]?.colour; if (!c) return slots.frame; const sl = `rail@lb${gi}k${k}`; palette[sl] = swatch(c); return sl; };
     const boxFrame = w.windowBox?.frame ? `frame@wb${gi}` : undefined;
     if (boxFrame) palette[boxFrame] = swatch(w.windowBox!.frame!);
@@ -508,6 +511,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
         return {storeys: [b.storeys[0], b.storeys[1]] as [number, number], bays: [b.bays[0], b.bays[1]] as [number, number], sillM: r3((b.sill ?? LOGGIA_BAND.sill) * h0), headM: r3((b.head ?? LOGGIA_BAND.head) * h1),
           deepM: r3((b.deep ?? LOGGIA_BAND.deep) * h0), lights: b.lights ?? Math.max(1, Math.round(n / LOGGIA_BAND.lightM)), rail: b.rail ?? 'glass', railSlot: bandRail(k), ...(b.back ? {back: b.back.map(r => ({...r}))} : {})};
       })} : {}),
+      ...(w.groundPiers ? {groundPiers: {every: w.groundPiers.every, first: w.groundPiers.first ?? 0, w: r3(w.groundPiers.w * pitchM), out: 0.12, top: r3(st.heights[0]), slot: gpSlot!,
+        ...(gpPlinth ? {plinth: {h: r3(w.groundPiers.plinth!.h * st.heights[0]), slot: gpPlinth}} : {})}} : {}),
       ...(w.loggias ? {loggias: {storeys: [...w.loggias.storeys], ...(w.loggias.bays ? {bays: [...w.loggias.bays]} : {}), w: w.loggias.w ?? LOGGIA.w, h: w.loggias.h ?? LOGGIA.h, sill: w.loggias.sill ?? LOGGIA.sill, deep: w.loggias.deep ?? LOGGIA.deep, rail: w.loggias.rail ?? LOGGIA.rail, lights: w.loggias.lights ?? LOGGIA.lights, railSlot: railSlot ?? slots.frame}, bays} : {})};
     systems[specSystem] = largeSystem(w.system, sysOpts);
     // Row split: per house its own eaves (the 3DBAG wall over its span, row-coherent), storey lines, bays, window shape

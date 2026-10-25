@@ -6,7 +6,7 @@
  * Slot names are block-kit slots; `largeCompile.ts` maps them to recipe material slots (brick/stucco, stone,
  * frame, door, glass, accent, roofTile/slate/bitumen) with the palette colour as tint.
  */
-import type { Item, RecessBand, Row, System, WinParams } from './spec.ts';
+import type { GroundPiers, Item, RecessBand, Row, System, WinParams } from './spec.ts';
 import type { ArchKind, ArchParams } from './arch.ts';
 
 /**
@@ -121,6 +121,8 @@ export interface SystemFit {
   bayWindows?: BayWindowsFit[];
   /** recessed loggia bands across a run of bays and storeys (intent `loggiaBands`; opt-in) */
   loggiaBands?: LoggiaBandFit[];
+  /** dark ground-storey columns on every n-th bay edge and a grille strip along the ground (intent `groundPiers`; opt-in) */
+  groundPiers?: GroundPiers;
 }
 
 /** Side light (compose `WinParams.sash`): on `storeys` (0 = ground; default every storey) each punched window's light. */
@@ -506,5 +508,5 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
         frameW: f.frames === false ? 0 : 0.06, ...(f.deepBars ? { barD: 0.035 } : {}), loggia: { depth: L.deepM, ...rail,
           ...(L.back ? { back: { rows: L.back.map(r => ({ lo: r.sill, hi: +(r.sill + r.h).toFixed(3), pitch: +(r.every * f.pitchM).toFixed(3), winW: +(r.w * r.every * f.pitchM).toFixed(3) })) } } : {}) } } };
   });
-  return { pitch: f.pitchM, lines: f.lines, ground, typical, bands, piers, ...(Object.keys(rowOverrides).length ? { rowOverrides } : {}), ...(recessBands.length ? { recessBands } : {}) };
+  return { pitch: f.pitchM, lines: f.lines, ground, typical, bands, piers, ...(Object.keys(rowOverrides).length ? { rowOverrides } : {}), ...(recessBands.length ? { recessBands } : {}), ...(f.groundPiers ? { groundPiers: f.groundPiers } : {}) };
 }

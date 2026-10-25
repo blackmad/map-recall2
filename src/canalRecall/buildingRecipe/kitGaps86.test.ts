@@ -121,3 +121,34 @@ test('#86 GWL compile: loggia band glass sits at the band depth behind the face,
   assert.ok(tris.length <= (intent.budgetTriangles ?? LARGE_BUDGET_TRIANGLES), `${tris.length}`);
   assert.deepEqual(evaluateLargeGates(tris, built).gates.filter(x => !x.pass).map(x => x.id), []);
 });
+
+test('#86 groundPiers: schema bounds, passed through the system only when set, posts stand on the ground storey', () => {
+  const base = raw(DV), w3 = base.walls[3];
+  const withGp = (gp: unknown, extra: object = {}) => ({...base, walls: [...base.walls.slice(0, 3), {...w3, groundPiers: gp, ...extra}, ...base.walls.slice(4)]});
+  const ok = {every: 5, first: 3, w: 0.3, colour: '#353336', plinth: {h: 0.26, colour: '#3a3935'}};
+  assert.ok(validateLargeIntent(withGp(ok)));
+  assert.throws(() => validateLargeIntent(withGp({...ok, every: 0})), /groundPiers\.every/);
+  assert.throws(() => validateLargeIntent(withGp({...ok, w: 0.9})), /groundPiers\.w/);
+  assert.throws(() => validateLargeIntent(withGp({...ok, wM: 0.4})), /wM/);
+  assert.throws(() => validateLargeIntent(withGp({...ok, plinth: {h: 0.9, colour: '#000000'}})), /plinth\.h/);
+  assert.throws(() => validateLargeIntent(withGp(ok, {piers: true})), /not with piers/);
+  const fit: SystemFit = {pitchM: 1.3, lines: [0, 3.4, 6.8], ground: 'system', slots, bays: 15};
+  assert.equal(largeSystem('brick-bay-grid', fit).groundPiers, undefined);
+  const gp = {every: 5, first: 3, w: 0.39, out: 0.12, top: 3.4, slot: 'frame@gp3', plinth: {h: 0.9, slot: 'frame@gpp3'}};
+  assert.deepEqual(largeSystem('brick-bay-grid', {...fit, groundPiers: gp}).groundPiers, gp);
+  const intent = validateLargeIntent(raw(DV)), {recipe} = fitLarge(intent, facts(DV));
+  const sys = JSON.stringify(recipe.spec);
+  assert.ok(sys.includes('"groundPiers"') && sys.includes('frame@gp3') && sys.includes('frame@gpp3'), 'walls[3] carries the posts and the grille strip');
+  const built = compileBuilding(intent, facts(DV)), g = recipe.groups[3], main = built.panels.find(p => p.index === g.mainPanel)!;
+  let posts = 0, high = 0;
+  for (const m of built.group.children as Mesh[]) {
+    if ((m.material as import('three').MeshStandardMaterial).color?.getHexString() !== '353336') continue;
+    const a = m.geometry.getAttribute('position');
+    for (let i = 0; i < a.count; i++) {
+      const d = (a.getX(i) - main.o[0]) * main.n[0] + (a.getY(i) - main.o[1]) * main.n[1] + (a.getZ(i) - main.o[2]) * main.n[2];
+      if (Math.abs(d) < 0.5) { posts++; if (a.getY(i) > g.lines[1] + 0.05) high++; }
+    }
+  }
+  assert.ok(posts >= 24, `post vertices on the south front: ${posts}`);
+  assert.equal(high, 0, 'the posts stop at the top of the ground storey');
+});

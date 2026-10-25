@@ -52253,6 +52253,156 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-25T17:41:55.982Z"
+    },
+    {
+      "id": "ordinary-0363100012090791",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012090791",
+      "name": "Nieuwpoortkade 2, Amsterdam-West (1939 works and office complex beside De Bloem windmill, south of the Haarlemmerweg, with a later office tower; BAG pand 0363100012090791)",
+      "hash": "dbc758d3e958eb24ab8ed8d76adc11cd74d04abe701cda86f66fd0a9cb588e95",
+      "sha256": "dbc758d3e958eb24ab8ed8d76adc11cd74d04abe701cda86f66fd0a9cb588e95",
+      "meshHash": "8304996bdbbd4808",
+      "bytes": 1387068,
+      "triangles": 18954,
+      "materials": 23,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -41.916,
+          -0.001,
+          -41.327
+        ],
+        "max": [
+          14.707,
+          23.686,
+          35.079
+        ]
+      },
+      "anchor": [
+        4.8592817,
+        52.3844797
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8586631,
+              52.3848379
+            ],
+            [
+              4.8586923,
+              52.3841618
+            ],
+            [
+              4.8595001,
+              52.3841752
+            ],
+            [
+              4.8594906,
+              52.3844021
+            ],
+            [
+              4.8594768,
+              52.3844019
+            ],
+            [
+              4.8594724,
+              52.3845039
+            ],
+            [
+              4.8594871,
+              52.3845041
+            ],
+            [
+              4.859471,
+              52.3848513
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 23.69,
+      "height": 23.69,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-nieuwpoortkade-2-090791.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012090791"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "nieuwpoortkade-2-090791",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012090791/w02-359.jpg",
+          "source-data://pand-reference-walls/0363100012090791/w04-89b.jpg",
+          "source-data://pand-reference-walls/0363100012090791/w05-89.jpg",
+          "source-data://pand-reference-walls/0363100012090791/w01-269.jpg",
+          "pano-2024-11-21-w01-269",
+          "pano-2024-11-21-w02-359",
+          "pano-2018-06-20-w03-179",
+          "pano-2024-11-21-w03-179L",
+          "pano-2021-03-22-w04-89",
+          "pano-2024-11-21-w05-89L",
+          "pano-2022-05-02-w06-89",
+          "pano-2021-03-22-w06-89L",
+          "source-data://pand-reference-walls/0363100012090791/w04-89x.jpg",
+          "source-data://pand-reference-walls/0363100012090791/w05-89x.jpg",
+          "source-data://pand-reference-walls/0363100012090791/w03-179i60w.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
+          "eaves-vs-3dbag/walls[5]:pass",
+          "storey-height/walls[5]:pass",
+          "eaves-vs-3dbag/walls[6]:pass",
+          "storey-height/walls[6]:pass",
+          "eaves-vs-3dbag/walls[7]:pass",
+          "storey-height/walls[7]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 2st 16b",
+          "brick-bay-grid 3st 16b",
+          "brick-bay-grid 3st 8b",
+          "brick-bay-grid+panels 3st 15b",
+          "brick-bay-grid 1st 20b",
+          "ribbon-windows+panels 2st 20b",
+          "ribbon-windows 5st 7b",
+          "brick-bay-grid 3st 8b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[2] likeness WARN (columns 8 vs photo 17).",
+        "walls[3] likeness WARN (wall family unresolved (#686763 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 15 vs photo 7; mask IoU 0.379 < 0.45).",
+        "walls[4] likeness WARN (mask IoU 0.239 < 0.45).",
+        "walls[5] likeness WARN (mask IoU 0.434 < 0.45).",
+        "walls[7] likeness WARN (columns 8 vs photo 4; mask IoU 0.308 < 0.45).",
+        "North front (w02-359, 2017-04-21, 0.6 deg; 2024-11-21 crop dropped for foliage): two storeys, a row of 16 wide white-framed windows upstairs; the ground storey has windows on the west half and a glazed recessed corner on the east; white-brick lettering 'da vinci creatieve ruimtes' across the west half (not modelled: a tenant sign).",
+        "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1, 2, 4, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4e5756 not used (not darker than the wall #67594a by 10 L*, or tinted): kit glass kept; walls[1] glass #b6c3c6 not used (not darker than the wall #f7d6a8 by 10 L*, or tinted): kit glass kept; walls[1] bays 8 from the likeness grid (padded measurement 6); walls[4] glass #323d4a not used (not darker than the wall #4a3d36 by 10 L*, or tinted): kit glass kept; walls[4] bays 20 from the likeness grid (padded measurement -); walls[5] bays 20 from the likeness grid (padded measurement 43)."
+      ],
+      "reviewState": "large-recipe-likeness-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012090791",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T19:25:00.125Z"
     }
   ]
 }

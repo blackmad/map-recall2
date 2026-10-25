@@ -1090,6 +1090,13 @@ export interface LargeWallIntent {
     /** the back a wall in the wall's brick with rows of windows (the flats' doors and windows behind a gallery): per row, from `sill` to `sill + h` of the band's height, one window `w` wide (fraction of the run) in every run of `every` bays; absent = glazed leaves */
     back?: {sill: number; h: number; every: number; w: number}[]}[];
   /**
+   * Dark columns in front of the ground storey (GitHub #86, the Da Vinci south wing's steel posts between brick infill
+   * panels): on every `every`-th bay edge from edge `first` (0 = the panel's left end), `w` of the bay pitch wide, from the
+   * ground to the top of the ground storey, in `colour`; `plinth` a strip `h` of the ground storey tall along the ground
+   * in its own `colour` (a vent grille). Needs baysPerStorey. Absent: byte-identical.
+   */
+  groundPiers?: {every: number; first?: number; w: number; colour: string; plinth?: {h: number; colour: string}};
+  /**
    * A glazed plinth under the group's system: on the listed `storeys` (default [0]; 0 = ground) one glazed opening per bay
    * (or the listed `bays`) leaving `pier` of the bay as wall, from `sill` to `sill + h` of the storey, in `lights` equal
    * lights with its own mullion pitch, optionally a transom at `transom` of the glazing height; the plinth storeys are
