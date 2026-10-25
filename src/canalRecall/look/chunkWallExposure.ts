@@ -47,11 +47,24 @@ export function chunkWallExposure(name: string): WallExposure {
 }
 
 /**
+ * Slots of a GLB wall with no exposure record (recipe houses, large recipes, landmarks) that take the generic walls'
+ * sunlit gain: brick and its accent courses. Issue #73 ("dark, dour"): a generic extrusion draws its wall tint x
+ * FALLBACK_WALL_GAIN in the sunny look (sunny.ts `litFacadeWallGain`) and a chunk without a strip does too, but an
+ * unmeasured GLB brick drew the same tint without it, ~5 luma darker for the same hex (1,338 unmeasured brick
+ * materials over the installed GLBs, median tint luma 113 -> 118). Stucco, stone and paint are not lifted: a white
+ * render or white stone must not wash out.
+ */
+export const UNRECORDED_GAIN_SLOTS: readonly string[] = ['brick', 'accent'];
+
+/**
  * A photo-matched wall's tint under a look: `drawnHex` is the tint the look draws it with (after cityTint), scaled in
- * linear light by `chunkWallGain` in the sunny look. Other slots, a measured tint (it carries its own white,
- * sunny.ts `sceneSlotHex`), no exposure, and the legacy look keep `drawnHex`.
+ * linear light by `chunkWallGain` in the sunny look. With no exposure record (a GLB that is not a street chunk), its
+ * unmeasured brick and accent take FALLBACK_WALL_GAIN like a generic wall (UNRECORDED_GAIN_SLOTS). Other slots, a
+ * measured tint (it carries its own white, sunny.ts `sceneSlotHex`) and the legacy look keep `drawnHex`.
  */
 export function photoMatchedWallTint(slot: string, drawnHex: string, exposure: WallExposure | null | undefined, source?: string | null, look: SceneLook = sceneLookFrom()): string {
-  if (!exposure || look !== 'sunny' || source === 'measured' || !PHOTO_MATCHED_SLOTS.includes(slot)) return drawnHex;
+  if (look !== 'sunny' || source === 'measured') return drawnHex;
+  if (!exposure) return UNRECORDED_GAIN_SLOTS.includes(slot) ? scaleLinear(drawnHex, FALLBACK_WALL_GAIN) : drawnHex;
+  if (!PHOTO_MATCHED_SLOTS.includes(slot)) return drawnHex;
   return scaleLinear(drawnHex, chunkWallGain(exposure));
 }

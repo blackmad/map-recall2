@@ -40866,9 +40866,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012134024",
       "name": "Asterweg 17-19, Amsterdam-Noord (Buiksloterham): 2006 brick office-and-workshop block with a raised brick storey carried over an open steel-truss ground floor",
-      "hash": "52b17a23cbbc49d967a44fbd0506bc51081983a1badfef829b4e832a523d78f0",
-      "sha256": "52b17a23cbbc49d967a44fbd0506bc51081983a1badfef829b4e832a523d78f0",
-      "bytes": 95296,
+      "hash": "2526c71ef37571a4b48848f62bd4ba99ed64db5b6eeabe67bce6ab0d24d3c0e9",
+      "sha256": "2526c71ef37571a4b48848f62bd4ba99ed64db5b6eeabe67bce6ab0d24d3c0e9",
+      "bytes": 95292,
       "triangles": 1130,
       "materials": 8,
       "textures": 0,
@@ -41052,7 +41052,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012134024",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T11:08:51.265Z",
+      "updatedAt": "2026-10-25T11:35:41.888Z",
       "meshHash": "8f74d38285bfa44c"
     },
     {
@@ -43011,8 +43011,8 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012170734",
       "name": "Valckenierstraat 65, Amsterdam-Centrum (Roeterseiland): 1963 university laboratory block, four storeys of brick ribbon windows with cream bands over a dark plinth, a two-storey steel-window canal wing and a brick tower with a chimney stack",
-      "hash": "21e8ae43992a039deb3c858569ac56deb9d80ef79f5590d9533e5a6cf18e510d",
-      "sha256": "21e8ae43992a039deb3c858569ac56deb9d80ef79f5590d9533e5a6cf18e510d",
+      "hash": "18fbf368dc2e07bb854bc9a778d19c17c8035a54f5471d8f3e7451ab89110640",
+      "sha256": "18fbf368dc2e07bb854bc9a778d19c17c8035a54f5471d8f3e7451ab89110640",
       "bytes": 864656,
       "triangles": 11908,
       "materials": 14,
@@ -43153,7 +43153,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012170734",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:16.155Z",
+      "updatedAt": "2026-10-25T11:35:42.092Z",
       "meshHash": "77e483d9057689d1"
     },
     {

@@ -1,6 +1,6 @@
 /**
- * Facade tone (issue #71): large-recipe and landmark GLBs beside the procedural rows, desktop chase frames at six
- * spots, with the luma of each pipeline's pixels. Not part of check:canal: a before/after record for look changes.
+ * Facade tone (issue #71): large-recipe and landmark GLBs beside the procedural rows, desktop frames at six spots
+ * (camera pinned since #73, so two runs frame alike), with the luma of each pipeline's pixels. Not part of check:canal: a before/after record for look changes.
  *
  *   PW_PORT=4621 TONE_OUT=artifacts/facade-tone/before npx playwright test facade-tone --project=desktop
  *   TONE_SPOTS=haarlemmerweg,dam picks spots; LOOK_BUNDLES_DIR=<dir> serves *.bundle.js from <dir> (as mood-shots).
@@ -24,11 +24,14 @@ type Spot = { name: string; target: [number, number]; stand: number; standM: num
 export const TONE_SPOTS: Spot[] = [
   // The 1983/1992 Haarlemmerweg blocks facing the Westerpark (north fronts, shade side), from the park bank.
   { name: 'haarlemmerweg', target: [4.8752, 52.3852], stand: 10, standM: 75 },
-  // Van Eeghenstraat 180-212 and its neighbours from the Vondelpark (north fronts).
-  { name: 'van-eeghen', target: [4.8685, 52.3562], stand: 10, standM: 60 },
+  // Van Eeghenstraat 110 and 180-212 (north fronts, slate roofs) from the Vondelpark path, closer in than the first
+  // framing (60 m north), which looked over the park's trees onto the roofs only (#73).
+  { name: 'van-eeghen', target: [4.8686, 52.3564], stand: 345, standM: 42 },
   // Herengracht west bank at the Bartolotti house, from across the canal (east fronts).
   { name: 'herengracht', target: [4.8856, 52.3744], stand: 100, standM: 55 },
-  { name: 'nieuw-west', target: [4.8076, 52.3585], stand: 215, standM: 60 },
+  // Stadsdeel Nieuw-West (Osdorpplein office, 44 m) from the south-west; the first framing (4.8076, 52.3585) had no
+  // GLB in view, only the square (#73).
+  { name: 'nieuw-west', target: [4.8211, 52.3790], stand: 215, standM: 90 },
   { name: 'bilderdijk', target: [4.87195, 52.3672], stand: 215, standM: 60 },
   // The Royal Palace's east front (white stone) from the Dam.
   { name: 'dam', target: [4.8913, 52.3731], stand: 95, standM: 110 },
@@ -107,6 +110,16 @@ test('facade tone: GLB and procedural pixels at six spots', async ({ page }, inf
     await teleport(page, p);
     console.log(`${spot.name}: settling`);
     await settle(page);
+    // Pin the camera (as block-face.spec.ts does): the chase camera's lag left before and after runs framed differently,
+    // which moved the masked luma by more than a look change does (#73). Eye on the stand line, `standM` out and up at
+    // 35 deg, looking at the target 8 m up.
+    await page.evaluate(({ eye, target, alt }) => {
+      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+      vm.__toneSync ??= vm.sync; vm.sync = () => {}; map.stop();
+      map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, alt, { lng: target[0], lat: target[1] }, 8));
+    }, { eye: [p.lng, p.lat], target: c, alt: Math.round(spot.standM * Math.tan(35 * Math.PI / 180)) + 8 });
+    await page.waitForTimeout(2500);
+    await settle(page);
     await page.waitForTimeout(2500);
     await page.evaluate(() => {
       const map = (window as any).canalRecallGame.vectorMap.map, canvas = map.getCanvas();
@@ -140,6 +153,7 @@ test('facade tone: GLB and procedural pixels at six spots', async ({ page }, inf
     const faces = await page.screenshot();
     await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; vm._sharedFrame.scene.overrideMaterial = null; vm.map.triggerRepaint(); });
     await page.evaluate(() => { for (const e of Array.from(document.body.querySelectorAll('*'))) (e as HTMLElement).style.visibility = ''; });
+    await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; if (vm.__toneSync) vm.sync = vm.__toneSync; });
     const s = await raw(shot);
     const f = await raw(faces);
     results[spot.name] = { glb: masked(s, await raw(noGlb), f), procedural: masked(s, await raw(noFacades), f), buildings: masked(s, await raw(bare), f) };

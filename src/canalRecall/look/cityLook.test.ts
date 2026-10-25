@@ -5,6 +5,7 @@ import { sunlitMeasuredWall } from './sunny.ts';
 import * as THREE from 'three';
 import { MATERIAL_SLOTS, cityMeasuredGlassTint, cityTint, hexToRgb, rgbToHsl, PHOTO_WALL_CELL_MEAN, BRICK_CELL_MEAN, rgbToHex } from './palette.ts';
 import { BRICK20_FROM, CITY_LIT_LEVEL, cityLookTint, SLOT_LAYERS, SLOT_LAYER_COUNT, cityLookEnabled, createCityLook, slotLayerOf, slotLayerBytes, slotParams, slotForMaterial, slotTintBytes, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
+import { photoMatchedWallTint } from './chunkWallExposure.ts';
 import { INFERRED_SLOT_SOURCE, inferMaterialSlot, inferredSlotExtras, linearToSrgbHex, materialWord, slotFromColour } from './materialSlotInference.ts';
 
 test('flag: only ?cityLook=1 turns the city look on', () => {
@@ -39,8 +40,11 @@ test('slot table: every material slot samples a layer; frame and paint read plai
 });
 
 test('slot tints are the city palette mapping (one rule for recipe houses and landmarks)', () => {
-  assert.deepEqual(slotTintBytes('brick', '#9a5240'), [...hexToRgb(cityTint('brick', '#9a5240')), 255]);
-  assert.deepEqual(slotTintBytes('brick', '#808080'), [...hexToRgb(cityLookTint('brick', '#808080')), 255], 'the city look mapping (grey brick stays grey)');
+  // brick without an exposure record takes the generic walls' sunlit gain in the sunny look (issue #73)
+  assert.deepEqual(slotTintBytes('brick', '#9a5240'), [...hexToRgb(photoMatchedWallTint('brick', cityTint('brick', '#9a5240'), null)), 255]);
+  assert.deepEqual(slotTintBytes('brick', '#9a5240', null, 'legacy'), [...hexToRgb(cityTint('brick', '#9a5240')), 255]);
+  assert.deepEqual(slotTintBytes('brick', '#808080'), [...hexToRgb(photoMatchedWallTint('brick', cityLookTint('brick', '#808080'), null)), 255], 'the city look mapping (grey brick stays grey)');
+  assert.deepEqual(slotTintBytes('stone', '#cfc2a6'), [...hexToRgb(cityLookTint('stone', '#cfc2a6')), 255], 'stone takes no gain');
   assert.deepEqual(slotTintBytes('glass', '#123456'), [255, 255, 255, 255]);
   assert.deepEqual(slotTintBytes('paint', '#D9B24C'), [0xd9, 0xb2, 0x4c, 255], 'paint keeps the authored colour');
 });
@@ -71,7 +75,7 @@ test('dress: a legacy landmark mesh (no UVs, untagged "brick") takes the brick s
   assert.equal(wall.material.userData.cityLook, true);
   assert.deepEqual(wall.material.userData.cityVariant, { lit: true, kind: 'slot', uv: 'box', side: THREE.FrontSide });
   assert.equal(wall.geometry.getAttribute('layer').getX(0), slotLayerOf('brick'));
-  assert.equal(Math.round(wall.geometry.getAttribute('tint').getX(0) * 255), hexToRgb(cityTint('brick', '#9a5240'))[0]);
+  assert.equal(Math.round(wall.geometry.getAttribute('tint').getX(0) * 255), hexToRgb(photoMatchedWallTint('brick', cityTint('brick', '#9a5240'), null))[0]);
   assert.deepEqual(wall.userData.citySlot, { slot: 'brick', tint: '#9a5240', inferred: true, from: 'brick', layer: slotLayerOf('brick') });
   assert.equal(glass.geometry.getAttribute('layer').getX(0), slotLayerOf('glass'));
   assert.equal(glass.material.userData.cityVariant.uv, 'uv', 'authored UVs are kept');
@@ -157,7 +161,8 @@ test('measured brick/accent: cell x tint lands on the authored hex; every unmeas
   }
   assert.ok(L(cityLookTint('brick', '#3a2a28')) >= 0.3 - 1e-9, 'unmeasured dark wall is still clamped');
   assert.equal(cityLookTint('stucco', '#d8d2c4', 'measured'), cityLookTint('stucco', '#d8d2c4'));
-  assert.equal(cityLookTint('slate', '#8f9698', 'measured'), cityLookTint('slate', '#8f9698'));
+  // a measured pitched roof (large recipes' roof.pitchedHex, issue #73) is drawn as is; unmeasured slate keeps the review rule
+  assert.equal(cityLookTint('slate', '#8f9698', 'measured'), '#8f9698');
   // slotForMaterial reads the extra; untagged materials are as before.
   const base = { materialSlot: 'brick', tint: '#3a2a28' };
   assert.deepEqual(slotForMaterial({ userData: { ...base, tintSource: 'measured' } }, false), { slot: 'brick', tint: '#3a2a28', inferred: false, source: 'measured' });
