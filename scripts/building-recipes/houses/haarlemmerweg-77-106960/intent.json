@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "haarlemmerweg-77-106960",
+  "pandId": "0363100012106960",
+  "address": "Haarlemmerweg 77-87, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012106960)",
+  "sources": [
+    {
+      "id": "pano-2021-03-22-w01-359L",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-22",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002054_pano_0000_000268/",
+      "image": "source-data://pand-reference-walls/0363100012106960/w01-359L.jpg",
+      "sha256": "561d29f6691d9cfb0dc4c666fa150a1583f02e35a710a2487d57e330af931717",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2025-06-18-w01-359",
+      "kind": "street-panorama",
+      "capturedAt": "2025-06-18",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-18_07-44-47_01815/",
+      "image": "source-data://pand-reference-walls/0363100012106960/w01-359.jpg",
+      "sha256": "d0f3e95d40d6274769eb09fe27d63b40f28414de21b7420b35a117eae7c75951",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "palette": {
+    "brick": "#7d6b58",
+    "frame": "#eeece6",
+    "door": "#3a3d40",
+    "stone": "#3b3e42"
+  },
+  "roof": {
+    "material": "bitumen"
+  },
+  "walls": [
+    {
+      "wallSurfaces": [
+        15,
+        16
+      ],
+      "street": "Haarlemmerweg",
+      "system": "brick-bay-grid",
+      "storeys": 4,
+      "baysPerStorey": 8,
+      "ground": "system",
+      "windows": "wide",
+      "storeyFactors": [
+        1.6,
+        1,
+        1,
+        1.12
+      ],
+      "windowShape": {
+        "w": 0.88,
+        "h": 0.42,
+        "sill": 0.55
+      },
+      "windowPattern": [
+        0.88,
+        0.88,
+        0.88,
+        0.63,
+        0.88,
+        0.88,
+        0.88,
+        0.88
+      ],
+      "openBays": [
+        {
+          "storeys": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "bays": [
+            1,
+            3,
+            4,
+            7
+          ]
+        }
+      ],
+      "sills": false,
+      "palette": {
+        "brick": "#7d6b58",
+        "glass": "#4e565c"
+      },
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "storeyFactors",
+        "windowShape",
+        "storeyShapes",
+        "windowPattern",
+        "openBays",
+        "cladding",
+        "palette"
+      ],
+      "storeyShapes": [
+        {
+          "storeys": [
+            1,
+            2,
+            3
+          ],
+          "w": 0.88,
+          "h": 0.67,
+          "sill": 0.15
+        }
+      ],
+      "cladding": {
+        "kind": "paint",
+        "colour": "#3b3e42",
+        "from": 0,
+        "to": 0.1
+      }
+    },
+    {
+      "wallSurfaces": [
+        21,
+        28,
+        9,
+        19
+      ],
+      "street": "Haarlemmerweg",
+      "system": "brick-bay-grid",
+      "storeys": 4,
+      "baysPerStorey": 5,
+      "ground": "system",
+      "windows": "wide",
+      "sills": false,
+      "windowShape": {
+        "w": 0.9,
+        "h": 0.66,
+        "sill": 0.18
+      },
+      "openBays": [
+        {
+          "storeys": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "bays": [
+            0,
+            3
+          ]
+        }
+      ],
+      "palette": {
+        "brick": "#7d6b58",
+        "glass": "#4e565c"
+      },
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "windowShape",
+        "openBays",
+        "palette"
+      ]
+    }
+  ],
+  "notes": [
+    "Haarlemmerweg 77-87 (pand 0363100012106960, built 1983): a buff-brick social-housing block on the Haarlemmerweg facing the Haarlemmervaart and the Westerpark, four storeys over a low dark basement band, two grey-panelled penthouse boxes and two glazed stair towers.",
+    "walls[0] the western 21.7 m (panel 12, crops w01-359 2025-06-18 and w01-359L 2021-03-22, square on): buff brick, wide white-framed windows in staggered bays, a dark grey basement band with vents (stoneStoreys 0 in dark grey).",
+    "walls[1] the eastern 13.5 m (panels 16 and 8): one storey lower, a living ground floor, two window axes.",
+    "NOT DRAWN (kit cannot say): the grey-panelled penthouse boxes above the eaves (drawn in the wall brick); the two full-height glazed stair towers between the wings (glazed columns need their own system); the basement band's vent strip; the windows' L-shaped frames with a low side light; the top storey's windows sit up to 1.3 m off the lower rows' axes in the photo (drawn on the lower rows' axes).",
+    "Wall colour #7d6b58 from the overcast 2021 crop (w01-359L piers #685e53..#6f5e58), not the blue-cast 2025 crop the gate reads (#6b7777)."
+  ],
+  "budgetTriangles": 12000
+}

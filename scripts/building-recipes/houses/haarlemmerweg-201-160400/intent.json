@@ -1,0 +1,125 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "haarlemmerweg-201-160400",
+ "pandId": "0363100012160400",
+ "address": "Haarlemmerweg 201, Amsterdam-West (1901 brick house over a white rendered workshop ground floor, facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012160400)",
+ "sources": [
+  {
+   "id": "pano-2021-03-22-w01-359L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002054_pano_0000_000339/",
+   "image": "source-data://pand-reference-walls/0363100012160400/w01-359L.jpg",
+   "sha256": "3de37ccf8e361f5ce914c63675e0a46434cfd3e16ad60f0006048925fd275964",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-29-w01-359",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_08_29_07_01040/",
+   "image": "source-data://pand-reference-walls/0363100012160400/w01-359.jpg",
+   "sha256": "bad2faea81ad033dce12cb326e38d91bf26ffaf8f84136b38fe9c0a9ff9b1fd1",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#7a4a3e",
+  "frame": "#eeece6",
+  "door": "#2b2d2e",
+  "stone": "#e6e2d6"
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "walls": [
+  {
+   "wallSurfaces": [
+    2,
+    6
+   ],
+   "street": "Haarlemmerweg",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 6,
+   "ground": "blank",
+   "windows": "plain",
+   "cornice": true,
+   "storeyFactors": [
+    1.8,
+    1,
+    1,
+    1.03
+   ],
+   "windowShape": {
+    "w": 0.62,
+    "h": 0.72,
+    "sill": 0.14
+   },
+   "stoneStoreys": [
+    0
+   ],
+   "hallDoors": {
+    "bays": [
+     1,
+     4
+    ],
+    "arch": "round",
+    "lights": 2,
+    "rows": 4,
+    "h": 0.9
+   },
+   "arches": {
+    "windows": "segmental",
+    "band": "brick",
+    "storeys": [
+     1,
+     2,
+     3
+    ]
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "bays": [
+     1,
+     4
+    ],
+    "rail": "bars",
+    "deep": 0.15,
+    "windows": true
+   },
+   "palette": {
+    "brick": "#5e4a4d"
+   },
+   "hand": [
+    "storeys",
+    "baysPerStorey",
+    "storeyFactors",
+    "windowShape",
+    "stoneStoreys",
+    "hallDoors",
+    "arches",
+    "balconies"
+   ]
+  }
+ ],
+ "notes": [
+  "Haarlemmerweg 201 (pand 0363100012160400, built 1901): a deep 10 m wide brick house of four storeys and two dormers, 15 m to the eaves, on the Haarlemmerweg facing the Haarlemmervaart and the Westerpark.",
+  "walls[0] the Haarlemmerweg front (panel 1, crops w01-359L 2021-03-22 and w01-359 2025-09-29, square on): a tall white rendered ground floor with two large round-arched glazed doors (hallDoors), three brick storeys of six segmental-arched white-framed windows, iron balconies on brick consoles in front of bays 1 and 4 of every upper storey.",
+  "NOT DRAWN (kit cannot say): the small round-arched windows over the side doors in bays 0 and 5 and the side doors themselves (hallDoors bays keep only a blank ground); the two pointed dormers with arched windows; the brick consoles under the balconies.",
+  "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4c5255 not used (not darker than the wall #5e4a4d by 10 L*, or tinted): kit glass kept; walls[0] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand)."
+ ],
+ "budgetTriangles": 12000,
+ "measured": {
+  "date": "2026-10-25",
+  "groups": [
+   0
+  ]
+ }
+}
