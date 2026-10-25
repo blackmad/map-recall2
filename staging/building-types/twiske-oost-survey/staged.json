@@ -1,0 +1,30 @@
+[
+ {
+  "area": "nd-tw-01",
+  "anchor": {
+   "lng": 4.90123,
+   "lat": 52.42172
+  },
+  "pands": 265,
+  "missing": 0,
+  "per": {
+   "nd-tw-flat-top/striped/photo": 36,
+   "nd-tw-flat/striped/photo": 81,
+   "nd-tw-gable/cream/signature": 72,
+   "nd-tw-gable/cream/photo": 58,
+   "nd-tw-flat/striped/signature": 18
+  }
+ },
+ {
+  "area": "nd-tw-02",
+  "anchor": {
+   "lng": 4.90483,
+   "lat": 52.42107
+  },
+  "pands": 29,
+  "missing": 0,
+  "per": {
+   "nd-tw-flat/striped/signature": 29
+  }
+ }
+]

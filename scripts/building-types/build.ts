@@ -29,7 +29,7 @@ for (const f of fs.readdirSync(TYPES_DIR).filter(f => f.endsWith('.json'))) { co
 
 const input = JSON.parse(fs.readFileSync(path.join(dir, 'instances.json'), 'utf8')) as {anchor: Anchor; instances: any[]; streets: Street[]};
 const variantsFile = path.join(dir, 'variants.json');
-const overrides: Record<string, {type?: string; variant?: string; groundMode?: 'solid' | 'pilotis'; storeys?: number; eavesM?: number; mirror?: boolean; hold?: string; note?: string; frontBearingDeg?: number; absorb?: string[]}> = fs.existsSync(variantsFile) ? JSON.parse(fs.readFileSync(variantsFile, 'utf8')) : {};
+const overrides: Record<string, {type?: string; variant?: string; groundMode?: 'solid' | 'pilotis'; storeys?: number; eavesM?: number; mirror?: boolean; hold?: string; note?: string; frontBearingDeg?: number; absorb?: string[]; mirrorAnchor?: boolean}> = fs.existsSync(variantsFile) ? JSON.parse(fs.readFileSync(variantsFile, 'utf8')) : {};
 
 async function item3d(id: string): Promise<CityJsonItem> {
   const file = `.cache/building-types/3dbag/${id}.json`;
@@ -70,7 +70,13 @@ const mirrorOf = new Map<string, boolean>();
   }
   const comps = new Map<number, number[]>();
   rows.forEach((_, k) => (comps.get(find(k)) ?? comps.set(find(k), []).get(find(k))!).push(k));
-  for (const ks of comps.values()) ks.sort((a, b) => rows[a].t - rows[b].t).forEach((k, idx) => mirrorOf.set(rows[k].id, idx % 2 === 1));
+  // variants.json `mirrorAnchor` (the photographed house's handedness, read from its survey panorama) fixes the parity of its row
+  for (const ks of comps.values()) {
+    ks.sort((a, b) => rows[a].t - rows[b].t);
+    const at = ks.findIndex(k => overrides[rows[k].id]?.mirrorAnchor !== undefined);
+    const shift = at < 0 ? 0 : ((at % 2 === 1) === overrides[rows[ks[at]].id].mirrorAnchor ? 0 : 1);
+    ks.forEach((k, idx) => mirrorOf.set(rows[k].id, (idx + shift) % 2 === 1));
+  }
 }
 // Footprints around the instances (the other instances plus the context file): party walls of terraced houses.
 const contextFile = path.join(dir, 'context.json');
@@ -120,6 +126,19 @@ for (const instIn of input.instances) {
       params.storeys = storeysFromHeight(fromPlanes === 'lower' ? lo : hi, spec.storeys);
       warnings.push(`eaves from the 3DBAG roof planes: ${f.toFixed(2)} m on the side read as front, ${b.toFixed(2)} m on the other (${fromPlanes})`);
     } else warnings.push(`no two opposite 3DBAG roof slopes below the ridge: eaves from b3_h_dak_min`);
+  }
+  // Mono-pitch rows (spec.roof.monoPitch): one 3DBAG plane from the front eaves (b3_h_dak_min) up to the ridge on the back wall; the
+  // ridge-minus-slope eaves estimate of paramsFromFacts does not apply to a single plane.
+  if (spec.roof.monoPitch && params.ridgeM != null && inst.attrs.b3_h_dak_min != null) {
+    params.eavesM = inst.attrs.b3_h_dak_min - groundNapM; params.backEavesM = params.ridgeM; params.storeys = spec.storeys; params.roofForm = 'gable'; params.ridge = 'long';
+    const kept = warnings.filter(w => !/^b3_h_dak_min eaves|^storey height|^eaves .* say/.test(w));
+    warnings.length = 0; warnings.push(...kept, `mono-pitch: front eaves ${params.eavesM.toFixed(2)} m, ridge on the back wall ${params.ridgeM.toFixed(2)} m`);
+  }
+  // Designs whose 3DBAG ridge reads rooftop extensions (spec.roof.ridgeFromPitch): ridge from the photographed pitch over half the depth.
+  if (spec.roof.ridgeFromPitch && params.roofForm !== 'flat') {
+    const was = params.ridgeM;
+    params.ridgeM = params.eavesM + Math.tan(spec.roof.pitchDeg * Math.PI / 180) * params.widthM / 2;
+    if (was != null && Math.abs(was - params.ridgeM) > 0.6) warnings.push(`ridge ${params.ridgeM.toFixed(2)} m from the ${spec.roof.pitchDeg} degree pitch (3DBAG ${was.toFixed(2)} m: rooftop extension)`);
   }
   // Designs whose low front eaves 3DBAG misses on many houses carry the photo-measured eaves (spec.roof.eavesPinM).
   if (spec.roof.eavesPinM != null) {

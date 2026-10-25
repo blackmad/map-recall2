@@ -7,7 +7,7 @@
  * (u along the facade seen from outside left-to-right, v up, d outward).
  */
 import {MeshBuilder, type MaterialKey, type V3} from './mesh.ts';
-import {FACADE_IDS, type Annex, type Bay, type DormerSpec, type Element, type FacadeId, type Height, type Levels, type Palette, type PaletteKey, type TypeSpec} from './spec.ts';
+import {FACADE_IDS, type Annex, type Bay, type ChimneySpec, type DormerSpec, type Element, type FacadeId, type Height, type Levels, type Palette, type PaletteKey, type TypeSpec} from './spec.ts';
 
 export interface GenerateParams {
   lengthM: number;
@@ -232,6 +232,19 @@ function canopyUnit(c: Ctx, f: Frame, u: number, w: number, v: number, depth: nu
   for (let i = 0; i < n; i++) quadAway(mb, key, inside, f.p(prof[i][0], prof[i][1], d0), f.p(prof[i + 1][0], prof[i + 1][1], d0), f.p(prof[i + 1][0], prof[i + 1][1], dOut), f.p(prof[i][0], prof[i][1], dOut));
   // front face (normal +d): a fan from the slab top centre
   for (let i = 0; i < n; i++) mb.tri(key, f.p(u, top, dOut), f.p(prof[i][0], prof[i][1], dOut), f.p(prof[i + 1][0], prof[i + 1][1], dOut));
+}
+
+/** Horizontal brick stripes over [vFrom, vTo], 1 cm proud of the wall, cut around the opening rectangles (u0, u1, v0, v1) they would cross. */
+function stripesUnit(c: Ctx, f: Frame, len: number, vFrom: number, vTo: number, s: {pitchM: number; heightM: number; offsetM?: number}, key: MaterialKey, openings: number[][]): void {
+  for (let y = vFrom + (s.offsetM ?? 0); y < vTo - 0.02; y += s.pitchM) {
+    const y1 = Math.min(vTo, y + s.heightM);
+    const cuts = openings.filter(o => o[2] < y1 && o[3] > y).map(o => [Math.max(0, o[0]), Math.min(len, o[1])]).sort((p, q) => p[0] - q[0]);
+    let u = 0;
+    for (const [a, z] of [...cuts, [len, len]]) {
+      if (a - u > 0.05) plate(c.mb, key, f, u, a, y, y1, 0.01);
+      u = Math.max(u, z);
+    }
+  }
 }
 
 /** Vertical battens over [vFrom, vTo] along the facade, skipping the opening rectangles (u0, u1, v0, v1) they would cross. */
@@ -492,10 +505,59 @@ function pairGableRoof(c: Ctx, spec: TypeSpec, frames: Record<FacadeId, {f: Fram
   }
 }
 
+/**
+ * Chimney stacks on the ridge line (z = zRidge) of a long-ridge gable or hip: each shaft starts below the roof surface at its lower
+ * (front or back) face so it never floats, rises `h` above the ridge, and carries an optional oversailing cap course.
+ */
+function chimneysUnit(c: Ctx, list: ChimneySpec[], L: number, eaves: number, ridgeH: number, tan: number, zRidge: number, mirror: boolean): void {
+  const {mb} = c;
+  for (const ch of list) {
+    if ((ch.variants && !ch.variants.includes(c.variant)) || ch.exceptVariants?.includes(c.variant)) continue;
+    let uc = ch.ref === 'left' ? ch.u : ch.ref === 'right' ? L - ch.u : L / 2 + ch.u;
+    if (mirror) uc = L - uc;
+    const x = -L / 2 + uc, z = zRidge + (ch.offsetM ?? 0), top = ridgeH + ch.h, cap = ch.capM ?? 0;
+    // lowest roof point under the shaft footprint (the plane falls `tan` per metre away from the ridge line), 5 cm into the roof
+    const y0 = Math.max(eaves, ridgeH - tan * (Math.abs(z - zRidge) + ch.d / 2) - 0.05);
+    box(mb, c.key(ch.palette ?? 'wall'), IDENTITY, x - ch.w / 2, x + ch.w / 2, y0, top - cap, z - ch.d / 2, z + ch.d / 2, {back: false, bottom: true, top: cap > 0});
+    if (cap > 0) box(mb, c.key(ch.cap ?? 'accent'), IDENTITY, x - ch.w / 2 - 0.05, x + ch.w / 2 + 0.05, top - cap, top, z - ch.d / 2 - 0.05, z + ch.d / 2 + 0.05, {back: false, bottom: false});
+  }
+}
+
 export function heightOf(h: Height, sh: number, eavesM: number): number {
   if (typeof h === 'number') return h;
   if ('storey' in h) return h.storey * sh + (h.plus ?? 0);
   return eavesM + h.eaves;
+}
+
+/**
+ * Segmental bay: the outer face is the arc through (u0, d0), ((u0 + u1) / 2, d1), (u1, d0), drawn as `segments` facets from v0 to the
+ * fascia; a cap course (fascia) on the same facets 3 cm proud, a flat top fanned from the chord centre, and per-facet glazing (faces 'out').
+ */
+function segmentBay(c: Ctx, f: Frame, a: Annex, u0: number, u1: number, v0: number, v1: number): void {
+  const {mb, k} = c, [d0, d1] = a.d, n = Math.max(2, Math.round(a.segments ?? 5)), mat = c.key(a.material ?? 'plinth');
+  const half = (u1 - u0) / 2, sag = d1 - d0, R = (half * half + sag * sag) / (2 * sag), cu = (u0 + u1) / 2, cd = d1 - R, ang = Math.asin(Math.min(1, half / R));
+  const pt = (i: number, grow = 0): [number, number] => { const t = -ang + 2 * ang * i / n; return [cu + (R + grow) * Math.sin(t), cd + (R + grow) * Math.cos(t)]; };
+  const fasciaH = a.fascia?.h ?? 0, top = v1 - fasciaH, inside = f.p(cu, (v0 + v1) / 2, d0 - 0.01);
+  const quad = (key: MaterialKey, p: [number, number], q: [number, number], y0: number, y1: number) => quadAway(mb, key, inside, f.p(p[0], y0, p[1]), f.p(q[0], y0, q[1]), f.p(q[0], y1, q[1]), f.p(p[0], y1, p[1]));
+  for (let i = 0; i < n; i++) quad(mat, pt(i), pt(i + 1), v0, top);
+  const capKey = a.fascia ? c.key(a.fascia.colour ?? 'column') : mat;
+  if (fasciaH > 0) for (let i = 0; i < n; i++) quad(capKey, pt(i, 0.03), pt(i + 1, 0.03), top, v1);
+  const grow = fasciaH > 0 ? 0.03 : 0, chord = f.p(cu, v1, d0);
+  for (let i = 0; i < n; i++) { const p = pt(i, grow), q = pt(i + 1, grow); triAway(mb, capKey, [chord[0], v1 - 1, chord[2]], chord, f.p(p[0], v1, p[1]), f.p(q[0], v1, q[1])); }
+  for (const g of a.glaze === undefined ? [] : Array.isArray(a.glaze) ? a.glaze : [a.glaze]) {
+    if (!g.faces.includes('out')) continue;
+    const frameKey = c.key(g.frame ?? 'frame'), m = g.marginM ?? 0.06, h = Math.min(g.h, top - v0 - g.sill - 0.05);
+    if (h <= 0.1) continue;
+    for (let i = 0; i < n; i++) {
+      const p = pt(i), q = pt(i + 1), len = Math.hypot(q[0] - p[0], q[1] - p[1]), w = len - 2 * m;
+      if (w <= 0.2) continue;
+      // facet frame: u along the facet (p -> q), d outward (away from the arc centre)
+      const t: [number, number] = [(q[0] - p[0]) / len, (q[1] - p[1]) / len], o = f.p(p[0], 0, p[1]);
+      const ff = new Frame([o[0], o[2]], [f.t[0] * t[0] + f.n[0] * t[1], f.t[1] * t[0] + f.n[1] * t[1]], [-f.t[0] * t[1] + f.n[0] * t[0], -f.t[1] * t[1] + f.n[1] * t[0]]);
+      windowUnit(c, ff, len / 2, v0 + g.sill, w, h, Math.max(1, Math.round(w / g.lightM)), 0, frameKey, true, false);
+    }
+  }
+  void k;
 }
 
 /** One annex volume in the frame of its rectangle edge (u along the edge, d outward). */
@@ -518,6 +580,7 @@ function annexUnit(c: Ctx, f: Frame, a: Annex, [u0, u1]: [number, number], v0: n
     box(mb, fascia ?? k.accent, f, u0, u1, v1 - Math.max(0.3, fasciaH), v1, d0, d1, {back: true});
     return;
   }
+  if (a.plan === 'segment') { segmentBay(c, f, a, u0, u1, v0, v1); return; }
   // A door row recesses the outer face by 12 cm between brick piers (the doors stand 4 cm proud of the recess), a lintel above them.
   const recess = a.doors ? 0.12 : 0;
   box(mb, mat, f, u0, u1, v0, v1 - fasciaH, d0, d1 - recess, {back: d0 >= -1e-6, bottom: v0 < 1e-6, top: fasciaH > 0});
@@ -639,6 +702,7 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
     facades[id] = placeFacade(ctx, f, len, id, bays, onGround(id), openings);
     ctx.sh = sh;
     for (const b of fs.boards ?? []) for (const lv of levelsOf(b.levels, storeys)) boardsUnit(ctx, f, len, lv * fSh, lv === storeys - 1 ? fTop : (lv + 1) * fSh, b, key(b.palette), openings);
+    for (const st of fs.stripes ?? []) for (const lv of levelsOf(st.levels, storeys)) stripesUnit(ctx, f, len, lv * fSh, lv === storeys - 1 ? fTop : (lv + 1) * fSh, st, key(st.palette), openings);
     if (v.palette.plinth && spec.ground.plinthM && !pilotis) box(mb, k.plinth, f, 0, len, 0, spec.ground.plinthM, 0, 0.025, {back: true, bottom: true});
     if (v.joints && fs.joints) joints(ctx, f, len, sh, wallTop, fs.joints.panelW, fs.joints.panelH);
     for (const band of fs.bands ?? []) for (const lv of band.levels ? levelsOf(band.levels, storeys) : [band.floor]) {
@@ -655,6 +719,10 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
     asymGable(ctx, {L, W, ef: params.eavesM, eb: backEaves, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, gableKey: gabled ? k.gable : k.wall});
   } else if (pairGable) pairGableRoof(ctx, spec, frames, L, W, params.eavesM, ridgeH, !!params.mirror, k.gable);
   else roofSolid(ctx, {form: roofForm, ridge, L, W, eaves: params.eavesM, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, flatThickness: flatT});
+  if (spec.roof.chimneys?.length && pitched && !pairGable && ridge === 'long') {
+    const hw = W / 2, sl = asym ? asymSlope(hw, params.eavesM, backEaves, ridgeH) : {tan: Math.max(0.1, ridgeH - params.eavesM) / hw, tRidge: 0};
+    chimneysUnit(ctx, spec.roof.chimneys, L, Math.min(params.eavesM, backEaves), ridgeH, sl.tan, sl.tRidge, !!params.mirror);
+  }
   if (pitched && roofForm === 'gable' && ridge === 'long' && (v.rooflights || spec.roof.rooflights || spec.roof.dormers?.length)) roofFeatures(ctx, spec, L, W, params.eavesM, ridgeH, !!params.mirror, asym ? backEaves : undefined);
   // Annexes stand on the rectangle edges (not the inset wall lines).
   const edges: Record<FacadeId, {f: Frame; len: number}> = {

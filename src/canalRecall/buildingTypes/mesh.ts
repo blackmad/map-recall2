@@ -8,7 +8,8 @@ export type V3 = [number, number, number];
 /** Material slots understood by `buildingRecipe/recipeLook.ts`. */
 export type Slot = 'brick' | 'stucco' | 'accent' | 'stone' | 'frame' | 'door' | 'glass' | 'roofTile' | 'slate' | 'bitumen';
 
-export interface MaterialKey { slot: Slot; tint: string }
+/** `measured`: the tint is the sunlit photo colour and the runtime keeps it (`tintSource: 'measured'`) instead of mapping it into the city brick range. */
+export interface MaterialKey { slot: Slot; tint: string; measured?: boolean }
 
 export interface Bucket {
   key: MaterialKey;
@@ -24,7 +25,7 @@ export class MeshBuilder {
   readonly buckets = new Map<string, Bucket>();
 
   private bucket(key: MaterialKey): Bucket {
-    const id = `${key.slot}|${key.tint}`;
+    const id = `${key.slot}|${key.tint}${key.measured ? '|measured' : ''}`;
     let b = this.buckets.get(id);
     if (!b) { b = {key, positions: [], normals: [], uvs: []}; this.buckets.set(id, b); }
     return b;

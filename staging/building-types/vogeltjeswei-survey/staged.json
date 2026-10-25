@@ -1,0 +1,27 @@
+[
+ {
+  "area": "zo-vw-01",
+  "anchor": {
+   "lng": 4.96007,
+   "lat": 52.31594
+  },
+  "pands": 14,
+  "missing": 0,
+  "per": {
+   "zo-vw-bay/navy/photo": 14
+  }
+ },
+ {
+  "area": "zo-vw-02",
+  "anchor": {
+   "lng": 4.9607,
+   "lat": 52.31673
+  },
+  "pands": 166,
+  "missing": 0,
+  "per": {
+   "zo-vw-row/cream-door/photo": 140,
+   "zo-vw-bay/navy/photo": 26
+  }
+ }
+]

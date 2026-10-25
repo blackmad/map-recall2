@@ -1,0 +1,320 @@
+{
+ "id": "nd-ck-saltbox",
+ "label": "Circus/Kermisbuurt (1989) terraced house with a swept front roof: two low storeys at the street (banded brick ground storey, pale upper storey with one small window), rooflights, three storeys at the garden (Reizigersweg, Scharenslijperspad, Mandenmakerspad, Orgeldraaierspad)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 176,
+  "bouwjaar": [
+   1989,
+   1989
+  ],
+  "lengthM": 9.6,
+  "widthM": 4.8,
+  "bouwlagen": 3,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  3.6,
+  5.4
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.2,
+   5.6
+  ],
+  "depth": [
+   8.6,
+   10.6
+  ]
+ },
+ "alternateMirror": true,
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.12,
+  "pitchDeg": 26,
+  "monoPitch": "rise-back",
+  "rooflights": {
+   "u": [
+    0.47
+   ],
+   "w": 1.0,
+   "h": 0.85,
+   "along": 0.3
+  }
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "yellow",
+ "variants": {
+  "yellow": {
+   "label": "yellow doors, cream frames",
+   "evidence": "Reizigersweg, Scharenslijperspad, Mandenmakerspad (photos 2136406, 2108011, front re-shots 2103713, 2108287)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#c3bbae",
+     "measured": true
+    },
+    "frame": "#ece2b4",
+    "glass": "#4d5a66",
+    "door": "#ece2a0",
+    "accent": "#ddd6ca",
+    "rail": "#ece2a0",
+    "dark": "#3a3a3a",
+    "column": "#d6cdc0",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#8a8a70"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#a3998e",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012136406.jpg",
+     "pand": "0363100012136406",
+     "address": "Reizigersweg",
+     "note": "2019-11 overcast, measured: 4.8 m houses between downpipes, mirrored pairs (yellow doors side by side), ground storey in banded grey-mauve brick with a 2-light window, upper storey in pale beige-grey brick with one small square window, eaves ~4.3-4.6 m, rooflight per house"
+    },
+    {
+     "photo": "survey crop 0363100012108011.jpg",
+     "pand": "0363100012108011",
+     "address": "Reizigersweg",
+     "note": "2019-11: same row, one later dormer (not modelled)"
+    },
+    {
+     "photo": "survey crop 0363100012103713.jpg",
+     "pand": "0363100012103713",
+     "address": "Reizigersweg",
+     "note": "2019-11 front re-shot (close): yellow door with porthole, cream frames, small upper window"
+    },
+    {
+     "photo": "survey crop 0363100012108287.jpg",
+     "pand": "0363100012108287",
+     "address": "Scharenslijperspad",
+     "note": "2019-11 front re-shot (close): same"
+    },
+    {
+     "photo": "survey crop 0363100012078876.jpg",
+     "pand": "0363100012078876",
+     "address": "Reizigersweg",
+     "note": "2019-11 garden side: three storeys of windows under a short back slope"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.1,
+       "w": 0.92,
+       "h": 2.15
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.55,
+       "h": 1.3,
+       "sill": 0.95,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 2.45,
+       "w": 0.62,
+       "h": 0.62,
+       "sill": 1.3,
+       "lights": 1
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 1,
+     "below": 0.06,
+     "above": 0.06,
+     "palette": "accent"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "partly-measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012078876.jpg",
+     "pand": "0363100012078876",
+     "address": "Reizigersweg",
+     "note": "2019-11 garden side: ground storey behind sheds, two rows of windows above (wide + narrow), plain brick"
+    },
+    {
+     "photo": "survey crop 0363100012079963.jpg",
+     "pand": "0363100012079963",
+     "address": "Reizigersweg",
+     "note": "2020-06: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 4,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.2,
+       "w": 1.8,
+       "h": 1.3,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.4,
+       "w": 1.6,
+       "h": 1.2,
+       "sill": -0.75,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.7,
+       "w": 0.5,
+       "h": 0.6,
+       "sill": -0.4,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.4,
+       "w": 1.6,
+       "h": 1.2,
+       "sill": 2.25,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.7,
+       "w": 0.5,
+       "h": 0.6,
+       "sill": 2.6,
+       "lights": 1
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012136406.jpg",
+     "pand": "0363100012136406",
+     "address": "Reizigersweg",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012136406.jpg",
+     "pand": "0363100012136406",
+     "address": "Reizigersweg",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "3DBAG reads one roof plane per house (26 degrees): a mono-pitch from the 4.6 m front eaves to the 9.1 m ridge on the back wall (monoPitch rise-back). The back wall carries three storeys (garden photos); its windows are drawn as rows at the measured levels on the two stretched kit storeys.",
+  "Ground-storey banding (pale stripes every ~0.4 m) not modelled: the ground storey is one darker brick (plinth) under the pale upper brick, with a pale band at the floor line.",
+  "Later dormers on a few houses not modelled. Mirror parity: from the photographed house where read, otherwise row order.",
+  "Overcast photos: tints lifted toward the sunlit reading."
+ ]
+}

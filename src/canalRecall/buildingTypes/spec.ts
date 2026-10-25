@@ -99,12 +99,25 @@ export interface FacadeSpec {
    * over the storeys in `levels` (the top storey reaches the wall top), interrupted where a window, door or canopy of this facade sits.
    */
   boards?: {levels: Levels; pitchM: number; widthM: number; depthM?: number; palette: PaletteKey}[];
+  /**
+   * Striped brickwork (horizontal bands of a second brick): bands `heightM` tall every `pitchM`, the first `offsetM` above each storey's
+   * floor line, over the storeys in `levels` (the top storey reaches the wall top), 1 cm proud of the wall and cut where a window, door
+   * or canopy of this facade sits.
+   */
+  stripes?: {levels: Levels; pitchM: number; heightM: number; offsetM?: number; palette: PaletteKey}[];
 }
 
+/**
+ * A wall/roof colour. `measured: true` marks `tint` as the sunlit photo colour, drawn as is (runtime `tintSource: 'measured'`,
+ * look/palette.ts `cityMeasuredWallTint`) rather than mapped into the city brick range (L <= 0.6, S >= 0.12), which turns a
+ * pale yellow or cream brick tan or olive. Absent, the material and the GLB are unchanged.
+ */
+export interface SlotTint {slot: Slot; tint: string; measured?: boolean}
+
 export interface Palette {
-  wall: {slot: Slot; tint: string};
+  wall: SlotTint;
   /** Ground-storey wall when it differs (brick plinth under render). */
-  plinth?: {slot: Slot; tint: string};
+  plinth?: SlotTint;
   frame: string;
   glass: string;
   door: string;
@@ -116,9 +129,9 @@ export interface Palette {
   /** Pilotis columns and white bands. */
   column: string;
   joint: string;
-  roof: {slot: Slot; tint: string};
+  roof: SlotTint;
   /** Gable (short side) walls when they differ from the long walls (brick gables of a panel slab). */
-  gable?: {slot: Slot; tint: string};
+  gable?: SlotTint;
 }
 
 export interface Variant {
@@ -165,6 +178,41 @@ export interface RoofSpec {
    * the 3DBAG reconstruction misses on many houses of a row (b3_h_dak_min read at a dormer cheek or a raised rear slope).
    */
   eavesPinM?: number;
+  /**
+   * Mono-pitch (lessenaarsdak) terraced roof read as one 3DBAG plane: 'rise-back' rises from the front eaves (b3_h_dak_min) to the ridge
+   * standing on the back wall, which carries the full height (build.ts sets the back eaves to the ridge; the generator draws it as the
+   * asymmetric gable whose ridge sits on the back wall line).
+   */
+  monoPitch?: 'rise-back';
+  /**
+   * Ridge from the photographed pitch (`pitchDeg` over half the depth above the eaves) instead of 3DBAG's b3_h_nok: rows where 3DBAG's
+   * ridge reads a rooftop extension at the back on many houses, which the street does not see.
+   */
+  ridgeFromPitch?: boolean;
+  /** Chimney stacks on the ridge of a long-ridge gable or hip (one design, every house); mirrored houses mirror them. */
+  chimneys?: ChimneySpec[];
+}
+
+/**
+ * A brick chimney stack standing on the ridge line: `w` along the ridge, `d` across it, rising `h` above the ridge, optionally with a
+ * cap course `capM` thick that oversails the shaft by 5 cm. Not drawn on flat roofs, short-ridge gables or pair gables.
+ */
+export interface ChimneySpec {
+  /** As elements: `u` is the stack centre's offset from the frontage centre (default) or inward from its left/right end. */
+  ref?: 'centre' | 'left' | 'right';
+  u: number;
+  w: number;
+  d: number;
+  h: number;
+  /** Offset of the stack centre from the ridge line towards the front (+) or back (-), metres. */
+  offsetM?: number;
+  /** Shaft material (default `wall`); the cap course (when `capM` > 0) is in `cap` (default `accent`). */
+  palette?: PaletteKey;
+  cap?: PaletteKey;
+  capM?: number;
+  variants?: string[];
+  exceptVariants?: string[];
+  note?: string;
 }
 
 /** A dormer on the front roof slope: front face `setBackM` behind the wall line, flat roof, cheeks down to the roof plane. */
@@ -227,6 +275,13 @@ export interface Annex {
   to: Height;
   /** `solid` volume (default) or an open stair: a landing slab per storey with a screen on the outer face and a cap. */
   kind?: 'solid' | 'openStair';
+  /**
+   * Plan of a solid annex: `rect` (default) or `segment`, a segmental bay whose outer face is a circular arc from (u0, d0) to (u1, d0)
+   * bulging out to d1 at the middle, drawn as `segments` flat facets (default 5). A segment bay's glaze (faces 'out') runs over every
+   * facet; `fascia` is drawn as a cap course on the arc; `doors` are not supported.
+   */
+  plan?: 'rect' | 'segment';
+  segments?: number;
   material?: PaletteKey;
   /** Top band (slab edge) in `colour` (default `column`). */
   fascia?: {h: number; colour?: PaletteKey};
@@ -303,12 +358,18 @@ export function validateSpec(spec: TypeSpec): string[] {
   if (spec.storeys < 2) errors.push('storeys < 2');
   for (const a of spec.annexes ?? []) {
     if (a.u[1] <= a.u[0] || a.d[1] <= a.d[0]) errors.push(`annex ${a.id}: empty u/d range`);
+    if (a.plan === 'segment' && (a.kind === 'openStair' || a.doors || (a.segments !== undefined && !(a.segments >= 2)))) errors.push(`annex ${a.id}: a segment bay is solid, without doors, with >= 2 segments`);
     for (const v of [...(a.variants ?? []), ...(a.exceptVariants ?? [])]) if (!spec.variants[v]) errors.push(`annex ${a.id}: unknown variant ${v}`);
   }
   for (const [i, d] of (spec.roof.dormers ?? []).entries()) {
     if (d.w <= 0 || d.h <= 0 || d.lights < 1) errors.push(`dormer ${i}: empty size or no lights`);
     for (const v of [...(d.variants ?? []), ...(d.exceptVariants ?? [])]) if (!spec.variants[v]) errors.push(`dormer ${i}: unknown variant ${v}`);
   }
+  for (const [i, ch] of (spec.roof.chimneys ?? []).entries()) {
+    if (!(ch.w > 0) || !(ch.d > 0) || !(ch.h > 0)) errors.push(`chimney ${i}: empty size`);
+    for (const v of [...(ch.variants ?? []), ...(ch.exceptVariants ?? [])]) if (!spec.variants[v]) errors.push(`chimney ${i}: unknown variant ${v}`);
+  }
+  if (spec.roof.monoPitch && (spec.roof.form !== 'gable' || spec.roof.ridge !== 'long' || spec.roof.eavesFromPlanes || spec.roof.pairGable)) errors.push('monoPitch needs a long-ridge gable without eavesFromPlanes or pairGable');
   if (spec.roof.pairGable && spec.roof.form === 'flat') errors.push('pairGable needs a pitched roof');
   if (spec.annexes && new Set(spec.annexes.map(a => a.id)).size !== spec.annexes.length) errors.push('duplicate annex ids');
   return errors;

@@ -1,0 +1,277 @@
+{
+ "id": "zo-vw-row",
+ "label": "Vogeltjeswei (1999) two-storey terraced house in orange-red brick under a shallow dark roof: cream door with side light, wide ground window, wide 3-light upper window (Pikoletstraat, Blauwdasstraat, Putterplantsoen, Suikerdiefjestraat, Troepiaalsingel)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 140,
+  "bouwjaar": [
+   1999,
+   1999
+  ],
+  "lengthM": 11.3,
+  "widthM": 4.8,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.0,
+  6.6
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.1,
+   5.8
+  ],
+  "depth": [
+   9.8,
+   13.4
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.35,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.12,
+  "pitchDeg": 18,
+  "ridgeFromPitch": true
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "cream-door",
+ "variants": {
+  "cream-door": {
+   "label": "cream doors and frames",
+   "evidence": "Pikoletstraat, Putterplantsoen, Suikerdiefjestraat, Blauwdasstraat (photos 2088862, 2128183, 2127761, 2154725)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#bd785c"
+    },
+    "frame": "#ece6c6",
+    "glass": "#4d5a66",
+    "door": "#e3d58f",
+    "accent": "#d8d2c4",
+    "rail": "#e3d58f",
+    "dark": "#3a3a3a",
+    "column": "#efeee8",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#55565a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012088862.jpg",
+     "pand": "0363100012088862",
+     "address": "Pikoletstraat",
+     "note": "2025-09 sunlit, measured: 4.8 m houses (not mirrored: door left, window right in every house), orange-red brick, cream-yellow door with a glazed side strip, wide ground window, wide 3-light cream-framed upper window, eaves ~5.3-5.7 m under a shallow dark roof"
+    },
+    {
+     "photo": "survey crop 0363100012154725.jpg",
+     "pand": "0363100012154725",
+     "address": "Blauwdasstraat",
+     "note": "2025-09: same, olive door, rooftop extensions on some houses (not modelled)"
+    },
+    {
+     "photo": "survey crop 0363100012128183.jpg",
+     "pand": "0363100012128183",
+     "address": "Pikoletstraat",
+     "note": "2025-09: same"
+    },
+    {
+     "photo": "survey crop 0363100012106790.jpg",
+     "pand": "0363100012106790",
+     "address": "Suikerdiefjestraat",
+     "note": "2022-06: same, darker red brick in shade"
+    },
+    {
+     "photo": "survey crop 0363100012127761.jpg",
+     "pand": "0363100012127761",
+     "address": "Putterplantsoen",
+     "note": "2025-09: same"
+    },
+    {
+     "photo": "survey crop 0363100012126863.jpg",
+     "pand": "0363100012126863",
+     "address": "Troepiaalsingel",
+     "note": "2024-09: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.62,
+       "w": 0.9,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.25,
+       "w": 0.2,
+       "h": 2.1,
+       "sill": 0.1,
+       "lights": 1,
+       "note": "glazed side strip"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.33,
+       "w": 1.95,
+       "h": 1.55,
+       "sill": 0.7,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 2.43,
+       "w": 2.55,
+       "h": 1.4,
+       "sill": 0.6,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012145376.jpg",
+     "pand": "0363100012145376",
+     "address": "Troepiaalsingel",
+     "note": "garden side not photographed (inferred)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.1,
+       "w": 2.0,
+       "h": 1.6,
+       "sill": 0.6,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "centre",
+       "u": 0,
+       "w": 2.4,
+       "h": 1.3,
+       "sill": 0.8,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012088862.jpg",
+     "pand": "0363100012088862",
+     "address": "Pikoletstraat",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012088862.jpg",
+     "pand": "0363100012088862",
+     "address": "Pikoletstraat",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Shallow 18 degree roof (3DBAG front plane): ridge from the pitch (ridgeFromPitch, ~7.4 m as on the houses without extensions); 3DBAG reads a flat rooftop extension at 8.4-8.7 m on about half the houses, set back and not seen from the street: not modelled.",
+  "Not mirrored (every door on the left, 2088862).",
+  "Recessed entrance reveals and the brick planters not modelled."
+ ]
+}

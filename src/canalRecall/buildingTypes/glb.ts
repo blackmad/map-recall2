@@ -31,12 +31,13 @@ export interface GlbResult { bytes: Uint8Array; triangles: number; primitives: n
 const hexRgb = (hex: string): [number, number, number] => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255) as [number, number, number];
 const srgbToLinear = (c: number) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
 
-function materialFor(doc: Document, cache: Map<string, Material>, slot: string, tint: string): Material {
-  const id = `${slot}|${tint}`;
+function materialFor(doc: Document, cache: Map<string, Material>, slot: string, tint: string, measured = false): Material {
+  const id = `${slot}|${tint}${measured ? '|measured' : ''}`;
   let m = cache.get(id);
   if (!m) {
     const [r, g, b] = hexRgb(tint).map(srgbToLinear);
-    m = doc.createMaterial(`${slot}_${tint.slice(1)}`).setBaseColorFactor([r, g, b, 1]).setMetallicFactor(0).setRoughnessFactor(0.9).setExtras({materialSlot: slot, tint});
+    m = doc.createMaterial(`${slot}_${tint.slice(1)}${measured ? '_measured' : ''}`).setBaseColorFactor([r, g, b, 1]).setMetallicFactor(0).setRoughnessFactor(0.9)
+      .setExtras(measured ? {materialSlot: slot, tint, tintSource: 'measured'} : {materialSlot: slot, tint});
     cache.set(id, m);
   }
   return m;
@@ -49,7 +50,7 @@ function meshOf(doc: Document, buffer: GltfBuffer, cache: Map<string, Material>,
     if (!bucket.positions.length) continue;
     const w = weld(bucket);
     vertices += w.positions.length / 3;
-    mesh.addPrimitive(doc.createPrimitive().setMaterial(materialFor(doc, cache, bucket.key.slot, bucket.key.tint))
+    mesh.addPrimitive(doc.createPrimitive().setMaterial(materialFor(doc, cache, bucket.key.slot, bucket.key.tint, bucket.key.measured === true))
       .setIndices(doc.createAccessor().setType('SCALAR').setArray(w.positions.length / 3 < 65536 ? Uint16Array.from(w.indices) : w.indices).setBuffer(buffer))
       .setAttribute('POSITION', doc.createAccessor().setType('VEC3').setArray(w.positions).setBuffer(buffer))
       .setAttribute('NORMAL', doc.createAccessor().setType('VEC3').setArray(w.normals).setBuffer(buffer))

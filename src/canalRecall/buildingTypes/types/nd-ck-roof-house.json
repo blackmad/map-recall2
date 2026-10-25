@@ -1,0 +1,277 @@
+{
+ "id": "nd-ck-roof-house",
+ "label": "Circus/Kermisbuurt (1988-89) terraced roof house: one brick storey at the street under a white fascia board, big tiled roof with rooflights swept down to the ground storey, two storeys at the garden (Platenwagenweg, Stellingweg, Kapkarpad, Lemoenpad, Markiespad)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 1,
+  "panden": 53,
+  "bouwjaar": [
+   1988,
+   1989
+  ],
+  "lengthM": 10.3,
+  "widthM": 5.1,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  2.4,
+  4.0
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.5,
+   6.0
+  ],
+  "depth": [
+   9.0,
+   11.2
+  ]
+ },
+ "alternateMirror": true,
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.12,
+  "pitchDeg": 45,
+  "eavesFromPlanes": "low-front",
+  "rooflights": {
+   "u": [
+    0.66
+   ],
+   "w": 1.0,
+   "h": 0.8,
+   "along": 0.3
+  }
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "white-door",
+ "variants": {
+  "white-door": {
+   "label": "white frames and doors",
+   "evidence": "Platenwagenweg, Stellingweg, Kapkarpad (photos 2097396, 2126007, 2080393)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#bd8270"
+    },
+    "frame": "#f2f1ec",
+    "glass": "#4d5a66",
+    "door": "#e9e7e0",
+    "accent": "#e8e6df",
+    "rail": "#e9e7e0",
+    "dark": "#3a3a3a",
+    "column": "#f4f3ee",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#5d5852"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012097396.jpg",
+     "pand": "0363100012097396",
+     "address": "Stellingweg",
+     "note": "2019-12 overcast, measured: 5.1 m houses, mirrored pairs (doors side by side), ground storey in red-pink brick under a white fascia board at ~2.6 m, door + 2-light window, big roof swept down to ~3 m with rooflights; one dormer (not modelled)"
+    },
+    {
+     "photo": "survey crop 0363100012126007.jpg",
+     "pand": "0363100012126007",
+     "address": "Platenwagenweg",
+     "note": "2019-11: same, two dormers in the row"
+    },
+    {
+     "photo": "survey crop 0363100012080393.jpg",
+     "pand": "0363100012080393",
+     "address": "Platenwagenweg",
+     "note": "2019-11: same, rooflights"
+    },
+    {
+     "photo": "survey crop 0363100012084028.jpg",
+     "pand": "0363100012084028",
+     "address": "Kapkarpad",
+     "note": "2019-11 close: white fascia board over the ground-storey window"
+    },
+    {
+     "photo": "survey crop 0363100012076606.jpg",
+     "pand": "0363100012076606",
+     "address": "Lemoenpad",
+     "note": "2019-11 close: door with arched glass, white frames, roof tiles from ~3 m"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.4,
+       "w": 0.85,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.0,
+       "w": 1.75,
+       "h": 1.2,
+       "sill": 0.72,
+       "lights": 2
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 2,
+     "below": 0.38,
+     "above": 0.0,
+     "palette": "column"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012110496.jpg",
+     "pand": "0363100012110496",
+     "address": "Platenwagenweg",
+     "note": "garden side over the fences: two storeys, windows on both (not measured)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.2,
+       "w": 2.0,
+       "h": 1.3,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012097396.jpg",
+     "pand": "0363100012097396",
+     "address": "Stellingweg",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012097396.jpg",
+     "pand": "0363100012097396",
+     "address": "Stellingweg",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Front and back eaves from the 3DBAG roof planes (low-front): the front slope comes down to the ground storey.",
+  "The white fascia board is drawn as a band under the front eaves.",
+  "Dormers (about one house in five) not modelled; mirror parity from the photographed house where read."
+ ]
+}

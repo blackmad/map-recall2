@@ -1,0 +1,41 @@
+[
+ {
+  "area": "nd-ck-01",
+  "anchor": {
+   "lng": 4.88586,
+   "lat": 52.4159
+  },
+  "pands": 13,
+  "missing": 0,
+  "per": {
+   "nd-ck-roof-house/white-door/photo": 13
+  }
+ },
+ {
+  "area": "nd-ck-02",
+  "anchor": {
+   "lng": 4.88291,
+   "lat": 52.41877
+  },
+  "pands": 154,
+  "missing": 0,
+  "per": {
+   "nd-ck-saltbox/yellow/photo": 132,
+   "nd-ck-saltbox/yellow/signature": 22
+  }
+ },
+ {
+  "area": "nd-ck-03",
+  "anchor": {
+   "lng": 4.88531,
+   "lat": 52.41705
+  },
+  "pands": 61,
+  "missing": 0,
+  "per": {
+   "nd-ck-roof-house/white-door/signature": 8,
+   "nd-ck-roof-house/white-door/photo": 31,
+   "nd-ck-saltbox/yellow/photo": 22
+  }
+ }
+]

@@ -1,0 +1,258 @@
+{
+ "terraces": {
+  "2": {
+   "type": "oo-ta-side",
+   "variant": "blue",
+   "via": "photo",
+   "repMirror": false
+  },
+  "12": {
+   "type": "oo-ta-side",
+   "variant": "blue",
+   "via": "photo",
+   "repMirror": false
+  },
+  "20": {
+   "type": "oo-ta-side",
+   "variant": "blue",
+   "via": "photo",
+   "repMirror": false
+  },
+  "21": {
+   "type": "oo-ta-side",
+   "variant": "blue",
+   "via": "photo",
+   "repMirror": false
+  },
+  "33": {
+   "type": "oo-ta-side",
+   "variant": "blue",
+   "via": "photo",
+   "repMirror": false
+  },
+  "35": {
+   "type": "oo-ta-side",
+   "variant": "blue",
+   "via": "photo",
+   "repMirror": false
+  },
+  "46": {
+   "type": "oo-ta-side",
+   "variant": "blue",
+   "via": "photo",
+   "repMirror": true
+  },
+  "50": {
+   "type": "oo-ta-side",
+   "variant": "blue",
+   "via": "photo",
+   "repMirror": true
+  },
+  "15": {
+   "type": "oo-ta-side",
+   "variant": "red",
+   "via": "photo",
+   "repMirror": false
+  },
+  "22": {
+   "type": "oo-ta-side",
+   "variant": "red",
+   "via": "photo",
+   "repMirror": true
+  },
+  "31": {
+   "type": "oo-ta-side",
+   "variant": "red",
+   "via": "photo",
+   "repMirror": false
+  },
+  "32": {
+   "type": "oo-ta-side",
+   "variant": "red",
+   "via": "photo",
+   "repMirror": true
+  },
+  "45": {
+   "type": "oo-ta-side",
+   "variant": "red",
+   "via": "photo"
+  },
+  "47": {
+   "type": "oo-ta-side",
+   "variant": "red",
+   "via": "photo"
+  },
+  "25": {
+   "type": "oo-ta-side",
+   "variant": "orange",
+   "via": "photo",
+   "repMirror": false
+  },
+  "51": {
+   "type": "oo-ta-side",
+   "variant": "orange",
+   "via": "photo",
+   "repMirror": false
+  },
+  "1": {
+   "type": "oo-ta-side",
+   "variant": "blue",
+   "via": "signature",
+   "note": "Starrenboschstraat rows of the blue side-balcony project (2, 12, 21 photographed); photo shows the garden side or greenery"
+  },
+  "4": {
+   "type": "oo-ta-side",
+   "variant": "blue",
+   "via": "signature",
+   "note": "Starrenboschstraat rows of the blue side-balcony project (2, 12, 21 photographed); photo shows the garden side or greenery"
+  },
+  "6": {
+   "type": "oo-ta-side",
+   "variant": "blue",
+   "via": "signature",
+   "note": "Starrenboschstraat rows of the blue side-balcony project (2, 12, 21 photographed); photo shows the garden side or greenery"
+  },
+  "9": {
+   "type": "oo-ta-side",
+   "variant": "blue",
+   "via": "signature",
+   "note": "Starrenboschstraat rows of the blue side-balcony project (2, 12, 21 photographed); photo shows the garden side or greenery"
+  },
+  "14": {
+   "type": "oo-ta-side",
+   "variant": "blue",
+   "via": "signature",
+   "note": "Starrenboschstraat rows of the blue side-balcony project (2, 12, 21 photographed); photo shows the garden side or greenery"
+  },
+  "11": {
+   "type": "oo-ta-centre",
+   "variant": "green",
+   "via": "photo"
+  },
+  "16": {
+   "type": "oo-ta-centre",
+   "variant": "green",
+   "via": "photo"
+  },
+  "19": {
+   "type": "oo-ta-centre",
+   "variant": "green",
+   "via": "photo"
+  },
+  "30": {
+   "type": "oo-ta-centre",
+   "variant": "green",
+   "via": "photo"
+  },
+  "38": {
+   "type": "oo-ta-centre",
+   "variant": "green",
+   "via": "photo"
+  },
+  "18": {
+   "type": "oo-ta-centre",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "27": {
+   "type": "oo-ta-centre",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "34": {
+   "type": "oo-ta-centre",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "48": {
+   "type": "oo-ta-centre",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "7": {
+   "type": "oo-ta-centre",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "24": {
+   "type": "oo-ta-centre",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "36": {
+   "type": "oo-ta-centre",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "41": {
+   "type": "oo-ta-centre",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "42": {
+   "type": "oo-ta-centre",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "43": {
+   "type": "oo-ta-centre",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "40": {
+   "type": "oo-ta-centre",
+   "variant": "red",
+   "via": "photo"
+  },
+  "3": {
+   "type": "oo-ta-cottage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "5": {
+   "type": "oo-ta-cottage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "10": {
+   "type": "oo-ta-cottage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "23": {
+   "type": "oo-ta-cottage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "8": {
+   "type": "oo-ta-cottage",
+   "variant": "red",
+   "via": "signature",
+   "note": "same 4.6 x 7.6 m one-storey cottage footprint, 1947, eaves 3.3 / ridge 6.1 m; photo blocked by greenery"
+  },
+  "13": {
+   "type": "oo-ta-cottage",
+   "variant": "red",
+   "via": "signature",
+   "note": "same 4.6 x 7.6 m one-storey cottage footprint, 1947, eaves 3.3 / ridge 6.1 m; photo blocked by greenery"
+  },
+  "17": {
+   "type": "oo-ta-cottage",
+   "variant": "red",
+   "via": "signature",
+   "note": "same 4.6 x 7.6 m one-storey cottage footprint, 1947, eaves 3.3 / ridge 6.1 m; photo blocked by greenery"
+  },
+  "26": {
+   "type": "oo-ta-cottage",
+   "variant": "red",
+   "via": "signature",
+   "note": "same 4.6 x 7.6 m one-storey cottage footprint, 1947, eaves 3.3 / ridge 6.1 m; photo blocked by greenery"
+  },
+  "28": {
+   "type": "oo-ta-cottage",
+   "variant": "red",
+   "via": "signature",
+   "note": "same 4.6 x 7.6 m one-storey cottage footprint, 1947, eaves 3.3 / ridge 6.1 m; photo blocked by greenery"
+  }
+ }
+}

@@ -1,0 +1,153 @@
+{
+ "terraces": {
+  "30": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "repMirror": false
+  },
+  "34": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "repMirror": true
+  },
+  "15": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "flip": true,
+   "note": "survey photo of the garden side (three storeys, same brick); front re-shot close-up: yellow door/frames, banded brick"
+  },
+  "17": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "flip": true,
+   "note": "survey photo of the garden side (three storeys, same brick); front re-shot close-up: yellow door/frames, banded brick"
+  },
+  "18": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "flip": true,
+   "note": "survey photo of the garden side (three storeys, same brick); front re-shot close-up: yellow door/frames, banded brick"
+  },
+  "19": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "flip": true,
+   "note": "survey photo of the garden side (three storeys, same brick); front re-shot close-up: yellow door/frames, banded brick"
+  },
+  "20": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "flip": true,
+   "note": "survey photo of the garden side (three storeys, same brick); front re-shot close-up: yellow door/frames, banded brick"
+  },
+  "21": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "flip": true,
+   "note": "survey photo of the garden side (three storeys, same brick); front re-shot close-up: yellow door/frames, banded brick"
+  },
+  "23": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "flip": true,
+   "note": "survey photo of the garden side (three storeys, same brick); front re-shot close-up: yellow door/frames, banded brick"
+  },
+  "24": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "flip": true,
+   "note": "survey photo of the garden side (three storeys, same brick); front re-shot close-up: yellow door/frames, banded brick"
+  },
+  "25": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "flip": true,
+   "note": "survey photo of the garden side (three storeys, same brick); front re-shot close-up: yellow door/frames, banded brick"
+  },
+  "27": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "flip": true,
+   "note": "survey photo of the garden side (three storeys, same brick); front re-shot close-up: yellow door/frames, banded brick"
+  },
+  "29": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "flip": true,
+   "note": "survey photo of the garden side (three storeys, same brick); front re-shot close-up: yellow door/frames, banded brick"
+  },
+  "31": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "photo",
+   "flip": true,
+   "note": "survey photo of the garden side (three storeys, same brick); front re-shot close-up: yellow door/frames, banded brick"
+  },
+  "22": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "signature",
+   "flip": true,
+   "note": "same 4.8 x 9.6 m 1989 row of 11; garden side photographed, front re-shot blocked; front opposite the garden"
+  },
+  "26": {
+   "type": "nd-ck-saltbox",
+   "variant": "yellow",
+   "via": "signature",
+   "flip": true,
+   "note": "same 4.8 x 9.6 m 1989 row of 11; garden side photographed, front re-shot blocked; front opposite the garden"
+  },
+  "4": {
+   "type": "nd-ck-roof-house",
+   "variant": "white-door",
+   "via": "photo",
+   "repMirror": true
+  },
+  "5": {
+   "type": "nd-ck-roof-house",
+   "variant": "white-door",
+   "via": "photo",
+   "repMirror": false
+  },
+  "0": {
+   "type": "nd-ck-roof-house",
+   "variant": "white-door",
+   "via": "photo"
+  },
+  "2": {
+   "type": "nd-ck-roof-house",
+   "variant": "white-door",
+   "via": "photo"
+  },
+  "3": {
+   "type": "nd-ck-roof-house",
+   "variant": "white-door",
+   "via": "photo"
+  },
+  "6": {
+   "type": "nd-ck-roof-house",
+   "variant": "white-door",
+   "via": "photo"
+  },
+  "1": {
+   "type": "nd-ck-roof-house",
+   "variant": "white-door",
+   "via": "signature",
+   "flip": true,
+   "note": "garden side photographed; same 5.1 x 10.3 m 1989 row, front opposite the garden"
+  }
+ }
+}

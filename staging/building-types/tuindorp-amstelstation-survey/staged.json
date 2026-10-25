@@ -1,0 +1,55 @@
+[
+ {
+  "area": "oo-ta-01",
+  "anchor": {
+   "lng": 4.92182,
+   "lat": 52.34382
+  },
+  "pands": 51,
+  "missing": 0,
+  "per": {
+   "oo-ta-side/blue/signature": 7,
+   "oo-ta-side/blue/photo": 8,
+   "oo-ta-cottage/red/photo": 13,
+   "oo-ta-centre/orange/photo": 10,
+   "oo-ta-cottage/red/signature": 6,
+   "oo-ta-centre/green/photo": 7
+  }
+ },
+ {
+  "area": "oo-ta-02",
+  "anchor": {
+   "lng": 4.92192,
+   "lat": 52.34478
+  },
+  "pands": 163,
+  "missing": 0,
+  "per": {
+   "oo-ta-side/blue/signature": 6,
+   "oo-ta-cottage/red/photo": 6,
+   "oo-ta-side/blue/photo": 36,
+   "oo-ta-cottage/red/signature": 6,
+   "oo-ta-side/red/photo": 35,
+   "oo-ta-centre/green/photo": 19,
+   "oo-ta-centre/yellow/photo": 22,
+   "oo-ta-centre/orange/photo": 21,
+   "oo-ta-side/orange/photo": 9,
+   "oo-ta-centre/red/photo": 3
+  }
+ },
+ {
+  "area": "oo-ta-03",
+  "anchor": {
+   "lng": 4.92407,
+   "lat": 52.3448
+  },
+  "pands": 38,
+  "missing": 0,
+  "per": {
+   "oo-ta-cottage/red/signature": 18,
+   "oo-ta-cottage/red/photo": 6,
+   "oo-ta-side/blue/photo": 7,
+   "oo-ta-centre/orange/photo": 7
+  }
+ }
+]

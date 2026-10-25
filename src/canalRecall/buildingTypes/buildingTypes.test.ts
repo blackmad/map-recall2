@@ -689,3 +689,98 @@ test('sizeClass: no token without sizeClassesM; thresholds split frontage and de
   assert.deepEqual(validateSpec(base), []);
   assert.ok(validateSpec({...base, sizeClassesM: {depth: [8, 7]}}).some(e => e.includes('sizeClassesM.depth')));
 });
+
+// Round 3 (#74): Tuinwijk Amstelstation, Circus/Kermisbuurt, Twiske-Oost, Vogeltjeswei.
+const R3_TYPES = ['oo-ta-side', 'oo-ta-centre', 'oo-ta-cottage', 'nd-ck-saltbox', 'nd-ck-roof-house', 'nd-tw-gable', 'nd-tw-flat', 'nd-tw-flat-top', 'zo-vw-row', 'zo-vw-bay'].map(id => load(`${id}.json`));
+/** Mid-range params the way build.ts derives them (eavesFromPlanes / monoPitch slopes, ridgeFromPitch, eavesPinM). */
+function r3Params(spec: TypeSpec) {
+  const [lo, hi] = spec.eavesRangeM!, L = (spec.footprintRangeM!.frontage[0] + spec.footprintRangeM!.frontage[1]) / 2, W = (spec.footprintRangeM!.depth[0] + spec.footprintRangeM!.depth[1]) / 2;
+  const eaves = spec.roof.eavesPinM ?? (lo + hi) / 2, r = spec.roof;
+  if (r.form === 'flat') return {lengthM: L, widthM: W, eavesM: eaves};
+  const tan = Math.tan(r.pitchDeg * Math.PI / 180);
+  if (r.monoPitch) return {lengthM: L, widthM: W, eavesM: eaves, ridgeM: eaves + tan * W, backEavesM: eaves + tan * W, roofForm: 'gable' as const, ridge: 'long' as const};
+  if (r.eavesFromPlanes === 'low-front') return {lengthM: L, widthM: W, eavesM: lo + 0.2, backEavesM: hi, ridgeM: hi + 2.5};
+  if (r.eavesFromPlanes === 'low-back') return {lengthM: L, widthM: W, eavesM: hi - 0.2, backEavesM: lo + 0.5, ridgeM: hi + 2.2};
+  return {lengthM: L, widthM: W, eavesM: eaves, ridgeM: eaves + tan * W / 2};
+}
+
+test('round-3 designs (#74): validate, >= 4 distinct photo pands on the front, counted openings match for every variant and handedness, <= 600 triangles, party walls blank, ridge (or chimney cap) reached, within the frontage', () => {
+  for (const spec of R3_TYPES) {
+    assert.deepEqual(validateSpec(spec), [], spec.id);
+    assert.equal(spec.frontOnShort, true);
+    assert.ok(new Set(spec.facades.front.evidence.map(e => e.pand)).size >= 4, `${spec.id}: evidence`);
+    const p = r3Params(spec), chim = Math.max(0, ...(spec.roof.chimneys ?? []).map(c => c.h + (c.capM ?? 0)));
+    for (const variant of Object.keys(spec.variants)) for (const mirror of [false, true]) {
+      const {report, mesh} = generate(spec, {...p, variant, mirror});
+      assert.deepEqual(report.facades.front, spec.facades.front.counted, `${spec.id}/${variant}/front`);
+      assert.ok(mesh.triangles <= 600, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
+      const mid = generate(spec, {...p, variant, mirror, freeSides: {left: false, right: false}});
+      assert.equal(mid.report.facades.left.bays + mid.report.facades.right.bays, 0, 'party walls have no bays');
+      const b = mesh.bounds(), top = p.ridgeM ?? p.eavesM;
+      assert.ok(b.min[1] >= -1e-9, `${spec.id}: nothing below ground`);
+      if (chim) assert.ok(b.max[1] > top + 0.5 && b.max[1] <= top + chim + 1e-6, `${spec.id}: chimney cap above the ridge (${b.max[1]} vs ${top})`);
+      else if (p.ridgeM) assert.ok(Math.abs(b.max[1] - top) < 1e-6, `${spec.id}: ridge reached (${b.max[1]} vs ${top})`);
+      else assert.ok(b.max[1] >= top - 1e-6, `${spec.id}: roof reached`);
+      const ov = spec.roof.vergeOverhangM + 0.06;
+      assert.ok(b.max[0] <= p.lengthM / 2 + ov && b.min[0] >= -p.lengthM / 2 - ov, `${spec.id}/${variant}/${mirror}: within its frontage`);
+    }
+  }
+});
+
+test('round-3 kit parts absent -> byte-identical: no chimneys, stripes or measured flag leave a design unchanged; present, they add their own geometry', () => {
+  const same = (a: ReturnType<typeof generate>['mesh'], b: ReturnType<typeof generate>['mesh']) => { assert.equal(a.buckets.size, b.buckets.size); for (const [key, bucket] of a.buckets) assert.deepEqual(b.buckets.get(key)!.positions, bucket.positions, key); };
+  const S = load('oo-ta-side.json'), sp = {...r3Params(S), variant: 'red'};
+  const noChim = generate({...S, roof: {...S.roof, chimneys: undefined}}, sp).mesh;
+  same(noChim, generate({...S, roof: {...S.roof, chimneys: []}}, sp).mesh);
+  assert.ok(generate(S, sp).mesh.triangles >= noChim.triangles + 10, 'chimney drawn');
+  const F = load('nd-tw-flat.json'), fp = {...r3Params(F), variant: 'striped'};
+  const noStripes = generate({...F, facades: {...F.facades, front: {...F.facades.front, stripes: undefined}}}, fp).mesh;
+  same(noStripes, generate({...F, facades: {...F.facades, front: {...F.facades.front, stripes: []}}}, fp).mesh);
+  assert.ok(generate(F, fp).mesh.triangles > noStripes.triangles + 10, 'stripes drawn');
+  // measured flag: same geometry under a separate material bucket; absent, the bucket key is the old slot|tint
+  const unmeasured = (s: TypeSpec): TypeSpec => ({...s, variants: Object.fromEntries(Object.entries(s.variants).map(([k, v]) => [k, {...v, palette: {...v.palette, wall: {slot: v.palette.wall.slot, tint: v.palette.wall.tint}, ...(v.palette.plinth ? {plinth: {slot: v.palette.plinth.slot, tint: v.palette.plinth.tint}} : {})}}]))});
+  const m = generate(F, fp).mesh, u = generate(unmeasured(F), fp).mesh, wall = F.variants.striped.palette.wall.tint;
+  assert.ok(m.buckets.has(`brick|${wall}|measured`) && !m.buckets.has(`brick|${wall}`));
+  assert.ok(u.buckets.has(`brick|${wall}`) && !u.buckets.has(`brick|${wall}|measured`));
+  assert.deepEqual(m.buckets.get(`brick|${wall}|measured`)!.positions, u.buckets.get(`brick|${wall}`)!.positions);
+});
+
+test('mono-pitch saltbox: one plane rising from the front eaves to a ridge on the back wall; validateSpec rejects monoPitch on a flat or eavesFromPlanes roof', () => {
+  const C = load('nd-ck-saltbox.json'), p = {...r3Params(C), variant: 'yellow'};
+  const roof = xs(generate(C, p).mesh, `roofTile|${C.variants.yellow.palette.roof.tint}`);
+  const W = p.widthM, tan = (p.ridgeM! - p.eavesM) / W;
+  const onPlane = roof.filter(q => Math.abs(q[2]) <= W / 2 + 1e-6 && q[1] > p.eavesM - 0.4);
+  assert.ok(onPlane.length > 0);
+  const top = onPlane.reduce((a, q) => (q[1] > a[1] ? q : a));
+  assert.ok(Math.abs(top[1] - p.ridgeM!) < 0.05 && top[2] < -W / 2 + 0.3, `ridge on the back wall (${top})`);
+  assert.ok(tan > 0.4 && tan < 0.6);
+  assert.ok(validateSpec({...C, roof: {...C.roof, form: 'flat'}}).length > 0);
+  assert.ok(validateSpec({...C, roof: {...C.roof, eavesFromPlanes: 'low-front'}}).length > 0);
+});
+
+test('segment bay (Vogeltjeswei drum): facets on an arc out from the front wall, within its u span and depth, glazed per facet; validateSpec rejects a segment annex with doors', () => {
+  const B = load('zo-vw-bay.json'), p = {...r3Params(B), variant: 'navy'};
+  const seg = B.annexes!.find(a => a.plan === 'segment')!;
+  assert.ok(seg && (seg.segments ?? 0) >= 2);
+  const r = generate(B, p), b = r.mesh.bounds();
+  assert.ok(b.max[2] > p.widthM / 2 - 1.0 + 0.5, 'bay stands proud of the inset front wall');
+  assert.ok(r.mesh.triangles <= 600);
+  const glass = [...r.mesh.buckets.keys()].filter(k => k.startsWith('glass|'));
+  assert.ok(glass.length >= 1);
+  assert.ok(validateSpec({...B, annexes: B.annexes!.map(a => (a.plan === 'segment' ? {...a, doors: [{u: 0.5, w: 0.9, h: 2.1}]} : a)) as TypeSpec['annexes']}).length > 0);
+});
+
+test('measured palette: the GLB material carries tintSource "measured" only when flagged; an unflagged material keeps the old name and extras', async () => {
+  const {MeshBuilder} = await import('./mesh.ts');
+  const {writeTypeGlb} = await import('./glb.ts');
+  const {NodeIO} = await import('@gltf-transform/core');
+  const mats = async (measured: boolean) => {
+    const mb = new MeshBuilder();
+    mb.tri({slot: 'brick', tint: '#d4d0c1', ...(measured ? {measured: true} : {})}, [0, 0, 0], [1, 0, 0], [0, 1, 0]);
+    const out = await writeTypeGlb('t', mb, {}, {compress: 'none'});
+    const doc = await new NodeIO().readBinary(out.bytes);
+    return doc.getRoot().listMaterials().map(m => ({name: m.getName(), extras: m.getExtras()}));
+  };
+  assert.deepEqual(await mats(false), [{name: 'brick_d4d0c1', extras: {materialSlot: 'brick', tint: '#d4d0c1'}}]);
+  assert.deepEqual(await mats(true), [{name: 'brick_d4d0c1_measured', extras: {materialSlot: 'brick', tint: '#d4d0c1', tintSource: 'measured'}}]);
+});

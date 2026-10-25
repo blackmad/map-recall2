@@ -1,0 +1,350 @@
+{
+ "id": "zo-vw-bay",
+ "label": "Vogeltjeswei (1999) terraced house with a two-storey segmental glazed bay under a curved brick drum, door beside it, white setback top storey behind a roof terrace (Troepiaalsingel, Pikoletstraat, Putterplantsoen)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 1,
+  "panden": 40,
+  "bouwjaar": [
+   1999,
+   1999
+  ],
+  "lengthM": 11.0,
+  "widthM": 5.9,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.5,
+  6.5
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.0,
+   7.4
+  ],
+  "depth": [
+   9.6,
+   12.4
+  ]
+ },
+ "rowCoherentHeights": true,
+ "insetM": {
+  "front": 1.0,
+  "back": 0.0
+ },
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.0,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.22,
+  "pitchDeg": 0,
+  "eavesPinM": 6.0
+ },
+ "annexes": [
+  {
+   "id": "bay",
+   "facade": "front",
+   "plan": "segment",
+   "segments": 6,
+   "u": [
+    0.1,
+    4.1
+   ],
+   "d": [
+    -1.0,
+    0.15
+   ],
+   "from": 0,
+   "to": 4.75,
+   "material": "dark",
+   "glaze": [
+    {
+     "faces": [
+      "out"
+     ],
+     "sill": 0.15,
+     "h": 1.95,
+     "lightM": 0.75,
+     "marginM": 0.05
+    },
+    {
+     "faces": [
+      "out"
+     ],
+     "sill": 3.3,
+     "h": 1.4,
+     "lightM": 0.75,
+     "marginM": 0.05
+    }
+   ],
+   "evidence": "2065345, 2080118: segmental two-storey bay 4.0 m wide, ~1.1 m deep (BAG ring arc), glazed in two rows with dark spandrel panels, brick drum above to the roof terrace"
+  },
+  {
+   "id": "drum",
+   "facade": "front",
+   "plan": "segment",
+   "segments": 6,
+   "u": [
+    0.1,
+    4.1
+   ],
+   "d": [
+    -1.0,
+    0.15
+   ],
+   "from": 4.75,
+   "to": 5.78,
+   "material": "wall",
+   "evidence": "2065345, 2080118: segmental two-storey bay 4.0 m wide, ~1.1 m deep (BAG ring arc), glazed in two rows with dark spandrel panels, brick drum above to the roof terrace"
+  },
+  {
+   "id": "top",
+   "facade": "front",
+   "u": [
+    0.05,
+    5.85
+   ],
+   "d": [
+    -10.6,
+    -3.6
+   ],
+   "from": {
+    "eaves": -0.2
+   },
+   "to": {
+    "eaves": 2.7
+   },
+   "material": "column",
+   "fascia": {
+    "h": 0.15,
+    "colour": "dark"
+   },
+   "glaze": {
+    "faces": [
+     "out"
+    ],
+    "sill": 0.5,
+    "h": 1.7,
+    "lightM": 1.0,
+    "marginM": 0.5
+   },
+   "evidence": "2065345: light setback top storey with white frames behind the roof terrace (3DBAG 50p 8.7 m)"
+  }
+ ],
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "navy",
+ "variants": {
+  "navy": {
+   "label": "navy frames and spandrels",
+   "evidence": "Pikoletstraat, Troepiaalsingel (photos 2065345, 2080118)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#c78f6a"
+    },
+    "frame": "#34425e",
+    "glass": "#4d5a66",
+    "door": "#34425e",
+    "accent": "#d8d2c4",
+    "rail": "#34425e",
+    "dark": "#3b4a66",
+    "column": "#eeede8",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#5a5b5e"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012065345.jpg",
+     "pand": "0363100012065345",
+     "address": "Pikoletstraat",
+     "note": "2025-09 sunlit, measured: 5.9 m houses, not mirrored: a segmental bay over the left 4 m (two rows of dark-framed glazing, dark spandrel, curved brick drum up to ~6.0 m), door and one window to its right, white setback top storey behind a roof terrace"
+    },
+    {
+     "photo": "survey crop 0363100012080118.jpg",
+     "pand": "0363100012080118",
+     "address": "Troepiaalsingel",
+     "note": "2024-09: same, bright blue frames on some houses"
+    },
+    {
+     "photo": "survey crop 0363100012150709.jpg",
+     "pand": "0363100012150709",
+     "address": "Putterplantsoen",
+     "note": "2025-09: same, bays behind hedges"
+    },
+    {
+     "photo": "survey crop 0363100012061517.jpg",
+     "pand": "0363100012061517",
+     "address": "Troepiaalsingel",
+     "note": "BAG ring: 13-vertex footprint with the bay arc (~4.0 m chord, 1.1-1.2 m deep) on a trapezoid of the curved row"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "right",
+       "u": 0.85,
+       "w": 0.85,
+       "h": 2.15
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "right",
+       "u": 0.85,
+       "w": 1.0,
+       "h": 1.5,
+       "sill": 0.3,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012065345.jpg",
+     "pand": "0363100012065345",
+     "address": "Pikoletstraat",
+     "note": "garden side not photographed (inferred)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 2.4,
+       "h": 1.6,
+       "sill": 0.6,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.5,
+       "w": 1.6,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.2,
+       "w": 1.6,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012065345.jpg",
+     "pand": "0363100012065345",
+     "address": "Pikoletstraat",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012065345.jpg",
+     "pand": "0363100012065345",
+     "address": "Pikoletstraat",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "The BAG ring includes the bay: the rectangle runs to the bay front and the house wall stands 1.0 m inside it (insetM); the flat roof slab covers the whole rectangle, so it also oversails the entrance by 1 m (in the photos the terrace edge follows the drum).",
+  "Eaves pinned at 6.0 m (3DBAG b3_h_dak_min 6.0 m above ground; 50p 8.7 m is the setback storey).",
+  "Curved rows: the trapezoid plots (5.9 m front, 4.2 m back on Troepiaalsingel) are drawn as rectangles.",
+  "Not mirrored (every bay on the left). Roof-terrace railings not modelled."
+ ]
+}

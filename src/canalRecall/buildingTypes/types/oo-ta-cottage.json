@@ -1,0 +1,263 @@
+{
+ "id": "oo-ta-cottage",
+ "label": "Tuindorp Amstelstation (1947) one-storey row cottages: red door with transom, wide window, white eaves board, orange pantile roof with chimney stacks (Manenburgstraat, Rusthofstraat, Rosendaalstraat)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 4,
+  "panden": 55,
+  "bouwjaar": [
+   1947,
+   1947
+  ],
+  "lengthM": 7.6,
+  "widthM": 4.6,
+  "bouwlagen": 1,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  2.6,
+  3.9
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.0,
+   5.3
+  ],
+  "depth": [
+   6.8,
+   8.4
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.12,
+  "pitchDeg": 40,
+  "chimneys": [
+   {
+    "ref": "left",
+    "u": 0.45,
+    "w": 0.7,
+    "d": 0.6,
+    "h": 0.85,
+    "capM": 0.08,
+    "note": "one stack per house over the door side (2070501, perspective-corrected): partly measured"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "red",
+ "variants": {
+  "red": {
+   "label": "red doors, orange pantiles",
+   "evidence": "Manenburgstraat, Rosendaalstraat, Rusthofstraat (photos 2070501, 2074640)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#866e62"
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#b8323a",
+    "accent": "#e8e4da",
+    "rail": "#b8323a",
+    "dark": "#3a3a3a",
+    "column": "#f4f2ec",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#c2673f"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012070501.jpg",
+     "pand": "0363100012070501",
+     "address": "Manenburgstraat",
+     "note": "2020-04 sunlit, measured: 4.6 m houses, red door with transom at the left party wall, one wide 2-light window, white eaves board at ~3.0 m, orange pantiles to the 6.1 m ridge, a chimney stack per house"
+    },
+    {
+     "photo": "survey crop 0363100012074640.jpg",
+     "pand": "0363100012074640",
+     "address": "Rosendaalstraat",
+     "note": "2020-04: same, red doors"
+    },
+    {
+     "photo": "survey crop 0363100012137295.jpg",
+     "pand": "0363100012137295",
+     "address": "Rusthofstraat",
+     "note": "2020-04: same row, door hood on one house"
+    },
+    {
+     "photo": "survey crop 0363100012082585.jpg",
+     "pand": "0363100012082585",
+     "address": "Rusthofstraat",
+     "note": "2020-04: same, orange roof seen over the gardens"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.55,
+       "w": 0.85,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.55,
+       "w": 0.85,
+       "h": 0.28,
+       "sill": 2.2,
+       "lights": 1,
+       "note": "transom"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.75,
+       "w": 2.1,
+       "h": 1.65,
+       "sill": 0.8,
+       "lights": 2
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 2,
+     "below": 0.22,
+     "above": 0.0,
+     "palette": "column"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012082585.jpg",
+     "pand": "0363100012082585",
+     "address": "Rusthofstraat",
+     "note": "garden side behind hedges: not measured"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.6,
+       "w": 0.85,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.8,
+       "w": 1.8,
+       "h": 1.3,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012091220.jpg",
+     "pand": "0363100012091220",
+     "address": "Rosendaalstraat",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012091220.jpg",
+     "pand": "0363100012091220",
+     "address": "Rosendaalstraat",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "One storey under the roof: storeys = 2 is the kit minimum; every element sits on the ground storey (eaves 3.0-3.3 m).",
+  "Not mirrored: every house has its door on the same side (2070501).",
+  "Chimney stack per house partly measured."
+ ]
+}

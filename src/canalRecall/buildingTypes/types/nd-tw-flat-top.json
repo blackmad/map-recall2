@@ -1,0 +1,387 @@
+{
+ "id": "nd-tw-flat-top",
+ "label": "Twiske-Oost (1990) flat-roofed terraced house with a white setback top storey behind a roof terrace: dark grey ground storey, striped ochre-and-grey first storey (Thomas Prinslaan, Nathan F. Israelweg)",
+ "source": {
+  "clusterRank": 1,
+  "panden": 36,
+  "bouwjaar": [
+   1990,
+   1990
+  ],
+  "lengthM": 11.0,
+  "widthM": 4.8,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "frontOnShort": true,
+ "storeys": 2,
+ "alternateMirror": true,
+ "rowCoherentHeights": true,
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "striped",
+ "variants": {
+  "striped": {
+   "label": "no storage box in the footprint",
+   "evidence": "Thomas Prinslaan, Johannes J. Glasweg (photos 2083194, 2104376, 2115779)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#cdbfa6",
+     "measured": true
+    },
+    "frame": "#f4f3ef",
+    "glass": "#4d5a66",
+    "door": "#f4f3ef",
+    "accent": "#b9b4ac",
+    "rail": "#f4f3ef",
+    "dark": "#3a3a3a",
+    "column": "#c9c5be",
+    "joint": "#807a72",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#5f5d5a"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#67686b",
+     "measured": true
+    }
+   }
+  },
+  "striped-box": {
+   "label": "storage box in front (BAG ring notch)",
+   "evidence": "Thomas Prinslaan (photos 2089886, 2094706)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#cdbfa6",
+     "measured": true
+    },
+    "frame": "#f4f3ef",
+    "glass": "#4d5a66",
+    "door": "#f4f3ef",
+    "accent": "#b9b4ac",
+    "rail": "#f4f3ef",
+    "dark": "#3a3a3a",
+    "column": "#c9c5be",
+    "joint": "#807a72",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#5f5d5a"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#67686b",
+     "measured": true
+    }
+   }
+  }
+ },
+ "annexes": [
+  {
+   "id": "store",
+   "facade": "front",
+   "u": [
+    0.0,
+    2.0
+   ],
+   "d": [
+    0.0,
+    2.1
+   ],
+   "to": 2.35,
+   "material": "plinth",
+   "fascia": {
+    "h": 0.18,
+    "colour": "accent"
+   },
+   "variants": [
+    "striped-box"
+   ],
+   "evidence": "2083194, 2094706: grey-brick storage box with a concrete cap in front of the door-side party wall (the BAG ring carries it as a 2.1 x 2.1 m notch)"
+  },
+  {
+   "id": "top",
+   "facade": "front",
+   "u": [
+    0.05,
+    4.75
+   ],
+   "d": [
+    -11.6,
+    -3.4
+   ],
+   "from": {
+    "eaves": -0.2
+   },
+   "to": {
+    "eaves": 2.75
+   },
+   "material": "column",
+   "fascia": {
+    "h": 0.15,
+    "colour": "dark"
+   },
+   "glaze": {
+    "faces": [
+     "out"
+    ],
+    "sill": 0.75,
+    "h": 1.55,
+    "lightM": 1.15,
+    "marginM": 0.4
+   },
+   "evidence": "2094706, 2145259, 2147142: rendered setback top storey behind a roof terrace, glazed to the terrace; 3DBAG 50p roof 7.8-8.5 m"
+  }
+ ],
+ "eavesRangeM": [
+  5.5,
+  6.4
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   3.9,
+   5.8
+  ],
+  "depth": [
+   9.4,
+   12.6
+  ]
+ },
+ "bodyFromRoof": {
+  "tolM": 3.3
+ },
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.0,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.22,
+  "pitchDeg": 0,
+  "eavesPinM": 5.95
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012094706.jpg",
+     "pand": "0363100012094706",
+     "address": "Thomas Prinslaan",
+     "note": "2025-09 sunlit: same two storeys as the flat row (striped upper, grey ground, storage box) with a white setback storey and roof terrace"
+    },
+    {
+     "photo": "survey crop 0363100012145259.jpg",
+     "pand": "0363100012145259",
+     "address": "Nathan F. Israelweg",
+     "note": "2025-09: same, carports"
+    },
+    {
+     "photo": "survey crop 0363100012147142.jpg",
+     "pand": "0363100012147142",
+     "address": "Thomas Prinslaan",
+     "note": "2024-10 close: setback storey glazing over the white coping"
+    },
+    {
+     "photo": "survey crop 0363100012065074.jpg",
+     "pand": "0363100012065074",
+     "address": "Thomas Prinslaan",
+     "note": "2025-09: same row, storage boxes"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.05,
+       "w": 0.92,
+       "h": 2.15
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.8,
+       "w": 1.3,
+       "h": 1.3,
+       "sill": 1.15,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.85,
+       "w": 1.2,
+       "h": 1.25,
+       "sill": 0.95,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.75,
+       "w": 1.15,
+       "h": 1.25,
+       "sill": 0.95,
+       "lights": 2
+      }
+     ]
+    }
+   ],
+   "stripes": [
+    {
+     "levels": "upper",
+     "pitchM": 0.55,
+     "heightM": 0.27,
+     "offsetM": 0.1,
+     "palette": "joint"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012106896.jpg",
+     "pand": "0363100012106896",
+     "address": "Luyendijkje",
+     "note": "2019-07 garden side (ambiguous front): same striped upper brick (not measured)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.2,
+       "w": 2.0,
+       "h": 1.5,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.2,
+       "h": 1.25,
+       "sill": 0.95,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.2,
+       "h": 1.25,
+       "sill": 0.95,
+       "lights": 2
+      }
+     ]
+    }
+   ],
+   "stripes": [
+    {
+     "levels": "upper",
+     "pitchM": 0.55,
+     "heightM": 0.27,
+     "offsetM": 0.1,
+     "palette": "joint"
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012094706.jpg",
+     "pand": "0363100012094706",
+     "address": "Thomas Prinslaan",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012094706.jpg",
+     "pand": "0363100012094706",
+     "address": "Thomas Prinslaan",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Main eaves pinned at 5.95 m (the plain flat rows: 3DBAG 50p 5.4 NAP over a -0.54 ground); 3DBAG 50p reads the setback storey on these houses.",
+  "Setback storey: annex 3.4 m behind the front wall to the back wall, up to 2.75 m over the eaves (3DBAG max 9.2 m), white render, glazed to the terrace; terrace railing not modelled.",
+  "Body from the 3DBAG roof with a 3.3 m tolerance (main roof and setback storey, not the storage box)."
+ ]
+}

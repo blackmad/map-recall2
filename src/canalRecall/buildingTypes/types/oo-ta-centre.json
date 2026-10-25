@@ -1,0 +1,451 @@
+{
+ "id": "oo-ta-centre",
+ "label": "Tuindorp Amstelstation (1948) two-storey brick duplex, symmetric facade: paired doors in the middle under a wide balcony, coloured eaves board (Rosendaalstraat, Manenburgstraat, De Peerelstraat, Buitenrustpad, Middelhoffstraat)",
+ "source": {
+  "clusterRank": 0,
+  "panden": 166,
+  "bouwjaar": [
+   1948,
+   1948
+  ],
+  "lengthM": 8.5,
+  "widthM": 7.6,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 2
+ },
+ "frontOnShort": true,
+ "storeys": 2,
+ "eavesRangeM": [
+  5.6,
+  7.0
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   6.4,
+   8.6
+  ],
+  "depth": [
+   7.8,
+   9.3
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.35,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.12,
+  "pitchDeg": 37,
+  "chimneys": [
+   {
+    "ref": "left",
+    "u": 1.42,
+    "w": 0.75,
+    "d": 0.55,
+    "h": 0.95,
+    "capM": 0.1,
+    "note": "one stack per house, 1.4 m from the left party wall at the facade scale (2091220, 2077521); size estimated"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "green",
+ "variants": {
+  "green": {
+   "label": "mint-green doors, green rails and eaves board",
+   "evidence": "Manenburgstraat, Rosendaalstraat, Buitenrustpad (photos 2146263, 2128094, 2062854, 2114139)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#866e62"
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#86c9ae",
+    "accent": "#e8e4da",
+    "rail": "#86c9ae",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#6a443c"
+    }
+   }
+  },
+  "yellow": {
+   "label": "yellow doors, yellow rails and eaves board",
+   "evidence": "De Peerelstraat, Rosendaalstraat (photos 2073662, 2155246, 2095358)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#866e62"
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#e2d27a",
+    "accent": "#e8e4da",
+    "rail": "#e2d27a",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#6a443c"
+    }
+   }
+  },
+  "orange": {
+   "label": "orange-brown doors, brown rails and eaves board",
+   "evidence": "Rosendaalstraat, Buitenrustpad, Middelhoffstraat (photos 2077521, 2077403, 2114026, 2116796)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#866e62"
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#c08a5a",
+    "accent": "#e8e4da",
+    "rail": "#c08a5a",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#6a443c"
+    }
+   }
+  },
+  "red": {
+   "label": "red doors, red balcony rails and eaves board",
+   "evidence": "Rosendaalstraat (photo 2126504)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#866e62"
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#c8424a",
+    "accent": "#e8e4da",
+    "rail": "#c8424a",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#6a443c"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012077521.jpg",
+     "pand": "0363100012077521",
+     "address": "Rosendaalstraat",
+     "note": "2020-04 overcast, measured: 7.6 m between the downpipes, symmetric: paired doors with transom in the middle, a window either side; upper: balcony 4.3 m wide over the doors, french door + window each side, vent light in the middle"
+    },
+    {
+     "photo": "survey crop 0363100012128094.jpg",
+     "pand": "0363100012128094",
+     "address": "Rosendaalstraat",
+     "note": "2020-04: same layout, mint-green doors and rails"
+    },
+    {
+     "photo": "survey crop 0363100012137060.jpg",
+     "pand": "0363100012137060",
+     "address": "Middelhoffstraat",
+     "note": "2020-04: same layout, green"
+    },
+    {
+     "photo": "survey crop 0363100012155246.jpg",
+     "pand": "0363100012155246",
+     "address": "De Peerelstraat",
+     "note": "2020-04: same layout, yellow"
+    },
+    {
+     "photo": "survey crop 0363100012095358.jpg",
+     "pand": "0363100012095358",
+     "address": "Rosendaalstraat",
+     "note": "2020-04 sunlit: same layout, yellow, yellow eaves board"
+    },
+    {
+     "photo": "survey crop 0363100012126504.jpg",
+     "pand": "0363100012126504",
+     "address": "Rosendaalstraat",
+     "note": "2020-04: same layout, red doors and eaves board"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 5,
+    "groundDoors": 2,
+    "balconiesPerUpperStorey": 1
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "balcony",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "centre",
+       "u": -2.35,
+       "w": 1.12,
+       "h": 1.35,
+       "sill": 1.0,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "centre",
+       "u": 2.35,
+       "w": 1.12,
+       "h": 1.35,
+       "sill": 1.0,
+       "lights": 2
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "centre",
+       "u": -0.45,
+       "w": 0.84,
+       "h": 2.1
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "centre",
+       "u": 0.45,
+       "w": 0.84,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "centre",
+       "u": 0,
+       "w": 1.8,
+       "h": 0.3,
+       "sill": 2.2,
+       "lights": 2,
+       "note": "transom lights over the door pair"
+      },
+      {
+       "kind": "balcony",
+       "levels": "upper",
+       "ref": "centre",
+       "u": 0,
+       "w": 4.3,
+       "depth": 0.9,
+       "railing": "bars"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "centre",
+       "u": -2.38,
+       "w": 0.85,
+       "h": 1.3,
+       "sill": 1.1,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "centre",
+       "u": -1.4,
+       "w": 0.8,
+       "h": 2.15,
+       "sill": 0.05,
+       "lights": 1,
+       "note": "french door"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "centre",
+       "u": 0,
+       "w": 0.3,
+       "h": 0.3,
+       "sill": 1.85,
+       "lights": 1,
+       "note": "vent light"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "centre",
+       "u": 1.4,
+       "w": 0.8,
+       "h": 2.15,
+       "sill": 0.05,
+       "lights": 1,
+       "note": "french door"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "centre",
+       "u": 2.38,
+       "w": 0.85,
+       "h": 1.3,
+       "sill": 1.1,
+       "lights": 2
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 2,
+     "below": 0.32,
+     "above": 0.0,
+     "palette": "rail"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012124424.jpg",
+     "pand": "0363100012124424",
+     "address": "Starrenboschstraat",
+     "note": "garden side seen over the fences: back balcony, windows on both storeys (not measured)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.6,
+       "w": 1.6,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.3,
+       "w": 1.4,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "centre",
+       "u": 0,
+       "w": 1.1,
+       "h": 1.3,
+       "sill": 1.1,
+       "lights": 2,
+       "repeat": 3
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 2,
+     "below": 0.32,
+     "above": 0.0,
+     "palette": "rail"
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012091220.jpg",
+     "pand": "0363100012091220",
+     "address": "Rosendaalstraat",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012091220.jpg",
+     "pand": "0363100012091220",
+     "address": "Rosendaalstraat",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Symmetric facade, no mirrored pairs: one unit per colour.",
+  "Openings measured on 2077521 (63.8 px/m between the downpipes), centred on the house.",
+  "Colour per terrace from the survey photo; garden side inferred.",
+  "Chimney stacks partly measured."
+ ]
+}

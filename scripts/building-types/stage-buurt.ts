@@ -4,8 +4,10 @@
  *
  *   node --import tsx scripts/building-types/stage-buurt.ts --slug=gein-3 --classes=staging/building-types/gein-3-survey/classes.json --prefix=zo-g3
  *
- * classes.json: {"terraces": {"<terrace index>": {"type", "variant", "via": "photo" | "signature", "note"?}}, "pands"?: {"<pand id>": {"variant"?, "hold"?,
- * "note"}}}: the per-pand entries correct single houses after the build review. Terraces not listed stay
+ * classes.json: {"terraces": {"<terrace index>": {"type", "variant", "via": "photo" | "signature", "flip"?, "repMirror"?, "note"?}}, "pands"?: {"<pand id>": {"variant"?, "hold"?,
+ * "note"}}}: the per-pand entries correct single houses after the build review. `flip: true` takes the terrace's panorama from
+ * terraces-r0/terraces-flip.json (survey-terraces.ts --only --flip: the survey shot the garden side, the re-shot looks at the front).
+ * `repMirror` is the photographed representative's handedness (alternateMirror designs): build.ts fixes its row's parity with it. Terraces not listed stay
  * generic. Terraces are grouped into ~0.45 x 0.45 km cells; each cell becomes staging/building-types/<prefix>-NN/ with the files
  * stage-panden.ts writes (instances.json, context.json) plus variants.json (design, variant, photo/signature note, front bearing of the
  * photographed side). Writes <survey>/staged.json: per area and design, the pands staged.
@@ -20,10 +22,19 @@ import {lngLatToRd, rdToLngLat} from '../../src/canalRecall/rdCoordinates.ts';
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const slug = arg('slug'), survey = `staging/building-types/${slug}-survey`, prefix = arg('prefix', `zo-${slug}`);
 const classesFile = JSON.parse(fs.readFileSync(arg('classes', path.join(survey, 'classes.json')), 'utf8'));
-const classes = classesFile.terraces as Record<string, {type: string; variant: string; via: string; note?: string}>;
+const classes = classesFile.terraces as Record<string, {type: string; variant: string; via: string; flip?: boolean; repMirror?: boolean; note?: string}>;
 // per-pand corrections on top of the terrace class (a survey terrace that joins two rows of different eaves, a house held after review)
 const pandOverrides = (classesFile.pands ?? {}) as Record<string, {variant?: string; hold?: string; note: string}>;
 const terraces = JSON.parse(fs.readFileSync(path.join(survey, 'terraces-r0/terraces.json'), 'utf8')).terraces as any[];
+// re-shot terraces (flip): the front panorama replaces the garden-side one where classes.json says so
+const flipFile = path.join(survey, 'terraces-r0/terraces-flip.json');
+const flipped = new Map<number, any>(fs.existsSync(flipFile) ? (JSON.parse(fs.readFileSync(flipFile, 'utf8')).terraces as any[]).filter(Boolean).map(t => [t.terrace, t]) : []);
+for (const [k, t] of terraces.entries()) {
+  if (!classes[String(t.terrace)]?.flip) continue;
+  const f = flipped.get(t.terrace);
+  if (!f?.shot) throw new Error(`terrace ${t.terrace}: flip asked but no re-shot panorama in ${flipFile}`);
+  terraces[k] = {...t, shot: f.shot, reShot: true};
+}
 const pands = new Map((JSON.parse(fs.readFileSync(path.join(survey, 'pands.json'), 'utf8')).pands as any[]).map(p => [p.id, p]));
 const CELL_LNG = Number(arg('cell-lng', '0.0066')), CELL_LAT = Number(arg('cell-lat', '0.004')), CONTEXT_M = Number(arg('context', '400'));
 const ATTRS = ['b3_bouwlagen', 'b3_dak_type', 'b3_h_dak_max', 'b3_h_dak_50p', 'b3_h_dak_min', 'b3_h_maaiveld', 'b3_h_nok', 'b3_h_dak_70p', 'oorspronkelijkbouwjaar'];
@@ -89,9 +100,10 @@ for (const [idx, [, list]] of ordered.entries()) {
   }
   const variants: Record<string, any> = {};
   for (const {fp, m} of fps) {
-    const shot = m.terrace.shot, photo = m.cls.via === 'photo' && shot && !m.terrace.flipped;
+    const shot = m.terrace.shot, photo = (m.cls.via === 'photo' || m.terrace.reShot) && shot && (!m.terrace.flipped || m.terrace.reShot); // a re-shot's bearing is the opposite of the photographed garden side
     variants[fp.id] = {type: m.cls.type, variant: m.cls.variant, ...(photo ? {frontBearingDeg: shot.frontBearing} : {}),
-      note: `${slug} terrace #${m.terrace.terrace} (${m.terrace.size} houses) via ${m.cls.via}${shot ? `; survey panorama ${shot.panoId} ${String(shot.timestamp).slice(0, 10)} of representative ${m.terrace.rep}` : ''}${m.cls.note ? `; ${m.cls.note}` : ''}`};
+      note: `${slug} terrace #${m.terrace.terrace} (${m.terrace.size} houses) via ${m.cls.via}${shot ? `; ${m.terrace.reShot ? 'front re-shot' : 'survey'} panorama ${shot.panoId} ${String(shot.timestamp).slice(0, 10)} of representative ${m.terrace.rep}` : ''}${m.cls.note ? `; ${m.cls.note}` : ''}`};
+    if (m.cls.repMirror !== undefined && fp.id === m.terrace.rep) variants[fp.id].mirrorAnchor = m.cls.repMirror;
     const po = pandOverrides[fp.id];
     if (po) Object.assign(variants[fp.id], po.variant ? {variant: po.variant} : {}, po.hold ? {hold: po.hold} : {}, {note: `${variants[fp.id].note}; ${po.note}`});
   }

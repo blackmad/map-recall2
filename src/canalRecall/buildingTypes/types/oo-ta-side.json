@@ -1,0 +1,441 @@
+{
+ "id": "oo-ta-side",
+ "label": "Tuindorp Amstelstation (1947-48) two-storey brick duplex (upstairs and downstairs flat), paired doors, balcony at the party wall doubled with the mirrored neighbour, coloured eaves board (Rosendaalstraat, Starrenboschstraat, Manenburgstraat, Somerlustpad)",
+ "source": {
+  "clusterRank": 0,
+  "panden": 166,
+  "bouwjaar": [
+   1947,
+   1948
+  ],
+  "lengthM": 8.5,
+  "widthM": 7.6,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 2
+ },
+ "frontOnShort": true,
+ "storeys": 2,
+ "eavesRangeM": [
+  5.6,
+  7.0
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   6.4,
+   8.6
+  ],
+  "depth": [
+   7.8,
+   9.3
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.35,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.12,
+  "pitchDeg": 37,
+  "chimneys": [
+   {
+    "ref": "left",
+    "u": 1.42,
+    "w": 0.75,
+    "d": 0.55,
+    "h": 0.95,
+    "capM": 0.1,
+    "note": "one stack per house, 1.4 m from the left party wall at the facade scale (2091220, 2077521); size estimated"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "alternateMirror": true,
+ "defaultVariant": "red",
+ "variants": {
+  "red": {
+   "label": "red doors, red balcony rails and eaves board",
+   "evidence": "Rosendaalstraat, Manenburgstraat (photos 2091220, 2099729, 2135836)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#866e62"
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#c8424a",
+    "accent": "#e8e4da",
+    "rail": "#c8424a",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#6a443c"
+    }
+   }
+  },
+  "blue": {
+   "label": "light-blue doors, blue rails and eaves board",
+   "evidence": "Starrenboschstraat, Somerlustpad, De Peerelstraat (photos 2124980, 2123299, 2070603)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#866e62"
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#6a9ccb",
+    "accent": "#e8e4da",
+    "rail": "#6a9ccb",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#6a443c"
+    }
+   }
+  },
+  "orange": {
+   "label": "orange-brown doors, brown rails and eaves board",
+   "evidence": "Buitenrustpad, IJslandtpad (photos 2112537, 2062783)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#866e62"
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#c08a5a",
+    "accent": "#e8e4da",
+    "rail": "#c08a5a",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#6a443c"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012091220.jpg",
+     "pand": "0363100012091220",
+     "address": "Rosendaalstraat",
+     "note": "2020-04 sunlit, measured: 7.6 m house, double balcony over the party wall (4 tall openings for the pair), paired red doors with a transom right of centre, small vent light between balcony and the two upper windows, red eaves board"
+    },
+    {
+     "photo": "survey crop 0363100012124980.jpg",
+     "pand": "0363100012124980",
+     "address": "Starrenboschstraat",
+     "note": "2020-04: same layout in light blue"
+    },
+    {
+     "photo": "survey crop 0363100012123299.jpg",
+     "pand": "0363100012123299",
+     "address": "Starrenboschstraat",
+     "note": "2020-04: same, blue, balcony rails blue"
+    },
+    {
+     "photo": "survey crop 0363100012099729.jpg",
+     "pand": "0363100012099729",
+     "address": "Manenburgstraat",
+     "note": "2020-04: same, red"
+    },
+    {
+     "photo": "survey crop 0363100012070603.jpg",
+     "pand": "0363100012070603",
+     "address": "Somerlustpad",
+     "note": "2020-04: same, blue"
+    },
+    {
+     "photo": "survey crop 0363100012062783.jpg",
+     "pand": "0363100012062783",
+     "address": "IJslandtpad",
+     "note": "2020-04: same layout, orange-brown doors and rails"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 5,
+    "groundDoors": 2,
+    "balconiesPerUpperStorey": 1
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "balcony",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.93,
+       "w": 1.15,
+       "h": 1.4,
+       "sill": 1.0,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.66,
+       "w": 1.25,
+       "h": 1.4,
+       "sill": 1.0,
+       "lights": 2
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.3,
+       "w": 0.84,
+       "h": 2.1
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 5.22,
+       "w": 0.84,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.76,
+       "w": 1.8,
+       "h": 0.3,
+       "sill": 2.2,
+       "lights": 2,
+       "note": "transom lights over the door pair"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 0.85,
+       "w": 1.1,
+       "h": 1.4,
+       "sill": 1.0,
+       "lights": 2
+      },
+      {
+       "kind": "balcony",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.72,
+       "w": 3.36,
+       "depth": 0.85,
+       "railing": "bars",
+       "note": "half of the pair balcony; the mirrored neighbour carries the other half"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.0,
+       "w": 1.1,
+       "h": 2.15,
+       "sill": 0.05,
+       "lights": 2,
+       "note": "tall window onto the balcony"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 2.6,
+       "w": 1.15,
+       "h": 2.15,
+       "sill": 0.05,
+       "lights": 2,
+       "note": "french doors"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.0,
+       "w": 0.32,
+       "h": 0.32,
+       "sill": 1.85,
+       "lights": 1,
+       "note": "vent light over the stair"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 5.35,
+       "w": 1.1,
+       "h": 1.3,
+       "sill": 1.15,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "right",
+       "u": 0.7,
+       "w": 1.1,
+       "h": 1.3,
+       "sill": 1.15,
+       "lights": 2
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 2,
+     "below": 0.32,
+     "above": 0.0,
+     "palette": "rail"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012124424.jpg",
+     "pand": "0363100012124424",
+     "address": "Starrenboschstraat",
+     "note": "garden side seen over the fences: back balcony, windows on both storeys (not measured)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.6,
+       "w": 1.6,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.3,
+       "w": 1.4,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "centre",
+       "u": 0,
+       "w": 1.1,
+       "h": 1.3,
+       "sill": 1.1,
+       "lights": 2,
+       "repeat": 3
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 2,
+     "below": 0.32,
+     "above": 0.0,
+     "palette": "rail"
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012091220.jpg",
+     "pand": "0363100012091220",
+     "address": "Rosendaalstraat",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012091220.jpg",
+     "pand": "0363100012091220",
+     "address": "Rosendaalstraat",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Openings measured on 2091220 (7.6 m house, 64 px/m at the facade): balcony 0-3.4 m from the party wall, doors 3.9-5.7 m, upper windows 4.8-5.9 and 6.3-7.5 m.",
+  "Mirror parity along the row (the double balcony straddles every second party wall): inferred from the row order.",
+  "Colour per terrace (doors = balcony rails = eaves board) read from the survey photo; garden side inferred.",
+  "Chimney stacks partly measured (positions perspective-corrected, sizes estimated)."
+ ]
+}

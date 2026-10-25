@@ -1,0 +1,391 @@
+{
+ "terraces": {
+  "23": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "24": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "25": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "27": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "32": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "28": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "photo",
+   "repMirror": false
+  },
+  "17": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "signature",
+   "note": "same 4.5 x 10.4 m 1990-91 row, eaves/ridge 3.2/9.3 m signature; survey photo too close or blocked"
+  },
+  "18": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "signature",
+   "note": "same 4.5 x 10.4 m 1990-91 row, eaves/ridge 3.2/9.3 m signature; survey photo too close or blocked"
+  },
+  "19": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "signature",
+   "note": "same 4.5 x 10.4 m 1990-91 row, eaves/ridge 3.2/9.3 m signature; survey photo too close or blocked"
+  },
+  "20": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "signature",
+   "note": "same 4.5 x 10.4 m 1990-91 row, eaves/ridge 3.2/9.3 m signature; survey photo too close or blocked"
+  },
+  "21": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "signature",
+   "note": "same 4.5 x 10.4 m 1990-91 row, eaves/ridge 3.2/9.3 m signature; survey photo too close or blocked"
+  },
+  "30": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "signature",
+   "note": "same 4.5 x 10.4 m 1990-91 row, eaves/ridge 3.2/9.3 m signature; survey photo too close or blocked"
+  },
+  "31": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "signature",
+   "note": "same 4.5 x 10.4 m 1990-91 row, eaves/ridge 3.2/9.3 m signature; survey photo too close or blocked"
+  },
+  "34": {
+   "type": "nd-tw-gable",
+   "variant": "cream",
+   "via": "signature",
+   "note": "same 4.5 x 10.4 m 1990-91 row, eaves/ridge 3.2/9.3 m signature; survey photo too close or blocked"
+  },
+  "2": {
+   "type": "nd-tw-flat",
+   "variant": "striped",
+   "via": "photo"
+  },
+  "4": {
+   "type": "nd-tw-flat",
+   "variant": "striped",
+   "via": "photo"
+  },
+  "7": {
+   "type": "nd-tw-flat",
+   "variant": "striped",
+   "via": "photo"
+  },
+  "8": {
+   "type": "nd-tw-flat",
+   "variant": "striped",
+   "via": "photo",
+   "repMirror": false
+  },
+  "22": {
+   "type": "nd-tw-flat",
+   "variant": "striped",
+   "via": "photo"
+  },
+  "33": {
+   "type": "nd-tw-flat",
+   "variant": "striped",
+   "via": "photo"
+  },
+  "35": {
+   "type": "nd-tw-flat",
+   "variant": "striped",
+   "via": "photo"
+  },
+  "5": {
+   "type": "nd-tw-flat",
+   "variant": "striped",
+   "via": "signature",
+   "note": "same 4.8-5.5 x 11.8 m 1990 flat row (eaves 5.5-5.9 m); photo blocked"
+  },
+  "29": {
+   "type": "nd-tw-flat",
+   "variant": "striped",
+   "via": "signature",
+   "note": "same 4.8-5.5 x 11.8 m 1990 flat row (eaves 5.5-5.9 m); photo blocked"
+  },
+  "36": {
+   "type": "nd-tw-flat",
+   "variant": "striped",
+   "via": "signature",
+   "note": "same 4.8-5.5 x 11.8 m 1990 flat row (eaves 5.5-5.9 m); photo blocked"
+  },
+  "1": {
+   "type": "nd-tw-flat-top",
+   "variant": "striped",
+   "via": "photo"
+  },
+  "6": {
+   "type": "nd-tw-flat-top",
+   "variant": "striped",
+   "via": "photo"
+  },
+  "9": {
+   "type": "nd-tw-flat-top",
+   "variant": "striped",
+   "via": "photo"
+  },
+  "10": {
+   "type": "nd-tw-flat-top",
+   "variant": "striped",
+   "via": "photo"
+  }
+ },
+ "pands": {
+  "0363100012066939": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.744)"
+  },
+  "0363100012072112": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.747)"
+  },
+  "0363100012081522": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012096417": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012098298": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.746)"
+  },
+  "0363100012099906": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.746)"
+  },
+  "0363100012099946": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.747)"
+  },
+  "0363100012105663": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012110388": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.744)"
+  },
+  "0363100012113033": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.748)"
+  },
+  "0363100012128227": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.747)"
+  },
+  "0363100012138004": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012138089": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.744)"
+  },
+  "0363100012139029": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.746)"
+  },
+  "0363100012074617": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.739)"
+  },
+  "0363100012088168": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.736)"
+  },
+  "0363100012147071": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.733)"
+  },
+  "0363100012147142": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.736)"
+  },
+  "0363100012071878": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012080469": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.756)"
+  },
+  "0363100012096037": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.746)"
+  },
+  "0363100012142690": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012089886": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012097360": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012123295": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.741)"
+  },
+  "0363100012125213": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012124866": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.74)"
+  },
+  "0363100012140303": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.739)"
+  },
+  "0363100012145259": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.735)"
+  },
+  "0363100012146052": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.736)"
+  },
+  "0363100012081131": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012104876": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012115779": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.747)"
+  },
+  "0363100012140716": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.75)"
+  },
+  "0363100012067507": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.76)"
+  },
+  "0363100012070850": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.755)"
+  },
+  "0363100012128495": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.759)"
+  },
+  "0363100012146606": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.763)"
+  },
+  "0363100012080160": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.741)"
+  },
+  "0363100012116293": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012118156": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.737)"
+  },
+  "0363100012149101": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.737)"
+  },
+  "0363100012068928": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.735)"
+  },
+  "0363100012101208": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.736)"
+  },
+  "0363100012119345": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.737)"
+  },
+  "0363100012143458": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012066749": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.746)"
+  },
+  "0363100012069657": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.742)"
+  },
+  "0363100012069896": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.744)"
+  },
+  "0363100012077564": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.75)"
+  },
+  "0363100012082823": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012097510": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  },
+  "0363100012112642": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.748)"
+  },
+  "0363100012112837": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.747)"
+  },
+  "0363100012131474": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.746)"
+  },
+  "0363100012140915": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.747)"
+  },
+  "0363100012149288": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.747)"
+  },
+  "0363100012150929": {
+   "variant": "striped-box",
+   "note": "BAG ring carries the storage box (ring/rectangle IoU 0.745)"
+  }
+ }
+}
