@@ -13,7 +13,7 @@ import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'gallery'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'gallery', 'mansard'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -344,6 +344,13 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     if (w.wallMaterial !== undefined) oneOf(w.wallMaterial, GROUP_WALL_MATERIALS, `${at}.wallMaterial`);
     bool(w.screen, `${at}.screen`); bool(w.pilasters, `${at}.pilasters`); bool(w.lantern, `${at}.lantern`);
     if (w.stoneStoreys !== undefined) { if (!Array.isArray(w.stoneStoreys) || !w.stoneStoreys.length) problems.push(`${at}.stoneStoreys: list of storeys (0 = ground)`); else w.stoneStoreys.forEach(s => count(s, `${at}.stoneStoreys`, 0, 39)); if (w.stringCourses) problems.push(`${at}.stoneStoreys: not with stringCourses (the course would sit 5 mm off the facing)`); }
+    if (w.mansard !== undefined) {
+      const m = w.mansard as {storeys?: unknown; colour?: unknown};
+      for (const k of Object.keys(m ?? {})) if (!['storeys', 'colour'].includes(k)) problems.push(`${at}.mansard.${k}: unknown field (storeys, colour)`);
+      if (!Array.isArray(m?.storeys) || !m.storeys.length) problems.push(`${at}.mansard.storeys: list of storeys (1 and up)`); else m.storeys.forEach(s => count(s, `${at}.mansard.storeys`, 1, 39));
+      if (m?.colour !== undefined && !(typeof m.colour === 'string' && /^#[0-9a-f]{6}$/i.test(m.colour))) problems.push(`${at}.mansard.colour: #rrggbb`);
+      if (Array.isArray(m?.storeys) && w.stoneStoreys?.some(s => (m.storeys as number[]).includes(s))) problems.push(`${at}.mansard: a storey is mansard or stone, not both`);
+    }
     if (w.screen && w.system !== 'brick-bay-grid') problems.push(`${at}.screen: the screen lattice follows a brick-bay-grid`);
     if (w.screen && (w.hoist || w.tiltedBays)) problems.push(`${at}.screen: not with hoist or tiltedBays`);
     if (intent.layeredKit !== false && w.system === 'curtain-wall' && (w.ground === 'blank' || w.blankStoreys?.length)) problems.push(`${at}: a layered curtain wall is a glass skin, so it has no blank ground or blank storeys (use ground "mesh-plinth", or another group)`);

@@ -49841,10 +49841,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236607",
       "name": "Van Eeghenstraat 180-212, Amsterdam-Zuid (1905 mansard villa block between Van Eeghenstraat and the Vondelpark; BAG pand 0363100012236607)",
-      "hash": "6d0e8276e2b3707dfa35f4c08ee79b56f85e0a3a295852dcde41afbefad6a5fe",
-      "sha256": "6d0e8276e2b3707dfa35f4c08ee79b56f85e0a3a295852dcde41afbefad6a5fe",
-      "meshHash": "e8a168ea50a68a5d",
-      "bytes": 350004,
+      "hash": "28acc71baba9a264eb756d0b1bc27b6f3f8e99876a861eb43aa91fcb469058cf",
+      "sha256": "28acc71baba9a264eb756d0b1bc27b6f3f8e99876a861eb43aa91fcb469058cf",
+      "meshHash": "e2303f527368ff46",
+      "bytes": 350100,
       "triangles": 4646,
       "materials": 11,
       "textures": 0,
@@ -50049,7 +50049,7 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.37 mean 0.26 vs photo 0.12; wall family unresolved (#38312e is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 3 vs photo 4)); inferred: dark overcast winter crop w03-155L reads the double-light curtained windows as wall (photo glazing 12 pct) and their mullions as a fourth column, while the photo shows three wide windows per storey under hood moulds as modelled, wall lightness matches (dL -0.01)",
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.33 mean 0.40 vs photo 0.12; wall family unresolved (#38312e is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 3 vs photo 4)); inferred: dark overcast winter crop w03-155L reads the double-light curtained windows as wall (photo glazing 3 pct on the first floor, 12 pct overall) and their mullions as a fourth column, while the photo shows three wide windows per storey under hood moulds as modelled, wall lightness within tolerance (dL 0.11), the slate mansard storeys drawn in the slate texture",
         "walls[1] not confirmed by the photo (NO PHOTO); inferred: north-east side, no panorama crop (brick grid in the house palette)"
       ],
       "reviewState": "large-recipe-likeness-inferred",
@@ -50057,7 +50057,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236607",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T06:47:07.310Z"
+      "updatedAt": "2026-10-25T06:59:34.000Z"
     },
     {
       "id": "ordinary-0363100012237339",
@@ -50249,11 +50249,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012150885",
       "name": "Koninginneweg 34, Amsterdam-Zuid (Park Plaza hotel, 1983 brick block south of the Vondelpark; BAG pand 0363100012150885)",
-      "hash": "9a9b44aa78efef9cd277739e7faf6c30e84f9be3b6ca71687d247ea804a70e69",
-      "sha256": "9a9b44aa78efef9cd277739e7faf6c30e84f9be3b6ca71687d247ea804a70e69",
-      "meshHash": "700102fda8320c81",
-      "bytes": 339920,
-      "triangles": 4483,
+      "hash": "75fdb8455e6389f0c18a2e6464a5d532aec893e186e66d35486c16b836131d55",
+      "sha256": "75fdb8455e6389f0c18a2e6464a5d532aec893e186e66d35486c16b836131d55",
+      "meshHash": "75d51672301f0fd0",
+      "bytes": 323864,
+      "triangles": 4255,
       "materials": 10,
       "textures": 0,
       "scale": 1,
@@ -50266,7 +50266,7 @@
         "max": [
           14.826,
           24.313,
-          15.799
+          15.783
         ]
       },
       "anchor": [
@@ -50477,14 +50477,14 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (wall dL +0.15)); inferred: crop w01-163 has an autumn tree in yellow leaf over the left half, read as yellow brick #776933, while the brick to its right is red-brown as modelled, glazing matches (0.20 vs 0.24)"
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.15; glazing storey band off by 0.20)); inferred: crop w01-163 has an autumn tree in yellow leaf over the left half, read as yellow brick #776933, while the brick to its right is red-brown as modelled, the white bay stack on the right half as in the photo, glazing within 0.10 (0.20 vs 0.29)"
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012150885",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T06:47:12.584Z"
+      "updatedAt": "2026-10-25T06:59:36.657Z"
     },
     {
       "id": "ordinary-0363100012236822",

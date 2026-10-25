@@ -45,14 +45,13 @@
       "windows": "plain",
       "entrance": true,
       "palette": {
-        "brick": "#5e4038",
-        "stone": "#2f3034",
+        "brick": "#42302b",
         "glass": "#3a3d3f"
       },
       "windowShape": {
-        "w": 0.46,
-        "h": 0.62,
-        "sill": 0.18
+        "w": 0.42,
+        "h": 0.55,
+        "sill": 0.2
       },
       "storeyShapes": [
         {
@@ -71,10 +70,6 @@
           "h": 0.5,
           "sill": 0.25
         }
-      ],
-      "stoneStoreys": [
-        3,
-        4
       ],
       "balconies": {
         "storeys": [
@@ -115,12 +110,19 @@
         "baysPerStorey",
         "windowShape",
         "storeyShapes",
-        "stoneStoreys",
+        "mansard",
         "balconies",
         "dressings",
         "cornice",
         "palette"
-      ]
+      ],
+      "mansard": {
+        "storeys": [
+          3,
+          4
+        ],
+        "colour": "#2a2c31"
+      }
     },
     {
       "wallSurfaces": [
@@ -133,7 +135,7 @@
       "windows": "plain",
       "entrance": true,
       "palette": {
-        "brick": "#5e4038"
+        "brick": "#42302b"
       },
       "windowShape": {
         "w": 0.45,
@@ -149,13 +151,13 @@
   ],
   "otherWalls": "brick-bay-grid",
   "palette": {
-    "brick": "#5e4038",
+    "brick": "#42302b",
     "frame": "#efece4",
     "door": "#2a2a2a"
   },
   "notes": [
     "Van Eeghenstraat 180-212 (pand 0363100012236607, built 1905): a mansard-roofed villa block on the Vondelpark's south edge.",
-    "walls[0] south-east villa front (panel 10, 12.2 m; crops w03-155w 2023-01-10 and w03-155L 2019-12-06): red-brown brick over a low souterrain, two storeys of three wide windows with cream hood moulds and keystones, a round central balcony on each floor and a terrace balustrade, a slate mansard with three dormers and an attic row (mansard storeys drawn as slate-coloured stone storeys: the kit has no mansard wall face).",
+    "walls[0] south-east villa front (panel 10, 12.2 m; crops w03-155w 2023-01-10 and w03-155L 2019-12-06): red-brown brick over a low souterrain, two storeys of three wide windows with cream hood moulds and keystones, a round central balcony on each floor and a terrace balustrade, a slate mansard with three dormers and an attic row (the shell stands the mansard in the wall plane: storeys 3 and 4 are drawn as a slate mansard face, `mansard`, round their dormer windows).",
     "walls[1] was the park front (panel 1, 13.1 m; crop w02-335p 2021-03-26 through bare trees): left to otherWalls (brick grid in the house palette) because its 3DBAG wall rises 1.5 m above the LoD2.2 roof edge (19.0 vs 17.4 m: a parapet in front of a terrace), which the eaves gate refuses; the photo through the trees shows only the brick and three window columns.",
     "INFERRED: walls[1] the north-east side (no photo) and the party, rear and park walls (otherWalls brick grid)."
   ],

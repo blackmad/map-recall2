@@ -39,7 +39,7 @@
         "glass": "#4a5258"
       },
       "windowShape": {
-        "w": 0.62,
+        "w": 0.68,
         "h": 0.58,
         "sill": 0.2
       },
@@ -54,7 +54,7 @@
         }
       ],
       "dressings": {
-        "colour": "#e9e3d6",
+        "colour": "#ece8de",
         "bands": {
           "at": [
             "sill"
@@ -68,14 +68,12 @@
         },
         "oriels": {
           "bays": [
-            0,
             1
           ],
           "from": 1,
           "to": 3,
-          "deep": 0.3,
-          "canted": true,
-          "brick": true
+          "deep": 0.25,
+          "canted": true
         }
       },
       "cornice": true,
@@ -99,7 +97,7 @@
   },
   "notes": [
     "Koninginneweg 34 (pand 0363100012150885, built 1983): the Park Plaza hotel's brick block on the Koninginneweg, south of the Vondelpark.",
-    "walls[0] Koninginneweg front (panel 23, 11.4 m; crops w01-163 2024-11-12 and w01-163w 2022-03-21): red-brown brick over a glazed ground storey, two canted bay stacks through the first to third floors with white-framed windows, thin cream bands at the floor lines, an attic storey; rooftop plant and masts not drawn.",
+    "walls[0] Koninginneweg front (panel 23, 11.4 m; crops w01-163 2024-11-12 and w01-163w 2022-03-21): red-brown brick over a glazed ground storey; on the right half a white canted bay-window stack through the first to third floors (stone-coloured oriel set), on the left half flat white-framed windows; thin cream bands at the floor lines, an attic storey; rooftop plant and masts not drawn.",
     "INFERRED: the side, rear and roof-storey walls (otherWalls brick grid)."
   ],
   "measured": {

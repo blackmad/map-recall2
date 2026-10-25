@@ -1,7 +1,7 @@
 /**
  * Kit additions from the Vondelpark south-edge lane (2026-10-25, issue #62): timber verandas and stone loggias
  * (`gallery`, blockBuilding/gallery.ts), thin speklagen (`dressings.stripes.share`), oriel lists with their own storey
- * spans, a balustrade or iron railing on an oriel's roof (`rail`) and a brick oriel body (`brick`).
+ * spans, a balustrade or iron railing on an oriel's roof (`rail`), a brick oriel body (`brick`) and a slate mansard face in the wall plane (`mansard`).
  * Every addition is opt-in: absent, the mesh is unchanged.
  */
 import {test} from 'node:test';
@@ -80,7 +80,27 @@ test('oriel lists, roof rails and brick bodies: each changes the mesh; a single 
   assert.ok(validateLargeIntent(single));
   const bad = raw(VE97); bad.walls[0].dressings.oriels[0].rail = 'glass';
   assert.throws(() => validateLargeIntent(bad), /oriels\.rail/);
-  const pf = facts(PLAZA), brick = compileBuilding(validateLargeIntent(raw(PLAZA)), pf), stone = raw(PLAZA);
-  delete stone.walls[0].dressings.oriels.brick;
-  assert.notEqual(meshHashOf(brick.group), meshHashOf(compileBuilding(validateLargeIntent(stone), pf).group));
+  const pf = facts(PLAZA), brickIntent = raw(PLAZA);
+  brickIntent.walls[0].dressings.oriels.brick = true;
+  const brick = compileBuilding(validateLargeIntent(brickIntent), pf), stone = compileBuilding(validateLargeIntent(raw(PLAZA)), pf);
+  assert.notEqual(meshHashOf(brick.group), meshHashOf(stone.group), 'a brick body is drawn in the wall slot');
+});
+
+test('mansard storeys: a slate face in the wall plane on its own slot, lit as a wall with the slate texture; absent unchanged', async () => {
+  const {largeMaterialSlot} = await import('./largeCompile.ts');
+  const VE180 = 'van-eeghenstraat-180-236607', f = facts(VE180), intent = validateLargeIntent(raw(VE180));
+  const {recipe} = fitLarge(intent, f);
+  assert.deepEqual(recipe.groups[0].mansard, {storeys: [3, 4], slot: 'mansard@g0'});
+  assert.equal(recipe.spec.palette['mansard@g0'], '#2a2c31');
+  assert.deepEqual(largeMaterialSlot('mansard@g0', recipe), {materialSlot: 'slate', surface: 'wall'});
+  const a = compileBuilding(intent, f);
+  assert.equal(a.components.mansards, 2);
+  const none = raw(VE180); delete none.walls[0].mansard;
+  const b = compileBuilding(validateLargeIntent(none), f);
+  assert.equal(b.components.mansards, undefined);
+  assert.notEqual(meshHashOf(a.group), meshHashOf(b.group));
+  const bad = raw(VE180); bad.walls[0].mansard = {storeys: [0]};
+  assert.throws(() => validateLargeIntent(bad), /mansard\.storeys/);
+  const both = raw(VE180); both.walls[0].stoneStoreys = [3];
+  assert.throws(() => validateLargeIntent(both), /mansard or stone/);
 });

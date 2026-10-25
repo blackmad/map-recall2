@@ -985,6 +985,12 @@ export interface LargeWallIntent {
   tiltedBays?: TiltedBaysIntent | TiltedBaysIntent[];
   /** Storeys (0 = ground) faced in the group's stone over the wall (a granite base, an ashlar attic), round their openings. */
   stoneStoreys?: number[];
+  /**
+   * Storeys that are a mansard's steep face standing in the 3DBAG wall plane (a shell that models the mansard as a
+   * vertical wall): faced round their openings, as dormers, in the slate texture in `colour` (default the slate roof's
+   * steep colour), not the stone slot that the city lights pale. Van Eeghenstraat 180's two slate storeys. Absent: unchanged.
+   */
+  mansard?: {storeys: number[]; colour?: string};
   /** Banded stone pilasters at both ends of every panel of the group (two-tone courses). */
   pilasters?: boolean;
   /** A glazed roof lantern on the highest roof point behind the group's widest panel. */

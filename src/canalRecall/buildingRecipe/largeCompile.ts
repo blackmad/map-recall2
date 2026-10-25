@@ -20,7 +20,7 @@ import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 
-export interface LargeComponentCounts { claddingLines?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { claddingLines?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; mansards?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -45,6 +45,8 @@ export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe
     case 'clad': case 'cladline': return {materialSlot: 'stone', surface: 'wall'};
     case 'painted': return {materialSlot: 'brick', surface: 'wall'};
     case 'plinth': return {materialSlot: 'stucco', surface: 'wall'};
+    // a mansard's steep face in a wall plane (`mansard`): the slate texture, lit as a wall
+    case 'mansard': return {materialSlot: 'slate', surface: 'wall'};
     case 'glass': return {materialSlot: 'glass', surface: 'glass'};
     case 'frame': case 'rail': return {materialSlot: 'frame', surface: 'joinery'};
     case 'door': return {materialSlot: 'door', surface: 'door'};
@@ -85,6 +87,12 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
     if (st >= levels.length - 1 && st > 0) continue;
     const v0 = Math.max(p.vMin, levels[st]), v1 = Math.min(underCornice, levels[st + 1] ?? underCornice);
     if (v1 - v0 > 0.5 && drawStoneStorey(c, v0, v1, s.stone)) counts.stoneStoreys = (counts.stoneStoreys ?? 0) + 1;
+  }
+  // Mansard storeys (a steep slate face the shell stands in the wall plane): faced in slate round their dormer openings.
+  if (g.mansard) for (const st of g.mansard.storeys) {
+    if (st >= levels.length - 1) continue;
+    const v0 = Math.max(p.vMin, levels[st]), v1 = Math.min(eaves - 0.05, levels[st + 1] ?? eaves);
+    if (v1 - v0 > 0.5 && drawStoneStorey(c, v0, v1, g.mansard.slot)) counts.mansards = (counts.mansards ?? 0) + 1;
   }
   // Recessed arcade: rendered lintel band over the chamfered openings and pier facings below it (the door slot: dark brick).
   if (g.ground === 'arcade' && g.arcade?.facing && levels.length > 1) { const k = drawArcadeFacing(c, Math.max(0, p.vMin), Math.min(groundTop, underCornice), {band: s.stone, pier: s.door}); if (k) counts.arcades = (counts.arcades ?? 0) + 1; }
