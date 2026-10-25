@@ -10,15 +10,20 @@
  *
  * - wall colour: the same family (facade/materials.ts `wallFamily`) and |dL| <= 0.12 (HSL lightness) between the
  *   photo's light-trim-normalised wall and the model's game wall colour; hue within 12 degrees only when both
- *   saturations exceed 0.08 (as blockFace/wallColour.ts);
- * - glazing: not-wall share per upper storey band within 0.15, and the upper-storey mean within 0.10;
+ *   saturations exceed 0.08 (as blockFace/wallColour.ts); where the photo's exposure could not be normalised and its
+ *   warm wall is darker than the model's by at most 0.35 with the same chromaticity, the wall is in shade or overcast
+ *   light and is judged on chromaticity (`shadedWallMatch`, a WARN, GitHub #61);
+ * - glazing: not-wall share per upper storey band within 0.15, and the upper-storey mean within 0.10; pale photo panels
+ *   the model draws as panels of the same colour are not glazing (`rereadPalePanels`), and where the photo admits a
+ *   second reading (measureFacade `altMask`: a blend cluster on the enrichment threshold) the nearer reading judges;
  * - columns: the window-column count (bays from the autocorrelation of the upper-storey not-wall profile, times the
  *   windows grouped in each bay: measureFacade `windowGroupOf`) within 20 %, and the same window shape class (tall > 1.4
  *   / square / wide < 0.7, height over one window's width); where the photo's window storeys are a mixed-width row
  *   (no shape class holds 80 % of the openings, p90 width >= 1.8 x the median) and the model reproduces its per-storey opening sequences (rowOpenings.ts:
  *   openings per storey within 20 %, the tall/square/wide mix within 0.35, median and p90 widths within x1.5), those
  *   judge the columns and shape instead of the fold, which cannot describe a mixed row; and a storey that is one
- *   ribbon (>= 8 m) on one side against a punched row (windows under 4 m covering under 60 % of it) on the other fails (rowOpenings `rowMismatch`);
+ *   ribbon (>= 8 m, glass along its length: cut where the photo is wall-coloured) on one side against a punched row
+ *   under it (windows under 4 m covering under 60 % of its span) on the other fails (rowOpenings `rowMismatch`);
  * - report only: not-wall mask IoU (WARN under 0.45), glass colour, the ground band (0..2.5 m, never pooled).
  *
  * NO EVIDENCE (abstain) when under 40 % of the upper cells are usable, foliage covers over 25 %, over 30 % is
@@ -31,11 +36,12 @@ import {nearestMaterial, wallFamily} from '../facade/materials.ts';
 import {rgbToHsl, WALL_TOLERANCE} from '../blockFace/wallColour.ts';
 import {renderElevation, type MaterialSoup} from '../landmarks/facadeCompare.ts';
 import {compareRowOpenings, ROW_OPENINGS, rowOpenings, type RowOpeningsComparison} from './rowOpenings.ts';
-import {analyseMask, hex, isOpeningCell, MASK, rgbToLab, wallMaterialOf, type FacadeBox, type FacadeMeasurement, type MaskGrid, type Rgb} from './measureFacade.ts';
+import {analyseMask, chromaticity, hex, isOpeningCell, MASK, rgbToLab, SAME_MATERIAL, wallMaterialOf, type FacadeBox, type FacadeMeasurement, type MaskGrid, type Rgb} from './measureFacade.ts';
 
 export const PAD_M = 0.5;
 export const LIKENESS = {dL: 0.12, hueDeg: WALL_TOLERANCE.hueDeg, satForHue: 0.08, storeyGlazing: 0.15, meanGlazing: 0.1, columns: 0.2, iouWarn: 0.45,
-  minUsable: 0.4, maxFoliage: 0.25, maxWashedOut: 0.3, maxObliquityDeg: 45, minCameraM: 8, wideWallM: 15} as const;
+  minUsable: 0.4, maxFoliage: 0.25, maxWashedOut: 0.3, maxObliquityDeg: 45, minCameraM: 8, wideWallM: 15,
+  shadeMaxDL: 0.35, panelMinLift: 15, panelMaxDE: 20, panelMinSolid: 0.5} as const;
 /** Mean of the game's glass texture (look/slotCells.ts `paintGlassCanvas` gradient #8aa1b0 / #4d606c / #3c474e), drawn under a white tint. */
 export const GAME_GLASS: Rgb = [88, 106, 117];
 const WALL_SLOTS = new Set(['brick', 'stucco', 'stone']);
@@ -133,6 +139,8 @@ export interface LikenessResult {
   classes: {photo: string; model: string};
   ground: {photo: number | null; model: number | null};
   evidence: {usable: number; foliage: number; washedOut: number; obliquityDeg: number | null; cameraDistM: number | null; widthM: number; abstain: string[]};
+  /** what the gate re-read on the photo before judging (GitHub #61), report only: pale panels the model draws, a shaded wall */
+  rereads?: string[];
 }
 
 /** Photo mask window at (du, dv) cells into the padded measurement, the model's size. */
@@ -144,6 +152,68 @@ export function photoWindow(photo: FacadeMeasurement, padCells: number, du: numb
     out[j * cols + i] = photo.mask[pj * photo.cols + pi];
   }
   return out;
+}
+
+/** The photo's colour cluster per cell (-1 = none) at (du, dv) cells into the padded measurement, the model's size (as `photoWindow`). */
+export function photoClusterWindow(photo: FacadeMeasurement, padCells: number, du: number, dv: number, cols: number, rows: number): Int16Array {
+  const out = new Int16Array(cols * rows).fill(-1);
+  if (!photo.labels) return out;
+  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+    const pi = i + padCells + du, pj = j + padCells - dv;
+    if (pi < 0 || pj < 0 || pi >= photo.cols || pj >= photo.rows) continue;
+    out[j * cols + i] = photo.labels[pj * photo.cols + pi];
+  }
+  return out;
+}
+
+/**
+ * Pale panels (GitHub #61, Politie IJ-tunnel walls[1]): a band of light enamel or stone panels is one solid not-wall
+ * colour cluster, which the photo's opening pass groups into an opening, while the model draws the same band as a
+ * panel (trim). A photo opening cell is re-read as trim where the model draws trim at that cell and the photo's cluster
+ * there is (a) solid (>= `panelMinSolid` of its cells inside it: a material, not frames or bars), (b) at least
+ * `panelMinLift` L* lighter than the photo's wall cluster and (c) within `panelMaxDE` (CIE76) of the model's colour at
+ * that cell. Glazing the model draws as glass, or a model without a panel there, is never re-read. Returns the cells
+ * re-read (the window is changed in place).
+ */
+export function rereadPalePanels(win: Uint8Array, clusters: Int16Array, photo: FacadeMeasurement, model: Pick<ModelElevation, 'mask' | 'colours'>): number {
+  const cl = photo.clusters, wc = photo.wallCluster;
+  if (!cl || wc === undefined || !cl[wc]) return 0;
+  const wallL = cl[wc].lab[0];
+  const panel = cl.map(c => !c.wall && (c.solid ?? 0) >= LIKENESS.panelMinSolid && c.lab[0] >= wallL + LIKENESS.panelMinLift);
+  if (!panel.some(Boolean)) return 0;
+  let n = 0;
+  for (let k = 0; k < win.length; k++) {
+    const c = clusters[k];
+    if (c < 0 || !panel[c] || !isOpeningCell(win[k]) || model.mask[k] !== MASK.trim) continue;
+    const ml = rgbToLab([model.colours[k * 3], model.colours[k * 3 + 1], model.colours[k * 3 + 2]]), pl = cl[c].lab;
+    if (Math.hypot(ml[0] - pl[0], ml[1] - pl[1], ml[2] - pl[2]) > LIKENESS.panelMaxDE) continue;
+    win[k] = MASK.trim; n++;
+  }
+  return n;
+}
+
+/**
+ * A wall in shade (GitHub #61, Spinozastraat 51 walls[0]): an overcast or shaded crop whose exposure could not be
+ * normalised (no light trim: `normalisation.ref` null) shows a wall darker than the sunlit colour the model was measured
+ * from. Shading scales the channels together, so the chromaticity (r, g, b shares) stays the material's: the wall is
+ * judged on it instead of lightness when the model is the lighter (by over `LIKENESS.dL`, at most `shadeMaxDL`), the
+ * families agree, the wall is warm (red share - blue share >= SAME_MATERIAL.minWarmth, x100: brick, sandstone) and the
+ * photo's chromaticity lies within SAME_MATERIAL.maxDist x the model's distance from neutral of the model's, and at
+ * least SAME_MATERIAL.minChromaShare as far from neutral (measureFacade `sameMaterialClusters`, the same test for a lit
+ * and a shaded cluster of one wall). Never when the photo is the lighter, or its exposure was normalised.
+ */
+export function shadedWallMatch(photoWall: Rgb, modelWall: Rgb, dL: number, normalised: boolean): boolean {
+  if (normalised || dL <= LIKENESS.dL || dL > LIKENESS.shadeMaxDL) return false;
+  const N3 = 100 / 3, m = chromaticity(modelWall), p = chromaticity(photoWall);
+  if (m[0] - m[2] < SAME_MATERIAL.minWarmth) return false;
+  const fromNeutral = (q: Rgb) => Math.hypot(q[0] - N3, q[1] - N3, q[2] - N3), mn = fromNeutral(m);
+  return Math.hypot(p[0] - m[0], p[1] - m[1], p[2] - m[2]) <= SAME_MATERIAL.maxDist * mn && fromNeutral(p) >= SAME_MATERIAL.minChromaShare * mn;
+}
+
+/** Glazing differences of a photo grid against the model's: the largest per upper storey band, and the upper-storey mean. */
+export function glazingMiss(pg: Pick<MaskGrid, 'storeyGlazing' | 'glazing'>, mg: Pick<MaskGrid, 'storeyGlazing' | 'glazing'>): {maxDiff: number | null; meanDiff: number} {
+  const bands = pg.storeyGlazing.map((p, s) => (p !== null && mg.storeyGlazing[s] !== null && mg.storeyGlazing[s] !== undefined ? Math.abs(p - mg.storeyGlazing[s]!) : null)).filter((d): d is number => d !== null);
+  return {maxDiff: bands.length ? Math.max(...bands) : null, meanDiff: Math.abs(pg.glazing - mg.glazing)};
 }
 
 /** Opening IoU over the cells both sides can see (facade cells only, above the ground band). */
@@ -179,8 +249,19 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
     const iou = notWallIoU(model.mask, photoWindow(photo, padCells, du, dv, cols, rows), cols, rows, box, cell);
     if (iou !== null && (iou > best.iou + 1e-9 || (Math.abs(iou - best.iou) < 1e-9 && Math.abs(du) + Math.abs(dv) < Math.abs(best.du) + Math.abs(best.dv)))) best = {du, dv, iou};
   }
-  const win = photoWindow(photo, padCells, best.du, best.dv, cols, rows);
-  const pg = analyseMask({mask: win, cols, rows, cell, box, lines: a.lines}), mg = model.grid;
+  const clusterWin = photoClusterWindow(photo, padCells, best.du, best.dv, cols, rows), mg = model.grid;
+  const rereads: string[] = [];
+  // the photo's readings: its mask, and where it has an undecided blend cluster (measureFacade `altMask`) the mask with
+  // that cluster as wall; the gate judges the reading nearer the model (the photo cannot tell which it is)
+  const reading = (m: Uint8Array) => {
+    const w = photoWindow({...photo, mask: m}, padCells, best.du, best.dv, cols, rows), panels = rereadPalePanels(w, clusterWin, photo, model);
+    return {win: w, panels, pg: analyseMask({mask: w, cols, rows, cell, box, lines: a.lines})};
+  };
+  const first = reading(photo.mask), alt = photo.altMask ? reading(photo.altMask) : null;
+  const miss = (r: typeof first) => { const g = glazingMiss(r.pg, mg); return Math.max((g.maxDiff ?? 0) / LIKENESS.storeyGlazing, g.meanDiff / LIKENESS.meanGlazing); };
+  const chosen = alt && miss(alt) < miss(first) ? alt : first, {win, pg} = chosen;
+  if (alt) rereads.push(`photo glazing ${first.pg.glazing.toFixed(2)} with the undecided blend cluster as not-wall, ${alt.pg.glazing.toFixed(2)} as wall: judged on the ${chosen === alt ? 'second' : 'first'}`);
+  if (chosen.panels) rereads.push(`${(chosen.panels * cell * cell).toFixed(1)} m2 of pale photo openings read as the model's panels (solid cluster, colour within dE ${LIKENESS.panelMaxDE})`);
   const widthM = box.u1 - box.u0;
   const usable = (() => { let n = 0, u = 0; for (let j = 0; j < rows; j++) { if (box.v1 - (j + 0.5) * cell < 2.5) continue; for (let i = 0; i < cols; i++) { n++; if (win[j * cols + i] !== MASK.unusable) u++; } } return n ? u / n : 0; })();
   const abstain: string[] = [];
@@ -204,11 +285,11 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   const mFam = mw ? (wallMaterialOf(mw, null).family ?? (model.wallSlot === 'brick' ? 'brick' : wallFamily(mw))) : null;
   const dL = mh ? mh[2] - ph[2] : null;
   const famPass = pFamResolved === null || pFamResolved === mFam;
-  const wallPass = !!mw && famPass && Math.abs(dL!) <= LIKENESS.dL && (dHue === null || Math.abs(dHue) <= LIKENESS.hueDeg);
+  const huePass = dHue === null || Math.abs(dHue) <= LIKENESS.hueDeg;
+  const shaded = !!mw && famPass && huePass && Math.abs(dL!) > LIKENESS.dL && shadedWallMatch(pw, mw, dL!, photo.normalisation.ref !== null);
+  const wallPass = !!mw && famPass && (Math.abs(dL!) <= LIKENESS.dL || shaded) && huePass;
   // glazing per upper storey band
-  const bands = pg.storeyGlazing.map((p, s) => (p !== null && mg.storeyGlazing[s] !== null && mg.storeyGlazing[s] !== undefined ? Math.abs(p - mg.storeyGlazing[s]!) : null)).filter((d): d is number => d !== null);
-  const maxDiff = bands.length ? Math.max(...bands) : null;
-  const meanDiff = Math.abs(pg.glazing - mg.glazing);
+  const {maxDiff, meanDiff} = glazingMiss(pg, mg);
   // the photo's opening pass abstains where it cannot tell frames from bands: no glazing verdict there (a warning)
   const glazingAbstain = photo.openings?.abstain ?? null;
   const glazingPass = glazingAbstain !== null || ((maxDiff === null || maxDiff <= LIKENESS.storeyGlazing) && meanDiff <= LIKENESS.meanGlazing);
@@ -225,7 +306,9 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   // counts (openings per storey within 20 %, shape mix within 0.35, median and p90 widths within x1.5), the sequences
   // judge the shape and the columns instead of the fold. Everywhere else the fold judges as before: a uniform row, or a
   // mixed row the model does not reproduce, keeps the fold's verdict (the gate is not looser).
-  const openings = rhythmic ? compareRowOpenings(rowOpenings({mask: win, cols, rows, cell, box, lines: a.lines}), rowOpenings({mask: model.mask, cols, rows, cell, box, lines: a.lines})) : undefined;
+  // the photo's wall-coloured cells, so a ribbon is cut where it is brick or a sill course (rowOpenings `wallLike`)
+  const wallLike = photo.clusters ? Uint8Array.from(clusterWin, c => (c >= 0 && photo.clusters![c]?.wall ? 1 : 0)) : undefined;
+  const openings = rhythmic ? compareRowOpenings(rowOpenings({mask: win, cols, rows, cell, box, lines: a.lines, wallLike}), rowOpenings({mask: model.mask, cols, rows, cell, box, lines: a.lines})) : undefined;
   const mixedRow = !!openings && openings.mixPass !== null && Math.max(...Object.values(openings.photo.mix)) < ROW_OPENINGS.uniformShare
     && openings.photo.widthP50 !== null && openings.photo.widthP90 !== null && openings.photo.widthP90 >= ROW_OPENINGS.mixedWidthRatio * openings.photo.widthP50;
   const sequenceMatch = mixedRow && openings!.countPass === true && openings!.mixPass === true && openings!.widthPass === true;
@@ -238,6 +321,7 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   // Spinoza Lyceum 30 vs 16 bays, Wibautstraat 78 28 vs 8 ribbons, both reading right on the sheet)
   const warns: string[] = [];
   if (glazingAbstain) warns.push(`glazing not judged (${glazingAbstain})`);
+  if (shaded) warns.push(`wall judged on chromaticity: the photo's exposure is not normalised and the wall reads ${dL! > 0 ? '+' : ''}${dL!.toFixed(2)} darker than the model's in shade or overcast light`);
   if (pFamResolved === null) warns.push(`wall family unresolved (${hex(pw)} is dark and neutral, brick courses not resolved): lightness and hue judged only`);
   if (colPass === false) warns.push(`columns ${mW ?? 'none'} vs photo ${pW}`);
   if (shapePass === false) reasons.push(`window shape ${mg.window?.shape ?? 'none'} vs photo ${pg.window!.shape}`);
@@ -254,5 +338,6 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
     glazing: {photo: pg.storeyGlazing, model: mg.storeyGlazing, photoMean: pg.glazing, modelMean: mg.glazing, maxDiff: maxDiff === null ? null : +maxDiff.toFixed(3), meanDiff: +meanDiff.toFixed(3), pass: glazingPass},
     columns: {photo: pg.columns, model: mg.columns, windows: {photo: pW, model: mW}, pass: colPass}, photoGrid: {pitchM: pg.pitchM, window: pg.window}, shape: {photo: pg.window?.shape ?? null, model: mg.window?.shape ?? null, pass: shapePass}, ...(openings ? {openings: {...openings, sequenceMatch}} : {}),
     classes: {photo: pg.frontClass, model: mg.frontClass}, ground: {photo: pg.ground.glazing, model: mg.ground.glazing},
-    evidence: {usable: +usable.toFixed(3), foliage: photo.foliageFraction, washedOut: photo.washedOutFraction, obliquityDeg: a.obliquityDeg ?? null, cameraDistM: a.cameraDistM ?? null, widthM: +widthM.toFixed(2), abstain}};
+    evidence: {usable: +usable.toFixed(3), foliage: photo.foliageFraction, washedOut: photo.washedOutFraction, obliquityDeg: a.obliquityDeg ?? null, cameraDistM: a.cameraDistM ?? null, widthM: +widthM.toFixed(2), abstain},
+    ...(rereads.length ? {rereads} : {})};
 }

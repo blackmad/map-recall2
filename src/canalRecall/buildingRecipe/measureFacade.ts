@@ -63,6 +63,8 @@ export function isLeaf(r: number, g: number, b: number): boolean {
   return (g >= r && g > b + 8) || (g > r - 6 && g > b + 22 && r > b + 16);
 }
 export const CELL_M = 0.1;
+/** floor-zone enrichment of an undecided cluster (between clearly glazing and clearly wall), see `altMask` */
+export const UNDECIDED_ENRICH = [0.6, 0.9] as const;
 export const GROUND_BAND_M = 2.5;
 /** Mask values per cell. */
 export const MASK = {wall: 0, dark: 1, trim: 2, frame: 3, unusable: 255} as const;
@@ -78,6 +80,9 @@ export interface FacadeMeasurement {
   mask: Uint8Array;
   /** the colour-cluster mask before the opening pass (wall / dark / trim), for sheets */
   clusterMask?: Uint8Array;
+  /** the mask (after the opening pass) with the undecided blend clusters read as wall (GitHub #61): present only when the
+   *  photo admits that second reading; likeness.ts judges glazing against the nearer of the two */
+  altMask?: Uint8Array;
   /** the cells the wall colour was read from, for sheets */
   wallSample?: Int32Array;
   /** the opening pass: glazing without / with the ambiguous band cells, why it abstains, wall clusters read as frames */
@@ -483,7 +488,6 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   const eu = (a: number[], b: number[]) => Math.sqrt(a.reduce((x, v, i) => x + (v - b[i]) ** 2, 0));
   const dist = allUsable.map(k => Math.min(...wallCentres.map(c => eu(F[k], c))));
   const tau = Math.max(0.9, Math.min(2.2, otsu(dist, 0, 6)));
-  const raw = new Uint8Array(N).fill(MASK.unusable);
   // a cell is wall when its nearest cluster is a wall cluster (cells outside the clustered pool: by distance)
   const nearestC = (k: number) => { let bi = 0, bd = Infinity; fc.forEach((c, i) => { const d = eu(F[k], c); if (d < bd) { bd = d; bi = i; } }); return bi; };
   // Mixed clusters: cells straddling a window edge (half wall, half glass) form their own textured cluster whose colour
@@ -511,33 +515,52 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
     return false;
   });
   const pureWall = centres.filter((_, i) => wallSet[i] && !mixed[i]), pureNot = centres.filter((_, i) => !wallSet[i] && !mixed[i]);
-  const nearerWall = (k: number) => { const d = (cs: Rgb[]) => Math.min(...cs.map(c => Math.hypot(nlab[k][0] - c[0], nlab[k][1] - c[1], nlab[k][2] - c[2]))); return d(pureWall) <= d(pureNot); };
-  allUsable.forEach((k, n) => {
-    const c = cellOf[k] >= 0 ? cellOf[k] : nearestC(k);
-    const isWall = mixed[c] && pureWall.length && pureNot.length ? nearerWall(k) : wallSet[c] || dist[n] <= Math.min(tau, 0.9);
-    raw[k] = isWall ? MASK.wall : nlab[k][0] > wallLab[0] + 5 ? MASK.trim : MASK.dark;
-  });
-  // 3x3 majority clean-up of wall / not-wall (keeps the dark/trim label of the cell or its neighbours).
-  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
-    const k = j * cols + i; if (raw[k] === MASK.unusable) continue;
-    let nw = 0, n = 0, light = 0;
-    for (let dj = -1; dj <= 1; dj++) for (let di = -1; di <= 1; di++) {
-      const ii = i + di, jj = j + dj; if (ii < 0 || jj < 0 || ii >= cols || jj >= rows) continue;
-      const q = raw[jj * cols + ii]; if (q === MASK.unusable) continue;
-      n++; if (q !== MASK.wall) { nw++; if (q === MASK.trim) light++; }
-    }
-    mask[k] = nw * 2 > n ? (raw[k] !== MASK.wall ? raw[k] : light * 2 > nw ? MASK.trim : MASK.dark) : MASK.wall;
-  }
-  // Openings (facadeOpenings.ts): frames, bars and panes regrouped into connected openings; bands and second materials out.
-  const clusterMask = Uint8Array.from(mask);
   const fullLabel = Int8Array.from(cellOf); allUsable.forEach(k => { if (fullLabel[k] < 0) fullLabel[k] = nearestC(k); });
   const fitFloors = input.lines.slice(1).map(l => Math.round((box.v1 - l) / cell - 0.5)).filter(j => j >= 0 && j < rows);
-  const op = classifyOpenings({mask: clusterMask, label: fullLabel, wallSet, centres, edgeX, cols, rows, cell, counted: k => isUpper(Math.floor(k / cols)),
-    // floors: the fit's storey lines, and where the fit has upper storeys, the photo's own floor zones (+-0.35 m round
-    // the calmest rows of the storey period): a fit line half a storey off does not let openings join across a floor
-    floorRows: [...fitFloors, ...(ups.length ? Array.from({length: rows}, (_, j) => j).filter(j => zone(vOf(j)) === 1) : [])].filter(j => j >= 0 && j < rows), fitFloorRows: fitFloors,
-    storeyOfRow: Int16Array.from({length: rows}, (_, j) => { const v = vOf(j); let st = 0; input.lines.forEach((l, i) => { if (v >= l) st = i; }); return st; })});
+  // the wall / not-wall mask of a reading of the clusters (`ws`: which are wall), cleaned up, then the opening pass
+  const readMask = (ws: boolean[], pw: Rgb[], pn: Rgb[]) => {
+    const raw = new Uint8Array(N).fill(MASK.unusable), out = new Uint8Array(N).fill(MASK.unusable);
+    const nearerWall = (k: number) => { const d = (cs: Rgb[]) => Math.min(...cs.map(c => Math.hypot(nlab[k][0] - c[0], nlab[k][1] - c[1], nlab[k][2] - c[2]))); return d(pw) <= d(pn); };
+    allUsable.forEach((k, n) => {
+      const c = cellOf[k] >= 0 ? cellOf[k] : nearestC(k);
+      const isWall = mixed[c] && pw.length && pn.length ? nearerWall(k) : ws[c] || dist[n] <= Math.min(tau, 0.9);
+      raw[k] = isWall ? MASK.wall : nlab[k][0] > wallLab[0] + 5 ? MASK.trim : MASK.dark;
+    });
+    // 3x3 majority clean-up of wall / not-wall (keeps the dark/trim label of the cell or its neighbours).
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const k = j * cols + i; if (raw[k] === MASK.unusable) continue;
+      let nw = 0, n = 0, light = 0;
+      for (let dj = -1; dj <= 1; dj++) for (let di = -1; di <= 1; di++) {
+        const ii = i + di, jj = j + dj; if (ii < 0 || jj < 0 || ii >= cols || jj >= rows) continue;
+        const q = raw[jj * cols + ii]; if (q === MASK.unusable) continue;
+        n++; if (q !== MASK.wall) { nw++; if (q === MASK.trim) light++; }
+      }
+      out[k] = nw * 2 > n ? (raw[k] !== MASK.wall ? raw[k] : light * 2 > nw ? MASK.trim : MASK.dark) : MASK.wall;
+    }
+    // Openings (facadeOpenings.ts): frames, bars and panes regrouped into connected openings; bands and second materials out.
+    const op = classifyOpenings({mask: Uint8Array.from(out), label: fullLabel, wallSet: ws, centres, edgeX, cols, rows, cell, counted: k => isUpper(Math.floor(k / cols)),
+      // floors: the fit's storey lines, and where the fit has upper storeys, the photo's own floor zones (+-0.35 m round
+      // the calmest rows of the storey period): a fit line half a storey off does not let openings join across a floor
+      floorRows: [...fitFloors, ...(ups.length ? Array.from({length: rows}, (_, j) => j).filter(j => zone(vOf(j)) === 1) : [])].filter(j => j >= 0 && j < rows), fitFloorRows: fitFloors,
+      storeyOfRow: Int16Array.from({length: rows}, (_, j) => { const v = vOf(j); let st = 0; input.lines.forEach((l, i) => { if (v >= l) st = i; }); return st; })});
+    return {clusterMask: out, op};
+  };
+  const {clusterMask, op} = readMask(wallSet, pureWall, pureNot);
   mask.set(op.mask);
+  // Undecided clusters (GitHub #61, Barlaeus walls[1]): with storey zones, a cluster enriched 0.6..0.9 in the floor zones
+  // is neither clearly wall (>= 0.9) nor clearly glazing (< 0.6; `zoned` needs a cluster under 0.7), and its enrichment
+  // moves with the cell grid: a 2 cm shift of the crop moved Barlaeus's frame-and-arch cluster from 0.82 to 1.04 and the
+  // photo's glazing from 0.48 to 0.28. When such a cluster's colour is a blend of two wall materials (on the Lab segment
+  // between two wall clusters, as `mixed` tests wall vs not-wall: the brick-and-white-stone edges, voussoirs and frames
+  // of a banded front) and it is not glass-like, the front is also read with it as wall: `altMask`, the reading the
+  // threshold flips to. The mask, the colours and the grid are the first reading's, as before.
+  const blendOfWalls = (i: number) => { for (let a = 0; a < centres.length; a++) for (let b = a + 1; b < centres.length; b++) { if (a === i || b === i || !wallSet[a] || !wallSet[b]) continue; const r = segDist(centres[i], centres[a], centres[b]); if (r && r.d < 0.25 * r.len && r.t > 0.15 && r.t < 0.85) return true; } return false; };
+  const undecided = centres.map((_, i) => zoned && !wallSet[i] && !mixed[i] && !glassLike(centres[i]) && share[i] >= 0.05 && enrich[i] >= UNDECIDED_ENRICH[0] && enrich[i] < UNDECIDED_ENRICH[1] && blendOfWalls(i));
+  let altMask: Uint8Array | undefined;
+  if (undecided.some(Boolean)) {
+    const ws = wallSet.map((w, i) => w || undecided[i]);
+    altMask = readMask(ws, centres.filter((_, i) => ws[i] && !mixed[i]), centres.filter((_, i) => !ws[i] && !mixed[i])).op.mask;
+  }
   // the wall colour comes from a body cluster, never from a ring round the openings (frames, reveals, ribbon rails)
   if (op.frameLike[wallC]) {
     const alt = centres.map((_, i) => (wallSet[i] && !op.frameLike[i] ? share[i] : -1));
@@ -581,7 +604,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   return {labels: Int8Array.from(cellOf), zoned, clusters, wallCluster: wallC, threshold: +tau.toFixed(1), cols, rows, cell, box, mask, usableFraction: +usableFraction.toFixed(3), foliageFraction: +foliageFraction.toFixed(3), washedOutFraction: +washedOutFraction.toFixed(3),
     normalisation: {method: 'light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)', ref: ref ? ref.map(Math.round) as Rgb : null, gain: +gain.toFixed(3), wb: wb.map(v => +v.toFixed(3)) as [number, number, number]},
     wall: {raw: wallRawFinal.map(Math.round) as Rgb, normalised: wallN.map(Math.round) as Rgb, hex: hex(wallN), rawHex: hex(wallRawFinal), cells: wallCells.length},
-    clusterMask, material, bands, wallSample: Int32Array.from(wallCells),
+    clusterMask, ...(altMask ? {altMask} : {}), material, bands, wallSample: Int32Array.from(wallCells),
     openings: {count: op.openings.length, regularity: op.regularity, surrounds: op.surrounds, range: op.range, abstain: op.abstain, frameLike: op.frameLike.flatMap((f, i) => (f ? [i] : [])), accessory: op.accessory, secondMaterial: op.secondMaterial, bands: op.bands, ambiguous: op.ambiguous},
     glass: glassRaw && glassN ? {raw: glassRaw.map(Math.round) as Rgb, normalised: glassN.map(Math.round) as Rgb, hex: hex(glassN), rawHex: hex(glassRaw), cells: darkCells.length} : null,
     trim: trimN ? {normalised: trimN.map(Math.round) as Rgb, hex: hex(trimN), cells: trimCells.length} : null,
