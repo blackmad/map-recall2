@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+**Repetitive designs round 5 + mottled brick (2026-10-25, #77).**
+Mottle: a brick wall carries 2-6 tones with shares, painted per brick into
+a 24x7 texture (`buildingTypes/mottle.ts`; 0 extra triangles, one texture
+per distinct mottle; city look ignores it). Tones from white-referenced
+crops, lightness x1.15 and chroma halved (overcast crops read red, 2025
+sunlit crops cyan). th-kz-row blue/green/mauve recoloured (#7b736f mean),
+orange variant left. `building-types-runtime.spec` draw-call hook fixed
+(counts building meshes in the shared frame). Designs, 1,606 houses:
+Tuindorp Nieuwendam-Oost 660 (52 %), Reigersbos 3 212 (49 %), Reigersbos 4
+480 (53 %), De Eendracht 254 (37 %); 165 held. Kit: `roof.hipFreeEnds`,
+`DormerSpec.marginEndM`; export now holds a house stretched outside
+0.86-1.19 instead of squashing. Draw calls: Nieuwendam +122 (32 models in
+one area: end/mid/mirror/size variants), Reigersbos 4 +80, De Eendracht
++94; vsync-bound. Integrator review: white trim and frames draw beige across
+designs and Nieuwendam brick a touch dark vs photo; follow-up lane.
+
 **Repetitive designs round 4 + photo roof tiles (2026-10-25, #75).**
 Roof tiles: spec roofs take `{slot, tint, measured: true}` from new
 `roofColour.ts` (orthophoto roof fact cross-checked with the lit tile body
