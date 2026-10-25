@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+**Viaduct, junction roads, likeness gate rows (2026-10-25, #57, #52, #58).**
+Droogbak – De Ruijterkade passage under the rail viaduct: AHN has no data
+under the deck, so the fill drew a 3.7 m saddle; `railViaducts.ts` caps the
+floor at the open sides' street level and draws deck, white abutments and
+piers (floor spread 1.00 → 0.07 m, walls 4.98/4.99 m; named relief steps).
+Roads #52: rails as dark grooves, softer cycle red, kerb shadow lines; the
+OSM7382983 parapet regression failed on main since roads-v2 added a deck-
+level berm; a berm at deck height now counts as deck (thresholds unchanged,
+half-width pins still fail). check-ground-cells 276 ok. Likeness gate #58:
+mixed-width rows judged per storey (`rowOpenings.ts`), ribbon-vs-punched
+FAIL, crops without a camera height placed 1.62 m over AHN terrain (median
+of 2,510 crops). Five group verdicts moved, no install outcome; known-wrong
+Houtmankade still FAILs. Stadsloket Zuidoost walls[0] is now shown wrong
+(two rows over a 3-storey hall vs three rows over a 2-storey arcade): a
+re-author lane. Of 94 installed large houses the gate refuses ~85 (installed
+before the gate or via inferred groups): triage lane.
+
 **Gate-fail installs re-reviewed (2026-10-25, #56).** Politie Houtmankade
 walls[2] was wrong (six square rows; photo has a 2-storey glazed plinth,
 five rows, corner 2-lights): re-measured, now WARN. Stadsloket Zuidoost
