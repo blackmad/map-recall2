@@ -156,6 +156,8 @@ export interface Track {
     /** The text printed for a raw way name (a bridge's official spelling);
      *  every test above still runs on the raw name. */
     shownText?: (text: string) => string,
+    /** True when a building hides the label's anchor from the camera (labels/streetLabelOcclusion.ts). */
+    hiddenBy?: ((label: StreetLabelAnchor) => boolean) | null,
   ): void;
 }
 

@@ -31,6 +31,13 @@ export const DEPART_RADIUS = BERTH_RADIUS;
 export const PIER_APPROACH_RADIUS = 48;
 /** Docking happens within this radius of the pier, or on touching its quay within the approach radius. */
 export const DOCK_RADIUS = 18;
+/**
+ * The vessel's centre is half a hull from the quay its side touches, so a
+ * touch counts within the approach radius plus half the hull width. NDSM-werf
+ * (3980786): the F4 line passes 6.3 m from the stop and the vessel ran aground
+ * 16.1 m (48.3 px) from it, just outside PIER_APPROACH_RADIUS, and never docked.
+ */
+export const QUAY_DOCK_RADIUS = PIER_APPROACH_RADIUS + 27 / 2; // FERRY_SIZE.width / 2
 /** Half-width of the passable corridor along a terminal access. */
 export const ACCESS_CORRIDOR = 20;
 /** 2026-10-25 (user): "ferry should go a little faster": 135 -> 180 (bike top speed is 260). */
@@ -270,7 +277,7 @@ export function afterFerryMove(game: FerryGame, previous: Point, isWater: WaterT
     // Dock on reaching the pier, or on touching the quay beside it.
     const pier = allowed.find(t => {
       const d = Math.hypot(p.x - t.x, p.y - t.y);
-      return d <= DOCK_RADIUS || (!onWater && d < PIER_APPROACH_RADIUS);
+      return d <= DOCK_RADIUS || (!onWater && d < QUAY_DOCK_RADIUS);
     });
     if (pier) {
       const mx = p.x - previous.x, my = p.y - previous.y;

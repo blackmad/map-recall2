@@ -2582,6 +2582,262 @@
     return { text: lede || fallback, choice: null };
   }
 
+  // src/canalRecall/labels/sightlineOcclusion.ts
+  var SIGHTLINE_CELL_M = 40;
+  var SIGHTLINE_CLEARANCE_M = 0.75;
+  var ANCHOR_SLACK_M = 2;
+  var M_PER_DEG_LAT = 111320;
+  var ORIGIN_LNG = 4.8936;
+  var ORIGIN_LAT = 52.3731;
+  var M_PER_DEG_LNG = M_PER_DEG_LAT * Math.cos(ORIGIN_LAT * Math.PI / 180);
+  function toLocal(lng, lat) {
+    return [(lng - ORIGIN_LNG) * M_PER_DEG_LNG, (lat - ORIGIN_LAT) * M_PER_DEG_LAT];
+  }
+  function occluderTopM(properties) {
+    const p = properties || {};
+    const height = Number(p.height), eaves = Number(p.roofEavesHeightM);
+    const pitched = typeof p.roofShape === "string" && p.roofShape !== "flat";
+    if (Number.isFinite(height) && Number.isFinite(eaves) && pitched && eaves < height) return (height + eaves) / 2;
+    if (Number.isFinite(height)) return height;
+    if (Number.isFinite(eaves)) return eaves;
+    return 0;
+  }
+  function prepare(feature) {
+    const g = feature.geometry;
+    const polygons = g?.type === "Polygon" ? [g.coordinates] : g?.type === "MultiPolygon" ? g.coordinates : [];
+    const topM = occluderTopM(feature.properties);
+    if (!(topM > 1)) return null;
+    const rings = [];
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const polygon of polygons) {
+      const outer = Array.isArray(polygon) ? polygon[0] : null;
+      if (!Array.isArray(outer) || outer.length < 3) continue;
+      const flat = new Float64Array(outer.length * 2);
+      for (let i = 0; i < outer.length; i++) {
+        const [x, y] = toLocal(outer[i][0], outer[i][1]);
+        flat[i * 2] = x;
+        flat[i * 2 + 1] = y;
+        if (x < minX) minX = x;
+        if (x > maxX) maxX = x;
+        if (y < minY) minY = y;
+        if (y > maxY) maxY = y;
+      }
+      rings.push(flat);
+    }
+    return rings.length ? { rings, minX, minY, maxX, maxY, topM, stamp: 0 } : null;
+  }
+  var cellKey = (ix, iy) => (ix + 32768) * 65536 + (iy + 32768);
+  function pointInRing(x, y, ring) {
+    let inside = false;
+    const n = ring.length / 2;
+    for (let i = 0, j = n - 1; i < n; j = i++) {
+      const xi = ring[i * 2], yi = ring[i * 2 + 1], xj = ring[j * 2], yj = ring[j * 2 + 1];
+      if (yi > y !== yj > y && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
+    }
+    return inside;
+  }
+  var SightlineIndex = class {
+    constructor(cellM = SIGHTLINE_CELL_M) {
+      this.cellM = cellM;
+    }
+    prepared = /* @__PURE__ */ new WeakMap();
+    grid = /* @__PURE__ */ new Map();
+    source = null;
+    pending = null;
+    stamp = 1;
+    stats = { features: 0, cells: 0, buildMs: 0, tests: 0, blocked: 0, testMs: 0 };
+    /** Whether any footprints are indexed. */
+    get ready() {
+      return this.grid.size > 0;
+    }
+    /** Adopt `features` (by identity). Spends at most `budgetMs` per call; returns true when the grid is current. */
+    refresh(features, budgetMs = 2) {
+      if (!features) return this.source === null;
+      if (features === this.source && !this.pending) return true;
+      if (!this.pending || this.pending.list !== features) this.pending = { list: features, next: 0, grid: /* @__PURE__ */ new Map(), ms: 0 };
+      const job = this.pending, start = performance.now(), deadline = start + budgetMs, cell = this.cellM;
+      while (job.next < job.list.length) {
+        const feature = job.list[job.next++];
+        let p = this.prepared.get(feature);
+        if (p === void 0) {
+          p = prepare(feature);
+          this.prepared.set(feature, p);
+        }
+        if (p) {
+          const x0 = Math.floor(p.minX / cell), x1 = Math.floor(p.maxX / cell);
+          const y0 = Math.floor(p.minY / cell), y1 = Math.floor(p.maxY / cell);
+          for (let ix = x0; ix <= x1; ix++) for (let iy = y0; iy <= y1; iy++) {
+            const key = cellKey(ix, iy);
+            const bucket = job.grid.get(key);
+            if (bucket) bucket.push(p);
+            else job.grid.set(key, [p]);
+          }
+        }
+        if ((job.next & 255) === 0 && performance.now() > deadline) break;
+      }
+      job.ms += performance.now() - start;
+      if (job.next < job.list.length) return false;
+      this.grid = job.grid;
+      this.source = features;
+      this.pending = null;
+      this.stats.features = features.length;
+      this.stats.cells = job.grid.size;
+      this.stats.buildMs = Math.round(job.ms * 10) / 10;
+      return true;
+    }
+    /**
+     * True when a building's walls stand above the straight line from the
+     * camera to the anchor. Buildings whose footprint holds the camera (its
+     * back-face-culled walls are invisible) or the anchor are skipped.
+     */
+    blocked(camera, anchor) {
+      const t0 = performance.now();
+      const result = this.test(camera, anchor);
+      this.stats.tests++;
+      if (result) this.stats.blocked++;
+      this.stats.testMs += performance.now() - t0;
+      return result;
+    }
+    /** Zero the per-frame counters. */
+    resetCounters() {
+      this.stats.tests = 0;
+      this.stats.blocked = 0;
+      this.stats.testMs = 0;
+    }
+    test(camera, anchor) {
+      if (!this.grid.size) return false;
+      const [ax, ay] = toLocal(camera.lng, camera.lat), [bx, by] = toLocal(anchor.lng, anchor.lat);
+      const dx = bx - ax, dy = by - ay, len = Math.hypot(dx, dy);
+      if (len < ANCHOR_SLACK_M * 2) return false;
+      const tMax = 1 - ANCHOR_SLACK_M / len;
+      const stamp = ++this.stamp, cell = this.cellM;
+      let ix = Math.floor(ax / cell), iy = Math.floor(ay / cell);
+      const ex = Math.floor(bx / cell), ey = Math.floor(by / cell);
+      const sx = Math.sign(dx), sy = Math.sign(dy);
+      const tdx = sx ? cell / Math.abs(dx) : Infinity, tdy = sy ? cell / Math.abs(dy) : Infinity;
+      let tx = sx ? ((sx > 0 ? (ix + 1) * cell : ix * cell) - ax) / dx : Infinity;
+      let ty = sy ? ((sy > 0 ? (iy + 1) * cell : iy * cell) - ay) / dy : Infinity;
+      const visit = (cx, cy) => {
+        const bucket = this.grid.get(cellKey(cx, cy));
+        if (bucket) for (const p of bucket) {
+          if (p.stamp === stamp) continue;
+          p.stamp = stamp;
+          if (this.wallAbove(p, ax, ay, dx, dy, bx, by, tMax, camera.altM, anchor.altM)) return true;
+        }
+        return false;
+      };
+      for (let guard = 0; guard < 4096; guard++) {
+        if (visit(ix, iy)) return true;
+        if (ix === ex && iy === ey) break;
+        if (Math.min(tx, ty) > 1) return visit(ex, ey);
+        if (tx < ty) {
+          ix += sx;
+          tx += tdx;
+        } else {
+          iy += sy;
+          ty += tdy;
+        }
+      }
+      return false;
+    }
+    wallAbove(p, ax, ay, dx, dy, bx, by, tMax, camAlt, anchorAlt) {
+      if (p.maxX < Math.min(ax, bx) || p.minX > Math.max(ax, bx) || p.maxY < Math.min(ay, by) || p.minY > Math.max(ay, by)) return false;
+      if (p.topM < Math.min(camAlt, anchorAlt) + SIGHTLINE_CLEARANCE_M) return false;
+      for (const ring of p.rings) {
+        if (pointInRing(ax, ay, ring) || pointInRing(bx, by, ring)) return false;
+      }
+      for (const ring of p.rings) {
+        const n = ring.length / 2;
+        for (let i = 0, j = n - 1; i < n; j = i++) {
+          const cx = ring[j * 2], cy = ring[j * 2 + 1];
+          const ex = ring[i * 2] - cx, ey = ring[i * 2 + 1] - cy;
+          const den = dx * ey - dy * ex;
+          if (Math.abs(den) < 1e-12) continue;
+          const t2 = ((cx - ax) * ey - (cy - ay) * ex) / den;
+          if (t2 <= 0 || t2 > tMax) continue;
+          const u = ((cx - ax) * dy - (cy - ay) * dx) / den;
+          if (u < 0 || u > 1) continue;
+          const rayAlt = camAlt + (anchorAlt - camAlt) * t2;
+          if (p.topM > rayAlt + SIGHTLINE_CLEARANCE_M) return true;
+        }
+      }
+      return false;
+    }
+  };
+
+  // src/canalRecall/labels/streetLabelOcclusion.ts
+  var STREET_LABEL_ALT_M = 1;
+  var HOLD_FRAMES = 2;
+  var RETEST_FRAMES = 8;
+  var BUILD_BUDGET_MS = 2;
+  var StreetLabelOcclusion = class {
+    index = new SightlineIndex();
+    verdicts = /* @__PURE__ */ new WeakMap();
+    slots = 0;
+    frameNo = 0;
+    /** Last frame's counts, for the e2e and profiling. */
+    stats = { tested: 0, hidden: 0, ms: 0, features: 0, buildMs: 0 };
+    /** Labels drawn / hidden by occlusion last frame (text only), for the e2e. */
+    lastHidden = [];
+    /**
+     * The per-label test for this frame, or null when there is nothing to test
+     * against (top-down view, no resident buildings yet, no camera).
+     */
+    frame(host, loader, pitched) {
+      this.frameNo++;
+      this.stats.tested = 0;
+      this.stats.hidden = 0;
+      this.stats.ms = 0;
+      this.lastHidden = [];
+      const vm = host;
+      if (!pitched || !vm?.map || !vm.worldToLngLat || !loader) return null;
+      const toLngLat = vm.worldToLngLat.bind(vm);
+      const features = vm._completeCity?.sampleFeatures?.(1e6);
+      this.index.refresh(features, BUILD_BUDGET_MS);
+      this.stats.features = this.index.stats.features;
+      this.stats.buildMs = this.index.stats.buildMs;
+      if (!this.index.ready) return null;
+      const t2 = vm.map.transform;
+      const at = t2?.getCameraLngLat?.(), altM = t2?.getCameraAltitude?.();
+      if (!at || !Number.isFinite(altM)) return null;
+      const camera = { lng: at.lng, lat: at.lat, altM };
+      return (label) => {
+        const t0 = performance.now();
+        let v = this.verdicts.get(label);
+        const fresh = !v || v.frame !== this.frameNo - 1;
+        if (v && !fresh && (this.frameNo + v.slot) % RETEST_FRAMES !== 0) {
+          v.frame = this.frameNo;
+          if (v.hidden) {
+            this.stats.hidden++;
+            if (label.text) this.lastHidden.push(label.text);
+          }
+          this.stats.ms += performance.now() - t0;
+          return v.hidden;
+        }
+        const ll = toLngLat(label.x, label.y, loader);
+        const [lng, lat] = Array.isArray(ll) ? ll : [ll.lng, ll.lat];
+        const now = this.index.blocked(camera, { lng, lat, altM: STREET_LABEL_ALT_M });
+        if (!v || fresh) {
+          v = { hidden: now, votes: HOLD_FRAMES, frame: 0, slot: v?.slot ?? this.slots++ };
+          this.verdicts.set(label, v);
+        }
+        v.frame = this.frameNo;
+        if (now === v.hidden) v.votes = HOLD_FRAMES;
+        else if (--v.votes <= 0) {
+          v.hidden = now;
+          v.votes = HOLD_FRAMES;
+        }
+        this.stats.tested++;
+        if (v.hidden) {
+          this.stats.hidden++;
+          if (label.text) this.lastHidden.push(label.text);
+        }
+        this.stats.ms += performance.now() - t0;
+        return v.hidden;
+      };
+    }
+  };
+
   // src/canalRecall/game/teachingSurface.ts
   function canShowMiniMap(enabled, input) {
     return enabled && !input.utilityOpen;
@@ -7280,7 +7536,8 @@
         }
         return hit;
       };
-      if (free) this.track.drawLabels(ctx, this.camera, () => true, "", player, this._freeRideLabelCandidates(), shownText);
+      const hiddenBy = (this._streetLabelOcclusion ||= new StreetLabelOcclusion()).frame(this.vectorMap, this.osmLoader, pitched);
+      if (free) this.track.drawLabels(ctx, this.camera, () => true, "", player, this._freeRideLabelCandidates(), shownText, hiddenBy);
       else this.track.drawLabels(
         ctx,
         this.camera,
@@ -7288,7 +7545,8 @@
         asked,
         player,
         (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates()).candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach),
-        shownText
+        shownText,
+        hiddenBy
       );
       if (this.state === GameState.FINISHED) {
         this._renderFinish();
