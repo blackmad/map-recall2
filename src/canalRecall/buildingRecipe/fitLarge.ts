@@ -154,6 +154,8 @@ export interface LargeRoofFit {
   flat?: RoofMaterial;
   /** measured colour of the flat class outside `regions` (intent `roof.flatHex`), lower case */
   flatHex?: string;
+  /** measured colour of the default material's steep and low classes (intent `roof.pitchedHex`), lower case */
+  pitchedHex?: string;
   regions?: {material: RoofMaterial; surface: number; rings: [number, number][][]; yMin: number; yMax: number}[];
 }
 
@@ -162,6 +164,7 @@ export function largeRoofFit(roof: LargeBuildingIntent['roof'], facts: BuildingF
   const fit: LargeRoofFit = {material: roof?.material ?? 'bitumen'};
   if (roof?.flat) fit.flat = roof.flat;
   if (roof?.flatHex) fit.flatHex = roof.flatHex.toLowerCase();
+  if (roof?.pitchedHex) fit.pitchedHex = roof.pitchedHex.toLowerCase();
   if (!roof?.surfaces?.length) return fit;
   const [ax, ay] = anchorRD, g = facts.heights.groundNAP;
   const byNumber = new Map(facts.roofsRD.map(r => [Number(r.surfaceId.split(':').at(-1)), r]));

@@ -599,10 +599,19 @@ export function cityMeasuredFlatRoofTint(hex: string): string {
   return rgbToHex(hexToRgb(hex));
 }
 /**
- * The slots a `measured` tint source applies to: walls (brick, accent) keep their colour, glass its pane colour, painted
- * stone its paint, a flat roof (bitumen) the orthophoto's colour for its pand.
+ * A measured pitched roof (roof-facts: `roofSlotHex(slot, rgb)` for a slate, zinc or pantile reading, already in its
+ * slot's luma band; large recipes' `roof.pitchedHex`) is drawn as is on its slate or tile cell, the way the city draws
+ * the same pand's roof (threeBuildingFeatures `measuredRoofOf`), not mapped onto the city's three slate tones by
+ * lightness (`cityRoofTint`: the kit's slate #3b4047 lands on the darkest, #606b79). Issue #73.
  */
-export const MEASURED_SLOTS: readonly MaterialSlot[] = ['brick', 'accent', 'glass', 'stone', 'bitumen'];
+export function cityMeasuredPitchedRoofTint(hex: string): string {
+  return rgbToHex(hexToRgb(hex));
+}
+/**
+ * The slots a `measured` tint source applies to: walls (brick, accent) keep their colour, glass its pane colour, painted
+ * stone its paint, a flat roof (bitumen) and a pitched roof (slate, roofTile) the orthophoto's colour for its pand.
+ */
+export const MEASURED_SLOTS: readonly MaterialSlot[] = ['brick', 'accent', 'glass', 'stone', 'bitumen', 'slate', 'roofTile'];
 export const isMeasuredTint = (slot: MaterialSlot, source?: TintSource | null) => source === MEASURED_TINT_SOURCE && MEASURED_SLOTS.includes(slot);
 
 /** An authored slot colour mapped into the city palette range. */
@@ -611,6 +620,7 @@ export function cityTint(slot: MaterialSlot, hex: string, source?: TintSource | 
   if (source === MEASURED_TINT_SOURCE && slot === 'glass') return cityMeasuredGlassTint(hex);
   if (source === MEASURED_TINT_SOURCE && slot === 'stone') return cityMeasuredStoneTint(hex);
   if (source === MEASURED_TINT_SOURCE && slot === 'bitumen') return cityMeasuredFlatRoofTint(hex);
+  if (source === MEASURED_TINT_SOURCE && (slot === 'slate' || slot === 'roofTile')) return cityMeasuredPitchedRoofTint(hex);
   switch (slot) {
     case 'brick': case 'accent': return cityWallTint(hex);
     case 'stucco': return cityStuccoTint(hex);

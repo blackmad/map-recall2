@@ -96,7 +96,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#888b8f"
+  "flatHex": "#888b8f",
+  "pitchedHex": "#888b8f"
  },
  "palette": {
   "brick": "#85705f",
@@ -111,7 +112,8 @@
   "walls[0] = panel 31 (NW, 88 m, eaves 12.8; surface 36): 4 storeys x 18 bays with string courses. walls[1] = panels 8 and 293 (NW, 61 m and 34 m, eaves 15.5 over a 12.8 m base; surfaces 10, 386): the set-back top floor, one ribbon-window storey. walls[2] = panels 21 and 102 (NE end, 42 m and 31 m, eaves 12.8 and 15.5; surfaces 26, 116): 4 storeys x 8 bays with string courses. Simplified: the dark bands are string courses, window groups are evenly spaced wide windows; 18 bays instead of the photographed 20 to stay inside the triangle budget. Not drawn: the glazed stair-tower columns, the curved south end, the courtyard fronts and the 27 m corner towers (3DBAG massing in brick colour, left blank brick).",
   "Everything not listed stays blank brick.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #3f3b31 not used (not darker than the wall #534a3f by 10 L*, or tinted): kit glass kept.",
-  "roof.flatHex #888b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5384: slot slate, rgb 156/156/156, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #888b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5384: slot slate, rgb 156/156/156, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #888b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5384: slot slate, rgb 156/156/156, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

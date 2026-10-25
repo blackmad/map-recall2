@@ -57,7 +57,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "slate",
-  "flatHex": "#848d90"
+  "flatHex": "#848d90",
+  "pitchedHex": "#848d90"
  },
  "palette": {
   "brick": "#5a3a30",
@@ -72,7 +73,8 @@
   "walls[0] = surfaces 550, 290 and 224 of panel 216 (the 13 m surface 380 is a recess left blank): a dark-brick base with shop windows, a cream first-floor band with two windows per bay, round-arched loggias on the second storey, a storey of windows with blue infill panels and a stepped, terraced attic with a pergola. Drawn as 5 storeys x 5 bays, wide windows, stone storey 1 (cream) and round arch heads on storey 2. Simplified: the open loggia depth (the arches carry glazed windows), the blue infill panels, the pergola beams and the terraced attic (3DBAG roof); the white dot roundels in the brick are below the component grain.",
   "Not drawn: the rest of the S-shaped block and the courtyard side.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #43423f not used (not darker than the wall #504140 by 10 L*, or tinted): kit glass kept.",
-  "roof.flatHex #848d90: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 140/148/148, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #848d90: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 140/148/148, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #848d90: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 140/148/148, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

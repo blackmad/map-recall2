@@ -98,7 +98,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#87898d"
+  "flatHex": "#87898d",
+  "pitchedHex": "#87898d"
  },
  "palette": {
   "brick": "orange-brick",
@@ -110,6 +111,7 @@
   "East front (surfaces 1, 80, 102, 21; panels 0, 68, 20 of walls.ts), from the 2020-07-07 and 2022-01-11 panoramas (w01-96 and w02-96, rectified; CC BY 4.0): four storeys of orange-brown brick; the upper floors carry two rows of small low windows at about 1.5 m spacing (26 axes on the 41.6 m panel, `windows: low`) under a top row of paired horizontal ribbons, which the kit draws as the same low windows (no per-storey window style). The ground floor is a brick base with a drive-through gateway (left and centre) and a four-pane shop window at the right; the recipe draws small windows on the whole ground row instead of that mix. The curved plan is straight in 3DBAG (known gap). The gateway, the beer-brand lettering and the shop fascia are not modelled.",
   "South end (surfaces 7, 121, 122, 126 and the taller 58) from the 2018-07-29 thumbnail only (w05-186: brick with three window rows over a car-park entrance); the car-park opening is not modelled. The 32 m tower at the north end, the west back walls and the roof terrace have no photograph in the cache and stay blank. The 2024-11-21 panorama (w04-6) shows the stone-clad north face of a different rounded block and is not used.",
   "Refit 2026-10-25 (issue #59): walls[0] (w02-96) re-read off the placed crop: a glazed shop plinth (ground plinth-shopfronts, the Dirk supermarket) under two rows of square windows (w 0.6, h 0.42, sill 0.4 of the storey; measure.ts reads 24 columns, square) and a top row of wide horizontal windows in near-ribbons (storeyShapes storey 3: w 0.85, h 0.38). Gate misreads, allowed as inferred: the photo wall #4b413d is the median of a front cut diagonally by hard building shadow, the sunlit brick is orange (#b86240 kept); the top storey reads 12 % glazing because the left half of that row is washed out (hatched unusable).",
-  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5385: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5385: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5385: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ]
 }

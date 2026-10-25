@@ -30,7 +30,7 @@
    "windows": "low",
    "deepBars": true,
    "palette": {
-    "brick": "#57423e",
+    "brick": "#94736c",
     "frame": "#3a3e44",
     "stone": "#8a8e92",
     "glass": "#352f2f"
@@ -42,7 +42,8 @@
    "hand": [
     "system",
     "baysPerStorey",
-    "windowShape"
+    "windowShape",
+    "palette.brick"
    ],
    "windowShape": {
     "w": 0.7,
@@ -54,7 +55,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#6e7074"
+  "flatHex": "#6e7074",
+  "pitchedHex": "#6e7074"
  },
  "palette": {
   "brick": "#7a3c30",
@@ -69,7 +71,9 @@
   "walls[0] = panel 0: a brick storey with a continuous ribbon of low windows under the eaves (the ASTERWEG 17 - 19 sign sits on the wall below it), over a ground floor that is glazed at the left end and an open dark arcade with galvanised diagonal trusses to the right, closing in a brick ramp wall. Drawn as ribbon-windows, 2 storeys, 20 bays, ground storey blank brick with a glazed entrance in bay 1. Simplified: the open arcade and the truss legs (the wall is solid; steel bars under 3 cm and an open void cannot be cut into a 3DBAG wall), the glazed lobby beyond bay 1. Skipped: the ASTERWEG 17-19 wall lettering (the wall-mounted letters leave 32 m of open edge in the export).",
   "Not drawn: north, west and south fronts and the 33 m tower parts (no panorama).",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class.",
-  "roof.flatHex #6e7074: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5382: slot slate, rgb 107/107/107, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #6e7074: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5382: slot slate, rgb 107/107/107, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #6e7074: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5382: slot slate, rgb 107/107/107, confidence 0.9; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73).",
+  "walls[0].palette.brick #57423e -> #94736c (sunlit-walls.ts, issue #73): measured from w02-74L in shade (brick luma 57); the same brick reads 127 in the sunlit crop w02-74 (2021-06-16); hue kept, drawn 71 -> 128."
  ],
  "measured": {
   "date": "2026-10-14",

@@ -160,7 +160,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "slate",
-  "flatHex": "#87898d"
+  "flatHex": "#87898d",
+  "pitchedHex": "#87898d"
  },
  "palette": {
   "brick": "#9a948a",
@@ -181,6 +182,7 @@
  "notes": [
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #6a6d6c not used (not darker than the wall #786b61 by 10 L*, or tinted): kit glass kept; walls[0] wall split #675c4f | #857c6a at 62 % (dE 15.8).",
   "2026-10-16 (lane de-hallen-slab): roof.flatHex #87898d is the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5384: slot slate, rgb 140/140/140, confidence 1.0, roofSlotHex), the colour the city drew it in before the install; without it the kit's flat grey mapped to the buff gravel prior over the buff render and the block read as one slab from the Tollensstraat.",
-  "2026-10-16 (lane de-hallen-slab): walls[2] is the 29.9 m Tollensstraat front (panel 1, surfaces 3-4), left blank by the first install although its crop w04-248 was archived: pale buff brick, five storeys of white-framed punched windows. measure.ts reads it washed out (57 % > 30 %, wall #eadcc2 in full sun), so the brick #c8b796 (drawn as measured: measured.groups lists 2, the hand colour kept) is hand-sampled from the shaded lower storeys of w04-248 (#d3c5a6, #d8c7a9) and w04-248L, and the window shape (1.4 x 1.7 m at a ~3 m pitch, sill 0.9 m) and ten bays are read by hand at 50 px/m. Kit gaps on this front: the open ground-floor passage with round columns and the yellow glazed entrance, the curved cantilevered balconies and the recessed loggias."
+  "2026-10-16 (lane de-hallen-slab): walls[2] is the 29.9 m Tollensstraat front (panel 1, surfaces 3-4), left blank by the first install although its crop w04-248 was archived: pale buff brick, five storeys of white-framed punched windows. measure.ts reads it washed out (57 % > 30 %, wall #eadcc2 in full sun), so the brick #c8b796 (drawn as measured: measured.groups lists 2, the hand colour kept) is hand-sampled from the shaded lower storeys of w04-248 (#d3c5a6, #d8c7a9) and w04-248L, and the window shape (1.4 x 1.7 m at a ~3 m pitch, sill 0.9 m) and ten bays are read by hand at 50 px/m. Kit gaps on this front: the open ground-floor passage with round columns and the yellow glazed entrance, the curved cantilevered balconies and the recessed loggias.",
+  "roof.pitchedHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5384: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ]
 }

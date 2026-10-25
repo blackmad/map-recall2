@@ -152,7 +152,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#817c80"
+  "flatHex": "#817c80",
+  "pitchedHex": "#817c80"
  },
  "palette": {
   "brick": "#9a3b28",
@@ -166,7 +167,8 @@
   "Ornaments from the north panorama: POLITIE in blue capitals with a gold flame emblem on the wall at the upper left (letters MODELLED as wall signage over the left entrance bay: left position as in the photo but about 3 m lower (the kit puts wall lettering just above the entrance, the photo has it at first-floor height); the flame emblem SKIPPED: a 0.4 m two-colour decal, below the attachment grain and carried by the letters' colour); blue diamond police sign on the wall at the left (SIMPLIFIED as the kit blue lamp by the entrance: a box not a diamond); three roller vehicle doors (MODELLED, garageDoors 3); glazed ground bay at the left (MODELLED as the entrance); curved glazed ribbon (SIMPLIFIED: flat ribbon windows because 3DBAG walls are straight); wall floodlights, flagpole, antenna (SKIPPED: slender fixtures that move between captures); no striped band, canopy or crest.",
   "West (2022-12-07 w02-269, oblique 32 deg and hidden behind a shop) and east (2025-10-01 w01-89, oblique 45 deg, mosque in front) walls are INFERRED from the north and south walls (same brick and ribbon language); rooftop volumes are left to otherWalls (blank).",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #413a3a not used (not darker than the wall #5f342b by 10 L*, or tinted): kit glass kept; walls[1] glass #38312d not used (not darker than the wall #5a2b1f by 10 L*, or tinted): kit glass kept.",
-  "roof.flatHex #817c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5384: slot slate, rgb 132/123/123, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #817c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5384: slot slate, rgb 132/123/123, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #817c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5384: slot slate, rgb 132/123/123, confidence 0.9; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "layeredKit": true,
  "measured": {

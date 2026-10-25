@@ -107,7 +107,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#898b8f"
+  "flatHex": "#898b8f",
+  "pitchedHex": "#898b8f"
  },
  "palette": {
   "brick": "#e4dcc2",
@@ -122,7 +123,8 @@
   "Not modelled (the photos show them): the mauve plinth and pier strips; the glazed stair tower (north-east end) and the curved glass penthouse with its railings over the rounded corner; three flagpoles; the red LED temperature display beside the corner sign; the second READE sign on the rounded corner; the 'revalidatie | reumatologie' lettering; the low rendered boundary wall in front; the east and courtyard walls (no panorama) are blank.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class.",
   "Refit 2026-10-25 (issue #59, gate #58 crops): walls[0] (w02-340): the placed crop shows a fourth window row on storey 3 across the front (photo glazing 0.37 where the model was blank): blankStoreys now [4] only. walls[1] (w05-340L): six square cross windows per row, two per former bay: 6 bays, w 0.6, h 0.55.",
-  "roof.flatHex #898b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 148/148/148, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #898b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 148/148/148, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #898b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 148/148/148, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

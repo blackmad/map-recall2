@@ -6,7 +6,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { CHUNK_WALL_EXPOSURE_DATA } from './chunkWallExposureData.ts';
-import { CHUNK_WALL_GAIN_RANGE, PHOTO_MATCHED_SLOTS, chunkWallExposure, chunkWallGain, photoMatchedWallTint } from './chunkWallExposure.ts';
+import { CHUNK_WALL_GAIN_RANGE, PHOTO_MATCHED_SLOTS, UNRECORDED_GAIN_SLOTS, chunkWallExposure, chunkWallGain, photoMatchedWallTint } from './chunkWallExposure.ts';
 import { FALLBACK_WALL_GAIN } from './measuredWhitePoints.ts';
 import { measuredWallGain, sceneSlotHex, srgbToLinear, sunlitMeasuredWall } from './sunny.ts';
 import { cityTint, hexToRgb } from './palette.ts';
@@ -39,7 +39,7 @@ test('chunk wall gain: strip white to a sunlit white, times strip over drawn; fa
   assert.ok(chunkWallGain(chunkWallExposure('face-bilder-236022-167243')) < 0.7);
 });
 
-test('photo-matched wall tint: walls only, sunny only, measured tints and models without an exposure unchanged', () => {
+test('photo-matched wall tint: walls only, sunny only, measured tints unchanged; GLB brick without an exposure takes the generic gain', () => {
   const ozv = chunkWallExposure('face-wallen-ozv-115-125'), drawn = cityTint('brick', '#36302e');
   const lifted = photoMatchedWallTint('brick', drawn, ozv, null, 'sunny');
   assert.ok(Math.abs(linLuma(lifted) / linLuma(drawn) - chunkWallGain(ozv)) < 0.03, `ozv brick ${drawn} -> ${lifted}`);
@@ -47,7 +47,13 @@ test('photo-matched wall tint: walls only, sunny only, measured tints and models
   assert.deepEqual([...PHOTO_MATCHED_SLOTS], ['brick', 'accent', 'stucco']);
   assert.equal(photoMatchedWallTint('brick', drawn, ozv, null, 'legacy'), drawn, 'legacy look untouched');
   assert.equal(photoMatchedWallTint('brick', drawn, ozv, 'measured', 'sunny'), drawn, 'a measured tint carries its own white');
-  assert.equal(photoMatchedWallTint('brick', drawn, null, null, 'sunny'), drawn, 'no exposure: byte-identical');
+  // No exposure record (a recipe or landmark GLB, issue #73): brick and accent take the generic walls' sunlit gain; stucco,
+  // stone and the rest are untouched (a white render must not wash out), and the legacy look keeps the tint.
+  for (const slot of ['brick', 'accent']) assert.ok(Math.abs(linLuma(photoMatchedWallTint(slot, drawn, null, null, 'sunny')) / linLuma(drawn) - FALLBACK_WALL_GAIN) < 0.03, `${slot}: no exposure takes FALLBACK_WALL_GAIN`);
+  assert.deepEqual([...UNRECORDED_GAIN_SLOTS], ['brick', 'accent']);
+  for (const slot of ['stucco', 'stone', 'frame', 'paint', 'slate']) assert.equal(photoMatchedWallTint(slot, '#e8e4dc', null, null, 'sunny'), '#e8e4dc', `${slot} no exposure: unchanged`);
+  assert.equal(photoMatchedWallTint('brick', drawn, null, null, 'legacy'), drawn, 'no exposure, legacy look: byte-identical');
+  assert.equal(photoMatchedWallTint('brick', drawn, null, 'measured', 'sunny'), drawn, 'no exposure, measured: its own white');
   // A white wall does not clip into another hue: it saturates at white.
   assert.match(photoMatchedWallTint('stucco', '#f4f0e8', { white: [150, 150, 150], stripOverDrawn: 2 }, null, 'sunny'), /^#f[0-9a-f]f[0-9a-f]f[0-9a-f]$/);
 });

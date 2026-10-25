@@ -746,8 +746,8 @@ test('measured groups export their wall, arch-ring and own glass slots with tint
     return out.sort();
   };
   // Houthavenkade: the balcony columns' own reflective glass (columns.glass) is measured; the punched windows keep the kit glass (the photo's pane glass reads no darker than the brick).
-  // Its flat roof is measured from the orthophoto (roof.flatHex, issue #71).
-  assert.deepEqual(tinted('houthavenkade-26-247232'), ['glass/glass@g0c', 'glass/glass@g1c', 'roof/flat', 'wall/wall@g0', 'wall/wall@g1', 'wall/wall@g3', 'wall/wall@g4']);
+  // Its flat roof is measured from the orthophoto (roof.flatHex, issue #71), and its pitched roofs too (roof.pitchedHex, issue #73).
+  assert.deepEqual(tinted('houthavenkade-26-247232'), ['glass/glass@g0c', 'glass/glass@g1c', 'roof/flat', 'roof/low', 'roof/steep', 'wall/wall@g0', 'wall/wall@g1', 'wall/wall@g3', 'wall/wall@g4']);
   // The glazed hall's measured dark grey-blue glass reaches the look (look/palette.ts `cityMeasuredGlassTint`); the kit glass of unmeasured groups does not. Its white membrane roof is measured from the orthophoto (roof.flatHex).
   assert.deepEqual(tinted('apollolaan-4-134507'), ['glass/glass@g0', 'roof/flat', 'wall/wall@g0', 'wall/wall@g1']);
   assert.ok(tinted('waagdragerhof-198-118320').includes('wall/arch@g3'));
@@ -774,6 +774,31 @@ test('roof.flatHex: a measured flat roof is exported as measured and drawn as is
   // The look: the kit's flat grey lands on a flat-roof prior (buff gravel for #6a6c6c, the slab); the measured colour is kept.
   assert.ok(FLAT_ROOF_GREYS.includes(cityTint('bitumen', '#' + before.color.getHexString())));
   assert.equal(cityTint('bitumen', '#87898d', 'measured'), '#87898d');
+});
+
+test('roof.pitchedHex (issue #73): the default material\'s steep and low classes take the orthophoto colour, drawn as is; same meshes; absent = identical', async () => {
+  const {cityTint, MEASURED_SLATE} = await import('../look/palette.ts');
+  const {ROOF_COLOURS} = await import('./fit.ts');
+  const base = validateLargeIntent(raw('houthavenkade-26-247232')), f = facts('houthavenkade-26-247232');
+  assert.throws(() => validateLargeIntent({...base, roof: {...base.roof!, pitchedHex: 'slate'}}), /roof\.pitchedHex/);
+  const {pitchedHex: _drop, ...roofWithout} = base.roof!;
+  const plain = compileBuilding({...base, roof: roofWithout}, f), measured = compileBuilding(validateLargeIntent({...base, roof: {...roofWithout, pitchedHex: '#6E767A'}}), f);
+  const byName = (g: any) => { const m = new Map<string, any>(); g.traverse((o: any) => { if (o.isMesh) m.set(o.name, o.material); }); return m; };
+  const before = byName(plain.group), after = byName(measured.group);
+  for (const k of ['roof/steep', 'roof/low']) {
+    assert.ok(before.get(k) && after.get(k), `${k} exists`);
+    assert.notEqual(before.get(k).userData.tintSource, 'measured');
+    assert.equal(after.get(k).userData.tintSource, 'measured');
+    assert.equal('#' + after.get(k).color.getHexString(), '#6e767a');
+    assert.equal(before.get(k).color.getHexString(), ROOF_COLOURS[base.roof!.material][k === 'roof/steep' ? 'steep' : 'low'].slice(1));
+  }
+  // the flat class and every other mesh keep their colour; positions are identical
+  const sig = (g: any) => { const out: string[] = []; g.traverse((o: any) => { if (o.isMesh) out.push(`${o.name}|${/^roof\/(steep|low)$/.test(o.name) ? '' : o.material.color.getHexString()}|${Array.from(o.geometry.attributes.position.array).join(',')}`); }); return out.join(';'); };
+  assert.equal(sig(measured.group), sig(plain.group));
+  // the look keeps the measured colour on the slate and tile cells; the kit slate lands on the city's darkest tone
+  assert.equal(cityTint('slate', '#6e767a', 'measured'), '#6e767a');
+  assert.equal(cityTint('roofTile', '#906559', 'measured'), '#906559');
+  assert.equal(cityTint('slate', ROOF_COLOURS.slate.steep), MEASURED_SLATE[1]);
 });
 
 test('unmeasured flat roof (issue #71, "dark, dour"): the default bitumen flat class is the light gravel prior, not dark bitumen; explicit materials keep theirs', async () => {

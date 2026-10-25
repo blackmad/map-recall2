@@ -192,7 +192,8 @@
     "walls[0] the pair's front (panel 8, 14.5 m; crop w01-335p 2022-03-22, sunlit, a parked van over the ground storey): red-brown brick with thin cream speklagen, a grey stone ground storey, segmental heads with cream voussoirs, five window columns; a canted white bay window on the first floor at the left with a wrought-iron balcony on its roof, a square white oriel on the first floor at the right with a white balustrade on its roof (oriel lists and oriel roof rails added to the kit for this front); stepped and towered gables over the cornice.",
     "walls[1] number 101 (panel 6, 6.7 m; crop w03-338w 2022-03-22): yellow-buff brick with red bands, a white oriel on the second floor with a balustrade, stone ground storey.",
     "INFERRED: the rear and party walls (otherWalls brick grid).",
-    "roof.flatHex #898b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 148/148/148, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
+    "roof.flatHex #898b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 148/148/148, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install.",
+    "roof.pitchedHex #898b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 148/148/148, confidence 0.9; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
   ],
   "measured": {
     "date": "2026-10-25",
@@ -200,6 +201,7 @@
   },
   "roof": {
     "material": "bitumen",
-    "flatHex": "#898b8f"
+    "flatHex": "#898b8f",
+    "pitchedHex": "#898b8f"
   }
 }

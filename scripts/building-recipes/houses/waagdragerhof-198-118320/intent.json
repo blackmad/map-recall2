@@ -187,7 +187,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "slate",
-  "flatHex": "#888b8f"
+  "flatHex": "#888b8f",
+  "pitchedHex": "#888b8f"
  },
  "palette": {
   "brick": "#5a4446",
@@ -218,6 +219,7 @@
   "Reconciled 2026-10-14 (lane A measurement on lane C's systems): `hand` holds every group's system and the bay counts of walls[0], [2], [3] (lane C; walls[0] 13 vs measured 12 is within the column tolerance); walls[1]'s 8 bays are measured (lane C copied 13 from walls[0]; the photo w03-286 shows 8 window columns). Brick: the photos' wall clusters on the tower are mortar and shadow (#262120 from the December crop w09-196L at gain 1, #34373a from w03-286, family paint), so walls[0] and [1] keep lane C's hand #4a302b, which matches the median of the brick-red pixels in both crops (#3e2f2c to #473c3a raw); walls[3] takes the measured #735c59 (w01-16, light-trim normalised); walls[2]'s measurement took the window frames (#464746) and it shares walls[3]'s brick (same warehouse). Glass: no front's measured glass reads as glass, so the kit's dark glass is used (lane C's #3a4650 hand value is dropped). windowShape: walls[0] lane C's French window (no measured shape), walls[1] measured 0.45 x 0.85 kept by hand (the refinement widened it to 0.70 because the photo's glazing 0.66 counts the dark brick as glass), walls[2] and [3] lane C's arched shapes (no measured shape; the photo labels the white-framed panes as trim, glazing 0.31-0.34 against 0.56-0.59 drawn, while the overlay lines up arch for arch).",
   "Kit gap: the tower's light rendered band storeys (w03-286), paired small arches and hoist-door axes of the warehouse, spandrel panels, the dentil cornice, the PAKHUIS WILHELMINA lettering on the glass, the bridge volume and stepped tower top.",
   "Refit 2026-10-25 (issue #59): walls[0] French windows widened to 0.68 of the bay (photo glazing 0.55, model now 0.55; WARN, was FAIL), walls[1] to 0.65; walls[2] takes the sunlit warehouse brick #5a4c46 of w05-196 (the purple #735c59 was walls[3]`s; hue was -15 deg off) and the stacked white bars of the tall windows (PASS, was FAIL). walls[1] allowed as inferred: the wall hue 173 deg is the blue sky cast on w03-286 (raw #323a3d), and the storey glazing band is off only where the top storeys reflect sky (0.90) and on the two storeys of the light rendered band (0.45, a part-width band the kit cannot draw).",
-  "roof.flatHex #888b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5383: slot slate, rgb 156/156/156, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #888b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5383: slot slate, rgb 156/156/156, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #888b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5383: slot slate, rgb 156/156/156, confidence 0.9; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ]
 }

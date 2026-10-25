@@ -42,7 +42,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#888b8f"
+  "flatHex": "#888b8f",
+  "pitchedHex": "#888b8f"
  },
  "palette": {
   "brick": "#6e6c6a",
@@ -57,7 +58,8 @@
   "Asterweg 19B (BAG pand 0363100012209785, built 2005, 63 3DBAG wall surfaces, roof max 13.9 m): a long business-park block of the Buiksloot industrial estate, about 100 m by 30 m with a stepped courtyard side. One panorama within 35 m shows it: the east end (w03-74, 2021-06-16). The long north and south walls and the courtyard have no panorama (w01-344 and w02-253 have no pano within 35 m).",
   "walls[0] = panels 4 and 5 (E end, 20 m and 10 m, eaves 13.2): grey exposed-aggregate concrete panels with two ribbon-window bands, a projecting box window at the north corner and a blank concrete ground storey with one small window and a door; drawn as 3 storeys of ribbon windows over a blank ground, in render. Simplified: the curved corner is the 3DBAG wall (the shell is straight-faceted), the box window is part of the ribbon, the car-park undercroft on the south side is not drawn. Everything else (the 100 m north and south walls, the courtyard, the lower west block) stays blank concrete.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #423b3c not used (not darker than the wall #473c3b by 10 L*, or tinted): kit glass kept.",
-  "roof.flatHex #888b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5382: slot slate, rgb 165/165/165, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #888b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5382: slot slate, rgb 165/165/165, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #888b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5382: slot slate, rgb 165/165/165, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

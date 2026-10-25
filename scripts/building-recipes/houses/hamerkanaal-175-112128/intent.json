@@ -90,7 +90,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "slate",
-  "flatHex": "#687074"
+  "flatHex": "#687074",
+  "pitchedHex": "#687074"
  },
  "palette": {
   "brick": "#8a6a58",
@@ -105,7 +106,8 @@
   "walls[0] = panel 17 (E, 78.7 m, eaves 14.2, surface 135): a four-storey brick front of paired white-framed windows in 16 bays with pale string courses and a teal-clad top storey, shutter-fronted ground. Drawn as 4 storeys x 16 bays with string courses. walls[1] = panel 28 (S, 21.7 m, eaves 6.9-7.7): a dark brick two-storey range with a glazed roller door at its left end, drawn as 2 storeys x 6 bays and one garage door. walls[2] = panel 20 (S, 21 m, eaves 9.7): the dark brick three-storey house with a hipped roof, drawn as 3 storeys x 5 bays.",
   "Simplified: the teal top storey is brick-coloured (one palette per group), the ground shutters are plain window openings, the white window surrounds are the kit frames, the hipped and pitched roofs are the 3DBAG roofs. Not drawn: the west, north and south-west walls (no panorama within 35 m) and the stepped grey-clad upper block behind the house, which stay blank wall.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #4a5056 not used (not darker than the wall #554e4a by 10 L*, or tinted): kit glass kept.",
-  "roof.flatHex #687074: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 99/107/107, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #687074: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 99/107/107, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #687074: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 99/107/107, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

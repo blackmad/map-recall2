@@ -366,7 +366,8 @@
   "Review 2026-10-24 (held-review): walls[5] (w03-227) brick set to the crop's normalised wall swatch #756e77 and the wallSplit (#938376 | #685f69 at 0.616) dropped: the split followed the cast shadow across the right third of the 2021-09-09 crop, not a change of brick.",
   "Giant-order lane (2026-10-24, issue #35): walls[3] (no photo) is surface 503 alone: surfaces 248 (2.2 m, 10.1-13.4 m) and 497 (0.9 m, 10-16.2 m) are set-back upper pieces off the footprint edge whose 13.4 m roof failed the eaves gate (16.1 vs 13.36 m); they fall to otherWalls. walls[0] windows cross (the w01-47L crop shows mullion-and-transom sashes). A corbel table under the main block's crown was tried and left out: brick corbels on the dark brick do not read in the game's flat colour.",
   "Acceptance pass 2026-10-24 (issue #45, w01-47L 2021-01-22): walls[0] window frames reddish-brown #6a4536 (not white), round-arched heads on the tall left house top storey (arches.storeys [4]).",
-  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-24",
@@ -381,6 +382,7 @@
  },
  "roof": {
   "material": "bitumen",
-  "flatHex": "#87898d"
+  "flatHex": "#87898d",
+  "pitchedHex": "#87898d"
  }
 }

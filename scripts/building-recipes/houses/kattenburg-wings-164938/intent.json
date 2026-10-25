@@ -83,7 +83,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "slate",
-  "flatHex": "#7a7c80"
+  "flatHex": "#7a7c80",
+  "pitchedHex": "#7a7c80"
  },
  "palette": {
   "brick": "dark-brown",
@@ -96,7 +97,8 @@
   "Not modelled: the barred round-headed ground-floor openings in the boundary wall, the roof dormers, the downpipes, the blind 15th axis at the north wing's right end. Western and eastern gable ends, the rooftop volumes at 19.7 m (panels 49/164/75/64/51) and the courtyard walls have no panorama and are left blank. Name of the institution not established from the sources used.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4e585c not used (not darker than the wall #645f5f by 10 L*, or tinted): kit glass kept.",
   "Refit 2026-10-25 (issue #59): walls[1] (w03-163, 2021-01-22) counts 16 window axes, not 14, of tall white-framed sashes (windowShape w 0.42, h 0.58, sill 0.22): columns, shape and glazing (0.23 vs 0.24) now match; the brick is the sunlit yellow-buff #d2b47c (the crop is 32 % washed out, so the gate returns NO EVIDENCE; allowed as inferred).",
-  "roof.flatHex #7a7c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 123/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #7a7c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 123/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #7a7c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 123/123/123, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

@@ -117,7 +117,8 @@
   "otherWalls": "blank",
   "roof": {
     "material": "bitumen",
-    "flatHex": "#747c80"
+    "flatHex": "#747c80",
+    "pitchedHex": "#747c80"
   },
   "palette": {
     "brick": "#b9bcbb",
@@ -130,6 +131,7 @@
     "1985 police complex at Flierbosdreef: a low, long horizontally corrugated metal-clad base (SE wall panel 12, 42 m, 7.9 m; 2024-09-13 w02-151, the sky is blown out by the capture) under a darker curved upper glazed band (panel 41, 150 deg, 16.1 m); at the south-west a black clad blank box (panel 37, surface 46, 16 m, 16.1 m high, 2025-09-01 w01-241, behind a cement mixer) over grey corrugated lower walls, and a low glazed wing (surface 19, 4.7 m). 132 wall surfaces: the NW, NE courtyard walls and further volumes are not photographed (candidates 0) and stay blank.",
     "Ornaments: no POLITIE lettering, blue lamp, striped band, canopy, crest or entrance is visible on any photographed wall (the SW low wing's glazed band could hold the public entrance, but no door is legible at 1 m/px in the washed-out 2025 capture), so none is modelled: not present in the evidence, not skipped. SIMPLIFIED: the corrugated cladding (horizontal ribs 0.1 m, below the grain: modelled as a flat grey stucco wall), the black cladding panel joints (flat dark wall), the curved ribbon (straight ribbon, 3DBAG walls are flat), the radio mast and the aerials on the roof (SKIPPED: slender, not part of the 3DBAG volume).",
     "3DBAG seam: the 14 m wall surface 105 (NAP 2.1 to 6.3 m) sits on the plinth surface 104 with a 0.1 m offset and left a 13.9 m open roof edge in the bare shell (gate open-edges, limit 2 m). Assigning 105 to its own blank wall group welds it; nothing is drawn on it (system blank).",
-    "roof.flatHex #747c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8417/5388: slot slate, rgb 115/123/123, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
+    "roof.flatHex #747c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8417/5388: slot slate, rgb 115/123/123, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install.",
+    "roof.pitchedHex #747c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8417/5388: slot slate, rgb 115/123/123, confidence 0.9; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
   ]
 }

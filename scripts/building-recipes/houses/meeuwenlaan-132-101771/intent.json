@@ -181,7 +181,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "black-tile",
-  "flatHex": "#818387"
+  "flatHex": "#818387",
+  "pitchedHex": "#818387"
  },
  "palette": {
   "brick": "#c2b696",
@@ -196,7 +197,8 @@
   "walls[0] = panel 157 (N, 68 m, eaves 9.6; surface 198): 2 storeys x 17 bays of wide bar windows. walls[1] = panel 79 (E, 24 m, eaves 9.7; surfaces 88, 106): 2 storeys x 6 bays. walls[2] = panels 122, 5, 7 (W, 8 m each, eaves 13.8; surfaces 147, 7, 9): 3 storeys x 6 bays. walls[3] = panel 121 (W low wing, 34 m, eaves 5.3; surface 146): glazed ground under a translucent upper band with the letters BREDERS on a cornice band (the photograph cuts the word at BREDER; the S comes from the Breders banner). walls[4] = panel 110 (S low wing, 43 m, eaves 6.6; surface 133): the same wing with COLLEGE, inferred from the visible ...LEGE ending in a blank panel. Simplified: the real letters are about 3 m tall and run straight across the translucent panels, here a cornice-band lettering; dormers, chimneys and the hipped roofs are the 3DBAG roof; the red entrance doors and the school banner are not modelled. Not drawn: the south and east courtyard fronts, the tower block (22.9 m) and the gym (no panorama), which stay blank brick.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #494947 not used (not darker than the wall #544b46 by 10 L*, or tinted): kit glass kept.",
   "Refit 2026-10-25 (issue #59): walls[2] (w05-280L) is two wide white-framed windows per 8 m panel (three-light, w 0.86, h 0.8), not six narrow bays: PASS, was FAIL. The low west and south wings (walls[3], walls[4]; w04-286L) are translucent channel-glass panels over a low glazed strip, not a glazed storey: a pale grey-green #9aa3a3 sheet with vertical channel joints (cladding ribs 0.5 m) from 0.4 of the height over a glazed plinth strip (h 0.3, 3 lights per bay, 12 bays). Kit gap: the 3 m letters BREDER(S)/(COL)LEGE run across the translucent panel itself; the kit can only letter the cornice band. Allowed as inferred: walls[3] the gate reads the single-storey wing`s glazing on its upper band only (0 drawn there; the glazed strip is the ground band, 63 % vs the photo 56 %), and reads the translucent channel glass partly as glazing (0.33); walls[0] is 52 % washed out, walls[1] 33 % and walls[4] 40 % foliage.",
-  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5383: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5383: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5383: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

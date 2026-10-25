@@ -165,7 +165,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#7a7c80"
+  "flatHex": "#7a7c80",
+  "pitchedHex": "#7a7c80"
  },
  "palette": {
   "brick": "#3b312c",
@@ -180,7 +181,8 @@
   "Other walls (SE, NE, tunnel side) have no panorama (candidates 0) or are party walls and stay blank.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #502324 not used (not darker than the wall #463e3c by 10 L*, or tinted): kit glass kept; walls[3] glass #22231e not used (not darker than the wall #1f1a1b by 10 L*, or tinted): kit glass kept.",
   "Refit 2026-10-25 (issue #59, gate #58 crops): walls[1] (the tall fire-station block, w01-313) re-authored from the photo: six sectional garage doors on a 4.3 m pitch (was 8 on 9 bays), storey 1 a glazed ribbon over bays 1-5 (the terrace room) with the left bay brick, storey 2 the ribbon over bays 0-2 only (the right half has narrow slit windows, which the ribbon system cannot put in the same storey: left blank), storey 3 a white panelled band (cladding panels #d8d8d2 from 0.64 to 0.84 of the eaves, no windows), storey 4 a ribbon over bays 1-5. The gate FAILs walls[1] only on the storey-3 band, where it reads the pale panels as glazing (photo 0.49, model 0): a misread, allowed as inferred. walls[0], walls[2], walls[3] unchanged from the 2026-10-14 inferred install. Kit cannot say: slit windows and a ribbon on the same storey, the flame emblem, the low wing's storey heights against its 3DBAG eaves.",
-  "roof.flatHex #7a7c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 123/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #7a7c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 123/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #7a7c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 123/123/123, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "layeredKit": true,
  "measured": {

@@ -77,7 +77,9 @@ test('measured walls bypass the brick clamp: cell mean x tint lands on the autho
   assert.ok(L(cityWallTint('#3a2a28')) >= 0.3 - 1e-9 && afterCell(cityTint('brick', '#3a2a28', 'measured')) < 0.25);
   assert.ok(L(cityWallTint('#d8d2c4')) <= 0.6 + 1e-9 && afterCell(cityTint('brick', '#d8d2c4', 'measured')) > 0.75);
   // Only brick/accent (and glass, painted stone and the flat roof, their own tests) are touched; every other slot ignores the source.
-  for (const slot of ['stucco', 'frame', 'door', 'paint', 'roofTile', 'slate'] as const) assert.equal(cityTint(slot, '#8a7656', 'measured'), cityTint(slot, '#8a7656'), slot);
+  for (const slot of ['stucco', 'frame', 'door', 'paint'] as const) assert.equal(cityTint(slot, '#8a7656', 'measured'), cityTint(slot, '#8a7656'), slot);
+  // pitched roofs (roof.pitchedHex, issue #73): the orthophoto colour as is on its cell
+  for (const slot of ['roofTile', 'slate'] as const) assert.equal(cityTint(slot, '#8A7656', 'measured'), '#8a7656', slot);
   // Below L 0.18 the floor holds.
   assert.ok(afterCell(cityTint('brick', '#0a0808', 'measured')) >= 0.17);
 });

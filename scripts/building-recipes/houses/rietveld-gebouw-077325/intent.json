@@ -43,7 +43,11 @@
    "system": "curtain-wall",
    "storeys": 5,
    "groundFactor": 0.4,
-   "hand": ["palette.frame", "palette.glass", "baysPerStorey"],
+   "hand": [
+    "palette.frame",
+    "palette.glass",
+    "baysPerStorey"
+   ],
    "baysPerStorey": 19,
    "ground": "mesh-plinth",
    "spandrels": {
@@ -63,7 +67,11 @@
    "system": "curtain-wall",
    "storeys": 4,
    "groundFactor": 1.4,
-   "hand": ["palette.frame", "palette.glass", "baysPerStorey"],
+   "hand": [
+    "palette.frame",
+    "palette.glass",
+    "baysPerStorey"
+   ],
    "baysPerStorey": 6,
    "ground": "mesh-plinth",
    "spandrels": {
@@ -130,7 +138,43 @@
     117,
     105,
     100,
-    134, 5, 9, 16, 27, 28, 29, 31, 35, 46, 130, 47, 73, 74, 75, 80, 81, 88, 89, 102, 103, 104, 106, 111, 167, 119, 121, 122, 129, 148, 149, 150, 151, 153, 154, 161, 162
+    134,
+    5,
+    9,
+    16,
+    27,
+    28,
+    29,
+    31,
+    35,
+    46,
+    130,
+    47,
+    73,
+    74,
+    75,
+    80,
+    81,
+    88,
+    89,
+    102,
+    103,
+    104,
+    106,
+    111,
+    167,
+    119,
+    121,
+    122,
+    129,
+    148,
+    149,
+    150,
+    151,
+    153,
+    154,
+    161,
+    162
    ],
    "system": "blank",
    "palette": {
@@ -141,7 +185,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#818387"
+  "flatHex": "#818387",
+  "pitchedHex": "#818387"
  },
  "palette": {
   "brick": "#858880",
@@ -152,7 +197,12 @@
  },
  "measured": {
   "date": "2026-10-17",
-  "groups": [0, 1, 2, 3]
+  "groups": [
+   0,
+   1,
+   2,
+   3
+  ]
  },
  "layeredKit": true,
  "notes": [
@@ -163,6 +213,7 @@
   "walls[2] east end of the glass block (surface 67, 20.7 m): the 2019-04-30 panorama from the Fred. Roeskestraat corner (w02-87s2far, thumbnail) shows the upper storeys' frosted and clear squares over the neighbour then standing east of it (since demolished; BAG 0363100100092566/67, building started 2025); the lower storeys are inferred as walls[0].",
   "walls[3] south and west walls of the glass block (panels 140, 7, 14 over the workshop roof, 25): no panorama sees them (the south wall faces the courtyard between this building and the 2006 building, the west wall the 2001 neighbour); inferred as walls[0] because the block is one curtain-wall box. walls[4]: the stair and lift heads on the roof, dark grey in w01-357w21.",
   "otherWalls: the workshop wing's walls (no panorama; the east panorama of 2019 shows the old neighbour in front of it) stay blank in the render colour of the west plinth (#858880); the narrow full-height 3DBAG slivers at the corners and the stair cores (18-21 m tall) are in walls[4] with the roof heads, dark, so no pale strips cut the glass. Not expressed: the interior columns seen through the glass, the occasional opaque infill panes in the vision bands, the bicycle racks.",
-  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5386: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5386: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5386: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ]
 }

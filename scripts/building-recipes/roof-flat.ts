@@ -8,19 +8,26 @@
  * `--write` puts it into the intent as `roof.flatHex` (exported with `tintSource: measured`, drawn as is) and adds a note.
  * A house whose intent already has `roof.flatHex` is reported and left alone. Recompile and reinstall afterwards
  * (install-large.ts), then check:covers.
+ *
+ *   node --import tsx scripts/building-recipes/roof-flat.ts --pitched --house=<id>[,<id>...] [--write]
+ *
+ * The same for the pitched classes (issue #73): `pitchedRoofFromFact` (slate, zinc, pantile readings) into
+ * `roof.pitchedHex`, only where the reading fits the intent's roof material (`pitchedFitsMaterial`: a reading recolours,
+ * it never turns slate into tile; copper stays authored). Material-only: re-export with reexport-large.ts.
  */
 import fs from 'node:fs';
 import zlib from 'node:zlib';
 import path from 'node:path';
 import {decodeRoofFactTile, type RoofFact, type RoofFactTile} from '../../src/canalRecall/roofs/roofSlots.ts';
-import {flatRoofFromFact} from '../../src/canalRecall/buildingRecipe/measuredRoof.ts';
+import {flatRoofFromFact, pitchedFitsMaterial, pitchedRoofFromFact} from '../../src/canalRecall/buildingRecipe/measuredRoof.ts';
 import {rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
 
 const HOUSES = 'scripts/building-recipes/houses', TILES = 'public/data/extracts/amsterdam/roof-facts/14';
 const arg = (name: string) => process.argv.find(a => a.startsWith(`--${name}=`))?.slice(name.length + 3);
 const ids = (arg('house') ?? '').split(',').filter(Boolean);
 if (!ids.length) throw Error('usage: roof-flat.ts --house=<id>[,<id>...] [--write]');
-const write = process.argv.includes('--write');
+const write = process.argv.includes('--write'), pitched = process.argv.includes('--pitched');
+const field = pitched ? 'pitchedHex' : 'flatHex';
 
 const tileOf = (lng: number, lat: number, z = 14) => {
   const n = 2 ** z, x = Math.floor((lng + 180) / 360 * n);
@@ -54,13 +61,16 @@ for (const id of ids) {
     const f = fact ?? factsIn(tx + dx, ty + dy).get(intent.pandId);
     if (f && !fact) { fact = f; at = `${tx + dx}/${ty + dy}`; }
   }
-  const reading = flatRoofFromFact(fact);
+  const reading = pitched ? pitchedRoofFromFact(fact) : flatRoofFromFact(fact);
   const line = `${id} (pand ${intent.pandId})`;
   if (!fact) { console.log(`${line}: no roof fact`); continue; }
-  if (!reading) { console.log(`${line}: fact ${fact.slot} rgb ${fact.rgb.join('/')} conf ${fact.confidence} not usable for a flat roof`); continue; }
-  console.log(`${line}: ${reading.hex} (roof-facts 14/${at}: slot ${reading.slot}, rgb ${reading.rgb.join('/')}, confidence ${reading.confidence})${intent.roof?.flatHex ? `; intent already has roof.flatHex ${intent.roof.flatHex}` : ''}`);
-  if (!write || intent.roof?.flatHex) continue;
-  intent.roof = {...(intent.roof ?? {material: 'bitumen'}), flatHex: reading.hex};
-  intent.notes = [...(typeof intent.notes === 'string' ? [intent.notes] : intent.notes ?? []), `roof.flatHex ${reading.hex}: the PDOK orthophoto's reading of this pand (roof-facts 14/${at}: slot ${reading.slot}, rgb ${reading.rgb.join('/')}, confidence ${reading.confidence}; roof-flat.ts), the colour the city drew it in before the install.`];
+  if (!reading) { console.log(`${line}: fact ${fact.slot} rgb ${fact.rgb.join('/')} conf ${fact.confidence} not usable for a ${pitched ? 'pitched' : 'flat'} roof`); continue; }
+  const material = intent.roof?.material ?? 'bitumen';
+  if (pitched && !pitchedFitsMaterial(reading.slot, material)) { console.log(`${line}: fact ${reading.slot} does not fit roof.material ${material}; left authored`); continue; }
+  console.log(`${line}: ${reading.hex} (roof-facts 14/${at}: slot ${reading.slot}, rgb ${reading.rgb.join('/')}, confidence ${reading.confidence})${intent.roof?.[field] ? `; intent already has roof.${field} ${intent.roof[field]}` : ''}`);
+  if (!write || intent.roof?.[field]) continue;
+  intent.roof = {...(intent.roof ?? {material: 'bitumen'}), [field]: reading.hex};
+  const what = pitched ? 'roof.pitchedHex' : 'roof.flatHex', drew = pitched ? 'its pitched roofs in (issue #73)' : 'it in before the install';
+  intent.notes = [...(typeof intent.notes === 'string' ? [intent.notes] : intent.notes ?? []), `${what} ${reading.hex}: the PDOK orthophoto's reading of this pand (roof-facts 14/${at}: slot ${reading.slot}, rgb ${reading.rgb.join('/')}, confidence ${reading.confidence}; roof-flat.ts${pitched ? ' --pitched' : ''}), the colour the city drew ${drew}.`];
   fs.writeFileSync(intentFile, JSON.stringify(intent, null, indent) + '\n');
 }
