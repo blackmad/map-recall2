@@ -14,6 +14,8 @@ test('whats-new landing page shows counts, a drawn 3D card, and fits the viewpor
   expect(await cards.count()).toBeGreaterThan(5);
   await expect(page.locator('#wip .wip').first()).toBeAttached();
 
+  // Cards load their model lazily when scrolled near; the feed now starts below the fold.
+  await cards.first().scrollIntoViewIfNeeded();
   await expect(cards.first().locator('.ph')).toHaveClass(/hide/, { timeout: 60_000 });
   const painted = await cards.first().locator('canvas').evaluate((c: HTMLCanvasElement) => {
     const d = c.getContext('2d')!.getImageData(0, 0, c.width, c.height).data;

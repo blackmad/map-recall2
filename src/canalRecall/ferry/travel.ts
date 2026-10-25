@@ -33,7 +33,8 @@ export const PIER_APPROACH_RADIUS = 48;
 export const DOCK_RADIUS = 18;
 /** Half-width of the passable corridor along a terminal access. */
 export const ACCESS_CORRIDOR = 20;
-export const FERRY_MAX_SPEED = 135;
+/** 2026-10-25 (user): "ferry should go a little faster": 135 -> 180 (bike top speed is 260). */
+export const FERRY_MAX_SPEED = 180;
 /** About 33 m long and 9 m wide, like the IJveer 60 model. */
 export const FERRY_SIZE = { length: 96, width: 27 } as const;
 

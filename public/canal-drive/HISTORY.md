@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+**Kit gaps from #83: Da Vinci installed (2026-10-25, #86).** New large-tier
+kit components: `sideLight`, `bayWindows`, `loggiaBands`, `groundPiers`
+(opt-in, byte-identical when absent). `all-walls.ts --inset=<m>` cuts a crop
+on a plane behind the footprint (for set-back wings; tested `insetWall`),
+so the gate judges Nieuwpoortkade 2 walls[3] with no tolerance change.
+Nieuwpoortkade 2 installed (all photographed walls PASS/WARN; panels drawn
+#84837e between the 2018 and 2022 exposures). Waterkeringweg 7 stays held:
+its remaining crops have a purple cast, a near-wall occlusion and a vertical
+mis-scale. Kit still lacks an oculus and door canopies.
+
 **Helmersbuurt block-face kit (2026-10-25, #81).** User asked for an Eerste
 Helmersstraat kit. 11 district types in `scripts/block-face/types/helmersbuurt/`,
 10 runs, 33 houses installed (EU03 Helmersbuurt-Oost 20, EU01 Cremerbuurt-Oost

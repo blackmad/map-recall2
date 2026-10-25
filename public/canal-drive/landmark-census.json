@@ -1,10 +1,10 @@
 {
  "version": 1,
- "generatedAt": "2026-10-25T18:36:39.522Z",
+ "generatedAt": "2026-10-25T19:32:44.121Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
- "headline": 504,
- "strict": 162,
+ "headline": 505,
+ "strict": 163,
  "byTier": {
   "bespoke": {
    "models": 337,
@@ -19,9 +19,9 @@
    "unreviewed": 0
   },
   "largeRecipe": {
-   "models": 113,
-   "counts": 52,
-   "strict": 52,
+   "models": 114,
+   "counts": 53,
+   "strict": 53,
    "unreviewed": 14
   },
   "landmarkKit": {
@@ -33,7 +33,7 @@
  },
  "byReview": {
   "legacy-gallery": 406,
-  "likeness-gate": 97,
+  "likeness-gate": 98,
   "none": 324,
   "strip-review": 112
  },
@@ -7268,6 +7268,20 @@
    "review": "likeness-gate",
    "counts": false,
    "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012090791",
+   "name": "Nieuwpoortkade 2, Amsterdam-West (1939 works and office complex beside De Bloem windmill, south of the Haarlemmerweg, with a later office tower; BAG pand 0363100012090791)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012090791"
+   ],
+   "namedPoi": false,
+   "rideVisible": true,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "kit:Westerkerk",

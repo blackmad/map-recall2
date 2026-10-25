@@ -33,7 +33,9 @@
   .lede{margin:0;max-width:60ch;color:var(--mut);font-size:16px}
   .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:22px}
   @media (min-width:700px){.stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}}
-  @media (min-width:960px){.stats{grid-template-columns:repeat(5,minmax(0,1fr))}}
+  @media (min-width:960px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  a.stat{color:inherit;text-decoration:none}
+  a.stat:hover{border-color:var(--mut)}
   .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow)}
   .stat b{display:block;font:700 clamp(24px,4.5vw,34px)/1.1 Georgia,serif;font-variant-numeric:tabular-nums}
   .stat span{font-size:12.5px;color:var(--mut)}
@@ -95,7 +97,7 @@
   <nav class="top" aria-label="Galleries">
     <a href="manual-landmarks.html">Landmark models</a>
     <a href="manual-ordinary-buildings.html">Ordinary buildings</a>
-    <a href="street-surveys.html">Street surveys</a>
+    <a href="street-surveys.html">Kit rows</a>
     <a href="coverage.html">Buurt coverage</a>
     <a href="landmark-queue.html">Building queue</a>
     <a href="park-landscape.html">Park views</a>
@@ -110,7 +112,9 @@
     <div class="stats" id="stats" aria-live="polite">
       <div class="stat"><b data-k="landmarks">&ndash;</b><span>landmarks modelled</span></div>
       <div class="stat"><b data-k="ordinary">&ndash;</b><span>ordinary buildings</span></div>
-      <div class="stat"><b data-k="survey">&ndash;</b><span>street-survey models</span></div>
+      <div class="stat"><b data-k="survey">&ndash;</b><span>houses in kit rows</span></div>
+      <a class="stat" href="designs.html"><b data-k="designs">&ndash;</b><span>houses from repeated designs</span></a>
+      <div class="stat"><b data-k="kits">&ndash;</b><span>landmark kits</span></div>
       <div class="stat"><b data-k="tris">&ndash;</b><span>triangles in total</span></div>
       <div class="stat fresh"><b data-k="week">&ndash;</b><span id="weekNote">new this week</span></div>
     </div>
@@ -122,7 +126,7 @@
       <button type="button" data-kind="all" aria-pressed="true">All</button>
       <button type="button" data-kind="landmark" aria-pressed="false">Landmarks</button>
       <button type="button" data-kind="ordinary" aria-pressed="false">Ordinary</button>
-      <button type="button" data-kind="street-survey" aria-pressed="false">Street surveys</button>
+      <button type="button" data-kind="street-survey" aria-pressed="false">Kit rows</button>
     </div>
     <label class="search"><input id="q" type="search" placeholder="Search by name" aria-label="Search by name" autocomplete="off"></label>
     <span class="count" id="count" role="status"></span>
@@ -288,8 +292,8 @@ document.addEventListener('visibilitychange', () => { if (document.hidden && raf
 
 // ---------- DOM
 // Taxonomy: src/canalRecall/buildingCategory.ts. Only `landmark` counts as a landmark.
-const KIND_LABEL = { landmark: 'Landmark', ordinary: 'Ordinary', 'street-survey': 'Street survey' };
-const KIND_LONG = { landmark: 'Landmark', ordinary: 'Ordinary building', 'street-survey': 'Street survey (block face)' };
+const KIND_LABEL = { landmark: 'Landmark', ordinary: 'Ordinary', 'street-survey': 'Kit row' };
+const KIND_LONG = { landmark: 'Landmark', ordinary: 'Ordinary building', 'street-survey': 'Kit row (block face)' };
 function makeCard(item, isNew) {
   const art = document.createElement('article');
   art.className = 'card';
@@ -425,6 +429,8 @@ async function init() {
     fetchJson('./ordinary-buildings-data/catalogue.json'), fetchJson('./poi-work-queue.json').catch(() => ({ tasks: [] })),
     fetchJson('./ordinary-buildings-data/chunks.json').catch(() => ({ chunks: [] })),
   ]);
+  fetchJson('./data/content-stats.json').then(j => { const n = j.stats?.kitBuildings?.count; if (n) $('[data-k="designs"]').textContent = fmt(n); }).catch(() => {});
+  fetchJson('./landmark-census.json').then(j => { const n = j.byTier?.landmarkKit?.models; if (n) $('[data-k="kits"]').textContent = fmt(n); }).catch(() => {});
   const dm = dates.models || {};
   // First install date (scripts/build-model-first-added.ts); model-dates only
   // records the latest re-export, which every rebuild touches.
@@ -448,7 +454,7 @@ async function init() {
     const iso = installed(c.modelUrl) || chunkJson.generatedAt;
     const face = c.id.replace(/^chunk-(face-)?/, '');  // street-surveys.html anchors every chunk id
     items.push({
-      id: c.id, kind: 'street-survey', name: `${(c.pands || []).map(p => p.address).filter(Boolean)[0] || face} (${(c.pands || []).length} houses)`,
+      id: c.id, kind: 'street-survey', houses: (c.pands || []).length || 1, name: `${(c.pands || []).map(p => p.address).filter(Boolean)[0] || face} (${(c.pands || []).length} houses)`,
       modelUrl: c.modelUrl, version: c.sha256 ? c.sha256.slice(0, 16) : undefined, triangles: c.triangles || 0,
       date: iso && Number.isFinite(Date.parse(iso)) ? new Date(iso) : null,
       lng: c.instance?.anchor?.[0] ?? null, lat: c.instance?.anchor?.[1] ?? null,
@@ -479,7 +485,8 @@ async function init() {
   const week = items.filter(i => i.date && i.date.getTime() >= Date.now() - 7 * 864e5).length;
   const set = (k, v) => { $(`[data-k="${k}"]`).textContent = v; };
   const surveys = items.filter(i => i.kind === 'street-survey').length;
-  set('landmarks', fmt(landmarks)); set('ordinary', fmt(items.length - landmarks - surveys)); set('survey', fmt(surveys));
+  const surveyHouses = items.filter(i => i.kind === 'street-survey').reduce((s, i) => s + (i.houses || 1), 0);
+  set('landmarks', fmt(landmarks)); set('ordinary', fmt(items.length - landmarks - surveys)); set('survey', fmt(surveyHouses));
   set('tris', fmt(items.reduce((s, i) => s + i.triangles, 0))); set('week', fmt(week));
   const midnight = new Date(); midnight.setHours(0, 0, 0, 0);
   const today = items.filter(i => i.date && i.date >= midnight).length;

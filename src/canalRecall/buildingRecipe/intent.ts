@@ -1111,6 +1111,42 @@ export interface LargeWallIntent {
    */
   loggias?: {storeys: number[]; bays?: number[]; w?: number; h?: number; sill?: number; deep?: number; rail?: 'glass' | 'bars' | 'solid' | 'none'; lights?: number; colour?: string};
   /**
+   * A side light in its own frame colour in each punched window (GitHub #86, Nieuwpoortkade 2's south wing, 2025-09-26
+   * crop w05-89: white-framed transom windows each holding a blue-framed opening sash in their left third over a vent
+   * strip): a glazing bar at `w` of the window width from `side` (default left; `w` 1 rings the whole light), bars at
+   * `low` and `high` of its height (default 0 / 1: none), and a ring in `colour` round the light they enclose, on
+   * `storeys` (0 = ground; default all). `bayWindows` entries set `light` per bay. brick-bay-grid only. Absent: byte-identical.
+   */
+  sideLight?: {side?: 'left' | 'right'; w: number; low?: number; high?: number; colour: string; storeys?: number[]};
+  /**
+   * Per-storey, per-bay windows (GitHub #86): on each entry's `storeys` (0 = ground) the storey's window becomes one
+   * window per bay from `pattern`, cycling across the bays: `w` of the bay pitch wide (0 = plain wall; up to 2, reaching
+   * into the next bay, whose entry is then 0), centred `at` of the pitch off the bay axis (-1..1: a window grid offset from the bays), `h` of the storey
+   * tall from `sill` of the storey (default the storey's window), `light` the side light's width (0 none, 1 whole),
+   * `door` true for a door leaf in the door colour (no sill).
+   * The offset small sash windows beside wide windows, singles and doubles that change from storey to storey.
+   * brick-bay-grid only, not with windowPattern, windowGroup or storeyShapes on the same storeys. Absent: byte-identical.
+   */
+  bayWindows?: {storeys: number[]; pattern: {w: number; at?: number; h?: number; sill?: number; light?: number; door?: boolean}[]}[];
+  /**
+   * Recessed loggia bands (GitHub #86, the GWL-terrein blocks, 1997: a gallery storey cut across a run of bays of a
+   * punched brick front, the south end's stack of loggias): per band one opening across `bays` [first, last] and
+   * `storeys` [first, last] (inclusive), from `sill` of the first storey to `head` of the last (fractions), cut `deep` x
+   * the first storey's height into the wall, glazed in `lights` leaves at the back (default one per ~1.2 m), a `rail`
+   * (default glass; none on the ground) in `colour` (default the frame). The bays and storeys it covers draw no windows.
+   * Defaults in systems.ts `LOGGIA_BAND`. Needs baysPerStorey. Absent: byte-identical.
+   */
+  loggiaBands?: {storeys: [number, number]; bays: [number, number]; sill?: number; head?: number; deep?: number; lights?: number; rail?: 'glass' | 'bars' | 'solid' | 'none'; colour?: string;
+    /** the back a wall in the wall's brick with rows of windows (the flats' doors and windows behind a gallery): per row, from `sill` to `sill + h` of the band's height, one window `w` wide (fraction of the run) in every run of `every` bays; absent = glazed leaves */
+    back?: {sill: number; h: number; every: number; w: number}[]}[];
+  /**
+   * Dark columns in front of the ground storey (GitHub #86, the Da Vinci south wing's steel posts between brick infill
+   * panels): on every `every`-th bay edge from edge `first` (0 = the panel's left end), `w` of the bay pitch wide, from the
+   * ground to the top of the ground storey, in `colour`; `plinth` a strip `h` of the ground storey tall along the ground
+   * in its own `colour` (a vent grille). Needs baysPerStorey. Absent: byte-identical.
+   */
+  groundPiers?: {every: number; first?: number; w: number; colour: string; plinth?: {h: number; colour: string}};
+  /**
    * A glazed plinth under the group's system: on the listed `storeys` (default [0]; 0 = ground) one glazed opening per bay
    * (or the listed `bays`) leaving `pier` of the bay as wall, from `sill` to `sill + h` of the storey, in `lights` equal
    * lights with its own mullion pitch, optionally a transom at `transom` of the glazing height; the plinth storeys are
