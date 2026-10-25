@@ -9,6 +9,8 @@
  *       facade (default 0.9 x its length, 14-32 m), --radius the panorama search radius around that point (default 32 m): tall
  *       slabs need 60-100 m to fit in one frame.
  *   --months=5,6,7,8,9 --scratch=.cache/building-types-summer: only panoramas of those months (sunlit re-shoot for colour sampling).
+ *   --look=game (default since #78): render in the game's lit recipe look under the sunny rig; --look=review: the older review
+ *       renderer (own textures, brick gain, dimmer lights; it could not draw white above ~180 on a shade wall).
  *
  * The camera is the municipal panorama's own position, aimed at the front facade (heading, pitch and horizontal
  * FOV computed from the facade width and building height); the render uses the same numbers. No game server is needed:
@@ -102,7 +104,10 @@ async function pageWith(glbs: Buffer[]): Promise<{page: Page; close: () => Promi
   page.on('pageerror', e => console.error('page error', e.message));
   await page.setContent('<!doctype html><meta charset=utf-8><body></body>');
   await page.addScriptTag({content: bundle.outputFiles[0].text});
-  const info = await page.evaluate(async b64 => (window as any).bt.load(b64), glbs.map(g => g.toString('base64')));
+  // --look=game (default, #78): the game's lit recipe look under the sunny rig; --look=review: the review renderer's own look.
+  const look = arg('look', 'game'), brickFile = 'public/canal-drive/materials/ambientcg/Bricks057/colour.jpg';
+  const brick = look === 'game' && fs.existsSync(brickFile) ? `data:image/jpeg;base64,${fs.readFileSync(brickFile).toString('base64')}` : undefined;
+  const info = await page.evaluate(async ([b64, o]) => (window as any).bt.load(b64, o), [glbs.map(g => g.toString('base64')), {look, brick}] as const);
   return {page, info, close: () => browser.close()};
 }
 const dataUrlToBuffer = (u: string) => Buffer.from(u.split(',')[1], 'base64');

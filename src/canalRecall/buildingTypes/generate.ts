@@ -7,6 +7,7 @@
  * (u along the facade seen from outside left-to-right, v up, d outward).
  */
 import {MeshBuilder, type MaterialKey, type V3} from './mesh.ts';
+import {trimKey} from './whiteTrim.ts';
 import {FACADE_IDS, type Annex, type Bay, type ChimneySpec, type DormerSpec, type Element, type FacadeId, type Height, type Levels, type Palette, type PaletteKey, type TypeSpec} from './spec.ts';
 
 export interface GenerateParams {
@@ -103,14 +104,16 @@ const levelsOf = (levels: Levels, storeys: number): number[] => {
 };
 
 function keys(p: Palette) {
+  // #78: painted white trim (frames, surrounds, sills, fascias, bands, white doors and railings) is the measured trim white
+  // (whiteTrim.ts); every other colour keeps the slot it always had.
   return {
-    frame: {slot: 'frame', tint: p.frame} as MaterialKey,
+    frame: trimKey('frame', p.frame, {slot: 'frame', tint: p.frame}),
     glass: {slot: 'glass', tint: p.glass} as MaterialKey,
-    door: {slot: 'door', tint: p.door} as MaterialKey,
-    accent: {slot: 'stone', tint: p.accent} as MaterialKey,
-    rail: {slot: 'door', tint: p.rail} as MaterialKey,
+    door: trimKey('door', p.door, {slot: 'door', tint: p.door}),
+    accent: trimKey('accent', p.accent, {slot: 'stone', tint: p.accent}),
+    rail: trimKey('rail', p.rail, {slot: 'door', tint: p.rail}),
     dark: {slot: 'door', tint: p.dark} as MaterialKey,
-    column: {slot: 'stucco', tint: p.column} as MaterialKey,
+    column: trimKey('column', p.column, {slot: 'stucco', tint: p.column}),
     joint: {slot: 'door', tint: p.joint} as MaterialKey,
     wall: p.wall as MaterialKey,
     plinth: (p.plinth ?? p.wall) as MaterialKey,
@@ -683,7 +686,7 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
     box(mb, k.column, IDENTITY, -L / 2, L / 2, sh - slabBelow, sh, zb, zf, {back: false, bottom: false, top: true});
     box(mb, k.wall, IDENTITY, -L / 2, L / 2, sh, wallTop, zb, zf, {back: false, bottom: true, ends: gabled});
     // recessed ground wall, full length
-    box(mb, {slot: 'door', tint: v.palette.door}, IDENTITY, -L / 2, L / 2, 0, lowTop, zb + rec, zf - rec, {back: false, bottom: true, top: true});
+    box(mb, k.door, IDENTITY, -L / 2, L / 2, 0, lowTop, zb + rec, zf - rec, {back: false, bottom: true, top: true});
     for (const p of core) box(mb, k.plinth, IDENTITY, -L / 2 + p.u0, -L / 2 + p.u1, 0, lowTop, zb, zf, {back: false, bottom: true, top: true});
     // columns along both long facades, outside the core, plus the four corners
     const pitch = spec.ground.columnPitchM ?? 3.4, cw = spec.ground.columnM ?? 0.42;
@@ -736,7 +739,7 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
     if (v.joints && fs.joints) joints(ctx, f, len, sh, wallTop, fs.joints.panelW, fs.joints.panelH);
     for (const band of fs.bands ?? []) for (const lv of band.levels ? levelsOf(band.levels, storeys) : [band.floor]) {
       const y = lv * sh;
-      box(mb, !band.palette || band.palette === 'column' ? {slot: 'stucco', tint: v.palette.column} : key(band.palette), f, -0.0, len, y - band.below, y + band.above, 0, 0.05);
+      box(mb, key(band.palette ?? 'column'), f, -0.0, len, y - band.below, y + band.above, 0, 0.05);
     }
   }
   // pilotis: slab fascia is the white column box above; the soffit shows from below.

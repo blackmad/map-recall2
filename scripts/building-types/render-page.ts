@@ -1,5 +1,6 @@
 // Browser page script for the building-type renders (bundled by camera-sheets.ts with esbuild, loaded into a blank page).
-// window.bt.load(base64Glb)      decode a staged GLB (baked or instanced), dress `materialSlot` materials with procedural textures
+// window.bt.load(base64Glb, opts) decode a staged GLB (baked or instanced), dress `materialSlot` materials with procedural textures;
+//                                 opts.look 'game' (#78) dresses them with the game's lit recipe look under the sunny rig instead
 // window.bt.camera(opts)         street camera matched to a panorama: x, z (east/south m), y (eye height NAP), heading, pitch, hfov, w, h -> PNG data URL
 // window.bt.aerial(opts)         oblique/top view of the area with context buildings and streets -> PNG data URL
 // window.bt.bounds()             world bounds of the loaded models
@@ -7,7 +8,8 @@ import * as THREE from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {MeshoptDecoder} from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import {cityTint, type MaterialSlot as RecipeSlot} from '../../src/canalRecall/look/palette.ts';
-import {materialMottle} from '../../src/canalRecall/buildingRecipe/recipeLook.ts';
+import {createRecipeLook, materialMottle, type RecipeLook} from '../../src/canalRecall/buildingRecipe/recipeLook.ts';
+import {SUNNY_LIGHT_RIG} from '../../src/canalRecall/rendererShared/lightRig.ts';
 import {assignBrickTones, mottleGain, mottleKey, mottleRatios, type Mottle} from '../../src/canalRecall/buildingTypes/mottle.ts';
 
 /** Review-render brightness of the brick slot, tuned so a sunlit-photo tint renders about as dark as the photo (the game: lifted tint x neutral brick texture x wall shade). */
@@ -20,8 +22,31 @@ document.body.style.margin = '0';
 document.body.appendChild(renderer.domElement);
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#bcd4ea');
-scene.add(new THREE.HemisphereLight('#ffffff', '#8a8576', 1.5));
+const sky = new THREE.HemisphereLight('#ffffff', '#8a8576', 1.5); scene.add(sky);
 const sun = new THREE.DirectionalLight('#fff4e0', 2.0); sun.position.set(-40, 80, 55); scene.add(sun);
+/**
+ * 'review' (default): the review renderer's own textures, brick gain and lights. 'game' (#78, camera-sheets default): the
+ * game's shared-frame look, so a sheet shows what ships: the recipe look's lit slot materials (cityTint, the same cells,
+ * Bricks057 brick) under the sunny rig's colours and intensities (rendererShared/lightRig.ts SUNNY_LIGHT_RIG; no shadows).
+ * The review lights draw a sun-facing wall at ~0.72 and a shade wall at ~0.30 of its tint, the game at 1.0 and 0.55, so the
+ * review look could not draw white above ~180 sRGB on a shade wall.
+ */
+let look: 'review' | 'game' = 'review', recipeLook: RecipeLook | null = null;
+/** Sun direction (x east, y up, z south) for an azimuth from north clockwise and an elevation, in degrees. */
+const sunAt = (azDeg: number, elDeg: number, r = 100): [number, number, number] => {
+  const az = azDeg * Math.PI / 180, el = elDeg * Math.PI / 180;
+  return [Math.sin(az) * Math.cos(el) * r, Math.sin(el) * r, -Math.cos(az) * Math.cos(el) * r];
+};
+async function setLook(next: 'review' | 'game', brickDataUrl?: string) {
+  look = next;
+  if (look === 'game') {
+    sky.color.set(SUNNY_LIGHT_RIG.skyColour); sky.groundColor.set(SUNNY_LIGHT_RIG.groundColour); sky.intensity = SUNNY_LIGHT_RIG.skyIntensity;
+    sun.color.set(SUNNY_LIGHT_RIG.sunColour); sun.intensity = SUNNY_LIGHT_RIG.sunIntensity; sun.position.set(...sunAt(SUNNY_LIGHT_RIG.sunAzimuthDeg, SUNNY_LIGHT_RIG.sunElevationDeg));
+    let brick: HTMLImageElement | null = null;
+    if (brickDataUrl) { brick = new Image(); brick.src = brickDataUrl; await brick.decode().catch(() => { brick = null; }); }
+    recipeLook = createRecipeLook(THREE, {document, brick, lit: true, cityLook: false});
+  }
+}
 const world = new THREE.Group(); scene.add(world);
 const extra = new THREE.Group(); scene.add(extra);
 
@@ -56,6 +81,7 @@ function mottledBrick(m: Mottle): {t: THREE.CanvasTexture; gain: number} {
 }
 
 function dress(root: THREE.Object3D) {
+  if (look === 'game' && recipeLook) { recipeLook.apply(root); return; }
   root.traverse(o => {
     const m = (o as THREE.Mesh).material as THREE.MeshStandardMaterial | undefined;
     if (!m || !('isMeshStandardMaterial' in m) || (m.userData as {dressed?: boolean}).dressed) return;
@@ -73,7 +99,8 @@ function dress(root: THREE.Object3D) {
   });
 }
 
-async function load(files: string[]) {
+async function load(files: string[], opts: {look?: 'review' | 'game'; brick?: string} = {}) {
+  if (opts.look && opts.look !== look) await setLook(opts.look, opts.brick);
   const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder as never);
   world.clear();
   let tris = 0, meshes = 0;
@@ -101,8 +128,9 @@ function camera(o: {x: number; z: number; y: number; heading: number; pitch: num
   if (o.sun) {
     const az = o.sun[0] * Math.PI / 180, el = Math.max(2, o.sun[1]) * Math.PI / 180;
     sun.position.set(Math.sin(az) * Math.cos(el) * 100, Math.sin(el) * 100, -Math.cos(az) * Math.cos(el) * 100); // x east, z south
-    sun.intensity = o.sun[1] > 0 ? 2.0 : 0;
-  } else { sun.position.set(-40, 80, 55); sun.intensity = 2.0; }
+    sun.intensity = o.sun[1] > 0 ? (look === 'game' ? SUNNY_LIGHT_RIG.sunIntensity : 2.0) : 0;
+  } else if (look === 'game') { sun.position.set(...sunAt(SUNNY_LIGHT_RIG.sunAzimuthDeg, SUNNY_LIGHT_RIG.sunElevationDeg)); sun.intensity = SUNNY_LIGHT_RIG.sunIntensity; }
+  else { sun.position.set(-40, 80, 55); sun.intensity = 2.0; }
   const hf = o.hfov * Math.PI / 180, vfov = 2 * Math.atan(Math.tan(hf / 2) * o.h / o.w) * 180 / Math.PI;
   const cam = new THREE.PerspectiveCamera(vfov, o.w / o.h, 0.3, 3000);
   cam.position.set(o.x, o.y, o.z);

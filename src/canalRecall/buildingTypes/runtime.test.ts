@@ -185,3 +185,40 @@ test('near limit scales with the unit: a 110 m, 44 m slab stays detailed to ~330
   const p = partitionByDistance([{x: 200, z: 0}, {x: 200, z: 10}], {x: 0, z: 0}, [329, 140], 700);
   assert.deepEqual([p.near, p.far], [[0], [1]]);
 });
+
+test('createBuildingTypes (#78): lit (shared-frame) Lambert slot materials merge into one draw per unit, near and far; clone keeps the shader hook', async () => {
+  const tex = ['brick', 'tile', 'white'].map(() => new THREE.Texture());
+  tex[0].repeat.set(1 / 3.36, 1 / 3.36); tex[1].repeat.set(1 / 1.2, 1 / 1.2);
+  const lambert = (slot: string, t: number, hex: string) => { const m = new THREE.MeshLambertMaterial({map: tex[t], color: new THREE.Color(hex)}); m.userData = {recipeLookShared: true, materialSlot: slot}; return m; };
+  const mats = [lambert('brick', 0, '#8c776b'), lambert('roofTile', 1, '#9c6452'), lambert('paint', 2, '#eeeeee')];
+  const unit = () => {
+    const scene = new THREE.Group();
+    mats.forEach((m, i) => { const g = new THREE.BoxGeometry(1, 1, 1); g.translate(i * 2, 0, 0); scene.add(new THREE.Mesh(g, m)); });
+    scene.userData.nominal = {L0: 10, W0: 8, E0: 9, R0: 12};
+    return scene;
+  };
+  const list: RuntimeInstance[] = [inst({pand: 'a', unit: 'u1'}), inst({pand: 'b', unit: 'u2', anchor: [4.8002, 52.364]}), inst({pand: 'c', unit: 'u1', anchor: [4.803, 52.364]})];
+  const area = await createBuildingTypes({THREE, loadUnit: async () => unit(), getCentre: () => ({lng: 4.8, lat: 52.364}), nearMetres: 100}, list);
+  const s = area.stats();
+  assert.deepEqual([s.near, s.far], [2, 1]);
+  assert.equal(s.drawCalls, 3, 'u1 near + u2 near + u1 far: one draw each, not 3 per unit');
+  const meshes: any[] = [];
+  area.group.traverse((o: any) => { if (o.isInstancedMesh && o.visible) meshes.push(o); });
+  const m = meshes[0].material, g = meshes.find(o => o.name === 'u1/near/merged-0').geometry;
+  assert.ok(m.isMeshLambertMaterial && m.userData.litMerged && m.btTextures.length === 3, 'one lit merged material over the area textures');
+  assert.equal(new Set(meshes.map(o => o.material)).size, 1, 'shared');
+  // per-vertex slot texture and linear tint; UVs carry the slot repeat
+  const tint = g.getAttribute('btTint'), texIdx = g.getAttribute('btTex'), uv = g.getAttribute('uv'), src = new THREE.BoxGeometry(1, 1, 1).getAttribute('uv');
+  assert.deepEqual([...new Set(Array.from(texIdx.array as Float32Array))].sort(), [0, 1, 2]);
+  const white = new THREE.Color('#eeeeee');
+  assert.ok(Math.abs(tint.getX(48) - white.r) < 1e-6, 'third box: the linear white');
+  assert.ok(Math.abs(uv.getX(1) - src.getX(1) / 3.36) < 1e-6, 'brick UVs scaled by its repeat');
+  // the shader: samples per vertex, then the stock map chunk is off; highlight clones keep it
+  const shader = {uniforms: {} as Record<string, any>, vertexShader: '#include <common>\n#include <uv_vertex>', fragmentShader: '#include <common>\n#include <map_fragment>'};
+  m.onBeforeCompile(shader);
+  assert.ok(shader.fragmentShader.includes('btT2') && shader.fragmentShader.includes('#undef USE_MAP') && shader.vertexShader.includes('vBtTint = btTint'));
+  assert.equal(shader.uniforms.btT1.value, tex[1]);
+  const c = m.clone();
+  assert.ok(c.btTextures.length === 3 && c.onBeforeCompile === m.onBeforeCompile && c.customProgramCacheKey() === m.customProgramCacheKey());
+  area.dispose();
+});

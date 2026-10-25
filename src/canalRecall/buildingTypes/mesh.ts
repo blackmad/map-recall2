@@ -7,8 +7,8 @@ import {mottleKey, type Mottle} from './mottle.ts';
 
 export type V3 = [number, number, number];
 
-/** Material slots understood by `buildingRecipe/recipeLook.ts`. */
-export type Slot = 'brick' | 'stucco' | 'accent' | 'stone' | 'frame' | 'door' | 'glass' | 'roofTile' | 'slate' | 'bitumen';
+/** Material slots understood by `buildingRecipe/recipeLook.ts`. `paint` keeps its authored colour on the flat white cell (whiteTrim.ts). */
+export type Slot = 'brick' | 'stucco' | 'accent' | 'stone' | 'frame' | 'door' | 'glass' | 'roofTile' | 'slate' | 'bitumen' | 'paint';
 
 /** `measured`: the tint is the sunlit photo colour and the runtime keeps it (`tintSource: 'measured'`) instead of mapping it into the city brick range. */
 /** `mottle` (#77, mottle.ts): a multi-tone brick blend around `tint`; the runtime brick cell gives each brick one tone. */

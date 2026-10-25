@@ -13,6 +13,11 @@
  * `palette.wall` (tint, measured, `mottle` extra) in place, geometry untouched. `--from` names the old wall tints explicitly, so a
  * plinth or gable brick of another tint is never touched.
  *
+ * --white-only (issue #78): give each painted-white trim material (frames, sills, surrounds, fascias, bands, white doors and
+ * railings; buildingTypes/whiteTrim.ts) the measured trim white in place, geometry untouched. Trim materials that became one
+ * key (frame, stone and stucco whites -> paint) share one material afterwards. A unit whose wall shared a trim material
+ * is skipped and listed (it needs a full regeneration).
+ *
  * The unit file's node extras hold {key: "type|variant|storeys|roofForm|ridge|groundMode", nominal: {L0, W0, E0, R0}} (build.ts writes them).
  */
 import fs from 'node:fs';
@@ -23,9 +28,10 @@ import {MeshoptDecoder, MeshoptEncoder} from 'meshoptimizer';
 import {generate} from '../../src/canalRecall/buildingTypes/generate.ts';
 import {validateSpec, type TypeSpec} from '../../src/canalRecall/buildingTypes/spec.ts';
 import {writeTypeGlb} from '../../src/canalRecall/buildingTypes/glb.ts';
+import {geometryOf, recolourWhiteTrim} from './white-trim.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
-const dir = arg('dir', 'public/canal-drive/building-types'), only = arg('only'), ROOF_ONLY = process.argv.includes('--roof-only'), MOTTLE_ONLY = process.argv.includes('--mottle-only');
+const dir = arg('dir', 'public/canal-drive/building-types'), only = arg('only'), ROOF_ONLY = process.argv.includes('--roof-only'), MOTTLE_ONLY = process.argv.includes('--mottle-only'), WHITE_ONLY = process.argv.includes('--white-only');
 const FROM = new Set(arg('from').split(',').filter(Boolean).map(t => t.toLowerCase()));
 if (MOTTLE_ONLY && !FROM.size) throw new Error('--mottle-only needs --from=<old wall tints>');
 const TYPES_DIR = 'src/canalRecall/buildingTypes/types';
@@ -47,6 +53,16 @@ for (const file of fs.readdirSync(dir).filter(f => f.endsWith('.glb') && (!only 
   const [type, variant, storeys, roofForm, ridge, groundMode, ...rest] = extras.key.split('|'), mirror = rest.includes('mirror'), sides = rest.find(r => r !== 'mirror' && !/^f\d+d\d+$/.test(r)); // size-class token (spec.sizeClassesM) is not a sides token
   const spec = specs.get(type);
   if (!spec) { console.warn('skip (unknown type)', file, type); continue; }
+  if (WHITE_ONLY) {
+    const palette = spec.variants[variant]?.palette;
+    if (!palette) { console.warn('skip (unknown variant)', file, variant); continue; }
+    const geometry = geometryOf(doc), r = recolourWhiteTrim(doc, [palette]), after = geometryOf(doc);
+    if (geometry.length !== after.length || geometry.some((a, i) => a.length !== after[i].length || a.some((v, j) => v !== after[i][j]))) throw new Error(`${file}: geometry changed`);
+    if (r.conflicts.length) { console.warn('SKIP (wall shares a trim material: full regeneration needed)', file, r.conflicts.join(' ')); continue; }
+    const bytes = await io.writeBinary(doc), before = fs.readFileSync(path.join(dir, file));
+    if (r.changed && Buffer.compare(before, Buffer.from(bytes)) !== 0) { fs.writeFileSync(path.join(dir, file), bytes); changed++; console.log('white trim', file, r.summary); }
+    continue;
+  }
   if (MOTTLE_ONLY) {
     const wall = spec.variants[variant]?.palette.wall;
     if (!wall?.mottle) { console.warn('skip (variant wall has no mottle)', file, variant); continue; }

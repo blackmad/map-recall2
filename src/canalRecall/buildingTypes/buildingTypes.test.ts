@@ -10,6 +10,10 @@ import {FACADE_IDS, sizeClass, validateSpec, type TypeSpec} from './spec.ts';
 import {bodyRectFromRoof, fallSideFromItem, paramsFromFacts, ridgeAlongOf, roofFactsFromPlanes, slopeEavesFromItem, type CityJsonItem} from './facts.ts';
 import {solarPosition} from '../../../scripts/building-types/solar.ts';
 import {sharedTerrain} from '../../../scripts/lib/terrainField.ts';
+import {PAINTED_WHITE_MAX_SPREAD, TRIM_WHITE, WHITE_TRIM_SLOT, isPaintedWhite} from './whiteTrim.ts';
+import {SUNNY_LIGHT, srgbToLinear} from '../look/sunny.ts';
+import {SUNNY_LIGHT_RIG} from '../rendererShared/lightRig.ts';
+import {cityTint} from '../look/palette.ts';
 
 const TYPES = path.join(import.meta.dirname, 'types');
 const load = (f: string) => JSON.parse(fs.readFileSync(path.join(TYPES, f), 'utf8')) as TypeSpec;
@@ -642,7 +646,8 @@ test('dormers: absent -> byte-identical; a half dormer sits on the front slope f
   for (const [key, bucket] of a.buckets) assert.deepEqual(b.buckets.get(key)!.positions, bucket.positions, key);
   const withD = generate(C, p).mesh;
   assert.ok(withD.triangles > a.triangles + 15 && withD.triangles < a.triangles + 40, `dormer adds ${withD.triangles - a.triangles} triangles`);
-  const cheek = `stucco|${C.variants['red-door'].palette.column}`;
+  // #78: the white column (cheeks) is the trim white on the paint slot, with the dormer's white frame.
+  const cheek = `paint|${TRIM_WHITE}`;
   const pts = (m: boolean) => xs(generate(C, {...p, mirror: m}).mesh, cheek).filter(q => q[1] > 3);
   const right = pts(false), left = pts(true);
   assert.ok(right.length && Math.max(...right.map(q => q[0])) <= 2.65 + 1e-9 && Math.min(...right.map(q => q[0])) > 0.6, 'unmirrored: on the right (window) side, up to the party wall, no overhang across it');
@@ -875,14 +880,15 @@ test('round-4 designs (#75): validate, >= 4 distinct photo pands on the front, c
 test('window joinery (#75): absent -> byte-identical; frameM draws the border inside the opening and transomM a bar below the head; validateSpec rejects joinery off a window or outside it', () => {
   const S = load('fe-db-row.json'), p = {...r3Params(S), variant: 'black-door'};
   const strip = (s: TypeSpec): TypeSpec => ({...s, facades: {...s.facades, front: {...s.facades.front, bays: s.facades.front.bays.map(b => ({...b, elements: b.elements.map(({frameM: _f, transomM: _t, ...e}) => e)}))}}});
-  const plain = strip(S);
+  // #78: a grey accent keeps the sills off the paint slot, so the paint bucket holds the window frames only.
+  const plain = strip({...S, variants: {...S.variants, 'black-door': {...S.variants['black-door'], palette: {...S.variants['black-door'].palette, accent: '#9a9a9a'}}}});
   const explicit: TypeSpec = {...plain, facades: {...plain.facades, front: {...plain.facades.front, bays: plain.facades.front.bays.map(bay => ({...bay, elements: bay.elements.map(e => ({...e, frameM: undefined, transomM: undefined}))}))}}};
   const a = generate(plain, p).mesh, b = generate(explicit, p).mesh;
   assert.equal(a.buckets.size, b.buckets.size);
   for (const [key, bucket] of a.buckets) assert.deepEqual(b.buckets.get(key)!.positions, bucket.positions, key);
   // the default window: the frame plate stands 6 cm outside the opening; with frameM it stays inside, and a transom adds one plate
   const one = (frameM?: number, transomM?: number): TypeSpec => ({...plain, facades: {...plain.facades, front: {...plain.facades.front, bays: plain.facades.front.bays.map(bay => ({...bay, elements: bay.elements.filter(e => e.kind === 'window' && e.levels === 'upper').slice(0, 1).map(e => ({...e, frameM, transomM}))}))}}});
-  const frameXs = (s: TypeSpec) => { const m = generate(s, p).mesh; const pos = [...m.buckets].filter(([k]) => k.startsWith('frame|') || k.includes('|#f0eee6')).flatMap(([, bk]) => Array.from(bk.positions)); return pos; };
+  const frameXs = (s: TypeSpec) => { const m = generate(s, p).mesh; const pos = [...m.buckets].filter(([k]) => k.startsWith('frame|') || k.startsWith('paint|')).flatMap(([, bk]) => Array.from(bk.positions)); return pos; };
   const base = frameXs(one()), chunky = frameXs(one(0.1)), transom = frameXs(one(0.1, 0.38));
   assert.ok(base.length > 0 && chunky.length === base.length, 'same plates, new size');
   assert.ok(transom.length > chunky.length, 'transom bar drawn');
@@ -1054,4 +1060,44 @@ test('round-5 designs (#77): validate, >= 3 distinct photo pands on the front (>
       assert.ok(b.max[0] <= p.lengthM / 2 + ov && b.min[0] >= -p.lengthM / 2 - ov, `${spec.id}/${variant}/${mirror}: within its frontage`);
     }
   }
+});
+
+test('white trim (#78): painted-white palette colours draw the measured trim white on the paint slot (doors and rails on the door slot); creams keep their slot', () => {
+  // the spec whites the review found beige, and creams that must stay cream
+  for (const hex of ['#efede6', '#f2f0e8', '#f0eee6', '#f2f0ea', '#ece9de', '#e8e4da', '#ecebe5', '#f4f3ef']) assert.ok(isPaintedWhite(hex), `${hex} is painted white`);
+  for (const hex of ['#e9e3d2', '#ece6d6', '#efe9da', '#e4dfd0', '#e6dfcc', '#ece6c6', '#c9c4b6', '#3a3a3a', 'white']) assert.ok(!isPaintedWhite(hex), `${hex} is not`);
+  // the look keeps the paint slot's colour (no cream or sandstone mix), so the GLB's white is the white drawn
+  assert.equal(cityTint('paint', TRIM_WHITE), TRIM_WHITE);
+  assert.equal(cityTint('door', TRIM_WHITE), TRIM_WHITE);
+  // neutral (the measured r/b and g/b are 0.98-1.02), and on a wall facing the sun in the sunny look no channel passes 248
+  const c = [1, 3, 5].map(i => parseInt(TRIM_WHITE.slice(i, i + 2), 16));
+  assert.ok(Math.max(...c) - Math.min(...c) <= 2, 'neutral');
+  const el = (SUNNY_LIGHT_RIG.sunElevationDeg * Math.PI) / 180, hex = (h: string) => [1, 3, 5].map(i => srgbToLinear(parseInt(h.slice(i, i + 2), 16)));
+  const sun = hex(SUNNY_LIGHT.sunColour), sky = hex(SUNNY_LIGHT.skyColour), ground = hex(SUNNY_LIGHT.groundColour);
+  const toSrgb = (v: number) => 255 * (v <= 0.0031308 ? 12.92 * v : 1.055 * v ** (1 / 2.4) - 0.055);
+  const sunWall = c.map((v, i) => toSrgb(srgbToLinear(v) * (sun[i] * SUNNY_LIGHT.sunIntensity * Math.cos(el) + ((sky[i] + ground[i]) / 2) * SUNNY_LIGHT.skyIntensity) / Math.PI));
+  const shade = c.map((v, i) => toSrgb(srgbToLinear(v) * (((sky[i] + ground[i]) / 2) * SUNNY_LIGHT.skyIntensity) / Math.PI));
+  const level = c.map((v, i) => toSrgb(srgbToLinear(v) * (sun[i] * SUNNY_LIGHT.sunIntensity * Math.sin(el) + sky[i] * SUNNY_LIGHT.skyIntensity) / Math.PI));
+  assert.ok(Math.max(...sunWall) <= 248.5 && Math.max(...sunWall) >= 240, `sun-facing wall ${sunWall.map(Math.round)}: bright, never clipped`);
+  assert.ok(Math.max(...level) <= 248.5 && Math.max(...level) >= 244, `level face (sill top) ${level.map(Math.round)}: bright, never clipped`);
+  assert.ok(Math.min(...shade) >= 175, `shade side ${shade.map(Math.round)}: still white against the brick`);
+  // nn-row: frames, sills/surrounds and fascia were three materials (frame, stone, stucco); now one paint material in the trim white
+  const S = load('nn-row.json'), m = generate(S, {lengthM: 5.3, widthM: 7, eavesM: 5.2, ridgeM: 9, variant: 'wide'}).mesh;
+  const keys = [...m.buckets.keys()];
+  assert.ok(keys.includes(`paint|${TRIM_WHITE}`), keys.join(' '));
+  assert.ok(!keys.some(k => k.startsWith('frame|') || k.startsWith('stone|') || k.startsWith('stucco|')), keys.join(' '));
+  assert.ok(keys.includes(`door|${S.variants.wide.palette.door}`), 'navy doors keep their colour');
+  // th-gk-row: white doors and rails go to the door slot in the trim white, the cream render wall stays stucco
+  const G = load('th-gk-row.json'), gk = [...generate(G, {lengthM: 5.4, widthM: 9, eavesM: 6, ridgeM: 10, variant: 'hood'}).mesh.buckets.keys()];
+  assert.ok(gk.includes(`door|${TRIM_WHITE}`) && gk.includes(`stucco|${G.variants.hood.palette.wall.tint}`), gk.join(' '));
+  assert.equal(WHITE_TRIM_SLOT.frame, 'paint');
+  assert.ok(PAINTED_WHITE_MAX_SPREAD < 20, 'creams (spread >= 20) are not white');
+});
+
+test('white trim (#78): a spec without painted whites generates exactly as before (keys and positions)', () => {
+  const S = load('nn-row.json'), p = {lengthM: 5.3, widthM: 7, eavesM: 5.2, ridgeM: 9, variant: 'wide'};
+  const pal = S.variants.wide.palette, cream = {...pal, frame: '#e9e3d2', accent: '#c9c4b6', column: '#e4dfd0'};
+  const m = generate({...S, variants: {...S.variants, wide: {...S.variants.wide, palette: cream}}}, p).mesh;
+  const keys = [...m.buckets.keys()];
+  assert.ok(keys.includes('frame|#e9e3d2') && keys.includes('stone|#c9c4b6') && keys.includes('stucco|#e4dfd0') && !keys.some(k => k.startsWith('paint|')), keys.join(' '));
 });

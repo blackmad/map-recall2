@@ -240,6 +240,67 @@ void main() {
   };
 }
 
+/**
+ * Most textures a lit merged material samples (#78). Lambert also binds the shadow map and its own `map`, and WebGL
+ * guarantees 16 fragment samplers; an area needing more keeps one draw per material.
+ */
+export const MAX_LIT_MERGED_SAMPLERS = 10;
+
+/** Fragment code of the lit merged material: the slot texture picked per vertex (`btTex`), times the slot tint (`btTint`, linear). */
+export function litMergedFragment(samplers: number): {declarations: string; sample: string} {
+  const n = Math.max(1, samplers);
+  const pick = Array.from({length: n}, (_, i) => (i === n - 1 ? `btC = texture2D(btT${i}, vBtUv);` : `if (vBtTex < ${i}.5) btC = texture2D(btT${i}, vBtUv); else`)).join('\n  ');
+  return {
+    declarations: `${Array.from({length: n}, (_, i) => `uniform sampler2D btT${i};`).join('\n')}\nvarying float vBtTex;\nvarying vec3 vBtTint;\nvarying vec2 vBtUv;`,
+    // The recipe look's lit slot material is `map x color` (MeshLambertMaterial): the same product, then the stock map chunk
+    // is switched off so highlight variants that hook in after it (look/highlight.ts dim) still apply.
+    sample: `vec4 btC;\n  ${pick}\n  diffuseColor *= vec4(btC.rgb * vBtTint, btC.a);\n#undef USE_MAP\n#include <map_fragment>`,
+  };
+}
+
+/** One subclass per three.js copy (keyed by its MeshLambertMaterial: a module namespace cannot hold it). */
+const LIT_MERGED_CLASS = new WeakMap<object, any>();
+/**
+ * The shared frame's lit recipe look draws every slot as its own MeshLambertMaterial (map x color), so a unit cost one draw
+ * per material (nd-nn-03: 32 units, ~226 near draws). This Lambert subclass draws all of a unit's slots in one: the slot
+ * texture index and linear tint are vertex attributes (`btTex`, `btTint`), UVs carry the slot's repeat. Same light, same
+ * product, one draw. A subclass so `clone()` (highlight variants) keeps the shader hook.
+ */
+export function litMergedMaterial(THREE: any, textures: readonly any[], side: number): any {
+  let Cls = LIT_MERGED_CLASS.get(THREE.MeshLambertMaterial);
+  if (!Cls) {
+    Cls = class extends THREE.MeshLambertMaterial {
+      btTextures: any[] = [];
+      constructor(parameters?: Record<string, unknown>) {
+        super(parameters);
+        this.onBeforeCompile = function (this: any, shader: any) {
+          const {declarations, sample} = litMergedFragment(this.btTextures.length);
+          this.btTextures.forEach((t: any, i: number) => { shader.uniforms[`btT${i}`] = {value: t}; });
+          shader.vertexShader = shader.vertexShader
+            .replace('#include <common>', '#include <common>\nattribute float btTex;\nattribute vec3 btTint;\nvarying float vBtTex;\nvarying vec3 vBtTint;\nvarying vec2 vBtUv;')
+            .replace('#include <uv_vertex>', '#include <uv_vertex>\n  vBtUv = uv; vBtTex = btTex; vBtTint = btTint;');
+          shader.fragmentShader = shader.fragmentShader.replace('#include <common>', `#include <common>\n${declarations}`).replace('#include <map_fragment>', sample);
+        };
+        this.customProgramCacheKey = function (this: any) { return `building-types/lit-merged/${this.btTextures.length}`; };
+      }
+      copy(source: any) {
+        super.copy(source);
+        this.btTextures = [...(source.btTextures ?? [])];
+        this.onBeforeCompile = source.onBeforeCompile;
+        this.customProgramCacheKey = source.customProgramCacheKey;
+        return this;
+      }
+    };
+    LIT_MERGED_CLASS.set(THREE.MeshLambertMaterial, Cls);
+  }
+  // `map` only switches on the stock UV/map defines; the fragment samples btT0..btTn instead.
+  const m = new Cls({map: textures[0], side});
+  m.btTextures = [...textures];
+  m.name = 'building-types/lit-merged';
+  m.userData = {recipeLookShared: true, litMerged: true};
+  return m;
+}
+
 // ---------------------------------------------------------------------------------------------------------------
 // three.js part
 
@@ -320,7 +381,12 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
   // `?cityLook=1`: the recipe look dressed the units with the city look (look/cityLook.ts): slot and tint are vertex
   // attributes and every unit shares one material per side, so units merge into one draw the same way.
   const isCity = (m: any) => !!m?.userData?.cityLook;
-  const mergeable = (m: any) => isRecipe(m) || isCity(m);
+  // Shared frame (default): the lit recipe look's slot materials (MeshLambertMaterial, map x color) merge too (#78), when
+  // their map takes a plain repeat (no offset or rotation).
+  const isLit = (m: any) => !!(m?.isMeshLambertMaterial && m.userData?.recipeLookShared && !m.userData?.litMerged && m.map && m.color
+    && Math.abs(m.map.repeat.x - m.map.repeat.y) < 1e-9 && !m.map.offset.x && !m.map.offset.y && !m.map.rotation);
+  let litOk = true;
+  const mergeable = (m: any) => isRecipe(m) || isCity(m) || (litOk && isLit(m));
   for (const [unit, indices] of byUnit) {
     const scene = await deps.loadUnit(unit);
     scene.updateMatrixWorld(true);
@@ -328,14 +394,24 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
     scene.traverse((o: any) => { if (o.userData?.nominal) nominal = o.userData.nominal; });
     const meshes: any[] = [];
     scene.traverse((o: any) => { if (o.isMesh) meshes.push(o); });
-    for (const m of meshes) if (isRecipe(m.material) && !textures.includes(m.material.uniforms.map.value)) textures.push(m.material.uniforms.map.value);
+    for (const m of meshes) {
+      if (isRecipe(m.material) && !textures.includes(m.material.uniforms.map.value)) textures.push(m.material.uniforms.map.value);
+      if (isLit(m.material) && !textures.includes(m.material.map)) textures.push(m.material.map);
+    }
     loaded.push({unit, indices, meshes, nominal});
     if (deps.nearMetres === undefined) for (const i of indices) nearByPoint[i] = nearMetresFor(nominal, nearM);
   }
+  litOk = textures.length <= MAX_LIT_MERGED_SAMPLERS;
+  if (!litOk && loaded.some(l => l.meshes.some(m => isLit(m.material)))) console.warn(`building types: ${textures.length} textures, over ${MAX_LIT_MERGED_SAMPLERS}; lit units keep one draw per material`);
   // One shared material per side; every unit and the far massing draw through it (same textures, tint and fixed-light shade).
-  const merged = new Map<number, any>();
+  const merged = new Map<number | string, any>();
   const mergedMaterial = (source: any) => {
     if (isCity(source)) return source;
+    if (isLit(source)) {
+      let m = merged.get(`lit|${source.side}`);
+      if (!m) { m = litMergedMaterial(THREE, textures, source.side); merged.set(`lit|${source.side}`, m); }
+      return m;
+    }
     let m = merged.get(source.side);
     if (!m) {
       const uniforms: Record<string, any> = {enuFromWorld: source.uniforms.enuFromWorld};
@@ -353,16 +429,21 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
       const layer = m.geometry.getAttribute('layer'), tint = m.geometry.getAttribute('tint');
       return {...data, matrix, uvScale: 1, texture: layer.getX(0), tint: [tint.getX(0), tint.getY(0), tint.getZ(0)]};
     }
+    if (isLit(m.material)) {
+      // Lit: the material's map repeat (1 / SLOT_TILE_M) goes into the UVs, its linear colour into the tint.
+      const c = m.material.color;
+      return {...data, matrix, uvScale: m.material.map.repeat.x, texture: textures.indexOf(m.material.map), tint: [c.r, c.g, c.b]};
+    }
     const t = m.material.uniforms.tint.value;
     return {...data, matrix, uvScale: m.material.uniforms.uvScale.value, texture: textures.indexOf(m.material.uniforms.map.value), tint: [t.x, t.y, t.z]};
   };
-  const geometryOf = (mm: MergedMesh, city = false) => {
+  const geometryOf = (mm: MergedMesh, kind: 'city' | 'lit' | 'recipe' = 'recipe') => {
     const g = new THREE.BufferGeometry();
     g.setAttribute('position', new THREE.BufferAttribute(mm.positions, 3));
     g.setAttribute('normal', new THREE.BufferAttribute(mm.normals, 3));
     g.setAttribute('uv', new THREE.BufferAttribute(mm.uvs, 2));
-    g.setAttribute(city ? 'layer' : 'aTex', new THREE.BufferAttribute(mm.textures, 1));
-    g.setAttribute(city ? 'tint' : 'aTint', new THREE.BufferAttribute(mm.tints, 3));
+    g.setAttribute(kind === 'city' ? 'layer' : kind === 'lit' ? 'btTex' : 'aTex', new THREE.BufferAttribute(mm.textures, 1));
+    g.setAttribute(kind === 'city' ? 'tint' : kind === 'lit' ? 'btTint' : 'aTint', new THREE.BufferAttribute(mm.tints, 3));
     g.setIndex(new THREE.BufferAttribute(mm.index, 1));
     geometries.push(g);
     return g;
@@ -423,7 +504,7 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
     }
     for (const [parts, isFar] of [[near, false], [far, true]] as const) {
       for (const [side, list] of parts) {
-        const source = sources.get(side), mm = mergeParts(list), mesh = new THREE.InstancedMesh(geometryOf(mm, isCity(source)), mergedMaterial(source), indices.length);
+        const source = sources.get(side), mm = mergeParts(list), mesh = new THREE.InstancedMesh(geometryOf(mm, isCity(source) ? 'city' : isLit(source) ? 'lit' : 'recipe'), mergedMaterial(source), indices.length);
         mesh.name = `${unit}/${isFar ? 'far' : 'near'}/merged-${side}`; mesh.userData.layer = isFar ? 'far' : 'near';
         layers.push({mesh, indices, local: new THREE.Matrix4(), far: isFar, triangles: mm.index.length / 3});
         group.add(mesh);
