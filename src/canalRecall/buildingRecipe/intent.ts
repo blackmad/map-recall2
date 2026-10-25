@@ -843,6 +843,13 @@ export interface LargeWallIntent {
   wallSurfaces: number[];
   /** Optional street the group faces (the facts step fetches a reference crop for it). */
   street?: string;
+  /**
+   * The 3DBAG wall surface (one of `wallSurfaces`) whose panel is the group's main panel, in place of the widest panel
+   * reaching the ground: for a front whose widest 3DBAG plane is an artefact (Haarlemmerweg 285-303, issue #65: the
+   * projecting lower storeys of one third of the west wing reconstructed as a 35 m plane sloping from 14 m to 3 m in
+   * front of the 32 m wing front). Bay count, storey lines, entrance and the photo pairing follow it. Absent: unchanged.
+   */
+  mainSurface?: number;
   system: LargeSystemName;
   /** Full storeys incl. ground on this wall (default: civic storey height, 4.2 m before 1945, 3.6 m after). */
   storeys?: number;
@@ -965,8 +972,10 @@ export interface LargeWallIntent {
   dressings?: StoneDressings;
   /** Loading-door axis (warehouses): every `every`-th bay from bay `first` (default 0), or the listed `bays` of the widest panel, is a tall door opening on every upper storey and a wide portal on the ground. */
   hoist?: {every?: number; first?: number; bays?: number[]; arch?: ArchKind};
-  /** A carriage gateway through the ground storey in the listed bays of the widest panel (dark arched openings 92 % of a bay wide, plain wall between); default none. */
-  gateways?: {bays: number[]; arch?: ArchKind};
+  /** A carriage gateway through the ground storey in the listed bays of the widest panel (dark arched openings 92 % of a bay wide, plain wall between); default none.
+   *  `keepRow`: the other ground bays keep the ground row instead of plain wall, and `hallDoors` may take other bays (Haarlemmerweg 315's
+   *  arched passage beside its glazed front door, ground windows either side). Absent: byte-identical. */
+  gateways?: {bays: number[]; arch?: ArchKind; keepRow?: boolean};
   /**
    * Glazed hall doors in the listed ground bays of the widest panel (De Hallen's tram-hall gables: a wide portal of
    * white-framed glazed leaves between side windows): `h` of the ground storey (default 0.78), `lights` x `rows` panes
@@ -987,6 +996,12 @@ export interface LargeWallIntent {
   tiltedBays?: TiltedBaysIntent | TiltedBaysIntent[];
   /** Storeys (0 = ground) faced in the group's stone over the wall (a granite base, an ashlar attic), round their openings. */
   stoneStoreys?: number[];
+  /**
+   * Storeys (0 = ground) faced in another brick colour round their openings: two-tone brick by storey (the 1992
+   * Haarlemmerweg 91-109 blocks: red-brown ground and top storeys over buff middle storeys). Each entry is drawn in
+   * the brick texture in its `brick` colour; a storey is in at most one entry and not also stone. Absent: byte-identical.
+   */
+  brickStoreys?: {storeys: number[]; brick: string}[];
   /**
    * Storeys that are a mansard's steep face standing in the 3DBAG wall plane (a shell that models the mansard as a
    * vertical wall): faced round their openings, as dormers, in the slate texture in `colour` (default the slate roof's

@@ -69,8 +69,9 @@ export interface SystemFit {
   arches?: { windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'blocks' | 'none'; /** only these storeys (0 = ground) get arched heads; the rest are square-headed */ storeys?: number[] };
   /** loading-door axis: every `every`-th bay from `first`, or the listed bays (of `bays` per storey) */
   hoist?: { every?: number; first?: number; bays?: number[]; arch?: ArchKind };
-  /** a carriage gateway through the ground storey in the listed bays: a dark arched opening one bay wide, the other ground bays plain wall */
-  gateways?: { bays: number[]; arch?: ArchKind };
+  /** a carriage gateway through the ground storey in the listed bays: a dark arched opening one bay wide, the other ground bays plain wall
+   *  (`keepRow`: the other ground bays keep the ground row, and hall doors may take further bays) */
+  gateways?: { bays: number[]; arch?: ArchKind; keepRow?: boolean };
   /** glazed hall doors in the listed ground bays (of `bays` per storey): square-headed (or arched) white-framed grids, the other ground bays keep the ground row */
   hallDoors?: HallDoors;
   /** bays per storey on the group's widest panel (for `hoist.bays`) */
@@ -345,13 +346,17 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   if (f.gateways && name !== 'blank') {
     const every = Math.max(1, f.bays ?? 1, ...f.gateways.bays.map(b => b + 1));
     const gate: Row = { kind: 'punched', win: { w: 0.92, h: 0.86, sill: 0.06, mull: 0, frameW: 0, frame: s.frame, glass: s.door, ...archFor(f.gateways.arch ?? 'round', f) } };
-    ground = { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (f.gateways!.bays.includes(k) ? gate : ({ kind: 'wall' } as Row))) };
+    // keepRow: the other bays take the ground row; a per-bay cycle (windowPattern) is indexed by bay, cycles do not nest
+    const other = (k: number): Row => (!f.gateways!.keepRow ? { kind: 'wall' } : ground.cycle ? ground.cycle[k % ground.cycle.length] : ground);
+    ground = { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (f.gateways!.bays.includes(k) ? gate : other(k))) };
   }
   // Glazed hall doors (De Hallen gables): white-framed glazed doors in the listed ground bays, the other bays keep the ground row.
   if (f.hallDoors && name !== 'blank') {
     const hd = f.hallDoors, every = Math.max(1, f.bays ?? 1, ...hd.bays.map(b => b + 1)), other = ground;
     const door: Row = { kind: 'punched', win: { w: HALL_DOOR.w, h: hd.h ?? HALL_DOOR.h, sill: hd.arch ? HALL_DOOR.archedSill : HALL_DOOR.sill, mull: (hd.lights ?? HALL_DOOR.lights) - 1, rows: hd.rows ?? HALL_DOOR.rows, frameW: f.frames === false ? 0 : 0.07, frame: s.frame, glass: s.glass, sillSlot: null, ...(f.deepBars ? { barD: 0.035 } : {}), ...archFor(hd.arch, f) } };
-    ground = { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (hd.bays.includes(k) ? door : other)) };
+    // beside keepRow gateways the ground is already a per-bay cycle: index it by bay (cycles do not nest)
+    const at = (k: number): Row => (f.gateways?.keepRow && other.cycle ? other.cycle[k % other.cycle.length] : other);
+    ground = { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (hd.bays.includes(k) ? door : at(k))) };
   }
   // Tilted bay windows: a cycle per bay on the chosen storeys, the box frame replacing the sill.
   for (const tb of !f.tilted || name === 'blank' ? [] : Array.isArray(f.tilted) ? f.tilted : [f.tilted]) {

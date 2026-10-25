@@ -20,7 +20,7 @@ import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 
-export interface LargeComponentCounts { claddingLines?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; mansards?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { claddingLines?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; mansards?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -88,6 +88,12 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
     const v0 = Math.max(p.vMin, levels[st]), v1 = Math.min(underCornice, levels[st + 1] ?? underCornice);
     if (v1 - v0 > 0.5 && drawStoneStorey(c, v0, v1, s.stone)) counts.stoneStoreys = (counts.stoneStoreys ?? 0) + 1;
   }
+  // Two-tone brick by storey: the same facing in another brick colour.
+  for (const bs of g.brickStoreys ?? []) for (const st of bs.storeys) {
+    if (st >= levels.length - 1 && st > 0) continue;
+    const v0 = Math.max(p.vMin, levels[st]), v1 = Math.min(underCornice, levels[st + 1] ?? underCornice);
+    if (v1 - v0 > 0.5 && drawStoneStorey(c, v0, v1, bs.slot)) counts.brickStoreys = (counts.brickStoreys ?? 0) + 1;
+  }
   // Mansard storeys (a steep slate face the shell stands in the wall plane): faced in slate round their dormer openings.
   if (g.mansard) for (const st of g.mansard.storeys) {
     if (st >= levels.length - 1) continue;
@@ -131,7 +137,7 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   // Free-standing arcade piers and their beam on their own pitch, in front of the openings, under the cornice.
   if (g.arcadePiers && g.mainPanel === p.index) { const k = drawArcadePiers(c, levels, g.arcadePiers, g.bays, underCornice); if (k) counts.arcadePiers = (counts.arcadePiers ?? 0) + k; }
   // Projecting glazed window box over its bay span, in front of the (blind) wall, under the cornice.
-  if (g.windowBox && g.mainPanel === p.index && drawWindowBox(c, levels, g.windowBox, g.bays, underCornice)) counts.windowBoxes = (counts.windowBoxes ?? 0) + 1;
+  if (g.windowBox && (g.mainPanel === p.index || g.windowBox.spread) && drawWindowBox(c, levels, g.windowBox, g.bays, underCornice, g.mainPanel !== p.index)) counts.windowBoxes = (counts.windowBoxes ?? 0) + 1;
   // Open galleries (verandas) in front of their bay span: decks, posts, arches and balustrades, under the cornice.
   if (g.gallery && g.mainPanel === p.index) for (const gf of g.gallery) { const k = drawGallery(c, levels, gf, g.bays, underCornice); if (k) counts.galleries = (counts.galleries ?? 0) + k; }
   // Row split: each house's cornice at its own eaves and shop fascia at its own ground line, inside its span.

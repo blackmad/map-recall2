@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "haarlemmerweg-315-135676",
+  "pandId": "0363100012135676",
+  "address": "Haarlemmerweg 315-321, Amsterdam-West (1921 brick office block facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012135676)",
+  "sources": [
+    {
+      "id": "pano-2021-03-24-w04-359L",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-24",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002058_pano_0000_000118/",
+      "image": "source-data://pand-reference-walls/0363100012135676/w04-359L.jpg",
+      "sha256": "6b7c362aa582dd8b75ab2b5a856b9b4740bc5428bbdce391b53220f284933a7e",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2025-09-29-w04-359",
+      "kind": "street-panorama",
+      "capturedAt": "2025-09-29",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_09_46_22_00009/",
+      "image": "source-data://pand-reference-walls/0363100012135676/w04-359.jpg",
+      "sha256": "c24fde9073ee774c6e18e3c1344a2df204717ee7703021a6dbaa0cdfbf37b265",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2021-03-22-w01-77L",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-22",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002054_pano_0000_004202/",
+      "image": "source-data://pand-reference-walls/0363100012135676/w01-77L.jpg",
+      "sha256": "ae98e1d9bf1778ba99b655114597c4dece0dacf7ea749f498360e266ea7e6ffd",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "palette": {
+    "brick": "#7b4f42",
+    "frame": "#e6e2d8",
+    "door": "#2b2725",
+    "stone": "#bdb6a8"
+  },
+  "roof": {
+    "material": "bitumen"
+  },
+  "walls": [
+    {
+      "wallSurfaces": [
+        19,
+        47,
+        56,
+        3
+      ],
+      "street": "Haarlemmerweg",
+      "system": "brick-bay-grid",
+      "storeys": 3,
+      "baysPerStorey": 14,
+      "ground": "system",
+      "windows": "plain",
+      "cornice": true,
+      "storeyFactors": [
+        1.12,
+        1,
+        1.1
+      ],
+      "windowShape": {
+        "w": 0.75,
+        "h": 0.59,
+        "sill": 0.27
+      },
+      "storeyShapes": [
+        {
+          "storeys": [
+            1
+          ],
+          "w": 0.75,
+          "h": 0.68,
+          "sill": 0.2
+        },
+        {
+          "storeys": [
+            2
+          ],
+          "w": 0.75,
+          "h": 0.55,
+          "sill": 0.21
+        }
+      ],
+      "windowPattern": [
+        0.75,
+        0.4,
+        0.75,
+        0.75,
+        0.4,
+        0.75,
+        0.75
+      ],
+      "windowGroup": {
+        "count": 2,
+        "gap": 0.14,
+        "storeys": [
+          0,
+          1,
+          2
+        ]
+      },
+      "gateways": {
+        "bays": [
+          8
+        ],
+        "arch": "round",
+        "keepRow": true
+      },
+      "cladding": {
+        "kind": "boards",
+        "colour": "#4f3a33",
+        "pitch": 0.3,
+        "from": 0.39,
+        "to": 0.66
+      },
+      "dressings": {
+        "oriels": [
+          {
+            "bays": [
+              7
+            ],
+            "from": 1,
+            "to": 2,
+            "canted": true,
+            "brick": true
+          },
+          {
+            "bays": [
+              5,
+              9
+            ],
+            "from": 1,
+            "to": 1,
+            "canted": true,
+            "brick": true
+          }
+        ]
+      },
+      "palette": {
+        "brick": "#7b4f42",
+        "glass": "#4e565c"
+      },
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "storeyFactors",
+        "windowShape",
+        "storeyShapes",
+        "windowPattern",
+        "windowGroup",
+        "gateways",
+        "cladding",
+        "dressings",
+        "palette",
+        "hallDoors"
+      ],
+      "hallDoors": {
+        "bays": [
+          6
+        ],
+        "arch": "round",
+        "lights": 2,
+        "rows": 3,
+        "h": 0.85
+      }
+    }
+  ],
+  "notes": [
+    "Haarlemmerweg 315-321 (pand 0363100012135676, built 1921): a three-storey brick office block on the Haarlemmerweg facing the Haarlemmervaart and the Westerpark, 13.7 m to the eaves with taller end towers.",
+    "walls[0] the Haarlemmerweg front (panel 16, crops w04-359L 2021-03-24 and w04-359 2025-09-29, square on): red-brown brick, paired white-framed windows with single narrow ones between, a dark ribbed brick band across the first floor (cladding boards), two canted brick oriels on the first floor and a two-storey oriel stack in the middle (dressings.oriels), an arched front door and an arched carriage gateway in a stone ground-floor surround.",
+    "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class.",
+    "Wall colour kept at the sunlit red-brown of w04-359 (2025-09-29, #7b4f42 by eye on the piers) rather than the measured #4d413c of the shaded 2021 crop (dL 0.10, within the gate).",
+    "Ground: the arched passage (gateways keepRow, bay 8) beside the arched glazed front door (hallDoors, bay 6), paired ground windows in the other bays.",
+    "NOT DRAWN (kit cannot say): the stone ground-floor surround of the middle bays and the stone base course; the dark ribbed band's chamfered ends (cladding runs full width); the oriels' dark ribbed brick bodies; the windows' irregular pair/single rhythm right of the centre (windowPattern cycles the left half); the front door is drawn glazed, the photo's is red timber under a glazed fanlight.",
+    "Lit colour (2026-10-25 integrator review): the front faces north and its crops are shade readings, so the colours are left unmeasured and the export brightens them like any shaded wall."
+  ],
+  "budgetTriangles": 20000
+}
