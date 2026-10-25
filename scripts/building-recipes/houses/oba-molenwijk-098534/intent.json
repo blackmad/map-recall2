@@ -52,21 +52,70 @@
     13
    ],
    "system": "brick-bay-grid",
-   "entrance": true,
+   "storeys": 1,
+   "windows": "cross",
    "palette": {
-    "brick": "#611113"
-   }
+    "brick": "#807a75",
+    "glass": "#3a4046"
+   },
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.44,
+    "sill": 0.15
+   },
+   "baysPerStorey": 6,
+   "cladding": {
+    "kind": "panels",
+    "colour": "#4b4f55",
+    "pitch": 1.2,
+    "rowPitch": 4,
+    "from": 0.59
+   },
+   "hand": [
+    "system",
+    "palette.brick",
+    "cladding",
+    "windowShape",
+    "baysPerStorey",
+    "windows",
+    "storeys"
+   ],
+   "entrance": true
   },
   {
    "wallSurfaces": [
     11,
     12
    ],
-   "system": "curtain-wall",
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "windows": "cross",
    "palette": {
-    "brick": "#544d41",
-    "glass": "#262524"
-   }
+    "brick": "#807a75",
+    "glass": "#3a4046"
+   },
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.44,
+    "sill": 0.15
+   },
+   "baysPerStorey": 5,
+   "cladding": {
+    "kind": "panels",
+    "colour": "#4b4f55",
+    "pitch": 1.2,
+    "rowPitch": 4,
+    "from": 0.59
+   },
+   "hand": [
+    "system",
+    "palette.brick",
+    "cladding",
+    "windowShape",
+    "baysPerStorey",
+    "windows",
+    "storeys"
+   ]
   },
   {
    "wallSurfaces": [
@@ -83,7 +132,7 @@
  ],
  "otherWalls": "blank",
  "palette": {
-  "brick": "#611113",
+  "brick": "#807a75",
   "frame": "#efece4",
   "door": "#2a2a2a"
  },
@@ -91,7 +140,8 @@
  "notes": [
   "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
   "Panels left blank by the draft: 12 (7.3 m, unnamed panel under 8 m); 13 (3.5 m, unnamed panel under 8 m); 6 (3.5 m, unnamed panel under 8 m); 15 (16.8 m, under 3 m tall); 3 (16.1 m, under 3 m tall); 1 (4.9 m, unnamed panel under 8 m); 4 (2.4 m, unnamed panel under 8 m); 5 (3.7 m, under 3 m tall).",
-  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #303235 not used (not darker than the wall #611113 by 10 L*, or tinted): kit glass kept; walls[0] curtain class not trusted (not-wall #303235 does not read as glass on #611113 (>= 10 L* darker, chroma < 15)): brick-bay-grid kept from the building's majority; walls[0] bays and window shape not written (folded from the distrusted not-wall mask); unphotographed walls take #611113 (brick), the area-weighted median of groups 0, 1."
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #303235 not used (not darker than the wall #611113 by 10 L*, or tinted): kit glass kept; walls[0] curtain class not trusted (not-wall #303235 does not read as glass on #611113 (>= 10 L* darker, chroma < 15)): brick-bay-grid kept from the building's majority; walls[0] bays and window shape not written (folded from the distrusted not-wall mask); unphotographed walls take #611113 (brick), the area-weighted median of groups 0, 1.",
+  "Cladding pass 2026-10-24 (GitHub #49): the library is a one-storey buff-grey brick pavilion (#807a75: w01-358 brick between the windows, white-balanced on the white window frames, raw #525d5f) under a deep dark metal fascia of panels about 1.2 m wide over the top 0.41 of the wall (#4b4f55, same balance). measure.ts read the wall as #611113 (the red 'oba' letters on the fascia) and walls[1] as a curtain wall (the dark fascia and windows behind trees); both are corrected by hand. Windows: white-framed, three lights and a transom, sill 0.15 and 0.44 of the storey tall, 6 bays on walls[0] and 5 on walls[1]. The red 'oba' lettering is not modelled."
  ],
  "measured": {
   "date": "2026-10-24",

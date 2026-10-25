@@ -62,7 +62,8 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
   const out: GroupLikeness[] = [];
   const g0 = built.facts.heights.groundNAP;
   for (const g of built.recipe.groups) {
-    if (g.mainPanel === null || g.system === 'blank') continue;
+    // a blank system under cladding (a metal-clad hall) is a facade the photo judges (GitHub #49)
+    if (g.mainPanel === null || (g.system === 'blank' && !g.cladding)) continue;
     const p = built.panels[g.mainPanel];
     const {pieces, coverage} = panelCoverageStraight(crops, p, built.anchorRD, LIKENESS.maxObliquityDeg);
     if (coverage < CROP_MIN_OVERLAP || !pieces.length) { out.push({group: g.index, panel: p.index, status: 'no-photo', coverage}); continue; }

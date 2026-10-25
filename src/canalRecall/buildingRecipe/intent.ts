@@ -1039,6 +1039,17 @@ export interface LargeWallIntent {
    */
   meshScreen?: {storeys: number[]; colour: string; from?: number; to?: number; joint?: number};
   /**
+   * Facade cladding over the group's wall (blockBuilding/cladding.ts, GitHub #49): `ribs` vertical ribbed metal,
+   * `boards` horizontal profiled metal or boarding, `louvres` deep horizontal slats over a dark ground, `panels` flat
+   * cassettes with joints, `paint` brick painted over (the brick texture in the paint colour). It covers `from`..`to`
+   * of the group's eaves height (fractions; default the whole wall, so a plinth below `from` keeps the wall colour),
+   * in `colour` (default the wall's) with lines in `lines` (default a shade darker; louvres: the dark ground). `pitch`
+   * is the line spacing in metres (a material property, measured off the crop), `rowPitch` a panel row's height.
+   */
+  cladding?: {kind: 'ribs' | 'boards' | 'louvres' | 'panels' | 'paint'; colour?: string; lines?: string; pitch?: number; rowPitch?: number; from?: number; to?: number;
+    /** with `wallSplit`: clad the `left` (the group's own colour, default) or the `right` (the split colour) side */
+    side?: 'left' | 'right'};
+  /**
    * true = the group's 3DBAG facets that link end to end (a curved front kept as a chain of narrow planes) carry one
    * bay rhythm along their arc length, `baysPerStorey`'s pitch continuing round the curve (curve.ts); default: each
    * facet restarts its own grid.

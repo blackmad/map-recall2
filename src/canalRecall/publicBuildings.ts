@@ -26,6 +26,7 @@
 
 import type { Kit, KitWindowRow, KitWindows } from './landmarkKits.js';
 import { plainBodyTrim } from './worshipBuildings.js';
+import { applyKitFacade } from './kitFacades.js';
 import { PUBLIC_BUILDINGS, type PublicEntry } from './publicBuildingData.js';
 import { NOT_PUBLIC_FORM, PUBLIC_RETYPE } from './kitTypeOverrides.js';
 import { SCHOOL_PERIOD_WALLS } from './publicBuildingFacts.js';
@@ -224,5 +225,6 @@ export function publicKit([id, kind, mode, eavesM, riseM, era]: PublicEntry, fac
 }
 
 // Wrong-form footprints (kitTypeOverrides.ts) are dropped or drawn as the kind they look like.
+// Cladding and curtain-wall facades read off the crops by hand (kitFacades.ts, GitHub #49) replace the measured walls.
 export const GENERIC_PUBLIC_KITS: Kit[] = PUBLIC_BUILDINGS.filter(e => !NOT_PUBLIC_FORM[e[0]])
-  .map(e => { const r = PUBLIC_RETYPE[e[0]]; return r ? publicKit(r.entry, r.facts) : publicKit(e); });
+  .map(e => { const r = PUBLIC_RETYPE[e[0]]; return applyKitFacade(r ? publicKit(r.entry, r.facts) : publicKit(e), e[0], (r?.entry ?? e)[3]); });

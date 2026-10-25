@@ -13,7 +13,8 @@
  * limitation that the facade is rule-fitted, not measured; the gate is enforced as soon as crops exist.
  */
 export type GroupVerdict = 'PASS' | 'WARN' | 'FAIL' | 'NO EVIDENCE' | 'NO PHOTO';
-export interface GateGroup {group: number; system: string; street?: string; verdict: GroupVerdict; reasons?: string[]}
+/** `clad`: the group carries cladding (a blank system under ribbed metal is still a street front, GitHub #49) */
+export interface GateGroup {group: number; system: string; street?: string; clad?: boolean; verdict: GroupVerdict; reasons?: string[]}
 export interface LikenessGateResult {
   ok: boolean;
   reviewState: 'large-recipe-likeness-pass' | 'large-recipe-likeness-inferred' | 'large-recipe-gates-pass';
@@ -24,9 +25,9 @@ export interface LikenessGateResult {
 
 export const RULE_FITTED_LIMITATION = 'Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.';
 
-export function streetFacing(groups: Pick<GateGroup, 'group' | 'system' | 'street'>[]): number[] {
+export function streetFacing(groups: Pick<GateGroup, 'group' | 'system' | 'street' | 'clad'>[]): number[] {
   const named = groups.filter(g => g.street);
-  return (named.length ? named : groups.filter(g => g.system !== 'blank')).map(g => g.group);
+  return (named.length ? named : groups.filter(g => g.system !== 'blank' || g.clad)).map(g => g.group);
 }
 
 /** Parse `--allow-inferred=<group>:<note>[;<group>:<note>...]`; a group without a note is an error. */

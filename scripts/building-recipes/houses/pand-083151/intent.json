@@ -119,93 +119,291 @@
    "wallSurfaces": [
     8
    ],
-   "system": "brick-bay-grid",
-   "entrance": true
+   "system": "blank",
+   "palette": {
+    "brick": "#8e8f89"
+   },
+   "cladding": {
+    "kind": "ribs",
+    "colour": "#839192",
+    "pitch": 0.35,
+    "from": 0.12
+   },
+   "hand": [
+    "system",
+    "palette.brick",
+    "cladding",
+    "windowShape",
+    "baysPerStorey",
+    "ground",
+    "windows"
+   ]
   },
   {
    "wallSurfaces": [
     46
    ],
-   "system": "brick-bay-grid",
+   "system": "blank",
    "palette": {
     "brick": "#79add3"
-   }
+   },
+   "cladding": {
+    "kind": "boards",
+    "colour": "#79add3",
+    "pitch": 0.38
+   },
+   "hand": [
+    "system",
+    "palette.brick",
+    "cladding",
+    "windowShape",
+    "baysPerStorey",
+    "ground",
+    "windows"
+   ]
   },
   {
    "wallSurfaces": [
     49
    ],
-   "system": "brick-bay-grid",
+   "system": "blank",
    "palette": {
-    "brick": "#839192",
-    "glass": "#1b2735"
-   }
+    "brick": "#8e8f89"
+   },
+   "cladding": {
+    "kind": "ribs",
+    "colour": "#839192",
+    "pitch": 0.35,
+    "from": 0.33
+   },
+   "hand": [
+    "system",
+    "palette.brick",
+    "cladding",
+    "windowShape",
+    "baysPerStorey",
+    "ground",
+    "windows"
+   ]
   },
   {
    "wallSurfaces": [
     36
    ],
-   "system": "brick-bay-grid"
+   "system": "blank",
+   "palette": {
+    "brick": "#8e8f89"
+   },
+   "cladding": {
+    "kind": "ribs",
+    "colour": "#839192",
+    "pitch": 0.35,
+    "from": 0.3
+   },
+   "hand": [
+    "system",
+    "palette.brick",
+    "cladding",
+    "windowShape",
+    "baysPerStorey",
+    "ground",
+    "windows"
+   ]
   },
   {
    "wallSurfaces": [
     3
    ],
    "system": "brick-bay-grid",
+   "storeys": 2,
+   "ground": "blank",
    "palette": {
-    "brick": "#758c8f",
-    "glass": "#5b6d6e"
+    "brick": "#8e8f89",
+    "glass": "#5b6d6e",
+    "frame": "#8e9a99"
    },
-   "baysPerStorey": 11
+   "windowShape": {
+    "w": 0.9,
+    "h": 0.52,
+    "sill": 0.08
+   },
+   "baysPerStorey": 4,
+   "cladding": {
+    "kind": "panels",
+    "colour": "#758c8f",
+    "pitch": 1.3,
+    "rowPitch": 1.2,
+    "from": 0.5
+   },
+   "hand": [
+    "baysPerStorey",
+    "cladding",
+    "garageBays",
+    "ground",
+    "palette.brick",
+    "palette.frame",
+    "system",
+    "windowGroup",
+    "windowShape",
+    "windows"
+   ],
+   "windowGroup": {
+    "count": 4,
+    "gap": 0.025
+   },
+   "garageBays": [
+    1,
+    2,
+    3
+   ]
   },
   {
    "wallSurfaces": [
     38
    ],
    "system": "brick-bay-grid",
+   "storeys": 2,
+   "ground": "blank",
    "palette": {
-    "brick": "#82999c"
+    "brick": "#8e8f89",
+    "frame": "#8e9a99"
    },
    "windowShape": {
-    "w": 0.547,
-    "h": 0.75,
-    "sill": 0.1
+    "w": 0.9,
+    "h": 0.52,
+    "sill": 0.08
    },
-   "baysPerStorey": 18
+   "baysPerStorey": 4,
+   "cladding": {
+    "kind": "panels",
+    "colour": "#82999c",
+    "pitch": 1.3,
+    "rowPitch": 1.2,
+    "from": 0.5
+   },
+   "hand": [
+    "baysPerStorey",
+    "cladding",
+    "garageBays",
+    "ground",
+    "palette.brick",
+    "palette.frame",
+    "system",
+    "windowGroup",
+    "windowShape",
+    "windows"
+   ],
+   "windowGroup": {
+    "count": 4,
+    "gap": 0.025
+   },
+   "garageBays": [
+    0,
+    3
+   ]
   },
   {
    "wallSurfaces": [
     59
    ],
-   "system": "brick-bay-grid"
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "ground": "blank",
+   "palette": {
+    "brick": "#8e8f89",
+    "frame": "#8e9a99"
+   },
+   "windowShape": {
+    "w": 0.9,
+    "h": 0.52,
+    "sill": 0.08
+   },
+   "baysPerStorey": 3,
+   "cladding": {
+    "kind": "panels",
+    "colour": "#82999c",
+    "pitch": 1.3,
+    "rowPitch": 1.2,
+    "from": 0.5
+   },
+   "hand": [
+    "baysPerStorey",
+    "cladding",
+    "garageBays",
+    "ground",
+    "palette.brick",
+    "palette.frame",
+    "system",
+    "windowGroup",
+    "windowShape",
+    "windows"
+   ],
+   "windowGroup": {
+    "count": 4,
+    "gap": 0.025
+   },
+   "garageBays": [
+    1,
+    2
+   ]
   },
   {
    "wallSurfaces": [
     4
    ],
    "system": "brick-bay-grid",
+   "storeys": 2,
+   "ground": "blank",
    "palette": {
-    "brick": "#7a9295"
+    "brick": "#8e8f89",
+    "frame": "#8e9a99"
    },
    "windowShape": {
-    "w": 0.98,
-    "h": 0.568,
-    "sill": 0
+    "w": 0.9,
+    "h": 0.52,
+    "sill": 0.08
    },
-   "baysPerStorey": 2
+   "baysPerStorey": 2,
+   "cladding": {
+    "kind": "panels",
+    "colour": "#7a9295",
+    "pitch": 1.3,
+    "rowPitch": 1.2,
+    "from": 0.5
+   },
+   "hand": [
+    "baysPerStorey",
+    "cladding",
+    "garageBays",
+    "ground",
+    "palette.brick",
+    "palette.frame",
+    "system",
+    "windowGroup",
+    "windowShape",
+    "windows"
+   ],
+   "windowGroup": {
+    "count": 3,
+    "gap": 0.025
+   },
+   "garageBays": [
+    0
+   ]
   }
  ],
  "otherWalls": "blank",
  "palette": {
   "brick": "#82999c",
   "frame": "#efece4",
-  "door": "#2a2a2a"
+  "door": "#4f5458"
  },
  "draftedBy": "factory",
  "notes": [
   "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
   "Panels left blank by the draft: 43 (15.9 m, under 3 m tall); 23 (15.9 m, under 3 m tall); 33 (6 m, under 3 m tall); 20 (15.9 m, under 3 m tall); 8 (15.9 m, under 3 m tall); 28 (15.9 m, under 3 m tall); 52 (15.9 m, under 3 m tall); 24 (14.7 m, under 3 m tall); 6 (15.5 m, under 3 m tall); 39 (15.6 m, under 3 m tall); 32 (15.7 m, under 3 m tall); 27 (15.9 m, under 3 m tall); 30 (15.7 m, under 3 m tall); 11 (15.8 m, under 3 m tall); 12 (15.6 m, under 3 m tall); 61 (5.5 m, under 3 m tall); 40 (13.7 m, under 3 m tall); 42 (13.8 m, under 3 m tall); 13 (3.5 m, under 3 m tall); 15 (3.4 m, under 3 m tall); 16 (2.8 m, under 3 m tall); 14 (2.4 m, under 3 m tall); 18 (2.3 m, under 3 m tall); 60 (2 m, under 3 m tall); 41 (2.7 m, under 3 m tall); 25 (2.4 m, under 3 m tall); 53 (2.6 m, under 3 m tall); 17 (2.6 m, under 3 m tall); 19 (2.6 m, under 3 m tall); 5 (2.4 m, under 3 m tall); 0 (2.6 m, under 3 m tall); 31 (2.5 m, under 3 m tall); 10 (2.4 m, under 3 m tall); 44 (2.2 m, under 3 m tall); 21 (2.4 m, under 3 m tall); 51 (2.4 m, under 3 m tall); 29 (2.3 m, under 3 m tall); 22 (2.2 m, under 3 m tall); 26 (2.2 m, under 3 m tall); 9 (2.3 m, under 3 m tall).",
-  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 1, 2, 4, 5, 7 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #57798f not used (not darker than the wall #79add3 by 10 L*, or tinted): kit glass kept; walls[1] curtain class not trusted (not-wall #57798f does not read as glass on #79add3 (>= 10 L* darker, chroma < 15)): brick-bay-grid kept from the building's majority; walls[1] bays and window shape not written (folded from the distrusted not-wall mask); walls[5] glass #668084 not used (not darker than the wall #82999c by 10 L*, or tinted): kit glass kept; walls[5] bays 18 from the likeness grid (padded measurement 17); walls[7] glass #728586 not used (not darker than the wall #7a9295 by 10 L*, or tinted): kit glass kept; unphotographed walls take #82999c (brick), the area-weighted median of groups 1, 2, 4, 5, 7."
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 1, 2, 4, 5, 7 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #57798f not used (not darker than the wall #79add3 by 10 L*, or tinted): kit glass kept; walls[1] curtain class not trusted (not-wall #57798f does not read as glass on #79add3 (>= 10 L* darker, chroma < 15)): brick-bay-grid kept from the building's majority; walls[1] bays and window shape not written (folded from the distrusted not-wall mask); walls[5] glass #668084 not used (not darker than the wall #82999c by 10 L*, or tinted): kit glass kept; walls[5] bays 18 from the likeness grid (padded measurement 17); walls[7] glass #728586 not used (not darker than the wall #7a9295 by 10 L*, or tinted): kit glass kept; unphotographed walls take #82999c (brick), the area-weighted median of groups 1, 2, 4, 5, 7.",
+  "Cladding pass 2026-10-24 (GitHub #49, walls[].cladding): the halls are metal-clad, not brick. walls[0], [2], [3] (w01-53, w03-233, w04-143): vertical ribbed grey metal (#839192, the likeness measurement of w03-233L normalised) over a granite-concrete plinth (#8e8f89) 0.12/0.33/0.30 of the eaves tall; walls[1] (w02-323): blue horizontal profiled sheet (#79add3 measured) to the ground, a line every 0.38 m (20 across the 7.7 m crop). walls[4]-[7] (w05-233 .. w08-232): two-storey office fronts in grey-green cassette panels (the measured wall colours) about 1.3 m wide and 1.2 m tall over a granite ground with roll shutters, groups of four grey-framed windows per bay (4 bays on 19.8 m, sill 0.08 h 0.52 of the upper storey), dark roll shutters drawn as garage doors in the bays the crops show them."
  ],
  "measured": {
   "date": "2026-10-24",
