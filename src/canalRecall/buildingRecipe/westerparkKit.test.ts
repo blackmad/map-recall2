@@ -85,7 +85,7 @@ test('brickStoreys: two-tone brick by storey in painted@ slots (brick texture), 
   const intent = validateLargeIntent(raw(ID));
   const {recipe} = fitLarge(intent, f);
   assert.deepEqual(recipe.groups[0].brickStoreys, [{storeys: [0, 4], slot: 'painted@g0s0'}]);
-  assert.equal(recipe.spec.palette['painted@g0s0'], '#6e4f44');
+  assert.equal(recipe.spec.palette['painted@g0s0'], '#75564c');
   const a = compileBuilding(intent, f);
   assert.equal(a.components.brickStoreys, 2);
   const plain = raw(ID); delete plain.walls[0].brickStoreys;

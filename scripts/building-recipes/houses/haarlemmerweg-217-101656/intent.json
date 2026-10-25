@@ -490,14 +490,8 @@
     "walls[1] the east end (panel 48, crop w03-77 2021-12-30): the same brick and windows without the gallery, scattered on alternating storeys.",
     "walls[2] the courtyard front (panel 22, crop w01-180 2019-11-08, 43 % foliage): concrete-framed balcony galleries on every upper storey; drawn as brick with pale bar balconies. Not seen from the park.",
     "INFERRED: the roof-level step walls and the west party wall (otherWalls brick grid).",
-    "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] bays 3 from the likeness grid (padded measurement 4)."
+    "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] bays 3 from the likeness grid (padded measurement 4).",
+    "Lit colour (2026-10-25 integrator review): the front faces north and its crops are shade readings, so the colours are left unmeasured and the export brightens them like any shaded wall."
   ],
-  "budgetTriangles": 30000,
-  "measured": {
-    "date": "2026-10-25",
-    "groups": [
-      0,
-      1
-    ]
-  }
+  "budgetTriangles": 30000
 }

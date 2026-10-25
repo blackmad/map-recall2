@@ -349,15 +349,8 @@
     "walls[2] the west wing front (panels 14 and 11, crop w01-292L 2021-03-22): the same brick and windows on a 1.2 m pitch with wide windows every few bays, a dark brick ground storey of front doors behind steps, and a stack of recessed timber-fronted loggias at the north end of the top three storeys (loggias).",
     "walls[3] the courtyard side (panel 67, crop w02-112L 2019-11-08, behind trees).",
     "NOT DRAWN (kit cannot say): the upper four storeys of the Haarlemmerweg arm cantilever about 0.5 m over the lower three (one 3DBAG plane); the mid-wing loggia stack on storeys 1-4 (one loggias set per group).",
-    "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #7b5550 not used (not darker than the wall #855449 by 10 L*, or tinted): kit glass kept; walls[0] bays 3 from the likeness grid (padded measurement 11); walls[1] glass #4e342c not used (not darker than the wall #55362e by 10 L*, or tinted): kit glass kept; walls[2] glass #403431 not used (not darker than the wall #4d3431 by 10 L*, or tinted): kit glass kept."
+    "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #7b5550 not used (not darker than the wall #855449 by 10 L*, or tinted): kit glass kept; walls[0] bays 3 from the likeness grid (padded measurement 11); walls[1] glass #4e342c not used (not darker than the wall #55362e by 10 L*, or tinted): kit glass kept; walls[2] glass #403431 not used (not darker than the wall #4d3431 by 10 L*, or tinted): kit glass kept.",
+    "Lit colour (2026-10-25 integrator review): the front faces north and its crops are shade readings, so the colours are left unmeasured and the export brightens them like any shaded wall."
   ],
-  "budgetTriangles": 16000,
-  "measured": {
-    "date": "2026-10-25",
-    "groups": [
-      0,
-      1,
-      2
-    ]
-  }
+  "budgetTriangles": 16000
 }

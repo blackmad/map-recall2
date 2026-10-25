@@ -50760,12 +50760,12 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012101656",
       "name": "Haarlemmerweg 217-283, Amsterdam-West (GWL-terrein, 1998: the nine-storey brick wall block on the Haarlemmerweg facing the Westerpark; BAG pand 0363100012101656)",
-      "hash": "79185719ea15562dad91c6b57526426916c509e17db2f043079d5f6d49324b01",
-      "sha256": "79185719ea15562dad91c6b57526426916c509e17db2f043079d5f6d49324b01",
+      "hash": "b02d205c5b530370488831db625a63b92ecfc1cfe4de698b4f9714fff41835e0",
+      "sha256": "b02d205c5b530370488831db625a63b92ecfc1cfe4de698b4f9714fff41835e0",
       "meshHash": "408c2d53972e897f",
-      "bytes": 1357968,
+      "bytes": 1356112,
       "triangles": 27841,
-      "materials": 13,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -50928,26 +50928,26 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.26; storey 5: widest opening 18.0 m vs photo 2.6 m (a ribbon against windows))); inferred: gate misread - it reads the photo's storey pitch as 5.36 m where w02-0 shows nine window rows in 26 m (2.66 m), so its per-storey glazing puts the gallery two storeys off, and the gallery's dark mullions split the photo's one 18 m glass band into 2.6 m openings. Wall colour dL 0, columns 20 vs 20, the overlay lines up row for row"
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.26; storey 5: widest opening 18.0 m vs photo 2.6 m (a ribbon against windows))); inferred: gate misread - it reads the photo's storey pitch as 5.36 m where w02-0 shows nine window rows in 26 m (2.66 m), so its per-storey glazing puts the gallery two storeys off, and the gallery's dark mullions split the photo's one 18 m glass band into 2.6 m openings. Columns 20 vs 20, the overlay lines up row for row and the wall dL is the north front in shade on every crop, drawn at its lit colour per the 2026-10-25 integrator review (dark fronts flagged)"
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012101656",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T07:57:01.024Z"
+      "updatedAt": "2026-10-25T08:33:42.694Z"
     },
     {
       "id": "ordinary-0363100012097137",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012097137",
       "name": "Haarlemmerweg 285-303, Amsterdam-West (GWL-terrein, 1996: the L-shaped brick block at the west corner of the terrain, facing the Westerpark; BAG pand 0363100012097137)",
-      "hash": "1b8193101de51d67390cae175b6ee412ef638bc6904b21af158f0f2f77e35b6a",
-      "sha256": "1b8193101de51d67390cae175b6ee412ef638bc6904b21af158f0f2f77e35b6a",
+      "hash": "ea68a25bf0e6a6fcf75120e86cce30e3cc5f73de7a940459955c4c2ce513a679",
+      "sha256": "ea68a25bf0e6a6fcf75120e86cce30e3cc5f73de7a940459955c4c2ce513a679",
       "meshHash": "428a7466c5005790",
-      "bytes": 1047912,
+      "bytes": 1046076,
       "triangles": 14404,
-      "materials": 11,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -51059,7 +51059,7 @@
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
         "walls[0] likeness WARN (mask IoU 0.291 < 0.45).",
-        "walls[1] not confirmed by the photo (FAIL (wall dL +0.15; glazing storey band off by 0.51 mean 0.21 vs photo 0.60)); inferred: gate misread - its mask counts the white frames and net curtains of the 0.75 m windows as glazing (0.60 per storey) where the overlay of w06-360L lines up window for window with the model (0.21), and its exposure normalisation reads the one brick at #55362e from a raw #623f35 that is brighter than walls[0]'s raw #5c3e39 (normalised #8a5952)",
+        "walls[1] not confirmed by the photo (FAIL (wall dL +0.23; glazing storey band off by 0.51 mean 0.21 vs photo 0.60)); inferred: gate misread - its mask counts the white frames and net curtains of the 0.75 m windows as glazing (0.60 per storey) where the overlay of w06-360L lines up window for window with the model (0.21) and the wall dL is the north front in shade on every crop, drawn at its lit colour per the 2026-10-25 integrator review (dark fronts flagged)",
         "walls[0] the Haarlemmerweg front (panel 74 and the corner panels 16, 15, 54, 78; crops w03-354L 2021-03-24 and w03-354 2025-09-29, square on): red-brown brick like the long block next door (Haarlemmerweg 217-283, the same measured #845448), white-framed windows about 0.7 x 1.45 m with one wide two-light window per row (windowPattern), no stone sills, a low dark-brick ground storey with front doors up a stair (stoneStoreys 0 in the dark brick), and a blind parapet storey over the top window row (blankStoreys 8, storeyFactors).",
         "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #7b5550 not used (not darker than the wall #855449 by 10 L*, or tinted): kit glass kept; walls[0] bays 3 from the likeness grid (padded measurement 11); walls[1] glass #4e342c not used (not darker than the wall #55362e by 10 L*, or tinted): kit glass kept; walls[2] glass #403431 not used (not darker than the wall #4d3431 by 10 L*, or tinted): kit glass kept."
       ],
@@ -51068,19 +51068,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012097137",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T07:57:08.141Z"
+      "updatedAt": "2026-10-25T08:33:49.318Z"
     },
     {
       "id": "ordinary-0363100012135676",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012135676",
       "name": "Haarlemmerweg 315-321, Amsterdam-West (1921 brick office block facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012135676)",
-      "hash": "bd5ea5cb471f72238cda8031456b08bedefa41cc2c802d9d549c647315f571e2",
-      "sha256": "bd5ea5cb471f72238cda8031456b08bedefa41cc2c802d9d549c647315f571e2",
+      "hash": "9f97652da81c3bf550a484b5b3da071920e2e488d6645846c805370843a35183",
+      "sha256": "9f97652da81c3bf550a484b5b3da071920e2e488d6645846c805370843a35183",
       "meshHash": "00f9c2c73eab4378",
-      "bytes": 966108,
+      "bytes": 965144,
       "triangles": 13103,
-      "materials": 12,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -51172,24 +51172,24 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] likeness WARN (mask IoU 0.303 < 0.45)."
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.19)); inferred: the photo cannot judge the tone - glazing 0.33 vs 0.32 and 10 vs 10 windows match, the wall dL is the north front in shade on the 2021 crop (#4d413c), drawn at the red-brown of the sunlit 2025 crop w04-359 per the 2026-10-25 integrator review"
       ],
-      "reviewState": "large-recipe-likeness-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012135676",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T08:02:07.475Z"
+      "updatedAt": "2026-10-25T08:33:53.265Z"
     },
     {
       "id": "ordinary-0363100012160400",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012160400",
       "name": "Haarlemmerweg 201, Amsterdam-West (1901 brick house over a white rendered workshop ground floor, facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012160400)",
-      "hash": "a29f8afe6f2e4c878a6e630a6515ee9059b96b4f88d59cdde4a9e608c7a46505",
-      "sha256": "a29f8afe6f2e4c878a6e630a6515ee9059b96b4f88d59cdde4a9e608c7a46505",
+      "hash": "5e4ffefaadb1f3429de06b55676dcac67fa72ed14e5c8fd225c979a5c9d0ba20",
+      "sha256": "5e4ffefaadb1f3429de06b55676dcac67fa72ed14e5c8fd225c979a5c9d0ba20",
       "meshHash": "4c63e01958e8ea50",
-      "bytes": 210548,
+      "bytes": 210544,
       "triangles": 2589,
       "materials": 8,
       "textures": 0,
@@ -51266,7 +51266,7 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.27 mean 0.42 vs photo 0.59)); inferred: gate misread - its mask counts the wide white frames, white net curtains and white balcony doors as glass (photo 0.64-0.75 per storey, measure.ts reads a 0.8 x 1.0 window) where w01-359L shows six windows about 1.0 m wide on a 1.68 m pitch and 2.1 m tall on a 3.1 m storey (0.41), and the overlay lines up window for window. Wall colour dL 0, columns 6 vs 6, shape tall vs tall",
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.14; glazing storey band off by 0.27 mean 0.42 vs photo 0.59)); inferred: gate misread - its mask counts the wide white frames, white net curtains and white balcony doors as glass (photo 0.64-0.75 per storey) where w01-359L shows six windows about 1.0 m wide on a 1.68 m pitch and 2.1 m tall on a 3.1 m storey (0.41), columns 6 vs 6, and the wall dL is the north front in shade on every crop, drawn at its lit colour per the 2026-10-25 integrator review (dark fronts flagged), brick from the sunlit 2025 crop",
         "NOT DRAWN (kit cannot say): the small round-arched windows over the side doors in bays 0 and 5 and the side doors themselves (hallDoors bays keep only a blank ground); the two pointed dormers with arched windows; the brick consoles under the balconies.",
         "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4c5255 not used (not darker than the wall #5e4a4d by 10 L*, or tinted): kit glass kept; walls[0] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand)."
       ],
@@ -51275,17 +51275,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012160400",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T08:06:10.224Z"
+      "updatedAt": "2026-10-25T08:33:56.323Z"
     },
     {
       "id": "ordinary-0363100012106960",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012106960",
       "name": "Haarlemmerweg 77-87, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012106960)",
-      "hash": "50cd4273253d0dc9875d1a63c41e38c97bf1ad356475ea57b63decfff0dbd78b",
-      "sha256": "50cd4273253d0dc9875d1a63c41e38c97bf1ad356475ea57b63decfff0dbd78b",
+      "hash": "923788507631fa67cdae8392f7ed2d1649129587da0fcf1eb8e45162c3b846ef",
+      "sha256": "923788507631fa67cdae8392f7ed2d1649129587da0fcf1eb8e45162c3b846ef",
       "meshHash": "67e3443b8368cd7c",
-      "bytes": 299052,
+      "bytes": 299048,
       "triangles": 3994,
       "materials": 10,
       "textures": 0,
@@ -51393,17 +51393,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012106960",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T08:25:38.505Z"
+      "updatedAt": "2026-10-25T08:34:03.996Z"
     },
     {
       "id": "ordinary-0363100012081533",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012081533",
       "name": "Haarlemmerweg 63-71, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012081533)",
-      "hash": "7a2b55c0f02518b79508def16092d41b08e295d5c89fa31ffbe3c1764e00c335",
-      "sha256": "7a2b55c0f02518b79508def16092d41b08e295d5c89fa31ffbe3c1764e00c335",
+      "hash": "99d71c1d09d527c62f71020b8b725fef81748b56eb8e2d632a124e100db60248",
+      "sha256": "99d71c1d09d527c62f71020b8b725fef81748b56eb8e2d632a124e100db60248",
       "meshHash": "901ef801cf8b2d3f",
-      "bytes": 247384,
+      "bytes": 247380,
       "triangles": 3259,
       "materials": 9,
       "textures": 0,
@@ -51520,7 +51520,8 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.29 mean 0.26 vs photo 0.11)); inferred: gate misread - the crop's top storey is sky and penthouse and the east axis sits half a storey higher, so its per-storey glazing reads 0, 1 and 38 pct and leaves the white-framed windows in the undecided blend cluster (re-read 0.11 vs 0.00), while the overlay of w01-359L lines up the narrow and two wide axes window for window",
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.14; glazing storey band off by 0.29 mean 0.26 vs photo 0.11)); inferred: gate misread - the crop's top storey is sky and penthouse and the east axis sits half a storey higher, so its per-storey glazing reads 0, 1 and 38 pct, while the overlay of w01-359L lines up the narrow and two wide axes window for window, and the wall dL is the north front in shade on every crop, drawn at its lit colour per the 2026-10-25 integrator review (dark fronts flagged), brick from the sunlit east wall w04-89",
+        "walls[1] not confirmed by the photo (FAIL (wall dL +0.17)); inferred: the photo cannot judge the tone - glazing 0.27 vs 0.32 and mask IoU 0.57 agree and the wall dL is the north front in shade on every crop, drawn at its lit colour per the 2026-10-25 integrator review (dark fronts flagged), brick from the sunlit east wall w04-89",
         "walls[1] the taller west end (panel 11, crop w03-359 2025-06-18, square on): five storeys of brick to the top, a white-framed window axis at each edge, blank brick between."
       ],
       "reviewState": "large-recipe-likeness-inferred",
@@ -51528,19 +51529,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012081533",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T08:25:41.740Z"
+      "updatedAt": "2026-10-25T08:33:58.775Z"
     },
     {
       "id": "ordinary-0363100012111773",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012111773",
       "name": "Haarlemmerweg 93-97, Amsterdam-West (1992 housing block in buff and red-brown brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012111773)",
-      "hash": "0ddb2b3ef31fb69039f18613bd73e7210a4387bc810a38ec801493ae28024d32",
-      "sha256": "0ddb2b3ef31fb69039f18613bd73e7210a4387bc810a38ec801493ae28024d32",
+      "hash": "40c45f729dbda0ab6c065f3a7cafd76c9f126356a9b66496b97e3aa426fdd3b7",
+      "sha256": "40c45f729dbda0ab6c065f3a7cafd76c9f126356a9b66496b97e3aa426fdd3b7",
       "meshHash": "8af4446949a732de",
-      "bytes": 156092,
+      "bytes": 155132,
       "triangles": 2077,
-      "materials": 8,
+      "materials": 7,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -51615,26 +51616,26 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] likeness WARN (mask IoU 0.446 < 0.45)."
+        "walls[0] likeness WARN (wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.16 darker than the model's in shade or overcast light; mask IoU 0.446 < 0.45)."
       ],
       "reviewState": "large-recipe-likeness-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012111773",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T08:21:10.012Z"
+      "updatedAt": "2026-10-25T08:34:12.266Z"
     },
     {
       "id": "ordinary-0363100012131644",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012131644",
       "name": "Haarlemmerweg 99-103, Amsterdam-West (1992 housing block in buff and red-brown brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012131644)",
-      "hash": "2202e217a54cdd6a7b7cfb662218deedce9cad28bc4c5cf79272f9120b610890",
-      "sha256": "2202e217a54cdd6a7b7cfb662218deedce9cad28bc4c5cf79272f9120b610890",
+      "hash": "cd7628e7adb18720b26e59a51d067daffde3acecb660ac19fda4531b9b1640df",
+      "sha256": "cd7628e7adb18720b26e59a51d067daffde3acecb660ac19fda4531b9b1640df",
       "meshHash": "cc2f1bf1142cd2bb",
-      "bytes": 157832,
+      "bytes": 156852,
       "triangles": 2094,
-      "materials": 8,
+      "materials": 7,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -51708,26 +51709,26 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.39 mean 0.34 vs photo 0.57)); inferred: gate misread - the 2020 crop's glazing mask hatches the whole red top storey, the red ground storey and the pale grey spandrel panels of the two bay stacks as glass (photo 49-77 pct per storey, measure.ts reads a 5.4 m storey), where the overlay lines up the five window axes, the bay stacks and the stair slot row for row with the identical block next door (Haarlemmerweg 93-97, WARN). Columns 5 vs 5, shape square vs square"
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.39 mean 0.34 vs photo 0.57)); inferred: gate misread - the 2020 crop's glazing mask hatches the whole red top storey, the red ground storey and the pale grey spandrel panels of the bay stacks as glass (photo 49-77 pct per storey), where the overlay lines up the five window axes, the bay stacks and the stair slot row for row. Columns 5 vs 5 and the wall dL is the north front in shade on every crop, drawn at its lit colour per the 2026-10-25 integrator review (dark fronts flagged)"
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012131644",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T08:21:12.925Z"
+      "updatedAt": "2026-10-25T08:34:14.843Z"
     },
     {
       "id": "ordinary-0363100012100677",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012100677",
       "name": "Haarlemmerweg 105-109, Amsterdam-West (1992 housing block in buff and red-brown brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012100677)",
-      "hash": "edf91c91acd5b4d02f3924b3a6ab479381aa0bae8ce95099e02df852c51512cd",
-      "sha256": "edf91c91acd5b4d02f3924b3a6ab479381aa0bae8ce95099e02df852c51512cd",
+      "hash": "e7f5b5c48c557f74faba3f4b2eae06dfe837a09d0f753cfcffd24eab5341106d",
+      "sha256": "e7f5b5c48c557f74faba3f4b2eae06dfe837a09d0f753cfcffd24eab5341106d",
       "meshHash": "0ce5b8b8b4b4d797",
-      "bytes": 168212,
+      "bytes": 167232,
       "triangles": 2228,
-      "materials": 9,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -51801,7 +51802,7 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.19 mean 0.35 vs photo 0.48)); inferred: gate misread - its mask counts the pale grey spandrel panels and white frames of the two bay stacks as glass (photo 46-54 pct per storey vs the identical Haarlemmerweg 93-97 front read at 34-44 pct), and a cherry-picker covers the ground storey, while the overlay lines up the five axes, the bay stacks and the stair slot row for row. Columns 6 vs 5 counts the bay stacks' two lights",
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.19 mean 0.35 vs photo 0.48; wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.20 darker than the model's in shade or overcast light)); inferred: gate misread - its mask counts the pale grey spandrel panels and white frames of the bay stacks as glass (photo 46-54 pct per storey vs 34-44 on the identical 93-97 front), and a cherry-picker covers the ground storey, while the overlay lines up the five axes row for row and the wall dL is the north front in shade on every crop, drawn at its lit colour per the 2026-10-25 integrator review (dark fronts flagged)",
         "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #504c48 not used (not darker than the wall #655746 by 10 L*, or tinted): kit glass kept."
       ],
       "reviewState": "large-recipe-likeness-inferred",
@@ -51809,19 +51810,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012100677",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T08:21:15.769Z"
+      "updatedAt": "2026-10-25T08:34:17.368Z"
     },
     {
       "id": "ordinary-0363100012091729",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012091729",
       "name": "Haarlemmerweg 91 / Van Limburg Stirumstraat 2-8, Amsterdam-West (1992 corner housing block in buff and red-brown brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012091729)",
-      "hash": "e9b27e2aca4fb8550a71783b82e97ca712e308904a13c94387b8c5987e44e307",
-      "sha256": "e9b27e2aca4fb8550a71783b82e97ca712e308904a13c94387b8c5987e44e307",
+      "hash": "35e8530821ab4ab13ee3bd1b8fd88b170de1070abb706109551133a96024a562",
+      "sha256": "35e8530821ab4ab13ee3bd1b8fd88b170de1070abb706109551133a96024a562",
       "meshHash": "2bb26f706a18cc02",
-      "bytes": 241736,
+      "bytes": 240772,
       "triangles": 3230,
-      "materials": 10,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -51909,25 +51910,25 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.19 mean 0.31 vs photo 0.51)); inferred: gate misread - the blue-cast 2025 crop's glazing mask hatches the red-brown top storey and the ground storey brick as glass (photo 48-55 pct per storey vs 34-44 pct on the identical Haarlemmerweg 93-97 front), while the overlay lines up the five window axes, the bay stack and the stair slot row for row. Columns 5 vs 5, shape square vs square, wall dL 0.08",
-        "walls[1] not confirmed by the photo (NO EVIDENCE (camera 7.9 m < 8 m from a 20 m wall)); inferred: the photo cannot judge - the only crops are taken 7.9 m from a 20 m wall (gate floor 8 m), the overlay of w01-89L still lines up the six bays, two loggia stacks and the shopfront row (columns 6 vs 6, IoU 0.50), brick colour from the row"
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.21; glazing storey band off by 0.19 mean 0.31 vs photo 0.51)); inferred: gate misread - the blue-cast 2025 crop's glazing mask hatches the red-brown top storey and the ground storey brick as glass (photo 48-55 pct per storey), while the overlay lines up the five window axes, the bay stack and the stair slot row for row, columns 5 vs 5 and the wall dL is the north front in shade on every crop, drawn at its lit colour per the 2026-10-25 integrator review (dark fronts flagged)",
+        "walls[1] not confirmed by the photo (NO EVIDENCE (camera 7.9 m < 8 m from a 20 m wall)); inferred: the photo cannot judge - the only crops are taken 7.9 m from a 20 m wall (gate floor 8 m), the overlay of w01-89L still lines up the six bays, two loggia stacks and the shopfront row (columns 6 vs 6, IoU 0.50) and the wall dL is the north front in shade on every crop, drawn at its lit colour per the 2026-10-25 integrator review (dark fronts flagged)"
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012091729",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T08:20:48.063Z"
+      "updatedAt": "2026-10-25T08:34:09.358Z"
     },
     {
       "id": "ordinary-0363100012084332",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012084332",
       "name": "Haarlemmerweg 73-75, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012084332)",
-      "hash": "fa89ae8fed0511db638c17d1d1ff0f12ed11c0ccbc2e8f762426100f2a935811",
-      "sha256": "fa89ae8fed0511db638c17d1d1ff0f12ed11c0ccbc2e8f762426100f2a935811",
+      "hash": "26dc6e21b4e38128cfa26d744f16b730eb4860f5386d81e2b0e110c474995573",
+      "sha256": "26dc6e21b4e38128cfa26d744f16b730eb4860f5386d81e2b0e110c474995573",
       "meshHash": "82225c1d9d2bf774",
-      "bytes": 100760,
+      "bytes": 100756,
       "triangles": 1260,
       "materials": 9,
       "textures": 0,
@@ -52004,22 +52005,22 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] likeness WARN (columns 6 vs photo 4; mask IoU 0.432 < 0.45)."
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.19; columns 6 vs photo 4)); inferred: the photo cannot judge the tone - columns 4 vs 3, glazing 0.37 vs 0.30, mask IoU 0.43 agree and the wall dL is the north front in shade on every crop, drawn at its lit colour per the 2026-10-25 integrator review (dark fronts flagged), brick from the sunlit east wall w04-89 of the same scheme"
       ],
-      "reviewState": "large-recipe-likeness-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012084332",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T08:25:32.988Z"
+      "updatedAt": "2026-10-25T08:34:01.545Z"
     },
     {
       "id": "ordinary-0363100012097106",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012097106",
       "name": "Haarlemmerweg 89, Amsterdam-West (1983 social-housing corner tower in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012097106)",
-      "hash": "a2ae35d78c5643ac8bc8b1364be64cd6d3541198160c2b457ccdd61bc02a12b9",
-      "sha256": "a2ae35d78c5643ac8bc8b1364be64cd6d3541198160c2b457ccdd61bc02a12b9",
+      "hash": "fccbfade7a20feb6ba9d81c36adef33147877cc3a7a33de568e8636ea45286e8",
+      "sha256": "fccbfade7a20feb6ba9d81c36adef33147877cc3a7a33de568e8636ea45286e8",
       "meshHash": "3e01009cd99894e3",
       "bytes": 126052,
       "triangles": 1626,
@@ -52130,14 +52131,15 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.21)); inferred: the photo cannot judge the tone - glazing 0.28 vs 0.30 and mask IoU 0.56 agree (it PASSed at the shade colour) and the wall dL is the north front in shade on every crop, drawn at its lit colour per the 2026-10-25 integrator review (dark fronts flagged), brick from the sunlit east wall w04-89 of the same scheme",
         "walls[0] the Haarlemmerweg front (panel 9, crop w02-358L 2020-01-27, square on): two white-framed window axes at the edges, blank brick between, wider windows on the ground storey."
       ],
-      "reviewState": "large-recipe-likeness-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012097106",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T08:25:35.735Z"
+      "updatedAt": "2026-10-25T08:34:06.894Z"
     }
   ]
 }

@@ -176,13 +176,8 @@
     "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class.",
     "Wall colour kept at the sunlit red-brown of w04-359 (2025-09-29, #7b4f42 by eye on the piers) rather than the measured #4d413c of the shaded 2021 crop (dL 0.10, within the gate).",
     "Ground: the arched passage (gateways keepRow, bay 8) beside the arched glazed front door (hallDoors, bay 6), paired ground windows in the other bays.",
-    "NOT DRAWN (kit cannot say): the stone ground-floor surround of the middle bays and the stone base course; the dark ribbed band's chamfered ends (cladding runs full width); the oriels' dark ribbed brick bodies; the windows' irregular pair/single rhythm right of the centre (windowPattern cycles the left half); the front door is drawn glazed, the photo's is red timber under a glazed fanlight."
+    "NOT DRAWN (kit cannot say): the stone ground-floor surround of the middle bays and the stone base course; the dark ribbed band's chamfered ends (cladding runs full width); the oriels' dark ribbed brick bodies; the windows' irregular pair/single rhythm right of the centre (windowPattern cycles the left half); the front door is drawn glazed, the photo's is red timber under a glazed fanlight.",
+    "Lit colour (2026-10-25 integrator review): the front faces north and its crops are shade readings, so the colours are left unmeasured and the export brightens them like any shaded wall."
   ],
-  "budgetTriangles": 20000,
-  "measured": {
-    "date": "2026-10-25",
-    "groups": [
-      0
-    ]
-  }
+  "budgetTriangles": 20000
 }

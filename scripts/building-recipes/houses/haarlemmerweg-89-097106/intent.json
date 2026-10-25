@@ -1,111 +1,111 @@
 {
- "schemaVersion": 1,
- "kind": "large",
- "id": "haarlemmerweg-89-097106",
- "pandId": "0363100012097106",
- "address": "Haarlemmerweg 89, Amsterdam-West (1983 social-housing corner tower in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012097106)",
- "sources": [
-  {
-   "id": "pano-2019-04-16-w02-358",
-   "kind": "street-panorama",
-   "capturedAt": "2019-04-16",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001130_pano_0000_000179/",
-   "image": "source-data://pand-reference-walls/0363100012097106/w02-358.jpg",
-   "sha256": "c97bf730bd7bf5e98f261292f9a6a159cbf53c829dc433cf6de827cbf4d9d443",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "haarlemmerweg-89-097106",
+  "pandId": "0363100012097106",
+  "address": "Haarlemmerweg 89, Amsterdam-West (1983 social-housing corner tower in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012097106)",
+  "sources": [
+    {
+      "id": "pano-2019-04-16-w02-358",
+      "kind": "street-panorama",
+      "capturedAt": "2019-04-16",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001130_pano_0000_000179/",
+      "image": "source-data://pand-reference-walls/0363100012097106/w02-358.jpg",
+      "sha256": "c97bf730bd7bf5e98f261292f9a6a159cbf53c829dc433cf6de827cbf4d9d443",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2020-01-27-w02-358L",
+      "kind": "street-panorama",
+      "capturedAt": "2020-01-27",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001594_pano_0000_000712/",
+      "image": "source-data://pand-reference-walls/0363100012097106/w02-358L.jpg",
+      "sha256": "b0cc1625d64b33c27c72e3d0d88ca4d5edaf682131597f1bec7f6080d3e0650d",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "palette": {
+    "brick": "#9a8770",
+    "frame": "#eeece6",
+    "door": "#3a3d40",
+    "stone": "#3b3e42"
   },
-  {
-   "id": "pano-2020-01-27-w02-358L",
-   "kind": "street-panorama",
-   "capturedAt": "2020-01-27",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001594_pano_0000_000712/",
-   "image": "source-data://pand-reference-walls/0363100012097106/w02-358L.jpg",
-   "sha256": "b0cc1625d64b33c27c72e3d0d88ca4d5edaf682131597f1bec7f6080d3e0650d",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  }
- ],
- "otherWalls": "brick-bay-grid",
- "palette": {
-  "brick": "#7d6b58",
-  "frame": "#eeece6",
-  "door": "#3a3d40",
-  "stone": "#3b3e42"
- },
- "roof": {
-  "material": "bitumen"
- },
- "walls": [
-  {
-   "wallSurfaces": [
-    10,
-    12
-   ],
-   "street": "Haarlemmerweg",
-   "system": "brick-bay-grid",
-   "storeys": 5,
-   "baysPerStorey": 3,
-   "ground": "system",
-   "windows": "two-light",
-   "sills": false,
-   "windowShape": {
-    "w": 0.83,
-    "h": 0.5,
-    "sill": 0.39
-   },
-   "storeyShapes": [
+  "roof": {
+    "material": "bitumen"
+  },
+  "walls": [
     {
-     "storeys": [
-      1,
-      2,
-      3,
-      4
-     ],
-     "w": 0.68,
-     "h": 0.68,
-     "sill": 0.21
+      "wallSurfaces": [
+        10,
+        12
+      ],
+      "street": "Haarlemmerweg",
+      "system": "brick-bay-grid",
+      "storeys": 5,
+      "baysPerStorey": 3,
+      "ground": "system",
+      "windows": "two-light",
+      "sills": false,
+      "windowShape": {
+        "w": 0.83,
+        "h": 0.5,
+        "sill": 0.39
+      },
+      "storeyShapes": [
+        {
+          "storeys": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "w": 0.68,
+          "h": 0.68,
+          "sill": 0.21
+        }
+      ],
+      "openBays": [
+        {
+          "storeys": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "bays": [
+            0,
+            2
+          ]
+        }
+      ],
+      "palette": {
+        "brick": "#9a8770",
+        "glass": "#4e565c"
+      },
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "windowShape",
+        "storeyShapes",
+        "openBays",
+        "palette"
+      ]
     }
-   ],
-   "openBays": [
-    {
-     "storeys": [
-      0,
-      1,
-      2,
-      3,
-      4
-     ],
-     "bays": [
-      0,
-      2
-     ]
-    }
-   ],
-   "palette": {
-    "brick": "#7d6b58",
-    "glass": "#4e565c"
-   },
-   "hand": [
-    "storeys",
-    "baysPerStorey",
-    "windowShape",
-    "storeyShapes",
-    "openBays",
-    "palette"
-   ]
+  ],
+  "notes": [
+    "Haarlemmerweg 89 (pand 0363100012097106, built 1983): the five-storey west end of the 1983 buff-brick scheme at Haarlemmerweg 63-89, on the corner of the Van Limburg Stirumstraat, 14.5 m.",
+    "walls[0] the Haarlemmerweg front (panel 9, crop w02-358L 2020-01-27, square on): two white-framed window axes at the edges, blank brick between, wider windows on the ground storey.",
+    "NOT DRAWN (kit cannot say): the pale coping band; the windows' L-shaped frames.",
+    "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class.",
+    "Lit colour (2026-10-25 integrator review): the Haarlemmerweg fronts face north and every crop is in shade (#5d554b..#6b7777); the scheme brick is read off the sunlit east wall of Haarlemmerweg 63-71 (w04-89, 2020-08-14, pand 0363100012081533: #a5927b in full sun, #837361 lower down), #9a8770, kept measured."
+  ],
+  "budgetTriangles": 12000,
+  "measured": {
+    "date": "2026-10-25",
+    "groups": [
+      0
+    ]
   }
- ],
- "notes": [
-  "Haarlemmerweg 89 (pand 0363100012097106, built 1983): the five-storey west end of the 1983 buff-brick scheme at Haarlemmerweg 63-89, on the corner of the Van Limburg Stirumstraat, 14.5 m.",
-  "walls[0] the Haarlemmerweg front (panel 9, crop w02-358L 2020-01-27, square on): two white-framed window axes at the edges, blank brick between, wider windows on the ground storey.",
-  "Wall colour #7d6b58 as on the rest of the scheme.",
-  "NOT DRAWN (kit cannot say): the pale coping band; the windows' L-shaped frames.",
-  "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class."
- ],
- "budgetTriangles": 12000,
- "measured": {
-  "date": "2026-10-25",
-  "groups": [
-   0
-  ]
- }
 }
