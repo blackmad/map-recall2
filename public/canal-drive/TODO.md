@@ -106,9 +106,14 @@ Open, in order:
   without a name.
 - **bagtiles-default** (S1) → **recipe-tiles-default** (S2, needs the 5 cm
   width quantisation and the `kind: glb` conversion) → **citylook-relevel**
-  (S3, user strip). None started.
-- **district-style** (B1), **buurt-designs** (B2: Tuindorp Oostzaan-Oost,
-  Gein 3, Holendrecht-Oost, Blauwe Zand first), **buurt-autoplace** (B3).
+  (S3, user strip). None started. Re-level note (#76): lift chunks and GLB
+  slots together or city-look parity breaks; recipe tiles on before the
+  city look lack the 1.106 brick gain beside default-look chunks.
+- **district-style** (B1), **buurt-autoplace** (B3). **buurt-designs** (B2):
+  10 buurten done 2026-10-25 (#70, #72, #74; ~4,350 houses, 22 designs);
+  round 4 (#75: K-buurt-Zuidwest, Gooise Kant, Buiksloterbreek,
+  Dichtersbuurt + photo roof-tile colour) running. Open: Gein 3 all-timber
+  and brick-canopy rows, Holendrecht S2/S4, Twiske porch canopies.
 - **roads**: R0 done 2026-10-23 (HISTORY): R1 gaps is the largest cause at
   all ten spots. R1 merged 2026-10-24 (#12, eb2902118, perf session):
   BGT islands/berms/verges/squares fill bare land beside carriageways;
