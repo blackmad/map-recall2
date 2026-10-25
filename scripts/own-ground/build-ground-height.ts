@@ -25,6 +25,7 @@ import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { cellKey, localToLngLat, type ElevationIndex, type WaterCell } from '../../src/canalRecall/elevation/elevationData.ts';
 import { OWN_GROUND_BOXES, areaById } from '../../src/canalRecall/ownGround/boxes.ts';
 import { STALE_RELIEF } from '../../src/canalRecall/ownGround/staleRelief.ts';
+import { RAIL_VIADUCTS, capViaductFloor } from '../../src/canalRecall/ownGround/railViaducts.ts';
 
 const args = process.argv.slice(2);
 const opt = (k: string, d: string) => { const i = args.indexOf(`--${k}`); return i >= 0 ? args[i + 1] : d; };
@@ -193,11 +194,12 @@ async function main(): Promise<void> {
   const index: GroundIndex = {
     version: 1, crs: 'EPSG:28992', vertical: 'NAP', stepM: STEP, tileSizeM: TILE, samples: n, heightUnitM: 0.01, tiles: [], ...(PREDICTOR !== 'dx' ? { predictor: PREDICTOR } : {}),
     sceneDatumNAP: +(WATER_LEVEL_NAP + FREEBOARD).toFixed(2), waterLevelNAP: WATER_LEVEL_NAP,
-    sources: { dtm: { service: 'https://service.pdok.nl/rws/ahn/wcs/v1_0', coverage: 'dtm_05m', licence: 'CC0 (AHN via PDOK)', fetched: new Date().toISOString().slice(0, 10) }, method: `water (elevation-v1 polygons, +0.5 m, and canal-level returns within 2 m of them) blanked; staleRelief.ts rings blanked; mean of measured 0.5 m pixels per ${STEP} m cell (≥ 1/4 measured); pits (findPits: ${PIT_DEFAULTS.radiusM} m closing, > ${PIT_DEFAULTS.minDepthM} m deep, ≤ ${PIT_DEFAULTS.maxAreaM2} m², level rim) and enclosed measured specks ≤ ${SPECK_MAX_M2} m² blanked; holes (buildings, water, bridges, pits) pull-push filled over the tile plus ${MARGIN} m margin, holes ≥ ${LARGE_HOLE_M2} m² capped at their rim's median; one 3×3 binomial smoothing pass` },
+    sources: { dtm: { service: 'https://service.pdok.nl/rws/ahn/wcs/v1_0', coverage: 'dtm_05m', licence: 'CC0 (AHN via PDOK)', fetched: new Date().toISOString().slice(0, 10) }, method: `water (elevation-v1 polygons, +0.5 m, and canal-level returns within 2 m of them) blanked; staleRelief.ts rings blanked; mean of measured 0.5 m pixels per ${STEP} m cell (≥ 1/4 measured); pits (findPits: ${PIT_DEFAULTS.radiusM} m closing, > ${PIT_DEFAULTS.minDepthM} m deep, ≤ ${PIT_DEFAULTS.maxAreaM2} m², level rim) and enclosed measured specks ≤ ${SPECK_MAX_M2} m² blanked; holes (buildings, water, bridges, pits) pull-push filled over the tile plus ${MARGIN} m margin, holes ≥ ${LARGE_HOLE_M2} m² capped at their rim's median; one 3×3 binomial smoothing pass; rail viaduct passages (railViaducts.ts) capped at their open sides' street level` },
     attribution: 'Heights: AHN (Rijkswaterstaat / PDOK), CC0',
   };
   const report: Record<string, unknown>[] = [];
   const sourceHashes: Record<string, string> = {};
+  const viaductCaps: { id: string; levelsNAP: number[]; capped: number; mouthSamples: number }[] = [];
   let rawBytes = 0, gzBytes = 0, waterBlanked = 0, pitsBlanked = 0, staleBlanked = 0, specksDropped = 0, holesCapped = 0, coreTiles = 0, coreGz = 0, outerTiles = 0, outerGz = 0;
   for (const [ty, txs] of bands) {
     const minTx = Math.min(...txs), maxTx = Math.max(...txs);
@@ -241,6 +243,12 @@ async function main(): Promise<void> {
     // A large hole stays at the street level most of its rim stands on (not the viaduct's track bed).
     holesCapped += capLargeHoles(grid, holes, STEP, LARGE_HOLE_M2);
     smooth3(grid);
+    // Rail viaducts over streets (railViaducts.ts, issue #57): the passage under the deck and a strip behind each
+    // abutment at the street level of its open sides, after the smoothing so the step stays within one sample.
+    for (const v of RAIL_VIADUCTS) {
+      const r = capViaductFloor(grid, [x0, y0], STEP, v, ll => { const p = lngLatToRd(ll); return [p.x, p.y]; }, measured);
+      if (r.capped) viaductCaps.push({ id: v.id, levelsNAP: r.levels, capped: r.capped, mouthSamples: r.mouthSamples });
+    }
     for (const tx of txs) {
       const heights = new Float32Array(n * n);
       let meas = 0, min = Infinity, max = -Infinity, sum = 0;
@@ -268,7 +276,7 @@ async function main(): Promise<void> {
   const summary = {
     tiles: index.tiles.length, stepM: STEP, samplesPerTile: n * n,
     measuredFraction: +(index.tiles.reduce((s, t) => s + t[2], 0) / index.tiles.length).toFixed(3),
-    waterPixelsBlanked: waterBlanked, pitsBlanked, staleBlanked, specksDropped, holesCapped, rawBytes, gzBytes, predictor: PREDICTOR,
+    waterPixelsBlanked: waterBlanked, pitsBlanked, staleBlanked, specksDropped, holesCapped, viaductCaps, rawBytes, gzBytes, predictor: PREDICTOR,
     core: { km: CORE_KM, stepM: STEP, tiles: coreTiles, gzBytes: coreGz }, outer: { stepM: OUTER_STEP, tiles: outerTiles, gzBytes: outerGz }, gzBytesPerKm2: Math.round(gzBytes / index.tiles.length), buildMs: Math.round(performance.now() - t0),
     note: 'gzBytes is what the browser downloads (tiles are served as gzip; DecompressionStream inflates them).',
   };

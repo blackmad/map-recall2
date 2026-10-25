@@ -25,7 +25,9 @@ const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.na
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
 import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, gapLand, surveyPaint, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_SPOTS, ROAD_WAY_STRAYS, STRAYS, SURVEY_GAPS, SURVEY_PAINT, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
-import { RELIEF_SPOTS, reliefSpread } from '../../src/canalRecall/ownGround/reliefRegressions.ts';
+import { RELIEF_SPOTS, RELIEF_STEPS, reliefSpread } from '../../src/canalRecall/ownGround/reliefRegressions.ts';
+import { RAIL_VIADUCTS } from '../../src/canalRecall/ownGround/railViaducts.ts';
+import { gridHeight } from '../../src/canalRecall/ownGround/drape.ts';
 import { auditBridgeSurfaces } from './audit-bridge-surfaces.ts';
 import { ROAD_CELL_BUDGET_GZ } from '../../src/canalRecall/ownGround/roadCells.ts';
 import { existsSync, statSync } from 'node:fs';
@@ -90,6 +92,42 @@ async function reliefRegressions(): Promise<void> {
     await store.ensureRelief([c[0] - spot.radiusM - 10, c[1] - spot.radiusM - 10, c[0] + spot.radiusM + 10, c[1] + spot.radiusM + 10]);
     const r = reliefSpread(store.surface.ground, c, spot.radiusM);
     check(r.spread <= spot.maxSpreadM, `relief ${spot.id}: 2–98 % spread ${r.spread} m (≤ ${spot.maxSpreadM}) within ${spot.radiusM} m — ${spot.label}`);
+  }
+  for (const step of RELIEF_STEPS) {
+    const lo = toLocal(step.lowAt[0], step.lowAt[1]), hi = toLocal(step.highAt[0], step.highAt[1]);
+    await store.ensureRelief([Math.min(lo[0], hi[0]) - 20, Math.min(lo[1], hi[1]) - 20, Math.max(lo[0], hi[0]) + 20, Math.max(lo[1], hi[1]) + 20]);
+    const drop = store.surface.ground(hi[0], hi[1]) - store.surface.ground(lo[0], lo[1]);
+    check(drop >= step.minDropM, `relief ${step.id}: ${drop.toFixed(2)} m down from the high side (≥ ${step.minDropM}) — ${step.label}`);
+  }
+  await viaductRegressions();
+}
+
+/**
+ * Rail viaducts over streets (railViaducts.ts, issue #57): the cell draws the deck at the track bed, abutment faces
+ * with a clear height over the floor, and the 5 m land grid the streets drape on stays on the floor at the wall foot
+ * (a quad straddling the wall line used to ramp up in front of it).
+ */
+async function viaductRegressions(): Promise<void> {
+  for (const v of RAIL_VIADUCTS) {
+    const ring = v.ring.map(p => toLocal(p[0], p[1])), cx = ring.reduce((s, p) => s + p[0], 0) / 4, cy = ring.reduce((s, p) => s + p[1], 0) / 4;
+    const cell = await build(store.cellAt(cx, cy), 0), info = cell.stats.viaducts?.find(x => x.id === v.id);
+    check(!!info, `viaduct ${v.id}: drawn by its cell`);
+    if (!info) continue;
+    check(info.deckZ - info.floorZ >= 4, `viaduct ${v.id}: deck top z ${info.deckZ} over the floor z ${info.floorZ} (≥ 4 m)`);
+    check(info.wallFaceM >= 3, `viaduct ${v.id}: abutment faces ${info.wallFaceM} m clear from the floor to the soffit (≥ 3 m)`);
+    check(info.piers + info.columns >= 10, `viaduct ${v.id}: ${info.piers} piers and ${info.columns} columns under the deck (BGT pijler)`);
+    const land = gridHeight(store.surface.ground, 5);
+    let worst = 0;
+    for (const i of v.abutments) {
+      const a = ring[i], b = ring[(i + 1) % 4], dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy);
+      let n: [number, number] = [-dy / l, dx / l];
+      if ((cx - a[0]) * n[0] + (cy - a[1]) * n[1] < 0) n = [-n[0], -n[1]];
+      for (let t = 0.1; t <= 0.9; t += 0.05) for (const d of [0.3, 1, 2, 3]) {
+        const x = a[0] + dx * t + n[0] * d, y = a[1] + dy * t + n[1] * d;
+        worst = Math.max(worst, land(x, y) - store.surface.ground(x + n[0] * 6, y + n[1] * 6));
+      }
+    }
+    check(worst <= 0.3, `viaduct ${v.id}: land grid at the wall foot ${worst.toFixed(2)} m over the floor 6 m further in (≤ 0.3)`);
   }
 }
 
