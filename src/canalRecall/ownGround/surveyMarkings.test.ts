@@ -42,7 +42,9 @@ function centroids(m: MeshArrays): [number, number, number][] {
   }
   return out;
 }
-const build = (marks: RoadMark[], ways = WAYS) => buildSurveyMarkings({ ways, marks, ownsWay: () => true, ownsPoint: () => true, index, height: () => 0, lift: { paint: ROAD_MARK_LIFT.paint, red: ROAD_MARK_LIFT.lane } });
+// `guessed`: the graph's teeth and evidence-free centre dashes (off in the game since issue #63); the tests of those
+// generators turn them on, the rest build as the game does.
+const build = (marks: RoadMark[], ways = WAYS, guessed = false) => buildSurveyMarkings({ ways, marks, ownsWay: () => true, ownsPoint: () => true, index, height: () => 0, lift: { paint: ROAD_MARK_LIFT.paint, red: ROAD_MARK_LIFT.lane }, guessedPaint: guessed });
 const onCarriage = (x: number, y: number) => index.classAt(x, y) === 'carriage';
 
 test('inrit and parking klinker draw as the muted brick layer; carriageway klinker and the rest keep their mesh', () => {
@@ -82,8 +84,14 @@ test('a zebra at a crossing node: stripes across the whole carriageway, clipped 
   assert.ok(Math.min(...zebra.map(c => c[0])) < -2.5 && Math.max(...zebra.map(c => c[0])) > 2.5, 'kerb to kerb');
 });
 
-test('unsignalised junction: the side arms give way with teeth across their inbound half; centre dashes stop before the mouth', () => {
+test('guessed paint off (issue #63): an unmapped junction draws no teeth and no centre dashes without the photo', () => {
   const { paint, stats } = build([]);
+  assert.equal(stats.giveWays + stats.teeth + stats.centreDashes, 0);
+  assert.equal(paint.indices.length, 0);
+});
+
+test('unsignalised junction (guessed paint on): the side arms give way with teeth across their inbound half; centre dashes stop before the mouth', () => {
+  const { paint, stats } = build([], WAYS, true);
   assert.equal(stats.giveWays, 2, 'both residential arms');
   const all = centroids(paint);
   for (const c of all) assert.ok(onCarriage(c[0], c[1]), `paint off the carriageway at ${c[0].toFixed(2)},${c[1].toFixed(2)}`);

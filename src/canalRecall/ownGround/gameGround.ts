@@ -34,7 +34,7 @@ import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
 import { GROUND_LOOK_DEFAULT, groundPalette, type GroundLook } from './groundLook.js';
-import { herringboneBricks, KLINKER_TONES } from './streetTextures.js';
+import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
@@ -553,6 +553,12 @@ export class OwnGround {
         g.fillRect(x + 1.5, y + 1.5, pw - 3, ph - 3);
       }
     });
+    const grain = (g: CanvasRenderingContext2D, s: number, base: readonly number[], amp: { fine: number; stones: number; mottle: number }, seed: number) => {
+      const off = asphaltGrain(s, amp, 8, seed), img = g.createImageData(s, s);
+      for (let i = 0; i < off.length; i++) for (let c = 0; c < 3; c++) img.data[i * 4 + c] = Math.max(0, Math.min(255, Math.round(base[c] + off[i])));
+      for (let i = 0; i < off.length; i++) img.data[i * 4 + 3] = 255;
+      g.putImageData(img, 0, 0);
+    };
     const std = (o: Record<string, unknown>) => new THREE.MeshStandardMaterial({ roughness: 0.95, metalness: 0, ...o });
     // Lawn: faint mowing stripes, 1.25 m wide (half the 5 m tile at 256 px).
     const stripes = (g: CanvasRenderingContext2D, s: number) => { g.fillStyle = 'rgba(255,255,255,0.05)'; for (let x = 0; x < s; x += s / 4) g.fillRect(x, 0, s / 8, s); };
@@ -587,8 +593,11 @@ export class OwnGround {
           g.fillRect(b.x * px + 1.2, b.y * px + 1.2, b.w * px - 2.4, b.h * px - 2.4);
         }
       }), roughness: 0.92 }),
-      asphalt: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [...STREET_GROUND.asphalt.base], 18)) }),
-      cycle: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [...STREET_GROUND.cycle.base], 18)), roughness: 0.85 }),
+      // Asphalt and the red cycle paths (issue #63): fine aggregate grain at ~8 mm a texel with sparse stones and a soft
+      // 0.5 m mottle (streetTextures asphaltGrain, mean 0), mipmapped, so it is texture up close and the flat base at
+      // chase distance (no shimmer: the mips average to the base). The red path's grain is subtler.
+      asphalt: std({ map: this.canvasTexture(512, 4, (g, s) => grain(g, s, [...STREET_GROUND.asphalt.base], { fine: 16, stones: 26, mottle: 2.5 }, 1)) }),
+      cycle: std({ map: this.canvasTexture(512, 4, (g, s) => grain(g, s, [...STREET_GROUND.cycle.base], { fine: 10, stones: 14, mottle: 1.5 }, 2)), roughness: 0.85 }),
       // Pavements: grey-rose klinkers in stretcher bond (Amsterdam's gebakken klinker trottoir).
       paving: std({ map: pavers([...STREET_GROUND.pavement.base], STREET_GROUND.pavement.joint, 2.1, 0.21, 0.105) }),
       gravel: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, G.gravel, 30, 2)) }),

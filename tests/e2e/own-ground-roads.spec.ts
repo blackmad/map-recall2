@@ -33,6 +33,9 @@ export const ROAD_SPOTS: [string, Place][] = [
   // front over the metro and bike-garage stairwells; De Ruijterkade on the IJ side heading east into the Michiel de
   // Ruijtertunnel ramp beside the bus station.
   ['stationsplein', { lng: 4.8995, lat: 52.37765, bearing: 20 }],
+  // Surface textures and survey-only paint (issue #63, 2026-10-25): a canal-belt quay street, the Keizersgracht (way
+  // 610234808) looking north to the Westermarkt / Raadhuisstraat junction.
+  ['keizersgracht-westermarkt', { lng: 4.88528, lat: 52.3735, bearing: 5 }],
   ['de-ruijterkade-busstation', { lng: 4.8968, lat: 52.38125, bearing: 118 }],
   ['de-ruijterkade-ramp', { lng: 4.89875, lat: 52.38074, bearing: 115 }],
   // Close views of the two #52 spots (user 2026-10-24: kerbs, islands, rails and crossings judged from the bike): the

@@ -10,7 +10,7 @@ import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose,
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, merge, reliefGrid, ribbon, vertex, type MeshArrays } from './drape';
 import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, KNOWN_SPOT_M, RAIL_ON_BAND_M, shoreSamples, spotDistanceM } from './roadRegressions';
 import { crossSection, parseMetres, areaKind, pavedAreaSurface, carriagewayClass, SURFACE_LEGEND } from './osmGround';
-import { herringboneBricks, KLINKER_TONES } from './streetTextures';
+import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures';
 import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
 import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
 import { basemapGroundPatches } from './basemapPalette';
@@ -771,7 +771,8 @@ test('street vocabulary: tram rails, cycle-path edge lines, kerb line, Amsterdam
     { id: 2, tags: { highway: 'cycleway', width: '2.5' }, g: [[0, 30], [100, 30]] },
   ], p => ll(p as Vec2));
   // Water north of y = 6 (the left pavement's kerb at y ≈ 3 is canal-side; the right one is not).
-  const s = buildStreets(ways, flat, { canalSide: (_x, y) => y > 0 && y < 8 });
+  // guessedPaint: this exercises the prior generator (the cycle path's edge lines are a prior, off in the game since issue #63).
+  const s = buildStreets(ways, flat, { canalSide: (_x, y) => y > 0 && y < 8, guessedPaint: true });
   const rails = faces(s.tram);
   const ys = [...new Set(rails.map(f => Math.round(f.c[1] * 10) / 10))].sort((a, b) => a - b);
   assert.deepEqual(ys, [-2.2, -0.8, 0.8, 2.2], 'two tracks 3 m apart, rails at standard gauge (1.435 m)');
@@ -1419,6 +1420,19 @@ test('klinker reads as brick, not cycle red: base colours ΔE ≥ 22 (was 18), h
   for (let c = 0; c < 3; c++) assert.ok(Math.abs(KLINKER_TONES.reduce((s, t) => s + t[c], 0) / KLINKER_TONES.length - 1) < 0.02);
 });
 
+test('asphalt grain (issue #63): zero mean, bounded, seamless mottle, deterministic', () => {
+  const amp = { fine: 14, stones: 22, mottle: 6 }, size = 64, g = asphaltGrain(size, amp);
+  assert.equal(g.length, size * size);
+  assert.ok(Math.abs(g.reduce((s, v) => s + v, 0) / g.length) < 1e-4, 'mean 0: the tile averages to the palette base');
+  assert.ok(g.every(v => Math.abs(v) <= amp.fine / 2 + amp.stones * 2 + amp.mottle + 1), 'bounded');
+  assert.deepEqual(asphaltGrain(size, amp), g, 'same seed, same tile');
+  // The mottle alone (no fine grain, no stones) wraps: the last column continues into the first.
+  const m = asphaltGrain(size, { fine: 0, stones: 0, mottle: 10 });
+  let edge = 0, inner = 0;
+  for (let y = 0; y < size; y++) { edge = Math.max(edge, Math.abs(m[y * size + size - 1] - m[y * size])); inner = Math.max(inner, Math.abs(m[y * size + 1] - m[y * size])); }
+  assert.ok(edge <= inner * 1.5 + 1e-6, `seam step ${edge.toFixed(2)} against an inner step ${inner.toFixed(2)}`);
+});
+
 test('regression (Houtmankade pair, user 2026-10-14): the west quay is asphalt with a centre line, the east quay klinker with tram rails', { skip: !haveCells }, () => {
   const ways = new Map<number, { tags: Record<string, string> }>();
   for (const k of ['-2_1', '-2_2']) for (const w of (JSON.parse(gunzipSync(readFileSync(`public/data/extracts/amsterdam/own-ground-osm-v1/cells/${k}.json.gz`)).toString()) as OsmGroundExtract).ways) ways.set(w.id, w);
@@ -1448,7 +1462,8 @@ test('junction markings: a side street gives way with shark teeth, a signalised 
   const main: OsmWay = { id: 1, tags: { highway: 'primary', cycleway: 'lane', lanes: '2', sidewalk: 'no' }, g: [[-60, 0], [0, 0], [60, 0]] };
   const side: OsmWay = { id: 2, tags: { highway: 'residential', sidewalk: 'no' }, g: [[0, 0], [0, 50]] };
   const local = (ways: OsmWay[]) => prepareWays(ways, p => [p[0], p[1]]);
-  const plain = buildStreets(local([main, side]), () => 0);
+  // guessedPaint: the graph's mouth marks are priors, off in the game since issue #63; this tests the generator itself.
+  const plain = buildStreets(local([main, side]), () => 0, { guessedPaint: true });
   assert.equal(plain.stats.markings.giveWays, 1, 'the side street gives way');
   assert.ok(plain.stats.markings.teeth >= 2);
   assert.equal(plain.stats.markings.stopLines, 0);
@@ -1457,7 +1472,7 @@ test('junction markings: a side street gives way with shark teeth, a signalised 
   const teeth = faces(plain.paint).filter(f => f.c[1] > 3 && f.c[1] < 12 && f.c[0] < 0 && f.c[0] > -3);
   assert.ok(teeth.length >= 2, 'teeth on the side street, on its inbound (west) half');
   const crossing: OsmWay = { id: 3, tags: { highway: 'footway', footway: 'crossing', crossing: 'traffic_signals' }, g: [[-4, 8], [4, 8]] };
-  const lit = buildStreets(local([main, side, crossing]), () => 0);
+  const lit = buildStreets(local([main, side, crossing]), () => 0, { guessedPaint: true });
   assert.equal(lit.stats.markings.stopLines, 3, 'signalised: every arm gets a stop line across its inbound half');
   assert.equal(lit.stats.markings.giveWays, 0, 'and no teeth');
 });
@@ -1477,8 +1492,10 @@ test('regression (Nassaukade / Frederik Hendrikplantsoen, OSM n2306196651, user 
     }
     return a;
   };
-  // Within 30 m: paint 43 m² and red 224 m² before the junction markings, 70 m² and 296 m² after.
-  assert.ok(area('paint') >= 60, `paint ${area('paint').toFixed(1)} m²`);
+  // Within 30 m: paint 43 m² and red 224 m² before the junction markings, 70 m² and 296 m² after. Issue #63
+  // (2026-10-25): the band model draws no prior paint (centre and edge lines, graph teeth and stop lines, lane-link
+  // blocks), so of the 70 m² only the mapped crossings' paint stays (18.6 m²); the red lanes carried through stay.
+  assert.ok(area('paint') >= 15 && area('paint') < 43, `paint ${area('paint').toFixed(1)} m² (mapped crossings only)`);
   assert.ok(area('cycle') >= 270, `cycle red ${area('cycle').toFixed(1)} m² (lanes carried through)`);
 });
 
