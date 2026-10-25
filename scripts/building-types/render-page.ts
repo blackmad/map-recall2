@@ -99,14 +99,16 @@ function dress(root: THREE.Object3D) {
   });
 }
 
-async function load(files: string[], opts: {look?: 'review' | 'game'; brick?: string} = {}) {
+/** `offsetsX`: shift file i east by offsetsX[i] metres (the design gallery lines several units up as a short row); none = all at the origin. */
+async function load(files: string[], opts: {look?: 'review' | 'game'; brick?: string; offsetsX?: number[]} = {}) {
   if (opts.look && opts.look !== look) await setLook(opts.look, opts.brick);
   const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder as never);
   world.clear();
   let tris = 0, meshes = 0;
-  for (const b64 of files) {
+  for (const [fi, b64] of files.entries()) {
   const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
   const gltf = await loader.parseAsync(bin.buffer, '');
+  if (opts.offsetsX) gltf.scene.position.x = opts.offsetsX[fi] ?? 0;
   world.add(gltf.scene); dress(gltf.scene);
   gltf.scene.traverse(o => { const m = o as THREE.Mesh; if (m.isMesh) { meshes++; const n = m.geometry.index ? m.geometry.index.count / 3 : m.geometry.getAttribute('position').count / 3; tris += n * ((m as THREE.InstancedMesh).count ?? 1); } });
   }

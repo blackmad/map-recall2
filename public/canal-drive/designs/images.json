@@ -1,0 +1,603 @@
+{
+ "generatedBy": "scripts/build-designs-images.ts",
+ "credit": "Street photos: City of Amsterdam panorama images (data.amsterdam.nl), CC BY 4.0",
+ "designs": {
+  "fe-db-row": {
+   "photo": "designs/img/fe-db-row-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012113069",
+   "render": "designs/img/fe-db-row-unit.jpg",
+   "renderUnit": "fe-db-row__black-door__2__gable__long__solid"
+  },
+  "nd-bb-row": {
+   "photo": "designs/img/nd-bb-row-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012135732",
+   "render": "designs/img/nd-bb-row-unit.jpg",
+   "renderUnit": "nd-bb-row__pale__3__flat__long__solid"
+  },
+  "nd-bz-brick-row": {
+   "photo": "designs/img/nd-bz-brick-row-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012148825",
+   "render": "designs/img/nd-bz-brick-row-unit.jpg",
+   "renderUnit": "nd-bz-brick-row__green-door__2__gable__long__solid"
+  },
+  "nd-bz-green-gable": {
+   "photo": "designs/img/nd-bz-green-gable-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012106178",
+   "render": "designs/img/nd-bz-green-gable-unit.jpg",
+   "renderUnit": "nd-bz-green-gable__green__2__gable__short__solid__f0d1"
+  },
+  "nd-ck-roof-house": {
+   "photo": "designs/img/nd-ck-roof-house-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012097396",
+   "render": "designs/img/nd-ck-roof-house-unit.jpg",
+   "renderUnit": "nd-ck-roof-house__white-door__2__gable__long__solid"
+  },
+  "nd-ck-saltbox": {
+   "photo": "designs/img/nd-ck-saltbox-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012136406",
+   "render": "designs/img/nd-ck-saltbox-unit.jpg",
+   "renderUnit": "nd-ck-saltbox__yellow__2__gable__long__solid"
+  },
+  "nd-to-cottage": {
+   "photo": "designs/img/nd-to-cottage-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012147542",
+   "render": "designs/img/nd-to-cottage-unit.jpg",
+   "renderUnit": "nd-to-cottage__green-door__2__gable__long__solid__f0d1"
+  },
+  "nd-to-row": {
+   "photo": "designs/img/nd-to-row-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012068495",
+   "render": "designs/img/nd-to-row-unit.jpg",
+   "renderUnit": "nd-to-row__triple__2__gable__long__solid__f0d0"
+  },
+  "nd-tw-flat": {
+   "photo": "designs/img/nd-tw-flat-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012083194",
+   "render": "designs/img/nd-tw-flat-unit.jpg",
+   "renderUnit": "nd-tw-flat__striped__2__flat__long__solid"
+  },
+  "nd-tw-flat-top": {
+   "photo": "designs/img/nd-tw-flat-top-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012094706",
+   "render": "designs/img/nd-tw-flat-top-unit.jpg",
+   "renderUnit": "nd-tw-flat-top__striped__2__flat__long__solid"
+  },
+  "nd-tw-gable": {
+   "photo": "designs/img/nd-tw-gable-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012077045",
+   "render": "designs/img/nd-tw-gable-unit.jpg",
+   "renderUnit": "nd-tw-gable__cream__2__gable__long__solid"
+  },
+  "nn-band": {
+   "photo": "designs/img/nn-band-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012081880",
+   "render": "designs/img/nn-band-unit.jpg",
+   "renderUnit": "nn-band__panels__2__gable__long__solid"
+  },
+  "nn-board": {
+   "photo": "designs/img/nn-board-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012106358",
+   "render": "designs/img/nn-board-unit.jpg",
+   "renderUnit": "nn-board__green-toilet__2__gable__long__solid"
+  },
+  "nn-cottage": {
+   "photo": "designs/img/nn-cottage-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012136424",
+   "render": "designs/img/nn-cottage-unit.jpg",
+   "renderUnit": "nn-cottage__green-door__2__gable__long__solid"
+  },
+  "nn-row": {
+   "photo": "designs/img/nn-row-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012083409",
+   "render": "designs/img/nn-row-unit.jpg",
+   "renderUnit": "nn-row__wide__2__gable__long__solid"
+  },
+  "nn-row-small": {
+   "photo": "designs/img/nn-row-small-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012112574",
+   "render": "designs/img/nn-row-small-unit.jpg",
+   "renderUnit": "nn-row-small__small-grey__2__gable__long__solid"
+  },
+  "nw-brick-tower-stair-5st": {
+   "photo": "designs/img/nw-brick-tower-stair-5st-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-brick-tower-stair-5st-unit.jpg",
+   "renderUnit": "nw-brick-tower-stair-5st__brick-tower__5__gable__long__solid"
+  },
+  "nw-canopy-core-garage-brick": {
+   "photo": "designs/img/nw-canopy-core-garage-brick-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-canopy-core-garage-brick-unit.jpg",
+   "renderUnit": "nw-canopy-core-garage-brick__brick-canopy__5__gable__long__solid"
+  },
+  "nw-ee-band-row": {
+   "photo": "designs/img/nw-ee-band-row-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012098418",
+   "render": "designs/img/nw-ee-band-row-unit.jpg",
+   "renderUnit": "nw-ee-band-row__band__2__gable__long__solid__f0d0"
+  },
+  "nw-ee-box-front": {
+   "photo": "designs/img/nw-ee-box-front-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012123280",
+   "render": "designs/img/nw-ee-box-front-unit.jpg",
+   "renderUnit": "nw-ee-box-front__box__2__gable__long__solid"
+  },
+  "nw-ee-buff-row": {
+   "photo": "designs/img/nw-ee-buff-row-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012149628",
+   "render": "designs/img/nw-ee-buff-row-unit.jpg",
+   "renderUnit": "nw-ee-buff-row__buff__2__gable__long__solid"
+  },
+  "nw-gallery-slab-15st-hogguer": {
+   "photo": "designs/img/nw-gallery-slab-15st-hogguer-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-gallery-slab-15st-hogguer-unit.jpg",
+   "renderUnit": "nw-gallery-slab-15st-hogguer__concrete-buff__15__flat__long__solid"
+  },
+  "nw-garage-balcony-band-brown": {
+   "photo": "designs/img/nw-garage-balcony-band-brown-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-garage-balcony-band-brown-unit.jpg",
+   "renderUnit": "nw-garage-balcony-band-brown__brown-brick__5__flat__long__solid"
+  },
+  "nw-garage-pair-balcony-5st": {
+   "photo": "designs/img/nw-garage-pair-balcony-5st-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-garage-pair-balcony-5st-unit.jpg",
+   "renderUnit": "nw-garage-pair-balcony-5st__buff-white__5__gable__long__solid"
+  },
+  "nw-glazed-tower-buff-flat": {
+   "photo": "designs/img/nw-glazed-tower-buff-flat-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-glazed-tower-buff-flat-unit.jpg",
+   "renderUnit": "nw-glazed-tower-buff-flat__buff-brick__5__flat__long__solid"
+  },
+  "nw-glazed-tower-red-pitched": {
+   "photo": "designs/img/nw-glazed-tower-red-pitched-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-glazed-tower-red-pitched-unit.jpg",
+   "renderUnit": "nw-glazed-tower-red-pitched__brick-red__5__gable__long__solid"
+  },
+  "nw-loggia-stack-flat-5st": {
+   "photo": "designs/img/nw-loggia-stack-flat-5st-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-loggia-stack-flat-5st-unit.jpg",
+   "renderUnit": "nw-loggia-stack-flat-5st__white__5__flat__long__solid"
+  },
+  "nw-ma-clad-top": {
+   "photo": "designs/img/nw-ma-clad-top-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012071960",
+   "render": "designs/img/nw-ma-clad-top-unit.jpg",
+   "renderUnit": "nw-ma-clad-top__buff__3__flat__long__solid__f0d0"
+  },
+  "nw-ma-green": {
+   "photo": "designs/img/nw-ma-green-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012075369",
+   "render": "designs/img/nw-ma-green-unit.jpg",
+   "renderUnit": "nw-ma-green__paff__2__gable__long__solid"
+  },
+  "nw-ma-porthole": {
+   "photo": "designs/img/nw-ma-porthole-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012124784",
+   "render": "designs/img/nw-ma-porthole-unit.jpg",
+   "renderUnit": "nw-ma-porthole__cream__2__gable__long__solid"
+  },
+  "nw-ma-red-door": {
+   "photo": "designs/img/nw-ma-red-door-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012102664",
+   "render": "designs/img/nw-ma-red-door-unit.jpg",
+   "renderUnit": "nw-ma-red-door__red__2__gable__long__solid"
+  },
+  "nw-ma-yellow-door": {
+   "photo": "designs/img/nw-ma-yellow-door-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012072330",
+   "render": "designs/img/nw-ma-yellow-door-unit.jpg",
+   "renderUnit": "nw-ma-yellow-door__beige__2__gable__long__solid"
+  },
+  "nw-ns-red-three": {
+   "photo": "designs/img/nw-ns-red-three-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012079979",
+   "render": "designs/img/nw-ns-red-three-unit.jpg",
+   "renderUnit": "nw-ns-red-three__red__3__flat__long__solid"
+  },
+  "nw-peach-render-balcony-front": {
+   "photo": "designs/img/nw-peach-render-balcony-front-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-peach-render-balcony-front-unit.jpg",
+   "renderUnit": "nw-peach-render-balcony-front__peach-orange__5__hip__long__solid"
+  },
+  "nw-peach-render-entrance-front": {
+   "photo": "designs/img/nw-peach-render-entrance-front-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-peach-render-entrance-front-unit.jpg",
+   "renderUnit": "nw-peach-render-entrance-front__ochre-yellow__5__hip__long__solid"
+  },
+  "nw-pilotis-centre-panel-flat": {
+   "photo": "designs/img/nw-pilotis-centre-panel-flat-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-pilotis-centre-panel-flat-unit.jpg",
+   "renderUnit": "nw-pilotis-centre-panel-flat__concrete-panel__5__flat__long__pilotis"
+  },
+  "nw-pilotis-panel-flat": {
+   "photo": "designs/img/nw-pilotis-panel-flat-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-pilotis-panel-flat-unit.jpg",
+   "renderUnit": "nw-pilotis-panel-flat__concrete-panel__5__flat__long__solid"
+  },
+  "nw-portiek-3st-blue-door": {
+   "photo": "designs/img/nw-portiek-3st-blue-door-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-portiek-3st-blue-door-unit.jpg",
+   "renderUnit": "nw-portiek-3st-blue-door__brick-white__3__gable__long__solid"
+  },
+  "nw-portiek-brick-pitched": {
+   "photo": "designs/img/nw-portiek-brick-pitched-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-portiek-brick-pitched-unit.jpg",
+   "renderUnit": "nw-portiek-brick-pitched__brick__4__gable__long__solid"
+  },
+  "nw-portiek-hof-garage-4st": {
+   "photo": "designs/img/nw-portiek-hof-garage-4st-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-portiek-hof-garage-4st-unit.jpg",
+   "renderUnit": "nw-portiek-hof-garage-4st__brown-red__4__gable__long__solid"
+  },
+  "nw-portiek-plinth-hip": {
+   "photo": "designs/img/nw-portiek-plinth-hip-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-portiek-plinth-hip-unit.jpg",
+   "renderUnit": "nw-portiek-plinth-hip__buff-brown__5__gable__long__solid"
+  },
+  "nw-portiek-wide-core-beekenhoff": {
+   "photo": "designs/img/nw-portiek-wide-core-beekenhoff-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-portiek-wide-core-beekenhoff-unit.jpg",
+   "renderUnit": "nw-portiek-wide-core-beekenhoff__brick-red__5__gable__long__solid"
+  },
+  "nw-portiek-wide-core-slotermeerlaan": {
+   "photo": "designs/img/nw-portiek-wide-core-slotermeerlaan-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-portiek-wide-core-slotermeerlaan-unit.jpg",
+   "renderUnit": "nw-portiek-wide-core-slotermeerlaan__brick-red__5__gable__long__solid"
+  },
+  "nw-rowhouse-door-window": {
+   "photo": "designs/img/nw-rowhouse-door-window-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-rowhouse-door-window-unit.jpg",
+   "renderUnit": "nw-rowhouse-door-window__slate__2__gable__long__solid"
+  },
+  "nw-rowhouse-garage-door": {
+   "photo": "designs/img/nw-rowhouse-garage-door-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-rowhouse-garage-door-unit.jpg",
+   "renderUnit": "nw-rowhouse-garage-door__teal-slate__2__gable__long__solid"
+  },
+  "nw-rowhouse-garage-door-2st": {
+   "photo": "designs/img/nw-rowhouse-garage-door-2st-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-rowhouse-garage-door-2st-unit.jpg",
+   "renderUnit": "nw-rowhouse-garage-door-2st__blue-door__2__flat__long__solid"
+  },
+  "nw-rowhouse-garage-door-3st": {
+   "photo": "designs/img/nw-rowhouse-garage-door-3st-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-rowhouse-garage-door-3st-unit.jpg",
+   "renderUnit": "nw-rowhouse-garage-door-3st__blue-door__3__flat__long__solid"
+  },
+  "nw-rowhouse-red-panel-door": {
+   "photo": "designs/img/nw-rowhouse-red-panel-door-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-rowhouse-red-panel-door-unit.jpg",
+   "renderUnit": "nw-rowhouse-red-panel-door__brown-red__2__gable__long__solid"
+  },
+  "nw-rowhouse-render-pilaster": {
+   "photo": "designs/img/nw-rowhouse-render-pilaster-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-rowhouse-render-pilaster-unit.jpg",
+   "renderUnit": "nw-rowhouse-render-pilaster__white__2__gable__long__solid"
+  },
+  "nw-rowhouse-render-tile": {
+   "photo": "designs/img/nw-rowhouse-render-tile-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-rowhouse-render-tile-unit.jpg",
+   "renderUnit": "nw-rowhouse-render-tile__greige__2__gable__long__solid"
+  },
+  "nw-rowhouse-ribbon-fascia": {
+   "photo": "designs/img/nw-rowhouse-ribbon-fascia-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-rowhouse-ribbon-fascia-unit.jpg",
+   "renderUnit": "nw-rowhouse-ribbon-fascia__green__2__gable__long__solid"
+  },
+  "nw-rowhouse-tall-glass": {
+   "photo": "designs/img/nw-rowhouse-tall-glass-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-rowhouse-tall-glass-unit.jpg",
+   "renderUnit": "nw-rowhouse-tall-glass__cream__2__gable__long__solid"
+  },
+  "nw-rowhouse-tall-glass-panel": {
+   "photo": "designs/img/nw-rowhouse-tall-glass-panel-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-rowhouse-tall-glass-panel-unit.jpg",
+   "renderUnit": "nw-rowhouse-tall-glass-panel__beige__2__gable__long__solid"
+  },
+  "nw-rowhouse-white-sheds": {
+   "photo": "designs/img/nw-rowhouse-white-sheds-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-rowhouse-white-sheds-unit.jpg",
+   "renderUnit": "nw-rowhouse-white-sheds__tile__2__gable__long__solid"
+  },
+  "nw-slab-band-glazed-flat": {
+   "photo": "designs/img/nw-slab-band-glazed-flat-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-slab-band-glazed-flat-unit.jpg",
+   "renderUnit": "nw-slab-band-glazed-flat__brick-white-bands__5__flat__long__solid"
+  },
+  "nw-slit-window-garage-5st": {
+   "photo": "designs/img/nw-slit-window-garage-5st-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-slit-window-garage-5st-unit.jpg",
+   "renderUnit": "nw-slit-window-garage-5st__dark-glass-entry__5__gable__long__solid"
+  },
+  "nw-steel-stack-portiek": {
+   "photo": "designs/img/nw-steel-stack-portiek-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-steel-stack-portiek-unit.jpg",
+   "renderUnit": "nw-steel-stack-portiek__brick-steel__5__gable__long__solid"
+  },
+  "nw-tower-top-balcony-5st": {
+   "photo": "designs/img/nw-tower-top-balcony-5st-photo.jpg",
+   "photoSource": "contact-sheet",
+   "render": "designs/img/nw-tower-top-balcony-5st-unit.jpg",
+   "renderUnit": "nw-tower-top-balcony-5st__brick-cream-balcony__5__gable__long__solid"
+  },
+  "oo-ta-centre": {
+   "photo": "designs/img/oo-ta-centre-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012077521",
+   "render": "designs/img/oo-ta-centre-unit.jpg",
+   "renderUnit": "oo-ta-centre__orange__2__gable__long__solid"
+  },
+  "oo-ta-cottage": {
+   "photo": "designs/img/oo-ta-cottage-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012070501",
+   "render": "designs/img/oo-ta-cottage-unit.jpg",
+   "renderUnit": "oo-ta-cottage__red__2__gable__long__solid"
+  },
+  "oo-ta-side": {
+   "photo": "designs/img/oo-ta-side-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012091220",
+   "render": "designs/img/oo-ta-side-unit.jpg",
+   "renderUnit": "oo-ta-side__blue__2__gable__long__solid"
+  },
+  "th-gk-row": {
+   "photo": "designs/img/th-gk-row-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012251953",
+   "render": "designs/img/th-gk-row-unit.jpg",
+   "renderUnit": "th-gk-row__hood__2__gable__long__solid__f0d0"
+  },
+  "th-kz-row": {
+   "photo": "designs/img/th-kz-row-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012136437",
+   "render": "designs/img/th-kz-row-unit.jpg",
+   "renderUnit": "th-kz-row__green__2__flat__long__solid"
+  },
+  "we-jm-vespucci": {
+   "photo": "designs/img/we-jm-vespucci-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012138169",
+   "render": "designs/img/we-jm-vespucci-unit.jpg",
+   "renderUnit": "we-jm-vespucci__red__4__flat__long__solid"
+  },
+  "we-or-roof": {
+   "photo": "designs/img/we-or-roof-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012061668",
+   "render": "designs/img/we-or-roof-unit.jpg",
+   "renderUnit": "we-or-roof__brown__3__gable__long__solid"
+  },
+  "we-or-three": {
+   "photo": "designs/img/we-or-three-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012101024",
+   "render": "designs/img/we-or-three-unit.jpg",
+   "renderUnit": "we-or-three__mercator__4__flat__long__solid"
+  },
+  "we-or-wide": {
+   "photo": "designs/img/we-or-wide-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012130859",
+   "render": "designs/img/we-or-wide-unit.jpg",
+   "renderUnit": "we-or-wide__brown__4__flat__long__solid__f0d0"
+  },
+  "we-pk-bay": {
+   "photo": "designs/img/we-pk-bay-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012082799",
+   "render": "designs/img/we-pk-bay-unit.jpg",
+   "renderUnit": "we-pk-bay__brown__4__gable__long__solid__f0d0"
+  },
+  "we-pk-bay5": {
+   "photo": "designs/img/we-pk-bay5-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012082799",
+   "render": "designs/img/we-pk-bay5-unit.jpg",
+   "renderUnit": "we-pk-bay5__brown__5__gable__long__solid__f0d0"
+  },
+  "zo-g3-red-clad": {
+   "photo": "designs/img/zo-g3-red-clad-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012087597",
+   "render": "designs/img/zo-g3-red-clad-unit.jpg",
+   "renderUnit": "zo-g3-red-clad__red__2__gable__long__solid"
+  },
+  "zo-g3-timber-brick": {
+   "photo": "designs/img/zo-g3-timber-brick-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012109364",
+   "render": "designs/img/zo-g3-timber-brick-unit.jpg",
+   "renderUnit": "zo-g3-timber-brick__timber__2__gable__long__solid"
+  },
+  "zo-g4-canopy-pair": {
+   "photo": "designs/img/zo-g4-canopy-pair-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012077092",
+   "render": "designs/img/zo-g4-canopy-pair-unit.jpg",
+   "renderUnit": "zo-g4-canopy-pair__blue-door__2__gable__long__solid"
+  },
+  "zo-g4-roof-house": {
+   "photo": "designs/img/zo-g4-roof-house-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012101443",
+   "render": "designs/img/zo-g4-roof-house-unit.jpg",
+   "renderUnit": "zo-g4-roof-house__orange__2__gable__long__solid"
+  },
+  "zo-gk-blue-bay": {
+   "photo": "designs/img/zo-gk-blue-bay-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012080296",
+   "render": "designs/img/zo-gk-blue-bay-unit.jpg",
+   "renderUnit": "zo-gk-blue-bay__buff__2__gable__long__solid"
+  },
+  "zo-gk-gravendijk": {
+   "photo": "designs/img/zo-gk-gravendijk-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012137854",
+   "render": "designs/img/zo-gk-gravendijk-unit.jpg",
+   "renderUnit": "zo-gk-gravendijk__red__3__flat__long__solid"
+  },
+  "zo-gk-pergola": {
+   "photo": "designs/img/zo-gk-pergola-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012126660",
+   "render": "designs/img/zo-gk-pergola-unit.jpg",
+   "renderUnit": "zo-gk-pergola__orange__2__flat__long__solid"
+  },
+  "zo-gk-post-row": {
+   "photo": "designs/img/zo-gk-post-row-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012131506",
+   "render": "designs/img/zo-gk-post-row-unit.jpg",
+   "renderUnit": "zo-gk-post-row__orange__2__gable__long__solid"
+  },
+  "zo-ho-annex": {
+   "photo": "designs/img/zo-ho-annex-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012146947",
+   "render": "designs/img/zo-ho-annex-unit.jpg",
+   "renderUnit": "zo-ho-annex__brick__2__gable__long__solid"
+  },
+  "zo-ho-hood": {
+   "photo": "designs/img/zo-ho-hood-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012129010",
+   "render": "designs/img/zo-ho-hood-unit.jpg",
+   "renderUnit": "zo-ho-hood__white-frames__2__gable__long__solid"
+  },
+  "zo-ho-maldenhof": {
+   "photo": "designs/img/zo-ho-maldenhof-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012145589",
+   "render": "designs/img/zo-ho-maldenhof-unit.jpg",
+   "renderUnit": "zo-ho-maldenhof__brick__2__gable__long__solid"
+  },
+  "zo-kb-patio-ribbon": {
+   "photo": "designs/img/zo-kb-patio-ribbon-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012124562",
+   "render": "designs/img/zo-kb-patio-ribbon-unit.jpg",
+   "renderUnit": "zo-kb-patio-ribbon__red__2__flat__long__solid"
+  },
+  "zo-ko-patio": {
+   "photo": "designs/img/zo-ko-patio-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012127577",
+   "render": "designs/img/zo-ko-patio-unit.jpg",
+   "renderUnit": "zo-ko-patio__grey__2__flat__long__solid"
+  },
+  "zo-ko-patio-top": {
+   "photo": "designs/img/zo-ko-patio-top-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012127577",
+   "render": "designs/img/zo-ko-patio-top-unit.jpg",
+   "renderUnit": "zo-ko-patio-top__grey__2__flat__long__solid"
+  },
+  "zo-ko-three": {
+   "photo": "designs/img/zo-ko-three-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012082223",
+   "render": "designs/img/zo-ko-three-unit.jpg",
+   "renderUnit": "zo-ko-three__grey__3__flat__long__solid"
+  },
+  "zo-rb-flat-band": {
+   "photo": "designs/img/zo-rb-flat-band-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012112716",
+   "render": "designs/img/zo-rb-flat-band-unit.jpg",
+   "renderUnit": "zo-rb-flat-band__grey__2__flat__long__solid"
+  },
+  "zo-rb-pair-door": {
+   "photo": "designs/img/zo-rb-pair-door-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012109987",
+   "render": "designs/img/zo-rb-pair-door-unit.jpg",
+   "renderUnit": "zo-rb-pair-door__buff__2__gable__long__solid"
+  },
+  "zo-rb-timber": {
+   "photo": "designs/img/zo-rb-timber-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012142373",
+   "render": "designs/img/zo-rb-timber-unit.jpg",
+   "renderUnit": "zo-rb-timber__timber__2__flat__long__solid"
+  },
+  "zo-rb-two-tone": {
+   "photo": "designs/img/zo-rb-two-tone-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012068205",
+   "render": "designs/img/zo-rb-two-tone-unit.jpg",
+   "renderUnit": "zo-rb-two-tone__simonshaven__2__gable__long__solid"
+  },
+  "zo-vw-bay": {
+   "photo": "designs/img/zo-vw-bay-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012065345",
+   "render": "designs/img/zo-vw-bay-unit.jpg",
+   "renderUnit": "zo-vw-bay__navy__2__flat__long__solid"
+  },
+  "zo-vw-row": {
+   "photo": "designs/img/zo-vw-row-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012088862",
+   "render": "designs/img/zo-vw-row-unit.jpg",
+   "renderUnit": "zo-vw-row__cream-door__2__gable__long__solid"
+  }
+ }
+}

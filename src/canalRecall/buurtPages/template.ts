@@ -26,7 +26,7 @@ function source(f: PageFact): string {
   return ` <a class="src" href="${esc(f.sourceUrl)}" rel="noopener">${esc(label)}</a>`;
 }
 
-const STYLE = `
+export const STYLE = `
 :root{--page:var(--day-paper);--raised:var(--day-paper-raised);--sunk:var(--day-paper-sunk);--ink:var(--day-ink);--muted:var(--day-ink-muted);--line:var(--day-line);--line-strong:var(--day-line-strong);--copper:var(--day-accent);--copper-ink:var(--day-accent-ink);--gutter:clamp(16px,4.5vw,56px);--body:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;--display:var(--font-plaque);color-scheme:light}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
@@ -165,7 +165,7 @@ ${opts.body}
 <footer>
   <div class="wrap">
     <p>Text from Wikipedia (CC BY-SA) and the Amsterdam street-name register (BAG); photos from Wikimedia Commons, credited under each one; bridge facts from the city's bridge register. Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors. In-game frames are from Ride Amsterdam. <a href="../credits.html">All credits</a>.</p>
-    <p><a href="index.html">All neighbourhoods</a></p>
+    <p><a href="index.html">All neighbourhoods</a> · <a href="../designs.html">Building designs</a> · <a href="../devlog.html">Dev log</a></p>
   </div>
 </footer>
 <script>
@@ -247,7 +247,7 @@ export function renderBuurtPage(p: BuurtPage, shots: Shot[], all: readonly Buurt
   const extraBuildings = p.buildings.slice(LIST_CAP);
   let buildingsHtml = p.buildings.length ? `<ul class="cards">${cards}</ul>` : '';
   if (extraBuildings.length) buildingsHtml += `<details><summary>${plural(extraBuildings.length, 'more modelled building')}</summary><ul class="compact">${extraBuildings.map(b => `<li><a href="${esc(rideUrl(b.lng, b.lat))}">${esc(b.name)}</a> <span class="n">${esc(BUILDING_KIND[b.kind])}</span></li>`).join('')}</ul></details>`;
-  if (p.kits.length) buildingsHtml += `<h3 style="margin:${p.buildings.length ? '30px' : '0'} 0 10px">Drawn from the building kit</h3><p class="empty" style="margin-bottom:12px">${plural(kitTotal, 'building')} here use one of the game's reusable post-war building designs, fitted to their real footprint.</p><ul class="compact">${p.kits.map(k => `<li><b>${esc(k.label)}</b> <span class="n">${fmt(k.count)}</span></li>`).join('')}</ul>`;
+  if (p.kits.length) buildingsHtml += `<h3 style="margin:${p.buildings.length ? '30px' : '0'} 0 10px">Drawn from the building kit</h3><p class="empty" style="margin-bottom:12px">${plural(kitTotal, 'building')} here use one of the game's reusable post-war building designs, fitted to their real footprint. <a href="../designs.html">See every design</a>.</p><ul class="compact">${p.kits.map(k => `<li><a href="../designs.html#${esc(encodeURIComponent(k.unit))}"><b>${esc(k.label)}</b></a> <span class="n">${fmt(k.count)}</span></li>`).join('')}</ul>`;
   if (!p.buildings.length && !p.kits.length) buildingsHtml = `<p class="empty">Nothing here is individually modelled yet: the ride draws ${esc(p.name)} from the city's 3D building register (3DBAG), with real heights and roofs.</p>`;
 
   const facts: string[] = [];
@@ -325,6 +325,7 @@ export function renderBuurtIndex(pages: readonly BuurtPage[], manifest: ShotMani
   <p class="kicker">Amsterdam, area by area</p>
   <h1>Neighbourhoods</h1>
   <p class="lede">Every neighbourhood and quarter whose postcard you can collect on a ride: what the game has modelled there, the stories behind its canal and street names, and frames from the ride itself.</p>
+  <p class="lede">Whole streets were built to one design: <a href="../designs.html">see the building designs</a> the game repeats across the city.</p>
   <div class="filter"><label for="q" class="visually-hidden" style="position:absolute;left:-9999px">Find a neighbourhood</label><input id="q" type="search" placeholder="Find a neighbourhood" autocomplete="off"><span id="count">${plural(pages.length, 'neighbourhood')}</span></div>
 </div>
 <section style="padding-top:clamp(24px,4vw,40px)"><div class="wrap">
