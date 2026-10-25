@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+**White flash on governor steps (2026-10-25, #64).** User saw random white
+flashes. The render governor called `setPixelRatio` inside MapLibre's
+`render` event, after the frame was drawn; the resize cleared the buffer and
+the paper body background (#f4efe5) showed for one frame (screencast luma
+0.89 vs 0.48, 17–37 ms after each step; a fast Mac rarely steps, hence
+"random"). Steps now apply at the next frame start with `setPixelRatio` +
+`redraw`. Regression `tests/e2e/governor-no-flash.spec.ts` (old bundle 0.927
+worst, fixed 0.50); opt-in probe `white-flash-probe.spec.ts`. Desktop perf
+unchanged. Context loss still shows paper for its whole duration (no Sentry
+events); a mid-tone `#vector-map` background is the cheap mitigation.
+
 **Likeness gate lighting re-reads (2026-10-25, #61).** Shaded warm walls
 judged on chromaticity when the crop could not be exposure-normalised
 (WARN at best); pale panels re-read as panel only where the model draws a

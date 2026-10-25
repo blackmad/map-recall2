@@ -3,6 +3,11 @@
  "notes": [
   {
    "date": "2026-10-25",
+   "title": "No more white flashes while riding",
+   "text": "When the game lowered its resolution to keep the frame rate up, the map went blank for one frame and the screen flashed white. The resize now happens together with the next frame, so the ride stays steady."
+  },
+  {
+   "date": "2026-10-25",
    "title": "A real railway viaduct west of Centraal",
    "text": "The road and water under the tracks at the Droogbak now pass beneath a deck between white brick walls, at street level, instead of climbing over a hump in the embankment.",
    "where": [
