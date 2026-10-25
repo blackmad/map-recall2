@@ -111,7 +111,7 @@ Open, in order:
   city look lack the 1.106 brick gain beside default-look chunks.
 - **district-style** (B1), **buurt-autoplace** (B3). **buurt-designs** (B2):
   10 buurten done 2026-10-25 (#70, #72, #74; ~4,350 houses, 22 designs);
-  rounds 4-7 done (#75, #77, #79, #80; 27 buurten, ~8,450 houses); Helmersbuurt block-face kit (#81) running; white trim and
+  rounds 4-8 done (#75, #77, #79, #80, #82; 31 buurten, ~8,900 houses); Helmersbuurt block-face kit (#81) back for colour fixes + dormer/cornice audit bugs (19 houses blocked); Haarlemmerweg 333 big buildings (#83) back for fixes; white trim and
   one-draw-per-unit done (#78). Open: nn-row chunky joinery (`frameM`);
   opt-in recipe tiles need recompiling from the recoloured units; Gein 3 all-timber and
   brick-canopy rows, Holendrecht S2/S4, Twiske porch canopies, K-buurt

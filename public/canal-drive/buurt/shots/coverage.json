@@ -495,7 +495,7 @@
  {
   "slug": "oostelijk-havengebied",
   "buildings": 14,
-  "kits": 0,
+  "kits": 29,
   "facts": 69,
   "origins": 117,
   "bridges": 6,
@@ -685,7 +685,7 @@
  {
   "slug": "slotervaart",
   "buildings": 0,
-  "kits": 506,
+  "kits": 752,
   "facts": 23,
   "origins": 111,
   "bridges": 1,
@@ -725,15 +725,13 @@
  {
   "slug": "sporenburg",
   "buildings": 0,
-  "kits": 0,
+  "kits": 29,
   "facts": 20,
   "origins": 20,
   "bridges": 1,
   "shots": 2,
   "plan": 2,
-  "lacks": [
-   "buildings"
-  ]
+  "lacks": []
  },
  {
   "slug": "sportheldenbuurt",

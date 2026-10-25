@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+**Building types round 8 (2026-10-25, #82).** 14 photo-checked designs,
+447 houses (Oostoever Sloterplas 246, De Klomp 104, Weesp-Zuid I 68,
+Sporenburg 29). Kit: `bodyFromRoof.from:'highest'`, panel `archShape:'round'`,
+`diamond`, `ground.slabPalette`, `roof.flatVerge`; existing units hash
+identically. Review sent `nw-os-garage-top` back once: the 1.27x scale was a
+stale cached crop on the sheet (not geometry); the re-shoot added the timber
+garage door + white door box and re-measured the brick (mottle k=4, shaded
+crop only, so it still reads a touch redder than the photo).
+
 **Building designs gallery + Dev log pages (2026-10-25, #84).** User
 yes. `designs.html`: 90 building-type designs, 11,510 houses, 50 buurten;
 per design a panorama crop (CC BY 4.0, evidence pand preferred; Nieuw-West

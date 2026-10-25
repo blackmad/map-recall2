@@ -225,6 +225,48 @@
    "render": "designs/img/nw-ns-red-three-unit.jpg",
    "renderUnit": "nw-ns-red-three__red__3__flat__long__solid"
   },
+  "nw-os-band": {
+   "photo": "designs/img/nw-os-band-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012144362",
+   "render": "designs/img/nw-os-band-unit.jpg",
+   "renderUnit": "nw-os-band__brick__3__flat__long__solid"
+  },
+  "nw-os-garage": {
+   "photo": "designs/img/nw-os-garage-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012107766",
+   "render": "designs/img/nw-os-garage-unit.jpg",
+   "renderUnit": "nw-os-garage__brick__3__flat__long__solid"
+  },
+  "nw-os-garage-top": {
+   "photo": "designs/img/nw-os-garage-top-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012148761",
+   "render": "designs/img/nw-os-garage-top-unit.jpg",
+   "renderUnit": "nw-os-garage-top__brick__2__flat__long__solid"
+  },
+  "nw-os-tretjakov": {
+   "photo": "designs/img/nw-os-tretjakov-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012065174",
+   "render": "designs/img/nw-os-tretjakov-unit.jpg",
+   "renderUnit": "nw-os-tretjakov__green__3__flat__long__solid"
+  },
+  "nw-os-white": {
+   "photo": "designs/img/nw-os-white-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012105566",
+   "render": "designs/img/nw-os-white-unit.jpg",
+   "renderUnit": "nw-os-white__white__3__flat__long__solid"
+  },
+  "nw-os-white-low": {
+   "photo": "designs/img/nw-os-white-low-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012146314",
+   "render": "designs/img/nw-os-white-low-unit.jpg",
+   "renderUnit": "nw-os-white-low__white__2__flat__long__solid"
+  },
   "nw-peach-render-balcony-front": {
    "photo": "designs/img/nw-peach-render-balcony-front-photo.jpg",
    "photoSource": "contact-sheet",
@@ -375,6 +417,20 @@
    "render": "designs/img/nw-tower-top-balcony-5st-unit.jpg",
    "renderUnit": "nw-tower-top-balcony-5st__brick-cream-balcony__5__gable__long__solid"
   },
+  "oo-sb-garage-balconies": {
+   "photo": "designs/img/oo-sb-garage-balconies-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012088036",
+   "render": "designs/img/oo-sb-garage-balconies-unit.jpg",
+   "renderUnit": "oo-sb-garage-balconies__brick__2__flat__long__pilotis"
+  },
+  "oo-sb-gate-french": {
+   "photo": "designs/img/oo-sb-gate-french-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012147924",
+   "render": "designs/img/oo-sb-gate-french-unit.jpg",
+   "renderUnit": "oo-sb-gate-french__brick__2__flat__long__solid"
+  },
   "oo-ta-centre": {
    "photo": "designs/img/oo-ta-centre-photo.jpg",
    "photoSource": "survey-crop",
@@ -451,6 +507,48 @@
    "photoPand": "0363100012082799",
    "render": "designs/img/we-pk-bay5-unit.jpg",
    "renderUnit": "we-pk-bay5__brown__5__gable__long__solid__f0d0"
+  },
+  "ws-dk-1971": {
+   "photo": "designs/img/ws-dk-1971-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0457100000059352",
+   "render": "designs/img/ws-dk-1971-unit.jpg",
+   "renderUnit": "ws-dk-1971__dark__2__gable__long__solid"
+  },
+  "ws-dk-1986": {
+   "photo": "designs/img/ws-dk-1986-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0457100000058485",
+   "render": "designs/img/ws-dk-1986-unit.jpg",
+   "renderUnit": "ws-dk-1986__brown__2__gable__long__solid"
+  },
+  "ws-wz-bay": {
+   "photo": "designs/img/ws-wz-bay-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0457100000059664",
+   "render": "designs/img/ws-wz-bay-unit.jpg",
+   "renderUnit": "ws-wz-bay__green__2__gable__long__solid"
+  },
+  "ws-wz-diamond": {
+   "photo": "designs/img/ws-wz-diamond-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0457100000059577",
+   "render": "designs/img/ws-wz-diamond-unit.jpg",
+   "renderUnit": "ws-wz-diamond__brick__2__gable__long__solid"
+  },
+  "ws-wz-plain": {
+   "photo": "designs/img/ws-wz-plain-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0457100000059548",
+   "render": "designs/img/ws-wz-plain-unit.jpg",
+   "renderUnit": "ws-wz-plain__brick__2__gable__long__solid"
+  },
+  "ws-wz-porthole": {
+   "photo": "designs/img/ws-wz-porthole-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0457100000060245",
+   "render": "designs/img/ws-wz-porthole-unit.jpg",
+   "renderUnit": "ws-wz-porthole__brick__2__gable__long__solid"
   },
   "zo-g3-red-clad": {
    "photo": "designs/img/zo-g3-red-clad-photo.jpg",
