@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**Building designs gallery + Dev log pages (2026-10-25, #84).** User
+yes. `designs.html`: 90 building-type designs, 11,510 houses, 50 buurten;
+per design a panorama crop (CC BY 4.0, evidence pand preferred; Nieuw-West
+from the source-data contact sheets) beside a game-look render of its
+most-placed unit, counts, variants, buurten, an SVG location map and a
+`travel=car#race=` link; 180 lazy JPGs, 5 MB. `devlog.html` renders the
+owner's comments on pinned issue #68 (`build:devlog` writes
+`data/devlog.json`; escaped markdown, http(s)/relative links only). Credits
+updated: one panorama crop per design is now shipped. `check:designs-page`
+and `check:devlog` (no network) joined check:canal. After each building-types
+round: `build:designs-images`, `build:designs-page`, `build:buurt-pages`;
+after each dev-log post: `build:devlog`.
+
 **Repetitive designs round 7 (2026-10-25, #80).** 9 designs, 34 units,
 995 pands: Middelveldsche Akerpolder 519 (47 %; terrace-matched from 78
 terrace photos), Orteliusbuurt-Noord 116 (64 %), Orteliusbuurt-Zuid 161
