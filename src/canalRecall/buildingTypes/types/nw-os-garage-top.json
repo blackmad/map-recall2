@@ -77,13 +77,34 @@
  "defaultVariant": "brick",
  "variants": {
   "brick": {
-   "label": "dark red brick, white frames, timber garage doors, zinc top storey",
+   "label": "mottled purple-brown brick, white frames, timber garage doors, zinc top storey",
    "evidence": "terraces #49 #60 #66",
    "palette": {
     "wall": {
      "slot": "brick",
-     "tint": "#93503d",
-     "measured": true
+     "tint": "#977265",
+     "measured": true,
+     "mottle": {
+      "tones": [
+       {
+        "hex": "#866356",
+        "share": 0.38
+       },
+       {
+        "hex": "#ad887e",
+        "share": 0.3
+       },
+       {
+        "hex": "#9a705f",
+        "share": 0.29
+       },
+       {
+        "hex": "#847d7a",
+        "share": 0.03
+       }
+      ],
+      "evidence": "#82: brick-mottle.ts k=4 over the street parapet band and the band under the ribbon of crop 0363100012088229-2020050808 (Hof van Versailles, facade in shade), white-referenced to the white concrete door surround in the same crop (x2.70/2.38/2.17); 24428 brick pixels, mean #977265"
+     }
     },
     "frame": "#f2f1ec",
     "glass": "#3b4249",
@@ -108,7 +129,7 @@
      "photo": "survey crop 0363100012148761.jpg",
      "pand": "0363100012148761",
      "address": "Alhambralaan",
-     "note": "2024-11: timber garage doors and white door surrounds; one ribbon window across the first storey; brick parapet; zinc-clad top storey with a window band, set back"
+     "note": "2024-11: per 5.1 m house a 3 m timber garage door (2.35 m high) on the left and a white concrete door box 1.9 m wide (glazed door and side light) against the right party wall; not mirrored; one ribbon window across the first storey; brick parapet; zinc-clad top storey with a window band, set back"
     },
     {
      "photo": "survey crop 0363100012088229.jpg",
@@ -138,59 +159,70 @@
       {
        "kind": "panel",
        "levels": "ground",
-       "ref": "left",
-       "u": 1.15,
-       "w": 2.05,
-       "h": 2.3,
+       "ref": "right",
+       "u": 0.11,
+       "w": 0.22,
+       "h": 2.45,
        "sill": 0,
-       "depth": 0.03,
-       "colour": "dark",
-       "note": "timber garage door (some painted red or brown)"
-      },
-      {
-       "kind": "panel",
-       "levels": "ground",
-       "ref": "left",
-       "u": 2.26,
-       "w": 0.18,
-       "h": 2.6,
-       "sill": 0,
-       "depth": 0.15,
+       "depth": 0.25,
        "colour": "column",
-       "note": "white concrete door surround: left jamb"
+       "note": "white concrete door box against the right party wall: right cheek"
       },
       {
        "kind": "panel",
        "levels": "ground",
-       "ref": "left",
-       "u": 3.44,
-       "w": 0.18,
-       "h": 2.6,
+       "ref": "right",
+       "u": 1.79,
+       "w": 0.22,
+       "h": 2.45,
        "sill": 0,
-       "depth": 0.15,
+       "depth": 0.25,
        "colour": "column",
-       "note": "right jamb"
+       "note": "left cheek"
       },
       {
        "kind": "panel",
        "levels": "ground",
-       "ref": "left",
-       "u": 2.85,
-       "w": 1.36,
-       "h": 0.25,
-       "sill": 2.35,
-       "depth": 0.15,
+       "ref": "right",
+       "u": 0.95,
+       "w": 1.9,
+       "h": 0.22,
+       "sill": 2.23,
+       "depth": 0.25,
        "colour": "column",
        "note": "head"
       },
       {
        "kind": "door",
        "levels": "ground",
-       "ref": "left",
-       "u": 2.85,
-       "w": 0.95,
-       "h": 2.25,
+       "ref": "right",
+       "u": 1.2,
+       "w": 0.9,
+       "h": 2.15,
        "note": "white-grey glazed door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 0.5,
+       "w": 0.5,
+       "h": 2.1,
+       "sill": 0.06,
+       "lights": 1,
+       "note": "full-height side light in the door box"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.6,
+       "w": 3,
+       "h": 2.35,
+       "sill": 0,
+       "depth": 0.03,
+       "colour": "dark",
+       "note": "timber garage door, 3 m, against the left party wall"
       },
       {
        "kind": "window",
@@ -200,8 +232,8 @@
        "ref": "left",
        "u": 2.55,
        "w": 4.7,
-       "h": 1.3,
-       "sill": 0.6,
+       "h": 1.25,
+       "sill": 0.5,
        "lights": 4
       }
      ]
@@ -324,6 +356,6 @@
   }
  },
  "notes": [
-  "Brick as nw-os-garage. Brick parapet pinned at 6.1 m; bodyFromRoof {tolM 3, from highest} (kit #82) keeps the 5.8 m parapet parts and the 8.5 m top storey, drops the 3 m garden sheds. Zinc top storey drawn as an annex on the roof."
+  "#82 review: the contact sheet was 1.27x off because the cached survey crop came from an older placement (21.5 m body before bodyFromRoof highest); re-shot, the 3DBAG geometry lines up (garage 2.35 m, ribbon 3.55-4.8 m, parapet 6.1 m, zinc top set back 2.2 m). Brick re-measured white-referenced on the 2020-05 crop: mottled purple-brown, mean #977265. Brick parapet pinned at 6.1 m; bodyFromRoof {tolM 3, from highest} (kit #82) keeps the 5.8 m parapet parts and the 8.5 m top storey, drops the 3 m garden sheds. Zinc top storey drawn as an annex on the roof."
  ]
 }
