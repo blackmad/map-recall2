@@ -212,6 +212,13 @@ export interface RoofSpec {
    * ridge reads a rooftop extension at the back on many houses, which the street does not see.
    */
   ridgeFromPitch?: boolean;
+  /**
+   * Terraced rows whose ends are hipped (#77, Tuindorp Nieuwendam): 3DBAG reads a hip on row-end houses and on some mid-row
+   * ones. With this set a long-ridge house builds a hip only on its free end(s) (params.freeSides) and a gable against each
+   * neighbour; a mid-row house is a plain gable whatever 3DBAG says. A short-ridge 'hip' (the row end's front-facing gable
+   * house, whose steep gable 3DBAG reads as a hip) is drawn as a front gable. Absent: the 3DBAG roof form as is (byte-identical).
+   */
+  hipFreeEnds?: boolean;
   /** Chimney stacks on the ridge of a long-ridge gable or hip (one design, every house); mirrored houses mirror them. */
   chimneys?: ChimneySpec[];
 }
@@ -251,6 +258,11 @@ export interface DormerSpec {
   lights: number;
   /** Glazing inset from the cheeks (default 0.12 m). */
   marginM?: number;
+  /**
+   * Glazing inset at an end flush with the frontage end (default `marginM` / 2): the wall dormer of a mirrored pair whose two
+   * windows stand apart with a pier between them across the party wall (#77, De Eendracht box fronts). Absent: unchanged.
+   */
+  marginEndM?: number;
   /** Front face and cheeks (default `column`), window frame (default `frame`). */
   cheek?: PaletteKey;
   frame?: PaletteKey;

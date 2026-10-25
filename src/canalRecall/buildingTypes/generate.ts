@@ -383,7 +383,7 @@ function asymGable(c: Ctx, p: {L: number; W: number; ef: number; eb: number; rid
   }
 }
 
-function roofSolid(c: Ctx, p: {form: 'gable' | 'hip' | 'flat'; ridge: 'long' | 'short'; L: number; W: number; eaves: number; ridgeH: number; eavesOv: number; vergeOv: number; flatThickness: number}): void {
+function roofSolid(c: Ctx, p: {form: 'gable' | 'hip' | 'flat'; ridge: 'long' | 'short'; L: number; W: number; eaves: number; ridgeH: number; eavesOv: number; vergeOv: number; flatThickness: number; hipEnds?: {lo: boolean; hi: boolean}}): void {
   const {mb, k} = c;
   if (p.form === 'flat') {
     const ov = p.eavesOv, t = p.flatThickness;
@@ -408,6 +408,20 @@ function roofSolid(c: Ctx, p: {form: 'gable' | 'hip' | 'flat'; ridge: 'long' | '
       // from the wall top (eaves line) up to the ridge: starting at the overhang's y0 / width b would lie in the side wall's plane (coplanar overlap, z-fighting)
       const tri = [to(sAt, -hw, p.eaves), to(sAt, hw, p.eaves), to(sAt, 0, p.ridgeH)];
       quadAway(mb, k.wall, inside, tri[0], tri[1], tri[2], tri[2]);
+    }
+  } else if (p.hipEnds) {
+    // Terraced row end (spec.roof.hipFreeEnds, #77): hipped only at the free end(s), a gable against the neighbour, so a hipped
+    // row-end house meets its neighbour's ridge instead of notching the row. Hip run = half the depth (equal pitch).
+    const sLo = p.hipEnds.lo ? -S / 2 - ov : -a, sHi = p.hipEnds.hi ? S / 2 + ov : a;
+    const rLo = p.hipEnds.lo ? Math.min(-S / 2 + hw, sHi) : -a, rHi = p.hipEnds.hi ? Math.max(S / 2 - hw, rLo) : a;
+    const r0 = to(rLo, 0, p.ridgeH), r1 = to(rHi, 0, p.ridgeH);
+    const A = to(sLo, -b, y0), B = to(sHi, -b, y0), C = to(sHi, b, y0), D = to(sLo, b, y0);
+    quadAway(mb, k.roof, inside, A, B, r1, r0);
+    quadAway(mb, k.roof, inside, D, C, r1, r0);
+    quadAway(mb, k.roof, inside, A, B, C, D);
+    for (const [hipped, sAt, edge, corner0, corner1, r] of [[p.hipEnds.lo, -S / 2, -a, A, D, r0], [p.hipEnds.hi, S / 2, a, B, C, r1]] as const) {
+      if (hipped) quadAway(mb, k.roof, inside, corner0, corner1, r, r);
+      else { const tri = [to(edge, -hw, p.eaves), to(edge, hw, p.eaves), to(edge, 0, p.ridgeH)]; quadAway(mb, k.wall, inside, tri[0], tri[1], tri[2], tri[2]); void sAt; }
     }
   } else {
     const rl = Math.max(0, S / 2 - hw); // hip ridge half-length (45 degree hips, equal pitch)
@@ -480,7 +494,7 @@ function dormerUnit(c: Ctx, d: DormerSpec, L: number, W: number, sl: ReturnType<
   triAway(mb, cheek, inside, [x1, yb, zf], [x1, yt, zf], [x1, yt, zBack]);
   box(mb, cheek, IDENTITY, x0 - (wallL ? 0 : ov), x1 + (wallR ? 0 : ov), yt, yt + roofT, zBack, zf + ov, {back: true});
   // glazing: frame plate, glass, mullions (as a low-poly window), inset from the cheeks
-  const m = d.marginM ?? 0.12, gx0 = x0 + (wallL ? m / 2 : m), gx1 = x1 - (wallR ? m / 2 : m), gy0 = yb + 0.12, gy1 = yt - 0.1, f = new Frame([0, zf], [1, 0], [0, 1]);
+  const m = d.marginM ?? 0.12, me = d.marginEndM ?? m / 2, gx0 = x0 + (wallL ? me : m), gx1 = x1 - (wallR ? me : m), gy0 = yb + 0.12, gy1 = yt - 0.1, f = new Frame([0, zf], [1, 0], [0, 1]);
   if (gx1 - gx0 > 0.2 && gy1 - gy0 > 0.2) {
     plate(mb, frameKey, f, gx0, gx1, gy0, gy1, 0.01);
     plate(mb, c.k.glass, f, gx0 + 0.06, gx1 - 0.06, gy0 + 0.06, gy1 - 0.06, 0.02);
@@ -727,12 +741,17 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
   }
   // pilotis: slab fascia is the white column box above; the soffit shows from below.
 
+  // hipFreeEnds (#77): 3DBAG's hip on a terraced house is the row end's: hip the free end(s) only; a mid-row house gets a gable.
+  const hipEnds = spec.roof.hipFreeEnds && roofForm === 'hip' && ridge === 'long' && params.freeSides && !asym && !pairGable ? {lo: params.freeSides.left, hi: params.freeSides.right} : undefined;
+  // a short-ridge 'hip' on such a row is the row end's front-facing gable house (3DBAG reads its steep gable as a hip): a gable.
+  const drawnForm = (hipEnds && !hipEnds.lo && !hipEnds.hi) || (spec.roof.hipFreeEnds && roofForm === 'hip' && ridge === 'short') ? 'gable' : roofForm;
   const ridgeH = params.ridgeM ?? params.eavesM + Math.tan(spec.roof.pitchDeg * Math.PI / 180) * (pairGable ? L : (ridge === 'long' ? W : L) / 2);
   if (asym) {
     const hi = params.eavesM > backEaves ? frames.front : frames.back;
     plate(mb, k.wall, hi.f, 0, hi.len, wallTop, Math.max(params.eavesM, backEaves), 0);
     asymGable(ctx, {L, W, ef: params.eavesM, eb: backEaves, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, gableKey: gabled ? k.gable : k.wall});
   } else if (pairGable) pairGableRoof(ctx, spec, frames, L, W, params.eavesM, ridgeH, !!params.mirror, k.gable);
+  else if (hipEnds || drawnForm !== roofForm) roofSolid(ctx, {form: drawnForm, ridge, L, W, eaves: params.eavesM, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, flatThickness: flatT, ...(drawnForm === 'hip' ? {hipEnds} : {})});
   else roofSolid(ctx, {form: roofForm, ridge, L, W, eaves: params.eavesM, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, flatThickness: flatT});
   if (spec.roof.chimneys?.length && pitched && !pairGable && ridge === 'long') {
     const hw = W / 2, sl = asym ? asymSlope(hw, params.eavesM, backEaves, ridgeH) : {tan: Math.max(0.1, ridgeH - params.eavesM) / hw, tRidge: 0};
@@ -754,5 +773,5 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
     annexUnit(ctx, f, a, u, heightOf(a.from ?? 0, sh, params.eavesM), heightOf(a.to, sh, params.eavesM));
     annexCount++;
   }
-  return {mesh: mb, report: {...(annexCount ? {annexes: annexCount} : {}), triangles: mb.triangles, storeys, storeyHeightM: sh, wallTopM: wallTop, ridgeM: pitched ? ridgeH : null, variant, roofForm, ridge, groundMode, mirrored: params.mirror ? true : undefined, sides: params.freeSides && (['left', 'right'] as const).some(id => spec.facades[id].bays.some(b => b.elements.length)) ? (free.left && free.right ? 'free' : free.left ? 'endL' : free.right ? 'endR' : 'mid') : undefined, facades}};
+  return {mesh: mb, report: {...(annexCount ? {annexes: annexCount} : {}), triangles: mb.triangles, storeys, storeyHeightM: sh, wallTopM: wallTop, ridgeM: pitched ? ridgeH : null, variant, roofForm: drawnForm, ridge, groundMode, mirrored: params.mirror ? true : undefined, sides: params.freeSides && (hipEnds || (['left', 'right'] as const).some(id => spec.facades[id].bays.some(b => b.elements.length))) ? (free.left && free.right ? 'free' : free.left ? 'endL' : free.right ? 'endR' : 'mid') : undefined, facades}};
 }

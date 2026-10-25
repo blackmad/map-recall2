@@ -60,10 +60,14 @@ for (const area of areas) {
     const [lng, lat] = localToLngLat(input.anchor, [t.positionChunk[0], t.positionChunk[2]]);
     // yaw (rad) takes front +z to the world normal (sin yaw, cos yaw) in east/south; compass bearing of the front:
     const front = bearingDeg(Math.sin(t.yawRad), Math.cos(t.yawRad));
+    // The canonical mesh is picked by frontage, so a member of an area whose own nominal depth/eaves differ a lot can land outside
+    // the sane stretch range against it (NN02 nn-row-small: 0.76 / 1.32 depth). Hold those rather than squash or stretch the house.
+    const scale = [round(d.lengthM / n.L, 4), round(d.eavesM / n.eaves, 4), round(d.widthM / n.W, 4)];
+    if (!scale.every(s => s > 0.86 && s < 1.19)) { held[d.pandId] = `canonical-scale ${scale.join(',')}`; continue; }
     units.add(unit);
     instances.push({
       pand: d.pandId, unit, anchor: [round(lng, 8), round(lat, 8)], northOffsetDegrees: round((front - 180 + 360) % 360, 3),
-      scale: [round(d.lengthM / n.L, 4), round(d.eavesM / n.eaves, 4), round(d.widthM / n.W, 4)], variant: d.variant,
+      scale, variant: d.variant,
       // Altitude the instance is lifted by in the game's own frame: the basemap ground is flat at 0 (as for street chunks).
       groundAltitudeMetres: 0, groundNapM: round(t.positionEastNapSouth[1], 2), area,
       ...(d.absorbed?.length ? {alsoSuppress: d.absorbed} : {}),
