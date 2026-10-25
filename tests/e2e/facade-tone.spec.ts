@@ -1,5 +1,5 @@
 /**
- * Facade tone (issue #71): large-recipe and landmark GLBs beside the procedural rows, desktop frames at six spots
+ * Facade tone (issue #71): large-recipe and landmark GLBs beside the procedural rows, desktop frames at seven spots
  * (camera pinned since #73, so two runs frame alike), with the luma of each pipeline's pixels. Not part of check:canal: a before/after record for look changes.
  *
  *   PW_PORT=4621 TONE_OUT=artifacts/facade-tone/before npx playwright test facade-tone --project=desktop
@@ -33,6 +33,8 @@ export const TONE_SPOTS: Spot[] = [
   // GLB in view, only the square (#73).
   { name: 'nieuw-west', target: [4.8211, 52.3790], stand: 215, standM: 90 },
   { name: 'bilderdijk', target: [4.87195, 52.3672], stand: 215, standM: 60 },
+  // Kattenburg: large recipes with pitched slate roofs (roof.pitchedHex, #73) from the south-west.
+  { name: 'kattenburg', target: [4.9099, 52.3646], stand: 200, standM: 90 },
   // The Royal Palace's east front (white stone) from the Dam.
   { name: 'dam', target: [4.8913, 52.3731], stand: 95, standM: 110 },
 ];
@@ -86,7 +88,7 @@ function masked(shot: Buffer, bare: Buffer, faces: Buffer) {
   return out;
 }
 
-test('facade tone: GLB and procedural pixels at six spots', async ({ page }, info) => {
+test('facade tone: GLB and procedural pixels at seven spots', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'one viewport is enough');
   test.setTimeout(1_800_000);
   mkdirSync(OUT, { recursive: true });
