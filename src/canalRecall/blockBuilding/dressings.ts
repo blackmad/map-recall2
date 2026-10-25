@@ -37,11 +37,13 @@ export interface StoneDressings {
   /** dressing colour (#rrggbb) when it differs from the group's stone (fitLarge gives it the slot `dress@g<i>`) */
   colour?: string;
   bands?: { at: (typeof DRESSING_BAND_AT[number])[]; storeys?: number[]; double?: boolean };
-  stripes?: { storeys: number[]; count?: number };
+  /** `share`: the stone course's share of its period (thin speklagen: 0.2-0.35); absent = brick and stone courses of equal height (byte-identical) */
+  stripes?: { storeys: number[]; count?: number; share?: number };
   heads?: { kind: typeof DRESSING_HEADS[number]; storeys?: number[] };
   surrounds?: { storeys?: number[]; eared?: boolean };
   quoins?: { ends?: boolean; joints?: number[] };
-  oriels?: { bays: number[]; from: number; to: number; deep?: number; canted?: boolean };
+  /** one oriel set, or a list of sets with their own storey spans (a one-storey bay beside a two-storey one) */
+  oriels?: OrielSet | OrielSet[];
   voussoirs?: { storeys?: number[]; jambs?: boolean };
   piers?: { w?: number; from?: number; to?: number; /** projection as a fraction of the bay (default 0.22 m) */ deep?: number; capital?: boolean; base?: boolean; flutes?: number; stone?: boolean; ends?: boolean };
   corbels?: { storey?: number; count?: number; stone?: boolean; /** the table's height (course and corbels) as a fraction of the storey (default 0.5 m) */ drop?: number; /** stand on the storey's floor line (the corbels just over the windows below) instead of hanging from its top */ foot?: boolean };
@@ -57,6 +59,8 @@ export const DRESS = {
   quoin: { course: 0.32, joint: 0.04, long: 0.62, short: 0.36, out: 0.05 },
   chain: { w: 0.24, h: 0.15, pitch: 0.36, out: 0.05 },
   /** oriel: `deep` x the oriel's width out (default), window margin, corbel and cap heights, window frame width */
+  /** oriel roof balustrade: height, rail and baluster thickness, baluster pitch, run thickness */
+  orielRail: { h: 0.95, bar: 0.08, baluster: 0.07, pitch: 0.3, t: 0.1 },
   oriel: { deep: 0.22, cant: 0.6, minOut: 0.35, maxOut: 1.1, margin: 0.22, corbel: 0.45, cap: 0.3, frame: 0.06, side: 0.1 },
   voussoir: { t: 0.42, block: 0.34, out: 0.05, jamb: 0.3 },
   /** pier width as a fraction of the bay (default) and projection */
@@ -69,7 +73,8 @@ export const DRESS = {
   corbel: { courseH: 0.18, courseOut: 0.18, w: 0.16, h: 0.32, out: 0.14, pitch: 0.45 },
 } as const;
 
-export interface DressingSlots { stone: string; wall: string; frame: string; glass: string }
+/** `iron`: wrought-iron work (an oriel's `bars` railing); the stone when absent */
+export interface DressingSlots { stone: string; wall: string; frame: string; glass: string; iron?: string }
 type Hole = [number, number, number, number, [number, number][]?];
 
 /** The storey (index into `levels`) an opening starting at `v0` belongs to, or -1. */
@@ -83,11 +88,19 @@ const overlaps = (h: Hole, u0: number, u1: number, v0: number, v1: number, m = 0
  * Draw the group's dressings on one panel. `main`: this is the group's widest panel (oriels, joint chains and piers are
  * laid out on its bays); `top`: the wall top under the cornice. Returns the number of parts drawn.
  */
+/**
+ * One set of oriels. `rail`: a balustrade on the oriel's roof (the balcony of the storey above): turned balusters
+ * between two rails in the stone, or a wrought-iron railing as a dark sheet (the door slot); absent = the plain cap (byte-identical).
+ */
+export interface OrielSet { bays: number[]; from: number; to: number; deep?: number; canted?: boolean; rail?: 'balusters' | 'bars';
+  /** the bay's body in the wall brick (a brick bay stack with stone only at corbel and cap); absent = all stone */
+  brick?: boolean }
+
 export function drawDressings(c: PanelCtx, info: { levels: number[]; cells: Cell[] }, d: StoneDressings, slots: DressingSlots, main: boolean, top: number): number {
   const p = c.p, levels = info.levels, holes = [...c.holes.values()].flat() as Hole[], base = Math.max(0, p.vMin);
   let n = 0;
   // Oriels first: what they cover gets no band, head or quoin.
-  const oriels = main && d.oriels ? drawOriels(c, info, holes, d.oriels, slots, top) : [];
+  const oriels = main && d.oriels ? (Array.isArray(d.oriels) ? d.oriels : [d.oriels]).flatMap(o => drawOriels(c, info, holes, o, slots, top)) : [];
   n += oriels.length;
   const covered = (h: Hole) => oriels.some(o => h[0] >= o[0] - 0.01 && h[1] <= o[1] + 0.01 && h[2] >= o[2] - 0.01 && h[3] <= o[3] + 0.01);
   const free = holes.filter(h => !covered(h));
@@ -120,6 +133,13 @@ export function drawDressings(c: PanelCtx, info: { levels: number[]; cells: Cell
     for (const st of d.stripes.storeys) {
       if (st < 0 || st >= storeys) continue;
       const v0 = Math.max(base, levels[st]) + (st === 0 ? 0.3 : 0.1), v1 = Math.min(top, levels[st + 1]) - 0.1, pitch = (v1 - v0) / (2 * count + 1);
+      if (d.stripes.share !== undefined) {
+        // thin speklagen: `count` stone courses, each `share` of an even period, centred in it (brick above and below)
+        const period = (v1 - v0) / count, h = d.stripes.share * period;
+        if (h < 0.06) continue;
+        for (let k = 0; k < count; k++) { const a = v0 + period * (k + 0.5) - h / 2, b = a + h; n += drawBand(c, slots.stone, a, b, DRESS.stripe.out, orielSkip(a, b)); }
+        continue;
+      }
       if (pitch < 0.08) continue;
       // brick, stone, brick, ... brick: `count` stone courses with brick above and below
       for (let k = 0; k < count; k++) { const a = v0 + (2 * k + 1) * pitch, b = a + pitch; n += drawBand(c, slots.stone, a, b, DRESS.stripe.out, orielSkip(a, b)); }
@@ -356,7 +376,7 @@ type OrielRect = [number, number, number, number];
  * openings of those storeys (cut in the wall behind) are repeated on its front face: a frame ring, a mullion when wider
  * than 0.9 m, a transom at three quarters, and glass, all closed solids standing on the face.
  */
-function drawOriels(c: PanelCtx, info: { levels: number[]; cells: Cell[] }, holes: Hole[], o: NonNullable<StoneDressings['oriels']>, slots: DressingSlots, top: number): OrielRect[] {
+function drawOriels(c: PanelCtx, info: { levels: number[]; cells: Cell[] }, holes: Hole[], o: OrielSet, slots: DressingSlots, top: number): OrielRect[] {
   const p = c.p, O = DRESS.oriel, out: OrielRect[] = [];
   for (const bay of o.bays) {
     const cells = info.cells.filter(x => x.bay === bay && x.floor >= o.from && x.floor <= o.to);
@@ -371,10 +391,11 @@ function drawOriels(c: PanelCtx, info: { levels: number[]; cells: Cell[] }, hole
     const part = c.part();
     // body: a prism on the plan (u, d) trapezoid, back on the wall
     const plan: [number, number][] = [[u0, 0], [u1, 0], [u1 - inset, D], [u0 + inset, D]];
-    prism(c, slots.stone, plan, v0, v1, part);
+    prism(c, o.brick ? slots.wall : slots.stone, plan, v0, v1, part);
     // corbel and cap, each overlapping the body by 2 cm (no shared face)
     c.box(slots.stone, u0 + W * 0.15, u1 - W * 0.15, v0 - O.corbel, v0 + 0.02, 0, D * 0.7, part);
     if (top - v1 > 0.2) c.box(slots.stone, u0 - 0.06, u1 + 0.06, v1 - 0.02, v1 + 0.14, 0, D + 0.06, part);
+    if (o.rail && top - v1 > 1.3) drawOrielRail(c, slots, o.rail, u0 - 0.04, u1 + 0.04, v1 + 0.12, D + 0.04, part);
     // the windows on the front face, mapped from the wall openings into the narrower face
     const fu0 = u0 + inset, fu1 = u1 - inset, map = (u: number) => fu0 + O.side + ((u - (u0 + O.margin)) / Math.max(0.1, W - 2 * O.margin)) * (fu1 - fu0 - 2 * O.side);
     for (const h of own) {
@@ -392,6 +413,22 @@ function drawOriels(c: PanelCtx, info: { levels: number[]; cells: Cell[] }, hole
     out.push([u0, u1, v0, v1]);
   }
   return out;
+}
+
+/** The balustrade round an oriel's roof: front and two returns, each a top and bottom rail with balusters (or a sheet). */
+function drawOrielRail(c: PanelCtx, slots: DressingSlots, kind: 'balusters' | 'bars', u0: number, u1: number, v: number, D: number, part: number) {
+  const R = DRESS.orielRail, top = v + R.h, t = R.t;
+  // a run along u at depth d0..d1, or along d at u0..u1 (`side`)
+  const run = (a: number, b: number, fixed0: number, fixed1: number, side: boolean) => {
+    const box = (x0: number, x1: number, y0: number, y1: number) => solid(c, kind === 'bars' ? slots.iron ?? slots.stone : slots.stone, (i, j, k) => (side ? c.P(k ? fixed1 : fixed0, j ? y1 : y0, i ? x1 : x0) : c.P(i ? x1 : x0, j ? y1 : y0, k ? fixed1 : fixed0)) as V3, part);
+    if (kind === 'bars') { box(a, b, v, top - 0.05); return; }
+    box(a, b, v, v + R.bar); box(a, b, top - R.bar, top);
+    const n = Math.floor((b - a) / R.pitch);
+    for (let k = 0; k < n; k++) { const m = a + (b - a) * (k + 0.5) / n; box(m - R.baluster / 2, m + R.baluster / 2, v + R.bar - 0.02, top - R.bar + 0.02); }
+  };
+  run(u0, u1, D - t, D, false);
+  run(0.02, D - t - 0.01, u0, u0 + t, true);
+  run(0.02, D - t - 0.01, u1 - t, u1, true);
 }
 
 /** A closed prism over a convex plan polygon in (u, d), from v0 to v1: one quad per plan edge and the two caps. */

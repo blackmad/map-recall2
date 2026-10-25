@@ -51,3 +51,35 @@ export const KLINKER_TONES: readonly (readonly [number, number, number])[] = [
   [0.98, 1.08, 1.12],
   [1.02, 1.09, 1.0],
 ];
+
+/**
+ * Asphalt-like grain over a `size` × `size` tile that repeats seamlessly (lane road-surfaces 2026-10-25, issue #63):
+ * per-texel fine grain (`fine`), sparse light and dark aggregate stones of 1–2 texels (`stones`, about 4 % of the
+ * tile), and a soft mottle on a periodic lattice of `cells` × `cells` (`mottle`; wear and patching). Returns one
+ * brightness offset per texel (row-major), in the same units as the amplitudes, with mean exactly 0, so the tile's
+ * average (and so its look from afar, where the mipmaps average it) stays the palette's base.
+ */
+export function asphaltGrain(size: number, amp: { fine: number; stones: number; mottle: number }, cells = 8, seed = 11): Float32Array {
+  let s = seed >>> 0;
+  const rnd = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+  const out = new Float32Array(size * size);
+  const lattice = Float32Array.from({ length: cells * cells }, () => rnd() - 0.5);
+  const at = (i: number, j: number) => lattice[((j % cells + cells) % cells) * cells + ((i % cells + cells) % cells)];
+  const smooth = (t: number) => t * t * (3 - 2 * t);
+  for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+    const u = (x / size) * cells, v = (y / size) * cells, i = Math.floor(u), j = Math.floor(v), fu = smooth(u - i), fv = smooth(v - j);
+    const m = at(i, j) * (1 - fu) * (1 - fv) + at(i + 1, j) * fu * (1 - fv) + at(i, j + 1) * (1 - fu) * fv + at(i + 1, j + 1) * fu * fv;
+    out[y * size + x] = (rnd() - 0.5) * amp.fine + m * 2 * amp.mottle;
+  }
+  const n = Math.round(size * size * 0.02);
+  for (let k = 0; k < n; k++) {
+    const x = Math.floor(rnd() * size), y = Math.floor(rnd() * size), d = (rnd() < 0.5 ? -1 : 1) * amp.stones * (0.6 + 0.4 * rnd());
+    const r = rnd() < 0.3 ? 2 : 1;
+    for (let dy = 0; dy < r; dy++) for (let dx = 0; dx < r; dx++) out[((y + dy) % size) * size + ((x + dx) % size)] += d;
+  }
+  let mean = 0;
+  for (const v of out) mean += v;
+  mean /= out.length;
+  for (let i = 0; i < out.length; i++) out[i] -= mean;
+  return out;
+}

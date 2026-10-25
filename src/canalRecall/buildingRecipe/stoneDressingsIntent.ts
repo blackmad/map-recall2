@@ -8,8 +8,8 @@ import {DRESSING_BAND_AT, DRESSING_HEADS, type StoneDressings} from '../blockBui
 const HEX = /^#[0-9a-f]{6}$/i;
 const KEYS = ['colour', 'bands', 'stripes', 'heads', 'surrounds', 'quoins', 'oriels', 'voussoirs', 'piers', 'corbels'];
 const SUB: Record<string, string[]> = {
-  bands: ['at', 'storeys', 'double'], stripes: ['storeys', 'count'], heads: ['kind', 'storeys'], surrounds: ['storeys', 'eared'],
-  quoins: ['ends', 'joints'], oriels: ['bays', 'from', 'to', 'deep', 'canted'], voussoirs: ['storeys', 'jambs'], piers: ['w', 'from', 'to', 'deep', 'capital', 'base', 'flutes', 'stone', 'ends'], corbels: ['storey', 'count', 'stone', 'drop', 'foot'],
+  bands: ['at', 'storeys', 'double'], stripes: ['storeys', 'count', 'share'], heads: ['kind', 'storeys'], surrounds: ['storeys', 'eared'],
+  quoins: ['ends', 'joints'], oriels: ['bays', 'from', 'to', 'deep', 'canted', 'rail', 'brick'], voussoirs: ['storeys', 'jambs'], piers: ['w', 'from', 'to', 'deep', 'capital', 'base', 'flutes', 'stone', 'ends'], corbels: ['storey', 'count', 'stone', 'drop', 'foot'],
 };
 
 /** Problems with `walls[i].dressings`; `storeys` is the group's storey count when the intent gives it. */
@@ -42,6 +42,7 @@ export function stoneDressingsProblems(input: unknown, at: string, storeys?: num
   if (s) {
     storeyList(s.storeys, `${at}.dressings.stripes.storeys`);
     if (s.count !== undefined && !(Number.isInteger(s.count) && (s.count as number) >= 1 && (s.count as number) <= 8)) p.push(`${at}.dressings.stripes.count: 1..8 stone courses per storey`);
+    if (s.share !== undefined && !(typeof s.share === 'number' && s.share >= 0.1 && s.share <= 0.7)) p.push(`${at}.dressings.stripes.share: 0.1..0.7 of each course period in stone`);
   }
   const h = obj('heads');
   if (h) {
@@ -57,13 +58,18 @@ export function stoneDressingsProblems(input: unknown, at: string, storeys?: num
     if (q.joints !== undefined && (!Array.isArray(q.joints) || !q.joints.length || q.joints.some(j => !Number.isInteger(j) || j < 1 || j > 99))) p.push(`${at}.dressings.quoins.joints: list of bays 1..99 (the joint left of that bay)`);
     if (!q.ends && !q.joints) p.push(`${at}.dressings.quoins: ends and/or joints`);
   }
-  const o = obj('oriels');
+  const orielSets = Array.isArray(d.oriels) && d.oriels.length ? d.oriels as unknown[] : [d.oriels];
+  for (const [oi, set] of orielSets.entries()) {
+  const o = Array.isArray(d.oriels) ? (set && typeof set === 'object' && !Array.isArray(set) ? set as Record<string, unknown> : (p.push(`${at}.dressings.oriels[${oi}]: an object {${SUB.oriels.join(', ')}}`), null)) : obj('oriels');
+  if (o && Array.isArray(d.oriels)) for (const x of Object.keys(o)) if (!SUB.oriels.includes(x)) p.push(`${at}.dressings.oriels[${oi}].${x}: unknown field (${SUB.oriels.join(', ')})`);
   if (o) {
     if (!Array.isArray(o.bays) || !o.bays.length || o.bays.some(x => !Number.isInteger(x) || x < 0 || x > 99)) p.push(`${at}.dressings.oriels.bays: list of bays 0..99 (from the viewer's left on the widest panel)`);
     const from = o.from as number, to = o.to as number;
     if (!Number.isInteger(from) || !Number.isInteger(to) || from < 1 || to < from || to > max) p.push(`${at}.dressings.oriels: 1 <= from <= to <= ${max} (storeys; the ground keeps its own row)`);
     if (o.deep !== undefined && !(typeof o.deep === 'number' && o.deep >= 0.1 && o.deep <= 0.6)) p.push(`${at}.dressings.oriels.deep: 0.1..0.6 of the oriel's width`);
-    bool(o.canted, `${at}.dressings.oriels.canted`);
+    bool(o.canted, `${at}.dressings.oriels.canted`); bool(o.brick, `${at}.dressings.oriels.brick`);
+    if (o.rail !== undefined && o.rail !== 'balusters' && o.rail !== 'bars') p.push(`${at}.dressings.oriels.rail: "balusters" or "bars"`);
+  }
   }
   const v = obj('voussoirs');
   if (v) { if (v.storeys !== undefined) storeyList(v.storeys, `${at}.dressings.voussoirs.storeys`); bool(v.jambs, `${at}.dressings.voussoirs.jambs`); }

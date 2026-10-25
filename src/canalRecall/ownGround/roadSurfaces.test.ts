@@ -124,7 +124,8 @@ test('streets with roads: covered ways emit no bands but keep their junction mar
     { id: 5, tags: { highway: 'footway' }, g: [[-40, 30], [40, 30]] },
   ], p => ll(p as Vec2));
   const cell = cellOf(CROSS, '0_0', [1, 2, 3]), index = new RoadIndex([cell]);
-  const plain = buildStreets(ways, flat), s = buildStreets(ways, flat, { roads: { index, covered: new Set(cell.coverWays) } });
+  // `plain` is the band model with its priors (guessedPaint: the teeth it is compared on; off in the game since issue #63).
+  const plain = buildStreets(ways, flat, { guessedPaint: true }), s = buildStreets(ways, flat, { roads: { index, covered: new Set(cell.coverWays) } });
   const c = s.stats.markings.clipped!;
   assert.equal(c.coveredWays, 3);
   // No bands from the covered ways: the asphalt is empty (the plain build fills the junction and the arms with it); the side streets give way with teeth.
@@ -172,7 +173,8 @@ test('streets with roads: crossCuts cut carriageway paint where another carriage
   assert.ok(cuts1.every(([a, b]: [number, number]) => a >= 70 - 5 && b <= 70 + 5), 'the cuts lie around station 70 (y = 20)');
   assert.equal(crossCuts(ways[2], nodes, stations(ways[2].points), grid).filter(([a]: [number, number]) => a < 60 || a > 80).length, 0, 'the parallel way is not cut by way 1');
   const cell = cellOf([{ c: 'carriage', k: 'asphalt', ring: [[-60, -60], [60, -60], [60, 60], [-60, 60]] }]), index = new RoadIndex([cell]);
-  const s = buildStreets(ways, flat, { roads: { index, covered: new Set() } });
+  // guessedPaint: the centre dashes are class priors (off in the game since issue #63); this tests how crossCuts cut them.
+  const s = buildStreets(ways, flat, { roads: { index, covered: new Set() }, guessedPaint: true });
   // Way 1's centre dashes (x = 0); way 2's own run along y = 20 and are left out by the y test.
   const dashes = centroids(s.paint).filter(q => Math.abs(q[0]) < 0.3 && Math.abs(q[1] - 20) > 0.3);
   assert.ok((!PAINT_ON_SURVEY || dashes.length > 0) && dashes.every(q => Math.abs(q[1] - 20) > 4.4), 'no centre dash of way 1 within the crossing');

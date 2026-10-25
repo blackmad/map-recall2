@@ -19,6 +19,7 @@ import {eavesOverhangProblems, type EavesOverhangIntent} from './eavesOverhangIn
 import {groundCanopyProblems, type GroundCanopyIntent} from './groundCanopyIntent.ts';
 import type {ArcadePiersIntent} from '../blockBuilding/arcadePiers.ts';
 import type {WindowBoxIntent} from '../blockBuilding/windowBox.ts';
+import type {GalleryIntent} from '../blockBuilding/gallery.ts';
 
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat'] as const;
 export type GableIntent = typeof GABLES[number];
@@ -993,6 +994,12 @@ export interface LargeWallIntent {
   tiltedBays?: TiltedBaysIntent | TiltedBaysIntent[];
   /** Storeys (0 = ground) faced in the group's stone over the wall (a granite base, an ashlar attic), round their openings. */
   stoneStoreys?: number[];
+  /**
+   * Storeys that are a mansard's steep face standing in the 3DBAG wall plane (a shell that models the mansard as a
+   * vertical wall): faced round their openings, as dormers, in the slate texture in `colour` (default the slate roof's
+   * steep colour), not the stone slot that the city lights pale. Van Eeghenstraat 180's two slate storeys. Absent: unchanged.
+   */
+  mansard?: {storeys: number[]; colour?: string};
   /** Banded stone pilasters at both ends of every panel of the group (two-tone courses). */
   pilasters?: boolean;
   /** A glazed roof lantern on the highest roof point behind the group's widest panel. */
@@ -1102,6 +1109,13 @@ export interface LargeWallIntent {
    * frame and glass slots, `lights` across it and a transom. Leave the bays behind it blind (`openBays`). Absent = byte-identical.
    */
   windowBox?: WindowBoxIntent;
+  /**
+   * Open galleries (verandas) stacked in front of a span of bays of the main panel (blockBuilding/gallery.ts; the 1905
+   * villas on the Vondelpark's south edge): a deck per listed storey on posts, an arch between each pair of posts under
+   * a beam, a balustrade along each deck; in the group's stone (a masonry arcade) or a timber colour. A list stacks a
+   * stone arcade under a timber loggia. Absent = byte-identical.
+   */
+  gallery?: GalleryIntent | GalleryIntent[];
 }
 
 export interface LargeBuildingIntent {

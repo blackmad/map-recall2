@@ -49616,97 +49616,443 @@
       "updatedAt": "2026-10-25T02:17:53.984Z"
     },
     {
-      "id": "ordinary-0363100012097137",
+      "id": "ordinary-0363100012158526",
       "category": "ordinary",
-      "buildingId": "NL.IMBAG.Pand.0363100012097137",
-      "name": "Haarlemmerweg 285-303, Amsterdam-West (GWL-terrein, 1996: the L-shaped brick block at the west corner of the terrain, facing the Westerpark; BAG pand 0363100012097137)",
-      "hash": "1b8193101de51d67390cae175b6ee412ef638bc6904b21af158f0f2f77e35b6a",
-      "sha256": "1b8193101de51d67390cae175b6ee412ef638bc6904b21af158f0f2f77e35b6a",
-      "meshHash": "428a7466c5005790",
-      "bytes": 1047912,
-      "triangles": 14404,
+      "buildingId": "NL.IMBAG.Pand.0363100012158526",
+      "name": "Van Eeghenstraat 110A-C, Amsterdam-Zuid (villa between Van Eeghenstraat and the Vondelpark; BAG pand 0363100012158526)",
+      "hash": "ef5c6f5638ef629732cad95750c122cb5bce1dd222a2dc4f2364eef81b6bd18d",
+      "sha256": "ef5c6f5638ef629732cad95750c122cb5bce1dd222a2dc4f2364eef81b6bd18d",
+      "meshHash": "a24d5b72851f7c5c",
+      "bytes": 147736,
+      "triangles": 1814,
+      "materials": 10,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -12.027,
+          0.001,
+          -14.426
+        ],
+        "max": [
+          11.001,
+          21.496,
+          12.992
+        ]
+      },
+      "anchor": [
+        4.8689805,
+        52.3565172
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8691431,
+              52.356424
+            ],
+            [
+              4.8690262,
+              52.3565677
+            ],
+            [
+              4.8689967,
+              52.3565586
+            ],
+            [
+              4.8689067,
+              52.3566676
+            ],
+            [
+              4.8687857,
+              52.3566301
+            ],
+            [
+              4.8689022,
+              52.3564895
+            ],
+            [
+              4.8689614,
+              52.3565075
+            ],
+            [
+              4.8690408,
+              52.3564087
+            ],
+            [
+              4.8690621,
+              52.3564008
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 21.5,
+      "height": 21.5,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-van-eeghenstraat-110-158526.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012158526"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "van-eeghenstraat-110-158526",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012158526/w03-244w.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 4st 3b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] likeness WARN (columns 3 vs photo 2; mask IoU 0.097 < 0.45)."
+      ],
+      "reviewState": "large-recipe-likeness-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012158526",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T06:46:32.296Z"
+    },
+    {
+      "id": "ordinary-0363100012237151",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012237151",
+      "name": "Van Eeghenstraat 97-101, Amsterdam-Zuid (1900 pair of villa-houses facing the Vondelpark; BAG pand 0363100012237151)",
+      "hash": "685a56b4dc99b5493e5c637fe4d4a183cbc45595e3e7d6a823cd699e01c2dbe9",
+      "sha256": "685a56b4dc99b5493e5c637fe4d4a183cbc45595e3e7d6a823cd699e01c2dbe9",
+      "meshHash": "627018dddaa2b6d1",
+      "bytes": 438492,
+      "triangles": 5654,
+      "materials": 12,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -16.28,
+          -0.536,
+          -15.921
+        ],
+        "max": [
+          9.229,
+          18.072,
+          9.351
+        ]
+      },
+      "anchor": [
+        4.8722577,
+        52.3570793
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8720197,
+              52.357142
+            ],
+            [
+              4.8721155,
+              52.3569946
+            ],
+            [
+              4.872225,
+              52.3570211
+            ],
+            [
+              4.8722318,
+              52.3570106
+            ],
+            [
+              4.8723099,
+              52.3570295
+            ],
+            [
+              4.8722876,
+              52.3570628
+            ],
+            [
+              4.8722941,
+              52.3570643
+            ],
+            [
+              4.8722908,
+              52.3570694
+            ],
+            [
+              4.8723265,
+              52.3570783
+            ],
+            [
+              4.8723366,
+              52.3570631
+            ],
+            [
+              4.8723969,
+              52.3570777
+            ],
+            [
+              4.8723028,
+              52.3572203
+            ],
+            [
+              4.8722128,
+              52.3571965
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 18.07,
+      "height": 18.07,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-van-eeghenstraat-97-237151.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012237151"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "van-eeghenstraat-97-237151",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012237151/w01-335p.jpg",
+          "source-data://pand-reference-walls/0363100012237151/w03-338w.jpg",
+          "source-data://pand-reference-walls/0363100012237151/w01-335L.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 4st 5b",
+          "brick-bay-grid 4st 3b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.32; glazing storey band off by 0.59 mean 0.32 vs photo 0.78; wall family unresolved (#0b1f1f is dark and neutral, brick courses not resolved): lightness and hue judged only)); inferred: gate picked the shadowed 2024-11-12 crop w01-335L, which reads the red-brown brick as #0b1f1f (wall family unresolved) and the whole shaded face as glazing (78 pct), while the sunlit 2022-03-22 crop w01-335p shows red-brown brick with cream speklagen and five columns as modelled",
+        "walls[1] not confirmed by the photo (FAIL (wall dL +0.17; glazing storey band off by 0.37)); inferred: crop w03-338w is two-fifths grey stone ground storey and bare branches, read as a grey wall #504d49, while the brick above is buff with red bands, three columns as modelled (columns and shape match)"
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012237151",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T06:47:04.568Z"
+    },
+    {
+      "id": "ordinary-0363100012236607",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012236607",
+      "name": "Van Eeghenstraat 180-212, Amsterdam-Zuid (1905 mansard villa block between Van Eeghenstraat and the Vondelpark; BAG pand 0363100012236607)",
+      "hash": "28acc71baba9a264eb756d0b1bc27b6f3f8e99876a861eb43aa91fcb469058cf",
+      "sha256": "28acc71baba9a264eb756d0b1bc27b6f3f8e99876a861eb43aa91fcb469058cf",
+      "meshHash": "e2303f527368ff46",
+      "bytes": 350100,
+      "triangles": 4646,
       "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
         "min": [
-          -24.325,
-          -0.846,
-          -19.982
+          -14.978,
+          0,
+          -18.86
         ],
         "max": [
-          19.077,
-          26.884,
-          22.8
+          17.021,
+          21.88,
+          11.751
         ]
       },
       "anchor": [
-        4.8677139,
-        52.3849668
+        4.868274,
+        52.3563323
       ],
       "footprint": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              4.867992,
-              52.3851468
+              4.8680532,
+              52.356414
             ],
             [
-              4.8677728,
-              52.3851458
+              4.8681717,
+              52.3562604
             ],
             [
-              4.8675634,
-              52.3851324
+              4.8681804,
+              52.356263
             ],
             [
-              4.8673611,
-              52.3848194
+              4.8682094,
+              52.3562265
             ],
             [
-              4.8673602,
-              52.3847636
+              4.8682332,
+              52.3562335
             ],
             [
-              4.8676022,
-              52.3847614
+              4.8682239,
+              52.3562452
             ],
             [
-              4.8677477,
-              52.3849879
+              4.8682318,
+              52.3562476
             ],
             [
-              4.8678725,
-              52.3849888
+              4.868243,
+              52.3562335
             ],
             [
-              4.8678731,
-              52.3849605
+              4.8682471,
+              52.3562347
             ],
             [
-              4.8679934,
-              52.3849609
+              4.8682444,
+              52.3562383
+            ],
+            [
+              4.8682417,
+              52.3562375
+            ],
+            [
+              4.8682169,
+              52.3562696
+            ],
+            [
+              4.8682199,
+              52.3562705
+            ],
+            [
+              4.8682186,
+              52.3562724
+            ],
+            [
+              4.8682639,
+              52.356288
+            ],
+            [
+              4.868266,
+              52.3562863
+            ],
+            [
+              4.8682675,
+              52.3562873
+            ],
+            [
+              4.8682696,
+              52.3562858
+            ],
+            [
+              4.8683038,
+              52.356296
+            ],
+            [
+              4.8683332,
+              52.3562578
+            ],
+            [
+              4.8684625,
+              52.3562957
+            ],
+            [
+              4.8684943,
+              52.3563053
+            ],
+            [
+              4.8684938,
+              52.356306
+            ],
+            [
+              4.868524,
+              52.3563148
+            ],
+            [
+              4.8684227,
+              52.3564459
+            ],
+            [
+              4.8684304,
+              52.3564482
+            ],
+            [
+              4.868388,
+              52.3565024
+            ],
+            [
+              4.8683507,
+              52.3564911
+            ],
+            [
+              4.8683424,
+              52.3565016
+            ],
+            [
+              4.8682944,
+              52.3564875
+            ],
+            [
+              4.8682979,
+              52.356483
+            ],
+            [
+              4.8681236,
+              52.3564326
+            ],
+            [
+              4.8681269,
+              52.3564284
+            ],
+            [
+              4.8680996,
+              52.3564195
+            ],
+            [
+              4.8680971,
+              52.3564238
             ]
           ]
         ]
       },
-      "nativeHeight": 26.88,
-      "height": 26.88,
-      "modelUrl": "./models/ordinary-buildings/recipe-large-haarlemmerweg-285-097137.glb",
+      "nativeHeight": 21.88,
+      "height": 21.88,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-van-eeghenstraat-180-236607.glb",
       "suppress": [
-        "NL.IMBAG.Pand.0363100012097137"
+        "NL.IMBAG.Pand.0363100012236607"
       ],
       "source": "building-recipes-large",
       "recipe": {
-        "id": "haarlemmerweg-285-097137",
+        "id": "van-eeghenstraat-180-236607",
         "kind": "large",
         "intentSources": [
-          "source-data://pand-reference-walls/0363100012097137/w03-354L.jpg",
-          "source-data://pand-reference-walls/0363100012097137/w06-360L.jpg",
-          "source-data://pand-reference-walls/0363100012097137/w01-292L.jpg",
-          "source-data://pand-reference-walls/0363100012097137/w03-354.jpg",
-          "source-data://pand-reference-walls/0363100012097137/w02-112L.jpg"
+          "source-data://pand-reference-walls/0363100012236607/w02-335p.jpg",
+          "source-data://pand-reference-walls/0363100012236607/w03-155L.jpg",
+          "pano-2021-04-28-w03-155"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -49718,183 +50064,660 @@
           "storey-height/walls[0]:pass",
           "eaves-vs-3dbag/walls[1]:pass",
           "storey-height/walls[1]:pass",
-          "eaves-vs-3dbag/walls[2]:pass",
-          "storey-height/walls[2]:pass",
-          "eaves-vs-3dbag/walls[3]:pass",
-          "storey-height/walls[3]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
           "parts-attached:pass",
-          "openings-within-walls:FAIL"
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid 8st 9b",
-          "brick-bay-grid 9st 6b",
-          "brick-bay-grid 8st 30b",
-          "brick-bay-grid 8st 12b"
+          "brick-bay-grid+entrance 5st 3b",
+          "brick-bay-grid+entrance 5st 4b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] likeness WARN (mask IoU 0.291 < 0.45).",
-        "walls[1] not confirmed by the photo (FAIL (wall dL +0.15; glazing storey band off by 0.51 mean 0.21 vs photo 0.60)); inferred: gate misread - its mask counts the white frames and net curtains of the 0.75 m windows as glazing (0.60 per storey) where the overlay of w06-360L lines up window for window with the model (0.21), and its exposure normalisation reads the one brick at #55362e from a raw #623f35 that is brighter than walls[0]'s raw #5c3e39 (normalised #8a5952)",
-        "walls[0] the Haarlemmerweg front (panel 74 and the corner panels 16, 15, 54, 78; crops w03-354L 2021-03-24 and w03-354 2025-09-29, square on): red-brown brick like the long block next door (Haarlemmerweg 217-283, the same measured #845448), white-framed windows about 0.7 x 1.45 m with one wide two-light window per row (windowPattern), no stone sills, a low dark-brick ground storey with front doors up a stair (stoneStoreys 0 in the dark brick), and a blind parapet storey over the top window row (blankStoreys 8, storeyFactors).",
-        "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #7b5550 not used (not darker than the wall #855449 by 10 L*, or tinted): kit glass kept; walls[0] bays 3 from the likeness grid (padded measurement 11); walls[1] glass #4e342c not used (not darker than the wall #55362e by 10 L*, or tinted): kit glass kept; walls[2] glass #403431 not used (not darker than the wall #4d3431 by 10 L*, or tinted): kit glass kept."
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.33 mean 0.40 vs photo 0.12; wall family unresolved (#38312e is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 3 vs photo 4)); inferred: dark overcast winter crop w03-155L reads the double-light curtained windows as wall (photo glazing 3 pct on the first floor, 12 pct overall) and their mullions as a fourth column, while the photo shows three wide windows per storey under hood moulds as modelled, wall lightness within tolerance (dL 0.11), the slate mansard storeys drawn in the slate texture",
+        "walls[1] not confirmed by the photo (NO PHOTO); inferred: north-east side, no panorama crop (brick grid in the house palette)"
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012097137",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236607",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T07:43:09.307Z"
+      "updatedAt": "2026-10-25T06:59:34.000Z"
     },
     {
-      "id": "ordinary-0363100012101656",
+      "id": "ordinary-0363100012237339",
       "category": "ordinary",
-      "buildingId": "NL.IMBAG.Pand.0363100012101656",
-      "name": "Haarlemmerweg 217-283, Amsterdam-West (GWL-terrein, 1998: the nine-storey brick wall block on the Haarlemmerweg facing the Westerpark; BAG pand 0363100012101656)",
-      "hash": "79185719ea15562dad91c6b57526426916c509e17db2f043079d5f6d49324b01",
-      "sha256": "79185719ea15562dad91c6b57526426916c509e17db2f043079d5f6d49324b01",
-      "meshHash": "408c2d53972e897f",
-      "bytes": 1357968,
-      "triangles": 27841,
-      "materials": 13,
+      "buildingId": "NL.IMBAG.Pand.0363100012237339",
+      "name": "Koningslaan 28A-30, Amsterdam-Zuid (1900s pair of villa-houses on the Vondelpark's south edge; BAG pand 0363100012237339)",
+      "hash": "4969c4623e020b5efe3a2de17c534b453b0b49e9f9251f47f4d067d8a6acbfa9",
+      "sha256": "4969c4623e020b5efe3a2de17c534b453b0b49e9f9251f47f4d067d8a6acbfa9",
+      "meshHash": "1d1afb66967bed27",
+      "bytes": 301036,
+      "triangles": 3689,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
         "min": [
-          -53.003,
-          0,
-          -3.598
+          -11.67,
+          0.001,
+          -7.226
         ],
         "max": [
-          42.266,
-          29.638,
-          14.257
+          16.532,
+          19.482,
+          15.892
         ]
       },
       "anchor": [
-        4.8687706,
-        52.3851359
+        4.8642488,
+        52.355363
       ],
       "footprint": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              4.8683433,
-              52.385148
+              4.8643758,
+              52.3552248
             ],
             [
-              4.867992,
-              52.3851468
+              4.8644914,
+              52.3553673
             ],
             [
-              4.8679935,
-              52.3850166
+              4.8644214,
+              52.3553886
             ],
             [
-              4.8693928,
-              52.3850216
+              4.8644079,
+              52.355372
             ],
             [
-              4.8693429,
-              52.3851518
+              4.8643761,
+              52.3553816
             ],
             [
-              4.8692654,
-              52.3851516
+              4.8643883,
+              52.3553975
             ],
             [
-              4.8692655,
-              52.3851429
+              4.8642918,
+              52.3554281
             ],
             [
-              4.8691833,
-              52.3851426
+              4.8642799,
+              52.3554162
             ],
             [
-              4.8691818,
-              52.3851513
+              4.8642738,
+              52.3554174
             ],
             [
-              4.8690165,
-              52.3851506
+              4.864269,
+              52.3554172
             ],
             [
-              4.8690166,
-              52.3851439
+              4.8642645,
+              52.3554164
             ],
             [
-              4.8689794,
-              52.3851438
+              4.8642594,
+              52.355414
             ],
             [
-              4.8689793,
-              52.3851505
+              4.8642344,
+              52.3553841
             ],
             [
-              4.8688053,
-              52.3851501
+              4.8642186,
+              52.3553884
             ],
             [
-              4.8688054,
-              52.3851434
+              4.8641998,
+              52.3553673
             ],
             [
-              4.8687683,
-              52.385143
+              4.8641943,
+              52.3553673
             ],
             [
-              4.8687681,
-              52.3851497
+              4.8641872,
+              52.3553659
             ],
             [
-              4.8685917,
-              52.3851491
+              4.864179,
+              52.3553614
             ],
             [
-              4.8685918,
-              52.3851424
+              4.8641756,
+              52.355356
             ],
             [
-              4.8685547,
-              52.3851422
+              4.8641762,
+              52.3553503
             ],
             [
-              4.8685546,
-              52.3851489
+              4.8641248,
+              52.3553659
             ],
             [
-              4.8683804,
-              52.3851482
+              4.8640782,
+              52.3553088
             ],
             [
-              4.8683805,
-              52.3851415
+              4.8641306,
+              52.3552929
             ],
             [
-              4.8683434,
-              52.3851413
+              4.8641388,
+              52.3553031
+            ],
+            [
+              4.8641665,
+              52.3552938
+            ],
+            [
+              4.8641645,
+              52.3552913
             ]
           ]
         ]
       },
-      "nativeHeight": 29.64,
-      "height": 29.64,
-      "modelUrl": "./models/ordinary-buildings/recipe-large-haarlemmerweg-217-101656.glb",
+      "nativeHeight": 19.48,
+      "height": 19.48,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-koningslaan-28-237339.glb",
       "suppress": [
-        "NL.IMBAG.Pand.0363100012101656"
+        "NL.IMBAG.Pand.0363100012237339"
       ],
       "source": "building-recipes-large",
       "recipe": {
-        "id": "haarlemmerweg-217-101656",
+        "id": "koningslaan-28-237339",
         "kind": "large",
         "intentSources": [
-          "source-data://pand-reference-walls/0363100012101656/w02-0.jpg",
-          "source-data://pand-reference-walls/0363100012101656/w03-77.jpg",
-          "source-data://pand-reference-walls/0363100012101656/w05-360.jpg",
-          "source-data://pand-reference-walls/0363100012101656/w01-180.jpg"
+          "source-data://pand-reference-walls/0363100012237339/w01-207.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:FAIL"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 5st 3b",
+          "brick-bay-grid 5st 2b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] not confirmed by the photo (NO EVIDENCE (foliage 30 % > 25 %)); inferred: NO EVIDENCE only for foliage 30 pct over 25 pct, every measure the gate took matches (wall dL 0.01, glazing 0.26 vs 0.27, columns 3 vs 3, shape tall vs tall)",
+        "walls[1] not confirmed by the photo (NO PHOTO); inferred: the turret house's upper front, the gate matched no crop to panel 35 (12 deg off panel 27 that w01-207 covers), brick, arches and bands as walls[0]"
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012237339",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T06:47:10.067Z"
+    },
+    {
+      "id": "ordinary-0363100012150885",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012150885",
+      "name": "Koninginneweg 34, Amsterdam-Zuid (Park Plaza hotel, 1983 brick block south of the Vondelpark; BAG pand 0363100012150885)",
+      "hash": "75fdb8455e6389f0c18a2e6464a5d532aec893e186e66d35486c16b836131d55",
+      "sha256": "75fdb8455e6389f0c18a2e6464a5d532aec893e186e66d35486c16b836131d55",
+      "meshHash": "75d51672301f0fd0",
+      "bytes": 323864,
+      "triangles": 4255,
+      "materials": 10,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -19.241,
+          0.001,
+          -8.19
+        ],
+        "max": [
+          14.826,
+          24.313,
+          15.783
+        ]
+      },
+      "anchor": [
+        4.8663563,
+        52.3543475
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8665586,
+              52.3543326
+            ],
+            [
+              4.866553,
+              52.354343
+            ],
+            [
+              4.8665371,
+              52.3543478
+            ],
+            [
+              4.8665294,
+              52.3543463
+            ],
+            [
+              4.8664953,
+              52.3544108
+            ],
+            [
+              4.8664414,
+              52.3544002
+            ],
+            [
+              4.8664403,
+              52.3544022
+            ],
+            [
+              4.8664242,
+              52.3543991
+            ],
+            [
+              4.8664143,
+              52.3544078
+            ],
+            [
+              4.8664012,
+              52.3544146
+            ],
+            [
+              4.8663856,
+              52.3544192
+            ],
+            [
+              4.8663687,
+              52.3544212
+            ],
+            [
+              4.8663514,
+              52.3544205
+            ],
+            [
+              4.8663401,
+              52.3544184
+            ],
+            [
+              4.8663294,
+              52.3544151
+            ],
+            [
+              4.8663154,
+              52.3544081
+            ],
+            [
+              4.866305,
+              52.3543991
+            ],
+            [
+              4.8663004,
+              52.3543923
+            ],
+            [
+              4.8662974,
+              52.3543814
+            ],
+            [
+              4.8662981,
+              52.354374
+            ],
+            [
+              4.8662822,
+              52.354371
+            ],
+            [
+              4.8662829,
+              52.3543691
+            ],
+            [
+              4.8662292,
+              52.3543586
+            ],
+            [
+              4.8662386,
+              52.3543406
+            ],
+            [
+              4.8662193,
+              52.3543369
+            ],
+            [
+              4.8662057,
+              52.3543632
+            ],
+            [
+              4.8660828,
+              52.3543832
+            ],
+            [
+              4.8660737,
+              52.3543621
+            ],
+            [
+              4.8661791,
+              52.3543449
+            ],
+            [
+              4.8661975,
+              52.3543098
+            ],
+            [
+              4.8662281,
+              52.3543158
+            ],
+            [
+              4.8662606,
+              52.3542539
+            ],
+            [
+              4.8662829,
+              52.3542583
+            ],
+            [
+              4.866311,
+              52.3542047
+            ],
+            [
+              4.8663644,
+              52.3542152
+            ],
+            [
+              4.8663652,
+              52.3542134
+            ],
+            [
+              4.8665238,
+              52.3542446
+            ],
+            [
+              4.8665229,
+              52.3542463
+            ],
+            [
+              4.8665766,
+              52.3542569
+            ],
+            [
+              4.8665425,
+              52.3543214
+            ],
+            [
+              4.8665502,
+              52.3543229
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 24.31,
+      "height": 24.31,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-koninginneweg-34-150885.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012150885"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "koninginneweg-34-150885",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012150885/w01-163.jpg",
+          "pano-2020-02-18-w02-15"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 5st 2b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.15; glazing storey band off by 0.20)); inferred: crop w01-163 has an autumn tree in yellow leaf over the left half, read as yellow brick #776933, while the brick to its right is red-brown as modelled, the white bay stack on the right half as in the photo, glazing within 0.10 (0.20 vs 0.29)"
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012150885",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T06:59:36.657Z"
+    },
+    {
+      "id": "ordinary-0363100012236822",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012236822",
+      "name": "Emmalaan 4A-6 / Koningslaan 35, Amsterdam-Zuid (1912 brick block at the Emmalaan, south of the Vondelpark; BAG pand 0363100012236822)",
+      "hash": "2e0d2e7c6cf2bf26af934b14e3840b5e7e90d7e58ef3d0492f2ad0f60d3111aa",
+      "sha256": "2e0d2e7c6cf2bf26af934b14e3840b5e7e90d7e58ef3d0492f2ad0f60d3111aa",
+      "meshHash": "28a802d09e9f962a",
+      "bytes": 312612,
+      "triangles": 4143,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -10.173,
+          0,
+          -13.808
+        ],
+        "max": [
+          14.663,
+          17.981,
+          15.007
+        ]
+      },
+      "anchor": [
+        4.8618301,
+        52.3550876
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.86192,
+              52.3549644
+            ],
+            [
+              4.8619062,
+              52.3549842
+            ],
+            [
+              4.8620437,
+              52.3550209
+            ],
+            [
+              4.8620025,
+              52.3550793
+            ],
+            [
+              4.862001,
+              52.3550789
+            ],
+            [
+              4.8619622,
+              52.3551338
+            ],
+            [
+              4.8619636,
+              52.3551341
+            ],
+            [
+              4.8619209,
+              52.3551948
+            ],
+            [
+              4.8619192,
+              52.3551943
+            ],
+            [
+              4.8619185,
+              52.3551952
+            ],
+            [
+              4.8619149,
+              52.3551953
+            ],
+            [
+              4.8619033,
+              52.355212
+            ],
+            [
+              4.8618974,
+              52.3552105
+            ],
+            [
+              4.8618773,
+              52.3552084
+            ],
+            [
+              4.8618632,
+              52.3552045
+            ],
+            [
+              4.8618473,
+              52.3551973
+            ],
+            [
+              4.861841,
+              52.3551957
+            ],
+            [
+              4.8618446,
+              52.3551906
+            ],
+            [
+              4.8617718,
+              52.3551715
+            ],
+            [
+              4.8617762,
+              52.3551657
+            ],
+            [
+              4.8617252,
+              52.3551532
+            ],
+            [
+              4.8617255,
+              52.3551527
+            ],
+            [
+              4.861684,
+              52.3551352
+            ],
+            [
+              4.8617289,
+              52.3550721
+            ],
+            [
+              4.8616961,
+              52.3550633
+            ],
+            [
+              4.8616949,
+              52.355065
+            ],
+            [
+              4.8616894,
+              52.3550631
+            ],
+            [
+              4.8616917,
+              52.3550599
+            ],
+            [
+              4.8616944,
+              52.3550606
+            ],
+            [
+              4.8617713,
+              52.3549526
+            ],
+            [
+              4.8617686,
+              52.3549519
+            ],
+            [
+              4.8617711,
+              52.3549483
+            ],
+            [
+              4.861777,
+              52.3549498
+            ],
+            [
+              4.8617758,
+              52.3549515
+            ],
+            [
+              4.8618075,
+              52.3549599
+            ],
+            [
+              4.8618081,
+              52.3549592
+            ],
+            [
+              4.8618112,
+              52.35496
+            ],
+            [
+              4.8618258,
+              52.3549394
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 17.98,
+      "height": 17.98,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-emmalaan-4-236822.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012236822"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "emmalaan-4-236822",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012236822/w01-247.jpg",
+          "pano-2022-03-22-w01-247L",
+          "pano-2019-05-03-w02-157",
+          "pano-2025-01-29-w02-157L",
+          "source-data://pand-reference-walls/0363100012236822/w04-68w.jpg",
+          "source-data://pand-reference-walls/0363100012236822/w07-67w.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -49911,24 +50734,26 @@
           "no-floating-parts:pass",
           "open-edges:pass",
           "parts-attached:pass",
-          "openings-within-walls:FAIL"
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid 9st 20b",
-          "brick-bay-grid 10st 12b",
-          "brick-bay-grid 9st 18b"
+          "brick-bay-grid+entrance 3st 3b",
+          "brick-bay-grid 3st 2b",
+          "brick-bay-grid 3st 2b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.26; storey 5: widest opening 18.0 m vs photo 2.6 m (a ribbon against windows))); inferred: gate misread - it reads the photo's storey pitch as 5.36 m where w02-0 shows nine window rows in 26 m (2.66 m), so its per-storey glazing puts the gallery two storeys off, and the gallery's dark mullions split the photo's one 18 m glass band into 2.6 m openings. Wall colour dL 0, columns 20 vs 20, the overlay lines up row for row"
+        "walls[0] not confirmed by the photo (NO EVIDENCE (foliage 38 % > 25 %)); inferred: only crops 43-49 deg off square or 38 pct foliage (no evidence), brick and window groups from the straight crops of the same block (walls[2], WARN)",
+        "walls[1] not confirmed by the photo (NO EVIDENCE (foliage 40 % > 25 %)); inferred: only crops 43-49 deg off square or 40 pct foliage (no evidence), same brick and window groups as walls[2]",
+        "walls[2] likeness WARN (mask IoU 0.286 < 0.45)."
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012101656",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236822",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T07:43:22.963Z"
+      "updatedAt": "2026-10-25T06:47:15.192Z"
     }
   ]
 }

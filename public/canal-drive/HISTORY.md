@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+**Vondelpark south edge and road surfaces (2026-10-25, #62, #63).** Survey of
+big panden on the park's south edge; six installed as large recipes (Van
+Eeghenstraat 97, 110, 180; Koningslaan 28; Koninginneweg 34 Park Plaza;
+Emmalaan 4), five through inferred groups with named misreads (shade,
+autumn tree, oblique-only crops). Integrator review sent back two: Van
+Eeghenstraat 180's mansard rendered pale stone (now `walls[].mansard` on the
+slate slot) and Park Plaza lacked its white bay stack (now oriels). Held:
+Koninginneweg 1 (PDOK shell 40.8 m open edge, 3DBAG timing out), Van
+Eeghenstraat 114 (eaves), Koningslaan 32 and 1. Kit: `gallery`, `mansard`,
+`stripes.share`, oriel lists with rails. Roads #63: procedural asphalt and
+cycle grain (mip-faded), `GUESSED_PAINT = false` (162 band-paint triangles
+city-wide; graph paint was already 0); perf vsync-bound, draw calls 616 →
+564 median. check-ground-cells 276 ok. Census 501.
+
 **Refused installs batch 2 (2026-10-25, #59).** 18 more installed large
 houses refitted against their photos plus Oude Turfmarkt (`storeyFactors`:
 storeys 2.3/4.4/3.6/2.6/4.7 m from the measured rows) and Utrechtsestraat 15

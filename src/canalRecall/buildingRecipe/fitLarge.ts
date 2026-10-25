@@ -12,6 +12,7 @@
  * - entrance on the widest panel's middle bay (or `entrance.bay`), garage doors from its right end;
  * - roof plant: a lift overrun and a plant box at the most interior points of the largest flat roof.
  */
+import {ROOF_COLOURS} from './fit.ts';
 import type {BuildingFacts} from './facts.ts';
 import {swatch, type LargeBuildingIntent, type LargeWallIntent, type RoofMaterial} from './intent.ts';
 import {buildHost, insidePanel, pointInRing, type Panel} from '../blockBuilding/panels.ts';
@@ -25,6 +26,7 @@ import {MESH_SCREEN} from '../blockBuilding/components.ts';
 import {CLADDING, PANEL_ROW_M, claddingHeights, type CladdingFit} from '../blockBuilding/cladding.ts';
 import {fitArcadePiers, type ArcadePiersFit} from '../blockBuilding/arcadePiers.ts';
 import {fitWindowBox, type WindowBoxFit} from '../blockBuilding/windowBox.ts';
+import {fitGallery, type GalleryFit} from '../blockBuilding/gallery.ts';
 import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {roofHeightAt} from './facts.ts';
 import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellRepair.ts';
@@ -94,6 +96,10 @@ export interface LargeGroupFit {
   arcadePiers?: ArcadePiersFit;
   /** a projecting glazed window box over a span of bays on one storey (intent `windowBox`, blockBuilding/windowBox.ts) */
   windowBox?: WindowBoxFit;
+  /** open galleries (verandas) over a span of bays of the main panel (intent `gallery`, blockBuilding/gallery.ts), one entry per gallery */
+  gallery?: GalleryFit[];
+  /** mansard storeys and their slate-textured slot */
+  mansard?: {storeys: number[]; slot: string};
 }
 /** One house of a row split on the main panel (u in panel metres; bays numbered from `bayOffset` across the row). */
 export interface LargeHouseFit {
@@ -527,7 +533,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     }
     groups.push({index: gi, system: w.system, specSystem, panels: own.map(p => p.index), surfaces: [...w.wallSurfaces], mainPanel: main?.index ?? null, bearingDeg: main ? Math.round(bearingOfNormal(main.n)) : null,
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
-      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(plinthSlot ? {plinthSlot} : {}), ...(spandrelSlot ? {spandrels: {sill: w.spandrels!.sill ?? 0, head: w.spandrels!.head ?? 0, slot: spandrelSlot}} : {}), ...(screenSlot ? {meshScreen: {storeys: [...w.meshScreen!.storeys], from: w.meshScreen!.from ?? MESH_SCREEN.from, to: w.meshScreen!.to ?? MESH_SCREEN.to, joint: w.meshScreen!.joint ?? MESH_SCREEN.joint, slot: screenSlot}} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(pilasters ? {pilasters} : {}), ...(dressings ? {dressings} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
+      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(plinthSlot ? {plinthSlot} : {}), ...(spandrelSlot ? {spandrels: {sill: w.spandrels!.sill ?? 0, head: w.spandrels!.head ?? 0, slot: spandrelSlot}} : {}), ...(screenSlot ? {meshScreen: {storeys: [...w.meshScreen!.storeys], from: w.meshScreen!.from ?? MESH_SCREEN.from, to: w.meshScreen!.to ?? MESH_SCREEN.to, joint: w.meshScreen!.joint ?? MESH_SCREEN.joint, slot: screenSlot}} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(w.mansard ? {mansard: {storeys: [...w.mansard.storeys], slot: (palette[`mansard@g${gi}`] = swatch(w.mansard.colour ?? ROOF_COLOURS.slate.steep), `mansard@g${gi}`)}} : {}), ...(pilasters ? {pilasters} : {}), ...(dressings ? {dressings} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
       ...(w.hall ? {hall: {baseM: r3(w.hall.base * eaves), lights: w.hall.lights, rows: w.hall.rows}} : {}),
       ...(w.columns ? {columns: {bays: [...w.columns.bays], share: w.columns.share ?? 0.9, from: w.columns.from ?? 1, slabs: !!w.columns.slabs, ...(colGlass ? {glass: colGlass} : {})}} : {}),
       ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}),
@@ -536,6 +542,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(houses ? {houses} : {}),
       ...(w.arcadePiers ? {arcadePiers: fitArcadePiers(w.arcadePiers, slots.stone)} : {}),
       ...(w.windowBox ? {windowBox: fitWindowBox(w.windowBox, {frame: boxFrame ?? slots.frame, glass: slots.glass, ...(boxDeck ? {deck: boxDeck} : {})}, main ? main.uMax - main.uMin : undefined, bays)} : {}),
+      ...(w.gallery ? {gallery: fitGallery(w.gallery, {stone: slots.stone, timber: (k, colour) => { if (!colour) return slots.frame; const sl = `rail@gal${gi}k${k}`; palette[sl] = swatch(colour); return sl; },
+        rail: (k, colour) => { const sl = `rail@gal${gi}k${k}r`; palette[sl] = swatch(colour); return sl; }})} : {}),
       ...(clad && cladSlot && cladLine ? {cladding: {kind: clad.kind, ...claddingHeights(eaves, clad.from, clad.to), pitchM: clad.pitch ?? (clad.kind === 'paint' ? 0 : CLADDING[clad.kind].pitch), rowPitchM: clad.rowPitch ?? PANEL_ROW_M, slot: cladSlot, lineSlot: cladLine,
         ...(w.wallSplit && main && splitSlot ? {side: {panel: main.index, uM: splitAtBay(main.uMin, main.uMax, pitchM, w.wallSplit.at), right: clad.side === 'right', ...(clad.side === 'right' ? {source: splitSlot} : {})}} : {})}} : {}),
       ...(w.loggias ? {loggiaDepthM: r3(Math.max(...w.loggias.storeys.map(k => (st.lines[k + 1] ?? st.lines[k]) - st.lines[k])) * (w.loggias.deep ?? LOGGIA.deep))} : {}), slots});

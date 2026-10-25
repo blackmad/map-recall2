@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "van-eeghenstraat-110-158526",
+  "pandId": "0363100012158526",
+  "address": "Van Eeghenstraat 110A-C, Amsterdam-Zuid (villa between Van Eeghenstraat and the Vondelpark; BAG pand 0363100012158526)",
+  "sources": [
+    {
+      "id": "pano-2019-01-17-w03-244w",
+      "kind": "street-panorama",
+      "capturedAt": "2019-01-17",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001061_pano_0001_001770/",
+      "image": "source-data://pand-reference-walls/0363100012158526/w03-244w.jpg",
+      "sha256": "4bbe75cf1c187146a9b27a87b25d8cd9b71aaf35862b59604d86c891f09eb880",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "walls": [
+    {
+      "wallSurfaces": [
+        8,
+        56,
+        59
+      ],
+      "system": "brick-bay-grid",
+      "storeys": 4,
+      "baysPerStorey": 3,
+      "ground": "system",
+      "windows": "plain",
+      "entrance": true,
+      "palette": {
+        "brick": "#4f3c36",
+        "glass": "#2c2a2a"
+      },
+      "windowShape": {
+        "w": 0.24,
+        "h": 0.48,
+        "sill": 0.22
+      },
+      "arches": {
+        "windows": "segmental",
+        "band": "none",
+        "storeys": [
+          1
+        ]
+      },
+      "dressings": {
+        "colour": "#ddd8cc",
+        "bands": {
+          "at": [
+            "sill",
+            "head"
+          ],
+          "storeys": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "cornice": true,
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "windowShape",
+        "arches",
+        "dressings",
+        "cornice",
+        "palette"
+      ]
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "palette": {
+    "brick": "#4f3c36",
+    "frame": "#efece4",
+    "door": "#2a2a2a"
+  },
+  "notes": [
+    "Van Eeghenstraat 110A-C (pand 0363100012158526): a tall brick villa between Van Eeghenstraat and the Vondelpark.",
+    "walls[0] the south-west side front (panel 7, 12.3 m; crop w03-244w 2019-01-17, 38 deg off square, through bare trees): purple-brown brick, white stone bands at sill and head lines, sparse white-framed windows in three columns, segmental heads on the first floor, slate roof with dormers.",
+    "INFERRED: the street, park and party walls (otherWalls brick grid; the park crop w04-333p is 68 % foliage)."
+  ],
+  "measured": {
+    "date": "2026-10-25",
+    "groups": []
+  },
+  "roof": {
+    "material": "slate"
+  }
+}
