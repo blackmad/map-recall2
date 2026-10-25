@@ -404,6 +404,11 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     // Balcony rails in their own colour (black iron): a slot of their own, `rail@bg<i>`.
     const balconyRail = w.balconies?.colour ? `rail@bg${gi}` : undefined;
     if (balconyRail) palette[balconyRail] = swatch(w.balconies!.colour!);
+    // A window box in its own frame colour and its deck slab (windowBox.frame, windowBox.deck): slots of their own.
+    const boxFrame = w.windowBox?.frame ? `frame@wb${gi}` : undefined;
+    if (boxFrame) palette[boxFrame] = swatch(w.windowBox!.frame!);
+    const boxDeck = w.windowBox?.deck ? (w.windowBox.deck.colour ? `slab@wb${gi}` : slots.stone) : undefined;
+    if (boxDeck && w.windowBox!.deck!.colour) palette[boxDeck] = swatch(w.windowBox!.deck!.colour);
     const screenSlot = w.meshScreen ? `screen@g${gi}` : undefined;
     if (screenSlot) { palette[screenSlot] = swatch(w.meshScreen!.colour); if (measuredGroups.has(gi)) measuredSlots.push(screenSlot); }
     if (spandrelSlot) { palette[spandrelSlot] = w.spandrels!.colour ? swatch(w.spandrels!.colour) : palette[slots.frame]; if (measuredGroups.has(gi) && w.spandrels!.colour) measuredSlots.push(spandrelSlot); }
@@ -415,7 +420,10 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     if (w.crosses) palette[`cross@g${gi}`] = swatch(w.crosses.colour ?? '#d9534f');
     palette[slots.sign] = swatch(sign?.colour ?? (w.police ? '#1d3f8f' : pal.frame));
     // Widest panel that reaches the ground carries the entrance, garage doors and the bay count.
-    const main = [...own].sort((a, b) => Number(b.vMin < 0.6) - Number(a.vMin < 0.6) || (b.uMax - b.uMin) - (a.uMax - a.uMin) || a.index - b.index)[0];
+    // `mainSurface` (opt-in): the panel holding that 3DBAG surface, when the widest one is a 3DBAG artefact.
+    const named = w.mainSurface !== undefined ? own.find(p => p.walls.some(wi => set.walls[wi].surface === w.mainSurface)) : undefined;
+    if (w.mainSurface !== undefined && !named) throw Error(`${intent.id}: walls[${gi}].mainSurface ${w.mainSurface} is not on a panel of this group`);
+    const main = named ?? [...own].sort((a, b) => Number(b.vMin < 0.6) - Number(a.vMin < 0.6) || (b.uMax - b.uMin) - (a.uMax - a.uMin) || a.index - b.index)[0];
     if (!main) warnings.push(`walls[${gi}]: no panel takes this group (its surfaces are minorities of other panels)`);
     const widthM = main ? main.uMax - main.uMin : 0, eaves = main ? panelEaves(main) : 0, flatTop = main ? main.vMax - eaves < 0.5 : true;
     const plinthFactor = w.plinth?.factor, plinthStoreys = w.plinth ? w.plinth.storeys ?? [0] : [];
@@ -527,7 +535,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(arcade ? {arcade: {...arcade, facing: w.arcade?.facing !== false}} : {}),
       ...(houses ? {houses} : {}),
       ...(w.arcadePiers ? {arcadePiers: fitArcadePiers(w.arcadePiers, slots.stone)} : {}),
-      ...(w.windowBox ? {windowBox: fitWindowBox(w.windowBox, {frame: slots.frame, glass: slots.glass})} : {}),
+      ...(w.windowBox ? {windowBox: fitWindowBox(w.windowBox, {frame: boxFrame ?? slots.frame, glass: slots.glass, ...(boxDeck ? {deck: boxDeck} : {})}, main ? main.uMax - main.uMin : undefined, bays)} : {}),
       ...(clad && cladSlot && cladLine ? {cladding: {kind: clad.kind, ...claddingHeights(eaves, clad.from, clad.to), pitchM: clad.pitch ?? (clad.kind === 'paint' ? 0 : CLADDING[clad.kind].pitch), rowPitchM: clad.rowPitch ?? PANEL_ROW_M, slot: cladSlot, lineSlot: cladLine,
         ...(w.wallSplit && main && splitSlot ? {side: {panel: main.index, uM: splitAtBay(main.uMin, main.uMax, pitchM, w.wallSplit.at), right: clad.side === 'right', ...(clad.side === 'right' ? {source: splitSlot} : {})}} : {})}} : {}),
       ...(w.loggias ? {loggiaDepthM: r3(Math.max(...w.loggias.storeys.map(k => (st.lines[k + 1] ?? st.lines[k]) - st.lines[k])) * (w.loggias.deep ?? LOGGIA.deep))} : {}), slots});

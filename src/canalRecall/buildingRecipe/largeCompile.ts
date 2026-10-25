@@ -122,7 +122,7 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   // Free-standing arcade piers and their beam on their own pitch, in front of the openings, under the cornice.
   if (g.arcadePiers && g.mainPanel === p.index) { const k = drawArcadePiers(c, levels, g.arcadePiers, g.bays, underCornice); if (k) counts.arcadePiers = (counts.arcadePiers ?? 0) + k; }
   // Projecting glazed window box over its bay span, in front of the (blind) wall, under the cornice.
-  if (g.windowBox && g.mainPanel === p.index && drawWindowBox(c, levels, g.windowBox, g.bays, underCornice)) counts.windowBoxes = (counts.windowBoxes ?? 0) + 1;
+  if (g.windowBox && (g.mainPanel === p.index || g.windowBox.spread) && drawWindowBox(c, levels, g.windowBox, g.bays, underCornice, g.mainPanel !== p.index)) counts.windowBoxes = (counts.windowBoxes ?? 0) + 1;
   // Row split: each house's cornice at its own eaves and shop fascia at its own ground line, inside its span.
   const houses = g.houses?.panel === p.index ? g.houses.segs : null;
   if (houses) for (const h of houses) {

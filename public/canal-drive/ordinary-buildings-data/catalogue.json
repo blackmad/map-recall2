@@ -49614,6 +49614,321 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-25T02:17:53.984Z"
+    },
+    {
+      "id": "ordinary-0363100012097137",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012097137",
+      "name": "Haarlemmerweg 285-303, Amsterdam-West (GWL-terrein, 1996: the L-shaped brick block at the west corner of the terrain, facing the Westerpark; BAG pand 0363100012097137)",
+      "hash": "1b8193101de51d67390cae175b6ee412ef638bc6904b21af158f0f2f77e35b6a",
+      "sha256": "1b8193101de51d67390cae175b6ee412ef638bc6904b21af158f0f2f77e35b6a",
+      "meshHash": "428a7466c5005790",
+      "bytes": 1047912,
+      "triangles": 14404,
+      "materials": 11,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -24.325,
+          -0.846,
+          -19.982
+        ],
+        "max": [
+          19.077,
+          26.884,
+          22.8
+        ]
+      },
+      "anchor": [
+        4.8677139,
+        52.3849668
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.867992,
+              52.3851468
+            ],
+            [
+              4.8677728,
+              52.3851458
+            ],
+            [
+              4.8675634,
+              52.3851324
+            ],
+            [
+              4.8673611,
+              52.3848194
+            ],
+            [
+              4.8673602,
+              52.3847636
+            ],
+            [
+              4.8676022,
+              52.3847614
+            ],
+            [
+              4.8677477,
+              52.3849879
+            ],
+            [
+              4.8678725,
+              52.3849888
+            ],
+            [
+              4.8678731,
+              52.3849605
+            ],
+            [
+              4.8679934,
+              52.3849609
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 26.88,
+      "height": 26.88,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-haarlemmerweg-285-097137.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012097137"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "haarlemmerweg-285-097137",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012097137/w03-354L.jpg",
+          "source-data://pand-reference-walls/0363100012097137/w06-360L.jpg",
+          "source-data://pand-reference-walls/0363100012097137/w01-292L.jpg",
+          "source-data://pand-reference-walls/0363100012097137/w03-354.jpg",
+          "source-data://pand-reference-walls/0363100012097137/w02-112L.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:FAIL"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 8st 9b",
+          "brick-bay-grid 9st 6b",
+          "brick-bay-grid 8st 30b",
+          "brick-bay-grid 8st 12b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] likeness WARN (mask IoU 0.291 < 0.45).",
+        "walls[1] not confirmed by the photo (FAIL (wall dL +0.15; glazing storey band off by 0.51 mean 0.21 vs photo 0.60)); inferred: gate misread - its mask counts the white frames and net curtains of the 0.75 m windows as glazing (0.60 per storey) where the overlay of w06-360L lines up window for window with the model (0.21), and its exposure normalisation reads the one brick at #55362e from a raw #623f35 that is brighter than walls[0]'s raw #5c3e39 (normalised #8a5952)",
+        "walls[0] the Haarlemmerweg front (panel 74 and the corner panels 16, 15, 54, 78; crops w03-354L 2021-03-24 and w03-354 2025-09-29, square on): red-brown brick like the long block next door (Haarlemmerweg 217-283, the same measured #845448), white-framed windows about 0.7 x 1.45 m with one wide two-light window per row (windowPattern), no stone sills, a low dark-brick ground storey with front doors up a stair (stoneStoreys 0 in the dark brick), and a blind parapet storey over the top window row (blankStoreys 8, storeyFactors).",
+        "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #7b5550 not used (not darker than the wall #855449 by 10 L*, or tinted): kit glass kept; walls[0] bays 3 from the likeness grid (padded measurement 11); walls[1] glass #4e342c not used (not darker than the wall #55362e by 10 L*, or tinted): kit glass kept; walls[2] glass #403431 not used (not darker than the wall #4d3431 by 10 L*, or tinted): kit glass kept."
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012097137",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T07:43:09.307Z"
+    },
+    {
+      "id": "ordinary-0363100012101656",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012101656",
+      "name": "Haarlemmerweg 217-283, Amsterdam-West (GWL-terrein, 1998: the nine-storey brick wall block on the Haarlemmerweg facing the Westerpark; BAG pand 0363100012101656)",
+      "hash": "79185719ea15562dad91c6b57526426916c509e17db2f043079d5f6d49324b01",
+      "sha256": "79185719ea15562dad91c6b57526426916c509e17db2f043079d5f6d49324b01",
+      "meshHash": "408c2d53972e897f",
+      "bytes": 1357968,
+      "triangles": 27841,
+      "materials": 13,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -53.003,
+          0,
+          -3.598
+        ],
+        "max": [
+          42.266,
+          29.638,
+          14.257
+        ]
+      },
+      "anchor": [
+        4.8687706,
+        52.3851359
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8683433,
+              52.385148
+            ],
+            [
+              4.867992,
+              52.3851468
+            ],
+            [
+              4.8679935,
+              52.3850166
+            ],
+            [
+              4.8693928,
+              52.3850216
+            ],
+            [
+              4.8693429,
+              52.3851518
+            ],
+            [
+              4.8692654,
+              52.3851516
+            ],
+            [
+              4.8692655,
+              52.3851429
+            ],
+            [
+              4.8691833,
+              52.3851426
+            ],
+            [
+              4.8691818,
+              52.3851513
+            ],
+            [
+              4.8690165,
+              52.3851506
+            ],
+            [
+              4.8690166,
+              52.3851439
+            ],
+            [
+              4.8689794,
+              52.3851438
+            ],
+            [
+              4.8689793,
+              52.3851505
+            ],
+            [
+              4.8688053,
+              52.3851501
+            ],
+            [
+              4.8688054,
+              52.3851434
+            ],
+            [
+              4.8687683,
+              52.385143
+            ],
+            [
+              4.8687681,
+              52.3851497
+            ],
+            [
+              4.8685917,
+              52.3851491
+            ],
+            [
+              4.8685918,
+              52.3851424
+            ],
+            [
+              4.8685547,
+              52.3851422
+            ],
+            [
+              4.8685546,
+              52.3851489
+            ],
+            [
+              4.8683804,
+              52.3851482
+            ],
+            [
+              4.8683805,
+              52.3851415
+            ],
+            [
+              4.8683434,
+              52.3851413
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 29.64,
+      "height": 29.64,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-haarlemmerweg-217-101656.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012101656"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "haarlemmerweg-217-101656",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012101656/w02-0.jpg",
+          "source-data://pand-reference-walls/0363100012101656/w03-77.jpg",
+          "source-data://pand-reference-walls/0363100012101656/w05-360.jpg",
+          "source-data://pand-reference-walls/0363100012101656/w01-180.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:FAIL"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 9st 20b",
+          "brick-bay-grid 10st 12b",
+          "brick-bay-grid 9st 18b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.26; storey 5: widest opening 18.0 m vs photo 2.6 m (a ribbon against windows))); inferred: gate misread - it reads the photo's storey pitch as 5.36 m where w02-0 shows nine window rows in 26 m (2.66 m), so its per-storey glazing puts the gallery two storeys off, and the gallery's dark mullions split the photo's one 18 m glass band into 2.6 m openings. Wall colour dL 0, columns 20 vs 20, the overlay lines up row for row"
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012101656",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T07:43:22.963Z"
     }
   ]
 }

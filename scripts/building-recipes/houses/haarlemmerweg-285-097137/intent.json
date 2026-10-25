@@ -1,0 +1,363 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "haarlemmerweg-285-097137",
+  "pandId": "0363100012097137",
+  "address": "Haarlemmerweg 285-303, Amsterdam-West (GWL-terrein, 1996: the L-shaped brick block at the west corner of the terrain, facing the Westerpark; BAG pand 0363100012097137)",
+  "sources": [
+    {
+      "id": "pano-2021-03-24-w03-354L",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-24",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002058_pano_0000_000103/",
+      "image": "source-data://pand-reference-walls/0363100012097137/w03-354L.jpg",
+      "sha256": "2ce4dbab76d52ceb7ed91a4a8b8dee075f6d1ee4949b16149898034439ac064d",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2020-01-27-w06-360L",
+      "kind": "street-panorama",
+      "capturedAt": "2020-01-27",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001594_pano_0000_000389/",
+      "image": "source-data://pand-reference-walls/0363100012097137/w06-360L.jpg",
+      "sha256": "62a51200d8549257f8befdd09ef7a8b3cf555fbd58c366b4425bd5b349b507db",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2021-03-22-w01-292L",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-22",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002054_pano_0000_004205/",
+      "image": "source-data://pand-reference-walls/0363100012097137/w01-292L.jpg",
+      "sha256": "d6622966889b6fb33b80d42e7d00a591e6d217c4d3163d81f719d6058a0e8cf0",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2025-09-29-w03-354",
+      "kind": "street-panorama",
+      "capturedAt": "2025-09-29",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_08_29_07_01077/",
+      "image": "source-data://pand-reference-walls/0363100012097137/w03-354.jpg",
+      "sha256": "d2aaf6209b9f46aa5768c41204797ea32bc5e97a317ff5f3cbac686f34b7ec16",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2019-11-08-w02-112L",
+      "kind": "street-panorama",
+      "capturedAt": "2019-11-08",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000473_pano_0007_000276/",
+      "image": "source-data://pand-reference-walls/0363100012097137/w02-112L.jpg",
+      "sha256": "0a0c22c44e75aaaf8c3820049ceb82c19a73f6c4aca2253ed2298bbe4a85c68e",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "walls": [
+    {
+      "wallSurfaces": [
+        83,
+        20,
+        18,
+        60,
+        76,
+        78
+      ],
+      "street": "Haarlemmerweg",
+      "system": "brick-bay-grid",
+      "storeys": 8,
+      "baysPerStorey": 9,
+      "ground": "blank",
+      "windows": "plain",
+      "sills": false,
+      "storeyFactors": [
+        1.1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1.5
+      ],
+      "stoneStoreys": [
+        0
+      ],
+      "windowShape": {
+        "w": 0.6,
+        "h": 0.58,
+        "sill": 0.22
+      },
+      "windowPattern": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.95,
+        0.5
+      ],
+      "palette": {
+        "brick": "#855449",
+        "stone": "#4b3a34",
+        "glass": "#4e565c"
+      },
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "storeyFactors",
+        "stoneStoreys",
+        "windowShape",
+        "windowPattern",
+        "storeyShapes",
+        "palette"
+      ],
+      "storeyShapes": [
+        {
+          "storeys": [
+            3
+          ],
+          "w": 0.55,
+          "h": 0.48,
+          "sill": 0.25
+        },
+        {
+          "storeys": [
+            4,
+            5,
+            6
+          ],
+          "w": 0.66,
+          "h": 0.62,
+          "sill": 0.2
+        },
+        {
+          "storeys": [
+            7
+          ],
+          "w": 0.6,
+          "h": 0.36,
+          "sill": 0.12
+        }
+      ]
+    },
+    {
+      "wallSurfaces": [
+        7
+      ],
+      "street": "Haarlemmerweg",
+      "system": "brick-bay-grid",
+      "storeys": 9,
+      "baysPerStorey": 6,
+      "ground": "system",
+      "windows": "plain",
+      "sills": false,
+      "storeyFactors": [
+        1.15,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "windowShape": {
+        "w": 0.6,
+        "h": 0.42,
+        "sill": 0.3
+      },
+      "openBays": [
+        {
+          "storeys": [
+            0
+          ],
+          "bays": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "storeys": [
+            1,
+            2,
+            3
+          ],
+          "bays": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ],
+      "palette": {
+        "brick": "#855449",
+        "glass": "#4e565c"
+      },
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "storeyFactors",
+        "windowShape",
+        "openBays",
+        "palette"
+      ]
+    },
+    {
+      "wallSurfaces": [
+        17,
+        21,
+        13,
+        14
+      ],
+      "system": "brick-bay-grid",
+      "alignWith": 0,
+      "baysPerStorey": 30,
+      "ground": "blank",
+      "windows": "plain",
+      "sills": false,
+      "windowShape": {
+        "w": 0.55,
+        "h": 0.55,
+        "sill": 0.25
+      },
+      "windowPattern": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.95,
+        0.5
+      ],
+      "loggias": {
+        "storeys": [
+          5,
+          6,
+          7
+        ],
+        "bays": [
+          27,
+          28
+        ],
+        "w": 0.95,
+        "h": 0.8,
+        "sill": 0.05,
+        "deep": 0.5,
+        "rail": "solid",
+        "colour": "#5a4636"
+      },
+      "palette": {
+        "brick": "#855449",
+        "stone": "#4b3a34",
+        "glass": "#4e565c"
+      },
+      "hand": [
+        "baysPerStorey",
+        "windowShape",
+        "windowPattern",
+        "loggias",
+        "palette",
+        "openBays"
+      ],
+      "mainSurface": 17,
+      "openBays": [
+        {
+          "storeys": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "bays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            22,
+            23,
+            25,
+            26,
+            27,
+            28,
+            29
+          ]
+        }
+      ]
+    },
+    {
+      "wallSurfaces": [
+        74,
+        79,
+        24
+      ],
+      "system": "brick-bay-grid",
+      "alignWith": 0,
+      "baysPerStorey": 12,
+      "ground": "system",
+      "windows": "plain",
+      "sills": false,
+      "windowShape": {
+        "w": 0.55,
+        "h": 0.55,
+        "sill": 0.25
+      },
+      "palette": {
+        "brick": "#855449",
+        "glass": "#4e565c"
+      },
+      "hand": [
+        "baysPerStorey",
+        "windowShape",
+        "palette"
+      ]
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "palette": {
+    "brick": "#855449",
+    "frame": "#eeece6",
+    "door": "#2e3032",
+    "stone": "#4b3a34"
+  },
+  "roof": {
+    "material": "bitumen"
+  },
+  "notes": [
+    "Haarlemmerweg 285-303 (pand 0363100012097137, built 1996), the GWL-terrein's L-shaped west corner block: a nine-storey arm on the Haarlemmerweg facing the Westerpark and an eight-storey wing running south-south-west; 25.6 m.",
+    "walls[0] the Haarlemmerweg front (panel 74 and the corner panels 16, 15, 54, 78; crops w03-354L 2021-03-24 and w03-354 2025-09-29, square on): red-brown brick like the long block next door (Haarlemmerweg 217-283, the same measured #845448), white-framed windows about 0.7 x 1.45 m with one wide two-light window per row (windowPattern), no stone sills, a low dark-brick ground storey with front doors up a stair (stoneStoreys 0 in the dark brick), and a blind parapet storey over the top window row (blankStoreys 8, storeyFactors).",
+    "walls[1] the corner panel 6 (crop w06-360L 2020-01-27): nine storeys, six windows a row above, four on the lower three storeys, doors on the ground.",
+    "walls[2] the west wing front (panels 14 and 11, crop w01-292L 2021-03-22): the same brick and windows on a 1.2 m pitch with wide windows every few bays, a dark brick ground storey of front doors behind steps, and a stack of recessed timber-fronted loggias at the north end of the top three storeys (loggias).",
+    "walls[3] the courtyard side (panel 67, crop w02-112L 2019-11-08, behind trees).",
+    "NOT DRAWN (kit cannot say): the upper four storeys of the Haarlemmerweg arm cantilever about 0.5 m over the lower three (one 3DBAG plane); the mid-wing loggia stack on storeys 1-4 (one loggias set per group).",
+    "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #7b5550 not used (not darker than the wall #855449 by 10 L*, or tinted): kit glass kept; walls[0] bays 3 from the likeness grid (padded measurement 11); walls[1] glass #4e342c not used (not darker than the wall #55362e by 10 L*, or tinted): kit glass kept; walls[2] glass #403431 not used (not darker than the wall #4d3431 by 10 L*, or tinted): kit glass kept."
+  ],
+  "budgetTriangles": 16000,
+  "measured": {
+    "date": "2026-10-25",
+    "groups": [
+      0,
+      1,
+      2
+    ]
+  }
+}

@@ -842,6 +842,13 @@ export interface LargeWallIntent {
   wallSurfaces: number[];
   /** Optional street the group faces (the facts step fetches a reference crop for it). */
   street?: string;
+  /**
+   * The 3DBAG wall surface (one of `wallSurfaces`) whose panel is the group's main panel, in place of the widest panel
+   * reaching the ground: for a front whose widest 3DBAG plane is an artefact (Haarlemmerweg 285-303, issue #65: the
+   * projecting lower storeys of one third of the west wing reconstructed as a 35 m plane sloping from 14 m to 3 m in
+   * front of the 32 m wing front). Bay count, storey lines, entrance and the photo pairing follow it. Absent: unchanged.
+   */
+  mainSurface?: number;
   system: LargeSystemName;
   /** Full storeys incl. ground on this wall (default: civic storey height, 4.2 m before 1945, 3.6 m after). */
   storeys?: number;

@@ -1,0 +1,503 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "haarlemmerweg-217-101656",
+  "pandId": "0363100012101656",
+  "address": "Haarlemmerweg 217-283, Amsterdam-West (GWL-terrein, 1998: the nine-storey brick wall block on the Haarlemmerweg facing the Westerpark; BAG pand 0363100012101656)",
+  "sources": [
+    {
+      "id": "pano-2021-03-24-w02-0",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-24",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002058_pano_0000_000096/",
+      "image": "source-data://pand-reference-walls/0363100012101656/w02-0.jpg",
+      "sha256": "de104b201ff26f30b7fd0a450ec11dffb2a029defec92c6a473f2990a0db8867",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2021-12-30-w03-77",
+      "kind": "street-panorama",
+      "capturedAt": "2021-12-30",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002367_pano_0004_000204/",
+      "image": "source-data://pand-reference-walls/0363100012101656/w03-77.jpg",
+      "sha256": "67f22d5f858ff646289a6c2202225040c1574c941d56f7b712592d0495e3cd4b",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2021-03-24-w05-360",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-24",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002058_pano_0000_000092/",
+      "image": "source-data://pand-reference-walls/0363100012101656/w05-360.jpg",
+      "sha256": "46f7e76363a8b8f3314a17cad89e6e51b0e832cce0234c9320758889e0d8a268",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2019-11-08-w01-180",
+      "kind": "street-panorama",
+      "capturedAt": "2019-11-08",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000473_pano_0007_000306/",
+      "image": "source-data://pand-reference-walls/0363100012101656/w01-180.jpg",
+      "sha256": "5d61bc30596dc4e9dbf12ebd7782d3d8273faee20b33ebcd678454e1b7931f5a",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "walls": [
+    {
+      "wallSurfaces": [
+        20,
+        17,
+        14,
+        70,
+        19,
+        15,
+        12,
+        10,
+        39,
+        41,
+        9,
+        30,
+        71,
+        2
+      ],
+      "street": "Haarlemmerweg",
+      "system": "brick-bay-grid",
+      "storeys": 9,
+      "baysPerStorey": 20,
+      "ground": "system",
+      "windows": "plain",
+      "storeyFactors": [
+        1.35,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "windowShape": {
+        "w": 0.6,
+        "h": 0.53,
+        "sill": 0.34
+      },
+      "storeyShapes": [
+        {
+          "storeys": [
+            5
+          ],
+          "w": 0.6,
+          "h": 0.2,
+          "sill": 0.68
+        }
+      ],
+      "openBays": [
+        {
+          "storeys": [
+            1
+          ],
+          "bays": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        {
+          "storeys": [
+            2
+          ],
+          "bays": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        {
+          "storeys": [
+            3
+          ],
+          "bays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        {
+          "storeys": [
+            4
+          ],
+          "bays": [
+            15,
+            16,
+            17,
+            19
+          ]
+        },
+        {
+          "storeys": [
+            6
+          ],
+          "bays": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            8,
+            9,
+            10,
+            11,
+            13,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        {
+          "storeys": [
+            7
+          ],
+          "bays": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            7,
+            8,
+            10,
+            14,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        {
+          "storeys": [
+            8
+          ],
+          "bays": [
+            1,
+            3,
+            4,
+            5,
+            6,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ]
+        }
+      ],
+      "windowBox": {
+        "storey": 4,
+        "bays": [
+          0,
+          14
+        ],
+        "sill": 0.44,
+        "h": 1.13,
+        "proud": 0.6,
+        "lights": 13,
+        "transom": true,
+        "spread": true,
+        "frame": "#3c4044",
+        "deck": {
+          "h": 0.12,
+          "out": 0.5,
+          "colour": "#b4b2ac"
+        }
+      },
+      "palette": {
+        "brick": "#845448",
+        "glass": "#4e565c"
+      },
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "storeyFactors",
+        "windowShape",
+        "storeyShapes",
+        "openBays",
+        "windowBox",
+        "palette",
+        "plinth"
+      ],
+      "plinth": {
+        "storeys": [
+          0
+        ],
+        "bays": [
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "lights": 2,
+        "sill": 0.02,
+        "h": 0.9
+      }
+    },
+    {
+      "wallSurfaces": [
+        55
+      ],
+      "system": "brick-bay-grid",
+      "baysPerStorey": 12,
+      "ground": "system",
+      "windows": "plain",
+      "windowShape": {
+        "w": 0.62,
+        "h": 0.52,
+        "sill": 0.3
+      },
+      "openBays": [
+        {
+          "storeys": [
+            0
+          ],
+          "bays": [
+            1,
+            2,
+            4,
+            9
+          ]
+        },
+        {
+          "storeys": [
+            1
+          ],
+          "bays": [
+            1,
+            3,
+            4,
+            9
+          ]
+        },
+        {
+          "storeys": [
+            2
+          ],
+          "bays": [
+            2,
+            3,
+            5,
+            10
+          ]
+        },
+        {
+          "storeys": [
+            3
+          ],
+          "bays": [
+            1,
+            2,
+            4,
+            10
+          ]
+        },
+        {
+          "storeys": [
+            4
+          ],
+          "bays": [
+            2,
+            3,
+            4,
+            9
+          ]
+        },
+        {
+          "storeys": [
+            5
+          ],
+          "bays": [
+            1,
+            3,
+            5,
+            10
+          ]
+        },
+        {
+          "storeys": [
+            6
+          ],
+          "bays": [
+            1,
+            2,
+            5,
+            9
+          ]
+        },
+        {
+          "storeys": [
+            7
+          ],
+          "bays": [
+            2,
+            3,
+            4,
+            9
+          ]
+        },
+        {
+          "storeys": [
+            8
+          ],
+          "bays": [
+            1,
+            2,
+            4,
+            10
+          ]
+        },
+        {
+          "storeys": [
+            9
+          ],
+          "bays": [
+            1,
+            3,
+            5,
+            9
+          ]
+        }
+      ],
+      "palette": {
+        "brick": "#845448",
+        "glass": "#4e565c"
+      },
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "windowShape",
+        "openBays",
+        "palette"
+      ],
+      "storeys": 10
+    },
+    {
+      "wallSurfaces": [
+        24,
+        25,
+        26,
+        64,
+        65,
+        86,
+        88
+      ],
+      "system": "brick-bay-grid",
+      "alignWith": 0,
+      "baysPerStorey": 18,
+      "ground": "system",
+      "windows": "plain",
+      "balconies": {
+        "storeys": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "rail": "bars",
+        "colour": "#d9d7d0"
+      },
+      "palette": {
+        "brick": "#845448",
+        "glass": "#4e565c"
+      },
+      "hand": [
+        "baysPerStorey",
+        "balconies",
+        "palette"
+      ]
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "palette": {
+    "brick": "#845448",
+    "frame": "#eeece6",
+    "door": "#2e3032",
+    "stone": "#c4c1ba"
+  },
+  "roof": {
+    "material": "bitumen"
+  },
+  "notes": [
+    "Haarlemmerweg 217-283 (pand 0363100012101656, built 1998), the north wall block of the GWL-terrein, 90 m along the Haarlemmerweg facing the Westerpark across the Haarlemmervaart; 26 m, nine storeys.",
+    "walls[0] the Haarlemmerweg front (panels 18, 12, 13, 8, 7 and the 2.5 m entrance notches 15, 17, 10, 33, the tall east end 59 and 1; crops w02-0, w05-360, w04-360, w06-360L, w07-0, 2021-03-24/22, square on and leaf-off): red-brown brick, small white-framed windows about 0.75 x 1.4 m on a 1.2 m pitch with blind bays scattered differently on every storey (openBays, read off w02-0 and w05-360), a taller ground storey (storeyFactors 1.35). The signature: an enclosed access gallery, a dark-framed glass band on a pale concrete deck hung on struts, cantilevered about 1.8 m from the fifth storey up into the sixth along the whole front (kit windowBox with spread, frame and deck, issue #65); on the west panel it stops three quarters along (bays 0-14 of 20). A row of short windows sits over the band on the sixth storey (storeyShapes).",
+    "walls[1] the east end (panel 48, crop w03-77 2021-12-30): the same brick and windows without the gallery, scattered on alternating storeys.",
+    "walls[2] the courtyard front (panel 22, crop w01-180 2019-11-08, 43 % foliage): concrete-framed balcony galleries on every upper storey; drawn as brick with pale bar balconies. Not seen from the park.",
+    "INFERRED: the roof-level step walls and the west party wall (otherWalls brick grid).",
+    "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] bays 3 from the likeness grid (padded measurement 4)."
+  ],
+  "budgetTriangles": 30000,
+  "measured": {
+    "date": "2026-10-25",
+    "groups": [
+      0,
+      1
+    ]
+  }
+}
