@@ -1,0 +1,305 @@
+{
+ "id": "zo-ho-hood",
+ "label": "Holendrecht-Oost (1984) terraced house in mirrored pairs: red-brown brick, white pointed hood over the door, wide window below a wide window and a clerestory ribbon, dark tile roof along the street (Mijndenhof east)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 1,
+  "panden": 94,
+  "bouwjaar": [
+   1984,
+   1984
+  ],
+  "lengthM": 9.6,
+  "widthM": 5.4,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  4.6,
+  6.2
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.0,
+   5.9
+  ],
+  "depth": [
+   9.1,
+   10.1
+  ]
+ },
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.12,
+  "pitchDeg": 28,
+  "eavesFromPlanes": "low-back"
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "white-frames",
+ "variants": {
+  "white-frames": {
+   "label": "white frames",
+   "evidence": "HO survey terraces 9,13,22,29 (overcast/neutral photos)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#a8705a"
+    },
+    "frame": "#ece9e0",
+    "glass": "#4b5a6b",
+    "door": "#f2f0ea",
+    "accent": "#eeeae0",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#ece9e0",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "slate",
+     "tint": "#535556"
+    }
+   }
+  },
+  "green-frames": {
+   "label": "dark green frames (sunlit rows)",
+   "evidence": "HO survey terraces 12,15,17,25",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#b4765a"
+    },
+    "frame": "#2f5a3f",
+    "glass": "#4b5a6b",
+    "door": "#f2f0ea",
+    "accent": "#eeeae0",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#ece9e0",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "slate",
+     "tint": "#535556"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122148587.jpg",
+     "pand": "03631000122148587",
+     "address": "Mijndenhof",
+     "note": "2024-10 overcast: mirrored pairs, door beside door; white pointed hood 1.5 m over a 0.85 m door with a narrow sidelight; 1.6 x 1.15 m ground window; upper: 1.5 x 1.1 m window over it and a three-light 2.5 x 0.45 m clerestory ribbon over the door"
+    },
+    {
+     "photo": "survey crop 03631000122115288.jpg",
+     "pand": "03631000122115288",
+     "address": "Mijndenhof",
+     "note": "same, 2019-06"
+    },
+    {
+     "photo": "survey crop 03631000122129010.jpg",
+     "pand": "03631000122129010",
+     "address": "Mijndenhof",
+     "note": "sunlit 2021-06: orange-red brick, dark green frames, white hoods"
+    },
+    {
+     "photo": "survey crop 03631000122136061.jpg",
+     "pand": "03631000122136061",
+     "address": "Mijndenhof",
+     "note": "sunlit 2021-06: same as 2129010"
+    },
+    {
+     "photo": "survey crop 03631000122098183.jpg",
+     "pand": "03631000122098183",
+     "address": "Mijndenhof",
+     "note": "2024-10: same with white frames"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.7,
+       "w": 0.85,
+       "h": 2.05
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 2.32,
+       "w": 0.2,
+       "h": 1.9,
+       "sill": 0.1,
+       "lights": 1
+      },
+      {
+       "kind": "canopy",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.85,
+       "w": 1.5,
+       "h": 0.4,
+       "sill": 2.15,
+       "depth": 0.6,
+       "canopy": "gable"
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.6,
+       "w": 1.6,
+       "h": 1.15,
+       "sill": 0.95,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.6,
+       "w": 1.5,
+       "h": 1.1,
+       "sill": 0.85,
+       "lights": 2
+      },
+      {
+       "kind": "ribbon",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.55,
+       "w": 2.5,
+       "h": 0.45,
+       "sill": 1.5,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012148587.jpg",
+     "pand": "0363100012148587",
+     "address": "Mijndenhof",
+     "note": "garden side NOT photographed: generic garden door, kitchen window and two bedroom windows, inferred; hidden between rear gardens in practice; the back slope catslides to ~3-3.8 m (3DBAG roof planes), so the upper storey has no back wall windows (rooflights not modelled)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.1,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122148587.jpg",
+     "pand": "03631000122148587",
+     "address": "Mijndenhof",
+     "note": "end wall seen edge-on beside the front; plain, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122148587.jpg",
+     "pand": "03631000122148587",
+     "address": "Mijndenhof",
+     "note": "end wall seen edge-on beside the front; plain, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick tint between the sunlit (#c88c6b) and overcast (#706864) medians; never darkened.",
+  "Mirror parity inferred (generator alternation).",
+  "Garden side inferred.",
+  "3DBAG roof planes (94 pands): front slope ends at 5.29 m median, back slope catslides to 3.14 m, ridge 7.98 m, 38 degrees: asymmetric gable."
+ ],
+ "rowCoherentHeights": true
+}

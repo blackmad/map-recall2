@@ -1,0 +1,325 @@
+{
+ "id": "zo-g4-roof-house",
+ "label": "Gein 4 (1986) terraced house under a steep orange tile roof with eaves at ~2.9 m and two roof windows, white-painted ground storey with an entrance vestibule and a window wall, buff brick piers and gables (Wethouder Wierdelsstraat, Vospad, in 't Veldstraat, De Vriesplantsoen)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 1,
+  "panden": 330,
+  "bouwjaar": [
+   1986,
+   1986
+  ],
+  "lengthM": 12.5,
+  "widthM": 5.2,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  2.2,
+  3.8
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.8,
+   5.7
+  ],
+  "depth": [
+   11.5,
+   13.0
+  ]
+ },
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.35,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.12,
+  "pitchDeg": 48,
+  "rooflights": {
+   "u": [
+    0.3,
+    0.7
+   ],
+   "w": 0.75,
+   "h": 1.0,
+   "along": 0.35
+  },
+  "eavesFromPlanes": "low-front"
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "orange",
+ "variants": {
+  "orange": {
+   "label": "orange tile roof",
+   "evidence": "Gein 4 survey terraces 0-2,9,15,24,26-29,32,40,41,46,54,56,58-78",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#94604c"
+    },
+    "frame": "#ece9e0",
+    "glass": "#4b5a6b",
+    "door": "#f2f0ea",
+    "accent": "#eeeae0",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#a85a40"
+    },
+    "gable": {
+     "slot": "brick",
+     "tint": "#cdbd96"
+    }
+   }
+  }
+ },
+ "annexes": [
+  {
+   "id": "vestibule",
+   "facade": "front",
+   "u": [
+    0.0,
+    1.8
+   ],
+   "d": [
+    0,
+    0.6
+   ],
+   "to": 2.75,
+   "material": "column",
+   "fascia": {
+    "h": 0.12,
+    "colour": "column"
+   },
+   "glaze": [
+    {
+     "faces": [
+      "out"
+     ],
+     "sill": 0.06,
+     "h": 2.1,
+     "lightM": 1.0,
+     "frame": "frame",
+     "marginM": 0.4
+    }
+   ],
+   "evidence": "2101443: white entrance box proud of the window wall, glazed door"
+  }
+ ],
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122101443.jpg",
+     "pand": "03631000122101443",
+     "address": "Wethouder Wierdelsstraat",
+     "note": "2024-10 sunlit: eaves at ~2.9 m under a steep orange-red tile roof with two roof windows per house; white-painted ground storey: a white entrance vestibule (paired with the neighbour) with a glazed door, a four-light 2.4 m window wall, a buff brick pier at every other party wall; buff brick end gables"
+    },
+    {
+     "photo": "survey crop 03631000122084605.jpg",
+     "pand": "03631000122084605",
+     "address": "Wethouder Wierdelsstraat",
+     "note": "same"
+    },
+    {
+     "photo": "survey crop 03631000122127754.jpg",
+     "pand": "03631000122127754",
+     "address": "Wethouder Vospad",
+     "note": "same; buff brick gable end"
+    },
+    {
+     "photo": "survey crop 03631000122077922.jpg",
+     "pand": "03631000122077922",
+     "address": "Wethouder in 't Veldstraat",
+     "note": "same"
+    },
+    {
+     "photo": "survey crop 03631000122075597.jpg",
+     "pand": "03631000122075597",
+     "address": "Wethouder Vospad area",
+     "note": "same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.3,
+       "w": 2.6,
+       "h": 2.75,
+       "sill": 0,
+       "depth": 0.02,
+       "colour": "column",
+       "note": "white rendered recess around the living-room window"
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.3,
+       "w": 2.4,
+       "h": 1.6,
+       "sill": 0.6,
+       "lights": 4
+      },
+      {
+       "kind": "panel",
+       "ref": "right",
+       "levels": "ground",
+       "u": 0.35,
+       "w": 0.7,
+       "h": 2.75,
+       "sill": 0,
+       "depth": 0.04,
+       "colour": "gable",
+       "note": "buff brick pier"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012101443.jpg",
+     "pand": "0363100012101443",
+     "address": "Wethouder Wierdelsstraat",
+     "note": "garden side NOT photographed: generic garden door, kitchen window and two bedroom windows, inferred; hidden between rear gardens in practice"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.8,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.1,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012127754.jpg",
+     "pand": "0363100012127754",
+     "address": "Wethouder Vospad",
+     "note": "end gable in buff brick (2127754); party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012127754.jpg",
+     "pand": "0363100012127754",
+     "address": "Wethouder Vospad",
+     "note": "end gable in buff brick (2127754); party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Dormers (about one house in four) not modelled.",
+  "Mirror parity (vestibules side by side) inferred; garden side inferred.",
+  "3DBAG roof planes (321 pands): the front slope sweeps down to 2.56 m (the ground storey, photos), the back slope ends at 5.60 m (two storeys at the garden side, not photographed), ridge 9.11 m, 45 degrees: asymmetric gable; the back storeys follow the back eaves.",
+  "Storeys = 2: the front elements all sit on the ground storey under the swept-down front slope; the back (two storeys to 5.6 m eaves) uses taller back storeys.",
+  "Front ground storey corrected after the camera-matched sheet (crop 0363100012081081): brick walls with a white recess around the window and the white entrance box, not an all-white wall. Brick tint taken from the 1987 canopy houses next door (the crop is in tree shade)."
+ ],
+ "rowCoherentHeights": true
+}

@@ -1,0 +1,422 @@
+{
+ "terraces": {
+  "3": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "5": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "6": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "7": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "8": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "10": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "11": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "12": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "17": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "23": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "25": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "30": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "34": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "35": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "36": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "39": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "42": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "44": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "45": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "blue-door",
+   "via": "photo"
+  },
+  "16": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy",
+   "via": "photo"
+  },
+  "19": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy",
+   "via": "photo"
+  },
+  "20": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy",
+   "via": "photo"
+  },
+  "21": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy",
+   "via": "photo"
+  },
+  "31": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy-low",
+   "via": "photo"
+  },
+  "37": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy",
+   "via": "photo"
+  },
+  "48": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy",
+   "via": "photo"
+  },
+  "51": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy-low",
+   "via": "photo"
+  },
+  "13": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy-low",
+   "via": "signature",
+   "note": "1987, 5.5 x 10.8 m, Wethouder Driessenstraat: same sub-project"
+  },
+  "18": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy-low",
+   "via": "signature",
+   "note": "1987, 5.5 x 10.8 m, Wethouder Driessenstraat: same sub-project"
+  },
+  "22": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy",
+   "via": "signature",
+   "note": "1987, 5.5 x 10.8 m, Wethouder Driessenstraat: same sub-project"
+  },
+  "38": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy",
+   "via": "signature",
+   "note": "1987, 5.5 x 10.8 m, Wethouder Driessenstraat: same sub-project"
+  },
+  "43": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy-low",
+   "via": "signature",
+   "note": "1987, 5.5 x 10.8 m, Wethouder Driessenstraat: same sub-project"
+  },
+  "47": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy",
+   "via": "signature",
+   "note": "1987, 5.5 x 10.8 m, Wethouder Driessenstraat: same sub-project"
+  },
+  "49": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy-low",
+   "via": "signature",
+   "note": "1987, 5.5 x 10.8 m, Wethouder Driessenstraat: same sub-project"
+  },
+  "50": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy",
+   "via": "signature",
+   "note": "1987, 5.5 x 10.8 m, Wethouder Driessenstraat: same sub-project"
+  },
+  "52": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy-low",
+   "via": "signature",
+   "note": "1987, 5.5 x 10.8 m, Wethouder Driessenstraat: same sub-project"
+  },
+  "53": {
+   "type": "zo-g4-canopy-pair",
+   "variant": "green-canopy",
+   "via": "signature",
+   "note": "1987, 5.5 x 10.8 m, Wethouder Driessenstraat: same sub-project"
+  },
+  "0": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "2": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "4": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "15": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "24": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "27": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "28": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "41": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "46": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "54": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "56": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "59": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "61": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "62": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "64": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "65": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "66": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "67": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "68": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "69": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "71": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "76": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "77": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "1": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "9": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "26": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "29": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "32": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "40": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "58": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "60": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "63": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "70": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "72": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "73": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "74": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "75": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  },
+  "78": {
+   "type": "zo-g4-roof-house",
+   "variant": "orange",
+   "via": "signature",
+   "note": "1986, 5.2 x 12.5 m, Wierdelsstraat/Vospad/in 't Veldstraat: same sub-project"
+  }
+ },
+ "pands": {
+  "0363100012085570": {
+   "variant": "green-canopy-low",
+   "note": "survey terrace #22 joins a 4.51 m-eaves row of three (3DBAG front and back slopes) to a 5.4 m row: this house is in the low row"
+  },
+  "0363100012113740": {
+   "variant": "green-canopy-low",
+   "note": "survey terrace #22 joins a 4.51 m-eaves row of three (3DBAG front and back slopes) to a 5.4 m row: this house is in the low row"
+  },
+  "0363100012149068": {
+   "variant": "green-canopy-low",
+   "note": "survey terrace #22 joins a 4.51 m-eaves row of three (3DBAG front and back slopes) to a 5.4 m row: this house is in the low row"
+  },
+  "0363100012072009": {
+   "hold": "front eaves 4.46 m (3DBAG front slope) in a 5.46 m row and not snapped to it: held after the build review",
+   "note": "held"
+  }
+ }
+}

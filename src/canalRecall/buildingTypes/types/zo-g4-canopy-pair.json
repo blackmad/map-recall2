@@ -1,0 +1,344 @@
+{
+ "id": "zo-g4-canopy-pair",
+ "label": "Gein 4 (1987) terraced house in mirrored pairs: red-brown brick, one long flat canopy over both front doors, wide upper window, dark tile roof (Wethouder Tabakstraat, Den Hertogstraat, Abrahamspad, Driessenstraat)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 1,
+  "panden": 175,
+  "bouwjaar": [
+   1987,
+   1987
+  ],
+  "lengthM": 10.6,
+  "widthM": 5.4,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  4.2,
+  6.3
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.0,
+   5.9
+  ],
+  "depth": [
+   9.6,
+   11.4
+  ]
+ },
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.12,
+  "pitchDeg": 35,
+  "eavesFromPlanes": "low-back"
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "blue-door",
+ "variants": {
+  "blue-door": {
+   "label": "white canopy, blue doors",
+   "evidence": "Gein 4 survey terraces on Tabakstraat/Den Hertogstraat/Abrahamspad",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#94604c"
+    },
+    "frame": "#ece9e0",
+    "glass": "#4b5a6b",
+    "door": "#3a6aa8",
+    "accent": "#f0eee8",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#ece9e0",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "slate",
+     "tint": "#45484a"
+    }
+   }
+  },
+  "green-canopy": {
+   "label": "dark green canopy, dark red doors, white strip bays",
+   "evidence": "Gein 4 survey terraces on Driessenstraat",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#94604c"
+    },
+    "frame": "#ece9e0",
+    "glass": "#4b5a6b",
+    "door": "#6a2a2a",
+    "accent": "#2f4a3a",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#ece9e0",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "slate",
+     "tint": "#4a4644"
+    }
+   }
+  },
+  "green-canopy-low": {
+   "label": "dark green canopy, dark red doors, white strip bays (rows with the lower 4.45 m front eaves)",
+   "evidence": "Gein 4 survey terraces 31 and 51 (photo) and 13, 18, 43, 49, 52 (signature); 3DBAG front-slope eaves 4.41-4.52 m per row against 5.2-5.6 m elsewhere",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#94604c"
+    },
+    "frame": "#ece9e0",
+    "glass": "#4b5a6b",
+    "door": "#6a2a2a",
+    "accent": "#2f4a3a",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#ece9e0",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "slate",
+     "tint": "#4a4644"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122078497.jpg",
+     "pand": "03631000122078497",
+     "address": "Wethouder Tabakstraat",
+     "note": "2025-09 sunlit: mirrored pairs; one long flat canopy over both front doors and the shared storage zone; per house: 1.0 m window at 0.9-1.9 m, 0.9 m door at 2.7 m, a small 0.45 m window; upper: three-light 1.9 m window and a tall two-light 0.85 m casement"
+    },
+    {
+     "photo": "survey crop 03631000122096895.jpg",
+     "pand": "03631000122096895",
+     "address": "Wethouder Tabakstraat",
+     "note": "same, blue doors"
+    },
+    {
+     "photo": "survey crop 03631000122092522.jpg",
+     "pand": "03631000122092522",
+     "address": "Wethouder Tabakstraat",
+     "note": "same"
+    },
+    {
+     "photo": "survey crop 03631000122077092.jpg",
+     "pand": "03631000122077092",
+     "address": "Wethouder Driessenstraat",
+     "note": "same layout with a white rendered strip bay and a dark green canopy"
+    },
+    {
+     "photo": "survey crop 03631000122089328.jpg",
+     "pand": "03631000122089328",
+     "address": "Wethouder Driessenstraat",
+     "note": "same as 2077092"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.75,
+       "w": 0.45,
+       "h": 0.35,
+       "sill": 1.7,
+       "lights": 1
+      },
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 2.7,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.95,
+       "w": 1.0,
+       "h": 1.25,
+       "sill": 0.85,
+       "lights": 2
+      },
+      {
+       "kind": "canopy",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.6,
+       "w": 3.2,
+       "h": 0.3,
+       "sill": 2.45,
+       "depth": 1.0,
+       "canopy": "flat",
+       "colour": "accent"
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 2.45,
+       "w": 1.9,
+       "h": 1.25,
+       "sill": 0.75,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.95,
+       "w": 0.85,
+       "h": 1.75,
+       "sill": 0.25,
+       "lights": 2
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "all",
+       "u": 4.55,
+       "w": 0.7,
+       "h": 2.6,
+       "sill": 0.1,
+       "depth": 0.06,
+       "colour": "column",
+       "variants": [
+        "green-canopy",
+        "green-canopy-low"
+       ],
+       "note": "white rendered strip bay (Driessenstraat)"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012078497.jpg",
+     "pand": "0363100012078497",
+     "address": "Wethouder Tabakstraat",
+     "note": "garden side NOT photographed: generic garden door, kitchen window and two bedroom windows, inferred; hidden between rear gardens in practice; the back slope catslides to ~3-3.8 m (3DBAG roof planes), so the upper storey has no back wall windows (rooflights not modelled)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.1,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122078497.jpg",
+     "pand": "03631000122078497",
+     "address": "Wethouder Tabakstraat",
+     "note": "end wall seen edge-on beside the front; plain, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122078497.jpg",
+     "pand": "03631000122078497",
+     "address": "Wethouder Tabakstraat",
+     "note": "end wall seen edge-on beside the front; plain, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Garden side inferred.",
+  "3DBAG roof planes (315 pands): front slope ends at 5.38 m median (two full storeys, photos), back slope swept down to 3.04 m over the kitchen (catslide), ridge 9.06 m, 45 degrees: drawn as an asymmetric gable (roof.eavesFromPlanes low-back).",
+  "Mirrored pairs (survey crop 0363100012078497, Wethouder Tabakstraat): window, door, vent | vent, door, window; one canopy runs from door to door across the shared party wall (each house carries its half, from the party wall over its door). Which house of a pair is mirrored is the generator rule (inferred). The canopy fascia is 0.3 m (about 0.35 m in the crop).",
+  "Front eaves: 5.2-5.7 m on most rows, 4.41-4.52 m on seven Driessenstraat-side rows (3DBAG front slope, row medians); those rows are the variant green-canopy-low (same front, own unit mesh so the runtime scale stays in band). Whether the lower rows differ in more than the eaves is not checked (inferred same front)."
+ ],
+ "rowCoherentHeights": true
+}

@@ -82,6 +82,34 @@ export function roofFactsFromPlanes(planes: RoofPlane[]): RoofFacts {
   return {form: hipArea >= 0.08 * slantArea ? 'hip' : 'gable', ridgeDirRD, slopeDeg: slope, slantedPlanes: slanted.length, roofAreaM2: total};
 }
 
+/**
+ * Eaves of the two main roof slopes, read from the LoD2.2 roof planes: the lowest point of the largest slanted plane and of the
+ * largest one falling the opposite way (within 37 degrees). `frontRD` is the facade's outward normal in RD (east, north); the plane
+ * falling towards it is the front slope. Heights are metres NAP; null without two opposite slopes. A catslide (one slope carried
+ * down over a lean-to) or a front slope swept down to the ground storey shows as eaves that differ by metres, where
+ * b3_h_dak_min only sees the lowest of them.
+ */
+export function slopeEavesFromItem(item: CityJsonItem, frontRD: Pt): {frontNap: number; backNap: number} | null {
+  const t = item.metadata.transform, verts = item.feature.vertices.map(v => v.map((x, i) => x * t.scale[i] + t.translate[i]));
+  const planes: (RoofPlane & {minZ: number})[] = [];
+  for (const o of Object.values(item.feature.CityObjects)) for (const g of o.geometry ?? []) {
+    if (String(g.lod) !== '2.2' || !g.semantics) continue;
+    const shells = g.boundaries as number[][][][];
+    for (let si = 0; si < shells.length; si++) for (let j = 0; j < shells[si].length; j++) {
+      if (g.semantics.surfaces[g.semantics.values[si][j]]?.type !== 'RoofSurface') continue;
+      const pts = shells[si][j][0].map(k => verts[k]);
+      planes.push({...planeOf(pts), minZ: Math.min(...pts.map(p => p[2]))});
+    }
+  }
+  const fall = (p: RoofPlane): Pt => { const h = Math.hypot(p.normal[0], p.normal[1]) || 1; return [p.normal[0] / h, p.normal[1] / h]; };
+  const slanted = planes.filter(p => Math.hypot(p.normal[0], p.normal[1]) / Math.max(1e-9, p.normal[2]) > Math.tan(SLANT_MIN_DEG * Math.PI / 180) && p.area > AREA_MIN_M2).sort((a, b) => b.area - a.area);
+  if (slanted.length < 2) return null;
+  const a = slanted[0], fa = fall(a), b = slanted.find(p => { const f = fall(p); return f[0] * fa[0] + f[1] * fa[1] < -0.8; });
+  if (!b) return null;
+  const aFront = fa[0] * frontRD[0] + fa[1] * frontRD[1] > 0;
+  return {frontNap: aFront ? a.minZ : b.minZ, backNap: aFront ? b.minZ : a.minZ};
+}
+
 export const roofFactsFromItem = (item: CityJsonItem): RoofFacts => roofFactsFromPlanes(decodeRoofPlanes(item));
 
 /** 'long' when the ridge runs within 45 degrees of the rectangle's long side. RD (east, north) -> local (east, south). */

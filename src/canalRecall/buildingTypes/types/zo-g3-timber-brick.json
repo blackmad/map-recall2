@@ -1,0 +1,337 @@
+{
+ "id": "zo-g3-timber-brick",
+ "label": "Gein 3 (1986-87) terraced house in mirrored pairs: buff-grey brick ground storey, dark-stained vertical boards on the upper storey with paired windows at each party wall, dark tile roof (Hendrik Hosstraat, Lambert Rimastraat)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 1,
+  "panden": 46,
+  "bouwjaar": [
+   1986,
+   1987
+  ],
+  "lengthM": 8.9,
+  "widthM": 5.1,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.0,
+  6.7
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.7,
+   5.6
+  ],
+  "depth": [
+   8.2,
+   10.0
+  ]
+ },
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.12,
+  "pitchDeg": 30,
+  "eavesFromPlanes": "lower"
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "timber",
+ "variants": {
+  "timber": {
+   "label": "dark boards over buff-grey brick",
+   "evidence": "Gein 3 survey terraces 105,110,119,127,140,147",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#3d3129"
+    },
+    "frame": "#ece9e0",
+    "glass": "#4b5a6b",
+    "door": "#4a4f4d",
+    "accent": "#eeeae0",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "slate",
+     "tint": "#4f5452"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#8a7d70"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122109364.jpg",
+     "pand": "03631000122109364",
+     "address": "Hendrik Hosstraat",
+     "note": "2025-09 sunlit: mirrored pairs, door beside door at the shared downpipe; ground: buff-grey brick, 1.9 m window at 1.8 m, 0.9 m door at 4.4 m with a slit window over the neighbouring 0.7 m; upper storey dark-stained vertical boards, one 0.65 m window close to each party wall, the pair of windows framed by a white panel over the party wall"
+    },
+    {
+     "photo": "survey crop 03631000122064200.jpg",
+     "pand": "03631000122064200",
+     "address": "Lambert Rimastraat",
+     "note": "same, 2019-06"
+    },
+    {
+     "photo": "survey crop 03631000122134237.jpg",
+     "pand": "03631000122134237",
+     "address": "Lambert Rimastraat",
+     "note": "same, dormers"
+    },
+    {
+     "photo": "survey crop 03631000122143716.jpg",
+     "pand": "03631000122143716",
+     "address": "Jacob Kr\u00fcsestraat",
+     "note": "same layout family"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.8,
+       "w": 1.9,
+       "h": 1.1,
+       "sill": 0.95,
+       "lights": 3
+      },
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 4.4,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.55,
+       "w": 0.6,
+       "h": 0.25,
+       "sill": 1.95,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 0.62,
+       "w": 0.64,
+       "h": 1.2,
+       "sill": 1.3,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 4.48,
+       "w": 0.66,
+       "h": 1.2,
+       "sill": 1.3,
+       "lights": 1
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "upper",
+       "u": 0.11,
+       "w": 0.22,
+       "h": 1.3,
+       "sill": 1.25,
+       "depth": 0.06,
+       "colour": "column",
+       "note": "white panel between the paired windows over the party wall"
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "upper",
+       "u": 4.99,
+       "w": 0.22,
+       "h": 1.3,
+       "sill": 1.25,
+       "depth": 0.06,
+       "colour": "column"
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "all",
+       "u": 5.05,
+       "w": 0.1,
+       "h": 2.9,
+       "sill": 0,
+       "depth": 0.1,
+       "colour": "column",
+       "note": "white downpipe at the party wall"
+      }
+     ]
+    }
+   ],
+   "boards": [
+    {
+     "levels": "upper",
+     "pitchM": 0.4,
+     "widthM": 0.09,
+     "palette": "wall"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012109364.jpg",
+     "pand": "0363100012109364",
+     "address": "Hendrik Hosstraat",
+     "note": "garden side NOT photographed: generic garden door, kitchen window and two bedroom windows, inferred; hidden between rear gardens in practice"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.8,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.1,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122109364.jpg",
+     "pand": "03631000122109364",
+     "address": "Hendrik Hosstraat",
+     "note": "end wall seen edge-on beside the front; plain, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122109364.jpg",
+     "pand": "03631000122109364",
+     "address": "Hendrik Hosstraat",
+     "note": "end wall seen edge-on beside the front; plain, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Front on the short side; mirrored pairs (door beside door). The start parity is the generator rule, not read per house.",
+  "Door colours vary per house (white, grey, red, yellow); the unit uses the dark grey.",
+  "Dormers not modelled. Garden side inferred.",
+  "3DBAG roof planes (53 pands): both slopes end at 5.64 m median, ridge 9.71 m, 42 degrees; the lower slope is used (dormers lift the other on some houses).",
+  "One house in five carries a 2 m rear extension under a low lean-to (BAG 10.7 m deep, b3_h_dak_min ~2.8 m): bodyFromRoof (tolM 2.0) keeps the 8.7 m body; the lean-to itself is not drawn (garden side)."
+ ],
+ "rowCoherentHeights": true,
+ "bodyFromRoof": {
+  "tolM": 2.0
+ }
+}

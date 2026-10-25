@@ -1,0 +1,298 @@
+{
+ "id": "zo-ho-maldenhof",
+ "label": "Holendrecht-Oost (1981-82) terraced house: red-brown brick, deep cream fascia under the eaves, door under a white flat canopy, dark tile roof (Maldenhof, Gaasperdammerpad)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 1,
+  "panden": 350,
+  "bouwjaar": [
+   1981,
+   1982
+  ],
+  "lengthM": 12.7,
+  "widthM": 5.5,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  4.6,
+  6.4
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.0,
+   6.0
+  ],
+  "depth": [
+   8.2,
+   10.2
+  ]
+ },
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.12,
+  "pitchDeg": 30,
+  "eavesFromPlanes": "lower"
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "brick",
+ "variants": {
+  "brick": {
+   "label": "red-brown brick",
+   "evidence": "HO survey terraces 79-116 (Maldenhof/Gaasperdammerpad)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#9a6552"
+    },
+    "frame": "#ece9e0",
+    "glass": "#4b5a6b",
+    "door": "#ece9e0",
+    "accent": "#eeeae0",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#ece4cc",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "slate",
+     "tint": "#55524f"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122145589.jpg",
+     "pand": "03631000122145589",
+     "address": "Maldenhof",
+     "note": "2019-06: brick, a deep cream fascia board under the eaves; ground: 0.9 m door under a white flat canopy box, 1.5 m window; upper: three-light 1.4 m window and a two-light 1.0 m window; timber sheds in the front yards (separate pands)"
+    },
+    {
+     "photo": "survey crop 03631000122119309.jpg",
+     "pand": "03631000122119309",
+     "address": "Maldenhof",
+     "note": "2020-09 sunlit: same"
+    },
+    {
+     "photo": "survey crop 03631000122083860.jpg",
+     "pand": "03631000122083860",
+     "address": "Gaasperdammerpad",
+     "note": "2024-10: same, dormer on one house"
+    },
+    {
+     "photo": "survey crop 03631000122135145.jpg",
+     "pand": "03631000122135145",
+     "address": "Gaasperdammerpad",
+     "note": "2019-06: same layout with dark timber panels between the windows on some rows (not modelled)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.85,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "canopy",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.85,
+       "w": 1.5,
+       "h": 0.25,
+       "sill": 2.25,
+       "depth": 0.7,
+       "canopy": "flat"
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 2.9,
+       "w": 1.5,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.85,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.85,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.85,
+       "lights": 2
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 2,
+     "below": 0.5,
+     "above": 0.0,
+     "palette": "column"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012145589.jpg",
+     "pand": "0363100012145589",
+     "address": "Maldenhof",
+     "note": "garden side NOT photographed: generic garden door, kitchen window and two bedroom windows, inferred; hidden between rear gardens in practice"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.8,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.1,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122145589.jpg",
+     "pand": "03631000122145589",
+     "address": "Maldenhof",
+     "note": "end wall seen edge-on beside the front; plain, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122145589.jpg",
+     "pand": "03631000122145589",
+     "address": "Maldenhof",
+     "note": "end wall seen edge-on beside the front; plain, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Front-yard timber sheds are separate pands and stay generic.",
+  "Mirror parity and garden side inferred.",
+  "3DBAG roof planes (338 pands): the lower slope ends at 5.50 m median (two storeys, the front in every photo), ridge 9.13 m, 33 degrees; the other slope reads 7.7 m on half the houses (raised rear slope or dormer, not modelled); b3_h_dak_min (2.6 m) is the rear extension.",
+  "Footprints are 12.7-14 m deep in BAG (rear extensions and front storage under other roofs): bodyFromRoof (tolM 2.0, both slopes) takes the tall body from the 3DBAG roof."
+ ],
+ "rowCoherentHeights": true,
+ "bodyFromRoof": {
+  "tolM": 2.0
+ }
+}

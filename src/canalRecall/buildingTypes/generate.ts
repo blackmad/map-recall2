@@ -25,6 +25,11 @@ export interface GenerateParams {
   freeSides?: {left: boolean; right: boolean};
   /** Mirror the front and back facades left-to-right (houses built in mirrored pairs). */
   mirror?: boolean;
+  /**
+   * Back (-z) eaves of an eaves-front gable when it differs from the front's `eavesM` (a catslide over a rear lean-to, or a front slope
+   * swept down to the ground storey): both slopes keep one pitch through the measured ridge, which then stands off the centre line.
+   */
+  backEavesM?: number;
 }
 
 export interface FacadeCount { bays: number; openingsPerUpperStorey: number; groundDoors: number; balconiesPerUpperStorey: number }
@@ -212,15 +217,49 @@ function storageDoor(c: Ctx, f: Frame, u: number, w: number, h: number, d0 = 0):
   plate(mb, k.door, f, u - w / 2, u + w / 2, 0, h, d0 + 0.055);
 }
 
+/** Door hood: a thin slab `depth` out from the wall, topped (gable/arch) by a hood of rise `rise` whose ridge runs out from the wall. */
+function canopyUnit(c: Ctx, f: Frame, u: number, w: number, v: number, depth: number, rise: number, shape: 'flat' | 'gable' | 'arch', key: MaterialKey, d0 = 0): void {
+  const {mb} = c, slab = shape === 'flat' ? rise : 0.06, dOut = d0 + depth;
+  box(mb, key, f, u - w / 2, u + w / 2, v, v + slab, d0, dOut, {back: true});
+  if (shape === 'flat') return;
+  // Profile across the hood (u, v) from left eave to right eave; extruded from the wall (d0) to the front (dOut).
+  const n = shape === 'gable' ? 2 : 6, top = v + slab, prof: [number, number][] = [];
+  for (let i = 0; i <= n; i++) {
+    if (shape === 'gable') prof.push([u - w / 2 + w * i / n, top + (i === 1 ? rise : 0)]);
+    else { const a = Math.PI * (1 - i / n); prof.push([u + Math.cos(a) * w / 2, top + Math.sin(a) * rise]); }
+  }
+  const inside = f.p(u, top - 0.01, (d0 + dOut) / 2);
+  for (let i = 0; i < n; i++) quadAway(mb, key, inside, f.p(prof[i][0], prof[i][1], d0), f.p(prof[i + 1][0], prof[i + 1][1], d0), f.p(prof[i + 1][0], prof[i + 1][1], dOut), f.p(prof[i][0], prof[i][1], dOut));
+  // front face (normal +d): a fan from the slab top centre
+  for (let i = 0; i < n; i++) mb.tri(key, f.p(u, top, dOut), f.p(prof[i][0], prof[i][1], dOut), f.p(prof[i + 1][0], prof[i + 1][1], dOut));
+}
+
+/** Vertical battens over [vFrom, vTo] along the facade, skipping the opening rectangles (u0, u1, v0, v1) they would cross. */
+function boardsUnit(c: Ctx, f: Frame, len: number, vFrom: number, vTo: number, b: {pitchM: number; widthM: number; depthM?: number}, key: MaterialKey, openings: number[][]): void {
+  const n = Math.max(1, Math.round(len / b.pitchM)), pitch = len / n, d = b.depthM ?? 0.05;
+  for (let i = 0; i < n; i++) {
+    const x0 = (i + 0.5) * pitch - b.widthM / 2, x1 = x0 + b.widthM;
+    const cuts = openings.filter(o => o[0] < x1 && o[1] > x0 && o[2] < vTo && o[3] > vFrom).map(o => [Math.max(vFrom, o[2]), Math.min(vTo, o[3])]).sort((p, q) => p[0] - q[0]);
+    let v = vFrom;
+    for (const [a, z] of [...cuts, [vTo, vTo]]) {
+      if (a - v > 0.05) box(c.mb, key, f, x0, x1, v, a, 0, d, {back: true, bottom: true, top: true});
+      v = Math.max(v, z);
+    }
+  }
+}
+
 function variantOk(e: Element, variant: string): boolean {
   return (!e.variants || e.variants.includes(variant)) && !(e.exceptVariants && e.exceptVariants.includes(variant));
 }
 
 interface Placed { u0: number; u1: number; bay: Bay }
 
-/** The bays of a facade seen in a mirror: order reversed, element offsets negated, edge references swapped. */
+/**
+ * The bays of a facade seen in a mirror: order reversed, centre offsets negated, edge references swapped. An edge-referenced offset
+ * (`ref` left/right) is a distance inward from that edge, so it keeps its value under the swapped reference.
+ */
 export function mirrorBays(bays: Bay[]): Bay[] {
-  return [...bays].reverse().map(b => ({...b, elements: b.elements.map(e => ({...e, ...(e.u !== undefined ? {u: -e.u} : {}), ...(e.ref === 'left' ? {ref: 'right' as const} : e.ref === 'right' ? {ref: 'left' as const} : {})}))}));
+  return [...bays].reverse().map(b => ({...b, elements: b.elements.map(e => (e.ref === 'left' ? {...e, ref: 'right' as const} : e.ref === 'right' ? {...e, ref: 'left' as const} : {...e, ...(e.u !== undefined ? {u: -e.u} : {})}))}));
 }
 
 export function layoutBays(bays: Bay[], length: number): Placed[] {
@@ -229,7 +268,7 @@ export function layoutBays(bays: Bay[], length: number): Placed[] {
   return bays.map(bay => { const w = bay.w / total * length; const p = {u0: u, u1: u + w, bay}; u += w; return p; });
 }
 
-function placeFacade(c: Ctx, f: Frame, length: number, id: FacadeId, bays: Bay[], onGround: (bay: Bay, uc: number) => number): FacadeCount {
+function placeFacade(c: Ctx, f: Frame, length: number, id: FacadeId, bays: Bay[], onGround: (bay: Bay, uc: number) => number, openings: number[][] = []): FacadeCount {
   const count: FacadeCount = {bays: bays.length, openingsPerUpperStorey: 0, groundDoors: 0, balconiesPerUpperStorey: 0};
   for (const {u0, u1, bay} of layoutBays(bays, length)) {
     const uc = (u0 + u1) / 2;
@@ -245,6 +284,7 @@ function placeFacade(c: Ctx, f: Frame, length: number, id: FacadeId, bays: Bay[]
         switch (e.kind) {
           case 'window': case 'ribbon':
             windowUnit(c, f, u, floor + (e.sill ?? 0.9), w, h, e.lights ?? 1, d0, e.colour ? c.key(e.colour) : undefined, e.frameStyle === 'strips');
+            openings.push([u - w / 2 - 0.06, u + w / 2 + 0.06, floor + (e.sill ?? 0.9) - 0.11, floor + (e.sill ?? 0.9) + h + 0.06]);
             if (kLevel === 1) count.openingsPerUpperStorey++;
             break;
           case 'gallery':
@@ -254,7 +294,13 @@ function placeFacade(c: Ctx, f: Frame, length: number, id: FacadeId, bays: Bay[]
             balconyUnit(c, f, u, floor, w, e.depth ?? 1.2, e.railing === 'panel' ? 'solid' : e.railing ?? 'bars');
             if (kLevel === 1) count.balconiesPerUpperStorey++;
             break;
-          case 'door': doorUnit(c, f, u, w, h, e.steps ?? 0, d0, floor + (e.sill ?? 0), e.frameStyle === 'strips'); if (kLevel === 0) count.groundDoors++; break;
+          case 'door': doorUnit(c, f, u, w, h, e.steps ?? 0, d0, floor + (e.sill ?? 0), e.frameStyle === 'strips'); openings.push([u - w / 2 - 0.14, u + w / 2 + 0.14, floor + (e.sill ?? 0), floor + (e.sill ?? 0) + (e.steps ?? 0) * 0.17 + h + 0.12]); if (kLevel === 0) count.groundDoors++; break;
+          case 'canopy': {
+            const v = floor + (e.sill ?? 2.25), shape = e.canopy ?? 'flat';
+            canopyUnit(c, f, u, w, v, e.depth ?? 0.6, h, shape, c.key(e.colour ?? 'accent'), d0);
+            openings.push([u - w / 2, u + w / 2, v, v + (shape === 'flat' ? h : 0.06 + h)]);
+            break;
+          }
           case 'storageDoor': storageDoor(c, f, u, w, h, d0); if (kLevel === 0) count.groundDoors++; break;
           case 'vents': {
             const n = e.count ?? 3;
@@ -281,6 +327,32 @@ function joints(c: Ctx, f: Frame, length: number, vFrom: number, vTo: number, pa
   const cols = Math.max(1, Math.round(length / panelW)), pw = length / cols;
   for (let v = vFrom + panelH; v < vTo - 0.2; v += panelH) plate(mb, k.joint, f, 0, length, v - 0.008, v + 0.008, 0.004);
   for (let v = vFrom; v < vTo - 0.3; v += panelH) for (let i = 1; i < cols; i++) plate(mb, k.joint, f, i * pw - 0.008, i * pw + 0.008, v, Math.min(v + panelH, vTo), 0.004);
+}
+
+/** One pitch through a front eaves `ef` (at +hw), a back eaves `eb` (at -hw) and the ridge height: slope tan and the ridge's offset t. */
+export function asymSlope(hw: number, ef: number, eb: number, ridgeH: number): {tan: number; tRidge: number} {
+  const tan = Math.max(0.05, (2 * ridgeH - ef - eb) / (2 * hw));
+  return {tan, tRidge: Math.max(-hw, Math.min(hw, hw - (ridgeH - ef) / tan))};
+}
+
+/** Eaves-front gable (ridge along x) whose front and back eaves differ: both roof planes, soffit and the two four-cornered gable ends above `lower`. */
+function asymGable(c: Ctx, p: {L: number; W: number; ef: number; eb: number; ridgeH: number; eavesOv: number; vergeOv: number; gableKey: MaterialKey}): void {
+  const {mb, k} = c, hw = p.W / 2, {tan, tRidge} = asymSlope(hw, p.ef, p.eb, p.ridgeH), ov = p.eavesOv, a = p.L / 2 + p.vergeOv, b = hw + ov;
+  const yf = p.ef - ov * tan, yb = p.eb - ov * tan, lower = Math.min(p.ef, p.eb);
+  const inside: V3 = [0, (lower + p.ridgeH) / 2, 0];
+  const apex: V3[] = [[-a, p.ridgeH, tRidge], [a, p.ridgeH, tRidge]];
+  const fr: V3[] = [[-a, yf, b], [a, yf, b]], bk: V3[] = [[-a, yb, -b], [a, yb, -b]];
+  // each plane faces away from a point on the ridge line at its own mid height; the soffit faces down
+  quadAway(mb, k.roof, [0, (yf + p.ridgeH) / 2, tRidge], fr[0], fr[1], apex[1], apex[0]);
+  quadAway(mb, k.roof, [0, (yb + p.ridgeH) / 2, tRidge], bk[0], bk[1], apex[1], apex[0]);
+  quadAway(mb, k.roof, [0, p.ridgeH, 0], bk[0], bk[1], fr[1], fr[0]); // soffit
+  for (const x of [-p.L / 2, p.L / 2]) {
+    // the gable end above the wall box (which stops at `lower`): four corners, the lower eaves corner, the other side's two, the ridge
+    const ring: V3[] = p.eb <= p.ef
+      ? [[x, lower, -hw], [x, lower, hw], [x, p.ef, hw], [x, p.ridgeH, tRidge]]
+      : [[x, lower, -hw], [x, lower, hw], [x, p.ridgeH, tRidge], [x, p.eb, -hw]];
+    quadAway(mb, p.gableKey, inside, ring[0], ring[1], ring[2], ring[3]);
+  }
 }
 
 function roofSolid(c: Ctx, p: {form: 'gable' | 'hip' | 'flat'; ridge: 'long' | 'short'; L: number; W: number; eaves: number; ridgeH: number; eavesOv: number; vergeOv: number; flatThickness: number}): void {
@@ -322,15 +394,21 @@ function roofSolid(c: Ctx, p: {form: 'gable' | 'hip' | 'flat'; ridge: 'long' | '
 }
 
 /** Height of the front slope (+z side) of a long-ridge gable at depth z (0 at the ridge), and the downslope step per metre of z. */
-function frontSlope(L: number, W: number, eaves: number, ridgeH: number, eavesOv: number) {
-  const hw = W / 2, rise = Math.max(0.1, ridgeH - eaves), tan = rise / hw, y0 = eaves - eavesOv * tan;
-  return {tan, y: (z: number) => ridgeH - tan * z, zEave: hw + eavesOv, y0};
+function frontSlope(L: number, W: number, eaves: number, ridgeH: number, eavesOv: number, backEaves?: number) {
+  const hw = W / 2;
+  if (backEaves !== undefined) {
+    const {tan, tRidge} = asymSlope(hw, eaves, backEaves, ridgeH);
+    return {tan, y: (z: number) => ridgeH - tan * (z - tRidge), zEave: hw + eavesOv, y0: eaves - eavesOv * tan, zRidge: tRidge};
+  }
+  const rise = Math.max(0.1, ridgeH - eaves), tan = rise / hw, y0 = eaves - eavesOv * tan;
+  return {tan, y: (z: number) => ridgeH - tan * z, zEave: hw + eavesOv, y0, zRidge: 0};
 }
 
 /** Roof windows on the front slope of an eaves-front gable. */
-function roofFeatures(c: Ctx, spec: TypeSpec, L: number, W: number, eaves: number, ridgeH: number, mirror: boolean): void {
-  const {mb, k} = c, v = spec.variants[c.variant], r = {...spec.roof, rooflights: v.rooflights ?? spec.roof.rooflights}, sl = frontSlope(L, W, eaves, ridgeH, r.eavesOverhangM), n = Math.hypot(1, sl.tan);
-  const alongZ = (a: number) => (1 - a) * (W / 2 + r.eavesOverhangM); // z of a slope position 0 (eaves) .. 1 (ridge), measured from the ridge line
+function roofFeatures(c: Ctx, spec: TypeSpec, L: number, W: number, eaves: number, ridgeH: number, mirror: boolean, backEaves?: number): void {
+  const {mb, k} = c, v = spec.variants[c.variant], r = {...spec.roof, rooflights: v.rooflights ?? spec.roof.rooflights}, sl = frontSlope(L, W, eaves, ridgeH, r.eavesOverhangM, backEaves), n = Math.hypot(1, sl.tan);
+  // z of a slope position 0 (eaves) .. 1 (ridge); the ridge line stands at z = sl.zRidge (0 unless the gable is asymmetric)
+  const alongZ = backEaves === undefined ? (a: number) => (1 - a) * (W / 2 + r.eavesOverhangM) : (a: number) => sl.zRidge + (1 - a) * (W / 2 + r.eavesOverhangM - sl.zRidge);
   for (const uf of r.rooflights?.u ?? []) {
     const u = -L / 2 + (mirror ? 1 - uf : uf) * L, z0 = alongZ(r.rooflights!.along), w = r.rooflights!.w, hz = r.rooflights!.h / n; // slope length h spans hz in z
     const off = 0.03; // metres above the plane along its normal (normal = (0, 1, tan) / n)
@@ -386,8 +464,8 @@ function annexUnit(c: Ctx, f: Frame, a: Annex, [u0, u1]: [number, number], v0: n
       plate(mb, c.key(dr.colour ?? 'door'), out, edges[i], edges[i + 1], v0, v0 + dr.h, -recess + 0.04);
     }
   }
-  if (a.glaze) {
-    const g = a.glaze, frameKey = c.key(g.frame ?? 'frame'), m = g.marginM ?? 0.15;
+  for (const g of a.glaze === undefined ? [] : Array.isArray(a.glaze) ? a.glaze : [a.glaze]) {
+    const frameKey = c.key(g.frame ?? 'frame'), m = g.marginM ?? 0.15;
     const faces: {fr: Frame; len: number}[] = [];
     for (const face of g.faces) {
       if (face === 'out') faces.push({fr: out, len: u1 - u0});
@@ -409,7 +487,10 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
   const roofForm = params.roofForm ?? spec.roof.form, ridge = params.ridge ?? spec.roof.ridge;
   const groundMode = params.groundMode ?? spec.ground.mode;
   const pitched = roofForm !== 'flat';
-  const flatT = 0.22, wallTop = pitched ? params.eavesM : params.eavesM - flatT;
+  // asymmetric eaves-front gable: the wall box stops at the lower eaves; the higher facade and the gable ends carry on above it
+  const asym = pitched && roofForm === 'gable' && ridge === 'long' && params.backEavesM != null && Math.abs(params.backEavesM - params.eavesM) > 1e-6;
+  const backEaves = asym ? params.backEavesM! : params.eavesM;
+  const flatT = 0.22, wallTop = asym ? Math.min(params.eavesM, backEaves) : pitched ? params.eavesM : params.eavesM - flatT;
   const sh = params.eavesM / storeys;
   const mb = new MeshBuilder(), k = keys(v.palette), inset = spec.insetM ?? {front: 0, back: 0};
   const key = (name: string): MaterialKey => { const m = (k as unknown as Record<string, MaterialKey>)[name]; if (!m) throw new Error(`${spec.id}: unknown palette key ${name}`); return m; };
@@ -475,19 +556,30 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
     if ((id === 'left' && !free.left) || (id === 'right' && !free.right)) { facades[id] = {bays: 0, openingsPerUpperStorey: 0, groundDoors: 0, balconiesPerUpperStorey: 0}; continue; }
     const {f, len} = frames[id], fs = spec.facades[id];
     const bays = params.mirror && (id === 'front' || id === 'back') ? mirrorBays(fs.bays) : fs.bays;
-    facades[id] = placeFacade(ctx, f, len, id, bays, onGround(id));
+    const openings: number[][] = [];
+    // asymmetric gable: a back raised above the front eaves gets taller storeys; front/back boards run up to their own eaves
+    const fSh = asym && id === 'back' && backEaves > params.eavesM ? backEaves / storeys : sh;
+    const fTop = asym && id === 'front' ? params.eavesM : asym && id === 'back' ? backEaves : wallTop;
+    if (fSh !== sh) ctx.sh = fSh;
+    facades[id] = placeFacade(ctx, f, len, id, bays, onGround(id), openings);
+    ctx.sh = sh;
+    for (const b of fs.boards ?? []) for (const lv of levelsOf(b.levels, storeys)) boardsUnit(ctx, f, len, lv * fSh, lv === storeys - 1 ? fTop : (lv + 1) * fSh, b, key(b.palette), openings);
     if (v.palette.plinth && spec.ground.plinthM && !pilotis) box(mb, k.plinth, f, 0, len, 0, spec.ground.plinthM, 0, 0.025, {back: true, bottom: true});
     if (v.joints && fs.joints) joints(ctx, f, len, sh, wallTop, fs.joints.panelW, fs.joints.panelH);
     for (const band of fs.bands ?? []) for (const lv of band.levels ? levelsOf(band.levels, storeys) : [band.floor]) {
       const y = lv * sh;
-      box(mb, {slot: 'stucco', tint: v.palette.column}, f, -0.0, len, y - band.below, y + band.above, 0, 0.05);
+      box(mb, !band.palette || band.palette === 'column' ? {slot: 'stucco', tint: v.palette.column} : key(band.palette), f, -0.0, len, y - band.below, y + band.above, 0, 0.05);
     }
   }
   // pilotis: slab fascia is the white column box above; the soffit shows from below.
 
   const ridgeH = params.ridgeM ?? params.eavesM + Math.tan(spec.roof.pitchDeg * Math.PI / 180) * ((ridge === 'long' ? W : L) / 2);
-  roofSolid(ctx, {form: roofForm, ridge, L, W, eaves: params.eavesM, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, flatThickness: flatT});
-  if (pitched && roofForm === 'gable' && ridge === 'long' && (v.rooflights || spec.roof.rooflights)) roofFeatures(ctx, spec, L, W, params.eavesM, ridgeH, !!params.mirror);
+  if (asym) {
+    const hi = params.eavesM > backEaves ? frames.front : frames.back;
+    plate(mb, k.wall, hi.f, 0, hi.len, wallTop, Math.max(params.eavesM, backEaves), 0);
+    asymGable(ctx, {L, W, ef: params.eavesM, eb: backEaves, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, gableKey: gabled ? k.gable : k.wall});
+  } else roofSolid(ctx, {form: roofForm, ridge, L, W, eaves: params.eavesM, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, flatThickness: flatT});
+  if (pitched && roofForm === 'gable' && ridge === 'long' && (v.rooflights || spec.roof.rooflights)) roofFeatures(ctx, spec, L, W, params.eavesM, ridgeH, !!params.mirror, asym ? backEaves : undefined);
   // Annexes stand on the rectangle edges (not the inset wall lines).
   const edges: Record<FacadeId, {f: Frame; len: number}> = {
     front: {f: new Frame([-L / 2, W / 2], [1, 0], [0, 1]), len: L},

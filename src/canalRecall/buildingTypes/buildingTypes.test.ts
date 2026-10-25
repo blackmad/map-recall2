@@ -4,10 +4,10 @@ import path from 'node:path';
 import test from 'node:test';
 import {bearingDeg, freeSides, lngLatToLocal, localToLngLat, minimumRotatedRectangle, rectIoU, swapAxes, type Pt} from './geometry.ts';
 import {frontSide, frontTowardBearing, frontYaw, type Street} from './orientation.ts';
-import {generate, layoutBays, mirrorBays} from './generate.ts';
+import {asymSlope, generate, layoutBays, mirrorBays} from './generate.ts';
 import {bakeWorld} from './glb.ts';
 import {FACADE_IDS, validateSpec, type TypeSpec} from './spec.ts';
-import {bodyRectFromRoof, paramsFromFacts, ridgeAlongOf, roofFactsFromPlanes} from './facts.ts';
+import {bodyRectFromRoof, paramsFromFacts, ridgeAlongOf, roofFactsFromPlanes, slopeEavesFromItem, type CityJsonItem} from './facts.ts';
 import {solarPosition} from '../../../scripts/building-types/solar.ts';
 import {sharedTerrain} from '../../../scripts/lib/terrainField.ts';
 
@@ -528,4 +528,80 @@ test('review-render sun from the panorama timestamp (camera-sheets --sun=photo)'
   const [az, el] = solarPosition(new Date('2025-06-21T11:40:00Z'), 52.37, 4.83); // about local solar noon at midsummer
   assert.ok(Math.abs(az - 180) < 6 && Math.abs(el - 61) < 1.5, `${az} ${el}`);
   assert.ok(solarPosition(new Date('2025-01-01T00:00:00Z'), 52.37, 4.83)[1] < -40);
+});
+
+// Zuidoost terraced designs (issue #70): Gein 3, Holendrecht-Oost, Gein 4, Kelbergen.
+const ZO_TYPES = ['zo-g3-red-clad', 'zo-g3-timber-brick', 'zo-ho-hood', 'zo-ho-annex', 'zo-ho-maldenhof', 'zo-g4-canopy-pair', 'zo-g4-roof-house', 'zo-kb-patio-ribbon'].map(id => load(`${id}.json`));
+
+test('Zuidoost designs: validate, >= 4 distinct photo pands on the front, counted openings match for every variant and handedness, <= 400 triangles, party walls blank, ridge reached', () => {
+  for (const spec of ZO_TYPES) {
+    assert.deepEqual(validateSpec(spec), [], spec.id);
+    assert.equal(spec.frontOnShort, true);
+    assert.equal(spec.rowCoherentHeights, true, `${spec.id}: one roof line per row`);
+    assert.ok(new Set(spec.facades.front.evidence.map(e => e.pand)).size >= 4, `${spec.id}: evidence`);
+    const [lo, hi] = spec.eavesRangeM!, flat = spec.roof.form === 'flat', eaves = (lo + hi) / 2, ridge = flat ? undefined : eaves + 3.5;
+    const mode = spec.roof.eavesFromPlanes, backEavesM = mode === 'low-back' ? eaves - 2.2 : mode === 'low-front' ? eaves + 3 : undefined;
+    for (const variant of Object.keys(spec.variants)) for (const mirror of spec.alternateMirror ? [false, true] : [false]) {
+      const base = {lengthM: 5.3, widthM: 10, eavesM: eaves, ridgeM: mode === 'low-front' ? eaves + 6.3 : ridge, backEavesM, variant, mirror};
+      const {report, mesh} = generate(spec, base);
+      for (const id of FACADE_IDS) assert.deepEqual(report.facades[id], spec.facades[id].counted, `${spec.id}/${variant}/${id}`);
+      assert.ok(mesh.triangles <= 400, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
+      const mid = generate(spec, {...base, freeSides: {left: false, right: false}});
+      assert.equal(mid.report.facades.left.bays + mid.report.facades.right.bays, 0, 'party walls have no bays');
+      const b = mesh.bounds();
+      assert.ok(b.min[1] >= -1e-9 && (flat || Math.abs(b.max[1] - base.ridgeM!) < 1e-6), `${spec.id}: ridge reached, nothing below ground`);
+      // every opening stays on the house: a mirrored edge-referenced element must not land beyond the party wall
+      assert.ok(b.max[0] <= 5.3 / 2 + spec.roof.vergeOverhangM + 0.06 && b.min[0] >= -5.3 / 2 - spec.roof.vergeOverhangM - 0.06, `${spec.id}/${variant}/${mirror}: within its frontage`);
+    }
+  }
+});
+
+test('mirrorBays: an edge-referenced element keeps its distance from the (swapped) edge; a centre offset is negated', () => {
+  const bays = [{id: 'h', w: 1, role: 'windows', elements: [{kind: 'door', ref: 'left', levels: 'ground', u: 1.1, w: 0.9, h: 2.1}, {kind: 'window', levels: 'ground', u: 0.8, w: 1, h: 1}]}] as TypeSpec['facades']['front']['bays'];
+  const m = mirrorBays(bays);
+  assert.deepEqual([m[0].elements[0].ref, m[0].elements[0].u], ['right', 1.1]);
+  assert.equal(m[0].elements[1].u, -0.8);
+  const G = load('zo-g4-canopy-pair.json'), p = {lengthM: 5.4, widthM: 10.5, eavesM: 5.4, ridgeM: 9, variant: 'blue-door'};
+  const doorX = (mirror: boolean) => { const d = generate(G, {...p, mirror}).mesh.buckets.get(`door|${G.variants['blue-door'].palette.door}`)!; let lo = Infinity, hi = -Infinity; for (let i = 0; i < d.positions.length; i += 3) if (d.positions[i + 2] > 5) { lo = Math.min(lo, d.positions[i]); hi = Math.max(hi, d.positions[i]); } return [lo, hi]; };
+  const [a, b] = [doorX(false), doorX(true)];
+  assert.ok(Math.abs(a[0] + b[1]) < 1e-6 && Math.abs(a[1] + b[0]) < 1e-6, `door leaf mirrored about the house centre: ${a} vs ${b}`);
+});
+
+test('asymmetric gable (catslide / swept front slope): one pitch through both eaves and the ridge; equal eaves = the symmetric roof, byte for byte', () => {
+  const G = load('zo-g4-canopy-pair.json'), p = {lengthM: 5.4, widthM: 10.5, eavesM: 5.4, ridgeM: 9.06, variant: 'blue-door'};
+  const {tan, tRidge} = asymSlope(5.25, 5.4, 3.04, 9.06);
+  assert.ok(Math.abs(Math.atan(tan) * 180 / Math.PI - 42.7) < 0.2, 'measured 3DBAG main-plane slope of the Gein 4 houses is ~45 degrees');
+  assert.ok(tRidge > 0 && Math.abs(9.06 - tan * (5.25 - tRidge) - 5.4) < 1e-9 && Math.abs(9.06 - tan * (5.25 + tRidge) - 3.04) < 1e-9, 'both eaves on the planes');
+  const asym = generate(G, {...p, backEavesM: 3.04});
+  // roof: lowest roof vertex at the back overhang, below the front one
+  const roof = asym.mesh.buckets.get(`slate|${(G.variants['blue-door'].palette.roof as {tint: string}).tint}`)!, ys = (zSign: number) => { let m = Infinity; for (let i = 0; i < roof.positions.length; i += 3) if (Math.sign(roof.positions[i + 2]) === zSign) m = Math.min(m, roof.positions[i + 1]); return m; };
+  assert.ok(ys(-1) < 3.04 && ys(-1) > 2.5 && ys(1) < 5.4 && ys(1) > 4.9, `back eave ${ys(-1)}, front eave ${ys(1)}`);
+  assert.equal(asym.report.wallTopM, 3.04, 'the wall box stops at the lower eaves');
+  assert.ok(Math.abs(asym.mesh.bounds().max[1] - 9.06) < 1e-9);
+  const sym = generate(G, p).mesh, same = generate(G, {...p, backEavesM: 5.4}).mesh;
+  for (const [key, bucket] of sym.buckets) assert.deepEqual(same.buckets.get(key)!.positions, bucket.positions, key);
+  // a front slope swept down to the ground storey (Gein 4 roof houses): the back storeys follow the back eaves
+  const R = load('zo-g4-roof-house.json'), r = generate(R, {lengthM: 5.2, widthM: 12.5, eavesM: 2.56, backEavesM: 5.6, ridgeM: 9.1, variant: 'orange'});
+  assert.equal(r.report.wallTopM, 2.56);
+  const glass = r.mesh.buckets.get(`glass|${R.variants.orange.palette.glass}`)!; let backTop = -Infinity;
+  for (let i = 0; i < glass.positions.length; i += 3) if (glass.positions[i + 2] < -6) backTop = Math.max(backTop, glass.positions[i + 1]);
+  assert.ok(backTop > 2.8 + 0.5 && backTop < 5.6, `back upper windows sit in the 2.8 m back storeys: top ${backTop}`);
+});
+
+test('slope eaves from 3DBAG roof planes: the slope falling towards the front is the front, b3_h_dak_min only sees the lower one', () => {
+  // a 10 m deep house, front to the south (RD -y): front slope 0 -> 4.4 m from the ridge, eaves 5.4; back slope catslides to 3.0 at y = 10
+  const V = [[0, 0, 5.4], [5, 0, 5.4], [5, 4.4, 9.4], [0, 4.4, 9.4], [0, 10, 3.0], [5, 10, 3.0]];
+  const item = {metadata: {transform: {scale: [1, 1, 1], translate: [0, 0, 0]}}, feature: {type: 'CityJSONFeature', id: 'x', vertices: V, CityObjects: {b: {type: 'BuildingPart', geometry: [{lod: '2.2', type: 'Solid', boundaries: [[[[0, 1, 2, 3]], [[3, 2, 5, 4]]]], semantics: {surfaces: [{type: 'RoofSurface'}], values: [[0, 0]]}}]}}}} as unknown as CityJsonItem;
+  assert.deepEqual(slopeEavesFromItem(item, [0, -1]), {frontNap: 5.4, backNap: 3.0});
+  assert.deepEqual(slopeEavesFromItem(item, [0, 1]), {frontNap: 3.0, backNap: 5.4});
+  assert.equal(slopeEavesFromItem({...item, feature: {...item.feature, CityObjects: {b: {type: 'BuildingPart', geometry: [{lod: '2.2', type: 'Solid', boundaries: [[[[0, 1, 2, 3]]]], semantics: {surfaces: [{type: 'RoofSurface'}], values: [[0]]}}]}}}} as unknown as CityJsonItem, [0, -1]), null, 'one slope: no reading');
+});
+
+test('kit parts absent -> byte-identical: no canopy, boards, palette bands or annex glaze arrays leave a terraced design unchanged; present, they add their own geometry', () => {
+  const G = ROW_TYPES[1], p = {lengthM: 5, widthM: 8.5, eavesM: 5.9, ridgeM: 8.5};
+  const a = generate(G, p).mesh, b = generate({...G, facades: {...G.facades, front: {...G.facades.front, boards: []}}}, p).mesh;
+  for (const [key, bucket] of a.buckets) assert.deepEqual(b.buckets.get(key)!.positions, bucket.positions, key);
+  const C = load('zo-g3-red-clad.json'), q = {lengthM: 5.3, widthM: 8.7, eavesM: 5.7, ridgeM: 9.3};
+  const withBoards = generate(C, q).mesh.triangles, without = generate({...C, facades: {...C.facades, front: {...C.facades.front, boards: undefined}}}, q).mesh.triangles;
+  assert.ok(withBoards > without + 20, `battens drawn (${withBoards} vs ${without})`);
 });

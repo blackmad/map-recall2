@@ -7,7 +7,7 @@
  *
  * Writes <out>/terraces.json (members, free-side counts, front street, the panorama used per terrace) and sheets under
  * .cache/building-types/rh-sheets/. Crops are cached as .cache/building-types/crops/<pandId>.jpg (montage.ts / sample-colours.ts read them).
- * Flags: --margin=<m> metres of context left/right of the house (default 4), --limit=N, --members=<ids.json> to survey only those terraces' panden.
+ * Flags: --area-bbox (anchor + street window from the members instead of Nieuw-West), --margin=<m> metres of context left/right of the house (default 4), --limit=N, --members=<ids.json> to survey only those terraces' panden.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -20,11 +20,14 @@ const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`
 const nw = arg('nw'), pool = arg('pool', 'pp_small'), rank = Number(arg('rank', '0')), outDir = arg('out', 'staging/building-types/rh-survey');
 const MARGIN = Number(arg('margin', '4')), SCRATCH = '.cache/building-types', W = 1000, H = 750, CAM_H = 2.4, TILE_W = 320, TILE_H = 240, COLS = 5, ROWS = 5;
 if (!nw) throw new Error('--nw required');
-const anchor: Anchor = {lng: 4.806, lat: 52.37};
-
 const clusters = JSON.parse(fs.readFileSync(path.join(nw, 'clusters.json'), 'utf8'));
 let members: any[] = clusters[pool][rank].pandIds;
 if (arg('members')) { const want = new Set<string>(JSON.parse(fs.readFileSync(arg('members'), 'utf8'))); members = members.filter(m => want.has(m.id)); }
+// --area-bbox: anchor and street window from the members (any district, e.g. a survey-buurt.ts dir); default the Nieuw-West window.
+const AREA_BBOX = process.argv.includes('--area-bbox');
+const lons = members.map(m => m.lon), lats = members.map(m => m.lat);
+const WIN = AREA_BBOX ? {w: Math.min(...lons) - 0.004, e: Math.max(...lons) + 0.004, s: Math.min(...lats) - 0.0025, n: Math.max(...lats) + 0.0025} : {w: 4.77, e: 4.845, s: 52.345, n: 52.392};
+const anchor: Anchor = AREA_BBOX ? {lng: +((WIN.w + WIN.e) / 2).toFixed(5), lat: +((WIN.s + WIN.n) / 2).toFixed(5)} : {lng: 4.806, lat: 52.37};
 const bag = JSON.parse(fs.readFileSync(path.join(nw, 'raw/bag-panden.json'), 'utf8')) as any[];
 const ringOf = (f: any): [number, number][] => (f.geometry.type === 'Polygon' ? f.geometry.coordinates[0] : f.geometry.coordinates[0][0]);
 const byId = new Map<string, any>(bag.map(f => [f.properties.identificatie, f]));
@@ -79,7 +82,7 @@ for (const m of mem.values()) (comps.get(find(m.id)) ?? comps.set(find(m.id), []
 // Streets near the Nieuw-West bbox, local metres.
 const routing = JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as any[];
 const streets: Street[] = routing.flatMap(s => (s.paths ?? [s.path]).map((p: [number, number][]) => ({name: s.name || '', highway: s.highway as string, path: p.map(([lat, lng]) => lngLatToLocal(anchor, lng, lat))})))
-  .filter(s => s.path.some(([x, z]) => Math.abs(x) < 6000 && Math.abs(z) < 4500) && s.path.some(p => { const [lng, lat] = localToLngLat(anchor, p); return lng > 4.77 && lng < 4.845 && lat > 52.345 && lat < 52.392; }));
+  .filter(s => s.path.some(([x, z]) => Math.abs(x) < 6000 && Math.abs(z) < 4500) && s.path.some(p => { const [lng, lat] = localToLngLat(anchor, p); return lng > WIN.w && lng < WIN.e && lat > WIN.s && lat < WIN.n; }));
 
 async function bytes(url: string, file: string): Promise<Buffer> {
   if (fs.existsSync(file)) return fs.readFileSync(file);
