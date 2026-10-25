@@ -237,9 +237,18 @@ export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSourc
   return cityTint(slot, hex);
 }
 
-/** A slot mesh's `tint` attribute value: the slot colour mapped into the city range, sRGB bytes. */
+/**
+ * A slot mesh's `tint` attribute value: the slot colour mapped into the city range, sRGB bytes. A street chunk's walls
+ * (with an exposure record) take their photo-matched gain. A GLB with no exposure record does NOT take the sunny look's
+ * generic gain here (chunkWallExposure.ts UNRECORDED_GAIN_SLOTS, #73): that gain matches a GLB to the default look's
+ * lit facades (`litFacadeWallGain`), but the city look's facade chunks keep the plain `litWallGain`
+ * (threeBuildingsBrowser.ts), so in the city look the generic gain would put recipe houses and landmarks ~6 luma over
+ * the chunks they stand beside (building-look.spec "share one brick", #76). Re-levelling the city look against the
+ * sunny frame must lift chunks and slots together.
+ */
 export function slotTintBytes(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom(), white?: string | null, exposure?: WallExposure | null): [number, number, number, number] {
-  const [r, g, b] = hexToRgb(photoMatchedWallTint(slot, cityLookTint(slot, hex, source, look, white), exposure, source, look));
+  const tint = cityLookTint(slot, hex, source, look, white);
+  const [r, g, b] = hexToRgb(exposure ? photoMatchedWallTint(slot, tint, exposure, source, look) : tint);
   return [r, g, b, 255];
 }
 
