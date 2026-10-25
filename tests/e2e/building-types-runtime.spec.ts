@@ -72,6 +72,11 @@ const VIEWS: Record<string, { center: [number, number]; zoom: number; pitch: num
   'r4-dichtersbuurt': { center: [4.822176, 52.376410], zoom: 18.4, pitch: 62, bearing: 104 },
   'r4-gooise-kant': { center: [4.968800, 52.313004], zoom: 18.4, pitch: 62, bearing: 330 },
   'r4-k-buurt-zuidwest': { center: [4.981315, 52.312778], zoom: 18.4, pitch: 62, bearing: 61 },
+  // 2026-10-25 round 5 (#77): Tuindorp Nieuwendam-Oost cottages, Reigersbos 3 flat-band rows, Reigersbos 4 two-tone, De Eendracht band rows.
+  'r5-nieuwendam': { center: [4.94785, 52.390421], zoom: 18.4, pitch: 62, bearing: 116 },
+  'r5-reigersbos-3': { center: [4.967495, 52.293652], zoom: 18.4, pitch: 62, bearing: 75 },
+  'r5-reigersbos-4': { center: [4.973577, 52.290418], zoom: 18.4, pitch: 62, bearing: 243 },
+  'r5-eendracht': { center: [4.789366, 52.379193], zoom: 18.4, pitch: 62, bearing: 179 },
   'r4-buiksloterbreek': { center: [4.907009, 52.402211], zoom: 18.4, pitch: 62, bearing: 142 },
 };
 const ONLY = process.env.BT_VIEWS?.split(',');
