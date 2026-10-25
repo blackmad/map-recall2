@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+**Building types round 9 (2026-10-25, #85).** 15 photo-checked designs,
+1,525 houses: Terrasdorp 357, De Aker-Oost 462, Nieuw Sloten-NW 417, De
+Aker-West 289 (Betondorp skipped as pre-war/mixed). Kit: panesHigh,
+louvres, balcony sill, fascia, annex uFromEnd, stoop. All 333 existing
+units regenerate byte-identically. Cut short at the usage pause: no r9
+runtime views or draw-call comparison yet; integrator reviewed the
+De Aker / NSNW sheets, not the Terrasdorp page.
+
 **Kit gaps from #83: Da Vinci installed (2026-10-25, #86).** New large-tier
 kit components: `sideLight`, `bayWindows`, `loggiaBands`, `groundPiers`
 (opt-in, byte-identical when absent). `all-walls.ts --inset=<m>` cuts a crop

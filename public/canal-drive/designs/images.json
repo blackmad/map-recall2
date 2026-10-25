@@ -44,6 +44,34 @@
    "render": "designs/img/nd-ck-saltbox-unit.jpg",
    "renderUnit": "nd-ck-saltbox__yellow__2__gable__long__solid"
   },
+  "nd-td-krasseur": {
+   "photo": "designs/img/nd-td-krasseur-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012103604",
+   "render": "designs/img/nd-td-krasseur-unit.jpg",
+   "renderUnit": "nd-td-krasseur__buff__2__gable__long__solid"
+  },
+  "nd-td-panel": {
+   "photo": "designs/img/nd-td-panel-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012129403",
+   "render": "designs/img/nd-td-panel-unit.jpg",
+   "renderUnit": "nd-td-panel__grey__2__flat__long__solid"
+  },
+  "nd-td-pomona": {
+   "photo": "designs/img/nd-td-pomona-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012149148",
+   "render": "designs/img/nd-td-pomona-unit.jpg",
+   "renderUnit": "nd-td-pomona__grey__2__gable__long__solid__f1d0"
+  },
+  "nd-td-souterrain": {
+   "photo": "designs/img/nd-td-souterrain-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012116625",
+   "render": "designs/img/nd-td-souterrain-unit.jpg",
+   "renderUnit": "nd-td-souterrain__pebble__2__flat__long__solid"
+  },
   "nd-to-cottage": {
    "photo": "designs/img/nd-to-cottage-photo.jpg",
    "photoSource": "survey-crop",
@@ -113,6 +141,62 @@
    "photoPand": "0363100012112574",
    "render": "designs/img/nn-row-small-unit.jpg",
    "renderUnit": "nn-row-small__small-grey__2__gable__long__solid"
+  },
+  "nw-ao-garage": {
+   "photo": "designs/img/nw-ao-garage-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012143444",
+   "render": "designs/img/nw-ao-garage-unit.jpg",
+   "renderUnit": "nw-ao-garage__red__3__flat__long__solid"
+  },
+  "nw-ao-hebriden": {
+   "photo": "designs/img/nw-ao-hebriden-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012101130",
+   "render": "designs/img/nw-ao-hebriden-unit.jpg",
+   "renderUnit": "nw-ao-hebriden__red__2__gable__long__solid"
+  },
+  "nw-ao-hebriden-clad": {
+   "photo": "designs/img/nw-ao-hebriden-clad-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012094772",
+   "render": "designs/img/nw-ao-hebriden-clad-unit.jpg",
+   "renderUnit": "nw-ao-hebriden-clad__green__2__gable__long__solid"
+  },
+  "nw-ao-slot": {
+   "photo": "designs/img/nw-ao-slot-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012139657",
+   "render": "designs/img/nw-ao-slot-unit.jpg",
+   "renderUnit": "nw-ao-slot__orange__3__flat__long__solid__f0d0"
+  },
+  "nw-aw-lameye": {
+   "photo": "designs/img/nw-aw-lameye-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012103253",
+   "render": "designs/img/nw-aw-lameye-unit.jpg",
+   "renderUnit": "nw-aw-lameye__orange__2__flat__long__solid"
+  },
+  "nw-aw-lomond": {
+   "photo": "designs/img/nw-aw-lomond-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012089013",
+   "render": "designs/img/nw-aw-lomond-unit.jpg",
+   "renderUnit": "nw-aw-lomond__red__3__flat__long__solid"
+  },
+  "nw-aw-pracana": {
+   "photo": "designs/img/nw-aw-pracana-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012122927",
+   "render": "designs/img/nw-aw-pracana-unit.jpg",
+   "renderUnit": "nw-aw-pracana__red__3__flat__long__solid"
+  },
+  "nw-aw-vattern": {
+   "photo": "designs/img/nw-aw-vattern-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012095972",
+   "render": "designs/img/nw-aw-vattern-unit.jpg",
+   "renderUnit": "nw-aw-vattern__grey__4__flat__long__solid"
   },
   "nw-brick-tower-stair-5st": {
    "photo": "designs/img/nw-brick-tower-stair-5st-photo.jpg",
@@ -224,6 +308,27 @@
    "photoPand": "0363100012079979",
    "render": "designs/img/nw-ns-red-three-unit.jpg",
    "renderUnit": "nw-ns-red-three__red__3__flat__long__solid"
+  },
+  "nw-nsn-glazed": {
+   "photo": "designs/img/nw-nsn-glazed-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012108135",
+   "render": "designs/img/nw-nsn-glazed-unit.jpg",
+   "renderUnit": "nw-nsn-glazed__grey__2__flat__long__solid"
+  },
+  "nw-nsn-turnhout": {
+   "photo": "designs/img/nw-nsn-turnhout-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012150696",
+   "render": "designs/img/nw-nsn-turnhout-unit.jpg",
+   "renderUnit": "nw-nsn-turnhout__buff__2__flat__long__solid"
+  },
+  "nw-nsn-white": {
+   "photo": "designs/img/nw-nsn-white-photo.jpg",
+   "photoSource": "survey-crop",
+   "photoPand": "0363100012071309",
+   "render": "designs/img/nw-nsn-white-unit.jpg",
+   "renderUnit": "nw-nsn-white__white__3__flat__long__solid__f0d0"
   },
   "nw-os-band": {
    "photo": "designs/img/nw-os-band-photo.jpg",
