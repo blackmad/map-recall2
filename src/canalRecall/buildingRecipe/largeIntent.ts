@@ -268,7 +268,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
           if (!e || typeof e !== 'object') { problems.push(`${ek}: object {storeys, bays}`); return; }
           for (const key of Object.keys(e)) if (!['storeys', 'bays'].includes(key)) problems.push(`${ek}.${key}: unknown field (storeys, bays)`);
           if (!Array.isArray(e.storeys) || !e.storeys.length) problems.push(`${ek}.storeys: list of upper storeys (1 = first floor)`);
-          else e.storeys.forEach(s => { count(s, `${ek}.storeys`, 1, 39); if (seen.has(s)) problems.push(`${ek}.storeys: storey ${s} listed twice`); seen.add(s); if (w.blankStoreys?.includes(s)) problems.push(`${ek}.storeys: storey ${s} is a blank storey`); });
+          else e.storeys.forEach(s => { count(s, `${ek}.storeys`, 0, 39);
+            if (s === 0 && (w.hoist || w.gateways || w.hallDoors || w.souterrain || w.garageDoors || w.garageBays || (w.ground !== undefined && w.ground !== 'system'))) problems.push(`${ek}.storeys: the ground storey (0) only on a "system" ground without hoist, gateways, hallDoors, souterrain, or garage doors`); if (seen.has(s)) problems.push(`${ek}.storeys: storey ${s} listed twice`); seen.add(s); if (w.blankStoreys?.includes(s)) problems.push(`${ek}.storeys: storey ${s} is a blank storey`); });
           if (!Array.isArray(e.bays) || !e.bays.length) problems.push(`${ek}.bays: list of bay indices`);
           else e.bays.forEach(b => count(b, `${ek}.bays`, 0, (w.baysPerStorey ?? 80) - 1));
         });

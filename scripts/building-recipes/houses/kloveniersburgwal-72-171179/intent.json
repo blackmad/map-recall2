@@ -132,9 +132,9 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 4,
-   "baysPerStorey": 4,
+   "baysPerStorey": 9,
    "ground": "system",
-   "windows": "wide",
+   "windows": "plain",
    "deepBars": true,
    "stringCourses": true,
    "palette": {
@@ -143,13 +143,80 @@
     "stone": "#efe9d8"
    },
    "hand": [
+    "baysPerStorey",
+    "groundFactor",
+    "openBays",
+    "plinth",
+    "storeyShapes",
     "system",
-    "baysPerStorey"
+    "windowShape"
    ],
    "windowShape": {
-    "w": 0.569,
-    "h": 0.6,
-    "sill": 0.38
+    "w": 0.92,
+    "h": 0.62,
+    "sill": 0.35
+   },
+   "groundFactor": 1.69,
+   "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.92,
+     "h": 0.9,
+     "sill": 0.05
+    }
+   ],
+   "openBays": [
+    {
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "bays": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ]
+    },
+    {
+     "storeys": [
+      0
+     ],
+     "bays": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ]
+    }
+   ],
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "bays": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "lights": 1,
+    "sill": 0.24,
+    "h": 0.33,
+    "pier": 0.08
    }
   },
   {
@@ -159,30 +226,60 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 4,
-   "baysPerStorey": 7,
+   "baysPerStorey": 13,
    "ground": "system",
    "windows": "plain",
-   "deepBars": true,
    "stringCourses": true,
    "palette": {
-    "brick": "#938369",
+    "brick": "#9a8a6f",
     "frame": "#8a6a48",
     "stone": "#c8b894",
     "glass": "#60625c"
    },
    "hand": [
+    "baysPerStorey",
+    "palette.brick",
+    "storeyShapes",
     "system",
-    "baysPerStorey"
+    "wallSplit",
+    "windowShape"
    ],
    "wallSplit": {
-    "at": 0.711,
+    "at": 0.538,
     "brick": "#765f4d"
    },
    "windowShape": {
-    "w": 0.748,
+    "w": 0.74,
     "h": 0.6,
     "sill": 0.25
-   }
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.74,
+     "h": 0.8,
+     "sill": 0.12
+    },
+    {
+     "storeys": [
+      2
+     ],
+     "w": 0.74,
+     "h": 0.6,
+     "sill": 0.27
+    },
+    {
+     "storeys": [
+      3
+     ],
+     "w": 0.74,
+     "h": 0.56,
+     "sill": 0.19
+    }
+   ],
+   "deepBars": true
   },
   {
    "wallSurfaces": [
@@ -215,10 +312,9 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 4,
-   "baysPerStorey": 5,
+   "baysPerStorey": 9,
    "ground": "system",
    "windows": "cross",
-   "deepBars": true,
    "stringCourses": true,
    "palette": {
     "brick": "#6f5b54",
@@ -226,14 +322,37 @@
     "stone": "#c0c8d0"
    },
    "hand": [
+    "baysPerStorey",
+    "openBays",
     "system",
-    "baysPerStorey"
+    "windowShape"
    ],
    "windowShape": {
-    "w": 0.654,
-    "h": 0.65,
-    "sill": 0.3
-   }
+    "w": 0.84,
+    "h": 0.66,
+    "sill": 0.27
+   },
+   "openBays": [
+    {
+     "storeys": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "bays": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8
+     ]
+    }
+   ],
+   "deepBars": true
   }
  ],
  "otherWalls": "blank",
@@ -254,7 +373,8 @@
   "walls[1] = panel 56 (w06-192): the 1900s brick range with grey stone ground storey, iron-barred windows and the arched GASTHUIS APOTHEEK portal. Drawn as 4 storeys x 3 bays, a portal entrance in bay 2 and GASTHUIS APOTHEEK fascia lettering. Simplified: the carved cartouche, scrolls and the sculpture group on the right pier, the iron window grilles.",
   "walls[2] = panel 60 (w04-121): the 1930s brick wing with the white curved window band, drawn as 4 storeys of wide windows with white string courses; the curved bay and the wrap-round balcony band are straight. walls[3] = panel 286 (w02-122): the 1950s beige block, 4 storeys x 7 bays of plain windows. walls[4] = four 14.5 m surfaces of the canal gable row (w05-121), 4 storeys x 4 bays; the gables are the 3DBAG roof. walls[5] = panel 12 (w03-300): the grey-blue brick wing with a curved front, 4 storeys x 5 bays; the curve is straight.",
   "Not drawn: the long south front (panel 55) and the inner court walls (no panorama within 35 m); the green copper roof of the curved wing.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #625e59 not used (not darker than the wall #5c5b57 by 10 L*, or tinted): kit glass kept; walls[2] glass #646b71 not used (not darker than the wall #7a655b by 10 L*, or tinted): kit glass kept; walls[3] wall split #938369 | #765f4d at 71 % (dE 15); walls[5] glass #514843 not used (not darker than the wall #6f5b54 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #625e59 not used (not darker than the wall #5c5b57 by 10 L*, or tinted): kit glass kept; walls[2] glass #646b71 not used (not darker than the wall #7a655b by 10 L*, or tinted): kit glass kept; walls[3] wall split #938369 | #765f4d at 71 % (dE 15); walls[5] glass #514843 not used (not darker than the wall #6f5b54 by 10 L*, or tinted): kit glass kept.",
+  "Refit 2026-10-25 (issue #59, gate #58 crops). walls[2] (w04-121, the 1930s brick front): a blank brick tower on the left (bays 0-2), a white-framed glazed block over bays 3-8 on storeys 1-3 (6.3-10.0 m and 11.3-14.0 m in the crop, a white band between), blank brick under it, and a low white-framed ribbon at 1.5-3.6 m along the ground with a curved glass bay at its left end; was a uniform 4x4 grid. Now 9 bays, groundFactor 1.69, windows w 0.92 only in bays 3-8 (openBays), storey 1 sill 0.05 h 0.9, the ground ribbon as a one-light plinth on bays 1-8 (sill 0.24, h 0.33) and the ground bay 0 blank (openBays on storey 0, new in the kit). Windows 'plain': the photo's 4x2 pane grid ('wide') costs 800 triangles over the 12k budget. Gate on walls[2]: with the upper bands now 6.3-14 m (above 14 m the crop is empty) the cream frames outnumber the brick and the measure takes them for the wall (#cdb994, glazing 0.85) and the brick #826b5a for not-wall; with the old lines it read the brick as #695346: a misread, allowed as inferred. walls[3] (w02-122): two buildings on one front, a 1950s beige concrete-framed office (7 bays) and a brick house (6 bays), both on a 1.66 m window pitch: now 13 bays, split at 7/13 (was 0.711), tall windows (w 0.74; storeyShapes 0.12/0.8, 0.27/0.6, 0.19/0.56 from the crop rows), beige #9a8a6f from the sunlit spandrels (#a19175 / piers #8d7e66), brick #765f4d (crop #7a6250). Columns, glazing and shape now pass; the gate FAILs only the wall colour because it measures one colour over both buildings (brick dominates the wall cells) and compares it with the beige side: a misread of a wallSplit front, allowed as inferred. walls[5] (w03-300L): 9 bays of 2.27 m with bay 3 a blank brick pier carrying a stone plaque down to the street (3 + 5 windows), white cross windows w 0.84, h 0.66, sill 0.27: likeness PASS. walls[0] (a row of narrow fronts with cream shopfront surrounds, the left two painted near-black, the middle brown brick, a coffeeshop) and walls[1] (ornate portal front at 12 deg obliquity) unchanged from the 2026-10-14 inferred install: walls[0] needs the `houses` row split, not done here. Kit cannot say: the curved glass bay at the end of the ground ribbon, the white cantilevered band between the glazed storeys of walls[2], frame colour per wallSplit side (walls[3]'s house has white frames, the office brown), the 4x2 pane grid within the triangle budget."
  ],
  "measured": {
   "date": "2026-10-14",

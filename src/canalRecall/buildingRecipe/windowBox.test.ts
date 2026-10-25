@@ -51,3 +51,16 @@ test('Stadsloket Zuidoost: one window box on walls[0] within the gates; absent =
   assert.equal(b.components.windowBoxes, undefined);
   assert.notEqual(meshHashOf(a.group), meshHashOf(b.group));
 });
+
+test('openBays on the ground storey (0): listed bays keep the ground row, the rest plain wall; absent = unchanged; not with a hoist', async () => {
+  const {largeSystem} = await import('../blockBuilding/systems.ts');
+  const slots = {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame'};
+  const fit = {pitchM: 2.4, lines: [0, 3.6, 7.2, 10.8], ground: 'system' as const, slots, bays: 4};
+  const plain = largeSystem('brick-bay-grid', fit);
+  const s = largeSystem('brick-bay-grid', {...fit, openBays: [{storeys: [0], bays: [0, 1, 3]}]});
+  assert.deepEqual(s.ground!.cycle!.map(r => r.kind), [plain.ground!.kind, plain.ground!.kind, 'wall', plain.ground!.kind]);
+  assert.deepEqual(s.typical, plain.typical);
+  assert.deepEqual(largeSystem('brick-bay-grid', {...fit, openBays: [{storeys: [1], bays: [0]}]}).ground, plain.ground);
+  const base = raw(), w5 = {...base.walls[1], openBays: [{storeys: [0], bays: [0]}]};
+  assert.throws(() => validateLargeIntent({...base, walls: [base.walls[0], {...w5, hoist: {every: 2}}, ...base.walls.slice(2)]}), /ground storey \(0\)/);
+});

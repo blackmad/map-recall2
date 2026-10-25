@@ -31201,10 +31201,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012168172",
       "name": "Oude Turfmarkt 139 / Binnengasthuisstraat 46, Amsterdam: Binnengasthuis complex (UvA), brick civic front on the canal and white balconied housing block in the courtyard street",
-      "hash": "d3df70f3c5fbb3692b4d4211389963f14cc971ddff75225afb901a62ccb5727b",
-      "sha256": "d3df70f3c5fbb3692b4d4211389963f14cc971ddff75225afb901a62ccb5727b",
-      "bytes": 814456,
-      "triangles": 10312,
+      "hash": "273230719f5101d78659a313087f49ef2515a5d70a83649b895b03e2ea27a0a2",
+      "sha256": "273230719f5101d78659a313087f49ef2515a5d70a83649b895b03e2ea27a0a2",
+      "bytes": 768072,
+      "triangles": 9672,
       "materials": 12,
       "textures": 0,
       "scale": 1,
@@ -31773,7 +31773,8 @@
           "storey-height/walls[1]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 5st 9b",
@@ -31782,8 +31783,8 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.32 mean 0.40 vs photo 0.54; window shape tall vs photo wide; columns 9 vs photo 3)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.32 mean 0.40 vs photo 0.54, window shape tall vs photo wide, columns 9 vs photo 3) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[1] not confirmed by the photo (FAIL (wall dL +0.75; glazing storey band off by 0.51 mean 0.22 vs photo 0.74)); inferred: the crop's dark wall cluster is window frames and shade on a modern glazed infill, kept white",
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.33)); inferred: rows re-fitted on the placed crop and match it in the overlay, the remaining FAIL is the storey-3 band (photo 0.71 vs model 0.37), above the ~0.58 the band can hold, a sun-glare misread",
+        "walls[1] not confirmed by the photo (FAIL (wall dL +0.78; glazing storey band off by 0.57 mean 0.20 vs photo 0.77; wall family unresolved (#372c1c is dark and neutral, brick courses not resolved): lightness and hue judged only)); inferred: the crop is a thin shaded foliage-covered strip that reads the white render as #372c1c (reference w03-91 shows white render), windows enlarged to the photo's three-light timber windows",
         "Group 0 (SW run on the canal, surfaces from panels 54/195/57/64/69/226; w05-235, 2017-07-06): five-storey brown brick civic front with a pale cornice and a UNIVERSITEIT VAN AMSTERDAM name band under it, nine axes of tall white-framed sashes. Modelled as brick-bay-grid, 5 storeys, 8-9 bays, cornice; the name band lettering, the banded arched cellar windows and the entrance are not modelled (the entrance and lettering sit on a neighbouring wall).",
         "Group 1 (E wall, panel 104; w03-91, 2016-06-09): white rendered block with orange-framed wide windows, glass-block stair, a curved balcony stack and a glass entrance canopy. Modelled as 3 storeys of low windows in pale cream brick (the house has one wall material, brick; render would need a per-group wallMaterial). Not modelled: curved balconies, glass-block stair, canopy and the fourth floor (the eaves allow three storeys here).",
         "All other walls (courtyard, N, S, NE) are blank: no photograph.",
@@ -31795,8 +31796,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168172",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T13:48:56.843Z",
-      "meshHash": "3eafb07d1e1b95ad"
+      "updatedAt": "2026-10-25T05:14:54.930Z",
+      "meshHash": "acec2434e6a4e3ba"
     },
     {
       "id": "ordinary-0363100012238726",
@@ -38447,9 +38448,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165748",
       "name": "Rijksakademie van beeldende kunsten, Sarphatistraat 470, Amsterdam (1865 former barracks, courtyard complex of round-arched brick ranges)",
-      "hash": "4b0e90968e4446150eea325e432075dde28649486aa84e69145add310ce03090",
-      "sha256": "4b0e90968e4446150eea325e432075dde28649486aa84e69145add310ce03090",
-      "bytes": 1039476,
+      "hash": "6d6a25e697692616ac6b74afb98d175d809e137d52fcd1d571c06f4db950845a",
+      "sha256": "6d6a25e697692616ac6b74afb98d175d809e137d52fcd1d571c06f4db950845a",
+      "bytes": 1039456,
       "triangles": 11791,
       "materials": 9,
       "textures": 0,
@@ -39056,7 +39057,8 @@
           "storey-height/walls[1]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 2st 14b",
@@ -39065,8 +39067,8 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (NO EVIDENCE (foliage 39 % > 25 %)); inferred: foliage 39 %, one hand brick between the leafy and the shaded crop",
-        "walls[1] not confirmed by the photo (FAIL (wall hue -14 deg; glazing  mean 0.24 vs photo 0.42)); inferred: the crop is in shade under trees, one hand brick between the two crops",
+        "walls[0] not confirmed by the photo (NO EVIDENCE (foliage 39 % > 25 %)); inferred: foliage 39 %, brick now the sunlit crop's buff grey-brown #8c7a62 and a slate roof as both references show",
+        "walls[1] not confirmed by the photo (FAIL (wall dL +0.22; glazing storey band off by 0.22 mean 0.23 vs photo 0.50; columns 10 vs photo 7)); inferred: the gate reads the lamp post, bare branches and iron fence as glazing (photo 0.49), the crop is in shade (dL +0.22 on the same brick as the sunlit walls[0])",
         "Rijksakademie van beeldende kunsten, Sarphatistraat 470 (pand 0363100012165748, built 1865, 349 LoD2.2 surfaces in 274 panels, roof max 21.4 m): a courtyard complex of former barracks ranges with an annex block to the north-east. Two outer ranges have a panorama: the 51 m south range (2021-01-26 w02-162, surface 88, plus the 31 m panel 53; eaves 8.2 m: one tall storey of round-headed windows paired with plain and painted-over arches, small arched lights above) and the 34 m north range (2020-04-24 w04-342, surfaces 98 and 7, eaves 11.1 m: two storeys of round-arched windows in pairs over a brick ground with a fire stair). The west range (surfaces 105/130/345, 55 m, no photo within range) and the courtyard walls are blank.",
         "MODELLED: round-arched windows with brick rowlock arch bands on both ranges (arches.windows round), two storeys at the measured eaves, red-tile roof from the 3DBAG roof planes. SIMPLIFIED: the windows are regularised to an even 14 / 10 bay rhythm; the south range's arches are in two storeys though the photo shows mostly one tall arched row with a few small lights above; the painted-white and bricked-up arches and the tall central entrance bays are not distinguished; no polychrome. SKIPPED: the fence in front of the north range, the fire stair (too thin), the striped polychrome ornamental house fronts on the Rijksakademie's east side (they stand on other BAG pands and are not part of this massing), the rear and courtyard walls (no photo: blank), roof dormers and rooflights (not in LoD2.2).",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #35332f not used (not darker than the wall #473f36 by 10 L*, or tinted): kit glass kept."
@@ -39076,7 +39078,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165748",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T13:53:09.800Z",
+      "updatedAt": "2026-10-25T05:15:42.330Z",
       "meshHash": "b8ff10b23f9c0f42"
     },
     {
@@ -39569,10 +39571,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012171179",
       "name": "Kloveniersburgwal 72 (former Binnengasthuis, now University of Amsterdam), Amsterdam: Nieuwe Hoogstraat row-house fronts, the 1900s GASTHUIS APOTHEEK brick range, a 1930s curved brick wing and a 1950s beige block",
-      "hash": "b605e8ea62929b54ea8a3dc078a9249b9206525f9b4acd29d6152aeaf98761ae",
-      "sha256": "b605e8ea62929b54ea8a3dc078a9249b9206525f9b4acd29d6152aeaf98761ae",
-      "bytes": 809688,
-      "triangles": 10458,
+      "hash": "7a21635cbf7c0c54621a638f553bb506ab53fb481e2b94ad53a26daf927b4742",
+      "sha256": "7a21635cbf7c0c54621a638f553bb506ab53fb481e2b94ad53a26daf927b4742",
+      "bytes": 892928,
+      "triangles": 11598,
       "materials": 25,
       "textures": 0,
       "scale": 1,
@@ -40294,36 +40296,37 @@
           "storey-height/walls[5]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 3st 6b",
           "brick-bay-grid+entrance 4st 3b",
+          "brick-bay-grid 4st 9b",
+          "brick-bay-grid 4st 13b",
           "brick-bay-grid 4st 4b",
-          "brick-bay-grid 4st 7b",
-          "brick-bay-grid 4st 4b",
-          "brick-bay-grid 4st 5b"
+          "brick-bay-grid 4st 9b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (wall family brick vs photo paint; glazing storey band off by 0.23 mean 0.50 vs photo 0.73)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (wall family brick vs photo paint, glazing storey band off by 0.23 mean 0.50 vs photo 0.73) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.18; window shape tall vs photo square; columns 3 vs photo 2)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.18, window shape tall vs photo square, columns 3 vs photo 2) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[2] likeness WARN (mask IoU 0.306 < 0.45).",
-        "walls[3] not confirmed by the photo (FAIL (window shape square vs photo tall; columns 7 vs photo 13)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (window shape square vs photo tall, columns 7 vs photo 13) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[0] not confirmed by the photo (FAIL (wall family brick vs photo paint; glazing  mean 0.45 vs photo 0.56)); inferred: unchanged from the 2026-10-14 inferred install, a row of narrow painted and brick fronts that needs the houses row split, colour and rhythm kept",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.24 mean 0.26 vs photo 0.40; wall family unresolved (#4b5050 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 3 vs photo 2)); inferred: unchanged from the 2026-10-14 inferred install, ornate portal front read at 12 deg obliquity, windows and portal as fitted",
+        "walls[2] not confirmed by the photo (FAIL (wall dL -0.43; glazing storey band off by 0.34 mean 0.38 vs photo 0.85)); inferred: re-fitted to the placed crop, the gate takes the cream window frames for the wall (#cdb994) and the brick for not-wall once the bands are 6.3-14 m, the overlay matches",
+        "walls[3] not confirmed by the photo (FAIL (wall dL +0.13)); inferred: re-fitted (13 bays, split 7/13, tall windows), only the wall colour fails because the gate measures one colour over a two-building wallSplit front",
         "walls[4] not confirmed by the photo (NO EVIDENCE (foliage 28 % > 25 %)); inferred: foliage 28 %, buff brick by hand from the leafy crop",
-        "walls[5] likeness WARN (columns 5 vs photo 9).",
         "Kloveniersburgwal 72 (BAG, built 1757 core) is the former Binnengasthuis block (now University of Amsterdam) between Nieuwe Hoogstraat, Kloveniersburgwal and Oudezijds Achterburgwal; 468 3DBAG wall surfaces round several courts. Six photographed street runs are drawn (w01-16, w06-192, w04-121, w02-122, w05-121, w03-300); courts, the long south front (panel 55, no photograph) and every other wall stay blank (otherWalls).",
         "walls[0] = the north run on Nieuwe Hoogstraat (panel 10, 9.4 m surfaces only): three storeys of row-house fronts with white-framed windows over shopfronts, cornice. The 12 m gable surfaces and the 7.7 m surface are left blank. 6 bays of ~4 m stand for the ~20 narrower row-house axes (22 bays cost 16k tris).",
-        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #625e59 not used (not darker than the wall #5c5b57 by 10 L*, or tinted): kit glass kept; walls[2] glass #646b71 not used (not darker than the wall #7a655b by 10 L*, or tinted): kit glass kept; walls[3] wall split #938369 | #765f4d at 71 % (dE 15); walls[5] glass #514843 not used (not darker than the wall #6f5b54 by 10 L*, or tinted): kit glass kept."
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #625e59 not used (not darker than the wall #5c5b57 by 10 L*, or tinted): kit glass kept; walls[2] glass #646b71 not used (not darker than the wall #7a655b by 10 L*, or tinted): kit glass kept; walls[3] wall split #938369 | #765f4d at 71 % (dE 15); walls[5] glass #514843 not used (not darker than the wall #6f5b54 by 10 L*, or tinted): kit glass kept.",
+        "Refit 2026-10-25 (issue #59, gate #58 crops). walls[2] (w04-121, the 1930s brick front): a blank brick tower on the left (bays 0-2), a white-framed glazed block over bays 3-8 on storeys 1-3 (6.3-10.0 m and 11.3-14.0 m in the crop, a white band between), blank brick under it, and a low white-framed ribbon at 1.5-3.6 m along the ground with a curved glass bay at its left end; was a uniform 4x4 grid. Now 9 bays, groundFactor 1.69, windows w 0.92 only in bays 3-8 (openBays), storey 1 sill 0.05 h 0.9, the ground ribbon as a one-light plinth on bays 1-8 (sill 0.24, h 0.33) and the ground bay 0 blank (openBays on storey 0, new in the kit). Windows 'plain': the photo's 4x2 pane grid ('wide') costs 800 triangles over the 12k budget. Gate on walls[2]: with the upper bands now 6.3-14 m (above 14 m the crop is empty) the cream frames outnumber the brick and the measure takes them for the wall (#cdb994, glazing 0.85) and the brick #826b5a for not-wall; with the old lines it read the brick as #695346: a misread, allowed as inferred. walls[3] (w02-122): two buildings on one front, a 1950s beige concrete-framed office (7 bays) and a brick house (6 bays), both on a 1.66 m window pitch: now 13 bays, split at 7/13 (was 0.711), tall windows (w 0.74; storeyShapes 0.12/0.8, 0.27/0.6, 0.19/0.56 from the crop rows), beige #9a8a6f from the sunlit spandrels (#a19175 / piers #8d7e66), brick #765f4d (crop #7a6250). Columns, glazing and shape now pass; the gate FAILs only the wall colour because it measures one colour over both buildings (brick dominates the wall cells) and compares it with the beige side: a misread of a wallSplit front, allowed as inferred. walls[5] (w03-300L): 9 bays of 2.27 m with bay 3 a blank brick pier carrying a stone plaque down to the street (3 + 5 windows), white cross windows w 0.84, h 0.66, sill 0.27: likeness PASS. walls[0] (a row of narrow fronts with cream shopfront surrounds, the left two painted near-black, the middle brown brick, a coffeeshop) and walls[1] (ornate portal front at 12 deg obliquity) unchanged from the 2026-10-14 inferred install: walls[0] needs the `houses` row split, not done here. Kit cannot say: the curved glass bay at the end of the ground ribbon, the white cantilevered band between the glazed storeys of walls[2], frame colour per wallSplit side (walls[3]'s house has white frames, the office brown), the 4x2 pane grid within the triangle budget."
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171179",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T14:04:22.068Z",
-      "meshHash": "913ba0e5597d051a"
+      "updatedAt": "2026-10-25T05:22:00.051Z",
+      "meshHash": "ac69c63bd0b5e8ec"
     },
     {
       "id": "ordinary-0363100012137990",

@@ -99,7 +99,7 @@ export interface SystemFit {
   courses?: ('sill' | 'head')[];
   /** the ground storey is a souterrain: SOUTERRAIN.factor of an upper storey (fitLarge), two small windows per bay (`single`: one) (intent `souterrain`) */
   souterrain?: boolean | 'single';
-  /** on each entry's storeys (1 = first floor) only the listed bays (of `bays` per storey) keep the storey's openings; the rest is plain wall (intent `openBays`) */
+  /** on each entry's storeys (1 = first floor; 0 = the ground row) only the listed bays (of `bays` per storey) keep the storey's openings; the rest is plain wall (intent `openBays`) */
   openBays?: { storeys: number[]; bays: number[] }[];
   /**
    * Window width per bay, cycling across the bays as fractions of the bay (intent `windowPattern`): `[0.85, 0.3]` draws
@@ -318,6 +318,14 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   }
   let ground = name === 'curtain-wall' && f.layered && (f.ground === 'system' || f.ground === 'glazed') ? typical
     : groundRow({ ...f, ground: name === 'plinth-shopfronts' && f.ground === 'system' ? 'plinth-shopfronts' : f.ground }, archedStoreys.includes(0) ? archedRow(0) : typical);
+  // openBays on the ground storey (storey 0, issue #59: Kloveniersburgwal 72's blank pier bay with its stone plaque runs
+  // down to the street): the ground row in the listed bays, plain wall in the rest. Validation keeps it off grounds that
+  // claim their own bays (hoist, gateways, hall doors, souterrain, garage doors); a ground plinth
+  // still replaces its own listed bays afterwards.
+  for (const ob of name === 'blank' ? [] : f.openBays ?? []) if (ob.storeys.includes(0)) {
+    const every = Math.max(1, f.bays ?? 1, ...ob.bays.map(b => b + 1)), under = ground;
+    ground = { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (ob.bays.includes(k) ? under : ({ kind: 'wall' } as Row))) };
+  }
   // Loading-door axis: a cycle of rows per bay with the hoist row at `first` (cycle index = bay % every).
   if (f.hoist && name !== 'blank') {
     const list = f.hoist.bays, every = list ? Math.max(1, f.bays ?? 1, ...list.map(b => b + 1)) : Math.max(1, f.hoist.every ?? 1), at = ((f.hoist.first ?? 0) % every + every) % every, kind = f.hoist.arch;

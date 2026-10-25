@@ -39,7 +39,7 @@
     "palette.brick"
    ],
    "palette": {
-    "brick": "#6e4f42"
+    "brick": "#8c7a62"
    }
   },
   {
@@ -64,17 +64,17 @@
     "palette.brick"
    ],
    "palette": {
-    "brick": "#6e4f42"
+    "brick": "#8c7a62"
    }
   }
  ],
  "otherWalls": "blank",
  "closedBands": true,
  "roof": {
-  "material": "red-tile"
+  "material": "slate"
  },
  "palette": {
-  "brick": "#6a4a3e",
+  "brick": "#8c7a62",
   "frame": "#e8e2d2",
   "door": "#2a2a2a",
   "stone": "#d9d2bd",
@@ -83,7 +83,8 @@
  "notes": [
   "Rijksakademie van beeldende kunsten, Sarphatistraat 470 (pand 0363100012165748, built 1865, 349 LoD2.2 surfaces in 274 panels, roof max 21.4 m): a courtyard complex of former barracks ranges with an annex block to the north-east. Two outer ranges have a panorama: the 51 m south range (2021-01-26 w02-162, surface 88, plus the 31 m panel 53; eaves 8.2 m: one tall storey of round-headed windows paired with plain and painted-over arches, small arched lights above) and the 34 m north range (2020-04-24 w04-342, surfaces 98 and 7, eaves 11.1 m: two storeys of round-arched windows in pairs over a brick ground with a fire stair). The west range (surfaces 105/130/345, 55 m, no photo within range) and the courtyard walls are blank.",
   "MODELLED: round-arched windows with brick rowlock arch bands on both ranges (arches.windows round), two storeys at the measured eaves, red-tile roof from the 3DBAG roof planes. SIMPLIFIED: the windows are regularised to an even 14 / 10 bay rhythm; the south range's arches are in two storeys though the photo shows mostly one tall arched row with a few small lights above; the painted-white and bricked-up arches and the tall central entrance bays are not distinguished; no polychrome. SKIPPED: the fence in front of the north range, the fire stair (too thin), the striped polychrome ornamental house fronts on the Rijksakademie's east side (they stand on other BAG pands and are not part of this massing), the rear and courtyard walls (no photo: blank), roof dormers and rooflights (not in LoD2.2).",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #35332f not used (not darker than the wall #473f36 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #35332f not used (not darker than the wall #473f36 by 10 L*, or tinted): kit glass kept.",
+  "Refit 2026-10-25 (issue #59): both photographed fronts show a buff grey-brown brick, not red-brown: the sunlit crop w02-162 measures #968369 raw / #83735c normalised and the shaded w04-342L #483f37 (same hue, darker), the earlier hand brick #6e4f42 was 17.7 deg off in hue; now #8c7a62 from the sunlit crop. Both references show a grey slate roof, not red tile: roof material slate. walls[0] stays NO EVIDENCE (foliage 39 %); walls[1] FAIL is the gate reading the lamp post, the bare branches and the iron fence in front as glazing (photo 0.49 vs a row of arched windows the reference shows at the model's size); both allowed as inferred."
  ],
  "layeredKit": true,
  "measured": {

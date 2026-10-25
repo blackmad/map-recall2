@@ -1010,7 +1010,8 @@ export interface LargeWallIntent {
    */
   shell?: number;
   /**
-   * Openings in only some bays of some storeys: on each entry's `storeys` (1 = first floor) only the listed `bays` (of
+   * Openings in only some bays of some storeys: on each entry's `storeys` (1 = first floor; 0 = the ground row, on a
+   * "system" ground without hoist, gateways, hall doors, souterrain or garage doors; a ground plinth replaces its own bays) only the listed `bays` (of
    * `baysPerStorey`, from the viewer's left on the widest panel) keep the storey's windows; the rest of the storey is plain
    * wall. The 2006 Rietveld Academie tower: ribbon windows across the middle 16 m of a 40 m dimpled-metal front on three
    * floors, blank metal between. Absent: every bay, byte-identical.
