@@ -532,8 +532,13 @@
       "dateSource": "asset-update"
     },
     "d-admiraal": {
-      "updatedAt": "2026-10-25T07:57:36.037Z",
-      "version": "02a2dfcf0cfe8c69",
+      "updatedAt": "2026-10-25T08:03:40.844Z",
+      "version": "a75d487e29023373",
+      "dateSource": "asset-update"
+    },
+    "d-admiraal.lod1": {
+      "updatedAt": "2026-10-25T07:58:23.608Z",
+      "version": "aa8e9c7b02b83282",
       "dateSource": "asset-update"
     },
     "da-costakade-13": {
@@ -599,6 +604,11 @@
     "de-bloem": {
       "updatedAt": "2026-10-25T07:56:04.500Z",
       "version": "54eb0653f490c7fa",
+      "dateSource": "asset-update"
+    },
+    "de-bloem.lod1": {
+      "updatedAt": "2026-10-25T07:58:23.596Z",
+      "version": "4c85fde667970fec",
       "dateSource": "asset-update"
     },
     "de-dokwerker": {
@@ -672,8 +682,8 @@
       "dateSource": "asset-update"
     },
     "de-otter": {
-      "updatedAt": "2026-10-25T07:53:50.717Z",
-      "version": "03aba1adc1af3b36",
+      "updatedAt": "2026-10-25T08:03:38.707Z",
+      "version": "20c9d0dace2174e1",
       "dateSource": "asset-update"
     },
     "de-papegaai": {
