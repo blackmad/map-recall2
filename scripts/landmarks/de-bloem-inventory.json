@@ -1,0 +1,277 @@
+{
+ "schemaVersion": 1,
+ "id": "de-bloem",
+ "pand": "0363100012165350",
+ "brief": "scripts/landmarks/de-bloem-brief.md",
+ "signature": [
+  "sails",
+  "stage",
+  "thatched-octagons",
+  "cap",
+  "north-doors"
+ ],
+ "walls": [
+  {
+   "tag": "w01-255",
+   "bearing": 255,
+   "lengthM": 11.9,
+   "centre": [
+    4.860086,
+    52.3846905
+   ],
+   "evidence": "photo",
+   "panoId": "terdam_21112024_Track14_Sphere_00016",
+   "capturedAt": "2024-11-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "sails",
+     "kind": "other",
+     "where": "whole mill, sails facing west in the 2024-2025 panoramas",
+     "approxSizeM": [
+      26.3,
+      26.3
+     ],
+     "plan": "modelled",
+     "seenIn": "terdam_21112024_Track14_Sphere_00016",
+     "how": "windmill-kit sails(): four 13.15 m stocks (Molendatabase span 26.20/26.40 m), Fauel style: lattice on the trailing side and a white leading board"
+    },
+    {
+     "id": "stage",
+     "kind": "balcony-ironwork",
+     "where": "stage (stelling) at 12.30 m all round, white rails",
+     "approxSizeM": [
+      14.4,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "terdam_21112024_Track14_Sphere_00016",
+     "how": "windmill-kit stage(): octagonal deck r 7.2 m, white edge beams, posts, two rails, two white struts per side to the underbody"
+    },
+    {
+     "id": "thatched-octagons",
+     "kind": "tower",
+     "where": "flared thatched underbody and tapered thatched upper octagon",
+     "approxSizeM": [
+      9.6,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "terdam_21112024_Track14_Sphere_00016",
+     "how": "octFrustum sections: skirt 4.5-5.4 m, underbody to 12.3 m, upper octagon to 22.6 m"
+    },
+    {
+     "id": "octagon-windows",
+     "kind": "window-shape",
+     "where": "small white-framed windows on the octagons, two levels each",
+     "approxSizeM": [
+      0.6,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002054_pano_0000_005208",
+     "how": "octWindow on alternate faces"
+    },
+    {
+     "id": "cap",
+     "kind": "dome",
+     "where": "thatched rounded cap with a red and white band at its rim",
+     "approxSizeM": [
+      7,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "terdam_21112024_Track14_Sphere_00016",
+     "how": "boatCap plus two 16 cm bands (red, white)"
+    },
+    {
+     "id": "tail",
+     "kind": "other",
+     "where": "tail pole and struts from the cap to the stage, winding wheel",
+     "approxSizeM": [
+      7,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002054_pano_0000_005208",
+     "how": "dark pole, two struts and a crossbeam; red winding wheel with four spokes; the brake rope and chain are left out"
+    }
+   ]
+  },
+  {
+   "tag": "w02-165",
+   "bearing": 165,
+   "lengthM": 11.8,
+   "centre": [
+    4.8601925,
+    52.3846535
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama; south face of the foot inferred as dark brick with one window like the east face."
+  },
+  {
+   "tag": "w03-75",
+   "bearing": 75,
+   "lengthM": 11.6,
+   "centre": [
+    4.8602535,
+    52.3847185
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002054_pano_0000_005208",
+   "capturedAt": "2021-03-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "winding-wheel",
+     "kind": "other",
+     "where": "red winding wheel (kruirad) at the stage edge under the tail",
+     "approxSizeM": [
+      2,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002054_pano_0000_005208",
+     "how": "windingWheel(), red"
+    }
+   ]
+  },
+  {
+   "tag": "w04-345",
+   "bearing": 345,
+   "lengthM": 8.6,
+   "centre": [
+    4.860124,
+    52.384752
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000799_pano_0000_003463",
+   "capturedAt": "2018-06-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-doors",
+     "kind": "window-shape",
+     "where": "two tall arched doors in the whitewashed north face of the foot",
+     "approxSizeM": [
+      1.5,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "Wikimedia Commons Amsterdam_-_molen_De_Bloem_met_onderbouw.jpg (2008, CC BY-SA 2.5)",
+     "how": "arched extrusions 6 cm proud of the whitewashed wall"
+    },
+    {
+     "id": "gable-stones",
+     "kind": "gable-stone",
+     "where": "two gable stones over the north doors (cornflower; HERBOUWD 1878 inscription)",
+     "approxSizeM": [
+      1.1,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "Wikimedia Commons 2008; Molendatabase",
+     "how": "two plain stone plaques 10 cm proud; the relief and the inscription are not carved"
+    },
+    {
+     "id": "north-house",
+     "kind": "other",
+     "where": "small whitewashed house against the north face (BAG ring)",
+     "approxSizeM": [
+      3.1,
+      2.7
+     ],
+     "plan": "simplified",
+     "seenIn": "Wikimedia Commons 2008",
+     "how": "white box with a flat dark roof, door and window; its roof shape is not photographed clearly"
+    },
+    {
+     "id": "beard",
+     "kind": "lettering",
+     "where": "plain dark green beard with white edge, no inscription (Molendatabase)",
+     "approxSizeM": [
+      2.6,
+      1.05
+     ],
+     "plan": "modelled",
+     "seenIn": "Molendatabase 00802",
+     "how": "board() green with white trim on the cap front"
+    }
+   ]
+  },
+  {
+   "tag": "w05-256",
+   "bearing": 256,
+   "lengthM": 3.1,
+   "centre": [
+    4.8601795,
+    52.3847755
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Short ring edge of the north house; nothing notable."
+  },
+  {
+   "tag": "w06-76",
+   "bearing": 76,
+   "lengthM": 3.1,
+   "centre": [
+    4.8602235,
+    52.3847825
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001132_pano_0001_000099",
+   "capturedAt": "2019-04-17",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-346",
+   "bearing": 346,
+   "lengthM": 3.1,
+   "centre": [
+    4.860196,
+    52.3847925
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000799_pano_0000_003462",
+   "capturedAt": "2018-06-20",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Molendatabase 00802 (bouwwerk, roeden)",
+   "url": "https://www.molendatabase.nl/molens/ten-bruggencate-nr-00802",
+   "licence": "facts cited"
+  },
+  {
+   "name": "nl.wikipedia De Bloem (Amsterdam)",
+   "url": "https://nl.wikipedia.org/wiki/De_Bloem_(Amsterdam)",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Commons: Amsterdam - molen De Bloem met onderbouw.jpg (Quistnix 2008)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_molen_De_Bloem_met_onderbouw.jpg",
+   "licence": "CC BY-SA 2.5"
+  },
+  {
+   "name": "Commons: Korenmolen De Blom.JPG (2014)",
+   "url": "https://commons.wikimedia.org/wiki/File:Korenmolen_De_Blom.JPG",
+   "licence": "CC BY-SA 3.0 nl"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

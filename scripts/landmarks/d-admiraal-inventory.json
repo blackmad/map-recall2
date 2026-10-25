@@ -1,0 +1,302 @@
+{
+ "schemaVersion": 1,
+ "id": "d-admiraal",
+ "pand": "0363100012161029",
+ "brief": "scripts/landmarks/d-admiraal-brief.md",
+ "signature": [
+  "octagon",
+  "sails",
+  "stage",
+  "beard",
+  "se-doors",
+  "fanlights"
+ ],
+ "walls": [
+  {
+   "tag": "w01-26",
+   "bearing": 26,
+   "lengthM": 20,
+   "centre": [
+    4.9233555,
+    52.4026685
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-21_08-31-01_00061",
+   "capturedAt": "2024-10-21",
+   "checked": true,
+   "items": [],
+   "note": "The Molenhuis (separate pand) stands in front; the shed wall behind it is plain, one door inferred."
+  },
+  {
+   "tag": "w02-206",
+   "bearing": 206,
+   "lengthM": 15.2,
+   "centre": [
+    4.9232565,
+    52.4025925
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002883_pano_0002_000047",
+   "capturedAt": "2022-12-22",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w03-205",
+   "bearing": 205,
+   "lengthM": 14.8,
+   "centre": [
+    4.923433,
+    52.402505
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-21_08-31-01_00074",
+   "capturedAt": "2024-10-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "octagon",
+     "kind": "tower",
+     "where": "thatched octagon with a bell flare, standing on the shed",
+     "approxSizeM": [
+      8.5,
+      9.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-21_08-31-01_00074",
+     "how": "two octFrustum sections 2.6-11.9 m"
+    },
+    {
+     "id": "stage",
+     "kind": "balcony-ironwork",
+     "where": "cream stage and railing on the shed roof at 3.5 m",
+     "approxSizeM": [
+      10.8,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-21_08-31-01_00074",
+     "how": "stage() r 5.4 m, cream edge, rails and posts"
+    },
+    {
+     "id": "sails",
+     "kind": "other",
+     "where": "Fauel sails, dark green stocks and leading boards, light lattice, red hub",
+     "approxSizeM": [
+      17.1,
+      17.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-21_08-31-01_00074",
+     "how": "sails() fauel, 8.55 m stocks (Molendatabase 17.10 m)"
+    },
+    {
+     "id": "beard",
+     "kind": "lettering",
+     "where": "dark green beard with yellow edging lettered '17' '92' either side of the shaft",
+     "approxSizeM": [
+      3.2,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "Molendatabase 00238; Wikimedia Commons Molen_d_Admiraal_baard.jpg (CC BY-SA 3.0)",
+     "how": "two boards with yellow trim and 5x7 pixel numerals (the painted numerals are a serif face)"
+    },
+    {
+     "id": "rear-beard",
+     "kind": "lettering",
+     "where": "rear beard lettered d'Admiraal",
+     "approxSizeM": [
+      3.4,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "Wikimedia Commons Molen_d_Admiraal_achterbaard.jpg (CC BY-SA 3.0)",
+     "how": "green board, yellow pixel capitals D'ADMIRAAL (the original is a lower-case script; approximate)"
+    },
+    {
+     "id": "tail",
+     "kind": "other",
+     "where": "cream tail pole and struts down to the stage with the winding wheel",
+     "approxSizeM": [
+      6,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-21_08-31-01_00074",
+     "how": "pole, two struts, crossbeam, four-spoke wheel; brake lever and chains left out"
+    },
+    {
+     "id": "sw-openings",
+     "kind": "window-shape",
+     "where": "two white-framed windows, green double door and a notice board on the dike wall",
+     "approxSizeM": [
+      1,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-21_08-31-01_00074",
+     "how": "boxes measured on the aimed view"
+    },
+    {
+     "id": "lions",
+     "kind": "sculpture",
+     "where": "two small lions on the stage (2009)",
+     "approxSizeM": [
+      0.4,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "nl.wikipedia D'Admiraal",
+     "skip": {
+      "reason": "too-small",
+      "note": "about half a metre each, not legible at riding distance"
+     }
+    },
+    {
+     "id": "millstone",
+     "kind": "other",
+     "where": "old millstone propped by the fence",
+     "approxSizeM": [
+      1.4,
+      1.4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-21_08-31-01_00074",
+     "skip": {
+      "reason": "not-visible",
+      "note": "stands outside the pand in the yard, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-116",
+   "bearing": 116,
+   "lengthM": 11.5,
+   "centre": [
+    4.9235685,
+    52.4025235
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0001_000764",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-doors",
+     "kind": "window-shape",
+     "where": "two green stable doors with white frames on the canal wall",
+     "approxSizeM": [
+      1.3,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000353_pano_0001_000764",
+     "how": "white frame and green leaf boxes, positions measured on the rectified crop"
+    },
+    {
+     "id": "fanlights",
+     "kind": "window-shape",
+     "where": "two semicircular fanlights with white radiating bars",
+     "approxSizeM": [
+      1.6,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000353_pano_0001_000764",
+     "how": "fanlight(): half disc, white rim, sill and five bars"
+    }
+   ]
+  },
+  {
+   "tag": "w05-296",
+   "bearing": 296,
+   "lengthM": 10.5,
+   "centre": [
+    4.9231895,
+    52.4026645
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001102_pano_0010_000336",
+   "capturedAt": "2019-02-15",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w06-26",
+   "bearing": 26,
+   "lengthM": 9.5,
+   "centre": [
+    4.923568,
+    52.4026325
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_08-45-16_02582",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-110",
+   "bearing": 110,
+   "lengthM": 5.2,
+   "centre": [
+    4.923618,
+    52.402592
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0001_000763",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-295",
+   "bearing": 295,
+   "lengthM": 3.7,
+   "centre": [
+    4.9233455,
+    52.402548
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama; short wing end."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Molendatabase 00238",
+   "url": "https://www.molendatabase.nl/molens/ten-bruggencate-nr-00238",
+   "licence": "facts cited"
+  },
+  {
+   "name": "Rijksmonument 6609",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6609",
+   "licence": "CC0"
+  },
+  {
+   "name": "nl.wikipedia D'Admiraal",
+   "url": "https://nl.wikipedia.org/wiki/D%27Admiraal",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Commons: 2022 Molen D'Admiraal.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:2022_Molen_D%27Admiraal.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Commons: Molen d'Admiraal achterbaard.jpg / baard.jpg (2008)",
+   "url": "https://commons.wikimedia.org/wiki/File:Molen_d%27Admiraal_achterbaard.jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas 2017-2025",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

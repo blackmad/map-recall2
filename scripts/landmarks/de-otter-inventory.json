@@ -1,0 +1,209 @@
+{
+ "schemaVersion": 1,
+ "id": "de-otter",
+ "pand": "0363100012096312",
+ "brief": "scripts/landmarks/de-otter-brief.md",
+ "signature": [
+  "paltrok-body",
+  "sails",
+  "cap",
+  "wings",
+  "name-board"
+ ],
+ "walls": [
+  {
+   "tag": "w01-158",
+   "bearing": 158,
+   "lengthM": 6.5,
+   "centre": [
+    4.8709495,
+    52.376135
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama; the paltrok body is symmetric, so this side repeats the photographed one."
+  },
+  {
+   "tag": "w02-354",
+   "bearing": 354,
+   "lengthM": 6,
+   "centre": [
+    4.870927,
+    52.37621
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000198_pano_0001_000079",
+   "capturedAt": "2017-03-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "sails",
+     "kind": "other",
+     "where": "Old Dutch sails, yellow stocks and dark green lattice",
+     "approxSizeM": [
+      19.5,
+      19.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001953_pano_0000_001037",
+     "how": "windmill-kit sails(), old-dutch, 9.75 m stocks (Molendatabase span 19.50 m)"
+    },
+    {
+     "id": "paltrok-body",
+     "kind": "tower",
+     "where": "tall tapering tarred body that turns as a whole",
+     "approxSizeM": [
+      6,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001953_pano_0000_001037",
+     "how": "four-sided tapered loft 6.0x6.6 m to 3.2x4.8 m, 1.8-10.8 m"
+    },
+    {
+     "id": "cap",
+     "kind": "dome",
+     "where": "light barrel cap with green rounded gables and white rims",
+     "approxSizeM": [
+      4.3,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "Wikimedia Commons DeOtterJan2016-2a.jpg (CC BY-SA 4.0)",
+     "how": "half cylinder scaled, half-ellipse gables, torus rims"
+    },
+    {
+     "id": "wings",
+     "kind": "other",
+     "where": "side wings (kasten) under lean-to roofs on the turning deck",
+     "approxSizeM": [
+      2,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "Wikimedia Commons DeOtterJan2016-2a.jpg",
+     "how": "one boarded wing, one open post-and-brace frame, plate roofs; the saw frames and interior are left out"
+    },
+    {
+     "id": "deck",
+     "kind": "other",
+     "where": "broad deck on the turning curb with posts, stair at the rear",
+     "approxSizeM": [
+      10,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "Wikimedia Commons DeOtterJan2016-2a.jpg",
+     "how": "0.3 m deck, brick curb ring, twelve posts, eight struts, six-step stair"
+    },
+    {
+     "id": "herringbone",
+     "kind": "other",
+     "where": "front boarding in herringbone (visgraat)",
+     "approxSizeM": [
+      5,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "Molendatabase 02484a",
+     "how": "chevron battens 7 cm proud of the front face"
+    },
+    {
+     "id": "name-board",
+     "kind": "lettering",
+     "where": "rear beam board 'DE OTTER' under the rear gable",
+     "approxSizeM": [
+      2.6,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "Wikimedia Commons DeOtterJan2016-2a.jpg; Molendatabase",
+     "how": "white board with dark 5x7 pixel capitals (approximate match for the painted serif capitals)"
+    },
+    {
+     "id": "makelaar",
+     "kind": "other",
+     "where": "open finial (makelaar) on the rear gable",
+     "approxSizeM": [
+      0.3,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "Molendatabase; Wikimedia Commons 2016",
+     "how": "white post with a ball; the open fretwork is not cut"
+    },
+    {
+     "id": "winding-gear",
+     "kind": "other",
+     "where": "green winding capstan at the rear of the deck",
+     "approxSizeM": [
+      1.6,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "Wikimedia Commons DeOtterJan2016-2a.jpg",
+     "how": "green post and spoked wheel"
+    }
+   ]
+  },
+  {
+   "tag": "w03-84",
+   "bearing": 84,
+   "lengthM": 5.3,
+   "centre": [
+    4.870999,
+    52.3761775
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama; the paltrok body is symmetric, so this side repeats the photographed one."
+  },
+  {
+   "tag": "w04-287",
+   "bearing": 287,
+   "lengthM": 3.3,
+   "centre": [
+    4.870878,
+    52.376181
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000198_pano_0001_000077",
+   "capturedAt": "2017-03-07",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Molendatabase 02484a",
+   "url": "https://www.molendatabase.nl/molens/ten-bruggencate-nr-02484-a",
+   "licence": "facts cited"
+  },
+  {
+   "name": "Rijksmonument 1198",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1198",
+   "licence": "CC0"
+  },
+  {
+   "name": "Commons: DeOtterJan2016-2a.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:DeOtterJan2016-2a.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Commons: PaltrokMolen de Otter.JPG (2014)",
+   "url": "https://commons.wikimedia.org/wiki/File:PaltrokMolen_de_Otter.JPG",
+   "licence": "CC BY-SA 3.0 nl"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas 2021-2025",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

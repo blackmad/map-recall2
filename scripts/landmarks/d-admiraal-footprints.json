@@ -1,0 +1,98 @@
+{
+ "id": "d-admiraal",
+ "anchor": [
+  4.9235,
+  52.40256
+ ],
+ "northOffsetDegrees": 0,
+ "frame": "model +X = east, +Z = south (glTF), metres, origin at anchor",
+ "bagPand": "NL.IMBAG.Pand.0363100012161029",
+ "osmBuilding": "w280661893",
+ "osmPoi": "n31101329",
+ "ringLocal": [
+  [
+   0.339,
+   -10.124
+  ],
+  [
+   -0.815,
+   -7.788
+  ],
+  [
+   -18.813,
+   -16.354
+  ],
+  [
+   -23.364,
+   -6.898
+  ],
+  [
+   -9.712,
+   -0.334
+  ],
+  [
+   -11.275,
+   3.003
+  ],
+  [
+   2.173,
+   9.233
+  ],
+  [
+   7.131,
+   -1.113
+  ],
+  [
+   8.897,
+   -6.008
+  ]
+ ],
+ "buildingFootprint": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     4.923505,
+     52.402651
+    ],
+    [
+     4.923488,
+     52.40263
+    ],
+    [
+     4.923223,
+     52.402707
+    ],
+    [
+     4.923156,
+     52.402622
+    ],
+    [
+     4.923357,
+     52.402563
+    ],
+    [
+     4.923334,
+     52.402533
+    ],
+    [
+     4.923532,
+     52.402477
+    ],
+    [
+     4.923605,
+     52.40257
+    ],
+    [
+     4.923631,
+     52.402614
+    ],
+    [
+     4.923505,
+     52.402651
+    ]
+   ]
+  ]
+ },
+ "source": "BAG pand ring from public/data/extracts/amsterdam/building-tiles (PDOK BAG, CC0), RD New -> WGS84 via src/canalRecall/facade/rdNew.ts"
+}
