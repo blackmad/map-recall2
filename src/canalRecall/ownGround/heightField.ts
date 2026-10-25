@@ -135,6 +135,178 @@ export function smooth3(grid: Grid): void {
   }
 }
 
+/** Running max (or min) of a row-major grid over a (2r+1)² square, NaN-aware (separable; NaN where the window has no value). */
+function squareExtreme(data: Float32Array, w: number, h: number, r: number, max: boolean): Float32Array {
+  const pass = (src: Float32Array, horizontal: boolean): Float32Array => {
+    const out = new Float32Array(src.length), lines = horizontal ? h : w, len = horizontal ? w : h;
+    for (let a = 0; a < lines; a++) for (let b = 0; b < len; b++) {
+      let best = NaN;
+      for (let d = Math.max(0, b - r), e = Math.min(len - 1, b + r); d <= e; d++) {
+        const v = src[horizontal ? a * w + d : d * w + a];
+        if (v === v && (best !== best || (max ? v > best : v < best))) best = v;
+      }
+      out[horizontal ? a * w + b : b * w + a] = best;
+    }
+    return out;
+  };
+  return pass(pass(data, true), false);
+}
+
+export interface PitOptions {
+  /** Grid spacing, metres. */
+  stepM: number;
+  /** Closing radius, metres: a hollow narrower than about twice this is bridged by the closing. */
+  radiusM: number;
+  /** A sample this far (metres) below the closed surface belongs to a pit. */
+  minDepthM: number;
+  /** Pits larger than this (m²) are terrain the rider uses (a tunnel ramp, a sunken road): kept. */
+  maxAreaM2: number;
+  /**
+   * The ring of samples around a pit must be level: its 10–90 % height spread at most this (metres). A stairwell
+   * in a plaza has a level rim; a road cut through a rail embankment (an underpass approach) has the embankment on
+   * two sides and the street at its ends, and is kept.
+   */
+  maxRimSpreadM: number;
+}
+
+export interface Pit { cells: number; areaM2: number; depthM: number; rimSpreadM: number; i: number; j: number }
+
+/**
+ * Stairwells, escalator shafts and garage ramps cut into a paved plaza: the
+ * DTM measures their floors 2–4 m under the pavement (Stationsplein's metro
+ * and bike-garage entrances), and the 2 m field turned each into a smooth
+ * crater the paving drapes into (issue #53). A pit is a connected set of
+ * measured samples more than `minDepthM` under the morphological closing of
+ * the field (square window of `radiusM`) whose area is at most `maxAreaM2`.
+ * Returns the pit mask (1 = pit sample) and the pits found; the caller blanks
+ * them before the hole fill so the pavement level carries over them.
+ */
+export function findPits(grid: Grid, o: PitOptions): { mask: Uint8Array; pits: Pit[]; rejected: number } {
+  const { width: w, height: h, data } = grid, r = Math.max(1, Math.round(o.radiusM / o.stepM));
+  const closed = squareExtreme(squareExtreme(data, w, h, r, true), w, h, r, false);
+  const deep = new Uint8Array(w * h), mask = new Uint8Array(w * h), seen = new Uint8Array(w * h);
+  for (let k = 0; k < deep.length; k++) { const v = data[k], c = closed[k]; if (v === v && c === c && c - v > o.minDepthM) deep[k] = 1; }
+  const maxCells = o.maxAreaM2 / (o.stepM * o.stepM), pits: Pit[] = [];
+  const stack: number[] = [], members: number[] = [], rim: number[] = [];
+  let rejected = 0;
+  for (let s = 0; s < deep.length; s++) {
+    if (!deep[s] || seen[s]) continue;
+    stack.length = 0; members.length = 0; stack.push(s); seen[s] = 1;
+    let depth = 0, at = s;
+    while (stack.length) {
+      const k = stack.pop()!, i = k % w, j = (k - i) / w;
+      members.push(k);
+      const d = closed[k] - data[k]; if (d > depth) { depth = d; at = k; }
+      if (i > 0 && deep[k - 1] && !seen[k - 1]) { seen[k - 1] = 1; stack.push(k - 1); }
+      if (i < w - 1 && deep[k + 1] && !seen[k + 1]) { seen[k + 1] = 1; stack.push(k + 1); }
+      if (j > 0 && deep[k - w] && !seen[k - w]) { seen[k - w] = 1; stack.push(k - w); }
+      if (j < h - 1 && deep[k + w] && !seen[k + w]) { seen[k + w] = 1; stack.push(k + w); }
+    }
+    if (members.length > maxCells) { rejected++; continue; }
+    // The ring: measured 8-neighbours of the pit outside it.
+    rim.length = 0;
+    for (const k of members) {
+      const i = k % w, j = (k - i) / w;
+      for (let dj = -1; dj <= 1; dj++) for (let di = -1; di <= 1; di++) {
+        const a = i + di, b = j + dj, q = b * w + a;
+        if (a < 0 || b < 0 || a >= w || b >= h || deep[q] || seen[q] === 2) continue;
+        const v = data[q];
+        if (v === v) { rim.push(v); seen[q] = 2; }
+      }
+    }
+    for (const k of members) for (let dj = -1; dj <= 1; dj++) for (let di = -1; di <= 1; di++) { const q = k + dj * w + di; if (q >= 0 && q < seen.length && seen[q] === 2) seen[q] = 0; }
+    rim.sort((a, b) => a - b);
+    const spread = rim.length ? rim[Math.floor(0.9 * (rim.length - 1))] - rim[Math.floor(0.1 * (rim.length - 1))] : Infinity;
+    if (spread > o.maxRimSpreadM) { rejected++; continue; }
+    for (const k of members) mask[k] = 1;
+    pits.push({ cells: members.length, areaM2: members.length * o.stepM * o.stepM, depthM: +depth.toFixed(2), rimSpreadM: +spread.toFixed(2), i: at % w, j: Math.floor(at / w) });
+  }
+  return { mask, pits, rejected };
+}
+
+/** Grow a mask by `cells` samples (square), so a pit's smoothed rim goes with it. */
+export function dilateMask(mask: Uint8Array, w: number, h: number, cells: number): Uint8Array {
+  const f = new Float32Array(mask.length);
+  for (let k = 0; k < f.length; k++) f[k] = mask[k];
+  const g = squareExtreme(f, w, h, cells, true), out = new Uint8Array(mask.length);
+  for (let k = 0; k < out.length; k++) out[k] = g[k] > 0 ? 1 : 0;
+  return out;
+}
+
+/** Default pit search (build-ground-height.ts, the extract repair): 8 m closing, 1 m deep, at most 600 m², level rim (1 m). */
+export const PIT_DEFAULTS: Omit<PitOptions, 'stepM'> = { radiusM: 8, minDepthM: 1, maxAreaM2: 600, maxRimSpreadM: 1 };
+
+/** 8-connected components of `on` (row-major), each as its sample indices. */
+function components(on: Uint8Array, w: number, h: number, visit: (members: number[]) => void): void {
+  const seen = new Uint8Array(on.length), stack: number[] = [], members: number[] = [];
+  for (let s = 0; s < on.length; s++) {
+    if (!on[s] || seen[s]) continue;
+    stack.length = 0; members.length = 0; stack.push(s); seen[s] = 1;
+    while (stack.length) {
+      const k = stack.pop()!, i = k % w, j = (k - i) / w;
+      members.push(k);
+      for (let dj = -1; dj <= 1; dj++) for (let di = -1; di <= 1; di++) {
+        const a = i + di, b = j + dj, q = b * w + a;
+        if (a < 0 || b < 0 || a >= w || b >= h || !on[q] || seen[q]) continue;
+        seen[q] = 1; stack.push(q);
+      }
+    }
+    visit(members);
+  }
+}
+
+/**
+ * Specks: measured islands of at most `maxAreaM2` with no measured sample around them, only holes (laser returns
+ * through Centraal's glass roofs hitting a platform 4 m above the street, issue #53). Each pulled the fill of the
+ * whole hall toward it as a spike; blanked, the hole fills from its real rim. Returns the samples blanked.
+ */
+export function dropSpecks(grid: Grid, stepM: number, maxAreaM2: number): number {
+  const { width: w, height: h, data } = grid, on = new Uint8Array(w * h), maxCells = maxAreaM2 / (stepM * stepM);
+  for (let k = 0; k < on.length; k++) on[k] = data[k] === data[k] ? 1 : 0;
+  let dropped = 0;
+  components(on, w, h, members => {
+    if (members.length > maxCells) return;
+    // Enclosed: no member on the grid edge (an island cut by the edge may be part of measured ground beyond it).
+    for (const k of members) { const i = k % w, j = (k - i) / w; if (i === 0 || j === 0 || i === w - 1 || j === h - 1) return; }
+    for (const k of members) data[k] = NaN;
+    dropped += members.length;
+  });
+  return dropped;
+}
+
+/**
+ * Large holes (a station hall, a covered bus station: `minAreaM2` and up) are filled from their whole rim, and a rim
+ * that runs from the quay (+1 m NAP) to the track bed on the viaducts (+5 m) leaves a 4 m hump under the roof that
+ * the riders see from the street beside it (Centraal's IJ side, issue #53). After the fill, cap each such hole at
+ * the `quantile` of its rim heights: the street level most of its edge stands on. Measured samples never change.
+ * `holes` marks the samples that were holes before the fill. Returns the holes capped.
+ */
+export function capLargeHoles(grid: Grid, holes: Uint8Array, stepM: number, minAreaM2: number, quantile = 0.5): number {
+  const { width: w, height: h, data } = grid, minCells = minAreaM2 / (stepM * stepM), rim: number[] = [], mark = new Uint8Array(w * h);
+  let capped = 0;
+  components(holes, w, h, members => {
+    if (members.length < minCells) return;
+    rim.length = 0;
+    for (const k of members) {
+      const i = k % w, j = (k - i) / w;
+      for (let dj = -1; dj <= 1; dj++) for (let di = -1; di <= 1; di++) {
+        const a = i + di, b = j + dj, q = b * w + a;
+        if (a < 0 || b < 0 || a >= w || b >= h || holes[q] || mark[q]) continue;
+        mark[q] = 1; rim.push(data[q]);
+      }
+    }
+    if (!rim.length) return;
+    rim.sort((a, b) => a - b);
+    const cap = rim[Math.floor(quantile * (rim.length - 1))];
+    for (const k of members) if (data[k] > cap) data[k] = cap;
+    capped++;
+  });
+  return capped;
+}
+
+/** Specks of at most 40 m² dropped; holes of 5,000 m² and more capped at their rim's median (build-ground-height.ts). */
+export const SPECK_MAX_M2 = 40, LARGE_HOLE_M2 = 5000;
+
 export type Predictor = 'dx' | 'planar';
 
 /** Prediction of sample (i, j) from already-decoded neighbours (q: int cm, row-major, row 0 south). */

@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { deflateSync, gunzipSync, inflateSync } from 'node:zlib';
 import { readGeoTiff, undoFloatPredictor } from './geotiff';
-import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extendTile, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
+import { applyLocalToRd, capLargeHoles, coarsenTile, dropSpecks, decodeTile, dilateMask, downsample, encodeTile, extendTile, findPits, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, PIT_DEFAULTS, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
 import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, merge, reliefGrid, ribbon, vertex, type MeshArrays } from './drape';
 import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, KNOWN_SPOT_M, RAIL_ON_BAND_M, shoreSamples, spotDistanceM } from './roadRegressions';
@@ -155,6 +155,65 @@ test('pull-push fill keeps measured samples and fills holes within their range',
     else assert.ok(data[k] >= 1 && data[k] <= 2, `filled ${data[k]}`);
   }
   assert.ok(data[15 * w + 11] < data[15 * w + 20], 'fill follows the sides it is nearer');
+});
+
+test('findPits: a stairwell in a level plaza is a pit; an embankment cut, a long ramp and a slope are not (issue #53)', () => {
+  // 2 m grid, 60 × 60 samples (120 m): a plaza at +1.5 m with a gentle slope.
+  const w = 60, h = 60, step = 2, data = new Float32Array(w * h);
+  for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) data[j * w + i] = 1.5 + 0.01 * i;
+  const set = (i0: number, j0: number, i1: number, j1: number, f: (i: number, j: number) => number) => { for (let j = j0; j < j1; j++) for (let i = i0; i < i1; i++) data[j * w + i] = f(i, j); };
+  // Stationsplein's metro stairwell: 8 × 4 m, 3.5 m deep.
+  set(10, 10, 14, 12, () => -2);
+  // A rail embankment (+5 m, 20 m wide) across the east with an underpass cut through it at street level.
+  set(40, 0, 50, h, () => 6.5);
+  set(40, 30, 50, 34, () => 1.9);
+  // A tunnel ramp: 6 m wide, 80 m long, falling to −2 m (larger than the area cap).
+  set(10, 40, 50, 43, i => 1.5 - 3.5 * (i - 10) / 40);
+  const grid = { width: w, height: h, data };
+  const { mask, pits } = findPits(grid, { stepM: step, ...PIT_DEFAULTS });
+  assert.equal(pits.length, 1, JSON.stringify(pits));
+  assert.equal(pits[0].areaM2, 32);
+  assert.ok(pits[0].depthM > 3 && pits[0].rimSpreadM < 0.2, JSON.stringify(pits[0]));
+  assert.equal(mask[11 * w + 12], 1);
+  assert.equal(mask[32 * w + 45], 0, 'the underpass cut is kept');
+  assert.equal(mask[41 * w + 45], 0, 'the long ramp is kept');
+  // Blanked with its rim and refilled, the plaza carries over the stairwell.
+  const blank = dilateMask(mask, w, h, 1);
+  for (let k = 0; k < blank.length; k++) if (blank[k]) data[k] = NaN;
+  pullPushFill(grid);
+  assert.ok(Math.abs(data[11 * w + 12] - 1.62) < 0.1, `filled ${data[11 * w + 12]}`);
+  // Holes stay holes: NaN samples are neither pits nor rim.
+  const holey = { width: 20, height: 20, data: new Float32Array(400).fill(NaN) };
+  assert.equal(findPits(holey, { stepM: 2, ...PIT_DEFAULTS }).pits.length, 0);
+});
+
+test('dropSpecks and capLargeHoles: a glass-roofed hall fills at its street level, not its track bed (issue #53)', () => {
+  // 2 m grid, 80 × 40: a hall (hole) 60 × 24 samples; its rim is street (+1 m) except the west end, the track bed (+5 m).
+  const w = 80, h = 40, data = new Float32Array(w * h).fill(1);
+  for (let j = 0; j < h; j++) for (let i = 0; i < 6; i++) data[j * w + i] = 5;
+  for (let j = 8; j < 32; j++) for (let i = 6; i < 66; i++) data[j * w + i] = NaN;
+  // Two returns through the roof onto a platform (+5 m), one a single sample, one 3 × 3 (36 m²).
+  data[20 * w + 30] = 5;
+  for (let j = 14; j < 17; j++) for (let i = 40; i < 43; i++) data[j * w + i] = 5;
+  const grid = { width: w, height: h, data };
+  assert.equal(dropSpecks(grid, 2, 40), 10);
+  assert.ok(Number.isNaN(data[20 * w + 30]) && Number.isNaN(data[15 * w + 41]));
+  assert.equal(dropSpecks({ width: 3, height: 3, data: new Float32Array(9).fill(1) }, 2, 40), 0, 'an island on the grid edge is kept');
+  const holes = new Uint8Array(w * h);
+  for (let k = 0; k < holes.length; k++) holes[k] = data[k] === data[k] ? 0 : 1;
+  pullPushFill(grid);
+  const before = data[20 * w + 10];
+  assert.ok(before > 1.5, `the plain fill climbs toward the track bed: ${before}`);
+  assert.equal(capLargeHoles(grid, holes, 2, 5000), 1);
+  for (let j = 8; j < 32; j++) for (let i = 6; i < 66; i++) assert.ok(data[j * w + i] <= 1 + 1e-6, `capped at the rim median at ${i},${j}: ${data[j * w + i]}`);
+  assert.equal(data[20 * w + 2], 5, 'measured samples never change');
+  // A small hole (a house) keeps its plain fill.
+  const small = { width: 10, height: 10, data: new Float32Array(100).fill(1) };
+  for (let i = 0; i < 10; i++) small.data[i] = 5;
+  small.data[44] = NaN;
+  const sh = new Uint8Array(100); sh[44] = 1;
+  pullPushFill(small);
+  assert.equal(capLargeHoles(small, sh, 2, 5000), 0);
 });
 
 test('tile encoding round-trips centimetres, wraps deltas and keeps nodata', () => {

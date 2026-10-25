@@ -18,12 +18,13 @@ import { gzipSync, inflateSync } from 'node:zlib';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { readGeoTiff } from '../../src/canalRecall/ownGround/geotiff.ts';
-import { coarsenTile, downsample, encodeTile, pullPushFill, smooth3, type GroundIndex, type Grid, type Predictor } from '../../src/canalRecall/ownGround/heightField.ts';
+import { capLargeHoles, coarsenTile, dilateMask, dropSpecks, LARGE_HOLE_M2, SPECK_MAX_M2, downsample, encodeTile, findPits, PIT_DEFAULTS, pullPushFill, smooth3, type GroundIndex, type Grid, type Predictor } from '../../src/canalRecall/ownGround/heightField.ts';
 import { GAME_ORIGIN } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { cellBounds, elevationIndex, gameCells } from './game-cells.ts';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { cellKey, localToLngLat, type ElevationIndex, type WaterCell } from '../../src/canalRecall/elevation/elevationData.ts';
 import { OWN_GROUND_BOXES, areaById } from '../../src/canalRecall/ownGround/boxes.ts';
+import { STALE_RELIEF } from '../../src/canalRecall/ownGround/staleRelief.ts';
 
 const args = process.argv.slice(2);
 const opt = (k: string, d: string) => { const i = args.indexOf(`--${k}`); return i >= 0 ? args[i + 1] : d; };
@@ -50,6 +51,8 @@ function wantedTiles(): Set<string> {
     for (let tx = Math.floor(Math.min(...xs) / TILE); tx <= Math.floor(Math.max(...xs) / TILE); tx++)
       for (let ty = Math.floor(Math.min(...ys) / TILE); ty <= Math.floor(Math.max(...ys) / TILE); ty++) keys.add(`${tx}_${ty}`);
   };
+  // `--tiles 121_487,122_488`: just these RD tiles (a local rebuild; the rest of the extract stays as published).
+  if (opt('tiles', '')) { for (const k of opt('tiles', '').split(',')) keys.add(k); return keys; }
   if (args.includes('--game')) {
     // Every RD tile under a game cell or within --pad metres of one (streets and decks reach past a cell edge).
     const pad = Number(opt("pad", "150")), index = elevationIndex(), padLat = pad / 111_320;
@@ -107,6 +110,23 @@ function waterRingsRd(x0: number, y0: number, x1: number, y1: number): [number, 
  * Pixels inside the water polygons (dilated one pixel), and pixels within 2 m
  * of them that sit within 0.25 m of the canal level, become holes.
  */
+/** Even-odd scanline fill of RD rings onto a north-up raster (row 0 at yTop), `px` metres per pixel. */
+function ringRaster(rings: [number, number][][], x0: number, yTop: number, w: number, h: number, px: number): Uint8Array {
+  const out = new Uint8Array(w * h), edges: [number, number, number, number][] = [], xs: number[] = [];
+  for (const ring of rings) for (let i = 0; i < ring.length; i++) { const a = ring[i], b = ring[(i + 1) % ring.length]; if (a[1] !== b[1]) edges.push([a[0], a[1], b[0], b[1]]); }
+  for (let j = 0; j < h; j++) {
+    const y = yTop - (j + 0.5) * px;
+    xs.length = 0;
+    for (const [ax, ay, bx, by] of edges) if ((ay <= y) !== (by <= y)) xs.push(ax + (y - ay) * (bx - ax) / (by - ay));
+    xs.sort((a, b) => a - b);
+    for (let k = 0; k + 1 < xs.length; k += 2) {
+      const i0 = Math.max(0, Math.ceil((xs[k] - x0) / px - 0.5)), i1 = Math.min(w - 1, Math.floor((xs[k + 1] - x0) / px - 0.5));
+      for (let i = i0; i <= i1; i++) out[j * w + i] ^= 1;
+    }
+  }
+  return out;
+}
+
 function maskWater(r: { width: number; height: number; data: Float32Array }, x0: number, yTop: number, rings: [number, number][][]): number {
   const w = r.width, h = r.height, water = new Uint8Array(w * h);
   const edges: [number, number, number, number][] = [];
@@ -173,12 +193,12 @@ async function main(): Promise<void> {
   const index: GroundIndex = {
     version: 1, crs: 'EPSG:28992', vertical: 'NAP', stepM: STEP, tileSizeM: TILE, samples: n, heightUnitM: 0.01, tiles: [], ...(PREDICTOR !== 'dx' ? { predictor: PREDICTOR } : {}),
     sceneDatumNAP: +(WATER_LEVEL_NAP + FREEBOARD).toFixed(2), waterLevelNAP: WATER_LEVEL_NAP,
-    sources: { dtm: { service: 'https://service.pdok.nl/rws/ahn/wcs/v1_0', coverage: 'dtm_05m', licence: 'CC0 (AHN via PDOK)', fetched: new Date().toISOString().slice(0, 10) }, method: `water (elevation-v1 polygons, +0.5 m, and canal-level returns within 2 m of them) blanked; mean of measured 0.5 m pixels per ${STEP} m cell (≥ 1/4 measured); holes (buildings, water, bridges) pull-push filled over the tile plus ${MARGIN} m margin; one 3×3 binomial smoothing pass` },
+    sources: { dtm: { service: 'https://service.pdok.nl/rws/ahn/wcs/v1_0', coverage: 'dtm_05m', licence: 'CC0 (AHN via PDOK)', fetched: new Date().toISOString().slice(0, 10) }, method: `water (elevation-v1 polygons, +0.5 m, and canal-level returns within 2 m of them) blanked; staleRelief.ts rings blanked; mean of measured 0.5 m pixels per ${STEP} m cell (≥ 1/4 measured); pits (findPits: ${PIT_DEFAULTS.radiusM} m closing, > ${PIT_DEFAULTS.minDepthM} m deep, ≤ ${PIT_DEFAULTS.maxAreaM2} m², level rim) and enclosed measured specks ≤ ${SPECK_MAX_M2} m² blanked; holes (buildings, water, bridges, pits) pull-push filled over the tile plus ${MARGIN} m margin, holes ≥ ${LARGE_HOLE_M2} m² capped at their rim's median; one 3×3 binomial smoothing pass` },
     attribution: 'Heights: AHN (Rijkswaterstaat / PDOK), CC0',
   };
   const report: Record<string, unknown>[] = [];
   const sourceHashes: Record<string, string> = {};
-  let rawBytes = 0, gzBytes = 0, waterBlanked = 0, coreTiles = 0, coreGz = 0, outerTiles = 0, outerGz = 0;
+  let rawBytes = 0, gzBytes = 0, waterBlanked = 0, pitsBlanked = 0, staleBlanked = 0, specksDropped = 0, holesCapped = 0, coreTiles = 0, coreGz = 0, outerTiles = 0, outerGz = 0;
   for (const [ty, txs] of bands) {
     const minTx = Math.min(...txs), maxTx = Math.max(...txs);
     const x0 = minTx * TILE - MARGIN, x1 = (maxTx + 1) * TILE + MARGIN, y0 = ty * TILE - MARGIN, y1 = (ty + 1) * TILE + MARGIN;
@@ -197,14 +217,29 @@ async function main(): Promise<void> {
         if (!r) continue;
         sourceHashes[r.file.split('/').pop()!] = createHash('sha256').update(readFileSync(r.file)).digest('hex').slice(0, 16);
         blanked += maskWater(r, sx, sy + SRC, rings);
+        // Building sites paved since AHN flew (staleRelief.ts): holes, filled from today's level around them.
+        const stale = ringRaster(STALE_RELIEF.map(s => s.rd), sx, sy + SRC, r.width, r.height, PX);
+        for (let k = 0; k < stale.length; k++) if (stale[k] && r.data[k] === r.data[k]) { r.data[k] = NaN; staleBlanked++; }
         const small = downsample(r, factor);
         const ox = (sx - x0) / STEP, oy = (sy - y0) / STEP;
         for (let j = 0; j < small.height; j++) grid.data.set(small.data.subarray(j * small.width, (j + 1) * small.width), (oy + j) * gw + ox);
       }
     }
+    // Stairwells, escalator shafts and garage ramps in level paving (Stationsplein, issue #53): blanked, so the
+    // fill carries the pavement over them instead of a 3 m crater (heightField.ts findPits).
+    const pitScan = findPits(grid, { stepM: STEP, ...PIT_DEFAULTS }), pitBlank = dilateMask(pitScan.mask, gw, gh, 1);
+    for (let i = 0; i < pitBlank.length; i++) if (pitBlank[i]) grid.data[i] = NaN;
+    pitsBlanked += pitScan.pits.length;
+    // Returns through glass roofs (platform specks inside Centraal's hall) would pull the hall's fill up as spikes.
+    specksDropped += dropSpecks(grid, STEP, SPECK_MAX_M2);
     const measured = new Uint8Array(grid.data.length);
     for (let i = 0; i < measured.length; i++) measured[i] = grid.data[i] === grid.data[i] ? 1 : 0;
+    // Water is a hole the fill bridges between quays, not a covered space: it is never capped.
+    const wet = ringRaster(rings, x0, y1, gw, gh, STEP), holes = new Uint8Array(measured.length);
+    for (let j = 0; j < gh; j++) for (let i = 0; i < gw; i++) holes[j * gw + i] = !measured[j * gw + i] && !wet[(gh - 1 - j) * gw + i] ? 1 : 0;
     pullPushFill(grid);
+    // A large hole stays at the street level most of its rim stands on (not the viaduct's track bed).
+    holesCapped += capLargeHoles(grid, holes, STEP, LARGE_HOLE_M2);
     smooth3(grid);
     for (const tx of txs) {
       const heights = new Float32Array(n * n);
@@ -233,7 +268,7 @@ async function main(): Promise<void> {
   const summary = {
     tiles: index.tiles.length, stepM: STEP, samplesPerTile: n * n,
     measuredFraction: +(index.tiles.reduce((s, t) => s + t[2], 0) / index.tiles.length).toFixed(3),
-    waterPixelsBlanked: waterBlanked, rawBytes, gzBytes, predictor: PREDICTOR,
+    waterPixelsBlanked: waterBlanked, pitsBlanked, staleBlanked, specksDropped, holesCapped, rawBytes, gzBytes, predictor: PREDICTOR,
     core: { km: CORE_KM, stepM: STEP, tiles: coreTiles, gzBytes: coreGz }, outer: { stepM: OUTER_STEP, tiles: outerTiles, gzBytes: outerGz }, gzBytesPerKm2: Math.round(gzBytes / index.tiles.length), buildMs: Math.round(performance.now() - t0),
     note: 'gzBytes is what the browser downloads (tiles are served as gzip; DecompressionStream inflates them).',
   };
