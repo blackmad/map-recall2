@@ -14,6 +14,7 @@ import {drawArcadePiers} from '../blockBuilding/arcadePiers.ts';
 import {drawWindowBox} from '../blockBuilding/windowBox.ts';
 import {drawGallery} from '../blockBuilding/gallery.ts';
 import {applyCladdingSlots, drawCladdingLines} from '../blockBuilding/cladding.ts';
+import {drawFalseFront, drawSignBoards} from '../blockBuilding/signBoards.ts';
 import {fitsPanel, pointInRing, rectPoly, type Panel} from '../blockBuilding/panels.ts';
 import type {BuildingFacts} from './facts.ts';
 import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
@@ -21,7 +22,7 @@ import {ROOF_COLOURS} from './fit.ts';
 import {FLAT_ROOF_TONES} from '../look/palette.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 
-export interface LargeComponentCounts { claddingLines?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; mansards?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { claddingLines?: number; signBoards?: number; falseFronts?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; mansards?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -54,6 +55,8 @@ export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe
     case 'stone': case 'slab': case 'band': case 'crest': case 'dress': return {materialSlot: 'stone', surface: 'stone'};
     case 'police-white': case 'board': return {materialSlot: 'stucco', surface: 'sign'};
     case 'board-text': return {materialSlot: 'accent', surface: 'sign'};
+    // a sign board on a shop front (blockBuilding/signBoards.ts): a flat painted panel, like a name board
+    case 'signboard': return {materialSlot: 'stucco', surface: 'sign'};
     case 'cross': return {materialSlot: 'accent', surface: 'sign'};
     case 'police-blue': case 'sign': return {materialSlot: 'accent', surface: 'sign'};
     case 'plant': return {materialSlot: 'stone', surface: 'plant'};
@@ -107,6 +110,9 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   if (g.dressings) counts.dressings = (counts.dressings ?? 0) + drawDressings(c, info, g.dressings, {stone: g.dressings.slot, wall: s.wall, frame: s.frame, glass: s.glass, iron: s.door}, g.mainPanel === p.index, underCornice);
   // Cladding profile lines (ribs, boards, louvres, panel joints) on the sheet, round the openings, under the cornice.
   if (g.cladding) { const k = drawCladdingLines(c, {...g.cladding, toM: Math.min(g.cladding.toM, g.cornice ? underCornice : Infinity)}); if (k) counts.claddingLines = (counts.claddingLines ?? 0) + k; }
+  // False front over the gable ends of a hall roof, then sign boards standing proud of it and of the cladding lines.
+  if (g.falseFront) { const k = drawFalseFront(c, g.falseFront.slot, eaves); if (k) counts.falseFronts = (counts.falseFronts ?? 0) + k; }
+  if (g.signBoards && g.mainPanel === p.index) { const k = drawSignBoards(c, g.signBoards); if (k) counts.signBoards = (counts.signBoards ?? 0) + k; }
   if (g.pilasters && underCornice - Math.max(0, p.vMin) > 3) counts.pilasters = (counts.pilasters ?? 0) + drawPilasters(c, Math.max(0, p.vMin), underCornice, s.stone, g.pilasters);
   if (g.signage?.mount === 'cornice' && g.mainPanel === p.index) {
     const n = drawNameBand(c, g.signage.text, underCornice, s.stone, s.sign, g.cornice && eaves - p.vMin > 3 ? {v0: eaves - 0.45, v1: eaves - 0.02, out: CORNICE_OUT} : undefined);

@@ -26,6 +26,7 @@ import {MESH_SCREEN} from '../blockBuilding/components.ts';
 import {CLADDING, PANEL_ROW_M, claddingHeights, type CladdingFit} from '../blockBuilding/cladding.ts';
 import {fitArcadePiers, type ArcadePiersFit} from '../blockBuilding/arcadePiers.ts';
 import {fitWindowBox, type WindowBoxFit} from '../blockBuilding/windowBox.ts';
+import type {SignBoardFit} from '../blockBuilding/signBoards.ts';
 import {fitGallery, type GalleryFit} from '../blockBuilding/gallery.ts';
 import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {roofHeightAt} from './facts.ts';
@@ -98,6 +99,10 @@ export interface LargeGroupFit {
   arcadePiers?: ArcadePiersFit;
   /** a projecting glazed window box over a span of bays on one storey (intent `windowBox`, blockBuilding/windowBox.ts) */
   windowBox?: WindowBoxFit;
+  /** flat sign boards on the main panel (intent `signBoards`, blockBuilding/signBoards.ts) */
+  signBoards?: SignBoardFit[];
+  /** a false front over the panels whose top rises above their eaves (intent `falseFront`), in this slot */
+  falseFront?: {slot: string};
   /** open galleries (verandas) over a span of bays of the main panel (intent `gallery`, blockBuilding/gallery.ts), one entry per gallery */
   gallery?: GalleryFit[];
   /** mansard storeys and their slate-textured slot */
@@ -547,6 +552,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(houses ? {houses} : {}),
       ...(w.arcadePiers ? {arcadePiers: fitArcadePiers(w.arcadePiers, slots.stone)} : {}),
       ...(w.windowBox ? {windowBox: fitWindowBox(w.windowBox, {frame: boxFrame ?? slots.frame, glass: slots.glass, ...(boxDeck ? {deck: boxDeck} : {})}, main ? main.uMax - main.uMin : undefined, bays)} : {}),
+      ...(w.signBoards ? {signBoards: w.signBoards.map((b, k) => { const sl = `signboard@g${gi}k${k}`; palette[sl] = swatch(b.colour ?? pal.door); return {along: [b.along[0], b.along[1]] as [number, number], up: [b.up[0], b.up[1]] as [number, number], slot: sl}; })} : {}),
+      ...(w.falseFront ? {falseFront: {slot: cladSlot ?? slots.wall}} : {}),
       ...(w.gallery ? {gallery: fitGallery(w.gallery, {stone: slots.stone, timber: (k, colour) => { if (!colour) return slots.frame; const sl = `rail@gal${gi}k${k}`; palette[sl] = swatch(colour); return sl; },
         rail: (k, colour) => { const sl = `rail@gal${gi}k${k}r`; palette[sl] = swatch(colour); return sl; }})} : {}),
       ...(clad && cladSlot && cladLine ? {cladding: {kind: clad.kind, ...claddingHeights(eaves, clad.from, clad.to), pitchM: clad.pitch ?? (clad.kind === 'paint' ? 0 : CLADDING[clad.kind].pitch), rowPitchM: clad.rowPitch ?? PANEL_ROW_M, slot: cladSlot, lineSlot: cladLine,

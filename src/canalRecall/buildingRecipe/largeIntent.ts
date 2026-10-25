@@ -6,6 +6,7 @@
 import {arcadePiersProblems} from '../blockBuilding/arcadePiers.ts';
 import {windowBoxProblems} from '../blockBuilding/windowBox.ts';
 import {galleryProblems} from '../blockBuilding/gallery.ts';
+import {signBoardsProblems} from '../blockBuilding/signBoards.ts';
 import {claddingProblems} from './claddingIntent.ts';
 import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
 import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/systems.ts';
@@ -13,7 +14,7 @@ import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -144,6 +145,12 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       problems.push(...windowBoxProblems(w.windowBox, `${at}.windowBox`, w.baysPerStorey, typeof w.storeys === 'number' ? w.storeys : undefined));
       if (w.system === 'curtain-wall' || w.system === 'glazed-hall' || w.screen) problems.push(`${at}.windowBox: on a wall with a face (not curtain-wall, glazed-hall or screen)`);
     }
+    if (w.signBoards !== undefined) {
+      problems.push(...signBoardsProblems(w.signBoards, `${at}.signBoards`));
+      for (const [k, b] of (Array.isArray(w.signBoards) ? w.signBoards : []).entries()) if (b?.colour !== undefined) colour(b.colour, `${at}.signBoards[${k}].colour`);
+      if (w.system === 'curtain-wall' || w.system === 'glazed-hall') problems.push(`${at}.signBoards: on a wall with a face (not curtain-wall or glazed-hall)`);
+    }
+    bool(w.falseFront, `${at}.falseFront`);
     if (w.gallery !== undefined) {
       problems.push(...galleryProblems(w.gallery, `${at}.gallery`, w.baysPerStorey, typeof w.storeys === 'number' ? w.storeys : undefined));
       if (w.system === 'curtain-wall' || w.system === 'glazed-hall' || w.screen) problems.push(`${at}.gallery: in front of a wall with a face (not curtain-wall, glazed-hall or screen)`);
