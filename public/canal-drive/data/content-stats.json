@@ -4,10 +4,10 @@
   "generator": "scripts/landing/content-stats.ts",
   "display": {
     "buildingsModelled": "490+",
-    "landmarkModels": "320+",
+    "landmarkModels": "330",
     "kitBuildings": "3,000+",
     "buildings3d": "340,000+",
-    "placesToVisit": "370+",
+    "placesToVisit": "380+",
     "factsToDiscover": "8,100+",
     "triviaFacts": "2,300+",
     "nameOrigins": "5,400+",
@@ -20,15 +20,15 @@
   },
   "stats": {
     "buildingsModelled": {
-      "count": 493,
-      "note": "Buildings with their own individually modelled 3D model in the ride: 327 landmark models plus 166 individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).",
+      "count": 496,
+      "note": "Buildings with their own individually modelled 3D model in the ride: 330 landmark models plus 166 individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).",
       "sources": [
         "src/canalRecall/landmarks/manualCatalogue.json",
         "public/canal-drive/ordinary-buildings-data/catalogue.json"
       ]
     },
     "landmarkModels": {
-      "count": 327,
+      "count": 330,
       "note": "Of the individually modelled buildings, the ones in the landmark category (museums, churches, stations, monuments…).",
       "sources": [
         "src/canalRecall/landmarks/manualCatalogue.json"
@@ -49,7 +49,7 @@
       ]
     },
     "placesToVisit": {
-      "count": 378,
+      "count": 381,
       "note": "Destinations you can ride to and collect a stamp at: the ride's stamp pool (teachable landmarks within 4 km of the centre plus the individually modelled POIs, deduplicated).",
       "sources": [
         "public/data/extracts/amsterdam/landmarks.json",
@@ -57,8 +57,8 @@
       ]
     },
     "factsToDiscover": {
-      "count": 8116,
-      "note": "Cards and facts the ride and quiz can show: 2351 trivia facts, 5429 street/canal/bridge name origins, 156 neighbourhood story facts and 180 landmark descriptions.",
+      "count": 8119,
+      "note": "Cards and facts the ride and quiz can show: 2351 trivia facts, 5429 street/canal/bridge name origins, 156 neighbourhood story facts and 183 landmark descriptions.",
       "sources": [
         "public/data/extracts/amsterdam/facts.json",
         "public/data/extracts/amsterdam/street-name-origins.json",

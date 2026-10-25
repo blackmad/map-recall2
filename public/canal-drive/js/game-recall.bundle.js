@@ -5245,6 +5245,66 @@
       name: "Westermoskee",
       funFact: "Milli G\xF6r\xFC\u015F bought the derelict site in 1994; years of fierce dispute followed before a 2000 deal set a 43-metre minaret. Building began in 2013 and the mosque opened on 1 April 2016.",
       sourceUrl: "https://nl.wikipedia.org/wiki/Westermoskee"
+    },
+    {
+      modelId: "de-bloem",
+      landmarkId: "n418044454",
+      osmId: "n418044454",
+      name: "De Bloem",
+      coordinates: [
+        4.8601724,
+        52.3847078
+      ],
+      description: "De Bloem is a corn mill from 1768 that first stood on the Rijkeroort bastion on the Singelgracht, the bastion that also gave the Bloemgracht its name. The mill was in the way of the new Marnixstraat, so it was taken down in 1877 and rebuilt here on the Haarlemmerweg in 1878, on a four-metre brick base. It ground grain until 1960. Locals also call it the 400 Roe, after its distance from the Haarlemmerpoort.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/De_Bloem_(Amsterdam)",
+      additionalSources: [
+        "https://www.molendatabase.nl/molens/ten-bruggencate-nr-00802",
+        "https://www.wikidata.org/wiki/Q1822494"
+      ],
+      center: [
+        52.3847078,
+        4.8601724
+      ]
+    },
+    {
+      modelId: "de-otter",
+      landmarkId: "w276340032",
+      osmId: "w276340032",
+      name: "De Otter",
+      coordinates: [
+        4.8709425,
+        52.376173
+      ],
+      description: "De Otter is a paltrok, a wind-powered sawmill whose whole body turns on its base to face the wind. It was built in 1631 for the Amsterdam sawmill company and is the oldest paltrok still standing, the last of the many sawmills that once lined the Kostverlorenvaart. It lost its sails in 1925 and was restored to working order in the 1990s.",
+      sourceUrl: "https://en.wikipedia.org/wiki/De_Otter,_Amsterdam",
+      additionalSources: [
+        "https://nl.wikipedia.org/wiki/De_Otter_(Amsterdam)",
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/1198"
+      ],
+      center: [
+        52.376173,
+        4.8709425
+      ]
+    },
+    {
+      modelId: "d-admiraal",
+      landmarkId: "n31101329",
+      osmId: "n31101329",
+      name: "D'Admiraal",
+      coordinates: [
+        4.9235048,
+        52.4025624
+      ],
+      description: "D'Admiraal is the last surviving chalk and tras mill of its kind, built in 1792 by Symon Krol for Elizabeth Admiraal beside the Noordhollandsch Kanaal. It first ground Eifel tuff into tras for mortar, and around 1900 switched to grinding chalk for the paint industry. Its thatched octagon stands on top of a timber shed. The board under the sails reads 1792, and the one on the back reads d'Admiraal.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/D%27Admiraal",
+      additionalSources: [
+        "https://www.molendatabase.nl/molens/ten-bruggencate-nr-00238",
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/6609"
+      ],
+      center: [
+        52.4025624,
+        4.9235048
+      ]
     }
   ];
 

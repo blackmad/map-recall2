@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+**Windmills inside the A10 (2026-10-25, #66).** OSM windmills tested against
+the A10 relation 165334: four inside (De Gooyer existed), sixteen outside.
+New bespoke landmarks De Bloem (stellingmolen on a masonry foot, 3,170
+tris), De Otter (paltrok 1631, 2,964 tris, pale cap as in the 2021/2025
+panoramas) and D'Admiraal (stellingmolen on a shed, 4,957 tris), with POI
+cards (Wikipedia/Molendatabase sources). Kit `scripts/landmarks/windmill-kit.ts`
+(octagons, stages, caps, beards, Old Dutch and Fauël sails, pixel lettering),
+typed `windmillSails.ts`. Note: the landmark toolchain hash now differs for
+352 of 355 models (dispatcher + shared module changes), so the next default
+build-manual-landmarks run rebuilds them all.
+
 **Neighbourhood pages (2026-10-25, #69).** User idea: per-neighbourhood
 pages. `scripts/build-buurt-pages.ts` (data in `src/canalRecall/buurtPages/`)
 writes `buurt/<slug>.html` for the 78 boundaries of kind neighbourhood or

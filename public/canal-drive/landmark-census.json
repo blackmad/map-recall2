@@ -1,14 +1,14 @@
 {
  "version": 1,
- "generatedAt": "2026-10-25T07:23:42.918Z",
+ "generatedAt": "2026-10-25T08:19:50.915Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
- "headline": 501,
+ "headline": 504,
  "strict": 162,
  "byTier": {
   "bespoke": {
-   "models": 334,
-   "counts": 327,
+   "models": 337,
+   "counts": 330,
    "strict": 0,
    "unreviewed": 0
   },
@@ -32,7 +32,7 @@
   }
  },
  "byReview": {
-  "legacy-gallery": 403,
+  "legacy-gallery": 406,
   "likeness-gate": 84,
   "none": 324,
   "strip-review": 112
@@ -5087,6 +5087,48 @@
    ],
    "namedPoi": false,
    "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:de-bloem",
+   "name": "De Bloem",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012165350"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:de-otter",
+   "name": "De Otter",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012096312"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:d-admiraal",
+   "name": "D'Admiraal",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012161029"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
    "held": false,
    "review": "legacy-gallery",
    "counts": true,
