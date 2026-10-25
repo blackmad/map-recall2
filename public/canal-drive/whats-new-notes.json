@@ -3,6 +3,16 @@
  "notes": [
   {
    "date": "2026-10-25",
+   "title": "Street names hide behind buildings",
+   "text": "In the 3D views, street names no longer float over the rooftops: a name is drawn only where its street is in view, not behind the buildings in front of it. Duplicate place labels (one English, one Dutch) are merged."
+  },
+  {
+   "date": "2026-10-25",
+   "title": "Ferry docks at NDSM reliably",
+   "text": "Following the ferry line into NDSM-werf could leave the boat stuck against the quay next to the stop; touching the quay near the stop now docks."
+  },
+  {
+   "date": "2026-10-25",
    "title": "Terrasdorp, De Aker and Nieuw Sloten rows",
    "text": "1,525 more houses now use designs measured from street photos: Terrasdorp's terraces, the shuttered rows and garage houses of De Aker, and Nieuw Sloten's white and glazed rows."
   },
