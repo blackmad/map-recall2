@@ -54119,6 +54119,7 @@
     "de-bloem": {
       "id": "de-bloem",
       "name": "De Bloem",
+      "landmarkId": "n418044454",
       "modelUrl": "./models/de-bloem.glb",
       "suppressOsmIds": [
         "NL.IMBAG.Pand.0363100012165350",
@@ -54151,12 +54152,12 @@
         "stone": "#b9b3a6",
         "glass": "#3d474d",
         "dark": "#2f3132",
-        "slate": "#45494a",
+        "slate": "#3c403b",
         "greyBrick": "#716b5e",
         "red": "#a8453b",
         "green": "#2f5040",
         "concrete": "#e9e6dc",
-        "pink": "#d8d8d2"
+        "pink": "#e2e3dd"
       },
       "attribution": {
         "title": "De Bloem",
@@ -54212,7 +54213,7 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -9.842909812927246,
+          -9.967122077941895,
           -2.3841858265427618e-8,
           -7.04390811920166
         ],
@@ -54235,22 +54236,23 @@
       "extent": {
         "widthMetres": 24.756951332092285,
         "heightMetres": 36.86217119693756,
-        "depthMetres": 16.518813610076904,
-        "depthCoverage": 1.3881355974854541
+        "depthMetres": 16.643025875091553,
+        "depthCoverage": 1.39857360294887
       },
-      "triangles": 3362,
-      "bytes": 65632,
+      "triangles": 3170,
+      "bytes": 62328,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "54eb0653f490c7fa",
+        "sourceHash": "a10929b18a805be2",
         "buildVersion": 2,
-        "bytes": 26608,
-        "triangles": 672
+        "bytes": 26076,
+        "triangles": 646
       }
     },
     "de-otter": {
       "id": "de-otter",
       "name": "De Otter",
+      "landmarkId": "w276340032",
       "modelUrl": "./models/de-otter.glb",
       "suppressOsmIds": [
         "NL.IMBAG.Pand.0363100012096312",
@@ -54390,6 +54392,7 @@
     "d-admiraal": {
       "id": "d-admiraal",
       "name": "D'Admiraal",
+      "landmarkId": "n31101329",
       "modelUrl": "./models/d-admiraal.glb",
       "suppressOsmIds": [
         "NL.IMBAG.Pand.0363100012161029",

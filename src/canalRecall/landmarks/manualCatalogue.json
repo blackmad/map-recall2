@@ -41908,6 +41908,7 @@
   {
     "id": "de-bloem",
     "name": "De Bloem",
+    "landmarkId": "n418044454",
     "modelUrl": "./models/de-bloem.glb",
     "suppressOsmIds": [
       "NL.IMBAG.Pand.0363100012165350",
@@ -41940,12 +41941,12 @@
       "stone": "#b9b3a6",
       "glass": "#3d474d",
       "dark": "#2f3132",
-      "slate": "#45494a",
+      "slate": "#3c403b",
       "greyBrick": "#716b5e",
       "red": "#a8453b",
       "green": "#2f5040",
       "concrete": "#e9e6dc",
-      "pink": "#d8d8d2"
+      "pink": "#e2e3dd"
     },
     "attribution": {
       "title": "De Bloem",
@@ -42002,6 +42003,7 @@
   {
     "id": "de-otter",
     "name": "De Otter",
+    "landmarkId": "w276340032",
     "modelUrl": "./models/de-otter.glb",
     "suppressOsmIds": [
       "NL.IMBAG.Pand.0363100012096312",
@@ -42109,6 +42111,7 @@
   {
     "id": "d-admiraal",
     "name": "D'Admiraal",
+    "landmarkId": "n31101329",
     "modelUrl": "./models/d-admiraal.glb",
     "suppressOsmIds": [
       "NL.IMBAG.Pand.0363100012161029",

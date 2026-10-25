@@ -115,14 +115,14 @@ export function board(b: BuildingTools, x: number, y: number, z: number, w: numb
  * streamlined leading board (fok / steekbord) on the other side of the stock, as on De Bloem and D'Admiraal.
  * Returns the sweep clearance so the builder can assert the sails pass its stage and roofs.
  */
-export function sails(b: BuildingTools, o: {cross: SailCross; style: 'old-dutch' | 'fauel'; stock: C; lattice: C; leading?: C; latticeWidth?: number; barStep?: number; hubC: C; shaftFrom: P}): {lowest: number; forward: number} {
-  const cr = o.cross, lw = o.latticeWidth ?? cr.radius * .115, step = o.barStep ?? .5, inner = cr.radius * .15;
+export function sails(b: BuildingTools, o: {cross: SailCross; style: 'old-dutch' | 'fauel'; stock: C; lattice: C; leading?: C; latticeWidth?: number; barStep?: number; barSize?: number; hubC: C; shaftFrom: P}): {lowest: number; forward: number} {
+  const cr = o.cross, lw = o.latticeWidth ?? cr.radius * .115, step = o.barStep ?? .5, inner = cr.radius * .15, bar = o.barSize ?? .06;
   for (let k = 0; k < (cr.count ?? 4); k++) {
     const pt = (r: number, l: number) => sailPoint(cr, k, r, l);
     beam(b, pt(0, 0), pt(cr.radius, 0), .26, o.stock, 'sail-stock', .3);
-    beam(b, pt(inner, lw), pt(cr.radius, lw), .08, o.lattice, 'sail-rail');
-    beam(b, pt(inner, lw * .5), pt(cr.radius, lw * .5), .05, o.lattice, 'sail-rail');
-    for (let r = inner; r <= cr.radius + 1e-6; r += step) beam(b, pt(r, .12), pt(r, lw), .06, o.lattice, 'sail-lattice');
+    beam(b, pt(inner, lw), pt(cr.radius, lw), bar + .02, o.lattice, 'sail-rail');
+    beam(b, pt(inner, lw * .5), pt(cr.radius, lw * .5), bar - .01, o.lattice, 'sail-rail');
+    for (let r = inner; r <= cr.radius + 1e-6; r += step) beam(b, pt(r, .12), pt(r, lw), bar, o.lattice, 'sail-lattice');
     if (o.style === 'fauel' && o.leading) {
       // Leading board: a flat plank in the sail plane the full length of the lattice, on the other side of the stock.
       plate(b, [pt(inner, -.16), pt(cr.radius, -.16), pt(cr.radius, -.6), pt(inner, -.6)], o.leading, 'sail-leading-board');

@@ -60,7 +60,7 @@ export function buildDeBloem(_w: number, _d: number, root: BuildingTools): void 
   boatCap(b, DE_BLOEM.capY, 3.45, 3.85, 2.35, 'greyBrick', 'slate');
   // Beard (baard): plain dark green board, white edge, no lettering; no rear beard (Molendatabase).
   board(b, 0, DE_BLOEM.capY - .1, 3.92, 2.6, 1.05, 'green', 'concrete', .12);
-  const clear = sails(b, {cross: {hub: DE_BLOEM.hub, radius: DE_BLOEM.radius, rotationDeg: 20, lean: DE_BLOEM.lean}, style: 'fauel', stock: 'slate', lattice: 'pink', leading: 'concrete', hubC: 'slate', shaftFrom: [0, 24.0, 1.8]});
+  const clear = sails(b, {cross: {hub: DE_BLOEM.hub, radius: DE_BLOEM.radius, rotationDeg: 20, lean: DE_BLOEM.lean}, style: 'fauel', stock: 'slate', lattice: 'pink', leading: 'concrete', latticeWidth: 2.1, barStep: .62, barSize: .11, hubC: 'slate', shaftFrom: [0, 24.0, 1.8]});
   if (clear.lowest < DE_BLOEM.stageY + 1.2 && clear.forward < DE_BLOEM.stageR + .4) throw new Error(`de-bloem: sails hit the stage (${JSON.stringify(clear)})`);
   // Tail: tail pole and two struts (schoren) from the cap to the stage, winding wheel at the stage edge.
   const tail: P = [0, DE_BLOEM.stageY + 1.3, -DE_BLOEM.stageR - .25];
