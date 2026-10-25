@@ -112,12 +112,16 @@ test(`building types ${label}`, async ({ page }, info) => {
       const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map;
       const t: Record<string, number[]> = { frame: [], landmarkRender: [], rendererTri: [], rendererCalls: [], renderCalls: [] };
       w.__perf = t; w.__stopFrames = false;
-      const layer = vm._signatureLandmarks.layer, orig = layer.render;
-      // three.js defines WebGLRenderer.render as an instance property (not on the prototype), and the layer's renderer
-      // is private, so renderer.info is unreachable and a prototype patch never fires. Count the GL draws instead:
-      // every draw issued while the landmark layer's render() is on the stack (all landmark and building-type meshes,
-      // instanced draws multiplied by their instance count).
-      let tri = 0, calls = 0, renders = 0, inLayer = false;
+      // Count the GL draws the landmark layer issues (all landmark and building-type meshes, instanced draws multiplied by
+      // their instance count). three.js defines WebGLRenderer.render as an instance property and the renderer is private,
+      // so renderer.info is unreachable; the GL context prototypes are patched instead and a draw counts while `inLayer`.
+      // Legacy frame (`?sharedFrame=0`): the landmarks have their own custom layer, `inLayer` spans its render().
+      // Shared frame (the default since 2026-10-14): the landmarks are one root in the page's single three.js scene and
+      // their own `layer.render` never runs (this hook read 0, #77), so `inLayer` spans each landmark mesh's
+      // onBeforeRender..onAfterRender, the window in which WebGLRenderer.renderObject issues that mesh's draw (shadow-map
+      // draws go through onBeforeShadow and are not counted). landmarkRender is then the span from the first landmark mesh's
+      // draw to the last one's in a frame (other roots' draws in between included).
+      let tri = 0, calls = 0, renders = 0, inLayer = false, renderedThisFrame = false, spanMs = -1;
       const protos = [WebGLRenderingContext.prototype, (window as any).WebGL2RenderingContext?.prototype].filter(Boolean) as any[];
       const restore: (() => void)[] = [];
       const per = (mode: number, n: number) => (mode === 4 ? n / 3 : mode === 5 || mode === 6 ? Math.max(0, n - 2) : 0);
@@ -129,10 +133,24 @@ test(`building types ${label}`, async ({ page }, info) => {
         };
         restore.push(() => { gp[fn] = o; });
       }
-      layer.render = (...a: unknown[]) => { const s = performance.now(); inLayer = true; renders++; try { return orig.apply(layer, a); } finally { inLayer = false; t.landmarkRender.push(performance.now() - s); } };
-      w.__unwrap = [() => { layer.render = orig; }, ...restore];
+      const landmarks = vm._signatureLandmarks, sharedRoot = landmarks.sharedFrame ? landmarks._sharedRoot : null;
+      if (sharedRoot) {
+        let s = 0;
+        sharedRoot.traverse((o: any) => {
+          if (!o.isMesh) return;
+          const before = o.onBeforeRender, after = o.onAfterRender;
+          o.onBeforeRender = function (...a: unknown[]) { if (!renderedThisFrame) { renderedThisFrame = true; renders++; s = performance.now(); } inLayer = true; return before.apply(this, a); };
+          o.onAfterRender = function (...a: unknown[]) { inLayer = false; spanMs = performance.now() - s; return after.apply(this, a); };
+          restore.push(() => { o.onBeforeRender = before; o.onAfterRender = after; });
+        });
+        w.__unwrap = restore;
+      } else {
+        const layer = landmarks.layer, orig = layer.render;
+        layer.render = (...a: unknown[]) => { const s = performance.now(); inLayer = true; renders++; try { return orig.apply(layer, a); } finally { inLayer = false; t.landmarkRender.push(performance.now() - s); } };
+        w.__unwrap = [() => { layer.render = orig; }, ...restore];
+      }
       let prev = performance.now();
-      const tick = (now: number) => { t.frame.push(now - prev); prev = now; t.rendererTri.push(tri); t.rendererCalls.push(calls); t.renderCalls.push(renders); tri = 0; calls = 0; renders = 0; if (!w.__stopFrames) requestAnimationFrame(tick); };
+      const tick = (now: number) => { t.frame.push(now - prev); prev = now; t.rendererTri.push(tri); t.rendererCalls.push(calls); t.renderCalls.push(renders); tri = 0; calls = 0; renders = 0; renderedThisFrame = false; if (spanMs >= 0) t.landmarkRender.push(spanMs); spanMs = -1; if (!w.__stopFrames) requestAnimationFrame(tick); };
       requestAnimationFrame(tick);
       const rep = () => { if (!w.__stopFrames) { map.triggerRepaint(); requestAnimationFrame(rep); } }; rep();
     });
