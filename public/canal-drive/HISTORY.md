@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Free ride mode (2026-10-25, #67).** User request: ride anywhere, things
+highlighted, click to explore. Fourth Route tile "Free ride": random
+hand-picked landmark start, no route/questions/finish; markers for carded
+landmarks within ~320 m and named bridges within ~140 m (max 6, max 2
+bridges, kept off the HUD); taps open the existing landmark, bridge-register
+or name-origin cards. Spoiler screening suspended only in free ride and
+restored on exit. Logic `src/canalRecall/game/freeRide.ts` (10 tests, in
+test:hud), runtime installed on the presentation class; Storybook "Free
+ride" stories desktop+phone; e2e `free-ride.spec.ts`. Street labels now
+stay upright when the camera turns (all modes). Next: off-screen edge
+arrows, street markers, GPS "Here" start, "seen" in the knowledge store.
+
 **Windmills inside the A10 (2026-10-25, #66).** OSM windmills tested against
 the A10 relation 165334: four inside (De Gooyer existed), sixteen outside.
 New bespoke landmarks De Bloem (stellingmolen on a masonry foot, 3,170
