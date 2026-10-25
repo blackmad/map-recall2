@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Neighbourhoods — Ride Amsterdam</title>
+<meta name="description" content="Amsterdam neighbourhood by neighbourhood: modelled buildings, trivia, street-name stories and frames from Ride Amsterdam.">
+<meta name="theme-color" content="#f4efe5">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ride Amsterdam">
+<meta property="og:title" content="Neighbourhoods — Ride Amsterdam">
+<meta property="og:description" content="Amsterdam neighbourhood by neighbourhood: modelled buildings, trivia, street-name stories and frames from Ride Amsterdam.">
+<meta property="og:url" content="https://rideamsterdam.nl/buurt/index.html">
+<link rel="canonical" href="https://rideamsterdam.nl/buurt/index.html">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/icon.svg">
+<link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="../css/enamel.css" rel="stylesheet">
+<style>
+:root{--page:var(--day-paper);--raised:var(--day-paper-raised);--sunk:var(--day-paper-sunk);--ink:var(--day-ink);--muted:var(--day-ink-muted);--line:var(--day-line);--line-strong:var(--day-line-strong);--copper:var(--day-accent);--copper-ink:var(--day-accent-ink);--gutter:clamp(16px,4.5vw,56px);--body:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;--display:var(--font-plaque);color-scheme:light}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--page);color:var(--ink);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--copper-ink);text-underline-offset:.2em;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--copper-ink);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1180px,100%);margin:0 auto;padding:0 var(--gutter)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:max(16px,env(safe-area-inset-top));padding-bottom:8px}
+.wordmark{display:inline-flex;align-items:center;padding:10px 16px 11px;font:800 18px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:#fff;text-decoration:none;white-space:nowrap}
+.top nav{display:flex;gap:clamp(10px,2.4vw,24px)}
+.top nav a{font:700 15px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:10px 2px}
+.top nav a:hover{color:var(--copper-ink)}
+h1,h2,h3{font-family:var(--display);text-transform:uppercase;margin:0;text-wrap:balance;overflow-wrap:anywhere}
+h1{font-weight:800;font-size:clamp(2.6rem,7vw,5rem);line-height:.92;letter-spacing:-.01em}
+h2{font-weight:800;font-size:clamp(1.8rem,3.6vw,2.6rem);line-height:.95}
+h3{font-weight:700;font-size:1.25rem;line-height:1.05;letter-spacing:.01em}
+.kicker{font:700 15px/1.2 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--copper-ink);margin:0 0 12px}
+.kicker a{color:inherit}
+.lede{margin:18px 0 0;max-width:36rem;color:var(--muted);font-size:clamp(17px,1.5vw,19px);text-wrap:pretty}
+.stamp{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:13px 26px 12px;border-radius:6px;font:800 18px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#2a1606;background:linear-gradient(180deg,var(--enamel-copper-hi) 0%,var(--enamel-copper) 48%,var(--enamel-copper-deep) 100%);box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 8px 20px rgba(138,85,36,.3)}
+.stamp::before{content:'';position:absolute;inset:5px;border:1px solid rgba(255,244,222,.8);border-radius:3px;pointer-events:none}
+.stamp:hover{text-decoration:none;transform:translateY(-1px)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:26px}
+.facts-line{font-size:15px;color:var(--muted)}
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,5vw,64px);align-items:center;padding-top:clamp(20px,5vw,56px);padding-bottom:clamp(36px,6vw,72px)}
+.postcard{margin:0;background:#fffdf8;padding:10px 10px 0;border-radius:4px;box-shadow:0 1px 2px rgba(31,28,23,.12),0 18px 44px rgba(31,28,23,.2);transform:rotate(.8deg)}
+.postcard .img{aspect-ratio:3/2;background:var(--sunk);overflow:hidden;border-radius:2px;position:relative}
+.postcard img{width:100%;height:100%;object-fit:cover}
+.postcard figcaption{padding:8px 2px 10px;font-size:12.5px;line-height:1.35;color:var(--muted);overflow-wrap:anywhere}
+.postcard .blank{position:absolute;inset:0;display:grid;place-items:center;padding:20px;text-align:center;font:800 clamp(1.6rem,4vw,2.6rem)/1 var(--display);text-transform:uppercase;color:var(--enamel-ink);background:var(--enamel);overflow-wrap:anywhere}
+section{padding:clamp(36px,6vw,72px) 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px;margin-bottom:22px}
+.sec-head p{margin:0;color:var(--muted);font-size:15px;max-width:40rem}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}
+.shots figure{margin:0}
+.shots .frame{aspect-ratio:16/10;overflow:hidden;border-radius:8px;background:var(--sunk);border:1px solid var(--line-strong)}
+.shots img{width:100%;height:100%;object-fit:cover}
+figcaption{margin-top:8px;font-size:14px;color:var(--muted);overflow-wrap:anywhere}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:14px;list-style:none;margin:0;padding:0}
+.card{display:flex;flex-direction:column;background:var(--raised);border:1px solid var(--line);border-radius:8px;overflow:hidden;min-width:0}
+.card .thumb{aspect-ratio:4/3;background:var(--sunk);overflow:hidden}
+.card .thumb img{width:100%;height:100%;object-fit:cover}
+.card .thumb.none{display:grid;place-items:center;color:var(--muted);font:700 13px/1 var(--display);letter-spacing:.1em;text-transform:uppercase}
+.card .body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card h3{font-size:1.1rem}
+.card .meta{margin:0;font-size:13.5px;color:var(--muted)}
+.card .desc{margin:2px 0 0;font-size:13.5px;line-height:1.4;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card .credit{margin:0;font-size:11.5px;color:var(--muted);overflow-wrap:anywhere}
+.card .links{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:auto;padding-top:6px;font-size:14.5px}
+.compact{columns:2 280px;column-gap:32px;margin:0;padding:0;list-style:none}
+.compact li{break-inside:avoid;padding:6px 0;border-bottom:1px solid var(--line);font-size:15px}
+.compact li b{font-weight:600}
+.compact .n{color:var(--muted);float:right;margin-left:10px}
+.empty{color:var(--muted);font-size:15.5px;max-width:40rem;margin:0}
+.facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:14px 28px;margin:0;padding:0;list-style:none}
+.facts li{padding-left:16px;border-left:3px solid var(--copper);font-size:16px;text-wrap:pretty}
+.facts li .who{display:block;font:700 13px/1.3 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--copper-ink);margin-bottom:2px}
+.src{font-size:12.5px;color:var(--muted);white-space:nowrap}
+.names{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:16px 28px;margin:0;padding:0;list-style:none}
+.names li{font-size:15.5px;text-wrap:pretty;min-width:0}
+.names li b{display:block;font:700 16px/1.25 var(--display);letter-spacing:.04em;text-transform:uppercase;overflow-wrap:anywhere}
+.names .reg{display:block;color:var(--muted);font-size:14px}
+details{margin-top:22px}
+details summary{cursor:pointer;font:700 15px/1.3 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--copper-ink)}
+details[open] summary{margin-bottom:14px}
+.plain{color:var(--muted);font-size:14.5px;line-height:1.6;margin:0;overflow-wrap:anywhere}
+.around{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border:1px solid var(--line-strong);border-radius:999px;background:var(--raised);color:var(--ink);text-decoration:none;font-size:15px;overflow-wrap:anywhere}
+.chip:hover{border-color:var(--copper)}
+footer{padding:30px 0 max(30px,env(safe-area-inset-bottom));border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between}
+footer p{margin:0;max-width:46rem}
+footer p a{color:var(--muted)}
+.filter{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:26px 0 0}
+.filter input{font:inherit;font-size:16px;min-height:46px;padding:10px 14px;border:1px solid var(--line-strong);border-radius:6px;background:var(--raised);color:var(--ink);width:min(100%,360px)}
+.filter span{color:var(--muted);font-size:15px}
+.hoods{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:16px;list-style:none;margin:0;padding:0}
+.hoods a{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit;background:var(--raised);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.hoods a:hover{border-color:var(--copper)}
+.hoods .thumb{aspect-ratio:16/10;background:var(--sunk);overflow:hidden;position:relative}
+.hoods .thumb img{width:100%;height:100%;object-fit:cover}
+.hoods .thumb .blank{position:absolute;inset:0;display:grid;place-items:center;padding:12px;text-align:center;font:800 1.5rem/1 var(--display);text-transform:uppercase;color:var(--enamel-ink);background:var(--enamel);overflow-wrap:anywhere}
+.hoods .body{padding:12px 14px 14px}
+.hoods h2{font-size:1.45rem;line-height:1}
+.hoods p{margin:6px 0 0;font-size:13.5px;color:var(--muted)}
+@media (max-width:760px){
+ .hero{grid-template-columns:minmax(0,1fr)}
+ .postcard{transform:none}
+ .top nav .hide-sm{display:none}
+ .compact{columns:1}
+ .hoods{grid-template-columns:1fr 1fr;gap:10px}
+ .hoods h2{font-size:1.1rem}
+ .hoods .body{padding:9px 10px 11px}
+ .hoods p{font-size:12.5px}
+ .hoods .thumb .blank{font-size:1.1rem}
+}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <a class="wordmark enamel-plaque enamel-framed" href="../landing.html" aria-label="Ride Amsterdam home">Ride Amsterdam</a>
+  <nav aria-label="Site">
+    <a href="index.html">Neighbourhoods</a>
+    <a class="hide-sm" href="../explore.html">Buildings</a>
+    <a href="../index.html">Ride</a>
+  </nav>
+</header>
+<main>
+
+<div class="wrap" style="padding-top:clamp(20px,5vw,56px);padding-bottom:clamp(28px,5vw,56px)">
+  <p class="kicker">Amsterdam, area by area</p>
+  <h1>Neighbourhoods</h1>
+  <p class="lede">Every neighbourhood and quarter whose postcard you can collect on a ride: what the game has modelled there, the stories behind its canal and street names, and frames from the ride itself.</p>
+  <div class="filter"><label for="q" class="visually-hidden" style="position:absolute;left:-9999px">Find a neighbourhood</label><input id="q" type="search" placeholder="Find a neighbourhood" autocomplete="off"><span id="count">78 neighbourhoods</span></div>
+</div>
+<section style="padding-top:clamp(24px,4vw,40px)"><div class="wrap">
+<ul class="hoods" id="hoods">
+<li data-name="apollobuurt oud-zuid"><a href="apollobuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Apollobuurt</div><img style="position:relative" src="shots/apollobuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Apollobuurt</h2><p>Quarter in Oud-Zuid · 5 models · 25 facts</p></div></a></li>
+<li data-name="betondorp "><a href="betondorp.html"><div class="thumb"><div class="blank" aria-hidden="true">Betondorp</div><img style="position:relative" src="shots/betondorp-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Betondorp</h2><p>Neighbourhood · 6 facts</p></div></a></li>
+<li data-name="borneo-eiland oostelijk havengebied"><a href="borneo-eiland.html"><div class="thumb"><div class="blank" aria-hidden="true">Borneo-eiland</div><img style="position:relative" src="shots/borneo-eiland-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Borneo-eiland</h2><p>Neighbourhood in Oostelijk Havengebied · 9 facts</p></div></a></li>
+<li data-name="buitenveldert "><a href="buitenveldert.html"><div class="thumb"><div class="blank" aria-hidden="true">Buitenveldert</div><img style="position:relative" src="shots/buitenveldert-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Buitenveldert</h2><p>Quarter · 2 models · 49 facts</p></div></a></li>
+<li data-name="buitenveldert-west buitenveldert"><a href="buitenveldert-west.html"><div class="thumb"><div class="blank" aria-hidden="true">Buitenveldert-West</div><img style="position:relative" src="shots/buitenveldert-west-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Buitenveldert-West</h2><p>Quarter in Buitenveldert · 1 model · 32 facts</p></div></a></li>
+<li data-name="chassébuurt de baarsjes"><a href="chassebuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Chassébuurt</div><img style="position:relative" src="shots/chassebuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Chassébuurt</h2><p>Neighbourhood in De Baarsjes · 3 models · 29 facts</p></div></a></li>
+<li data-name="czaar peterbuurt oostelijke eilanden"><a href="czaar-peterbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Czaar Peterbuurt</div><img style="position:relative" src="shots/czaar-peterbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Czaar Peterbuurt</h2><p>Neighbourhood in Oostelijke Eilanden · 1 model · 12 facts</p></div></a></li>
+<li data-name="da costabuurt "><a href="da-costabuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Da Costabuurt</div><img style="position:relative" src="shots/da-costabuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Da Costabuurt</h2><p>Quarter · 16 models · 15 facts</p></div></a></li>
+<li data-name="de baarsjes "><a href="de-baarsjes.html"><div class="thumb"><div class="blank" aria-hidden="true">De Baarsjes</div><img style="position:relative" src="shots/de-baarsjes-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>De Baarsjes</h2><p>Quarter · 17 models · 31 facts</p></div></a></li>
+<li data-name="de pijp "><a href="de-pijp.html"><div class="thumb"><div class="blank" aria-hidden="true">De Pijp</div><img style="position:relative" src="shots/de-pijp-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>De Pijp</h2><p>Quarter · 12 models · 38 facts</p></div></a></li>
+<li data-name="diamantbuurt de pijp"><a href="diamantbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Diamantbuurt</div><img style="position:relative" src="shots/diamantbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Diamantbuurt</h2><p>Neighbourhood in De Pijp · 2 models · 11 facts</p></div></a></li>
+<li data-name="duivelseiland museumkwartier"><a href="duivelseiland.html"><div class="thumb"><div class="blank" aria-hidden="true">Duivelseiland</div><img style="position:relative" src="shots/duivelseiland-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Duivelseiland</h2><p>Neighbourhood in Museumkwartier · 1 model · 3 facts</p></div></a></li>
+<li data-name="floradorp "><a href="floradorp.html"><div class="thumb"><div class="blank" aria-hidden="true">Floradorp</div><img style="position:relative" src="shots/floradorp-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Floradorp</h2><p>Neighbourhood · 6 facts</p></div></a></li>
+<li data-name="frederik hendrikbuurt "><a href="frederik-hendrikbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Frederik Hendrikbuurt</div><img style="position:relative" src="shots/frederik-hendrikbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Frederik Hendrikbuurt</h2><p>Quarter · 2 models · 27 facts</p></div></a></li>
+<li data-name="funenpark oostelijke eilanden"><a href="funenpark.html"><div class="thumb"><div class="blank" aria-hidden="true">Funenpark</div><img style="position:relative" src="shots/funenpark-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Funenpark</h2><p>Neighbourhood in Oostelijke Eilanden · 1 model · 9 facts</p></div></a></li>
+<li data-name="gelderlandpleinbuurt buitenveldert-west"><a href="gelderlandpleinbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Gelderlandpleinbuurt</div><img style="position:relative" src="shots/gelderlandpleinbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Gelderlandpleinbuurt</h2><p>Neighbourhood in Buitenveldert-West · 13 facts</p></div></a></li>
+<li data-name="grachtengordel "><a href="grachtengordel.html"><div class="thumb"><div class="blank" aria-hidden="true">Grachtengordel</div><img style="position:relative" src="shots/grachtengordel-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Grachtengordel</h2><p>Quarter · 49 models · 151 facts</p></div></a></li>
+<li data-name="helmersbuurt "><a href="helmersbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Helmersbuurt</div><img style="position:relative" src="shots/helmersbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Helmersbuurt</h2><p>Quarter · 2 models · 12 facts</p></div></a></li>
+<li data-name="hoofddorppleinbuurt oud-zuid"><a href="hoofddorppleinbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Hoofddorppleinbuurt</div><img style="position:relative" src="shots/hoofddorppleinbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Hoofddorppleinbuurt</h2><p>Quarter in Oud-Zuid · 18 facts</p></div></a></li>
+<li data-name="hoofdweg e.o. de baarsjes"><a href="hoofdweg-e-o.html"><div class="thumb"><div class="blank" aria-hidden="true">Hoofdweg e.o.</div><img style="position:relative" src="shots/hoofdweg-e-o-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Hoofdweg e.o.</h2><p>Neighbourhood in De Baarsjes · 8 models · 2 facts</p></div></a></li>
+<li data-name="houthaven "><a href="houthaven.html"><div class="thumb"><div class="blank" aria-hidden="true">Houthaven</div><img style="position:relative" src="shots/houthaven-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Houthaven</h2><p>Quarter · 7 models · 8 facts</p></div></a></li>
+<li data-name="ijburg "><a href="ijburg.html"><div class="thumb"><div class="blank" aria-hidden="true">IJburg</div><img style="position:relative" src="shots/ijburg-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>IJburg</h2><p>Quarter · 1 model · 17 facts</p></div></a></li>
+<li data-name="ijselbuurt rivierenbuurt"><a href="ijselbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">IJselbuurt</div><img style="position:relative" src="shots/ijselbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>IJselbuurt</h2><p>Quarter in Rivierenbuurt · 1 fact</p></div></a></li>
+<li data-name="java-eiland oostelijk havengebied"><a href="java-eiland.html"><div class="thumb"><div class="blank" aria-hidden="true">Java-eiland</div><img style="position:relative" src="shots/java-eiland-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Java-eiland</h2><p>Neighbourhood in Oostelijk Havengebied · 3 models · 20 facts</p></div></a></li>
+<li data-name="jordaan "><a href="jordaan.html"><div class="thumb"><div class="blank" aria-hidden="true">Jordaan</div><img style="position:relative" src="shots/jordaan-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Jordaan</h2><p>Quarter · 19 models · 96 facts</p></div></a></li>
+<li data-name="kadijken "><a href="kadijken.html"><div class="thumb"><div class="blank" aria-hidden="true">Kadijken</div><img style="position:relative" src="shots/kadijken-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Kadijken</h2><p>Neighbourhood · 2 models · 34 facts</p></div></a></li>
+<li data-name="karlskrona-eiland houthaven"><a href="karlskrona-eiland.html"><div class="thumb"><div class="blank" aria-hidden="true">Karlskrona-eiland</div><img style="position:relative" src="shots/karlskrona-eiland-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Karlskrona-eiland</h2><p>Neighbourhood in Houthaven · 1 fact</p></div></a></li>
+<li data-name="kattenburg oostelijke eilanden"><a href="kattenburg.html"><div class="thumb"><div class="blank" aria-hidden="true">Kattenburg</div><img style="position:relative" src="shots/kattenburg-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Kattenburg</h2><p>Neighbourhood in Oostelijke Eilanden · 1 model · 24 facts</p></div></a></li>
+<li data-name="kinkerbuurt "><a href="kinkerbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Kinkerbuurt</div><img style="position:relative" src="shots/kinkerbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Kinkerbuurt</h2><p>Quarter · 16 models · 22 facts</p></div></a></li>
+<li data-name="knsm-eiland oostelijk havengebied"><a href="knsm-eiland.html"><div class="thumb"><div class="blank" aria-hidden="true">KNSM-eiland</div><img style="position:relative" src="shots/knsm-eiland-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>KNSM-eiland</h2><p>Neighbourhood in Oostelijk Havengebied · 21 facts</p></div></a></li>
+<li data-name="landlust "><a href="landlust.html"><div class="thumb"><div class="blank" aria-hidden="true">Landlust</div><img style="position:relative" src="shots/landlust-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Landlust</h2><p>Quarter · 7 models · 17 facts</p></div></a></li>
+<li data-name="libau-eiland houthaven"><a href="libau-eiland.html"><div class="thumb"><div class="blank" aria-hidden="true">Libau-eiland</div><img style="position:relative" src="shots/libau-eiland-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Libau-eiland</h2><p>Neighbourhood in Houthaven · 1 fact</p></div></a></li>
+<li data-name="marineterrein oostelijke eilanden"><a href="marineterrein.html"><div class="thumb"><div class="blank" aria-hidden="true">Marineterrein</div><img style="position:relative" src="shots/marineterrein-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Marineterrein</h2><p>Neighbourhood in Oostelijke Eilanden · 5 models · 40 facts</p></div></a></li>
+<li data-name="memeleiland houthaven"><a href="memeleiland.html"><div class="thumb"><div class="blank" aria-hidden="true">Memeleiland</div><img style="position:relative" src="shots/memeleiland-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Memeleiland</h2><p>Neighbourhood in Houthaven · 5 facts</p></div></a></li>
+<li data-name="molenwijkpark "><a href="molenwijkpark.html"><div class="thumb"><div class="blank" aria-hidden="true">Molenwijkpark</div><img style="position:relative" src="shots/molenwijkpark-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Molenwijkpark</h2><p>Neighbourhood · 3 facts</p></div></a></li>
+<li data-name="museumkwartier oud-zuid"><a href="museumkwartier.html"><div class="thumb"><div class="blank" aria-hidden="true">Museumkwartier</div><img style="position:relative" src="shots/museumkwartier-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Museumkwartier</h2><p>Quarter in Oud-Zuid · 23 models · 69 facts</p></div></a></li>
+<li data-name="narva-eiland houthaven"><a href="narva-eiland.html"><div class="thumb"><div class="blank" aria-hidden="true">Narva-eiland</div><img style="position:relative" src="shots/narva-eiland-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Narva-eiland</h2><p>Neighbourhood in Houthaven · 1 fact</p></div></a></li>
+<li data-name="nieuwe pijp "><a href="nieuwe-pijp.html"><div class="thumb"><div class="blank" aria-hidden="true">Nieuwe Pijp</div><img style="position:relative" src="shots/nieuwe-pijp-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Nieuwe Pijp</h2><p>Neighbourhood · 5 models · 16 facts</p></div></a></li>
+<li data-name="nieuwmarkt/lastage "><a href="nieuwmarkt-lastage.html"><div class="thumb"><div class="blank" aria-hidden="true">Nieuwmarkt/Lastage</div><img style="position:relative" src="shots/nieuwmarkt-lastage-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Nieuwmarkt/Lastage</h2><p>Quarter · 34 models · 172 facts</p></div></a></li>
+<li data-name="nieuwmarktbuurt nieuwmarkt/lastage"><a href="nieuwmarktbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Nieuwmarktbuurt</div><img style="position:relative" src="shots/nieuwmarktbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Nieuwmarktbuurt</h2><p>Neighbourhood in Nieuwmarkt/Lastage · 3 models · 34 facts</p></div></a></li>
+<li data-name="oostelijk havengebied "><a href="oostelijk-havengebied.html"><div class="thumb"><div class="blank" aria-hidden="true">Oostelijk Havengebied</div><img style="position:relative" src="shots/oostelijk-havengebied-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Oostelijk Havengebied</h2><p>Quarter · 14 models · 69 facts</p></div></a></li>
+<li data-name="oostelijke eilanden "><a href="oostelijke-eilanden.html"><div class="thumb"><div class="blank" aria-hidden="true">Oostelijke Eilanden</div><img style="position:relative" src="shots/oostelijke-eilanden-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Oostelijke Eilanden</h2><p>Quarter · 14 models · 67 facts</p></div></a></li>
+<li data-name="oostenburg oostelijke eilanden"><a href="oostenburg.html"><div class="thumb"><div class="blank" aria-hidden="true">Oostenburg</div><img style="position:relative" src="shots/oostenburg-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Oostenburg</h2><p>Neighbourhood in Oostelijke Eilanden · 4 models · 15 facts</p></div></a></li>
+<li data-name="oosterdokseiland nieuwmarkt/lastage"><a href="oosterdokseiland.html"><div class="thumb"><div class="blank" aria-hidden="true">Oosterdokseiland</div><img style="position:relative" src="shots/oosterdokseiland-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Oosterdokseiland</h2><p>Neighbourhood in Nieuwmarkt/Lastage · 3 models · 26 facts</p></div></a></li>
+<li data-name="oud-zuid "><a href="oud-zuid.html"><div class="thumb"><div class="blank" aria-hidden="true">Oud-Zuid</div><img style="position:relative" src="shots/oud-zuid-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Oud-Zuid</h2><p>Quarter · 34 models · 158 facts</p></div></a></li>
+<li data-name="oude pijp de pijp"><a href="oude-pijp.html"><div class="thumb"><div class="blank" aria-hidden="true">Oude Pijp</div><img style="position:relative" src="shots/oude-pijp-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Oude Pijp</h2><p>Neighbourhood in De Pijp · 5 models · 26 facts</p></div></a></li>
+<li data-name="overhoeks "><a href="overhoeks.html"><div class="thumb"><div class="blank" aria-hidden="true">Overhoeks</div><img style="position:relative" src="shots/overhoeks-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Overhoeks</h2><p>Neighbourhood · 7 models · 13 facts</p></div></a></li>
+<li data-name="overtoomse sluis "><a href="overtoomse-sluis.html"><div class="thumb"><div class="blank" aria-hidden="true">Overtoomse Sluis</div><img style="position:relative" src="shots/overtoomse-sluis-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Overtoomse Sluis</h2><p>Quarter · 1 model · 15 facts</p></div></a></li>
+<li data-name="plantage "><a href="plantage.html"><div class="thumb"><div class="blank" aria-hidden="true">Plantage</div><img style="position:relative" src="shots/plantage-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Plantage</h2><p>Neighbourhood · 10 models · 50 facts</p></div></a></li>
+<li data-name="prinses irenebuurt e.o. "><a href="prinses-irenebuurt-e-o.html"><div class="thumb"><div class="blank" aria-hidden="true">Prinses Irenebuurt e.o.</div><img style="position:relative" src="shots/prinses-irenebuurt-e-o-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Prinses Irenebuurt e.o.</h2><p>Quarter · 2 models · 30 facts</p></div></a></li>
+<li data-name="rapenburg nieuwmarkt/lastage"><a href="rapenburg.html"><div class="thumb"><div class="blank" aria-hidden="true">Rapenburg</div><img style="position:relative" src="shots/rapenburg-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Rapenburg</h2><p>Neighbourhood in Nieuwmarkt/Lastage · 5 models · 36 facts</p></div></a></li>
+<li data-name="revaleiland houthaven"><a href="revaleiland.html"><div class="thumb"><div class="blank" aria-hidden="true">Revaleiland</div><img style="position:relative" src="shots/revaleiland-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Revaleiland</h2><p>Neighbourhood in Houthaven · 1 model · 5 facts</p></div></a></li>
+<li data-name="rijnbuurt rivierenbuurt"><a href="rijnbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Rijnbuurt</div><img style="position:relative" src="shots/rijnbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Rijnbuurt</h2><p>Quarter in Rivierenbuurt · 8 models · 7 facts</p></div></a></li>
+<li data-name="rivierenbuurt "><a href="rivierenbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Rivierenbuurt</div><img style="position:relative" src="shots/rivierenbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Rivierenbuurt</h2><p>Quarter · 13 models · 17 facts</p></div></a></li>
+<li data-name="scheldebuurt "><a href="scheldebuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Scheldebuurt</div><img style="position:relative" src="shots/scheldebuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Scheldebuurt</h2><p>Quarter · 5 models · 13 facts</p></div></a></li>
+<li data-name="schinkelbuurt oud-zuid"><a href="schinkelbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Schinkelbuurt</div><img style="position:relative" src="shots/schinkelbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Schinkelbuurt</h2><p>Quarter in Oud-Zuid · 2 models · 37 facts</p></div></a></li>
+<li data-name="slotervaart "><a href="slotervaart.html"><div class="thumb"><div class="blank" aria-hidden="true">Slotervaart</div><img style="position:relative" src="shots/slotervaart-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Slotervaart</h2><p>Quarter · 506 kit buildings · 23 facts</p></div></a></li>
+<li data-name="sluisbuurt "><a href="sluisbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Sluisbuurt</div><img style="position:relative" src="shots/sluisbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Sluisbuurt</h2><p>Neighbourhood · 4 facts</p></div></a></li>
+<li data-name="spaarndammerbuurt "><a href="spaarndammerbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Spaarndammerbuurt</div><img style="position:relative" src="shots/spaarndammerbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Spaarndammerbuurt</h2><p>Quarter · 14 models · 14 facts</p></div></a></li>
+<li data-name="sporenburg oostelijk havengebied"><a href="sporenburg.html"><div class="thumb"><div class="blank" aria-hidden="true">Sporenburg</div><img style="position:relative" src="shots/sporenburg-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Sporenburg</h2><p>Neighbourhood in Oostelijk Havengebied · 20 facts</p></div></a></li>
+<li data-name="sportheldenbuurt "><a href="sportheldenbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Sportheldenbuurt</div><img style="position:relative" src="shots/sportheldenbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Sportheldenbuurt</h2><p>Neighbourhood · 1 model · 5 facts</p></div></a></li>
+<li data-name="staatsliedenbuurt "><a href="staatsliedenbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Staatsliedenbuurt</div><img style="position:relative" src="shots/staatsliedenbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Staatsliedenbuurt</h2><p>Quarter · 4 models · 29 facts</p></div></a></li>
+<li data-name="stadionbuurt oud-zuid"><a href="stadionbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Stadionbuurt</div><img style="position:relative" src="shots/stadionbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Stadionbuurt</h2><p>Quarter in Oud-Zuid · 3 models · 36 facts</p></div></a></li>
+<li data-name="stettineiland houthaven"><a href="stettineiland.html"><div class="thumb"><div class="blank" aria-hidden="true">Stettineiland</div><img style="position:relative" src="shots/stettineiland-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Stettineiland</h2><p>Neighbourhood in Houthaven · 1 fact</p></div></a></li>
+<li data-name="tuindorp nieuwendam "><a href="tuindorp-nieuwendam.html"><div class="thumb"><div class="blank" aria-hidden="true">Tuindorp Nieuwendam</div><img style="position:relative" src="shots/tuindorp-nieuwendam-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Tuindorp Nieuwendam</h2><p>Neighbourhood · 1 model · 5 facts</p></div></a></li>
+<li data-name="uilenburg nieuwmarkt/lastage"><a href="uilenburg.html"><div class="thumb"><div class="blank" aria-hidden="true">Uilenburg</div><img style="position:relative" src="shots/uilenburg-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Uilenburg</h2><p>Neighbourhood in Nieuwmarkt/Lastage · 3 models · 31 facts</p></div></a></li>
+<li data-name="valkenburg nieuwmarkt/lastage"><a href="valkenburg.html"><div class="thumb"><div class="blank" aria-hidden="true">Valkenburg</div><img style="position:relative" src="shots/valkenburg-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Valkenburg</h2><p>Neighbourhood in Nieuwmarkt/Lastage · 3 models · 8 facts</p></div></a></li>
+<li data-name="van galenbuurt de baarsjes"><a href="van-galenbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Van Galenbuurt</div><img style="position:relative" src="shots/van-galenbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Van Galenbuurt</h2><p>Neighbourhood in De Baarsjes · 6 models · 7 facts</p></div></a></li>
+<li data-name="van lennepbuurt "><a href="van-lennepbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Van Lennepbuurt</div><img style="position:relative" src="shots/van-lennepbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Van Lennepbuurt</h2><p>Quarter · 6 models · 22 facts</p></div></a></li>
+<li data-name="vivaldi zuidas"><a href="vivaldi.html"><div class="thumb"><div class="blank" aria-hidden="true">Vivaldi</div><img style="position:relative" src="shots/vivaldi-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Vivaldi</h2><p>Neighbourhood in Zuidas · 1 model · 14 facts</p></div></a></li>
+<li data-name="vondelparkbuurt "><a href="vondelparkbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Vondelparkbuurt</div><img style="position:relative" src="shots/vondelparkbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Vondelparkbuurt</h2><p>Quarter · 7 models · 21 facts</p></div></a></li>
+<li data-name="vu-kwartier zuidas"><a href="vu-kwartier.html"><div class="thumb"><div class="blank" aria-hidden="true">VU-kwartier</div><img style="position:relative" src="shots/vu-kwartier-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>VU-kwartier</h2><p>Neighbourhood in Zuidas · 23 facts</p></div></a></li>
+<li data-name="weesperbuurt "><a href="weesperbuurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Weesperbuurt</div><img style="position:relative" src="shots/weesperbuurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Weesperbuurt</h2><p>Neighbourhood · 14 models · 63 facts</p></div></a></li>
+<li data-name="westindische buurt de baarsjes"><a href="westindische-buurt.html"><div class="thumb"><div class="blank" aria-hidden="true">Westindische Buurt</div><img style="position:relative" src="shots/westindische-buurt-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Westindische Buurt</h2><p>Neighbourhood in De Baarsjes</p></div></a></li>
+<li data-name="wiborgeiland houthaven"><a href="wiborgeiland.html"><div class="thumb"><div class="blank" aria-hidden="true">Wiborgeiland</div><img style="position:relative" src="shots/wiborgeiland-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Wiborgeiland</h2><p>Neighbourhood in Houthaven · 1 fact</p></div></a></li>
+<li data-name="willemspark oud-zuid"><a href="willemspark.html"><div class="thumb"><div class="blank" aria-hidden="true">Willemspark</div><img style="position:relative" src="shots/willemspark-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Willemspark</h2><p>Quarter in Oud-Zuid · 1 model · 8 facts</p></div></a></li>
+<li data-name="wittenburg oostelijke eilanden"><a href="wittenburg.html"><div class="thumb"><div class="blank" aria-hidden="true">Wittenburg</div><img style="position:relative" src="shots/wittenburg-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Wittenburg</h2><p>Neighbourhood in Oostelijke Eilanden · 2 models · 27 facts</p></div></a></li>
+<li data-name="zuidas "><a href="zuidas.html"><div class="thumb"><div class="blank" aria-hidden="true">Zuidas</div><img style="position:relative" src="shots/zuidas-cover.jpg" alt="" loading="lazy" decoding="async"></div><div class="body"><h2>Zuidas</h2><p>Quarter · 7 models · 59 facts</p></div></a></li>
+</ul>
+<p class="empty" id="none" hidden>No neighbourhood matches.</p>
+</div></section>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Text from Wikipedia (CC BY-SA) and the Amsterdam street-name register (BAG); photos from Wikimedia Commons, credited under each one; bridge facts from the city's bridge register. Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors. In-game frames are from Ride Amsterdam. <a href="../credits.html">All credits</a>.</p>
+    <p><a href="index.html">All neighbourhoods</a></p>
+  </div>
+</footer>
+<script>
+// Load-time fixes only: the dev server serves this tree under /canal-drive/, where the
+// ride is index.html and the landing page landing.html; the public site serves the
+// landing page at / and the ride at /ride (scripts/assemble-canalrecall-site.mjs).
+(function(){if(location.pathname.indexOf('/canal-drive/')>=0)return;document.querySelectorAll('a[href="../landing.html"]').forEach(function(a){a.setAttribute('href','/')});document.querySelectorAll('a[href^="../index.html"]').forEach(function(a){a.setAttribute('href',a.getAttribute('href').replace('../index.html','/ride'))});})();
+(function(){var q=document.getElementById('q'),items=[].slice.call(document.querySelectorAll('#hoods li')),count=document.getElementById('count'),none=document.getElementById('none');q.addEventListener('input',function(){var v=q.value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''),n=0;items.forEach(function(li){var hit=!v||li.dataset.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').indexOf(v)>=0;li.hidden=!hit;if(hit)n++});count.textContent=n+(n===1?' neighbourhood':' neighbourhoods');none.hidden=n>0});})();
+</script>
+</body>
+</html>

@@ -1,0 +1,3421 @@
+{
+ "generatedBy": "scripts/build-buurt-pages.ts",
+ "pages": [
+  {
+   "slug": "apollobuurt",
+   "name": "Apollobuurt",
+   "shots": [
+    {
+     "label": "Vrijburg",
+     "lat": 52.345835087843064,
+     "lng": 4.882560038896178,
+     "view": "chase",
+     "at": [
+      4.882473,
+      52.345363,
+      6
+     ]
+    },
+    {
+     "label": "Hilton Amsterdam",
+     "lat": 52.351562638557965,
+     "lng": 4.8722223068910235,
+     "view": "chase",
+     "at": [
+      4.873234,
+      52.350788,
+      321
+     ]
+    },
+    {
+     "label": "Apollolaan 4 / Stadionweg 5 (Apollohal), Amsterdam-Zuid (Olympisch Kwartier)",
+     "lat": 52.3485081,
+     "lng": 4.8842397,
+     "view": "chase",
+     "at": [
+      4.884625,
+      52.349475,
+      194
+     ]
+    },
+    {
+     "label": "Apollobuurt from above",
+     "lat": 52.347045493103444,
+     "lng": 4.877244272413792,
+     "view": "aerial",
+     "at": [
+      4.877181,
+      52.346939,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "betondorp",
+   "name": "Betondorp",
+   "shots": [
+    {
+     "label": "Fré Cohenbrug",
+     "lat": 52.344295,
+     "lng": 4.945445,
+     "view": "chase",
+     "at": [
+      4.944873,
+      52.344113,
+      62
+     ]
+    },
+    {
+     "label": "Betondorp centre",
+     "lat": 52.34034857142857,
+     "lng": 4.942760390476191,
+     "view": "chase",
+     "at": [
+      4.943121,
+      52.340082,
+      320
+     ]
+    },
+    {
+     "label": "Betondorp from above",
+     "lat": 52.34034857142857,
+     "lng": 4.942760390476191,
+     "view": "aerial",
+     "at": [
+      4.942758,
+      52.340353,
+      162
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "borneo-eiland",
+   "name": "Borneo-eiland",
+   "shots": [
+    {
+     "label": "Borneo-eiland centre",
+     "lat": 52.371557657142866,
+     "lng": 4.944932271428572,
+     "view": "chase",
+     "at": [
+      4.945496,
+      52.3714,
+      295
+     ]
+    },
+    {
+     "label": "Borneo-eiland from above",
+     "lat": 52.371557657142866,
+     "lng": 4.944932271428572,
+     "view": "aerial",
+     "at": [
+      4.944835,
+      52.37162,
+      136
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "buitenveldert",
+   "name": "Buitenveldert",
+   "shots": [
+    {
+     "label": "ING House / Infinity",
+     "lat": 52.33717,
+     "lng": 4.85519,
+     "view": "chase",
+     "at": [
+      4.853709,
+      52.336749,
+      65
+     ]
+    },
+    {
+     "label": "Politiebureau Van Leijenberghlaan, Van Leijenberghlaan 1, Amsterdam (Buitenveldert)",
+     "lat": 52.3311922,
+     "lng": 4.8799828,
+     "view": "chase",
+     "at": [
+      4.879516,
+      52.33044,
+      21
+     ]
+    },
+    {
+     "label": "Gwijde van Henegouwenbrug",
+     "lat": 52.329284,
+     "lng": 4.869021,
+     "view": "chase",
+     "at": [
+      4.868698,
+      52.328992,
+      34
+     ]
+    },
+    {
+     "label": "Buitenveldert from above",
+     "lat": 52.3306482298077,
+     "lng": 4.864538280769231,
+     "view": "aerial",
+     "at": [
+      4.864629,
+      52.330721,
+      217
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "buitenveldert-west",
+   "name": "Buitenveldert-West",
+   "shots": [
+    {
+     "label": "ING House / Infinity",
+     "lat": 52.33717,
+     "lng": 4.85519,
+     "view": "chase",
+     "at": [
+      4.853709,
+      52.336749,
+      65
+     ]
+    },
+    {
+     "label": "Gwijde van Henegouwenbrug",
+     "lat": 52.329284,
+     "lng": 4.869021,
+     "view": "chase",
+     "at": [
+      4.868698,
+      52.328992,
+      34
+     ]
+    },
+    {
+     "label": "Brug 812",
+     "lat": 52.32306,
+     "lng": 4.865313,
+     "view": "chase",
+     "at": [
+      4.865302,
+      52.323592,
+      179
+     ]
+    },
+    {
+     "label": "Buitenveldert-West from above",
+     "lat": 52.3305699,
+     "lng": 4.8480068,
+     "view": "aerial",
+     "at": [
+      4.847859,
+      52.331694,
+      175
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "chassebuurt",
+   "name": "Chassébuurt",
+   "shots": [
+    {
+     "label": "Chassékerk",
+     "lat": 52.36991537440989,
+     "lng": 4.861807535807428,
+     "view": "chase",
+     "at": [
+      4.862409,
+      52.369247,
+      331
+     ]
+    },
+    {
+     "label": "Westermoskee",
+     "lat": 52.36622136425853,
+     "lng": 4.860635764455046,
+     "view": "chase",
+     "at": [
+      4.860096,
+      52.366532,
+      133
+     ]
+    },
+    {
+     "label": "Kinkerbrug",
+     "lat": 52.364638,
+     "lng": 4.859981,
+     "view": "chase",
+     "at": [
+      4.859415,
+      52.36476,
+      109
+     ]
+    },
+    {
+     "label": "Chassébuurt from above",
+     "lat": 52.37092310232783,
+     "lng": 4.861117637922385,
+     "view": "aerial",
+     "at": [
+      4.861183,
+      52.371183,
+      189
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "czaar-peterbuurt",
+   "name": "Czaar Peterbuurt",
+   "shots": [
+    {
+     "label": "Blankenstraat 15",
+     "lat": 52.3685032489126,
+     "lng": 4.927350617366918,
+     "view": "chase",
+     "at": [
+      4.927757,
+      52.367543,
+      346
+     ]
+    },
+    {
+     "label": "Dageraadsbrug",
+     "lat": 52.367299,
+     "lng": 4.925514,
+     "view": "chase",
+     "at": [
+      4.92569,
+      52.367642,
+      197
+     ]
+    },
+    {
+     "label": "Czaar Peterbuurt centre",
+     "lat": 52.36954195,
+     "lng": 4.929706122222222,
+     "view": "chase",
+     "at": [
+      4.930206,
+      52.369764,
+      234
+     ]
+    },
+    {
+     "label": "Czaar Peterbuurt from above",
+     "lat": 52.36954195,
+     "lng": 4.929706122222222,
+     "view": "aerial",
+     "at": [
+      4.929934,
+      52.369666,
+      228
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "da-costabuurt",
+   "name": "Da Costabuurt",
+   "shots": [
+    {
+     "label": "Da Costakade 13",
+     "lat": 52.372784346431544,
+     "lng": 4.8736735064516035,
+     "view": "chase",
+     "at": [
+      4.874246,
+      52.372699,
+      284
+     ]
+    },
+    {
+     "label": "Nassaukade 318 to 300 (20 houses)",
+     "lat": 52.369321384667145,
+     "lng": 4.875039457071271,
+     "view": "chase",
+     "at": [
+      4.876164,
+      52.368591,
+      317
+     ]
+    },
+    {
+     "label": "De Clercqstraat 22 to 152 (9 houses)",
+     "lat": 52.37176734875895,
+     "lng": 4.873450301959339,
+     "view": "chase",
+     "at": [
+      4.872101,
+      52.371275,
+      59
+     ]
+    },
+    {
+     "label": "Da Costabuurt from above",
+     "lat": 52.370784269230775,
+     "lng": 4.873614715384615,
+     "view": "aerial",
+     "at": [
+      4.873535,
+      52.370693,
+      28
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "de-baarsjes",
+   "name": "De Baarsjes",
+   "shots": [
+    {
+     "label": "Jeruzalemkerk",
+     "lat": 52.371445,
+     "lng": 4.85196,
+     "view": "chase",
+     "at": [
+      4.851755,
+      52.370968,
+      15
+     ]
+    },
+    {
+     "label": "Chassékerk",
+     "lat": 52.36991537440989,
+     "lng": 4.861807535807428,
+     "view": "chase",
+     "at": [
+      4.862409,
+      52.369247,
+      331
+     ]
+    },
+    {
+     "label": "Mercatorplein north tower",
+     "lat": 52.3704295,
+     "lng": 4.850677,
+     "view": "chase",
+     "at": [
+      4.849673,
+      52.369836,
+      46
+     ]
+    },
+    {
+     "label": "De Baarsjes from above",
+     "lat": 52.36800975681077,
+     "lng": 4.856410880654275,
+     "view": "aerial",
+     "at": [
+      4.856324,
+      52.367696,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "de-pijp",
+   "name": "De Pijp",
+   "shots": [
+    {
+     "label": "Heineken Experience",
+     "lat": 52.35771184229546,
+     "lng": 4.891634499471685,
+     "view": "chase",
+     "at": [
+      4.891558,
+      52.356723,
+      3
+     ]
+    },
+    {
+     "label": "Afrikahuis",
+     "lat": 52.352932,
+     "lng": 4.897546,
+     "view": "chase",
+     "at": [
+      4.897227,
+      52.352267,
+      16
+     ]
+    },
+    {
+     "label": "Rialto",
+     "lat": 52.35291910893182,
+     "lng": 4.89396640278434,
+     "view": "chase",
+     "at": [
+      4.894366,
+      52.353164,
+      225
+     ]
+    },
+    {
+     "label": "De Pijp from above",
+     "lat": 52.35351712376914,
+     "lng": 4.896527365915673,
+     "view": "aerial",
+     "at": [
+      4.896692,
+      52.353654,
+      216
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "diamantbuurt",
+   "name": "Diamantbuurt",
+   "shots": [
+    {
+     "label": "Museum De Dageraad",
+     "lat": 52.34985665994483,
+     "lng": 4.898997149741256,
+     "view": "chase",
+     "at": [
+      4.899493,
+      52.350049,
+      238
+     ]
+    },
+    {
+     "label": "Berlage Lyceum, Pieter Lodewijk Takstraat 33, Amsterdam (1924 Amsterdam School school in yellow brick)",
+     "lat": 52.3489523,
+     "lng": 4.9003971,
+     "view": "chase",
+     "at": [
+      4.900471,
+      52.349763,
+      183
+     ]
+    },
+    {
+     "label": "Diamantbuurt centre",
+     "lat": 52.35120949444445,
+     "lng": 4.9013901722222215,
+     "view": "chase",
+     "at": [
+      4.901489,
+      52.350852,
+      350
+     ]
+    },
+    {
+     "label": "Diamantbuurt from above",
+     "lat": 52.35120949444445,
+     "lng": 4.9013901722222215,
+     "view": "aerial",
+     "at": [
+      4.901438,
+      52.351433,
+      187
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "duivelseiland",
+   "name": "Duivelseiland",
+   "shots": [
+    {
+     "label": "Sint-Petrus-en-Pauluskerk",
+     "lat": 52.35409934503864,
+     "lng": 4.884583111087057,
+     "view": "chase",
+     "at": [
+      4.884509,
+      52.354517,
+      174
+     ]
+    },
+    {
+     "label": "Duivelseiland from above",
+     "lat": 52.353247687499994,
+     "lng": 4.8840834625,
+     "view": "aerial",
+     "at": [
+      4.884779,
+      52.353191,
+      278
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "floradorp",
+   "name": "Floradorp",
+   "shots": [
+    {
+     "label": "Floradorp centre",
+     "lat": 52.399037619999994,
+     "lng": 4.9152978933333324,
+     "view": "chase",
+     "at": [
+      4.915898,
+      52.399016,
+      273
+     ]
+    },
+    {
+     "label": "Floradorp from above",
+     "lat": 52.399037619999994,
+     "lng": 4.9152978933333324,
+     "view": "aerial",
+     "at": [
+      4.915329,
+      52.398865,
+      354
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "frederik-hendrikbuurt",
+   "name": "Frederik Hendrikbuurt",
+   "shots": [
+    {
+     "label": "Amsta De Poort",
+     "lat": 52.373488756470465,
+     "lng": 4.873552902185253,
+     "view": "chase",
+     "at": [
+      4.874761,
+      52.37308,
+      299
+     ]
+    },
+    {
+     "label": "Van Oldenbarneveldtstraat 48-56, Amsterdam-West",
+     "lat": 52.3753951,
+     "lng": 4.8737771,
+     "view": "chase",
+     "at": [
+      4.872544,
+      52.374759,
+      50
+     ]
+    },
+    {
+     "label": "Zaagpoort",
+     "lat": 52.378351,
+     "lng": 4.878287,
+     "view": "chase",
+     "at": [
+      4.878871,
+      52.378391,
+      264
+     ]
+    },
+    {
+     "label": "Frederik Hendrikbuurt from above",
+     "lat": 52.377259225,
+     "lng": 4.875477765000001,
+     "view": "aerial",
+     "at": [
+      4.875783,
+      52.377365,
+      240
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "funenpark",
+   "name": "Funenpark",
+   "shots": [
+    {
+     "label": "Funenpark 427, Amsterdam (Funenpark / Oostelijke Handelskade side)",
+     "lat": 52.3686743,
+     "lng": 4.9317865,
+     "view": "chase",
+     "at": [
+      4.932386,
+      52.369604,
+      201
+     ]
+    },
+    {
+     "label": "Funenpark from above",
+     "lat": 52.36908776956521,
+     "lng": 4.931212613043479,
+     "view": "aerial",
+     "at": [
+      4.931206,
+      52.369158,
+      177
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "gelderlandpleinbuurt",
+   "name": "Gelderlandpleinbuurt",
+   "shots": [
+    {
+     "label": "Gwijde van Henegouwenbrug",
+     "lat": 52.329284,
+     "lng": 4.869021,
+     "view": "chase",
+     "at": [
+      4.868698,
+      52.328992,
+      34
+     ]
+    },
+    {
+     "label": "Gelderlandpleinbuurt centre",
+     "lat": 52.33159747857144,
+     "lng": 4.87601465,
+     "view": "chase",
+     "at": [
+      4.875538,
+      52.331853,
+      131
+     ]
+    },
+    {
+     "label": "Gelderlandpleinbuurt from above",
+     "lat": 52.33159747857144,
+     "lng": 4.87601465,
+     "view": "aerial",
+     "at": [
+      4.875538,
+      52.331853,
+      131
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "grachtengordel",
+   "name": "Grachtengordel",
+   "shots": [
+    {
+     "label": "Anne Frank House",
+     "lat": 52.37526883046758,
+     "lng": 4.884199790545408,
+     "view": "chase",
+     "at": [
+      4.88402,
+      52.374902,
+      17
+     ]
+    },
+    {
+     "label": "De Kleine Komedie",
+     "lat": 52.36678826887563,
+     "lng": 4.896027591416243,
+     "view": "chase",
+     "at": [
+      4.89587,
+      52.366396,
+      14
+     ]
+    },
+    {
+     "label": "Felix Meritis",
+     "lat": 52.36999669819762,
+     "lng": 4.883664696612664,
+     "view": "chase",
+     "at": [
+      4.882905,
+      52.369159,
+      29
+     ]
+    },
+    {
+     "label": "Grachtengordel from above",
+     "lat": 52.3690294,
+     "lng": 4.887679,
+     "view": "aerial",
+     "at": [
+      4.88759,
+      52.369102,
+      143
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "helmersbuurt",
+   "name": "Helmersbuurt",
+   "shots": [
+    {
+     "label": "LAB111 / Pathological Anatomical Laboratory",
+     "lat": 52.36366317589964,
+     "lng": 4.867419736081726,
+     "view": "chase",
+     "at": [
+      4.866491,
+      52.364006,
+      121
+     ]
+    },
+    {
+     "label": "WG-plein 600 (former Wilhelmina Gasthuis pavilion), Amsterdam-West",
+     "lat": 52.3645522,
+     "lng": 4.871281,
+     "view": "chase",
+     "at": [
+      4.870259,
+      52.36532,
+      141
+     ]
+    },
+    {
+     "label": "Helmersbuurt centre",
+     "lat": 52.363849963636355,
+     "lng": 4.872561018181819,
+     "view": "chase",
+     "at": [
+      4.872444,
+      52.364185,
+      168
+     ]
+    },
+    {
+     "label": "Helmersbuurt from above",
+     "lat": 52.363849963636355,
+     "lng": 4.872561018181819,
+     "view": "aerial",
+     "at": [
+      4.872644,
+      52.363904,
+      223
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "hoofddorppleinbuurt",
+   "name": "Hoofddorppleinbuurt",
+   "shots": [
+    {
+     "label": "Riekerhavenbrug",
+     "lat": 52.342235,
+     "lng": 4.846475,
+     "view": "chase",
+     "at": [
+      4.846361,
+      52.342591,
+      169
+     ]
+    },
+    {
+     "label": "Hoofddorppleinbuurt centre",
+     "lat": 52.34632145384616,
+     "lng": 4.846117235897434,
+     "view": "chase",
+     "at": [
+      4.846365,
+      52.346644,
+      205
+     ]
+    },
+    {
+     "label": "Hoofddorppleinbuurt from above",
+     "lat": 52.34632145384616,
+     "lng": 4.846117235897434,
+     "view": "aerial",
+     "at": [
+      4.846067,
+      52.346377,
+      151
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "hoofdweg-e-o",
+   "name": "Hoofdweg e.o.",
+   "shots": [
+    {
+     "label": "Mercatorplein south tower",
+     "lat": 52.3688725,
+     "lng": 4.8507542,
+     "view": "chase",
+     "at": [
+      4.851129,
+      52.369153,
+      219
+     ]
+    },
+    {
+     "label": "MidWest",
+     "lat": 52.369735,
+     "lng": 4.85495,
+     "view": "chase",
+     "at": [
+      4.855359,
+      52.369258,
+      332
+     ]
+    },
+    {
+     "label": "Jan Evertsenstraat 89-91 to 133-135 (19 houses)",
+     "lat": 52.370312026779594,
+     "lng": 4.8526766473281695,
+     "view": "chase",
+     "at": [
+      4.851093,
+      52.370485,
+      100
+     ]
+    },
+    {
+     "label": "Hoofdweg e.o. from above",
+     "lat": 52.366227030769224,
+     "lng": 4.85374553076923,
+     "view": "aerial",
+     "at": [
+      4.854005,
+      52.366061,
+      316
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "houthaven",
+   "name": "Houthaven",
+   "shots": [
+    {
+     "label": "Het 4e Gymnasium",
+     "lat": 52.39419,
+     "lng": 4.87309,
+     "view": "chase",
+     "at": [
+      4.87231,
+      52.39466,
+      135
+     ]
+    },
+    {
+     "label": "Pontsteiger",
+     "lat": 52.393236963385505,
+     "lng": 4.886195205886302,
+     "view": "chase",
+     "at": [
+      4.886023,
+      52.392189,
+      6
+     ]
+    },
+    {
+     "label": "Haparandaweg 870-900",
+     "lat": 52.3948,
+     "lng": 4.878,
+     "view": "chase",
+     "at": [
+      4.878089,
+      52.395299,
+      186
+     ]
+    },
+    {
+     "label": "Houthaven from above",
+     "lat": 52.39369376756756,
+     "lng": 4.88045874864865,
+     "view": "aerial",
+     "at": [
+      4.881249,
+      52.393648,
+      275
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "ijburg",
+   "name": "IJburg",
+   "shots": [
+    {
+     "label": "Politiepost IJburg, IJburglaan 1397, Amsterdam (2004; ground-floor police post in a red-brick housing block, one pand)",
+     "lat": 52.3528188,
+     "lng": 5.0008415,
+     "view": "chase",
+     "at": [
+      5.000871,
+      52.35372,
+      181
+     ]
+    },
+    {
+     "label": "Lee Millerbrug",
+     "lat": 52.354454,
+     "lng": 5.014654,
+     "view": "chase",
+     "at": [
+      5.014928,
+      52.35413,
+      333
+     ]
+    },
+    {
+     "label": "Gerda Tarobrug",
+     "lat": 52.350341,
+     "lng": 5.018525,
+     "view": "chase",
+     "at": [
+      5.017944,
+      52.350423,
+      103
+     ]
+    },
+    {
+     "label": "IJburg from above",
+     "lat": 52.3559272,
+     "lng": 5.0048213,
+     "view": "aerial",
+     "at": [
+      5.003807,
+      52.355695,
+      69
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "ijselbuurt",
+   "name": "IJselbuurt",
+   "shots": [
+    {
+     "label": "IJselbuurt centre",
+     "lat": 52.347424366666665,
+     "lng": 4.903320675,
+     "view": "chase",
+     "at": [
+      4.903801,
+      52.347463,
+      262
+     ]
+    },
+    {
+     "label": "IJselbuurt from above",
+     "lat": 52.347424366666665,
+     "lng": 4.903320675,
+     "view": "aerial",
+     "at": [
+      4.903519,
+      52.347536,
+      227
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "java-eiland",
+   "name": "Java-eiland",
+   "shots": [
+    {
+     "label": "Hotel Jakarta",
+     "lat": 52.37939697615155,
+     "lng": 4.921889467933162,
+     "view": "chase",
+     "at": [
+      4.923454,
+      52.379712,
+      252
+     ]
+    },
+    {
+     "label": "Woongebouw Wladiwostok",
+     "lat": 52.37750540889138,
+     "lng": 4.936266441562724,
+     "view": "chase",
+     "at": [
+      4.937195,
+      52.377427,
+      278
+     ]
+    },
+    {
+     "label": "Bogortuin 101",
+     "lat": 52.376374223915306,
+     "lng": 4.936062018713485,
+     "view": "chase",
+     "at": [
+      4.935494,
+      52.377302,
+      160
+     ]
+    },
+    {
+     "label": "Java-eiland from above",
+     "lat": 52.37896256363636,
+     "lng": 4.926976709090909,
+     "view": "aerial",
+     "at": [
+      4.927072,
+      52.379019,
+      226
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "jordaan",
+   "name": "Jordaan",
+   "shots": [
+    {
+     "label": "Boom Chicago / Rozentheater",
+     "lat": 52.372669186374516,
+     "lng": 4.879140883714867,
+     "view": "chase",
+     "at": [
+      4.878846,
+      52.372208,
+      21
+     ]
+    },
+    {
+     "label": "Amsterdam Tulip Museum",
+     "lat": 52.37632814296878,
+     "lng": 4.884088419391602,
+     "view": "chase",
+     "at": [
+      4.884252,
+      52.376687,
+      196
+     ]
+    },
+    {
+     "label": "Noorderkerk",
+     "lat": 52.37960207395543,
+     "lng": 4.886410612252116,
+     "view": "chase",
+     "at": [
+      4.88726,
+      52.379614,
+      269
+     ]
+    },
+    {
+     "label": "Jordaan from above",
+     "lat": 52.374557897619034,
+     "lng": 4.878668038095239,
+     "view": "aerial",
+     "at": [
+      4.879207,
+      52.37445,
+      288
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "kadijken",
+   "name": "Kadijken",
+   "shots": [
+    {
+     "label": "Entrepotdok 13-37 / Binnenkadijk / Laagte Kadijk, Amsterdam",
+     "lat": 52.3693617,
+     "lng": 4.9131356,
+     "view": "chase",
+     "at": [
+      4.912659,
+      52.370295,
+      163
+     ]
+    },
+    {
+     "label": "Hoogte Kadijk 400, Amsterdam-Centrum",
+     "lat": 52.366934,
+     "lng": 4.9217885,
+     "view": "chase",
+     "at": [
+      4.920318,
+      52.366614,
+      70
+     ]
+    },
+    {
+     "label": "Hoogte Kadijk",
+     "lat": 52.368019,
+     "lng": 4.919091,
+     "view": "chase",
+     "at": [
+      4.919536,
+      52.367864,
+      300
+     ]
+    },
+    {
+     "label": "Kadijken from above",
+     "lat": 52.3679375,
+     "lng": 4.91974263846154,
+     "view": "aerial",
+     "at": [
+      4.919536,
+      52.367864,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "karlskrona-eiland",
+   "name": "Karlskrona-eiland",
+   "shots": [
+    {
+     "label": "Karlskrona-eiland centre",
+     "lat": 52.392052539999995,
+     "lng": 4.883749679999999,
+     "view": "chase",
+     "at": [
+      4.883241,
+      52.392218,
+      118
+     ]
+    },
+    {
+     "label": "Karlskrona-eiland from above",
+     "lat": 52.392052539999995,
+     "lng": 4.883749679999999,
+     "view": "aerial",
+     "at": [
+      4.883534,
+      52.392015,
+      74
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "kattenburg",
+   "name": "Kattenburg",
+   "shots": [
+    {
+     "label": "Kattenburgerstraat 206-266, Amsterdam (Kattenburg)",
+     "lat": 52.3731244,
+     "lng": 4.9199042,
+     "view": "chase",
+     "at": [
+      4.920642,
+      52.37401,
+      207
+     ]
+    },
+    {
+     "label": "Kattenburg from above",
+     "lat": 52.37260250499999,
+     "lng": 4.919540439999999,
+     "view": "aerial",
+     "at": [
+      4.919677,
+      52.372504,
+      320
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "kinkerbuurt",
+   "name": "Kinkerbuurt",
+   "shots": [
+    {
+     "label": "El Tawheed",
+     "lat": 52.36767359,
+     "lng": 4.86401798,
+     "view": "chase",
+     "at": [
+      4.864435,
+      52.367241,
+      330
+     ]
+    },
+    {
+     "label": "De Hallen / Foodhallen / Filmhallen",
+     "lat": 52.36705123990049,
+     "lng": 4.868094135610376,
+     "view": "chase",
+     "at": [
+      4.869263,
+      52.366374,
+      313
+     ]
+    },
+    {
+     "label": "De Waterdraagster met vissen (Bellamyplein)",
+     "lat": 52.3680209,
+     "lng": 4.8676653,
+     "view": "chase",
+     "at": [
+      4.86815,
+      52.368223,
+      236
+     ]
+    },
+    {
+     "label": "Kinkerbuurt from above",
+     "lat": 52.366771375000006,
+     "lng": 4.8642096375,
+     "view": "aerial",
+     "at": [
+      4.864598,
+      52.366726,
+      281
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "knsm-eiland",
+   "name": "KNSM-eiland",
+   "shots": [
+    {
+     "label": "Kraan 2868",
+     "lat": 52.3775853,
+     "lng": 4.9398329,
+     "view": "chase",
+     "at": [
+      4.940342,
+      52.377527,
+      281
+     ]
+    },
+    {
+     "label": "KNSM-eiland from above",
+     "lat": 52.3792857818182,
+     "lng": 4.949317581818182,
+     "view": "aerial",
+     "at": [
+      4.948091,
+      52.377704,
+      25
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "landlust",
+   "name": "Landlust",
+   "shots": [
+    {
+     "label": "Boomkerk",
+     "lat": 52.383285,
+     "lng": 4.850806,
+     "view": "chase",
+     "at": [
+      4.850848,
+      52.382677,
+      358
+     ]
+    },
+    {
+     "label": "Podium Mozaïek — former Pniëlkerk",
+     "lat": 52.38009189682617,
+     "lng": 4.854336717033327,
+     "view": "chase",
+     "at": [
+      4.853458,
+      52.380131,
+      94
+     ]
+    },
+    {
+     "label": "Beest Boulders Amsterdam",
+     "lat": 52.382092992601216,
+     "lng": 4.8590257886306105,
+     "view": "chase",
+     "at": [
+      4.857396,
+      52.382265,
+      100
+     ]
+    },
+    {
+     "label": "Landlust from above",
+     "lat": 52.37986,
+     "lng": 4.8540686,
+     "view": "aerial",
+     "at": [
+      4.854159,
+      52.379793,
+      321
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "libau-eiland",
+   "name": "Libau-eiland",
+   "shots": [
+    {
+     "label": "Libau-eiland centre",
+     "lat": 52.39239746,
+     "lng": 4.88315496,
+     "view": "chase",
+     "at": [
+      4.883432,
+      52.392081,
+      332
+     ]
+    },
+    {
+     "label": "Libau-eiland from above",
+     "lat": 52.39239746,
+     "lng": 4.88315496,
+     "view": "aerial",
+     "at": [
+      4.883112,
+      52.392313,
+      17
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "marineterrein",
+   "name": "Marineterrein",
+   "shots": [
+    {
+     "label": "Het Scheepvaartmuseum (’s Lands Zeemagazijn)",
+     "lat": 52.371706588591216,
+     "lng": 4.914807823873647,
+     "view": "chase",
+     "at": [
+      4.915338,
+      52.370953,
+      337
+     ]
+    },
+    {
+     "label": "Mediamatic Biotoop Dijkspark",
+     "lat": 52.376516,
+     "lng": 4.9131485,
+     "view": "chase",
+     "at": [
+      4.912265,
+      52.37657,
+      96
+     ]
+    },
+    {
+     "label": "Mariniersbrug",
+     "lat": 52.375364,
+     "lng": 4.921196,
+     "view": "chase",
+     "at": [
+      4.920711,
+      52.375556,
+      123
+     ]
+    },
+    {
+     "label": "Marineterrein from above",
+     "lat": 52.375192131818174,
+     "lng": 4.914401890909091,
+     "view": "aerial",
+     "at": [
+      4.914601,
+      52.375745,
+      192
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "memeleiland",
+   "name": "Memeleiland",
+   "shots": [
+    {
+     "label": "Memeleiland centre",
+     "lat": 52.39267722000001,
+     "lng": 4.8820537,
+     "view": "chase",
+     "at": [
+      4.882123,
+      52.393021,
+      187
+     ]
+    },
+    {
+     "label": "Memeleiland from above",
+     "lat": 52.39267722000001,
+     "lng": 4.8820537,
+     "view": "aerial",
+     "at": [
+      4.88231,
+      52.392883,
+      217
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "molenwijkpark",
+   "name": "Molenwijkpark",
+   "shots": [
+    {
+     "label": "Molenwijkpark centre",
+     "lat": 52.41895994666666,
+     "lng": 4.888746453333332,
+     "view": "chase",
+     "at": [
+      4.889189,
+      52.418718,
+      312
+     ]
+    },
+    {
+     "label": "Molenwijkpark from above",
+     "lat": 52.41895994666666,
+     "lng": 4.888746453333332,
+     "view": "aerial",
+     "at": [
+      4.889172,
+      52.418915,
+      280
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "museumkwartier",
+   "name": "Museumkwartier",
+   "shots": [
+    {
+     "label": "Royal Concertgebouw",
+     "lat": 52.35621988842513,
+     "lng": 4.879044208914783,
+     "view": "chase",
+     "at": [
+      4.878272,
+      52.355351,
+      28
+     ]
+    },
+    {
+     "label": "Rijksmuseum",
+     "lat": 52.35986465365779,
+     "lng": 4.885063574936609,
+     "view": "chase",
+     "at": [
+      4.885917,
+      52.360704,
+      212
+     ]
+    },
+    {
+     "label": "Moco Museum",
+     "lat": 52.35869759396733,
+     "lng": 4.881916866090669,
+     "view": "chase",
+     "at": [
+      4.882,
+      52.359057,
+      188
+     ]
+    },
+    {
+     "label": "Museumkwartier from above",
+     "lat": 52.35847859402983,
+     "lng": 4.875633929850745,
+     "view": "aerial",
+     "at": [
+      4.87523,
+      52.358436,
+      80
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "narva-eiland",
+   "name": "Narva-eiland",
+   "shots": [
+    {
+     "label": "Narva-eiland centre",
+     "lat": 52.39300806,
+     "lng": 4.881022079999999,
+     "view": "chase",
+     "at": [
+      4.881346,
+      52.393128,
+      239
+     ]
+    },
+    {
+     "label": "Narva-eiland from above",
+     "lat": 52.39300806,
+     "lng": 4.881022079999999,
+     "view": "aerial",
+     "at": [
+      4.881346,
+      52.393128,
+      239
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "nieuwe-pijp",
+   "name": "Nieuwe Pijp",
+   "shots": [
+    {
+     "label": "Afrikahuis",
+     "lat": 52.352932,
+     "lng": 4.897546,
+     "view": "chase",
+     "at": [
+      4.897227,
+      52.352267,
+      16
+     ]
+    },
+    {
+     "label": "Rialto",
+     "lat": 52.35291910893182,
+     "lng": 4.89396640278434,
+     "view": "chase",
+     "at": [
+      4.894366,
+      52.353164,
+      225
+     ]
+    },
+    {
+     "label": "Vredeskerk",
+     "lat": 52.349861886842106,
+     "lng": 4.889909207894737,
+     "view": "chase",
+     "at": [
+      4.890151,
+      52.350492,
+      193
+     ]
+    },
+    {
+     "label": "Nieuwe Pijp from above",
+     "lat": 52.3513423,
+     "lng": 4.8947229,
+     "view": "aerial",
+     "at": [
+      4.89474,
+      52.351329,
+      322
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "nieuwmarkt-lastage",
+   "name": "Nieuwmarkt/Lastage",
+   "shots": [
+    {
+     "label": "Montelbaanstoren",
+     "lat": 52.3720335,
+     "lng": 4.90566385,
+     "view": "chase",
+     "at": [
+      4.905137,
+      52.371985,
+      81
+     ]
+    },
+    {
+     "label": "Netherlands Film and Television Academy, The Netherlands",
+     "lat": 52.3686332376,
+     "lng": 4.9049302897,
+     "view": "chase",
+     "at": [
+      4.904442,
+      52.368436,
+      57
+     ]
+    },
+    {
+     "label": "Academie voor Theater en Dans",
+     "lat": 52.369651498023075,
+     "lng": 4.9020093656704535,
+     "view": "chase",
+     "at": [
+      4.901179,
+      52.370495,
+      149
+     ]
+    },
+    {
+     "label": "Nieuwmarkt/Lastage from above",
+     "lat": 52.372205378378396,
+     "lng": 4.904687778378377,
+     "view": "aerial",
+     "at": [
+      4.90481,
+      52.372171,
+      295
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "nieuwmarktbuurt",
+   "name": "Nieuwmarktbuurt",
+   "shots": [
+    {
+     "label": "Huis De Pinto",
+     "lat": 52.37012639422018,
+     "lng": 4.900947893723509,
+     "view": "chase",
+     "at": [
+      4.901524,
+      52.370034,
+      285
+     ]
+    },
+    {
+     "label": "De Waag (Sint-Antoniespoort)",
+     "lat": 52.37272768055487,
+     "lng": 4.900358014168725,
+     "view": "chase",
+     "at": [
+      4.900436,
+      52.373082,
+      188
+     ]
+    },
+    {
+     "label": "Keizersbrug",
+     "lat": 52.3711,
+     "lng": 4.904003,
+     "view": "chase",
+     "at": [
+      4.903971,
+      52.370739,
+      3
+     ]
+    },
+    {
+     "label": "Nieuwmarktbuurt from above",
+     "lat": 52.37182180714286,
+     "lng": 4.900956785714285,
+     "view": "aerial",
+     "at": [
+      4.901101,
+      52.371828,
+      266
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "oostelijk-havengebied",
+   "name": "Oostelijk Havengebied",
+   "shots": [
+    {
+     "label": "bimhuis in Amsterdam, The Netherlands",
+     "lat": 52.3778401141,
+     "lng": 4.9129932146,
+     "view": "chase",
+     "at": [
+      4.91284,
+      52.377468,
+      14
+     ]
+    },
+    {
+     "label": "International Institute of Social History",
+     "lat": 52.369089,
+     "lng": 4.939438,
+     "view": "chase",
+     "at": [
+      4.94081,
+      52.368745,
+      292
+     ]
+    },
+    {
+     "label": "IJ-toren",
+     "lat": 52.37778382202628,
+     "lng": 4.916074695114315,
+     "view": "chase",
+     "at": [
+      4.91461,
+      52.377338,
+      63
+     ]
+    },
+    {
+     "label": "Oostelijk Havengebied from above",
+     "lat": 52.37424019552237,
+     "lng": 4.935358956716416,
+     "view": "aerial",
+     "at": [
+      4.935342,
+      52.374282,
+      166
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "oostelijke-eilanden",
+   "name": "Oostelijke Eilanden",
+   "shots": [
+    {
+     "label": "Het Scheepvaartmuseum (’s Lands Zeemagazijn)",
+     "lat": 52.371706588591216,
+     "lng": 4.914807823873647,
+     "view": "chase",
+     "at": [
+      4.915338,
+      52.370953,
+      337
+     ]
+    },
+    {
+     "label": "Oosterkerk",
+     "lat": 52.36998339497242,
+     "lng": 4.919312469378976,
+     "view": "chase",
+     "at": [
+      4.919127,
+      52.369518,
+      14
+     ]
+    },
+    {
+     "label": "Van Gendt Hallen",
+     "lat": 52.37151989007194,
+     "lng": 4.925959578488882,
+     "view": "chase",
+     "at": [
+      4.925531,
+      52.370565,
+      15
+     ]
+    },
+    {
+     "label": "Oostelijke Eilanden from above",
+     "lat": 52.37252725306122,
+     "lng": 4.923186930612244,
+     "view": "aerial",
+     "at": [
+      4.923391,
+      52.372751,
+      209
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "oostenburg",
+   "name": "Oostenburg",
+   "shots": [
+    {
+     "label": "Van Gendt Hallen",
+     "lat": 52.37151989007194,
+     "lng": 4.925959578488882,
+     "view": "chase",
+     "at": [
+      4.925531,
+      52.370565,
+      15
+     ]
+    },
+    {
+     "label": "Jacob Bontiusplaats 9 offices",
+     "lat": 52.37164586408426,
+     "lng": 4.928503332362755,
+     "view": "chase",
+     "at": [
+      4.929886,
+      52.37219,
+      237
+     ]
+    },
+    {
+     "label": "Oostenburgermiddenstraat 228",
+     "lat": 52.372965079789616,
+     "lng": 4.929805285709696,
+     "view": "chase",
+     "at": [
+      4.929886,
+      52.37219,
+      356
+     ]
+    },
+    {
+     "label": "Oostenburg from above",
+     "lat": 52.37027095714285,
+     "lng": 4.925692914285716,
+     "view": "aerial",
+     "at": [
+      4.925975,
+      52.370304,
+      259
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "oosterdokseiland",
+   "name": "Oosterdokseiland",
+   "shots": [
+    {
+     "label": "NACO-house",
+     "lat": 52.3786995,
+     "lng": 4.905443,
+     "view": "chase",
+     "at": [
+      4.905382,
+      52.378342,
+      6
+     ]
+    },
+    {
+     "label": "OBA Oosterdok",
+     "lat": 52.37600837944057,
+     "lng": 4.908303881212726,
+     "view": "chase",
+     "at": [
+      4.907409,
+      52.376535,
+      134
+     ]
+    },
+    {
+     "label": "Sea Palace",
+     "lat": 52.37574985135794,
+     "lng": 4.906292382923983,
+     "view": "chase",
+     "at": [
+      4.906975,
+      52.375923,
+      247
+     ]
+    },
+    {
+     "label": "Oosterdokseiland from above",
+     "lat": 52.37731292307693,
+     "lng": 4.907862346153846,
+     "view": "aerial",
+     "at": [
+      4.90844,
+      52.377509,
+      241
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "oud-zuid",
+   "name": "Oud-Zuid",
+   "shots": [
+    {
+     "label": "Royal Concertgebouw",
+     "lat": 52.35621988842513,
+     "lng": 4.879044208914783,
+     "view": "chase",
+     "at": [
+      4.878272,
+      52.355351,
+      28
+     ]
+    },
+    {
+     "label": "Rijksmuseum",
+     "lat": 52.35986465365779,
+     "lng": 4.885063574936609,
+     "view": "chase",
+     "at": [
+      4.885917,
+      52.360704,
+      212
+     ]
+    },
+    {
+     "label": "Moco Museum",
+     "lat": 52.35869759396733,
+     "lng": 4.881916866090669,
+     "view": "chase",
+     "at": [
+      4.882,
+      52.359057,
+      188
+     ]
+    },
+    {
+     "label": "Oud-Zuid from above",
+     "lat": 52.350114349395476,
+     "lng": 4.863918122484495,
+     "view": "aerial",
+     "at": [
+      4.864505,
+      52.349949,
+      295
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "oude-pijp",
+   "name": "Oude Pijp",
+   "shots": [
+    {
+     "label": "Heineken Experience",
+     "lat": 52.35771184229546,
+     "lng": 4.891634499471685,
+     "view": "chase",
+     "at": [
+      4.891558,
+      52.356723,
+      3
+     ]
+    },
+    {
+     "label": "Gerard Dou Synagogue",
+     "lat": 52.357009615706716,
+     "lng": 4.897864665654482,
+     "view": "chase",
+     "at": [
+      4.897303,
+      52.356998,
+      88
+     ]
+    },
+    {
+     "label": "Sarphatimonument",
+     "lat": 52.3544625,
+     "lng": 4.8955726,
+     "view": "chase",
+     "at": [
+      4.895905,
+      52.354984,
+      201
+     ]
+    },
+    {
+     "label": "Oude Pijp from above",
+     "lat": 52.35669596399999,
+     "lng": 4.893845104,
+     "view": "aerial",
+     "at": [
+      4.893464,
+      52.356077,
+      21
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "overhoeks",
+   "name": "Overhoeks",
+   "shots": [
+    {
+     "label": "EYE Filmmuseum",
+     "lat": 52.384387,
+     "lng": 4.900944,
+     "view": "chase",
+     "at": [
+      4.902512,
+      52.384136,
+      285
+     ]
+    },
+    {
+     "label": "A’DAM Tower",
+     "lat": 52.383774274858496,
+     "lng": 4.902217394449075,
+     "view": "chase",
+     "at": [
+      4.901542,
+      52.38438,
+      146
+     ]
+    },
+    {
+     "label": "Shell Technology Centre Amsterdam",
+     "lat": 52.38844963907759,
+     "lng": 4.900552231845359,
+     "view": "chase",
+     "at": [
+      4.901166,
+      52.387536,
+      338
+     ]
+    },
+    {
+     "label": "Overhoeks from above",
+     "lat": 52.38754102500001,
+     "lng": 4.902979856250001,
+     "view": "aerial",
+     "at": [
+      4.902973,
+      52.387559,
+      167
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "overtoomse-sluis",
+   "name": "Overtoomse Sluis",
+   "shots": [
+    {
+     "label": "Kinderkookkafé",
+     "lat": 52.359184,
+     "lng": 4.864856,
+     "view": "chase",
+     "at": [
+      4.865407,
+      52.358996,
+      299
+     ]
+    },
+    {
+     "label": "Vincentiuskerk",
+     "lat": 52.3624737,
+     "lng": 4.8625048,
+     "view": "chase",
+     "at": [
+      4.862054,
+      52.36246,
+      87
+     ]
+    },
+    {
+     "label": "Overtoomse Sluis centre",
+     "lat": 52.358591559999994,
+     "lng": 4.8584639733333335,
+     "view": "chase",
+     "at": [
+      4.858867,
+      52.358512,
+      288
+     ]
+    },
+    {
+     "label": "Overtoomse Sluis from above",
+     "lat": 52.358591559999994,
+     "lng": 4.8584639733333335,
+     "view": "aerial",
+     "at": [
+      4.858763,
+      52.358659,
+      250
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "plantage",
+   "name": "Plantage",
+   "shots": [
+    {
+     "label": "ARTIS entrance gate and kiosks",
+     "lat": 52.36720632230263,
+     "lng": 4.912695619709629,
+     "view": "chase",
+     "at": [
+      4.912412,
+      52.367313,
+      122
+     ]
+    },
+    {
+     "label": "ARTIS Library — Fauna Building",
+     "lat": 52.36553813024979,
+     "lng": 4.9149289852780305,
+     "view": "chase",
+     "at": [
+      4.913543,
+      52.365918,
+      114
+     ]
+    },
+    {
+     "label": "Hollandsche Schouwburg",
+     "lat": 52.36635690328413,
+     "lng": 4.911038960823893,
+     "view": "chase",
+     "at": [
+      4.911697,
+      52.366345,
+      272
+     ]
+    },
+    {
+     "label": "Plantage from above",
+     "lat": 52.36544363809524,
+     "lng": 4.913219895238096,
+     "view": "aerial",
+     "at": [
+      4.912881,
+      52.365615,
+      130
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "prinses-irenebuurt-e-o",
+   "name": "Prinses Irenebuurt e.o.",
+   "shots": [
+    {
+     "label": "Thomaskerk",
+     "lat": 52.342078886753455,
+     "lng": 4.874864933961887,
+     "view": "chase",
+     "at": [
+      4.875293,
+      52.342746,
+      201
+     ]
+    },
+    {
+     "label": "Spinoza Lyceum, Peter van Anrooystraat 8, Amsterdam (built 1957)",
+     "lat": 52.3428814,
+     "lng": 4.8663062,
+     "view": "chase",
+     "at": [
+      4.867884,
+      52.343105,
+      257
+     ]
+    },
+    {
+     "label": "Johnny & Jonesbrug",
+     "lat": 52.343891,
+     "lng": 4.882933,
+     "view": "chase",
+     "at": [
+      4.883555,
+      52.34463,
+      207
+     ]
+    },
+    {
+     "label": "Prinses Irenebuurt e.o. from above",
+     "lat": 52.34405706521739,
+     "lng": 4.878715913043479,
+     "view": "aerial",
+     "at": [
+      4.877975,
+      52.344302,
+      118
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "rapenburg",
+   "name": "Rapenburg",
+   "shots": [
+    {
+     "label": "Arcam — Amsterdam Centre for Architecture",
+     "lat": 52.37145868333334,
+     "lng": 4.912601916666667,
+     "view": "chase",
+     "at": [
+      4.912744,
+      52.371119,
+      346
+     ]
+    },
+    {
+     "label": "NEMO Science Museum",
+     "lat": 52.3741956935447,
+     "lng": 4.912322028079611,
+     "view": "chase",
+     "at": [
+      4.912596,
+      52.373193,
+      351
+     ]
+    },
+    {
+     "label": "West Indian Warehouse",
+     "lat": 52.37221650948196,
+     "lng": 4.908084419995939,
+     "view": "chase",
+     "at": [
+      4.908794,
+      52.372244,
+      266
+     ]
+    },
+    {
+     "label": "Rapenburg from above",
+     "lat": 52.372141276470586,
+     "lng": 4.9104712882352946,
+     "view": "aerial",
+     "at": [
+      4.910548,
+      52.372199,
+      219
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "revaleiland",
+   "name": "Revaleiland",
+   "shots": [
+    {
+     "label": "Revaleiland 437, Amsterdam-Centrum (Java-eiland / Revaleiland)",
+     "lat": 52.3941326,
+     "lng": 4.8813726,
+     "view": "chase",
+     "at": [
+      4.881346,
+      52.393128,
+      1
+     ]
+    },
+    {
+     "label": "Revaleiland centre",
+     "lat": 52.39338113333333,
+     "lng": 4.879881,
+     "view": "chase",
+     "at": [
+      4.880125,
+      52.393083,
+      333
+     ]
+    },
+    {
+     "label": "Revaleiland from above",
+     "lat": 52.39338113333333,
+     "lng": 4.879881,
+     "view": "aerial",
+     "at": [
+      4.880125,
+      52.393083,
+      333
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "rijnbuurt",
+   "name": "Rijnbuurt",
+   "shots": [
+    {
+     "label": "Boterdiepstraat 66 to 36 (16 houses)",
+     "lat": 52.34171705931869,
+     "lng": 4.9097755988755925,
+     "view": "chase",
+     "at": [
+      4.909879,
+      52.34073,
+      356
+     ]
+    },
+    {
+     "label": "Eemsstraat 36 to 6 (16 houses)",
+     "lat": 52.342449728264135,
+     "lng": 4.908583406865096,
+     "view": "chase",
+     "at": [
+      4.909534,
+      52.343186,
+      218
+     ]
+    },
+    {
+     "label": "Hoendiepstraat 5 to 9 (3 houses)",
+     "lat": 52.342625508343474,
+     "lng": 4.910637983434217,
+     "view": "chase",
+     "at": [
+      4.910331,
+      52.342979,
+      152
+     ]
+    },
+    {
+     "label": "Rijnbuurt from above",
+     "lat": 52.342885071428604,
+     "lng": 4.9073308142857135,
+     "view": "aerial",
+     "at": [
+      4.90751,
+      52.342936,
+      245
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "rivierenbuurt",
+   "name": "Rivierenbuurt",
+   "shots": [
+    {
+     "label": "Lekstraatsynagoge",
+     "lat": 52.34412940118549,
+     "lng": 4.902905407824482,
+     "view": "chase",
+     "at": [
+      4.902915,
+      52.343639,
+      359
+     ]
+    },
+    {
+     "label": "Maarten Lutherkerk",
+     "lat": 52.34139312338786,
+     "lng": 4.895008844531905,
+     "view": "chase",
+     "at": [
+      4.895189,
+      52.341762,
+      197
+     ]
+    },
+    {
+     "label": "LJG Synagogue",
+     "lat": 52.33788412459366,
+     "lng": 4.897877253887066,
+     "view": "chase",
+     "at": [
+      4.896966,
+      52.338261,
+      124
+     ]
+    },
+    {
+     "label": "Rivierenbuurt from above",
+     "lat": 52.34262898886125,
+     "lng": 4.901464265056111,
+     "view": "aerial",
+     "at": [
+      4.901139,
+      52.342703,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "scheldebuurt",
+   "name": "Scheldebuurt",
+   "shots": [
+    {
+     "label": "Lekstraatsynagoge",
+     "lat": 52.34412940118549,
+     "lng": 4.902905407824482,
+     "view": "chase",
+     "at": [
+      4.902915,
+      52.343639,
+      359
+     ]
+    },
+    {
+     "label": "Maarten Lutherkerk",
+     "lat": 52.34139312338786,
+     "lng": 4.895008844531905,
+     "view": "chase",
+     "at": [
+      4.895189,
+      52.341762,
+      197
+     ]
+    },
+    {
+     "label": "LJG Synagogue",
+     "lat": 52.33788412459366,
+     "lng": 4.897877253887066,
+     "view": "chase",
+     "at": [
+      4.896966,
+      52.338261,
+      124
+     ]
+    },
+    {
+     "label": "Scheldebuurt from above",
+     "lat": 52.3411958,
+     "lng": 4.8974688,
+     "view": "aerial",
+     "at": [
+      4.897505,
+      52.341142,
+      338
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "schinkelbuurt",
+   "name": "Schinkelbuurt",
+   "shots": [
+    {
+     "label": "Haarlemmermeerstation",
+     "lat": 52.3493589147138,
+     "lng": 4.856727367238149,
+     "view": "chase",
+     "at": [
+      4.85742,
+      52.349385,
+      266
+     ]
+    },
+    {
+     "label": "OCCII / former horse-tram coach house",
+     "lat": 52.35427766374001,
+     "lng": 4.854958401332961,
+     "view": "chase",
+     "at": [
+      4.855644,
+      52.35491,
+      214
+     ]
+    },
+    {
+     "label": "Zeilbrug",
+     "lat": 52.3509,
+     "lng": 4.852443,
+     "view": "chase",
+     "at": [
+      4.85187,
+      52.350969,
+      101
+     ]
+    },
+    {
+     "label": "Schinkelbuurt from above",
+     "lat": 52.34807666086956,
+     "lng": 4.852874573913042,
+     "view": "aerial",
+     "at": [
+      4.854038,
+      52.347542,
+      307
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "slotervaart",
+   "name": "Slotervaart",
+   "shots": [
+    {
+     "label": "Hans Kressebrug",
+     "lat": 52.352475,
+     "lng": 4.820332,
+     "view": "chase",
+     "at": [
+      4.820921,
+      52.352608,
+      250
+     ]
+    },
+    {
+     "label": "Slotervaart centre",
+     "lat": 52.362010368750006,
+     "lng": 4.825489037500001,
+     "view": "chase",
+     "at": [
+      4.82491,
+      52.362096,
+      104
+     ]
+    },
+    {
+     "label": "Slotervaart from above",
+     "lat": 52.362010368750006,
+     "lng": 4.825489037500001,
+     "view": "aerial",
+     "at": [
+      4.825317,
+      52.361874,
+      38
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "sluisbuurt",
+   "name": "Sluisbuurt",
+   "shots": [
+    {
+     "label": "Sluisbuurt centre",
+     "lat": 52.37639811176471,
+     "lng": 4.960165117647058,
+     "view": "chase",
+     "at": [
+      4.960473,
+      52.376689,
+      213
+     ]
+    },
+    {
+     "label": "Sluisbuurt from above",
+     "lat": 52.37639811176471,
+     "lng": 4.960165117647058,
+     "view": "aerial",
+     "at": [
+      4.959979,
+      52.376649,
+      156
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "spaarndammerbuurt",
+   "name": "Spaarndammerbuurt",
+   "shots": [
+    {
+     "label": "Museum Het Schip",
+     "lat": 52.3902157496525,
+     "lng": 4.8734670680245165,
+     "view": "chase",
+     "at": [
+      4.872525,
+      52.39105,
+      145
+     ]
+    },
+    {
+     "label": "Polanenstraat 229 to 309 (11 houses)",
+     "lat": 52.39104476122094,
+     "lng": 4.876124533513427,
+     "view": "chase",
+     "at": [
+      4.876551,
+      52.391785,
+      199
+     ]
+    },
+    {
+     "label": "Zaanhof 1 to 19 (10 houses)",
+     "lat": 52.39171846240676,
+     "lng": 4.872272430776158,
+     "view": "chase",
+     "at": [
+      4.871972,
+      52.39239,
+      165
+     ]
+    },
+    {
+     "label": "Spaarndammerbuurt from above",
+     "lat": 52.39056334615385,
+     "lng": 4.877314238461539,
+     "view": "aerial",
+     "at": [
+      4.877594,
+      52.390489,
+      294
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "sporenburg",
+   "name": "Sporenburg",
+   "shots": [
+    {
+     "label": "Sporenburg centre",
+     "lat": 52.37396662857144,
+     "lng": 4.943669442857143,
+     "view": "chase",
+     "at": [
+      4.94384,
+      52.373689,
+      339
+     ]
+    },
+    {
+     "label": "Sporenburg from above",
+     "lat": 52.37396662857144,
+     "lng": 4.943669442857143,
+     "view": "aerial",
+     "at": [
+      4.943742,
+      52.374033,
+      214
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "sportheldenbuurt",
+   "name": "Sportheldenbuurt",
+   "shots": [
+    {
+     "label": "Politiebureau Oost Zeeburg, Atje Keulen-Deelstrastraat 2, Amsterdam (IJburg/Zeeburgereiland)",
+     "lat": 52.3690872,
+     "lng": 4.9715896,
+     "view": "chase",
+     "at": [
+      4.971351,
+      52.368552,
+      15
+     ]
+    },
+    {
+     "label": "Sportheldenbuurt centre",
+     "lat": 52.37289103529412,
+     "lng": 4.966345158823528,
+     "view": "chase",
+     "at": [
+      4.966437,
+      52.372241,
+      355
+     ]
+    },
+    {
+     "label": "Sportheldenbuurt from above",
+     "lat": 52.37289103529412,
+     "lng": 4.966345158823528,
+     "view": "aerial",
+     "at": [
+      4.966437,
+      52.372241,
+      355
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "staatsliedenbuurt",
+   "name": "Staatsliedenbuurt",
+   "shots": [
+    {
+     "label": "Filmhuis Cavia / former twin-school complex",
+     "lat": 52.38200245851402,
+     "lng": 4.87016028922798,
+     "view": "chase",
+     "at": [
+      4.870518,
+      52.382497,
+      204
+     ]
+    },
+    {
+     "label": "Nassaukerk",
+     "lat": 52.382675953008125,
+     "lng": 4.8771351038872215,
+     "view": "chase",
+     "at": [
+      4.877168,
+      52.383243,
+      182
+     ]
+    },
+    {
+     "label": "Van Beuningenstraat 48, Amsterdam-West (Staatsliedenbuurt)",
+     "lat": 52.3838067,
+     "lng": 4.8771257,
+     "view": "chase",
+     "at": [
+      4.876526,
+      52.384737,
+      159
+     ]
+    },
+    {
+     "label": "Staatsliedenbuurt from above",
+     "lat": 52.381816757142865,
+     "lng": 4.874104121428572,
+     "view": "aerial",
+     "at": [
+      4.874148,
+      52.38158,
+      354
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "stadionbuurt",
+   "name": "Stadionbuurt",
+   "shots": [
+    {
+     "label": "Willem de Zwijgerkerk",
+     "lat": 52.34957556270561,
+     "lng": 4.862945631219777,
+     "view": "chase",
+     "at": [
+      4.862175,
+      52.349595,
+      92
+     ]
+    },
+    {
+     "label": "Beta Boulders",
+     "lat": 52.344404391103,
+     "lng": 4.85597144276366,
+     "view": "chase",
+     "at": [
+      4.854488,
+      52.344635,
+      104
+     ]
+    },
+    {
+     "label": "OBA Olympisch Kwartier, Laan der Hesperiden 18, Amsterdam (2005; library in the ground floor of a brick housing block, one pand)",
+     "lat": 52.3455746,
+     "lng": 4.8553631,
+     "view": "chase",
+     "at": [
+      4.856653,
+      52.344969,
+      308
+     ]
+    },
+    {
+     "label": "Stadionbuurt from above",
+     "lat": 52.34415427368423,
+     "lng": 4.85689654736842,
+     "view": "aerial",
+     "at": [
+      4.856987,
+      52.344159,
+      265
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "stettineiland",
+   "name": "Stettineiland",
+   "shots": [
+    {
+     "label": "Stettineiland centre",
+     "lat": 52.394274440000004,
+     "lng": 4.879696539999999,
+     "view": "chase",
+     "at": [
+      4.880271,
+      52.394349,
+      258
+     ]
+    },
+    {
+     "label": "Stettineiland from above",
+     "lat": 52.394274440000004,
+     "lng": 4.879696539999999,
+     "view": "aerial",
+     "at": [
+      4.879799,
+      52.394279,
+      266
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "tuindorp-nieuwendam",
+   "name": "Tuindorp Nieuwendam",
+   "shots": [
+    {
+     "label": "Nieuwendammerkerk",
+     "lat": 52.391768552805786,
+     "lng": 4.940649007575467,
+     "view": "chase",
+     "at": [
+      4.941085,
+      52.39203,
+      226
+     ]
+    },
+    {
+     "label": "Tuindorp Nieuwendam centre",
+     "lat": 52.39055069444444,
+     "lng": 4.943341627777778,
+     "view": "chase",
+     "at": [
+      4.943936,
+      52.390599,
+      262
+     ]
+    },
+    {
+     "label": "Tuindorp Nieuwendam from above",
+     "lat": 52.39055069444444,
+     "lng": 4.943341627777778,
+     "view": "aerial",
+     "at": [
+      4.943358,
+      52.390519,
+      343
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "uilenburg",
+   "name": "Uilenburg",
+   "shots": [
+    {
+     "label": "Academie voor Theater en Dans",
+     "lat": 52.369651498023075,
+     "lng": 4.9020093656704535,
+     "view": "chase",
+     "at": [
+      4.901179,
+      52.370495,
+      149
+     ]
+    },
+    {
+     "label": "Uilenburger Synagoge",
+     "lat": 52.370175529685945,
+     "lng": 4.905340304026372,
+     "view": "chase",
+     "at": [
+      4.904931,
+      52.36989,
+      41
+     ]
+    },
+    {
+     "label": "Jodenbreestraat 11 block",
+     "lat": 52.368944543683675,
+     "lng": 4.9037612811248446,
+     "view": "chase",
+     "at": [
+      4.904432,
+      52.368046,
+      335
+     ]
+    },
+    {
+     "label": "Uilenburg from above",
+     "lat": 52.37030463000001,
+     "lng": 4.90564086,
+     "view": "aerial",
+     "at": [
+      4.904937,
+      52.370467,
+      111
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "valkenburg",
+   "name": "Valkenburg",
+   "shots": [
+    {
+     "label": "Netherlands Film and Television Academy, The Netherlands",
+     "lat": 52.3686332376,
+     "lng": 4.9049302897,
+     "view": "chase",
+     "at": [
+      4.904442,
+      52.368436,
+      57
+     ]
+    },
+    {
+     "label": "Brandweerkazerne Nico",
+     "lat": 52.37005792,
+     "lng": 4.90927401,
+     "view": "chase",
+     "at": [
+      4.910901,
+      52.370072,
+      269
+     ]
+    },
+    {
+     "label": "Valkenburg from above",
+     "lat": 52.36956539999999,
+     "lng": 4.9084712,
+     "view": "aerial",
+     "at": [
+      4.908726,
+      52.36986,
+      208
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "van-galenbuurt",
+   "name": "Van Galenbuurt",
+   "shots": [
+    {
+     "label": "Jeruzalemkerk",
+     "lat": 52.371445,
+     "lng": 4.85196,
+     "view": "chase",
+     "at": [
+      4.851755,
+      52.370968,
+      15
+     ]
+    },
+    {
+     "label": "Mercatorplein north tower",
+     "lat": 52.3704295,
+     "lng": 4.850677,
+     "view": "chase",
+     "at": [
+      4.849673,
+      52.369836,
+      46
+     ]
+    },
+    {
+     "label": "Jan Evertsenstraat 92 to 68 (10 houses)",
+     "lat": 52.37090152804025,
+     "lng": 4.854476114157363,
+     "view": "chase",
+     "at": [
+      4.853558,
+      52.370016,
+      32
+     ]
+    },
+    {
+     "label": "Van Galenbuurt from above",
+     "lat": 52.3724519125,
+     "lng": 4.8509519375,
+     "view": "aerial",
+     "at": [
+      4.850999,
+      52.372568,
+      194
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "van-lennepbuurt",
+   "name": "Van Lennepbuurt",
+   "shots": [
+    {
+     "label": "Bilderdijkstraat 199 to 203 (corner) (4 houses)",
+     "lat": 52.36640154307707,
+     "lng": 4.87298491094448,
+     "view": "chase",
+     "at": [
+      4.873069,
+      52.366042,
+      352
+     ]
+    },
+    {
+     "label": "Kinkerstraat 89-105, Amsterdam-West (Oud-West)",
+     "lat": 52.3662994,
+     "lng": 4.8701755,
+     "view": "chase",
+     "at": [
+      4.871194,
+      52.366982,
+      222
+     ]
+    },
+    {
+     "label": "Hennetjesbrug",
+     "lat": 52.363887,
+     "lng": 4.866635,
+     "view": "chase",
+     "at": [
+      4.86683,
+      52.363624,
+      336
+     ]
+    },
+    {
+     "label": "Van Lennepbuurt from above",
+     "lat": 52.36525867333332,
+     "lng": 4.867804053333334,
+     "view": "aerial",
+     "at": [
+      4.867765,
+      52.365419,
+      172
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "vivaldi",
+   "name": "Vivaldi",
+   "shots": [
+    {
+     "label": "Valley",
+     "lat": 52.337557127430884,
+     "lng": 4.877550164997548,
+     "view": "chase",
+     "at": [
+      4.877658,
+      52.33657,
+      356
+     ]
+    },
+    {
+     "label": "AFC",
+     "lat": 52.3370879,
+     "lng": 4.8821311,
+     "view": "chase",
+     "at": [
+      4.882567,
+      52.336699,
+      326
+     ]
+    },
+    {
+     "label": "Vivaldi from above",
+     "lat": 52.336587040000005,
+     "lng": 4.882492430000001,
+     "view": "aerial",
+     "at": [
+      4.882567,
+      52.336699,
+      202
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "vondelparkbuurt",
+   "name": "Vondelparkbuurt",
+   "shots": [
+    {
+     "label": "OT301 / former Film Academy",
+     "lat": 52.360078554569874,
+     "lng": 4.865769599943963,
+     "view": "chase",
+     "at": [
+      4.865498,
+      52.360395,
+      152
+     ]
+    },
+    {
+     "label": "Orgelpark / Parkkerk",
+     "lat": 52.35985026617333,
+     "lng": 4.868256447423842,
+     "view": "chase",
+     "at": [
+      4.86856,
+      52.359808,
+      283
+     ]
+    },
+    {
+     "label": "IDFA Het Documentaire Paviljoen",
+     "lat": 52.36108,
+     "lng": 4.875,
+     "view": "chase",
+     "at": [
+      4.875799,
+      52.360904,
+      290
+     ]
+    },
+    {
+     "label": "Vondelparkbuurt from above",
+     "lat": 52.3607492,
+     "lng": 4.8732852,
+     "view": "aerial",
+     "at": [
+      4.873425,
+      52.360632,
+      324
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "vu-kwartier",
+   "name": "VU-kwartier",
+   "shots": [
+    {
+     "label": "Amstel Academie",
+     "lat": 52.3345565,
+     "lng": 4.8648677,
+     "view": "chase",
+     "at": [
+      4.865194,
+      52.33426,
+      326
+     ]
+    },
+    {
+     "label": "Vrije Universiteit Amsterdam",
+     "lat": 52.336733,
+     "lng": 4.861165,
+     "view": "chase",
+     "at": [
+      4.861689,
+      52.336562,
+      298
+     ]
+    },
+    {
+     "label": "VU-kwartier centre",
+     "lat": 52.33528603124999,
+     "lng": 4.86133356875,
+     "view": "chase",
+     "at": [
+      4.860876,
+      52.335058,
+      51
+     ]
+    },
+    {
+     "label": "VU-kwartier from above",
+     "lat": 52.33528603124999,
+     "lng": 4.86133356875,
+     "view": "aerial",
+     "at": [
+      4.861462,
+      52.33526,
+      288
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "weesperbuurt",
+   "name": "Weesperbuurt",
+   "shots": [
+    {
+     "label": "H'ART Museum — Amstelhof",
+     "lat": 52.36539923653881,
+     "lng": 4.902899923436612,
+     "view": "chase",
+     "at": [
+      4.902701,
+      52.364402,
+      7
+     ]
+    },
+    {
+     "label": "Royal Theater Carré",
+     "lat": 52.3624545,
+     "lng": 4.90426525,
+     "view": "chase",
+     "at": [
+      4.904839,
+      52.361808,
+      332
+     ]
+    },
+    {
+     "label": "Kriterion",
+     "lat": 52.36263900277887,
+     "lng": 4.910484137908315,
+     "view": "chase",
+     "at": [
+      4.910641,
+      52.363156,
+      190
+     ]
+    },
+    {
+     "label": "Weesperbuurt from above",
+     "lat": 52.36268128571429,
+     "lng": 4.909905565714285,
+     "view": "aerial",
+     "at": [
+      4.910724,
+      52.362921,
+      244
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "westindische-buurt",
+   "name": "Westindische Buurt",
+   "shots": [
+    {
+     "label": "Westindische Buurt centre",
+     "lat": 52.36120158947368,
+     "lng": 4.853867668421053,
+     "view": "chase",
+     "at": [
+      4.85439,
+      52.360969,
+      306
+     ]
+    },
+    {
+     "label": "Westindische Buurt from above",
+     "lat": 52.36120158947368,
+     "lng": 4.853867668421053,
+     "view": "aerial",
+     "at": [
+      4.854383,
+      52.361251,
+      261
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "wiborgeiland",
+   "name": "Wiborgeiland",
+   "shots": [
+    {
+     "label": "Wiborgeiland centre",
+     "lat": 52.39419762,
+     "lng": 4.87827398,
+     "view": "chase",
+     "at": [
+      4.877847,
+      52.394544,
+      143
+     ]
+    },
+    {
+     "label": "Wiborgeiland from above",
+     "lat": 52.39419762,
+     "lng": 4.87827398,
+     "view": "aerial",
+     "at": [
+      4.877847,
+      52.394544,
+      143
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "willemspark",
+   "name": "Willemspark",
+   "shots": [
+    {
+     "label": "Sint-Agneskerk",
+     "lat": 52.35028,
+     "lng": 4.8581,
+     "view": "chase",
+     "at": [
+      4.856924,
+      52.350338,
+      95
+     ]
+    },
+    {
+     "label": "Koningin Emma",
+     "lat": 52.3541027,
+     "lng": 4.8628697,
+     "view": "chase",
+     "at": [
+      4.863445,
+      52.354065,
+      276
+     ]
+    },
+    {
+     "label": "Willemspark from above",
+     "lat": 52.35392678846154,
+     "lng": 4.8615383730769235,
+     "view": "aerial",
+     "at": [
+      4.860811,
+      52.354243,
+      125
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "wittenburg",
+   "name": "Wittenburg",
+   "shots": [
+    {
+     "label": "Oosterkerk",
+     "lat": 52.36998339497242,
+     "lng": 4.919312469378976,
+     "view": "chase",
+     "at": [
+      4.919127,
+      52.369518,
+      14
+     ]
+    },
+    {
+     "label": "Ezelsbrug",
+     "lat": 52.370356,
+     "lng": 4.922243,
+     "view": "chase",
+     "at": [
+      4.922712,
+      52.370073,
+      315
+     ]
+    },
+    {
+     "label": "Zebrabrug",
+     "lat": 52.373639,
+     "lng": 4.923357,
+     "view": "chase",
+     "at": [
+      4.922907,
+      52.373885,
+      132
+     ]
+    },
+    {
+     "label": "Wittenburg from above",
+     "lat": 52.371178431578954,
+     "lng": 4.920979278947368,
+     "view": "aerial",
+     "at": [
+      4.920937,
+      52.371156,
+      49
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "zuidas",
+   "name": "Zuidas",
+   "shots": [
+    {
+     "label": "RAI Amsterdam",
+     "lat": 52.341315,
+     "lng": 4.88998,
+     "view": "chase",
+     "at": [
+      4.888468,
+      52.341683,
+      112
+     ]
+    },
+    {
+     "label": "Symphony",
+     "lat": 52.33571188018314,
+     "lng": 4.873177378136285,
+     "view": "chase",
+     "at": [
+      4.873918,
+      52.336593,
+      207
+     ]
+    },
+    {
+     "label": "The Rock",
+     "lat": 52.33761,
+     "lng": 4.87011,
+     "view": "chase",
+     "at": [
+      4.869147,
+      52.337869,
+      114
+     ]
+    },
+    {
+     "label": "Zuidas from above",
+     "lat": 52.338426619512184,
+     "lng": 4.874318502439026,
+     "view": "aerial",
+     "at": [
+      4.873565,
+      52.33842,
+      89
+     ]
+    }
+   ]
+  }
+ ]
+}
