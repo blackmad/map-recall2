@@ -24476,10 +24476,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012164938",
       "name": "Kattenburg (Marineterrein), Amsterdam: 1782 brick wings on Kattenburgerstraat and the canal",
-      "hash": "8ad965f55628d565809ec917c90fa58d25fce228c6d12d1d9588084e811d94b1",
-      "sha256": "8ad965f55628d565809ec917c90fa58d25fce228c6d12d1d9588084e811d94b1",
-      "bytes": 751192,
-      "triangles": 10161,
+      "hash": "f8fe5a5799befafecb75b4b226cc98356f093ebbff5a0231e5a5427ff449ead1",
+      "sha256": "f8fe5a5799befafecb75b4b226cc98356f093ebbff5a0231e5a5427ff449ead1",
+      "bytes": 810356,
+      "triangles": 10841,
       "materials": 10,
       "textures": 0,
       "scale": 1,
@@ -24759,17 +24759,18 @@
           "storey-height/walls[1]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 4st 14b",
-          "brick-bay-grid 4st 14b"
+          "brick-bay-grid 4st 16b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] likeness WARN (mask IoU 0.093 < 0.45).",
-        "walls[1] not confirmed by the photo (NO EVIDENCE (washed out 32 % > 30 %)); inferred: crop washed out by low sun (32 %), the yellow brick and the 14-bay sash rhythm read the same on the sheet",
+        "walls[0] likeness WARN (mask IoU 0.118 < 0.45).",
+        "walls[1] not confirmed by the photo (NO EVIDENCE (washed out 32 % > 30 %)); inferred: the 2021 crop is 32 pct washed out by low sun on the yellow brick, columns 16, tall windows and glazing 0.23 vs 0.24 match, wall tone kept at the sunlit buff below the blown highlight",
         "Not modelled: the barred round-headed ground-floor openings in the boundary wall, the roof dormers, the downpipes, the blind 15th axis at the north wing's right end. Western and eastern gable ends, the rooftop volumes at 19.7 m (panels 49/164/75/64/51) and the courtyard walls have no panorama and are left blank. Name of the institution not established from the sources used.",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4e585c not used (not darker than the wall #645f5f by 10 L*, or tinted): kit glass kept."
       ],
@@ -24778,19 +24779,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164938",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T13:10:18.410Z",
+      "updatedAt": "2026-10-25T05:49:20.878Z",
       "bagYear": 1782,
-      "meshHash": "ff8bb5660ef2aa64"
+      "meshHash": "95f4a8418ecf8f9c"
     },
     {
       "id": "ordinary-0363100012130580",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012130580",
       "name": "Heinekenplein block, Amsterdam (De Pijp): 1995 brick block with a 32 m tower at its north end",
-      "hash": "9ae7c6119181d07afdad8f578ac7c9608df329890c00f68dc5c4f57e5adaec0a",
-      "sha256": "9ae7c6119181d07afdad8f578ac7c9608df329890c00f68dc5c4f57e5adaec0a",
-      "bytes": 564596,
-      "triangles": 7612,
+      "hash": "3c75a663e0e7d24cfdcce80418b26d6281a0d909ac885dd7bf59e268e6a5eedf",
+      "sha256": "3c75a663e0e7d24cfdcce80418b26d6281a0d909ac885dd7bf59e268e6a5eedf",
+      "bytes": 600148,
+      "triangles": 8107,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -24803,7 +24804,7 @@
         "max": [
           14.099,
           35.166,
-          74.721
+          74.732
         ]
       },
       "anchor": [
@@ -24969,7 +24970,8 @@
           "storey-height/walls[2]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 4st 26b",
@@ -24979,23 +24981,25 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.22; glazing storey band off by 0.26 mean 0.32 vs photo 0.17)); inferred: photo wall #4b413d is the median of a front cut diagonally by hard building shadow (the sunlit brick is orange, #b86240 kept), and the top-storey glazing of 12 pct is read off a row half washed out by sky glare",
+        "walls[1] not confirmed by the photo (NO PHOTO); inferred: south end, no archived crop matches the panel (w05-186 is a 54 deg close-up of the car-park entrance under orange brick), window rows from the 2018 thumbnail only",
+        "walls[2] not confirmed by the photo (NO PHOTO); inferred: south end tall part, no archived crop matches the panel, window rows from the 2018 w05-186 thumbnail only",
         "East front (surfaces 1, 80, 102, 21; panels 0, 68, 20 of walls.ts), from the 2020-07-07 and 2022-01-11 panoramas (w01-96 and w02-96, rectified; CC BY 4.0): four storeys of orange-brown brick; the upper floors carry two rows of small low windows at about 1.5 m spacing (26 axes on the 41.6 m panel, `windows: low`) under a top row of paired horizontal ribbons, which the kit draws as the same low windows (no per-storey window style). The ground floor is a brick base with a drive-through gateway (left and centre) and a four-pane shop window at the right; the recipe draws small windows on the whole ground row instead of that mix. The curved plan is straight in 3DBAG (known gap). The gateway, the beer-brand lettering and the shop fascia are not modelled.",
         "South end (surfaces 7, 121, 122, 126 and the taller 58) from the 2018-07-29 thumbnail only (w05-186: brick with three window rows over a car-park entrance); the car-park opening is not modelled. The 32 m tower at the north end, the west back walls and the roof terrace have no photograph in the cache and stay blank. The 2024-11-21 panorama (w04-6) shows the stone-clad north face of a different rounded block and is not used."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012130580",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:08:07.307Z",
+      "updatedAt": "2026-10-25T05:48:46.368Z",
       "aliases": [
         "NL.IMBAG.Pand.0363100012080460",
         "NL.IMBAG.Pand.0363100012139518",
         "NL.IMBAG.Pand.0363100012232488"
       ],
       "bagYear": 1995,
-      "meshHash": "6f47946eb282820d"
+      "meshHash": "52bfe4f14989f772"
     },
     {
       "id": "ordinary-0363100012169471",
@@ -30486,10 +30490,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012253754",
       "name": "Nieuwe Achtergracht 127 (BAG), Amsterdam: UvA Roeterseiland, 1932 brick wing on the Nieuwe Achtergracht / Nieuwe Prinsengracht",
-      "hash": "8279f070e898567f75389f1b2a044e4ef2320d8b274b3a1be6e0928abdf0a172",
-      "sha256": "8279f070e898567f75389f1b2a044e4ef2320d8b274b3a1be6e0928abdf0a172",
-      "bytes": 648600,
-      "triangles": 8640,
+      "hash": "d10067c85c277f10d4d05e694a5a4956c61e89b5775278061c2f810096d1377e",
+      "sha256": "d10067c85c277f10d4d05e694a5a4956c61e89b5775278061c2f810096d1377e",
+      "bytes": 746072,
+      "triangles": 10016,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -30898,19 +30902,19 @@
           "storey-height/walls[2]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 4st 13b",
-          "brick-bay-grid 4st 12b",
+          "brick-bay-grid 4st 13b",
           "brick-bay-grid 4st 10b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.16; window shape tall vs photo square)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.16, window shape tall vs photo square) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.20)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.20) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[2] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches this panel, kept as fitted, not confirmed by a photo",
+        "walls[0] likeness WARN (mask IoU 0.321 < 0.45).",
+        "walls[2] not confirmed by the photo (NO PHOTO); inferred: north end panel 148 has no matching crop (w04-343 and w07-343 at this bearing show the glass Amsterdam Law School block in front), drawn as the brick wing with plain windows continuing walls[0]",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #493e34 not used (not darker than the wall #5e4e41 by 10 L*, or tinted): kit glass kept; walls[1] glass #62605b not used (not darker than the wall #6e605a by 10 L*, or tinted): kit glass kept."
       ],
       "reviewState": "large-recipe-likeness-inferred",
@@ -30918,8 +30922,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253754",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T13:49:18.015Z",
-      "meshHash": "e81a5cc5a1959d1b"
+      "updatedAt": "2026-10-25T05:50:38.832Z",
+      "meshHash": "a4bc8203ba085fe8"
     },
     {
       "id": "ordinary-0363100012202176",
@@ -34314,11 +34318,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236788",
       "name": "'s-Gravesandestraat 55 (Hotel Arena), Amsterdam-Oost: 1890 former orphanage (Roman Catholic Burgerweeshuis) with 2000s hotel wings, red brick with a glazed pavilion",
-      "hash": "4e90434e75d3c718485ccda93cf4042e4f8b412bfafb093ae62e81eaabb5e609",
-      "sha256": "4e90434e75d3c718485ccda93cf4042e4f8b412bfafb093ae62e81eaabb5e609",
-      "bytes": 676672,
-      "triangles": 8062,
-      "materials": 14,
+      "hash": "d225d88dca4a88c57271eff7bb4523adb99a3b052488f8ad27144af9c7bfb875",
+      "sha256": "d225d88dca4a88c57271eff7bb4523adb99a3b052488f8ad27144af9c7bfb875",
+      "bytes": 781308,
+      "triangles": 9364,
+      "materials": 15,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -34328,7 +34332,7 @@
           -47.068
         ],
         "max": [
-          46.647,
+          46.677,
           27.299,
           56.238
         ]
@@ -35087,21 +35091,30 @@
           "storey-height/walls[1]:pass",
           "eaves-vs-3dbag/walls[2]:pass",
           "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid 3st 7b",
-          "brick-bay-grid 4st 6b",
-          "curtain-wall 3st 7b"
+          "brick-bay-grid 2st 7b",
+          "brick-bay-grid 5st 6b",
+          "brick-bay-grid 2st 7b",
+          "curtain-wall 3st 7b",
+          "curtain-wall 1st 7b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] likeness WARN (columns 7 vs photo 13; mask IoU 0.26 < 0.45).",
-        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.30)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.30) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[2] not confirmed by the photo (FAIL (wall dL +0.31; glazing storey band off by 0.25; columns 6 vs photo 10)); inferred: the crop is in deep shade, yellow brick kept from walls[1]",
+        "walls[0] likeness WARN (mask IoU 0.291 < 0.45).",
+        "walls[1] not confirmed by the photo (FAIL (wall dL +0.41; glazing storey band off by 0.54 mean 0.61 vs photo 0.28; storey 1: widest opening 15.1 m vs photo 1.0 m (a ribbon against windows); wall family unresolved (#382e27 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 6 vs photo 4)); inferred: photo wall #382e27 is the shadowed HOTEL ARENA gate wall in front of the lower two storeys, the wing is sunlit buff brick (#de9a5e) with punched windows under a two-storey glass attic",
+        "walls[2] not confirmed by the photo (FAIL (wall dL +0.40; glazing  mean 0.52 vs photo 0.26; wall family unresolved (#3b2f29 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 6 vs photo 11)); inferred: the 40 deg crop w06-161 shows the old wing past the garden arcade, but the model elevation at panel 0 is the new wing (walls[1]) standing in front of it, drawn as the old-wing brick grid of walls[0]",
+        "walls[3] not confirmed by the photo (NO PHOTO); inferred: the set-back glass box over the garden pavilion, seen in w01-161 (2022) as two storeys of full-height glazing, no crop matches its panel",
+        "walls[4] not confirmed by the photo (NO EVIDENCE (foliage 26 % > 25 %)); inferred: w01-161 (2022) shows the pavilion ground as one storey of full glazing under a thin roof, the gate reads 26 pct foliage from the hedge and fence in front",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #52463d not used (not darker than the wall #70574d by 10 L*, or tinted): kit glass kept; walls[1] wall split #af875c | #56443d at 70 % (dE 40.1); walls[2] glass #2d221d not used (not darker than the wall #3c352f by 10 L*, or tinted): kit glass kept."
       ],
       "reviewState": "large-recipe-likeness-inferred",
@@ -35109,8 +35122,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236788",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T13:50:24.200Z",
-      "meshHash": "06a459190c16acad"
+      "updatedAt": "2026-10-25T05:47:00.815Z",
+      "meshHash": "5444a35356591a5d"
     },
     {
       "id": "ordinary-0363100012169214",
