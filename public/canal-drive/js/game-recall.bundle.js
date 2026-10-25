@@ -1731,6 +1731,11 @@
   // src/canalRecall/game/preferences.ts
   var PREFERENCES_STORAGE_KEY = "canalRecall.preferences.v1";
   var ZOOM_DEFAULT_VERSION = 4;
+  var MAP_MAX_PITCH = 75;
+  var CHASE_PITCH_DEGREES = 60;
+  var CHASE_FLATTEST_PITCH = 12;
+  var CAMERA_TILT_MIN = CHASE_FLATTEST_PITCH - CHASE_PITCH_DEGREES;
+  var CAMERA_TILT_MAX = MAP_MAX_PITCH - CHASE_PITCH_DEGREES;
   var DEFAULT_ASK_BUDGET = 5;
   var DIFFICULTY_PRESETS = {
     easy: { answerMode: "multiple", line: true, arrow: true, minimap: true },
