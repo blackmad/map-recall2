@@ -13,12 +13,15 @@
  *   box edge is `partial` (counted, not measured);
  * - only window storeys are judged: a band glazed over `glazedStorey` (0.68, the curtain-wall class: a glazed arcade
  *   or hall storey, whose rhythm is its piers) or without an opening is left out. Every other storey, attic friezes
- *   included, adds its openings: the front is the sequence of all of them.
+ *   included, adds its openings: the front is the sequence of all of them;
+ * - with the photo's `wallLike` cells (GitHub #61), a would-be ribbon (>= 8 m) is cut where >= 0.3 m of it is
+ *   wall-coloured: a ribbon is glass along its length, not brick or a sill course joining two window groups.
  *
  * `compareRowOpenings` judges a model against the photo on those, storey by storey first: a storey where one side has a
- * ribbon (an opening >= 8 m) and the other a punched row (two or more windows, all under 4 m, covering under 60 % of
- * the storey: windows between thin piers are a ribbon too, and a photo ribbon read through branches over such a row is
- * not a mismatch, Spinoza Lyceum walls[0]) is a row mismatch (Politie Postjesweg
+ * ribbon (an opening >= 8 m) and the other a punched row under that ribbon's span (two or more windows lying in it, all
+ * under 4 m, covering under 60 % of the span: windows between thin piers are a ribbon too, and a photo ribbon read
+ * through branches over such a row is not a mismatch, Spinoza Lyceum walls[0]; windows elsewhere in the storey are no
+ * contradiction, Stadsloket Zuidoost walls[0]) is a row mismatch (Politie Postjesweg
  * walls[1]: a 20 m ribbon window over a row of slots, modelled as six paired windows), which likeness.ts FAILs. Then
  * over all window storeys: the median count of openings per window storey
  * (within 20 %, the column tolerance), the per-opening shape mix (total variation distance <= 0.35 between the
@@ -46,14 +49,17 @@ export interface RowOpeningSummary {
 }
 
 export const ROW_OPENINGS = {minShare: 0.12, relShare: 0.45, minWidthM: 0.25, mergeGapM: 0.2, glazedStorey: 0.68, uniformShare: 0.8, mixedWidthRatio: 1.8,
-  minStoreyM: 2, count: 0.2, mixTv: 0.35, widthRatio: 1.5, minMeasured: 4, ribbonM: 8, windowMaxM: 4, punchedCover: 0.6} as const;
+  minStoreyM: 2, count: 0.2, mixTv: 0.35, widthRatio: 1.5, minMeasured: 4, ribbonM: 8, windowMaxM: 4, punchedCover: 0.6,
+  wallLikeShare: 0.6, wallLikeRunM: 0.3, spanOverlap: 0.5} as const;
 
 const isOpening = (m: number) => m === MASK.dark || m === MASK.frame;
 const shapeOf = (aspect: number): OpeningShape => (aspect > 1.4 ? 'tall' : aspect < 0.7 ? 'wide' : 'square');
 const quantile = (v: number[], q: number) => { const s = [...v].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(q * (s.length - 1) + 0.5))] : NaN; };
 
-export function rowOpenings(a: {mask: Uint8Array; cols: number; rows: number; cell: number; box: FacadeBox; lines: number[]; groundBandM?: number}): RowOpeningSummary {
-  const {mask, cols, rows, cell, box, lines} = a, gb = a.groundBandM ?? 2.5, R = ROW_OPENINGS;
+export function rowOpenings(a: {mask: Uint8Array; cols: number; rows: number; cell: number; box: FacadeBox; lines: number[]; groundBandM?: number;
+  /** 1 where the photo's colour cluster at the cell is a wall cluster (measureFacade `labels`/`clusters[].wall`): a ribbon is split where it is wall-coloured */
+  wallLike?: Uint8Array}): RowOpeningSummary {
+  const {mask, cols, rows, cell, box, lines, wallLike} = a, gb = a.groundBandM ?? 2.5, R = ROW_OPENINGS;
   const vOf = (j: number) => box.v1 - (j + 0.5) * cell;
   const all: OpeningRow[] = [];
   for (let s = 1; s + 1 < lines.length; s++) {
@@ -80,6 +86,27 @@ export function rowOpenings(a: {mask: Uint8Array; cols: number; rows: number; ce
       let k = i; while (k < cols && !on[k] && Number.isFinite(prof[k])) k++;
       if (i > 0 && k < cols && on[k] && on[i - 1] && k - i < gapMax) for (let x = i; x < k; x++) on[x] = true;
       i = Math.max(k, i + 1);
+    }
+    // A ribbon is glass along its length: where a run of a would-be ribbon (>= ribbonM) is wall-coloured over >= wallLikeRunM
+    // (>= wallLikeShare of its opening cells in a wall colour cluster), it is wall the opening pass joined to the windows
+    // beside it (Utrechtsestraat 15 walls[2]: brick and a sill course between two three-light groups read as a 10.9 m
+    // ribbon), and the run is cut there. Only ribbons are cut, so every other opening is as before.
+    if (wallLike) {
+      const ribbonCells = Math.round(R.ribbonM / cell), runCells = Math.round(R.wallLikeRunM / cell);
+      for (let i = 0; i < cols;) {
+        if (!on[i]) { i++; continue; }
+        let k = i; while (k < cols && on[k]) k++;
+        if (k - i >= ribbonCells) {
+          const wl = (x: number) => { let o = 0, w = 0; for (const j of js) { const q = j * cols + x; if (!isOpening(mask[q])) continue; o++; if (wallLike[q]) w++; } return o > 0 && w / o >= R.wallLikeShare; };
+          for (let x = i; x < k;) {
+            if (!wl(x)) { x++; continue; }
+            let y = x; while (y < k && wl(y)) y++;
+            if (y - x >= runCells) for (let z = x; z < y; z++) on[z] = false;
+            x = y;
+          }
+        }
+        i = k;
+      }
     }
     const openings: RowOpening[] = [];
     for (let i = 0; i < cols;) {
@@ -128,8 +155,17 @@ export function compareRowOpenings(photo: RowOpeningSummary, model: RowOpeningSu
     const mr = model.rows.find(r => r.storey === pr.storey);
     if (!mr) continue;
     const pMax = Math.max(0, ...pr.openings.map(o => o.w)), mMax = Math.max(0, ...mr.openings.map(o => o.w));
-    const windowsOf = (r: OpeningRow, max: number) => r.openings.length >= 2 && max < R.windowMaxM && r.cover < R.punchedCover;
-    if ((pMax >= R.ribbonM && windowsOf(mr, mMax)) || (mMax >= R.ribbonM && windowsOf(pr, pMax))) rowMismatch.push({storey: pr.storey, photoMaxM: pMax, modelMaxM: mMax});
+    // judged under the ribbon itself: the other side's openings that lie (>= spanOverlap of their width) inside the
+    // ribbon's span are a punched row when there are two or more, all under windowMaxM, covering under punchedCover of
+    // the span. Windows elsewhere in the storey do not contradict a ribbon (Stadsloket Zuidoost walls[0]: an 18 m window
+    // box in a storey of punched windows, whose glass the photo reads as wall, against windows beside the box).
+    const punchedUnder = (rib: RowOpening, other: OpeningRow) => {
+      const inside = other.openings.filter(o => Math.min(o.u1, rib.u1) - Math.max(o.u0, rib.u0) >= R.spanOverlap * o.w);
+      const cover = inside.reduce((x, o) => x + Math.min(o.u1, rib.u1) - Math.max(o.u0, rib.u0), 0) / Math.max(1e-6, rib.w);
+      return inside.length >= 2 && inside.every(o => o.w < R.windowMaxM) && cover < R.punchedCover;
+    };
+    const against = (a: OpeningRow, b: OpeningRow) => a.openings.some(o => o.w >= R.ribbonM && punchedUnder(o, b));
+    if (against(pr, mr) || against(mr, pr)) rowMismatch.push({storey: pr.storey, photoMaxM: pMax, modelMaxM: mMax});
   }
   const rowReasons = rowMismatch.map(r => `storey ${r.storey}: widest opening ${r.modelMaxM.toFixed(1)} m vs photo ${r.photoMaxM.toFixed(1)} m (a ribbon against windows)`);
   const judged = photo.measured >= R.minMeasured && photo.count !== null;

@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Likeness gate lighting re-reads (2026-10-25, #61).** Shaded warm walls
+judged on chromaticity when the crop could not be exposure-normalised
+(WARN at best); pale panels re-read as panel only where the model draws a
+panel; an unstable threshold cluster gets a second reading; ribbons cut at
+0.3 m of wall colour and judged against the windows under their own span.
+Replay over 94 installed houses: 161 → 157 FAIL, 4 street verdicts moved
+(Barlaeus g1, IJ-tunnel g1, Spinozastraat g0 → WARN; Stadsloket Zuidoost
+g0 → PASS), no install outcome changed; known-wrong Houtmankade and
+Postjesweg still FAIL. Oude Turfmarkt (unequal storey heights) and
+Utrechtsestraat 15 (3.3 m storey-2 windows) are real model errors, not
+misreads.
+
 **Refused installs, first 11 (2026-10-25, #59).** Re-authored against their
 photos: Stadsloket Zuidoost (walls[0] three rows over a 2-storey arcade,
 24 bays, 12-light window box; walls[2] deck arcade 95 % glass), Oude
