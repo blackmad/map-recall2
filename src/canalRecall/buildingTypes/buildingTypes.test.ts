@@ -1208,3 +1208,105 @@ test('round-7 designs (#80): validate, >= 3 distinct photo pands on the front, c
     }
   }
 });
+
+const R8_TYPES = ['nw-os-band', 'nw-os-white', 'nw-os-white-low', 'nw-os-garage', 'nw-os-garage-top', 'nw-os-tretjakov', 'ws-dk-1971', 'ws-dk-1986', 'ws-wz-bay', 'ws-wz-plain', 'ws-wz-porthole', 'ws-wz-diamond', 'oo-sb-garage-balconies', 'oo-sb-gate-french'].map(id => load(`${id}.json`));
+// two short rows: Tretjakovlaan (2 terraces) and Thorbeckelaan (one terrace of 10)
+const R8_TWO_PANDS = new Set(['nw-os-tretjakov', 'ws-wz-diamond']);
+function r8Params(spec: TypeSpec) {
+  if (spec.eavesRangeM) return r3Params(spec);
+  const L = (spec.footprintRangeM!.frontage[0] + spec.footprintRangeM!.frontage[1]) / 2, W = (spec.footprintRangeM!.depth[0] + spec.footprintRangeM!.depth[1]) / 2;
+  return {lengthM: L, widthM: W, eavesM: spec.roof.eavesPinM ?? 6};
+}
+test('round-8 designs (#82): validate, >= 3 distinct photo pands on the front (>= 2 for the two short rows), counted openings match for every variant and handedness, <= 600 triangles, party walls blank, nothing below ground, within the frontage', () => {
+  for (const spec of R8_TYPES) {
+    assert.deepEqual(validateSpec(spec), [], spec.id);
+    assert.ok(new Set(spec.facades.front.evidence.map(e => e.pand)).size >= (R8_TWO_PANDS.has(spec.id) ? 2 : 3), `${spec.id}: evidence`);
+    const p = r8Params(spec);
+    for (const variant of Object.keys(spec.variants)) for (const mirror of [false, true]) {
+      const {report, mesh} = generate(spec, {...p, variant, mirror});
+      assert.deepEqual(report.facades.front, spec.facades.front.counted, `${spec.id}/${variant}/front`);
+      assert.ok(mesh.triangles <= 600, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
+      const mid = generate(spec, {...p, variant, mirror, freeSides: {left: false, right: false}});
+      assert.equal(mid.report.facades.left.bays + mid.report.facades.right.bays, 0, 'party walls have no bays');
+      const b = mesh.bounds();
+      assert.ok(b.min[1] >= -1e-9, `${spec.id}: nothing below ground`);
+      const ov = spec.roof.vergeOverhangM + 0.06;
+      assert.ok(b.max[0] <= p.lengthM / 2 + ov && b.min[0] >= -p.lengthM / 2 - ov, `${spec.id}/${variant}/${mirror}: within its frontage`);
+    }
+  }
+});
+
+test('bodyFromRoof from highest (#82): the default (largest) keeps a big low shed as the body; highest takes the tall house; both see only surfaces within tolM', () => {
+  const box2 = (x0: number, x1: number, z0: number, z1: number): Pt[] => [[x0, z0], [x1, z0], [x1, z1], [x0, z1]];
+  const axis = minimumRotatedRectangle(box2(-2.5, 2.5, -10.5, 10.5)); // a 5 x 21 m plot: house at the street end, shed and garden room behind
+  const roofs = [
+    {ring: box2(-2.5, 2.5, -10.5, -2.5), z: 3.0, area: 40}, // low shed / garden room over the back 8 m
+    {ring: box2(-2.5, 2.5, 3.5, 10.5), z: 6.1, area: 35}, // two-storey house at the front
+    {ring: box2(-2.5, 2.5, -2.5, 3.5), z: 2.9, area: 30}, // covered patio
+  ];
+  const largest = bodyRectFromRoof(roofs, axis, 0.6)!, dflt = bodyRectFromRoof(roofs, axis, 0.6, 0.5, 'largest')!, highest = bodyRectFromRoof(roofs, axis, 0.6, 0.5, 'highest')!;
+  assert.deepEqual(largest, dflt, 'absent = largest');
+  assert.ok(Math.abs(largest.length - 14) < 0.6, `largest: shed + patio (${largest.length})`);
+  assert.ok(Math.abs(highest.length - 7) < 0.6, `highest: the 7 m house (${highest.length})`);
+  assert.ok(Math.abs(highest.center[1] - 7) < 0.3, `highest: centred on the house (${highest.center})`);
+  const S = load('nw-os-garage-top.json');
+  assert.deepEqual(validateSpec({...S, bodyFromRoof: {tolM: 3, from: 'highest'}}), []);
+});
+
+test('round arch and diamond panel (#82): absent = the pointed arch and the box; round lifts the shoulders to a half ellipse with the same crown; diamond is two triangles on the four points; validateSpec bounds them', () => {
+  const P = load('ws-wz-porthole.json'), p = {...r8Params(P), variant: 'brick'};
+  const els = P.facades.front.bays[0].elements;
+  const withEls = (spec: TypeSpec, e: TypeSpec['facades']['front']['bays'][0]['elements']): TypeSpec => ({...spec, facades: {...spec.facades, front: {...spec.facades.front, bays: [{...spec.facades.front.bays[0], elements: e}]}}});
+  const pointed = withEls(P, els.map(e => { const {archShape, ...rest} = e; void archShape; return rest; }));
+  const dark = (spec: TypeSpec) => { const m = generate(spec, p).mesh; return m.buckets.get([...m.buckets.keys()].find(k => k.includes(P.variants.brick.palette.dark))!)!.positions; };
+  const ys = (pos: number[]) => { const out: number[] = []; for (let i = 1; i < pos.length; i += 3) out.push(pos[i]); return out; };
+  const r = dark(P), q = dark(pointed);
+  assert.equal(r.length, q.length, 'same triangle count');
+  assert.ok(Math.abs(Math.max(...ys(r)) - 2.6) < 1e-6 && Math.abs(Math.max(...ys(q)) - 2.6) < 1e-6, 'same crown');
+  const sum = (a: number[]) => a.reduce((s, x) => s + x, 0);
+  assert.ok(sum(ys(r)) > sum(ys(q)) + 0.5, 'round shoulders sit higher than the pointed arch');
+  // a pointed arch spec stays as it was (we-jm-vespucci draws no archShape)
+  assert.ok(!load('we-jm-vespucci.json').facades.front.bays[0].elements.some(e => e.archShape !== undefined));
+  const D = load('ws-wz-diamond.json'), pd = {...r8Params(D), variant: 'brick'};
+  const dEls = D.facades.front.bays[0].elements;
+  const diamond = dEls.find(e => e.diamond)!;
+  const only = (e: typeof diamond) => withEls(D, [e]);
+  const col = (spec: TypeSpec) => { const m = generate(spec, pd).mesh; return m.buckets.get([...m.buckets.keys()].find(k => k.includes(D.variants.brick.palette.column))!)!.positions; };
+  const dpos = col(only(diamond)), boxPos = col(only({...diamond, diamond: undefined}));
+  assert.equal(dpos.length / 9, 2, 'diamond: two triangles');
+  assert.equal(boxPos.length / 9, 10, 'absent: the box');
+  const dy = ys(dpos), lo = Math.min(...dy), hi = Math.max(...dy);
+  assert.ok(Math.abs(hi - lo - diamond.h!) < 1e-6, 'diamond spans its height');
+  const bad = (e: object) => validateSpec(withEls(D, [{kind: 'panel', levels: 'ground', w: 1, h: 1, ...e} as never]));
+  assert.ok(bad({archShape: 'round'}).some(x => /archShape/.test(x)), 'archShape without archM');
+  assert.ok(bad({diamond: true, archM: 0.3}).some(x => /diamond/.test(x)), 'diamond with an arch');
+  assert.ok(validateSpec(withEls(D, [{kind: 'window', levels: 'ground', w: 1, h: 1, diamond: true} as never])).some(x => /diamond/.test(x)), 'diamond on a window');
+  assert.deepEqual(bad({diamond: true}), []);
+});
+
+test('pilotis slab palette (#82): absent = the white column band byte for byte; wall moves the slab edge to the wall bucket', () => {
+  const G = load('oo-sb-garage-balconies.json'), p = {...r8Params(G), variant: 'brick'};
+  const {slabPalette, ...ground} = G.ground; void slabPalette;
+  const absent = generate({...G, ground}, p).mesh, column = generate({...G, ground: {...ground, slabPalette: 'column'}}, p).mesh, wall = generate(G, p).mesh;
+  assert.deepEqual([...absent.buckets.keys()], [...column.buckets.keys()]);
+  for (const [k, b] of absent.buckets) assert.deepEqual(column.buckets.get(k)!.positions, b.positions, k);
+  const colKey = [...absent.buckets.keys()].find(k => k.includes(G.variants.brick.palette.column))!;
+  assert.ok(wall.buckets.get(colKey)!.positions.length < absent.buckets.get(colKey)!.positions.length, 'the slab leaves the column bucket');
+  assert.equal(wall.triangles, absent.triangles);
+});
+
+test('flat verge (#82): absent = every side overhangs by eavesOverhangM byte for byte; set, the party-wall sides overhang by vergeOverhangM only; validateSpec wants a flat roof', () => {
+  const B = load('nw-os-band.json'), p = {...r8Params(B), variant: 'brick'};
+  const {flatVerge, ...roof} = B.roof; void flatVerge;
+  const absent = generate({...B, roof}, p).mesh, set = generate(B, p).mesh;
+  const roofKey = [...absent.buckets.keys()].find(k => k.includes(B.variants.brick.palette.roof.tint))!;
+  const xs = (pos: number[]) => { let m = 0; for (let i = 0; i < pos.length; i += 3) m = Math.max(m, Math.abs(pos[i])); return m; };
+  const zs = (pos: number[]) => { let m = 0; for (let i = 2; i < pos.length; i += 3) m = Math.max(m, Math.abs(pos[i])); return m; };
+  assert.ok(Math.abs(xs(absent.buckets.get(roofKey)!.positions) - (p.lengthM / 2 + B.roof.eavesOverhangM)) < 1e-6, 'absent: eaves overhang on the sides');
+  assert.ok(Math.abs(xs(set.buckets.get(roofKey)!.positions) - (p.lengthM / 2 + B.roof.vergeOverhangM)) < 1e-6, 'set: verge overhang on the sides');
+  assert.equal(zs(set.buckets.get(roofKey)!.positions), zs(absent.buckets.get(roofKey)!.positions), 'front and back unchanged');
+  const T = load('ws-wz-plain.json');
+  assert.ok(validateSpec({...T, roof: {...T.roof, flatVerge: true}}).some(e => /flatVerge/.test(e)));
+  // every earlier flat design is unchanged: none sets flatVerge
+  assert.deepEqual(fs.readdirSync(TYPES).filter(f => f.endsWith('.json') && load(f).roof.flatVerge).sort(), ['nw-os-band.json', 'nw-os-tretjakov.json', 'nw-os-white-low.json', 'nw-os-white.json']);
+});

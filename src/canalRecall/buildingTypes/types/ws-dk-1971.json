@@ -1,0 +1,351 @@
+{
+ "id": "ws-dk-1971",
+ "label": "De Klomp, Weesp (1971, Meester J.C. Bührmannlaan, J.A. Fijnvandraatlaan, M. Dotingalaan) two-storey terraced house between greige brick piers: a timber-clad front with a glazed door and a wide window on the ground storey under a fascia band, horizontal boards under a full-width window band upstairs, a dark tile roof with a box dormer",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 119,
+  "bouwjaar": [
+   1971,
+   1971
+  ],
+  "lengthM": 4.9,
+  "widthM": 10,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.2,
+  6.3
+ ],
+ "ridgeRangeM": [
+  7.8,
+  8.9
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.6,
+   5.3
+  ],
+  "depth": [
+   9,
+   12.2
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.25,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.14,
+  "pitchDeg": 28,
+  "eavesPinM": 5.7,
+  "dormers": [
+   {
+    "u": 0,
+    "w": 2.6,
+    "h": 1.25,
+    "setBackM": 1.1,
+    "lights": 3,
+    "cheek": "column",
+    "frame": "frame",
+    "overhangM": 0.15,
+    "note": "box dormer (most houses; sizes vary)"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "dark",
+ "variants": {
+  "dark": {
+   "label": "greige brick piers, dark green-grey boards and ground infill, white frames",
+   "evidence": "terraces #4 #8 #10 #14 #18 #20 #23 #31",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#a59a88",
+     "measured": true
+    },
+    "frame": "#f2f1ec",
+    "glass": "#3b4249",
+    "door": "#2e3b37",
+    "accent": "#35473f",
+    "rail": "#e8e8e4",
+    "dark": "#2f3a36",
+    "column": "#efeeea",
+    "joint": "#5d6166",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#4b4d4f",
+     "measured": true
+    }
+   }
+  },
+  "pale": {
+   "label": "greige brick piers, cream boards and ground infill, white frames",
+   "evidence": "terraces #0 #13 #17 #28 #33 #34",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#a59a88",
+     "measured": true
+    },
+    "frame": "#f2f1ec",
+    "glass": "#3b4249",
+    "door": "#3b3f46",
+    "accent": "#e4e0d3",
+    "rail": "#e8e8e4",
+    "dark": "#e9e7df",
+    "column": "#efeeea",
+    "joint": "#5d6166",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#4b4d4f",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000058355.jpg",
+     "pand": "0457100000058355",
+     "address": "Meester J.C. Bührmannlaan",
+     "note": "2024-10: per 4.9 m house greige brick piers at the party walls on the upper storey; ground storey clad in dark green boards with a glazed door and a wide window, a fascia band over it; upstairs dark green horizontal boards to sill height under a full-width window band with white frames; dark tile roof with a box dormer; not mirrored"
+    },
+    {
+     "photo": "survey crop 0457100000058401.jpg",
+     "pand": "0457100000058401",
+     "address": "Meester J.C. Bührmannlaan",
+     "note": "2025-09: same, dark green"
+    },
+    {
+     "photo": "survey crop 0457100000059311.jpg",
+     "pand": "0457100000059311",
+     "address": "Meester J.C. Bührmannlaan",
+     "note": "2025-09: same, dark grey and blue-grey boards"
+    },
+    {
+     "photo": "survey crop 0457100000058151.jpg",
+     "pand": "0457100000058151",
+     "address": "Meester J.C. Bührmannlaan",
+     "note": "2020-06: same, cream boards (pale variant)"
+    },
+    {
+     "photo": "survey crop 0457100000059352.jpg",
+     "pand": "0457100000059352",
+     "address": "J.A. Fijnvandraatlaan",
+     "note": "2022-06: same, white boards (pale variant)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "span": true,
+       "inset": 0,
+       "h": 2.55,
+       "sill": 0,
+       "depth": 0.03,
+       "colour": "accent",
+       "note": "timber-clad ground storey"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.85,
+       "w": 0.9,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.45,
+       "w": 0.3,
+       "h": 2.09,
+       "sill": 0.06,
+       "lights": 1,
+       "note": "sidelight"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.2,
+       "w": 2.6,
+       "h": 1.75,
+       "sill": 0.45,
+       "lights": 2
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "span": true,
+       "inset": 0,
+       "h": 0.25,
+       "sill": 2.55,
+       "depth": 0.35,
+       "canopy": "flat",
+       "colour": "dark",
+       "note": "fascia band over the ground storey"
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "span": true,
+       "inset": 0.32,
+       "h": 1,
+       "sill": 0,
+       "depth": 0.03,
+       "colour": "accent",
+       "note": "horizontal boards to sill height"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "span": true,
+       "inset": 0.4,
+       "h": 1.5,
+       "sill": 1.05,
+       "lights": 3,
+       "note": "full-width window band"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000058355.jpg",
+     "pand": "0457100000058355",
+     "address": "Meester J.C. Bührmannlaan",
+     "note": "garden side not photographed from the street: garden door, wide living-room window, upper window band inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.9,
+       "w": 0.9,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3,
+       "w": 2.3,
+       "h": 1.5,
+       "sill": 0.7,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 2.45,
+       "w": 3.4,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000058355.jpg",
+     "pand": "0457100000058355",
+     "address": "Meester J.C. Bührmannlaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000058355.jpg",
+     "pand": "0457100000058355",
+     "address": "Meester J.C. Bührmannlaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Colours white-referenced from the 2024-10 Bührmannlaan crop (door-jamb white): piers #928d87 read, drawn #a59a88 (greige brick); dark boards #404c4f read, drawn #35473f. Owners repaint the boards: dark green, blue-grey, cream and white rows exist; variants follow the photographed representative of each row.",
+  "Eaves pinned at 5.7 m (eavesPinM): 3DBAG b3_h_dak_min reads 4.4-5.2 m on a third of the houses (the dormers and rear extensions drag it); the row median is 5.7 m. Ridge from 3DBAG (8.3 m)."
+ ]
+}

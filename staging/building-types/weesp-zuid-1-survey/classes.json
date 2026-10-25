@@ -1,0 +1,59 @@
+{
+ "terraces": {
+  "20": {
+   "type": "ws-wz-bay",
+   "variant": "green",
+   "via": "photo"
+  },
+  "21": {
+   "type": "ws-wz-bay",
+   "variant": "green",
+   "via": "photo"
+  },
+  "27": {
+   "type": "ws-wz-bay",
+   "variant": "green",
+   "via": "photo"
+  },
+  "28": {
+   "type": "ws-wz-plain",
+   "variant": "brick",
+   "via": "photo"
+  },
+  "30": {
+   "type": "ws-wz-bay",
+   "variant": "green",
+   "via": "photo"
+  },
+  "32": {
+   "type": "ws-wz-plain",
+   "variant": "brick",
+   "via": "photo",
+   "repMirror": false
+  },
+  "36": {
+   "type": "ws-wz-diamond",
+   "variant": "brick",
+   "via": "photo",
+   "repMirror": false
+  },
+  "41": {
+   "type": "ws-wz-porthole",
+   "variant": "brick",
+   "via": "photo",
+   "repMirror": false
+  },
+  "46": {
+   "type": "ws-wz-porthole",
+   "variant": "brick",
+   "via": "photo",
+   "repMirror": false
+  },
+  "47": {
+   "type": "ws-wz-porthole",
+   "variant": "brick",
+   "via": "photo",
+   "repMirror": false
+  }
+ }
+}

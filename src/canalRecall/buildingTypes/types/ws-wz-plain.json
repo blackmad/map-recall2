@@ -1,0 +1,336 @@
+{
+ "id": "ws-wz-plain",
+ "label": "Weesp-Zuid, Weesp (1950) two-storey terraced house in brown brick under an orange tile roof: doors in pairs at the pair line with diamond-lattice transoms in white frames, a wide living-room window, three small white-framed windows upstairs; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 22,
+  "bouwjaar": [
+   1950,
+   1950
+  ],
+  "lengthM": 6,
+  "widthM": 7.3,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5,
+  6.1
+ ],
+ "ridgeRangeM": [
+  7,
+  8.6
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.4,
+   6.5
+  ],
+  "depth": [
+   6.8,
+   7.9
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.12,
+  "pitchDeg": 32,
+  "eavesPinM": 5.5,
+  "chimneys": [
+   {
+    "ref": "right",
+    "u": 0.2,
+    "w": 0.35,
+    "d": 0.6,
+    "h": 0.8,
+    "capM": 0.1,
+    "cap": "wall",
+    "note": "half of the stack the pair shares"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "brick",
+ "variants": {
+  "brick": {
+   "label": "brown brick, white frames, green doors, orange-red tiles",
+   "evidence": "terraces #28 #32",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#85705c",
+     "measured": true
+    },
+    "frame": "#f4f3ee",
+    "glass": "#3a4148",
+    "door": "#2f5a48",
+    "accent": "#f1f0ea",
+    "rail": "#2f6150",
+    "dark": "#4a3a33",
+    "column": "#8d8a84",
+    "joint": "#5d6166",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#b8735e",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000059566.jpg",
+     "pand": "0457100000059566",
+     "address": "Monseigneur Doctor W.H. Nolenslaan",
+     "note": "2022-06 (sunlit, white-referenced) and 2025-09: per 6.0 m house the door 1.15 m from the pair line (doors paired, white frames with a diamond-lattice transom), a 2.4 m living-room window in a broad white frame, three small windows upstairs at 1.75, 3.1 and 4.45 m; mirrored pairs; downpipe on the other pair line"
+    },
+    {
+     "photo": "survey crop 0457100000059545.jpg",
+     "pand": "0457100000059545",
+     "address": "Monseigneur Doctor W.H. Nolenslaan",
+     "note": "2024: same doors with diamond-lattice transoms and window rhythm, raking view (terrace #28)"
+    },
+    {
+     "photo": "survey crop 0457100000059557.jpg",
+     "pand": "0457100000059557",
+     "address": "Monseigneur Doctor W.H. Nolenslaan",
+     "note": "2025-09: same paired doors with lattice transoms, three small upper windows per house"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.15,
+       "w": 0.85,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.15,
+       "w": 0.85,
+       "h": 0.45,
+       "sill": 2.25,
+       "lights": 2,
+       "frameM": 0.06,
+       "note": "diamond-lattice transom"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.25,
+       "w": 2.3,
+       "h": 1.6,
+       "sill": 0.75,
+       "lights": 1,
+       "frameM": 0.12
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.75,
+       "w": 0.8,
+       "h": 1.05,
+       "sill": 0.95,
+       "lights": 1,
+       "frameM": 0.09
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.1,
+       "w": 0.8,
+       "h": 1.05,
+       "sill": 0.95,
+       "lights": 1,
+       "frameM": 0.09
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 4.45,
+       "w": 0.85,
+       "h": 1.05,
+       "sill": 0.95,
+       "lights": 1,
+       "frameM": 0.09
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000059566.jpg",
+     "pand": "0457100000059566",
+     "address": "Monseigneur Doctor W.H. Nolenslaan",
+     "note": "garden side not photographed from the street: garden door, kitchen and living-room windows, two bedroom windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1,
+       "w": 0.85,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.2,
+       "w": 1,
+       "h": 1,
+       "sill": 1,
+       "lights": 1,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.8,
+       "w": 2,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 3,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.4,
+       "w": 1,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "right",
+       "u": 1.8,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2,
+       "frameM": 0.07
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000059566.jpg",
+     "pand": "0457100000059566",
+     "address": "Monseigneur Doctor W.H. Nolenslaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000059566.jpg",
+     "pand": "0457100000059566",
+     "address": "Monseigneur Doctor W.H. Nolenslaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick white-referenced from the sunlit 2022-06 crop of 0059566: mean #7e6b57 (tones #a3866a/#80654b/#646057), drawn #85705c. Tile read #ec9e84 in hard sun, drawn #b8735e.",
+  "Eaves pinned at 5.5 m; ridge from 3DBAG (7.6 m)."
+ ]
+}

@@ -1,0 +1,353 @@
+{
+ "id": "ws-wz-bay",
+ "label": "Weesp-Zuid, Weesp (1951, Hugo de Grootlaan and neighbours) two-storey terraced house in brown brick under an orange tile roof: a white-framed window column at the pair line, the living-room window, a dark green panel and the bedroom window stacked in it; door and two small windows at the other side; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 23,
+  "bouwjaar": [
+   1951,
+   1951
+  ],
+  "lengthM": 5.7,
+  "widthM": 7.2,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5,
+  6.1
+ ],
+ "ridgeRangeM": [
+  7,
+  8.6
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.4,
+   6.5
+  ],
+  "depth": [
+   6.8,
+   7.9
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.12,
+  "pitchDeg": 32,
+  "eavesPinM": 5.5,
+  "chimneys": [
+   {
+    "ref": "left",
+    "u": 0.25,
+    "w": 0.35,
+    "d": 0.6,
+    "h": 0.8,
+    "capM": 0.1,
+    "cap": "wall",
+    "note": "half of the stack the pair shares"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "green",
+ "variants": {
+  "green": {
+   "label": "brown brick, white bay frames with dark green panels, orange-red tiles",
+   "evidence": "terraces #20 #21 #27 #30",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#85705c",
+     "measured": true
+    },
+    "frame": "#f4f3ee",
+    "glass": "#3a4148",
+    "door": "#2f5a48",
+    "accent": "#f1f0ea",
+    "rail": "#2f6150",
+    "dark": "#4a3a33",
+    "column": "#8d8a84",
+    "joint": "#5d6166",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#b8735e",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000059664.jpg",
+     "pand": "0457100000059664",
+     "address": "Hugo de Grootlaan",
+     "note": "2020-06 (sunlit) and 2025-09: per 5.7 m house a white-framed window column 2.1 m wide at the downpipe pair line (living-room window, dark green panel, bedroom window up to the gutter), the door 3.9-4.8 m from it with a small window beside it, a small square window over the door; mirrored pairs; brown brick, orange-red tiles"
+    },
+    {
+     "photo": "survey crop 0457100000059636.jpg",
+     "pand": "0457100000059636",
+     "address": "Hugo de Grootlaan",
+     "note": "2024: same, two pairs"
+    },
+    {
+     "photo": "survey crop 0457100000059688.jpg",
+     "pand": "0457100000059688",
+     "address": "Meester P.J. Troelstralaan",
+     "note": "2024: same"
+    },
+    {
+     "photo": "survey crop 0457100000059670.jpg",
+     "pand": "0457100000059670",
+     "address": "Aetsveldselaan",
+     "note": "2024-10: same; green panels"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.9,
+       "w": 2.2,
+       "h": 4.55,
+       "sill": 0.5,
+       "depth": 0.02,
+       "colour": "frame",
+       "note": "white surround of the window column"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.9,
+       "w": 1.9,
+       "h": 1.75,
+       "sill": 0.62,
+       "lights": 2,
+       "frameM": 0.07
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.9,
+       "w": 1.9,
+       "h": 1.25,
+       "sill": 2.5,
+       "depth": 0.03,
+       "colour": "rail",
+       "note": "dark green panel between the windows"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.9,
+       "w": 1.9,
+       "h": 1.15,
+       "sill": 1.05,
+       "lights": 2,
+       "frameM": 0.07,
+       "transomM": 0.4
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.35,
+       "w": 0.85,
+       "h": 2.15
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 0.45,
+       "w": 0.7,
+       "h": 0.75,
+       "sill": 1.15,
+       "lights": 1,
+       "frameM": 0.06
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 4.4,
+       "w": 0.55,
+       "h": 0.6,
+       "sill": 1.35,
+       "lights": 1,
+       "frameM": 0.06
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000059664.jpg",
+     "pand": "0457100000059664",
+     "address": "Hugo de Grootlaan",
+     "note": "garden side not photographed from the street: garden door, kitchen and living-room windows, two bedroom windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1,
+       "w": 0.85,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.2,
+       "w": 1,
+       "h": 1,
+       "sill": 1,
+       "lights": 1,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.8,
+       "w": 2,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 3,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.4,
+       "w": 1,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "right",
+       "u": 1.8,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2,
+       "frameM": 0.07
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000059664.jpg",
+     "pand": "0457100000059664",
+     "address": "Hugo de Grootlaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000059664.jpg",
+     "pand": "0457100000059664",
+     "address": "Hugo de Grootlaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick from the sunlit 2022-06 Weesp-Zuid crop (0059566, same builder and brick), white-referenced to the sill: mean #7e6b57, drawn a step brighter #85705c (brighter-palette priority). Tile read #ec9e84 in hard sun, drawn #b8735e.",
+  "Eaves pinned at 5.5 m (row median of b3_h_dak_min; rear additions drag it on some houses). Ridge from 3DBAG (7.5 m, about 30 degrees)."
+ ]
+}

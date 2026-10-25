@@ -1,0 +1,17 @@
+[
+ {
+  "area": "ws-wz-01",
+  "anchor": {
+   "lng": 5.04031,
+   "lat": 52.30348
+  },
+  "pands": 81,
+  "missing": 0,
+  "per": {
+   "ws-wz-bay/green/photo": 23,
+   "ws-wz-plain/brick/photo": 22,
+   "ws-wz-diamond/brick/photo": 10,
+   "ws-wz-porthole/brick/photo": 26
+  }
+ }
+]

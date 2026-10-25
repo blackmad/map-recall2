@@ -102,7 +102,7 @@ for (const instIn of input.instances) {
     const toLocal = (x: number, y: number): Pt => lngLatToLocal(input.anchor, ...rdToLngLat(x, y));
     const roofs = [];
     for (const id of [inst.pandId, ...(o.absorb ?? [])]) roofs.push(...roofPolygons(await item3d(id), toLocal));
-    const body = typeof spec.bodyFromRoof === 'object' ? bodyRectFromRoof(roofs, ringRect, spec.bodyFromRoof.tolM) : bodyRectFromRoof(roofs, ringRect);
+    const body = typeof spec.bodyFromRoof === 'object' ? bodyRectFromRoof(roofs, ringRect, spec.bodyFromRoof.tolM, undefined, spec.bodyFromRoof.from) : bodyRectFromRoof(roofs, ringRect);
     if (body) { rect0 = body; bodyWarnings.push(`body ${body.length.toFixed(2)} x ${body.width.toFixed(2)} m from the 3DBAG roof${o.absorb?.length ? ` incl. ${o.absorb.join(', ')}` : ''} (BAG ring rectangle ${ringRect.length.toFixed(2)} x ${ringRect.width.toFixed(2)} m)`); }
     else bodyWarnings.push('no 3DBAG roof surfaces: body = BAG ring rectangle');
   }

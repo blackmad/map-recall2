@@ -1,0 +1,361 @@
+{
+ "id": "nw-os-garage-top",
+ "label": "Oostoever Sloterplas (1998, Alhambralaan, Hof van Versailles) terraced house in dark red brick: timber garage door and white door surround, a continuous ribbon window on the first storey, a zinc-clad top storey set back from the brick parapet",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 48,
+  "bouwjaar": [
+   1998,
+   1998
+  ],
+  "lengthM": 5.1,
+  "widthM": 13.2,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "footprintRangeM": {
+  "frontage": [
+   4.8,
+   5.6
+  ],
+  "depth": [
+   11.5,
+   14.5
+  ]
+ },
+ "bodyFromRoof": {
+  "tolM": 3,
+  "from": "highest"
+ },
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.05,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.22,
+  "pitchDeg": 0,
+  "eavesPinM": 6.1
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "annexes": [
+  {
+   "id": "zinc-top",
+   "facade": "front",
+   "u": [
+    0,
+    5.1
+   ],
+   "d": [
+    -10.3,
+    -2.2
+   ],
+   "from": {
+    "eaves": 0
+   },
+   "to": {
+    "eaves": 2.6
+   },
+   "material": "joint",
+   "glaze": {
+    "faces": [
+     "out"
+    ],
+    "sill": 0.7,
+    "h": 1.25,
+    "lightM": 1.15,
+    "frame": "frame",
+    "marginM": 0.4
+   },
+   "evidence": "3DBAG 0363100012148761 / 0363100012105324: an 8.4-8.6 m roof 8.1 m deep, 2.2 m behind the 5.8 m street parapet and 2.9 m short of the garden one"
+  }
+ ],
+ "defaultVariant": "brick",
+ "variants": {
+  "brick": {
+   "label": "mottled purple-brown brick, white frames, timber garage doors, zinc top storey",
+   "evidence": "terraces #49 #60 #66",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#977265",
+     "measured": true,
+     "mottle": {
+      "tones": [
+       {
+        "hex": "#866356",
+        "share": 0.38
+       },
+       {
+        "hex": "#ad887e",
+        "share": 0.3
+       },
+       {
+        "hex": "#9a705f",
+        "share": 0.29
+       },
+       {
+        "hex": "#847d7a",
+        "share": 0.03
+       }
+      ],
+      "evidence": "#82: brick-mottle.ts k=4 over the street parapet band and the band under the ribbon of crop 0363100012088229-2020050808 (Hof van Versailles, facade in shade), white-referenced to the white concrete door surround in the same crop (x2.70/2.38/2.17); 24428 brick pixels, mean #977265"
+     }
+    },
+    "frame": "#f2f1ec",
+    "glass": "#3b4249",
+    "door": "#dfe1dd",
+    "accent": "#d8d8d2",
+    "rail": "#e8e8e4",
+    "dark": "#8a5a36",
+    "column": "#e4e4df",
+    "joint": "#62666b",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#5f5d5a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012148761.jpg",
+     "pand": "0363100012148761",
+     "address": "Alhambralaan",
+     "note": "2024-11: per 5.1 m house a 3 m timber garage door (2.35 m high) on the left and a white concrete door box 1.9 m wide (glazed door and side light) against the right party wall; not mirrored; one ribbon window across the first storey; brick parapet; zinc-clad top storey with a window band, set back"
+    },
+    {
+     "photo": "survey crop 0363100012088229.jpg",
+     "pand": "0363100012088229",
+     "address": "Hof van Versailles",
+     "note": "2024-11: same"
+    },
+    {
+     "photo": "survey crop 0363100012105324.jpg",
+     "pand": "0363100012105324",
+     "address": "Hof van Versailles",
+     "note": "2022-04: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "right",
+       "u": 0.11,
+       "w": 0.22,
+       "h": 2.45,
+       "sill": 0,
+       "depth": 0.25,
+       "colour": "column",
+       "note": "white concrete door box against the right party wall: right cheek"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.79,
+       "w": 0.22,
+       "h": 2.45,
+       "sill": 0,
+       "depth": 0.25,
+       "colour": "column",
+       "note": "left cheek"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "right",
+       "u": 0.95,
+       "w": 1.9,
+       "h": 0.22,
+       "sill": 2.23,
+       "depth": 0.25,
+       "colour": "column",
+       "note": "head"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.2,
+       "w": 0.9,
+       "h": 2.15,
+       "note": "white-grey glazed door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 0.5,
+       "w": 0.5,
+       "h": 2.1,
+       "sill": 0.06,
+       "lights": 1,
+       "note": "full-height side light in the door box"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.6,
+       "w": 3,
+       "h": 2.35,
+       "sill": 0,
+       "depth": 0.03,
+       "colour": "dark",
+       "note": "timber garage door, 3 m, against the left party wall"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.55,
+       "w": 4.7,
+       "h": 1.25,
+       "sill": 0.5,
+       "lights": 4
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012148761.jpg",
+     "pand": "0363100012148761",
+     "address": "Alhambralaan",
+     "note": "garden side not photographed from the street: garden door, living-room window and upper windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1,
+       "w": 0.9,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.3,
+       "w": 2.2,
+       "h": 1.6,
+       "sill": 0.6,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.8,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012148761.jpg",
+     "pand": "0363100012148761",
+     "address": "Alhambralaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012148761.jpg",
+     "pand": "0363100012148761",
+     "address": "Alhambralaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "#82 review: the contact sheet was 1.27x off because the cached survey crop came from an older placement (21.5 m body before bodyFromRoof highest); re-shot, the 3DBAG geometry lines up (garage 2.35 m, ribbon 3.55-4.8 m, parapet 6.1 m, zinc top set back 2.2 m). Brick re-measured white-referenced on the 2020-05 crop: mottled purple-brown, mean #977265. Brick parapet pinned at 6.1 m; bodyFromRoof {tolM 3, from highest} (kit #82) keeps the 5.8 m parapet parts and the 8.5 m top storey, drops the 3 m garden sheds. Zinc top storey drawn as an annex on the roof."
+ ]
+}

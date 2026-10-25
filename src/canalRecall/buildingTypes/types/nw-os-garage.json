@@ -1,0 +1,339 @@
+{
+ "id": "nw-os-garage",
+ "label": "Oostoever Sloterplas (1998-99, Alhambralaan, Mezquitalaan) three- and four-storey terraced house in dark red brick: timber garage door and a white concrete door surround on the ground storey, a four-light ribbon window on each upper storey; flat roof",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 69,
+  "bouwjaar": [
+   1999,
+   1999
+  ],
+  "lengthM": 5.2,
+  "widthM": 11.1,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 3,
+ "footprintRangeM": {
+  "frontage": [
+   4.8,
+   5.7
+  ],
+  "depth": [
+   6,
+   12.5
+  ]
+ },
+ "bodyFromRoof": {
+  "tolM": 0.6
+ },
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.05,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.22,
+  "pitchDeg": 0
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "annexes": [
+  {
+   "id": "back-three",
+   "facade": "back",
+   "u": [
+    0,
+    5.2
+   ],
+   "d": [
+    0,
+    4
+   ],
+   "to": {
+    "storey": 3
+   },
+   "material": "wall",
+   "variants": [
+    "four"
+   ],
+   "evidence": "3DBAG 0363100012107766: the 11.1 m four-storey street body and a 8.5 m three-storey part behind it"
+  }
+ ],
+ "defaultVariant": "brick",
+ "variants": {
+  "brick": {
+   "label": "dark red brick, white frames, timber garage doors, white door surrounds",
+   "evidence": "terraces #70 #73 (Alhambralaan, Mezquitalaan)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#93503d",
+     "measured": true
+    },
+    "frame": "#f2f1ec",
+    "glass": "#3b4249",
+    "door": "#dfe1dd",
+    "accent": "#d8d8d2",
+    "rail": "#e8e8e4",
+    "dark": "#8a5a36",
+    "column": "#e4e4df",
+    "joint": "#62666b",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#5f5d5a"
+    }
+   }
+  },
+  "four": {
+   "label": "as brick, four storeys on the street with a three-storey back part",
+   "evidence": "terrace #67 (Mezquitalaan)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#93503d",
+     "measured": true
+    },
+    "frame": "#f2f1ec",
+    "glass": "#3b4249",
+    "door": "#dfe1dd",
+    "accent": "#d8d8d2",
+    "rail": "#e8e8e4",
+    "dark": "#8a5a36",
+    "column": "#e4e4df",
+    "joint": "#62666b",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#5f5d5a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012071215.jpg",
+     "pand": "0363100012071215",
+     "address": "Alhambralaan",
+     "note": "sunlit 2020-05 and 2024-11: per 5.2 m house a timber garage door (2 m) and a white concrete door surround with a glazed door; a four-light ribbon window on each upper storey; not mirrored"
+    },
+    {
+     "photo": "survey crop 0363100012140219.jpg",
+     "pand": "0363100012140219",
+     "address": "Mezquitalaan",
+     "note": "2022-04: same; garage doors timber, red or brown"
+    },
+    {
+     "photo": "survey crop 0363100012107766.jpg",
+     "pand": "0363100012107766",
+     "address": "Mezquitalaan",
+     "note": "2024-11: same front over four storeys"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.15,
+       "w": 2.05,
+       "h": 2.3,
+       "sill": 0,
+       "depth": 0.03,
+       "colour": "dark",
+       "note": "timber garage door (some painted red or brown)"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.26,
+       "w": 0.18,
+       "h": 2.6,
+       "sill": 0,
+       "depth": 0.15,
+       "colour": "column",
+       "note": "white concrete door surround: left jamb"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.44,
+       "w": 0.18,
+       "h": 2.6,
+       "sill": 0,
+       "depth": 0.15,
+       "colour": "column",
+       "note": "right jamb"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.85,
+       "w": 1.36,
+       "h": 0.25,
+       "sill": 2.35,
+       "depth": 0.15,
+       "colour": "column",
+       "note": "head"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.85,
+       "w": 0.95,
+       "h": 2.25,
+       "note": "white-grey glazed door"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 2.35,
+       "w": 3.3,
+       "h": 1.25,
+       "sill": 0.9,
+       "lights": 4
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012071215.jpg",
+     "pand": "0363100012071215",
+     "address": "Alhambralaan",
+     "note": "garden side not photographed from the street: garden door, living-room window and upper windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1,
+       "w": 0.9,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.3,
+       "w": 2.2,
+       "h": 1.6,
+       "sill": 0.6,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.8,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012071215.jpg",
+     "pand": "0363100012071215",
+     "address": "Alhambralaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012071215.jpg",
+     "pand": "0363100012071215",
+     "address": "Alhambralaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick: overcast 2024-11 reads dark red-brown; sunlit 2020-05 patches under tree shade #ebaa87 (warm low sun); drawn #93503d.",
+  "Storeys from 3DBAG (3 at 8.5 m, 4 at 11.1 m). bodyFromRoof drops the 3 m back sheds."
+ ]
+}

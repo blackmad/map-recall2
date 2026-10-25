@@ -247,12 +247,12 @@ function storageDoor(c: Ctx, f: Frame, u: number, w: number, h: number, d0 = 0):
  * #80 arched panel: a front plate whose top `rise` metres are a pointed parabolic arch (Amsterdam School portals), fanned from the
  * centre of its springing line and clipped to the bay [b0, b1], so a portal on a party line draws half in each pand.
  */
-function archPanel(c: Ctx, f: Frame, u: number, w: number, v0: number, h: number, rise: number, d: number, key: MaterialKey, b0: number, b1: number): void {
+function archPanel(c: Ctx, f: Frame, u: number, w: number, v0: number, h: number, rise: number, d: number, key: MaterialKey, b0: number, b1: number, round = false): void {
   const cl = (x: number) => Math.min(b1, Math.max(b0, x)), vs = v0 + h - rise, n = 8;
   const x0 = cl(u - w / 2), x1 = cl(u + w / 2);
   if (x1 - x0 < 1e-3) return;
   plate(c.mb, key, f, x0, x1, v0, vs, d);
-  const pt = (i: number): [number, number] => { const t = -1 + 2 * i / n; return [u + t * w / 2, vs + rise * (1 - t * t)]; };
+  const pt = (i: number): [number, number] => { const t = -1 + 2 * i / n; return [u + t * w / 2, vs + rise * (round ? Math.sqrt(Math.max(0, 1 - t * t)) : 1 - t * t)]; };
   for (let i = 0; i < n; i++) {
     const [ua, va] = pt(i), [ub, vb] = pt(i + 1);
     const pa: [number, number] = [cl(ua), va], pb: [number, number] = [cl(ub), vb], pc: [number, number] = [cl(u), vs];
@@ -367,7 +367,13 @@ function placeFacade(c: Ctx, f: Frame, length: number, id: FacadeId, bays: Bay[]
           }
           case 'panel': {
             const key = (c.k as unknown as Record<string, MaterialKey>)[e.colour ?? 'frame'];
-            if (e.archM !== undefined) archPanel(c, f, u, w, floor + (e.sill ?? 0), h, e.archM, d0 + (e.depth ?? 0.08), key, u0, u1);
+            if (e.archM !== undefined) archPanel(c, f, u, w, floor + (e.sill ?? 0), h, e.archM, d0 + (e.depth ?? 0.08), key, u0, u1, e.archShape === 'round');
+            else if (e.diamond) {
+              // #82: a square set on its point, a front plate `depth` proud of the wall
+              const v0 = floor + (e.sill ?? 0), dd = d0 + (e.depth ?? 0.08);
+              c.mb.tri(key, f.p(u, v0, dd), f.p(u + w / 2, v0 + h / 2, dd), f.p(u, v0 + h, dd));
+              c.mb.tri(key, f.p(u, v0, dd), f.p(u, v0 + h, dd), f.p(u - w / 2, v0 + h / 2, dd));
+            }
             else box(c.mb, key, f, u - w / 2, u + w / 2, floor + (e.sill ?? 0), floor + (e.sill ?? 0) + h, d0, d0 + (e.depth ?? 0.08));
             break;
           }
@@ -414,11 +420,11 @@ function asymGable(c: Ctx, p: {L: number; W: number; ef: number; eb: number; rid
   }
 }
 
-function roofSolid(c: Ctx, p: {form: 'gable' | 'hip' | 'flat'; ridge: 'long' | 'short'; L: number; W: number; eaves: number; ridgeH: number; eavesOv: number; vergeOv: number; flatThickness: number; hipEnds?: {lo: boolean; hi: boolean}}): void {
+function roofSolid(c: Ctx, p: {form: 'gable' | 'hip' | 'flat'; ridge: 'long' | 'short'; L: number; W: number; eaves: number; ridgeH: number; eavesOv: number; vergeOv: number; flatThickness: number; hipEnds?: {lo: boolean; hi: boolean}; flatVerge?: boolean}): void {
   const {mb, k} = c;
   if (p.form === 'flat') {
-    const ov = p.eavesOv, t = p.flatThickness;
-    box(mb, k.roof, IDENTITY, -p.L / 2 - ov, p.L / 2 + ov, p.eaves - t, p.eaves, -p.W / 2 - ov, p.W / 2 + ov, {back: false, bottom: false});
+    const ov = p.eavesOv, t = p.flatThickness, ovx = p.flatVerge ? p.vergeOv : ov; // #82 flatVerge: party-wall sides take the verge overhang
+    box(mb, k.roof, IDENTITY, -p.L / 2 - ovx, p.L / 2 + ovx, p.eaves - t, p.eaves, -p.W / 2 - ov, p.W / 2 + ov, {back: false, bottom: false});
     return;
   }
   // Map (s along the ridge, t across, y) to local x/z.
@@ -713,7 +719,7 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
   const lowTop = pilotis ? sh - slabBelow : sh;
   if (pilotis) {
     const core = spec.facades.front.bays.length ? layoutBays(spec.facades.front.bays, L).filter(p => p.bay.core) : [];
-    box(mb, k.column, IDENTITY, -L / 2, L / 2, sh - slabBelow, sh, zb, zf, {back: false, bottom: false, top: true});
+    box(mb, spec.ground.slabPalette ? key(spec.ground.slabPalette) : k.column, IDENTITY, -L / 2, L / 2, sh - slabBelow, sh, zb, zf, {back: false, bottom: false, top: true});
     box(mb, k.wall, IDENTITY, -L / 2, L / 2, sh, wallTop, zb, zf, {back: false, bottom: true, ends: gabled});
     // recessed ground wall, full length
     box(mb, k.door, IDENTITY, -L / 2, L / 2, 0, lowTop, zb + rec, zf - rec, {back: false, bottom: true, top: true});
@@ -784,8 +790,8 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
     plate(mb, k.wall, hi.f, 0, hi.len, wallTop, Math.max(params.eavesM, backEaves), 0);
     asymGable(ctx, {L, W, ef: params.eavesM, eb: backEaves, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, gableKey: gabled ? k.gable : k.wall});
   } else if (pairGable) pairGableRoof(ctx, spec, frames, L, W, params.eavesM, ridgeH, !!params.mirror, k.gable);
-  else if (hipEnds || drawnForm !== roofForm) roofSolid(ctx, {form: drawnForm, ridge, L, W, eaves: params.eavesM, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, flatThickness: flatT, ...(drawnForm === 'hip' ? {hipEnds} : {})});
-  else roofSolid(ctx, {form: roofForm, ridge, L, W, eaves: params.eavesM, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, flatThickness: flatT});
+  else if (hipEnds || drawnForm !== roofForm) roofSolid(ctx, {form: drawnForm, ridge, L, W, eaves: params.eavesM, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, flatThickness: flatT, ...(drawnForm === 'hip' ? {hipEnds} : {}), ...(spec.roof.flatVerge ? {flatVerge: true} : {})});
+  else roofSolid(ctx, {form: roofForm, ridge, L, W, eaves: params.eavesM, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, flatThickness: flatT, ...(spec.roof.flatVerge ? {flatVerge: true} : {})});
   if (spec.roof.chimneys?.length && pitched && !pairGable && ridge === 'long') {
     const hw = W / 2, sl = asym ? asymSlope(hw, params.eavesM, backEaves, ridgeH) : {tan: Math.max(0.1, ridgeH - params.eavesM) / hw, tRidge: 0};
     chimneysUnit(ctx, spec.roof.chimneys, L, Math.min(params.eavesM, backEaves), ridgeH, sl.tan, sl.tRidge, !!params.mirror);

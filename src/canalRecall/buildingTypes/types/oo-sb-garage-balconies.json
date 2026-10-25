@@ -1,0 +1,279 @@
+{
+ "id": "oo-sb-garage-balconies",
+ "label": "Sporenburg (J.F. van Hengelstraat, 1990s) 4.2 m patio house: a recessed garage behind concrete columns with a folding gate, a cantilevered pink-grey brick storey with three tall timber windows each behind a small steel balcony cage, a flat parapet; a taller wing at the back of the plot",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 69,
+  "bouwjaar": [
+   1997,
+   1999
+  ],
+  "lengthM": 4.2,
+  "widthM": 17.1,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  6.2,
+  7.4
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   3.9,
+   4.6
+  ],
+  "depth": [
+   16.5,
+   17.6
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.05,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.2,
+  "pitchDeg": 0,
+  "eavesPinM": 6.8
+ },
+ "ground": {
+  "mode": "pilotis",
+  "recessM": 1,
+  "columnPitchM": 4.2,
+  "columnM": 0.2,
+  "slabPalette": "wall"
+ },
+ "annexes": [
+  {
+   "id": "back-wing",
+   "facade": "back",
+   "u": [
+    0,
+    4.2
+   ],
+   "d": [
+    -6,
+    0
+   ],
+   "from": {
+    "eaves": 0
+   },
+   "to": {
+    "eaves": 2.8
+   },
+   "evidence": "3DBAG: the back 6 m of each plot is a 9.5 m wing, the front 11 m 6.8 m (patio side not seen from the street)"
+  }
+ ],
+ "defaultVariant": "brick",
+ "variants": {
+  "brick": {
+   "label": "pink-grey brick, orange timber frames, grey steel cages and gates",
+   "evidence": "terrace #27 (J.F. van Hengelstraat)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#a88c7c",
+     "measured": true
+    },
+    "frame": "#7a4a35",
+    "glass": "#3a4148",
+    "door": "#62645f",
+    "accent": "#cfccc4",
+    "rail": "#6d716f",
+    "dark": "#3c3e3d",
+    "column": "#d3d0c8",
+    "joint": "#5d6166",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#8d8d88",
+     "measured": false
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012088036.jpg",
+     "pand": "0363100012088036",
+     "address": "J.F. van Hengelstraat",
+     "note": "2022-04 and 2017-04 (sunlit): per 4.2 m house a garage recessed about 1 m behind 0.4 m concrete columns on the party walls, grey folding gate; the brick storey above cantilevers to the column line; three 0.7 m tall timber windows per house, each behind a small grey steel cage; flat parapet at about 6.8 m"
+    },
+    {
+     "photo": "survey crop 0363100012101973.jpg",
+     "pand": "0363100012101973",
+     "address": "J.F. van Hengelstraat",
+     "note": "2022-04: same recessed garages, concrete columns, folding gates, three windows with steel cages per house"
+    },
+    {
+     "photo": "survey crop 0363100012120357.jpg",
+     "pand": "0363100012120357",
+     "address": "J.F. van Hengelstraat",
+     "note": "2020-04: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 3
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "repeat": 3,
+       "u": 0,
+       "w": 0.7,
+       "h": 2.05,
+       "sill": 0.35,
+       "lights": 1,
+       "frameM": 0.08
+      },
+      {
+       "kind": "balcony",
+       "levels": [
+        1
+       ],
+       "repeat": 3,
+       "u": 0,
+       "w": 0.85,
+       "depth": 0.4,
+       "railing": "solid",
+       "note": "small grey steel cage"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012088036.jpg",
+     "pand": "0363100012088036",
+     "address": "J.F. van Hengelstraat",
+     "note": "patio side not photographed: glazed ground storey and two windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "span": true,
+       "inset": 0.4,
+       "h": 2.2,
+       "sill": 0.1,
+       "lights": 3,
+       "frameM": 0.08
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.2,
+       "w": 1.2,
+       "h": 1.6,
+       "sill": 0.8,
+       "lights": 2,
+       "frameM": 0.08
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "right",
+       "u": 1.2,
+       "w": 1.2,
+       "h": 1.6,
+       "sill": 0.8,
+       "lights": 2,
+       "frameM": 0.08
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012088036.jpg",
+     "pand": "0363100012088036",
+     "address": "J.F. van Hengelstraat",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012088036.jpg",
+     "pand": "0363100012088036",
+     "address": "J.F. van Hengelstraat",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick read #a49181-#b19c8d in the 2017-04 crop (sun 40 degrees; the 2022 crops clip), drawn #a88c7c. Frames dark brown-red timber (#7a4a35). The brick storey runs down to the soffit (kit ground.slabPalette wall, #82).",
+  "Eaves pinned at 6.8 m (3DBAG front roof 6.76 m); the back wing (3DBAG 9.55 m over the last 6 m of the plot) is an annex. Plots of 14 or 20 m (corner and end houses) are held, and so is the north row of the block (fronting Ertskade, no street panorama on that side)."
+ ]
+}

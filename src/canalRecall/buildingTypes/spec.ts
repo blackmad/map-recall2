@@ -64,6 +64,10 @@ export interface Element {
    * School portiek portals). Absent: the panel is the usual box.
    */
   archM?: number;
+  /** Panel with `archM` (#82): `round` draws the head as a half ellipse (a round-arched porch or portal) instead of the pointed arch. Absent: pointed (unchanged). */
+  archShape?: 'pointed' | 'round';
+  /** Panel only (#82): a rhombus plate (a square set on its point, `w` wide and `h` tall) instead of the box, e.g. the white diamond surround of a small window (Weesp-Zuid 1950). Absent: the box. */
+  diamond?: boolean;
   /** Window/ribbon/door: `strips` draws the frame (door: surround) as border strips 4.5 cm in front instead of a plate stacked 5 mm under the glass/leaf (big glazing, many openings: no z-fight). */
   frameStyle?: 'plate' | 'strips';
   /** Gallery only: vertical cross walls (fins) evenly from end to end of the gallery, ends included. */
@@ -233,6 +237,12 @@ export interface RoofSpec {
    * house, whose steep gable 3DBAG reads as a hip) is drawn as a front gable. Absent: the 3DBAG roof form as is (byte-identical).
    */
   hipFreeEnds?: boolean;
+  /**
+   * Flat roof only (#82): the slab overhangs the two party-wall sides by `vergeOverhangM` and only the front and back by
+   * `eavesOverhangM`, so a projecting front fascia does not run into the neighbour's roof (terraced flat roofs). Absent: all four
+   * sides take `eavesOverhangM` (unchanged).
+   */
+  flatVerge?: boolean;
   /** Chimney stacks on the ridge of a long-ridge gable or hip (one design, every house); mirrored houses mirror them. */
   chimneys?: ChimneySpec[];
 }
@@ -295,6 +305,8 @@ export interface GroundSpec {
   recessM?: number;
   columnPitchM?: number;
   columnM?: number;
+  /** Pilotis (#82): palette entry of the 0.5 m slab edge under the first floor (default `column`, the white band); `wall` when the brick storey runs down to the soffit (Sporenburg garage rows). */
+  slabPalette?: PaletteKey;
   /** Storage doors in the recessed wall. */
   storageDoorW?: number;
   /** Solid ground: the palette's `plinth` covers only the lowest `plinthM` metres as a proud band (tiled plinth under render) instead of the whole ground storey. */
@@ -379,7 +391,9 @@ export interface TypeSpec {
   /** The footprint rectangle is the tall body only, measured from the 3DBAG roof (build.ts `bodyRectFromItem`), not the BAG ring with its low annexes. */
   /** `{tolM}`: roof surfaces within `tolM` of the largest one's mean height count as the body (default 0.6 m, flat slabs); a pitched body needs
    * both slopes, whose mean heights differ by a metre or more when one is a catslide. */
-  bodyFromRoof?: boolean | {tolM: number};
+  /** `from: 'highest'` (#82): the reference surface is the highest roof surface instead of the largest (a row whose low garden sheds
+   *  out-cover the tall body on some pands); absent: the largest, unchanged. */
+  bodyFromRoof?: boolean | {tolM: number; from?: 'largest' | 'highest'};
   roof: RoofSpec;
   ground: GroundSpec;
   defaultVariant: string;
@@ -425,6 +439,8 @@ export function validateSpec(spec: TypeSpec): string[] {
     if (new Set(f.bays.map(b => b.id)).size !== f.bays.length) errors.push(`${id}: duplicate bay ids`);
     for (const b of f.bays) for (const e of b.elements) for (const v of [...(e.variants ?? []), ...(e.exceptVariants ?? [])]) if (!spec.variants[v]) errors.push(`${id}/${b.id}: unknown variant ${v}`);
     for (const b of f.bays) for (const e of b.elements) {
+      if (e.archShape !== undefined && e.archM === undefined) errors.push(`${id}/${b.id}: archShape needs archM`);
+      if (e.diamond && (e.kind !== 'panel' || e.archM !== undefined)) errors.push(`${id}/${b.id}: diamond is for plain panels`);
       if (e.archM !== undefined && (e.kind !== 'panel' || !(e.archM > 0 && e.archM < (e.h ?? 1)))) errors.push(`${id}/${b.id}: archM needs a panel and 0 < archM < h`);
       if ((e.sash !== undefined || e.sashM !== undefined || e.round) && (e.kind !== 'window' || e.frameM === undefined || e.frameStyle === 'strips')) errors.push(`${id}/${b.id}: sash/round need a plate-frame window with frameM`);
       if (e.sashM !== undefined && !(e.sashM > 0 && e.sashM < Math.min(e.w ?? Infinity, e.h ?? Infinity) / 4)) errors.push(`${id}/${b.id}: sashM ${e.sashM} out of range`);
@@ -450,6 +466,7 @@ export function validateSpec(spec: TypeSpec): string[] {
     for (const v of [...(ch.variants ?? []), ...(ch.exceptVariants ?? [])]) if (!spec.variants[v]) errors.push(`chimney ${i}: unknown variant ${v}`);
   }
   if (spec.roof.monoPitch && (spec.roof.form !== 'gable' || spec.roof.ridge !== 'long' || spec.roof.eavesFromPlanes || spec.roof.pairGable)) errors.push('monoPitch needs a long-ridge gable without eavesFromPlanes or pairGable');
+  if (spec.roof.flatVerge && spec.roof.form !== 'flat') errors.push('flatVerge is for flat roofs');
   if (spec.roof.pairGable && spec.roof.form === 'flat') errors.push('pairGable needs a pitched roof');
   if (spec.annexes && new Set(spec.annexes.map(a => a.id)).size !== spec.annexes.length) errors.push('duplicate annex ids');
   return errors;
