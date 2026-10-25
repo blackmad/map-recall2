@@ -39,7 +39,7 @@ assert.equal(beginFerryFrame(g, water), true, 'boards at the quay-edge pier head
 assert.equal(g.player.ferryOrigin?.id, 'A');
 assert.equal(g.player.ferryDestinations, 'North');
 assert.equal(g.player.length, FERRY_SIZE.length);
-assert.equal(g.player.maxSpeed, 135);
+assert.equal(g.player.maxSpeed, 180);
 assert.ok(water(g.player.x, g.player.y), 'launched on water');
 assert.ok(Math.hypot(g.player.x, g.player.y) > 40 && Math.hypot(g.player.x, g.player.y) < 60, 'launched with the stern at the pier, hull afloat');
 
