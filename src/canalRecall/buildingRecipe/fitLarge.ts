@@ -22,6 +22,7 @@ import {ARCADE_PROPORTIONS, DEFAULT_PITCH_M, largeSystem, LOGGIA, PLINTH, SOUTER
 import {panelRuns, runBayAxes} from '../blockBuilding/curve.ts';
 import type {Lantern} from '../blockBuilding/components.ts';
 import {MESH_SCREEN} from '../blockBuilding/components.ts';
+import {CLADDING, PANEL_ROW_M, claddingHeights, type CladdingFit} from '../blockBuilding/cladding.ts';
 import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {roofHeightAt} from './facts.ts';
 import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellRepair.ts';
@@ -85,6 +86,8 @@ export interface LargeGroupFit {
   loggiaDepthM?: number;
   /** row split (intent `houses`): the main panel cut into houses, each with its own spec system, wall slot, eaves and crown */
   houses?: {panel: number; segs: LargeHouseFit[]};
+  /** facade cladding (intent `cladding`, blockBuilding/cladding.ts): heights, profile and its sheet and line slots */
+  cladding?: CladdingFit;
 }
 /** One house of a row split on the main panel (u in panel metres; bays numbered from `bayOffset` across the row). */
 export interface LargeHouseFit {
@@ -360,6 +363,16 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       if (slots.wall === 'wall') { slots.wall = `wall@g${gi}`; palette[slots.wall] = w.wallMaterial === 'render' ? RENDER_WHITE : palette.wall; }
       slotMaterial[slots.wall] = w.wallMaterial === 'render' ? 'stucco' : w.wallMaterial;
     }
+    // Cladding (GitHub #49): the group's wall gets a slot of its own (its triangles move to the sheet slot after compose),
+    // the sheet and its lines their own slots; an authored colour is a measured one.
+    const clad = w.cladding, cladSlot = clad ? `${clad.kind === 'paint' ? 'painted' : 'clad'}@g${gi}` : undefined, cladLine = clad ? `cladline@g${gi}` : undefined;
+    if (clad && cladSlot && cladLine) {
+      if (slots.wall === 'wall') { slots.wall = `wall@g${gi}`; palette[slots.wall] = palette.wall; }
+      palette[cladSlot] = clad.colour ? swatch(clad.colour) : palette[slots.wall];
+      palette[cladLine] = clad.lines ? swatch(clad.lines) : shade(palette[cladSlot], clad.kind === 'louvres' ? 0.45 : 0.78);
+      if (clad.colour) measuredSlots.push(cladSlot);
+      if (clad.lines) measuredSlots.push(cladLine);
+    }
     if (w.palette?.frame) { slots.frame = `frame@g${gi}`; palette[slots.frame] = swatch(w.palette.frame); }
     if (w.palette?.stone) { slots.stone = `stone@g${gi}`; palette[slots.stone] = swatch(w.palette.stone); }
     if (w.palette?.glass) { slots.glass = `glass@g${gi}`; palette[slots.glass] = swatch(w.palette.glass); }
@@ -506,6 +519,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.wallSplit && main && splitSlot ? {split: {panel: main.index, uM: splitAtBay(main.uMin, main.uMax, pitchM, w.wallSplit.at), slot: splitSlot}} : {}),
       ...(arcade ? {arcade: {...arcade, facing: w.arcade?.facing !== false}} : {}),
       ...(houses ? {houses} : {}),
+      ...(clad && cladSlot && cladLine ? {cladding: {kind: clad.kind, ...claddingHeights(eaves, clad.from, clad.to), pitchM: clad.pitch ?? (clad.kind === 'paint' ? 0 : CLADDING[clad.kind].pitch), rowPitchM: clad.rowPitch ?? PANEL_ROW_M, slot: cladSlot, lineSlot: cladLine,
+        ...(w.wallSplit && main && splitSlot ? {side: {panel: main.index, uM: splitAtBay(main.uMin, main.uMax, pitchM, w.wallSplit.at), right: clad.side === 'right', ...(clad.side === 'right' ? {source: splitSlot} : {})}} : {})}} : {}),
       ...(w.loggias ? {loggiaDepthM: r3(Math.max(...w.loggias.storeys.map(k => (st.lines[k + 1] ?? st.lines[k]) - st.lines[k])) * (w.loggias.deep ?? LOGGIA.deep))} : {}), slots});
   });
   // Unlisted walls: one system at the civic storey height and the system's default pitch.

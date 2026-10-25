@@ -66,14 +66,14 @@ export async function largeCatalogueEntry(id: string, catalogue: {models: any[]}
   if (advisory.length) console.log(`${id}: advisory gates not passing: ${advisory.map(g => `${g.id}=${JSON.stringify(g.value)}`).join('; ')}`);
   if (bad.length) throw Error(`${id}: gates failed (${bad.map(g => g.id).join(', ')}); not installing`);
   // likeness gate (likenessGate.ts): street-facing groups must look like their photo, or be allowed as inferred with a note
-  const gate = likenessGate(likeness && likeness.map(g => ({group: g.group, system: intent.walls[g.group].system, street: intent.walls[g.group].street,
+  const gate = likenessGate(likeness && likeness.map(g => ({group: g.group, system: intent.walls[g.group].system, street: intent.walls[g.group].street, ...(intent.walls[g.group].cladding ? {clad: true} : {}),
     verdict: g.status === 'no-photo' ? 'NO PHOTO' as const : g.likeness!.verdict, reasons: g.likeness?.reasons})), allowInferred);
   if (!gate.ok) throw Error(`${id}: likeness gate refused (${gate.refused.join('; ')}); fix the intent, or --allow-inferred=<group>:<note> for a group the photo cannot judge`);
   const glb = await fs.readFile(path.join(ARTIFACTS, id, 'model.glb')), b = await bounds(glb);
   const pand = intent.pandId, entryId = `ordinary-${pand}`, replaced = catalogue.models.find(m => m.id === entryId) ?? null;
   const facts = built.facts, [ax, ay] = built.anchorRD;
   const carried = Object.fromEntries(CARRY.filter(k => replaced?.[k] !== undefined).map(k => [k, replaced[k]]));
-  const groups = built.recipe.groups.filter(g => g.system !== 'blank' || g.entrance);
+  const groups = built.recipe.groups.filter(g => g.system !== 'blank' || g.entrance || g.cladding);
   const entry = {
     id: entryId, category: 'ordinary' as const, buildingId: `NL.IMBAG.Pand.${pand}`, name: replaced?.name ?? intent.address,
     hash: report.sha256, sha256: report.sha256, meshHash: meshHashOf(compileLargeBuilding(intent, built.facts, {budget: 1e9}).group), bytes: report.bytes, triangles: report.triangles, materials: report.materials, textures: 0, scale: 1, bounds: b,
@@ -84,7 +84,7 @@ export async function largeCatalogueEntry(id: string, catalogue: {models: any[]}
     ...carried,
     // Not 'building-recipes': that tag means a street-survey recipe house (buildingCategory.test.ts).
     source: 'building-recipes-large', recipe: {id, kind: 'large', intentSources: intent.sources.map(s => s.image ?? s.id), gates: report.gates.map(g => `${g.id}:${g.pass ? 'pass' : 'FAIL'}`),
-      wallGroups: groups.map(g => `${g.system}${g.entrance ? '+entrance' : ''} ${g.storeys}st ${g.bays}b`)},
+      wallGroups: groups.map(g => `${g.system}${g.entrance ? '+entrance' : ''}${g.cladding ? `+${g.cladding.kind}` : ''} ${g.storeys}st ${g.bays}b`)},
     scope: 'Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.',
     limitations: [...gate.limitations, ...(intent.notes ?? []).filter(n => /not modelled|below the component|not evidenced|not used|blank/i.test(n))],
     reviewState: gate.reviewState, sourceUrls: [`https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${pand}`, 'https://api.data.amsterdam.nl/panorama/'], updatedAt: now,

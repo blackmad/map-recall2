@@ -99,6 +99,26 @@ export type KitWindows = {
    * windows of kit review round 3): a frame round the glass and `cols - 1` mullions and `rows - 1` transoms across it.
    */
   sash?: { hex: string; cols: number; rows: number };
+  /** Facade cladding zones on every wall (opt in, GitHub #49; KitCladding): drawn round the fill rows' bands. */
+  cladding?: KitCladding[];
+};
+/**
+ * A cladding zone on every wall edge of a hall or body, from `z0` to `z1` (default the eaves / wall top), drawn as a
+ * sheet in `hex` a hand's breadth proud (the plinth's layer) with lines in `lineHex` on the frame layer:
+ * - `ribs`: vertical ribbed (trapezoidal) metal sheet, a rib every `pitchM` (default 0.5 m);
+ * - `boards`: horizontal profiled sheet or boarding, a line every `pitchM` (default 0.35 m);
+ * - `louvres`: horizontal slats in `hex` every `pitchM` (default 0.3 m) over a dark `lineHex` ground;
+ * - `panels`: flat cassette panels, joints every `pitchM` across (default 1.2 m) and `rowM` up (default 0.9 m);
+ * - `curtain`: a glass skin in `hex` with mullions every `pitchM` (default 1.5 m) and transoms every `rowM` (default
+ *   3.3 m) in `lineHex` (default a pale aluminium).
+ * Fill window rows that cross the zone keep their band: the cladding stops 0.15 m short of each row (one ribbon of
+ * windows through a ribbed hall, kit review row 279). A plinth or top band keeps its own height.
+ */
+export type KitCladdingKind = 'ribs' | 'boards' | 'louvres' | 'panels' | 'curtain';
+export type KitCladding = {
+  kind: KitCladdingKind; hex: string; z0: number; z1?: number; pitchM?: number; rowM?: number; lineHex?: string;
+  /** `curtain`: opaque spandrel bands `spandrelM` tall in `spandrelHex` (default the line colour) at every transom */
+  spandrelM?: number; spandrelHex?: string;
 };
 /**
  * A pitched or hipped roof over one rectangle of the footprint, at the host's eaves: a nave, a
@@ -132,7 +152,7 @@ export type KitTower = {
  * `plinth` from the foot to `z1`. A plain body kit (the generic cinema and worship bodies, NEMO) otherwise draws
  * nothing of its own, only its host's recoloured walls.
  */
-export type KitTrim = { coping?: { m: number; hex: string }; plinth?: { z1: number; hex: string } };
+export type KitTrim = { coping?: { m: number; hex: string }; plinth?: { z1: number; hex: string }; /** Facade cladding zones (KitCladding), clear of the plinth and coping. */ cladding?: KitCladding[] };
 export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[]; halls?: KitHalls[]; wall?: KitWall; hides?: string[]; body?: string[]; /** Hand-modelled volumes (landmarkForms.ts). */ forms?: KitForm[]; trim?: KitTrim };
 
 export const MAT_HEX: Record<Mat, string> = {
@@ -853,6 +873,64 @@ function ribbon(sink: TriSink, e: WallEdge, row: KitWindowRow, glass: string, fr
   }
 }
 
+/** Default line pitch per cladding kind (m), panel/curtain row height, and line widths (m). */
+export const CLADDING_PITCH: Readonly<Record<KitCladdingKind, number>> = { ribs: 0.5, boards: 0.35, louvres: 0.3, panels: 1.2, curtain: 1.5 };
+export const CLADDING_ROW_M = { panels: 0.9, curtain: 3.3 } as const;
+const CLADDING_LINE = { ribs: 0.08, boards: 0.06, louvres: 0.15, panels: 0.04, curtain: 0.1 } as const;
+const CURTAIN_FRAME_HEX = '#c9cdd0';
+/** `hex` scaled towards black by `k` (the lines of a sheet in its own colour read as its shadowed folds). */
+export function shadeHex(hex: string, k: number): string {
+  const v = parseInt(hex.slice(1), 16), c = (x: number) => Math.max(0, Math.min(255, Math.round(x * k))).toString(16).padStart(2, '0');
+  return `#${c((v >> 16) & 255)}${c((v >> 8) & 255)}${c(v & 255)}`;
+}
+/** [z0, z1] minus the `gaps` (each widened by `pad`), pieces under `min` dropped. */
+export function claddingZones(z0: number, z1: number, gaps: readonly [number, number][], pad = 0.15, min = 0.3): [number, number][] {
+  let zones: [number, number][] = [[z0, z1]];
+  for (const [a0, a1] of gaps) {
+    const g0 = a0 - pad, g1 = a1 + pad;
+    zones = zones.flatMap(([a, b]) => (g1 <= a || g0 >= b ? [[a, b]] : [[a, g0], [g1, b]]) as [number, number][]);
+  }
+  return zones.filter(([a, b]) => b - a >= min);
+}
+/** One cladding zone's sheet and lines on one wall edge, between heights z0 and z1. */
+function claddingOnEdge(sink: TriSink, e: WallEdge, z0: number, z1: number, c: KitCladding) {
+  if (e.len < 1 || z1 - z0 < 0.3) return;
+  const rect = (s0: number, s1: number, a: number, b: number, off: number, hex: string) => wallPolygon(sink, e.o, e.t, e.n, off, [[s0, a], [s1, a], [s1, b], [s0, b]], hex);
+  const pitch = c.pitchM ?? CLADDING_PITCH[c.kind], w = CLADDING_LINE[c.kind], inset = 0.1, s0 = inset, s1 = e.len - inset;
+  const line = c.lineHex ?? (c.kind === 'curtain' ? CURTAIN_FRAME_HEX : c.kind === 'louvres' ? shadeHex(c.hex, 0.45) : shadeHex(c.hex, 0.78));
+  // louvres: the dark ground behind the slats is the sheet, the slats the lines
+  rect(0, e.len, z0, z1, OFF.plinth, c.kind === 'louvres' ? line : c.hex);
+  const vertical = (step: number) => { const n = Math.max(1, Math.round((s1 - s0) / step)); for (let k = 1; k < n; k++) { const s = s0 + ((s1 - s0) * k) / n; rect(s - w / 2, s + w / 2, z0, z1, OFF.frame, line); } };
+  const horizontal = (step: number, hex: string, wd: number, from = z0) => { for (let z = from + step; z < z1 - wd / 2; z += step) rect(s0, s1, z - wd / 2, z + wd / 2, OFF.frame, hex); };
+  switch (c.kind) {
+    case 'ribs': vertical(pitch); break;
+    case 'boards': horizontal(pitch, line, w); break;
+    case 'louvres': horizontal(pitch, c.hex, w, z0 - pitch / 2); break;
+    case 'panels': vertical(pitch); horizontal(c.rowM ?? CLADDING_ROW_M.panels, line, w); break;
+    case 'curtain': {
+      // sill and head rails, transoms (or spandrel bands) every rowM, mullions in the glass between them (no overlap)
+      const row = c.rowM ?? CLADDING_ROW_M.curtain, band = Math.max(w, c.spandrelM ?? 0), bands: [number, number, string][] = [[z0, z0 + w, line], [z1 - w, z1, line]];
+      for (let z = z0 + row; z < z1 - band / 2 - w; z += row) bands.push([z - band / 2, z + band / 2, c.spandrelHex ?? line]);
+      bands.sort((a, b) => a[0] - b[0]);
+      for (const [a, b, hex] of bands) rect(0, e.len, a, b, OFF.frame, hex);
+      const n = Math.max(1, Math.round((s1 - s0) / pitch));
+      for (let i = 0; i + 1 < bands.length; i++) {
+        const a = bands[i][1], b = bands[i + 1][0];
+        if (b - a > 0.05) for (let k = 1; k < n; k++) { const s = s0 + ((s1 - s0) * k) / n; rect(s - w / 2, s + w / 2, a, b, OFF.frame, line); }
+      }
+      break;
+    }
+  }
+}
+/** Every cladding zone on every edge of `ring`, clear of `floor`..`ceil` (plinth, top band) and the `gaps` (window rows). */
+function claddingOnRing(sink: TriSink, ring: readonly Vec2[], list: readonly KitCladding[], floor: number, ceil: number, gaps: readonly [number, number][]) {
+  const edges = wallEdges(ring);
+  for (const c of list) {
+    const z0 = Math.max(c.z0, floor), z1 = Math.min(c.z1 ?? ceil, ceil);
+    for (const [a, b] of claddingZones(z0, z1, gaps)) for (const e of edges) claddingOnEdge(sink, e, a, b, c);
+  }
+}
+
 /** The ring's edges with unit tangents and outward normals. */
 function wallEdges(ring: readonly Vec2[]): WallEdge[] {
   const pts = ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1] ? ring.slice(0, -1) : ring.slice();
@@ -883,6 +961,10 @@ function kitWindows(sink: TriSink, ring: readonly Vec2[], spec: KitHalls, win: K
   if (win.topBand) {
     const z1 = spec.eavesM, z0 = Math.max(0, z1 - win.topBand.m);
     for (const e of edges) if (e.len >= 0.2) wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, z0], [e.len, z0], [e.len, z1], [0, z1]], win.topBand.hex);
+  }
+  if (win.cladding?.length) {
+    const floor = win.plinth?.z1 ?? 0, ceil = spec.eavesM - (win.topBand?.m ?? 0);
+    claddingOnRing(sink, ring, win.cladding, floor, ceil, win.rows.map(r => [r.z0, r.z1] as [number, number]));
   }
   // A window centre inside a tower's plan (plus a margin) is behind the tower's own wall.
   const inTower = (p: Vec2) => (spec.towers ?? []).some(t => {
@@ -1033,6 +1115,10 @@ function bodyTrim(sink: TriSink, part: PartInput, trim: KitTrim) {
     if (e.len < 0.2) continue;
     if (trim.plinth && trim.plinth.z1 < z1 - z0) wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, z0], [e.len, z0], [e.len, z0 + trim.plinth.z1], [0, z0 + trim.plinth.z1]], trim.plinth.hex);
     if (trim.coping) { const c = Math.min(trim.coping.m, (z1 - z0) / 2); wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, z1 - c], [e.len, z1 - c], [e.len, z1], [0, z1]], trim.coping.hex); }
+  }
+  if (trim.cladding?.length) {
+    const floor = z0 + (trim.plinth && trim.plinth.z1 < z1 - z0 ? trim.plinth.z1 : 0), ceil = z1 - (trim.coping ? Math.min(trim.coping.m, (z1 - z0) / 2) : 0);
+    claddingOnRing(sink, part.ring, trim.cladding.map(c => ({ ...c, z0: z0 + c.z0, ...(c.z1 !== undefined ? { z1: z0 + c.z1 } : {}) })), floor, ceil, []);
   }
 }
 

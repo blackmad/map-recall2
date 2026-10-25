@@ -67,7 +67,7 @@
     1
    ],
    "system": "brick-bay-grid",
-   "entrance": true,
+   "ground": "blank",
    "palette": {
     "brick": "#716b61",
     "glass": "#3b3942"
@@ -77,31 +77,113 @@
     "brick": "#92928d"
    },
    "windowShape": {
-    "w": 0.45,
-    "h": 0.45,
-    "sill": 0
+    "w": 0.42,
+    "h": 0.42,
+    "sill": 0.12
    },
-   "baysPerStorey": 11
+   "baysPerStorey": 11,
+   "openBays": [
+    {
+     "storeys": [
+      1
+     ],
+     "bays": [
+      0,
+      1
+     ]
+    }
+   ],
+   "cladding": {
+    "kind": "ribs",
+    "colour": "#92928d",
+    "pitch": 0.3,
+    "from": 0.06,
+    "side": "right"
+   },
+   "hand": [
+    "system",
+    "ground",
+    "cladding",
+    "openBays",
+    "baysPerStorey",
+    "palette.brick",
+    "wallSplit",
+    "windowShape"
+   ]
   },
   {
    "wallSurfaces": [
     24
    ],
    "system": "brick-bay-grid",
+   "ground": "blank",
    "palette": {
     "brick": "#8c847c",
-    "glass": "#57534e"
+    "glass": "#57534e",
+    "frame": "#7a3a2c"
    },
    "wallSplit": {
     "at": 0.794,
     "brick": "#5b5045"
-   }
+   },
+   "baysPerStorey": 10,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.8,
+    "sill": 0.1
+   },
+   "openBays": [
+    {
+     "storeys": [
+      1
+     ],
+     "bays": [
+      8,
+      9
+     ]
+    }
+   ],
+   "cladding": {
+    "kind": "ribs",
+    "colour": "#8c847c",
+    "pitch": 0.3,
+    "from": 0.06,
+    "side": "left"
+   },
+   "hand": [
+    "system",
+    "ground",
+    "cladding",
+    "openBays",
+    "baysPerStorey",
+    "palette.brick",
+    "wallSplit",
+    "windowShape",
+    "palette.frame"
+   ]
   },
   {
    "wallSurfaces": [
     21
    ],
-   "system": "brick-bay-grid"
+   "system": "blank",
+   "palette": {
+    "brick": "#7a5a4c"
+   },
+   "cladding": {
+    "kind": "ribs",
+    "colour": "#a2a39f",
+    "pitch": 0.3,
+    "from": 0.06
+   },
+   "hand": [
+    "system",
+    "ground",
+    "cladding",
+    "openBays",
+    "baysPerStorey",
+    "palette.brick"
+   ]
   },
   {
    "wallSurfaces": [
@@ -141,7 +223,8 @@
  "notes": [
   "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
   "Panels left blank by the draft: 9 (7.5 m, unnamed panel under 8 m); 6 (4.8 m, unnamed panel under 8 m); 8 (2.8 m, under 3 m tall); 4 (2.5 m, under 3 m tall); 7 (2.5 m, under 3 m tall).",
-  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 1, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] wall split #716b61 | #92928d at 22 % (dE 15.9); walls[1] wall split #8c847c | #5b5045 at 79 % (dE 23.5); walls[5] glass #33454a not used (not darker than the wall #233646 by 10 L*, or tinted): kit glass kept; walls[5] bays 18 from the likeness grid (padded measurement 19); unphotographed walls take #8d867d (brick), the area-weighted median of groups 0, 1, 5."
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 1, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] wall split #716b61 | #92928d at 22 % (dE 15.9); walls[1] wall split #8c847c | #5b5045 at 79 % (dE 23.5); walls[5] glass #33454a not used (not darker than the wall #233646 by 10 L*, or tinted): kit glass kept; walls[5] bays 18 from the likeness grid (padded measurement 19); unphotographed walls take #8d867d (brick), the area-weighted median of groups 0, 1, 5.",
+  "Cladding pass 2026-10-24 (GitHub #49, walls[].cladding): a self-storage hall in silver vertical ribbed metal over a low brick plinth (0.06 of the eaves, ~0.5 m) beside an older brick block. walls[0] (w01-38): the measured split puts the brick block left of 0.218 and the metal right of it (cladding side right, #92928d measured), the brick keeps its two first-floor windows (openBays), the metal is blank; walls[1] (w02-128): metal left of 0.794 (#8c847c measured) and the brick block's two tall windows right of it; walls[2] (w03-218, washed out 36 %): ribbed metal all along (#a2a39f, between the washed-out reading #b8b9b4 and the other walls), its two service doors and roll door not modelled. Ribs drawn every 0.3 m (the sheet's real profile is ~0.2 m). The BOXX billboard is not modelled. walls[3]-[5] (painted blue panels, oblique or close crops) unchanged."
  ],
  "measured": {
   "date": "2026-10-24",

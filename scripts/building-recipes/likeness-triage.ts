@@ -42,7 +42,7 @@ export function houseRow(id: string, before = false) {
   const mfile = before && fs.existsSync(snap) ? snap : path.join(HOUSES, id, 'measured.json');
   const measured = fs.existsSync(mfile) ? readJson(mfile) : null;
   const groups: any[] = measured?.groups ?? [];
-  const facing = new Set(streetFacing(intent.walls.map((w: any, i: number) => ({group: i, system: w.system, street: w.street}))));
+  const facing = new Set(streetFacing(intent.walls.map((w: any, i: number) => ({group: i, system: w.system, street: w.street, ...(w.cladding ? {clad: true} : {})}))));
   const street = groups.filter(g => facing.has(g.group));
   const worst = street.length ? Math.max(...street.map(groupSeverity)) : (groups.length ? -1 : 2);
   return {id, intent, measured, groups, facing, street, worst};

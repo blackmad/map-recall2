@@ -18,6 +18,7 @@ import type { Kit, KitTrim, KitWindowRow } from './landmarkKits.js';
 import { CITY_STONE } from './look/palette.js';
 import { WORSHIP_BUILDINGS, type WorshipEntry } from './worshipBuildingData.js';
 import { NOT_WORSHIP_FORM } from './kitTypeOverrides.js';
+import { applyKitFacade } from './kitFacades.js';
 import { KIT_FACTS, measuredOpenings, measuredWallDisplay, pitchedHip, type SchoolFacts } from './kitFacts.js';
 
 export type WorshipEra = 'o' | 'e' | 'm';
@@ -113,4 +114,5 @@ export function worshipKit([id, kind, mode, eavesM, riseM, era]: WorshipEntry, f
 }
 
 // Footprints whose OSM worship tag sits on a house, school or housing block (kitTypeOverrides.ts) take no worship kit.
-export const GENERIC_WORSHIP_KITS: Kit[] = WORSHIP_BUILDINGS.filter(e => !NOT_WORSHIP_FORM[e[0]]).map(e => worshipKit(e));
+// Cladding facades read off the crops by hand (kitFacades.ts, GitHub #49) replace the measured walls.
+export const GENERIC_WORSHIP_KITS: Kit[] = WORSHIP_BUILDINGS.filter(e => !NOT_WORSHIP_FORM[e[0]]).map(e => applyKitFacade(worshipKit(e), e[0], e[3]));

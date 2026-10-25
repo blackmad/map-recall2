@@ -10,13 +10,14 @@ import {runGates, type GateReport} from '../blockBuilding/gates.ts';
 import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawArcadeFacing, drawCurtainGrid, CURTAIN_GRID_OVER_SPANDRELS, drawSpandrels, drawMeshScreen, drawEntrance, drawGlazedColumns, drawGlazedHall, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStAndrewsCross, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
 import {drawDressings} from '../blockBuilding/dressings.ts';
+import {applyCladdingSlots, drawCladdingLines} from '../blockBuilding/cladding.ts';
 import {fitsPanel, pointInRing, rectPoly, type Panel} from '../blockBuilding/panels.ts';
 import type {BuildingFacts} from './facts.ts';
 import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 
-export interface LargeComponentCounts { arcades?: number; glazedHalls?: number; glassColumns?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { claddingLines?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -36,6 +37,10 @@ export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe
     case 'spandrel': return {materialSlot: 'stone', surface: 'wall'};
     // a pale screen of expanded-metal or perforated panels over the wall: a smooth stone-cell panel in its own colour
     case 'screen': return {materialSlot: 'stone', surface: 'wall'};
+    // facade cladding (blockBuilding/cladding.ts): metal sheet, its profile lines and louvre ground as smooth stone-cell
+    // panels in their own colour, like the screen; painted brick keeps the brick texture in the paint colour
+    case 'clad': case 'cladline': return {materialSlot: 'stone', surface: 'wall'};
+    case 'painted': return {materialSlot: 'brick', surface: 'wall'};
     case 'plinth': return {materialSlot: 'stucco', surface: 'wall'};
     case 'glass': return {materialSlot: 'glass', surface: 'glass'};
     case 'frame': case 'rail': return {materialSlot: 'frame', surface: 'joinery'};
@@ -82,6 +87,8 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   if (g.ground === 'arcade' && g.arcade?.facing && levels.length > 1) { const k = drawArcadeFacing(c, Math.max(0, p.vMin), Math.min(groundTop, underCornice), {band: s.stone, pier: s.door}); if (k) counts.arcades = (counts.arcades ?? 0) + 1; }
   // Stone dressings (bands, speklagen, heads, surrounds, quoins, oriels, banded arches, piers), round the openings, under the cornice.
   if (g.dressings) counts.dressings = (counts.dressings ?? 0) + drawDressings(c, info, g.dressings, {stone: g.dressings.slot, wall: s.wall, frame: s.frame, glass: s.glass}, g.mainPanel === p.index, underCornice);
+  // Cladding profile lines (ribs, boards, louvres, panel joints) on the sheet, round the openings, under the cornice.
+  if (g.cladding) { const k = drawCladdingLines(c, {...g.cladding, toM: Math.min(g.cladding.toM, g.cornice ? underCornice : Infinity)}); if (k) counts.claddingLines = (counts.claddingLines ?? 0) + k; }
   if (g.pilasters && underCornice - Math.max(0, p.vMin) > 3) counts.pilasters = (counts.pilasters ?? 0) + drawPilasters(c, Math.max(0, p.vMin), underCornice, s.stone, g.pilasters);
   if (g.signage?.mount === 'cornice' && g.mainPanel === p.index) {
     const n = drawNameBand(c, g.signage.text, underCornice, s.stone, s.sign, g.cornice && eaves - p.vMin > 3 ? {v0: eaves - 0.45, v1: eaves - 0.02, out: CORNICE_OUT} : undefined);
@@ -417,6 +424,7 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
   for (const l of recipe.lanterns ?? []) { drawLantern(res.mesh, l, {glass: 'glass', frame: 'frame', stone: 'stone'}); counts.lanterns = (counts.lanterns ?? 0) + 1; }
   applyWallSplits(res.mesh, recipe.groups, res.panels);
   applyHouseSplits(res.mesh, recipe.groups, res.panels);
+  applyCladdingSlots(res.mesh, recipe.groups);
   hooks.afterCompose?.(res.mesh, recipe, res.panels);
   const blockGates = runGates(res.mesh, recipe.set, {budget: budgetTriangles});
   return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, budgetTriangles, panels: res.panels};

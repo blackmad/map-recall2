@@ -4,7 +4,8 @@
 //   node --import tsx --test src/canalRecall/landmarkKits.test.ts
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { HIP_MAX_PITCH_DEG, KITS, hipAround, kitGeometry, kitIds, simplifyRing, type PartInput } from './landmarkKits.js';
+import { CLADDING_PITCH, HIP_MAX_PITCH_DEG, KITS, claddingZones, hipAround, kitGeometry, kitIds, shadeHex, simplifyRing, type Kit, type KitCladding, type KitCladdingKind, type KitWindowRow, type PartInput } from './landmarkKits.js';
+import { KIT_FACADES, applyKitFacade } from './kitFacades.js';
 import { PANORAMA_BRICK, PUBLIC_WALL, SCHOOL_RIBBON_FRAME, panoramaBrickHue, planPublic, publicKit, schoolHipRoof, schoolRoof, schoolWall, schoolWallDisplay, SCHOOL_HIP_MIN_EAVES_M, type SchoolFacts } from './publicBuildings.js';
 import { FRAME_LIGHT, MAX_LEAF_PIXEL_SHARE, WINDOW_ROWS, glassVisible, glazingProfile, isOliveShade, lch, leafDominated, masonryFamily, mergeSpans } from './facade/cropWallColour.js';
 import { roofPitch, type RoofPlane } from './facade/roofPitch.js';
@@ -385,4 +386,43 @@ test('round 4: data defects behind a pillar and a windowless hall', () => {
   // Row 356: white panels read #fdfadf stay white, not wallFamily's brick lifted to yellow.
   const white = lch(hexToRgb(measuredWallDisplay('#fdfadf')));
   assert.ok(white.L > 90 && white.C < 10, JSON.stringify(white));
+});
+
+// GitHub #49: cladding and curtain-wall facades (kitFacades.ts, landmarkKits.ts KitCladding).
+test('#49: cladding zones stop short of window rows and drop slivers', () => {
+  assert.deepEqual(claddingZones(0, 10, []), [[0, 10]]);
+  assert.deepEqual(claddingZones(0, 10, [[4, 6]]), [[0, 3.85], [6.15, 10]]);
+  assert.deepEqual(claddingZones(0, 10, [[0.1, 9.8]]), [], 'a 0.05 m sliver is not drawn');
+});
+
+test('#49: every cladding kind draws a sheet and lines, clear of the plinth and the rows', () => {
+  const hall = (cladding: KitCladding[], rows: KitWindowRow[] = []): Kit => ({ name: 'clad', tiers: [], stacks: [], roofs: [], wall: { plain: true, hex: '#888888' },
+    halls: [{ id: 'h', widthM: 0, anchor: [0, 0], eavesM: 10, riseM: 0, mat: 'slate', windows: { rows, plinth: { z1: 0.6, hex: '#8c877d' }, cladding } }] });
+  const parts = new Map<string, PartInput>([['h', { id: 'h', ring: rect(30, 18), minHeightM: 0, heightM: 10 }]]);
+  const base = kitGeometry(hall([]), parts)[0].tris.length;
+  for (const kind of Object.keys(CLADDING_PITCH) as KitCladdingKind[]) {
+    const tris = kitGeometry(hall([{ kind, hex: '#a4a19a', z0: 0 }]), parts)[0].tris;
+    const clad = tris.length - base;
+    assert.ok(clad > 4 * 2 * 3, `${kind}: ${clad} cladding triangles (a sheet and lines on four walls)`);
+    const sheet = tris.filter(t => t.hex === (kind === 'louvres' ? shadeHex('#a4a19a', 0.45) : kind === 'curtain' ? '#a4a19a' : '#a4a19a'));
+    assert.ok(sheet.every(t => t.p.every(p => p[2] >= 0.6 - 1e-9 && p[2] <= 10 + 1e-9)), `${kind}: sheet between the plinth top and the eaves`);
+  }
+  // a ribbon row through a ribbed wall keeps its band: no rib crosses 6-8 m (0.15 m clear)
+  const ribbed = kitGeometry(hall([{ kind: 'ribs', hex: '#a4a19a', z0: 0 }], [{ z0: 6, z1: 8, widthM: 1, bayM: 1.5, ribbon: true }]), parts)[0].tris;
+  const ribs = ribbed.filter(t => t.hex === '#a4a19a' || t.hex === shadeHex('#a4a19a', 0.78));
+  assert.ok(ribs.every(t => t.p.every(p => p[2] <= 5.85 + 1e-9 || p[2] >= 8.15 - 1e-9)), 'cladding clear of the ribbon');
+});
+
+test('#49: a kit without a facade entry is the same object; every entry is a listed kit drawn with cladding', () => {
+  const plain = KITS.find(k => k.name.startsWith('Generic school') && !Object.keys(KIT_FACADES).some(id => k.name.endsWith(id)))!;
+  assert.equal(applyKitFacade(plain, 'no-such-id', 10), plain);
+  for (const id of Object.keys(KIT_FACADES)) {
+    const kit = KITS.find(k => k.name.endsWith(` ${id}`));
+    assert.ok(kit, `${id}: a generic kit`);
+    const hall = kit!.halls?.find(h => h.id === id);
+    assert.ok(hall?.windows?.cladding?.length, `${id}: cladding on its hall`);
+    assert.equal(kit!.body, undefined, `${id}: no plain body left`);
+    const parts = new Map<string, PartInput>([[id, { id, ring: rect(40, 25), minHeightM: 0, heightM: hall!.eavesM }]]);
+    assert.ok(kitGeometry(kit!, parts)[0].tris.length > 100, `${id}: draws its cladding`);
+  }
 });
