@@ -43903,11 +43903,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012118320",
       "name": "Waagdragerhof 198 (Pakhuis Wilhelmina), Amsterdam-Centrum (Veemkade, KNSM-eiland): 2004 block with an eleven-storey dark red brick residential tower over the retained arched brick warehouse Pakhuis Wilhelmina, whose tall arched windows carry the lettering PAK HUIS WIL HEL MINA",
-      "hash": "72cc492e7c9c2888a5fbe9c4f565367018ab7bfa1f3172f5bde645a02db05788",
-      "sha256": "72cc492e7c9c2888a5fbe9c4f565367018ab7bfa1f3172f5bde645a02db05788",
-      "bytes": 669916,
-      "triangles": 8840,
-      "materials": 15,
+      "hash": "7baa817ac194fdc3ebd9128b380b689757c15c32c3a4a8f3f758ad49eb172a16",
+      "sha256": "7baa817ac194fdc3ebd9128b380b689757c15c32c3a4a8f3f758ad49eb172a16",
+      "bytes": 691924,
+      "triangles": 9090,
+      "materials": 16,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -44014,7 +44014,8 @@
           "storey-height/walls[3]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "french-window-ledge 11st 13b",
@@ -44025,10 +44026,8 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (wall family brick vs photo paint)); inferred: the photo wall cluster is mortar and shadow in a December crop (#262120, paint family) - lane C's dark red-brown brick #4a302b matches the median of the crop's brick pixels, 13 French-window bays (photo 12)",
-        "walls[1] not confirmed by the photo (FAIL (wall family brick vs photo paint; glazing storey band off by 0.51 mean 0.42 vs photo 0.66)); inferred: the photo wall cluster is window surrounds (#34373a) and its glazing 0.66 counts dark brick - tower brick #4a302b by hand, 8 measured bays, measured 0.45 x 0.85 window kept",
-        "walls[2] not confirmed by the photo (FAIL (wall family brick vs photo paint; glazing  mean 0.59 vs photo 0.34)); inferred: the photo wall cluster is the window frames (#464746) - the warehouse brick measured on walls[3] applied, arched stacked windows (lane C) line up with the photo, its glazing counts white-framed panes as trim",
-        "walls[3] not confirmed by the photo (FAIL (glazing  mean 0.56 vs photo 0.31)); inferred: measured purple-brown brick applied, arched windows line up in the overlay, photo glazing 0.31 counts the white-framed panes as trim",
+        "walls[0] likeness WARN (wall family unresolved (#38302f is dark and neutral, brick courses not resolved): lightness and hue judged only; mask IoU 0.438 < 0.45).",
+        "walls[1] not confirmed by the photo (FAIL (wall hue 173 deg; glazing storey band off by 0.35; wall family unresolved (#323a3d is dark and neutral, brick courses not resolved): lightness and hue judged only)); inferred: wall hue 173 deg is the blue sky cast on w03-286 (raw #323a3d against the dark purple-brown brick), and the storey glazing band is off only on top storeys reflecting sky (0.90) and on the part-width light rendered band storeys (0.45) the kit cannot draw, columns 8 vs 8 and mean glazing 0.56 vs 0.65 match",
         "Simplified: the five photographed arches are tall double-height windows glazed in two halves and the kit draws two storeys of arched windows; the lettering is one name band over the arches where the photograph shows one word per arch on the glass; the dark metal bridge-volume and balconies of the tower are not modelled; the tower bay counts are reduced (8 and 6 against about 14 photographed window columns) to stay inside 12k triangles. Not drawn: the tower east and north walls, the courtyard and the north warehouse wings (panels 48, 86 and 84, eaves 18), which stay blank brick.",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #322521 not used (not darker than the wall #262120 by 10 L*, or tinted): kit glass kept; walls[1] glass #413c3b not used (not darker than the wall #34373a by 10 L*, or tinted): kit glass kept; walls[2] glass #3d5061 not used (not darker than the wall #464746 by 10 L*, or tinted): kit glass kept; walls[3] glass #64635d not used (not darker than the wall #735c59 by 10 L*, or tinted): kit glass kept."
       ],
@@ -44037,19 +44036,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012118320",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T12:27:10.941Z",
-      "meshHash": "231e966ba221bf07"
+      "updatedAt": "2026-10-25T05:53:29.955Z",
+      "meshHash": "fee223362b68bd1d"
     },
     {
       "id": "ordinary-0363100012093853",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012093853",
       "name": "Van Beuningenstraat 48, Amsterdam-West (Staatsliedenbuurt): 1978 social-housing block of tan brick with grey concrete bands, balcony runs and rounded corners, in four storeys on the south-east and three on the north-west",
-      "hash": "dd603a410bca15e34aaff3978acecedf718cdc49bc2f3dd4397772a074a564b7",
-      "sha256": "dd603a410bca15e34aaff3978acecedf718cdc49bc2f3dd4397772a074a564b7",
-      "bytes": 679500,
-      "triangles": 9349,
-      "materials": 7,
+      "hash": "d118b66cc5c9c53efb27bd4d4bcb62b7e07af7a35179afd4ab443270b49b129f",
+      "sha256": "d118b66cc5c9c53efb27bd4d4bcb62b7e07af7a35179afd4ab443270b49b129f",
+      "bytes": 585696,
+      "triangles": 7975,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -44356,7 +44355,8 @@
           "storey-height/walls[2]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 4st 13b",
@@ -44366,16 +44366,18 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.34; glazing storey band off by 0.27 mean 0.47 vs photo 0.70; wall family unresolved (#1a1711 is dark and neutral, brick courses not resolved): lightness and hue judged only)); inferred: photo wall #1a1711 is read off the dark balcony recesses (the crop shows brown brick between them) and the photo glazing 0.70 counts those recesses, drawn as loggias in alternate bays",
+        "walls[1] not confirmed by the photo (FAIL (wall dL +0.15; glazing storey band off by 0.31 mean 0.36 vs photo 0.16; wall family unresolved (#474541 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns none vs photo 13)); inferred: w01-315 is backlit with the sun in frame, wall raw #474541 in shade, windows and balcony rhythm read by eye",
+        "walls[2] not confirmed by the photo (NO EVIDENCE (camera 5.2 m < 8 m from a 40 m wall)); inferred: NE end crop taken 5.2 m from a 40 m wall, drawn as the same brick grid",
         "Simplified: the photographed balcony runs are continuous recessed loggias in alternating bays, drawn as slab balconies in every fourth bay; the 3DBAG plan keeps the rounded corners as short straight facets; the grey bands are the kit string courses; the south-west and cylindrical end walls (w06-225, w08-315), the courtyard faces (panels 118, 70, 20) and the stair-tower walls are not drawn and stay blank brick."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012093853",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:25:44.912Z",
-      "meshHash": "c80f03fe230e8536"
+      "updatedAt": "2026-10-25T05:59:36.450Z",
+      "meshHash": "6a0ac71b2a6b3e93"
     },
     {
       "id": "ordinary-0363100012147097",
@@ -45197,10 +45199,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012233657",
       "name": "WG-plein 600 (former Wilhelmina Gasthuis pavilion), Amsterdam-West: 1931 dark-brown brick hospital wing, five storeys of grouped white windows on the WG-plein side and a two-storey canal front with glazed bay windows on the Kostverlorenvaart",
-      "hash": "852ffa44a7343a97ebcfd199221ea4758e73147ba7d8d4e55fa9117cc599c8d5",
-      "sha256": "852ffa44a7343a97ebcfd199221ea4758e73147ba7d8d4e55fa9117cc599c8d5",
-      "bytes": 871072,
-      "triangles": 11505,
+      "hash": "4de7e81cac303a27c8d99100fbdb2a209f5aa703c340c637e70d5beae2e5a33a",
+      "sha256": "4de7e81cac303a27c8d99100fbdb2a209f5aa703c340c637e70d5beae2e5a33a",
+      "bytes": 1292860,
+      "triangles": 17375,
       "materials": 10,
       "textures": 0,
       "scale": 1,
@@ -45562,17 +45564,18 @@
           "no-floating-parts:pass",
           "open-edges:pass",
           "shell-repair:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid 5st 9b",
+          "brick-bay-grid 5st 5b",
           "brick-bay-grid 3st 18b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.21; window shape tall vs photo square; columns 9 vs photo 4)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.21, window shape tall vs photo square, columns 9 vs photo 4) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.18 mean 0.26 vs photo 0.48; columns 18 vs photo 56)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.18 mean 0.26 vs photo 0.48, columns 18 vs photo 56) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[0] not confirmed by the photo (FAIL (window shape tall vs photo wide; columns 15 vs photo 4)); inferred: the photo mask merges each tight group of three sashes into one wide opening (columns 4, shape wide) while the model counts the 15 windows of the same 5 groups (columns 15, shape tall), glazing 0.40 vs 0.50 and colour match",
+        "walls[1] likeness WARN (mask IoU 0.16 < 0.45).",
         "walls[0] = panels 10, 189 and 60 (w02-157): the five-storey WG-plein fronts. 5 storeys x 9 bays of white cross windows (the photographed groups of three), with a cornice. The low end surfaces 60 and 447 (18.7 m tops) stay blank so that the eaves gate reads the main roof.",
         "walls[1] = panel 18 (w01-337): the 89 m canal front. Two storeys of cross windows (18 bays) over a blank basement, with a cornice. Simplified: the projecting glazed bay windows and the rooftop glass boxes are the 3DBAG masses in the wall brick.",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #554f46 not used (not darker than the wall #5e5144 by 10 L*, or tinted): kit glass kept."
@@ -45582,8 +45585,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012233657",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T14:05:20.468Z",
-      "meshHash": "fe0a4e8f823642e5"
+      "updatedAt": "2026-10-25T05:58:13.724Z",
+      "meshHash": "40c6e549c8660b58"
     },
     {
       "id": "ordinary-0363100012236799",
@@ -47815,23 +47818,23 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012110408",
       "name": "Haarlemmerweg 325, Amsterdam-West (Westergasfabriek district): Q-Park Westergasfabriek, a curved multi-storey car park with brick-fronted shops on its ground floor and three decks screened by pale translucent louvres, and a concrete south front with the car-park entrance",
-      "hash": "065b2cea9a63b04533ac11301379467c7a81e0c88ad9ed77b39864d6dd8d4d12",
-      "sha256": "065b2cea9a63b04533ac11301379467c7a81e0c88ad9ed77b39864d6dd8d4d12",
-      "bytes": 754604,
-      "triangles": 10297,
-      "materials": 11,
+      "hash": "dc139faeb314d9819dba6e2042a20a444a95cc94fa5bb2b667c964e9d6c8098d",
+      "sha256": "dc139faeb314d9819dba6e2042a20a444a95cc94fa5bb2b667c964e9d6c8098d",
+      "bytes": 425268,
+      "triangles": 5483,
+      "materials": 16,
       "textures": 0,
       "scale": 1,
       "bounds": {
         "min": [
-          -39.006,
+          -39.024,
           -0.001,
-          -44.113
+          -44.233
         ],
         "max": [
           23.232,
           19.07,
-          14.118
+          14.194
         ]
       },
       "anchor": [
@@ -48037,26 +48040,32 @@
           "storey-height/walls[3]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
-          "ribbon-windows 4st 13b",
-          "ribbon-windows 4st 13b",
-          "ribbon-windows 4st 10b",
+          "brick-bay-grid+louvres 4st 13b",
+          "brick-bay-grid+louvres 4st 13b",
+          "brick-bay-grid+louvres 4st 10b",
           "ribbon-windows+entrance 4st 4b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "walls[0] = panel 64 (N, 51 m, eaves 15.2; surfaces 70, 100, 101): 4 storeys x 13 bays of wide ribbon windows over a glazed shopfront ground (14.1k triangles at the default pitch). walls[1] = panel 11 (W, 50 m; surface 13) and walls[2] = panel 10 (S, 38 m; surface 11): the same. walls[3] = panel 50 (S entrance, 15 m, eaves 15.2; surface 54): concrete render, four open ribbon decks over a blank ground, an entrance with a canopy carrying the Q PARK WESTERGASFABRIEK sign. Simplified: the louvre screens are ribbon windows in a pale frame colour, the brick plinth is the wall colour under the glazed ground, the curved corners are the 3DBAG facets. Not drawn: the tenant signs (LEEN BAKKER, SANIDIRECT; shop tenants change), the east front and the inner deck ramps."
+        "walls[0] not confirmed by the photo (FAIL (wall family paint vs photo brick; glazing storey band off by 0.53 mean 0.02 vs photo 0.43; columns 13 vs photo 19)); inferred: the photo labels the translucent louvre screen over the decks as glazing and the model wall colour is read off the dark louvre ground, so wall family, glazing and columns compare a screen with a wall, brick base and pale louvres match the crop by eye (w01-359L)",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.33 mean 0.02 vs photo 0.20; wall family unresolved (#352c29 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 13 vs photo 21)); inferred: the photo labels the translucent louvre screen over the decks as glazing and the model wall colour is read off the dark louvre ground, so wall family, glazing and columns compare a screen with a wall, brick base and pale louvres match the crop by eye (w02-269L)",
+        "walls[2] not confirmed by the photo (FAIL (wall family paint vs photo brick; glazing storey band off by 0.85 mean 0.02 vs photo 0.62; columns 10 vs photo 16)); inferred: the photo labels the translucent louvre screen over the decks as glazing and the model wall colour is read off the dark louvre ground, so wall family, glazing and columns compare a screen with a wall, brick base and pale louvres match the crop by eye (w04-179)",
+        "walls[3] not confirmed by the photo (FAIL (wall dL +0.39; glazing storey band off by 0.36 mean 0.36 vs photo 0.13; wall family unresolved (#393e45 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 4 vs photo 10)); inferred: photo wall #313b44 is the concrete decks in blue shade (w05-168), the columns 10 are railing posts in the open deck voids drawn as continuous low ribbons",
+        "walls[0] = panel 64 (N, 51 m, eaves 15.2; surfaces 70, 100, 101): 4 storeys x 13 bays of wide ribbon windows over a glazed shopfront ground (14.1k triangles at the default pitch). walls[1] = panel 11 (W, 50 m; surface 13) and walls[2] = panel 10 (S, 38 m; surface 11): the same. walls[3] = panel 50 (S entrance, 15 m, eaves 15.2; surface 54): concrete render, four open ribbon decks over a blank ground, an entrance with a canopy carrying the Q PARK WESTERGASFABRIEK sign. Simplified: the louvre screens are ribbon windows in a pale frame colour, the brick plinth is the wall colour under the glazed ground, the curved corners are the 3DBAG facets. Not drawn: the tenant signs (LEEN BAKKER, SANIDIRECT; shop tenants change), the east front and the inner deck ramps.",
+        "Refit 2026-10-25 (issue #59): the three parking decks of walls[0-2] are pale translucent louvre screens (w01-359L, w02-269L, w04-179), not ribbon windows: cladding louvres #c4c8c8 at 0.2 m over a dark ground #4a4c4e from 0.27 to 0.95 of the eaves, the decks behind blank, on a purple-brown brick base #7a6052 (between the shaded #57453e and the sunlit #8b7063) with shop windows 0.55 x 0.62 (the photos show a mostly brick ground with shopfronts, not a glass plinth). Kit fix in the same change: louvre slats are drawn in the sheet colour (they were in the dark line slot, so a louvre screen rendered as one dark sheet). walls[3] (w05-168) is open concrete decks: wall #8e9294, the deck voids as continuous low ribbons 0.97 x 0.4 over a 0.42 parapet. Gate misreads, allowed as inferred: on the louvre fronts the photo labels the translucent screen as glazing (0.2-0.65) and the model wall as the dark louvre ground (family paint), so wall family, glazing and columns compare a screen with a wall; walls[3] photo wall #313b44 is the concrete in blue shade under the decks."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012110408",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T04:21:36.875Z"
+      "updatedAt": "2026-10-25T05:56:20.355Z",
+      "meshHash": "8ce1c8d1741aadfe"
     },
     {
       "id": "ordinary-0363100012098847",
