@@ -14,7 +14,11 @@
  * - glazing: not-wall share per upper storey band within 0.15, and the upper-storey mean within 0.10;
  * - columns: the window-column count (bays from the autocorrelation of the upper-storey not-wall profile, times the
  *   windows grouped in each bay: measureFacade `windowGroupOf`) within 20 %, and the same window shape class (tall > 1.4
- *   / square / wide < 0.7, height over one window's width);
+ *   / square / wide < 0.7, height over one window's width); where the photo's window storeys are a mixed-width row
+ *   (no shape class holds 80 % of the openings, p90 width >= 1.8 x the median) and the model reproduces its per-storey opening sequences (rowOpenings.ts:
+ *   openings per storey within 20 %, the tall/square/wide mix within 0.35, median and p90 widths within x1.5), those
+ *   judge the columns and shape instead of the fold, which cannot describe a mixed row; and a storey that is one
+ *   ribbon (>= 8 m) on one side against a punched row (windows under 4 m covering under 60 % of it) on the other fails (rowOpenings `rowMismatch`);
  * - report only: not-wall mask IoU (WARN under 0.45), glass colour, the ground band (0..2.5 m, never pooled).
  *
  * NO EVIDENCE (abstain) when under 40 % of the upper cells are usable, foliage covers over 25 %, over 30 % is
@@ -26,6 +30,7 @@ import type {MaterialSlot} from '../look/palette.ts';
 import {nearestMaterial, wallFamily} from '../facade/materials.ts';
 import {rgbToHsl, WALL_TOLERANCE} from '../blockFace/wallColour.ts';
 import {renderElevation, type MaterialSoup} from '../landmarks/facadeCompare.ts';
+import {compareRowOpenings, ROW_OPENINGS, rowOpenings, type RowOpeningsComparison} from './rowOpenings.ts';
 import {analyseMask, hex, isOpeningCell, MASK, rgbToLab, wallMaterialOf, type FacadeBox, type FacadeMeasurement, type MaskGrid, type Rgb} from './measureFacade.ts';
 
 export const PAD_M = 0.5;
@@ -123,6 +128,8 @@ export interface LikenessResult {
   /** the photo's grid on the model's box after the shift (what `columns` and `shape` are judged on): its bay pitch and folded window */
   photoGrid: {pitchM: number | null; window: MaskGrid['window']};
   shape: {photo: string | null; model: string | null; pass: boolean | null};
+  /** per-storey opening sequences (rowOpenings.ts); `sequenceMatch`: they judged the shape and columns (a mixed photo row the model matches) */
+  openings?: RowOpeningsComparison & {sequenceMatch: boolean};
   classes: {photo: string; model: string};
   ground: {photo: number | null; model: number | null};
   evidence: {usable: number; foliage: number; washedOut: number; obliquityDeg: number | null; cameraDistM: number | null; widthM: number; abstain: string[]};
@@ -208,8 +215,22 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   // columns and window shape (not where the photo shows no rhythm: curtain walls, blank fronts)
   const rhythmic = pg.frontClass !== 'curtain' && pg.frontClass !== 'blank';
   const pW = pg.windowColumns, mW = mg.windowColumns;
-  const colPass = !rhythmic || pW === null ? null : mW !== null && Math.abs(mW - pW) <= LIKENESS.columns * pW;
-  const shapePass = !rhythmic || !pg.window ? null : !!mg.window && mg.window.shape === pg.window.shape;
+  const gridColPass = !rhythmic || pW === null ? null : mW !== null && Math.abs(mW - pW) <= LIKENESS.columns * pW;
+  const gridShapePass = !rhythmic || !pg.window ? null : !!mg.window && mg.window.shape === pg.window.shape;
+  // Per-storey opening sequences (rowOpenings.ts, GitHub #58): a row of mixed windows (a wide 3-4-light window and two
+  // narrow slots, repeated) folds into one typical window and a pitch that counts every slot, so the fold calls an
+  // exact model "wide vs tall" and 4 columns vs 16 (Stadsloket Zuidoost walls[2]). Where the photo's window storeys are
+  // a mixed-width row (no shape class holds 80 % of their measured openings, and the p90 opening is at least 1.8 x the
+  // median: wide windows among narrow ones, not shape noise on alike windows) and the model's sequences match them on all three
+  // counts (openings per storey within 20 %, shape mix within 0.35, median and p90 widths within x1.5), the sequences
+  // judge the shape and the columns instead of the fold. Everywhere else the fold judges as before: a uniform row, or a
+  // mixed row the model does not reproduce, keeps the fold's verdict (the gate is not looser).
+  const openings = rhythmic ? compareRowOpenings(rowOpenings({mask: win, cols, rows, cell, box, lines: a.lines}), rowOpenings({mask: model.mask, cols, rows, cell, box, lines: a.lines})) : undefined;
+  const mixedRow = !!openings && openings.mixPass !== null && Math.max(...Object.values(openings.photo.mix)) < ROW_OPENINGS.uniformShare
+    && openings.photo.widthP50 !== null && openings.photo.widthP90 !== null && openings.photo.widthP90 >= ROW_OPENINGS.mixedWidthRatio * openings.photo.widthP50;
+  const sequenceMatch = mixedRow && openings!.countPass === true && openings!.mixPass === true && openings!.widthPass === true;
+  const colPass = sequenceMatch && gridColPass === false ? true : gridColPass;
+  const shapePass = sequenceMatch && gridShapePass === false ? true : gridShapePass;
   const reasons: string[] = [];
   if (!wallPass) reasons.push(`wall ${!mw ? 'not drawn' : !famPass ? `family ${mFam} vs photo ${pFam}` : Math.abs(dL!) > LIKENESS.dL ? `dL ${dL! > 0 ? '+' : ''}${dL!.toFixed(2)}` : `hue ${dHue!.toFixed(0)} deg`}`);
   if (!glazingPass) reasons.push(`glazing ${maxDiff !== null && maxDiff > LIKENESS.storeyGlazing ? `storey band off by ${maxDiff.toFixed(2)}` : ''}${meanDiff > LIKENESS.meanGlazing ? ` mean ${mg.glazing.toFixed(2)} vs photo ${pg.glazing.toFixed(2)}` : ''}`.trim());
@@ -220,6 +241,8 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   if (pFamResolved === null) warns.push(`wall family unresolved (${hex(pw)} is dark and neutral, brick courses not resolved): lightness and hue judged only`);
   if (colPass === false) warns.push(`columns ${mW ?? 'none'} vs photo ${pW}`);
   if (shapePass === false) reasons.push(`window shape ${mg.window?.shape ?? 'none'} vs photo ${pg.window!.shape}`);
+  // a storey that is a ribbon on one side and windows on the other (rowOpenings `rowMismatch`): a FAIL whatever the fold says
+  if (openings?.rowMismatch.length) reasons.push(...openings.reasons.filter(r => r.startsWith('storey ')));
   const iou = best.iou >= 0 ? +best.iou.toFixed(3) : null;
   const verdict = likenessVerdict({abstain, fails: reasons, warns, iou});
   if (verdict === 'WARN' || verdict === 'FAIL') reasons.push(...warns);
@@ -229,7 +252,7 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
     wall: {photo: photo.wall.hex, photoRaw: photo.wall.rawHex, model: mw ? hex(mw) : null, modelToday: model.wallToday ? hex(model.wallToday) : null, photoFamily: pFamResolved ?? 'unresolved', modelFamily: mFam, photoMaterial: pm.material.id, modelMaterial: mm?.material.id ?? null, dL: dL === null ? null : +dL.toFixed(3), dHue: dHue === null ? null : +dHue.toFixed(1), pass: wallPass},
     glass: {photo: photo.glass?.hex ?? null, model: model.glass ? hex(model.glass) : null},
     glazing: {photo: pg.storeyGlazing, model: mg.storeyGlazing, photoMean: pg.glazing, modelMean: mg.glazing, maxDiff: maxDiff === null ? null : +maxDiff.toFixed(3), meanDiff: +meanDiff.toFixed(3), pass: glazingPass},
-    columns: {photo: pg.columns, model: mg.columns, windows: {photo: pW, model: mW}, pass: colPass}, photoGrid: {pitchM: pg.pitchM, window: pg.window}, shape: {photo: pg.window?.shape ?? null, model: mg.window?.shape ?? null, pass: shapePass},
+    columns: {photo: pg.columns, model: mg.columns, windows: {photo: pW, model: mW}, pass: colPass}, photoGrid: {pitchM: pg.pitchM, window: pg.window}, shape: {photo: pg.window?.shape ?? null, model: mg.window?.shape ?? null, pass: shapePass}, ...(openings ? {openings: {...openings, sequenceMatch}} : {}),
     classes: {photo: pg.frontClass, model: mg.frontClass}, ground: {photo: pg.ground.glazing, model: mg.ground.glazing},
     evidence: {usable: +usable.toFixed(3), foliage: photo.foliageFraction, washedOut: photo.washedOutFraction, obliquityDeg: a.obliquityDeg ?? null, cameraDistM: a.cameraDistM ?? null, widthM: +widthM.toFixed(2), abstain}};
 }

@@ -11,17 +11,18 @@ import path from 'node:path';
 import sharp from 'sharp';
 import type {CompiledLargeBuilding} from '../../src/canalRecall/buildingRecipe/largeCompile.ts';
 import {panelEaves} from '../../src/canalRecall/buildingRecipe/fitLarge.ts';
-import {CROP_MIN_OVERLAP, cropsOfWallsJson, panelCoverageStraight, type CropMatch, type CropWall} from '../../src/canalRecall/buildingRecipe/cropToPanel.ts';
+import {CROP_MIN_OVERLAP, cropStreetShiftM, cropsOfWallsJson, panelCoverageStraight, type CropMatch, type CropWall} from '../../src/canalRecall/buildingRecipe/cropToPanel.ts';
 import {insidePanel} from '../../src/canalRecall/blockBuilding/panels.ts';
 import {measureFacade, MASK, type FacadeBox, type FacadeImage, type FacadeMeasurement} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import {closeCameraSpan, compareLikeness, LIKENESS, modelElevation, PAD_M, type LikenessResult, type ModelElevation} from '../../src/canalRecall/buildingRecipe/likeness.ts';
 import {loadMaterialSoup} from '../landmarks/material-soup.ts';
+import {sharedTerrain} from '../lib/terrainField.ts';
 import {pandWallsDir, sha256Of, sourceDataRoot, sourceRef} from './sourceData.ts';
 
 export interface GroupLikeness {
   group: number; panel: number; status: 'measured' | 'no-photo';
   /** the crop covering most of the panel, and every piece of the mosaic (cropToPanel `panelCoverage`) */
-  crop?: CropWall & {ref: string}; match?: CropMatch; pieces?: {tag: string; ref: string; sha256?: string; capturedAt?: string; u0: number; u1: number}[]; coverage?: number;
+  crop?: CropWall & {ref: string}; match?: CropMatch; pieces?: {tag: string; ref: string; sha256?: string; capturedAt?: string; u0: number; u1: number; streetShiftM?: number}[]; coverage?: number;
   box?: FacadeBox; photo?: FacadeMeasurement; model?: ModelElevation; likeness?: LikenessResult;
   /** the photo mosaic (RGB) on the model's box after the best shift, for the sheet */
   photoRgb?: {data: Buffer; width: number; height: number};
@@ -72,7 +73,8 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
     const W = box.u1 - box.u0 + 2 * PAD_M, H = box.v1 - box.v0 + 2 * PAD_M, topM = box.v1 + PAD_M;
     const width = Math.round(W * PPM), height = Math.round(H * PPM), rgb = new Uint8Array(width * height * 3), valid = new Uint8Array(width * height);
     for (const piece of pieces) {
-      const c = piece.crop, img = await load(c), k = (piece.match.alongAtUMax - piece.match.alongAtUMin) / Math.max(1e-6, p.uMax - p.uMin), cTop = c.baseZ + c.wallHeightM - g0;
+      // the crop's top above the panel's ground, from the street its camera stood on (cropStreetShiftM: an assumed 0.4 m NAP street is replaced by the terrain under the camera)
+      const c = piece.crop, img = await load(c), k = (piece.match.alongAtUMax - piece.match.alongAtUMin) / Math.max(1e-6, p.uMax - p.uMin), cTop = c.baseZ + cropStreetShiftM(c, sharedTerrain()) + c.wallHeightM - g0;
       const lo = piece.u0 === pieces[0].u0 ? piece.u0 - PAD_M : piece.u0, hi = piece.u1 === pieces[pieces.length - 1].u1 ? piece.u1 + PAD_M : piece.u1;
       for (let x = Math.max(0, Math.floor((lo - box.u0 + PAD_M) * PPM)); x < Math.min(width, Math.ceil((hi - box.u0 + PAD_M) * PPM)); x++) {
         const u = box.u0 - PAD_M + (x + 0.5) / PPM, cx = Math.floor((piece.match.alongAtUMin + (u - p.uMin) * k) * c.ppm);
@@ -102,7 +104,8 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
     const bays = photo.pitchM ? Math.max(1, Math.round((box.u1 - box.u0) / photo.pitchM)) : null;
     const toPanel = (f: number) => r3(Math.max(0, Math.min(1, (box.u0 - PAD_M + f * W - p.uMin) / Math.max(1e-6, p.uMax - p.uMin))));
     out.push({group: g.index, panel: p.index, status: 'measured', crop: {...main.crop, ref: sourceRef(pand, main.crop.file)}, match: main.match, coverage,
-      pieces: pieces.map(q => ({tag: q.crop.tag, ref: sourceRef(pand, q.crop.file), sha256: q.crop.sha256, capturedAt: q.crop.capturedAt, u0: r3(q.u0 - p.uMin), u1: r3(q.u1 - p.uMin)})),
+      pieces: pieces.map(q => ({tag: q.crop.tag, ref: sourceRef(pand, q.crop.file), sha256: q.crop.sha256, capturedAt: q.crop.capturedAt, u0: r3(q.u0 - p.uMin), u1: r3(q.u1 - p.uMin),
+        ...(cropStreetShiftM(q.crop, sharedTerrain()) ? {streetShiftM: cropStreetShiftM(q.crop, sharedTerrain())} : {})})),
       box, photo, model, likeness, photoRgb, photoImage: {image, box: photoBox, lines: g.lines, inside}, replay,
       measured: {wall: photo.wall.hex, wallRaw: photo.wall.rawHex, glass: photo.glass?.hex ?? null, trim: photo.trim?.hex ?? null, glazing: photo.glazing, storeyGlazing: photo.storeyGlazing, ground: photo.ground.glazing, bays,
         pitchM: photo.pitchM, storeyM: photo.storeyM, window: photo.window, frontClass: photo.frontClass, normalisation: photo.normalisation, usable: photo.usableFraction, foliage: photo.foliageFraction, washedOut: photo.washedOutFraction,
@@ -165,6 +168,7 @@ export async function likenessRows(g: GroupLikeness, maxWidth = 640): Promise<{r
     `wall: photo ${L.wall.photoFamily} (${L.wall.photoMaterial}) vs model ${L.wall.modelFamily ?? '-'} (${L.wall.modelMaterial ?? '-'}), dL ${L.wall.dL ?? '-'}${L.wall.dHue !== null ? `, dHue ${L.wall.dHue}` : ''} ${L.wall.pass ? 'ok' : 'FAIL'}`,
     `glazing % per upper storey: photo ${L.glazing.photo.slice(1).map(pct).join(' ')} | model ${L.glazing.model.slice(1).map(pct).join(' ')}; mean ${pct(L.glazing.photoMean)} vs ${pct(L.glazing.modelMean)} ${L.glazing.pass ? 'ok' : 'FAIL'}`,
     `window columns ${L.columns.windows?.photo ?? '-'} vs ${L.columns.windows?.model ?? '-'} (bays ${L.columns.photo ?? '-'} vs ${L.columns.model ?? '-'}) ${L.columns.pass === null ? 'n/a' : L.columns.pass ? 'ok' : 'FAIL'}; window ${L.shape.photo ?? '-'} vs ${L.shape.model ?? '-'} ${L.shape.pass === null ? 'n/a' : L.shape.pass ? 'ok' : 'FAIL'}; class ${L.classes.photo} vs ${L.classes.model}`,
+    ...(L.openings && L.openings.mixPass !== null ? [`openings per storey ${L.openings.photo.count} vs ${L.openings.model.count ?? '-'}; shapes tall/square/wide ${['tall', 'square', 'wide'].map(k => pct((L.openings!.photo.mix as any)[k])).join('/')} vs ${['tall', 'square', 'wide'].map(k => pct((L.openings!.model.mix as any)[k])).join('/')} %; widths p50/p90 ${L.openings.photo.widthP50}/${L.openings.photo.widthP90} vs ${L.openings.model.widthP50 ?? '-'}/${L.openings.model.widthP90 ?? '-'} m: ${L.openings.sequenceMatch ? 'mixed row matched, judges columns and shape' : L.openings.countPass && L.openings.mixPass && L.openings.widthPass ? 'matched (fold judges)' : 'no match (fold judges)'}`] : []),
     `mask IoU ${L.iou ?? '-'} (report only, warn < 0.45); ground band glazing ${pct(L.ground.photo)} vs ${pct(L.ground.model)} %; usable ${pct(L.evidence.usable)} %, foliage ${pct(L.evidence.foliage)} %, washed ${pct(L.evidence.washedOut)} %`,
   ];
   const h2 = 200;
@@ -173,6 +177,6 @@ export async function likenessRows(g: GroupLikeness, maxWidth = 640): Promise<{r
     ${lines.map((t, i) => `<text x="370" y="${22 + i * 18}" font-family="Helvetica, Arial" font-size="13" fill="#1f2328">${esc(t)}</text>`).join('')}
     <text x="10" y="128" font-family="Helvetica, Arial" font-size="34" font-weight="bold" fill="${colour}">${L.verdict}</text>
     <text x="10" y="156" font-family="Helvetica, Arial" font-size="14" fill="${colour}">${esc(L.reasons.join('; ') || 'colour, glazing, columns and window shape read the same')}</text>
-    <text x="10" y="184" font-family="Helvetica, Arial" font-size="11" fill="#57606a">${esc(`exposure: ${photo.normalisation.method}, gain ${photo.normalisation.gain}; placement offset ${g.match!.offsetM} m, angle ${g.match!.angleDeg} deg, overlap ${pct(g.match!.overlapFraction)} %; obliquity ${g.crop!.obliquityDeg} deg, camera ${g.crop!.cameraDistM} m`)}</text></svg>`;
+    <text x="10" y="184" font-family="Helvetica, Arial" font-size="11" fill="#57606a">${esc(`exposure: ${photo.normalisation.method}, gain ${photo.normalisation.gain}; placement offset ${g.match!.offsetM} m, angle ${g.match!.angleDeg} deg, overlap ${pct(g.match!.overlapFraction)} %; obliquity ${g.crop!.obliquityDeg} deg, camera ${g.crop!.cameraDistM} m${g.pieces!.some(q => q.streetShiftM) ? `; street from the terrain under the camera (${g.pieces!.map(q => `${q.tag} ${(q.streetShiftM ?? 0) > 0 ? '+' : ''}${q.streetShiftM ?? 0} m`).join(', ')} vs assumed 0.4 m NAP)` : ''}`)}</text></svg>`;
   return {row1, row2: await sharp(Buffer.from(svg)).png().toBuffer(), width};
 }
