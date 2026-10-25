@@ -972,8 +972,10 @@ export interface LargeWallIntent {
   dressings?: StoneDressings;
   /** Loading-door axis (warehouses): every `every`-th bay from bay `first` (default 0), or the listed `bays` of the widest panel, is a tall door opening on every upper storey and a wide portal on the ground. */
   hoist?: {every?: number; first?: number; bays?: number[]; arch?: ArchKind};
-  /** A carriage gateway through the ground storey in the listed bays of the widest panel (dark arched openings 92 % of a bay wide, plain wall between); default none. */
-  gateways?: {bays: number[]; arch?: ArchKind};
+  /** A carriage gateway through the ground storey in the listed bays of the widest panel (dark arched openings 92 % of a bay wide, plain wall between); default none.
+   *  `keepRow`: the other ground bays keep the ground row instead of plain wall, and `hallDoors` may take other bays (Haarlemmerweg 315's
+   *  arched passage beside its glazed front door, ground windows either side). Absent: byte-identical. */
+  gateways?: {bays: number[]; arch?: ArchKind; keepRow?: boolean};
   /**
    * Glazed hall doors in the listed ground bays of the widest panel (De Hallen's tram-hall gables: a wide portal of
    * white-framed glazed leaves between side windows): `h` of the ground storey (default 0.78), `lights` x `rows` panes

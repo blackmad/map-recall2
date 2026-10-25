@@ -2,7 +2,8 @@
  * Kit additions from the Westerpark south-edge lane (2026-10-25, issue #65): the window box as an enclosed access
  * gallery (`windowBox.spread` over every panel of the group, `windowBox.frame` colour, a `windowBox.deck` slab, a box
  * rising into the storey above) on Haarlemmerweg 217-283, and `mainSurface` (the group's main panel named by a 3DBAG
- * surface) on Haarlemmerweg 285-303. Every addition is opt-in: absent, the mesh is unchanged.
+ * surface) on Haarlemmerweg 285-303, `gateways.keepRow` (a passage beside ground windows and a hall door) on
+ * Haarlemmerweg 315-321. Every addition is opt-in: absent, the mesh is unchanged.
  */
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
@@ -67,4 +68,13 @@ test('mainSurface: names the main panel (Haarlemmerweg 285-303 west wing); must 
   assert.ok(withMain.widthM < widest.widthM, `${withMain.widthM} vs ${widest.widthM}`);
   const bad = raw(CORNER); bad.walls[2].mainSurface = 999;
   assert.throws(() => validateLargeIntent(bad), /mainSurface/);
+});
+
+test('gateways.keepRow: the other ground bays keep the ground row and hall doors may join', () => {
+  const base = JSON.parse(fs.readFileSync('scripts/building-recipes/houses/haarlemmerweg-315-135676/intent.json', 'utf8'));
+  assert.doesNotThrow(() => validateLargeIntent(base));
+  const noKeep = structuredClone(base); delete noKeep.walls[0].gateways.keepRow;
+  assert.throws(() => validateLargeIntent(noKeep), /hallDoors: not with hoist, entrance or gateways/);
+  const clash = structuredClone(base); clash.walls[0].hallDoors.bays = [8];
+  assert.throws(() => validateLargeIntent(clash), /hallDoors.bays: not a gateway bay/);
 });

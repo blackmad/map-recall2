@@ -218,7 +218,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.arches.windows !== undefined && !['brick-bay-grid', 'french-window-ledge'].includes(w.system)) problems.push(`${at}.arches.windows: arched windows need system brick-bay-grid or french-window-ledge`);
     }
     if (w.gateways !== undefined) {
-      for (const k of Object.keys(w.gateways)) if (!['bays', 'arch'].includes(k)) problems.push(`${at}.gateways.${k}: unknown field (bays, arch)`);
+      for (const k of Object.keys(w.gateways)) if (!['bays', 'arch', 'keepRow'].includes(k)) problems.push(`${at}.gateways.${k}: unknown field (bays, arch, keepRow)`);
+      if (w.gateways.keepRow !== undefined && typeof w.gateways.keepRow !== 'boolean') problems.push(`${at}.gateways.keepRow: boolean`);
       if (!Array.isArray(w.gateways.bays) || !w.gateways.bays.length) problems.push(`${at}.gateways.bays: list of bay indices`);
       else w.gateways.bays.forEach(b => count(b, `${at}.gateways.bays`, 0, (w.baysPerStorey ?? 80) - 1));
       if (w.baysPerStorey === undefined) problems.push(`${at}.gateways.bays needs baysPerStorey`);
@@ -237,7 +238,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (hd.rows !== undefined) count(hd.rows, `${at}.hallDoors.rows`, 1, 8);
       if (hd.h !== undefined && !(typeof hd.h === 'number' && hd.h >= 0.3 && hd.h <= 0.95)) problems.push(`${at}.hallDoors.h: fraction of the ground storey 0.3..0.95`);
       if (w.system !== 'brick-bay-grid') problems.push(`${at}.hallDoors: needs system brick-bay-grid`);
-      if (w.hoist || w.entrance || w.gateways) problems.push(`${at}.hallDoors: not with hoist, entrance or gateways (all claim the ground storey)`);
+      if (w.hoist || w.entrance || (w.gateways && !w.gateways.keepRow)) problems.push(`${at}.hallDoors: not with hoist, entrance or gateways without keepRow (all claim the ground storey)`);
+      if (w.gateways?.keepRow && Array.isArray(hd.bays) && hd.bays.some(b => w.gateways!.bays.includes(b))) problems.push(`${at}.hallDoors.bays: not a gateway bay`);
     }
     if (w.hoist !== undefined) {
       for (const k of Object.keys(w.hoist)) if (!['every', 'first', 'bays', 'arch'].includes(k)) problems.push(`${at}.hoist.${k}: unknown field (every, first, bays, arch)`);

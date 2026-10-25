@@ -51069,6 +51069,117 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-25T07:57:08.141Z"
+    },
+    {
+      "id": "ordinary-0363100012135676",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012135676",
+      "name": "Haarlemmerweg 315-321, Amsterdam-West (1921 brick office block facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012135676)",
+      "hash": "bd5ea5cb471f72238cda8031456b08bedefa41cc2c802d9d549c647315f571e2",
+      "sha256": "bd5ea5cb471f72238cda8031456b08bedefa41cc2c802d9d549c647315f571e2",
+      "meshHash": "00f9c2c73eab4378",
+      "bytes": 966108,
+      "triangles": 13103,
+      "materials": 12,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -14.676,
+          -0.001,
+          -16.771
+        ],
+        "max": [
+          35.552,
+          16.936,
+          38.276
+        ]
+      },
+      "anchor": [
+        4.8664568,
+        52.3849969
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8662827,
+              52.3851219
+            ],
+            [
+              4.8662398,
+              52.3851213
+            ],
+            [
+              4.8662716,
+              52.3850333
+            ],
+            [
+              4.8663168,
+              52.3850395
+            ],
+            [
+              4.866456,
+              52.3846525
+            ],
+            [
+              4.8669838,
+              52.3847232
+            ],
+            [
+              4.8668216,
+              52.3851458
+            ],
+            [
+              4.8662821,
+              52.3851382
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 16.94,
+      "height": 16.94,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-haarlemmerweg-315-135676.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012135676"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "haarlemmerweg-315-135676",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012135676/w04-359L.jpg",
+          "source-data://pand-reference-walls/0363100012135676/w04-359.jpg",
+          "source-data://pand-reference-walls/0363100012135676/w01-77L.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+boards 3st 14b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] likeness WARN (mask IoU 0.303 < 0.45)."
+      ],
+      "reviewState": "large-recipe-likeness-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012135676",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T08:02:07.475Z"
     }
   ]
 }
