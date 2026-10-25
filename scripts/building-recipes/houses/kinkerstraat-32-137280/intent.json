@@ -203,7 +203,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#898c89"
  },
  "palette": {
   "brick": "#8a4a3a",
@@ -214,7 +215,8 @@
  "closedBands": true,
  "layeredKit": true,
  "notes": [
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #545959 not used (not darker than the wall #825746 by 10 L*, or tinted): kit glass kept; walls[2] glass #494a4c not used (not darker than the wall #4b4440 by 10 L*, or tinted): kit glass kept; walls[3] wall split #a66554 | #542f26 at 47 % (dE 28.5); walls[4] glass #646c6e not used (not darker than the wall #706868 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #545959 not used (not darker than the wall #825746 by 10 L*, or tinted): kit glass kept; walls[2] glass #494a4c not used (not darker than the wall #4b4440 by 10 L*, or tinted): kit glass kept; walls[3] wall split #a66554 | #542f26 at 47 % (dE 28.5); walls[4] glass #646c6e not used (not darker than the wall #706868 by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #898c89: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5384: slot slate, rgb 148/148/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

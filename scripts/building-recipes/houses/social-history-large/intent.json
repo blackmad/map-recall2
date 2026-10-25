@@ -15,11 +15,12 @@
     {"wallSurfaces": [23], "street": "Nieuwe Vaart", "system": "ribbon-windows", "storeys": 3, "ground": "blank", "windows": "plain", "palette": {"brick": "#d9d7cf", "frame": "#4a4d52"}}
   ],
   "otherWalls": "blank",
-  "roof": {"material": "bitumen"},
+  "roof": {"material": "bitumen", "flatHex": "#686a6e" },
   "palette": {"brick": "#e3e1da", "frame": "#5d6166", "door": "#3a3a3a", "stone": "grey-painted", "wallMaterial": "stucco"},
   "notes": [
     "South front on Cruquiusweg (surfaces 17 and 28, split by a notch in the 3DBAG footprint): a white rendered mass, blank above the second floor, two rows of square punched windows at floors 1-2, a glazed recessed ground floor behind columns with the INTERNATIONAAL INSTITUUT VOOR SOCIALE GESCHIEDENIS fascia, entrance at the top of the steps left of centre (ref-s).",
     "North (Nieuwe Vaart, surface 23, 10.4 m): the lower block's ribbon window band; the curved upper mass above (surfaces 67/68) is blank, as in ref-n. The glazed corner stair and the curved roof edge are below the component grain; 3DBAG straightens the curve.",
-    "The colonnade, the steel light masts and the rooftop antennas are not modelled."
+    "The colonnade, the steel light masts and the rooftop antennas are not modelled.",
+    "roof.flatHex #686a6e: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5384: slot slate, rgb 99/99/99, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
   ]
 }

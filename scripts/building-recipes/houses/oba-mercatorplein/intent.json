@@ -69,7 +69,8 @@
  "otherWalls": "blank",
  "closedBands": true,
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#817c7a"
  },
  "palette": {
   "brick": "#a98163",
@@ -82,7 +83,8 @@
   "1927 Amsterdam School block (pand 0363100012151434, 40 LoD2.2 surfaces; the fronts are only 5 to 6 surface groups so the walls table is short) on Mercatorplein, 2025-09-25 panorama w01-75 (20 m, 0.8 deg obliquity, sharp). The east front: warm brown brick, three storeys of continuous balcony galleries with iron railings (each balcony a long deck with bars), small pointed and rectangular attic windows under the roof edge with iron hooks (tram wire brackets), a green-roofed glazed canopy over the shopfront arcade with the red 'oba' logo at the right end.",
   "Ornaments: continuous balcony decks with bar rails MODELLED (balconies on storeys 1 to 3, rail bars; the iron curlicue detail of the rails SIMPLIFIED to straight bars); string courses MODELLED; shopfront arcade MODELLED as plinth-shopfronts; red OBA logo SIMPLIFIED (kit fascia lettering OBA in logo red on the canopy-line fascia, not at the photographed far right; the glazed canopy slab itself SKIPPED: it is a thin projecting glass roof inside the 3DBAG ground band); pointed attic windows SIMPLIFIED (rectangular two-light windows; the lancet shape has no component); tram-wire hooks SKIPPED (too-small); the carved stone head at the left pier SKIPPED (too-small); left red brick block with bay windows: the pand has no wall panel group for it in the photographed range, so it stays as 3DBAG shell.",
   "Only the east front (surface 19, 41.7 m, and the low ground band 1/2) is described: the west, courtyard and north walls have no usable panorama (w02-255 has no candidates), so they are blank walls, except the 42 m west wall (surface 9), which has an INFERRED plain window grid (4 storeys, 12 bays; no photograph, the style follows the east front) because a 600 m2 blank wall fails the audit:glb blank-wall gate. The pand-reference run flagged the 2019 capture washed-out; the 2025 capture is used.",
-  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): no archived crop matches either block front (walls[0], [2], NO PHOTO, ride-visible: 28 sampled routes); the only crop is the glazed canopy wing. The 1927 Amsterdam School block is an ornamented front drawn as a plain brick grid: uninstalled until crops exist, bespoke if it returns."
+  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): no archived crop matches either block front (walls[0], [2], NO PHOTO, ride-visible: 28 sampled routes); the only crop is the glazed canopy wing. The 1927 Amsterdam School block is an ornamented front drawn as a plain brick grid: uninstalled until crops exist, bespoke if it returns.",
+  "roof.flatHex #817c7a: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5384: slot slate, rgb 132/123/115, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "layeredKit": true
 }

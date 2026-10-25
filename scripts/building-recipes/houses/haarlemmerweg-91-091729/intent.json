@@ -50,7 +50,8 @@
     "stone": "#cfc8b8"
   },
   "roof": {
-    "material": "bitumen"
+    "material": "bitumen",
+    "flatHex": "#818387"
   },
   "walls": [
     {
@@ -247,7 +248,8 @@
     "walls[1] the Van Limburg Stirumstraat side (panel 8, crops w01-89L 2019-01-07 and w01-89 2025-06-18): six bays, two recessed loggias with rounded white balconies (bays 0 and 3), a row of glazed shopfronts under a pale fascia on the ground (plinth).",
     "NOT DRAWN (kit cannot say): the loggias' rounded balcony fronts (drawn straight); the open roof-terrace frames over the loggias in the top storey; the pale fascia band over the shopfronts; the stair slot as one tall light.",
     "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class.",
-    "Lit colour (2026-10-25 integrator review): the fronts face north and no usable sunlit crop exists (the sunlit 2025 east crop of 91 is 71 pct washed out), so the brightest north reading (99-103, 2020-02-07: buff #8b775e, red-brown #75564c) is used for all four identical blocks and left unmeasured, so the export brightens it like any shaded wall."
+    "Lit colour (2026-10-25 integrator review): the fronts face north and no usable sunlit crop exists (the sunlit 2025 east crop of 91 is 71 pct washed out), so the brightest north reading (99-103, 2020-02-07: buff #8b775e, red-brown #75564c) is used for all four identical blocks and left unmeasured, so the export brightens it like any shaded wall.",
+    "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
   ],
   "budgetTriangles": 12000
 }

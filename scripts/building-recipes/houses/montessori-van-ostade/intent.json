@@ -53,7 +53,8 @@
  "otherWalls": "blank",
  "closedBands": true,
  "roof": {
-  "material": "zinc"
+  "material": "zinc",
+  "flatHex": "#6e7074"
  },
  "palette": {
   "brick": "#7e5c4c",
@@ -65,7 +66,8 @@
  "notes": [
   "Montessori Lyceum Amsterdam, Van Ostadestraat 103 (pand 0363100012236840, 1900, 158 LoD2.2 surfaces, roof max 20.0 m). Only the south street front has a panorama (2019-01-18 w02-168, 8.7 m away): a dark brick front of three tall storeys, each a row of window groups (two or three lights, slender white piers between) under thin stone string courses, a ground floor with a slightly lower sill, a cornice and two roof dormers. The north, east and west walls have no panorama in range and stay blank.",
   "MODELLED: three storeys on the south panels (surfaces 13/111/112/153 and the two side panels 57/136, 97), two bays of multi-light windows per storey (windows wide), light piers and string courses, brick colour. SIMPLIFIED: the real windows are taller than the preset (about 80 % of the storey, ours 58 %); the side panels have no photo of their own and repeat the centre rhythm; the mullion detail is the plain mullion/transom grid. SKIPPED: the two roof dormers (not in the LoD2.2 roof), the MIA MAVO/HAVO sign plate and bicycle racks (temporary), the rear, side and courtyard walls (no panorama: blank).",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #555759 not used (not darker than the wall #68584f by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #555759 not used (not darker than the wall #68584f by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #6e7074: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5385: slot slate, rgb 107/107/107, confidence 0.8; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "layeredKit": true,
  "measured": {

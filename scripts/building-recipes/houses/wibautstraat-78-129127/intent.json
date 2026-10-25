@@ -132,7 +132,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#7a767a"
  },
  "palette": {
   "brick": "#d8d6cc",
@@ -149,7 +150,8 @@
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class.",
   "Measurement limits: walls[0] reflective window glass under an overcast sky is as light as the concrete spandrels, so the photo glazing is unreliable; ribbon system and bays kept by hand. walls[1] 12 ribbon bays for the triangle budget where the photo has ~25 mullions.",
   "walls[0] spandrel: overcast crop, lightened to the trim-normalised photo (2026-10-14 reconcile). The only archived crop of this 28.7 m front is w03-70 (2023-01-02, overcast; the archive has no other date for this wall and all-walls.ts picks one panorama per wall). measure.ts's wall cluster #8a867e mixes the spandrels with the dark column faces and frames (the light trim normalisation found no trim: gain 1); the spandrel bands alone have the median #908c83 (HSL L 0.54) in the crop, and the city look drew #8a867e at L 0.47 on this facing. Hand #a09c92 draws the spandrel at the photo's L within 0.05; the measured dark window glass #5c5b5d is kept.",
-  "Refit 2026-10-25 (issue #59): the two crown storeys glazed across (glazedStoreys 7, 8; the lattice of square windows reads 74-98 % glass in the photos), east-front ribbons shortened to the photo band (h 0.45), north end windows taller (photo 55-65 %), budget 13000. Remaining gate reads: walls[0] storey 1 is behind the canopy and street tree (photo 20 %) and the photo counts every ribbon mullion (30 columns) where the kit draws 8 ribbon bays, walls[1] the crown lattice in shade reads 98 % glass where a glazed storey keeps its slab band."
+  "Refit 2026-10-25 (issue #59): the two crown storeys glazed across (glazedStoreys 7, 8; the lattice of square windows reads 74-98 % glass in the photos), east-front ribbons shortened to the photo band (h 0.45), north end windows taller (photo 55-65 %), budget 13000. Remaining gate reads: walls[0] storey 1 is behind the canopy and street tree (photo 20 %) and the photo counts every ribbon mullion (30 columns) where the kit draws 8 ribbon bays, walls[1] the crown lattice in shade reads 98 % glass where a glazed storey keeps its slab band.",
+  "roof.flatHex #7a767a: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5385: slot slate, rgb 123/115/115, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

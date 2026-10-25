@@ -41,7 +41,9 @@ function factsIn(x: number, y: number): Map<string, RoofFact> {
 
 for (const id of ids) {
   const dir = path.join(HOUSES, id), intentFile = path.join(dir, 'intent.json');
-  const intent = JSON.parse(fs.readFileSync(intentFile, 'utf8'));
+  const text = fs.readFileSync(intentFile, 'utf8'), intent = JSON.parse(text);
+  // Keep the file's own indentation (intents are written at 1 or 2 spaces), so a write diffs as the roof lines only.
+  const indent = /^\{\n( +)"/.exec(text)?.[1].length ?? 1;
   const facts = JSON.parse(fs.readFileSync(path.join(dir, 'facts.json'), 'utf8'));
   const ring: number[][] = facts.bagFootprintRD[0];
   const [cx, cy] = [ring.reduce((s, p) => s + p[0], 0) / ring.length, ring.reduce((s, p) => s + p[1], 0) / ring.length];
@@ -59,6 +61,6 @@ for (const id of ids) {
   console.log(`${line}: ${reading.hex} (roof-facts 14/${at}: slot ${reading.slot}, rgb ${reading.rgb.join('/')}, confidence ${reading.confidence})${intent.roof?.flatHex ? `; intent already has roof.flatHex ${intent.roof.flatHex}` : ''}`);
   if (!write || intent.roof?.flatHex) continue;
   intent.roof = {...(intent.roof ?? {material: 'bitumen'}), flatHex: reading.hex};
-  intent.notes = [...(intent.notes ?? []), `roof.flatHex ${reading.hex}: the PDOK orthophoto's reading of this pand (roof-facts 14/${at}: slot ${reading.slot}, rgb ${reading.rgb.join('/')}, confidence ${reading.confidence}; roof-flat.ts), the colour the city drew it in before the install.`];
-  fs.writeFileSync(intentFile, JSON.stringify(intent, null, 1) + '\n');
+  intent.notes = [...(typeof intent.notes === 'string' ? [intent.notes] : intent.notes ?? []), `roof.flatHex ${reading.hex}: the PDOK orthophoto's reading of this pand (roof-facts 14/${at}: slot ${reading.slot}, rgb ${reading.rgb.join('/')}, confidence ${reading.confidence}; roof-flat.ts), the colour the city drew it in before the install.`];
+  fs.writeFileSync(intentFile, JSON.stringify(intent, null, indent) + '\n');
 }

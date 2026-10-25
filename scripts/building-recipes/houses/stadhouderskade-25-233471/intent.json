@@ -111,7 +111,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#817c80"
  },
  "palette": {
   "brick": "#55565c",
@@ -126,6 +127,7 @@
   "walls[0] = surface 109 of panel 4 (N, 26.9 m, eaves 22.3; the 7.5 and 16.2 m end surfaces are left out because the eaves gate samples the lower roof): dark brick-grey skin, a glazed lobby ground storey (Park Centraal), six storeys of wide glazed windows with a glass-railed balcony run on each; drawn as 7 storeys x 8 bays. Simplified: the bowed plan (straight in 3DBAG), the rooftop crown and the oval roof sign, the lobby canopy lettering.",
   "walls[1] = panel 5 (N, 20.3 m, eaves 17.8): the corner range: a brick ground with MOMO shopfronts, an arched first floor with white dressings and balcony rail, three upper storeys with white-surround windows and a cornice under dormers; drawn as 5 storeys x 5 bays, plinth-shopfront ground, round arched windows on storey 1, cornice. Simplified: the balcony rail on the arched storey (a balcony run would hide the arched heads in this kit), the stone dressings and dormers (3DBAG roof). walls[2] = surface 91 of panel 13 (SW, 31 m, eaves 17.3): dark stone block with shopfronts (PC BAGS, POV GALLERY) and balconies in every third bay on storeys 2-3; 5 storeys x 8 bays.",
   "Not drawn: the cream corner house (w05-68, NE), the courtyard and the south front.",
-  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): the 1930 stone-and-brick block's arched, richly dressed corner range (MOMO) and balconied hotel front were drawn as grey grids (every street group FAIL, dL up to 0.30), ride-visible (73 of 2,000 sampled routes). Ornamented front: uninstalled; bespoke if it returns."
+  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): the 1930 stone-and-brick block's arched, richly dressed corner range (MOMO) and balconied hotel front were drawn as grey grids (every street group FAIL, dL up to 0.30), ride-visible (73 of 2,000 sampled routes). Ornamented front: uninstalled; bespoke if it returns.",
+  "roof.flatHex #817c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5385: slot slate, rgb 132/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

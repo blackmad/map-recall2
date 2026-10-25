@@ -147,7 +147,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#878987"
  },
  "palette": {
   "brick": "#7c675b",
@@ -163,7 +164,8 @@
   "The two-storey glazed podium (surfaces 98, 132: panel 95, 19.9 m, eaves 4.1 m, reaching 13.3 m over part of its width) is now walls[2], 5 bays, one tall storey, entrance. It was the largest blank wall of the audit (204 m2 facing south) and the shopfront the south photo shows at the foot of the tall wing. Its paired crop covers 19.9 m of wall including the taller wing rising behind it, so the mask IoU stays 0.398 (WARN, reason written).",
   "Likeness 2026-10-21: walls[0] PASS (wall #4b4039 vs #5f4f45, dL 0.063; glazing 0.431 vs 0.399; columns 5 vs 6; IoU 0.657), walls[2] WARN (dL -0.014; glazing 0.334 vs 0.256; IoU 0.398). walls[1] (the plain taller wing, panels 86/143/151/160/206) has NO paired photo: the podium edge, not the wing, is the BAG outline edge that all-walls.ts rectifies, so every archived crop of this pand matches a podium or banded-wing panel; the wing's own south face stands 1.9 m behind the outline and no crop covers it.",
   "palette.brick hand-held on the banded wing at #5f4f45: the 2019 north crop measures #4b4039 (the darkest reading of the precast panels, an overcast November facade), the 2022 south crop reads the same precast at #826e64, and #5f4f45 sits inside the measured tolerance (dL 0.063) without drawing the block as near-black. The taller wing and the podium take #7c675b, the south crop's daylight value.",
-  "baysPerStorey hand-held at 6 on the banded wing (the measured 22 is the window mullion pitch, 1.455 m; the front reads as six wide bands) and at 5 on the podium."
+  "baysPerStorey hand-held at 6 on the banded wing (the measured 22 is the window mullion pitch, 1.455 m; the front reads as six wide bands) and at 5 on the podium.",
+  "roof.flatHex #878987: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5383: slot slate, rgb 140/140/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-21",

@@ -152,14 +152,16 @@
     "Van Eeghenstraat 114-130 (pand 0363100012068485, built 1909): a villa in Louis XV revival between Van Eeghenstraat and the Vondelpark; its rear garden front faces the park.",
     "walls[0] street front (panel 41, 15.1 m; crop w02-155 2019-01-17, overcast): purple-brown brick, cream stone quoins, a canted stone oriel on the first floor over the door axis, shuttered ground-floor windows, a cornice and a slate mansard with dormers and a curved central gable with an oval window (the mansard band drawn as a slate-coloured stone storey).",
     "walls[1] park-side rear (panel 1, 8.8 m, standing on a 4 m garden-room block; crop w01-335p 2021-03-26 through trees from the park): white balustrade balconies on two levels in front of tall windows.",
-    "INFERRED: the side, party and remaining rear walls (otherWalls brick grid). Not expressed: the window shutters, the curved Louis XV gable (3DBAG roof planes stand for it), the copper oriel roof."
+    "INFERRED: the side, party and remaining rear walls (otherWalls brick grid). Not expressed: the window shutters, the curved Louis XV gable (3DBAG roof planes stand for it), the copper oriel roof.",
+    "roof.flatHex #747674: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 115/115/107, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
   ],
   "measured": {
     "date": "2026-10-25",
     "groups": []
   },
   "roof": {
-    "material": "slate"
+    "material": "slate",
+    "flatHex": "#747674"
   },
   "shellRepair": true
 }

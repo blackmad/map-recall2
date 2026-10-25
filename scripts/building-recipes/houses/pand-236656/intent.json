@@ -138,7 +138,8 @@
  "notes": [
   "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
   "Panels left blank by the draft: 10 (21.6 m, over 8 groups); 20 (23.1 m, over 8 groups); 92 (22 m, over 8 groups); 13 (22 m, over 8 groups); 67 (23 m, over 8 groups); 40 (21.1 m, over 8 groups); 0 (28.1 m, over 8 groups); 18 (15.1 m, over 8 groups); 12 (26.7 m, over 8 groups); 28 (15.5 m, over 8 groups); 23 (12.9 m, over 8 groups); 75 (13 m, over 8 groups); 19 (12.4 m, over 8 groups); 27 (6.7 m, unnamed panel under 8 m); 70 (13.2 m, over 8 groups); 33 (12.6 m, over 8 groups); 111 (6.2 m, unnamed panel under 8 m); 85 (5.4 m, unnamed panel under 8 m); 14 (4.4 m, unnamed panel under 8 m); 65 (7.4 m, unnamed panel under 8 m); 1 (4.3 m, unnamed panel under 8 m); 59 (29.6 m, under 3 m tall); 11 (4.3 m, unnamed panel under 8 m); 26 (4 m, unnamed panel under 8 m); 82 (13 m, over 8 groups); 66 (18.5 m, under 3 m tall); 68 (4.7 m, unnamed panel under 8 m); 95 (5.3 m, unnamed panel under 8 m); 21 (4.9 m, unnamed panel under 8 m); 15 (2.7 m, unnamed panel under 8 m); 62 (2.4 m, unnamed panel under 8 m); 36 (7.8 m, unnamed panel under 8 m); 31 (4.1 m, unnamed panel under 8 m); 7 (2.1 m, unnamed panel under 8 m); 115 (20 m, under 3 m tall); 9 (29.7 m, under 3 m tall); 24 (4.4 m, under 3 m tall); 56 (6.5 m, under 3 m tall); 49 (6.3 m, under 3 m tall); 119 (2.2 m, unnamed panel under 8 m); 58 (2.2 m, unnamed panel under 8 m); 16 (5.3 m, under 3 m tall); 93 (3.7 m, under 3 m tall); 57 (3.6 m, under 3 m tall); 126 (3 m, under 3 m tall); 8 (4.7 m, under 3 m tall); 47 (3 m, under 3 m tall); 105 (2.6 m, under 3 m tall); 74 (28.6 m, under 3 m tall); 79 (5.7 m, under 3 m tall); 64 (31.3 m, under 3 m tall); 116 (6.3 m, under 3 m tall); 102 (2.8 m, under 3 m tall); 106 (2.1 m, under 3 m tall); 113 (2.5 m, under 3 m tall); 63 (2.3 m, under 3 m tall); 88 (2.4 m, under 3 m tall); 43 (2.1 m, under 3 m tall); 25 (2.3 m, under 3 m tall); 83 (2.3 m, under 3 m tall); 109 (2.8 m, under 3 m tall); 100 (3.6 m, under 3 m tall).",
-  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #372f29 not used (not darker than the wall #423430 by 10 L*, or tinted): kit glass kept; unphotographed walls take #423430 (brick), the area-weighted median of groups 2."
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #372f29 not used (not darker than the wall #423430 by 10 L*, or tinted): kit glass kept; unphotographed walls take #423430 (brick), the area-weighted median of groups 2.",
+  "roof.flatHex #848d90: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5385: slot slate, rgb 140/148/148, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-24",
@@ -146,5 +147,9 @@
    2
   ],
   "otherWalls": true
+ },
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#848d90"
  }
 }

@@ -178,10 +178,15 @@
   "notes": [
     "Emmalaan 4A-6 / Koningslaan 35 (pand 0363100012236822, built 1912): a flat-roofed brick block of two tall storeys over a raised ground storey, with a set-back rooftop addition; under renovation in the 2025 panoramas.",
     "walls[0] south-east front (panel 34, 10.2 m) and walls[1] south-west front (panel 62, 7.7 m): dark purple-brown brick, white-framed windows grouped in threes per bay on the two upper storeys, smaller windows in the raised ground storey, a white eaves overhang (cornice). walls[2] the north-east fronts (panels 1, 78, 65; crops w04-68w and w07-67w 2019-01-17, straight-on) show the same brick with windows in pairs. Those crops show the window groups and brick; the crops of these two fronts are 43-49 deg off square (w01-247L, w02-157L) or 40 % foliage (w03-247w), so the gate abstains on them.",
-    "INFERRED: the remaining walls and the rooftop addition (otherWalls brick grid; 3DBAG roof planes)."
+    "INFERRED: the remaining walls and the rooftop addition (otherWalls brick grid; 3DBAG roof planes).",
+    "roof.flatHex #898c89: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 181/181/173, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
   ],
   "measured": {
     "date": "2026-10-25",
     "groups": []
+  },
+  "roof": {
+    "material": "bitumen",
+    "flatHex": "#898c89"
   }
 }

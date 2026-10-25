@@ -166,7 +166,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#7a767a"
  },
  "palette": {
   "brick": "#7a3a2e",
@@ -178,7 +179,8 @@
   "Westerdok 748 (BAG: built 2008; 192 dwellings, 34 other-use, five offices; 5,306 m2 footprint, 38 m): the brick courtyard block on the Westerdokseiland north of the Westerdoksdijk. The west front (w01-275, panorama 2022-04-21) is a three-storey base with a central passage arch under a brick tower of ten floors of square deep-set windows and flanking blocks stepping up to eight floors; the south front (w02-185, 2018-05-02) shows the curved tower of ten floors; the north front (w03-5, 2018-05-02) the balconied stair of the base.",
   "Modelled: wall groups split by the height steps of the 3DBAG walls (surface lists, because panels 89, 112 and 102 each hold two or three heights): the west front as a 3-storey base (surface 112), a 6-storey part (surfaces 96, 193, 235, 448) and the 10-storey tower wing (surface 449); the south front tower (panel 4, 10 storeys); the north front tower wing (surface 109, 10 storeys) and the 6-storey part (110). Red-brown brick, deep-reveal square windows, the closed 3DBAG roofs.",
   "Simplified: the passage arch under the west tower is a plain ground storey (the 3DBAG walls close it as a wall), the balcony recesses and the glazed corner loggias are plain windows, the ground shop glazing is the same window row. Not modelled: the court walls, the east side stepped stair wings (no clear panorama) and the north-west annex.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 4, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #3f413d not used (not darker than the wall #514a43 by 10 L*, or tinted): kit glass kept; walls[2] glass #393b3d not used (not darker than the wall #4e4e49 by 10 L*, or tinted): kit glass kept; walls[4] glass #444044 not used (not darker than the wall #47403c by 10 L*, or tinted): kit glass kept; walls[5] glass #424648 not used (not darker than the wall #4c3a37 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 4, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #3f413d not used (not darker than the wall #514a43 by 10 L*, or tinted): kit glass kept; walls[2] glass #393b3d not used (not darker than the wall #4e4e49 by 10 L*, or tinted): kit glass kept; walls[4] glass #444044 not used (not darker than the wall #47403c by 10 L*, or tinted): kit glass kept; walls[5] glass #424648 not used (not darker than the wall #4c3a37 by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #7a767a: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5383: slot slate, rgb 123/115/115, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "closedBands": true,
  "measured": {

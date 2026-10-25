@@ -307,7 +307,7 @@
      ],
      "w": 0.5,
      "h": 0.43,
-     "sill": 0.0
+     "sill": 0
     }
    ]
   },
@@ -365,7 +365,8 @@
   "Row split 2026-10-24 (lane large-kit-row-split, issue #30): walls[0] (canal front, panel 42, 28.1 m) is four fronts set by hand from the rectified w01-47L crop: the tall left house (2 bays, 5 storeys, 3DBAG line 19.1 m), a 1-bay stair strip with narrow lights, the main block (6 bays, its corbelled brick cornice left as a flat crown: the kit's cornice is a light stone band) and the 2-bay risalit under the 3DBAG gable (crown gable). Same brick throughout (the crop's colour segmentation finds one material), so the split is by width, eaves, bays and crown only; measurement could not propose it (no colour joint; one 3DBAG roof step at 21 %).",
   "Review 2026-10-24 (held-review): walls[5] (w03-227) brick set to the crop's normalised wall swatch #756e77 and the wallSplit (#938376 | #685f69 at 0.616) dropped: the split followed the cast shadow across the right third of the 2021-09-09 crop, not a change of brick.",
   "Giant-order lane (2026-10-24, issue #35): walls[3] (no photo) is surface 503 alone: surfaces 248 (2.2 m, 10.1-13.4 m) and 497 (0.9 m, 10-16.2 m) are set-back upper pieces off the footprint edge whose 13.4 m roof failed the eaves gate (16.1 vs 13.36 m); they fall to otherWalls. walls[0] windows cross (the w01-47L crop shows mullion-and-transom sashes). A corbel table under the main block's crown was tried and left out: brick corbels on the dark brick do not read in the game's flat colour.",
-  "Acceptance pass 2026-10-24 (issue #45, w01-47L 2021-01-22): walls[0] window frames reddish-brown #6a4536 (not white), round-arched heads on the tall left house top storey (arches.storeys [4])."
+  "Acceptance pass 2026-10-24 (issue #45, w01-47L 2021-01-22): walls[0] window frames reddish-brown #6a4536 (not white), round-arched heads on the tall left house top storey (arches.storeys [4]).",
+  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-24",
@@ -377,5 +378,9 @@
    6
   ],
   "otherWalls": true
+ },
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#87898d"
  }
 }

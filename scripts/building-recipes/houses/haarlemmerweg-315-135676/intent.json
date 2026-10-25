@@ -41,7 +41,8 @@
     "stone": "#bdb6a8"
   },
   "roof": {
-    "material": "bitumen"
+    "material": "bitumen",
+    "flatHex": "#898c89"
   },
   "walls": [
     {
@@ -177,7 +178,8 @@
     "Wall colour kept at the sunlit red-brown of w04-359 (2025-09-29, #7b4f42 by eye on the piers) rather than the measured #4d413c of the shaded 2021 crop (dL 0.10, within the gate).",
     "Ground: the arched passage (gateways keepRow, bay 8) beside the arched glazed front door (hallDoors, bay 6), paired ground windows in the other bays.",
     "NOT DRAWN (kit cannot say): the stone ground-floor surround of the middle bays and the stone base course; the dark ribbed band's chamfered ends (cladding runs full width); the oriels' dark ribbed brick bodies; the windows' irregular pair/single rhythm right of the centre (windowPattern cycles the left half); the front door is drawn glazed, the photo's is red timber under a glazed fanlight.",
-    "Lit colour (2026-10-25 integrator review): the front faces north and its crops are shade readings, so the colours are left unmeasured and the export brightens them like any shaded wall."
+    "Lit colour (2026-10-25 integrator review): the front faces north and its crops are shade readings, so the colours are left unmeasured and the export brightens them like any shaded wall.",
+    "roof.flatHex #898c89: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 148/148/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
   ],
   "budgetTriangles": 20000
 }

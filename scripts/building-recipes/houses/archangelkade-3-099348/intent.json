@@ -37,7 +37,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "zinc"
+  "material": "zinc",
+  "flatHex": "#87898d"
  },
  "palette": {
   "brick": "#d4d6d2",
@@ -50,6 +51,7 @@
  "layeredKit": true,
  "notes": [
   "Archangelkade 3D (BAG pand 0363100012099348, built 1978, 124 3DBAG wall surfaces, roof max 11.9 m): a barrel-roofed warehouse hall on the industrial strip between the Archangelkade and the Haparandaweg, about 75 m by 60 m. One panorama within 35 m shows it: the 75 m north-west flank (w01-323), a plain wall of pale vertical-ribbed sheet steel under a curved eaves line with two downpipes; w02-233 has no panorama.",
-  "walls[0] = panel 0 (NW, 75 m, eaves 8.8; surface 1): drawn as a blank two-storey wall with 24 vertical piers standing in for the sheet-steel ribs, in pale render. Simplified: the true ribs are 20 cm apart, the piers are one per 3 m bay; the curved eaves line is the 3DBAG roof. Not drawn: the downpipes (too small), the doors on the unphotographed sides; the other three walls stay blank pale render."
+  "walls[0] = panel 0 (NW, 75 m, eaves 8.8; surface 1): drawn as a blank two-storey wall with 24 vertical piers standing in for the sheet-steel ribs, in pale render. Simplified: the true ribs are 20 cm apart, the piers are one per 3 m bay; the curved eaves line is the 3DBAG roof. Not drawn: the downpipes (too small), the doors on the unphotographed sides; the other three walls stay blank pale render.",
+  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5382: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

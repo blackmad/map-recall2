@@ -108,7 +108,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#818387"
  },
  "palette": {
   "brick": "#8a3e30",
@@ -121,7 +122,8 @@
   "2004 housing block on IJburglaan with the Politiepost IJburg (103 LoD2.2 wall surfaces, 63 m SW front); the pand is the whole block and the police post is its ground-floor unit. SW front from the 2022-05-13 panorama (w01-221, 13 m away, rectified): at the right a six-storey red-brick tower with railings behind white frames and a two-storey open gate portal under a flat concrete slab; at the left a four-storey brick base with a glass shopfront ground floor, orange-painted entrance boxes and a blue diamond police sign (the post), under a steel and timber-louvre loggia level that steps back. SE end (2021-02-04, w04-131, from across the canal): the same brick, seven rows of paired windows, shutters at the ground.",
   "Ornaments from the panorama: blue diamond police blade sign by the post doors (SIMPLIFIED as the kit blue lamp beside the post entrance: same colour and position, a box not a diamond); orange entrance boxes at the post (door colour orange MODELLED as the entrance door, the projecting orange box is SIMPLIFIED: recessed door); P-politie parking signs (SKIPPED: street furniture on poles); open gate portal under a concrete slab (MODELLED as a two-storey entrance hall with a canopy); no POLITIE lettering on the building (the sign is the blade), no striped band or crest; steel and louvre loggia at the left upper levels (SKIPPED: a 4 m deep open frame structure with slatted shutters, not in the 3DBAG volume above the plinth line, which the loggia surfaces 44/39/75 already take as flat walls left blank).",
   "Surface 35 (7.7 m of the tower front, 33.5 to 41.2 m along the panel) is left blank: grouping it with surface 72 gives 0.4 m2 coplanar sill/reveal overlap at audit:glb (zfight-m2 above the zero baseline). The entrance hall is bay 2 of 6 of the tower group; the gate portal in the photo is at the right of the tower, so it sits about 6 m left of its real position. North-east, north-west and courtyard walls have no panorama (candidates 0) and stay blank.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #353432 not used (not darker than the wall #41322a by 10 L*, or tinted): kit glass kept; walls[1] glass #2c2929 not used (not darker than the wall #3d2d25 by 10 L*, or tinted): kit glass kept; walls[2] glass #494844 not used (not darker than the wall #5e3f35 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #353432 not used (not darker than the wall #41322a by 10 L*, or tinted): kit glass kept; walls[1] glass #2c2929 not used (not darker than the wall #3d2d25 by 10 L*, or tinted): kit glass kept; walls[2] glass #494844 not used (not darker than the wall #5e3f35 by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8419/5385: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

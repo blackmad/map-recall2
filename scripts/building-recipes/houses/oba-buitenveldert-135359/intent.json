@@ -124,7 +124,8 @@
   "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
   "Panels left blank by the draft: 48 (6.3 m, unnamed panel under 8 m); 20 (6.2 m, party wall); 87 (20.6 m, under 3 m tall); 28 (4.9 m, party wall); 58 (14.6 m, under 3 m tall); 24 (4.1 m, unnamed panel under 8 m); 16 (3.7 m, unnamed panel under 8 m); 19 (3.2 m, unnamed panel under 8 m); 7 (2.9 m, unnamed panel under 8 m); 25 (3 m, unnamed panel under 8 m); 10 (2.4 m, unnamed panel under 8 m); 77 (6.1 m, unnamed panel under 8 m); 70 (7.4 m, unnamed panel under 8 m); 14 (2 m, unnamed panel under 8 m); 60 (3.2 m, unnamed panel under 8 m); 66 (5.7 m, unnamed panel under 8 m); 50 (7 m, under 3 m tall); 65 (5 m, unnamed panel under 8 m); 69 (3.9 m, unnamed panel under 8 m); 29 (3.7 m, unnamed panel under 8 m); 8 (3.4 m, unnamed panel under 8 m); 61 (3.1 m, unnamed panel under 8 m); 11 (6.6 m, under 3 m tall); 62 (5.8 m, under 3 m tall); 23 (2.6 m, under 3 m tall); 52 (2.5 m, under 3 m tall); 80 (6.1 m, under 3 m tall); 49 (2.1 m, under 3 m tall); 4 (2.1 m, under 3 m tall); 46 (2.8 m, under 3 m tall); 79 (2.8 m, under 3 m tall); 12 (2.1 m, under 3 m tall).",
   "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 3, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[3] glass #615c5a not used (not darker than the wall #666051 by 10 L*, or tinted): kit glass kept; walls[3] curtain class not trusted (usable 39 % < 40 %; not-wall #615c5a does not read as glass on #666051 (>= 10 L* darker, chroma < 15)): ribbon-windows kept from the building's majority; walls[3] system brick-bay-grid -> ribbon-windows (measured curtain); walls[3] bays and window shape not written (folded from the distrusted not-wall mask); walls[4] system brick-bay-grid -> ribbon-windows (measured ribbon); unphotographed walls take #757c82 (stucco), the area-weighted median of groups 3, 4.",
-  "Hand 2026-10-24 (kit lane loggias/plinth, crop w05-0): walls[4] is a blank rendered wall over a dark glazed ground storey (plinth, three lights per 3.2 m bay); the 'ribbon' read was the dark joint line under the parapet, so the upper storeys are drawn blank (brick-bay-grid with blankStoreys 1-2, kept measurable)."
+  "Hand 2026-10-24 (kit lane loggias/plinth, crop w05-0): walls[4] is a blank rendered wall over a dark glazed ground storey (plinth, three lights per 3.2 m bay); the 'ribbon' read was the dark joint line under the parapet, so the upper storeys are drawn blank (brick-bay-grid with blankStoreys 1-2, kept measurable).",
+  "roof.flatHex #7a7c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5387: slot slate, rgb 123/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-24",
@@ -133,5 +134,9 @@
    4
   ],
   "otherWalls": true
+ },
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#7a7c80"
  }
 }

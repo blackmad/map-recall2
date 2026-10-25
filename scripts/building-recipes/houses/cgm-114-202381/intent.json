@@ -89,7 +89,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#6e7074"
  },
  "palette": {
   "brick": "#b9b5aa",
@@ -100,7 +101,8 @@
  "notes": [
   "Centrale Groothandelsmarkt 114 (BAG: built 1935; 13 shop units, 5,998 m2 footprint, 7.4 m roof): a long single-storey market hall of the wholesale fruit-and-vegetable market. Three walls are photographed: the west front (w02-258, panorama 2022-04-29: concrete columns carrying a deep canopy and sign fascia over green roller doors, signs Arie Rustenburg Groenten & Fruit, Food Destination, R. van Mourik), the east wall (w01-78, 2021-01-14: a long curved concrete wall, blank) and the south-west end wall (w04-204, 2022-04-29: buff brick base under brown corrugated cladding with two roller doors).",
   "Modelled: the west front (panels 13 and 31) as a two-storey group with a glazed ground floor under a closed fascia storey and a cornice carrying the name ARIE RUSTENBURG GROENTEN & FRUIT; the 191 m east wall (panel 9) as a blank concrete wall; the south-west end (panel 34) as a blank brown-clad wall. Roof is the 3DBAG LoD2.2 shell.",
-  "Simplified: four of the roller doors are recessed garage doors at the right end of the arcade and the rest of the ground storey is one glazed row (door positions not counted from the photograph), the canopy is the cornice band, the sign boards other than the first are not drawn, the buff brick base of the south-west wall is the cladding brown. Not modelled: the north and south ends and the short canopy returns (no useful view)."
+  "Simplified: four of the roller doors are recessed garage doors at the right end of the arcade and the rest of the ground storey is one glazed row (door positions not counted from the photograph), the canopy is the cornice band, the sign boards other than the first are not drawn, the buff brick base of the south-west wall is the cladding brown. Not modelled: the north and south ends and the short canopy returns (no useful view).",
+  "roof.flatHex #6e7074: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 107/107/107, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "closedBands": true,
  "layeredKit": true

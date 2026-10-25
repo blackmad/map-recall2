@@ -165,7 +165,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#616467"
  },
  "palette": {
   "brick": "#5a4034",
@@ -181,7 +182,8 @@
   "walls[0] = panels 10, 189 and 60 (w02-157): the five-storey WG-plein fronts. 5 storeys x 9 bays of white cross windows (the photographed groups of three), with a cornice. The low end surfaces 60 and 447 (18.7 m tops) stay blank so that the eaves gate reads the main roof.",
   "walls[1] = panel 18 (w01-337): the 89 m canal front. Two storeys of cross windows (18 bays) over a blank basement, with a cornice. Simplified: the projecting glazed bay windows and the rooftop glass boxes are the 3DBAG masses in the wall brick.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #554f46 not used (not darker than the wall #5e5144 by 10 L*, or tinted): kit glass kept.",
-  "Refit 2026-10-25 (issue #59): both fronts are windows in groups of three (windowGroup count 3), not single cross windows: walls[0] (w02-157) 5 groups of three sashes per storey, taller on storeys 1-2 (h 0.72) than on 3-4 (h 0.5), glazing per storey now 0.49/0.49/0.33/0.32 against the photo 0.58/0.54/0.45/0.36; walls[1] (w01-337) 18 groups of three (54 windows against the photo 57), a low first floor (h 0.4) and taller top floor (h 0.62): WARN, was FAIL. budgetTriangles 18000: 75 + 108 grouped openings cannot be drawn in 12,000 (pane-split glazing leaves open edges with windowGroup). Gate misread on walls[0], allowed as inferred: the photo mask merges each tight triplet into one opening (columns 4, shape wide) while the model counts its 15 windows (columns 15, shape tall): the same groups read two ways."
+  "Refit 2026-10-25 (issue #59): both fronts are windows in groups of three (windowGroup count 3), not single cross windows: walls[0] (w02-157) 5 groups of three sashes per storey, taller on storeys 1-2 (h 0.72) than on 3-4 (h 0.5), glazing per storey now 0.49/0.49/0.33/0.32 against the photo 0.58/0.54/0.45/0.36; walls[1] (w01-337) 18 groups of three (54 windows against the photo 57), a low first floor (h 0.4) and taller top floor (h 0.62): WARN, was FAIL. budgetTriangles 18000: 75 + 108 grouped openings cannot be drawn in 12,000 (pane-split glazing leaves open edges with windowGroup). Gate misread on walls[0], allowed as inferred: the photo mask merges each tight triplet into one opening (columns 4, shape wide) while the model counts its 15 windows (columns 15, shape tall): the same groups read two ways.",
+  "roof.flatHex #616467: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5384: slot slate, rgb 90/90/90, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

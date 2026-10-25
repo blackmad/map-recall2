@@ -147,7 +147,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#74767a"
  },
  "palette": {
   "brick": "#a0502e",
@@ -162,7 +163,8 @@
   "walls[0] = panel 32 (S, 77 m, eaves 18.5): red clinker brick with deep-set paired windows in gridded bays, drawn as 5 storeys x 18 bays of narrow windows; the stepped upper floors (31.9 m surfaces) and the curved corner are straight/blank. walls[1] = panel 33 (W, 46 m, eaves 31.9): the louvred tower front, a glazed ground storey (shop/lobby) under eight bands of grey louvres and glass; drawn as ribbon-windows, 8 storeys x 6 bays of wide windows in a grey stone-material skin. The real front is a curved glass skin with continuous aluminium louvre blades: the curve and the louvres are not modelled (a curtain-wall grid was tried and read as a square grid). walls[2] = panel 6 (N, 37 m, eaves 15.5): dark brown brick with tall paired windows, 4 storeys x 9 bays.",
   "Not drawn: the retained brick school range with its stone oriel and blue-brick plinth band (w04-70, east side; it matches no unambiguous 3DBAG panel: panels 2 and 13 share one party-wall footprint with the new wing) and the lobby entrance on the tower front; the east, courtyard and scaffolded fronts (w07-70 is under scaffolding).",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #2a2a27 not used (not darker than the wall #3f2e26 by 10 L*, or tinted): kit glass kept.",
-  "Refit 2026-10-25 (issue #59): walls[0] (w01-160L) the bays hold groups of three narrow windows (windowGroup 3: 54 windows against the photo 45 columns), smaller in the two stepped top storeys, in the sunlit orange brick #d4784c (was #a0502e; the crop reads #efa169 in low sun). walls[1] (w02-250L) the tower front is grey aluminium louvre blades over dark glass: cladding louvres #a4a9ad at 0.35 m over #34404a from 0.13 of the height, on a glazed ground (was ribbon windows in a grey skin). walls[2] (w03-340) pairs of narrow windows per bay (windowGroup 2). budgetTriangles 14000 for the 270 grouped openings. Gate misreads, allowed as inferred: walls[0] the crop is blown out in low sun and its left third is the louvre tower, which the gate reads as a 17 m ribbon on storey 3; walls[1] the gate reads the model wall as the dark ground behind the louvres and the photo gaps between blades as glazing; walls[2] the mask merges each pair into one wide opening (columns 6, wide) where the model counts 18 narrow windows."
+  "Refit 2026-10-25 (issue #59): walls[0] (w01-160L) the bays hold groups of three narrow windows (windowGroup 3: 54 windows against the photo 45 columns), smaller in the two stepped top storeys, in the sunlit orange brick #d4784c (was #a0502e; the crop reads #efa169 in low sun). walls[1] (w02-250L) the tower front is grey aluminium louvre blades over dark glass: cladding louvres #a4a9ad at 0.35 m over #34404a from 0.13 of the height, on a glazed ground (was ribbon windows in a grey skin). walls[2] (w03-340) pairs of narrow windows per bay (windowGroup 2). budgetTriangles 14000 for the 270 grouped openings. Gate misreads, allowed as inferred: walls[0] the crop is blown out in low sun and its left third is the louvre tower, which the gate reads as a 17 m ribbon on storey 3; walls[1] the gate reads the model wall as the dark ground behind the louvres and the photo gaps between blades as glazing; walls[2] the mask merges each pair into one wide opening (columns 6, wide) where the model counts 18 narrow windows.",
+  "roof.flatHex #74767a: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5385: slot slate, rgb 115/115/115, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

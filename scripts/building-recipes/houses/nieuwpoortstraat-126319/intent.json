@@ -119,7 +119,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#74767a"
  },
  "palette": {
   "brick": "#a59d92",
@@ -131,7 +132,8 @@
   "South front on Nieuwpoortstraat (panels 115, 38, 75, 103, 268 at bearing 179) from the rectified 2025-09-26 panorama, the curved south-east corner (panels 100, 218) and the east end on Den Brielstraat (panel 252) from the 2025-09-26 and 2021-02-24 panoramas: grey-beige brick, a glazed shop plinth between concrete piers under a brick band, three upper storeys of punched windows on a 3.4 m axis, each window set in a dark grey panel stack, and a set-back top storey clad dark grey with a band of windows (walls[1], 3DBAG panel 285 at 16.4-19.0 m).",
   "Signs: ACTION (blue on white over the shop entrance of the discount store) is lettered on the plinth fascia, centred on the long front (the shop is off-centre in the photo). Also on the plinth: DE MAKELAARS with an orange location-pin logo (estate agent, south-east corner) and GOD IS LIEFDE posters in the east-end windows: not modelled.",
   "Not modelled: the dark grey panels above and below each window (the kit has no spandrel panel per opening), the brick bands at each floor, the concrete piers of the plinth, the steel railings of the roof terrace and the roof-edge posts, two sectional glazed garage doors in the corner plinth. The north side (Den Brielstraat courtyard, 120 m) and the west end have no panorama within 35 m and are blank.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #594f22 not used (not darker than the wall #6d665e by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #594f22 not used (not darker than the wall #6d665e by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #74767a: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 115/115/115, confidence 0.8; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "closedBands": true,
  "measured": {

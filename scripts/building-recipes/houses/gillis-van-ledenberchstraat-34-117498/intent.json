@@ -73,7 +73,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#7a7c80"
  },
  "palette": {
   "brick": "#7a4a3e",
@@ -87,6 +88,7 @@
  "notes": [
   "Gillis van Ledenberchstraat 34 (BAG, built 1932) is a long block with two faces: a cream-rendered canal front of 60 m on the west side, and a brown-brick front on Gillis van Ledenberchstraat on the east side. The canal front has two rows of grouped windows over a blank base and a glazed top storey. The street front has four storeys over glazed doors. 204 wall surfaces. The LoD2.2 shell has 33.9 m of open edge (eight missing step walls between the 4.7 m wings and the main block). shellRepair closes all of it with 8 strips.",
   "walls[0] = panel 7 (w01-298): the canal front. 3 storeys with the base blank, then two rows of 14 grouped wide windows in grey frames, in render. The glazed top storey is the 3DBAG set-back mass and is not drawn as glass.",
-  "walls[1] = panels 11 and 10 (w03-112): the brick street front. 4 storeys x 7 bays of wide windows with stone string courses. Panels 25 and 33 on the same street line touch taller neighbouring pands (party walls in the kit) and stay blank, as do the low 4.7 m wings."
+  "walls[1] = panels 11 and 10 (w03-112): the brick street front. 4 storeys x 7 bays of wide windows with stone string courses. Panels 25 and 33 on the same street line touch taller neighbouring pands (party walls in the kit) and stay blank, as do the low 4.7 m wings.",
+  "roof.flatHex #7a7c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 123/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

@@ -112,7 +112,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#6e767a"
  },
  "palette": {
   "brick": "#e4dfd0",
@@ -126,7 +127,8 @@
   "Schaafstraat 17 (BAG, 1960; Overhoeks/Noord workshop estate): one long hall 7 m to the eaves with lower annexes (4.8 m) on the north side; 90 3DBAG wall surfaces. Photographed in the 2021-12-24 panorama (w01-169, 70 m south wall), w02-259 (west, 2025-09-04) and w03-79 (east, 2020-05-29, showing the white wall with a turquoise upper band and workshop doors).",
   "walls[0..2] = panels 46 (S), 41 (W) and 55 (E): a painted wall (white/cream over a grey plinth band) topped by a continuous clerestory glazing strip between slim posts about 5 m apart. Drawn as ribbon-windows, 2 storeys, ground storey blank (render) and low windows in the upper storey; the east wall carries the turquoise frame colour. Simplified: the grey plinth band (one wall colour), the workshop roller doors and the west wall bay doors; the north annexes and the roof lights are blank/3DBAG roof; the flat roof is bitumen.",
   "Not drawn: the north and rear fronts and the courts (no panorama within 35 m or only over parked vans and fencing).",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #38302f not used (not darker than the wall #47474a by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #38302f not used (not darker than the wall #47474a by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #6e767a: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5383: slot slate, rgb 107/115/115, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

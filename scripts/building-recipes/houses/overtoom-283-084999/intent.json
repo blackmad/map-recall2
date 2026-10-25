@@ -106,7 +106,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#898b8f"
  },
  "palette": {
   "brick": "#e4dcc2",
@@ -120,7 +121,8 @@
   "walls[0] (Overtoom front, panel 96) from the 2023-01-10 panorama, rectified: three window rows over a 1 m plinth on a 16-bay grid, the raised left part blank above (blankStoreys 3 and 4), READE in blue between the first and second rows (the photo continues 'revalidatie | reumatologie' further right; the kit letters A-Z only, so only the name is drawn, centred instead of left of centre). walls[1] (rounded corner, panel 79) from the 2025-07-31 panorama: three rows, 8 bays; 3DBAG gives the curve as straight facets. walls[2] (west side along the passage and the north-west corner block, panels 0 and 19) from an aimed thumbnail of the 2023-01-10 panorama 30 m away (the side has no panorama within 35 m): five rows of windows with top lights, the pavilion level blank.",
   "Not modelled (the photos show them): the mauve plinth and pier strips; the glazed stair tower (north-east end) and the curved glass penthouse with its railings over the rounded corner; three flagpoles; the red LED temperature display beside the corner sign; the second READE sign on the rounded corner; the 'revalidatie | reumatologie' lettering; the low rendered boundary wall in front; the east and courtyard walls (no panorama) are blank.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class.",
-  "Refit 2026-10-25 (issue #59, gate #58 crops): walls[0] (w02-340): the placed crop shows a fourth window row on storey 3 across the front (photo glazing 0.37 where the model was blank): blankStoreys now [4] only. walls[1] (w05-340L): six square cross windows per row, two per former bay: 6 bays, w 0.6, h 0.55."
+  "Refit 2026-10-25 (issue #59, gate #58 crops): walls[0] (w02-340): the placed crop shows a fourth window row on storey 3 across the front (photo glazing 0.37 where the model was blank): blankStoreys now [4] only. walls[1] (w05-340L): six square cross windows per row, two per former bay: 6 bays, w 0.6, h 0.55.",
+  "roof.flatHex #898b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 148/148/148, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

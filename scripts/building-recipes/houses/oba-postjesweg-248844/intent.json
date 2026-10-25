@@ -141,7 +141,8 @@
   "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
   "Panels left blank by the draft: 13 (18.6 m, over 8 groups); 3 (18.2 m, over 8 groups); 40 (14.7 m, over 8 groups); 82 (10.6 m, over 8 groups); 18 (13.6 m, over 8 groups); 65 (18.2 m, over 8 groups); 98 (10.1 m, over 8 groups); 22 (9.1 m, over 8 groups); 14 (10.4 m, over 8 groups); 55 (6.5 m, unnamed panel under 8 m); 28 (3 m, unnamed panel under 8 m); 67 (7.5 m, unnamed panel under 8 m); 46 (6.1 m, unnamed panel under 8 m); 23 (6.1 m, unnamed panel under 8 m); 0 (6.1 m, unnamed panel under 8 m); 54 (11.3 m, over 8 groups); 58 (9.9 m, over 8 groups); 11 (5.4 m, unnamed panel under 8 m); 108 (5.3 m, unnamed panel under 8 m); 66 (14.4 m, over 8 groups); 31 (14.4 m, over 8 groups); 39 (9.4 m, over 8 groups); 94 (14.6 m, over 8 groups); 57 (2.6 m, unnamed panel under 8 m); 99 (5.4 m, unnamed panel under 8 m); 93 (10.1 m, over 8 groups); 115 (5.2 m, unnamed panel under 8 m); 35 (5.9 m, unnamed panel under 8 m); 104 (3 m, unnamed panel under 8 m); 53 (7.3 m, unnamed panel under 8 m); 72 (4.3 m, unnamed panel under 8 m); 91 (6.4 m, unnamed panel under 8 m); 75 (5.7 m, unnamed panel under 8 m); 48 (2.1 m, unnamed panel under 8 m); 132 (11 m, under 3 m tall); 97 (2.6 m, unnamed panel under 8 m); 127 (4.9 m, unnamed panel under 8 m); 134 (3.1 m, unnamed panel under 8 m); 52 (2.2 m, unnamed panel under 8 m); 89 (5.1 m, unnamed panel under 8 m); 114 (2.6 m, unnamed panel under 8 m); 131 (3.4 m, unnamed panel under 8 m); 130 (5.6 m, under 3 m tall); 83 (3.1 m, unnamed panel under 8 m); 92 (3 m, unnamed panel under 8 m); 121 (2.8 m, unnamed panel under 8 m); 112 (3.3 m, under 3 m tall); 129 (6.3 m, under 3 m tall); 41 (6.3 m, under 3 m tall); 111 (6.8 m, under 3 m tall); 17 (2.7 m, under 3 m tall); 25 (3.4 m, under 3 m tall); 33 (3.3 m, under 3 m tall); 71 (2.3 m, under 3 m tall); 20 (2 m, under 3 m tall).",
   "Triangle budget: 18458 > 12000; unphotographed groups 2, 1 drawn blank (draftBudgetCap).",
-  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 7 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] crop w03-180L (2018-01-08) was taken in or before the construction year 2019: not evidence, nothing written; walls[7] glass #1c2425 not used (not darker than the wall #0e1411 by 10 L*, or tinted): kit glass kept; walls[7] curtain class not trusted (not-wall #1c2425 does not read as glass on #0e1411 (>= 10 L* darker, chroma < 15)): brick-bay-grid kept from the building's majority; walls[7] bays and window shape not written (folded from the distrusted not-wall mask); unphotographed walls take #0e1411 (brick), the area-weighted median of groups 7."
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 7 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] crop w03-180L (2018-01-08) was taken in or before the construction year 2019: not evidence, nothing written; walls[7] glass #1c2425 not used (not darker than the wall #0e1411 by 10 L*, or tinted): kit glass kept; walls[7] curtain class not trusted (not-wall #1c2425 does not read as glass on #0e1411 (>= 10 L* darker, chroma < 15)): brick-bay-grid kept from the building's majority; walls[7] bays and window shape not written (folded from the distrusted not-wall mask); unphotographed walls take #0e1411 (brick), the area-weighted median of groups 7.",
+  "roof.flatHex #616467: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5384: slot slate, rgb 90/90/90, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-24",
@@ -149,5 +150,9 @@
    7
   ],
   "otherWalls": true
+ },
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#616467"
  }
 }

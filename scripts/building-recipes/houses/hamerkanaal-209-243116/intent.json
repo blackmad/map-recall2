@@ -77,7 +77,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#878987"
  },
  "palette": {
   "brick": "#4a3228",
@@ -89,7 +90,8 @@
   "Gedempt Hamerkanaal 209 (BAG: 1908, 4 industrial, 23 office and 3 assembly units): the Kromhout/Stork shipyard works on the Hamerkanaal, Amsterdam-Noord. Only the south (canal) front is photographed (w01-169, panorama 2020-01-23, 89.6 m): a long two-storey dark-brick wing of arched ground windows and small upper windows under white sign boards (HET IJ, STORK), and at the east end the Kromhouthal engine hall: a taller dark-brick gable with two rows of small white-framed windows, a white sign board KROMHOUTHAL, a glazed ground floor and a stepped gable top with a shield emblem.",
   "Modelled: the canal wing (panel 99) as a 2-storey brick-bay-grid with segmental-arched windows and STORK lettered on the wall; the Kromhouthal gable (panel 82) as 3 storeys (glazed ground floor and two window rows, 9 bays) with KROMHOUTHAL lettered between the rows. Walls and the sawtooth roofs are the 3DBAG LoD2.2 shell as surveyed.",
   "Simplified: the white sign boards are plain lettering on the brick, the stepped brick corbelling and the shield emblem on the gable are not drawn, the HET IJ board and the timber terrace pergola in front of the wing are not drawn. Not modelled: every wall other than panels 99 and 82 (north, east and west fronts have no panorama within 35 m, so they are blank brick under the real roofs).",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #394647 not used (not darker than the wall #3d3432 by 10 L*, or tinted): kit glass kept; walls[1] glass #423b3b not used (not darker than the wall #3d353c by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #394647 not used (not darker than the wall #3d3432 by 10 L*, or tinted): kit glass kept; walls[1] glass #423b3b not used (not darker than the wall #3d353c by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #878987: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 140/140/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

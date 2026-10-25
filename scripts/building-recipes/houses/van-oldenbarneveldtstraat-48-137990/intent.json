@@ -53,7 +53,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#74767a"
  },
  "palette": {
   "brick": "#d2a96a",
@@ -66,7 +67,8 @@
  "notes": [
   "Van Oldenbarneveldtstraat 48 (BAG, 2006): a buff-brick apartment block with shop/office plinth round a courtyard; only the east front on the street (panel 50, w01-111, 2022-12-14) has a panorama within 35 m, the south, north and west fronts (w02-201, w03-20, w04-113) have none and stay blank (otherWalls).",
   "walls[0] = panel 50: ground storey of glazed shop/office bays with a central double-door entrance (bay 5, marked with the 50-52 / 54-56 house numbers and letter boxes), four storeys of paired French windows in 11 bays separated by thin string courses, a set-back attic with three wide windows (the 3DBAG roof). Drawn as 5 storeys x 11 bays, two-light windows. Simplified: the slight curve of the front (straight in 3DBAG), the Juliet balconies and the set-back attic terrace; the house numbers and letter boxes are below the component grain.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #465356 not used (not darker than the wall #51514f by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #465356 not used (not darker than the wall #51514f by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #74767a: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5384: slot slate, rgb 115/115/115, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

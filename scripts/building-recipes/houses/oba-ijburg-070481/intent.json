@@ -305,7 +305,8 @@
   "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] system brick-bay-grid -> ribbon-windows (measured ribbon); walls[3] bays 10 from the likeness grid (padded measurement 53); unphotographed walls take #746053 (brick), the area-weighted median of groups 0, 2, 3.",
   "Triangle budget: 12412 > 12000; unphotographed groups 1 drawn blank (draftBudgetCap).",
   "Hand 2026-10-24 (kit lane loggias/plinth, crops w03-221L and w04-41L): walls[2] and [3] are the same front: eight 5.6 m bays between blank brick end bays; three storeys of loggias about 1.5 m deep with pale glass balustrades (loggias storeys 2-4), a 5 m library storey glazed in three lights per bay (plinth storey 1, factor 1.65), recessed shopfronts and doors in the ground (loggias storey 0, no rail). walls[2] was measured ribbon-windows from the dark loggia shadows; drawn brick-bay-grid.",
-  "Acceptance pass 2026-10-24 (issue #45): walls[2] and walls[3] loggia rails grey glass #7b8285 from w04-41L (2019-11-28); the frame colour drew them as white bars."
+  "Acceptance pass 2026-10-24 (issue #45): walls[2] and walls[3] loggia rails grey glass #7b8285 from w04-41L (2019-11-28); the frame colour drew them as white bars.",
+  "roof.flatHex #e8e1e7: the PDOK orthophoto's reading of this pand (roof-facts 14/8419/5385: slot white-membrane, rgb 239/230/239, confidence 0.7; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-24",
@@ -315,5 +316,9 @@
    3
   ],
   "otherWalls": true
+ },
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#e8e1e7"
  }
 }

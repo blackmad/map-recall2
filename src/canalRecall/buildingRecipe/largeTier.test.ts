@@ -746,11 +746,13 @@ test('measured groups export their wall, arch-ring and own glass slots with tint
     return out.sort();
   };
   // Houthavenkade: the balcony columns' own reflective glass (columns.glass) is measured; the punched windows keep the kit glass (the photo's pane glass reads no darker than the brick).
-  assert.deepEqual(tinted('houthavenkade-26-247232'), ['glass/glass@g0c', 'glass/glass@g1c', 'wall/wall@g0', 'wall/wall@g1', 'wall/wall@g3', 'wall/wall@g4']);
+  // Its flat roof is measured from the orthophoto (roof.flatHex, issue #71).
+  assert.deepEqual(tinted('houthavenkade-26-247232'), ['glass/glass@g0c', 'glass/glass@g1c', 'roof/flat', 'wall/wall@g0', 'wall/wall@g1', 'wall/wall@g3', 'wall/wall@g4']);
   // The glazed hall's measured dark grey-blue glass reaches the look (look/palette.ts `cityMeasuredGlassTint`); the kit glass of unmeasured groups does not. Its white membrane roof is measured from the orthophoto (roof.flatHex).
   assert.deepEqual(tinted('apollolaan-4-134507'), ['glass/glass@g0', 'roof/flat', 'wall/wall@g0', 'wall/wall@g1']);
   assert.ok(tinted('waagdragerhof-198-118320').includes('wall/arch@g3'));
-  assert.deepEqual(tinted('politie-west-overtoomsesluis'), []);
+  // No measured walls or glass; only the orthophoto's flat roof (roof.flatHex, issue #71).
+  assert.deepEqual(tinted('politie-west-overtoomsesluis'), ['roof/flat']);
 });
 
 test('roof.flatHex: a measured flat roof is exported as measured and drawn as is; absent = identical mesh (Kinkerstraat 89-105 slab, 2026-10-16)', async () => {
@@ -772,6 +774,31 @@ test('roof.flatHex: a measured flat roof is exported as measured and drawn as is
   // The look: the kit's flat grey lands on a flat-roof prior (buff gravel for #6a6c6c, the slab); the measured colour is kept.
   assert.ok(FLAT_ROOF_GREYS.includes(cityTint('bitumen', '#' + before.color.getHexString())));
   assert.equal(cityTint('bitumen', '#87898d', 'measured'), '#87898d');
+});
+
+test('unmeasured flat roof (issue #71, "dark, dour"): the default bitumen flat class is the light gravel prior, not dark bitumen; explicit materials keep theirs', async () => {
+  const {largeRoofClassHex, UNMEASURED_FLAT_ROOF_HEX} = await import('./largeCompile.ts');
+  const {cityTint, FLAT_ROOF_TONES, ROOF_SLOT_TONES, lumaOf, hexToRgb} = await import('../look/palette.ts');
+  const {ROOF_COLOURS} = await import('./fit.ts');
+  assert.equal(largeRoofClassHex({material: 'bitumen'}, 'bitumen', 'flat'), UNMEASURED_FLAT_ROOF_HEX);
+  // pitched classes, another default material and an orthophoto `roof.flat: bitumen` keep the kit colour
+  assert.equal(largeRoofClassHex({material: 'bitumen'}, 'bitumen', 'low'), ROOF_COLOURS.bitumen.low);
+  assert.equal(largeRoofClassHex({material: 'slate'}, 'slate', 'flat'), ROOF_COLOURS.slate.flat);
+  assert.equal(largeRoofClassHex({material: 'slate', flat: 'bitumen'}, 'bitumen', 'flat'), ROOF_COLOURS.bitumen.flat);
+  assert.equal(largeRoofClassHex({material: 'bitumen', flat: 'bitumen'}, 'bitumen', 'flat'), ROOF_COLOURS.bitumen.flat);
+  // the look draws it as the city's light default, inside the gravel band; the old default drew dark bitumen
+  const drawn = cityTint('bitumen', UNMEASURED_FLAT_ROOF_HEX);
+  assert.equal(drawn, FLAT_ROOF_TONES.gravel);
+  const [lo, hi] = ROOF_SLOT_TONES.gravel.luma, l = lumaOf(hexToRgb(drawn));
+  assert.ok(l >= lo && l <= hi, `gravel luma ${l}`);
+  assert.equal(cityTint('bitumen', ROOF_COLOURS.bitumen.flat), FLAT_ROOF_TONES.bitumen);
+  // a bitumen house without roof.flatHex exports the gravel prior, unmeasured
+  const base = validateLargeIntent(raw('kinkerstraat-89-092013')), f = facts('kinkerstraat-89-092013');
+  const {flatHex: _drop, ...roof} = base.roof!;
+  let flat: any = null;
+  compileBuilding({...base, roof: {...roof, material: 'bitumen'}}, f).group.traverse((o: any) => { if (o.isMesh && o.name === 'roof/flat') flat = o.material; });
+  assert.equal('#' + flat.color.getHexString(), UNMEASURED_FLAT_ROOF_HEX);
+  assert.notEqual(flat.userData.tintSource, 'measured');
 });
 
 test('roof.flatHex composes with roof.flat and roof.surfaces (Entrepotdok): one measured flat mesh, regions keep their material', async () => {

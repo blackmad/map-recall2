@@ -54,7 +54,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#6e7074"
  },
  "palette": {
   "brick": "#7a4a3e",
@@ -69,7 +70,8 @@
   "walls[0] = surfaces 7, 16 and 61 (S, panels 84 and 8, the 36 m western part of each block, eaves 23.7): four storeys of round-arched windows, one arch per bay with a brick arch band and cream string courses between the storeys, the ground storey arched too. Drawn as 4 storeys x 9 bays on the widest panel (about 4 m wide windows spaced across 85 m). The budget allows one group: 9 bays on the 36 m and 36 m parts was the most the 12k triangle limit held (12 bays cost 13.3k).",
   "Simplified: window spacing is uniform where the photograph alternates single and paired arches, the stone dressing blocks and keystones are the kit arch band and keystones, the black steel oriel stacks, the iron balconies and the DartDesign sign are not modelled. Not drawn: the eastern 38 m of each south front (surfaces 3 and 9 are shared with the north and west panels and doubled the triangle count), the north and end walls and the small outbuilding, which stay blank brick.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #383a39 not used (not darker than the wall #544743 by 10 L*, or tinted): kit glass kept.",
-  "Refit 2026-10-25 (issue #59): walls[0] (w01-196) the arches are about 4 m wide, six per panel, not nine narrow ones: 6 bays of round-arched cross windows w 0.62 h 0.72 (photo 6 columns, square, glazing 0.38 vs 0.40 drawn): WARN, was FAIL."
+  "Refit 2026-10-25 (issue #59): walls[0] (w01-196) the arches are about 4 m wide, six per panel, not nine narrow ones: 6 bays of round-arched cross windows w 0.62 h 0.72 (photo 6 columns, square, glazing 0.38 vs 0.40 drawn): WARN, was FAIL.",
+  "roof.flatHex #6e7074: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5384: slot slate, rgb 107/107/107, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

@@ -122,7 +122,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#878a96"
  },
  "palette": {
   "brick": "#9a5a44",
@@ -137,6 +138,7 @@
   "walls[0] = panel 426 (NW, 28 m, eaves 20.7): the townhouse range: a grey stone base with barred basement windows, brick above with stone-surround windows, and the arched entrance portal with fluted stone pilasters carrying relief panels (bay 1). Drawn as 5 storeys x 7 bays, stone storey 0, a portal entrance and a cornice. Simplified: the carved pilaster reliefs, the entrance canopy and balcony, the cast lamp standard.",
   "walls[1] = panel 329 (W, 24.5 m, 5.9-12.2 m): the canal-front glazed floors with the red steel columns and yellow-framed shop windows, drawn as glazed ground plus one wide-window storey in a red frame colour. walls[2] = panel 3 and walls[3] = panel 18 (W and NE): the white-tiled upper storey with deep-set windows, one wide-window storey; the panel 3 front carries HOLLAND CASINO lettering on its cornice. Simplified: the curved plan (straight facets in 3DBAG), the timber pergola and its steel posts and rails, the lattice balustrade, the heart-banner window graphics, the flagpoles.",
   "Not drawn: the east and south fronts and the lower casino roofs (no panorama within 35 m).",
-  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): no archived crop matches three of the four street groups (NO PHOTO) and the fourth's crop is a dark arcade at night, on a high-ride wall (159 of 2,000 sampled routes); the red brick six-storey grid does not match Holland Casino's white-tiled curved upper storey over red steel either. Uninstalled until crops exist."
+  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): no archived crop matches three of the four street groups (NO PHOTO) and the fourth's crop is a dark arcade at night, on a high-ride wall (159 of 2,000 sampled routes); the red brick six-storey grid does not match Holland Casino's white-tiled curved upper storey over red steel either. Uninstalled until crops exist.",
+  "roof.flatHex #878a96: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 156/156/165, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

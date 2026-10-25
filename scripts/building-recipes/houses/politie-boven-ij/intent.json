@@ -15,11 +15,12 @@
     {"wallSurfaces": [15], "system": "ribbon-windows", "storeys": 3, "baysPerStorey": 5, "ground": "system", "windows": "plain"}
   ],
   "otherWalls": "blank",
-  "roof": {"material": "bitumen"},
+  "roof": {"material": "bitumen", "flatHex": "#898b8f" },
   "palette": {"brick": "#b3ada0", "frame": "#e4e3dd", "door": "#2d3136", "stone": "#9c9a92", "wallMaterial": "stucco"},
   "notes": [
     "1978 three-storey concrete-panel office block used as the police bureau for Amsterdam-Noord (the whole pand: 34 x 30 m, 9.1 m eaves, a 12.0 m plant volume). North front (2022-05-12, w01-22, 35 m away, 3DBAG panel 52): grey concrete spandrel panels with paired white-framed windows in groups, and at the east end a projecting glazed entrance volume with POLITIE and the flame emblem lettered on the glass. East wall (2021-06-17, w02-112, partly behind shrubs): the same panels with grey roller blinds over the windows and a blue diamond POLITIE blade sign at the upper right.",
     "Ornaments: POLITIE lettering in blue on the entrance glazing (MODELLED, signage mount glazing on a two-storey entrance hall, as at Van Leijenberghlaan; the gold flame emblem SKIPPED: a 0.5 m decal in the glass, below the attachment grain); glazed entrance volume (MODELLED as a two-storey entrance hall in the right-hand bay); the blue diamond blade sign at the east wall (SIMPLIFIED as the kit blue lamp, which the kit hangs beside the north entrance: a box not a diamond, on the north not the east wall, because a lamp needs an entrance and the east wall has no door in the evidence); grey roller blinds (SKIPPED: texture at the window head, the reveal is kept); the radio mast on the roof (SKIPPED: a 15 m slender pole that is not in the 3DBAG volume); no striped band, canopy or garage doors visible.",
-    "The west wall (surface 15, panel 14, 29.8 m, candidates 0) is INFERRED from the north and east walls (same ribbon panels); south walls, courtyard walls and the stair/plant volume stay blank (otherWalls)."
+    "The west wall (surface 15, panel 14, 29.8 m, candidates 0) is INFERRED from the north and east walls (same ribbon panels); south walls, courtyard walls and the stair/plant volume stay blank (otherWalls).",
+    "roof.flatHex #898b8f: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5382: slot slate, rgb 148/148/148, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
   ]
 }

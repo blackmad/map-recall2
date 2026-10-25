@@ -95,7 +95,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#898c89"
  },
  "palette": {
   "brick": "#cdc3ae",
@@ -108,7 +109,8 @@
   "1982 three-storey concrete and rendered office block used as police bureau (the whole pand, 34 x 30 m, 9.2 m eaves with a 12.0 m stair and plant volume). East front (2024-09-18, w01-72, 31 m away, partly behind a birch): beige rendered wall, two rows of paired white-framed windows over projecting concrete cill panels, a plinth with low basement-light windows. West side (2025-09-09, w04-252, oblique 47 deg, behind a hedge): same windows, a ribbon of six lights, grey concrete stair tower.",
   "Ornaments: none of POLITIE lettering, blue lamp, striped band, canopy or crest is visible on any photographed wall (east and west fronts show no sign at all, the entrance side is not in the cache; the south and north have no usable panorama: candidates 0): none modelled because none is present in the evidence. The concrete cill panels under the first-floor windows are SIMPLIFIED to the kit's sills; the basement lights (0.3 m slots) are SKIPPED: below the grain of the bay system and 0.3 m from the ground.",
   "North, south and west walls are INFERRED from the east front (same window pairs and rendering, bay counts from wall widths); the stair/plant volume at 12.0 m and the courtyard walls stay blank (otherWalls).",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #505654 not used (not darker than the wall #5d5a55 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #505654 not used (not darker than the wall #5d5a55 by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #898c89: the PDOK orthophoto's reading of this pand (roof-facts 14/8410/5384: slot slate, rgb 148/148/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

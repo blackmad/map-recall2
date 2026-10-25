@@ -277,7 +277,8 @@
  "otherWalls": "blank",
  "closedBands": true,
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#818387"
  },
  "palette": {
   "brick": "#8f3a2c",
@@ -290,7 +291,8 @@
   "2005 perimeter housing block around a courtyard (pand 0363100012073586, 320 LoD2.2 wall surfaces) with the OBA Olympisch Kwartier library at street level; the whole pand is modelled. Street fronts only: south front (2020-05-13 panorama, w01-168; surfaces 262/149/150/147/301/124/261/205 as one six-storey group, 41/68/189 as the lower stepped part), east front (2019-04-30, w02-78) and north front (w03-344). Photographed: dark red brick storeys with horizontal string courses and wide paired windows, a cream stone plinth with shopfronts and tall glazed bays at the ground, a few recessed upper storeys.",
   "Ornaments: shopfront plinth MODELLED (plinth-shopfronts); string courses MODELLED; entrance door SIMPLIFIED (one recessed glazed entrance at bay 3 of the south front; the real library entrance is not identifiable from the panoramas); OBA lettering SIMPLIFIED (cream lettering OBA on the wall over that entrance: no OBA sign is legible in the panoramas, so this carries the library identity); cream stone plinth colour MODELLED only as the stone palette; stair/lift towers and balconies SKIPPED (inside the 3DBAG roof volume); the arched gate portal at the right of the east front SKIPPED (surfaces 5/127 are not planar: 6-10 cm off any plane, so they are a blank group); shop signs and parked vans SKIPPED (temporary).",
   "Courtyard walls have no panorama and stay blank; wall groups are split per 3DBAG panel because merged panels with slightly different planes failed the parts-attached gate (gap 8 cm). closedBands closes the string courses (open-edge gate). Eaves differ 16/19 m between wings; each group follows its own eaves.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 3, 4, 5, 6, 7, 8 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #483838 not used (not darker than the wall #5c3d33 by 10 L*, or tinted): kit glass kept; walls[1] glass #363132 not used (not darker than the wall #4a3537 by 10 L*, or tinted): kit glass kept; walls[5] glass #525f5b not used (not darker than the wall #8e5f49 by 10 L*, or tinted): kit glass kept; walls[7] glass #4e5f6d not used (not darker than the wall #8b5946 by 10 L*, or tinted): kit glass kept; walls[8] glass #465f65 not used (not darker than the wall #735b50 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 3, 4, 5, 6, 7, 8 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #483838 not used (not darker than the wall #5c3d33 by 10 L*, or tinted): kit glass kept; walls[1] glass #363132 not used (not darker than the wall #4a3537 by 10 L*, or tinted): kit glass kept; walls[5] glass #525f5b not used (not darker than the wall #8e5f49 by 10 L*, or tinted): kit glass kept; walls[7] glass #4e5f6d not used (not darker than the wall #8b5946 by 10 L*, or tinted): kit glass kept; walls[8] glass #465f65 not used (not darker than the wall #735b50 by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5386: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

@@ -18,12 +18,13 @@
     {"wallSurfaces": [6], "system": "ribbon-windows", "storeys": 3, "baysPerStorey": 7, "ground": "system", "windows": "plain", "piers": true}
   ],
   "otherWalls": "blank",
-  "roof": {"material": "bitumen"},
+  "roof": {"material": "bitumen", "flatHex": "#7a7c80" },
   "palette": {"brick": "#9aa0a2", "frame": "#eeeeea", "door": "#3a3d40", "stone": "#e8e6e0", "wallMaterial": "stucco"},
   "notes": [
     "Identification: the list names this 'Politie Amsterdam' (OSM node 2808423606, BAG verblijfsobject at Johan Huizingalaan 757, bouwjaar 1959, gebruiksdoel bijeenkomstfunctie). Nothing in BAG, OSM or the panoramas states what the police unit here is, and no police sign is visible, so it is not a public-facing bureau in the evidence; it is modelled as what the panoramas show: a long 1959 three-storey modernist frame building (245 LoD2.2 wall surfaces, the whole pand, with several lower wings).",
     "West front (2025-07-02, w01-269, 64 m, rectified): a white concrete frame grid about 2 m in pitch, glazed bays with white-framed lights above grey-brick spandrels on three levels, a rooftop railing and masts, and a flat concrete canopy over a glazed entrance a little right of centre. North and south ends (2020-05-06 w08-359; 2024-10-29 w06-180): the same frame with blue-grey ribbed spandrel panels, 2-3 storeys, one end curved in plan. East wall (44.9 m, surface 197) has no panorama (candidates 0) and is INFERRED from the west front.",
     "Ornaments: entrance canopy (MODELLED, entrance.canopy at bay 12 of 20, right of centre as in the photo); white frame columns (MODELLED, piers); no POLITIE lettering, blue lamp, striped band, garage doors or crest anywhere in the photographed walls (parked police vans only: street furniture): none modelled, none present. SKIPPED with reasons: the rooftop railing and aerials (slender, not part of the 3DBAG volume); the curved plan of the north end (3DBAG walls are straight); the blue-grey ribbed spandrel texture (texture, not geometry); the external stair and balcony at the north-east wing (a thin 2 m steel structure, outside the 3DBAG volume).",
-    "3DBAG seam: surface 242 (east wing wall, 1.7 to 12.1 m) overlaps the plinth surface 244 (to 2.6 m) and left a 12.9 m open roof edge; assigning 242 to its own blank wall group welds it (system blank, so no openings).", "The courtyard wings (panels 6, 38, 79 etc.) and the other 200 surfaces stay blank (otherWalls); audit:glb reports them as blank-wall warnings."
+    "3DBAG seam: surface 242 (east wing wall, 1.7 to 12.1 m) overlaps the plinth surface 244 (to 2.6 m) and left a 12.9 m open roof edge; assigning 242 to its own blank wall group welds it (system blank, so no openings).", "The courtyard wings (panels 6, 38, 79 etc.) and the other 200 surfaces stay blank (otherWalls); audit:glb reports them as blank-wall warnings.",
+    "roof.flatHex #7a7c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8411/5386: slot slate, rgb 123/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
   ]
 }

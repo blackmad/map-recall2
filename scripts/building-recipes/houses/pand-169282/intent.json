@@ -94,7 +94,8 @@
  "notes": [
   "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
   "Panels left blank by the draft: 27 (42.5 m, party wall); 3 (6.5 m, unnamed panel under 8 m); 21 (6.5 m, unnamed panel under 8 m); 17 (6.4 m, unnamed panel under 8 m); 14 (6.4 m, unnamed panel under 8 m); 33 (5.7 m, unnamed panel under 8 m); 52 (4.2 m, unnamed panel under 8 m); 55 (3.7 m, unnamed panel under 8 m); 75 (3.6 m, unnamed panel under 8 m); 59 (3.5 m, unnamed panel under 8 m); 37 (3.2 m, unnamed panel under 8 m); 132 (3.2 m, unnamed panel under 8 m); 29 (2.2 m, unnamed panel under 8 m); 89 (9.3 m, under 3 m tall); 51 (11.1 m, under 3 m tall); 81 (6.2 m, under 3 m tall); 130 (5.3 m, under 3 m tall); 47 (3.5 m, under 3 m tall); 92 (3 m, under 3 m tall); 39 (3.5 m, under 3 m tall); 34 (2.8 m, under 3 m tall); 62 (2.8 m, under 3 m tall); 50 (2.7 m, under 3 m tall); 128 (2.4 m, under 3 m tall); 48 (3.1 m, under 3 m tall); 82 (2.2 m, under 3 m tall); 31 (2.1 m, under 3 m tall); 103 (2.1 m, under 3 m tall); 68 (2.1 m, under 3 m tall); 113 (3 m, under 3 m tall); 64 (2.8 m, under 3 m tall); 85 (3.3 m, under 3 m tall); 127 (3.2 m, under 3 m tall); 91 (2.1 m, under 3 m tall); 76 (3.1 m, under 3 m tall); 45 (2.3 m, under 3 m tall); 70 (2.4 m, under 3 m tall); 120 (2.1 m, under 3 m tall); 74 (3.2 m, under 3 m tall); 97 (3.1 m, under 3 m tall); 65 (2.7 m, under 3 m tall); 95 (3.3 m, under 3 m tall); 38 (2.7 m, under 3 m tall); 73 (3.2 m, under 3 m tall); 114 (2.9 m, under 3 m tall); 56 (6.7 m, under 3 m tall); 123 (2.6 m, under 3 m tall); 100 (2.8 m, under 3 m tall); 96 (2.7 m, under 3 m tall); 101 (3.3 m, under 3 m tall).",
-  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; unphotographed walls take #a4a6a5 (stucco), the area-weighted median of groups 0."
+  "Measured 2026-10-24 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; unphotographed walls take #a4a6a5 (stucco), the area-weighted median of groups 0.",
+  "roof.flatHex #747c7a: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 115/123/115, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-24",
@@ -102,5 +103,9 @@
    0
   ],
   "otherWalls": true
+ },
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#747c7a"
  }
 }
