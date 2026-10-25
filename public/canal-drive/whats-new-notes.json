@@ -3,6 +3,20 @@
  "notes": [
   {
    "date": "2026-10-25",
+   "title": "Six big villas and blocks on the Vondelpark's south edge",
+   "text": "Along Van Eeghenstraat, Koningslaan, Emmalaan and Koninginneweg the big houses facing the park are now real models: dark brick with slate mansards, verandas and loggias, and Park Plaza's white bay windows.",
+   "where": [
+    4.8745,
+    52.3561
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "title": "Asphalt and cycle paths have a fine grain up close",
+   "text": "Roads and red cycle paths now show a subtle texture when you are close to them, and markings that were guessed rather than mapped are gone."
+  },
+  {
+   "date": "2026-10-25",
    "title": "No more white flashes while riding",
    "text": "When the game lowered its resolution to keep the frame rate up, the map went blank for one frame and the screen flashed white. The resize now happens together with the next frame, so the ride stays steady."
   },

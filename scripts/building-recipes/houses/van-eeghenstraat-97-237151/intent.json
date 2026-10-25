@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "van-eeghenstraat-97-237151",
+  "pandId": "0363100012237151",
+  "address": "Van Eeghenstraat 97-101, Amsterdam-Zuid (1900 pair of villa-houses facing the Vondelpark; BAG pand 0363100012237151)",
+  "sources": [
+    {
+      "id": "pano-2022-03-22-w01-335p",
+      "kind": "street-panorama",
+      "capturedAt": "2022-03-22",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002463_pano_0003_000611/",
+      "image": "source-data://pand-reference-walls/0363100012237151/w01-335p.jpg",
+      "sha256": "6963d2ded88c12f3b0133c595736e0e17b1efe48e9331503d01de19da5043f3b",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2022-03-22-w03-338w",
+      "kind": "street-panorama",
+      "capturedAt": "2022-03-22",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002463_pano_0003_000613/",
+      "image": "source-data://pand-reference-walls/0363100012237151/w03-338w.jpg",
+      "sha256": "1a679996dd6b71a5dd94ef8393f7991347a4054df09ff244bcab46e898f39bdb",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2024-11-12-w01-335L",
+      "kind": "street-panorama",
+      "capturedAt": "2024-11-12",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241112_0936_Track34_Sphere_00033/",
+      "image": "source-data://pand-reference-walls/0363100012237151/w01-335L.jpg",
+      "sha256": "6390e54e5aa656e88921523cb4c21b54c34fe050baba0e1543ed6d5c663fe29d",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "walls": [
+    {
+      "wallSurfaces": [
+        9,
+        10,
+        15,
+        17,
+        18,
+        26,
+        69,
+        70
+      ],
+      "system": "brick-bay-grid",
+      "storeys": 4,
+      "groundFactor": 0.85,
+      "baysPerStorey": 5,
+      "ground": "system",
+      "windows": "plain",
+      "entrance": true,
+      "stoneStoreys": [
+        0
+      ],
+      "palette": {
+        "brick": "#6a4036",
+        "stone": "#86847d",
+        "glass": "#3c4446"
+      },
+      "windowShape": {
+        "w": 0.48,
+        "h": 0.7,
+        "sill": 0.15
+      },
+      "arches": {
+        "windows": "segmental",
+        "band": "voussoir",
+        "storeys": [
+          2,
+          3
+        ]
+      },
+      "dressings": {
+        "colour": "#e8e2d2",
+        "stripes": {
+          "storeys": [
+            1,
+            2,
+            3
+          ],
+          "count": 4,
+          "share": 0.18
+        },
+        "oriels": [
+          {
+            "bays": [
+              0
+            ],
+            "from": 1,
+            "to": 1,
+            "deep": 0.3,
+            "canted": true,
+            "rail": "bars"
+          },
+          {
+            "bays": [
+              3
+            ],
+            "from": 1,
+            "to": 1,
+            "deep": 0.25,
+            "rail": "balusters"
+          }
+        ]
+      },
+      "cornice": true,
+      "hand": [
+        "storeys",
+        "groundFactor",
+        "baysPerStorey",
+        "windowShape",
+        "arches",
+        "dressings",
+        "cornice",
+        "stoneStoreys",
+        "palette"
+      ]
+    },
+    {
+      "wallSurfaces": [
+        7
+      ],
+      "system": "brick-bay-grid",
+      "alignWith": 0,
+      "baysPerStorey": 3,
+      "ground": "system",
+      "windows": "plain",
+      "stoneStoreys": [
+        0
+      ],
+      "palette": {
+        "brick": "#7d5f48",
+        "stone": "#86847d"
+      },
+      "windowShape": {
+        "w": 0.5,
+        "h": 0.7,
+        "sill": 0.15
+      },
+      "arches": {
+        "windows": "segmental",
+        "band": "voussoir",
+        "storeys": [
+          1,
+          3
+        ]
+      },
+      "dressings": {
+        "colour": "#e8e2d2",
+        "stripes": {
+          "storeys": [
+            1,
+            2,
+            3
+          ],
+          "count": 4,
+          "share": 0.18
+        },
+        "oriels": {
+          "bays": [
+            1
+          ],
+          "from": 2,
+          "to": 2,
+          "deep": 0.25,
+          "rail": "balusters"
+        }
+      },
+      "cornice": true,
+      "hand": [
+        "baysPerStorey",
+        "windowShape",
+        "arches",
+        "dressings",
+        "cornice",
+        "stoneStoreys",
+        "palette"
+      ]
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "palette": {
+    "brick": "#6a4036",
+    "frame": "#efece4",
+    "door": "#2a2a2a"
+  },
+  "notes": [
+    "Van Eeghenstraat 97-101 (pand 0363100012237151, built 1900): a pair of eclectic villa-houses and a narrow third house facing the Vondelpark across Van Eeghenstraat.",
+    "walls[0] the pair's front (panel 8, 14.5 m; crop w01-335p 2022-03-22, sunlit, a parked van over the ground storey): red-brown brick with thin cream speklagen, a grey stone ground storey, segmental heads with cream voussoirs, five window columns; a canted white bay window on the first floor at the left with a wrought-iron balcony on its roof, a square white oriel on the first floor at the right with a white balustrade on its roof (oriel lists and oriel roof rails added to the kit for this front); stepped and towered gables over the cornice.",
+    "walls[1] number 101 (panel 6, 6.7 m; crop w03-338w 2022-03-22): yellow-buff brick with red bands, a white oriel on the second floor with a balustrade, stone ground storey.",
+    "INFERRED: the rear and party walls (otherWalls brick grid)."
+  ],
+  "measured": {
+    "date": "2026-10-25",
+    "groups": []
+  }
+}

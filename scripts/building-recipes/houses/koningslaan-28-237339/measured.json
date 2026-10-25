@@ -1,0 +1,216 @@
+{
+ "id": "koningslaan-28-237339",
+ "pandId": "0363100012237339",
+ "date": "2026-10-25",
+ "method": "measureFacade.ts (k=4 clusters on smoothed normalised Lab + texture, wall = clusters enriched in the floor zones, mixed edge cells by nearest pure colour, light-trim exposure normalisation, autocorrelated bay/storey rhythm, colour split along u) on all-walls.ts --archive crops paired by cropToPanel.ts; likeness.ts against the model elevation",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 27,
+   "verdict": "NO EVIDENCE",
+   "reasons": [
+    "foliage 35 % > 25 %"
+   ],
+   "crop": {
+    "ref": "source-data://pand-reference-walls/0363100012237339/w01-207.jpg",
+    "sha256": "cece924b8542280ad88a23beba9f1410cc62f68ef72b415484f264fad0093f50",
+    "panoId": "b_20250129_0912_Track06_Sphere_00028",
+    "capturedAt": "2025-01-29",
+    "obliquityDeg": 0.2,
+    "cameraDistM": 19.2
+   },
+   "pieces": [
+    {
+     "tag": "w01-207",
+     "ref": "source-data://pand-reference-walls/0363100012237339/w01-207.jpg",
+     "sha256": "cece924b8542280ad88a23beba9f1410cc62f68ef72b415484f264fad0093f50",
+     "capturedAt": "2025-01-29",
+     "u0": 0,
+     "u1": 13.7,
+     "streetShiftM": -1.884
+    }
+   ],
+   "coverage": 0.997,
+   "placement": {
+    "offsetM": 0.267,
+    "angleDeg": 0.11,
+    "overlap": 1,
+    "along": [
+     2.38,
+     16.116
+    ],
+    "shift": {
+     "uM": -0.5,
+     "vM": -0.2
+    },
+    "box": {
+     "u0": 0,
+     "u1": 13.736,
+     "v0": 0.001,
+     "v1": 4.257
+    }
+   },
+   "likeness": {
+    "shift": {
+     "uM": -0.5,
+     "vM": -0.2
+    },
+    "iou": 0.261,
+    "wall": {
+     "photo": "#100c03",
+     "photoRaw": "#100c03",
+     "model": "#c16d54",
+     "modelToday": "#c16d54",
+     "photoFamily": "unresolved",
+     "modelFamily": "brick",
+     "photoMaterial": "painted-black",
+     "modelMaterial": "brick-red",
+     "dL": 0.506,
+     "dHue": -27.8,
+     "pass": false
+    },
+    "glass": {
+     "photo": null,
+     "model": "#586a75"
+    },
+    "glazing": {
+     "photo": [
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "model": [
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "photoMean": 0.566,
+     "modelMean": 0.226,
+     "maxDiff": null,
+     "meanDiff": 0.34,
+     "pass": false
+    },
+    "columns": {
+     "photo": 5,
+     "model": 4,
+     "windows": {
+      "photo": 5,
+      "model": 4
+     },
+     "pass": true
+    },
+    "photoGrid": {
+     "pitchM": 2.685,
+     "window": null
+    },
+    "shape": {
+     "photo": null,
+     "model": null,
+     "pass": null
+    },
+    "openings": {
+     "photo": {
+      "count": null,
+      "mix": {
+       "tall": 0,
+       "square": 0,
+       "wide": 0
+      },
+      "widthP50": null,
+      "widthP90": null,
+      "measured": 0
+     },
+     "model": {
+      "count": null,
+      "mix": {
+       "tall": 0,
+       "square": 0,
+       "wide": 0
+      },
+      "widthP50": null,
+      "widthP90": null,
+      "measured": 0
+     },
+     "countPass": null,
+     "mixTv": null,
+     "mixPass": null,
+     "widthPass": null,
+     "rowMismatch": [],
+     "reasons": [],
+     "sequenceMatch": false
+    },
+    "classes": {
+     "photo": "punched",
+     "model": "punched"
+    },
+    "ground": {
+     "photo": null,
+     "model": 0.445
+    },
+    "evidence": {
+     "usable": 0.752,
+     "foliage": 0.353,
+     "washedOut": 0.003,
+     "obliquityDeg": 0.2,
+     "cameraDistM": 19.2,
+     "widthM": 13.74,
+     "abstain": [
+      "foliage 35 % > 25 %"
+     ]
+    }
+   },
+   "measured": {
+    "wall": "#100c03",
+    "wallRaw": "#100c03",
+    "glass": null,
+    "trim": "#6b553a",
+    "glazing": 0.579,
+    "storeyGlazing": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ground": null,
+    "bays": 5,
+    "pitchM": 2.661,
+    "storeyM": null,
+    "window": null,
+    "frontClass": "punched",
+    "normalisation": {
+     "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
+     "ref": null,
+     "gain": 1,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    "usable": 0.668,
+    "foliage": 0.353,
+    "washedOut": 0.003,
+    "lightBands": [],
+    "split": null,
+    "rowJoints": [
+     {
+      "from": 0,
+      "to": 1,
+      "hex": "#181408"
+     }
+    ]
+   },
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no evidence: foliage 35 % > 25 %"
+    ]
+   }
+  }
+ ]
+}

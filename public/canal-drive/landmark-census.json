@@ -1,10 +1,10 @@
 {
  "version": 1,
- "generatedAt": "2026-10-25T05:38:23.049Z",
+ "generatedAt": "2026-10-25T07:23:42.918Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
- "headline": 498,
- "strict": 159,
+ "headline": 501,
+ "strict": 162,
  "byTier": {
   "bespoke": {
    "models": 334,
@@ -19,10 +19,10 @@
    "unreviewed": 0
   },
   "largeRecipe": {
-   "models": 94,
-   "counts": 49,
-   "strict": 49,
-   "unreviewed": 17
+   "models": 100,
+   "counts": 52,
+   "strict": 52,
+   "unreviewed": 14
   },
   "landmarkKit": {
    "models": 420,
@@ -33,8 +33,8 @@
  },
  "byReview": {
   "legacy-gallery": 403,
-  "likeness-gate": 75,
-  "none": 327,
+  "likeness-gate": 84,
+  "none": 324,
   "strip-review": 112
  },
  "rows": [
@@ -5709,9 +5709,9 @@
    "namedPoi": false,
    "rideVisible": true,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "likeness-gate",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "model:ordinary-0363100012169471",
@@ -6619,9 +6619,9 @@
    "namedPoi": false,
    "rideVisible": true,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "likeness-gate",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "model:ordinary-0363100012147097",
@@ -6843,9 +6843,9 @@
    "namedPoi": false,
    "rideVisible": true,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "likeness-gate",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "model:ordinary-0363100012098847",
@@ -6960,6 +6960,90 @@
    "reviewDate": "2026-10-24",
    "counts": true,
    "countsStrict": true
+  },
+  {
+   "key": "model:ordinary-0363100012158526",
+   "name": "Van Eeghenstraat 110A-C, Amsterdam-Zuid (villa between Van Eeghenstraat and the Vondelpark; BAG pand 0363100012158526)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012158526"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012237151",
+   "name": "Van Eeghenstraat 97-101, Amsterdam-Zuid (1900 pair of villa-houses facing the Vondelpark; BAG pand 0363100012237151)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012237151"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012236607",
+   "name": "Van Eeghenstraat 180-212, Amsterdam-Zuid (1905 mansard villa block between Van Eeghenstraat and the Vondelpark; BAG pand 0363100012236607)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012236607"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012237339",
+   "name": "Koningslaan 28A-30, Amsterdam-Zuid (1900s pair of villa-houses on the Vondelpark's south edge; BAG pand 0363100012237339)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012237339"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012150885",
+   "name": "Koninginneweg 34, Amsterdam-Zuid (Park Plaza hotel, 1983 brick block south of the Vondelpark; BAG pand 0363100012150885)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012150885"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012236822",
+   "name": "Emmalaan 4A-6 / Koningslaan 35, Amsterdam-Zuid (1912 brick block at the Emmalaan, south of the Vondelpark; BAG pand 0363100012236822)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012236822"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
   },
   {
    "key": "kit:Westerkerk",
