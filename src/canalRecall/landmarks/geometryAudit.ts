@@ -784,6 +784,32 @@ export interface WithinWallsReport {
   options: WithinWallsOptions;
 }
 
+/** A part's foot this far over its wall's local top (m) clears the wall: past the silhouette tolerance (5 cm). */
+export const FOOT_CLEARS_M = 0.06;
+/**
+ * Does a part spanning wall-local u `u0..u1` with its foot at `footY` stand wholly above the wall `r` at those columns?
+ * The local top is the highest wall cell over the part's columns; columns with no wall do not count, and a part over no
+ * wall column at all is left to the other rules (false).
+ */
+export function footClearsWall(r: {u0: number; cell: number; nu: number; colHi: ArrayLike<number>}, u0: number, u1: number, footY: number): boolean {
+  let top = -Infinity;
+  for (let x = Math.max(0, Math.floor((u0 - r.u0) / r.cell)); x <= Math.min(r.nu - 1, Math.floor((u1 - r.u0) / r.cell)); x++) if (Number.isFinite(r.colHi[x])) top = Math.max(top, r.colHi[x]);
+  return Number.isFinite(top) && footY > top + FOOT_CLEARS_M;
+}
+
+/** Within `ROOF_TOUCH_M` of a roof triangle's edges, an opening edge's crossing is a touch, not a pierce (Helmersbuurt cornices, #81). */
+export const ROOF_TOUCH_M = 0.005;
+const segDistSq = (q: V3, a: V3, b: V3): number => {
+  const ab = sub(b, a), aq = sub(q, a), L2 = ab[0] * ab[0] + ab[1] * ab[1] + ab[2] * ab[2];
+  const t = L2 > 0 ? Math.max(0, Math.min(1, (aq[0] * ab[0] + aq[1] * ab[1] + aq[2] * ab[2]) / L2)) : 0;
+  const d: V3 = [aq[0] - ab[0] * t, aq[1] - ab[1] * t, aq[2] - ab[2] * t];
+  return d[0] * d[0] + d[1] * d[1] + d[2] * d[2];
+};
+/** Is `q` (a point on the triangle's plane) within ROOF_TOUCH_M of one of its edges? */
+export function onTriangleBoundary(q: V3, a: V3, b: V3, c: V3): boolean {
+  return Math.min(segDistSq(q, a, b), segDistSq(q, b, c), segDistSq(q, c, a)) <= ROOF_TOUCH_M * ROOF_TOUCH_M;
+}
+
 /**
  * Every opening part (one connected piece of glass, frame, door, louvre, bar) must lie, projected onto its host wall, inside that
  * wall's silhouette (tol 0.05 m) and must not run through a roof-class surface. Per part the outside area is reported in m2 and a
@@ -859,6 +885,11 @@ export function openingsWithinWalls(s: MaterialSoup, th: GeometryAuditThresholds
       if (hi < -0.8 || lo > 0.8) continue;
       const us = corners.map(([x, z]) => x * w.t[0] + z * w.t[1]);
       if (Math.max(...us) < w.uMin - 0.3 || Math.min(...us) > w.uMax + 0.3 || bb.max[1] < w.vMin - 0.3 || bb.min[1] > w.vMax + 0.3) continue;
+      // Wholly above the wall where the part stands: a dormer pane behind the cornice of a low house whose row cluster also
+      // holds taller fronts (the cluster's vMax is the tallest member's; Eerste Helmersstraat 217-229 beside 213-215, #81).
+      // A window rising past the wall top has its foot inside the wall; a part whose foot clears the wall's local top is a
+      // dormer or roof light, not this wall's opening.
+      if (footClearsWall(raster(w), Math.min(...us), Math.max(...us), bb.min[1])) continue;
       // smaller planes in reach: fragments of a host wall (they extend its silhouette, see `measure`), never hosts themselves
       if (w.area < 3 * partFace) { pieces.push(w); continue; }
       cands.push({w, sd: Math.max(0, lo, -hi) + (hi < 0.02 ? 5 : 0)});
@@ -914,7 +945,9 @@ export function openingsWithinWalls(s: MaterialSoup, th: GeometryAuditThresholds
           const d = sub(p1, p0), L = Math.hypot(d[0], d[1], d[2]);
           if (!(L > 0)) continue;
           const dir: V3 = [d[0] / L, d[1] / L, d[2] / L], hit = rayTriangle(p0, dir, ra, rb, rc, L);
-          if (hit > 0.002 && hit < L - 0.002) { crossed = true; break edges; }
+          // A hit on the roof triangle's own boundary (a cornice whose top edge IS the eave edge of the roof drawn from it, a
+          // cornice end through the vertex of the neighbour's eaves ledge one eaves step higher) is a touch, 0 m2: not a pierce.
+          if (hit > 0.002 && hit < L - 0.002 && !onTriangleBoundary([p0[0] + dir[0] * hit, p0[1] + dir[1] * hit, p0[2] + dir[2] * hit], ra, rb, rc)) { crossed = true; break edges; }
         }
       }
       if (!crossed) continue;

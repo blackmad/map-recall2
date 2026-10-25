@@ -5,8 +5,9 @@
  * has built the openings and the cornice; a front without `friezeVents` is untouched.
  *
  * Each panel is `span` x `rise` metres, centred on its axis (the top storey's window centres), its top `drop` metres
- * under the cornice's foot, 3 cm proud, in the stone colour (painted: `palette.stoneMaterial`), with a slot 2 cm deep in
- * the dark of the door colour across its middle third when `slot` is set (the open grille of 211-213).
+ * under the cornice's foot, 4.2 cm proud, in the stone colour (painted: `palette.stoneMaterial`), with a slot 2 cm deep in
+ * the dark of the door colour across its middle third when `slot` is set (the open grille of 211-213). Not 3 cm proud:
+ * that sits in the audit's tight z-fight band over the wall (geometryAudit zTightTol; 0.9 m2 on Eerste 217-229).
  * Measured on the 2024-11-29 strip of Eerste Helmersstraat 209-253 at 40 px/m: 223-229 panels 0.85 x 0.16 m, their tops
  * 0.42 m under the cornice foot.
  */
@@ -16,7 +17,7 @@ import type {CanalHouseIntent, FrontIntent} from './intent.ts';
 import type {FitReport} from './fit.ts';
 import {frontEnds} from './historicPasses.ts';
 
-export const FRIEZE_VENTS = {proudM: 0.03, slotDepthM: 0.02, minWidthM: 0.2, maxWidthM: 2.5, minHeightM: 0.06, maxHeightM: 0.8, maxDropM: 1.5} as const;
+export const FRIEZE_VENTS = {proudM: 0.042, slotDepthM: 0.02, minWidthM: 0.2, maxWidthM: 2.5, minHeightM: 0.06, maxHeightM: 0.8, maxDropM: 1.5} as const;
 
 type V3 = [number, number, number];
 

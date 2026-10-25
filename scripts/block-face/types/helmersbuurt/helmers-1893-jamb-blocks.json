@@ -48,7 +48,13 @@
    ],
    "projecting": true
   },
-  "windowShare": 0.55
+  "windowShare": 0.55,
+  "entablature": {
+   "rise": 1.2,
+   "cap": 0.35,
+   "frieze": "trim",
+   "architrave": 0.12
+  }
  },
  "crowns": {
   "pediment-dormer": {
@@ -126,6 +132,7 @@
   "the dormer is the library pediment dormer; 120 has a carved dormer flanked by two box dormers"
  ],
  "notes": [
-  "Palette: strip medians of 116 (shaded) and 118 (sunlit), 2024-11-29; placed pands take their own measured wall."
+  "Palette: strip medians of 116 (shaded) and 118 (sunlit), 2024-11-29; placed pands take their own measured wall.",
+  "Entablature (#81 review 2026-10-25): the white crown band of 116-122 reads 11.4-12.6 m on the re-intaken 2023-01-12 strip (row luma 110-130 of a 30-125 range at 40 px/m): 1.2 m, a 0.35 m cap over a flush white frieze and an architrave fillet; was a thin 0.35 m simple cornice."
  ]
 }

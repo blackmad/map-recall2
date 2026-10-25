@@ -30,6 +30,7 @@ import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
 import {applyCrownPins, applyMirrorPins, crownPinProblems, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
+import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
 import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
 import {FACES, STAGING} from './intake.ts';
 
@@ -287,6 +288,16 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const doorPins: DoorPin[] = existsSync(doorsFile) ? (await readJson(doorsFile)).pins : [];
   const doorPinErrors = doorPinProblems(doorPins, types);
   if (doorPinErrors.length) throw Error(`${doorsFile}: ${doorPinErrors.join('; ')}`);
+  // Palettes a reviewer re-measured where the strip misread the wall (blockFace/reviewPalettes.ts).
+  const palettesFile = path.join('scripts/block-face/buurten', `${buurt}-review-palettes.json`);
+  const palettePins: PalettePin[] = existsSync(palettesFile) ? (await readJson(palettesFile)).pins : [];
+  const palettePinErrors = palettePinProblems(palettePins, types);
+  if (palettePinErrors.length) throw Error(`${palettesFile}: ${palettePinErrors.join('; ')}`);
+  // Gate floors a reviewer set after judging a sheet on a hazy strip (blockFace/reviewPalettes.ts).
+  const acceptsFile = path.join('scripts/block-face/buurten', `${buurt}-review-accepts.json`);
+  const acceptPins: AcceptPin[] = existsSync(acceptsFile) ? (await readJson(acceptsFile)).pins : [];
+  const acceptPinErrors = acceptPinProblems(acceptPins, types);
+  if (acceptPinErrors.length) throw Error(`${acceptsFile}: ${acceptPinErrors.join('; ')}`);
   const {compileFace} = await import('./compile.ts');
   const {reviewFace} = process.argv.includes('--review') ? await import('./review.ts') : {reviewFace: null};
   const summary: any[] = [];
@@ -321,6 +332,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     });
     if (crownPins.length) { const pinned = applyCrownPins(f.id, decisions, crownPins, types); if (pinned.length) console.log(`${f.id}: crown pinned on ${pinned.length} pand(s)`); }
     if (doorPins.length) { const pinned = applyDoorPins(decisions, doorPins, types); if (pinned.length) console.log(`${f.id}: door pinned on ${pinned.length} pand(s)`); }
+    if (palettePins.length) { const pinned = applyPalettePins(decisions, palettePins); if (pinned.length) console.log(`${f.id}: palette pinned on ${pinned.length} pand(s)`); }
     fillPairs(decisions, types);
     if (mirrorPins.length) { const pinned = applyMirrorPins(decisions, mirrorPins); if (pinned.length) console.log(`${f.id}: side pinned on ${pinned.length} pand(s)`); }
     const rowSet = rowCoherence(decisions, types, evs, strip.date);
@@ -439,7 +451,9 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
         if (pass === 0 && switched.has(d.pandId)) continue;
         const l = likeness.get(d.pandId);
         if (!l) { decisions[k] = {kind: 'held', pandId: d.pandId, address: d.house.address, stage: 'likeness', reason: 'run did not compile'}; changed = true; continue; }
-        const g = placementGate({ncc: l.ncc, abstain: l.abstain});
+        const floor = acceptFloorFor(d.pandId, d.typeId, acceptPins);
+        const g = placementGate({ncc: l.ncc, abstain: l.abstain}, floor);
+        if (floor !== undefined && g.gate === 'pass' && l.ncc !== null && l.ncc < STRIP_LIKENESS.minNcc) d.notes.push(`edge NCC ${l.ncc} passed on the reviewer floor ${floor}`);
         // A challenger holds the placement only when it is a plausible alternative (no year/frontage veto of its own);
         // an implausible type that reads closer is noted (the edge NCC differences are 0.05-0.15, the facts are not).
         // --photo-decides: candidates were already weighed (a switched pand's own variant and its old one are in the map);

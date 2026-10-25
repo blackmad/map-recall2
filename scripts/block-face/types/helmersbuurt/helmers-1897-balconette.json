@@ -57,8 +57,20 @@
   "pointed-dormer": {
    "gable": "cornice",
    "dormers": 1,
-   "dormerStyle": "pointed",
-   "note": "223-229: one white timber dormer, pointed pediment with a finial, centred"
+   "dormerStyle": "pediment",
+   "note": "223-229: one white timber dormer, pointed pediment with a finial, centred Dormer (#81 review 2026-10-25): measured on the strips about 1.1 m wide, a body of 1.1-1.3 m to a white pediment cap of about 0.5 m, standing on the roof behind the cornice cap (the kit's sill and setback, 1.15 m body); a white painted body (dormerBody stone). The finial is not expressed.",
+   "dormerAt": [
+    {
+     "from": 0.41,
+     "to": 0.59
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.05,
+    "rise": 1.15,
+    "setback": 0.35
+   },
+   "dormerBody": "stone"
   }
  },
  "grounds": {

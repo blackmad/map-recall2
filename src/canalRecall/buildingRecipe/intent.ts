@@ -13,6 +13,7 @@ import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/s
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
 import {friezeVentProblems} from './friezeVents.ts';
+import {entablatureProblems} from './entablature.ts';
 import {jambBlockProblems} from './jambBlocks.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
 import type {StoneDressings} from '../blockBuilding/dressings.ts';
@@ -545,6 +546,14 @@ export interface FrontIntent {
    */
   friezeVents?: {span: number; rise: number; drop: number; slot?: boolean; axes?: number[]};
   /**
+   * Entablature (Helmersbuurt 1893-1900 rows, Eerste Helmersstraat 116-122 and 42-56; buildingRecipe/entablature.ts): the
+   * measured deep white crown band in place of the cornice style's fixed height: `rise` metres in all, a projecting
+   * `cap` (`capDepth`, default 0.4 m), a `frieze` that is a flush white band (`trim`) or brick between consoles
+   * (`wall`), an `architrave` fillet at its foot, and `consoles` console brackets end to end. Needs a cornice.
+   * Absent = the style's cornice, byte-identical.
+   */
+  entablature?: {rise: number; cap: number; frieze: 'trim' | 'wall'; capDepth?: number; architrave?: number; consoles?: number};
+  /**
    * Jamb blocks (Eerste Helmersstraat 116-122, 1893; buildingRecipe/jambBlocks.ts): `count` white stone blocks on each
    * jamb of every window of the listed `storeys` (default all), evenly spaced up the opening, `rise` m high, reaching
    * `reach` m out from the jamb, in the stone colour. Absent = byte-identical.
@@ -598,6 +607,13 @@ export interface FrontIntent {
   roofFront?: 'mansard';
   /** Dormer design: `pediment` = a triangular pediment in the trim colour over a projecting frame; `pointed` = a tall pointed roof (19th-c. ornate dormers). Default `plain`. */
   dormerStyle?: typeof DORMER_STYLES[number];
+  /**
+   * Dormer body material (Helmersbuurt white timber dormers, issue #81): `stone` draws the cheeks, back and pediment in the
+   * stone colour (painted white) instead of the trim slot, which exports as an opening (frame) material: a frame-class
+   * body sunk into the roof slope read as a window piercing the roof and left its own pane with no wall. The window
+   * frame, bars and pane stay trim and glass. Not for `box` dormers (brick). Absent = trim, byte-identical.
+   */
+  dormerBody?: 'stone';
   /** Several gables on one front: each `{from, to}` (inclusive bay axes) carries one crown of the front's gable type; eaves line between them. Not together with `crownAt`/`crownBays`. */
   crownGroups?: {from: number; to: number}[];
   /**
@@ -1333,6 +1349,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.windowHoods !== undefined && f.windowHoods !== true) problems.push(`${at}.windowHoods: true (or leave it out)`);
     if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
     if (f.friezeVents !== undefined) problems.push(...friezeVentProblems(f, at));
+    if (f.entablature !== undefined) problems.push(...entablatureProblems(f, at));
     if (f.jambBlocks !== undefined) problems.push(...jambBlockProblems(f, at));
     if (f.axisHeads !== undefined) {
       const ah = f.axisHeads as Record<string, {kind?: unknown; storeys?: unknown}>;
@@ -1742,6 +1759,11 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   if (f.roofFront === 'mansard' && f.gable !== 'cornice' && f.gable !== 'flat') problems.push(`${at}.roofFront: a mansard rises behind a cornice/flat front (gable ${f.gable})`);
   if (f.dormerCap !== undefined) problems.push(...dormerCapProblems(f, at));
   if (f.dormerStyle !== undefined) { oneOf(f.dormerStyle, DORMER_STYLES, `${at}.dormerStyle`); if (!f.dormers) problems.push(`${at}.dormerStyle: needs dormers >= 1`); }
+  if (f.dormerBody !== undefined) {
+    if (f.dormerBody !== 'stone') problems.push(`${at}.dormerBody: "stone" (or leave it out)`);
+    if (!f.dormers) problems.push(`${at}.dormerBody: needs dormers >= 1`);
+    if (f.dormerStyle === 'box') problems.push(`${at}.dormerBody: a box dormer is brick`);
+  }
   if (f.crownGroups !== undefined) {
     if (f.crownAt !== undefined || f.crownBays !== undefined) problems.push(`${at}.crownGroups: not together with crownAt/crownBays`);
     if (f.gable === 'flat' || (f.gable === 'cornice' && (!f.crownCap || f.crownCap === 'flat'))) problems.push(`${at}.crownGroups: the front has no crown to repeat (gable ${f.gable})`);

@@ -1,0 +1,11 @@
+{
+  "note": "Reviewer gate floors (src/canalRecall/blockFace/reviewPalettes.ts AcceptPin). Each pand here was judged against the photo on its run's strip sheet; the floor never goes under 0.08.",
+  "pins": [
+    {
+      "pandId": "0363100012164727",
+      "type": "helmers-1893-jamb-blocks",
+      "minNcc": 0.1,
+      "reason": "Eerste Helmersstraat 120, sheet helmers-108-174-r1 (#81 review 2026-10-25): orange-red brick, white jamb blocks and the 1.2 m white entablature read as the photo; the hazy 2023-01-12 strip moves its edge NCC 0.11-0.19 with the palette and crown band alone (0.194 before the review fixes)"
+    }
+  ]
+}

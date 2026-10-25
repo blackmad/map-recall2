@@ -6,7 +6,8 @@
  * untouched.
  *
  * Block k of `count` is centred at (k + 0.5) / count of the window's height, `rise` metres high, running `reach` metres
- * out from the jamb (from the window's outer edge; it overlaps the frame by 2 cm), 3 cm proud, in the stone colour
+ * out from the jamb (from the window's outer edge; it overlaps the frame by 2 cm), 4.2 cm proud (3 cm sits in the audit's
+ * tight z-fight band over the wall), in the stone colour
  * (painted: `palette.stoneMaterial`). Windows of the listed `storeys` only (default every storey).
  * Measured on the 2024-11-29 strip of Eerste Helmersstraat 108-138 at 40 px/m: 116-118 three blocks a jamb, 0.12 m high,
  * reaching 0.14 m, at 0.17, 0.48 and 0.81 of the storey-2 window (7.6-9.7 m).
@@ -17,7 +18,7 @@ import type {CanalHouseIntent, FrontIntent} from './intent.ts';
 import type {FitReport} from './fit.ts';
 import {frontEnds} from './historicPasses.ts';
 
-export const JAMB_BLOCKS = {proudM: 0.03, overlapM: 0.02, maxCount: 6, minRiseM: 0.05, maxRiseM: 0.5, minReachM: 0.04, maxReachM: 0.5} as const;
+export const JAMB_BLOCKS = {proudM: 0.042, overlapM: 0.02, maxCount: 6, minRiseM: 0.05, maxRiseM: 0.5, minReachM: 0.04, maxReachM: 0.5} as const;
 
 type V3 = [number, number, number];
 

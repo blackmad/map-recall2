@@ -31,6 +31,9 @@
     "measuredPalette": {
      "brick": "#666865",
      "evidence": "strip 2023-01-12 span 3752-3988: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6f4e3f"
     }
    },
    "groundFloor": {
@@ -55,6 +58,9 @@
     "measuredPalette": {
      "brick": "#473b35",
      "evidence": "strip 2023-01-12 span 3987-4221: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c4e3c"
     }
    },
    "groundFloor": {

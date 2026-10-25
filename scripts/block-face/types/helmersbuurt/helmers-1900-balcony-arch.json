@@ -17,10 +17,10 @@
   "storeys": 4,
   "bays": 3,
   "storeyHeights": [
-   3.4,
-   3.1,
-   3.1,
-   4.4
+   4.1,
+   3.0,
+   3.0,
+   2.65
   ],
   "windows": "casement-sidelights-toplight",
   "windowHead": {
@@ -44,13 +44,13 @@
    0.7,
    0.68,
    0.68,
-   0.43
+   0.66
   ],
   "headLines": [
    0.88,
    0.84,
    0.81,
-   0.52
+   0.71
   ],
   "cornice": "simple",
   "balconies": {
@@ -64,12 +64,14 @@
    ],
    "projecting": true
   },
-  "friezeVents": {
-   "span": 1.2,
-   "rise": 0.22,
-   "drop": 0.25
-  },
-  "windowShare": 0.75
+  "windowShare": 0.75,
+  "entablature": {
+   "rise": 1.65,
+   "cap": 0.45,
+   "frieze": "wall",
+   "architrave": 0.1,
+   "consoles": 4
+  }
  },
  "crowns": {
   "pediment-dormer": {
@@ -157,6 +159,7 @@
   "the dormer's brick pedestal and iron finial are not drawn"
  ],
  "notes": [
-  "Palette: read on the hazy 2023-01-12 strip; placed pands take their own measured wall."
+  "Palette: read on the hazy 2023-01-12 strip; placed pands take their own measured wall.",
+  "Entablature and storeys (#81 review 2026-10-25), vertical profile of Eerste 56's left axis on the re-intaken 2023-01-12 strip (40 px/m): floors at 4.1, 7.1 and 10.1 m, top windows 10.2-11.95 m, a brick strip, then the crown band 12.75-14.4 m: a 0.45 m white cap over a brick frieze carried on four white consoles at the piers, a fillet at its foot. The top storey now ends at the frieze foot (2.65 m) instead of carrying the frieze in a 4.4 m storey. Replaces the simple cornice and the frieze-vent stand-ins; the frieze's chequered tiles are not expressed."
  ]
 }

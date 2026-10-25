@@ -3,7 +3,7 @@
  "street": "Derde Helmersstraat",
  "library": "helmersbuurt",
  "stripDate": "2023-01-12",
- "seconds": 9.25,
+ "seconds": 10.53,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -29,7 +29,7 @@
     "0363100012157083",
     "0363100012162406"
    ],
-   "passed": false,
+   "passed": true,
    "triangles": 4647
   }
  ],

@@ -1,8 +1,8 @@
 {
  "buurt": "helmersbuurt-oost",
  "library": "helmersbuurt",
- "generatedAt": "2026-10-25T17:22:06.981Z",
- "seconds": 116.53,
+ "generatedAt": "2026-10-25T18:25:26.225Z",
+ "seconds": 21.48,
  "totals": {
   "faces": 50,
   "pands": 344,
@@ -205,7 +205,7 @@
       "0363100012163575",
       "0363100012154302"
      ],
-     "passed": false,
+     "passed": true,
      "triangles": 7027
     },
     {
@@ -218,7 +218,7 @@
       "0363100012066688",
       "0363100012101791"
      ],
-     "passed": false,
+     "passed": true,
      "triangles": 13880
     },
     {
@@ -231,7 +231,7 @@
      "triangles": 4604
     }
    ],
-   "seconds": 21.21,
+   "seconds": 21.48,
    "byType": {
     "helmers-1905-checker-arch": 3,
     "helmers-1911-balcony-axis": 8
@@ -317,11 +317,11 @@
       "0363100012157083",
       "0363100012162406"
      ],
-     "passed": false,
+     "passed": true,
      "triangles": 4647
     }
    ],
-   "seconds": 9.25,
+   "seconds": 10.53,
    "byType": {
     "helmers-1900-merlon-dormer": 4
    },
@@ -347,10 +347,10 @@
       "0363100012165540"
      ],
      "passed": true,
-     "triangles": 4881
+     "triangles": 5143
     }
    ],
-   "seconds": 4.84,
+   "seconds": 5.8,
    "byType": {
     "helmers-1900-balcony-arch": 2
    },
@@ -397,7 +397,7 @@
      "triangles": 5652
     }
    ],
-   "seconds": 8.39,
+   "seconds": 9.47,
    "byType": {
     "helmers-1896-transom-band": 3
    },

@@ -1,7 +1,8 @@
 /**
  * Helmersbuurt kit components (issue #81): frieze vents (`friezeVents`), jamb blocks (`jambBlocks`), per-axis window
  * heads (`axisHeads`), wall-dormer lights per axis and the merlon cap (`tower.lights`, `cap: merlons`), a band-brick
- * tympanum under a relieving arch; each validated, each drawn on its exemplar house, and absent = no meshes/openings.
+ * tympanum under a relieving arch, the measured crown band (`entablature`) and white dormer bodies (`dormerBody`); each
+ * validated, each drawn on its exemplar house, and absent = no meshes/openings.
  *   node --import tsx --test src/canalRecall/buildingRecipe/helmersKit.test.ts
  */
 import {test} from 'node:test';
@@ -103,4 +104,40 @@ test('relieving arch over a band-brick tympanum (Eerste Helmersstraat 213); ston
   assert.ok(tymp.length >= 6, `tympana ${tymp.length}`);
   assert.ok(tymp.every(o => o.fill === 'accent'));
   assert.throws(bad(h, {windowHead: {...h.fronts[0].windowHead!, tympanum: 'stone'}}), /tympanum/);
+});
+
+test('entablature: the measured crown band of Eerste Helmersstraat 120 (white frieze) and 54 (consoles); validation; absent = style', () => {
+  const h = house('helmers-1893-jamb-blocks', '0363100012164727');
+  const f = facts('helmers-108-174', '0363100012164727');
+  const c = fitIntent(h, f).recipe.elevations[0].cornice!.value;
+  assert.equal(c.heightM, 1.2);
+  assert.equal(c.layers!.length, 3, 'cap, flush white frieze, architrave');
+  assert.ok(Math.abs(c.layers![0].bottomM + c.layers![0].heightM - (c.bottomM + c.heightM)) < 0.002, 'the cap tops the band');
+  assert.ok(c.layers![0].underside, 'a moulded cap');
+  assert.equal(c.accents, undefined, 'no consoles');
+  const g = fitIntent(house('helmers-1900-balcony-arch', '0363100012165540'), facts('helmers-40-60', '0363100012165540')).recipe.elevations[0].cornice!.value;
+  assert.equal(g.heightM, 1.65);
+  assert.equal(g.layers!.length, 2, 'cap and architrave over an open brick frieze');
+  assert.equal(g.accents!.length, 4);
+  assert.ok(g.accents!.every(a => a.profile === 'console' && a.bottomM >= g.bottomM && a.bottomM + a.heightM <= g.bottomM + g.heightM + 1e-9));
+  assert.throws(bad(h, {entablature: {rise: 3, cap: 0.35, frieze: 'trim'}}), /entablature.rise/);
+  assert.throws(bad(h, {entablature: {rise: 1.2, cap: 0.35, frieze: 'stone' as never}}), /entablature.frieze/);
+  assert.throws(bad(h, {entablature: {rise: 0.5, cap: 0.4, frieze: 'trim', architrave: 0.1}}), /no frieze/);
+  assert.throws(bad(h, {entablature: {rise: 1.2, cap: 0.35, frieze: 'trim', consoles: 1}}), /consoles/);
+  assert.throws(bad(h, {cornice: 'none'}), /entablature: needs a cornice/);
+  const plain = fitIntent(house('helmers-1893-jamb-blocks', '0363100012164727', fr => { delete fr.entablature; }), f).recipe.elevations[0].cornice!.value;
+  assert.equal(plain.heightM, 0.35);
+  assert.equal(plain.layers, undefined);
+});
+
+test('dormer body: white timber dormers in the stone slot (not frame-class); validation; absent = trim', () => {
+  const h = house('helmers-1897-balconette', '0363100012164920');
+  const f = facts('helmers-209-253', '0363100012164920');
+  const d = fitIntent(h, f).recipe.elevations[0].dormers!.value;
+  assert.ok(d.length >= 1 && d.every(x => x.wallSurface === 'stone'));
+  const trim = fitIntent(house('helmers-1897-balconette', '0363100012164920', fr => { delete fr.dormerBody; }), f).recipe.elevations[0].dormers!.value;
+  assert.ok(trim.every(x => x.wallSurface === 'trim'));
+  assert.throws(bad(h, {dormerBody: 'brick' as never}), /dormerBody/);
+  assert.throws(bad(h, {dormers: 0}), /dormerBody: needs dormers/);
+  assert.throws(bad(h, {dormerStyle: 'box'}), /dormerBody: a box dormer/);
 });

@@ -1,8 +1,8 @@
 {
  "buurt": "cremerbuurt-oost",
  "library": "helmersbuurt",
- "generatedAt": "2026-10-25T17:22:40.235Z",
- "seconds": 25.37,
+ "generatedAt": "2026-10-25T18:25:04.305Z",
+ "seconds": 15.27,
  "totals": {
   "faces": 2,
   "pands": 34,
@@ -71,10 +71,10 @@
       "0363100012164727"
      ],
      "passed": true,
-     "triangles": 3466
+     "triangles": 3522
     }
    ],
-   "seconds": 10.17,
+   "seconds": 8.29,
    "byType": {
     "helmers-1893-jamb-blocks": 2
    },
@@ -110,8 +110,8 @@
       "0363100012165470",
       "0363100012165598"
      ],
-     "passed": false,
-     "triangles": 15772
+     "passed": true,
+     "triangles": 15778
     },
     {
      "face": "helmers-209-253-r2",
@@ -123,7 +123,7 @@
      "triangles": 4430
     }
    ],
-   "seconds": 15.19,
+   "seconds": 15.27,
    "byType": {
     "helmers-1897-banded": 1,
     "helmers-1897-balconette-tall": 1,
@@ -133,8 +133,8 @@
    "holds": {
     "evidence": 0,
     "match": 0,
-    "likeness": 2,
-    "run": 3,
+    "likeness": 3,
+    "run": 2,
     "review": 2
    }
   },

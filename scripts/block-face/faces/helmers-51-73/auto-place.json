@@ -3,7 +3,7 @@
  "street": "Derde Helmersstraat",
  "library": "helmersbuurt",
  "stripDate": "2023-01-12",
- "seconds": 8.39,
+ "seconds": 9.47,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -808,7 +808,7 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.133 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.393 < 0.45)",
+   "reason": "edge NCC 0.133 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.383 < 0.45)",
    "likeness": {
     "pandId": "0363100012166026",
     "ncc": 0.133,
@@ -821,7 +821,7 @@
     "abstain": null,
     "verdict": "WARN",
     "reasons": [
-     "mask IoU 0.393 < 0.45"
+     "mask IoU 0.383 < 0.45"
     ],
     "wall": {
      "photo": "#4c3832",
@@ -836,7 +836,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.393
+    "iou": 0.383
    },
    "challengers": {}
   },

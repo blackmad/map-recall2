@@ -3,7 +3,7 @@
  "street": "Eerste Helmersstraat",
  "library": "helmersbuurt",
  "stripDate": "2024-11-29",
- "seconds": 15.19,
+ "seconds": 15.27,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -27,8 +27,8 @@
     "0363100012165470",
     "0363100012165598"
    ],
-   "passed": false,
-   "triangles": 15772
+   "passed": true,
+   "triangles": 15778
   },
   {
    "face": "helmers-209-253-r2",
@@ -390,8 +390,8 @@
    ],
    "likeness": {
     "pandId": "0363100012159862",
-    "ncc": 0.363,
-    "nccRaw": 0.363,
+    "ncc": 0.362,
+    "nccRaw": 0.362,
     "shiftM": [
      0.1,
      -0.05
@@ -491,7 +491,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.39 mean 0.38 vs photo 0.16"
+     "glazing storey band off by 0.39 mean 0.39 vs photo 0.17"
     ],
     "wall": {
      "photo": "#5c4838",
@@ -499,14 +499,14 @@
      "dL": 0.118
     },
     "glazing": {
-     "photo": 0.16,
-     "model": 0.38
+     "photo": 0.17,
+     "model": 0.39
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.396
+    "iou": 0.405
    },
    "challengers": {}
   },
@@ -659,29 +659,34 @@
     "measuredPalette": {
      "brick": "#d1a97f",
      "evidence": "strip 2024-11-29 span 1681-1922: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6d513c"
     }
    },
    "notes": [
-    "crown pointed-dormer (type default)"
+    "crown pointed-dormer (type default)",
+    "palette pinned: Eerste Helmersstraat 223: the 2024-11-29 strip is sun-blown on this span (trim-normalised wall #d1a97f, a light tan off the family); the median of its same-type row 217-229 without the two sunlit fronts (217 #8a6952, 219 #684e3b, 221 #6d513c, 227 #624a36, 229 #6f5540) is #6d513c"
    ],
    "likeness": {
     "pandId": "0363100012166885",
-    "ncc": 0.183,
-    "nccRaw": 0.183,
+    "ncc": 0.203,
+    "nccRaw": 0.203,
     "shiftM": [
      0.15,
-     -0.05
+     -0.25
     ],
     "usable": 0.87,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
+     "wall dL -0.23",
      "glazing storey band off by 0.39 mean 0.38 vs photo 0.61"
     ],
     "wall": {
      "photo": "#cbae7f",
-     "model": "#c99a69",
-     "dL": -0.047
+     "model": "#8a664c",
+     "dL": -0.227
     },
     "glazing": {
      "photo": 0.61,
@@ -755,29 +760,34 @@
     "measuredPalette": {
      "brick": "#ceac7c",
      "evidence": "strip 2024-11-29 span 1922-2160: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6d513c"
     }
    },
    "notes": [
-    "crown pointed-dormer (type default)"
+    "crown pointed-dormer (type default)",
+    "palette pinned: Eerste Helmersstraat 225: the 2024-11-29 strip is sun-blown on this span (trim-normalised wall #ceac7c, a light tan off the family); the median of its same-type row 217-229 without the two sunlit fronts (217 #8a6952, 219 #684e3b, 221 #6d513c, 227 #624a36, 229 #6f5540) is #6d513c"
    ],
    "likeness": {
     "pandId": "0363100012164920",
-    "ncc": 0.221,
-    "nccRaw": 0.221,
+    "ncc": 0.234,
+    "nccRaw": 0.234,
     "shiftM": [
      0.15,
-     -0.1
+     -0.15
     ],
     "usable": 0.89,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
+     "wall dL -0.26",
      "glazing storey band off by 0.33 mean 0.39 vs photo 0.55"
     ],
     "wall": {
      "photo": "#e1b078",
-     "model": "#c7a16b",
-     "dL": -0.076
+     "model": "#8a664c",
+     "dL": -0.257
     },
     "glazing": {
      "photo": 0.55,
@@ -1419,36 +1429,36 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.126 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.17; glazing storey band off by 0.25 mean 0.48 vs photo 0.35)",
+   "reason": "edge NCC 0.066 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.18; glazing storey band off by 0.23 mean 0.51 vs photo 0.31)",
    "likeness": {
     "pandId": "0363100012162217",
-    "ncc": 0.126,
-    "nccRaw": 0.126,
+    "ncc": 0.066,
+    "nccRaw": 0.066,
     "shiftM": [
      -0.05,
-     -0.25
+     0.15
     ],
-    "usable": 0.89,
+    "usable": 0.91,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.17",
-     "glazing storey band off by 0.25 mean 0.48 vs photo 0.35"
+     "wall dL +0.18",
+     "glazing storey band off by 0.23 mean 0.51 vs photo 0.31"
     ],
     "wall": {
-     "photo": "#795744",
+     "photo": "#755643",
      "model": "#a5816e",
-     "dL": 0.169
+     "dL": 0.178
     },
     "glazing": {
-     "photo": 0.35,
-     "model": 0.48
+     "photo": 0.31,
+     "model": 0.51
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.505
+    "iou": 0.461
    },
    "challengers": {}
   },
@@ -1498,22 +1508,21 @@
     "foliageShare": 0.06
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "likeness",
+   "reason": "edge NCC 0.049 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.15 mean 0.52 vs photo 0.38)",
    "likeness": {
     "pandId": "0363100012164432",
-    "ncc": 0.164,
-    "nccRaw": 0.164,
+    "ncc": 0.049,
+    "nccRaw": 0.049,
     "shiftM": [
-     0,
-     -0.1
+     0.4,
+     0.2
     ],
-    "usable": 0.86,
+    "usable": 0.87,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.16",
-     "window shape square vs photo tall"
+     "glazing storey band off by 0.15 mean 0.52 vs photo 0.38"
     ],
     "wall": {
      "photo": "#7f604d",
@@ -1522,13 +1531,13 @@
     },
     "glazing": {
      "photo": 0.38,
-     "model": 0.48
+     "model": 0.52
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.542
+    "iou": 0.534
    },
    "challengers": {}
   }
