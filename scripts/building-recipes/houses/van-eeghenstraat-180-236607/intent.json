@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "van-eeghenstraat-180-236607",
+  "pandId": "0363100012236607",
+  "address": "Van Eeghenstraat 180-212, Amsterdam-Zuid (1905 mansard villa block between Van Eeghenstraat and the Vondelpark; BAG pand 0363100012236607)",
+  "sources": [
+    {
+      "id": "pano-2021-03-26-w02-335p",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-26",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002062_pano_0000_001274/",
+      "image": "source-data://pand-reference-walls/0363100012236607/w02-335p.jpg",
+      "sha256": "643b582bf5a933e6f5f4306ff0fc76d6b514a3d92c080113f8e2fb284d474eb4",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2019-12-06-w03-155L",
+      "kind": "street-panorama",
+      "capturedAt": "2019-12-06",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001496_pano_0000_000569/",
+      "image": "source-data://pand-reference-walls/0363100012236607/w03-155L.jpg",
+      "sha256": "d2f2dbec7a9088d696f9e4cca865bb75c95131d0ff8be8b35630c324d25e37f7",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2021-04-28-w03-155",
+      "kind": "street-panorama",
+      "capturedAt": "2021-04-28",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002119_pano_0000_000800/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "walls": [
+    {
+      "wallSurfaces": [
+        12,
+        15
+      ],
+      "system": "brick-bay-grid",
+      "storeys": 5,
+      "groundFactor": 0.72,
+      "baysPerStorey": 3,
+      "ground": "system",
+      "windows": "plain",
+      "entrance": true,
+      "palette": {
+        "brick": "#5e4038",
+        "stone": "#2f3034",
+        "glass": "#3a3d3f"
+      },
+      "windowShape": {
+        "w": 0.46,
+        "h": 0.62,
+        "sill": 0.18
+      },
+      "storeyShapes": [
+        {
+          "storeys": [
+            3
+          ],
+          "w": 0.3,
+          "h": 0.6,
+          "sill": 0.2
+        },
+        {
+          "storeys": [
+            4
+          ],
+          "w": 0.22,
+          "h": 0.5,
+          "sill": 0.25
+        }
+      ],
+      "stoneStoreys": [
+        3,
+        4
+      ],
+      "balconies": {
+        "storeys": [
+          1,
+          2
+        ],
+        "bays": [
+          1
+        ],
+        "rail": "solid",
+        "colour": "#e6dfcc",
+        "deep": 0.25
+      },
+      "dressings": {
+        "colour": "#e6dfcc",
+        "bands": {
+          "at": [
+            "sill",
+            "head"
+          ],
+          "storeys": [
+            1,
+            2
+          ]
+        },
+        "heads": {
+          "kind": "keystone",
+          "storeys": [
+            1,
+            2
+          ]
+        }
+      },
+      "cornice": true,
+      "hand": [
+        "storeys",
+        "groundFactor",
+        "baysPerStorey",
+        "windowShape",
+        "storeyShapes",
+        "stoneStoreys",
+        "balconies",
+        "dressings",
+        "cornice",
+        "palette"
+      ]
+    },
+    {
+      "wallSurfaces": [
+        24
+      ],
+      "system": "brick-bay-grid",
+      "alignWith": 0,
+      "baysPerStorey": 4,
+      "ground": "system",
+      "windows": "plain",
+      "entrance": true,
+      "palette": {
+        "brick": "#5e4038"
+      },
+      "windowShape": {
+        "w": 0.45,
+        "h": 0.6,
+        "sill": 0.2
+      },
+      "hand": [
+        "baysPerStorey",
+        "windowShape",
+        "palette"
+      ]
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "palette": {
+    "brick": "#5e4038",
+    "frame": "#efece4",
+    "door": "#2a2a2a"
+  },
+  "notes": [
+    "Van Eeghenstraat 180-212 (pand 0363100012236607, built 1905): a mansard-roofed villa block on the Vondelpark's south edge.",
+    "walls[0] south-east villa front (panel 10, 12.2 m; crops w03-155w 2023-01-10 and w03-155L 2019-12-06): red-brown brick over a low souterrain, two storeys of three wide windows with cream hood moulds and keystones, a round central balcony on each floor and a terrace balustrade, a slate mansard with three dormers and an attic row (mansard storeys drawn as slate-coloured stone storeys: the kit has no mansard wall face).",
+    "walls[1] was the park front (panel 1, 13.1 m; crop w02-335p 2021-03-26 through bare trees): left to otherWalls (brick grid in the house palette) because its 3DBAG wall rises 1.5 m above the LoD2.2 roof edge (19.0 vs 17.4 m: a parapet in front of a terrace), which the eaves gate refuses; the photo through the trees shows only the brick and three window columns.",
+    "INFERRED: walls[1] the north-east side (no photo) and the party, rear and park walls (otherWalls brick grid)."
+  ],
+  "measured": {
+    "date": "2026-10-25",
+    "groups": []
+  },
+  "roof": {
+    "material": "slate"
+  }
+}

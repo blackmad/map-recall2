@@ -19,6 +19,7 @@ import {eavesOverhangProblems, type EavesOverhangIntent} from './eavesOverhangIn
 import {groundCanopyProblems, type GroundCanopyIntent} from './groundCanopyIntent.ts';
 import type {ArcadePiersIntent} from '../blockBuilding/arcadePiers.ts';
 import type {WindowBoxIntent} from '../blockBuilding/windowBox.ts';
+import type {GalleryIntent} from '../blockBuilding/gallery.ts';
 
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat'] as const;
 export type GableIntent = typeof GABLES[number];
@@ -1086,6 +1087,13 @@ export interface LargeWallIntent {
    * frame and glass slots, `lights` across it and a transom. Leave the bays behind it blind (`openBays`). Absent = byte-identical.
    */
   windowBox?: WindowBoxIntent;
+  /**
+   * Open galleries (verandas) stacked in front of a span of bays of the main panel (blockBuilding/gallery.ts; the 1905
+   * villas on the Vondelpark's south edge): a deck per listed storey on posts, an arch between each pair of posts under
+   * a beam, a balustrade along each deck; in the group's stone (a masonry arcade) or a timber colour. A list stacks a
+   * stone arcade under a timber loggia. Absent = byte-identical.
+   */
+  gallery?: GalleryIntent | GalleryIntent[];
 }
 
 export interface LargeBuildingIntent {

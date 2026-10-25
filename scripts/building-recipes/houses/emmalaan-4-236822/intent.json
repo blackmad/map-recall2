@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "emmalaan-4-236822",
+  "pandId": "0363100012236822",
+  "address": "Emmalaan 4A-6 / Koningslaan 35, Amsterdam-Zuid (1912 brick block at the Emmalaan, south of the Vondelpark; BAG pand 0363100012236822)",
+  "sources": [
+    {
+      "id": "pano-2021-04-20-w01-247",
+      "kind": "street-panorama",
+      "capturedAt": "2021-04-20",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002108_pano_0000_000760/",
+      "image": "source-data://pand-reference-walls/0363100012236822/w01-247.jpg",
+      "sha256": "fad4fe8b8e594e838cf69d3b80d973ee25c08fdeb998c30fa6c12d26dc1d0d40",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2022-03-22-w01-247L",
+      "kind": "street-panorama",
+      "capturedAt": "2022-03-22",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002463_pano_0003_001260/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2019-05-03-w02-157",
+      "kind": "street-panorama",
+      "capturedAt": "2019-05-03",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001159_pano_0000_001702/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2025-01-29-w02-157L",
+      "kind": "street-panorama",
+      "capturedAt": "2025-01-29",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250129_0912_Track06_Sphere_00109/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2019-01-17-w04-68w",
+      "kind": "street-panorama",
+      "capturedAt": "2019-01-17",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001061_pano_0001_002240/",
+      "image": "source-data://pand-reference-walls/0363100012236822/w04-68w.jpg",
+      "sha256": "da392a1c4c93754ce2c3d291d854e6975571d86444342fe032cc90b19f4a0532",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2019-01-17-w07-67w",
+      "kind": "street-panorama",
+      "capturedAt": "2019-01-17",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001061_pano_0001_002171/",
+      "image": "source-data://pand-reference-walls/0363100012236822/w07-67w.jpg",
+      "sha256": "e415345d99eda78edb48c4f3044675826c28240cf3664c08ecc7c2f9d800364b",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "walls": [
+    {
+      "system": "brick-bay-grid",
+      "storeys": 3,
+      "groundFactor": 0.75,
+      "ground": "system",
+      "windows": "plain",
+      "palette": {
+        "brick": "#3c2d28",
+        "glass": "#2e3033"
+      },
+      "windowShape": {
+        "w": 0.62,
+        "h": 0.48,
+        "sill": 0.25
+      },
+      "windowGroup": {
+        "count": 3,
+        "gap": 0.08,
+        "storeys": [
+          1,
+          2
+        ]
+      },
+      "cornice": true,
+      "wallSurfaces": [
+        38,
+        78
+      ],
+      "baysPerStorey": 3,
+      "entrance": true,
+      "hand": [
+        "storeys",
+        "groundFactor",
+        "baysPerStorey",
+        "windowShape",
+        "windowGroup",
+        "cornice",
+        "palette"
+      ]
+    },
+    {
+      "system": "brick-bay-grid",
+      "ground": "system",
+      "windows": "plain",
+      "palette": {
+        "brick": "#3c2d28",
+        "glass": "#2e3033"
+      },
+      "windowShape": {
+        "w": 0.62,
+        "h": 0.48,
+        "sill": 0.25
+      },
+      "windowGroup": {
+        "count": 3,
+        "gap": 0.08,
+        "storeys": [
+          1,
+          2
+        ]
+      },
+      "cornice": true,
+      "wallSurfaces": [
+        72
+      ],
+      "alignWith": 0,
+      "baysPerStorey": 2,
+      "hand": [
+        "baysPerStorey",
+        "windowShape",
+        "windowGroup",
+        "cornice",
+        "palette"
+      ]
+    },
+    {
+      "system": "brick-bay-grid",
+      "ground": "system",
+      "windows": "plain",
+      "palette": {
+        "brick": "#3c2d28",
+        "glass": "#2e3033"
+      },
+      "windowShape": {
+        "w": 0.62,
+        "h": 0.48,
+        "sill": 0.25
+      },
+      "windowGroup": {
+        "count": 2,
+        "gap": 0.1,
+        "storeys": [
+          1,
+          2
+        ]
+      },
+      "cornice": true,
+      "wallSurfaces": [
+        2,
+        96,
+        76,
+        81
+      ],
+      "alignWith": 0,
+      "baysPerStorey": 2,
+      "hand": [
+        "baysPerStorey",
+        "windowShape",
+        "windowGroup",
+        "cornice",
+        "palette"
+      ]
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "palette": {
+    "brick": "#3c2d28",
+    "frame": "#efece4",
+    "door": "#2a2a2a"
+  },
+  "notes": [
+    "Emmalaan 4A-6 / Koningslaan 35 (pand 0363100012236822, built 1912): a flat-roofed brick block of two tall storeys over a raised ground storey, with a set-back rooftop addition; under renovation in the 2025 panoramas.",
+    "walls[0] south-east front (panel 34, 10.2 m) and walls[1] south-west front (panel 62, 7.7 m): dark purple-brown brick, white-framed windows grouped in threes per bay on the two upper storeys, smaller windows in the raised ground storey, a white eaves overhang (cornice). walls[2] the north-east fronts (panels 1, 78, 65; crops w04-68w and w07-67w 2019-01-17, straight-on) show the same brick with windows in pairs. Those crops show the window groups and brick; the crops of these two fronts are 43-49 deg off square (w01-247L, w02-157L) or 40 % foliage (w03-247w), so the gate abstains on them.",
+    "INFERRED: the remaining walls and the rooftop addition (otherWalls brick grid; 3DBAG roof planes)."
+  ],
+  "measured": {
+    "date": "2026-10-25",
+    "groups": []
+  }
+}

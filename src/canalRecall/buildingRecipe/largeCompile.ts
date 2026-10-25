@@ -12,6 +12,7 @@ import type {MeshBuilder} from '../blockBuilding/mesh.ts';
 import {drawDressings} from '../blockBuilding/dressings.ts';
 import {drawArcadePiers} from '../blockBuilding/arcadePiers.ts';
 import {drawWindowBox} from '../blockBuilding/windowBox.ts';
+import {drawGallery} from '../blockBuilding/gallery.ts';
 import {applyCladdingSlots, drawCladdingLines} from '../blockBuilding/cladding.ts';
 import {fitsPanel, pointInRing, rectPoly, type Panel} from '../blockBuilding/panels.ts';
 import type {BuildingFacts} from './facts.ts';
@@ -19,7 +20,7 @@ import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 
-export interface LargeComponentCounts { claddingLines?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { claddingLines?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -88,7 +89,7 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   // Recessed arcade: rendered lintel band over the chamfered openings and pier facings below it (the door slot: dark brick).
   if (g.ground === 'arcade' && g.arcade?.facing && levels.length > 1) { const k = drawArcadeFacing(c, Math.max(0, p.vMin), Math.min(groundTop, underCornice), {band: s.stone, pier: s.door}); if (k) counts.arcades = (counts.arcades ?? 0) + 1; }
   // Stone dressings (bands, speklagen, heads, surrounds, quoins, oriels, banded arches, piers), round the openings, under the cornice.
-  if (g.dressings) counts.dressings = (counts.dressings ?? 0) + drawDressings(c, info, g.dressings, {stone: g.dressings.slot, wall: s.wall, frame: s.frame, glass: s.glass}, g.mainPanel === p.index, underCornice);
+  if (g.dressings) counts.dressings = (counts.dressings ?? 0) + drawDressings(c, info, g.dressings, {stone: g.dressings.slot, wall: s.wall, frame: s.frame, glass: s.glass, iron: s.door}, g.mainPanel === p.index, underCornice);
   // Cladding profile lines (ribs, boards, louvres, panel joints) on the sheet, round the openings, under the cornice.
   if (g.cladding) { const k = drawCladdingLines(c, {...g.cladding, toM: Math.min(g.cladding.toM, g.cornice ? underCornice : Infinity)}); if (k) counts.claddingLines = (counts.claddingLines ?? 0) + k; }
   if (g.pilasters && underCornice - Math.max(0, p.vMin) > 3) counts.pilasters = (counts.pilasters ?? 0) + drawPilasters(c, Math.max(0, p.vMin), underCornice, s.stone, g.pilasters);
@@ -123,6 +124,8 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   if (g.arcadePiers && g.mainPanel === p.index) { const k = drawArcadePiers(c, levels, g.arcadePiers, g.bays, underCornice); if (k) counts.arcadePiers = (counts.arcadePiers ?? 0) + k; }
   // Projecting glazed window box over its bay span, in front of the (blind) wall, under the cornice.
   if (g.windowBox && g.mainPanel === p.index && drawWindowBox(c, levels, g.windowBox, g.bays, underCornice)) counts.windowBoxes = (counts.windowBoxes ?? 0) + 1;
+  // Open galleries (verandas) in front of their bay span: decks, posts, arches and balustrades, under the cornice.
+  if (g.gallery && g.mainPanel === p.index) for (const gf of g.gallery) { const k = drawGallery(c, levels, gf, g.bays, underCornice); if (k) counts.galleries = (counts.galleries ?? 0) + k; }
   // Row split: each house's cornice at its own eaves and shop fascia at its own ground line, inside its span.
   const houses = g.houses?.panel === p.index ? g.houses.segs : null;
   if (houses) for (const h of houses) {

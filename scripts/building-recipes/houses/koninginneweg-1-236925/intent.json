@@ -1,0 +1,457 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "koninginneweg-1-236925",
+  "pandId": "0363100012236925",
+  "address": "Koninginneweg 1 / Van Eeghenstraat 222-230, Amsterdam-Zuid (1905 apartment villa block on the Vondelpark's south edge; BAG pand 0363100012236925)",
+  "sources": [
+    {
+      "id": "pano-2021-03-26-w01-341p",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-26",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002062_pano_0000_001279/",
+      "image": "source-data://pand-reference-walls/0363100012236925/w01-341p.jpg",
+      "sha256": "0ff47d2eebb1aa2d1beca3021be114132d757333e7146eb8bd26e53958a4f43d",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2022-03-22-w02-245w",
+      "kind": "street-panorama",
+      "capturedAt": "2022-03-22",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002463_pano_0003_000443/",
+      "image": "source-data://pand-reference-walls/0363100012236925/w02-245w.jpg",
+      "sha256": "c8c9ce3e6f42fa452d3a0a8045c722cd0d689524e6f5cb437f394846f9687838",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2019-01-17-w03-155w",
+      "kind": "street-panorama",
+      "capturedAt": "2019-01-17",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001061_pano_0001_001756/",
+      "image": "source-data://pand-reference-walls/0363100012236925/w03-155w.jpg",
+      "sha256": "aa25dda98f074eb1303a2020ca30efb4ab0c226a49232ce1d830e659b915fefc",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2023-01-10-w07-160",
+      "kind": "street-panorama",
+      "capturedAt": "2023-01-10",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002921_pano_0002_000302/",
+      "image": "source-data://pand-reference-walls/0363100012236925/w07-160.jpg",
+      "sha256": "dc72b4142cdf132c60d441ccab70e945aad3bd7ac893f9aad1ea6b4bd0cfcac9",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2022-03-22-w04-156w",
+      "kind": "street-panorama",
+      "capturedAt": "2022-03-22",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002463_pano_0003_000445/",
+      "image": "source-data://pand-reference-walls/0363100012236925/w04-156w.jpg",
+      "sha256": "eb96f6c6b68ac50245c6fc98a4466be4423c5fdd92452a083cd500c61209adfc",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2020-05-06-w01-341",
+      "kind": "street-panorama",
+      "capturedAt": "2020-05-06",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001687_pano_0000_001802/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2024-11-12-w02-245",
+      "kind": "street-panorama",
+      "capturedAt": "2024-11-12",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241112_0936_Track37_Sphere_00004/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2024-11-12-w03-155",
+      "kind": "street-panorama",
+      "capturedAt": "2024-11-12",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241112_0936_Track36_Sphere_00039/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2024-11-12-w04-156",
+      "kind": "street-panorama",
+      "capturedAt": "2024-11-12",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241112_0936_Track37_Sphere_00006/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2020-05-06-w05-246",
+      "kind": "street-panorama",
+      "capturedAt": "2020-05-06",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001687_pano_0000_000643/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2025-01-15-w05-246L",
+      "kind": "street-panorama",
+      "capturedAt": "2025-01-15",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250115_1006_Track01_Sphere_00512/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2020-05-06-w06-334",
+      "kind": "street-panorama",
+      "capturedAt": "2020-05-06",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001687_pano_0000_001808/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2023-01-10-w08-160",
+      "kind": "street-panorama",
+      "capturedAt": "2023-01-10",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002921_pano_0002_000305/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "walls": [
+    {
+      "wallSurfaces": [
+        167,
+        192,
+        196,
+        239,
+        342,
+        365,
+        123,
+        139,
+        184
+      ],
+      "system": "brick-bay-grid",
+      "storeys": 4,
+      "baysPerStorey": 10,
+      "ground": "system",
+      "windows": "plain",
+      "palette": {
+        "brick": "#81725b",
+        "glass": "#58564b"
+      },
+      "windowShape": {
+        "w": 0.42,
+        "h": 0.55,
+        "sill": 0.32
+      },
+      "storeyShapes": [
+        {
+          "storeys": [
+            3
+          ],
+          "w": 0.62,
+          "h": 0.38,
+          "sill": 0.25
+        }
+      ],
+      "dressings": {
+        "colour": "#e2d5b5",
+        "bands": {
+          "at": [
+            "sill",
+            "head"
+          ],
+          "storeys": [
+            1,
+            2
+          ]
+        }
+      },
+      "cornice": true,
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "windowShape",
+        "storeyShapes",
+        "dressings",
+        "cornice"
+      ]
+    },
+    {
+      "wallSurfaces": [
+        7,
+        114,
+        119,
+        133,
+        210,
+        317,
+        47,
+        97,
+        352,
+        138,
+        157,
+        160,
+        255,
+        349
+      ],
+      "system": "brick-bay-grid",
+      "storeys": 5,
+      "groundFactor": 0.7,
+      "baysPerStorey": 5,
+      "ground": "system",
+      "windows": "plain",
+      "blankStoreys": [
+        0
+      ],
+      "stoneStoreys": [
+        0
+      ],
+      "palette": {
+        "brick": "#746861",
+        "glass": "#4c4e4e",
+        "stone": "#7d7e79"
+      },
+      "windowShape": {
+        "w": 0.5,
+        "h": 0.62,
+        "sill": 0.18
+      },
+      "storeyShapes": [
+        {
+          "storeys": [
+            1
+          ],
+          "w": 0.5,
+          "h": 0.72,
+          "sill": 0.12
+        },
+        {
+          "storeys": [
+            4
+          ],
+          "w": 0.44,
+          "h": 0.4,
+          "sill": 0.42
+        }
+      ],
+      "arches": {
+        "windows": "segmental",
+        "band": "voussoir",
+        "storeys": [
+          1,
+          2,
+          3
+        ]
+      },
+      "dressings": {
+        "colour": "#e2d5b5",
+        "stripes": {
+          "storeys": [
+            1,
+            2,
+            3
+          ],
+          "count": 3,
+          "share": 0.3
+        }
+      },
+      "cornice": true,
+      "gallery": [
+        {
+          "storeys": [
+            1
+          ],
+          "bays": [
+            1,
+            3
+          ],
+          "arches": 2,
+          "stone": true,
+          "post": 0.2,
+          "arch": "round",
+          "rail": "balusters",
+          "roof": true
+        },
+        {
+          "storeys": [
+            2
+          ],
+          "bays": [
+            1,
+            3
+          ],
+          "arches": 2,
+          "arch": "round",
+          "post": 0.06,
+          "rail": "bars",
+          "roof": true,
+          "colour": "#ece6d6",
+          "railColour": "#2b2b2b"
+        }
+      ],
+      "hand": [
+        "storeys",
+        "groundFactor",
+        "baysPerStorey",
+        "windowShape",
+        "storeyShapes",
+        "arches",
+        "dressings",
+        "cornice",
+        "gallery",
+        "blankStoreys",
+        "stoneStoreys",
+        "palette.stone"
+      ]
+    },
+    {
+      "wallSurfaces": [
+        211,
+        212,
+        315,
+        101,
+        353
+      ],
+      "system": "brick-bay-grid",
+      "alignWith": 1,
+      "baysPerStorey": 3,
+      "ground": "system",
+      "windows": "plain",
+      "blankStoreys": [
+        0
+      ],
+      "stoneStoreys": [
+        0
+      ],
+      "palette": {
+        "brick": "#6b594d",
+        "stone": "#7d7e79"
+      },
+      "windowShape": {
+        "w": 0.42,
+        "h": 0.62,
+        "sill": 0.18
+      },
+      "storeyShapes": [
+        {
+          "storeys": [
+            1
+          ],
+          "w": 0.42,
+          "h": 0.72,
+          "sill": 0.12
+        },
+        {
+          "storeys": [
+            4
+          ],
+          "w": 0.3,
+          "h": 0.4,
+          "sill": 0.42
+        }
+      ],
+      "arches": {
+        "windows": "segmental",
+        "band": "voussoir",
+        "storeys": [
+          1,
+          2,
+          3
+        ]
+      },
+      "dressings": {
+        "colour": "#e2d5b5",
+        "stripes": {
+          "storeys": [
+            1,
+            2,
+            3
+          ],
+          "count": 3,
+          "share": 0.3
+        }
+      },
+      "cornice": true,
+      "hand": [
+        "baysPerStorey",
+        "windowShape",
+        "storeyShapes",
+        "arches",
+        "dressings",
+        "cornice",
+        "blankStoreys",
+        "stoneStoreys",
+        "palette.stone"
+      ]
+    },
+    {
+      "wallSurfaces": [
+        202,
+        203,
+        270,
+        16,
+        23,
+        77,
+        267,
+        347
+      ],
+      "system": "brick-bay-grid",
+      "storeys": 5,
+      "groundFactor": 0.7,
+      "baysPerStorey": 3,
+      "ground": "system",
+      "windows": "plain",
+      "palette": {
+        "brick": "#585042",
+        "glass": "#2d2923"
+      },
+      "windowShape": {
+        "w": 0.55,
+        "h": 0.66,
+        "sill": 0.12
+      },
+      "gallery": {
+        "storeys": [
+          1,
+          2,
+          3
+        ],
+        "arch": "round",
+        "post": 0.05,
+        "rail": "balusters",
+        "roof": true,
+        "deep": 0.5,
+        "colour": "#ece6d6"
+      },
+      "hand": [
+        "storeys",
+        "groundFactor",
+        "baysPerStorey",
+        "windowShape",
+        "gallery"
+      ]
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "closedBands": true,
+  "layeredKit": true,
+  "roof": {
+    "material": "slate"
+  },
+  "palette": {
+    "brick": "#746861",
+    "frame": "#efece4",
+    "door": "#2a2a2a",
+    "stone": "#e2d5b5"
+  },
+  "measured": {
+    "date": "2026-10-25",
+    "groups": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "notes": [
+    "Koninginneweg 1 / Van Eeghenstraat 222-230 (pand 0363100012236925, built 1905, 366 LoD2.2 wall surfaces from the PDOK 3D Basisvoorziening tile because the 3DBAG API timed out; roof max 26.2 m): a five-storey apartment villa block on the Vondelpark's south edge, pink-red brick with cream speklagen, a grey stone souterrain, segmental window heads in cream voussoirs with keystones, iron balconets, a slate mansard with pedimented dormers, and white timber verandas.",
+    "walls[0] park front (surfaces of panels 155, 289, 118; crop w01-341p 2021-03-26 from the park path, 47 m, winter): three storeys of tall white-framed windows in ten columns over a light raised ground storey, cream bands at sill and head lines, a cornice, an attic row of wide windows; foliage 22 % of the crop.",
+    "walls[1] Koninginneweg front (panels 6, 45, 131, 216; crop w02-245w 2022-03-22): grey stone souterrain, three window storeys with segmental heads, cream voussoirs and keystones, speklagen every half metre, iron balconets; in the middle a stone arcade of two round arches with a balustrade on the ground storey and a white timber loggia of two round arches on the first floor with an iron railing on its roof deck (new `gallery` component); mansard with three pedimented dormers.",
+    "walls[2] south fronts on the west block (panels 185, 98; crops w03-155w 2019-01-17, w04-156w 2022-03-22): the same brick and speklagen, three window columns with segmental heads.",
+    "walls[3] Van Eeghenstraat veranda fronts (panels 181, 15, 75; crops w07-160/w08-160 2023-01-10): three decks of white timber verandas, round arches on slender posts with turned balustrades, across the whole front (new `gallery` component).",
+    "INFERRED: the courtyard and party walls (otherWalls, brick grid at the civic pitch).",
+    "budgetTriangles 21000: a 71 m, five-storey block on three street fronts with two veranda stacks (galleries) and speklagen; the 12k default cannot hold its storey and bay count. HOLD: the PDOK LoD2.2 shell (3DBAG API timed out) leaves a 2.3 m wall (surface 152) standing ground-to-roof inside the Van Eeghenstraat wing with no side walls under the 20.4 m roof: 40.8 m of vertical open edge that shellRepair cannot close (its seam rule pairs edges <= 0.6 m apart). Install after a 3DBAG refetch or a repair rule for walls under a flat roof."
+  ],
+  "shellRepair": true,
+  "budgetTriangles": 21000
+}

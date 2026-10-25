@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "koninginneweg-34-150885",
+  "pandId": "0363100012150885",
+  "address": "Koninginneweg 34, Amsterdam-Zuid (Park Plaza hotel, 1983 brick block south of the Vondelpark; BAG pand 0363100012150885)",
+  "sources": [
+    {
+      "id": "pano-2024-11-12-w01-163",
+      "kind": "street-panorama",
+      "capturedAt": "2024-11-12",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241112_0936_Track21_Sphere_00006/",
+      "image": "source-data://pand-reference-walls/0363100012150885/w01-163.jpg",
+      "sha256": "06ff57dfe5bd19bc869004fd69b9bf9332966315dd3c3f7773ace14794943908",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2020-02-18-w02-15",
+      "kind": "street-panorama",
+      "capturedAt": "2020-02-18",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001653_pano_0000_000032/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "walls": [
+    {
+      "wallSurfaces": [
+        24
+      ],
+      "system": "brick-bay-grid",
+      "storeys": 5,
+      "groundFactor": 1.1,
+      "baysPerStorey": 2,
+      "ground": "system",
+      "windows": "plain",
+      "entrance": true,
+      "palette": {
+        "brick": "#8a5444",
+        "glass": "#4a5258"
+      },
+      "windowShape": {
+        "w": 0.62,
+        "h": 0.58,
+        "sill": 0.2
+      },
+      "storeyShapes": [
+        {
+          "storeys": [
+            4
+          ],
+          "w": 0.4,
+          "h": 0.5,
+          "sill": 0.25
+        }
+      ],
+      "dressings": {
+        "colour": "#e9e3d6",
+        "bands": {
+          "at": [
+            "sill"
+          ],
+          "storeys": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "oriels": {
+          "bays": [
+            0,
+            1
+          ],
+          "from": 1,
+          "to": 3,
+          "deep": 0.3,
+          "canted": true,
+          "brick": true
+        }
+      },
+      "cornice": true,
+      "hand": [
+        "storeys",
+        "groundFactor",
+        "baysPerStorey",
+        "windowShape",
+        "storeyShapes",
+        "dressings",
+        "cornice",
+        "palette"
+      ]
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "palette": {
+    "brick": "#8a5444",
+    "frame": "#efece4",
+    "door": "#2a2a2a"
+  },
+  "notes": [
+    "Koninginneweg 34 (pand 0363100012150885, built 1983): the Park Plaza hotel's brick block on the Koninginneweg, south of the Vondelpark.",
+    "walls[0] Koninginneweg front (panel 23, 11.4 m; crops w01-163 2024-11-12 and w01-163w 2022-03-21): red-brown brick over a glazed ground storey, two canted bay stacks through the first to third floors with white-framed windows, thin cream bands at the floor lines, an attic storey; rooftop plant and masts not drawn.",
+    "INFERRED: the side, rear and roof-storey walls (otherWalls brick grid)."
+  ],
+  "measured": {
+    "date": "2026-10-25",
+    "groups": []
+  }
+}

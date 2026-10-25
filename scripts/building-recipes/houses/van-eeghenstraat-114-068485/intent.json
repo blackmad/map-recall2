@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "van-eeghenstraat-114-068485",
+  "pandId": "0363100012068485",
+  "address": "Van Eeghenstraat 114-130, Amsterdam-Zuid (1909 Louis XV-revival villa between Van Eeghenstraat and the Vondelpark; BAG pand 0363100012068485)",
+  "sources": [
+    {
+      "id": "pano-2019-01-17-w02-155",
+      "kind": "street-panorama",
+      "capturedAt": "2019-01-17",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001061_pano_0001_002044/",
+      "image": "source-data://pand-reference-walls/0363100012068485/w02-155.jpg",
+      "sha256": "a4671081381b6ea70febb164d3f079347c554b0c74615f391468e34d145bf5d5",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2021-03-26-w01-335p",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-26",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002062_pano_0000_001269/",
+      "image": "source-data://pand-reference-walls/0363100012068485/w01-335p.jpg",
+      "sha256": "eea909f175bc80345af82913b2617e5ee37f90e45b9632002803f39e063b65bc",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2018-06-07-w03-245",
+      "kind": "street-panorama",
+      "capturedAt": "2018-06-07",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000781_pano_0000_004028/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2019-01-17-w03-245L",
+      "kind": "street-panorama",
+      "capturedAt": "2019-01-17",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001061_pano_0001_002050/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "walls": [
+    {
+      "wallSurfaces": [
+        42,
+        43,
+        95
+      ],
+      "system": "brick-bay-grid",
+      "storeys": 3,
+      "groundFactor": 1.1,
+      "baysPerStorey": 5,
+      "ground": "system",
+      "windows": "plain",
+      "entrance": true,
+      "palette": {
+        "brick": "#4e3b34",
+        "glass": "#2a2626",
+        "stone": "#3a3b3f"
+      },
+      "windowShape": {
+        "w": 0.36,
+        "h": 0.62,
+        "sill": 0.2
+      },
+      "storeyShapes": [
+        {
+          "storeys": [
+            2
+          ],
+          "w": 0.26,
+          "h": 0.42,
+          "sill": 0.35
+        }
+      ],
+      "stoneStoreys": [
+        2
+      ],
+      "dressings": {
+        "colour": "#d9d2bf",
+        "oriels": {
+          "bays": [
+            2
+          ],
+          "from": 1,
+          "to": 1,
+          "deep": 0.3,
+          "canted": true
+        },
+        "quoins": {
+          "ends": true
+        }
+      },
+      "cornice": true,
+      "hand": [
+        "storeys",
+        "groundFactor",
+        "baysPerStorey",
+        "windowShape",
+        "storeyShapes",
+        "stoneStoreys",
+        "dressings",
+        "cornice",
+        "palette"
+      ]
+    },
+    {
+      "wallSurfaces": [
+        2,
+        56,
+        133,
+        165
+      ],
+      "system": "brick-bay-grid",
+      "storeys": 2,
+      "baysPerStorey": 3,
+      "ground": "system",
+      "windows": "plain",
+      "palette": {
+        "brick": "#4e3b34"
+      },
+      "windowShape": {
+        "w": 0.42,
+        "h": 0.7,
+        "sill": 0.1
+      },
+      "balconies": {
+        "storeys": [
+          1
+        ],
+        "rail": "solid",
+        "colour": "#e3dccb",
+        "deep": 0.3
+      },
+      "cornice": true,
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "windowShape",
+        "balconies",
+        "cornice",
+        "palette"
+      ]
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "palette": {
+    "brick": "#4e3b34",
+    "frame": "#efece4",
+    "door": "#2a2a2a"
+  },
+  "notes": [
+    "Van Eeghenstraat 114-130 (pand 0363100012068485, built 1909): a villa in Louis XV revival between Van Eeghenstraat and the Vondelpark; its rear garden front faces the park.",
+    "walls[0] street front (panel 41, 15.1 m; crop w02-155 2019-01-17, overcast): purple-brown brick, cream stone quoins, a canted stone oriel on the first floor over the door axis, shuttered ground-floor windows, a cornice and a slate mansard with dormers and a curved central gable with an oval window (the mansard band drawn as a slate-coloured stone storey).",
+    "walls[1] park-side rear (panel 1, 8.8 m, standing on a 4 m garden-room block; crop w01-335p 2021-03-26 through trees from the park): white balustrade balconies on two levels in front of tall windows.",
+    "INFERRED: the side, party and remaining rear walls (otherWalls brick grid). Not expressed: the window shutters, the curved Louis XV gable (3DBAG roof planes stand for it), the copper oriel roof."
+  ],
+  "measured": {
+    "date": "2026-10-25",
+    "groups": []
+  },
+  "roof": {
+    "material": "slate"
+  },
+  "shellRepair": true
+}
