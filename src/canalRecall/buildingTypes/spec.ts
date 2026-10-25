@@ -43,6 +43,12 @@ export interface Element {
   inset?: number;
   /** Repeat the element this many times, one copy centred in each equal slot of the bay (`u` offsets each copy). */
   repeat?: number;
+  /**
+   * Window only (plate frame): chunky joinery (#75). `frameM` is the frame border drawn INSIDE the measured opening (default: the
+   * 6 cm border outside it); `transomM` puts a horizontal bar that far below the head (top lights over casements). Absent: unchanged.
+   */
+  frameM?: number;
+  transomM?: number;
   /** Window/ribbon/door: `strips` draws the frame (door: surround) as border strips 4.5 cm in front instead of a plate stacked 5 mm under the glass/leaf (big glazing, many openings: no z-fight). */
   frameStyle?: 'plate' | 'strips';
   /** Gallery only: vertical cross walls (fins) evenly from end to end of the gallery, ends included. */
@@ -369,6 +375,12 @@ export function validateSpec(spec: TypeSpec): string[] {
     if (!f.evidence.length) errors.push(`${id}: no evidence`);
     if (new Set(f.bays.map(b => b.id)).size !== f.bays.length) errors.push(`${id}: duplicate bay ids`);
     for (const b of f.bays) for (const e of b.elements) for (const v of [...(e.variants ?? []), ...(e.exceptVariants ?? [])]) if (!spec.variants[v]) errors.push(`${id}/${b.id}: unknown variant ${v}`);
+    for (const b of f.bays) for (const e of b.elements) {
+      if (e.frameM === undefined && e.transomM === undefined) continue;
+      if (e.kind !== 'window' || e.frameStyle === 'strips') errors.push(`${id}/${b.id}: frameM/transomM are for plate-frame windows`);
+      if (e.frameM !== undefined && !(e.frameM > 0 && e.frameM < Math.min(e.w ?? Infinity, e.h ?? Infinity) / 3)) errors.push(`${id}/${b.id}: frameM ${e.frameM} out of range`);
+      if (e.transomM !== undefined && !(e.transomM > (e.frameM ?? 0.06) && e.transomM < (e.h ?? Infinity) - (e.frameM ?? 0.06))) errors.push(`${id}/${b.id}: transomM ${e.transomM} outside the window`);
+    }
   }
   if (spec.storeys < 2) errors.push('storeys < 2');
   for (const a of spec.annexes ?? []) {

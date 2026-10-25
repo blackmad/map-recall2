@@ -38,11 +38,11 @@ const groups = new Map<string, typeof rows>();
 for (const r of rows) if (!want.length || want.some(w => r.type.startsWith(w))) (groups.get(r.type) ?? groups.set(r.type, []).get(r.type)!).push(r);
 const hsl = (hex: string) => rgbToHsl(hexToRgb(hex)).map((v, i) => i ? v.toFixed(2) : Math.round(v)).join('/');
 for (const [type, list] of [...groups].sort()) {
-  const spec = JSON.parse(fs.readFileSync(`src/canalRecall/buildingTypes/types/${type}.json`, 'utf8')) as TypeSpec;
+  const specFile = `src/canalRecall/buildingTypes/types/${type}.json`, spec = fs.existsSync(specFile) ? JSON.parse(fs.readFileSync(specFile, 'utf8')) as TypeSpec : null;
   const s = orthoRoofSummary(list.map(r => fact(r.pand, r.lngLat)));
-  const roofs = [...new Set(Object.values(spec.variants).map(v => JSON.stringify(v.palette.roof)))].map(j => JSON.parse(j));
+  const roofs = spec ? [...new Set(Object.values(spec.variants).map(v => JSON.stringify(v.palette.roof)))].map(j => JSON.parse(j)) : [];
   const drawn = roofs.map(r => `${r.slot} ${r.tint}${r.measured ? ' (measured)' : ''} -> ${cityTint(r.slot as MaterialSlot, r.tint, r.measured ? 'measured' : undefined)} [hsl ${hsl(cityTint(r.slot as MaterialSlot, r.tint, r.measured ? 'measured' : undefined))}]`).join('; ');
-  console.log(`${type} (${spec.roof.form}) n=${list.length} facts=${s.read} pitched=${s.used} ${JSON.stringify(s.slots)} ortho ${s.hex ?? '-'}${s.hex ? ` [hsl ${hsl(s.hex)}]` : ''}\n   drawn: ${drawn}`);
+  console.log(`${type} (${spec?.roof.form ?? 'no spec yet'}) n=${list.length} facts=${s.read} pitched=${s.used} ${JSON.stringify(s.slots)} ortho ${s.hex ?? '-'}${s.hex ? ` [hsl ${hsl(s.hex)}]` : ''}\n   drawn: ${drawn}`);
   const p = photo.get(type);
   if (p && s.hex) { const c = checkRoofColour(p, s.hex); console.log(`   photo ${p} [hsl ${hsl(p)}] vs ortho: ${c.reason} (hue ${c.hueDiffDeg ?? 'n/a'}, dL ${c.lightnessDiff}, dS ${c.saturationDiff})`); }
 }

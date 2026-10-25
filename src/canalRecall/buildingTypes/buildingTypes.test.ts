@@ -827,3 +827,56 @@ test('lit tile body (#75): course shadows and lichen below the median saturation
   assert.equal(litTileMedian([tile, tile, tile, shadow, lichen, tile, shadow, lichen]), '#cc8d74');
   assert.equal(litTileMedian([]), null);
 });
+
+test('white-referenced exposure (#75): a shaded wall divided by its own white frames lands on the sunlit colour; sunlit white stays put', async () => {
+  const {whiteReferenced, SUNLIT_FRAME_WHITE} = await import('./exposure.ts');
+  assert.equal(whiteReferenced('#423a35', '#6e7779'), '#907465');
+  assert.equal(whiteReferenced(SUNLIT_FRAME_WHITE, SUNLIT_FRAME_WHITE), SUNLIT_FRAME_WHITE);
+  assert.equal(whiteReferenced('#ffffff', '#101010'), '#ffffff', 'clamped');
+});
+
+const R4_TYPES = ['fe-db-row'].map(id => load(`${id}.json`));
+
+test('round-4 designs (#75): validate, >= 4 distinct photo pands on the front, counted openings match for every variant and handedness, <= 600 triangles, party walls blank, chimney cap or ridge reached, within the frontage', () => {
+  for (const spec of R4_TYPES) {
+    assert.deepEqual(validateSpec(spec), [], spec.id);
+    assert.ok(new Set(spec.facades.front.evidence.map(e => e.pand)).size >= 4, `${spec.id}: evidence`);
+    const p = r3Params(spec), chim = Math.max(0, ...(spec.roof.chimneys ?? []).map(c => c.h + (c.capM ?? 0)));
+    for (const variant of Object.keys(spec.variants)) for (const mirror of [false, true]) {
+      const {report, mesh} = generate(spec, {...p, variant, mirror});
+      assert.deepEqual(report.facades.front, spec.facades.front.counted, `${spec.id}/${variant}/front`);
+      assert.ok(mesh.triangles <= 600, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
+      const mid = generate(spec, {...p, variant, mirror, freeSides: {left: false, right: false}});
+      assert.equal(mid.report.facades.left.bays + mid.report.facades.right.bays, 0, 'party walls have no bays');
+      const b = mesh.bounds(), top = p.ridgeM ?? p.eavesM;
+      assert.ok(b.min[1] >= -1e-9, `${spec.id}: nothing below ground`);
+      if (chim) assert.ok(b.max[1] > top + 0.3 && b.max[1] <= top + chim + 1e-6, `${spec.id}: chimney cap above the ridge (${b.max[1]} vs ${top})`);
+      else if (p.ridgeM) assert.ok(Math.abs(b.max[1] - top) < 1e-6, `${spec.id}: ridge reached (${b.max[1]} vs ${top})`);
+      else assert.ok(b.max[1] >= top - 1e-6, `${spec.id}: roof reached`);
+      const ov = spec.roof.vergeOverhangM + 0.06;
+      assert.ok(b.max[0] <= p.lengthM / 2 + ov && b.min[0] >= -p.lengthM / 2 - ov, `${spec.id}/${variant}/${mirror}: within its frontage`);
+    }
+  }
+});
+
+test('window joinery (#75): absent -> byte-identical; frameM draws the border inside the opening and transomM a bar below the head; validateSpec rejects joinery off a window or outside it', () => {
+  const S = load('fe-db-row.json'), p = {...r3Params(S), variant: 'black-door'};
+  const strip = (s: TypeSpec): TypeSpec => ({...s, facades: {...s.facades, front: {...s.facades.front, bays: s.facades.front.bays.map(b => ({...b, elements: b.elements.map(({frameM: _f, transomM: _t, ...e}) => e)}))}}});
+  const plain = strip(S);
+  const explicit: TypeSpec = {...plain, facades: {...plain.facades, front: {...plain.facades.front, bays: plain.facades.front.bays.map(bay => ({...bay, elements: bay.elements.map(e => ({...e, frameM: undefined, transomM: undefined}))}))}}};
+  const a = generate(plain, p).mesh, b = generate(explicit, p).mesh;
+  assert.equal(a.buckets.size, b.buckets.size);
+  for (const [key, bucket] of a.buckets) assert.deepEqual(b.buckets.get(key)!.positions, bucket.positions, key);
+  // the default window: the frame plate stands 6 cm outside the opening; with frameM it stays inside, and a transom adds one plate
+  const one = (frameM?: number, transomM?: number): TypeSpec => ({...plain, facades: {...plain.facades, front: {...plain.facades.front, bays: plain.facades.front.bays.map(bay => ({...bay, elements: bay.elements.filter(e => e.kind === 'window' && e.levels === 'upper').slice(0, 1).map(e => ({...e, frameM, transomM}))}))}}});
+  const frameXs = (s: TypeSpec) => { const m = generate(s, p).mesh; const pos = [...m.buckets].filter(([k]) => k.startsWith('frame|') || k.includes('|#f0eee6')).flatMap(([, bk]) => Array.from(bk.positions)); return pos; };
+  const base = frameXs(one()), chunky = frameXs(one(0.1)), transom = frameXs(one(0.1, 0.38));
+  assert.ok(base.length > 0 && chunky.length === base.length, 'same plates, new size');
+  assert.ok(transom.length > chunky.length, 'transom bar drawn');
+  const w = plain.facades.front.bays.flatMap(bay => bay.elements).find(e => e.kind === 'window' && e.levels === 'upper')!.w!;
+  const span = (xs: number[]) => { const x: number[] = []; for (let i = 0; i < xs.length; i += 3) if (xs[i + 1] > 3 && xs[i + 1] < p.eavesM && xs[i + 2] > p.widthM / 2 - 0.5) x.push(xs[i]); return Math.max(...x) - Math.min(...x); }; // the front upper window only
+  assert.ok(span(chunky) < span(base) - 0.1 && span(chunky) <= w + 1e-6, `frame inside the opening (${span(chunky)} vs ${span(base)}, w ${w})`);
+  const bad = (e: Partial<TypeSpec['facades']['front']['bays'][0]['elements'][0]>): TypeSpec => ({...S, facades: {...S.facades, front: {...S.facades.front, bays: S.facades.front.bays.map((bay, i) => (i ? bay : {...bay, elements: [...bay.elements, {kind: 'door', levels: 'ground', w: 0.9, h: 2.1, ...e} as never]}))}}});
+  assert.ok(validateSpec(bad({frameM: 0.1})).length > 0, 'joinery on a door');
+  assert.ok(validateSpec(bad({kind: 'window', transomM: 3})).length > 0, 'transom outside the window');
+});

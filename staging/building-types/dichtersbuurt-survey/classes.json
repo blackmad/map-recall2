@@ -1,0 +1,116 @@
+{
+ "terraces": {
+  "1": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "3": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "4": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "5": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "6": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "7": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "8": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "9": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "10": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "11": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "12": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "13": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "14": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "15": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "16": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "17": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "18": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  },
+  "19": {
+   "type": "fe-db-row",
+   "variant": "black-door",
+   "via": "photo"
+  }
+ },
+ "pands": {
+  "0363100012099274": {
+   "hold": "low house: 3DBAG eaves 3.2-3.4 m and ridge 5.4 m (one storey under the roof), not the two-storey row design",
+   "note": "#75 3DBAG check"
+  },
+  "0363100012103560": {
+   "hold": "low house: 3DBAG eaves 3.2-3.4 m and ridge 5.4 m (one storey under the roof), not the two-storey row design",
+   "note": "#75 3DBAG check"
+  },
+  "0363100012101544": {
+   "hold": "low house: 3DBAG eaves 3.2-3.4 m and ridge 5.4 m (one storey under the roof), not the two-storey row design",
+   "note": "#75 3DBAG check"
+  },
+  "0363100012135385": {
+   "hold": "low house: 3DBAG eaves 3.2-3.4 m and ridge 5.4 m (one storey under the roof), not the two-storey row design",
+   "note": "#75 3DBAG check"
+  },
+  "0363100012144261": {
+   "hold": "low hipped building: 3DBAG eaves 2.45 m",
+   "note": "#75 3DBAG check"
+  }
+ }
+}

@@ -122,7 +122,10 @@ type Keys = ReturnType<typeof keys>;
 
 interface Ctx { mb: MeshBuilder; k: Keys; storeys: number; sh: number; variant: string; groundMode: 'solid' | 'pilotis'; recess: number; inset: {front: number; back: number}; key: (name: string) => MaterialKey }
 
-function windowUnit(c: Ctx, f: Frame, u: number, v0: number, w: number, h: number, lights: number, d0 = 0, frameKey?: MaterialKey, strips = false, withSill = true): void {
+/** Window joinery beyond the default 6 cm border (Element `frameM`, `transomM`): absent, the window is drawn exactly as before. */
+interface Joinery { frameM?: number; transomM?: number }
+
+function windowUnit(c: Ctx, f: Frame, u: number, v0: number, w: number, h: number, lights: number, d0 = 0, frameKey?: MaterialKey, strips = false, withSill = true, joinery?: Joinery): void {
   const {mb} = c, k = frameKey ? {...c.k, frame: frameKey} : c.k;
   if (strips) {
     // Curtain walls and big glazing: the glass 4 cm proud of the wall, the frame as four border strips and the mullions 4.5 cm in
@@ -138,6 +141,17 @@ function windowUnit(c: Ctx, f: Frame, u: number, v0: number, w: number, h: numbe
     return;
   }
   // Low-poly window: frame and glass are two stacked plates (the frame shows as the 6 cm border), no side faces.
+  if (joinery && (joinery.frameM !== undefined || joinery.transomM !== undefined)) {
+    // Chunky joinery (#75, 1950s timber windows): the frame border is `frameM` wide inside the opening (the opening keeps its measured
+    // size), the mullions are as wide as half the border, and a transom bar `transomM` below the head splits off the top lights.
+    const fm = joinery.frameM ?? 0.06, bar = Math.max(0.05, fm * 0.6);
+    plate(mb, k.frame, f, u - w / 2, u + w / 2, v0, v0 + h, d0 + 0.04);
+    plate(mb, k.glass, f, u - w / 2 + fm, u + w / 2 - fm, v0 + fm, v0 + h - fm, d0 + 0.05);
+    for (let i = 1; i < lights; i++) plate(mb, k.frame, f, u - w / 2 + w * i / lights - bar / 2, u - w / 2 + w * i / lights + bar / 2, v0 + fm, v0 + h - fm, d0 + 0.055);
+    if (joinery.transomM !== undefined && joinery.transomM > fm && joinery.transomM < h - fm) plate(mb, k.frame, f, u - w / 2 + fm, u + w / 2 - fm, v0 + h - joinery.transomM - bar / 2, v0 + h - joinery.transomM + bar / 2, d0 + 0.055);
+    if (v0 > 0.4) box(mb, k.accent, f, u - w / 2 - 0.15, u + w / 2 + 0.15, v0 - 0.11, v0 - 0.05, d0, d0 + 0.12, {back: true, bottom: true});
+    return;
+  }
   plate(mb, k.frame, f, u - w / 2 - 0.06, u + w / 2 + 0.06, v0 - 0.06, v0 + h + 0.06, d0 + 0.04);
   plate(mb, k.glass, f, u - w / 2, u + w / 2, v0, v0 + h, d0 + 0.05);
   for (let i = 1; i < lights; i++) plate(mb, k.frame, f, u - w / 2 + w * i / lights - 0.025, u - w / 2 + w * i / lights + 0.025, v0, v0 + h, d0 + 0.055);
@@ -296,7 +310,7 @@ function placeFacade(c: Ctx, f: Frame, length: number, id: FacadeId, bays: Bay[]
         const w = e.span || e.kind === 'gallery' ? slotW - 2 * (e.inset ?? 0) : e.w ?? 1, h = e.h ?? 1;
         switch (e.kind) {
           case 'window': case 'ribbon':
-            windowUnit(c, f, u, floor + (e.sill ?? 0.9), w, h, e.lights ?? 1, d0, e.colour ? c.key(e.colour) : undefined, e.frameStyle === 'strips');
+            windowUnit(c, f, u, floor + (e.sill ?? 0.9), w, h, e.lights ?? 1, d0, e.colour ? c.key(e.colour) : undefined, e.frameStyle === 'strips', true, e.frameM !== undefined || e.transomM !== undefined ? {frameM: e.frameM, transomM: e.transomM} : undefined);
             openings.push([u - w / 2 - 0.06, u + w / 2 + 0.06, floor + (e.sill ?? 0.9) - 0.11, floor + (e.sill ?? 0.9) + h + 0.06]);
             if (kLevel === 1) count.openingsPerUpperStorey++;
             break;
