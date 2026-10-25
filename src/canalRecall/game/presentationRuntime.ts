@@ -46,6 +46,7 @@ import { bridgeDisplayNamesOf, displayBridgeName } from '../bridgeDisplayNames';
 import { finishBlurb } from './finishBlurb';
 import { commitShownFact } from '../facts/factStore';
 import { StreetLabelCandidates } from './streetLabelCandidates';
+import { StreetLabelOcclusion } from '../labels/streetLabelOcclusion';
 import type { PresentationHost, Vehicle } from './host';
 import type { Landmark } from './worldTypes';
 import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teachingSurface';
@@ -762,14 +763,17 @@ export class GamePresentationRuntime {
       if (hit === undefined) { hit = mapLabelSpoils(text, shownText(text), asked); spoilCache.set(text, hit); }
       return hit;
     };
+    // A name whose street a building hides is not drawn: the canvas paints
+    // over every map layer (user 2026-10-25, Oude Doelenstraat). Pitched views only.
+    const hiddenBy = (this._streetLabelOcclusion ||= new StreetLabelOcclusion()).frame(this.vectorMap, this.osmLoader, pitched);
     // Free Ride asks nothing, so every street and canal is named.
-    if (free) this.track.drawLabels(ctx, this.camera, () => true, '', player, this._freeRideLabelCandidates(), shownText);
+    if (free) this.track.drawLabels(ctx, this.camera, () => true, '', player, this._freeRideLabelCandidates(), shownText, hiddenBy);
     else this.track.drawLabels(ctx, this.camera,
       (text, x, y) => (this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y)) && !(asked && spoils(text)),
       asked, player,
       (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates())
         .candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach),
-      shownText);
+      shownText, hiddenBy);
 
     // Results replace the live HUD rather than competing with it.
     if (this.state === GameState.FINISHED) { this._renderFinish(); return; }

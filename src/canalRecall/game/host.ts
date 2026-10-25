@@ -27,6 +27,7 @@ import type { RotationState } from '../facts/factRotation';
 import type { TourArrival } from './tourRoute';
 import type { LatLon } from './recallRules';
 import type { StreetLabelAnchor, StreetLabelCandidates } from './streetLabelCandidates';
+import type { StreetLabelOcclusion } from '../labels/streetLabelOcclusion';
 
 export type { RecallFeature };
 import type { Bridge, BridgeCrossing, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
@@ -460,6 +461,8 @@ export interface PresentationHost extends GameCoreHost {
   _knownPlaces: Map<string, WorldPoint[]>;
   /** Per-cell street-name candidates for `drawLabels`, made on first use. */
   _streetLabelCandidates?: StreetLabelCandidates<StreetLabelAnchor>;
+  /** Street names a building hides are not drawn (pitched views), made on first use. */
+  _streetLabelOcclusion?: StreetLabelOcclusion;
   _visitedNeighborhoods: Set<string>;
   _seenLandmarkNames: Set<string>;
 

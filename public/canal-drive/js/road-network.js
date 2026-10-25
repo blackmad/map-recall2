@@ -621,7 +621,11 @@ class RoadNetwork {
   // below still applies every test, so the result is unchanged.
   // `shownText(name)`, when given, is what is printed for a raw way name (a
   // bridge's official spelling); every test still runs on the raw name.
-  drawLabels(ctx, camera, isLabelled, hiddenName = '', player = null, candidatesFor = null, shownText = null) {
+  // `hiddenBy(label)`, when given, is true when a building stands between the
+  // camera and the label's anchor (src/canalRecall/labels/streetLabelOcclusion.ts):
+  // the HUD canvas paints over every map layer, so without it the alleys behind
+  // a canal row were named across its roofs (user 2026-10-25).
+  drawLabels(ctx, camera, isLabelled, hiddenName = '', player = null, candidatesFor = null, shownText = null, hiddenBy = null) {
     const z = camera.zoom || 1;
     const fontSize = Math.max(8, Math.round(9 * z));
     ctx.font = `bold ${fontSize}px Arial, sans-serif`;
@@ -634,6 +638,7 @@ class RoadNetwork {
 
     // Road name labels — with screen-space overlap + same-name proximity rejection
     const drawnRects = []; // [{x, y, w, h, text}] in screen space
+    this.lastDrawnLabels = drawnRects;
 
     // Cheap world-space cull before the knowledge test: the test ran for every
     // label in the city each frame (~15% of a throttled phone frame). A
@@ -677,8 +682,10 @@ class RoadNetwork {
           }
         }
         if (skip) continue;
+        // After the cheap screen tests: only a label that would otherwise draw pays for a sightline.
+        if (hiddenBy && hiddenBy(lbl)) continue;
 
-        drawnRects.push({ x: screenX, y: screenY, w: rectW, h: rectH, text: lbl.text });
+        drawnRects.push({ x: screenX, y: screenY, w: rectW, h: rectH, text: lbl.text, wx: lbl.x, wy: lbl.y });
 
         ctx.save();
         ctx.translate(screenX, screenY);

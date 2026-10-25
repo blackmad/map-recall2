@@ -19,6 +19,7 @@ import {
   type LabelCandidate, type LabelRules, type Rect, type ScreenCandidate,
 } from './labelPlan';
 import { labelCss, labelFont, LABEL_ROOT_CLASS } from './labelStyle';
+import { dedupeLabelCandidates } from './labelDedupe';
 
 /** The MapLibre layers this overlay replaces. */
 export const REPLACED_LAYER_IDS = [
@@ -142,6 +143,8 @@ export class LabelOverlay {
   private placeWarned = false;
   private hiddenName = '';
   private hiddenIndex: SpoilerIndex | null = null;
+  /** Candidates dropped as a second label of a place, for the e2e. */
+  duplicates: Array<{ name: string; keptId: string; reason: string }> = [];
   /** Last plan's counts, for the e2e and the debug overlay. */
   stats = { candidates: 0, inView: 0, occluded: 0, drawn: 0, budget: 0 };
 
@@ -264,8 +267,12 @@ export class LabelOverlay {
       const [lng, lat] = Array.isArray(ll) ? ll : [ll.lng, ll.lat];
       if (Number.isFinite(lng) && Number.isFinite(lat)) out.push({ id: 'destination', name: destinationName, lng, lat, heightM: 0, cls: 'destination', rank: 999 });
     }
-    this.candidates = out;
-    this.byId = new Map(out.map(c => [c.id, c]));
+    // One label per place: the landmark list, the OSM POIs and the shops name some places twice
+    // ("Berlage's Stock Market" / "Beurs van Berlage", feedback 2026-10-25).
+    const { kept, dropped } = dedupeLabelCandidates(out, this.footprints);
+    this.duplicates = dropped.map(d => ({ name: d.dropped.name, keptId: d.keptId, reason: d.reason }));
+    this.candidates = kept;
+    this.byId = new Map(kept.map(c => [c.id, c]));
   }
 
   private rules(game: GameLike): LabelRules {
