@@ -1,0 +1,66 @@
+[
+ {
+  "area": "nw-aw-01",
+  "anchor": {
+   "lng": 4.78053,
+   "lat": 52.34743
+  },
+  "pands": 28,
+  "missing": 0,
+  "per": {
+   "nw-aw-pracana/red/photo": 28
+  }
+ },
+ {
+  "area": "nw-aw-02",
+  "anchor": {
+   "lng": 4.77161,
+   "lat": 52.35182
+  },
+  "pands": 16,
+  "missing": 0,
+  "per": {
+   "nw-aw-lameye/orange/photo": 16
+  }
+ },
+ {
+  "area": "nw-aw-03",
+  "anchor": {
+   "lng": 4.77575,
+   "lat": 52.34999
+  },
+  "pands": 102,
+  "missing": 0,
+  "per": {
+   "nw-aw-pracana/red/photo": 29,
+   "nw-aw-lameye/orange/signature": 15,
+   "nw-aw-lameye/orange/photo": 58
+  }
+ },
+ {
+  "area": "nw-aw-04",
+  "anchor": {
+   "lng": 4.78075,
+   "lat": 52.34936
+  },
+  "pands": 158,
+  "missing": 0,
+  "per": {
+   "nw-aw-lomond/red/photo": 116,
+   "nw-aw-vattern/grey/photo": 40,
+   "nw-aw-lomond/red/signature": 2
+  }
+ },
+ {
+  "area": "nw-aw-05",
+  "anchor": {
+   "lng": 4.77295,
+   "lat": 52.3524
+  },
+  "pands": 28,
+  "missing": 0,
+  "per": {
+   "nw-aw-lameye/orange/photo": 28
+  }
+ }
+]

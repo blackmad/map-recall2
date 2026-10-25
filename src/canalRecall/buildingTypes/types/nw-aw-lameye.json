@@ -1,0 +1,363 @@
+{
+ "id": "nw-aw-lameye",
+ "label": "De Aker-West (1997, La Meye / Brenner / Le Tourmalet) two-storey terraced house in orange-red brick: door with side light under a green flat canopy at the pair line, wide ground window, small horizontal window over the door and a two-light window upstairs, a white glazed top storey set back behind a white glass railing; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 118,
+  "bouwjaar": [
+   1997,
+   1997
+  ],
+  "lengthM": 5.46,
+  "widthM": 9.0,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  4.5,
+  9.0
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.2,
+   5.9
+  ],
+  "depth": [
+   8.8,
+   9.4
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.05,
+  "vergeOverhangM": 0.03,
+  "thicknessM": 0.2,
+  "pitchDeg": 0,
+  "flatVerge": true,
+  "eavesPinM": 5.65
+ },
+ "annexes": [
+  {
+   "id": "glazed-top",
+   "facade": "front",
+   "u": [
+    0,
+    0
+   ],
+   "uFromEnd": true,
+   "d": [
+    -8.8,
+    -1.5
+   ],
+   "from": {
+    "eaves": 0
+   },
+   "to": {
+    "eaves": 2.7
+   },
+   "material": "column",
+   "glaze": {
+    "faces": [
+     "out"
+    ],
+    "sill": 0.4,
+    "h": 1.5,
+    "lightM": 1.2,
+    "frame": "frame",
+    "marginM": 0.3
+   },
+   "evidence": "sunlit crops 0363100012103253 / 0363100012069746: a white top storey with a band of windows set back behind the roof-terrace railing; 3DBAG 8.3-8.4 m over 5.6-5.7 m"
+  },
+  {
+   "id": "railing",
+   "facade": "front",
+   "u": [
+    0,
+    0
+   ],
+   "uFromEnd": true,
+   "d": [
+    -0.08,
+    -0.02
+   ],
+   "from": {
+    "eaves": 0
+   },
+   "to": {
+    "eaves": 1.0
+   },
+   "material": "accent",
+   "evidence": "white glass railing of the roof terrace on the front parapet, every house"
+  }
+ ],
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "orange",
+ "variants": {
+  "orange": {
+   "label": "orange-red brick, green canopies and doors, white frames, white top storey and railing",
+   "evidence": "terraces #64 #79 #111 #113 #131 #137 #140 #147",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#d58f6c",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3a4148",
+    "door": "#3f6b4e",
+    "accent": "#eef0ea",
+    "rail": "#3f5f4b",
+    "dark": "#3f5f4b",
+    "column": "#eeeee9",
+    "joint": "#8f8574",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#5f5d5a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012103253-2021041908.jpg",
+     "pand": "0363100012103253",
+     "address": "La Meye",
+     "note": "2021-04 morning sun: orange-red brick two storeys, green doors with side lights under green flat canopies, doors of a pair together, a wide ground window, a small horizontal window over the door and a two-light window upstairs, a white glazed top storey set back behind a white glass railing; mirrored pairs"
+    },
+    {
+     "photo": "sunlit crop 0363100012069746-2020082108.jpg",
+     "pand": "0363100012069746",
+     "address": "La Meye",
+     "note": "2020-08 morning sun: same"
+    },
+    {
+     "photo": "sunlit crop 0363100012122935-2018062710.jpg",
+     "pand": "0363100012122935",
+     "address": "Brenner",
+     "note": "2018-06 sunlit: same, white and blue doors"
+    },
+    {
+     "photo": "survey crop 0363100012134604.jpg",
+     "pand": "0363100012134604",
+     "address": "Brenner",
+     "note": "2021: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.95,
+       "w": 0.9,
+       "h": 2.5
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.65,
+       "w": 0.4,
+       "h": 2.5,
+       "sill": 0.06,
+       "lights": 1,
+       "note": "side light"
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.08,
+       "w": 2.15,
+       "h": 0.12,
+       "sill": 2.62,
+       "canopy": "flat",
+       "depth": 0.55,
+       "colour": "rail",
+       "note": "green flat canopy"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.95,
+       "h": 1.4,
+       "sill": 1.15,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.15,
+       "w": 0.9,
+       "h": 0.38,
+       "sill": 1.6,
+       "lights": 1,
+       "note": "small horizontal window over the door"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 4.05,
+       "w": 1.6,
+       "h": 0.95,
+       "sill": 1.15,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012134604.jpg",
+     "pand": "0363100012134604",
+     "address": "Brenner",
+     "note": "garden side not photographed: garden door and windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012134604.jpg",
+     "pand": "0363100012134604",
+     "address": "Brenner",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012134604.jpg",
+     "pand": "0363100012134604",
+     "address": "Brenner",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick: brick-mottle.ts over the wall of the 2021-04 crop 0363100012103253 reads #e9a27b in low morning sun with no unclipped white to reference (the railing reads #f4f6ef); the overcast survey crops read a deeper red, drawn #d58f6c between them.",
+  "Layout from the same crop (53 px/m between pair lines 5.46 m apart): door 0.5-1.45 m with a side light to 1.85 m under a 2.15 m canopy, ground window 2.65-4.6 m, small window 0.7-1.6 m; heights re-read from the camera sheet as fractions of the 5.65 m parapet: door 2.5 m with the canopy at 2.65 m, ground window 1.15-2.55 m, small window 4.2-4.55 m, upper window 3.25-4.85 m wide at 3.75-4.7 m; brick parapet 5.6 m (3DBAG b3_h_dak_min 5.6-5.7 m), white top storey to 8.35 m set back ~1.5 m behind a 1 m glass railing."
+ ]
+}

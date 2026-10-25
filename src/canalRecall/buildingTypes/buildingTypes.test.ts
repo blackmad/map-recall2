@@ -1308,5 +1308,83 @@ test('flat verge (#82): absent = every side overhangs by eavesOverhangM byte for
   const T = load('ws-wz-plain.json');
   assert.ok(validateSpec({...T, roof: {...T.roof, flatVerge: true}}).some(e => /flatVerge/.test(e)));
   // every earlier flat design is unchanged: none sets flatVerge
-  assert.deepEqual(fs.readdirSync(TYPES).filter(f => f.endsWith('.json') && load(f).roof.flatVerge).sort(), ['nw-os-band.json', 'nw-os-tretjakov.json', 'nw-os-white-low.json', 'nw-os-white.json']);
+  assert.deepEqual(fs.readdirSync(TYPES).filter(f => f.endsWith('.json') && load(f).roof.flatVerge && !R9_IDS.includes(f.slice(0, -5))).sort(), ['nw-os-band.json', 'nw-os-tretjakov.json', 'nw-os-white-low.json', 'nw-os-white.json']);
+});
+
+// round 9 (#85): Terrasdorp, De Aker-Oost, Nieuw Sloten-Noordwest, De Aker-West
+const R9_IDS = ['nd-td-souterrain', 'nd-td-panel', 'nd-td-pomona', 'nd-td-krasseur', 'nw-ao-hebriden', 'nw-ao-hebriden-clad', 'nw-ao-slot', 'nw-ao-garage',
+  'nw-nsn-white', 'nw-nsn-glazed', 'nw-nsn-turnhout', 'nw-aw-lomond', 'nw-aw-vattern', 'nw-aw-lameye', 'nw-aw-pracana'];
+const R9_TYPES = R9_IDS.map(id => load(`${id}.json`));
+const withFront = (spec: TypeSpec, els: TypeSpec['facades']['front']['bays'][0]['elements']): TypeSpec => ({...spec, facades: {...spec.facades, front: {...spec.facades.front, bays: [{...spec.facades.front.bays[0], elements: els}]}}});
+const sameMesh = (a: ReturnType<typeof generate>['mesh'], b: ReturnType<typeof generate>['mesh'], what: string) => {
+  assert.deepEqual([...a.buckets.keys()], [...b.buckets.keys()], `${what}: buckets`);
+  for (const [k, bk] of a.buckets) assert.deepEqual(b.buckets.get(k)!.positions, bk.positions, `${what}: ${k}`);
+};
+
+test('round-9 designs (#85): validate, >= 3 distinct photo pands on the front, counted openings match for every variant and handedness, <= 600 triangles, party walls blank, nothing below ground, within the frontage', () => {
+  for (const spec of R9_TYPES) {
+    assert.deepEqual(validateSpec(spec), [], spec.id);
+    assert.ok(new Set(spec.facades.front.evidence.map(e => e.pand)).size >= 3, `${spec.id}: evidence`);
+    const p = r8Params(spec);
+    for (const variant of Object.keys(spec.variants)) for (const mirror of [false, true]) {
+      const {report, mesh} = generate(spec, {...p, variant, mirror});
+      assert.deepEqual(report.facades.front, spec.facades.front.counted, `${spec.id}/${variant}/front`);
+      assert.ok(mesh.triangles <= 600, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
+      const mid = generate(spec, {...p, variant, mirror, freeSides: {left: false, right: false}});
+      assert.equal(mid.report.facades.left.bays + mid.report.facades.right.bays, 0, 'party walls have no bays');
+      const b = mesh.bounds();
+      assert.ok(b.min[1] >= -1e-9, `${spec.id}: nothing below ground`);
+      // nd-td-souterrain: half of a small window centred on the party wall, its 15 cm stone sill runs on under the neighbour's half
+      const ov = Math.max(spec.roof.vergeOverhangM, spec.roof.flatVerge ? 0 : spec.roof.eavesOverhangM) + (spec.id === 'nd-td-souterrain' ? 0.16 : 0.06);
+      assert.ok(b.max[0] <= p.lengthM / 2 + ov && b.min[0] >= -p.lengthM / 2 - ov, `${spec.id}/${variant}/${mirror}: within its frontage`);
+    }
+  }
+});
+
+test('round-9 kit (#85): panesHigh, louvres, balcony sill, fascia palette and annex uFromEnd are byte-identical when absent (or at their neutral value) and add only their own geometry when set; validateSpec bounds them', () => {
+  // panesHigh: absent = the joinery window as before; n rows add n - 1 bars (2 triangles each)
+  const H = load('nw-ao-hebriden.json'), ph = {...r8Params(H), variant: 'red'}, hEls = H.facades.front.bays[0].elements;
+  const noPanes = withFront(H, hEls.map(e => { const {panesHigh, ...r} = e; void panesHigh; return r; }));
+  const screen = hEls.find(e => e.panesHigh)!;
+  assert.equal(generate(H, ph).mesh.triangles - generate(noPanes, ph).mesh.triangles, 2 * (screen.panesHigh! - 1), 'panesHigh bars');
+  assert.ok(validateSpec(withFront(H, [{...screen, frameM: undefined}])).some(x => /panesHigh/.test(x)), 'panesHigh without frameM');
+  assert.ok(validateSpec(withFront(H, [{...screen, panesHigh: 1}])).some(x => /panesHigh/.test(x)), 'one row');
+  // louvres: absent = the plain panel box; count slats add 2 triangles each, in their own palette bucket
+  const G = load('nw-ao-garage.json'), pg = {...r8Params(G), variant: 'red'}, gEls = G.facades.front.bays[0].elements;
+  const noLouvres = withFront(G, gEls.map(e => { const {louvres, ...r} = e; void louvres; return r; }));
+  const slats = gEls.filter(e => e.louvres).reduce((n, e) => n + e.louvres!.count, 0);
+  assert.equal(generate(G, pg).mesh.triangles - generate(noLouvres, pg).mesh.triangles, 2 * slats, 'louvre slats');
+  assert.ok(validateSpec(withFront(G, [{kind: 'panel', levels: 'ground', w: 1, h: 1, louvres: {count: 3, palette: 'joint'}, archM: 0.3} as never])).some(x => /louvres/.test(x)), 'louvres on an arched panel');
+  // balcony sill: 0 = absent byte for byte; set, the balcony rises by exactly the sill
+  const balc = gEls.find(e => e.kind === 'balcony')!;
+  const only = (e: typeof balc) => generate(withFront(G, [e]), pg).mesh;
+  const {sill, ...balc0} = balc; void sill;
+  sameMesh(only(balc0), only({...balc0, sill: 0}), 'balcony sill 0');
+  const ys = (m: ReturnType<typeof generate>['mesh']) => { let lo = Infinity; for (const b of m.buckets.values()) for (let i = 1; i < b.positions.length; i += 3) if (b.positions[i] > 2.5) lo = Math.min(lo, b.positions[i]); return lo; };
+  assert.ok(Math.abs(ys(only({...balc0, sill: 0.5})) - ys(only(balc0)) - 0.5) < 1e-6, 'balcony lifted by its sill');
+  // fascia: a band naming it without a fascia colour draws in the dark bucket, as a dark band does
+  const W = load('nw-nsn-white.json'), pw = {...r8Params(W), variant: 'white'};
+  const {fascia, ...pal} = W.variants.white.palette as typeof W.variants.white.palette & {fascia?: string}; void fascia;
+  const noFascia = {...W, variants: {...W.variants, white: {...W.variants.white, palette: pal}}};
+  const bandAs = (spec: TypeSpec, palette: string) => ({...spec, facades: {...spec.facades, front: {...spec.facades.front, bands: spec.facades.front.bands!.map(b => ({...b, palette}))}}}) as TypeSpec;
+  sameMesh(generate(bandAs(noFascia, 'fascia'), pw).mesh, generate(bandAs(noFascia, 'dark'), pw).mesh, 'fascia absent = dark');
+  // annex uFromEnd: [a, m] from the end = [a, len - m] as positions, both handednesses
+  const L = load('nw-aw-lameye.json'), pl = {...r8Params(L), variant: 'orange'};
+  const asPositions = {...L, annexes: L.annexes!.map(a => { const {uFromEnd, ...r} = a; void uFromEnd; return {...r, u: [a.u[0], pl.lengthM - a.u[1]] as [number, number]}; })};
+  for (const mirror of [false, true]) sameMesh(generate(L, {...pl, mirror}).mesh, generate(asPositions, {...pl, mirror}).mesh, `uFromEnd mirror=${mirror}`);
+  assert.ok(validateSpec({...L, annexes: [{...L.annexes![0], u: [0, -1]}]}).some(x => /empty u/.test(x)), 'negative end margin');
+});
+
+test('stoop (#85): a door with steps and no stoop field draws as before; stepRiseM / stepTreadM / stepRail draw measured steps and rails; validateSpec wants a plate door with steps', () => {
+  const S = load('nd-td-souterrain.json'), ps = {...r8Params(S), variant: Object.keys(S.variants)[0]}, sEls = S.facades.front.bays[0].elements;
+  const door = sEls.find(e => e.stepRiseM !== undefined)!;
+  const {stepRiseM, stepTreadM, stepWidthM, stepRail, ...plain} = door; void stepRiseM; void stepTreadM; void stepWidthM; void stepRail;
+  const a = generate(withFront(S, [plain]), ps).mesh, b = generate(withFront(S, [{...plain, stepRiseM: undefined}]), ps).mesh;
+  sameMesh(a, b, 'stoop fields undefined');
+  const stoop = generate(withFront(S, [door]), ps).mesh;
+  assert.notEqual(stoop.triangles, a.triangles, 'the stoop draws its own steps');
+  let top = 0; for (const bk of stoop.buckets.values()) for (let i = 1; i < bk.positions.length; i += 3) top = Math.max(top, bk.positions[i]);
+  assert.ok(top >= (door.steps ?? 0) * door.stepRiseM! + (door.h ?? 0), 'door lifted by steps x rise');
+  assert.ok(validateSpec(withFront(S, [{...door, steps: 0}])).some(x => /stoop/.test(x)), 'stoop without steps');
+  assert.ok(validateSpec(withFront(S, [{...door, stepRiseM: 0.5}])).some(x => /stepRiseM/.test(x)), 'rise out of range');
 });

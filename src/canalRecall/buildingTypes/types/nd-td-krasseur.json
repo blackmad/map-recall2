@@ -1,0 +1,356 @@
+{
+ "id": "nd-td-krasseur",
+ "label": "Terrasdorp, Tuindorp Oostzaan (1989-90, Krasseurstraat / Modelmakerstraat / Kabelgaststraat) two-storey terraced house in buff brick with red-brown courses: red door at the pair line beside a glazed panel, wide ground window, grey concrete first-floor band, grey render panel band across the upper storey with a three-light window, blue fascia, dark tile roof; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 117,
+  "bouwjaar": [
+   1989,
+   1990
+  ],
+  "lengthM": 5.13,
+  "widthM": 9.34,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.4,
+  6.2
+ ],
+ "ridgeRangeM": [
+  7.9,
+  8.9
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.8,
+   5.6
+  ],
+  "depth": [
+   9.0,
+   9.8
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.35,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.2,
+  "pitchDeg": 30,
+  "eavesPinM": 5.8
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "buff",
+ "variants": {
+  "buff": {
+   "label": "buff brick, red-brown courses, grey band and render panels, white frames with ochre casements, red doors, dark grey tiles",
+   "evidence": "terraces #4 #6 #12 #14 #16 #20 #21 #22 #24 #25 #26",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#c2ad91",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3a4148",
+    "door": "#d0434c",
+    "accent": "#bdbdb5",
+    "rail": "#d6ac2e",
+    "dark": "#7a5f55",
+    "column": "#d4d6d3",
+    "joint": "#a9aba9",
+    "fascia": "#3f6a8c",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#5a5c5e",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012103604.jpg",
+     "pand": "0363100012103604",
+     "address": "Krasseurstraat",
+     "note": "2025-09: buff brick with red-brown brick courses on the ground storey, a grey concrete band at the first floor, red doors with a porthole in white frames at the pair line beside a full-height glazed panel, light grey render panels with a darker strip across the upper storey, three-light window with ochre casements, blue fascia, dark tile roof"
+    },
+    {
+     "photo": "survey crop 0363100012132442.jpg",
+     "pand": "0363100012132442",
+     "address": "Modelmakerstraat",
+     "note": "2025-09: same"
+    },
+    {
+     "photo": "survey crop 0363100012154566.jpg",
+     "pand": "0363100012154566",
+     "address": "Krasseurstraat",
+     "note": "2024-10: same"
+    },
+    {
+     "photo": "survey crop 0363100012063572.jpg",
+     "pand": "0363100012063572",
+     "address": "Kabelgaststraat",
+     "note": "2019-07: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.6,
+       "w": 1.2,
+       "h": 2.3,
+       "sill": 0.0,
+       "depth": 0.012,
+       "colour": "dark",
+       "note": "purple-brown brick entrance zone across the pair line"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.65,
+       "w": 0.9,
+       "h": 2.05,
+       "note": "red door with a porthole, white frame"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.26,
+       "w": 1.75,
+       "h": 1.85,
+       "sill": 0.45,
+       "lights": 2,
+       "frameM": 0.06,
+       "transomM": 0.55,
+       "note": "living-room window, louvre top light and ochre casement"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.55,
+       "w": 5.4,
+       "h": 0.25,
+       "sill": 2.3,
+       "depth": 0.04,
+       "colour": "accent",
+       "note": "grey concrete band at the first floor"
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.15,
+       "w": 3.8,
+       "h": 1.65,
+       "sill": 0.65,
+       "depth": 0.02,
+       "colour": "column",
+       "note": "light grey render panel from the pair line to the window"
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 0.125,
+       "w": 0.25,
+       "h": 1.65,
+       "sill": 0.65,
+       "depth": 0.025,
+       "colour": "joint",
+       "note": "darker grey strip on the pair line (half per house)"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.8,
+       "w": 2.5,
+       "h": 1.4,
+       "sill": 0.75,
+       "lights": 3,
+       "frameM": 0.06,
+       "sash": "rail",
+       "sashM": 0.05,
+       "note": "three-light window, ochre casements"
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 2,
+     "below": 0.55,
+     "above": 0.05,
+     "palette": "fascia"
+    }
+   ],
+   "stripes": [
+    {
+     "levels": "ground",
+     "pitchM": 0.5,
+     "heightM": 0.08,
+     "offsetM": 1.4,
+     "depthM": 0.006,
+     "palette": "dark"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012103604.jpg",
+     "pand": "0363100012103604",
+     "address": "Krasseurstraat",
+     "note": "garden side not photographed: garden door and windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012103604.jpg",
+     "pand": "0363100012103604",
+     "address": "Krasseurstraat",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012103604.jpg",
+     "pand": "0363100012103604",
+     "address": "Krasseurstraat",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "3DBAG eaves 5.75-5.9 m, ridge 8.35-8.5 m; b3_h_dak_min drops to 2.9 m on houses with a rear lean-to, so the eaves are pinned at the photo's 5.8 m.",
+  "Measured in the camera-matched 2025-09 Modelmakerstraat crop 0363100012132442 (facade in shade) white-referenced to the white door post: buff brick #cab496 upper / #b59f87 ground, drawn #c2ad91; entrance-zone brick #6f5b52 drawn #7a5f55; render panels near white, drawn light grey #d4d6d3 with the #a9aba9 pair-line strip as the photo shows them darker than the frames; blue fascia #3f6a8c.",
+  "Layout from the same crop (77 px/m): door 1.65 m and living window 3.26 m from the pair line, concrete band 2.3-2.55 m, upper window 2.8 m from the pair line at 3.65-5.05 m, render panel from the pair line to the window's far edge, fascia 5.2-5.8 m."
+ ]
+}
