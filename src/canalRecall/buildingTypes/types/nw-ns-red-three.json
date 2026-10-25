@@ -1,0 +1,352 @@
+{
+ "id": "nw-ns-red-three",
+ "label": "Nieuw-Sloten (1992, Hechtelstraat / Houthalenstraat) narrow three-storey flat-roofed terraced house: red-brown brick over a white glazed-brick ground storey with white doors; on the first floor two windows with dark grey brick panels between them, on the second floor one window and a narrow one at the party wall; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 70,
+  "bouwjaar": [
+   1992,
+   1992
+  ],
+  "lengthM": 4.6,
+  "widthM": 10.5,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 3,
+ "eavesRangeM": [
+  7.4,
+  9.4
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.3,
+   5.1
+  ],
+  "depth": [
+   8.5,
+   13.0
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.0,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.2,
+  "pitchDeg": 0,
+  "eavesPinM": 8.5
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "red",
+ "variants": {
+  "red": {
+   "label": "red-brown brick, white glazed-brick ground storey",
+   "evidence": "terraces #29 #39 #74 #82 #99 #114 (2079979, 2096309, 2072288, 2118387, 2066256, 2062861)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#a0705a",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#e6e5df",
+     "measured": true
+    },
+    "frame": "#efede6",
+    "glass": "#3e4a52",
+    "door": "#efede6",
+    "accent": "#d8d6d0",
+    "rail": "#77777a",
+    "dark": "#3a3a3a",
+    "column": "#efede6",
+    "joint": "#7a5a4a",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#6e6c69",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012096309.jpg",
+     "pand": "0363100012096309",
+     "address": "Hechtelstraat",
+     "note": "2021-04 (north front, shade): 73 px/m across a mirrored pair (9.2 m period); first floor two 1.3 m windows with a 0.68 m dark grey brick panel between and half a panel at the shared party wall; second floor a 1.3 m window over the first and a 0.42 m narrow window at the shared wall; ground storey white glazed brick to ~2.4 m with a 1.37 m window and two white doors; eaves 8.4 m"
+    },
+    {
+     "photo": "survey crop 0363100012079979.jpg",
+     "pand": "0363100012079979",
+     "address": "Hechtelstraat",
+     "note": "2021-04: same"
+    },
+    {
+     "photo": "survey crop 0363100012072288.jpg",
+     "pand": "0363100012072288",
+     "address": "Hechtelstraat",
+     "note": "2022-04: same, door pairs"
+    },
+    {
+     "photo": "survey crop 0363100012118387.jpg",
+     "pand": "0363100012118387",
+     "address": "Hechtelstraat",
+     "note": "2021-04: same"
+    },
+    {
+     "photo": "survey crop 0363100012066256.jpg",
+     "pand": "0363100012066256",
+     "address": "Houthalenstraat",
+     "note": "2021-04: same"
+    },
+    {
+     "photo": "survey crop 0363100012062861.jpg",
+     "pand": "0363100012062861",
+     "address": "Hechtelstraat",
+     "note": "2022-04: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 2,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.95,
+       "w": 1.37,
+       "h": 1.6,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.93,
+       "w": 1.0,
+       "h": 2.2,
+       "note": "white front door"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.05,
+       "w": 0.95,
+       "h": 2.2,
+       "note": "white storage door beside it"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.59,
+       "w": 1.3,
+       "h": 1.5,
+       "sill": 0.85,
+       "lights": 2
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.48,
+       "w": 0.68,
+       "h": 1.5,
+       "sill": 0.85,
+       "colour": "rail",
+       "depth": 0.02,
+       "note": "dark grey brick panel"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.48,
+       "w": 1.3,
+       "h": 1.5,
+       "sill": 0.85,
+       "lights": 2
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "ref": "right",
+       "u": 0.17,
+       "w": 0.34,
+       "h": 1.5,
+       "sill": 0.85,
+       "colour": "rail",
+       "depth": 0.02,
+       "note": "half of the grey panel shared with the mirrored neighbour"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 1.73,
+       "w": 1.3,
+       "h": 1.35,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "right",
+       "u": 0.5,
+       "w": 0.42,
+       "h": 1.35,
+       "sill": 0.7,
+       "lights": 1,
+       "note": "narrow window at the shared party wall"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012096309.jpg",
+     "pand": "0363100012096309",
+     "address": "Hechtelstraat",
+     "note": "garden side not photographed: inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.9,
+       "w": 0.9,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.4,
+       "w": 2.2,
+       "h": 1.8,
+       "sill": 0.4,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 2.3,
+       "w": 2.4,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012096309.jpg",
+     "pand": "0363100012096309",
+     "address": "Hechtelstraat",
+     "note": "row ends plain brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012096309.jpg",
+     "pand": "0363100012096309",
+     "address": "Hechtelstraat",
+     "note": "row ends plain brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick white-referenced on 2096309 (north front, 2021-04): brick #4e392c against the white glazed ground-storey brick #75766d -> #9c7258; drawn #a0705a. Grey panel brick #464545 -> #77777a.",
+  "Mirrored pairs: the narrow second-floor windows and the grey panel stand either side of the shared party wall, the white doors of a house sit at that wall (2096309 period 9.2 m).",
+  "Roof: 3DBAG reads one plane falling from 8.7 m over the front wall to 5.2 m at the back (b3_h_dak_min 5.2, 50p 6.9) on most houses; the street sees a full three-storey front to ~8.5 m (2096309). Drawn flat with the wall top pinned at 8.5 m (roof.eavesPinM); kit gap: a mono-pitch falling to the back (monoPitch only rises to the back).",
+  "The white glazed brick is drawn over the whole ground storey (2.8 m); in the photos it stops at ~2.4 m under a red brick course (kit: a plinth band that tall would cover the openings)."
+ ]
+}

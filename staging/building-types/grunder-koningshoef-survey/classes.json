@@ -1,0 +1,74 @@
+{
+ "terraces": {
+  "19": {
+   "type": "zo-gk-blue-bay",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "22": {
+   "type": "zo-gk-blue-bay",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "24": {
+   "type": "zo-gk-blue-bay",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "26": {
+   "type": "zo-gk-blue-bay",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "30": {
+   "type": "zo-gk-blue-bay",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "31": {
+   "type": "zo-gk-blue-bay",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "21": {
+   "type": "zo-gk-pergola",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "27": {
+   "type": "zo-gk-pergola",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "32": {
+   "type": "zo-gk-pergola",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "33": {
+   "type": "zo-gk-pergola",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "14": {
+   "type": "zo-gk-post-row",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "16": {
+   "type": "zo-gk-post-row",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "1": {
+   "type": "zo-gk-gravendijk",
+   "variant": "red",
+   "via": "photo"
+  },
+  "9": {
+   "type": "zo-gk-gravendijk",
+   "variant": "red",
+   "via": "photo"
+  }
+ }
+}

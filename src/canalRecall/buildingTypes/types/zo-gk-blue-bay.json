@@ -1,0 +1,365 @@
+{
+ "id": "zo-gk-blue-bay",
+ "label": "Grunder/Koningshoef (2007, Glanshof, Galantstraat, Gaandeweg, Gulden Kruispad) two-storey terraced house in orange-buff brick under a dark concrete-tile roof: a blue-grey weatherboarded strip with a tall narrow window over the entrance, a light-blue canopy band over the door and side light, two-light windows with a red-brown mullion beside it",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 58,
+  "bouwjaar": [
+   2007,
+   2007
+  ],
+  "lengthM": 5.4,
+  "widthM": 10.45,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.2,
+  6.8
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.0,
+   6.0
+  ],
+  "depth": [
+   9.8,
+   11.0
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.1,
+  "thicknessM": 0.15,
+  "pitchDeg": 35
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "buff",
+ "variants": {
+  "buff": {
+   "label": "orange-buff brick",
+   "evidence": "terraces #19 #22 #24 #26 #30 #31 (2080296, 2092571, 2137127, 2082477, 2143354, 2116735)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#c8a07e",
+     "measured": true
+    },
+    "frame": "#e6dfca",
+    "glass": "#3e4a52",
+    "door": "#b0785a",
+    "accent": "#b8b4aa",
+    "rail": "#6a8796",
+    "dark": "#3a3a3a",
+    "column": "#8fcbe6",
+    "joint": "#8a7a6a",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#5f5c58",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012143354-2019062410.jpg",
+     "pand": "0363100012143354",
+     "address": "Galantstraat",
+     "note": "2019-06 sunlit (sun 151/59, front bearing 151): 59 px/m on the 5.4 m house; blue strip 0-1.86 m from the entrance side, tall narrow window 0.6-1.1 m, sill 3.33 m, h 2.0; light-blue canopy band 2.6-3.2 m; door 0.25-1.1 m h 2.4 with side light 1.19-1.86 m; upper two-light window 2.71-4.32 m, sill 3.98, top 5.65; ground window 2.88-4.75 m, sill 0.65, h 2.0; eaves ~6.0 m (3DBAG 6.1)"
+    },
+    {
+     "photo": "survey crop 0363100012092571.jpg",
+     "pand": "0363100012092571",
+     "address": "1e Glanshof",
+     "note": "2024-09: same, every house the same way round (not mirrored)"
+    },
+    {
+     "photo": "survey crop 0363100012137127.jpg",
+     "pand": "0363100012137127",
+     "address": "1e Glanshof",
+     "note": "2024-09: same"
+    },
+    {
+     "photo": "survey crop 0363100012082477.jpg",
+     "pand": "0363100012082477",
+     "address": "Gulden Kruispad",
+     "note": "2025-09: same, some houses in pale yellow brick (not split into a variant)"
+    },
+    {
+     "photo": "survey crop 0363100012116735.jpg",
+     "pand": "0363100012116735",
+     "address": "Gaandeweg",
+     "note": "2025-09: same"
+    },
+    {
+     "photo": "survey crop 0363100012080296.jpg",
+     "pand": "0363100012080296",
+     "address": "2e Glanshof",
+     "note": "2022-06: same, orange-red brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.68,
+       "w": 0.85,
+       "h": 2.4,
+       "note": "orange-tan timber door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.5,
+       "w": 0.62,
+       "h": 2.36,
+       "sill": 0.06,
+       "lights": 1,
+       "note": "side light beside the door"
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.93,
+       "w": 1.86,
+       "h": 0.5,
+       "sill": 2.62,
+       "depth": 0.4,
+       "canopy": "flat",
+       "colour": "column",
+       "note": "light-blue canopy band over door and side light"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 0.85,
+       "w": 0.5,
+       "h": 2.0,
+       "sill": 0.33,
+       "lights": 1,
+       "note": "tall narrow window in the blue strip"
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "ref": "left",
+       "u": 0.28,
+       "w": 0.56,
+       "h": 3.0,
+       "sill": 0,
+       "colour": "rail",
+       "depth": 0.03,
+       "note": "blue-grey weatherboarding left of the narrow window"
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.48,
+       "w": 0.76,
+       "h": 3.0,
+       "sill": 0,
+       "colour": "rail",
+       "depth": 0.03,
+       "note": "weatherboarding right of it"
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "ref": "left",
+       "u": 0.85,
+       "w": 0.5,
+       "h": 0.67,
+       "sill": 2.33,
+       "colour": "rail",
+       "depth": 0.03,
+       "note": "weatherboarding over the window"
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "ref": "left",
+       "u": 0.85,
+       "w": 0.5,
+       "h": 0.33,
+       "sill": 0.0,
+       "colour": "rail",
+       "depth": 0.03,
+       "note": "weatherboarding under the window"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.5,
+       "w": 1.6,
+       "h": 1.65,
+       "sill": 0.98,
+       "lights": 2,
+       "frameM": 0.07,
+       "note": "two-light window, red-brown mullion (drawn in the frame colour)"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.8,
+       "w": 1.85,
+       "h": 2.0,
+       "sill": 0.65,
+       "lights": 2,
+       "frameM": 0.07
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012143354.jpg",
+     "pand": "0363100012143354",
+     "address": "Galantstraat",
+     "note": "garden side not photographed: inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.3
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.7,
+       "w": 2.4,
+       "h": 2.0,
+       "sill": 0.3,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.4,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "right",
+       "u": 1.3,
+       "w": 1.4,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012092571.jpg",
+     "pand": "0363100012092571",
+     "address": "1e Glanshof",
+     "note": "row ends plain brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012092571.jpg",
+     "pand": "0363100012092571",
+     "address": "1e Glanshof",
+     "note": "row ends plain brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick from the sunlit 2019-06 crop of 2143354 (median #795f49 at a 59 degree sun, colour ratio 1 : 0.79 : 0.60) scaled to the overcast 2024-09 crop's lightness (#b0a893 median, blue-cast): #c4946e. White-reference was not usable: the only white paint (door frame) is in the recess shade.",
+  "Blue weatherboarding #6a8796 (overcast #547685, sunlit-in-shade #384043, lifted), canopy band light blue #a9d4e4 (sunlit #c3dfe4), door orange-tan #b0785a (overcast #9a846b, sunlit #78503c). Window frames are cream (#e6dfca, kept cream by whiteTrim) with a red-brown mullion the kit cannot colour separately.",
+  "The blue strip is recessed ~0.2 m behind the brick in the photos; drawn flush (kit gap: recessed bay). Horizontal weatherboards drawn as a plain panel (battens are vertical only).",
+  "Every house the same way round in all six terraces: no mirror alternation. A few houses in pale yellow brick are not split into a variant (kit gap: per-house brick within a row)."
+ ]
+}

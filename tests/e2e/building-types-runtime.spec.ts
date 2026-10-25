@@ -78,6 +78,11 @@ const VIEWS: Record<string, { center: [number, number]; zoom: number; pitch: num
   'r5-reigersbos-4': { center: [4.973577, 52.290418], zoom: 18.4, pitch: 62, bearing: 243 },
   'r5-eendracht': { center: [4.789366, 52.379193], zoom: 18.4, pitch: 62, bearing: 179 },
   'r4-buiksloterbreek': { center: [4.907009, 52.402211], zoom: 18.4, pitch: 62, bearing: 142 },
+  // 2026-10-25 round 6 (#79): Postjeskade bay flats, Grunder/Koningshoef 2007 rows, Kantershof patio and three-storey rows, Nieuw-Sloten-Noordoost Hechtelstraat.
+  'r6-postjeskade': { center: [4.850778, 52.362194], zoom: 18.4, pitch: 62, bearing: 269 },
+  'r6-grunder-koningshoef': { center: [4.978952, 52.322925], zoom: 18.4, pitch: 62, bearing: 331 },
+  'r6-kantershof': { center: [4.990268, 52.316338], zoom: 18.4, pitch: 62, bearing: 248 },
+  'r6-nieuw-sloten-noordoost': { center: [4.816816, 52.348787], zoom: 18.4, pitch: 62, bearing: 269 },
 };
 const ONLY = process.env.BT_VIEWS?.split(',');
 const CAM = ['jumpTo', 'easeTo', 'flyTo', 'setCenter', 'setZoom', 'setBearing', 'setPitch'];

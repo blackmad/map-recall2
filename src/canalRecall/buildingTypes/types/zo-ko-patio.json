@@ -1,0 +1,335 @@
+{
+ "id": "zo-ko-patio",
+ "label": "Kantershof (1973-74, Bijlmer low-rise) two-storey flat-roofed patio house: a closed white-painted ground storey (patio wall and storage) with a timber gate, the upper storey a white-framed ribbon window over a light grey spandrel between concrete cross-wall ends, a coloured fascia at the roof and along the top of the white wall (green, ochre or grey per hof)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 330,
+  "bouwjaar": [
+   1973,
+   1974
+  ],
+  "lengthM": 4.7,
+  "widthM": 10.2,
+  "bouwlagen": 2,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.0,
+  7.2
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.3,
+   5.4
+  ],
+  "depth": [
+   8.8,
+   12.6
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.0,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.25,
+  "pitchDeg": 0
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "grey",
+ "variants": {
+  "grey": {
+   "label": "grey fascia",
+   "evidence": "terraces where the fascia reads grey (2127577, 2149271)",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#c9cdc8"
+    },
+    "plinth": {
+     "slot": "stucco",
+     "tint": "#e8e8e4"
+    },
+    "frame": "#efede6",
+    "glass": "#3e4a52",
+    "door": "#8a6a4a",
+    "accent": "#d8d8d2",
+    "rail": "#a9aeab",
+    "dark": "#3a3a3a",
+    "column": "#dcdcd6",
+    "joint": "#9a9e9a",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#7a7a76",
+     "measured": true
+    }
+   }
+  },
+  "green": {
+   "label": "dark green fascia",
+   "evidence": "2120884, 2090354 (green fascias)",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#c9cdc8"
+    },
+    "plinth": {
+     "slot": "stucco",
+     "tint": "#e8e8e4"
+    },
+    "frame": "#efede6",
+    "glass": "#3e4a52",
+    "door": "#8a6a4a",
+    "accent": "#d8d8d2",
+    "rail": "#4f6a58",
+    "dark": "#3a3a3a",
+    "column": "#dcdcd6",
+    "joint": "#9a9e9a",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#7a7a76",
+     "measured": true
+    }
+   }
+  },
+  "yellow": {
+   "label": "ochre-yellow fascia",
+   "evidence": "2147654, 2118283, 2150684, 2096709 (ochre fascias)",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#c9cdc8"
+    },
+    "plinth": {
+     "slot": "stucco",
+     "tint": "#e8e8e4"
+    },
+    "frame": "#efede6",
+    "glass": "#3e4a52",
+    "door": "#8a6a4a",
+    "accent": "#d8d8d2",
+    "rail": "#c49a48",
+    "dark": "#3a3a3a",
+    "column": "#dcdcd6",
+    "joint": "#9a9e9a",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#7a7a76",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012120884.jpg",
+     "pand": "0363100012120884",
+     "address": "Kantershof",
+     "note": "2025-09: white patio wall across the ground storey with a timber gate, dark green fascia over it and at the roof; upper ribbon window over grey spandrel between cross-wall ends"
+    },
+    {
+     "photo": "survey crop 0363100012090354.jpg",
+     "pand": "0363100012090354",
+     "address": "Kantershof",
+     "note": "2025-09: same, light green fascia; some houses carry a set-back third-storey box (held)"
+    },
+    {
+     "photo": "survey crop 0363100012127577.jpg",
+     "pand": "0363100012127577",
+     "address": "Kantershof",
+     "note": "2024-09: same, ochre band"
+    },
+    {
+     "photo": "survey crop 0363100012149271.jpg",
+     "pand": "0363100012149271",
+     "address": "Kantershof",
+     "note": "2025-09: same; upper ribbon ~4.2 m, h ~1.2"
+    },
+    {
+     "photo": "survey crop 0363100012147654.jpg",
+     "pand": "0363100012147654",
+     "address": "Kantershof",
+     "note": "2022-12: same with ochre fascia"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.85,
+       "w": 1.0,
+       "h": 2.1,
+       "note": "timber gate into the patio"
+      },
+      {
+       "kind": "ribbon",
+       "ref": "left",
+       "levels": "upper",
+       "u": 2.35,
+       "w": 4.1,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 4
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "upper",
+       "u": 0.1,
+       "w": 0.2,
+       "h": 2.9,
+       "sill": 0,
+       "depth": 0.1,
+       "colour": "column",
+       "note": "concrete cross-wall end at the party wall"
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 1,
+     "below": 0.0,
+     "above": 0.22,
+     "palette": "rail"
+    },
+    {
+     "floor": 2,
+     "below": 0.3,
+     "above": 0,
+     "palette": "rail"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "partly-measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012073200.jpg",
+     "pand": "0363100012073200",
+     "address": "Kantershof",
+     "note": "garden sides of the 1973-74 rows (seen from the hof paths, 2020-07): ribbon windows over grey spandrels on every storey, a glazed door on the ground storey"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.7,
+       "w": 2.6,
+       "h": 1.5,
+       "sill": 0.75,
+       "lights": 3
+      },
+      {
+       "kind": "ribbon",
+       "ref": "left",
+       "levels": "upper",
+       "u": 2.35,
+       "w": 4.1,
+       "h": 1.3,
+       "sill": 0.85,
+       "lights": 4
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012120884.jpg",
+     "pand": "0363100012120884",
+     "address": "Kantershof",
+     "note": "row ends: plain white wall"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012120884.jpg",
+     "pand": "0363100012120884",
+     "address": "Kantershof",
+     "note": "row ends: plain white wall"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "The white ground-storey wall is drawn as the house's own ground storey (plinth #e8e8e4); in the photos it is the patio wall and storage in front of the living room, which the BAG ring includes.",
+  "Fascia colour per hof read from the survey photo of each terrace; terraces whose photo shows no fascia colour are grey.",
+  "Houses with a set-back third-storey box (3DBAG 8-9 m) are held by the eaves range (kit gap: a set-back top storey on a terraced unit is an annex the 3DBAG eaves cannot place reliably)."
+ ]
+}

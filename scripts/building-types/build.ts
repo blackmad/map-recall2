@@ -65,7 +65,8 @@ const mirrorOf = new Map<string, boolean>();
   }
   const par = rows.map((_, k) => k), find = (k: number): number => (par[k] === k ? k : (par[k] = find(par[k])));
   for (let a = 0; a < rows.length; a++) for (let b = a + 1; b < rows.length; b++) {
-    const dt = Math.abs(rows[a].t - rows[b].t), dn = Math.abs(rows[a].n - rows[b].n), par2 = Math.abs(rows[a].tan[0] * rows[b].tan[0] + rows[a].tan[1] * rows[b].tan[1]);
+    // signed: houses facing the other way (the row across the street) are never the same row, even when their front lines coincide numerically
+    const dt = Math.abs(rows[a].t - rows[b].t), dn = Math.abs(rows[a].n - rows[b].n), par2 = rows[a].tan[0] * rows[b].tan[0] + rows[a].tan[1] * rows[b].tan[1];
     if (par2 > 0.97 && dn < 1.2 && dt > 0.5 * rows[a].frontage && dt < rows[a].frontage + 1.0) par[find(a)] = find(b);
   }
   const comps = new Map<number, number[]>();

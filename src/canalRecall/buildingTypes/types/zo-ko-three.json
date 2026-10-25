@@ -1,0 +1,317 @@
+{
+ "id": "zo-ko-three",
+ "label": "Kantershof (1973-74, Bijlmer low-rise) three-storey flat-roofed terraced house: light grey concrete spandrel panels and white-framed ribbon windows on the two upper storeys between concrete cross-wall ends, ground storey with a white glazed door and a wide window, a thin roof fascia (grey or ochre)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 70,
+  "bouwjaar": [
+   1973,
+   1974
+  ],
+  "lengthM": 4.7,
+  "widthM": 10.2,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 3,
+ "eavesRangeM": [
+  7.6,
+  9.8
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.3,
+   5.3
+  ],
+  "depth": [
+   9.0,
+   13.0
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.0,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.25,
+  "pitchDeg": 0
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "grey",
+ "variants": {
+  "grey": {
+   "label": "grey fascia",
+   "evidence": "terraces #4 #10 #17 #32 #55 #72 #84 (grey); #62 (2082223, ochre)",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#c9cdc8"
+    },
+    "plinth": {
+     "slot": "stucco",
+     "tint": "#c9cdc8"
+    },
+    "frame": "#efede6",
+    "glass": "#3e4a52",
+    "door": "#efede6",
+    "accent": "#d8d8d2",
+    "rail": "#a9aeab",
+    "dark": "#3a3a3a",
+    "column": "#dcdcd6",
+    "joint": "#9a9e9a",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#7a7a76",
+     "measured": true
+    }
+   }
+  },
+  "yellow": {
+   "label": "ochre-yellow fascia",
+   "evidence": "terraces #4 #10 #17 #32 #55 #72 #84 (grey); #62 (2082223, ochre)",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#c9cdc8"
+    },
+    "plinth": {
+     "slot": "stucco",
+     "tint": "#c9cdc8"
+    },
+    "frame": "#efede6",
+    "glass": "#3e4a52",
+    "door": "#efede6",
+    "accent": "#d8d8d2",
+    "rail": "#c49a48",
+    "dark": "#3a3a3a",
+    "column": "#dcdcd6",
+    "joint": "#9a9e9a",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#7a7a76",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012101490.jpg",
+     "pand": "0363100012101490",
+     "address": "Kraaiennestpad",
+     "note": "2024-10 sunny: ~71 px/m on the 4.7 m house; cross-wall ends at each party wall; storeys 1-2 a four-light ribbon window ~4.2 m wide, h ~1.4, sill ~0.75 over a grey spandrel; ground storey glazed white door, wide window"
+    },
+    {
+     "photo": "survey crop 0363100012073200.jpg",
+     "pand": "0363100012073200",
+     "address": "Kantershof",
+     "note": "2020-07: same, three storeys, white door with side panel"
+    },
+    {
+     "photo": "survey crop 0363100012112261.jpg",
+     "pand": "0363100012112261",
+     "address": "Kantershof",
+     "note": "2024-09: same row type"
+    },
+    {
+     "photo": "survey crop 0363100012082223.jpg",
+     "pand": "0363100012082223",
+     "address": "Kantershof",
+     "note": "2022-12: same with an ochre roof fascia: variant yellow"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.95,
+       "w": 0.9,
+       "h": 2.25,
+       "note": "white glazed door"
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.65,
+       "w": 0.4,
+       "h": 2.19,
+       "sill": 0.06,
+       "lights": 1,
+       "note": "side light"
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.45,
+       "w": 2.3,
+       "h": 1.9,
+       "sill": 0.35,
+       "lights": 3
+      },
+      {
+       "kind": "ribbon",
+       "ref": "left",
+       "levels": "upper",
+       "u": 2.35,
+       "w": 4.1,
+       "h": 1.4,
+       "sill": 0.75,
+       "lights": 4,
+       "note": "ribbon window between the cross-wall ends"
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.1,
+       "w": 0.2,
+       "h": 7.9,
+       "sill": 0,
+       "depth": 0.1,
+       "colour": "column",
+       "note": "concrete cross wall end at the party wall"
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 3,
+     "below": 0.3,
+     "above": 0,
+     "palette": "rail"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "partly-measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012073200.jpg",
+     "pand": "0363100012073200",
+     "address": "Kantershof",
+     "note": "garden sides of the 1973-74 rows (seen from the hof paths, 2020-07): ribbon windows over grey spandrels on every storey, a glazed door on the ground storey"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.7,
+       "w": 2.6,
+       "h": 1.5,
+       "sill": 0.75,
+       "lights": 3
+      },
+      {
+       "kind": "ribbon",
+       "ref": "left",
+       "levels": "upper",
+       "u": 2.35,
+       "w": 4.1,
+       "h": 1.3,
+       "sill": 0.85,
+       "lights": 4
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012101490.jpg",
+     "pand": "0363100012101490",
+     "address": "Kraaiennestpad",
+     "note": "row ends: plain concrete gable"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012101490.jpg",
+     "pand": "0363100012101490",
+     "address": "Kraaiennestpad",
+     "note": "row ends: plain concrete gable"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Colours: the sunny 2024-09/10 crops clip the panels (#dff1f0); the overcast 2022-12 crop of 2082223 reads #888b84 for the spandrels against white frames. Drawn #c9cdc8 (white-referenced, light grey concrete), white frames, fascia grey #a9aeab or ochre #c49a48 (2082223).",
+  "Front and garden side look alike from the hof paths; the survey photographed several rows from the garden side (the front is the side the orientation picks)."
+ ]
+}

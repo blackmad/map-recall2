@@ -1,0 +1,30 @@
+[
+ {
+  "area": "zo-gk-01",
+  "anchor": {
+   "lng": 4.98371,
+   "lat": 52.31903
+  },
+  "pands": 12,
+  "missing": 0,
+  "per": {
+   "zo-gk-gravendijk/red/photo": 12
+  }
+ },
+ {
+  "area": "zo-gk-02",
+  "anchor": {
+   "lng": 4.97989,
+   "lat": 52.32233
+  },
+  "pands": 138,
+  "missing": 0,
+  "per": {
+   "zo-gk-gravendijk/red/photo": 12,
+   "zo-gk-post-row/orange/photo": 17,
+   "zo-gk-blue-bay/buff/photo": 58,
+   "zo-gk-pergola/orange/photo": 39,
+   "zo-gk-pergola/yellow/photo": 12
+  }
+ }
+]

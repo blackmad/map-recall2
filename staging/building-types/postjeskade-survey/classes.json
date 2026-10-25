@@ -1,0 +1,123 @@
+{
+ "terraces": {
+  "2": {
+   "type": "we-pk-bay",
+   "variant": "brown",
+   "via": "photo",
+   "repMirror": true
+  },
+  "3": {
+   "type": "we-pk-bay",
+   "variant": "brown",
+   "via": "photo"
+  },
+  "7": {
+   "type": "we-pk-bay",
+   "variant": "brown",
+   "via": "photo",
+   "repMirror": false
+  },
+  "9": {
+   "type": "we-pk-bay",
+   "variant": "brown",
+   "via": "photo",
+   "repMirror": true
+  },
+  "10": {
+   "type": "we-pk-bay",
+   "variant": "brown",
+   "via": "photo",
+   "repMirror": true
+  }
+ },
+ "pands": {
+  "0363100012079998": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.1 m: the five-storey quay front"
+  },
+  "0363100012115005": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.11 m: the five-storey quay front"
+  },
+  "0363100012122193": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.28 m: the five-storey quay front"
+  },
+  "0363100012124287": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.21 m: the five-storey quay front"
+  },
+  "0363100012150563": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.36 m: the five-storey quay front"
+  },
+  "0363100012066301": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.09 m: the five-storey quay front"
+  },
+  "0363100012067675": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.18 m: the five-storey quay front"
+  },
+  "0363100012080773": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.13 m: the five-storey quay front"
+  },
+  "0363100012084992": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.25 m: the five-storey quay front"
+  },
+  "0363100012092068": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15 m: the five-storey quay front"
+  },
+  "0363100012097799": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.15 m: the five-storey quay front"
+  },
+  "0363100012098199": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.4 m: the five-storey quay front"
+  },
+  "0363100012111737": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.19 m: the five-storey quay front"
+  },
+  "0363100012111808": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.18 m: the five-storey quay front"
+  },
+  "0363100012138096": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.07 m: the five-storey quay front"
+  },
+  "0363100012141509": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.07 m: the five-storey quay front"
+  },
+  "0363100012145177": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.21 m: the five-storey quay front"
+  },
+  "0363100012149924": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.4 m: the five-storey quay front"
+  },
+  "0363100012074530": {
+   "type": "we-pk-bay5",
+   "note": "eaves 14.88 m: the five-storey quay front"
+  },
+  "0363100012083785": {
+   "type": "we-pk-bay5",
+   "note": "eaves 14.85 m: the five-storey quay front"
+  },
+  "0363100012092473": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.34 m: the five-storey quay front"
+  },
+  "0363100012139031": {
+   "type": "we-pk-bay5",
+   "note": "eaves 15.04 m: the five-storey quay front"
+  }
+ }
+}

@@ -1,0 +1,358 @@
+{
+ "id": "zo-gk-pergola",
+ "label": "Grunder/Koningshoef (2007, Gaandeweg, Glanshof) two-storey flat-roofed terraced house in orange-buff brick under a steel pergola: a grey grid canopy along the roof edge on a steel post at every party wall; white French doors and a salmon front door with side light, a two-light window and a tall narrow window above",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 51,
+  "bouwjaar": [
+   2007,
+   2007
+  ],
+  "lengthM": 5.5,
+  "widthM": 10.45,
+  "bouwlagen": 2,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.4,
+  6.9
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.2,
+   6.2
+  ],
+  "depth": [
+   9.8,
+   11.0
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.0,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.2,
+  "pitchDeg": 0
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "annexes": [
+  {
+   "id": "pergola",
+   "facade": "front",
+   "u": [
+    0.0,
+    5.45
+   ],
+   "d": [
+    0.0,
+    1.6
+   ],
+   "from": {
+    "eaves": 0.05
+   },
+   "to": {
+    "eaves": 0.17
+   },
+   "material": "rail",
+   "evidence": "2126660, 2091230, 2080554, 2075427: grey steel grid canopy ~1.6 m deep along the roof edge, slightly above it"
+  },
+  {
+   "id": "post",
+   "facade": "front",
+   "u": [
+    0.0,
+    0.14
+   ],
+   "d": [
+    1.44,
+    1.58
+   ],
+   "from": 0,
+   "to": {
+    "eaves": 0.05
+   },
+   "material": "rail",
+   "evidence": "2126660: one steel post per house at the party wall (5.3 m apart once the perspective is taken out)"
+  }
+ ],
+ "defaultVariant": "orange",
+ "variants": {
+  "orange": {
+   "label": "orange-buff brick",
+   "evidence": "terraces #21 #27 #32 (2080554, 2126660, 2091230)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#bc9b80",
+     "measured": true
+    },
+    "frame": "#efede6",
+    "glass": "#3e4a52",
+    "door": "#c98a6e",
+    "accent": "#b8b4aa",
+    "rail": "#a3abb2",
+    "dark": "#2e3235",
+    "column": "#efede6",
+    "joint": "#8a7a6a",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#6e6c69",
+     "measured": true
+    }
+   }
+  },
+  "yellow": {
+   "label": "pale yellow brick",
+   "evidence": "terrace #33 (2075427): the whole row in pale yellow brick",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#d6cba8",
+     "measured": true
+    },
+    "frame": "#efede6",
+    "glass": "#3e4a52",
+    "door": "#c98a6e",
+    "accent": "#b8b4aa",
+    "rail": "#a3abb2",
+    "dark": "#2e3235",
+    "column": "#efede6",
+    "joint": "#8a7a6a",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#6e6c69",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012126660.jpg",
+     "pand": "0363100012126660",
+     "address": "Gaandeweg",
+     "note": "2025-09 sunny: 74 px/m at the facade; French doors 1.55 m from the post side, w 1.6, h ~2.5; door 3.4-4.4 m, side light 4.3-5.05 m; upper two-light window over the French doors 4.4-5.9 m; tall narrow window 3.6-6.0 m; eaves 6.1 m (3DBAG); pergola posts 5.3 m apart"
+    },
+    {
+     "photo": "survey crop 0363100012091230.jpg",
+     "pand": "0363100012091230",
+     "address": "Gaandeweg",
+     "note": "2025-09: same, houses alternate orange-red and orange-buff brick (not split)"
+    },
+    {
+     "photo": "survey crop 0363100012080554.jpg",
+     "pand": "0363100012080554",
+     "address": "Gaandeweg",
+     "note": "2024-09: same"
+    },
+    {
+     "photo": "survey crop 0363100012075427.jpg",
+     "pand": "0363100012075427",
+     "address": "Gaandeweg",
+     "note": "2024-09: same in pale yellow brick: variant yellow"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.55,
+       "w": 1.6,
+       "h": 2.45,
+       "sill": 0.02,
+       "lights": 2,
+       "frameM": 0.08,
+       "note": "white French doors"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.9,
+       "w": 1.0,
+       "h": 2.4,
+       "note": "salmon front door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.7,
+       "w": 0.7,
+       "h": 2.4,
+       "sill": 0.02,
+       "lights": 1,
+       "frameM": 0.07,
+       "note": "side light"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.6,
+       "w": 1.6,
+       "h": 1.5,
+       "sill": 1.35,
+       "lights": 2,
+       "frameM": 0.08,
+       "note": "two-light window over the French doors, just under the eaves"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.65,
+       "w": 0.6,
+       "h": 2.4,
+       "sill": 0.5,
+       "lights": 1,
+       "frameM": 0.07,
+       "note": "tall narrow window over the side light"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012126660.jpg",
+     "pand": "0363100012126660",
+     "address": "Gaandeweg",
+     "note": "garden side not photographed: inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.3
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.7,
+       "w": 2.4,
+       "h": 2.0,
+       "sill": 0.3,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.4,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "right",
+       "u": 1.3,
+       "w": 1.4,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012126660.jpg",
+     "pand": "0363100012126660",
+     "address": "Gaandeweg",
+     "note": "row ends plain brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012126660.jpg",
+     "pand": "0363100012126660",
+     "address": "Gaandeweg",
+     "note": "row ends plain brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick from the sunlit crops of 2126660 / 2091230 (2022-06 and 2025-09) with the same 1 : 0.79 : 0.60 ratio as the blue-bay row lifted to the overcast lightness: orange #c98f66; the yellow row #d8c9a0 (2075427, 2024-09 overcast, lifted).",
+  "The pergola is a perforated steel grid; drawn as a solid thin grey plate (kit gap: open grid canopy). Every house the same way round (not mirrored).",
+  "Within a row houses alternate between orange-red, orange-buff and pale yellow brick (2091230, 2131506): per-row variant only (kit gap: per-house brick within a row)."
+ ]
+}

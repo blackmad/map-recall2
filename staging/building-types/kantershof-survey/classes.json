@@ -1,0 +1,568 @@
+{
+ "terraces": {
+  "10": {
+   "type": "zo-ko-three",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "17": {
+   "type": "zo-ko-three",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "32": {
+   "type": "zo-ko-three",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "55": {
+   "type": "zo-ko-three",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "72": {
+   "type": "zo-ko-three",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "62": {
+   "type": "zo-ko-three",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "4": {
+   "type": "zo-ko-three",
+   "variant": "grey",
+   "via": "signature"
+  },
+  "1": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "6": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "8": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "9": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "11": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "13": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "16": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "22": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "24": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "25": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo",
+   "note": "carport frame in front of the white wall not modelled"
+  },
+  "29": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "33": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "41": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "42": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "44": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "46": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "59": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "66": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "74": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "75": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "78": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "83": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "photo"
+  },
+  "5": {
+   "type": "zo-ko-patio",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "19": {
+   "type": "zo-ko-patio",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "31": {
+   "type": "zo-ko-patio",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "60": {
+   "type": "zo-ko-patio",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "65": {
+   "type": "zo-ko-patio",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "69": {
+   "type": "zo-ko-patio",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "70": {
+   "type": "zo-ko-patio",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "77": {
+   "type": "zo-ko-patio",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "81": {
+   "type": "zo-ko-patio",
+   "variant": "yellow",
+   "via": "photo"
+  },
+  "79": {
+   "type": "zo-ko-patio",
+   "variant": "green",
+   "via": "photo"
+  },
+  "80": {
+   "type": "zo-ko-patio",
+   "variant": "green",
+   "via": "photo"
+  },
+  "0": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "signature"
+  },
+  "7": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "signature"
+  },
+  "14": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "signature"
+  },
+  "15": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "signature"
+  },
+  "18": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "signature"
+  },
+  "21": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "signature"
+  },
+  "23": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "signature"
+  },
+  "52": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "signature"
+  },
+  "53": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "signature"
+  },
+  "61": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "signature"
+  },
+  "67": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "signature"
+  },
+  "73": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "signature"
+  },
+  "87": {
+   "type": "zo-ko-patio",
+   "variant": "grey",
+   "via": "signature"
+  }
+ },
+ "pands": {
+  "0363100012074007": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.43 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012087987": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.49 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012089591": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.57 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012099938": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.35 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012107109": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.36 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012113319": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.34 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012148766": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.19 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012077056": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.36 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012084480": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.35 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012142109": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.52 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012071606": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.64 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012074759": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.75 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012083447": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.64 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012093787": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.41 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012089470": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.46 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012070837": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.38 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012075417": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.38 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012112763": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.35 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012120112": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.41 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012128122": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.52 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012128844": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.36 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012138390": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.39 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012122259": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.63 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012078700": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.45 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012080219": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.18 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012098852": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.31 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012112199": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.35 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012094814": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.46 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012127146": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.4 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012128525": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.65 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012134273": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.42 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012144668": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.28 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012095643": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.87 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012130813": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.66 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012073065": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.48 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012086009": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.72 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012147028": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.36 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012072664": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.77 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012145417": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.72 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012062286": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.67 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012066530": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.38 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012077385": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.46 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012135716": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.38 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012066909": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.52 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012093247": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.38 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012099984": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.44 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012134754": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.37 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012149700": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.31 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012120706": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.55 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012120905": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.68 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012130871": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.58 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012074657": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.34 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012090688": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.4 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012130029": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.4 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012154588": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.66 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012133539": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.41 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012141368": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.47 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012146112": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 9.13 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012148226": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.54 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012115494": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.33 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012145074": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.4 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012084498": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.42 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012133494": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.51 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012144472": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.33 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012069559": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.67 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012089285": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.63 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012077046": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.39 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012088210": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.45 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012113127": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.42 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012115690": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.43 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012074926": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.97 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012071394": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.4 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012077125": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.55 m over a two-storey patio house: the set-back box"
+  },
+  "0363100012136939": {
+   "type": "zo-ko-patio-top",
+   "note": "3DBAG roof 8.68 m over a two-storey patio house: the set-back box"
+  }
+ }
+}

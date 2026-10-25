@@ -1,0 +1,38 @@
+[
+ {
+  "area": "we-pk-01",
+  "anchor": {
+   "lng": 4.85063,
+   "lat": 52.35922
+  },
+  "pands": 56,
+  "missing": 0,
+  "per": {
+   "we-pk-bay/brown/photo": 56
+  }
+ },
+ {
+  "area": "we-pk-02",
+  "anchor": {
+   "lng": 4.85051,
+   "lat": 52.36148
+  },
+  "pands": 118,
+  "missing": 0,
+  "per": {
+   "we-pk-bay/brown/photo": 118
+  }
+ },
+ {
+  "area": "we-pk-03",
+  "anchor": {
+   "lng": 4.85152,
+   "lat": 52.3613
+  },
+  "pands": 129,
+  "missing": 0,
+  "per": {
+   "we-pk-bay/brown/photo": 129
+  }
+ }
+]

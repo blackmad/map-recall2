@@ -1,0 +1,370 @@
+{
+ "id": "zo-gk-gravendijk",
+ "label": "Grunder ('s-Gravendijkdreef, 2003) three-storey flat-roofed terraced house in red-brown brick over a timber-boarded ground storey with red doors; two tall French windows with grey balustrade panels per upper storey, staggered between the storeys",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 24,
+  "bouwjaar": [
+   2003,
+   2003
+  ],
+  "lengthM": 5.35,
+  "widthM": 10.5,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 3,
+ "eavesRangeM": [
+  7.6,
+  9.2
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.0,
+   5.8
+  ],
+  "depth": [
+   9.8,
+   11.2
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.0,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.2,
+  "pitchDeg": 0
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "red",
+ "variants": {
+  "red": {
+   "label": "red-brown brick, timber ground storey, red doors",
+   "evidence": "terraces #1 #9 (2137854, 2132569)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#9a6a5a",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "stucco",
+     "tint": "#7e5a46"
+    },
+    "frame": "#4a4c4e",
+    "glass": "#3e4a52",
+    "door": "#c0302a",
+    "accent": "#8a8680",
+    "rail": "#7d8286",
+    "dark": "#6a4a38",
+    "column": "#efede6",
+    "joint": "#6a5048",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#6e6c69",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012132569.jpg",
+     "pand": "0363100012132569",
+     "address": "'s-Gravendijkdreef",
+     "note": "2025-09 overcast: 73 px/m on the 5.35 m houses; ground window 1.16-3.1 m, sill 0.5, h 1.3; red door 4.4-5.3 m, h 2.3; timber boards over the ground storey; upper storeys two French windows w 0.85 h ~2.0 from the floor with grey balustrade panels, storey 2 offset half a window pitch from storey 1 (1: u 0.6 / 3.25 m, 2: u 1.9 / 4.5 m); eaves 8.4 m"
+    },
+    {
+     "photo": "survey crop 0363100012137854.jpg",
+     "pand": "0363100012137854",
+     "address": "'s-Gravendijkdreef",
+     "note": "2022-12: same row type, red doors, timber ground storey"
+    },
+    {
+     "photo": "sunlit crops 0363100012132569-2016072106.jpg, -2022061607.jpg",
+     "pand": "0363100012132569",
+     "address": "'s-Gravendijkdreef",
+     "note": "2016-07 and 2022-06 sunlit: red-brown brick, bright red doors, orange-brown boards"
+    },
+    {
+     "photo": "survey crop 0363100012137854.jpg",
+     "pand": "0363100012137854",
+     "address": "'s-Gravendijkdreef",
+     "note": "2022-12: staggered French windows on storeys 1 and 2"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.53,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.55,
+       "lights": 1,
+       "frameM": 0.07
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.9,
+       "w": 0.9,
+       "h": 2.3,
+       "note": "red door"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.0,
+       "w": 0.85,
+       "h": 2.0,
+       "sill": 0.1,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 4.65,
+       "w": 0.85,
+       "h": 2.0,
+       "sill": 0.1,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 3.3,
+       "w": 0.85,
+       "h": 2.0,
+       "sill": 0.1,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 0.55,
+       "w": 0.85,
+       "h": 2.0,
+       "sill": 0.1,
+       "lights": 1
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.0,
+       "w": 0.9,
+       "h": 0.85,
+       "sill": 0.1,
+       "colour": "rail",
+       "depth": 0.05,
+       "note": "grey balustrade panel"
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 4.65,
+       "w": 0.9,
+       "h": 0.85,
+       "sill": 0.1,
+       "colour": "rail",
+       "depth": 0.05
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 3.3,
+       "w": 0.9,
+       "h": 0.85,
+       "sill": 0.1,
+       "colour": "rail",
+       "depth": 0.05
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 0.55,
+       "w": 0.9,
+       "h": 0.85,
+       "sill": 0.1,
+       "colour": "rail",
+       "depth": 0.05
+      }
+     ]
+    }
+   ],
+   "boards": [
+    {
+     "levels": "ground",
+     "pitchM": 0.3,
+     "widthM": 0.05,
+     "depthM": 0.02,
+     "palette": "dark"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012132569.jpg",
+     "pand": "0363100012132569",
+     "address": "'s-Gravendijkdreef",
+     "note": "garden side not photographed: inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.3
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.7,
+       "w": 2.4,
+       "h": 2.0,
+       "sill": 0.3,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.4,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "right",
+       "u": 1.3,
+       "w": 1.4,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012132569.jpg",
+     "pand": "0363100012132569",
+     "address": "'s-Gravendijkdreef",
+     "note": "row ends plain brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012132569.jpg",
+     "pand": "0363100012132569",
+     "address": "'s-Gravendijkdreef",
+     "note": "row ends plain brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick: overcast 2025-09 crop reads dark purple-brown; the sunlit 2016-07 / 2022-06 crops read clearly red-brown. Drawn #9a6a5a (sunlit hue, lifted for the bright palette). Ground storey timber #9a6e4e with darker battens.",
+  "The house boundary is read from the regular window rhythm (2.6 m pitch, two windows per house per storey); which window belongs to which house is not visible on the facade. The phase (door 0.9 m from the left party wall) was set from the first contact-sheet overlay, which put every element 1.4 m left of the photo."
+ ]
+}

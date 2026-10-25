@@ -1,0 +1,26 @@
+[
+ {
+  "area": "nw-ns-01",
+  "anchor": {
+   "lng": 4.81687,
+   "lat": 52.34774
+  },
+  "pands": 25,
+  "missing": 0,
+  "per": {
+   "nw-ns-red-three/red/photo": 25
+  }
+ },
+ {
+  "area": "nw-ns-02",
+  "anchor": {
+   "lng": 4.81697,
+   "lat": 52.34937
+  },
+  "pands": 45,
+  "missing": 0,
+  "per": {
+   "nw-ns-red-three/red/photo": 45
+  }
+ }
+]

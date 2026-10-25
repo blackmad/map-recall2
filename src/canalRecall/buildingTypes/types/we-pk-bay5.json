@@ -1,0 +1,436 @@
+{
+ "id": "we-pk-bay5",
+ "label": "Postjeskade quay front (1935): the five-storey version of the we-pk-bay portiek block, canted white bays over storeys 1-4, door pairs, small dormers",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 24,
+  "bouwjaar": [
+   1935,
+   1935
+  ],
+  "lengthM": 6.24,
+  "widthM": 11.6,
+  "bouwlagen": 5,
+  "roof": "pitched",
+  "dwellingsMedian": 8
+ },
+ "storeys": 5,
+ "eavesRangeM": [
+  14.2,
+  16.6
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.5,
+   7.2
+  ],
+  "depth": [
+   10.0,
+   16.8
+  ]
+ },
+ "sizeClassesM": {
+  "depth": [
+   14.0
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.55,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.18,
+  "pitchDeg": 45,
+  "dormers": [
+   {
+    "ref": "left",
+    "u": 1.55,
+    "w": 1.2,
+    "h": 0.95,
+    "setBackM": 0.9,
+    "lights": 2,
+    "cheek": "column",
+    "note": "white dormer over the bay column (2064917, 2079970, 2097799)"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "annexes": [
+  {
+   "id": "bay",
+   "facade": "front",
+   "plan": "segment",
+   "segments": 3,
+   "u": [
+    0.5,
+    2.6
+   ],
+   "d": [
+    0.0,
+    0.6
+   ],
+   "from": 0.0,
+   "to": {
+    "storey": 4,
+    "plus": 2.55
+   },
+   "material": "wall",
+   "glaze": [
+    {
+     "faces": [
+      "out"
+     ],
+     "sill": 0.75,
+     "h": 1.75,
+     "lightM": 0.7,
+     "marginM": 0.07
+    },
+    {
+     "faces": [
+      "out"
+     ],
+     "sill": 3.85,
+     "h": 1.5,
+     "lightM": 0.7,
+     "marginM": 0.07
+    },
+    {
+     "faces": [
+      "out"
+     ],
+     "sill": 6.95,
+     "h": 1.5,
+     "lightM": 0.7,
+     "marginM": 0.07
+    },
+    {
+     "faces": [
+      "out"
+     ],
+     "sill": 10.05,
+     "h": 1.5,
+     "lightM": 0.7,
+     "marginM": 0.07
+    },
+    {
+     "faces": [
+      "out"
+     ],
+     "sill": 13.15,
+     "h": 1.5,
+     "lightM": 0.7,
+     "marginM": 0.07
+    }
+   ],
+   "evidence": "2082799, 2132698, 2142734: canted three-facet bay ~2.1 m wide, ~0.6 m deep, white-framed glazing on storeys 1-3 with brick spandrels, brick above the top bay to the eaves; the ground storey under it has a flat wide window"
+  }
+ ],
+ "defaultVariant": "brown",
+ "variants": {
+  "brown": {
+   "label": "brown brick, white frames, varnished doors",
+   "evidence": "Postjeskade quay (2097799, 2138096, 2145177, 2087839)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#8c7870",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3b4249",
+    "door": "#6a3a2c",
+    "accent": "#b9b2a4",
+    "rail": "#3d3a38",
+    "dark": "#3a3433",
+    "column": "#f0eee6",
+    "joint": "#5a4a44",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#a5624a",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012097799.jpg",
+     "pand": "0363100012097799",
+     "address": "Postjeskade",
+     "note": "2024-12: five storeys on the quay, bays on storeys 1-4, door pairs, small dormers"
+    },
+    {
+     "photo": "survey crop 0363100012138096.jpg",
+     "pand": "0363100012138096",
+     "address": "Postjeskade",
+     "note": "2024-12: same, block end"
+    },
+    {
+     "photo": "survey crop 0363100012145177.jpg",
+     "pand": "0363100012145177",
+     "address": "Postjeskade",
+     "note": "2019-01: same"
+    },
+    {
+     "photo": "survey crop 0363100012087839.jpg",
+     "pand": "0363100012087839",
+     "address": "Postjeskade",
+     "note": "2021-12: same front, door pairs with transoms"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 2,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "right",
+       "u": 0.95,
+       "w": 0.8,
+       "h": 2.3,
+       "note": "door pair: right leaf"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.85,
+       "w": 0.8,
+       "h": 2.3,
+       "note": "door pair: left leaf"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.4,
+       "w": 1.75,
+       "h": 0.4,
+       "sill": 2.38,
+       "lights": 2,
+       "note": "transom lights over the door pair"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.4,
+       "w": 0.1,
+       "h": 2.3,
+       "sill": 0,
+       "colour": "frame",
+       "depth": 0.05,
+       "note": "white post between the doors"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "right",
+       "u": 0.42,
+       "w": 0.18,
+       "h": 2.95,
+       "sill": 0,
+       "colour": "accent",
+       "depth": 0.07,
+       "note": "grey stone jamb of the entrance surround"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "right",
+       "u": 2.38,
+       "w": 0.18,
+       "h": 2.95,
+       "sill": 0,
+       "colour": "accent",
+       "depth": 0.07,
+       "note": "grey stone jamb"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.4,
+       "w": 2.14,
+       "h": 0.2,
+       "sill": 2.8,
+       "colour": "accent",
+       "depth": 0.07,
+       "note": "grey stone head of the entrance surround"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "right",
+       "u": 0.85,
+       "w": 0.95,
+       "h": 1.45,
+       "sill": 0.85,
+       "lights": 1,
+       "frameM": 0.09,
+       "transomM": 0.38,
+       "note": "two windows over the entrance per storey"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "right",
+       "u": 1.95,
+       "w": 0.95,
+       "h": 1.45,
+       "sill": 0.85,
+       "lights": 1,
+       "frameM": 0.09,
+       "transomM": 0.38
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 5,
+     "below": 0.28,
+     "above": 0,
+     "palette": "column"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012082799.jpg",
+     "pand": "0363100012082799",
+     "address": "Postjeskade",
+     "note": "garden side not photographed from the street: two windows per storey and a garden door inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.6,
+       "w": 1.6,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "right",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.6,
+       "w": 1.6,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.4,
+       "w": 0.85,
+       "h": 2.2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012082799.jpg",
+     "pand": "0363100012082799",
+     "address": "Postjeskade",
+     "note": "block ends are plain brick (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012082799.jpg",
+     "pand": "0363100012082799",
+     "address": "Postjeskade",
+     "note": "block ends are plain brick (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick white-referenced twice on 2116506 (Van Walbeeckstraat): overcast 2022-12 crop, brick #413631 against the white bay sill #746e65 -> #86756f; shaded wall of the sunlit 2020-05 crop #8a7764 against its shaded sill #b2bdac -> #ba9686 (the sunlit wall itself clips at ~250). Drawn #8c7870: the first contact sheet at #9a7c6e read pink-orange against the purple-brown photo, so chroma was reduced.",
+  "Roof: the street sees orange-red pantiles under white dormers (2116506 2020-05, lit tile #e2a578-#f9af78, clipped); the PDOK orthophoto reads #8c8484 neutral over 128 pands (84 slate class), i.e. the back slopes and the grey-tiled blocks. Drawn #a5624a, the street-facing slope toned down from the clipped crop.",
+  "Per 6.2 m pand: a canted bay (annex, 3 facets) from the ground to the top storey, and a door pair in a grey stone surround under two windows per storey. alternateMirror pairs bays with bays and entrances with entrances, as the photos show.",
+  "Not modelled: the eaves soffit brackets, the dark vent bricks, the open-stair entrances of the 7.5 m Antillenstraat/Postjeskade pands (held: footprint range)."
+ ]
+}

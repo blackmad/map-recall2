@@ -4,7 +4,7 @@
  *
  *   node --import tsx scripts/building-types/stage-buurt.ts --slug=gein-3 --classes=staging/building-types/gein-3-survey/classes.json --prefix=zo-g3
  *
- * classes.json: {"terraces": {"<terrace index>": {"type", "variant", "via": "photo" | "signature", "flip"?, "repMirror"?, "note"?}}, "pands"?: {"<pand id>": {"variant"?, "hold"?,
+ * classes.json: {"terraces": {"<terrace index>": {"type", "variant", "via": "photo" | "signature", "flip"?, "repMirror"?, "note"?}}, "pands"?: {"<pand id>": {"type"?, "variant"?, "hold"?,
  * "note"}}}: the per-pand entries correct single houses after the build review. `flip: true` takes the terrace's panorama from
  * terraces-r0/terraces-flip.json (survey-terraces.ts --only --flip: the survey shot the garden side, the re-shot looks at the front).
  * `repMirror` is the photographed representative's handedness (alternateMirror designs): build.ts fixes its row's parity with it. Terraces not listed stay
@@ -24,7 +24,7 @@ const slug = arg('slug'), survey = `staging/building-types/${slug}-survey`, pref
 const classesFile = JSON.parse(fs.readFileSync(arg('classes', path.join(survey, 'classes.json')), 'utf8'));
 const classes = classesFile.terraces as Record<string, {type: string; variant: string; via: string; flip?: boolean; repMirror?: boolean; note?: string}>;
 // per-pand corrections on top of the terrace class (a survey terrace that joins two rows of different eaves, a house held after review)
-const pandOverrides = (classesFile.pands ?? {}) as Record<string, {variant?: string; hold?: string; note: string}>;
+const pandOverrides = (classesFile.pands ?? {}) as Record<string, {type?: string; variant?: string; hold?: string; note: string}>;
 const terraces = JSON.parse(fs.readFileSync(path.join(survey, 'terraces-r0/terraces.json'), 'utf8')).terraces as any[];
 // re-shot terraces (flip): the front panorama replaces the garden-side one where classes.json says so
 const flipFile = path.join(survey, 'terraces-r0/terraces-flip.json');
@@ -105,7 +105,7 @@ for (const [idx, [, list]] of ordered.entries()) {
       note: `${slug} terrace #${m.terrace.terrace} (${m.terrace.size} houses) via ${m.cls.via}${shot ? `; ${m.terrace.reShot ? 'front re-shot' : 'survey'} panorama ${shot.panoId} ${String(shot.timestamp).slice(0, 10)} of representative ${m.terrace.rep}` : ''}${m.cls.note ? `; ${m.cls.note}` : ''}`};
     if (m.cls.repMirror !== undefined && fp.id === m.terrace.rep) variants[fp.id].mirrorAnchor = m.cls.repMirror;
     const po = pandOverrides[fp.id];
-    if (po) Object.assign(variants[fp.id], po.variant ? {variant: po.variant} : {}, po.hold ? {hold: po.hold} : {}, {note: `${variants[fp.id].note}; ${po.note}`});
+    if (po) Object.assign(variants[fp.id], po.type ? {type: po.type} : {}, po.variant ? {variant: po.variant} : {}, po.hold ? {hold: po.hold} : {}, {note: `${variants[fp.id].note}; ${po.note}`});
   }
   fs.mkdirSync(dir, {recursive: true});
   fs.writeFileSync(path.join(dir, 'instances.json'), JSON.stringify({area, anchor, source: 'PDOK 3D Basisvoorziening 2025 (3DBAG reconstruction, CC BY 4.0) LoD0 footprints + attributes; OSM highways from public/data/extracts/amsterdam/streets-routing.json', instances, streets}) + '\n');

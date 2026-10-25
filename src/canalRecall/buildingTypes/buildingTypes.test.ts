@@ -1101,3 +1101,26 @@ test('white trim (#78): a spec without painted whites generates exactly as befor
   const keys = [...m.buckets.keys()];
   assert.ok(keys.includes('frame|#e9e3d2') && keys.includes('stone|#c9c4b6') && keys.includes('stucco|#e4dfd0') && !keys.some(k => k.startsWith('paint|')), keys.join(' '));
 });
+
+// Round 6 (#79): Postjeskade, Grunder/Koningshoef, Kantershof, Nieuw-Sloten-Noordoost.
+const R6_TYPES = ['we-pk-bay', 'we-pk-bay5', 'zo-gk-blue-bay', 'zo-gk-pergola', 'zo-gk-post-row', 'zo-gk-gravendijk', 'zo-ko-three', 'zo-ko-patio', 'zo-ko-patio-top', 'nw-ns-red-three'].map(id => load(`${id}.json`));
+/** Short runs (17 and 24 houses) with two panoramas that show the whole front. */
+const R6_TWO_PANDS = new Set(['zo-gk-post-row', 'zo-gk-gravendijk']);
+test('round-6 designs (#79): validate, >= 4 distinct photo pands on the front (>= 2 for the two short runs), counted openings match for every variant and handedness, <= 600 triangles, party walls blank, nothing below ground, within the frontage', () => {
+  for (const spec of R6_TYPES) {
+    assert.deepEqual(validateSpec(spec), [], spec.id);
+    assert.ok(new Set(spec.facades.front.evidence.map(e => e.pand)).size >= (R6_TWO_PANDS.has(spec.id) ? 2 : 4), `${spec.id}: evidence`);
+    const p = r3Params(spec);
+    for (const variant of Object.keys(spec.variants)) for (const mirror of [false, true]) {
+      const {report, mesh} = generate(spec, {...p, variant, mirror});
+      assert.deepEqual(report.facades.front, spec.facades.front.counted, `${spec.id}/${variant}/front`);
+      assert.ok(mesh.triangles <= 600, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
+      const mid = generate(spec, {...p, variant, mirror, freeSides: {left: false, right: false}});
+      assert.equal(mid.report.facades.left.bays + mid.report.facades.right.bays, 0, 'party walls have no bays');
+      const b = mesh.bounds();
+      assert.ok(b.min[1] >= -1e-9, `${spec.id}: nothing below ground`);
+      const ov = spec.roof.vergeOverhangM + 0.06;
+      assert.ok(b.max[0] <= p.lengthM / 2 + ov && b.min[0] >= -p.lengthM / 2 - ov, `${spec.id}/${variant}/${mirror}: within its frontage`);
+    }
+  }
+});
