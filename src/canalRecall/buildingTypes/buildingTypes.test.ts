@@ -835,7 +835,7 @@ test('white-referenced exposure (#75): a shaded wall divided by its own white fr
   assert.equal(whiteReferenced('#ffffff', '#101010'), '#ffffff', 'clamped');
 });
 
-const R4_TYPES = ['fe-db-row'].map(id => load(`${id}.json`));
+const R4_TYPES = ['fe-db-row', 'th-gk-row'].map(id => load(`${id}.json`));
 
 test('round-4 designs (#75): validate, >= 4 distinct photo pands on the front, counted openings match for every variant and handedness, <= 600 triangles, party walls blank, chimney cap or ridge reached, within the frontage', () => {
   for (const spec of R4_TYPES) {
@@ -879,4 +879,16 @@ test('window joinery (#75): absent -> byte-identical; frameM draws the border in
   const bad = (e: Partial<TypeSpec['facades']['front']['bays'][0]['elements'][0]>): TypeSpec => ({...S, facades: {...S.facades, front: {...S.facades.front, bays: S.facades.front.bays.map((bay, i) => (i ? bay : {...bay, elements: [...bay.elements, {kind: 'door', levels: 'ground', w: 0.9, h: 2.1, ...e} as never]}))}}});
   assert.ok(validateSpec(bad({frameM: 0.1})).length > 0, 'joinery on a door');
   assert.ok(validateSpec(bad({kind: 'window', transomM: 3})).length > 0, 'transom outside the window');
+});
+
+test('stripe depth (#75): absent = the 1 cm stripe byte for byte; depthM moves the stripe proud of a plinthM band', () => {
+  const S = load('th-gk-row.json'), p = {...r3Params(S), variant: 'hood'};
+  const withStripes = (depthM?: number): TypeSpec => ({...S, facades: {...S.facades, front: {...S.facades.front, stripes: [{levels: 'ground', pitchM: 20, heightM: 0.95, offsetM: 0, palette: 'dark', ...(depthM === undefined ? {} : {depthM})}]}}});
+  const dark = `stucco|${S.variants.hood.palette.dark}`;
+  const key = (m: ReturnType<typeof generate>['mesh']) => [...m.buckets.keys()].find(k => k.includes(S.variants.hood.palette.dark))!;
+  const a = generate(withStripes(), p).mesh, b = generate(withStripes(0.01), p).mesh, c = generate(withStripes(0.035), p).mesh;
+  assert.ok(key(a), dark);
+  assert.deepEqual(b.buckets.get(key(b))!.positions, a.buckets.get(key(a))!.positions);
+  const zs = (m: ReturnType<typeof generate>['mesh']) => { const pos = m.buckets.get(key(m))!.positions; const out: number[] = []; for (let i = 2; i < pos.length; i += 3) out.push(pos[i]); return Math.max(...out); };
+  assert.ok(Math.abs(zs(c) - zs(a) - 0.025) < 1e-6, `stripe 2.5 cm further out (${zs(c)} vs ${zs(a)})`);
 });

@@ -249,13 +249,14 @@ function canopyUnit(c: Ctx, f: Frame, u: number, w: number, v: number, depth: nu
 }
 
 /** Horizontal brick stripes over [vFrom, vTo], 1 cm proud of the wall, cut around the opening rectangles (u0, u1, v0, v1) they would cross. */
-function stripesUnit(c: Ctx, f: Frame, len: number, vFrom: number, vTo: number, s: {pitchM: number; heightM: number; offsetM?: number}, key: MaterialKey, openings: number[][]): void {
+function stripesUnit(c: Ctx, f: Frame, len: number, vFrom: number, vTo: number, s: {pitchM: number; heightM: number; offsetM?: number; depthM?: number}, key: MaterialKey, openings: number[][]): void {
+  const d = s.depthM ?? 0.01;
   for (let y = vFrom + (s.offsetM ?? 0); y < vTo - 0.02; y += s.pitchM) {
     const y1 = Math.min(vTo, y + s.heightM);
     const cuts = openings.filter(o => o[2] < y1 && o[3] > y).map(o => [Math.max(0, o[0]), Math.min(len, o[1])]).sort((p, q) => p[0] - q[0]);
     let u = 0;
     for (const [a, z] of [...cuts, [len, len]]) {
-      if (a - u > 0.05) plate(c.mb, key, f, u, a, y, y1, 0.01);
+      if (a - u > 0.05) plate(c.mb, key, f, u, a, y, y1, d);
       u = Math.max(u, z);
     }
   }

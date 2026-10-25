@@ -108,9 +108,10 @@ export interface FacadeSpec {
   /**
    * Striped brickwork (horizontal bands of a second brick): bands `heightM` tall every `pitchM`, the first `offsetM` above each storey's
    * floor line, over the storeys in `levels` (the top storey reaches the wall top), 1 cm proud of the wall and cut where a window, door
-   * or canopy of this facade sits.
+   * or canopy of this facade sits. `depthM` (#75) sets how far proud (default 0.01 m): a dark brick plinth course in front of a
+   * `ground.plinthM` band (2.5 cm proud) needs more.
    */
-  stripes?: {levels: Levels; pitchM: number; heightM: number; offsetM?: number; palette: PaletteKey}[];
+  stripes?: {levels: Levels; pitchM: number; heightM: number; offsetM?: number; depthM?: number; palette: PaletteKey}[];
 }
 
 /**
