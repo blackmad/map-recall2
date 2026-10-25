@@ -91,6 +91,12 @@ const VIEWS: Record<string, { center: [number, number]; zoom: number; pitch: num
   'r7-jan-maijenbuurt': { center: [4.852796, 52.372007], zoom: 18.4, pitch: 62, bearing: 254 },
   'r7-mercatorstraat': { center: [4.850509, 52.371280], zoom: 18.4, pitch: 62, bearing: 254 },
   'r7-john-franklinbuurt': { center: [4.852935, 52.372877], zoom: 18.4, pitch: 62, bearing: 254 },
+  // 2026-10-25 round 8 (#82): Oostoever Sloterplas band/white rows and garage rows, De Klomp (Weesp) 1971 rows, Weesp-Zuid I 1950 pairs, Sporenburg garage rows.
+  'r8-oostoever': { center: [4.829306, 52.367261], zoom: 18.4, pitch: 62, bearing: 179 },
+  'r8-oostoever-garage': { center: [4.833113, 52.368896], zoom: 18.4, pitch: 62, bearing: 276 },
+  'r8-de-klomp': { center: [5.050412, 52.300683], zoom: 18.4, pitch: 62, bearing: 249 },
+  'r8-weesp-zuid': { center: [5.041833, 52.303465], zoom: 18.4, pitch: 62, bearing: 242 },
+  'r8-sporenburg': { center: [4.946948, 52.37455], zoom: 18.4, pitch: 62, bearing: 350 },
 };
 const ONLY = process.env.BT_VIEWS?.split(',');
 const CAM = ['jumpTo', 'easeTo', 'flyTo', 'setCenter', 'setZoom', 'setBearing', 'setPitch'];

@@ -1,0 +1,342 @@
+{
+ "id": "oo-sb-gate-french",
+ "label": "Sporenburg (Seinwachterstraat, 1990s) 4.3 m patio house: a tall gated entrance between concrete piers under a concrete lintel and a grille fanlight, a tall pink-grey brick front with one recessed French window behind a railing, a flat parapet at 9.4 m; a lower middle and a tall back wing round the patio",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 24,
+  "bouwjaar": [
+   1997,
+   1999
+  ],
+  "lengthM": 4.3,
+  "widthM": 14.6,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  6.2,
+  7.4
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4,
+   4.6
+  ],
+  "depth": [
+   14,
+   15
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0,
+  "vergeOverhangM": 0,
+  "thicknessM": 0.2,
+  "pitchDeg": 0,
+  "eavesPinM": 6.8
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "annexes": [
+  {
+   "id": "front-wing",
+   "facade": "front",
+   "u": [
+    0,
+    4.3
+   ],
+   "d": [
+    -4.4,
+    0
+   ],
+   "from": {
+    "eaves": 0
+   },
+   "to": {
+    "eaves": 2.65
+   },
+   "evidence": "3DBAG: the front 4.4 m of the plot is 9.4 m tall (the street face), the middle 6.8-7.4 m"
+  },
+  {
+   "id": "back-wing",
+   "facade": "back",
+   "u": [
+    0,
+    4.3
+   ],
+   "d": [
+    -3.6,
+    0
+   ],
+   "from": {
+    "eaves": 0
+   },
+   "to": {
+    "eaves": 2.7
+   },
+   "evidence": "3DBAG: the back 3.6 m is 9.5 m tall"
+  }
+ ],
+ "defaultVariant": "brick",
+ "variants": {
+  "brick": {
+   "label": "pink-grey brick, light concrete piers and lintel, orange timber frames, grey gates",
+   "evidence": "terrace #26 (Seinwachterstraat)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#b29a8c",
+     "measured": true
+    },
+    "frame": "#a5532f",
+    "glass": "#3a4148",
+    "door": "#62645f",
+    "accent": "#cfccc4",
+    "rail": "#5a5d5c",
+    "dark": "#3c3e3d",
+    "column": "#d3d0c8",
+    "joint": "#5d6166",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#8d8d88",
+     "measured": false
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012147924.jpg",
+     "pand": "0363100012147924",
+     "address": "Seinwachterstraat",
+     "note": "2022-04 and 2017-04 (sunlit): per 4.3 m house light concrete piers about 0.5 m wide on the party walls, a concrete lintel band at about 3.4 m over a grille fanlight and a full-width folding gate; above, pink-grey brick with one recessed French window (about 1.7 x 2.0 m, orange frames) behind a railing, blank brick up to the parapet"
+    },
+    {
+     "photo": "survey crop 0363100012068203.jpg",
+     "pand": "0363100012068203",
+     "address": "Seinwachterstraat",
+     "note": "2020-04 (sunlit): same piers, lintel, grille fanlight, folding gate and French window behind a railing"
+    },
+    {
+     "photo": "survey crop 0363100012154996.jpg",
+     "pand": "0363100012154996",
+     "address": "Seinwachterstraat",
+     "note": "2020-04: same piers, lintel, gates and French windows at the row end"
+    },
+    {
+     "photo": "survey crop 0363100012093312.jpg",
+     "pand": "0363100012093312",
+     "address": "Seinwachterstraat",
+     "note": "2020-04: same French window and gate; the neighbour has a yellow garage door"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.125,
+       "w": 0.25,
+       "h": 3.4,
+       "sill": 0,
+       "depth": 0.06,
+       "colour": "column",
+       "note": "concrete pier (half; the neighbour has the other half)"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "right",
+       "u": 0.125,
+       "w": 0.25,
+       "h": 3.4,
+       "sill": 0,
+       "depth": 0.06,
+       "colour": "column"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "span": true,
+       "inset": 0.25,
+       "h": 0.45,
+       "sill": 2.95,
+       "depth": 0.04,
+       "colour": "column",
+       "note": "concrete lintel"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "span": true,
+       "inset": 0.25,
+       "h": 0.55,
+       "sill": 2.4,
+       "depth": 0.015,
+       "colour": "rail",
+       "note": "grille fanlight"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "span": true,
+       "inset": 0.25,
+       "h": 2.4,
+       "sill": 0,
+       "depth": 0.015,
+       "colour": "door",
+       "note": "folding gate"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "u": 0.1,
+       "w": 1.7,
+       "h": 2,
+       "sill": 0.25,
+       "lights": 2,
+       "frameM": 0.09
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "u": 0.1,
+       "w": 1.7,
+       "h": 0.95,
+       "sill": 0.25,
+       "depth": 0.08,
+       "colour": "rail",
+       "note": "railing of the French window"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012147924.jpg",
+     "pand": "0363100012147924",
+     "address": "Seinwachterstraat",
+     "note": "patio side not photographed: glazed ground storey and two windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "span": true,
+       "inset": 0.4,
+       "h": 2.2,
+       "sill": 0.1,
+       "lights": 3,
+       "frameM": 0.08
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "u": 0,
+       "w": 1.6,
+       "h": 1.6,
+       "sill": 0.8,
+       "lights": 2,
+       "frameM": 0.08
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012147924.jpg",
+     "pand": "0363100012147924",
+     "address": "Seinwachterstraat",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012147924.jpg",
+     "pand": "0363100012147924",
+     "address": "Seinwachterstraat",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick read #b39f91 in the 2017-04 crop (the 2022 crop clips), drawn #b29a8c.",
+  "Body 6.8 m (the patio-side middle); the 9.4 m street wing and the 9.5 m back wing are annexes from 3DBAG. The street face above 6.8 m is the annex face, blank brick as in the photos. Plots outside 14-15 m deep are held, and so is the back-to-back north-facing row on J.F. van Hengelstraat (a different design: front doors and two storeys of French windows)."
+ ]
+}

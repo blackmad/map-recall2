@@ -1,0 +1,369 @@
+{
+ "id": "ws-wz-diamond",
+ "label": "Weesp-Zuid, Weesp (1950) two-storey terraced house in brown brick under an orange tile roof: doors in pairs between grey stone jambs under a pointed lantern light, a small window in a white diamond surround over each door, a wide living-room window and two bedroom windows; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 10,
+  "bouwjaar": [
+   1950,
+   1950
+  ],
+  "lengthM": 5.8,
+  "widthM": 7.2,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5,
+  6.1
+ ],
+ "ridgeRangeM": [
+  7,
+  8.6
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.4,
+   6.5
+  ],
+  "depth": [
+   6.8,
+   7.9
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.12,
+  "pitchDeg": 32,
+  "eavesPinM": 5.5,
+  "chimneys": [
+   {
+    "ref": "right",
+    "u": 0.2,
+    "w": 0.35,
+    "d": 0.6,
+    "h": 0.8,
+    "capM": 0.1,
+    "cap": "wall",
+    "note": "half of the stack the pair shares"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "brick",
+ "variants": {
+  "brick": {
+   "label": "brown brick, white frames and diamonds, grey stone jambs, green doors",
+   "evidence": "terrace #36",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#85705c",
+     "measured": true
+    },
+    "frame": "#f4f3ee",
+    "glass": "#3a4148",
+    "door": "#2f5a48",
+    "accent": "#8d8a84",
+    "rail": "#2f6150",
+    "dark": "#4a3a33",
+    "column": "#8d8a84",
+    "joint": "#5d6166",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#b8735e",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000059577.jpg",
+     "pand": "0457100000059577",
+     "address": "Meester J.R. Thorbeckelaan",
+     "note": "2024: per 5.8 m house the door 1.7 m from the pair line between grey stone jambs, a small light over it, a small window inside a white diamond surround above; a 2.2 m living-room window and two 1.0 m bedroom windows in broad white frames towards the downpipe pair line; mirrored pairs"
+    },
+    {
+     "photo": "survey crop 0457100000059582.jpg",
+     "pand": "0457100000059582",
+     "address": "Meester J.R. Thorbeckelaan",
+     "note": "2024-10: same stone jambs, lantern lights and diamond surrounds"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.07,
+       "w": 0.27,
+       "h": 2.45,
+       "sill": 0,
+       "depth": 0.06,
+       "colour": "column",
+       "note": "stone jamb"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.36,
+       "w": 0.2,
+       "h": 2.45,
+       "sill": 0,
+       "depth": 0.06,
+       "colour": "column",
+       "note": "stone jamb"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.72,
+       "w": 0.85,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.72,
+       "w": 0.45,
+       "h": 0.45,
+       "sill": 2.45,
+       "lights": 1,
+       "frameM": 0.06,
+       "note": "lantern light over the door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.3,
+       "w": 2.2,
+       "h": 1.95,
+       "sill": 0.6,
+       "lights": 1,
+       "frameM": 0.12
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.8,
+       "w": 1.1,
+       "h": 1.1,
+       "sill": 1.25,
+       "depth": 0.02,
+       "colour": "column",
+       "diamond": true,
+       "note": "diamond surround (grey stone)"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.8,
+       "w": 0.6,
+       "h": 0.55,
+       "sill": 1.5,
+       "lights": 1,
+       "frameM": 0.1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.5,
+       "w": 0.95,
+       "h": 1.15,
+       "sill": 0.95,
+       "lights": 1,
+       "frameM": 0.1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 4.95,
+       "w": 0.95,
+       "h": 1.15,
+       "sill": 0.95,
+       "lights": 1,
+       "frameM": 0.1
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000059577.jpg",
+     "pand": "0457100000059577",
+     "address": "Meester J.R. Thorbeckelaan",
+     "note": "garden side not photographed from the street: garden door, kitchen and living-room windows, two bedroom windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1,
+       "w": 0.85,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.2,
+       "w": 1,
+       "h": 1,
+       "sill": 1,
+       "lights": 1,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.8,
+       "w": 2,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 3,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.4,
+       "w": 1,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "right",
+       "u": 1.8,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2,
+       "frameM": 0.07
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000059577.jpg",
+     "pand": "0457100000059577",
+     "address": "Meester J.R. Thorbeckelaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000059577.jpg",
+     "pand": "0457100000059577",
+     "address": "Meester J.R. Thorbeckelaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick as ws-wz-plain. The diamond surround is the kit diamond panel (#82). The lantern light is drawn square; its pointed (hexagonal) head is not modelled.",
+  "Eaves pinned at 5.5 m; ridge from 3DBAG (7.7 m)."
+ ]
+}

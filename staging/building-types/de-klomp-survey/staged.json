@@ -1,0 +1,28 @@
+[
+ {
+  "area": "ws-dk-01",
+  "anchor": {
+   "lng": 5.0507,
+   "lat": 52.29974
+  },
+  "pands": 6,
+  "missing": 0,
+  "per": {
+   "ws-dk-1971/pale/photo": 6
+  }
+ },
+ {
+  "area": "ws-dk-02",
+  "anchor": {
+   "lng": 5.05109,
+   "lat": 52.30104
+  },
+  "pands": 123,
+  "missing": 0,
+  "per": {
+   "ws-dk-1971/dark/photo": 60,
+   "ws-dk-1971/pale/photo": 35,
+   "ws-dk-1986/brown/photo": 28
+  }
+ }
+]

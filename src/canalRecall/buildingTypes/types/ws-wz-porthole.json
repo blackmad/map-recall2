@@ -1,0 +1,327 @@
+{
+ "id": "ws-wz-porthole",
+ "label": "Weesp-Zuid, Weesp (1950) two-storey terraced house in brown brick under an orange tile roof: the two doors of a pair share a round-arched recessed porch, a porthole over each door, a wide living-room window and a white-framed bedroom window to the other side; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 26,
+  "bouwjaar": [
+   1950,
+   1950
+  ],
+  "lengthM": 6,
+  "widthM": 7.2,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5,
+  6.1
+ ],
+ "ridgeRangeM": [
+  7,
+  8.6
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.4,
+   6.5
+  ],
+  "depth": [
+   6.8,
+   7.9
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.12,
+  "pitchDeg": 32,
+  "eavesPinM": 5.6,
+  "chimneys": [
+   {
+    "ref": "right",
+    "u": 0.2,
+    "w": 0.35,
+    "d": 0.6,
+    "h": 0.8,
+    "capM": 0.1,
+    "cap": "wall",
+    "note": "half of the stack the pair shares"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "brick",
+ "variants": {
+  "brick": {
+   "label": "brown brick, white frames, green doors, orange-red tiles",
+   "evidence": "terraces #41 #46 #47",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#85705c",
+     "measured": true
+    },
+    "frame": "#f4f3ee",
+    "glass": "#3a4148",
+    "door": "#2f5a48",
+    "accent": "#f1f0ea",
+    "rail": "#2f6150",
+    "dark": "#4a3a33",
+    "column": "#8d8a84",
+    "joint": "#5d6166",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#b8735e",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000060025.jpg",
+     "pand": "0457100000060025",
+     "address": "Doctor A. Kuyperlaan",
+     "note": "2024: per 6 m house: the pair shares a round-arched porch 2.2 m wide on the pair line, a door to each side inside it; a porthole about 0.65 m over each door; a 1.9 m living-room window and a 1.5 m bedroom window towards the downpipe pair line; mirrored pairs"
+    },
+    {
+     "photo": "survey crop 0457100000060245.jpg",
+     "pand": "0457100000060245",
+     "address": "Doctor J. Th. de Visserlaan",
+     "note": "2022-06 and 2025-09 (sunlit): same, two pairs"
+    },
+    {
+     "photo": "survey crop 0457100000060041.jpg",
+     "pand": "0457100000060041",
+     "address": "Doctor A. Kuyperlaan",
+     "note": "2024: same, porthole and porch"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0,
+       "w": 2.6,
+       "h": 2.6,
+       "sill": 0,
+       "depth": 0.01,
+       "colour": "dark",
+       "archM": 0.85,
+       "archShape": "round",
+       "note": "shaded recess of the shared porch, half in each house"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.85,
+       "w": 0.75,
+       "h": 2.05
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 0.85,
+       "w": 0.65,
+       "h": 0.65,
+       "sill": 0.95,
+       "lights": 1,
+       "frameM": 0.08,
+       "round": true,
+       "note": "porthole"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.9,
+       "w": 1.9,
+       "h": 1.5,
+       "sill": 0.75,
+       "lights": 2,
+       "frameM": 0.09
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.9,
+       "w": 1.5,
+       "h": 1.05,
+       "sill": 0.95,
+       "lights": 2,
+       "frameM": 0.09
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000060025.jpg",
+     "pand": "0457100000060025",
+     "address": "Doctor A. Kuyperlaan",
+     "note": "garden side not photographed from the street: garden door, kitchen and living-room windows, two bedroom windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1,
+       "w": 0.85,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.2,
+       "w": 1,
+       "h": 1,
+       "sill": 1,
+       "lights": 1,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.8,
+       "w": 2,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 3,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.4,
+       "w": 1,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "right",
+       "u": 1.8,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2,
+       "frameM": 0.07
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000060025.jpg",
+     "pand": "0457100000060025",
+     "address": "Doctor A. Kuyperlaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0457100000060025.jpg",
+     "pand": "0457100000060025",
+     "address": "Doctor A. Kuyperlaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick as ws-wz-plain (same builder, same year). The porch is drawn as its shaded recess (a round-arched plate, kit archShape round, #82) with the doors in front; its brick soffit and the soldier arch are not modelled.",
+  "Eaves pinned at 5.6 m; ridge from 3DBAG (8.0 m)."
+ ]
+}

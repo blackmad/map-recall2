@@ -228,9 +228,10 @@ const insideRing = (p: Pt, ring: Pt[]): boolean => {
  * cross-sections are at least 60 % of that width. Local protrusions of the roof outline (a lift shaft, a mapping sliver) do not
  * move it. Returns null when there is no roof surface.
  */
-export function bodyRectFromRoof(roofs: RoofPolygon[], axis: Rect, tolM = 0.6, stepM = 0.5): Rect | null {
+export function bodyRectFromRoof(roofs: RoofPolygon[], axis: Rect, tolM = 0.6, stepM = 0.5, from: 'largest' | 'highest' = 'largest'): Rect | null {
   if (!roofs.length) return null;
-  const main = roofs.reduce((a, b) => (b.area > a.area ? b : a));
+  // #82 `from: 'highest'`: the tall body is the reference even where a low garden shed covers more plan area
+  const main = from === 'highest' ? roofs.reduce((a, b) => (b.z > a.z ? b : a)) : roofs.reduce((a, b) => (b.area > a.area ? b : a));
   const toST = (p: Pt): Pt => { const dx = p[0] - axis.center[0], dz = p[1] - axis.center[1]; return [dx * axis.long[0] + dz * axis.long[1], dx * axis.short[0] + dz * axis.short[1]]; };
   const st = roofs.filter(r => Math.abs(r.z - main.z) <= tolM).map(r => r.ring.map(toST));
   // scan the axis rectangle and every selected surface (an absorbed end bay may lie beyond the ring's rectangle)

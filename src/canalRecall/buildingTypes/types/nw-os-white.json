@@ -1,0 +1,316 @@
+{
+ "id": "nw-os-white",
+ "label": "Oostoever Sloterplas (1996-97, Uffizilaan) three-storey terraced house: orange brick ground storey, white rendered upper storeys, flat roof; white entrance zones with pink doors; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 32,
+  "bouwjaar": [
+   1996,
+   1997
+  ],
+  "lengthM": 5.5,
+  "widthM": 11.7,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 3,
+ "footprintRangeM": {
+  "frontage": [
+   5,
+   6
+  ],
+  "depth": [
+   10.5,
+   12.5
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.25,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.22,
+  "pitchDeg": 0,
+  "flatVerge": true,
+  "eavesPinM": 8.6
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "white",
+ "variants": {
+  "white": {
+   "label": "orange brick ground storey, white render above, white frames, pink doors",
+   "evidence": "terraces #44 #50 #59 #63 (Uffizilaan)",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#ecebe4"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#c98a68",
+     "measured": true
+    },
+    "frame": "#f2f1ec",
+    "glass": "#3b4249",
+    "door": "#d49a86",
+    "accent": "#dcdad3",
+    "rail": "#e8e8e4",
+    "dark": "#4a4744",
+    "column": "#efeeea",
+    "joint": "#5d6166",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#d4d4cf",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012105566.jpg",
+     "pand": "0363100012105566",
+     "address": "Uffizilaan",
+     "note": "2024-11 and sunlit 2019-07: brick ground storey with the white entrance zone and a wide window; white render above: first storey a wide two-light window and a small window, second storey one wide window; doors side by side"
+    },
+    {
+     "photo": "survey crop 0363100012154484.jpg",
+     "pand": "0363100012154484",
+     "address": "Uffizilaan",
+     "note": "2024-11: same"
+    },
+    {
+     "photo": "survey crop 0363100012069058.jpg",
+     "pand": "0363100012069058",
+     "address": "Uffizilaan",
+     "note": "2024-11: same"
+    },
+    {
+     "photo": "survey crop 0363100012076867.jpg",
+     "pand": "0363100012076867",
+     "address": "Uffizilaan",
+     "note": "2024-11: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.8,
+       "w": 1.6,
+       "h": 2.6,
+       "sill": 0,
+       "depth": 0.02,
+       "colour": "column",
+       "note": "white rendered entrance zone"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.6,
+       "w": 0.95,
+       "h": 2.2,
+       "note": "pink (some grey/black) door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.3,
+       "w": 0.3,
+       "h": 2.09,
+       "sill": 0.06,
+       "lights": 1,
+       "note": "sidelight beside the door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.9,
+       "h": 1.45,
+       "sill": 0.75,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.5,
+       "w": 1.5,
+       "h": 1.2,
+       "sill": 0.85,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.2,
+       "w": 0.6,
+       "h": 1,
+       "sill": 1,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 3.5,
+       "w": 1.3,
+       "h": 1.05,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012105566.jpg",
+     "pand": "0363100012105566",
+     "address": "Uffizilaan",
+     "note": "garden side not photographed from the street: garden door, living-room window and upper windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1,
+       "w": 0.9,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.3,
+       "w": 2.2,
+       "h": 1.6,
+       "sill": 0.6,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.8,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012105566.jpg",
+     "pand": "0363100012105566",
+     "address": "Uffizilaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012105566.jpg",
+     "pand": "0363100012105566",
+     "address": "Uffizilaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick as nw-os-band (same project). Flat roof pinned at 8.6 m (3DBAG 8.4-8.7 m). The white upper storeys step forward by pair in the photos (not drawn)."
+ ]
+}

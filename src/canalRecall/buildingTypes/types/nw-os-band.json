@@ -1,0 +1,359 @@
+{
+ "id": "nw-os-band",
+ "label": "Oostoever Sloterplas (1996, Hermitagelaan, Pradolaan, Guggenheimlaan) three-storey terraced house: orange brick ground and first storey, white rendered top storey under a thin flat roof edge; white rendered entrance zones with pink doors; mirrored pairs; a two-storey garden wing",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 67,
+  "bouwjaar": [
+   1996,
+   1997
+  ],
+  "lengthM": 5.5,
+  "widthM": 7.5,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 3,
+ "footprintRangeM": {
+  "frontage": [
+   5,
+   6
+  ],
+  "depth": [
+   6,
+   8
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "bodyFromRoof": {
+  "tolM": 0.6
+ },
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.25,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.22,
+  "pitchDeg": 0,
+  "flatVerge": true,
+  "eavesPinM": 9
+ },
+ "ground": {
+  "mode": "solid",
+  "plinthStoreys": 2
+ },
+ "annexes": [
+  {
+   "id": "garden-wing",
+   "facade": "back",
+   "u": [
+    0,
+    5.5
+   ],
+   "d": [
+    0,
+    3.9
+   ],
+   "to": {
+    "storey": 2
+   },
+   "material": "plinth",
+   "fascia": {
+    "h": 0.2,
+    "colour": "column"
+   },
+   "evidence": "3DBAG: a 5.7-6.0 m roof plane 3.8-4.2 m deep behind the 8.7 m body on every Hermitagelaan/Pradolaan pand (roof planes of 0363100012144362, 0363100012131960)"
+  }
+ ],
+ "defaultVariant": "brick",
+ "variants": {
+  "brick": {
+   "label": "orange brick, white top storey, white frames, pink doors",
+   "evidence": "terraces #42 #43 #52 #53 #57 (Hermitagelaan, Pradolaan, Guggenheimlaan)",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#ecebe4"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#c98a68",
+     "measured": true
+    },
+    "frame": "#f2f1ec",
+    "glass": "#3b4249",
+    "door": "#d49a86",
+    "accent": "#dcdad3",
+    "rail": "#e8e8e4",
+    "dark": "#4a4744",
+    "column": "#efeeea",
+    "joint": "#5d6166",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#d4d4cf",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012144362.jpg",
+     "pand": "0363100012144362",
+     "address": "Hermitagelaan",
+     "note": "2024-11: per 5.5 m house a white rendered entrance zone (door + sidelight) at the pair line, a wide two-light ground window in brick; first storey a two-light window and a narrow tall window; white rendered top storey with two windows; doors side by side (mirrored pairs)"
+    },
+    {
+     "photo": "survey crop 0363100012131960.jpg",
+     "pand": "0363100012131960",
+     "address": "Hermitagelaan",
+     "note": "2024-11: same; pink doors"
+    },
+    {
+     "photo": "survey crop 0363100012096746.jpg",
+     "pand": "0363100012096746",
+     "address": "Pradolaan",
+     "note": "2024-11: same"
+    },
+    {
+     "photo": "survey crop 0363100012074777.jpg",
+     "pand": "0363100012074777",
+     "address": "Guggenheimlaan",
+     "note": "2024-11: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.8,
+       "w": 1.6,
+       "h": 2.75,
+       "sill": 0,
+       "depth": 0.02,
+       "colour": "column",
+       "note": "white rendered entrance zone"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.6,
+       "w": 0.95,
+       "h": 2.2,
+       "note": "pink (some grey/black) door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.3,
+       "w": 0.3,
+       "h": 2.09,
+       "sill": 0.06,
+       "lights": 1,
+       "note": "sidelight beside the door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.9,
+       "h": 1.45,
+       "sill": 0.75,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.35,
+       "h": 1.3,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.25,
+       "w": 0.35,
+       "h": 1.3,
+       "sill": 0.8,
+       "lights": 1,
+       "note": "narrow tall window over the entrance"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.15,
+       "h": 0.95,
+       "sill": 0.85,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 1.35,
+       "w": 0.9,
+       "h": 0.95,
+       "sill": 0.85,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012144362.jpg",
+     "pand": "0363100012144362",
+     "address": "Hermitagelaan",
+     "note": "garden side not photographed from the street: garden door, living-room window and upper windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1,
+       "w": 0.9,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.3,
+       "w": 2.2,
+       "h": 1.6,
+       "sill": 0.6,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.8,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012144362.jpg",
+     "pand": "0363100012144362",
+     "address": "Hermitagelaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012144362.jpg",
+     "pand": "0363100012144362",
+     "address": "Hermitagelaan",
+     "note": "end walls seen edge-on: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick: sunlit 2018-07 Hermitagelaan crop reads #d59a77 (p50-90 #dda07d); drawn #c98a68. White render reads clipped white in the sun.",
+  "Flat roof edge pinned at 9.0 m (eavesPinM): 3DBAG reads the body at 8.7-8.8 m and a 5.7-6.0 m garden wing (bodyFromRoof keeps the tall body; the wing is the brick annex).",
+  "Kit: plinthStoreys 2 (#80) carries the brick over two storeys under the white top storey.",
+  "Louvrelaan (#64) is held: its doors are not paired and its first storey has tall French windows (another design)."
+ ]
+}

@@ -1,0 +1,134 @@
+{
+ "terraces": {
+  "38": {
+   "type": "nw-os-tretjakov",
+   "variant": "green",
+   "via": "photo",
+   "repMirror": true
+  },
+  "39": {
+   "type": "nw-os-tretjakov",
+   "variant": "green",
+   "via": "photo"
+  },
+  "42": {
+   "type": "nw-os-band",
+   "variant": "brick",
+   "via": "photo",
+   "repMirror": true
+  },
+  "43": {
+   "type": "nw-os-band",
+   "variant": "brick",
+   "via": "photo",
+   "repMirror": false
+  },
+  "44": {
+   "type": "nw-os-white",
+   "variant": "white",
+   "via": "photo",
+   "repMirror": true
+  },
+  "46": {
+   "type": "nw-os-white-low",
+   "variant": "white",
+   "via": "photo"
+  },
+  "47": {
+   "type": "nw-os-white-low",
+   "variant": "white",
+   "via": "photo",
+   "repMirror": false
+  },
+  "49": {
+   "type": "nw-os-garage-top",
+   "variant": "brick",
+   "via": "photo"
+  },
+  "50": {
+   "type": "nw-os-white",
+   "variant": "white",
+   "via": "photo"
+  },
+  "52": {
+   "type": "nw-os-band",
+   "variant": "brick",
+   "via": "photo"
+  },
+  "53": {
+   "type": "nw-os-band",
+   "variant": "brick",
+   "via": "photo"
+  },
+  "55": {
+   "type": "nw-os-white-low",
+   "variant": "white",
+   "via": "photo",
+   "repMirror": false
+  },
+  "57": {
+   "type": "nw-os-band",
+   "variant": "brick",
+   "via": "photo"
+  },
+  "59": {
+   "type": "nw-os-white",
+   "variant": "white",
+   "via": "photo"
+  },
+  "60": {
+   "type": "nw-os-garage-top",
+   "variant": "brick",
+   "via": "photo"
+  },
+  "61": {
+   "type": "nw-os-white-low",
+   "variant": "white",
+   "via": "photo",
+   "repMirror": false
+  },
+  "63": {
+   "type": "nw-os-white",
+   "variant": "white",
+   "via": "photo"
+  },
+  "66": {
+   "type": "nw-os-garage-top",
+   "variant": "brick",
+   "via": "photo"
+  },
+  "67": {
+   "type": "nw-os-garage",
+   "variant": "four",
+   "via": "photo"
+  },
+  "70": {
+   "type": "nw-os-garage",
+   "variant": "brick",
+   "via": "photo"
+  },
+  "73": {
+   "type": "nw-os-garage",
+   "variant": "brick",
+   "via": "photo"
+  }
+ },
+ "pands": {
+  "0363100012065135": {
+   "variant": "brick",
+   "note": "body 11 m deep, 3 storeys: one body over the whole depth"
+  },
+  "0363100012076918": {
+   "variant": "brick",
+   "note": "body 11 m deep, 3 storeys: one body over the whole depth"
+  },
+  "0363100012119730": {
+   "variant": "brick",
+   "note": "body 11 m deep, 3 storeys: one body over the whole depth"
+  },
+  "0363100012122398": {
+   "variant": "brick",
+   "note": "body 11 m deep, 3 storeys: one body over the whole depth"
+  }
+ }
+}

@@ -1,0 +1,55 @@
+[
+ {
+  "area": "nw-os-01",
+  "anchor": {
+   "lng": 4.83014,
+   "lat": 52.36701
+  },
+  "pands": 163,
+  "missing": 0,
+  "per": {
+   "nw-os-tretjakov/green/photo": 30,
+   "nw-os-band/brick/photo": 57,
+   "nw-os-white/white/photo": 24,
+   "nw-os-white-low/white/photo": 52
+  }
+ },
+ {
+  "area": "nw-os-02",
+  "anchor": {
+   "lng": 4.83216,
+   "lat": 52.36755
+  },
+  "pands": 26,
+  "missing": 0,
+  "per": {
+   "nw-os-garage-top/brick/photo": 26
+  }
+ },
+ {
+  "area": "nw-os-03",
+  "anchor": {
+   "lng": 4.83106,
+   "lat": 52.36812
+  },
+  "pands": 8,
+  "missing": 0,
+  "per": {
+   "nw-os-white/white/photo": 8
+  }
+ },
+ {
+  "area": "nw-os-04",
+  "anchor": {
+   "lng": 4.83237,
+   "lat": 52.36901
+  },
+  "pands": 91,
+  "missing": 0,
+  "per": {
+   "nw-os-garage-top/brick/photo": 22,
+   "nw-os-garage/four/photo": 22,
+   "nw-os-garage/brick/photo": 47
+  }
+ }
+]
