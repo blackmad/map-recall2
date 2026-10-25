@@ -67,6 +67,8 @@ export interface LargeGroupFit {
   entrance: {panel: number; bay: number; storeys: number; canopy: boolean; portal?: boolean} | null;
   /** storeys faced in stone, banded end pilasters (with the darker band slot) */
   stoneStoreys?: number[]; pilasters?: string;
+  /** storeys faced in another brick colour (`painted@g<i>s<k>` slots, the brick texture) */
+  brickStoreys?: {storeys: number[]; slot: string}[];
   /** stone dressings (intent `dressings`, drawn by blockBuilding/dressings.ts) and their slot: the group's stone, or `dress@g<i>` in `dressings.colour` */
   dressings?: StoneDressings & {slot: string};
   garage: {panel: number; bays: number[]} | null;
@@ -533,7 +535,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     }
     groups.push({index: gi, system: w.system, specSystem, panels: own.map(p => p.index), surfaces: [...w.wallSurfaces], mainPanel: main?.index ?? null, bearingDeg: main ? Math.round(bearingOfNormal(main.n)) : null,
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
-      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(plinthSlot ? {plinthSlot} : {}), ...(spandrelSlot ? {spandrels: {sill: w.spandrels!.sill ?? 0, head: w.spandrels!.head ?? 0, slot: spandrelSlot}} : {}), ...(screenSlot ? {meshScreen: {storeys: [...w.meshScreen!.storeys], from: w.meshScreen!.from ?? MESH_SCREEN.from, to: w.meshScreen!.to ?? MESH_SCREEN.to, joint: w.meshScreen!.joint ?? MESH_SCREEN.joint, slot: screenSlot}} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(w.mansard ? {mansard: {storeys: [...w.mansard.storeys], slot: (palette[`mansard@g${gi}`] = swatch(w.mansard.colour ?? ROOF_COLOURS.slate.steep), `mansard@g${gi}`)}} : {}), ...(pilasters ? {pilasters} : {}), ...(dressings ? {dressings} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
+      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(plinthSlot ? {plinthSlot} : {}), ...(spandrelSlot ? {spandrels: {sill: w.spandrels!.sill ?? 0, head: w.spandrels!.head ?? 0, slot: spandrelSlot}} : {}), ...(screenSlot ? {meshScreen: {storeys: [...w.meshScreen!.storeys], from: w.meshScreen!.from ?? MESH_SCREEN.from, to: w.meshScreen!.to ?? MESH_SCREEN.to, joint: w.meshScreen!.joint ?? MESH_SCREEN.joint, slot: screenSlot}} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(w.brickStoreys ? {brickStoreys: w.brickStoreys.map((b, k) => { const sl = `painted@g${gi}s${k}`; palette[sl] = swatch(b.brick); return {storeys: [...b.storeys], slot: sl}; })} : {}), ...(w.mansard ? {mansard: {storeys: [...w.mansard.storeys], slot: (palette[`mansard@g${gi}`] = swatch(w.mansard.colour ?? ROOF_COLOURS.slate.steep), `mansard@g${gi}`)}} : {}), ...(pilasters ? {pilasters} : {}), ...(dressings ? {dressings} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
       ...(w.hall ? {hall: {baseM: r3(w.hall.base * eaves), lights: w.hall.lights, rows: w.hall.rows}} : {}),
       ...(w.columns ? {columns: {bays: [...w.columns.bays], share: w.columns.share ?? 0.9, from: w.columns.from ?? 1, slabs: !!w.columns.slabs, ...(colGlass ? {glass: colGlass} : {})}} : {}),
       ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}),
@@ -554,7 +556,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
   systems.other = largeSystem(otherName, {pitchM: DEFAULT_PITCH_M[otherName], lines: otherLines.lines, ground: 'system', slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame'}});
   // Measured groups (intent `measured`): their own wall, arch-ring and glass slots also carry the measured colour into the
   // look (with the wall, glass and split slots pushed above); deduplicated.
-  for (const gi of intent.measured?.groups ?? []) { const g = groups[gi]; if (g) measuredSlots.push(...[g.slots.wall, `arch@g${gi}`, g.slots.glass].filter(sl => sl !== 'wall' && sl !== 'glass' && palette[sl] !== undefined)); }
+  for (const gi of intent.measured?.groups ?? []) { const g = groups[gi]; if (g) measuredSlots.push(...[g.slots.wall, `arch@g${gi}`, g.slots.glass, ...(g.brickStoreys?.map(b => b.slot) ?? [])].filter(sl => sl !== 'wall' && sl !== 'glass' && palette[sl] !== undefined)); }
   // `measured.otherWalls`: palette.brick was measured too (the rear and courtyard walls of the same brick as the fronts)
   if (intent.measured?.otherWalls) measuredSlots.push('wall');
   const unlistedSurfaces = byShell ? set.walls.filter((_, wi) => groupOfWall[wi] === undefined).map(w => w.surface!) : set.walls.map(w => w.surface!).filter(s => !groupOfSurface.has(s));

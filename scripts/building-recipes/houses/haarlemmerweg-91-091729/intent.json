@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "haarlemmerweg-91-091729",
+  "pandId": "0363100012091729",
+  "address": "Haarlemmerweg 91 / Van Limburg Stirumstraat 2-8, Amsterdam-West (1992 corner housing block in buff and red-brown brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012091729)",
+  "sources": [
+    {
+      "id": "pano-2025-06-18-w02-359",
+      "kind": "street-panorama",
+      "capturedAt": "2025-06-18",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-18_07-44-47_03321/",
+      "image": "source-data://pand-reference-walls/0363100012091729/w02-359.jpg",
+      "sha256": "437ece3832a92d8b3d1850db2107ebe54f87cad02c5b68910a9d3362757478c9",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2021-03-22-w02-359L",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-22",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002054_pano_0000_000279/",
+      "image": "source-data://pand-reference-walls/0363100012091729/w02-359L.jpg",
+      "sha256": "89c693e19016af8b33f111421f6d2f27e3363ee876959c68d66a53fd9d738c0d",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2019-01-07-w01-89L",
+      "kind": "street-panorama",
+      "capturedAt": "2019-01-07",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001040_pano_0001_000636/",
+      "image": "source-data://pand-reference-walls/0363100012091729/w01-89L.jpg",
+      "sha256": "84a8c5bfa812ca9e36a4696057fb736906054854ea78f3497a61b29159fc4371",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2025-06-18-w01-89",
+      "kind": "street-panorama",
+      "capturedAt": "2025-06-18",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-18_07-44-47_01805/",
+      "image": "source-data://pand-reference-walls/0363100012091729/w01-89.jpg",
+      "sha256": "9ef50f40880b0b32381ee3da51c4a9f2534872122e9bd775f9f06b0edd9730cc",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "palette": {
+    "brick": "#776856",
+    "frame": "#e8e6dc",
+    "door": "#2e2f30",
+    "stone": "#cfc8b8"
+  },
+  "roof": {
+    "material": "bitumen"
+  },
+  "walls": [
+    {
+      "wallSurfaces": [
+        1,
+        3
+      ],
+      "street": "Haarlemmerweg",
+      "baysPerStorey": 5,
+      "system": "brick-bay-grid",
+      "storeys": 5,
+      "ground": "system",
+      "windows": "two-light",
+      "cornice": true,
+      "sills": false,
+      "storeyFactors": [
+        1.3,
+        1,
+        1,
+        1,
+        1.05
+      ],
+      "brickStoreys": [
+        {
+          "storeys": [
+            0,
+            4
+          ],
+          "brick": "#6e4f44"
+        }
+      ],
+      "palette": {
+        "brick": "#776856",
+        "glass": "#4e565c"
+      },
+      "windowShape": {
+        "w": 0.75,
+        "h": 0.62,
+        "sill": 0.14
+      },
+      "storeyShapes": [
+        {
+          "storeys": [
+            1,
+            2,
+            3
+          ],
+          "w": 0.46,
+          "h": 0.63,
+          "sill": 0.32
+        },
+        {
+          "storeys": [
+            4
+          ],
+          "w": 0.46,
+          "h": 0.6,
+          "sill": 0.25
+        }
+      ],
+      "windowPattern": [
+        0.74,
+        0.46,
+        0.25,
+        0.46,
+        0.74
+      ],
+      "hallDoors": {
+        "bays": [
+          2
+        ],
+        "lights": 2,
+        "rows": 2,
+        "h": 0.88
+      },
+      "dressings": {
+        "oriels": {
+          "bays": [
+            4
+          ],
+          "from": 1,
+          "to": 3,
+          "deep": 0.25
+        }
+      },
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "storeyFactors",
+        "windowShape",
+        "storeyShapes",
+        "windowPattern",
+        "hallDoors",
+        "dressings",
+        "brickStoreys",
+        "palette"
+      ]
+    },
+    {
+      "wallSurfaces": [
+        9
+      ],
+      "street": "Van Limburg Stirumstraat",
+      "baysPerStorey": 6,
+      "system": "brick-bay-grid",
+      "storeys": 5,
+      "ground": "system",
+      "windows": "two-light",
+      "cornice": true,
+      "sills": false,
+      "storeyFactors": [
+        1.3,
+        1,
+        1,
+        1,
+        1.05
+      ],
+      "brickStoreys": [
+        {
+          "storeys": [
+            0,
+            4
+          ],
+          "brick": "#6e4f44"
+        }
+      ],
+      "palette": {
+        "brick": "#776856",
+        "glass": "#4e565c"
+      },
+      "windowShape": {
+        "w": 0.47,
+        "h": 0.63,
+        "sill": 0.32
+      },
+      "storeyShapes": [
+        {
+          "storeys": [
+            4
+          ],
+          "w": 0.47,
+          "h": 0.6,
+          "sill": 0.25
+        }
+      ],
+      "windowPattern": [
+        0.75,
+        0.95,
+        0.47,
+        0.75,
+        0.47,
+        0.47
+      ],
+      "plinth": {
+        "storeys": [
+          0
+        ],
+        "lights": 2,
+        "sill": 0.12,
+        "h": 0.72,
+        "pier": 0.12
+      },
+      "loggias": {
+        "storeys": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "bays": [
+          0,
+          3
+        ],
+        "rail": "solid",
+        "colour": "#d9d7d0"
+      },
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "storeyFactors",
+        "windowShape",
+        "storeyShapes",
+        "windowPattern",
+        "plinth",
+        "loggias",
+        "brickStoreys",
+        "palette"
+      ]
+    }
+  ],
+  "notes": [
+    "Haarlemmerweg 91 (pand 0363100012091729, built 1992): the corner block of the four identical 1992 blocks at Haarlemmerweg 91-109, on the corner of the Van Limburg Stirumstraat, five storeys, 14.9 m.",
+    "walls[0] the Haarlemmerweg front (panel 0, crops w02-359L 2021-03-22 and w02-359 2025-06-18, square on): buff brick storeys 1-3 between a red-brown ground and top storey, one white bay-window stack at the east end, a wide window at the west end, the stair slot in the middle bay, shop windows and the glazed entrance on the ground.",
+    "walls[1] the Van Limburg Stirumstraat side (panel 8, crops w01-89L 2019-01-07 and w01-89 2025-06-18): six bays, two recessed loggias with rounded white balconies (bays 0 and 3), a row of glazed shopfronts under a pale fascia on the ground (plinth).",
+    "Row colour: buff #776856 and red-brown #6e4f44 as on Haarlemmerweg 93-109.",
+    "NOT DRAWN (kit cannot say): the loggias' rounded balcony fronts (drawn straight); the open roof-terrace frames over the loggias in the top storey; the pale fascia band over the shopfronts; the stair slot as one tall light.",
+    "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class.",
+    "walls[1] colour is the row's measured buff (its own crop is no evidence: camera 7.9 m from a 20 m wall), so it is marked measured with walls[0]."
+  ],
+  "budgetTriangles": 12000,
+  "measured": {
+    "date": "2026-10-25",
+    "groups": [
+      0,
+      1
+    ]
+  }
+}

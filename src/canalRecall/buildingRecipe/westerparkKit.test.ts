@@ -1,9 +1,10 @@
 /**
  * Kit additions from the Westerpark south-edge lane (2026-10-25, issue #65): the window box as an enclosed access
  * gallery (`windowBox.spread` over every panel of the group, `windowBox.frame` colour, a `windowBox.deck` slab, a box
- * rising into the storey above) on Haarlemmerweg 217-283, and `mainSurface` (the group's main panel named by a 3DBAG
+ * rising into the storey above) on Haarlemmerweg 217-283, `mainSurface` (the group's main panel named by a 3DBAG
  * surface) on Haarlemmerweg 285-303, `gateways.keepRow` (a passage beside ground windows and a hall door) on
- * Haarlemmerweg 315-321. Every addition is opt-in: absent, the mesh is unchanged.
+ * Haarlemmerweg 315-321, and `brickStoreys` (two-tone brick by storey) on the 1992 blocks at
+ * Haarlemmerweg 91-109. Every addition is opt-in: absent, the mesh is unchanged.
  */
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
@@ -77,4 +78,22 @@ test('gateways.keepRow: the other ground bays keep the ground row and hall doors
   assert.throws(() => validateLargeIntent(noKeep), /hallDoors: not with hoist, entrance or gateways/);
   const clash = structuredClone(base); clash.walls[0].hallDoors.bays = [8];
   assert.throws(() => validateLargeIntent(clash), /hallDoors.bays: not a gateway bay/);
+});
+
+test('brickStoreys: two-tone brick by storey in painted@ slots (brick texture), measured with the group; validated', () => {
+  const ID = 'haarlemmerweg-93-111773', f = facts(ID);
+  const intent = validateLargeIntent(raw(ID));
+  const {recipe} = fitLarge(intent, f);
+  assert.deepEqual(recipe.groups[0].brickStoreys, [{storeys: [0, 4], slot: 'painted@g0s0'}]);
+  assert.equal(recipe.spec.palette['painted@g0s0'], '#6e4f44');
+  const a = compileBuilding(intent, f);
+  assert.equal(a.components.brickStoreys, 2);
+  const plain = raw(ID); delete plain.walls[0].brickStoreys;
+  const b = compileBuilding(validateLargeIntent(plain), f);
+  assert.equal(b.components.brickStoreys, undefined);
+  assert.notEqual(meshHashOf(a.group), meshHashOf(b.group));
+  const clash = raw(ID); clash.walls[0].stoneStoreys = [0];
+  assert.throws(() => validateLargeIntent(clash), /storey 0 is already faced/);
+  const badColour = raw(ID); badColour.walls[0].brickStoreys[0].brick = 'red';
+  assert.throws(() => validateLargeIntent(badColour), /brick: #rrggbb/);
 });
