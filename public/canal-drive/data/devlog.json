@@ -3,6 +3,11 @@
  "title": "Dev log",
  "entries": [
   {
+   "date": "2026-10-25T17:46:06Z",
+   "body": "**2026-10-25 — round 8 of repeated designs is live.** 447 more houses now use designs measured from street photos: Oostoever Sloterplas (246, garage-under-living-room rows), De Klomp in Weesp (104), Weesp-Zuid I (68, round-headed porches, diamond surrounds, portholes) and Sporenburg garage rows (29). Gallery: designs.html now lists 104 designs. The review sent one design back: its sheet showed it 1.27× too big, which turned out to be a stale cached photo, and the re-shoot also fixed the garage doors and brick colour.\n\nStill in review: the Helmersbuurt block-face kit (#81, 13 houses ready, sent back because one house came out green and the painted-black facade came out plum) and the big Haarlemmerweg 333 buildings (#83, Carpetright installing, Da Vinci building and Waterkeringweg block sent back).",
+   "url": "https://github.com/blackmad/map-recall2/issues/68#issuecomment-6401009830"
+  },
+  {
    "date": "2026-10-25T16:32:28Z",
    "body": "**Dev log, 25 Oct (round 7)**\n\n- **995 more houses:**\n  - **Bos en Lommer / Baarsjes, 1920s:** the banded brick portiek blocks of Orteliusbuurt and Jan Maijenbuurt around the Mercatorplein, about 60 % of each. Every one of these houses was checked against its own photo.\n  - **Osdorp, Middelveldsche Akerpolder (1980s):** 519 houses in 5 designs, with porthole windows and red, yellow and green doors.\n- **Skipped:** John Franklinbuurt is too varied (stoops, balconies, galleries); only 23 plain rows were placed there.\n- **Running total:** about **8,450 houses on ~64 designs in 27 neighbourhoods**.\n- **Next:** a **Helmersbuurt kit** (#81) is under way. It's a different approach for the varied 1890s streets: a library of row types placed block by block, measured for windows and white stone details.",
    "url": "https://github.com/blackmad/map-recall2/issues/68#issuecomment-6400215385"
