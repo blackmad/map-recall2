@@ -22,9 +22,9 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 5,
-   "baysPerStorey": 9,
+   "baysPerStorey": 10,
    "ground": "system",
-   "windows": "wide",
+   "windows": "three-light",
    "deepBars": true,
    "stringCourses": true,
    "cornice": true,
@@ -38,14 +38,15 @@
     "stone": "#a89c8a"
    },
    "hand": [
-    "system",
     "baysPerStorey",
-    "windowShape"
+    "system",
+    "windowShape",
+    "windows"
    ],
    "windowShape": {
-    "w": 0.35,
-    "h": 0.58,
-    "sill": 0.28
+    "w": 0.62,
+    "h": 0.5,
+    "sill": 0.25
    }
   }
  ],
@@ -66,7 +67,8 @@
   "Nieuwe Achtergracht 100 (BAG pand 0363100012253824, built 1923, 162 3DBAG wall surfaces, roof max 26.6 m): a five-storey Amsterdam School office building on the Nieuwe Achtergracht in the Roeterseiland campus (a twin footprint pand 0363100012170299 has the same 2,657 m2 footprint area in the backlog and is probably an overlapping registration of the same block, so it is not modelled separately). Four fronts were fetched: the north canal front (w01-343, 2021-01-22, and w02-343, 2017-07-06, the same front), a washed-out west view (w04-250, 2025-01-20) and an oblique view of the neighbouring dark-brick house on the east (w08-73, 2022-04-25); w03, w05, w06 and w07 have no panorama within 35 m.",
   "walls[0] = panel 119 (N, 45.4 m, eaves 23.8): brown-grey brick in five storeys, each with two ranges of four wide cream-framed multi-pane windows either side of a central stair tower (a bowed oriel at the first floor, a hexagonal window, small square stair lights and a timber entrance door), stone sill bands under each window row and an overhanging green-copper roof edge. Drawn as 5 storeys x 9 bays with wide windows, string courses, a cornice in a green copper colour and a portal entrance in the central bay.",
   "Simplified: the stair tower is the plain central bay with the entrance portal (the bowed oriel, the hexagonal window and the stair lights are not modelled), the paired window ranges are nine evenly spaced bays, the stone sill bands are string courses. Not drawn: the attic strip (panel 120), the west wall (washed out), the east and south walls (no usable panorama), which stay blank wall.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #554640 not used (not darker than the wall #574d47 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #554640 not used (not darker than the wall #574d47 by 10 L*, or tinted): kit glass kept.",
+  "Refit 2026-10-25 (issue #59, gate #58 crops): the crop w01-343 shows 10 columns of white-framed three-light windows about 3 m wide and 2 m tall (the model had 9 single narrow windows, glazing 0.21 vs photo 0.32): now 10 bays, 'three-light' windows w 0.62, h 0.5; glazing 0.29-0.32 and columns now match. The gate still FAILs the window shape ('square vs photo tall'): its window grid folds each three-light group into one light and calls it tall, while its own opening statistics read the photo's openings 60 % square and the crop plainly shows wide groups: a misread, allowed as inferred."
  ],
  "measured": {
   "date": "2026-10-14",

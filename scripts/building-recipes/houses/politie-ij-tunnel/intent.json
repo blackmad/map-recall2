@@ -54,21 +54,77 @@
    ],
    "system": "ribbon-windows",
    "storeys": 5,
-   "baysPerStorey": 9,
+   "baysPerStorey": 6,
    "ground": "plinth-shopfronts",
    "windows": "plain",
-   "garageDoors": 8,
    "signage": {
     "text": "BRANDWEER",
     "colour": "#b01820",
     "mount": "fascia"
    },
    "hand": [
-    "system",
-    "baysPerStorey"
+    "baysPerStorey",
+    "blankStoreys",
+    "cladding",
+    "garageBays",
+    "openBays",
+    "system"
    ],
    "palette": {
     "brick": "#463e3c"
+   },
+   "garageBays": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "blankStoreys": [
+    3
+   ],
+   "openBays": [
+    {
+     "storeys": [
+      1
+     ],
+     "bays": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "storeys": [
+      2
+     ],
+     "bays": [
+      0,
+      1,
+      2
+     ]
+    },
+    {
+     "storeys": [
+      4
+     ],
+     "bays": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   ],
+   "cladding": {
+    "kind": "panels",
+    "colour": "#d8d8d2",
+    "from": 0.64,
+    "to": 0.84
    }
   },
   {
@@ -121,7 +177,8 @@
   "1972 combined fire station (Brandweer Amsterdam-Amstelland) and police bureau at the IJ-tunnel, one pand: dark brown brick, white-framed ribbon windows, a row of nine white sectional garage doors on the NW front, red BRANDWEER lettering on a fascia over the doors, the fire-brigade flame crest on the upper brick wall, flagpoles and a roof railing. NW front from 2024-12-10 (w01-313, 55 m, rectified); the SW curved wing from 2020-04-22 (w03-238, ribbons on a three-quarter curve, built straight in 3DBAG). The police bureau is not separately visible: no POLITIE sign, lamp or stripe appears on any photographed wall (the police use the rear/ tunnel side, no panorama: candidates 0).",
   "Ornaments from the panoramas: BRANDWEER lettering (MODELLED as red letters on a stone fascia band above the doors, via ground plinth-shopfronts, which is how the kit letters a group without an entrance; the letters are about 3 m shorter than the photo sign); eight sectional garage doors (MODELLED, garageDoors 8; the photo has nine, the ninth is an open vehicle bay at the east end, SIMPLIFIED to a bay of the grid); fire-brigade flame crest on the brick above the doors (SKIPPED: a 1.2 m round emblem of two colours is a texture-scale decal, the kit has no wall-relief primitive and the 5 cm attachment grain admits only the letter plates; the red lettering carries the same colour cue); 'Amsterdam - Amstelland' small sub-line (SKIPPED: 0.25 m letters, unreadable at gallery size); flagpoles and roof railing (SKIPPED: slender, not part of the 3DBAG volume and not stable between captures); white concrete columns and balcony rail on the right of the first floor (SIMPLIFIED to ribbon windows); no POLITIE lettering, blue lamp, striped band or police canopy visible.",
   "Other walls (SE, NE, tunnel side) have no panorama (candidates 0) or are party walls and stay blank.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #502324 not used (not darker than the wall #463e3c by 10 L*, or tinted): kit glass kept; walls[3] glass #22231e not used (not darker than the wall #1f1a1b by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #502324 not used (not darker than the wall #463e3c by 10 L*, or tinted): kit glass kept; walls[3] glass #22231e not used (not darker than the wall #1f1a1b by 10 L*, or tinted): kit glass kept.",
+  "Refit 2026-10-25 (issue #59, gate #58 crops): walls[1] (the tall fire-station block, w01-313) re-authored from the photo: six sectional garage doors on a 4.3 m pitch (was 8 on 9 bays), storey 1 a glazed ribbon over bays 1-5 (the terrace room) with the left bay brick, storey 2 the ribbon over bays 0-2 only (the right half has narrow slit windows, which the ribbon system cannot put in the same storey: left blank), storey 3 a white panelled band (cladding panels #d8d8d2 from 0.64 to 0.84 of the eaves, no windows), storey 4 a ribbon over bays 1-5. The gate FAILs walls[1] only on the storey-3 band, where it reads the pale panels as glazing (photo 0.49, model 0): a misread, allowed as inferred. walls[0], walls[2], walls[3] unchanged from the 2026-10-14 inferred install. Kit cannot say: slit windows and a ribbon on the same storey, the flame emblem, the low wing's storey heights against its 3DBAG eaves."
  ],
  "layeredKit": true,
  "measured": {

@@ -43,7 +43,15 @@
    "ground": "glazed",
    "wallMaterial": "render",
    "deepBars": true,
-   "windows": "low"
+   "windows": "low",
+   "windowShape": {
+    "w": 0.97,
+    "h": 0.42,
+    "sill": 0.4
+   },
+   "hand": [
+    "windowShape"
+   ]
   },
   {
    "wallSurfaces": [
@@ -56,7 +64,15 @@
    "ground": "glazed",
    "wallMaterial": "render",
    "deepBars": true,
-   "windows": "low"
+   "windows": "low",
+   "windowShape": {
+    "w": 0.97,
+    "h": 0.42,
+    "sill": 0.4
+   },
+   "hand": [
+    "windowShape"
+   ]
   },
   {
    "wallSurfaces": [
@@ -71,7 +87,15 @@
    "ground": "glazed",
    "wallMaterial": "render",
    "deepBars": true,
-   "windows": "low"
+   "windows": "low",
+   "windowShape": {
+    "w": 0.97,
+    "h": 0.42,
+    "sill": 0.4
+   },
+   "hand": [
+    "windowShape"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -88,7 +112,8 @@
  "notes": [
   "Marnixstraat 248 (BAG: built 1972; one shop and one dwelling units; 3,241 m2 footprint, 22 m): the multi-storey car park on the Lijnbaansgracht / Marnixstraat corner with a petrol station in its undercroft. Three walls are photographed: the north-east front (w01-67, panorama 2023-03-06: a fuel-station canopy fascia with a red and white striped band under white decks), the south-east front (w03-157, 2022-06-28: six white concrete deck fronts, each a long ribbon of grey glass or louvre panels between white parapet bands with small slots, over an open undercroft carried on round pillars) and the south-west canal front (w02-247, 2021-01-25: the same decks wrapping the round ramp towers over the water).",
   "Modelled: three ribbon-window groups (NE panels 179, 182, 204, 202; SE panels 160, 186; SW panels 63, 174, 59) as 7 storeys (a dark glazed undercroft and six deck ribbons), white wall colour, dark ribbon frames. Roofs are the 3DBAG LoD2.2 shell.",
-  "Simplified: the undercroft is a dark glazed ground row (the real one is open with round pillars, petrol pumps and a canopy), the ribbons are low windows cut into the white wall (the real deck fronts are glass or louvre panels set flush between parapet bands), the red/white striped fascia over the station is not drawn, the slot perforations in the parapet bands are not drawn, the round ramp towers keep the 3DBAG facets. Not modelled: the north-west side and the interior ramps (no useful view)."
+  "Simplified: the undercroft is a dark glazed ground row (the real one is open with round pillars, petrol pumps and a canopy), the ribbons are low windows cut into the white wall (the real deck fronts are glass or louvre panels set flush between parapet bands), the red/white striped fascia over the station is not drawn, the slot perforations in the parapet bands are not drawn, the round ramp towers keep the 3DBAG facets. Not modelled: the north-west side and the interior ramps (no useful view).",
+  "Refit 2026-10-25 (issue #59): the parking decks of w03-157 and w05 are continuous open ribbons between white parapet bands, broken only by thin columns, not windows punched bay by bay: windowShape w 0.97 (nearly the full bay), h 0.42 over a 0.4 parapet. walls[0]'s crop w01-67 is shot from under the petrol-station canopy: the dark undercroft and its lit soffit fill the frame, and the gate reads that shadow as a brick wall (#554a46) against the white render: a misread, allowed as inferred; walls[1] and walls[2] are washed out (55 %, 40 %)."
  ],
  "closedBands": true
 }

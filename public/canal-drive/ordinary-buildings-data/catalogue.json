@@ -25496,11 +25496,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165618",
       "name": "Politiebureau IJ-tunnel / Brandweerkazerne Amsterdam-Amstelland, IJ-tunnel 2, Amsterdam (1972; one pand shared by fire station and police bureau)",
-      "hash": "908ae4b490249e5bad0a21ee93f8d8a475dcc8422c6ecec41b525625c4aedf18",
-      "sha256": "908ae4b490249e5bad0a21ee93f8d8a475dcc8422c6ecec41b525625c4aedf18",
-      "bytes": 305872,
-      "triangles": 3994,
-      "materials": 13,
+      "hash": "fecc620c28357ebb6d44cfdcc376de2119fa4c99cb3576457e826bbaf52c4baa",
+      "sha256": "fecc620c28357ebb6d44cfdcc376de2119fa4c99cb3576457e826bbaf52c4baa",
+      "bytes": 270544,
+      "triangles": 3419,
+      "materials": 15,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -25660,32 +25660,34 @@
           "storey-height/walls[3]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "ribbon-windows 3st 4b",
-          "ribbon-windows 5st 9b",
+          "ribbon-windows+panels 5st 6b",
           "ribbon-windows 4st 5b",
           "ribbon-windows 4st 5b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.17 mean 0.17 vs photo 0.32; columns 4 vs photo 3)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.17 mean 0.17 vs photo 0.32, columns 4 vs photo 3) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.27 mean 0.53 vs photo 0.42)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.27 mean 0.53 vs photo 0.42) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.42 mean 0.48 vs photo 0.28; window shape square vs photo wide; columns 5 vs photo 3)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.42 mean 0.48 vs photo 0.28, window shape square vs photo wide, columns 5 vs photo 3) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[3] not confirmed by the photo (FAIL (glazing storey band off by 0.29; window shape square vs photo tall; columns 5 vs photo 2)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.29, window shape square vs photo tall, columns 5 vs photo 2) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[0] not confirmed by the photo (FAIL (storey 2: widest opening 1.2 m vs photo 11.2 m (a ribbon against windows); columns 4 vs photo 3)); inferred: unchanged from the 2026-10-14 inferred install, the low wing's ribbon and slit rows do not fit its 3DBAG eaves",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.49)); inferred: re-authored from w01-313 (6 garage doors, ribbons per storey, white panel band), the gate reads the pale panels of storey 3 as glazing (0.49 vs 0)",
+        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.36 mean 0.48 vs photo 0.31; columns 5 vs photo 3)); inferred: unchanged from the 2026-10-14 inferred install, re-fitted from the measured crop then",
+        "walls[3] not confirmed by the photo (FAIL (wall family paint vs photo brick; glazing storey band off by 0.23)); inferred: unchanged from the 2026-10-14 inferred install, re-fitted from the measured crop then",
         "Other walls (SE, NE, tunnel side) have no panorama (candidates 0) or are party walls and stay blank.",
-        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #502324 not used (not darker than the wall #463e3c by 10 L*, or tinted): kit glass kept; walls[3] glass #22231e not used (not darker than the wall #1f1a1b by 10 L*, or tinted): kit glass kept."
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #502324 not used (not darker than the wall #463e3c by 10 L*, or tinted): kit glass kept; walls[3] glass #22231e not used (not darker than the wall #1f1a1b by 10 L*, or tinted): kit glass kept.",
+        "Refit 2026-10-25 (issue #59, gate #58 crops): walls[1] (the tall fire-station block, w01-313) re-authored from the photo: six sectional garage doors on a 4.3 m pitch (was 8 on 9 bays), storey 1 a glazed ribbon over bays 1-5 (the terrace room) with the left bay brick, storey 2 the ribbon over bays 0-2 only (the right half has narrow slit windows, which the ribbon system cannot put in the same storey: left blank), storey 3 a white panelled band (cladding panels #d8d8d2 from 0.64 to 0.84 of the eaves, no windows), storey 4 a ribbon over bays 1-5. The gate FAILs walls[1] only on the storey-3 band, where it reads the pale panels as glazing (photo 0.49, model 0): a misread, allowed as inferred. walls[0], walls[2], walls[3] unchanged from the 2026-10-14 inferred install. Kit cannot say: slit windows and a ribbon on the same storey, the flame emblem, the low wing's storey heights against its 3DBAG eaves."
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165618",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T13:31:55.123Z",
+      "updatedAt": "2026-10-25T05:30:48.456Z",
       "bagYear": 1972,
-      "meshHash": "3d68f94a619610c2"
+      "meshHash": "12e5e6b81a23dc0a"
     },
     {
       "id": "ordinary-0363100012083091",
@@ -27516,10 +27518,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012084999",
       "name": "Overtoom 283, Amsterdam: Reade, rehabilitation and rheumatology centre (OSM way 152508198), BAG 1992",
-      "hash": "071a5bdef995952315152c2b13dafa1f7fd2c219d43b061ee1a271bb5e6d01ef",
-      "sha256": "071a5bdef995952315152c2b13dafa1f7fd2c219d43b061ee1a271bb5e6d01ef",
-      "bytes": 428944,
-      "triangles": 5546,
+      "hash": "f2d9b3f0eb7ecbcb1760d70afdba3cee53a32fb2ec422103c6a1b28fd4979db2",
+      "sha256": "f2d9b3f0eb7ecbcb1760d70afdba3cee53a32fb2ec422103c6a1b28fd4979db2",
+      "bytes": 480432,
+      "triangles": 6262,
       "materials": 11,
       "textures": 0,
       "scale": 1,
@@ -27998,33 +28000,34 @@
           "storey-height/walls[2]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 4st 6b",
-          "brick-bay-grid 3st 3b",
+          "brick-bay-grid 3st 6b",
           "brick-bay-grid 5st 13b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.32)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.32) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[1] likeness WARN (mask IoU 0.318 < 0.45).",
+        "walls[1] likeness WARN (mask IoU 0.336 < 0.45).",
         "walls[2] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches this panel, kept as fitted, not confirmed by a photo",
         "walls[0] (Overtoom front, panel 96) from the 2023-01-10 panorama, rectified: three window rows over a 1 m plinth on a 16-bay grid, the raised left part blank above (blankStoreys 3 and 4), READE in blue between the first and second rows (the photo continues 'revalidatie | reumatologie' further right; the kit letters A-Z only, so only the name is drawn, centred instead of left of centre). walls[1] (rounded corner, panel 79) from the 2025-07-31 panorama: three rows, 8 bays; 3DBAG gives the curve as straight facets. walls[2] (west side along the passage and the north-west corner block, panels 0 and 19) from an aimed thumbnail of the 2023-01-10 panorama 30 m away (the side has no panorama within 35 m): five rows of windows with top lights, the pavilion level blank.",
-        "Not modelled (the photos show them): the mauve plinth and pier strips; the glazed stair tower (north-east end) and the curved glass penthouse with its railings over the rounded corner; three flagpoles; the red LED temperature display beside the corner sign; the second READE sign on the rounded corner; the 'revalidatie | reumatologie' lettering; the low rendered boundary wall in front; the east and courtyard walls (no panorama) are blank."
+        "Not modelled (the photos show them): the mauve plinth and pier strips; the glazed stair tower (north-east end) and the curved glass penthouse with its railings over the rounded corner; three flagpoles; the red LED temperature display beside the corner sign; the second READE sign on the rounded corner; the 'revalidatie | reumatologie' lettering; the low rendered boundary wall in front; the east and courtyard walls (no panorama) are blank.",
+        "Refit 2026-10-25 (issue #59, gate #58 crops): walls[0] (w02-340): the placed crop shows a fourth window row on storey 3 across the front (photo glazing 0.37 where the model was blank): blankStoreys now [4] only. walls[1] (w05-340L): six square cross windows per row, two per former bay: 6 bays, w 0.6, h 0.55."
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012084999",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T13:32:28.566Z",
+      "updatedAt": "2026-10-25T05:33:06.876Z",
       "aliases": [
         "w152508198"
       ],
       "bagYear": 1992,
-      "meshHash": "cbbc2be6f56d895e"
+      "meshHash": "81a024fa0789410e"
     },
     {
       "id": "ordinary-0363100012126319",
@@ -35317,9 +35320,9 @@
         "NL.IMBAG.Pand.0363100012245310"
       ],
       "name": "Marnixstraat 248, Amsterdam (Marnixstraat car park): 1972 white concrete parking garage of six decks on an open pillared undercroft, round ramp towers",
-      "hash": "1c19027ab0c47672ca551359256a02591884d4dedbafa658159ea584c75bcc5d",
-      "sha256": "1c19027ab0c47672ca551359256a02591884d4dedbafa658159ea584c75bcc5d",
-      "bytes": 841636,
+      "hash": "66fce787f016c09587c4fd0911a5bba54fc55bd74d1272a841a4cbc5f0557b69",
+      "sha256": "66fce787f016c09587c4fd0911a5bba54fc55bd74d1272a841a4cbc5f0557b69",
+      "bytes": 841508,
       "triangles": 11456,
       "materials": 6,
       "textures": 0,
@@ -35980,7 +35983,8 @@
           "storey-height/walls[2]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "ribbon-windows 7st 8b",
@@ -35990,16 +35994,18 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (wall family paint vs photo brick; glazing storey band off by 0.32 mean 0.41 vs photo 0.25; storey 2: widest opening 19.6 m vs photo 3.3 m (a ribbon against windows); storey 3: widest opening 19.6 m vs photo 2.5 m (a ribbon against windows); storey 5: widest opening 19.6 m vs photo 3.8 m (a ribbon against windows); columns 8 vs photo 11)); inferred: the crop is shot from under the petrol-station canopy, the dark undercroft fills it and the gate reads that shadow as brick against the white render, deck ribbons widened to the continuous openings of w03-157",
+        "walls[1] not confirmed by the photo (NO EVIDENCE (washed out 55 % > 30 %)); inferred: washed out 55 %, deck ribbons widened to the continuous openings the crop shows between white parapet bands",
+        "walls[2] not confirmed by the photo (NO EVIDENCE (washed out 40 % > 30 %)); inferred: washed out 40 %, same deck ribbons as walls[1]",
         "Simplified: the undercroft is a dark glazed ground row (the real one is open with round pillars, petrol pumps and a canopy), the ribbons are low windows cut into the white wall (the real deck fronts are glass or louvre panels set flush between parapet bands), the red/white striped fascia over the station is not drawn, the slot perforations in the parapet bands are not drawn, the round ramp towers keep the 3DBAG facets. Not modelled: the north-west side and the interior ramps (no useful view)."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012185422",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T04:32:13.143Z",
-      "meshHash": "7b3feb3fb3d65400"
+      "updatedAt": "2026-10-25T05:32:30.021Z",
+      "meshHash": "e94d74009a5c46e0"
     },
     {
       "id": "ordinary-0363100012184743",
@@ -43554,10 +43560,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012253824",
       "name": "Nieuwe Achtergracht 100, Amsterdam-Centrum (Roeterseiland): 1923 five-storey brick office building on the canal with cream-framed multi-pane windows, a central stair tower with a bowed oriel and entrance, stone bands and an overhanging copper roof edge",
-      "hash": "d836fec301a990fdde9e48c0fa3c60cf476b73005aa3ba8eb62f2e4df0abb6df",
-      "sha256": "d836fec301a990fdde9e48c0fa3c60cf476b73005aa3ba8eb62f2e4df0abb6df",
-      "bytes": 313584,
-      "triangles": 4131,
+      "hash": "bad984d0985f27cf9ccb132f2a8fa4329a66f007975e2c7b25515f383079b82c",
+      "sha256": "bad984d0985f27cf9ccb132f2a8fa4329a66f007975e2c7b25515f383079b82c",
+      "bytes": 305380,
+      "triangles": 4011,
       "materials": 10,
       "textures": 0,
       "scale": 1,
@@ -43695,26 +43701,27 @@
           "storey-height/walls[0]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid+entrance 5st 9b"
+          "brick-bay-grid+entrance 5st 10b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] likeness WARN (mask IoU 0.194 < 0.45).",
+        "walls[0] not confirmed by the photo (FAIL (window shape square vs photo tall)); inferred: re-fitted to 10 columns of three-light windows, glazing and columns match, the gate's grid folds each group into one tall light while its opening statistics read the photo 60 % square",
         "Nieuwe Achtergracht 100 (BAG pand 0363100012253824, built 1923, 162 3DBAG wall surfaces, roof max 26.6 m): a five-storey Amsterdam School office building on the Nieuwe Achtergracht in the Roeterseiland campus (a twin footprint pand 0363100012170299 has the same 2,657 m2 footprint area in the backlog and is probably an overlapping registration of the same block, so it is not modelled separately). Four fronts were fetched: the north canal front (w01-343, 2021-01-22, and w02-343, 2017-07-06, the same front), a washed-out west view (w04-250, 2025-01-20) and an oblique view of the neighbouring dark-brick house on the east (w08-73, 2022-04-25); w03, w05, w06 and w07 have no panorama within 35 m.",
         "Simplified: the stair tower is the plain central bay with the entrance portal (the bowed oriel, the hexagonal window and the stair lights are not modelled), the paired window ranges are nine evenly spaced bays, the stone sill bands are string courses. Not drawn: the attic strip (panel 120), the west wall (washed out), the east and south walls (no usable panorama), which stay blank wall.",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #554640 not used (not darker than the wall #574d47 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-likeness-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253824",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T14:05:03.723Z",
-      "meshHash": "7bcd9f00895da02f"
+      "updatedAt": "2026-10-25T05:31:49.994Z",
+      "meshHash": "0180e1ab5360c545"
     },
     {
       "id": "ordinary-0363100012239388",
