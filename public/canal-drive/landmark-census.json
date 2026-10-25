@@ -1,10 +1,10 @@
 {
  "version": 1,
- "generatedAt": "2026-10-25T21:12:19.903Z",
+ "generatedAt": "2026-10-25T21:39:45.151Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
- "headline": 505,
- "strict": 163,
+ "headline": 506,
+ "strict": 164,
  "byTier": {
   "bespoke": {
    "models": 337,
@@ -19,9 +19,9 @@
    "unreviewed": 0
   },
   "largeRecipe": {
-   "models": 114,
-   "counts": 53,
-   "strict": 53,
+   "models": 115,
+   "counts": 54,
+   "strict": 54,
    "unreviewed": 14
   },
   "landmarkKit": {
@@ -33,7 +33,7 @@
  },
  "byReview": {
   "legacy-gallery": 406,
-  "likeness-gate": 98,
+  "likeness-gate": 99,
   "none": 324,
   "strip-review": 112
  },
@@ -7275,6 +7275,20 @@
    "tier": "largeRecipe",
    "pands": [
     "0363100012090791"
+   ],
+   "namedPoi": false,
+   "rideVisible": true,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": true,
+   "countsStrict": true
+  },
+  {
+   "key": "model:ordinary-0363100012250971",
+   "name": "Haarlemmerweg 778-938, Amsterdam (Westerpark corner of the Haarlemmerweg corridor): a 2023 dark-brick high-rise, 12 storeys, tall narrow windows and recessed loggias with pale soffits, a glazed ground floor on a paved square",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012250971"
    ],
    "namedPoi": false,
    "rideVisible": true,

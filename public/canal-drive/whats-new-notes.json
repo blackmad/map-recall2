@@ -3,6 +3,11 @@
  "notes": [
   {
    "date": "2026-10-25",
+   "title": "Pepper, the dark tower at Westerpark West",
+   "text": "MVRDV's dark-brick Pepper tower across the Haarlemmertrekvaart from the Haarlemmerweg is modelled, with its black box balconies scattered over the facades. Its white neighbour Salt and the stacked Blend tower are next."
+  },
+  {
+   "date": "2026-10-25",
    "title": "Street names hide behind buildings",
    "text": "In the 3D views, street names no longer float over the rooftops: a name is drawn only where its street is in view, not behind the buildings in front of it. Duplicate place labels (one English, one Dutch) are merged."
   },

@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+**Westerpark West towers (2026-10-25).** The user's "big ones on the
+Haarlemmerweg" meant MVRDV's Westerpark West, not #83's Carpetright/Da Vinci
+(integrator misread, owned). Pepper (pand 0363100012250971) installed from the
+2023 Commons photo (all later panoramas are leafy); south front matches,
+other faces inferred. Kit: `boxBalconies`. Salt (940) held: white-wall
+likeness artefact (the light-trim normalisation treats the white wall as trim).
+Merged the old DeepSeek 940 branch (`crownCantilever`), byte-identical when
+absent but not yet reviewed. Blend, green blocks, yellow block, wraparound
+tower: `docs/handoffs/haarlemmerweg-512-20261025.md`.
+
 **Building types round 9 (2026-10-25, #85).** 15 photo-checked designs,
 1,525 houses: Terrasdorp 357, De Aker-Oost 462, Nieuw Sloten-NW 417, De
 Aker-West 289 (Betondorp skipped as pre-war/mixed). Kit: panesHigh,
