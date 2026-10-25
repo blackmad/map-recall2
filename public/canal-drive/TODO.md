@@ -111,9 +111,10 @@ Open, in order:
   city look lack the 1.106 brick gain beside default-look chunks.
 - **district-style** (B1), **buurt-autoplace** (B3). **buurt-designs** (B2):
   10 buurten done 2026-10-25 (#70, #72, #74; ~4,350 houses, 22 designs);
-  round 4 (#75: K-buurt-Zuidwest, Gooise Kant, Buiksloterbreek,
-  Dichtersbuurt + photo roof-tile colour) running. Open: Gein 3 all-timber
-  and brick-canopy rows, Holendrecht S2/S4, Twiske porch canopies.
+  round 4 done (#75, 14 buurten, ~4,900 houses). Open: Gein 3 all-timber
+  and brick-canopy rows, Holendrecht S2/S4, Twiske porch canopies, K-buurt
+  yellow-door/buff rows, mottled multi-tone brick (K-buurt reads flat),
+  `building-types-runtime.spec` draw-call hook reads 0.
 - **roads**: R0 done 2026-10-23 (HISTORY): R1 gaps is the largest cause at
   all ten spots. R1 merged 2026-10-24 (#12, eb2902118, perf session):
   BGT islands/berms/verges/squares fill bare land beside carriageways;

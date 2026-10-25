@@ -5,7 +5,7 @@
   "display": {
     "buildingsModelled": "500+",
     "landmarkModels": "330",
-    "kitBuildings": "7,400+",
+    "kitBuildings": "7,900+",
     "buildings3d": "340,000+",
     "placesToVisit": "380+",
     "factsToDiscover": "8,100+",
@@ -35,8 +35,8 @@
       ]
     },
     "kitBuildings": {
-      "count": 7419,
-      "note": "Buildings drawn from a reusable building-type kit (165 kit designs placed on their real footprints, mostly Nieuw-West).",
+      "count": 7966,
+      "note": "Buildings drawn from a reusable building-type kit (180 kit designs placed on their real footprints, mostly Nieuw-West).",
       "sources": [
         "public/canal-drive/building-types/instances.json"
       ]

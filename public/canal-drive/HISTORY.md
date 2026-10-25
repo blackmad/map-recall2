@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+**Repetitive designs round 4 + photo roof tiles (2026-10-25, #75).**
+Roof tiles: spec roofs take `{slot, tint, measured: true}` from new
+`roofColour.ts` (orthophoto roof fact cross-checked with the lit tile body
+of the photo); `regen-units --roof-only` recolours in place. 20 units
+recoloured, geometry identical: oo-ta-* #8d6e60 / cottage #cc8d74,
+nd-ck-saltbox #7a755c, nd-ck-roof-house #726552, zo-g4-roof-house #b99582
+(nd-ck hue from overcast crops). Designs, 547 houses: Dichtersbuurt 194
+(81 %), Gooise Kant 161 (95 %), K-buurt-Zuidwest 138 (37 %; yellow-door,
+three-storey buff rows and corner towers not modelled), Buiksloterbreek 54
+(49 %; garage-street rows and villas not modelled). Kit: window
+`frameM`/`transomM`, stripe `depthM`, white-referenced exposure for shaded
+fronts. Integrator review: K-buurt upper brick draws flat dark brown, the
+photo is mottled grey-brown (kit gap: multi-tone brick). Also missing:
+pitched shed roofs, a one-storey-lower bay, weatherboard, per-row frame
+colours, partial dormers. Orthophoto flags NW portiek and nd-bz-brick-row
+roofs as off but they are not street-visible; left.
+`building-types-runtime.spec` draw-call hook reads 0 (broken, follow-up).
+
 **Brighter large-tier walls and pitched roofs (2026-10-25, #73).**
 Follow-up to #71. Walls: across 183 measured groups the drawn median is
 luma 88 vs crops 73; shade explains most but is provable for few (31 groups
