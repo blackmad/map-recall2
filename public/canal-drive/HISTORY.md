@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**Refused installs batch 2 (2026-10-25, #59).** 18 more installed large
+houses refitted against their photos plus Oude Turfmarkt (`storeyFactors`:
+storeys 2.3/4.4/3.6/2.6/4.7 m from the measured rows) and Utrechtsestraat 15
+(3.3 m storey-2 windows: g1 WARN, g2 PASS). Kit: louvre slats drawn over
+the dark ground, `balconies.run` (joined front-wide galleries),
+`storeyFactors`. Many groups stay FAIL and installed as inferred with the
+misread named (window groups merged in the photo mask, mullions counted as
+columns, louvres, washed-out render); integrator spot-checked Haarlemmerweg
+325 (screen reads as fine dark stripes, not silver) and Tilanusstraat 23
+(no rooftop pavilions): better than before, not at the bar. Pilot tile
+golden re-recorded for pand 165427 (same 8,859 triangles, hash moved by the
+#56 windowPattern/openBays kit change). check:canal green.
+
 **White flash on governor steps (2026-10-25, #64).** User saw random white
 flashes. The render governor called `setPixelRatio` inside MapLibre's
 `render` event, after the frame was drawn; the resize cleared the buffer and
