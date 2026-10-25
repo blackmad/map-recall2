@@ -22,12 +22,12 @@
  ],
  "footprintRangeM": {
   "frontage": [
-   5.0,
-   6.0
+   5,
+   6
   ],
   "depth": [
    9.5,
-   11.0
+   11
   ]
  },
  "rowCoherentHeights": true,
@@ -61,8 +61,29 @@
     },
     "wall": {
      "slot": "brick",
-     "tint": "#66605c",
-     "measured": true
+     "tint": "#7b736f",
+     "measured": true,
+     "mottle": {
+      "tones": [
+       {
+        "hex": "#766d68",
+        "share": 0.33
+       },
+       {
+        "hex": "#645d5c",
+        "share": 0.25
+       },
+       {
+        "hex": "#978c85",
+        "share": 0.23
+       },
+       {
+        "hex": "#817a79",
+        "share": 0.19
+       }
+      ],
+      "evidence": "#77: brick-mottle.ts, chroma-weighted k=4 over the upper brick of survey crops 2136437 (2e Kekerstraat, below the windows) and 2165711 (Kervelplantsoen), each white-referenced to its own white door panel, lightness x1.15 to the sunlit 2025-09-08 13:23 crops of 2136437/2096839 (mean luma 131; their white paint clips and their hue reads cyan-cast). Chroma then halved around each tone's luma: the white-referenced crops read warm (C ~ 18), the sunlit 2025 crops neutral grey with a cyan cast; the halfway reading matches the grey-brown/purple the integrator review saw. Mean #7b736f = the tint; ratios 0.81-1.22."
+     }
     },
     "plinth": {
      "slot": "brick",
@@ -89,8 +110,29 @@
     },
     "wall": {
      "slot": "brick",
-     "tint": "#66605c",
-     "measured": true
+     "tint": "#7b736f",
+     "measured": true,
+     "mottle": {
+      "tones": [
+       {
+        "hex": "#766d68",
+        "share": 0.33
+       },
+       {
+        "hex": "#645d5c",
+        "share": 0.25
+       },
+       {
+        "hex": "#978c85",
+        "share": 0.23
+       },
+       {
+        "hex": "#817a79",
+        "share": 0.19
+       }
+      ],
+      "evidence": "#77: brick-mottle.ts, chroma-weighted k=4 over the upper brick of survey crops 2136437 (2e Kekerstraat, below the windows) and 2165711 (Kervelplantsoen), each white-referenced to its own white door panel, lightness x1.15 to the sunlit 2025-09-08 13:23 crops of 2136437/2096839 (mean luma 131; their white paint clips and their hue reads cyan-cast). Chroma then halved around each tone's luma: the white-referenced crops read warm (C ~ 18), the sunlit 2025 crops neutral grey with a cyan cast; the halfway reading matches the grey-brown/purple the integrator review saw. Mean #7b736f = the tint; ratios 0.81-1.22."
+     }
     },
     "plinth": {
      "slot": "brick",
@@ -117,8 +159,29 @@
     },
     "wall": {
      "slot": "brick",
-     "tint": "#6a5c52",
-     "measured": true
+     "tint": "#7b736f",
+     "measured": true,
+     "mottle": {
+      "tones": [
+       {
+        "hex": "#766d68",
+        "share": 0.33
+       },
+       {
+        "hex": "#645d5c",
+        "share": 0.25
+       },
+       {
+        "hex": "#978c85",
+        "share": 0.23
+       },
+       {
+        "hex": "#817a79",
+        "share": 0.19
+       }
+      ],
+      "evidence": "#77: brick-mottle.ts, chroma-weighted k=4 over the upper brick of survey crops 2136437 (2e Kekerstraat, below the windows) and 2165711 (Kervelplantsoen), each white-referenced to its own white door panel, lightness x1.15 to the sunlit 2025-09-08 13:23 crops of 2136437/2096839 (mean luma 131; their white paint clips and their hue reads cyan-cast). Chroma then halved around each tone's luma: the white-referenced crops read warm (C ~ 18), the sunlit 2025 crops neutral grey with a cyan cast; the halfway reading matches the grey-brown/purple the integrator review saw. Mean #7b736f = the tint; ratios 0.81-1.22."
+     }
     },
     "plinth": {
      "slot": "brick",
@@ -347,7 +410,7 @@
        "kind": "door",
        "levels": "ground",
        "ref": "left",
-       "u": 1.0,
+       "u": 1,
        "w": 0.9,
        "h": 2.3
       },

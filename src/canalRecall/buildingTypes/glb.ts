@@ -13,7 +13,7 @@ import {Document, NodeIO, type Material, type Buffer as GltfBuffer} from '@gltf-
 import {EXTMeshGPUInstancing, KHRMeshQuantization, EXTMeshoptCompression} from '@gltf-transform/extensions';
 import {meshopt, quantize} from '@gltf-transform/functions';
 import {MeshoptEncoder, MeshoptDecoder} from 'meshoptimizer';
-import {weld, type MeshBuilder} from './mesh.ts';
+import {materialId, weld, type MaterialKey, type MeshBuilder} from './mesh.ts';
 
 export interface PlacedInstance {
   name: string;
@@ -31,13 +31,16 @@ export interface GlbResult { bytes: Uint8Array; triangles: number; primitives: n
 const hexRgb = (hex: string): [number, number, number] => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255) as [number, number, number];
 const srgbToLinear = (c: number) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
 
-function materialFor(doc: Document, cache: Map<string, Material>, slot: string, tint: string, measured = false): Material {
-  const id = `${slot}|${tint}${measured ? '|measured' : ''}`;
+function materialFor(doc: Document, cache: Map<string, Material>, key: MaterialKey): Material {
+  const {slot, tint} = key, measured = key.measured === true, id = materialId(key);
   let m = cache.get(id);
   if (!m) {
     const [r, g, b] = hexRgb(tint).map(srgbToLinear);
-    m = doc.createMaterial(`${slot}_${tint.slice(1)}${measured ? '_measured' : ''}`).setBaseColorFactor([r, g, b, 1]).setMetallicFactor(0).setRoughnessFactor(0.9)
-      .setExtras(measured ? {materialSlot: slot, tint, tintSource: 'measured'} : {materialSlot: slot, tint});
+    const extras: Record<string, unknown> = measured ? {materialSlot: slot, tint, tintSource: 'measured'} : {materialSlot: slot, tint};
+    // #77: the brick blend travels as a material extra (three.js userData) for the look's mottled brick cell.
+    if (key.mottle) extras.mottle = key.mottle.tones.map(t => ({hex: t.hex, share: t.share}));
+    m = doc.createMaterial(`${slot}_${tint.slice(1)}${measured ? '_measured' : ''}${key.mottle ? '_mottled' : ''}`).setBaseColorFactor([r, g, b, 1]).setMetallicFactor(0).setRoughnessFactor(0.9)
+      .setExtras(extras);
     cache.set(id, m);
   }
   return m;
@@ -50,7 +53,7 @@ function meshOf(doc: Document, buffer: GltfBuffer, cache: Map<string, Material>,
     if (!bucket.positions.length) continue;
     const w = weld(bucket);
     vertices += w.positions.length / 3;
-    mesh.addPrimitive(doc.createPrimitive().setMaterial(materialFor(doc, cache, bucket.key.slot, bucket.key.tint, bucket.key.measured === true))
+    mesh.addPrimitive(doc.createPrimitive().setMaterial(materialFor(doc, cache, bucket.key))
       .setIndices(doc.createAccessor().setType('SCALAR').setArray(w.positions.length / 3 < 65536 ? Uint16Array.from(w.indices) : w.indices).setBuffer(buffer))
       .setAttribute('POSITION', doc.createAccessor().setType('VEC3').setArray(w.positions).setBuffer(buffer))
       .setAttribute('NORMAL', doc.createAccessor().setType('VEC3').setArray(w.normals).setBuffer(buffer))

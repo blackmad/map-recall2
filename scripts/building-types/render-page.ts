@@ -7,6 +7,8 @@ import * as THREE from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {MeshoptDecoder} from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import {cityTint, type MaterialSlot as RecipeSlot} from '../../src/canalRecall/look/palette.ts';
+import {materialMottle} from '../../src/canalRecall/buildingRecipe/recipeLook.ts';
+import {assignBrickTones, mottleGain, mottleKey, mottleRatios, type Mottle} from '../../src/canalRecall/buildingTypes/mottle.ts';
 
 /** Review-render brightness of the brick slot, tuned so a sunlit-photo tint renders about as dark as the photo (the game: lifted tint x neutral brick texture x wall shade). */
 const BRICK_GAIN = 1.12;
@@ -39,6 +41,20 @@ const textures: Record<string, THREE.Texture> = {
   bitumen: canvasTexture((g, s) => { g.fillStyle = '#e8e8e8'; g.fillRect(0, 0, s, s); for (let i = 0; i < 300; i++) { const v = 200 + rnd() * 50; g.fillStyle = `rgb(${v},${v},${v})`; g.fillRect(rnd() * s, rnd() * s, 3, 3); } }, 128, 1),
 };
 
+/** Mottled brick (#77): the review brick bond with each brick multiplied by its tone's ratio (and the clip gain, returned for the tint). */
+const mottled = new Map<string, {t: THREE.CanvasTexture; gain: number}>();
+function mottledBrick(m: Mottle): {t: THREE.CanvasTexture; gain: number} {
+  const key = mottleKey(m);
+  let e = mottled.get(key);
+  if (!e) {
+    const ratios = mottleRatios(m), gain = mottleGain(ratios, 0.83 * 255), tones = assignBrickTones(m, 12, 7, 3);
+    let sd = 11; const r2 = () => (sd = (sd * 16807) % 2147483647) / 2147483647;
+    const t = canvasTexture((g, s) => { g.fillStyle = '#ffffff'; g.fillRect(0, 0, s, s); const bh = s / 12, bw = s * 0.215 / 0.5 / 2; for (let r = 0; r < 12; r++) for (let k = -1; k < 6; k++) { const x = k * bw + (r % 2 ? bw / 2 : 0); const v = (0.74 + r2() * 0.18) * gain, q = ratios[tones[r][k + 1]]; g.fillStyle = `rgb(${v * 255 * q[0]},${v * 250 * q[1]},${v * 245 * q[2]})`; g.fillRect(x + 1, r * bh + 1, bw - 2, bh - 2); } }, 256, 0.5);
+    e = {t, gain}; mottled.set(key, e);
+  }
+  return e;
+}
+
 function dress(root: THREE.Object3D) {
   root.traverse(o => {
     const m = (o as THREE.Mesh).material as THREE.MeshStandardMaterial | undefined;
@@ -50,7 +66,9 @@ function dress(root: THREE.Object3D) {
     // review render does the same; the authored `tint` is therefore the colour sampled from the sunlit photo.
     const tint = (m.userData as {tint?: string}).tint;
     if (slot && tint && slot !== 'glass' && textures[slot]) m.color.set(cityTint(slot as RecipeSlot, tint, (m.userData as {tintSource?: 'measured'}).tintSource));
-    if (slot && textures[slot]) { m.map = textures[slot]; m.color.multiplyScalar(slot === 'brick' ? BRICK_GAIN : 1.05); m.needsUpdate = true; }
+    const mottle = materialMottle(slot, (m.userData as {mottle?: unknown}).mottle);
+    if (mottle) { const e = mottledBrick(mottle); m.map = e.t; m.color.multiplyScalar(BRICK_GAIN * e.gain ** -2.2); m.needsUpdate = true; }
+    else if (slot && textures[slot]) { m.map = textures[slot]; m.color.multiplyScalar(slot === 'brick' ? BRICK_GAIN : 1.05); m.needsUpdate = true; }
     if (slot === 'glass') { m.roughness = 0.15; m.metalness = 0.35; m.color.multiplyScalar(1.2); }
   });
 }

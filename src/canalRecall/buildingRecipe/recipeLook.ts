@@ -22,7 +22,7 @@
  * the page's three.js namespace so the game (shared CanalRecallThree) and the
  * headless sheet renderer use the identical code path.
  */
-import {paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintGlassTintCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, roofCanvas} from '../look/slotCells.ts';
+import {paintBrickCanvas, paintMottledBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintGlassTintCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, roofCanvas} from '../look/slotCells.ts';
 import {BAKED_SHADE_GLSL, bakedFaceShade, bakedWallShade} from '../rendererShared/lightRig.ts';
 export {paintBrickCanvas, paintGlassCanvas, paintStuccoCanvas};
 import {cityLookEnabled, getCityLook, type CityLook} from '../look/cityLook.ts';
@@ -30,6 +30,24 @@ import {INFERRED_SLOT_SOURCE} from '../look/materialSlotInference.ts';
 import {MATERIAL_SLOTS, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, type MaterialSlot, type TintSource} from '../look/palette.ts';
 import {sceneSlotHex} from '../look/sunny.ts';
 import {photoMatchedWallTint, type WallExposure} from '../look/chunkWallExposure.ts';
+import {assignBrickTones, mottleGain, mottleKey, mottleRatios, validateMottle, type Mottle} from '../buildingTypes/mottle.ts';
+import {BRICK_CELL} from '../look/slotCells.ts';
+
+/**
+ * A material's mottled-brick blend (#77): the GLB extra `mottle` (buildingTypes/glb.ts) when it is a valid blend on the
+ * brick slot, else null (the plain cell).
+ */
+export function materialMottle(slot: string | undefined, extra: unknown): Mottle | null {
+  if (slot !== 'brick' || !Array.isArray(extra)) return null;
+  const m: Mottle = {tones: extra.map((t: any) => ({hex: String(t?.hex), share: Number(t?.share)}))};
+  return validateMottle(m).length ? null : m;
+}
+
+/** Cell tones, per-tone ratios and gain of a mottled brick cell (shared with the review renderer). */
+export function mottledCell(m: Mottle): {tones: number[][]; ratios: number[][]; gain: number} {
+  const ratios = mottleRatios(m);
+  return {tones: assignBrickTones(m, BRICK_CELL.size / BRICK_CELL.course, BRICK_CELL.size / BRICK_CELL.brick), ratios, gain: mottleGain(ratios)};
+}
 
 /** A GLB material's `materialSlot` extra (look/palette.ts owns the slot → cell/tint mapping). */
 export type RecipeSlot = MaterialSlot;
@@ -140,7 +158,11 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
     }
     return t;
   };
-  const slotTexture = (slot: RecipeSlot, source?: TintSource | null) => {
+  const slotTexture = (slot: RecipeSlot, source?: TintSource | null, mottle?: Mottle | null) => {
+    if (mottle && SLOT_CELL[slot] === 'brick') {
+      const cell = mottledCell(mottle);
+      return texture(`brick-mottle|${mottleKey(mottle)}`, () => paintMottledBrickCanvas(doc, options.brick, cell.tones, cell.ratios, cell.gain));
+    }
     switch (SLOT_CELL[slot]) {
       case 'brick': return texture('brick', () => paintBrickCanvas(doc, options.brick));
       case 'glass': {
@@ -158,28 +180,32 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
     }
   };
   const materials = new Map<string, any>();
-  const materialFor = (slot: RecipeSlot, tintHex: string, side: number, source?: TintSource | null, white?: string | null, exposure?: WallExposure | null) => {
+  const materialFor = (slot: RecipeSlot, tintHex: string, side: number, source?: TintSource | null, white?: string | null, exposure?: WallExposure | null, mottle?: Mottle | null) => {
     // Sunny look (look/sunny.ts): a measured wall is first brought to its sunlit exposure (from the white it carries, else
     // by hex); a photo-matched chunk wall is brought from its strip's exposure (look/chunkWallExposure.ts).
     const tint = photoMatchedWallTint(slot, cityTint(slot, sceneSlotHex(slot, tintHex, source, undefined, white), source), exposure, source);
-    const key = `${slot}|${tint}|${side}${source === 'measured' && slot === 'glass' ? '|measured' : ''}`;
+    const key = `${slot}|${tint}|${side}${source === 'measured' && slot === 'glass' ? '|measured' : ''}${mottle ? `|mottle:${mottleKey(mottle)}` : ''}`;
+    // A mottled cell is painted at `gain` (<= 1) so its brightest brick does not clip; the tint takes it back (sRGB product).
+    const gain = mottle ? mottledCell(mottle).gain : 1;
     let m = materials.get(key);
     if (!m && lit) {
       // Same cell, same tint, same metre scale; the texture is decoded from
       // sRGB and the tint is linearised, so cell × tint matches the facades'
       // `pow(cell * tint, 2.2)` before the rig lights it.
-      const map = slotTexture(slot, source);
+      const map = slotTexture(slot, source, mottle);
       map.colorSpace = THREE.SRGBColorSpace;
       if (SLOT_CELL[slot] !== 'glass') map.repeat.set(1 / SLOT_TILE_M[slot], 1 / SLOT_TILE_M[slot]);
-      m = new THREE.MeshLambertMaterial({map, color: new THREE.Color(tint), side});
+      const color = new THREE.Color(tint);
+      if (gain !== 1) color.multiplyScalar(gain ** -2.2); // linear: the decoded cell is darker by gain^2.2
+      m = new THREE.MeshLambertMaterial({map, color, side});
       m.name = `recipe-look-lit/${slot}`;
       m.userData = {[RECIPE_LOOK_SHARED]: true, materialSlot: slot, tint};
       materials.set(key, m);
     }
     if (!m) {
-      const [r, g, b] = hexToRgb(tint).map(v => v / 255);
+      const [r, g, b] = hexToRgb(tint).map(v => v / 255 / gain);
       m = new THREE.ShaderMaterial({
-        uniforms: {map: {value: slotTexture(slot, source)}, tint: {value: new THREE.Vector3(r, g, b)}, uvScale: {value: 1 / SLOT_TILE_M[slot]}, highlight: {value: 0}, enuFromWorld},
+        uniforms: {map: {value: slotTexture(slot, source, mottle)}, tint: {value: new THREE.Vector3(r, g, b)}, uvScale: {value: 1 / SLOT_TILE_M[slot]}, highlight: {value: 0}, enuFromWorld},
         vertexShader: VERTEX, fragmentShader: FRAGMENT, side,
       });
       m.name = `recipe-look/${slot}`;
@@ -201,7 +227,7 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
         if (o.material.userData.materialSlotSource === INFERRED_SLOT_SOURCE) return;
         const previous = o.material;
         const measured = previous.userData?.tintSource === 'measured';
-        o.material = materialFor(slot, tint, previous.side, measured ? 'measured' : null, measured ? previous.userData?.tintWhitePoint ?? null : null, context?.wallExposure);
+        o.material = materialFor(slot, tint, previous.side, measured ? 'measured' : null, measured ? previous.userData?.tintWhitePoint ?? null : null, context?.wallExposure, materialMottle(slot, previous.userData?.mottle));
         if (!previous.userData?.[RECIPE_LOOK_SHARED]) previous.dispose();
         changed++;
       });

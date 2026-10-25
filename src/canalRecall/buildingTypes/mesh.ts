@@ -3,13 +3,16 @@
  * per material (slot + tint), UVs in metres (box projection) so the runtime
  * recipe look can dress `materialSlot` materials with its shared textures.
  */
+import {mottleKey, type Mottle} from './mottle.ts';
+
 export type V3 = [number, number, number];
 
 /** Material slots understood by `buildingRecipe/recipeLook.ts`. */
 export type Slot = 'brick' | 'stucco' | 'accent' | 'stone' | 'frame' | 'door' | 'glass' | 'roofTile' | 'slate' | 'bitumen';
 
 /** `measured`: the tint is the sunlit photo colour and the runtime keeps it (`tintSource: 'measured'`) instead of mapping it into the city brick range. */
-export interface MaterialKey { slot: Slot; tint: string; measured?: boolean }
+/** `mottle` (#77, mottle.ts): a multi-tone brick blend around `tint`; the runtime brick cell gives each brick one tone. */
+export interface MaterialKey { slot: Slot; tint: string; measured?: boolean; mottle?: Mottle }
 
 export interface Bucket {
   key: MaterialKey;
@@ -18,6 +21,9 @@ export interface Bucket {
   uvs: number[];
 }
 
+/** Bucket/material identity: slot, tint, measured flag and (when present) the mottle. */
+export const materialId = (key: MaterialKey) => `${key.slot}|${key.tint}${key.measured ? '|measured' : ''}${key.mottle ? `|mottle:${mottleKey(key.mottle)}` : ''}`;
+
 const sub = (a: V3, b: V3): V3 => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
 const cross = (a: V3, b: V3): V3 => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
 
@@ -25,7 +31,7 @@ export class MeshBuilder {
   readonly buckets = new Map<string, Bucket>();
 
   private bucket(key: MaterialKey): Bucket {
-    const id = `${key.slot}|${key.tint}${key.measured ? '|measured' : ''}`;
+    const id = materialId(key);
     let b = this.buckets.get(id);
     if (!b) { b = {key, positions: [], normals: [], uvs: []}; this.buckets.set(id, b); }
     return b;

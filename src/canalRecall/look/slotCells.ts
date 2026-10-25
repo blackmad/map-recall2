@@ -40,6 +40,31 @@ export function paintBrickCanvas(doc: Document, brick?: CanvasImageSource | null
   return canvas;
 }
 
+/** Brick cell bond (px): course height, brick length, cell size; the mortar lines of `paintBrickCanvas` follow it. */
+export const BRICK_CELL = {size: 336, course: 14, brick: 48, firstJoint: 6} as const;
+
+/**
+ * Mottled brick cell (#77, buildingTypes/mottle.ts): the neutral brick cell with every brick of its bond multiplied by its
+ * tone's ratio to the blend's mean (`ratios[tone]`, per channel) and by `gain` (mottleGain: keeps the brightest tone
+ * under clipping; the caller divides the tint by it). `tones[course][brick]` is the tone index of each brick
+ * (assignBrickTones over 24 courses x 7 bricks), so the cell tiles like the plain one.
+ */
+export function paintMottledBrickCanvas(doc: Document, brick: CanvasImageSource | null | undefined, tones: readonly (readonly number[])[], ratios: readonly (readonly number[])[], gain: number): HTMLCanvasElement {
+  const canvas = paintBrickCanvas(doc, brick), {size, course, brick: bw, firstJoint} = BRICK_CELL;
+  const ctx = canvas.getContext('2d', {willReadFrequently: true})!, image = ctx.getImageData(0, 0, size, size), px = image.data;
+  const courses = size / course, perCourse = size / bw;
+  for (let y = 0; y < size; y++) {
+    // Course r spans [firstJoint + r * course, firstJoint + (r + 1) * course), wrapping at the cell edge.
+    const r = ((Math.floor((y - firstJoint) / course) % courses) + courses) % courses, shift = (r % 2) * (bw / 2);
+    for (let x = 0; x < size; x++) {
+      const k = ((Math.floor((x - shift) / bw) % perCourse) + perCourse) % perCourse, ratio = ratios[tones[r][k]], i = (y * size + x) * 4;
+      for (let c = 0; c < 3; c++) px[i + c] = Math.min(255, Math.round(px[i + c] * ratio[c] * gain));
+    }
+  }
+  ctx.putImageData(image, 0, 0);
+  return canvas;
+}
+
 /** Glass pane (UV 0..1 per pane): the city's lifted photo-look gradient plus a soft sky reflection. */
 export function paintGlassCanvas(doc: Document): HTMLCanvasElement {
   const canvas = doc.createElement('canvas'); canvas.width = 64; canvas.height = 128;

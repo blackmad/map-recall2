@@ -5,6 +5,7 @@
  * the panorama.
  */
 import type {Slot} from './mesh.ts';
+import {validateMottle, type Mottle} from './mottle.ts';
 
 export type FacadeId = 'front' | 'back' | 'left' | 'right';
 export const FACADE_IDS: FacadeId[] = ['front', 'back', 'left', 'right'];
@@ -125,7 +126,16 @@ export interface FacadeSpec {
  * lifts it to L 0.38-0.5 (brown-red tiles drew orange) and turns any tile with S < 0.2 into the city slate (olive concrete
  * tiles drew blue-grey). Measured colours must be #rrggbb on a slot the look keeps measured (MEASURED_TINT_SLOTS).
  */
-export interface SlotTint {slot: Slot; tint: string; measured?: boolean}
+export interface SlotTint {
+  slot: Slot;
+  tint: string;
+  measured?: boolean;
+  /**
+   * Mottled multi-tone brick (#77, mottle.ts): the brick tones of the blend, measured from sunlit (or white-referenced)
+   * crops, with shares; `tint` stays the wall's mean. Brick slot only. Absent: material, GLB and look unchanged.
+   */
+  mottle?: Mottle;
+}
 
 export interface Palette {
   wall: SlotTint;
@@ -365,6 +375,12 @@ export function validateSpec(spec: TypeSpec): string[] {
     const st = t as SlotTint;
     if (!/^#[0-9a-f]{6}$/i.test(st.tint)) errors.push(`variant ${name}: measured ${key} tint ${st.tint} is not #rrggbb`);
     if (!MEASURED_TINT_SLOTS.includes(st.slot)) errors.push(`variant ${name}: ${key} slot ${st.slot} has no measured look`);
+  }
+  for (const [name, v] of Object.entries(spec.variants)) for (const [key, t] of Object.entries(v.palette)) {
+    const st = t as SlotTint | string;
+    if (!st || typeof st !== 'object' || !st.mottle) continue;
+    if (st.slot !== 'brick') errors.push(`variant ${name}: ${key} mottle needs the brick slot`);
+    for (const e of validateMottle(st.mottle)) errors.push(`variant ${name}: ${key} ${e}`);
   }
   if (!spec.variants[spec.defaultVariant]) errors.push(`defaultVariant ${spec.defaultVariant} not in variants`);
   for (const [axis, ts] of Object.entries(spec.sizeClassesM ?? {})) if (!ts?.length || ts.some((t, i) => !(t > 0) || (i > 0 && t <= ts[i - 1]))) errors.push(`sizeClassesM.${axis}: thresholds must be positive and ascending`);

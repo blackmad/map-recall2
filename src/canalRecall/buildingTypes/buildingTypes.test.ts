@@ -892,3 +892,71 @@ test('stripe depth (#75): absent = the 1 cm stripe byte for byte; depthM moves t
   const zs = (m: ReturnType<typeof generate>['mesh']) => { const pos = m.buckets.get(key(m))!.positions; const out: number[] = []; for (let i = 2; i < pos.length; i += 3) out.push(pos[i]); return Math.max(...out); };
   assert.ok(Math.abs(zs(c) - zs(a) - 0.025) < 1e-6, `stripe 2.5 cm further out (${zs(c)} vs ${zs(a)})`);
 });
+
+test('mottled brick (#77): validate, ratios average to 1 around the mean, the cell carries the measured mix exactly, the gain keeps the brightest tone under clipping', async () => {
+  const {validateMottle, mottleRatios, mottleMean, assignBrickTones, mottleGain, mottleKey} = await import('./mottle.ts');
+  const m = {tones: [{hex: '#766d68', share: 0.33}, {hex: '#645d5c', share: 0.25}, {hex: '#978c85', share: 0.23}, {hex: '#817a79', share: 0.19}]};
+  assert.deepEqual(validateMottle(m), []);
+  assert.ok(validateMottle({tones: [{hex: '#766d68', share: 1}]}).length, 'one tone is not a blend');
+  assert.ok(validateMottle({tones: [{hex: '#766d68', share: 0.5}, {hex: 'red', share: 0.3}]}).some(e => /rrggbb/.test(e)));
+  assert.ok(validateMottle({tones: [{hex: '#766d68', share: 0.5}, {hex: '#645d5c', share: 0.3}]}).some(e => /sum/.test(e)));
+  const r = mottleRatios(m), mean = mottleMean(m);
+  for (let c = 0; c < 3; c++) assert.ok(Math.abs(m.tones.reduce((s, t, i) => s + t.share * r[i][c], 0) - 1) < 1e-9, 'share-weighted ratio is 1: the wall averages to its tint');
+  assert.ok(mean.every(v => v > 100 && v < 130));
+  const cell = assignBrickTones(m, 24, 7);
+  assert.equal(cell.length, 24); assert.ok(cell.every(row => row.length === 7));
+  const counts = [0, 0, 0, 0]; for (const row of cell) for (const t of row) counts[t]++;
+  assert.deepEqual(counts, [55, 42, 39, 32], 'largest-remainder counts of 168 bricks');
+  assert.deepEqual(assignBrickTones(m, 24, 7), cell, 'deterministic');
+  const g = mottleGain(r);
+  assert.ok(g <= 1 && 225 * g * Math.max(...r.flat()) <= 250 + 1e-9);
+  assert.equal(mottleGain([[0.9, 0.9, 0.9], [1.05, 1.05, 1.05]]), 1, 'no gain when nothing clips');
+  assert.equal(mottleKey(m), '#766d68:0.33,#645d5c:0.25,#978c85:0.23,#817a79:0.19');
+});
+
+test('mottle measurement (#77): k-means on chroma-weighted pixels separates grey from purple bricks of one lightness; sky and openings are dropped', async () => {
+  const {measureMottle} = await import('./mottle.ts');
+  const px: [number, number, number][] = [];
+  for (let i = 0; i < 600; i++) px.push([120, 120, 120]);
+  for (let i = 0; i < 400; i++) px.push([135, 112, 128]);
+  for (let i = 0; i < 200; i++) px.push([20, 20, 22]); // window
+  for (let i = 0; i < 200; i++) px.push([120, 170, 230]); // sky
+  const out = measureMottle(px, 2);
+  assert.equal(out.kept, 1000);
+  assert.deepEqual(out.tones, [{hex: '#787878', share: 0.6}, {hex: '#877080', share: 0.4}]);
+});
+
+test('mottle plumbing (#77): absent -> the same bucket ids, GLB material name and extras; present, a separate bucket and a mottle extra; validateSpec wants the brick slot; the look reads it back', async () => {
+  const {MeshBuilder, materialId} = await import('./mesh.ts');
+  const {writeTypeGlb} = await import('./glb.ts');
+  const {NodeIO} = await import('@gltf-transform/core');
+  const {materialMottle, mottledCell} = await import('../buildingRecipe/recipeLook.ts');
+  const mottle = {tones: [{hex: '#766d68', share: 0.6}, {hex: '#978c85', share: 0.4}]};
+  assert.equal(materialId({slot: 'brick', tint: '#7b736f', measured: true}), 'brick|#7b736f|measured');
+  assert.equal(materialId({slot: 'brick', tint: '#7b736f', measured: true, mottle}), 'brick|#7b736f|measured|mottle:#766d68:0.60,#978c85:0.40');
+  const mats = async (withMottle: boolean) => {
+    const mb = new MeshBuilder();
+    mb.tri({slot: 'brick', tint: '#7b736f', measured: true, ...(withMottle ? {mottle} : {})}, [0, 0, 0], [1, 0, 0], [0, 1, 0]);
+    const out = await writeTypeGlb('t', mb, {}, {compress: 'none'});
+    return (await new NodeIO().readBinary(out.bytes)).getRoot().listMaterials().map(m => ({name: m.getName(), extras: m.getExtras()}));
+  };
+  assert.deepEqual(await mats(false), [{name: 'brick_7b736f_measured', extras: {materialSlot: 'brick', tint: '#7b736f', tintSource: 'measured'}}]);
+  const withM = await mats(true);
+  assert.deepEqual(withM, [{name: 'brick_7b736f_measured_mottled', extras: {materialSlot: 'brick', tint: '#7b736f', tintSource: 'measured', mottle: mottle.tones}}]);
+  assert.deepEqual(materialMottle('brick', (withM[0].extras as any).mottle), mottle);
+  assert.equal(materialMottle('stucco', mottle.tones), null, 'brick slot only');
+  assert.equal(materialMottle('brick', undefined), null);
+  const cell = mottledCell(mottle);
+  assert.equal(cell.tones.length, 24); assert.equal(cell.tones[0].length, 7);
+  // th-kz-row: the three dark-brick variants carry the measured blend, the orange-brick row does not; geometry is unchanged.
+  const KZ = load('th-kz-row.json');
+  assert.deepEqual(validateSpec(KZ), []);
+  for (const v of ['blue', 'green', 'mauve']) assert.ok(KZ.variants[v].palette.wall.mottle, v);
+  assert.equal(KZ.variants.orange.palette.wall.mottle, undefined);
+  const bad: TypeSpec = {...KZ, variants: {...KZ.variants, blue: {...KZ.variants.blue, palette: {...KZ.variants.blue.palette, wall: {slot: 'stucco', tint: '#7b736f', mottle}}}}};
+  assert.ok(validateSpec(bad).some(e => /mottle needs the brick slot/.test(e)));
+  const params = {lengthM: 5.45, widthM: 10.27, eavesM: 6.0, storeys: 2, variant: 'blue', roofForm: 'flat' as const, ridge: 'long' as const, groundMode: 'solid' as const};
+  const plain: TypeSpec = {...KZ, variants: {...KZ.variants, blue: {...KZ.variants.blue, palette: {...KZ.variants.blue.palette, wall: {slot: 'brick', tint: KZ.variants.blue.palette.wall.tint, measured: true}}}}};
+  const a = generate(KZ, params).mesh, b = generate(plain, params).mesh;
+  assert.deepEqual([...a.buckets.values()].map(x => x.positions), [...b.buckets.values()].map(x => x.positions));
+});
