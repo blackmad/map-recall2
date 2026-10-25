@@ -1,0 +1,443 @@
+{
+ "street": "Eerste Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:25:24.004Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164583",
+   "addresses": [
+    "Eerste Helmersstraat 209"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 209-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010001020770"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7286178637,
+     "lngLat": [
+      4.867069,
+      52.3613639
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "bicycle": "no",
+      "capacity": "2",
+      "operator": "Vattenfall"
+     },
+     "fetchedAt": "2026-10-25T16:25:24.004Z",
+     "match": "frontage",
+     "distanceM": 4.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152877",
+   "addresses": [
+    "Eerste Helmersstraat 211A",
+    "Eerste Helmersstraat 211B",
+    "Eerste Helmersstraat 211C",
+    "Eerste Helmersstraat 211"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 211A",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010011323466"
+    },
+    {
+     "address": "Eerste Helmersstraat 211B",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010011323467"
+    },
+    {
+     "address": "Eerste Helmersstraat 211C",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010011323468"
+    },
+    {
+     "address": "Eerste Helmersstraat 211-H",
+     "use": "kantoorfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000545069"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159748",
+   "addresses": [
+    "Eerste Helmersstraat 213"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 213-H",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000545077"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159737",
+   "addresses": [
+    "Eerste Helmersstraat 215",
+    "Eerste Helmersstraat 215E",
+    "Eerste Helmersstraat 215C",
+    "Eerste Helmersstraat 215A",
+    "Eerste Helmersstraat 215B",
+    "Eerste Helmersstraat 215D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 215E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012568696"
+    },
+    {
+     "address": "Eerste Helmersstraat 215C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012568694"
+    },
+    {
+     "address": "Eerste Helmersstraat 215A",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010012568692"
+    },
+    {
+     "address": "Eerste Helmersstraat 215B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012568693"
+    },
+    {
+     "address": "Eerste Helmersstraat 215D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012568695"
+    },
+    {
+     "address": "Eerste Helmersstraat 215-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000545086"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159862",
+   "addresses": [
+    "Eerste Helmersstraat 217"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 217-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000545089"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159632",
+   "addresses": [
+    "Eerste Helmersstraat 219",
+    "Eerste Helmersstraat 219A",
+    "Eerste Helmersstraat 219B",
+    "Eerste Helmersstraat 219C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 219-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000545096"
+    },
+    {
+     "address": "Eerste Helmersstraat 219A",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010012166966"
+    },
+    {
+     "address": "Eerste Helmersstraat 219B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012574869"
+    },
+    {
+     "address": "Eerste Helmersstraat 219C",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010012574870"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153120",
+   "addresses": [
+    "Eerste Helmersstraat 221",
+    "Eerste Helmersstraat 221A",
+    "Eerste Helmersstraat 221B",
+    "Eerste Helmersstraat 221C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 221-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000545102"
+    },
+    {
+     "address": "Eerste Helmersstraat 221A",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010012165375"
+    },
+    {
+     "address": "Eerste Helmersstraat 221B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012574866"
+    },
+    {
+     "address": "Eerste Helmersstraat 221C",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010012574867"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166885",
+   "addresses": [
+    "Eerste Helmersstraat 223"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 223-H",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000545109"
+    },
+    {
+     "address": "Eerste Helmersstraat 223-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010012581850"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164920",
+   "addresses": [
+    "Eerste Helmersstraat 225"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 225-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000545115"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165470",
+   "addresses": [
+    "Eerste Helmersstraat 227"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 227-H",
+     "use": "woonfunctie",
+     "areaM2": 183,
+     "bagId": "0363010000545122"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165598",
+   "addresses": [
+    "Eerste Helmersstraat 229"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 229-H",
+     "use": "woonfunctie",
+     "areaM2": 171,
+     "bagId": "0363010000985131"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152814",
+   "addresses": [
+    "Eerste Helmersstraat 231"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 231-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001024107"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165380",
+   "addresses": [
+    "Eerste Helmersstraat 233"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 233-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010001165073"
+    },
+    {
+     "address": "Eerste Helmersstraat 233-H",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010012091631"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166398",
+   "addresses": [
+    "Eerste Helmersstraat 235"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 235-H",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010001042727"
+    },
+    {
+     "address": "Eerste Helmersstraat 235-H",
+     "use": "woonfunctie",
+     "areaM2": 152,
+     "bagId": "0363010012080749"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161336",
+   "addresses": [
+    "Eerste Helmersstraat 237"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 237-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000545159"
+    },
+    {
+     "address": "Eerste Helmersstraat 237-H",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010012573411"
+    },
+    {
+     "address": "Eerste Helmersstraat 237-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010012110669"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164140",
+   "addresses": [
+    "Eerste Helmersstraat 239"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 239-H",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000545167"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162217",
+   "addresses": [
+    "Eerste Helmersstraat 241"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 241-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000545175"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164432",
+   "addresses": [
+    "Eerste Helmersstraat 243"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 243-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000545183"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

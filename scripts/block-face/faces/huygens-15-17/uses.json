@@ -1,0 +1,66 @@
+{
+ "street": "Eerste Constantijn Huygensstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159829",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 15-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000544245"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2414357187,
+     "lngLat": [
+      4.8744261,
+      52.364907
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "15",
+      "addr:postcode": "1054BP",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "amenity": "restaurant",
+      "cuisine": "french",
+      "indoor_seating": "yes",
+      "name": "Pastis",
+      "outdoor_seating": "yes",
+      "website": "https://www.pastisamsterdam.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160640",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001957970"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

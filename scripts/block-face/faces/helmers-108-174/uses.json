@@ -1,0 +1,313 @@
+{
+ "street": "Eerste Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:23:47.956Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165673",
+   "addresses": [
+    "Eerste Helmersstraat 138"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 138-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000544853"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159191",
+   "addresses": [
+    "Eerste Helmersstraat 136"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 136-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000544849"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159507",
+   "addresses": [
+    "Eerste Helmersstraat 134"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 134-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000544844"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153736",
+   "addresses": [
+    "Eerste Helmersstraat 132"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 132-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000544839"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160448",
+   "addresses": [
+    "Eerste Helmersstraat 130",
+    "Eerste Helmersstraat 130A",
+    "Eerste Helmersstraat 130B",
+    "Eerste Helmersstraat 130C",
+    "Eerste Helmersstraat 130D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 130-H",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000544834"
+    },
+    {
+     "address": "Eerste Helmersstraat 130A",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010012115037"
+    },
+    {
+     "address": "Eerste Helmersstraat 130B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012115038"
+    },
+    {
+     "address": "Eerste Helmersstraat 130C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012115039"
+    },
+    {
+     "address": "Eerste Helmersstraat 130D",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012115040"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158285",
+   "addresses": [
+    "Eerste Helmersstraat 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 128-H",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000544829"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164448",
+   "addresses": [
+    "Eerste Helmersstraat 126"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 126-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000544823"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159059",
+   "addresses": [
+    "Eerste Helmersstraat 124"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 124-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000544818"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154337",
+   "addresses": [
+    "Eerste Helmersstraat 122"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 122-H",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000544813"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164727",
+   "addresses": [
+    "Eerste Helmersstraat 120",
+    "Eerste Helmersstraat 120B",
+    "Eerste Helmersstraat 120A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 120-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000544807"
+    },
+    {
+     "address": "Eerste Helmersstraat 120B",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010001993828"
+    },
+    {
+     "address": "Eerste Helmersstraat 120A",
+     "use": "woonfunctie",
+     "areaM2": 174,
+     "bagId": "0363010001993829"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157518",
+   "addresses": [
+    "Eerste Helmersstraat 118"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 118",
+     "use": "woonfunctie",
+     "areaM2": 244,
+     "bagId": "0363010001993825"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166218",
+   "addresses": [
+    "Eerste Helmersstraat 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 116-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000544796"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162661",
+   "addresses": [
+    "Eerste Helmersstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 114-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000544791"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166238",
+   "addresses": [
+    "Eerste Helmersstraat 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 112-H",
+     "use": "winkelfunctie",
+     "areaM2": 183,
+     "bagId": "0363010000544785"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159931",
+   "addresses": [
+    "Eerste Helmersstraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 110-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000544780"
+    },
+    {
+     "address": "Eerste Helmersstraat 110-H",
+     "use": "woonfunctie",
+     "areaM2": 170,
+     "bagId": "0363010003716806"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091912",
+   "addresses": [
+    "Eerste Helmersstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Beetsstraat 156",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000750441"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,171 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "helmers-23-57-r1",
+ "street": "Eerste Helmersstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-12",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-12",
+   "image": "staging/block-face/helmers-23-57-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the helmersbuurt library (buurt Helmersbuurt-Oost); scores and holds in scripts/block-face/faces/helmers-23-57/auto-place.json"
+ },
+ "types": [
+  "helmers-1905-checker-arch"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012161340",
+   "slug": "helmers-161340",
+   "address": "Eerste Helmersstraat 33",
+   "type": {
+    "type": "helmers-1905-checker-arch",
+    "ground": {
+     "shopfront": {
+      "colour": "#2c2724",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (bijeenkomstfunctie); fascia colour measured on the strip 2023-01-12 span 1144-1376"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#211f1e",
+     "evidence": "strip 2023-01-12 span 1144-1376: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#604433"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2023-01-12",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1905-checker-arch scored 1 on eaves -, stucco 1; strip 2023-01-12 span 1144-1376"
+   }
+  },
+  {
+   "pandId": "0363100012163575",
+   "slug": "helmers-163575",
+   "address": "Eerste Helmersstraat 35",
+   "type": {
+    "type": "helmers-1905-checker-arch",
+    "ground": {
+     "shopfront": {
+      "colour": "#433833",
+      "fascia": true,
+      "name": "Hap Hmm",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (woonfunctie, amenity=restaurant); fascia colour measured on the strip 2023-01-12 span 1376-1629"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#423731",
+     "evidence": "strip 2023-01-12 span 1376-1629: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#866551"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Hap Hmm",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2423864348,
+     "name": "Hap Hmm"
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-12",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1905-checker-arch scored 1 on eaves -, stucco 1; strip 2023-01-12 span 1376-1629"
+   }
+  },
+  {
+   "pandId": "0363100012154302",
+   "slug": "helmers-154302",
+   "address": "Eerste Helmersstraat 37",
+   "type": {
+    "type": "helmers-1905-checker-arch",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#3e332e",
+     "evidence": "strip 2023-01-12 span 1629-1867: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#725642"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-12",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1905-checker-arch scored 1 on eaves -, stucco 1, columns 1; strip 2023-01-12 span 1629-1867"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012161340",
+    "stripRow": 290,
+    "evidence": "auto-place: the helmers-1905-checker-arch cornice line 15.3 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.51 m"
+   },
+   {
+    "pand": "0363100012163575",
+    "stripRow": 290,
+    "evidence": "auto-place: the helmers-1905-checker-arch cornice line 15.3 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.54 m"
+   },
+   {
+    "pand": "0363100012154302",
+    "stripRow": 290,
+    "evidence": "auto-place: the helmers-1905-checker-arch cornice line 15.3 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.66 m"
+   }
+  ]
+ }
+}

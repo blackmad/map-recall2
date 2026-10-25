@@ -1,0 +1,173 @@
+{
+ "street": "Nassaukade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152522",
+   "addresses": [
+    "Nassaukade 375"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 375-H",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000748681"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130645",
+   "addresses": [
+    "Nassaukade 373A",
+    "Nassaukade 373B",
+    "Nassaukade 373C",
+    "Nassaukade 373D",
+    "Nassaukade 373E",
+    "Nassaukade 373F",
+    "Nassaukade 373G",
+    "Nassaukade 373H",
+    "Nassaukade 373K",
+    "Nassaukade 373L",
+    "Nassaukade 373M",
+    "Nassaukade 373N",
+    "Nassaukade 373P",
+    "Nassaukade 373R",
+    "Nassaukade 373S",
+    "Nassaukade 373T",
+    "Nassaukade 373U",
+    "Nassaukade 373V",
+    "Nassaukade 373W"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 373A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 540,
+     "bagId": "0363010001041812"
+    },
+    {
+     "address": "Nassaukade 373B",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001041813"
+    },
+    {
+     "address": "Nassaukade 373C",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001041814"
+    },
+    {
+     "address": "Nassaukade 373D",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001041830"
+    },
+    {
+     "address": "Nassaukade 373E",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001041831"
+    },
+    {
+     "address": "Nassaukade 373F",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001041832"
+    },
+    {
+     "address": "Nassaukade 373G",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001041833"
+    },
+    {
+     "address": "Nassaukade 373H",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001041834"
+    },
+    {
+     "address": "Nassaukade 373K",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001041835"
+    },
+    {
+     "address": "Nassaukade 373L",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001041836"
+    },
+    {
+     "address": "Nassaukade 373M",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001041837"
+    },
+    {
+     "address": "Nassaukade 373N",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001041838"
+    },
+    {
+     "address": "Nassaukade 373P",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001041839"
+    },
+    {
+     "address": "Nassaukade 373R",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001041840"
+    },
+    {
+     "address": "Nassaukade 373S",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001041841"
+    },
+    {
+     "address": "Nassaukade 373T",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001041842"
+    },
+    {
+     "address": "Nassaukade 373U",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001041843"
+    },
+    {
+     "address": "Nassaukade 373V",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010001041844"
+    },
+    {
+     "address": "Nassaukade 373W",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010001041845"
+    },
+    {
+     "address": "De Genestetstraat 13-H",
+     "use": "industriefunctie",
+     "areaM2": 326,
+     "bagId": "0363010000617545"
+    }
+   ],
+   "units": 24,
+   "osm": []
+  }
+ ]
+}

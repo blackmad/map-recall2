@@ -1,0 +1,797 @@
+{
+ "face": "helmers-40-60",
+ "street": "Eerste Helmersstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2023-01-12",
+ "seconds": 5.8,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "helmers-40-60-r1",
+   "pands": [
+    "0363100012167041",
+    "0363100012165540"
+   ],
+   "passed": true,
+   "triangles": 5143
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012237293",
+   "address": "Eerste Helmersstraat 58",
+   "builtYear": 1897,
+   "widthM": 10.73,
+   "eavesM": 15.38,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#282421",
+    "wallRaw": "#453d3a",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 212,
+     "confidence": 0.71,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 3.3,
+      "topWidthM": 0.38,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.038,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.22,
+       "widthM": 1.2,
+       "centre": 0.4
+      },
+      {
+       "atM": 5.7,
+       "widthM": 1.02,
+       "centre": 0.28
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1900-balcony-arch: built 1897, type 1899-1901; frontage 10.73 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1900-balcony-arch",
+    "score": 0,
+    "veto": [
+     "built 1897, type 1899-1901",
+     "frontage 10.73 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.75 m vs the type's 14 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167041",
+   "address": "Eerste Helmersstraat 56",
+   "builtYear": 1900,
+   "widthM": 5.85,
+   "eavesM": 14.38,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#64524c",
+    "wallRaw": "#554f49",
+    "skyline": {
+     "eavesM": 14.38,
+     "eavesRow": 267,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 1.88,
+      "topWidthM": 0.07,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.088,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.25,
+       "widthM": 1.2,
+       "centre": 0.23
+      },
+      {
+       "atM": 12.27,
+       "widthM": 0.97,
+       "centre": 0.19
+      },
+      {
+       "atM": 9.95,
+       "widthM": 0.85,
+       "centre": 0.87
+      },
+      {
+       "atM": 9.43,
+       "widthM": 1.7,
+       "centre": 0.56
+      },
+      {
+       "atM": 6.42,
+       "widthM": 1.38,
+       "centre": 0.21
+      },
+      {
+       "atM": 6.13,
+       "widthM": 0.85,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "helmers-1900-balcony-arch",
+   "score": 0.84,
+   "placement": {
+    "type": "helmers-1900-balcony-arch",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#64524c",
+     "evidence": "strip 2023-01-12 span 428-662: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012167041",
+    "ncc": 0.203,
+    "nccRaw": 0.203,
+    "shiftM": [
+     0.35,
+     0.05
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.48 mean 0.52 vs photo 0.63"
+    ],
+    "wall": {
+     "photo": "#69534e",
+     "model": "#7d665f",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.63,
+     "model": 0.52
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.431
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165540",
+   "address": "Eerste Helmersstraat 54",
+   "builtYear": 1900,
+   "widthM": 5.87,
+   "eavesM": 14,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#614c44",
+    "wallRaw": "#524542",
+    "skyline": {
+     "eavesM": 14.28,
+     "eavesRow": 271,
+     "confidence": 0.74,
+     "crown": {
+      "widthM": 2.6,
+      "riseM": 5.58,
+      "topWidthM": 0.1,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.2,
+       "widthM": 0.88,
+       "centre": 0.58
+      },
+      {
+       "atM": 6.35,
+       "widthM": 0.97,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "helmers-1900-balcony-arch",
+   "score": 0.73,
+   "placement": {
+    "type": "helmers-1900-balcony-arch",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#614c44",
+     "evidence": "strip 2023-01-12 span 662-897: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012165540",
+    "ncc": 0.153,
+    "nccRaw": 0.153,
+    "shiftM": [
+     0.4,
+     -0.25
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.29"
+    ],
+    "wall": {
+     "photo": "#604a44",
+     "model": "#7b6156",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.473
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236706",
+   "address": "Eerste Helmersstraat 52",
+   "builtYear": 1900,
+   "widthM": 6.32,
+   "eavesM": 13.99,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#483b36",
+    "wallRaw": "#4d423e",
+    "skyline": {
+     "eavesM": 14.32,
+     "eavesRow": 269,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 3.15,
+      "topWidthM": 0.35,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.27,
+       "widthM": 0.93,
+       "centre": 0.83
+      },
+      {
+       "atM": 6.35,
+       "widthM": 0.9,
+       "centre": 0.28
+      },
+      {
+       "atM": 6.05,
+       "widthM": 0.85,
+       "centre": 0.58
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.06 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.21)",
+   "likeness": {
+    "pandId": "0363100012236706",
+    "ncc": 0.06,
+    "nccRaw": 0.06,
+    "shiftM": [
+     -0.3,
+     -0.3
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21"
+    ],
+    "wall": {
+     "photo": "#4e3f3a",
+     "model": "#64524b",
+     "dL": 0.076
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.429
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159518",
+   "address": "Eerste Helmersstraat 50",
+   "builtYear": 1900,
+   "widthM": 5.78,
+   "eavesM": 15.2,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685855",
+    "wallRaw": "#534744",
+    "skyline": {
+     "eavesM": 15.2,
+     "eavesRow": 234,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 2.25,
+      "topWidthM": 0.2,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.062,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: one of a pair (48-50) of banded fronts under stepped gables with white courses: no type; the 1900 balcony type matched it on year and cornice alone",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165303",
+   "address": "Eerste Helmersstraat 48",
+   "builtYear": 1900,
+   "widthM": 6.23,
+   "eavesM": 14.68,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#62524c",
+    "wallRaw": "#4e423e",
+    "skyline": {
+     "eavesM": 14.68,
+     "eavesRow": 255,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.58,
+      "riseM": 2.38,
+      "topWidthM": 0.55,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.076,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the other front of the 48-50 stepped-gable pair: no type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157357",
+   "address": "Eerste Helmersstraat 46",
+   "builtYear": 1900,
+   "widthM": 5.71,
+   "eavesM": 14.5,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c2f28",
+    "wallRaw": "#453b36",
+    "skyline": {
+     "eavesM": 14.5,
+     "eavesRow": 262,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.57,
+      "topWidthM": 0.6,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161460",
+   "address": "Eerste Helmersstraat 44",
+   "builtYear": 1905,
+   "widthM": 6.27,
+   "eavesM": 14.55,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#473c36",
+    "wallRaw": "#4b403b",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 260,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 3.3,
+      "riseM": 6.5,
+      "topWidthM": 0.03,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.103,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.15,
+       "widthM": 1.1,
+       "centre": 0.57
+      },
+      {
+       "atM": 6.3,
+       "widthM": 1.13,
+       "centre": 0.85
+      },
+      {
+       "atM": 5.63,
+       "widthM": 0.88,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1900-balcony-arch: built 1905, type 1899-1901)",
+   "best": {
+    "type": "helmers-1900-balcony-arch",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1899-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.55 m vs the type's 14 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.023 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166340",
+   "address": "Eerste Helmersstraat 42",
+   "builtYear": 1900,
+   "widthM": 6,
+   "eavesM": 14.36,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#362e29",
+    "wallRaw": "#403a36",
+    "skyline": {
+     "eavesM": 16.65,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.58,
+      "riseM": 2,
+      "topWidthM": 0.3,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.32,
+       "widthM": 1.75,
+       "centre": 0.53
+      },
+      {
+       "atM": 6.32,
+       "widthM": 2.27,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1900-balcony-arch scores 0.5 < 0.7 (strip cornice 16.65 m vs the type's 14 m)",
+   "best": {
+    "type": "helmers-1900-balcony-arch",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.65 m vs the type's 14 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164879",
+   "address": "Eerste Helmersstraat 40B",
+   "builtYear": 1905,
+   "widthM": 6.17,
+   "eavesM": 14.55,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#483832",
+    "wallRaw": "#584d47",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 260,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 3.08,
+      "riseM": 2.9,
+      "topWidthM": 0.28,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.162,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.35,
+       "widthM": 0.93,
+       "centre": 0.87
+      },
+      {
+       "atM": 10.13,
+       "widthM": 0.97,
+       "centre": 0.84
+      },
+      {
+       "atM": 6.52,
+       "widthM": 1.77,
+       "centre": 0.62
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1.43,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1900-balcony-arch: built 1905, type 1899-1901)",
+   "best": {
+    "type": "helmers-1900-balcony-arch",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1899-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.55 m vs the type's 14 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.018 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

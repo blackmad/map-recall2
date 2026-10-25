@@ -1,0 +1,36 @@
+{
+ "note": "Pands held after reviewing the auto-place strip sheets at full size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
+ "reviewed": "2026-10-25",
+ "holds": [
+  {
+   "pandId": "0363100012159518",
+   "address": "Eerste Helmersstraat 50",
+   "reason": "one of a pair (48-50) of banded fronts under stepped gables with white courses: no type; the 1900 balcony type matched it on year and cornice alone"
+  },
+  {
+   "pandId": "0363100012165303",
+   "address": "Eerste Helmersstraat 48",
+   "reason": "the other front of the 48-50 stepped-gable pair: no type"
+  },
+  {
+   "pandId": "0363100012157801",
+   "address": "Derde Helmersstraat 64",
+   "reason": "the mirrored end house of the 54-64 row: wall dormer over the left axes and a painted timber oriel on the centre of storey 1; the type draws neither"
+  },
+  {
+   "pandId": "0363100012156087",
+   "address": "Derde Helmersstraat 58",
+   "reason": "a painted timber oriel on the centre axis of storey 1 under a turned balcony; the merlon-dormer type has balconettes only"
+  },
+  {
+   "pandId": "0363100012162465",
+   "address": "Alberdingk Thijmstraat 5",
+   "reason": "ochre-banded front with a modern steel-framed shopfront over two storeys; the merlon-dormer type matched it on year, width and skyline alone"
+  },
+  {
+   "pandId": "0363100012162464",
+   "address": "Alberdingk Thijmstraat 7",
+   "reason": "a columned loggia with a balustrade on storey 1 and green glazed-brick arches; no type"
+  }
+ ]
+}

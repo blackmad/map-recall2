@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import {GEOMETRY_THRESHOLDS, analyseRhythm, auditNormals, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, isOpeningMaterial, isRoofMaterial, materialSlotCoverage, nonOpeningShape, openingsWithinWalls, regressions, rhythmVerdict, RHYTHM_FAIL} from './geometryAudit';
+import {GEOMETRY_THRESHOLDS, analyseRhythm, auditNormals, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, isOpeningMaterial, isRoofMaterial, materialSlotCoverage, nonOpeningShape, onTriangleBoundary, footClearsWall, openingsWithinWalls, regressions, rhythmVerdict, RHYTHM_FAIL} from './geometryAudit';
 import type {MaterialSoup, Opening} from './facadeCompare';
 import {zFightArea} from '../blockFace/compile';
 
@@ -675,6 +675,34 @@ test('within-walls: a roof plane drawn across a window pierces it (roof over the
   // Above the roof plane at the pane (y > 8.6): about 0.2 m x 1.2 m.
   assert.ok(w.roofM2 > 0.1 && w.roofM2 < 0.35, `roof ${w.roofM2} m2`);
   assert.ok(w.outsideM2 >= w.roofM2);
+});
+
+test('within-walls: a cornice whose top edge is the roof eave edge only touches it (Eerste Helmersstraat 41-51, #81)', () => {
+  // A 0.35 m frame-class cornice on the wall top (y 8.65..9, z 8..8.2); the slope is drawn from its top back edge (z = 8, y = 9),
+  // and a neighbour's eaves ledge has a vertex exactly on the cornice's end edge: both are touches, 0 m2.
+  const cornice = {min: [0, 8.65, 8] as V3, max: [6, 9, 8.2] as V3, mat: 'white'};
+  // Exported eave edges are a millimetre or two off the cornice's (float32, snapped fronts): the eave line here crosses the
+  // cornice's top back edge at x = 6, and the ledge's vertex sits 1 mm off its end edge.
+  const s = withFaces(boxes(block, cornice), {mat: 'slate', pts: [[0, 9, 8.0015], [12, 9, 7.9985], [12, 12, 4], [0, 12, 4]]},
+    {mat: 'slate', pts: [[6, 8.9, 8.001], [12, 8.9, 8], [12, 8.9, 7.6], [6, 8.9, 7.6]]});
+  const r = openingsWithinWalls(s);
+  assert.deepEqual(r.failing.filter(w => w.piercesRoof), [], JSON.stringify(r.failing));
+  assert.ok(onTriangleBoundary([6, 8.9, 8], [6, 8.9, 8], [12, 8.9, 8], [12, 8.9, 7.6]));
+  assert.ok(!onTriangleBoundary([11, 8.9, 7.9], [6, 8.9, 8], [12, 8.9, 8], [12, 8.9, 7.6]));
+});
+
+test('within-walls: a dormer pane over a low house beside a taller one in the same plane clears its wall (Eerste Helmersstraat 217, #81)', () => {
+  // One wall plane z = 8: the low house x 0..6 ends at 9 m, its taller neighbour x 6..12 at 14 m (the cluster's vMax). A dormer
+  // pane 0.3 m behind the front over the low house, its foot 0.12 m over the low wall top: a dormer, not a window past the top.
+  const tall = {min: [6, 9, 0] as V3, max: [12, 14, 8] as V3, mat: 'brick'};
+  const r = openingsWithinWalls(boxes(block, tall, glassBox(2, 3.2, 9.12, 10.2, 7.6)));
+  assert.deepEqual(r.failing, [], JSON.stringify(r.outside));
+  // Its foot inside the wall: still judged, and the part past the top fails.
+  const past = openingsWithinWalls(boxes(block, tall, glassBox(2, 3.2, 8.4, 9.6)));
+  assert.equal(past.failing.length, 1);
+  assert.equal(footClearsWall({u0: 0, cell: 0.1, nu: 3, colHi: [9, 9, NaN]}, 0, 0.25, 9.1), true);
+  assert.equal(footClearsWall({u0: 0, cell: 0.1, nu: 3, colHi: [9, 9, NaN]}, 0, 0.25, 9.05), false, 'within the 5 cm tolerance');
+  assert.equal(footClearsWall({u0: 0, cell: 0.1, nu: 3, colHi: [NaN, NaN, NaN]}, 0, 0.25, 9.5), false, 'no wall column under it');
 });
 
 test('within-walls: a dormer window standing above the main roof is not a pierce', () => {

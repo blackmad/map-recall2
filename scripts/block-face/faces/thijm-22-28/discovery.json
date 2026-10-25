@@ -1,0 +1,773 @@
+{
+ "street": "Alberdingk Thijmstraat",
+ "seed": "0363100012167213",
+ "members": [
+  "0363100012167336",
+  "0363100012161538",
+  "0363100012159646",
+  "0363100012167213"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012167336 (face continues: 167337)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012166424 29.5 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012163753",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012165809"
+  },
+  {
+   "pandId": "0363100012221091",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012160396"
+  },
+  {
+   "pandId": "0363100012214702",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012165638"
+  },
+  {
+   "pandId": "0363100012153452",
+   "reason": "frontage 98.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012159829",
+   "reason": "frontage 66.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012153134",
+   "reason": "frontage 32.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012152673",
+   "reason": "frontage 38.0 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012166544",
+   "reason": "frontage 43.1 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012167261",
+   "reason": "frontage 40.7 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012162851",
+   "reason": "frontage 68.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012164921",
+   "reason": "frontage 49.7 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012163953",
+   "reason": "frontage 39.6 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012156681",
+   "reason": "frontage 60.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012198301",
+   "reason": "frontage 60.0 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012164501",
+   "reason": "frontage 79.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012163705",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012167213"
+  },
+  {
+   "pandId": "0363100012152511",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012084624"
+  },
+  {
+   "pandId": "0363100012236393",
+   "reason": "frontage 51.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012155797",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012152520"
+  },
+  {
+   "pandId": "0363100012159452",
+   "reason": "frontage 72.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012162690",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012153642"
+  },
+  {
+   "pandId": "0363100012212290",
+   "reason": "frontage 31.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012236624",
+   "reason": "frontage 68.3 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012152281",
+   "reason": "frontage 38.1 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012162383",
+   "reason": "frontage 54.0 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012155692",
+   "reason": "frontage 72.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012156923",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012160597"
+  },
+  {
+   "pandId": "0363100012157984",
+   "reason": "frontage 73.1 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012157699",
+   "reason": "frontage 72.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012236376",
+   "reason": "frontage 54.5 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012167201",
+   "reason": "frontage 71.5 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012158663",
+   "reason": "frontage 65.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012188285",
+   "reason": "frontage 54.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012157801",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012167186"
+  },
+  {
+   "pandId": "0363100012162406",
+   "reason": "frontage 42.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012160941",
+   "reason": "frontage 37.5 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012152776",
+   "reason": "frontage 85.6 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012233690",
+   "reason": "frontage 40.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012165941",
+   "reason": "frontage 48.1 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012159478",
+   "reason": "frontage 49.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012153642",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012167337"
+  },
+  {
+   "pandId": "0363100012191207",
+   "reason": "frontage 61.3 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012160649",
+   "reason": "frontage 71.5 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012156156",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012165809"
+  },
+  {
+   "pandId": "0363100012153507",
+   "reason": "frontage 58.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012159874",
+   "reason": "frontage 83.6 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012163907",
+   "reason": "frontage 31.1 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012162865",
+   "reason": "frontage 55.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012166254",
+   "reason": "frontage 99.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012159353",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012156923"
+  },
+  {
+   "pandId": "0363100012165412",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012157801"
+  },
+  {
+   "pandId": "0363100012159850",
+   "reason": "frontage 41.3 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012163451",
+   "reason": "frontage 63.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012067068",
+   "reason": "frontage 79.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012226207",
+   "reason": "frontage 30.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012159722",
+   "reason": "frontage 48.5 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012084624",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012167071"
+  },
+  {
+   "pandId": "0363100012152780",
+   "reason": "frontage 46.3 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012159768",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012162690"
+  },
+  {
+   "pandId": "0363100012086892",
+   "reason": "frontage 30.3 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012166340",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012164879"
+  },
+  {
+   "pandId": "0363100012164812",
+   "reason": "frontage 60.3 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012236843",
+   "reason": "frontage 62.6 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012164109",
+   "reason": "frontage 66.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012156087",
+   "reason": "frontage 30.5 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012153715",
+   "reason": "frontage 37.0 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012210800",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012162464"
+  },
+  {
+   "pandId": "0363100012158191",
+   "reason": "frontage 43.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012164242",
+   "reason": "frontage 37.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012152333",
+   "reason": "frontage 59.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012157529",
+   "reason": "frontage 42.6 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012155592",
+   "reason": "frontage 81.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012157083",
+   "reason": "frontage 36.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012165295",
+   "reason": "frontage 54.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012166425",
+   "reason": "frontage 49.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012166922",
+   "reason": "frontage 72.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012162654",
+   "reason": "frontage 42.7 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012152920",
+   "reason": "frontage 60.0 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012163385",
+   "reason": "frontage 55.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012165816",
+   "reason": "frontage 63.3 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012161460",
+   "reason": "frontage 33.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012162091",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012084624"
+  },
+  {
+   "pandId": "0363100012161728",
+   "reason": "frontage 65.7 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012127125",
+   "reason": "frontage 78.1 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012160274",
+   "reason": "frontage 84.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012162056",
+   "reason": "frontage 35.7 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012166559",
+   "reason": "frontage 78.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012157519",
+   "reason": "frontage 81.5 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012158584",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012163268"
+  },
+  {
+   "pandId": "0363100012159217",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012158674"
+  },
+  {
+   "pandId": "0363100012121916",
+   "reason": "frontage 72.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012166173",
+   "reason": "frontage 31.1 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012152692",
+   "reason": "frontage 43.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012154222",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012160276"
+  },
+  {
+   "pandId": "0363100012157570",
+   "reason": "frontage 75.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012162983",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012164738"
+  },
+  {
+   "pandId": "0363100012198659",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012162464"
+  },
+  {
+   "pandId": "0363100012073466",
+   "reason": "frontage 35.0 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012235894",
+   "reason": "frontage 82.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012157958",
+   "reason": "frontage 72.3 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012162284",
+   "reason": "no frontage on Alberdingk Thijmstraat: No footprint edge faces Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012160597",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012166424"
+  },
+  {
+   "pandId": "0363100012153725",
+   "reason": "frontage 30.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012214518",
+   "reason": "frontage 36.6 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012570749",
+   "reason": "frontage 48.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012156173",
+   "reason": "frontage 67.0 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012153719",
+   "reason": "frontage 85.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012167154",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012167213"
+  },
+  {
+   "pandId": "0363100012166166",
+   "reason": "frontage 36.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012158996",
+   "reason": "frontage 67.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012165296",
+   "reason": "frontage 48.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012157207",
+   "reason": "frontage 61.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012572092",
+   "reason": "frontage 45.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012157859",
+   "reason": "frontage 32.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012163153",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012164738"
+  },
+  {
+   "pandId": "0363100012237310",
+   "reason": "frontage 65.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012164798",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012164738"
+  },
+  {
+   "pandId": "0363100012165418",
+   "reason": "frontage 52.6 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012166255",
+   "reason": "frontage 99.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012156766",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012152520"
+  },
+  {
+   "pandId": "0363100012155520",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012163705"
+  },
+  {
+   "pandId": "0363100012164879",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012161515"
+  },
+  {
+   "pandId": "0363100012164486",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012163705"
+  },
+  {
+   "pandId": "0363100012157511",
+   "reason": "frontage 98.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012188042",
+   "reason": "frontage 42.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012162133",
+   "reason": "frontage 33.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012163161",
+   "reason": "frontage 48.7 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012165956",
+   "reason": "frontage 73.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012159186",
+   "reason": "frontage 48.0 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012166326",
+   "reason": "frontage 47.0 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012237132",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012153216"
+  },
+  {
+   "pandId": "0363100012160640",
+   "reason": "no frontage on Alberdingk Thijmstraat: No footprint edge faces Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012166026",
+   "reason": "frontage 57.6 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012158861",
+   "reason": "frontage 53.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012166780",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012163268"
+  },
+  {
+   "pandId": "0363100012236008",
+   "reason": "frontage 64.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012164108",
+   "reason": "frontage 45.4 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012127979",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012237054"
+  },
+  {
+   "pandId": "0363100012158231",
+   "reason": "frontage 74.3 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012163126",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012157801"
+  },
+  {
+   "pandId": "0363100012236869",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012153216"
+  },
+  {
+   "pandId": "0363100012165785",
+   "reason": "frontage 51.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012161917",
+   "reason": "frontage 72.7 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012155751",
+   "reason": "frontage 67.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012217932",
+   "reason": "frontage 48.3 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012236968",
+   "reason": "frontage 56.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012152702",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012165809"
+  },
+  {
+   "pandId": "0363100012165770",
+   "reason": "frontage 54.2 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012167182",
+   "reason": "frontage 32.0 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012156928",
+   "reason": "frontage 61.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012089206",
+   "reason": "frontage 31.0 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012160276",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012160227"
+  },
+  {
+   "pandId": "0363100012233586",
+   "reason": "frontage 53.0 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012160227",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012158175"
+  },
+  {
+   "pandId": "0363100012159307",
+   "reason": "sightline to Alberdingk Thijmstraat crosses 0363100012152520"
+  },
+  {
+   "pandId": "0363100012159566",
+   "reason": "frontage 43.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012214958",
+   "reason": "frontage 30.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012155419",
+   "reason": "frontage 74.1 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012154239",
+   "reason": "frontage 79.1 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012191744",
+   "reason": "frontage 73.9 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012159020",
+   "reason": "frontage 77.6 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012162808",
+   "reason": "frontage 84.8 m from Alberdingk Thijmstraat"
+  },
+  {
+   "pandId": "0363100012158674",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157840",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119454",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165809",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162464",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237054",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167186",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137982",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157617",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153216",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152520",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162465",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167071",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160396",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233517",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012167336",
+   "alongM": -20.11,
+   "widthM": 5.56,
+   "eavesM": 14.21,
+   "roofMaxM": 16.38,
+   "storeys3dbag": null,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161538",
+   "alongM": -14.64,
+   "widthM": 5.39,
+   "eavesM": 14.22,
+   "roofMaxM": 14.27,
+   "storeys3dbag": null,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159646",
+   "alongM": -9.19,
+   "widthM": 5.5,
+   "eavesM": 17.11,
+   "roofMaxM": 17.11,
+   "storeys3dbag": null,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167213",
+   "alongM": 0,
+   "widthM": 12.88,
+   "eavesM": 13.98,
+   "roofMaxM": 14.11,
+   "storeys3dbag": null,
+   "builtYear": 1895,
+   "uncertainty": []
+  }
+ ]
+}

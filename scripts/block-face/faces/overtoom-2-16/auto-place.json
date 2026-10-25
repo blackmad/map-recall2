@@ -1,0 +1,459 @@
+{
+ "face": "overtoom-2-16",
+ "street": "Overtoom",
+ "library": "helmersbuurt",
+ "stripDate": "2024-12-11",
+ "seconds": 2.18,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012236942",
+   "address": "Overtoom 16",
+   "builtYear": 1892,
+   "widthM": 14.79,
+   "eavesM": 17.13,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aa6f4a",
+    "wallRaw": "#8f6646",
+    "skyline": {
+     "eavesM": 17.13,
+     "eavesRow": 250,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 0.95,
+      "topWidthM": 1.4,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.177,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.42 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.42,
+       "light": 0.27
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.65,
+       "widthM": 2.75,
+       "centre": 0.1
+      },
+      {
+       "atM": 5.35,
+       "widthM": 1.27,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893; frontage 14.79 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893",
+     "frontage 14.79 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.13 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.155 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162339",
+   "address": "Overtoom 14",
+   "builtYear": 1891,
+   "widthM": 6.45,
+   "eavesM": 14.4,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aba182",
+    "wallRaw": "#6b6145",
+    "skyline": {
+     "eavesM": 15.95,
+     "eavesRow": 297,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.43,
+      "topWidthM": 0.6,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.182,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.5,
+       "widthM": 1.23,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.34
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1891, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.95 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167176",
+   "address": "Overtoom 12",
+   "builtYear": 1891,
+   "widthM": 6.19,
+   "eavesM": 14.09,
+   "storeys3dbag": null,
+   "bagBay": {
+    "fromM": 0.9,
+    "toM": 0.9,
+    "depthM": 0.34,
+    "centre": 0.145
+   },
+   "strip": {
+    "wall": "#5b4126",
+    "wallRaw": "#6a6a53",
+    "skyline": {
+     "eavesM": 16.18,
+     "eavesRow": 288,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 1.2,
+      "topWidthM": 1.05,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.257,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.63 m (1.32 m wide), 7.25 m (1.25 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.63,
+       "widthM": 1.32,
+       "centre": 0.48
+      },
+      {
+       "atM": 7.55,
+       "widthM": 1.18,
+       "centre": 0.48
+      },
+      {
+       "atM": 7.25,
+       "widthM": 1.25,
+       "centre": 0.48
+      },
+      {
+       "atM": 5,
+       "widthM": 1.18,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.54
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1891, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.18 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166053",
+   "address": "Overtoom 10",
+   "builtYear": 1891,
+   "widthM": 6.12,
+   "eavesM": 14.22,
+   "storeys3dbag": null,
+   "bagBay": {
+    "fromM": 4.01,
+    "toM": 6.09,
+    "depthM": 0.63,
+    "centre": 0.83,
+    "lineRD": [
+     [
+      120313.9,
+      486323.209
+     ],
+     [
+      120317.375,
+      486325.478
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#8a836f",
+    "wallRaw": "#655b43",
+    "skyline": {
+     "eavesM": 17.07,
+     "eavesRow": 252,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 5.7,
+      "topWidthM": 0.05,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.154,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.87,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.55,
+       "widthM": 1.27,
+       "centre": 0.48
+      },
+      {
+       "atM": 5,
+       "widthM": 1.07,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1891, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.07 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012072136",
+   "address": "Overtoom 2",
+   "builtYear": 1940,
+   "widthM": 36.88,
+   "eavesM": 18.35,
+   "storeys3dbag": null,
+   "bagBay": {
+    "fromM": 23.04,
+    "toM": 35.81,
+    "depthM": 0.92,
+    "centre": 0.798
+   },
+   "strip": {
+    "wall": "#7e6638",
+    "wallRaw": "#736037",
+    "skyline": {
+     "eavesM": 18.35,
+     "eavesRow": 201,
+     "confidence": 1,
+     "crown": {
+      "widthM": 9.75,
+      "riseM": 1.05,
+      "topWidthM": 6.28,
+      "centre": 0.86
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 21,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.177,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.99,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.67 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.67,
+       "light": 0.32
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 16.3,
+       "widthM": 1.55,
+       "centre": 0.41
+      },
+      {
+       "atM": 8.27,
+       "widthM": 0.8,
+       "centre": 0.43
+      },
+      {
+       "atM": 7.45,
+       "widthM": 0.82,
+       "centre": 0.88
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.4
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1940, type 1893-1893; frontage 36.88 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1940, type 1893-1893",
+     "frontage 36.88 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.35 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

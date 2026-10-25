@@ -1,0 +1,249 @@
+{
+ "street": "Overtoom",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236942",
+   "addresses": [
+    "Overtoom 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 16",
+     "use": "kantoorfunctie",
+     "areaM2": 1471,
+     "bagId": "0363010000768351"
+    },
+    {
+     "address": "Overtoom 16-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000768352"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809426588,
+     "lngLat": [
+      4.8774999,
+      52.3635711
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16",
+      "addr:postcode": "1054HJ",
+      "addr:street": "Overtoom",
+      "name": "Fiberplane",
+      "office": "company",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://fiberplane.com/"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11007296655,
+     "lngLat": [
+      4.8775984,
+      52.363559
+     ],
+     "tags": {
+      "artist_name": "Pink Scheerder",
+      "artwork_type": "sculpture",
+      "level": "0",
+      "material": "stone",
+      "name": "Standing Stone",
+      "start_date": "1989",
+      "tourism": "artwork",
+      "wikidata": "Q113437227",
+      "wikimedia_commons": "Category:Standing stone (PINK de Thierry)",
+      "wikipedia": "nl:Standing stone"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 2.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162339",
+   "addresses": [
+    "Overtoom 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 14-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000768348"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167176",
+   "addresses": [
+    "Overtoom 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 12-H",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010001014859"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166053",
+   "addresses": [
+    "Overtoom 10",
+    "Overtoom 10A",
+    "Overtoom 10B",
+    "Overtoom 10C",
+    "Overtoom 10D",
+    "Overtoom 10E",
+    "Overtoom 10F",
+    "Overtoom 10G",
+    "Overtoom 10H",
+    "Overtoom 10K",
+    "Overtoom 10L",
+    "Overtoom 10M",
+    "Overtoom 10P",
+    "Overtoom 10R",
+    "Overtoom 10N"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 10-H",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000768341"
+    },
+    {
+     "address": "Overtoom 10A",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010012160843"
+    },
+    {
+     "address": "Overtoom 10B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012160844"
+    },
+    {
+     "address": "Overtoom 10C",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010012160845"
+    },
+    {
+     "address": "Overtoom 10D",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012160846"
+    },
+    {
+     "address": "Overtoom 10E",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010012160847"
+    },
+    {
+     "address": "Overtoom 10F",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012160848"
+    },
+    {
+     "address": "Overtoom 10G",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012160849"
+    },
+    {
+     "address": "Overtoom 10H",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010012160850"
+    },
+    {
+     "address": "Overtoom 10K",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012160851"
+    },
+    {
+     "address": "Overtoom 10L",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012160852"
+    },
+    {
+     "address": "Overtoom 10M",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010012160853"
+    },
+    {
+     "address": "Overtoom 10P",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012160855"
+    },
+    {
+     "address": "Overtoom 10R",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010012160856"
+    },
+    {
+     "address": "Overtoom 10N",
+     "use": "woonfunctie",
+     "areaM2": 21,
+     "bagId": "0363010012160854"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072136",
+   "addresses": [
+    "Overtoom 2",
+    "Overtoom 4",
+    "Overtoom 6",
+    "Overtoom 8A",
+    "Overtoom 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 8A-H",
+     "use": "winkelfunctie",
+     "areaM2": 972,
+     "bagId": "0363010001005257"
+    },
+    {
+     "address": "Overtoom 2",
+     "use": "winkelfunctie",
+     "areaM2": 1523,
+     "bagId": "0363010000748719"
+    }
+   ],
+   "units": 20,
+   "osm": []
+  }
+ ]
+}

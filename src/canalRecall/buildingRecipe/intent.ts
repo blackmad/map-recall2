@@ -12,6 +12,9 @@ import type {RoofLevelIntent} from './roofLevel.ts';
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
+import {friezeVentProblems} from './friezeVents.ts';
+import {entablatureProblems} from './entablature.ts';
+import {jambBlockProblems} from './jambBlocks.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
 import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {awningProblems, deBaarsjesProblems} from './deBaarsjesIntent.ts';
@@ -168,8 +171,13 @@ export type GroundBay = typeof GROUND_BAYS[number];
 /** `box` (1976-1992 infill, Kinkerstraat 109-161): a flat-topped dormer whose cheeks and back are in the wall material (a brick roof box), roof covering on its flat top. */
 /** `flat` (Jan Evertsenstraat 151-160, 1939): a timber dormer 1.8 m high (151: 13.3-15.3 m with its roof edge) at the plain dormer's setback, under a flat roof (no pitched top). */
 export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat'] as const;
-/** Tower caps: a pyramid, a flat slab, or `stepped` (Amsterdam School: two receding brick tiers under a flat slab). */
-export const TOWER_CAPS = ['pyramid', 'flat', 'stepped'] as const;
+/**
+ * Tower caps: a pyramid, a flat slab, or `stepped` (Amsterdam School: two receding brick tiers under a flat slab).
+ * `merlons` (Helmersbuurt 1899-1900 wall dormers, Derde Helmersstraat 54-66): a flat brick top with three square brick
+ * merlons (one at each end, one centred) TOWER_MERLONS.riseM high and wide, flush with the tower front.
+ */
+export const TOWER_CAPS = ['pyramid', 'flat', 'stepped', 'merlons'] as const;
+export const TOWER_MERLONS = {riseM: 0.55, widthM: 0.5, depthM: 0.45} as const;
 /** Cap on the top storey of a multi-bay erker (`bayWindows.bays`): a hipped lean-to roof, a flat slab, or none (a plain closure). */
 export const ERKER_CAPS = ['hip', 'flat', 'none'] as const;
 /** Largest forward lean a front may declare (degrees); real Amsterdam fronts lean up to ~2 degrees ("op vlucht"). */
@@ -258,6 +266,12 @@ export interface FrontIntent {
    * frame (`bayWindows.hood`) takes the kind of its first axis. Wins over `storeyWindows`. Absent = byte-identical.
    */
   axisWindows?: Record<string, WindowKind>;
+  /**
+   * Window head per axis where it differs from the front's (key = axis index on the shared grid, left to right as seen):
+   * `kind` on the listed `storeys` (Eerste Helmersstraat 233-239, 1899: the top storey's centre window is round-arched
+   * over segmental neighbours). Arch rings, keystones and tympana follow the front's `windowHead`. Absent = byte-identical.
+   */
+  axisHeads?: Record<string, {kind: 'round' | 'segmental' | 'flat'; storeys: number[]}>;
   /**
    * One front of a pand with several fronts on the street, raised over its lower neighbour with a full-depth body behind
    * it: its flat roof band keeps its own eaves (a stepped flat roof) instead of being read as a tower bay that takes the
@@ -348,7 +362,8 @@ export interface FrontIntent {
      * Tympanum (Kinkerstraat 1886-1897: 49-53, 288, 298): the arched part of a segmental or round head is a solid painted
      * fill (`stone`, or the palette's band brick) instead of glass. The glazing stops square at the springing line (the
      * head minus the arch rise); the fill is the arch segment over it, 2 cm proud, under the ring. A keystone stays at the
-     * arch crown. Under a `relieving` arch the fill is the arch field over the square head (only `dark`).
+     * arch crown. Under a `relieving` arch the fill is the arch field over the square head (`dark`, or `band`: the palette's
+     * band brick, the ochre moulded-brick tympana of Eerste Helmersstraat 209-213).
      */
     tympanum?: typeof TYMPANUM_FILLS[number]};
   /** Window width as a share of the front (all windows of a full storey together, 0.3..0.8; survey median 0.66). Default: the legacy 58 % of an equal-pier bay. Only on the shared equal-pier grid (not with bayWidths). */
@@ -525,6 +540,27 @@ export interface FrontIntent {
      * (default every axis), no courses (Hasebroekstraat 90-114, green tiles under the narrow window). */
     place?: 'piers' | 'sills'; axes?: number[]; count?: number};
   /**
+   * Frieze vents (Helmersbuurt 1893-1901 rows, Eerste Helmersstraat 209-229; buildingRecipe/friezeVents.ts): one white
+   * cast panel over each top-storey window axis in the frieze under the cornice, `span` x `rise` metres, its top `drop`
+   * metres under the cornice foot (measured), in the stone colour; `slot` = a dark grille slot across its middle third;
+   * `axes` = only those axes. Needs a cornice. Absent = byte-identical.
+   */
+  friezeVents?: {span: number; rise: number; drop: number; slot?: boolean; axes?: number[]};
+  /**
+   * Entablature (Helmersbuurt 1893-1900 rows, Eerste Helmersstraat 116-122 and 42-56; buildingRecipe/entablature.ts): the
+   * measured deep white crown band in place of the cornice style's fixed height: `rise` metres in all, a projecting
+   * `cap` (`capDepth`, default 0.4 m), a `frieze` that is a flush white band (`trim`) or brick between consoles
+   * (`wall`), an `architrave` fillet at its foot, and `consoles` console brackets end to end. Needs a cornice.
+   * Absent = the style's cornice, byte-identical.
+   */
+  entablature?: {rise: number; cap: number; frieze: 'trim' | 'wall'; capDepth?: number; architrave?: number; consoles?: number};
+  /**
+   * Jamb blocks (Eerste Helmersstraat 116-122, 1893; buildingRecipe/jambBlocks.ts): `count` white stone blocks on each
+   * jamb of every window of the listed `storeys` (default all), evenly spaced up the opening, `rise` m high, reaching
+   * `reach` m out from the jamb, in the stone colour. Absent = byte-identical.
+   */
+  jambBlocks?: {count: number; rise: number; reach: number; storeys?: number[]};
+  /**
    * Tall plain parapet (Jan Evertsenstraat): the full storeys end `courses` brick courses (0.055 m each) under the eaves
    * and the wall above them is plain; `coping: true` lays a thin coping (0.1 m, 4 cm proud, the cornice colour) on its
    * top. A crown field; needs `cornice: "none"` and a `flat` or `cornice` gable.
@@ -572,6 +608,13 @@ export interface FrontIntent {
   roofFront?: 'mansard';
   /** Dormer design: `pediment` = a triangular pediment in the trim colour over a projecting frame; `pointed` = a tall pointed roof (19th-c. ornate dormers). Default `plain`. */
   dormerStyle?: typeof DORMER_STYLES[number];
+  /**
+   * Dormer body material (Helmersbuurt white timber dormers, issue #81): `stone` draws the cheeks, back and pediment in the
+   * stone colour (painted white) instead of the trim slot, which exports as an opening (frame) material: a frame-class
+   * body sunk into the roof slope read as a window piercing the roof and left its own pane with no wall. The window
+   * frame, bars and pane stay trim and glass. Not for `box` dormers (brick). Absent = trim, byte-identical.
+   */
+  dormerBody?: 'stone';
   /** Several gables on one front: each `{from, to}` (inclusive bay axes) carries one crown of the front's gable type; eaves line between them. Not together with `crownAt`/`crownBays`. */
   crownGroups?: {from: number; to: number}[];
   /**
@@ -582,7 +625,14 @@ export interface FrontIntent {
    * along each front from the shared corner; both fronts rise over that end (one light per storey of rise on each), two
    * inner walls and the cap close it. The two fronts must meet in one footprint vertex (within 0.3 m).
    */
-  tower?: {bays?: {from: number; to: number}; corner?: boolean; rise: number; cap: typeof TOWER_CAPS[number]};
+  tower?: {bays?: {from: number; to: number}; corner?: boolean; rise: number; cap: typeof TOWER_CAPS[number];
+    /**
+     * `per-axis` (a wall dormer over several axes, Derde Helmersstraat 54-66: two lights over the two right axes): one
+     * light per spanned axis on the body's axis centres, as wide as the body's top-storey windows, `lightRise` upper-storey
+     * heights tall (0.2..0.9, default 0.5), its sill `lightSill` upper-storey heights over the eaves (0..0.6, default 0.3),
+     * instead of one centred light per storey of rise. With `bays` only. Absent = byte-identical.
+     */
+    lights?: 'per-axis'; lightRise?: number; lightSill?: number};
   /**
    * Clip street-side details (cornice, bands, sills, gable ornament) at oblique party walls so nothing crosses the party
    * plane (trapezoidal plots meet the front up to ~20 degrees off square). Block faces set it for every house with
@@ -1313,6 +1363,18 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.bands === 'courses' || f.courseStoreys !== undefined) problems.push(...courseProblems(f, intent?.palette, at));
     if (f.windowHoods !== undefined && f.windowHoods !== true) problems.push(`${at}.windowHoods: true (or leave it out)`);
     if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
+    if (f.friezeVents !== undefined) problems.push(...friezeVentProblems(f, at));
+    if (f.entablature !== undefined) problems.push(...entablatureProblems(f, at));
+    if (f.jambBlocks !== undefined) problems.push(...jambBlockProblems(f, at));
+    if (f.axisHeads !== undefined) {
+      const ah = f.axisHeads as Record<string, {kind?: unknown; storeys?: unknown}>;
+      if (!ah || typeof ah !== 'object') problems.push(`${at}.axisHeads: {"<axis>": {kind, storeys}}`);
+      else for (const [k, v] of Object.entries(ah)) {
+        if (!/^\d+$/.test(k) || Number(k) >= frontGrid(f)) problems.push(`${at}.axisHeads.${k}: an axis index within 0..${frontGrid(f) - 1}`);
+        if (!v || !['round', 'segmental', 'flat'].includes(v.kind as string)) problems.push(`${at}.axisHeads.${k}.kind: round, segmental or flat`);
+        if (!Array.isArray(v?.storeys) || !v.storeys.length || v.storeys.some(x => !Number.isInteger(x) || x < 1 || x >= f.storeys)) problems.push(`${at}.axisHeads.${k}.storeys: storey indices within 1..${f.storeys - 1}`);
+      }
+    }
     problems.push(...eavesOverhangProblems(f, at));
     problems.push(...groundCanopyProblems(f, at));
     if (f.lisenes !== undefined) {
@@ -1633,7 +1695,7 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
     for (const k of Object.keys(h ?? {})) if (!['kind', 'storeys', 'archRing', 'tympanum'].includes(k)) p.push(`${at}.windowHead.${k}: unknown field (kind, storeys, archRing, tympanum)`);
     if (h?.tympanum !== undefined) {
       oneOf(h.tympanum, TYMPANUM_FILLS, `${at}.windowHead.tympanum`);
-      if (h.kind === 'relieving' ? h.tympanum !== 'dark' : h.kind !== 'segmental' && h.kind !== 'round') p.push(`${at}.windowHead.tympanum: only under a segmental or round head, or "dark" under a relieving arch`);
+      if (h.kind === 'relieving' ? h.tympanum === 'stone' : h.kind !== 'segmental' && h.kind !== 'round') p.push(`${at}.windowHead.tympanum: only under a segmental or round head, or "dark" or "band" under a relieving arch`);
     }
     oneOf(h?.kind, WINDOW_HEADS, `${at}.windowHead.kind`);
     if (h?.storeys !== undefined && (!Array.isArray(h.storeys) || h.storeys.some(s => !Number.isInteger(s) || s < 0 || s >= f.storeys))) p.push(`${at}.windowHead.storeys: storey indices 0..${f.storeys - 1}`);
@@ -1712,6 +1774,11 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   if (f.roofFront === 'mansard' && f.gable !== 'cornice' && f.gable !== 'flat') problems.push(`${at}.roofFront: a mansard rises behind a cornice/flat front (gable ${f.gable})`);
   if (f.dormerCap !== undefined) problems.push(...dormerCapProblems(f, at));
   if (f.dormerStyle !== undefined) { oneOf(f.dormerStyle, DORMER_STYLES, `${at}.dormerStyle`); if (!f.dormers) problems.push(`${at}.dormerStyle: needs dormers >= 1`); }
+  if (f.dormerBody !== undefined) {
+    if (f.dormerBody !== 'stone') problems.push(`${at}.dormerBody: "stone" (or leave it out)`);
+    if (!f.dormers) problems.push(`${at}.dormerBody: needs dormers >= 1`);
+    if (f.dormerStyle === 'box') problems.push(`${at}.dormerBody: a box dormer is brick`);
+  }
   if (f.crownGroups !== undefined) {
     if (f.crownAt !== undefined || f.crownBays !== undefined) problems.push(`${at}.crownGroups: not together with crownAt/crownBays`);
     if (f.gable === 'flat' || (f.gable === 'cornice' && (!f.crownCap || f.crownCap === 'flat'))) problems.push(`${at}.crownGroups: the front has no crown to repeat (gable ${f.gable})`);
@@ -1726,6 +1793,10 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     else if (!t?.bays ||!Number.isInteger(t.bays.from) || !Number.isInteger(t.bays.to) || t.bays.from < 0 || t.bays.to >= grid || t.bays.from > t.bays.to) problems.push(`${at}.tower.bays: {from, to} bay axes within 0..${grid - 1}`);
     if (!(t?.rise >= 0.5 && t.rise <= 3)) problems.push(`${at}.tower.rise: 0.5..3 upper-storey heights above the eaves`);
     oneOf(t?.cap, TOWER_CAPS, `${at}.tower.cap`);
+    if (t?.cap === 'merlons' && t.corner) problems.push(`${at}.tower.cap: merlons on a tower over bays (not a corner tower)`);
+    if (t?.lights !== undefined && (t.lights !== 'per-axis' || !t.bays)) problems.push(`${at}.tower.lights: "per-axis", on a tower over bays`);
+    if (t?.lightRise !== undefined && !(t.lights && t.lightRise >= 0.2 && t.lightRise <= 0.9)) problems.push(`${at}.tower.lightRise: 0.2..0.9 upper-storey heights, with lights: per-axis`);
+    if (t?.lightSill !== undefined && !(t.lights && t.lightSill >= 0 && t.lightSill <= 0.6)) problems.push(`${at}.tower.lightSill: 0..0.6 upper-storey heights over the eaves, with lights: per-axis`);
   }
   if (f.partyClip !== undefined && typeof f.partyClip !== 'boolean') problems.push(`${at}.partyClip must be boolean`);
   if (f.souterrain !== undefined && (typeof f.souterrain !== 'boolean' || (f.souterrain && f.basement === 'none'))) problems.push(`${at}.souterrain: boolean, and needs a basement`);

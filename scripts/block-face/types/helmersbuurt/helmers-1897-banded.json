@@ -1,0 +1,152 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "helmers-1897-banded",
+ "district": "helmersbuurt",
+ "description": "Eerste Helmersstraat 209-213 (1897): 6 m red-brown brick fronts of four storeys under a deep cream moulded cornice at 14 m; three equal axes of two-light windows with a transom; storeys 0-2 under segmental brick heads with a patterned ochre tympanum and a white keystone, the top storey flat-headed with a keystone; white painted bands run across the front at the transom and the springing line of each window storey; white sills; one white timber dormer with a pediment",
+ "fit": {
+  "widthM": [
+   5.6,
+   6.4
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   3.9,
+   3.1,
+   3.1,
+   3.9
+  ],
+  "windows": "t-window",
+  "windowHead": {
+   "kind": "relieving",
+   "storeys": [
+    0,
+    1,
+    2
+   ],
+   "archRing": {
+    "colour": "stone",
+    "style": "none",
+    "keystone": true
+   },
+   "tympanum": "band"
+  },
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.69,
+   0.68,
+   0.71,
+   0.54
+  ],
+  "headLines": [
+   0.82,
+   0.81,
+   0.81,
+   0.62
+  ],
+  "bands": "painted",
+  "bandLines": [
+   "transom",
+   "head"
+  ],
+  "bandHeights": {
+   "transom": 0.08,
+   "head": 0.1
+  },
+  "bandTransomAt": 0.75,
+  "cornice": "heavy"
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "note": "211, 213: one white timber dormer with a pediment and a finial, centred Dormer (#81 review 2026-10-25): measured on the strips about 1.1 m wide, a body of 1.1-1.3 m to a white pediment cap of about 0.5 m, standing on the roof behind the cornice cap (the kit's sill and setback, 1.15 m body); a white painted body (dormerBody stone). The finial is not expressed.",
+   "dormerAt": [
+    {
+     "from": 0.41,
+     "to": 0.59
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.05,
+    "rise": 1.15,
+    "setback": 0.35
+   },
+   "dormerBody": "stone"
+  }
+ },
+ "grounds": {
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "213: double house door on the right axis under the segmental head; windows with a transom"
+  }
+ },
+ "palettes": {
+  "red-brown-banded": {
+   "brick": "#9a7d62",
+   "frame": "white-painted",
+   "door": "#1f2324",
+   "stone": "#eeeae0",
+   "band": "#b39466",
+   "cornice": "#e3d5af",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every storey: 3 two-light windows with a transom, one width",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3 | dormer: 1",
+  "symmetry": "upper storeys symmetric; door on the right (213)",
+  "groundFloor": "residential",
+  "signage": "none",
+  "roofline": "deep cream cornice at 14 m; one pediment dormer",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3,
+   1
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "match": {
+  "years": [
+   1896,
+   1898
+  ],
+  "stucco": false,
+  "frontEavesM": 14,
+  "note": "Eerste Helmersstraat 209-213 (1897): four storeys, cornice 14 m on the strip; PDOK eaves 14.5-16.4 (mansard and dormers)",
+  "yearSlack": 0
+ },
+ "evidence": [
+  {
+   "face": "helmers-209-253",
+   "pands": [
+    "152877",
+    "159748"
+   ],
+   "citation": "strip.jpg 2024-11-29 pands 1-2 (211A, 213) at 2x with a metre grid: ground windows 0.5-3.3 m under segmental heads to 3.6, storey-1 windows 4.3-6.6 m, storey-2 7.2-9.6, storey-3 10.5-12.6 flat with keystones, cornice 13.1-14.0; white bands at 5.9 (transom) and 6.6 (springing) on storey 1, 8.9 and 9.6 on storey 2; ochre patterned tympana; white keystones"
+  }
+ ],
+ "schemaLimits": [
+  "the relieving arch field is a flat ochre fill (palette band); the photo shows a small chequer of moulded brick",
+  "the top storey keystone over the flat heads is not drawn (keystones follow the relieving arches only)",
+  "211A has a shop window on the ground storey; held"
+ ],
+ "notes": [
+  "Palette: strip medians of 211A-213 (2024-11-29): wall #9a7d62, tympanum ochre #b39466, white trim #eeeae0."
+ ]
+}

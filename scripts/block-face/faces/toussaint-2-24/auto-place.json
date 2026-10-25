@@ -1,0 +1,898 @@
+{
+ "face": "toussaint-2-24",
+ "street": "Bosboom Toussaintstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2022-01-03",
+ "seconds": 1.97,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012157767",
+   "address": "Bosboom Toussaintstraat 24",
+   "builtYear": 1894,
+   "widthM": 5.03,
+   "eavesM": 16.59,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c2b26",
+    "wallRaw": "#45372e",
+    "skyline": {
+     "eavesM": 19.8,
+     "eavesRow": 71,
+     "confidence": 0.48,
+     "crown": {
+      "widthM": 1.05,
+      "riseM": 1.77,
+      "topWidthM": 0.7,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1894, type 1893-1893; frontage 5.03 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1893-1893",
+     "frontage 5.03 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.8 m; 3DBAG 16.59 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162201",
+   "address": "Bosboom Toussaintstraat 22",
+   "builtYear": 1894,
+   "widthM": 6,
+   "eavesM": 16.7,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#936b47",
+    "wallRaw": "#5f4738",
+    "skyline": {
+     "eavesM": 19.63,
+     "eavesRow": 78,
+     "confidence": 0.73,
+     "crown": {
+      "widthM": 2.15,
+      "riseM": 1.95,
+      "topWidthM": 0.95,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.12 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.12,
+       "light": 0.27
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.47,
+       "light": 0.37
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.93,
+       "widthM": 1.02,
+       "centre": 0.87
+      },
+      {
+       "atM": 7.55,
+       "widthM": 3.23,
+       "centre": 0.29
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1894, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.63 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.007 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237355",
+   "address": "Bosboom Toussaintstraat 20",
+   "builtYear": 1894,
+   "widthM": 6.69,
+   "eavesM": 14.62,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#332d29",
+    "wallRaw": "#5c453a",
+    "skyline": {
+     "eavesM": 18.8,
+     "eavesRow": 111,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 2.77,
+      "topWidthM": 0.68,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.035,
+    "structure": {
+     "bayWidthM": 1.13,
+     "bayCentre": 0.71,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.41 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.41,
+       "light": 0.16
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.57,
+       "widthM": 1.43,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1894, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.8 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.028 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158787",
+   "address": "Bosboom Toussaintstraat 18A",
+   "builtYear": 1894,
+   "widthM": 5.36,
+   "eavesM": 14.78,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#675049",
+    "wallRaw": "#6c584c",
+    "skyline": {
+     "eavesM": 17.13,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 3.85,
+      "topWidthM": 0.1,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.077,
+    "structure": {
+     "bayWidthM": 0.55,
+     "bayCentre": 0.4,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.43,
+       "widthM": 1.07,
+       "centre": 0.78
+      },
+      {
+       "atM": 7.05,
+       "widthM": 0.93,
+       "centre": 0.4
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1.07,
+       "centre": 0.41
+      },
+      {
+       "atM": 5.92,
+       "widthM": 2.38,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1894, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.13 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.064 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165530",
+   "address": "Bosboom Toussaintstraat 16",
+   "builtYear": 1894,
+   "widthM": 5.97,
+   "eavesM": 14.6,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f3f3b",
+    "wallRaw": "#52463d",
+    "skyline": {
+     "eavesM": 18.63,
+     "eavesRow": 118,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.95,
+      "topWidthM": 0.55,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.057,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.4,
+       "widthM": 1.1,
+       "centre": 0.16
+      },
+      {
+       "atM": 7.1,
+       "widthM": 1.05,
+       "centre": 0.14
+      },
+      {
+       "atM": 6.8,
+       "widthM": 0.8,
+       "centre": 0.65
+      },
+      {
+       "atM": 5.97,
+       "widthM": 1.75,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1894, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.63 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.047 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160285",
+   "address": "Bosboom Toussaintstraat 14",
+   "builtYear": 1894,
+   "widthM": 5.95,
+   "eavesM": 14.7,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#72534a",
+    "wallRaw": "#63544a",
+    "skyline": {
+     "eavesM": 17.9,
+     "eavesRow": 147,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 3.68,
+      "topWidthM": 0.53,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.034,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.49,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.5,
+       "widthM": 0.9,
+       "centre": 0.86
+      },
+      {
+       "atM": 7.13,
+       "widthM": 1.05,
+       "centre": 0.16
+      },
+      {
+       "atM": 6.82,
+       "widthM": 0.88,
+       "centre": 0.67
+      },
+      {
+       "atM": 6,
+       "widthM": 1.8,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1894, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.9 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.028 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162375",
+   "address": "Bosboom Toussaintstraat 12",
+   "builtYear": 1893,
+   "widthM": 6.25,
+   "eavesM": 15.71,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c4f45",
+    "wallRaw": "#4b3f36",
+    "skyline": {
+     "eavesM": 20.55,
+     "eavesRow": 41,
+     "confidence": 0.52,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.25,
+       "widthM": 1.02,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166447",
+   "address": "Bosboom Toussaintstraat 10",
+   "builtYear": 1893,
+   "widthM": 5.84,
+   "eavesM": 15.7,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c4a57e",
+    "wallRaw": "#5a493d",
+    "skyline": {
+     "eavesM": 15.45,
+     "eavesRow": 245,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.15,
+      "riseM": 5.6,
+      "topWidthM": 0.07,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.066,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.3,
+       "widthM": 1.2,
+       "centre": 0.84
+      },
+      {
+       "atM": 5.92,
+       "widthM": 1.05,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1893-jamb-blocks scores 0.64 < 0.7 (strip cornice 15.45 m vs the type's 10.8 m (wall-dormer skyline 13.5 m))",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.45 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.055 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163254",
+   "address": "Bosboom Toussaintstraat 8",
+   "builtYear": 1893,
+   "widthM": 5.83,
+   "eavesM": 13.52,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#40322e",
+    "wallRaw": "#4e4038",
+    "skyline": {
+     "eavesM": 17.63,
+     "eavesRow": 158,
+     "confidence": 0.73,
+     "crown": {
+      "widthM": 4.1,
+      "riseM": 3.95,
+      "topWidthM": 1.45,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.32,
+       "widthM": 1.27,
+       "centre": 0.84
+      },
+      {
+       "atM": 7.15,
+       "widthM": 0.8,
+       "centre": 0.87
+      },
+      {
+       "atM": 6.17,
+       "widthM": 0.82,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1893-jamb-blocks scores 0.64 < 0.7 (strip cornice 17.63 m vs the type's 10.8 m (wall-dormer skyline 13.5 m))",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.63 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.002 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161548",
+   "address": "Bosboom Toussaintstraat 6",
+   "builtYear": 1893,
+   "widthM": 6.18,
+   "eavesM": 15.6,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#664e45",
+    "wallRaw": "#6e5646",
+    "skyline": {
+     "eavesM": 15.3,
+     "eavesRow": 251,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 3.27,
+      "riseM": 6.27,
+      "topWidthM": 0.17,
+      "centre": 0.66
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.063,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.45,
+       "widthM": 1.15,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1893-jamb-blocks scores 0.64 < 0.7 (strip cornice 15.3 m vs the type's 10.8 m (wall-dormer skyline 13.5 m))",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.3 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.052 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236066",
+   "address": "Bosboom Toussaintstraat 2",
+   "builtYear": 1893,
+   "widthM": 8.12,
+   "eavesM": 13.27,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#765549",
+    "wallRaw": "#654e40",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 270,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 5.22,
+      "riseM": 6.75,
+      "topWidthM": 0.45,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.054,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.45,
+       "widthM": 1.45,
+       "centre": 0.65
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: frontage 8.12 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "frontage 8.12 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 14.82 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.041 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

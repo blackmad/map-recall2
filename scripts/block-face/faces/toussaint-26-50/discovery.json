@@ -1,0 +1,768 @@
+{
+ "street": "Bosboom Toussaintstraat",
+ "seed": "0363100012161166",
+ "members": [
+  "0363100012158674",
+  "0363100012159217",
+  "0363100012160766",
+  "0363100012152531",
+  "0363100012156913",
+  "0363100012233486",
+  "0363100012155774",
+  "0363100012155675",
+  "0363100012164638",
+  "0363100012236846",
+  "0363100012152681",
+  "0363100012154262",
+  "0363100012161166"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012164738 21.8 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012157767 21.8 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012080345",
+   "reason": "frontage 39.2 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012153816",
+   "reason": "frontage 35.2 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012236581",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012159217"
+  },
+  {
+   "pandId": "0363100012153452",
+   "reason": "frontage 43.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012159399",
+   "reason": "frontage 102.9 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012166311",
+   "reason": "frontage 124.9 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012160388",
+   "reason": "frontage 103.8 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012198301",
+   "reason": "frontage 33.3 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012138462",
+   "reason": "frontage 131.6 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012157151",
+   "reason": "frontage 42.6 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012163172",
+   "reason": "frontage 37.6 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012164400",
+   "reason": "frontage 38.9 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012164202",
+   "reason": "frontage 46.7 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012165613",
+   "reason": "frontage 33.7 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012090216",
+   "reason": "frontage 37.1 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012156162",
+   "reason": "frontage 42.3 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012125479",
+   "reason": "frontage 103.5 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012158277",
+   "reason": "frontage 44.4 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012157699",
+   "reason": "frontage 36.5 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012130645",
+   "reason": "frontage 88.6 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012152546",
+   "reason": "frontage 97.6 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012167201",
+   "reason": "frontage 71.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012152705",
+   "reason": "frontage 102.8 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012158663",
+   "reason": "frontage 70.8 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012119454",
+   "reason": "frontage 35.6 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012188285",
+   "reason": "frontage 33.2 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012157801",
+   "reason": "frontage 45.3 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012162406",
+   "reason": "frontage 43.7 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012167376",
+   "reason": "frontage 42.5 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012161980",
+   "reason": "frontage 70.7 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012163910",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012236066"
+  },
+  {
+   "pandId": "0363100012162464",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012165809"
+  },
+  {
+   "pandId": "0363100012165941",
+   "reason": "frontage 43.8 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012160649",
+   "reason": "frontage 47.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012157674",
+   "reason": "frontage 102.5 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012155585",
+   "reason": "frontage 104.1 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012157308",
+   "reason": "frontage 39.3 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012166254",
+   "reason": "frontage 30.3 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012165412",
+   "reason": "frontage 43.1 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012153662",
+   "reason": "frontage 39.1 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012160525",
+   "reason": "frontage 102.7 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012155824",
+   "reason": "frontage 47.7 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012167186",
+   "reason": "frontage 41.4 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012226207",
+   "reason": "frontage 32.8 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012162970",
+   "reason": "frontage 71.2 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012152612",
+   "reason": "frontage 39.2 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012163088",
+   "reason": "frontage 39.3 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012165637",
+   "reason": "frontage 32.9 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012155382",
+   "reason": "frontage 120.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012236045",
+   "reason": "frontage 44.2 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012166176",
+   "reason": "frontage 71.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012167031",
+   "reason": "frontage 102.7 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012156087",
+   "reason": "frontage 43.4 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012165169",
+   "reason": "frontage 110.9 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012210800",
+   "reason": "frontage 32.7 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012166612",
+   "reason": "frontage 70.9 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012152333",
+   "reason": "frontage 43.8 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012157582",
+   "reason": "frontage 40.4 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012166556",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012154262"
+  },
+  {
+   "pandId": "0363100012161673",
+   "reason": "frontage 34.1 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012157083",
+   "reason": "frontage 42.8 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012152920",
+   "reason": "frontage 70.6 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012159936",
+   "reason": "frontage 104.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012163701",
+   "reason": "frontage 39.6 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012161728",
+   "reason": "frontage 44.3 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012127125",
+   "reason": "frontage 43.1 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012163370",
+   "reason": "frontage 35.2 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012160107",
+   "reason": "frontage 34.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012121916",
+   "reason": "frontage 30.4 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012167190",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012162201"
+  },
+  {
+   "pandId": "0363100012228725",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012164529"
+  },
+  {
+   "pandId": "0363100012156763",
+   "reason": "frontage 42.3 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012198659",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012156156"
+  },
+  {
+   "pandId": "0363100012161286",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012162201"
+  },
+  {
+   "pandId": "0363100012158679",
+   "reason": "frontage 40.3 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012100805",
+   "reason": "frontage 71.1 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012152957",
+   "reason": "frontage 42.2 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012162465",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012165809"
+  },
+  {
+   "pandId": "0363100012110245",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012161166"
+  },
+  {
+   "pandId": "0363100012160295",
+   "reason": "frontage 42.2 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012237107",
+   "reason": "frontage 103.2 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012157958",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012166559"
+  },
+  {
+   "pandId": "0363100012156198",
+   "reason": "frontage 103.7 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012152842",
+   "reason": "frontage 39.3 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012214518",
+   "reason": "frontage 32.9 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012570749",
+   "reason": "frontage 30.7 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012156430",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012236066"
+  },
+  {
+   "pandId": "0363100012160648",
+   "reason": "frontage 103.6 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012156086",
+   "reason": "frontage 33.5 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012165296",
+   "reason": "frontage 70.5 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012157474",
+   "reason": "frontage 38.1 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012572092",
+   "reason": "frontage 30.6 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012236701",
+   "reason": "frontage 37.5 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012163778",
+   "reason": "frontage 38.7 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012156449",
+   "reason": "frontage 71.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012165353",
+   "reason": "frontage 33.2 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012166255",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012158948"
+  },
+  {
+   "pandId": "0363100012153021",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012166948"
+  },
+  {
+   "pandId": "0363100012162978",
+   "reason": "frontage 71.3 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012157511",
+   "reason": "frontage 36.5 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012188042",
+   "reason": "frontage 33.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012086276",
+   "reason": "frontage 130.8 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012102915",
+   "reason": "frontage 42.5 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012166948",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012158175"
+  },
+  {
+   "pandId": "0363100012158861",
+   "reason": "frontage 44.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012165638",
+   "reason": "sightline to Bosboom Toussaintstraat crosses 0363100012164738"
+  },
+  {
+   "pandId": "0363100012220104",
+   "reason": "frontage 32.9 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012159235",
+   "reason": "frontage 39.1 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012189238",
+   "reason": "frontage 36.3 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012163126",
+   "reason": "frontage 41.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012161917",
+   "reason": "frontage 83.9 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012217932",
+   "reason": "frontage 33.1 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012152833",
+   "reason": "frontage 40.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012165770",
+   "reason": "frontage 70.5 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012159047",
+   "reason": "frontage 131.8 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012159537",
+   "reason": "frontage 114.9 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012214958",
+   "reason": "frontage 30.5 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012203065",
+   "reason": "frontage 35.3 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012156512",
+   "reason": "frontage 39.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012159020",
+   "reason": "frontage 71.0 m from Bosboom Toussaintstraat"
+  },
+  {
+   "pandId": "0363100012163753",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164755",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164529",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163234",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154112",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236376",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165809",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156156",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161315",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166210",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161958",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164109",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153715",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166922",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162654",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158948",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166559",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155804",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166173",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154222",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162495",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161668",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163161",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237295",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236070",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152702",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167182",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160276",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160227",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158175",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012158674",
+   "alongM": -70.36,
+   "widthM": 4.84,
+   "eavesM": 14.86,
+   "roofMaxM": 16.9,
+   "storeys3dbag": null,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159217",
+   "alongM": -64.94,
+   "widthM": 6.01,
+   "eavesM": 13.99,
+   "roofMaxM": 17.82,
+   "storeys3dbag": null,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160766",
+   "alongM": -58.94,
+   "widthM": 5.99,
+   "eavesM": 13.48,
+   "roofMaxM": 16.25,
+   "storeys3dbag": null,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152531",
+   "alongM": -53.07,
+   "widthM": 5.74,
+   "eavesM": 13.44,
+   "roofMaxM": 16.04,
+   "storeys3dbag": null,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156913",
+   "alongM": -47.2,
+   "widthM": 5.99,
+   "eavesM": 13.35,
+   "roofMaxM": 18.56,
+   "storeys3dbag": null,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012233486",
+   "alongM": -41.18,
+   "widthM": 6.06,
+   "eavesM": 13.53,
+   "roofMaxM": 18.98,
+   "storeys3dbag": null,
+   "builtYear": 1893,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012155774",
+   "alongM": -35.3,
+   "widthM": 5.7,
+   "eavesM": 13.6,
+   "roofMaxM": 18.95,
+   "storeys3dbag": null,
+   "builtYear": 1893,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012155675",
+   "alongM": -29.21,
+   "widthM": 5.95,
+   "eavesM": 13.41,
+   "roofMaxM": 18.71,
+   "storeys3dbag": null,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164638",
+   "alongM": -23.28,
+   "widthM": 5.91,
+   "eavesM": 13.44,
+   "roofMaxM": 16,
+   "storeys3dbag": null,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236846",
+   "alongM": -17.33,
+   "widthM": 5.98,
+   "eavesM": 13.55,
+   "roofMaxM": 16.87,
+   "storeys3dbag": null,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152681",
+   "alongM": -11.38,
+   "widthM": 5.93,
+   "eavesM": 13.35,
+   "roofMaxM": 16.18,
+   "storeys3dbag": null,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154262",
+   "alongM": -5.42,
+   "widthM": 5.98,
+   "eavesM": 14.08,
+   "roofMaxM": 16.75,
+   "storeys3dbag": null,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161166",
+   "alongM": 0,
+   "widthM": 4.86,
+   "eavesM": 16.56,
+   "roofMaxM": 17,
+   "storeys3dbag": null,
+   "builtYear": 1893,
+   "uncertainty": []
+  }
+ ]
+}

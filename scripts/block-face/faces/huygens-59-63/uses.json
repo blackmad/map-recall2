@@ -1,0 +1,153 @@
+{
+ "street": "Eerste Constantijn Huygensstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012126847",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 59",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000544313"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 520203907,
+     "lngLat": [
+      4.8751417,
+      52.3633776
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "59",
+      "addr:postcode": "1054BT",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "amenity": "pub",
+      "check_date": "2026-10-14",
+      "indoor_seating": "yes",
+      "name": "Café Helmers",
+      "opening_hours": "Mo-Th 15:00-01:00, Fr 15:00-03:00, Sa 12:00-03:00, Su 12:00-01:00",
+      "outdoor_seating": "yes",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012099309",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 61-H",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000544316"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2423888961,
+     "lngLat": [
+      4.8751619,
+      52.3633155
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "61",
+      "addr:postcode": "1054BT",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "cuisine": "asian",
+      "name": "Toko Ikan Mas",
+      "shop": "deli",
+      "website": "https://www.ikanmas.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012124793",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 63-H",
+     "use": "winkelfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000544320"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809446935,
+     "lngLat": [
+      4.8751834,
+      52.3632876
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "63-H",
+      "addr:postcode": "1054BT",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "alt_name": "Un.common cafe",
+      "amenity": "cafe",
+      "check_date": "2026-07-14",
+      "email": "info@uncommonams.com",
+      "indoor_seating": "yes",
+      "name": "Un.common",
+      "name:en": "UN.COMMON",
+      "name:nl": "UN.COMMON",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://uncommonams.com"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4768836321,
+     "lngLat": [
+      4.875248,
+      52.3632242
+     ],
+     "tags": {
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "check_date": "2024-07-15",
+      "name": "GVB Servicepunt",
+      "shop": "ticket",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 5.1
+    }
+   ]
+  }
+ ]
+}

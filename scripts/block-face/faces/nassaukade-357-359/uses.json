@@ -1,0 +1,55 @@
+{
+ "street": "Nassaukade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163910",
+   "addresses": [
+    "Nassaukade 359"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 359-H",
+     "use": "woonfunctie",
+     "areaM2": 207,
+     "bagId": "0363010000748643"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165353",
+   "addresses": [
+    "Nassaukade 357B",
+    "Nassaukade 357A",
+    "Nassaukade 358"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 357B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010011943151"
+    },
+    {
+     "address": "Nassaukade 357A",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000748640"
+    },
+    {
+     "address": "Nassaukade 358-H",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010000748641"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,1545 @@
+{
+ "face": "helmers-209-253",
+ "street": "Eerste Helmersstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 15.27,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "helmers-209-253-r1",
+   "pands": [
+    "0363100012159748",
+    "0363100012159737",
+    "0363100012159862",
+    "0363100012159632",
+    "0363100012153120",
+    "0363100012166885",
+    "0363100012164920",
+    "0363100012165470",
+    "0363100012165598"
+   ],
+   "passed": true,
+   "triangles": 15778
+  },
+  {
+   "face": "helmers-209-253-r2",
+   "pands": [
+    "0363100012161336",
+    "0363100012164140"
+   ],
+   "passed": true,
+   "triangles": 4430
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012164583",
+   "address": "Eerste Helmersstraat 209",
+   "builtYear": 1897,
+   "widthM": 6.1,
+   "eavesM": 16.02,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d3820",
+    "wallRaw": "#9f8264",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 837,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.142,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.57,
+       "widthM": 0.8,
+       "centre": 0.47
+      },
+      {
+       "atM": 6.5,
+       "widthM": 0.97,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152877",
+   "address": "Eerste Helmersstraat 211A",
+   "builtYear": 1897,
+   "widthM": 5.93,
+   "eavesM": 16.38,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#795643",
+    "wallRaw": "#997c61",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 837,
+     "confidence": 0.25,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.205,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.12 (light 0.34): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.12,
+       "light": 0.34
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.3,
+       "light": 0.24
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.46,
+       "light": 0.35
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.64,
+       "light": 0.22
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.55,
+       "widthM": 2.17,
+       "centre": 0.73
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a cream timber shopfront with a wide display window fills the ground storey under the banded upper storeys; the banded type has a residential ground",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159748",
+   "address": "Eerste Helmersstraat 213",
+   "builtYear": 1897,
+   "widthM": 6.03,
+   "eavesM": 14.49,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#715441",
+    "wallRaw": "#96785e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 837,
+     "confidence": 0.03,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.091,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.52,
+       "widthM": 1.15,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.09
+   },
+   "status": "placed",
+   "type": "helmers-1897-banded",
+   "score": 1,
+   "placement": {
+    "type": "helmers-1897-banded",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#715441",
+     "evidence": "strip 2024-11-29 span 481-722: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012159748",
+    "ncc": 0.248,
+    "nccRaw": 0.248,
+    "shiftM": [
+     -0.2,
+     -0.3
+    ],
+    "usable": 0.77,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.36 mean 0.37 vs photo 0.21"
+    ],
+    "wall": {
+     "photo": "#715643",
+     "model": "#8d6851",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.21,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.473
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159737",
+   "address": "Eerste Helmersstraat 215",
+   "builtYear": 1897,
+   "widthM": 5.88,
+   "eavesM": 13.22,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#835c4b",
+    "wallRaw": "#7f6956",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 837,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.099,
+    "structure": {
+     "bayWidthM": 1.23,
+     "bayCentre": 0.85,
+     "balconies": true,
+     "why": "bay-less open axis 1.02 m at 0.85 (light 0.68): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.85,
+       "light": 0.68
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.4,
+       "widthM": 1.15,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.11
+   },
+   "status": "placed",
+   "type": "helmers-1897-balconette-tall",
+   "score": 1,
+   "placement": {
+    "type": "helmers-1897-balconette-tall",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#835c4b",
+     "evidence": "strip 2024-11-29 span 722-957: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown small-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012159737",
+    "ncc": 0.448,
+    "nccRaw": 0.448,
+    "shiftM": [
+     0.1,
+     0.05
+    ],
+    "usable": 0.75,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.37 mean 0.39 vs photo 0.19"
+    ],
+    "wall": {
+     "photo": "#7e5c4b",
+     "model": "#9d6e5a",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.19,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.452
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159862",
+   "address": "Eerste Helmersstraat 217",
+   "builtYear": 1897,
+   "widthM": 6.02,
+   "eavesM": 10.88,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a6952",
+    "wallRaw": "#8c6f54",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 837,
+     "confidence": 0.13,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.151,
+    "structure": {
+     "bayWidthM": 0.82,
+     "bayCentre": 0.84,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.53 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.53,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.14
+   },
+   "status": "placed",
+   "type": "helmers-1897-balconette",
+   "score": 1,
+   "placement": {
+    "type": "helmers-1897-balconette",
+    "measuredPalette": {
+     "brick": "#8a6952",
+     "evidence": "strip 2024-11-29 span 957-1198: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pointed-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012159862",
+    "ncc": 0.362,
+    "nccRaw": 0.362,
+    "shiftM": [
+     0.1,
+     -0.05
+    ],
+    "usable": 0.7,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.27",
+     "glazing storey band off by 0.37 mean 0.37 vs photo 0.11"
+    ],
+    "wall": {
+     "photo": "#50402c",
+     "model": "#a27c62",
+     "dL": 0.267
+    },
+    "glazing": {
+     "photo": 0.11,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.309
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159632",
+   "address": "Eerste Helmersstraat 219",
+   "builtYear": 1897,
+   "widthM": 5.93,
+   "eavesM": 11.11,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#684e3b",
+    "wallRaw": "#886a52",
+    "skyline": {
+     "eavesM": 20.18,
+     "eavesRow": 30,
+     "confidence": 0.37,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.067,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.1 m at 0.18 (light 0.19): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.1,
+       "centre": 0.18,
+       "light": 0.19
+      },
+      {
+       "widthM": 1,
+       "centre": 0.83,
+       "light": 0.36
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "placed",
+   "type": "helmers-1897-balconette",
+   "score": 1,
+   "placement": {
+    "type": "helmers-1897-balconette",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#684e3b",
+     "evidence": "strip 2024-11-29 span 1198-1435: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pointed-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012159632",
+    "ncc": 0.331,
+    "nccRaw": 0.331,
+    "shiftM": [
+     0.05,
+     -0.05
+    ],
+    "usable": 0.79,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.39 mean 0.39 vs photo 0.17"
+    ],
+    "wall": {
+     "photo": "#5c4838",
+     "model": "#85634b",
+     "dL": 0.118
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.405
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153120",
+   "address": "Eerste Helmersstraat 221",
+   "builtYear": 1897,
+   "widthM": 6.14,
+   "eavesM": 11.04,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d513c",
+    "wallRaw": "#916e54",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 837,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.048,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.2 m at 0.19 (light 0.2): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.2,
+       "centre": 0.19,
+       "light": 0.2
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.53,
+       "light": 0.45
+      },
+      {
+       "widthM": 1.35,
+       "centre": 0.8,
+       "light": 0.23
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "helmers-1897-balconette",
+   "score": 1,
+   "placement": {
+    "type": "helmers-1897-balconette",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6d513c",
+     "evidence": "strip 2024-11-29 span 1435-1680: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pointed-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012153120",
+    "ncc": 0.355,
+    "nccRaw": 0.355,
+    "shiftM": [
+     0.05,
+     -0.1
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.40 mean 0.37 vs photo 0.69"
+    ],
+    "wall": {
+     "photo": "#8d735c",
+     "model": "#8a664c",
+     "dL": -0.037
+    },
+    "glazing": {
+     "photo": 0.69,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.402
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166885",
+   "address": "Eerste Helmersstraat 223",
+   "builtYear": 1897,
+   "widthM": 6.03,
+   "eavesM": 13.34,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d1a97f",
+    "wallRaw": "#a8866a",
+    "skyline": {
+     "eavesM": 20.25,
+     "eavesRow": 27,
+     "confidence": 0.32,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.153,
+    "structure": {
+     "bayWidthM": 1.77,
+     "bayCentre": 0.48,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.85 (light 0.37): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.5,
+       "light": 0.5
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.85,
+       "light": 0.37
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.08
+   },
+   "status": "placed",
+   "type": "helmers-1897-balconette",
+   "score": 1,
+   "placement": {
+    "type": "helmers-1897-balconette",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#d1a97f",
+     "evidence": "strip 2024-11-29 span 1681-1922: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6d513c"
+    }
+   },
+   "notes": [
+    "crown pointed-dormer (type default)",
+    "palette pinned: Eerste Helmersstraat 223: the 2024-11-29 strip is sun-blown on this span (trim-normalised wall #d1a97f, a light tan off the family); the median of its same-type row 217-229 without the two sunlit fronts (217 #8a6952, 219 #684e3b, 221 #6d513c, 227 #624a36, 229 #6f5540) is #6d513c"
+   ],
+   "likeness": {
+    "pandId": "0363100012166885",
+    "ncc": 0.203,
+    "nccRaw": 0.203,
+    "shiftM": [
+     0.15,
+     -0.25
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.23",
+     "glazing storey band off by 0.39 mean 0.38 vs photo 0.61"
+    ],
+    "wall": {
+     "photo": "#cbae7f",
+     "model": "#8a664c",
+     "dL": -0.227
+    },
+    "glazing": {
+     "photo": 0.61,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.343
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164920",
+   "address": "Eerste Helmersstraat 225",
+   "builtYear": 1897,
+   "widthM": 5.95,
+   "eavesM": 13.05,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ceac7c",
+    "wallRaw": "#a47d5f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 837,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.096,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.93 m at 0.52 (light 0.36): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.52,
+       "light": 0.36
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.87,
+       "light": 0.31
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.32,
+       "widthM": 1.77,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.07
+   },
+   "status": "placed",
+   "type": "helmers-1897-balconette",
+   "score": 1,
+   "placement": {
+    "type": "helmers-1897-balconette",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#ceac7c",
+     "evidence": "strip 2024-11-29 span 1922-2160: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6d513c"
+    }
+   },
+   "notes": [
+    "crown pointed-dormer (type default)",
+    "palette pinned: Eerste Helmersstraat 225: the 2024-11-29 strip is sun-blown on this span (trim-normalised wall #ceac7c, a light tan off the family); the median of its same-type row 217-229 without the two sunlit fronts (217 #8a6952, 219 #684e3b, 221 #6d513c, 227 #624a36, 229 #6f5540) is #6d513c"
+   ],
+   "likeness": {
+    "pandId": "0363100012164920",
+    "ncc": 0.234,
+    "nccRaw": 0.234,
+    "shiftM": [
+     0.15,
+     -0.15
+    ],
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.26",
+     "glazing storey band off by 0.33 mean 0.39 vs photo 0.55"
+    ],
+    "wall": {
+     "photo": "#e1b078",
+     "model": "#8a664c",
+     "dL": -0.257
+    },
+    "glazing": {
+     "photo": 0.55,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.334
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165470",
+   "address": "Eerste Helmersstraat 227",
+   "builtYear": 1897,
+   "widthM": 5.96,
+   "eavesM": 13.23,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#624a36",
+    "wallRaw": "#90795a",
+    "skyline": {
+     "eavesM": 20.02,
+     "eavesRow": 36,
+     "confidence": 0.32,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.221,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.53 (light 0.42): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.53,
+       "light": 0.42
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.13
+   },
+   "status": "placed",
+   "type": "helmers-1897-balconette",
+   "score": 1,
+   "placement": {
+    "type": "helmers-1897-balconette",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#624a36",
+     "evidence": "strip 2024-11-29 span 2160-2398: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pointed-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012165470",
+    "ncc": 0.274,
+    "nccRaw": 0.274,
+    "shiftM": [
+     0.1,
+     -0.3
+    ],
+    "usable": 0.71,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#6b523e",
+     "model": "#806046",
+     "dL": 0.057
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.572
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165598",
+   "address": "Eerste Helmersstraat 229",
+   "builtYear": 1897,
+   "widthM": 6.07,
+   "eavesM": 13.37,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5540",
+    "wallRaw": "#83694f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 837,
+     "confidence": 0.23,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.064,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "helmers-1897-balconette",
+   "score": 1,
+   "placement": {
+    "type": "helmers-1897-balconette",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6f5540",
+     "evidence": "strip 2024-11-29 span 2399-2642: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pointed-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012165598",
+    "ncc": 0.322,
+    "nccRaw": 0.322,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.26",
+     "columns 3 vs photo 8"
+    ],
+    "wall": {
+     "photo": "#876146",
+     "model": "#8b6a50",
+     "dL": 0.027
+    },
+    "glazing": {
+     "photo": 0.48,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.39
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152814",
+   "address": "Eerste Helmersstraat 231",
+   "builtYear": 1899,
+   "widthM": 4.87,
+   "eavesM": 15.63,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#865840",
+    "wallRaw": "#9a7155",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 837,
+     "confidence": 0.11,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.162,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.13 m at 0.13 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.13,
+       "centre": 0.13,
+       "light": 0.27
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.48,
+       "light": 0.16
+      },
+      {
+       "widthM": 1,
+       "centre": 0.82,
+       "light": 0.37
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.143 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.13; glazing storey band off by 0.30)",
+   "likeness": {
+    "pandId": "0363100012152814",
+    "ncc": 0.143,
+    "nccRaw": 0.143,
+    "shiftM": [
+     -0.1,
+     0.25
+    ],
+    "usable": 0.85,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13",
+     "glazing storey band off by 0.30"
+    ],
+    "wall": {
+     "photo": "#6f513c",
+     "model": "#a26a4d",
+     "dL": 0.133
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.435
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165380",
+   "address": "Eerste Helmersstraat 233",
+   "builtYear": 1899,
+   "widthM": 4.98,
+   "eavesM": 15.46,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8b5f49",
+    "wallRaw": "#a4785e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 837,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.183,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.14 (light 0.38): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.14,
+       "light": 0.38
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.45,
+       "light": 0.33
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.82,
+       "light": 0.42
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012165380",
+    "ncc": 0.165,
+    "nccRaw": 0.165,
+    "shiftM": [
+     -0.1,
+     0.1
+    ],
+    "usable": 0.8,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20 mean 0.36 vs photo 0.24"
+    ],
+    "wall": {
+     "photo": "#9a684f",
+     "model": "#a57157",
+     "dL": 0.037
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.406
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166398",
+   "address": "Eerste Helmersstraat 235",
+   "builtYear": 1899,
+   "widthM": 4.98,
+   "eavesM": 15.32,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a36955",
+    "wallRaw": "#a27a62",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 837,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.182,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.49 (light 0.38): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.49,
+       "light": 0.38
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a brick neck gable with an arched attic light over the cornice line and a white shopfront on the ground storey, between the wall-dormer fronts of 233 and 237; no type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161336",
+   "address": "Eerste Helmersstraat 237",
+   "builtYear": 1899,
+   "widthM": 5.14,
+   "eavesM": 13.93,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#98614b",
+    "wallRaw": "#9b7255",
+    "skyline": {
+     "eavesM": 13.93,
+     "eavesRow": 280,
+     "confidence": 0.66,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 2.8,
+      "topWidthM": 0.9,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.136,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.26 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.26,
+       "light": 0.18
+      },
+      {
+       "widthM": 1.45,
+       "centre": 0.52,
+       "light": 0.22
+      },
+      {
+       "widthM": 1,
+       "centre": 0.79,
+       "light": 0.16
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.08
+   },
+   "status": "placed",
+   "type": "helmers-1899-wall-dormer",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "helmers-1893-jamb-blocks",
+    "score": 0
+   },
+   "placement": {
+    "type": "helmers-1899-wall-dormer",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#98614b",
+     "evidence": "strip 2024-11-29 span 3235-3441: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown wall-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012161336",
+    "ncc": 0.211,
+    "nccRaw": 0.211,
+    "shiftM": [
+     -0.1,
+     -0.4
+    ],
+    "usable": 0.83,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.22",
+     "glazing storey band off by 0.37 mean 0.36 vs photo 0.22"
+    ],
+    "wall": {
+     "photo": "#664735",
+     "model": "#ae735b",
+     "dL": 0.216
+    },
+    "glazing": {
+     "photo": 0.22,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.435
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164140",
+   "address": "Eerste Helmersstraat 239",
+   "builtYear": 1899,
+   "widthM": 5,
+   "eavesM": 14.13,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#754c3a",
+    "wallRaw": "#8f6e58",
+    "skyline": {
+     "eavesM": 14.13,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 2.82,
+      "topWidthM": 0.78,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.165,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.93 m at 0.13 (light 0.2): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.13,
+       "light": 0.2
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.47,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.1
+   },
+   "status": "placed",
+   "type": "helmers-1899-wall-dormer",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "helmers-1893-jamb-blocks",
+    "score": 0
+   },
+   "placement": {
+    "type": "helmers-1899-wall-dormer",
+    "measuredPalette": {
+     "brick": "#754c3a",
+     "evidence": "strip 2024-11-29 span 3440-3640: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown wall-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012164140",
+    "ncc": 0.371,
+    "nccRaw": 0.371,
+    "shiftM": [
+     -0.15,
+     -0.2
+    ],
+    "usable": 0.79,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32"
+    ],
+    "wall": {
+     "photo": "#754d3c",
+     "model": "#925f48",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.53
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162217",
+   "address": "Eerste Helmersstraat 241",
+   "builtYear": 1901,
+   "widthM": 5.76,
+   "eavesM": 13.97,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#936e5b",
+    "wallRaw": "#94735c",
+    "skyline": {
+     "eavesM": 13.97,
+     "eavesRow": 278,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 1.65,
+      "topWidthM": 0.82,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.128,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.95,
+       "widthM": 1.15,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.066 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.18; glazing storey band off by 0.23 mean 0.51 vs photo 0.31)",
+   "likeness": {
+    "pandId": "0363100012162217",
+    "ncc": 0.066,
+    "nccRaw": 0.066,
+    "shiftM": [
+     -0.05,
+     0.15
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.18",
+     "glazing storey band off by 0.23 mean 0.51 vs photo 0.31"
+    ],
+    "wall": {
+     "photo": "#755643",
+     "model": "#a5816e",
+     "dL": 0.178
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.461
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164432",
+   "address": "Eerste Helmersstraat 243",
+   "builtYear": 1901,
+   "widthM": 5.73,
+   "eavesM": 14.07,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#775a46",
+    "wallRaw": "#866d59",
+    "skyline": {
+     "eavesM": 14.07,
+     "eavesRow": 274,
+     "confidence": 0.71,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 6.85,
+      "topWidthM": 0.4,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.145,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.05,
+       "widthM": 1.18,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.049 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.15 mean 0.52 vs photo 0.38)",
+   "likeness": {
+    "pandId": "0363100012164432",
+    "ncc": 0.049,
+    "nccRaw": 0.049,
+    "shiftM": [
+     0.4,
+     0.2
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.15 mean 0.52 vs photo 0.38"
+    ],
+    "wall": {
+     "photo": "#7f604d",
+     "model": "#926e56",
+     "dL": 0.055
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.52
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.534
+   },
+   "challengers": {}
+  }
+ ]
+}

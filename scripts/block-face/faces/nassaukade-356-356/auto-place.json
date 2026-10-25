@@ -1,0 +1,191 @@
+{
+ "face": "nassaukade-356-356",
+ "street": "Nassaukade",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 0.37,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012157582",
+   "address": "Nassaukade 356A",
+   "builtYear": 1885,
+   "widthM": 7.17,
+   "eavesM": 16.05,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a66637",
+    "wallRaw": "#bf7f49",
+    "skyline": {
+     "eavesM": 16.05,
+     "eavesRow": 151,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 2.25,
+      "topWidthM": 0.33,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.97,
+       "widthM": 1.93,
+       "centre": 0.57
+      },
+      {
+       "atM": 12.52,
+       "widthM": 0.95,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1885, type 1893-1893; frontage 7.17 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1885, type 1893-1893",
+     "frontage 7.17 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.05 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155824",
+   "address": "Nassaukade 356",
+   "builtYear": 1884,
+   "widthM": 6.57,
+   "eavesM": 13.78,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9d5f28",
+    "wallRaw": "#7f5628",
+    "skyline": {
+     "eavesM": 13.78,
+     "eavesRow": 242,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.67,
+      "riseM": 2.78,
+      "topWidthM": 0.2,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.9 m at 0.25 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.9,
+       "centre": 0.25,
+       "light": 0.26
+      },
+      {
+       "widthM": 1.27,
+       "centre": 0.58,
+       "light": 0.04
+      },
+      {
+       "widthM": 1.4,
+       "centre": 0.88,
+       "light": 0.04
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1884, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1884, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.78 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,100 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "helmers-32-66-r2",
+ "street": "Derde Helmersstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-12",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-12",
+   "image": "staging/block-face/helmers-32-66-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the helmersbuurt library (buurt Helmersbuurt-Oost); scores and holds in scripts/block-face/faces/helmers-32-66/auto-place.json"
+ },
+ "types": [
+  "helmers-1900-merlon-dormer"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012157083",
+   "slug": "helmers-157083",
+   "address": "Derde Helmersstraat 56A",
+   "type": {
+    "type": "helmers-1900-merlon-dormer",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#665149",
+     "evidence": "strip 2023-01-12 span 1145-1379: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-12",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1900-merlon-dormer scored 1 on eaves 1, stucco 1, columns 1; strip 2023-01-12 span 1145-1379"
+   }
+  },
+  {
+   "pandId": "0363100012162406",
+   "slug": "helmers-162406",
+   "address": "Derde Helmersstraat 54",
+   "type": {
+    "type": "helmers-1900-merlon-dormer",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6c564c",
+     "evidence": "strip 2023-01-12 span 1380-1615: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-12",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1900-merlon-dormer scored 1 on eaves 1, stucco 1, columns 1; strip 2023-01-12 span 1380-1615"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012157083",
+    "stripRow": 255,
+    "frontRoof": {},
+    "evidence": "auto-place: the helmers-1900-merlon-dormer cornice line 14.3 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.96 m"
+   },
+   {
+    "pand": "0363100012162406",
+    "stripRow": 255,
+    "frontRoof": {},
+    "evidence": "auto-place: the helmers-1900-merlon-dormer cornice line 14.3 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 16.04 m"
+   }
+  ]
+ }
+}

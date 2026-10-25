@@ -21,6 +21,7 @@ import {pointInRing, roofHeightAt} from './facts.ts';
 import {swatch, DIMINISHING_WINDOW_HEIGHTS, DARK_TYMPANUM_K, ORIEL, type CanalHouseIntent, type FrontIntent, type GableIntent, type ShopSign} from './intent.ts';
 import {cleanRoof, type RoofCleanupReport} from './roofCleanup.ts';
 import {gableOrnaments} from './gableOrnament.ts';
+import {entablatureCornice} from './entablature.ts';
 import type {CanalhouseOrnament} from '../canalhouseRecipes.ts';
 
 export const ROOF_COLOURS: Record<CanalHouseIntent['roof']['material'], {steep: string; low: string; flat: string}> = {
@@ -116,7 +117,7 @@ export interface FitReport {
     /** Towers rising over the eaves (elevation metres, the facade frame's x). A corner tower (`tower.corner`) lists its
      * plan on the owning front (recipe-local footprint metres: corner, along this front, opposite, along the partner front)
      * and `partner` on the other front, whose wall only rises. */
-    towers?: {leftM: number; widthM: number; bottomM: number; topM: number; cap: 'pyramid' | 'flat' | 'stepped'; corner?: {role: 'owner' | 'partner'; plan?: CanalhousePoint[]; walls?: number[]}}[];
+    towers?: {leftM: number; widthM: number; bottomM: number; topM: number; cap: 'pyramid' | 'flat' | 'stepped' | 'merlons'; corner?: {role: 'owner' | 'partner'; plan?: CanalhousePoint[]; walls?: number[]}}[];
     /** Rigid shop canopy (facade x): slab underside `bottomM`; an end on a party wall (`partyStart`/`partyEnd`, facade-x order) runs to the party plane. */
     canopy?: {leftM: number; widthM: number; bottomM: number; projectM: number; thicknessM: number; fasciaM: number; fasciaDepthM: number; partyStart: boolean; partyEnd: boolean; colour: string; fasciaColour: string;
       /** Glass-block band over the canopy (`awning.glassBlocks`), facade x (leftM, widthM) and heights. */
@@ -377,7 +378,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
         lefts.forEach((left, k) => openings.push({id: `s${s}-b${b}${pair ? 'ab'[k] : ''}`, kind: 'window', leftM: round(left), bottomM: round(y + Math.min(ls, h - 0.12 - lh)), widthM: lw, heightM: lh, trimWidthM: 0.06, horizontalBars: ladderBars(lh), ...head, frameSurface: 'trim', barSurface: 'trim'}));
         continue;
       }
-      const head = s > 0 || f.archedStoreys?.includes(s) || headStorey(s) ? headFor(s, winW) : {};
+      const axisHead = axisHeadFor(f, s, plan.axis(b));
+      const head = axisHead ? axisHead(winW) : s > 0 || f.archedStoreys?.includes(s) || headStorey(s) ? headFor(s, winW) : {};
       // A round head needs height for its arch above the sash rail.
       const h2 = 'headRiseM' in head && head.headRiseM! > 0.3 ? Math.min(h - 0.25, Math.max(winH, head.headRiseM! / 0.42)) : winH;
       openings.push({id: `s${s}-b${b}`, kind: 'window', leftM: centre - winW / 2, bottomM: y + Math.min(sill, h - 0.12 - h2), widthM: winW, heightM: h2, trimWidthM: 0.07, ...barsFor(s, plan.axis(b)), ...head, frameSurface: 'trim', barSurface: 'trim'});
@@ -513,6 +515,16 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   if (f.stairLight) { const floors = heights.reduce((a, h) => [...a, a[a.length - 1] + h], [basement]); openings.push(...stairLightOpenings(f.stairLight, axisCentres[f.stairLight.axis], floors, width)); }
   const groundBlocks = f.groundFront ? groundFrontLayout(f.groundFront, width, heights[0], openings) : undefined;
   return {openings, glazedBays, balconies, storeyHeights: [basement, ...heights].filter(h => h > 0).map(h => round(h)), groundBase: basement, doorLeft, doorWidth, shopSpans, shopGlass, warnings, shopZone, riserTopM, entrance, bayEdges, axisCentres, shopStoreys: twoStorey ? 2 : 1, ...(groundBlocks ? {groundBlocks} : {}), ...(school ? {school} : {})};
+}
+
+/**
+ * `axisHeads`: the head of the windows of one axis on the listed storeys where it differs from the front's (Eerste
+ * Helmersstraat 233-239: the round-arched centre window of the top storey over segmental ones). Null = the front's head.
+ */
+export function axisHeadFor(f: FrontIntent, s: number, axis: number | null): ((w: number) => {head?: 'segmental'; headRiseM?: number; headSegments?: number}) | null {
+  const a = axis === null || axis === undefined ? undefined : f.axisHeads?.[String(axis)];
+  if (!a || !a.storeys.includes(s)) return null;
+  return w => a.kind === 'flat' ? {} : {head: 'segmental' as const, headRiseM: a.kind === 'round' ? Math.floor(w / 2 * 1000) / 1000 : round(w * 0.08), headSegments: 6};
 }
 
 /** A glazing-bar end (fractions of the opening) moved 1.5 cm inside the pane: past the frame and under a segmental head. */
@@ -753,7 +765,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     const mw = width / count, alternate = !!front.repeat?.mirrorAlternate;
     const place = (k: number, x: number, w = 0) => k * mw + (alternate && k % 2 ? mw - x - w : x);
     // `frieze`: a tall plain attic frieze under the cornice (18th-c. Keizersgracht fronts, often with oculi): 1.6 m, 0.25 m deep.
-    const corniceH = {none: 0, simple: 0.35, bracketed: 0.55, heavy: 0.8, frieze: 1.6}[front.cornice];
+    // `entablature` (buildingRecipe/entablature.ts): the measured crown band's height replaces the style's.
+    const corniceH = front.entablature && front.cornice !== 'none' ? front.entablature.rise : {none: 0, simple: 0.35, bracketed: 0.55, heavy: 0.8, frieze: 1.6}[front.cornice];
     // A tall plain parapet (`parapet`, De Baarsjes): the full storeys end `courses` brick courses under the eaves.
     const parapetM = front.parapet && !gabled ? round(front.parapet.courses * COURSE_M) : null;
     const layout = layoutFront(front, mw, eaves - (gabled ? 0.2 : parapetM ?? corniceH + 0.15));
@@ -814,7 +827,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       if (tymp.length) elevation.ornaments = seen([...(elevation.ornaments?.value ?? []), ...tymp]);
     }
     // Dark tympanum under a relieving arch (`tympanum: dark`): the arch field over the square head, in the shadowed wall brick.
-    if (front.windowHead?.tympanum === 'dark' && front.windowHead.kind === 'relieving') {
+    if ((front.windowHead?.tympanum === 'dark' || front.windowHead?.tympanum === 'band') && front.windowHead.kind === 'relieving') {
       const tymp: CanalhouseOrnament[] = ringedOpenings().map(o => { const a = relieving(o); return {id: `tympanum-${o.id}`, profile: archSegment(a.left, a.top, a.w, a.rise), depthM: 0.02, fill: 'accent' as const}; });
       if (tymp.length) elevation.ornaments = seen([...(elevation.ornaments?.value ?? []), ...tymp]);
     }
@@ -869,7 +882,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       });
       lintelBands = courses;
     }
-    if (corniceH > 0) elevation.cornice = seen({bottomM: round(eaves - corniceH), heightM: corniceH, depthM: front.cornice === 'frieze' ? 0.25 : round(corniceH * 0.5), brackets: front.cornice === 'bracketed' ? Math.max(2, Math.round(width / 1.6)) : 0});
+    if (corniceH > 0 && front.entablature) elevation.cornice = seen(entablatureCornice(front.entablature, eaves, width));
+    else if (corniceH > 0) elevation.cornice = seen({bottomM: round(eaves - corniceH), heightM: corniceH, depthM: front.cornice === 'frieze' ? 0.25 : round(corniceH * 0.5), brackets: front.cornice === 'bracketed' ? Math.max(2, Math.round(width / 1.6)) : 0});
     // The parapet's thin coping, drawn as a shallow cornice slab on the wall top (cornice colour).
     else if (parapetM !== null && front.parapet!.coping) elevation.cornice = seen({bottomM: round(eaves - DE_BAARSJES.copingM), heightM: DE_BAARSJES.copingM, depthM: DE_BAARSJES.copingDepthM, brackets: 0});
     // Non-straight frontages need an explicit wall top (the library only reads
@@ -929,7 +943,15 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       }
       if (pieces2.length) elevation.ornaments = seen([...(elevation.ornaments?.value ?? []), ...pieces2]);
     }
-    if (towerSpan) {
+    if (towerSpan && front.tower?.lights === 'per-axis' && front.tower.bays) {
+      // One light per spanned axis on the body's axis centres, the top-storey windows' width (a wall dormer over two axes).
+      const tb = front.tower.bays, topWins = layout.openings.filter(o => o.kind === 'window' && new RegExp(`^s${front.storeys - 1}-b\\d+[ab]?$`).test(o.id));
+      const ww = topWins.length ? Math.min(...topWins.map(o => o.widthM)) : clamp((towerSpan[1] - towerSpan[0]) / (tb.to - tb.from + 1) * 0.5, 0.45, 1.2);
+      const wh = round(upperStoreyM * (front.tower.lightRise ?? 0.5)), sill = round(eaves + upperStoreyM * (front.tower.lightSill ?? 0.3));
+      if (sill + wh <= towerTop - 0.2) for (let m = 0; m < count; m++) for (let a = tb.from; a <= tb.to; a++)
+        elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + '-' : ''}tower-a${a}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: round(flipX(place(m, layout.axisCentres[a] - ww / 2, ww), ww)), bottomM: sill, widthM: round(ww), heightM: wh, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
+      else warnings.push(`${front.id}: tower lights (${sill}+${wh} m) do not fit under the tower top ${towerTop} m`);
+    } else if (towerSpan) {
       // One light per storey of rise, centred in the tower.
       const tw = towerSpan[1] - towerSpan[0], ww = clamp(tw * 0.38, 0.45, 1.0), wh = clamp(upperStoreyM * 0.5, 0.6, 1.6), cx = (towerSpan[0] + towerSpan[1]) / 2;
       for (let m = 0; m < count; m++) for (let r = 0; eaves + r * upperStoreyM + 0.3 * upperStoreyM + wh <= towerTop - 0.25; r++)
@@ -998,7 +1020,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const shape = (w: number) => style === 'pediment' ? {roofRiseM: round(clamp(w * 0.32, 0.4, 0.6)), frontOverhangM: 0.12} : style === 'pointed' ? {roofRiseM: round(clamp(w * 0.85, 0.8, 1.4))} : style === 'box' || style === 'flat' ? {roofRiseM: 0} : {roofRiseM: 0.45};
       // A brick roof box (`box`) is low: 0.75 m over the wall top, its front 5 cm behind the facade (Kinkerstraat 109-161 strip: 0.6-0.8 m).
       const placeOnMansard = mansard ? {setbackM: round(Math.max(0.05, maxOut + 0.03)), heightM: round(clamp(mansard.heightM - 0.25, 1.1, 1.6))} : style === 'box' ? {setbackM: 0.05, heightM: 0.75} : style === 'flat' ? {setbackM: 0.35, heightM: 1.8} : {setbackM: 0.35, heightM: 1.45};
-      elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w); return {id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), left, w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + (front.dormerSize?.sill ?? 0.05)), heightM: front.dormerSize?.rise ?? placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), setbackM: front.dormerSize?.setback ?? placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: [.5], wallSurface: style === 'box' ? 'wall' as const : 'trim' as const, roofSurface: 'roof' as const}; }));
+      elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w); return {id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), left, w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + (front.dormerSize?.sill ?? 0.05)), heightM: front.dormerSize?.rise ?? placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), setbackM: front.dormerSize?.setback ?? placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: [.5], wallSurface: style === 'box' ? 'wall' as const : front.dormerBody === 'stone' ? 'stone' as const : 'trim' as const, roofSurface: 'roof' as const}; }));
     }
     if (front.hoist) elevation.hoists = seen(Array.from({length: count}, (_, m) => ({id: count > 1 ? `hoist-m${m}` : 'hoist', centerM: flipX(place(m, crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2), 0), heightM: round(gabled ? crownTop - 0.9 : eaves + 0.1), widthM: 0.14, beamHeightM: 0.18, projectionM: 1.1, setbackM: 0.1, surface: 'door' as const})));
     if ((front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {

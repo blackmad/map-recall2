@@ -1,0 +1,175 @@
+{
+ "street": "Eerste Constantijn Huygensstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012067068",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 31",
+    "Eerste Constantijn Huygensstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 31-H",
+     "use": "winkelfunctie",
+     "areaM2": 158,
+     "bagId": "0363010000544271"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 33-H",
+     "use": "winkelfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000544274"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11993668952,
+     "lngLat": [
+      4.8744617,
+      52.3643669
+     ],
+     "tags": {
+      "addr:housenumber": "31",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "check_date": "2024-06-20",
+      "clothes": "children",
+      "name": "Gray Label",
+      "shop": "clothes",
+      "website": "https://gray-label.com/"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159874",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 35",
+    "Eerste Constantijn Huygensstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 35-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000956487"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 37-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001005884"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 35-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 226,
+     "bagId": "0363010012073170"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160274",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000544285"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162808",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 41-H",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010001036902"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2423888959,
+     "lngLat": [
+      4.8746661,
+      52.3641171
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "41",
+      "addr:postcode": "1054BR",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "amenity": "restaurant",
+      "name": "The Bab"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155592",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 43-H",
+     "use": "winkelfunctie",
+     "areaM2": 139,
+     "bagId": "0363010000544290"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809441350,
+     "lngLat": [
+      4.8746571,
+      52.3640674
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "43-1",
+      "addr:postcode": "1054BR",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "beauty": "waxing",
+      "name": "Delete",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.delete-waxing.com",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

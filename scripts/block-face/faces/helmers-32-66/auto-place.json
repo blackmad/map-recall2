@@ -1,0 +1,1145 @@
+{
+ "face": "helmers-32-66",
+ "street": "Derde Helmersstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2023-01-12",
+ "seconds": 10.53,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "helmers-32-66-r1",
+   "pands": [
+    "0363100012165412",
+    "0363100012163126"
+   ],
+   "passed": true,
+   "triangles": 4648
+  },
+  {
+   "face": "helmers-32-66-r2",
+   "pands": [
+    "0363100012157083",
+    "0363100012162406"
+   ],
+   "passed": true,
+   "triangles": 4647
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012167186",
+   "address": "Derde Helmersstraat 66",
+   "builtYear": 1899,
+   "widthM": 4.74,
+   "eavesM": 13.24,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4b403e",
+    "wallRaw": "#4d4340",
+    "skyline": {
+     "eavesM": 15.07,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.6,
+      "riseM": 2.82,
+      "topWidthM": 1.38,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.88,
+       "widthM": 1.98,
+       "centre": 0.3
+      },
+      {
+       "atM": 8.5,
+       "widthM": 1.9,
+       "centre": 0.28
+      },
+      {
+       "atM": 6.32,
+       "widthM": 0.85,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1900-merlon-dormer: frontage 4.74 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1900-merlon-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 4.74 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.07 m vs the type's 14.3 m (wall-dormer skyline 17.8 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157801",
+   "address": "Derde Helmersstraat 64",
+   "builtYear": 1899,
+   "widthM": 6.22,
+   "eavesM": 15.07,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#77655b",
+    "wallRaw": "#534a45",
+    "skyline": {
+     "eavesM": 15.07,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 3.23,
+      "topWidthM": 1.1,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.049,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.2 m (1.25 m wide), 9.9 m (1.35 m wide), 8.02 m (1.7 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.2,
+       "widthM": 1.07,
+       "centre": 0.85
+      },
+      {
+       "atM": 10.2,
+       "widthM": 1.25,
+       "centre": 0.55
+      },
+      {
+       "atM": 9.9,
+       "widthM": 1.35,
+       "centre": 0.56
+      },
+      {
+       "atM": 8.55,
+       "widthM": 0.85,
+       "centre": 0.7
+      },
+      {
+       "atM": 8.02,
+       "widthM": 1.7,
+       "centre": 0.55
+      },
+      {
+       "atM": 7.57,
+       "widthM": 0.85,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the mirrored end house of the 54-64 row: wall dormer over the left axes and a painted timber oriel on the centre of storey 1; the type draws neither",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165412",
+   "address": "Derde Helmersstraat 62",
+   "builtYear": 1899,
+   "widthM": 5.99,
+   "eavesM": 17.65,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#604e48",
+    "wallRaw": "#524845",
+    "skyline": {
+     "eavesM": 17.65,
+     "eavesRow": 121,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 0.65,
+      "topWidthM": 0.57,
+      "centre": 0.65
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.084,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.02,
+       "widthM": 1.48,
+       "centre": 0.49
+      },
+      {
+       "atM": 9.65,
+       "widthM": 0.95,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.8,
+       "widthM": 1.32,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "helmers-1900-merlon-dormer",
+   "score": 1,
+   "placement": {
+    "type": "helmers-1900-merlon-dormer",
+    "measuredPalette": {
+     "brick": "#604e48",
+     "evidence": "strip 2023-01-12 span 438-678: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown merlon-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012165412",
+    "ncc": 0.252,
+    "nccRaw": 0.252,
+    "shiftM": [
+     -0.15,
+     -0.35
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.41 mean 0.35 vs photo 0.66",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#5f4e47",
+     "model": "#79635b",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.66,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.518
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163126",
+   "address": "Derde Helmersstraat 60",
+   "builtYear": 1900,
+   "widthM": 5.79,
+   "eavesM": 16.29,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#534440",
+    "wallRaw": "#504441",
+    "skyline": {
+     "eavesM": 18.18,
+     "eavesRow": 100,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 1.13,
+      "riseM": 2.5,
+      "topWidthM": 0.63,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.63 m (1.45 m wide), 6.32 m (1.35 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.63,
+       "widthM": 1.45,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.32,
+       "widthM": 1.35,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "helmers-1900-merlon-dormer",
+   "score": 1,
+   "placement": {
+    "type": "helmers-1900-merlon-dormer",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#534440",
+     "evidence": "strip 2023-01-12 span 678-910: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown merlon-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012163126",
+    "ncc": 0.178,
+    "nccRaw": 0.178,
+    "shiftM": [
+     -0.15,
+     -0.15
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.50 mean 0.35 vs photo 0.68"
+    ],
+    "wall": {
+     "photo": "#51433f",
+     "model": "#6d5a54",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.68,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.456
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156087",
+   "address": "Derde Helmersstraat 58",
+   "builtYear": 1900,
+   "widthM": 5.89,
+   "eavesM": 15.9,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e625d",
+    "wallRaw": "#5a4d48",
+    "skyline": {
+     "eavesM": 17.6,
+     "eavesRow": 123,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 1.1,
+      "topWidthM": 0.4,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.024,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 14.1 m (1.32 m wide), 13.05 m (1.27 m wide), 9.9 m (1.32 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.1,
+       "widthM": 1.32,
+       "centre": 0.12
+      },
+      {
+       "atM": 13.05,
+       "widthM": 1.27,
+       "centre": 0.48
+      },
+      {
+       "atM": 9.9,
+       "widthM": 1.32,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1,
+       "centre": 0.1
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a painted timber oriel on the centre axis of storey 1 under a turned balcony; the merlon-dormer type has balconettes only",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157083",
+   "address": "Derde Helmersstraat 56A",
+   "builtYear": 1900,
+   "widthM": 5.86,
+   "eavesM": 15.96,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#665149",
+    "wallRaw": "#544945",
+    "skyline": {
+     "eavesM": 17.6,
+     "eavesRow": 123,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 0.7,
+      "topWidthM": 0.38,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.037,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.88,
+       "widthM": 1.4,
+       "centre": 0.8
+      },
+      {
+       "atM": 9.35,
+       "widthM": 1.05,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.72,
+       "widthM": 1.13,
+       "centre": 0.1
+      },
+      {
+       "atM": 6.05,
+       "widthM": 1,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "helmers-1900-merlon-dormer",
+   "score": 1,
+   "placement": {
+    "type": "helmers-1900-merlon-dormer",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#665149",
+     "evidence": "strip 2023-01-12 span 1145-1379: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown merlon-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012157083",
+    "ncc": 0.208,
+    "nccRaw": 0.208,
+    "shiftM": [
+     0.4,
+     -0.05
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21 mean 0.34 vs photo 0.46"
+    ],
+    "wall": {
+     "photo": "#6d564e",
+     "model": "#7f655b",
+     "dL": 0.061
+    },
+    "glazing": {
+     "photo": 0.46,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.572
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162406",
+   "address": "Derde Helmersstraat 54",
+   "builtYear": 1900,
+   "widthM": 5.87,
+   "eavesM": 17.4,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c564c",
+    "wallRaw": "#534a46",
+    "skyline": {
+     "eavesM": 17.4,
+     "eavesRow": 131,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 1.3,
+      "topWidthM": 0.47,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.012,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.88,
+       "widthM": 1.25,
+       "centre": 0.82
+      },
+      {
+       "atM": 9.27,
+       "widthM": 1.05,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.05,
+       "widthM": 1.02,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "helmers-1900-merlon-dormer",
+   "score": 1,
+   "placement": {
+    "type": "helmers-1900-merlon-dormer",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6c564c",
+     "evidence": "strip 2023-01-12 span 1380-1615: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown merlon-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012162406",
+    "ncc": 0.172,
+    "nccRaw": 0.172,
+    "shiftM": [
+     -0.15,
+     -0.1
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.33 vs photo 0.14"
+    ],
+    "wall": {
+     "photo": "#725b52",
+     "model": "#856a5e",
+     "dL": 0.061
+    },
+    "glazing": {
+     "photo": 0.14,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.284
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165941",
+   "address": "Derde Helmersstraat 52",
+   "builtYear": 1900,
+   "widthM": 5.88,
+   "eavesM": 16.16,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3f3430",
+    "wallRaw": "#5d5957",
+    "skyline": {
+     "eavesM": 18.98,
+     "eavesRow": 68,
+     "confidence": 0.52,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.7,
+      "topWidthM": 0.38,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.156,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14,
+       "widthM": 0.82,
+       "centre": 0.78
+      },
+      {
+       "atM": 10.63,
+       "widthM": 0.88,
+       "centre": 0.62
+      },
+      {
+       "atM": 9.72,
+       "widthM": 0.8,
+       "centre": 0.12
+      },
+      {
+       "atM": 8.22,
+       "widthM": 0.82,
+       "centre": 0.3
+      },
+      {
+       "atM": 6.27,
+       "widthM": 0.88,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.089 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.46 mean 0.34 vs photo 0.61)",
+   "likeness": {
+    "pandId": "0363100012165941",
+    "ncc": 0.089,
+    "nccRaw": 0.089,
+    "shiftM": [
+     -0.1,
+     -0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.46 mean 0.34 vs photo 0.61"
+    ],
+    "wall": {
+     "photo": "#4a403c",
+     "model": "#5b4b46",
+     "dL": 0.053
+    },
+    "glazing": {
+     "photo": 0.61,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.404
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158861",
+   "address": "Derde Helmersstraat 50",
+   "builtYear": 1900,
+   "widthM": 5.83,
+   "eavesM": 16.06,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#312926",
+    "wallRaw": "#453a37",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 827,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.087,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.004 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.28 mean 0.34 vs photo 0.15)",
+   "likeness": {
+    "pandId": "0363100012158861",
+    "ncc": 0.004,
+    "nccRaw": 0.004,
+    "shiftM": [
+     0.05,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.28 mean 0.34 vs photo 0.15"
+    ],
+    "wall": {
+     "photo": "#3d332f",
+     "model": "#564843",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.15,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.163
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152333",
+   "address": "Derde Helmersstraat 38",
+   "builtYear": 1898,
+   "widthM": 5.93,
+   "eavesM": 15.83,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3d312d",
+    "wallRaw": "#4d443f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 827,
+     "confidence": 0.23,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.151,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.63,
+       "widthM": 4.4,
+       "centre": 0.54
+      },
+      {
+       "atM": 6.15,
+       "widthM": 1.43,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1900-merlon-dormer: built 1898, type 1899-1900)",
+   "best": {
+    "type": "helmers-1900-merlon-dormer",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1899-1900"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 14.3 m; 3DBAG 15.83 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.076 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161728",
+   "address": "Derde Helmersstraat 36",
+   "builtYear": 1898,
+   "widthM": 5.8,
+   "eavesM": 15.79,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#453a38",
+    "wallRaw": "#4d4341",
+    "skyline": {
+     "eavesM": 18.68,
+     "eavesRow": 80,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 1.5,
+      "riseM": 2,
+      "topWidthM": 0.35,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 5,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.128,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1900-merlon-dormer: built 1898, type 1899-1900)",
+   "best": {
+    "type": "helmers-1900-merlon-dormer",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1899-1900"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 18.68 m vs the type's 14.3 m (wall-dormer skyline 17.8 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.075 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160649",
+   "address": "Derde Helmersstraat 34",
+   "builtYear": 1898,
+   "widthM": 6.46,
+   "eavesM": 15.65,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#574b48",
+    "wallRaw": "#4d4540",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 827,
+     "confidence": 0.13,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.059,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.13,
+       "widthM": 1.68,
+       "centre": 0.49
+      },
+      {
+       "atM": 5.52,
+       "widthM": 0.88,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1900-merlon-dormer: built 1898, type 1899-1900)",
+   "best": {
+    "type": "helmers-1900-merlon-dormer",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1899-1900"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 14.3 m; 3DBAG 15.65 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.011 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012127125",
+   "address": "Derde Helmersstraat 32",
+   "builtYear": 1898,
+   "widthM": 4.51,
+   "eavesM": 14.39,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#252324",
+    "wallRaw": "#464443",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 827,
+     "confidence": 0.19,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.047,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.38,
+       "widthM": 1.15,
+       "centre": 0.59
+      },
+      {
+       "atM": 9.27,
+       "widthM": 0.93,
+       "centre": 0.86
+      },
+      {
+       "atM": 8.38,
+       "widthM": 0.88,
+       "centre": 0.11
+      },
+      {
+       "atM": 6.27,
+       "widthM": 0.8,
+       "centre": 0.33
+      },
+      {
+       "atM": 5.75,
+       "widthM": 1.13,
+       "centre": 0.3
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1900-merlon-dormer: built 1898, type 1899-1900; frontage 4.51 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1900-merlon-dormer",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1899-1900",
+     "frontage 4.51 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 14.3 m; 3DBAG 14.39 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.009 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

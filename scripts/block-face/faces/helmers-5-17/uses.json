@@ -1,0 +1,229 @@
+{
+ "street": "Eerste Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012064793",
+   "addresses": [
+    "Eerste Helmersstraat 5A",
+    "Eerste Helmersstraat 5B",
+    "Eerste Helmersstraat 5C",
+    "Eerste Helmersstraat 5D",
+    "Eerste Helmersstraat 5E",
+    "Eerste Helmersstraat 7A",
+    "Eerste Helmersstraat 7B",
+    "Eerste Helmersstraat 7C",
+    "Eerste Helmersstraat 7D",
+    "Eerste Helmersstraat 7E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 5A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 118,
+     "bagId": "0363010001027195"
+    },
+    {
+     "address": "Eerste Helmersstraat 5B",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010001027196"
+    },
+    {
+     "address": "Eerste Helmersstraat 5C",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010001027197"
+    },
+    {
+     "address": "Eerste Helmersstraat 5D",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010001027198"
+    },
+    {
+     "address": "Eerste Helmersstraat 5E",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010001027199"
+    },
+    {
+     "address": "Eerste Helmersstraat 7A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 132,
+     "bagId": "0363010001027200"
+    },
+    {
+     "address": "Eerste Helmersstraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010001027201"
+    },
+    {
+     "address": "Eerste Helmersstraat 7C",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010001027202"
+    },
+    {
+     "address": "Eerste Helmersstraat 7D",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010001027203"
+    },
+    {
+     "address": "Eerste Helmersstraat 7E",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010001027204"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 520151326,
+     "lngLat": [
+      4.878117,
+      52.3641699
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5",
+      "addr:postcode": "1054CX",
+      "addr:street": "Eerste Helmersstraat",
+      "amenity": "pub",
+      "check_date": "2026-10-14",
+      "indoor_seating": "yes",
+      "name": "Keu Poolcafe",
+      "outdoor_seating": "no",
+      "sport": "billiards",
+      "website": "https://www.dekeu.nl/"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 7.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012091715",
+   "addresses": [
+    "Eerste Helmersstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000544501"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113008",
+   "addresses": [
+    "Eerste Helmersstraat 11",
+    "Eerste Helmersstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000544509"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012077188",
+   "addresses": [
+    "Eerste Helmersstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000544531"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157550",
+   "addresses": [
+    "Eerste Helmersstraat 17A",
+    "Eerste Helmersstraat 17B",
+    "Eerste Helmersstraat 17C",
+    "Eerste Helmersstraat 17D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 17A-1",
+     "use": "kantoorfunctie",
+     "areaM2": 67,
+     "bagId": "0363010001019922"
+    },
+    {
+     "address": "Eerste Helmersstraat 17A-2",
+     "use": "kantoorfunctie",
+     "areaM2": 20,
+     "bagId": "0363010001019924"
+    },
+    {
+     "address": "Eerste Helmersstraat 17A-3",
+     "use": "kantoorfunctie",
+     "areaM2": 490,
+     "bagId": "0363010001019925"
+    },
+    {
+     "address": "Eerste Helmersstraat 17B-1",
+     "use": "kantoorfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001019926"
+    },
+    {
+     "address": "Eerste Helmersstraat 17B-2",
+     "use": "kantoorfunctie",
+     "areaM2": 52,
+     "bagId": "0363010001019927"
+    },
+    {
+     "address": "Eerste Helmersstraat 17B-3",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001019928"
+    },
+    {
+     "address": "Eerste Helmersstraat 17C-1",
+     "use": "kantoorfunctie",
+     "areaM2": 546,
+     "bagId": "0363010001019929"
+    },
+    {
+     "address": "Eerste Helmersstraat 17C-2",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001019930"
+    },
+    {
+     "address": "Eerste Helmersstraat 17D",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 13,
+     "bagId": "0363010001019931"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}

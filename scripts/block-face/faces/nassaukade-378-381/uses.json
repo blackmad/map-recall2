@@ -1,0 +1,121 @@
+{
+ "street": "Nassaukade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236744",
+   "addresses": [
+    "Nassaukade 380",
+    "Nassaukade 381"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 380-H",
+     "use": "kantoorfunctie",
+     "areaM2": 461,
+     "bagId": "0363010000748698"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5281660321,
+     "lngLat": [
+      4.8783766,
+      52.3646714
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "380",
+      "addr:street": "Nassaukade",
+      "amenity": "car_rental",
+      "brand": "Alamo",
+      "brand:wikidata": "Q1429287",
+      "brand:wikipedia": "en:Alamo Rent a Car",
+      "internet_access": "wlan",
+      "name": "Alamo",
+      "official_name": "Alamo Enterprise National"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237312",
+   "addresses": [
+    "Nassaukade 378",
+    "Nassaukade 379"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 378-H",
+     "use": "winkelfunctie",
+     "areaM2": 192,
+     "bagId": "0363010000748690"
+    },
+    {
+     "address": "Nassaukade 379-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000748694"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809439848,
+     "lngLat": [
+      4.8784358,
+      52.3647991
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "379-H",
+      "addr:postcode": "1054AD",
+      "addr:street": "Nassaukade",
+      "amenity": "restaurant",
+      "branch": "Amsterdam Nassaukade",
+      "brand": "Pizza Beppe",
+      "brand:website": "https://www.pizzabeppe.nl",
+      "brand:wikidata": "Q138975625",
+      "cuisine": "pizza",
+      "name": "Pizza Beppe",
+      "opening_hours": "Mo-Th,Su 17:00-21:30; Fr-Sa 17:00-22:00",
+      "phone": "+31 20 2265448",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.pizzabeppe.nl/locaties/amsterdam/nassaukade"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13098942408,
+     "lngLat": [
+      4.8783731,
+      52.3649425
+     ],
+     "tags": {
+      "amenity": "post_box",
+      "collection_times": "Mo-Fr 09:00",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598",
+      "operator:wikipedia": "nl:PostNL"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 8
+    }
+   ]
+  }
+ ]
+}

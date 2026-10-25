@@ -1,0 +1,90 @@
+{
+ "street": "Eerste Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161340",
+   "addresses": [
+    "Eerste Helmersstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 33-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000544586"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163575",
+   "addresses": [
+    "Eerste Helmersstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000544591"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2423864348,
+     "lngLat": [
+      4.8762231,
+      52.3636692
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "33",
+      "addr:street": "Eerste Helmersstraat",
+      "amenity": "restaurant",
+      "contact:facebook": "https://www.facebook.com/RestaurantHapHmm/",
+      "contact:instagram": "https://www.instagram.com/haphmm/",
+      "cuisine": "dutch",
+      "diet:vegan": "no",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "internet_access:fee": "customers",
+      "name": "Hap Hmm",
+      "opening_hours": "Mo-Fr 17:00-21:15",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 770 8924",
+      "source": "knowledge",
+      "website": "https://www.hap-hmm.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154302",
+   "addresses": [
+    "Eerste Helmersstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000544594"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

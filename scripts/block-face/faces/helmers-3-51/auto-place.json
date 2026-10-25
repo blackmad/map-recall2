@@ -1,0 +1,330 @@
+{
+ "face": "helmers-3-51",
+ "street": "Tweede Helmersstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 2.12,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012237184",
+   "address": "Tweede Helmersstraat 3",
+   "builtYear": 1925,
+   "widthM": 17.92,
+   "eavesM": 15.42,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#fdeec3",
+    "wallRaw": "#fcf2cc",
+    "skyline": {
+     "eavesM": 15.65,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 1.6,
+      "topWidthM": 0.2,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.563,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.07 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.07,
+       "light": 0
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.59,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.48,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 48 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236312",
+   "address": "Tweede Helmersstraat 9",
+   "builtYear": 1925,
+   "widthM": 31.19,
+   "eavesM": 15.36,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ecc9a4",
+    "wallRaw": "#fbeac4",
+    "skyline": {
+     "eavesM": 15.65,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 2.8,
+      "topWidthM": 0.3,
+      "centre": 0.97
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.499,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.2 (light 0.08): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.2,
+       "light": 0.08
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.55,
+       "light": 0.41
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.76,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.57,
+       "widthM": 0.95,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0.43,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 43 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237109",
+   "address": "Tweede Helmersstraat 17",
+   "builtYear": 1917,
+   "widthM": 16.19,
+   "eavesM": 14.28,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f9ecd5",
+    "wallRaw": "#f4e9c3",
+    "skyline": {
+     "eavesM": 14.45,
+     "eavesRow": 288,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.38,
+      "riseM": 3.6,
+      "topWidthM": 0.53,
+      "centre": 0.65
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.481,
+    "structure": {
+     "bayWidthM": 2.8,
+     "bayCentre": 0.09,
+     "balconies": true,
+     "why": "dark open axis 1.15 m at 0.45 (light 0.07): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.15,
+       "centre": 0.45,
+       "light": 0.07
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.37,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 37 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236827",
+   "address": "Tweede Helmersstraat 21",
+   "builtYear": 1917,
+   "widthM": 7.68,
+   "eavesM": 14.48,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#fbe7c2",
+    "wallRaw": "#fcf3ce",
+    "skyline": {
+     "eavesM": 16.8,
+     "eavesRow": 194,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.585,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.81 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.81,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.51,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 51 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237310",
+   "address": "Tweede Helmersstraat 25",
+   "builtYear": 1926,
+   "widthM": 25.11,
+   "eavesM": 16.02,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ecd7b5",
+    "wallRaw": "#f4e9c8",
+    "skyline": {
+     "eavesM": 16.25,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 1.43,
+      "topWidthM": 2.3,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 23,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.58,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.92,
+       "widthM": 2.17,
+       "centre": 0.36
+      }
+     ]
+    },
+    "voidShare": 0.44,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 44 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233586",
+   "address": "Tweede Helmersstraat 35",
+   "builtYear": 1926,
+   "widthM": 12.32,
+   "eavesM": 15.32,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#eecea7",
+    "wallRaw": "#fcf5d2",
+    "skyline": {
+     "eavesM": 15.6,
+     "eavesRow": 242,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.746,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.63,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 63 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

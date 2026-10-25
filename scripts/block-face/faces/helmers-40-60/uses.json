@@ -1,0 +1,238 @@
+{
+ "street": "Eerste Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237293",
+   "addresses": [
+    "Eerste Helmersstraat 58",
+    "Eerste Helmersstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 60-H",
+     "use": "overige gebruiksfunctie,woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001005905"
+    },
+    {
+     "address": "Eerste Helmersstraat 58-H",
+     "use": "winkelfunctie",
+     "areaM2": 89,
+     "bagId": "0363010012079313"
+    },
+    {
+     "address": "Eerste Helmersstraat 58-H",
+     "use": "overige gebruiksfunctie,woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000544657"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2423884942,
+     "lngLat": [
+      4.8752103,
+      52.3635883
+     ],
+     "tags": {
+      "access": "private",
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "58",
+      "addr:street": "Eerste Helmersstraat",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "building",
+      "covered": "yes",
+      "source": "knowledge"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167041",
+   "addresses": [
+    "Eerste Helmersstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000544652"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165540",
+   "addresses": [
+    "Eerste Helmersstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 54-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000544646"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236706",
+   "addresses": [
+    "Eerste Helmersstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 52-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000544641"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159518",
+   "addresses": [
+    "Eerste Helmersstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010001011564"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165303",
+   "addresses": [
+    "Eerste Helmersstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000544625"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157357",
+   "addresses": [
+    "Eerste Helmersstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 46-4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 40,
+     "bagId": "0363010001017685"
+    },
+    {
+     "address": "Eerste Helmersstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000544619"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161460",
+   "addresses": [
+    "Eerste Helmersstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000544611"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166340",
+   "addresses": [
+    "Eerste Helmersstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000544603"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164879",
+   "addresses": [
+    "Eerste Helmersstraat 40B",
+    "Eerste Helmersstraat 40C",
+    "Eerste Helmersstraat 40D",
+    "Eerste Helmersstraat 40E",
+    "Eerste Helmersstraat 40A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 40B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000989686"
+    },
+    {
+     "address": "Eerste Helmersstraat 40C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000989687"
+    },
+    {
+     "address": "Eerste Helmersstraat 40D",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000989688"
+    },
+    {
+     "address": "Eerste Helmersstraat 40E",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000989689"
+    },
+    {
+     "address": "Eerste Helmersstraat 40A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000544599"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

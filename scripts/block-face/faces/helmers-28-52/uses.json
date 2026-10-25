@@ -1,0 +1,223 @@
+{
+ "street": "Tweede Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152520",
+   "addresses": [
+    "Tweede Helmersstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 52-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000550593"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159307",
+   "addresses": [
+    "Tweede Helmersstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000550586"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156766",
+   "addresses": [
+    "Tweede Helmersstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000550580"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155797",
+   "addresses": [
+    "Tweede Helmersstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000550573"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157859",
+   "addresses": [
+    "Tweede Helmersstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010012571293"
+    },
+    {
+     "address": "Tweede Helmersstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000550565"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152673",
+   "addresses": [
+    "Tweede Helmersstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000550558"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152692",
+   "addresses": [
+    "Tweede Helmersstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000953943"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164921",
+   "addresses": [
+    "Tweede Helmersstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010001171826"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165295",
+   "addresses": [
+    "Tweede Helmersstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000550533"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156681",
+   "addresses": [
+    "Tweede Helmersstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000550526"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156173",
+   "addresses": [
+    "Tweede Helmersstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000550519"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159452",
+   "addresses": [
+    "Tweede Helmersstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000550512"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066398",
+   "addresses": [
+    "Tweede Helmersstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001000622"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

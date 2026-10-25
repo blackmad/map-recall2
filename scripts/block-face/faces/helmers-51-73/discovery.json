@@ -1,0 +1,832 @@
+{
+ "street": "Derde Helmersstraat",
+ "seed": "0363100012167154",
+ "members": [
+  "0363100012167154",
+  "0363100012163705",
+  "0363100012155520",
+  "0363100012164486",
+  "0363100012073466",
+  "0363100012167261",
+  "0363100012152780",
+  "0363100012165785",
+  "0363100012166026",
+  "0363100012165816",
+  "0363100012162851",
+  "0363100012158231"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012167154 (face continues: 167213)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012158231 (face continues: 067068)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012163753",
+   "reason": "frontage 38.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158674",
+   "reason": "frontage 70.8 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012221091",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012152511"
+  },
+  {
+   "pandId": "0363100012164738",
+   "reason": "frontage 70.7 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012214702",
+   "reason": "frontage 89.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159829",
+   "reason": "no frontage on Derde Helmersstraat: No footprint edge faces Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153134",
+   "reason": "frontage 68.9 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152673",
+   "reason": "frontage 41.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166544",
+   "reason": "frontage 37.8 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156248",
+   "reason": "no frontage on Derde Helmersstraat: No footprint edge faces Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164921",
+   "reason": "frontage 41.2 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156681",
+   "reason": "frontage 38.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012198301",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012152333"
+  },
+  {
+   "pandId": "0363100012164501",
+   "reason": "frontage 68.0 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155797",
+   "reason": "frontage 41.9 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162690",
+   "reason": "frontage 42.2 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167336",
+   "reason": "frontage 34.0 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012212290",
+   "reason": "frontage 30.7 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152281",
+   "reason": "frontage 68.8 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162383",
+   "reason": "frontage 37.9 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155692",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012161917"
+  },
+  {
+   "pandId": "0363100012157984",
+   "reason": "frontage 32.9 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157840",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012167071"
+  },
+  {
+   "pandId": "0363100012157699",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012127125"
+  },
+  {
+   "pandId": "0363100012236376",
+   "reason": "frontage 37.7 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012119454",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012167186"
+  },
+  {
+   "pandId": "0363100012188285",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012158861"
+  },
+  {
+   "pandId": "0363100012160941",
+   "reason": "frontage 71.2 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163268",
+   "reason": "frontage 75.8 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012233690",
+   "reason": "frontage 68.3 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165809",
+   "reason": "frontage 37.7 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162464",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012119454"
+  },
+  {
+   "pandId": "0363100012159478",
+   "reason": "frontage 71.3 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153642",
+   "reason": "frontage 43.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012191207",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012152920"
+  },
+  {
+   "pandId": "0363100012236652",
+   "reason": "frontage 80.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156156",
+   "reason": "frontage 38.9 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161538",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012159646"
+  },
+  {
+   "pandId": "0363100012153507",
+   "reason": "frontage 41.2 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159874",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012067068"
+  },
+  {
+   "pandId": "0363100012163907",
+   "reason": "frontage 71.1 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162865",
+   "reason": "frontage 68.5 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166254",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012153452"
+  },
+  {
+   "pandId": "0363100012237054",
+   "reason": "frontage 105.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159850",
+   "reason": "frontage 40.7 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163451",
+   "reason": "frontage 41.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012226207",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012156087"
+  },
+  {
+   "pandId": "0363100012166271",
+   "reason": "frontage 83.8 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159722",
+   "reason": "frontage 37.8 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012137982",
+   "reason": "frontage 131.3 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159768",
+   "reason": "frontage 41.0 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157617",
+   "reason": "frontage 34.7 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012086892",
+   "reason": "frontage 89.7 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166340",
+   "reason": "frontage 102.0 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164812",
+   "reason": "frontage 37.1 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159900",
+   "reason": "frontage 103.5 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153216",
+   "reason": "frontage 69.8 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164109",
+   "reason": "frontage 39.9 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159646",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012167154"
+  },
+  {
+   "pandId": "0363100012153715",
+   "reason": "frontage 39.1 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012210800",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012163126"
+  },
+  {
+   "pandId": "0363100012158191",
+   "reason": "frontage 71.2 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164242",
+   "reason": "frontage 37.8 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155592",
+   "reason": "frontage 42.8 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165295",
+   "reason": "frontage 41.1 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166425",
+   "reason": "frontage 68.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166922",
+   "reason": "frontage 43.2 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162654",
+   "reason": "frontage 39.3 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163385",
+   "reason": "frontage 71.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157253",
+   "reason": "frontage 103.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161460",
+   "reason": "frontage 101.7 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160274",
+   "reason": "frontage 31.7 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163370",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012166424"
+  },
+  {
+   "pandId": "0363100012162056",
+   "reason": "frontage 40.8 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166559",
+   "reason": "frontage 40.0 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157519",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012152776"
+  },
+  {
+   "pandId": "0363100012158584",
+   "reason": "frontage 69.1 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159217",
+   "reason": "frontage 71.1 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012121916",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012157699"
+  },
+  {
+   "pandId": "0363100012166173",
+   "reason": "frontage 34.9 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152692",
+   "reason": "frontage 41.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159531",
+   "reason": "frontage 90.3 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154222",
+   "reason": "frontage 36.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157570",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012155419"
+  },
+  {
+   "pandId": "0363100012162983",
+   "reason": "frontage 70.9 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012198659",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012165412"
+  },
+  {
+   "pandId": "0363100012235894",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012152776"
+  },
+  {
+   "pandId": "0363100012152520",
+   "reason": "frontage 41.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162465",
+   "reason": "frontage 31.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157958",
+   "reason": "frontage 33.5 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162284",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012152776"
+  },
+  {
+   "pandId": "0363100012153725",
+   "reason": "frontage 41.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012214518",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012157083"
+  },
+  {
+   "pandId": "0363100012570749",
+   "reason": "frontage 30.2 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156173",
+   "reason": "frontage 40.7 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153719",
+   "reason": "frontage 74.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158996",
+   "reason": "frontage 68.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157207",
+   "reason": "frontage 71.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012572092",
+   "reason": "frontage 30.1 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157859",
+   "reason": "frontage 34.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163153",
+   "reason": "frontage 71.0 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164798",
+   "reason": "frontage 70.8 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165418",
+   "reason": "frontage 40.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166255",
+   "reason": "frontage 34.1 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153021",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012163370"
+  },
+  {
+   "pandId": "0363100012156766",
+   "reason": "frontage 42.1 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164879",
+   "reason": "frontage 100.5 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157511",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012153452"
+  },
+  {
+   "pandId": "0363100012188042",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012162406"
+  },
+  {
+   "pandId": "0363100012163161",
+   "reason": "frontage 37.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165956",
+   "reason": "frontage 68.2 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159186",
+   "reason": "frontage 103.3 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166326",
+   "reason": "frontage 40.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012237132",
+   "reason": "frontage 69.0 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160640",
+   "reason": "no frontage on Derde Helmersstraat: No footprint edge faces Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166948",
+   "reason": "frontage 31.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166780",
+   "reason": "frontage 69.2 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161515",
+   "reason": "frontage 102.3 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236008",
+   "reason": "frontage 32.1 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012127979",
+   "reason": "frontage 105.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160396",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012157840"
+  },
+  {
+   "pandId": "0363100012236869",
+   "reason": "frontage 68.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161917",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012159020"
+  },
+  {
+   "pandId": "0363100012155751",
+   "reason": "no frontage on Derde Helmersstraat: No footprint edge faces Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012217932",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012165941"
+  },
+  {
+   "pandId": "0363100012152702",
+   "reason": "frontage 41.3 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167182",
+   "reason": "frontage 36.6 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156928",
+   "reason": "frontage 68.4 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160276",
+   "reason": "frontage 39.1 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012233586",
+   "reason": "frontage 67.9 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160227",
+   "reason": "frontage 41.9 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157967",
+   "reason": "frontage 69.3 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159307",
+   "reason": "frontage 44.7 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012233517",
+   "reason": "frontage 83.2 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012080855",
+   "reason": "no frontage on Derde Helmersstraat: No footprint edge faces Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159566",
+   "reason": "frontage 68.7 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012214958",
+   "reason": "sightline to Derde Helmersstraat crosses 0363100012226207"
+  },
+  {
+   "pandId": "0363100012167337",
+   "reason": "frontage 39.7 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012191744",
+   "reason": "frontage 81.2 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158175",
+   "reason": "frontage 37.8 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162808",
+   "reason": "frontage 36.9 m from Derde Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153452",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163953",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236393",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236624",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156923",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157801",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162406",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152776",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165941",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159353",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165412",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167186",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236843",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156087",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152333",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157083",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161728",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012127125",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160597",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162133",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158861",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164108",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163126",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236968",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155419",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154239",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166424",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012167154",
+   "alongM": 0,
+   "widthM": 5.57,
+   "eavesM": 14.07,
+   "roofMaxM": 16.93,
+   "storeys3dbag": null,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163705",
+   "alongM": 5.61,
+   "widthM": 5.64,
+   "eavesM": 14.05,
+   "roofMaxM": 14.11,
+   "storeys3dbag": null,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155520",
+   "alongM": 11.17,
+   "widthM": 5.49,
+   "eavesM": 14.25,
+   "roofMaxM": 16.9,
+   "storeys3dbag": null,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164486",
+   "alongM": 16.74,
+   "widthM": 5.66,
+   "eavesM": 14.08,
+   "roofMaxM": 14.1,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012073466",
+   "alongM": 22.39,
+   "widthM": 5.63,
+   "eavesM": 14.12,
+   "roofMaxM": 16.73,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167261",
+   "alongM": 28.04,
+   "widthM": 5.68,
+   "eavesM": 14.02,
+   "roofMaxM": 14.04,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152780",
+   "alongM": 33.7,
+   "widthM": 5.63,
+   "eavesM": 14.1,
+   "roofMaxM": 16.35,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165785",
+   "alongM": 39.34,
+   "widthM": 5.67,
+   "eavesM": 13.48,
+   "roofMaxM": 13.54,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166026",
+   "alongM": 44.96,
+   "widthM": 5.62,
+   "eavesM": 13.33,
+   "roofMaxM": 15.54,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165816",
+   "alongM": 50.53,
+   "widthM": 5.52,
+   "eavesM": 13.52,
+   "roofMaxM": 16.07,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012162851",
+   "alongM": 56.08,
+   "widthM": 5.6,
+   "eavesM": 13.27,
+   "roofMaxM": 15.76,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158231",
+   "alongM": 61.65,
+   "widthM": 5.55,
+   "eavesM": 12.71,
+   "roofMaxM": 14.72,
+   "storeys3dbag": null,
+   "builtYear": 1895,
+   "uncertainty": []
+  }
+ ]
+}

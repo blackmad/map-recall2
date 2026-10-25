@@ -1,0 +1,383 @@
+{
+ "street": "Eerste Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012149830",
+   "addresses": [
+    "Eerste Helmersstraat 23A",
+    "Eerste Helmersstraat 23B",
+    "Eerste Helmersstraat 23C",
+    "Eerste Helmersstraat 23D",
+    "Eerste Helmersstraat 23E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 23A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000979291"
+    },
+    {
+     "address": "Eerste Helmersstraat 23B",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000979292"
+    },
+    {
+     "address": "Eerste Helmersstraat 23C",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000979293"
+    },
+    {
+     "address": "Eerste Helmersstraat 23D",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000979294"
+    },
+    {
+     "address": "Eerste Helmersstraat 23E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000979295"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156563",
+   "addresses": [
+    "Eerste Helmersstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000544558"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158944",
+   "addresses": [
+    "Eerste Helmersstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000544565"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153409",
+   "addresses": [
+    "Eerste Helmersstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000544572"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2423884943,
+     "lngLat": [
+      4.8763953,
+      52.3637736
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "check_date": "2023-08-13",
+      "ref": "12009",
+      "source": "knowledge",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 3.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166764",
+   "addresses": [
+    "Eerste Helmersstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000544579"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161340",
+   "addresses": [
+    "Eerste Helmersstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 33-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000544586"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163575",
+   "addresses": [
+    "Eerste Helmersstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000544591"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2423864348,
+     "lngLat": [
+      4.8762231,
+      52.3636692
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "33",
+      "addr:street": "Eerste Helmersstraat",
+      "amenity": "restaurant",
+      "contact:facebook": "https://www.facebook.com/RestaurantHapHmm/",
+      "contact:instagram": "https://www.instagram.com/haphmm/",
+      "cuisine": "dutch",
+      "diet:vegan": "no",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "internet_access:fee": "customers",
+      "name": "Hap Hmm",
+      "opening_hours": "Mo-Fr 17:00-21:15",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 770 8924",
+      "source": "knowledge",
+      "website": "https://www.hap-hmm.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154302",
+   "addresses": [
+    "Eerste Helmersstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000544594"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158107",
+   "addresses": [
+    "Eerste Helmersstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 39-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000544596"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126668",
+   "addresses": [
+    "Eerste Helmersstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000544600"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079858",
+   "addresses": [
+    "Eerste Helmersstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 43-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000544607"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012082256",
+   "addresses": [
+    "Eerste Helmersstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000544615"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131767",
+   "addresses": [
+    "Eerste Helmersstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 47-H",
+     "use": "woonfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000544621"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066688",
+   "addresses": [
+    "Eerste Helmersstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000544629"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012101791",
+   "addresses": [
+    "Eerste Helmersstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010001007672"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111454",
+   "addresses": [
+    "Eerste Helmersstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 53-H",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010012153508"
+    },
+    {
+     "address": "Eerste Helmersstraat 53-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000544643"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012122183",
+   "addresses": [
+    "Eerste Helmersstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 55-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000952549"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012142705",
+   "addresses": [
+    "Eerste Helmersstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000544654"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

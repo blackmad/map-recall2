@@ -1,0 +1,239 @@
+{
+ "street": "Eerste Constantijn Huygensstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012126894",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 65-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000544324"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809446935,
+     "lngLat": [
+      4.8751834,
+      52.3632876
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "63-H",
+      "addr:postcode": "1054BT",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "alt_name": "Un.common cafe",
+      "amenity": "cafe",
+      "check_date": "2026-07-14",
+      "email": "info@uncommonams.com",
+      "indoor_seating": "yes",
+      "name": "Un.common",
+      "name:en": "UN.COMMON",
+      "name:nl": "UN.COMMON",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://uncommonams.com"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 5.7
+    },
+    {
+     "type": "node",
+     "id": 4768836321,
+     "lngLat": [
+      4.875248,
+      52.3632242
+     ],
+     "tags": {
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "check_date": "2024-07-15",
+      "name": "GVB Servicepunt",
+      "shop": "ticket",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166619",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 67-H",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000544328"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1811018173,
+     "lngLat": [
+      4.875281,
+      52.3631608
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "65",
+      "addr:postcode": "1054BT",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "branch": "Adrie Weber",
+      "brand": "Primera",
+      "brand:website": "https://www.primera.nl",
+      "brand:wikidata": "Q2176149",
+      "name": "Primera",
+      "opening_hours": "Mo-Sa 08:00-18:00",
+      "operator": "Primera",
+      "post_office": "post_partner",
+      "shop": "newsagent",
+      "website": "https://www.primera.nl/primera-adrie-weber",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 14215319325,
+     "lngLat": [
+      4.8752615,
+      52.3631417
+     ],
+     "tags": {
+      "amenity": "atm"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 14215319326,
+     "lngLat": [
+      4.8752993,
+      52.3631655
+     ],
+     "tags": {
+      "amenity": "post_office",
+      "name": "Post.nl",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163936",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 69-H",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000544334"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12409831676,
+     "lngLat": [
+      4.8753123,
+      52.3631201
+     ],
+     "tags": {
+      "amenity": "cafe",
+      "check_date": "2026-07-14",
+      "cuisine": "coffee_shop",
+      "name": "GoodNews",
+      "opening_hours": "Mo-Fr 08:00-18:30; Sa-Su 09:00-18:30"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161296",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 71",
+    "Eerste Constantijn Huygensstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 76-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001005329"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 71-H",
+     "use": "winkelfunctie",
+     "areaM2": 435,
+     "bagId": "0363010000544339"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12633096763,
+     "lngLat": [
+      4.8753726,
+      52.3630153
+     ],
+     "tags": {
+      "name": "Janus",
+      "shop": "bed"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 14215319324,
+     "lngLat": [
+      4.8753454,
+      52.3630655
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "cuisine": "sandwich",
+      "name": "The Boulvard"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

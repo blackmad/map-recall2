@@ -1,0 +1,127 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "helmers-51-73-r1",
+ "street": "Derde Helmersstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-12",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-12",
+   "image": "staging/block-face/helmers-51-73-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the helmersbuurt library (buurt Helmersbuurt-Oost); scores and holds in scripts/block-face/faces/helmers-51-73/auto-place.json"
+ },
+ "types": [
+  "helmers-1896-transom-band"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012167154",
+   "slug": "helmers-167154",
+   "address": "Derde Helmersstraat 51",
+   "type": {
+    "type": "helmers-1896-transom-band",
+    "measuredPalette": {
+     "brick": "#796662",
+     "evidence": "strip 2023-01-12 span 0-223: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-12",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1896-transom-band scored 1 on eaves 1, stucco 1; strip 2023-01-12 span 0-223"
+   }
+  },
+  {
+   "pandId": "0363100012163705",
+   "slug": "helmers-163705",
+   "address": "Derde Helmersstraat 53",
+   "type": {
+    "type": "helmers-1896-transom-band",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#7b6864",
+     "evidence": "strip 2023-01-12 span 223-449: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-12",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1896-transom-band scored 1 on eaves 1, stucco 1; strip 2023-01-12 span 223-449"
+   }
+  },
+  {
+   "pandId": "0363100012155520",
+   "slug": "helmers-155520",
+   "address": "Derde Helmersstraat 55",
+   "type": {
+    "type": "helmers-1896-transom-band",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#584d4b",
+     "evidence": "strip 2023-01-12 span 448-667: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-12",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1896-transom-band scored 1 on eaves 1, stucco 1, columns 1; strip 2023-01-12 span 448-667"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012167154",
+    "stripRow": 150,
+    "evidence": "auto-place: strip skyline cornice 15.18 m within 1 m of the helmers-1896-transom-band line 14.9 m; 3DBAG/PDOK eaves 14.07 m"
+   },
+   {
+    "pand": "0363100012163705",
+    "stripRow": 159,
+    "evidence": "auto-place: strip skyline cornice 14.95 m within 1 m of the helmers-1896-transom-band line 14.9 m; 3DBAG/PDOK eaves 14.05 m"
+   },
+   {
+    "pand": "0363100012155520",
+    "stripRow": 164,
+    "evidence": "auto-place: strip skyline cornice 14.82 m within 1 m of the helmers-1896-transom-band line 14.9 m; 3DBAG/PDOK eaves 14.25 m"
+   }
+  ]
+ }
+}

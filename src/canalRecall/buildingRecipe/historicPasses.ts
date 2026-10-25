@@ -12,7 +12,7 @@
 import * as T from 'three';
 import type {CanalHouseRecipe, CanalhousePoint} from '../canalhouseRecipes.ts';
 import {ROOF_COLOURS, type FitReport} from './fit.ts';
-import {swatch, type CanalHouseIntent, type FrontIntent} from './intent.ts';
+import {swatch, TOWER_MERLONS, type CanalHouseIntent, type FrontIntent} from './intent.ts';
 import {steppedTowerCap} from './amsterdamSchool.ts';
 
 const facadeOf = (group: T.Group, id: string) => group.getObjectByName(`elevation/${id}`) as T.Group | undefined;
@@ -158,6 +158,28 @@ export function addMansards(group: T.Group, intent: CanalHouseIntent, recipe: Ca
   return added;
 }
 
+/**
+ * `cap: merlons` (Derde Helmersstraat 54-66 wall dormers): a flat brick top over the tower plan (front flush with the
+ * tower front) and three square brick merlons standing on it, one at each end and one centred (TOWER_MERLONS).
+ */
+export function merlonTowerCap(parent: T.Object3D, x0: number, x1: number, y1: number, z1: number, wall: T.Material, name: string, pandId: string): number {
+  const values: number[] = [], q = (a: number[], b: number[], c: number[], d: number[]) => values.push(...a, ...b, ...c, ...a, ...c, ...d);
+  const box = (a: number, b: number, y0: number, yt: number, zf: number, zb: number) => {
+    q([a, y0, zf], [b, y0, zf], [b, yt, zf], [a, yt, zf]);
+    q([a, yt, zf], [b, yt, zf], [b, yt, zb], [a, yt, zb]);
+    q([a, y0, zb], [a, y0, zf], [a, yt, zf], [a, yt, zb]);
+    q([b, y0, zf], [b, y0, zb], [b, yt, zb], [b, yt, zf]);
+    q([b, y0, zb], [a, y0, zb], [a, yt, zb], [b, yt, zb]);
+  };
+  q([x0, y1, 0.02], [x1, y1, 0.02], [x1, y1, z1], [x0, y1, z1]);
+  const w = Math.min(TOWER_MERLONS.widthM, (x1 - x0) / 5), d = Math.min(TOWER_MERLONS.depthM, -z1);
+  for (const c of [x0 + w / 2, (x0 + x1) / 2, x1 - w / 2]) box(c - w / 2, c + w / 2, y1, y1 + TOWER_MERLONS.riseM, 0.02, 0.02 - d);
+  const g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(values, 3)); g.computeVertexNormals();
+  const m = new T.Mesh(g, wall); m.name = `${name}/merlons`; m.userData = {component: 'tower', surface: 'wall', pandId};
+  parent.add(m);
+  return 1;
+}
+
 /** Tower bodies behind their front walls: three brick walls back to the tower's width, and a pyramid or flat cap. */
 export function addTowers(group: T.Group, intent: CanalHouseIntent, recipe: CanalHouseRecipe, fit: FitReport): number {
   let added = 0;
@@ -176,6 +198,7 @@ export function addTowers(group: T.Group, intent: CanalHouseIntent, recipe: Cana
       const wall = new T.Mesh(body, (shell?.material as T.Material) ?? material(recipe.palette.value.wall));
       wall.name = `tower/${f.id}-${i}/body`; wall.userData = {component: 'tower', surface: 'wall', pandId: intent.pandId};
       facade.add(wall);
+      if (t.cap === 'merlons') { added += merlonTowerCap(facade, x0, x1, y1, z1, wall.material as T.Material, `tower/${f.id}-${i}`, intent.pandId); continue; }
       if (t.cap === 'stepped') { added += steppedTowerCap(facade, [[x0, 0.02], [x1, 0.02], [x1, z1], [x0, z1]], y1, (wall.material as T.Material), material(ROOF_COLOURS[intent.roof.material].steep), `tower/${f.id}-${i}`, intent.pandId); continue; }
       // Cap: overhangs the walls by 8 cm (front and sides), pyramid apex over the centre.
       const o = 0.08, cx = (x0 + x1) / 2, cz = (0.02 + o + z1 - o) / 2, apex = t.cap === 'pyramid' ? y1 + 0.75 * t.widthM : y1 + 0.12;

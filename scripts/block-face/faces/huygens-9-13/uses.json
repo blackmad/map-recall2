@@ -1,0 +1,82 @@
+{
+ "street": "Eerste Constantijn Huygensstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160126",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 9-H",
+     "use": "winkelfunctie",
+     "areaM2": 153,
+     "bagId": "0363010001005608"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2414357175,
+     "lngLat": [
+      4.8739454,
+      52.3652066
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "7-9",
+      "addr:postcode": "1054BN",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "amenity": "cafe",
+      "indoor_seating": "yes",
+      "name": "Bosco",
+      "opening_hours": "Mo-Su 08:00-22:00",
+      "outdoor_seating": "yes",
+      "website": "https://www.cafebosco.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 4.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156248",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 11",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 281,
+     "bagId": "0363010000544242"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155751",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000906695"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

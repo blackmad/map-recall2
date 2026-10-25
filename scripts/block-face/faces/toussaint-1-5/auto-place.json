@@ -1,0 +1,196 @@
+{
+ "face": "toussaint-1-5",
+ "street": "Bosboom Toussaintstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 0.84,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012237295",
+   "address": "Bosboom Toussaintstraat 1A",
+   "builtYear": 1897,
+   "widthM": 22.23,
+   "eavesM": 14.88,
+   "storeys3dbag": null,
+   "bagBay": {
+    "fromM": 1.38,
+    "toM": 12.48,
+    "depthM": 0.84,
+    "centre": 0.312
+   },
+   "strip": {
+    "wall": "#1b1a0b",
+    "wallRaw": "#5a4d3c",
+    "skyline": {
+     "eavesM": 19.98,
+     "eavesRow": 64,
+     "confidence": 0.44,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 1.6,
+      "topWidthM": 1.25,
+      "centre": 0.83
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 27,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.103,
+    "structure": {
+     "bayWidthM": 2.9,
+     "bayCentre": 0.09,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.7 m @ 0.72), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.05,
+       "light": 0.72
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.4,
+       "widthM": 1.6,
+       "centre": 0.72
+      },
+      {
+       "atM": 5.2,
+       "widthM": 0.82,
+       "centre": 0.56
+      },
+      {
+       "atM": 4.75,
+       "widthM": 1.55,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1897, type 1893-1893; frontage 22.23 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1897, type 1893-1893",
+     "frontage 22.23 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.8 m; 3DBAG 14.88 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.113 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 27 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155804",
+   "address": "Bosboom Toussaintstraat 5",
+   "builtYear": 1902,
+   "widthM": 6.41,
+   "eavesM": 15.44,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2f2a19",
+    "wallRaw": "#73644d",
+    "skyline": {
+     "eavesM": 19.57,
+     "eavesRow": 80,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2,
+      "topWidthM": 0.97,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.152,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9,
+       "widthM": 1.15,
+       "centre": 0.44
+      },
+      {
+       "atM": 5.25,
+       "widthM": 1.32,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1902, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.57 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "street": "Alberdingk Thijmstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162465",
+   "addresses": [
+    "Alberdingk Thijmstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alberdingk Thijmstraat 5-H",
+     "use": "kantoorfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000661142"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162464",
+   "addresses": [
+    "Alberdingk Thijmstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alberdingk Thijmstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000563007"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119454",
+   "addresses": [
+    "Alberdingk Thijmstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alberdingk Thijmstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000563012"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

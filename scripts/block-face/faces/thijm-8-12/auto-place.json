@@ -1,0 +1,247 @@
+{
+ "face": "thijm-8-12",
+ "street": "Alberdingk Thijmstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 0.34,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012163370",
+   "address": "Alberdingk Thijmstraat 12",
+   "builtYear": 1898,
+   "widthM": 6.3,
+   "eavesM": 12.65,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f7c477",
+    "wallRaw": "#fcf8c5",
+    "skyline": {
+     "eavesM": 12.65,
+     "eavesRow": 360,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 2.5,
+      "topWidthM": 0.75,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.477,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.43 m at 0.21 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.43,
+       "centre": 0.21,
+       "light": 0
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.54,
+       "light": 0
+      },
+      {
+       "widthM": 1.65,
+       "centre": 0.86,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.41,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 41 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153021",
+   "address": "Alberdingk Thijmstraat 10C",
+   "builtYear": 1898,
+   "widthM": 6.31,
+   "eavesM": 14.48,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f5d096",
+    "wallRaw": "#f6c38e",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.03,
+      "riseM": 5.6,
+      "topWidthM": 0.2,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.377,
+    "structure": {
+     "bayWidthM": 5.8,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 2.08 m @ 0.54, 2.23 m @ 0.54), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 2.08,
+       "centre": 0.18,
+       "light": 0.54
+      },
+      {
+       "widthM": 2.23,
+       "centre": 0.75,
+       "light": 0.54
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.29,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1897-balconette-tall scores 0.65 < 0.7 (strip cornice 14.85 m vs the type's 14.3 m; strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "helmers-1897-balconette-tall",
+    "score": 0.65,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.85 m vs the type's 14.3 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.071 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166948",
+   "address": "Alberdingk Thijmstraat 8",
+   "builtYear": 1898,
+   "widthM": 6.11,
+   "eavesM": 12.38,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f5a662",
+    "wallRaw": "#f8dc97",
+    "skyline": {
+     "eavesM": 12.38,
+     "eavesRow": 371,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.33,
+      "riseM": 1.7,
+      "topWidthM": 1.98,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.396,
+    "structure": {
+     "bayWidthM": 5.63,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 1.9 m at 0.17 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.9,
+       "centre": 0.17,
+       "light": 0.3
+      },
+      {
+       "widthM": 1.85,
+       "centre": 0.52,
+       "light": 0.45
+      },
+      {
+       "widthM": 1.1,
+       "centre": 0.84,
+       "light": 0.44
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.24,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1897-balconette-tall scores 0.64 < 0.7 (strip cornice 12.38 m vs the type's 14.3 m)",
+   "best": {
+    "type": "helmers-1897-balconette-tall",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.38 m vs the type's 14.3 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.139 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

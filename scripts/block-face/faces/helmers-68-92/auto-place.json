@@ -1,0 +1,1012 @@
+{
+ "face": "helmers-68-92",
+ "street": "Derde Helmersstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2023-01-12",
+ "seconds": 2.11,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012154239",
+   "address": "Derde Helmersstraat 92",
+   "builtYear": 1895,
+   "widthM": 6.41,
+   "eavesM": 15.17,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a8a1a4",
+    "wallRaw": "#6c6a6b",
+    "skyline": {
+     "eavesM": 15.07,
+     "eavesRow": 255,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.23,
+      "riseM": 2.78,
+      "topWidthM": 0.33,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.33,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 13.42 m (3.15 m wide), 10.05 m (2.08 m wide), 6.45 m (4.35 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.88,
+       "widthM": 2.38,
+       "centre": 0.8
+      },
+      {
+       "atM": 13.42,
+       "widthM": 3.15,
+       "centre": 0.44
+      },
+      {
+       "atM": 12.07,
+       "widthM": 0.85,
+       "centre": 0.07
+      },
+      {
+       "atM": 10.05,
+       "widthM": 2.08,
+       "centre": 0.43
+      },
+      {
+       "atM": 9,
+       "widthM": 0.9,
+       "centre": 0.08
+      },
+      {
+       "atM": 6.45,
+       "widthM": 4.35,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155419",
+   "address": "Derde Helmersstraat 90",
+   "builtYear": 1895,
+   "widthM": 5.01,
+   "eavesM": 12.74,
+   "storeys3dbag": null,
+   "bagBay": {
+    "fromM": 4.7,
+    "toM": 4.7,
+    "depthM": 0.31,
+    "centre": 0.938
+   },
+   "strip": {
+    "wall": null,
+    "wallRaw": "#564943",
+    "skyline": {
+     "eavesM": 17.85,
+     "eavesRow": 144,
+     "confidence": 0.79,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 0.82,
+      "topWidthM": 0.57,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.085,
+    "structure": {
+     "bayWidthM": 0.55,
+     "bayCentre": 0.67,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.15,
+       "widthM": 1,
+       "centre": 0.32
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.1,
+       "centre": 0.7
+      },
+      {
+       "atM": 5.92,
+       "widthM": 1.13,
+       "centre": 0.3
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 17.85 m vs the type's 14.9 m)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.85 m vs the type's 14.9 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.065 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236624",
+   "address": "Derde Helmersstraat 88",
+   "builtYear": 1895,
+   "widthM": 5.76,
+   "eavesM": 13.51,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#484545",
+    "wallRaw": "#555251",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 243,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 1.7,
+      "topWidthM": 1.3,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.16,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.71,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.22,
+       "widthM": 4.92,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236843",
+   "address": "Derde Helmersstraat 86",
+   "builtYear": 1895,
+   "widthM": 5.76,
+   "eavesM": 13.43,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#63544e",
+    "wallRaw": "#5b534f",
+    "skyline": {
+     "eavesM": 13.3,
+     "eavesRow": 326,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 0.97,
+      "topWidthM": 0.68,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.152,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.15,
+       "widthM": 1.07,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.36 < 0.7 (strip cornice 13.3 m vs the type's 14.9 m; strip columns 5 vs 3 bays)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.36,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.3 m vs the type's 14.9 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.114 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236968",
+   "address": "Derde Helmersstraat 84",
+   "builtYear": 1895,
+   "widthM": 5.75,
+   "eavesM": 13.85,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4b44",
+    "wallRaw": "#524743",
+    "skyline": {
+     "eavesM": 15.7,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 3.78,
+      "topWidthM": 0.75,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 6,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.137,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5,
+       "widthM": 1.13,
+       "centre": 0.4
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.55 < 0.7 (strip cornice 15.7 m vs the type's 14.9 m; strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.7 m vs the type's 14.9 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.111 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236393",
+   "address": "Derde Helmersstraat 82",
+   "builtYear": 1895,
+   "widthM": 5.75,
+   "eavesM": 13.43,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#675047",
+    "wallRaw": "#5b4c47",
+    "skyline": {
+     "eavesM": 15.32,
+     "eavesRow": 245,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 5.73,
+      "topWidthM": 0.2,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.135,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164108",
+   "address": "Derde Helmersstraat 80",
+   "builtYear": 1895,
+   "widthM": 5.75,
+   "eavesM": 15.03,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e5550",
+    "wallRaw": "#5e5652",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 257,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.05,
+      "topWidthM": 1.15,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.284,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.45,
+       "widthM": 1.45,
+       "centre": 0.42
+      },
+      {
+       "atM": 11.88,
+       "widthM": 1.02,
+       "centre": 0.76
+      },
+      {
+       "atM": 8.8,
+       "widthM": 1.07,
+       "centre": 0.79
+      },
+      {
+       "atM": 6.55,
+       "widthM": 1.07,
+       "centre": 0.42
+      },
+      {
+       "atM": 5.05,
+       "widthM": 1.02,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163953",
+   "address": "Derde Helmersstraat 78",
+   "builtYear": 1895,
+   "widthM": 5.75,
+   "eavesM": 15.67,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c504b",
+    "wallRaw": "#574f4b",
+    "skyline": {
+     "eavesM": 15.35,
+     "eavesRow": 244,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.1,
+      "topWidthM": 0.63,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.102,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.2,
+       "widthM": 0.88,
+       "centre": 0.41
+      },
+      {
+       "atM": 8.75,
+       "widthM": 0.93,
+       "centre": 0.78
+      },
+      {
+       "atM": 6.2,
+       "widthM": 1,
+       "centre": 0.81
+      },
+      {
+       "atM": 5.15,
+       "widthM": 2.33,
+       "centre": 0.4
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162133",
+   "address": "Derde Helmersstraat 76",
+   "builtYear": 1895,
+   "widthM": 5.92,
+   "eavesM": 16.73,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#625551",
+    "wallRaw": "#585250",
+    "skyline": {
+     "eavesM": 16.68,
+     "eavesRow": 191,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 3.57,
+      "topWidthM": 0.38,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.063,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.5,
+       "widthM": 2.05,
+       "centre": 0.8
+      },
+      {
+       "atM": 13.3,
+       "widthM": 1,
+       "centre": 0.09
+      },
+      {
+       "atM": 11.27,
+       "widthM": 0.95,
+       "centre": 0.56
+      },
+      {
+       "atM": 10.38,
+       "widthM": 1,
+       "centre": 0.09
+      },
+      {
+       "atM": 7.15,
+       "widthM": 1.23,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.5 < 0.7 (strip cornice 16.68 m vs the type's 14.9 m)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.68 m vs the type's 14.9 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.054 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159353",
+   "address": "Derde Helmersstraat 74",
+   "builtYear": 1895,
+   "widthM": 5.93,
+   "eavesM": 16.31,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685853",
+    "wallRaw": "#59544f",
+    "skyline": {
+     "eavesM": 16.5,
+     "eavesRow": 198,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 3.98,
+      "topWidthM": 0.3,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.071,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.07,
+       "widthM": 0.85,
+       "centre": 0.63
+      },
+      {
+       "atM": 10.38,
+       "widthM": 1.1,
+       "centre": 0.1
+      },
+      {
+       "atM": 7.15,
+       "widthM": 1.1,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.5 < 0.7 (strip cornice 16.5 m vs the type's 14.9 m)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.5 m vs the type's 14.9 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.06 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156923",
+   "address": "Derde Helmersstraat 72",
+   "builtYear": 1898,
+   "widthM": 6.29,
+   "eavesM": 16.69,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#372f29",
+    "wallRaw": "#5e534d",
+    "skyline": {
+     "eavesM": 18.9,
+     "eavesRow": 102,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 2.45,
+      "topWidthM": 0.23,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.074,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.63 m (1.35 m wide), 7.32 m (1.73 m wide), 6.95 m (1.55 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.92,
+       "widthM": 1.15,
+       "centre": 0.11
+      },
+      {
+       "atM": 10.63,
+       "widthM": 1.35,
+       "centre": 0.79
+      },
+      {
+       "atM": 9.88,
+       "widthM": 1.15,
+       "centre": 0.45
+      },
+      {
+       "atM": 7.32,
+       "widthM": 1.73,
+       "centre": 0.73
+      },
+      {
+       "atM": 6.95,
+       "widthM": 1.55,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1897-balconette-tall scores 0.5 < 0.7 (strip cornice 18.9 m vs the type's 14.3 m)",
+   "best": {
+    "type": "helmers-1897-balconette-tall",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.9 m vs the type's 14.3 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.052 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160597",
+   "address": "Derde Helmersstraat 70",
+   "builtYear": 1898,
+   "widthM": 6.4,
+   "eavesM": 15.85,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aaaca8",
+    "wallRaw": "#6f5f57",
+    "skyline": {
+     "eavesM": 15.85,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2.3,
+      "topWidthM": 1.73,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.295,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.88,
+       "widthM": 1.3,
+       "centre": 0.44
+      },
+      {
+       "atM": 13.57,
+       "widthM": 1.3,
+       "centre": 0.78
+      },
+      {
+       "atM": 10.57,
+       "widthM": 1.23,
+       "centre": 0.44
+      },
+      {
+       "atM": 10.2,
+       "widthM": 1.18,
+       "centre": 0.44
+      },
+      {
+       "atM": 8.32,
+       "widthM": 2.17,
+       "centre": 0.47
+      },
+      {
+       "atM": 7.2,
+       "widthM": 1,
+       "centre": 0.08
+      },
+      {
+       "atM": 6.38,
+       "widthM": 0.8,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1897-balconette-tall scores 0.64 < 0.7 (strip cornice 15.85 m vs the type's 14.3 m)",
+   "best": {
+    "type": "helmers-1897-balconette-tall",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.85 m vs the type's 14.3 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.236 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166424",
+   "address": "Derde Helmersstraat 68",
+   "builtYear": 1898,
+   "widthM": 5.53,
+   "eavesM": 16.75,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#594842",
+    "wallRaw": "#544742",
+    "skyline": {
+     "eavesM": 16.75,
+     "eavesRow": 188,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 0.73,
+      "topWidthM": 0.4,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.066,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.5,
+       "widthM": 1.02,
+       "centre": 0.61
+      },
+      {
+       "atM": 8.35,
+       "widthM": 1.23,
+       "centre": 0.6
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1897-balconette-tall scores 0.5 < 0.7 (strip cornice 16.75 m vs the type's 14.3 m)",
+   "best": {
+    "type": "helmers-1897-balconette-tall",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.75 m vs the type's 14.3 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.038 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

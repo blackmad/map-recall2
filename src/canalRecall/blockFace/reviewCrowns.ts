@@ -65,6 +65,12 @@ export interface TypePin {
   face: string;
   types: string[];
   reason: string;
+  /**
+   * The pands (full BAG ids) of the face the pin restricts; absent = every pand of the face. For mixed rows whose
+   * neighbours differ by a storey the facts cannot read (Eerste Helmersstraat 209-229: PDOK eaves read the mansard top,
+   * the skyline is lost in the trees). A face may carry several pand pins, but one pand only one.
+   */
+  pands?: string[];
 }
 
 export function typePinProblems(pins: TypePin[], types: Pick<HouseTypeIntent, 'id'>[]): string[] {
@@ -75,15 +81,23 @@ export function typePinProblems(pins: TypePin[], types: Pick<HouseTypeIntent, 'i
     if (!pin.reason) p.push(`${at}: reason required (what on the strip shows the type)`);
     if (!pin.types?.length) p.push(`${at}: at least one type`);
     for (const id of pin.types ?? []) if (!types.some(t => t.id === id)) p.push(`${at}: unknown type ${id}`);
-    if (pins.findIndex(x => x.face === pin.face) !== k) p.push(`${at}: face ${pin.face} pinned twice`);
+    if (pin.pands !== undefined && (!Array.isArray(pin.pands) || !pin.pands.length || pin.pands.some(id => !/^\d{16}$/.test(id)))) p.push(`${at}: pands are 16-digit BAG pand ids`);
+    const clash = pins.findIndex(x => x.face === pin.face && (!x.pands || !pin.pands || x.pands.some(id => pin.pands!.includes(id))));
+    if (clash !== k) p.push(`${at}: face ${pin.face} pinned twice${pin.pands ? ' for one pand' : ''}`);
   });
   return p;
 }
 
 /** The library for one face: the pinned types (library order), or the whole library when the face has no pin. */
 export function typesForFace<T extends Pick<HouseTypeIntent, 'id'>>(faceId: string, types: T[], pins: TypePin[]): T[] {
-  const pin = pins.find(x => x.face === faceId);
+  const pin = pins.find(x => x.face === faceId && !x.pands);
   return pin ? types.filter(t => pin.types.includes(t.id)) : types;
+}
+
+/** The library for one pand of a face: a pand pin's types (library order), else the face's library. */
+export function typesForPand<T extends Pick<HouseTypeIntent, 'id'>>(faceId: string, pandId: string, types: T[], pins: TypePin[]): T[] {
+  const pin = pins.find(x => x.face === faceId && x.pands?.includes(pandId));
+  return pin ? types.filter(t => pin.types.includes(t.id)) : typesForFace(faceId, types, pins);
 }
 
 /**

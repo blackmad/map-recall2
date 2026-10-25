@@ -1,0 +1,38 @@
+{
+  "note": "Reviewer palette pins (src/canalRecall/blockFace/reviewPalettes.ts). The 2023-01-12 strip of helmers-108-174 is hazy and flat (wall luma p2 31, whites p98 125), so the trim-normalised wall reads dull; values here are levels-stretched (black 30, white 125 -> 0..240) warm-pixel medians.",
+  "pins": [
+    {
+      "pandId": "0363100012154337",
+      "type": "helmers-1893-jamb-blocks",
+      "palette": {
+        "brick": "#2e2d2b",
+        "wallMaterial": "painted-brick"
+      },
+      "reason": "Eerste Helmersstraat 122: painted black with white jamb blocks on strip 2023-01-12 span 1923-2165 (warm share 0.05, median #3c3a38 at luma 60 of a 30-125 range); neutral near-black painted brick as on Nassaukade 506, not a brick tint"
+    },
+    {
+      "pandId": "0363100012164727",
+      "type": "helmers-1893-jamb-blocks",
+      "palette": {
+        "brick": "#81604e"
+      },
+      "reason": "Eerste Helmersstraat 120: orange-red brick on strip 2023-01-12 span 2166-2404, warm-pixel median #51443d levels-stretched to #81604e (same family as 237's sunny 2024-11-29 #856246)"
+    },
+    {
+      "pandId": "0363100012166885",
+      "type": "helmers-1897-balconette",
+      "palette": {
+        "brick": "#6d513c"
+      },
+      "reason": "Eerste Helmersstraat 223: the 2024-11-29 strip is sun-blown on this span (trim-normalised wall #d1a97f, a light tan off the family); the median of its same-type row 217-229 without the two sunlit fronts (217 #8a6952, 219 #684e3b, 221 #6d513c, 227 #624a36, 229 #6f5540) is #6d513c"
+    },
+    {
+      "pandId": "0363100012164920",
+      "type": "helmers-1897-balconette",
+      "palette": {
+        "brick": "#6d513c"
+      },
+      "reason": "Eerste Helmersstraat 225: the 2024-11-29 strip is sun-blown on this span (trim-normalised wall #ceac7c, a light tan off the family); the median of its same-type row 217-229 without the two sunlit fronts (217 #8a6952, 219 #684e3b, 221 #6d513c, 227 #624a36, 229 #6f5540) is #6d513c"
+    }
+  ]
+}

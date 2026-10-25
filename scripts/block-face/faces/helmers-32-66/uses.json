@@ -1,0 +1,251 @@
+{
+ "street": "Derde Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167186",
+   "addresses": [
+    "Derde Helmersstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 66-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000555245"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157801",
+   "addresses": [
+    "Derde Helmersstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 64-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000555239"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165412",
+   "addresses": [
+    "Derde Helmersstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 62-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000555233"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163126",
+   "addresses": [
+    "Derde Helmersstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 60-H",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000980932"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156087",
+   "addresses": [
+    "Derde Helmersstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 58-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000555221"
+    },
+    {
+     "address": "Derde Helmersstraat 58-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010012135003"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157083",
+   "addresses": [
+    "Derde Helmersstraat 56A",
+    "Derde Helmersstraat 56B",
+    "Derde Helmersstraat 56C",
+    "Derde Helmersstraat 56",
+    "Derde Helmersstraat 56D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 56A",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010012119308"
+    },
+    {
+     "address": "Derde Helmersstraat 56B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012119309"
+    },
+    {
+     "address": "Derde Helmersstraat 56C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012119310"
+    },
+    {
+     "address": "Derde Helmersstraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000555214"
+    },
+    {
+     "address": "Derde Helmersstraat 56D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012119311"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162406",
+   "addresses": [
+    "Derde Helmersstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 54-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000555209"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165941",
+   "addresses": [
+    "Derde Helmersstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 52-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000555203"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158861",
+   "addresses": [
+    "Derde Helmersstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000555197"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152333",
+   "addresses": [
+    "Derde Helmersstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000555168"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161728",
+   "addresses": [
+    "Derde Helmersstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000555161"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160649",
+   "addresses": [
+    "Derde Helmersstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000944126"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127125",
+   "addresses": [
+    "Derde Helmersstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000555147"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

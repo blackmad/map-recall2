@@ -1,0 +1,166 @@
+{
+ "buurt": "cremerbuurt-oost",
+ "library": "helmersbuurt",
+ "generatedAt": "2026-10-25T18:25:04.305Z",
+ "seconds": 15.27,
+ "totals": {
+  "faces": 2,
+  "pands": 34,
+  "placed": 13
+ },
+ "faces": [
+  {
+   "face": "beets-106-114",
+   "status": "no intake"
+  },
+  {
+   "face": "beets-116-128",
+   "status": "no intake"
+  },
+  {
+   "face": "beets-130-142",
+   "status": "no intake"
+  },
+  {
+   "face": "beets-144-154",
+   "status": "no intake"
+  },
+  {
+   "face": "brandt-2-6",
+   "status": "no intake"
+  },
+  {
+   "face": "brederode-1-61",
+   "status": "no intake"
+  },
+  {
+   "face": "brederode-2-66",
+   "status": "no intake"
+  },
+  {
+   "face": "heije-115-119",
+   "status": "no intake"
+  },
+  {
+   "face": "heije-123-131",
+   "status": "no intake"
+  },
+  {
+   "face": "heije-133-143",
+   "status": "no intake"
+  },
+  {
+   "face": "heije-143-151",
+   "status": "no intake"
+  },
+  {
+   "face": "heije-153-155",
+   "status": "no intake"
+  },
+  {
+   "face": "helmers-108-174",
+   "street": "Eerste Helmersstraat",
+   "pands": 16,
+   "placed": 2,
+   "held": 14,
+   "runs": [
+    {
+     "face": "helmers-108-174-r1",
+     "pands": [
+      "0363100012154337",
+      "0363100012164727"
+     ],
+     "passed": true,
+     "triangles": 3522
+    }
+   ],
+   "seconds": 8.29,
+   "byType": {
+    "helmers-1893-jamb-blocks": 2
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 5,
+    "run": 3,
+    "review": 1
+   }
+  },
+  {
+   "face": "helmers-207-207",
+   "status": "no intake"
+  },
+  {
+   "face": "helmers-209-253",
+   "street": "Eerste Helmersstraat",
+   "pands": 18,
+   "placed": 11,
+   "held": 7,
+   "runs": [
+    {
+     "face": "helmers-209-253-r1",
+     "pands": [
+      "0363100012159748",
+      "0363100012159737",
+      "0363100012159862",
+      "0363100012159632",
+      "0363100012153120",
+      "0363100012166885",
+      "0363100012164920",
+      "0363100012165470",
+      "0363100012165598"
+     ],
+     "passed": true,
+     "triangles": 15778
+    },
+    {
+     "face": "helmers-209-253-r2",
+     "pands": [
+      "0363100012161336",
+      "0363100012164140"
+     ],
+     "passed": true,
+     "triangles": 4430
+    }
+   ],
+   "seconds": 15.27,
+   "byType": {
+    "helmers-1897-banded": 1,
+    "helmers-1897-balconette-tall": 1,
+    "helmers-1897-balconette": 7,
+    "helmers-1899-wall-dormer": 2
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 3,
+    "run": 2,
+    "review": 2
+   }
+  },
+  {
+   "face": "kanaal-1-69",
+   "status": "no intake"
+  },
+  {
+   "face": "kanaal-2-70",
+   "status": "no intake"
+  },
+  {
+   "face": "lennepkade-105-179",
+   "status": "no intake"
+  },
+  {
+   "face": "overtoom-306-360",
+   "status": "no intake"
+  },
+  {
+   "face": "wilhelmina-1-67",
+   "status": "no intake"
+  },
+  {
+   "face": "wilhelmina-2-66",
+   "status": "no intake"
+  }
+ ]
+}

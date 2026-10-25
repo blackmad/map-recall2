@@ -1,0 +1,278 @@
+{
+ "street": "Overtoom",
+ "seed": "0363100012072136",
+ "members": [
+  "0363100012236942",
+  "0363100012162339",
+  "0363100012167176",
+  "0363100012166053",
+  "0363100012072136"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012249367 25.7 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012193727",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012233619",
+   "reason": "frontage 43.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236744",
+   "reason": "frontage 83.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159452",
+   "reason": "frontage 140.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163690",
+   "reason": "frontage 49.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012193729",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012208942",
+   "reason": "frontage 102.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012091715",
+   "reason": "frontage 49.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012088251",
+   "reason": "frontage 71.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236892",
+   "reason": "sightline to Overtoom crosses 0363100012072136"
+  },
+  {
+   "pandId": "0363100012236827",
+   "reason": "frontage 104.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156462",
+   "reason": "frontage 67.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012086892",
+   "reason": "frontage 87.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236234",
+   "reason": "frontage 34.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236312",
+   "reason": "frontage 95.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012202864",
+   "reason": "frontage 43.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012066398",
+   "reason": "frontage 140.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012064793",
+   "reason": "frontage 40.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012237109",
+   "reason": "frontage 99.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012193728",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012202863",
+   "reason": "frontage 42.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156043",
+   "reason": "frontage 72.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012138896",
+   "reason": "frontage 83.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012198512",
+   "reason": "sightline to Overtoom crosses 0363100012153791"
+  },
+  {
+   "pandId": "0363100012077188",
+   "reason": "frontage 50.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012237310",
+   "reason": "frontage 113.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012231194",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012198480",
+   "reason": "frontage 33.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012080492",
+   "reason": "frontage 33.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157550",
+   "reason": "frontage 41.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012127979",
+   "reason": "frontage 75.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012193725",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012113008",
+   "reason": "frontage 50.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012233586",
+   "reason": "frontage 115.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012195672",
+   "reason": "frontage 82.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012193726",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012152344",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162627",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236676",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167030",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158244",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158141",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153462",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233556",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149855",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153791",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237139",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153292",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012236942",
+   "alongM": -48.61,
+   "widthM": 14.79,
+   "eavesM": 15.92,
+   "roofMaxM": 20.8,
+   "storeys3dbag": null,
+   "builtYear": 1892,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162339",
+   "alongM": -33.98,
+   "widthM": 6.45,
+   "eavesM": 14.4,
+   "roofMaxM": 18.16,
+   "storeys3dbag": null,
+   "builtYear": 1891,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012167176",
+   "alongM": -27.67,
+   "widthM": 6.19,
+   "eavesM": 14.09,
+   "roofMaxM": 17.72,
+   "storeys3dbag": null,
+   "builtYear": 1891,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012166053",
+   "alongM": -21.5,
+   "widthM": 6.12,
+   "eavesM": 14.22,
+   "roofMaxM": 17.84,
+   "storeys3dbag": null,
+   "builtYear": 1891,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012072136",
+   "alongM": 0,
+   "widthM": 36.88,
+   "eavesM": 17.11,
+   "roofMaxM": 21.38,
+   "storeys3dbag": null,
+   "builtYear": 1940,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

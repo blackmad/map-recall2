@@ -1,0 +1,169 @@
+{
+ "face": "nassaukade-373-375",
+ "street": "Nassaukade",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 0.4,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012152522",
+   "address": "Nassaukade 375",
+   "builtYear": 1892,
+   "widthM": 6.65,
+   "eavesM": 13.86,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#735f41",
+    "wallRaw": "#776a4a",
+    "skyline": {
+     "eavesM": 18.88,
+     "eavesRow": 356,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.15,
+      "riseM": 4.73,
+      "topWidthM": 0.13,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.063,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.33 (light 0.07): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.33,
+       "light": 0.07
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.81,
+       "light": 0.09
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.88 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012130645",
+   "address": "Nassaukade 373A",
+   "builtYear": 1891,
+   "widthM": 7.42,
+   "eavesM": 17.77,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e4f32",
+    "wallRaw": "#846d44",
+    "skyline": {
+     "eavesM": 20.7,
+     "eavesRow": 283,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.8,
+      "riseM": 6.28,
+      "topWidthM": 0.1,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.098,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1891, type 1893-1893; frontage 7.42 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1893-1893",
+     "frontage 7.42 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 20.7 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.097 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

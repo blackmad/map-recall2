@@ -1,0 +1,510 @@
+{
+ "street": "Eerste Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012127979",
+   "addresses": [
+    "Eerste Helmersstraat 4",
+    "Eerste Helmersstraat 6A",
+    "Eerste Helmersstraat 6B",
+    "Eerste Helmersstraat 6C",
+    "Eerste Helmersstraat 6D",
+    "Eerste Helmersstraat 6E",
+    "Eerste Helmersstraat 6F",
+    "Eerste Helmersstraat 6G",
+    "Eerste Helmersstraat 6H",
+    "Eerste Helmersstraat 6J",
+    "Eerste Helmersstraat 6K",
+    "Eerste Helmersstraat 6L",
+    "Eerste Helmersstraat 6M",
+    "Eerste Helmersstraat 6N",
+    "Eerste Helmersstraat 6P",
+    "Eerste Helmersstraat 8A",
+    "Eerste Helmersstraat 8B",
+    "Eerste Helmersstraat 8C",
+    "Eerste Helmersstraat 8D",
+    "Eerste Helmersstraat 8E",
+    "Eerste Helmersstraat 10",
+    "Eerste Helmersstraat 10A",
+    "Eerste Helmersstraat 10B",
+    "Eerste Helmersstraat 10C",
+    "Eerste Helmersstraat 12",
+    "Eerste Helmersstraat 12A",
+    "Eerste Helmersstraat 12B",
+    "Eerste Helmersstraat 12C",
+    "Eerste Helmersstraat 14",
+    "Eerste Helmersstraat 14A",
+    "Eerste Helmersstraat 14B",
+    "Eerste Helmersstraat 14C",
+    "Eerste Helmersstraat 16",
+    "Eerste Helmersstraat 16A",
+    "Eerste Helmersstraat 16B",
+    "Eerste Helmersstraat 16C",
+    "Eerste Helmersstraat 18",
+    "Eerste Helmersstraat 18A",
+    "Eerste Helmersstraat 18B",
+    "Eerste Helmersstraat 18C",
+    "Eerste Helmersstraat 20",
+    "Eerste Helmersstraat 20A",
+    "Eerste Helmersstraat 20B",
+    "Eerste Helmersstraat 20C",
+    "Eerste Helmersstraat 22",
+    "Eerste Helmersstraat 22A",
+    "Eerste Helmersstraat 22B",
+    "Eerste Helmersstraat 22C",
+    "Eerste Helmersstraat 24",
+    "Eerste Helmersstraat 24A",
+    "Eerste Helmersstraat 24B",
+    "Eerste Helmersstraat 24C",
+    "Eerste Helmersstraat 26",
+    "Eerste Helmersstraat 26A",
+    "Eerste Helmersstraat 26B",
+    "Eerste Helmersstraat 26C",
+    "Eerste Helmersstraat 28",
+    "Eerste Helmersstraat 28A",
+    "Eerste Helmersstraat 28B",
+    "Eerste Helmersstraat 28C",
+    "Eerste Helmersstraat 30",
+    "Eerste Helmersstraat 30A",
+    "Eerste Helmersstraat 30B",
+    "Eerste Helmersstraat 30C",
+    "Eerste Helmersstraat 32",
+    "Eerste Helmersstraat 32A",
+    "Eerste Helmersstraat 32B",
+    "Eerste Helmersstraat 32C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000993832"
+    },
+    {
+     "address": "Eerste Helmersstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000993833"
+    },
+    {
+     "address": "Eerste Helmersstraat 6C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000993834"
+    },
+    {
+     "address": "Eerste Helmersstraat 6D",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000993835"
+    },
+    {
+     "address": "Eerste Helmersstraat 6E",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000993836"
+    },
+    {
+     "address": "Eerste Helmersstraat 6F",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000993837"
+    },
+    {
+     "address": "Eerste Helmersstraat 6G",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000993838"
+    },
+    {
+     "address": "Eerste Helmersstraat 6H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000993839"
+    },
+    {
+     "address": "Eerste Helmersstraat 6J",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000993840"
+    },
+    {
+     "address": "Eerste Helmersstraat 6K",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000993841"
+    },
+    {
+     "address": "Eerste Helmersstraat 6L",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000993842"
+    },
+    {
+     "address": "Eerste Helmersstraat 6M",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000993843"
+    },
+    {
+     "address": "Eerste Helmersstraat 6N",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000993844"
+    },
+    {
+     "address": "Eerste Helmersstraat 6P",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000993845"
+    },
+    {
+     "address": "Eerste Helmersstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000993846"
+    },
+    {
+     "address": "Eerste Helmersstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000993847"
+    },
+    {
+     "address": "Eerste Helmersstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000993848"
+    },
+    {
+     "address": "Eerste Helmersstraat 8D",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000993849"
+    },
+    {
+     "address": "Eerste Helmersstraat 8E",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000993850"
+    },
+    {
+     "address": "Eerste Helmersstraat 4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000544497"
+    },
+    {
+     "address": "Eerste Helmersstraat 10",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000544505"
+    },
+    {
+     "address": "Eerste Helmersstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544506"
+    },
+    {
+     "address": "Eerste Helmersstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544507"
+    },
+    {
+     "address": "Eerste Helmersstraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544508"
+    },
+    {
+     "address": "Eerste Helmersstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000544510"
+    },
+    {
+     "address": "Eerste Helmersstraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544511"
+    },
+    {
+     "address": "Eerste Helmersstraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544512"
+    },
+    {
+     "address": "Eerste Helmersstraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544513"
+    },
+    {
+     "address": "Eerste Helmersstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544527"
+    },
+    {
+     "address": "Eerste Helmersstraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544528"
+    },
+    {
+     "address": "Eerste Helmersstraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544529"
+    },
+    {
+     "address": "Eerste Helmersstraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000544530"
+    },
+    {
+     "address": "Eerste Helmersstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000544535"
+    },
+    {
+     "address": "Eerste Helmersstraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544536"
+    },
+    {
+     "address": "Eerste Helmersstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544537"
+    },
+    {
+     "address": "Eerste Helmersstraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544538"
+    },
+    {
+     "address": "Eerste Helmersstraat 18",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000544540"
+    },
+    {
+     "address": "Eerste Helmersstraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544541"
+    },
+    {
+     "address": "Eerste Helmersstraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544542"
+    },
+    {
+     "address": "Eerste Helmersstraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544543"
+    },
+    {
+     "address": "Eerste Helmersstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544544"
+    },
+    {
+     "address": "Eerste Helmersstraat 20A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544545"
+    },
+    {
+     "address": "Eerste Helmersstraat 20B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544546"
+    },
+    {
+     "address": "Eerste Helmersstraat 20C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000544547"
+    },
+    {
+     "address": "Eerste Helmersstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000544549"
+    },
+    {
+     "address": "Eerste Helmersstraat 22A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544550"
+    },
+    {
+     "address": "Eerste Helmersstraat 22B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544551"
+    },
+    {
+     "address": "Eerste Helmersstraat 22C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544552"
+    },
+    {
+     "address": "Eerste Helmersstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000544554"
+    },
+    {
+     "address": "Eerste Helmersstraat 24A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544555"
+    },
+    {
+     "address": "Eerste Helmersstraat 24B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544556"
+    },
+    {
+     "address": "Eerste Helmersstraat 24C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544557"
+    },
+    {
+     "address": "Eerste Helmersstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544561"
+    },
+    {
+     "address": "Eerste Helmersstraat 26A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544562"
+    },
+    {
+     "address": "Eerste Helmersstraat 26B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000544563"
+    },
+    {
+     "address": "Eerste Helmersstraat 26C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000544564"
+    },
+    {
+     "address": "Eerste Helmersstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000544568"
+    },
+    {
+     "address": "Eerste Helmersstraat 28A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000544569"
+    },
+    {
+     "address": "Eerste Helmersstraat 28B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000544570"
+    },
+    {
+     "address": "Eerste Helmersstraat 28C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000544571"
+    },
+    {
+     "address": "Eerste Helmersstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000544575"
+    },
+    {
+     "address": "Eerste Helmersstraat 30A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000544576"
+    },
+    {
+     "address": "Eerste Helmersstraat 30B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000544577"
+    },
+    {
+     "address": "Eerste Helmersstraat 30C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000544578"
+    },
+    {
+     "address": "Eerste Helmersstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000544582"
+    },
+    {
+     "address": "Eerste Helmersstraat 32A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000544583"
+    },
+    {
+     "address": "Eerste Helmersstraat 32B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000544584"
+    },
+    {
+     "address": "Eerste Helmersstraat 32C",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000544585"
+    }
+   ],
+   "units": 68,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088251",
+   "addresses": [
+    "Eerste Helmersstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 2",
+     "use": "woonfunctie",
+     "areaM2": 234,
+     "bagId": "0363010000775745"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

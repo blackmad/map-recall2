@@ -1,0 +1,457 @@
+{
+ "face": "helmers-5-17",
+ "street": "Eerste Helmersstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 2.07,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012064793",
+   "address": "Eerste Helmersstraat 5A",
+   "builtYear": 2005,
+   "widthM": 20.34,
+   "eavesM": 16.97,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2e2518",
+    "wallRaw": "#4c4f3e",
+    "skyline": {
+     "eavesM": 18.77,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": {
+      "widthM": 7.58,
+      "riseM": 2.18,
+      "topWidthM": 7.13,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 19,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.056,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.26 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.26,
+       "light": 0.3
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 14.65,
+       "widthM": 6.15,
+       "centre": 0.54
+      },
+      {
+       "atM": 14.2,
+       "widthM": 4.63,
+       "centre": 0.52
+      },
+      {
+       "atM": 13.6,
+       "widthM": 5.22,
+       "centre": 0.84
+      },
+      {
+       "atM": 13.22,
+       "widthM": 3.58,
+       "centre": 0.88
+      },
+      {
+       "atM": 12.7,
+       "widthM": 1.38,
+       "centre": 0.13
+      },
+      {
+       "atM": 10.97,
+       "widthM": 6.95,
+       "centre": 0.52
+      },
+      {
+       "atM": 10.6,
+       "widthM": 3.6,
+       "centre": 0.6
+      },
+      {
+       "atM": 10.22,
+       "widthM": 4,
+       "centre": 0.89
+      },
+      {
+       "atM": 9.93,
+       "widthM": 6.35,
+       "centre": 0.18
+      },
+      {
+       "atM": 7.22,
+       "widthM": 5.88,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.92,
+       "widthM": 6.15,
+       "centre": 0.84
+      },
+      {
+       "atM": 6.63,
+       "widthM": 3.9,
+       "centre": 0.11
+      },
+      {
+       "atM": 6.32,
+       "widthM": 0.82,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 2005, type 1893-1893; frontage 20.34 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 2005, type 1893-1893",
+     "frontage 20.34 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.77 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012091715",
+   "address": "Eerste Helmersstraat 9",
+   "builtYear": 1934,
+   "widthM": 6.49,
+   "eavesM": 14.22,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#604d3a",
+    "wallRaw": "#504938",
+    "skyline": {
+     "eavesM": 14.22,
+     "eavesRow": 412,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.116,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.1,
+       "widthM": 1.32,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1934, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1934, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.22 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.052 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 8 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012113008",
+   "address": "Eerste Helmersstraat 11",
+   "builtYear": 1934,
+   "widthM": 6.68,
+   "eavesM": 14.17,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4837",
+    "wallRaw": "#544b3a",
+    "skyline": {
+     "eavesM": 14.4,
+     "eavesRow": 405,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 5,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.123,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.6,
+       "widthM": 1.65,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1934, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1934, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.4 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.1 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012077188",
+   "address": "Eerste Helmersstraat 15",
+   "builtYear": 1934,
+   "widthM": 7.49,
+   "eavesM": 14.21,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#82644d",
+    "wallRaw": "#5f5541",
+    "skyline": {
+     "eavesM": 14.03,
+     "eavesRow": 420,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.098,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.77,
+       "widthM": 3.38,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1934, type 1893-1893; frontage 7.49 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1934, type 1893-1893",
+     "frontage 7.49 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.03 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.08 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157550",
+   "address": "Eerste Helmersstraat 17A",
+   "builtYear": 1932,
+   "widthM": 38.39,
+   "eavesM": 14.04,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5b48",
+    "wallRaw": "#9f886b",
+    "skyline": {
+     "eavesM": 13.75,
+     "eavesRow": 431,
+     "confidence": 1,
+     "crown": {
+      "widthM": 7.75,
+      "riseM": 2.8,
+      "topWidthM": 0.35,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 15,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.306,
+    "structure": {
+     "bayWidthM": 1.73,
+     "bayCentre": 0.21,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.57,
+       "widthM": 0.88,
+       "centre": 0.01
+      }
+     ]
+    },
+    "voidShare": 0.21,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1932, type 1893-1893; frontage 38.39 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1932, type 1893-1893",
+     "frontage 38.39 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.75 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.092 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 15 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

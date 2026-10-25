@@ -1,0 +1,139 @@
+{
+ "street": "Eerste Constantijn Huygensstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164501",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 45-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 170,
+     "bagId": "0363010000944087"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 497285832,
+     "lngLat": [
+      4.874814,
+      52.3638495
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "45",
+      "addr:postcode": "1054BS",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "amenity": "cafe",
+      "name": "Cafe Kompleet"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153719",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 47"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236652",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 49",
+    "Eerste Constantijn Huygensstraat 51",
+    "Eerste Constantijn Huygensstraat 53",
+    "Eerste Constantijn Huygensstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 55-H",
+     "use": "winkelfunctie",
+     "areaM2": 497,
+     "bagId": "0363010000544298"
+    }
+   ],
+   "units": 14,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13594877545,
+     "lngLat": [
+      4.8749648,
+      52.3636173
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "55",
+      "addr:postcode": "1054BS",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "brand": "Kruidvat",
+      "brand:wikidata": "Q2226366",
+      "name": "Kruidvat",
+      "opening_hours": "Mo-We,Fr-Sa 09:00-19:00; Th 09:00-20:00; PH off",
+      "operator": "AS Watson Health & Beauty Benelux",
+      "ref": "6438",
+      "shop": "chemist",
+      "website": "https://www.kruidvat.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157870",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 57-H",
+     "use": "winkelfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000544307"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2423888952,
+     "lngLat": [
+      4.8750168,
+      52.3635585
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "57",
+      "addr:postcode": "1054BS",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "check_date": "2026-10-14",
+      "name": "Amsterdam Flora",
+      "shop": "florist",
+      "website": "https://amsterdamflora.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

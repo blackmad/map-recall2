@@ -1,0 +1,61 @@
+{
+ "street": "Bosboom Toussaintstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237295",
+   "addresses": [
+    "Bosboom Toussaintstraat 1A",
+    "Bosboom Toussaintstraat 1",
+    "Bosboom Toussaintstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 1",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010011872053"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 1A-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010011872054"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010011872055"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155804",
+   "addresses": [
+    "Bosboom Toussaintstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 5-H",
+     "use": "kantoorfunctie",
+     "areaM2": 276,
+     "bagId": "0363010012067499"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 5-H",
+     "use": "winkelfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000593526"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

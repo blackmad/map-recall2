@@ -1,0 +1,305 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "helmers-209-253-r1",
+ "street": "Eerste Helmersstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/helmers-209-253-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the helmersbuurt library (buurt Cremerbuurt-Oost); scores and holds in scripts/block-face/faces/helmers-209-253/auto-place.json"
+ },
+ "types": [
+  "helmers-1897-balconette-tall",
+  "helmers-1897-balconette",
+  "helmers-1897-banded"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012159748",
+   "slug": "helmers-159748",
+   "address": "Eerste Helmersstraat 213",
+   "type": {
+    "type": "helmers-1897-banded",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#715441",
+     "evidence": "strip 2024-11-29 span 481-722: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1897-banded scored 1 on eaves -, stucco 1, columns 1; strip 2024-11-29 span 481-722"
+   }
+  },
+  {
+   "pandId": "0363100012159737",
+   "slug": "helmers-159737",
+   "address": "Eerste Helmersstraat 215",
+   "type": {
+    "type": "helmers-1897-balconette-tall",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#835c4b",
+     "evidence": "strip 2024-11-29 span 722-957: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1897-balconette-tall scored 1 on eaves -, stucco 1, columns 1; strip 2024-11-29 span 722-957"
+   }
+  },
+  {
+   "pandId": "0363100012159862",
+   "slug": "helmers-159862",
+   "address": "Eerste Helmersstraat 217",
+   "type": {
+    "type": "helmers-1897-balconette",
+    "measuredPalette": {
+     "brick": "#8a6952",
+     "evidence": "strip 2024-11-29 span 957-1198: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1897-balconette scored 1 on eaves -, stucco 1, columns 1; strip 2024-11-29 span 957-1198"
+   }
+  },
+  {
+   "pandId": "0363100012159632",
+   "slug": "helmers-159632",
+   "address": "Eerste Helmersstraat 219",
+   "type": {
+    "type": "helmers-1897-balconette",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#684e3b",
+     "evidence": "strip 2024-11-29 span 1198-1435: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1897-balconette scored 1 on eaves -, stucco 1, columns 1; strip 2024-11-29 span 1198-1435"
+   }
+  },
+  {
+   "pandId": "0363100012153120",
+   "slug": "helmers-153120",
+   "address": "Eerste Helmersstraat 221",
+   "type": {
+    "type": "helmers-1897-balconette",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6d513c",
+     "evidence": "strip 2024-11-29 span 1435-1680: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1897-balconette scored 1 on eaves -, stucco 1, columns 1; strip 2024-11-29 span 1435-1680"
+   }
+  },
+  {
+   "pandId": "0363100012166885",
+   "slug": "helmers-166885",
+   "address": "Eerste Helmersstraat 223",
+   "type": {
+    "type": "helmers-1897-balconette",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#d1a97f",
+     "evidence": "strip 2024-11-29 span 1681-1922: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6d513c"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1897-balconette scored 1 on eaves -, stucco 1, columns 1; strip 2024-11-29 span 1681-1922"
+   }
+  },
+  {
+   "pandId": "0363100012164920",
+   "slug": "helmers-164920",
+   "address": "Eerste Helmersstraat 225",
+   "type": {
+    "type": "helmers-1897-balconette",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#ceac7c",
+     "evidence": "strip 2024-11-29 span 1922-2160: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6d513c"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1897-balconette scored 1 on eaves -, stucco 1, columns 1; strip 2024-11-29 span 1922-2160"
+   }
+  },
+  {
+   "pandId": "0363100012165470",
+   "slug": "helmers-165470",
+   "address": "Eerste Helmersstraat 227",
+   "type": {
+    "type": "helmers-1897-balconette",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#624a36",
+     "evidence": "strip 2024-11-29 span 2160-2398: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1897-balconette scored 1 on eaves -, stucco 1, columns 1; strip 2024-11-29 span 2160-2398"
+   }
+  },
+  {
+   "pandId": "0363100012165598",
+   "slug": "helmers-165598",
+   "address": "Eerste Helmersstraat 229",
+   "type": {
+    "type": "helmers-1897-balconette",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6f5540",
+     "evidence": "strip 2024-11-29 span 2399-2642: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1897-balconette scored 1 on eaves -, stucco 1, columns 1; strip 2024-11-29 span 2399-2642"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012159748",
+    "stripRow": 277,
+    "frontRoof": {},
+    "evidence": "auto-place: the helmers-1897-banded cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.49 m"
+   },
+   {
+    "pand": "0363100012159737",
+    "stripRow": 265,
+    "evidence": "auto-place: the helmers-1897-balconette-tall cornice line 14.3 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.22 m"
+   },
+   {
+    "pand": "0363100012166885",
+    "stripRow": 405,
+    "frontRoof": {},
+    "evidence": "auto-place: the helmers-1897-balconette cornice line 10.8 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.34 m"
+   },
+   {
+    "pand": "0363100012164920",
+    "stripRow": 405,
+    "frontRoof": {},
+    "evidence": "auto-place: the helmers-1897-balconette cornice line 10.8 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.05 m"
+   },
+   {
+    "pand": "0363100012165470",
+    "stripRow": 405,
+    "frontRoof": {},
+    "evidence": "auto-place: the helmers-1897-balconette cornice line 10.8 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.23 m"
+   },
+   {
+    "pand": "0363100012165598",
+    "stripRow": 405,
+    "frontRoof": {},
+    "evidence": "auto-place: the helmers-1897-balconette cornice line 10.8 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.37 m"
+   }
+  ]
+ }
+}

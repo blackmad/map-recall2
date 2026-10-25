@@ -1,0 +1,93 @@
+{
+  "note": "Reviewer palette pins (src/canalRecall/blockFace/reviewPalettes.ts). The 2023-01-12 strip of helmers-23-57 is hazy and flat (wall luma p2 29-35, whites p98 113-125); values here are levels-stretched (black 30, white 125 -> 0..240) warm-pixel medians.",
+  "pins": [
+    {
+      "pandId": "0363100012122183",
+      "type": "helmers-1911-balcony-axis",
+      "palette": {
+        "brick": "#6f4e3f"
+      },
+      "reason": "Eerste Helmersstraat 55: the trim-normalised wall #666865 is off-family (greenish grey); the raw warm-pixel median #4a3d37 on span 3752-3988 equals 57's #493d36, levels-stretched to #6f4e3f"
+    },
+    {
+      "pandId": "0363100012142705",
+      "type": "helmers-1911-balcony-axis",
+      "palette": {
+        "brick": "#6c4e3c"
+      },
+      "reason": "Eerste Helmersstraat 57: warm-pixel median #493d36 on span 3987-4221 levels-stretched to #6c4e3c, so 55 and 57 stay one row of brown brick"
+    },
+    {
+      "pandId": "0363100012161340",
+      "type": "helmers-1905-checker-arch",
+      "palette": {
+        "brick": "#604433"
+      },
+      "reason": "Eerste Helmersstraat 33: warm-pixel median #443932 on strip 2023-01-12 span 1144-1376 levels-stretched to #604433, as 55-57, so the 33-57 rows read as one brown brick family (the trim-normalised walls read #211f1e-#483b34, dour and for 33 near-black)"
+    },
+    {
+      "pandId": "0363100012163575",
+      "type": "helmers-1905-checker-arch",
+      "palette": {
+        "brick": "#866551"
+      },
+      "reason": "Eerste Helmersstraat 35: warm-pixel median #53463e on strip 2023-01-12 span 1376-1629 levels-stretched to #866551, as 55-57, so the 33-57 rows read as one brown brick family (the trim-normalised walls read #211f1e-#483b34, dour and for 33 near-black)"
+    },
+    {
+      "pandId": "0363100012154302",
+      "type": "helmers-1905-checker-arch",
+      "palette": {
+        "brick": "#725642"
+      },
+      "reason": "Eerste Helmersstraat 37: warm-pixel median #4b4038 on strip 2023-01-12 span 1629-1867 levels-stretched to #725642, as 55-57, so the 33-57 rows read as one brown brick family (the trim-normalised walls read #211f1e-#483b34, dour and for 33 near-black)"
+    },
+    {
+      "pandId": "0363100012126668",
+      "type": "helmers-1911-balcony-axis",
+      "palette": {
+        "brick": "#6a4c3d"
+      },
+      "reason": "Eerste Helmersstraat 41: warm-pixel median #483c36 on strip 2023-01-12 span 2103-2341 levels-stretched to #6a4c3d, as 55-57, so the 33-57 rows read as one brown brick family (the trim-normalised walls read #211f1e-#483b34, dour and for 33 near-black)"
+    },
+    {
+      "pandId": "0363100012079858",
+      "type": "helmers-1911-balcony-axis",
+      "palette": {
+        "brick": "#6a4c3a"
+      },
+      "reason": "Eerste Helmersstraat 43: warm-pixel median #483c35 on strip 2023-01-12 span 2341-2578 levels-stretched to #6a4c3a, as 55-57, so the 33-57 rows read as one brown brick family (the trim-normalised walls read #211f1e-#483b34, dour and for 33 near-black)"
+    },
+    {
+      "pandId": "0363100012082256",
+      "type": "helmers-1911-balcony-axis",
+      "palette": {
+        "brick": "#6a4c3a"
+      },
+      "reason": "Eerste Helmersstraat 45: warm-pixel median #483c35 on strip 2023-01-12 span 2578-2808 levels-stretched to #6a4c3a, as 55-57, so the 33-57 rows read as one brown brick family (the trim-normalised walls read #211f1e-#483b34, dour and for 33 near-black)"
+    },
+    {
+      "pandId": "0363100012131767",
+      "type": "helmers-1911-balcony-axis",
+      "palette": {
+        "brick": "#6a4c3a"
+      },
+      "reason": "Eerste Helmersstraat 47: warm-pixel median #483c35 on strip 2023-01-12 span 2808-3043 levels-stretched to #6a4c3a, as 55-57, so the 33-57 rows read as one brown brick family (the trim-normalised walls read #211f1e-#483b34, dour and for 33 near-black)"
+    },
+    {
+      "pandId": "0363100012066688",
+      "type": "helmers-1911-balcony-axis",
+      "palette": {
+        "brick": "#6f5142"
+      },
+      "reason": "Eerste Helmersstraat 49: warm-pixel median #4a3e38 on strip 2023-01-12 span 3043-3279 levels-stretched to #6f5142, as 55-57, so the 33-57 rows read as one brown brick family (the trim-normalised walls read #211f1e-#483b34, dour and for 33 near-black)"
+    },
+    {
+      "pandId": "0363100012101791",
+      "type": "helmers-1911-balcony-axis",
+      "palette": {
+        "brick": "#72513f"
+      },
+      "reason": "Eerste Helmersstraat 51: warm-pixel median #4b3e37 on strip 2023-01-12 span 3280-3516 levels-stretched to #72513f, as 55-57, so the 33-57 rows read as one brown brick family (the trim-normalised walls read #211f1e-#483b34, dour and for 33 near-black)"
+    }
+  ]
+}
