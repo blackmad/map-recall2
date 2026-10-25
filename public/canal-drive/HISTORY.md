@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+**Refused installs, first 11 (2026-10-25, #59).** Re-authored against their
+photos: Stadsloket Zuidoost (walls[0] three rows over a 2-storey arcade,
+24 bays, 12-light window box; walls[2] deck arcade 95 % glass), Oude
+Turfmarkt 168172, Rijksakademie, Kloveniersburgwal 72, Spinozastraat 51,
+Utrechtsestraat 15, Weteringstraat 16, IJ-tunnel post, Nieuwe Achtergracht
+100, Marnixstraat 248, Overtoom 283 (now PASS/WARN). Most remaining FAILs
+are gate misreads named per sheet (glare, sill course as ribbon, overcast
+vs sunlit brick, window box glass as ribbon), so the gate needs a
+per-photo exposure fix before it can be the sole judge. Kit: `windowBox`,
+`openBays` on storey 0. ~70 refused houses not reached yet.
+
 **Viaduct, junction roads, likeness gate rows (2026-10-25, #57, #52, #58).**
 Droogbak – De Ruijterkade passage under the rail viaduct: AHN has no data
 under the deck, so the fill drew a 3.7 m saddle; `railViaducts.ts` caps the

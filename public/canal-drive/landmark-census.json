@@ -1,10 +1,10 @@
 {
  "version": 1,
- "generatedAt": "2026-10-25T02:18:28.831Z",
+ "generatedAt": "2026-10-25T05:38:23.049Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
- "headline": 497,
- "strict": 158,
+ "headline": 498,
+ "strict": 159,
  "byTier": {
   "bespoke": {
    "models": 334,
@@ -20,9 +20,9 @@
   },
   "largeRecipe": {
    "models": 94,
-   "counts": 48,
-   "strict": 48,
-   "unreviewed": 18
+   "counts": 49,
+   "strict": 49,
+   "unreviewed": 17
   },
   "landmarkKit": {
    "models": 420,
@@ -33,8 +33,8 @@
  },
  "byReview": {
   "legacy-gallery": 403,
-  "likeness-gate": 74,
-  "none": 328,
+  "likeness-gate": 75,
+  "none": 327,
   "strip-review": 112
  },
  "rows": [
@@ -6227,9 +6227,9 @@
    "namedPoi": false,
    "rideVisible": true,
    "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
+   "review": "likeness-gate",
+   "counts": true,
+   "countsStrict": true
   },
   {
    "key": "model:ordinary-0363100012184743",
