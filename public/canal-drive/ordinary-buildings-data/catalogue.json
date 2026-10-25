@@ -29262,10 +29262,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165687",
       "name": "Warmoesstraat 157-163, Amsterdam: 1981 perforated-brick car park with a stone-and-brick wing at its north end",
-      "hash": "bf9ff3eefb237576a8d6db55930ae113dbbc993e7a3c9b13ca0c486b7fcebd2c",
-      "sha256": "bf9ff3eefb237576a8d6db55930ae113dbbc993e7a3c9b13ca0c486b7fcebd2c",
-      "bytes": 636612,
-      "triangles": 8623,
+      "hash": "33609c2c90adcb004dfc783fc5fc59ba219f62e425e107ce12f8d58298e461e8",
+      "sha256": "33609c2c90adcb004dfc783fc5fc59ba219f62e425e107ce12f8d58298e461e8",
+      "bytes": 636928,
+      "triangles": 8627,
       "materials": 11,
       "textures": 0,
       "scale": 1,
@@ -29453,21 +29453,22 @@
           "storey-height/walls[3]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 7st 32b",
           "brick-bay-grid 7st 10b",
           "brick-bay-grid 4st 18b",
-          "brick-bay-grid 4st 4b"
+          "brick-bay-grid 4st 3b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches this panel, kept as fitted, not confirmed by a photo",
-        "walls[1] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches this panel, kept as fitted, not confirmed by a photo",
-        "walls[2] not confirmed by the photo (NO EVIDENCE (obliquity 47 deg > 45)); inferred: 47 deg oblique, grey-brown grid by hand from the crop",
-        "walls[3] likeness WARN (mask IoU 0.241 < 0.45).",
+        "walls[0] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches the main panel of the 32 m screen block, the perforated brick lattice is read off w06-312 and w01-136 on the same screen",
+        "walls[1] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches the curved Warmoesstraat end panel, the same lattice as w01-136 continues round it",
+        "walls[2] not confirmed by the photo (NO EVIDENCE (obliquity 47 deg > 45)); inferred: w01-136 is 47 deg oblique (gate limit 45), it shows the brick lattice with glass-block cells that the screen draws, wall colour dL 0.01",
+        "walls[3] likeness WARN (mask IoU 0.129 < 0.45).",
         "Modelled: the screen as brick-bay-grid with wide low windows (7 decks, 8 bays: the perforation grid reads as a window field, not as 1 m open cells), the SE podium (4 decks), the stone-and-brick wing with 4 storeys x 4 bays and a cornice. Walls without a photograph and the large NW party walls stay blank. The 49 m SE wall (panel 30) carries the blue-glass cylinder: its eaves (23.5 m) do not match the lower LoD2.2 roof behind it (19.3 m), so no group may own it and it stays blank. Not modelled: the PLAYERS lettering, the curved glazed casino ground floor, the car-park ramps and gate, the stone plinth of the wing.",
         "Components lane (2026-10-13): walls[0]-[2] are now the perforated-brick screen (screen: true): a concrete lattice of posts at every bay joint and rails at every deck line (w01-136, w06-312: cells about 1.5 m wide, one deck tall), with glass-block perforations in one bay of three, staggered per deck. Bays re-counted to the lattice: 32 on walls[0], 10 on walls[1], 18 on walls[2]. Simplified: the glass-block clusters are scattered by a fixed stagger, not placed cell by cell from the photograph; the thin cross ribs inside each lattice cell are not modelled."
       ],
@@ -29476,18 +29477,18 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165687",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T13:32:52.322Z",
-      "meshHash": "2b6e76e9389fb710"
+      "updatedAt": "2026-10-25T06:03:22.116Z",
+      "meshHash": "377a2d2f943244a8"
     },
     {
       "id": "ordinary-0363100012165098",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165098",
       "name": "Engelsesteeg 9 / Smaksteeg 24, Amsterdam: Renaissance Amsterdam City Centre Hotel block (Kondor Wessels) with canal-house fronts on the street sides",
-      "hash": "c0b432f57356bbcf14516a661c8e33f828daade80c389bcea3fee6234ce72e72",
-      "sha256": "c0b432f57356bbcf14516a661c8e33f828daade80c389bcea3fee6234ce72e72",
-      "bytes": 633200,
-      "triangles": 7640,
+      "hash": "0a395259287924e7ded3aee6203da560564baebd1c6f3b90bbfd656746fce4a2",
+      "sha256": "0a395259287924e7ded3aee6203da560564baebd1c6f3b90bbfd656746fce4a2",
+      "bytes": 562100,
+      "triangles": 6643,
       "materials": 14,
       "textures": 0,
       "scale": 1,
@@ -29989,37 +29990,36 @@
           "eaves-vs-3dbag/walls[1]:pass",
           "storey-height/walls[1]:pass",
           "eaves-vs-3dbag/walls[2]:pass",
-          "storey-height/walls[2]:pass",
           "eaves-vs-3dbag/walls[3]:pass",
           "storey-height/walls[3]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 5st 9b",
           "brick-bay-grid 6st 8b",
-          "brick-bay-grid 3st 5b",
           "brick-bay-grid 3st 4b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (NO EVIDENCE (foliage 26 % > 25 %)); inferred: the photo cannot judge (foliage 26 % > 25 %), kept as fitted after review of the sheet",
-        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.17)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.17) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[2] not confirmed by the photo (FAIL (wall dL +0.15; glazing storey band off by 0.44 mean 0.01 vs photo 0.35; window shape none vs photo square; columns none vs photo 6)); inferred: the crop shows the neighbouring canal house, not this wall, kept as authored",
-        "walls[3] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches this panel, kept as fitted, not confirmed by a photo",
+        "walls[0] not confirmed by the photo (NO EVIDENCE (foliage 26 % > 25 %)); inferred: 26 pct foliage on w02-272 (gate limit 25) and the shaded half reads raw #2c261d against the sunlit red brick, 9 axes of tall windows with tilted box frames read off the same crop",
+        "walls[1] likeness WARN (mask IoU 0.304 < 0.45).",
+        "walls[3] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches panel 132, the white-painted three-storey front with cross windows is read off w04-340",
         "Modelled: the hotel wing as brick-bay-grid (4 storeys x 9 bays, cornice), the Smaksteeg block (6 x 8), and the canal-house fronts as 3-storey cross-window groups with cornices. Simplified: the tilted/projecting bay windows are flush recessed windows; gables are the 3DBAG roof outlines. Not modelled: the dormers, the green wall strip, the shopfronts and the street-level hotel entrance, the shop signs (painted AVEDA fascia, w04-340). The curved corner plan is straight in 3DBAG. Walls without photographs stay blank.",
         "Correction: the w03-272 gabled house row is NOT modelled (its 3DBAG roof samples sit 0.4 m below the wall eaves and fail eaves-vs-3dbag); the canal-house groups drawn are the two cross-window fronts listed in walls[]. The gabled fronts on w03-272, w04-340 and w06-337 are otherwise left to the LoD2.2 shell.",
-        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #684428 not used (not darker than the wall #625650 by 10 L*, or tinted): kit glass kept."
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #684428 not used (not darker than the wall #625650 by 10 L*, or tinted): kit glass kept.",
+        "Refit 2026-10-25 (issue #59): walls[1] (w01-154L) windows diminish upward: first floor w 0.55 h 0.8, second w 0.45 h 0.7, upper floors w 0.38 h 0.55 (photo glazing 0.46, 0.34, 0.24, 0.18, 0.16): WARN, was FAIL. walls[0] (w02-272) windows tall (w 0.45, h 0.62); the green-wall strip axis is still a window column (openBays cannot be combined with tiltedBays). walls[2] (panel 55, w06-337L) is now blank: the photo shows a row of separate canal-house fronts (dark brown, white-painted, grey-brown, each with its own window rhythm), the large-tier grid on that panel was not visible on the panel at all (the model elevation read blank wall), so the fronts are left to the LoD2.2 shell for a block-face pass. walls[0] allowed as inferred: 26 % foliage and the low winter sun (raw #2c261d is the shaded half)."
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165098",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T13:32:56.953Z",
-      "meshHash": "7dbe460689e32baf"
+      "updatedAt": "2026-10-25T06:05:02.743Z",
+      "meshHash": "9009586434cd05c6"
     },
     {
       "id": "ordinary-0363100012180196",
@@ -34090,10 +34090,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012202277",
       "name": "Centrale Groothandelsmarkt 190, Amsterdam (Food Center, Jan van Galenstraat): 1935 wholesale market hall with loading docks (Miedema AGF, Gebr. de Mooij)",
-      "hash": "66c4fe327a79822d9015d7793ec390f74dc5ef7dbf9350617432a691f44ab7ff",
-      "sha256": "66c4fe327a79822d9015d7793ec390f74dc5ef7dbf9350617432a691f44ab7ff",
-      "bytes": 306784,
-      "triangles": 3848,
+      "hash": "61f03e8c838566b17aa6114295ef1f5576e67540a34eef3277756c7b0945a617",
+      "sha256": "61f03e8c838566b17aa6114295ef1f5576e67540a34eef3277756c7b0945a617",
+      "bytes": 335260,
+      "triangles": 4241,
       "materials": 17,
       "textures": 0,
       "scale": 1,
@@ -34289,19 +34289,20 @@
           "eaves-vs-3dbag/walls[3]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid 2st 10b",
+          "brick-bay-grid 2st 13b",
           "brick-bay-grid 1st 6b",
           "brick-bay-grid 2st 10b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] likeness WARN (columns 10 vs photo 33; mask IoU 0.21 < 0.45).",
-        "walls[1] not confirmed by the photo (FAIL (glazing  mean 0.16 vs photo 0.72)); inferred: the crop is trucks and signage under the canopy band, kept as authored",
-        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.75 mean 0.30 vs photo 0.70)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.75 mean 0.30 vs photo 0.70) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[0] likeness WARN (mask IoU 0.211 < 0.45).",
+        "walls[1] not confirmed by the photo (FAIL (glazing  mean 0.16 vs photo 0.57)); inferred: the dock block is hidden behind a parked truck in w01-258L (the cab and trailer read as glazing 0.57), six yellow dock doors read off the uncovered ends",
+        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.25; columns 10 vs photo 13)); inferred: the upper storey on w03-78 is behind the deep arcade canopy, its yellow struts and the shop name boards, which the gate reads as 25 pct glazing and 13 columns, the glazed shop ground under it matches",
         "Modelled: west dock front as two groups: the two-storey office block (surfaces 9, 10, 49 of panel 7 and panel 0) with blue-framed two-light windows, and the single-storey dock block (surface 13 of panel 7, 5.5 m) of six yellow sectional dock doors with the name MIEDEMA AGF; east arcade front (panels 65, 63, 18) as a pale concrete face with a glazed ground floor, a closed upper storey and the Gebr. de Mooij lettering on the cornice; east gable (panel 33) as a blank white wall.",
         "Simplified: the yellow roller doors are recessed sectional garage doors (layered kit: leaf, ribs and frame on separate sheet layers), the blue office window blocks and the corner-cut canopy are plain window rows, the shop signs along the arcade are not drawn (only the largest name), the yellow canopy struts are not drawn. Not modelled: the north and south walls and the long west wall behind the dock block (no panorama, or hidden by the dock block), roof plant and the brick tower."
       ],
@@ -34310,8 +34311,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012202277",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T13:50:18.533Z",
-      "meshHash": "82fab88c60287bfe"
+      "updatedAt": "2026-10-25T06:05:55.610Z",
+      "meshHash": "974a7d3f30367d2b"
     },
     {
       "id": "ordinary-0363100012236788",
@@ -42141,16 +42142,16 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012240319",
       "name": "Tilanusstraat 23K, Amsterdam-Oost: 2013 block of red-brick gridded wings and a curved louvred glass tower, round a retained 1900s brick school range",
-      "hash": "423a0bebee3c016bd16c9f14a9155444bf467316125c6c154b7ace8c0e00ce73",
-      "sha256": "423a0bebee3c016bd16c9f14a9155444bf467316125c6c154b7ace8c0e00ce73",
-      "bytes": 589836,
-      "triangles": 7971,
-      "materials": 13,
+      "hash": "d16143c84102639a4bbae210e4a9988c19810a5e6be5e1f5a99e6bf3d25b2c95",
+      "sha256": "d16143c84102639a4bbae210e4a9988c19810a5e6be5e1f5a99e6bf3d25b2c95",
+      "bytes": 965828,
+      "triangles": 13097,
+      "materials": 15,
       "textures": 0,
       "scale": 1,
       "bounds": {
         "min": [
-          -57.494,
+          -57.504,
           0.001,
           -23.986
         ],
@@ -42271,24 +42272,24 @@
           "eaves-vs-3dbag/walls[0]:pass",
           "storey-height/walls[0]:pass",
           "eaves-vs-3dbag/walls[1]:pass",
-          "storey-height/walls[1]:pass",
           "eaves-vs-3dbag/walls[2]:pass",
           "storey-height/walls[2]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 5st 18b",
-          "ribbon-windows 8st 6b",
+          "blank+louvres 8st 6b",
           "brick-bay-grid 4st 9b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (wall dL -0.30; glazing storey band off by 0.42 mean 0.26 vs photo 0.53; columns 18 vs photo 48)); inferred: the crop is a low-sun December photo (#ffa169), orange-red kept by hand",
-        "walls[1] not confirmed by the photo (FAIL (wall family paint vs photo brick; glazing storey band off by 0.25)); inferred: louvred glass tower: the likeness reads the glass as paint, grey glass kept",
-        "walls[2] not confirmed by the photo (FAIL (window shape tall vs photo wide; columns 9 vs photo 6)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (window shape tall vs photo wide, columns 9 vs photo 6) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[0] not confirmed by the photo (FAIL (wall dL -0.14; storey 3: widest opening 0.8 m vs photo 17.2 m (a ribbon against windows))); inferred: w01-160L is blown out in low sun (raw #efa169) and its left third is the louvre tower, which the gate reads as a 17 m ribbon on storey 3, glazing 0.31 vs 0.34 and window rhythm match",
+        "walls[1] not confirmed by the photo (FAIL (wall dL -0.17; glazing storey band off by 0.76 mean 0.05 vs photo 0.36; columns 6 vs photo 10)); inferred: the gate reads the model wall as the dark ground behind the louvre blades and the photo gaps between blades as glazing, the grey blades over dark glass match the crop by eye",
+        "walls[2] not confirmed by the photo (FAIL (window shape tall vs photo wide; columns 18 vs photo 6)); inferred: the photo mask merges each pair of narrow windows into one wide opening (columns 6, shape wide) while the model counts the 18 windows of the same 9 pairs, colour and glazing match",
         "Tilanusstraat 23K (BAG, 2013; Amsterdam-Oost, Eerste Boerhaavestraat side): a block of red-brick gridded wings, a curved glass tower with stacked louvre bands on the Tilanusstraat corner and, along the east side, a retained 1900s brick school range with a stone oriel. 117 3DBAG wall surfaces; three street fronts are drawn (w01-160 south, w02-250 west tower, w03-340 north), the rest stays blank.",
         "walls[0] = panel 32 (S, 77 m, eaves 18.5): red clinker brick with deep-set paired windows in gridded bays, drawn as 5 storeys x 18 bays of narrow windows; the stepped upper floors (31.9 m surfaces) and the curved corner are straight/blank. walls[1] = panel 33 (W, 46 m, eaves 31.9): the louvred tower front, a glazed ground storey (shop/lobby) under eight bands of grey louvres and glass; drawn as ribbon-windows, 8 storeys x 6 bays of wide windows in a grey stone-material skin. The real front is a curved glass skin with continuous aluminium louvre blades: the curve and the louvres are not modelled (a curtain-wall grid was tried and read as a square grid). walls[2] = panel 6 (N, 37 m, eaves 15.5): dark brown brick with tall paired windows, 4 storeys x 9 bays.",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #2a2a27 not used (not darker than the wall #3f2e26 by 10 L*, or tinted): kit glass kept."
@@ -42298,8 +42299,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012240319",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T14:04:43.662Z",
-      "meshHash": "137db65499f93bd8"
+      "updatedAt": "2026-10-25T06:07:36.058Z",
+      "meshHash": "bebc716b8d26f533"
     },
     {
       "id": "ordinary-0363100012201637",
