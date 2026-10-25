@@ -24,7 +24,7 @@
  * the photo cannot tell window frames from bands there. Pure: no I/O.
  */
 export const OPENING = {frameShare: 0.55, frameReachCells: 3, secondMaterialM2: 4, holeM2: 0.3, bandLenM: 2, bandMaxM: 0.5, bandTouch: 0.7,
-  stripMaxWM: 0.3, stripMinHM: 2, speckM2: 0.05, holeMaxM2: 3, stackGapM: 0.75, sideGapM: 0.25, accessoryM: 1.5, accessoryRow: 0.5, furnitureMaxWM: 4, frameEdge: 3, surroundM: 0.3, hullMaxWM: 6, hullMaxHM: 4.5, hullFill: 0.55, abstainRange: 0.1} as const;
+  stripMaxWM: 0.3, stripMinHM: 2, speckM2: 0.05, holeMaxM2: 3, stackGapM: 0.75, sideGapM: 0.25, accessoryM: 1.5, accessoryRow: 0.5, furnitureMaxWM: 4, frameEdge: 3, surroundM: 0.3, hullMaxWM: 6, hullMaxHM: 4.5, hullFill: 0.55, abstainRange: 0.1, fullRow: 0.8, rowGapCells: 2, fullRowsMax: 0.35} as const;
 
 /** Mask values: the cluster mask's wall / dark / trim plus `frame` (a light or wall-coloured part of an opening). */
 export const OMASK = {wall: 0, dark: 1, trim: 2, frame: 3, unusable: 255} as const;
@@ -92,12 +92,58 @@ const bbox = (cells: number[], cols: number) => {
   return {x0, x1, y0, y1};
 };
 
+/**
+ * The pieces of an opening component for the rectangle fill. A row of windows linked by thin strips along their heads
+ * or sills (the shadow line under a soffit, a stone ledge whose cells split between clusters, so neither is a band) is
+ * one component, and its rectangle would paint the piers between the windows as glazing (Oostpoort Montessori walls[0]:
+ * ten 0.9 m attic windows on 1.4 m centres read as a continuous ribbon). The component is cut at piers: runs of >=
+ * `pierM` columns inside the box whose cells leave at least half its height open in one run (wall between a head strip and a sill strip), each
+ * between two parts at least `windowM` wide (windows of their own). A window whose panes mirror the wall keeps them:
+ * either side of such a pane stands only a thin side frame, never a window's width.
+ */
+export function linkedPieces(comp: number[], cols: number, cell: number, pierM = 0.3, windowM = 0.4): number[][] {
+  const b = bbox(comp, cols), w = b.x1 - b.x0 + 1, h = b.y1 - b.y0 + 1;
+  if (h < 6 || w < 3) return [comp];
+  const occ = new Uint8Array(w * h);
+  for (const k of comp) occ[(Math.floor(k / cols) - b.y0) * w + k % cols - b.x0] = 1;
+  // the longest empty run down each column: a pier is open wall over at least half the component's height
+  const gap = new Int32Array(w);
+  for (let x = 0; x < w; x++) { let run = 0; for (let y = 0; y < h; y++) { run = occ[y * w + x] ? 0 : run + 1; if (run > gap[x]) gap[x] = run; } }
+  const pier = (i: number) => gap[i] >= 0.5 * h;
+  const runs: [number, number][] = [];
+  for (let i = 0; i < w;) {
+    if (!pier(i)) { i++; continue; }
+    let e = i; while (e + 1 < w && pier(e + 1)) e++;
+    if (i > 0 && e < w - 1 && (e - i + 1) * cell >= pierM - 1e-9) runs.push([i, e]);
+    i = e + 1;
+  }
+  // keep the runs with a window's width of the component on both sides (up to the next run or the box edge)
+  const keep = runs.filter(([i, e], r) => {
+    const left = i - (r > 0 ? runs[r - 1][1] + 1 : 0), right = (r < runs.length - 1 ? runs[r + 1][0] : w) - e - 1;
+    return left * cell >= windowM - 1e-9 && right * cell >= windowM - 1e-9;
+  });
+  if (!keep.length) return [comp];
+  const seg = new Int32Array(w).fill(-1); let s = 0, r = 0;
+  for (let i = 0; i < w; i++) {
+    if (r < keep.length && i >= keep[r][0] && i <= keep[r][1]) { if (i === keep[r][1]) { r++; s++; } continue; }
+    seg[i] = s;
+  }
+  const pieces: number[][] = Array.from({length: s + 1}, () => []);
+  for (const k of comp) { const g = seg[k % cols - b.x0]; if (g >= 0) pieces[g].push(k); }
+  return pieces.filter(p => p.length);
+}
+
 export function classifyOpenings(a: OpeningInput): OpeningResult {
   const {cols, rows, cell, label, wallSet} = a, N = cols * rows, m0 = a.mask, nC = wallSet.length;
   const usable = (k: number) => m0[k] !== OMASK.unusable;
   const notWall0 = (k: number) => m0[k] === OMASK.dark || m0[k] === OMASK.trim;
   const nb4 = (k: number) => { const x = k % cols; return [x > 0 ? k - 1 : -1, x < cols - 1 ? k + 1 : -1, k >= cols ? k - cols : -1, k + cols < N ? k + cols : -1].filter(q => q >= 0); };
   const cellsM2 = (n: number) => n * cell * cell;
+  // The rectangles to fill for an opening component that is compact enough to be one window (<= hullMaxWM wide,
+  // <= maxH tall, filling >= hullFill of its box): its pieces between piers (linkedPieces) that are themselves compact.
+  // A component too big or too ragged to fill stays as it is; cutting it never makes new fills.
+  const compact = (c: number[], maxH: number) => { const b = bbox(c, cols), w = (b.x1 - b.x0 + 1) * cell, h = (b.y1 - b.y0 + 1) * cell; return w <= OPENING.hullMaxWM && h <= maxH && c.length / ((b.x1 - b.x0 + 1) * (b.y1 - b.y0 + 1)) >= OPENING.hullFill; };
+  const hullPieces = (c: number[], maxH: number) => (compact(c, maxH) ? linkedPieces(c, cols, cell).filter(q => compact(q, maxH)) : []);
 
   // 1. frame-like wall clusters
   const touch = new Array(nC).fill(0), tot = new Array(nC).fill(0);
@@ -199,6 +245,41 @@ export function classifyOpenings(a: OpeningInput): OpeningResult {
     if (touching >= colsOf.size * OPENING.bandTouch || dark >= run.length * 0.7) for (const k of run) amb[k] = 1;
   }
 
+  // 3b. full-width light rows: a row whose light not-wall cells run unbroken (gaps of <= rowGapCells: specks, a
+  //     downpipe) across >= fullRow of its usable width is a cornice soffit, a frieze or a band, whatever its thickness
+  //     or how its cells split between clusters: trim, not the frame of the windows under it (Oostpoort Montessori
+  //     walls[1]: the soffit and frieze over the attic windows joined them into one 20 m "opening", frieze band glazing
+  //     0.56 against 0.12 by hand). A row of windows always has piers between them, so it never runs unbroken. A
+  //     light block lying directly on a full-width dark row is a ribbon's frame rail as much as a band: left ambiguous.
+  //     Bands are a minority of the front: when full light rows make up more than fullRowsMax of it, the wall pick took
+  //     the glass of a ribbon front and the "light rows" are its brick, so none is set.
+  const fullDark = (y: number) => {
+    if (y < 0 || y >= rows) return false;
+    let n = 0, d = 0; for (let x = 0; x < cols; x++) { const k = y * cols + x; if (!usable(k)) continue; n++; if (m0[k] === OMASK.dark) d++; }
+    return n >= 20 && d >= OPENING.fullRow * n;
+  };
+  const fullRuns: [number, number, number][] = [];
+  for (let y = 0; y < rows; y++) {
+    let n = 0; for (let x = 0; x < cols; x++) if (usable(y * cols + x)) n++;
+    if (n < 20) continue;
+    let best = [0, -1], s0 = -1, last = -1;
+    let skipped = 0; // unusable cells (missing pixels, leaves) neither break nor extend a run
+    for (let x = 0; x < cols; x++) {
+      if (!usable(y * cols + x)) { skipped++; continue; }
+      const t = m0[y * cols + x] === OMASK.trim;
+      if (t) { if (s0 < 0 || x - last - 1 - skipped > OPENING.rowGapCells) s0 = x; last = x; skipped = 0; if (last - s0 > best[1] - best[0]) best = [s0, last]; }
+    }
+    let span = 0; for (let x = best[0]; x <= best[1]; x++) if (usable(y * cols + x)) span++;
+    if (span < OPENING.fullRow * n) continue;
+    fullRuns.push([y, best[0], best[1]]);
+  }
+  for (let i = 0; i < (fullRuns.length <= OPENING.fullRowsMax * rows ? fullRuns.length : 0);) {
+    let j = i; while (j + 1 < fullRuns.length && fullRuns[j + 1][0] === fullRuns[j][0] + 1) j++;
+    const ribbon = fullDark(fullRuns[i][0] - 1) || fullDark(fullRuns[j][0] + 1);
+    if (!ribbon) for (let r = i; r <= j; r++) { const [y, x0, x1] = fullRuns[r]; for (let x = x0; x <= x1; x++) { const k = y * cols + x; if (m0[k] === OMASK.trim) { band[k] = 1; amb[k] = 0; } } }
+    i = j + 1;
+  }
+
   // 4. openings: components of non-band candidates (ambiguous bands join them)
   const out = new Uint8Array(m0);
   for (let k = 0; k < N; k++) if (wall2[k]) out[k] = OMASK.wall;
@@ -212,11 +293,13 @@ export function classifyOpenings(a: OpeningInput): OpeningResult {
     const strip = w <= OPENING.stripMaxWM + 1e-9 && h >= OPENING.stripMinHM;
     if (strip || cellsM2(comp.length) < OPENING.speckM2) { for (const k of comp) out[k] = cand[k] === 2 ? OMASK.wall : OMASK.trim; continue; }
     for (const k of comp) out[k] = m0[k] === OMASK.dark ? OMASK.dark : OMASK.frame;
-    const area = (b.x1 - b.x0 + 1) * (b.y1 - b.y0 + 1), fill = comp.length / area;
-    const hull = w <= OPENING.hullMaxWM && h <= OPENING.hullMaxHM && fill >= OPENING.hullFill;
-    if (hull) for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++) {
-      const k = y * cols + x; if (!usable(k) || wall2[k] || isOpening(out[k])) continue;
-      out[k] = OMASK.frame; filled[k] = 1;
+    const pieces = hullPieces(comp, OPENING.hullMaxHM), hull = pieces.length > 0;
+    for (const piece of pieces) {
+      const pb = bbox(piece, cols);
+      for (let y = pb.y0; y <= pb.y1; y++) for (let x = pb.x0; x <= pb.x1; x++) {
+        const k = y * cols + x; if (!usable(k) || wall2[k] || isOpening(out[k])) continue;
+        out[k] = OMASK.frame; filled[k] = 1;
+      }
     }
     openings.push({...b, cells: comp.length, filled: hull});
   }
@@ -298,7 +381,9 @@ export function classifyOpenings(a: OpeningInput): OpeningResult {
     const boxes = openBoxes(); let n = 0;
     for (const run of components(k => band[k] === 1 && !amb[k] && out[k] === OMASK.trim, cols, rows).list) {
       const r = bbox(run, cols);
-      if (!boxes.some(b => r.x0 >= b.x0 - slack && r.x1 <= b.x1 + slack && (Math.abs(r.y0 - b.y1) <= gapMax || Math.abs(b.y0 - r.y1) <= gapMax || (r.y0 >= b.y0 && r.y1 <= b.y1)))) continue;
+      // (not along a ribbon wider than hullMaxWM: there a run is as likely a band, as in step 3, and a cornice soffit over
+      // a frieze of windows would otherwise become the frieze's transom)
+      if (!boxes.some(b => r.x0 >= b.x0 - slack && r.x1 <= b.x1 + slack && (b.x1 - b.x0 + 1) * cell <= OPENING.hullMaxWM && (Math.abs(r.y0 - b.y1) <= gapMax || Math.abs(b.y0 - r.y1) <= gapMax || (r.y0 >= b.y0 && r.y1 <= b.y1)))) continue;
       for (const k of run) { band[k] = 0; out[k] = OMASK.frame; filled[k] = 1; } n++;
     }
     return n;
@@ -357,18 +442,16 @@ export function classifyOpenings(a: OpeningInput): OpeningResult {
     }
     if (!grew) break;
     // refill rectangles of the grown openings
-    for (const comp of components(k => isOpening(out[k]), cols, rows).list) {
-      const b = bbox(comp, cols), w = (b.x1 - b.x0 + 1) * cell, h = (b.y1 - b.y0 + 1) * cell, fill = comp.length / ((b.x1 - b.x0 + 1) * (b.y1 - b.y0 + 1));
-      if (w > OPENING.hullMaxWM || h > OPENING.hullMaxHM * 3 || fill < OPENING.hullFill) continue;
+    for (const comp of components(k => isOpening(out[k]), cols, rows).list.flatMap(c => hullPieces(c, OPENING.hullMaxHM * 3))) {
+      const b = bbox(comp, cols);
       for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++) { const k = y * cols + x; if (usable(k) && !wall2[k] && !isOpening(out[k]) && !(band[k] && !amb[k])) { out[k] = OMASK.frame; filled[k] = 1; } }
     }
   }
   return total; };
   for (let round = 0; round < 3; round++) if (!(transoms() + stack() + holes())) break;
   // the joined openings filled to their rectangles (the frame round panes joined across mullions or a sign panel)
-  for (const comp of components(k => isOpening(out[k]), cols, rows).list) {
-    const b = bbox(comp, cols), w = (b.x1 - b.x0 + 1) * cell, h = (b.y1 - b.y0 + 1) * cell, fill = comp.length / ((b.x1 - b.x0 + 1) * (b.y1 - b.y0 + 1));
-    if (w > OPENING.hullMaxWM || h > OPENING.hullMaxHM * 3 || fill < OPENING.hullFill) continue;
+  for (const comp of components(k => isOpening(out[k]), cols, rows).list.flatMap(c => hullPieces(c, OPENING.hullMaxHM * 3))) {
+    const b = bbox(comp, cols);
     for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++) { const k = y * cols + x; if (usable(k) && !wall2[k] && out[k] === OMASK.wall) { out[k] = OMASK.frame; filled[k] = 1; } }
   }
 

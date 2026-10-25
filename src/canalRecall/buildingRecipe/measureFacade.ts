@@ -218,20 +218,48 @@ export function otsu(values: number[], lo: number, hi: number, bins = 64): numbe
   return lo + at / bins * (hi - lo);
 }
 
-/** Lag (in samples) of the strongest periodicity in [minLag, maxLag]: the shortest local maximum within 85 % of the best. */
-export function dominantPeriod(p: number[], minLag: number, maxLag: number): {lag: number; score: number} | null {
+/** Normalised autocorrelation of `p` for lags 0..min(maxLag, n / 2); null for a flat or too short profile. */
+function autocorr(p: number[], maxLag: number): number[] | null {
   const n = p.length, mean = p.reduce((s, v) => s + v, 0) / Math.max(1, n), d = p.map(v => v - mean), v0 = d.reduce((s, v) => s + v * v, 0);
   if (n < 4 || v0 < 1e-9) return null;
   const ac: number[] = [];
   const hi = Math.min(maxLag, Math.floor(n / 2));
   for (let lag = 0; lag <= hi; lag++) { let s = 0; for (let i = 0; i + lag < n; i++) s += d[i] * d[i + lag]; ac.push(s / v0 * n / (n - lag)); }
+  return ac;
+}
+
+/** Lag (in samples) of the strongest periodicity in [minLag, maxLag]: the shortest local maximum within 85 % of the best. */
+export function dominantPeriod(p: number[], minLag: number, maxLag: number): {lag: number; score: number} | null {
+  const ac = autocorr(p, maxLag);
+  if (!ac) return null;
   const peaks: {lag: number; score: number}[] = [];
   for (let lag = Math.max(2, Math.ceil(minLag)); lag < ac.length - 1; lag++) if (ac[lag] >= ac[lag - 1] && ac[lag] >= ac[lag + 1] && ac[lag] > 0.05) peaks.push({lag, score: ac[lag]});
   if (!peaks.length) return null;
   const best = Math.max(...peaks.map(q => q.score)), pick = peaks.find(q => q.score >= best * 0.85)!;
+  return refinePeak(ac, pick.lag, pick.score);
+}
+const refinePeak = (ac: number[], lag: number, score: number) => {
   // parabolic refinement of the lag
-  const a = ac[pick.lag - 1], b = ac[pick.lag], c = ac[pick.lag + 1], den = a - 2 * b + c;
-  return {lag: pick.lag + (Math.abs(den) > 1e-9 ? 0.5 * (a - c) / den : 0), score: +pick.score.toFixed(3)};
+  const a = ac[lag - 1], b = ac[lag], c = ac[lag + 1], den = a - 2 * b + c;
+  return {lag: lag + (Math.abs(den) > 1e-9 ? 0.5 * (a - c) / den : 0), score: +score.toFixed(3)};
+};
+
+/**
+ * The bay pitch at half `per.lag` when the profile also repeats there: a local autocorrelation maximum within
+ * +-max(1, 6 %) of the half lag, scoring >= `minScore`. A wall of evenly spaced windows broken by a stair window, an
+ * entrance or a tree correlates best at two bays (Oostpoort Montessori walls[0]: 2.44 m windows, 0.43 at 4.7 m and 0.17
+ * at 2.4 m), and the fold then reads two windows as one square one. Paired windows (Stadhouderskade 111) repeat at their
+ * own offset inside the bay, not at its half, so they keep the bay pitch.
+ */
+export function halvedPeriod(p: number[], per: {lag: number; score: number}, minLag: number, minScore = 0.15): {lag: number; score: number} | null {
+  const half = per.lag / 2; if (half < minLag) return null;
+  const ac = autocorr(p, Math.ceil(per.lag)); if (!ac) return null;
+  const tol = Math.max(1, 0.06 * half);
+  let best: {lag: number; score: number} | null = null;
+  for (let lag = Math.max(2, Math.ceil(half - tol)); lag <= Math.floor(half + tol) && lag < ac.length - 1; lag++) {
+    if (ac[lag] >= ac[lag - 1] && ac[lag] >= ac[lag + 1] && ac[lag] >= minScore && (!best || ac[lag] > best.score)) best = {lag, score: ac[lag]};
+  }
+  return best ? refinePeak(ac, best.lag, best.score) : null;
 }
 
 /** k-means on feature vectors (Euclidean), seeded at evenly spaced quantiles of the first feature (lightness). */
@@ -271,6 +299,8 @@ function largestComponent(on: Uint8Array, cols: number, rows: number): {conn: nu
  * with a white balance from the same cells clamped to +-8 %. Exported so other crop readers (the school walls,
  * scripts/landmarks/build-public-facts.ts) normalise a crop the same way.
  */
+/** b* (yellow) from which the light trim is cream paint, not white in tinted light: no white balance from it. */
+export const WB_CREAM_B = 5;
 export function lightTrimNormalisation(lab: readonly Rgb[], rgb: readonly Rgb[]): {ref: Rgb | null; gain: number; wb: [number, number, number]} {
   const pool = lab.map((_, k) => k);
   const neutral = pool.filter(k => Math.hypot(lab[k][1], lab[k][2]) < 12), refPool = neutral.length >= pool.length * 0.01 ? neutral : pool;
@@ -282,7 +312,11 @@ export function lightTrimNormalisation(lab: readonly Rgb[], rgb: readonly Rgb[])
   const ref = refCells.length && Lref - Lmid >= 25 ? medRgb(refCells.map(k => rgb[k])) : null;
   const refY = ref ? (ref[0] + ref[1] + ref[2]) / 3 : 0;
   const gain = ref && refY > 1 ? Math.max(0.75, Math.min(1.45, 215 / refY)) : 1;
-  const wb: [number, number, number] = ref && refY > 1 ? [0, 1, 2].map(c => Math.max(0.92, Math.min(1.08, refY / Math.max(1, ref[c])))) as [number, number, number] : [1, 1, 1];
+  // White balance only from a white reference: a cream or ivory trim (b* >= WB_CREAM_B, the Amsterdam School's painted
+  // frames) balanced to grey pushes the brick towards purple (Oostpoort Montessori walls[0]: #4c3b38 raw, hue 9
+  // deg, read #695556 at hue 357 against the same brick in the model)
+  const refLab = ref ? rgbToLab(ref) : null, cream = !!refLab && refLab[2] >= WB_CREAM_B && Math.hypot(refLab[1], refLab[2]) >= WB_CREAM_B;
+  const wb: [number, number, number] = ref && refY > 1 && !cream ? [0, 1, 2].map(c => Math.max(0.92, Math.min(1.08, refY / Math.max(1, ref[c])))) as [number, number, number] : [1, 1, 1];
   return {ref, gain, wb};
 }
 
@@ -693,7 +727,8 @@ export function analyseMask(a: {mask: Uint8Array; cols: number; rows: number; ce
   const z = (p: number[]) => { const m = p.reduce((s, v) => s + v, 0) / p.length, sd = Math.sqrt(p.reduce((s, v) => s + (v - m) ** 2, 0) / p.length) || 1; return p.map(v => (v - m) / sd); };
   const cp = fill(colP), ce = fill(colE), zc = z(cp), ze = z(ce), prof = zc.map((v, i) => v + 0.5 * ze[i]);
   // the not-wall profile alone first (mullions inside a ribbon are not bays); its edges help where it is weak (dark glass in dark brick)
-  const perMask = dominantPeriod(zc, 0.8 / cell, 8 / cell), per = perMask && perMask.score >= 0.3 ? perMask : dominantPeriod(prof, 0.8 / cell, 8 / cell);
+  const perMask = dominantPeriod(zc, 0.8 / cell, 8 / cell), useMask = !!perMask && perMask.score >= 0.3, per0 = useMask ? perMask : dominantPeriod(prof, 0.8 / cell, 8 / cell);
+  const per = per0 && per0.score >= 0.15 ? (halvedPeriod(useMask ? zc : prof, per0, 0.8 / cell) ?? per0) : per0;
   const widthM = cols * cell;
   const pitchM = per && per.score >= 0.15 ? per.lag * cell : null;
   const columns = pitchM ? Math.max(1, Math.round(widthM / pitchM)) : null;
@@ -714,13 +749,21 @@ export function analyseMask(a: {mask: Uint8Array; cols: number; rows: number; ce
     const f = fb.map((v, b) => (fn[b] ? v / fn[b] : 0)), fmin = Math.min(...f), fmax = Math.max(...f), thr = (fmin + fmax) / 2;
     const inWin = (i: number) => f[Math.floor((((i + 0.5) / P) % 1) * B)] > thr;
     const wFrac = f.filter(v => v > thr).length / B;
-    const rb = new Array(B).fill(0), rn = new Array(B).fill(0);
+    // The window storeys: the upper storeys whose window columns hold at least half the glazing of the best one.
+    // Pooling a frieze of small attic windows with the main windows averages them into one square window (Oostpoort
+    // Montessori walls[0]: 3.0 m sashes under 0.8 m attic lights).
+    const per: {sb: number[]; sn: number[]; share: number}[] = [];
     for (let s = 1; s + 1 < lines.length; s++) {
       const lo = lines[s], hi = lines[s + 1];
       if (lo < gb || hi > box.v1 + 0.05 || hi - lo < 2) continue;
+      const sb = new Array(B).fill(0), sn = new Array(B).fill(0);
       for (let j = 0; j < rows; j++) { const v = vOf(j); if (v < lo || v >= hi) continue; const b = Math.min(B - 1, Math.floor((v - lo) / (hi - lo) * B));
-        for (let i = 0; i < cols; i++) { const k = j * cols + i; if (!usable[k] || !inWin(i)) continue; rn[b]++; if (notWall(k)) rb[b]++; } }
+        for (let i = 0; i < cols; i++) { const k = j * cols + i; if (!usable[k] || !inWin(i)) continue; sn[b]++; if (notWall(k)) sb[b]++; } }
+      const n = sn.reduce((x, y) => x + y, 0);
+      per.push({sb, sn, share: n >= 20 ? sb.reduce((x, y) => x + y, 0) / n : -1});
     }
+    const top = Math.max(-1, ...per.map(q => q.share)), rb = new Array(B).fill(0), rn = new Array(B).fill(0);
+    for (const q of per) if (q.share < 0 ? top < 0 : q.share >= 0.5 * top) for (let b = 0; b < B; b++) { rb[b] += q.sb[b]; rn[b] += q.sn[b]; }
     const rp = rb.map((v, b) => (rn[b] ? v / rn[b] : NaN));
     if (rp.some(Number.isFinite) && fmax - fmin >= 0.15) {
       const rf = fill(rp), rmin = Math.min(...rf), rmax = Math.max(...rf), rthr = Math.max(0.35, (rmin + rmax) / 2);

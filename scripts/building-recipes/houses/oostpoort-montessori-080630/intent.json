@@ -48,23 +48,31 @@
     "stone": "#d8d0b0"
    },
    "windowShape": {
-    "w": 0.62,
-    "h": 0.62,
-    "sill": 0.2
+    "w": 0.66,
+    "h": 0.7,
+    "sill": 0.16
    },
    "storeyShapes": [
     {
      "storeys": [
+      1
+     ],
+     "w": 0.66,
+     "h": 0.78,
+     "sill": 0.19
+    },
+    {
+     "storeys": [
       2
      ],
-     "w": 0.6,
-     "h": 0.26,
-     "sill": 0.58
+     "w": 0.84,
+     "h": 0.25,
+     "sill": 0.6
     }
    ],
    "windowGroup": {
     "count": 2,
-    "gap": 0.12,
+    "gap": 0.16,
     "storeys": [
      2
     ]
@@ -87,17 +95,25 @@
    },
    "windowShape": {
     "w": 0.62,
-    "h": 0.62,
-    "sill": 0.18
+    "h": 0.48,
+    "sill": 0.37
    },
    "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.58,
+     "h": 0.54,
+     "sill": 0.4
+    },
     {
      "storeys": [
       2
      ],
      "w": 0.6,
      "h": 0.28,
-     "sill": 0.55
+     "sill": 0.53
     }
    ]
   },
