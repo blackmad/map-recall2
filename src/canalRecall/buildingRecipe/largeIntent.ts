@@ -134,7 +134,12 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       const sign = typeof w.signage === 'string' ? {text: w.signage} : w.signage;
       if (typeof sign?.text !== 'string' || !SIGN_TEXT.test(sign.text)) problems.push(`${at}.signage.text: 1..60 of A-Z a-z 0-9 & ' - . space`);
       if (typeof w.signage === 'object') {
-        for (const k of Object.keys(w.signage)) if (!['text', 'colour', 'mount'].includes(k)) problems.push(`${at}.signage.${k}: unknown field (text, colour, mount)`);
+        for (const k of Object.keys(w.signage)) if (!['text', 'colour', 'mount', 'along'].includes(k)) problems.push(`${at}.signage.${k}: unknown field (text, colour, mount, along)`);
+        if (w.signage.along !== undefined) {
+          const a = w.signage.along;
+          if (!Array.isArray(a) || a.length !== 2 || !a.every(x => typeof x === 'number' && x >= 0 && x <= 1) || a[1] - a[0] < 0.1) problems.push(`${at}.signage.along: [from, to] fractions 0..1 of the panel width, at least 0.1 apart`);
+          if (w.signage.mount !== 'wall') problems.push(`${at}.signage.along: only with mount "wall"`);
+        }
         if (w.signage.colour !== undefined) colour(w.signage.colour, `${at}.signage.colour`);
         if (w.signage.mount !== undefined) oneOf(w.signage.mount, ['fascia', 'wall', 'glazing', 'canopy', 'cornice'], `${at}.signage.mount`);
         if (w.signage.mount === 'canopy' && !(typeof w.entrance === 'object' && w.entrance.canopy)) problems.push(`${at}.signage.mount: canopy needs entrance.canopy`);

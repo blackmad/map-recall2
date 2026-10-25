@@ -107,20 +107,49 @@
    "system": "brick-bay-grid",
    "storeys": 2,
    "baysPerStorey": 16,
-   "windows": "plain",
+   "windows": "transom",
    "palette": {
-    "brick": "#67594a"
+    "brick": "#4b4236"
    },
    "hand": [
     "system",
     "storeys",
     "palette.brick",
-    "baysPerStorey"
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "plinth",
+    "signage"
    ],
    "windowShape": {
-    "w": 0.714,
-    "h": 0.504,
-    "sill": 0.3
+    "w": 0.8,
+    "h": 0.58,
+    "sill": 0.2
+   },
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "bays": [
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15
+    ],
+    "lights": 4,
+    "transom": 0.75
+   },
+   "signage": {
+    "text": "da vinci creatieve ruimtes",
+    "colour": "#d8d4cc",
+    "mount": "wall",
+    "along": [
+     0.035,
+     0.46
+    ]
    }
   },
   {
@@ -157,7 +186,7 @@
    "system": "brick-bay-grid",
    "storeys": 3,
    "palette": {
-    "brick": "#67594a"
+    "brick": "#655547"
    },
    "hand": [
     "baysPerStorey",
@@ -171,14 +200,14 @@
    ],
    "windowShape": {
     "w": 0.82,
-    "h": 0.52,
-    "sill": 0.25
+    "h": 0.4,
+    "sill": 0.3
    },
    "baysPerStorey": 8,
-   "windows": "two-light",
+   "windows": "transom",
    "windowPattern": [
-    0.3,
-    0.3,
+    0.26,
+    0.26,
     0.82,
     0.82,
     0.82,
@@ -224,7 +253,7 @@
    "storeys": 1,
    "windows": "plain",
    "palette": {
-    "brick": "#67594a"
+    "brick": "#4a3d36"
    },
    "hand": [
     "baysPerStorey",
@@ -320,7 +349,18 @@
   "Colour: two bricks. The north wing on the Nieuwpoortkade (walls[1]) is buff/yellow brick: #b29e7e from the sunlit w04-89 (2021-03-22; the 2022 crop w04-89b in full sun reads #f7d6a8, the shade crops darker, so the photos bracket it). The north front, south wing, south plinth and west hall are brown brick (dHue 6-12 against the buff, not shade of it): the brightest reading, #67594a (w02-359 2017, normalised), for all of them, left unmeasured so the export lifts it like any shaded wall. Grey cladding #8d918b is the shade reading of w03-179/w01-269, unmeasured. The tower reads light tan in w01-269/w03-179 and takes the buff.",
   "Tower: no archived crop matches its panels (they stand inside the footprint, so all-walls.ts has no exposed BAG wall for them); ribbon windows in buff brick from the w01-269 and w03-179 views, inferred, not a street-facing group.",
   "3DBAG API timed out on 2026-10-25; facts came from the PDOK 3D Basisvoorziening fallback in facts.ts.",
-  "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1, 2, 4, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4e5756 not used (not darker than the wall #67594a by 10 L*, or tinted): kit glass kept; walls[1] glass #b6c3c6 not used (not darker than the wall #f7d6a8 by 10 L*, or tinted): kit glass kept; walls[1] bays 8 from the likeness grid (padded measurement 6); walls[4] glass #323d4a not used (not darker than the wall #4a3d36 by 10 L*, or tinted): kit glass kept; walls[4] bays 20 from the likeness grid (padded measurement -); walls[5] bays 20 from the likeness grid (padded measurement 43)."
+  "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1, 2, 4, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4e5756 not used (not darker than the wall #67594a by 10 L*, or tinted): kit glass kept; walls[1] glass #b6c3c6 not used (not darker than the wall #f7d6a8 by 10 L*, or tinted): kit glass kept; walls[1] bays 8 from the likeness grid (padded measurement 6); walls[4] glass #323d4a not used (not darker than the wall #4a3d36 by 10 L*, or tinted): kit glass kept; walls[4] bays 20 from the likeness grid (padded measurement -); walls[5] bays 20 from the likeness grid (padded measurement 43).",
+  "walls[0] revised 2026-10-25 after integrator review (#83): wall #4b4236 is the median brick between the window rows on the overcast 2017 crop w02-359 (white frames read #efece4 there, so the reading is white-referenced; integrator raw #4a4235), drawn as measured. 16 white-framed transom windows per storey at 0.8 of the 3.4 m bay (2.7 m wide), the glazed hall and recessed passage of ground bays 9-15 as a 4-light plinth with a transom, and the white-brick lettering 'da vinci creatieve ruimtes' over the left 0.04-0.46 of the wall between the two window rows (signage.along).",
+  "walls[2] revised 2026-10-25 (#83): the 2025-09-26 morning crop w05-89 is sunlit (east front at 09:00), wall raw #655547 drawn as measured; two small square windows in bays 0-1, then six wide white-framed transom windows at 0.82 of the bay and 0.4 of the storey (the photo mask splits each into two columns at its side light).",
+  "walls[4] (west low hall) is drawn in its own crop's raw brick #4a3d36 as measured (the same dark brown brick as walls[0], a little redder); the earlier lifted #806f5c was a guess."
  ],
- "budgetTriangles": 15000
+ "budgetTriangles": 15000,
+ "measured": {
+  "date": "2026-10-25",
+  "groups": [
+   0,
+   2,
+   4
+  ]
+ }
 }

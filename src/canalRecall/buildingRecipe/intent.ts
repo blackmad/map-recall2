@@ -864,7 +864,9 @@ export interface LargeWallIntent {
   /** Recessed entrance on the widest panel: `bay` from the viewer's left (default the middle), `storeys` > 1 = a glazed entrance hall that tall, `canopy` = a cantilevered slab over it. */
   entrance?: boolean | {bay?: number; storeys?: number; canopy?: boolean; /** carved stone portal: jambs, entablature, a pediment block with a crest (single-storey entrances) */ portal?: boolean};
   /** Stroke-font lettering: over the entrance (`fascia`, default; on the frieze of a portal), on the wall above the ground floor (`wall`), on the entrance-hall glass (`glazing`), the canopy edge (`canopy`) or a name band under the cornice (`cornice`, on the widest panel). */
-  signage?: string | {text: string; colour?: string; mount?: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice'};
+  signage?: string | {text: string; colour?: string; mount?: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice';
+    /** `wall` mount only: [from, to] fractions of the widest panel's width from the viewer's left that the lettering spans (default centred over 0.6 of the panel; Nieuwpoortkade 2's white-brick "da vinci creatieve ruimtes" runs over the left half, issue #83) */
+    along?: [number, number]};
   /** Recessed sectional garage doors in the ground storey, from the right end of the widest panel. */
   garageDoors?: number;
   /** Recessed sectional garage doors in exactly these ground-storey bays of the widest panel (needs `baysPerStorey`); an alternative to `garageDoors`. */

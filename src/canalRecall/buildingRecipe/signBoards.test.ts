@@ -42,3 +42,16 @@ test('Haarlemmerweg 337: boards and the false front are drawn; absent = byte-ide
   assert.notEqual(meshHashOf(a.group), meshHashOf(b.group));
   assert.equal(meshHashOf(b.group), meshHashOf(c.group));
 });
+
+test('signage.along (wall mount): lettering over a span of the panel, between the ground heads and first-storey sills; wall mount only', () => {
+  const id = 'nieuwpoortkade-2-090791', base = JSON.parse(fs.readFileSync(`${HOUSES}/${id}/intent.json`, 'utf8'));
+  const f: BuildingFacts = JSON.parse(fs.readFileSync(`${HOUSES}/${id}/facts.json`, 'utf8')), w0 = base.walls[0];
+  const withSign = (s: object) => ({...base, walls: [{...w0, signage: s}, ...base.walls.slice(1)]});
+  assert.throws(() => validateLargeIntent(withSign({text: 'da vinci', mount: 'fascia', along: [0.1, 0.5]})), /only with mount "wall"/);
+  assert.throws(() => validateLargeIntent(withSign({text: 'da vinci', mount: 'wall', along: [0.1, 0.15]})), /signage.along/);
+  const intent = validateLargeIntent(base);
+  assert.deepEqual(fitLarge(intent, f).recipe.groups[0].signage?.along, [0.035, 0.46]);
+  assert.ok(compileBuilding(intent, f).components.letters > 0);
+  const centred = validateLargeIntent(withSign({text: 'da vinci creatieve ruimtes', colour: '#d8d4cc', mount: 'wall'}));
+  assert.equal(fitLarge(centred, f).recipe.groups[0].signage?.along, undefined);
+});

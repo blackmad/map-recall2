@@ -187,11 +187,14 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
     counts.policeStripes++;
   }
   // Wall lettering on a group without an entrance: centred on the widest panel, in the wall strip between the first
-  // storey's window heads and the second storey's sills.
+  // storey's window heads and the second storey's sills. With `along` (issue #83) the lettering spans that part of the
+  // panel and sits one strip lower, between the ground storey's heads and the first storey's sills.
   if (!g.entrance && g.signage?.mount === 'wall' && g.mainPanel === p.index && levels.length > 2) {
-    const holes = [...c.holes.values()].flat(), below = Math.max(levels[1], ...holes.filter(h => h[3] <= levels[2] + 0.01).map(h => h[3]));
-    const above = Math.min(levels[2] + 1, lowestHoleAbove(c, levels[2])), hgt = Math.min(0.6, above - below - 0.2), v = (below + above) / 2, W = p.uMax - p.uMin;
-    if (hgt >= 0.3 && fitsPanel(p, rectPoly(p.uMin + W * 0.2, p.uMax - W * 0.2, v - hgt / 2, v + hgt / 2))) counts.letters += drawLettering(c, g.signage.text, (p.uMin + p.uMax) / 2, v, 0.012, hgt, W * 0.6, s.sign, (u, vv, d) => c.onWallAt(u, vv, d));
+    const al = g.signage.along, k = al ? 1 : 2;
+    const holes = [...c.holes.values()].flat(), below = Math.max(levels[k - 1], ...holes.filter(h => h[3] <= levels[k] + 0.01).map(h => h[3]));
+    const above = Math.min(levels[k] + 1, lowestHoleAbove(c, levels[k])), hgt = Math.min(al ? 1.1 : 0.6, above - below - 0.2), v = (below + above) / 2, W = p.uMax - p.uMin;
+    const u0 = al ? p.uMin + W * al[0] : p.uMin + W * 0.2, u1 = al ? p.uMin + W * al[1] : p.uMax - W * 0.2;
+    if (hgt >= 0.3 && fitsPanel(p, rectPoly(u0, u1, v - hgt / 2, v + hgt / 2))) counts.letters += drawLettering(c, g.signage.text, al ? (u0 + u1) / 2 : (p.uMin + p.uMax) / 2, v, 0.012, hgt, al ? u1 - u0 : W * 0.6, s.sign, (u, vv, d) => c.onWallAt(u, vv, d));
   }
   if (g.crosses && g.mainPanel === p.index) {
     // St Andrew's crosses stacked from just under the eaves down one end of the widest panel, only where the wall is solid there.
