@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+**Neighbourhood pages (2026-10-25, #69).** User idea: per-neighbourhood
+pages. `scripts/build-buurt-pages.ts` (data in `src/canalRecall/buurtPages/`)
+writes `buurt/<slug>.html` for the 78 boundaries of kind neighbourhood or
+quarter plus an index: postcard (the in-game card's Commons photo, linked
+not copied; the quarter's or an aerial frame when missing), 2–4 in-game
+frames each (267, `scripts/capture-buurt-shots.mjs`, 23 MB), modelled
+buildings with ride links, trivia, name origins and bridge-register lines.
+Gaps per page in `buurt/shots/coverage.json`. `check:buurt-pages` joins
+check:canal: regenerate after building installs (new buildings show "No
+picture yet" until frames are recaptured).
+
 **Vondelpark south edge and road surfaces (2026-10-25, #62, #63).** Survey of
 big panden on the park's south edge; six installed as large recipes (Van
 Eeghenstraat 97, 110, 180; Koningslaan 28; Koninginneweg 34 Park Plaza;

@@ -3294,14 +3294,25 @@
      ]
     },
     {
-     "label": "Koningin Emma",
-     "lat": 52.3541027,
-     "lng": 4.8628697,
+     "label": "Emmalaan 4A-6 / Koningslaan 35, Amsterdam-Zuid (1912 brick block at the Emmalaan, south of the Vondelpark; BAG pand 0363100012236822)",
+     "lat": 52.3550876,
+     "lng": 4.8618301,
      "view": "chase",
      "at": [
-      4.863445,
-      52.354065,
-      276
+      4.861294,
+      52.355006,
+      76
+     ]
+    },
+    {
+     "label": "Koninginneweg 34, Amsterdam-Zuid (Park Plaza hotel, 1983 brick block south of the Vondelpark; BAG pand 0363100012150885)",
+     "lat": 52.3543475,
+     "lng": 4.8663563,
+     "view": "chase",
+     "at": [
+      4.866988,
+      52.354226,
+      287
      ]
     },
     {

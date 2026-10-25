@@ -433,7 +433,7 @@
  },
  {
   "slug": "museumkwartier",
-  "buildings": 23,
+  "buildings": 26,
   "kits": 0,
   "facts": 69,
   "origins": 84,
@@ -540,7 +540,7 @@
  },
  {
   "slug": "oud-zuid",
-  "buildings": 34,
+  "buildings": 40,
   "kits": 0,
   "facts": 158,
   "origins": 286,
@@ -935,13 +935,13 @@
  },
  {
   "slug": "willemspark",
-  "buildings": 1,
+  "buildings": 4,
   "kits": 0,
   "facts": 8,
   "origins": 30,
   "bridges": 1,
   "shots": 3,
-  "plan": 3,
+  "plan": 4,
   "lacks": [
    "photo borrowed from Oud-Zuid"
   ]
