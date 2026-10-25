@@ -99,6 +99,21 @@ assert.equal(g.player.length, 12);
 assert.equal(g.player.maxSpeed, 300);
 assert.ok(Math.abs(g.player.angle + Math.PI / 2) < 1e-9, 'faces away from the water');
 
+// NDSM-werf (3980786): the planned F4 line passes 6.3 m from the stop, and the
+// vessel touched the quay 16.1 m (48.3 px) off it, just outside the approach
+// radius, was blocked and never docked. A quay touch within half a hull more docks.
+const ndsm = game({ x: 0, y: 2 });
+beginFerryFrame(ndsm, water);
+ndsm.player.ferryDeparted = true;
+ndsm.player.x = B.x + 48.3; ndsm.player.y = B.y + 3;
+assert.equal(afterFerryMove(ndsm, { x: B.x + 48.3, y: B.y + 12 }, water), 'docked', 'NDSM: quay touch 16.1 m from the stop docks');
+// Far along an unrelated stretch of the same quay it is still blocked.
+const far = game({ x: 0, y: 2 });
+beginFerryFrame(far, water);
+far.player.ferryDeparted = true;
+far.player.x = B.x + 90; far.player.y = B.y + 3;
+assert.equal(afterFerryMove(far, { x: B.x + 90, y: B.y + 12 }, water), 'blocked', '30 m along the quay does not dock');
+
 // Returning to the departure pier is allowed only after leaving it.
 const back = game({ x: 0, y: 2 });
 beginFerryFrame(back, water);

@@ -2767,11 +2767,13 @@
 
   // src/canalRecall/labels/streetLabelOcclusion.ts
   var STREET_LABEL_ALT_M = 1;
-  var HOLD_FRAMES = 3;
+  var HOLD_FRAMES = 2;
+  var RETEST_FRAMES = 8;
   var BUILD_BUDGET_MS = 2;
   var StreetLabelOcclusion = class {
     index = new SightlineIndex();
     verdicts = /* @__PURE__ */ new WeakMap();
+    slots = 0;
     frameNo = 0;
     /** Last frame's counts, for the e2e and profiling. */
     stats = { tested: 0, hidden: 0, ms: 0, features: 0, buildMs: 0 };
@@ -2801,12 +2803,22 @@
       const camera = { lng: at.lng, lat: at.lat, altM };
       return (label) => {
         const t0 = performance.now();
+        let v = this.verdicts.get(label);
+        const fresh = !v || v.frame !== this.frameNo - 1;
+        if (v && !fresh && (this.frameNo + v.slot) % RETEST_FRAMES !== 0) {
+          v.frame = this.frameNo;
+          if (v.hidden) {
+            this.stats.hidden++;
+            if (label.text) this.lastHidden.push(label.text);
+          }
+          this.stats.ms += performance.now() - t0;
+          return v.hidden;
+        }
         const ll = toLngLat(label.x, label.y, loader);
         const [lng, lat] = Array.isArray(ll) ? ll : [ll.lng, ll.lat];
         const now = this.index.blocked(camera, { lng, lat, altM: STREET_LABEL_ALT_M });
-        let v = this.verdicts.get(label);
-        if (!v || v.frame !== this.frameNo - 1) {
-          v = { hidden: now, votes: HOLD_FRAMES, frame: 0 };
+        if (!v || fresh) {
+          v = { hidden: now, votes: HOLD_FRAMES, frame: 0, slot: v?.slot ?? this.slots++ };
           this.verdicts.set(label, v);
         }
         v.frame = this.frameNo;
