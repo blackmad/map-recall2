@@ -386,7 +386,13 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   // already a per-bay cycle (loading doors, screens, tilted bays, gateway grounds) or not punched are left alone:
   // compose resolves one cycle level, so a nested cycle would draw plain wall.
   if (f.windowPattern?.length && name !== 'blank') {
-    const wrap = (r: Row): Row => (r.kind === 'punched' && r.win ? { kind: 'wall', cycle: f.windowPattern!.map(w => ({ ...r, win: { ...r.win!, w } })) } : r);
+    const pat = f.windowPattern, widen = (r: Row, w: number): Row => (r.kind === 'punched' && r.win ? { ...r, win: { ...r.win, w } } : r);
+    // An openBays storey (a per-bay cycle of the storey's row and plain wall) takes the widths into its own cycle,
+    // lengthened to a common multiple of both, so the blind bays stay blind and the windowed ones keep the rhythm.
+    const openCycle = (r: Row) => r.kind === 'wall' && !!r.cycle?.length && r.cycle.every(x => (x.kind === 'wall' && !x.cycle) || x.kind === 'punched');
+    const lcm = (a: number, b: number): number => { let x = a, y = b; while (y) [x, y] = [y, x % y]; return (a / x) * b; };
+    const wrap = (r: Row): Row => (r.kind === 'punched' && r.win ? { kind: 'wall', cycle: pat.map(w => widen(r, w)) }
+      : f.openBays?.length && openCycle(r) ? { kind: 'wall', cycle: Array.from({ length: lcm(r.cycle!.length, pat.length) }, (_, k) => widen(r.cycle![k % r.cycle!.length], pat[k % pat.length])) } : r);
     typical = wrap(typical); ground = wrap(ground);
     for (const k of Object.keys(rowOverrides)) rowOverrides[k] = wrap(rowOverrides[k]);
   }

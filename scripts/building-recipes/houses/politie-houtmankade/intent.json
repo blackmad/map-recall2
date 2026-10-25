@@ -27,8 +27,14 @@
    "windows": "plain",
    "hand": [
     "system",
-    "baysPerStorey"
-   ]
+    "baysPerStorey",
+    "palette.brick",
+    "palette.glass"
+   ],
+   "palette": {
+    "brick": "#f0c9a2",
+    "glass": "#6a6e6b"
+   }
   },
   {
    "wallSurfaces": [
@@ -51,9 +57,9 @@
     104
    ],
    "system": "brick-bay-grid",
-   "storeys": 7,
+   "storeys": 6,
    "baysPerStorey": 6,
-   "ground": "glazed",
+   "ground": "system",
    "windows": "plain",
    "entrance": {
     "bay": 2,
@@ -63,7 +69,9 @@
    "hand": [
     "system",
     "baysPerStorey",
-    "windowShape"
+    "windowShape",
+    "windowPattern",
+    "storeys"
    ],
    "palette": {
     "brick": "#615449",
@@ -71,8 +79,24 @@
    },
    "windowShape": {
     "w": 0.531,
-    "h": 0.58,
-    "sill": 0.28
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "windowPattern": [
+    0.36,
+    0.36,
+    0.8,
+    0.8,
+    0.36,
+    0.36
+   ],
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 4,
+    "transom": 0.5,
+    "factor": 2.3
    }
   }
  ],
@@ -91,7 +115,8 @@
   "1993 curved block on the Houtmankade (256 LoD2.2 wall surfaces): the police bureau fills the glazed two-storey plinth of the east/north sides, apartments with curved white balcony fronts above. East plinth (panel 49, surface 54, 38 m) from the 2025-06-17 panorama (w01-107): grey-blue glazed ground floors in a column grid under a cream band, roller blinds over the upper glass; the setback top storey (panel 88, surfaces 100/175/256) as a glazed bay-window ribbon; north wall (panel 92, surface 104, 26 m) from the 2021-01-14 panorama (w02-12): cream rendered wall with seven rows of grouped windows over the glazed plinth.",
   "Ornaments from the panoramas: no POLITIE lettering, blue lamp, striped band, canopy or crest is on any photographed wall (the only POLITIE visible is the livery of a parked van, which is street furniture), so none is modelled: not present, not skipped. The arched entrance canopy on the north plinth is MODELLED (entrance bay 2 with a flat canopy, SIMPLIFIED from the round arch). Skipped with reasons: the sloping access ramp with railings (it stands on the quay outside the pand footprint, so it is not part of this building volume); the round balcony fronts with white railings on the east upper levels (the 3DBAG curve is already straight, and the balcony slab edge is below the 5 cm attachment grain once flattened); grey roller blinds (texture, not geometry); the grey columns between plinth bays (SIMPLIFIED: the ribbon grid has no columns).",
   "East upper apartment panels (60, 85, 183), the south wall (21 m, 2025-09-29 panorama at 41 deg obliquity), the west side (2019, obliquity 44 deg) are too oblique or unphotographed and stay blank (audit:glb reports the blank walls).",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 2 take the photo's wall and glass colour, window shape, bay count and front class."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 2 take the photo's wall and glass colour, window shape, bay count and front class.",
+  "Likeness pass 2026-10-25 (lane gate-fail-installed): walls[2] (north, w03-12) was FAIL (window shape square vs photo wide): the photo shows per storey a 2-light window at each corner, a 2-light window, two wide 5-light windows and a 2-light window (narrow-narrow-wide-wide-narrow-narrow), and a glazed plinth two upper-storey heights tall under five window rows; now storeys 6 with plinth {storeys [0], factor 2.3, lights 4} under windowPattern [0.36,0.36,0.8,0.8,0.36,0.36] (h 0.62, sill 0.2): WARN (mask IoU only). walls[0] (east plinth, w01-107 2016) takes the sunlit salmon fascia colour #f0c9a2 instead of the cream; the gate abstains there (NO EVIDENCE) because the mint-green opaque spandrel panels between the two glazed storeys read as foliage (29 %) and the sunlit fascia and pavement as washed out (32 %); the 0 deg, 10 m crop shows the modelled composition (two glazed storeys in an 8-bay grid under a fascia). Kit cannot yet express: an opaque coloured spandrel band inside a ribbon/glazed storey grid that is not a layered curtain wall (the curtain-wall version drops the glazed ground for a mesh plinth). walls[1] (setback top storey) has no archived crop that pairs with its panel; w01-107 shows it as a glazed bay-window ribbon, as modelled."
  ],
  "measured": {
   "date": "2026-10-14",

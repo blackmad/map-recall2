@@ -3,6 +3,7 @@
  * validator: names, counts and component switches only; no coordinate or metric field anywhere. Wall surfaces are
  * checked against the facts when the fit runs (`fitLarge`), not here.
  */
+import {arcadePiersProblems} from '../blockBuilding/arcadePiers.ts';
 import {claddingProblems} from './claddingIntent.ts';
 import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
 import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/systems.ts';
@@ -10,7 +11,7 @@ import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -134,6 +135,11 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
         if (w.signage.mount === 'canopy' && !(typeof w.entrance === 'object' && w.entrance.canopy)) problems.push(`${at}.signage.mount: canopy needs entrance.canopy`);
         if (w.signage.mount === 'glazing' && !(typeof w.entrance === 'object' && (w.entrance.storeys ?? 1) > 1)) problems.push(`${at}.signage.mount: glazing needs an entrance hall (entrance.storeys >= 2)`);
       }
+    }
+    if (w.arcadePiers !== undefined) {
+      problems.push(...arcadePiersProblems(w.arcadePiers, `${at}.arcadePiers`, w.baysPerStorey));
+      if (w.system === 'curtain-wall' || w.system === 'glazed-hall' || w.screen) problems.push(`${at}.arcadePiers: in front of a wall with a face (not curtain-wall, glazed-hall or screen)`);
+      if (typeof w.storeys === 'number' && w.arcadePiers?.storeys?.some?.((k: number) => k >= w.storeys!)) problems.push(`${at}.arcadePiers.storeys: under storeys ${w.storeys}`);
     }
     if (w.arcade !== undefined) {
       if (w.ground !== 'arcade') problems.push(`${at}.arcade needs ground "arcade"`);
@@ -394,7 +400,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       else p.forEach((v, i) => { if (typeof v !== 'number' || !(v >= 0.06 && v <= 0.99)) problems.push(`${at}.windowPattern[${i}]: fraction 0.06..0.99 of the bay`); });
       if (!['brick-bay-grid', 'plinth-shopfronts', 'french-window-ledge'].includes(w.system)) problems.push(`${at}.windowPattern: only brick-bay-grid, plinth-shopfronts and french-window-ledge windows take per-bay widths`);
       if (w.screen) problems.push(`${at}.windowPattern: not with screen (glass-block perforations)`);
-      if (w.hoist || w.openBays || w.columns || w.tiltedBays) problems.push(`${at}.windowPattern: not with hoist, openBays, columns or tiltedBays (those keep their own per-bay rows)`);
+      if (w.hoist || w.columns || w.tiltedBays) problems.push(`${at}.windowPattern: not with hoist, columns or tiltedBays (those keep their own per-bay rows)`);
     }
     if (w.system === 'glazed-hall') {
       const h = w.hall;

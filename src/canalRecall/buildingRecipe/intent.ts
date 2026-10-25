@@ -17,6 +17,7 @@ import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {awningProblems, deBaarsjesProblems} from './deBaarsjesIntent.ts';
 import {eavesOverhangProblems, type EavesOverhangIntent} from './eavesOverhangIntent.ts';
 import {groundCanopyProblems, type GroundCanopyIntent} from './groundCanopyIntent.ts';
+import type {ArcadePiersIntent} from '../blockBuilding/arcadePiers.ts';
 
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat'] as const;
 export type GableIntent = typeof GABLES[number];
@@ -1070,6 +1071,13 @@ export interface LargeWallIntent {
    * upper storey (default 1.6), `facing` false = no rendered lintel band and pier facings.
    */
   arcade?: {pier?: number; walk?: number; head?: number; rise?: number; chamfer?: number; storeyFactor?: number; facing?: boolean};
+  /**
+   * Free-standing piers in front of a glazed storey band on their own pitch (blockBuilding/arcadePiers.ts; Stadsloket
+   * Zuidoost: 8 white piers under a white beam where the windows above run on a 2.4 m sub-bay): `count` piers evenly
+   * from end to end of the main panel or of its `bays` [first, last] span, over the contiguous `storeys`, `w` wide,
+   * `depth` proud of the wall, under a `beam` (m) at the band's top, in the group's stone. Absent = byte-identical.
+   */
+  arcadePiers?: ArcadePiersIntent;
 }
 
 export interface LargeBuildingIntent {

@@ -10,6 +10,7 @@ import {runGates, type GateReport} from '../blockBuilding/gates.ts';
 import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawArcadeFacing, drawCurtainGrid, CURTAIN_GRID_OVER_SPANDRELS, drawSpandrels, drawMeshScreen, drawEntrance, drawGlazedColumns, drawGlazedHall, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStAndrewsCross, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
 import {drawDressings} from '../blockBuilding/dressings.ts';
+import {drawArcadePiers} from '../blockBuilding/arcadePiers.ts';
 import {applyCladdingSlots, drawCladdingLines} from '../blockBuilding/cladding.ts';
 import {fitsPanel, pointInRing, rectPoly, type Panel} from '../blockBuilding/panels.ts';
 import type {BuildingFacts} from './facts.ts';
@@ -17,7 +18,7 @@ import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 
-export interface LargeComponentCounts { claddingLines?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { claddingLines?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -117,6 +118,8 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
     const k = drawGlazedColumns(c, info.cells, levels, bay => col.bays.includes(bay % every), col.from, col.share, col.slabs, panelEaves(p) - 0.2, {glass: col.glass ?? s.glass, frame: s.frame, stone: s.stone});
     if (k) counts.glassColumns = (counts.glassColumns ?? 0) + k;
   }
+  // Free-standing arcade piers and their beam on their own pitch, in front of the openings, under the cornice.
+  if (g.arcadePiers && g.mainPanel === p.index) { const k = drawArcadePiers(c, levels, g.arcadePiers, g.bays, underCornice); if (k) counts.arcadePiers = (counts.arcadePiers ?? 0) + k; }
   // Row split: each house's cornice at its own eaves and shop fascia at its own ground line, inside its span.
   const houses = g.houses?.panel === p.index ? g.houses.segs : null;
   if (houses) for (const h of houses) {

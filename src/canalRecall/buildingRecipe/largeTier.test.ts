@@ -972,5 +972,5 @@ test('windowPattern: per-bay window widths cycle across the bays, keep one pitch
   bad({windowPattern: [0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.3]}, /windowPattern/);
   bad({windowPattern: [1.2]}, /windowPattern\[0\]/);
   bad({windowPattern: [0.8], system: 'ribbon-windows'}, /windowPattern: only/);
-  bad({windowPattern: [0.8], openBays: [{storeys: [1], bays: [0]}]}, /windowPattern: not with/);
+  bad({windowPattern: [0.8], hoist: {every: 2}}, /windowPattern: not with/);
 });

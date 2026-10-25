@@ -32,12 +32,12 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 5,
-   "baysPerStorey": 16,
+   "baysPerStorey": 18,
    "ground": "glazed",
    "windows": "low",
    "frames": false,
    "entrance": {
-    "bay": 8,
+    "bay": 5,
     "storeys": 2
    },
    "signage": {
@@ -47,11 +47,39 @@
    },
    "hand": [
     "system",
-    "baysPerStorey"
+    "baysPerStorey",
+    "windowShape",
+    "windowPattern",
+    "storeys"
    ],
    "palette": {
     "brick": "#6f4a3b",
     "glass": "#2e302e"
+   },
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.4,
+    "sill": 0.3
+   },
+   "windowPattern": [
+    0.4,
+    0.4,
+    0.97
+   ],
+   "glazedStoreys": [
+    1,
+    2
+   ],
+   "arcadePiers": {
+    "storeys": [
+     0,
+     1,
+     2
+    ],
+    "count": 9,
+    "w": 0.16,
+    "proud": 0.6,
+    "beam": 0.1
    }
   },
   {
@@ -66,21 +94,84 @@
    "windows": "low",
    "frames": false,
    "entrance": {
-    "bay": 5,
+    "bay": 11,
     "storeys": 1
    },
    "hand": [
     "system",
-    "baysPerStorey"
+    "baysPerStorey",
+    "windowShape",
+    "windowPattern",
+    "openBays"
    ],
    "palette": {
     "brick": "#6f625d"
    },
    "windowShape": {
-    "w": 0.698,
-    "h": 0.45,
-    "sill": 0.1
-   }
+    "w": 0.6,
+    "h": 0.42,
+    "sill": 0.15
+   },
+   "windowPattern": [
+    0.34,
+    0.34,
+    0.99
+   ],
+   "plinth": {
+    "storeys": [
+     1
+    ],
+    "bays": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "lights": 3
+   },
+   "arcadePiers": {
+    "storeys": [
+     0,
+     1
+    ],
+    "count": 4,
+    "bays": [
+     0,
+     5
+    ],
+    "w": 0.12,
+    "proud": 0.7,
+    "beam": 0.08
+   },
+   "openBays": [
+    {
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "bays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      15,
+      17
+     ]
+    }
+   ]
   },
   {
    "wallSurfaces": [
@@ -89,21 +180,59 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 5,
-   "baysPerStorey": 10,
+   "baysPerStorey": 12,
    "ground": "system",
    "windows": "low",
    "frames": false,
    "hand": [
     "system",
-    "baysPerStorey"
+    "baysPerStorey",
+    "windowShape",
+    "windowPattern"
    ],
    "palette": {
     "brick": "#716460"
    },
    "windowShape": {
-    "w": 0.752,
-    "h": 0.45,
-    "sill": 0.2
+    "w": 0.6,
+    "h": 0.34,
+    "sill": 0.25
+   },
+   "windowPattern": [
+    0.97,
+    0.45,
+    0.25
+   ],
+   "plinth": {
+    "storeys": [
+     1
+    ],
+    "bays": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "lights": 2
+   },
+   "arcadePiers": {
+    "storeys": [
+     0,
+     1
+    ],
+    "count": 5,
+    "bays": [
+     3,
+     11
+    ],
+    "w": 0.2,
+    "proud": 0.45,
+    "beam": 0.09
    }
   },
   {
@@ -119,7 +248,19 @@
    "frames": false,
    "hand": [
     "system",
-    "baysPerStorey"
+    "baysPerStorey",
+    "windowShape",
+    "windowPattern"
+   ],
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.42,
+    "sill": 0.15
+   },
+   "windowPattern": [
+    0.34,
+    0.34,
+    0.99
    ]
   }
  ],
@@ -137,9 +278,10 @@
  },
  "notes": [
   "2006 civic office on Anton de Komplein (pand 0363100012078772, 121 LoD2.2 surfaces, roof max 32.8 m); the whole pand is modelled. South-west front (surfaces 15/60, 2019-06-26 panorama w03-241): dark red brick, four storeys of small and long-ribbon windows set in the brick, over a tall fully glazed ground storey carried on white square piers, a long ribbon window box (a projecting glass band) on the fourth storey, wooden double doors under the white lettering Stadsloket on the glazing. North-west front (2025-09-01, w01-331, surface 54/68 and 8/69): the same brick, three storeys of mixed narrow/ribbon windows, a glazed stair core between two brick blocks, a low glazed arcade at both ends.",
-  "Signature: 'Stadsloket' lettering MODELLED (kit glazing lettering STADSLOKET in white on the entrance-hall glass, capitals for the photographed lower case); two-storey glazed entrance hall with the timber door colour MODELLED (entrance storeys 2, door colour #b9873f); glazed ground storey MODELLED (ground glazed); the white square piers of the arcade SIMPLIFIED (the kit piers option runs the whole wall height, so it is off: the arcade reads as a continuous glazed storey); the long projecting ribbon window box on the fourth storey SKIPPED (too-small: 3 m by 1 m, 0.4 m proud, no component); the brick window pattern SIMPLIFIED to a regular low-window grid (16 bays); glazed stair core on the north-west front SKIPPED (inside 3DBAG volume); the stairs and flower planters in front SKIPPED (temporary).",
+  "Signature: 'Stadsloket' lettering MODELLED (kit glazing lettering STADSLOKET in white on the entrance-hall glass, capitals for the photographed lower case); two-storey glazed entrance hall with the timber door colour MODELLED (entrance storeys 2, door colour #b9873f); glazed ground storey MODELLED (ground glazed); the white square piers and beam of the arcade MODELLED (kit arcadePiers, 2026-10-25: 9 piers on their own 5.5 m pitch in front of the glazed storeys); the long projecting ribbon window box on the fourth storey SKIPPED (too-small: 3 m by 1 m, 0.4 m proud, no component); the brick window pattern MODELLED as narrow-narrow-wide per 7.3 m (windowPattern, 2026-10-25); glazed stair core on the north-west front SKIPPED (inside 3DBAG volume); the stairs and flower planters in front SKIPPED (temporary).",
   "South-east and north-east walls (surfaces 74/87 etc.) have no panorama in range (candidates 0): surface 74/87 carries an INFERRED regular window grid copied from the north-west front so the 79 m wall is not a blank slab; the stepped taller blocks (58/121, 19/71/73, 101, 14) stay blank.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #445559 not used (not darker than the wall #6f625d by 10 L*, or tinted): kit glass kept; walls[2] glass #445359 not used (not darker than the wall #716460 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #445559 not used (not darker than the wall #6f625d by 10 L*, or tinted): kit glass kept; walls[2] glass #445359 not used (not darker than the wall #716460 by 10 L*, or tinted): kit glass kept.",
+  "Likeness pass 2026-10-25 (lane gate-fail-installed): all three photographed fronts were FAIL against a uniform square-window grid. The panoramas show a repeating rhythm of one wide 3-4-light window and two narrow 1-light slots (walls[0], walls[1]; walls[2] wide-medium-narrow), alternate storeys shifted by one window, a double-height glazed arcade behind white square piers under a white beam (walls[0]; the low arcades at both ends of the north-west front, walls[1] bays 0-5 and walls[2] bays 3-11), blind recessed brick panels on walls[1] bays 14 and 16, and the walls[1] door in bay 11 (was 5). Now: windowPattern per front (bays 18/18/12), the arcade as glazedStoreys [1,2] (walls[0]) or a plinth on storey 1 (walls[1], walls[2]) with the new kit arcadePiers in front, openBays for the blind panels (windowPattern now works with openBays). The crops are placed with an assumed street at 0.4 m NAP where the 3DBAG ground is -2.78 m NAP, so the photographed street sits about 3.2 m up the panel and the lowest model storey is not visible in them; the storey lines here follow the crops. walls[3] (no photo) copies walls[1] window shape and pattern. Kit cannot yet express: a per-storey phase of windowPattern (alternate storeys shifted by one window), windows wider than one bay (the 2.9 m wide windows are capped at 0.97 of a 2.43 m bay), a double-height glazed storey without the brick floor band between its two storeys, the projecting ribbon window box on the fourth storey."
  ],
  "measured": {
   "date": "2026-10-14",

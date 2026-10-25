@@ -23,6 +23,7 @@ import {panelRuns, runBayAxes} from '../blockBuilding/curve.ts';
 import type {Lantern} from '../blockBuilding/components.ts';
 import {MESH_SCREEN} from '../blockBuilding/components.ts';
 import {CLADDING, PANEL_ROW_M, claddingHeights, type CladdingFit} from '../blockBuilding/cladding.ts';
+import {fitArcadePiers, type ArcadePiersFit} from '../blockBuilding/arcadePiers.ts';
 import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {roofHeightAt} from './facts.ts';
 import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellRepair.ts';
@@ -88,6 +89,8 @@ export interface LargeGroupFit {
   houses?: {panel: number; segs: LargeHouseFit[]};
   /** facade cladding (intent `cladding`, blockBuilding/cladding.ts): heights, profile and its sheet and line slots */
   cladding?: CladdingFit;
+  /** free-standing piers and beam over a storey band on their own pitch (intent `arcadePiers`, blockBuilding/arcadePiers.ts), in the group's stone */
+  arcadePiers?: ArcadePiersFit;
 }
 /** One house of a row split on the main panel (u in panel metres; bays numbered from `bayOffset` across the row). */
 export interface LargeHouseFit {
@@ -519,6 +522,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.wallSplit && main && splitSlot ? {split: {panel: main.index, uM: splitAtBay(main.uMin, main.uMax, pitchM, w.wallSplit.at), slot: splitSlot}} : {}),
       ...(arcade ? {arcade: {...arcade, facing: w.arcade?.facing !== false}} : {}),
       ...(houses ? {houses} : {}),
+      ...(w.arcadePiers ? {arcadePiers: fitArcadePiers(w.arcadePiers, slots.stone)} : {}),
       ...(clad && cladSlot && cladLine ? {cladding: {kind: clad.kind, ...claddingHeights(eaves, clad.from, clad.to), pitchM: clad.pitch ?? (clad.kind === 'paint' ? 0 : CLADDING[clad.kind].pitch), rowPitchM: clad.rowPitch ?? PANEL_ROW_M, slot: cladSlot, lineSlot: cladLine,
         ...(w.wallSplit && main && splitSlot ? {side: {panel: main.index, uM: splitAtBay(main.uMin, main.uMax, pitchM, w.wallSplit.at), right: clad.side === 'right', ...(clad.side === 'right' ? {source: splitSlot} : {})}} : {})}} : {}),
       ...(w.loggias ? {loggiaDepthM: r3(Math.max(...w.loggias.storeys.map(k => (st.lines[k + 1] ?? st.lines[k]) - st.lines[k])) * (w.loggias.deep ?? LOGGIA.deep))} : {}), slots});
