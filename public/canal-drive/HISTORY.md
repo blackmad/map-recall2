@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+**Helmersbuurt block-face kit (2026-10-25, #81).** User asked for an Eerste
+Helmersstraat kit. 11 district types in `scripts/block-face/types/helmersbuurt/`,
+10 runs, 33 houses installed (EU03 Helmersbuurt-Oost 20, EU01 Cremerbuurt-Oost
+13; the rest of EU03 not attempted). 3D from PDOK (`BLOCK_FACE_3DBAG=pdok`,
+api.3dbag.nl unreachable). Kit: `jambBlocks`, `friezeVents`, per-axis
+`axisHeads`, relieving arch with band infill, merlon wall dormers,
+`entablature` (deep white cornice, consoles), per-house `reviewPalettes`.
+Review sent it back once: Eerste 55 measured green and 122 plum (now
+#6f4e3f and painted-black #2e2d2b). Audit changes to clear the 4 held runs:
+a part whose foot is above its host wall's local top is not "outside" it;
+touches within 5 mm of a roof edge are not piercing; vents/blocks stand
+4.2 cm proud. Eerste 120 carries a reviewer NCC accept floor (0.10, range
+0.08-0.15) after the entablature lowered its score; checked by eye.
+Kit still lacks finials, chequer/fan tympana, oriels, bellied balconettes,
+dentils.
+
 **Haarlemmerweg 333 big buildings (2026-10-25, #83).** User asked for
 "the big ones" around Kennedy Van der Laan; the brick blocks there were
 already modelled, so the lane took the unmodelled large boxes. Installed:
