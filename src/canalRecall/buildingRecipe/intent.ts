@@ -18,6 +18,7 @@ import {awningProblems, deBaarsjesProblems} from './deBaarsjesIntent.ts';
 import {eavesOverhangProblems, type EavesOverhangIntent} from './eavesOverhangIntent.ts';
 import {groundCanopyProblems, type GroundCanopyIntent} from './groundCanopyIntent.ts';
 import type {ArcadePiersIntent} from '../blockBuilding/arcadePiers.ts';
+import type {WindowBoxIntent} from '../blockBuilding/windowBox.ts';
 
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat'] as const;
 export type GableIntent = typeof GABLES[number];
@@ -1078,6 +1079,12 @@ export interface LargeWallIntent {
    * `depth` proud of the wall, under a `beam` (m) at the band's top, in the group's stone. Absent = byte-identical.
    */
   arcadePiers?: ArcadePiersIntent;
+  /**
+   * A projecting glazed window box across a span of bays on one storey (blockBuilding/windowBox.ts; Stadsloket Zuidoost's
+   * 18 m glass band over the arcade): `sill` and `h` of the storey, standing `proud` of its height out of the wall, in the
+   * frame and glass slots, `lights` across it and a transom. Leave the bays behind it blind (`openBays`). Absent = byte-identical.
+   */
+  windowBox?: WindowBoxIntent;
 }
 
 export interface LargeBuildingIntent {
