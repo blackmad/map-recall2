@@ -147,14 +147,8 @@
     "walls[1] the taller west end (panel 11, crop w03-359 2025-06-18, square on): five storeys of brick to the top, a white-framed window axis at each edge, blank brick between.",
     "NOT DRAWN (kit cannot say): the split-level window rows of the east axis of walls[0] (half a storey above the west axes); the glazed stair tower; the dark basement vent band; the windows' L-shaped frames with a low side light.",
     "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class.",
-    "Lit colour (2026-10-25 integrator review): the Haarlemmerweg fronts face north and every crop is in shade (#5d554b..#6b7777); the scheme brick is read off the sunlit east wall of Haarlemmerweg 63-71 (w04-89, 2020-08-14, pand 0363100012081533: #a5927b in full sun, #837361 lower down), #9a8770, kept measured."
+    "Lit colour (2026-10-25 integrator review): the Haarlemmerweg fronts face north and every crop is in shade (#5d554b..#6b7777); the scheme brick is read off the sunlit east wall of Haarlemmerweg 63-71 (w04-89, 2020-08-14, pand 0363100012081533: #a5927b in full sun, #837361 lower down), #9a8770, kept measured.",
+    "Left unmeasured (2026-10-25, second pass): the in-game north faces render darker than the photo, so the sunlit reading also takes the export's brightening, in line with the neighbouring rows."
   ],
-  "budgetTriangles": 12000,
-  "measured": {
-    "date": "2026-10-25",
-    "groups": [
-      0,
-      1
-    ]
-  }
+  "budgetTriangles": 12000
 }

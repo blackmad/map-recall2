@@ -114,13 +114,8 @@
     "walls[0] the Haarlemmerweg front (panel 1, crops w01-359L 2021-03-22 and w01-359 2025-09-29, square on): a tall white rendered ground floor with two large round-arched glazed doors (hallDoors), three brick storeys of six segmental-arched white-framed windows, iron balconies on brick consoles in front of bays 1 and 4 of every upper storey.",
     "NOT DRAWN (kit cannot say): the small round-arched windows over the side doors in bays 0 and 5 and the side doors themselves (hallDoors bays keep only a blank ground); the two pointed dormers with arched windows; the brick consoles under the balconies.",
     "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4c5255 not used (not darker than the wall #5e4a4d by 10 L*, or tinted): kit glass kept; walls[0] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand).",
-    "Lit colour (2026-10-25 integrator review): the north front is in shade on the 2021 crop (#5e4a4d); the brick is taken from the sunlit 2025-09-29 crop w01-359 (piers #876b60..#987f73), #8a6f64, and kept measured."
+    "Lit colour (2026-10-25 integrator review): the north front is in shade on the 2021 crop (#5e4a4d); the brick is taken from the sunlit 2025-09-29 crop w01-359 (piers #876b60..#987f73), #8a6f64, and kept measured.",
+    "Left unmeasured (2026-10-25, second pass): the in-game north faces render darker than the photo, so the sunlit reading also takes the export's brightening, in line with the neighbouring rows."
   ],
-  "budgetTriangles": 12000,
-  "measured": {
-    "date": "2026-10-25",
-    "groups": [
-      0
-    ]
-  }
+  "budgetTriangles": 12000
 }
