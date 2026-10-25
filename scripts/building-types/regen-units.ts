@@ -34,7 +34,7 @@ for (const file of fs.readdirSync(dir).filter(f => f.endsWith('.glb') && (!only 
   const doc = await io.read(path.join(dir, file));
   const extras = doc.getRoot().listNodes().map(n => n.getExtras() as {key?: string; nominal?: {L0: number; W0: number; E0: number; R0?: number}}).find(e => e.key && e.nominal);
   if (!extras?.key || !extras.nominal) { console.warn('skip (no key/nominal extras)', file); continue; }
-  const [type, variant, storeys, roofForm, ridge, groundMode, ...rest] = extras.key.split('|'), mirror = rest.includes('mirror'), sides = rest.find(r => r !== 'mirror');
+  const [type, variant, storeys, roofForm, ridge, groundMode, ...rest] = extras.key.split('|'), mirror = rest.includes('mirror'), sides = rest.find(r => r !== 'mirror' && !/^f\d+d\d+$/.test(r)); // size-class token (spec.sizeClassesM) is not a sides token
   const spec = specs.get(type);
   if (!spec) { console.warn('skip (unknown type)', file, type); continue; }
   const {L0, W0, E0, R0} = extras.nominal;

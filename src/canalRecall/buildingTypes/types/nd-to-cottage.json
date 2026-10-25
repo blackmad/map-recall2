@@ -1,0 +1,312 @@
+{
+ "id": "nd-to-cottage",
+ "label": "Tuindorp Oostzaan (1921-23) garden-village cottage: brick ground storey with eaves at ~2.75 m under a white timber cornice, steep pantile roof with a flat-roofed white dormer over the party wall between two window sides, paired doors (Kometensingel, Uranusstraat, Neptunusstraat, Rigelstraat, Aldebaranstraat, Betelgeuzestraat, Grote and Kleine Beerstraat, Poolsterstraat)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 1197,
+  "bouwjaar": [
+   1921,
+   1923
+  ],
+  "lengthM": 8.8,
+  "widthM": 5.3,
+  "bouwlagen": 1,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  2.3,
+  3.6
+ ],
+ "ridgeRangeM": [
+  6.4,
+  8.1
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.6,
+   6.0
+  ],
+  "depth": [
+   6.0,
+   9.6
+  ]
+ },
+ "sizeClassesM": {
+  "depth": [
+   7.6
+  ]
+ },
+ "alternateMirror": true,
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.35,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.12,
+  "pitchDeg": 48,
+  "eavesPinM": 2.75,
+  "dormers": [
+   {
+    "ref": "right",
+    "u": 0.95,
+    "w": 1.9,
+    "h": 1.05,
+    "setBackM": 0.6,
+    "lights": 3,
+    "cheek": "column",
+    "frame": "frame",
+    "apronM": 0.25,
+    "note": "half of a six-light dormer straddling the party wall between the window sides of two houses (2147542, 2085318, 2094951); the neighbour's mirrored half completes it"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "green-door",
+ "variants": {
+  "green-door": {
+   "label": "dark green doors, brown-orange pantiles (1921-22 streets)",
+   "evidence": "survey terraces of Rigelstraat, Betelgeuzestraat, Aldebaranstraat, Siriusstraat, Argostraat, Beerstraten, Orionplantsoen, Sterrenplein (photos)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#7a5c4c"
+    },
+    "frame": "#f2f0e8",
+    "glass": "#4b5a6b",
+    "door": "#2f4034",
+    "accent": "#efede6",
+    "rail": "#8d9092",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#a5694e"
+    }
+   }
+  },
+  "red-door": {
+   "label": "red doors, orange pantiles (1923 streets)",
+   "evidence": "survey terraces of Kometensingel 300-330, Neptunusstraat, Saturnusstraat, Uranusstraat, Jupiterstraat, Marsstraat, Mercuriusstraat (photos)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#7a5c4c"
+    },
+    "frame": "#f2f0e8",
+    "glass": "#4b5a6b",
+    "door": "#9a2b2b",
+    "accent": "#efede6",
+    "rail": "#8d9092",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#ad6442"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122147542.jpg",
+     "pand": "03631000122147542",
+     "address": "Uranusstraat",
+     "note": "2024-10, facade in shade (sun behind the row): brick ground storey to eaves ~2.75 m under a white timber cornice, big orange pantile roof; paired red doors with white frames, a 3-light living-room window beside each, a flat-roofed white dormer straddling the party wall between the window sides of two houses (three lights per house), grey zinc apron under it"
+    },
+    {
+     "photo": "survey crop 03631000122085318.jpg",
+     "pand": "03631000122085318",
+     "address": "Uranusstraat",
+     "note": "2024-10 sunlit: same, red doors; dormer of six lights over the wall between two window sides; vents (four brick slits) over the door pair"
+    },
+    {
+     "photo": "survey crop 03631000122094951.jpg",
+     "pand": "03631000122094951",
+     "address": "Orionplantsoen",
+     "note": "2022-12 low sun: green doors, brown-orange tiles, same dormer and cornice; brick read here (sunlit)"
+    },
+    {
+     "photo": "survey crop 03631000122135673.jpg",
+     "pand": "03631000122135673",
+     "address": "Kometensingel",
+     "note": "2024-10: green doors, mossy dark pantiles, two half dormers meeting over the party wall"
+    },
+    {
+     "photo": "survey crop 03631000122111276.jpg",
+     "pand": "03631000122111276",
+     "address": "Aldebaranplein",
+     "note": "2024-10: same design, dormers over every second party wall"
+    },
+    {
+     "photo": "survey crop 03631000122105319.jpg",
+     "pand": "03631000122105319",
+     "address": "Rigelstraat",
+     "note": "2025-09: same, green doors"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.75,
+       "w": 0.95,
+       "h": 2.05
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.55,
+       "w": 2.0,
+       "h": 1.35,
+       "sill": 0.75,
+       "lights": 3
+      },
+      {
+       "kind": "vents",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.75,
+       "count": 2,
+       "sill": 2.35,
+       "note": "brick ventilation slits over the door"
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 2,
+     "below": 0.22,
+     "above": 0.0,
+     "palette": "column"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122147542.jpg",
+     "pand": "03631000122147542",
+     "address": "Uranusstraat",
+     "note": "garden side not photographed: garden door and kitchen window inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.9,
+       "w": 0.9,
+       "h": 2.05
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.6,
+       "w": 1.8,
+       "h": 1.2,
+       "sill": 0.85,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122105319.jpg",
+     "pand": "03631000122105319",
+     "address": "Rigelstraat",
+     "note": "end gables plain brick in the survey (2065400, 2079737); party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122105319.jpg",
+     "pand": "03631000122105319",
+     "address": "Rigelstraat",
+     "note": "end gables plain brick in the survey (2065400, 2079737); party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Eaves pinned at 2.75 m from the photos (door head + cornice): 3DBAG's b3_h_dak_min reads 2.6-2.9 m on the 8.9 m deep houses but 5.1-5.3 m on the 6.5 m deep ones (a dormer cheek or the upper roof plane), so the photo value is used for every house; the ridge stays per house from 3DBAG (7.0-7.9 m).",
+  "Houses whose 3DBAG ridge exceeds 8.1 m were raised to two storeys (Orionstraat, Maanstraat, Meteorenweg) and are held.",
+  "Dormer as one half per house on the window side (mirrored pairs); end houses whose window side is a gable end show a half dormer with a cheek, real end houses often have a small separate dormer: not modelled.",
+  "Hipped row ends follow 3DBAG per house (no dormer drawn on a hip).",
+  "Mirror parity (doors side by side) from the row alternation: inferred.",
+  "Brick from the sunlit Orionplantsoen crop (2094951) cooled for the low sun; the Uranusstraat crops are in shade and read blue-grey."
+ ]
+}

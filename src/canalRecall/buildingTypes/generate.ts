@@ -7,7 +7,7 @@
  * (u along the facade seen from outside left-to-right, v up, d outward).
  */
 import {MeshBuilder, type MaterialKey, type V3} from './mesh.ts';
-import {FACADE_IDS, type Annex, type Bay, type Element, type FacadeId, type Height, type Levels, type Palette, type PaletteKey, type TypeSpec} from './spec.ts';
+import {FACADE_IDS, type Annex, type Bay, type DormerSpec, type Element, type FacadeId, type Height, type Levels, type Palette, type PaletteKey, type TypeSpec} from './spec.ts';
 
 export interface GenerateParams {
   lengthM: number;
@@ -417,6 +417,79 @@ function roofFeatures(c: Ctx, spec: TypeSpec, L: number, W: number, eaves: numbe
       mb.quad(key, P(u - w / 2 - pad, z0 + hz / 2 + pad / n, e), P(u + w / 2 + pad, z0 + hz / 2 + pad / n, e), P(u + w / 2 + pad, z0 - hz / 2 - pad / n, e), P(u - w / 2 - pad, z0 - hz / 2 - pad / n, e));
     }
   }
+  for (const d of spec.roof.dormers ?? []) {
+    if ((d.variants && !d.variants.includes(c.variant)) || d.exceptVariants?.includes(c.variant)) continue;
+    dormerUnit(c, d, L, W, sl, ridgeH, mirror);
+  }
+}
+
+/** Triangle wound so its normal points away from `inside`. */
+function triAway(mb: MeshBuilder, key: MaterialKey, inside: V3, a: V3, b: V3, c: V3): void {
+  const n = [(b[1] - a[1]) * (c[2] - a[2]) - (b[2] - a[2]) * (c[1] - a[1]), (b[2] - a[2]) * (c[0] - a[0]) - (b[0] - a[0]) * (c[2] - a[2]), (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])];
+  const m = [(a[0] + b[0] + c[0]) / 3 - inside[0], (a[1] + b[1] + c[1]) / 3 - inside[1], (a[2] + b[2] + c[2]) / 3 - inside[2]];
+  if (n[0] * m[0] + n[1] * m[1] + n[2] * m[2] >= 0) mb.tri(key, a, b, c); else mb.tri(key, a, c, b);
+}
+
+/**
+ * A flat-roofed dormer on the front slope `sl`: the front face stands `setBackM` behind the wall line from the roof plane up `h`, the
+ * cheeks run back to where the plane reaches the dormer roof. A dormer flush with the frontage end (a half dormer completed by the
+ * mirrored neighbour's) gets no roof overhang there and its glazing runs on to the edge; the cheek stays (hidden inside the pair's
+ * dormer, closing it at a row end), so the unit does not depend on which sides are party walls.
+ */
+function dormerUnit(c: Ctx, d: DormerSpec, L: number, W: number, sl: ReturnType<typeof frontSlope>, ridgeH: number, mirror: boolean): void {
+  const {mb} = c, cheek = c.key(d.cheek ?? 'column'), frameKey = c.key(d.frame ?? 'frame');
+  let uc = d.ref === 'left' ? d.u : d.ref === 'right' ? L - d.u : L / 2 + d.u;
+  if (mirror) uc = L - uc;
+  const x0 = Math.max(-L / 2, -L / 2 + uc - d.w / 2), x1 = Math.min(L / 2, -L / 2 + uc + d.w / 2);
+  if (x1 - x0 < 0.3) return;
+  const zf = W / 2 - d.setBackM, yb = sl.y(zf), yt = Math.min(yb + d.h, ridgeH - 0.15), roofT = 0.12;
+  if (yt - yb < 0.3) return;
+  const zBack = sl.zRidge + (ridgeH - yt - roofT) / sl.tan;
+  const wallL = x0 <= -L / 2 + 1e-6, wallR = x1 >= L / 2 - 1e-6, ov = d.overhangM ?? 0.12;
+  const inside: V3 = [(x0 + x1) / 2, (yb + yt) / 2, (zf + zBack) / 2];
+  quadAway(mb, cheek, inside, [x0, yb, zf], [x1, yb, zf], [x1, yt, zf], [x0, yt, zf]);
+  triAway(mb, cheek, inside, [x0, yb, zf], [x0, yt, zf], [x0, yt, zBack]);
+  triAway(mb, cheek, inside, [x1, yb, zf], [x1, yt, zf], [x1, yt, zBack]);
+  box(mb, cheek, IDENTITY, x0 - (wallL ? 0 : ov), x1 + (wallR ? 0 : ov), yt, yt + roofT, zBack, zf + ov, {back: true});
+  // glazing: frame plate, glass, mullions (as a low-poly window), inset from the cheeks
+  const m = d.marginM ?? 0.12, gx0 = x0 + (wallL ? m / 2 : m), gx1 = x1 - (wallR ? m / 2 : m), gy0 = yb + 0.12, gy1 = yt - 0.1, f = new Frame([0, zf], [1, 0], [0, 1]);
+  if (gx1 - gx0 > 0.2 && gy1 - gy0 > 0.2) {
+    plate(mb, frameKey, f, gx0, gx1, gy0, gy1, 0.01);
+    plate(mb, c.k.glass, f, gx0 + 0.06, gx1 - 0.06, gy0 + 0.06, gy1 - 0.06, 0.02);
+    for (let i = 1; i < d.lights; i++) { const x = gx0 + (gx1 - gx0) * i / d.lights; plate(mb, frameKey, f, x - 0.03, x + 0.03, gy0, gy1, 0.025); }
+  }
+  if (d.apronM) {
+    const za = Math.min(zf + d.apronM, W / 2), lift = 0.03;
+    mb.quad(c.k.rail, [x0, sl.y(za) + lift, za], [x1, sl.y(za) + lift, za], [x1, yb + lift, zf], [x0, yb + lift, zf]);
+  }
+}
+
+/**
+ * Half of a pair's front-facing gable: a mono-pitch roof rising across the frontage from the eaves at the free side (-x, or +x
+ * mirrored) to the ridge on the shared party wall, the front/back gable triangles in the gable material (battens optional) and
+ * the party-wall face above the eaves.
+ */
+function pairGableRoof(c: Ctx, spec: TypeSpec, frames: Record<FacadeId, {f: Frame; len: number}>, L: number, W: number, eaves: number, ridgeH: number, mirror: boolean, gableKey: MaterialKey): void {
+  // eavesOverhangM over the low side (0 where the low eaves of two pairs meet in a valley gutter, the usual case)
+  const {mb, k} = c, s = mirror ? -1 : 1, tan = Math.max(0.05, (ridgeH - eaves) / L), ov = spec.roof.eavesOverhangM, vz = W / 2 + spec.roof.vergeOverhangM;
+  const h = (x: number) => eaves + (s * x + L / 2) * tan, xl = -s * (L / 2 + ov), xh = s * L / 2;
+  const low = h(xl), inside: V3 = [0, eaves - 1, 0], above: V3 = [0, ridgeH + 5, 0];
+  quadAway(mb, k.roof, inside, [xl, low, -vz], [xl, low, vz], [xh, ridgeH, vz], [xh, ridgeH, -vz]);
+  quadAway(mb, k.roof, above, [xl, low - 0.01, -vz], [xl, low - 0.01, vz], [xh, ridgeH - 0.01, vz], [xh, ridgeH - 0.01, -vz]); // soffit
+  for (const z of [-W / 2, W / 2]) triAway(mb, gableKey, [0, (eaves + ridgeH) / 2, 0], [-xh, eaves, z], [xh, eaves, z], [xh, ridgeH, z]);
+  quadAway(mb, k.wall, [0, (eaves + ridgeH) / 2, 0], [xh, eaves, -W / 2], [xh, eaves, W / 2], [xh, ridgeH, W / 2], [xh, ridgeH, -W / 2]);
+  const b = spec.roof.pairGable?.boards;
+  if (!b) return;
+  const key = c.key(b.palette), n = Math.max(1, Math.round(L / b.pitchM)), pitch = L / n;
+  for (const id of ['front', 'back'] as const) {
+    const {f} = frames[id];
+    for (let i = 0; i < n; i++) {
+      const u0 = (i + 0.5) * pitch - b.widthM / 2, u1 = u0 + b.widthM;
+      const xa = id === 'front' ? -L / 2 + u0 : L / 2 - u0, xb = id === 'front' ? -L / 2 + u1 : L / 2 - u1;
+      const top = Math.min(h(xa), h(xb)) - 0.04;
+      if (top - eaves > 0.1) box(mb, key, f, u0, u1, eaves, top, 0, b.depthM ?? 0.04, {back: true, bottom: true, top: true});
+    }
+  }
 }
 
 export function heightOf(h: Height, sh: number, eavesM: number): number {
@@ -484,7 +557,9 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
   if (!v) throw new Error(`unknown variant ${variant} for ${spec.id}`);
   const L = params.lengthM, W = params.widthM, storeys = params.storeys ?? spec.storeys;
   if (L < W && !spec.frontOnShort) throw new Error('lengthM must be the long side (front is a long side)');
-  const roofForm = params.roofForm ?? spec.roof.form, ridge = params.ridge ?? spec.roof.ridge;
+  // a pair gable is one pitched form whatever 3DBAG calls the single plane (its ridge runs front to back: 'short' on the terraced frame)
+  const pairGable = !!spec.roof.pairGable && (params.roofForm ?? spec.roof.form) !== 'flat';
+  const roofForm = pairGable ? 'gable' : params.roofForm ?? spec.roof.form, ridge = pairGable ? 'short' : params.ridge ?? spec.roof.ridge;
   const groundMode = params.groundMode ?? spec.ground.mode;
   const pitched = roofForm !== 'flat';
   // asymmetric eaves-front gable: the wall box stops at the lower eaves; the higher facade and the gable ends carry on above it
@@ -496,7 +571,7 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
   const key = (name: string): MaterialKey => { const m = (k as unknown as Record<string, MaterialKey>)[name]; if (!m) throw new Error(`${spec.id}: unknown palette key ${name}`); return m; };
   const ctx: Ctx = {mb, k, storeys, sh, variant, groundMode, recess: spec.ground.recessM ?? 0, inset, key};
   // Wall lines: the footprint rectangle's long edges unless the rectangle includes galleries/balconies (insetM).
-  const zf = W / 2 - inset.front, zb = -W / 2 + inset.back, gabled = !!v.palette.gable;
+  const zf = W / 2 - inset.front, zb = -W / 2 + inset.back, gabled = !!v.palette.gable && !pairGable; // a pair gable's `gable` palette is its front/back triangles, not the side walls
   const pilotis = groundMode === 'pilotis', rec = pilotis ? spec.ground.recessM ?? 1.5 : 0;
   ctx.recess = rec;
 
@@ -573,13 +648,14 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
   }
   // pilotis: slab fascia is the white column box above; the soffit shows from below.
 
-  const ridgeH = params.ridgeM ?? params.eavesM + Math.tan(spec.roof.pitchDeg * Math.PI / 180) * ((ridge === 'long' ? W : L) / 2);
+  const ridgeH = params.ridgeM ?? params.eavesM + Math.tan(spec.roof.pitchDeg * Math.PI / 180) * (pairGable ? L : (ridge === 'long' ? W : L) / 2);
   if (asym) {
     const hi = params.eavesM > backEaves ? frames.front : frames.back;
     plate(mb, k.wall, hi.f, 0, hi.len, wallTop, Math.max(params.eavesM, backEaves), 0);
     asymGable(ctx, {L, W, ef: params.eavesM, eb: backEaves, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, gableKey: gabled ? k.gable : k.wall});
-  } else roofSolid(ctx, {form: roofForm, ridge, L, W, eaves: params.eavesM, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, flatThickness: flatT});
-  if (pitched && roofForm === 'gable' && ridge === 'long' && (v.rooflights || spec.roof.rooflights)) roofFeatures(ctx, spec, L, W, params.eavesM, ridgeH, !!params.mirror, asym ? backEaves : undefined);
+  } else if (pairGable) pairGableRoof(ctx, spec, frames, L, W, params.eavesM, ridgeH, !!params.mirror, k.gable);
+  else roofSolid(ctx, {form: roofForm, ridge, L, W, eaves: params.eavesM, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, flatThickness: flatT});
+  if (pitched && roofForm === 'gable' && ridge === 'long' && (v.rooflights || spec.roof.rooflights || spec.roof.dormers?.length)) roofFeatures(ctx, spec, L, W, params.eavesM, ridgeH, !!params.mirror, asym ? backEaves : undefined);
   // Annexes stand on the rectangle edges (not the inset wall lines).
   const edges: Record<FacadeId, {f: Frame; len: number}> = {
     front: {f: new Frame([-L / 2, W / 2], [1, 0], [0, 1]), len: L},

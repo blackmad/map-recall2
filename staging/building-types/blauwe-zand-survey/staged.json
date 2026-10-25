@@ -1,0 +1,43 @@
+[
+ {
+  "area": "nd-bz-01",
+  "anchor": {
+   "lng": 4.92742,
+   "lat": 52.39175
+  },
+  "pands": 51,
+  "missing": 0,
+  "per": {
+   "nd-bz-brick-row/green-door/photo": 22,
+   "nd-bz-green-gable/green/photo": 29
+  }
+ },
+ {
+  "area": "nd-bz-02",
+  "anchor": {
+   "lng": 4.92749,
+   "lat": 52.39315
+  },
+  "pands": 533,
+  "missing": 0,
+  "per": {
+   "nd-bz-brick-row/green-door/photo": 369,
+   "nd-bz-green-gable/green/photo": 114,
+   "nd-bz-brick-row/green-door/signature": 38,
+   "nd-bz-green-gable/green/signature": 12
+  }
+ },
+ {
+  "area": "nd-bz-03",
+  "anchor": {
+   "lng": 4.93181,
+   "lat": 52.39266
+  },
+  "pands": 160,
+  "missing": 0,
+  "per": {
+   "nd-bz-green-gable/green/photo": 54,
+   "nd-bz-brick-row/green-door/photo": 106
+  }
+ }
+]

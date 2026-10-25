@@ -1,0 +1,299 @@
+{
+ "id": "nd-bz-brick-row",
+ "label": "Blauwe Zand (1931-32) two-storey terraced house: red-brown brick, cream rendered frieze under the eaves, orange-red pantile roof, three white-framed upper windows, paired dark green doors (Waddenweg, Texelweg, Terschellingstraat, Voornestraat, Walcherenstraat, Goereestraat and the other island streets)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 541,
+  "bouwjaar": [
+   1931,
+   1932
+  ],
+  "lengthM": 7.0,
+  "widthM": 5.3,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.4,
+  6.9
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.2,
+   5.9
+  ],
+  "depth": [
+   6.0,
+   9.0
+  ]
+ },
+ "alternateMirror": true,
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.12,
+  "pitchDeg": 38
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "green-door",
+ "variants": {
+  "green-door": {
+   "label": "dark green doors",
+   "evidence": "every surveyed Blauwe Zand brick terrace",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#8c5442"
+    },
+    "frame": "#f2f0e8",
+    "glass": "#4b5a6b",
+    "door": "#2f3d33",
+    "accent": "#efede6",
+    "rail": "#8d9092",
+    "dark": "#3a3a3a",
+    "column": "#ddd5c4",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#9e5c40"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122148825.jpg",
+     "pand": "03631000122148825",
+     "address": "Terschellingstraat",
+     "note": "2020-05 (facade in shade, measured for layout): red-brown brick, eaves ~6.2 m under a cream rendered frieze and grey gutter, orange-red pantiles; upper storey three white-framed windows per house, ground: dark green door (paired) with white frame and a 3-light window"
+    },
+    {
+     "photo": "survey crop 03631000122149269.jpg",
+     "pand": "03631000122149269",
+     "address": "Waddenweg",
+     "note": "2019-12 low sun: same; brick and tiles read sunlit (warm)"
+    },
+    {
+     "photo": "survey crop 03631000122148838.jpg",
+     "pand": "03631000122148838",
+     "address": "Waddenweg",
+     "note": "2019-12: same, roof windows on some houses"
+    },
+    {
+     "photo": "survey crop 03631000122132015.jpg",
+     "pand": "03631000122132015",
+     "address": "Hoekschewaardplein",
+     "note": "2020-02: same design"
+    },
+    {
+     "photo": "survey crop 03631000122096732.jpg",
+     "pand": "03631000122096732",
+     "address": "Voornestraat",
+     "note": "2019-01: same, end house hipped"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.6,
+       "w": 0.95,
+       "h": 2.15
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.6,
+       "w": 2.3,
+       "h": 1.6,
+       "sill": 0.65,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "ref": "centre",
+       "levels": "upper",
+       "u": -1.05,
+       "w": 1.0,
+       "h": 1.25,
+       "sill": 0.45,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "ref": "centre",
+       "levels": "upper",
+       "u": 0.3,
+       "w": 1.0,
+       "h": 1.25,
+       "sill": 0.45,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "ref": "centre",
+       "levels": "upper",
+       "u": 1.65,
+       "w": 1.0,
+       "h": 1.25,
+       "sill": 0.45,
+       "lights": 1
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 2,
+     "below": 0.42,
+     "above": 0.0,
+     "palette": "column"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122148825.jpg",
+     "pand": "03631000122148825",
+     "address": "Terschellingstraat",
+     "note": "garden side not photographed: inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.9,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.6,
+       "w": 1.8,
+       "h": 1.3,
+       "sill": 0.85,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.15,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "upper",
+       "u": 1.4,
+       "w": 1.4,
+       "h": 1.15,
+       "sill": 0.8,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122096732.jpg",
+     "pand": "03631000122096732",
+     "address": "Voornestraat",
+     "note": "end gables plain brick; party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122096732.jpg",
+     "pand": "03631000122096732",
+     "address": "Voornestraat",
+     "note": "end gables plain brick; party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Upper windows measured on 2148825 at 1.45, 2.8 and 4.15 m from the door-side party wall of a 5.0 m house (centre offsets -1.05, +0.3, +1.65).",
+  "Brick between the shaded Terschellingstraat reading (#553d3c) and the low-sun Waddenweg reading (#bb8457).",
+  "Hipped row ends follow 3DBAG per house. Roof windows and later dormers on a few houses not modelled.",
+  "Mirror parity inferred; garden side inferred."
+ ]
+}

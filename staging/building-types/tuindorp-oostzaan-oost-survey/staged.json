@@ -1,0 +1,89 @@
+[
+ {
+  "area": "nd-to-01",
+  "anchor": {
+   "lng": 4.88847,
+   "lat": 52.4107
+  },
+  "pands": 278,
+  "missing": 0,
+  "per": {
+   "nd-to-row/triple/photo": 223,
+   "nd-to-row/triple-orange/photo": 28,
+   "nd-to-row/triple/signature": 9,
+   "nd-to-cottage/green-door/photo": 18
+  }
+ },
+ {
+  "area": "nd-to-02",
+  "anchor": {
+   "lng": 4.89122,
+   "lat": 52.41035
+  },
+  "pands": 75,
+  "missing": 0,
+  "per": {
+   "nd-to-row/triple/photo": 27,
+   "nd-to-cottage/green-door/photo": 48
+  }
+ },
+ {
+  "area": "nd-to-03",
+  "anchor": {
+   "lng": 4.88231,
+   "lat": 52.41417
+  },
+  "pands": 343,
+  "missing": 0,
+  "per": {
+   "nd-to-row/triple/photo": 15,
+   "nd-to-row/wide/photo": 55,
+   "nd-to-row/wide/signature": 84,
+   "nd-to-row/wide-orange/photo": 13,
+   "nd-to-cottage/red-door/photo": 172,
+   "nd-to-cottage/red-door/signature": 4
+  }
+ },
+ {
+  "area": "nd-to-04",
+  "anchor": {
+   "lng": 4.88741,
+   "lat": 52.41336
+  },
+  "pands": 361,
+  "missing": 0,
+  "per": {
+   "nd-to-cottage/green-door/photo": 251,
+   "nd-to-row/wide/signature": 66,
+   "nd-to-row/triple-orange/photo": 8,
+   "nd-to-row/triple/photo": 16,
+   "nd-to-cottage/red-door/photo": 20
+  }
+ },
+ {
+  "area": "nd-to-05",
+  "anchor": {
+   "lng": 4.89239,
+   "lat": 52.41364
+  },
+  "pands": 249,
+  "missing": 0,
+  "per": {
+   "nd-to-cottage/green-door/photo": 237,
+   "nd-to-cottage/green-door/signature": 4,
+   "nd-to-cottage/red-door/photo": 8
+  }
+ },
+ {
+  "area": "nd-to-06",
+  "anchor": {
+   "lng": 4.88309,
+   "lat": 52.41616
+  },
+  "pands": 27,
+  "missing": 0,
+  "per": {
+   "nd-to-cottage/red-door/photo": 27
+  }
+ }
+]

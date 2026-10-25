@@ -151,6 +151,45 @@ export interface RoofSpec {
    * of the planes flips with an ambiguous front, and the row keeps one roof.
    */
   eavesFromPlanes?: 'lower' | 'low-back' | 'low-front';
+  /** Dormers on the front slope of an eaves-front gable (one design, every house); mirrored houses mirror them. */
+  dormers?: DormerSpec[];
+  /**
+   * Half of a front-facing gable shared by a mirrored pair of terraced houses: each house carries one mono-pitch roof rising across
+   * its frontage from its free-side eaves (u = 0, left) to the ridge on the party wall it shares with its partner (u = frontage); the
+   * front and back gable triangles are in the `gable` palette, optionally with vertical battens. build.ts reads the side the roof falls
+   * to from the 3DBAG roof plane (the pair's handedness, measured per house), not from an alternation rule.
+   */
+  pairGable?: {boards?: {pitchM: number; widthM: number; depthM?: number; palette: PaletteKey}};
+  /**
+   * Eaves height measured from the photos (metres above ground), used instead of 3DBAG's: a low front eaves under a big roof that
+   * the 3DBAG reconstruction misses on many houses of a row (b3_h_dak_min read at a dormer cheek or a raised rear slope).
+   */
+  eavesPinM?: number;
+}
+
+/** A dormer on the front roof slope: front face `setBackM` behind the wall line, flat roof, cheeks down to the roof plane. */
+export interface DormerSpec {
+  /** As elements: `u` is the dormer centre's offset from the frontage centre (default) or inward from its left/right end. */
+  ref?: 'centre' | 'left' | 'right';
+  u: number;
+  w: number;
+  /** Height of the front face, from where it meets the roof plane to the underside of the dormer roof. */
+  h: number;
+  /** Horizontal distance of the front face behind the front wall line. */
+  setBackM: number;
+  lights: number;
+  /** Glazing inset from the cheeks (default 0.12 m). */
+  marginM?: number;
+  /** Front face and cheeks (default `column`), window frame (default `frame`). */
+  cheek?: PaletteKey;
+  frame?: PaletteKey;
+  /** Dormer roof overhang beyond the face and free cheeks (default 0.12 m). */
+  overhangM?: number;
+  /** Lead/zinc apron on the roof below the front face, this deep along the slope (default none), in the `rail` palette. */
+  apronM?: number;
+  variants?: string[];
+  exceptVariants?: string[];
+  note?: string;
 }
 
 export interface GroundSpec {
@@ -216,6 +255,11 @@ export interface TypeSpec {
   alternateMirror?: boolean;
   /** Houses whose 3DBAG eaves height lies outside this range [min, max] metres are not this design (extra storey, raised eaves) and are held by build.ts. */
   eavesRangeM?: [number, number];
+  /** Houses whose ridge height lies outside this range [min, max] metres (a raised or rebuilt roof) are not this design and are held by build.ts. */
+  ridgeRangeM?: [number, number];
+  /** One design built in distinct plot sizes (e.g. 6.5 m and 8.8 m deep cottages of one row type): ascending thresholds (metres) split the
+   *  instances into size classes, each with its own unit mesh, so no instance is stretched across the gap. See sizeClass(). */
+  sizeClassesM?: {frontage?: number[]; depth?: number[]};
   /** Terraced rows built as one project: every house of a row (same design, side by side, three or more) takes the row's median eaves, back eaves and ridge (build.ts; after the eavesRangeM hold). */
   rowCoherentHeights?: boolean;
   /** Storeys incl. the ground storey, all below the eaves/roof edge. */
@@ -235,9 +279,18 @@ export interface TypeSpec {
   notes: string[];
 }
 
+/** Unit-key token of a house's size class ('f1d0': second frontage class, first depth class); undefined when the spec has no sizeClassesM. */
+export function sizeClass(spec: Pick<TypeSpec, 'sizeClassesM'>, frontageM: number, depthM: number): string | undefined {
+  const c = spec.sizeClassesM;
+  if (!c) return undefined;
+  const idx = (ts: number[] | undefined, v: number) => (ts ?? []).filter(t => v >= t).length;
+  return `f${idx(c.frontage, frontageM)}d${idx(c.depth, depthM)}`;
+}
+
 export function validateSpec(spec: TypeSpec): string[] {
   const errors: string[] = [];
   if (!spec.variants[spec.defaultVariant]) errors.push(`defaultVariant ${spec.defaultVariant} not in variants`);
+  for (const [axis, ts] of Object.entries(spec.sizeClassesM ?? {})) if (!ts?.length || ts.some((t, i) => !(t > 0) || (i > 0 && t <= ts[i - 1]))) errors.push(`sizeClassesM.${axis}: thresholds must be positive and ascending`);
   for (const id of FACADE_IDS) {
     const f = spec.facades[id];
     if (!f) { errors.push(`facade ${id} missing`); continue; }
@@ -252,6 +305,11 @@ export function validateSpec(spec: TypeSpec): string[] {
     if (a.u[1] <= a.u[0] || a.d[1] <= a.d[0]) errors.push(`annex ${a.id}: empty u/d range`);
     for (const v of [...(a.variants ?? []), ...(a.exceptVariants ?? [])]) if (!spec.variants[v]) errors.push(`annex ${a.id}: unknown variant ${v}`);
   }
+  for (const [i, d] of (spec.roof.dormers ?? []).entries()) {
+    if (d.w <= 0 || d.h <= 0 || d.lights < 1) errors.push(`dormer ${i}: empty size or no lights`);
+    for (const v of [...(d.variants ?? []), ...(d.exceptVariants ?? [])]) if (!spec.variants[v]) errors.push(`dormer ${i}: unknown variant ${v}`);
+  }
+  if (spec.roof.pairGable && spec.roof.form === 'flat') errors.push('pairGable needs a pitched roof');
   if (spec.annexes && new Set(spec.annexes.map(a => a.id)).size !== spec.annexes.length) errors.push('duplicate annex ids');
   return errors;
 }

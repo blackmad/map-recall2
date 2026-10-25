@@ -1,0 +1,339 @@
+{
+ "id": "nd-bz-green-gable",
+ "label": "Blauwe Zand (1931-32) terraced pair under one front-facing gable of sage-green vertical boards: each house one half (roof rising from its free side to the ridge on the shared wall), white window band, brick ground storey, paired doors under a flat canopy (Hoekschewaardweg, Waddendijk, Waddenweg, Texelweg, Beijerlandstraat, Urkstraat)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 1,
+  "panden": 188,
+  "bouwjaar": [
+   1931,
+   1932
+  ],
+  "lengthM": 8.4,
+  "widthM": 4.5,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.5,
+  7.0
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.0,
+   6.0
+  ],
+  "depth": [
+   6.0,
+   9.0
+  ]
+ },
+ "sizeClassesM": {
+  "frontage": [
+   4.9
+  ],
+  "depth": [
+   7.4
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "short",
+  "eavesOverhangM": 0.0,
+  "vergeOverhangM": 0.25,
+  "thicknessM": 0.12,
+  "pitchDeg": 38,
+  "pairGable": {
+   "boards": {
+    "pitchM": 0.36,
+    "widthM": 0.07,
+    "depthM": 0.03,
+    "palette": "gable"
+   }
+  }
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "green",
+ "variants": {
+  "green": {
+   "label": "sage-green boarded gables",
+   "evidence": "every surveyed pair-gable terrace",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#8c5442"
+    },
+    "frame": "#f2f0e8",
+    "glass": "#4b5a6b",
+    "door": "#2f3d33",
+    "accent": "#efede6",
+    "rail": "#8d9092",
+    "dark": "#3a3a3a",
+    "column": "#e9e8e2",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#a8603e"
+    },
+    "gable": {
+     "slot": "stucco",
+     "tint": "#7f9874"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122106178.jpg",
+     "pand": "03631000122106178",
+     "address": "Waddendijk",
+     "note": "2020-02: a front gable over each pair of houses, sage-green vertical boards with two small attic windows by the ridge; below it a white band of three windows per house (panels between), brick ground storey with the pair's doors under a white flat canopy and a 3-light window"
+    },
+    {
+     "photo": "survey crop 03631000122109716.jpg",
+     "pand": "03631000122109716",
+     "address": "Waddenweg",
+     "note": "2019-12 low sun: same; green boards and brick read sunlit"
+    },
+    {
+     "photo": "survey crop 03631000122083700.jpg",
+     "pand": "03631000122083700",
+     "address": "Waddenweg",
+     "note": "2020-02: same"
+    },
+    {
+     "photo": "survey crop 03631000122150708.jpg",
+     "pand": "03631000122150708",
+     "address": "Hoekschewaardweg",
+     "note": "2019-01: same, 21-house row of pair gables"
+    },
+    {
+     "photo": "survey crop 03631000122098263.jpg",
+     "pand": "03631000122098263",
+     "address": "Waddendijk",
+     "note": "2020-02: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "right",
+       "levels": "ground",
+       "u": 0.6,
+       "w": 0.95,
+       "h": 2.15
+      },
+      {
+       "kind": "canopy",
+       "ref": "right",
+       "levels": "ground",
+       "u": 0.7,
+       "w": 1.4,
+       "h": 0.12,
+       "sill": 2.5,
+       "depth": 0.5,
+       "canopy": "flat",
+       "colour": "column",
+       "note": "half of the pair's flat white door canopy"
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.45,
+       "w": 2.0,
+       "h": 1.6,
+       "sill": 0.65,
+       "lights": 3
+      },
+      {
+       "kind": "panel",
+       "ref": "centre",
+       "levels": "ground",
+       "u": 0.0,
+       "span": true,
+       "h": 1.9,
+       "sill": 3.7,
+       "depth": 0.02,
+       "colour": "column",
+       "note": "white panelled window band"
+      },
+      {
+       "kind": "window",
+       "ref": "centre",
+       "levels": "ground",
+       "u": 0.0,
+       "w": 1.0,
+       "h": 1.25,
+       "sill": 3.95,
+       "lights": 1,
+       "repeat": 3
+      },
+      {
+       "kind": "panel",
+       "ref": "centre",
+       "levels": "ground",
+       "u": 0.0,
+       "span": true,
+       "h": 1.1,
+       "sill": 5.6,
+       "depth": 0.02,
+       "colour": "gable",
+       "note": "green boards from the band to the eaves"
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 0.65,
+       "w": 0.6,
+       "h": 0.75,
+       "sill": 7.0,
+       "lights": 1,
+       "note": "attic window in the gable, by the ridge"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122106178.jpg",
+     "pand": "03631000122106178",
+     "address": "Waddendijk",
+     "note": "garden side not photographed: inferred (a back gable like the front)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.9,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.6,
+       "w": 1.8,
+       "h": 1.3,
+       "sill": 0.85,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.15,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "upper",
+       "u": 1.4,
+       "w": 1.4,
+       "h": 1.15,
+       "sill": 0.8,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122150708.jpg",
+     "pand": "03631000122150708",
+     "address": "Hoekschewaardweg",
+     "note": "row ends plain brick; party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122150708.jpg",
+     "pand": "03631000122150708",
+     "address": "Hoekschewaardweg",
+     "note": "row ends plain brick; party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Kit: roof.pairGable. 3DBAG reads one roof plane per house falling to its free side (2106178: 37 degrees, 6.3 -> 9.7 m); build.ts takes each house's handedness from that plane.",
+  "Band windows and green strip at absolute heights on the ground storey index (3.7-5.6 m, 5.6 m-eaves) measured on 2106178 with the 3DBAG eaves (6.3 m) as the scale.",
+  "The taller Waddenweg pair gables (eaves 8.0 m, ridge 11.9 m) are a larger version and are held by the eaves range.",
+  "Back gable inferred; garden side inferred."
+ ]
+}
