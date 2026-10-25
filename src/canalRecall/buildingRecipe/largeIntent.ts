@@ -12,7 +12,7 @@ import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -261,6 +261,13 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     if (w.groundFactor !== undefined && !(typeof w.groundFactor === 'number' && w.groundFactor >= 0.3 && w.groundFactor <= 2.5)) problems.push(`${at}.groundFactor: number 0.3..2.5`);
     if (w.groundFactor !== undefined && (w.souterrain || w.ground === 'arcade' || w.alignWith !== undefined)) problems.push(`${at}.groundFactor: not with souterrain, an arcade ground or alignWith (they set the ground storey)`);
     if (w.shell !== undefined) count(w.shell, `${at}.shell`, 1, 20);
+    if (w.storeyFactors !== undefined) {
+      const sf = w.storeyFactors;
+      if (!Array.isArray(sf) || w.storeys === undefined || sf.length !== w.storeys) problems.push(`${at}.storeyFactors: one relative height per storey, ground first (needs storeys; ${w.storeys ?? '?'} entries)`);
+      else if (sf.some(v => !(typeof v === 'number' && v >= 0.3 && v <= 8))) problems.push(`${at}.storeyFactors: each 0.3..8`);
+      else if (Math.max(...sf) / Math.min(...sf) > 3) problems.push(`${at}.storeyFactors: tallest storey more than 3x the lowest`);
+      if (w.groundFactor !== undefined || w.souterrain || w.ground === 'arcade' || w.alignWith !== undefined || w.plinth?.factor !== undefined || w.houses) problems.push(`${at}.storeyFactors: not with groundFactor, souterrain, an arcade ground, alignWith, plinth.factor or houses (they set storey heights)`);
+    }
     if (w.openBays !== undefined) {
       if (!Array.isArray(w.openBays) || !w.openBays.length) problems.push(`${at}.openBays: list of {storeys, bays}`);
       else {

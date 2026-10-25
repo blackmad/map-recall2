@@ -31209,10 +31209,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012168172",
       "name": "Oude Turfmarkt 139 / Binnengasthuisstraat 46, Amsterdam: Binnengasthuis complex (UvA), brick civic front on the canal and white balconied housing block in the courtyard street",
-      "hash": "273230719f5101d78659a313087f49ef2515a5d70a83649b895b03e2ea27a0a2",
-      "sha256": "273230719f5101d78659a313087f49ef2515a5d70a83649b895b03e2ea27a0a2",
-      "bytes": 768072,
-      "triangles": 9672,
+      "hash": "4b492bfec37e194e172a69aa86ad154102e31326abe7e18a0caa38762de60ccc",
+      "sha256": "4b492bfec37e194e172a69aa86ad154102e31326abe7e18a0caa38762de60ccc",
+      "bytes": 799640,
+      "triangles": 10122,
       "materials": 12,
       "textures": 0,
       "scale": 1,
@@ -31791,8 +31791,8 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.33)); inferred: rows re-fitted on the placed crop and match it in the overlay, the remaining FAIL is the storey-3 band (photo 0.71 vs model 0.37), above the ~0.58 the band can hold, a sun-glare misread",
-        "walls[1] not confirmed by the photo (FAIL (wall dL +0.78; glazing storey band off by 0.57 mean 0.20 vs photo 0.77; wall family unresolved (#372c1c is dark and neutral, brick courses not resolved): lightness and hue judged only)); inferred: the crop is a thin shaded foliage-covered strip that reads the white render as #372c1c (reference w03-91 shows white render), windows enlarged to the photo's three-light timber windows",
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.19)); inferred: window rows now on the measured storey lines, storey 1 behind boats, a tree and a lens flare (photo 38 %), white frames merge window pairs into 3 photo columns, wall colour within dL 0.012",
+        "walls[1] not confirmed by the photo (FAIL (wall dL +0.78; glazing storey band off by 0.40 mean 0.36 vs photo 0.77; wall family unresolved (#372c1c is dark and neutral, brick courses not resolved): lightness and hue judged only)); inferred: the white render is 23 % washed out so the wall cluster lands on the dark interiors (#372c1c), the glass-block stair and round balconies read as glazing",
         "Group 0 (SW run on the canal, surfaces from panels 54/195/57/64/69/226; w05-235, 2017-07-06): five-storey brown brick civic front with a pale cornice and a UNIVERSITEIT VAN AMSTERDAM name band under it, nine axes of tall white-framed sashes. Modelled as brick-bay-grid, 5 storeys, 8-9 bays, cornice; the name band lettering, the banded arched cellar windows and the entrance are not modelled (the entrance and lettering sit on a neighbouring wall).",
         "Group 1 (E wall, panel 104; w03-91, 2016-06-09): white rendered block with orange-framed wide windows, glass-block stair, a curved balcony stack and a glass entrance canopy. Modelled as 3 storeys of low windows in pale cream brick (the house has one wall material, brick; render would need a per-group wallMaterial). Not modelled: curved balconies, glass-block stair, canopy and the fourth floor (the eaves allow three storeys here).",
         "All other walls (courtyard, N, S, NE) are blank: no photograph.",
@@ -31804,8 +31804,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168172",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T05:14:54.930Z",
-      "meshHash": "acec2434e6a4e3ba"
+      "updatedAt": "2026-10-25T06:39:39.928Z",
+      "meshHash": "f1525110da8b18e6"
     },
     {
       "id": "ordinary-0363100012238726",
@@ -35133,9 +35133,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012169214",
       "name": "Utrechtsestraat 15 / Rembrandtplein, Amsterdam (Booking.com HQ): 1932 Amsterdam School office block, brick with granite base, stepped to 36 m",
-      "hash": "d78a1eb942e530ba8577de0ec76d633685cb9a7e83da4251b82b1fbc425f3a2b",
-      "sha256": "d78a1eb942e530ba8577de0ec76d633685cb9a7e83da4251b82b1fbc425f3a2b",
-      "bytes": 566568,
+      "hash": "a7862c70db9a9c01cd48dfe55bedfdc9aba16e0dc9eb7f971589ff5bfa0d56b7",
+      "sha256": "a7862c70db9a9c01cd48dfe55bedfdc9aba16e0dc9eb7f971589ff5bfa0d56b7",
+      "bytes": 566248,
       "triangles": 7983,
       "materials": 12,
       "textures": 0,
@@ -35314,9 +35314,8 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (NO EVIDENCE (foliage 31 % > 25 %)); inferred: foliage hides 31 percent of the Utrechtsestraat front, wall unchanged from the 2026-10-14 install",
-        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.16)); inferred: re-fitted to 4 bays of wide white-framed windows, columns, shape and mean glazing match, one shaded upper band off by 0.16",
-        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.17; window shape square vs photo wide; storey 2: widest opening 3.2 m vs photo 10.9 m (a ribbon against windows))); inferred: re-fitted to six bays of three-light groups on the crop rows, the gate reads the hatched stone sill course across bays 2-4 as a 10.9 m ribbon",
+        "walls[0] not confirmed by the photo (NO EVIDENCE (foliage 31 % > 25 %)); inferred: foliage covers 31 % of the crop, kept as the measured brick, granite base and window rhythm shared with walls[2]",
+        "walls[1] likeness WARN (mask IoU 0.395 < 0.45).",
         "Simplified: the triple windows are one wide window per 1.7 bays, the open loggia arcade under copper canopies is a plain ground row, the glass roof pavilion over the west front and the recessed attic floors are the 3DBAG roof/wall geometry only, the copper trim is not coloured. Not modelled: the upper west panels 525, 205, 415, 89 (stepped tower floors, no frontal photograph) and the east side (w04-77, party/courtyard).",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #414142 not used (not darker than the wall #5b564e by 10 L*, or tinted): kit glass kept."
       ],
@@ -35325,8 +35324,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169214",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T05:27:06.167Z",
-      "meshHash": "150622bdf6ed0378"
+      "updatedAt": "2026-10-25T06:40:37.572Z",
+      "meshHash": "a32ad0f46a9496a3"
     },
     {
       "id": "ordinary-0363100012185422",

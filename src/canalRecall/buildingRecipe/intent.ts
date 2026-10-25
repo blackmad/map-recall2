@@ -1006,6 +1006,13 @@ export interface LargeWallIntent {
    */
   groundFactor?: number;
   /**
+   * Measured storey heights (issue #59, Oude Turfmarkt 139: floors that get lower going up): one relative height per
+   * storey, ground first (`storeys` entries; metres read off the photo work as they are), scaled to fill the usable
+   * height under the eaves. Each 0.3..8, the tallest at most 3x the lowest; not with groundFactor, souterrain, an arcade
+   * ground, alignWith, plinth.factor or houses (they set storey heights too). Absent: byte-identical.
+   */
+  storeyFactors?: number[];
+  /**
    * The 3DBAG shell (1-based, in facts order) whose surfaces `wallSurfaces` names. A pand of two separate solids (the 2006
    * Rietveld Academie: the tower and the low block) numbers each shell's wall surfaces from 1, so a bare index claims a
    * surface in every shell. Absent: every shell, as before.

@@ -419,14 +419,15 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     if (!main) warnings.push(`walls[${gi}]: no panel takes this group (its surfaces are minorities of other panels)`);
     const widthM = main ? main.uMax - main.uMin : 0, eaves = main ? panelEaves(main) : 0, flatTop = main ? main.vMax - eaves < 0.5 : true;
     const plinthFactor = w.plinth?.factor, plinthStoreys = w.plinth ? w.plinth.storeys ?? [0] : [];
-    const gw = plinthFactor !== undefined && plinthStoreys.includes(0) ? plinthFactor : w.groundFactor !== undefined ? w.groundFactor : w.souterrain ? SOUTERRAIN.factor : ground === 'arcade' ? w.arcade?.storeyFactor ?? 1.6 : ground === 'plinth-shopfronts' || ground === 'glazed' ? 1.25 : year !== null && year < 1945 ? 1.15 : 1;
+    const sf = w.storeyFactors;
+    const gw = sf ? sf[0] : plinthFactor !== undefined && plinthStoreys.includes(0) ? plinthFactor : w.groundFactor !== undefined ? w.groundFactor : w.souterrain ? SOUTERRAIN.factor : ground === 'arcade' ? w.arcade?.storeyFactor ?? 1.6 : ground === 'plinth-shopfronts' || ground === 'glazed' ? 1.25 : year !== null && year < 1945 ? 1.15 : 1;
     const maxTop = Math.max(eaves, ...own.map(p => p.vMax));
     // alignWith: share another group's storey lines (wings whose windows line up with the centre block), extended to this group's top.
     const ref = w.alignWith !== undefined ? aligned.get(w.alignWith) : undefined;
     if (w.alignWith !== undefined && !ref) throw Error(`${intent.id}: walls[${gi}].alignWith ${w.alignWith} must name an earlier group without alignWith`);
     // A curtain wall with spandrels runs to the roof edge: its top storey's head spandrel covers the slab and parapet (no parapet allowance).
     const st = ref ? alignLines(ref, maxTop) : storeyLines(eaves, flatTop, w.storeys, civicM, gw, maxTop, w.spandrels ? 0 : undefined,
-      plinthFactor !== undefined ? Object.fromEntries(plinthStoreys.filter(k => k > 0).map(k => [k, plinthFactor])) : undefined);
+      sf ? Object.fromEntries(sf.slice(1).map((v, k) => [k + 1, v])) : plinthFactor !== undefined ? Object.fromEntries(plinthStoreys.filter(k => k > 0).map(k => [k, plinthFactor])) : undefined);
     if (w.alignWith === undefined) aligned.set(gi, st);
     // the upper storeys (window sills in metres): past any taller plinth storey
     const uppers = st.heights.slice(1).filter((_, k) => plinthFactor === undefined || !plinthStoreys.includes(k + 1));

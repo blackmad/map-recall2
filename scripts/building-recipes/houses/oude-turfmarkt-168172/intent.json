@@ -55,11 +55,11 @@
    },
    "hand": [
     "baysPerStorey",
-    "groundFactor",
     "plinth",
     "storeyShapes",
     "system",
-    "windowShape"
+    "windowShape",
+    "storeyFactors"
    ],
    "windowShape": {
     "w": 0.75,
@@ -72,8 +72,8 @@
       1
      ],
      "w": 0.75,
-     "h": 0.95,
-     "sill": 0.03
+     "h": 0.86,
+     "sill": 0.045
     },
     {
      "storeys": [
@@ -81,26 +81,25 @@
      ],
      "w": 0.75,
      "h": 0.75,
-     "sill": 0.23
+     "sill": 0.11
     },
     {
      "storeys": [
       3
      ],
      "w": 0.75,
-     "h": 0.49,
-     "sill": 0.26
+     "h": 0.69,
+     "sill": 0.19
     },
     {
      "storeys": [
       4
      ],
      "w": 0.75,
-     "h": 0.38,
-     "sill": 0.02
+     "h": 0.36,
+     "sill": 0.06
     }
    ],
-   "groundFactor": 0.79,
    "plinth": {
     "storeys": [
      0
@@ -109,7 +108,14 @@
     "sill": 0.45,
     "h": 0.3,
     "pier": 0.5
-   }
+   },
+   "storeyFactors": [
+    2.3,
+    4.4,
+    3.6,
+    2.6,
+    4.67
+   ]
   },
   {
    "wallSurfaces": [
@@ -122,7 +128,7 @@
    "storeys": 3,
    "baysPerStorey": 5,
    "ground": "system",
-   "windows": "low",
+   "windows": "three-light",
    "blankStoreys": [
     3
    ],
@@ -136,10 +142,11 @@
     "palette",
     "windowShape",
     "system",
-    "baysPerStorey"
+    "baysPerStorey",
+    "windows"
    ],
    "windowShape": {
-    "w": 0.35,
+    "w": 0.62,
     "h": 0.6,
     "sill": 0.25
    }
@@ -162,7 +169,8 @@
   "All other walls (courtyard, N, S, NE) are blank: no photograph.",
   "Components lane (2026-10-13): walls[0] carries the UNIVERSITEIT VAN AMSTERDAM name on its cornice face (signage mount cornice; w05-235 shows it on the pale entablature); walls[1] is white render (wallMaterial render: the stucco slot), no longer cream brick. Supersedes the notes that the name band is not modelled and that render needs a per-group wallMaterial.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #545b5d not used (not darker than the wall #5d5550 by 10 L*, or tinted): kit glass kept.",
-  "Refit 2026-10-25 (issue #59, gate #58 crops): walls[0] read off the placed crop w05-235 with a metre ruler: a stone plinth with small souterrain windows (1.3-2.1 m), tall cross windows on the bel-etage (3.0-6.7 m), then rows at 7.4-10.3, 11.2-13.0 and 13.5-15.3 m diminishing upward under the lettered cornice, windows 0.75 of the 2.07 m bay. Now groundFactor 0.79 (lines 2.9 / 6.57 / 10.24 / 13.9 / 17.57 m), storeyShapes per storey (sill/h 0.03/0.95, 0.23/0.75, 0.26/0.49, 0.02/0.38), the souterrain windows as a one-light plinth on storey 0 (sill 0.45, h 0.3, pier 0.5; the kit's souterrain is 2.2 m here and trips the storey-height gate). The rows now sit on the photo's rows in the overlay. The gate still FAILs walls[0] on the storey-3 band (photo 0.71 vs model 0.37): that band holds one 1.9 m row and 0.6 m of the next, at most ~0.58 even counting the white frames as glass, so the photo figure is a misread (sun glare on the upper right windows); allowed as inferred. walls[1] (white render infill on the courtyard side): windows enlarged to the photo's three-light timber windows (w 0.35 of the 6.85 m bay, h 0.6); the gate's crop for it is a thin, foliage- and shade-covered strip that reads the white render as #372c1c, a misread (the reference w03-91 shows white render), allowed as inferred. Kit cannot say: arched souterrain windows on a ground of normal height, the pilaster strips grouping the windows in threes, the round balconies and glass-block stair core of walls[1]."
+  "Refit 2026-10-25 (issue #59, gate #58 crops): walls[0] read off the placed crop w05-235 with a metre ruler: a stone plinth with small souterrain windows (1.3-2.1 m), tall cross windows on the bel-etage (3.0-6.7 m), then rows at 7.4-10.3, 11.2-13.0 and 13.5-15.3 m diminishing upward under the lettered cornice, windows 0.75 of the 2.07 m bay. Now groundFactor 0.79 (lines 2.9 / 6.57 / 10.24 / 13.9 / 17.57 m), storeyShapes per storey (sill/h 0.03/0.95, 0.23/0.75, 0.26/0.49, 0.02/0.38), the souterrain windows as a one-light plinth on storey 0 (sill 0.45, h 0.3, pier 0.5; the kit's souterrain is 2.2 m here and trips the storey-height gate). The rows now sit on the photo's rows in the overlay. The gate still FAILs walls[0] on the storey-3 band (photo 0.71 vs model 0.37): that band holds one 1.9 m row and 0.6 m of the next, at most ~0.58 even counting the white frames as glass, so the photo figure is a misread (sun glare on the upper right windows); allowed as inferred. walls[1] (white render infill on the courtyard side): windows enlarged to the photo's three-light timber windows (w 0.35 of the 6.85 m bay, h 0.6); the gate's crop for it is a thin, foliage- and shade-covered strip that reads the white render as #372c1c, a misread (the reference w03-91 shows white render), allowed as inferred. Kit cannot say: arched souterrain windows on a ground of normal height, the pilaster strips grouping the windows in threes, the round balconies and glass-block stair core of walls[1].",
+  "Refit 2026-10-25 (issue #59, integrator review): walls[0] storeys get lower going up. Window rows read at 2.5-6.3, 7.1-9.8, 10.8-12.6 and 13.2-14.9 m, so the new kit storeyFactors sets storey lines at 0, 2.3, 6.7, 10.3, 12.9 and 17.57 m (was five equal 3.67 m storeys over a 0.79 ground) and storeyShapes put each window row on its measured sill and head. walls[1] wider three-light windows in the orange frames (photo windows about 0.6 of the bay). Gate reads: walls[0] storey 1 is behind the boats, a tree and a lens flare (photo 38 %), the white frames merge each window pair into 3 photo columns. walls[1] the white render is 23 % washed out and the wall cluster lands on the dark interiors (#372c1c), glass blocks and the balconies read as glazing."
  ],
  "measured": {
   "date": "2026-10-14",
