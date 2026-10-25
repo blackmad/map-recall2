@@ -1,0 +1,316 @@
+{
+ "id": "zo-g3-red-clad",
+ "label": "Gein 3 (1985-86) terraced house: cream vertical boards on the ground storey, red boards on the upper storey, white downpipes at every party wall, dark tile roof along the street (Jan Somerhof, Jan Nautahof, Hendrik Veldhuishof, Johan Schamppad, Cornelis Aarnoutsstraat, Jacob Kr\u00fcsestraat)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 1,
+  "panden": 118,
+  "bouwjaar": [
+   1985,
+   1986
+  ],
+  "lengthM": 8.7,
+  "widthM": 5.1,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  4.9,
+  6.6
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.7,
+   5.7
+  ],
+  "depth": [
+   8.2,
+   10.0
+  ]
+ },
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.12,
+  "pitchDeg": 30,
+  "eavesFromPlanes": "lower"
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "red",
+ "variants": {
+  "red": {
+   "label": "red boards over cream boards",
+   "evidence": "Gein 3 survey terraces 1,5,11,12,13,21,22,25,26,99,106,115,118,125,134,135,146,152",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#934a4a"
+    },
+    "frame": "#ece9e0",
+    "glass": "#4b5a6b",
+    "door": "#f2f0ea",
+    "accent": "#eeeae0",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "slate",
+     "tint": "#575a58"
+    },
+    "plinth": {
+     "slot": "stucco",
+     "tint": "#ddd9c4"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122087597.jpg",
+     "pand": "03631000122087597",
+     "address": "Jan Nautahof",
+     "note": "sunlit 2024-10: houses 5.1 m between white downpipes; cream vertical boards on the ground storey, red boards above; door 0.85 m at 1.55 m from the left party wall, 1.2 m window at 3.6 m; upper 1.15 x 1.2 m window over the ground window, 0.85 x 0.4 m slit window over the door"
+    },
+    {
+     "photo": "survey crop 03631000122149242.jpg",
+     "pand": "03631000122149242",
+     "address": "Jan Somerhof",
+     "note": "same layout, small white arched door hoods on some houses (not modelled), dormers on some"
+    },
+    {
+     "photo": "survey crop 03631000122119411.jpg",
+     "pand": "03631000122119411",
+     "address": "Johan Schamppad",
+     "note": "same layout, brighter red, dormers"
+    },
+    {
+     "photo": "survey crop 03631000122088878.jpg",
+     "pand": "03631000122088878",
+     "address": "Johan Schamppad",
+     "note": "same layout; three houses with white arched hoods"
+    },
+    {
+     "photo": "survey crop 03631000122150571.jpg",
+     "pand": "03631000122150571",
+     "address": "Cornelis Aarnoutsstraat",
+     "note": "same layout, darker red; one white-painted house in the row"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.55,
+       "w": 0.85,
+       "h": 2.05
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.6,
+       "w": 1.2,
+       "h": 1.05,
+       "sill": 1.0,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.55,
+       "w": 1.15,
+       "h": 1.2,
+       "sill": 0.85,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.6,
+       "w": 0.85,
+       "h": 0.4,
+       "sill": 1.65,
+       "lights": 1
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "all",
+       "u": 0.05,
+       "w": 0.1,
+       "h": 2.9,
+       "sill": 0,
+       "depth": 0.1,
+       "colour": "column",
+       "note": "white downpipe on the party wall"
+      }
+     ]
+    }
+   ],
+   "boards": [
+    {
+     "levels": "ground",
+     "pitchM": 0.4,
+     "widthM": 0.09,
+     "palette": "plinth"
+    },
+    {
+     "levels": "upper",
+     "pitchM": 0.4,
+     "widthM": 0.09,
+     "palette": "wall"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012087597.jpg",
+     "pand": "0363100012087597",
+     "address": "Jan Nautahof",
+     "note": "garden side NOT photographed: generic garden door, kitchen window and two bedroom windows, inferred; hidden between rear gardens in practice"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.8,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.1,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122087597.jpg",
+     "pand": "03631000122087597",
+     "address": "Jan Nautahof",
+     "note": "end wall seen edge-on beside the front; plain, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 03631000122087597.jpg",
+     "pand": "03631000122087597",
+     "address": "Jan Nautahof",
+     "note": "end wall seen edge-on beside the front; plain, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Front on the short side. All houses of a row face the same way (no mirrored pairs) in the photos.",
+  "Board cladding: battens every 0.4 m on the front (the real boards are ~0.12 m; the battens give the vertical texture at game distance); the inferred garden side is plain.",
+  "Dormers (about one house in three) and the arched white door hoods of a few houses are not modelled.",
+  "Garden side and mirror parity are inferred, not photographed.",
+  "3DBAG roof planes (110 pands): both slopes end at 5.64 m median (front/back), ridge 9.36 m, 40 degrees; b3_h_dak_min drops to ~2.8 m on the one house in ten with a rear lean-to, so the eaves come from the planes (lower slope).",
+  "One house in five carries a 2 m rear extension under a low lean-to (BAG 10.7 m deep, b3_h_dak_min ~2.8 m): bodyFromRoof (tolM 2.0) keeps the 8.7 m body; the lean-to itself is not drawn (garden side)."
+ ],
+ "rowCoherentHeights": true,
+ "bodyFromRoof": {
+  "tolM": 2.0
+ }
+}

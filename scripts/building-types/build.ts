@@ -12,7 +12,7 @@ import path from 'node:path';
 import {generate, type GenerateReport} from '../../src/canalRecall/buildingTypes/generate.ts';
 import {lngLatToLocal, minimumRotatedRectangle, swapAxes, freeSides, rectIoU, bearingDeg, type Anchor, type Pt} from '../../src/canalRecall/buildingTypes/geometry.ts';
 import {frontSide, frontTowardBearing, frontYaw, type Street} from '../../src/canalRecall/buildingTypes/orientation.ts';
-import {bodyRectFromRoof, paramsFromFacts, roofFactsFromItem, roofPolygons, type CityJsonItem, type RoofFacts} from '../../src/canalRecall/buildingTypes/facts.ts';
+import {bodyRectFromRoof, paramsFromFacts, roofFactsFromItem, roofPolygons, slopeEavesFromItem, storeysFromHeight, type CityJsonItem, type RoofFacts} from '../../src/canalRecall/buildingTypes/facts.ts';
 import {validateSpec, type TypeSpec} from '../../src/canalRecall/buildingTypes/spec.ts';
 import {writeBakedGlb, writeInstancedGlb, writeMergedGlb, writeTypeGlb, type InstancedGroup, type PlacedInstance} from '../../src/canalRecall/buildingTypes/glb.ts';
 import type {MeshBuilder} from '../../src/canalRecall/buildingTypes/mesh.ts';
@@ -77,6 +77,7 @@ const otherRings: {id: string; ring: Pt[]}[] = [
   ...input.instances.map(i => ({id: i.pandId as string, ring: (i.ringLngLat as number[][]).map(([lng, lat]) => lngLatToLocal(input.anchor, lng, lat))})),
   ...(fs.existsSync(contextFile) ? (JSON.parse(fs.readFileSync(contextFile, 'utf8')).buildings as {id: string; ring: Pt[]}[]).map(b => ({id: b.id, ring: b.ring})) : []),
 ];
+const pending: {held?: string; absorb?: string[]; inst: any; spec: TypeSpec; rect: ReturnType<typeof minimumRotatedRectangle>; front: ReturnType<typeof frontSide>; roof: RoofFacts | null; warnings: string[]; iou: number; params: any; groundNapM: number}[] = [];
 for (const instIn of input.instances) {
   const o = overrides[instIn.pandId] ?? {};
   // variants.json may re-assign the design (the footprint cluster does not know the facade) and hold a pand whose photo does not confirm one.
@@ -93,7 +94,7 @@ for (const instIn of input.instances) {
     const toLocal = (x: number, y: number): Pt => lngLatToLocal(input.anchor, ...rdToLngLat(x, y));
     const roofs = [];
     for (const id of [inst.pandId, ...(o.absorb ?? [])]) roofs.push(...roofPolygons(await item3d(id), toLocal));
-    const body = bodyRectFromRoof(roofs, ringRect);
+    const body = typeof spec.bodyFromRoof === 'object' ? bodyRectFromRoof(roofs, ringRect, spec.bodyFromRoof.tolM) : bodyRectFromRoof(roofs, ringRect);
     if (body) { rect0 = body; bodyWarnings.push(`body ${body.length.toFixed(2)} x ${body.width.toFixed(2)} m from the 3DBAG roof${o.absorb?.length ? ` incl. ${o.absorb.join(', ')}` : ''} (BAG ring rectangle ${ringRect.length.toFixed(2)} x ${ringRect.width.toFixed(2)} m)`); }
     else bodyWarnings.push('no 3DBAG roof surfaces: body = BAG ring rectangle');
   }
@@ -103,6 +104,22 @@ for (const instIn of input.instances) {
   let roof: RoofFacts | null = null;
   try { roof = roofFactsFromItem(await item3d(inst.pandId)); } catch (e) { console.warn('roof facts failed', inst.pandId, (e as Error).message); }
   const {params, warnings, groundNapM} = paramsFromFacts(spec, rect, inst.attrs, roof, {variant: o.variant, groundMode: o.groundMode, ...(o.storeys ? {storeys: o.storeys} : {})}, {terrainAt, ringRd: (inst.ringLngLat as number[][]).map(([lng, lat]) => lngLatToRd(lng, lat))});
+  // Types whose b3_h_dak_min is a lean-to, catslide or dormer read the eaves of the two main slopes from the 3DBAG roof planes.
+  const fromPlanes = spec.roof.eavesFromPlanes;
+  if (fromPlanes && params.roofForm === 'gable' && params.ridge === 'long' && params.ridgeM != null) {
+    const se = slopeEavesFromItem(await item3d(inst.pandId), [front.normal[0], -front.normal[1]]);
+    const f = se && se.frontNap - groundNapM, b = se && se.backNap - groundNapM, top = params.ridgeM - 0.5;
+    if (f != null && b != null && f > 1.5 && b > 1.5 && f < top && b < top) {
+      const kept = warnings.filter(w => !/^b3_h_dak_min eaves|^storey height|^eaves .* say/.test(w));
+      warnings.length = 0; warnings.push(...kept);
+      const lo = Math.min(f, b), hi = Math.max(f, b);
+      if (fromPlanes === 'lower') params.eavesM = lo;
+      else if (fromPlanes === 'low-back') { params.eavesM = hi; params.backEavesM = lo; }
+      else { params.eavesM = lo; params.backEavesM = hi; }
+      params.storeys = storeysFromHeight(fromPlanes === 'lower' ? lo : hi, spec.storeys);
+      warnings.push(`eaves from the 3DBAG roof planes: ${f.toFixed(2)} m on the side read as front, ${b.toFixed(2)} m on the other (${fromPlanes})`);
+    } else warnings.push(`no two opposite 3DBAG roof slopes below the ridge: eaves from b3_h_dak_min`);
+  }
   // variants.json may pin the wall-top height read from the photo (a flat roof whose 3DBAG median roof height includes a plant box or parapet): storeys then follow the type.
   if (o.eavesM) { params.eavesM = o.eavesM; params.storeys = spec.storeys; warnings.push(`eaves pinned to ${o.eavesM} m from the photo (3DBAG roof height ignored)`); }
   warnings.push(...bodyWarnings);
@@ -110,10 +127,46 @@ for (const instIn of input.instances) {
   if (spec.frontOnShort) params.freeSides = freeSides(rect, front.tangent, otherRings.filter(r => r.id !== inst.pandId).map(r => r.ring));
   // variants.json `mirror` is the handedness read from the photos (explicit per house); otherwise the alternation rule of the spec applies.
   if (o.mirror !== undefined) params.mirror = o.mirror; else if (spec.alternateMirror) params.mirror = mirrorOf.get(inst.pandId) ?? false;
-  const {mesh, report} = generate(spec, params);
+  // the design's eaves range is checked on the house's own 3DBAG eaves, before any row clamp
   const outOfRange = spec.eavesRangeM && (params.eavesM < spec.eavesRangeM[0] || params.eavesM > spec.eavesRangeM[1]) ? `eaves ${params.eavesM.toFixed(2)} m outside the ${spec.eavesRangeM.join('-')} m of ${spec.id}: not this two-storey design` : undefined;
   const fr = spec.footprintRangeM, outOfFootprint = fr && (params.lengthM < fr.frontage[0] || params.lengthM > fr.frontage[1] || params.widthM < fr.depth[0] || params.widthM > fr.depth[1]) ? `footprint ${params.lengthM.toFixed(2)} x ${params.widthM.toFixed(2)} m outside ${fr.frontage.join('-')} x ${fr.depth.join('-')} m of ${spec.id}: extended or notched house` : undefined;
-  built.push({held: o.hold ?? outOfRange ?? outOfFootprint, ...(o.absorb?.length ? {absorbed: o.absorb} : {}), pandId: inst.pandId, type: inst.type, variant: report.variant, mesh, report, position: [rect.center[0], groundNapM, rect.center[1]], yaw: frontYaw(front), rect, front, roof, warnings, iou, params});
+  pending.push({held: o.hold ?? outOfRange ?? outOfFootprint, absorb: o.absorb, inst, spec, rect, front, roof, warnings, iou, params, groundNapM});
+}
+// Row coherence (spec.rowCoherentHeights): one terrace of one design, built as one project, has one eaves and ridge line; every house of a
+// row of three or more takes the row's median eaves, back eaves and ridge (3DBAG reads a dormer, a lean-to or a LoD artefact into single
+// houses, and the per-house wobble shows as a stepped roof line). Houses whose own eaves fall outside the design's range were held above.
+// Rows: placed houses of the same type side by side along their front tangent, as for the mirror alternation.
+{
+  const ROW_TOL_M = 0.05;
+  const rows = pending.map((p, k) => ({k, p})).filter(({p}) => p.spec.rowCoherentHeights && !p.held);
+  const at = (r: typeof rows[number]) => ({t: r.p.rect.center[0] * r.p.front.tangent[0] + r.p.rect.center[1] * r.p.front.tangent[1], n: r.p.rect.center[0] * r.p.front.normal[0] + r.p.rect.center[1] * r.p.front.normal[1]});
+  const par = rows.map((_, k) => k), find = (k: number): number => (par[k] === k ? k : (par[k] = find(par[k])));
+  for (let a = 0; a < rows.length; a++) for (let b = a + 1; b < rows.length; b++) {
+    const A = rows[a].p, B = rows[b].p;
+    if (A.inst.type !== B.inst.type) continue;
+    const pa = at(rows[a]), pb = at(rows[b]), par2 = Math.abs(A.front.tangent[0] * B.front.tangent[0] + A.front.tangent[1] * B.front.tangent[1]);
+    const dt = Math.abs(pa.t - pb.t), dn = Math.abs(pa.n - pb.n);
+    if (par2 > 0.97 && dn < 1.2 && dt > 0.5 * A.rect.length && dt < A.rect.length + 1.0) par[find(a)] = find(b);
+  }
+  const comps = new Map<number, number[]>();
+  rows.forEach((_, k) => (comps.get(find(k)) ?? comps.set(find(k), []).get(find(k))!).push(k));
+  const med = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)];
+  for (const ks of comps.values()) {
+    if (ks.length < 3) continue;
+    for (const field of ['eavesM', 'backEavesM', 'ridgeM'] as const) {
+      const vals = ks.map(k => rows[k].p.params[field]).filter((v): v is number => v != null);
+      if (vals.length < 3) continue;
+      const m = med(vals);
+      for (const k of ks) {
+        const pr = rows[k].p.params, v = pr[field];
+        if (v != null && Math.abs(v - m) > ROW_TOL_M) { pr[field] = m; if (Math.abs(v - m) > 0.8) rows[k].p.warnings.push(`row coherence: ${field} ${v.toFixed(2)} m -> row median ${m.toFixed(2)} m (${ks.length} houses)`); }
+      }
+    }
+  }
+}
+for (const {held, absorb, inst, spec, rect, front, roof, warnings, iou, params, groundNapM} of pending) {
+  const {mesh, report} = generate(spec, params);
+  built.push({held, ...(absorb?.length ? {absorbed: absorb} : {}), pandId: inst.pandId, type: inst.type, variant: report.variant, mesh, report, position: [rect.center[0], groundNapM, rect.center[1]], yaw: frontYaw(front), rect, front, roof, warnings, iou, params});
 }
 
 // One street level per chunk, as the street-chunks lane does: every instance stands on y = 0 and the median 3DBAG ground (NAP) is in the asset extras;
@@ -147,8 +200,10 @@ for (const [key, members] of groups) {
   const [type] = key.split('|'), spec = specs.get(type)!;
   const L0 = median(members.map(m => m.params.lengthM)), W0 = median(members.map(m => m.params.widthM)), E0 = median(members.map(m => m.params.eavesM));
   const R0 = members.every(m => m.params.ridgeM != null) ? median(members.map(m => m.params.ridgeM)) : undefined;
+  // asymmetric gables: the back eaves keeps the group's median back-to-front ratio, so the per-instance eaves scale carries both
+  const B0 = members.every(m => m.params.backEavesM != null) ? E0 * median(members.map(m => m.params.backEavesM / m.params.eavesM)) : undefined;
   const first = members[0];
-  const {mesh} = generate(spec, {...first.params, freeSides: first.params.freeSides, mirror: first.params.mirror, lengthM: L0, widthM: W0, eavesM: E0, ridgeM: R0});
+  const {mesh} = generate(spec, {...first.params, freeSides: first.params.freeSides, mirror: first.params.mirror, lengthM: L0, widthM: W0, eavesM: E0, ridgeM: R0, backEavesM: B0});
   const name = key.replace(/\|/g, '__');
   const instances = members.map(m => {
     const scale: [number, number, number] = [m.params.lengthM / L0, m.params.eavesM / E0, m.params.widthM / W0];

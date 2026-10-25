@@ -1,0 +1,83 @@
+[
+ {
+  "area": "zo-ho-01",
+  "anchor": {
+   "lng": 4.96961,
+   "lat": 52.29863
+  },
+  "pands": 12,
+  "missing": 0,
+  "per": {
+   "zo-ho-hood/white-frames/signature": 12
+  }
+ },
+ {
+  "area": "zo-ho-02",
+  "anchor": {
+   "lng": 4.97245,
+   "lat": 52.29954
+  },
+  "pands": 66,
+  "missing": 0,
+  "per": {
+   "zo-ho-hood/white-frames/signature": 13,
+   "zo-ho-hood/white-frames/photo": 28,
+   "zo-ho-hood/green-frames/photo": 25
+  }
+ },
+ {
+  "area": "zo-ho-03",
+  "anchor": {
+   "lng": 4.9676,
+   "lat": 52.30256
+  },
+  "pands": 274,
+  "missing": 0,
+  "per": {
+   "zo-ho-annex/brick/photo": 32,
+   "zo-ho-annex/brick/signature": 114,
+   "zo-ho-maldenhof/brick/signature": 44,
+   "zo-ho-maldenhof/brick/photo": 84
+  }
+ },
+ {
+  "area": "zo-ho-04",
+  "anchor": {
+   "lng": 4.97178,
+   "lat": 52.30106
+  },
+  "pands": 34,
+  "missing": 0,
+  "per": {
+   "zo-ho-hood/green-frames/photo": 6,
+   "zo-ho-hood/white-frames/photo": 10,
+   "zo-ho-annex/brick/photo": 14,
+   "zo-ho-maldenhof/brick/signature": 4
+  }
+ },
+ {
+  "area": "zo-ho-05",
+  "anchor": {
+   "lng": 4.96753,
+   "lat": 52.30466
+  },
+  "pands": 188,
+  "missing": 0,
+  "per": {
+   "zo-ho-maldenhof/brick/photo": 152,
+   "zo-ho-maldenhof/brick/signature": 36
+  }
+ },
+ {
+  "area": "zo-ho-06",
+  "anchor": {
+   "lng": 4.97008,
+   "lat": 52.30428
+  },
+  "pands": 18,
+  "missing": 0,
+  "per": {
+   "zo-ho-maldenhof/brick/photo": 18
+  }
+ }
+]

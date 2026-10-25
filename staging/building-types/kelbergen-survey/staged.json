@@ -1,0 +1,46 @@
+[
+ {
+  "area": "zo-kb-01",
+  "anchor": {
+   "lng": 4.97339,
+   "lat": 52.31117
+  },
+  "pands": 174,
+  "missing": 0,
+  "per": {
+   "zo-kb-patio-ribbon/yellow/photo": 52,
+   "zo-kb-patio-ribbon/yellow/signature": 4,
+   "zo-kb-patio-ribbon/red/signature": 25,
+   "zo-kb-patio-ribbon/blue/signature": 32,
+   "zo-kb-patio-ribbon/red/photo": 34,
+   "zo-kb-patio-ribbon/blue/photo": 27
+  }
+ },
+ {
+  "area": "zo-kb-02",
+  "anchor": {
+   "lng": 4.97662,
+   "lat": 52.31128
+  },
+  "pands": 13,
+  "missing": 0,
+  "per": {
+   "zo-kb-patio-ribbon/blue/signature": 13
+  }
+ },
+ {
+  "area": "zo-kb-03",
+  "anchor": {
+   "lng": 4.97286,
+   "lat": 52.31273
+  },
+  "pands": 88,
+  "missing": 0,
+  "per": {
+   "zo-kb-patio-ribbon/red/photo": 46,
+   "zo-kb-patio-ribbon/green/photo": 22,
+   "zo-kb-patio-ribbon/green/signature": 16,
+   "zo-kb-patio-ribbon/red/signature": 4
+  }
+ }
+]

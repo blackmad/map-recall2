@@ -1,0 +1,50 @@
+[
+ {
+  "area": "zo-g3-01",
+  "anchor": {
+   "lng": 4.99469,
+   "lat": 52.29776
+  },
+  "pands": 78,
+  "missing": 0,
+  "per": {
+   "zo-g3-red-clad/red/photo": 78
+  }
+ },
+ {
+  "area": "zo-g3-02",
+  "anchor": {
+   "lng": 4.99819,
+   "lat": 52.29982
+  },
+  "pands": 16,
+  "missing": 0,
+  "per": {
+   "zo-g3-timber-brick/timber/photo": 16
+  }
+ },
+ {
+  "area": "zo-g3-03",
+  "anchor": {
+   "lng": 4.99398,
+   "lat": 52.30042
+  },
+  "pands": 32,
+  "missing": 0,
+  "per": {
+   "zo-g3-red-clad/red/photo": 32
+  }
+ },
+ {
+  "area": "zo-g3-04",
+  "anchor": {
+   "lng": 4.99821,
+   "lat": 52.3005
+  },
+  "pands": 37,
+  "missing": 0,
+  "per": {
+   "zo-g3-timber-brick/timber/photo": 37
+  }
+ }
+]
