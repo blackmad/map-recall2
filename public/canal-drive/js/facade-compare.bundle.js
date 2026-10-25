@@ -516,16 +516,16 @@
     }
     /** An axis-aligned box in local coordinates, all six faces unless `open` names some (e.g. 'bottom'). */
     box(u0, u1, v0, v1, z0, z1, part, hex2, open = []) {
-      const P = (u, v, z) => [u, v, z];
+      const P2 = (u, v, z) => [u, v, z];
       const f = (name2, a, b, c, d, hint) => {
         if (!open.includes(name2)) this.quad(a, b, c, d, [0, 0], [1, 0], [1, 1], [0, 1], part, hint, hex2);
       };
-      f("bottom", P(u0, v0, z0), P(u1, v0, z0), P(u1, v1, z0), P(u0, v1, z0), [0, 0, -1]);
-      f("top", P(u0, v0, z1), P(u1, v0, z1), P(u1, v1, z1), P(u0, v1, z1), [0, 0, 1]);
-      f("u0", P(u0, v0, z0), P(u0, v1, z0), P(u0, v1, z1), P(u0, v0, z1), [-1, 0, 0]);
-      f("u1", P(u1, v0, z0), P(u1, v1, z0), P(u1, v1, z1), P(u1, v0, z1), [1, 0, 0]);
-      f("v0", P(u0, v0, z0), P(u1, v0, z0), P(u1, v0, z1), P(u0, v0, z1), [0, -1, 0]);
-      f("v1", P(u0, v1, z0), P(u1, v1, z0), P(u1, v1, z1), P(u0, v1, z1), [0, 1, 0]);
+      f("bottom", P2(u0, v0, z0), P2(u1, v0, z0), P2(u1, v1, z0), P2(u0, v1, z0), [0, 0, -1]);
+      f("top", P2(u0, v0, z1), P2(u1, v0, z1), P2(u1, v1, z1), P2(u0, v1, z1), [0, 0, 1]);
+      f("u0", P2(u0, v0, z0), P2(u0, v1, z0), P2(u0, v1, z1), P2(u0, v0, z1), [-1, 0, 0]);
+      f("u1", P2(u1, v0, z0), P2(u1, v1, z0), P2(u1, v1, z1), P2(u1, v0, z1), [1, 0, 0]);
+      f("v0", P2(u0, v0, z0), P2(u1, v0, z0), P2(u1, v0, z1), P2(u0, v0, z1), [0, -1, 0]);
+      f("v1", P2(u0, v1, z0), P2(u1, v1, z0), P2(u1, v1, z1), P2(u0, v1, z1), [0, 1, 0]);
     }
   };
 
@@ -875,7 +875,7 @@
     }
   }
   function dormer(s, d, plan) {
-    const P = (a, b, z) => d.axis === "v" ? [b, d.side * a, z] : [d.side * a, b, z];
+    const P2 = (a, b, z) => d.axis === "v" ? [b, d.side * a, z] : [d.side * a, b, z];
     const n = d.axis === "v" ? [0, d.side, 0] : [d.side, 0, 0];
     const tan = (sg) => d.axis === "v" ? [sg, 0, 0] : [0, sg, 0];
     const zf = d.surf(d.pf), zb = zf - 0.15, ph = d.band ? 0 : Math.min(0.5, d.dw * 0.4);
@@ -891,17 +891,17 @@
     if (pb < 0) return false;
     const zt = zb + hd, b0 = d.c - d.dw / 2, b1 = d.c + d.dw / 2, accents = !!plan.accents, trim = plan.trimHex ?? TRIM_WHITE;
     const rep = d.band ? Math.max(1, Math.round(d.dw / 1.5)) : 1;
-    s.quad(P(d.pf, b0, zb), P(d.pf, b1, zb), P(d.pf, b1, zt), P(d.pf, b0, zt), [0, 0], [rep, 0], [rep, 1], [0, 1], "dormerFace", n);
-    for (const [b, sg] of [[b0, -1], [b1, 1]]) s.quad(P(d.pf, b, zb), P(pb, b, zb), P(pb, b, zt), P(d.pf, b, zt), [0, 0], [1, 0], [1, 1], [0, 1], accents ? "trim" : "dormerSide", tan(sg), accents ? trim : void 0);
+    s.quad(P2(d.pf, b0, zb), P2(d.pf, b1, zb), P2(d.pf, b1, zt), P2(d.pf, b0, zt), [0, 0], [rep, 0], [rep, 1], [0, 1], "dormerFace", n);
+    for (const [b, sg] of [[b0, -1], [b1, 1]]) s.quad(P2(d.pf, b, zb), P2(pb, b, zb), P2(pb, b, zt), P2(d.pf, b, zt), [0, 0], [1, 0], [1, 1], [0, 1], accents ? "trim" : "dormerSide", tan(sg), accents ? trim : void 0);
     if (d.band) {
-      s.quad(P(d.pf, b0, zt), P(d.pf, b1, zt), P(pb, b1, zt), P(pb, b0, zt), [0, 0], [1, 0], [1, 1], [0, 1], "dormerSide", [0, 0, 1]);
-      if (accents) s.quad(P(d.pf + 0.012, b0, zt - 0.14), P(d.pf + 0.012, b1, zt - 0.14), P(d.pf + 0.012, b1, zt), P(d.pf + 0.012, b0, zt), [0, 0], [0, 0], [0, 0], [0, 0], "decal", n, trim);
+      s.quad(P2(d.pf, b0, zt), P2(d.pf, b1, zt), P2(pb, b1, zt), P2(pb, b0, zt), [0, 0], [1, 0], [1, 1], [0, 1], "dormerSide", [0, 0, 1]);
+      if (accents) s.quad(P2(d.pf + 0.012, b0, zt - 0.14), P2(d.pf + 0.012, b1, zt - 0.14), P2(d.pf + 0.012, b1, zt), P2(d.pf + 0.012, b0, zt), [0, 0], [0, 0], [0, 0], [0, 0], "decal", n, trim);
     } else {
-      s.tri(P(d.pf, b0, zt), P(d.pf, b1, zt), P(d.pf, d.c, zt + ph), [0, 0], [0, 0], [0, 0], accents ? "trim" : "plate", n, accents ? trim : void 0);
+      s.tri(P2(d.pf, b0, zt), P2(d.pf, b1, zt), P2(d.pf, d.c, zt + ph), [0, 0], [0, 0], [0, 0], accents ? "trim" : "plate", n, accents ? trim : void 0);
       for (const sg of [-1, 1]) {
         const b = sg < 0 ? b0 : b1;
-        s.slopeTri(P(d.pf, b, zt), P(pb, b, zt), P(pb, d.c, zt + ph), [...tan(sg).slice(0, 2), 0.8], "dormerSide");
-        s.slopeTri(P(d.pf, b, zt), P(pb, d.c, zt + ph), P(d.pf, d.c, zt + ph), [...tan(sg).slice(0, 2), 0.8], "dormerSide");
+        s.slopeTri(P2(d.pf, b, zt), P2(pb, b, zt), P2(pb, d.c, zt + ph), [...tan(sg).slice(0, 2), 0.8], "dormerSide");
+        s.slopeTri(P2(d.pf, b, zt), P2(pb, d.c, zt + ph), P2(d.pf, d.c, zt + ph), [...tan(sg).slice(0, 2), 0.8], "dormerSide");
       }
     }
     return true;
@@ -2100,6 +2100,115 @@
     }
   };
 
+  // src/canalRecall/kitFacades.ts
+  var P = "NL.IMBAG.Pand.";
+  var KIT_FACADES = {
+    // AFAS Live (2001, 19.8 m): silver vertical-ribbed metal over a ground storey of grey panel doors (0.39 of the crop's
+    // wall), one band of narrow windows at 0.69-0.84 of it. Ribs #a4a19a (upper crop), doors #575b5a.
+    [`${P}0363100012123240`]: {
+      why: "row 279 (kits-r5-70): grey vertical-ribbed metal hall with one continuous window band and large ground openings",
+      wallHex: "#9f9c95",
+      rows: [{ z0: 13.6, z1: 16.6, widthM: 1.2, bayM: 1.6, ribbon: true }],
+      glassHex: "#3d4246",
+      frameHex: "#8f8c86",
+      cladding: [
+        { kind: "panels", hex: "#6a6e6c", z0: 0, z1: 7.7, pitchM: 4.5, rowM: 7.7, lineHex: "#45494a" },
+        { kind: "ribs", hex: "#a4a19a", z0: 7.7, pitchM: 0.45 }
+      ]
+    },
+    // Cinema Amstelveen (2002, 16.6 m): dark grey horizontal louvres over the upper 0.42 of the wall; below, a grid of
+    // dark panels and green-grey glass (#72746d / #87a897) over a covered passage.
+    [`${P}0362100001111443`]: {
+      why: "row 355 (kits-r5-89): dark grey horizontal louvre cladding over a fully glazed and panelled ground floor",
+      wallHex: "#6f716c",
+      rows: [],
+      cladding: [
+        { kind: "curtain", hex: "#5c6662", z0: 0, z1: 9.4, pitchM: 2.4, rowM: 2.3, lineHex: "#9a9c97" },
+        { kind: "louvres", hex: "#8d8f8c", z0: 9.6, pitchM: 0.32, lineHex: "#3e4140" }
+      ]
+    },
+    // Pathé Arena (2000, 19.9 m): grey-green metal cassette panels all over (#7a8184 shade, #8ea59f lit), about 1.5 m wide
+    // and 1.1 m tall on the crop. The sloped dark glazed band over the entrance is not expressible (one edge only).
+    [`${P}0363100012100092`]: {
+      why: "row 278 (kits-r5-70): grey metal-panel cladding (the sloped glazed band over the entrance is left out)",
+      wallHex: "#848d8e",
+      rows: [],
+      cladding: [{ kind: "panels", hex: "#848d8e", z0: 0, pitchM: 1.5, rowM: 1.1, lineHex: "#5f6668" }]
+    },
+    // Film and Television Academy (1999, 19.5 m): a green-grey curtain wall, glass #434f47, mullions #535e54 about 1.6 m
+    // apart, transoms at each 1.3 m band of opaque glass.
+    [`${P}0363100012170259`]: {
+      why: "row 280 (kits-r5-70): full-height green-grey curtain-wall grid",
+      wallHex: "#4d5a50",
+      rows: [],
+      cladding: [{ kind: "curtain", hex: "#47544b", z0: 0, pitchM: 1.6, rowM: 1.3, lineHex: "#6d7a6f" }]
+    },
+    // Islamitisch Centrum Quba (1990, 7.4 m): pale blue horizontal profiled metal (#7baad1) above a sign band at 0.47 of
+    // the wall, brick below (#5a5e68 raw, #7d7d8d white-balanced on the sign band) with shop windows.
+    [`${P}0363100012128901`]: {
+      why: "row 258 (kits-r5-65): blue metal-clad upper band over a low brick plinth with a glazed shopfront",
+      wallHex: "#7d7d8d",
+      rows: [{ z0: 0.7, z1: 2.9, widthM: 2.4, bayM: 3.2, head: "flat" }],
+      glassHex: "#3f4a52",
+      frameHex: "#d9dcdc",
+      cladding: [{ kind: "boards", hex: "#86b0d2", z0: 3.5, pitchM: 0.3 }]
+    },
+    // School (1959, 11.5 m): white-gridded curtain wall with blue spandrel bands (#5f7571 glass row).
+    [`${P}0363100012104151`]: {
+      why: "row 117 (kits-r5-30): near-fully glazed white-gridded curtain wall with blue spandrel panels",
+      wallHex: "#dfe2df",
+      rows: [],
+      cladding: [{ kind: "curtain", hex: "#5a6d6c", z0: 0.3, pitchM: 1.3, rowM: 1.9, lineHex: "#eef0ee", spandrelM: 0.5, spandrelHex: "#5d7fa6" }]
+    },
+    // De Bonkelaar (1973, 4.5 m): light grey horizontal profiled metal (#8ba2a4 through leaves), one storey.
+    [`${P}0363100012079924`]: {
+      why: "row 137 (kits-r5-35): grey horizontal ribbed metal cladding",
+      wallHex: "#a3abae",
+      cladding: [{ kind: "boards", hex: "#a3abae", z0: 0, pitchM: 0.22 }]
+    },
+    // School (1971, 4.5 m): a low pavilion walled in blue-framed glazing and coloured panels (blue read by eye: the
+    // posts are too thin on the crop to sample).
+    [`${P}0358100021569571`]: {
+      why: "row 367 (kits-r5-92): long wall almost entirely blue-framed glazing and coloured panels",
+      wallHex: "#b1b6b8",
+      rows: [],
+      // ochre-panelled glazing between blue posts about 2.6 m apart, under a grey fascia from 0.75 of the wall
+      cladding: [
+        { kind: "curtain", hex: "#a68c62", z0: 0.3, z1: 3.3, pitchM: 2.6, rowM: 9, lineHex: "#3f6496" },
+        { kind: "panels", hex: "#b1b6b8", z0: 3.45, pitchM: 3, rowM: 9 }
+      ]
+    },
+    // De Dapper (1985, 12.4 m): pale grey metal-panel upper volume (#7e8790 shaded) raised over a glazed ground floor.
+    [`${P}0363100012112062`]: {
+      why: "row 196 (kits-r5-49): pale grey metal-panel clad upper volume on pilotis over a glazed ground floor",
+      wallHex: "#aeb3b5",
+      rows: [],
+      cladding: [
+        { kind: "curtain", hex: "#3f474c", z0: 0, z1: 4.2, pitchM: 2.4, rowM: 4.2, lineHex: "#d0d0c8" },
+        { kind: "panels", hex: "#aeb3b5", z0: 4.6, pitchM: 2.4, rowM: 12, lineHex: "#868c8f" }
+      ]
+    }
+  };
+  function applyKitFacade(kit, id, eavesM, facade = KIT_FACADES[id]) {
+    if (!facade) return kit;
+    const wall = { plain: true, hex: facade.wallHex ?? kit.wall?.hex ?? "#a8a6a0" };
+    const hall = kit.halls?.find((h) => h.id === id);
+    const prior = hall?.windows;
+    const windows = {
+      ...prior ?? {},
+      rows: facade.rows ?? prior?.rows ?? [],
+      ...facade.glassHex ? { glassHex: facade.glassHex } : {},
+      ...facade.frameHex ? { frameHex: facade.frameHex } : {},
+      // the measured sash bars and top band belong to the brick front the facade replaces
+      sash: void 0,
+      topBand: void 0,
+      cladding: facade.cladding
+    };
+    if (hall) return { ...kit, wall, halls: kit.halls.map((h) => h === hall ? { ...h, windows } : h) };
+    const { body: _body, trim, ...rest } = kit;
+    return { ...rest, wall, halls: [{ id, widthM: 0, anchor: [0, 0], eavesM, riseM: 0, mat: "slate", windows: { ...windows, ...trim?.plinth ? { plinth: trim.plinth } : {} } }] };
+  }
+
   // src/canalRecall/publicBuildingFacts.ts
   var SCHOOL_PERIOD_WALLS = { "c19": ["#4d423c", "#56453f", "#64544d", "#68584e", "#736062", "#68655a", "#847465"], "school": ["#443a34", "#45413b", "#54463f", "#5d4b47", "#5b5049", "#645850", "#81766b"], "modern": ["#443d35", "#4c4640", "#5b4f45", "#60584c", "#645f5d", "#746d68", "#8f8781"] };
   var PUBLIC_FACTS = [
@@ -2740,7 +2849,7 @@
       halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === "h", ...hip ? { hip: true } : {}, ...hip?.pitchDeg ? { pitchDeg: hip.pitchDeg } : {}, eavesM: eaves, riseM: rise, mat: era === "o" ? "slate" : "tile", ...roofHex ? { roofHex } : {}, windows }]
     };
   }
-  var GENERIC_WORSHIP_KITS = WORSHIP_BUILDINGS.filter((e) => !NOT_WORSHIP_FORM[e[0]]).map((e) => worshipKit(e));
+  var GENERIC_WORSHIP_KITS = WORSHIP_BUILDINGS.filter((e) => !NOT_WORSHIP_FORM[e[0]]).map((e) => applyKitFacade(worshipKit(e), e[0], e[3]));
 
   // src/canalRecall/publicBuildingData.ts
   var PUBLIC_BUILDINGS = [
@@ -3495,7 +3604,7 @@
   }
   var GENERIC_PUBLIC_KITS = PUBLIC_BUILDINGS.filter((e) => !NOT_PUBLIC_FORM[e[0]]).map((e) => {
     const r = PUBLIC_RETYPE[e[0]];
-    return r ? publicKit(r.entry, r.facts) : publicKit(e);
+    return applyKitFacade(r ? publicKit(r.entry, r.facts) : publicKit(e), e[0], (r?.entry ?? e)[3]);
   });
 
   // src/canalRecall/landmarkKits.ts
@@ -4250,6 +4359,76 @@
       wallPolygon(sink, e.o, e.t, e.n, OFF.tracery, [[s - 0.05, row.z0], [s + 0.05, row.z0], [s + 0.05, row.z1], [s - 0.05, row.z1]], frame);
     }
   }
+  var CLADDING_PITCH = { ribs: 0.5, boards: 0.35, louvres: 0.3, panels: 1.2, curtain: 1.5 };
+  var CLADDING_ROW_M = { panels: 0.9, curtain: 3.3 };
+  var CLADDING_LINE = { ribs: 0.08, boards: 0.06, louvres: 0.15, panels: 0.04, curtain: 0.1 };
+  var CURTAIN_FRAME_HEX = "#c9cdd0";
+  function shadeHex(hex2, k) {
+    const v = parseInt(hex2.slice(1), 16), c = (x) => Math.max(0, Math.min(255, Math.round(x * k))).toString(16).padStart(2, "0");
+    return `#${c(v >> 16 & 255)}${c(v >> 8 & 255)}${c(v & 255)}`;
+  }
+  function claddingZones(z0, z1, gaps, pad = 0.15, min = 0.3) {
+    let zones = [[z0, z1]];
+    for (const [a0, a1] of gaps) {
+      const g0 = a0 - pad, g1 = a1 + pad;
+      zones = zones.flatMap(([a, b]) => g1 <= a || g0 >= b ? [[a, b]] : [[a, g0], [g1, b]]);
+    }
+    return zones.filter(([a, b]) => b - a >= min);
+  }
+  function claddingOnEdge(sink, e, z0, z1, c) {
+    if (e.len < 1 || z1 - z0 < 0.3) return;
+    const rect = (s02, s12, a, b, off, hex2) => wallPolygon(sink, e.o, e.t, e.n, off, [[s02, a], [s12, a], [s12, b], [s02, b]], hex2);
+    const pitch = c.pitchM ?? CLADDING_PITCH[c.kind], w = CLADDING_LINE[c.kind], inset = 0.1, s0 = inset, s1 = e.len - inset;
+    const line = c.lineHex ?? (c.kind === "curtain" ? CURTAIN_FRAME_HEX : c.kind === "louvres" ? shadeHex(c.hex, 0.45) : shadeHex(c.hex, 0.78));
+    rect(0, e.len, z0, z1, OFF.plinth, c.kind === "louvres" ? line : c.hex);
+    const vertical = (step) => {
+      const n = Math.max(1, Math.round((s1 - s0) / step));
+      for (let k = 1; k < n; k++) {
+        const s = s0 + (s1 - s0) * k / n;
+        rect(s - w / 2, s + w / 2, z0, z1, OFF.frame, line);
+      }
+    };
+    const horizontal = (step, hex2, wd, from = z0) => {
+      for (let z = from + step; z < z1 - wd / 2; z += step) rect(s0, s1, z - wd / 2, z + wd / 2, OFF.frame, hex2);
+    };
+    switch (c.kind) {
+      case "ribs":
+        vertical(pitch);
+        break;
+      case "boards":
+        horizontal(pitch, line, w);
+        break;
+      case "louvres":
+        horizontal(pitch, c.hex, w, z0 - pitch / 2);
+        break;
+      case "panels":
+        vertical(pitch);
+        horizontal(c.rowM ?? CLADDING_ROW_M.panels, line, w);
+        break;
+      case "curtain": {
+        const row = c.rowM ?? CLADDING_ROW_M.curtain, band = Math.max(w, c.spandrelM ?? 0), bands = [[z0, z0 + w, line], [z1 - w, z1, line]];
+        for (let z = z0 + row; z < z1 - band / 2 - w; z += row) bands.push([z - band / 2, z + band / 2, c.spandrelHex ?? line]);
+        bands.sort((a, b) => a[0] - b[0]);
+        for (const [a, b, hex2] of bands) rect(0, e.len, a, b, OFF.frame, hex2);
+        const n = Math.max(1, Math.round((s1 - s0) / pitch));
+        for (let i = 0; i + 1 < bands.length; i++) {
+          const a = bands[i][1], b = bands[i + 1][0];
+          if (b - a > 0.05) for (let k = 1; k < n; k++) {
+            const s = s0 + (s1 - s0) * k / n;
+            rect(s - w / 2, s + w / 2, a, b, OFF.frame, line);
+          }
+        }
+        break;
+      }
+    }
+  }
+  function claddingOnRing(sink, ring, list, floor, ceil, gaps) {
+    const edges = wallEdges(ring);
+    for (const c of list) {
+      const z0 = Math.max(c.z0, floor), z1 = Math.min(c.z1 ?? ceil, ceil);
+      for (const [a, b] of claddingZones(z0, z1, gaps)) for (const e of edges) claddingOnEdge(sink, e, a, b, c);
+    }
+  }
   function wallEdges(ring) {
     const pts = ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1] ? ring.slice(0, -1) : ring.slice();
     let area2 = 0;
@@ -4277,6 +4456,10 @@
     if (win.topBand) {
       const z1 = spec.eavesM, z0 = Math.max(0, z1 - win.topBand.m);
       for (const e of edges) if (e.len >= 0.2) wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, z0], [e.len, z0], [e.len, z1], [0, z1]], win.topBand.hex);
+    }
+    if (win.cladding?.length) {
+      const floor = win.plinth?.z1 ?? 0, ceil = spec.eavesM - (win.topBand?.m ?? 0);
+      claddingOnRing(sink, ring, win.cladding, floor, ceil, win.rows.map((r) => [r.z0, r.z1]));
     }
     const inTower = (p) => (spec.towers ?? []).some((t) => {
       const [cx2, cy] = toLocal(t.at), a = towerAng(t), dx = p[0] - cx2, dy = p[1] - cy;
@@ -4438,6 +4621,10 @@
         const c = Math.min(trim.coping.m, (z1 - z0) / 2);
         wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, z1 - c], [e.len, z1 - c], [e.len, z1], [0, z1]], trim.coping.hex);
       }
+    }
+    if (trim.cladding?.length) {
+      const floor = z0 + (trim.plinth && trim.plinth.z1 < z1 - z0 ? trim.plinth.z1 : 0), ceil = z1 - (trim.coping ? Math.min(trim.coping.m, (z1 - z0) / 2) : 0);
+      claddingOnRing(sink, part.ring, trim.cladding.map((c) => ({ ...c, z0: z0 + c.z0, ...c.z1 !== void 0 ? { z1: z0 + c.z1 } : {} })), floor, ceil, []);
     }
   }
   var HIP_PITCH_DEG = 50;
@@ -4903,7 +5090,7 @@
   var IRON = "#1f2124";
   var LUIKEN = ["#2c4f33", "#7a1f2b", "#1f2a2a", "#2c4f33"];
   var pickOf = (list, r) => list[Math.floor(r * list.length) % list.length];
-  function shadeHex(hex2, k) {
+  function shadeHex2(hex2, k) {
     const v = [1, 3, 5].map((i) => parseInt(hex2.slice(i, i + 2), 16));
     const out = v.map((c) => Math.max(0, Math.min(255, Math.round(k <= 1 ? c * k : c + (255 - c) * (k - 1)))));
     return `#${out.map((c) => c.toString(16).padStart(2, "0")).join("")}`;
@@ -4980,7 +5167,7 @@
       for (const x of ends) for (const dx of [-0.14, 0.07]) s.box(c.f, Math.max(0, x + dx), Math.min(c.f.len, x + dx + 0.07), 0.04, 0.26, t - 0.52, t - 0.26, CREAM2);
     } },
     { id: "corbel-roofline", styles: ["school"], p: 0.45, wide: true, street: true, group: "crown", build: (c, s) => {
-      const t = c.top, brick = shadeHex(c.wallHex, 0.82);
+      const t = c.top, brick = shadeHex2(c.wallHex, 0.82);
       s.box(c.f, 0, c.f.len, 0, 0.08, t - 0.62, t - 0.46, brick, true);
       s.box(c.f, 0, c.f.len, 0, 0.17, t - 0.46, t - 0.3, brick, true);
       s.box(c.f, 0, c.f.len, 0, 0.27, t - 0.3, t - 0.06, brick, true);
@@ -4988,7 +5175,7 @@
     } },
     { id: "stepped-parapet", styles: ["school"], p: 0.2, wide: true, street: true, group: "crown", rise: 1.25, build: (c, s) => {
       if (c.f.len < 6) return;
-      const t = c.top, L = c.f.len, brick = shadeHex(c.wallHex, 0.9);
+      const t = c.top, L = c.f.len, brick = shadeHex2(c.wallHex, 0.9);
       const steps = [[0, L, 0.35], [L * 0.22, L * 0.78, 0.75], [L * 0.38, L * 0.62, 1.1]];
       let z = t;
       for (const [a0, a1, h] of steps) {
@@ -5032,7 +5219,7 @@
     { id: "brick-door-arch", styles: ["school"], p: 0.4, street: true, group: "door-frame", build: (c, s) => {
       const d = doorSpan(c);
       if (!d) return;
-      const l = d.x - d.hw, rr = d.x + d.hw, brick = shadeHex(c.wallHex, 0.78), top = d.z1 + 0.05;
+      const l = d.x - d.hw, rr = d.x + d.hw, brick = shadeHex2(c.wallHex, 0.78), top = d.z1 + 0.05;
       for (const [w, o, up] of [[0.16, 0.14, 0.18], [0.32, 0.07, 0.4]]) {
         s.box(c.f, l - w, l - w + 0.16, 0, o, d.z0, top + up, brick);
         s.box(c.f, rr + w - 0.16, rr + w, 0, o, d.z0, top + up, brick);
@@ -5149,7 +5336,7 @@
     } },
     { id: "brick-fins", styles: ["school"], p: 0.35, wide: true, street: true, build: (c, s) => {
       if (c.layout.storeys < 1) return;
-      const brick = shadeHex(c.wallHex, 0.8), z0 = storeyZ(c, 0) - 0.3;
+      const brick = shadeHex2(c.wallHex, 0.8), z0 = storeyZ(c, 0) - 0.3;
       for (const x of pierXs(c).slice(1, -1).slice(0, 8)) s.box(c.f, x - 0.11, x + 0.11, 0, 0.32, z0, c.top - 0.05, brick, true);
     } },
     // --- Projections --------------------------------------------------------------------------
@@ -5158,7 +5345,7 @@
       const x = c.f.len * (r < 0.5 ? 0.5 : 0.3), z0 = storeyZ(c, 0) + 0.1, z1 = storeyZ(c, Math.min(2, c.layout.storeys - 1)) - 0.1;
       const glassZ0 = z0 + 0.7, glassZ1 = z1 - 0.35, frame = c.style === "school" ? pickOf(SCHOOL_FRAMES, r) : WHITE2;
       s.box(c.f, x - 0.75, x + 0.75, 0, 0.4, z0 - 0.4, z0, SANDSTONE, true);
-      const body = shadeHex(c.wallHex, 0.88);
+      const body = shadeHex2(c.wallHex, 0.88);
       for (const [hw, o] of [[1.3, 0.2], [1.05, 0.38], [0.7, 0.5]]) s.box(c.f, x - hw, x + hw, 0, o, z0, z1, body, true);
       for (const [a0, a1, o] of [[x - 1.22, x - 1.1, 0.2], [x - 0.95, x - 0.8, 0.38], [x - 0.62, x + 0.62, 0.5], [x + 0.8, x + 0.95, 0.38], [x + 1.1, x + 1.22, 0.2]]) s.strip(c.f, a0, a1, o + 0.01, glassZ0, glassZ1, "#8ea6b4", 0.01);
       s.strip(c.f, x - 0.6, x + 0.6, 0.53, glassZ0 + (glassZ1 - glassZ0) * 0.68, glassZ0 + (glassZ1 - glassZ0) * 0.72, frame, 0.03);
@@ -5210,7 +5397,7 @@
     } },
     { id: "school-tower", styles: ["school"], p: 0.1, wide: true, street: true, rise: 2.3, build: (c, s, r) => {
       if (c.f.len < 8 || c.layout.storeys < 2) return;
-      const L = c.f.len, w = 1.6, a0 = r < 0.5 ? 0 : L - w, brick = shadeHex(c.wallHex, 0.86);
+      const L = c.f.len, w = 1.6, a0 = r < 0.5 ? 0 : L - w, brick = shadeHex2(c.wallHex, 0.86);
       s.box(c.f, a0, a0 + w, 0, 0.4, storeyZ(c, 0), c.top + 2, brick, true, true);
       s.box(c.f, a0 - 0.05, a0 + w + 0.05, -0.05, 0.48, c.top + 2, c.top + 2.15, CREAM2, true, true);
       s.strip(c.f, a0 + w / 2 - 0.2, a0 + w / 2 + 0.2, 0.42, storeyZ(c, 1), c.top + 1.6, "#4d5f6b", 0.02);

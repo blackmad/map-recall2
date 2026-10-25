@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**Cladding and curtain walls (2026-10-25, #49).** Large tier: `walls[].cladding`
+(ribs, boards, louvres, panels, paint) over a height band of a wall split,
+with proud profile lines kept round openings; byte-identical when absent.
+Kits: `KitCladding` incl. curtain walls with mullions, transoms and
+spandrels, measured facades for 9 generic kits (`kitFacades.ts`: AFAS Live
+row 279, 355, 278, 280, 258 mosque, 117, 137, 367, 196). Six factory houses
+re-authored (083151, 083604, 138900, spinoza20first, oba-molenwijk,
+oba-osdorp): likeness closer on all six, none installs (the gate refuses
+three; two have older gate fails; Osdorp passes but stays held). Kit
+cannot yet: cladding only between windows, deep frame beams, full-bay
+ribbons, a separate kit roof colour. Measurement: ribbed metal reads as
+brick courses; billboards and vans read as glass.
+
 **Measured walls brightness (2026-10-25, #50).** Behind `?walls=measured`
 (still off): one linear-light gain of 2 on the measured period walls
 (`measuredWalls.ts` `PERIOD_WALL_GAIN`), brick capped at the existing 0.6
