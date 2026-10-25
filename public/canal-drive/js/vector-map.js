@@ -1759,7 +1759,7 @@ class VectorBasemap {
     // track (every street a bike ride can ask, not only the curated subset).
     this._spoilerSources = this._spoilerSources || new Map();
     this._spoilerSources.set(source, names || []);
-    this._spoilerIndex = lib.buildSpoilerIndex([].concat(...this._spoilerSources.values()));
+    this._spoilerIndex = lib.buildSpoilerIndex(this._spoilersSuspended ? [] : [].concat(...this._spoilerSources.values()));
     this._applyBasemapSpoilerFilter();
     if (this._pendingPlaces) this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
     if (this._rawBrandedPois) this.setBrandedPois(this._rawBrandedPois);
@@ -1816,6 +1816,17 @@ class VectorBasemap {
     this._ownPoisActive = data.features.length > 0;
     this._poiLiftPitch = null;
     this._setBasemapOrientationPoisVisible(!this._quizQuietMap);
+  }
+
+  /** Free Ride asks nothing, so nothing is a spoiler: labels and POI names
+   *  that say a street or canal show while it runs (game/freeRide.ts). The
+   *  per-source names are kept, so ending the ride restores the screening. */
+  setSpoilersSuspended(suspended) {
+    if (!!suspended === !!this._spoilersSuspended) return;
+    this._spoilersSuspended = !!suspended;
+    const lib = window.CanalRecallOrientationPois;
+    if (!lib || !lib.buildSpoilerIndex) return;
+    this.setSpoilerNames(this._spoilerSources?.get('track') || [], 'track');
   }
 
   _spoils(name) {
@@ -2843,6 +2854,11 @@ class VectorBasemap {
     this._setBasemapOrientationPoisVisible(!this._quizQuietMap);
   }
 
+  setLabelsVisible(visible) {
+    if (visible) this._showLabels();
+    else this._hideLabels();
+  }
+
   toggleLabels() {
     if (this._labelsVisible) this._hideLabels();
     else this._showLabels();
@@ -3367,6 +3383,23 @@ class VectorBasemap {
     if (this._completeCity && typeof this._completeCity.followCamera === 'function') {
       this._completeCity.followCamera();
     }
+  }
+
+  /** The world point on the ground under a CSS pixel of the game canvas: the
+   *  inverse of projectWorld, for Free Ride's taps on a street or canal. */
+  screenToWorld(cssX, cssY, canvasRect, loader) {
+    if (!this.ready || !this.map || !canvasRect || !loader || loader._lastCenterLat == null) return null;
+    const mapCanvas = this.map.getCanvas();
+    const lngLat = this.map.unproject([
+      cssX * mapCanvas.clientWidth / canvasRect.width,
+      cssY * mapCanvas.clientHeight / canvasRect.height,
+    ]);
+    const metersPerDegreeLat = 111320;
+    const metersPerDegreeLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180);
+    return {
+      x: loader._lastOffsetX + (lngLat.lng - loader._lastCenterLng) * metersPerDegreeLng * PIXELS_PER_METER,
+      y: loader._lastOffsetY - (lngLat.lat - loader._lastCenterLat) * metersPerDegreeLat * PIXELS_PER_METER,
+    };
   }
 
   projectWorld(worldX, worldY, loader, canvas) {

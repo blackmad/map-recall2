@@ -50,7 +50,8 @@ export type ThemeMode = typeof THEME_MODES[number];
 export const ROUTE_DIFFICULTIES = ['easy', 'medium', 'hard', 'expert', 'custom'] as const;
 export type RouteDifficulty = typeof ROUTE_DIFFICULTIES[number];
 
-export const ROUTE_PATTERNS = ['surprise', 'home', 'here'] as const;
+// 'free' is Free Ride: no route and no questions (freeRide.ts).
+export const ROUTE_PATTERNS = ['surprise', 'home', 'here', 'free'] as const;
 export type RoutePattern = typeof ROUTE_PATTERNS[number];
 
 /** Which leg of a there-and-back home route is being driven. */

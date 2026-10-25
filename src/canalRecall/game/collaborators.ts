@@ -114,6 +114,10 @@ export interface NearestRoad {
   angle: number;
   segIdx: number;
   ptIdx: number;
+  /** Distance from the query point to the centreline, world px. */
+  dist?: number;
+  /** The way's half width, world px. */
+  width?: number;
 }
 
 export interface Track {
@@ -124,6 +128,8 @@ export interface Track {
   roadIndex?: RoadSpatialIndex | null;
   startPoint: WorldPoint;
   finishPoint: WorldPoint;
+  /** Free Ride: no START tag among the street labels. */
+  hideStartTag?: boolean;
   /** Set per frame by the presentation: the START pill's centre y, kept off the vehicle (vehicleScreenBox.ts). */
   placeStartTag?: ((centreX: number, defaultCentreY: number, pill: { width: number; height: number }) => number) | null;
   /** The name of the way under a point, or '' where nothing is mapped. */
@@ -186,6 +192,8 @@ export interface Hud {
     restrictionNote?: string;
     /** Drawn inside the plaque when the layout sets `destinationInRecall`. */
     destination?: { name: string; distancePx: number; arrowAngle: number | null } | null;
+    /** Replaces the score line (Free Ride has no score). */
+    tally?: string | null;
   }): void;
   /** Destination card; the finish arrow draws inside it when `arrowAngle` is set. */
   drawDestination(
@@ -277,4 +285,11 @@ export interface VectorMap {
   setSpoilerNames(names: string[], source?: string): void;
   /** Hide dense place labels while a quiz owns the corridor. */
   setQuizQuietMap(quiet: boolean): void;
+  /** Free Ride: stop screening labels for quiz answers, and back again. */
+  setSpoilersSuspended?(suspended: boolean): void;
+  /** Show or hide the basemap's street, water and place labels. */
+  setLabelsVisible?(visible: boolean): void;
+  _labelsVisible?: boolean;
+  /** The ground point under a CSS pixel of the game canvas, in world px. */
+  screenToWorld?(cssX: number, cssY: number, canvasRect: DOMRect, loader: OsmLoader): WorldPoint | null;
 }

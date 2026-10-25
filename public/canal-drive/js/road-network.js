@@ -682,7 +682,13 @@ class RoadNetwork {
 
         ctx.save();
         ctx.translate(screenX, screenY);
-        ctx.rotate(lbl.angle - (camera.rotation || 0));
+        // Upright whichever way the camera faces: a heading-up or chase camera
+        // turned the text upside down on half the streets.
+        let textAngle = lbl.angle - (camera.rotation || 0);
+        textAngle = Math.atan2(Math.sin(textAngle), Math.cos(textAngle));
+        if (textAngle > Math.PI / 2) textAngle -= Math.PI;
+        else if (textAngle < -Math.PI / 2) textAngle += Math.PI;
+        ctx.rotate(textAngle);
 
         // Match the basemap rather than laying black UI capsules over roads.
         // A quiet paper halo remains readable above route geometry and roofs.
@@ -696,7 +702,8 @@ class RoadNetwork {
       }
     }
 
-    this._drawScreenLabel(ctx, camera, this.startPoint, 'START', '#4CAF50', halfW, halfH);
+    // Free Ride has no start or finish to tag (game/freeRideRuntime.ts).
+    if (!this.hideStartTag) this._drawScreenLabel(ctx, camera, this.startPoint, 'START', '#4CAF50', halfW, halfH);
   }
 
   _drawScreenLabel(ctx, camera, point, text, color, halfW, halfH) {

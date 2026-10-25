@@ -236,7 +236,8 @@ class Game {
       let hovering = false;
       if (this._debugMode && (this._debugLinkBounds || []).some(hit)) hovering = true;
       else if (this.state === GameState.MENU) hovering = hit(this._alanLinkBounds) || hit(this._githubLinkBounds);
-      else if (this._landmarkCardBounds) hovering = hit(this._landmarkCardBounds);
+      else if (this._landmarkCardBounds && hit(this._landmarkCardBounds)) hovering = true;
+      else if (this.freeRide) hovering = !!this._freeRideMarkerAt(x, y);
       this.canvas.style.cursor = hovering ? 'pointer' : 'default';
     });
 
@@ -614,7 +615,10 @@ class Game {
     if (this._zoomBadgeTimer > 0) this._zoomBadgeTimer -= dt;
     if (this._rerouteTimer > 0) this._rerouteTimer -= dt;
     this._updateLiveRouteLine();
-    if (!this.player.ferryOrigin) {
+    // Free Ride asks nothing and has nowhere to arrive (freeRideRuntime.ts).
+    if (this.freeRide) {
+      this._updateFreeRide(dt);
+    } else if (!this.player.ferryOrigin) {
       this._updateBridgeQuiz(previousPlayerPosition);
       this._updateCanalQuiz(dt);
     } else {
@@ -630,7 +634,7 @@ class Game {
     this.camera.update(this.player, this._cameraDt || dt);
     this.sound.update(this.player.speed, this.player.throttle, this.player.maxSpeed);
 
-    if (!this.player.ferryOrigin && this.track.getDistanceToFinish(this.player.x, this.player.y) < FINISH_RADIUS) {
+    if (!this.freeRide && !this.player.ferryOrigin && this.track.getDistanceToFinish(this.player.x, this.player.y) < FINISH_RADIUS) {
       if (typeof this._tryAdvanceTransitLeg === 'function' && this._tryAdvanceTransitLeg()) {
         this.player.finished = false;
         return;

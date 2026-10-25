@@ -37,6 +37,8 @@ import { boatZoomScale, ferryZoomScale, transitZoomScale, vehicleZoomScale } fro
 import { glyphBox, startTagCentreY, type ScreenBox } from './vehicleScreenBox';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit, isPitchedView } from './modes';
+// Free Ride's methods ride in this bundle (they draw over this frame).
+import { installFreeRide } from './freeRideRuntime';
 import { zoomBadgeShouldFlash, zoomBadgeText } from '../hudCopy';
 import { travelProfile } from './travelProfile';
 import { routePlaqueName } from './recallRules';
@@ -442,6 +444,7 @@ export class GamePresentationRuntime {
         else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this._recenterCamera();
         else if (this._landmarkCloseBounds && hit(this._landmarkCloseBounds)) this._clearLandmarkNotice();
         else if (this._landmarkCardBounds && hit(this._landmarkCardBounds)) this._expandLandmarkNotice();
+        else if (this.freeRide && this.state === GameState.RACING) this._freeRideClick(x, y, event.clientX, event.clientY);
         else this._inspectBuildingAt(event.clientX, event.clientY);
       }
       dragging = false;
@@ -679,7 +682,9 @@ export class GamePresentationRuntime {
       }
       this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground, transitZoomScale(this.camera.zoom));
     }
-    this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
+    // Free Ride has no route: its finish point is plumbing (freeRide.ts).
+    const free = !!this.freeRide;
+    this.vectorMap.setRoute(free ? null : this._liveRoutePath || this.routePath, this.osmLoader, !free && this.routeOptions.line);
     // While a question is open this is the feature being asked about; for the
     // answer hold it is the feature just answered, so a miss shows where the
     // right one runs.
@@ -689,7 +694,7 @@ export class GamePresentationRuntime {
     const litPoint = this.quizPromptName ? this.quizPromptPointIndex : (reveal?.pointIndex ?? 0);
     // Under own ground the highlight is one draped band in every travel mode, and the boat's flat canvas copy stays off.
     const draped = !!this.vectorMap.ownGroundDrapesOverlays?.();
-    if (!byBoat || draped) {
+    if (!free && (!byBoat || draped)) {
       this.vectorMap.setStreetHighlights(
         this.track, this.osmLoader, this.learnedNames,
         litName, litSegment,
@@ -700,7 +705,7 @@ export class GamePresentationRuntime {
       this.vectorMap.setAnsweredStreetName?.(this.track, this.osmLoader, stamp, player);
     }
 
-    this.renderer.drawTrack(this.camera, this.track);
+    if (!free) this.renderer.drawTrack(this.camera, this.track);
     if (byBoat && !draped) {
       this.renderer.drawQuestionFeature(
         this.camera, this.track, litName,
@@ -757,7 +762,9 @@ export class GamePresentationRuntime {
       if (hit === undefined) { hit = mapLabelSpoils(text, shownText(text), asked); spoilCache.set(text, hit); }
       return hit;
     };
-    this.track.drawLabels(ctx, this.camera,
+    // Free Ride asks nothing, so every street and canal is named.
+    if (free) this.track.drawLabels(ctx, this.camera, () => true, '', player, this._freeRideLabelCandidates(), shownText);
+    else this.track.drawLabels(ctx, this.camera,
       (text, x, y) => (this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y)) && !(asked && spoils(text)),
       asked, player,
       (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates())
@@ -798,6 +805,9 @@ export class GamePresentationRuntime {
       });
       visibleRouteName = plaque.routeName;
       routeAnswerHidden = plaque.answerHidden;
+    } else if (free) {
+      // Nothing is asked, so the street is simply named.
+      visibleRouteName = roadName ? displayBridgeName(bridgeDisplayNamesOf(this.bridges), roadName) : '';
     } else {
       const plaque = routePlaqueName({
         roadName: roadName || '',
@@ -818,7 +828,7 @@ export class GamePresentationRuntime {
     // The finish arrow sits inside the destination card, so the heading and
     // the distance are one readout instead of two boxes saying "955 m". On a
     // portrait phone that card is folded into the plaque itself.
-    const finishAngle = this.routeOptions.arrow
+    const finishAngle = this.routeOptions.arrow && !free
       ? this.hud.finishDirection(player.x, player.y,
         this.track.finishPoint.x, this.track.finishPoint.y, this.camera)
       : null;
@@ -835,16 +845,17 @@ export class GamePresentationRuntime {
       streak: this.quizStreak,
       gamey: this.gameyFeatures,
       trip: this.hud.tripText(player.speed, this._playerDistancePx()),
-      feedback,
+      feedback: free ? '' : feedback,
       restrictionNote,
-      destination: merged ? {
+      tally: free ? this._freeRideTally() : null,
+      destination: merged && !free ? {
         // "to your destination" says nothing; only a real name earns room.
         name: destinationLabel && destinationLabel !== 'your destination' ? destinationLabel : '',
         distancePx: distanceToFinish,
         arrowAngle: finishAngle,
       } : null,
     });
-    if (!merged) {
+    if (!merged && !free) {
       this.hud.drawDestination(ctx, destinationLabel, distanceToFinish,
         this._routeLearningPlan?.expectedNovelty ?? null, finishAngle);
     }
@@ -852,6 +863,10 @@ export class GamePresentationRuntime {
     this.hud.drawCompass(ctx, this.camera);
     if (showMiniMap) this._renderMinimap();
     this.vectorMap.setQuizQuietMap(!canShowPoiLabels(true, teaching));
+    if (free) {
+      this._renderFreeRideMarkers();
+      this._placeFreeRideBar();
+    }
     this._renderLandmarkNotice();
     this._renderNeighborhoodNotice();
     this._renderZoomBadge();
@@ -1037,7 +1052,7 @@ export class GamePresentationRuntime {
       rotation: this.camera.rotation || 0,
       angle: player.angle,
       radiusM: this._radarRadiusM,
-      destination: finish ? local(finish.x, finish.y) : null,
+      destination: finish && !this.freeRide ? local(finish.x, finish.y) : null,
       route,
       routeIndex: this._radarRouteIndex ?? 0,
     }, range[0]);
@@ -2073,5 +2088,6 @@ export class GamePresentationRuntime {
 // For Storybook's radar states, which draw a fixed view without a ride.
 (window as unknown as { CanalRecallRadar?: unknown }).CanalRecallRadar = { RadarMap, radarLocal, RADAR_RADIUS_M };
 
+installFreeRide(GamePresentationRuntime);
 window.CanalRecallGameModules = window.CanalRecallGameModules || [];
 window.CanalRecallGameModules.push(GamePresentationRuntime);

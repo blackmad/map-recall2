@@ -293,6 +293,7 @@ const routeChoices = (t: Translate): Choice<CanalPreferences['routePattern']>[] 
   { value: 'surprise', title: t('setup.route.surprise'), hint: t('setup.route.surpriseHint') },
   { value: 'home', title: t('setup.route.home'), hint: t('setup.route.homeHint') },
   { value: 'here', title: t('setup.route.here'), hint: t('setup.route.hereHint') },
+  { value: 'free', title: t('setup.route.free'), hint: t('setup.route.freeHint') },
 ];
 
 const controlChoices = (t: Translate): Choice<CanalPreferences['controlMode']>[] => [
@@ -862,6 +863,7 @@ export function OverlayApp({
               <option value="surprise">{t('setup.route.surprise')}</option>
               <option value="home">{t('setup.route.home')}</option>
               <option value="here">{t('setup.route.here')}</option>
+              <option value="free">{t('setup.route.free')}</option>
             </select>
             <select id="route-difficulty" hidden value={prefs.difficulty} onChange={event => patch({ difficulty: event.target.value as CanalPreferences['difficulty'] })}>
               <option value="easy">{t('setup.difficulty.easy')}</option>
@@ -919,8 +921,13 @@ export function OverlayApp({
               options={routeChoices(t)}
               icons={ROUTE_ICONS}
               layout="strip"
+              // Free Ride has no route and no questions; say so, since the
+              // strip shows only the word (freeRide.ts).
+              gloss={prefs.routePattern === 'free' ? t('setup.route.freeHint') : undefined}
+              keepGloss
             />
-            <ChoiceRow
+            {/* Difficulty grades the questions, and Free Ride asks none. */}
+            {prefs.routePattern !== 'free' && <ChoiceRow
               label={t('setup.difficulty')}
               name="difficulty"
               value={prefs.difficulty}
@@ -934,7 +941,7 @@ export function OverlayApp({
               icons={DIFFICULTY_ICONS}
               gloss={difficultyGloss(prefs.difficulty, t)}
               keepGloss
-            />
+            />}
 
             <label id="home-address-field" className="setup-field enamel-field" style={{ display: prefs.routePattern === 'home' ? 'flex' : 'none', marginTop: 10 }}>
               {t('setup.homeAddress')}
@@ -1039,7 +1046,7 @@ export function OverlayApp({
             </button>
             </div>
             <div className="enamel-setup-footer">
-              <button id="route-start" className="enamel-plaque enamel-framed enamel-start" type="submit">{selectedTour ? t('setup.startTour') : t('setup.startRoute')}</button>
+              <button id="route-start" className="enamel-plaque enamel-framed enamel-start" type="submit">{prefs.routePattern === 'free' ? t('setup.startFreeRide') : selectedTour ? t('setup.startTour') : t('setup.startRoute')}</button>
               <div id="route-error" aria-live="polite">{routeErrorText(state.routeError, t)}</div>
               <SiteSwitch links={siteLinksHere} current="ride" id="setup-site-switch" />
             </div>
