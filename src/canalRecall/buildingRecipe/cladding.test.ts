@@ -82,3 +82,12 @@ test(`${HALL}: ribbed metal sheet and ribs proud of the wall, gates pass`, async
   const tris = await decodeTriangles(glb.bytes);
   assert.deepEqual(evaluateLargeGates(tris, built).gates.filter(x => !x.pass && !x.advisory).map(x => x.id), []);
 });
+
+test('louvres: the slats are drawn in the sheet colour over the dark ground in the line slot (Haarlemmerweg 325)', () => {
+  const id = 'haarlemmerweg-325-110408', built = compileBuilding(validateLargeIntent(raw(id)), facts(id)) as CompiledLargeBuilding;
+  const count = (name: string) => built.group.children.filter(m => m.name === name).reduce((n, m) => n + ((m as any).geometry.attributes.position.count as number), 0);
+  assert.equal(raw(id).walls[0].cladding.kind, 'louvres');
+  // slats are boxes in the sheet slot (clad@g0); the wall triangles moved behind them are the ground (cladline@g0)
+  assert.ok(count('wall/clad@g0') > 36 * 10, `${count('wall/clad@g0')} slat vertices`);
+  assert.ok(count('wall/cladline@g0') > 0);
+});

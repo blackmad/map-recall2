@@ -45,46 +45,118 @@
     100,
     101
    ],
-   "system": "ribbon-windows",
+   "system": "brick-bay-grid",
    "storeys": 4,
-   "ground": "glazed",
-   "windows": "wide",
+   "ground": "system",
    "palette": {
-    "brick": "#8a4a3a",
+    "brick": "#7a6052",
     "frame": "#d4d8d8",
     "stone": "#b0aea8"
    },
-   "baysPerStorey": 13
+   "baysPerStorey": 13,
+   "blankStoreys": [
+    1,
+    2,
+    3
+   ],
+   "cladding": {
+    "kind": "louvres",
+    "colour": "#c4c8c8",
+    "lines": "#4a4c4e",
+    "pitch": 0.2,
+    "from": 0.27,
+    "to": 0.95
+   },
+   "hand": [
+    "system",
+    "palette.brick",
+    "cladding",
+    "windowShape",
+    "ground"
+   ],
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.62,
+    "sill": 0.08
+   }
   },
   {
    "wallSurfaces": [
     13
    ],
-   "system": "ribbon-windows",
+   "system": "brick-bay-grid",
    "storeys": 4,
-   "ground": "glazed",
-   "windows": "wide",
+   "ground": "system",
    "palette": {
-    "brick": "#8a4a3a",
+    "brick": "#7a6052",
     "frame": "#d4d8d8",
     "stone": "#b0aea8"
    },
-   "baysPerStorey": 13
+   "baysPerStorey": 13,
+   "blankStoreys": [
+    1,
+    2,
+    3
+   ],
+   "cladding": {
+    "kind": "louvres",
+    "colour": "#c4c8c8",
+    "lines": "#4a4c4e",
+    "pitch": 0.2,
+    "from": 0.27,
+    "to": 0.95
+   },
+   "hand": [
+    "system",
+    "palette.brick",
+    "cladding",
+    "windowShape",
+    "ground"
+   ],
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.62,
+    "sill": 0.08
+   }
   },
   {
    "wallSurfaces": [
     11
    ],
-   "system": "ribbon-windows",
+   "system": "brick-bay-grid",
    "storeys": 4,
-   "ground": "glazed",
-   "windows": "wide",
+   "ground": "system",
    "palette": {
-    "brick": "#8a4a3a",
+    "brick": "#7a6052",
     "frame": "#d4d8d8",
     "stone": "#b0aea8"
    },
-   "baysPerStorey": 10
+   "baysPerStorey": 10,
+   "blankStoreys": [
+    1,
+    2,
+    3
+   ],
+   "cladding": {
+    "kind": "louvres",
+    "colour": "#c4c8c8",
+    "lines": "#4a4c4e",
+    "pitch": 0.2,
+    "from": 0.27,
+    "to": 0.95
+   },
+   "hand": [
+    "system",
+    "palette.brick",
+    "cladding",
+    "windowShape",
+    "ground"
+   ],
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.62,
+    "sill": 0.08
+   }
   },
   {
    "wallSurfaces": [
@@ -104,11 +176,21 @@
    },
    "wallMaterial": "render",
    "palette": {
-    "brick": "#b0aea8",
+    "brick": "#8e9294",
     "frame": "#8a9298",
-    "stone": "#9a9890"
+    "stone": "#9a9890",
+    "glass": "#2c3236"
    },
-   "baysPerStorey": 4
+   "baysPerStorey": 4,
+   "windowShape": {
+    "w": 0.97,
+    "h": 0.4,
+    "sill": 0.42
+   },
+   "hand": [
+    "palette.brick",
+    "windowShape"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -125,6 +207,7 @@
  "layeredKit": true,
  "notes": [
   "Haarlemmerweg 325 (BAG pand 0363100012110408, built 1913 per BAG; the building is the Q-Park Westergasfabriek multi-storey car park with shops, 107 3DBAG wall surfaces, roof max 19.1 m): a roughly 50 m by 40 m car-park block on the Haarlemmerweg. Photographed: the north front (w01-359 2023: a brick plinth with shopfronts and a LEEN BAKKER and SANIDIRECT fascia, three decks of translucent louvre screens above), the west front (w02-269: same, with badkamers shopfronts), the south front (w04-179: brick corner with the Leen Bakker shop) and the south entrance (w05-168: concrete decks and the car-park entrance under a dark canopy with the Q PARK WESTERGASFABRIEK sign). w03-78 (east) has no usable view.",
-  "walls[0] = panel 64 (N, 51 m, eaves 15.2; surfaces 70, 100, 101): 4 storeys x 13 bays of wide ribbon windows over a glazed shopfront ground (14.1k triangles at the default pitch). walls[1] = panel 11 (W, 50 m; surface 13) and walls[2] = panel 10 (S, 38 m; surface 11): the same. walls[3] = panel 50 (S entrance, 15 m, eaves 15.2; surface 54): concrete render, four open ribbon decks over a blank ground, an entrance with a canopy carrying the Q PARK WESTERGASFABRIEK sign. Simplified: the louvre screens are ribbon windows in a pale frame colour, the brick plinth is the wall colour under the glazed ground, the curved corners are the 3DBAG facets. Not drawn: the tenant signs (LEEN BAKKER, SANIDIRECT; shop tenants change), the east front and the inner deck ramps."
+  "walls[0] = panel 64 (N, 51 m, eaves 15.2; surfaces 70, 100, 101): 4 storeys x 13 bays of wide ribbon windows over a glazed shopfront ground (14.1k triangles at the default pitch). walls[1] = panel 11 (W, 50 m; surface 13) and walls[2] = panel 10 (S, 38 m; surface 11): the same. walls[3] = panel 50 (S entrance, 15 m, eaves 15.2; surface 54): concrete render, four open ribbon decks over a blank ground, an entrance with a canopy carrying the Q PARK WESTERGASFABRIEK sign. Simplified: the louvre screens are ribbon windows in a pale frame colour, the brick plinth is the wall colour under the glazed ground, the curved corners are the 3DBAG facets. Not drawn: the tenant signs (LEEN BAKKER, SANIDIRECT; shop tenants change), the east front and the inner deck ramps.",
+  "Refit 2026-10-25 (issue #59): the three parking decks of walls[0-2] are pale translucent louvre screens (w01-359L, w02-269L, w04-179), not ribbon windows: cladding louvres #c4c8c8 at 0.2 m over a dark ground #4a4c4e from 0.27 to 0.95 of the eaves, the decks behind blank, on a purple-brown brick base #7a6052 (between the shaded #57453e and the sunlit #8b7063) with shop windows 0.55 x 0.62 (the photos show a mostly brick ground with shopfronts, not a glass plinth). Kit fix in the same change: louvre slats are drawn in the sheet colour (they were in the dark line slot, so a louvre screen rendered as one dark sheet). walls[3] (w05-168) is open concrete decks: wall #8e9294, the deck voids as continuous low ribbons 0.97 x 0.4 over a 0.42 parapet. Gate misreads, allowed as inferred: on the louvre fronts the photo labels the translucent screen as glazing (0.2-0.65) and the model wall as the dark louvre ground (family paint), so wall family, glazing and columns compare a screen with a wall; walls[3] photo wall #313b44 is the concrete in blue shade under the decks."
  ]
 }

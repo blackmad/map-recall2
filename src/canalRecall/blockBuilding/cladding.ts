@@ -93,7 +93,10 @@ export function drawCladdingLines(c: PanelCtx, f: CladdingFit): number {
   const uA = onSplit && s!.right ? s!.uM : p.uMin, uB = onSplit && !s!.right ? s!.uM : p.uMax;
   const part = c.part();
   let n = 0;
-  const box = (a: number, b: number, v0: number, v1: number) => { c.box(f.lineSlot, a, b, v0, v1, 0, D.out, part); n++; };
+  // louvres: the slats are in the sheet colour over the dark ground (the line slot, applyCladdingSlots); every other kind
+  // draws its profile lines in the line colour on the sheet
+  const lineSlot = f.kind === 'louvres' ? f.slot : f.lineSlot;
+  const box = (a: number, b: number, v0: number, v1: number) => { c.box(lineSlot, a, b, v0, v1, 0, D.out, part); n++; };
   const verticals = (pitch: number) => {
     const W = uB - uA, k = Math.max(1, Math.round(W / pitch));
     for (let i = 1; i < k; i++) { const u = uA + (W * i) / k; for (const [v0, v1] of verticalRuns(c, u - D.w / 2, u + D.w / 2, lo, hi)) box(u - D.w / 2, u + D.w / 2, v0, v1); }

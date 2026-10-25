@@ -57,6 +57,8 @@ export interface SystemFit {
   balconyDeepM?: number;
   /** the balcony stands in front of the storey's own windows (an iron balcony on a window row) instead of a French window (opt-in) */
   balconyOnWindows?: boolean;
+  /** with balconyOnWindows: the balcony spans the full bay pitch so neighbouring bays join into one run (opt-in) */
+  balconyRun?: boolean;
   /** grouped windows: each bay's opening is `count` windows with `gapM` of wall between them, on the listed storeys (default every upper storey; opt-in) */
   windowGroup?: { count: number; gapM: number; storeys?: number[] };
   /** balconies only in every `every`-th bay from `first`, or the listed bays (of `bays` per storey); default every bay */
@@ -294,7 +296,7 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   if (f.balconyStoreys?.length && name !== 'blank') {
     const railSlot = f.balconyRailSlot ?? s.frame, onWin = f.balconyOnWindows && typical.win && !typical.cycle ? typical.win : null;
     // on a window row the balcony spans the bay's windows and 0.2 m either side (the pilasters between bays stay clear)
-    const onW = onWin ? (onWin.w ?? 0.5) : 0, span = onWin ? Math.min(f.pitchM - 0.1, (onW <= 1 ? onW * f.pitchM : onW) + 0.4) : 0;
+    const onW = onWin ? (onWin.w ?? 0.5) : 0, span = onWin ? (f.balconyRun ? f.pitchM : Math.min(f.pitchM - 0.1, (onW <= 1 ? onW * f.pitchM : onW) + 0.4)) : 0;
     const balcony: Row = { kind: 'balcony', balcony: { ...(onWin ? { w: +span.toFixed(3) } : {}), depth: f.balconyDeepM ?? 1.2, slab: { h: 0.18, slot: s.stone }, rail: { kind: f.balconyRail ?? 'bars', h: 1.0, slot: railSlot, top: railSlot }, back: onWin ? { ...onWin, w: +(Math.min(span, onW <= 1 ? onW * f.pitchM : onW) / span).toFixed(4), sillSlot: null } : { w: 0.7, h: 0.72, sill: 0.25, frame: s.frame, glass: s.glass, mull: 1 } } };
     const sel = f.balconyBays, list = sel?.bays, every = list ? Math.max(1, f.bays ?? 1, ...list.map(b => b + 1)) : Math.max(1, sel?.every ?? 1), at = ((sel?.first ?? 0) % every + every) % every;
     // the storey's own row (an arched piano nobile) fills the bays without a balcony

@@ -46,7 +46,7 @@
     788
    ],
    "system": "brick-bay-grid",
-   "storeys": 3,
+   "storeys": 2,
    "baysPerStorey": 7,
    "ground": "system",
    "deepBars": true,
@@ -59,11 +59,29 @@
    },
    "hand": [
     "system",
-    "baysPerStorey"
+    "baysPerStorey",
+    "storeys",
+    "windowShape",
+    "storeyShapes"
    ],
    "palette": {
     "brick": "#70574d"
-   }
+   },
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.44,
+    "sill": 0.41
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.55,
+     "h": 0.51,
+     "sill": 0.18
+    }
+   ]
   },
   {
    "wallSurfaces": [
@@ -71,14 +89,14 @@
     479
    ],
    "system": "brick-bay-grid",
-   "storeys": 4,
+   "storeys": 5,
    "baysPerStorey": 6,
    "ground": "system",
    "deepBars": true,
    "sills": false,
    "windows": "plain",
    "palette": {
-    "brick": "#af875c",
+    "brick": "#d4955e",
     "frame": "#3a3a3a",
     "stone": "#d8c8aa",
     "glass": "#3d342e"
@@ -86,31 +104,97 @@
    "hand": [
     "system",
     "baysPerStorey",
-    "windowShape"
+    "windowShape",
+    "glazedStoreys",
+    "storeys",
+    "palette.brick"
    ],
-   "wallSplit": {
-    "at": 0.702,
-    "brick": "#56443d"
-   },
    "windowShape": {
     "w": 0.35,
-    "h": 0.58,
-    "sill": 0.28
-   }
+    "h": 0.8,
+    "sill": 0.12
+   },
+   "glazedStoreys": [
+    3,
+    4
+   ]
   },
   {
    "wallSurfaces": [
     1,
     186,
     345,
+    641,
+    723
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "cross",
+   "stringCourses": true,
+   "arches": {
+    "ground": "segmental",
+    "band": "brick"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "storeys",
+    "windowShape",
+    "storeyShapes"
+   ],
+   "palette": {
+    "brick": "#70574d"
+   },
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.44,
+    "sill": 0.41
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.55,
+     "h": 0.51,
+     "sill": 0.18
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
     395,
     597,
-    641,
-    723,
     750
    ],
    "system": "curtain-wall",
    "storeys": 3,
+   "baysPerStorey": 7,
+   "ground": "glazed",
+   "deepBars": true,
+   "sills": false,
+   "palette": {
+    "brick": "#9a5a40",
+    "frame": "#2a2e30",
+    "stone": "#2a2e30"
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    288,
+    377
+   ],
+   "system": "curtain-wall",
+   "storeys": 1,
    "baysPerStorey": 7,
    "ground": "glazed",
    "deepBars": true,
@@ -141,7 +225,8 @@
   "Hotel Arena, 's-Gravesandestraat 55 / Sint Jansstraat (BAG pand 0363100012236788: built 1890; 38 dwellings, a hotel, an assembly and an office unit; 4,757 m2): the former Roman Catholic orphanage on the Oosterpark, converted to the Hotel Arena in 2000 and extended on the south side in the 2010s. Three walls are photographed: the old north wings (w04-341, panorama 2020-04-24: red brick, ground floor of segmental-arched cross windows in white frames, upper floor of tall white-surrounded windows, pale stone string courses), the new hotel wing (w03-162, 2021-05-12: buff horizontally-ribbed brick, deep-reveal dark window openings, a glazed curtain-wall attic, the Hotel Arena entrance gate wall in front) and the glazed garden pavilion on the south (w01-161, 2022-03-23: a glass ground floor under a thin projecting roof with a glass box above and the old slate roof with a timber gable behind).",
   "Modelled: the old north wings (panels 210, 232, 56, all 3 storeys, red brick, cross windows with white frames, stone string courses; segmental-arched ground windows under a brick arch band with stone imposts (layered kit); the photographed relieving arches have a brick tympanum over a flat-headed window and a stone keystone, drawn as glazed segmental heads) as one group; the new wing (panels 2 and 373: 4 storeys, buff brick, plain deep-reveal windows) and the garden pavilion (panels 0 and 314) as a curtain-wall group. Roofs and every unlisted wall are the 3DBAG LoD2.2 shell in the old-brick colour.",
   "Simplified: the new wing's glass attic is the same window grid as the floors below (the kit has no per-storey system switch), the ribbed buff brick is plain wall colour, the pavilion's thin roof plate and the timber gable are 3DBAG roof geometry only. Not drawn: the entrance gate wall with HOTEL ARENA lettering (a free-standing wall outside the pand), the cast-iron fence on the north side, the round chapel apse (curved wall facets keep the 3DBAG shell).",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #52463d not used (not darker than the wall #70574d by 10 L*, or tinted): kit glass kept; walls[1] wall split #af875c | #56443d at 70 % (dE 40.1); walls[2] glass #2d221d not used (not darker than the wall #3c352f by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #52463d not used (not darker than the wall #70574d by 10 L*, or tinted): kit glass kept; walls[1] wall split #af875c | #56443d at 70 % (dE 40.1); walls[2] glass #2d221d not used (not darker than the wall #3c352f by 10 L*, or tinted): kit glass kept.",
+  "Refit 2026-10-25 (issue #59): walls[0] (w07-340L) is two tall storeys under a frieze, not three: segmental-arched ground windows sill 0.41 h 0.44, first-floor cross windows sill 0.18 h 0.51 (storeyShapes), 1.7 m wide (likeness WARN, was FAIL). walls[1] (w03-162L) is five hotel floors on the 17.9 m wing: three of sunlit ribbed buff brick #d4955e with punched windows and a two-storey glass curtain attic (glazedStoreys 3, 4); the dark split was the HOTEL ARENA gate wall in front, removed. walls[2] was the curtain-wall pavilion, but its main panel 0 (w06-161) is the old north-south wing seen past the garden arcade: now the old-wing brick bay grid like walls[0]; the glazed garden pavilion (w01-161, 2022) is its one-storey glass ground on panels 239/300 (walls[4], 5.8 m) with the set-back glass box on panel 314 (walls[3], curtain wall; no crop matches the set-back panel). Gate misreads, allowed as inferred: walls[1] photo wall #382e27 is the shadowed gate wall over the lower two storeys (the wing above is sunlit buff, #de9a5e on the four-storey read); walls[2] model elevation at panel 0 is walls[1]`s wing standing in front of it from the 40 deg camera, so wall colour and columns compare two different walls."
  ],
  "closedBands": true,
  "layeredKit": true,
@@ -149,8 +234,7 @@
   "date": "2026-10-14",
   "groups": [
    0,
-   1,
-   2
+   1
   ]
  }
 }

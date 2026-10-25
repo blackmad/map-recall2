@@ -83,7 +83,7 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 6,
-   "baysPerStorey": 6,
+   "baysPerStorey": 4,
    "ground": "plinth-shopfronts",
    "windows": "plain",
    "balconies": {
@@ -93,7 +93,9 @@
      3,
      4
     ],
-    "rail": "bars"
+    "rail": "bars",
+    "windows": true,
+    "run": true
    },
    "palette": {
     "frame": "#7d8286",
@@ -102,12 +104,14 @@
    "hand": [
     "system",
     "baysPerStorey",
-    "windowShape"
+    "windowShape",
+    "balconies.windows",
+    "balconies.run"
    ],
    "windowShape": {
-    "w": 0.35,
-    "h": 0.389,
-    "sill": 0.28
+    "w": 0.6,
+    "h": 0.55,
+    "sill": 0.15
    }
   },
   {
@@ -126,8 +130,16 @@
     "palette",
     "windowShape",
     "system",
-    "baysPerStorey"
-   ]
+    "baysPerStorey",
+    "spandrels",
+    "groundFactor"
+   ],
+   "spandrels": {
+    "sill": 0.27,
+    "head": 0.15,
+    "colour": "#5c555a"
+   },
+   "groundFactor": 1.6
   },
   {
    "wallSurfaces": [
@@ -146,8 +158,14 @@
     "palette",
     "windowShape",
     "system",
-    "baysPerStorey"
-   ]
+    "baysPerStorey",
+    "spandrels"
+   ],
+   "spandrels": {
+    "sill": 0.27,
+    "head": 0.15,
+    "colour": "#5c555a"
+   }
   },
   {
    "wallSurfaces": [
@@ -185,7 +203,8 @@
   "Signature: the three crosses MODELLED (kit component crosses, red, at the left end of the south front); balcony galleries with bar rails MODELLED (balconies storeys 1 to 4, bars); shop plinth MODELLED (plinth-shopfronts; shop signs MANZARAM / FEBO SKIPPED: temporary tenants); the red-framed west window wall SIMPLIFIED (kit curtain wall with maroon frames, 36 bays; the perforated sun screens SKIPPED: too-small and temporary-looking panels 0.2 m proud); the left-edge crosses stand on a free pylon in the photograph, here on the wall; the stadsloket entrance is not identifiable in the panoramas (no sign legible): SKIPPED not-visible; the east wall (72/142/143, no panorama) carries an INFERRED plain window grid so it is not a blank slab.",
   "The second west wall (surfaces 15/16/23, 2021-09-22 w04-285) is hidden behind a concrete ramp wall in its panorama; the red-framed storeys visible above it are the same facade as surfaces 6/9, so it carries the same curtain-wall group (INFERRED below the visible storeys). Both curtain walls use 20 bays per storey to fit the 12k budget (real pitch is finer).",
   "layeredKit (2026-10-14): a layered curtain wall is one glass skin and cannot carry a blank ground, so the two west curtain-wall groups glazed the ground storey for one install; they now carry ground \"mesh-plinth\": the glass skin with a closed dark panel over the ground storey, as the photo's dark mesh plinth (SIMPLIFIED: the mesh is a flat dark panel, no perforation).",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #603c38 not used (not darker than the wall #574d4d by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #603c38 not used (not darker than the wall #574d4d by 10 L*, or tinted): kit glass kept.",
+  "Refit 2026-10-25 (issue #59): walls[1] 4 bays of wide punched windows (photo 4 columns, 37-42 % glass) behind front-wide galleries on storeys 1-4 (new kit balconies.run: the balconies stand on the window row and join across the bays). walls[2] and walls[3] keep the red-framed curtain grid with grey spandrel panels (sill 0.27, head 0.15, #5c555a, photo storeys 56-73 % glass) instead of full glass, walls[2] over a 1.6x mesh plinth. Gate reads: walls[1] storey 2 reads 4 % glass in the photo (dark reflections) and the model mask counts the joined balcony run as one 24 m ribbon. walls[2] the photo counts every thin red mullion (82) where the grid draws 20 bays, storey 1 behind the road sign and plinth top. walls[3] the w04-285L crop is covered below storey 4 by a dark foreground mass."
  ],
  "layeredKit": true,
  "measured": {

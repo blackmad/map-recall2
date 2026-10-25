@@ -99,3 +99,33 @@ test('Stadhouderskade 111 school wing: white pilasters and paired windows within
   assert.ok(!g.failing.includes('triangle-budget'));
   assert.ok(DRESS.capital.h > 0 && DRESS.corbel.out < DRESS.pier.out, 'a corbel course ends inside the piers, never on their face');
 });
+
+test('balconies.run (Stadsloket West, issue #59): balconies on a window row span the full bay and join into one run; absent: unchanged', () => {
+  const base = raw(WAREHOUSE), w1 = base.walls[1];
+  const withW = (x: Record<string, unknown>) => ({...base, walls: base.walls.map((w, k) => (k === 1 ? {...w1, ...x} : w))});
+  assert.ok(validateLargeIntent(withW({balconies: {storeys: [2], windows: true, run: true}})));
+  assert.throws(() => validateLargeIntent(withW({balconies: {storeys: [2], run: true}})), /balconies\.run: needs windows/);
+  assert.throws(() => validateLargeIntent(withW({balconies: {storeys: [2], windows: true, run: 1}})), /balconies\.run must be true or false/);
+  const f = {pitchM: 4, lines: [0, 5, 8, 11, 14], ground: 'system' as const, slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'curtain'}, balconyStoreys: [2], balconyOnWindows: true};
+  const onWin = largeSystem('brick-bay-grid', f);
+  assert.deepEqual(largeSystem('brick-bay-grid', {...f, balconyRun: undefined}), onWin);
+  const run = largeSystem('brick-bay-grid', {...f, balconyRun: true}).rowOverrides!['2'].balcony!;
+  const one = onWin.rowOverrides!['2'].balcony!;
+  assert.equal(run.w, f.pitchM, 'the balcony runs the whole bay');
+  assert.ok(one.w! < f.pitchM);
+  assert.ok(Math.abs(run.back!.w! * run.w! - one.back!.w! * one.w!) < 0.01, 'the window behind keeps its width');
+});
+
+test('storeyFactors (Oude Turfmarkt 139, issue #59): measured storey heights that get lower going up; absent: unchanged', () => {
+  const T = 'oude-turfmarkt-168172', base = raw(T), w0 = base.walls[0];
+  const withW = (x: Record<string, unknown>) => ({...base, walls: base.walls.map((w, k) => (k === 0 ? {...w0, ...x} : w))}) as LargeBuildingIntent;
+  assert.throws(() => validateLargeIntent(withW({storeyFactors: [1, 2]})), /storeyFactors: one relative height per storey/);
+  assert.throws(() => validateLargeIntent(withW({storeyFactors: [0.5, 2, 2, 2, 2]})), /more than 3x/);
+  assert.throws(() => validateLargeIntent(withW({storeyFactors: [1, 1, 1, 1, 1], groundFactor: 0.8})), /not with groundFactor/);
+  const fit = fitLarge(validateLargeIntent(base), facts(T));
+  const g0 = fit.report.groups[0];
+  assert.deepEqual(g0.storeyHeightsM, [2.3, 4.4, 3.6, 2.6, 4.67], 'the storey lines follow the measured window rows');
+  // without the field the group falls back to equal upper storeys
+  const plain = fitLarge(validateLargeIntent(strip(base, 0, ['storeyFactors'])), facts(T)).report.groups[0];
+  assert.equal(new Set(plain.storeyHeightsM.slice(1)).size, 1);
+});

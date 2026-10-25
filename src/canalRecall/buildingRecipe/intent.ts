@@ -870,7 +870,9 @@ export interface LargeWallIntent {
   balconies?: {storeys: number[]; rail?: 'glass' | 'bars' | 'solid'; every?: number; first?: number; bays?: number[];
     /** the rails' own colour (black iron balconies; default the frame colour) */ colour?: string;
     /** projection as a fraction of the storey height (0.08..0.45; default 1.2 m): a shallow balcony on consoles */ deep?: number;
-    /** stand in front of the storey's own windows (an iron balcony on a window row) instead of one French window */ windows?: boolean};
+    /** stand in front of the storey's own windows (an iron balcony on a window row) instead of one French window */ windows?: boolean;
+    /** with `windows`: the balcony runs the full bay pitch, so neighbouring bays join into one front-wide balcony in front of
+     *  punched windows (Stadsloket West's continuous galleries); absent: the bay's windows plus 0.2 m, byte-identical */ run?: boolean};
   /**
    * Grouped windows (issue #35): each bay's opening (`windowShape.w` of the bay) is `count` separate windows with `gap`
    * of the bay (default 0.06) of wall between them, on the listed `storeys` (default every upper storey; 0 = ground).
@@ -1003,6 +1005,13 @@ export interface LargeWallIntent {
    * ground system's default (a low raised plinth under the Rietveld building's curtain wall: 1.8 m under 4.2 m floors).
    */
   groundFactor?: number;
+  /**
+   * Measured storey heights (issue #59, Oude Turfmarkt 139: floors that get lower going up): one relative height per
+   * storey, ground first (`storeys` entries; metres read off the photo work as they are), scaled to fill the usable
+   * height under the eaves. Each 0.3..8, the tallest at most 3x the lowest; not with groundFactor, souterrain, an arcade
+   * ground, alignWith, plinth.factor or houses (they set storey heights too). Absent: byte-identical.
+   */
+  storeyFactors?: number[];
   /**
    * The 3DBAG shell (1-based, in facts order) whose surfaces `wallSurfaces` names. A pand of two separate solids (the 2006
    * Rietveld Academie: the tower and the low block) numbers each shell's wall surfaces from 1, so a bare index claims a

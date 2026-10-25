@@ -42,20 +42,31 @@
    "windows": "wide",
    "deepBars": true,
    "stringCourses": true,
-   "balconies": {
+   "palette": {
+    "brick": "#615249",
+    "frame": "#dcdad0",
+    "stone": "#a8aaa4"
+   },
+   "hand": [
+    "palette.brick",
+    "loggias"
+   ],
+   "loggias": {
     "storeys": [
      1,
      2,
      3
     ],
+    "bays": [
+     1,
+     3,
+     5,
+     7,
+     9,
+     11
+    ],
     "rail": "solid",
-    "every": 4,
-    "first": 2
-   },
-   "palette": {
-    "brick": "#b49468",
-    "frame": "#dcdad0",
-    "stone": "#a8aaa4"
+    "colour": "#a8aaa4"
    }
   },
   {
@@ -66,22 +77,35 @@
    "storeys": 3,
    "baysPerStorey": 13,
    "ground": "system",
-   "windows": "wide",
+   "windows": "plain",
    "deepBars": true,
    "stringCourses": true,
+   "palette": {
+    "brick": "#615249",
+    "frame": "#dcdad0",
+    "stone": "#a8aaa4"
+   },
+   "hand": [
+    "palette.brick",
+    "balconies",
+    "windowShape",
+    "windows"
+   ],
    "balconies": {
     "storeys": [
      1,
      2
     ],
     "rail": "solid",
-    "every": 4,
-    "first": 1
+    "every": 2,
+    "first": 1,
+    "colour": "#a8aaa4",
+    "deep": 0.35
    },
-   "palette": {
-    "brick": "#b49468",
-    "frame": "#dcdad0",
-    "stone": "#a8aaa4"
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.5,
+    "sill": 0.3
    }
   },
   {
@@ -96,10 +120,13 @@
    "deepBars": true,
    "stringCourses": true,
    "palette": {
-    "brick": "#b49468",
+    "brick": "#615249",
     "frame": "#dcdad0",
     "stone": "#a8aaa4"
-   }
+   },
+   "hand": [
+    "palette.brick"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -107,7 +134,7 @@
   "material": "slate"
  },
  "palette": {
-  "brick": "#b49468",
+  "brick": "#615249",
   "frame": "#e0dcd0",
   "door": "#2a2a2a",
   "stone": "#a8aaa4"
@@ -117,6 +144,7 @@
  "notes": [
   "Van Beuningenstraat 48 (BAG pand 0363100012093853, built 1978, 140 3DBAG wall surfaces, roof max 18.9 m): a 1978 social-housing block in the Staatsliedenbuurt, an S-shaped plan of tan brick with pale grey concrete bands between the floors, deep balcony runs and rounded corner ends; a Huis van de Buurt community centre occupies the south-west corner (its sign is visible on w06-225). Eight walls were fetched; the south-east front (w02-135, 2017-03-07), the north-west front (w01-315, 2025-06-18) and the north-east end (w03-45, 2025-06-18) are drawn.",
   "walls[0] = panel 41 (SE, 54.6 m, eaves 15.9): four storeys of paired windows with grey string courses and recessed balcony bays; drawn as 4 storeys x 13 bays with string courses and solid-rail balconies in every fourth bay on storeys 1-3. walls[1] = panel 9 (NW, 54.6 m, eaves 11.6): three storeys, 13 bays, string courses, balconies every fourth bay on storeys 1-2. walls[2] = panel 28 (NE, 40 m, eaves 11.7): three storeys, 9 bays, string courses.",
-  "Simplified: the photographed balcony runs are continuous recessed loggias in alternating bays, drawn as slab balconies in every fourth bay; the 3DBAG plan keeps the rounded corners as short straight facets; the grey bands are the kit string courses; the south-west and cylindrical end walls (w06-225, w08-315), the courtyard faces (panels 118, 70, 20) and the stair-tower walls are not drawn and stay blank brick."
+  "Simplified: the photographed balcony runs are continuous recessed loggias in alternating bays, drawn as slab balconies in every fourth bay; the 3DBAG plan keeps the rounded corners as short straight facets; the grey bands are the kit string courses; the south-west and cylindrical end walls (w06-225, w08-315), the courtyard faces (panels 118, 70, 20) and the stair-tower walls are not drawn and stay blank brick.",
+  "Refit 2026-10-25 (issue #59): the block is mid brown brick, not tan: #615249 (the brick between the balconies on w02-135 reads #7a675c in game tints; the first fit took #b49468). walls[0]: recessed loggias with solid grey parapets in alternate bays on storeys 1-3 (the deep balcony runs), in place of slab balconies every fourth bay. walls[1] (w01-315): smaller punched windows (w 0.45, h 0.5, the photo upper glazing 0.09-0.30) and projecting solid-parapet balconies in every second bay. Gate misreads, allowed as inferred: walls[0] photo wall #1a1711 is the dark balcony recesses, not the brick (the crop shows brown brick between them; its glazing 0.70 counts those recesses); walls[1] is backlit with the sun in frame (raw #474541); walls[2] crop from 5.2 m."
  ]
 }

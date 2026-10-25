@@ -419,14 +419,15 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     if (!main) warnings.push(`walls[${gi}]: no panel takes this group (its surfaces are minorities of other panels)`);
     const widthM = main ? main.uMax - main.uMin : 0, eaves = main ? panelEaves(main) : 0, flatTop = main ? main.vMax - eaves < 0.5 : true;
     const plinthFactor = w.plinth?.factor, plinthStoreys = w.plinth ? w.plinth.storeys ?? [0] : [];
-    const gw = plinthFactor !== undefined && plinthStoreys.includes(0) ? plinthFactor : w.groundFactor !== undefined ? w.groundFactor : w.souterrain ? SOUTERRAIN.factor : ground === 'arcade' ? w.arcade?.storeyFactor ?? 1.6 : ground === 'plinth-shopfronts' || ground === 'glazed' ? 1.25 : year !== null && year < 1945 ? 1.15 : 1;
+    const sf = w.storeyFactors;
+    const gw = sf ? sf[0] : plinthFactor !== undefined && plinthStoreys.includes(0) ? plinthFactor : w.groundFactor !== undefined ? w.groundFactor : w.souterrain ? SOUTERRAIN.factor : ground === 'arcade' ? w.arcade?.storeyFactor ?? 1.6 : ground === 'plinth-shopfronts' || ground === 'glazed' ? 1.25 : year !== null && year < 1945 ? 1.15 : 1;
     const maxTop = Math.max(eaves, ...own.map(p => p.vMax));
     // alignWith: share another group's storey lines (wings whose windows line up with the centre block), extended to this group's top.
     const ref = w.alignWith !== undefined ? aligned.get(w.alignWith) : undefined;
     if (w.alignWith !== undefined && !ref) throw Error(`${intent.id}: walls[${gi}].alignWith ${w.alignWith} must name an earlier group without alignWith`);
     // A curtain wall with spandrels runs to the roof edge: its top storey's head spandrel covers the slab and parapet (no parapet allowance).
     const st = ref ? alignLines(ref, maxTop) : storeyLines(eaves, flatTop, w.storeys, civicM, gw, maxTop, w.spandrels ? 0 : undefined,
-      plinthFactor !== undefined ? Object.fromEntries(plinthStoreys.filter(k => k > 0).map(k => [k, plinthFactor])) : undefined);
+      sf ? Object.fromEntries(sf.slice(1).map((v, k) => [k + 1, v])) : plinthFactor !== undefined ? Object.fromEntries(plinthStoreys.filter(k => k > 0).map(k => [k, plinthFactor])) : undefined);
     if (w.alignWith === undefined) aligned.set(gi, st);
     // the upper storeys (window sills in metres): past any taller plinth storey
     const uppers = st.heights.slice(1).filter((_, k) => plinthFactor === undefined || !plinthStoreys.includes(k + 1));
@@ -467,7 +468,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.windowPattern ? {windowPattern: [...w.windowPattern]} : {}),
       ...(w.storeyShapes ? {storeyShapes: w.storeyShapes.flatMap(e => e.storeys.filter(q => q < st.heights.length).map(q => ({storey: q, w: e.w, h: e.h, sillM: r3(e.sill * st.heights[q])})))} : {}),
       ...(w.windowGroup ? {windowGroup: {count: w.windowGroup.count, gapM: r3((w.windowGroup.gap ?? 0.06) * pitchM), ...(w.windowGroup.storeys ? {storeys: [...w.windowGroup.storeys]} : {})}} : {}),
-      ...(balconyRail ? {balconyRailSlot: balconyRail} : {}), ...(w.balconies?.deep !== undefined ? {balconyDeepM: r3(w.balconies.deep * (uppers[0] ?? st.heights[0]))} : {}), ...(w.balconies?.windows ? {balconyOnWindows: true} : {}),
+      ...(balconyRail ? {balconyRailSlot: balconyRail} : {}), ...(w.balconies?.deep !== undefined ? {balconyDeepM: r3(w.balconies.deep * (uppers[0] ?? st.heights[0]))} : {}), ...(w.balconies?.windows ? {balconyOnWindows: true} : {}), ...(w.balconies?.run ? {balconyRun: true} : {}),
       ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {}),
       ...(w.glazing === 'panes' ? {paneSplit: true} : {}), ...(w.courses ? {courses: [...w.courses]} : {}), ...(w.souterrain ? {souterrain: w.souterrain} : {}), ...(w.openBays ? {openBays: w.openBays, bays} : {}),
       ...(w.plinth ? {plinth: {storeys: [...plinthStoreys], ...(w.plinth.bays ? {bays: [...w.plinth.bays]} : {}), lights: w.plinth.lights, sill: w.plinth.sill ?? PLINTH.sill, h: w.plinth.h ?? PLINTH.h, pier: w.plinth.pier ?? PLINTH.pier, transom: w.plinth.transom ?? PLINTH.transom}, bays} : {}),
