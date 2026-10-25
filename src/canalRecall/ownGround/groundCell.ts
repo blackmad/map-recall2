@@ -36,6 +36,7 @@ import { buildSurveyMarkings, crossingStripPoints, SURVEY_MARKINGS, type SurveyM
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import { sourceTracing, triangleSources, type GroundSource } from './sourceTrace.js';
 import type { Rect } from './groundStore.js';
+import { RAIL_VIADUCTS, viaductMesh, type ViaductBuild } from './railViaducts.js';
 
 export type GroundLayer =
   | 'land' | 'park' | 'wood' | 'square' | 'parking'
@@ -58,7 +59,7 @@ export interface BuiltCell {
   mask: GroundMask | null;
   /** Source code per triangle per layer (sourceTrace.ts), only when tracing is on (diagnostics). */
   sources?: Partial<Record<GroundLayer, Uint8Array>>;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** OSM green rings cut out of the paved area fills (areas + holes). */ greenCut?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number; /** Footway strips across the road at a crossing drawn as carriageway. */ crossingStrips?: number; /** Fietsstraat sections drawn grey on the photo's evidence. */ greyFiets?: number; /** surveyMarkings.ts: what the survey-aware markings drew. */ markings?: SurveyMarkingStats | null }) | null; courtyards?: number };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** OSM green rings cut out of the paved area fills (areas + holes). */ greenCut?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ /** Rail viaducts over streets (railViaducts.ts) the cell drew: deck, wall and floor heights. */ viaducts?: ViaductBuild[]; roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number; /** Footway strips across the road at a crossing drawn as carriageway. */ crossingStrips?: number; /** Fietsstraat sections drawn grey on the photo's evidence. */ greyFiets?: number; /** surveyMarkings.ts: what the survey-aware markings drew. */ markings?: SurveyMarkingStats | null }) | null; courtyards?: number };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -509,6 +510,17 @@ export function buildCell(input: CellInput): BuiltCell {
     bridges.flat.push({ id: input.flatDeckMeta?.[k]?.id ?? '', railingPosts, frames });
   });
 
+  // Rail viaducts over streets (railViaducts.ts, issue #57): the deck over the passage, the abutment walls and their
+  // blocks back into the track bed, piers. The cell holding the passage's centre draws it.
+  const viaducts: ViaductBuild[] = [];
+  for (const v of RAIL_VIADUCTS) {
+    const r = v.ring.map(input.project), cx = r.reduce((s, p) => s + p[0], 0) / r.length, cy = r.reduce((s, p) => s + p[1], 0) / r.length;
+    if (!inCell(cx, cy)) continue;
+    const built = viaductMesh(v, input.project, surface.ground, lod);
+    add('deckBody', built.body, 'deck'); add('deckTop', built.deckTop, 'deck'); add('land', built.top, 'land');
+    viaducts.push(built.info);
+  }
+
   phase('waterDecks');
   // Land pockets near junctions (pockets.ts): bare land every layer around encloses, paved under the bands. Near ring only.
   let pockets: PocketStats | null = null;
@@ -554,7 +566,7 @@ export function buildCell(input: CellInput): BuiltCell {
   phase('pack');
   return {
     key, lod, rect, layers: packed, mask: maskOut, ...(tracing ? { sources } : {}),
-    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, greenCut, roads, phases, courtyards },
+    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, greenCut, roads, phases, courtyards, ...(viaducts.length ? { viaducts } : {}) },
   };
 }
 

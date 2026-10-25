@@ -28,6 +28,7 @@ import type { OsmGroundExtract, OsmWay } from './osmGround';
 import { roadEdgeSides, joinChains, wayDeckGroups, wayDeckProfile } from './wayDecks';
 import { canalMouth, mouthFacts, parapetRuns, BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, isFlushDeck, movableLeaves, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
+import { CAP_M, RAIL_VIADUCTS, STRIP_M, TOP_LIFT_M, capViaductFloor, floorZone, insideRing, planarRing, viaductMesh, type RailViaduct } from './railViaducts';
 import { routeAhead } from './route';
 import { PINNED_CROWNS, crownOverHigherEnd } from './bridgeCrowns';
 import { FLUSH_PARAPET } from './bridgeKit';
@@ -1848,4 +1849,81 @@ test('compact meshes (phones): the same vertices, normals within a degree, linea
   assert.ok(compactMesh(packMesh(big)).indices instanceof Uint32Array);
   const cell = compactCell({ key: '0_0', lod: 0, rect: [0, 0, 1, 1], layers: { land: p }, mask: null, stats: { bytes: 0 } } as never);
   assert.equal(cell.stats.bytes, gpuMeshBytes(cell.layers.land as never)); assert.equal(cellGpuTransferables(cell).length, 4);
+});
+
+// Rail viaducts over streets (railViaducts.ts, issue #57), on a synthetic passage in a planar frame: 40 m between the
+// abutments (x = 0 and x = 40), 60 m deep; track bed at 5.6 m beyond them, streets at 0.5 (south) and 1.3 (north).
+const testViaduct = (): RailViaduct => ({
+  id: 'test', label: 'test', evidence: 'synthetic',
+  ring: [[0, 0], [40, 0], [40, 60], [0, 60]], abutments: [1, 3], deck: [[0, -4], [40, -4], [40, 60], [0, 60]],
+  piers: [{ at: [20, 20], size: [2.7, 3.5], angleDeg: 90 }, { at: [80, 20], size: [2.7, 3.5], angleDeg: 90 }],
+  columns: [{ at: [20, -2], r: 0.5 }], deckDepthM: 1.1,
+});
+const flatProject = (p: [number, number]): Vec2 => [p[0], p[1]];
+
+test('capViaductFloor: the passage and the strips behind its abutments drop to the open sides\' street level, the bed beyond stays (issue #57)', () => {
+  const step = 2, ox = -60, oy = -40, w = 90, h = 80, data = new Float32Array(w * h), measured = new Uint8Array(w * h);
+  const v = testViaduct();
+  for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {
+    const x = ox + (i + 0.5) * step, y = oy + (j + 0.5) * step, k = j * w + i;
+    const inPassage = x > 0 && x < 40 && y > -4 && y < 60;
+    data[k] = inPassage ? 3 : y < -4 && x > 0 && x < 40 ? 0.5 : y > 60 && x > 0 && x < 40 ? 1.3 : 5.6;
+    measured[k] = inPassage ? 0 : 1;
+  }
+  const grid = { width: w, height: h, data };
+  const r = capViaductFloor(grid, [ox, oy], step, v, flatProject, measured);
+  assert.deepEqual(r.levels, [0.5, 1.3]);
+  const at = (x: number, y: number) => data[Math.floor((y - oy) / step) * w + Math.floor((x - ox) / step)];
+  assert.ok(at(20, 1) < 0.6 && at(20, 59) > 1.1 && at(20, 59) <= 1.3, `floor climbs from the south side to the north: ${at(20, 1)} … ${at(20, 59)}`);
+  assert.ok(Math.abs(at(20, 30) - 0.9) < 0.15, `mid-passage ${at(20, 30)}`);
+  // The strip behind the west abutment is floor, the bed past it untouched.
+  assert.ok(at(-STRIP_M + 1, 30) < 1.3, `strip ${at(-STRIP_M + 1, 30)}`);
+  assert.ok(Math.abs(at(-STRIP_M - 3, 30) - 5.6) < 1e-5);
+  assert.ok(Math.abs(at(55, 30) - 5.6) < 1e-5);
+  // No street measured at any open side: nothing capped.
+  const none = capViaductFloor({ width: w, height: h, data: data.slice() }, [ox, oy], step, v, flatProject, new Uint8Array(w * h));
+  assert.equal(none.capped, 0);
+});
+
+test('viaductMesh: deck at the bed, abutment faces from the floor to the soffit facing the passage, piers inside only (issue #57)', () => {
+  const v = testViaduct();
+  const ground = (x: number, y: number) => (x < -STRIP_M - 2 || x > 40 + STRIP_M + 2) && y > -4 && y < 64 ? 5.6 : 0.9;
+  const { body, top, deckTop, info } = viaductMesh(v, flatProject, ground, 0);
+  assert.equal(info.deckZ, 5.6);
+  assert.equal(info.soffitZ, 4.5);
+  assert.equal(info.floorZ, 0.9);
+  assert.ok(Math.abs(info.wallFaceM - 3.75) < 1e-6, `wall face ${info.wallFaceM}`);
+  assert.equal(info.piers, 1);
+  assert.equal(info.columns, 1);
+  // The deck top: flat at the bed plus its lift over the deck ring.
+  for (let k = 2; k < deckTop.positions.length; k += 3) assert.ok(Math.abs(deckTop.positions[k] - 5.6 - TOP_LIFT_M) < 1e-9);
+  // The blocks' tops never dip under the deck level over the ramp, and stay on the bed past it.
+  for (let k = 0; k < top.positions.length; k += 3) assert.ok(top.positions[k + 2] >= 5.6 + TOP_LIFT_M - 1e-9);
+  const xs = top.positions.filter((_, k) => k % 3 === 0);
+  assert.ok(Math.min(...xs) <= -CAP_M + 1e-6 && Math.max(...xs) >= 40 + CAP_M - 1e-6, 'blocks reach CAP_M back into the bed');
+  // West wall (x = 0) faces +x, east wall (x = 40) faces −x: the passage side.
+  const n = vertexNormals(Float32Array.from(body.positions), Uint32Array.from(body.indices));
+  let west = 0, east = 0;
+  for (let k = 0; k < body.positions.length; k += 3) {
+    const x = body.positions[k], y = body.positions[k + 1], z = body.positions[k + 2];
+    if (y <= 1 || y >= 59 || z > 4.5 + 1e-9 || Math.abs(n[k + 2]) > 0.1) continue;
+    if (Math.abs(x) < 1e-9 && n[k] > 0.99) west++;
+    if (Math.abs(x - 40) < 1e-9 && n[k] < -0.99) east++;
+  }
+  assert.ok(west > 0 && east > 0, `wall faces west ${west} east ${east}`);
+  assert.equal(body.colors!.length, body.positions.length);
+  // LOD 1: no piers or columns.
+  const far = viaductMesh(v, flatProject, ground, 1);
+  assert.equal(far.info.piers + far.info.columns, 0);
+});
+
+test('RAIL_VIADUCTS: rings are quads with two abutments, decks cover their passages', () => {
+  for (const v of RAIL_VIADUCTS) {
+    assert.equal(v.ring.length, 4);
+    assert.equal(v.abutments.length, 2);
+    const ring = planarRing(v, p => [p[0] * 67960, p[1] * 111250]), deck = planarRing(v, p => [p[0] * 67960, p[1] * 111250], 'deck');
+    const c: Vec2 = [ring.reduce((s, p) => s + p[0], 0) / 4, ring.reduce((s, p) => s + p[1], 0) / 4];
+    assert.ok(insideRing(deck, c[0], c[1]));
+    assert.ok(floorZone(v, p => [p[0] * 67960, p[1] * 111250]).length === 4);
+  }
 });

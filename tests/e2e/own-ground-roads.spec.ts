@@ -35,6 +35,13 @@ export const ROAD_SPOTS: [string, Place][] = [
   ['stationsplein', { lng: 4.8995, lat: 52.37765, bearing: 20 }],
   ['de-ruijterkade-busstation', { lng: 4.8968, lat: 52.38125, bearing: 118 }],
   ['de-ruijterkade-ramp', { lng: 4.89875, lat: 52.38074, bearing: 115 }],
+  // The track bed west of Centraal (issue #57): the rail viaduct over the Droogbak - De Ruijterkade passage from both
+  // ends, and the embankment's flanks along the Nieuwe Westerdokstraat (south-west) and the De Ruijterkade car park.
+  ['droogbak-viaduct', { lng: 4.89515, lat: 52.38005, bearing: 25 }],
+  ['droogbak-passage', { lng: 4.89551, lat: 52.38026, bearing: 30 }],
+  ['de-ruijterkade-viaduct', { lng: 4.89612, lat: 52.38125, bearing: 195 }],
+  ['westerdokstraat-embankment', { lng: 4.89255, lat: 52.38135, bearing: 115 }],
+  ['ruijterkade-parking-embankment', { lng: 4.89515, lat: 52.38165, bearing: 215 }],
 ];
 
 async function boot(page: Page, viewMode = 'chase'): Promise<string[]> {
