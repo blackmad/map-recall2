@@ -111,6 +111,12 @@ export interface FacadeSpec {
  * A wall/roof colour. `measured: true` marks `tint` as the sunlit photo colour, drawn as is (runtime `tintSource: 'measured'`,
  * look/palette.ts `cityMeasuredWallTint`) rather than mapped into the city brick range (L <= 0.6, S >= 0.12), which turns a
  * pale yellow or cream brick tan or olive. Absent, the material and the GLB are unchanged.
+ *
+ * On `palette.roof` (issue #75) a measured pitched roof (`roofTile` or `slate`) is the photo colour of the slope (sunlit street
+ * crop, cross-checked against the PDOK orthophoto reading of the design's pands: roofColour.ts, roof-colours.ts), drawn as is
+ * (look/palette.ts `cityMeasuredPitchedRoofTint`) instead of `cityRoofTint`, which floors a tile's saturation at 0.35 and
+ * lifts it to L 0.38-0.5 (brown-red tiles drew orange) and turns any tile with S < 0.2 into the city slate (olive concrete
+ * tiles drew blue-grey). Measured colours must be #rrggbb on a slot the look keeps measured (MEASURED_TINT_SLOTS).
  */
 export interface SlotTint {slot: Slot; tint: string; measured?: boolean}
 
@@ -342,8 +348,17 @@ export function sizeClass(spec: Pick<TypeSpec, 'sizeClassesM'>, frontageM: numbe
   return `f${idx(c.frontage, frontageM)}d${idx(c.depth, depthM)}`;
 }
 
+/** Slots whose `measured` tint the look keeps (look/palette.ts MEASURED_SLOTS, minus glass and stone: not palette slots here). */
+export const MEASURED_TINT_SLOTS: readonly Slot[] = ['brick', 'accent', 'bitumen', 'slate', 'roofTile'];
+
 export function validateSpec(spec: TypeSpec): string[] {
   const errors: string[] = [];
+  for (const [name, v] of Object.entries(spec.variants)) for (const [key, t] of Object.entries(v.palette)) {
+    if (!t || typeof t !== 'object' || !(t as SlotTint).measured) continue;
+    const st = t as SlotTint;
+    if (!/^#[0-9a-f]{6}$/i.test(st.tint)) errors.push(`variant ${name}: measured ${key} tint ${st.tint} is not #rrggbb`);
+    if (!MEASURED_TINT_SLOTS.includes(st.slot)) errors.push(`variant ${name}: ${key} slot ${st.slot} has no measured look`);
+  }
   if (!spec.variants[spec.defaultVariant]) errors.push(`defaultVariant ${spec.defaultVariant} not in variants`);
   for (const [axis, ts] of Object.entries(spec.sizeClassesM ?? {})) if (!ts?.length || ts.some((t, i) => !(t > 0) || (i > 0 && t <= ts[i - 1]))) errors.push(`sizeClassesM.${axis}: thresholds must be positive and ascending`);
   for (const id of FACADE_IDS) {

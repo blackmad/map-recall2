@@ -73,7 +73,8 @@
     "joint": "#3a3430",
     "roof": {
      "slot": "roofTile",
-     "tint": "#8a8a70"
+     "tint": "#7a755c",
+     "measured": true
     },
     "plinth": {
      "slot": "brick",
@@ -315,6 +316,7 @@
   "3DBAG reads one roof plane per house (26 degrees): a mono-pitch from the 4.6 m front eaves to the 9.1 m ridge on the back wall (monoPitch rise-back). The back wall carries three storeys (garden photos); its windows are drawn as rows at the measured levels on the two stretched kit storeys.",
   "Ground-storey banding (pale stripes every ~0.4 m) not modelled: the ground storey is one darker brick (plinth) under the pale upper brick, with a pale band at the floor line.",
   "Later dormers on a few houses not modelled. Mirror parity: from the photographed house where read, otherwise row order.",
-  "Overcast photos: tints lifted toward the sunlit reading."
+  "Overcast photos: tints lifted toward the sunlit reading.",
+  "Roof tint measured (#75): olive-brown concrete tiles. Every street photo of the fronts is overcast or the north-facing slope is in shade under a blue sky (summer re-shoot reads sky blue-grey), so hue and saturation are the overcast medians of 2108011 #4e4c3d / #464234 and 2136406 #4d4b39 (mean #4b4839), lightness the orthophoto reading of the 157 pands (#6b6b6b, L 0.42): #7a755c (roofColour.ts photoHueAtLightness). Drawn as measured: the authored #8a8a70 (S < 0.2) drew the city slate #606b79."
  ]
 }

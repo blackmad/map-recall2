@@ -11,7 +11,8 @@ import sharp from 'sharp';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const out = arg('out', '.cache/building-types/zoom.jpg'), cols = Number(arg('cols', '2')), tileW = Number(arg('w', '800'));
-const dir = '.cache/building-types/crops', files = fs.readdirSync(dir);
+// --dir=<folder of crops> (e.g. a --months re-shoot's crops)
+const dir = process.argv.find(a => a.startsWith('--dir='))?.slice(6) ?? '.cache/building-types/crops', files = fs.readdirSync(dir);
 const ids = process.argv.slice(2).filter(a => !a.startsWith('--'));
 const tileH = Math.round(tileW * 0.75);
 const tiles = await Promise.all(ids.map(async (id, i) => {

@@ -72,7 +72,8 @@
     "joint": "#3a3430",
     "roof": {
      "slot": "roofTile",
-     "tint": "#a85a40"
+     "tint": "#b99582",
+     "measured": true
     },
     "gable": {
      "slot": "brick",
@@ -319,7 +320,8 @@
   "Mirror parity (vestibules side by side) inferred; garden side inferred.",
   "3DBAG roof planes (321 pands): the front slope sweeps down to 2.56 m (the ground storey, photos), the back slope ends at 5.60 m (two storeys at the garden side, not photographed), ridge 9.11 m, 45 degrees: asymmetric gable; the back storeys follow the back eaves.",
   "Storeys = 2: the front elements all sit on the ground storey under the swept-down front slope; the back (two storeys to 5.6 m eaves) uses taller back storeys.",
-  "Front ground storey corrected after the camera-matched sheet (crop 0363100012081081): brick walls with a white recess around the window and the white entrance box, not an all-white wall. Brick tint taken from the 1987 canopy houses next door (the crop is in tree shade)."
+  "Front ground storey corrected after the camera-matched sheet (crop 0363100012081081): brick walls with a white recess around the window and the white entrance box, not an all-white wall. Brick tint taken from the 1987 canopy houses next door (the crop is in tree shade).",
+  "Roof tint measured (#75): lit pantile body of the sunlit slope of 2105598 #b99582 (tiles only, below the rooflights); orthophoto median of 287 pands #8c7b73 agrees. Drawn as measured: the authored #a85a40 drew saturated orange (#be6041)."
  ],
  "rowCoherentHeights": true
 }

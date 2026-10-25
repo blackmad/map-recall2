@@ -747,7 +747,7 @@ test('round-3 kit parts absent -> byte-identical: no chimneys, stripes or measur
 
 test('mono-pitch saltbox: one plane rising from the front eaves to a ridge on the back wall; validateSpec rejects monoPitch on a flat or eavesFromPlanes roof', () => {
   const C = load('nd-ck-saltbox.json'), p = {...r3Params(C), variant: 'yellow'};
-  const roof = xs(generate(C, p).mesh, `roofTile|${C.variants.yellow.palette.roof.tint}`);
+  const roof = xs(generate(C, p).mesh, `roofTile|${C.variants.yellow.palette.roof.tint}|measured`); // measured roof tile (#75)
   const W = p.widthM, tan = (p.ridgeM! - p.eavesM) / W;
   const onPlane = roof.filter(q => Math.abs(q[2]) <= W / 2 + 1e-6 && q[1] > p.eavesM - 0.4);
   assert.ok(onPlane.length > 0);
@@ -783,4 +783,47 @@ test('measured palette: the GLB material carries tintSource "measured" only when
   };
   assert.deepEqual(await mats(false), [{name: 'brick_d4d0c1', extras: {materialSlot: 'brick', tint: '#d4d0c1'}}]);
   assert.deepEqual(await mats(true), [{name: 'brick_d4d0c1_measured', extras: {materialSlot: 'brick', tint: '#d4d0c1', tintSource: 'measured'}}]);
+});
+
+test('measured roof tile (#75): a flagged roof keeps its geometry under a measured bucket, absent is byte-identical, the look draws it as is; validateSpec checks measured tints', async () => {
+  const {cityTint, cityRoofTint} = await import('../look/palette.ts');
+  const S = load('oo-ta-side.json'), sp = {...r3Params(S), variant: 'red'}, roof = S.variants.red.palette.roof;
+  assert.equal(roof.measured, true);
+  const plain: TypeSpec = {...S, variants: Object.fromEntries(Object.entries(S.variants).map(([k, v]) => [k, {...v, palette: {...v.palette, roof: {slot: v.palette.roof.slot, tint: v.palette.roof.tint}}}]))};
+  const m = generate(S, sp).mesh, u = generate(plain, sp).mesh;
+  assert.ok(m.buckets.has(`roofTile|${roof.tint}|measured`) && !m.buckets.has(`roofTile|${roof.tint}`));
+  assert.deepEqual(m.buckets.get(`roofTile|${roof.tint}|measured`)!.positions, u.buckets.get(`roofTile|${roof.tint}`)!.positions);
+  for (const [key, b] of u.buckets) if (!key.startsWith('roofTile|')) assert.deepEqual(m.buckets.get(key)!.positions, b.positions, key);
+  // the look: measured = as is; unmeasured = the city tile mapping (which drew this brown-red orange, and olive concrete as slate)
+  assert.equal(cityTint('roofTile', roof.tint, 'measured'), roof.tint);
+  assert.equal(cityTint('roofTile', roof.tint), cityRoofTint('roofTile', roof.tint));
+  assert.notEqual(cityTint('roofTile', '#7a755c'), '#7a755c');
+  // validation
+  const bad = (palRoof: object) => validateSpec({...S, variants: {...S.variants, red: {...S.variants.red, palette: {...S.variants.red.palette, roof: palRoof as never}}}});
+  assert.deepEqual(bad({slot: 'roofTile', tint: '#8d6e60', measured: true}), []);
+  assert.ok(bad({slot: 'roofTile', tint: 'brown', measured: true}).some(e => e.includes('#rrggbb')));
+  assert.ok(bad({slot: 'door', tint: '#84695d', measured: true}).some(e => e.includes('no measured look')));
+});
+
+test('roof colour cross-check (#75): orthophoto summary uses pitched readings only; photo vs orthophoto agreement; photo hue at the orthophoto lightness', async () => {
+  const {orthoRoofSummary, checkRoofColour, photoHueAtLightness, meanHex} = await import('./roofColour.ts');
+  const {rgbToHsl, hexToRgb} = await import('../look/palette.ts');
+  const f = (slot: string, rgb: [number, number, number]) => ({slot, rgb, confidence: 0.8, solarShare: 0, terrace: false, furniture: []}) as never;
+  const s = orthoRoofSummary([f('slate', [100, 90, 95]), f('pantile-red', [110, 90, 90]), f('gravel', [200, 200, 200]), null, f('pantile-dark', [90, 80, 80])]);
+  assert.equal(s.read, 4); assert.equal(s.used, 3); assert.deepEqual(s.median, [100, 90, 90]); assert.equal(s.hex, '#645a5a');
+  assert.equal(orthoRoofSummary([f('gravel', [1, 2, 3])]).median, null);
+  assert.ok(checkRoofColour('#8d6e60', '#6b5a63').agrees, 'Tuindorp Amstelstation: hazy near-neutral orthophoto, hue not compared');
+  const off = checkRoofColour('#c0683f', '#5a7a9a');
+  assert.ok(!off.agrees && off.reason.includes('hue'));
+  assert.ok(!checkRoofColour('#e0d0c0', '#403530').agrees, 'lightness far apart');
+  const h = photoHueAtLightness('#4b4839', 0.42), [hh, ss, ll] = rgbToHsl(hexToRgb(h)), [h0, s0] = rgbToHsl(hexToRgb('#4b4839'));
+  assert.ok(Math.abs(ll - 0.42) < 0.01 && Math.abs(hh - h0) < 3 && Math.abs(ss - s0) < 0.03);
+  assert.equal(meanHex(['#806961', '#876958']), '#84695d');
+});
+
+test('lit tile body (#75): course shadows and lichen below the median saturation or luma are dropped', async () => {
+  const {litTileMedian} = await import('./roofColour.ts');
+  const tile: [number, number, number] = [204, 141, 116], shadow: [number, number, number] = [90, 60, 50], lichen: [number, number, number] = [170, 168, 160];
+  assert.equal(litTileMedian([tile, tile, tile, shadow, lichen, tile, shadow, lichen]), '#cc8d74');
+  assert.equal(litTileMedian([]), null);
 });

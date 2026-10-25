@@ -72,7 +72,8 @@
     "joint": "#3a3430",
     "roof": {
      "slot": "roofTile",
-     "tint": "#5d5852"
+     "tint": "#726552",
+     "measured": true
     }
    }
   }
@@ -272,6 +273,7 @@
  "notes": [
   "Front and back eaves from the 3DBAG roof planes (low-front): the front slope comes down to the ground storey.",
   "The white fascia board is drawn as a band under the front eaves.",
-  "Dormers (about one house in five) not modelled; mirror parity from the photographed house where read."
+  "Dormers (about one house in five) not modelled; mirror parity from the photographed house where read.",
+  "Roof tint measured (#75): dark brown concrete tiles, overcast medians of 2080393 #312b20, 2097396 #36302d, 2126007 #30291e (mean #322c24) for hue and saturation; lightness 0.39 = mean of the orthophoto reading (#848480, L 0.51, lifted by moss) and the saltbox lightness scaled by the overcast photo luma ratio (0.62 x 0.42 = 0.26). Drawn as measured: #5d5852 drew the city slate #606b79."
  ]
 }

@@ -73,7 +73,8 @@
     "joint": "#3a3430",
     "roof": {
      "slot": "roofTile",
-     "tint": "#6a443c"
+     "tint": "#8d6e60",
+     "measured": true
     }
    }
   },
@@ -95,7 +96,8 @@
     "joint": "#3a3430",
     "roof": {
      "slot": "roofTile",
-     "tint": "#6a443c"
+     "tint": "#8d6e60",
+     "measured": true
     }
    }
   },
@@ -117,7 +119,8 @@
     "joint": "#3a3430",
     "roof": {
      "slot": "roofTile",
-     "tint": "#6a443c"
+     "tint": "#8d6e60",
+     "measured": true
     }
    }
   },
@@ -139,7 +142,8 @@
     "joint": "#3a3430",
     "roof": {
      "slot": "roofTile",
-     "tint": "#6a443c"
+     "tint": "#8d6e60",
+     "measured": true
     }
    }
   }
@@ -446,6 +450,7 @@
   "Symmetric facade, no mirrored pairs: one unit per colour.",
   "Openings measured on 2077521 (63.8 px/m between the downpipes), centred on the house.",
   "Colour per terrace from the survey photo; garden side inferred.",
-  "Chimney stacks partly measured."
+  "Chimney stacks partly measured.",
+  "Roof tint measured (#75): lit tile body of the sunlit slopes of 2091220 #8b6e65 and 2097592 #8f6e5b, mean #8d6e60 (the same roofs as oo-ta-side); orthophoto median of 73 read pands #6b5a63 agrees. Drawn as measured: #6a443c drew orange."
  ]
 }

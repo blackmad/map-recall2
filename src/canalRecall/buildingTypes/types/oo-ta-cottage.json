@@ -73,7 +73,8 @@
     "joint": "#3a3430",
     "roof": {
      "slot": "roofTile",
-     "tint": "#c2673f"
+     "tint": "#cc8d74",
+     "measured": true
     }
    }
   }
@@ -258,6 +259,7 @@
  "notes": [
   "One storey under the roof: storeys = 2 is the kit minimum; every element sits on the ground storey (eaves 3.0-3.3 m).",
   "Not mirrored: every house has its door on the same side (2070501).",
-  "Chimney stack per house partly measured."
+  "Chimney stack per house partly measured.",
+  "Roof tint measured (#75): lit pantile body of the sunlit slope of 2070501 #cc8d74 (plain median #ae816b counts course shadows and lichen); orthophoto median #6b5a5a (49 pands, half pantile-dark) agrees within the lightness window. Drawn as measured: the authored #c2673f drew saturated orange (#c86337)."
  ]
 }

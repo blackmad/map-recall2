@@ -157,7 +157,8 @@ test('measured brick/accent: cell x tint lands on the authored hex; every unmeas
   }
   assert.ok(L(cityLookTint('brick', '#3a2a28')) >= 0.3 - 1e-9, 'unmeasured dark wall is still clamped');
   assert.equal(cityLookTint('stucco', '#d8d2c4', 'measured'), cityLookTint('stucco', '#d8d2c4'));
-  assert.equal(cityLookTint('slate', '#8f9698', 'measured'), cityLookTint('slate', '#8f9698'));
+  // a measured pitched roof (large recipes' roof.pitchedHex, issue #73) is drawn as is; unmeasured slate keeps the review rule
+  assert.equal(cityLookTint('slate', '#8f9698', 'measured'), '#8f9698');
   // slotForMaterial reads the extra; untagged materials are as before.
   const base = { materialSlot: 'brick', tint: '#3a2a28' };
   assert.deepEqual(slotForMaterial({ userData: { ...base, tintSource: 'measured' } }, false), { slot: 'brick', tint: '#3a2a28', inferred: false, source: 'measured' });
