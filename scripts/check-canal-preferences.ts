@@ -9,6 +9,8 @@ import {
   CAMERA_TILT_MAX,
   CAMERA_TILT_MIN,
   MAP_MAX_PITCH,
+  CHASE_PITCH_DEGREES,
+  parseChasePitchBase,
   chasePitch,
   coercePreferences,
   defaultPreferences,
@@ -49,6 +51,21 @@ const memory = () => {
   const clamped = parsePreferences({ cameraTilt: 99 }, zoom);
   assert.equal(clamped.cameraTilt, CAMERA_TILT_MAX);
   assert.equal(parsePreferences({ cameraTilt: -99 }, zoom).cameraTilt, CAMERA_TILT_MIN);
+}
+
+// 2026-10-25: the chase default stays 60° (65° cost ~40% more map render on
+// desktop); the cap is 75° so the tilt nudge can lower the camera past it.
+{
+  assert.equal(CHASE_PITCH_DEGREES, 60);
+  assert.equal(MAP_MAX_PITCH, 75);
+  assert.equal(chasePitch(0), 60);
+  assert.equal(chasePitch(CAMERA_TILT_MAX), MAP_MAX_PITCH, 'the slider\'s right end reaches the cap');
+  assert.equal(chasePitch(0, 65), 65);
+  assert.equal(chasePitch(99, 70), MAP_MAX_PITCH);
+  assert.equal(parseChasePitchBase('70'), 70);
+  assert.equal(parseChasePitchBase('120'), MAP_MAX_PITCH);
+  assert.equal(parseChasePitchBase(null), null);
+  assert.equal(parseChasePitchBase('x'), null);
 }
 
 // Issue #25: Chase opened at 12°, flatter than the 14° 2D views, and the left

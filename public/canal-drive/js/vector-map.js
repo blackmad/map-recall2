@@ -105,6 +105,14 @@ function canalRecallOwnGroundBudget() {
   return budget;
 }
 
+// The map's pitch ceiling (MapLibre defaults to 60). Chase's lowest camera is
+// CanalRecallPreferences.MAP_MAX_PITCH; the landmark sightline lift may add a
+// few degrees on top, which MapLibre then clamps.
+function canalRecallMaxPitch() {
+  const prefs = window.CanalRecallPreferences;
+  return prefs && Number.isFinite(prefs.MAP_MAX_PITCH) ? Math.max(60, prefs.MAP_MAX_PITCH) : 60;
+}
+
 // MSAA costs a second full-size colour buffer (and bandwidth) on phones.
 // Keep it unless the device reports <=3 GB of RAM; `?msaa=0/1` overrides.
 function canalRecallAntialias() {
@@ -238,7 +246,9 @@ class VectorBasemap {
       interactive: false,
       pixelRatio: canalRecallPixelRatio(),
       attributionControl: false,
-      fadeDuration: 0
+      fadeDuration: 0,
+      // MapLibre's default maxPitch is 60; Chase may sit lower (game/preferences.ts MAP_MAX_PITCH).
+      maxPitch: canalRecallMaxPitch()
     });
   }
 
@@ -594,10 +604,20 @@ class VectorBasemap {
         ? (typeof CHASE_PITCH_DEGREES === 'number' ? CHASE_PITCH_DEGREES : 60)
         : (typeof TOPDOWN_TILT_DEGREES === 'number' ? TOPDOWN_TILT_DEGREES : 14);
     if (!chase && !cockpit) return base;
-    // Chase's base, tilt range and map ceiling live in game/preferences.ts.
+    // Chase's base, tilt range and map ceiling live in game/preferences.ts;
+    // `?chasePitch=70` overrides the base for pitch comparisons.
     const prefs = window.CanalRecallPreferences;
-    if (chase && prefs && typeof prefs.chasePitch === 'function') return prefs.chasePitch(this._cameraTilt || 0);
-    return Math.max(0, Math.min(85, base + (this._cameraTilt || 0)));
+    if (chase && prefs && typeof prefs.chasePitch === 'function') {
+      if (this._chasePitchBase === undefined) {
+        let asked = null;
+        try { asked = typeof prefs.parseChasePitchBase === 'function' ? prefs.parseChasePitchBase(new URLSearchParams(window.location.search).get('chasePitch')) : null; } catch (_) { /* no window */ }
+        this._chasePitchBase = asked;
+      }
+      return this._chasePitchBase == null ? prefs.chasePitch(this._cameraTilt || 0) : prefs.chasePitch(this._cameraTilt || 0, this._chasePitchBase);
+    }
+    // The retired cockpit asked for 84° but MapLibre's default maxPitch held it
+    // at 60; keep that now the map's ceiling is higher.
+    return Math.max(0, Math.min(60, base + (this._cameraTilt || 0)));
   }
 
   zoomOffsetForViewMode(viewMode) {

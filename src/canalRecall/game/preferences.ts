@@ -93,26 +93,37 @@ export const PREFERENCES_STORAGE_KEY = 'canalRecall.preferences.v1';
  */
 export const ZOOM_DEFAULT_VERSION = 4 as const;
 /**
- * Highest pitch the basemap draws (MapLibre's default `maxPitch`); a larger
- * request is clamped to it.
+ * Highest pitch the game asks the basemap for; `vector-map.js` passes it as
+ * MapLibre's `maxPitch` and every request is clamped to it.
+ * Until 2026-10-25 this was 60, MapLibre's *default* `maxPitch`, which the
+ * game never overrode; MapLibre 5 accepts up to 180 (above 60 is marked
+ * experimental). 2026-10-25 (user): "can we really not make the chase camera
+ * angle slightly lower to the ground?" The top screen edge looks pitch +
+ * 18.4° (half MapLibre's 36.9° field of view) from straight down, so the
+ * ground there runs out toward the horizon from ~65° and the horizon itself
+ * is on screen above ~71.6°; the sky is styled for that (`vector-map.js`).
  */
-export const MAP_MAX_PITCH = 60;
+export const MAP_MAX_PITCH = 75;
 /**
  * Chase pitch with the tilt slider at its default 0. MapLibre pitch is the
- * camera's angle from straight down: 0 is plan view, 60 the lowest camera.
+ * camera's angle from straight down: 0 is plan view; a larger pitch is a
+ * lower camera.
  * 2026-10-23 (user): "make the angle of chase lower; whatever the minimum in
  * the game is now" was read as pitch 12, flatter than the 14° 2D views, so
  * Chase looked top-down (issue #25). On 2026-10-01 "lower" meant a larger
  * pitch (42° -> 48°), and the lowest camera the game could reach was 60°.
  */
-export const CHASE_PITCH_DEGREES = MAP_MAX_PITCH;
+export const CHASE_PITCH_DEGREES = 60;
+/** The flattest chase pitch the tilt slider reaches (just under the 14° 2D views). */
+export const CHASE_FLATTEST_PITCH = 12;
 /**
- * Degrees of extra pitch the live tilt slider may add or subtract. The range
- * spans exactly what the map can show from Chase (12°..60°): with ±36 around
- * a 12° base, the left half of the slider clamped to 0° and did nothing.
+ * Degrees of extra pitch the live tilt slider may add or subtract around
+ * CHASE_PITCH_DEGREES. The range spans exactly what Chase can show
+ * (CHASE_FLATTEST_PITCH..MAP_MAX_PITCH): with ±36 around a 12° base, the left
+ * half of the slider clamped to 0° and did nothing (issue #25).
  */
-export const CAMERA_TILT_MIN = -48;
-export const CAMERA_TILT_MAX = 0;
+export const CAMERA_TILT_MIN = CHASE_FLATTEST_PITCH - CHASE_PITCH_DEGREES;
+export const CAMERA_TILT_MAX = MAP_MAX_PITCH - CHASE_PITCH_DEGREES;
 /** Degrees moved by each keyboard tilt nudge. */
 export const CAMERA_TILT_KEY_STEP = 6;
 /** Degrees moved by each Shift+[ / Shift+] orbit nudge. */
@@ -242,9 +253,22 @@ function clampTilt(value: unknown, fallback: number): number {
  * the map can draw. Every tilt in [CAMERA_TILT_MIN, CAMERA_TILT_MAX] gives a
  * different pitch, so the slider never has a dead zone.
  */
-export function chasePitch(tilt: unknown): number {
+export function chasePitch(tilt: unknown, base: number = CHASE_PITCH_DEGREES): number {
   const value = clampTilt(tilt, 0);
-  return Math.max(0, Math.min(MAP_MAX_PITCH, CHASE_PITCH_DEGREES + value));
+  const from = Number.isFinite(base) ? base : CHASE_PITCH_DEGREES;
+  return Math.max(0, Math.min(MAP_MAX_PITCH, from + value));
+}
+
+/**
+ * A chase base pitch asked for in the URL (`?chasePitch=70`), for side-by-side
+ * pitch comparisons; null when absent or not a number. Clamped to what the
+ * map draws.
+ */
+export function parseChasePitchBase(raw: unknown): number | null {
+  if (raw == null || raw === '') return null;
+  const value = Number(raw);
+  if (!Number.isFinite(value)) return null;
+  return Math.max(CHASE_FLATTEST_PITCH, Math.min(MAP_MAX_PITCH, value));
 }
 
 function wrapBearing(value: unknown, fallback: number): number {
