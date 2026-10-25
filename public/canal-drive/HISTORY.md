@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+**Repetitive designs round 3 (2026-10-25, #74).** 10 designs / 27 units,
+855 houses: Tuindorp Amstelstation 238 (87 %), Circus/Kermisbuurt 210
+(83 %, garden-side survey re-shot from the street), Twiske-Oost 246 (68 %),
+Vogeltjeswei 161 (81 %); 687 terrace-photo, 168 signature-matched. Kit:
+chimneys, mono-pitch roof, ridge from photo pitch (3DBAG read rooftop
+extensions), striped brick, faceted drum bay, measured-colour path for pale
+brick (city tint turned cream brick olive), photo-handedness drives row
+alternation. 42 existing units regenerate identically. Draw calls +40-60,
+Tuindorp Amstelstation +120-160 (12 meshes); vsync-bound, accepted.
+Integrator review: pitched tile colour has no photo path, so Tuindorp
+Amstelstation roofs draw too orange and Circus olive concrete tiles draw
+slate; follow-up. Also missing: Twiske porch canopies, Vogeltjeswei top
+railing (drawn as a glazed band).
+
 **Noord repetitive terraces (2026-10-25, #72).** Follow-up to #70.
 Four designs (`nd-to-cottage`, `nd-to-row`, `nd-bz-brick-row`,
 `nd-bz-green-gable`), 1,949 instanced houses: Tuindorp Oostzaan-Oost
