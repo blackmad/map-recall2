@@ -19,6 +19,8 @@ export interface CropWall {
   tag: string; file: string; a: Xy; b: Xy; normal: Xy; ppm: number; widthPx: number; heightPx: number;
   wallHeightM: number; baseZ: number; capturedAt?: string; panoId?: string; obliquityDeg?: number; cameraDistM?: number;
   foliage?: number; washedOut?: number; missingFraction?: number; sha256?: string; cameraRD?: number[];
+  /** how `baseZ` was set (scripts/pand-reference/rectify.ts): the published camera height, or an assumed street level */
+  groundSource?: string;
 }
 /** The plan part of a block-kit panel (local metres) and the recipe anchor. */
 export interface PanelPlan { index: number; o: number[]; r: number[]; n: number[]; uMin: number; uMax: number }
@@ -121,5 +123,29 @@ export function cropsOfWallsJson(json: {walls: any[]}): CropWall[] {
     ppm: w.widthPx && w.wallWidthM ? w.widthPx / w.wallWidthM : w.ppm, widthPx: w.widthPx, heightPx: w.heightPx,
     wallHeightM: w.wallHeightM, baseZ: w.baseZ, capturedAt: w.capturedAt, panoId: w.panoId, obliquityDeg: w.obliquityDeg, cameraDistM: w.cameraDistM,
     foliage: w.foliage, washedOut: w.washedOut, missingFraction: w.missingFraction, sha256: w.sha256, cameraRD: w.cameraRD,
+    ...(w.groundSource ? {groundSource: w.groundSource} : {}),
   }));
+}
+
+/**
+ * Height of a panorama camera above the AHN terrain under it: the median of published camera z minus the terrain
+ * (scripts/lib/terrainField.ts) over the 2,510 archived crops whose ground came from the published camera height
+ * (IQR 1.52..1.91 m, 2026-10-25).
+ */
+export const CAMERA_ABOVE_TERRAIN_M = 1.62;
+
+/**
+ * Metres to add to a crop's heights (NAP) so they are measured from the street the camera stood on.
+ *
+ * A vertical wall rectified from a camera at the wrong height is the same picture moved up or down by the error, so
+ * only the camera's height matters. Where the record published none (2024-2025 captures) or an implausible one,
+ * rectify.ts assumed the street at 0.4 m NAP (`groundSource` "assumed ..."), which is 3-5 m off in the polders and on
+ * decks: Stadsloket Zuidoost's south-west plaza is at -2.74 m and its north-west deck at +1.63 m NAP (AHN). There the
+ * camera is put `CAMERA_ABOVE_TERRAIN_M` above the terrain at its own position, the way the published crops sit.
+ * Published heights, and crops without a camera position or terrain, are kept (0).
+ */
+export function cropStreetShiftM(c: Pick<CropWall, 'groundSource' | 'cameraRD'>, terrainAt: ((x: number, y: number) => number) | null | undefined): number {
+  if (!terrainAt || !c.groundSource || !/assumed/.test(c.groundSource) || !c.cameraRD || c.cameraRD.length < 3 || !Number.isFinite(c.cameraRD[2])) return 0;
+  const g = terrainAt(c.cameraRD[0], c.cameraRD[1]);
+  return Number.isFinite(g) ? Math.round((g + CAMERA_ABOVE_TERRAIN_M - c.cameraRD[2]) * 1000) / 1000 : 0;
 }

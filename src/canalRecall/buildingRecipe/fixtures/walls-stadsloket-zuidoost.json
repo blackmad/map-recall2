@@ -1,0 +1,109 @@
+{
+ "pand": "NL.IMBAG.Pand.0363100012078772",
+ "licence": "Gemeente Amsterdam panorama, CC BY 4.0",
+ "schema": "pand-reference-walls/v2",
+ "walls": [
+  {
+   "tag": "w01-331",
+   "wallRD": {
+    "a": [
+     125698.46,
+     481081.05
+    ],
+    "b": [
+     125628.34,
+     481042.53
+    ],
+    "normal": [
+     -0.4815,
+     0.8764
+    ]
+   },
+   "crop": true,
+   "ppm": 29.861410855670062,
+   "widthPx": 2389,
+   "heightPx": 753,
+   "wallWidthM": 80.01,
+   "wallHeightM": 25.23,
+   "baseZ": 0.4,
+   "groundSource": "assumed ground 0.4 m NAP",
+   "cameraRD": [
+    125655.78,
+    481075.58,
+    2.84
+   ],
+   "capturedAt": "2025-09-01",
+   "panoId": "recording_2025-09-01_11-37-05_02661",
+   "obliquityDeg": 0.1,
+   "cameraDistM": 15.8
+  },
+  {
+   "tag": "w01-331L",
+   "wallRD": {
+    "a": [
+     125698.46,
+     481081.05
+    ],
+    "b": [
+     125628.34,
+     481042.53
+    ],
+    "normal": [
+     -0.4815,
+     0.8764
+    ]
+   },
+   "crop": true,
+   "ppm": 29.861410855670062,
+   "widthPx": 2389,
+   "heightPx": 753,
+   "wallWidthM": 80.01,
+   "wallHeightM": 25.23,
+   "baseZ": 0.8,
+   "groundSource": "published camera height - 2.44 m",
+   "cameraRD": [
+    125657.51,
+    481077.28,
+    3.24
+   ],
+   "capturedAt": "2018-12-13",
+   "panoId": "TMX7316010203-001011_pano_0017_000080",
+   "obliquityDeg": 8,
+   "cameraDistM": 16.6
+  },
+  {
+   "tag": "w03-241",
+   "wallRD": {
+    "a": [
+     125609.39,
+     481032.07
+    ],
+    "b": [
+     125641.03,
+     480974.58
+    ],
+    "normal": [
+     -0.8761,
+     -0.4821
+    ]
+   },
+   "crop": true,
+   "ppm": 32.97280443080205,
+   "widthPx": 2164,
+   "heightPx": 832,
+   "wallWidthM": 65.62,
+   "wallHeightM": 25.23,
+   "baseZ": 0.4,
+   "groundSource": "published height implausible; assumed ground 0.4 m NAP",
+   "cameraRD": [
+    125608.26,
+    480995.13,
+    2.84
+   ],
+   "capturedAt": "2019-06-26",
+   "panoId": "TMX7316010203-001253_pano_0000_000393",
+   "obliquityDeg": 3,
+   "cameraDistM": 18.8
+  }
+ ]
+}
