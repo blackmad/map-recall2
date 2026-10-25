@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+**Brighter large-tier walls and pitched roofs (2026-10-25, #73).**
+Follow-up to #71. Walls: across 183 measured groups the drawn median is
+luma 88 vs crops 73; shade explains most but is provable for few (31 groups
+have a second capture; 2 with a summer re-read, written via new
+`sunlitWall.ts` / `sunlit-walls.ts`). The reach-everywhere cause: 1,338
+unmeasured GLB brick/accent materials missed the 1.106 sunny-look gain
+generic walls get; now applied (stucco/stone/paint untouched, chunks keep
+their recorded exposure). The 0.60 L cap is shared with procedural rows, not
+the difference. Roofs: new `roof.pitchedHex` from the roof fact, only
+recolouring a roof of the same kind; 82 GLBs re-exported material-only.
+In-game: walls +2-4 luma, kattenburg roofs 85 -> 95. Still dark:
+Herengracht bespoke landmarks (builder colours), Bilderdijk block-face
+chunks (photo-strip exposure), Palace/Magna Plaza authored roofs (needs a
+landmark rebuild). building-look.spec: 2 desktop failures pre-exist on HEAD
+bundles ("share one brick" spread 0.084, "shadow fill" sun side 5.46).
+
 **Repetitive designs round 3 (2026-10-25, #74).** 10 designs / 27 units,
 855 houses: Tuindorp Amstelstation 238 (87 %), Circus/Kermisbuurt 210
 (83 %, garden-side survey re-shot from the street), Twiske-Oost 246 (68 %),
