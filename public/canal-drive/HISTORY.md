@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+**Zuidoost repetitive terraces (2026-10-25, #70).** User idea: newer
+areas repeat, so one design covers many houses. Eight measured
+`buildingTypes` specs (`zo-*.json`), 1,540 instanced houses: Gein 3 156
+(12 % of non-minor pands; very mixed), Holendrecht-Oost 506 (52 %), Gein 4
+604 (65 %), Kelbergen 274 (78 %). 1,234 from photo-confirmed terraces, 480
+matched by size+year to a photographed terrace of the same project. Roof
+heights from cached PDOK 3D tiles (api.3dbag.nl timed out); 3DBAG minimum
+roof height was the lean-to/catslide, hence `roof.eavesFromPlanes`. Kit:
+canopy element, facade battens, band colours, multi-window annexes,
+asymmetric gable (`backEavesM`), `bodyFromRoof {tolM}`, per-row
+`rowCoherentHeights`; `mirrorBays` edge-position fix (no published unit
+affected). nw-* units byte-identical. Draw calls flat on the fixed route.
+Not modelled: Gein 3 all-timber and brick-canopy rows, Holendrecht S2/S4
+groups, dormers (~1 in 4 houses), set-back upper storey, per-house door
+colours, front sheds.
+
 **Haarlemmerweg facing the Westerpark (2026-10-25, #65).** User correction of
 #62 (they meant the Westerpark). 13 large recipes: GWL 217-283 and 285-303,
 315-321 (1921 office), 201, the 1983 scheme 63-89 and the 1992 blocks 91-109.
