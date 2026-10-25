@@ -1,0 +1,410 @@
+{
+ "id": "nw-ee-buff-row",
+ "label": "De Eendracht (1990, Marga Klompélaan / J.G. Suurhoffstraat) terraced house: pale buff brick over a dark brick plinth, white render panel between the stacked 2-light windows, teal door beside a grey panel in a shared recessed porch, dark tile gable roof with paired black vent pipes, mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 84,
+  "bouwjaar": [
+   1990,
+   1990
+  ],
+  "lengthM": 5.12,
+  "widthM": 9.83,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  4.8,
+  6.6
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.9,
+   5.7
+  ],
+  "depth": [
+   9.4,
+   10.4
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.25,
+  "vergeOverhangM": 0.1,
+  "thicknessM": 0.15,
+  "eavesPinM": 5.6,
+  "pitchDeg": 40,
+  "chimneys": [
+   {
+    "ref": "left",
+    "u": 3.55,
+    "w": 0.13,
+    "d": 0.13,
+    "h": 0.45,
+    "offsetM": 0.45,
+    "palette": "dark",
+    "note": "black vent pipe on the front slope just below the ridge, over the door bay (two per house)"
+   },
+   {
+    "ref": "left",
+    "u": 3.85,
+    "w": 0.13,
+    "d": 0.13,
+    "h": 0.45,
+    "offsetM": 0.45,
+    "palette": "dark"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid",
+  "plinthM": 0.5
+ },
+ "alternateMirror": true,
+ "defaultVariant": "buff",
+ "variants": {
+  "buff": {
+   "label": "pale buff brick, teal doors",
+   "evidence": "Marga Klompélaan #4 #14 #23 #27 #34 #47 (2149628, 2132734, 2114756, 2123026, 2133554, 2125677); J.G. Suurhoffstraat #8 #12 #17 #26 #38 #44 (2106741, 2073913, 2147538, 2113150, 2097662, 2085248)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#dfd5bd",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#4c4c56",
+     "measured": true
+    },
+    "gable": {
+     "slot": "brick",
+     "tint": "#dfd5bd",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#4a8a8f",
+    "accent": "#f0eee6",
+    "rail": "#c2c6bf",
+    "dark": "#3d3f44",
+    "column": "#f0eee6",
+    "joint": "#b9b09a",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#74695d",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012123026-2022041208.jpg",
+     "pand": "0363100012123026",
+     "address": "Marga Klompélaan",
+     "note": "2022-04-12 08:07, sun 115/29 on the east front, ~70 px/m on the 5.12 m house between party walls (u from the window side): 2-light window 0.79-2.5 m, sill 0.6, head 2.43 under a dark roller-shutter box; white render panel the window's width up to the upper sill (3.64 m); upper 2-light 0.85-2.45 m, h 1.62, shutter box over it; teal door 3.36-4.07 m (h 2.2) and a light grey panel 4.21-4.86 m in a porch shared with the mirrored neighbour, dark lintel at ~2.43 m, white pier between the two porches; 1-light window 3.86-4.57 m (sill 3.57, h 1.5) over the door; eaves ~5.6 m; two black vent pipes near the ridge. Sunlit brick clips (#f8f0cd); tile #7d7467 (lit cluster #736a5d); door #5e979b; plinth #7f7968"
+    },
+    {
+     "photo": "sunlit crop 0363100012114756-2017051908.jpg",
+     "pand": "0363100012114756",
+     "address": "Marga Klompélaan",
+     "note": "2017-05 overcast: same layout. White-referenced to the white render panel (#99968b, x1.6): brick #b7aea4 (brick-mottle k=3: one tone, ratios 0.94-1.00, not mottled), plinth #393533 -> #5b5552 (drawn #4c4c56: the sunlit crops show a blue-grey brick), tile #4b453e -> #776e63, door #213035 -> #354d55, grey panel #535556 -> #858889. Wall tint #dfd5bd (lifted from #d3c8ae after the first contact sheet read darker than the photo): between the white-referenced overcast reading and the clipped sunlit one (the sunlit 2022/2025 crops read cream to white)"
+    },
+    {
+     "photo": "sunlit crop 0363100012132734-2022041208.jpg",
+     "pand": "0363100012132734",
+     "address": "Marga Klompélaan",
+     "note": "2022-04-12 sunlit: same row, doors paired, vent pipe pairs"
+    },
+    {
+     "photo": "sunlit crop 0363100012133554-2022041208.jpg",
+     "pand": "0363100012133554",
+     "address": "Marga Klompélaan",
+     "note": "2022-04-12 sunlit: same row"
+    },
+    {
+     "photo": "survey crop 0363100012106741.jpg",
+     "pand": "0363100012106741",
+     "address": "J.G. Suurhoffstraat",
+     "note": "2021-04 shaded west front: same layout, porch pairs with a grey panel beside each teal door, one rooflight on some houses (not modelled)"
+    },
+    {
+     "photo": "survey crop 0363100012085248.jpg",
+     "pand": "0363100012085248",
+     "address": "J.G. Suurhoffstraat",
+     "note": "2021-04 shaded: same; a few houses have a small canopy over the ground window (not modelled)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.65,
+       "w": 1.71,
+       "h": 1.83,
+       "sill": 0.6,
+       "lights": 2,
+       "frameM": 0.07,
+       "note": "2-light window (2123026: 0.79-2.5 m)"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.65,
+       "w": 1.71,
+       "h": 0.15,
+       "sill": 2.43,
+       "colour": "dark",
+       "depth": 0.04,
+       "note": "roller-shutter box over the window"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.65,
+       "w": 1.71,
+       "h": 1.06,
+       "sill": 2.58,
+       "colour": "frame",
+       "depth": 0.02,
+       "note": "white render panel up to the upper sill"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.72,
+       "w": 0.8,
+       "h": 2.2,
+       "note": "teal door in the shared porch"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.54,
+       "w": 0.65,
+       "h": 2.2,
+       "colour": "rail",
+       "depth": 0.02,
+       "note": "light grey panel beside the door"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.2,
+       "w": 1.84,
+       "h": 0.17,
+       "sill": 2.27,
+       "colour": "dark",
+       "depth": 0.03,
+       "note": "dark porch lintel"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 5.0,
+       "w": 0.26,
+       "h": 2.27,
+       "colour": "frame",
+       "depth": 0.04,
+       "note": "white pier between the two porches of a pair"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.65,
+       "w": 1.6,
+       "h": 1.62,
+       "sill": 0.84,
+       "lights": 2,
+       "frameM": 0.07
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.65,
+       "w": 1.6,
+       "h": 0.14,
+       "sill": 2.46,
+       "colour": "dark",
+       "depth": 0.04,
+       "note": "shutter box"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.22,
+       "w": 0.71,
+       "h": 1.5,
+       "sill": 0.77,
+       "lights": 1,
+       "frameM": 0.07,
+       "note": "narrow window over the door (3.86-4.57 m)"
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.22,
+       "w": 0.71,
+       "h": 0.14,
+       "sill": 2.27,
+       "colour": "dark",
+       "depth": 0.04
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012148901.jpg",
+     "pand": "0363100012148901",
+     "address": "Marga Klompélaan",
+     "note": "garden sides of the neighbouring 1990 rows: wide windows below and above, glazed garden door; this row's own garden side not photographed (inferred)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.3
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.3,
+       "w": 2.4,
+       "h": 1.7,
+       "sill": 0.6,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.4,
+       "w": 1.5,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.8,
+       "w": 1.3,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012085248-2016061312.jpg",
+     "pand": "0363100012085248",
+     "address": "J.G. Suurhoffstraat",
+     "note": "row ends: plain buff brick gables (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012085248-2016061312.jpg",
+     "pand": "0363100012085248",
+     "address": "J.G. Suurhoffstraat",
+     "note": "row ends: plain buff brick gables (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Roof: sunlit tile #74695d agrees with the orthophoto (#949494 over the 84 placed houses) in roof-colours.ts.",
+  "Eaves pinned at 5.6 m (roof.eavesPinM): 3DBAG b3_h_dak_min reads ~4.1 m on most houses of the row (5.7 m on a few): the photographed eaves is ~5.6 m.",
+  "Layout measured on the sunlit 2022-04-12 crop of 2123026; colours: the sunlit buff brick clips, so the wall tint sits between that and the white-referenced overcast reading (2114756, 2017). Tile and door from the sunlit crop, plinth white-referenced.",
+  "The vent pipes are drawn as two thin dark chimney stacks over the door bay. Occasional rear dormers, the one or two rooflights on some houses, the canopies some owners added over the ground window and the garden sheds are not modelled.",
+  "The P. Lieftinckstraat rows of the same year (4.5 m frontage, low front eaves with a two-storey box over the window half) are their own design (nw-ee-box-front)."
+ ]
+}

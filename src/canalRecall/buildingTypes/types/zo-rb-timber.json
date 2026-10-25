@@ -1,0 +1,334 @@
+{
+ "id": "zo-rb-timber",
+ "label": "Reigersbos (1983) flat-roofed terraced house: red-brown brick ground storey and party-wall piers, horizontal dark timber boards on the upper storey, white frames and a white fascia over the ground window (Sinderenstraat, Silvoldestraat, Schaikstraat)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 170,
+  "bouwjaar": [
+   1983,
+   1984
+  ],
+  "lengthM": 12.5,
+  "widthM": 5.45,
+  "bouwlagen": 2,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.4,
+  6.3
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.9,
+   5.8
+  ],
+  "depth": [
+   7.0,
+   13.0
+  ]
+ },
+ "alternateMirror": true,
+ "bodyFromRoof": {
+  "tolM": 1.0
+ },
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.05,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.22,
+  "pitchDeg": 0
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "timber",
+ "variants": {
+  "timber": {
+   "label": "dark-brown boards over red-brown brick",
+   "evidence": "sunlit 2142373: boards #8f8675 median (clusters #988f7d/#827968/#5f5646), brick pier #897b65, ground brick #846b5a",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#7a7068"
+    },
+    "frame": "#f0eee6",
+    "glass": "#4b5a6b",
+    "door": "#f0eee6",
+    "accent": "#eeeae0",
+    "rail": "#c9c4b6",
+    "dark": "#4a3f36",
+    "column": "#f0eee6",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#8c8c8a"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#8a6b5b",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012142373.jpg",
+     "pand": "0363100012142373",
+     "address": "Schaikstraat",
+     "note": "sunlit 2018-07 (~67 px/m): flat roof at ~5.8 m; upper storey of horizontal dark-brown timber boards with a 0.85 m red-brown brick pier at each party wall running full height; upper: 2.3 m three-light white window and a narrow top-light strip; ground: red-brown brick, 2.6 m window under a white fascia strip, white door by the next pier"
+    },
+    {
+     "photo": "sunlit crop 0363100012101087.jpg",
+     "pand": "0363100012101087",
+     "address": "Sinderenstraat",
+     "note": "sunlit 2018-07: same"
+    },
+    {
+     "photo": "sunlit crop 0363100012115878.jpg",
+     "pand": "0363100012115878",
+     "address": "Silvoldestraat",
+     "note": "sunlit 2018-07 / 2022-06: same"
+    },
+    {
+     "photo": "survey crop 0363100012075159.jpg",
+     "pand": "0363100012075159",
+     "address": "Sieverdinkpad",
+     "note": "survey 2021-06: same"
+    },
+    {
+     "photo": "survey crop 0363100012150676.jpg",
+     "pand": "0363100012150676",
+     "address": "Sinderenstraat",
+     "note": "survey 2021-06: same, white doors paired"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "stripes": [
+    {
+     "levels": "upper",
+     "pitchM": 0.18,
+     "heightM": 0.025,
+     "offsetM": 0.05,
+     "palette": "dark"
+    }
+   ],
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "upper",
+       "u": 0.175,
+       "w": 0.35,
+       "h": 2.9,
+       "sill": 0.0,
+       "depth": 0.06,
+       "colour": "plinth",
+       "note": "half of the brick pier at the party wall"
+      },
+      {
+       "kind": "panel",
+       "ref": "right",
+       "levels": "upper",
+       "u": 0.175,
+       "w": 0.35,
+       "h": 2.9,
+       "sill": 0.0,
+       "depth": 0.06,
+       "colour": "plinth",
+       "note": "half of the brick pier at the party wall"
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.65,
+       "w": 2.3,
+       "h": 1.3,
+       "sill": 0.75,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "upper",
+       "u": 1.4,
+       "w": 1.4,
+       "h": 0.3,
+       "sill": 1.75,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 2.0,
+       "w": 2.8,
+       "h": 1.75,
+       "sill": 0.55,
+       "lights": 4
+      },
+      {
+       "kind": "door",
+       "ref": "right",
+       "levels": "ground",
+       "u": 0.8,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "canopy",
+       "ref": "left",
+       "levels": "ground",
+       "u": 2.0,
+       "w": 3.1,
+       "h": 0.2,
+       "sill": 2.5,
+       "depth": 0.25,
+       "canopy": "flat",
+       "colour": "column"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012142373.jpg",
+     "pand": "0363100012142373",
+     "address": "Schaikstraat",
+     "note": "garden side NOT photographed: garden door, living-room window and two bedroom windows, inferred; hidden between rear gardens"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.4,
+       "w": 2.2,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.9,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.8,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012142373.jpg",
+     "pand": "0363100012142373",
+     "address": "Schaikstraat",
+     "note": "end wall seen edge-on beside the front; plain brick, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012142373.jpg",
+     "pand": "0363100012142373",
+     "address": "Schaikstraat",
+     "note": "end wall seen edge-on beside the front; plain brick, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "palette.plinth without ground.plinthM draws the whole ground storey in red-brown brick; the upper storey is the timber wall with board joints as stripes.",
+  "The 2.5-2.7 m low annex (3DBAG dak_min) is cut off by bodyFromRoof; only the two-storey body is drawn.",
+  "Mirrored pairs: doors side by side either side of a party-wall pier (Sinderenstraat 2150676); each house carries half a pier at both party walls so every wall shows one pier whatever the handedness.",
+  "Garden side inferred."
+ ],
+ "rowCoherentHeights": true
+}

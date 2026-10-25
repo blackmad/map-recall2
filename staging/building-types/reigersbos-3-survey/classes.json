@@ -1,0 +1,148 @@
+{
+ "terraces": {
+  "11": {
+   "type": "zo-rb-flat-band",
+   "variant": "grey",
+   "via": "photo",
+   "note": "flat roof, white band, grey-beige brick"
+  },
+  "13": {
+   "type": "zo-rb-flat-band",
+   "variant": "grey",
+   "via": "photo",
+   "note": "flat roof, white band, grey-beige brick"
+  },
+  "14": {
+   "type": "zo-rb-flat-band",
+   "variant": "grey",
+   "via": "photo",
+   "note": "flat roof, white band, grey-beige brick"
+  },
+  "17": {
+   "type": "zo-rb-flat-band",
+   "variant": "grey",
+   "via": "photo",
+   "note": "flat roof, white band, grey-beige brick"
+  },
+  "20": {
+   "type": "zo-rb-flat-band",
+   "variant": "grey",
+   "via": "photo",
+   "note": "flat roof, white band, grey-beige brick"
+  },
+  "22": {
+   "type": "zo-rb-flat-band",
+   "variant": "grey",
+   "via": "photo",
+   "note": "flat roof, white band, grey-beige brick"
+  },
+  "26": {
+   "type": "zo-rb-flat-band",
+   "variant": "grey",
+   "via": "photo",
+   "note": "flat roof, white band, grey-beige brick"
+  },
+  "28": {
+   "type": "zo-rb-flat-band",
+   "variant": "grey",
+   "via": "photo",
+   "note": "flat roof, white band, grey-beige brick"
+  },
+  "3": {
+   "type": "zo-rb-flat-band",
+   "variant": "brown",
+   "via": "photo",
+   "note": "flat roof, white band, brown brick"
+  },
+  "4": {
+   "type": "zo-rb-flat-band",
+   "variant": "brown",
+   "via": "photo",
+   "note": "flat roof, white band, brown brick"
+  },
+  "9": {
+   "type": "zo-rb-flat-band",
+   "variant": "brown",
+   "via": "photo",
+   "note": "flat roof, white band, brown brick"
+  },
+  "19": {
+   "type": "zo-rb-flat-band",
+   "variant": "brown",
+   "via": "photo",
+   "note": "flat roof, white band, brown brick"
+  },
+  "30": {
+   "type": "zo-rb-two-tone",
+   "variant": "tefelen",
+   "via": "photo",
+   "note": "pale ground/red-brown upper, small + two-light upper windows",
+   "repMirror": true
+  },
+  "34": {
+   "type": "zo-rb-two-tone",
+   "variant": "tefelen",
+   "via": "photo",
+   "note": "pale ground/red-brown upper, small + two-light upper windows",
+   "repMirror": true
+  },
+  "35": {
+   "type": "zo-rb-two-tone",
+   "variant": "tefelen",
+   "via": "photo",
+   "note": "pale ground/red-brown upper, small + two-light upper windows",
+   "repMirror": true
+  },
+  "36": {
+   "type": "zo-rb-two-tone",
+   "variant": "tefelen",
+   "via": "photo",
+   "note": "pale ground/red-brown upper, small + two-light upper windows",
+   "repMirror": true
+  },
+  "37": {
+   "type": "zo-rb-two-tone",
+   "variant": "tefelen",
+   "via": "photo",
+   "note": "pale ground/red-brown upper, small + two-light upper windows",
+   "repMirror": true
+  },
+  "39": {
+   "type": "zo-rb-two-tone",
+   "variant": "tefelen",
+   "via": "photo",
+   "note": "pale ground/red-brown upper, small + two-light upper windows",
+   "repMirror": true
+  },
+  "12": {
+   "type": "zo-rb-two-tone",
+   "variant": "tefelen",
+   "via": "signature",
+   "note": "5.1 x 9.0 m 1983 pitched, Tefelen rows; photo occluded or a side wall"
+  },
+  "16": {
+   "type": "zo-rb-two-tone",
+   "variant": "tefelen",
+   "via": "signature",
+   "note": "5.1 x 9.0 m 1983 pitched, Tefelen rows; photo occluded or a side wall"
+  },
+  "24": {
+   "type": "zo-rb-two-tone",
+   "variant": "tefelen",
+   "via": "signature",
+   "note": "5.1 x 9.0 m 1983 pitched, Tefelen rows; photo occluded or a side wall"
+  },
+  "29": {
+   "type": "zo-rb-two-tone",
+   "variant": "tefelen",
+   "via": "signature",
+   "note": "5.1 x 9.0 m 1983 pitched, Tefelen rows; photo occluded or a side wall"
+  },
+  "33": {
+   "type": "zo-rb-two-tone",
+   "variant": "tefelen",
+   "via": "signature",
+   "note": "5.1 x 9.0 m 1983 pitched, Tefelen rows; photo occluded or a side wall"
+  }
+ }
+}

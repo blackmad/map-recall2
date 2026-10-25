@@ -1,0 +1,330 @@
+{
+ "id": "zo-rb-flat-band",
+ "label": "Reigersbos (1983-84) flat-roofed terraced house in mirrored pairs: grey-beige or brown brick, white concrete band over the ground storey, doors paired with a small square window, one wide three-light upper window under a white lintel (Tolkamerstraat, Trichtstraat, Twellostraat, Tongerenstraat)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 201,
+  "bouwjaar": [
+   1983,
+   1984
+  ],
+  "lengthM": 9.75,
+  "widthM": 4.85,
+  "bouwlagen": 2,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.4,
+  6.3
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.6,
+   5.1
+  ],
+  "depth": [
+   8.2,
+   10.3
+  ]
+ },
+ "alternateMirror": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.05,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.2,
+  "pitchDeg": 0
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "grey",
+ "variants": {
+  "grey": {
+   "label": "grey-beige brick",
+   "evidence": "sunlit 2112716 left pair #837c6e raw, #b6a48d white-referenced to the concrete band; 2101237, 2154972",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#a39d8f",
+     "measured": true
+    },
+    "frame": "#ece6d2",
+    "glass": "#4b5a6b",
+    "door": "#e8dfb8",
+    "accent": "#eeeae0",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#e6e4dc",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#7a7a78"
+    }
+   }
+  },
+  "brown": {
+   "label": "brown brick",
+   "evidence": "sunlit 2112716 right pair #68605d raw, #8e7c75 white-referenced; 2063584, 2123173",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#8a7e78",
+     "measured": true
+    },
+    "frame": "#ece6d2",
+    "glass": "#4b5a6b",
+    "door": "#e8dfb8",
+    "accent": "#eeeae0",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#e6e4dc",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#7a7a78"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012112716.jpg",
+     "pand": "0363100012112716",
+     "address": "Tolkamerstraat",
+     "note": "sunlit 2018-07 (~53 px/m): mirrored pairs, doors side by side with a small square window between; 1.6 m two-light ground window, 0.95 m door with transom; white concrete band at ~2.6-2.8 m over the ground storey; one three-light 1.85 x 1.1 m upper window over the door under a white lintel strip; flat roof at ~5.8 m; grey-beige brick, the next pair brown"
+    },
+    {
+     "photo": "sunlit crop 0363100012101237.jpg",
+     "pand": "0363100012101237",
+     "address": "Trichtstraat",
+     "note": "sunlit 2018-07: same layout, grey-beige brick, cream frames"
+    },
+    {
+     "photo": "sunlit crop 0363100012123173.jpg",
+     "pand": "0363100012123173",
+     "address": "Twellostraat",
+     "note": "sunlit 2018-07 and survey 2022-06: same, brown-grey brick; several houses carry a later timber roof box (not modelled)"
+    },
+    {
+     "photo": "sunlit crop 0363100012154972.jpg",
+     "pand": "0363100012154972",
+     "address": "Trichtstraat",
+     "note": "sunlit 2020-07: same layout, white arched porch hoods on a few houses (owner additions, not modelled)"
+    },
+    {
+     "photo": "sunlit crop 0363100012063584.jpg",
+     "pand": "0363100012063584",
+     "address": "Tolkamerstraat",
+     "note": "sunlit 2019-06 / 2020-07 and survey 2025-09: 51-house terrace, same layout, brown brick"
+    },
+    {
+     "photo": "survey crop 0363100012147405.jpg",
+     "pand": "0363100012147405",
+     "address": "Tongerenstraat",
+     "note": "survey 2019-06: same layout; buff and pink brick alternate per house here"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bands": [
+    {
+     "floor": 1,
+     "below": 0.3,
+     "above": -0.1,
+     "palette": "column"
+    }
+   ],
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.46,
+       "w": 1.6,
+       "h": 1.55,
+       "sill": 0.95,
+       "lights": 2
+      },
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.3,
+       "w": 0.95,
+       "h": 2.3
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 4.5,
+       "w": 0.42,
+       "h": 0.42,
+       "sill": 1.95,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.4,
+       "w": 1.85,
+       "h": 1.1,
+       "sill": 1.1,
+       "lights": 3
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.4,
+       "w": 2.6,
+       "h": 0.12,
+       "sill": 2.25,
+       "depth": 0.05,
+       "colour": "column"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012112716.jpg",
+     "pand": "0363100012112716",
+     "address": "Tolkamerstraat",
+     "note": "garden side NOT photographed: garden door, living-room window and two bedroom windows, inferred; hidden between rear gardens"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.4,
+       "w": 2.2,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.9,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.8,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012112716.jpg",
+     "pand": "0363100012112716",
+     "address": "Tolkamerstraat",
+     "note": "end wall seen edge-on beside the front; plain brick, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012112716.jpg",
+     "pand": "0363100012112716",
+     "address": "Tolkamerstraat",
+     "note": "end wall seen edge-on beside the front; plain brick, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Wall tints are the sunlit medians lifted part-way to the white-referenced values (the concrete band is grey, not white paint, so full white-referencing over-brightens).",
+  "Later roof boxes and porch hoods are owner additions and are not modelled; houses whose 3DBAG eaves read a roof box fall outside eavesRangeM and are held.",
+  "Garden side inferred.",
+  "3DBAG: dak_min 5.7-5.8, p70 5.8, max 5.9 over the photographed terraces."
+ ],
+ "rowCoherentHeights": true
+}

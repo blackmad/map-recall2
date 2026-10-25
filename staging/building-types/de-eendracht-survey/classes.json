@@ -1,0 +1,184 @@
+{
+ "terraces": {
+  "2": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": false
+  },
+  "4": {
+   "type": "nw-ee-buff-row",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "5": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": false
+  },
+  "8": {
+   "type": "nw-ee-buff-row",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": false
+  },
+  "11": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": false
+  },
+  "12": {
+   "type": "nw-ee-buff-row",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "13": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": true,
+   "flip": true,
+   "note": "front from the re-shot panorama (survey saw the garden side)"
+  },
+  "14": {
+   "type": "nw-ee-buff-row",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": false
+  },
+  "17": {
+   "type": "nw-ee-buff-row",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": false
+  },
+  "18": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": false
+  },
+  "23": {
+   "type": "nw-ee-buff-row",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "24": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": false
+  },
+  "26": {
+   "type": "nw-ee-buff-row",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "27": {
+   "type": "nw-ee-buff-row",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": false
+  },
+  "31": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": true,
+   "flip": true,
+   "note": "front from the re-shot panorama (survey saw the garden side)"
+  },
+  "33": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": true
+  },
+  "34": {
+   "type": "nw-ee-buff-row",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "37": {
+   "type": "nw-ee-box-front",
+   "variant": "box",
+   "via": "photo",
+   "repMirror": false
+  },
+  "38": {
+   "type": "nw-ee-buff-row",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": false
+  },
+  "40": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": true
+  },
+  "41": {
+   "type": "nw-ee-box-front",
+   "variant": "box",
+   "via": "photo",
+   "repMirror": true
+  },
+  "43": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": false
+  },
+  "44": {
+   "type": "nw-ee-buff-row",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "46": {
+   "type": "nw-ee-box-front",
+   "variant": "box",
+   "via": "photo",
+   "repMirror": true
+  },
+  "47": {
+   "type": "nw-ee-buff-row",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": false
+  },
+  "51": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": true,
+   "flip": true,
+   "note": "front from the re-shot panorama (survey saw the garden side)"
+  },
+  "58": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": false
+  },
+  "66": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": false
+  },
+  "76": {
+   "type": "nw-ee-band-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": true
+  }
+ }
+}

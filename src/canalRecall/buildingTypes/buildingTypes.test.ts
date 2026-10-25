@@ -4,7 +4,7 @@ import path from 'node:path';
 import test from 'node:test';
 import {bearingDeg, freeSides, lngLatToLocal, localToLngLat, minimumRotatedRectangle, rectIoU, swapAxes, type Pt} from './geometry.ts';
 import {frontSide, frontTowardBearing, frontYaw, type Street} from './orientation.ts';
-import {asymSlope, generate, layoutBays, mirrorBays} from './generate.ts';
+import {asymSlope, generate, layoutBays, mirrorBays, type FacadeCount} from './generate.ts';
 import {bakeWorld} from './glb.ts';
 import {FACADE_IDS, sizeClass, validateSpec, type TypeSpec} from './spec.ts';
 import {bodyRectFromRoof, fallSideFromItem, paramsFromFacts, ridgeAlongOf, roofFactsFromPlanes, slopeEavesFromItem, type CityJsonItem} from './facts.ts';
@@ -652,6 +652,19 @@ test('dormers: absent -> byte-identical; a half dormer sits on the front slope f
   assert.ok(Math.max(...right.map(q => q[1])) < 7.6, 'dormer roof below the ridge');
 });
 
+test('dormer marginEndM: absent = marginM / 2 (byte-identical); set, the glazing stops that far short of the flush party-wall end only', () => {
+  const C = load('nd-to-cottage.json'), p = {lengthM: 5.3, widthM: 8.9, eavesM: 2.75, ridgeM: 7.6, variant: 'red-door'};
+  const d = C.roof.dormers![0], m = d.marginM ?? 0.12, glass = `glass|${C.variants['red-door'].palette.glass}`;
+  const at = (end?: number) => generate({...C, roof: {...C.roof, dormers: [{...d, marginEndM: end}]}}, p).mesh;
+  const a = generate(C, p).mesh, b = at(m / 2);
+  for (const [key, bucket] of a.buckets) assert.deepEqual(b.buckets.get(key)!.positions, bucket.positions, key);
+  const hi = (mesh: ReturnType<typeof at>) => xs(mesh, glass).filter(q => q[1] > 3);
+  const base = hi(a), pier = hi(at(0.5));
+  assert.ok(Math.abs(Math.max(...base.map(q => q[0])) - (5.3 / 2 - m / 2 - 0.06)) < 1e-9, 'default: glazing runs on to the party wall');
+  assert.ok(Math.abs(Math.max(...pier.map(q => q[0])) - (5.3 / 2 - 0.5 - 0.06)) < 1e-9, 'marginEndM: a pier at the party wall');
+  assert.ok(Math.abs(Math.min(...pier.map(q => q[0])) - Math.min(...base.map(q => q[0]))) < 1e-9, 'the inner end keeps marginM');
+});
+
 test('pair gable: one plane from the free-side eaves to the ridge on the shared wall, mirrored by handedness; gable triangles boarded in the gable colour, side walls stay brick', () => {
   const G = load('nd-bz-green-gable.json'), p = {lengthM: 4.5, widthM: 8.4, eavesM: 6.3, ridgeM: 9.6, variant: 'green', roofForm: 'gable' as const, ridge: 'long' as const};
   const roofKey = `roofTile|${(G.variants.green.palette.roof as {tint: string}).tint}`;
@@ -712,7 +725,7 @@ test('round-3 designs (#74): validate, >= 4 distinct photo pands on the front, c
     const p = r3Params(spec), chim = Math.max(0, ...(spec.roof.chimneys ?? []).map(c => c.h + (c.capM ?? 0)));
     for (const variant of Object.keys(spec.variants)) for (const mirror of [false, true]) {
       const {report, mesh} = generate(spec, {...p, variant, mirror});
-      assert.deepEqual(report.facades.front, spec.facades.front.counted, `${spec.id}/${variant}/front`);
+      assert.deepEqual(report.facades.front, {...spec.facades.front.counted, ...R5_VARIANT_COUNTS[`${spec.id}/${variant}`]}, `${spec.id}/${variant}/front`);
       assert.ok(mesh.triangles <= 600, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
       const mid = generate(spec, {...p, variant, mirror, freeSides: {left: false, right: false}});
       assert.equal(mid.report.facades.left.bays + mid.report.facades.right.bays, 0, 'party walls have no bays');
@@ -844,7 +857,7 @@ test('round-4 designs (#75): validate, >= 4 distinct photo pands on the front, c
     const p = r3Params(spec), chim = Math.max(0, ...(spec.roof.chimneys ?? []).map(c => c.h + (c.capM ?? 0)));
     for (const variant of Object.keys(spec.variants)) for (const mirror of [false, true]) {
       const {report, mesh} = generate(spec, {...p, variant, mirror});
-      assert.deepEqual(report.facades.front, spec.facades.front.counted, `${spec.id}/${variant}/front`);
+      assert.deepEqual(report.facades.front, {...spec.facades.front.counted, ...R5_VARIANT_COUNTS[`${spec.id}/${variant}`]}, `${spec.id}/${variant}/front`);
       assert.ok(mesh.triangles <= 600, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
       const mid = generate(spec, {...p, variant, mirror, freeSides: {left: false, right: false}});
       assert.equal(mid.report.facades.left.bays + mid.report.facades.right.bays, 0, 'party walls have no bays');
@@ -959,4 +972,86 @@ test('mottle plumbing (#77): absent -> the same bucket ids, GLB material name an
   const plain: TypeSpec = {...KZ, variants: {...KZ.variants, blue: {...KZ.variants.blue, palette: {...KZ.variants.blue.palette, wall: {slot: 'brick', tint: KZ.variants.blue.palette.wall.tint, measured: true}}}}};
   const a = generate(KZ, params).mesh, b = generate(plain, params).mesh;
   assert.deepEqual([...a.buckets.values()].map(x => x.positions), [...b.buckets.values()].map(x => x.positions));
+});
+
+// --- #77 round 5: Tuindorp Nieuwendam-Oost (NN02) designs, hipped row ends ----------------------------------------------------
+
+const NN_TYPES = ['nn-band', 'nn-row', 'nn-row-small', 'nn-board', 'nn-cottage'].map(id => load(`${id}.json`));
+// upper openings per variant where a variant changes them (the JSON counts the default variant)
+const NN_UPPER: Record<string, number> = {'nn-band/panels': 3};
+
+test('Nieuwendam-Oost designs (#77): validate, >= 4 distinct photo pands on the front, counted openings match for every variant and handedness, <= 400 triangles, party walls blank, ridge reached, within the frontage', () => {
+  for (const spec of NN_TYPES) {
+    assert.deepEqual(validateSpec(spec), [], spec.id);
+    assert.equal(spec.frontOnShort, true);
+    assert.equal(spec.rowCoherentHeights, true);
+    assert.ok(new Set(spec.facades.front.evidence.map(e => e.pand)).size >= 4, `${spec.id}: evidence`);
+    const eaves = spec.roof.eavesPinM!, ridge = eaves + 3.6;
+    for (const variant of Object.keys(spec.variants)) for (const mirror of [false, true]) {
+      const base = {lengthM: 5.2, widthM: 6.6, eavesM: eaves, ridgeM: ridge, variant, mirror};
+      const {report, mesh} = generate(spec, base);
+      for (const id of FACADE_IDS) {
+        const want = {...spec.facades[id].counted, ...(id === 'front' && NN_UPPER[`${spec.id}/${variant}`] !== undefined ? {openingsPerUpperStorey: NN_UPPER[`${spec.id}/${variant}`]} : {})};
+        assert.deepEqual(report.facades[id], want, `${spec.id}/${variant}/${id}`);
+      }
+      assert.ok(mesh.triangles <= 400, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
+      const mid = generate(spec, {...base, freeSides: {left: false, right: false}});
+      assert.equal(mid.report.facades.left.bays + mid.report.facades.right.bays, 0, 'party walls have no bays');
+      const b = mesh.bounds();
+      assert.ok(b.min[1] >= -1e-9 && Math.abs(b.max[1] - ridge) < 1e-6, `${spec.id}: ridge reached, nothing below ground`);
+      assert.ok(b.max[0] <= 5.2 / 2 + spec.roof.vergeOverhangM + 0.06 && b.min[0] >= -5.2 / 2 - spec.roof.vergeOverhangM - 0.06, `${spec.id}/${variant}/${mirror}: within its frontage`);
+    }
+  }
+});
+
+test('hipFreeEnds (#77): absent -> the 3DBAG hip as before; set, a mid-row house is a gable, a row end is hipped on its free side only, a short-ridge hip is a front gable', () => {
+  const S = load('nn-band.json'), on = S, off: TypeSpec = {...S, roof: {...S.roof, hipFreeEnds: undefined}};
+  const p = {lengthM: 5.3, widthM: 6.5, eavesM: 5.3, ridgeM: 9.0, variant: 'band', roofForm: 'hip' as const, ridge: 'long' as const};
+  const same = (a: ReturnType<typeof generate>['mesh'], b: ReturnType<typeof generate>['mesh']) => {
+    assert.equal(a.buckets.size, b.buckets.size);
+    for (const [key, bucket] of a.buckets) assert.deepEqual(b.buckets.get(key)!.positions, bucket.positions, key);
+  };
+  const mid = {left: false, right: false}, endL = {left: true, right: false};
+  // absent: the flag changes nothing, freeSides or not
+  same(generate(off, {...p, freeSides: mid}).mesh, generate({...off, roof: {...off.roof}}, {...p, freeSides: mid}).mesh);
+  assert.equal(generate(off, {...p, freeSides: mid}).report.roofForm, 'hip');
+  // set, no freeSides: unchanged (only build.ts' terraced params carry them)
+  same(generate(on, p).mesh, generate(off, p).mesh);
+  // set, mid-row: the gable mesh
+  const midOn = generate(on, {...p, freeSides: mid});
+  same(midOn.mesh, generate(off, {...p, roofForm: 'gable', freeSides: mid}).mesh);
+  assert.equal(midOn.report.roofForm, 'gable');
+  assert.equal(midOn.report.sides, 'mid');
+  // set, left end: the roof reaches past the left wall by the eaves overhang (hip) and the ridge reaches the right verge only
+  const endMesh = generate(on, {...p, freeSides: endL}).mesh, roofKey = [...endMesh.buckets.keys()].find(k => k.startsWith('roofTile|'))!;
+  const roof = xs(endMesh, roofKey), top = roof.filter(q => Math.abs(q[1] - p.ridgeM) < 1e-6);
+  assert.ok(Math.abs(Math.min(...roof.map(q => q[0])) - (-p.lengthM / 2 - S.roof.eavesOverhangM)) < 1e-9, 'hip end overhangs by the eaves overhang');
+  assert.ok(Math.abs(Math.max(...top.map(q => q[0])) - (p.lengthM / 2 + S.roof.vergeOverhangM)) < 1e-9, 'ridge runs out to the party-wall verge');
+  assert.ok(Math.min(...top.map(q => q[0])) > -p.lengthM / 2 + 0.5, 'ridge stops short of the hipped end');
+  assert.equal(generate(on, {...p, freeSides: endL}).report.sides, 'endL');
+  // a short-ridge hip (the row end's front-gable house) is drawn as the short-ridge gable
+  same(generate(on, {...p, ridge: 'short', freeSides: endL}).mesh, generate(off, {...p, ridge: 'short', roofForm: 'gable', freeSides: endL}).mesh);
+});
+
+// Variants whose photo count differs from the spec's single `counted`: nn-band panels (terraces 9, 20, 25, 33...) has the white band broken
+// into two panels with 1 + 2 upper windows instead of the 5-window band.
+const R5_VARIANT_COUNTS: Record<string, Partial<FacadeCount>> = {'nn-band/panels': {openingsPerUpperStorey: 3}};
+const R5_TYPES = ['nn-band', 'nn-row', 'nn-row-small', 'nn-board', 'nn-cottage', 'zo-rb-flat-band', 'zo-rb-two-tone', 'zo-rb-pair-door', 'zo-rb-timber', 'nw-ee-buff-row', 'nw-ee-band-row', 'nw-ee-box-front'].map(id => load(`${id}.json`));
+test('round-5 designs (#77): validate, >= 3 distinct photo pands on the front (>= 4 but nw-ee-box-front), counted openings match for every variant and handedness, <= 600 triangles, party walls blank, nothing below ground, within the frontage', () => {
+  for (const spec of R5_TYPES) {
+    assert.deepEqual(validateSpec(spec), [], spec.id);
+    assert.ok(new Set(spec.facades.front.evidence.map(e => e.pand)).size >= (spec.id === 'nw-ee-box-front' ? 3 : 4), `${spec.id}: evidence`);
+    const p = r3Params(spec);
+    for (const variant of Object.keys(spec.variants)) for (const mirror of [false, true]) {
+      const {report, mesh} = generate(spec, {...p, variant, mirror});
+      assert.deepEqual(report.facades.front, {...spec.facades.front.counted, ...R5_VARIANT_COUNTS[`${spec.id}/${variant}`]}, `${spec.id}/${variant}/front`);
+      assert.ok(mesh.triangles <= 600, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
+      const mid = generate(spec, {...p, variant, mirror, freeSides: {left: false, right: false}});
+      assert.equal(mid.report.facades.left.bays + mid.report.facades.right.bays, 0, 'party walls have no bays');
+      const b = mesh.bounds();
+      assert.ok(b.min[1] >= -1e-9, `${spec.id}: nothing below ground`);
+      const ov = spec.roof.vergeOverhangM + 0.06;
+      assert.ok(b.max[0] <= p.lengthM / 2 + ov && b.min[0] >= -p.lengthM / 2 - ov, `${spec.id}/${variant}/${mirror}: within its frontage`);
+    }
+  }
 });

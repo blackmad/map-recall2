@@ -1,0 +1,40 @@
+[
+ {
+  "area": "nw-ee-01",
+  "anchor": {
+   "lng": 4.78972,
+   "lat": 52.37912
+  },
+  "pands": 102,
+  "missing": 0,
+  "per": {
+   "nw-ee-band-row/band/photo": 60,
+   "nw-ee-buff-row/buff/photo": 42
+  }
+ },
+ {
+  "area": "nw-ee-02",
+  "anchor": {
+   "lng": 4.78957,
+   "lat": 52.38104
+  },
+  "pands": 122,
+  "missing": 0,
+  "per": {
+   "nw-ee-buff-row/buff/photo": 42,
+   "nw-ee-band-row/band/photo": 80
+  }
+ },
+ {
+  "area": "nw-ee-03",
+  "anchor": {
+   "lng": 4.79301,
+   "lat": 52.38081
+  },
+  "pands": 30,
+  "missing": 0,
+  "per": {
+   "nw-ee-box-front/box/photo": 30
+  }
+ }
+]

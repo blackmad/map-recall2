@@ -1,0 +1,353 @@
+{
+ "id": "nw-ee-box-front",
+ "label": "De Eendracht (1990, P. Lieftinckstraat) narrow terraced house: low front eaves with a teal fascia over a mottled grey-beige brick ground storey and dark navy plinth, teal door beside a grey panel, wide window under a white render panel, and a white two-storey box (wall dormer) rising from the eaves over the window half, joined with the mirrored neighbour's",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 30,
+  "bouwjaar": [
+   1990,
+   1990
+  ],
+  "lengthM": 4.49,
+  "widthM": 10.94,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  3.2,
+  4.2
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.3,
+   4.95
+  ],
+  "depth": [
+   10.5,
+   11.4
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.2,
+  "vergeOverhangM": 0.1,
+  "thicknessM": 0.15,
+  "pitchDeg": 38,
+  "eavesPinM": 3.6,
+  "dormers": [
+   {
+    "ref": "right",
+    "u": 1.09,
+    "w": 2.18,
+    "h": 2.0,
+    "setBackM": 0,
+    "lights": 2,
+    "marginM": 0.14,
+    "marginEndM": 0.54,
+    "cheek": "column",
+    "frame": "frame",
+    "overhangM": 0.06,
+    "note": "white rendered box rising from the eaves over the window half, flush with the wall, joined at the party wall with the mirrored neighbour's box; 2-light window 2.6-4.1 m from the door side, sill ~3.8 m, then a brick pier to the party wall (2123280, 2082250, 2107835)"
+   }
+  ],
+  "chimneys": [
+   {
+    "ref": "left",
+    "u": 1.3,
+    "w": 0.13,
+    "d": 0.13,
+    "h": 0.45,
+    "offsetM": 0.45,
+    "palette": "dark",
+    "note": "black vent pipes on the front slope near the ridge, over the door half"
+   },
+   {
+    "ref": "left",
+    "u": 1.6,
+    "w": 0.13,
+    "d": 0.13,
+    "h": 0.45,
+    "offsetM": 0.45,
+    "palette": "dark"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid",
+  "plinthM": 0.65
+ },
+ "alternateMirror": true,
+ "defaultVariant": "box",
+ "variants": {
+  "box": {
+   "label": "grey-beige mottled brick, white box, teal door and fascia",
+   "evidence": "P. Lieftinckstraat #37 #41 #46 (2123280, 2082250, 2107835)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#a3988a",
+     "measured": true,
+     "mottle": {
+      "tones": [
+       {
+        "hex": "#ad9f8c",
+        "share": 0.4
+       },
+       {
+        "hex": "#978b7c",
+        "share": 0.32
+       },
+       {
+        "hex": "#a19c95",
+        "share": 0.28
+       }
+      ],
+      "evidence": "#77: brick-mottle.ts k=3 over the ground-storey brick of survey crops 2123280 (beside the door) and 2082250 (two boxes), each white-referenced to the white render of its own box (x1.5-1.9). Beige, brown and grey bricks; ratios 0.89-1.13. Measured mean #a49582; chroma reduced by about a third around each tone (the first contact sheet read orange against the grey-beige photo), mean #a3988a = the tint."
+     }
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#45434f",
+     "measured": true
+    },
+    "gable": {
+     "slot": "brick",
+     "tint": "#a3988a",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#356877",
+    "accent": "#f0eee6",
+    "rail": "#a2abb2",
+    "dark": "#2f3438",
+    "column": "#ecebe4",
+    "joint": "#8f8474",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#696463",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012123280.jpg",
+     "pand": "0363100012123280",
+     "address": "P. Lieftinckstraat",
+     "note": "2022-04 north front in shade, 77 px/m on the 4.64 m house between the drainpipe and the box pier (u from the door side): grey panel 0.39-0.97 m and teal door 1.1-2.0 m (h 2.2) in a white surround; 2-light window 2.6-4.35 m, sill 0.9, head 2.53 under a dark shutter box; white render panel the window's width from 2.66 m to the eaves; teal fascia at ~3.6 m over the door half; white box from the eaves to ~5.6 m over the window half with its 2-light window 2.6-4.1 m and a brick pier to the party wall; dark navy brick plinth to ~0.65 m. White-referenced to the white render panel (#818685): plinth #232228 -> #45434f, door #1d3945 -> #356877, grey panel #575e65 -> #a2abb2, fascia #072025"
+    },
+    {
+     "photo": "survey crop 0363100012082250.jpg",
+     "pand": "0363100012082250",
+     "address": "P. Lieftinckstraat",
+     "note": "2021-04 sunlit sky, front in shade: same, the boxes of two houses join over their adjacent window halves; doors paired between them; two vent pipes per house"
+    },
+    {
+     "photo": "survey crop 0363100012107835.jpg",
+     "pand": "0363100012107835",
+     "address": "P. Lieftinckstraat",
+     "note": "2021-04: same, teal doors with grey panels, white box"
+    },
+    {
+     "photo": "survey crop 0363100012123280.jpg",
+     "pand": "0363100012123272",
+     "address": "P. Lieftinckstraat",
+     "note": "the mirrored neighbour in the same crop (left half): same layout, door at the other party wall"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.68,
+       "w": 0.58,
+       "h": 2.2,
+       "colour": "rail",
+       "depth": 0.02,
+       "note": "grey panel beside the door"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.55,
+       "w": 0.9,
+       "h": 2.2,
+       "note": "teal door"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.2,
+       "w": 1.7,
+       "h": 0.12,
+       "sill": 2.22,
+       "colour": "accent",
+       "depth": 0.03,
+       "note": "white head of the door surround"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.17,
+       "w": 1.75,
+       "h": 1.63,
+       "sill": 0.9,
+       "lights": 2,
+       "frameM": 0.07,
+       "note": "2-light window (2123280: 2.6-4.35 m from the door side)"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.17,
+       "w": 1.75,
+       "h": 0.13,
+       "sill": 2.53,
+       "colour": "dark",
+       "depth": 0.04,
+       "note": "shutter box"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.17,
+       "w": 1.75,
+       "h": 0.94,
+       "sill": 2.66,
+       "colour": "column",
+       "depth": 0.02,
+       "note": "white render panel up to the box"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012119133.jpg",
+     "pand": "0363100012119133",
+     "address": "P. Lieftinckstraat",
+     "note": "2021-04 garden side of #53 over the fences: low eaves, garden door and window below, white dormers above (sizes vary; not modelled)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.9,
+       "w": 0.9,
+       "h": 2.3
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.9,
+       "w": 2.2,
+       "h": 1.6,
+       "sill": 0.7,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012107835.jpg",
+     "pand": "0363100012107835",
+     "address": "P. Lieftinckstraat",
+     "note": "row ends: brick gables (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012107835.jpg",
+     "pand": "0363100012107835",
+     "address": "P. Lieftinckstraat",
+     "note": "row ends: brick gables (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Roof: roof-colours.ts reads the orthophoto #8c8c84 over the 30 placed houses; the shaded street view reads dark grey-brown; drawn #696463 between the two.",
+  "Two storeys (the kit minimum; every front element stands on the ground storey line, so the 1.8 m storey split does not show) up to the low front eaves (pinned at the photographed 3.6 m: 3DBAG's eaves reads the box tops on some houses); the upper rooms live under the roof and in the white box, drawn as a flush wall dormer (setBackM 0) whose window stops 0.54 m short of the party wall (DormerSpec.marginEndM, #77) so the paired boxes show two windows with a pier between them, as photographed. The pier is drawn in the box's white, not brick.",
+  "The teal fascia board over the door half is not expressible (the eaves edge is drawn in the roof tile). Rear dormers and the brick front-garden walls are not modelled.",
+  "North fronts photographed in shade: colours white-referenced to the white render of the same crop. Terrace #53 was photographed from the garden side only and is not staged."
+ ]
+}

@@ -1,0 +1,29 @@
+[
+ {
+  "area": "zo-rb3-01",
+  "anchor": {
+   "lng": 4.96755,
+   "lat": 52.29343
+  },
+  "pands": 210,
+  "missing": 0,
+  "per": {
+   "zo-rb-flat-band/brown/photo": 90,
+   "zo-rb-flat-band/grey/photo": 111,
+   "zo-rb-two-tone/tefelen/signature": 9
+  }
+ },
+ {
+  "area": "zo-rb3-02",
+  "anchor": {
+   "lng": 4.97136,
+   "lat": 52.29427
+  },
+  "pands": 77,
+  "missing": 0,
+  "per": {
+   "zo-rb-two-tone/tefelen/signature": 30,
+   "zo-rb-two-tone/tefelen/photo": 47
+  }
+ }
+]

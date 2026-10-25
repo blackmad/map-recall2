@@ -1,0 +1,95 @@
+[
+ {
+  "area": "nd-nn-01",
+  "anchor": {
+   "lng": 4.9479,
+   "lat": 52.38769
+  },
+  "pands": 53,
+  "missing": 0,
+  "per": {
+   "nn-band/panels/photo": 13,
+   "nn-band/band/photo": 26,
+   "nn-band/panels/signature": 5,
+   "nn-band/band/signature": 4,
+   "nn-board/green/photo": 5
+  }
+ },
+ {
+  "area": "nd-nn-02",
+  "anchor": {
+   "lng": 4.94204,
+   "lat": 52.39125
+  },
+  "pands": 12,
+  "missing": 0,
+  "per": {
+   "nn-row-small/small/photo": 8,
+   "nn-row-small/small-grey/photo": 4
+  }
+ },
+ {
+  "area": "nd-nn-03",
+  "anchor": {
+   "lng": 4.94745,
+   "lat": 52.39011
+  },
+  "pands": 490,
+  "missing": 0,
+  "per": {
+   "nn-band/panels/photo": 46,
+   "nn-board/green/photo": 12,
+   "nn-band/band/photo": 28,
+   "nn-cottage/green-door/photo": 196,
+   "nn-board/green-toilet/photo": 32,
+   "nn-band/panels/signature": 10,
+   "nn-row/wide/photo": 92,
+   "nn-row/wide-orange/photo": 47,
+   "nn-row-small/small/photo": 12,
+   "nn-row-small/small-grey/photo": 8,
+   "nn-row-small/small-grey/signature": 7
+  }
+ },
+ {
+  "area": "nd-nn-04",
+  "anchor": {
+   "lng": 4.95046,
+   "lat": 52.39091
+  },
+  "pands": 32,
+  "missing": 0,
+  "per": {
+   "nn-cottage/green-door/photo": 16,
+   "nn-row/wide/signature": 4,
+   "nn-row/wide/photo": 12
+  }
+ },
+ {
+  "area": "nd-nn-05",
+  "anchor": {
+   "lng": 4.94306,
+   "lat": 52.39259
+  },
+  "pands": 13,
+  "missing": 0,
+  "per": {
+   "nn-row-small/small/photo": 9,
+   "nn-row-small/small-grey/photo": 4
+  }
+ },
+ {
+  "area": "nd-nn-06",
+  "anchor": {
+   "lng": 4.9449,
+   "lat": 52.39247
+  },
+  "pands": 102,
+  "missing": 0,
+  "per": {
+   "nn-row-small/small/photo": 30,
+   "nn-row/wide/photo": 17,
+   "nn-row-small/small-grey/photo": 43,
+   "nn-row-small/small-grey/signature": 12
+  }
+ }
+]

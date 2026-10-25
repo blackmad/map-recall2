@@ -1,0 +1,307 @@
+{
+ "id": "nn-cottage",
+ "label": "Tuindorp Nieuwendam (1926-27) garden-village cottage: brick ground storey under a white eaves cornice at ~3.1 m, steep orange pantile roof with a long white flat-roofed dormer per house, dark green door between low brick piers, small square window and a white ribbon window (Beemsterstraat, Oudorperstraat, Wognumerstraat, Kwadijkerstraat, Oterleekstraat, Avenhornstraat, Wijdenesserstraat)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 216,
+  "bouwjaar": [
+   1926,
+   1927
+  ],
+  "lengthM": 7.4,
+  "widthM": 4.5,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  2.5,
+  4.4
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.0,
+   5.4
+  ],
+  "depth": [
+   6.6,
+   8.2
+  ]
+ },
+ "alternateMirror": true,
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.35,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.12,
+  "pitchDeg": 58,
+  "eavesPinM": 3.15,
+  "dormers": [
+   {
+    "ref": "centre",
+    "u": 0.1,
+    "w": 3.6,
+    "h": 1.0,
+    "setBackM": 0.9,
+    "lights": 8,
+    "cheek": "column",
+    "frame": "frame",
+    "apronM": 0.35,
+    "note": "one long white dormer per house, 8 lights in two groups (2136424, 2114754, 2145864, 2122860)"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "green-door",
+ "variants": {
+  "green-door": {
+   "label": "dark green doors, orange-red pantiles",
+   "evidence": "survey terraces 31, 32, 41, 48, 54, 59, 65, 72, 81, 85, 94, 95, 97, 99, 102, 104, 107, 110, 120, 122, 129, 139, 140, 144, 148, 153, 158, 161, 162, 164, 179, 188 (photos)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#74605a"
+    },
+    "frame": "#f2f0e8",
+    "glass": "#4b5a6b",
+    "door": "#2e443b",
+    "accent": "#efede6",
+    "rail": "#8d9092",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#b36b52",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit 0363100012136424-2019070109.jpg",
+     "pand": "0363100012136424",
+     "address": "Beemsterstraat",
+     "note": "2019-07 (sun 136/55): brick #77675e, roof #b57b66, door #333539 (dark green); per house a white ribbon window of 5 lights on one side, the door and a small square window by the party wall, mirrored in pairs; white eaves cornice ~3.1 m (door 2.05 m); one long dormer per house"
+    },
+    {
+     "photo": "survey crop 0363100012149746.jpg",
+     "pand": "0363100012149746",
+     "address": "Kwadijkerstraat",
+     "note": "same, 8 houses"
+    },
+    {
+     "photo": "survey crop 0363100012114754.jpg",
+     "pand": "0363100012114754",
+     "address": "Oterleekstraat",
+     "note": "same, dormers of 8 lights"
+    },
+    {
+     "photo": "survey crop 0363100012145864.jpg",
+     "pand": "0363100012145864",
+     "address": "Beemsterstraat",
+     "note": "2024: same, low brick piers beside the doors"
+    },
+    {
+     "photo": "survey crop 0363100012122860.jpg",
+     "pand": "0363100012122860",
+     "address": "Graftdijkerstraat",
+     "note": "same, some solar panels"
+    },
+    {
+     "photo": "survey crop 0363100012076786.jpg",
+     "pand": "0363100012076786",
+     "address": "Wijdenesserstraat",
+     "note": "same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.05
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 0.35,
+       "w": 0.42,
+       "h": 0.42,
+       "sill": 1.5,
+       "lights": 1,
+       "note": "small square window by the party wall"
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.3,
+       "w": 2.3,
+       "h": 0.7,
+       "sill": 1.45,
+       "lights": 5,
+       "note": "white ribbon window"
+      },
+      {
+       "kind": "panel",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.58,
+       "w": 0.24,
+       "h": 0.95,
+       "sill": 0,
+       "colour": "wall",
+       "depth": 0.45,
+       "note": "low brick pier beside the door"
+      },
+      {
+       "kind": "panel",
+       "ref": "right",
+       "levels": "ground",
+       "u": 0.42,
+       "w": 0.24,
+       "h": 0.95,
+       "sill": 0,
+       "colour": "wall",
+       "depth": 0.45,
+       "note": "low brick pier beside the door"
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 2,
+     "below": 0.22,
+     "above": 0,
+     "palette": "column"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012136424.jpg",
+     "pand": "0363100012136424",
+     "address": "Beemsterstraat",
+     "note": "garden side not photographed: inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.9,
+       "w": 0.9,
+       "h": 2.05
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.6,
+       "w": 1.8,
+       "h": 1.2,
+       "sill": 0.85,
+       "lights": 3
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012136424.jpg",
+     "pand": "0363100012136424",
+     "address": "Beemsterstraat",
+     "note": "end walls plain brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012136424.jpg",
+     "pand": "0363100012136424",
+     "address": "Beemsterstraat",
+     "note": "end walls plain brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Eaves pinned at 3.15 m: the 2019 crop of 2136424 gives 3.1 m (door 2.05 m against the cornice), 3DBAG b3_h_dak_min 3.0-3.5 m on most of the 212 houses (higher readings catch the dormers); ridge ~9.3 m from 3DBAG, so the roof is ~58 deg. The attic is the second storey.",
+  "The dormer is one per house, ~3.6 m of 8 lights; real dormers are two 4-light groups under one roof.",
+  "The ribbon window is framed in a white board in the photos; drawn as a 5-light window.",
+  "Garden side inferred."
+ ]
+}

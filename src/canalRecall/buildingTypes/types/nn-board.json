@@ -1,0 +1,401 @@
+{
+ "id": "nn-board",
+ "label": "Tuindorp Nieuwendam (1933-34) terraced house: red brick ground storey, low upper storey boarded in dark green timber between three white windows, white fascia, pantile roof, paired dark doors with transoms (Monnikendammerplantsoen, Graftdijkerstraat, Oterleekstraat, Kwadijkerstraat, Scharwouderstraat)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 49,
+  "bouwjaar": [
+   1933,
+   1934
+  ],
+  "lengthM": 8.5,
+  "widthM": 4.6,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  4.4,
+  6.8
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.1,
+   5.8
+  ],
+  "depth": [
+   6.2,
+   9.2
+  ]
+ },
+ "alternateMirror": true,
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.35,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.12,
+  "pitchDeg": 35,
+  "eavesPinM": 6.1
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "green",
+ "variants": {
+  "green": {
+   "label": "dark green boarded upper storey, doors paired",
+   "evidence": "survey terraces 23, 27, 39 (photos)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#9a5a44"
+    },
+    "frame": "#f2f0e8",
+    "glass": "#4b5a6b",
+    "door": "#26302c",
+    "accent": "#efede6",
+    "rail": "#8d9092",
+    "dark": "#3a3a3a",
+    "column": "#3f574e",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#85594c",
+     "measured": true
+    }
+   }
+  },
+  "green-toilet": {
+   "label": "doors apart with two small toilet windows between them, 2-light living-room window",
+   "evidence": "survey terraces 34, 52, 70, 90 (photos 2106358, 2138389, 2071435)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#9a5a44"
+    },
+    "frame": "#f2f0e8",
+    "glass": "#4b5a6b",
+    "door": "#26302c",
+    "accent": "#efede6",
+    "rail": "#8d9092",
+    "dark": "#3a3a3a",
+    "column": "#3f574e",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#85594c",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit 0363100012140157-2019070811.jpg",
+     "pand": "0363100012140157",
+     "address": "Monnikendammerplantsoen",
+     "note": "2019-07 (sun 167/60, 6 deg off, light cloud): brick #7c5344 and dark green-grey boards #4e5053 referenced to the white fascia, roof #81635f; per house three 2-light white windows ~1.0 x 1.1 m with top lights in the boarded band, brick ground storey ~3.8 m with a 3-light window and a door with a transom, doors paired"
+    },
+    {
+     "photo": "survey crop 0363100012110750.jpg",
+     "pand": "0363100012110750",
+     "address": "Monnikendammerplantsoen",
+     "note": "2021: same, green boards"
+    },
+    {
+     "photo": "survey crop 0363100012106358.jpg",
+     "pand": "0363100012106358",
+     "address": "Graftdijkerstraat",
+     "note": "same, small windows beside the doors"
+    },
+    {
+     "photo": "survey crop 0363100012138389.jpg",
+     "pand": "0363100012138389",
+     "address": "Oterleekstraat",
+     "note": "same, low roof seen from below"
+    },
+    {
+     "photo": "survey crop 0363100012068642.jpg",
+     "pand": "0363100012068642",
+     "address": "Kwadijkerstraat",
+     "note": "same"
+    },
+    {
+     "photo": "survey crop 0363100012131716.jpg",
+     "pand": "0363100012131716",
+     "address": "Monnikendammerweg",
+     "note": "same, pantile roof visible"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.6,
+       "w": 0.85,
+       "h": 2.05,
+       "variants": [
+        "green"
+       ]
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.6,
+       "w": 0.85,
+       "h": 0.4,
+       "sill": 2.15,
+       "lights": 1,
+       "note": "transom light",
+       "variants": [
+        "green"
+       ]
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.7,
+       "w": 2.1,
+       "h": 1.8,
+       "sill": 0.75,
+       "lights": 3,
+       "transomM": 0.45,
+       "variants": [
+        "green"
+       ]
+      },
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.15,
+       "w": 0.85,
+       "h": 2.05,
+       "variants": [
+        "green-toilet"
+       ]
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.15,
+       "w": 0.85,
+       "h": 0.4,
+       "sill": 2.15,
+       "lights": 1,
+       "note": "transom light",
+       "variants": [
+        "green-toilet"
+       ]
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.38,
+       "w": 0.35,
+       "h": 0.55,
+       "sill": 1.35,
+       "lights": 1,
+       "note": "small toilet window between the doors",
+       "variants": [
+        "green-toilet"
+       ]
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.45,
+       "w": 1.9,
+       "h": 1.45,
+       "sill": 0.85,
+       "lights": 3,
+       "transomM": 0.4,
+       "variants": [
+        "green-toilet"
+       ]
+      },
+      {
+       "kind": "window",
+       "ref": "centre",
+       "u": 0,
+       "w": 1.0,
+       "h": 1.25,
+       "sill": 1.6,
+       "lights": 2,
+       "repeat": 3,
+       "levels": "upper",
+       "transomM": 0.35
+      }
+     ]
+    }
+   ],
+   "stripes": [
+    {
+     "levels": "upper",
+     "pitchM": 10,
+     "heightM": 3.0,
+     "offsetM": 1.35,
+     "depthM": 0.02,
+     "palette": "column"
+    }
+   ],
+   "bands": [
+    {
+     "floor": 2,
+     "below": 0.18,
+     "above": 0,
+     "palette": "frame"
+    },
+    {
+     "floor": 2,
+     "below": 1.78,
+     "above": -1.7,
+     "palette": "frame"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012140157.jpg",
+     "pand": "0363100012140157",
+     "address": "Monnikendammerplantsoen",
+     "note": "garden side not photographed: inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.9,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.6,
+       "w": 1.8,
+       "h": 1.3,
+       "sill": 0.85,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.1,
+       "w": 1.0,
+       "h": 1.0,
+       "sill": 1.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "upper",
+       "u": 1.2,
+       "w": 1.0,
+       "h": 1.0,
+       "sill": 1.8,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012140157.jpg",
+     "pand": "0363100012140157",
+     "address": "Monnikendammerplantsoen",
+     "note": "end walls plain brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012140157.jpg",
+     "pand": "0363100012140157",
+     "address": "Monnikendammerplantsoen",
+     "note": "end walls plain brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Eaves pinned at 6.1 m: 3DBAG b3_h_dak_min reads 6.07-6.24 m on all 49 houses (the crops foreshorten the top: 5.2 m by door scale); the boarded band is the top 1.7 m (ground storey : band = 2.65 : 1 in 2140157).",
+  "The green boarded band is a flat stripe 1.5 m deep under the eaves, cut at the windows, with a white sill band under it; the vertical battens are not drawn (kit boards cover whole storeys only).",
+  "Garden side inferred."
+ ]
+}

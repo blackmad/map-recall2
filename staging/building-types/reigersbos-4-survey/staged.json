@@ -1,0 +1,48 @@
+[
+ {
+  "area": "zo-rb4-01",
+  "anchor": {
+   "lng": 4.96924,
+   "lat": 52.29013
+  },
+  "pands": 42,
+  "missing": 0,
+  "per": {
+   "zo-rb-timber/timber/photo": 17,
+   "zo-rb-timber/timber/signature": 25
+  }
+ },
+ {
+  "area": "zo-rb4-02",
+  "anchor": {
+   "lng": 4.97319,
+   "lat": 52.29032
+  },
+  "pands": 447,
+  "missing": 0,
+  "per": {
+   "zo-rb-timber/timber/photo": 66,
+   "zo-rb-two-tone/simonshaven/photo": 92,
+   "zo-rb-timber/timber/signature": 50,
+   "zo-rb-two-tone/snelleveld/signature": 42,
+   "zo-rb-two-tone/snelleveld/photo": 52,
+   "zo-rb-pair-door/red/photo": 26,
+   "zo-rb-two-tone/simonshaven/signature": 10,
+   "zo-rb-pair-door/buff/photo": 109
+  }
+ },
+ {
+  "area": "zo-rb4-03",
+  "anchor": {
+   "lng": 4.97657,
+   "lat": 52.28988
+  },
+  "pands": 39,
+  "missing": 0,
+  "per": {
+   "zo-rb-two-tone/simonshaven/photo": 20,
+   "zo-rb-two-tone/snelleveld/photo": 10,
+   "zo-rb-pair-door/buff/photo": 9
+  }
+ }
+]

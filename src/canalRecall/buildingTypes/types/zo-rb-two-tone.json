@@ -1,0 +1,531 @@
+{
+ "id": "zo-rb-two-tone",
+ "label": "Reigersbos (1983-84) terraced house in mirrored pairs: pale buff brick ground storey under darker upper brick, dark tile roof along the street with paired flues (Snelleveldstraat, Simonshavenstraat, Sleewijkstraat, Tefelenstraat, Tekkopstraat)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 260,
+  "bouwjaar": [
+   1983,
+   1984
+  ],
+  "lengthM": 9.05,
+  "widthM": 5.3,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.3,
+  6.4
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.9,
+   5.7
+  ],
+  "depth": [
+   8.3,
+   10.2
+  ]
+ },
+ "alternateMirror": true,
+ "bodyFromRoof": {
+  "tolM": 2.0
+ },
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.25,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.12,
+  "pitchDeg": 33,
+  "eavesPinM": 5.9
+ },
+ "ridgeRangeM": [
+  8.0,
+  9.6
+ ],
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "snelleveld",
+ "variants": {
+  "snelleveld": {
+   "label": "Snelleveld: grey-brown upper brick, two upper windows (Reigersbos 4, 9 m deep)",
+   "evidence": "sunlit 2068205 (upper #9a8b7c, ground warm cluster #cdb796, roof #87796e), 2123665, 2069715; render review: upper toned to the grey-brown of the 2024-10 photos, roof to the orthophoto grey (#737373-#7b7b7b)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#8c8079",
+     "measured": true
+    },
+    "frame": "#f2f1ec",
+    "glass": "#4b5a6b",
+    "door": "#4a4d4e",
+    "accent": "#eeeae0",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#f0eee6",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#6f6b69",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#c2b59c",
+     "measured": true
+    }
+   }
+  },
+  "tefelen": {
+   "label": "Tefelen: red-brown upper brick, small + two-light upper windows with white panels over them (Reigersbos 3)",
+   "evidence": "sunlit 2065017 upper warm median #c79f8d, 2150311 ground #d7c2a1; survey 2080244 layout",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#b48d7c",
+     "measured": true
+    },
+    "frame": "#b23a32",
+    "glass": "#4b5a6b",
+    "door": "#e8cc4a",
+    "accent": "#eeeae0",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#f0eee6",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#787676",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#d2bd9c",
+     "measured": true
+    }
+   }
+  },
+  "simonshaven": {
+   "label": "Simonshaven: Tefelen window layout in Snelleveld brick (Reigersbos 4, 12.5 m pands with a low annex)",
+   "evidence": "survey 2082843, 2111317, 2132999, 2090003",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#8c8079",
+     "measured": true
+    },
+    "frame": "#f2f1ec",
+    "glass": "#4b5a6b",
+    "door": "#ece9e0",
+    "accent": "#eeeae0",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#f0eee6",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#6f6b69",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#c2b59c",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012123665.jpg",
+     "pand": "0363100012123665",
+     "address": "Snelleveldstraat",
+     "note": "2018-07 (~49 px/m): mirrored pairs, doors side by side; 2.9 m three-light ground window, 0.9 m door, small high window by the door under a white slab; buff ground storey, grey-brown upper brick; two upper windows 1.5 and 1.3 m wide; eaves ~5.9 m, ridge ~8.7 m, dark tile roof with flues"
+    },
+    {
+     "photo": "sunlit crop 0363100012068205.jpg",
+     "pand": "0363100012068205",
+     "address": "Simonshavenstraat",
+     "note": "sunlit 2018-07: same; upper brick #9a8b7c, ground buff #cdb796, roof tiles #87796e, white slab over the door"
+    },
+    {
+     "photo": "sunlit crop 0363100012069715.jpg",
+     "pand": "0363100012069715",
+     "address": "Sleewijkstraat",
+     "note": "sunlit 2018-07 and survey 2024-10: same layout, white frames"
+    },
+    {
+     "photo": "survey crop 0363100012080244.jpg",
+     "pand": "0363100012080244",
+     "address": "Tefelenstraat",
+     "note": "survey 2024-10 (Reigersbos 3, ~68 px/m): same roof and two-tone brick but the pale brick reaches the upper sills; upper: small 0.6 m window over the door and a 1.36 m two-light window over the ground window, white panels over both; ground: small window, door, 1.3 m window; red frames, yellow doors"
+    },
+    {
+     "photo": "sunlit crop 0363100012065017.jpg",
+     "pand": "0363100012065017",
+     "address": "Teugestraat",
+     "note": "sunlit 2021-06: Tefelen layout; upper brick red-brown #c79f8d sunlit, ground buff"
+    },
+    {
+     "photo": "sunlit crop 0363100012150311.jpg",
+     "pand": "0363100012150311",
+     "address": "Tekkopstraat",
+     "note": "sunlit 2020-07: Tefelen layout, buff ground brick #d7c2a1, orange door"
+    },
+    {
+     "photo": "survey crop 0363100012082843.jpg",
+     "pand": "0363100012082843",
+     "address": "Simonshavenstraat",
+     "note": "survey 2024-10 (12.5 m deep pands with a low annex): Tefelen window layout in the grey-brown/buff Snelleveld brick"
+    },
+    {
+     "photo": "survey crop 0363100012111317.jpg",
+     "pand": "0363100012111317",
+     "address": "Snelleveldstraat",
+     "note": "survey 2024-10: same as 2082843"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.85,
+       "w": 2.9,
+       "h": 1.75,
+       "sill": 0.7,
+       "lights": 3,
+       "variants": [
+        "snelleveld"
+       ]
+      },
+      {
+       "kind": "door",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.1,
+       "w": 0.9,
+       "h": 2.15,
+       "variants": [
+        "snelleveld"
+       ]
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 0.32,
+       "w": 0.45,
+       "h": 0.45,
+       "sill": 1.75,
+       "lights": 1,
+       "variants": [
+        "snelleveld"
+       ]
+      },
+      {
+       "kind": "canopy",
+       "ref": "right",
+       "levels": "ground",
+       "u": 0.75,
+       "w": 1.4,
+       "h": 0.15,
+       "sill": 2.3,
+       "depth": 0.35,
+       "canopy": "flat",
+       "colour": "column",
+       "variants": [
+        "snelleveld"
+       ]
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.32,
+       "w": 1.5,
+       "h": 1.5,
+       "sill": 0.65,
+       "lights": 2,
+       "variants": [
+        "snelleveld"
+       ]
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "upper",
+       "u": 1.4,
+       "w": 1.3,
+       "h": 1.5,
+       "sill": 0.65,
+       "lights": 2,
+       "variants": [
+        "snelleveld"
+       ]
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.76,
+       "w": 0.55,
+       "h": 0.75,
+       "sill": 1.0,
+       "lights": 1,
+       "exceptVariants": [
+        "snelleveld"
+       ]
+      },
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.68,
+       "w": 0.95,
+       "h": 2.1,
+       "exceptVariants": [
+        "snelleveld"
+       ]
+      },
+      {
+       "kind": "canopy",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.2,
+       "w": 1.9,
+       "h": 0.12,
+       "sill": 2.2,
+       "depth": 0.2,
+       "canopy": "flat",
+       "colour": "column",
+       "exceptVariants": [
+        "snelleveld"
+       ]
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.9,
+       "w": 1.3,
+       "h": 1.48,
+       "sill": 0.62,
+       "lights": 2,
+       "exceptVariants": [
+        "snelleveld"
+       ]
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.87,
+       "w": 0.6,
+       "h": 0.86,
+       "sill": 1.15,
+       "lights": 1,
+       "exceptVariants": [
+        "snelleveld"
+       ]
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.44,
+       "w": 1.36,
+       "h": 1.6,
+       "sill": 0.62,
+       "lights": 2,
+       "exceptVariants": [
+        "snelleveld"
+       ]
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.87,
+       "w": 0.6,
+       "h": 0.6,
+       "sill": 2.1,
+       "depth": 0.03,
+       "colour": "column",
+       "variants": [
+        "tefelen"
+       ]
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.44,
+       "w": 1.36,
+       "h": 0.5,
+       "sill": 2.3,
+       "depth": 0.03,
+       "colour": "column",
+       "variants": [
+        "tefelen"
+       ]
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "span": true,
+       "h": 0.6,
+       "sill": 0.0,
+       "depth": 0.025,
+       "colour": "plinth",
+       "variants": [
+        "tefelen"
+       ],
+       "note": "the pale brick reaches the upper sills"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012123665.jpg",
+     "pand": "0363100012123665",
+     "address": "Snelleveldstraat",
+     "note": "garden side NOT photographed: garden door, living-room window and two bedroom windows, inferred; hidden between rear gardens"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.4,
+       "w": 2.2,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.9,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.8,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012123665.jpg",
+     "pand": "0363100012123665",
+     "address": "Snelleveldstraat",
+     "note": "end wall seen edge-on beside the front; plain brick, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012123665.jpg",
+     "pand": "0363100012123665",
+     "address": "Snelleveldstraat",
+     "note": "end wall seen edge-on beside the front; plain brick, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "One design, three layouts/palettes chosen per terrace from the photos; R3 and R4 share the roof, the two-tone brick and the paired flues.",
+  "Paired flues on the ridge are not modelled.",
+  "Garden side inferred. The low annexes of the 12.5 m Simonshaven pands are cut off by bodyFromRoof (body only).",
+  "3DBAG: R4 dak_min 5.7-5.9, ridge 8.6-9.2. The roof planes read front dormers (7.4-7.7 m) and rear catslides (~4.0 m) on many R3 houses and 6.6-6.9 m on many R4 houses, while the photos show one eaves line at ~5.9 m: eavesPinM 5.9, with ridgeRangeM holding raised or rebuilt roofs. Dormers are not modelled."
+ ],
+ "rowCoherentHeights": true
+}

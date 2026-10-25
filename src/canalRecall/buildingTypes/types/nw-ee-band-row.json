@@ -1,0 +1,323 @@
+{
+ "id": "nw-ee-band-row",
+ "label": "De Eendracht (1990-91, J.G. Suurhoffstraat / Haya van Someren-Downerstraat) terraced house: pale grey-beige brick over a dark purple-brown plinth, wide ground window and white door under a thin white string course, one small square window above, low eaves under a dark tile roof with a rooflight, mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 140,
+  "bouwjaar": [
+   1990,
+   1991
+  ],
+  "lengthM": 4.83,
+  "widthM": 9.57,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  4.0,
+  5.8
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.6,
+   5.3
+  ],
+  "depth": [
+   9.2,
+   12.4
+  ]
+ },
+ "sizeClassesM": {
+  "depth": [
+   10.8
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.1,
+  "thicknessM": 0.15,
+  "eavesPinM": 4.5,
+  "pitchDeg": 42,
+  "rooflights": {
+   "u": [
+    0.48
+   ],
+   "w": 0.8,
+   "h": 0.65,
+   "along": 0.35
+  }
+ },
+ "ground": {
+  "mode": "solid",
+  "plinthM": 0.6
+ },
+ "alternateMirror": true,
+ "defaultVariant": "band",
+ "variants": {
+  "band": {
+   "label": "grey-beige brick, white doors and string course",
+   "evidence": "J.G. Suurhoffstraat #2 #5 #11 #18 #24 #33 #40 #43 #58 #66 #76 (2098418, 2080613, 2154919, 2104358, 2112238, 2146245, 2065034, 2112746, 2082577, 2142153); fronts re-shot for #13 #31 #51 (2072571, 2115740, 2145381)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#d0ccbe",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#4f4347",
+     "measured": true
+    },
+    "gable": {
+     "slot": "brick",
+     "tint": "#d0ccbe",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#ece9de",
+    "accent": "#f0eee6",
+    "rail": "#f0eee6",
+    "dark": "#3d3a3c",
+    "column": "#f0eee6",
+    "joint": "#b8b09c",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#64605c",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012080613.jpg",
+     "pand": "0363100012080613",
+     "address": "J.G. Suurhoffstraat",
+     "note": "2021-04 north front in shade, 72.5 px/m on the 4.83 m house between drainpipes (u from the window side): 2-light window 0.34-2.14 m, sill 0.9, head 2.41; door 2.97-3.86 m, h 2.4; thin white string course at ~2.6 m across the row; one small window 2.17-2.87 m, sill 3.48, h 0.75; eaves ~4.6 m; dark purple-brown brick plinth to ~0.6 m; rooflight near the frontage centre. Colours white-referenced to the white door of no. 27 (#6d6f6e): brick #606059 -> #d4cdb8 (brick-mottle k=3: tones within 4%, not mottled; drawn #d0ccbe, chroma reduced after the first contact sheet read tan against the grey-beige photo), plinth #312529 -> #5e464c (drawn #4f4347, less red)"
+    },
+    {
+     "photo": "survey crop 0363100012098418.jpg",
+     "pand": "0363100012098418",
+     "address": "J.G. Suurhoffstraat",
+     "note": "2021-04: same row, windows adjacent in pairs, dormers on about half the houses (not modelled)"
+    },
+    {
+     "photo": "survey crop 0363100012104358.jpg",
+     "pand": "0363100012104358",
+     "address": "J.G. Suurhoffstraat",
+     "note": "2021-04: same, white door and string course"
+    },
+    {
+     "photo": "survey crop 0363100012146245.jpg",
+     "pand": "0363100012146245",
+     "address": "J.G. Suurhoffstraat",
+     "note": "2021-04: same; string course runs over door and window heads"
+    },
+    {
+     "photo": "survey crop 0363100012142153.jpg",
+     "pand": "0363100012142153",
+     "address": "J.G. Suurhoffstraat",
+     "note": "2021-04: same"
+    },
+    {
+     "photo": "re-shot crop 0363100012072571-flip.jpg",
+     "pand": "0363100012072571",
+     "address": "J.G. Suurhoffstraat",
+     "note": "2022-04 re-shot front of #13 (the survey saw the garden side): same row, rooflights"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.24,
+       "w": 1.8,
+       "h": 1.5,
+       "sill": 0.9,
+       "lights": 2,
+       "frameM": 0.07,
+       "note": "2-light window (2080613: 0.34-2.14 m)"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.42,
+       "w": 0.89,
+       "h": 2.4,
+       "note": "white door (red/black on a few houses)"
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "u": 0,
+       "h": 0.12,
+       "sill": 2.52,
+       "depth": 0.1,
+       "canopy": "flat",
+       "span": true,
+       "note": "thin white string course along the row"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 2.52,
+       "w": 0.7,
+       "h": 0.75,
+       "sill": 1.18,
+       "lights": 1,
+       "frameM": 0.07,
+       "note": "small square window (2.17-2.87 m, sill 3.48 m above ground)"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "partly-measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012145381.jpg",
+     "pand": "0363100012145381",
+     "address": "J.G. Suurhoffstraat",
+     "note": "2021-04 garden side of #51, mostly behind ivy: 3-light windows on both storeys, dark brick pilaster at each party wall; upper windows ~1.9 m wide (layout read, not measured to the cm)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.9,
+       "w": 0.9,
+       "h": 2.3
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.0,
+       "w": 2.3,
+       "h": 1.5,
+       "sill": 0.8,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 2.4,
+       "w": 1.9,
+       "h": 0.9,
+       "sill": 0.9,
+       "lights": 3
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.12,
+       "w": 0.24,
+       "h": 4.6,
+       "sill": 0,
+       "colour": "dark",
+       "depth": 0.06,
+       "note": "dark brick pilaster at the party wall"
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012098418.jpg",
+     "pand": "0363100012098418",
+     "address": "J.G. Suurhoffstraat",
+     "note": "row ends: plain brick gables (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012098418.jpg",
+     "pand": "0363100012098418",
+     "address": "J.G. Suurhoffstraat",
+     "note": "row ends: plain brick gables (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Roof: the north slope is only photographed in shade; roof-colours.ts reads the orthophoto #737373 (neutral grey, L 0.45) over the 60 placed houses, so the tile is drawn #64605c (dark grey-brown of the street view, lifted towards the orthophoto).",
+  "Eaves pinned at 4.5 m (roof.eavesPinM): 3DBAG eaves 4.45 m agrees with the photo, but build.ts rejects it against the 9.0 m ridge and would draw 6.7 m.",
+  "North-facing fronts, photographed in shade only: colours white-referenced against the white door of the same crop (exposure.ts). The roof tint was checked against the orthophoto with roof-colours.ts.",
+  "Dormers stand on about half the houses (many sizes and colours) and are not modelled: the design draws one rooflight per house. The brick storage sheds in the front gardens are separate BAG panden.",
+  "Deep houses (12.05 m: a rear extension in the BAG ring) get their own unit (sizeClassesM depth 10.8 m)."
+ ]
+}

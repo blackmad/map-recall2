@@ -1,0 +1,614 @@
+{
+ "terraces": {
+  "9": {
+   "type": "nn-band",
+   "variant": "panels",
+   "via": "photo"
+  },
+  "11": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "photo"
+  },
+  "12": {
+   "type": "nn-band",
+   "variant": "panels",
+   "via": "signature"
+  },
+  "13": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "photo"
+  },
+  "14": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "photo"
+  },
+  "15": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "signature"
+  },
+  "17": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "photo"
+  },
+  "19": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "photo"
+  },
+  "20": {
+   "type": "nn-band",
+   "variant": "panels",
+   "via": "photo"
+  },
+  "22": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "photo"
+  },
+  "23": {
+   "type": "nn-board",
+   "variant": "green",
+   "via": "photo"
+  },
+  "25": {
+   "type": "nn-band",
+   "variant": "panels",
+   "via": "photo"
+  },
+  "27": {
+   "type": "nn-board",
+   "variant": "green",
+   "via": "photo"
+  },
+  "30": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "photo"
+  },
+  "31": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "32": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "33": {
+   "type": "nn-band",
+   "variant": "panels",
+   "via": "photo"
+  },
+  "34": {
+   "type": "nn-board",
+   "variant": "green-toilet",
+   "via": "photo"
+  },
+  "39": {
+   "type": "nn-board",
+   "variant": "green",
+   "via": "photo"
+  },
+  "41": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "43": {
+   "type": "nn-band",
+   "variant": "panels",
+   "via": "photo"
+  },
+  "46": {
+   "type": "nn-band",
+   "variant": "panels",
+   "via": "signature"
+  },
+  "47": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "photo"
+  },
+  "48": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "52": {
+   "type": "nn-board",
+   "variant": "green-toilet",
+   "via": "photo"
+  },
+  "53": {
+   "type": "nn-band",
+   "variant": "panels",
+   "via": "photo"
+  },
+  "54": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "58": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "photo"
+  },
+  "59": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "60": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "photo"
+  },
+  "61": {
+   "type": "nn-band",
+   "variant": "panels",
+   "via": "photo"
+  },
+  "65": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "67": {
+   "type": "nn-band",
+   "variant": "panels",
+   "via": "photo"
+  },
+  "70": {
+   "type": "nn-board",
+   "variant": "green-toilet",
+   "via": "photo"
+  },
+  "71": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "photo"
+  },
+  "72": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "75": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "photo"
+  },
+  "76": {
+   "type": "nn-band",
+   "variant": "panels",
+   "via": "photo"
+  },
+  "81": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "83": {
+   "type": "nn-band",
+   "variant": "panels",
+   "via": "signature"
+  },
+  "84": {
+   "type": "nn-band",
+   "variant": "band",
+   "via": "photo"
+  },
+  "85": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "90": {
+   "type": "nn-board",
+   "variant": "green-toilet",
+   "via": "photo"
+  },
+  "94": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "95": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "97": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "99": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "102": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "104": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "107": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "110": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "120": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "122": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "129": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "139": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "140": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "144": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "148": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "153": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "158": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "161": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "162": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "163": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "164": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "168": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "170": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "signature"
+  },
+  "171": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "174": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "177": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "178": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "179": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "180": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "182": {
+   "type": "nn-row-small",
+   "variant": "small",
+   "via": "photo"
+  },
+  "184": {
+   "type": "nn-row",
+   "variant": "wide-orange",
+   "via": "photo"
+  },
+  "186": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "187": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "188": {
+   "type": "nn-cottage",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "189": {
+   "type": "nn-row",
+   "variant": "wide-orange",
+   "via": "photo"
+  },
+  "191": {
+   "type": "nn-row",
+   "variant": "wide-orange",
+   "via": "photo"
+  },
+  "192": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "193": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "195": {
+   "type": "nn-row",
+   "variant": "wide-orange",
+   "via": "photo"
+  },
+  "197": {
+   "type": "nn-row",
+   "variant": "wide-orange",
+   "via": "photo"
+  },
+  "198": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "photo"
+  },
+  "200": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "202": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "206": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "210": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "211": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "212": {
+   "type": "nn-row",
+   "variant": "wide-orange",
+   "via": "photo"
+  },
+  "213": {
+   "type": "nn-row",
+   "variant": "wide-orange",
+   "via": "photo"
+  },
+  "215": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "217": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "219": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "221": {
+   "type": "nn-row-small",
+   "variant": "small",
+   "via": "photo"
+  },
+  "222": {
+   "type": "nn-row",
+   "variant": "wide-orange",
+   "via": "photo"
+  },
+  "223": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "photo"
+  },
+  "224": {
+   "type": "nn-row",
+   "variant": "wide-orange",
+   "via": "photo"
+  },
+  "226": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "227": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "signature"
+  },
+  "230": {
+   "type": "nn-row-small",
+   "variant": "small",
+   "via": "photo"
+  },
+  "231": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "232": {
+   "type": "nn-row-small",
+   "variant": "small",
+   "via": "photo"
+  },
+  "234": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "235": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "photo"
+  },
+  "236": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "240": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "photo"
+  },
+  "241": {
+   "type": "nn-row",
+   "variant": "wide",
+   "via": "photo"
+  },
+  "243": {
+   "type": "nn-row-small",
+   "variant": "small",
+   "via": "photo"
+  },
+  "244": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "photo"
+  },
+  "248": {
+   "type": "nn-row-small",
+   "variant": "small",
+   "via": "photo"
+  },
+  "251": {
+   "type": "nn-row-small",
+   "variant": "small",
+   "via": "photo"
+  },
+  "253": {
+   "type": "nn-row-small",
+   "variant": "small",
+   "via": "photo"
+  },
+  "254": {
+   "type": "nn-row-small",
+   "variant": "small",
+   "via": "photo"
+  },
+  "256": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "signature"
+  },
+  "259": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "photo"
+  },
+  "261": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "signature"
+  },
+  "264": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "photo"
+  },
+  "265": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "photo"
+  },
+  "268": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "photo"
+  },
+  "269": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "photo"
+  },
+  "270": {
+   "type": "nn-row-small",
+   "variant": "small-grey",
+   "via": "photo"
+  }
+ }
+}

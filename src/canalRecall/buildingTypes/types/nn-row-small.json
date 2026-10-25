@@ -1,0 +1,358 @@
+{
+ "id": "nn-row-small",
+ "label": "Tuindorp Nieuwendam (1925-26) two-storey terraced house in brown brick under a white fascia and a tall pantile roof: three small 2-light upper windows, a 2-light living-room window, paired black doors with transoms in a white surround (Ilpendammerstraat, Schermerstraat, Zwaagstraat, Hensbroekerstraat, Purmerweg, Molengouw, Watergangseweg)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 137,
+  "bouwjaar": [
+   1925,
+   1926
+  ],
+  "lengthM": 6.3,
+  "widthM": 5.2,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  3.2,
+  7.0
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.6,
+   6.6
+  ],
+  "depth": [
+   5.8,
+   8.4
+  ]
+ },
+ "alternateMirror": true,
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.4,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.12,
+  "pitchDeg": 55,
+  "eavesPinM": 5.8,
+  "hipFreeEnds": true
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "small",
+ "variants": {
+  "small": {
+   "label": "orange-red pantiles",
+   "evidence": "survey terraces 182, 221, 230, 232, 243, 248, 251, 253, 254 (photos)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#8c776b"
+    },
+    "frame": "#f2f0e8",
+    "glass": "#4b5a6b",
+    "door": "#2e3233",
+    "accent": "#efede6",
+    "rail": "#8d9092",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#b86a4e",
+     "measured": true
+    }
+   }
+  },
+  "small-grey": {
+   "label": "weathered red-brown pantiles",
+   "evidence": "survey terraces 198, 223, 227, 235, 240, 244, 256, 259, 261, 264, 265, 268, 269, 270 (photos)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#8c776b"
+    },
+    "frame": "#f2f0e8",
+    "glass": "#4b5a6b",
+    "door": "#2e3233",
+    "accent": "#efede6",
+    "rail": "#8d9092",
+    "dark": "#3a3a3a",
+    "column": "#f2f0ea",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#9c6a5a",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit 0363100012131860-2021061511.jpg",
+     "pand": "0363100012131860",
+     "address": "Ilpendammerstraat",
+     "note": "2021-06 sunlit (sun 170/61, 6 deg off): three 2-light upper windows per house ~1.0 x 1.0 m just under a white fascia, paired black doors (#3e4436 raw) with transoms in a white surround, one 2-light ground window, orange-red pantiles"
+    },
+    {
+     "photo": "sunlit 0363100012082925-2022050908.jpg",
+     "pand": "0363100012082925",
+     "address": "Schermerstraat",
+     "note": "2022-05 sunlit: same; eaves ~5.2 m by door scale (door 2.1 m = 115 px, eaves 285 px up); roof #eca776 white-referenced, door #4b5049"
+    },
+    {
+     "photo": "survey crop 0363100012139095.jpg",
+     "pand": "0363100012139095",
+     "address": "Purmerweg",
+     "note": "same, 8-house row"
+    },
+    {
+     "photo": "survey crop 0363100012112574.jpg",
+     "pand": "0363100012112574",
+     "address": "Ilpendammerstraat",
+     "note": "same, grey-brown pantiles: small-grey"
+    },
+    {
+     "photo": "survey crop 0363100012148378.jpg",
+     "pand": "0363100012148378",
+     "address": "Schermerstraat",
+     "note": "same"
+    },
+    {
+     "photo": "survey crop 0363100012120602.jpg",
+     "pand": "0363100012120602",
+     "address": "Hensbroekerstraat",
+     "note": "same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.65,
+       "w": 0.95,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.65,
+       "w": 0.95,
+       "h": 0.42,
+       "sill": 2.2,
+       "lights": 1,
+       "note": "transom light"
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.07,
+       "w": 0.14,
+       "h": 2.82,
+       "sill": 0,
+       "colour": "column",
+       "depth": 0.06,
+       "note": "white jamb between the paired doors"
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.62,
+       "w": 1.24,
+       "h": 0.16,
+       "sill": 2.7,
+       "colour": "column",
+       "depth": 0.1,
+       "note": "white head of the door surround"
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.19,
+       "w": 0.1,
+       "h": 2.82,
+       "sill": 0,
+       "colour": "column",
+       "depth": 0.06,
+       "note": "outer white jamb"
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.9,
+       "w": 1.45,
+       "h": 1.45,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "centre",
+       "u": 0,
+       "w": 0.8,
+       "lights": 2,
+       "repeat": 3,
+       "levels": "upper",
+       "h": 1.05,
+       "sill": 1.43
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 2,
+     "below": 0.2,
+     "above": 0,
+     "palette": "column"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012139095.jpg",
+     "pand": "0363100012139095",
+     "address": "Purmerweg",
+     "note": "garden side not photographed: inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.9,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.6,
+       "w": 1.8,
+       "h": 1.3,
+       "sill": 0.85,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.0,
+       "sill": 1.43,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "upper",
+       "u": 1.4,
+       "w": 1.3,
+       "h": 1.0,
+       "sill": 1.43,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012139095.jpg",
+     "pand": "0363100012139095",
+     "address": "Purmerweg",
+     "note": "end walls plain brick; some rows end in a steep front-facing gable house (not modelled)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012139095.jpg",
+     "pand": "0363100012139095",
+     "address": "Purmerweg",
+     "note": "end walls plain brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Eaves pinned at 5.8 m: 2112574 gives 5.8 m by door scale (door + transom 2.55 m = 90 px, eaves 205 px up) and the first contact sheet at 5.1 m sat ~0.7 m under the photographed eaves; 3DBAG b3_h_dak_min is scattered (2.6-6.1 m, median 3.6: rear lean-tos and dormers; the top decile 6.05 m is the front eaves) and is not used; the ridge (9.55-9.75 m) is 0.8 m above nn-row's, so these rows are a separate project and design.",
+  "Brick: the sunlit crops are overexposed (2131860 mottle mean #b49b83 raw); tint as nn-row.",
+  "Garden side inferred."
+ ]
+}

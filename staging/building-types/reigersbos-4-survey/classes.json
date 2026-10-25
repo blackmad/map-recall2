@@ -1,0 +1,304 @@
+{
+ "terraces": {
+  "13": {
+   "type": "zo-rb-two-tone",
+   "variant": "snelleveld",
+   "via": "photo",
+   "note": "Snelleveld two-tone, two upper windows"
+  },
+  "23": {
+   "type": "zo-rb-two-tone",
+   "variant": "snelleveld",
+   "via": "photo",
+   "note": "Snelleveld two-tone, two upper windows"
+  },
+  "32": {
+   "type": "zo-rb-two-tone",
+   "variant": "snelleveld",
+   "via": "photo",
+   "note": "Snelleveld two-tone, two upper windows"
+  },
+  "36": {
+   "type": "zo-rb-two-tone",
+   "variant": "snelleveld",
+   "via": "photo",
+   "note": "Snelleveld two-tone, two upper windows"
+  },
+  "43": {
+   "type": "zo-rb-two-tone",
+   "variant": "snelleveld",
+   "via": "photo",
+   "note": "Snelleveld two-tone, two upper windows"
+  },
+  "46": {
+   "type": "zo-rb-two-tone",
+   "variant": "snelleveld",
+   "via": "photo",
+   "note": "Snelleveld two-tone, two upper windows"
+  },
+  "51": {
+   "type": "zo-rb-two-tone",
+   "variant": "snelleveld",
+   "via": "photo",
+   "note": "Snelleveld two-tone, two upper windows"
+  },
+  "11": {
+   "type": "zo-rb-two-tone",
+   "variant": "snelleveld",
+   "via": "signature",
+   "note": "5.45 x 9.05 m 1983-84 pitched, dak_min 5.8; photo missing/ivy"
+  },
+  "22": {
+   "type": "zo-rb-two-tone",
+   "variant": "snelleveld",
+   "via": "signature",
+   "note": "5.45 x 9.05 m 1983-84 pitched, dak_min 5.8; photo missing/ivy"
+  },
+  "28": {
+   "type": "zo-rb-two-tone",
+   "variant": "snelleveld",
+   "via": "signature",
+   "note": "5.45 x 9.05 m 1983-84 pitched, dak_min 5.8; photo missing/ivy"
+  },
+  "41": {
+   "type": "zo-rb-two-tone",
+   "variant": "snelleveld",
+   "via": "signature",
+   "note": "5.45 x 9.05 m 1983-84 pitched, dak_min 5.8; photo missing/ivy"
+  },
+  "2": {
+   "type": "zo-rb-two-tone",
+   "variant": "simonshaven",
+   "via": "photo",
+   "note": "12.5 m pands with low annex, Tefelen window layout"
+  },
+  "4": {
+   "type": "zo-rb-two-tone",
+   "variant": "simonshaven",
+   "via": "photo",
+   "note": "12.5 m pands with low annex, Tefelen window layout"
+  },
+  "6": {
+   "type": "zo-rb-two-tone",
+   "variant": "simonshaven",
+   "via": "photo",
+   "note": "12.5 m pands with low annex, Tefelen window layout"
+  },
+  "15": {
+   "type": "zo-rb-two-tone",
+   "variant": "simonshaven",
+   "via": "photo",
+   "note": "12.5 m pands with low annex, Tefelen window layout"
+  },
+  "21": {
+   "type": "zo-rb-two-tone",
+   "variant": "simonshaven",
+   "via": "photo",
+   "note": "12.5 m pands with low annex, Tefelen window layout"
+  },
+  "24": {
+   "type": "zo-rb-two-tone",
+   "variant": "simonshaven",
+   "via": "photo",
+   "note": "12.5 m pands with low annex, Tefelen window layout"
+  },
+  "48": {
+   "type": "zo-rb-two-tone",
+   "variant": "simonshaven",
+   "via": "photo",
+   "note": "12.5 m pands with low annex, Tefelen window layout"
+  },
+  "50": {
+   "type": "zo-rb-two-tone",
+   "variant": "simonshaven",
+   "via": "photo",
+   "note": "12.5 m pands with low annex, Tefelen window layout"
+  },
+  "52": {
+   "type": "zo-rb-two-tone",
+   "variant": "simonshaven",
+   "via": "signature",
+   "note": "12.6 m pitched 1983 Simonshavenstraat; photo a shed"
+  },
+  "68": {
+   "type": "zo-rb-pair-door",
+   "variant": "buff",
+   "via": "photo",
+   "note": "paired doors under one canopy, buff brick"
+  },
+  "70": {
+   "type": "zo-rb-pair-door",
+   "variant": "buff",
+   "via": "photo",
+   "note": "paired doors under one canopy, buff brick"
+  },
+  "72": {
+   "type": "zo-rb-pair-door",
+   "variant": "buff",
+   "via": "photo",
+   "note": "paired doors under one canopy, buff brick"
+  },
+  "76": {
+   "type": "zo-rb-pair-door",
+   "variant": "buff",
+   "via": "photo",
+   "note": "paired doors under one canopy, buff brick"
+  },
+  "92": {
+   "type": "zo-rb-pair-door",
+   "variant": "buff",
+   "via": "photo",
+   "note": "paired doors under one canopy, buff brick"
+  },
+  "49": {
+   "type": "zo-rb-pair-door",
+   "variant": "red",
+   "via": "photo",
+   "note": "paired doors under one canopy, red-brown brick"
+  },
+  "56": {
+   "type": "zo-rb-pair-door",
+   "variant": "red",
+   "via": "photo",
+   "note": "paired doors under one canopy, red-brown brick"
+  },
+  "65": {
+   "type": "zo-rb-pair-door",
+   "variant": "red",
+   "via": "photo",
+   "note": "paired doors under one canopy, red-brown brick"
+  },
+  "74": {
+   "type": "zo-rb-pair-door",
+   "variant": "buff",
+   "via": "photo",
+   "note": "paired doors under one canopy, buff brick with red-brown panels (render review: not red throughout)"
+  },
+  "81": {
+   "type": "zo-rb-pair-door",
+   "variant": "buff",
+   "via": "photo",
+   "note": "paired doors under one canopy, buff brick with red-brown panels (render review: not red throughout)"
+  },
+  "87": {
+   "type": "zo-rb-pair-door",
+   "variant": "buff",
+   "via": "photo",
+   "note": "paired doors under one canopy, buff brick with red-brown panels (render review: not red throughout)"
+  },
+  "0": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "photo",
+   "note": "timber upper storey, brick piers, flat roof"
+  },
+  "1": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "photo",
+   "note": "timber upper storey, brick piers, flat roof"
+  },
+  "5": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "photo",
+   "note": "timber upper storey, brick piers, flat roof"
+  },
+  "10": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "photo",
+   "note": "timber upper storey, brick piers, flat roof"
+  },
+  "16": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "photo",
+   "note": "timber upper storey, brick piers, flat roof"
+  },
+  "17": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "photo",
+   "note": "timber upper storey, brick piers, flat roof"
+  },
+  "27": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "photo",
+   "note": "timber upper storey, brick piers, flat roof"
+  },
+  "33": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "photo",
+   "note": "timber upper storey, brick piers, flat roof"
+  },
+  "45": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "photo",
+   "note": "timber upper storey, brick piers, flat roof"
+  },
+  "67": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "photo",
+   "note": "timber upper storey, brick piers, flat roof"
+  },
+  "3": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "signature",
+   "note": "5.45 x 12.3-12.6 m 1983-84, dak_min 2.5-2.7 annex, flat p70 5.7-5.9 in the Sinderen/Silvolde rows; photo a wall or hedge"
+  },
+  "7": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "signature",
+   "note": "5.45 x 12.3-12.6 m 1983-84, dak_min 2.5-2.7 annex, flat p70 5.7-5.9 in the Sinderen/Silvolde rows; photo a wall or hedge"
+  },
+  "14": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "signature",
+   "note": "5.45 x 12.3-12.6 m 1983-84, dak_min 2.5-2.7 annex, flat p70 5.7-5.9 in the Sinderen/Silvolde rows; photo a wall or hedge"
+  },
+  "19": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "signature",
+   "note": "5.45 x 12.3-12.6 m 1983-84, dak_min 2.5-2.7 annex, flat p70 5.7-5.9 in the Sinderen/Silvolde rows; photo a wall or hedge"
+  },
+  "30": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "signature",
+   "note": "5.45 x 12.3-12.6 m 1983-84, dak_min 2.5-2.7 annex, flat p70 5.7-5.9 in the Sinderen/Silvolde rows; photo a wall or hedge"
+  },
+  "39": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "signature",
+   "note": "5.45 x 12.3-12.6 m 1983-84, dak_min 2.5-2.7 annex, flat p70 5.7-5.9 in the Sinderen/Silvolde rows; photo a wall or hedge"
+  },
+  "40": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "signature",
+   "note": "5.45 x 12.3-12.6 m 1983-84, dak_min 2.5-2.7 annex, flat p70 5.7-5.9 in the Sinderen/Silvolde rows; photo a wall or hedge"
+  },
+  "59": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "signature",
+   "note": "5.45 x 12.3-12.6 m 1983-84, dak_min 2.5-2.7 annex, flat p70 5.7-5.9 in the Sinderen/Silvolde rows; photo a wall or hedge"
+  },
+  "71": {
+   "type": "zo-rb-timber",
+   "variant": "timber",
+   "via": "signature",
+   "note": "5.45 x 12.3-12.6 m 1983-84, dak_min 2.5-2.7 annex, flat p70 5.7-5.9 in the Sinderen/Silvolde rows; photo a wall or hedge"
+  }
+ }
+}

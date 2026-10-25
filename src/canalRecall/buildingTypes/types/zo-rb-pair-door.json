@@ -1,0 +1,365 @@
+{
+ "id": "zo-rb-pair-door",
+ "label": "Reigersbos (1983-84) terraced house in mirrored pairs: two blue doors side by side under one grey concrete canopy, buff brick with a red-brown panel over the doors (or red-brown throughout), dark tile roof (Slichtenhorststraat, Sleewijkstraat, Snelleveldplein)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 140,
+  "bouwjaar": [
+   1983,
+   1984
+  ],
+  "lengthM": 8.75,
+  "widthM": 5.45,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.3,
+  6.2
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.1,
+   5.8
+  ],
+  "depth": [
+   8.3,
+   9.3
+  ]
+ },
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.25,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.12,
+  "pitchDeg": 31,
+  "eavesPinM": 5.7
+ },
+ "ridgeRangeM": [
+  7.9,
+  9.0
+ ],
+ "ground": {
+  "mode": "solid",
+  "plinthM": 0.55
+ },
+ "defaultVariant": "buff",
+ "variants": {
+  "buff": {
+   "label": "buff brick, red-brown panel over the doors",
+   "evidence": "sunlit 2109987 buff #d3bfa5 / red #a58c7c, 2066652 plinth #aa8370",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#d3bfa5",
+     "measured": true
+    },
+    "frame": "#a9c79b",
+    "glass": "#4b5a6b",
+    "door": "#4a72a0",
+    "accent": "#c4c1af",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#ece9e0",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#7e786e",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#a88672",
+     "measured": true
+    }
+   }
+  },
+  "red": {
+   "label": "red-brown brick throughout",
+   "evidence": "sunlit 2066652 red pair #aa8b7a, 2113078",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#aa8b7a",
+     "measured": true
+    },
+    "frame": "#a9c79b",
+    "glass": "#4b5a6b",
+    "door": "#4a72a0",
+    "accent": "#c4c1af",
+    "rail": "#c9c4b6",
+    "dark": "#3a3a3a",
+    "column": "#ece9e0",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#7e786e",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#9c7a68",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012066652.jpg",
+     "pand": "0363100012066652",
+     "address": "Slichtenhorststraat",
+     "note": "sunlit 2017-06 (~69 px/m): mirrored pairs, two doors side by side under one grey concrete canopy; two ground windows (1.3 and 0.85 m) and two upper windows; buff brick with a red-brown brick panel between the upper windows over the doors; red-brown brick plinth; dark tile roof"
+    },
+    {
+     "photo": "sunlit crop 0363100012109987.jpg",
+     "pand": "0363100012109987",
+     "address": "Sleewijkstraat",
+     "note": "sunlit 2018-07: same; buff #d3bfa5, red panel #a58c7c, canopy #c4c1af, blue doors; some pairs are red-brown brick throughout"
+    },
+    {
+     "photo": "sunlit crop 0363100012113078.jpg",
+     "pand": "0363100012113078",
+     "address": "Slichtenhorststraat",
+     "note": "sunlit 2018-07: 36-house row, red-brown pairs"
+    },
+    {
+     "photo": "survey crop 0363100012135781.jpg",
+     "pand": "0363100012135781",
+     "address": "Slichtenhorststraat",
+     "note": "survey: same layout"
+    },
+    {
+     "photo": "survey crop 0363100012080888.jpg",
+     "pand": "0363100012080888",
+     "address": "Sleewijkstraat",
+     "note": "survey: same layout"
+    },
+    {
+     "photo": "survey crop 0363100012134671.jpg",
+     "pand": "0363100012134671",
+     "address": "Snelleveldplein",
+     "note": "survey: same layout, buff"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.6,
+       "w": 0.95,
+       "h": 2.15
+      },
+      {
+       "kind": "canopy",
+       "ref": "left",
+       "levels": "ground",
+       "u": 0.78,
+       "w": 1.56,
+       "h": 0.2,
+       "sill": 2.35,
+       "depth": 0.55,
+       "canopy": "flat",
+       "colour": "accent"
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 2.55,
+       "w": 1.3,
+       "h": 1.45,
+       "sill": 0.8,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "ref": "right",
+       "levels": "ground",
+       "u": 1.25,
+       "w": 0.85,
+       "h": 1.45,
+       "sill": 0.8,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 2.0,
+       "w": 0.95,
+       "h": 1.3,
+       "sill": 0.7,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.8,
+       "w": 1.15,
+       "h": 1.3,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "panel",
+       "ref": "left",
+       "levels": "upper",
+       "u": 0.75,
+       "w": 1.5,
+       "h": 2.85,
+       "sill": 0.0,
+       "depth": 0.02,
+       "colour": "plinth",
+       "variants": [
+        "buff"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012066652.jpg",
+     "pand": "0363100012066652",
+     "address": "Slichtenhorststraat",
+     "note": "garden side NOT photographed: garden door, living-room window and two bedroom windows, inferred; hidden between rear gardens"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "ref": "left",
+       "levels": "ground",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "ground",
+       "u": 3.4,
+       "w": 2.2,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "ref": "left",
+       "levels": "upper",
+       "u": 3.9,
+       "w": 1.2,
+       "h": 1.2,
+       "sill": 0.8,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012066652.jpg",
+     "pand": "0363100012066652",
+     "address": "Slichtenhorststraat",
+     "note": "end wall seen edge-on beside the front; plain brick, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012066652.jpg",
+     "pand": "0363100012066652",
+     "address": "Slichtenhorststraat",
+     "note": "end wall seen edge-on beside the front; plain brick, no openings read; party walls (mid-terrace) get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Buff and red-brown pairs alternate within some rows; the variant is chosen per terrace (dominant colour), per-pair alternation is not modelled.",
+  "Frames are painted per house (green, yellow, red); the design uses the commonest pale green.",
+  "Garden side inferred.",
+  "3DBAG: dak_min 5.6-5.7, ridge 8.3-8.4; dormered houses read 6.6-7.0 m and catslides 4.3-4.8 m, so the photographed eaves are pinned (eavesPinM 5.7) and ridgeRangeM holds rebuilt roofs. Dormers are not modelled."
+ ],
+ "rowCoherentHeights": true
+}
