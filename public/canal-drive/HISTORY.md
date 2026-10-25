@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+**Repetitive designs round 7 (2026-10-25, #80).** 9 designs, 34 units,
+995 pands: Middelveldsche Akerpolder 519 (47 %; terrace-matched from 78
+terrace photos), Orteliusbuurt-Noord 116 (64 %), Orteliusbuurt-Zuid 161
+(61 %), Jan Maijenbuurt 176 (59 %), John Franklinbuurt 23 (9 %; stoops,
+balcony rows, bays and galleries too mixed). 1920s pands checked one by one
+on their own crops. we-pk Postjeskade designs not reused (no canted bays).
+Flat 1920s roofs pinned to the parapet (12.6-12.8 m) because 3DBAG's median
+counts rooftop additions. Kit: sash colour, porthole glazing,
+`ground.plinthStoreys`, `panel.archM` (arched portal split across a party
+line). Draws +5 to +23 per view. Pilot tile golden re-recorded: tile
+16/33638/21541 gains 4 typed pands, none changed. Kit gaps: rooftop
+additions/box dormers, stepped parapet peaks, brick corbels, canted top
+bays, exterior stoops, tile coping, downpipes, separated portiek openings.
+
 **Repetitive designs round 6 (2026-10-25, #79).** 10 designs, 25 units,
 944 houses: Postjeskade e.o. 234 (57 %; 69 held, mostly the 7.5 m open-stair
 Antillenstraat block), Grunder/Koningshoef 137 (33 %; Lontarpalmstraat has
