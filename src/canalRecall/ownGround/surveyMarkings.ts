@@ -33,7 +33,7 @@ import type { RoadMark } from './roadMarks.js';
 import { convexOverlap, lineAngle } from './crossingAudit.js';
 import { traceMark } from './sourceTrace.js';
 import { inRuns, zebraEvidenceAt, type PhotoEvidence } from './photoEvidence.js';
-import { BLOCK, isSignalCrossing, mouthMarking, rankOf, sharkTeeth, SIGNAL_REACH_M, STOP_LINE_M, type MarkFrame } from './roadMarkings.js';
+import { BLOCK, GUESSED_PAINT, isSignalCrossing, mouthMarking, rankOf, sharkTeeth, SIGNAL_REACH_M, STOP_LINE_M, type MarkFrame } from './roadMarkings.js';
 
 /** The surveyed carriageway draws these marks (streets.ts PAINT_ON_SURVEY keeps the old band paint off there). */
 export const SURVEY_MARKINGS = true;
@@ -135,6 +135,8 @@ export interface SurveyMarkingInput {
   lift: { paint: number; red: number };
   /** What the orthophoto shows (photoEvidence.ts): given, centre dashes draw only on a way's listed runs. */
   evidence?: PhotoEvidence;
+  /** Graph-inferred teeth and, without evidence, centre dashes on every wide two-way road (default GUESSED_PAINT: off). */
+  guessedPaint?: boolean;
 }
 
 const isBridge = (w: LocalWay) => !!w.tags.bridge && w.tags.bridge !== 'no';
@@ -630,6 +632,7 @@ export function alignCycleCrossing(plans: readonly Pick<CrossingPlan, 'kind' | '
 
 export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArrays; red: MeshArrays; stats: SurveyMarkingStats; crossings: DrawnCrossing[]; plan: CrossingPlanStats } {
   const t0 = Date.now();
+  const guessed = input.guessedPaint ?? GUESSED_PAINT;
   const mk = new SurveyMarker(input), { ways, height, lift, marks } = input, st = mk.stats;
   const junctions = carriageJunctions(ways);
   const nearestJunction = (p: Vec2, r: number) => { let best: JNode | null = null; for (const n of junctions) if (dist(n.p, p) <= r && (!best || dist(n.p, p) < dist(best.p, p))) best = n; return best; };
@@ -816,7 +819,7 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
       const s = Math.min(20, half / sin + 0.6);
       mouthR = Math.max(mouthR, s);
       // With photo evidence only node-backed marks are drawn (R3, lane roads-lanes 2026-10-23): no teeth the graph infers.
-      if (signalised || mapped || !input.ownsPoint(j.p) || input.evidence) continue;
+      if (signalised || mapped || !input.ownsPoint(j.p) || input.evidence || !guessed) continue;
       const otherBest = Math.max(...others.filter(o => o.way !== a.way).map(o => rankOf(o.way.tags.highway)), -1);
       if (mouthMarking(a.way.tags.highway, otherBest, false) !== 'giveWay') continue;
       const line = armLine(a, s + 2), lst = stations(line);
@@ -843,7 +846,7 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
     if (w.tags.cyclestreet === 'yes' || w.tags.bicycle_road === 'yes' || w.tags.junction === 'roundabout') continue;
     // Only where the orthophoto shows a line along the middle (photoEvidence centre; lane roads-lanes 2026-10-23).
     const shown = input.evidence ? input.evidence.centre.get(w.id) : undefined;
-    if (input.evidence && !shown) continue;
+    if ((input.evidence || !guessed) && !shown) continue;
     const wst = stations(w.points), total = wst[wst.length - 1];
     if (total < CENTRE_DASH[0] + 2 * CENTRE_CUT_M) continue;
     // Measured middle every metre (null where narrower than the minimum, or off the carriageway).

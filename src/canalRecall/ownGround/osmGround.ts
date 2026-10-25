@@ -124,7 +124,9 @@ export interface Band {
   kerb: 'left' | 'right' | 'both' | 'none';
 }
 
-export interface PaintLine { offset: number; width: number; dash: [number, number] | null }
+/** `mapped`: the way itself is mapped as the marked crossing (crossing / crossing:markings tags); every other line is
+ *  a class prior (centre and edge lines, lane and track edges) and draws only with GUESSED_PAINT (roadMarkings.ts). */
+export interface PaintLine { offset: number; width: number; dash: [number, number] | null; mapped?: true }
 
 export interface CrossSection {
   bands: Band[];
@@ -260,12 +262,12 @@ export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): Cro
     const width = bgtWidth ? Math.min(bgtWidth, 30) : tagWidth ?? (hw === 'cycleway' && tags.oneway === 'yes' ? 2.1 : path.width);
     const band: Band = { kind: sidewalk ? 'sidewalk' : kind, surface, offset: 0, width, raised: sidewalk ? KERB_M : 0, kerb: sidewalk ? 'both' : 'none' };
     const marked = ['zebra', 'marked', 'uncontrolled'].includes(tags.crossing) || (!!tags['crossing:markings'] && tags['crossing:markings'] !== 'no');
-    const paint: PaintLine[] = crossing && marked && !sidewalk && kind === 'footway' ? [{ offset: 0, width: Math.min(width, 3), dash: [0.5, 0.5] }] : [];
+    const paint: PaintLine[] = crossing && marked && !sidewalk && kind === 'footway' ? [{ offset: 0, width: Math.min(width, 3), dash: [0.5, 0.5], mapped: true }] : [];
     // A cycle crossing is red only where OSM says so; otherwise the road shows through between
     // the white block markings (blokmarkering) along both edges.
     if (tags.cycleway === 'crossing' && tags['surface:colour'] !== 'red') {
       const e = Math.max(0.6, Math.min(width, 4) / 2 - 0.2);
-      paint.push({ offset: e, width: 0.4, dash: [0.4, 0.4] }, { offset: -e, width: 0.4, dash: [0.4, 0.4] });
+      paint.push({ offset: e, width: 0.4, dash: [0.4, 0.4], mapped: true }, { offset: -e, width: 0.4, dash: [0.4, 0.4], mapped: true });
     }
     // A separated cycle path: a clean white edge line either side (not on crossings or narrow paths).
     if (kind === 'cycleway' && !crossing && width >= 1.5) paint.push({ offset: width / 2 - 0.15, width: 0.08, dash: null }, { offset: -(width / 2 - 0.15), width: 0.08, dash: null });

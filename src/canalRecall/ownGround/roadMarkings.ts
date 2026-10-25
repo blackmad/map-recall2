@@ -31,6 +31,14 @@
 import { drapeTriangles, type MeshArrays } from './drape.js';
 import type { HeightFn, Vec2 } from './surface.js';
 
+/**
+ * Paint read from priors (lane road-surfaces 2026-10-25, issue #63): centre and edge lines from a way's class, lane and
+ * track edge lines, junction-mouth teeth and stop lines from the class graph, lane-link and path-crossing blocks, and
+ * survey centre dashes without the orthophoto's evidence. Off: only paint a survey (BGT, the orthophoto) or an OSM node
+ * or crossing way backs is drawn. The functions here stay (tests and a future survey-backed caller use them).
+ */
+export const GUESSED_PAINT = false;
+
 /** OSM highway classes by priority (higher wins); unknown and paths 0. */
 export const CLASS_RANK: Readonly<Record<string, number>> = {
   motorway: 7, trunk: 6, primary: 5, secondary: 4, tertiary: 3, unclassified: 2, busway: 2, road: 1, residential: 1, living_street: 0, service: 0,

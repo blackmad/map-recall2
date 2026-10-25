@@ -5,6 +5,8 @@
 //
 //   npx tsx scripts/own-ground/road-look-junctions.ts render <label> [--only=id,id]   # top-downs (+ ortho, pano cache)
 //   npx tsx scripts/own-ground/road-look-junctions.ts sheet <before> <after> [--only=id,id] [--frames-before=dir] [--frames-after=dir]
+//   npx tsx scripts/own-ground/road-look-junctions.ts chase <before-dir> <after-dir> --only=name,name [--title=..] [--out=file]
+//                                                     # chase frames only, before | after per spec spot name (issue #63)
 //   npx tsx scripts/own-ground/road-look-junctions.ts measure [--only=id,id]   # orthophoto tones: rails vs the road beside, per BGT class/mesh
 //
 // Writes under artifacts/roads/look-junctions/: top-<label>/<id>.png, ortho/<id>.png, pano/<id>.jpg, sheet.jpg.
@@ -135,8 +137,28 @@ async function measure(): Promise<void> {
   for (const [k, a] of Object.entries(all).sort((p, q) => q[1].length - p[1].length)) { const m = med(a); console.log(`${k.padEnd(22)} ${m.join(',')} luma ${luma(m).toFixed(0)} n ${a.length}`); }
 }
 
+/** Chase frames only (desktop-<name>.png of tests/e2e/own-ground-roads.spec.ts), before | after, one row per spot name. */
+async function chase(before: string, after: string): Promise<void> {
+  const names = (arg('only') ?? '').split(',').filter(Boolean), gap = 4, head = 26, CW = 960, CH = 600, W = 2 * CW + gap;
+  const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const text = (t: string, h = head, size = 15) => Buffer.from(`<svg width="${W}" height="${h}" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#1d1d1d"/><text x="6" y="${h - 8}" font-family="Helvetica" font-size="${size}" fill="#eee">${esc(t)}</text></svg>`);
+  const img = async (f: string) => (existsSync(f) ? sharp(f).resize(CW, CH, { fit: 'cover' }).png().toBuffer() : sharp({ create: { width: CW, height: CH, channels: 3, background: '#333' } }).png().toBuffer());
+  const parts: sharp.OverlayOptions[] = [];
+  let y = 0;
+  parts.push({ input: text(arg('title') ?? `chase frames: ${before} | ${after}`, 32, 17), left: 0, top: y }); y += 32;
+  for (const n of names) {
+    parts.push({ input: text(`${n}: before | after`), left: 0, top: y }); y += head;
+    parts.push({ input: await img(join(before, `desktop-${n}.png`)), left: 0, top: y }, { input: await img(join(after, `desktop-${n}.png`)), left: CW + gap, top: y });
+    y += CH + gap;
+  }
+  const out = arg('out') ?? join(OUT, 'chase-sheet.jpg');
+  await sharp({ create: { width: W, height: y, channels: 3, background: '#111' } }).composite(parts).jpeg({ quality: 82 }).toFile(out);
+  console.log(out);
+}
+
 const [mode, a, b] = process.argv.slice(2);
 if (mode === 'render') await render(a ?? 'now');
 else if (mode === 'sheet') await sheet(a ?? 'before', b ?? 'after');
+else if (mode === 'chase') await chase(a ?? 'artifacts/own-ground-roads/before', b ?? 'artifacts/own-ground-roads/after');
 else if (mode === 'measure') await measure();
 else console.log('render <label> | sheet <before> <after> | measure');

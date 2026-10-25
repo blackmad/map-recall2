@@ -21,7 +21,7 @@ import { crossSection, type BgtWidthDm, type Band, type CrossSection, type OsmWa
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, pointAt, ribbon, stations, triangleCount, type MeshArrays } from './drape.js';
 import type { HeightFn, Vec2 } from './surface.js';
 import earcut from 'earcut';
-import { bar, blocks, crossingStation, isSignalCrossing, mouthMarking, rankOf, sharkTeeth, strip, CROSSING_REACH_M, SIGNAL_REACH_M, STOP_LINE_M, type Keep } from './roadMarkings.js';
+import { bar, blocks, crossingStation, GUESSED_PAINT, isSignalCrossing, mouthMarking, rankOf, sharkTeeth, strip, CROSSING_REACH_M, SIGNAL_REACH_M, STOP_LINE_M, type Keep } from './roadMarkings.js';
 import type { RoadIndex } from './roadSurfaces.js';
 import { traceMark } from './sourceTrace.js';
 import { inRuns, stationOf, type PhotoEvidence } from './photoEvidence.js';
@@ -419,9 +419,10 @@ export function shadowedWays(ways: readonly LocalWay[]): Set<number> {
  * `only` limits which ways emit geometry while the junction graph still sees
  * all of them (the prototype builds bridge ways separately, uncut by the water mask).
  */
-export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number; only?: (w: LocalWay) => boolean; canalSide?: (x: number, y: number) => boolean; acrossStep?: number; /** Junction road markings (roadMarkings.ts); off for the far ring. */ markings?: boolean; /** The surveyed road partition (roads-v1): see RoadsOption. */ roads?: RoadsOption } = {}): StreetMeshes {
+export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number; only?: (w: LocalWay) => boolean; canalSide?: (x: number, y: number) => boolean; acrossStep?: number; /** Junction road markings (roadMarkings.ts); off for the far ring. */ markings?: boolean; /** Prior paint (class centre/edge lines, graph mouth marks, lane-link and path-crossing blocks); default GUESSED_PAINT (off). */ guessedPaint?: boolean; /** The surveyed road partition (roads-v1): see RoadsOption. */ roads?: RoadsOption } = {}): StreetMeshes {
   const step = opts.step ?? 3;
   const bgt = opts.roads ?? null;
+  const guessed = opts.guessedPaint ?? GUESSED_PAINT;
   const clipped = { paint: 0, rails: 0, lanes: 0, fills: 0, crossCuts: 0, coveredWays: 0, bandStations: 0, bandTris: 0 };
   // roads-v1: the markings sit over the surveyed carriageway plane's float (roadSurfaces ROAD_MARK_LIFT).
   const paintLift = bgt ? ROAD_MARK_LIFT.paint : LIFT.paint, railLift = bgt ? ROAD_MARK_LIFT.rail : LIFT.rail;
@@ -524,6 +525,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
     }
     traceMark(out.paint, 'bandPaint');
     for (const line of w.section.paint) {
+      if (!line.mapped && !guessed) continue;
       // Paint lies on a band and stops where that band stops (road paint at the junction edge).
       const host = w.section.bands.find(b => Math.abs(line.offset - b.offset) <= b.width / 2 + 0.01) ?? w.section.bands[0];
       const onRoad = host.kind === 'carriageway' || host.kind === 'cycle_lane';
@@ -543,7 +545,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
     for (const o of w.section.rails ?? []) for (const r of [-0.7175, 0.7175]) for (const piece of railPieces ? railPieces.pieces : [w.points]) if (piece.length >= 2) ribbon(out.tram, piece, o + r, RAIL_GROOVE_M, height, railLift, { step });
     // A separate cycle path crossing a carriageway untagged leaves a gap there (pathCuts): mark it as a cycle crossing.
     traceMark(out.cycle, 'cycleCross'); traceMark(out.paint, 'cycleCross');
-    if (opts.markings !== false && !carriage && w.section.bands[0]?.kind === 'cycleway' && !isCrossing(w)) out.stats.markings.blocks += cyclePathCrossings(out, w, nodes, st, height, bgt);
+    if (opts.markings !== false && !carriage && w.section.bands[0]?.kind === 'cycleway' && !isCrossing(w)) out.stats.markings.blocks += cyclePathCrossings(out, w, nodes, st, height, bgt, guessed);
   }
   // Junction fills and kerb corners: emitted once, by the node's owner way.
   for (const n of nodes.values()) {
@@ -565,7 +567,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
     out.stats.junctions++;
     if (!surveyed) for (const c of n.corners) out.stats.corners += cornerPatches(out, n, c, height, step);
     traceMark(out.cycle, 'band');
-    if (opts.markings !== false) junctionMarkings(out, n, signalPoints, crossingWays, height, bgt && surveyed ? bgt : null);
+    if (opts.markings !== false) junctionMarkings(out, n, signalPoints, crossingWays, height, bgt && surveyed ? bgt : null, guessed);
   }
   return out;
 }
@@ -581,14 +583,15 @@ function armLine(a: Arm): Vec2[] {
  * Stop lines or shark teeth across each arm's inbound lanes, and painted cycle
  * lanes carried through to their straight-through partner (roadMarkings.ts).
  */
-function junctionMarkings(out: StreetMeshes, n: Node, signals: readonly Vec2[], crossings: readonly LocalWay[], height: HeightFn, bgt: RoadsOption | null): void {
+function junctionMarkings(out: StreetMeshes, n: Node, signals: readonly Vec2[], crossings: readonly LocalWay[], height: HeightFn, bgt: RoadsOption | null, guessed = GUESSED_PAINT): void {
   const st = out.stats.markings;
   // roads-v1 (the node lies in a surveyed polygon): stop lines and teeth stay, clipped to the carriageway polygons;
   // the lane links and their blocks are off (the polygons carry the junction surface; a strip of red through a
   // surveyed junction is the smear the user saw).
   const keep: Keep | undefined = bgt ? (x, y) => PAINT_ON_SURVEY && bgt.index.onRoad(x, y) : undefined;
   const signalised = signals.some(p => Math.hypot(p[0] - n.p[0], p[1] - n.p[1]) <= SIGNAL_REACH_M);
-  for (const a of n.arms) {
+  // Mouth marks are the class graph's guess (no node says them): GUESSED_PAINT only.
+  if (guessed) for (const a of n.arms) {
     const hw = a.way.tags.highway ?? '';
     const otherBest = Math.max(0, ...n.arms.filter(b => b.way !== a.way).map(b => rankOf(b.way.tags.highway)));
     const mark = mouthMarking(hw, otherBest, signalised);
@@ -629,6 +632,8 @@ function junctionMarkings(out: StreetMeshes, n: Node, signals: readonly Vec2[], 
     const side = n.arms.some(c => c !== a && c !== b && (c.angle - a.angle + 2 * Math.PI) % (2 * Math.PI) < span - 1e-6 && (c.angle - a.angle + 2 * Math.PI) % (2 * Math.PI) > 1e-6);
     const e = dirOf(A, B), m: Vec2 = [-e[1], e[0]], h = w / 2 - BLOCK_HALF;
     const edge = (k: number): [Vec2, Vec2] => [[A[0] + m[0] * k, A[1] + m[1] * k], [B[0] + m[0] * k, B[1] + m[1] * k]];
+    // The red link is the tagged lane carried on; its blocks and edge dashes are priors (GUESSED_PAINT).
+    if (!guessed) continue;
     if (side) { for (const k of [h, -h]) { const [p, q] = edge(k); st.blocks += blocks(out.paint, p, q, height, LIFT.paint); } st.cycleCrossings++; }
     else {
       // No side road: the lane just runs on; its line toward the road (the side nearer the junction centre) dashed as on the arms.
@@ -648,7 +653,7 @@ const BLOCK_HALF = 0.2;
  * street, class unclassified or lower, where Amsterdam carries the path's red
  * across). Returns the number of blocks.
  */
-function cyclePathCrossings(out: StreetMeshes, w: LocalWay, nodes: Map<string, Node>, st: readonly number[], height: HeightFn, bgt: RoadsOption | null): number {
+function cyclePathCrossings(out: StreetMeshes, w: LocalWay, nodes: Map<string, Node>, st: readonly number[], height: HeightFn, bgt: RoadsOption | null, guessed = GUESSED_PAINT): number {
   let count = 0;
   const width = w.section.bands[0].width, last = w.points.length - 1;
   w.points.forEach((p, i) => {
@@ -663,7 +668,8 @@ function cyclePathCrossings(out: StreetMeshes, w: LocalWay, nodes: Map<string, N
     if (surveyed && !bgt!.index.onRoad((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)) return;
     if (!surveyed && Math.max(...n.arms.map(x => rankOf(x.way.tags.highway))) <= 2) strip(out.cycle, a, b, width, height, LIFT.cycleLane);
     const keep: Keep | undefined = bgt ? (x, y) => PAINT_ON_SURVEY && bgt.index.onRoad(x, y) : undefined;
-    for (const s of [k, -k]) count += blocks(out.paint, [a[0] + m[0] * s, a[1] + m[1] * s], [b[0] + m[0] * s, b[1] + m[1] * s], height, bgt ? ROAD_MARK_LIFT.paint : LIFT.paint, undefined, undefined, keep);
+    // Blocks at an untagged path crossing are a prior (no crossing node or way says them): GUESSED_PAINT only.
+    if (guessed) for (const s of [k, -k]) count += blocks(out.paint, [a[0] + m[0] * s, a[1] + m[1] * s], [b[0] + m[0] * s, b[1] + m[1] * s], height, bgt ? ROAD_MARK_LIFT.paint : LIFT.paint, undefined, undefined, keep);
     out.stats.markings.cycleCrossings++;
   });
   return count;
