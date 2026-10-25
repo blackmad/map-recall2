@@ -493,6 +493,12 @@
  "notes": [
   "Overcast photos only (2020-01, 2022-01): wall colours white-referenced against the white hood/canopy of the same crop (exposure.ts).",
   "Brick rises to just under the upper windows (ground.plinthM 4.2 m, the plinth palette is the red brick); the cream weatherboard is the wall above it with shadow lines (stripes, joint palette); the dark brick plinth course is a stripe 3.5 cm proud.",
-  "Dormers on some houses, the grey vent stacks, solar panels and the brick porch boxes of the band rows (#36, #38, #40) are not modelled."
- ]
+  "Dormers on some houses, the grey vent stacks, solar panels and the brick porch boxes of the band rows (#36, #38, #40) are not modelled.",
+  "Deep houses (11.2-11.8 m, terraces #0-#2: rear extension in the BAG ring) get their own unit (sizeClassesM depth 10 m) instead of a stretched one."
+ ],
+ "sizeClassesM": {
+  "depth": [
+   10.0
+  ]
+ }
 }
