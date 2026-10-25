@@ -1,0 +1,578 @@
+{
+ "terraces": {
+  "1": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "2": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "3": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "5": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "8": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "12": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "13": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "14": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "15": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "19": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "25": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "26": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "28": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "29": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "30": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "31": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "32": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "34": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "35": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "37": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "38": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "39": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "41": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "44": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "46": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "47": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "48": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "50": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "51": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "53": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "55": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "56": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "58": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "59": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "60": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "62": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "63": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "64": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "65": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "66": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "67": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "68": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "70": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "71": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "72": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "74": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "75": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "76": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "77": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "78": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "79": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "80": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "81": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "82": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "83": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "84": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "85": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "87": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "88": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "90": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "93": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "94": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "95": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "96": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "97": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "98": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "100": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "101": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "102": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "104": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "106": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "107": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "108": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "111": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "112": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "113": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "118": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "122": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "photo"
+  },
+  "33": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "signature",
+   "note": "1932, 5.3 x 6.8 m, eaves 6.2 m, ridge 8.7 m: the brick-row block of its street (photo missing, obscured or side-on)"
+  },
+  "49": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "signature",
+   "note": "1932, 5.5 x 7.1 m, eaves 6.3 m, ridge 8.9 m: the brick-row block of its street (photo missing, obscured or side-on)"
+  },
+  "73": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "signature",
+   "note": "1932, 5.4 x 6.8 m, eaves 6.3 m, ridge 8.8 m: the brick-row block of its street (photo missing, obscured or side-on)"
+  },
+  "92": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "signature",
+   "note": "1932, 5.4 x 6.8 m, eaves 6.3 m, ridge 8.8 m: the brick-row block of its street (photo missing, obscured or side-on)"
+  },
+  "103": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "signature",
+   "note": "1932, 5.3 x 7.1 m, eaves 6.3 m, ridge 8.9 m: the brick-row block of its street (photo missing, obscured or side-on)"
+  },
+  "110": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "signature",
+   "note": "1931, 5.3 x 7.1 m, eaves 6.2 m, ridge 8.8 m: the brick-row block of its street (photo missing, obscured or side-on)"
+  },
+  "115": {
+   "type": "nd-bz-brick-row",
+   "variant": "green-door",
+   "via": "signature",
+   "note": "1931, 4.6 x 8.3 m, eaves 5.9 m, ridge 8.9 m: the brick-row block of its street (photo missing, obscured or side-on)"
+  },
+  "6": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "16": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "20": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "21": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "22": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "23": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "27": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "36": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "40": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "42": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "43": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "45": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "52": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "54": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "57": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "61": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "69": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "86": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "99": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "105": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "109": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "114": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "119": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "121": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "123": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "125": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "photo"
+  },
+  "116": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "signature",
+   "note": "1931, 4.5 x 8.4 m, eaves 6.3 m, ridge 9.6 m: Urkstraat pair-gable row (corner photo only)"
+  },
+  "117": {
+   "type": "nd-bz-green-gable",
+   "variant": "green",
+   "via": "signature",
+   "note": "1931, 4.5 x 8.4 m, eaves 6.3 m, ridge 9.6 m: Urkstraat pair-gable row (corner photo only)"
+  }
+ }
+}

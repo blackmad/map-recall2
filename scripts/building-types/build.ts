@@ -12,8 +12,8 @@ import path from 'node:path';
 import {generate, type GenerateReport} from '../../src/canalRecall/buildingTypes/generate.ts';
 import {lngLatToLocal, minimumRotatedRectangle, swapAxes, freeSides, rectIoU, bearingDeg, type Anchor, type Pt} from '../../src/canalRecall/buildingTypes/geometry.ts';
 import {frontSide, frontTowardBearing, frontYaw, type Street} from '../../src/canalRecall/buildingTypes/orientation.ts';
-import {bodyRectFromRoof, paramsFromFacts, roofFactsFromItem, roofPolygons, slopeEavesFromItem, storeysFromHeight, type CityJsonItem, type RoofFacts} from '../../src/canalRecall/buildingTypes/facts.ts';
-import {validateSpec, type TypeSpec} from '../../src/canalRecall/buildingTypes/spec.ts';
+import {bodyRectFromRoof, fallSideFromItem, paramsFromFacts, roofFactsFromItem, roofPolygons, slopeEavesFromItem, storeysFromHeight, type CityJsonItem, type RoofFacts} from '../../src/canalRecall/buildingTypes/facts.ts';
+import {sizeClass, validateSpec, type TypeSpec} from '../../src/canalRecall/buildingTypes/spec.ts';
 import {writeBakedGlb, writeInstancedGlb, writeMergedGlb, writeTypeGlb, type InstancedGroup, type PlacedInstance} from '../../src/canalRecall/buildingTypes/glb.ts';
 import type {MeshBuilder} from '../../src/canalRecall/buildingTypes/mesh.ts';
 import {lngLatToRd, rdToLngLat} from '../../src/canalRecall/rdCoordinates.ts';
@@ -60,7 +60,8 @@ const mirrorOf = new Map<string, boolean>();
     if (!spec?.alternateMirror) continue;
     const ring: Pt[] = i.ringLngLat.map(([lng, lat]: number[]) => lngLatToLocal(input.anchor, lng, lat));
     const rect = swapAxes(minimumRotatedRectangle(ring)), f0 = frontSide(rect, input.streets), f = o.frontBearingDeg != null ? frontTowardBearing(rect, f0, o.frontBearingDeg) : f0;
-    rows.push({id: i.pandId, t: rect.center[0] * f.tangent[0] + rect.center[1] * f.tangent[1], n: rect.center[0] * f.normal[0] + rect.center[1] * f.normal[1], tan: f.tangent, frontage: rect.length});
+    // n: the FRONT wall line (centre + half the depth), so houses of one row with different depths (a rear extension in the BAG ring) stay one row
+    rows.push({id: i.pandId, t: rect.center[0] * f.tangent[0] + rect.center[1] * f.tangent[1], n: rect.center[0] * f.normal[0] + rect.center[1] * f.normal[1] + rect.width / 2, tan: f.tangent, frontage: rect.length});
   }
   const par = rows.map((_, k) => k), find = (k: number): number => (par[k] === k ? k : (par[k] = find(par[k])));
   for (let a = 0; a < rows.length; a++) for (let b = a + 1; b < rows.length; b++) {
@@ -120,6 +121,14 @@ for (const instIn of input.instances) {
       warnings.push(`eaves from the 3DBAG roof planes: ${f.toFixed(2)} m on the side read as front, ${b.toFixed(2)} m on the other (${fromPlanes})`);
     } else warnings.push(`no two opposite 3DBAG roof slopes below the ridge: eaves from b3_h_dak_min`);
   }
+  // Designs whose low front eaves 3DBAG misses on many houses carry the photo-measured eaves (spec.roof.eavesPinM).
+  if (spec.roof.eavesPinM != null) {
+    const was = params.eavesM;
+    params.eavesM = spec.roof.eavesPinM; params.storeys = spec.storeys; delete params.backEavesM;
+    const kept = warnings.filter(w => !/^b3_h_dak_min eaves|^storey height|^eaves .* say|^eaves from the 3DBAG/.test(w));
+    warnings.length = 0; warnings.push(...kept);
+    if (Math.abs(was - params.eavesM) > 0.6) warnings.push(`eaves ${params.eavesM} m from the photos (3DBAG ${was.toFixed(2)} m)`);
+  }
   // variants.json may pin the wall-top height read from the photo (a flat roof whose 3DBAG median roof height includes a plant box or parapet): storeys then follow the type.
   if (o.eavesM) { params.eavesM = o.eavesM; params.storeys = spec.storeys; warnings.push(`eaves pinned to ${o.eavesM} m from the photo (3DBAG roof height ignored)`); }
   warnings.push(...bodyWarnings);
@@ -127,10 +136,17 @@ for (const instIn of input.instances) {
   if (spec.frontOnShort) params.freeSides = freeSides(rect, front.tangent, otherRings.filter(r => r.id !== inst.pandId).map(r => r.ring));
   // variants.json `mirror` is the handedness read from the photos (explicit per house); otherwise the alternation rule of the spec applies.
   if (o.mirror !== undefined) params.mirror = o.mirror; else if (spec.alternateMirror) params.mirror = mirrorOf.get(inst.pandId) ?? false;
+  let pairHold: string | undefined;
+  // a pair gable's handedness is measured per house: the roof falls to the free side (unmirrored: the left)
+  if (o.mirror === undefined && spec.roof.pairGable) {
+    const side = fallSideFromItem(await item3d(inst.pandId), [front.tangent[0], -front.tangent[1]]);
+    if (side) params.mirror = side === 'right'; else pairHold = 'pair gable: 3DBAG roof planes fall to both sides (a whole gable on this pand, not half of a pair): not this design';
+  }
   // the design's eaves range is checked on the house's own 3DBAG eaves, before any row clamp
   const outOfRange = spec.eavesRangeM && (params.eavesM < spec.eavesRangeM[0] || params.eavesM > spec.eavesRangeM[1]) ? `eaves ${params.eavesM.toFixed(2)} m outside the ${spec.eavesRangeM.join('-')} m of ${spec.id}: not this two-storey design` : undefined;
   const fr = spec.footprintRangeM, outOfFootprint = fr && (params.lengthM < fr.frontage[0] || params.lengthM > fr.frontage[1] || params.widthM < fr.depth[0] || params.widthM > fr.depth[1]) ? `footprint ${params.lengthM.toFixed(2)} x ${params.widthM.toFixed(2)} m outside ${fr.frontage.join('-')} x ${fr.depth.join('-')} m of ${spec.id}: extended or notched house` : undefined;
-  pending.push({held: o.hold ?? outOfRange ?? outOfFootprint, absorb: o.absorb, inst, spec, rect, front, roof, warnings, iou, params, groundNapM});
+  const rr = spec.ridgeRangeM, outOfRidge = rr && params.ridgeM != null && (params.ridgeM < rr[0] || params.ridgeM > rr[1]) ? `ridge ${params.ridgeM.toFixed(2)} m outside the ${rr.join('-')} m of ${spec.id}: raised or rebuilt roof` : undefined;
+  pending.push({held: o.hold ?? outOfRange ?? outOfFootprint ?? outOfRidge ?? pairHold, absorb: o.absorb, inst, spec, rect, front, roof, warnings, iou, params, groundNapM});
 }
 // Row coherence (spec.rowCoherentHeights): one terrace of one design, built as one project, has one eaves and ridge line; every house of a
 // row of three or more takes the row's median eaves, back eaves and ridge (3DBAG reads a dormer, a lean-to or a LoD artefact into single
@@ -191,7 +207,8 @@ const bakedRaw = await writeBakedGlb(area, placed, {compress: 'none'}), mergedRa
 
 // True instancing: one unit mesh per design group at the group's median size, per-instance scale.
 const median = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)];
-const groupKey = (b: Built) => [b.type, b.variant, b.report.storeys, b.report.roofForm, b.report.ridge, b.report.groundMode, ...(b.report.sides ? [b.report.sides] : []), ...(b.report.mirrored ? ['mirror'] : [])].join('|');
+const sizeOf = (b: Built) => sizeClass(specs.get(b.type)!, b.params.lengthM, b.params.widthM);
+const groupKey = (b: Built) => [b.type, b.variant, b.report.storeys, b.report.roofForm, b.report.ridge, b.report.groundMode, ...(b.report.sides ? [b.report.sides] : []), ...(sizeOf(b) ? [sizeOf(b)!] : []), ...(b.report.mirrored ? ['mirror'] : [])].join('|');
 const groups = new Map<string, Built[]>();
 for (const b of built.filter(b => !b.held)) groups.set(groupKey(b), [...(groups.get(groupKey(b)) ?? []), b]);
 const instanced: InstancedGroup[] = [], groupInfo: any[] = [];
@@ -238,7 +255,7 @@ const report = {
     saving: {bytesVsMerged: +(1 - inst.bytes.length / merged.bytes.length).toFixed(3), bytesVsBaked: +(1 - inst.bytes.length / baked.bytes).toFixed(3), bytesUncompressedVsMerged: +(1 - instRaw.bytes.length / mergedRaw.bytes.length).toFixed(3)},
   },
   groups: groupInfo,
-  instancesDetail: built.map(b => ({pandId: b.pandId, held: b.held ?? null, ...(b.absorbed ? {absorbed: b.absorbed} : {}), type: b.type, variant: b.variant, groundMode: b.report.groundMode, sides: b.report.sides ?? null, mirrored: !!b.report.mirrored, storeys: b.report.storeys, tris: b.report.triangles, lengthM: +b.rect.length.toFixed(2), widthM: +b.rect.width.toFixed(2), eavesM: +b.params.eavesM.toFixed(2), ridgeM: b.params.ridgeM && +b.params.ridgeM.toFixed(2), roof3dbag: b.roof?.form ?? null, roofUsed: b.report.roofForm, ridge: b.report.ridge, rectIoU: +b.iou.toFixed(3), frontBearingDeg: Math.round(bearingDeg(b.front.normal[0], b.front.normal[1])), frontStreet: b.front.street, frontStreetDistM: +b.front.streetDistanceM.toFixed(1), ambiguous: b.front.ambiguous, warnings: b.warnings})),
+  instancesDetail: built.map(b => ({pandId: b.pandId, held: b.held ?? null, ...(b.absorbed ? {absorbed: b.absorbed} : {}), type: b.type, variant: b.variant, groundMode: b.report.groundMode, sides: b.report.sides ?? null, ...(sizeOf(b) ? {sizeClass: sizeOf(b)} : {}), mirrored: !!b.report.mirrored, storeys: b.report.storeys, tris: b.report.triangles, lengthM: +b.rect.length.toFixed(2), widthM: +b.rect.width.toFixed(2), eavesM: +b.params.eavesM.toFixed(2), ridgeM: b.params.ridgeM && +b.params.ridgeM.toFixed(2), roof3dbag: b.roof?.form ?? null, roofUsed: b.report.roofForm, ridge: b.report.ridge, rectIoU: +b.iou.toFixed(3), frontBearingDeg: Math.round(bearingDeg(b.front.normal[0], b.front.normal[1])), frontStreet: b.front.street, frontStreetDistM: +b.front.streetDistanceM.toFixed(1), ambiguous: b.front.ambiguous, warnings: b.warnings})),
 };
 fs.writeFileSync(path.join(dir, 'report.json'), JSON.stringify(report, null, 1) + '\n');
 fs.writeFileSync(path.join(dir, 'placements.json'), JSON.stringify({area, frame: 'x east, z south, y NAP metres from anchor; yaw about +y takes the local frame (front +z, tangent +x) to east/south', anchor: input.anchor, placements: built.map(b => ({pand: b.pandId, type: b.type, variant: b.variant, groundMode: b.report.groundMode, transform: {positionEastNapSouth: b.position.map(v => +v.toFixed(3)), positionChunk: [b.position[0], 0, b.position[2]].map(v => +v.toFixed(3)), yawRad: +b.yaw.toFixed(5), lengthM: +b.params.lengthM.toFixed(2), widthM: +b.params.widthM.toFixed(2), eavesM: +b.params.eavesM.toFixed(2)}}))}, null, 1) + '\n');

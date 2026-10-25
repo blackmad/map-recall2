@@ -53,7 +53,7 @@ for (const area of areas) {
   const placements = new Map((JSON.parse(fs.readFileSync(path.join(dir, 'placements.json'), 'utf8')).placements as any[]).map(p => [p.pand, p]));
   for (const d of report.instancesDetail) {
     if (d.held) { held[d.pandId] = d.held; continue; }
-    const key = [d.type, d.variant, d.storeys, d.roofUsed, d.ridge, d.groundMode, ...(d.sides ? [d.sides] : []), ...(d.mirrored ? ['mirror'] : [])].join('|');
+    const key = [d.type, d.variant, d.storeys, d.roofUsed, d.ridge, d.groundMode, ...(d.sides ? [d.sides] : []), ...(d.sizeClass ? [d.sizeClass] : []), ...(d.mirrored ? ['mirror'] : [])].join('|');
     const unit = key.replace(/\|/g, '__'), n = canon.get(unit)?.nominal;
     if (!n) throw new Error(`no group ${key}`);
     const t = placements.get(d.pandId).transform;

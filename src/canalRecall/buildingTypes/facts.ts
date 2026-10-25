@@ -110,6 +110,20 @@ export function slopeEavesFromItem(item: CityJsonItem, frontRD: Pt): {frontNap: 
   return {frontNap: aFront ? a.minZ : b.minZ, backNap: aFront ? b.minZ : a.minZ};
 }
 
+/**
+ * The side a single-pitch roof falls to, seen from the front: the largest slanted LoD2.2 roof plane's fall direction against the
+ * front facade's left-to-right tangent `tangentRD` (RD east, north). 'right' when it falls towards +tangent, 'left' towards
+ * -tangent, null when it falls front or back (within 45 degrees) or there is no slanted plane. A pair gable's house falls to its
+ * free side (pairGable in generate.ts).
+ */
+export function fallSideFromItem(item: CityJsonItem, tangentRD: Pt): 'left' | 'right' | null {
+  const slanted = decodeRoofPlanes(item).filter(p => Math.hypot(p.normal[0], p.normal[1]) / Math.max(1e-9, p.normal[2]) > Math.tan(SLANT_MIN_DEG * Math.PI / 180) && p.area > AREA_MIN_M2);
+  if (!slanted.length) return null;
+  const a = slanted.reduce((x, y) => (y.area > x.area ? y : x)), h = Math.hypot(a.normal[0], a.normal[1]);
+  const along = (a.normal[0] * tangentRD[0] + a.normal[1] * tangentRD[1]) / h / (Math.hypot(tangentRD[0], tangentRD[1]) || 1);
+  return along > Math.SQRT1_2 ? 'right' : along < -Math.SQRT1_2 ? 'left' : null;
+}
+
 export const roofFactsFromItem = (item: CityJsonItem): RoofFacts => roofFactsFromPlanes(decodeRoofPlanes(item));
 
 /** 'long' when the ridge runs within 45 degrees of the rectangle's long side. RD (east, north) -> local (east, south). */

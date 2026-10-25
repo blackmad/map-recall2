@@ -6,8 +6,8 @@ import {bearingDeg, freeSides, lngLatToLocal, localToLngLat, minimumRotatedRecta
 import {frontSide, frontTowardBearing, frontYaw, type Street} from './orientation.ts';
 import {asymSlope, generate, layoutBays, mirrorBays} from './generate.ts';
 import {bakeWorld} from './glb.ts';
-import {FACADE_IDS, validateSpec, type TypeSpec} from './spec.ts';
-import {bodyRectFromRoof, paramsFromFacts, ridgeAlongOf, roofFactsFromPlanes, slopeEavesFromItem, type CityJsonItem} from './facts.ts';
+import {FACADE_IDS, sizeClass, validateSpec, type TypeSpec} from './spec.ts';
+import {bodyRectFromRoof, fallSideFromItem, paramsFromFacts, ridgeAlongOf, roofFactsFromPlanes, slopeEavesFromItem, type CityJsonItem} from './facts.ts';
 import {solarPosition} from '../../../scripts/building-types/solar.ts';
 import {sharedTerrain} from '../../../scripts/lib/terrainField.ts';
 
@@ -604,4 +604,88 @@ test('kit parts absent -> byte-identical: no canopy, boards, palette bands or an
   const C = load('zo-g3-red-clad.json'), q = {lengthM: 5.3, widthM: 8.7, eavesM: 5.7, ridgeM: 9.3};
   const withBoards = generate(C, q).mesh.triangles, without = generate({...C, facades: {...C.facades, front: {...C.facades.front, boards: undefined}}}, q).mesh.triangles;
   assert.ok(withBoards > without + 20, `battens drawn (${withBoards} vs ${without})`);
+});
+
+const ND_TYPES = ['nd-to-cottage', 'nd-to-row', 'nd-bz-brick-row', 'nd-bz-green-gable'].map(id => load(`${id}.json`));
+// upper openings per variant where a variant changes them (the JSON counts the default variant)
+const ND_UPPER: Record<string, number> = {'nd-to-row/wide': 2, 'nd-to-row/wide-orange': 2};
+const xs = (mesh: ReturnType<typeof generate>['mesh'], key: string) => { const b = mesh.buckets.get(key); const out: number[][] = []; if (b) for (let i = 0; i < b.positions.length; i += 3) out.push([b.positions[i], b.positions[i + 1], b.positions[i + 2]]); return out; };
+
+test('Noord designs (Tuindorp Oostzaan, Blauwe Zand): validate, >= 4 distinct photo pands on the front, counted openings match for every variant and handedness, <= 400 triangles, party walls blank, ridge reached, within the frontage', () => {
+  for (const spec of ND_TYPES) {
+    assert.deepEqual(validateSpec(spec), [], spec.id);
+    assert.equal(spec.frontOnShort, true);
+    assert.equal(spec.rowCoherentHeights, true);
+    assert.ok(new Set(spec.facades.front.evidence.map(e => e.pand)).size >= 4, `${spec.id}: evidence`);
+    const [lo, hi] = spec.eavesRangeM!, eaves = spec.roof.eavesPinM ?? (lo + hi) / 2, ridge = spec.roof.pairGable ? eaves + 3.4 : spec.roof.eavesPinM ? 7.6 : eaves + 2.6;
+    for (const variant of Object.keys(spec.variants)) for (const mirror of [false, true]) {
+      const base = {lengthM: 5.3, widthM: 8.4, eavesM: eaves, ridgeM: ridge, variant, mirror};
+      const {report, mesh} = generate(spec, base);
+      for (const id of FACADE_IDS) {
+        const want = {...spec.facades[id].counted, ...(id === 'front' && ND_UPPER[`${spec.id}/${variant}`] !== undefined ? {openingsPerUpperStorey: ND_UPPER[`${spec.id}/${variant}`]} : {})};
+        assert.deepEqual(report.facades[id], want, `${spec.id}/${variant}/${id}`);
+      }
+      assert.ok(mesh.triangles <= 400, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
+      const mid = generate(spec, {...base, freeSides: {left: false, right: false}});
+      assert.equal(mid.report.facades.left.bays + mid.report.facades.right.bays, 0, 'party walls have no bays');
+      const b = mesh.bounds(), ov = Math.max(spec.roof.vergeOverhangM, spec.roof.pairGable ? spec.roof.eavesOverhangM : 0);
+      assert.ok(b.min[1] >= -1e-9 && Math.abs(b.max[1] - ridge) < 1e-6, `${spec.id}: ridge reached, nothing below ground`);
+      assert.ok(b.max[0] <= 5.3 / 2 + ov + 0.06 && b.min[0] >= -5.3 / 2 - ov - 0.06, `${spec.id}/${variant}/${mirror}: within its frontage`);
+    }
+  }
+});
+
+test('dormers: absent -> byte-identical; a half dormer sits on the front slope flush with the window-side party wall, mirrors with the house, and stays under the ridge', () => {
+  const C = load('nd-to-cottage.json'), p = {lengthM: 5.3, widthM: 8.9, eavesM: 2.75, ridgeM: 7.6, variant: 'red-door'};
+  const none = {...C, roof: {...C.roof, dormers: undefined}}, empty = {...C, roof: {...C.roof, dormers: []}};
+  const a = generate(none, p).mesh, b = generate(empty, p).mesh;
+  for (const [key, bucket] of a.buckets) assert.deepEqual(b.buckets.get(key)!.positions, bucket.positions, key);
+  const withD = generate(C, p).mesh;
+  assert.ok(withD.triangles > a.triangles + 15 && withD.triangles < a.triangles + 40, `dormer adds ${withD.triangles - a.triangles} triangles`);
+  const cheek = `stucco|${C.variants['red-door'].palette.column}`;
+  const pts = (m: boolean) => xs(generate(C, {...p, mirror: m}).mesh, cheek).filter(q => q[1] > 3);
+  const right = pts(false), left = pts(true);
+  assert.ok(right.length && Math.max(...right.map(q => q[0])) <= 2.65 + 1e-9 && Math.min(...right.map(q => q[0])) > 0.6, 'unmirrored: on the right (window) side, up to the party wall, no overhang across it');
+  assert.ok(Math.abs(Math.min(...left.map(q => q[0])) + Math.max(...right.map(q => q[0]))) < 1e-9, 'mirrored: the same dormer on the left');
+  const sb = C.roof.dormers![0].setBackM, tan = (7.6 - 2.75) / 4.45, front = right.filter(q => Math.abs(q[2] - (4.45 - sb)) < 1e-9);
+  assert.ok(Math.abs(Math.min(...front.map(q => q[1])) - (2.75 + sb * tan)) < 1e-6, 'front face meets the roof plane behind the wall');
+  assert.ok(Math.max(...right.map(q => q[1])) < 7.6, 'dormer roof below the ridge');
+});
+
+test('pair gable: one plane from the free-side eaves to the ridge on the shared wall, mirrored by handedness; gable triangles boarded in the gable colour, side walls stay brick', () => {
+  const G = load('nd-bz-green-gable.json'), p = {lengthM: 4.5, widthM: 8.4, eavesM: 6.3, ridgeM: 9.6, variant: 'green', roofForm: 'gable' as const, ridge: 'long' as const};
+  const roofKey = `roofTile|${(G.variants.green.palette.roof as {tint: string}).tint}`;
+  const r0 = generate(G, p), r1 = generate(G, {...p, mirror: true});
+  assert.equal(r0.report.ridge, 'short', 'the pair gable ridge runs front to back whatever 3DBAG called it');
+  const top = (m: typeof r0) => xs(m.mesh, roofKey).reduce((best, q) => (q[1] > best[1] ? q : best));
+  assert.ok(Math.abs(top(r0)[0] - 2.25) < 1e-9 && Math.abs(top(r1)[0] + 2.25) < 1e-9, 'ridge on the right (unmirrored) or left party wall');
+  const low = xs(r0.mesh, roofKey).filter(q => q[0] < -2.2);
+  assert.ok(low.length && low.every(q => Math.abs(q[1] - 6.3) < 0.02), 'the free side carries the eaves');
+  const gable = xs(r0.mesh, `stucco|${(G.variants.green.palette.gable as {tint: string}).tint}`);
+  assert.ok(gable.some(q => q[1] > 9) && gable.every(q => Math.abs(q[2]) >= 4.2 - 1e-6), 'boarded triangles on the front and back only');
+  const brick = xs(r0.mesh, `brick|${G.variants.green.palette.wall.tint}`);
+  assert.ok(brick.some(q => Math.abs(q[0] - 2.25) < 1e-9 && q[1] > 9), 'shared wall face up to the ridge in brick');
+  assert.ok(r0.mesh.triangles <= 400);
+  const plain = generate({...G, roof: {...G.roof, pairGable: undefined}}, p);
+  assert.equal(plain.report.ridge, 'long', 'without pairGable the roof is the ordinary gable');
+});
+
+test('fallSideFromItem: a single plane falling to the east is "right" for a south-facing house (tangent east), "left" for a north-facing one, none for a front/back slope', () => {
+  const V = [[0, 0, 6.3], [0, 8, 6.3], [-4.5, 8, 9.6], [-4.5, 0, 9.6], [0, 0, 9.6], [5, 0, 9.6], [5, -4, 6.0], [0, -4, 6.0]];
+  const mk = (rings: number[][]) => ({metadata: {transform: {scale: [1, 1, 1], translate: [0, 0, 0]}}, feature: {type: 'CityJSONFeature', id: 'x', vertices: V, CityObjects: {b: {type: 'Building', geometry: [{lod: '2.2', type: 'Solid', boundaries: [rings.map(r => [r])], semantics: {surfaces: [{type: 'RoofSurface'}], values: [rings.map(() => 0)]}}]}}}}) as unknown as CityJsonItem;
+  const side = mk([[0, 1, 2, 3]]);
+  assert.equal(fallSideFromItem(side, [1, 0]), 'right');
+  assert.equal(fallSideFromItem(side, [-1, 0]), 'left');
+  assert.equal(fallSideFromItem(mk([[4, 5, 6, 7]]), [1, 0]), null);
+});
+
+test('sizeClass: no token without sizeClassesM; thresholds split frontage and depth classes; validateSpec rejects unsorted thresholds', () => {
+  assert.equal(sizeClass({}, 5.2, 8.8), undefined);
+  const spec = {sizeClassesM: {depth: [7.6]}};
+  assert.equal(sizeClass(spec, 5.2, 6.5), 'f0d0');
+  assert.equal(sizeClass(spec, 5.2, 8.8), 'f0d1');
+  assert.equal(sizeClass({sizeClassesM: {frontage: [4.9], depth: [7.4]}}, 5.2, 6.8), 'f1d0');
+  const base = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'types/nd-to-cottage.json'), 'utf8')) as TypeSpec;
+  assert.deepEqual(validateSpec(base), []);
+  assert.ok(validateSpec({...base, sizeClassesM: {depth: [8, 7]}}).some(e => e.includes('sizeClassesM.depth')));
 });
