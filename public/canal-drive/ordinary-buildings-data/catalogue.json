@@ -52403,6 +52403,122 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-25T19:25:00.125Z"
+    },
+    {
+      "id": "ordinary-0363100012250971",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012250971",
+      "name": "Haarlemmerweg 778-938, Amsterdam (Westerpark corner of the Haarlemmerweg corridor): a 2023 dark-brick high-rise, 12 storeys, tall narrow windows and recessed loggias with pale soffits, a glazed ground floor on a paved square",
+      "hash": "8351d60a80238ac52abe176f90cbdc12c5262168013b8ab10eb620a5a672a7c6",
+      "sha256": "8351d60a80238ac52abe176f90cbdc12c5262168013b8ab10eb620a5a672a7c6",
+      "meshHash": "0a12deac72f5c6a0",
+      "bytes": 1124508,
+      "triangles": 15814,
+      "materials": 6,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -13.002,
+          0,
+          -16.827
+        ],
+        "max": [
+          13.161,
+          36.455,
+          21.638
+        ]
+      },
+      "anchor": [
+        4.8532962,
+        52.3857364
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8534552,
+              52.3857613
+            ],
+            [
+              4.8534508,
+              52.3858727
+            ],
+            [
+              4.8531309,
+              52.3858676
+            ],
+            [
+              4.8531335,
+              52.3857943
+            ],
+            [
+              4.8531433,
+              52.3855589
+            ],
+            [
+              4.8534634,
+              52.3855638
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 36.46,
+      "height": 36.45,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-haarlemmerweg-778.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012250971"
+      ],
+      "aliases": [
+        "w1204459160"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "haarlemmerweg-778",
+        "kind": "large",
+        "intentSources": [
+          "pand-reference-walls/0363100012250971/w03-359.jpg",
+          "pand-reference-walls/0363100012250971/w01-269.jpg",
+          "pand-reference-walls/0363100012250971/w02-89.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 11st 7b",
+          "brick-bay-grid 11st 9b",
+          "brick-bay-grid 11st 8b",
+          "brick-bay-grid 11st 6b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] not confirmed by the photo (NO PHOTO); inferred: north front has no usable photo (2025-07-01 panorama is 46 % foliage at 9 m) so brick and window shape and box balconies are carried over from the measured south front and the box cells are inferred",
+        "Kit addition: `boxBalconies` (src/canalRecall/blockBuilding/boxBalcony.ts, tested in buildingRecipe/boxBalcony.test.ts): a closed tray per listed (storey, bay) cell, a 0.24 m slab with a solid parapet on its front and both sides in the group's frame colour (deep 0.55 of the storey = 1.76 m, wide 0.85 of the bay, parapet 0.38 of the storey). Replaces the earlier glass-rail balconies, which the photo does not show. Still not expressible: the window columns shift from storey to storey on the photo (the kit keeps one bay grid per group); the thin metal rail on top of each parapet; boxes that wrap a corner. Facts: the OSM outline w1529423741 (a 9 m 'building' 5 m deep along the south front, a shop entry) was dropped from neighboursRD because it made the lower 9 m of the south wall a blank party wall, where the photo shows windows down to the glazed ground floor."
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012250971",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T21:36:15.043Z"
     }
   ]
 }

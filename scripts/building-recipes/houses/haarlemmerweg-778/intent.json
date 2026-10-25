@@ -3,7 +3,7 @@
  "kind": "large",
  "id": "haarlemmerweg-778",
  "pandId": "0363100012250971",
- "address": "Haarlemmerweg 778-938, Amsterdam (Westerpark corner of the Haarlemmerweg corridor): a 2023 dark-brick high-rise, 12 storeys, tall narrow windows and recessed loggias with pale soffits, a glazed ground floor on a paved square",
+ "address": "Haarlemmerweg 778-938, Amsterdam (Westerpark West, across the Haarlemmertrekvaart from Haarlemmerweg ~512): \"Pepper\" (MVRDV, 2023), a dark grey-brown brick tower of 11 storeys with large square windows and dark closed box balconies projecting from scattered bays on every face, a glazed ground floor",
  "sources": [
   {
    "id": "pano-2025-07-01-n",
@@ -43,14 +43,53 @@
    "windows": "plain",
    "entrance": true,
    "palette": {
-    "brick": "#3b3d3e",
+    "brick": "#8d8580",
     "frame": "#23272b",
     "stone": "#d8d5cf"
    },
    "windowShape": {
-    "w": 0.38,
-    "h": 0.6,
-    "sill": 0.34
+    "w": 0.55,
+    "h": 0.68,
+    "sill": 0.18
+   },
+   "boxBalconies": {
+    "storeyBays": {
+     "2": [
+      1,
+      5
+     ],
+     "3": [
+      3
+     ],
+     "4": [
+      0,
+      4
+     ],
+     "5": [
+      2,
+      6
+     ],
+     "6": [
+      1
+     ],
+     "7": [
+      3,
+      5
+     ],
+     "8": [
+      0
+     ],
+     "9": [
+      2,
+      6
+     ],
+     "10": [
+      4
+     ]
+    },
+    "deep": 0.55,
+    "wide": 0.85,
+    "rail": 0.38
    }
   },
   {
@@ -64,14 +103,59 @@
    "ground": "glazed",
    "windows": "plain",
    "palette": {
-    "brick": "#3b3d3e",
+    "brick": "#8d8580",
     "frame": "#23272b",
     "stone": "#d8d5cf"
    },
    "windowShape": {
-    "w": 0.38,
-    "h": 0.6,
-    "sill": 0.34
+    "w": 0.55,
+    "h": 0.68,
+    "sill": 0.18
+   },
+   "boxBalconies": {
+    "storeyBays": {
+     "1": [
+      0,
+      6
+     ],
+     "2": [
+      3
+     ],
+     "3": [
+      1,
+      8
+     ],
+     "4": [
+      4,
+      6
+     ],
+     "5": [
+      0,
+      2
+     ],
+     "6": [
+      5,
+      8
+     ],
+     "7": [
+      1,
+      3
+     ],
+     "8": [
+      6
+     ],
+     "9": [
+      0,
+      4
+     ],
+     "10": [
+      2,
+      7
+     ]
+    },
+    "deep": 0.55,
+    "wide": 0.85,
+    "rail": 0.38
    }
   },
   {
@@ -86,14 +170,57 @@
    "ground": "glazed",
    "windows": "plain",
    "palette": {
-    "brick": "#3b3d3e",
+    "brick": "#8d8580",
     "frame": "#23272b",
     "stone": "#d8d5cf"
    },
    "windowShape": {
-    "w": 0.38,
-    "h": 0.6,
-    "sill": 0.34
+    "w": 0.55,
+    "h": 0.68,
+    "sill": 0.18
+   },
+   "boxBalconies": {
+    "storeyBays": {
+     "1": [
+      7
+     ],
+     "2": [
+      1,
+      5
+     ],
+     "3": [
+      3,
+      7
+     ],
+     "4": [
+      0
+     ],
+     "5": [
+      4,
+      7
+     ],
+     "6": [
+      2
+     ],
+     "7": [
+      6,
+      7
+     ],
+     "8": [
+      1,
+      4
+     ],
+     "9": [
+      7
+     ],
+     "10": [
+      2,
+      5
+     ]
+    },
+    "deep": 0.55,
+    "wide": 0.85,
+    "rail": 0.38
    }
   },
   {
@@ -102,33 +229,60 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 11,
-   "baysPerStorey": 7,
+   "baysPerStorey": 6,
    "ground": "glazed",
    "windows": "plain",
-   "balconies": {
-    "storeys": [
-     4,
-     5,
-     6,
-     7,
-     8,
-     9,
-     10,
-     11
-    ],
-    "rail": "glass",
-    "every": 2,
-    "first": 1
-   },
    "palette": {
-    "brick": "#3b3d3e",
+    "brick": "#8d8580",
     "frame": "#23272b",
     "stone": "#d8d5cf"
    },
    "windowShape": {
-    "w": 0.38,
-    "h": 0.6,
-    "sill": 0.34
+    "w": 0.55,
+    "h": 0.68,
+    "sill": 0.18
+   },
+   "boxBalconies": {
+    "storeyBays": {
+     "1": [
+      1,
+      4
+     ],
+     "2": [
+      2
+     ],
+     "3": [
+      0,
+      3
+     ],
+     "4": [
+      2,
+      4
+     ],
+     "5": [
+      0,
+      3
+     ],
+     "6": [
+      1,
+      2
+     ],
+     "7": [
+      3
+     ],
+     "8": [
+      1,
+      2,
+      4
+     ],
+     "10": [
+      1,
+      4
+     ]
+    },
+    "deep": 0.55,
+    "wide": 0.85,
+    "rail": 0.38
    }
   }
  ],
@@ -138,7 +292,7 @@
   "flatHex": "#9d9a95"
  },
  "palette": {
-  "brick": "#3b3d3e",
+  "brick": "#8d8580",
   "frame": "#23272b",
   "door": "#1e2124",
   "stone": "#d8d5cf"
@@ -146,10 +300,11 @@
  "closedBands": true,
  "layeredKit": true,
  "notes": [
-  "Haarlemmerweg 778-938 (BAG pand 0363100012250971, built 2023, 749 m2, eaves 36.5 m, 12 storeys at 3.0 m). HELD: every panorama of this tower is leafy. The archive holds every capture day the municipality has within 150 m (2017-04-24, 2019-01-07, 2019-04-15, 2019-11-07, 2022-01-25, 2022-04-08, 2022-12-06, 2024-09-09, 2024-11-21, 2024-11-26, 2025-07-01; artefacts of the all-walls.ts runs and the day inventory are in the lane report). The tower only exists from 2023, so the 2017/2019/2022 crops show the low 1980s office block it replaced and are not evidence. Of the post-completion days: 2025-07-01 (north 46 % foliage, west 37 %, east 53 %, return 63 %), 2024-09-09 (north 57 %, west 53 %, east 40 %), 2024-11-21 leaf-off but 86-88 m off, 49-55 deg oblique, washed out 0.28-0.88, and 2024-11-26 leaf-off at 45 m with 64 % of the crop classed as foliage. No street-facing wall has a usable crop (foliage > 25 % or > 45 deg oblique), so the likeness gate cannot judge this house and it is not installable. It is kept as a draft for a future panorama.",
-  "walls[0] = panel 7 (north, surface 10, 21.4 m): dark charcoal brick, a grid of wide windows with a narrow slot beside each (the same pair rhythm as Haarlemmerweg 940), deep recessed loggias with pale slab soffits stacked on the right third, and a glazed ground floor with the entrance on the paved square. walls[1] = panel 0 (west, surfaces 1 and 5, 29.8 m) and walls[2] = panels 2 and 4 (east, surfaces 3 and 4 plus the 9.8 m return 7) carry the same dark brick grid; walls[3] = panel 1 (south, surface 2, 21.8 m of which 9 m is party wall) has no photo. All four are drawn from the draft's reading of the 2025 north crop and from the 3DBAG massing; none of them is measured.",
-  "Not drawn, and the reason this house needs a bespoke pass before it can be accepted: the deep recessed loggia stacks (the kit projects balconies, it cannot recess one, so the loggias read as punched windows and piers) and the cantilevered white crown. The south group's projecting balconies sit in bays 1, 3 and 5 (every second bay from the second): in the end bays their 1.2 m slabs and glass rails reached past the panel silhouette (audit opening-outside 2 parts, 3.74 m2). Triangle budget 14,000 (intent `budgetTriangles`) keeps the 12-storey grid inside a gate.",
+  "Haarlemmerweg 778-938 (BAG pand 0363100012250971, built 2023, 749 m2, eaves 36.5 m, a 4.0 m ground storey and 10 upper storeys at 3.2 m). Evidence 2026-10-25: the Commons photo (Ceescamel, 2023-08-16, CC BY-SA 4.0, archived as source-data pand-reference-walls/0363100012250971/commons-2023-s.jpg, rectified to the south wall 21.79 x 36.46 m) is the measured front: 6 window columns on a 3.63 m pitch, square windows 0.55 of the bay and 0.68 of the storey, sill 0.18, and 17 box balconies placed by storey and bay (boxBalconies.storeyBays on walls[3]). Every municipal panorama of the tower after completion is summer foliage (2025-07-01: north 46 %, west 42 %, east 36-63 %); the 2017-2022 crops show the block it replaced. The likeness gate reads walls[3] as NO EVIDENCE only because 35 % of the crop is washed out (sky reflections in the glass); its other readings agree: wall #b2a8a0 vs #9d9692 (dL -0.07), glazing 0.489 vs 0.465, columns 6 vs 6, square vs square.",
+  "walls[0] north (surface 10), walls[1] west (1, 5) and walls[2] east (3, 4, 7): no usable photo. They carry the south front's brick, window shape and box balconies; that each face has boxes in a scattered pattern is seen in the 2025-07-01 panoramas (north crop, top storeys) and the Commons photo's east return, but their cells are INFERRED (a scattered pattern of the same density, 1-2 per storey). Installed with --allow-inferred=0 for the north front.",
+  "Kit addition: `boxBalconies` (src/canalRecall/blockBuilding/boxBalcony.ts, tested in buildingRecipe/boxBalcony.test.ts): a closed tray per listed (storey, bay) cell, a 0.24 m slab with a solid parapet on its front and both sides in the group's frame colour (deep 0.55 of the storey = 1.76 m, wide 0.85 of the bay, parapet 0.38 of the storey). Replaces the earlier glass-rail balconies, which the photo does not show. Still not expressible: the window columns shift from storey to storey on the photo (the kit keeps one bay grid per group); the thin metal rail on top of each parapet; boxes that wrap a corner. Facts: the OSM outline w1529423741 (a 9 m 'building' 5 m deep along the south front, a shop entry) was dropped from neighboursRD because it made the lower 9 m of the south wall a blank party wall, where the photo shows windows down to the glazed ground floor.",
+  "Palette: brick #8d8580 sits between the sunlit Commons reading (raw #b2a8a0, strong direct sun) and the overcast reading of the same brick, which the user describes as a dark tower; frame #23272b also colours the trays.",
   "roof.flatHex #9d9a95: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5383: slot gravel, rgb 156/156/156, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
- "budgetTriangles": 14000
+ "budgetTriangles": 18000
 }

@@ -47,7 +47,7 @@ export async function compileLargeHouse(id: string) {
   await fs.writeFile(path.join(out, 'model.glb'), glb.bytes);
   const r = built.recipe;
   await fs.writeFile(path.join(out, 'fitted-recipe.json'), JSON.stringify({kind: 'large', anchorRD: r.anchorRD, recessM: r.recessM, groups: r.groups, other: r.other, panelGroup: r.panelGroup, roofPlant: r.roofPlant, systems: r.spec.systems, palette: r.spec.palette}, null, 1) + '\n');
-  const report = {id, kind: 'large', pandId: intent.pandId, anchorRD: built.anchorRD, fit: built.fit, components: built.components, compose: built.stats,
+  const report = {id, kind: 'large', pandId: intent.pandId, anchorRD: built.anchorRD, fit: built.fit, components: built.components, compose: built.stats, ...(built.crown ? {crown: built.crown} : {}),
     // Blank panels of 8 m or more that touch a taller neighbour are genuine party walls: audit-glb-quality exempts these bearings from its blank-wall check.
     partyWallBearings: [...new Set(built.panels.filter(p => p.partyH > 0.5 && p.uMax - p.uMin >= 8 && r.panelGroup[p.index] < 0).map(p => Math.round(bearingOfNormal(p.n))))].sort((a, b) => a - b),
     triangles: glb.triangles, bytes: glb.bytes.length, materials: glb.materials, sha256: createHash('sha256').update(glb.bytes).digest('hex'),
