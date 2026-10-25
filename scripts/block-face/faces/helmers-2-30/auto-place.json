@@ -1,0 +1,1154 @@
+{
+ "face": "helmers-2-30",
+ "street": "Derde Helmersstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2023-01-12",
+ "seconds": 2.1,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012153452",
+   "address": "Derde Helmersstraat 30",
+   "builtYear": 1898,
+   "widthM": 4.54,
+   "eavesM": 15.75,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#473a34",
+    "wallRaw": "#4a423e",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 152,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.85,
+      "riseM": 1.55,
+      "topWidthM": 0.9,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.04,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.82,
+       "widthM": 0.85,
+       "centre": 0.6
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1899-wall-dormer scores 0.47 < 0.7 (strip cornice 15.75 m vs the type's 13.4 m; strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "helmers-1899-wall-dormer",
+    "score": 0.47,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.75 m vs the type's 13.4 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.016 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164202",
+   "address": "Derde Helmersstraat 28",
+   "builtYear": 1898,
+   "widthM": 6.26,
+   "eavesM": 14.7,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#473d39",
+    "wallRaw": "#49403c",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 194,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.1,
+      "riseM": 1.8,
+      "topWidthM": 0.88,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.52,
+       "widthM": 0.88,
+       "centre": 0.41
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158277",
+   "address": "Derde Helmersstraat 26C",
+   "builtYear": 1898,
+   "widthM": 5.78,
+   "eavesM": 13.6,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e5550",
+    "wallRaw": "#4f4d4a",
+    "skyline": {
+     "eavesM": 17.55,
+     "eavesRow": 80,
+     "confidence": 0.69,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 2,
+      "topWidthM": 0.45,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.011,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.88,
+       "widthM": 0.97,
+       "centre": 0.27
+      },
+      {
+       "atM": 8.72,
+       "widthM": 1.38,
+       "centre": 0.51
+      },
+      {
+       "atM": 6.47,
+       "widthM": 1.23,
+       "centre": 0.29
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1897-balconette-tall scores 0.5 < 0.7 (strip cornice 17.55 m vs the type's 14.3 m)",
+   "best": {
+    "type": "helmers-1897-balconette-tall",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.55 m vs the type's 14.3 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.006 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167376",
+   "address": "Derde Helmersstraat 24",
+   "builtYear": 1892,
+   "widthM": 6.14,
+   "eavesM": 13.85,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#342d2a",
+    "wallRaw": "#484643",
+    "skyline": {
+     "eavesM": 17.25,
+     "eavesRow": 92,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 2.92,
+      "riseM": 2.3,
+      "topWidthM": 0.57,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 6,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.208,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.25 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.119 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012102915",
+   "address": "Derde Helmersstraat 22",
+   "builtYear": 1892,
+   "widthM": 5.82,
+   "eavesM": 13.61,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#302c28",
+    "wallRaw": "#4e4945",
+    "skyline": {
+     "eavesM": 17.15,
+     "eavesRow": 96,
+     "confidence": 0.77,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 2.4,
+      "topWidthM": 0.45,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.209,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.15 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.108 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156162",
+   "address": "Derde Helmersstraat 20",
+   "builtYear": 1892,
+   "widthM": 6.34,
+   "eavesM": 11.29,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c352f",
+    "wallRaw": "#47433f",
+    "skyline": {
+     "eavesM": 12.85,
+     "eavesRow": 268,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 6.55,
+      "topWidthM": 0.28,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.95,
+       "widthM": 1.32,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.85 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160295",
+   "address": "Derde Helmersstraat 18",
+   "builtYear": 1892,
+   "widthM": 5.78,
+   "eavesM": 12.97,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#37302d",
+    "wallRaw": "#433e3b",
+    "skyline": {
+     "eavesM": 12.97,
+     "eavesRow": 263,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.97 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156763",
+   "address": "Derde Helmersstraat 16",
+   "builtYear": 1892,
+   "widthM": 5.72,
+   "eavesM": 11.45,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3f3630",
+    "wallRaw": "#49433f",
+    "skyline": {
+     "eavesM": 11.45,
+     "eavesRow": 324,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.68,
+      "riseM": 2.5,
+      "topWidthM": 0.3,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.175,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.25,
+       "widthM": 1.8,
+       "centre": 0.59
+      },
+      {
+       "atM": 6.42,
+       "widthM": 0.95,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.45 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.083 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152957",
+   "address": "Derde Helmersstraat 14",
+   "builtYear": 1892,
+   "widthM": 6.24,
+   "eavesM": 13.43,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c9c9c8",
+    "wallRaw": "#463f3a",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 245,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.03,
+      "riseM": 5.63,
+      "topWidthM": 0.1,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.176,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.92,
+       "widthM": 1.1,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.43 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.094 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157151",
+   "address": "Derde Helmersstraat 12",
+   "builtYear": 1892,
+   "widthM": 6.02,
+   "eavesM": 11.68,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#413833",
+    "wallRaw": "#605f5d",
+    "skyline": {
+     "eavesM": 11.68,
+     "eavesRow": 315,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.63,
+      "riseM": 2.38,
+      "topWidthM": 0.07,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.06 (light 0.12): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.06,
+       "light": 0.12
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.21,
+       "light": 0.31
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.6,
+       "widthM": 1.23,
+       "centre": 0.29
+      },
+      {
+       "atM": 8.32,
+       "widthM": 1.82,
+       "centre": 0.52
+      },
+      {
+       "atM": 7.57,
+       "widthM": 1.25,
+       "centre": 0.81
+      },
+      {
+       "atM": 7.13,
+       "widthM": 1.18,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.68 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165716",
+   "address": "Derde Helmersstraat 10",
+   "builtYear": 1892,
+   "widthM": 5.94,
+   "eavesM": 13.18,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4b3d37",
+    "wallRaw": "#54504d",
+    "skyline": {
+     "eavesM": 13.18,
+     "eavesRow": 255,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.15,
+      "riseM": 2.8,
+      "topWidthM": 0.13,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.23,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.52,
+       "widthM": 1.73,
+       "centre": 0.8
+      },
+      {
+       "atM": 5.67,
+       "widthM": 1.13,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.18 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.149 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152875",
+   "address": "Derde Helmersstraat 8",
+   "builtYear": 1892,
+   "widthM": 6.03,
+   "eavesM": 11.72,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#35302b",
+    "wallRaw": "#4e4540",
+    "skyline": {
+     "eavesM": 11.72,
+     "eavesRow": 313,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 2.6,
+      "topWidthM": 0.05,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.22,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.47,
+       "widthM": 1.1,
+       "centre": 0.73
+      },
+      {
+       "atM": 6.1,
+       "widthM": 1.25,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.72 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.131 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154138",
+   "address": "Derde Helmersstraat 6",
+   "builtYear": 1892,
+   "widthM": 6.1,
+   "eavesM": 11.7,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d6d5d6",
+    "wallRaw": "#4b433e",
+    "skyline": {
+     "eavesM": 11.7,
+     "eavesRow": 314,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.35,
+      "topWidthM": 1.57,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.228,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.5,
+       "widthM": 0.85,
+       "centre": 0.9
+      },
+      {
+       "atM": 6.52,
+       "widthM": 2.02,
+       "centre": 0.64
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1.1,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.7 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.144 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155521",
+   "address": "Derde Helmersstraat 4",
+   "builtYear": 1892,
+   "widthM": 5.98,
+   "eavesM": 7.43,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#372e29",
+    "wallRaw": "#3c3835",
+    "skyline": {
+     "eavesM": 12.05,
+     "eavesRow": 300,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 2.45,
+      "topWidthM": 0.13,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.45,
+       "widthM": 1.88,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.05 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164314",
+   "address": "Derde Helmersstraat 2",
+   "builtYear": 1891,
+   "widthM": 6.37,
+   "eavesM": 13.88,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#372f2c",
+    "wallRaw": "#3d3633",
+    "skyline": {
+     "eavesM": 13.88,
+     "eavesRow": 227,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.67,
+      "riseM": 3.57,
+      "topWidthM": 0.2,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.221,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.82,
+       "widthM": 1.52,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1891, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.88 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.15 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

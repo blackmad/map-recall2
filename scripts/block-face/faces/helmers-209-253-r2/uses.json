@@ -1,0 +1,53 @@
+{
+ "street": "Eerste Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:25:24.004Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161336",
+   "addresses": [
+    "Eerste Helmersstraat 237"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 237-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000545159"
+    },
+    {
+     "address": "Eerste Helmersstraat 237-H",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010012573411"
+    },
+    {
+     "address": "Eerste Helmersstraat 237-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010012110669"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164140",
+   "addresses": [
+    "Eerste Helmersstraat 239"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 239-H",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000545167"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

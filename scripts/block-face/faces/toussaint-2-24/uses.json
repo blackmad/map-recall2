@@ -1,0 +1,272 @@
+{
+ "street": "Bosboom Toussaintstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157767",
+   "addresses": [
+    "Bosboom Toussaintstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 24-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010012086368"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162201",
+   "addresses": [
+    "Bosboom Toussaintstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 22-H",
+     "use": "winkelfunctie",
+     "areaM2": 126,
+     "bagId": "0363010001020418"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 22-H",
+     "use": "winkelfunctie",
+     "areaM2": 66,
+     "bagId": "0363010012130904"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 22-H",
+     "use": "winkelfunctie",
+     "areaM2": 96,
+     "bagId": "0363010012086367"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809432479,
+     "lngLat": [
+      4.8765947,
+      52.3658259
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "22-H",
+      "addr:postcode": "1054AR",
+      "addr:street": "Bosboom Toussaintstraat",
+      "check_date": "2024-05-23",
+      "name": "SKIN",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://skinamsterdam.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237355",
+   "addresses": [
+    "Bosboom Toussaintstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 20-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 167,
+     "bagId": "0363010012099778"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 20-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000579349"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2414357203,
+     "lngLat": [
+      4.876648,
+      52.365868
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "20",
+      "addr:postcode": "1054AR",
+      "addr:street": "Bosboom Toussaintstraat",
+      "amenity": "kindergarten",
+      "check_date": "2024-05-23",
+      "name": "Slot Meesenstijn",
+      "website": "https://www.slotmeesenstijn.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158787",
+   "addresses": [
+    "Bosboom Toussaintstraat 18A",
+    "Bosboom Toussaintstraat 18B",
+    "Bosboom Toussaintstraat 18C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010001023722"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010001023723"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001023724"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165530",
+   "addresses": [
+    "Bosboom Toussaintstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 307,
+     "bagId": "0363010000593566"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160285",
+   "addresses": [
+    "Bosboom Toussaintstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000593559"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162375",
+   "addresses": [
+    "Bosboom Toussaintstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000593551"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166447",
+   "addresses": [
+    "Bosboom Toussaintstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000593543"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163254",
+   "addresses": [
+    "Bosboom Toussaintstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000593535"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161548",
+   "addresses": [
+    "Bosboom Toussaintstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000593530"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236066",
+   "addresses": [
+    "Bosboom Toussaintstraat 2",
+    "Bosboom Toussaintstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001044280"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 2-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 208,
+     "bagId": "0363010000593516"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  }
+ ]
+}

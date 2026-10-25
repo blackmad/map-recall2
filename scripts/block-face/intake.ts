@@ -30,6 +30,7 @@ import {sharedTerrain} from '../lib/terrainField.ts';
 import {medianFuse, planStrip, type FrontSpan, type PanoRecord} from '../../src/canalRecall/blockFace/strip.ts';
 import {assignUses, type OsmBusiness, type BagUnit} from '../../src/canalRecall/blockFace/uses.ts';
 import {cachedJson} from '../pand-reference/core.ts';
+import {threeDBagBbox, threeDBagDataset, threeDBagItem} from './three-d-bag-source.ts';
 import {listPanos} from '../pand-reference/select.ts';
 import {loadPano} from '../pand-reference/rectify.ts';
 import {lensFor} from '../da-costa-block/neighbourhood-core.ts';
@@ -39,20 +40,18 @@ export const FACES = 'scripts/block-face/faces', STAGING = 'staging/block-face';
 const toRD = (p: [number, number]): RD => { const r = lngLatToRd(p); return [r.x, r.y]; };
 const round = (v: number, d = 2) => +v.toFixed(d);
 
-async function threeDBagBbox(min: RD, max: RD): Promise<CityJsonItem[]> {
-  let url: string | null = `https://api.3dbag.nl/collections/pand/items?bbox=${min[0].toFixed(0)},${min[1].toFixed(0)},${max[0].toFixed(0)},${max[1].toFixed(0)}&limit=100`;
-  const items: CityJsonItem[] = [];
-  for (let page = 0; url && page < 20; page++) {
-    const json: any = await cachedJson(url);
-    for (const feature of json.features ?? []) items.push({feature, metadata: json.metadata});
-    url = json.links?.find((l: any) => l.rel === 'next')?.href ?? null;
-  }
-  return items;
-}
-
 async function overpass(face: string, bboxLatLng: number[]): Promise<OsmBusiness[]> {
   const file = path.join('.cache/block-face', face, 'overpass.json');
   let json: any = await fs.readFile(file, 'utf8').then(JSON.parse).catch(() => null);
+  // A buurt-wide Overpass response (BLOCK_FACE_OVERPASS_AREA=<file> with {bbox: [s, w, n, e], elements, fetchedAt}) serves
+  // every face inside it, cut to the face's bbox, instead of one rate-limited query per face.
+  const area = !json && process.env.BLOCK_FACE_OVERPASS_AREA ? JSON.parse(await fs.readFile(process.env.BLOCK_FACE_OVERPASS_AREA, 'utf8')) : null;
+  if (area && area.bbox[0] <= bboxLatLng[0] && area.bbox[1] <= bboxLatLng[1] && area.bbox[2] >= bboxLatLng[2] && area.bbox[3] >= bboxLatLng[3]) {
+    const [s, w, n, e] = bboxLatLng, inside = (x: any) => { const lat = x.lat ?? x.center?.lat, lon = x.lon ?? x.center?.lon; return lat >= s && lat <= n && lon >= w && lon <= e; };
+    json = {...area, elements: area.elements.filter(inside), bbox: bboxLatLng, cutFrom: area.query};
+    await fs.mkdir(path.dirname(file), {recursive: true});
+    await fs.writeFile(file, JSON.stringify(json));
+  }
   if (!json) {
     const b = bboxLatLng.join(',');
     const q = `[out:json][timeout:60];(nwr["shop"](${b});nwr["amenity"](${b});nwr["craft"](${b});nwr["office"](${b});nwr["healthcare"](${b});nwr["tourism"](${b}););out center tags;`;
@@ -94,14 +93,14 @@ export async function intake(o: {face: string; street: string; seed: string; fro
   const t0 = performance.now(), timings: Record<string, number> = {};
   const lap = (k: string, t: number) => { timings[k] = round((performance.now() - t) / 1000, 1); return performance.now(); };
   const streets: StreetPath[] = (JSON.parse(await fs.readFile('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as any[]).map(s => ({name: s.name, paths: s.paths ?? [s.path]}));
-  const seedItem: any = await cachedJson(`https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${o.seed}`);
+  const seedItem: any = await threeDBagItem(o.seed);
   const seedBag = decodeThreeDBag({feature: seedItem.feature, metadata: seedItem.metadata}).bag[0];
   const c: RD = [seedBag.reduce((s, p) => s + p[0], 0) / seedBag.length, seedBag.reduce((s, p) => s + p[1], 0) / seedBag.length];
   // Grow the area until the face stops short of its edge (a face can run a few hundred metres).
   let r = 90, found: ReturnType<typeof discoverBlockFace>, items: CityJsonItem[];
   for (;;) {
     items = await threeDBagBbox([c[0] - r, c[1] - r], [c[0] + r, c[1] + r]);
-    found = discoverBlockFace(items, streets, {street: o.street, seed: o.seed, from: o.from, to: o.to, toRD, terrainAt: sharedTerrain(), meta: id => ({threeDBag: `https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${id}`, fetchedAt: new Date().toISOString().slice(0, 10), streets: 'public/data/extracts/amsterdam/streets-routing.json'})});
+    found = discoverBlockFace(items, streets, {street: o.street, seed: o.seed, from: o.from, to: o.to, toRD, terrainAt: sharedTerrain(), meta: id => ({threeDBag: `https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${id}`, ...threeDBagDataset(), fetchedAt: new Date().toISOString().slice(0, 10), streets: 'public/data/extracts/amsterdam/streets-routing.json'})});
     const ext = found.pands.flatMap(p => p.facts.bagFootprintRD.flat()), reach = Math.max(...ext.map(p => Math.max(Math.abs(p[0] - c[0]), Math.abs(p[1] - c[1]))));
     if (reach < r - 15 || r >= 360) break;
     r *= 2;

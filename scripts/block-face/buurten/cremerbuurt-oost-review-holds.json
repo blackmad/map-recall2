@@ -1,0 +1,21 @@
+{
+ "note": "Pands held after reviewing the auto-place strip sheets at full size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
+ "reviewed": "2026-10-25",
+ "holds": [
+  {
+   "pandId": "0363100012152877",
+   "address": "Eerste Helmersstraat 211A",
+   "reason": "a cream timber shopfront with a wide display window fills the ground storey under the banded upper storeys; the banded type has a residential ground"
+  },
+  {
+   "pandId": "0363100012162661",
+   "address": "Eerste Helmersstraat 114",
+   "reason": "black-painted front with plain white frames and no jamb blocks; the measured wall reads light tan off the sky-lit strip"
+  },
+  {
+   "pandId": "0363100012166398",
+   "address": "Eerste Helmersstraat 235",
+   "reason": "a brick neck gable with an arched attic light over the cornice line and a white shopfront on the ground storey, between the wall-dormer fronts of 233 and 237; no type"
+  }
+ ]
+}

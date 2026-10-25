@@ -1,0 +1,162 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "helmers-1900-balcony-arch",
+ "district": "helmersbuurt",
+ "description": "Eerste Helmersstraat 42-56 (1900): 6 m red-brown brick fronts of four storeys under a moulded cornice at 14.0 m; three axes of wide three-light windows (a broad centre light between narrow side lights) under a top light; segmental heads with white springer blocks and keystones on storeys 1-2, flat-headed low windows on storey 3; white sills; an iron balconette on a white slab on the centre axis of storeys 1-3; a frieze with white vent panels; a pedestal dormer with a pediment and a finial over the centre; round-arched house door",
+ "fit": {
+  "widthM": [
+   5.6,
+   6.4
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   3.4,
+   3.1,
+   3.1,
+   4.4
+  ],
+  "windows": "casement-sidelights-toplight",
+  "windowHead": {
+   "kind": "segmental",
+   "storeys": [
+    1,
+    2
+   ],
+   "archRing": {
+    "colour": "stone",
+    "style": "springers",
+    "keystone": true,
+    "springerSize": [
+     0.12,
+     0.15
+    ]
+   }
+  },
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.7,
+   0.68,
+   0.68,
+   0.43
+  ],
+  "headLines": [
+   0.88,
+   0.84,
+   0.81,
+   0.52
+  ],
+  "cornice": "simple",
+  "balconies": {
+   "storeys": [
+    1,
+    2,
+    3
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  },
+  "friezeVents": {
+   "span": 1.2,
+   "rise": 0.22,
+   "drop": 0.25
+  },
+  "windowShare": 0.75
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "note": "42-46, 52-56: one dormer on a brick pedestal with a pediment and an iron finial, centred"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "46: round-arched house door on the left axis"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "mirrored neighbours: door on the right axis"
+  }
+ },
+ "palettes": {
+  "red-brown-1900": {
+   "brick": "#7a5341",
+   "frame": "white-painted",
+   "door": "#2a2a2a",
+   "stone": "#d9d6cc",
+   "cornice": "#cfcabd"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every storey: 3 windows with a transom, one width",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3 | dormer: 1",
+  "symmetry": "upper storeys symmetric; door left or right",
+  "groundFloor": "residential",
+  "signage": "none",
+  "roofline": "moulded cornice at 13.7 m over a frieze with white vent panels; one pedestal dormer with a finial",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3,
+   1
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "match": {
+  "years": [
+   1899,
+   1901
+  ],
+  "stucco": false,
+  "frontEavesM": 14,
+  "note": "Eerste Helmersstraat 42-56 (1900), 5.7-6.3 m; cornice 14.0 (skyline 14.06-14.1) m on the 2023-01-12 strip",
+  "yearSlack": 0
+ },
+ "evidence": [
+  {
+   "face": "helmers-40-60",
+   "pands": [
+    "157357",
+    "161460"
+   ],
+   "citation": "strip.jpg 2023-01-12 pands 6-7 (46, 44) at 1.6x with a metre grid: balcony slabs 3.3, 6.5, 9.6 m; storey-1 windows 3.9-6.0 under segmental heads, storey-2 6.9-9.0, storey-3 10.0-11.9 flat; windows 1.5-1.6 m wide (three nearly fill the front); vent panels 12.2-12.5; cornice 12.8-13.7; pedestal dormer 14.0-15.0 with a finial to 16.4 m"
+  },
+  {
+   "face": "helmers-40-60",
+   "pands": [
+    "167041",
+    "165540",
+    "236706",
+    "166340"
+   ],
+   "citation": "strip.jpg 2023-01-12 pands 1-3, 8 (56, 54, 52, 42): the same axes, balconettes and pedestal dormers"
+  }
+ ],
+ "schemaLimits": [
+  "the round-arched house door is the library's square door",
+  "the bellied balconettes are the straight projecting guard",
+  "the dormer's brick pedestal and iron finial are not drawn"
+ ],
+ "notes": [
+  "Palette: read on the hazy 2023-01-12 strip; placed pands take their own measured wall."
+ ]
+}

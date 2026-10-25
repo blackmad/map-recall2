@@ -1,0 +1,275 @@
+{
+ "face": "huygens-9-13",
+ "street": "Eerste Constantijn Huygensstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 0.54,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012160126",
+   "address": "Eerste Constantijn Huygensstraat 9",
+   "builtYear": 1895,
+   "widthM": 5.7,
+   "eavesM": 16.9,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#60635b",
+    "wallRaw": "#e5c385",
+    "skyline": {
+     "eavesM": 16.9,
+     "eavesRow": 56,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 1.4,
+      "topWidthM": 0.75,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.247,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "bay-less open axis 0.7 m at 0.09 (light 0.52): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.09,
+       "light": 0.52
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.25,
+       "light": 0.31
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.47,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.15,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 16.9 m vs the type's 14.9 m)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.9 m vs the type's 14.9 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.067 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156248",
+   "address": "Eerste Constantijn Huygensstraat 11",
+   "builtYear": 1895,
+   "widthM": 5.7,
+   "eavesM": 16.88,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c49161",
+    "wallRaw": "#937e5f",
+    "skyline": {
+     "eavesM": 16.88,
+     "eavesRow": 57,
+     "confidence": 0.77,
+     "crown": {
+      "widthM": 0.65,
+      "riseM": 1.27,
+      "topWidthM": 0.33,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.16,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.35 m at 0.6 (light 0.37): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.35,
+       "centre": 0.6,
+       "light": 0.37
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 16.88 m vs the type's 14.9 m)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.88 m vs the type's 14.9 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.112 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155751",
+   "address": "Eerste Constantijn Huygensstraat 13",
+   "builtYear": 1895,
+   "widthM": 8.79,
+   "eavesM": 14.23,
+   "storeys3dbag": null,
+   "bagBay": {
+    "fromM": 8.79,
+    "toM": 8.79,
+    "depthM": 0.35,
+    "centre": 1,
+    "lineRD": [
+     [
+      120054.33,
+      486486.2
+     ],
+     [
+      120059.193,
+      486485.229
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#9c896c",
+    "wallRaw": "#896749",
+    "skyline": {
+     "eavesM": 16.05,
+     "eavesRow": 90,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 1.85,
+      "riseM": 1.88,
+      "topWidthM": 0.28,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.059,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.88,
+       "widthM": 0.8,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1895, type 1893-1893; frontage 8.79 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1893-1893",
+     "frontage 8.79 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.05 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.044 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

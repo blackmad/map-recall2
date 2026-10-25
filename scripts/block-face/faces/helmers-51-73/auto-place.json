@@ -1,0 +1,1108 @@
+{
+ "face": "helmers-51-73",
+ "street": "Derde Helmersstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2023-01-12",
+ "seconds": 8.39,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "helmers-51-73-r1",
+   "pands": [
+    "0363100012167154",
+    "0363100012163705",
+    "0363100012155520"
+   ],
+   "passed": true,
+   "triangles": 5652
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012167154",
+   "address": "Derde Helmersstraat 51",
+   "builtYear": 1895,
+   "widthM": 5.57,
+   "eavesM": 15.18,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#796662",
+    "wallRaw": "#544945",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 150,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.5,
+       "widthM": 0.9,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "helmers-1896-transom-band",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "helmers-1893-jamb-blocks",
+    "score": 0
+   },
+   "placement": {
+    "type": "helmers-1896-transom-band",
+    "measuredPalette": {
+     "brick": "#796662",
+     "evidence": "strip 2023-01-12 span 0-223: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown plain (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012167154",
+    "ncc": 0.265,
+    "nccRaw": 0.265,
+    "shiftM": [
+     0,
+     -0.15
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.14",
+     "glazing storey band off by 0.22 mean 0.40 vs photo 0.53",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#695953",
+     "model": "#8e7974",
+     "dL": 0.137
+    },
+    "glazing": {
+     "photo": 0.53,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.552
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163705",
+   "address": "Derde Helmersstraat 53",
+   "builtYear": 1895,
+   "widthM": 5.64,
+   "eavesM": 14.95,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6864",
+    "wallRaw": "#554a46",
+    "skyline": {
+     "eavesM": 14.95,
+     "eavesRow": 159,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 3.2,
+      "topWidthM": 0.4,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.63,
+       "widthM": 1.05,
+       "centre": 0.19
+      },
+      {
+       "atM": 6.85,
+       "widthM": 0.82,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "helmers-1896-transom-band",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "helmers-1893-jamb-blocks",
+    "score": 0
+   },
+   "placement": {
+    "type": "helmers-1896-transom-band",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#7b6864",
+     "evidence": "strip 2023-01-12 span 223-449: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown plain (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012163705",
+    "ncc": 0.342,
+    "nccRaw": 0.342,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25 mean 0.40 vs photo 0.55",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#766560",
+     "model": "#907b76",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.55,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.586
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155520",
+   "address": "Derde Helmersstraat 55",
+   "builtYear": 1895,
+   "widthM": 5.49,
+   "eavesM": 14.82,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#584d4b",
+    "wallRaw": "#4f4542",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 164,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.013,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.9,
+       "widthM": 1.02,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "helmers-1896-transom-band",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "helmers-1893-jamb-blocks",
+    "score": 0
+   },
+   "placement": {
+    "type": "helmers-1896-transom-band",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#584d4b",
+     "evidence": "strip 2023-01-12 span 448-667: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown plain (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012155520",
+    "ncc": 0.152,
+    "nccRaw": 0.152,
+    "shiftM": [
+     -0.1,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.33 mean 0.42 vs photo 0.65"
+    ],
+    "wall": {
+     "photo": "#776762",
+     "model": "#706260",
+     "dL": -0.018
+    },
+    "glazing": {
+     "photo": 0.65,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.599
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164486",
+   "address": "Derde Helmersstraat 57",
+   "builtYear": 1896,
+   "widthM": 5.66,
+   "eavesM": 15.05,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#564944",
+    "wallRaw": "#5c514d",
+    "skyline": {
+     "eavesM": 15.05,
+     "eavesRow": 155,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.1,
+       "widthM": 1.18,
+       "centre": 0.19
+      },
+      {
+       "atM": 7.1,
+       "widthM": 1.4,
+       "centre": 0.79
+      },
+      {
+       "atM": 6.05,
+       "widthM": 1.18,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.133 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.41 mean 0.40 vs photo 0.56)",
+   "likeness": {
+    "pandId": "0363100012164486",
+    "ncc": 0.133,
+    "nccRaw": 0.133,
+    "shiftM": [
+     0.2,
+     0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.41 mean 0.40 vs photo 0.56"
+    ],
+    "wall": {
+     "photo": "#594b45",
+     "model": "#705f58",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.56,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.514
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012073466",
+   "address": "Derde Helmersstraat 59",
+   "builtYear": 1896,
+   "widthM": 5.63,
+   "eavesM": 15.2,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#887168",
+    "wallRaw": "#5c504a",
+    "skyline": {
+     "eavesM": 15.2,
+     "eavesRow": 149,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.057,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.85,
+       "widthM": 1.07,
+       "centre": 0.2
+      },
+      {
+       "atM": 10.15,
+       "widthM": 1.07,
+       "centre": 0.2
+      },
+      {
+       "atM": 7.15,
+       "widthM": 1.13,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012073466",
+    "ncc": 0.235,
+    "nccRaw": 0.235,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.12",
+     "glazing storey band off by 0.40 mean 0.40 vs photo 0.25"
+    ],
+    "wall": {
+     "photo": "#7b645b",
+     "model": "#9a847b",
+     "dL": 0.124
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.413
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167261",
+   "address": "Derde Helmersstraat 61",
+   "builtYear": 1896,
+   "widthM": 5.68,
+   "eavesM": 15.28,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#423a35",
+    "wallRaw": "#4b423d",
+    "skyline": {
+     "eavesM": 15.28,
+     "eavesRow": 146,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 1.25,
+      "topWidthM": 0.2,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.82,
+       "widthM": 1.13,
+       "centre": 0.23
+      },
+      {
+       "atM": 10.2,
+       "widthM": 1.23,
+       "centre": 0.23
+      },
+      {
+       "atM": 7.2,
+       "widthM": 0.95,
+       "centre": 0.23
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1.18,
+       "centre": 0.24
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.091 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.41 mean 0.40 vs photo 0.26)",
+   "likeness": {
+    "pandId": "0363100012167261",
+    "ncc": 0.091,
+    "nccRaw": 0.091,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.41 mean 0.40 vs photo 0.26"
+    ],
+    "wall": {
+     "photo": "#625752",
+     "model": "#5d524b",
+     "dL": -0.024
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.441
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152780",
+   "address": "Derde Helmersstraat 63",
+   "builtYear": 1896,
+   "widthM": 5.63,
+   "eavesM": 15.22,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#524b4a",
+    "wallRaw": "#525253",
+    "skyline": {
+     "eavesM": 15.22,
+     "eavesRow": 148,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.3,
+      "topWidthM": 0.3,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.75,
+       "widthM": 0.97,
+       "centre": 0.53
+      },
+      {
+       "atM": 12.38,
+       "widthM": 1,
+       "centre": 0.21
+      },
+      {
+       "atM": 10.13,
+       "widthM": 1.05,
+       "centre": 0.53
+      },
+      {
+       "atM": 7.13,
+       "widthM": 1.27,
+       "centre": 0.23
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.05,
+       "centre": 0.5
+      },
+      {
+       "atM": 4.72,
+       "widthM": 0.88,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.128 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.44 mean 0.41 vs photo 0.64)",
+   "likeness": {
+    "pandId": "0363100012152780",
+    "ncc": 0.128,
+    "nccRaw": 0.128,
+    "shiftM": [
+     0.15,
+     -0.05
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.44 mean 0.41 vs photo 0.64"
+    ],
+    "wall": {
+     "photo": "#675750",
+     "model": "#6a6160",
+     "dL": 0.037
+    },
+    "glazing": {
+     "photo": 0.64,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.438
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165785",
+   "address": "Derde Helmersstraat 65",
+   "builtYear": 1896,
+   "widthM": 5.67,
+   "eavesM": 13.48,
+   "storeys3dbag": null,
+   "bagBay": {
+    "fromM": 1.71,
+    "toM": 1.71,
+    "depthM": 0.45,
+    "centre": 0.302
+   },
+   "strip": {
+    "wall": "#52413d",
+    "wallRaw": "#51413d",
+    "skyline": {
+     "eavesM": 13.32,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2,
+      "topWidthM": 0.7,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.015,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.47,
+       "widthM": 1.95,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012165785",
+    "ncc": 0.177,
+    "nccRaw": 0.177,
+    "shiftM": [
+     0.25,
+     0
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.37 vs photo 0.48"
+    ],
+    "wall": {
+     "photo": "#513f3b",
+     "model": "#6d5651",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.48,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.44
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166026",
+   "address": "Derde Helmersstraat 67",
+   "builtYear": 1896,
+   "widthM": 5.62,
+   "eavesM": 13.33,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#47342f",
+    "wallRaw": "#524440",
+    "skyline": {
+     "eavesM": 13.32,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.23,
+      "topWidthM": 0.82,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.022,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.77,
+       "widthM": 1.02,
+       "centre": 0.88
+      },
+      {
+       "atM": 7.02,
+       "widthM": 0.97,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.133 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.393 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012166026",
+    "ncc": 0.133,
+    "nccRaw": 0.133,
+    "shiftM": [
+     0.25,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.393 < 0.45"
+    ],
+    "wall": {
+     "photo": "#4c3832",
+     "model": "#654a43",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.393
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165816",
+   "address": "Derde Helmersstraat 69",
+   "builtYear": 1896,
+   "widthM": 5.52,
+   "eavesM": 13.52,
+   "storeys3dbag": null,
+   "bagBay": {
+    "fromM": 0.48,
+    "toM": 0.48,
+    "depthM": 0.36,
+    "centre": 0.087
+   },
+   "strip": {
+    "wall": "#503c36",
+    "wallRaw": "#51423f",
+    "skyline": {
+     "eavesM": 17.8,
+     "eavesRow": 45,
+     "confidence": 0.47,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 1.13,
+      "topWidthM": 0.53,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.013,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.53,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.45,
+       "widthM": 1.07,
+       "centre": 0.21
+      },
+      {
+       "atM": 8.05,
+       "widthM": 0.95,
+       "centre": 0.21
+      },
+      {
+       "atM": 7.75,
+       "widthM": 1.02,
+       "centre": 0.84
+      },
+      {
+       "atM": 7.07,
+       "widthM": 1.2,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.017 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.13; glazing storey band off by 0.43 mean 0.41 vs photo 0.20)",
+   "likeness": {
+    "pandId": "0363100012165816",
+    "ncc": 0.017,
+    "nccRaw": 0.017,
+    "shiftM": [
+     -0.35,
+     -0.05
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13",
+     "glazing storey band off by 0.43 mean 0.41 vs photo 0.20"
+    ],
+    "wall": {
+     "photo": "#45332e",
+     "model": "#6d5149",
+     "dL": 0.131
+    },
+    "glazing": {
+     "photo": 0.2,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.323
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162851",
+   "address": "Derde Helmersstraat 71",
+   "builtYear": 1896,
+   "widthM": 5.6,
+   "eavesM": 13.75,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5049",
+    "wallRaw": "#524440",
+    "skyline": {
+     "eavesM": 13.75,
+     "eavesRow": 207,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 1.2,
+      "topWidthM": 0.72,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.022,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.97,
+       "widthM": 1.02,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.135 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.18; glazing storey band off by 0.23 mean 0.38 vs photo 0.23)",
+   "likeness": {
+    "pandId": "0363100012162851",
+    "ncc": 0.135,
+    "nccRaw": 0.135,
+    "shiftM": [
+     0.25,
+     -0.25
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.18",
+     "glazing storey band off by 0.23 mean 0.38 vs photo 0.23"
+    ],
+    "wall": {
+     "photo": "#4e3a34",
+     "model": "#86635a",
+     "dL": 0.184
+    },
+    "glazing": {
+     "photo": 0.23,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.285
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158231",
+   "address": "Derde Helmersstraat 73",
+   "builtYear": 1895,
+   "widthM": 5.55,
+   "eavesM": 14.13,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d3832",
+    "wallRaw": "#5b4c46",
+    "skyline": {
+     "eavesM": 14.13,
+     "eavesRow": 192,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 1.2,
+      "topWidthM": 0.68,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.15,
+       "widthM": 0.88,
+       "centre": 0.27
+      },
+      {
+       "atM": 7,
+       "widthM": 1,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.059 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19)",
+   "likeness": {
+    "pandId": "0363100012158231",
+    "ncc": 0.059,
+    "nccRaw": 0.059,
+    "shiftM": [
+     0.15,
+     0.25
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19"
+    ],
+    "wall": {
+     "photo": "#55413b",
+     "model": "#6a4d45",
+     "dL": 0.061
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.348
+   },
+   "challengers": {}
+  }
+ ]
+}

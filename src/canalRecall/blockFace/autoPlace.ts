@@ -93,7 +93,33 @@ export interface TypeMatchRule {
   /** Range of |bay centre - 0.5| (share of the front): Boterdiepstraat's side erkers 0.18-0.19, Eemsstraat's 0.06-0.10. */
   bagBayOffset?: [number, number];
   crowns?: Record<string, CrownRule & {alt?: CrownRule}>;
+  /**
+   * The cornice line of the type's rows, measured on its exemplar strips (m over the pavement; Helmersbuurt 1893-1901:
+   * Eerste Helmersstraat 217-229 at 10.8 m, where 3DBAG/PDOK eaves read the mansard top at 10.9-13.4 m). Set, the eaves
+   * criterion compares the strip skyline (when read under clean sky) with it instead of 3DBAG's eaves (unread: no
+   * criterion), the storey count is the type's, and a placed pand is drawn at its own skyline eaves when read within
+   * FRONT_EAVES.tolM of this line, else at this line (`frontEavesFor`; the run face's `continuity.measuredEaves`).
+   * Absent = 3DBAG eaves, byte-identical.
+   */
+  frontEavesM?: number;
+  /**
+   * With `frontEavesM`: the top of a wall dormer that spans most of the front, where the strip skyline reads it instead
+   * of the cornice (Derde Helmersstraat 54-64: crenellated wall dormers over two of three axes, skyline 17.4-18.2 m
+   * over a 14.3 m cornice). A skyline near it scores like one near the cornice line; the house is drawn at the line.
+   */
+  frontSkylineM?: number;
   note?: string;
+}
+
+export const FRONT_EAVES = {tolM: 1.0} as const;
+
+/** The eaves a `frontEavesM` type draws on this pand: its own skyline cornice when read near the type's line, else the line. */
+export function frontEavesFor(t: MatchableType, ev: PandEvidence): {eavesM: number; source: 'skyline' | 'type'} | null {
+  const line = t.match?.frontEavesM;
+  if (line === undefined) return null;
+  const sky = ev.strip?.skyline;
+  if (sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE && Math.abs(sky.eavesM - line) <= FRONT_EAVES.tolM) return {eavesM: r2(sky.eavesM), source: 'skyline'};
+  return {eavesM: line, source: 'type'};
 }
 
 /** Skyline ranges of a crown variant; `alt` is a second accepted range set (either matches). */
@@ -197,7 +223,11 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   else if (ev.builtYear < m.years[0] - slack || ev.builtYear > m.years[1] + slack) veto.push(`built ${ev.builtYear}, type ${m.years.join('-')}`);
   const fw = t.fit?.widthM;
   if (fw && (ev.widthM < fw[0] - AUTO_PLACE.widthSlackM || ev.widthM > fw[1] + AUTO_PLACE.widthSlackM)) veto.push(`frontage ${ev.widthM} m, type ${fw.join('-')} m`);
-  if (m.eavesM) {
+  if (m.frontEavesM !== undefined) {
+    const sky = ev.strip?.skyline, read = sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE ? sky.eavesM : null;
+    const off = read === null ? null : Math.min(Math.abs(read - m.frontEavesM), m.frontSkylineM === undefined ? Infinity : Math.abs(read - m.frontSkylineM));
+    criteria.push({key: 'eaves', weight: W.eaves, score: off === null ? null : off <= 0.5 ? 1 : off <= 1 ? 0.5 : 0, note: read === null ? `strip cornice unread (type line ${m.frontEavesM} m; 3DBAG ${r2(ev.eavesM)} m not compared)` : `strip cornice ${r2(read)} m vs the type's ${m.frontEavesM} m${m.frontSkylineM === undefined ? '' : ` (wall-dormer skyline ${m.frontSkylineM} m)`}`});
+  } else if (m.eavesM) {
     // The eaves over the storey count the type would draw (its fit) against the type's own storey pitch: a 5-storey
     // member of a 4-storey type's row (Hasebroekstraat 1-37 at 16.5 m beside 4-36 at 13.2 m) is the same design.
     const s = storeysFor(t, ev.eavesM), p = storeyPitch(t), off = Math.abs(ev.eavesM / s - p) / p;
@@ -281,7 +311,7 @@ export function decidePand(types: MatchableType[], ev: PandEvidence, slug: strin
   const placement: HousePlacement = {type: t.id};
   if (bodyBays !== undefined && bays !== bodyBays) placement.overrides = {bays};
   // Storeys from the eaves, not 3DBAG bouwlagen (it counts the attic: 5 on the 4-storey Hasebroekstraat 4-36).
-  const storeys = storeysFor(t, ev.eavesM);
+  const storeys = t.match?.frontEavesM !== undefined ? t.body.storeys : storeysFor(t, ev.eavesM);
   if (storeys !== t.body.storeys) { placement.storeys = storeys; notes.push(`storeys ${storeys}: eaves ${ev.eavesM} m at the type's ${storeyPitch(t).toFixed(2)} m pitch`); }
   // Door side: the type's grounds are authored door-left / door-right; the measured side picks one, unread keeps the first.
   const grounds = Object.keys(t.grounds ?? {});

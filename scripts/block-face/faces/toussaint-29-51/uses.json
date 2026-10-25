@@ -1,0 +1,355 @@
+{
+ "street": "Bosboom Toussaintstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166559",
+   "addresses": [
+    "Bosboom Toussaintstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 29-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000593610"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1349087394,
+     "lngLat": [
+      4.8763748,
+      52.3654913
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "29",
+      "addr:postcode": "1054AN",
+      "addr:street": "Bosboom Toussaintstraat",
+      "amenity": "restaurant",
+      "check_date": "2024-05-23",
+      "cuisine": "italian",
+      "indoor_seating": "yes",
+      "name": "De Italiaan",
+      "opening_hours": "Mo-Fr 17:15-24:00; Sa-Su 12:30-24:00",
+      "outdoor_seating": "yes",
+      "website": "https://www.deitaliaan.com/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166922",
+   "addresses": [
+    "Bosboom Toussaintstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 31-H",
+     "use": "kantoorfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000593616"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164109",
+   "addresses": [
+    "Bosboom Toussaintstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000593622"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236376",
+   "addresses": [
+    "Bosboom Toussaintstraat 35",
+    "Bosboom Toussaintstraat 35A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 35-H",
+     "use": "kantoorfunctie",
+     "areaM2": 148,
+     "bagId": "0363010012148198"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 35-H",
+     "use": "kantoorfunctie",
+     "areaM2": 248,
+     "bagId": "0363010000593628"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163161",
+   "addresses": [
+    "Bosboom Toussaintstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000593637"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162654",
+   "addresses": [
+    "Bosboom Toussaintstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 39-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000593643"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153715",
+   "addresses": [
+    "Bosboom Toussaintstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010001171807"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166173",
+   "addresses": [
+    "Bosboom Toussaintstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 43-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000593654"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2414357196,
+     "lngLat": [
+      4.8757596,
+      52.3653514
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "43",
+      "addr:postcode": "1054AN",
+      "addr:street": "Bosboom Toussaintstraat",
+      "amenity": "fast_food",
+      "check_date": "2026-04-28",
+      "cuisine": "pizza",
+      "indoor_seating": "yes",
+      "name": "Pizza Amsterdam",
+      "outdoor_seating": "yes",
+      "website": "https://www.pizza-amsterdam1.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163753",
+   "addresses": [
+    "Bosboom Toussaintstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 45-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000680286"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9608933817,
+     "lngLat": [
+      4.8756803,
+      52.3653228
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "45-H",
+      "addr:postcode": "1054AN",
+      "addr:street": "Bosboom Toussaintstraat",
+      "check_date": "2026-04-28",
+      "contact:facebook": "littleplantpantry",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "internet_access": "wlan",
+      "internet_access:fee": "customers",
+      "level": "0",
+      "name": "Little Plant Pantry",
+      "opening_hours": "We-Sa 11:00-19:00; Su 11:00-18:00",
+      "organic": "only",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "shop": "supermarket",
+      "toilets": "yes",
+      "website": "https://littleplantpantry.com",
+      "wheelchair": "yes",
+      "zero_waste": "only"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156156",
+   "addresses": [
+    "Bosboom Toussaintstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 47-H",
+     "use": "bijeenkomstfunctie,kantoorfunctie,winkelfunctie,woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000593670"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10829604052,
+     "lngLat": [
+      4.8755912,
+      52.3653053
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "47",
+      "addr:postcode": "1054AN",
+      "addr:street": "Bosboom Toussaintstraat",
+      "amenity": "doctors",
+      "check_date": "2024-06-20",
+      "healthcare": "doctor",
+      "healthcare:speciality": "gynaecology",
+      "name": "DC Klinieken",
+      "website": "https://www.dcklinieken.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152702",
+   "addresses": [
+    "Bosboom Toussaintstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 49-H",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001024839"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11896698137,
+     "lngLat": [
+      4.875521,
+      52.3652852
+     ],
+     "tags": {
+      "addr:housenumber": "49",
+      "addr:street": "Bosboom Toussaintstraat",
+      "amenity": "ice_cream",
+      "check_date": "2026-04-28",
+      "delivery": "no",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "drive_through": "no",
+      "internet_access": "no",
+      "level": "0",
+      "name": "Sotto Zero",
+      "opening_hours": "Tu-Su 12:00-22:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "takeaway": "yes",
+      "toilets": "no",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165809",
+   "addresses": [
+    "Bosboom Toussaintstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000593682"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

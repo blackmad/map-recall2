@@ -17,6 +17,8 @@ import {compileLargeBuilding, type CompiledLargeBuilding} from './largeCompile.t
 import {applyHistoricPasses} from './historicPasses.ts';
 import {applyAmsterdamSchool} from './amsterdamSchool.ts';
 import {addTilePanels} from './tileAccents.ts';
+import {addFriezeVents} from './friezeVents.ts';
+import {addJambBlocks} from './jambBlocks.ts';
 import {addEavesOverhangs} from './eavesOverhang.ts';
 import {addGroundCanopies} from './groundCanopy.ts';
 import {applyOudWest} from './oudWest.ts';
@@ -206,6 +208,9 @@ export function compileBuilding(intent: BuildingIntent, facts: BuildingFacts): C
   applyAmsterdamSchool(built.group, intent, recipe, report);
   // Glazed tile panels on the piers (opt-in, Bellamybuurt 1915 rows).
   if (intent.fronts.some(f => f.tilePanels)) addTilePanels(built.group, intent, recipe, report);
+  // Frieze vents under the cornice (opt-in, Helmersbuurt 1893-1901 rows).
+  if (intent.fronts.some(f => f.friezeVents)) addFriezeVents(built.group, intent, recipe, report);
+  if (intent.fronts.some(f => f.jambBlocks)) addJambBlocks(built.group, intent, recipe, report);
   // Flat roof's deep eaves overhang (opt-in, Rivierenbuurt 1930s rows).
   if (intent.fronts.some(f => f.eavesOverhang)) addEavesOverhangs(built.group, intent, recipe, report);
   if (intent.fronts.some(f => f.groundCanopy)) addGroundCanopies(built.group, intent, recipe, report);

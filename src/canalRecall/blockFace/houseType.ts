@@ -143,6 +143,7 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
   if (f.doorBay !== null && f.doorBay !== undefined) out.doorBay = bays[0] - 1 - f.doorBay;
   if (f.bayWidths) out.bayWidths = [...f.bayWidths].reverse();
   if (f.bayFill) out.bayFill = [...f.bayFill].reverse();
+  if (f.axisHeads) out.axisHeads = Object.fromEntries(Object.entries(f.axisHeads).map(([k, v]) => [String(flipAxis(Number(k))), v]));
   if (f.axisWindows) out.axisWindows = Object.fromEntries(Object.entries(f.axisWindows).map(([k, v]) => [String(flipAxis(Number(k))), v]));
   if (f.storeyBayWidths) out.storeyBayWidths = Object.fromEntries(Object.entries(f.storeyBayWidths).map(([k, v]) => [k, [...v].reverse()]));
   if (f.storeyAxes) out.storeyAxes = Object.fromEntries(Object.entries(f.storeyAxes).map(([k, v]) => [k, v.map(flipAxis).sort((p, q) => p - q)]));
@@ -158,6 +159,7 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
   }
   if (f.brickStripes) out.brickStripes = f.brickStripes.map(mirrorStripeZone);
   if (f.stairLight) out.stairLight = {...f.stairLight, axis: flipAxis(f.stairLight.axis)};
+  if (f.friezeVents?.axes) out.friezeVents = {...f.friezeVents, axes: f.friezeVents.axes.map(flipAxis).sort((p, q) => p - q)};
   if (f.dormerAt) out.dormerAt = f.dormerAt.map(flipFrac).reverse();
   // Dormer indices count left to right as drawn: a mirrored front reverses them (with its dormerAt spans).
   if (f.dormerCap && f.dormers) out.dormerCap = {...f.dormerCap, dormers: f.dormerCap.dormers.map(i => f.dormers! - 1 - i).sort((p, q) => p - q)};

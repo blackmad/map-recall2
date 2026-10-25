@@ -1,0 +1,308 @@
+{
+ "street": "Bosboom Toussaintstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163385",
+   "addresses": [
+    "Bosboom Toussaintstraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 70-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000593735"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159478",
+   "addresses": [
+    "Bosboom Toussaintstraat 68A",
+    "Bosboom Toussaintstraat 68C",
+    "Bosboom Toussaintstraat 68",
+    "Bosboom Toussaintstraat 68B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 68A",
+     "use": "woonfunctie",
+     "areaM2": 151,
+     "bagId": "0363010001975660"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 68C",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010001975661"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 68-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000593728"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 68B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000593730"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158191",
+   "addresses": [
+    "Bosboom Toussaintstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 66-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000593721"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160941",
+   "addresses": [
+    "Bosboom Toussaintstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 64-H",
+     "use": "winkelfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000593714"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11288346674,
+     "lngLat": [
+      4.8745982,
+      52.3652596
+     ],
+     "tags": {
+      "addr:housenumber": "64",
+      "addr:street": "Bosboom Toussaintstraat",
+      "contact:email": "springletbeauty@gmail.com",
+      "name": "springlet",
+      "opening_hours": "Mo-Su 11:00-22:00",
+      "payment:cash": "yes",
+      "phone": "+31 6 84869701",
+      "shop": "massage",
+      "website": "https://springletbeauty.nl/"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163907",
+   "addresses": [
+    "Bosboom Toussaintstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 62-H",
+     "use": "winkelfunctie",
+     "areaM2": 207,
+     "bagId": "0363010000949860"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809446931,
+     "lngLat": [
+      4.8747092,
+      52.365278
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62-H",
+      "addr:postcode": "1054AV",
+      "addr:street": "Bosboom Toussaintstraat",
+      "name": "New Economy",
+      "office": "consulting",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://neweconomy.eco"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163153",
+   "addresses": [
+    "Bosboom Toussaintstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 60-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000593703"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2414357179,
+     "lngLat": [
+      4.8747733,
+      52.3652991
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "60-H",
+      "addr:postcode": "1054AV",
+      "addr:street": "Bosboom Toussaintstraat",
+      "amenity": "restaurant",
+      "check_date": "2023-04-21",
+      "cuisine": "burger",
+      "name": "Teds place",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://teds-place.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162983",
+   "addresses": [
+    "Bosboom Toussaintstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 58-3",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010012072912"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 58-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000593699"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5273522364,
+     "lngLat": [
+      4.874902,
+      52.3653078
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "wikidata": "Q111549258"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 0.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164798",
+   "addresses": [
+    "Bosboom Toussaintstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000593694"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5273522364,
+     "lngLat": [
+      4.874902,
+      52.3653078
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "wikidata": "Q111549258"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 0.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164738",
+   "addresses": [
+    "Bosboom Toussaintstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 54-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001030063"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809445526,
+     "lngLat": [
+      4.8750188,
+      52.3653739
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "54-H",
+      "addr:postcode": "1054AV",
+      "addr:street": "Bosboom Toussaintstraat",
+      "name": "Makelaardij De Nederlanden",
+      "office": "estate_agent",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.denederlanden.eu",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

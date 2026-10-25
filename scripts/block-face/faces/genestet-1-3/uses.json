@@ -1,0 +1,63 @@
+{
+ "street": "De Genestetstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160107",
+   "addresses": [
+    "De Genestetstraat 1A"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Genestetstraat 1A",
+     "use": "sportfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000944333"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167190",
+   "addresses": [
+    "De Genestetstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Genestetstraat 1-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000943318"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161286",
+   "addresses": [
+    "De Genestetstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Genestetstraat 3-H",
+     "use": "bijeenkomstfunctie,kantoorfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000957358"
+    },
+    {
+     "address": "De Genestetstraat 3-H",
+     "use": "bijeenkomstfunctie,kantoorfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012135366"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

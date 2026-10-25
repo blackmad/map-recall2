@@ -1,0 +1,802 @@
+{
+ "street": "De Genestetstraat",
+ "seed": "0363100012161917",
+ "members": [
+  "0363100012157984",
+  "0363100012155692",
+  "0363100012161917"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012157984 (face continues: 066398)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012161917 (face continues: 159020)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012163753",
+   "reason": "frontage 60.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012164755",
+   "reason": "frontage 50.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012221091",
+   "reason": "frontage 61.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012153134",
+   "reason": "frontage 128.5 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012152673",
+   "reason": "frontage 50.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012164529",
+   "reason": "sightline to De Genestetstraat crosses 0363100012163234"
+  },
+  {
+   "pandId": "0363100012164921",
+   "reason": "frontage 38.9 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012156681",
+   "reason": "sightline to De Genestetstraat crosses 0363100012159452"
+  },
+  {
+   "pandId": "0363100012198301",
+   "reason": "sightline to De Genestetstraat crosses 0363100012121916"
+  },
+  {
+   "pandId": "0363100012157419",
+   "reason": "frontage 54.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012152681",
+   "reason": "sightline to De Genestetstraat crosses 0363100012154262"
+  },
+  {
+   "pandId": "0363100012163705",
+   "reason": "frontage 110.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012157151",
+   "reason": "frontage 61.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012167107",
+   "reason": "frontage 78.9 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012165716",
+   "reason": "frontage 67.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012163234",
+   "reason": "sightline to De Genestetstraat crosses 0363100012158948"
+  },
+  {
+   "pandId": "0363100012152511",
+   "reason": "frontage 61.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012155797",
+   "reason": "frontage 61.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012164202",
+   "reason": "sightline to De Genestetstraat crosses 0363100012153452"
+  },
+  {
+   "pandId": "0363100012153762",
+   "reason": "frontage 60.5 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012154138",
+   "reason": "frontage 79.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012159452",
+   "reason": "sightline to De Genestetstraat crosses 0363100012066398"
+  },
+  {
+   "pandId": "0363100012162690",
+   "reason": "frontage 112.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012167336",
+   "reason": "frontage 100.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012212290",
+   "reason": "frontage 56.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012152281",
+   "reason": "frontage 134.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012163690",
+   "reason": "frontage 85.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012155774",
+   "reason": "frontage 42.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012156162",
+   "reason": "frontage 37.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012154112",
+   "reason": "frontage 32.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012158277",
+   "reason": "sightline to De Genestetstraat crosses 0363100012153452"
+  },
+  {
+   "pandId": "0363100012157840",
+   "reason": "frontage 74.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012152340",
+   "reason": "frontage 48.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012236376",
+   "reason": "sightline to De Genestetstraat crosses 0363100012164109"
+  },
+  {
+   "pandId": "0363100012167201",
+   "reason": "sightline to De Genestetstraat crosses 0363100012159020"
+  },
+  {
+   "pandId": "0363100012158663",
+   "reason": "sightline to De Genestetstraat crosses 0363100012167201"
+  },
+  {
+   "pandId": "0363100012119454",
+   "reason": "frontage 71.9 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012162582",
+   "reason": "frontage 55.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012188285",
+   "reason": "frontage 31.5 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012157801",
+   "reason": "frontage 73.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012156913",
+   "reason": "frontage 54.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012208942",
+   "reason": "sightline to De Genestetstraat crosses 0363100012236827"
+  },
+  {
+   "pandId": "0363100012162406",
+   "reason": "frontage 43.7 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012184355",
+   "reason": "frontage 70.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012091715",
+   "reason": "frontage 72.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012088251",
+   "reason": "no frontage on De Genestetstraat: No footprint edge faces De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012167376",
+   "reason": "sightline to De Genestetstraat crosses 0363100012153452"
+  },
+  {
+   "pandId": "0363100012224536",
+   "reason": "frontage 67.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012161980",
+   "reason": "frontage 42.7 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012164638",
+   "reason": "frontage 30.5 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012163268",
+   "reason": "frontage 102.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012233690",
+   "reason": "frontage 43.5 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012165809",
+   "reason": "frontage 77.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012162464",
+   "reason": "frontage 71.7 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012165941",
+   "reason": "frontage 37.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012153642",
+   "reason": "frontage 106.9 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012191207",
+   "reason": "sightline to De Genestetstraat crosses 0363100012155692"
+  },
+  {
+   "pandId": "0363100012154262",
+   "reason": "sightline to De Genestetstraat crosses 0363100012161166"
+  },
+  {
+   "pandId": "0363100012160649",
+   "reason": "sightline to De Genestetstraat crosses 0363100012127125"
+  },
+  {
+   "pandId": "0363100012156156",
+   "reason": "frontage 66.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012161538",
+   "reason": "frontage 100.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012155585",
+   "reason": "sightline to De Genestetstraat crosses 0363100012157994"
+  },
+  {
+   "pandId": "0363100012167213",
+   "reason": "frontage 100.7 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012165412",
+   "reason": "frontage 67.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012205661",
+   "reason": "frontage 52.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012219317",
+   "reason": "frontage 76.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012167186",
+   "reason": "frontage 79.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012226207",
+   "reason": "frontage 54.9 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012166210",
+   "reason": "frontage 44.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012154275",
+   "reason": "frontage 90.9 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012166271",
+   "reason": "frontage 104.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012156462",
+   "reason": "no frontage on De Genestetstraat: No footprint edge faces De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012162970",
+   "reason": "frontage 36.9 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012084624",
+   "reason": "frontage 73.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012157994",
+   "reason": "sightline to De Genestetstraat crosses 0363100012164923"
+  },
+  {
+   "pandId": "0363100012159768",
+   "reason": "frontage 118.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012157617",
+   "reason": "frontage 74.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012086892",
+   "reason": "frontage 43.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012161958",
+   "reason": "frontage 56.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012156749",
+   "reason": "frontage 42.7 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012166176",
+   "reason": "sightline to De Genestetstraat crosses 0363100012100805"
+  },
+  {
+   "pandId": "0363100012233148",
+   "reason": "frontage 60.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012153216",
+   "reason": "frontage 81.7 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012164109",
+   "reason": "sightline to De Genestetstraat crosses 0363100012166922"
+  },
+  {
+   "pandId": "0363100012156087",
+   "reason": "frontage 55.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012159646",
+   "reason": "frontage 100.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012153715",
+   "reason": "frontage 48.5 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012210800",
+   "reason": "frontage 60.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012166612",
+   "reason": "sightline to De Genestetstraat crosses 0363100012166176"
+  },
+  {
+   "pandId": "0363100012236312",
+   "reason": "frontage 32.5 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012152333",
+   "reason": "sightline to De Genestetstraat crosses 0363100012160649"
+  },
+  {
+   "pandId": "0363100012157529",
+   "reason": "frontage 44.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012157083",
+   "reason": "frontage 49.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012165295",
+   "reason": "frontage 33.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012166922",
+   "reason": "sightline to De Genestetstraat crosses 0363100012166559"
+  },
+  {
+   "pandId": "0363100012162654",
+   "reason": "frontage 42.5 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012152920",
+   "reason": "sightline to De Genestetstraat crosses 0363100012167201"
+  },
+  {
+   "pandId": "0363100012159936",
+   "reason": "frontage 31.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012162091",
+   "reason": "frontage 67.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012161728",
+   "reason": "sightline to De Genestetstraat crosses 0363100012160649"
+  },
+  {
+   "pandId": "0363100012160766",
+   "reason": "frontage 66.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012158498",
+   "reason": "frontage 67.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012158584",
+   "reason": "frontage 122.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012163100",
+   "reason": "frontage 84.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012064793",
+   "reason": "frontage 75.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012162799",
+   "reason": "frontage 95.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012166173",
+   "reason": "frontage 54.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012152692",
+   "reason": "frontage 44.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012236078",
+   "reason": "frontage 60.9 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012237109",
+   "reason": "no frontage on De Genestetstraat: No footprint edge faces De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012228725",
+   "reason": "sightline to De Genestetstraat crosses 0363100012166255"
+  },
+  {
+   "pandId": "0363100012156763",
+   "reason": "frontage 49.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012198659",
+   "reason": "frontage 66.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012155675",
+   "reason": "frontage 36.5 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012152957",
+   "reason": "frontage 55.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012152520",
+   "reason": "frontage 80.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012162465",
+   "reason": "frontage 71.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012236011",
+   "reason": "frontage 74.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012160295",
+   "reason": "frontage 43.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012166950",
+   "reason": "frontage 36.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012153725",
+   "reason": "frontage 124.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012214518",
+   "reason": "frontage 49.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012570749",
+   "reason": "frontage 40.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012156173",
+   "reason": "sightline to De Genestetstraat crosses 0363100012159452"
+  },
+  {
+   "pandId": "0363100012162495",
+   "reason": "frontage 38.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012156043",
+   "reason": "no frontage on De Genestetstraat: No footprint edge faces De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012138896",
+   "reason": "frontage 35.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012215165",
+   "reason": "frontage 82.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012154279",
+   "reason": "frontage 48.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012167154",
+   "reason": "frontage 105.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012166166",
+   "reason": "frontage 50.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012158725",
+   "reason": "frontage 97.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012165296",
+   "reason": "frontage 38.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012572092",
+   "reason": "frontage 43.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012236846",
+   "reason": "sightline to De Genestetstraat crosses 0363100012152681"
+  },
+  {
+   "pandId": "0363100012157859",
+   "reason": "frontage 55.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012161668",
+   "reason": "sightline to De Genestetstraat crosses 0363100012164529"
+  },
+  {
+   "pandId": "0363100012237310",
+   "reason": "no frontage on De Genestetstraat: No footprint edge faces De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012156449",
+   "reason": "sightline to De Genestetstraat crosses 0363100012166176"
+  },
+  {
+   "pandId": "0363100012167071",
+   "reason": "frontage 80.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012156766",
+   "reason": "frontage 67.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012162978",
+   "reason": "frontage 30.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012188042",
+   "reason": "frontage 43.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012102915",
+   "reason": "frontage 31.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012163161",
+   "reason": "frontage 36.7 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012155521",
+   "reason": "frontage 85.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012237132",
+   "reason": "frontage 68.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012237184",
+   "reason": "frontage 60.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012161817",
+   "reason": "sightline to De Genestetstraat crosses 0363100012157994"
+  },
+  {
+   "pandId": "0363100012152875",
+   "reason": "frontage 73.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012158861",
+   "reason": "frontage 32.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012236070",
+   "reason": "frontage 64.7 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012166780",
+   "reason": "frontage 115.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012220104",
+   "reason": "frontage 66.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012127979",
+   "reason": "frontage 58.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012160396",
+   "reason": "frontage 74.1 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012235050",
+   "reason": "frontage 85.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012189238",
+   "reason": "sightline to De Genestetstraat crosses 0363100012157511"
+  },
+  {
+   "pandId": "0363100012163126",
+   "reason": "frontage 61.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012236869",
+   "reason": "frontage 55.6 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012217932",
+   "reason": "frontage 37.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012152702",
+   "reason": "frontage 71.9 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012165770",
+   "reason": "frontage 32.7 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012089206",
+   "reason": "frontage 55.9 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012233586",
+   "reason": "frontage 31.9 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012161739",
+   "reason": "frontage 72.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012157967",
+   "reason": "frontage 101.5 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012159307",
+   "reason": "frontage 73.2 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012164314",
+   "reason": "frontage 91.0 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012191579",
+   "reason": "frontage 79.5 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012233517",
+   "reason": "frontage 70.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012157227",
+   "reason": "frontage 66.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012164630",
+   "reason": "frontage 91.4 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012214958",
+   "reason": "frontage 54.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012167337",
+   "reason": "frontage 100.8 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012152531",
+   "reason": "frontage 60.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012233486",
+   "reason": "frontage 48.3 m from De Genestetstraat"
+  },
+  {
+   "pandId": "0363100012153452",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130645",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152546",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166254",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236827",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164923",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158948",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100805",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166255",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157511",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012157984",
+   "alongM": -12.92,
+   "widthM": 6.38,
+   "eavesM": 15.98,
+   "roofMaxM": 16.04,
+   "storeys3dbag": null,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155692",
+   "alongM": -6.54,
+   "widthM": 6.38,
+   "eavesM": 16.09,
+   "roofMaxM": 16.52,
+   "storeys3dbag": null,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161917",
+   "alongM": 0,
+   "widthM": 6.71,
+   "eavesM": 15.98,
+   "roofMaxM": 16.01,
+   "storeys3dbag": null,
+   "builtYear": 1899,
+   "uncertainty": []
+  }
+ ]
+}

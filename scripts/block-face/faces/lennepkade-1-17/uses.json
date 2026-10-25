@@ -1,0 +1,229 @@
+{
+ "street": "Jacob van Lennepkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236045",
+   "addresses": [
+    "Jacob van Lennepkade 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 1",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000680133"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158679",
+   "addresses": [
+    "Jacob van Lennepkade 1A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 1A-H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000680134"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163172",
+   "addresses": [
+    "Jacob van Lennepkade 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 3-H",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010000941806"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152833",
+   "addresses": [
+    "Jacob van Lennepkade 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 5-H",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010011290733"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156086",
+   "addresses": [
+    "Jacob van Lennepkade 7"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165613",
+   "addresses": [
+    "Jacob van Lennepkade 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 9-H",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010000960138"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157474",
+   "addresses": [
+    "Jacob van Lennepkade 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 11-H",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010000680169"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161673",
+   "addresses": [
+    "Jacob van Lennepkade 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 13-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000680175"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236701",
+   "addresses": [
+    "Jacob van Lennepkade 15A",
+    "Jacob van Lennepkade 15B",
+    "Jacob van Lennepkade 15C",
+    "Jacob van Lennepkade 15D",
+    "Jacob van Lennepkade 15E",
+    "Jacob van Lennepkade 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 15E",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010012105819"
+    },
+    {
+     "address": "De Genestetstraat 1D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012105820"
+    },
+    {
+     "address": "Jacob van Lennepkade 17-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000680182"
+    },
+    {
+     "address": "De Genestetstraat 1B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000680187"
+    },
+    {
+     "address": "De Genestetstraat 1C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000680188"
+    }
+   ],
+   "units": 15,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8066201800,
+     "lngLat": [
+      4.8761252,
+      52.3661297
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 5.8
+    },
+    {
+     "type": "node",
+     "id": 12828543103,
+     "lngLat": [
+      4.876179,
+      52.3660791
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bench",
+      "armrest": "no",
+      "backrest": "yes",
+      "check_date": "2025-05-11",
+      "lit": "yes",
+      "material": "wood"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 7.4
+    },
+    {
+     "type": "node",
+     "id": 12828543104,
+     "lngLat": [
+      4.8761761,
+      52.3660909
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "check_date": "2025-05-11",
+      "covered": "no",
+      "indoor": "no",
+      "material": "metal"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 6.2
+    }
+   ]
+  }
+ ]
+}

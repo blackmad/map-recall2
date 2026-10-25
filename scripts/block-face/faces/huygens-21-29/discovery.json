@@ -1,0 +1,503 @@
+{
+ "street": "Eerste Constantijn Huygensstraat",
+ "seed": "0363100012162284",
+ "members": [
+  "0363100012162284",
+  "0363100012157519",
+  "0363100012235894",
+  "0363100012152776"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012163081 62.0 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012067068 24.2 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012102084",
+   "reason": "frontage 60.5 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012118170",
+   "reason": "frontage 44.4 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012158674",
+   "reason": "frontage 76.7 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012164738",
+   "reason": "frontage 56.7 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012214702",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012236581",
+   "reason": "frontage 80.1 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012153134",
+   "reason": "frontage 62.9 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012166544",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012162383"
+  },
+  {
+   "pandId": "0363100012167261",
+   "reason": "frontage 53.5 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012162851",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012067068"
+  },
+  {
+   "pandId": "0363100012163953",
+   "reason": "frontage 49.2 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012163705",
+   "reason": "frontage 75.7 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012236393",
+   "reason": "frontage 41.6 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012153685",
+   "reason": "frontage 45.9 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012162690",
+   "reason": "frontage 76.8 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012167336",
+   "reason": "frontage 81.4 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012236624",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012235894"
+  },
+  {
+   "pandId": "0363100012152281",
+   "reason": "frontage 57.0 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012162383",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012156923",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012119454",
+   "reason": "frontage 84.6 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012156913",
+   "reason": "frontage 100.1 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012160941",
+   "reason": "frontage 30.3 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012165809",
+   "reason": "frontage 76.4 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012162464",
+   "reason": "frontage 81.9 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012159478",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012100709",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012160813"
+  },
+  {
+   "pandId": "0363100012156156",
+   "reason": "frontage 88.6 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012161538",
+   "reason": "frontage 80.2 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012153507",
+   "reason": "frontage 37.4 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012163907",
+   "reason": "frontage 36.4 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012162865",
+   "reason": "frontage 38.8 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012167213",
+   "reason": "frontage 86.9 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012159353",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012159850",
+   "reason": "frontage 54.3 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012163451",
+   "reason": "frontage 32.1 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012167186",
+   "reason": "frontage 89.2 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012159722",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012162383"
+  },
+  {
+   "pandId": "0363100012152780",
+   "reason": "frontage 47.9 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012165637",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012159768",
+   "reason": "frontage 70.9 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012164812",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012236843",
+   "reason": "frontage 30.2 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012159900",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012100709"
+  },
+  {
+   "pandId": "0363100012159646",
+   "reason": "frontage 80.7 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012161968",
+   "reason": "frontage 53.8 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012158191",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012159478"
+  },
+  {
+   "pandId": "0363100012164242",
+   "reason": "frontage 30.3 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012166425",
+   "reason": "frontage 44.8 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012163385",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012157253",
+   "reason": "frontage 35.3 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012165816",
+   "reason": "frontage 31.7 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012160766",
+   "reason": "frontage 88.5 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012163370",
+   "reason": "frontage 59.9 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012162056",
+   "reason": "frontage 59.9 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012158584",
+   "reason": "frontage 68.9 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012159217",
+   "reason": "frontage 82.2 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012154222",
+   "reason": "frontage 39.9 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012157570",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012162983",
+   "reason": "frontage 44.8 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012073466",
+   "reason": "frontage 59.0 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012162465",
+   "reason": "frontage 79.7 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012160597",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012236227",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012153725",
+   "reason": "frontage 65.5 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012167154",
+   "reason": "frontage 81.4 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012158996",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012164501"
+  },
+  {
+   "pandId": "0363100012157207",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012163153",
+   "reason": "frontage 40.7 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012164798",
+   "reason": "frontage 50.4 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012165418",
+   "reason": "frontage 43.1 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012153021",
+   "reason": "frontage 55.7 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012155520",
+   "reason": "frontage 70.3 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012164486",
+   "reason": "frontage 64.6 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012162133",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012165956",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012164501"
+  },
+  {
+   "pandId": "0363100012159186",
+   "reason": "frontage 40.8 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012166326",
+   "reason": "frontage 48.6 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012166026",
+   "reason": "frontage 36.9 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012166948",
+   "reason": "frontage 55.4 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012153487",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012100709"
+  },
+  {
+   "pandId": "0363100012165638",
+   "reason": "frontage 55.5 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012236008",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012162808"
+  },
+  {
+   "pandId": "0363100012164108",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012158231",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012067068"
+  },
+  {
+   "pandId": "0363100012158452",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012100709"
+  },
+  {
+   "pandId": "0363100012165785",
+   "reason": "frontage 42.6 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012236968",
+   "reason": "frontage 35.9 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012152702",
+   "reason": "frontage 82.6 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012167182",
+   "reason": "frontage 34.6 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012156928",
+   "reason": "frontage 32.9 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012160276",
+   "reason": "frontage 44.3 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012160227",
+   "reason": "frontage 49.7 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012159566",
+   "reason": "frontage 51.0 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012158907",
+   "reason": "no frontage on Eerste Constantijn Huygensstraat: No footprint edge faces Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012155419",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012235894"
+  },
+  {
+   "pandId": "0363100012154239",
+   "reason": "sightline to Eerste Constantijn Huygensstraat crosses 0363100012152776"
+  },
+  {
+   "pandId": "0363100012152531",
+   "reason": "frontage 94.4 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012233486",
+   "reason": "frontage 106.0 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012166424",
+   "reason": "frontage 71.4 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012158175",
+   "reason": "frontage 56.1 m from Eerste Constantijn Huygensstraat"
+  },
+  {
+   "pandId": "0363100012159829",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156248",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012239844",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160126",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095320",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160640",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155751",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080855",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012162284",
+   "alongM": 0,
+   "widthM": 1.36,
+   "eavesM": 11.11,
+   "roofMaxM": 13.98,
+   "storeys3dbag": null,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157519",
+   "alongM": 3.68,
+   "widthM": 6.07,
+   "eavesM": 13.99,
+   "roofMaxM": 14.01,
+   "storeys3dbag": null,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012235894",
+   "alongM": 12.54,
+   "widthM": 11.54,
+   "eavesM": 12.7,
+   "roofMaxM": 17.9,
+   "storeys3dbag": null,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152776",
+   "alongM": 20.64,
+   "widthM": 4.69,
+   "eavesM": 12.84,
+   "roofMaxM": 15.09,
+   "storeys3dbag": null,
+   "builtYear": 1895,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

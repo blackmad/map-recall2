@@ -16,7 +16,7 @@ import fs from 'node:fs/promises';
 import {existsSync} from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import {AUTO_PLACE, decidePand, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
+import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
 import {measureStripStructure} from '../../src/canalRecall/blockFace/stripStructure.ts';
@@ -28,7 +28,7 @@ import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts'
 import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
-import {applyCrownPins, applyMirrorPins, crownPinProblems, mirrorPinProblems, typePinProblems, typesForFace, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
+import {applyCrownPins, applyMirrorPins, crownPinProblems, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
 import {FACES, STAGING} from './intake.ts';
@@ -111,6 +111,31 @@ async function loadTypes(district: string): Promise<MatchableType[]> {
   return Promise.all((await fs.readdir(dir)).filter(f => f.endsWith('.json')).sort().map(f => readJson(path.join(dir, f))));
 }
 
+const PHOTO_EAVES = {on: process.argv.includes('--photo-eaves'), minConfidence: 0.6, minM: 6, minDeltaM: 0.4, maxRiseM: 1.5, maxDropM: 4} as const;
+/** Pands whose eaves the strip skyline measured (--photo-eaves), keyed by pand id; read back by `withPhotoEaves`. */
+const photoEaves = new Map<string, {row: number; eavesM: number; bagM: number; confidence: number}>();
+/**
+ * The run face with `continuity.measuredEaves` for its photo-eaves pands (--photo-eaves) and the pands placed with a
+ * `match.frontEavesM` type (their own skyline cornice near the type's line, else the line); a cornice under 3DBAG's eaves
+ * re-pitches the front roof (`frontRoof`).
+ */
+function withPhotoEaves(intent: ReturnType<typeof runIntent>, types: MatchableType[], evs: PandEvidence[], strip: {height: number; pixelsPerMetre: number}): ReturnType<typeof runIntent> {
+  const m = intent.houses.flatMap(h => {
+    const ev = evs.find(e => e.pandId === h.pandId), t = types.find(x => x.id === h.type?.type);
+    const fe = t && ev ? frontEavesFor(t, ev) : null, bagM = photoEaves.get(h.pandId)?.bagM ?? ev?.eavesM;
+    if (fe && ev && bagM !== undefined) {
+      if (Math.abs(fe.eavesM - bagM) <= PHOTO_EAVES.minDeltaM && !photoEaves.has(h.pandId)) return [];
+      return [{pand: h.pandId, stripRow: Math.round(strip.height - fe.eavesM * strip.pixelsPerMetre), ...(fe.eavesM < bagM ? {frontRoof: {}} : {}),
+        evidence: fe.source === 'skyline' ? `auto-place: strip skyline cornice ${fe.eavesM} m within ${FRONT_EAVES.tolM} m of the ${t!.id} line ${t!.match!.frontEavesM} m; 3DBAG/PDOK eaves ${bagM} m`
+          : `auto-place: the ${t!.id} cornice line ${fe.eavesM} m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves ${bagM} m`}];
+    }
+    const e = photoEaves.get(h.pandId);
+    return e ? [{pand: h.pandId, stripRow: e.row, ...(e.eavesM < e.bagM ? {frontRoof: {}} : {}),
+      evidence: `auto-place --photo-eaves: strip skyline cornice ${e.eavesM} m (confidence ${e.confidence}) vs 3DBAG/PDOK eaves ${e.bagM} m`}] : [];
+  });
+  return m.length ? {...intent, continuity: {...intent.continuity, measuredEaves: m}} : intent;
+}
+
 async function faceEvidence(faceId: string) {
   const dir = path.join(FACES, faceId);
   const [discovery, strip, uses] = await Promise.all(['discovery', 'strip', 'uses'].map(n => readJson(path.join(dir, `${n}.json`))));
@@ -136,6 +161,15 @@ async function faceEvidence(faceId: string) {
       // The structure reads the body up to the lower of the 3DBAG and the photographed eaves (a gable's shoulder is no wall).
       const structure = measureStripStructure({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre,
         eavesM: skyline && skyline.confidence >= 0.6 && skyline.eavesM > 6 ? Math.min(eavesM, skyline.eavesM) : eavesM});
+      // --photo-eaves (Helmersbuurt, 2026-10-25): the cornice line the strip skyline reads replaces the 3DBAG/PDOK eaves
+      // when it is read under clean sky and differs by more than PHOTO_EAVES.minDeltaM (a mansard top or a rear roof read
+      // as the eaves: Eerste Helmersstraat 223 cornice 10.8 m, PDOK eaves 13.05 m); the run faces then carry it as
+      // continuity.measuredEaves (roofs from the front).
+      if (PHOTO_EAVES.on && skyline && skyline.confidence >= PHOTO_EAVES.minConfidence && skyline.eavesM >= PHOTO_EAVES.minM
+        && Math.abs(skyline.eavesM - ev.eavesM) > PHOTO_EAVES.minDeltaM && skyline.eavesM - ev.eavesM <= PHOTO_EAVES.maxRiseM && ev.eavesM - skyline.eavesM <= PHOTO_EAVES.maxDropM) {
+        photoEaves.set(id, {row: skyline.eavesRow, eavesM: r2(skyline.eavesM), bagM: ev.eavesM, confidence: skyline.confidence});
+        ev.eavesM = r2(skyline.eavesM);
+      }
       ev.strip = {date: span.date, px, palette, wall, skyline, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), columns, doorSide: doorSide(raw, px, strip.pixelsPerMetre), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
     }
     evs.push(ev);
@@ -283,7 +317,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     const decisions: Decision[] = evs.map(ev => {
       const hold = reviewHolds.get(ev.pandId);
       if (hold) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'review', reason: `review: ${hold}`};
-      return decidePand(types, ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date);
+      return decidePand(typesForPand(f.id, ev.pandId, library, typePins), ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date);
     });
     if (crownPins.length) { const pinned = applyCrownPins(f.id, decisions, crownPins, types); if (pinned.length) console.log(`${f.id}: crown pinned on ${pinned.length} pand(s)`); }
     if (doorPins.length) { const pinned = applyDoorPins(decisions, doorPins, types); if (pinned.length) console.log(`${f.id}: door pinned on ${pinned.length} pand(s)`); }
@@ -299,8 +333,8 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       runFaces = runs.map((run, k) => ({id: runs.length === 1 && run.length === discovery.members.length ? f.id : `${f.id}-r${k + 1}`, ids: run.map(p => p.pandId)}));
       for (const [k, rf] of runFaces.entries()) {
         if (rf.id !== f.id) await writeRunFace(f.id, rf.id, rf.ids, strip, uses, discovery);
-        const intent = runIntent({id: rf.id, street: f.street, stripDate: strip.date, stripImage: rf.id === f.id ? strip.image : path.join(STAGING, rf.id, 'strip.jpg'), types: typeIds, run: runs[k],
-          note: `auto-placed from the ${district} library (buurt ${doc.buurt}); scores and holds in scripts/block-face/faces/${f.id}/auto-place.json`});
+        const intent = withPhotoEaves(runIntent({id: rf.id, street: f.street, stripDate: strip.date, stripImage: rf.id === f.id ? strip.image : path.join(STAGING, rf.id, 'strip.jpg'), types: typeIds, run: runs[k],
+          note: `auto-placed from the ${district} library (buurt ${doc.buurt}); scores and holds in scripts/block-face/faces/${f.id}/auto-place.json`}), types, evs, strip);
         await fs.writeFile(path.join(FACES, rf.id, 'intent.json'), JSON.stringify(intent, null, 1) + '\n');
       }
       if (process.argv.includes('--no-compile')) break;
@@ -324,8 +358,8 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
             if (attempt === 0 && picked.length) {
               console.log(`${rf.id}: COMPILE FAILED ${msg}; retrying with dormer-free crowns on ${picked.length} pand(s)`);
               for (const p of picked) { p.notes.push(`crown ${crownOf(p)} -> ${fallback(p)}: the run did not compile with it (${msg.slice(0, 80)})`); p.house.type!.crown = fallback(p); }
-              const intent = runIntent({id: rf.id, street: f.street, stripDate: strip.date, stripImage: rf.id === f.id ? strip.image : path.join(STAGING, rf.id, 'strip.jpg'), types: typeIds, run: runs[k],
-                note: `auto-placed from the ${district} library (buurt ${doc.buurt}); scores and holds in scripts/block-face/faces/${f.id}/auto-place.json`});
+              const intent = withPhotoEaves(runIntent({id: rf.id, street: f.street, stripDate: strip.date, stripImage: rf.id === f.id ? strip.image : path.join(STAGING, rf.id, 'strip.jpg'), types: typeIds, run: runs[k],
+                note: `auto-placed from the ${district} library (buurt ${doc.buurt}); scores and holds in scripts/block-face/faces/${f.id}/auto-place.json`}), types, evs, strip);
               await fs.writeFile(path.join(FACES, rf.id, 'intent.json'), JSON.stringify(intent, null, 1) + '\n');
               continue;
             }
@@ -365,6 +399,11 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
           } catch (e) { console.log(`${id}: challenger ${ct.id} did not compile: ${(e as Error).message.slice(0, 160)}`); }
           await fs.rm(path.join(FACES, id), {recursive: true}); await fs.rm(path.join(STAGING, id), {recursive: true, force: true});
         }
+      }
+      // A pand a reviewer pinned to some types: only those types challenge it.
+      if (pass === 0) for (const ev of evs) {
+        const own = typesForPand(f.id, ev.pandId, types, typePins), c = challengers.get(ev.pandId);
+        if (own !== types && c) challengers.set(ev.pandId, Object.fromEntries(Object.entries(c).filter(([key]) => own.some(t => t.id === key.split('~')[0]))));
       }
       // --photo-decides: a placement whose candidate (another plausible type, or the same type mirrored) the photo's edges
       // prefer by more than the challenge margin is switched to it, once per pand; the next pass compiles and gates it.

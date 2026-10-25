@@ -22,6 +22,7 @@ import {pointInPolygon, proposeFaces, type BuurtPand} from '../../src/canalRecal
 import {sharedTerrain} from '../lib/terrainField.ts';
 import {cachedJson} from '../pand-reference/core.ts';
 import {FACES, intake} from './intake.ts';
+import {threeDBagBbox, threeDBagSourceLabel} from './three-d-bag-source.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const buurtName = arg('buurt') ?? 'Bellamybuurt-Zuid', slug = arg('slug') ?? buurtName.toLowerCase();
@@ -37,17 +38,11 @@ export async function buurtOutline(name: string): Promise<{code: string; id: str
   return {code: b.code, id: b.identificatie, ring: b.geometrie.coordinates[0]};
 }
 
-async function threeDBagBbox(min: RD, max: RD): Promise<CityJsonItem[]> {
+async function threeDBagTiled(min: RD, max: RD): Promise<CityJsonItem[]> {
   const items: CityJsonItem[] = [];
   // 3DBAG pages at 100 items; tile the bbox so no single query runs past its page limit.
-  for (let x = min[0]; x < max[0]; x += 200) for (let y = min[1]; y < max[1]; y += 200) {
-    let url: string | null = `https://api.3dbag.nl/collections/pand/items?bbox=${x.toFixed(0)},${y.toFixed(0)},${Math.min(max[0], x + 200).toFixed(0)},${Math.min(max[1], y + 200).toFixed(0)}&limit=100`;
-    for (let page = 0; url && page < 30; page++) {
-      const json: any = await cachedJson(url);
-      for (const feature of json.features ?? []) items.push({feature, metadata: json.metadata});
-      url = json.links?.find((l: any) => l.rel === 'next')?.href ?? null;
-    }
-  }
+  for (let x = min[0]; x < max[0]; x += 200) for (let y = min[1]; y < max[1]; y += 200)
+    items.push(...await threeDBagBbox([x, y], [Math.min(max[0], x + 200), Math.min(max[1], y + 200)], 30));
   const seen = new Set<string>();
   return items.filter(i => { const id = Object.keys(i.feature.CityObjects).find(k => i.feature.CityObjects[k].type === 'Building')!; if (seen.has(id)) return false; seen.add(id); return true; });
 }
@@ -72,7 +67,7 @@ if (process.argv[1]?.endsWith('block-face/buurt-survey.ts')) {
   const outline = await buurtOutline(buurtName);
   const xs = outline.ring.map(p => p[0]), ys = outline.ring.map(p => p[1]);
   const min: RD = [Math.min(...xs) - 20, Math.min(...ys) - 20], max: RD = [Math.max(...xs) + 20, Math.max(...ys) + 20];
-  const [items, units] = await Promise.all([threeDBagBbox(min, max), bagUnits(min, max)]);
+  const [items, units] = await Promise.all([threeDBagTiled(min, max), bagUnits(min, max)]);
   const streets: StreetPath[] = (JSON.parse(await fs.readFile('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as any[]).map(s => ({name: s.name, paths: s.paths ?? [s.path]}));
   // Pands that are already a member of a block face.
   const covered = new Map<string, string>();
@@ -107,7 +102,7 @@ if (process.argv[1]?.endsWith('block-face/buurt-survey.ts')) {
   pands.sort((a, b) => a.street.localeCompare(b.street) || a.numbers[0] - b.numbers[0]);
   const faces = proposeFaces(pands);
   const doc = {buurt: buurtName, code: outline.code, identificatie: outline.id, slug,
-    sources: {outline: 'api.data.amsterdam.nl gebieden/buurten (CC0)', bag: 'PDOK BAG OGC API v2 verblijfsobject (CC0)', threeDBag: '3DBAG api.3dbag.nl (CC BY 4.0)'},
+    sources: {outline: 'api.data.amsterdam.nl gebieden/buurten (CC0)', bag: 'PDOK BAG OGC API v2 verblijfsobject (CC0)', threeDBag: threeDBagSourceLabel()},
     surveyedAt: new Date().toISOString().slice(0, 10), outlineRD: outline.ring,
     facesRule: 'blockFace/buurtFaces.ts proposeFaces: per street and side, pands with a frontage on their address street joined by shared BAG party walls (>= 1 m, front normals within 0.8 dot); faces already authored are kept, not proposed',
     faces, pands: pands.map(({rings, ...p}) => p)};

@@ -1,0 +1,8 @@
+{
+ "note": "Faces a reviewer restricted to some house types after reading the strip at full size (scripts/block-face/auto-place.ts, blockFace/reviewCrowns.ts typesForFace): Helmersbuurt rows of one build year share widths and cornice lines, so the facts alone cannot tell the designs apart.",
+ "reviewed": "2026-10-25",
+ "pins": [
+  {"face": "helmers-32-66", "types": ["helmers-1900-merlon-dormer"], "reason": "Derde Helmersstraat 54-64 (2023-01-12 strip): every 1899-1900 front carries the crenellated wall dormer over the right two axes; no pedestal dormer or arched balcony front"},
+  {"face": "helmers-40-60", "types": ["helmers-1900-balcony-arch"], "reason": "Eerste Helmersstraat 42-56 (2023-01-12 strip): pedestal dormers with finials, balconettes on storeys 1-3, wide three-light windows; no wall dormer"}
+ ]
+}

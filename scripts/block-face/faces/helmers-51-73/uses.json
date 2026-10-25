@@ -1,0 +1,213 @@
+{
+ "street": "Derde Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167154",
+   "addresses": [
+    "Derde Helmersstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000555201"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163705",
+   "addresses": [
+    "Derde Helmersstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 53",
+     "use": "woonfunctie",
+     "areaM2": 222,
+     "bagId": "0363010011122217"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155520",
+   "addresses": [
+    "Derde Helmersstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 55-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000555212"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164486",
+   "addresses": [
+    "Derde Helmersstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012061177"
+    },
+    {
+     "address": "Derde Helmersstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000555218"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073466",
+   "addresses": [
+    "Derde Helmersstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 182,
+     "bagId": "0363010000555224"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167261",
+   "addresses": [
+    "Derde Helmersstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 61-H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000555231"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152780",
+   "addresses": [
+    "Derde Helmersstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 63-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000555237"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165785",
+   "addresses": [
+    "Derde Helmersstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 65-H",
+     "use": "woonfunctie",
+     "areaM2": 283,
+     "bagId": "0363010012075069"
+    },
+    {
+     "address": "Derde Helmersstraat 65-H",
+     "use": "woonfunctie",
+     "areaM2": 174,
+     "bagId": "0363010000555243"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166026",
+   "addresses": [
+    "Derde Helmersstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 67-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000555249"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165816",
+   "addresses": [
+    "Derde Helmersstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 69-H",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000555254"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162851",
+   "addresses": [
+    "Derde Helmersstraat 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 71-H",
+     "use": "woonfunctie",
+     "areaM2": 179,
+     "bagId": "0363010000555259"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158231",
+   "addresses": [
+    "Derde Helmersstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 73-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000555264"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

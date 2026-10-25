@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-24T20:37:47.152Z",
+ "generatedAt": "2026-10-25T17:36:40.720Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -52508,6 +52508,1518 @@
        "primitive": 8,
        "firstTriangle": 90,
        "triangleCount": 27
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-helmers-209-253-r2",
+   "category": "street-survey",
+   "name": "face-helmers-209-253-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-209-253-r2.glb?asset=4cf89adb6b5c7b9f",
+   "sha256": "4cf89adb6b5c7b9f7beb84f6ed73d4ad3792f524cb05455a62475ad67180c119",
+   "bytes": 295908,
+   "triangles": 4430,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.865943413280282,
+     52.361068564408974
+    ],
+    "northOffsetDegrees": 159.5798,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -5.105,
+     0,
+     -14.616
+    ],
+    "max": [
+     5.036,
+     16.855,
+     0.647
+    ]
+   },
+   "height": 16.855,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012161336",
+    "NL.IMBAG.Pand.0363100012164140"
+   ],
+   "replaces": [
+    "ordinary-0363100012161336",
+    "ordinary-0363100012164140"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8660137,
+        52.3610845
+       ],
+       [
+        4.8659429,
+        52.3610685
+       ],
+       [
+        4.8659999,
+        52.3609752
+       ],
+       [
+        4.8660343,
+        52.360983
+       ],
+       [
+        4.8660523,
+        52.3609536
+       ],
+       [
+        4.8660878,
+        52.3609616
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8659429,
+        52.3610685
+       ],
+       [
+        4.8658741,
+        52.3610528
+       ],
+       [
+        4.865949,
+        52.3609301
+       ],
+       [
+        4.8660178,
+        52.3609458
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "helmers-161336",
+     "pandId": "0363100012161336",
+     "buildingId": "NL.IMBAG.Pand.0363100012161336",
+     "address": "Eerste Helmersstraat 237",
+     "frontage": {
+      "x0": -5.104,
+      "x1": 0.034,
+      "widthM": 5.138
+     },
+     "bounds": {
+      "min": [
+       -5.105,
+       0,
+       -14.616
+      ],
+      "max": [
+       0.034,
+       16.615,
+       0.646
+      ]
+     },
+     "triangles": 2209,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 73
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 336
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 1152
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 312
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "helmers-164140",
+     "pandId": "0363100012164140",
+     "buildingId": "NL.IMBAG.Pand.0363100012164140",
+     "address": "Eerste Helmersstraat 239",
+     "frontage": {
+      "x0": 0.034,
+      "x1": 5.035,
+      "widthM": 5.001
+     },
+     "bounds": {
+      "min": [
+       0.007,
+       0,
+       -14.615
+      ],
+      "max": [
+       5.036,
+       16.855,
+       0.647
+      ]
+     },
+     "triangles": 2221,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 83
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 336,
+       "triangleCount": 336
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1152,
+       "triangleCount": 1152
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 300,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 312,
+       "triangleCount": 312
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 16,
+       "triangleCount": 17
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 3,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 5,
+       "triangleCount": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-helmers-108-174-r1",
+   "category": "street-survey",
+   "name": "face-helmers-108-174-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-108-174-r1.glb?asset=716f4b662641c85c",
+   "sha256": "716f4b662641c85c25c8a8a4a634537d8d9f8171ca637062cf2f3b9326a65d04",
+   "bytes": 245256,
+   "triangles": 3466,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.8673459212733,
+     52.36153202136213
+    ],
+    "northOffsetDegrees": 338.227,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.027,
+     0,
+     -13.436
+    ],
+    "max": [
+     5.974,
+     14.226,
+     0.662
+    ]
+   },
+   "height": 14.226,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012154337",
+    "NL.IMBAG.Pand.0363100012164727"
+   ],
+   "replaces": [
+    "ordinary-0363100012154337",
+    "ordinary-0363100012164727"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8672826,
+        52.361625
+       ],
+       [
+        4.8672047,
+        52.3616059
+       ],
+       [
+        4.8672634,
+        52.3615125
+       ],
+       [
+        4.8673466,
+        52.3615316
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8673627,
+        52.3616461
+       ],
+       [
+        4.8673299,
+        52.3616378
+       ],
+       [
+        4.8673179,
+        52.3616549
+       ],
+       [
+        4.8672706,
+        52.3616427
+       ],
+       [
+        4.8673466,
+        52.3615316
+       ],
+       [
+        4.8674271,
+        52.3615523
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "helmers-154337",
+     "pandId": "0363100012154337",
+     "buildingId": "NL.IMBAG.Pand.0363100012154337",
+     "address": "Eerste Helmersstraat 122",
+     "frontage": {
+      "x0": -6.025,
+      "x1": 0.027,
+      "widthM": 6.052
+     },
+     "bounds": {
+      "min": [
+       -6.027,
+       0,
+       -11.249
+      ],
+      "max": [
+       0.027,
+       14.226,
+       0.661
+      ]
+     },
+     "triangles": 1748,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 59
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 636
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 138
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 13
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "helmers-164727",
+     "pandId": "0363100012164727",
+     "buildingId": "NL.IMBAG.Pand.0363100012164727",
+     "address": "Eerste Helmersstraat 120",
+     "frontage": {
+      "x0": 0.027,
+      "x1": 5.971,
+      "widthM": 5.944
+     },
+     "bounds": {
+      "min": [
+       -0.21,
+       0,
+       -13.436
+      ],
+      "max": [
+       5.974,
+       13.905,
+       0.662
+      ]
+     },
+     "triangles": 1718,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 39
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 636,
+       "triangleCount": 636
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 720,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 156,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 138,
+       "triangleCount": 138
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 13,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 5,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 9,
+       "triangleCount": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-helmers-23-57-r3",
+   "category": "street-survey",
+   "name": "face-helmers-23-57-r3",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-23-57-r3.glb?asset=b49edea17cf4d016",
+   "sha256": "b49edea17cf4d016f9ce544594649aade1d822cace467316cb65e3cfc5f18471",
+   "bytes": 320444,
+   "triangles": 4604,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.87535805635125,
+     52.36346702270087
+    ],
+    "northOffsetDegrees": 156.7171,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -5.891,
+     0,
+     -15.081
+    ],
+    "max": [
+     5.985,
+     17.939,
+     0.645
+    ]
+   },
+   "height": 17.939,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012122183",
+    "NL.IMBAG.Pand.0363100012142705"
+   ],
+   "replaces": [
+    "ordinary-0363100012122183",
+    "ordinary-0363100012142705"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8754375,
+        52.3634879
+       ],
+       [
+        4.8753579,
+        52.363467
+       ],
+       [
+        4.8754458,
+        52.363343
+       ],
+       [
+        4.8754863,
+        52.3633537
+       ],
+       [
+        4.8754657,
+        52.3633827
+       ],
+       [
+        4.8755041,
+        52.3633929
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8753579,
+        52.363467
+       ],
+       [
+        4.8752789,
+        52.3634462
+       ],
+       [
+        4.8753172,
+        52.3633889
+       ],
+       [
+        4.8753332,
+        52.3633689
+       ],
+       [
+        4.875352,
+        52.3633608
+       ],
+       [
+        4.8753869,
+        52.36337
+       ],
+       [
+        4.8754125,
+        52.3633342
+       ],
+       [
+        4.8754458,
+        52.363343
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "helmers-122183",
+     "pandId": "0363100012122183",
+     "buildingId": "NL.IMBAG.Pand.0363100012122183",
+     "address": "Eerste Helmersstraat 55",
+     "frontage": {
+      "x0": -5.886,
+      "x1": 0.009,
+      "widthM": 5.895
+     },
+     "bounds": {
+      "min": [
+       -5.891,
+       0,
+       -15.078
+      ],
+      "max": [
+       0.009,
+       17.939,
+       0.645
+      ]
+     },
+     "triangles": 2289,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 92
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 1280
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 166
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "helmers-142705",
+     "pandId": "0363100012142705",
+     "buildingId": "NL.IMBAG.Pand.0363100012142705",
+     "address": "Eerste Helmersstraat 57",
+     "frontage": {
+      "x0": 0.009,
+      "x1": 5.868,
+      "widthM": 5.859
+     },
+     "bounds": {
+      "min": [
+       -0.045,
+       0,
+       -15.081
+      ],
+      "max": [
+       5.985,
+       17.939,
+       0.645
+      ]
+     },
+     "triangles": 2315,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 92
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 264,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1280,
+       "triangleCount": 1304
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 444,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 166,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 19,
+       "triangleCount": 17
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 6,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 6,
+       "triangleCount": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-helmers-40-60-r1",
+   "category": "street-survey",
+   "name": "face-helmers-40-60-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-40-60-r1.glb?asset=1dc98fcaa046b16e",
+   "sha256": "1dc98fcaa046b16e1a6027282c7f34a431decb83bd70479bd301dd2a5089b612",
+   "bytes": 332824,
+   "triangles": 4881,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.875370540063154,
+     52.363618394198525
+    ],
+    "northOffsetDegrees": 336.3305,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.006,
+     0,
+     -12.343
+    ],
+    "max": [
+     5.897,
+     17.56,
+     0.645
+    ]
+   },
+   "height": 17.56,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012167041",
+    "NL.IMBAG.Pand.0363100012165540"
+   ],
+   "replaces": [
+    "ordinary-0363100012167041",
+    "ordinary-0363100012165540"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8752992,
+        52.3637199
+       ],
+       [
+        4.8752181,
+        52.3636983
+       ],
+       [
+        4.8752285,
+        52.3636825
+       ],
+       [
+        4.8752917,
+        52.3635973
+       ],
+       [
+        4.8753705,
+        52.3636184
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8753776,
+        52.3637408
+       ],
+       [
+        4.8752992,
+        52.3637199
+       ],
+       [
+        4.8753705,
+        52.3636184
+       ],
+       [
+        4.8754494,
+        52.3636395
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "helmers-167041",
+     "pandId": "0363100012167041",
+     "buildingId": "NL.IMBAG.Pand.0363100012167041",
+     "address": "Eerste Helmersstraat 56",
+     "frontage": {
+      "x0": -5.858,
+      "x1": -0.003,
+      "widthM": 5.854
+     },
+     "bounds": {
+      "min": [
+       -6.006,
+       0,
+       -12.343
+      ],
+      "max": [
+       0.073,
+       17.56,
+       0.645
+      ]
+     },
+     "triangles": 2441,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 462
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 1204
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 260
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "helmers-165540",
+     "pandId": "0363100012165540",
+     "buildingId": "NL.IMBAG.Pand.0363100012165540",
+     "address": "Eerste Helmersstraat 54",
+     "frontage": {
+      "x0": -0.003,
+      "x1": 5.864,
+      "widthM": 5.868
+     },
+     "bounds": {
+      "min": [
+       -0.003,
+       0,
+       -12.335
+      ],
+      "max": [
+       5.897,
+       16.742,
+       0.645
+      ]
+     },
+     "triangles": 2440,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 462,
+       "triangleCount": 462
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1204,
+       "triangleCount": 1204
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 444,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 260,
+       "triangleCount": 260
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 5,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 6,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4,
+       "triangleCount": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-helmers-32-66-r1",
+   "category": "street-survey",
+   "name": "face-helmers-32-66-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-32-66-r1.glb?asset=479af0cfc6b6b73e",
+   "sha256": "479af0cfc6b6b73e28ae7270f9cce28c60d759e25a88ce041c6b74b345902514",
+   "bytes": 307548,
+   "triangles": 4648,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.8759111188542015,
+     52.364961163045514
+    ],
+    "northOffsetDegrees": 334.4122,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -5.94,
+     0,
+     -14.166
+    ],
+    "max": [
+     5.871,
+     18.629,
+     0.647
+    ]
+   },
+   "height": 18.629,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012165412",
+    "NL.IMBAG.Pand.0363100012163126"
+   ],
+   "replaces": [
+    "ordinary-0363100012165412",
+    "ordinary-0363100012163126"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8758347,
+        52.3650573
+       ],
+       [
+        4.8757602,
+        52.3650357
+       ],
+       [
+        4.8758325,
+        52.3649381
+       ],
+       [
+        4.8759119,
+        52.3649612
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8759885,
+        52.3649837
+       ],
+       [
+        4.8758996,
+        52.3650984
+       ],
+       [
+        4.8758536,
+        52.3650851
+       ],
+       [
+        4.8758677,
+        52.3650669
+       ],
+       [
+        4.8758347,
+        52.3650573
+       ],
+       [
+        4.8759116,
+        52.3649616
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "helmers-165412",
+     "pandId": "0363100012165412",
+     "buildingId": "NL.IMBAG.Pand.0363100012165412",
+     "address": "Derde Helmersstraat 62",
+     "frontage": {
+      "x0": -5.94,
+      "x1": 0.05,
+      "widthM": 5.99
+     },
+     "bounds": {
+      "min": [
+       -5.94,
+       0,
+       -11.956
+      ],
+      "max": [
+       0.05,
+       18.629,
+       0.647
+      ]
+     },
+     "triangles": 2309,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 81
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 1308
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 372
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "helmers-163126",
+     "pandId": "0363100012163126",
+     "buildingId": "NL.IMBAG.Pand.0363100012163126",
+     "address": "Derde Helmersstraat 60",
+     "frontage": {
+      "x0": 0.05,
+      "x1": 5.841,
+      "widthM": 5.791
+     },
+     "bounds": {
+      "min": [
+       -0.086,
+       0,
+       -14.166
+      ],
+      "max": [
+       5.871,
+       18.617,
+       0.646
+      ]
+     },
+     "triangles": 2339,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 106
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 228,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1308,
+       "triangleCount": 1308
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 300,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 372,
+       "triangleCount": 372
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 4,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 2,
+       "triangleCount": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-helmers-51-73-r1",
+   "category": "street-survey",
+   "name": "face-helmers-51-73-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-51-73-r1.glb?asset=e05755c1c6a3fcc9",
+   "sha256": "e05755c1c6a3fcc92c1185d0b2a2707185e03dfdfe7bfa517b23b20c3808f15c",
+   "bytes": 386160,
+   "triangles": 5652,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.875397157096584,
+     52.364662581492404
+    ],
+    "northOffsetDegrees": 154.0483,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -8.379,
+     0,
+     -11.787
+    ],
+    "max": [
+     8.58,
+     16.994,
+     0.671
+    ]
+   },
+   "height": 16.994,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012167154",
+    "NL.IMBAG.Pand.0363100012163705",
+    "NL.IMBAG.Pand.0363100012155520"
+   ],
+   "replaces": [
+    "ordinary-0363100012167154",
+    "ordinary-0363100012163705",
+    "ordinary-0363100012155520"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.875508,
+        52.3646951
+       ],
+       [
+        4.8754342,
+        52.3646736
+       ],
+       [
+        4.8755002,
+        52.3645921
+       ],
+       [
+        4.8755694,
+        52.3646125
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8754342,
+        52.3646736
+       ],
+       [
+        4.8753595,
+        52.3646518
+       ],
+       [
+        4.8754263,
+        52.3645635
+       ],
+       [
+        4.875505,
+        52.3645853
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8753595,
+        52.3646518
+       ],
+       [
+        4.8752875,
+        52.3646296
+       ],
+       [
+        4.8753589,
+        52.3645343
+       ],
+       [
+        4.8754228,
+        52.3645528
+       ],
+       [
+        4.8754263,
+        52.3645635
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "helmers-167154",
+     "pandId": "0363100012167154",
+     "buildingId": "NL.IMBAG.Pand.0363100012167154",
+     "address": "Derde Helmersstraat 51",
+     "frontage": {
+      "x0": -8.376,
+      "x1": -2.807,
+      "widthM": 5.569
+     },
+     "bounds": {
+      "min": [
+       -8.379,
+       0,
+       -10.175
+      ],
+      "max": [
+       -2.807,
+       16.994,
+       0.63
+      ]
+     },
+     "triangles": 1888,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 47
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 768
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "helmers-163705",
+     "pandId": "0363100012163705",
+     "buildingId": "NL.IMBAG.Pand.0363100012163705",
+     "address": "Derde Helmersstraat 53",
+     "frontage": {
+      "x0": -2.807,
+      "x1": 2.834,
+      "widthM": 5.641
+     },
+     "bounds": {
+      "min": [
+       -2.851,
+       0,
+       -10.976
+      ],
+      "max": [
+       3.03,
+       14.99,
+       0.671
+      ]
+     },
+     "triangles": 1888,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 264,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 324,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 768,
+       "triangleCount": 800
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 300,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 160,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "helmers-155520",
+     "pandId": "0363100012155520",
+     "buildingId": "NL.IMBAG.Pand.0363100012155520",
+     "address": "Derde Helmersstraat 55",
+     "frontage": {
+      "x0": 2.834,
+      "x1": 8.321,
+      "widthM": 5.486
+     },
+     "bounds": {
+      "min": [
+       2.834,
+       0,
+       -11.787
+      ],
+      "max": [
+       8.58,
+       14.87,
+       0.659
+      ]
+     },
+     "triangles": 1876,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 38
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 528,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 648,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1568,
+       "triangleCount": 768
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 600,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 328,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 4,
+       "triangleCount": 10
       }
      ]
     }

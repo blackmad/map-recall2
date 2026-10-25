@@ -1,0 +1,153 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "helmers-1911-balcony-axis",
+ "district": "helmersbuurt",
+ "description": "Eerste Helmersstraat 41-57 (1910-11): 5.9 m dark red-brown brick fronts of four storeys under a brick dentil cornice at 15.3 m; three axes of tall windows with a small-pane top light under flat brick lintels, white frames and sills; an iron-railed balcony on a bracketed slab on the centre axis of storeys 1-3; a brick wall dormer over the centre axis with one wide light and a flat cap, a small dormer beside it",
+ "fit": {
+  "widthM": [
+   5.5,
+   6.3
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   4,
+   3.5,
+   3.5,
+   4.3
+  ],
+  "windows": "small-over-one",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.6,
+   0.73,
+   0.66,
+   0.57
+  ],
+  "headLines": [
+   0.85,
+   0.86,
+   0.83,
+   0.7
+  ],
+  "cornice": "simple",
+  "balconies": {
+   "storeys": [
+    1,
+    2,
+    3
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  }
+ },
+ "crowns": {
+  "wall-dormer": {
+   "gable": "cornice",
+   "tower": {
+    "bays": {
+     "from": 1,
+     "to": 1
+    },
+    "rise": 0.6,
+    "cap": "flat",
+    "lights": "per-axis",
+    "lightSill": 0.08,
+    "lightRise": 0.4
+   },
+   "note": "41-57: a brick wall dormer over the centre axis rising 2.1 m over the cornice, one wide light, flat cap"
+  }
+ },
+ "grounds": {
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "49: double house door with a fanlight on the right axis"
+  },
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "51: on the left axis"
+  }
+ },
+ "palettes": {
+  "dark-red-brown": {
+   "brick": "#6e5040",
+   "frame": "white-painted",
+   "door": "#4a2a22",
+   "stone": "#d9d6cc",
+   "cornice": "#5a4236"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every storey: 3 windows with a small-pane top light, one width",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3 | dormer: 1",
+  "symmetry": "upper storeys symmetric; doors pair at the party walls",
+  "groundFloor": "residential",
+  "signage": "none",
+  "roofline": "brick dentil cornice at 15.3 m; a brick wall dormer on the centre axis",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3,
+   1
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "match": {
+  "years": [
+   1909,
+   1912
+  ],
+  "stucco": false,
+  "frontEavesM": 15.3,
+  "note": "Eerste Helmersstraat 41-57 (1910-11), 5.8-6.5 m; cornice 15.3 m on the 2023-01-12 strip",
+  "yearSlack": 0
+ },
+ "evidence": [
+  {
+   "face": "helmers-23-57",
+   "pands": [
+    "101791",
+    "111454"
+   ],
+   "citation": "strip.jpg 2023-01-12 pands 14-15 (51, 53) at 1.6x with a metre grid: balcony slabs at 4.0, 7.5 and 11.0 m, storey-1 windows 4.35-6.9, storey-2 8.0-10.3, storey-3 11.5-14.0 (top lights 6.0-6.9, 9.5-10.3, 13.2-14.0), dentil cornice 14.4-15.3, wall dormer 15.3-17.4 m"
+  },
+  {
+   "face": "helmers-23-57",
+   "pands": [
+    "126668",
+    "079858",
+    "082256",
+    "131767",
+    "066688",
+    "122183",
+    "142705"
+   ],
+   "citation": "strip.jpg 2023-01-12 pands 9-17 (41-57): the same axes, balconies, cornice and wall dormers"
+  }
+ ],
+ "schemaLimits": [
+  "the brick dentil cornice is the plain simple cornice",
+  "the dark soldier lintels over the windows are not drawn",
+  "the small dormer beside the wall dormer is not drawn",
+  "the balcony slabs' cast brackets are the library's projecting balcony"
+ ],
+ "notes": [
+  "Palette: read on the hazy 2023-01-12 strip (overcast, low contrast); placed pands take their own measured wall."
+ ]
+}

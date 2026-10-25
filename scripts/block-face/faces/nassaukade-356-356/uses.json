@@ -1,0 +1,80 @@
+{
+ "street": "Nassaukade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157582",
+   "addresses": [
+    "Nassaukade 356A",
+    "Nassaukade 356B",
+    "Nassaukade 356C",
+    "Nassaukade 356D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 356A",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001971106"
+    },
+    {
+     "address": "Nassaukade 356B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010001971107"
+    },
+    {
+     "address": "Nassaukade 356C",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010001971108"
+    },
+    {
+     "address": "Nassaukade 356D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001971109"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155824",
+   "addresses": [
+    "Nassaukade 356"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 356-H",
+     "use": "winkelfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000748636"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12320484950,
+     "lngLat": [
+      4.877155,
+      52.3663843
+     ],
+     "tags": {
+      "check_date": "2024-11-07",
+      "craft": "pottery",
+      "name": "Artsy Avenue",
+      "website": "https://artsy-avenue.nl/"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

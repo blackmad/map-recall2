@@ -1,0 +1,344 @@
+{
+ "street": "Jacob van Lennepkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012155639",
+   "addresses": [
+    "Jacob van Lennepkade 49C",
+    "Jacob van Lennepkade 49A",
+    "Jacob van Lennepkade 49B",
+    "Jacob van Lennepkade 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alberdingk Thijmstraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001975878"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 2B",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001975879"
+    },
+    {
+     "address": "Jacob van Lennepkade 49C",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010012069140"
+    },
+    {
+     "address": "Jacob van Lennepkade 49A",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012069142"
+    },
+    {
+     "address": "Jacob van Lennepkade 49B",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010012069143"
+    },
+    {
+     "address": "Jacob van Lennepkade 49-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000680294"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162927",
+   "addresses": [
+    "Jacob van Lennepkade 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 51-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000680300"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161819",
+   "addresses": [
+    "Jacob van Lennepkade 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 53-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000680308"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236227",
+   "addresses": [
+    "Jacob van Lennepkade 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 55-H",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000680316"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161968",
+   "addresses": [
+    "Jacob van Lennepkade 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 57-H",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000680322"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158907",
+   "addresses": [
+    "Jacob van Lennepkade 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 59-H",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000680327"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153685",
+   "addresses": [
+    "Jacob van Lennepkade 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 61-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000680334"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159186",
+   "addresses": [
+    "Jacob van Lennepkade 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 63-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000680340"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157253",
+   "addresses": [
+    "Jacob van Lennepkade 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 65-H",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000680355"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159900",
+   "addresses": [
+    "Jacob van Lennepkade 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 67-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000680366"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158452",
+   "addresses": [
+    "Jacob van Lennepkade 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 69-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000680377"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153487",
+   "addresses": [
+    "Jacob van Lennepkade 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 71-H",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000680381"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100709",
+   "addresses": [
+    "Jacob van Lennepkade 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 73-H",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010003758172"
+    },
+    {
+     "address": "Jacob van Lennepkade 73-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000680385"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160813",
+   "addresses": [
+    "Jacob van Lennepkade 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 1",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000544225"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2414357207,
+     "lngLat": [
+      4.8737794,
+      52.3653615
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1",
+      "addr:postcode": "1054BN",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "amenity": "fast_food",
+      "branch": "Amsterdam-Oud West",
+      "brand": "Taco Mundo",
+      "brand:website": "https://www.tacomundo.com",
+      "brand:wikidata": "Q108923671",
+      "cuisine": "mexican",
+      "indoor_seating": "yes",
+      "name": "Taco Mundo",
+      "opening_hours": "Mo-Th 16:00-22:00; Fr-Su 12:00-23:00",
+      "outdoor_seating": "yes",
+      "phone:NL": "0900 1238226",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.tacomundo.com/vestigingen/amsterdam-oud-west",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9420507104,
+     "lngLat": [
+      4.8737212,
+      52.3654417
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "brand": "Vattenfall InCharge",
+      "brand:wikidata": "Q71041027",
+      "capacity": "2",
+      "name": "Vattenfall InCharge",
+      "operator": "Vattenfall InCharge",
+      "operator:wikidata": "Q71041027"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 2.3
+    },
+    {
+     "type": "node",
+     "id": 13081530990,
+     "lngLat": [
+      4.8737226,
+      52.3653682
+     ],
+     "tags": {
+      "artist_name": "Streetart Frankey",
+      "artwork_type": "sculpture",
+      "name": "Henri Pronker - Stringskater",
+      "tourism": "artwork",
+      "wikipedia": "nl:Henri Pronker"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

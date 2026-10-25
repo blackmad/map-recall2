@@ -1,0 +1,140 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "helmers-1897-balconette",
+ "district": "helmersbuurt",
+ "description": "Eerste Helmersstraat 217-229 (1897): 6 m red-brown brick fronts of a ground and two upper storeys under a cream moulded cornice at 10.8 m; three equal axes of tall two-light windows with a transom, shallow segmental brick heads, white stone sills; a bellied wrought-iron balconette on the centre axis of both upper storeys; one white cast vent panel per axis in the frieze; one white timber dormer with a pointed pediment and a finial; double house door with a fanlight on the left axis",
+ "fit": {
+  "widthM": [
+   5.6,
+   6.4
+  ],
+  "storeys": [
+   3
+  ]
+ },
+ "body": {
+  "storeys": 3,
+  "bays": 3,
+  "storeyHeights": [
+   3.75,
+   3.2,
+   3.85
+  ],
+  "windows": "t-window",
+  "windowHead": {
+   "kind": "segmental"
+  },
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.63,
+   0.7,
+   0.62
+  ],
+  "headLines": [
+   0.88,
+   0.84,
+   0.675
+  ],
+  "cornice": "simple",
+  "balconies": {
+   "storeys": [
+    1,
+    2
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  },
+  "friezeVents": {
+   "span": 0.85,
+   "rise": 0.18,
+   "drop": 0.2
+  }
+ },
+ "crowns": {
+  "pointed-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pointed",
+   "note": "223-229: one white timber dormer, pointed pediment with a finial, centred"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "double door under a fanlight on the left axis, two windows with a transom"
+  }
+ },
+ "palettes": {
+  "red-brown-brick": {
+   "brick": "#97785a",
+   "frame": "white-painted",
+   "door": "#1f2324",
+   "stone": "#eeeae0",
+   "cornice": "#e3d5af",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "upper storeys: 3 two-light windows with a transom, one width",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | dormer: 1",
+  "symmetry": "upper storeys symmetric; door on the left",
+  "groundFloor": "residential",
+  "signage": "none",
+  "roofline": "cream moulded cornice at 10.8 m over a frieze with three vent panels; one pointed timber dormer",
+  "photoRows": [
+   3,
+   3,
+   3,
+   1
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "match": {
+  "years": [
+   1896,
+   1898
+  ],
+  "stucco": false,
+  "note": "the 1897 row of Eerste Helmersstraat 217-229: 6 m, cornice 10.8 m by the strip skyline (--photo-eaves); 3DBAG/PDOK eaves read the mansard top (10.9-13.4 m)",
+  "frontEavesM": 10.8,
+  "yearSlack": 0
+ },
+ "evidence": [
+  {
+   "face": "helmers-209-253",
+   "pands": [
+    "164920",
+    "165470"
+   ],
+   "citation": "strip.jpg 2024-11-29 pands 9-10 (225, 227) at 2x with a metre grid: ground windows 0.93-3.3 m, storey-1 windows 4.18-6.43 m, storey-2 7.18-9.55 m, vents 10.05-10.25 m, cornice 10.35-10.8 m, dormer to 12.6 m with a finial to 13.6 m; balconettes 3.6-4.4 and 6.7-7.5 m on the centre axis"
+  },
+  {
+   "face": "helmers-209-253",
+   "pands": [
+    "159862",
+    "159632",
+    "153120",
+    "166885",
+    "165598"
+   ],
+   "citation": "strip.jpg 2024-11-29 pands 5-11 (217-229): same axes, balconettes, frieze vents and cornice line; 217-221 dormers are wider (box) on the photo"
+  }
+ ],
+ "schemaLimits": [
+  "the 2x2 small-pane top light of storey 1 is drawn as the t-window's single top light (transom at 0.76 of the window; the photo transom is at 0.6-0.63)",
+  "the bellied (bombe) iron balconette is the library's straight projecting guard",
+  "the dormer's finial is not drawn"
+ ],
+ "notes": [
+  "Palette: strip medians (scripts/block-face/palette-from-strip.ts --face=helmers-209-253 --frame=white-painted): walls 217-229 #8e7256..#a9886c, median #97785a; cornice #e3d5af (225, sunlit); placed pands take their own measured wall."
+ ]
+}

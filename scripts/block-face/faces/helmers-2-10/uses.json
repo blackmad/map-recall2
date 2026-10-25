@@ -1,0 +1,120 @@
+{
+ "street": "Tweede Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157419",
+   "addresses": [
+    "Tweede Helmersstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000550439"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153762",
+   "addresses": [
+    "Tweede Helmersstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000550432"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158498",
+   "addresses": [
+    "Tweede Helmersstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 6",
+     "use": "logiesfunctie",
+     "areaM2": 360,
+     "bagId": "0363010000550427"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236011",
+   "addresses": [
+    "Tweede Helmersstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 4",
+     "use": "logiesfunctie",
+     "areaM2": 403,
+     "bagId": "0363010000550423"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809440843,
+     "lngLat": [
+      4.8781874,
+      52.365066
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4",
+      "addr:postcode": "1054CH",
+      "addr:street": "Tweede Helmersstraat",
+      "email": "info@hoteldamsterdam.com",
+      "name": "Hotel d'Amsterdam",
+      "phone": "+31 20 6160125",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "hotel",
+      "website": "https://www.hoteldamsterdam.com/"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164710",
+   "addresses": [
+    "Tweede Helmersstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000550419"
+    },
+    {
+     "address": "Tweede Helmersstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012565653"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

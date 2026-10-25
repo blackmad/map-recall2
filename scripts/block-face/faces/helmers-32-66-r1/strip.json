@@ -1,0 +1,116 @@
+{
+ "face": "helmers-32-66-r1",
+ "image": "staging/block-face/helmers-32-66-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 472,
+ "height": 827,
+ "groundNAP": 0.337,
+ "heightM": 20.68,
+ "frame": {
+  "midRD": [
+   120174.87675,
+   486464.42725
+  ],
+  "uRD": [
+   0.9071781568514021,
+   0.42074670733315633
+  ],
+  "nRD": [
+   0.42074670733315633,
+   -0.9071781568514021
+  ]
+ },
+ "x0M": -5.94,
+ "x1M": 5.86,
+ "date": "2023-01-12",
+ "cameraHeightM": 2.4,
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012165412",
+   "x0M": -5.94,
+   "x1M": 0.06,
+   "px": [
+    0,
+    240
+   ],
+   "date": "2023-01-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002929_pano_0009_000266",
+     "timestamp": "2023-01-12T10:40:18.901740Z",
+     "distanceM": 7.2,
+     "obliquityDeg": 15.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002929_pano_0009_000267",
+     "timestamp": "2023-01-12T10:40:19.696770Z",
+     "distanceM": 7.6,
+     "obliquityDeg": 24.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163126",
+   "x0M": 0.06,
+   "x1M": 5.86,
+   "px": [
+    240,
+    472
+   ],
+   "date": "2023-01-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002929_pano_0009_000265",
+     "timestamp": "2023-01-12T10:40:18.121760Z",
+     "distanceM": 7,
+     "obliquityDeg": 8.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002929_pano_0009_000266",
+     "timestamp": "2023-01-12T10:40:18.901740Z",
+     "distanceM": 8,
+     "obliquityDeg": 29.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002929_pano_0009_000264",
+     "timestamp": "2023-01-12T10:40:17.326820Z",
+     "distanceM": 9.1,
+     "obliquityDeg": 41.3,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2021-03-24": 13,
+  "2019-04-29": 13,
+  "2016-08-09": 13,
+  "2024-11-29": 13,
+  "2020-05-11": 13,
+  "2025-07-31": 13,
+  "2019-12-09": 13,
+  "2022-05-02": 13,
+  "2019-01-07": 13,
+  "2018-06-12": 13,
+  "2023-01-12": 13,
+  "2022-01-03": 1,
+  "2018-11-19": 0,
+  "2022-04-29": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "helmers-32-66",
+  "px": [
+   438,
+   910
+  ]
+ }
+}

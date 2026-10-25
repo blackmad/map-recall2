@@ -1,0 +1,687 @@
+{
+ "street": "Jacob van Lennepkade",
+ "seed": "0363100012155639",
+ "members": [
+  "0363100012155639",
+  "0363100012162927",
+  "0363100012161819",
+  "0363100012236227",
+  "0363100012161968",
+  "0363100012158907",
+  "0363100012153685",
+  "0363100012159186",
+  "0363100012157253",
+  "0363100012159900",
+  "0363100012158452",
+  "0363100012153487",
+  "0363100012100709",
+  "0363100012160813"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012163088 21.8 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012163753",
+   "reason": "frontage 69.0 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012158674",
+   "reason": "frontage 36.6 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012164738",
+   "reason": "frontage 32.4 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012214702",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012236227"
+  },
+  {
+   "pandId": "0363100012222770",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012162821"
+  },
+  {
+   "pandId": "0363100012236581",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012163701"
+  },
+  {
+   "pandId": "0363100012159829",
+   "reason": "frontage 71.1 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012166544",
+   "reason": "frontage 70.5 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012156248",
+   "reason": "no frontage on Jacob van Lennepkade: No footprint edge faces Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012155686",
+   "reason": "frontage 36.6 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012166311",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012160388"
+  },
+  {
+   "pandId": "0363100012152681",
+   "reason": "frontage 36.2 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012152511",
+   "reason": "frontage 129.2 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012162383",
+   "reason": "frontage 70.8 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012163836",
+   "reason": "frontage 33.1 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012155774",
+   "reason": "frontage 36.3 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012152628",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012160813"
+  },
+  {
+   "pandId": "0363100012156923",
+   "reason": "frontage 102.7 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012236376",
+   "reason": "frontage 69.1 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012119454",
+   "reason": "frontage 95.0 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012157801",
+   "reason": "frontage 104.7 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012156913",
+   "reason": "frontage 36.3 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012162406",
+   "reason": "frontage 102.5 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012160941",
+   "reason": "frontage 32.1 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012160126",
+   "reason": "no frontage on Jacob van Lennepkade: No footprint edge faces Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012164638",
+   "reason": "frontage 36.2 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012156983",
+   "reason": "frontage 36.5 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012165809",
+   "reason": "frontage 69.0 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012162464",
+   "reason": "frontage 88.5 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012159478",
+   "reason": "frontage 32.5 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012154262",
+   "reason": "frontage 36.2 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012156156",
+   "reason": "frontage 68.9 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012153657",
+   "reason": "frontage 36.5 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012163128",
+   "reason": "frontage 36.5 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012163907",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012161968"
+  },
+  {
+   "pandId": "0363100012159353",
+   "reason": "frontage 101.8 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012165412",
+   "reason": "frontage 102.4 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012167186",
+   "reason": "frontage 101.0 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012222099",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012167437"
+  },
+  {
+   "pandId": "0363100012161411",
+   "reason": "frontage 34.3 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012226207",
+   "reason": "frontage 91.8 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012161582",
+   "reason": "frontage 65.0 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012159722",
+   "reason": "frontage 70.6 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012165637",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012155639"
+  },
+  {
+   "pandId": "0363100012220465",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012161096"
+  },
+  {
+   "pandId": "0363100012155382",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012160388"
+  },
+  {
+   "pandId": "0363100012164812",
+   "reason": "frontage 71.0 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012156087",
+   "reason": "frontage 102.4 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012153715",
+   "reason": "frontage 69.1 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012210800",
+   "reason": "frontage 91.8 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012158191",
+   "reason": "frontage 32.2 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012164242",
+   "reason": "frontage 70.7 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012166556",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012090216"
+  },
+  {
+   "pandId": "0363100012157083",
+   "reason": "frontage 101.7 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012162635",
+   "reason": "frontage 65.2 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012162654",
+   "reason": "frontage 69.1 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012163081",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012152628"
+  },
+  {
+   "pandId": "0363100012163385",
+   "reason": "frontage 32.6 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012160766",
+   "reason": "frontage 36.3 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012163370",
+   "reason": "frontage 95.0 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012157404",
+   "reason": "frontage 64.9 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012163422",
+   "reason": "frontage 43.7 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012218026",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012166910"
+  },
+  {
+   "pandId": "0363100012159217",
+   "reason": "frontage 39.6 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012166173",
+   "reason": "frontage 69.1 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012158696",
+   "reason": "frontage 36.5 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012154222",
+   "reason": "frontage 69.9 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012162983",
+   "reason": "frontage 37.5 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012198659",
+   "reason": "frontage 88.6 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012153713",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012236457"
+  },
+  {
+   "pandId": "0363100012155675",
+   "reason": "frontage 36.2 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012162465",
+   "reason": "frontage 82.4 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012110245",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012090216"
+  },
+  {
+   "pandId": "0363100012160597",
+   "reason": "frontage 104.6 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012214518",
+   "reason": "frontage 91.8 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012570749",
+   "reason": "frontage 89.5 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012160456",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012236457"
+  },
+  {
+   "pandId": "0363100012166889",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012236457"
+  },
+  {
+   "pandId": "0363100012157207",
+   "reason": "frontage 39.1 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012572092",
+   "reason": "frontage 89.5 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012236846",
+   "reason": "frontage 32.4 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012095320",
+   "reason": "no frontage on Jacob van Lennepkade: No footprint edge faces Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012163153",
+   "reason": "frontage 31.7 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012164798",
+   "reason": "frontage 37.3 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012161875",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012152628"
+  },
+  {
+   "pandId": "0363100012153021",
+   "reason": "frontage 88.7 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012188042",
+   "reason": "frontage 91.8 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012163161",
+   "reason": "frontage 69.1 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012160640",
+   "reason": "no frontage on Jacob van Lennepkade: No footprint edge faces Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012166948",
+   "reason": "frontage 82.4 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012165638",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012162927"
+  },
+  {
+   "pandId": "0363100012163126",
+   "reason": "frontage 100.2 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012155631",
+   "reason": "frontage 32.6 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012155751",
+   "reason": "frontage 40.1 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012217932",
+   "reason": "frontage 91.8 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012163703",
+   "reason": "frontage 65.1 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012160431",
+   "reason": "frontage 38.4 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012152702",
+   "reason": "frontage 69.0 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012167182",
+   "reason": "frontage 70.0 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012089206",
+   "reason": "frontage 129.2 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012160276",
+   "reason": "frontage 69.7 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012160227",
+   "reason": "frontage 69.6 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012159537",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012160388"
+  },
+  {
+   "pandId": "0363100012214958",
+   "reason": "frontage 89.5 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012203065",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012153662"
+  },
+  {
+   "pandId": "0363100012152531",
+   "reason": "frontage 36.3 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012233486",
+   "reason": "frontage 34.1 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012236357",
+   "reason": "sightline to Jacob van Lennepkade crosses 0363100012159711"
+  },
+  {
+   "pandId": "0363100012166424",
+   "reason": "frontage 101.3 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012158175",
+   "reason": "frontage 69.4 m from Jacob van Lennepkade"
+  },
+  {
+   "pandId": "0363100012159399",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160388",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167437",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125479",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152705",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166910",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157674",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161096",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160525",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236457",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159711",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162821",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237107",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156198",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166967",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166985",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160648",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164088",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012155639",
+   "alongM": 0,
+   "widthM": 5.38,
+   "eavesM": 15.35,
+   "roofMaxM": 17.88,
+   "storeys3dbag": null,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162927",
+   "alongM": 5.41,
+   "widthM": 5.45,
+   "eavesM": 15.47,
+   "roofMaxM": 17.79,
+   "storeys3dbag": null,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161819",
+   "alongM": 11.19,
+   "widthM": 6.1,
+   "eavesM": 13.26,
+   "roofMaxM": 17.88,
+   "storeys3dbag": null,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236227",
+   "alongM": 17.86,
+   "widthM": 7.26,
+   "eavesM": 15.6,
+   "roofMaxM": 20.18,
+   "storeys3dbag": null,
+   "builtYear": 1892,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161968",
+   "alongM": 24.03,
+   "widthM": 5.09,
+   "eavesM": 14.29,
+   "roofMaxM": 17.31,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158907",
+   "alongM": 29.35,
+   "widthM": 5.55,
+   "eavesM": 17.4,
+   "roofMaxM": 17.41,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153685",
+   "alongM": 34.72,
+   "widthM": 5.19,
+   "eavesM": 14.25,
+   "roofMaxM": 17.29,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159186",
+   "alongM": 39.86,
+   "widthM": 5.11,
+   "eavesM": 14.23,
+   "roofMaxM": 17.29,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157253",
+   "alongM": 45.23,
+   "widthM": 5.62,
+   "eavesM": 17.18,
+   "roofMaxM": 17.55,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159900",
+   "alongM": 50.76,
+   "widthM": 5.44,
+   "eavesM": 17.13,
+   "roofMaxM": 17.17,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158452",
+   "alongM": 56.49,
+   "widthM": 6.02,
+   "eavesM": 17.14,
+   "roofMaxM": 17.17,
+   "storeys3dbag": null,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153487",
+   "alongM": 62.37,
+   "widthM": 5.74,
+   "eavesM": 16.89,
+   "roofMaxM": 16.93,
+   "storeys3dbag": null,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012100709",
+   "alongM": 68.49,
+   "widthM": 6.51,
+   "eavesM": 16.18,
+   "roofMaxM": 16.28,
+   "storeys3dbag": null,
+   "builtYear": 2012,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160813",
+   "alongM": 74.29,
+   "widthM": 5.1,
+   "eavesM": 4.43,
+   "roofMaxM": 16.31,
+   "storeys3dbag": null,
+   "builtYear": 1895,
+   "uncertainty": []
+  }
+ ]
+}

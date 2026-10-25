@@ -1,0 +1,169 @@
+{
+ "street": "Eerste Constantijn Huygensstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162284",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 21-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000544259"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809432418,
+     "lngLat": [
+      4.8742569,
+      52.3647258
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "21-H",
+      "addr:postcode": "1054BP",
+      "addr:street": "Eerste Constantijn Huygensstraat",
+      "amenity": "restaurant",
+      "name": "Pepito",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157519",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000544261"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012235894",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 25",
+    "Eerste Constantijn Huygensstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 25-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000544263"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 27-H",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010001005615"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 25-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 267,
+     "bagId": "0363010012074864"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 25-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010012100911"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 27-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012100912"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 25-H",
+     "use": "winkelfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012109288"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 27-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012109291"
+    }
+   ],
+   "units": 15,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5762448853,
+     "lngLat": [
+      4.8742806,
+      52.3645938
+     ],
+     "tags": {
+      "check_date": "2023-06-21",
+      "name": "things I like things I love",
+      "name:en": "things I like things I love",
+      "shop": "clothes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152776",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 29-H",
+     "use": "winkelfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000957002"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11993668956,
+     "lngLat": [
+      4.8743277,
+      52.3645401
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "check_date": "2024-06-20",
+      "cuisine": "mediterranean",
+      "name": "Rue D'Alger"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

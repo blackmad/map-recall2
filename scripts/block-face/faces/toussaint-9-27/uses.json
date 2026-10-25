@@ -1,0 +1,211 @@
+{
+ "street": "Bosboom Toussaintstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161315",
+   "addresses": [
+    "Bosboom Toussaintstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010001020855"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161958",
+   "addresses": [
+    "Bosboom Toussaintstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010001023878"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164755",
+   "addresses": [
+    "Bosboom Toussaintstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000593555"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166210",
+   "addresses": [
+    "Bosboom Toussaintstraat 15A",
+    "Bosboom Toussaintstraat 15C",
+    "Bosboom Toussaintstraat 15B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 15A",
+     "use": "woonfunctie",
+     "areaM2": 185,
+     "bagId": "0363010001982037"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 15C",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001982038"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 15B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000593565"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162495",
+   "addresses": [
+    "Bosboom Toussaintstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000593567"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154112",
+   "addresses": [
+    "Bosboom Toussaintstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000593574"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010012164666"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161668",
+   "addresses": [
+    "Bosboom Toussaintstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000593580"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164529",
+   "addresses": [
+    "Bosboom Toussaintstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000805518"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163234",
+   "addresses": [
+    "Bosboom Toussaintstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000593592"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158948",
+   "addresses": [
+    "Bosboom Toussaintstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 27-H",
+     "use": "winkelfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000957033"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11928804398,
+     "lngLat": [
+      4.8766543,
+      52.3656248
+     ],
+     "tags": {
+      "addr:housenumber": "27",
+      "addr:street": "Bosboom Toussaintstraat",
+      "beauty": "hair_removal;laser_hair_removal",
+      "check_date": "2024-05-23",
+      "name": "The Laser Lab",
+      "shop": "beauty",
+      "website": "https://thelaserlabamsterdam.nl/en/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

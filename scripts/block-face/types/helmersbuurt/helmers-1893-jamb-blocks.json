@@ -1,0 +1,131 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "helmers-1893-jamb-blocks",
+ "district": "helmersbuurt",
+ "description": "Eerste Helmersstraat 116-122 (1893): 6 m red-brown brick fronts of a ground and two upper storeys under a white moulded cornice at 10.8 m; three axes of two-light windows under a top light, each dressed in white stone: three blocks bonded into each jamb, a keystone over the flat head, a sill; an iron balconette on the centre axis of the top storey; a white pedimented dormer",
+ "fit": {
+  "widthM": [
+   5.6,
+   6.4
+  ],
+  "storeys": [
+   3
+  ]
+ },
+ "body": {
+  "storeys": 3,
+  "bays": 3,
+  "storeyHeights": [
+   4,
+   3.2,
+   3.5
+  ],
+  "windows": "t-window",
+  "windowSurround": "keystone",
+  "windowHeights": [
+   0.7,
+   0.69,
+   0.6
+  ],
+  "headLines": [
+   0.83,
+   0.81,
+   0.71
+  ],
+  "cornice": "simple",
+  "jambBlocks": {
+   "count": 3,
+   "rise": 0.12,
+   "reach": 0.14
+  },
+  "balconies": {
+   "storeys": [
+    2
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  },
+  "windowShare": 0.55
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "note": "116-122: one white timber dormer with a pediment (120: carved, with box dormers beside it), centred"
+  }
+ },
+ "grounds": {
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "116, 118: double house door under a fanlight on the right axis"
+  },
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "mirrored neighbours"
+  }
+ },
+ "palettes": {
+  "red-brown-1893": {
+   "brick": "#7c4f3d",
+   "frame": "white-painted",
+   "door": "#5a2a20",
+   "stone": "#eeeae0",
+   "cornice": "#eeeae0",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every storey: 3 windows under a top light, one width",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | dormer: 1",
+  "symmetry": "upper storeys symmetric; door right (or left, mirrored)",
+  "groundFloor": "residential",
+  "signage": "none",
+  "roofline": "white moulded cornice at 10.8 m; one pedimented dormer",
+  "photoRows": [
+   3,
+   3,
+   3,
+   1
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "match": {
+  "years": [
+   1893,
+   1893
+  ],
+  "yearSlack": 0,
+  "stucco": false,
+  "frontEavesM": 10.8,
+  "note": "Eerste Helmersstraat 116-122 (1893), 6 m; cornice 10.8 m on the strip; the skyline reads the dormer tops at 13.2-13.8 m (frontSkylineM)",
+  "frontSkylineM": 13.5
+ },
+ "evidence": [
+  {
+   "face": "helmers-108-174",
+   "pands": [
+    "157518",
+    "166218"
+   ],
+   "citation": "strip.jpg 2024-11-29 (and the 2023-01-12 strip at a 2.4 m camera height that placement now uses) pands 10-11 (118, 116) at 1.8x with a metre grid: ground windows 0.5-3.3 m, storey-1 windows 4.4-6.6 (top light 6.0-6.6), storey-2 7.6-9.7; keystones 0.3 m over each head; three jamb blocks a side 0.12 m high reaching 0.14 m at 0.17, 0.48 and 0.81 of the window; balconette 7.2-7.9 m on the centre axis; cornice 10.2-10.9 m"
+  }
+ ],
+ "schemaLimits": [
+  "the window sills under the keystone surround are the library's keystone dressing only (the photo has white sills too)",
+  "the dormer is the library pediment dormer; 120 has a carved dormer flanked by two box dormers"
+ ],
+ "notes": [
+  "Palette: strip medians of 116 (shaded) and 118 (sunlit), 2024-11-29; placed pands take their own measured wall."
+ ]
+}

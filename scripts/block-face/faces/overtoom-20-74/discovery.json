@@ -1,0 +1,1742 @@
+{
+ "street": "Overtoom",
+ "seed": "0363100012249367",
+ "members": [
+  "0363100012235976",
+  "0363100012155830",
+  "0363100012153822",
+  "0363100012157517",
+  "0363100012159922",
+  "0363100012109158",
+  "0363100012233488",
+  "0363100012233649",
+  "0363100012161926",
+  "0363100012162948",
+  "0363100012236248",
+  "0363100012249367"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012235976 (face continues: 161004 161296)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012236942 25.7 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012163753",
+   "reason": "frontage 233.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161941",
+   "reason": "frontage 46.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012221091",
+   "reason": "frontage 160.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012193727",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012142705",
+   "reason": "frontage 49.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012237312",
+   "reason": "frontage 98.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236373",
+   "reason": "frontage 39.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012233619",
+   "reason": "frontage 43.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153452",
+   "reason": "frontage 198.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152939",
+   "reason": "frontage 70.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163350",
+   "reason": "frontage 106.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153134",
+   "reason": "frontage 113.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152673",
+   "reason": "frontage 140.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166544",
+   "reason": "frontage 232.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012237293",
+   "reason": "frontage 79.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156179",
+   "reason": "frontage 69.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161484",
+   "reason": "frontage 66.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012167261",
+   "reason": "frontage 174.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162851",
+   "reason": "frontage 172.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012131767",
+   "reason": "frontage 50.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012164921",
+   "reason": "frontage 140.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161325",
+   "reason": "frontage 72.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163953",
+   "reason": "frontage 200.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156681",
+   "reason": "frontage 140.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157357",
+   "reason": "frontage 80.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012198301",
+   "reason": "frontage 220.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157419",
+   "reason": "frontage 131.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012235900",
+   "reason": "frontage 70.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159659",
+   "reason": "frontage 62.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012228712",
+   "reason": "frontage 124.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158159",
+   "reason": "frontage 69.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012164501",
+   "reason": "frontage 110.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163705",
+   "reason": "frontage 175.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012167107",
+   "reason": "frontage 160.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162607",
+   "reason": "frontage 70.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012154302",
+   "reason": "frontage 53.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012168521",
+   "reason": "frontage 78.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158585",
+   "reason": "sightline to Overtoom crosses 0363100012165334"
+  },
+  {
+   "pandId": "0363100012236744",
+   "reason": "frontage 83.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152511",
+   "reason": "frontage 173.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236393",
+   "reason": "frontage 199.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012155797",
+   "reason": "frontage 140.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153762",
+   "reason": "frontage 131.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159452",
+   "reason": "frontage 140.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012164710",
+   "reason": "frontage 133.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162690",
+   "reason": "frontage 140.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012167336",
+   "reason": "frontage 155.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012212290",
+   "reason": "frontage 159.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236624",
+   "reason": "frontage 198.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152281",
+   "reason": "frontage 113.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162383",
+   "reason": "frontage 231.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163690",
+   "reason": "frontage 49.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162951",
+   "reason": "frontage 58.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012168519",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012157870",
+   "reason": "frontage 79.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012155692",
+   "reason": "frontage 159.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236706",
+   "reason": "frontage 80.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156923",
+   "reason": "frontage 201.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157984",
+   "reason": "frontage 153.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012066688",
+   "reason": "frontage 50.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157840",
+   "reason": "frontage 166.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152340",
+   "reason": "frontage 165.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157699",
+   "reason": "frontage 213.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159808",
+   "reason": "frontage 56.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012130645",
+   "reason": "frontage 150.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152546",
+   "reason": "frontage 150.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012167201",
+   "reason": "frontage 175.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165396",
+   "reason": "frontage 57.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158663",
+   "reason": "frontage 173.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012119454",
+   "reason": "frontage 214.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162582",
+   "reason": "frontage 165.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012188285",
+   "reason": "frontage 220.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157801",
+   "reason": "frontage 200.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012193729",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012208942",
+   "reason": "frontage 102.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012168516",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012165241",
+   "reason": "frontage 56.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162406",
+   "reason": "frontage 200.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161199",
+   "reason": "frontage 64.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012126847",
+   "reason": "frontage 58.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159518",
+   "reason": "frontage 80.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012091715",
+   "reason": "frontage 49.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012088251",
+   "reason": "frontage 71.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012160941",
+   "reason": "frontage 265.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153259",
+   "reason": "frontage 67.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012224536",
+   "reason": "frontage 147.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161980",
+   "reason": "frontage 165.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012174362",
+   "reason": "frontage 163.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163268",
+   "reason": "frontage 111.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012233690",
+   "reason": "frontage 114.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165809",
+   "reason": "frontage 232.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162464",
+   "reason": "frontage 220.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165941",
+   "reason": "frontage 200.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163123",
+   "reason": "frontage 67.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153642",
+   "reason": "frontage 140.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012191207",
+   "reason": "frontage 163.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163575",
+   "reason": "frontage 53.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158944",
+   "reason": "frontage 52.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012160649",
+   "reason": "frontage 200.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236652",
+   "reason": "frontage 86.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156156",
+   "reason": "frontage 233.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012135250",
+   "reason": "frontage 184.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161538",
+   "reason": "frontage 161.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012155585",
+   "reason": "frontage 135.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157664",
+   "reason": "frontage 106.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153507",
+   "reason": "frontage 139.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152690",
+   "reason": "frontage 67.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159874",
+   "reason": "frontage 159.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163907",
+   "reason": "frontage 266.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162865",
+   "reason": "frontage 112.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236892",
+   "reason": "sightline to Overtoom crosses 0363100012072136"
+  },
+  {
+   "pandId": "0363100012167213",
+   "reason": "frontage 172.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012168517",
+   "reason": "frontage 81.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159353",
+   "reason": "frontage 201.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012126668",
+   "reason": "frontage 53.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012237054",
+   "reason": "frontage 78.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165412",
+   "reason": "frontage 200.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159850",
+   "reason": "frontage 140.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012205661",
+   "reason": "frontage 146.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163451",
+   "reason": "frontage 139.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012221503",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012167186",
+   "reason": "frontage 200.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012160557",
+   "reason": "frontage 106.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012168520",
+   "reason": "frontage 76.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012067068",
+   "reason": "frontage 171.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012226207",
+   "reason": "frontage 220.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012237223",
+   "reason": "frontage 112.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236827",
+   "reason": "frontage 104.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166271",
+   "reason": "frontage 105.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159722",
+   "reason": "frontage 231.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156462",
+   "reason": "frontage 67.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012137982",
+   "reason": "frontage 46.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162970",
+   "reason": "frontage 164.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012084624",
+   "reason": "frontage 175.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152780",
+   "reason": "frontage 173.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157994",
+   "reason": "frontage 138.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159768",
+   "reason": "frontage 140.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157617",
+   "reason": "frontage 153.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012086892",
+   "reason": "frontage 87.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156749",
+   "reason": "frontage 132.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166176",
+   "reason": "frontage 170.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166340",
+   "reason": "frontage 80.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012164812",
+   "reason": "frontage 230.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236843",
+   "reason": "frontage 199.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012233148",
+   "reason": "frontage 147.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012168515",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012166619",
+   "reason": "frontage 33.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153216",
+   "reason": "frontage 111.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012231233",
+   "reason": "frontage 94.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236234",
+   "reason": "frontage 34.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156087",
+   "reason": "frontage 200.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159646",
+   "reason": "frontage 166.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012210800",
+   "reason": "frontage 220.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158191",
+   "reason": "frontage 265.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152522",
+   "reason": "frontage 148.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166612",
+   "reason": "frontage 167.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012164242",
+   "reason": "frontage 232.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236312",
+   "reason": "frontage 95.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158622",
+   "reason": "frontage 141.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152333",
+   "reason": "frontage 200.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157529",
+   "reason": "frontage 173.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161970",
+   "reason": "frontage 49.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012136933",
+   "reason": "frontage 68.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012155592",
+   "reason": "frontage 138.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157083",
+   "reason": "frontage 200.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165295",
+   "reason": "frontage 140.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166425",
+   "reason": "frontage 112.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012168518",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012077967",
+   "reason": "frontage 36.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152920",
+   "reason": "frontage 173.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012174365",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012164923",
+   "reason": "frontage 138.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153119",
+   "reason": "frontage 39.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165471",
+   "reason": "frontage 114.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163092",
+   "reason": "sightline to Overtoom crosses 0363100012149493"
+  },
+  {
+   "pandId": "0363100012167041",
+   "reason": "frontage 80.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159936",
+   "reason": "frontage 134.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159043",
+   "reason": "frontage 106.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012155737",
+   "reason": "frontage 70.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012134109",
+   "reason": "sightline to Overtoom crosses 0363100012236959"
+  },
+  {
+   "pandId": "0363100012165188",
+   "reason": "frontage 135.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165816",
+   "reason": "frontage 170.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161460",
+   "reason": "frontage 80.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162091",
+   "reason": "frontage 174.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161728",
+   "reason": "frontage 200.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012127125",
+   "reason": "frontage 200.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158498",
+   "reason": "frontage 131.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012160274",
+   "reason": "frontage 154.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012126819",
+   "reason": "frontage 100.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158176",
+   "reason": "sightline to Overtoom crosses 0363100012163678"
+  },
+  {
+   "pandId": "0363100012165334",
+   "reason": "sightline to Overtoom crosses 0363100012166362"
+  },
+  {
+   "pandId": "0363100012163370",
+   "reason": "frontage 214.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162056",
+   "reason": "frontage 141.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012149830",
+   "reason": "frontage 51.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163769",
+   "reason": "frontage 69.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012235938",
+   "reason": "frontage 34.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166693",
+   "reason": "frontage 65.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158027",
+   "reason": "frontage 62.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158584",
+   "reason": "frontage 113.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012202864",
+   "reason": "frontage 43.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012124793",
+   "reason": "frontage 47.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012066398",
+   "reason": "frontage 140.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156236",
+   "reason": "frontage 114.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012064793",
+   "reason": "frontage 40.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166173",
+   "reason": "frontage 229.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152692",
+   "reason": "frontage 140.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166764",
+   "reason": "frontage 52.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012160030",
+   "reason": "frontage 37.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159531",
+   "reason": "frontage 93.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012154222",
+   "reason": "frontage 231.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236078",
+   "reason": "frontage 158.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012160316",
+   "reason": "frontage 102.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012237109",
+   "reason": "frontage 99.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012249808",
+   "reason": "frontage 44.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012198659",
+   "reason": "frontage 220.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012216872",
+   "reason": "frontage 113.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012073466",
+   "reason": "frontage 174.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012100805",
+   "reason": "frontage 165.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012126894",
+   "reason": "frontage 39.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152520",
+   "reason": "frontage 140.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162465",
+   "reason": "frontage 226.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158107",
+   "reason": "frontage 53.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236011",
+   "reason": "frontage 132.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153409",
+   "reason": "frontage 52.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012164838",
+   "reason": "frontage 70.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012198510",
+   "reason": "frontage 46.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012160597",
+   "reason": "frontage 201.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166950",
+   "reason": "frontage 133.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153725",
+   "reason": "frontage 141.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156158",
+   "reason": "frontage 70.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236212",
+   "reason": "frontage 51.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012214518",
+   "reason": "frontage 220.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012193728",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012152815",
+   "reason": "frontage 69.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012099309",
+   "reason": "frontage 52.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012111454",
+   "reason": "frontage 50.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012202863",
+   "reason": "frontage 42.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012118949",
+   "reason": "frontage 103.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012570749",
+   "reason": "frontage 223.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236079",
+   "reason": "frontage 99.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158779",
+   "reason": "frontage 70.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156173",
+   "reason": "frontage 140.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166600",
+   "reason": "frontage 66.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153719",
+   "reason": "frontage 110.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152396",
+   "reason": "frontage 43.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012188744",
+   "reason": "frontage 138.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156043",
+   "reason": "frontage 72.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012167445",
+   "reason": "frontage 69.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163297",
+   "reason": "frontage 70.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012138896",
+   "reason": "frontage 83.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012154279",
+   "reason": "frontage 131.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236328",
+   "reason": "frontage 67.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012167154",
+   "reason": "frontage 176.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166166",
+   "reason": "frontage 173.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158996",
+   "reason": "frontage 113.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012168514",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012197436",
+   "reason": "frontage 118.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165296",
+   "reason": "frontage 173.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012122183",
+   "reason": "frontage 49.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012572092",
+   "reason": "frontage 223.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163936",
+   "reason": "sightline to Overtoom crosses 0363100012161296"
+  },
+  {
+   "pandId": "0363100012160719",
+   "reason": "frontage 51.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012198512",
+   "reason": "sightline to Overtoom crosses 0363100012153791"
+  },
+  {
+   "pandId": "0363100012157859",
+   "reason": "frontage 140.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153215",
+   "reason": "sightline to Overtoom crosses 0363100012149493"
+  },
+  {
+   "pandId": "0363100012077188",
+   "reason": "frontage 50.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012237310",
+   "reason": "frontage 113.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012164734",
+   "reason": "frontage 36.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012231194",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012156449",
+   "reason": "frontage 169.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012167071",
+   "reason": "frontage 173.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165418",
+   "reason": "frontage 139.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161340",
+   "reason": "frontage 52.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153021",
+   "reason": "frontage 220.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156766",
+   "reason": "frontage 140.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162978",
+   "reason": "frontage 166.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012155520",
+   "reason": "frontage 174.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012164879",
+   "reason": "frontage 80.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012198480",
+   "reason": "frontage 33.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012164486",
+   "reason": "frontage 174.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012080492",
+   "reason": "frontage 33.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012188042",
+   "reason": "frontage 220.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156563",
+   "reason": "frontage 51.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162133",
+   "reason": "frontage 201.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165956",
+   "reason": "frontage 113.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166326",
+   "reason": "frontage 140.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165303",
+   "reason": "frontage 80.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012237132",
+   "reason": "frontage 114.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236669",
+   "reason": "frontage 118.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166026",
+   "reason": "frontage 173.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166948",
+   "reason": "frontage 226.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012237184",
+   "reason": "frontage 105.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161817",
+   "reason": "frontage 137.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158861",
+   "reason": "frontage 200.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166288",
+   "reason": "frontage 70.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012154245",
+   "reason": "frontage 50.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012090765",
+   "reason": "frontage 106.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012079858",
+   "reason": "frontage 50.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166780",
+   "reason": "frontage 114.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161515",
+   "reason": "frontage 79.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012174361",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012103824",
+   "reason": "frontage 106.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161316",
+   "reason": "frontage 70.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157550",
+   "reason": "frontage 41.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012087210",
+   "reason": "frontage 47.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236008",
+   "reason": "frontage 138.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012164108",
+   "reason": "frontage 200.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012229332",
+   "reason": "frontage 100.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012164652",
+   "reason": "frontage 63.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012127979",
+   "reason": "frontage 75.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012160396",
+   "reason": "frontage 160.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158231",
+   "reason": "frontage 172.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012082256",
+   "reason": "frontage 50.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012193725",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012158144",
+   "reason": "frontage 70.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012226324",
+   "reason": "frontage 98.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012113008",
+   "reason": "frontage 50.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012198511",
+   "reason": "frontage 56.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163126",
+   "reason": "frontage 200.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236869",
+   "reason": "frontage 114.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012101791",
+   "reason": "frontage 50.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157093",
+   "reason": "frontage 43.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165785",
+   "reason": "frontage 170.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012161917",
+   "reason": "frontage 165.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012217932",
+   "reason": "frontage 219.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236968",
+   "reason": "frontage 199.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152702",
+   "reason": "frontage 236.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012155734",
+   "reason": "frontage 31.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165770",
+   "reason": "frontage 173.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012167182",
+   "reason": "frontage 231.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156928",
+   "reason": "frontage 113.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012168513",
+   "reason": "frontage 119.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012160897",
+   "reason": "frontage 64.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012089206",
+   "reason": "frontage 173.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012160276",
+   "reason": "frontage 234.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012233586",
+   "reason": "frontage 115.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012160227",
+   "reason": "frontage 237.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157967",
+   "reason": "frontage 119.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157496",
+   "reason": "frontage 106.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159307",
+   "reason": "frontage 140.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012156168",
+   "reason": "frontage 70.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012204618",
+   "reason": "frontage 42.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012163854",
+   "reason": "frontage 44.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012233517",
+   "reason": "frontage 92.2 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012195672",
+   "reason": "frontage 82.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012160576",
+   "reason": "frontage 106.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012157227",
+   "reason": "frontage 160.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159566",
+   "reason": "frontage 113.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012153656",
+   "reason": "frontage 70.8 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012214958",
+   "reason": "frontage 223.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012167337",
+   "reason": "frontage 140.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012155419",
+   "reason": "frontage 198.7 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012193726",
+   "reason": "no frontage on Overtoom: No footprint edge faces Overtoom"
+  },
+  {
+   "pandId": "0363100012158719",
+   "reason": "frontage 30.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012236072",
+   "reason": "frontage 140.0 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012237170",
+   "reason": "frontage 117.5 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012166424",
+   "reason": "frontage 200.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012191744",
+   "reason": "frontage 106.9 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012158175",
+   "reason": "frontage 233.1 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012168512",
+   "reason": "frontage 75.6 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012159020",
+   "reason": "frontage 172.4 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012165540",
+   "reason": "frontage 80.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012162808",
+   "reason": "frontage 148.3 m from Overtoom"
+  },
+  {
+   "pandId": "0363100012152344",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122790",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163678",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149493",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162627",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236676",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236177",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167030",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158244",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160855",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160936",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163204",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098078",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158141",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153462",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155842",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157398",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236959",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233556",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130677",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125583",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237296",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149855",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153791",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155990",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236539",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237139",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159138",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164792",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236976",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153292",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237187",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012235976",
+   "alongM": -111.6,
+   "widthM": 11.72,
+   "eavesM": 10.95,
+   "roofMaxM": 13.65,
+   "storeys3dbag": null,
+   "builtYear": 1903,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012155830",
+   "alongM": -102.8,
+   "widthM": 5.88,
+   "eavesM": 11.46,
+   "roofMaxM": 14.03,
+   "storeys3dbag": null,
+   "builtYear": 1903,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012153822",
+   "alongM": -96.94,
+   "widthM": 5.84,
+   "eavesM": 11.59,
+   "roofMaxM": 14.08,
+   "storeys3dbag": null,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157517",
+   "alongM": -91.06,
+   "widthM": 5.92,
+   "eavesM": 11.17,
+   "roofMaxM": 14.74,
+   "storeys3dbag": null,
+   "builtYear": 1903,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012159922",
+   "alongM": -85.14,
+   "widthM": 5.93,
+   "eavesM": 7.44,
+   "roofMaxM": 10.4,
+   "storeys3dbag": null,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012109158",
+   "alongM": -73.63,
+   "widthM": 17.09,
+   "eavesM": 14.8,
+   "roofMaxM": 21.08,
+   "storeys3dbag": null,
+   "builtYear": 1990,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012233488",
+   "alongM": -57.54,
+   "widthM": 15.11,
+   "eavesM": 13.98,
+   "roofMaxM": 18.89,
+   "storeys3dbag": null,
+   "builtYear": 1909,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012233649",
+   "alongM": -37.55,
+   "widthM": 5.92,
+   "eavesM": 16.21,
+   "roofMaxM": 17.66,
+   "storeys3dbag": null,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161926",
+   "alongM": -27.81,
+   "widthM": 7.43,
+   "eavesM": 13.16,
+   "roofMaxM": 15.32,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": [
+    "Other ground polygons were not joined; disconnected or separately surveyed frontage may remain."
+   ]
+  },
+  {
+   "pandId": "0363100012162948",
+   "alongM": -21.01,
+   "widthM": 6.19,
+   "eavesM": 12.85,
+   "roofMaxM": 15.11,
+   "storeys3dbag": null,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236248",
+   "alongM": -12.75,
+   "widthM": 10.27,
+   "eavesM": 16.23,
+   "roofMaxM": 16.4,
+   "storeys3dbag": null,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012249367",
+   "alongM": 0,
+   "widthM": 15.22,
+   "eavesM": 14.49,
+   "roofMaxM": 17.93,
+   "storeys3dbag": null,
+   "builtYear": 1986,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+{
+ "note": "Pands a reviewer restricted to some house types after reading the strip at full size (scripts/block-face/auto-place.ts, blockFace/reviewCrowns.ts typesForPand): Eerste Helmersstraat 209-229 is one 1897 build of three-storey and four-storey fronts side by side; PDOK eaves read the mansard tops (10.9-16.4 m) and the strip skyline is lost in bare branches, so neither tells the storeys apart.",
+ "reviewed": "2026-10-25",
+ "pins": [
+  {"face": "helmers-209-253", "pands": ["0363100012164583", "0363100012152877", "0363100012159748"], "types": ["helmers-1897-banded"], "reason": "Eerste Helmersstraat 209-213 (2024-11-29 strip): four storeys under a cornice at 14 m, white bands at the transom and springing lines, ochre tympana with white keystones"},
+  {"face": "helmers-209-253", "pands": ["0363100012159737"], "types": ["helmers-1897-balconette-tall"], "reason": "Eerste Helmersstraat 215: four storeys, cornice 14.3 m, balconettes on the centre axis of storeys 1-3"},
+  {"face": "helmers-209-253", "pands": ["0363100012159862", "0363100012159632", "0363100012153120", "0363100012166885", "0363100012164920", "0363100012165470", "0363100012165598"], "types": ["helmers-1897-balconette"], "reason": "Eerste Helmersstraat 217-229: three storeys under a cornice at 10.8 m, centre balconettes on storeys 1-2, frieze vents"}
+ ]
+}

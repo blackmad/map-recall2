@@ -1,0 +1,499 @@
+{
+ "face": "thijm-30-188",
+ "street": "Alberdingk Thijmstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2021-03-24",
+ "seconds": 1.61,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012161515",
+   "address": "Alberdingk Thijmstraat 170",
+   "builtYear": 1905,
+   "widthM": 13.27,
+   "eavesM": 16.73,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c695f",
+    "wallRaw": "#655751",
+    "skyline": {
+     "eavesM": 16.48,
+     "eavesRow": 162,
+     "confidence": 0.77,
+     "crown": {
+      "widthM": 2.13,
+      "riseM": 4.05,
+      "topWidthM": 1.2,
+      "centre": 0.84
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.046,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.75,
+       "widthM": 1.4,
+       "centre": 0.51
+      },
+      {
+       "atM": 9.95,
+       "widthM": 0.93,
+       "centre": 0.75
+      },
+      {
+       "atM": 6.65,
+       "widthM": 1.15,
+       "centre": 0.22
+      },
+      {
+       "atM": 4.85,
+       "widthM": 0.8,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1905, type 1893-1893; frontage 13.27 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1893-1893",
+     "frontage 13.27 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.48 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.023 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159531",
+   "address": "Alberdingk Thijmstraat 150",
+   "builtYear": 1905,
+   "widthM": 12.08,
+   "eavesM": 15.68,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5a54",
+    "wallRaw": "#71605e",
+    "skyline": {
+     "eavesM": 15.68,
+     "eavesRow": 194,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.27,
+      "topWidthM": 0.65,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.144,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.85,
+       "widthM": 1.6,
+       "centre": 0.8
+      },
+      {
+       "atM": 13.42,
+       "widthM": 1.02,
+       "centre": 0.42
+      },
+      {
+       "atM": 13.13,
+       "widthM": 0.9,
+       "centre": 0.94
+      },
+      {
+       "atM": 10.27,
+       "widthM": 1.38,
+       "centre": 0.25
+      },
+      {
+       "atM": 9.97,
+       "widthM": 1.38,
+       "centre": 0.8
+      },
+      {
+       "atM": 7.88,
+       "widthM": 0.8,
+       "centre": 0.6
+      },
+      {
+       "atM": 6.97,
+       "widthM": 1.23,
+       "centre": 0.94
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1905, type 1893-1893; frontage 12.08 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1893-1893",
+     "frontage 12.08 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.68 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.107 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166271",
+   "address": "Alberdingk Thijmstraat 140",
+   "builtYear": 1901,
+   "widthM": 6.44,
+   "eavesM": 14.72,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5d56",
+    "wallRaw": "#726264",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 232,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.02,
+      "riseM": 2.63,
+      "topWidthM": 0.8,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 11,
+    "columns": 8,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.279,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.77 m (1.98 m wide), 6.4 m (1.5 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.55,
+       "widthM": 0.9,
+       "centre": 0.59
+      },
+      {
+       "atM": 9.77,
+       "widthM": 1.98,
+       "centre": 0.57
+      },
+      {
+       "atM": 9.47,
+       "widthM": 0.97,
+       "centre": 0.26
+      },
+      {
+       "atM": 6.4,
+       "widthM": 1.5,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1900-balcony-arch scores 0.55 < 0.7 (strip cornice 14.72 m vs the type's 14 m; strip columns 8 vs 3 bays)",
+   "best": {
+    "type": "helmers-1900-balcony-arch",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.72 m vs the type's 14 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.233 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 8 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163268",
+   "address": "Alberdingk Thijmstraat 32",
+   "builtYear": 1901,
+   "widthM": 8.01,
+   "eavesM": 15.73,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685b55",
+    "wallRaw": "#695c59",
+    "skyline": {
+     "eavesM": 15.93,
+     "eavesRow": 184,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.02,
+      "topWidthM": 0.95,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.116,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.96 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.96,
+       "light": 0.17
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.68,
+       "widthM": 0.8,
+       "centre": 0.95
+      },
+      {
+       "atM": 7.25,
+       "widthM": 1,
+       "centre": 0.18
+      },
+      {
+       "atM": 6.27,
+       "widthM": 0.9,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1901, type 1893-1893; frontage 8.01 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1901, type 1893-1893",
+     "frontage 8.01 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.93 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.088 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157967",
+   "address": "Alberdingk Thijmstraat 30",
+   "builtYear": 1901,
+   "widthM": 6.63,
+   "eavesM": 15.63,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#89877e",
+    "wallRaw": "#555153",
+    "skyline": {
+     "eavesM": 15.63,
+     "eavesRow": 196,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 0.93,
+      "topWidthM": 2,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.17,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.38,
+       "widthM": 2.48,
+       "centre": 0.34
+      },
+      {
+       "atM": 7.2,
+       "widthM": 0.95,
+       "centre": 0.86
+      },
+      {
+       "atM": 6.15,
+       "widthM": 0.9,
+       "centre": 0.91
+      },
+      {
+       "atM": 5.63,
+       "widthM": 0.85,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1900-balcony-arch scores 0.64 < 0.7 (strip cornice 15.63 m vs the type's 14 m)",
+   "best": {
+    "type": "helmers-1900-balcony-arch",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.63 m vs the type's 14 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.114 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

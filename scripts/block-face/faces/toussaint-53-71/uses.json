@@ -1,0 +1,169 @@
+{
+ "street": "Bosboom Toussaintstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158175",
+   "addresses": [
+    "Bosboom Toussaintstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 53-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000593685"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160227",
+   "addresses": [
+    "Bosboom Toussaintstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 55-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000593692"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160276",
+   "addresses": [
+    "Bosboom Toussaintstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000593697"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154222",
+   "addresses": [
+    "Bosboom Toussaintstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000593701"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167182",
+   "addresses": [
+    "Bosboom Toussaintstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 61-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000593707"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164242",
+   "addresses": [
+    "Bosboom Toussaintstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 63-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000593711"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166544",
+   "addresses": [
+    "Bosboom Toussaintstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 65-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000593718"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159722",
+   "addresses": [
+    "Bosboom Toussaintstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 67-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000593725"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162383",
+   "addresses": [
+    "Bosboom Toussaintstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 69-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000593732"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164812",
+   "addresses": [
+    "Bosboom Toussaintstraat 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 71-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000593739"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

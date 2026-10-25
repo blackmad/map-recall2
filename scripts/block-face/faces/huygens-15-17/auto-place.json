@@ -1,0 +1,176 @@
+{
+ "face": "huygens-15-17",
+ "street": "Eerste Constantijn Huygensstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 0.27,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012159829",
+   "address": "Eerste Constantijn Huygensstraat 15",
+   "builtYear": 1894,
+   "widthM": 9.52,
+   "eavesM": 11.23,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#74624f",
+    "wallRaw": "#806b54",
+    "skyline": {
+     "eavesM": 13.68,
+     "eavesRow": 192,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 3.63,
+      "topWidthM": 0.5,
+      "centre": 0.81
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.084,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.39,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.17 (light 0.35): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.17,
+       "light": 0.35
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.02,
+       "widthM": 1.55,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1894, type 1893-1893; frontage 9.52 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1893-1893",
+     "frontage 9.52 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.68 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.109 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160640",
+   "address": "Eerste Constantijn Huygensstraat 17",
+   "builtYear": 1894,
+   "widthM": 6,
+   "eavesM": 11.3,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#484035",
+    "wallRaw": "#554e44",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 160,
+     "confidence": 0.78,
+     "crown": {
+      "widthM": 1.73,
+      "riseM": 3.95,
+      "topWidthM": 0.15,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.02,
+       "widthM": 1.02,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1894, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.47 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

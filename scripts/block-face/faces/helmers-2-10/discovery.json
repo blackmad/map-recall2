@@ -1,0 +1,480 @@
+{
+ "street": "Tweede Helmersstraat",
+ "seed": "0363100012164710",
+ "members": [
+  "0363100012157419",
+  "0363100012153762",
+  "0363100012158498",
+  "0363100012236011",
+  "0363100012164710"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012157419 (face continues: 164923 157994 161817 155585 159936 166950 156749 154279)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012164710 (face continues: 165188)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012164755",
+   "reason": "frontage 99.1 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012174372",
+   "reason": "frontage 76.3 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012174461",
+   "reason": "no frontage on Tweede Helmersstraat: No footprint edge faces Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153452",
+   "reason": "frontage 67.3 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156211",
+   "reason": "frontage 90.9 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157151",
+   "reason": "frontage 68.1 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167107",
+   "reason": "frontage 36.0 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165716",
+   "reason": "frontage 68.2 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236744",
+   "reason": "no frontage on Tweede Helmersstraat: No footprint edge faces Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164202",
+   "reason": "frontage 67.3 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012174450",
+   "reason": "no frontage on Tweede Helmersstraat: No footprint edge faces Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154138",
+   "reason": "frontage 68.3 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156162",
+   "reason": "frontage 67.7 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154112",
+   "reason": "frontage 92.1 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158277",
+   "reason": "frontage 67.5 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157984",
+   "reason": "sightline to Tweede Helmersstraat crosses 0363100012066398"
+  },
+  {
+   "pandId": "0363100012152340",
+   "reason": "frontage 41.9 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012130645",
+   "reason": "sightline to Tweede Helmersstraat crosses 0363100012155585"
+  },
+  {
+   "pandId": "0363100012152546",
+   "reason": "sightline to Tweede Helmersstraat crosses 0363100012164923"
+  },
+  {
+   "pandId": "0363100012162582",
+   "reason": "frontage 42.1 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012208942",
+   "reason": "sightline to Tweede Helmersstraat crosses 0363100012237310"
+  },
+  {
+   "pandId": "0363100012184355",
+   "reason": "frontage 87.0 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159968",
+   "reason": "frontage 41.8 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012088251",
+   "reason": "frontage 46.9 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167376",
+   "reason": "frontage 67.5 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012224536",
+   "reason": "sightline to Tweede Helmersstraat crosses 0363100012158498"
+  },
+  {
+   "pandId": "0363100012161980",
+   "reason": "frontage 39.8 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012174362",
+   "reason": "frontage 65.6 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012174449",
+   "reason": "no frontage on Tweede Helmersstraat: No footprint edge faces Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156665",
+   "reason": "frontage 96.5 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012205661",
+   "reason": "sightline to Tweede Helmersstraat crosses 0363100012154279"
+  },
+  {
+   "pandId": "0363100012161315",
+   "reason": "frontage 100.7 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012219317",
+   "reason": "frontage 87.6 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167462",
+   "reason": "no frontage on Tweede Helmersstraat: No footprint edge faces Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166210",
+   "reason": "frontage 100.5 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154275",
+   "reason": "frontage 47.6 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156462",
+   "reason": "frontage 52.3 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162970",
+   "reason": "frontage 39.8 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161958",
+   "reason": "frontage 100.6 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166176",
+   "reason": "frontage 40.4 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012233148",
+   "reason": "sightline to Tweede Helmersstraat crosses 0363100012153762"
+  },
+  {
+   "pandId": "0363100012152522",
+   "reason": "sightline to Tweede Helmersstraat crosses 0363100012158622"
+  },
+  {
+   "pandId": "0363100012166612",
+   "reason": "frontage 40.6 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158622",
+   "reason": "sightline to Tweede Helmersstraat crosses 0363100012165188"
+  },
+  {
+   "pandId": "0363100012167461",
+   "reason": "no frontage on Tweede Helmersstraat: No footprint edge faces Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156527",
+   "reason": "frontage 48.1 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156684",
+   "reason": "frontage 86.8 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012174460",
+   "reason": "no frontage on Tweede Helmersstraat: No footprint edge faces Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012186218",
+   "reason": "frontage 95.4 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163100",
+   "reason": "frontage 41.7 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162799",
+   "reason": "frontage 74.8 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155804",
+   "reason": "frontage 96.5 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236078",
+   "reason": "frontage 35.3 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012174453",
+   "reason": "no frontage on Tweede Helmersstraat: No footprint edge faces Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012228725",
+   "reason": "no frontage on Tweede Helmersstraat: No footprint edge faces Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156763",
+   "reason": "frontage 67.9 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012216872",
+   "reason": "no frontage on Tweede Helmersstraat: No footprint edge faces Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012174373",
+   "reason": "no frontage on Tweede Helmersstraat: No footprint edge faces Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012100805",
+   "reason": "frontage 34.3 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152957",
+   "reason": "frontage 67.9 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012174459",
+   "reason": "no frontage on Tweede Helmersstraat: No footprint edge faces Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012174370",
+   "reason": "frontage 66.8 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160295",
+   "reason": "frontage 67.8 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167460",
+   "reason": "frontage 96.0 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162495",
+   "reason": "frontage 100.4 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156043",
+   "reason": "frontage 46.9 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012138896",
+   "reason": "frontage 30.9 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012215165",
+   "reason": "frontage 90.8 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156639",
+   "reason": "frontage 102.0 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012174451",
+   "reason": "frontage 116.5 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158725",
+   "reason": "frontage 68.9 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160285",
+   "reason": "frontage 132.7 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161668",
+   "reason": "frontage 100.3 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012174369",
+   "reason": "frontage 69.7 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012231194",
+   "reason": "frontage 83.3 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156449",
+   "reason": "frontage 40.5 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012174371",
+   "reason": "frontage 72.8 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162978",
+   "reason": "frontage 40.7 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012102915",
+   "reason": "frontage 67.7 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155521",
+   "reason": "frontage 68.5 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156772",
+   "reason": "frontage 35.1 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012237295",
+   "reason": "frontage 98.6 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152875",
+   "reason": "frontage 68.3 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236070",
+   "reason": "frontage 91.9 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012220104",
+   "reason": "frontage 86.3 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012127979",
+   "reason": "frontage 45.8 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012235050",
+   "reason": "frontage 82.2 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012189238",
+   "reason": "frontage 81.7 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161739",
+   "reason": "frontage 39.8 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164314",
+   "reason": "frontage 68.6 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012191579",
+   "reason": "frontage 87.7 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012195672",
+   "reason": "frontage 43.0 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157227",
+   "reason": "frontage 37.0 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164630",
+   "reason": "frontage 80.8 m from Tweede Helmersstraat"
+  },
+  {
+   "pandId": "0363100012237312",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236827",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086892",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236312",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237109",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237310",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237184",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012157419",
+   "alongM": -27.37,
+   "widthM": 5.9,
+   "eavesM": 13.04,
+   "roofMaxM": 16.07,
+   "storeys3dbag": null,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153762",
+   "alongM": -20.86,
+   "widthM": 7.13,
+   "eavesM": 12.81,
+   "roofMaxM": 18.46,
+   "storeys3dbag": null,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158498",
+   "alongM": -13.95,
+   "widthM": 6.68,
+   "eavesM": 13.12,
+   "roofMaxM": 16,
+   "storeys3dbag": null,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236011",
+   "alongM": -6.96,
+   "widthM": 7.32,
+   "eavesM": 15.55,
+   "roofMaxM": 16.72,
+   "storeys3dbag": null,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164710",
+   "alongM": 0,
+   "widthM": 6.6,
+   "eavesM": 18.01,
+   "roofMaxM": 20.27,
+   "storeys3dbag": null,
+   "builtYear": 1892,
+   "uncertainty": []
+  }
+ ]
+}

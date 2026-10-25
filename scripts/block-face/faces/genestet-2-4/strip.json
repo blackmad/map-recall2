@@ -1,0 +1,70 @@
+{
+ "face": "genestet-2-4",
+ "image": "staging/block-face/genestet-2-4/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 512,
+ "height": 854,
+ "groundNAP": 0.414,
+ "heightM": 21.35,
+ "frame": {
+  "midRD": [
+   120192.803,
+   486566.18700000003
+  ],
+  "uRD": [
+   -0.4223723402780542,
+   0.9064224214835155
+  ],
+  "nRD": [
+   0.9064224214835155,
+   0.4223723402780542
+  ]
+ },
+ "x0M": -6.41,
+ "x1M": 6.4,
+ "date": "2024-11-29",
+ "coverage": 0,
+ "spans": [
+  {
+   "pandId": "0363100012166556",
+   "x0M": -6.41,
+   "x1M": 0,
+   "px": [
+    0,
+    256
+   ],
+   "date": "2024-11-29",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012110245",
+   "x0M": 0,
+   "x1M": 6.4,
+   "px": [
+    256,
+    512
+   ],
+   "date": "2024-11-29",
+   "fallbackDate": false,
+   "panoramas": []
+  }
+ ],
+ "candidatesByDate": {
+  "2020-05-11": 0,
+  "2024-11-29": 0,
+  "2018-06-12": 0,
+  "2022-04-29": 0,
+  "2023-01-12": 0,
+  "2016-08-09": 0,
+  "2021-03-24": 0,
+  "2025-07-31": 0,
+  "2019-04-29": 0,
+  "2019-01-07": 0,
+  "2018-11-19": 0,
+  "2022-05-02": 0,
+  "2022-01-03": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

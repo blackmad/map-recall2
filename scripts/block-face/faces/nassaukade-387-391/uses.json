@@ -1,0 +1,82 @@
+{
+ "street": "Nassaukade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236892",
+   "addresses": [
+    "Nassaukade 391"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 391-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000613901"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236234",
+   "addresses": [
+    "Nassaukade 389"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 389",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1950,
+     "bagId": "0363010000748718"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809439889,
+     "lngLat": [
+      4.8783553,
+      52.3642062
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "387",
+      "addr:postcode": "1054AE",
+      "addr:street": "Nassaukade",
+      "internet_access": "wlan",
+      "name": "Leonardo Hotel Amsterdam",
+      "phone": "+31 20 607 7900",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "hotel",
+      "website": "https://www.leonardo-hotels.nl"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163690",
+   "addresses": [
+    "Nassaukade 387"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 387",
+     "use": "logiesfunctie",
+     "areaM2": 211,
+     "bagId": "0363010000957019"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

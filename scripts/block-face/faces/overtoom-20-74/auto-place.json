@@ -1,0 +1,1059 @@
+{
+ "face": "overtoom-20-74",
+ "street": "Overtoom",
+ "library": "helmersbuurt",
+ "stripDate": "2024-12-11",
+ "seconds": 2.57,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012235976",
+   "address": "Overtoom 72",
+   "builtYear": 1903,
+   "widthM": 11.72,
+   "eavesM": 12.25,
+   "storeys3dbag": null,
+   "bagBay": {
+    "fromM": 5.94,
+    "toM": 11.7,
+    "depthM": 0.65,
+    "centre": 0.754,
+    "lineRD": [
+     [
+      120163.73,
+      486249.59
+     ],
+     [
+      120168.996,
+      486252.387
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#765534",
+    "wallRaw": "#765838",
+    "skyline": {
+     "eavesM": 12.25,
+     "eavesRow": 433,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.05,
+      "topWidthM": 1.2,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 7,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.234,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.06,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1903, type 1893-1893; frontage 11.72 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1893-1893",
+     "frontage 11.72 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.25 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155830",
+   "address": "Overtoom 70",
+   "builtYear": 1903,
+   "widthM": 5.88,
+   "eavesM": 12.28,
+   "storeys3dbag": null,
+   "bagBay": {
+    "fromM": 4.03,
+    "toM": 5.85,
+    "depthM": 0.63,
+    "centre": 0.845,
+    "lineRD": [
+     [
+      120174.302,
+      486254.653
+     ],
+     [
+      120177.751,
+      486256.648
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#7b5c39",
+    "wallRaw": "#72593a",
+    "skyline": {
+     "eavesM": 12.28,
+     "eavesRow": 432,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 2.03,
+      "topWidthM": 1.15,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 5,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.116,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.4
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1903, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.28 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153822",
+   "address": "Overtoom 68",
+   "builtYear": 1903,
+   "widthM": 5.84,
+   "eavesM": 12.18,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#845d3b",
+    "wallRaw": "#795838",
+    "skyline": {
+     "eavesM": 12.18,
+     "eavesRow": 436,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.52,
+      "riseM": 2.05,
+      "topWidthM": 1.07,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.225,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1903, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.18 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.164 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157517",
+   "address": "Overtoom 66",
+   "builtYear": 1903,
+   "widthM": 5.92,
+   "eavesM": 11.17,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e2122",
+    "wallRaw": "#666049",
+    "skyline": {
+     "eavesM": 12.9,
+     "eavesRow": 407,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.95,
+      "riseM": 2.57,
+      "topWidthM": 0.7,
+      "centre": 0.91
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.06,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.15 m at 0.17 (light 0.36): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.15,
+       "centre": 0.17,
+       "light": 0.36
+      },
+      {
+       "widthM": 1,
+       "centre": 0.37,
+       "light": 0.22
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.9,
+       "widthM": 1.4,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.55
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1903, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.9 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159922",
+   "address": "Overtoom 64",
+   "builtYear": 1903,
+   "widthM": 5.93,
+   "eavesM": 7.44,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e0d3ad",
+    "wallRaw": "#84806a",
+    "skyline": {
+     "eavesM": 9.35,
+     "eavesRow": 549,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 6.53,
+      "topWidthM": 0.23,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.249,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.18 m at 0.18 (light 0.19): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.18,
+       "centre": 0.18,
+       "light": 0.19
+      },
+      {
+       "widthM": 1.1,
+       "centre": 0.52,
+       "light": 0.21
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.84,
+       "light": 0.19
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.42,
+       "widthM": 1.18,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.45
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1903, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.35 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012109158",
+   "address": "Overtoom 60",
+   "builtYear": 1990,
+   "widthM": 17.09,
+   "eavesM": 14.8,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#978865",
+    "wallRaw": "#827b5e",
+    "skyline": {
+     "eavesM": 16.07,
+     "eavesRow": 280,
+     "confidence": 0.52,
+     "crown": {
+      "widthM": 2.05,
+      "riseM": 7,
+      "topWidthM": 0.65,
+      "centre": 0.73
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.207,
+    "structure": {
+     "bayWidthM": 2.13,
+     "bayCentre": 0.09,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.32 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.98,
+       "centre": 0.09,
+       "light": 0.69
+      },
+      {
+       "widthM": 0.9,
+       "centre": 0.32,
+       "light": 0
+      },
+      {
+       "widthM": 1.7,
+       "centre": 0.71,
+       "light": 0.44
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.95,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.9,
+       "widthM": 1.68,
+       "centre": 0.9
+      },
+      {
+       "atM": 10.68,
+       "widthM": 2.08,
+       "centre": 0.5
+      },
+      {
+       "atM": 7.52,
+       "widthM": 1.85,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.46
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1990, type 1893-1893; frontage 17.09 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1990, type 1893-1893",
+     "frontage 17.09 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.8 m; 3DBAG 14.8 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233488",
+   "address": "Overtoom 50",
+   "builtYear": 1909,
+   "widthM": 15.11,
+   "eavesM": 13.98,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#896847",
+    "wallRaw": "#796346",
+    "skyline": {
+     "eavesM": 16.52,
+     "eavesRow": 262,
+     "confidence": 1,
+     "crown": {
+      "widthM": 6.88,
+      "riseM": 2.55,
+      "topWidthM": 0.4,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.196,
+    "structure": {
+     "bayWidthM": 2,
+     "bayCentre": 0.37,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.35 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.35,
+       "light": 0.4
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.92,
+       "light": 0.36
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.72,
+       "widthM": 0.8,
+       "centre": 0.6
+      },
+      {
+       "atM": 7.82,
+       "widthM": 1.38,
+       "centre": 0.91
+      },
+      {
+       "atM": 4.97,
+       "widthM": 5.95,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1909, type 1893-1893; frontage 15.11 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1909, type 1893-1893",
+     "frontage 15.11 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.52 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.151 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233649",
+   "address": "Overtoom 36",
+   "builtYear": 1905,
+   "widthM": 5.92,
+   "eavesM": 16.21,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#102020",
+    "wallRaw": "#797158",
+    "skyline": {
+     "eavesM": 15.95,
+     "eavesRow": 285,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.32,
+      "topWidthM": 0.65,
+      "centre": 0.14
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": 7,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.391,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.9,
+       "widthM": 1.5,
+       "centre": 0.69
+      },
+      {
+       "atM": 11,
+       "widthM": 0.93,
+       "centre": 0.08
+      },
+      {
+       "atM": 10.18,
+       "widthM": 1,
+       "centre": 0.44
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1.15,
+       "centre": 0.84
+      },
+      {
+       "atM": 5.3,
+       "widthM": 1.07,
+       "centre": 0.3
+      },
+      {
+       "atM": 4.85,
+       "widthM": 0.93,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.45
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1905-checker-arch scores 0.5 < 0.7 (strip cornice 15.95 m vs the type's 15.3 m (wall-dormer skyline 17.3 m))",
+   "best": {
+    "type": "helmers-1905-checker-arch",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.95 m vs the type's 15.3 m (wall-dormer skyline 17.3 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161926",
+   "address": "Overtoom 34",
+   "builtYear": 1896,
+   "widthM": 7.43,
+   "eavesM": 13.68,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#24291f",
+    "wallRaw": "#51574a",
+    "skyline": {
+     "eavesM": 13.68,
+     "eavesRow": 376,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.2,
+      "topWidthM": 0.47,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.163,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.75,
+       "widthM": 5.42,
+       "centre": 0.49
+      },
+      {
+       "atM": 8.68,
+       "widthM": 1.45,
+       "centre": 0.77
+      },
+      {
+       "atM": 8.38,
+       "widthM": 0.85,
+       "centre": 0.5
+      },
+      {
+       "atM": 5.6,
+       "widthM": 2.48,
+       "centre": 0.21
+      },
+      {
+       "atM": 5.07,
+       "widthM": 6.83,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.63
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1896, type 1893-1893; frontage 7.43 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1896, type 1893-1893",
+     "frontage 7.43 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.68 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162948",
+   "address": "Overtoom 32",
+   "builtYear": 1896,
+   "widthM": 6.19,
+   "eavesM": 13.8,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#151810",
+    "wallRaw": "#656a5b",
+    "skyline": {
+     "eavesM": 13.8,
+     "eavesRow": 371,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.88,
+      "topWidthM": 1.13,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.282,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.72,
+       "widthM": 1.73,
+       "centre": 0.17
+      },
+      {
+       "atM": 8.57,
+       "widthM": 1.4,
+       "centre": 0.77
+      },
+      {
+       "atM": 5.57,
+       "widthM": 2.17,
+       "centre": 0.2
+      },
+      {
+       "atM": 5.05,
+       "widthM": 5.67,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.61
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236248",
+   "address": "Overtoom 28",
+   "builtYear": 1899,
+   "widthM": 10.27,
+   "eavesM": 15.82,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#160e05",
+    "wallRaw": "#6c5b3f",
+    "skyline": {
+     "eavesM": 15.82,
+     "eavesRow": 290,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.7,
+      "riseM": 0.88,
+      "topWidthM": 2.7,
+      "centre": 0.86
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 10,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.183,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.03,
+       "widthM": 1.15,
+       "centre": 0.49
+      },
+      {
+       "atM": 12.97,
+       "widthM": 2.2,
+       "centre": 0.85
+      },
+      {
+       "atM": 8.93,
+       "widthM": 1.05,
+       "centre": 0.18
+      },
+      {
+       "atM": 6.67,
+       "widthM": 1.02,
+       "centre": 0.73
+      },
+      {
+       "atM": 5.77,
+       "widthM": 1.1,
+       "centre": 0.93
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.41
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1899, type 1893-1893; frontage 10.27 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1899, type 1893-1893",
+     "frontage 10.27 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.82 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012249367",
+   "address": "Overtoom 20A",
+   "builtYear": 1986,
+   "widthM": 15.22,
+   "eavesM": 14.49,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5736",
+    "wallRaw": "#594c30",
+    "skyline": {
+     "eavesM": 16.27,
+     "eavesRow": 272,
+     "confidence": 0.75,
+     "crown": {
+      "widthM": 2.58,
+      "riseM": 0.83,
+      "topWidthM": 1.73,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 10,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.05,
+    "structure": {
+     "bayWidthM": 0.97,
+     "bayCentre": 0.25,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.55,
+       "widthM": 0.82,
+       "centre": 0.53
+      },
+      {
+       "atM": 10.57,
+       "widthM": 0.93,
+       "centre": 0.87
+      },
+      {
+       "atM": 5.63,
+       "widthM": 1.3,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1986, type 1893-1893; frontage 15.22 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1986, type 1893-1893",
+     "frontage 15.22 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.27 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

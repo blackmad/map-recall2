@@ -1,0 +1,688 @@
+{
+ "face": "toussaint-26-50",
+ "street": "Bosboom Toussaintstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2023-01-12",
+ "seconds": 1.86,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012158674",
+   "address": "Bosboom Toussaintstraat 50",
+   "builtYear": 1893,
+   "widthM": 4.84,
+   "eavesM": 14.86,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#251f1c",
+    "wallRaw": "#3c3833",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 839,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: frontage 4.84 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "frontage 4.84 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.8 m; 3DBAG 14.86 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159217",
+   "address": "Bosboom Toussaintstraat 48",
+   "builtYear": 1893,
+   "widthM": 6.01,
+   "eavesM": 13.99,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#332a26",
+    "wallRaw": "#3e3530",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 839,
+     "confidence": 0.15,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.22,
+       "widthM": 2.13,
+       "centre": 0.6
+      },
+      {
+       "atM": 10.22,
+       "widthM": 1.15,
+       "centre": 0.61
+      },
+      {
+       "atM": 9.47,
+       "widthM": 0.88,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160766",
+   "address": "Bosboom Toussaintstraat 46",
+   "builtYear": 1893,
+   "widthM": 5.99,
+   "eavesM": 13.48,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#35312e",
+    "skyline": {
+     "eavesM": 19.98,
+     "eavesRow": 40,
+     "confidence": 0.44,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 1,
+      "topWidthM": 0.47,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152531",
+   "address": "Bosboom Toussaintstraat 44",
+   "builtYear": 1893,
+   "widthM": 5.74,
+   "eavesM": 13.44,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2c231f",
+    "wallRaw": "#3f3b36",
+    "skyline": {
+     "eavesM": 19.85,
+     "eavesRow": 45,
+     "confidence": 0.39,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.7,
+       "widthM": 2.67,
+       "centre": 0.56
+      },
+      {
+       "atM": 6.77,
+       "widthM": 1.07,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156913",
+   "address": "Bosboom Toussaintstraat 42",
+   "builtYear": 1893,
+   "widthM": 5.99,
+   "eavesM": 13.35,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2f241e",
+    "wallRaw": "#39302b",
+    "skyline": {
+     "eavesM": 20.13,
+     "eavesRow": 34,
+     "confidence": 0.46,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 0.85,
+      "topWidthM": 0.68,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.38,
+       "widthM": 1.9,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233486",
+   "address": "Bosboom Toussaintstraat 40",
+   "builtYear": 1893,
+   "widthM": 6.06,
+   "eavesM": 13.53,
+   "storeys3dbag": null,
+   "bagBay": {
+    "fromM": 5.87,
+    "toM": 6.05,
+    "depthM": 0.35,
+    "centre": 0.985,
+    "lineRD": [
+     [
+      120157.77,
+      486528.434
+     ],
+     [
+      120161.493,
+      486530.474
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#362822",
+    "wallRaw": "#3f3430",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 839,
+     "confidence": 0.25,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.7,
+       "widthM": 3.67,
+       "centre": 0.33
+      },
+      {
+       "atM": 6.77,
+       "widthM": 1.23,
+       "centre": 0.23
+      },
+      {
+       "atM": 5.88,
+       "widthM": 0.82,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155774",
+   "address": "Bosboom Toussaintstraat 38",
+   "builtYear": 1893,
+   "widthM": 5.7,
+   "eavesM": 13.6,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#322d2b",
+    "wallRaw": "#372f2b",
+    "skyline": {
+     "eavesM": 20.13,
+     "eavesRow": 34,
+     "confidence": 0.4,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155675",
+   "address": "Bosboom Toussaintstraat 36",
+   "builtYear": 1893,
+   "widthM": 5.95,
+   "eavesM": 13.41,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#322722",
+    "wallRaw": "#3c322d",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 839,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.75,
+       "widthM": 0.88,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164638",
+   "address": "Bosboom Toussaintstraat 34",
+   "builtYear": 1893,
+   "widthM": 5.91,
+   "eavesM": 13.44,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2d221d",
+    "wallRaw": "#3a2e29",
+    "skyline": {
+     "eavesM": 20.18,
+     "eavesRow": 32,
+     "confidence": 0.46,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 0.8,
+      "topWidthM": 0.72,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236846",
+   "address": "Bosboom Toussaintstraat 32",
+   "builtYear": 1893,
+   "widthM": 5.98,
+   "eavesM": 13.55,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3a2d29",
+    "wallRaw": "#3a2f2a",
+    "skyline": {
+     "eavesM": 19.82,
+     "eavesRow": 46,
+     "confidence": 0.46,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.65,
+       "widthM": 1.48,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152681",
+   "address": "Bosboom Toussaintstraat 30",
+   "builtYear": 1893,
+   "widthM": 5.93,
+   "eavesM": 13.35,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2f231e",
+    "wallRaw": "#392f29",
+    "skyline": {
+     "eavesM": 20.07,
+     "eavesRow": 36,
+     "confidence": 0.49,
+     "crown": {
+      "widthM": 1.43,
+      "riseM": 0.9,
+      "topWidthM": 0.93,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.45,
+       "widthM": 1.1,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154262",
+   "address": "Bosboom Toussaintstraat 28",
+   "builtYear": 1893,
+   "widthM": 5.98,
+   "eavesM": 14.08,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#342d29",
+    "wallRaw": "#35302e",
+    "skyline": {
+     "eavesM": 20.18,
+     "eavesRow": 32,
+     "confidence": 0.48,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161166",
+   "address": "Bosboom Toussaintstraat 26",
+   "builtYear": 1893,
+   "widthM": 4.86,
+   "eavesM": 16.98,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c302c",
+    "wallRaw": "#35312e",
+    "skyline": {
+     "eavesM": 16.98,
+     "eavesRow": 160,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 0.8,
+      "topWidthM": 0.53,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: frontage 4.86 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "frontage 4.86 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.98 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

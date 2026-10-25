@@ -1,0 +1,289 @@
+{
+ "street": "Bosboom Toussaintstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158674",
+   "addresses": [
+    "Bosboom Toussaintstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 50-H",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000593678"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159217",
+   "addresses": [
+    "Bosboom Toussaintstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 48-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010012073341"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 48-H",
+     "use": "winkelfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000593673"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160766",
+   "addresses": [
+    "Bosboom Toussaintstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000944086"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152531",
+   "addresses": [
+    "Bosboom Toussaintstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000593658"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156913",
+   "addresses": [
+    "Bosboom Toussaintstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000593651"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233486",
+   "addresses": [
+    "Bosboom Toussaintstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000593646"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155774",
+   "addresses": [
+    "Bosboom Toussaintstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000593640"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155675",
+   "addresses": [
+    "Bosboom Toussaintstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 211,
+     "bagId": "0363010012097774"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000593633"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164638",
+   "addresses": [
+    "Bosboom Toussaintstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 224,
+     "bagId": "0363010000593625"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236846",
+   "addresses": [
+    "Bosboom Toussaintstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 32-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010000957030"
+    },
+    {
+     "address": "Bosboom Toussaintstraat 32-H",
+     "use": "winkelfunctie",
+     "areaM2": 101,
+     "bagId": "0363010012151946"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152681",
+   "addresses": [
+    "Bosboom Toussaintstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000593613"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154262",
+   "addresses": [
+    "Bosboom Toussaintstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 28-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000593606"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2414357181,
+     "lngLat": [
+      4.8761574,
+      52.3656985
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "28",
+      "addr:postcode": "1054AS",
+      "addr:street": "Bosboom Toussaintstraat",
+      "amenity": "restaurant",
+      "check_date": "2024-05-23",
+      "name": "Gertrude",
+      "old_name": "Narbonne",
+      "website": "https://gertrudeamsterdam.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161166",
+   "addresses": [
+    "Bosboom Toussaintstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bosboom Toussaintstraat 26-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000593596"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1349087390,
+     "lngLat": [
+      4.8762315,
+      52.3657538
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "26-H",
+      "addr:postcode": "1054AS",
+      "addr:street": "Bosboom Toussaintstraat",
+      "amenity": "pub",
+      "check_date": "2024-05-23",
+      "food:lunch": "yes",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "Toussaint",
+      "opening_hours": "Mo-Th,Su 10:00-24:00; Fr-Sa 10:00-01:00",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.cafe-toussaint.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

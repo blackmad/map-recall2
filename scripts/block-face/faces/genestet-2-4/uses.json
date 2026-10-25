@@ -1,0 +1,53 @@
+{
+ "street": "De Genestetstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166556",
+   "addresses": [
+    "De Genestetstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Genestetstraat 4-H",
+     "use": "bijeenkomstfunctie,kantoorfunctie",
+     "areaM2": 248,
+     "bagId": "0363010012068304"
+    },
+    {
+     "address": "De Genestetstraat 4-H",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010012062201"
+    },
+    {
+     "address": "De Genestetstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000617523"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110245",
+   "addresses": [
+    "De Genestetstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Genestetstraat 2-H",
+     "use": "kantoorfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000617516"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

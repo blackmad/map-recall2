@@ -1,0 +1,250 @@
+{
+ "street": "Jacob van Lennepkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012090216",
+   "addresses": [
+    "Jacob van Lennepkade 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 19-H",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010011290734"
+    },
+    {
+     "address": "Jacob van Lennepkade 19-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000664672"
+    },
+    {
+     "address": "Jacob van Lennepkade 19-H",
+     "use": "woonfunctie",
+     "areaM2": 240,
+     "bagId": "0363010012076096"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8066228066,
+     "lngLat": [
+      4.8760756,
+      52.3661199
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 7.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164400",
+   "addresses": [
+    "Jacob van Lennepkade 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 21-H",
+     "use": "kantoorfunctie",
+     "areaM2": 130,
+     "bagId": "0363010001981907"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080345",
+   "addresses": [
+    "Jacob van Lennepkade 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 23-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010001004351"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152842",
+   "addresses": [
+    "Jacob van Lennepkade 25"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153816",
+   "addresses": [
+    "Jacob van Lennepkade 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 27-H",
+     "use": "woonfunctie",
+     "areaM2": 203,
+     "bagId": "0363010000680221"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163778",
+   "addresses": [
+    "Jacob van Lennepkade 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 29-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000680229"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156512",
+   "addresses": [
+    "Jacob van Lennepkade 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 31-H",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000680237"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153662",
+   "addresses": [
+    "Jacob van Lennepkade 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 33-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000680242"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159235",
+   "addresses": [
+    "Jacob van Lennepkade 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 35-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010003684937"
+    },
+    {
+     "address": "Jacob van Lennepkade 35-H",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010012151561"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157308",
+   "addresses": [
+    "Jacob van Lennepkade 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 37-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000680258"
+    },
+    {
+     "address": "Jacob van Lennepkade 37-H",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010012080699"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152612",
+   "addresses": [
+    "Jacob van Lennepkade 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 39-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000680265"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163701",
+   "addresses": [
+    "Jacob van Lennepkade 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 41-H",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010012067093"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163088",
+   "addresses": [
+    "Jacob van Lennepkade 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 43-H",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000680276"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

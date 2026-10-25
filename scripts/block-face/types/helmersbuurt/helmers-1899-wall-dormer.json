@@ -1,0 +1,155 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "helmers-1899-wall-dormer",
+ "district": "helmersbuurt",
+ "description": "Eerste Helmersstraat 231-239 (1899): 5 m red-brown brick fronts of four storeys under a cream moulded cornice at 13.5 m over a patterned brick frieze; three axes of two-light windows with a transom under segmental brick heads with a white keystone; the top storey's centre window round-arched; white sills; bellied iron balconettes on the centre axis of storeys 1-2; a brick wall dormer over the centre axis through the cornice with one light and a flat stone cap",
+ "fit": {
+  "widthM": [
+   4.6,
+   5.3
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   3.4,
+   3,
+   2.9,
+   4.2
+  ],
+  "windows": "t-window",
+  "windowHead": {
+   "kind": "segmental",
+   "archRing": {
+    "colour": "stone",
+    "style": "none",
+    "keystone": true
+   }
+  },
+  "axisHeads": {
+   "1": {
+    "kind": "round",
+    "storeys": [
+     3
+    ]
+   }
+  },
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.65,
+   0.65,
+   0.67,
+   0.48
+  ],
+  "headLines": [
+   0.85,
+   0.8,
+   0.78,
+   0.55
+  ],
+  "cornice": "heavy",
+  "balconies": {
+   "storeys": [
+    1,
+    2
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  }
+ },
+ "crowns": {
+  "wall-dormer": {
+   "gable": "cornice",
+   "tower": {
+    "bays": {
+     "from": 1,
+     "to": 1
+    },
+    "rise": 0.65,
+    "cap": "flat",
+    "lights": "per-axis",
+    "lightSill": 0.08,
+    "lightRise": 0.4
+   },
+   "note": "233-239: a brick wall dormer over the centre axis, one light, flat cap"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "237: house door on the left axis"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "239: house door on the right axis"
+  }
+ },
+ "palettes": {
+  "red-brown-1899": {
+   "brick": "#8e5c47",
+   "frame": "white-painted",
+   "door": "#1f2324",
+   "stone": "#eeeae0",
+   "cornice": "#e3d5af",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "upper storeys: 3 two-light windows; the top centre one round-arched",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3 | dormer: 1",
+  "symmetry": "upper storeys symmetric; door left or right",
+  "groundFloor": "residential",
+  "signage": "none",
+  "roofline": "cream cornice at 13.5 m over a brick frieze; a brick wall dormer on the centre axis",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3,
+   1
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "match": {
+  "years": [
+   1898,
+   1900
+  ],
+  "stucco": false,
+  "frontEavesM": 13.4,
+  "note": "Eerste Helmersstraat 231-239 (1899), 4.9-5.1 m; cornice 13.4 m on the strip; PDOK eaves 15.3-15.6 (the dormers)",
+  "yearSlack": 0
+ },
+ "evidence": [
+  {
+   "face": "helmers-209-253",
+   "pands": [
+    "161336",
+    "164140"
+   ],
+   "citation": "strip.jpg 2024-11-29 pands 14-15 (237, 239) at 2x with a metre grid: ground storey to 3.4 m, storey-1 windows 4.0-5.9, storey-2 6.9-8.8, storey-3 9.7-11.3 with the centre arch to 12.1, frieze 12.2-12.6, cornice 12.6-13.4, wall dormer to 15.2 m; balconettes 3.9-4.7 and 6.8-7.6 m on the centre axis"
+  }
+ ],
+ "schemaLimits": [
+  "the patterned brick frieze under the cornice is plain wall",
+  "the bellied balconettes are the straight projecting guard",
+  "the wall dormer's stepped stone cap is a flat cap"
+ ],
+ "notes": [
+  "Palette: strip medians 233-239 (2024-11-29), sunlit patches excluded: wall #8e5c47."
+ ]
+}

@@ -1,0 +1,243 @@
+{
+ "street": "Alberdingk Thijmstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161515",
+   "addresses": [
+    "Alberdingk Thijmstraat 170",
+    "Alberdingk Thijmstraat 172",
+    "Alberdingk Thijmstraat 174",
+    "Alberdingk Thijmstraat 176",
+    "Alberdingk Thijmstraat 178",
+    "Alberdingk Thijmstraat 180",
+    "Alberdingk Thijmstraat 182",
+    "Alberdingk Thijmstraat 184",
+    "Alberdingk Thijmstraat 186",
+    "Alberdingk Thijmstraat 188"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alberdingk Thijmstraat 174",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000563074"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 176",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000563075"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 178",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000563076"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 188",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000563081"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 170",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000563072"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 184",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000563079"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 182",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000563078"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 180",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000563077"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 172",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000563073"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 186",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000563080"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159531",
+   "addresses": [
+    "Alberdingk Thijmstraat 150",
+    "Alberdingk Thijmstraat 152",
+    "Alberdingk Thijmstraat 154",
+    "Alberdingk Thijmstraat 156",
+    "Alberdingk Thijmstraat 158",
+    "Alberdingk Thijmstraat 160",
+    "Alberdingk Thijmstraat 162",
+    "Alberdingk Thijmstraat 164",
+    "Alberdingk Thijmstraat 166",
+    "Alberdingk Thijmstraat 168"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alberdingk Thijmstraat 160",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000563067"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 168",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000563071"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 162",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000563068"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 166",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000563070"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 154",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000563064"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 152",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000563063"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 158",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000563066"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 150",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000563062"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 156",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000563065"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 164",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000563069"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166271",
+   "addresses": [
+    "Alberdingk Thijmstraat 140",
+    "Alberdingk Thijmstraat 142",
+    "Alberdingk Thijmstraat 144",
+    "Alberdingk Thijmstraat 146",
+    "Alberdingk Thijmstraat 148"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alberdingk Thijmstraat 142",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000563058"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 144",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000563059"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 146",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000563060"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 148",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000563061"
+    },
+    {
+     "address": "Alberdingk Thijmstraat 140",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000563057"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163268",
+   "addresses": [
+    "Alberdingk Thijmstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alberdingk Thijmstraat 32-H",
+     "use": "kantoorfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000563054"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157967",
+   "addresses": [
+    "Alberdingk Thijmstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alberdingk Thijmstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000563050"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

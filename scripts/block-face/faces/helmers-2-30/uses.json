@@ -1,0 +1,309 @@
+{
+ "street": "Derde Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153452",
+   "addresses": [
+    "Derde Helmersstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 30-H",
+     "use": "industriefunctie",
+     "areaM2": 77,
+     "bagId": "0363010012080129"
+    },
+    {
+     "address": "Derde Helmersstraat 30-H",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000555141"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164202",
+   "addresses": [
+    "Derde Helmersstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000555138"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158277",
+   "addresses": [
+    "Derde Helmersstraat 26C",
+    "Derde Helmersstraat 26",
+    "Derde Helmersstraat 26D",
+    "Derde Helmersstraat 26A",
+    "Derde Helmersstraat 26E",
+    "Derde Helmersstraat 26B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 26C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012164505"
+    },
+    {
+     "address": "Derde Helmersstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000555134"
+    },
+    {
+     "address": "Derde Helmersstraat 26D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012164506"
+    },
+    {
+     "address": "Derde Helmersstraat 26A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012164504"
+    },
+    {
+     "address": "Derde Helmersstraat 26E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012164507"
+    },
+    {
+     "address": "Derde Helmersstraat 26B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012164503"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167376",
+   "addresses": [
+    "Derde Helmersstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000555130"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012102915",
+   "addresses": [
+    "Derde Helmersstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 187,
+     "bagId": "0363010012084001"
+    },
+    {
+     "address": "Derde Helmersstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000555126"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156162",
+   "addresses": [
+    "Derde Helmersstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000555119"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160295",
+   "addresses": [
+    "Derde Helmersstraat 18",
+    "Derde Helmersstraat 18A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000555114"
+    },
+    {
+     "address": "Derde Helmersstraat 18A",
+     "use": "industriefunctie",
+     "areaM2": 33,
+     "bagId": "0363010012572457"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156763",
+   "addresses": [
+    "Derde Helmersstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010012103506"
+    },
+    {
+     "address": "Derde Helmersstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000555109"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152957",
+   "addresses": [
+    "Derde Helmersstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000555104"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157151",
+   "addresses": [
+    "Derde Helmersstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000555099"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165716",
+   "addresses": [
+    "Derde Helmersstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010001002609"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152875",
+   "addresses": [
+    "Derde Helmersstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000555088"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154138",
+   "addresses": [
+    "Derde Helmersstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000555084"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155521",
+   "addresses": [
+    "Derde Helmersstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000555078"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164314",
+   "addresses": [
+    "Derde Helmersstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 2",
+     "use": "woonfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000555073"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

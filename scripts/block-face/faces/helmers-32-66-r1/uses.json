@@ -1,0 +1,41 @@
+{
+ "street": "Derde Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165412",
+   "addresses": [
+    "Derde Helmersstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 62-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000555233"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163126",
+   "addresses": [
+    "Derde Helmersstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Helmersstraat 60-H",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000980932"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,213 @@
+{
+ "street": "Tweede Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164923",
+   "addresses": [
+    "Tweede Helmersstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 26-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000550504"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157994",
+   "addresses": [
+    "Tweede Helmersstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010001975677"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161817",
+   "addresses": [
+    "Tweede Helmersstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000944112"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155585",
+   "addresses": [
+    "Tweede Helmersstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000550480"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159936",
+   "addresses": [
+    "Tweede Helmersstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000550467"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166950",
+   "addresses": [
+    "Tweede Helmersstraat 16B",
+    "Tweede Helmersstraat 16C",
+    "Tweede Helmersstraat 16D",
+    "Tweede Helmersstraat 16E",
+    "Tweede Helmersstraat 16F",
+    "Tweede Helmersstraat 16",
+    "Tweede Helmersstraat 16G",
+    "Tweede Helmersstraat 16H",
+    "Tweede Helmersstraat 16K",
+    "Tweede Helmersstraat 16A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000919592"
+    },
+    {
+     "address": "Tweede Helmersstraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000919593"
+    },
+    {
+     "address": "Tweede Helmersstraat 16D",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000919595"
+    },
+    {
+     "address": "Tweede Helmersstraat 16E",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000919596"
+    },
+    {
+     "address": "Tweede Helmersstraat 16F",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000919626"
+    },
+    {
+     "address": "Tweede Helmersstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 273,
+     "bagId": "0363010012111917"
+    },
+    {
+     "address": "Tweede Helmersstraat 16G",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000921146"
+    },
+    {
+     "address": "Tweede Helmersstraat 16H",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000548522"
+    },
+    {
+     "address": "Tweede Helmersstraat 16K",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000548524"
+    },
+    {
+     "address": "Tweede Helmersstraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000550462"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156749",
+   "addresses": [
+    "Tweede Helmersstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 14",
+     "use": "logiesfunctie",
+     "areaM2": 317,
+     "bagId": "0363010000550457"
+    },
+    {
+     "address": "Tweede Helmersstraat 14",
+     "use": "logiesfunctie",
+     "areaM2": 664,
+     "bagId": "0363010012120511"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809426091,
+     "lngLat": [
+      4.877778,
+      52.3649204
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14",
+      "addr:postcode": "1054CJ",
+      "addr:street": "Tweede Helmersstraat",
+      "name": "Hotel Jupiter",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "hotel",
+      "website": "https://www.hoteljupiter.nl"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

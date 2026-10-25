@@ -1,0 +1,2251 @@
+{
+ "street": "Eerste Helmersstraat",
+ "seed": "0363100012164583",
+ "members": [
+  "0363100012164583",
+  "0363100012152877",
+  "0363100012159748",
+  "0363100012159737",
+  "0363100012159862",
+  "0363100012159632",
+  "0363100012153120",
+  "0363100012166885",
+  "0363100012164920",
+  "0363100012165470",
+  "0363100012165598",
+  "0363100012152814",
+  "0363100012165380",
+  "0363100012166398",
+  "0363100012161336",
+  "0363100012164140",
+  "0363100012162217",
+  "0363100012164432"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012236001 13.0 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012164432 (face continues: 156619 166552 152334 164069 154345)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012076434",
+   "reason": "frontage 36.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236578",
+   "reason": "frontage 46.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164401",
+   "reason": "frontage 96.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012086457",
+   "reason": "frontage 43.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157268",
+   "reason": "frontage 95.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162093",
+   "reason": "frontage 148.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012237073",
+   "reason": "frontage 46.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012187331",
+   "reason": "frontage 33.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161547",
+   "reason": "frontage 48.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012149625",
+   "reason": "frontage 52.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166480",
+   "reason": "frontage 142.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236109",
+   "reason": "frontage 172.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012227326",
+   "reason": "frontage 126.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236390",
+   "reason": "frontage 97.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012235893",
+   "reason": "frontage 97.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236653",
+   "reason": "frontage 119.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012213947",
+   "reason": "frontage 125.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162641",
+   "reason": "frontage 136.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161695",
+   "reason": "frontage 51.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153329",
+   "reason": "frontage 45.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236369",
+   "reason": "frontage 97.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156036",
+   "reason": "frontage 96.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154204",
+   "reason": "frontage 33.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012064619",
+   "reason": "frontage 43.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012216988",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012217018"
+  },
+  {
+   "pandId": "0363100012138646",
+   "reason": "frontage 97.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160090",
+   "reason": "frontage 136.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012230353",
+   "reason": "frontage 125.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012201919",
+   "reason": "frontage 108.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012067918",
+   "reason": "frontage 45.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236012",
+   "reason": "frontage 144.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012232526",
+   "reason": "frontage 125.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012088084",
+   "reason": "frontage 160.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157064",
+   "reason": "frontage 94.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012229863",
+   "reason": "frontage 33.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153732",
+   "reason": "frontage 48.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012136830",
+   "reason": "frontage 125.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160011",
+   "reason": "frontage 48.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012237209",
+   "reason": "frontage 94.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012223347",
+   "reason": "frontage 125.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012112146",
+   "reason": "frontage 40.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012135187",
+   "reason": "frontage 34.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159499",
+   "reason": "frontage 161.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012102454",
+   "reason": "frontage 114.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156037",
+   "reason": "frontage 96.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158935",
+   "reason": "frontage 155.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160370",
+   "reason": "frontage 118.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012118751",
+   "reason": "frontage 41.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012094855",
+   "reason": "frontage 94.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012089651",
+   "reason": "frontage 49.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012129364",
+   "reason": "frontage 129.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164122",
+   "reason": "frontage 94.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162973",
+   "reason": "frontage 48.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012062416",
+   "reason": "frontage 119.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012127014",
+   "reason": "frontage 44.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155953",
+   "reason": "frontage 45.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161908",
+   "reason": "frontage 95.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012125636",
+   "reason": "frontage 42.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166872",
+   "reason": "frontage 97.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012082170",
+   "reason": "frontage 173.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012079687",
+   "reason": "frontage 130.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158869",
+   "reason": "frontage 41.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012196110",
+   "reason": "frontage 148.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163447",
+   "reason": "frontage 108.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012084999",
+   "reason": "frontage 94.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012128309",
+   "reason": "frontage 120.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236493",
+   "reason": "frontage 95.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012217018",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012088924"
+  },
+  {
+   "pandId": "0363100012235956",
+   "reason": "frontage 95.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154365",
+   "reason": "frontage 96.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160319",
+   "reason": "frontage 33.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163958",
+   "reason": "frontage 167.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012199676",
+   "reason": "frontage 33.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159060",
+   "reason": "frontage 95.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012081044",
+   "reason": "frontage 131.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012084833",
+   "reason": "frontage 148.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166022",
+   "reason": "frontage 130.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012193549",
+   "reason": "frontage 115.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012096509",
+   "reason": "frontage 93.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161813",
+   "reason": "frontage 46.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012117894",
+   "reason": "frontage 130.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161083",
+   "reason": "frontage 124.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012094086",
+   "reason": "frontage 52.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012199242",
+   "reason": "frontage 128.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012064276",
+   "reason": "frontage 94.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163885",
+   "reason": "frontage 48.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156912",
+   "reason": "frontage 94.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158808",
+   "reason": "frontage 48.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154170",
+   "reason": "frontage 95.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164698",
+   "reason": "frontage 94.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012105198",
+   "reason": "frontage 34.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153354",
+   "reason": "frontage 148.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162845",
+   "reason": "frontage 149.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153574",
+   "reason": "frontage 48.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012217873",
+   "reason": "frontage 32.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012188664",
+   "reason": "frontage 143.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012218959",
+   "reason": "frontage 41.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236243",
+   "reason": "frontage 93.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012112304",
+   "reason": "frontage 63.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012071109",
+   "reason": "frontage 98.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166080",
+   "reason": "frontage 42.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167209",
+   "reason": "frontage 94.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164079",
+   "reason": "frontage 32.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160608",
+   "reason": "frontage 62.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012187000",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012163642"
+  },
+  {
+   "pandId": "0363100012164509",
+   "reason": "frontage 61.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166256",
+   "reason": "frontage 124.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157441",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012167162"
+  },
+  {
+   "pandId": "0363100012216427",
+   "reason": "frontage 94.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156606",
+   "reason": "frontage 62.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012090917",
+   "reason": "frontage 122.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012111958",
+   "reason": "frontage 94.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236555",
+   "reason": "frontage 31.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012137907",
+   "reason": "frontage 62.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157789",
+   "reason": "frontage 36.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156814",
+   "reason": "frontage 94.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166130",
+   "reason": "frontage 177.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163663",
+   "reason": "frontage 152.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156439",
+   "reason": "frontage 121.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012183962",
+   "reason": "frontage 33.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012237275",
+   "reason": "frontage 91.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153118",
+   "reason": "frontage 93.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159565",
+   "reason": "frontage 120.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153755",
+   "reason": "frontage 121.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156547",
+   "reason": "frontage 37.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161619",
+   "reason": "frontage 63.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163539",
+   "reason": "frontage 62.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164915",
+   "reason": "frontage 88.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162120",
+   "reason": "frontage 92.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152707",
+   "reason": "frontage 121.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162609",
+   "reason": "frontage 34.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159671",
+   "reason": "frontage 100.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152986",
+   "reason": "frontage 60.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161197",
+   "reason": "frontage 152.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012138947",
+   "reason": "frontage 76.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012232524",
+   "reason": "frontage 144.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152932",
+   "reason": "frontage 150.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156585",
+   "reason": "frontage 52.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157551",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012160800"
+  },
+  {
+   "pandId": "0363100012159672",
+   "reason": "frontage 94.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165856",
+   "reason": "frontage 122.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012121894",
+   "reason": "frontage 51.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154355",
+   "reason": "frontage 62.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163462",
+   "reason": "frontage 49.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012113845",
+   "reason": "frontage 99.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164259",
+   "reason": "frontage 55.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160980",
+   "reason": "frontage 63.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152518",
+   "reason": "frontage 120.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162341",
+   "reason": "frontage 91.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164035",
+   "reason": "frontage 63.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153538",
+   "reason": "frontage 179.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166132",
+   "reason": "frontage 139.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012195507",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012236140"
+  },
+  {
+   "pandId": "0363100012236139",
+   "reason": "frontage 95.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158033",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012158034"
+  },
+  {
+   "pandId": "0363100012165802",
+   "reason": "frontage 36.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160262",
+   "reason": "frontage 33.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163750",
+   "reason": "frontage 178.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160257",
+   "reason": "frontage 51.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163899",
+   "reason": "frontage 120.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161839",
+   "reason": "frontage 91.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012198458",
+   "reason": "frontage 141.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160554",
+   "reason": "frontage 63.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157858",
+   "reason": "frontage 179.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158386",
+   "reason": "frontage 121.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154404",
+   "reason": "frontage 130.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012189326",
+   "reason": "frontage 31.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165719",
+   "reason": "frontage 178.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159137",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012154345"
+  },
+  {
+   "pandId": "0363100012191641",
+   "reason": "frontage 141.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156697",
+   "reason": "frontage 120.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162648",
+   "reason": "frontage 94.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012114626",
+   "reason": "frontage 60.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156440",
+   "reason": "frontage 37.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157166",
+   "reason": "frontage 177.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012203531",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012157970"
+  },
+  {
+   "pandId": "0363100012185472",
+   "reason": "frontage 85.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163364",
+   "reason": "frontage 54.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100100092412",
+   "reason": "frontage 85.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164243",
+   "reason": "frontage 64.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153300",
+   "reason": "frontage 151.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160977",
+   "reason": "frontage 179.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012186887",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012159191"
+  },
+  {
+   "pandId": "0363100012166546",
+   "reason": "frontage 48.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157467",
+   "reason": "frontage 63.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163997",
+   "reason": "frontage 121.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156385",
+   "reason": "frontage 178.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159620",
+   "reason": "frontage 144.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163797",
+   "reason": "frontage 93.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156559",
+   "reason": "frontage 34.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012202045",
+   "reason": "frontage 138.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166468",
+   "reason": "frontage 36.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166851",
+   "reason": "frontage 61.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012219337",
+   "reason": "frontage 32.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156522",
+   "reason": "frontage 149.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153214",
+   "reason": "frontage 179.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158902",
+   "reason": "frontage 121.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156854",
+   "reason": "frontage 120.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159996",
+   "reason": "frontage 139.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155512",
+   "reason": "frontage 95.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159430",
+   "reason": "frontage 48.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012140472",
+   "reason": "frontage 120.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158135",
+   "reason": "frontage 30.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012232902",
+   "reason": "frontage 137.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157819",
+   "reason": "frontage 63.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160144",
+   "reason": "frontage 64.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153803",
+   "reason": "frontage 37.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167069",
+   "reason": "frontage 36.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155773",
+   "reason": "frontage 111.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163585",
+   "reason": "frontage 95.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159050",
+   "reason": "frontage 48.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153209",
+   "reason": "frontage 95.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161184",
+   "reason": "frontage 35.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012233084",
+   "reason": "frontage 89.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161371",
+   "reason": "frontage 93.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153827",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012159137"
+  },
+  {
+   "pandId": "0363100012159965",
+   "reason": "frontage 72.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012208878",
+   "reason": "frontage 82.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012202956",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012153065"
+  },
+  {
+   "pandId": "0363100012154158",
+   "reason": "frontage 152.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156880",
+   "reason": "frontage 151.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158077",
+   "reason": "frontage 150.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161611",
+   "reason": "frontage 61.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012218960",
+   "reason": "frontage 41.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159699",
+   "reason": "frontage 147.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165223",
+   "reason": "frontage 64.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012143916",
+   "reason": "frontage 31.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012192240",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012159632"
+  },
+  {
+   "pandId": "0363100012161431",
+   "reason": "frontage 50.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156436",
+   "reason": "frontage 146.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167172",
+   "reason": "frontage 35.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153805",
+   "reason": "frontage 34.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160808",
+   "reason": "frontage 177.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163042",
+   "reason": "frontage 177.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158034",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012236140"
+  },
+  {
+   "pandId": "0363100012159893",
+   "reason": "frontage 95.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012192045",
+   "reason": "frontage 31.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160853",
+   "reason": "frontage 64.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012194164",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012152772"
+  },
+  {
+   "pandId": "0363100012162647",
+   "reason": "frontage 148.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162813",
+   "reason": "frontage 51.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163302",
+   "reason": "frontage 150.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158125",
+   "reason": "frontage 177.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160441",
+   "reason": "frontage 37.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165342",
+   "reason": "frontage 152.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012233714",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012110977"
+  },
+  {
+   "pandId": "0363100012155949",
+   "reason": "frontage 149.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236927",
+   "reason": "frontage 31.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012143262",
+   "reason": "frontage 99.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167260",
+   "reason": "frontage 92.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166519",
+   "reason": "frontage 122.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167402",
+   "reason": "frontage 152.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164060",
+   "reason": "frontage 37.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161662",
+   "reason": "frontage 36.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012189150",
+   "reason": "frontage 85.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162048",
+   "reason": "frontage 39.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154375",
+   "reason": "frontage 92.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012183437",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012088786"
+  },
+  {
+   "pandId": "0363100012157774",
+   "reason": "frontage 34.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155576",
+   "reason": "frontage 121.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153229",
+   "reason": "frontage 64.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012196818",
+   "reason": "frontage 43.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236644",
+   "reason": "frontage 122.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165348",
+   "reason": "frontage 49.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012209918",
+   "reason": "frontage 42.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158899",
+   "reason": "frontage 92.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160423",
+   "reason": "frontage 93.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157691",
+   "reason": "frontage 111.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012220938",
+   "reason": "frontage 158.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012198036",
+   "reason": "frontage 37.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154320",
+   "reason": "frontage 51.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012201547",
+   "reason": "frontage 130.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156642",
+   "reason": "frontage 49.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166583",
+   "reason": "frontage 93.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012203765",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012163642"
+  },
+  {
+   "pandId": "0363100012159102",
+   "reason": "frontage 62.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153231",
+   "reason": "frontage 119.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012129940",
+   "reason": "frontage 92.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012225495",
+   "reason": "frontage 32.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012204713",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012110977"
+  },
+  {
+   "pandId": "0363100012152909",
+   "reason": "frontage 147.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164928",
+   "reason": "frontage 93.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012218491",
+   "reason": "frontage 76.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165249",
+   "reason": "frontage 152.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166730",
+   "reason": "frontage 119.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153785",
+   "reason": "frontage 36.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164171",
+   "reason": "frontage 54.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161660",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012091912"
+  },
+  {
+   "pandId": "0363100012153122",
+   "reason": "frontage 178.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166572",
+   "reason": "frontage 178.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012114410",
+   "reason": "frontage 63.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012237246",
+   "reason": "frontage 95.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166584",
+   "reason": "frontage 89.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163159",
+   "reason": "frontage 35.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159408",
+   "reason": "frontage 179.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012231726",
+   "reason": "frontage 86.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158431",
+   "reason": "frontage 211.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012208043",
+   "reason": "frontage 86.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165891",
+   "reason": "frontage 93.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160588",
+   "reason": "frontage 91.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155808",
+   "reason": "frontage 36.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167162",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012236001"
+  },
+  {
+   "pandId": "0363100012154247",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012158033"
+  },
+  {
+   "pandId": "0363100012158250",
+   "reason": "frontage 147.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163344",
+   "reason": "frontage 61.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166998",
+   "reason": "frontage 64.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012199380",
+   "reason": "frontage 33.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157936",
+   "reason": "frontage 178.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165255",
+   "reason": "frontage 152.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166522",
+   "reason": "frontage 55.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012197040",
+   "reason": "frontage 140.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165851",
+   "reason": "frontage 31.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166987",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012195507"
+  },
+  {
+   "pandId": "0363100012197376",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012091705"
+  },
+  {
+   "pandId": "0363100012164114",
+   "reason": "frontage 61.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160566",
+   "reason": "frontage 34.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156128",
+   "reason": "frontage 95.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012196607",
+   "reason": "frontage 32.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158332",
+   "reason": "frontage 48.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236736",
+   "reason": "frontage 91.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155850",
+   "reason": "frontage 63.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012235951",
+   "reason": "frontage 61.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156580",
+   "reason": "frontage 92.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154347",
+   "reason": "frontage 34.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012062460",
+   "reason": "frontage 77.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159545",
+   "reason": "frontage 150.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152688",
+   "reason": "frontage 63.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166890",
+   "reason": "frontage 64.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166333",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012161236"
+  },
+  {
+   "pandId": "0363100012159017",
+   "reason": "frontage 93.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156155",
+   "reason": "frontage 53.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163845",
+   "reason": "frontage 120.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012183583",
+   "reason": "frontage 137.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166550",
+   "reason": "frontage 77.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162539",
+   "reason": "frontage 50.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161618",
+   "reason": "frontage 63.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012230590",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012166238"
+  },
+  {
+   "pandId": "0363100012156754",
+   "reason": "frontage 129.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164397",
+   "reason": "frontage 91.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012094328",
+   "reason": "frontage 51.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166524",
+   "reason": "frontage 92.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161300",
+   "reason": "frontage 78.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157375",
+   "reason": "frontage 214.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161276",
+   "reason": "frontage 33.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160278",
+   "reason": "frontage 94.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162180",
+   "reason": "frontage 120.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158109",
+   "reason": "frontage 61.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012205502",
+   "reason": "frontage 141.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162146",
+   "reason": "frontage 94.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155877",
+   "reason": "frontage 62.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159905",
+   "reason": "frontage 67.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155670",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012157930"
+  },
+  {
+   "pandId": "0363100012162513",
+   "reason": "frontage 150.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012191007",
+   "reason": "frontage 43.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161014",
+   "reason": "frontage 83.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166818",
+   "reason": "frontage 93.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166033",
+   "reason": "frontage 35.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012195192",
+   "reason": "frontage 43.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012244723",
+   "reason": "frontage 117.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159476",
+   "reason": "frontage 177.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160378",
+   "reason": "frontage 122.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166007",
+   "reason": "frontage 177.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158428",
+   "reason": "frontage 64.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012191760",
+   "reason": "frontage 31.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156413",
+   "reason": "frontage 64.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157782",
+   "reason": "frontage 149.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166847",
+   "reason": "frontage 179.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154309",
+   "reason": "frontage 36.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163834",
+   "reason": "frontage 152.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012227728",
+   "reason": "frontage 142.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160660",
+   "reason": "frontage 94.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160390",
+   "reason": "frontage 53.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152330",
+   "reason": "frontage 49.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163426",
+   "reason": "frontage 51.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167202",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012091912"
+  },
+  {
+   "pandId": "0363100012160190",
+   "reason": "frontage 122.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012187267",
+   "reason": "frontage 33.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166812",
+   "reason": "frontage 35.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012192480",
+   "reason": "frontage 141.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164223",
+   "reason": "frontage 83.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012202866",
+   "reason": "frontage 32.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153002",
+   "reason": "frontage 94.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012201916",
+   "reason": "frontage 32.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155376",
+   "reason": "frontage 121.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160064",
+   "reason": "frontage 178.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012188422",
+   "reason": "frontage 82.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153740",
+   "reason": "frontage 211.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157264",
+   "reason": "frontage 152.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162958",
+   "reason": "frontage 135.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012086618",
+   "reason": "frontage 50.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165541",
+   "reason": "frontage 149.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012185242",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012158534"
+  },
+  {
+   "pandId": "0363100012166871",
+   "reason": "frontage 133.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160041",
+   "reason": "frontage 88.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012197933",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012152334"
+  },
+  {
+   "pandId": "0363100012154382",
+   "reason": "frontage 119.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157637",
+   "reason": "frontage 63.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166119",
+   "reason": "frontage 119.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012184027",
+   "reason": "frontage 137.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012115165",
+   "reason": "frontage 135.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012193259",
+   "reason": "frontage 138.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152841",
+   "reason": "frontage 62.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236423",
+   "reason": "frontage 95.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164362",
+   "reason": "frontage 122.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155872",
+   "reason": "frontage 51.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152607",
+   "reason": "frontage 34.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012237128",
+   "reason": "frontage 95.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165240",
+   "reason": "frontage 122.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012195214",
+   "reason": "frontage 31.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156517",
+   "reason": "frontage 149.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161440",
+   "reason": "frontage 148.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012230397",
+   "reason": "frontage 31.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160989",
+   "reason": "frontage 33.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157800",
+   "reason": "frontage 52.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162300",
+   "reason": "frontage 94.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157953",
+   "reason": "frontage 127.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012225366",
+   "reason": "frontage 140.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164680",
+   "reason": "frontage 35.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158403",
+   "reason": "frontage 122.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012061194",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012072625"
+  },
+  {
+   "pandId": "0363100012159328",
+   "reason": "frontage 41.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155483",
+   "reason": "frontage 122.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161420",
+   "reason": "frontage 178.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164395",
+   "reason": "frontage 54.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158709",
+   "reason": "frontage 64.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012188381",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012088786"
+  },
+  {
+   "pandId": "0363100012163405",
+   "reason": "frontage 93.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156831",
+   "reason": "frontage 150.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153196",
+   "reason": "frontage 62.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163742",
+   "reason": "frontage 207.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164059",
+   "reason": "frontage 37.2 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159535",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012157441"
+  },
+  {
+   "pandId": "0363100012161080",
+   "reason": "frontage 94.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236910",
+   "reason": "frontage 95.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158989",
+   "reason": "sightline to Eerste Helmersstraat crosses 0363100012091912"
+  },
+  {
+   "pandId": "0363100012159502",
+   "reason": "frontage 37.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154094",
+   "reason": "frontage 43.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162634",
+   "reason": "frontage 178.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012158837",
+   "reason": "frontage 31.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012152380",
+   "reason": "frontage 91.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163875",
+   "reason": "frontage 149.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162538",
+   "reason": "frontage 119.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012167412",
+   "reason": "frontage 121.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012192105",
+   "reason": "frontage 32.7 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165876",
+   "reason": "frontage 203.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012155464",
+   "reason": "frontage 149.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156609",
+   "reason": "frontage 92.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156397",
+   "reason": "frontage 119.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012154297",
+   "reason": "frontage 52.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012165336",
+   "reason": "frontage 51.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012225123",
+   "reason": "frontage 145.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012153306",
+   "reason": "frontage 50.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012166636",
+   "reason": "frontage 179.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012136301",
+   "reason": "frontage 76.9 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161560",
+   "reason": "frontage 39.3 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160291",
+   "reason": "frontage 121.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012161367",
+   "reason": "frontage 124.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012159708",
+   "reason": "frontage 121.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012163106",
+   "reason": "frontage 34.1 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012156378",
+   "reason": "frontage 83.5 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012164288",
+   "reason": "frontage 151.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157762",
+   "reason": "frontage 145.8 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012157964",
+   "reason": "frontage 152.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012208467",
+   "reason": "frontage 32.4 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012162108",
+   "reason": "frontage 62.0 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012236639",
+   "reason": "frontage 77.6 m from Eerste Helmersstraat"
+  },
+  {
+   "pandId": "0363100012160800",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159191",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159059",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091705",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088786",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157027",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165942",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157518",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164448",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158534",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158780",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156860",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110977",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166238",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163642",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150457",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160738",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160519",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159931",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160361",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091912",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159678",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159507",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163835",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154337",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012077372",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236140",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152772",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012072625",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160448",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158285",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161236",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161995",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153736",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165671",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162661",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165673",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163335",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164727",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166218",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139204",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153065",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012164583",
+   "alongM": 0,
+   "widthM": 6.1,
+   "eavesM": 16.02,
+   "roofMaxM": 16.05,
+   "storeys3dbag": null,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152877",
+   "alongM": 6.01,
+   "widthM": 5.93,
+   "eavesM": 16.38,
+   "roofMaxM": 18.92,
+   "storeys3dbag": null,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159748",
+   "alongM": 11.99,
+   "widthM": 6.03,
+   "eavesM": 14.49,
+   "roofMaxM": 18.75,
+   "storeys3dbag": null,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159737",
+   "alongM": 17.94,
+   "widthM": 5.88,
+   "eavesM": 13.22,
+   "roofMaxM": 13.71,
+   "storeys3dbag": null,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159862",
+   "alongM": 23.89,
+   "widthM": 6.02,
+   "eavesM": 10.88,
+   "roofMaxM": 13.43,
+   "storeys3dbag": null,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159632",
+   "alongM": 29.87,
+   "widthM": 5.93,
+   "eavesM": 11.11,
+   "roofMaxM": 13.63,
+   "storeys3dbag": null,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153120",
+   "alongM": 35.9,
+   "widthM": 6.14,
+   "eavesM": 11.04,
+   "roofMaxM": 13.69,
+   "storeys3dbag": null,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166885",
+   "alongM": 41.99,
+   "widthM": 6.03,
+   "eavesM": 13.34,
+   "roofMaxM": 16.37,
+   "storeys3dbag": null,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164920",
+   "alongM": 47.98,
+   "widthM": 5.95,
+   "eavesM": 13.05,
+   "roofMaxM": 13.39,
+   "storeys3dbag": null,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165470",
+   "alongM": 53.94,
+   "widthM": 5.96,
+   "eavesM": 13.23,
+   "roofMaxM": 13.68,
+   "storeys3dbag": null,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165598",
+   "alongM": 59.95,
+   "widthM": 6.07,
+   "eavesM": 13.37,
+   "roofMaxM": 13.71,
+   "storeys3dbag": null,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152814",
+   "alongM": 65.42,
+   "widthM": 4.87,
+   "eavesM": 15.63,
+   "roofMaxM": 15.64,
+   "storeys3dbag": null,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165380",
+   "alongM": 70.35,
+   "widthM": 4.98,
+   "eavesM": 15.46,
+   "roofMaxM": 18.04,
+   "storeys3dbag": null,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166398",
+   "alongM": 75.33,
+   "widthM": 4.98,
+   "eavesM": 15.32,
+   "roofMaxM": 17.6,
+   "storeys3dbag": null,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161336",
+   "alongM": 80.39,
+   "widthM": 5.14,
+   "eavesM": 15.51,
+   "roofMaxM": 15.52,
+   "storeys3dbag": null,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164140",
+   "alongM": 85.46,
+   "widthM": 5,
+   "eavesM": 15.33,
+   "roofMaxM": 15.66,
+   "storeys3dbag": null,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162217",
+   "alongM": 90.84,
+   "widthM": 5.76,
+   "eavesM": 15.46,
+   "roofMaxM": 15.84,
+   "storeys3dbag": null,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164432",
+   "alongM": 96.58,
+   "widthM": 5.73,
+   "eavesM": 15.51,
+   "roofMaxM": 15.91,
+   "storeys3dbag": null,
+   "builtYear": 1901,
+   "uncertainty": []
+  }
+ ]
+}

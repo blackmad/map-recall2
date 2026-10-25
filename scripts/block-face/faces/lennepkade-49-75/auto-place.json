@@ -1,0 +1,1094 @@
+{
+ "face": "lennepkade-49-75",
+ "street": "Jacob van Lennepkade",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 2.1,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012155639",
+   "address": "Jacob van Lennepkade 49C",
+   "builtYear": 1894,
+   "widthM": 5.38,
+   "eavesM": 15.35,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8e7358",
+    "wallRaw": "#7e6951",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 887,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.164,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.93 m at 0.31 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.31,
+       "light": 0.18
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.38,
+       "widthM": 1.13,
+       "centre": 0.33
+      },
+      {
+       "atM": 8.22,
+       "widthM": 0.95,
+       "centre": 0.71
+      },
+      {
+       "atM": 5.07,
+       "widthM": 3,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1894, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.8 m; 3DBAG 15.35 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.091 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162927",
+   "address": "Jacob van Lennepkade 51",
+   "builtYear": 1894,
+   "widthM": 5.45,
+   "eavesM": 15.47,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e634d",
+    "wallRaw": "#78694f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 887,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.134,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.43,
+       "widthM": 1.13,
+       "centre": 0.46
+      },
+      {
+       "atM": 8.27,
+       "widthM": 1.13,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1894, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.8 m; 3DBAG 15.47 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.061 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161819",
+   "address": "Jacob van Lennepkade 53",
+   "builtYear": 1894,
+   "widthM": 6.1,
+   "eavesM": 13.26,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#84684f",
+    "wallRaw": "#77644d",
+    "skyline": {
+     "eavesM": 18.98,
+     "eavesRow": 128,
+     "confidence": 0.33,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 2.8,
+      "topWidthM": 0.42,
+      "centre": 0.06
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.11,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.49 (light 0.12): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.49,
+       "light": 0.12
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.7,
+       "widthM": 1.4,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1894, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.8 m; 3DBAG 13.26 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.087 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236227",
+   "address": "Jacob van Lennepkade 55",
+   "builtYear": 1892,
+   "widthM": 7.26,
+   "eavesM": 15.6,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#876952",
+    "wallRaw": "#7a604c",
+    "skyline": {
+     "eavesM": 20.02,
+     "eavesRow": 86,
+     "confidence": 0.65,
+     "crown": {
+      "widthM": 1.13,
+      "riseM": 2.15,
+      "topWidthM": 0.53,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.057,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.78,
+       "widthM": 0.8,
+       "centre": 0.09
+      },
+      {
+       "atM": 10.5,
+       "widthM": 1.15,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893; frontage 7.26 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1893-1893",
+     "frontage 7.26 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 20.02 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.061 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161968",
+   "address": "Jacob van Lennepkade 57",
+   "builtYear": 1896,
+   "widthM": 5.09,
+   "eavesM": 14.29,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#755c47",
+    "wallRaw": "#71604a",
+    "skyline": {
+     "eavesM": 16.07,
+     "eavesRow": 244,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.9,
+      "topWidthM": 0.42,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.094,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.51 (light 0.13): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.51,
+       "light": 0.13
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.87,
+       "light": 0.19
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.1,
+       "widthM": 1.13,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 16.07 m vs the type's 14.9 m)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.07 m vs the type's 14.9 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.099 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158907",
+   "address": "Jacob van Lennepkade 59",
+   "builtYear": 1896,
+   "widthM": 5.55,
+   "eavesM": 16.77,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9e6c51",
+    "wallRaw": "#7b674e",
+    "skyline": {
+     "eavesM": 16.77,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 3,
+      "topWidthM": 0.2,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.136,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1 m at 0.51 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.51,
+       "light": 0.18
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.32,
+       "widthM": 1.25,
+       "centre": 0.84
+      },
+      {
+       "atM": 10.18,
+       "widthM": 1.2,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 16.77 m vs the type's 14.9 m)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.77 m vs the type's 14.9 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.095 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153685",
+   "address": "Jacob van Lennepkade 61",
+   "builtYear": 1896,
+   "widthM": 5.19,
+   "eavesM": 14.25,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9b7159",
+    "wallRaw": "#655a48",
+    "skyline": {
+     "eavesM": 16.18,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 3.2,
+      "topWidthM": 0.2,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.056,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.93 m at 0.51 (light 0.04): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.51,
+       "light": 0.04
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.65,
+       "widthM": 1.35,
+       "centre": 0.52
+      },
+      {
+       "atM": 9.9,
+       "widthM": 1,
+       "centre": 0.51
+      },
+      {
+       "atM": 7.5,
+       "widthM": 1.57,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 16.18 m vs the type's 14.9 m)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.18 m vs the type's 14.9 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.046 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159186",
+   "address": "Jacob van Lennepkade 63",
+   "builtYear": 1896,
+   "widthM": 5.11,
+   "eavesM": 14.23,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#80664e",
+    "wallRaw": "#74624d",
+    "skyline": {
+     "eavesM": 16.07,
+     "eavesRow": 244,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 2.5,
+      "topWidthM": 0.53,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.046,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.55 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.55,
+       "light": 0.18
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.17,
+       "widthM": 1.23,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 16.07 m vs the type's 14.9 m)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.07 m vs the type's 14.9 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.048 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157253",
+   "address": "Jacob van Lennepkade 65",
+   "builtYear": 1896,
+   "widthM": 5.62,
+   "eavesM": 16.18,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9b8269",
+    "wallRaw": "#86715a",
+    "skyline": {
+     "eavesM": 16.18,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.2,
+      "riseM": 2.02,
+      "topWidthM": 1.52,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.124,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.54 (light 0.03): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.54,
+       "light": 0.03
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.72,
+       "widthM": 1.07,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 16.18 m vs the type's 14.9 m)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.18 m vs the type's 14.9 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.091 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159900",
+   "address": "Jacob van Lennepkade 67",
+   "builtYear": 1896,
+   "widthM": 5.44,
+   "eavesM": 15.8,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#83694f",
+    "wallRaw": "#816d54",
+    "skyline": {
+     "eavesM": 15.8,
+     "eavesRow": 255,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 2,
+      "topWidthM": 1.88,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.199,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.19 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.19,
+       "light": 0.22
+      },
+      {
+       "widthM": 0.95,
+       "centre": 0.49,
+       "light": 0.09
+      },
+      {
+       "widthM": 0.95,
+       "centre": 0.82,
+       "light": 0.2
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158452",
+   "address": "Jacob van Lennepkade 69",
+   "builtYear": 1895,
+   "widthM": 6.02,
+   "eavesM": 17.14,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#89583c",
+    "wallRaw": "#86674b",
+    "skyline": {
+     "eavesM": 16.77,
+     "eavesRow": 216,
+     "confidence": 0.82,
+     "crown": {
+      "widthM": 2.08,
+      "riseM": 4.6,
+      "topWidthM": 0.07,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.128,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.1,
+       "widthM": 1.2,
+       "centre": 0.24
+      },
+      {
+       "atM": 6.8,
+       "widthM": 0.93,
+       "centre": 0.73
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 16.77 m vs the type's 14.9 m)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.77 m vs the type's 14.9 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.113 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153487",
+   "address": "Jacob van Lennepkade 71",
+   "builtYear": 1895,
+   "widthM": 5.74,
+   "eavesM": 16.89,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8b6a51",
+    "wallRaw": "#9a8a73",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 887,
+     "confidence": 0.12,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 11,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.344,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.34
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1895, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.8 m; 3DBAG 16.89 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012100709",
+   "address": "Jacob van Lennepkade 73",
+   "builtYear": 2012,
+   "widthM": 6.51,
+   "eavesM": 16.18,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f4633",
+    "wallRaw": "#7c654d",
+    "skyline": {
+     "eavesM": 21.38,
+     "eavesRow": 32,
+     "confidence": 0.33,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.228,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.81 (light 0.24): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.81,
+       "light": 0.24
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 2012, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 2012, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.8 m; 3DBAG 16.18 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.22 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160813",
+   "address": "Jacob van Lennepkade 75",
+   "builtYear": 1895,
+   "widthM": 5.1,
+   "eavesM": 16.23,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#392c20",
+    "wallRaw": "#6b5a49",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 887,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.069,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,487 @@
+{
+ "street": "Overtoom",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012235976",
+   "addresses": [
+    "Overtoom 72",
+    "Overtoom 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 74-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000768454"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155830",
+   "addresses": [
+    "Overtoom 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 70-H",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000768450"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1811018164,
+     "lngLat": [
+      4.87597,
+      52.3631263
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "70",
+      "addr:postcode": "1054HL",
+      "addr:street": "Overtoom",
+      "check_date": "2026-09-13",
+      "check_date:opening_hours": "2026-07-04",
+      "name": "Copy Plaza",
+      "opening_hours": "Mo-Fr 09:00-19:00; Sa-Su 12:00-18:00",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "shop": "copyshop",
+      "website": "https://copyplaza.nl/"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153822",
+   "addresses": [
+    "Overtoom 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 68-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000768447"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2411543477,
+     "lngLat": [
+      4.8760412,
+      52.3631469
+     ],
+     "tags": {
+      "addr:housenumber": "68-H",
+      "addr:street": "Overtoom",
+      "amenity": "restaurant",
+      "check_date": "2026-09-13",
+      "cuisine": "indonesian",
+      "name": "Kartika",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "website": "http://www.restaurantkartika.com/"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157517",
+   "addresses": [
+    "Overtoom 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 66-H",
+     "use": "bijeenkomstfunctie,winkelfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000768444"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159922",
+   "addresses": [
+    "Overtoom 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 64-H",
+     "use": "winkelfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000768442"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809446963,
+     "lngLat": [
+      4.8761839,
+      52.363178
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "64-H",
+      "addr:postcode": "1054HL",
+      "addr:street": "Overtoom",
+      "branch": "Amsterdam Overtoom",
+      "brand": "BrainWash",
+      "brand:website": "https://www.brainwash-kappers.nl",
+      "brand:wikidata": "Q114905133",
+      "check_date": "2026-07-14",
+      "name": "BrainWash",
+      "phone": "+31 20 8208786",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.brainwash-kappers.nl/salons/brainwash-amsterdam-overtoom"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012109158",
+   "addresses": [
+    "Overtoom 60",
+    "Overtoom 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 60",
+     "use": "kantoorfunctie",
+     "areaM2": 613,
+     "bagId": "0363010000768440"
+    },
+    {
+     "address": "Overtoom 62",
+     "use": "winkelfunctie",
+     "areaM2": 493,
+     "bagId": "0363010000768441"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233488",
+   "addresses": [
+    "Overtoom 50",
+    "Overtoom 52",
+    "Overtoom 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 52",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 350,
+     "bagId": "0363010012099692"
+    },
+    {
+     "address": "Overtoom 52",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 420,
+     "bagId": "0363010000768429"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809444852,
+     "lngLat": [
+      4.8765635,
+      52.3632884
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "52",
+      "addr:postcode": "1054HK",
+      "addr:street": "Overtoom",
+      "amenity": "pub",
+      "check_date": "2026-07-14",
+      "contact:facebook": "https://www.facebook.com/deebeling/",
+      "contact:instagram": "https://www.instagram.com/deebeling/",
+      "indoor_seating": "yes",
+      "name": "De Ebeling",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 777 2005",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.de-ebeling.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012233649",
+   "addresses": [
+    "Overtoom 36",
+    "Overtoom 38",
+    "Overtoom 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 36-H",
+     "use": "industriefunctie",
+     "areaM2": 728,
+     "bagId": "0363010001019551"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14013917214,
+     "lngLat": [
+      4.8767756,
+      52.3633455
+     ],
+     "tags": {
+      "check_date": "2026-07-14",
+      "name": "Kwikfit",
+      "shop": "repair"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161926",
+   "addresses": [
+    "Overtoom 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 34-H",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000768402"
+    },
+    {
+     "address": "Overtoom 34-O",
+     "use": "sportfunctie",
+     "areaM2": 170,
+     "bagId": "0363010000768403"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162948",
+   "addresses": [
+    "Overtoom 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 32-H",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000768398"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236248",
+   "addresses": [
+    "Overtoom 28",
+    "Overtoom 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 30-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001005296"
+    },
+    {
+     "address": "Overtoom 28-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 173,
+     "bagId": "0363010000768388"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012249367",
+   "addresses": [
+    "Overtoom 20A",
+    "Overtoom 20B",
+    "Overtoom 22A",
+    "Overtoom 22E",
+    "Overtoom 22B",
+    "Overtoom 22C",
+    "Overtoom 22D",
+    "Overtoom 24A",
+    "Overtoom 24B",
+    "Overtoom 24C",
+    "Overtoom 24D",
+    "Overtoom 26A",
+    "Overtoom 26B",
+    "Overtoom 26C",
+    "Overtoom 26D",
+    "Overtoom 26E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 20A",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000768357"
+    },
+    {
+     "address": "Overtoom 20B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000768358"
+    },
+    {
+     "address": "Overtoom 22A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000768365"
+    },
+    {
+     "address": "Overtoom 22E",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000768369"
+    },
+    {
+     "address": "Overtoom 24A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000768376"
+    },
+    {
+     "address": "Overtoom 24B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000768377"
+    },
+    {
+     "address": "Overtoom 24C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000768378"
+    },
+    {
+     "address": "Overtoom 24D",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000768379"
+    },
+    {
+     "address": "Overtoom 26A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000768380"
+    },
+    {
+     "address": "Overtoom 26B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000768381"
+    },
+    {
+     "address": "Overtoom 26C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000768382"
+    },
+    {
+     "address": "Overtoom 26D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000768383"
+    },
+    {
+     "address": "Overtoom 26E",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000768384"
+    },
+    {
+     "address": "Overtoom 22B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000768366"
+    },
+    {
+     "address": "Overtoom 22C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000768367"
+    },
+    {
+     "address": "Overtoom 22D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000768368"
+    }
+   ],
+   "units": 16,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809426588,
+     "lngLat": [
+      4.8774999,
+      52.3635711
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16",
+      "addr:postcode": "1054HJ",
+      "addr:street": "Overtoom",
+      "name": "Fiberplane",
+      "office": "company",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://fiberplane.com/"
+     },
+     "fetchedAt": "2026-10-25T16:29:35.136Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    }
+   ]
+  }
+ ]
+}

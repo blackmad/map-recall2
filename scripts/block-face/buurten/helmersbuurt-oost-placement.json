@@ -1,0 +1,1049 @@
+{
+ "buurt": "helmersbuurt-oost",
+ "library": "helmersbuurt",
+ "generatedAt": "2026-10-25T17:22:06.981Z",
+ "seconds": 116.53,
+ "totals": {
+  "faces": 50,
+  "pands": 344,
+  "placed": 20
+ },
+ "faces": [
+  {
+   "face": "genestet-1-3",
+   "street": "De Genestetstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.03,
+   "byType": {},
+   "holds": {
+    "evidence": 3,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "genestet-11-11",
+   "status": "no intake"
+  },
+  {
+   "face": "genestet-12-16",
+   "street": "De Genestetstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.39,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 0,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "genestet-17-17",
+   "status": "no intake"
+  },
+  {
+   "face": "genestet-2-4",
+   "street": "De Genestetstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.03,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "genestet-5-9",
+   "street": "De Genestetstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 1.55,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 0,
+    "likeness": 2,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "genestet-6-10",
+   "street": "De Genestetstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.34,
+   "byType": {},
+   "holds": {
+    "evidence": 3,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-1-27",
+   "street": "Derde Helmersstraat",
+   "pands": 14,
+   "placed": 0,
+   "held": 14,
+   "runs": [],
+   "seconds": 7.12,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 7,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-14-26",
+   "street": "Tweede Helmersstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 0.66,
+   "byType": {},
+   "holds": {
+    "evidence": 5,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-2-10",
+   "street": "Tweede Helmersstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.49,
+   "byType": {},
+   "holds": {
+    "evidence": 4,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-2-30",
+   "street": "Derde Helmersstraat",
+   "pands": 15,
+   "placed": 0,
+   "held": 15,
+   "runs": [],
+   "seconds": 2.1,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 14,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-2-32",
+   "street": "Eerste Helmersstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 1.53,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-21-21",
+   "status": "no intake"
+  },
+  {
+   "face": "helmers-23-57",
+   "street": "Eerste Helmersstraat",
+   "pands": 18,
+   "placed": 11,
+   "held": 7,
+   "runs": [
+    {
+     "face": "helmers-23-57-r1",
+     "pands": [
+      "0363100012161340",
+      "0363100012163575",
+      "0363100012154302"
+     ],
+     "passed": false,
+     "triangles": 7027
+    },
+    {
+     "face": "helmers-23-57-r2",
+     "pands": [
+      "0363100012126668",
+      "0363100012079858",
+      "0363100012082256",
+      "0363100012131767",
+      "0363100012066688",
+      "0363100012101791"
+     ],
+     "passed": false,
+     "triangles": 13880
+    },
+    {
+     "face": "helmers-23-57-r3",
+     "pands": [
+      "0363100012122183",
+      "0363100012142705"
+     ],
+     "passed": true,
+     "triangles": 4604
+    }
+   ],
+   "seconds": 21.21,
+   "byType": {
+    "helmers-1905-checker-arch": 3,
+    "helmers-1911-balcony-axis": 8
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 3,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-28-52",
+   "street": "Tweede Helmersstraat",
+   "pands": 13,
+   "placed": 0,
+   "held": 13,
+   "runs": [],
+   "seconds": 1.23,
+   "byType": {},
+   "holds": {
+    "evidence": 8,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-3-51",
+   "street": "Tweede Helmersstraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 2.12,
+   "byType": {},
+   "holds": {
+    "evidence": 6,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-31-47",
+   "street": "Derde Helmersstraat",
+   "pands": 13,
+   "placed": 0,
+   "held": 13,
+   "runs": [],
+   "seconds": 6.63,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 9,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-32-66",
+   "street": "Derde Helmersstraat",
+   "pands": 13,
+   "placed": 4,
+   "held": 9,
+   "runs": [
+    {
+     "face": "helmers-32-66-r1",
+     "pands": [
+      "0363100012165412",
+      "0363100012163126"
+     ],
+     "passed": true,
+     "triangles": 4648
+    },
+    {
+     "face": "helmers-32-66-r2",
+     "pands": [
+      "0363100012157083",
+      "0363100012162406"
+     ],
+     "passed": false,
+     "triangles": 4647
+    }
+   ],
+   "seconds": 9.25,
+   "byType": {
+    "helmers-1900-merlon-dormer": 4
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 2,
+    "run": 0,
+    "review": 2
+   }
+  },
+  {
+   "face": "helmers-40-60",
+   "street": "Eerste Helmersstraat",
+   "pands": 10,
+   "placed": 2,
+   "held": 8,
+   "runs": [
+    {
+     "face": "helmers-40-60-r1",
+     "pands": [
+      "0363100012167041",
+      "0363100012165540"
+     ],
+     "passed": true,
+     "triangles": 4881
+    }
+   ],
+   "seconds": 4.84,
+   "byType": {
+    "helmers-1900-balcony-arch": 2
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 1,
+    "run": 1,
+    "review": 2
+   }
+  },
+  {
+   "face": "helmers-5-17",
+   "street": "Eerste Helmersstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 2.07,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-51-73",
+   "street": "Derde Helmersstraat",
+   "pands": 12,
+   "placed": 3,
+   "held": 9,
+   "runs": [
+    {
+     "face": "helmers-51-73-r1",
+     "pands": [
+      "0363100012167154",
+      "0363100012163705",
+      "0363100012155520"
+     ],
+     "passed": true,
+     "triangles": 5652
+    }
+   ],
+   "seconds": 8.39,
+   "byType": {
+    "helmers-1896-transom-band": 3
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 7,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-68-92",
+   "street": "Derde Helmersstraat",
+   "pands": 13,
+   "placed": 0,
+   "held": 13,
+   "runs": [],
+   "seconds": 2.11,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 3,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-68-96",
+   "street": "Tweede Helmersstraat",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 4.62,
+   "byType": {},
+   "holds": {
+    "evidence": 5,
+    "match": 2,
+    "likeness": 4,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "helmers-79-97",
+   "street": "Tweede Helmersstraat",
+   "pands": 10,
+   "placed": 0,
+   "held": 10,
+   "runs": [],
+   "seconds": 1.11,
+   "byType": {},
+   "holds": {
+    "evidence": 7,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "huygens-15-17",
+   "street": "Eerste Constantijn Huygensstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.27,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "huygens-21-29",
+   "street": "Eerste Constantijn Huygensstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.52,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "huygens-3-7",
+   "street": "Eerste Constantijn Huygensstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.47,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "huygens-31-43",
+   "street": "Eerste Constantijn Huygensstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.15,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "huygens-45-57",
+   "street": "Eerste Constantijn Huygensstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 1.13,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "huygens-59-63",
+   "street": "Eerste Constantijn Huygensstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.54,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "huygens-65-73",
+   "street": "Eerste Constantijn Huygensstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 3.28,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 1,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "huygens-9-13",
+   "street": "Eerste Constantijn Huygensstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.54,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "lennepkade-1-17",
+   "street": "Jacob van Lennepkade",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 1.32,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 9,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "lennepkade-19-43",
+   "status": "no intake"
+  },
+  {
+   "face": "lennepkade-49-75",
+   "street": "Jacob van Lennepkade",
+   "pands": 14,
+   "placed": 0,
+   "held": 14,
+   "runs": [],
+   "seconds": 2.1,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 12,
+    "likeness": 0,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "nassaukade-356-356",
+   "street": "Nassaukade",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.37,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "nassaukade-357-359",
+   "street": "Nassaukade",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.43,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "nassaukade-360-360",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-363-363",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-364-364",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-365-365",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-366-366",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-367-367",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-368-368",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-369-369",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-370-370",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-371-371",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-372-372",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-373-375",
+   "street": "Nassaukade",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.4,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "nassaukade-376-376",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-377-377",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-378-381",
+   "street": "Nassaukade",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 1.3,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "nassaukade-383-383",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-384-384",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-387-391",
+   "street": "Nassaukade",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.66,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "nassaukade-930-930",
+   "status": "no intake"
+  },
+  {
+   "face": "nassaukade-946-946",
+   "status": "no intake"
+  },
+  {
+   "face": "overtoom-2-16",
+   "street": "Overtoom",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 2.18,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "overtoom-20-74",
+   "street": "Overtoom",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 2.57,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 11,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "overtoom-78-80",
+   "status": "no intake"
+  },
+  {
+   "face": "thijm-1-3",
+   "status": "no intake"
+  },
+  {
+   "face": "thijm-11-15",
+   "street": "Alberdingk Thijmstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 3.22,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 2,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "thijm-19-21",
+   "status": "no intake"
+  },
+  {
+   "face": "thijm-22-28",
+   "status": "no intake"
+  },
+  {
+   "face": "thijm-23-23",
+   "status": "no intake"
+  },
+  {
+   "face": "thijm-30-188",
+   "street": "Alberdingk Thijmstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.61,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "thijm-4-6",
+   "street": "Alberdingk Thijmstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.37,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "thijm-5-9",
+   "street": "Alberdingk Thijmstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.46,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 1,
+    "review": 2
+   }
+  },
+  {
+   "face": "thijm-8-12",
+   "street": "Alberdingk Thijmstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.34,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "toussaint-1-5",
+   "street": "Bosboom Toussaintstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.84,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "toussaint-2-24",
+   "street": "Bosboom Toussaintstraat",
+   "pands": 11,
+   "placed": 0,
+   "held": 11,
+   "runs": [],
+   "seconds": 1.97,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 10,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "toussaint-26-50",
+   "street": "Bosboom Toussaintstraat",
+   "pands": 13,
+   "placed": 0,
+   "held": 13,
+   "runs": [],
+   "seconds": 1.86,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 11,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "toussaint-29-51",
+   "street": "Bosboom Toussaintstraat",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 2.01,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 7,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "toussaint-53-71",
+   "street": "Bosboom Toussaintstraat",
+   "pands": 10,
+   "placed": 0,
+   "held": 10,
+   "runs": [],
+   "seconds": 3.84,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 5,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "toussaint-54-70",
+   "street": "Bosboom Toussaintstraat",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 1.42,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "toussaint-9-27",
+   "street": "Bosboom Toussaintstraat",
+   "pands": 10,
+   "placed": 0,
+   "held": 10,
+   "runs": [],
+   "seconds": 1.53,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 10,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  }
+ ]
+}

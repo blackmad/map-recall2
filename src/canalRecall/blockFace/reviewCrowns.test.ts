@@ -6,7 +6,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {applyCrownPins, applyMirrorPins, crownPinProblems, mirrorPinProblems, typePinProblems, typesForFace, type CrownPin, type MirrorPin, type TypePin} from './reviewCrowns.ts';
+import {applyCrownPins, applyMirrorPins, crownPinProblems, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from './reviewCrowns.ts';
 import type {Decision} from './autoPlace.ts';
 
 const TYPE = {id: 'indisch-1926-attic-lights', crowns: {parapet: {gable: 'flat' as const}, overhang: {gable: 'flat' as const}}};
@@ -36,6 +36,19 @@ test('a face pin sets the crown on that face only and on that type only; a pand 
   const other = [placed('p1')];
   assert.deepEqual(applyCrownPins('molukken-7-29', other, pins, [TYPE]), []);
   assert.equal((other[0] as Extract<Decision, {kind: 'placed'}>).house.type!.crown, undefined);
+});
+
+test('type pins with pands: only the listed pands of the face are restricted; a pand pinned once', () => {
+  const lib = [{id: 'a'}, {id: 'b'}, {id: 'c'}];
+  const P1 = '0363100012159748', P2 = '0363100012159737';
+  const pins: TypePin[] = [{face: 'helmers-209-253', pands: [P1], types: ['b'], reason: 'strip'}, {face: 'helmers-209-253', pands: [P2], types: ['c', 'a'], reason: 'strip'}];
+  assert.deepEqual(typesForPand('helmers-209-253', P1, lib, pins).map(t => t.id), ['b']);
+  assert.deepEqual(typesForPand('helmers-209-253', P2, lib, pins).map(t => t.id), ['a', 'c']);
+  assert.equal(typesForPand('helmers-209-253', '0363100012000000', lib, pins), lib);
+  assert.equal(typesForFace('helmers-209-253', lib, pins), lib, 'pand pins leave the face library whole');
+  assert.deepEqual(typePinProblems(pins, lib), []);
+  assert.match(typePinProblems([...pins, {face: 'helmers-209-253', pands: [P1], types: ['a'], reason: 'r'}], lib)[0], /pinned twice for one pand/);
+  assert.match(typePinProblems([{face: 'x', pands: ['159748'], types: ['a'], reason: 'r'}], lib)[0], /16-digit/);
 });
 
 test('type pins: a pinned face gets only its types (library order); other faces the whole library; problems', () => {

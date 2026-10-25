@@ -1,0 +1,225 @@
+{
+ "face": "thijm-5-9",
+ "street": "Alberdingk Thijmstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 0.46,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012162465",
+   "address": "Alberdingk Thijmstraat 5",
+   "builtYear": 1900,
+   "widthM": 6.12,
+   "eavesM": 12.46,
+   "storeys3dbag": null,
+   "bagBay": {
+    "fromM": 3.26,
+    "toM": 6.11,
+    "depthM": 0.49,
+    "centre": 0.767,
+    "lineRD": [
+     [
+      120144.818,
+      486485.566
+     ],
+     [
+      120146.732,
+      486482.71
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#937054",
+    "wallRaw": "#b18464",
+    "skyline": {
+     "eavesM": 14.65,
+     "eavesRow": 166,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.3,
+      "riseM": 3.37,
+      "topWidthM": 0.68,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.298,
+    "structure": {
+     "bayWidthM": 1.25,
+     "bayCentre": 0.49,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.17 (light 0.49): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.17,
+       "light": 0.49
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.49,
+       "light": 0.45
+      },
+      {
+       "widthM": 0.85,
+       "centre": 0.84,
+       "light": 0.51
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.68,
+       "widthM": 1.07,
+       "centre": 0.86
+      },
+      {
+       "atM": 9.38,
+       "widthM": 1.13,
+       "centre": 0.15
+      },
+      {
+       "atM": 6.97,
+       "widthM": 0.9,
+       "centre": 0.78
+      },
+      {
+       "atM": 6.38,
+       "widthM": 0.85,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: ochre-banded front with a modern steel-framed shopfront over two storeys; the merlon-dormer type matched it on year, width and skyline alone",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162464",
+   "address": "Alberdingk Thijmstraat 7",
+   "builtYear": 1899,
+   "widthM": 6.49,
+   "eavesM": 17.32,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e4b794",
+    "wallRaw": "#edc89e",
+    "skyline": {
+     "eavesM": 17.32,
+     "eavesRow": 59,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.489,
+    "structure": {
+     "bayWidthM": 1.4,
+     "bayCentre": 0.83,
+     "balconies": true,
+     "why": "bay-less open axis 0.88 m at 0.17 (light 0.56): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.17,
+       "light": 0.56
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.3,
+       "widthM": 1.18,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.34,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a columned loggia with a balustrade on storey 1 and green glazed-brick arches; no type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012119454",
+   "address": "Alberdingk Thijmstraat 9",
+   "builtYear": 1899,
+   "widthM": 5.84,
+   "eavesM": 14.28,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f9deb2",
+    "wallRaw": "#f5dbb0",
+    "skyline": {
+     "eavesM": 14.28,
+     "eavesRow": 181,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 2.92,
+      "topWidthM": 1.8,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.437,
+    "structure": {
+     "bayWidthM": 1.25,
+     "bayCentre": 0.47,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.8 (light 0.35): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.8,
+       "light": 0.35
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.3,
+       "widthM": 2.58,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0.3,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

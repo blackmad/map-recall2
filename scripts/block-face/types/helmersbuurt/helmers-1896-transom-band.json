@@ -1,0 +1,166 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "helmers-1896-transom-band",
+ "district": "helmersbuurt",
+ "description": "Derde Helmersstraat 51-63 (1895-96): 6 m red-brown brick fronts of four storeys under a dentilled cornice at 14.9 m over a brick frieze; three axes of two-light windows with a transom; square-headed windows under dark brick relieving arches over a dark decorated tympanum on storeys 1-2 with white painted band pieces on the piers at the transom line; flat heads on storey 3; white sills; a bellied iron balconette on a bracketed slab on the centre axis of storeys 1-2; no dormer on the front",
+ "fit": {
+  "widthM": [
+   5.4,
+   6.4
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   3.9,
+   3.5,
+   3.4,
+   4.1
+  ],
+  "windows": "t-window",
+  "windowHead": {
+   "kind": "relieving",
+   "storeys": [
+    1,
+    2
+   ],
+   "archRing": {
+    "colour": "band",
+    "style": "solid",
+    "widthCourses": 2
+   },
+   "tympanum": "dark"
+  },
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.62,
+   0.66,
+   0.65,
+   0.44
+  ],
+  "headLines": [
+   0.82,
+   0.77,
+   0.79,
+   0.51
+  ],
+  "cornice": "heavy",
+  "bands": "painted",
+  "bandLines": [
+   "transom"
+  ],
+  "bandStoreys": [
+   1,
+   2
+  ],
+  "bandHeights": {
+   "transom": 0.12
+  },
+  "bandTransomAt": 0.8,
+  "balconies": {
+   "storeys": [
+    1,
+    2
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  },
+  "windowShare": 0.6
+ },
+ "crowns": {
+  "plain": {
+   "gable": "cornice",
+   "note": "51-63: no dormer on the front (roof behind the cornice)"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "57: house door on the left axis"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "59: on the right axis"
+  }
+ },
+ "palettes": {
+  "red-brown-1896": {
+   "brick": "#6f4a3b",
+   "frame": "white-painted",
+   "door": "#2a2a2a",
+   "stone": "#d9d6cc",
+   "cornice": "#cfcabd",
+   "stoneMaterial": "painted",
+   "band": "#4a3329"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every storey: 3 windows with a transom, one width",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "upper storeys symmetric; doors pair at the party walls",
+  "groundFloor": "residential",
+  "signage": "none",
+  "roofline": "dentilled cornice at 14.9 m over a brick frieze; no dormer",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "match": {
+  "years": [
+   1895,
+   1896
+  ],
+  "yearSlack": 0,
+  "stucco": false,
+  "frontEavesM": 14.9,
+  "note": "Derde Helmersstraat 51-63 (1895-96), 5.5-5.7 m; cornice 14.9 m on the 2023-01-12 strip re-taken at a 2.4 m camera height (PDOK eaves 14.0-14.3 read the gutter)"
+ },
+ "evidence": [
+  {
+   "face": "helmers-51-73",
+   "pands": [
+    "164486",
+    "073466"
+   ],
+   "citation": "strip.jpg 2023-01-12 (camera height 2.4 m) pands 3-4 (57, 59) at 1.2x with a metre grid: ground windows 0.8-3.2 m, storey-1 windows 4.3-6.6 under segmental heads to 6.9, white band pieces at 6.1-6.3, storey-2 7.9-10.1 (bands 9.6-9.8), storey-3 11.1-12.9 flat, frieze 13.3-14.2, cornice to 14.9-15.0; balconettes 4.6-5.3 and 8.2-8.9 m on the centre axis"
+  },
+  {
+   "face": "helmers-51-73",
+   "pands": [
+    "167154",
+    "163705",
+    "155520",
+    "167261",
+    "152780"
+   ],
+   "citation": "strip.jpg 2023-01-12 pands 0-6 (51-63): the same axes, bands, balconettes and cornice"
+  }
+ ],
+ "schemaLimits": [
+  "the dentilled cornice over a brick frieze is the heavy cornice",
+  "the bellied balconettes on bracketed slabs are the straight projecting guard",
+  "the white lintel pieces over the storey-3 windows are not drawn",
+  "the tympana's moulded-brick fan pattern is a flat dark fill"
+ ],
+ "notes": [
+  "Palette: read on the 2023-01-12 strip; placed pands take their own measured wall."
+ ]
+}

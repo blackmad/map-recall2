@@ -1,0 +1,105 @@
+{
+ "street": "Eerste Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012126668",
+   "addresses": [
+    "Eerste Helmersstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000544600"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079858",
+   "addresses": [
+    "Eerste Helmersstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 43-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000544607"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012082256",
+   "addresses": [
+    "Eerste Helmersstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000544615"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131767",
+   "addresses": [
+    "Eerste Helmersstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 47-H",
+     "use": "woonfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000544621"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066688",
+   "addresses": [
+    "Eerste Helmersstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000544629"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012101791",
+   "addresses": [
+    "Eerste Helmersstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Helmersstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010001007672"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

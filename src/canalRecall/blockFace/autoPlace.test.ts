@@ -16,7 +16,7 @@ import {readFileSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import sharp from 'sharp';
-import {accentSideOf, AUTO_PLACE, baysFor, crownFor, decidePand, fillPairs, groundUse, placedRuns, placementGate, runIntent, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
+import {accentSideOf, AUTO_PLACE, frontEavesFor, baysFor, crownFor, decidePand, fillPairs, groundUse, placedRuns, placementGate, runIntent, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
 import {measureSkyline} from './stripSkyline.ts';
 import {measureStripStructure, type StripStructure} from './stripStructure.ts';
 import {bestNcc, gradient, type Gray} from './stripLikeness.ts';
@@ -248,4 +248,27 @@ test('regression: Hasebroekstraat 1-37 (16.5 m eaves) is the 1904 row type drawn
   assert.equal(odd.kind === 'placed' && odd.house.type!.storeys, 5);
   const even = decidePand(types, pand({eavesM: 13.2}), 'x', '2022-01-04');
   assert.equal(even.kind === 'placed' && even.house.type!.storeys, undefined);
+});
+
+test('frontEavesM (Eerste Helmersstraat 209-243): the strip cornice is scored against the type line, 3DBAG eaves not compared; the line or the near skyline is drawn', () => {
+  const balconette = defaultTypeLoader('helmers-1897-balconette') as MatchableType, banded = defaultTypeLoader('helmers-1897-banded') as MatchableType;
+  const sky = (eavesM: number, confidence = 1) => strip({skyline: {eavesM, eavesRow: 0, confidence, crown: null} as never});
+  // Eerste Helmersstraat 225: PDOK eaves 13.05 m (the mansard top) under a 10.8 m cornice.
+  const at225 = pand({builtYear: 1897, widthM: 5.95, eavesM: 13.05, strip: sky(10.9)});
+  const eaves = (t: MatchableType, ev: PandEvidence) => scoreType(t, ev).criteria.find(c => c.key === 'eaves')!;
+  assert.equal(eaves(balconette, at225).score, 1);
+  assert.equal(eaves(banded, at225).score, 0, '14 m type, 10.9 m cornice');
+  assert.equal(eaves(balconette, pand({builtYear: 1897, widthM: 5.95, eavesM: 13.05, strip: sky(11.6)})).score, 0.5);
+  assert.equal(eaves(balconette, pand({builtYear: 1897, widthM: 5.95, eavesM: 13.05, strip: sky(10.9, 0.3)})).score, null, 'an unread skyline abstains');
+  assert.deepEqual(frontEavesFor(balconette, at225), {eavesM: 10.9, source: 'skyline'});
+  assert.deepEqual(frontEavesFor(balconette, pand({strip: sky(13.4)})), {eavesM: 10.8, source: 'type'});
+  assert.equal(frontEavesFor(types[0], at225), null);
+  // frontSkylineM: Derde Helmersstraat 60, the crenellated wall dormer reads as the skyline (18.2 m over a 14.3 m cornice).
+  const merlon = defaultTypeLoader('helmers-1900-merlon-dormer') as MatchableType;
+  const at60 = pand({builtYear: 1900, widthM: 5.79, eavesM: 16.29, strip: sky(18.0)});
+  assert.equal(eaves(merlon, at60).score, 1);
+  assert.equal(eaves({...merlon, match: {...merlon.match!, frontSkylineM: undefined}} as MatchableType, at60).score, 0);
+  assert.deepEqual(frontEavesFor(merlon, at60), {eavesM: 14.3, source: 'type'});
+  // yearSlack 0: the 1897 types do not reach the 1899 houses.
+  assert.match(scoreType(balconette, pand({builtYear: 1899, widthM: 5.95})).veto.join(), /built 1899/);
 });

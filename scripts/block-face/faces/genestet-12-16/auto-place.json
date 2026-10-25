@@ -1,0 +1,186 @@
+{
+ "face": "genestet-12-16",
+ "street": "De Genestetstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 0.39,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012157984",
+   "address": "De Genestetstraat 16",
+   "builtYear": 1899,
+   "widthM": 6.38,
+   "eavesM": 14.22,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9c856a",
+    "wallRaw": "#f2d9b4",
+    "skyline": {
+     "eavesM": 14.22,
+     "eavesRow": 172,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.13,
+      "riseM": 2.3,
+      "topWidthM": 2.02,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.48,
+    "structure": {
+     "bayWidthM": 1.25,
+     "bayCentre": 0.24,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.33,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155692",
+   "address": "De Genestetstraat 14",
+   "builtYear": 1899,
+   "widthM": 6.38,
+   "eavesM": 15.47,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b99772",
+    "wallRaw": "#f9e4a9",
+    "skyline": {
+     "eavesM": 15.47,
+     "eavesRow": 122,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 1.47,
+      "topWidthM": 1.57,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.48,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.23 m at 0.24 (light 0.36): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.23,
+       "centre": 0.24,
+       "light": 0.36
+      },
+      {
+       "widthM": 1.3,
+       "centre": 0.54,
+       "light": 0.45
+      },
+      {
+       "widthM": 1.27,
+       "centre": 0.86,
+       "light": 0.61
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.4,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 40 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161917",
+   "address": "De Genestetstraat 12",
+   "builtYear": 1899,
+   "widthM": 6.71,
+   "eavesM": 14.13,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#815442",
+    "wallRaw": "#f0a589",
+    "skyline": {
+     "eavesM": 14.13,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.6,
+      "topWidthM": 2.08,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.529,
+    "structure": {
+     "bayWidthM": 6.15,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 1.75 m at 0.14 (light 0.48): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.75,
+       "centre": 0.14,
+       "light": 0.48
+      },
+      {
+       "widthM": 1.6,
+       "centre": 0.48,
+       "light": 0.65
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.82,
+       "light": 0.66
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.42,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 42 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,604 @@
+{
+ "face": "helmers-79-97",
+ "street": "Tweede Helmersstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 1.11,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012166780",
+   "address": "Tweede Helmersstraat 79",
+   "builtYear": 1901,
+   "widthM": 6.77,
+   "eavesM": 13.2,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#90755b",
+    "wallRaw": "#f6dcba",
+    "skyline": {
+     "eavesM": 13.2,
+     "eavesRow": 389,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.33,
+      "topWidthM": 1.9,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.626,
+    "structure": {
+     "bayWidthM": 1.43,
+     "bayCentre": 0.48,
+     "balconies": true,
+     "why": "bay-less open axis 1.2 m at 0.49 (light 0.6): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.2,
+       "centre": 0.49,
+       "light": 0.6
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.92,
+       "widthM": 1.15,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0.51,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 51 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158584",
+   "address": "Tweede Helmersstraat 81",
+   "builtYear": 1889,
+   "widthM": 6.03,
+   "eavesM": 15.65,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e4caae",
+    "wallRaw": "#dbbd9f",
+    "skyline": {
+     "eavesM": 15.65,
+     "eavesRow": 291,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 5,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.614,
+    "structure": {
+     "bayWidthM": 1.43,
+     "bayCentre": 0.47,
+     "balconies": true,
+     "why": "dark open axis 1.1 m at 0.48 (light 0.49): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.1,
+       "centre": 0.48,
+       "light": 0.49
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.88,
+       "widthM": 1.3,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0.41,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 41 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153134",
+   "address": "Tweede Helmersstraat 83",
+   "builtYear": 1889,
+   "widthM": 6.03,
+   "eavesM": 15.51,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a27a5d",
+    "wallRaw": "#e7c693",
+    "skyline": {
+     "eavesM": 15.72,
+     "eavesRow": 288,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.63,
+      "riseM": 2.4,
+      "topWidthM": 0.47,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 9,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.713,
+    "structure": {
+     "bayWidthM": 1.55,
+     "bayCentre": 0.49,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.95 m @ 0.53), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.48,
+       "light": 0.53
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.82,
+       "widthM": 1.3,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.52,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 52 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152281",
+   "address": "Tweede Helmersstraat 85",
+   "builtYear": 1889,
+   "widthM": 6.02,
+   "eavesM": 15.71,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aec6c6",
+    "wallRaw": "#ddbd9c",
+    "skyline": {
+     "eavesM": 15.9,
+     "eavesRow": 281,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.48,
+      "riseM": 2.62,
+      "topWidthM": 1.55,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.629,
+    "structure": {
+     "bayWidthM": 1.45,
+     "bayCentre": 0.13,
+     "balconies": true,
+     "why": "bay-less open axis 0.95 m at 0.51 (light 0.55): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.51,
+       "light": 0.55
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.9,
+       "widthM": 1.27,
+       "centre": 0.5
+      },
+      {
+       "atM": 5.6,
+       "widthM": 1.23,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0.43,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 43 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159566",
+   "address": "Tweede Helmersstraat 87",
+   "builtYear": 1889,
+   "widthM": 6.02,
+   "eavesM": 16.52,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a39277",
+    "wallRaw": "#efe0c9",
+    "skyline": {
+     "eavesM": 16.52,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.709,
+    "structure": {
+     "bayWidthM": 0.65,
+     "bayCentre": 0.17,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.95,
+       "widthM": 0.9,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.52,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 52 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166425",
+   "address": "Tweede Helmersstraat 89",
+   "builtYear": 1889,
+   "widthM": 6,
+   "eavesM": 15.6,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#82775c",
+    "wallRaw": "#e1bea3",
+    "skyline": {
+     "eavesM": 15.57,
+     "eavesRow": 294,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.785,
+    "structure": {
+     "bayWidthM": 5.5,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.13 m @ 0.71), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.13,
+       "centre": 0.49,
+       "light": 0.71
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.9,
+       "widthM": 0.8,
+       "centre": 0.45
+      }
+     ]
+    },
+    "voidShare": 0.6,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 60 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162865",
+   "address": "Tweede Helmersstraat 91",
+   "builtYear": 1889,
+   "widthM": 6,
+   "eavesM": 16.75,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#937e62",
+    "wallRaw": "#eddcc2",
+    "skyline": {
+     "eavesM": 16.75,
+     "eavesRow": 247,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.7,
+    "structure": {
+     "bayWidthM": 1.4,
+     "bayCentre": 0.47,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.95,
+       "widthM": 1.23,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0.56,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 56 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156928",
+   "address": "Tweede Helmersstraat 93",
+   "builtYear": 1889,
+   "widthM": 6.02,
+   "eavesM": 14.53,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f6d7af",
+    "wallRaw": "#ecbf9b",
+    "skyline": {
+     "eavesM": 14.53,
+     "eavesRow": 336,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.03,
+      "topWidthM": 1.8,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.43,
+    "structure": {
+     "bayWidthM": 1.4,
+     "bayCentre": 0.47,
+     "balconies": true,
+     "why": "bay-less open axis 1.15 m at 0.47 (light 0.53): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.15,
+       "centre": 0.47,
+       "light": 0.53
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.26,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1889, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1889, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 14.53 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.153 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158996",
+   "address": "Tweede Helmersstraat 95A",
+   "builtYear": 1889,
+   "widthM": 6.01,
+   "eavesM": 14.47,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#dd9d82",
+    "wallRaw": "#b18b72",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 338,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.05,
+      "topWidthM": 2,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.362,
+    "structure": {
+     "bayWidthM": 1.38,
+     "bayCentre": 0.46,
+     "balconies": true,
+     "why": "bay-less open axis 1.2 m at 0.46 (light 0.56): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.2,
+       "centre": 0.46,
+       "light": 0.56
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.38,
+       "widthM": 0.82,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0.23,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1889, type 1893-1893)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1889, type 1893-1893"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.47 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.097 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165956",
+   "address": "Tweede Helmersstraat 97",
+   "builtYear": 1897,
+   "widthM": 5.59,
+   "eavesM": 12.87,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#34342e",
+    "wallRaw": "#5f6156",
+    "skyline": {
+     "eavesM": 14.38,
+     "eavesRow": 342,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.15,
+      "topWidthM": 0.4,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.19,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.82,
+       "widthM": 0.82,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

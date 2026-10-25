@@ -1,0 +1,286 @@
+{
+ "face": "thijm-11-15",
+ "street": "Alberdingk Thijmstraat",
+ "library": "helmersbuurt",
+ "stripDate": "2024-11-29",
+ "seconds": 3.22,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012157840",
+   "address": "Alberdingk Thijmstraat 11",
+   "builtYear": 1899,
+   "widthM": 6.95,
+   "eavesM": 13.7,
+   "storeys3dbag": null,
+   "bagBay": {
+    "fromM": 1.77,
+    "toM": 2.43,
+    "depthM": 0.4,
+    "centre": 0.303
+   },
+   "strip": {
+    "wall": "#eab682",
+    "wallRaw": "#f4d5a6",
+    "skyline": {
+     "eavesM": 15.63,
+     "eavesRow": 100,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 1.55,
+      "topWidthM": 1.15,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.319,
+    "structure": {
+     "bayWidthM": 1.25,
+     "bayCentre": 0.12,
+     "balconies": true,
+     "why": "bay-less open axis 0.97 m at 0.12 (light 0.5): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.12,
+       "light": 0.5
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.4,
+       "light": 0.33
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.18,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1899, type 1893-1893; frontage 6.95 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "helmers-1893-jamb-blocks",
+    "score": 0,
+    "veto": [
+     "built 1899, type 1893-1893",
+     "frontage 6.95 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.63 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.069 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160396",
+   "address": "Alberdingk Thijmstraat 13",
+   "builtYear": 1899,
+   "widthM": 5.93,
+   "eavesM": 14.72,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d39462",
+    "wallRaw": "#f5d89c",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 136,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 1.83,
+      "topWidthM": 2.27,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.476,
+    "structure": {
+     "bayWidthM": 5.45,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.25 m @ 0.54, 1.15 m @ 0.54, 1.23 m @ 0.55), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.25,
+       "centre": 0.13,
+       "light": 0.54
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.48,
+       "light": 0.54
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.82,
+       "light": 0.55
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.17,
+       "widthM": 1.3,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0.35,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 31 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012160396",
+    "ncc": null,
+    "nccRaw": 0.259,
+    "shiftM": [
+     -0.2,
+     -0.15
+    ],
+    "usable": 0.31,
+    "abstain": "usable photo 31 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 30 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#d29662",
+     "model": "#cc9366",
+     "dL": -0.004
+    },
+    "glazing": {
+     "photo": 0.55,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.293
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157617",
+   "address": "Alberdingk Thijmstraat 15",
+   "builtYear": 1899,
+   "widthM": 6.64,
+   "eavesM": 14.15,
+   "storeys3dbag": null,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e3aa83",
+    "wallRaw": "#f5d4a3",
+    "skyline": {
+     "eavesM": 14.15,
+     "eavesRow": 159,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.33,
+      "riseM": 1.97,
+      "topWidthM": 0.82,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.494,
+    "structure": {
+     "bayWidthM": 4.03,
+     "bayCentre": 0.33,
+     "balconies": true,
+     "why": "dark open axis 1.32 m at 0.49 (light 0.49): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.3,
+       "centre": 0.14,
+       "light": 0.62
+      },
+      {
+       "widthM": 1.32,
+       "centre": 0.49,
+       "light": 0.49
+      },
+      {
+       "widthM": 1.3,
+       "centre": 0.84,
+       "light": 0.63
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.34,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 36 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012157617",
+    "ncc": null,
+    "nccRaw": 0.179,
+    "shiftM": [
+     -0.25,
+     0.35
+    ],
+    "usable": 0.36,
+    "abstain": "usable photo 36 % < 50 %",
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.48 vs photo 0.59"
+    ],
+    "wall": {
+     "photo": "#d9a17a",
+     "model": "#cc8f66",
+     "dL": -0.065
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.539
+   },
+   "challengers": {}
+  }
+ ]
+}
