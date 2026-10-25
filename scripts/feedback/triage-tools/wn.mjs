@@ -1,0 +1,22 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
+const reqs = [];
+p.on('request', r => { if (/\.glb/.test(r.url())) reqs.push('REQ ' + r.url().slice(-80)); });
+p.on('requestfinished', r => { if (/\.glb/.test(r.url())) reqs.push('DONE ' + r.url().slice(-80)); });
+p.on('requestfailed', r => { if (/\.glb/.test(r.url())) reqs.push('FAIL ' + r.url().slice(-80) + ' ' + r.failure()?.errorText); });
+p.on('console', m => console.log('console', m.type(), m.text().slice(0, 200)));
+p.on('pageerror', e => console.log('pageerror', e.message));
+await p.addInitScript(() => {
+  const IO = window.IntersectionObserver;
+  window.__io = [];
+  window.IntersectionObserver = class extends IO { constructor(cb, o) { super((es, ob) => { window.__io.push(es.map(e => e.isIntersecting ? 1 : 0).join('')); try { cb(es, ob); } catch (err) { window.__io.push('ERR ' + err.message); throw err; } }, o); } };
+  window.__loads = [];
+  const t = setInterval(() => { const L = window.CanalRecallThree?.GLTFLoader; if (L && !L.__w) { L.__w = 1; const o = L.prototype.load; L.prototype.load = function (u, ...a) { window.__loads.push(u); return o.call(this, u, ...a); }; clearInterval(t); } }, 1);
+});
+await p.goto('http://127.0.0.1:4357/canal-drive/whats-new.html');
+await p.waitForFunction(() => window.whatsNew?.ready === true, undefined, { timeout: 30000 });
+await p.waitForTimeout(15000);
+console.log(reqs.join('\n'));
+console.log(await p.evaluate(() => JSON.stringify({ drawn: window.whatsNew.drawn, errors: window.whatsNew.errors, io: window.__io.slice(0,20), loads: window.__loads, rect: JSON.stringify(document.querySelector('#feed article.card').getBoundingClientRect()), stage: JSON.stringify(document.querySelector('#feed article.card canvas').getBoundingClientRect()), first: document.querySelector('#feed article.card h3')?.textContent, ph: document.querySelector('#feed article.card .ph')?.className })));
+await p.screenshot({path: '/private/tmp/claude-501/-Users-blackmad-Code-map-recall2-worktrees-integrator-lanes/d2ecbc72-f82a-4036-b789-2e8a62858efe/scratchpad/triage/whats-new-before.png'}); await b.close();
