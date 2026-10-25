@@ -3,6 +3,11 @@
  "notes": [
   {
    "date": "2026-10-25",
+   "title": "Chase camera can tilt lower",
+   "text": "The chase camera's tilt now goes down to 75° (it stopped at 60° before): push the tilt slider or ] to the end for a lower, more street-level view. The default angle is unchanged."
+  },
+  {
+   "date": "2026-10-25",
    "title": "The Da Vinci building on Nieuwpoortkade",
    "text": "The long 1950s school block at Nieuwpoortkade 2 (now Da Vinci creatieve ruimtes) is modelled from street photos: white-framed windows with side lights, the lettering, the south wing on posts with its white panel band and the set-back glass top storey."
   },
