@@ -3,6 +3,15 @@
  "notes": [
   {
    "date": "2026-10-25",
+   "title": "Postjeskade's bay-window blocks and Kantershof's patio houses",
+   "text": "944 more houses now use designs measured from street photos: the four-storey brick blocks with bay windows and dormers around the Postjeskade, Kantershof's white patio houses with coloured fascias, the Grunder and Koningshoef rows in Zuidoost, and the red three-storey rows on the Hechtelstraat.",
+   "where": [
+    4.8508,
+    52.3622
+   ]
+  },
+  {
+   "date": "2026-10-25",
    "title": "White window frames are white again",
    "text": "On the terraced-house designs, window frames, sills, door surrounds and fascias painted white in real life now draw a clean white instead of cream. The same houses also draw with far fewer draw calls, so busy neighbourhoods like Nieuwendam render more cheaply."
   },

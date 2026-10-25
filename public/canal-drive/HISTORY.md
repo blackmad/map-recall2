@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Repetitive designs round 6 (2026-10-25, #79).** 10 designs, 25 units,
+944 houses: Postjeskade e.o. 234 (57 %; 69 held, mostly the 7.5 m open-stair
+Antillenstraat block), Grunder/Koningshoef 137 (33 %; Lontarpalmstraat has
+per-house cladding colours, skipped), Kantershof 503 (80 %; 361 photo, 142
+matched), Nieuw-Sloten-Noordoost 70 (7 %; too mixed, only Hechtelstraat
+repeats). build.ts groups rows by facing so opposite-facing rows no longer
+break the mirror alternation (published units untouched; a rebuild of
+older areas would flip 63/4,686 flags). Per-house `type` override in
+classes.json. Kit gaps: recessed bays, weatherboard, per-house brick within
+a row, open pergola, mullion colour, back-falling mono-pitch, eaves
+brackets, open-stair portiek entrances.
+
 **White trim and merged type draws (2026-10-25, #78).** Specs already
 held near-white trim (#efede6 etc.), but the generator routed white sills/
 surrounds/hoods to the stone slot (city stone tint mixes 45 % to sandstone

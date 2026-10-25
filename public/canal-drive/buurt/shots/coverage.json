@@ -97,7 +97,7 @@
  {
   "slug": "de-baarsjes",
   "buildings": 17,
-  "kits": 0,
+  "kits": 234,
   "facts": 31,
   "origins": 87,
   "bridges": 3,
@@ -904,7 +904,7 @@
  {
   "slug": "westindische-buurt",
   "buildings": 0,
-  "kits": 0,
+  "kits": 234,
   "facts": 0,
   "origins": 19,
   "bridges": 0,
@@ -913,7 +913,6 @@
   "lacks": [
    "photo borrowed from De Baarsjes",
    "intro",
-   "buildings",
    "trivia",
    "bridges"
   ]

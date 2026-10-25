@@ -111,7 +111,7 @@ Open, in order:
   city look lack the 1.106 brick gain beside default-look chunks.
 - **district-style** (B1), **buurt-autoplace** (B3). **buurt-designs** (B2):
   10 buurten done 2026-10-25 (#70, #72, #74; ~4,350 houses, 22 designs);
-  rounds 4-5 done (#75, #77; 18 buurten, ~6,500 houses); white trim and
+  rounds 4-6 done (#75, #77, #79; 22 buurten, ~7,450 houses); white trim and
   one-draw-per-unit done (#78). Open: nn-row chunky joinery (`frameM`);
   opt-in recipe tiles need recompiling from the recoloured units; Gein 3 all-timber and
   brick-canopy rows, Holendrecht S2/S4, Twiske porch canopies, K-buurt
