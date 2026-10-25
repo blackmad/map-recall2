@@ -51282,12 +51282,12 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012106960",
       "name": "Haarlemmerweg 77-87, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012106960)",
-      "hash": "ec9f80731037c4bfe311845aa5974003a0e888960b7ea61289fc70d0c98e6b32",
-      "sha256": "ec9f80731037c4bfe311845aa5974003a0e888960b7ea61289fc70d0c98e6b32",
+      "hash": "50cd4273253d0dc9875d1a63c41e38c97bf1ad356475ea57b63decfff0dbd78b",
+      "sha256": "50cd4273253d0dc9875d1a63c41e38c97bf1ad356475ea57b63decfff0dbd78b",
       "meshHash": "67e3443b8368cd7c",
-      "bytes": 298096,
+      "bytes": 299052,
       "triangles": 3994,
-      "materials": 9,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -51360,8 +51360,8 @@
         "id": "haarlemmerweg-77-106960",
         "kind": "large",
         "intentSources": [
-          "source-data://pand-reference-walls/0363100012106960/w01-359L.jpg",
-          "source-data://pand-reference-walls/0363100012106960/w01-359.jpg"
+          "source-data://pand-reference-walls/0363100012106960/w01-359.jpg",
+          "source-data://pand-reference-walls/0363100012106960/w01-359L.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -51393,19 +51393,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012106960",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T08:09:25.080Z"
+      "updatedAt": "2026-10-25T08:25:38.505Z"
     },
     {
       "id": "ordinary-0363100012081533",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012081533",
       "name": "Haarlemmerweg 63-71, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012081533)",
-      "hash": "de184590c2d437d9b4757a23b7d77c6dfa155cb91dd8d31aafff6efa26246b0f",
-      "sha256": "de184590c2d437d9b4757a23b7d77c6dfa155cb91dd8d31aafff6efa26246b0f",
+      "hash": "7a2b55c0f02518b79508def16092d41b08e295d5c89fa31ffbe3c1764e00c335",
+      "sha256": "7a2b55c0f02518b79508def16092d41b08e295d5c89fa31ffbe3c1764e00c335",
       "meshHash": "901ef801cf8b2d3f",
-      "bytes": 246428,
+      "bytes": 247384,
       "triangles": 3259,
-      "materials": 8,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -51495,8 +51495,8 @@
         "kind": "large",
         "intentSources": [
           "source-data://pand-reference-walls/0363100012081533/w01-359L.jpg",
-          "source-data://pand-reference-walls/0363100012081533/w01-359.jpg",
-          "source-data://pand-reference-walls/0363100012081533/w03-359.jpg"
+          "source-data://pand-reference-walls/0363100012081533/w03-359.jpg",
+          "source-data://pand-reference-walls/0363100012081533/w01-359.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -51521,7 +51521,6 @@
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
         "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.29 mean 0.26 vs photo 0.11)); inferred: gate misread - the crop's top storey is sky and penthouse and the east axis sits half a storey higher, so its per-storey glazing reads 0, 1 and 38 pct and leaves the white-framed windows in the undecided blend cluster (re-read 0.11 vs 0.00), while the overlay of w01-359L lines up the narrow and two wide axes window for window",
-        "walls[1] not confirmed by the photo (FAIL (wall dL +0.14)); inferred: gate misread - the 2025 crop is blue-cast by the sky (brick normalised #555e5b, the glass reads #43617d), the overcast 2021 crops of the same 1983 scheme read the buff brick #685e53 to #6f5e58, wall kept at #7d6b58 as on Haarlemmerweg 77-87. Glazing 0.27 vs 0.32 and mask IoU 0.57 agree",
         "walls[1] the taller west end (panel 11, crop w03-359 2025-06-18, square on): five storeys of brick to the top, a white-framed window axis at each edge, blank brick between."
       ],
       "reviewState": "large-recipe-likeness-inferred",
@@ -51529,7 +51528,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012081533",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T08:11:00.936Z"
+      "updatedAt": "2026-10-25T08:25:41.740Z"
     },
     {
       "id": "ordinary-0363100012111773",
@@ -51919,6 +51918,226 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-25T08:20:48.063Z"
+    },
+    {
+      "id": "ordinary-0363100012084332",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012084332",
+      "name": "Haarlemmerweg 73-75, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012084332)",
+      "hash": "fa89ae8fed0511db638c17d1d1ff0f12ed11c0ccbc2e8f762426100f2a935811",
+      "sha256": "fa89ae8fed0511db638c17d1d1ff0f12ed11c0ccbc2e8f762426100f2a935811",
+      "meshHash": "82225c1d9d2bf774",
+      "bytes": 100760,
+      "triangles": 1260,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -8.26,
+          0,
+          -6.435
+        ],
+        "max": [
+          8.268,
+          15.942,
+          6.512
+        ]
+      },
+      "anchor": [
+        4.8759712,
+        52.385331
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8760879,
+              52.3853894
+            ],
+            [
+              4.8758493,
+              52.3853851
+            ],
+            [
+              4.8758547,
+              52.3852727
+            ],
+            [
+              4.8760933,
+              52.385277
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 15.94,
+      "height": 15.94,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-haarlemmerweg-73-084332.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012084332"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "haarlemmerweg-73-084332",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012084332/w02-359L.jpg",
+          "source-data://pand-reference-walls/0363100012084332/w02-359.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+paint 4st 6b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] likeness WARN (columns 6 vs photo 4; mask IoU 0.432 < 0.45)."
+      ],
+      "reviewState": "large-recipe-likeness-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012084332",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T08:25:32.988Z"
+    },
+    {
+      "id": "ordinary-0363100012097106",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012097106",
+      "name": "Haarlemmerweg 89, Amsterdam-West (1983 social-housing corner tower in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012097106)",
+      "hash": "a2ae35d78c5643ac8bc8b1364be64cd6d3541198160c2b457ccdd61bc02a12b9",
+      "sha256": "a2ae35d78c5643ac8bc8b1364be64cd6d3541198160c2b457ccdd61bc02a12b9",
+      "meshHash": "3e01009cd99894e3",
+      "bytes": 126052,
+      "triangles": 1626,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -6.088,
+          -0.001,
+          -10.605
+        ],
+        "max": [
+          7.029,
+          14.533,
+          10.09
+        ]
+      },
+      "anchor": [
+        4.8752029,
+        52.3852789
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8751136,
+              52.3853719
+            ],
+            [
+              4.8751189,
+              52.3852608
+            ],
+            [
+              4.8751327,
+              52.385261
+            ],
+            [
+              4.8751336,
+              52.3852408
+            ],
+            [
+              4.8751198,
+              52.3852406
+            ],
+            [
+              4.8751221,
+              52.3851879
+            ],
+            [
+              4.8753059,
+              52.3851912
+            ],
+            [
+              4.8753034,
+              52.3852438
+            ],
+            [
+              4.8752887,
+              52.3852435
+            ],
+            [
+              4.8752828,
+              52.3853659
+            ],
+            [
+              4.8752565,
+              52.3853655
+            ],
+            [
+              4.875256,
+              52.3853744
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 14.53,
+      "height": 14.53,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-haarlemmerweg-89-097106.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012097106"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "haarlemmerweg-89-097106",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012097106/w02-358.jpg",
+          "source-data://pand-reference-walls/0363100012097106/w02-358L.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 5st 3b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] the Haarlemmerweg front (panel 9, crop w02-358L 2020-01-27, square on): two white-framed window axes at the edges, blank brick between, wider windows on the ground storey."
+      ],
+      "reviewState": "large-recipe-likeness-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012097106",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T08:25:35.735Z"
     }
   ]
 }

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "haarlemmerweg-73-084332",
+  "pandId": "0363100012084332",
+  "address": "Haarlemmerweg 73-75, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012084332)",
+  "sources": [
+    {
+      "id": "pano-2021-02-24-w02-359L",
+      "kind": "street-panorama",
+      "capturedAt": "2021-02-24",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_001279/",
+      "image": "source-data://pand-reference-walls/0363100012084332/w02-359L.jpg",
+      "sha256": "51ea14a4bb1e0c2976021a204893c2f93f2ebeab7fcc2085a47a8360310411d0",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2018-06-20-w02-359",
+      "kind": "street-panorama",
+      "capturedAt": "2018-06-20",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000798_pano_0000_003412/",
+      "image": "source-data://pand-reference-walls/0363100012084332/w02-359.jpg",
+      "sha256": "a49bafc0fb62b9b0b48fe1e954eeb1764be98f365389e2a50c9cf0605ae51c1d",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "otherWalls": "brick-bay-grid",
+  "palette": {
+    "brick": "#7d6b58",
+    "frame": "#eeece6",
+    "door": "#3a3d40",
+    "stone": "#3b3e42"
+  },
+  "roof": {
+    "material": "bitumen"
+  },
+  "walls": [
+    {
+      "wallSurfaces": [
+        8
+      ],
+      "street": "Haarlemmerweg",
+      "system": "brick-bay-grid",
+      "storeys": 4,
+      "baysPerStorey": 6,
+      "ground": "system",
+      "windows": "two-light",
+      "sills": false,
+      "storeyFactors": [
+        1.6,
+        1,
+        1,
+        1.12
+      ],
+      "windowShape": {
+        "w": 0.88,
+        "h": 0.42,
+        "sill": 0.55
+      },
+      "storeyShapes": [
+        {
+          "storeys": [
+            1,
+            2,
+            3
+          ],
+          "w": 0.88,
+          "h": 0.67,
+          "sill": 0.15
+        }
+      ],
+      "windowPattern": [
+        0.85,
+        0.85,
+        0.7,
+        0.5,
+        0.85,
+        0.85
+      ],
+      "openBays": [
+        {
+          "storeys": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "bays": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ],
+      "cladding": {
+        "kind": "paint",
+        "colour": "#3b3e42",
+        "from": 0,
+        "to": 0.1
+      },
+      "palette": {
+        "brick": "#7d6b58",
+        "glass": "#4e565c"
+      },
+      "hand": [
+        "storeys",
+        "baysPerStorey",
+        "storeyFactors",
+        "windowShape",
+        "storeyShapes",
+        "windowPattern",
+        "openBays",
+        "cladding",
+        "palette"
+      ]
+    }
+  ],
+  "notes": [
+    "Haarlemmerweg 73-75 (pand 0363100012084332, built 1983): the middle block of the 1983 buff-brick social-housing scheme at Haarlemmerweg 63-89, facing the Haarlemmervaart and the Westerpark; four storeys over a low dark basement band, 13.1 m.",
+    "walls[0] the Haarlemmerweg front (panel 4, crop w02-359L 2021-02-24, square on): wide white-framed windows on bays 1 and 4, a narrow one on bay 3, the glazed stair tower on bay 2, the dark basement band (cladding paint).",
+    "Wall colour #7d6b58 as on Haarlemmerweg 63-71 and 77-87 (one scheme, one brick).",
+    "NOT DRAWN (kit cannot say): the top storey's windows sit on their own axes (half a bay off the lower rows; drawn on the lower axes); the stair tower glazing as one tall run; the windows' L-shaped frames.",
+    "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class."
+  ],
+  "budgetTriangles": 12000,
+  "measured": {
+    "date": "2026-10-25",
+    "groups": [
+      0
+    ]
+  }
+}

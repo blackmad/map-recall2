@@ -7,10 +7,9 @@
   {
    "group": 0,
    "panel": 12,
-   "verdict": "FAIL",
+   "verdict": "WARN",
    "reasons": [
-    "window shape none vs photo square",
-    "columns none vs photo 5"
+    "mask IoU 0.347 < 0.45"
    ],
    "crop": {
     "ref": "source-data://pand-reference-walls/0363100012106960/w01-359.jpg",
@@ -41,7 +40,7 @@
      21.934
     ],
     "shift": {
-     "uM": -0.5,
+     "uM": -0.2,
      "vM": -0.4
     },
     "box": {
@@ -53,20 +52,20 @@
    },
    "likeness": {
     "shift": {
-     "uM": -0.5,
+     "uM": -0.2,
      "vM": -0.4
     },
-    "iou": 0.36,
+    "iou": 0.347,
     "wall": {
      "photo": "#6b7777",
      "photoRaw": "#6b7777",
-     "model": "#a28d6f",
-     "modelToday": "#a28d6f",
+     "model": "#947f68",
+     "modelToday": "#947f68",
      "photoFamily": "brick",
      "modelFamily": "brick",
      "photoMaterial": "brick-grey",
      "modelMaterial": "brick-yellow",
-     "dL": 0.092,
+     "dL": 0.051,
      "dHue": null,
      "pass": true
     },
@@ -77,47 +76,41 @@
     "glazing": {
      "photo": [
       null,
-      0.199,
-      0.147,
-      0.318,
+      0.201,
+      0.153,
+      0.322,
       null
      ],
      "model": [
       null,
       0.273,
       0.278,
-      0.284,
+      0.287,
       null
      ],
-     "photoMean": 0.195,
-     "modelMean": 0.254,
-     "maxDiff": 0.131,
-     "meanDiff": 0.059,
+     "photoMean": 0.2,
+     "modelMean": 0.255,
+     "maxDiff": 0.125,
+     "meanDiff": 0.055,
      "pass": true
     },
     "columns": {
-     "photo": 5,
+     "photo": null,
      "model": null,
      "windows": {
-      "photo": 5,
+      "photo": null,
       "model": null
      },
-     "pass": false
+     "pass": null
     },
     "photoGrid": {
-     "pitchM": 4.156,
-     "window": {
-      "w": 0.45,
-      "h": 0.6,
-      "sill": 0.25,
-      "aspect": 0.95,
-      "shape": "square"
-     }
+     "pitchM": null,
+     "window": null
     },
     "shape": {
-     "photo": "square",
+     "photo": null,
      "model": null,
-     "pass": false
+     "pass": null
     },
     "openings": {
      "photo": {
@@ -161,7 +154,7 @@
      "model": 0.164
     },
     "evidence": {
-     "usable": 0.877,
+     "usable": 0.889,
      "foliage": 0.007,
      "washedOut": 0.073,
      "obliquityDeg": 1.5,
@@ -220,10 +213,9 @@
   {
    "group": 1,
    "panel": 16,
-   "verdict": "FAIL",
+   "verdict": "WARN",
    "reasons": [
-    "wall dL +0.12",
-    "glazing storey band off by 0.16 mean 0.20 vs photo 0.30"
+    "mask IoU 0.443 < 0.45"
    ],
    "crop": {
     "ref": "source-data://pand-reference-walls/0363100012106960/w01-359.jpg",
@@ -269,19 +261,19 @@
      "uM": -0.5,
      "vM": -0.4
     },
-    "iou": 0.409,
+    "iou": 0.443,
     "wall": {
      "photo": "#646e69",
      "photoRaw": "#646e69",
-     "model": "#a28d6f",
-     "modelToday": "#a28d6f",
+     "model": "#947f68",
+     "modelToday": "#947f68",
      "photoFamily": "brick",
      "modelFamily": "brick",
      "photoMaterial": "brick-grey",
      "modelMaterial": "brick-yellow",
-     "dL": 0.124,
+     "dL": 0.082,
      "dHue": null,
-     "pass": false
+     "pass": true
     },
     "glass": {
      "photo": "#4e6c8b",
@@ -298,17 +290,17 @@
      ],
      "model": [
       null,
-      0.208,
-      0.208,
-      0.208,
+      0.233,
+      0.233,
+      0.233,
       null,
       null
      ],
      "photoMean": 0.298,
-     "modelMean": 0.195,
-     "maxDiff": 0.161,
-     "meanDiff": 0.103,
-     "pass": false
+     "modelMean": 0.218,
+     "maxDiff": 0.136,
+     "meanDiff": 0.08,
+     "pass": true
     },
     "columns": {
      "photo": null,
@@ -367,7 +359,7 @@
     },
     "ground": {
      "photo": 0.184,
-     "model": 0.252
+     "model": 0.281
     },
     "evidence": {
      "usable": 0.883,
