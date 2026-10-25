@@ -41,21 +41,22 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 6,
-   "baysPerStorey": 9,
+   "baysPerStorey": 16,
    "ground": "glazed",
    "deepBars": true,
    "sills": false,
    "windows": "plain",
    "hand": [
+    "baysPerStorey",
     "system",
-    "baysPerStorey"
+    "windowShape"
    ],
    "palette": {
     "brick": "#675d5a"
    },
    "windowShape": {
-    "w": 0.364,
-    "h": 0.4,
+    "w": 0.45,
+    "h": 0.5,
     "sill": 0.25
    }
   },
@@ -110,22 +111,23 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 6,
-   "baysPerStorey": 7,
+   "baysPerStorey": 13,
    "ground": "glazed",
    "deepBars": true,
    "sills": false,
    "windows": "plain",
    "hand": [
+    "baysPerStorey",
     "system",
-    "baysPerStorey"
+    "windowShape"
    ],
    "palette": {
     "brick": "#4a413f"
    },
    "windowShape": {
-    "w": 0.351,
-    "h": 0.85,
-    "sill": 0.13
+    "w": 0.6,
+    "h": 0.45,
+    "sill": 0.27
    }
   },
   {
@@ -162,7 +164,8 @@
   "Nieuwe Weteringstraat 16 (BAG: built 1981; three office units and one other unit; 4,526 m2 footprint, 27.6 m): a dark-brick office block of the early 1980s on the Weteringschans (the former Universiteit Financiele Markten building). Three fronts are photographed: the canal-side south-west front (w02-217/w03-217, panorama 2017-07-07: a glazed undercroft on columns under a heavy concrete cantilever band, above it dark brown brick floors of deep-set windows with pale stone surrounds, stepped back in tiers with copper-clad roofs), the east front (w04-102, 2020-04-29: five floors of stone-surrounded windows over a colonnaded glass ground floor with a green copper stair tower) and the south front (w05-191, 2017-07-07).",
   "Modelled: the south front (panel 261: 6 storeys), the canal front as two height groups (surface 77: 6 storeys; surface 75: 3 storeys) and the east front as two groups (surface 130: 6 storeys; surface 6: 4 storeys); dark brown brick with stone-grey window surrounds and a glazed ground storey under each. Copper roof as surveyed by 3DBAG LoD2.2.",
   "Simplified: the heavy concrete cantilever bands, the colonnade of the undercroft and the green copper stair tower are not drawn (the ground is a glazed row; the tower is the 3DBAG wall and roof geometry in brick colour), the window hoods are plain deep reveals. Not modelled: the north street front (panel 10, 90 m; no panorama within 35 m) and the courtyard walls.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #586564 not used (not darker than the wall #675d5a by 10 L*, or tinted): kit glass kept; walls[3] glass #44423c not used (not darker than the wall #4a413f by 10 L*, or tinted): kit glass kept; walls[4] glass #302526 not used (not darker than the wall #423735 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #586564 not used (not darker than the wall #675d5a by 10 L*, or tinted): kit glass kept; walls[3] glass #44423c not used (not darker than the wall #4a413f by 10 L*, or tinted): kit glass kept; walls[4] glass #302526 not used (not darker than the wall #423735 by 10 L*, or tinted): kit glass kept.",
+  "Refit 2026-10-25 (issue #59, gate #58 crops): walls[0] (31.5 m front, w05-191) has 16 columns of tall grey-framed windows over the shop ground, not 9 small squares: now 16 bays, windows w 0.45, h 0.5 (likeness WARN, mask IoU only). walls[3] (w04-102L): 13 columns (was 7 tall slits), windows w 0.6, h 0.45; the crop is shot through rain drops with a lit yellow object in front, and its upper bands read 0.43-0.45 against 0.22-0.29 lower down with no visible change in window size: allowed as inferred. walls[1] (w03-217): the storey-1 'ribbon' the gate reads is the brutalist cantilevered concrete terraces with glass balustrades over the glazed ground pavilion; walls[4] likewise. Kit cannot say: cantilevered concrete terrace slabs with glass balustrades, projecting concrete bay boxes, deep grey concrete window surrounds."
  ],
  "closedBands": true,
  "measured": {

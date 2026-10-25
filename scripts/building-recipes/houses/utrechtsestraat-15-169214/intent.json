@@ -59,7 +59,7 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 7,
-   "baysPerStorey": 9,
+   "baysPerStorey": 4,
    "ground": "system",
    "deepBars": true,
    "sills": false,
@@ -75,15 +75,18 @@
     "mount": "wall"
    },
    "hand": [
+    "baysPerStorey",
+    "palette.frame",
     "system",
-    "baysPerStorey"
+    "windowShape"
    ],
    "palette": {
-    "brick": "#5b564e"
+    "brick": "#5b564e",
+    "frame": "#e8e6df"
    },
    "windowShape": {
-    "w": 0.368,
-    "h": 0.65,
+    "w": 0.75,
+    "h": 0.5,
     "sill": 0.25
    }
   },
@@ -94,29 +97,68 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 5,
-   "baysPerStorey": 11,
+   "baysPerStorey": 6,
    "ground": "system",
    "deepBars": true,
    "sills": false,
    "cornice": true,
-   "windows": "plain",
+   "windows": "three-light",
    "piers": true,
    "stoneStoreys": [
     0
    ],
    "hand": [
+    "baysPerStorey",
+    "palette.frame",
+    "storeyShapes",
     "system",
-    "baysPerStorey"
+    "windowShape",
+    "windows"
    ],
    "palette": {
     "brick": "#6c584f",
-    "glass": "#453c37"
+    "glass": "#453c37",
+    "frame": "#e8e6df"
    },
    "windowShape": {
-    "w": 0.65,
-    "h": 0.6,
-    "sill": 0.05
-   }
+    "w": 0.55,
+    "h": 0.7,
+    "sill": 0.1
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.55,
+     "h": 0.63,
+     "sill": 0.02
+    },
+    {
+     "storeys": [
+      2
+     ],
+     "w": 0.55,
+     "h": 0.72,
+     "sill": 0.08
+    },
+    {
+     "storeys": [
+      3
+     ],
+     "w": 0.55,
+     "h": 0.72,
+     "sill": 0.12
+    },
+    {
+     "storeys": [
+      4
+     ],
+     "w": 0.55,
+     "h": 0.44,
+     "sill": 0.26
+    }
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -137,7 +179,8 @@
   "Modelled: the west street front (panels 49, 94, 165) as a 6-storey brick-bay-grid with stone ground, piers and cornice; the Booking.com wall (panel 523) as 7 storeys with a stone ground storey, cornice and the lettering Booking.com on the wall; the north front (panel 502 with the stair tower) as 5 storeys with a stone ground storey, piers and cornice. Roofs and unlisted walls are the 3DBAG LoD2.2 shell in the brick colour.",
   "Simplified: the triple windows are one wide window per 1.7 bays, the open loggia arcade under copper canopies is a plain ground row, the glass roof pavilion over the west front and the recessed attic floors are the 3DBAG roof/wall geometry only, the copper trim is not coloured. Not modelled: the upper west panels 525, 205, 415, 89 (stepped tower floors, no frontal photograph) and the east side (w04-77, party/courtyard).",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #414142 not used (not darker than the wall #5b564e by 10 L*, or tinted): kit glass kept.",
-  "Roof levelled 2026-10-23 (roof.levelRooftop, roofLevel.ts; user note 0132871b): every 3DBAG roof plane wholly above the photographed fronts (from 31.88 m: the Booking.com front's 30.5 m top raised past the lower tilted planes that start under it) is one flat level at the area-weighted median of those planes, 35.62 m; walls between those planes are dropped and walls rising through the level end at it. The lower roofs (22.3-31.9 m) and every front are unchanged. The two small 39-41 m tops (planes 733, 774; 16 m2, no photograph) are levelled too."
+  "Roof levelled 2026-10-23 (roof.levelRooftop, roofLevel.ts; user note 0132871b): every 3DBAG roof plane wholly above the photographed fronts (from 31.88 m: the Booking.com front's 30.5 m top raised past the lower tilted planes that start under it) is one flat level at the area-weighted median of those planes, 35.62 m; walls between those planes are dropped and walls rising through the level end at it. The lower roofs (22.3-31.9 m) and every front are unchanged. The two small 39-41 m tops (planes 733, 774; 16 m2, no photograph) are levelled too.",
+  "Refit 2026-10-25 (issue #59, gate #58 crops): walls[2] (w02-3, Herengracht side): six bays of 5.8 m, each a group of three tall white-framed windows (about 2.9 m wide), rows at 5.0-7.7, 9.6-12.7, 14.1-17.2 and 19.0-20.9 m over a stone shop ground; was 11 square dark windows. Now 6 bays, 'three-light' windows w 0.55 with per-storey sills/heights from the crop (0.02/0.63, 0.08/0.72, 0.12/0.72, 0.26/0.44), white frames. walls[1] (Booking.com front, w03-258): 4 bays of wide white-framed windows (was 9 narrow tall), w 0.75, h 0.5. Remaining gate FAILs: walls[2] storey 2 'widest opening 10.9 m' is the hatched stone sill course running across bays 2-4 in the photo, not a ribbon, and the band glazing is off by 0.17 for the same reason; walls[1] one band (storey 4, photo 0.24 vs 0.37) where the photo windows are shaded: allowed as inferred. Kit cannot say: three separate tall windows grouped in a bay with white frames whose gaps the gate merges (windowGroup draws them but the gate then counts 18 vs 6)."
  ],
  "closedBands": true,
  "measured": {
