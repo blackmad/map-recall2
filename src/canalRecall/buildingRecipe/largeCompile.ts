@@ -380,7 +380,10 @@ export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe)
       }
       for (const [m, cls] of by) for (const k of ['steep', 'low', 'flat'] as const) {
         const roofSlot = ['slate', 'zinc', 'bitumen', 'copper'].includes(m) ? 'slate' : 'roofTile';
-        add(m === recipe.roof.material ? `roof/${k}` : `roof/${k}/${m}`, cls[k], largeRoofClassHex(recipe.roof, m, k), k === 'flat' ? 'bitumen' : roofSlot, 'roof');
+        // `pitchedHex` (measured from the orthophoto, issue #73): the default material's steep and low classes keep their
+        // meshes and take that colour, drawn as measured
+        const pitched = recipe.roof.pitchedHex && k !== 'flat' && m === recipe.roof.material ? recipe.roof.pitchedHex : undefined;
+        add(m === recipe.roof.material ? `roof/${k}` : `roof/${k}/${m}`, cls[k], pitched ?? largeRoofClassHex(recipe.roof, m, k), k === 'flat' ? 'bitumen' : roofSlot, 'roof', undefined, !!pitched);
       }
       if (flatHex) add('roof/flat', measuredFlat, flatHex, 'bitumen', 'roof', undefined, true);
       continue;

@@ -33,7 +33,8 @@
   },
   "roof": {
     "material": "slate",
-    "flatHex": "#7a7c7a"
+    "flatHex": "#7a7c7a",
+    "pitchedHex": "#7a7c7a"
   },
   "walls": [
     {
@@ -117,7 +118,8 @@
     "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4c5255 not used (not darker than the wall #5e4a4d by 10 L*, or tinted): kit glass kept; walls[0] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand).",
     "Lit colour (2026-10-25 integrator review): the north front is in shade on the 2021 crop (#5e4a4d); the brick is taken from the sunlit 2025-09-29 crop w01-359 (piers #876b60..#987f73), #8a6f64, and kept measured.",
     "Left unmeasured (2026-10-25, second pass): the in-game north faces render darker than the photo, so the sunlit reading also takes the export's brightening, in line with the neighbouring rows.",
-    "roof.flatHex #7a7c7a: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 123/123/115, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
+    "roof.flatHex #7a7c7a: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 123/123/115, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install.",
+    "roof.pitchedHex #7a7c7a: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 123/123/115, confidence 0.9; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
   ],
   "budgetTriangles": 12000
 }

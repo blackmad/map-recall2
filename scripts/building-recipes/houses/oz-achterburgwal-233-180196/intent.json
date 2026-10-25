@@ -70,7 +70,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "slate",
-  "flatHex": "#818387"
+  "flatHex": "#818387",
+  "pitchedHex": "#818387"
  },
  "palette": {
   "brick": "#a4553f",
@@ -82,7 +83,8 @@
   "Oudezijds Achterburgwal 233-237 (BAG: oldest part 1686, rebuilt later; roof max 22.1 m): the university building behind the Oudemanhuispoort side. Three photographed fronts. West (w02-283, 2017): a curved/rounded brick wing, four levels with a half-sunk ground floor, stone string courses, segmental brick arches over the first-floor windows and a moulded stone cornice; an iron stair leads to a side door. West (w01-282, 2025): a gabled brick house, then a baroque carved stone gateway (cartouche with crest, volutes, rusticated jambs, double leaf door with roundels) set in a lower wing with cornice. East (w03-103, 2023): brick with stone string courses, arched-brick window heads with keystone blocks and a tall arched door.",
   "Modelled: the west (w02-283) and east (w03-103) fronts as brick-bay-grid groups (4 storeys, cornice, stone string courses). The baroque gateway (w01-282) sits on the 28 m west wall (3DBAG panel 266) whose LoD2.2 surfaces are an all-party wall (16.8 m of party height over 14.9 m eaves), so it carries no group and no entrance; it is listed in the inventory as skipped (not visible in the shell). Simplified: the segmental arch heads are flat; the rounded wing is straight (3DBAG LoD2.2 plane). Not modelled: the iron stair, lamp posts, the roof lantern and chimney. North and courtyard walls have no photograph and stay blank.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #3b2a23 not used (not darker than the wall #232424 by 10 L*, or tinted): kit glass kept.",
-  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

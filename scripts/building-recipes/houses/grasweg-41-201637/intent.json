@@ -44,7 +44,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#81838d"
+  "flatHex": "#81838d",
+  "pitchedHex": "#81838d"
  },
  "palette": {
   "brick": "#a8acb0",
@@ -58,6 +59,7 @@
   "Grasweg 41S (BAG, 2010; Buiksloterham, Noord): a 36 m grey metal-clad industrial block with a curved eaves line and low annexes (6.9-8.9 m) to the west. The panoramas show it only through tree cover and over a blue site fence: w01-349 (north, 22 m away) is all foliage, w05-80 (east, 34 m, 20 degree obliquity) shows the grey cladding with a few small windows under a curved cap, w08-349 shows the low annex behind the fence.",
   "walls[0] = panel 45 (E, 24.6 m, party 6.9 m below): the grey cladding with small windows in three rows, drawn as 9 storeys x 4 bays of low windows with the other storeys blank (render/stone material grey). Every other wall is blank grey (palette brick set to the cladding grey) and the flat roof is bitumen. Simplified: the curved cap on the eaves line (straight in 3DBAG), the horizontal cladding ribs, the window positions (read from one oblique photo).",
   "Not drawn or not seen: the north, south and west walls (tree cover) and the annexes.",
-  "roof.flatHex #81838d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5382: slot slate, rgb 132/132/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #81838d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5382: slot slate, rgb 132/132/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #81838d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5382: slot slate, rgb 132/132/140, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ]
 }

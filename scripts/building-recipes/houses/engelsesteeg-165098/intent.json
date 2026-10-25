@@ -220,7 +220,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "slate",
-  "flatHex": "#838d92"
+  "flatHex": "#838d92",
+  "pitchedHex": "#838d92"
  },
  "palette": {
   "brick": "#9a5a3c",
@@ -235,7 +236,8 @@
   "Components lane (2026-10-13): the hotel wing (walls[0], w02-272) re-counted to the photograph: ground plus four storeys (was 4 in all), nine bay axes (the middle one is the green wall strip between the two blocks, still drawn as windows), the projecting box windows as tilted bay frames placed per storey from the photo (storey 1 axes 0,3,5,6; storey 2 axes 1,2,5,6,7; storey 3 axes 0-3,6,7; storey 4 axis 2; the two-storey boxes are two stacked frames), a white stone plinth (stoneStoreys 0), glazing bars 3.5 cm proud. Supersedes the earlier note that the bay windows are flush. The curved corner is straight in 3DBAG LoD2.2 (runs.ts: no BAG arc on this pand), so curve does not apply.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #684428 not used (not darker than the wall #625650 by 10 L*, or tinted): kit glass kept.",
   "Refit 2026-10-25 (issue #59): walls[1] (w01-154L) windows diminish upward: first floor w 0.55 h 0.8, second w 0.45 h 0.7, upper floors w 0.38 h 0.55 (photo glazing 0.46, 0.34, 0.24, 0.18, 0.16): WARN, was FAIL. walls[0] (w02-272) windows tall (w 0.45, h 0.62); the green-wall strip axis is still a window column (openBays cannot be combined with tiltedBays). walls[2] (panel 55, w06-337L) is now blank: the photo shows a row of separate canal-house fronts (dark brown, white-painted, grey-brown, each with its own window rhythm), the large-tier grid on that panel was not visible on the panel at all (the model elevation read blank wall), so the fronts are left to the LoD2.2 shell for a block-face pass. walls[0] allowed as inferred: 26 % foliage and the low winter sun (raw #2c261d is the shaded half).",
-  "roof.flatHex #838d92: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5383: slot slate, rgb 156/165/165, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #838d92: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5383: slot slate, rgb 156/165/165, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #838d92: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5383: slot slate, rgb 156/165/165, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

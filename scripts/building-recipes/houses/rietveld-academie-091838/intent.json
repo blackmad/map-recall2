@@ -256,7 +256,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#87898d"
+  "flatHex": "#87898d",
+  "pitchedHex": "#87898d"
  },
  "palette": {
   "brick": "#5a5955",
@@ -287,6 +288,7 @@
   "The low block was refitted in 2017-18: the 2017-12-20 panorama shows it in scaffolding, glazed, before the screen went up. The tower is unchanged between 2017 and 2025.",
   "Not expressed: the dimple relief of the tower's metal (a smooth stucco wall in its colour), the expanded-metal diamond mesh (smooth pale panels), the small lettering panels on the ground glass (GERRIT RIETVELD ACADEMIE / SANDBERG INSTITUUT, a type-specimen ABC panel, about 1.2 m tall in four lines of 0.2 m letters, too small for the kit's lettering, which needs an entrance hall), the cantilevered east end of the low block's upper storey (3 m over an open passage), the roof railing.",
   "History: installed 2026-10-14 and uninstalled the same day (both street fronts NO EVIDENCE in the 2022-03-24 crops; upper ribbons missing; the low block green-grey instead of white). Re-archived 2026-10-17 with the 2017-12 and 2021-04 captures; the openBays, meshScreen and shell kit fields were added for this building. Note: the earlier install listed OSM way w57860150 (the tower) as an alias.",
-  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5386: slot slate, rgb 140/140/140, confidence 0.8; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5386: slot slate, rgb 140/140/140, confidence 0.8; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5386: slot slate, rgb 140/140/140, confidence 0.8; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ]
 }

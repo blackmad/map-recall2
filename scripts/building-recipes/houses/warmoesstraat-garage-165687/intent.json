@@ -148,7 +148,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#838d92"
+  "flatHex": "#838d92",
+  "pitchedHex": "#838d92"
  },
  "palette": {
   "brick": "#8a6a52",
@@ -162,7 +163,8 @@
   "Components lane (2026-10-13): walls[0]-[2] are now the perforated-brick screen (screen: true): a concrete lattice of posts at every bay joint and rails at every deck line (w01-136, w06-312: cells about 1.5 m wide, one deck tall), with glass-block perforations in one bay of three, staggered per deck. Bays re-counted to the lattice: 32 on walls[0], 10 on walls[1], 18 on walls[2]. Simplified: the glass-block clusters are scattered by a fixed stagger, not placed cell by cell from the photograph; the thin cross ribs inside each lattice cell are not modelled.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 3 take the photo's wall and glass colour, window shape, bay count and front class.",
   "Refit 2026-10-25 (issue #59): walls[3] (w03-29) is three axes of tall multi-light timber windows (w 0.32, h 0.72 of the storey, transom) in the rusticated stone wing, not four square ones: WARN, was FAIL. The red brick upper storeys over the stone base are not drawn (stoneStoreys on this group leaves 17 m of open edges at the 3DBAG facets); the wall keeps the measured stone grey. walls[2] (w01-136) allowed as inferred: the crop is 47 deg oblique; it shows the perforated lattice the screen draws, colour dL 0.01.",
-  "roof.flatHex #838d92: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 156/165/165, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #838d92: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 156/165/165, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #838d92: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 156/165/165, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

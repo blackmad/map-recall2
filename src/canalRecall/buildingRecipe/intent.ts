@@ -1198,6 +1198,13 @@ export interface LargeRoofIntent {
   /** measured flat-roof colour, `#rrggbb` (see `LargeBuildingIntent.roof`) */
   flatHex?: string;
   /**
+   * Measured pitched-roof colour, `#rrggbb`: the steep and low classes of the default `material` as the PDOK orthophoto
+   * reads this pand (roof-facts sidecar, `pitchedRoofFromFact`; `roof-flat.ts --pitched`), exported with `tintSource:
+   * "measured"` so the look keeps it instead of mapping the kit's slate onto the city's darkest slate tone (issue #73).
+   * Same meshes, only the colour. Absent: unchanged output.
+   */
+  pitchedHex?: string;
+  /**
    * Replace every 3DBAG roof plane above the photographed fronts (`walls[]`) with one flat level at their area-weighted
    * median height (roofLevel.ts): for a rooftop the LoD2.2 shell reconstructs as dozens of small tilted planes. Absent:
    * unchanged output.

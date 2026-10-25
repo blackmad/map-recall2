@@ -189,7 +189,8 @@
  "closedBands": true,
  "roof": {
   "material": "bitumen",
-  "flatHex": "#87898d"
+  "flatHex": "#87898d",
+  "pitchedHex": "#87898d"
  },
  "palette": {
   "brick": "#4e4540",
@@ -206,7 +207,8 @@
   "layeredKit (2026-10-14): a layered curtain wall is one glass skin and cannot carry a blank ground, so the two west curtain-wall groups glazed the ground storey for one install; they now carry ground \"mesh-plinth\": the glass skin with a closed dark panel over the ground storey, as the photo's dark mesh plinth (SIMPLIFIED: the mesh is a flat dark panel, no perforation).",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #603c38 not used (not darker than the wall #574d4d by 10 L*, or tinted): kit glass kept.",
   "Refit 2026-10-25 (issue #59): walls[1] 4 bays of wide punched windows (photo 4 columns, 37-42 % glass) behind front-wide galleries on storeys 1-4 (new kit balconies.run: the balconies stand on the window row and join across the bays). walls[2] and walls[3] keep the red-framed curtain grid with grey spandrel panels (sill 0.27, head 0.15, #5c555a, photo storeys 56-73 % glass) instead of full glass, walls[2] over a 1.6x mesh plinth. Gate reads: walls[1] storey 2 reads 4 % glass in the photo (dark reflections) and the model mask counts the joined balcony run as one 24 m ribbon. walls[2] the photo counts every thin red mullion (82) where the grid draws 20 bays, storey 1 behind the road sign and plinth top. walls[3] the w04-285L crop is covered below storey 4 by a dark foreground mass.",
-  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5383: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5383: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5383: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "layeredKit": true,
  "measured": {

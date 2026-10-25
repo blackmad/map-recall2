@@ -97,7 +97,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "slate",
-  "flatHex": "#6e7074"
+  "flatHex": "#6e7074",
+  "pitchedHex": "#6e7074"
  },
  "palette": {
   "brick": "#5a4038",
@@ -113,7 +114,8 @@
   "walls[1] = panel 54 (SE office wing, eaves 17.3 m): five storeys of paired white-framed windows with stone string courses over a stone-stepped entrance with a dark double door in bay 2; drawn as 5 storeys x 5 bays, cross windows, portal entrance. The stoop steps, the iron canopy over the left ground window and the arched ground windows are not drawn.",
   "Not drawn: the north-west and south-west walls and the roof clerestory (3DBAG roof).",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #50463f not used (not darker than the wall #4f4644 by 10 L*, or tinted): kit glass kept.",
-  "roof.flatHex #6e7074: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5384: slot slate, rgb 107/107/107, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #6e7074: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5384: slot slate, rgb 107/107/107, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #6e7074: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5384: slot slate, rgb 107/107/107, confidence 0.9; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

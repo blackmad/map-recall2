@@ -142,7 +142,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "slate",
-  "flatHex": "#81898d"
+  "flatHex": "#81898d",
+  "pitchedHex": "#81898d"
  },
  "palette": {
   "brick": "#bfa271",
@@ -158,7 +159,8 @@
   "Simplified: the photographed 3-storey frame grid (double-height window frames with a deep brick reveal) is one wide window per storey and bay, the green ceramic roof slopes are the 3DBAG roof in slate, the pedimented dormers of the old house, its cream stone bands and the warehouse box windows (w07-341) are not modelled. Not drawn: the east wing (panel 17), the round north-east corner, the courtyard walls and the low wings, which stay blank yellow brick; the east front would take 5 more storeys of windows and pushed the model past 12k triangles.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #201f1e not used (not darker than the wall #352e2a by 10 L*, or tinted): kit glass kept.",
   "Refit 2026-10-25 (issue #59): the Hyatt Regency (2021) is a grid of deep splayed brick frames in a golden glazed brick, a window of about half the cell's width at the back of each cell. Brick #bfa271 from the sunlit piers of w02-342L (#d0af81 sunlit, #a18a64 shaded spandrel); the gate's crops are overcast or shaded (#6a6350, #594f3b) and FAIL on wall lightness only: a misread of light, allowed as inferred. walls[1] (w02-342L, Spinozastraat): 12 cells of 3.8 m (was 8), windows w 0.48, h 0.62, sill 0.15: glazing and columns now match (0.32 vs 0.32, 12 vs 13). walls[0] (w01-162): its crop is the left wing, a frame grid of large loggia-like cells beside green glazed-tile cladding: 3 cells (was 8), windows w 0.4, the ground as a one-light plinth. Kit cannot say: the deep splayed (chamfered) reveals of the frame grid, the green mottled tile cladding of the side wings, the mansard skylights.",
-  "roof.flatHex #81898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5385: slot slate, rgb 132/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #81898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5385: slot slate, rgb 132/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #81898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5385: slot slate, rgb 132/140/140, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

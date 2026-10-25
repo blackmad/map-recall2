@@ -132,7 +132,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "slate",
-  "flatHex": "#7a8387"
+  "flatHex": "#7a8387",
+  "pitchedHex": "#7a8387"
  },
  "palette": {
   "brick": "#615249",
@@ -147,6 +148,7 @@
   "walls[0] = panel 41 (SE, 54.6 m, eaves 15.9): four storeys of paired windows with grey string courses and recessed balcony bays; drawn as 4 storeys x 13 bays with string courses and solid-rail balconies in every fourth bay on storeys 1-3. walls[1] = panel 9 (NW, 54.6 m, eaves 11.6): three storeys, 13 bays, string courses, balconies every fourth bay on storeys 1-2. walls[2] = panel 28 (NE, 40 m, eaves 11.7): three storeys, 9 bays, string courses.",
   "Simplified: the photographed balcony runs are continuous recessed loggias in alternating bays, drawn as slab balconies in every fourth bay; the 3DBAG plan keeps the rounded corners as short straight facets; the grey bands are the kit string courses; the south-west and cylindrical end walls (w06-225, w08-315), the courtyard faces (panels 118, 70, 20) and the stair-tower walls are not drawn and stay blank brick.",
   "Refit 2026-10-25 (issue #59): the block is mid brown brick, not tan: #615249 (the brick between the balconies on w02-135 reads #7a675c in game tints; the first fit took #b49468). walls[0]: recessed loggias with solid grey parapets in alternate bays on storeys 1-3 (the deep balcony runs), in place of slab balconies every fourth bay. walls[1] (w01-315): smaller punched windows (w 0.45, h 0.5, the photo upper glazing 0.09-0.30) and projecting solid-parapet balconies in every second bay. Gate misreads, allowed as inferred: walls[0] photo wall #1a1711 is the dark balcony recesses, not the brick (the crop shows brown brick between them; its glazing 0.70 counts those recesses); walls[1] is backlit with the sun in frame (raw #474541); walls[2] crop from 5.2 m.",
-  "roof.flatHex #7a8387: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 123/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #7a8387: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 123/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #7a8387: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5383: slot slate, rgb 123/132/132, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ]
 }

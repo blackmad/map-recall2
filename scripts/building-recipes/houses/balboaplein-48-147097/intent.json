@@ -129,7 +129,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "slate",
-  "flatHex": "#878387"
+  "flatHex": "#878387",
+  "pitchedHex": "#878387"
  },
  "palette": {
   "brick": "#8a4636",
@@ -144,7 +145,8 @@
   "walls[0] = panel 103 (S, 38.2 m, eaves 14.9): red brick, five floors, large slab-edged loggia balconies in alternate bays over a glazed brick ground; drawn as 5 storeys x 8 bays with solid-rail balconies in every second bay on storeys 2-4. walls[1] = panel 19 (N, 38.2 m, eaves 14.8): the same red brick with ribbon-like paired windows, 5 storeys x 8 bays. walls[2] = panel 73 (E, 23.3 m, eaves 14.8): grey-blue slate cladding with paired white-framed windows over a red brick ground, drawn as 5 storeys x 6 bays in a slate colour.",
   "Simplified: the red brick ground storey of the east wing takes the slate colour with the floors above (one palette per group), the slate scale pattern is a flat colour, the deep loggias are slab balconies in alternate bays, window sizes are one pattern per group; the stepped slate roofs and roof terraces are 3DBAG roof geometry. Not drawn: the west front, the courtyard faces and the wings between, which stay blank brick.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #817c74 not used (not darker than the wall #7f8283 by 10 L*, or tinted): kit glass kept.",
-  "roof.flatHex #878387: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5384: slot slate, rgb 140/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #878387: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5384: slot slate, rgb 140/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #878387: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5384: slot slate, rgb 140/132/132, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

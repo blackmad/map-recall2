@@ -255,7 +255,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#818387"
+  "flatHex": "#818387",
+  "pitchedHex": "#818387"
  },
  "palette": {
   "brick": "#7a4a3a",
@@ -267,7 +268,8 @@
   "Funenpark 427 (BAG: built 2002; 273 dwellings, 22 shops, offices; 9,091 m2): the Funenpark housing blocks west of the Funen park, an L-shaped curved arc of four to six storeys. Three fronts are photographed: the south front along the Sumatrastraat side (w01-179, panorama 2020-04-22: a low curved front of four storeys, glazed ribbon loggias in pale green shutters over a glazed ground floor), the east front on the park side (w02-110, 2025-01-30: a curved glass curtain with vertical green fins and orange doors over a brick base) and the west front (w03-291, 2020-09-07: a curved brown brick wall of four to six storeys with regular tall windows).",
   "Modelled: eight wall groups split by the height steps of the 3DBAG walls (surface lists, not panels, because panel 7, 17 and 86 each hold two or three heights): the south front in three groups (4, 6 and 5 storeys) and the east arc in two (5 storeys as one curve, 6 storeys at the north end) as ribbon windows over a glazed ground floor with green frames; the west brick front in three groups (4, 5 and 6 storeys) as a brick bay grid. Roofs and unlisted walls are the 3DBAG LoD2.2 shell (the courtyard side, the arm ends and the north block are blank). Bays are wide (6-9 m ribbons) to stay under 12k triangles.",
   "Simplified: the green timber shutters and the vertical green fins are the frame colour only, the loggia recesses are plain ribbon windows, the stepped upper storeys keep the 3DBAG roof lines. Not modelled: balconies, the entrance arches to the courtyards and the shop signs (no frontal photograph).",
-  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5384: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5384: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5384: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "closedBands": true,
  "measured": {

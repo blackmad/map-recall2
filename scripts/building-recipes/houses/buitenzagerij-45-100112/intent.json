@@ -77,7 +77,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#878b90"
+  "flatHex": "#878b90",
+  "pitchedHex": "#878b90"
  },
  "palette": {
   "brick": "#c8a878",
@@ -90,7 +91,8 @@
   "Modelled: the long west-facing walls (panels 20, 10, 65, 75, 47) and east-facing walls (panels 17, 67, 69, 73, 101) as two 2-storey groups of two-light windows over buff brick with white frames, about 5.4 m bays (one per house); panel 86 (the long east wall, 8.5 m) is left to the shell. Roofs and the spine walls are the 3DBAG LoD2.2 shell.",
   "Simplified: doors are plain windows in the ground row (the kit's entrance needs a 1.6 m opening per panel, not one per house), the round door windows and the glazed top band are not drawn, the white upper panels are the same buff brick colour. Not modelled: the north spine wall and the end stair walls (no panorama within 35 m).",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #646a6f not used (not darker than the wall #736352 by 10 L*, or tinted): kit glass kept.",
-  "roof.flatHex #878b90: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 189/189/189, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #878b90: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 189/189/189, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #878b90: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 189/189/189, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "closedBands": true,
  "measured": {

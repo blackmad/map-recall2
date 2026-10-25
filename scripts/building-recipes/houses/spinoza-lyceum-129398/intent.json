@@ -91,7 +91,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#747c80"
+  "flatHex": "#747c80",
+  "pitchedHex": "#747c80"
  },
  "palette": {
   "brick": "#e4e2d8",
@@ -106,7 +107,8 @@
   "Simplified: awnings (temporary), stair flights, solid timber parapet boards; two-light windows on the south-east wing keep the triangle count under 12k (wide windows were 12.1k); the other wings and the rear walls had no panorama or are not photographed and stay blank.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #554943 not used (not darker than the wall #584c45 by 10 L*, or tinted): kit glass kept; walls[1] glass #545456 not used (not darker than the wall #594643 by 10 L*, or tinted): kit glass kept.",
   "Kit gap (photo review 2026-10-14): the concrete frame with timber spandrel and window infill is not modelled as such; drawn as ribbon windows (frame colour from the hand palette).",
-  "roof.flatHex #747c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5386: slot slate, rgb 115/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #747c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5386: slot slate, rgb 115/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #747c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5386: slot slate, rgb 115/123/123, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

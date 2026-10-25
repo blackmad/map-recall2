@@ -92,7 +92,8 @@
  "closedBands": true,
  "roof": {
   "material": "zinc",
-  "flatHex": "#7a7c80"
+  "flatHex": "#7a7c80",
+  "pitchedHex": "#7a7c80"
  },
  "palette": {
   "brick": "#c4b07c",
@@ -104,7 +105,8 @@
  "notes": [
   "Berlage Lyceum, Pieter Lodewijk Takstraat 33 (pand 0363100012127997, 1924, 107 LoD2.2 surfaces, roof max 20.1 m). Photographed: the south front (2019-05-08 w03-167 and 2025-09-29 w02-167, surfaces 70/72/40/103 and the central entrance panel 35/101: pale yellow brick, three storeys, three window groups per storey, each a wide multi-light window with a side light either side set in a stone surround, a dentil cornice under a flat roof, a railing at the foot) and the 37 m east front (2025-09-29 w01-77, surfaces 21/69: a wide window band at ground, two rows of grouped windows above, small square lights at the ends).",
   "MODELLED: three yellow-brick storeys, the south bays on the 8.6 m rhythm with a multi-light window each (new `wide` preset: four lights and a transom), stone piers, the entrance with a stone portal, the east front as seven wide windows per storey. SIMPLIFIED: the side lights and recessed stone surrounds of each group are one window; the east front's ground band, upper groups and small square lights are regularised to seven equal bays; cornice dentils are not drawn. SKIPPED: the area railing (too thin), awnings and sun blinds (temporary), the north, west and courtyard walls (no panorama within range: blank), the carved relief at the south-east corner (not resolvable).",
-  "roof.flatHex #7a7c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5385: slot slate, rgb 123/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #7a7c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5385: slot slate, rgb 123/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #7a7c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5385: slot slate, rgb 123/123/123, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "layeredKit": true
 }

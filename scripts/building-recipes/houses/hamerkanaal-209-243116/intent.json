@@ -78,7 +78,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "bitumen",
-  "flatHex": "#878987"
+  "flatHex": "#878987",
+  "pitchedHex": "#878987"
  },
  "palette": {
   "brick": "#4a3228",
@@ -91,7 +92,8 @@
   "Modelled: the canal wing (panel 99) as a 2-storey brick-bay-grid with segmental-arched windows and STORK lettered on the wall; the Kromhouthal gable (panel 82) as 3 storeys (glazed ground floor and two window rows, 9 bays) with KROMHOUTHAL lettered between the rows. Walls and the sawtooth roofs are the 3DBAG LoD2.2 shell as surveyed.",
   "Simplified: the white sign boards are plain lettering on the brick, the stepped brick corbelling and the shield emblem on the gable are not drawn, the HET IJ board and the timber terrace pergola in front of the wing are not drawn. Not modelled: every wall other than panels 99 and 82 (north, east and west fronts have no panorama within 35 m, so they are blank brick under the real roofs).",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #394647 not used (not darker than the wall #3d3432 by 10 L*, or tinted): kit glass kept; walls[1] glass #423b3b not used (not darker than the wall #3d353c by 10 L*, or tinted): kit glass kept.",
-  "roof.flatHex #878987: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 140/140/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #878987: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 140/140/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #878987: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 140/140/132, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

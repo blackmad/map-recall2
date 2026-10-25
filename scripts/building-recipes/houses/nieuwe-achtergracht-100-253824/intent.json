@@ -53,7 +53,8 @@
  "otherWalls": "blank",
  "roof": {
   "material": "slate",
-  "flatHex": "#818387"
+  "flatHex": "#818387",
+  "pitchedHex": "#818387"
  },
  "palette": {
   "brick": "#6a5650",
@@ -70,7 +71,8 @@
   "Simplified: the stair tower is the plain central bay with the entrance portal (the bowed oriel, the hexagonal window and the stair lights are not modelled), the paired window ranges are nine evenly spaced bays, the stone sill bands are string courses. Not drawn: the attic strip (panel 120), the west wall (washed out), the east and south walls (no usable panorama), which stay blank wall.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #554640 not used (not darker than the wall #574d47 by 10 L*, or tinted): kit glass kept.",
   "Refit 2026-10-25 (issue #59, gate #58 crops): the crop w01-343 shows 10 columns of white-framed three-light windows about 3 m wide and 2 m tall (the model had 9 single narrow windows, glazing 0.21 vs photo 0.32): now 10 bays, 'three-light' windows w 0.62, h 0.5; glazing 0.29-0.32 and columns now match. The gate still FAILs the window shape ('square vs photo tall'): its window grid folds each three-light group into one light and calls it tall, while its own opening statistics read the photo's openings 60 % square and the crop plainly shows wide groups: a misread, allowed as inferred.",
-  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 132/132/132, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
+  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 132/132/132, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install.",
+  "roof.pitchedHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 132/132/132, confidence 0.9; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
  ],
  "measured": {
   "date": "2026-10-14",

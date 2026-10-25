@@ -80,7 +80,8 @@
     "Van Eeghenstraat 110A-C (pand 0363100012158526): a tall brick villa between Van Eeghenstraat and the Vondelpark.",
     "walls[0] the south-west side front (panel 7, 12.3 m; crop w03-244w 2019-01-17, 38 deg off square, through bare trees): purple-brown brick, white stone bands at sill and head lines, sparse white-framed windows in three columns, segmental heads on the first floor, slate roof with dormers.",
     "INFERRED: the street, park and party walls (otherWalls brick grid; the park crop w04-333p is 68 % foliage).",
-    "roof.flatHex #5b5e61: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 82/82/82, confidence 0.8; roof-flat.ts), the colour the city drew it in before the install."
+    "roof.flatHex #5b5e61: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 82/82/82, confidence 0.8; roof-flat.ts), the colour the city drew it in before the install.",
+    "roof.pitchedHex #5b5e61: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5385: slot slate, rgb 82/82/82, confidence 0.8; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
   ],
   "measured": {
     "date": "2026-10-25",
@@ -88,6 +89,7 @@
   },
   "roof": {
     "material": "slate",
-    "flatHex": "#5b5e61"
+    "flatHex": "#5b5e61",
+    "pitchedHex": "#5b5e61"
   }
 }

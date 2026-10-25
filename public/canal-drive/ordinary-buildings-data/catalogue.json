@@ -24476,11 +24476,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012164938",
       "name": "Kattenburg (Marineterrein), Amsterdam: 1782 brick wings on Kattenburgerstraat and the canal",
-      "hash": "862351b6e852ef517b3b231a127156da53773df21e5864e76f8996f92979277c",
-      "sha256": "862351b6e852ef517b3b231a127156da53773df21e5864e76f8996f92979277c",
-      "bytes": 810388,
+      "hash": "21e46980518a49eecc585734e34d1dec7d90287538e7bce8855d4e3f9c3d9523",
+      "sha256": "21e46980518a49eecc585734e34d1dec7d90287538e7bce8855d4e3f9c3d9523",
+      "bytes": 809548,
       "triangles": 10841,
-      "materials": 10,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -24779,7 +24779,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164938",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:11.979Z",
+      "updatedAt": "2026-10-25T11:08:54.809Z",
       "bagYear": 1782,
       "meshHash": "95f4a8418ecf8f9c"
     },
@@ -24788,11 +24788,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012130580",
       "name": "Heinekenplein block, Amsterdam (De Pijp): 1995 brick block with a 32 m tower at its north end",
-      "hash": "6b8b93bfd41cdc4de141a8176a9c212fc3c82b86d2ec54d007058f29b5ea9910",
-      "sha256": "6b8b93bfd41cdc4de141a8176a9c212fc3c82b86d2ec54d007058f29b5ea9910",
-      "bytes": 600180,
+      "hash": "5ca4d1339a177d55c83bf53a91dd4aeeb5af459a6a46b936b96bf3eb34477594",
+      "sha256": "5ca4d1339a177d55c83bf53a91dd4aeeb5af459a6a46b936b96bf3eb34477594",
+      "bytes": 599336,
       "triangles": 8107,
-      "materials": 7,
+      "materials": 6,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -24992,7 +24992,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012130580",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:11.220Z",
+      "updatedAt": "2026-10-25T11:08:54.299Z",
       "aliases": [
         "NL.IMBAG.Pand.0363100012080460",
         "NL.IMBAG.Pand.0363100012139518",
@@ -25500,11 +25500,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165618",
       "name": "Politiebureau IJ-tunnel / Brandweerkazerne Amsterdam-Amstelland, IJ-tunnel 2, Amsterdam (1972; one pand shared by fire station and police bureau)",
-      "hash": "984e8794088dccff3a572ba832a3150642813d1eb04b3295fde10637578d2f5a",
-      "sha256": "984e8794088dccff3a572ba832a3150642813d1eb04b3295fde10637578d2f5a",
-      "bytes": 270576,
+      "hash": "3fd6db8396160bb86858a5ecb8e86b3268bcdd8739ad0cfb52b51e2b010ac8c3",
+      "sha256": "3fd6db8396160bb86858a5ecb8e86b3268bcdd8739ad0cfb52b51e2b010ac8c3",
+      "bytes": 269836,
       "triangles": 3419,
-      "materials": 15,
+      "materials": 14,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -25689,7 +25689,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165618",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:14.812Z",
+      "updatedAt": "2026-10-25T11:08:57.685Z",
       "bagYear": 1972,
       "meshHash": "12e5e6b81a23dc0a"
     },
@@ -25698,11 +25698,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012083091",
       "name": "Politiebureau Houtmankade, Houtmankade 34, Amsterdam (1993; police bureau on the ground floor of a curved housing block, one pand)",
-      "hash": "11d2da5e1b9a44cf467b166fc8befadf20766746c6d5bad27000056522c88a52",
-      "sha256": "11d2da5e1b9a44cf467b166fc8befadf20766746c6d5bad27000056522c88a52",
-      "bytes": 265540,
+      "hash": "2ceca4ee4f7502e11e320b3632d5c4f5fe8a494c7a4791c3be6bec42a96ea949",
+      "sha256": "2ceca4ee4f7502e11e320b3632d5c4f5fe8a494c7a4791c3be6bec42a96ea949",
+      "bytes": 264692,
       "triangles": 3273,
-      "materials": 12,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -25940,7 +25940,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012083091",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:14.879Z",
+      "updatedAt": "2026-10-25T11:08:57.627Z",
       "bagYear": 1993,
       "meshHash": "e9d3b0711e515743"
     },
@@ -26063,9 +26063,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012092810",
       "name": "Politiebureau Postjesweg, Postjesweg 179B, Amsterdam (2004)",
-      "hash": "5323435f843abb0a4042202bf6fe7a765b5e706ebfd047c1480480ed40642a25",
-      "sha256": "5323435f843abb0a4042202bf6fe7a765b5e706ebfd047c1480480ed40642a25",
-      "bytes": 231640,
+      "hash": "1f9b8a162d0c27d79b36333b9bf8967456b91899cce6547f4ec68e6dde8d0ee7",
+      "sha256": "1f9b8a162d0c27d79b36333b9bf8967456b91899cce6547f4ec68e6dde8d0ee7",
+      "bytes": 231672,
       "triangles": 3043,
       "materials": 13,
       "textures": 0,
@@ -26164,7 +26164,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012092810",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:15.102Z",
+      "updatedAt": "2026-10-25T11:08:57.708Z",
       "bagYear": 2004,
       "meshHash": "4cc570d646b5060e"
     },
@@ -26328,11 +26328,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012143903",
       "name": "Politiebureau Flierbosdreef, Flierbosdreef 15, Amsterdam (1985; a large industrial-looking complex with metal cladding)",
-      "hash": "64d5756d7aefc442f3b0c65dc04fa61a18e2f41c86bd69b1a1d46939db5c363c",
-      "sha256": "64d5756d7aefc442f3b0c65dc04fa61a18e2f41c86bd69b1a1d46939db5c363c",
-      "bytes": 89004,
+      "hash": "91a9dba9a3be39bcae4db7f8ace4d3b46034ecfcb96448397aa4ece6f941b132",
+      "sha256": "91a9dba9a3be39bcae4db7f8ace4d3b46034ecfcb96448397aa4ece6f941b132",
+      "bytes": 88164,
       "triangles": 997,
-      "materials": 8,
+      "materials": 7,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -26505,7 +26505,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012143903",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:14.215Z",
+      "updatedAt": "2026-10-25T11:08:57.587Z",
       "bagYear": 1985,
       "meshHash": "c01c797fdfacd792"
     },
@@ -26885,11 +26885,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012116154",
       "name": "'Politie Amsterdam' (OSM node 2808423606), Johan Huizingalaan 757, Amsterdam (BAG: built 1959, usage bijeenkomstfunctie)",
-      "hash": "7a6bf216ed97fc89d7768aac443cd47c303d895e70b3cc65c5e10345b410f75f",
-      "sha256": "7a6bf216ed97fc89d7768aac443cd47c303d895e70b3cc65c5e10345b410f75f",
-      "bytes": 587728,
+      "hash": "a7510310b97ce775a650c2eff3a92195c71eb60c10ea5d54374412019cba4782",
+      "sha256": "a7510310b97ce775a650c2eff3a92195c71eb60c10ea5d54374412019cba4782",
+      "bytes": 586888,
       "triangles": 8199,
-      "materials": 8,
+      "materials": 7,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -27128,7 +27128,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012116154",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:14.388Z",
+      "updatedAt": "2026-10-25T11:08:57.549Z",
       "bagYear": 1959,
       "meshHash": "fe8e18af225b2eae"
     },
@@ -27137,11 +27137,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012164981",
       "name": "Entrepotdok 13-37 / Binnenkadijk / Laagte Kadijk, Amsterdam: the Entrepotdok warehouses, converted to housing in the 1980s",
-      "hash": "d0ef2b7863c1bd95ed022b1d0cffb9ee0c4caae7e4fa7b8f4e56893695cad7b2",
-      "sha256": "d0ef2b7863c1bd95ed022b1d0cffb9ee0c4caae7e4fa7b8f4e56893695cad7b2",
-      "bytes": 955612,
+      "hash": "60e5ef0b701228dcce78e82f52ff88989d2f141b087e796da6100b551db83a2d",
+      "sha256": "60e5ef0b701228dcce78e82f52ff88989d2f141b087e796da6100b551db83a2d",
+      "bytes": 954760,
       "triangles": 11797,
-      "materials": 18,
+      "materials": 17,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -27513,7 +27513,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164981",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-16T21:49:46.634Z",
+      "updatedAt": "2026-10-25T11:08:53.552Z",
       "bagYear": 1750,
       "meshHash": "2b7fd56f549f0ac6"
     },
@@ -27522,11 +27522,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012084999",
       "name": "Overtoom 283, Amsterdam: Reade, rehabilitation and rheumatology centre (OSM way 152508198), BAG 1992",
-      "hash": "c0310703bcfeb841171910af3c3aa452535a3d9ba180db02122a3bd642a5fdc5",
-      "sha256": "c0310703bcfeb841171910af3c3aa452535a3d9ba180db02122a3bd642a5fdc5",
-      "bytes": 480464,
+      "hash": "5a36e655614b1c595a4e4cb674162f2a196e5b057abea6c5ad92002adba22fd9",
+      "sha256": "5a36e655614b1c595a4e4cb674162f2a196e5b057abea6c5ad92002adba22fd9",
+      "bytes": 479616,
       "triangles": 6262,
-      "materials": 11,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -28026,7 +28026,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012084999",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:13.877Z",
+      "updatedAt": "2026-10-25T11:08:57.027Z",
       "aliases": [
         "w152508198"
       ],
@@ -28038,11 +28038,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012126319",
       "name": "Nieuwpoortstraat 80-98 / Den Brielstraat 2-6, Amsterdam: housing block over shops (BAG 1991; 150 dwellings, shops and offices on the ground floor)",
-      "hash": "186d4af4dd658d76eb32f25186ea29db9ea04c0ea2e26a6b531404dea86dac93",
-      "sha256": "186d4af4dd658d76eb32f25186ea29db9ea04c0ea2e26a6b531404dea86dac93",
-      "bytes": 635236,
+      "hash": "6eef1cc39c44b3e1d3a6a4c7d86ba9d1e441d1b0bc5d22897e0133be2217a354",
+      "sha256": "6eef1cc39c44b3e1d3a6a4c7d86ba9d1e441d1b0bc5d22897e0133be2217a354",
+      "bytes": 634388,
       "triangles": 8286,
-      "materials": 13,
+      "materials": 12,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -28281,7 +28281,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012126319",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:13.191Z",
+      "updatedAt": "2026-10-25T11:08:56.318Z",
       "bagYear": 1991,
       "meshHash": "6e944a4725c8e11e"
     },
@@ -28290,11 +28290,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012164930",
       "name": "Kattenburgerstraat 206-266, Amsterdam (Kattenburg): 1976 brown concrete-and-brick gallery-access housing slab",
-      "hash": "e20009aa491b88b32c19df8e5b4ff751b119cf66e73b89ff57955aaaddbca9c7",
-      "sha256": "e20009aa491b88b32c19df8e5b4ff751b119cf66e73b89ff57955aaaddbca9c7",
-      "bytes": 914544,
+      "hash": "5c81d847b1e5ef27686251c90d996fc36cf18ffe29dab050bcd2ea2bb3a72412",
+      "sha256": "5c81d847b1e5ef27686251c90d996fc36cf18ffe29dab050bcd2ea2bb3a72412",
+      "bytes": 913696,
       "triangles": 11683,
-      "materials": 7,
+      "materials": 6,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -29254,7 +29254,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164930",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:11.678Z",
+      "updatedAt": "2026-10-25T11:08:55.253Z",
       "meshHash": "f1baaf764d312198"
     },
     {
@@ -29262,11 +29262,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165687",
       "name": "Warmoesstraat 157-163, Amsterdam: 1981 perforated-brick car park with a stone-and-brick wing at its north end",
-      "hash": "50e8c86d9d4a6152e6589ea462c842ffcb4896d1f06f63eb53198e847bf49bb0",
-      "sha256": "50e8c86d9d4a6152e6589ea462c842ffcb4896d1f06f63eb53198e847bf49bb0",
-      "bytes": 636960,
+      "hash": "75730d029bdeb154ce26c482785b6aa8c36ed2936c0cfaed79681f00cbb72401",
+      "sha256": "75730d029bdeb154ce26c482785b6aa8c36ed2936c0cfaed79681f00cbb72401",
+      "bytes": 636112,
       "triangles": 8627,
-      "materials": 11,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -29477,7 +29477,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165687",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:17.960Z",
+      "updatedAt": "2026-10-25T11:09:00.318Z",
       "meshHash": "377a2d2f943244a8"
     },
     {
@@ -29485,11 +29485,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165098",
       "name": "Engelsesteeg 9 / Smaksteeg 24, Amsterdam: Renaissance Amsterdam City Centre Hotel block (Kondor Wessels) with canal-house fronts on the street sides",
-      "hash": "235b1e050c294185ecb00fdaee879fa604c8aeaeb6d212b402ac2c06024b2f6a",
-      "sha256": "235b1e050c294185ecb00fdaee879fa604c8aeaeb6d212b402ac2c06024b2f6a",
-      "bytes": 562136,
+      "hash": "0b656c86368dd4eeb06e4c8f725f4b906b8af29163e64c5781b5d4eb5eb6ec3a",
+      "sha256": "0b656c86368dd4eeb06e4c8f725f4b906b8af29163e64c5781b5d4eb5eb6ec3a",
+      "bytes": 561280,
       "triangles": 6643,
-      "materials": 14,
+      "materials": 13,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -30018,7 +30018,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165098",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:09.723Z",
+      "updatedAt": "2026-10-25T11:08:53.330Z",
       "meshHash": "9009586434cd05c6"
     },
     {
@@ -30026,11 +30026,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012180196",
       "name": "Oudezijds Achterburgwal 233-237 / Vendelstraat 7, Amsterdam: rounded 19th-century brick building of the University of Amsterdam, with a baroque carved gateway",
-      "hash": "b5831d437f80474ed40dd638e4c258c28a742734bef368ad1ed77ff0a51b26ac",
-      "sha256": "b5831d437f80474ed40dd638e4c258c28a742734bef368ad1ed77ff0a51b26ac",
-      "bytes": 426076,
+      "hash": "cde7e40682998c816e9c97f87f3b1cd5e0df2620b9b5abcf2af54f58c191bb67",
+      "sha256": "cde7e40682998c816e9c97f87f3b1cd5e0df2620b9b5abcf2af54f58c191bb67",
+      "bytes": 425228,
       "triangles": 4989,
-      "materials": 10,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -30292,7 +30292,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012180196",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:13.566Z",
+      "updatedAt": "2026-10-25T11:08:57.097Z",
       "meshHash": "f253131710e5909a"
     },
     {
@@ -30300,11 +30300,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012186086",
       "name": "Westerdok 536 / Westerdoksdijk 265-267, Amsterdam (Westerdokseiland): 2008 brick apartment block around courtyards, stepped to 34 m",
-      "hash": "f2012335b503a8bac2f68018c49985135a149fa0f9968e71c309070d62b7f0ad",
-      "sha256": "f2012335b503a8bac2f68018c49985135a149fa0f9968e71c309070d62b7f0ad",
-      "bytes": 909924,
+      "hash": "2dabc4c822b0972c6bfdfab8989ada97f92c47e5d31a53e34c34dd8e85559d16",
+      "sha256": "2dabc4c822b0972c6bfdfab8989ada97f92c47e5d31a53e34c34dd8e85559d16",
+      "bytes": 909080,
       "triangles": 11424,
-      "materials": 8,
+      "materials": 7,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -30483,7 +30483,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012186086",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:17.774Z",
+      "updatedAt": "2026-10-25T11:09:00.497Z",
       "meshHash": "2b4f7881a708a758"
     },
     {
@@ -30491,11 +30491,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012253754",
       "name": "Nieuwe Achtergracht 127 (BAG), Amsterdam: UvA Roeterseiland, 1932 brick wing on the Nieuwe Achtergracht / Nieuwe Prinsengracht",
-      "hash": "4d47e29087df3750a744081bcabb8a3ce70578a0cc928c411c2653ec825a3d66",
-      "sha256": "4d47e29087df3750a744081bcabb8a3ce70578a0cc928c411c2653ec825a3d66",
-      "bytes": 746100,
+      "hash": "ed9f134458c22338e24482a2c542e1dee9ce01f89be0477261f08b59f3ce29b0",
+      "sha256": "ed9f134458c22338e24482a2c542e1dee9ce01f89be0477261f08b59f3ce29b0",
+      "bytes": 745248,
       "triangles": 10016,
-      "materials": 9,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -30923,7 +30923,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253754",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:13.041Z",
+      "updatedAt": "2026-10-25T11:08:56.231Z",
       "meshHash": "a4bc8203ba085fe8"
     },
     {
@@ -30931,11 +30931,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012202176",
       "name": "Aambeeldstraat 2 / Hamerstraat, Amsterdam (Zeeburg): large blue-and-white steel-clad industrial hall",
-      "hash": "c04c313cd192dec67f26b3c63f7acd3e73a2c90b039738ed420cb05e095a0c64",
-      "sha256": "c04c313cd192dec67f26b3c63f7acd3e73a2c90b039738ed420cb05e095a0c64",
-      "bytes": 347808,
+      "hash": "bc795de3e651e7e904fdea5cc72bb1bfb368783950164f61f1c2501981bc9c40",
+      "sha256": "bc795de3e651e7e904fdea5cc72bb1bfb368783950164f61f1c2501981bc9c40",
+      "bytes": 346964,
       "triangles": 4446,
-      "materials": 7,
+      "materials": 6,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -31201,7 +31201,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012202176",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:07.226Z",
+      "updatedAt": "2026-10-25T11:08:51.208Z",
       "meshHash": "88ad5fa2281bac21"
     },
     {
@@ -31209,11 +31209,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012168172",
       "name": "Oude Turfmarkt 139 / Binnengasthuisstraat 46, Amsterdam: Binnengasthuis complex (UvA), brick civic front on the canal and white balconied housing block in the courtyard street",
-      "hash": "82cd3a5e9de77146a179198661dfe342af605186e76db2de1745e1e5a02e771b",
-      "sha256": "82cd3a5e9de77146a179198661dfe342af605186e76db2de1745e1e5a02e771b",
-      "bytes": 799672,
+      "hash": "a5352359be3b4209048feeae46b313c1e9e97ae3b86da6a086eef43cb88da3aa",
+      "sha256": "a5352359be3b4209048feeae46b313c1e9e97ae3b86da6a086eef43cb88da3aa",
+      "bytes": 798820,
       "triangles": 10122,
-      "materials": 12,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -31804,7 +31804,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168172",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:14.023Z",
+      "updatedAt": "2026-10-25T11:08:56.925Z",
       "meshHash": "f1525110da8b18e6"
     },
     {
@@ -31812,11 +31812,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012238726",
       "name": "OBA Javaplein, Javaplein 2, Amsterdam (2011; library in the ground floor of a perimeter housing block, one pand)",
-      "hash": "6ba4afb212dfaf767bbadaf815e4e101d95735274943982ebbd6378d2d7c676b",
-      "sha256": "6ba4afb212dfaf767bbadaf815e4e101d95735274943982ebbd6378d2d7c676b",
-      "bytes": 783732,
+      "hash": "e27ac51ec0a70d69d15fc34da5b20319e1e0b5cccd46e74ea63d1739cb5fabc5",
+      "sha256": "e27ac51ec0a70d69d15fc34da5b20319e1e0b5cccd46e74ea63d1739cb5fabc5",
+      "bytes": 782884,
       "triangles": 10242,
-      "materials": 16,
+      "materials": 15,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -31969,7 +31969,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012238726",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:13.326Z",
+      "updatedAt": "2026-10-25T11:08:56.450Z",
       "meshHash": "120655d36b77d10a"
     },
     {
@@ -31977,11 +31977,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012073586",
       "name": "OBA Olympisch Kwartier, Laan der Hesperiden 18, Amsterdam (2005; library in the ground floor of a brick housing block, one pand)",
-      "hash": "8a0d592fddedf87b73db09c10695a58438ea6e1677103acefccf9fc47fe7c74e",
-      "sha256": "8a0d592fddedf87b73db09c10695a58438ea6e1677103acefccf9fc47fe7c74e",
-      "bytes": 800928,
+      "hash": "598235e920134c201561845d503a7e0f6cb6aebe9ba97bdb229ce792b7b03ba8",
+      "sha256": "598235e920134c201561845d503a7e0f6cb6aebe9ba97bdb229ce792b7b03ba8",
+      "bytes": 800084,
       "triangles": 10511,
-      "materials": 20,
+      "materials": 19,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -32335,7 +32335,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012073586",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:13.492Z",
+      "updatedAt": "2026-10-25T11:08:56.618Z",
       "meshHash": "11293b65d169f15a"
     },
     {
@@ -32343,11 +32343,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012122086",
       "name": "OBA Linnaeus, Linnaeusstraat 44, Amsterdam (1916 pand; library in the ground floor of a 1950s-style brick front with two 1916 houses attached)",
-      "hash": "be96c555a5e8e586e02b563e92ceafb6f42014357630809e98cd3cfc78d8fdb7",
-      "sha256": "be96c555a5e8e586e02b563e92ceafb6f42014357630809e98cd3cfc78d8fdb7",
-      "bytes": 330728,
+      "hash": "940c6ef9c73b044d97b505a50f9a0a4f1c9ee076b3a3158b5fbfd0e67d58bde9",
+      "sha256": "940c6ef9c73b044d97b505a50f9a0a4f1c9ee076b3a3158b5fbfd0e67d58bde9",
+      "bytes": 329884,
       "triangles": 4243,
-      "materials": 12,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -32496,7 +32496,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012122086",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:13.376Z",
+      "updatedAt": "2026-10-25T11:08:56.499Z",
       "meshHash": "c4630f1296837459"
     },
     {
@@ -32504,11 +32504,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012233553",
       "name": "Stadsloket Oost, Oranje-Vrijstaatplein 2, Amsterdam (2008 office block, 81 m long; stadsloket and municipal offices)",
-      "hash": "fa42fcb2700b88bf27ee4af632cc5f44e437e6574ebb3148fb516b1357969f37",
-      "sha256": "fa42fcb2700b88bf27ee4af632cc5f44e437e6574ebb3148fb516b1357969f37",
-      "bytes": 341140,
+      "hash": "7530f86ef6301554c8f277f739d28794e03fecfa50a9564ba063f4c1f201e475",
+      "sha256": "7530f86ef6301554c8f277f739d28794e03fecfa50a9564ba063f4c1f201e475",
+      "bytes": 340292,
       "triangles": 4358,
-      "materials": 12,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -32936,7 +32936,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012233553",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:16.732Z",
+      "updatedAt": "2026-10-25T11:08:58.693Z",
       "meshHash": "caced83f83cdb30e"
     },
     {
@@ -33157,11 +33157,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012078772",
       "name": "Stadsloket Zuidoost, Anton de Komplein 150, Amsterdam (2006 red-brick civic office on a glazed arcade)",
-      "hash": "5c52e157678cc2190d7164a12d3509cf557117ca51ac6c20a9a8fb6477148995",
-      "sha256": "5c52e157678cc2190d7164a12d3509cf557117ca51ac6c20a9a8fb6477148995",
-      "bytes": 836952,
+      "hash": "7a928f6d70870854cce5a44b4fe7d56fdd178221e7515be6c788703821d25c65",
+      "sha256": "7a928f6d70870854cce5a44b4fe7d56fdd178221e7515be6c788703821d25c65",
+      "bytes": 836108,
       "triangles": 11285,
-      "materials": 13,
+      "materials": 12,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -33301,7 +33301,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012078772",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:15.759Z",
+      "updatedAt": "2026-10-25T11:08:59.107Z",
       "meshHash": "ddddd5c855caa69b"
     },
     {
@@ -33309,11 +33309,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012076903",
       "name": "Stadsdeelkantoor Nieuw-West, Plein '40-'45 1, Amsterdam (1964 ten-storey slab with vertical fins on a glazed podium)",
-      "hash": "64d537d0c8e0c4defa4ccd6a907f0a77c9c90700be2e6ef6f0b68ce164f9ebf6",
-      "sha256": "64d537d0c8e0c4defa4ccd6a907f0a77c9c90700be2e6ef6f0b68ce164f9ebf6",
-      "bytes": 747032,
+      "hash": "bc04e21f650736aea6703a432f7c403c7f566728db55325f842b5cdca61a213a",
+      "sha256": "bc04e21f650736aea6703a432f7c403c7f566728db55325f842b5cdca61a213a",
+      "bytes": 746188,
       "triangles": 10152,
-      "materials": 9,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -33448,7 +33448,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012076903",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:16.365Z",
+      "updatedAt": "2026-10-25T11:08:58.578Z",
       "meshHash": "3ec5ea18c5657bd4"
     },
     {
@@ -33456,11 +33456,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012118358",
       "name": "Stadsloket West, Bos en Lommerplein 250, Amsterdam (2003; shops, housing and the stadsdeel office in one pand)",
-      "hash": "1db518d943d3d4b77e8b8a39956c26adc394fa5853c777a2516ed6bfc273cea8",
-      "sha256": "1db518d943d3d4b77e8b8a39956c26adc394fa5853c777a2516ed6bfc273cea8",
-      "bytes": 503852,
+      "hash": "ca4d8c03bb0e755614240150393791a55a08e91f5dee10afe634499710dc4616",
+      "sha256": "ca4d8c03bb0e755614240150393791a55a08e91f5dee10afe634499710dc4616",
+      "bytes": 503004,
       "triangles": 6955,
-      "materials": 12,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -33711,7 +33711,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012118358",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:16.537Z",
+      "updatedAt": "2026-10-25T11:08:58.853Z",
       "meshHash": "e329907dc0d99838"
     },
     {
@@ -33719,11 +33719,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012243116",
       "name": "Gedempt Hamerkanaal 209, Amsterdam-Noord: 1908 Kromhout shipyard engine hall and workshops (Stork, now Kromhouthal and restaurant Stork)",
-      "hash": "84a1002f00aba80490d83fb1b7caeb46f7376a28df038e3fe7335f26a64d2953",
-      "sha256": "84a1002f00aba80490d83fb1b7caeb46f7376a28df038e3fe7335f26a64d2953",
-      "bytes": 429116,
+      "hash": "3e3b9095d0e760a0e2919a03d5998917cf5ae62cb9a9a9519aa3fb4c5edc24db",
+      "sha256": "3e3b9095d0e760a0e2919a03d5998917cf5ae62cb9a9a9519aa3fb4c5edc24db",
+      "bytes": 428268,
       "triangles": 4955,
-      "materials": 10,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -33921,7 +33921,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012243116",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:10.798Z",
+      "updatedAt": "2026-10-25T11:08:54.206Z",
       "meshHash": "510defa29348cef0"
     },
     {
@@ -33929,11 +33929,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012114605",
       "name": "Distelweg 88, Amsterdam-Noord: 1948 distribution warehouse clad in grey sandwich panels on the Buiksloterkanaal side (BAG: one industrial unit)",
-      "hash": "3e04c4fb20f2cf1a3d0d12c0a3d014832a755902a48b09e8e92fa54b2978d8c3",
-      "sha256": "3e04c4fb20f2cf1a3d0d12c0a3d014832a755902a48b09e8e92fa54b2978d8c3",
-      "bytes": 54512,
+      "hash": "e7dae2797d237460a3a2351199bd38ea31e3dde41d6f964dd36105bda2fd4541",
+      "sha256": "e7dae2797d237460a3a2351199bd38ea31e3dde41d6f964dd36105bda2fd4541",
+      "bytes": 53680,
       "triangles": 546,
-      "materials": 6,
+      "materials": 5,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -34084,7 +34084,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012114605",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:09.394Z",
+      "updatedAt": "2026-10-25T11:08:53.188Z",
       "meshHash": "4b2ecc20aa3edafe"
     },
     {
@@ -34321,11 +34321,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236788",
       "name": "'s-Gravesandestraat 55 (Hotel Arena), Amsterdam-Oost: 1890 former orphanage (Roman Catholic Burgerweeshuis) with 2000s hotel wings, red brick with a glazed pavilion",
-      "hash": "a434ad48b47b7e81b4c704abf37606d0b47e1e1e04707860cc3fad8e1bb5a92b",
-      "sha256": "a434ad48b47b7e81b4c704abf37606d0b47e1e1e04707860cc3fad8e1bb5a92b",
-      "bytes": 781336,
+      "hash": "fdc7528175801b5acc67a943f36917feb0ab47de66d71b7f308800cba1018348",
+      "sha256": "fdc7528175801b5acc67a943f36917feb0ab47de66d71b7f308800cba1018348",
+      "bytes": 780480,
       "triangles": 9364,
-      "materials": 15,
+      "materials": 14,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -35125,7 +35125,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236788",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:11.058Z",
+      "updatedAt": "2026-10-25T11:08:54.514Z",
       "meshHash": "5444a35356591a5d"
     },
     {
@@ -35133,11 +35133,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012169214",
       "name": "Utrechtsestraat 15 / Rembrandtplein, Amsterdam (Booking.com HQ): 1932 Amsterdam School office block, brick with granite base, stepped to 36 m",
-      "hash": "11729e8c60613c0819fe61be044b5d83a62208c094b45b031616a59a0d4efdeb",
-      "sha256": "11729e8c60613c0819fe61be044b5d83a62208c094b45b031616a59a0d4efdeb",
-      "bytes": 566284,
+      "hash": "54e524281e99b2960633ea3ba94fc8b146ff1d1b9b784deb4e2703397ddf45bd",
+      "sha256": "54e524281e99b2960633ea3ba94fc8b146ff1d1b9b784deb4e2703397ddf45bd",
+      "bytes": 565448,
       "triangles": 7983,
-      "materials": 12,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -35324,7 +35324,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169214",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:17.045Z",
+      "updatedAt": "2026-10-25T11:08:59.507Z",
       "meshHash": "a32ad0f46a9496a3"
     },
     {
@@ -36027,11 +36027,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012184743",
       "name": "Funenpark 427, Amsterdam (Funenpark / Oostelijke Handelskade side): 2002 curved apartment arcs of 273 homes with shops, brick west side, glazed and green-finned east side",
-      "hash": "22965dc33bb077941c6acc939a5aa3303901456850a87aa2a8a0ea5cebade717",
-      "sha256": "22965dc33bb077941c6acc939a5aa3303901456850a87aa2a8a0ea5cebade717",
-      "bytes": 807288,
+      "hash": "deff95d30e6974cf21a6da19ecea067517a68e12611bf4f2fc4879d36de178d8",
+      "sha256": "deff95d30e6974cf21a6da19ecea067517a68e12611bf4f2fc4879d36de178d8",
+      "bytes": 806444,
       "triangles": 10519,
-      "materials": 9,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -36452,7 +36452,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012184743",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:09.614Z",
+      "updatedAt": "2026-10-25T11:08:53.716Z",
       "meshHash": "792643de991bbeb0"
     },
     {
@@ -36460,11 +36460,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012186003",
       "name": "Westerdok 748, Amsterdam (Westerdokseiland): 2008 red-brick courtyard apartment block of 232 homes, stepped from 11 m to 35 m with a passage arch",
-      "hash": "cbb3bb7143810f464a7cf15fff0c1b5eef99ca09e22ae60990f99dcd07f62bbc",
-      "sha256": "cbb3bb7143810f464a7cf15fff0c1b5eef99ca09e22ae60990f99dcd07f62bbc",
-      "bytes": 653556,
+      "hash": "9de38227eca229df3c844683194de425a960af6f50714380b599257a2c1bf050",
+      "sha256": "9de38227eca229df3c844683194de425a960af6f50714380b599257a2c1bf050",
+      "bytes": 652708,
       "triangles": 8402,
-      "materials": 12,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -36725,7 +36725,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012186003",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:16.921Z",
+      "updatedAt": "2026-10-25T11:09:00.609Z",
       "meshHash": "43af67e2a971eedd"
     },
     {
@@ -36876,11 +36876,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012100112",
       "name": "Buitenzagerij 45, Amsterdam (Jordaan, former Zagerij site): 1984 comb of six rows of two-storey terraced houses (194 homes) in buff brick under a spine block",
-      "hash": "f3b012071fab1aa48c9fb72bf9f276012002913076c059b87150d38afcc8db0b",
-      "sha256": "f3b012071fab1aa48c9fb72bf9f276012002913076c059b87150d38afcc8db0b",
-      "bytes": 595556,
+      "hash": "1753aee59435caa512b801cf3f9efea155670dd67227b804a02a1ba138cf9bdc",
+      "sha256": "1753aee59435caa512b801cf3f9efea155670dd67227b804a02a1ba138cf9bdc",
+      "bytes": 594848,
       "triangles": 8066,
-      "materials": 7,
+      "materials": 6,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -37322,7 +37322,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012100112",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:07.922Z",
+      "updatedAt": "2026-10-25T11:08:51.769Z",
       "meshHash": "094a5f7a5860d065"
     },
     {
@@ -37507,11 +37507,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012169564",
       "name": "Barlaeus Gymnasium, Weteringschans 31, Amsterdam (1866 Neo-Renaissance school, Singelgracht side behind)",
-      "hash": "e8c1d3580508c3fef0081a95035001aeb3feac850dffafd27626a0a288f39177",
-      "sha256": "e8c1d3580508c3fef0081a95035001aeb3feac850dffafd27626a0a288f39177",
-      "bytes": 507608,
+      "hash": "c78233d372a37c8de910842ef1e5218300ffbf342427aa10c27bff086986fc59",
+      "sha256": "c78233d372a37c8de910842ef1e5218300ffbf342427aa10c27bff086986fc59",
+      "bytes": 506784,
       "triangles": 6343,
-      "materials": 11,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -37714,7 +37714,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169564",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:07.656Z",
+      "updatedAt": "2026-10-25T11:08:51.526Z",
       "meshHash": "195694229f432b14"
     },
     {
@@ -37722,11 +37722,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012096365",
       "name": "Vossius Gymnasium, Messchaertstraat 1, Amsterdam (1930 brick school, three wings, tiled roofs with dormer bands)",
-      "hash": "45cb261cb22426f9751bf4f9f8d7657e9ff5e1c71042079a460f04473cca3169",
-      "sha256": "45cb261cb22426f9751bf4f9f8d7657e9ff5e1c71042079a460f04473cca3169",
-      "bytes": 566972,
+      "hash": "a500d1c6c28a6364eef9c1a7c3431bcf43c86489cc8f8cff8c62803091d83647",
+      "sha256": "a500d1c6c28a6364eef9c1a7c3431bcf43c86489cc8f8cff8c62803091d83647",
+      "bytes": 566116,
       "triangles": 7685,
-      "materials": 9,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -38018,7 +38018,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012096365",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:16.620Z",
+      "updatedAt": "2026-10-25T11:09:00.046Z",
       "meshHash": "c33faf2b51ab9536"
     },
     {
@@ -38026,11 +38026,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012127997",
       "name": "Berlage Lyceum, Pieter Lodewijk Takstraat 33, Amsterdam (1924 Amsterdam School school in yellow brick)",
-      "hash": "0f3a3dcf8d3ed0236203e11b904a5025d5a55cbaf22a178b48b31078de3a4f28",
-      "sha256": "0f3a3dcf8d3ed0236203e11b904a5025d5a55cbaf22a178b48b31078de3a4f28",
-      "bytes": 314476,
+      "hash": "ff26b01db293a43727ac8de77548ecb1f105ab56986f361d965e0a9deb9fa35c",
+      "sha256": "ff26b01db293a43727ac8de77548ecb1f105ab56986f361d965e0a9deb9fa35c",
+      "bytes": 313636,
       "triangles": 4238,
-      "materials": 9,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -38279,7 +38279,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012127997",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:07.702Z",
+      "updatedAt": "2026-10-25T11:08:51.584Z",
       "meshHash": "af4e0334c6072db4"
     },
     {
@@ -38287,11 +38287,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236840",
       "name": "Montessori Lyceum Amsterdam, Van Ostadestraat 103, Amsterdam (1900 school: three tall storeys of window groups between slender piers)",
-      "hash": "80513457ce327ce86da27594e38155e1f6bc3944905d6fe7cdbae4ed19bdef94",
-      "sha256": "80513457ce327ce86da27594e38155e1f6bc3944905d6fe7cdbae4ed19bdef94",
-      "bytes": 118492,
+      "hash": "7b49482e66f47b80fd87c251ad0ed9f26e74aca5d3990819deeaee0754842504",
+      "sha256": "7b49482e66f47b80fd87c251ad0ed9f26e74aca5d3990819deeaee0754842504",
+      "bytes": 117652,
       "triangles": 1421,
-      "materials": 8,
+      "materials": 7,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -38462,7 +38462,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236840",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:12.800Z",
+      "updatedAt": "2026-10-25T11:08:56.037Z",
       "meshHash": "1066fa9b88990aea"
     },
     {
@@ -38470,11 +38470,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165748",
       "name": "Rijksakademie van beeldende kunsten, Sarphatistraat 470, Amsterdam (1865 former barracks, courtyard complex of round-arched brick ranges)",
-      "hash": "fa14a24db9a3a908b94945a8bc96cc9e37b46f12e384e0b7e9e0d4c4853176ff",
-      "sha256": "fa14a24db9a3a908b94945a8bc96cc9e37b46f12e384e0b7e9e0d4c4853176ff",
-      "bytes": 1039488,
+      "hash": "88f88bb9c160b046f87c412577d44b6995086e4e14f097525839b5d18c7ac7d2",
+      "sha256": "88f88bb9c160b046f87c412577d44b6995086e4e14f097525839b5d18c7ac7d2",
+      "bytes": 1038640,
       "triangles": 11791,
-      "materials": 9,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -39100,7 +39100,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165748",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:15.968Z",
+      "updatedAt": "2026-10-25T11:08:58.219Z",
       "meshHash": "b8ff10b23f9c0f42"
     },
     {
@@ -39108,11 +39108,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012109375",
       "name": "Cygnus Gymnasium block, Vrolikstraat 8, Amsterdam (1956 concrete frame office slab on pilotis, a grid of square cells)",
-      "hash": "279e5fa7a080d175e851ba856deb3c7abb9dfc5d038597a0b48bc83f2dad6162",
-      "sha256": "279e5fa7a080d175e851ba856deb3c7abb9dfc5d038597a0b48bc83f2dad6162",
-      "bytes": 674284,
+      "hash": "dbac105eac6d2f193180360b6e985be4ae6fb80560595d7144821eba621f8f38",
+      "sha256": "dbac105eac6d2f193180360b6e985be4ae6fb80560595d7144821eba621f8f38",
+      "bytes": 673440,
       "triangles": 9099,
-      "materials": 8,
+      "materials": 7,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -39355,7 +39355,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012109375",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:09.353Z",
+      "updatedAt": "2026-10-25T11:08:51.897Z",
       "meshHash": "c1727ba15474bace"
     },
     {
@@ -39363,11 +39363,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012137257",
       "name": "Reade (Jan van Breemen Instituut), Dr. Jan van Breemenstraat 3, Amsterdam (1967 rehabilitation centre, long low ribbon-window wings)",
-      "hash": "04b78da219fc48313322478d37b50fa04e1d1f38a64df8232476e7be1190091c",
-      "sha256": "04b78da219fc48313322478d37b50fa04e1d1f38a64df8232476e7be1190091c",
-      "bytes": 108824,
+      "hash": "80919d30d2c97c7c40f6569e007d903867d6a80e1020ee03d2b6fe736ed7a943",
+      "sha256": "80919d30d2c97c7c40f6569e007d903867d6a80e1020ee03d2b6fe736ed7a943",
+      "bytes": 107988,
       "triangles": 1289,
-      "materials": 7,
+      "materials": 6,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -39585,7 +39585,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137257",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:15.334Z",
+      "updatedAt": "2026-10-25T11:08:57.791Z",
       "meshHash": "5d3e942e31bac56a"
     },
     {
@@ -39593,11 +39593,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012171179",
       "name": "Kloveniersburgwal 72 (former Binnengasthuis, now University of Amsterdam), Amsterdam: Nieuwe Hoogstraat row-house fronts, the 1900s GASTHUIS APOTHEEK brick range, a 1930s curved brick wing and a 1950s beige block",
-      "hash": "a542ec5a897c72c635f14c764395067ed48c981b50797c7672476574bbadce22",
-      "sha256": "a542ec5a897c72c635f14c764395067ed48c981b50797c7672476574bbadce22",
-      "bytes": 892964,
+      "hash": "83f39871d176658a079056470f612c5df3831aa155720e2b0389130cd06dc9bc",
+      "sha256": "83f39871d176658a079056470f612c5df3831aa155720e2b0389130cd06dc9bc",
+      "bytes": 892116,
       "triangles": 11598,
-      "materials": 25,
+      "materials": 24,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -40347,7 +40347,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171179",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:12.225Z",
+      "updatedAt": "2026-10-25T11:08:55.598Z",
       "meshHash": "ac69c63bd0b5e8ec"
     },
     {
@@ -40355,11 +40355,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012137990",
       "name": "Van Oldenbarneveldtstraat 48-56, Amsterdam-West: 2006 apartment block in buff brick with a curved east front, a glazed entrance bay and shop/office plinth",
-      "hash": "bf24ffdf5e0943b3764050f6b1b653447577255b47ae926c18bb07f0a07adc7e",
-      "sha256": "bf24ffdf5e0943b3764050f6b1b653447577255b47ae926c18bb07f0a07adc7e",
-      "bytes": 287064,
+      "hash": "e4e8183a36676cbd7212f974dbe50b3af7bdfb0a67f77a789320cf961547904b",
+      "sha256": "e4e8183a36676cbd7212f974dbe50b3af7bdfb0a67f77a789320cf961547904b",
+      "bytes": 286216,
       "triangles": 3666,
-      "materials": 9,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -40690,7 +40690,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137990",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:17.113Z",
+      "updatedAt": "2026-10-25T11:08:59.964Z",
       "meshHash": "6bef82423ab48801"
     },
     {
@@ -40698,11 +40698,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012091631",
       "name": "Schaafstraat 17, Amsterdam-Noord (Overhoeks industrial estate): 1960 workshop hall with painted cream and grey banded walls and a clerestory glazing strip",
-      "hash": "04e5df62756108db5987f3c42d2ed1aa208fb9b2904daf629bab6aa19beaa21a",
-      "sha256": "04e5df62756108db5987f3c42d2ed1aa208fb9b2904daf629bab6aa19beaa21a",
-      "bytes": 115456,
+      "hash": "efe816ed06cb97c7373573a0cd0754942109139745ebc7357c7dbfeef481007f",
+      "sha256": "efe816ed06cb97c7373573a0cd0754942109139745ebc7357c7dbfeef481007f",
+      "bytes": 114608,
       "triangles": 1357,
-      "materials": 12,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -40858,7 +40858,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012091631",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:15.516Z",
+      "updatedAt": "2026-10-25T11:08:58.260Z",
       "meshHash": "d8bf3fa5e35a69de"
     },
     {
@@ -40866,9 +40866,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012134024",
       "name": "Asterweg 17-19, Amsterdam-Noord (Buiksloterham): 2006 brick office-and-workshop block with a raised brick storey carried over an open steel-truss ground floor",
-      "hash": "bb862837672b56f66e32e8accc90933a22c6d7e7104e384358bb04a545b88cbf",
-      "sha256": "bb862837672b56f66e32e8accc90933a22c6d7e7104e384358bb04a545b88cbf",
-      "bytes": 95264,
+      "hash": "52b17a23cbbc49d967a44fbd0506bc51081983a1badfef829b4e832a523d78f0",
+      "sha256": "52b17a23cbbc49d967a44fbd0506bc51081983a1badfef829b4e832a523d78f0",
+      "bytes": 95296,
       "triangles": 1130,
       "materials": 8,
       "textures": 0,
@@ -41052,7 +41052,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012134024",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:07.416Z",
+      "updatedAt": "2026-10-25T11:08:51.265Z",
       "meshHash": "8f74d38285bfa44c"
     },
     {
@@ -41060,11 +41060,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012120309",
       "name": "Van der Palmkade 191, Amsterdam-West: 2001 serpentine apartment block in dark brick with a cream first-floor band, round-arched loggias and terraced attic storeys facing the canal",
-      "hash": "20e0cfdf32f6bc08b796d1296a8512f03b9e659887635aa8c8ce1ffd53eb1a08",
-      "sha256": "20e0cfdf32f6bc08b796d1296a8512f03b9e659887635aa8c8ce1ffd53eb1a08",
-      "bytes": 527012,
+      "hash": "805827bdbc63d358084a473256ed1c8c5adf54927c0da0bd2f97c95d52cfd285",
+      "sha256": "805827bdbc63d358084a473256ed1c8c5adf54927c0da0bd2f97c95d52cfd285",
+      "bytes": 526168,
       "triangles": 6463,
-      "materials": 9,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -42135,7 +42135,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012120309",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:17.552Z",
+      "updatedAt": "2026-10-25T11:08:59.752Z",
       "meshHash": "4d2c34d9df0a3307"
     },
     {
@@ -42143,11 +42143,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012240319",
       "name": "Tilanusstraat 23K, Amsterdam-Oost: 2013 block of red-brick gridded wings and a curved louvred glass tower, round a retained 1900s brick school range",
-      "hash": "f078fb3927b8d1b3bc742ca5598c7242c0800047cd2a810e6fa4d8cb123d51c5",
-      "sha256": "f078fb3927b8d1b3bc742ca5598c7242c0800047cd2a810e6fa4d8cb123d51c5",
-      "bytes": 965860,
+      "hash": "b03cfe7956f8c9986f83e79728636005a95aec19f688f37632142d3753cf6b7a",
+      "sha256": "b03cfe7956f8c9986f83e79728636005a95aec19f688f37632142d3753cf6b7a",
+      "bytes": 965028,
       "triangles": 13097,
-      "materials": 15,
+      "materials": 14,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -42300,7 +42300,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012240319",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:17.427Z",
+      "updatedAt": "2026-10-25T11:08:59.407Z",
       "meshHash": "bebc716b8d26f533"
     },
     {
@@ -42308,11 +42308,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012201637",
       "name": "Grasweg 41S, Amsterdam-Noord (Buiksloterham): 2010 grey-clad industrial block 36 m high with a curved eaves line and sparse small windows, mostly hidden by trees",
-      "hash": "3dcf220351b2f339c6974bf9b821c1f062bc4571e45ea910edc6c4efd8bd238f",
-      "sha256": "3dcf220351b2f339c6974bf9b821c1f062bc4571e45ea910edc6c4efd8bd238f",
-      "bytes": 60868,
+      "hash": "01ea39c897fa8763dd8c9528bca9df897b0a97a200078bfb478ea1c57655151d",
+      "sha256": "01ea39c897fa8763dd8c9528bca9df897b0a97a200078bfb478ea1c57655151d",
+      "bytes": 60028,
       "triangles": 680,
-      "materials": 7,
+      "materials": 6,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -42481,7 +42481,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012201637",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:09.979Z",
+      "updatedAt": "2026-10-25T11:08:53.750Z",
       "meshHash": "4a89443b1c8a3102"
     },
     {
@@ -42489,11 +42489,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012251313",
       "name": "Hoogte Kadijk 400, Amsterdam-Centrum: 1903 brick industrial hall with giant arched windows and a small arched clerestory row, and a five-storey brick office wing with a stepped entrance",
-      "hash": "a82064fa6d5dc05e04a3c111cfc3b99cd4bbff1e7fe768d3c05c200776fbb5c3",
-      "sha256": "a82064fa6d5dc05e04a3c111cfc3b99cd4bbff1e7fe768d3c05c200776fbb5c3",
-      "bytes": 431064,
+      "hash": "d4b358a445356d45864c91d01890fc4df25e6e4d5b911c6aeb6b3cd9ad7d171f",
+      "sha256": "d4b358a445356d45864c91d01890fc4df25e6e4d5b911c6aeb6b3cd9ad7d171f",
+      "bytes": 430216,
       "triangles": 4898,
-      "materials": 13,
+      "materials": 12,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -42709,7 +42709,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012251313",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:11.131Z",
+      "updatedAt": "2026-10-25T11:08:54.371Z",
       "meshHash": "eba479ac55d3b377"
     },
     {
@@ -42717,11 +42717,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012134667",
       "name": "Polderweg 3, Amsterdam-Oost (Watergraafsmeer): 1999 campus building, a four-storey bar with continuous ribbon glazing and white balcony fascias over a recessed glazed ground and a set-back top floor, joined to a timber-clad sports hall with a curved roof and steel ribs",
-      "hash": "0f66706531fc778a8c7bfca5ff36c94d8aff2a2764461633e8ccba1411ab219c",
-      "sha256": "0f66706531fc778a8c7bfca5ff36c94d8aff2a2764461633e8ccba1411ab219c",
-      "bytes": 700752,
+      "hash": "6c0d96e5bc69933413bc60ac15a3c6c932375c58b0b330b5865e4f3b193acb4f",
+      "sha256": "6c0d96e5bc69933413bc60ac15a3c6c932375c58b0b330b5865e4f3b193acb4f",
+      "bytes": 699908,
       "triangles": 9480,
-      "materials": 12,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -43003,7 +43003,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012134667",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-17T07:03:34.689Z",
+      "updatedAt": "2026-10-25T11:08:57.468Z",
       "meshHash": "0661358352be41d2"
     },
     {
@@ -43161,11 +43161,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012247232",
       "name": "Houthavenkade 26, Amsterdam-West (Houthavens): 2018 courtyard block of apartments on the Houthavenkade, an eight-storey canal front of orange and dark brick with glass balcony columns over a glazed ground, a set-back glazed top floor and lower brick ranges on the south and west",
-      "hash": "7c79f52091a5785f883c3b8a382ded385837c8e078caf92410a5ae4941865254",
-      "sha256": "7c79f52091a5785f883c3b8a382ded385837c8e078caf92410a5ae4941865254",
-      "bytes": 899968,
+      "hash": "32bb47890f9ce9c7f99a9038fc27b4268a51b37443b08901c303938b4d170672",
+      "sha256": "32bb47890f9ce9c7f99a9038fc27b4268a51b37443b08901c303938b4d170672",
+      "bytes": 899120,
       "triangles": 11984,
-      "materials": 18,
+      "materials": 17,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -43402,7 +43402,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012247232",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:11.802Z",
+      "updatedAt": "2026-10-25T11:08:54.632Z",
       "meshHash": "de5c93748dcafe3a"
     },
     {
@@ -43410,11 +43410,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012112128",
       "name": "Gedempt Hamerkanaal 175, Amsterdam-Noord (Hamerkwartier): 1911 workshop complex on the former Hamerkanaal, a four-storey brick-and-teal ribbon-window block on the street front and small brick workshop and house ranges on the canal side",
-      "hash": "14470883c0fe817a1d523b121c2d3c93a25401dfc7ab20caa868036a3c699ffc",
-      "sha256": "14470883c0fe817a1d523b121c2d3c93a25401dfc7ab20caa868036a3c699ffc",
-      "bytes": 457220,
+      "hash": "8f6a0d7c3f458b087f79e1abfc9331471a526c6db9c748ed3d1e8413898294a5",
+      "sha256": "8f6a0d7c3f458b087f79e1abfc9331471a526c6db9c748ed3d1e8413898294a5",
+      "bytes": 456368,
       "triangles": 6084,
-      "materials": 12,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -43568,7 +43568,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012112128",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:10.903Z",
+      "updatedAt": "2026-10-25T11:08:54.074Z",
       "meshHash": "52e1c064d4272eb7"
     },
     {
@@ -43576,11 +43576,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012253824",
       "name": "Nieuwe Achtergracht 100, Amsterdam-Centrum (Roeterseiland): 1923 five-storey brick office building on the canal with cream-framed multi-pane windows, a central stair tower with a bowed oriel and entrance, stone bands and an overhanging copper roof edge",
-      "hash": "633619db532dd81bfba49a0238f8203364065e6e275147726eae0908b20f9363",
-      "sha256": "633619db532dd81bfba49a0238f8203364065e6e275147726eae0908b20f9363",
-      "bytes": 305416,
+      "hash": "171c6fe59f8a6baffa40580ec4a07a609b77a9a73c859681a899ac91db5fed74",
+      "sha256": "171c6fe59f8a6baffa40580ec4a07a609b77a9a73c859681a899ac91db5fed74",
+      "bytes": 304572,
       "triangles": 4011,
-      "materials": 10,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -43736,7 +43736,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253824",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:13.100Z",
+      "updatedAt": "2026-10-25T11:08:56.097Z",
       "meshHash": "0180e1ab5360c545"
     },
     {
@@ -43744,11 +43744,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012239388",
       "name": "Oostelijke Handelskade 749, Amsterdam-Centrum (Oostelijke Handelskade): 2012 residential and office blocks in warehouse style with tall round-arched brick arcades, cream string courses and a rusticated base",
-      "hash": "0656ed78095b614116976493d92a397ddaf437b6b25c81f9a84060c2d7a0de2d",
-      "sha256": "0656ed78095b614116976493d92a397ddaf437b6b25c81f9a84060c2d7a0de2d",
-      "bytes": 824916,
+      "hash": "bcb8d3a405a16e03291dab595ba5c156204dcd0f6ed29bd7e446e5550b345ad2",
+      "sha256": "bcb8d3a405a16e03291dab595ba5c156204dcd0f6ed29bd7e446e5550b345ad2",
+      "bytes": 824080,
       "triangles": 9333,
-      "materials": 9,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -43895,7 +43895,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012239388",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:13.711Z",
+      "updatedAt": "2026-10-25T11:08:56.737Z",
       "aliases": [
         "NL.IMBAG.Pand.0363100012239386",
         "NL.IMBAG.Pand.0363100012239387"
@@ -43907,11 +43907,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012118320",
       "name": "Waagdragerhof 198 (Pakhuis Wilhelmina), Amsterdam-Centrum (Veemkade, KNSM-eiland): 2004 block with an eleven-storey dark red brick residential tower over the retained arched brick warehouse Pakhuis Wilhelmina, whose tall arched windows carry the lettering PAK HUIS WIL HEL MINA",
-      "hash": "8fd8d43a9c530f3ac9aaed8fcd4e4ca3164ab0686360f72d03b70a7e7cb6086b",
-      "sha256": "8fd8d43a9c530f3ac9aaed8fcd4e4ca3164ab0686360f72d03b70a7e7cb6086b",
-      "bytes": 691960,
+      "hash": "592f4a7bfc1ef7e82f2b4cea17d8fcc3b9989748f562b776676ab575943938ce",
+      "sha256": "592f4a7bfc1ef7e82f2b4cea17d8fcc3b9989748f562b776676ab575943938ce",
+      "bytes": 691112,
       "triangles": 9090,
-      "materials": 16,
+      "materials": 15,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -44040,7 +44040,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012118320",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:19.874Z",
+      "updatedAt": "2026-10-25T11:09:00.161Z",
       "meshHash": "fee223362b68bd1d"
     },
     {
@@ -44048,11 +44048,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012093853",
       "name": "Van Beuningenstraat 48, Amsterdam-West (Staatsliedenbuurt): 1978 social-housing block of tan brick with grey concrete bands, balcony runs and rounded corners, in four storeys on the south-east and three on the north-west",
-      "hash": "3226f28ea496e88cbb1870a2454751080ac18af137aed70292c6edb3ef665716",
-      "sha256": "3226f28ea496e88cbb1870a2454751080ac18af137aed70292c6edb3ef665716",
-      "bytes": 585732,
+      "hash": "4b0bb3f368d6b0c1e01b865ef1724ddf0b6a90b136fef463daf09e7e029e1f63",
+      "sha256": "4b0bb3f368d6b0c1e01b865ef1724ddf0b6a90b136fef463daf09e7e029e1f63",
+      "bytes": 584888,
       "triangles": 7975,
-      "materials": 8,
+      "materials": 7,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -44380,7 +44380,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012093853",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:18.227Z",
+      "updatedAt": "2026-10-25T11:08:59.634Z",
       "meshHash": "6a0ac71b2a6b3e93"
     },
     {
@@ -44388,11 +44388,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012147097",
       "name": "Balboaplein 48, Amsterdam-West (Bos en Lommer): 2004 perimeter housing block of red brick with deep balcony loggias on the south, ribbon-window north front and slate-grey clad upper storeys on the east, around courtyards",
-      "hash": "24a3b0b947374a893c83cf62cece4ec597769969174a9fe29cd92b7c16b83587",
-      "sha256": "24a3b0b947374a893c83cf62cece4ec597769969174a9fe29cd92b7c16b83587",
-      "bytes": 720380,
+      "hash": "bb7a8f3c852acf2450140420c17943bfa97b5162f8b061fab7f0ef22b581c2a7",
+      "sha256": "bb7a8f3c852acf2450140420c17943bfa97b5162f8b061fab7f0ef22b581c2a7",
+      "bytes": 719532,
       "triangles": 9649,
-      "materials": 10,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -44743,7 +44743,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012147097",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:07.530Z",
+      "updatedAt": "2026-10-25T11:08:51.433Z",
       "meshHash": "c4c6c5062aa897c6"
     },
     {
@@ -44982,11 +44982,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012243487",
       "name": "Spinozastraat 51 / Sarphatistraat 104, Amsterdam-Centrum (Weesperbuurt): 2017 hotel and apartment block in sand-yellow ceramic brick with deep square window frames and green glazed roof slopes, wrapped round a retained 1890s brick-and-cream corner house and warehouse on the Sarphatistraat",
-      "hash": "88871eed64dcdf0c76f32bf31fd65f6b3dd3f30981dfc7f8caea1ce1b5a7c7ef",
-      "sha256": "88871eed64dcdf0c76f32bf31fd65f6b3dd3f30981dfc7f8caea1ce1b5a7c7ef",
-      "bytes": 608032,
+      "hash": "18a063d4e3d3e41d948f9302a5fa892ae79aead381b024774f2ed9ffb7666dbd",
+      "sha256": "18a063d4e3d3e41d948f9302a5fa892ae79aead381b024774f2ed9ffb7666dbd",
+      "bytes": 607176,
       "triangles": 8134,
-      "materials": 12,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -45195,7 +45195,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012243487",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:15.234Z",
+      "updatedAt": "2026-10-25T11:08:58.461Z",
       "meshHash": "bb85727a89138958"
     },
     {
@@ -45203,11 +45203,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012233657",
       "name": "WG-plein 600 (former Wilhelmina Gasthuis pavilion), Amsterdam-West: 1931 dark-brown brick hospital wing, five storeys of grouped white windows on the WG-plein side and a two-storey canal front with glazed bay windows on the Kostverlorenvaart",
-      "hash": "88030446324e648f4e58a3184b11468d50c6da7372fc8e05ba33e874aa5b1585",
-      "sha256": "88030446324e648f4e58a3184b11468d50c6da7372fc8e05ba33e874aa5b1585",
-      "bytes": 1292896,
+      "hash": "afde1f23da10c46ada1e1b3c737194cd7a6fc7c004ece41bcd4aab6ac4eea549",
+      "sha256": "afde1f23da10c46ada1e1b3c737194cd7a6fc7c004ece41bcd4aab6ac4eea549",
+      "bytes": 1292048,
       "triangles": 17375,
-      "materials": 10,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -45589,7 +45589,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012233657",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:19.667Z",
+      "updatedAt": "2026-10-25T11:09:02.094Z",
       "meshHash": "40c6e549c8660b58"
     },
     {
@@ -45597,11 +45597,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236799",
       "name": "Da Costakade 146, Amsterdam-West: 1903 factory block, a yellow-brick front of large workshop windows on Da Costakade, a red-brick range with balconies beside it, and a red-brick back range with a lettered band on the street behind",
-      "hash": "ee3496a13b2548de74fa5d1df5aa7f38fa2c2f80dbd0848ba55900908dad0cce",
-      "sha256": "ee3496a13b2548de74fa5d1df5aa7f38fa2c2f80dbd0848ba55900908dad0cce",
-      "bytes": 885180,
+      "hash": "a25d1643f837684c7292ade542c96de4f2882677f26933ed9f536645637a301d",
+      "sha256": "a25d1643f837684c7292ade542c96de4f2882677f26933ed9f536645637a301d",
+      "bytes": 884324,
       "triangles": 11484,
-      "materials": 14,
+      "materials": 13,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -45850,7 +45850,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236799",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:09.241Z",
+      "updatedAt": "2026-10-25T11:08:53.151Z",
       "meshHash": "759afe4d677c4ef2"
     },
     {
@@ -45858,11 +45858,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012209785",
       "name": "Asterweg 19B, Amsterdam-Noord (Tuindorp Buiksloot business park): 2005 three-storey block of grey exposed-aggregate concrete panels with curved corners, ribbon windows and a projecting corner box window, over a low concrete plinth with a car-park undercroft",
-      "hash": "b98a5f2b1a2601d689e86fd6a0c2ebb2b6aba96173853b378b013b7d62587d33",
-      "sha256": "b98a5f2b1a2601d689e86fd6a0c2ebb2b6aba96173853b378b013b7d62587d33",
-      "bytes": 73044,
+      "hash": "16d7e197b05327594de0f0c7437f1f601fb244f85a4bfa9189905daf447d9dfd",
+      "sha256": "16d7e197b05327594de0f0c7437f1f601fb244f85a4bfa9189905daf447d9dfd",
+      "bytes": 72204,
       "triangles": 867,
-      "materials": 7,
+      "materials": 6,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -45968,7 +45968,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012209785",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:07.552Z",
+      "updatedAt": "2026-10-25T11:08:51.294Z",
       "meshHash": "e18b2a1eff26e325"
     },
     {
@@ -46086,11 +46086,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012250186",
       "name": "Revaleiland 437, Amsterdam-Centrum (Java-eiland / Revaleiland): 2020 apartment block round a courtyard, five storeys of red brick with cream-framed windows, stacked glass-railed balconies in recesses, a dark brick plinth and a set-back top floor with slot windows",
-      "hash": "fbc01a3642b91f85bf6b5334442f63b5084895002e0ac4a71f5a45a8bef20cd6",
-      "sha256": "fbc01a3642b91f85bf6b5334442f63b5084895002e0ac4a71f5a45a8bef20cd6",
-      "bytes": 847920,
+      "hash": "dcc11874f04d039e2f2000b9586659fb10930b7c813f6901182cbf2a052f314c",
+      "sha256": "dcc11874f04d039e2f2000b9586659fb10930b7c813f6901182cbf2a052f314c",
+      "bytes": 847080,
       "triangles": 11513,
-      "materials": 10,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -46390,7 +46390,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012250186",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:15.474Z",
+      "updatedAt": "2026-10-25T11:08:57.944Z",
       "meshHash": "0358901359906faf"
     },
     {
@@ -46582,11 +46582,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165821",
       "name": "Louise Wentstraat 230, Amsterdam-Oost (Weesperzijde / Amstelkade side of the Oosterpark district): 1992 housing complex of grey-brown brick with dark horizontal bands, four-storey street fronts under a stepped upper floor, curved ends and glazed stair-tower columns",
-      "hash": "8701f63da911a5f9a856e34c3f6bf8e04f78844dc7a06e2ea32c26f209d269aa",
-      "sha256": "8701f63da911a5f9a856e34c3f6bf8e04f78844dc7a06e2ea32c26f209d269aa",
-      "bytes": 796128,
+      "hash": "7c43c0fece4dc24369d7e2e58c15f90d236f3ec08f10c6b48beda5c4f743ff28",
+      "sha256": "7c43c0fece4dc24369d7e2e58c15f90d236f3ec08f10c6b48beda5c4f743ff28",
+      "bytes": 795280,
       "triangles": 10696,
-      "materials": 10,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -46922,7 +46922,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165821",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:12.630Z",
+      "updatedAt": "2026-10-25T11:08:55.909Z",
       "meshHash": "d6b6cd650021c4c9"
     },
     {
@@ -46930,11 +46930,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012129127",
       "name": "Wibautstraat 78, Amsterdam-Oost (Wibautstraat / Weesperzijde): 1966 eight-storey office-and-flat block, pale brick-and-concrete bands with continuous dark ribbon windows, a crown of square-lattice windows and a glazed supermarket ground storey on cone-shaped piers",
-      "hash": "c3df0ebc1aa48df8b3efd7fcd32d6272017ca2aa21deb78888765e366caf089e",
-      "sha256": "c3df0ebc1aa48df8b3efd7fcd32d6272017ca2aa21deb78888765e366caf089e",
-      "bytes": 919300,
+      "hash": "cc39a8c0e995a095bae0a439058ad437273f86db8b0ea5176d61cc90e0695731",
+      "sha256": "cc39a8c0e995a095bae0a439058ad437273f86db8b0ea5176d61cc90e0695731",
+      "bytes": 918452,
       "triangles": 12488,
-      "materials": 14,
+      "materials": 13,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -47100,7 +47100,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012129127",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:18.098Z",
+      "updatedAt": "2026-10-25T11:09:02.232Z",
       "meshHash": "63e9d9794a125b76"
     },
     {
@@ -47392,11 +47392,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012101771",
       "name": "Meeuwenlaan 132, Amsterdam-Noord (Van der Pekbuurt): 1936 school complex (Breders Beroepscollege), yellow-grey brick wings of two and three storeys with white-framed bar windows under hipped blue-tile roofs with dormers, and a low translucent-clad wing carrying giant grey letters",
-      "hash": "b7aa01c188d2c8482e3b5414f53344031410b66c1ef07dac738c282a19a4cd14",
-      "sha256": "b7aa01c188d2c8482e3b5414f53344031410b66c1ef07dac738c282a19a4cd14",
-      "bytes": 712484,
+      "hash": "3e3547377e59da6580ebab0e5435946b24762b4179be8b06ed33c62e919a98e3",
+      "sha256": "3e3547377e59da6580ebab0e5435946b24762b4179be8b06ed33c62e919a98e3",
+      "bytes": 711632,
       "triangles": 9506,
-      "materials": 17,
+      "materials": 16,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -47815,7 +47815,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012101771",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:12.902Z",
+      "updatedAt": "2026-10-25T11:08:56.020Z",
       "meshHash": "903b5afae4bbdcf6"
     },
     {
@@ -48077,11 +48077,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012098847",
       "name": "Quellijnstraat 36, Amsterdam-Zuid (Weteringbuurt / Quellijnkwartier): 1927 brick block of the Amsterdam School period, a three- to five-storey north front with arched timber garage gates at ground level and a rounded corner, and a long three-storey canal front of small banded windows carrying the green Heineken name",
-      "hash": "46cd45e9fc9ba8189ab874dd5f39e8bff4014478ab4d8c65546ea3fe2bdd0c45",
-      "sha256": "46cd45e9fc9ba8189ab874dd5f39e8bff4014478ab4d8c65546ea3fe2bdd0c45",
-      "bytes": 435228,
+      "hash": "6c611a389b13641670a31a922c6eb13b90c73fe18bc7513b3dec05165df7d86d",
+      "sha256": "6c611a389b13641670a31a922c6eb13b90c73fe18bc7513b3dec05165df7d86d",
+      "bytes": 434380,
       "triangles": 5690,
-      "materials": 13,
+      "materials": 12,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -48240,7 +48240,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012098847",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:14.753Z",
+      "updatedAt": "2026-10-25T11:08:57.768Z",
       "meshHash": "98a25837f9d9a4db"
     },
     {
@@ -48248,12 +48248,12 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012129398",
       "name": "Spinoza Lyceum, Peter van Anrooystraat 8, Amsterdam (built 1957): a white concrete-frame school, four-storey south-east wing with orange timber window panels under awnings over a low band of grid windows, a stair and canopy entrance, and a three-storey west wing of eleven timber-framed bays",
-      "hash": "2c4fd887fb5d950a968cb83cc764b1b95d92f27ed7fbabb256d462407752f340",
-      "sha256": "2c4fd887fb5d950a968cb83cc764b1b95d92f27ed7fbabb256d462407752f340",
+      "hash": "2d37e00559184cff9bd3411c814197551166cdde945385ee932d2597eb0ba0ba",
+      "sha256": "2d37e00559184cff9bd3411c814197551166cdde945385ee932d2597eb0ba0ba",
       "meshHash": "5d79685f4cffa915",
-      "bytes": 476160,
+      "bytes": 475312,
       "triangles": 6548,
-      "materials": 11,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -48489,19 +48489,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012129398",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:16.250Z"
+      "updatedAt": "2026-10-25T11:08:58.363Z"
     },
     {
       "id": "ordinary-0363100012137280",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012137280",
       "name": "Kinkerstraat 32-54, Amsterdam-West (Oud-West): 1999 block of 37 units at the De Hallen end of the Kinkerstraat, six storeys of red-brown brick with a grid of punched windows over a glazed shop ground and mezzanine, a set-back top floor",
-      "hash": "ce0d8b5cb0aac89e4701fa9f400a72ca77215bbd085686ec9bc6430a4a9e7e7c",
-      "sha256": "ce0d8b5cb0aac89e4701fa9f400a72ca77215bbd085686ec9bc6430a4a9e7e7c",
+      "hash": "d59db55fd3eb5ad7210d3b6cc46271712fea2aee2d6990ccb81e286132ecd818",
+      "sha256": "d59db55fd3eb5ad7210d3b6cc46271712fea2aee2d6990ccb81e286132ecd818",
       "meshHash": "0afe8417d84a50bf",
-      "bytes": 645188,
+      "bytes": 644344,
       "triangles": 8708,
-      "materials": 13,
+      "materials": 12,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -48637,19 +48637,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137280",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:12.060Z"
+      "updatedAt": "2026-10-25T11:08:55.336Z"
     },
     {
       "id": "ordinary-0363100012092013",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012092013",
       "name": "Kinkerstraat 89-105, Amsterdam-West (Oud-West): 1987 urban-renewal block opposite De Hallen, five storeys of grey-beige rendered panels with white window bands, cantilevered balconies and yellow-tiled stair towers over a shop ground",
-      "hash": "b53e30fd212bbda27de5194523536edd406ebf29e53b1bd73b85fe692f18848b",
-      "sha256": "b53e30fd212bbda27de5194523536edd406ebf29e53b1bd73b85fe692f18848b",
+      "hash": "f549eade5005ffecb533e0c0276bc8aa7db54150bb1802a9ae3093f62ef59220",
+      "sha256": "f549eade5005ffecb533e0c0276bc8aa7db54150bb1802a9ae3093f62ef59220",
       "meshHash": "b71692a80534605e",
-      "bytes": 366788,
+      "bytes": 365936,
       "triangles": 4825,
-      "materials": 11,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -48792,19 +48792,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012092013",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-17T02:02:02.707Z"
+      "updatedAt": "2026-10-25T11:08:55.432Z"
     },
     {
       "id": "ordinary-0363100012077325",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012077325",
       "name": "Gerrit Rietveld Academie, the Rietveld building (1967, Gerrit Rietveld with J. van Dillen and J. van Tricht), Fred. Roeskestraat 96: a four-storey glass box on a low dark plinth, a fully glazed curtain wall of square grey modules where every floor is a clear vision band between frosted spandrel bands, beside a low workshop wing with saw-tooth roofs",
-      "hash": "763e41a8b5a544cda0587e57ec64188ecc0ae31659f306a0ee6cf889b3c2bac3",
-      "sha256": "763e41a8b5a544cda0587e57ec64188ecc0ae31659f306a0ee6cf889b3c2bac3",
+      "hash": "e8d262896f89d5d085b6837f35fb7879d555b394a635d3b0c5e8c68048f9bf44",
+      "sha256": "e8d262896f89d5d085b6837f35fb7879d555b394a635d3b0c5e8c68048f9bf44",
       "meshHash": "512992958aea9eab",
-      "bytes": 296992,
+      "bytes": 296144,
       "triangles": 4100,
-      "materials": 10,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -48941,17 +48941,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012077325",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-17T08:39:59.601Z"
+      "updatedAt": "2026-10-25T11:08:58.069Z"
     },
     {
       "id": "ordinary-0363100012091838",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012091838",
       "name": "Gerrit Rietveld Academie and Sandberg Instituut, Fred. Roeskestraat 96-98, Amsterdam: a 2006 art-school complex, a ten-storey tower clad in dark grey pressed-metal dimples with three long ribbon windows over a glazed ground storey, beside a two-storey low block whose upper storey is a white expanded-metal screen between white slab edges over a glazed ground",
-      "hash": "dabd876cf07b98c8a354aa7e2194d7cdc06f3909c324aff528393b8fc1d25614",
-      "sha256": "dabd876cf07b98c8a354aa7e2194d7cdc06f3909c324aff528393b8fc1d25614",
+      "hash": "be55303f2919ccae802d8e5b8de9974c4dd9b397c1ce5ceb79efa77ad4b6a469",
+      "sha256": "be55303f2919ccae802d8e5b8de9974c4dd9b397c1ce5ceb79efa77ad4b6a469",
       "meshHash": "2d76a3cd01e35076",
-      "bytes": 400288,
+      "bytes": 400316,
       "triangles": 5412,
       "materials": 11,
       "textures": 0,
@@ -49094,19 +49094,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012091838",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-17T09:01:23.834Z"
+      "updatedAt": "2026-10-25T11:08:58.001Z"
     },
     {
       "id": "ordinary-0363100012080630",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012080630",
       "name": "Soembawastraat 63, Amsterdam (Montessori Lyceum Oostpoort at this address; the building carries a Valentijnschool sign): a 1932 Amsterdam School school of dark purple-brown brick, three storeys of cream-framed multi-pane windows under a deep cream cornice with an attic frieze of small windows and a hipped tile roof, a stone-framed entrance beside a tall stair window",
-      "hash": "28b91ef54bdb814504686a10ce7d645a0e85ae490e64c701f9029cf988f7b21d",
-      "sha256": "28b91ef54bdb814504686a10ce7d645a0e85ae490e64c701f9029cf988f7b21d",
+      "hash": "a46691bb52968ccf574ebb100d1fcbb0a745eb4046a629a53934b77befeef93f",
+      "sha256": "a46691bb52968ccf574ebb100d1fcbb0a745eb4046a629a53934b77befeef93f",
       "meshHash": "a48b786009c7127a",
-      "bytes": 410844,
+      "bytes": 410104,
       "triangles": 5529,
-      "materials": 10,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -49213,19 +49213,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012080630",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T02:17:44.727Z"
+      "updatedAt": "2026-10-25T11:08:56.794Z"
     },
     {
       "id": "ordinary-0363100012165427",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165427",
       "name": "BAG pand 0363100012165427",
-      "hash": "858fbecff7618fb0413bf0afab921ec70cba9c24342927f7823fe2a75da4bffb",
-      "sha256": "858fbecff7618fb0413bf0afab921ec70cba9c24342927f7823fe2a75da4bffb",
+      "hash": "35f4dbb2272dbba0a7679ce6ad1ff63fd55cd296a62ed8979cceb80b078402f5",
+      "sha256": "35f4dbb2272dbba0a7679ce6ad1ff63fd55cd296a62ed8979cceb80b078402f5",
       "meshHash": "65e68496dad59138",
-      "bytes": 691956,
+      "bytes": 691104,
       "triangles": 8859,
-      "materials": 14,
+      "materials": 13,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -49613,19 +49613,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165427",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:14.175Z"
+      "updatedAt": "2026-10-25T11:08:57.243Z"
     },
     {
       "id": "ordinary-0363100012158526",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012158526",
       "name": "Van Eeghenstraat 110A-C, Amsterdam-Zuid (villa between Van Eeghenstraat and the Vondelpark; BAG pand 0363100012158526)",
-      "hash": "b77dd80b4cf70fc6a8f8a602f8e79351f5739ab8616796d6488c16f14daa2ab5",
-      "sha256": "b77dd80b4cf70fc6a8f8a602f8e79351f5739ab8616796d6488c16f14daa2ab5",
+      "hash": "96e59eea66551b59023f164f0266543681fbc4c9fedd71c281b4636337cf0915",
+      "sha256": "96e59eea66551b59023f164f0266543681fbc4c9fedd71c281b4636337cf0915",
       "meshHash": "a24d5b72851f7c5c",
-      "bytes": 147772,
+      "bytes": 146928,
       "triangles": 1814,
-      "materials": 10,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -49726,19 +49726,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012158526",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:16.751Z"
+      "updatedAt": "2026-10-25T11:08:59.783Z"
     },
     {
       "id": "ordinary-0363100012237151",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012237151",
       "name": "Van Eeghenstraat 97-101, Amsterdam-Zuid (1900 pair of villa-houses facing the Vondelpark; BAG pand 0363100012237151)",
-      "hash": "16fe6a5ba5d78f265b77be7876c6142a6182373a7d8e186b979213e6e0974248",
-      "sha256": "16fe6a5ba5d78f265b77be7876c6142a6182373a7d8e186b979213e6e0974248",
+      "hash": "caf727686c0c3cacf9059b278869a04c054ec3a230df0dedd1fb910fcd54a65d",
+      "sha256": "caf727686c0c3cacf9059b278869a04c054ec3a230df0dedd1fb910fcd54a65d",
       "meshHash": "627018dddaa2b6d1",
-      "bytes": 438524,
+      "bytes": 437676,
       "triangles": 5654,
-      "materials": 12,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -49861,19 +49861,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012237151",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:17.608Z"
+      "updatedAt": "2026-10-25T11:08:59.896Z"
     },
     {
       "id": "ordinary-0363100012236607",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236607",
       "name": "Van Eeghenstraat 180-212, Amsterdam-Zuid (1905 mansard villa block between Van Eeghenstraat and the Vondelpark; BAG pand 0363100012236607)",
-      "hash": "93a05b519348e85c15bc5f28cd232c10a6a7e4ceb6dd124b56794a77dc95b283",
-      "sha256": "93a05b519348e85c15bc5f28cd232c10a6a7e4ceb6dd124b56794a77dc95b283",
+      "hash": "84ef2f83445715e6a0f76875abd48d50d645ae7b3017680463f744e991d7592f",
+      "sha256": "84ef2f83445715e6a0f76875abd48d50d645ae7b3017680463f744e991d7592f",
       "meshHash": "e2303f527368ff46",
-      "bytes": 350136,
+      "bytes": 349288,
       "triangles": 4646,
-      "materials": 11,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -50084,19 +50084,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236607",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:17.815Z"
+      "updatedAt": "2026-10-25T11:08:59.835Z"
     },
     {
       "id": "ordinary-0363100012237339",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012237339",
       "name": "Koningslaan 28A-30, Amsterdam-Zuid (1900s pair of villa-houses on the Vondelpark's south edge; BAG pand 0363100012237339)",
-      "hash": "b0b56718c6b83f904b4b61e00a25b5c7693f060827b24f735b57a121c6838af9",
-      "sha256": "b0b56718c6b83f904b4b61e00a25b5c7693f060827b24f735b57a121c6838af9",
+      "hash": "0cdebf3b0b902efa3ed07354ca81ea05ea6ee5e21d15de8ae035b9b99993dfb0",
+      "sha256": "0cdebf3b0b902efa3ed07354ca81ea05ea6ee5e21d15de8ae035b9b99993dfb0",
       "meshHash": "1d1afb66967bed27",
-      "bytes": 301072,
+      "bytes": 300228,
       "triangles": 3689,
-      "materials": 9,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -50269,19 +50269,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012237339",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:12.362Z"
+      "updatedAt": "2026-10-25T11:08:55.664Z"
     },
     {
       "id": "ordinary-0363100012150885",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012150885",
       "name": "Koninginneweg 34, Amsterdam-Zuid (Park Plaza hotel, 1983 brick block south of the Vondelpark; BAG pand 0363100012150885)",
-      "hash": "3a03129e43432ad5d3639a6f39f6a4b8df4546319da003e31df3baf6222f76b2",
-      "sha256": "3a03129e43432ad5d3639a6f39f6a4b8df4546319da003e31df3baf6222f76b2",
+      "hash": "56727a677fe75d4e7ebb825675fee8616942f1352371e2b58c66800aac02cee9",
+      "sha256": "56727a677fe75d4e7ebb825675fee8616942f1352371e2b58c66800aac02cee9",
       "meshHash": "75d51672301f0fd0",
-      "bytes": 323896,
+      "bytes": 323052,
       "triangles": 4255,
-      "materials": 10,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -50511,19 +50511,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012150885",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:12.667Z"
+      "updatedAt": "2026-10-25T11:08:55.631Z"
     },
     {
       "id": "ordinary-0363100012236822",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236822",
       "name": "Emmalaan 4A-6 / Koningslaan 35, Amsterdam-Zuid (1912 brick block at the Emmalaan, south of the Vondelpark; BAG pand 0363100012236822)",
-      "hash": "6ce075638747101d83a838d542a318a9d2c4444a6a0ab2d5add4aebe45112299",
-      "sha256": "6ce075638747101d83a838d542a318a9d2c4444a6a0ab2d5add4aebe45112299",
+      "hash": "aa0cf53ff1244638a60021910bd78f82a19316528b9ee4d352a6dd3868e11d9a",
+      "sha256": "aa0cf53ff1244638a60021910bd78f82a19316528b9ee4d352a6dd3868e11d9a",
       "meshHash": "28a802d09e9f962a",
-      "bytes": 312644,
+      "bytes": 311800,
       "triangles": 4143,
-      "materials": 9,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -50753,7 +50753,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236822",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:09.447Z"
+      "updatedAt": "2026-10-25T11:08:53.225Z"
     },
     {
       "id": "ordinary-0363100012101656",
@@ -51075,12 +51075,12 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012135676",
       "name": "Haarlemmerweg 315-321, Amsterdam-West (1921 brick office block facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012135676)",
-      "hash": "33c7805d2bacdb13eb0961d4ea959d816c6d7796a642665ba291c95aa426de63",
-      "sha256": "33c7805d2bacdb13eb0961d4ea959d816c6d7796a642665ba291c95aa426de63",
+      "hash": "e85bdb8ab48f5b3bb0333a556ec6993e99f2b88910631703f149c5c9e32aa351",
+      "sha256": "e85bdb8ab48f5b3bb0333a556ec6993e99f2b88910631703f149c5c9e32aa351",
       "meshHash": "00f9c2c73eab4378",
-      "bytes": 965172,
+      "bytes": 964432,
       "triangles": 13103,
-      "materials": 11,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -51179,17 +51179,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012135676",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:10.352Z"
+      "updatedAt": "2026-10-25T11:08:53.897Z"
     },
     {
       "id": "ordinary-0363100012160400",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012160400",
       "name": "Haarlemmerweg 201, Amsterdam-West (1901 brick house over a white rendered workshop ground floor, facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012160400)",
-      "hash": "36575693eb52cd07a049bb1e80d6bf95871a36cc84b2c877e7ac3fcc13d9ff69",
-      "sha256": "36575693eb52cd07a049bb1e80d6bf95871a36cc84b2c877e7ac3fcc13d9ff69",
+      "hash": "6b988753a3e4590e07bb9e449c665a81712c98ccf4bd8f4b1a6bbe6ba84c3a43",
+      "sha256": "6b988753a3e4590e07bb9e449c665a81712c98ccf4bd8f4b1a6bbe6ba84c3a43",
       "meshHash": "4c63e01958e8ea50",
-      "bytes": 209632,
+      "bytes": 209668,
       "triangles": 2589,
       "materials": 7,
       "textures": 0,
@@ -51275,19 +51275,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012160400",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:09.947Z"
+      "updatedAt": "2026-10-25T11:08:53.774Z"
     },
     {
       "id": "ordinary-0363100012106960",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012106960",
       "name": "Haarlemmerweg 77-87, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012106960)",
-      "hash": "6e6c6dbd84f633396659b11c90f0dbf91ad2f9e4848925f3dbd0ea376a18889e",
-      "sha256": "6e6c6dbd84f633396659b11c90f0dbf91ad2f9e4848925f3dbd0ea376a18889e",
+      "hash": "3b0dd5710e52d0dcf214de872d33c15de424609057e0e881ff5d80efcfb25305",
+      "sha256": "3b0dd5710e52d0dcf214de872d33c15de424609057e0e881ff5d80efcfb25305",
       "meshHash": "67e3443b8368cd7c",
-      "bytes": 298124,
+      "bytes": 297288,
       "triangles": 3994,
-      "materials": 9,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -51393,19 +51393,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012106960",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:10.681Z"
+      "updatedAt": "2026-10-25T11:08:53.959Z"
     },
     {
       "id": "ordinary-0363100012081533",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012081533",
       "name": "Haarlemmerweg 63-71, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012081533)",
-      "hash": "a468c7c4e08561129997975ce1236434b4232d5b45d208bb29c639a66812dda6",
-      "sha256": "a468c7c4e08561129997975ce1236434b4232d5b45d208bb29c639a66812dda6",
+      "hash": "5bf85dc32252a9cc91db92245944a52180d3c37571aedff3560761ee6c3193fc",
+      "sha256": "5bf85dc32252a9cc91db92245944a52180d3c37571aedff3560761ee6c3193fc",
       "meshHash": "901ef801cf8b2d3f",
-      "bytes": 246460,
+      "bytes": 245612,
       "triangles": 3259,
-      "materials": 8,
+      "materials": 7,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -51529,7 +51529,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012081533",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:10.595Z"
+      "updatedAt": "2026-10-25T11:08:53.920Z"
     },
     {
       "id": "ordinary-0363100012111773",
@@ -51925,10 +51925,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012084332",
       "name": "Haarlemmerweg 73-75, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012084332)",
-      "hash": "99dc7ded2162e97bd9851aac835217bc2e462e46a49ec12399c540366fac5f08",
-      "sha256": "99dc7ded2162e97bd9851aac835217bc2e462e46a49ec12399c540366fac5f08",
+      "hash": "bd056ffe3b7216fc56e970ef5d7dab217f2c8fc8c0294463162f176ee6cde2c7",
+      "sha256": "bd056ffe3b7216fc56e970ef5d7dab217f2c8fc8c0294463162f176ee6cde2c7",
       "meshHash": "82225c1d9d2bf774",
-      "bytes": 99852,
+      "bytes": 99880,
       "triangles": 1260,
       "materials": 8,
       "textures": 0,
@@ -52012,7 +52012,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012084332",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T09:39:10.605Z"
+      "updatedAt": "2026-10-25T11:08:53.930Z"
     },
     {
       "id": "ordinary-0363100012097106",
