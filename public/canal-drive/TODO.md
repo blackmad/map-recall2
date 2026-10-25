@@ -39,6 +39,10 @@ an issue labelled `lane` (+ `programme`), commented with its hand-back and
 closed when merged. Inbox:
 https://github.com/blackmad/map-recall2/issues?q=is%3Aopen+label%3Aneeds-david
 
+**Usage pause 2026-10-25 (95 % weekly).** Lanes in flight, their state, the
+next step for each and the integration checklist: `docs/handoffs/inflight-20261025.md`.
+Read that first.
+
 Plan `docs/plans/thousand-buildings-20261023.md`; rules `docs/handoffs/LANE-RULES.md`;
 one brief per lane in `docs/handoffs/lane-*-20261023.md`. Census baseline
 2026-10-23: 386 counted (grandfathered gallery reviews), 47 strict; target
@@ -111,7 +115,7 @@ Open, in order:
   city look lack the 1.106 brick gain beside default-look chunks.
 - **district-style** (B1), **buurt-autoplace** (B3). **buurt-designs** (B2):
   10 buurten done 2026-10-25 (#70, #72, #74; ~4,350 houses, 22 designs);
-  rounds 4-8 done (#75, #77, #79, #80, #82; 31 buurten, ~8,900 houses); Helmersbuurt block-face kit (#81) done, 33 houses (rest of EU03 not attempted); round 9 (#85) and kit gaps for the held Haarlemmerweg pair (#86) running; Haarlemmerweg 333 (#83): Carpetright installed, Nieuwpoortkade 2 and Waterkeringweg 7 held (kit: paired small+wide windows, recessed loggia band); white trim and
+  rounds 4-8 done (#75, #77, #79, #80, #82; 31 buurten, ~8,900 houses); Helmersbuurt block-face kit (#81) done, 33 houses (rest of EU03 not attempted); round 9 (#85) paused mid-run (see inflight-20261025.md); #86 merged: Da Vinci installed, Waterkeringweg 7 held for better views; Haarlemmerweg 333 (#83): Carpetright installed, Nieuwpoortkade 2 installed via #86, Waterkeringweg 7 held; white trim and
   one-draw-per-unit done (#78). Open: nn-row chunky joinery (`frameM`);
   opt-in recipe tiles need recompiling from the recoloured units; Gein 3 all-timber and
   brick-canopy rows, Holendrecht S2/S4, Twiske porch canopies, K-buurt
