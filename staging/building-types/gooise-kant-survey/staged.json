@@ -1,0 +1,51 @@
+[
+ {
+  "area": "th-gk-01",
+  "anchor": {
+   "lng": 4.96944,
+   "lat": 52.31161
+  },
+  "pands": 33,
+  "missing": 0,
+  "per": {
+   "th-gk-row/hood/photo": 33
+  }
+ },
+ {
+  "area": "th-gk-02",
+  "anchor": {
+   "lng": 4.97002,
+   "lat": 52.31091
+  },
+  "pands": 14,
+  "missing": 0,
+  "per": {
+   "th-gk-row/hood/photo": 14
+  }
+ },
+ {
+  "area": "th-gk-03",
+  "anchor": {
+   "lng": 4.96744,
+   "lat": 52.3139
+  },
+  "pands": 105,
+  "missing": 0,
+  "per": {
+   "th-gk-row/hood/photo": 84,
+   "th-gk-row/band/photo": 21
+  }
+ },
+ {
+  "area": "th-gk-04",
+  "anchor": {
+   "lng": 4.96521,
+   "lat": 52.31633
+  },
+  "pands": 17,
+  "missing": 0,
+  "per": {
+   "th-gk-row/band/photo": 17
+  }
+ }
+]

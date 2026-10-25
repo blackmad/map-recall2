@@ -1,0 +1,366 @@
+{
+ "id": "nd-bb-row",
+ "label": "Buiksloterbreek (1990s, Noord) three-storey flat-roofed terraced house: pale grey brick block shared with the mirrored neighbour (blue doors in a recess under a white lintel, French windows with balconettes on top) beside a grey-blue glazed bay",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 0,
+  "bouwjaar": [
+   1990,
+   2000
+  ],
+  "lengthM": 5.8,
+  "widthM": 8.9,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 3,
+ "eavesRangeM": [
+  7.4,
+  9.2
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.4,
+   6.3
+  ],
+  "depth": [
+   8.5,
+   9.5
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.25,
+  "vergeOverhangM": 0.25,
+  "thicknessM": 0.25,
+  "pitchDeg": 0,
+  "eavesPinM": 8.4
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "alternateMirror": true,
+ "defaultVariant": "pale",
+ "variants": {
+  "pale": {
+   "label": "pale grey brick, blue doors",
+   "evidence": "every front row (2135732, 2134579, 2086937)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#dddcd6",
+     "measured": true
+    },
+    "frame": "#596069",
+    "glass": "#4d5a66",
+    "door": "#2c3b8a",
+    "accent": "#e8e6df",
+    "rail": "#2f3338",
+    "dark": "#8592a3",
+    "column": "#e8e6df",
+    "joint": "#9a978e",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#55575a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012135732.jpg",
+     "pand": "0363100012135732",
+     "address": "Buiksloterbreek",
+     "note": "2024-10 overcast, 72 px/m on the 5.85 m house: brick block-half 0-3.68 m (paired with the mirrored neighbour into one block), glazed grey-blue bay 3.68-5.85 m; blue storage and front doors in a recess under a white lintel; two small middle-floor windows; top floor French window with a balconette; flat roof with a projecting cap at 8.4 m"
+    },
+    {
+     "photo": "survey crop 0363100012134579.jpg",
+     "pand": "0363100012134579",
+     "address": "Buiksloterbreek",
+     "note": "2024-10: same"
+    },
+    {
+     "photo": "survey crop 0363100012086937.jpg",
+     "pand": "0363100012086937",
+     "address": "Buiksloterbreek",
+     "note": "2024-10: same, French windows doubled over the pair"
+    },
+    {
+     "photo": "survey crop 0363100012130329.jpg",
+     "pand": "0363100012130329",
+     "address": "Buiksloterbreek",
+     "note": "2025-09 sunlit: same, the glazed bay one storey lower than the block"
+    },
+    {
+     "photo": "survey crop 0363100012112831.jpg",
+     "pand": "0363100012112831",
+     "address": "Buiksloterbreek",
+     "note": "2025-09: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 2,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "storageDoor",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.52,
+       "w": 0.95,
+       "h": 2.3,
+       "note": "blue panel door in the entrance recess"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.5,
+       "w": 0.9,
+       "h": 2.3,
+       "note": "blue front door"
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.1,
+       "w": 2.3,
+       "h": 0.12,
+       "sill": 2.4,
+       "depth": 0.12,
+       "canopy": "flat",
+       "colour": "accent",
+       "note": "white lintel over the entrance recess"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 0.7,
+       "w": 0.42,
+       "h": 1.1,
+       "sill": 0.92,
+       "lights": 1,
+       "note": "small window, dark frame"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 2.2,
+       "w": 0.42,
+       "h": 1.1,
+       "sill": 0.92,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 1.26,
+       "w": 1.45,
+       "h": 2.0,
+       "sill": 0.25,
+       "lights": 2,
+       "note": "French window with a balconette"
+      },
+      {
+       "kind": "balcony",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 1.26,
+       "w": 1.75,
+       "h": 1.0,
+       "depth": 0.2,
+       "railing": "bars"
+      },
+      {
+       "kind": "panel",
+       "levels": "all",
+       "ref": "left",
+       "u": 4.77,
+       "w": 2.17,
+       "h": 2.8,
+       "sill": 0,
+       "colour": "dark",
+       "depth": 0.03,
+       "note": "glazed bay: grey-blue panels"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.77,
+       "w": 1.9,
+       "h": 1.55,
+       "sill": 0.85,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.77,
+       "w": 1.9,
+       "h": 1.2,
+       "sill": 0.5,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 4.77,
+       "w": 1.9,
+       "h": 0.9,
+       "sill": 0.4,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012098594.jpg",
+     "pand": "0363100012098594",
+     "address": "Buiksloterbreek",
+     "note": "the garden side was not photographed (the garage-street shots show other rows): inferred garden door and window below, two windows above"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.3
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.6,
+       "w": 2.4,
+       "h": 1.9,
+       "sill": 0.3,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.5,
+       "w": 1.2,
+       "h": 1.3,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.1,
+       "w": 1.2,
+       "h": 1.3,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012130329.jpg",
+     "pand": "0363100012130329",
+     "address": "Buiksloterbreek",
+     "note": "end walls: plain pale brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012130329.jpg",
+     "pand": "0363100012130329",
+     "address": "Buiksloterbreek",
+     "note": "end walls: plain pale brick"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Wall #dddcd6: overcast medians of the pale grey brick (#b8b9b5) lifted against the white lintel of the same crops; the doors are cobalt blue, the glazed bay grey-blue panels.",
+  "Kit cannot yet lower one bay of a house: the glazed bay stands one storey lower than the brick block in the photos but is drawn to the block roof (its top storey is the grey-blue panel).",
+  "The garage-street rows with patterned dark brick (#1, #4, #5, #7, #8, #10) and the detached villas are other designs (not modelled).",
+  "Roof pinned at 8.4 m (eavesPinM, the block top read from the photos and the pand height): 3DBAG b3_h_dak_min reads the lower glazed bay (5.5-6.0 m) on many houses."
+ ]
+}

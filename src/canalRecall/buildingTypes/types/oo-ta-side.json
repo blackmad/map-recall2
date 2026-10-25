@@ -74,7 +74,8 @@
     "joint": "#3a3430",
     "roof": {
      "slot": "roofTile",
-     "tint": "#6a443c"
+     "tint": "#8d6e60",
+     "measured": true
     }
    }
   },
@@ -96,7 +97,8 @@
     "joint": "#3a3430",
     "roof": {
      "slot": "roofTile",
-     "tint": "#6a443c"
+     "tint": "#8d6e60",
+     "measured": true
     }
    }
   },
@@ -118,7 +120,8 @@
     "joint": "#3a3430",
     "roof": {
      "slot": "roofTile",
-     "tint": "#6a443c"
+     "tint": "#8d6e60",
+     "measured": true
     }
    }
   }
@@ -436,6 +439,7 @@
   "Openings measured on 2091220 (7.6 m house, 64 px/m at the facade): balcony 0-3.4 m from the party wall, doors 3.9-5.7 m, upper windows 4.8-5.9 and 6.3-7.5 m.",
   "Mirror parity along the row (the double balcony straddles every second party wall): inferred from the row order.",
   "Colour per terrace (doors = balcony rails = eaves board) read from the survey photo; garden side inferred.",
-  "Chimney stacks partly measured (positions perspective-corrected, sizes estimated)."
+  "Chimney stacks partly measured (positions perspective-corrected, sizes estimated).",
+  "Roof tint measured (#75): lit tile body (roofColour.ts litTileMedian) of the sunlit slopes of 2091220 #8b6e65 and 2097592 #8f6e5b (2020-04 panoramas), mean #8d6e60; the PDOK orthophoto pitched readings of the 84 placed pands (median #6b5a63, L 0.39, near-neutral) agree (roof-colours.ts). Drawn as measured: the city tile mapping drew the authored #6a443c orange (#a45e4f)."
  ]
 }

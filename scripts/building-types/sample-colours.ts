@@ -6,10 +6,11 @@
  *
  * Each argument is <pand id (full or last 7 digits)>:<x0>,<y0>,<x1>,<y1> with the rectangle in 0..1 crop coordinates (over the
  * 1000 x 750 crop, origin top-left). Prints the plain median, the median of the warm (brick/render-like) pixels and a 4-means clustering (centre colour, share of pixels): the wall
- * is normally the largest cluster; windows, sky and shadows fall into the others, so use a rectangle that is mostly facade.
+ * is normally the largest cluster; `lit-tile` is the lit tile body of a roof crop (roofColour.ts `litTileMedian`, the roof tint); windows, sky and shadows fall into the others, so use a rectangle that is mostly facade.
  */
 import fs from 'node:fs';
 import sharp from 'sharp';
+import {litTileMedian} from '../../src/canalRecall/buildingTypes/roofColour.ts';
 
 // --dir=<folder of crops> samples other crops (e.g. a lane's rectified panorama crops) instead of the survey cache.
 const dir = process.argv.find(a => a.startsWith('--dir='))?.slice(6) ?? '.cache/building-types/crops', files = fs.readdirSync(dir);
@@ -44,5 +45,5 @@ for (const arg of process.argv.slice(2).filter(a => !a.startsWith('--'))) {
   const med = [0, 1, 2].map(c => median(px.map(p => p[c])));
   const warm = px.filter(p => p[0] > p[1] && p[1] >= p[2] && p[0] - p[2] > 35 && p[0] > 60);
   const warmMed = warm.length > 20 ? [0, 1, 2].map(c => median(warm.map(p => p[c]))) : med;
-  console.log(f.replace('.jpg', ''), rect, 'median', hex(med), 'warm-median', hex(warmMed), `(${(warm.length / px.length * 100).toFixed(0)}% warm)`, '| clusters', kmeans(px, 4).map(k => `${hex(k.c)} ${(k.n * 100).toFixed(0)}%`).join('  '));
+  console.log(f.replace('.jpg', ''), rect, 'median', hex(med), 'warm-median', hex(warmMed), `(${(warm.length / px.length * 100).toFixed(0)}% warm)`, 'lit-tile', litTileMedian(px as [number, number, number][]), '| clusters', kmeans(px, 4).map(k => `${hex(k.c)} ${(k.n * 100).toFixed(0)}%`).join('  '));
 }

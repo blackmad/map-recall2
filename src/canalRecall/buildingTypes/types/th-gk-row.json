@@ -1,0 +1,504 @@
+{
+ "id": "th-gk-row",
+ "label": "Gooise Kant (2016-20, Driemond edge) terraced house: red brick ground storey with a dark brick plinth course, cream horizontal weatherboard across the upper windows, dark tile gable roof with rooflights, white door with side light under a flat white hood (or a continuous white canopy), mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 0,
+  "bouwjaar": [
+   2016,
+   2020
+  ],
+  "lengthM": 5.1,
+  "widthM": 8.9,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.0,
+  7.0
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.7,
+   6.4
+  ],
+  "depth": [
+   8.0,
+   12.0
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.35,
+  "vergeOverhangM": 0.1,
+  "thicknessM": 0.15,
+  "pitchDeg": 40,
+  "rooflights": {
+   "u": [
+    0.45
+   ],
+   "w": 0.75,
+   "h": 0.65,
+   "along": 0.45
+  },
+  "eavesFromPlanes": "lower"
+ },
+ "ground": {
+  "mode": "solid",
+  "plinthM": 4.2
+ },
+ "alternateMirror": true,
+ "defaultVariant": "hood",
+ "variants": {
+  "hood": {
+   "label": "flat white hood over each door",
+   "evidence": "Gooise Kant terraces #0-#30 (2251953, 2251931, 2249867, 2249853)",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#e6dfcc"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#704a48",
+     "measured": true
+    },
+    "gable": {
+     "slot": "brick",
+     "tint": "#704a48",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#ece9de",
+    "accent": "#f0eee6",
+    "rail": "#f0eee6",
+    "dark": "#504243",
+    "column": "#f0eee6",
+    "joint": "#bdb5a0",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#5d6063",
+     "measured": true
+    }
+   }
+  },
+  "band": {
+   "label": "one continuous white canopy over the ground storey",
+   "evidence": "Gooise Kant terraces #31-#41 (2244484, 2244487)",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#e6dfcc"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#704a48",
+     "measured": true
+    },
+    "gable": {
+     "slot": "brick",
+     "tint": "#704a48",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#ece9de",
+    "accent": "#f0eee6",
+    "rail": "#f0eee6",
+    "dark": "#504243",
+    "column": "#f0eee6",
+    "joint": "#bdb5a0",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#5d6063",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012251953.jpg",
+     "pand": "0363100012251953",
+     "address": "Gooise Kant",
+     "note": "2022-01 overcast, 75 px/m on the 5.1 m house between party walls: ground 2-light window 0.73-2.2 m, door 2.9-3.93 m + side light to 4.29 m under a 1.95 m flat white hood at ~2.5 m; cream weatherboard from just under the upper windows to the eaves; upper 2-light 0.83-2.21 m and 1-light 3.24-3.96 m; dark brick plinth course ~0.9 m; mirrored pairs (doors adjacent). Brick #492f2b under white hood #9c9789 -> white-referenced #704a48; board #9f998d; plinth #342a28 -> #504243"
+    },
+    {
+     "photo": "survey crop 0363100012251931.jpg",
+     "pand": "0363100012251931",
+     "address": "Gooise Kant",
+     "note": "2020-01: same hood row, rooflights, one dormer on some houses (not modelled)"
+    },
+    {
+     "photo": "survey crop 0363100012249867.jpg",
+     "pand": "0363100012249867",
+     "address": "Gooise Kant",
+     "note": "2020-01: same hood row"
+    },
+    {
+     "photo": "survey crop 0363100012249853.jpg",
+     "pand": "0363100012249853",
+     "address": "Gooise Kant",
+     "note": "2020-01: same hood row, doors paired"
+    },
+    {
+     "photo": "survey crop 0363100012244484.jpg",
+     "pand": "0363100012244484",
+     "address": "Gooise Kant",
+     "note": "2020-01 band variant, 67.6 px/m: door 1.18-2.37 m with a narrow side light, 3-light window 2.99-4.85 m, continuous white canopy at ~2.75 m, brick up to the upper sills, two 2-light windows in the board strip; dark plinth course to ~1.1 m"
+    },
+    {
+     "photo": "survey crop 0363100012244487.jpg",
+     "pand": "0363100012244487",
+     "address": "Gooise Kant",
+     "note": "2020-01 band variant: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.47,
+       "w": 1.45,
+       "h": 1.4,
+       "sill": 0.95,
+       "lights": 2,
+       "frameM": 0.08,
+       "variants": [
+        "hood"
+       ],
+       "note": "2-light casement, white frame (2251953: 0.73-2.2 m)"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.35,
+       "w": 0.98,
+       "h": 2.35,
+       "variants": [
+        "hood"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.05,
+       "w": 0.3,
+       "h": 2.25,
+       "sill": 0.05,
+       "lights": 1,
+       "frameM": 0.06,
+       "variants": [
+        "hood"
+       ],
+       "note": "glazed side light right of the door"
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.95,
+       "h": 0.22,
+       "sill": 2.45,
+       "depth": 0.6,
+       "canopy": "flat",
+       "variants": [
+        "hood"
+       ],
+       "note": "flat white hood box over door and side light"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.9,
+       "w": 0.98,
+       "h": 2.4,
+       "variants": [
+        "band"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.25,
+       "w": 0.22,
+       "h": 2.3,
+       "sill": 0.05,
+       "lights": 1,
+       "frameM": 0.05,
+       "variants": [
+        "band"
+       ],
+       "note": "narrow side light left of the door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.9,
+       "w": 1.85,
+       "h": 1.5,
+       "sill": 1.05,
+       "lights": 3,
+       "frameM": 0.08,
+       "variants": [
+        "band"
+       ],
+       "note": "3-light window (2244484: 2.99-4.85 m)"
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "u": 0,
+       "h": 0.2,
+       "sill": 2.75,
+       "depth": 0.55,
+       "canopy": "flat",
+       "span": true,
+       "variants": [
+        "band"
+       ],
+       "note": "one continuous white canopy along the row"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.52,
+       "w": 1.39,
+       "h": 1.35,
+       "sill": 1.3,
+       "lights": 2,
+       "frameM": 0.08,
+       "variants": [
+        "hood"
+       ],
+       "note": "2-light window in the cream weatherboard"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.6,
+       "w": 0.72,
+       "h": 1.35,
+       "sill": 1.3,
+       "lights": 1,
+       "frameM": 0.08,
+       "variants": [
+        "hood"
+       ],
+       "note": "narrow window over the door"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.2,
+       "w": 1.6,
+       "h": 1.35,
+       "sill": 1.3,
+       "lights": 2,
+       "frameM": 0.08,
+       "variants": [
+        "band"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.8,
+       "w": 1.6,
+       "h": 1.35,
+       "sill": 1.3,
+       "lights": 2,
+       "frameM": 0.08,
+       "variants": [
+        "band"
+       ]
+      }
+     ]
+    }
+   ],
+   "stripes": [
+    {
+     "levels": "ground",
+     "pitchM": 20,
+     "heightM": 0.95,
+     "offsetM": 0,
+     "depthM": 0.035,
+     "palette": "dark"
+    },
+    {
+     "levels": "upper",
+     "pitchM": 0.21,
+     "heightM": 0.03,
+     "offsetM": 1.3,
+     "palette": "joint"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012251953.jpg",
+     "pand": "0363100012251953",
+     "address": "Gooise Kant",
+     "note": "garden side not photographed (inferred: garden door and window below, two windows above, board as the front)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.3
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.3,
+       "w": 2.0,
+       "h": 1.6,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.4,
+       "w": 1.3,
+       "h": 1.35,
+       "sill": 1.3,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.7,
+       "w": 1.3,
+       "h": 1.35,
+       "sill": 1.3,
+       "lights": 2
+      }
+     ]
+    }
+   ],
+   "stripes": [
+    {
+     "levels": "ground",
+     "pitchM": 20,
+     "heightM": 0.95,
+     "offsetM": 0,
+     "depthM": 0.035,
+     "palette": "dark"
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012248870.jpg",
+     "pand": "0363100012248870",
+     "address": "Gooise Kant",
+     "note": "end houses (#29, #13): brick gable to the roof (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012248870.jpg",
+     "pand": "0363100012248870",
+     "address": "Gooise Kant",
+     "note": "end houses (#29, #13): brick gable to the roof (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Overcast photos only (2020-01, 2022-01): wall colours white-referenced against the white hood/canopy of the same crop (exposure.ts).",
+  "Brick rises to just under the upper windows (ground.plinthM 4.2 m, the plinth palette is the red brick); the cream weatherboard is the wall above it with shadow lines (stripes, joint palette); the dark brick plinth course is a stripe 3.5 cm proud.",
+  "Dormers on some houses, the grey vent stacks, solar panels and the brick porch boxes of the band rows (#36, #38, #40) are not modelled.",
+  "Deep houses (11.2-11.8 m, terraces #0-#2: rear extension in the BAG ring) get their own unit (sizeClassesM depth 10 m) instead of a stretched one."
+ ],
+ "sizeClassesM": {
+  "depth": [
+   10.0
+  ]
+ }
+}

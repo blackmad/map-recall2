@@ -1,0 +1,17 @@
+[
+ {
+  "area": "th-kz-01",
+  "anchor": {
+   "lng": 4.98015,
+   "lat": 52.31372
+  },
+  "pands": 192,
+  "missing": 0,
+  "per": {
+   "th-kz-row/green/photo": 74,
+   "th-kz-row/orange/photo": 16,
+   "th-kz-row/mauve/photo": 53,
+   "th-kz-row/blue/photo": 49
+  }
+ }
+]

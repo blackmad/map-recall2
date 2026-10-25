@@ -43,6 +43,12 @@ export interface Element {
   inset?: number;
   /** Repeat the element this many times, one copy centred in each equal slot of the bay (`u` offsets each copy). */
   repeat?: number;
+  /**
+   * Window only (plate frame): chunky joinery (#75). `frameM` is the frame border drawn INSIDE the measured opening (default: the
+   * 6 cm border outside it); `transomM` puts a horizontal bar that far below the head (top lights over casements). Absent: unchanged.
+   */
+  frameM?: number;
+  transomM?: number;
   /** Window/ribbon/door: `strips` draws the frame (door: surround) as border strips 4.5 cm in front instead of a plate stacked 5 mm under the glass/leaf (big glazing, many openings: no z-fight). */
   frameStyle?: 'plate' | 'strips';
   /** Gallery only: vertical cross walls (fins) evenly from end to end of the gallery, ends included. */
@@ -102,15 +108,22 @@ export interface FacadeSpec {
   /**
    * Striped brickwork (horizontal bands of a second brick): bands `heightM` tall every `pitchM`, the first `offsetM` above each storey's
    * floor line, over the storeys in `levels` (the top storey reaches the wall top), 1 cm proud of the wall and cut where a window, door
-   * or canopy of this facade sits.
+   * or canopy of this facade sits. `depthM` (#75) sets how far proud (default 0.01 m): a dark brick plinth course in front of a
+   * `ground.plinthM` band (2.5 cm proud) needs more.
    */
-  stripes?: {levels: Levels; pitchM: number; heightM: number; offsetM?: number; palette: PaletteKey}[];
+  stripes?: {levels: Levels; pitchM: number; heightM: number; offsetM?: number; depthM?: number; palette: PaletteKey}[];
 }
 
 /**
  * A wall/roof colour. `measured: true` marks `tint` as the sunlit photo colour, drawn as is (runtime `tintSource: 'measured'`,
  * look/palette.ts `cityMeasuredWallTint`) rather than mapped into the city brick range (L <= 0.6, S >= 0.12), which turns a
  * pale yellow or cream brick tan or olive. Absent, the material and the GLB are unchanged.
+ *
+ * On `palette.roof` (issue #75) a measured pitched roof (`roofTile` or `slate`) is the photo colour of the slope (sunlit street
+ * crop, cross-checked against the PDOK orthophoto reading of the design's pands: roofColour.ts, roof-colours.ts), drawn as is
+ * (look/palette.ts `cityMeasuredPitchedRoofTint`) instead of `cityRoofTint`, which floors a tile's saturation at 0.35 and
+ * lifts it to L 0.38-0.5 (brown-red tiles drew orange) and turns any tile with S < 0.2 into the city slate (olive concrete
+ * tiles drew blue-grey). Measured colours must be #rrggbb on a slot the look keeps measured (MEASURED_TINT_SLOTS).
  */
 export interface SlotTint {slot: Slot; tint: string; measured?: boolean}
 
@@ -342,8 +355,17 @@ export function sizeClass(spec: Pick<TypeSpec, 'sizeClassesM'>, frontageM: numbe
   return `f${idx(c.frontage, frontageM)}d${idx(c.depth, depthM)}`;
 }
 
+/** Slots whose `measured` tint the look keeps (look/palette.ts MEASURED_SLOTS, minus glass and stone: not palette slots here). */
+export const MEASURED_TINT_SLOTS: readonly Slot[] = ['brick', 'accent', 'bitumen', 'slate', 'roofTile'];
+
 export function validateSpec(spec: TypeSpec): string[] {
   const errors: string[] = [];
+  for (const [name, v] of Object.entries(spec.variants)) for (const [key, t] of Object.entries(v.palette)) {
+    if (!t || typeof t !== 'object' || !(t as SlotTint).measured) continue;
+    const st = t as SlotTint;
+    if (!/^#[0-9a-f]{6}$/i.test(st.tint)) errors.push(`variant ${name}: measured ${key} tint ${st.tint} is not #rrggbb`);
+    if (!MEASURED_TINT_SLOTS.includes(st.slot)) errors.push(`variant ${name}: ${key} slot ${st.slot} has no measured look`);
+  }
   if (!spec.variants[spec.defaultVariant]) errors.push(`defaultVariant ${spec.defaultVariant} not in variants`);
   for (const [axis, ts] of Object.entries(spec.sizeClassesM ?? {})) if (!ts?.length || ts.some((t, i) => !(t > 0) || (i > 0 && t <= ts[i - 1]))) errors.push(`sizeClassesM.${axis}: thresholds must be positive and ascending`);
   for (const id of FACADE_IDS) {
@@ -354,6 +376,12 @@ export function validateSpec(spec: TypeSpec): string[] {
     if (!f.evidence.length) errors.push(`${id}: no evidence`);
     if (new Set(f.bays.map(b => b.id)).size !== f.bays.length) errors.push(`${id}: duplicate bay ids`);
     for (const b of f.bays) for (const e of b.elements) for (const v of [...(e.variants ?? []), ...(e.exceptVariants ?? [])]) if (!spec.variants[v]) errors.push(`${id}/${b.id}: unknown variant ${v}`);
+    for (const b of f.bays) for (const e of b.elements) {
+      if (e.frameM === undefined && e.transomM === undefined) continue;
+      if (e.kind !== 'window' || e.frameStyle === 'strips') errors.push(`${id}/${b.id}: frameM/transomM are for plate-frame windows`);
+      if (e.frameM !== undefined && !(e.frameM > 0 && e.frameM < Math.min(e.w ?? Infinity, e.h ?? Infinity) / 3)) errors.push(`${id}/${b.id}: frameM ${e.frameM} out of range`);
+      if (e.transomM !== undefined && !(e.transomM > (e.frameM ?? 0.06) && e.transomM < (e.h ?? Infinity) - (e.frameM ?? 0.06))) errors.push(`${id}/${b.id}: transomM ${e.transomM} outside the window`);
+    }
   }
   if (spec.storeys < 2) errors.push('storeys < 2');
   for (const a of spec.annexes ?? []) {

@@ -68,6 +68,11 @@ const VIEWS: Record<string, { center: [number, number]; zoom: number; pitch: num
   'flats-d1-grey-close': { center: [4.78991098, 52.36308275], zoom: 19.2, pitch: 60, bearing: 162 },
   'flats-d5-street': { center: [4.8258, 52.3813], zoom: 17.8, pitch: 62, bearing: 284 },
   'flats-d5-close': { center: [4.82583041, 52.38126567], zoom: 19.2, pitch: 60, bearing: 284 },
+  // 2026-10-25 round 4 (#75): Dichtersbuurt, Gooise Kant, K-buurt-Zuidwest, Buiksloterbreek rows.
+  'r4-dichtersbuurt': { center: [4.822176, 52.376410], zoom: 18.4, pitch: 62, bearing: 104 },
+  'r4-gooise-kant': { center: [4.968800, 52.313004], zoom: 18.4, pitch: 62, bearing: 330 },
+  'r4-k-buurt-zuidwest': { center: [4.981315, 52.312778], zoom: 18.4, pitch: 62, bearing: 61 },
+  'r4-buiksloterbreek': { center: [4.907009, 52.402211], zoom: 18.4, pitch: 62, bearing: 142 },
 };
 const ONLY = process.env.BT_VIEWS?.split(',');
 const CAM = ['jumpTo', 'easeTo', 'flyTo', 'setCenter', 'setZoom', 'setBearing', 'setPitch'];

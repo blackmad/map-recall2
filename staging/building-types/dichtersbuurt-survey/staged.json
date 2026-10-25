@@ -1,0 +1,26 @@
+[
+ {
+  "area": "fe-db-01",
+  "anchor": {
+   "lng": 4.82231,
+   "lat": 52.37585
+  },
+  "pands": 8,
+  "missing": 0,
+  "per": {
+   "fe-db-row/black-door/photo": 8
+  }
+ },
+ {
+  "area": "fe-db-02",
+  "anchor": {
+   "lng": 4.82152,
+   "lat": 52.37683
+  },
+  "pands": 201,
+  "missing": 0,
+  "per": {
+   "fe-db-row/black-door/photo": 201
+  }
+ }
+]

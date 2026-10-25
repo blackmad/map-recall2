@@ -1,0 +1,252 @@
+{
+ "terraces": {
+  "0": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo"
+  },
+  "1": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "2": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": true
+  },
+  "3": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "4": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": true
+  },
+  "5": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "6": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "7": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "8": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": true
+  },
+  "9": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": true
+  },
+  "10": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": true
+  },
+  "11": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "12": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": true
+  },
+  "13": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": true
+  },
+  "14": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": true
+  },
+  "15": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "16": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": true
+  },
+  "17": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "note": "close-up crop: white door, side light and hood only"
+  },
+  "18": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": true
+  },
+  "19": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": true
+  },
+  "20": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": true
+  },
+  "21": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "22": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "23": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": true
+  },
+  "24": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "25": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "26": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "27": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "note": "close-up crop: white door, side light and hood only"
+  },
+  "28": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "note": "close-up crop: white door, side light and hood only"
+  },
+  "29": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "30": {
+   "type": "th-gk-row",
+   "variant": "hood",
+   "via": "photo",
+   "repMirror": false
+  },
+  "31": {
+   "type": "th-gk-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": true
+  },
+  "32": {
+   "type": "th-gk-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": true
+  },
+  "33": {
+   "type": "th-gk-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": false
+  },
+  "35": {
+   "type": "th-gk-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": true
+  },
+  "36": {
+   "type": "th-gk-row",
+   "variant": "band",
+   "via": "photo",
+   "note": "brick porch boxes in front of some doors not modelled",
+   "repMirror": false
+  },
+  "37": {
+   "type": "th-gk-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": false
+  },
+  "38": {
+   "type": "th-gk-row",
+   "variant": "band",
+   "via": "photo",
+   "note": "brick porch boxes in front of some doors not modelled",
+   "repMirror": false
+  },
+  "39": {
+   "type": "th-gk-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": true
+  },
+  "40": {
+   "type": "th-gk-row",
+   "variant": "band",
+   "via": "photo",
+   "note": "brick porch boxes in front of some doors not modelled",
+   "repMirror": false
+  },
+  "41": {
+   "type": "th-gk-row",
+   "variant": "band",
+   "via": "photo",
+   "repMirror": false
+  }
+ }
+}

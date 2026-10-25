@@ -8,6 +8,7 @@
  *       a third field picks the facade (front | back | left | right, default front); --dist is the camera distance wanted from the
  *       facade (default 0.9 x its length, 14-32 m), --radius the panorama search radius around that point (default 32 m): tall
  *       slabs need 60-100 m to fit in one frame.
+ *   --months=5,6,7,8,9 --scratch=.cache/building-types-summer: only panoramas of those months (sunlit re-shoot for colour sampling).
  *
  * The camera is the municipal panorama's own position, aimed at the front facade (heading, pitch and horizontal
  * FOV computed from the facade width and building height); the render uses the same numbers. No game server is needed:
@@ -26,6 +27,8 @@ const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`
 const flag = (n: string) => process.argv.includes(`--${n}`);
 const area = arg('area', 'slotermeer-geuzenveld'), dir = path.join('staging/building-types', area), SCRATCH = arg('scratch', '.cache/building-types');
 const CAM_H = 2.4, W = 1000, H = 750;
+// --months=5,6,7,8,9 keeps only panoramas of those months (with --scratch=<dir>: a sunlit re-shoot of a facade whose survey photo was overcast, for colour sampling)
+const MONTHS = arg('months') ? new Set(arg('months').split(',').map(Number)) : null;
 const input = JSON.parse(fs.readFileSync(path.join(dir, 'instances.json'), 'utf8')) as {anchor: Anchor; instances: any[]; streets: any[]};
 const report = JSON.parse(fs.readFileSync(path.join(dir, 'report.json'), 'utf8')) as {instancesDetail: any[]};
 const detail = new Map(report.instancesDetail.map(d => [d.pandId, d]));
@@ -68,7 +71,7 @@ async function pickView(pandId: string, side: Side = 'front'): Promise<View | nu
     const depth = dx * n[0] + dz * n[1], lateral = Math.abs(dx * tangent[0] + dz * tangent[1]);
     const month = Number(String(p.timestamp).slice(5, 7)), leafOff = month <= 4 || month >= 11;
     return {p, c, depth, lateral, score: lateral + 0.35 * Math.abs(depth - target) - (leafOff ? 6 : 0) - (p.timestamp > '2023' ? 1 : 0)};
-  }).filter((x: any) => x.depth > 5 && x.depth < Math.max(45, target * 1.5)).sort((a: any, b: any) => a.score - b.score);
+  }).filter((x: any) => x.depth > 5 && x.depth < Math.max(45, target * 1.5) && (!MONTHS || MONTHS.has(Number(String(x.p.timestamp).slice(5, 7))))).sort((a: any, b: any) => a.score - b.score);
   const best = cands[0];
   if (!best) return null;
   const dist = Math.hypot(best.c[0] - mid[0], best.c[1] - mid[1]);
@@ -106,7 +109,9 @@ const dataUrlToBuffer = (u: string) => Buffer.from(u.split(',')[1], 'base64');
 
 async function survey() {
   const tiles: {img: Buffer; text: string}[] = [];
-  for (const inst of input.instances) {
+  // --ids=<last digits,...> surveys only those pands
+  const ids = arg('ids').split(',').filter(Boolean);
+  for (const inst of input.instances.filter(i => !ids.length || ids.some(id => i.pandId.endsWith(id)))) {
     const v = await pickView(inst.pandId) as (View & {url?: string}) | null, d = detail.get(inst.pandId);
     if (!v) { console.warn('no pano', inst.pandId); continue; }
     tiles.push({img: await sharp(await photo(v)).resize(400, 300).jpeg().toBuffer(), text: `${inst.pandId.slice(-7)} ${inst.type.slice(3, 9)} ${d.storeys}st ${d.frontStreet ?? ''} ${v.timestamp.slice(0, 7)}`});

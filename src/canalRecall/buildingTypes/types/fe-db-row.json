@@ -1,0 +1,352 @@
+{
+ "id": "fe-db-row",
+ "label": "Dichtersbuurt (1954) two-storey terraced house in brown-red brick under a grey concrete-tile gable: wide ground window and black door with transom, two white-framed upper windows, a stack on every party wall, a dark grey timber shed in the front garden (Slauerhoffstraat, Boutensstraat, Joannes Reddingiusstraat, Leopoldstraat, Slotermeerlaan)",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 209,
+  "bouwjaar": [
+   1954,
+   1954
+  ],
+  "lengthM": 5.9,
+  "widthM": 7.7,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  4.6,
+  6.4
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.3,
+   6.6
+  ],
+  "depth": [
+   6.8,
+   8.6
+  ]
+ },
+ "rowCoherentHeights": true,
+ "bodyFromRoof": {
+  "tolM": 2.0
+ },
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.12,
+  "pitchDeg": 35,
+  "eavesPinM": 5.4,
+  "chimneys": [
+   {
+    "ref": "right",
+    "u": 0.3,
+    "w": 0.6,
+    "d": 0.5,
+    "h": 0.85,
+    "offsetM": -0.5,
+    "capM": 0.1,
+    "palette": "wall",
+    "cap": "accent",
+    "note": "one stack on every party wall (2113069, 2092057), drawn at each house's right end"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "annexes": [
+  {
+   "id": "shed",
+   "facade": "front",
+   "u": [
+    3.95,
+    5.9
+   ],
+   "d": [
+    0.25,
+    2.6
+   ],
+   "to": 2.3,
+   "material": "dark",
+   "fascia": {
+    "h": 0.12,
+    "colour": "dark"
+   },
+   "glaze": {
+    "faces": [
+     "out"
+    ],
+    "sill": 1.15,
+    "h": 0.45,
+    "lightM": 0.6,
+    "frame": "frame",
+    "marginM": 0.65
+   },
+   "evidence": "BAG ring of 2113069: a 2.2 x 2.7 m projection at one end of the front; photos: dark grey board shed with a small white-framed window beside the door"
+  }
+ ],
+ "defaultVariant": "black-door",
+ "variants": {
+  "black-door": {
+   "label": "black door, white frames",
+   "evidence": "every terrace read (Joannes Reddingiusstraat 2113069, Boutensstraat 2092057, Slotermeerlaan 2127597, Slauerhoffstraat 2103883)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#907465",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#2b2d30",
+    "accent": "#d8d4ca",
+    "rail": "#2b2d30",
+    "dark": "#5f5d64",
+    "column": "#efeee8",
+    "joint": "#3a3430",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#868076",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012113069.jpg",
+     "pand": "0363100012113069",
+     "address": "Joannes Reddingiusstraat",
+     "note": "2021-03, front in shade (faces 284 deg, morning sun at 169): measured at 56.8 px/m between the downpipes (5.9 m house): upper windows 0.88-2.29 and 2.85-4.26 m, sills 0.9 m above the floor, 1.48 m tall; ground window 0.88-2.99 m, sill 0.7, 1.9 m with transom; black door 3.35-4.23 m with transom to 2.6 m; eaves (gutter) 5.4 m; not mirrored (door right in every house). Wall #423a35 under white frames #6e7779 -> white-referenced #907465 (exposure.ts)"
+    },
+    {
+     "photo": "survey crop 0363100012092057.jpg",
+     "pand": "0363100012092057",
+     "address": "Boutensstraat",
+     "note": "2021-03: same, 19-house row"
+    },
+    {
+     "photo": "survey crop 0363100012127597.jpg",
+     "pand": "0363100012127597",
+     "address": "Slotermeerlaan",
+     "note": "2021-03: same"
+    },
+    {
+     "photo": "survey crop 0363100012103883.jpg",
+     "pand": "0363100012103883",
+     "address": "Slauerhoffstraat",
+     "note": "2021-03: same, roof concrete tiles"
+    },
+    {
+     "photo": "survey crop 0363100012126462.jpg",
+     "pand": "0363100012126462",
+     "address": "Leopoldstraat",
+     "note": "2019-11: same, sheds in front of each house"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.94,
+       "w": 2.1,
+       "h": 1.9,
+       "sill": 0.7,
+       "lights": 3,
+       "note": "wide window: three casements under transom lights, chunky white timber frame",
+       "frameM": 0.1,
+       "transomM": 0.45
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.79,
+       "w": 0.88,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.79,
+       "w": 0.88,
+       "h": 0.32,
+       "sill": 2.28,
+       "lights": 1,
+       "note": "door transom"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.58,
+       "w": 1.41,
+       "h": 1.48,
+       "sill": 0.88,
+       "lights": 2,
+       "frameM": 0.1,
+       "transomM": 0.38,
+       "note": "two casements under a transom, chunky white timber frame"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.56,
+       "w": 1.41,
+       "h": 1.48,
+       "sill": 0.88,
+       "lights": 2,
+       "frameM": 0.1,
+       "transomM": 0.38,
+       "note": "two casements under a transom, chunky white timber frame"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012113069.jpg",
+     "pand": "0363100012113069",
+     "address": "Joannes Reddingiusstraat",
+     "note": "garden side not photographed (inferred: door and window below, two windows above)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.85,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 2.2,
+       "h": 1.5,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.6,
+       "w": 1.3,
+       "h": 1.3,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.2,
+       "w": 1.3,
+       "h": 1.3,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012113069.jpg",
+     "pand": "0363100012113069",
+     "address": "Joannes Reddingiusstraat",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012113069.jpg",
+     "pand": "0363100012113069",
+     "address": "Joannes Reddingiusstraat",
+     "note": "end houses: plain brick gable (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "The BAG ring includes the front shed (min rect 7.0 x 10.5 m); the house body comes from the 3DBAG roof (bodyFromRoof), the shed is an annex at the door end (2.0 x 2.35 m, 2.3 m high) with its small window.",
+  "Eaves pinned at 5.4 m (eavesPinM): 3DBAG b3_h_dak_min reads the 2.4 m shed roof.",
+  "Fronts face 14 or 284 degrees and every panorama is a morning one: no sunlit front. Wall colour white-referenced against the white door surround of the same crop (exposure.ts whiteReferenced).",
+  "Roof: lit tile body #868076 of 2113069 (roofColour.ts litTileMedian); the orthophoto reads all 201 roofs slate #848484 (L 0.52): agrees. Drawn as measured.",
+  "Small vent grilles beside the upper windows and the sheds' shallow gable roofs not modelled."
+ ]
+}
