@@ -13,8 +13,13 @@ recolouring a roof of the same kind; 82 GLBs re-exported material-only.
 In-game: walls +2-4 luma, kattenburg roofs 85 -> 95. Still dark:
 Herengracht bespoke landmarks (builder colours), Bilderdijk block-face
 chunks (photo-strip exposure), Palace/Magna Plaza authored roofs (needs a
-landmark rebuild). building-look.spec: 2 desktop failures pre-exist on HEAD
-bundles ("share one brick" spread 0.084, "shadow fill" sun side 5.46).
+landmark rebuild). building-look.spec: the gain also leaked into the city look's
+`slotTintBytes` and broke 2 cases ("share one brick" 0.084, "shadow fill"
+5.46); #76 limited the city-look gain to walls with an exposure record and
+updated the default-look recipe row (119.2 -> 124.7). `test:look-e2e`
+(city look + shadow fill, ~45 s) now runs in check:canal. Note for the city
+look re-level: chunks and GLB slots must be lifted together, and recipe
+tiles turned on before the city look lack the 1.106 brick gain.
 
 **Repetitive designs round 3 (2026-10-25, #74).** 10 designs / 27 units,
 855 houses: Tuindorp Amstelstation 238 (87 %), Circus/Kermisbuurt 210
