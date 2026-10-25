@@ -1,0 +1,90 @@
+{
+ "id": "de-bloem",
+ "anchor": [
+  4.86018562,
+  52.38474175
+ ],
+ "northOffsetDegrees": 0,
+ "frame": "model +X = east, +Z = south (glTF), metres, origin at anchor",
+ "bagPand": "NL.IMBAG.Pand.0363100012165350",
+ "osmBuilding": "w276264373",
+ "osmPoi": "n418044454",
+ "ringLocal": [
+  [
+   2.947,
+   -3.032
+  ],
+  [
+   2.2,
+   -6.035
+  ],
+  [
+   -0.79,
+   -5.257
+  ],
+  [
+   -0.042,
+   -2.253
+  ],
+  [
+   -8.332,
+   -0.028
+  ],
+  [
+   -5.206,
+   11.431
+  ],
+  [
+   6.141,
+   8.205
+  ],
+  [
+   3.083,
+   -3.032
+  ]
+ ],
+ "buildingFootprint": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     4.860229,
+     52.384769
+    ],
+    [
+     4.860218,
+     52.384796
+    ],
+    [
+     4.860174,
+     52.384789
+    ],
+    [
+     4.860185,
+     52.384762
+    ],
+    [
+     4.860063,
+     52.384742
+    ],
+    [
+     4.860109,
+     52.384639
+    ],
+    [
+     4.860276,
+     52.384668
+    ],
+    [
+     4.860231,
+     52.384769
+    ],
+    [
+     4.860229,
+     52.384769
+    ]
+   ]
+  ]
+ },
+ "source": "BAG pand ring from public/data/extracts/amsterdam/building-tiles (PDOK BAG, CC0), RD New -> WGS84 via src/canalRecall/facade/rdNew.ts"
+}

@@ -531,6 +531,16 @@
       "version": "cd736700f02d6b29",
       "dateSource": "asset-update"
     },
+    "d-admiraal": {
+      "updatedAt": "2026-10-25T08:03:40.844Z",
+      "version": "a75d487e29023373",
+      "dateSource": "asset-update"
+    },
+    "d-admiraal.lod1": {
+      "updatedAt": "2026-10-25T08:03:44.377Z",
+      "version": "b84acf9e0dc7d483",
+      "dateSource": "asset-update"
+    },
     "da-costakade-13": {
       "updatedAt": "2026-10-20T10:17:05.349Z",
       "version": "da7222a59d7ea6c4",
@@ -589,6 +599,16 @@
     "de-bijenkorf.lod1": {
       "updatedAt": "2026-10-23T20:23:30.338Z",
       "version": "f5ea23f849ff2009",
+      "dateSource": "asset-update"
+    },
+    "de-bloem": {
+      "updatedAt": "2026-10-25T08:13:08.076Z",
+      "version": "a10929b18a805be2",
+      "dateSource": "asset-update"
+    },
+    "de-bloem.lod1": {
+      "updatedAt": "2026-10-25T08:13:16.642Z",
+      "version": "e859596fb2b3e791",
       "dateSource": "asset-update"
     },
     "de-dokwerker": {
@@ -659,6 +679,11 @@
     "de-nederlandsche-bank.lod1": {
       "updatedAt": "2026-10-23T20:23:30.342Z",
       "version": "ae443569c06ba618",
+      "dateSource": "asset-update"
+    },
+    "de-otter": {
+      "updatedAt": "2026-10-25T08:03:38.707Z",
+      "version": "20c9d0dace2174e1",
       "dateSource": "asset-update"
     },
     "de-papegaai": {

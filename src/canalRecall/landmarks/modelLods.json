@@ -1834,5 +1834,17 @@
   "buildVersion": 2,
   "bytes": 91840,
   "triangles": 4580
+ },
+ "de-bloem": {
+  "sourceHash": "a10929b18a805be2",
+  "buildVersion": 2,
+  "bytes": 26076,
+  "triangles": 646
+ },
+ "d-admiraal": {
+  "sourceHash": "a75d487e29023373",
+  "buildVersion": 2,
+  "bytes": 35520,
+  "triangles": 984
  }
 }

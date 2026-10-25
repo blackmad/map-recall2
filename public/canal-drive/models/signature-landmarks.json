@@ -54115,6 +54115,418 @@
         "bytes": 91840,
         "triangles": 4580
       }
+    },
+    "de-bloem": {
+      "id": "de-bloem",
+      "name": "De Bloem",
+      "landmarkId": "n418044454",
+      "modelUrl": "./models/de-bloem.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012165350",
+        "w276264373"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.86018562,
+          52.38474175
+        ],
+        "headingDegrees": 75,
+        "lengthMetres": 11.9,
+        "widthMetres": 11.9
+      },
+      "surveyed": {
+        "anchor": [
+          4.86018562,
+          52.38474175
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand 0363100012165350 (Haarlemmerweg 465): exact ring in local east/south metres from the vertex mean (scripts/landmarks/de-bloem-footprints.json). Mill axis at the square foot's centre; cap and sails are a representative state facing west (bearing 255) as in the 2024-2025 panoramas."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "bagYear": 1939,
+      "materialOverrides": {
+        "brick": "#6b5a4e",
+        "white": "#ebe8df",
+        "stone": "#b9b3a6",
+        "glass": "#3d474d",
+        "dark": "#2f3132",
+        "slate": "#3c403b",
+        "greyBrick": "#716b5e",
+        "red": "#a8453b",
+        "green": "#2f5040",
+        "concrete": "#e9e6dc",
+        "pink": "#e2e3dd"
+      },
+      "attribution": {
+        "title": "De Bloem",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.molendatabase.nl/molens/ten-bruggencate-nr-00802",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free native-scale stellingmolen: square masonry foot (whitewashed north face with the arched doors and gable stones), flared thatched underbody, stage at 12.30 m with white struts, tapered thatched upper octagon, red and white cap band, thatched cap with a plain green beard, 26.3 m Fauel sails, tail struts and winding wheel. Heights from the Molendatabase; proportions and colours from municipal panoramas (CC BY 4.0) and Wikimedia Commons photographs (CC BY-SA). No imported meshes or photo pixels."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.860229,
+              52.384769
+            ],
+            [
+              4.860218,
+              52.384796
+            ],
+            [
+              4.860174,
+              52.384789
+            ],
+            [
+              4.860185,
+              52.384762
+            ],
+            [
+              4.860063,
+              52.384742
+            ],
+            [
+              4.860109,
+              52.384639
+            ],
+            [
+              4.860276,
+              52.384668
+            ],
+            [
+              4.860231,
+              52.384769
+            ],
+            [
+              4.860229,
+              52.384769
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -9.967122077941895,
+          -2.3841858265427618e-8,
+          -7.04390811920166
+        ],
+        "max": [
+          6.675903797149658,
+          36.8621711730957,
+          17.713043212890625
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.86018562,
+          52.38474175
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 75,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 24.756951332092285,
+        "heightMetres": 36.86217119693756,
+        "depthMetres": 16.643025875091553,
+        "depthCoverage": 1.39857360294887
+      },
+      "triangles": 3170,
+      "bytes": 62328,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "a10929b18a805be2",
+        "buildVersion": 2,
+        "bytes": 26076,
+        "triangles": 646
+      }
+    },
+    "de-otter": {
+      "id": "de-otter",
+      "name": "De Otter",
+      "landmarkId": "w276340032",
+      "modelUrl": "./models/de-otter.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012096312",
+        "w276340032"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87094254,
+          52.376173
+        ],
+        "headingDegrees": 68,
+        "lengthMetres": 8,
+        "widthMetres": 7.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.87094254,
+          52.376173
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand 0363100012096312 (Gillis van Ledenberchstraat 78): exact ring in local east/south metres from the vertex mean (scripts/landmarks/de-otter-footprints.json), taken as the turning axis. The body and sails are a representative state facing bearing 248, towards the Kostverlorenvaart as in the 2021-2025 panoramas."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "bagYear": 1631,
+      "materialOverrides": {
+        "brick": "#5f4c42",
+        "bronze": "#5b4d40",
+        "stone": "#a88f66",
+        "slate": "#56534d",
+        "white": "#ece9e0",
+        "concrete": "#c9c6bd",
+        "green": "#3c6650",
+        "gold": "#c9ab5c",
+        "ochre": "#7a6650",
+        "glass": "#3a4448",
+        "copper": "#6a5340",
+        "pink": "#e9e6dc"
+      },
+      "attribution": {
+        "title": "De Otter",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1198",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free native-scale paltrok sawmill: brick curb ring and posts under the turning deck, tapering tarred body with herringbone front battens, side wings under lean-to roofs (one boarded, one open frame), light barrel cap between green rounded gables with white rims, open finial, the 'DE OTTER' rear board, 19.5 m Old Dutch sails with yellow stocks and the winding wheel. Sail span from the Molendatabase; proportions and colours from municipal panoramas (CC BY 4.0) and Wikimedia Commons photographs (CC BY-SA). No imported meshes or photo pixels."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.870905,
+              52.376124
+            ],
+            [
+              4.870994,
+              52.376146
+            ],
+            [
+              4.870993,
+              52.376152
+            ],
+            [
+              4.871003,
+              52.376154
+            ],
+            [
+              4.870995,
+              52.376201
+            ],
+            [
+              4.870974,
+              52.376199
+            ],
+            [
+              4.870971,
+              52.376213
+            ],
+            [
+              4.870883,
+              52.376207
+            ],
+            [
+              4.870885,
+              52.376195
+            ],
+            [
+              4.870871,
+              52.376167
+            ],
+            [
+              4.870894,
+              52.376145
+            ],
+            [
+              4.870905,
+              52.376124
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -7.23432731628418,
+          -0.03629765659570694,
+          -7.1160478591918945
+        ],
+        "max": [
+          6.315164566040039,
+          20.08791160583496,
+          9.614788055419922
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87094254,
+          52.376173
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 68,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 16.730835914611816,
+        "heightMetres": 20.124209262430668,
+        "depthMetres": 13.549491882324219,
+        "depthCoverage": 1.806598917643229
+      },
+      "triangles": 2964,
+      "bytes": 59644,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "d-admiraal": {
+      "id": "d-admiraal",
+      "name": "D'Admiraal",
+      "landmarkId": "n31101329",
+      "modelUrl": "./models/d-admiraal.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012161029",
+        "w280661893"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9235,
+          52.40256
+        ],
+        "headingDegrees": 116,
+        "lengthMetres": 32,
+        "widthMetres": 16.8
+      },
+      "surveyed": {
+        "anchor": [
+          4.9235,
+          52.40256
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand 0363100012161029 (Noordhollandschkanaaldijk 21, the shed the mill stands on, BAG year of the 1990s rebuilding): exact ring in local east/south metres around the OSM mill node n31101329 (scripts/landmarks/d-admiraal-footprints.json), which is the octagon's axis. Cap and sails are a representative state facing bearing 206, towards the dike road, as in the 2024 panorama."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "bagYear": 1992,
+      "materialOverrides": {
+        "brick": "#7a5546",
+        "red": "#a4553f",
+        "white": "#eeece4",
+        "green": "#2f5243",
+        "gold": "#d6c393",
+        "stone": "#b9ab88",
+        "greyBrick": "#a3967a",
+        "glass": "#2f3a40",
+        "ochre": "#d9b84a",
+        "copper": "#3a3f40",
+        "pink": "#ecebe2",
+        "blue": "#d2d1c8",
+        "slate": "#2e3233"
+      },
+      "attribution": {
+        "title": "D'Admiraal",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6609",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free native-scale chalk mill on its shed: tarred-board shed walls on the exact BAG outline with white corner boards and fascias, red pantile roofs (flat band under the stage, low slopes to the eaves, gabled west wing), green stable doors and fanlights on the canal wall, thatched octagon with its bell flare, cream stage and tail, thatched cap with the dark green beards lettered 17 92 and D'ADMIRAAL, 17.1 m Fauel sails with green leading boards and a red hub. Heights from the Molendatabase; proportions and colours from municipal panoramas (CC BY 4.0) and Wikimedia Commons photographs (CC BY-SA). No imported meshes or photo pixels."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.923505,
+              52.402651
+            ],
+            [
+              4.923488,
+              52.40263
+            ],
+            [
+              4.923223,
+              52.402707
+            ],
+            [
+              4.923156,
+              52.402622
+            ],
+            [
+              4.923357,
+              52.402563
+            ],
+            [
+              4.923334,
+              52.402533
+            ],
+            [
+              4.923532,
+              52.402477
+            ],
+            [
+              4.923605,
+              52.40257
+            ],
+            [
+              4.923631,
+              52.402614
+            ],
+            [
+              4.923505,
+              52.402651
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -23.79254913330078,
+          0,
+          -16.920955657958984
+        ],
+        "max": [
+          9.317455291748047,
+          21.013957977294922,
+          9.68445873260498
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9235,
+          52.40256
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 116,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 33.11000442504883,
+        "heightMetres": 21.013957977294922,
+        "depthMetres": 26.605414390563965,
+        "depthCoverage": 1.5836556184859503
+      },
+      "triangles": 4957,
+      "bytes": 85592,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "a75d487e29023373",
+        "buildVersion": 2,
+        "bytes": 35520,
+        "triangles": 984
+      }
     }
   }
 }
