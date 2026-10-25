@@ -113,3 +113,25 @@ test('governMapRender settles 12 s by default', () => {
   run(50, 120); // still slow 6 s later: now it steps
   assert.equal(ratio, 1.13);
 });
+
+test('a pixel-ratio step never resizes the canvas inside render, and draws right after it does (issue #64)', () => {
+  // `render` fires after MapLibre drew the frame: resizing there clears the drawing buffer and the browser
+  // composites the empty canvas, a one-frame white flash of the page background.
+  let t = 0, ratio = 2, inRender = false;
+  const calls: string[] = [];
+  const deferred: Array<() => void> = [];
+  const listeners = new Set<() => void>();
+  const map = {
+    on: (_: 'render', f: () => void) => listeners.add(f),
+    getPixelRatio: () => ratio,
+    setPixelRatio: (r: number) => { assert.equal(inRender, false, 'resized inside render'); ratio = r; calls.push(`resize ${r}`); },
+    redraw: () => { calls.push('redraw'); },
+  };
+  const g = governMapRender(map, { now: () => t, settleMs: 0, defer: apply => deferred.push(apply) });
+  for (let i = 0; i < 200 && !g.steps.length; i++) { t += 50; inRender = true; for (const f of listeners) f(); inRender = false; }
+  assert.equal(g.steps.length, 1);
+  assert.equal(ratio, 2, 'not applied inside the render event');
+  assert.equal(deferred.length, 1);
+  deferred.shift()!();
+  assert.deepEqual(calls, ['resize 1.5', 'redraw'], 'the resized canvas is drawn in the same task');
+});

@@ -153,6 +153,8 @@ export interface GovernableMap {
   off?(event: 'render', listener: () => void): unknown;
   getPixelRatio(): number;
   setPixelRatio(ratio: number): unknown;
+  /** Draw a frame now (MapLibre `redraw`): a resized canvas must not reach the screen empty. */
+  redraw?(): unknown;
 }
 
 export interface GovernorInstallOptions {
@@ -164,12 +166,21 @@ export interface GovernorInstallOptions {
   /** Riding time not judged after the ride starts or resumes; default 12 s. */
   settleMs?: number;
   now?: () => number;
+  /**
+   * Where a pixel-ratio step runs: the start of the next frame (requestAnimationFrame), never inside `render`.
+   * Without requestAnimationFrame (node tests) the step applies at once.
+   */
+  defer?: (apply: () => void) => void;
   onStep?: (step: GovernorStep, governor: RenderGovernor) => void;
 }
 
 /** Attach a governor to a map's render events. Returns it for status/tests. */
 export function governMapRender(map: GovernableMap, options: GovernorInstallOptions = {}): RenderGovernor {
   const now = options.now ?? (() => performance.now());
+  const defer = options.defer
+    ?? (typeof requestAnimationFrame === 'function'
+      ? (apply: () => void) => { requestAnimationFrame(() => apply()); }
+      : (apply: () => void) => apply());
   const governor = new RenderGovernor({
     initialPixelRatio: map.getPixelRatio(),
     fixedPixelRatio: options.fixedPixelRatio,
@@ -187,8 +198,19 @@ export function governMapRender(map: GovernableMap, options: GovernorInstallOpti
     }
     const step = governor.frame(interval);
     if (!step) return;
-    if (step.kind === 'pixelRatio') map.setPixelRatio(step.to);
-    else options.setShadows?.(false);
+    if (step.kind === 'pixelRatio') {
+      // White flashes (issue #64): resizing the canvas clears its drawing buffer, and `render` fires after the
+      // frame was drawn, so a step taken here put the cleared, transparent canvas on screen for one frame: the
+      // page's paper background, mean luma 0.89 against the ride's 0.48. Resize at the start of the next frame
+      // and draw it at once, so the canvas the browser composites always holds a drawn frame.
+      const to = step.to;
+      defer(() => {
+        map.setPixelRatio(to);
+        map.redraw?.();
+      });
+    } else {
+      options.setShadows?.(false);
+    }
     options.onStep?.(step, governor);
     if (governor.exhausted) map.off?.('render', onRender);
   };
