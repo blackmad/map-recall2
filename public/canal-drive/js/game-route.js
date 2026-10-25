@@ -491,10 +491,13 @@ class GameRouteRuntime {
     this._setRouteError('');
     // A tour picked in setup rides its stops instead of a single route.
     const tourId = this._overlay.store.getState().tourId;
-    if (tourId && !isReroll) { await this._startTour(tourId); return; }
+    const freeRide = this._prefs().routePattern === 'free';
+    if (tourId && !isReroll && !freeRide) { await this._startTour(tourId); return; }
     // Setup already ended any tour and restored the player's settings; these
     // prefs are what the player just picked, so nothing is restored over them.
     this._endTour({ restorePrefs: false });
+    // Free Ride rides the bike or the boat; transit has no free roaming.
+    if (freeRide && this._prefs().travelMode === 'transit') this._overlay.store.patchPrefs({ travelMode: 'car' }, this._overlayZoom());
     const prefs = this._prefs();
     this._applyPrefsToRuntime(prefs, { persist: true, applySound: false });
     // City may have changed on the briefing since the last catalog fetch.
@@ -518,6 +521,10 @@ class GameRouteRuntime {
       return;
     }
     this.routePattern = prefs.routePattern;
+    // Free Ride starts on the bike at a random landmark, without the overview
+    // flight (which frames start and destination). Its "destination" only
+    // exists so the network has two ends; nothing shows it.
+    if (freeRide) this._skipNextIntro = true;
     if (this.routePattern === 'home') {
       const address = (prefs.homeAddress || '').trim();
       if (!address) { this._setRouteError(routeKey('ride.error.homeAddress')); return; }
@@ -562,7 +569,7 @@ class GameRouteRuntime {
       this.gpsOrigin = null;
     }
 
-    const selectedDestination = this.routePois.find(poi => poi.id === this._overlay.store.getState().destinationId);
+    const selectedDestination = freeRide ? null : this.routePois.find(poi => poi.id === this._overlay.store.getState().destinationId);
     if (selectedDestination) {
       const from = this.routePattern === 'home' ? this.homeBase
         : this.routePattern === 'here' ? this.gpsOrigin
@@ -579,10 +586,12 @@ class GameRouteRuntime {
       }
     }
 
-    const pool = this.routePois;
+    // Free Ride starts at one of the city's hand-picked landmarks, in the
+    // thick of things, not at a random extract POI in an industrial park.
+    const pool = freeRide && curated.length >= 2 ? curated : this.routePois;
     const choices = pool.filter(poi => poi.id !== this.routeFrom?.id || pool.length < 3);
     // Review ride: with Plan review on, pick the pair that passes due names.
-    this._reviewRoute = this._pickReviewRide(choices);
+    this._reviewRoute = freeRide ? null : this._pickReviewRide(choices);
     if (this._reviewRoute) {
       this._launchPoiRoute(this._reviewRoute.from, this._reviewRoute.to);
       return;
@@ -1300,6 +1309,7 @@ class GameRouteRuntime {
       this._prompt.style.display = 'none';
     }
     this.state = GameState.MENU;
+    this._endFreeRide();
     // Leaving for setup ends a tour in progress, and setup shows the player's
     // own settings again; Start tour begins it again.
     this._endTour();
@@ -1507,6 +1517,8 @@ class GameRouteRuntime {
       }
     }
     this._warmRouteNeighborhoodImages();
+    // Last: Free Ride clears the route and lifts the spoiler screening set above.
+    this._syncFreeRide();
   }
 
   // Fetch postcard images for the neighborhoods at either end of the route so
@@ -1828,7 +1840,7 @@ class GameRouteRuntime {
           // A chosen POI must remain the destination. Only Surprise's random
           // origin may be retried; home and live-location starts stay fixed.
           // A tour leg's start is the previous stop, so there is nothing to re-roll.
-          if (this.routePattern === 'surprise' && !this._tour && this._routeRerolls < MAX_ROUTE_REROLLS) {
+          if ((this.routePattern === 'surprise' || this.routePattern === 'free') && !this._tour && this._routeRerolls < MAX_ROUTE_REROLLS) {
             this._routeRerolls++;
             this._startConfiguredRoute({ isReroll: true });
           } else {
@@ -1851,7 +1863,7 @@ class GameRouteRuntime {
           this._routeLearningPlan = this.track.planRoute(start, finish);
           if (this._routeLearningPlan) this.routePath = this._routeLearningPlan.path;
           console.info(`Destination retargeted to ${retarget.poi.name}: the original was unreachable from the start`);
-        } else if ((this.routePattern === 'surprise' || this.routePattern === 'here') && this._routeRerolls < MAX_ROUTE_REROLLS) {
+        } else if ((this.routePattern === 'surprise' || this.routePattern === 'here' || this.routePattern === 'free') && this._routeRerolls < MAX_ROUTE_REROLLS) {
           // Nothing in the pool is reachable, so the *origin* is stranded in a
           // disconnected component — most often a Noord canal cut off from the
           // centre by the IJ. Re-roll the pair rather than play a route with

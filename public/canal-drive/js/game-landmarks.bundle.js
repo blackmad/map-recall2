@@ -460,6 +460,14 @@ Map source: ${osmUrl(places[i][0])}`);
     "setup.route.homeHint": "Nearby first, expands as you learn",
     "setup.route.here": "Here",
     "setup.route.hereHint": "Start from where you are now",
+    "setup.route.free": "Free ride",
+    "setup.route.freeHint": "No route, no questions: ride anywhere and tap what you pass",
+    "freeRide.badge": "Free ride",
+    "freeRide.exit": "Exit",
+    "freeRide.exitLabel": "Leave free ride and go back to setup",
+    "freeRide.tallyNone": "Tap a marker or a building",
+    "freeRide.tallyOne": "1 place opened",
+    "freeRide.tallyMany": "{count} places opened",
     "setup.difficulty": "Difficulty",
     "setup.difficulty.easy": "Easy",
     "setup.difficulty.medium": "Medium",
@@ -502,6 +510,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "setup.resetKnowledge": "Reset knowledge\u2026",
     "setup.clearAll": "Clear all data\u2026",
     "setup.startRoute": "Start route",
+    "setup.startFreeRide": "Start free ride",
     "setup.startTour": "Start tour",
     "setup.scrollMoreOptions": "Scroll for more options",
     // --- Ride options (setup + live settings) ---------------------------------
@@ -1070,6 +1079,14 @@ Map source: ${osmUrl(places[i][0])}`);
     "setup.route.homeHint": "Eerst dichtbij, groeit mee",
     "setup.route.here": "Hier",
     "setup.route.hereHint": "Start waar je nu bent",
+    "setup.route.free": "Vrij rijden",
+    "setup.route.freeHint": "Geen route, geen vragen: rijd waar je wilt en tik op wat je ziet",
+    "freeRide.badge": "Vrij rijden",
+    "freeRide.exit": "Stoppen",
+    "freeRide.exitLabel": "Stop met vrij rijden en ga terug naar het startscherm",
+    "freeRide.tallyNone": "Tik op een markering of een gebouw",
+    "freeRide.tallyOne": "1 plek geopend",
+    "freeRide.tallyMany": "{count} plekken geopend",
     "setup.difficulty": "Moeilijkheid",
     "setup.difficulty.easy": "Makkelijk",
     "setup.difficulty.medium": "Gemiddeld",
@@ -1112,6 +1129,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "setup.resetKnowledge": "Kennis wissen\u2026",
     "setup.clearAll": "Alle gegevens wissen\u2026",
     "setup.startRoute": "Start route",
+    "setup.startFreeRide": "Begin vrij rijden",
     "setup.startTour": "Start tour",
     "setup.scrollMoreOptions": "Scroll voor meer opties",
     // --- Ritopties (instellen en live instellingen) ---------------------------
@@ -6069,6 +6087,7 @@ Map source: ${osmUrl(places[i][0])}`);
         }
         candidates.push(landmark);
       }
+      if (this.freeRide) return;
       if (!canShowDriveByCard(this.viewport?.mode, this._teachingGate())) return;
       if (!driveByGapElapsed(this._lastDriveByAt, this.raceTime)) return;
       if (this._landmarkNotice && !mayReplaceNotice(

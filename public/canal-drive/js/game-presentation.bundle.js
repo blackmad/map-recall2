@@ -198,6 +198,14 @@
     "setup.route.homeHint": "Nearby first, expands as you learn",
     "setup.route.here": "Here",
     "setup.route.hereHint": "Start from where you are now",
+    "setup.route.free": "Free ride",
+    "setup.route.freeHint": "No route, no questions: ride anywhere and tap what you pass",
+    "freeRide.badge": "Free ride",
+    "freeRide.exit": "Exit",
+    "freeRide.exitLabel": "Leave free ride and go back to setup",
+    "freeRide.tallyNone": "Tap a marker or a building",
+    "freeRide.tallyOne": "1 place opened",
+    "freeRide.tallyMany": "{count} places opened",
     "setup.difficulty": "Difficulty",
     "setup.difficulty.easy": "Easy",
     "setup.difficulty.medium": "Medium",
@@ -240,6 +248,7 @@
     "setup.resetKnowledge": "Reset knowledge\u2026",
     "setup.clearAll": "Clear all data\u2026",
     "setup.startRoute": "Start route",
+    "setup.startFreeRide": "Start free ride",
     "setup.startTour": "Start tour",
     "setup.scrollMoreOptions": "Scroll for more options",
     // --- Ride options (setup + live settings) ---------------------------------
@@ -808,6 +817,14 @@
     "setup.route.homeHint": "Eerst dichtbij, groeit mee",
     "setup.route.here": "Hier",
     "setup.route.hereHint": "Start waar je nu bent",
+    "setup.route.free": "Vrij rijden",
+    "setup.route.freeHint": "Geen route, geen vragen: rijd waar je wilt en tik op wat je ziet",
+    "freeRide.badge": "Vrij rijden",
+    "freeRide.exit": "Stoppen",
+    "freeRide.exitLabel": "Stop met vrij rijden en ga terug naar het startscherm",
+    "freeRide.tallyNone": "Tik op een markering of een gebouw",
+    "freeRide.tallyOne": "1 plek geopend",
+    "freeRide.tallyMany": "{count} plekken geopend",
     "setup.difficulty": "Moeilijkheid",
     "setup.difficulty.easy": "Makkelijk",
     "setup.difficulty.medium": "Gemiddeld",
@@ -850,6 +867,7 @@
     "setup.resetKnowledge": "Kennis wissen\u2026",
     "setup.clearAll": "Alle gegevens wissen\u2026",
     "setup.startRoute": "Start route",
+    "setup.startFreeRide": "Begin vrij rijden",
     "setup.startTour": "Start tour",
     "setup.scrollMoreOptions": "Scroll voor meer opties",
     // --- Ritopties (instellen en live instellingen) ---------------------------
@@ -1691,6 +1709,546 @@
     return mode === "boat";
   }
 
+  // src/canalRecall/game/freeRide.ts
+  var FREE_RIDE_PATTERN = "free";
+  function isFreeRidePattern(pattern) {
+    return pattern === FREE_RIDE_PATTERN;
+  }
+  var FREE_RIDE_MARKER_RADIUS_M = 320;
+  var FREE_RIDE_BRIDGE_RADIUS_M = 140;
+  var FREE_RIDE_MAX_MARKERS = 6;
+  var FREE_RIDE_MAX_BRIDGE_MARKERS = 2;
+  var FREE_RIDE_REFRESH_SECONDS = 0.4;
+  var FREE_RIDE_LABEL_REACH_M = 450;
+  var FREE_RIDE_LABEL_MAX_CHARS = 26;
+  function nearbyPlaces(rider, places, {
+    radiusPx,
+    bridgeRadiusPx = radiusPx,
+    max = FREE_RIDE_MAX_MARKERS,
+    maxBridges = FREE_RIDE_MAX_BRIDGE_MARKERS
+  }) {
+    const within = [];
+    for (const place of places) {
+      if (!place.name || !Number.isFinite(place.x) || !Number.isFinite(place.y)) continue;
+      const distance = Math.hypot(place.x - rider.x, place.y - rider.y);
+      const limit = place.kind === "bridge" ? bridgeRadiusPx : radiusPx;
+      if (distance > limit) continue;
+      within.push({ ...place, distance });
+    }
+    within.sort((a, b) => a.distance - b.distance || a.key.localeCompare(b.key));
+    const names = /* @__PURE__ */ new Set();
+    const picked = [];
+    let bridges = 0;
+    for (const place of within) {
+      if (picked.length >= max) break;
+      const name = place.name.trim().toLowerCase();
+      if (names.has(name)) continue;
+      if (place.kind === "bridge") {
+        if (bridges >= maxBridges) continue;
+        bridges++;
+      }
+      names.add(name);
+      picked.push(place);
+    }
+    return picked;
+  }
+  var MARKER_STEM = 14;
+  function overlaps(a, b, pad = 0) {
+    return a.x - pad < b.x + b.w && a.x + a.w + pad > b.x && a.y - pad < b.y + b.h && a.y + a.h + pad > b.y;
+  }
+  function layoutMarkers(requests, screen, blocked = []) {
+    const placed = [];
+    for (const request of requests) {
+      if (!Number.isFinite(request.anchorX) || !Number.isFinite(request.anchorY)) continue;
+      const box = {
+        x: request.anchorX - request.width / 2,
+        y: request.anchorY - MARKER_STEM - request.height,
+        w: request.width,
+        h: request.height
+      };
+      if (box.x < 4 || box.y < 4 || box.x + box.w > screen.width - 4 || request.anchorY > screen.height - 4) continue;
+      if (blocked.some((rect) => overlaps(box, rect, 4))) continue;
+      if (placed.some((other) => overlaps(box, other.box, 3))) continue;
+      placed.push({ ...request, box });
+    }
+    return placed;
+  }
+  function markerAt(placed, x, y, slop = 6) {
+    for (let i = placed.length - 1; i >= 0; i--) {
+      const { box, anchorY } = placed[i];
+      if (x >= box.x - slop && x <= box.x + box.w + slop && y >= box.y - slop && y <= Math.max(box.y + box.h, anchorY) + slop) {
+        return placed[i];
+      }
+    }
+    return null;
+  }
+  function markerLabel(name, maxChars = FREE_RIDE_LABEL_MAX_CHARS) {
+    const text = name.trim().replace(/\s+/g, " ");
+    if (text.length <= maxChars) return text;
+    const cut = text.slice(0, maxChars - 1);
+    const space = cut.lastIndexOf(" ");
+    return `${(space > maxChars * 0.6 ? cut.slice(0, space) : cut).replace(/[\s,;:–-]+$/, "")}\u2026`;
+  }
+  function freeRideTallyKey(opened) {
+    if (opened <= 0) return { key: "freeRide.tallyNone", count: 0 };
+    if (opened === 1) return { key: "freeRide.tallyOne", count: 1 };
+    return { key: "freeRide.tallyMany", count: opened };
+  }
+  function tapNamesWay(contact, slopPx) {
+    if (!contact || !Number.isFinite(contact.dist)) return false;
+    const halfWidth = Number.isFinite(contact.width) ? contact.width : 0;
+    return contact.dist <= halfWidth + slopPx;
+  }
+
+  // src/canalRecall/answerPath.ts
+  function normaliseAnswer(value) {
+    return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+
+  // src/canalRecall/game/landmarkData.ts
+  function isWorthACard(landmark) {
+    return !!(landmark.detail || landmark.longDetail || landmark.imageUrl || landmark.wikipediaUrl);
+  }
+
+  // src/canalRecall/game/landmarkNotice.ts
+  var DEFAULT_NOTICE_CONFIG = {
+    exitRadius: 480,
+    minSeconds: 6,
+    fadeSeconds: 0.8
+  };
+
+  // src/canalRecall/game/streetLabelCandidates.ts
+  var LABEL_CELL_SIZE = 256;
+  var REACH_BUCKET_STEP = 1.25;
+  var EMPTY = Object.freeze([]);
+  var StreetLabelCandidates = class {
+    constructor(cellSize = LABEL_CELL_SIZE) {
+      this.cellSize = cellSize;
+    }
+    labels = null;
+    labelCount = -1;
+    /** Name -> ascending anchor indices, built once per anchor array. */
+    byName = /* @__PURE__ */ new Map();
+    names = { set: null, setSize: -1, places: null, placesSize: -1 };
+    /** Ascending indices of every anchor whose name could pass the knowledge test. */
+    named = new Int32Array(0);
+    namedVersion = 0;
+    cellKey = "";
+    cell = EMPTY;
+    /** Rebuilds of the per-cell list, for tests and the profiler. */
+    rebuilds = 0;
+    /**
+     * The anchors `drawLabels` must test this frame: every anchor that could pass
+     * both `|x - cx| <= reach && |y - cy| <= reach` and the knowledge test, in
+     * the order of `labels`.
+     */
+    candidates(labels, knowledge, cx, cy, reach) {
+      if (!labels || !labels.length) return EMPTY;
+      const { mapLabelNames, knownPlaces } = knowledge;
+      if (!mapLabelNames.size && !knownPlaces.size) return EMPTY;
+      if (labels !== this.labels || labels.length !== this.labelCount) this.indexLabels(labels);
+      this.refreshNamed(mapLabelNames, knownPlaces);
+      if (!this.named.length) return EMPTY;
+      const size = this.cellSize;
+      const ix = Math.floor(cx / size), iy = Math.floor(cy / size);
+      const bucket = reachBucket(reach);
+      const key = `${this.namedVersion}:${ix}:${iy}:${bucket}`;
+      if (key !== this.cellKey) {
+        this.cellKey = key;
+        this.cell = this.collect(ix, iy, bucket);
+        this.rebuilds++;
+      }
+      return this.cell;
+    }
+    indexLabels(labels) {
+      this.labels = labels;
+      this.labelCount = labels.length;
+      this.byName = /* @__PURE__ */ new Map();
+      for (let i = 0; i < labels.length; i++) {
+        const text = labels[i].text;
+        const list = this.byName.get(text);
+        if (list) list.push(i);
+        else this.byName.set(text, [i]);
+      }
+      this.names = { set: null, setSize: -1, places: null, placesSize: -1 };
+      this.cellKey = "";
+    }
+    refreshNamed(set, places) {
+      const n = this.names;
+      if (n.set === set && n.setSize === set.size && n.places === places && n.placesSize === places.size) return;
+      this.names = { set, setSize: set.size, places, placesSize: places.size };
+      const picked = [];
+      for (const name of set) {
+        const list = this.byName.get(name);
+        if (list) for (const i of list) picked.push(i);
+      }
+      for (const name of places.keys()) {
+        if (set.has(name)) continue;
+        const list = this.byName.get(name);
+        if (list) for (const i of list) picked.push(i);
+      }
+      this.named = Int32Array.from(picked).sort();
+      this.namedVersion++;
+      this.cellKey = "";
+    }
+    collect(ix, iy, reach) {
+      const labels = this.labels;
+      const half = this.cellSize / 2;
+      const mx = (ix + 0.5) * this.cellSize, my = (iy + 0.5) * this.cellSize;
+      const r = reach + half;
+      const out = [];
+      for (const i of this.named) {
+        const label = labels[i];
+        if (Math.abs(label.x - mx) <= r && Math.abs(label.y - my) <= r) out.push(label);
+      }
+      return out;
+    }
+  };
+  function reachBucket(reach) {
+    if (!(reach > 0)) return 0;
+    const b = REACH_BUCKET_STEP ** Math.ceil(Math.log(reach) / Math.log(REACH_BUCKET_STEP));
+    return b >= reach ? b : b * REACH_BUCKET_STEP;
+  }
+
+  // src/canalRecall/game/freeRideRuntime.ts
+  var WAY_TAP_SLOP_PX = 15;
+  var BRIDGE_COLOUR = "#2f6f9f";
+  var GameFreeRideRuntime = class {
+    /** Start or end Free Ride to match the ride just set up. `_setupRace`
+     *  calls this last, after the route, labels and spoilers are in place. */
+    _syncFreeRide() {
+      if (isFreeRidePattern(this.routePattern)) this._beginFreeRide();
+      else this._endFreeRide();
+    }
+    _beginFreeRide() {
+      this.freeRide = true;
+      this.routePath = [];
+      this._liveRoutePath = null;
+      this.quizCurrentName = "";
+      this.quizFeedback = "";
+      const map = this.vectorMap;
+      map.setSpoilersSuspended?.(true);
+      if (!this._freeRideRestore) this._freeRideRestore = { labels: !!map._labelsVisible };
+      map.setLabelsVisible?.(true);
+      map.setRoute(null, this.osmLoader, false);
+      map.setStreetHighlights(this.track, this.osmLoader, /* @__PURE__ */ new Set(), "", -1, null);
+      this.track.hideStartTag = true;
+      this._freeRidePlaces = null;
+      this._freeRidePlacesFrom = null;
+      this._freeRideNearby = [];
+      this._freeRideMarkers = [];
+      this._freeRideRefresh = 0;
+      this._freeRideOpened = /* @__PURE__ */ new Set();
+      this._showFreeRideBar(true);
+    }
+    /** Back to the quiz rules: spoiler screening and the player's own label
+     *  setting return. Safe to call when no free ride is running. */
+    _endFreeRide() {
+      const restore = this._freeRideRestore;
+      if (!this.freeRide && !restore) return;
+      this.freeRide = false;
+      this._freeRideMarkers = [];
+      this._freeRideNearby = [];
+      const map = this.vectorMap;
+      map?.setSpoilersSuspended?.(false);
+      if (restore && !restore.labels) map?.setLabelsVisible?.(false);
+      this._freeRideRestore = null;
+      if (this.track) this.track.hideStartTag = false;
+      this._showFreeRideBar(false);
+    }
+    /** Every street and canal name is labelled in Free Ride. The anchors are
+     *  indexed once per network and only those near the camera are tested. */
+    _freeRideLabelCandidates() {
+      const labels = this.track?.labels;
+      let cache = this._freeRideLabels;
+      if (!cache || cache.labels !== labels) {
+        cache = this._freeRideLabels = {
+          labels,
+          names: new Set((labels || []).map((label) => label.text)),
+          index: new StreetLabelCandidates()
+        };
+      }
+      const knowledge = { mapLabelNames: cache.names, knownPlaces: /* @__PURE__ */ new Map() };
+      const index = cache.index;
+      const maxReach = FREE_RIDE_LABEL_REACH_M * PIXELS_PER_METER;
+      return (anchors, cx, cy, reach) => index.candidates(anchors, knowledge, cx, cy, Math.min(reach, maxReach));
+    }
+    /** Landmarks with something to say, and every named bridge crossing. */
+    _freeRideCatalog() {
+      const from = this._freeRidePlacesFrom;
+      if (this._freeRidePlaces && from && from.landmarks === this.landmarks && from.bridges === this.bridges) {
+        return this._freeRidePlaces;
+      }
+      const places = [];
+      for (const landmark of this.landmarks || []) {
+        if (!isWorthACard(landmark)) continue;
+        places.push({ key: landmark.id, kind: "landmark", name: landmark.name, x: landmark.x, y: landmark.y });
+      }
+      for (const bridge of this.bridges || []) {
+        const name = bridge.displayName || bridge.name;
+        for (const crossing of bridge.crossings || []) {
+          places.push({ key: `bridge:${bridge.id}`, kind: "bridge", name, x: crossing.x, y: crossing.y });
+        }
+      }
+      this._freeRidePlaces = places;
+      this._freeRidePlacesFrom = { landmarks: this.landmarks, bridges: this.bridges };
+      return places;
+    }
+    _updateFreeRide(dt) {
+      if (!this.freeRide || !this.player) return;
+      this._freeRideRefresh = (this._freeRideRefresh ?? 0) - dt;
+      if (this._freeRideRefresh > 0) return;
+      this._freeRideRefresh = FREE_RIDE_REFRESH_SECONDS;
+      this._freeRideNearby = nearbyPlaces(this.player, this._freeRideCatalog(), {
+        radiusPx: FREE_RIDE_MARKER_RADIUS_M * PIXELS_PER_METER,
+        bridgeRadiusPx: FREE_RIDE_BRIDGE_RADIUS_M * PIXELS_PER_METER
+      });
+      for (const place of this._freeRideNearby) {
+        if (place.kind !== "landmark") continue;
+        this._ensureLandmarkImage(this.landmarks.find((landmark) => landmark.id === place.key) ?? null);
+      }
+    }
+    /** The plaque's line in place of the score. */
+    _freeRideTally() {
+      const { key, count } = freeRideTallyKey(this._freeRideOpened?.size ?? 0);
+      return t(key, { count });
+    }
+    /** Draw the markers, nearest first, keeping off the HUD, the open card and
+     *  the vehicle. Their boxes are the tap targets until the next frame. */
+    _renderFreeRideMarkers() {
+      this._freeRideMarkers = [];
+      const nearby = this._freeRideNearby;
+      if (!this.freeRide || !this.player || !nearby?.length) return;
+      const ctx = this.ctx;
+      const surface = window.CanalRecallUi.hudSurface;
+      const compact = this.viewport?.mode === "compact";
+      const fontSize = compact ? 13 : 12;
+      const height = compact ? 26 : 22;
+      const font = `700 ${fontSize}px ${surface.fontUi}`;
+      ctx.save();
+      ctx.font = font;
+      const requests = [];
+      for (const place of nearby) {
+        const at = this.camera.worldToScreen(place.x, place.y);
+        const label = markerLabel(place.name);
+        requests.push({
+          key: place.key,
+          kind: place.kind,
+          label,
+          anchorX: at.x,
+          anchorY: at.y,
+          width: Math.ceil(ctx.measureText(label).width) + height + 8,
+          height
+        });
+      }
+      const layout = this._hudRects();
+      const rect = (r) => r && r.width > 0 && r.height > 0 ? { x: r.x, y: r.y, w: r.width, h: r.height } : null;
+      const vehicle = this.camera.worldToScreen(this.player.x, this.player.y);
+      const blocked = [
+        rect(layout.recall),
+        rect(layout.compass),
+        this.showMiniMap ? rect(layout.minimap) : null,
+        layout.dpad ? rect(layout.dpad.bounds) : null,
+        this._landmarkCardBounds,
+        { x: vehicle.x - 28, y: vehicle.y - 40, w: 56, h: 60 },
+        this._freeRideBarRect()
+      ].filter((r) => !!r);
+      const placed = layoutMarkers(requests, { width: CANVAS_W, height: CANVAS_H }, blocked);
+      const activeId = this._landmarkNotice?.id || "";
+      for (const marker of placed) {
+        const request = requests.find((r) => r.key === marker.key);
+        const active = activeId === marker.key || request.kind === "bridge" && this._landmarkNotice?.name === nearby.find((p) => p.key === marker.key)?.name;
+        const dot = request.kind === "bridge" ? BRIDGE_COLOUR : surface.arrow;
+        const { box } = marker;
+        ctx.strokeStyle = surface.ink;
+        ctx.globalAlpha = 0.55;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(marker.anchorX, box.y + box.h);
+        ctx.lineTo(marker.anchorX, marker.anchorY);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = dot;
+        ctx.beginPath();
+        ctx.arc(marker.anchorX, marker.anchorY, 3.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowColor = surface.shadow;
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetY = 1;
+        ctx.fillStyle = active ? surface.ink : surface.cardSolid;
+        roundRect(ctx, box.x, box.y, box.w, box.h, box.h / 2);
+        ctx.fill();
+        ctx.shadowColor = "transparent";
+        ctx.strokeStyle = active ? surface.ink : surface.border;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.fillStyle = dot;
+        ctx.beginPath();
+        ctx.arc(box.x + box.h / 2, box.y + box.h / 2, box.h * 0.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = active ? surface.cardSolid : surface.ink;
+        ctx.font = font;
+        ctx.textAlign = "left";
+        ctx.textBaseline = "middle";
+        ctx.fillText(request.label, box.x + box.h - 2, box.y + box.h / 2 + 0.5);
+      }
+      ctx.restore();
+      this._freeRideMarkers = placed;
+    }
+    /** The Free ride · Exit bar in canvas units, so markers keep off it. */
+    _freeRideBarRect() {
+      const bar = this._freeRideBar;
+      if (!bar || bar.hidden) return null;
+      const box = bar.getBoundingClientRect();
+      const canvas = this.canvas.getBoundingClientRect();
+      if (!box.width || !canvas.width) return null;
+      const sx = CANVAS_W / canvas.width, sy = CANVAS_H / canvas.height;
+      return { x: (box.left - canvas.left) * sx, y: (box.top - canvas.top) * sy, w: box.width * sx, h: box.height * sy };
+    }
+    /** The marker under a canvas point, for the hover cursor. */
+    _freeRideMarkerAt(x, y) {
+      return this.freeRide ? markerAt(this._freeRideMarkers || [], x, y) : null;
+    }
+    /**
+     * A tap in Free Ride: a marker opens its place; otherwise the building
+     * under the tap answers as it does in every mode; failing that, the street
+     * or canal under the tap is named, with its origin card where there is one.
+     * Returns true when something opened.
+     */
+    _freeRideClick(x, y, clientX, clientY) {
+      const marker = this._freeRideMarkerAt(x, y);
+      if (marker) return this._openFreeRidePlace(marker.key);
+      const before = this._landmarkNotice;
+      this._inspectBuildingAt(clientX, clientY);
+      if (this._landmarkNotice && this._landmarkNotice !== before) {
+        this._noteFreeRideOpened(this._landmarkNotice.id);
+        return true;
+      }
+      return this._openFreeRideWayAt(clientX, clientY);
+    }
+    _openFreeRidePlace(key) {
+      const place = this._freeRideNearby?.find((p) => p.key === key);
+      if (!place) return false;
+      this.quizFeedback = "";
+      if (place.kind === "landmark") {
+        const landmark = this.landmarks.find((l) => l.id === key);
+        if (!landmark) return false;
+        this._showLandmarkNotice(landmark, { kind: "sticky" }, "click");
+        this.vectorMap.setActiveLandmark(landmark);
+        this._noteFreeRideOpened(key);
+        return true;
+      }
+      const bridge = this.bridges.find((b) => `bridge:${b.id}` === key);
+      if (!bridge) return false;
+      if (this._openKnowledgeCard(bridge.name, "bridge")) {
+        this._noteFreeRideOpened(key);
+        return true;
+      }
+      this._showLandmarkNotice({
+        id: key,
+        name: place.name,
+        type: "bridge",
+        detail: bridge.detail || "",
+        wikipediaUrl: bridge.wikipediaUrl || ""
+      }, { kind: "sticky" }, "click");
+      this._noteFreeRideOpened(key);
+      return true;
+    }
+    /** The street or canal under a tap, named; its origin card when the
+     *  extract has one. False when the tap is not on a way. */
+    _openFreeRideWayAt(clientX, clientY) {
+      const rect = this.canvas.getBoundingClientRect();
+      const world = this.vectorMap.screenToWorld?.(clientX - rect.left, clientY - rect.top, rect, this.osmLoader);
+      if (!world || !this.track) return false;
+      const contact = this.track.getNearestRoad(world.x, world.y);
+      if (!contact || !tapNamesWay(contact, WAY_TAP_SLOP_PX)) return false;
+      const name = this.track.segments[contact.segIdx]?.name || "";
+      if (!name) return false;
+      const type = isBoat(this.travelMode) ? "water" : "street";
+      if (!this._openKnowledgeCard(name, type)) {
+        this._showLandmarkNotice({ id: `free-way:${name}`, name, type: type === "water" ? "waterway" : "street" }, { kind: "sticky" }, "click");
+      }
+      this._noteFreeRideOpened(this._landmarkNotice?.id || name);
+      return true;
+    }
+    /** Open the shipped origin/register card for a name, even if it was shown
+     *  earlier this ride (a tap is a request, not a drive-by). */
+    _openKnowledgeCard(name, type) {
+      const before = this._landmarkNotice;
+      this._seenStreetKnowledge = /* @__PURE__ */ new Set();
+      this._showStreetKnowledge(name, type, true);
+      const opened = !!this._landmarkNotice && this._landmarkNotice !== before;
+      if (opened) {
+        this._landmarkNoticeSource = "click";
+        this._landmarkNoticeState.elapsed = DEFAULT_NOTICE_CONFIG.fadeSeconds;
+        this._landmarkNoticeAlpha = 1;
+      }
+      return opened;
+    }
+    _noteFreeRideOpened(id) {
+      (this._freeRideOpened ||= /* @__PURE__ */ new Set()).add(id);
+    }
+    /** The "Free ride · Exit" bar: where the destination card sits on a wide
+     *  screen, under the plaque on a phone. */
+    _showFreeRideBar(visible) {
+      let bar = this._freeRideBar ?? document.getElementById("free-ride-bar");
+      if (!bar && visible) {
+        bar = document.createElement("div");
+        bar.id = "free-ride-bar";
+        bar.setAttribute("role", "group");
+        bar.innerHTML = '<span class="free-ride-badge enamel-plaque"></span><button id="free-ride-exit" type="button"></button>';
+        bar.querySelector("button").addEventListener("click", () => {
+          this._openRouteSetup?.();
+        });
+        document.body.appendChild(bar);
+      }
+      this._freeRideBar = bar;
+      if (!bar) return;
+      bar.hidden = !visible;
+      this._freeRideBarKey = "";
+      if (!visible) return;
+      bar.setAttribute("aria-label", t("freeRide.badge"));
+      bar.querySelector(".free-ride-badge").textContent = t("freeRide.badge");
+      const exit = bar.querySelector("button");
+      exit.textContent = t("freeRide.exit");
+      exit.setAttribute("aria-label", t("freeRide.exitLabel"));
+    }
+    /** Called each frame while riding free; moves the bar only when the layout
+     *  moved. Hidden while a card or panel owns the screen. */
+    _placeFreeRideBar() {
+      const bar = this._freeRideBar;
+      if (!bar || !this.freeRide) return;
+      const layout = this._hudRects();
+      const rect = this.canvas.getBoundingClientRect();
+      const sx = rect.width / CANVAS_W;
+      const sy = rect.height / CANVAS_H;
+      const hidden = !!this._utilityOpen || this.state !== GameState.RACING;
+      let key;
+      let style;
+      if (layout.destinationInRecall) {
+        const top = (layout.recall.y + layout.recall.height + 10) * sy + rect.top;
+        key = `c|${top.toFixed(1)}|${hidden}`;
+        style = { top: `${top}px`, left: "50%", right: "", transform: "translateX(-50%)" };
+      } else {
+        const d = layout.destination;
+        const top = d.y * sy + rect.top;
+        const right = window.innerWidth - ((d.x + d.width) * sx + rect.left);
+        key = `w|${top.toFixed(1)}|${right.toFixed(1)}|${hidden}`;
+        style = { top: `${top}px`, right: `${right}px`, left: "", transform: "" };
+      }
+      if (key === this._freeRideBarKey) return;
+      this._freeRideBarKey = key;
+      Object.assign(bar.style, style);
+      bar.hidden = hidden;
+    }
+  };
+  function installFreeRide(target) {
+    for (const name of Object.getOwnPropertyNames(GameFreeRideRuntime.prototype)) {
+      if (name === "constructor") continue;
+      Object.defineProperty(target.prototype, name, Object.getOwnPropertyDescriptor(GameFreeRideRuntime.prototype, name));
+    }
+  }
+
   // src/canalRecall/hudCopy.ts
   function zoomBadgeText(zoom) {
     return t("hud.zoom", { percent: Math.round(zoom * 100) });
@@ -2024,99 +2582,6 @@
     return { text: lede || fallback, choice: null };
   }
 
-  // src/canalRecall/game/streetLabelCandidates.ts
-  var LABEL_CELL_SIZE = 256;
-  var REACH_BUCKET_STEP = 1.25;
-  var EMPTY = Object.freeze([]);
-  var StreetLabelCandidates = class {
-    constructor(cellSize = LABEL_CELL_SIZE) {
-      this.cellSize = cellSize;
-    }
-    labels = null;
-    labelCount = -1;
-    /** Name -> ascending anchor indices, built once per anchor array. */
-    byName = /* @__PURE__ */ new Map();
-    names = { set: null, setSize: -1, places: null, placesSize: -1 };
-    /** Ascending indices of every anchor whose name could pass the knowledge test. */
-    named = new Int32Array(0);
-    namedVersion = 0;
-    cellKey = "";
-    cell = EMPTY;
-    /** Rebuilds of the per-cell list, for tests and the profiler. */
-    rebuilds = 0;
-    /**
-     * The anchors `drawLabels` must test this frame: every anchor that could pass
-     * both `|x - cx| <= reach && |y - cy| <= reach` and the knowledge test, in
-     * the order of `labels`.
-     */
-    candidates(labels, knowledge, cx, cy, reach) {
-      if (!labels || !labels.length) return EMPTY;
-      const { mapLabelNames, knownPlaces } = knowledge;
-      if (!mapLabelNames.size && !knownPlaces.size) return EMPTY;
-      if (labels !== this.labels || labels.length !== this.labelCount) this.indexLabels(labels);
-      this.refreshNamed(mapLabelNames, knownPlaces);
-      if (!this.named.length) return EMPTY;
-      const size = this.cellSize;
-      const ix = Math.floor(cx / size), iy = Math.floor(cy / size);
-      const bucket = reachBucket(reach);
-      const key = `${this.namedVersion}:${ix}:${iy}:${bucket}`;
-      if (key !== this.cellKey) {
-        this.cellKey = key;
-        this.cell = this.collect(ix, iy, bucket);
-        this.rebuilds++;
-      }
-      return this.cell;
-    }
-    indexLabels(labels) {
-      this.labels = labels;
-      this.labelCount = labels.length;
-      this.byName = /* @__PURE__ */ new Map();
-      for (let i = 0; i < labels.length; i++) {
-        const text = labels[i].text;
-        const list = this.byName.get(text);
-        if (list) list.push(i);
-        else this.byName.set(text, [i]);
-      }
-      this.names = { set: null, setSize: -1, places: null, placesSize: -1 };
-      this.cellKey = "";
-    }
-    refreshNamed(set, places) {
-      const n = this.names;
-      if (n.set === set && n.setSize === set.size && n.places === places && n.placesSize === places.size) return;
-      this.names = { set, setSize: set.size, places, placesSize: places.size };
-      const picked = [];
-      for (const name of set) {
-        const list = this.byName.get(name);
-        if (list) for (const i of list) picked.push(i);
-      }
-      for (const name of places.keys()) {
-        if (set.has(name)) continue;
-        const list = this.byName.get(name);
-        if (list) for (const i of list) picked.push(i);
-      }
-      this.named = Int32Array.from(picked).sort();
-      this.namedVersion++;
-      this.cellKey = "";
-    }
-    collect(ix, iy, reach) {
-      const labels = this.labels;
-      const half = this.cellSize / 2;
-      const mx = (ix + 0.5) * this.cellSize, my = (iy + 0.5) * this.cellSize;
-      const r = reach + half;
-      const out = [];
-      for (const i of this.named) {
-        const label = labels[i];
-        if (Math.abs(label.x - mx) <= r && Math.abs(label.y - my) <= r) out.push(label);
-      }
-      return out;
-    }
-  };
-  function reachBucket(reach) {
-    if (!(reach > 0)) return 0;
-    const b = REACH_BUCKET_STEP ** Math.ceil(Math.log(reach) / Math.log(REACH_BUCKET_STEP));
-    return b >= reach ? b : b * REACH_BUCKET_STEP;
-  }
-
   // src/canalRecall/game/teachingSurface.ts
   function canShowMiniMap(enabled, input) {
     return enabled && !input.utilityOpen;
@@ -2385,11 +2850,6 @@
       if (maskSpoiledName(text, [asked], "") !== text) return true;
     }
     return false;
-  }
-
-  // src/canalRecall/answerPath.ts
-  function normaliseAnswer(value) {
-    return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   }
 
   // src/canalRecall/game/poiNotability.ts
@@ -6555,6 +7015,7 @@
           else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this._recenterCamera();
           else if (this._landmarkCloseBounds && hit(this._landmarkCloseBounds)) this._clearLandmarkNotice();
           else if (this._landmarkCardBounds && hit(this._landmarkCardBounds)) this._expandLandmarkNotice();
+          else if (this.freeRide && this.state === GameState.RACING) this._freeRideClick(x, y, event.clientX, event.clientY);
           else this._inspectBuildingAt(event.clientX, event.clientY);
         }
         dragging = false;
@@ -6752,13 +7213,14 @@
         }
         this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground, transitZoomScale(this.camera.zoom));
       }
-      this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
+      const free = !!this.freeRide;
+      this.vectorMap.setRoute(free ? null : this._liveRoutePath || this.routePath, this.osmLoader, !free && this.routeOptions.line);
       const reveal = this.quizPromptName ? null : this._answerReveal;
       const litName = this.quizPromptName || reveal?.name || "";
       const litSegment = this.quizPromptName ? this.quizPromptSegmentIndex : reveal?.segmentIndex ?? -1;
       const litPoint = this.quizPromptName ? this.quizPromptPointIndex : reveal?.pointIndex ?? 0;
       const draped = !!this.vectorMap.ownGroundDrapesOverlays?.();
-      if (!byBoat || draped) {
+      if (!free && (!byBoat || draped)) {
         this.vectorMap.setStreetHighlights(
           this.track,
           this.osmLoader,
@@ -6772,7 +7234,7 @@
         const stamp = this._answerStamp && this.raceTime < this._answerStamp.until ? this._answerStamp : null;
         this.vectorMap.setAnsweredStreetName?.(this.track, this.osmLoader, stamp, player);
       }
-      this.renderer.drawTrack(this.camera, this.track);
+      if (!free) this.renderer.drawTrack(this.camera, this.track);
       if (byBoat && !draped) {
         this.renderer.drawQuestionFeature(
           this.camera,
@@ -6818,7 +7280,8 @@
         }
         return hit;
       };
-      this.track.drawLabels(
+      if (free) this.track.drawLabels(ctx, this.camera, () => true, "", player, this._freeRideLabelCandidates(), shownText);
+      else this.track.drawLabels(
         ctx,
         this.camera,
         (text, x, y) => (this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y)) && !(asked && spoils(text)),
@@ -6850,6 +7313,8 @@
         });
         visibleRouteName = plaque.routeName;
         routeAnswerHidden = plaque.answerHidden;
+      } else if (free) {
+        visibleRouteName = roadName ? displayBridgeName(bridgeDisplayNamesOf(this.bridges), roadName) : "";
       } else {
         const plaque = routePlaqueName({
           roadName: roadName || "",
@@ -6865,7 +7330,7 @@
         routeAnswerHidden = plaque.answerHidden;
       }
       const { feedback, restrictionNote } = this._plaqueNotes();
-      const finishAngle = this.routeOptions.arrow ? this.hud.finishDirection(
+      const finishAngle = this.routeOptions.arrow && !free ? this.hud.finishDirection(
         player.x,
         player.y,
         this.track.finishPoint.x,
@@ -6885,16 +7350,17 @@
         streak: this.quizStreak,
         gamey: this.gameyFeatures,
         trip: this.hud.tripText(player.speed, this._playerDistancePx()),
-        feedback,
+        feedback: free ? "" : feedback,
         restrictionNote,
-        destination: merged ? {
+        tally: free ? this._freeRideTally() : null,
+        destination: merged && !free ? {
           // "to your destination" says nothing; only a real name earns room.
           name: destinationLabel && destinationLabel !== "your destination" ? destinationLabel : "",
           distancePx: distanceToFinish,
           arrowAngle: finishAngle
         } : null
       });
-      if (!merged) {
+      if (!merged && !free) {
         this.hud.drawDestination(
           ctx,
           destinationLabel,
@@ -6906,6 +7372,10 @@
       this.hud.drawCompass(ctx, this.camera);
       if (showMiniMap) this._renderMinimap();
       this.vectorMap.setQuizQuietMap(!canShowPoiLabels(true, teaching));
+      if (free) {
+        this._renderFreeRideMarkers();
+        this._placeFreeRideBar();
+      }
       this._renderLandmarkNotice();
       this._renderNeighborhoodNotice();
       this._renderZoomBadge();
@@ -7075,7 +7545,7 @@
         rotation: this.camera.rotation || 0,
         angle: player.angle,
         radiusM: this._radarRadiusM,
-        destination: finish ? local(finish.x, finish.y) : null,
+        destination: finish && !this.freeRide ? local(finish.x, finish.y) : null,
         route,
         routeIndex: this._radarRouteIndex ?? 0
       }, range[0]);
@@ -7989,6 +8459,7 @@
     }
   };
   window.CanalRecallRadar = { RadarMap, radarLocal, RADAR_RADIUS_M };
+  installFreeRide(GamePresentationRuntime);
   window.CanalRecallGameModules = window.CanalRecallGameModules || [];
   window.CanalRecallGameModules.push(GamePresentationRuntime);
 })();

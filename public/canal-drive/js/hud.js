@@ -274,11 +274,12 @@ class HUD {
     routeName = '', neighborhood = '', answerHidden = false,
     correct = 0, attempts = 0, points = 0, streak = 0, gamey = true,
     trip = '', feedback = '', restrictionNote = '', destination = null,
+    tally = null,
   } = {}) {
     if (this.layout?.destinationInRecall) {
       this._drawMergedPlaque(ctx, {
         routeName, neighborhood, answerHidden, correct, attempts, points, streak, gamey,
-        feedback, restrictionNote, destination,
+        feedback, restrictionNote, destination, tally,
       });
       return;
     }
@@ -332,9 +333,9 @@ class HUD {
     y += lineH;
     ctx.font = this._font(700, 12, surface.fontMono);
     ctx.fillStyle = surface.ink;
-    const tally = window.CanalRecallUi.scoreTally({ correct, attempts, points, gamey });
-    ctx.fillText(tally, left, y);
-    if (gamey && streak >= 2) {
+    // Free Ride has no score; it passes its own line (`tally`).
+    ctx.fillText(tally ?? window.CanalRecallUi.scoreTally({ correct, attempts, points, gamey }), left, y);
+    if (tally == null && gamey && streak >= 2) {
       const mult = (1 + 0.1 * Math.min(streak - 1, 9)).toFixed(1);
       ctx.textAlign = 'right';
       ctx.fillStyle = surface.accent;
@@ -371,7 +372,7 @@ class HUD {
    *  odometer and novelty stay on the roomier layouts. */
   _drawMergedPlaque(ctx, {
     routeName, neighborhood, answerHidden, correct, attempts, points, streak, gamey,
-    feedback, restrictionNote, destination,
+    feedback, restrictionNote, destination, tally: tallyOverride = null,
   }) {
     const surface = window.CanalRecallUi.hudSurface;
     const rect = this._rect('recall', { x: 12, y: 12, width: CANVAS_W - 24, height: 56 });
@@ -408,8 +409,8 @@ class HUD {
     // Row 2: where and how well on the left; where to on the right. The score
     // never moves; the neighbourhood and destination name trim to fit.
     y += 20;
-    const tally = window.CanalRecallUi.scoreTally({ correct, attempts, points, gamey, compact: true });
-    const streakText = gamey && streak >= 2 ? `  ${hudText('hud.streakCompact', { streak })}` : '';
+    const tally = tallyOverride ?? window.CanalRecallUi.scoreTally({ correct, attempts, points, gamey, compact: true });
+    const streakText = tallyOverride == null && gamey && streak >= 2 ? `  ${hudText('hud.streakCompact', { streak })}` : '';
     ctx.font = this._font(700, 11, surface.fontMono);
     const tallyWidth = ctx.measureText(tally + streakText).width;
     let destWidth = 0;
@@ -607,7 +608,8 @@ class HUD {
         reviewDueWaterSegments: dueWater,
         route: game.routePath || [],
         start: game.track.startPoint || null,
-        finish: game.track.finishPoint || null,
+        // Free Ride has no destination; its finish point is only plumbing.
+        finish: game.freeRide ? null : (game.track.finishPoint || null),
       }, { x: 0, y: 0, width: rect.width, height: rect.height });
       if (!built) return;
       const cache = document.createElement('canvas');

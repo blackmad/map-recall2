@@ -5,6 +5,7 @@ import {
   Crosshair,
   Home,
   LocateFixed,
+  MapPinned,
   Navigation2,
   Ship,
   Shuffle,
@@ -36,6 +37,7 @@ export const ROUTE_ICONS: Record<CanalPreferences['routePattern'], LucideIcon> =
   surprise: Shuffle,
   home: Home,
   here: LocateFixed,
+  free: MapPinned,
 };
 
 export const DIFFICULTY_ICONS: Record<CanalPreferences['difficulty'], LucideIcon | null> = {

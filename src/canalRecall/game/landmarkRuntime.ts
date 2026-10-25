@@ -562,6 +562,8 @@ export class GameLandmarkRuntime {
       }
       candidates.push(landmark);
     }
+    // Free Ride marks places and opens a card on a tap; nothing pops up by itself.
+    if (this.freeRide) return;
     if (!canShowDriveByCard(this.viewport?.mode, this._teachingGate())) return;
     if (!driveByGapElapsed(this._lastDriveByAt, this.raceTime)) return;
     if (this._landmarkNotice && !mayReplaceNotice(

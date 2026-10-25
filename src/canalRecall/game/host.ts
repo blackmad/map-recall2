@@ -59,6 +59,8 @@ export interface GameCoreHost {
   controlMode: string;
   /** Active extract city — stamps recall keys and extract URLs. */
   cityId: string;
+  /** True while a Free Ride runs: no route, no questions (freeRide.ts). */
+  freeRide?: boolean;
   _cityDisplayName(): string;
   _activeCity(): { name: string; provinceCaption?: string; extractPath?: string; center?: { lat: number; lng: number } };
 
@@ -345,6 +347,12 @@ export interface RecallHost extends GameCoreHost {
 
 /** Frame composition, the menu, the pause overlay and the finish card. */
 export interface PresentationHost extends GameCoreHost {
+  /** Free Ride (freeRideRuntime.ts): the plaque line, markers, bar and taps. */
+  _freeRideTally(): string;
+  _renderFreeRideMarkers(): void;
+  _placeFreeRideBar(): void;
+  _freeRideClick(x: number, y: number, clientX: number, clientY: number): boolean;
+  _freeRideLabelCandidates(): (labels: import('./streetLabelCandidates').StreetLabelAnchor[] | undefined, cx: number, cy: number, reach: number) => readonly import('./streetLabelCandidates').StreetLabelAnchor[];
   /** For the plaque's bridge spellings (bridgeDisplayNames.ts). */
   bridges: Bridge[];
   /** Published trivia and what has been told (LandmarkHost owns them); the ARRIVED card draws from the same rotation. */
