@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+**Large-tier facade tone (2026-10-25, #71).** Follow-up to #65's dark
+Haarlemmerweg fronts. Finding: lighting is identical across pipelines
+(north/south 0.77-0.79 everywhere, `look/lookParity.ts`); the "0.58" was
+the unlit baked formula, not used for lit walls. The darkness is content:
+large-tier flat roofs fell back to kit bitumen (luma ~88) while the
+orthophoto reads 120-140. Fix: `roof-flat.ts --write` gave 149 intents a
+measured `roof.flatHex` (entrepotdok-164981 excluded: roof.surfaces, pinned
+test); unmeasured flats default to gravel #9e9281; `reexport-large.ts`
+re-exports installed GLBs refusing any mesh change (103 re-exported,
+material-only). Haarlemmerweg GLB roofs 102 -> 108 luma. Left: pitched
+slate roofs have no measured colour; photo-measured walls read 20-30 luma
+darker than procedural priors (cityWallTint 0.60 cap for unmeasured light
+brick; landmarks lack the 1.106 sunlit gain). Gate `facade-tone.spec.ts`.
+
 **Zuidoost repetitive terraces (2026-10-25, #70).** User idea: newer
 areas repeat, so one design covers many houses. Eight measured
 `buildingTypes` specs (`zo-*.json`), 1,540 instanced houses: Gein 3 156
