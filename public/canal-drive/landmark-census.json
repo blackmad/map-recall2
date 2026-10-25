@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-25T17:40:21.169Z",
+ "generatedAt": "2026-10-25T17:52:35.966Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
  "headline": 504,
@@ -19,7 +19,7 @@
    "unreviewed": 0
   },
   "largeRecipe": {
-   "models": 112,
+   "models": 113,
    "counts": 52,
    "strict": 52,
    "unreviewed": 14
@@ -33,7 +33,7 @@
  },
  "byReview": {
   "legacy-gallery": 406,
-  "likeness-gate": 96,
+  "likeness-gate": 97,
   "none": 324,
   "strip-review": 112
  },
@@ -7247,6 +7247,20 @@
    "tier": "largeRecipe",
    "pands": [
     "0363100012097106"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012118325",
+   "name": "Haarlemmerweg 337 / Vredenhofweg 1, Amsterdam-West (1954 shop hall on the corner, west of Haarlemmerweg 333; a two-storey front in grey horizontal profiled metal over a glazed shopfront with a dark sign band; BAG pand 0363100012118325)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012118325"
    ],
    "namedPoi": false,
    "rideVisible": false,

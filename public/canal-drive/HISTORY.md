@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+**Haarlemmerweg 333 big buildings (2026-10-25, #83).** User asked for
+"the big ones" around Kennedy Van der Laan; the brick blocks there were
+already modelled, so the lane took the unmodelled large boxes. Installed:
+Carpetright, Haarlemmerweg 337 (walls[1] allow-inferred: the photo mask reads
+the dark sign boards and WELKOM panel as glazing; shopfront glazing matches by
+eye). Kit: `signBoards`/`falseFront`, wall `signage.along`. Held:
+Nieuwpoortkade 2 (Da Vinci; walls[2] has a small square window beside each
+wide one that the kit does not place, walls[1] buff brick blown out) and
+Waterkeringweg 7 (walls[0] rebuilt to 32 columns from the leaf-off 2019-04
+view but foliage 33 %; other walls fail; no loggia band in the kit).
+
 **Building types round 8 (2026-10-25, #82).** 14 photo-checked designs,
 447 houses (Oostoever Sloterplas 246, De Klomp 104, Weesp-Zuid I 68,
 Sporenburg 29). Kit: `bodyFromRoof.from:'highest'`, panel `archShape:'round'`,
