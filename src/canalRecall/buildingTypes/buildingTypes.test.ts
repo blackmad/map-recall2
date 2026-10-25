@@ -835,7 +835,7 @@ test('white-referenced exposure (#75): a shaded wall divided by its own white fr
   assert.equal(whiteReferenced('#ffffff', '#101010'), '#ffffff', 'clamped');
 });
 
-const R4_TYPES = ['fe-db-row', 'th-gk-row'].map(id => load(`${id}.json`));
+const R4_TYPES = ['fe-db-row', 'th-gk-row', 'th-kz-row', 'nd-bb-row'].map(id => load(`${id}.json`));
 
 test('round-4 designs (#75): validate, >= 4 distinct photo pands on the front, counted openings match for every variant and handedness, <= 600 triangles, party walls blank, chimney cap or ridge reached, within the frontage', () => {
   for (const spec of R4_TYPES) {

@@ -1,0 +1,443 @@
+{
+ "id": "th-kz-row",
+ "label": "K-buurt-Zuidwest (2006-07, Kekerstraat, Kervelplantsoen) two-storey flat-roofed terraced house: ground storey of coloured glazed-tile strips (blue, green, grey-mauve) with a grey door and a white panel, three tall narrow timber-framed windows in mottled dark brick above",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 0,
+  "bouwjaar": [
+   2006,
+   2007
+  ],
+  "lengthM": 5.45,
+  "widthM": 10.27,
+  "bouwlagen": 2,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.4,
+  6.8
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.0,
+   6.0
+  ],
+  "depth": [
+   9.5,
+   11.0
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0,
+  "vergeOverhangM": 0,
+  "thicknessM": 0.2,
+  "pitchDeg": 0
+ },
+ "ground": {
+  "mode": "solid",
+  "plinthM": 2.6
+ },
+ "defaultVariant": "blue",
+ "variants": {
+  "blue": {
+   "label": "cobalt-blue glazed tile strips",
+   "evidence": "2e/1e Kekerstraat (2136437, 2096206, 2069849)",
+   "palette": {
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#7d8285",
+    "accent": "#ecebe6",
+    "dark": "#3a3a3a",
+    "column": "#9a9fa2",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#55575a"
+    },
+    "wall": {
+     "slot": "brick",
+     "tint": "#66605c",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#3b5592",
+     "measured": true
+    },
+    "joint": "#2a3b6e",
+    "rail": "#5a6f9a"
+   }
+  },
+  "green": {
+   "label": "green glazed tile strips",
+   "evidence": "3e/2e Kekerstraat (2131278, 2137306, 2145555)",
+   "palette": {
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#7d8285",
+    "accent": "#ecebe6",
+    "dark": "#3a3a3a",
+    "column": "#9a9fa2",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#55575a"
+    },
+    "wall": {
+     "slot": "brick",
+     "tint": "#66605c",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#4f7258",
+     "measured": true
+    },
+    "joint": "#36513d",
+    "rail": "#76937a"
+   }
+  },
+  "mauve": {
+   "label": "grey-mauve tile strips",
+   "evidence": "Kervelplantsoen (2165711, 2161903, 2161959)",
+   "palette": {
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#7d8285",
+    "accent": "#ecebe6",
+    "dark": "#3a3a3a",
+    "column": "#a87a45",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#55575a"
+    },
+    "wall": {
+     "slot": "brick",
+     "tint": "#6a5c52",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#6b6468",
+     "measured": true
+    },
+    "joint": "#4e4a4e",
+    "rail": "#8c8384"
+   }
+  },
+  "orange": {
+   "label": "orange brick over brown timber",
+   "evidence": "Kerstomaatplantsoen (2112579, 2101016)",
+   "palette": {
+    "frame": "#f0eee6",
+    "glass": "#4d5a66",
+    "door": "#7d8285",
+    "accent": "#ecebe6",
+    "dark": "#3a3a3a",
+    "column": "#a87a45",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#55575a"
+    },
+    "wall": {
+     "slot": "brick",
+     "tint": "#b98a66",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#7d6b52",
+     "measured": true
+    },
+    "joint": "#5f513d",
+    "rail": "#9a8467"
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012136437.jpg",
+     "pand": "0363100012136437",
+     "address": "2e Kekerstraat",
+     "note": "2024-09 overcast, 75 px/m on the 5.45 m house (53, 55): door 0-1.0 m, white panel 1.0-1.87 m, window 1.87-3.13 m (sill 1.07, 1.4 m), blue glazed-tile strips 3.13-5.45 m to 2.53 m; upper three tall narrow windows (0.68 x 1.5 m) at ~0.5, 2.1, 3.4 m in mottled dark brick; flat roof at 6.0 m; every house the same hand (no mirroring)"
+    },
+    {
+     "photo": "survey crop 0363100012131278.jpg",
+     "pand": "0363100012131278",
+     "address": "3e Kekerstraat",
+     "note": "2024-09: green tile row, same layout"
+    },
+    {
+     "photo": "survey crop 0363100012137306.jpg",
+     "pand": "0363100012137306",
+     "address": "3e Kekerstraat",
+     "note": "2019-06: green tile row, timber upper frames"
+    },
+    {
+     "photo": "survey crop 0363100012145555.jpg",
+     "pand": "0363100012145555",
+     "address": "2e Kekerstraat",
+     "note": "2024-09: green tile row"
+    },
+    {
+     "photo": "survey crop 0363100012096206.jpg",
+     "pand": "0363100012096206",
+     "address": "1e Kekerstraat",
+     "note": "2025-09: blue tile row (a three-storey middle block held by its eaves)"
+    },
+    {
+     "photo": "survey crop 0363100012165711.jpg",
+     "pand": "0363100012165711",
+     "address": "Kervelplantsoen",
+     "note": "2021-06: grey-mauve tile row"
+    },
+    {
+     "photo": "survey crop 0363100012112579.jpg",
+     "pand": "0363100012112579",
+     "address": "Kerstomaatplantsoen",
+     "note": "2021-06: orange brick row with brown timber ground storey"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.55,
+       "w": 0.92,
+       "h": 2.3,
+       "note": "grey door at the left of each house"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.43,
+       "w": 0.85,
+       "h": 2.6,
+       "sill": 0,
+       "colour": "accent",
+       "depth": 0.03,
+       "note": "white rendered panel with the house number"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.5,
+       "w": 1.26,
+       "h": 1.1,
+       "sill": 1.15,
+       "lights": 1,
+       "note": "white-framed window, glazed tiles below it"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.5,
+       "w": 0.2,
+       "h": 2.6,
+       "sill": 0,
+       "colour": "joint",
+       "depth": 0.035,
+       "note": "streaks in the glazed-tile strips"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.15,
+       "w": 0.35,
+       "h": 2.6,
+       "sill": 0,
+       "colour": "rail",
+       "depth": 0.035
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.85,
+       "w": 0.15,
+       "h": 2.6,
+       "sill": 0,
+       "colour": "joint",
+       "depth": 0.035
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 0.5,
+       "w": 0.56,
+       "h": 1.35,
+       "sill": 0.8,
+       "lights": 1,
+       "colour": "column",
+       "note": "tall narrow window, timber frame"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 2.1,
+       "w": 0.56,
+       "h": 1.35,
+       "sill": 0.8,
+       "lights": 1,
+       "colour": "column"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.45,
+       "w": 0.56,
+       "h": 1.35,
+       "sill": 0.8,
+       "lights": 1,
+       "colour": "column"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012136437.jpg",
+     "pand": "0363100012136437",
+     "address": "2e Kekerstraat",
+     "note": "garden side not photographed (inferred: garden door and window below, two windows above)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.3
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 2.4,
+       "h": 1.9,
+       "sill": 0.3,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.4,
+       "w": 1.2,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.9,
+       "w": 1.2,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012098089.jpg",
+     "pand": "0363100012098089",
+     "address": "3e Kekerstraat",
+     "note": "end walls: plain brick (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012098089.jpg",
+     "pand": "0363100012098089",
+     "address": "3e Kekerstraat",
+     "note": "end walls: plain brick (party walls elsewhere)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Ground storey: the plinth palette (ground.plinthM 2.53 m) is the glazed tile; the streaks are three panels in the joint/rail colours. Colours: overcast/shaded crops, set from the white panels as reference and the street read (not a sunlit measurement).",
+  "The upper frames vary by row: grey/white on the blue and green rows, timber on the mauve and orange ones. The three-storey blocks inside these rows (eaves ~8.9 m, held), the corner towers and the yellow-door brick rows of Krombekstraat/Krulslaplantsoen are other designs (not modelled)."
+ ]
+}

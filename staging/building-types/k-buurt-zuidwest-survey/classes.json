@@ -1,0 +1,115 @@
+{
+ "terraces": {
+  "12": {
+   "type": "th-kz-row",
+   "variant": "blue",
+   "via": "photo"
+  },
+  "17": {
+   "type": "th-kz-row",
+   "variant": "blue",
+   "via": "photo"
+  },
+  "27": {
+   "type": "th-kz-row",
+   "variant": "blue",
+   "via": "photo"
+  },
+  "44": {
+   "type": "th-kz-row",
+   "variant": "blue",
+   "via": "photo"
+  },
+  "46": {
+   "type": "th-kz-row",
+   "variant": "blue",
+   "via": "photo"
+  },
+  "3": {
+   "type": "th-kz-row",
+   "variant": "green",
+   "via": "photo"
+  },
+  "7": {
+   "type": "th-kz-row",
+   "variant": "green",
+   "via": "photo"
+  },
+  "15": {
+   "type": "th-kz-row",
+   "variant": "green",
+   "via": "photo"
+  },
+  "24": {
+   "type": "th-kz-row",
+   "variant": "green",
+   "via": "photo"
+  },
+  "33": {
+   "type": "th-kz-row",
+   "variant": "green",
+   "via": "photo"
+  },
+  "35": {
+   "type": "th-kz-row",
+   "variant": "green",
+   "via": "photo"
+  },
+  "45": {
+   "type": "th-kz-row",
+   "variant": "green",
+   "via": "photo"
+  },
+  "36": {
+   "type": "th-kz-row",
+   "variant": "mauve",
+   "via": "photo"
+  },
+  "37": {
+   "type": "th-kz-row",
+   "variant": "mauve",
+   "via": "photo"
+  },
+  "40": {
+   "type": "th-kz-row",
+   "variant": "mauve",
+   "via": "photo"
+  },
+  "41": {
+   "type": "th-kz-row",
+   "variant": "mauve",
+   "via": "photo"
+  },
+  "43": {
+   "type": "th-kz-row",
+   "variant": "mauve",
+   "via": "photo"
+  },
+  "11": {
+   "type": "th-kz-row",
+   "variant": "mauve",
+   "via": "photo"
+  },
+  "20": {
+   "type": "th-kz-row",
+   "variant": "mauve",
+   "via": "photo"
+  },
+  "8": {
+   "type": "th-kz-row",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "22": {
+   "type": "th-kz-row",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "32": {
+   "type": "th-kz-row",
+   "variant": "green",
+   "via": "photo",
+   "note": "tile colour hidden by trees: green, as the rest of 1e Kekerstraat west"
+  }
+ }
+}

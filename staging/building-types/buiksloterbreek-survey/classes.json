@@ -1,0 +1,64 @@
+{
+ "terraces": {
+  "0": {
+   "type": "nd-bb-row",
+   "variant": "pale",
+   "via": "photo",
+   "repMirror": false
+  },
+  "2": {
+   "type": "nd-bb-row",
+   "variant": "pale",
+   "via": "photo",
+   "repMirror": true
+  },
+  "3": {
+   "type": "nd-bb-row",
+   "variant": "pale",
+   "via": "photo",
+   "repMirror": false
+  },
+  "6": {
+   "type": "nd-bb-row",
+   "variant": "pale",
+   "via": "photo",
+   "repMirror": false
+  },
+  "9": {
+   "type": "nd-bb-row",
+   "variant": "pale",
+   "via": "photo",
+   "repMirror": true
+  },
+  "11": {
+   "type": "nd-bb-row",
+   "variant": "pale",
+   "via": "photo",
+   "repMirror": false
+  },
+  "12": {
+   "type": "nd-bb-row",
+   "variant": "pale",
+   "via": "photo",
+   "repMirror": true
+  },
+  "13": {
+   "type": "nd-bb-row",
+   "variant": "pale",
+   "via": "photo",
+   "repMirror": false
+  },
+  "14": {
+   "type": "nd-bb-row",
+   "variant": "pale",
+   "via": "photo",
+   "repMirror": false
+  },
+  "15": {
+   "type": "nd-bb-row",
+   "variant": "pale",
+   "via": "photo",
+   "repMirror": false
+  }
+ }
+}
