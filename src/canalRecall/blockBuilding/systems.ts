@@ -6,7 +6,7 @@
  * Slot names are block-kit slots; `largeCompile.ts` maps them to recipe material slots (brick/stucco, stone,
  * frame, door, glass, accent, roofTile/slate/bitumen) with the palette colour as tint.
  */
-import type { Row, System, WinParams } from './spec.ts';
+import type { GroundPiers, Item, RecessBand, Row, System, WinParams } from './spec.ts';
 import type { ArchKind, ArchParams } from './arch.ts';
 
 /**
@@ -115,7 +115,32 @@ export interface SystemFit {
   loggias?: LoggiaFit;
   /** a glazed plinth with its own mullion pitch on the lowest storeys (intent `plinth`; fitLarge fills the defaults, PLINTH) */
   plinth?: PlinthFit;
+  /** a side light in its own frame colour in every punched window of the listed storeys (intent `sideLight`; opt-in) */
+  sideLight?: SideLightFit;
+  /** per-storey, per-bay windows: width, centre, height, sill and side light per bay, cycling (intent `bayWindows`; opt-in) */
+  bayWindows?: BayWindowsFit[];
+  /** recessed loggia bands across a run of bays and storeys (intent `loggiaBands`; opt-in) */
+  loggiaBands?: LoggiaBandFit[];
+  /** dark ground-storey columns on every n-th bay edge and a grille strip along the ground (intent `groundPiers`; opt-in) */
+  groundPiers?: GroundPiers;
 }
+
+/** Side light (compose `WinParams.sash`): on `storeys` (0 = ground; default every storey) each punched window's light. */
+export interface SideLightFit { side: 'left' | 'right'; w: number; low: number; high: number; slot: string; storeys?: number[] }
+/**
+ * One storey row as a cycle of per-bay windows (GitHub #86: the Da Vinci south wing's small sash windows set off the bay
+ * axis beside the wide transom windows; the GWL fronts' singles and doubles that differ between storeys). Per bay, cycling
+ * across the bays: `w` of the bay pitch wide (0 = plain wall; above 1 spans into the neighbour, whose entry is then 0),
+ * centred `at` of the pitch off the bay axis, `h` of the storey tall from `sillM` (default the storey row's window), and
+ * `light`: the side light's width for this window (0 = none, 1 = the whole light ringed), `door`: a door leaf (the door
+ * slot behind the frame, no sill, no side light). Everything else (frame, glass, sill, bars) is the storey row's window.
+ */
+export interface BayWindowsFit { storeys: number[]; pattern: { w: number; at?: number; h?: number; sillM?: number; light?: number; door?: boolean }[] }
+/** A loggia band (compose `RecessBand`): bays and storeys inclusive, sill / head in m over their floor lines, depth in m. */
+export interface LoggiaBandFit { storeys: [number, number]; bays: [number, number]; sillM: number; headM: number; deepM: number; lights: number; rail: 'glass' | 'bars' | 'solid' | 'none'; railSlot: string;
+  /** the back a wall with rows of windows: per row from `sill` to `sill + h` of the band, one window `w` of `every` bays wide in each run of `every` bays */ back?: { sill: number; h: number; every: number; w: number }[] }
+/** Loggia band defaults: a 3 cm kerb, the head at 0.85 of the top storey, 0.5 of the storey deep, a light per ~1.2 m, a 4 cm inset from the bay edges. */
+export const LOGGIA_BAND = { sill: 0.03, head: 0.85, deep: 0.5, lightM: 1.2, insetM: 0.04 };
 
 /**
  * Loggias (recessed balconies) in a punched grid: on each listed storey (0 = ground) one opening per bay (or the listed
@@ -424,6 +449,31 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
       for (const k of Object.keys(rowOverrides)) if (k !== '0') rowOverrides[k] = grp(rowOverrides[k]);
     }
   }
+  // Side lights: every punched window (cycles, balcony backs and loggias aside) of the listed storeys takes the ringed light.
+  if (f.sideLight && name !== 'blank') {
+    const { storeys, ...sl } = f.sideLight, sash = { side: sl.side, w: sl.w, low: sl.low, high: sl.high, slot: sl.slot };
+    const lit = (r: Row): Row => r.cycle ? { ...r, cycle: r.cycle.map(lit) } : r.kind === 'punched' && r.win && !r.win.loggia && !r.win.arch ? { ...r, win: { ...r.win, sash } } : r;
+    const all = storeys ?? Array.from({ length: Math.max(1, f.lines.length - 2) }, (_, k) => k);
+    for (const st of all) { if (st === 0) ground = lit(ground); else rowOverrides[String(st)] = lit(rowOverrides[String(st)] ?? typical); }
+  }
+  // Per-bay windows on chosen storeys: the storey's punched row becomes a cycle of `items` rows, one window per bay at its
+  // own centre, width, height and sill (a wide window may reach into its neighbour's cell, as items are not clamped).
+  for (const bw of name === 'blank' ? [] : f.bayWindows ?? []) for (const st of bw.storeys) {
+    const sh = st + 1 < f.lines.length ? f.lines[st + 1] - f.lines[st] : 0, under = st === 0 ? ground : rowOverrides[String(st)] ?? typical;
+    if (sh <= 0 || under.kind !== 'punched' || !under.win || under.cycle) continue;
+    const base = under.win, P = f.pitchM, { sash: baseSash, ...plain } = base;
+    const hOf = (h: number | undefined) => (h !== undefined ? h * sh : base.h === undefined ? 0.6 * sh : base.h <= 1 ? base.h * sh : base.h);
+    const row = (e: BayWindowsFit['pattern'][number]): Row => {
+      if (e.w <= 0) return { kind: 'wall' };
+      const ww = e.w * P, c = P / 2 + (e.at ?? 0) * P, lo = e.sillM ?? base.sill ?? 0.9, hi = Math.min(lo + hOf(e.h), sh - 0.1);
+      const sash = e.door ? undefined : e.light === undefined ? baseSash : e.light > 0 && baseSash ? { ...baseSash, w: e.light } : undefined;
+      const win: WinParams = { ...plain, ...(sash ? { sash } : {}), ...(e.door ? { glass: s.door, sillSlot: null } : {}) };
+      const item: Item = { kind: 'win', u: [+(c - ww / 2).toFixed(3), +(c + ww / 2).toFixed(3)], v: [+lo.toFixed(3), +hi.toFixed(3)], win };
+      return { kind: 'items', items: [[item]] };
+    };
+    const cyc: Row = { kind: 'wall', cycle: bw.pattern.map(row) };
+    if (st === 0) ground = cyc; else rowOverrides[String(st)] = cyc;
+  }
   // Glazed plinth and loggias: the last step, so no later pass (windowPattern, paneSplit) reshapes them. In listed bays only,
   // the other bays keep the storey's row (one bay of a per-bay cycle each).
   const storeyH = (st: number) => (st + 1 < f.lines.length ? f.lines[st + 1] - f.lines[st] : 0);
@@ -449,5 +499,14 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
       ...(f.deepBars ? { barD: 0.035 } : {}), loggia: { depth: +(L.deep * sh).toFixed(3), ...rail } };
     put(st, under => inBays(under, { kind: 'punched', win }, L.bays));
   }
-  return { pitch: f.pitchM, lines: f.lines, ground, typical, bands, piers, ...(Object.keys(rowOverrides).length ? { rowOverrides } : {}) };
+  // Loggia bands: one recessed opening per band (compose `RecessBand`), its glazing in `lights` leaves at the back.
+  const recessBands: RecessBand[] = (f.loggiaBands ?? []).map(L => {
+    const rail = L.rail !== 'none' && L.storeys[0] > 0 ? { rail: { kind: L.rail, h: LOGGIA.railM, slot: L.railSlot } } : {};
+    const width = (L.bays[1] - L.bays[0] + 1) * f.pitchM, n = Math.max(1, L.lights);
+    return { floors: [L.storeys[0], L.storeys[1]], bays: [L.bays[0], L.bays[1]], sill: L.sillM, head: L.headM, inset: LOGGIA_BAND.insetM,
+      win: { w: width, h: 0.9, sill: 0, ...(n > 1 ? { mullAt: Array.from({ length: n - 1 }, (_, k) => +((k + 1) / n).toFixed(4)) } : {}), frame: s.frame, glass: s.glass, sillSlot: null,
+        frameW: f.frames === false ? 0 : 0.06, ...(f.deepBars ? { barD: 0.035 } : {}), loggia: { depth: L.deepM, ...rail,
+          ...(L.back ? { back: { rows: L.back.map(r => ({ lo: r.sill, hi: +(r.sill + r.h).toFixed(3), pitch: +(r.every * f.pitchM).toFixed(3), winW: +(r.w * r.every * f.pitchM).toFixed(3) })) } } : {}) } } };
+  });
+  return { pitch: f.pitchM, lines: f.lines, ground, typical, bands, piers, ...(Object.keys(rowOverrides).length ? { rowOverrides } : {}), ...(recessBands.length ? { recessBands } : {}), ...(f.groundPiers ? { groundPiers: f.groundPiers } : {}) };
 }

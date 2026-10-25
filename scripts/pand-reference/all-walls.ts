@@ -2,7 +2,7 @@
  * One street-level reference per exposed wall of a pand (the stock run.ts keeps only the front).
  *
  *   npx tsx scripts/pand-reference/all-walls.ts --pand=0363100012186086 [--min-len=14] [--max=8] [--out=staging/pand-reference-walls] [--archive]
- *     [--date=2019,2022-05] [--exclude-date=2024-12-11] [--exclude-pano=<id>,...] [--segment=30] [--walls=1,4] [--suffix=d19] [--min-dist=5] [--max-dist=60]
+ *     [--date=2019,2022-05] [--exclude-date=2024-12-11] [--exclude-pano=<id>,...] [--segment=30] [--walls=1,4] [--suffix=d19] [--min-dist=5] [--max-dist=60] [--inset=0.6]
  *
  * For each exposed (non-party) wall >= min-len metres: the best panorama within 35 m (same ranking as run.ts), a
  * rectified straight-on crop and an aimed thumbnail, written to <out>/<pand>/w<NN>-<bearing>.{jpg,thumb.jpg} and
@@ -29,7 +29,7 @@ import sharp from 'sharp';
 import { findPands, lngLatToRd, neighbourhood, normId, rdToLngLat } from './core.ts';
 import { exposedWalls, FACADE_WINDOW, listPanos, rankPanos } from './select.ts';
 import { loadPano, rectifyWall, aimedThumbnail } from './rectify.ts';
-import { filterPanos, mergeWallRows, parsePanoFilter, segmentTag, segmentWall } from '../../src/canalRecall/buildingRecipe/panoPick.ts';
+import { filterPanos, insetWall, mergeWallRows, parsePanoFilter, segmentTag, segmentWall } from '../../src/canalRecall/buildingRecipe/panoPick.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const archive = process.argv.includes('--archive');
@@ -54,6 +54,11 @@ const walls = exposedWalls(fp, await neighbourhood(centre)).filter(w => w.len >=
 const panoFilter = parsePanoFilter(process.argv), segM = Number(arg('segment', '0')), suffix = arg('suffix');
 const minDist = Number(arg('min-dist', '5')), maxDist = Number(arg('max-dist', '0'));
 const onlyWalls = arg('walls').split(',').filter(Boolean).map(Number);
+// `--inset=<m>`: cut the crop on a plane that many metres behind the footprint edge (a set-back front); needs --suffix
+// and --walls so the shifted crop is merged beside the edge's own, never in its place.
+const insetM = Number(arg('inset', '0'));
+if (insetM && (!suffix || !onlyWalls.length)) throw new Error('--inset needs --suffix and --walls');
+if (!(insetM >= 0 && insetM <= 5)) throw new Error('--inset: 0..5 m');
 const merging = segM > 0 || onlyWalls.length > 0 || suffix !== '';
 const rows: any[] = [], rerun: string[] = [];
 const r2 = (v: number) => Math.round(v * 100) / 100, r4 = (v: number) => Math.round(v * 1e4) / 1e4;
@@ -63,12 +68,12 @@ for (const whole of walls) {
   const wallTag = `w${String(++i).padStart(2, '0')}-${bearing}`;
   if (onlyWalls.length && !onlyWalls.includes(i)) continue;
   rerun.push(wallTag);
-  for (const w of segmentWall(whole, segM)) {
+  for (const w of segmentWall(insetWall(whole, insetM), segM)) {
   const tag = segmentTag(wallTag, w.segment, suffix);
   const ranked = filterPanos(rankPanos(w, await listPanos(w.mid, maxDist > 35 ? Math.ceil(maxDist) : 35), maxDist > 35 ? { ...FACADE_WINDOW, minD: minDist, maxD: maxDist } : minDist), panoFilter);
   const [lng, lat] = rdToLngLat(w.mid);
   const base: any = { bearing, lengthM: Math.round(w.len * 10) / 10, centre: [lng, lat], height: fp.height, candidates: ranked.length,
-    wallRD: { a: [r2(w.a.x), r2(w.a.y)], b: [r2(w.b.x), r2(w.b.y)], normal: [r4(w.nx), r4(w.ny)] } };
+    wallRD: { a: [r2(w.a.x), r2(w.a.y)], b: [r2(w.b.x), r2(w.b.y)], normal: [r4(w.nx), r4(w.ny)] }, ...(insetM ? { insetM } : {}) };
   // --archive also keeps the best leaf-off panorama (November-March) when the best one is from the leaf season and
   // a leaf-off view is at most 15 degrees more oblique (tag suffix L): summer trees hide the lower storeys.
   const leafOff = (pk: any) => { const m = Number(pk.timestamp.slice(5, 7)); return m <= 3 || m >= 11; };

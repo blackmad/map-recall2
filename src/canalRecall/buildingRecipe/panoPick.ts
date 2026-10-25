@@ -45,6 +45,17 @@ interface Pt { x: number; y: number }
 export interface WallLike { a: Pt; b: Pt; len: number; mid: Pt; nx: number; ny: number }
 
 /**
+ * The wall line moved `insetM` metres inward (against its outward normal), same length and normal: a crop cut on a
+ * front set back behind the footprint edge (GitHub #86: the Da Vinci south wing's main 3DBAG plane stands 0.62 m
+ * behind the BAG line, past the 0.5 m panel-match tolerance). 0 (or absent) returns the wall itself.
+ */
+export function insetWall<W extends WallLike>(w: W, insetM: number): W {
+  if (!insetM) return w;
+  const dx = -w.nx * insetM, dy = -w.ny * insetM, mv = (q: Pt): Pt => ({x: q.x + dx, y: q.y + dy});
+  return {...w, a: mv(w.a), b: mv(w.b), mid: mv(w.mid)};
+}
+
+/**
  * Cut a wall into ceil(len / segM) equal pieces along a -> b (same normal and other fields); a wall no longer than
  * segM, or segM <= 0, comes back alone. Each piece gets `segment: {index, of}`.
  */

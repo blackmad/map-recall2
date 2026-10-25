@@ -438,6 +438,22 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
     const mulls = w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1));
     const rows = w.rowsAt?.length ? w.rowsAt : Array.from({ length: w.rows ?? 0 }, (_, k) => (k + 1) / ((w.rows ?? 0) + 1));
     for (const [a, b, lo, hi] of paneRects(u0, u1, v0, v1, fw, fw > 0 ? fw : 0.06, mulls, [...rows, ...(w.transom ? [w.transom] : [])])) g(a, b, lo, hi, glassSlot, PANE_OUT_M);
+  } else if (w.loggia?.back) {
+    // a loggia whose back is a wall with rows of windows: abutting quads on the back plane (wall strips between the
+    // rows, piers between the windows), no frame ring, no overlap
+    const rows = [...w.loggia.back.rows].sort((p, q) => p.lo - q.lo), wp = c.part();
+    let vAt = v0;
+    for (const r of rows) {
+      const lo = Math.max(vAt, v0 + (v1 - v0) * r.lo), hi = Math.min(v1, v0 + (v1 - v0) * r.hi);
+      if (hi - lo < 0.2) continue;
+      if (lo > vAt) g(u0, u1, vAt, lo, c.wallSlot, 0, wp);
+      const n = Math.max(1, Math.round((u1 - u0) / r.pitch)), step = (u1 - u0) / n, ww = Math.min(r.winW, step - 0.1);
+      let at = u0;
+      for (let k = 0; k < n; k++) { const a = u0 + step * (k + 0.5) - ww / 2; g(at, a, lo, hi, c.wallSlot, 0, wp); g(a, a + ww, lo, hi, glassSlot, 0, wp); at = a + ww; }
+      g(at, u1, lo, hi, c.wallSlot, 0, wp);
+      vAt = hi;
+    }
+    if (vAt < v1) g(u0, u1, vAt, v1, c.wallSlot, 0, wp);
   } else {
     g(u0, u1, v0, v0 + fw, frameSlot, 0); g(u0, u1, v1 - fw, v1, frameSlot, 0);
     g(u0, u0 + fw, v0 + fw, v1 - fw, frameSlot, 0); g(u1 - fw, u1, v0 + fw, v1 - fw, frameSlot, 0);
@@ -451,6 +467,7 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
       for (const f of mulls) { const u = u0 + (u1 - u0) * f; barQuad(c, frameSlot, Q, u - bw / 2, u + bw / 2, v0 + fw, v1 - fw, 0, bd, bars); }
       for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; barQuad(c, frameSlot, Q, u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, 0, bd, bars); }
     }
+    if (w.sash) drawSash(c, Q, u0, u1, v0, v1, fw, w);
   }
   if (w.surround) {
     const t = w.surround.t, out = w.surround.out ?? 0.06, sp = c.part();
@@ -468,6 +485,32 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   if (w.tilt) drawTilt(c, u0, u1, v0, v1, w.tilt);
   if (w.loggia?.rail && corners) drawLoggiaRail(c, Q, u0, u1, v0, v1, -back, w.loggia.rail, w.frame ?? 'frame');
   return back;
+}
+
+/** Side-light ring width (m) when `WinParams.sash.t` is not given, and its clearance (m) from the bars round it. */
+export const SASH_RING = { t: 0.05, gap: 0.01 };
+
+/**
+ * A side light (`WinParams.sash`) in a recessed opening: the mullion at `w` of the width from `side` and the bars at
+ * `low` / `high` in the window's frame slot, then the light's own ring in `sash.slot`, all closed bars standing on the
+ * glass (`Q` maps onto the back plane) as deep as the glazing bars. The ring keeps `SASH_RING.gap` clear of the frame and
+ * bars, so no two solids share a face.
+ */
+function drawSash(c: Ctx, Q: (u: number, v: number, d: number) => V3, u0: number, u1: number, v0: number, v1: number, fw: number, w: WinParams) {
+  const sa = w.sash!, frameSlot = w.frame ?? 'frame', bw = fw > 0 ? fw : 0.06, bd = c.barDepth(w), part = c.part(), gap = SASH_RING.gap;
+  const W = u1 - u0, H = v1 - v0, t = Math.min(sa.t ?? SASH_RING.t, W / 6, H / 6);
+  let a = u0 + fw, b = u1 - fw, lo = v0 + fw, hi = v1 - fw;
+  if (sa.w < 1) {
+    const um = sa.side === 'left' ? u0 + W * sa.w : u1 - W * sa.w;
+    barQuad(c, frameSlot, Q, um - bw / 2, um + bw / 2, v0 + fw, v1 - fw, 0, bd, part);
+    if (sa.side === 'left') b = um - bw / 2; else a = um + bw / 2;
+  }
+  if (sa.low > 0) { const v = v0 + H * sa.low; barQuad(c, frameSlot, Q, u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, 0, bd, part); lo = v + bw / 2; }
+  if (sa.high < 1) { const v = v0 + H * sa.high; barQuad(c, frameSlot, Q, u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, 0, bd, part); hi = v - bw / 2; }
+  a += gap; b -= gap; lo += gap; hi -= gap;
+  if (b - a < 3 * t || hi - lo < 3 * t) return;
+  barQuad(c, sa.slot, Q, a, b, lo, lo + t, 0, bd, part); barQuad(c, sa.slot, Q, a, b, hi - t, hi, 0, bd, part);
+  barQuad(c, sa.slot, Q, a, a + t, lo + t, hi - t, 0, bd, part); barQuad(c, sa.slot, Q, b - t, b, lo + t, hi - t, 0, bd, part);
 }
 
 /** Loggia balustrade: bar pitch (m) for `bars` rails, bar width, sheet thickness and the top rail height (m). */
@@ -904,6 +947,9 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
       finish(levels);
       continue;
     }
+    // recessed loggia bands: the cells they cover draw nothing (only bands this panel has the bays and floors for)
+    const bands = (sys.recessBands ?? []).filter(rb => rb.floors[1] < floors && rb.bays[1] < nbays);
+    const inBand = (f: number, b: number) => bands.some(rb => f >= rb.floors[0] && f <= rb.floors[1] && b >= rb.bays[0] && b <= rb.bays[1]);
     for (let f = 0; f < floors; f++) {
       const v0 = levels[f], v1 = levels[f + 1];
       if (v1 <= p.vMin + 0.5 || v0 < p.partyH - 0.3) continue;
@@ -919,8 +965,27 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
           : { u0: p.uMin + W * b / nb, u1: p.uMin + W * (b + 1) / nb, v0: Math.max(v0, p.vMin), v1, bay: b, floor: f, bays: nb };
         cells.push(cell);
         if (opts.skipCell?.(p, f, b, nbays)) continue;
+        if (bands.length && inBand(f, b)) continue;
         drawRow(c, row, cell, p.index * 31 + 7);
       }
+    }
+    for (const rb of bands) {
+      const first = cells.find(q => q.floor === rb.floors[0] && q.bay === rb.bays[0]), last = cells.find(q => q.floor === rb.floors[0] && q.bay === rb.bays[1]);
+      if (!first || !last) continue;
+      c.mesh.label = `panel${p.index}:f${rb.floors[0]}-${rb.floors[1]}:b${rb.bays[0]}-${rb.bays[1]}:recessBand`;
+      const lo = levels[rb.floors[0]] + rb.sill, hi = Math.min(levels[rb.floors[1]] + rb.head, levels[rb.floors[1] + 1] - 0.1);
+      // an end bay the panel outline does not fill at the band's height (a 3DBAG step beside a lower piece): pull that
+      // end of the band in, at most its own bay, until the band fits the panel
+      let a = first.u0 + rb.inset, b = last.u1 - rb.inset;
+      const fits = (x: number, y: number) => fitsPanel(p, rectPoly(x, y, lo, hi));
+      for (let k = 1; !fits(a, b) && k <= 40; k++) {
+        const a1 = first.u0 + rb.inset + (first.u1 - first.u0) * k / 40, b1 = last.u1 - rb.inset - (last.u1 - last.u0) * k / 40;
+        if (fits(a1, b)) a = a1; else if (fits(a, b1)) b = b1; else if (fits(a1, b1)) { a = a1; b = b1; }
+      }
+      // a pulled-in end keeps the cut's 3 cm probe margin (Ctx.claim) clear of the step's edge
+      if (a > first.u0 + rb.inset) a += 0.05;
+      if (b < last.u1 - rb.inset) b -= 0.05;
+      drawOpening(c, a, b, lo, hi, rb.win, p.index * 31 + 7);
     }
     if (c.layered) drawBalconyRuns(c);
     if (sys.cladding) for (const [a0, b0] of intervals(p, sys.cladding.from, p.vMax - 0.35)) for (const [a, b] of [[Math.max(a0, p.uMin + W * (sys.cladding.u?.[0] ?? 0)), Math.min(b0, p.uMin + W * (sys.cladding.u?.[1] ?? 1))]]) if (b - a > 0.3) { const part = c.part(); c.quad(sys.cladding.slot, a, sys.cladding.from, b, p.vMax - 0.35, 0.012, part); }
@@ -932,6 +997,18 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
           const nseg = Math.max(1, sys.piers.segments ?? 1), top = p.vMax - 0.3;
           for (let k = 0; k < nseg; k++) { const part = c.part(); c.box(sys.piers.slot, a, bb, g + (top - g) * k / nseg, g + (top - g) * (k + 1) / nseg, 0, sys.piers.out, part); }
         }
+      }
+    }
+    if (sys.groundPiers) {
+      const gp = sys.groundPiers, g0 = levels[0], top = Math.min(g0 + gp.top, p.vMax - 0.3);
+      // the strip as closed boxes of at most 8 m (no open boundary loop over the GLB audit's 30 m)
+      if (gp.plinth) for (const [a, b] of intervals(p, g0, g0 + gp.plinth.h)) if (b - a > 0.3) {
+        const n = Math.ceil((b - a) / 8);
+        for (let k = 0; k < n; k++) { const part = c.part(); c.box(gp.plinth.slot, a + (b - a) * k / n, a + (b - a) * (k + 1) / n, g0, g0 + gp.plinth.h, 0, 0.02, part); }
+      }
+      for (let b = gp.first; b <= nb; b += Math.max(1, gp.every)) {
+        const u = p.uMin + W * b / nb, a = Math.max(p.uMin, u - gp.w / 2), bb = Math.min(p.uMax, u + gp.w / 2);
+        if (bb - a > 0.05 && top > g0 + 0.5 && fitsPanel(p, rectPoly(a, bb, g0, top))) { const part = c.part(); c.box(gp.slot, a, bb, g0, top, 0, gp.out, part); }
       }
     }
     finish(levels);

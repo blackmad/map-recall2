@@ -115,16 +115,463 @@
     34,
     53
    ],
+   "street": "west front to the Waterkeringweg",
    "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 14,
+   "windows": "plain",
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.55,
+    "sill": 0.3
+   },
    "palette": {
     "brick": "#72483e"
    },
-   "windowShape": {
-    "w": 0.98,
-    "h": 0.491,
-    "sill": 0.2
-   },
-   "baysPerStorey": 3
+   "blankStoreys": [
+    7
+   ],
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.57,
+       "at": -0.05,
+       "sill": 0.3,
+       "h": 0.56
+      },
+      {
+       "w": 0.57,
+       "at": -0.07,
+       "sill": 0.3,
+       "h": 0.56
+      },
+      {
+       "w": 1.6,
+       "at": 0.43,
+       "sill": 0.3,
+       "h": 0.56
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.59,
+       "at": 0.44,
+       "sill": 0.3,
+       "h": 0.56
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.6,
+       "at": -0.08,
+       "sill": 0.3,
+       "h": 0.56
+      },
+      {
+       "w": 0.6,
+       "at": -0.1,
+       "sill": 0.3,
+       "h": 0.56
+      },
+      {
+       "w": 0.6,
+       "at": -0.1,
+       "sill": 0.3,
+       "h": 0.56
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.6,
+       "at": -0.12,
+       "sill": 0.3,
+       "h": 0.56
+      },
+      {
+       "w": 0.6,
+       "at": -0.14,
+       "sill": 0.3,
+       "h": 0.56
+      },
+      {
+       "w": 0.6,
+       "at": -0.15,
+       "sill": 0.3,
+       "h": 0.56
+      }
+     ]
+    },
+    {
+     "storeys": [
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0.57,
+       "at": -0.05,
+       "sill": 0.32,
+       "h": 0.54
+      },
+      {
+       "w": 0.57,
+       "at": -0.07,
+       "sill": 0.32,
+       "h": 0.54
+      },
+      {
+       "w": 1.6,
+       "at": 0.43,
+       "sill": 0.32,
+       "h": 0.54
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.59,
+       "at": 0.44,
+       "sill": 0.32,
+       "h": 0.54
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.6,
+       "at": -0.08,
+       "sill": 0.32,
+       "h": 0.54
+      },
+      {
+       "w": 0.6,
+       "at": -0.1,
+       "sill": 0.32,
+       "h": 0.54
+      },
+      {
+       "w": 0.6,
+       "at": -0.1,
+       "sill": 0.32,
+       "h": 0.54
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.6,
+       "at": -0.12,
+       "sill": 0.32,
+       "h": 0.54
+      },
+      {
+       "w": 0.6,
+       "at": -0.14,
+       "sill": 0.32,
+       "h": 0.54
+      },
+      {
+       "w": 0.6,
+       "at": -0.15,
+       "sill": 0.32,
+       "h": 0.54
+      }
+     ]
+    },
+    {
+     "storeys": [
+      5
+     ],
+     "pattern": [
+      {
+       "w": 0.69,
+       "at": -0.15,
+       "sill": 0.35,
+       "h": 0.56
+      },
+      {
+       "w": 0.62,
+       "at": -0.09,
+       "sill": 0.35,
+       "h": 0.56
+      },
+      {
+       "w": 0.57,
+       "at": -0.08,
+       "sill": 0.35,
+       "h": 0.56
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.61,
+       "at": -0.07,
+       "sill": 0.35,
+       "h": 0.56
+      },
+      {
+       "w": 0.6,
+       "at": -0.08,
+       "sill": 0.35,
+       "h": 0.56
+      },
+      {
+       "w": 1.59,
+       "at": 0.39,
+       "sill": 0.35,
+       "h": 0.56
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.6,
+       "at": -0.11,
+       "sill": 0.35,
+       "h": 0.56
+      },
+      {
+       "w": 0.6,
+       "at": -0.11,
+       "sill": 0.35,
+       "h": 0.56
+      },
+      {
+       "w": 1.57,
+       "at": 0.37,
+       "sill": 0.35,
+       "h": 0.56
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.6,
+       "at": -0.15,
+       "sill": 0.35,
+       "h": 0.56
+      }
+     ]
+    },
+    {
+     "storeys": [
+      6
+     ],
+     "pattern": [
+      {
+       "w": 0.69,
+       "at": -0.15,
+       "sill": 0.38,
+       "h": 0.53
+      },
+      {
+       "w": 1.6,
+       "at": 0.4,
+       "sill": 0.38,
+       "h": 0.53
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.61,
+       "at": -0.07,
+       "sill": 0.38,
+       "h": 0.53
+      },
+      {
+       "w": 0.6,
+       "at": -0.08,
+       "sill": 0.38,
+       "h": 0.53
+      },
+      {
+       "w": 1.59,
+       "at": 0.39,
+       "sill": 0.38,
+       "h": 0.53
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.6,
+       "at": -0.11,
+       "sill": 0.38,
+       "h": 0.53
+      },
+      {
+       "w": 0.6,
+       "at": -0.11,
+       "sill": 0.38,
+       "h": 0.53
+      },
+      {
+       "w": 1.57,
+       "at": 0.37,
+       "sill": 0.38,
+       "h": 0.53
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.6,
+       "at": -0.15,
+       "sill": 0.38,
+       "h": 0.53
+      }
+     ]
+    },
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.74,
+       "at": -0.16,
+       "sill": 0.04,
+       "h": 0.65,
+       "door": true
+      },
+      {
+       "w": 0.74,
+       "at": 0.15,
+       "sill": 0.04,
+       "h": 0.65,
+       "door": true
+      },
+      {
+       "w": 0.74,
+       "at": 0.46,
+       "sill": 0.04,
+       "h": 0.65,
+       "door": true
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.74,
+       "at": -0.23,
+       "sill": 0.04,
+       "h": 0.65,
+       "door": true
+      },
+      {
+       "w": 0.74,
+       "at": 0.25,
+       "sill": 0.04,
+       "h": 0.65,
+       "door": true
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.74,
+       "at": -0.44,
+       "sill": 0.04,
+       "h": 0.65,
+       "door": true
+      },
+      {
+       "w": 0.74,
+       "at": 0.2,
+       "sill": 0.04,
+       "h": 0.65,
+       "door": true
+      },
+      {
+       "w": 0.74,
+       "at": 0.34,
+       "sill": 0.04,
+       "h": 0.65,
+       "door": true
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.74,
+       "at": -0.43,
+       "sill": 0.04,
+       "h": 0.65,
+       "door": true
+      }
+     ]
+    }
+   ],
+   "loggiaBands": [
+    {
+     "storeys": [
+      3,
+      4
+     ],
+     "bays": [
+      0,
+      13
+     ],
+     "sill": 0.37,
+     "head": 0.59,
+     "deep": 0.45,
+     "rail": "bars",
+     "back": [
+      {
+       "sill": 0,
+       "h": 0.55,
+       "every": 3,
+       "w": 0.9
+      },
+      {
+       "sill": 0.64,
+       "h": 0.27,
+       "every": 3,
+       "w": 0.55
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "palette.brick",
+    "blankStoreys",
+    "bayWindows",
+    "loggiaBands"
+   ]
   },
   {
    "wallSurfaces": [
@@ -139,30 +586,597 @@
     9,
     43
    ],
+   "street": "west front, south part (to the Waterkeringweg)",
    "system": "brick-bay-grid",
-   "palette": {
-    "brick": "#4d3029"
+   "storeys": 7,
+   "baysPerStorey": 13,
+   "windows": "plain",
+   "windowShape": {
+    "w": 0.62,
+    "h": 0.56,
+    "sill": 0.3
    },
-   "baysPerStorey": 14
+   "palette": {
+    "brick": "#72483e"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      3,
+      4
+     ],
+     "pattern": [
+      {
+       "w": 0.62,
+       "at": 0.34
+      },
+      {
+       "w": 0.62,
+       "at": 0.33
+      },
+      {
+       "w": 0.62,
+       "at": 0.32
+      },
+      {
+       "w": 0.62,
+       "at": 0.31
+      },
+      {
+       "w": 0.62,
+       "at": 0.3
+      },
+      {
+       "w": 0.62,
+       "at": 0.29
+      },
+      {
+       "w": 0.62,
+       "at": 0.28
+      },
+      {
+       "w": 0.62,
+       "at": 0.27
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      1,
+      2,
+      5,
+      6
+     ],
+     "pattern": [
+      {
+       "w": 0.62,
+       "at": 0.34
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.62,
+       "at": 0.31
+      },
+      {
+       "w": 0.62,
+       "at": 0.3
+      },
+      {
+       "w": 0.62,
+       "at": 0.29
+      },
+      {
+       "w": 0.62,
+       "at": 0.28
+      },
+      {
+       "w": 0.62,
+       "at": 0.27
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0.95,
+       "sill": 0.04,
+       "h": 0.8
+      },
+      {
+       "w": 0.95,
+       "sill": 0.04,
+       "h": 0.8
+      },
+      {
+       "w": 0.95,
+       "sill": 0.04,
+       "h": 0.8
+      },
+      {
+       "w": 0.95,
+       "sill": 0.04,
+       "h": 0.8
+      },
+      {
+       "w": 0.95,
+       "sill": 0.04,
+       "h": 0.8
+      },
+      {
+       "w": 0.95,
+       "sill": 0.04,
+       "h": 0.8
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "palette.brick",
+    "bayWindows"
+   ]
   },
   {
    "wallSurfaces": [
     11
    ],
+   "street": "south end (w04-168, 2019-04-17)",
    "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 13,
+   "windows": "plain",
+   "windowShape": {
+    "w": 0.68,
+    "h": 0.55,
+    "sill": 0.3
+   },
    "palette": {
     "brick": "#9e6550"
    },
+   "bayWindows": [
+    {
+     "storeys": [
+      1,
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0.68,
+       "at": -0.27
+      },
+      {
+       "w": 0.68,
+       "at": -0.15
+      },
+      {
+       "w": 0.68,
+       "at": -0.05
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.66,
+       "at": -0.03
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.68,
+       "at": -0.11
+      },
+      {
+       "w": 0.68,
+       "at": 0
+      },
+      {
+       "w": 0.68,
+       "at": 0.02
+      }
+     ]
+    },
+    {
+     "storeys": [
+      3,
+      4,
+      5,
+      6
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0.68,
+       "at": -0.27
+      },
+      {
+       "w": 0.68,
+       "at": -0.15
+      },
+      {
+       "w": 0.68,
+       "at": -0.05
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.68,
+       "at": -0.11
+      },
+      {
+       "w": 0.68,
+       "at": 0
+      },
+      {
+       "w": 0.68,
+       "at": 0.02
+      }
+     ]
+    },
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 1.78,
+       "at": 0.24,
+       "sill": 0.03,
+       "h": 0.75,
+       "door": true
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.66,
+       "at": -0.47,
+       "sill": 0.2,
+       "h": 0.5
+      },
+      {
+       "w": 0.66,
+       "at": -0.35,
+       "sill": 0.2,
+       "h": 0.5
+      },
+      {
+       "w": 0.66,
+       "at": -0.03,
+       "sill": 0.2,
+       "h": 0.5
+      },
+      {
+       "w": 0.4,
+       "at": -0.09,
+       "sill": 0.2,
+       "h": 0.5
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "loggiaBands": [
+    {
+     "storeys": [
+      1,
+      1
+     ],
+     "bays": [
+      5,
+      6
+     ],
+     "sill": 0.02,
+     "head": 0.9,
+     "deep": 0.5,
+     "rail": "solid",
+     "colour": "#6e5a48",
+     "lights": 2
+    },
+    {
+     "storeys": [
+      2,
+      2
+     ],
+     "bays": [
+      5,
+      6
+     ],
+     "sill": 0.02,
+     "head": 0.9,
+     "deep": 0.5,
+     "rail": "solid",
+     "colour": "#6e5a48",
+     "lights": 2
+    },
+    {
+     "storeys": [
+      3,
+      3
+     ],
+     "bays": [
+      5,
+      8
+     ],
+     "sill": 0.02,
+     "head": 0.9,
+     "deep": 0.5,
+     "rail": "solid",
+     "colour": "#6e5a48",
+     "lights": 4
+    },
+    {
+     "storeys": [
+      4,
+      4
+     ],
+     "bays": [
+      5,
+      8
+     ],
+     "sill": 0.02,
+     "head": 0.9,
+     "deep": 0.5,
+     "rail": "solid",
+     "colour": "#6e5a48",
+     "lights": 4
+    },
+    {
+     "storeys": [
+      5,
+      5
+     ],
+     "bays": [
+      5,
+      8
+     ],
+     "sill": 0.02,
+     "head": 0.9,
+     "deep": 0.5,
+     "rail": "solid",
+     "colour": "#6e5a48",
+     "lights": 4
+    },
+    {
+     "storeys": [
+      6,
+      6
+     ],
+     "bays": [
+      5,
+      8
+     ],
+     "sill": 0.02,
+     "head": 0.9,
+     "deep": 0.5,
+     "rail": "solid",
+     "colour": "#6e5a48",
+     "lights": 4
+    }
+   ],
    "hand": [
     "system",
-    "palette"
+    "storeys",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "palette.brick",
+    "bayWindows",
+    "loggiaBands"
    ]
   },
   {
    "wallSurfaces": [
     8
    ],
-   "system": "brick-bay-grid"
+   "street": "east front, north end (to the GWL garden; w01-70b 2019-04-17)",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 15,
+   "windows": "plain",
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.45,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#825d41"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "pattern": [
+      {
+       "w": 0.5,
+       "at": 0.27
+      },
+      {
+       "w": 0.5,
+       "at": 0.21
+      },
+      {
+       "w": 0.5,
+       "at": 0
+      },
+      {
+       "w": 0.5,
+       "at": -0.08
+      },
+      {
+       "w": 0.5,
+       "at": -0.14
+      },
+      {
+       "w": 0.5,
+       "at": -0.37
+      },
+      {
+       "w": 0.5,
+       "at": 0.5
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.5,
+       "at": -0.44
+      },
+      {
+       "w": 0.5,
+       "at": -0.44
+      },
+      {
+       "w": 0.5,
+       "at": -0.39
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.5,
+       "at": -0.33
+      },
+      {
+       "w": 0.5,
+       "at": -0.22
+      },
+      {
+       "w": 0.5,
+       "at": -0.17
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "palette.brick",
+    "bayWindows"
+   ]
   },
   {
    "wallSurfaces": [
@@ -183,17 +1197,22 @@
   "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
   "Panels left blank by the draft: 18 (15.9 m, party wall); 0 (6.5 m, unnamed panel under 8 m); 39 (5.7 m, unnamed panel under 8 m); 2 (17.7 m, under 3 m tall); 22 (17 m, under 3 m tall); 15 (10.8 m, under 3 m tall); 32 (10.4 m, under 3 m tall); 1 (6.5 m, unnamed panel under 8 m); 5 (3.3 m, under 3 m tall); 42 (2.3 m, under 3 m tall); 41 (4.6 m, under 3 m tall); 24 (3.2 m, under 3 m tall); 12 (2.7 m, under 3 m tall); 27 (2.4 m, under 3 m tall); 26 (2.2 m, under 3 m tall).",
   "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 1, 3, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #5c443a not used (not darker than the wall #72483e by 10 L*, or tinted): kit glass kept; walls[1] bays 3 from the likeness grid (padded measurement 4); walls[3] glass #50393e not used (not darker than the wall #4d3029 by 10 L*, or tinted): kit glass kept; walls[4] system brick-bay-grid -> curtain-wall (measured curtain); walls[4] bays 12 from the likeness grid (padded measurement 13); unphotographed walls take #72483e (brick), the area-weighted median of groups 1, 3, 4.",
-  "Hand-fixed 2026-10-25 from w04-168 (2019) and w02-250L (2021): the block is punched windows in red-brown brick with a recessed loggia storey band, not a curtain wall; walls[4] kept brick-bay-grid in the sunlit brick #9e6550. Held: walls[1], [3], [4] still FAIL (the loggia band reads as a glazing band the kit cannot draw) and walls[0], [5], [6] are behind foliage.",
-  "walls[0] (the 42.8 m east front to the GWL garden) rebuilt 2026-10-25 after integrator review (#83) from the 2019-04-17 crop w01-70b (bare branches, foliage 26 % against 49 % on the 2019-11 crop): seven window storeys under a parapet pierced by small square openings, about 32 narrow tall white-framed windows per storey (0.5 of a ~1.3 m bay), in red-brown brick partly under ivy. The earlier 5-storey, 9-bay draft was a guess and is gone. The parapet openings, the ivy and the bend at the north end are not drawn."
+  "walls[0] (the 42.8 m east front to the GWL garden) rebuilt 2026-10-25 after integrator review (#83) from the 2019-04-17 crop w01-70b (bare branches, foliage 26 % against 49 % on the 2019-11 crop): seven window storeys under a parapet pierced by small square openings, about 32 narrow tall white-framed windows per storey (0.5 of a ~1.3 m bay), in red-brown brick partly under ivy. The earlier 5-storey, 9-bay draft was a guess and is gone. The parapet openings, the ivy and the bend at the north end are not drawn.",
+  "Hand-fixed 2026-10-25 from w04-168 (2019) and w02-250L (2021): the block is punched windows in red-brown brick with recessed loggias, not a curtain wall; walls[4] kept brick-bay-grid in the sunlit brick #9e6550.",
+  "GitHub #86, 2026-10-25: walls[1] rebuilt as 8 storeys of 14 bays (blank top storey) with per-storey singles and doubles (bayWindows) and the two-storey recessed gallery of storeys 3-4 drawn with the new loggiaBands kit component: one recess across bays 0-13, 0.45 of the storey deep with bar rails, its back wall carrying a door-height row and a high window row every 3 bays. The back's lower row is 0.9 of a 3-bay run wide, wider than the ~0.6 doors, to carry the shadowed gallery (0.75 failed glazing by 0.18). Likeness PASS, IoU 0.70.",
+  "walls[4] (#86): the stacked loggias over the entrance (2 bays on storeys 1-2, 4 bays on storeys 3-6, 0.5 deep, solid rails #6e5a48) are loggiaBands; tower windows in bays 1-3 and 10-12. Still FAIL on glazing (photo 0.72 vs model 0.39): a dark near wall occludes the right third of the 2019 crop w04-168 and the masks read sky and foliage as glass; no better archived view (other crops score 0.68 or lower on crop quality).",
+  "walls[3] (#86) rebuilt as 7 storeys of 13 bays with per-storey windows; still FAIL on hue (38 deg): the 2021-03-22 crop w03-250L has a purple cast (the same day's w02-250L also reads walls[1]'s brick as #634b59 where 2017 reads #71483d), so the measurement is not trusted and the brick stays #72483e. walls[5] measured #825d41 (matches) with all-storey bay windows; FAIL on glazing band (0.42) because the 2019 crop w01-70b is vertically mis-scaled (~0.67: seven window rows in ~11 m against a 20 m eaves). Held, not installed.",
+  "Not drawn (#86): the roof-terrace notch over the walls[4] loggia stack, the gallery's deep shadow, the ivy and the pierced parapet of walls[0]."
  ],
  "measured": {
   "date": "2026-10-25",
   "groups": [
    1,
    3,
-   4
+   4,
+   5
   ],
   "otherWalls": true
  },
- "budgetTriangles": 16000
+ "budgetTriangles": 18500
 }

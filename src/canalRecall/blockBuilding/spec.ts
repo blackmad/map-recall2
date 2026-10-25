@@ -55,7 +55,20 @@ export interface WinParams {
    * the front `inset` m behind the wall face (default 0.12), `h` m tall: one glass or solid sheet, or a top rail with
    * bars about every `BAR_PITCH_M`. Where the opening cannot be cut it is laid flat like any window and has no rail.
    */
-  loggia?: { depth: number; rail?: { kind: 'glass' | 'bars' | 'solid'; h: number; slot: Slot; inset?: number } };
+  loggia?: { depth: number; rail?: { kind: 'glass' | 'bars' | 'solid'; h: number; slot: Slot; inset?: number };
+    /**
+     * the loggia's back is wall (the cut wall's slot) with rows of windows: per row, from `lo` to `hi` of the opening
+     * height, a window `winW` m wide centred in every `pitch` m (opt-in, GitHub #86: the GWL gallery storeys, whose
+     * photo shows the flats' doors and windows in a brick back wall behind the rail, not a glass wall)
+     */
+    back?: { rows: { lo: number; hi: number; pitch: number; winW: number }[] } };
+  /**
+   * recess mode, a side light in its own frame colour (opt-in, GitHub #86: the Da Vinci building's white-framed transom
+   * windows each hold a blue-framed opening sash in their left third): a glazing bar (the window's frame slot) at `w` of
+   * the opening width from `side` (none when `w` >= 1, the whole light), full-width bars at `low` and `high` of its height
+   * (none at 0 / 1), and a ring `t` m wide in `slot` round the light those bars enclose, as deep as the glazing bars.
+   */
+  sash?: { side: 'left' | 'right'; w: number; low: number; high: number; slot: Slot; t?: number };
 }
 
 /**
@@ -170,7 +183,18 @@ export interface System {
   base?: number;
   /** flat cladding laid over the wall from this height up (e.g. terracotta tiles) */
   cladding?: { slot: Slot; from: number; /** fraction range of the panel width */ u?: [number, number] } | null;
+  /**
+   * Recessed loggia bands (opt-in, GitHub #86: the GWL blocks' recessed gallery storeys in a punched brick front): one
+   * opening per panel across bays `bays[0]..bays[1]` (cell edges, less `inset` m each side) from `sill` m above floor
+   * line `floors[0]` to `head` m above floor line `floors[1]`, drawn as `win` (a loggia: cut `win.loggia.depth` deep, the
+   * glazing at its back, a rail across it). The cells it covers draw nothing; panels with fewer bays or floors skip it.
+   */
+  recessBands?: RecessBand[];
+  /** dark columns standing in front of the ground storey on every `every`-th bay edge from `first`, and a strip along the ground (GitHub #86; opt-in) */
+  groundPiers?: GroundPiers;
 }
+
+export interface RecessBand { floors: [number, number]; bays: [number, number]; sill: number; head: number; inset: number; win: WinParams }
 
 export interface Rule { at?: [number, number]; r?: number; bearing?: [number, number]; system: string; maxWidth?: number; minWidth?: number }
 export interface Sign { text: string; at: [number, number]; /** baseline height (m) */ v: number; height: number; slot: Slot; /** fraction of panel width used */ span?: number; /** horizontal stretch of each glyph */ stretch?: number; offset?: number; letterSpacing?: number; font?: string }
@@ -188,3 +212,10 @@ export interface BlockSpec {
   roofSlot?: Slot; wallSlot?: Slot;
   notes?: string;
 }
+
+/**
+ * Ground piers (GitHub #86, the Da Vinci south wing): boxes `w` m wide, `out` m proud, from the ground to `top` m, on bay
+ * edges `first`, `first + every`, ... (edge 0 = the panel's left end); with `plinth` a flat strip `h` m tall along the
+ * ground in its own slot (a vent grille under brick infill).
+ */
+export interface GroundPiers { every: number; first: number; w: number; out: number; top: number; slot: Slot; plinth?: { h: number; slot: Slot } }

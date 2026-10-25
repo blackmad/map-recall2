@@ -96,6 +96,33 @@
    "capturedAt": "2021-03-22",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002054_pano_0000_000766/",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w04-89x",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_26_07_01_39_00378/",
+   "image": "source-data://pand-reference-walls/0363100012090791/w04-89x.jpg",
+   "sha256": "1e009ef262cbe42758b14c7743c279f91266a621b9f9c3a902264092dfb4ccfc",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-06-20-w05-89x",
+   "kind": "street-panorama",
+   "capturedAt": "2018-06-20",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000798_pano_0000_001179/",
+   "image": "source-data://pand-reference-walls/0363100012090791/w05-89x.jpg",
+   "sha256": "b87694fb0b070f72813ea5f784e52408cf60f1b8b931c26b987021900c884282",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-01-04-w03-179i60w",
+   "kind": "street-panorama",
+   "capturedAt": "2022-01-04",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002386_pano_0001_000007/",
+   "image": "source-data://pand-reference-walls/0363100012090791/w03-179i60w.jpg",
+   "sha256": "6772d9ca1f8ac1065b3e14bb2dc1ae9fe63b0ced1ab5a90f98beaf5f3e30cd23",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
  "walls": [
@@ -163,20 +190,244 @@
    "storeys": 3,
    "windows": "plain",
    "palette": {
-    "brick": "#b29e7e"
+    "brick": "#655547"
    },
    "hand": [
+    "bayWindows",
+    "baysPerStorey",
     "palette.brick",
+    "sideLight",
     "storeys",
     "system",
-    "windowShape"
+    "windowShape",
+    "windows"
    ],
    "windowShape": {
-    "w": 0.75,
-    "h": 0.5,
-    "sill": 0.22
+    "w": 0.8,
+    "h": 0.58,
+    "sill": 0.19
    },
-   "baysPerStorey": 8
+   "baysPerStorey": 16,
+   "sideLight": {
+    "side": "left",
+    "w": 0.38,
+    "low": 0.15,
+    "high": 0.82,
+    "colour": "#3f7e9a"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": -0.44
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": -0.42
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": -0.36
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": -0.34
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.64,
+       "at": -0.06
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.88,
+       "at": 0.13,
+       "light": 0
+      },
+      {
+       "w": 0.86,
+       "at": 0.25,
+       "light": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.82,
+       "at": -0.32,
+       "h": 0.95,
+       "sill": 0.02,
+       "light": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": -0.44
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": -0.42
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": -0.36
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": -0.34
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.35,
+       "at": -0.19
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.73,
+       "at": -0.32
+      },
+      {
+       "w": 0.82,
+       "at": 0.25,
+       "light": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.82,
+       "at": -0.32,
+       "h": 0.95,
+       "sill": 0.02,
+       "light": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": -0.44,
+       "h": 0.38,
+       "sill": 0.43
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": -0.42,
+       "h": 0.38,
+       "sill": 0.43
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": -0.36,
+       "h": 0.38,
+       "sill": 0.43
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": -0.34,
+       "h": 0.38,
+       "sill": 0.43
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.68,
+       "at": -0.32,
+       "h": 0.38,
+       "sill": 0.43
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": -0.25,
+       "h": 0.38,
+       "sill": 0.43
+      },
+      {
+       "w": 0.82,
+       "at": 0.25,
+       "h": 0.38,
+       "sill": 0.43
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ]
   },
   {
    "wallSurfaces": [
@@ -189,59 +440,250 @@
     "brick": "#655547"
    },
    "hand": [
+    "bayWindows",
     "baysPerStorey",
     "palette.brick",
     "palette.glass",
+    "sideLight",
     "storeys",
     "system",
-    "windowPattern",
     "windowShape",
     "windows"
    ],
    "windowShape": {
-    "w": 0.82,
-    "h": 0.4,
-    "sill": 0.3
+    "w": 0.8,
+    "h": 0.55,
+    "sill": 0.19
    },
    "baysPerStorey": 8,
-   "windows": "transom",
-   "windowPattern": [
-    0.26,
-    0.26,
-    0.82,
-    0.82,
-    0.82,
-    0.82,
-    0.82,
-    0.82
+   "windows": "plain",
+   "sideLight": {
+    "side": "left",
+    "w": 0.38,
+    "low": 0.15,
+    "high": 0.82,
+    "colour": "#3f7e9a"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1,
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0.29,
+       "at": -0.13,
+       "h": 0.35,
+       "sill": 0.45,
+       "light": 1
+      },
+      {
+       "w": 0.27,
+       "at": 0.37,
+       "h": 0.35,
+       "sill": 0.45,
+       "light": 1
+      },
+      {
+       "w": 0.8
+      },
+      {
+       "w": 0.8
+      },
+      {
+       "w": 0.8
+      },
+      {
+       "w": 0.8
+      },
+      {
+       "w": 0.8
+      },
+      {
+       "w": 0.8
+      }
+     ]
+    },
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0.29,
+       "at": -0.13,
+       "h": 0.29,
+       "sill": 0.54,
+       "light": 1
+      },
+      {
+       "w": 0.27,
+       "at": 0.37,
+       "h": 0.29,
+       "sill": 0.54,
+       "light": 1
+      },
+      {
+       "w": 0.33,
+       "at": -0.21,
+       "h": 0.72,
+       "sill": 0.08,
+       "door": true
+      },
+      {
+       "w": 0.77,
+       "h": 0.29,
+       "sill": 0.54,
+       "light": 0
+      },
+      {
+       "w": 0.77,
+       "h": 0.29,
+       "sill": 0.54,
+       "light": 0
+      },
+      {
+       "w": 0.77,
+       "h": 0.29,
+       "sill": 0.54,
+       "light": 0
+      },
+      {
+       "w": 0.77,
+       "h": 0.29,
+       "sill": 0.54,
+       "light": 0
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
    ]
   },
   {
    "wallSurfaces": [
     39,
     149,
-    17,
-    34
+    17
    ],
    "street": "Van Slingelandtstraat side (south)",
-   "system": "ribbon-windows",
+   "system": "brick-bay-grid",
    "storeys": 3,
+   "groundFactor": 1.0,
+   "baysPerStorey": 15,
+   "windows": "plain",
+   "sills": false,
    "palette": {
-    "brick": "#67594a"
+    "brick": "#6e5e4a"
+   },
+   "windowShape": {
+    "w": 0.94,
+    "h": 0.44,
+    "sill": 0.46
    },
    "cladding": {
     "kind": "panels",
-    "colour": "#8d918b",
-    "pitch": 1.3,
-    "rowPitch": 1.6,
-    "from": 0.3
+    "colour": "#84837e",
+    "pitch": 3.3,
+    "rowPitch": 1.65,
+    "from": 0.325
    },
+   "sideLight": {
+    "side": "left",
+    "w": 1,
+    "low": 0,
+    "high": 1,
+    "colour": "#3f7e9a"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.94
+      },
+      {
+       "w": 0.94,
+       "light": 1
+      },
+      {
+       "w": 0.94
+      },
+      {
+       "w": 0.94,
+       "light": 1
+      },
+      {
+       "w": 0.94
+      }
+     ]
+    },
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0.94,
+       "sill": 0.77,
+       "h": 0.16,
+       "light": 0
+      }
+     ]
+    }
+   ],
+   "loggiaBands": [
+    {
+     "storeys": [
+      2,
+      2
+     ],
+     "bays": [
+      0,
+      14
+     ],
+     "sill": 0.42,
+     "head": 0.95,
+     "deep": 0.4,
+     "rail": "bars",
+     "back": [
+      {
+       "sill": 0.03,
+       "h": 0.92,
+       "every": 1,
+       "w": 0.95
+      }
+     ]
+    }
+   ],
    "hand": [
     "system",
     "storeys",
+    "groundFactor",
+    "baysPerStorey",
     "palette.brick",
-    "cladding"
-   ]
+    "cladding",
+    "windowShape",
+    "sideLight",
+    "bayWindows",
+    "loggiaBands",
+    "sills",
+    "groundPiers"
+   ],
+   "groundPiers": {
+    "every": 5,
+    "first": 3,
+    "w": 0.3,
+    "colour": "#353336",
+    "plinth": {
+     "h": 0.26,
+     "colour": "#3a3935"
+    }
+   }
   },
   {
    "wallSurfaces": [
@@ -331,6 +773,139 @@
     "system",
     "palette.brick"
    ]
+  },
+  {
+   "wallSurfaces": [
+    34
+   ],
+   "street": "Van Slingelandtstraat (south end of the east wing)",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 8,
+   "windows": "plain",
+   "palette": {
+    "brick": "#655547"
+   },
+   "windowShape": {
+    "w": 0.89,
+    "h": 0.55,
+    "sill": 0.3
+   },
+   "sideLight": {
+    "side": "right",
+    "w": 0.3,
+    "low": 0,
+    "high": 1,
+    "colour": "#3f7e9a"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1,
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0.89,
+       "at": 0.13,
+       "light": 0
+      },
+      {
+       "w": 0.89,
+       "at": 0.09,
+       "light": 1
+      },
+      {
+       "w": 0.89,
+       "at": 0.27,
+       "light": 0
+      },
+      {
+       "w": 0.89,
+       "at": 0.23,
+       "light": 1
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0.89,
+       "at": 0.13,
+       "light": 0,
+       "sill": 0.66,
+       "h": 0.29
+      },
+      {
+       "w": 0.89,
+       "at": 0.09,
+       "light": 1,
+       "sill": 0.66,
+       "h": 0.29
+      },
+      {
+       "w": 0.89,
+       "at": 0.27,
+       "light": 0,
+       "sill": 0.66,
+       "h": 0.29
+      },
+      {
+       "w": 0.89,
+       "at": 0.23,
+       "light": 1,
+       "sill": 0.66,
+       "h": 0.29
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "signage": {
+    "text": "da vinci",
+    "colour": "#d8d4cc",
+    "mount": "wall",
+    "along": [
+     0.62,
+     0.95
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "palette.brick",
+    "windowShape",
+    "sideLight",
+    "bayWindows",
+    "signage"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -352,9 +927,15 @@
   "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1, 2, 4, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4e5756 not used (not darker than the wall #67594a by 10 L*, or tinted): kit glass kept; walls[1] glass #b6c3c6 not used (not darker than the wall #f7d6a8 by 10 L*, or tinted): kit glass kept; walls[1] bays 8 from the likeness grid (padded measurement 6); walls[4] glass #323d4a not used (not darker than the wall #4a3d36 by 10 L*, or tinted): kit glass kept; walls[4] bays 20 from the likeness grid (padded measurement -); walls[5] bays 20 from the likeness grid (padded measurement 43).",
   "walls[0] revised 2026-10-25 after integrator review (#83): wall #4b4236 is the median brick between the window rows on the overcast 2017 crop w02-359 (white frames read #efece4 there, so the reading is white-referenced; integrator raw #4a4235), drawn as measured. 16 white-framed transom windows per storey at 0.8 of the 3.4 m bay (2.7 m wide), the glazed hall and recessed passage of ground bays 9-15 as a 4-light plinth with a transom, and the white-brick lettering 'da vinci creatieve ruimtes' over the left 0.04-0.46 of the wall between the two window rows (signage.along).",
   "walls[2] revised 2026-10-25 (#83): the 2025-09-26 morning crop w05-89 is sunlit (east front at 09:00), wall raw #655547 drawn as measured; two small square windows in bays 0-1, then six wide white-framed transom windows at 0.82 of the bay and 0.4 of the storey (the photo mask splits each into two columns at its side light).",
-  "walls[4] (west low hall) is drawn in its own crop's raw brick #4a3d36 as measured (the same dark brown brick as walls[0], a little redder); the earlier lifted #806f5c was a guess."
+  "walls[4] (west low hall) is drawn in its own crop's raw brick #4a3d36 as measured (the same dark brown brick as walls[0], a little redder); the earlier lifted #806f5c was a guess.",
+  "GitHub #86, 2026-10-25: the blue frames are not separate windows. Each white-framed window on walls[1] and walls[2] holds a blue-framed side light on its left (0.38 of the window wide, from 0.15 to 0.82 of its height, a vent bar below and a transom above), drawn with the new sideLight kit component in its measured blue #3f7e9a. The small windows of bays 0-1 sit off the bay axes, smaller and higher than the wide ones: drawn with bayWindows (per storey, per bay width, centre, height, sill and side light).",
+  "walls[1] (north wing, Nieuwpoortkade side) remeasured 2026-10-25 (#86) from the overcast 2025-09-26 crop w04-89x (archived for this lane): the earlier buff reading was blown sunlight; between the window rows the brick is #5b483b raw against white frames reading #e9e6df, drawn #655547, the same brick as walls[2]. 16 bays: wide 1.7-bay transom windows at bays 2, 4, 6, 8, the narrower windows of bays 10-13 per storey, and the glass-block column in bay 15 without a side light. Likeness PASS, IoU 0.70.",
+  "walls[2] (south wing) rebuilt 2026-10-25 (#86) from the 2018-06-20 crop w05-89x (archived, square-on, 0.2 deg obliquity): two small windows per storey off the bay axes in bays 0-1, six wide windows with side lights on storeys 1-2, and on the ground the blue door in bay 2 and four low wide windows (0.29 of the storey) in bays 3-6. Likeness WARN only for columns (the gate splits each wide window at its side light into two photo columns, 17 vs 8). Not drawn: the round window (oculus) of ground bay 7 and the door canopy.",
+  "walls[1] still not drawn (#86): the two small balconies on the north wing's upper storey and the round-headed entrance detail; the kit has no balcony on a bayWindows storey and no oculus.",
+  "walls[3] (south front, the white-panelled wing) rebuilt 2026-10-25 (#86 follow-up) from w03-179 (2018) and the new crop w03-179i60w (2022-01-04, archived): the wing's main 3DBAG plane stands 0.62 m behind the BAG edge, so the crop is cut 0.6 m inside it (all-walls.ts --inset). As built: a ground of buff brick infill under a clerestory ribbon, dark steel posts every ~6.6 m (groundPiers, every 5th bay edge) over a dark vent strip; white panels from 3.35 m; one ribbon storey of white-framed lights, two in five with blue openers (bayWindows + sideLight); a parapet with a rail and the set-back glazed top storey (a loggiaBands recess 0.4 of the storey deep, glazed back) on the middle 19 m only. Likeness WARN (columns: the gate reads 7 post-groups where the model has 15 lights; IoU 0.38). The panels are drawn #84837e: the 2018 sunlit crop reads them #a7a5a1 but flags them washed out (pale cells abstain), the overcast 2022 crop reads #686763 at about 0.7 of the 2018 exposure (the brick end: #6e6253 vs #4b4540); #84837e sits just inside the gate on the judged crop. The buff infill is #6e5e4a (2018 raw #685948).",
+  "walls[7] (new group, 2026-10-25): the south end of the east wing (surface 34, 11.6 m), previously drawn as part of the grey ribbon wing: brown brick #655547, two white-framed two-light windows per storey on the left with the blue opener in the right light, 'da vinci' in white brick on the right. Likeness WARN (columns 8 vs 4: the model draws each light as its own opening). Not drawn: the oculus of walls[2]'s ground bay 7 and the door canopy."
  ],
- "budgetTriangles": 15000,
+ "budgetTriangles": 19500,
  "measured": {
   "date": "2026-10-25",
   "groups": [

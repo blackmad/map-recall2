@@ -19,7 +19,7 @@ import {buildHost, insidePanel, pointInRing, type Panel} from '../blockBuilding/
 import {MeshBuilder} from '../blockBuilding/mesh.ts';
 import type {P3, SurfaceSet} from '../blockBuilding/types.ts';
 import type {BlockSpec, System} from '../blockBuilding/spec.ts';
-import {ARCADE_PROPORTIONS, DEFAULT_PITCH_M, largeSystem, LOGGIA, PLINTH, SOUTERRAIN, type ArcadeFit, type LargeGround, type LargeSystemName} from '../blockBuilding/systems.ts';
+import {ARCADE_PROPORTIONS, DEFAULT_PITCH_M, largeSystem, LOGGIA, LOGGIA_BAND, PLINTH, SOUTERRAIN, type ArcadeFit, type LargeGround, type LargeSystemName} from '../blockBuilding/systems.ts';
 import {panelRuns, runBayAxes} from '../blockBuilding/curve.ts';
 import type {Lantern} from '../blockBuilding/components.ts';
 import {MESH_SCREEN} from '../blockBuilding/components.ts';
@@ -421,6 +421,13 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     const balconyRail = w.balconies?.colour ? `rail@bg${gi}` : undefined;
     if (balconyRail) palette[balconyRail] = swatch(w.balconies!.colour!);
     // A window box in its own frame colour and its deck slab (windowBox.frame, windowBox.deck): slots of their own.
+    // A side light's own frame colour (sideLight.colour, GitHub #86) and loggia-band rails in their own colour: joinery slots of their own.
+    const sashSlot = w.sideLight ? `frame@sl${gi}` : undefined;
+    if (sashSlot) palette[sashSlot] = swatch(w.sideLight!.colour);
+    const gpSlot = w.groundPiers ? `frame@gp${gi}` : undefined, gpPlinth = w.groundPiers?.plinth ? `frame@gpp${gi}` : undefined;
+    if (gpSlot) palette[gpSlot] = swatch(w.groundPiers!.colour);
+    if (gpPlinth) palette[gpPlinth] = swatch(w.groundPiers!.plinth!.colour);
+    const bandRail = (k: number) => { const c = w.loggiaBands?.[k]?.colour; if (!c) return slots.frame; const sl = `rail@lb${gi}k${k}`; palette[sl] = swatch(c); return sl; };
     const boxFrame = w.windowBox?.frame ? `frame@wb${gi}` : undefined;
     if (boxFrame) palette[boxFrame] = swatch(w.windowBox!.frame!);
     const boxDeck = w.windowBox?.deck ? (w.windowBox.deck.colour ? `slab@wb${gi}` : slots.stone) : undefined;
@@ -496,6 +503,16 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {}),
       ...(w.glazing === 'panes' ? {paneSplit: true} : {}), ...(w.courses ? {courses: [...w.courses]} : {}), ...(w.souterrain ? {souterrain: w.souterrain} : {}), ...(w.openBays ? {openBays: w.openBays, bays} : {}),
       ...(w.plinth ? {plinth: {storeys: [...plinthStoreys], ...(w.plinth.bays ? {bays: [...w.plinth.bays]} : {}), lights: w.plinth.lights, sill: w.plinth.sill ?? PLINTH.sill, h: w.plinth.h ?? PLINTH.h, pier: w.plinth.pier ?? PLINTH.pier, transom: w.plinth.transom ?? PLINTH.transom}, bays} : {}),
+      ...(w.sideLight ? {sideLight: {side: w.sideLight.side ?? 'left', w: w.sideLight.w, low: w.sideLight.low ?? 0, high: w.sideLight.high ?? 1, slot: sashSlot!, ...(w.sideLight.storeys ? {storeys: [...w.sideLight.storeys]} : {})}} : {}),
+      ...(w.bayWindows ? {bayWindows: w.bayWindows.map(e => ({storeys: e.storeys.filter(q => q < st.heights.length), pattern: e.pattern.map(b => ({w: b.w, ...(b.at !== undefined ? {at: b.at} : {}), ...(b.h !== undefined ? {h: b.h} : {}), ...(b.light !== undefined ? {light: b.light} : {}), ...(b.door ? {door: true} : {}),
+        ...(b.sill !== undefined ? {sillM: r3(b.sill * (st.heights[e.storeys.find(q => q < st.heights.length) ?? 0] ?? st.heights[0]))} : {})}))}))} : {}),
+      ...(w.loggiaBands ? {loggiaBands: w.loggiaBands.filter(b => b.storeys[1] < st.heights.length).map((b, k) => {
+        const n = (b.bays[1] - b.bays[0] + 1) * pitchM, h0 = st.heights[b.storeys[0]], h1 = st.heights[b.storeys[1]];
+        return {storeys: [b.storeys[0], b.storeys[1]] as [number, number], bays: [b.bays[0], b.bays[1]] as [number, number], sillM: r3((b.sill ?? LOGGIA_BAND.sill) * h0), headM: r3((b.head ?? LOGGIA_BAND.head) * h1),
+          deepM: r3((b.deep ?? LOGGIA_BAND.deep) * h0), lights: b.lights ?? Math.max(1, Math.round(n / LOGGIA_BAND.lightM)), rail: b.rail ?? 'glass', railSlot: bandRail(k), ...(b.back ? {back: b.back.map(r => ({...r}))} : {})};
+      })} : {}),
+      ...(w.groundPiers ? {groundPiers: {every: w.groundPiers.every, first: w.groundPiers.first ?? 0, w: r3(w.groundPiers.w * pitchM), out: 0.12, top: r3(st.heights[0]), slot: gpSlot!,
+        ...(gpPlinth ? {plinth: {h: r3(w.groundPiers.plinth!.h * st.heights[0]), slot: gpPlinth}} : {})}} : {}),
       ...(w.loggias ? {loggias: {storeys: [...w.loggias.storeys], ...(w.loggias.bays ? {bays: [...w.loggias.bays]} : {}), w: w.loggias.w ?? LOGGIA.w, h: w.loggias.h ?? LOGGIA.h, sill: w.loggias.sill ?? LOGGIA.sill, deep: w.loggias.deep ?? LOGGIA.deep, rail: w.loggias.rail ?? LOGGIA.rail, lights: w.loggias.lights ?? LOGGIA.lights, railSlot: railSlot ?? slots.frame}, bays} : {})};
     systems[specSystem] = largeSystem(w.system, sysOpts);
     // Row split: per house its own eaves (the 3DBAG wall over its span, row-coherent), storey lines, bays, window shape
@@ -558,7 +575,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
         rail: (k, colour) => { const sl = `rail@gal${gi}k${k}r`; palette[sl] = swatch(colour); return sl; }})} : {}),
       ...(clad && cladSlot && cladLine ? {cladding: {kind: clad.kind, ...claddingHeights(eaves, clad.from, clad.to), pitchM: clad.pitch ?? (clad.kind === 'paint' ? 0 : CLADDING[clad.kind].pitch), rowPitchM: clad.rowPitch ?? PANEL_ROW_M, slot: cladSlot, lineSlot: cladLine,
         ...(w.wallSplit && main && splitSlot ? {side: {panel: main.index, uM: splitAtBay(main.uMin, main.uMax, pitchM, w.wallSplit.at), right: clad.side === 'right', ...(clad.side === 'right' ? {source: splitSlot} : {})}} : {})}} : {}),
-      ...(w.loggias ? {loggiaDepthM: r3(Math.max(...w.loggias.storeys.map(k => (st.lines[k + 1] ?? st.lines[k]) - st.lines[k])) * (w.loggias.deep ?? LOGGIA.deep))} : {}), slots});
+      ...(w.loggias || w.loggiaBands ? {loggiaDepthM: Math.max(w.loggias ? r3(Math.max(...w.loggias.storeys.map(k => (st.lines[k + 1] ?? st.lines[k]) - st.lines[k])) * (w.loggias.deep ?? LOGGIA.deep)) : 0,
+        ...(w.loggiaBands ?? []).map(b => r3(((st.lines[b.storeys[0] + 1] ?? st.lines[b.storeys[0]]) - st.lines[b.storeys[0]]) * (b.deep ?? LOGGIA_BAND.deep))))} : {}), slots});
   });
   // Unlisted walls: one system at the civic storey height and the system's default pitch.
   const otherName = intent.otherWalls ?? 'blank', otherTop = Math.max(0, ...panels.map(p => p.vMax));
