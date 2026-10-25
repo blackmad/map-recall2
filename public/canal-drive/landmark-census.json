@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-25T08:19:50.915Z",
+ "generatedAt": "2026-10-25T08:48:31.956Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
  "headline": 504,
@@ -19,7 +19,7 @@
    "unreviewed": 0
   },
   "largeRecipe": {
-   "models": 100,
+   "models": 112,
    "counts": 52,
    "strict": 52,
    "unreviewed": 14
@@ -33,7 +33,7 @@
  },
  "byReview": {
   "legacy-gallery": 406,
-  "likeness-gate": 84,
+  "likeness-gate": 96,
   "none": 324,
   "strip-review": 112
  },
@@ -7079,6 +7079,174 @@
    "tier": "largeRecipe",
    "pands": [
     "0363100012236822"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012101656",
+   "name": "Haarlemmerweg 217-283, Amsterdam-West (GWL-terrein, 1998: the nine-storey brick wall block on the Haarlemmerweg facing the Westerpark; BAG pand 0363100012101656)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012101656"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012097137",
+   "name": "Haarlemmerweg 285-303, Amsterdam-West (GWL-terrein, 1996: the L-shaped brick block at the west corner of the terrain, facing the Westerpark; BAG pand 0363100012097137)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012097137"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012135676",
+   "name": "Haarlemmerweg 315-321, Amsterdam-West (1921 brick office block facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012135676)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012135676"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012160400",
+   "name": "Haarlemmerweg 201, Amsterdam-West (1901 brick house over a white rendered workshop ground floor, facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012160400)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012160400"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012106960",
+   "name": "Haarlemmerweg 77-87, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012106960)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012106960"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012081533",
+   "name": "Haarlemmerweg 63-71, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012081533)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012081533"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012111773",
+   "name": "Haarlemmerweg 93-97, Amsterdam-West (1992 housing block in buff and red-brown brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012111773)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012111773"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012131644",
+   "name": "Haarlemmerweg 99-103, Amsterdam-West (1992 housing block in buff and red-brown brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012131644)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012131644"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012100677",
+   "name": "Haarlemmerweg 105-109, Amsterdam-West (1992 housing block in buff and red-brown brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012100677)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012100677"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012091729",
+   "name": "Haarlemmerweg 91 / Van Limburg Stirumstraat 2-8, Amsterdam-West (1992 corner housing block in buff and red-brown brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012091729)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012091729"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012084332",
+   "name": "Haarlemmerweg 73-75, Amsterdam-West (1983 social-housing block in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012084332)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012084332"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ordinary-0363100012097106",
+   "name": "Haarlemmerweg 89, Amsterdam-West (1983 social-housing corner tower in buff brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012097106)",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012097106"
    ],
    "namedPoi": false,
    "rideVisible": false,

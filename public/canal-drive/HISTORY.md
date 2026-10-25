@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+**Haarlemmerweg facing the Westerpark (2026-10-25, #65).** User correction of
+#62 (they meant the Westerpark). 13 large recipes: GWL 217-283 and 285-303,
+315-321 (1921 office), 201, the 1983 scheme 63-89 and the 1992 blocks 91-109.
+Integrator review: the north-facing fronts were measured in shade and
+shipped as "measured", so they read dark and dour; the lane re-read brick
+from sunlit crops where they exist (201, the 1983 scheme), used the
+brightest north reading for the 1992 blocks, and dropped `measured` so the
+export brightens them. Still darker than the procedural rows beside them:
+large-tier north faces shade at ~0.58 and flat roofs render dark bitumen;
+follow-up lane for large-tier facade lighting. Kit: windowBox spread/frame/
+deck/rising galleries, `mainSurface`, `gateways.keepRow`, `brickStoreys`.
+Not built: Waterkeringweg (faces away), the water tower (landmark track),
+the 1885-1910 row 25-215 (block-face work). Census 504.
+
 **Free ride mode (2026-10-25, #67).** User request: ride anywhere, things
 highlighted, click to explore. Fourth Route tile "Free ride": random
 hand-picked landmark start, no route/questions/finish; markers for carded
