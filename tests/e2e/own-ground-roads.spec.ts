@@ -29,6 +29,14 @@ export const ROAD_SPOTS: [string, Place][] = [
   ['marnixstraat-plantsoen', { lng: 4.87643, lat: 52.37421, bearing: 20 }],
   // The road-diagnose spots (roadRegressions ROAD_SPOTS, 2026-10-23): judged beside the orthophoto.
   ...DIAGNOSE_SPOTS.map(s => [s.id, spotViewpoint(s)] as [string, Place]),
+  // Close views of the two #52 spots (user 2026-10-24: kerbs, islands, rails and crossings judged from the bike): the
+  // rider on the junction itself; `zoom` brings the chase camera in (ROADS_CLOSE_ZOOM, default +1.2 over the game's).
+  ['close-haarlemmerplein-1', { lng: 4.88140, lat: 52.38492, bearing: 100 }],
+  ['close-haarlemmerplein-2', { lng: 4.88164, lat: 52.38503, bearing: 190 }],
+  ['close-haarlemmerplein-3', { lng: 4.88146, lat: 52.38487, bearing: 70 }],
+  ['close-rotterdammerbrug-1', { lng: 4.87904, lat: 52.38172, bearing: 25 }],
+  ['close-rotterdammerbrug-2', { lng: 4.87916, lat: 52.38188, bearing: 205 }],
+  ['close-rotterdammerbrug-3', { lng: 4.87888, lat: 52.38151, bearing: 25 }],
 ];
 
 async function boot(page: Page, viewMode = 'chase'): Promise<string[]> {
@@ -76,6 +84,10 @@ test('roads: shots at the user spots and the deck regressions', async ({ page },
   for (const [name, place] of ROAD_SPOTS) {
     if (only && !only.includes(name)) continue;
     await teleport(page, place);
+    if (name.startsWith('close-')) await page.evaluate((dz) => {
+      const m = (window as any).canalRecallGame.vectorMap.map;
+      if (!m.__closeJump) { const jump = m.jumpTo.bind(m); m.__closeJump = true; m.jumpTo = (o: any) => jump({ ...o, ...(o.zoom !== undefined ? { zoom: o.zoom + dz } : {}) }); }
+    }, Number(process.env.ROADS_CLOSE_ZOOM ?? 1.2));
     const s = await settle(page);
     await page.screenshot({ path: `${OUT}/${info.project.name}-${name}.png` });
     report[name] = { place, cells: s.cells, triangles: s.triangles, geometryMB: s.geometryMB, errors: s.errors };

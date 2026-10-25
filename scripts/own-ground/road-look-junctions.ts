@@ -61,6 +61,8 @@ async function render(label: string): Promise<void> {
   }
 }
 
+const CLOSE_VIEWS = ['haarlemmerplein-1', 'haarlemmerplein-2', 'haarlemmerplein-3', 'rotterdammerbrug-1', 'rotterdammerbrug-2', 'rotterdammerbrug-3'].map(v => `close-${v}`);
+
 async function sheet(before: string, after: string): Promise<void> {
   const T = 420, F = 672, gap = 4, head = 24, W = 3 * (T + gap) + 3 * (F + gap);
   const fb = arg('frames-before') ?? 'artifacts/own-ground-roads/look-before', fa = arg('frames-after') ?? 'artifacts/own-ground-roads/look-after';
@@ -80,6 +82,16 @@ async function sheet(before: string, after: string): Promise<void> {
     let x = 0;
     for (const [f, w] of cells) { parts.push({ input: await img(f, w, T), left: x, top: y }); x += w + gap; }
     y += T + gap;
+  }
+  // Close chase frames of the #52 spots (tests/e2e/own-ground-roads.spec.ts `close-*`: the rider on the junction, the
+  // chase camera brought in), before | after.
+  const CW = Math.floor((W - gap) / 2), CH = Math.round(CW * 900 / 1440);
+  for (const id of CLOSE_VIEWS) {
+    const b = join(fb, `desktop-${id}.png`), a = join(fa, `desktop-${id}.png`);
+    if (!existsSync(b) && !existsSync(a)) continue;
+    parts.push({ input: text(`${id}: close chase view, before | after`, W), left: 0, top: y }); y += head;
+    parts.push({ input: await img(b, CW, CH), left: 0, top: y }, { input: await img(a, CW, CH), left: CW + gap, top: y });
+    y += CH + gap;
   }
   const out = join(OUT, 'sheet.jpg');
   await sharp({ create: { width: W, height: y, channels: 3, background: '#111' } }).composite(parts).jpeg({ quality: 80 }).toFile(out);
