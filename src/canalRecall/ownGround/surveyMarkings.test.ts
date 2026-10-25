@@ -10,7 +10,7 @@ import { encodeLine } from './parks';
 import type { MeshArrays } from './drape';
 import { kerbEdges, RoadIndex, surfaceLayer } from './roadSurfaces';
 import { prepareWays, ROAD_MARK_LIFT } from './streets';
-import { buildSurveyMarkings, CENTRE_CUT_M, crossingPaint, ZEBRA } from './surveyMarkings';
+import { alignCycleCrossing, ALIGN_GAP_M, buildSurveyMarkings, CENTRE_CUT_M, crossingPaint, ZEBRA } from './surveyMarkings';
 import { decodeMarks, encodeMarks, isRoadMarksCell, markOf, type RoadMark } from './roadMarks';
 import type { RoadCell, RoadClass, RoadMesh } from './roadCells';
 import type { Vec2 } from './surface';
@@ -51,6 +51,9 @@ test('inrit and parking klinker draw as the muted brick layer; carriageway klink
   assert.equal(surfaceLayer('carriage', 'klinker'), 'klinker');
   assert.equal(surfaceLayer('parking', 'asphalt'), 'asphalt');
   assert.equal(surfaceLayer('driveway', 'paving'), 'paving');
+  // Issue #52: an asphalt traffic island is raised paving in the pavement tone (the photo reads it light, luma 214).
+  assert.equal(surfaceLayer('island', 'asphalt'), 'paving');
+  assert.equal(surfaceLayer('berm', 'asphalt'), 'asphalt');
 });
 
 test('road-marks-v1: node tags → marks, and the cell encoding round-trips', () => {
@@ -115,4 +118,23 @@ test('a cycle path across a side street: red under its width with blocks, clippe
   const r = centroids(red);
   assert.ok(r.length > 0 && r.every(c => Math.abs(c[1]) <= 4 && Math.abs(c[0] + 30) <= 1.01));
   assert.ok(centroids(paint).filter(c => Math.abs(c[0] + 30) < 1.3 && Math.abs(c[1]) <= 4).length >= 10, 'block lines along both edges');
+});
+
+test('a red cycle crossing beside a zebra is laid parallel to it and abutting it (issue #52, Haarlemmerplein)', () => {
+  const zebra = { kind: 'zebra' as const, centre: [0, 20] as Vec2, r: [0, 1] as Vec2, from: -4, to: 4 };
+  // The cycle path's line runs 6° off the zebra's walking line and 1 m too far north of its edge.
+  const got = alignCycleCrossing([zebra], [-4, 23.6], [4, 22.8], 2)!;
+  const y = 20 + ZEBRA.len / 2 + ALIGN_GAP_M + 1;
+  assert.ok(got && Math.abs(got[0][1] - y) < 1e-9 && Math.abs(got[1][1] - y) < 1e-9, `aligned ${JSON.stringify(got)}`);
+  assert.ok(Math.abs(got[0][0] + 4) < 1e-9 && Math.abs(got[1][0] - 4) < 1e-9, 'its own extent across the road kept');
+  // South of the zebra it goes to the south edge; too far away, or crossing the zebra's line, it stays where it is.
+  assert.ok(Math.abs(alignCycleCrossing([zebra], [-4, 16.8], [4, 16.8], 2)![0][1] - (40 - y)) < 1e-9);
+  assert.equal(alignCycleCrossing([zebra], [-4, 30], [4, 30], 2), null);
+  assert.equal(alignCycleCrossing([zebra], [0, 15], [0, 25], 2), null);
+  // On the synthetic cross: a blocks node on a cycleway 1 m off a zebra node draws its red parallel to the zebra.
+  const ways = [...WAYS, ...prepareWays([{ id: 9, tags: { highway: 'cycleway' }, g: [[-10, 23.4], [10, 22.6]] }], p => p as Vec2)];
+  const { red, stats } = build([{ p: [0, 20], kind: 'zebra', signalised: false, dir: 0 }, { p: [0, 23], kind: 'blocks', signalised: false, dir: 0 }], ways);
+  assert.equal(stats.cycleAligned, 1);
+  const ys = centroids(red).map(c => c[1]);
+  assert.ok(ys.length > 0 && Math.max(...ys) - Math.min(...ys) < 2.01 && Math.min(...ys) > 20 + ZEBRA.len / 2, `red rows ${Math.min(...ys).toFixed(2)}..${Math.max(...ys).toFixed(2)}`);
 });

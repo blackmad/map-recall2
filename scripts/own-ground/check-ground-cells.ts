@@ -1007,7 +1007,11 @@ async function wayDeckCarriageRegressions(): Promise<void> {
   for (const [id, lng, lat, label] of WAY_DECK_CARRIAGE) for (const [mode, s] of [['roads', roadsStore], ['half-width', halfWidth]] as const) {
     const [x, y] = toLocal(lng, lat), around = GroundStore.neighbours(s.cellAt(x, y));
     const index = new RoadIndex(await Promise.all(around.map(k => s.roadCell(k))));
-    const carriage = (px: number, py: number) => index.classAt(px, py, true) === 'carriage';
+    // The road deck's own surface: the carriageway, and since roads-v2 (lane R1) the paved berm strip (verharde berm, the
+    // hard shoulder) between it and the barrier. On OSM7382983 the survey puts a ~0.6 m deck-level berm outside the west
+    // carriageway, so the parapet stands at the berm's outer edge, not the carriageway's (17 of 32 points read the berm
+    // 0.5 m inside them; this failed on main before the #52 lane). A berm on the ground (h 0) beside the deck is not road deck.
+    const carriage = (px: number, py: number) => { const k = index.findAtLevel(px, py, true); if (k < 0) return false; const c = index.drawClass(k); return c === 'carriage' || (c === 'berm' && index.records[k].h >= 1); };
     const pts: { p: [number, number]; out: [number, number] }[] = [];
     parapetTrace.fn = (pid, _side, line, at) => { if (pid === id && at.level === 0) for (const q of line) pts.push({ p: [q.p[0], q.p[1]], out: [q.out[0], q.out[1]] }); };
     for (const k of around.filter(k => s.covers(k))) buildCell(await s.cellInput(k, 0));

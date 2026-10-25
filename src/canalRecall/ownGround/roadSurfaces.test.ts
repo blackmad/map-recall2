@@ -7,7 +7,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { encodeLine } from './parks';
 import { densifyOnRelief, emptyMesh, type MeshArrays } from './drape';
-import { buildRoadSurfaces, coveredShare, drapeAdaptive, kerbEdges, RoadIndex, ROAD_LIFT, SIDEWALK_TOP, simplifyLine, simplifyRing } from './roadSurfaces';
+import { buildRoadSurfaces, coveredShare, drapeAdaptive, kerbEdges, kerbShadowTint, RoadIndex, ROAD_LIFT, SIDEWALK_TOP, simplifyLine, simplifyRing } from './roadSurfaces';
 import { buildStreets, carriageGrid, crossCuts, junctionGeometry, prepareWays, LIFT, PAINT_ON_SURVEY, ROAD_MARK_LIFT, type LocalWay } from './streets';
 import { stations } from './drape';
 import type { RoadCell, RoadClass, RoadMesh } from './roadCells';
@@ -78,6 +78,22 @@ test('road surfaces: the partition drapes without coplanar overlaps, at the clas
   // The kerb faces stand on the carriageway side: every kerb-wall vertex is within 0.16 m of a kerb line (the 0.15 m granite line lies on the pavement side).
   const kp = layers.kerb!.positions;
   for (let i = 0; i < kp.length; i += 3) assert.ok(Math.abs(Math.abs(kp[i]) - 4) < 0.16 || Math.abs(Math.abs(kp[i + 1]) - 4) < 0.16 || Math.abs(kp[i] - 6) < 0.16, `kerb vertex off the kerb lines ${kp[i]},${kp[i + 1]}`);
+  // The kerb's shadow line (issue #52): kerb vertices tinted to the dark groove, on the low side of every kerb within
+  // KERB_SHADOW_M, at the rails' lift, never on the pavement; the rest of the kerb is untinted (the kerb tone).
+  const kc = layers.kerb!.colors!, tint = kerbShadowTint();
+  assert.ok(tint.every(v => v < 0.6), `tint ${tint}`);
+  let tinted = 0;
+  for (let i = 0; i < kp.length; i += 3) {
+    const t = [kc[i], kc[i + 1], kc[i + 2]];
+    if (t.every(v => v === 1)) continue;
+    assert.deepEqual(t, tint);
+    tinted++;
+    const [x, y, z] = [kp[i], kp[i + 1], kp[i + 2]];
+    assert.ok(Math.abs(z - ROAD_MARK_LIFT.rail) < 1e-6, `shadow line at z=${z}`);
+    const cls = index.classAt(x + Math.sign(x) * -0.01, y + Math.sign(y) * -0.01);
+    assert.ok(cls !== 'foot', `shadow line vertex on the pavement at ${x.toFixed(2)},${y.toFixed(2)}`);
+  }
+  assert.ok(tinted >= 8, `tinted vertices ${tinted}`);
   // The index answers class, mesh, height and the road test.
   assert.equal(index.classAt(0, 20), 'carriage'); assert.equal(index.classAt(5, 20), 'cycle'); assert.equal(index.classAt(-20, 20), 'foot'); assert.equal(index.classAt(80, 80), null);
   assert.equal(index.meshAt(20, 0), 'klinker'); assert.equal(index.heightAt(0, 0), 0);

@@ -51,9 +51,16 @@ export const GROUND_LOOK_TONES: Readonly<Record<Exclude<GroundLook, 'default'>, 
   land?: RGB; paving?: RGB; square?: RGB; parking: RGB; parkPath: RGB;
 }>> = {
   bright: {
-    asphalt: [146, 144, 137], pavement: [183, 174, 161], klinker: [147, 110, 90], brick: [168, 156, 146], cycle: [204, 107, 106],
-    // Tram rails: light steel (they were #6c6e72, darker than the asphalt round them and lost from the bike).
-    rail: '#b4b7bb',
+    // Klinker, inrit brick and cycle red: option C1 on issue #7 (user 2026-10-24, "C1 sure"): the photo-like C tones
+    // (strip-tones.jpg: klinker 140,124,112, cycle 192,118,110), the herringbone pattern carrying the klinker/asphalt
+    // legend instead of colour (ΔE 9.4). Inrit brick C1 proposed 156,149,141; drawn 162,155,147 so it keeps the
+    // unchanged inrit-near-pavement gates (ΔE ≤ 10 and luma within 20: 156,149,141 sat 25 under the pavement).
+    asphalt: [146, 144, 137], pavement: [183, 174, 161], klinker: [140, 124, 112], brick: [162, 155, 147], cycle: [192, 118, 110],
+    // Tram rails: dark grooves (issue #52, user 2026-10-24: the light steel '#b4b7bb' read as "thin white lines"). On
+    // the 8 cm orthophoto the rails sit darker than the asphalt beside them (scripts/own-ground/road-look-junctions.ts
+    // measure: Nassaukade luma 160 against 173, Kinkerstraat 93 against 126, the 8 cm texel mixing groove, head and road);
+    // the groove itself is darker still. The kerb's shadow line (roadSurfaces kerbShadowTint) takes the same tone.
+    rail: '#5e5b56',
     water: [79, 134, 163], land: [185, 174, 156], paving: [194, 184, 167], square: [198, 187, 169], parking: [126, 125, 120], parkPath: [142, 140, 134],
   },
 };

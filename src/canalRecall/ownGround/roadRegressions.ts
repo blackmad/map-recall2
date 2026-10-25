@@ -493,6 +493,10 @@ export const ROAD_SPOTS: RoadSpot[] = [
   // (4.89628, 52.36622) is the Rembrandtplein; the square is east of the Portuguese Synagogue.
   { id: 'jonas-daniel-meijerplein', label: 'Jonas Daniël Meijerplein (the Dokwerker)', at: [4.90490, 52.36715], bearing: 90, halfM: 50, backM: 25 },
   { id: 'rembrandtplein', label: 'Rembrandtplein (the point first given for the Dokwerker complaint)', at: [4.89628, 52.36622], bearing: 0, halfM: 40, backM: 25 },
+  // User chase-camera shots 2026-10-24 (#52, "why do the roads still look so bad?"): islands and tram beds as flat pale
+  // slabs with no kerb, zebras and red cycle-crossing boxes in pieces, thin white rails, saturated red, no edges.
+  { id: 'haarlemmerplein', label: 'Haarlemmerplein × Haarlemmerweg / Nassaukade (Haarlemmerpoort, Westerkanaal bridge)', at: [4.8816, 52.3849], bearing: 70, halfM: 50, backM: 30 },
+  { id: 'nassaukade-rotterdammerbrug', label: 'Nassaukade tram curve by the Singelgracht, Rotterdammerbrug bascule (keeper\'s house, barrier posts)', at: [4.8791, 52.3818], bearing: 30, halfM: 50, backM: 30 },
 ];
 /** Where a rider stands to look at a spot: `backM` behind `at` along the bearing (lng/lat, bearing degrees from north). */
 export function spotViewpoint(s: RoadSpot): { lng: number; lat: number; bearing: number } {

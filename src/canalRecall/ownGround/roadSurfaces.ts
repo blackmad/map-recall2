@@ -32,6 +32,7 @@ import { bollards, LIFT, ROAD_MARK_LIFT } from './streets.js';
 import { ANCILLARY_CLASSES, KERB_LOW_CLASSES, type RoadCell, type RoadClass, type RoadMesh, type RoadSurface } from './roadCells.js';
 import { GroundSurface, type HeightFn, type Vec2 } from './surface.js';
 import { traceMark, type GroundSource } from './sourceTrace.js';
+import { groundPalette, GROUND_LOOK_DEFAULT, type GroundPalette } from './groundLook.js';
 
 /** The trace source of a polygon by class (sourceTrace.ts; a red rijbaan section is 'fietsstraat'). */
 const BGT_SOURCE: Record<RoadClass, GroundSource> = { carriage: 'bgtCarriage', parking: 'bgtParking', foot: 'bgtFoot', pedestrian: 'bgtPedestrian', cycle: 'bgtCycle', driveway: 'bgtDriveway', island: 'bgtIsland', berm: 'bgtBerm', verge: 'bgtVerge', square: 'bgtSquare' };
@@ -86,6 +87,22 @@ export const DECK_DRAPE_TOL_M = 0.01, DECK_DRAPE_MAX_EDGE_M = 6;
  * and no coarser than DRAPE_MAX_EDGE_M (roads lane R1: a fixed 4 m step was 1.2 triangles per metre on graded streets).
  */
 export const KERB_SIMPLIFY_M = 0.2, KERB_RELIEF_TOL_M = 0.02, KERB_PROBE_STEP_M = 4;
+/**
+ * The kerb's shadow line (issue #52, user 2026-10-24: "no kerbs or edges anywhere, so the whole junction reads as a
+ * diagram"; islands "flat lighter grey slabs with no kerb"): a dark strip on the low side at the foot of every sided
+ * kerb face. The 11 cm face is a few pixels from the chase camera and lit like the pavement; on the panoramas
+ * (Haarlemmerplein, the Nassaukade bascule) and the 8 cm orthophoto every kerb reads as a dark line where its shaded
+ * face and the gutter meet the road. Drawn in the kerb mesh with a vertex tint (the kerb material multiplies it), so
+ * it costs no draw call: the tint takes the kerb tone to the rails' dark-groove tone.
+ */
+export const KERB_SHADOW_M = 0.14;
+/** The shadow line's vertex tint (sRGB 0..1): the palette's dark groove over its kerb tone, per channel. */
+export function kerbShadowTint(palette: GroundPalette = groundPalette(GROUND_LOOK_DEFAULT)): [number, number, number] {
+  const rgb = (h: string) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const groove = rgb(palette.street.rail), kerb = rgb(palette.street.kerb);
+  return [0, 1, 2].map(c => Math.min(1, groove[c] / Math.max(1, kerb[c]))) as [number, number, number];
+}
+const KERB_SHADOW_TINT = kerbShadowTint();
 
 /**
  * Earcut triangles draped where the relief needs it: a triangle is split at its longest edge while that edge is
@@ -392,6 +409,10 @@ export type RoadLayer = RoadMesh | 'brick' | 'kerb' | 'bollard' | 'lawn';
 export function surfaceLayer(cls: RoadClass, mesh: RoadMesh): RoadLayer {
   // The park grass material (the `lawn` layer parks-v1 draws) for green verges and grass islands (roads lane R1).
   if (mesh === 'grass') return 'lawn';
+  // A traffic island the survey calls asphalt draws as raised paving in the pavement tone (issue #52, user 2026-10-24:
+  // islands read as "floating cardboard"). On the orthophoto at the fourteen ROAD_SPOTS the island/asphalt polygons
+  // sit at luma 214 against the carriageway's 160 (island/paving 171; scripts/own-ground/road-look-junctions.ts measure).
+  if (cls === 'island' && mesh === 'asphalt') return 'paving';
   const brick = cls === 'driveway' || cls === 'parking' || (ANCILLARY_CLASSES as readonly RoadClass[]).includes(cls);
   return mesh === 'klinker' && brick ? 'brick' : mesh;
 }
@@ -445,7 +466,8 @@ export function deckLevelHeight(surface: GroundSurface, rect: readonly [number, 
 export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadBuildInput): { layers: Partial<Record<RoadLayer, MeshArrays>>; stats: RoadBuildStats; skipped: Set<number> } {
   const t0 = Date.now();
   const layers: Partial<Record<RoadLayer, MeshArrays>> = {};
-  const get = (l: RoadLayer) => (layers[l] ??= emptyMesh());
+  // The kerb mesh carries vertex colours (white: the kerb material's own tone; KERB_SHADOW_TINT: the shadow line).
+  const get = (l: RoadLayer) => (layers[l] ??= emptyMesh(l === 'kerb'));
   const stats: RoadBuildStats = { drawn: { carriage: 0, foot: 0, cycle: 0, pedestrian: 0, parking: 0, driveway: 0, island: 0, berm: 0, verge: 0, square: 0 }, onDeck: 0, skippedHigh: 0, degenerate: 0, kerbs: 0, kerbM: 0, kerbUnsided: 0, bollards: 0, ms: 0 };
   const skipped = new Set<number>();
   const far = input.lod === 1;
@@ -511,6 +533,8 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     const facing: 1 | -1 = lowLeft ? 1 : -1, into = lowLeft ? -1 : 1; // `into`: toward the upper side (way-left is +)
     edgeWall(kerb, line, 0, height, KERB_TOP, KERB_FACE_BOTTOM, facing, { step: Infinity });
     ribbon(kerb, line, into * KERB_LINE_M / 2, KERB_LINE_M, height, KERB_LINE_Z, { step: Infinity });
+    // The shadow line on the low side at the face's foot, at the rails' lift over the relief (ROAD_MARK_LIFT.rail).
+    ribbon(kerb, line, -into * KERB_SHADOW_M / 2, KERB_SHADOW_M, height, ROAD_MARK_LIFT.rail, { step: Infinity, colour: KERB_SHADOW_TINT });
     // Posts along the pavement's kerb, not round the planted berms, islands and squares (roads lane R1 doubled the
     // kerbs of -1_-1 with those; the bollards stay at main's count, 25k against 24k triangles).
     const upper = lowLeft ? right : left;

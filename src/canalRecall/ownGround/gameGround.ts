@@ -592,10 +592,11 @@ export class OwnGround {
       // Pavements: grey-rose klinkers in stretcher bond (Amsterdam's gebakken klinker trottoir).
       paving: std({ map: pavers([...STREET_GROUND.pavement.base], STREET_GROUND.pavement.joint, 2.1, 0.21, 0.105) }),
       gravel: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, G.gravel, 30, 2)) }),
-      kerb: std({ color: STREET_GROUND.kerb, roughness: 0.9 }),
+      // Vertex-tinted: white is the kerb tone, roadSurfaces KERB_SHADOW_TINT its shadow line (groundCell VERTEX_TINTED).
+      kerb: std({ color: STREET_GROUND.kerb, roughness: 0.9, vertexColors: true }),
       paint: std({ color: STREET_GROUND.paint, roughness: 0.6 }),
-      // Light steel, little metalness: with no environment map a metalness of 0.6 drew the rails darker than the asphalt (road look v2).
-      tram: std({ color: STREET_GROUND.rail, roughness: 0.4, metalness: 0.2 }),
+      // Dark grooves (issue #52): the tram rails, matte (the kerbs' shadow lines take the same tone, roadSurfaces kerbShadowTint).
+      tram: std({ color: STREET_GROUND.rail, roughness: 0.9 }),
       bollard: std({ color: STREET_GROUND.bollard, roughness: 0.7 }),
       park: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, G.park, 30, 3)), roughness: 1 }),
       wood: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, G.wood, 34, 3)), roughness: 1 }),
