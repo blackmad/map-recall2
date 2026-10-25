@@ -1,0 +1,826 @@
+{
+ "terraces": {
+  "0": {
+   "type": "we-or-three",
+   "variant": "hood",
+   "via": "photo"
+  },
+  "1": {
+   "type": "we-or-three",
+   "variant": "hood",
+   "via": "photo"
+  },
+  "2": {
+   "type": "we-or-three",
+   "variant": "hood",
+   "via": "photo"
+  },
+  "3": {
+   "type": "we-or-three",
+   "variant": "hood",
+   "via": "photo"
+  },
+  "4": {
+   "type": "we-or-three",
+   "variant": "hood",
+   "via": "photo"
+  },
+  "5": {
+   "type": "we-or-three",
+   "variant": "hood",
+   "via": "photo"
+  },
+  "6": {
+   "type": "we-or-three",
+   "variant": "hood",
+   "via": "photo"
+  }
+ },
+ "pands": {
+  "0363100012118902": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-6.28: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012151046": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-6.29: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012099728": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.0: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012109520": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.1: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012111693": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.2: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012143027": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.3: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012066002": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.4: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012147062": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.5: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012145878": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.6: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012064513": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.7: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012116183": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.8: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012080654": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.9: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012071976": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.10: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012147319": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.11: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012100268": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.12: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012115567": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.13: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012126229": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.14: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012146363": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.15: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012116697": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.16: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012143709": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.17: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012094024": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.18: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012144823": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.19: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012139036": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.20: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012076960": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.22: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012132853": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.23: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012106300": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.24: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012116934": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.25: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012120467": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.26: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012071998": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.27: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012117122": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.28: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012096772": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-7.29: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012070916": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.0: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012076901": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.1: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012105358": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.2: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012144273": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.3: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012146799": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.4: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012061721": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.5: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012116369": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.6: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012070442": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.7: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012087296": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.8: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012085282": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.9: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012120673": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.10: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012070934": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.11: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012119665": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.12: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012155280": {
+   "type": "we-or-three",
+   "variant": "portiek",
+   "note": "photo oz-8.13: Van Spilbergenstraat portiek openings"
+  },
+  "0363100012142303": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.10: three storeys under a tile roof"
+  },
+  "0363100012083795": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.11: three storeys under a tile roof"
+  },
+  "0363100012080273": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.12: three storeys under a tile roof"
+  },
+  "0363100012136765": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.13: three storeys under a tile roof"
+  },
+  "0363100012079253": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.14: three storeys under a tile roof"
+  },
+  "0363100012146464": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.15: three storeys under a tile roof"
+  },
+  "0363100012115617": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.16: three storeys under a tile roof"
+  },
+  "0363100012118990": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.17: three storeys under a tile roof"
+  },
+  "0363100012115355": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.18: three storeys under a tile roof"
+  },
+  "0363100012147211": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.19: three storeys under a tile roof"
+  },
+  "0363100012061668": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.20: three storeys under a tile roof"
+  },
+  "0363100012095321": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.21: three storeys under a tile roof"
+  },
+  "0363100012110396": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.22: three storeys under a tile roof"
+  },
+  "0363100012077950": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.24: three storeys under a tile roof"
+  },
+  "0363100012082245": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.26: three storeys under a tile roof"
+  },
+  "0363100012071164": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.27: three storeys under a tile roof"
+  },
+  "0363100012122257": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.28: three storeys under a tile roof"
+  },
+  "0363100012133693": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-4.29: three storeys under a tile roof"
+  },
+  "0363100012138761": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.0: three storeys under a tile roof"
+  },
+  "0363100012108041": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.1: three storeys under a tile roof"
+  },
+  "0363100012117582": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.2: three storeys under a tile roof"
+  },
+  "0363100012094359": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.3: three storeys under a tile roof"
+  },
+  "0363100012078575": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.4: three storeys under a tile roof"
+  },
+  "0363100012069902": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.5: three storeys under a tile roof"
+  },
+  "0363100012112029": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.6: three storeys under a tile roof"
+  },
+  "0363100012080999": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.7: three storeys under a tile roof"
+  },
+  "0363100012089571": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.8: three storeys under a tile roof"
+  },
+  "0363100012124533": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.9: three storeys under a tile roof"
+  },
+  "0363100012107247": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.10: three storeys under a tile roof"
+  },
+  "0363100012106755": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.11: three storeys under a tile roof"
+  },
+  "0363100012063256": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.12: three storeys under a tile roof"
+  },
+  "0363100012082504": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.13: three storeys under a tile roof"
+  },
+  "0363100012144670": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.14: three storeys under a tile roof"
+  },
+  "0363100012114377": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.15: three storeys under a tile roof"
+  },
+  "0363100012065952": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.16: three storeys under a tile roof"
+  },
+  "0363100012096143": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.17: three storeys under a tile roof"
+  },
+  "0363100012149354": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.18: three storeys under a tile roof"
+  },
+  "0363100012150364": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.19: three storeys under a tile roof"
+  },
+  "0363100012149848": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.20: three storeys under a tile roof"
+  },
+  "0363100012151485": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.21: three storeys under a tile roof"
+  },
+  "0363100012145121": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.22: three storeys under a tile roof"
+  },
+  "0363100012126761": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.23: three storeys under a tile roof"
+  },
+  "0363100012066960": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.25: three storeys under a tile roof"
+  },
+  "0363100012093978": {
+   "type": "we-or-roof",
+   "variant": "brown",
+   "note": "photo oz-5.26: three storeys under a tile roof"
+  },
+  "0363100012075459": {
+   "hold": "photo: balcony slab or canted bay on the ground or first storey",
+   "note": "photo oz-2.6"
+  },
+  "0363100012105934": {
+   "hold": "photo: balcony slab or canted bay on the ground or first storey",
+   "note": "photo oz-2.9"
+  },
+  "0363100012074028": {
+   "hold": "photo: balcony slab or canted bay on the ground or first storey",
+   "note": "photo oz-2.10"
+  },
+  "0363100012116231": {
+   "hold": "photo: balcony slab or canted bay on the ground or first storey",
+   "note": "photo oz-2.12"
+  },
+  "0363100012067713": {
+   "hold": "photo: balcony slab or canted bay on the ground or first storey",
+   "note": "photo oz-2.23"
+  },
+  "0363100012089351": {
+   "hold": "photo: balcony slab or canted bay on the ground or first storey",
+   "note": "photo oz-3.0"
+  },
+  "0363100012152146": {
+   "hold": "photo: balcony slab or canted bay on the ground or first storey",
+   "note": "photo oz-3.1"
+  },
+  "0363100012148939": {
+   "hold": "photo: balcony slab or canted bay on the ground or first storey",
+   "note": "photo oz-3.4"
+  },
+  "0363100012061455": {
+   "hold": "photo: balcony slab or canted bay on the ground or first storey",
+   "note": "photo oz-3.14"
+  },
+  "0363100012074039": {
+   "hold": "photo: balcony slab or canted bay on the ground or first storey",
+   "note": "photo oz-4.5"
+  },
+  "0363100012125722": {
+   "hold": "photo: balcony slab or canted bay on the ground or first storey",
+   "note": "photo oz-4.6"
+  },
+  "0363100012131070": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-0.0"
+  },
+  "0363100012061409": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-0.22"
+  },
+  "0363100012107649": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-0.23"
+  },
+  "0363100012114325": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-0.24"
+  },
+  "0363100012083893": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-1.21"
+  },
+  "0363100012092472": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-1.22"
+  },
+  "0363100012143166": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-1.23"
+  },
+  "0363100012110381": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-1.24"
+  },
+  "0363100012162458": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-1.25"
+  },
+  "0363100012094968": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-1.26"
+  },
+  "0363100012139165": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-1.27"
+  },
+  "0363100012104825": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-2.0"
+  },
+  "0363100012147006": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-2.1"
+  },
+  "0363100012098689": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-2.2"
+  },
+  "0363100012114064": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-2.3"
+  },
+  "0363100012085261": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-2.4"
+  },
+  "0363100012127555": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-2.5"
+  },
+  "0363100012133316": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-2.29"
+  },
+  "0363100012106448": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-3.21"
+  },
+  "0363100012063343": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-3.23"
+  },
+  "0363100012064113": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-3.24"
+  },
+  "0363100012118901": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-3.25"
+  },
+  "0363100012095707": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-3.26"
+  },
+  "0363100012061781": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-4.0"
+  },
+  "0363100012108098": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-4.1"
+  },
+  "0363100012138514": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-4.2"
+  },
+  "0363100012069177": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-4.3"
+  },
+  "0363100012084729": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-4.4"
+  },
+  "0363100012127109": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-4.7"
+  },
+  "0363100012117665": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-4.8"
+  },
+  "0363100012077323": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-4.9"
+  },
+  "0363100012088540": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-4.23"
+  },
+  "0363100012145423": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-4.25"
+  },
+  "0363100012133668": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-5.24"
+  },
+  "0363100012089693": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-5.27"
+  },
+  "0363100012140866": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-5.28"
+  },
+  "0363100012118451": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-5.29"
+  },
+  "0363100012146124": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.0"
+  },
+  "0363100012080558": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.1"
+  },
+  "0363100012116271": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.2"
+  },
+  "0363100012088754": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.3"
+  },
+  "0363100012150982": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.4"
+  },
+  "0363100012133393": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.5"
+  },
+  "0363100012092676": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.6"
+  },
+  "0363100012076163": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.7"
+  },
+  "0363100012079419": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.8"
+  },
+  "0363100012101308": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.9"
+  },
+  "0363100012133515": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.10"
+  },
+  "0363100012148900": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.11"
+  },
+  "0363100012126125": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.12"
+  },
+  "0363100012150754": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.13"
+  },
+  "0363100012067721": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.14"
+  },
+  "0363100012133791": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.15"
+  },
+  "0363100012140819": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.16"
+  },
+  "0363100012075214": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.17"
+  },
+  "0363100012135467": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.18"
+  },
+  "0363100012133183": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.19"
+  },
+  "0363100012069389": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.20"
+  },
+  "0363100012098641": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.21"
+  },
+  "0363100012107075": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.22"
+  },
+  "0363100012107790": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.23"
+  },
+  "0363100012105486": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.24"
+  },
+  "0363100012115010": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.25"
+  },
+  "0363100012062409": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.26"
+  },
+  "0363100012146844": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-6.27"
+  },
+  "0363100012140178": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-7.21"
+  },
+  "0363100012142577": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-8.14"
+  },
+  "0363100012134149": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-8.15"
+  },
+  "0363100012572073": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-8.16"
+  },
+  "0363100012118727": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-8.17"
+  },
+  "0363100012135786": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-8.18"
+  },
+  "0363100012069195": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-8.19"
+  },
+  "0363100012099351": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-8.20"
+  },
+  "0363100012080880": {
+   "hold": "photo: shop, school, corner, wide pand or another design",
+   "note": "photo oz-8.21"
+  }
+ }
+}

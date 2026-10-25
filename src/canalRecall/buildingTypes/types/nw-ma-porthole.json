@@ -1,0 +1,340 @@
+{
+ "id": "nw-ma-porthole",
+ "label": "Middelveldsche Akerpolder (1990, Geertruida van Lierstraat, Jacob Paffstraat, A.J. Koejemansstraat, Rudi Bloemgartensingel) two-storey terraced house in cream brick under a red-brown pantile roof swept low at the back: upstairs two round windows in square red frames beside a window over a white spandrel; red doors under a white band; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 81,
+  "bouwjaar": [
+   1990,
+   1990
+  ],
+  "lengthM": 5.4,
+  "widthM": 10.9,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.0,
+  6.5
+ ],
+ "ridgeRangeM": [
+  9.4,
+  10.2
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.2,
+   5.8
+  ],
+  "depth": [
+   10.3,
+   11.2
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.14,
+  "pitchDeg": 36,
+  "eavesFromPlanes": "low-back"
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "cream",
+ "variants": {
+  "cream": {
+   "label": "cream brick, red porthole frames and doors, white band and spandrel, red-brown pantiles",
+   "evidence": "terraces #25 #27 #35 #39 #42 #47 #52 #57 #67 #79 #80 #81 #84 #86 #87 #88 #99",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#e6d6b4",
+     "measured": true
+    },
+    "frame": "#ecebe6",
+    "glass": "#3b4249",
+    "door": "#a8322b",
+    "accent": "#c2bdb1",
+    "rail": "#3d3a38",
+    "dark": "#4a4744",
+    "column": "#ebebeb",
+    "joint": "#5a5048",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#93584a",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012124784-2022041408.jpg",
+     "pand": "0363100012124784",
+     "address": "Geertruida van Lierstraat",
+     "note": "sunlit 2022-04 and 2016-08: per 5.4 m house a red door with a transom under a white band, a wide two-light window; upstairs two square red frames with round glass over the door half and a two-light window over a white spandrel panel; cream brick; red-brown pantiles with rooflights"
+    },
+    {
+     "photo": "survey crop 0363100012111165.jpg",
+     "pand": "0363100012111165",
+     "address": "Jacob Paffstraat",
+     "note": "2022-04: same"
+    },
+    {
+     "photo": "survey crop 0363100012124076.jpg",
+     "pand": "0363100012124076",
+     "address": "A.J. Koejemansstraat",
+     "note": "2021-04: same, rows of four"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.85,
+       "w": 0.9,
+       "h": 2.1,
+       "note": "red door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.85,
+       "w": 0.9,
+       "h": 0.3,
+       "sill": 2.15,
+       "lights": 1,
+       "frameM": 0.05
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.65,
+       "w": 0.45,
+       "h": 2.0,
+       "sill": 0.4,
+       "lights": 1,
+       "frameM": 0.05,
+       "note": "sidelight"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.7,
+       "h": 1.35,
+       "sill": 0.85,
+       "lights": 2,
+       "frameM": 0.07
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "span": true,
+       "h": 0.22,
+       "sill": 2.55,
+       "colour": "column",
+       "depth": 0.05,
+       "note": "white band over the ground storey"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.55,
+       "h": 0.55,
+       "sill": 1.1,
+       "lights": 1,
+       "frameM": 0.11,
+       "round": true,
+       "colour": "door",
+       "note": "porthole: round glass in a square red frame"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.9,
+       "w": 0.55,
+       "h": 0.55,
+       "sill": 1.1,
+       "lights": 1,
+       "frameM": 0.11,
+       "round": true,
+       "colour": "door"
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.9,
+       "w": 1.35,
+       "h": 0.75,
+       "sill": -0.02,
+       "colour": "column",
+       "depth": 0.03,
+       "note": "white spandrel panel under the upper window"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.9,
+       "w": 1.25,
+       "h": 1.05,
+       "sill": 0.8,
+       "lights": 2,
+       "frameM": 0.07
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012124784.jpg",
+     "pand": "0363100012124784",
+     "address": "Geertruida van Lierstraat",
+     "note": "garden side not photographed from the street: garden door, living-room window and bedroom windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.1,
+       "w": 1.8,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.1,
+       "sill": 0.85,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "right",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.1,
+       "sill": 0.85,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012124784.jpg",
+     "pand": "0363100012124784",
+     "address": "Geertruida van Lierstraat",
+     "note": "end walls seen edge-on: plain brick; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012124784.jpg",
+     "pand": "0363100012124784",
+     "address": "Geertruida van Lierstraat",
+     "note": "end walls seen edge-on: plain brick; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick: the sunlit Lierstraat crops clip (#fdfded); overcast crops read cream-yellow; drawn #e6d6b4.",
+  "Kit (#80): round window (porthole) inside a square frame.",
+  "3DBAG dak_min ~3.1 m: eavesFromPlanes low-back. Rooflights not modelled."
+ ]
+}

@@ -1,0 +1,84 @@
+[
+ {
+  "area": "nw-ma-01",
+  "anchor": {
+   "lng": 4.78357,
+   "lat": 52.35101
+  },
+  "pands": 70,
+  "missing": 0,
+  "per": {
+   "nw-ma-green/cahn/photo": 16,
+   "nw-ma-green/paff/photo": 36,
+   "nw-ma-yellow-door/beige/photo": 18
+  }
+ },
+ {
+  "area": "nw-ma-02",
+  "anchor": {
+   "lng": 4.78554,
+   "lat": 52.35127
+  },
+  "pands": 64,
+  "missing": 0,
+  "per": {
+   "nw-ma-green/cahn/photo": 9,
+   "nw-ma-green/paff/photo": 47,
+   "nw-ma-porthole/cream/photo": 8
+  }
+ },
+ {
+  "area": "nw-ma-03",
+  "anchor": {
+   "lng": 4.77696,
+   "lat": 52.35462
+  },
+  "pands": 220,
+  "missing": 0,
+  "per": {
+   "nw-ma-yellow-door/beige/photo": 34,
+   "nw-ma-red-door/red/photo": 126,
+   "nw-ma-clad-top/buff/photo": 60
+  }
+ },
+ {
+  "area": "nw-ma-04",
+  "anchor": {
+   "lng": 4.78029,
+   "lat": 52.35369
+  },
+  "pands": 227,
+  "missing": 0,
+  "per": {
+   "nw-ma-yellow-door/beige/photo": 93,
+   "nw-ma-green/paff/photo": 9,
+   "nw-ma-porthole/cream/photo": 28,
+   "nw-ma-red-door/red/photo": 22,
+   "nw-ma-clad-top/buff/photo": 75
+  }
+ },
+ {
+  "area": "nw-ma-05",
+  "anchor": {
+   "lng": 4.7862,
+   "lat": 52.35233
+  },
+  "pands": 29,
+  "missing": 0,
+  "per": {
+   "nw-ma-porthole/cream/photo": 29
+  }
+ },
+ {
+  "area": "nw-ma-06",
+  "anchor": {
+   "lng": 4.77766,
+   "lat": 52.35619
+  },
+  "pands": 13,
+  "missing": 0,
+  "per": {
+   "nw-ma-clad-top/buff/photo": 13
+  }
+ }
+]

@@ -1,0 +1,363 @@
+{
+ "id": "we-or-wide",
+ "label": "Orteliusbuurt-Noord (1925-28, Orteliusstraat) four-storey portiek block in brown-purple brick under a flat roof: per 6 m pand a wide four-light window and a narrow window on every upper storey, a wide ground window under a thin white canopy, dark green door pairs; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 180,
+  "bouwjaar": [
+   1925,
+   1928
+  ],
+  "lengthM": 5.97,
+  "widthM": 11.0,
+  "bouwlagen": 4,
+  "roof": "flat",
+  "dwellingsMedian": 8
+ },
+ "storeys": 4,
+ "eavesRangeM": [
+  12.3,
+  13.8
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.8,
+   6.3
+  ],
+  "depth": [
+   10.5,
+   14.2
+  ]
+ },
+ "sizeClassesM": {
+  "depth": [
+   12.8
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.05,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.2,
+  "pitchDeg": 0,
+  "eavesPinM": 12.8
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "brown",
+ "variants": {
+  "brown": {
+   "label": "brown-purple brick, white frames, dark green doors, red tile parapet coping",
+   "evidence": "Orteliusstraat (Orteliusbuurt-Noord) both sides, the long rows of the two r0 terraces",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#8a6f61",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3b4249",
+    "door": "#2a3631",
+    "accent": "#c9c2b4",
+    "rail": "#3d3a38",
+    "dark": "#2f2b29",
+    "column": "#e8e6df",
+    "joint": "#9a5a46",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#6e6c6a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012130859-2022050307.jpg",
+     "pand": "0363100012130859",
+     "address": "Orteliusstraat",
+     "note": "sunlit 2022-05: per 6 m pand a wide four-light window with top lights (~2.7 m) and a narrow one (~0.95 m) on each upper storey; on the ground a wide window under a thin white canopy and a pair of dark green doors; mirrored pairs put the wide windows together at the downpipe and the door pairs together"
+    },
+    {
+     "photo": "survey crop 0363100012075720.jpg",
+     "pand": "0363100012075720",
+     "address": "Orteliusstraat",
+     "note": "2019 overcast: same; red tile coping on the parapet, door groups of four leaves with a white post"
+    },
+    {
+     "photo": "survey crop 0363100012075386.jpg",
+     "pand": "0363100012075386",
+     "address": "Orteliusstraat",
+     "note": "same rows on the west side"
+    },
+    {
+     "photo": "survey crop 0363100012070315.jpg",
+     "pand": "0363100012070315",
+     "address": "Orteliusstraat",
+     "note": "same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 2,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.75,
+       "w": 2.7,
+       "h": 1.65,
+       "sill": 0.85,
+       "lights": 4,
+       "frameM": 0.08,
+       "transomM": 0.42,
+       "note": "wide window with top lights, towards the pair's downpipe"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.05,
+       "w": 0.95,
+       "h": 1.6,
+       "sill": 0.9,
+       "lights": 1,
+       "frameM": 0.08,
+       "transomM": 0.42
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.75,
+       "w": 2.9,
+       "h": 1.75,
+       "sill": 0.75,
+       "lights": 4,
+       "frameM": 0.08,
+       "transomM": 0.5
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.75,
+       "w": 3.5,
+       "h": 0.12,
+       "sill": 2.75,
+       "depth": 0.45,
+       "canopy": "flat",
+       "colour": "column",
+       "note": "thin white canopy over the wide ground windows"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "right",
+       "u": 0.62,
+       "w": 0.8,
+       "h": 2.3
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.48,
+       "w": 0.8,
+       "h": 2.3
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.05,
+       "w": 1.75,
+       "h": 0.32,
+       "sill": 2.42,
+       "lights": 2,
+       "frameM": 0.05,
+       "note": "top lights over the door pair"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "right",
+       "u": 0.08,
+       "w": 0.16,
+       "h": 2.8,
+       "sill": 0,
+       "colour": "column",
+       "depth": 0.07,
+       "note": "white post between the door pairs of a mirrored pair"
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 4,
+     "below": 0.22,
+     "above": 0,
+     "palette": "joint"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012130859.jpg",
+     "pand": "0363100012130859",
+     "address": "Orteliusstraat",
+     "note": "courtyard side not photographed from the street: three windows per storey and a garden door inferred (1920s portiek blocks)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.85,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.2,
+       "w": 1.6,
+       "h": 1.5,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.9,
+       "w": 1.0,
+       "h": 1.5,
+       "sill": 0.8,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.0,
+       "w": 1.1,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.8,
+       "w": 1.1,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012130859.jpg",
+     "pand": "0363100012130859",
+     "address": "Orteliusstraat",
+     "note": "block ends and party walls: plain brick (corner pands are held)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012130859.jpg",
+     "pand": "0363100012130859",
+     "address": "Orteliusstraat",
+     "note": "block ends and party walls: plain brick (corner pands are held)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Wall top pinned (roof.eavesPinM) to the parapet line (12.8 m, median dak_min of the Orteliusstraat rows): 3DBAG b3_h_dak_min reads it on most pands, while the median roof height (b3_h_dak_50p, used for flat roofs) reads the rooftop additions (dakopbouwen) on many and would make them five storeys; the additions are not modelled.",
+  "Brick: sunlit 2022-05 Orteliusstraat crop, upper wall #967a6b and the shaded lower wall #7a6356; drawn #8a6f61. Doors #24272b read as dark green-black.",
+  "Kit gaps: the red tile parapet coping is drawn as a band; the rooftop box dormers and the downpipes are not modelled.",
+  "Held: the balcony rows (French windows behind a railing slab), the 10.2 m deep balcony variant and Orteliuskade's 10.8 m pands.",
+  "Two depth classes (11-12 m and the 14 m pands, split at 12.8 m) so no unit is stretched across the gap."
+ ]
+}

@@ -1,0 +1,308 @@
+{
+ "id": "nw-ma-yellow-door",
+ "label": "Middelveldsche Akerpolder (1988-89, Letelierstraat, Karl Gr\u00f6gersingel, Jarasingel, Anielewiczsingel, Trijn Hullemanlaan) two-storey terraced house in pale beige brick under a dark grey tile roof swept low at the back: yellow doors with sidelights under white canopies, white frames, two upper windows; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 145,
+  "bouwjaar": [
+   1988,
+   1989
+  ],
+  "lengthM": 4.8,
+  "widthM": 9.6,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.0,
+  6.5
+ ],
+ "ridgeRangeM": [
+  8.8,
+  9.7
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.4,
+   5.6
+  ],
+  "depth": [
+   9.3,
+   10.4
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.14,
+  "pitchDeg": 38,
+  "eavesFromPlanes": "low-back"
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "beige",
+ "variants": {
+  "beige": {
+   "label": "pale beige brick, white frames, yellow doors, dark grey tiles",
+   "evidence": "terraces #26 #33 #37 #46 #55 #56 #60 #65 #71 #78 #82 #85 #89 #98 #102 #106",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#e8ccb4",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3b4249",
+    "door": "#d8b13c",
+    "accent": "#c2bdb1",
+    "rail": "#3d3a38",
+    "dark": "#4a4744",
+    "column": "#ebebeb",
+    "joint": "#5a5048",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#5d5b57",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012072330-2016080108.jpg",
+     "pand": "0363100012072330",
+     "address": "Letelierstraat",
+     "note": "sunlit 2016-08 and 2025-09: per 4.8 m house a yellow door with a narrow sidelight, a 1.45 m two-light window; two two-light upper windows (1.2 m); white frames; pale beige brick; dark grey tile roof"
+    },
+    {
+     "photo": "survey crop 0363100012146236.jpg",
+     "pand": "0363100012146236",
+     "address": "Ernst Cahnsingel",
+     "note": "sunlit 2016-06: same, white canopies over the doors"
+    },
+    {
+     "photo": "survey crop 0363100012123971.jpg",
+     "pand": "0363100012123971",
+     "address": "Trijn Hullemanlaan",
+     "note": "2024-12: same"
+    },
+    {
+     "photo": "survey crop 0363100012076444.jpg",
+     "pand": "0363100012076444",
+     "address": "Letelierstraat",
+     "note": "2025-09 sunlit: same; some houses painted pink"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.65,
+       "w": 0.9,
+       "h": 2.15
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.32,
+       "w": 0.32,
+       "h": 2.0,
+       "sill": 0.15,
+       "lights": 1,
+       "frameM": 0.05,
+       "note": "sidelight beside the door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.75,
+       "w": 1.45,
+       "h": 1.5,
+       "sill": 0.55,
+       "lights": 2,
+       "frameM": 0.07
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.95,
+       "w": 1.6,
+       "h": 0.1,
+       "sill": 2.3,
+       "depth": 0.3,
+       "canopy": "flat",
+       "colour": "column",
+       "note": "white flat door canopy"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.1,
+       "w": 1.2,
+       "h": 1.3,
+       "sill": 0.65,
+       "lights": 2,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.2,
+       "w": 1.2,
+       "h": 1.3,
+       "sill": 0.65,
+       "lights": 2,
+       "frameM": 0.07
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012072330.jpg",
+     "pand": "0363100012072330",
+     "address": "Letelierstraat",
+     "note": "garden side not photographed from the street: garden door, living-room window and bedroom windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.1,
+       "w": 1.8,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.1,
+       "sill": 0.85,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "right",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.1,
+       "sill": 0.85,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012072330.jpg",
+     "pand": "0363100012072330",
+     "address": "Letelierstraat",
+     "note": "end walls seen edge-on: plain brick; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012072330.jpg",
+     "pand": "0363100012072330",
+     "address": "Letelierstraat",
+     "note": "end walls seen edge-on: plain brick; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick: the sunlit Letelierstraat and Cahnsingel crops read pale beige-cream (clipped); overcast reads #7e7a6e; drawn #d6c3ad. Roof #5d5b57.",
+  "3DBAG dak_min ~3.1 m (catslide at the back): eavesFromPlanes low-back. Some houses are painted pink or have roller shutters: not modelled."
+ ]
+}

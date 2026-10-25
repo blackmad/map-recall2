@@ -1,0 +1,26 @@
+[
+ {
+  "area": "we-jf-01",
+  "anchor": {
+   "lng": 4.85563,
+   "lat": 52.37181
+  },
+  "pands": 36,
+  "missing": 0,
+  "per": {
+   "we-or-three/franklin/photo": 36
+  }
+ },
+ {
+  "area": "we-jf-02",
+  "anchor": {
+   "lng": 4.85416,
+   "lat": 52.37236
+  },
+  "pands": 230,
+  "missing": 0,
+  "per": {
+   "we-or-three/franklin/photo": 230
+  }
+ }
+]

@@ -83,6 +83,14 @@ const VIEWS: Record<string, { center: [number, number]; zoom: number; pitch: num
   'r6-grunder-koningshoef': { center: [4.978952, 52.322925], zoom: 18.4, pitch: 62, bearing: 331 },
   'r6-kantershof': { center: [4.990268, 52.316338], zoom: 18.4, pitch: 62, bearing: 248 },
   'r6-nieuw-sloten-noordoost': { center: [4.816816, 52.348787], zoom: 18.4, pitch: 62, bearing: 269 },
+  // 2026-10-25 round 7 (#80): Middelveldsche Akerpolder 1980s rows, Orteliusbuurt wide-window and three-window portiek blocks, the Orteliusstraat tile-roof rows, Vespuccistraat portals, Mercatorstraat, John Franklinbuurt.
+  'r7-middelveldsche-akerpolder': { center: [4.775565, 52.354178], zoom: 18.4, pitch: 62, bearing: 303 },
+  'r7-orteliusbuurt-noord': { center: [4.848441, 52.371129], zoom: 18.4, pitch: 62, bearing: 252 },
+  'r7-orteliusbuurt-zuid': { center: [4.852186, 52.366082], zoom: 18.4, pitch: 62, bearing: 74 },
+  'r7-orteliusstraat-roof': { center: [4.850812, 52.366107], zoom: 18.4, pitch: 62, bearing: 254 },
+  'r7-jan-maijenbuurt': { center: [4.852796, 52.372007], zoom: 18.4, pitch: 62, bearing: 254 },
+  'r7-mercatorstraat': { center: [4.850509, 52.371280], zoom: 18.4, pitch: 62, bearing: 254 },
+  'r7-john-franklinbuurt': { center: [4.852935, 52.372877], zoom: 18.4, pitch: 62, bearing: 254 },
 };
 const ONLY = process.env.BT_VIEWS?.split(',');
 const CAM = ['jumpTo', 'easeTo', 'flyTo', 'setCenter', 'setZoom', 'setBearing', 'setPitch'];

@@ -1,0 +1,359 @@
+{
+ "id": "nw-ma-clad-top",
+ "label": "Middelveldsche Akerpolder (1988, Bonhoeffersingel, Romerostraat, Marianellastraat, Sandinostraat, Letelierstraat) three-storey terraced house: two storeys of buff brick under a tiled ledge, a cream sheet-clad top storey to a flat top, red frames, white doors under a concrete hood; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 148,
+  "bouwjaar": [
+   1988,
+   1989
+  ],
+  "lengthM": 5.4,
+  "widthM": 9.9,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 3,
+ "eavesRangeM": [
+  7.5,
+  9.6
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.7,
+   6.1
+  ],
+  "depth": [
+   9.2,
+   11.6
+  ]
+ },
+ "sizeClassesM": {
+  "depth": [
+   10.6
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.0,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.2,
+  "pitchDeg": 0,
+  "eavesPinM": 8.9
+ },
+ "ground": {
+  "mode": "solid",
+  "plinthStoreys": 2
+ },
+ "defaultVariant": "buff",
+ "variants": {
+  "buff": {
+   "label": "buff brick, cream sheet-clad top storey, red frames, white doors",
+   "evidence": "terraces #129 #130 #140 #143 #145 #147 #148 #153 #154 #155 #157 #159 #160 #162 #163 #164 #165 #167 #168 #171 #174",
+   "palette": {
+    "wall": {
+     "slot": "accent",
+     "tint": "#eee0c0",
+     "measured": true
+    },
+    "frame": "#a3282c",
+    "glass": "#3b4249",
+    "door": "#f0eee6",
+    "accent": "#bdb7a8",
+    "rail": "#3d3a38",
+    "dark": "#4d4a46",
+    "column": "#ebebeb",
+    "joint": "#5a5048",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#4f4d4a",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#d9c29d",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012071960-2021041908.jpg",
+     "pand": "0363100012071960",
+     "address": "Marianellastraat",
+     "note": "sunlit 2021-04 and 2022-04: per 5.4 m house two storeys of buff brick under a tiled ledge at ~5.7 m, then a near-vertical cream sheet-clad top storey to a flat top at ~8.9 m; red frames; ground: a two-light window and a white door under a concrete hood; first floor a two-light window and a small square one; top storey two windows"
+    },
+    {
+     "photo": "survey crop 0363100012063341.jpg",
+     "pand": "0363100012063341",
+     "address": "Sandinostraat",
+     "note": "2024-12 overcast: same, vertical joints in the cladding every ~0.9 m"
+    },
+    {
+     "photo": "survey crop 0363100012121620.jpg",
+     "pand": "0363100012121620",
+     "address": "Romerostraat",
+     "note": "2024-12: same"
+    },
+    {
+     "photo": "survey crop 0363100012089145.jpg",
+     "pand": "0363100012089145",
+     "address": "Romerostraat",
+     "note": "2024-12: same, rows of four"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.05,
+       "w": 1.3,
+       "h": 1.2,
+       "sill": 0.85,
+       "lights": 2,
+       "frameM": 0.07
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.4,
+       "w": 0.9,
+       "h": 2.15,
+       "note": "white door"
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.75,
+       "w": 2.9,
+       "h": 0.12,
+       "sill": 2.4,
+       "depth": 0.4,
+       "canopy": "flat",
+       "colour": "accent",
+       "note": "grey concrete hood over the window and door"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.2,
+       "w": 1.15,
+       "h": 1.05,
+       "sill": 0.85,
+       "lights": 2,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.85,
+       "w": 0.55,
+       "h": 0.55,
+       "sill": 1.25,
+       "lights": 1,
+       "frameM": 0.07
+      },
+      {
+       "kind": "canopy",
+       "levels": [
+        2
+       ],
+       "span": true,
+       "h": 0.12,
+       "sill": -0.12,
+       "depth": 0.3,
+       "canopy": "flat",
+       "colour": "dark",
+       "note": "tiled ledge between the brick and the cladding"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 1.1,
+       "w": 0.95,
+       "h": 0.95,
+       "sill": 0.6,
+       "lights": 2,
+       "frameM": 0.07
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 3.3,
+       "w": 0.6,
+       "h": 0.95,
+       "sill": 0.6,
+       "lights": 1,
+       "frameM": 0.07
+      }
+     ]
+    }
+   ],
+   "boards": [
+    {
+     "levels": [
+      2
+     ],
+     "pitchM": 0.9,
+     "widthM": 0.03,
+     "depthM": 0.03,
+     "palette": "accent"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012071960.jpg",
+     "pand": "0363100012071960",
+     "address": "Marianellastraat",
+     "note": "garden side not photographed from the street: garden door, living-room window and bedroom windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.1,
+       "w": 1.8,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.1,
+       "sill": 0.85,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "right",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.1,
+       "sill": 0.85,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012071960.jpg",
+     "pand": "0363100012071960",
+     "address": "Marianellastraat",
+     "note": "end walls seen edge-on: plain brick; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012071960.jpg",
+     "pand": "0363100012071960",
+     "address": "Marianellastraat",
+     "note": "end walls seen edge-on: plain brick; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Drawn as a flat-roofed three-storey house: the cladding is a near-vertical mansard front that 3DBAG reads as a steep slope to a ridge at ~9 m; eaves pinned at 8.9 m (eavesPinM) from the photos.",
+  "Kit (#80): ground.plinthStoreys 2: the brick (palette plinth) covers the two lower storeys, the wall palette (cream cladding #eee0c0 on the accent slot) the top storey; vertical cladding joints as thin boards; the tiled ledge at the storey line is a spanning canopy in the dark palette.",
+  "Brick: sunlit 2021-04 Marianellastraat crop reads #f8e1b9 (clipped); drawn #d9c29d."
+ ]
+}

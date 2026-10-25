@@ -1,0 +1,50 @@
+[
+ {
+  "area": "we-oz-01",
+  "anchor": {
+   "lng": 4.85047,
+   "lat": 52.36369
+  },
+  "pands": 2,
+  "missing": 0,
+  "per": {
+   "we-or-three/hood/photo": 2
+  }
+ },
+ {
+  "area": "we-oz-02",
+  "anchor": {
+   "lng": 4.85188,
+   "lat": 52.3639
+  },
+  "pands": 14,
+  "missing": 0,
+  "per": {
+   "we-or-three/hood/photo": 14
+  }
+ },
+ {
+  "area": "we-oz-03",
+  "anchor": {
+   "lng": 4.85059,
+   "lat": 52.36595
+  },
+  "pands": 57,
+  "missing": 0,
+  "per": {
+   "we-or-three/hood/photo": 57
+  }
+ },
+ {
+  "area": "we-oz-04",
+  "anchor": {
+   "lng": 4.85205,
+   "lat": 52.36569
+  },
+  "pands": 189,
+  "missing": 0,
+  "per": {
+   "we-or-three/hood/photo": 189
+  }
+ }
+]

@@ -1,0 +1,396 @@
+{
+ "id": "we-jm-vespucci",
+ "label": "Jan Maijenbuurt (1925-27, Vespuccistraat) Amsterdam School four-storey portiek block in orange-red brick under a flat roof: a parabolic arched portal on every second party line under a brick lisene with a ladder relief, one wide five-light window per upper storey, dark red header bands; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 70,
+  "bouwjaar": [
+   1925,
+   1927
+  ],
+  "lengthM": 5.98,
+  "widthM": 11.49,
+  "bouwlagen": 4,
+  "roof": "flat",
+  "dwellingsMedian": 8
+ },
+ "storeys": 4,
+ "eavesRangeM": [
+  12.0,
+  13.0
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.85,
+   6.15
+  ],
+  "depth": [
+   9.8,
+   11.7
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.05,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.2,
+  "pitchDeg": 0,
+  "eavesPinM": 12.65
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "red",
+ "variants": {
+  "red": {
+   "label": "orange-red brick, dark red header bands and lisenes, white frames, dark doors in the portal",
+   "evidence": "Vespuccistraat and the arched rows of Jan Maijenbuurt",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#a5745e",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3b4249",
+    "door": "#22302a",
+    "accent": "#c9c2b4",
+    "rail": "#3d3a38",
+    "dark": "#262220",
+    "column": "#ebebeb",
+    "joint": "#8a4f40",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#6e6c6a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012138169-2020051107.jpg",
+     "pand": "0363100012138169",
+     "address": "Vespuccistraat",
+     "note": "sunlit 2020-05: per pair of 6 m pands a parabolic arched portal on the party line under a brick lisene with a ladder relief; per pand one wide five-light window with top lights per upper storey and a ground window group; a dark red header band below the top storey"
+    },
+    {
+     "photo": "survey crop 0363100012133752.jpg",
+     "pand": "0363100012133752",
+     "address": "Vespuccistraat",
+     "note": "2019: same; dark doors in the portal recess"
+    },
+    {
+     "photo": "survey crop 0363100012092050.jpg",
+     "pand": "0363100012092050",
+     "address": "Jan Maijenbuurt",
+     "note": "same portals on the 10 m deep rows"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0,
+       "w": 2.5,
+       "h": 3.05,
+       "sill": 0,
+       "colour": "joint",
+       "depth": 0.04,
+       "archM": 1.1,
+       "note": "arch ring of the portal (half in each pand of the pair)"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0,
+       "w": 2.0,
+       "h": 2.8,
+       "sill": 0,
+       "colour": "dark",
+       "depth": 0.06,
+       "archM": 0.95,
+       "note": "portal recess"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.5,
+       "w": 0.7,
+       "h": 2.2,
+       "sill": 0,
+       "colour": "door",
+       "depth": 0.075,
+       "note": "door in the recess"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.55,
+       "w": 3.2,
+       "h": 1.45,
+       "sill": 0.8,
+       "lights": 4,
+       "frameM": 0.08,
+       "transomM": 0.35
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.35,
+       "w": 2.9,
+       "h": 1.2,
+       "sill": 1.0,
+       "lights": 5,
+       "frameM": 0.08,
+       "transomM": 0.32
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "ref": "left",
+       "u": 0.3,
+       "w": 0.6,
+       "h": 0.14,
+       "sill": 0.3,
+       "colour": "joint",
+       "depth": 0.1,
+       "note": "ladder relief of the lisene"
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "ref": "left",
+       "u": 0.3,
+       "w": 0.6,
+       "h": 0.14,
+       "sill": 0.8,
+       "colour": "joint",
+       "depth": 0.1
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "ref": "left",
+       "u": 0.3,
+       "w": 0.6,
+       "h": 0.14,
+       "sill": 1.3,
+       "colour": "joint",
+       "depth": 0.1
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "ref": "left",
+       "u": 0.3,
+       "w": 0.6,
+       "h": 0.14,
+       "sill": 1.8,
+       "colour": "joint",
+       "depth": 0.1
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "ref": "left",
+       "u": 0.3,
+       "w": 0.6,
+       "h": 0.14,
+       "sill": 2.3,
+       "colour": "joint",
+       "depth": 0.1
+      },
+      {
+       "kind": "panel",
+       "levels": "upper",
+       "ref": "left",
+       "u": 0.3,
+       "w": 0.6,
+       "h": 0.14,
+       "sill": 2.8,
+       "colour": "joint",
+       "depth": 0.1
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 3,
+     "below": 0.12,
+     "above": 0.28,
+     "palette": "joint"
+    },
+    {
+     "floor": 4,
+     "below": 0.3,
+     "above": 0,
+     "palette": "joint"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012138169.jpg",
+     "pand": "0363100012138169",
+     "address": "Vespuccistraat",
+     "note": "courtyard side not photographed from the street: three windows per storey and a garden door inferred (1920s portiek blocks)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.85,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.2,
+       "w": 1.6,
+       "h": 1.5,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.9,
+       "w": 1.0,
+       "h": 1.5,
+       "sill": 0.8,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.0,
+       "w": 1.1,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.8,
+       "w": 1.1,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012138169.jpg",
+     "pand": "0363100012138169",
+     "address": "Vespuccistraat",
+     "note": "block ends and party walls: plain brick (corner pands are held)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012138169.jpg",
+     "pand": "0363100012138169",
+     "address": "Vespuccistraat",
+     "note": "block ends and party walls: plain brick (corner pands are held)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Wall top pinned (roof.eavesPinM) to the parapet line (12.65 m, median dak_min of Vespuccistraat): 3DBAG b3_h_dak_min reads it on most pands, while the median roof height (b3_h_dak_50p, used for flat roofs) reads the rooftop additions (dakopbouwen) on many and would make them five storeys; the additions are not modelled.",
+  "Brick: sunlit 2020-05 crop #a5745e (lower wall), header band #976a61 lit: drawn #8a4f40.",
+  "Kit (#80): arched panels (archM) clipped to the bay, so a portal on the party line draws half in each pand of the pair.",
+  "Kit gaps: the small stepped parapet peaks over the lisenes, the brick corbels over the ground windows and the portal's two-door interior are not modelled."
+ ]
+}

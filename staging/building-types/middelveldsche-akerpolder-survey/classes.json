@@ -1,0 +1,395 @@
+{
+ "terraces": {
+  "0": {
+   "type": "nw-ma-green",
+   "variant": "cahn",
+   "via": "photo"
+  },
+  "2": {
+   "type": "nw-ma-green",
+   "variant": "cahn",
+   "via": "photo"
+  },
+  "5": {
+   "type": "nw-ma-green",
+   "variant": "cahn",
+   "via": "photo"
+  },
+  "3": {
+   "type": "nw-ma-green",
+   "variant": "paff",
+   "via": "photo"
+  },
+  "4": {
+   "type": "nw-ma-green",
+   "variant": "paff",
+   "via": "photo"
+  },
+  "7": {
+   "type": "nw-ma-green",
+   "variant": "paff",
+   "via": "photo"
+  },
+  "8": {
+   "type": "nw-ma-green",
+   "variant": "paff",
+   "via": "photo"
+  },
+  "10": {
+   "type": "nw-ma-green",
+   "variant": "paff",
+   "via": "photo"
+  },
+  "13": {
+   "type": "nw-ma-green",
+   "variant": "paff",
+   "via": "photo"
+  },
+  "14": {
+   "type": "nw-ma-green",
+   "variant": "paff",
+   "via": "photo"
+  },
+  "16": {
+   "type": "nw-ma-green",
+   "variant": "paff",
+   "via": "photo"
+  },
+  "24": {
+   "type": "nw-ma-green",
+   "variant": "paff",
+   "via": "photo"
+  },
+  "41": {
+   "type": "nw-ma-green",
+   "variant": "paff",
+   "via": "photo"
+  },
+  "111": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "113": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "116": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "117": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "119": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "125": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "128": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "132": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "135": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "136": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "141": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "142": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "149": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "151": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "152": {
+   "type": "nw-ma-red-door",
+   "variant": "red",
+   "via": "photo"
+  },
+  "129": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "130": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "140": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "143": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "145": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "147": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "148": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "153": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "154": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "155": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "157": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "159": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "160": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "162": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "163": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "164": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "165": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "167": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "168": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "171": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "174": {
+   "type": "nw-ma-clad-top",
+   "variant": "buff",
+   "via": "photo"
+  },
+  "25": {
+   "type": "nw-ma-porthole",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "27": {
+   "type": "nw-ma-porthole",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "35": {
+   "type": "nw-ma-porthole",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "39": {
+   "type": "nw-ma-porthole",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "42": {
+   "type": "nw-ma-porthole",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "47": {
+   "type": "nw-ma-porthole",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "52": {
+   "type": "nw-ma-porthole",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "57": {
+   "type": "nw-ma-porthole",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "67": {
+   "type": "nw-ma-porthole",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "80": {
+   "type": "nw-ma-porthole",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "81": {
+   "type": "nw-ma-porthole",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "87": {
+   "type": "nw-ma-porthole",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "99": {
+   "type": "nw-ma-porthole",
+   "variant": "cream",
+   "via": "photo"
+  },
+  "26": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "33": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "37": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "46": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "55": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "56": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "60": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "65": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "71": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "78": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "82": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "85": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "89": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "98": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "102": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  },
+  "106": {
+   "type": "nw-ma-yellow-door",
+   "variant": "beige",
+   "via": "photo"
+  }
+ },
+ "pands": {}
+}

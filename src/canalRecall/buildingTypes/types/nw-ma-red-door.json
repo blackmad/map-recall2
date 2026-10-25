@@ -1,0 +1,327 @@
+{
+ "id": "nw-ma-red-door",
+ "label": "Middelveldsche Akerpolder (1988, M. Gandhilaan, Sandinostraat, Marianellastraat, Baldwinstraat) two-storey terraced house in salmon-red brick under a dark grey tile roof swept low at the back: red doors with transom lights under concrete hoods, white frames with yellow sashes, brick chimney stacks; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 148,
+  "bouwjaar": [
+   1988,
+   1988
+  ],
+  "lengthM": 4.8,
+  "widthM": 10.2,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.0,
+  6.5
+ ],
+ "ridgeRangeM": [
+  9.0,
+  9.8
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.1,
+   5.3
+  ],
+  "depth": [
+   9.9,
+   10.6
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.14,
+  "pitchDeg": 36,
+  "eavesFromPlanes": "low-back",
+  "chimneys": [
+   {
+    "ref": "right",
+    "u": 0.4,
+    "w": 0.8,
+    "d": 0.6,
+    "h": 1.1,
+    "capM": 0.1,
+    "cap": "accent",
+    "note": "brick stack on the ridge (one per pair)"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "red",
+ "variants": {
+  "red": {
+   "label": "salmon-red brick, white frames with yellow sashes, red doors, dark grey tiles",
+   "evidence": "terraces #111 #113 #116 #117 #119 #125 #128 #132 #135 #136 #141 #142 #149 #151 #152 (Gandhilaan, Sandinostraat, Mariannellastraat, Baldwinstraat, Romerostraat)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#bf8775",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3b4249",
+    "door": "#9c1f2c",
+    "accent": "#c2bdb1",
+    "rail": "#e2c135",
+    "dark": "#4a4744",
+    "column": "#ebebeb",
+    "joint": "#5a5048",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#5b5853",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012102664-2016080108.jpg",
+     "pand": "0363100012102664",
+     "address": "Sandinostraat",
+     "note": "sunlit 2016-08: per 4.8 m house a 1.05 m two-light window, a red door with a transom light under a concrete hood, a small toilet window; one wide two-light upper window; white frames with yellow sashes; mirrored pairs"
+    },
+    {
+     "photo": "survey crop 0363100012125407.jpg",
+     "pand": "0363100012125407",
+     "address": "M. Gandhilaan",
+     "note": "2022-04 sunlit: same; doors side by side where the pair mirrors the other way; dark grey tile roof, brick chimney stacks"
+    },
+    {
+     "photo": "survey crop 0363100012077673.jpg",
+     "pand": "0363100012077673",
+     "address": "M. Gandhilaan",
+     "note": "2024-12: same"
+    },
+    {
+     "photo": "survey crop 0363100012090715.jpg",
+     "pand": "0363100012090715",
+     "address": "M. Gandhilaan",
+     "note": "2021-04: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 1.1,
+       "h": 1.25,
+       "sill": 0.85,
+       "lights": 2,
+       "frameM": 0.08,
+       "sash": "rail",
+       "sashM": 0.05,
+       "note": "white frame, yellow sashes"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.4,
+       "w": 0.85,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.4,
+       "w": 0.85,
+       "h": 0.3,
+       "sill": 2.18,
+       "lights": 1,
+       "frameM": 0.06,
+       "note": "transom light over the door"
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.4,
+       "w": 1.3,
+       "h": 0.12,
+       "sill": 2.6,
+       "depth": 0.35,
+       "canopy": "flat",
+       "colour": "accent",
+       "note": "grey concrete door hood"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 0.4,
+       "h": 0.48,
+       "sill": 1.15,
+       "lights": 1,
+       "frameM": 0.06,
+       "note": "toilet window"
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.75,
+       "w": 1.5,
+       "h": 1.05,
+       "sill": 0.75,
+       "lights": 2,
+       "frameM": 0.08,
+       "sash": "rail",
+       "sashM": 0.05
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012102664.jpg",
+     "pand": "0363100012102664",
+     "address": "Sandinostraat",
+     "note": "garden side not photographed from the street: garden door, living-room window and bedroom windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.1,
+       "w": 1.8,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.1,
+       "sill": 0.85,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "right",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.1,
+       "sill": 0.85,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012102664.jpg",
+     "pand": "0363100012102664",
+     "address": "Sandinostraat",
+     "note": "end walls seen edge-on: plain brick; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012102664.jpg",
+     "pand": "0363100012102664",
+     "address": "Sandinostraat",
+     "note": "end walls seen edge-on: plain brick; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick: sunlit 2016-08 Sandinostraat crop reads #dcbba6 clipped, its darker tones #d1a08d/#c7a792; drawn #bf8775 (salmon red). Roof dark grey tiles #5b5853.",
+  "Kit (#80): window sash in another colour than the frame (white frames, yellow sashes).",
+  "3DBAG dak_min ~3.1 m (catslide at the back): eavesFromPlanes low-back."
+ ]
+}

@@ -900,6 +900,66 @@ test('window joinery (#75): absent -> byte-identical; frameM draws the border in
   assert.ok(validateSpec(bad({kind: 'window', transomM: 3})).length > 0, 'transom outside the window');
 });
 
+test('window sash and porthole (#80): absent -> byte-identical; sash draws a ring and bars in its palette colour; round draws a 16-sided pane; validateSpec rejects them without frameM', () => {
+  const S = load('fe-db-row.json'), p = {...r3Params(S), variant: 'black-door'};
+  const pal = {...S.variants['black-door'].palette, accent: '#9a9a9a', rail: '#e3c23a'};
+  const base: TypeSpec = {...S, variants: {...S.variants, 'black-door': {...S.variants['black-door'], palette: pal}}};
+  const one = (extra: Record<string, unknown>): TypeSpec => ({...base, facades: {...base.facades, front: {...base.facades.front, bays: base.facades.front.bays.map(bay => ({...bay, elements: bay.elements.filter(e => e.kind === 'window' && e.levels === 'upper').slice(0, 1).map(e => ({...e, lights: 2, frameM: 0.08, ...extra}))}))}}});
+  const plain = generate(one({}), p).mesh, undef = generate(one({sash: undefined, sashM: undefined, round: undefined}), p).mesh;
+  assert.equal(plain.buckets.size, undef.buckets.size);
+  for (const [key, bucket] of plain.buckets) assert.deepEqual(undef.buckets.get(key)!.positions, bucket.positions, key);
+  const sash = generate(one({sash: 'rail', sashM: 0.05}), p).mesh;
+  const yellow = [...sash.buckets.keys()].find(k => k.includes('#e3c23a'));
+  assert.ok(yellow, 'sash bucket in the rail colour');
+  assert.ok(!([...plain.buckets.keys()].some(k => k.includes('#e3c23a'))), 'no sash colour without sash');
+  // ring + one mullion bar (+ the transom bar when the window has one)
+  const tr = base.facades.front.bays.flatMap(b => b.elements).find(e => e.kind === 'window' && e.levels === 'upper')!.transomM !== undefined ? 2 : 0;
+  assert.equal(sash.buckets.get(yellow!)!.positions.length / 9, 4 + tr);
+  const glassTris = (m: typeof plain) => [...m.buckets].filter(([k]) => k.startsWith('glass|')).reduce((n, [, b]) => n + b.positions.length / 9, 0);
+  const round = generate(one({round: true, lights: 1}), p).mesh;
+  assert.equal(glassTris(round) - glassTris(generate(one({lights: 1}), p).mesh), 16 - 2, 'a 16-sided pane replaces the 2-triangle pane');
+  const bad = (e: Record<string, unknown>): TypeSpec => ({...S, facades: {...S.facades, front: {...S.facades.front, bays: S.facades.front.bays.map((bay, i) => (i ? bay : {...bay, elements: [...bay.elements, {kind: 'window', levels: 'upper', w: 0.6, h: 0.6, ...e} as never]}))}}});
+  assert.ok(validateSpec(bad({sash: 'rail'})).length > 0, 'sash without frameM');
+  assert.ok(validateSpec(bad({round: true})).length > 0, 'round without frameM');
+  assert.ok(validateSpec(bad({round: true, frameM: 0.1, lights: 2})).length > 0, 'round with two lights');
+  assert.equal(validateSpec(bad({round: true, frameM: 0.1})).length, 0);
+});
+
+test('plinth storeys (#80): absent or 1 -> byte-identical; 2 raises the plinth/wall split to the second floor line; validateSpec bounds it', () => {
+  const S = load('nw-ma-clad-top.json'), p = {...r3Params(S), variant: 'buff'};
+  const noPs: TypeSpec = {...S, ground: {...S.ground, plinthStoreys: undefined}}, one: TypeSpec = {...S, ground: {...S.ground, plinthStoreys: 1}};
+  const a = generate(noPs, p).mesh, b = generate(one, p).mesh;
+  assert.equal(a.buckets.size, b.buckets.size);
+  for (const [key, bucket] of a.buckets) assert.deepEqual(b.buckets.get(key)!.positions, bucket.positions, key);
+  const two = generate({...S, ground: {...S.ground, plinthStoreys: 2}}, p);
+  const plinthKey = `brick|${S.variants.buff.palette.plinth!.tint}|measured`;
+  const ys = (m: typeof a, k: string) => { const pos = m.buckets.get(k)!.positions; let mx = -Infinity; for (let i = 1; i < pos.length; i += 3) mx = Math.max(mx, pos[i]); return mx; };
+  const sh = two.report.storeyHeightM;
+  assert.ok(Math.abs(ys(two.mesh, plinthKey) - 2 * sh) < 1e-6, 'plinth up to the second floor line');
+  assert.ok(Math.abs(ys(a, plinthKey) - sh) < 1e-6, 'one storey by default');
+  for (const bad of [0, 1.5, S.storeys]) assert.ok(validateSpec({...S, ground: {...S.ground, plinthStoreys: bad}}).length > 0, `plinthStoreys ${bad}`);
+});
+
+test('arched panel (#80): absent = the unclipped box; archM draws a parabolic head clipped to the bay; validateSpec bounds it', () => {
+  const S = load('we-jm-vespucci.json'), p = {...r3Params(S), variant: 'red'};
+  const els = S.facades.front.bays[0].elements;
+  const strip = (spec: TypeSpec): TypeSpec => ({...spec, facades: {...spec.facades, front: {...spec.facades.front, bays: [{...spec.facades.front.bays[0], elements: els.map(e => { const {archM, ...rest} = e; void archM; return rest; })}]}}});
+  const noArch = strip(S);
+  const boxed = (spec: TypeSpec) => generate(spec, p).mesh;
+  const m = boxed(S), a = boxed(noArch);
+  const dark = [...m.buckets.keys()].find(k => k.includes(S.variants.red.palette.dark))!;
+  // without archM the panel is the old unclipped box (10 triangles, reaching past the bay edge into the neighbour)
+  assert.equal(a.buckets.get(dark)!.positions.length / 9, 10, 'absent: the box');
+  const pos = m.buckets.get(dark)!.positions;
+  let ymax = -Infinity; for (let i = 1; i < pos.length; i += 3) ymax = Math.max(ymax, pos[i]);
+  assert.ok(Math.abs(ymax - 2.8) < 1e-6, `portal recess crown at 2.8 m (${ymax})`);
+  // clipped: half the portal in this pand (rect 2 tris + 4 of the 8 fan tris, each pand of a mirrored pair draws the other half)
+  assert.equal(pos.length / 9, 6, 'half portal: 2 rectangle + 4 fan triangles');
+  const bad = (archM: number, kind: 'panel' | 'window' = 'panel') => ({...S, facades: {...S.facades, front: {...S.facades.front, bays: [{...S.facades.front.bays[0], elements: [{kind, levels: 'ground' as const, w: 1, h: 2, sill: 0, archM, ...(kind === 'window' ? {frameM: 0.08} : {})}]}]}}});
+  assert.equal(validateSpec(bad(0.8)).filter(e => /archM/.test(e)).length, 0);
+  for (const [v, k] of [[0, 'panel'], [2, 'panel'], [0.5, 'window']] as const) assert.ok(validateSpec(bad(v, k)).some(e => /archM/.test(e)), `archM ${v} on ${k}`);
+});
+
 test('stripe depth (#75): absent = the 1 cm stripe byte for byte; depthM moves the stripe proud of a plinthM band', () => {
   const S = load('th-gk-row.json'), p = {...r3Params(S), variant: 'hood'};
   const withStripes = (depthM?: number): TypeSpec => ({...S, facades: {...S.facades, front: {...S.facades.front, stripes: [{levels: 'ground', pitchM: 20, heightM: 0.95, offsetM: 0, palette: 'dark', ...(depthM === undefined ? {} : {depthM})}]}}});
@@ -1113,7 +1173,31 @@ test('round-6 designs (#79): validate, >= 4 distinct photo pands on the front (>
     const p = r3Params(spec);
     for (const variant of Object.keys(spec.variants)) for (const mirror of [false, true]) {
       const {report, mesh} = generate(spec, {...p, variant, mirror});
-      assert.deepEqual(report.facades.front, spec.facades.front.counted, `${spec.id}/${variant}/front`);
+      const upper = R7_UPPER[`${spec.id}/${variant}`];
+      assert.deepEqual(report.facades.front, {...spec.facades.front.counted, ...(upper === undefined ? {} : {openingsPerUpperStorey: upper})}, `${spec.id}/${variant}/front`);
+      assert.ok(mesh.triangles <= 600, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
+      const mid = generate(spec, {...p, variant, mirror, freeSides: {left: false, right: false}});
+      assert.equal(mid.report.facades.left.bays + mid.report.facades.right.bays, 0, 'party walls have no bays');
+      const b = mesh.bounds();
+      assert.ok(b.min[1] >= -1e-9, `${spec.id}: nothing below ground`);
+      const ov = spec.roof.vergeOverhangM + 0.06;
+      assert.ok(b.max[0] <= p.lengthM / 2 + ov && b.min[0] >= -p.lengthM / 2 - ov, `${spec.id}/${variant}/${mirror}: within its frontage`);
+    }
+  }
+});
+
+/** Variants whose counted upper openings differ from the design's front (the wide Cahnsingel layout has two upper windows). */
+const R7_UPPER: Record<string, number> = {'nw-ma-green/cahn': 2};
+const R7_TYPES = ['nw-ma-green', 'nw-ma-red-door', 'nw-ma-yellow-door', 'nw-ma-porthole', 'nw-ma-clad-top', 'we-or-wide', 'we-or-three', 'we-or-roof', 'we-jm-vespucci'].map(id => load(`${id}.json`));
+test('round-7 designs (#80): validate, >= 3 distinct photo pands on the front, counted openings match for every variant and handedness, <= 600 triangles, party walls blank, nothing below ground, within the frontage', () => {
+  for (const spec of R7_TYPES) {
+    assert.deepEqual(validateSpec(spec), [], spec.id);
+    assert.ok(new Set(spec.facades.front.evidence.map(e => e.pand)).size >= 3, `${spec.id}: evidence`);
+    const p = r3Params(spec);
+    for (const variant of Object.keys(spec.variants)) for (const mirror of [false, true]) {
+      const {report, mesh} = generate(spec, {...p, variant, mirror});
+      const upper = R7_UPPER[`${spec.id}/${variant}`];
+      assert.deepEqual(report.facades.front, {...spec.facades.front.counted, ...(upper === undefined ? {} : {openingsPerUpperStorey: upper})}, `${spec.id}/${variant}/front`);
       assert.ok(mesh.triangles <= 600, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
       const mid = generate(spec, {...p, variant, mirror, freeSides: {left: false, right: false}});
       assert.equal(mid.report.facades.left.bays + mid.report.facades.right.bays, 0, 'party walls have no bays');

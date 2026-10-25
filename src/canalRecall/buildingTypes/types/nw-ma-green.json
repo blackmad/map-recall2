@@ -1,0 +1,434 @@
+{
+ "id": "nw-ma-green",
+ "label": "Middelveldsche Akerpolder (1989-90, Koejemansstraat, Jacob Paffstraat, Trijn Hullemanlaan, Ernst Cahnsingel) two-storey terraced house in brown-purple brick under a red-brown pantile roof swept low at the back: dark green frames, white panelled doors, grey concrete lintels; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 135,
+  "bouwjaar": [
+   1989,
+   1990
+  ],
+  "lengthM": 4.8,
+  "widthM": 10.2,
+  "bouwlagen": 2,
+  "roof": "pitched",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.0,
+  6.5
+ ],
+ "ridgeRangeM": [
+  8.9,
+  9.9
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.4,
+   6.0
+  ],
+  "depth": [
+   9.2,
+   10.6
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "gable",
+  "ridge": "long",
+  "eavesOverhangM": 0.3,
+  "vergeOverhangM": 0.05,
+  "thicknessM": 0.14,
+  "pitchDeg": 36,
+  "eavesFromPlanes": "low-back",
+  "chimneys": [
+   {
+    "ref": "right",
+    "u": 0.35,
+    "w": 0.7,
+    "d": 0.55,
+    "h": 1.0,
+    "capM": 0.1,
+    "cap": "accent",
+    "note": "brick stacks on the ridge at the party wall (one per pair)"
+   }
+  ]
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "paff",
+ "variants": {
+  "paff": {
+   "label": "brown-purple brick, dark green frames, white doors (door and window under concrete lintels)",
+   "evidence": "terraces #3 #4 #7 #8 #10 #13 #14 #16 #23 #41 (Koejemansstraat, Paffstraat, Hullemanlaan, Willy la Croixstraat, Geertruida van Lierstraat)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#8b7b70",
+     "measured": true
+    },
+    "frame": "#2f4637",
+    "glass": "#3b4249",
+    "door": "#f0eee6",
+    "accent": "#c2bdb1",
+    "rail": "#3d3a38",
+    "dark": "#4a4744",
+    "column": "#ebebeb",
+    "joint": "#5a5048",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#845043",
+     "measured": true
+    }
+   }
+  },
+  "cahn": {
+   "label": "same brick and frames, wide three-light ground window and paired doors under one hood",
+   "evidence": "terraces #0 #2 #5 #24 #34 (Ernst Cahnsingel, Anton H\u00f6lzelsingel)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#8b7b70",
+     "measured": true
+    },
+    "frame": "#2f4637",
+    "glass": "#3b4249",
+    "door": "#f0eee6",
+    "accent": "#c2bdb1",
+    "rail": "#3d3a38",
+    "dark": "#4a4744",
+    "column": "#ebebeb",
+    "joint": "#5a5048",
+    "roof": {
+     "slot": "roofTile",
+     "tint": "#845043",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012075369.jpg",
+     "pand": "0363100012075369",
+     "address": "Jacob Paffstraat",
+     "note": "2021-04: per 4.8 m house a white panelled door (0.9 m) and a 1.1 m two-light window under grey concrete lintels; one two-light upper window (1.55 m); dark green frames; mirrored pairs put the doors apart"
+    },
+    {
+     "photo": "survey crop 0363100012097909.jpg",
+     "pand": "0363100012097909",
+     "address": "A.J. Koejemansstraat",
+     "note": "2024-12 overcast: same rows; red-brown pantile roof, chimney stacks on the ridge"
+    },
+    {
+     "photo": "sunlit crop 0363100012143400-2016061612.jpg",
+     "pand": "0363100012143400",
+     "address": "Ernst Cahnsingel",
+     "note": "2022-04 and sunlit 2016-06: the wide-window version: a 2.3 m three-light window, two door leaves side by side, two upper windows (1.0 and 0.65 m)"
+    },
+    {
+     "photo": "survey crop 0363100012135380.jpg",
+     "pand": "0363100012135380",
+     "address": "Trijn Hullemanlaan",
+     "note": "2021-04: Paffstraat layout"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.75,
+       "w": 0.9,
+       "h": 2.15,
+       "variants": [
+        "paff"
+       ]
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.75,
+       "w": 1.2,
+       "h": 0.14,
+       "sill": 2.2,
+       "depth": 0.12,
+       "canopy": "flat",
+       "colour": "accent",
+       "variants": [
+        "paff"
+       ],
+       "note": "grey concrete lintel over the door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.35,
+       "w": 1.15,
+       "h": 1.35,
+       "sill": 0.85,
+       "lights": 2,
+       "frameM": 0.07,
+       "variants": [
+        "paff"
+       ]
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.35,
+       "w": 1.45,
+       "h": 0.14,
+       "sill": 2.25,
+       "depth": 0.12,
+       "canopy": "flat",
+       "colour": "accent",
+       "variants": [
+        "paff"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 2.0,
+       "w": 1.55,
+       "h": 1.2,
+       "sill": 0.7,
+       "lights": 2,
+       "frameM": 0.07,
+       "variants": [
+        "paff"
+       ]
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.65,
+       "w": 0.85,
+       "h": 2.15,
+       "variants": [
+        "cahn"
+       ]
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.65,
+       "w": 1.5,
+       "h": 0.15,
+       "sill": 2.3,
+       "depth": 0.3,
+       "canopy": "flat",
+       "colour": "accent",
+       "variants": [
+        "cahn"
+       ],
+       "note": "concrete hood over the door pair"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.75,
+       "w": 2.2,
+       "h": 1.55,
+       "sill": 0.6,
+       "lights": 3,
+       "frameM": 0.07,
+       "variants": [
+        "cahn"
+       ]
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.75,
+       "w": 2.5,
+       "h": 0.15,
+       "sill": 2.25,
+       "depth": 0.12,
+       "canopy": "flat",
+       "colour": "accent",
+       "variants": [
+        "cahn"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.9,
+       "w": 1.0,
+       "h": 1.25,
+       "sill": 0.7,
+       "lights": 2,
+       "frameM": 0.07,
+       "variants": [
+        "cahn"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.35,
+       "w": 0.65,
+       "h": 1.25,
+       "sill": 0.7,
+       "lights": 1,
+       "frameM": 0.07,
+       "variants": [
+        "cahn"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012075369.jpg",
+     "pand": "0363100012075369",
+     "address": "Jacob Paffstraat",
+     "note": "garden side not photographed from the street: garden door, living-room window and bedroom windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.1,
+       "w": 1.8,
+       "h": 1.4,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.1,
+       "sill": 0.85,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "right",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.1,
+       "sill": 0.85,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012075369.jpg",
+     "pand": "0363100012075369",
+     "address": "Jacob Paffstraat",
+     "note": "end walls seen edge-on: plain brick; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012075369.jpg",
+     "pand": "0363100012075369",
+     "address": "Jacob Paffstraat",
+     "note": "end walls seen edge-on: plain brick; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick: sunlit 2016-06 Cahnsingel crop (white door reference) and the Paffstraat overcast crops read a brown-purple brick; drawn #937b6f. Roof: red-brown pantiles #a0584a (street crops; some rows have dark grey tiles, not split).",
+  "3DBAG b3_h_dak_min is ~3.1 m on most houses: the back slope sweeps down over the ground storey. Front eaves ~5.6 m: eavesFromPlanes low-back.",
+  "Two layouts per terrace (variant per terrace): paff (door + window, one upper window) and cahn (paired doors, wide three-light window, two upper windows).",
+  "Not modelled: the dormers and rooflights some houses added, the white awnings."
+ ]
+}

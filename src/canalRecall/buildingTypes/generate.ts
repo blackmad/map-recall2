@@ -126,7 +126,7 @@ type Keys = ReturnType<typeof keys>;
 interface Ctx { mb: MeshBuilder; k: Keys; storeys: number; sh: number; variant: string; groundMode: 'solid' | 'pilotis'; recess: number; inset: {front: number; back: number}; key: (name: string) => MaterialKey }
 
 /** Window joinery beyond the default 6 cm border (Element `frameM`, `transomM`): absent, the window is drawn exactly as before. */
-interface Joinery { frameM?: number; transomM?: number }
+interface Joinery { frameM?: number; transomM?: number; sash?: MaterialKey; sashM?: number; round?: boolean }
 
 function windowUnit(c: Ctx, f: Frame, u: number, v0: number, w: number, h: number, lights: number, d0 = 0, frameKey?: MaterialKey, strips = false, withSill = true, joinery?: Joinery): void {
   const {mb} = c, k = frameKey ? {...c.k, frame: frameKey} : c.k;
@@ -149,9 +149,18 @@ function windowUnit(c: Ctx, f: Frame, u: number, v0: number, w: number, h: numbe
     // size), the mullions are as wide as half the border, and a transom bar `transomM` below the head splits off the top lights.
     const fm = joinery.frameM ?? 0.06, bar = Math.max(0.05, fm * 0.6);
     plate(mb, k.frame, f, u - w / 2, u + w / 2, v0, v0 + h, d0 + 0.04);
-    plate(mb, k.glass, f, u - w / 2 + fm, u + w / 2 - fm, v0 + fm, v0 + h - fm, d0 + 0.05);
-    for (let i = 1; i < lights; i++) plate(mb, k.frame, f, u - w / 2 + w * i / lights - bar / 2, u - w / 2 + w * i / lights + bar / 2, v0 + fm, v0 + h - fm, d0 + 0.055);
-    if (joinery.transomM !== undefined && joinery.transomM > fm && joinery.transomM < h - fm) plate(mb, k.frame, f, u - w / 2 + fm, u + w / 2 - fm, v0 + h - joinery.transomM - bar / 2, v0 + h - joinery.transomM + bar / 2, d0 + 0.055);
+    if (joinery.round) {
+      // #80 porthole: a 16-sided pane centred in the square frame (the frame plate shows round its corners).
+      const r = Math.min(w, h) / 2 - fm, vc = v0 + h / 2, n = 16, at = (i: number) => f.p(u + r * Math.cos(2 * Math.PI * i / n), vc + r * Math.sin(2 * Math.PI * i / n), d0 + 0.05);
+      for (let i = 0; i < n; i++) mb.tri(k.glass, f.p(u, vc, d0 + 0.05), at(i), at(i + 1));
+    } else {
+      // #80 sash: a ring of another colour inside the frame; the bars are sash, the glass sits inside the ring.
+      const s = joinery.sash ? joinery.sashM ?? 0.05 : 0, barKey = joinery.sash ?? k.frame;
+      if (joinery.sash) plate(mb, joinery.sash, f, u - w / 2 + fm, u + w / 2 - fm, v0 + fm, v0 + h - fm, d0 + 0.045);
+      plate(mb, k.glass, f, u - w / 2 + fm + s, u + w / 2 - fm - s, v0 + fm + s, v0 + h - fm - s, d0 + 0.05);
+      for (let i = 1; i < lights; i++) plate(mb, barKey, f, u - w / 2 + w * i / lights - bar / 2, u - w / 2 + w * i / lights + bar / 2, v0 + fm, v0 + h - fm, d0 + 0.055);
+      if (joinery.transomM !== undefined && joinery.transomM > fm && joinery.transomM < h - fm) plate(mb, barKey, f, u - w / 2 + fm, u + w / 2 - fm, v0 + h - joinery.transomM - bar / 2, v0 + h - joinery.transomM + bar / 2, d0 + 0.055);
+    }
     if (v0 > 0.4) box(mb, k.accent, f, u - w / 2 - 0.15, u + w / 2 + 0.15, v0 - 0.11, v0 - 0.05, d0, d0 + 0.12, {back: true, bottom: true});
     return;
   }
@@ -234,6 +243,24 @@ function storageDoor(c: Ctx, f: Frame, u: number, w: number, h: number, d0 = 0):
   plate(mb, k.door, f, u - w / 2, u + w / 2, 0, h, d0 + 0.055);
 }
 
+/**
+ * #80 arched panel: a front plate whose top `rise` metres are a pointed parabolic arch (Amsterdam School portals), fanned from the
+ * centre of its springing line and clipped to the bay [b0, b1], so a portal on a party line draws half in each pand.
+ */
+function archPanel(c: Ctx, f: Frame, u: number, w: number, v0: number, h: number, rise: number, d: number, key: MaterialKey, b0: number, b1: number): void {
+  const cl = (x: number) => Math.min(b1, Math.max(b0, x)), vs = v0 + h - rise, n = 8;
+  const x0 = cl(u - w / 2), x1 = cl(u + w / 2);
+  if (x1 - x0 < 1e-3) return;
+  plate(c.mb, key, f, x0, x1, v0, vs, d);
+  const pt = (i: number): [number, number] => { const t = -1 + 2 * i / n; return [u + t * w / 2, vs + rise * (1 - t * t)]; };
+  for (let i = 0; i < n; i++) {
+    const [ua, va] = pt(i), [ub, vb] = pt(i + 1);
+    const pa: [number, number] = [cl(ua), va], pb: [number, number] = [cl(ub), vb], pc: [number, number] = [cl(u), vs];
+    if (Math.abs((pa[0] - pc[0]) * (pb[1] - pc[1]) - (pb[0] - pc[0]) * (pa[1] - pc[1])) < 1e-6) continue;
+    c.mb.tri(key, f.p(pc[0], pc[1], d), f.p(pb[0], pb[1], d), f.p(pa[0], pa[1], d));
+  }
+}
+
 /** Door hood: a thin slab `depth` out from the wall, topped (gable/arch) by a hood of rise `rise` whose ridge runs out from the wall. */
 function canopyUnit(c: Ctx, f: Frame, u: number, w: number, v: number, depth: number, rise: number, shape: 'flat' | 'gable' | 'arch', key: MaterialKey, d0 = 0): void {
   const {mb} = c, slab = shape === 'flat' ? rise : 0.06, dOut = d0 + depth;
@@ -314,7 +341,7 @@ function placeFacade(c: Ctx, f: Frame, length: number, id: FacadeId, bays: Bay[]
         const w = e.span || e.kind === 'gallery' ? slotW - 2 * (e.inset ?? 0) : e.w ?? 1, h = e.h ?? 1;
         switch (e.kind) {
           case 'window': case 'ribbon':
-            windowUnit(c, f, u, floor + (e.sill ?? 0.9), w, h, e.lights ?? 1, d0, e.colour ? c.key(e.colour) : undefined, e.frameStyle === 'strips', true, e.frameM !== undefined || e.transomM !== undefined ? {frameM: e.frameM, transomM: e.transomM} : undefined);
+            windowUnit(c, f, u, floor + (e.sill ?? 0.9), w, h, e.lights ?? 1, d0, e.colour ? c.key(e.colour) : undefined, e.frameStyle === 'strips', true, e.frameM !== undefined || e.transomM !== undefined ? {frameM: e.frameM, transomM: e.transomM, ...(e.sash ? {sash: c.key(e.sash), sashM: e.sashM} : {}), ...(e.round ? {round: true} : {})} : undefined);
             openings.push([u - w / 2 - 0.06, u + w / 2 + 0.06, floor + (e.sill ?? 0.9) - 0.11, floor + (e.sill ?? 0.9) + h + 0.06]);
             if (kLevel === 1) count.openingsPerUpperStorey++;
             break;
@@ -340,7 +367,8 @@ function placeFacade(c: Ctx, f: Frame, length: number, id: FacadeId, bays: Bay[]
           }
           case 'panel': {
             const key = (c.k as unknown as Record<string, MaterialKey>)[e.colour ?? 'frame'];
-            box(c.mb, key, f, u - w / 2, u + w / 2, floor + (e.sill ?? 0), floor + (e.sill ?? 0) + h, d0, d0 + (e.depth ?? 0.08));
+            if (e.archM !== undefined) archPanel(c, f, u, w, floor + (e.sill ?? 0), h, e.archM, d0 + (e.depth ?? 0.08), key, u0, u1);
+            else box(c.mb, key, f, u - w / 2, u + w / 2, floor + (e.sill ?? 0), floor + (e.sill ?? 0) + h, d0, d0 + (e.depth ?? 0.08));
             break;
           }
         }
@@ -680,6 +708,8 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
 
   // Wall volumes.
   const slabBelow = 0.5; // pilotis: white slab edge under the first floor
+  // #80: a plinth of several storeys (ground.plinthStoreys); one storey (sh) when absent.
+  const plinthTop = spec.ground.plinthStoreys ? Math.min(spec.ground.plinthStoreys, storeys - 1) * sh : sh;
   const lowTop = pilotis ? sh - slabBelow : sh;
   if (pilotis) {
     const core = spec.facades.front.bays.length ? layoutBays(spec.facades.front.bays, L).filter(p => p.bay.core) : [];
@@ -699,12 +729,12 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
     }
   } else {
     if (v.palette.plinth && !spec.ground.plinthM) {
-      box(mb, k.plinth, IDENTITY, -L / 2, L / 2, 0, sh, zb, zf, {back: false, bottom: true, top: true});
-      box(mb, k.wall, IDENTITY, -L / 2, L / 2, sh, wallTop, zb, zf, {back: false, bottom: true, ends: gabled});
+      box(mb, k.plinth, IDENTITY, -L / 2, L / 2, 0, plinthTop, zb, zf, {back: false, bottom: true, top: true});
+      box(mb, k.wall, IDENTITY, -L / 2, L / 2, plinthTop, wallTop, zb, zf, {back: false, bottom: true, ends: gabled});
     } else box(mb, k.wall, IDENTITY, -L / 2, L / 2, 0, wallTop, zb, zf, {back: false, bottom: true, ends: gabled});
   }
   // Gable walls in their own material (the wall box above leaves its ends open), from the top of a plinth/pilotis storey.
-  if (gabled) for (const id of ['left', 'right'] as const) plate(mb, k.gable, frames[id].f, 0, frames[id].len, pilotis || (v.palette.plinth && !spec.ground.plinthM) ? sh : 0, wallTop, 0);
+  if (gabled) for (const id of ['left', 'right'] as const) plate(mb, k.gable, frames[id].f, 0, frames[id].len, pilotis ? sh : v.palette.plinth && !spec.ground.plinthM ? plinthTop : 0, wallTop, 0);
   // Columns at the rectangle edge under the cantilevered decks (inset types).
   for (const id of spec.ground.columns?.facades ?? []) {
     const cs = spec.ground.columns!, {f, len} = frames[id], n = Math.max(1, Math.round(len / cs.pitchM)), dOut = inset[id];

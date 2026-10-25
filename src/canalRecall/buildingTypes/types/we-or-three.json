@@ -1,0 +1,653 @@
+{
+ "id": "we-or-three",
+ "label": "Orteliusbuurt-Zuid, Jan Maijenbuurt and John Franklinbuurt (1925-30) four-storey portiek block under a flat roof: per 6 m pand three white two-light windows with top lights on every upper storey, two ground windows and a door pair at the mirrored pair's shared entrance; variants for the brown Van Spilbergenstraat rows, the orange-red Mercatorstraat rows over a dark ground storey, the yellow Shackletonstraat rows and the banded John Franklinbuurt rows",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 420,
+  "bouwjaar": [
+   1925,
+   1930
+  ],
+  "lengthM": 5.97,
+  "widthM": 10.5,
+  "bouwlagen": 4,
+  "roof": "flat",
+  "dwellingsMedian": 8
+ },
+ "storeys": 4,
+ "eavesRangeM": [
+  11.8,
+  13.3
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.8,
+   6.3
+  ],
+  "depth": [
+   9.8,
+   11.7
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.05,
+  "vergeOverhangM": 0.0,
+  "thicknessM": 0.2,
+  "pitchDeg": 0,
+  "eavesPinM": 12.6
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "portiek",
+ "variants": {
+  "portiek": {
+   "label": "brown-purple brick, white two-light casements, dark doors in white-framed portiek openings",
+   "evidence": "Van Spilbergenstraat",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#84695e",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3b4249",
+    "door": "#2c2b2d",
+    "accent": "#e6e2d8",
+    "rail": "#3d3a38",
+    "dark": "#2f2b29",
+    "column": "#ebebeb",
+    "joint": "#5a4a44",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#6e6c6a"
+    }
+   }
+  },
+  "hood": {
+   "label": "brown-purple brick, white frames, varnished door pairs under small concrete hoods",
+   "evidence": "the Orteliusbuurt-Zuid inner streets (Hudsonstraat side)",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#84695e",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3b4249",
+    "door": "#6a3324",
+    "accent": "#c9c2b4",
+    "rail": "#3d3a38",
+    "dark": "#2f2b29",
+    "column": "#ebebeb",
+    "joint": "#5a4a44",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#6e6c6a"
+    }
+   }
+  },
+  "mercator": {
+   "label": "orange-red brick over a purple-brown ground storey, white frames, dark green doors in a white plaster surround",
+   "evidence": "Mercatorstraat, James Cookstraat, Jan Maijenstraat, the red Shackletonstraat rows",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#a8735f",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3b4249",
+    "door": "#26392f",
+    "accent": "#c9c2b4",
+    "rail": "#3d3a38",
+    "dark": "#2f2b29",
+    "column": "#ebebeb",
+    "joint": "#5a4a44",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#6e6c6a"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#6a5a55",
+     "measured": true
+    }
+   }
+  },
+  "shackleton": {
+   "label": "yellow brick over a red brick ground storey, white frames, dark doors in a white surround",
+   "evidence": "Shackletonstraat and its yellow-brick side streets",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#bcaa78",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3b4249",
+    "door": "#2d3a33",
+    "accent": "#c9c2b4",
+    "rail": "#3d3a38",
+    "dark": "#2f2b29",
+    "column": "#ebebeb",
+    "joint": "#5a4a44",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#6e6c6a"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#9c5f4c",
+     "measured": true
+    }
+   }
+  },
+  "franklin": {
+   "label": "brown-purple brick, white frames, a white concrete band over the ground storey, dark door pairs",
+   "evidence": "John Franklinbuurt inner streets",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#86695f",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3b4249",
+    "door": "#3a2f2a",
+    "accent": "#c9c2b4",
+    "rail": "#3d3a38",
+    "dark": "#2f2b29",
+    "column": "#ebebeb",
+    "joint": "#5a4a44",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#6e6c6a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012101024-2020051107.jpg",
+     "pand": "0363100012101024",
+     "address": "Mercatorstraat",
+     "note": "sunlit 2020-05: per 6 m pand three white two-light windows with top lights per upper storey (1.3 m, centres 1.3 / 3.0 / 4.7 m); a purple-brown brick ground storey; door groups of four dark green leaves inside a white plaster surround with a canopy; two ground windows"
+    },
+    {
+     "photo": "survey crop 0363100012126229.jpg",
+     "pand": "0363100012126229",
+     "address": "Van Spilbergenstraat",
+     "note": "2019: same window rhythm in brown-purple brick, two-light casements without top lights; each pand's two dark doors in a white-framed portiek opening beside the pair's shared party line"
+    },
+    {
+     "photo": "survey crop 0363100012061685.jpg",
+     "pand": "0363100012061685",
+     "address": "Orteliusbuurt-Zuid",
+     "note": "same rhythm; varnished red-brown door pairs under small concrete hoods"
+    },
+    {
+     "photo": "survey crop 0363100012130491.jpg",
+     "pand": "0363100012130491",
+     "address": "Shackletonstraat",
+     "note": "2024 overcast: same, yellow brick over a red brick ground storey, white surround"
+    },
+    {
+     "photo": "survey crop 0363100012109724.jpg",
+     "pand": "0363100012109724",
+     "address": "John Franklinbuurt",
+     "note": "2024-12: same rhythm in brown-purple brick; a white concrete band over the ground storey, dark door pairs"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 2,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.4,
+       "h": 1.65,
+       "sill": 0.85,
+       "lights": 2,
+       "frameM": 0.08,
+       "transomM": 0.42,
+       "variants": [
+        "mercator",
+        "shackleton",
+        "franklin"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.0,
+       "w": 1.4,
+       "h": 1.65,
+       "sill": 0.85,
+       "lights": 2,
+       "frameM": 0.08,
+       "transomM": 0.42,
+       "variants": [
+        "mercator",
+        "shackleton",
+        "franklin"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.7,
+       "w": 1.4,
+       "h": 1.65,
+       "sill": 0.85,
+       "lights": 2,
+       "frameM": 0.08,
+       "transomM": 0.42,
+       "variants": [
+        "mercator",
+        "shackleton",
+        "franklin"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.3,
+       "h": 1.6,
+       "sill": 0.85,
+       "lights": 2,
+       "frameM": 0.08,
+       "variants": [
+        "hood",
+        "portiek"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.0,
+       "w": 1.3,
+       "h": 1.6,
+       "sill": 0.85,
+       "lights": 2,
+       "frameM": 0.08,
+       "variants": [
+        "hood",
+        "portiek"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.7,
+       "w": 1.3,
+       "h": 1.6,
+       "sill": 0.85,
+       "lights": 2,
+       "frameM": 0.08,
+       "variants": [
+        "hood",
+        "portiek"
+       ]
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.55,
+       "w": 0.8,
+       "h": 2.3,
+       "exceptVariants": [
+        "portiek"
+       ]
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.42,
+       "w": 0.8,
+       "h": 2.3,
+       "exceptVariants": [
+        "portiek"
+       ]
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.62,
+       "w": 0.66,
+       "h": 2.45,
+       "variants": [
+        "portiek"
+       ],
+       "note": "door leaf in the portiek opening (its surround in the light accent reads as the white frame)"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.42,
+       "w": 0.66,
+       "h": 2.45,
+       "variants": [
+        "portiek"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 1.3,
+       "h": 1.7,
+       "sill": 0.75,
+       "lights": 2,
+       "frameM": 0.08,
+       "transomM": 0.42,
+       "variants": [
+        "mercator",
+        "shackleton",
+        "franklin"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 5.0,
+       "w": 1.3,
+       "h": 1.7,
+       "sill": 0.75,
+       "lights": 2,
+       "frameM": 0.08,
+       "transomM": 0.42,
+       "variants": [
+        "mercator",
+        "shackleton",
+        "franklin"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 1.3,
+       "h": 1.7,
+       "sill": 0.75,
+       "lights": 2,
+       "frameM": 0.08,
+       "variants": [
+        "hood",
+        "portiek"
+       ]
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 5.0,
+       "w": 1.3,
+       "h": 1.7,
+       "sill": 0.75,
+       "lights": 2,
+       "frameM": 0.08,
+       "variants": [
+        "hood",
+        "portiek"
+       ]
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 1.9,
+       "h": 0.14,
+       "sill": 2.45,
+       "depth": 0.3,
+       "canopy": "flat",
+       "colour": "accent",
+       "variants": [
+        "hood"
+       ],
+       "note": "small concrete hood over the door pair"
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.4,
+       "w": 2.7,
+       "h": 0.16,
+       "sill": 2.6,
+       "depth": 0.35,
+       "canopy": "flat",
+       "colour": "column",
+       "variants": [
+        "mercator",
+        "shackleton"
+       ],
+       "note": "white plaster canopy of the door surround"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.6,
+       "w": 0.24,
+       "h": 2.6,
+       "sill": 0,
+       "colour": "column",
+       "depth": 0.07,
+       "variants": [
+        "mercator",
+        "shackleton"
+       ],
+       "note": "white plaster jamb of the surround"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.07,
+       "w": 0.14,
+       "h": 2.6,
+       "sill": 0,
+       "colour": "column",
+       "depth": 0.07,
+       "variants": [
+        "mercator",
+        "shackleton"
+       ],
+       "note": "white pier between the mirrored door groups"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "centre",
+       "u": 0,
+       "w": 1,
+       "h": 0.18,
+       "sill": 2.55,
+       "colour": "column",
+       "depth": 0.1,
+       "span": true,
+       "variants": [
+        "franklin"
+       ],
+       "note": "white concrete band over the ground storey"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012101024.jpg",
+     "pand": "0363100012101024",
+     "address": "Mercatorstraat",
+     "note": "courtyard side not photographed from the street: three windows per storey and a garden door inferred (1920s portiek blocks)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 3,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.85,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.2,
+       "w": 1.6,
+       "h": 1.5,
+       "sill": 0.8,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.9,
+       "w": 1.0,
+       "h": 1.5,
+       "sill": 0.8,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 1.2,
+       "w": 1.1,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 3.0,
+       "w": 1.1,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": "upper",
+       "ref": "left",
+       "u": 4.8,
+       "w": 1.1,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012101024.jpg",
+     "pand": "0363100012101024",
+     "address": "Mercatorstraat",
+     "note": "block ends and party walls: plain brick (corner pands are held)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012101024.jpg",
+     "pand": "0363100012101024",
+     "address": "Mercatorstraat",
+     "note": "block ends and party walls: plain brick (corner pands are held)"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Wall top pinned (roof.eavesPinM) to the parapet line (12.6 m: dak_min 12.4 Van Spilbergenstraat to 12.96 Jan Maijenbuurt): 3DBAG b3_h_dak_min reads it on most pands, while the median roof height (b3_h_dak_50p, used for flat roofs) reads the rooftop additions (dakopbouwen) on many and would make them five storeys; the additions are not modelled.",
+  "Brick: Mercatorstraat sunlit 2020-05, upper wall #bd8776 (lit) to #8f6758 (lower, shaded): drawn #a8735f; its ground storey #605452 to #716562: drawn #6a5a55. Van Spilbergenstraat (overcast only) #615048 scaled by the Mercator overcast/sunlit ratio: drawn #84695e. Shackleton yellow overcast #746640 scaled: drawn #bcaa78.",
+  "Kit gaps: the canted top-storey bays of some James Cookstraat and Mercatorstraat pands, the downpipes, the brick corbels and the rooftop boxes are not modelled; those pands keep the plain front.",
+  "Held: balcony rows, shops, corner pands, the 13.4 m deep white-glazed ground-floor block in Jan Maijenbuurt."
+ ]
+}

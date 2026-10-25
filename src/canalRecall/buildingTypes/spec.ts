@@ -50,6 +50,20 @@ export interface Element {
    */
   frameM?: number;
   transomM?: number;
+  /**
+   * Window only, with `frameM` (#80): a sash of another colour inside the frame (white outer frames with yellow or red sashes, Osdorp
+   * 1980s rows). `sash` names the palette entry of the sash ring and its bars, `sashM` its width (default 0.05 m). Absent: unchanged.
+   */
+  sash?: PaletteKey;
+  sashM?: number;
+  /** Window only, with `frameM` (#80): round glazing (a porthole) inside the square frame, as a 16-sided pane of diameter min(w, h) - 2 frameM. Absent: unchanged. */
+  round?: boolean;
+  /**
+   * Panel only (#80): the top `archM` metres of the panel are a pointed (parabolic) arch head, drawn as a front plate, and the panel
+   * is clipped to its bay, so an arch centred on a party line (ref left/right, u 0) draws half in each mirrored pand (Amsterdam
+   * School portiek portals). Absent: the panel is the usual box.
+   */
+  archM?: number;
   /** Window/ribbon/door: `strips` draws the frame (door: surround) as border strips 4.5 cm in front instead of a plate stacked 5 mm under the glass/leaf (big glazing, many openings: no z-fight). */
   frameStyle?: 'plate' | 'strips';
   /** Gallery only: vertical cross walls (fins) evenly from end to end of the gallery, ends included. */
@@ -285,6 +299,11 @@ export interface GroundSpec {
   storageDoorW?: number;
   /** Solid ground: the palette's `plinth` covers only the lowest `plinthM` metres as a proud band (tiled plinth under render) instead of the whole ground storey. */
   plinthM?: number;
+  /**
+   * Solid ground without `plinthM` (#80): the palette's `plinth` covers this many storeys from the ground (default 1), the `wall` the
+   * storeys above: two brick storeys under a sheet-clad top storey (Osdorp 1988 rows). Absent: unchanged.
+   */
+  plinthStoreys?: number;
   /** Columns at the footprint edge under cantilevered galleries/balconies (types with `insetM`), from the ground to `toM` (default one storey). */
   columns?: {facades: ('front' | 'back')[]; pitchM: number; sizeM: number; toM?: number};
 }
@@ -394,6 +413,7 @@ export function validateSpec(spec: TypeSpec): string[] {
     if (st.slot !== 'brick') errors.push(`variant ${name}: ${key} mottle needs the brick slot`);
     for (const e of validateMottle(st.mottle)) errors.push(`variant ${name}: ${key} ${e}`);
   }
+  if (spec.ground.plinthStoreys !== undefined && !(Number.isInteger(spec.ground.plinthStoreys) && spec.ground.plinthStoreys >= 1 && spec.ground.plinthStoreys < spec.storeys && !spec.ground.plinthM && spec.ground.mode === 'solid')) errors.push(`ground.plinthStoreys ${spec.ground.plinthStoreys} must be a whole number of storeys below the top, on a solid ground without plinthM`);
   if (!spec.variants[spec.defaultVariant]) errors.push(`defaultVariant ${spec.defaultVariant} not in variants`);
   for (const [axis, ts] of Object.entries(spec.sizeClassesM ?? {})) if (!ts?.length || ts.some((t, i) => !(t > 0) || (i > 0 && t <= ts[i - 1]))) errors.push(`sizeClassesM.${axis}: thresholds must be positive and ascending`);
   for (const id of FACADE_IDS) {
@@ -405,6 +425,10 @@ export function validateSpec(spec: TypeSpec): string[] {
     if (new Set(f.bays.map(b => b.id)).size !== f.bays.length) errors.push(`${id}: duplicate bay ids`);
     for (const b of f.bays) for (const e of b.elements) for (const v of [...(e.variants ?? []), ...(e.exceptVariants ?? [])]) if (!spec.variants[v]) errors.push(`${id}/${b.id}: unknown variant ${v}`);
     for (const b of f.bays) for (const e of b.elements) {
+      if (e.archM !== undefined && (e.kind !== 'panel' || !(e.archM > 0 && e.archM < (e.h ?? 1)))) errors.push(`${id}/${b.id}: archM needs a panel and 0 < archM < h`);
+      if ((e.sash !== undefined || e.sashM !== undefined || e.round) && (e.kind !== 'window' || e.frameM === undefined || e.frameStyle === 'strips')) errors.push(`${id}/${b.id}: sash/round need a plate-frame window with frameM`);
+      if (e.sashM !== undefined && !(e.sashM > 0 && e.sashM < Math.min(e.w ?? Infinity, e.h ?? Infinity) / 4)) errors.push(`${id}/${b.id}: sashM ${e.sashM} out of range`);
+      if (e.round && (e.lights ?? 1) > 1) errors.push(`${id}/${b.id}: a round window has one light`);
       if (e.frameM === undefined && e.transomM === undefined) continue;
       if (e.kind !== 'window' || e.frameStyle === 'strips') errors.push(`${id}/${b.id}: frameM/transomM are for plate-frame windows`);
       if (e.frameM !== undefined && !(e.frameM > 0 && e.frameM < Math.min(e.w ?? Infinity, e.h ?? Infinity) / 3)) errors.push(`${id}/${b.id}: frameM ${e.frameM} out of range`);

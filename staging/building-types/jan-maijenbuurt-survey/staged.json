@@ -1,0 +1,38 @@
+[
+ {
+  "area": "we-jm-01",
+  "anchor": {
+   "lng": 4.85081,
+   "lat": 52.37135
+  },
+  "pands": 131,
+  "missing": 0,
+  "per": {
+   "we-or-three/mercator/photo": 131
+  }
+ },
+ {
+  "area": "we-jm-02",
+  "anchor": {
+   "lng": 4.85095,
+   "lat": 52.37168
+  },
+  "pands": 21,
+  "missing": 0,
+  "per": {
+   "we-or-three/mercator/photo": 21
+  }
+ },
+ {
+  "area": "we-jm-03",
+  "anchor": {
+   "lng": 4.8519,
+   "lat": 52.37236
+  },
+  "pands": 145,
+  "missing": 0,
+  "per": {
+   "we-or-three/mercator/photo": 145
+  }
+ }
+]
