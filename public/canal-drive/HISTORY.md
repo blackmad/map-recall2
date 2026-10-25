@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+**Noord repetitive terraces (2026-10-25, #72).** Follow-up to #70.
+Four designs (`nd-to-cottage`, `nd-to-row`, `nd-bz-brick-row`,
+`nd-bz-green-gable`), 1,949 instanced houses: Tuindorp Oostzaan-Oost
+1,282 (64 % of non-minor pands), Blauwe Zand 667 (80 %); 1,753 from
+photo-classified terraces, 196 signature-matched. Kit: `roof.dormers`
+(incl. paired half dormers), `roof.pairGable` with fall side from 3DBAG
+planes, `eavesPinM`, `ridgeRangeM`, `sizeClassesM` (one unit per size class
+to stay inside the 0.85-1.2 instance scale); build.ts mirror alternation fix
+for rows of mixed depth. nw-*/zo-* units hash-identical. Desktop draw calls
++88 (Tuindorp) / +134 (Blauwe Zand) from 40 new unit meshes; frames stay
+vsync-bound, accepted. Not expressed: replacement dormers, canted bays,
+roof windows, raised houses (Orionstraat/Maanstraat), Castorplein render,
+gambrel roofs, the larger Waddenweg houses (held).
+
 **Large-tier facade tone (2026-10-25, #71).** Follow-up to #65's dark
 Haarlemmerweg fronts. Finding: lighting is identical across pipelines
 (north/south 0.77-0.79 everywhere, `look/lookParity.ts`); the "0.58" was
