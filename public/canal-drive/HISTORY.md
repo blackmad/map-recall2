@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+**White trim and merged type draws (2026-10-25, #78).** Specs already
+held near-white trim (#efede6 etc.), but the generator routed white sills/
+surrounds/hoods to the stone slot (city stone tint mixes 45 % to sandstone
+#cfc8b8, drew ~201 warm) and frames through the cream frame tint (75 % to
+#f1ede2). Photo trim is neutral (median r/b 0.98-1.02 over 336 crops).
+New `buildingTypes/whiteTrim.ts` classifies painted white (L >= 0.88,
+spread <= 16) to the paint slot at neutral `TRIM_WHITE` #ebebeb, the
+brightest that keeps level sill tops <= 247 in the sunny look (test-pinned);
+creams keep their slot. 224/250 units re-exported material-only
+(`regen-units --white-only`, decode-compared geometry-identical). Draws: a
+merged Lambert material reads per-slot texture/tint from vertex attributes,
+one draw per unit near and far (fallback above 10 textures):
+Nieuwendam view 122 -> 38, Reigersbos 4 80 -> 18, De Eendracht 97 -> 18;
+city-wide 1,905+496 -> 248+248 if all drawn. Mirrored-unit instancing
+rejected (56/77 mirror pairs differ by mm-cm). Pilot tile golden re-recorded:
+only `unit` content ids changed, triangle hashes identical. Review renderer
+now uses the game look by default (`--look=review` for the old).
+
 **Repetitive designs round 5 + mottled brick (2026-10-25, #77).**
 Mottle: a brick wall carries 2-6 tones with shares, painted per brick into
 a 24x7 texture (`buildingTypes/mottle.ts`; 0 extra triangles, one texture

@@ -3,6 +3,11 @@
  "notes": [
   {
    "date": "2026-10-25",
+   "title": "White window frames are white again",
+   "text": "On the terraced-house designs, window frames, sills, door surrounds and fascias painted white in real life now draw a clean white instead of cream. The same houses also draw with far fewer draw calls, so busy neighbourhoods like Nieuwendam render more cheaply."
+  },
+  {
+   "date": "2026-10-25",
    "title": "Speckled brick, and 1,600 more houses in Nieuwendam, Reigersbos and De Eendracht",
    "text": "Brick can now be speckled in several tones, so the K-buurt rows show their grey-brown mottled brick instead of a flat brown. Tuindorp Nieuwendam's garden-village rows, Reigersbos 3 and 4, and De Eendracht in Geuzenveld now use designs measured from street photos."
   },
