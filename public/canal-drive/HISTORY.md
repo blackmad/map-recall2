@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Gate-fail installs re-reviewed (2026-10-25, #56).** Politie Houtmankade
+walls[2] was wrong (six square rows; photo has a 2-storey glazed plinth,
+five rows, corner 2-lights): re-measured, now WARN. Stadsloket Zuidoost
+re-authored (mixed-width windowPattern, double-height arcade behind white
+piers, blind bays, door moved): matches the photos window for window, but
+the gate still FAILs it because its rhythm detector reduces mixed-width
+rows to one window and the crops assume street level 0.4 m NAP where 3DBAG
+ground is -2.78 m. Integrator accepted it as inferred because it replaces
+a plainly worse installed model; the gate fix is a lane, after which the
+inferred groups come off. Kit: `arcadePiers`, windowPattern + openBays.
+OBA Osdorp stays held.
+
 **Centraal ground and two factory installs (2026-10-25, #53, #48).** AHN relief
 drew Stationsplein's stairwells as 3.7–4.5 m craters and filled Centraal's
 glass-roof holes from the +5 m track bed. `heightField.ts` gained findPits /
