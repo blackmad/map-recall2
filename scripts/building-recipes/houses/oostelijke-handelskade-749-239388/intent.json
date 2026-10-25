@@ -24,9 +24,9 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 4,
-   "baysPerStorey": 9,
+   "baysPerStorey": 6,
    "ground": "system",
-   "windows": "plain",
+   "windows": "cross",
    "deepBars": true,
    "stringCourses": true,
    "arches": {
@@ -42,8 +42,14 @@
    "hand": [
     "system",
     "baysPerStorey",
-    "windowShape"
-   ]
+    "windowShape",
+    "windows"
+   ],
+   "windowShape": {
+    "w": 0.62,
+    "h": 0.72,
+    "sill": 0.12
+   }
   }
  ],
  "otherWalls": "blank",
@@ -62,7 +68,8 @@
   "Oostelijke Handelskade 749 (BAG pand 0363100012239388, built 2012, 167 3DBAG wall surfaces, roof max 25.7 m): two long residential-and-office blocks in warehouse style on the Oostelijke Handelskade in the Eastern Docklands, with tall brick arcades, cream string courses, stone-dressed arched windows and projecting black steel oriel stacks. Three walls were photographed: the 193 m south quay front (w01-196, 2016-05-17, one panorama crop of both blocks), the side street end (w02-16, 2025-06-16, a north end with a stone-dressed arched corner window, black oriels and a DartDesign sign) and the east end (w03-106, 2024-10-16).",
   "walls[0] = surfaces 7, 16 and 61 (S, panels 84 and 8, the 36 m western part of each block, eaves 23.7): four storeys of round-arched windows, one arch per bay with a brick arch band and cream string courses between the storeys, the ground storey arched too. Drawn as 4 storeys x 9 bays on the widest panel (about 4 m wide windows spaced across 85 m). The budget allows one group: 9 bays on the 36 m and 36 m parts was the most the 12k triangle limit held (12 bays cost 13.3k).",
   "Simplified: window spacing is uniform where the photograph alternates single and paired arches, the stone dressing blocks and keystones are the kit arch band and keystones, the black steel oriel stacks, the iron balconies and the DartDesign sign are not modelled. Not drawn: the eastern 38 m of each south front (surfaces 3 and 9 are shared with the north and west panels and doubled the triangle count), the north and end walls and the small outbuilding, which stay blank brick.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #383a39 not used (not darker than the wall #544743 by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #383a39 not used (not darker than the wall #544743 by 10 L*, or tinted): kit glass kept.",
+  "Refit 2026-10-25 (issue #59): walls[0] (w01-196) the arches are about 4 m wide, six per panel, not nine narrow ones: 6 bays of round-arched cross windows w 0.62 h 0.72 (photo 6 columns, square, glazing 0.38 vs 0.40 drawn): WARN, was FAIL."
  ],
  "measured": {
   "date": "2026-10-14",
