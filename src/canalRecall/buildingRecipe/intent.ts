@@ -20,6 +20,7 @@ import {groundCanopyProblems, type GroundCanopyIntent} from './groundCanopyInten
 import type {ArcadePiersIntent} from '../blockBuilding/arcadePiers.ts';
 import type {WindowBoxIntent} from '../blockBuilding/windowBox.ts';
 import type {GalleryIntent} from '../blockBuilding/gallery.ts';
+import type {SignBoardIntent} from '../blockBuilding/signBoards.ts';
 
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat'] as const;
 export type GableIntent = typeof GABLES[number];
@@ -863,7 +864,9 @@ export interface LargeWallIntent {
   /** Recessed entrance on the widest panel: `bay` from the viewer's left (default the middle), `storeys` > 1 = a glazed entrance hall that tall, `canopy` = a cantilevered slab over it. */
   entrance?: boolean | {bay?: number; storeys?: number; canopy?: boolean; /** carved stone portal: jambs, entablature, a pediment block with a crest (single-storey entrances) */ portal?: boolean};
   /** Stroke-font lettering: over the entrance (`fascia`, default; on the frieze of a portal), on the wall above the ground floor (`wall`), on the entrance-hall glass (`glazing`), the canopy edge (`canopy`) or a name band under the cornice (`cornice`, on the widest panel). */
-  signage?: string | {text: string; colour?: string; mount?: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice'};
+  signage?: string | {text: string; colour?: string; mount?: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice';
+    /** `wall` mount only: [from, to] fractions of the widest panel's width from the viewer's left that the lettering spans (default centred over 0.6 of the panel; Nieuwpoortkade 2's white-brick "da vinci creatieve ruimtes" runs over the left half, issue #83) */
+    along?: [number, number]};
   /** Recessed sectional garage doors in the ground storey, from the right end of the widest panel. */
   garageDoors?: number;
   /** Recessed sectional garage doors in exactly these ground-storey bays of the widest panel (needs `baysPerStorey`); an alternative to `garageDoors`. */
@@ -1117,6 +1120,18 @@ export interface LargeWallIntent {
    * frame and glass slots, `lights` across it and a transom. Leave the bays behind it blind (`openBays`). Absent = byte-identical.
    */
   windowBox?: WindowBoxIntent;
+  /**
+   * Flat sign boards on the main panel (blockBuilding/signBoards.ts; Haarlemmerweg 337's dark sign band and boards on its
+   * sheet front): `along` [from, to] of the panel width from the viewer's left, `up` [from, to] of the panel's top height,
+   * in `colour` (default the door colour), standing proud of the wall and any cladding. Absent = byte-identical.
+   */
+  signBoards?: SignBoardIntent[];
+  /**
+   * A false front (blockBuilding/signBoards.ts): on every panel of the group whose top rises above its eaves (the gable
+   * ends of a sawtooth or pitched hall roof), a flat slab from the eaves to the top in the cladding sheet's colour (else the
+   * wall's), hiding the roof profile as the photographed sheet front does. Absent = byte-identical.
+   */
+  falseFront?: boolean;
   /**
    * Open galleries (verandas) stacked in front of a span of bays of the main panel (blockBuilding/gallery.ts; the 1905
    * villas on the Vondelpark's south edge): a deck per listed storey on posts, an arch between each pair of posts under

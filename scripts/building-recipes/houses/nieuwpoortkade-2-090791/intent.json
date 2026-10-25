@@ -1,0 +1,366 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "nieuwpoortkade-2-090791",
+ "pandId": "0363100012090791",
+ "address": "Nieuwpoortkade 2, Amsterdam-West (1939 works and office complex beside De Bloem windmill, south of the Haarlemmerweg, with a later office tower; BAG pand 0363100012090791)",
+ "sources": [
+  {
+   "id": "pano-2017-04-21-w02-359",
+   "kind": "street-panorama",
+   "capturedAt": "2017-04-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000275_pano_0000_002188/",
+   "image": "source-data://pand-reference-walls/0363100012090791/w02-359.jpg",
+   "sha256": "be8a3a0df7766d2e716835695da0b54492e2821d10d7fc1f1b8a30b02a88ec69",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-05-02-w04-89b",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002554_pano_0000_005278/",
+   "image": "source-data://pand-reference-walls/0363100012090791/w04-89b.jpg",
+   "sha256": "1eb99dca7ae54788e673e840f0b572f40dc5c5fcfd6df5641b487fcaf85e2a71",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w05-89",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_26_07_01_39_00369/",
+   "image": "source-data://pand-reference-walls/0363100012090791/w05-89.jpg",
+   "sha256": "a1035554250c0226257cbccb621c512308c83c40fa64eb1b85a9962b96b4bac2",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-05-02-w01-269",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002554_pano_0000_005504/",
+   "image": "source-data://pand-reference-walls/0363100012090791/w01-269.jpg",
+   "sha256": "53aa182b6443fd2adb18b35bd5a4081aa107abfb199c26aee25cd68a40ab287b",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-21-w01-269",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/terdam_21112024_Track11_Sphere_00015/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-21-w02-359",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/terdam_21112024_Track14_Sphere_00030/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-06-20-w03-179",
+   "kind": "street-panorama",
+   "capturedAt": "2018-06-20",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000798_pano_0000_001097/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-21-w03-179L",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/terdam_21112024_Track13_Sphere_00107/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-22-w04-89",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002054_pano_0000_000771/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-21-w05-89L",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/terdam_21112024_Track13_Sphere_00119/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-05-02-w06-89",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002554_pano_0000_005283/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-22-w06-89L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002054_pano_0000_000766/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    131
+   ],
+   "street": "north front to the Haarlemmerweg park and De Bloem",
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 16,
+   "windows": "transom",
+   "palette": {
+    "brick": "#4b4236"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "palette.brick",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "plinth",
+    "signage"
+   ],
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.58,
+    "sill": 0.2
+   },
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "bays": [
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15
+    ],
+    "lights": 4,
+    "transom": 0.75
+   },
+   "signage": {
+    "text": "da vinci creatieve ruimtes",
+    "colour": "#d8d4cc",
+    "mount": "wall",
+    "along": [
+     0.035,
+     0.46
+    ]
+   }
+  },
+  {
+   "wallSurfaces": [
+    31,
+    32,
+    38
+   ],
+   "street": "Nieuwpoortkade (east, north wing)",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "windows": "plain",
+   "palette": {
+    "brick": "#b29e7e"
+   },
+   "hand": [
+    "palette.brick",
+    "storeys",
+    "system",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.75,
+    "h": 0.5,
+    "sill": 0.22
+   },
+   "baysPerStorey": 8
+  },
+  {
+   "wallSurfaces": [
+    33
+   ],
+   "street": "Nieuwpoortkade (east, south wing)",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "palette": {
+    "brick": "#655547"
+   },
+   "hand": [
+    "baysPerStorey",
+    "palette.brick",
+    "palette.glass",
+    "storeys",
+    "system",
+    "windowPattern",
+    "windowShape",
+    "windows"
+   ],
+   "windowShape": {
+    "w": 0.82,
+    "h": 0.4,
+    "sill": 0.3
+   },
+   "baysPerStorey": 8,
+   "windows": "transom",
+   "windowPattern": [
+    0.26,
+    0.26,
+    0.82,
+    0.82,
+    0.82,
+    0.82,
+    0.82,
+    0.82
+   ]
+  },
+  {
+   "wallSurfaces": [
+    39,
+    149,
+    17,
+    34
+   ],
+   "street": "Van Slingelandtstraat side (south)",
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "palette": {
+    "brick": "#67594a"
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#8d918b",
+    "pitch": 1.3,
+    "rowPitch": 1.6,
+    "from": 0.3
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "palette.brick",
+    "cladding"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    21,
+    24
+   ],
+   "street": "west, low works hall",
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "windows": "plain",
+   "palette": {
+    "brick": "#4a3d36"
+   },
+   "hand": [
+    "baysPerStorey",
+    "palette.brick",
+    "storeys",
+    "system",
+    "windowShape",
+    "windows"
+   ],
+   "baysPerStorey": 20,
+   "windowShape": {
+    "w": 0.75,
+    "h": 0.24,
+    "sill": 0.5
+   }
+  },
+  {
+   "wallSurfaces": [
+    126
+   ],
+   "street": "west, two-storey office over the works doors",
+   "system": "ribbon-windows",
+   "storeys": 2,
+   "palette": {
+    "brick": "#67594a",
+    "glass": "#4f5257"
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#8d918b",
+    "pitch": 1.3,
+    "rowPitch": 1.6,
+    "from": 0.5
+   },
+   "hand": [
+    "baysPerStorey",
+    "cladding",
+    "ground",
+    "palette.brick",
+    "plinth",
+    "storeys",
+    "system",
+    "windowShape"
+   ],
+   "baysPerStorey": 20,
+   "ground": "blank",
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.45,
+    "sill": 0.28
+   }
+  },
+  {
+   "wallSurfaces": [
+    1,
+    99,
+    28,
+    42,
+    18,
+    20,
+    2,
+    50,
+    77,
+    87,
+    147,
+    47,
+    27,
+    23
+   ],
+   "system": "ribbon-windows",
+   "palette": {
+    "brick": "#b29e7e"
+   },
+   "hand": [
+    "system",
+    "palette.brick"
+   ]
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#67594a",
+  "frame": "#efece4",
+  "door": "#3f6f9a",
+  "stone": "#d9d6cc"
+ },
+ "notes": [
+  "Nieuwpoortkade 2 (1939; buurt Bedrijventerrein Landlust): a works and office complex in buff brick on the bank south of the Haarlemmerweg, east of De Bloem windmill, with a later office tower rising from its middle.",
+  "North front (w02-359, 2017-04-21, 0.6 deg; 2024-11-21 crop dropped for foliage): two storeys, a row of 16 wide white-framed windows upstairs; the ground storey has windows on the west half and a glazed recessed corner on the east; white-brick lettering 'da vinci creatieve ruimtes' across the west half (not modelled: a tenant sign).",
+  "East wings on the Nieuwpoortkade (w04-89 2021-03-22 sunlit, w05-89 2025-09-26): three storeys of wide white-framed windows, a glass-block stair column and two small balconies on the north wing.",
+  "South side (w03-179, 2018-06-20): a grey panel-clad band of two storeys with ribbon windows over a buff brick plinth with dark piers; the tower above it is buff brick with ribbon windows.",
+  "West (w01-269, 2022-05-02): the low works hall in brick with small high windows and blue doors, and a two-storey grey-clad office with a ribbon window over blue works doors.",
+  "Colour: two bricks. The north wing on the Nieuwpoortkade (walls[1]) is buff/yellow brick: #b29e7e from the sunlit w04-89 (2021-03-22; the 2022 crop w04-89b in full sun reads #f7d6a8, the shade crops darker, so the photos bracket it). The north front, south wing, south plinth and west hall are brown brick (dHue 6-12 against the buff, not shade of it): the brightest reading, #67594a (w02-359 2017, normalised), for all of them, left unmeasured so the export lifts it like any shaded wall. Grey cladding #8d918b is the shade reading of w03-179/w01-269, unmeasured. The tower reads light tan in w01-269/w03-179 and takes the buff.",
+  "Tower: no archived crop matches its panels (they stand inside the footprint, so all-walls.ts has no exposed BAG wall for them); ribbon windows in buff brick from the w01-269 and w03-179 views, inferred, not a street-facing group.",
+  "3DBAG API timed out on 2026-10-25; facts came from the PDOK 3D Basisvoorziening fallback in facts.ts.",
+  "Measured 2026-10-25 (measure.ts, evidence in measured.json): groups 0, 1, 2, 4, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4e5756 not used (not darker than the wall #67594a by 10 L*, or tinted): kit glass kept; walls[1] glass #b6c3c6 not used (not darker than the wall #f7d6a8 by 10 L*, or tinted): kit glass kept; walls[1] bays 8 from the likeness grid (padded measurement 6); walls[4] glass #323d4a not used (not darker than the wall #4a3d36 by 10 L*, or tinted): kit glass kept; walls[4] bays 20 from the likeness grid (padded measurement -); walls[5] bays 20 from the likeness grid (padded measurement 43).",
+  "walls[0] revised 2026-10-25 after integrator review (#83): wall #4b4236 is the median brick between the window rows on the overcast 2017 crop w02-359 (white frames read #efece4 there, so the reading is white-referenced; integrator raw #4a4235), drawn as measured. 16 white-framed transom windows per storey at 0.8 of the 3.4 m bay (2.7 m wide), the glazed hall and recessed passage of ground bays 9-15 as a 4-light plinth with a transom, and the white-brick lettering 'da vinci creatieve ruimtes' over the left 0.04-0.46 of the wall between the two window rows (signage.along).",
+  "walls[2] revised 2026-10-25 (#83): the 2025-09-26 morning crop w05-89 is sunlit (east front at 09:00), wall raw #655547 drawn as measured; two small square windows in bays 0-1, then six wide white-framed transom windows at 0.82 of the bay and 0.4 of the storey (the photo mask splits each into two columns at its side light).",
+  "walls[4] (west low hall) is drawn in its own crop's raw brick #4a3d36 as measured (the same dark brown brick as walls[0], a little redder); the earlier lifted #806f5c was a guess."
+ ],
+ "budgetTriangles": 15000,
+ "measured": {
+  "date": "2026-10-25",
+  "groups": [
+   0,
+   2,
+   4
+  ]
+ }
+}

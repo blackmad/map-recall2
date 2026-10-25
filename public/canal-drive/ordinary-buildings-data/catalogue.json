@@ -52140,6 +52140,119 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-25T09:39:10.630Z"
+    },
+    {
+      "id": "ordinary-0363100012118325",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012118325",
+      "name": "Haarlemmerweg 337 / Vredenhofweg 1, Amsterdam-West (1954 shop hall on the corner, west of Haarlemmerweg 333; a two-storey front in grey horizontal profiled metal over a glazed shopfront with a dark sign band; BAG pand 0363100012118325)",
+      "hash": "c118b74bed784463a65d606746e2575c72e0ae0c860520ab72227ce3a0d91c75",
+      "sha256": "c118b74bed784463a65d606746e2575c72e0ae0c860520ab72227ce3a0d91c75",
+      "meshHash": "51e530970dd0f08d",
+      "bytes": 329976,
+      "triangles": 4343,
+      "materials": 13,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -9.761,
+          -0.001,
+          -29.117
+        ],
+        "max": [
+          23.053,
+          7.544,
+          11.739
+        ]
+      },
+      "anchor": [
+        4.8634112,
+        52.3848522
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8632671,
+              52.3851065
+            ],
+            [
+              4.8632819,
+              52.3847502
+            ],
+            [
+              4.8632818,
+              52.384747
+            ],
+            [
+              4.8632804,
+              52.3847469
+            ],
+            [
+              4.8632805,
+              52.3847461
+            ],
+            [
+              4.863751,
+              52.3847543
+            ],
+            [
+              4.8637359,
+              52.3851143
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 7.54,
+      "height": 7.54,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-haarlemmerweg-337-118325.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012118325"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "haarlemmerweg-337-118325",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012118325/w03-359.jpg",
+          "source-data://pand-reference-walls/0363100012118325/w01-269.jpg",
+          "source-data://pand-reference-walls/0363100012118325/w01-269L.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+boards 2st 13b",
+          "brick-bay-grid+entrance+boards 1st 19b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] likeness WARN (wall family unresolved (#62656c is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 13 vs photo 7; mask IoU 0.259 < 0.45).",
+        "walls[1] not confirmed by the photo (FAIL (glazing  mean 0.18 vs photo 0.51; wall family unresolved (#555c60 is dark and neutral, brick courses not resolved): lightness and hue judged only)); inferred: photo mask reads the dark sign boards and WELKOM panel as glazing, shopfront glazing matches by eye",
+        "Vredenhofweg side (w01-269 2025-10-02, 2.3 deg oblique; w01-269L 2021-03-22 for comparison): the profiled grey sheet runs flat to about 7 m along the whole 40 m side, a false front in front of the sawtooth hall roof (3DBAG/PDOK shell: eaves 4.4 m, teeth to 7.5 m), drawn with the new falseFront component. Glazed shopfront along the northern 0.53 of the side (10 of 19 bays, door in bay 5) under a teal band, blank sheet to the south; two slate-blue boards 3.3-6.8 m up at 0.02-0.16 and 0.40-0.48 of the width (new signBoards component). In 2025 the 2021 dark WELKOM board is a vertically ribbed silver portal panel rising a little above the front at 0.21-0.35: not drawn (kit cannot yet say a raised ribbed panel).",
+        "Shop lettering (carpetright., WELKOM, product list) not modelled: brand signage, not architecture (START-HERE section 4). The boards are."
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012118325",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-25T17:41:55.982Z"
     }
   ]
 }

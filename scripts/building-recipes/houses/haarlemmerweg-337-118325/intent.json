@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "haarlemmerweg-337-118325",
+  "pandId": "0363100012118325",
+  "address": "Haarlemmerweg 337 / Vredenhofweg 1, Amsterdam-West (1954 shop hall on the corner, west of Haarlemmerweg 333; a two-storey front in grey horizontal profiled metal over a glazed shopfront with a dark sign band; BAG pand 0363100012118325)",
+  "sources": [
+    {
+      "id": "pano-2021-03-24-w03-359",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-24",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002058_pano_0000_000159/",
+      "image": "source-data://pand-reference-walls/0363100012118325/w03-359.jpg",
+      "sha256": "731148c745cc4ca840a5c1e4a580e76bbf06659860f220fc680a69efefc93fb0",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2025-10-02-w01-269",
+      "kind": "street-panorama",
+      "capturedAt": "2025-10-02",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_08_06_04_00526/",
+      "image": "source-data://pand-reference-walls/0363100012118325/w01-269.jpg",
+      "sha256": "6d5a861da196168eae3d6ce00bd75d2b8fcf5b2ef16bd879b58f691986faaf29",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2021-03-22-w01-269L",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-22",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002054_pano_0000_005255/",
+      "image": "source-data://pand-reference-walls/0363100012118325/w01-269L.jpg",
+      "sha256": "93e9f9f3714e300e89c051e7a764e3869e8fc96e69676138362f6f7f243da6cc",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "walls": [
+    {
+      "wallSurfaces": [
+        18
+      ],
+      "street": "Haarlemmerweg (north front)",
+      "system": "brick-bay-grid",
+      "storeys": 2,
+      "baysPerStorey": 13,
+      "ground": "plinth-shopfronts",
+      "windows": "plain",
+      "windowShape": {
+        "w": 0.57,
+        "h": 0.45,
+        "sill": 0.36
+      },
+      "palette": {
+        "frame": "#3b3f44",
+        "stone": "#2c7f84"
+      },
+      "cladding": {
+        "kind": "boards",
+        "colour": "#6b727b",
+        "pitch": 0.2,
+        "from": 0.4
+      },
+      "signBoards": [
+        {
+          "along": [
+            0.018,
+            0.193
+          ],
+          "up": [
+            0.4,
+            0.62
+          ],
+          "colour": "#445662"
+        },
+        {
+          "along": [
+            0.222,
+            0.784
+          ],
+          "up": [
+            0.4,
+            0.62
+          ],
+          "colour": "#445662"
+        },
+        {
+          "along": [
+            0.813,
+            0.982
+          ],
+          "up": [
+            0.4,
+            0.62
+          ],
+          "colour": "#445662"
+        }
+      ],
+      "hand": [
+        "system",
+        "ground",
+        "cladding",
+        "palette",
+        "windows",
+        "windowShape",
+        "baysPerStorey",
+        "signBoards"
+      ]
+    },
+    {
+      "wallSurfaces": [
+        2,
+        17
+      ],
+      "street": "Vredenhofweg (west side)",
+      "system": "brick-bay-grid",
+      "storeys": 1,
+      "baysPerStorey": 19,
+      "ground": "system",
+      "windows": "plain",
+      "windowShape": {
+        "w": 0.95,
+        "h": 0.74,
+        "sill": 0.02
+      },
+      "openBays": [
+        {
+          "storeys": [
+            0
+          ],
+          "bays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        }
+      ],
+      "entrance": {
+        "bay": 5
+      },
+      "palette": {
+        "frame": "#3b3f44",
+        "glass": "#425660"
+      },
+      "cladding": {
+        "kind": "boards",
+        "colour": "#6b727b",
+        "pitch": 0.2
+      },
+      "falseFront": true,
+      "signBoards": [
+        {
+          "along": [
+            0.02,
+            0.164
+          ],
+          "up": [
+            0.44,
+            0.91
+          ],
+          "colour": "#445662"
+        },
+        {
+          "along": [
+            0.214,
+            0.351
+          ],
+          "up": [
+            0.44,
+            0.99
+          ],
+          "colour": "#57646f"
+        },
+        {
+          "along": [
+            0.396,
+            0.484
+          ],
+          "up": [
+            0.44,
+            0.91
+          ],
+          "colour": "#445662"
+        }
+      ],
+      "hand": [
+        "system",
+        "ground",
+        "cladding",
+        "palette",
+        "windows",
+        "windowShape",
+        "baysPerStorey",
+        "openBays",
+        "signBoards",
+        "falseFront"
+      ]
+    }
+  ],
+  "otherWalls": "blank",
+  "palette": {
+    "brick": "#6b727b",
+    "frame": "#3b3f44",
+    "door": "#2e3236",
+    "stone": "#2c7f84"
+  },
+  "roof": {
+    "material": "bitumen"
+  },
+  "notes": [
+    "Haarlemmerweg front (w03-359, 2021-03-24, 17 m, 1 deg oblique): two storeys under a 7.5 m eaves. Ground storey a continuous shopfront of dark-framed glazing under a teal band; a dark sign band of three boards (0.02-0.19, 0.22-0.78, 0.81-0.98 of the width, about 3.0-4.7 m up) across the full width; first storey 13 square windows (1.4 m in a 2.45 m bay) in grey horizontal profiled metal sheet.",
+    "Vredenhofweg side (w01-269 2025-10-02, 2.3 deg oblique; w01-269L 2021-03-22 for comparison): the profiled grey sheet runs flat to about 7 m along the whole 40 m side, a false front in front of the sawtooth hall roof (3DBAG/PDOK shell: eaves 4.4 m, teeth to 7.5 m), drawn with the new falseFront component. Glazed shopfront along the northern 0.53 of the side (10 of 19 bays, door in bay 5) under a teal band, blank sheet to the south; two slate-blue boards 3.3-6.8 m up at 0.02-0.16 and 0.40-0.48 of the width (new signBoards component). In 2025 the 2021 dark WELKOM board is a vertically ribbed silver portal panel rising a little above the front at 0.21-0.35: not drawn (kit cannot yet say a raised ribbed panel).",
+    "Colour: both street fronts face north/west and every crop is a shade reading (overcast March 2021, morning October 2025); no sunlit crop exists (w02-89 is the neighbour, Haarlemmerweg 333). The brightest reading of the sheet (#6b727b, the strip above the first-storey windows of w03-359) is used and left unmeasured, so the export lifts it like any shaded wall (as the #65 Haarlemmerweg fronts). Teal band #2c7f84 and board #445662 are the 2025 w01-269 readings. Glass: west shop glazing takes the measured not-wall colour of w01-269 (2025), #425660; the north front keeps the kit glass (its first-storey panes read #5f616b-#7b8489, as light as the sheet, and the measured not-wall #3b626a is mostly the teal bands).",
+    "Shop lettering (carpetright., WELKOM, product list) not modelled: brand signage, not architecture (START-HERE section 4). The boards are.",
+    "Not drawn: the white roller loading door and service door at the south end of the Vredenhofweg side (openBays and garageBays cannot share the ground row); the teal stall-riser band under the shop glazing (the kit's shopfront frame is one colour); the flagpoles.",
+    "3DBAG API timed out on 2026-10-25; facts came from the PDOK 3D Basisvoorziening fallback in facts.ts."
+  ],
+  "measured": {
+    "date": "2026-10-25",
+    "groups": [
+      1
+    ]
+  }
+}

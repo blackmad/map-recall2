@@ -26,6 +26,7 @@ import {MESH_SCREEN} from '../blockBuilding/components.ts';
 import {CLADDING, PANEL_ROW_M, claddingHeights, type CladdingFit} from '../blockBuilding/cladding.ts';
 import {fitArcadePiers, type ArcadePiersFit} from '../blockBuilding/arcadePiers.ts';
 import {fitWindowBox, type WindowBoxFit} from '../blockBuilding/windowBox.ts';
+import type {SignBoardFit} from '../blockBuilding/signBoards.ts';
 import {fitGallery, type GalleryFit} from '../blockBuilding/gallery.ts';
 import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {roofHeightAt} from './facts.ts';
@@ -72,7 +73,7 @@ export interface LargeGroupFit {
   /** stone dressings (intent `dressings`, drawn by blockBuilding/dressings.ts) and their slot: the group's stone, or `dress@g<i>` in `dressings.colour` */
   dressings?: StoneDressings & {slot: string};
   garage: {panel: number; bays: number[]} | null;
-  signage: {text: string; colour: string; mount: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice'} | null;
+  signage: {text: string; colour: string; mount: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice'; along?: [number, number]} | null;
   police: {stripe: boolean; lamp: boolean} | null;
   /** loading-door axis (bay % every === first) and the name boards over its ground portals on the main panel */
   hoist?: {every: number; first: number} | {bays: number[]};
@@ -98,6 +99,10 @@ export interface LargeGroupFit {
   arcadePiers?: ArcadePiersFit;
   /** a projecting glazed window box over a span of bays on one storey (intent `windowBox`, blockBuilding/windowBox.ts) */
   windowBox?: WindowBoxFit;
+  /** flat sign boards on the main panel (intent `signBoards`, blockBuilding/signBoards.ts) */
+  signBoards?: SignBoardFit[];
+  /** a false front over the panels whose top rises above their eaves (intent `falseFront`), in this slot */
+  falseFront?: {slot: string};
   /** open galleries (verandas) over a span of bays of the main panel (intent `gallery`, blockBuilding/gallery.ts), one entry per gallery */
   gallery?: GalleryFit[];
   /** mansard storeys and their slate-textured slot */
@@ -538,7 +543,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     }
     groups.push({index: gi, system: w.system, specSystem, panels: own.map(p => p.index), surfaces: [...w.wallSurfaces], mainPanel: main?.index ?? null, bearingDeg: main ? Math.round(bearingOfNormal(main.n)) : null,
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
-      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(plinthSlot ? {plinthSlot} : {}), ...(spandrelSlot ? {spandrels: {sill: w.spandrels!.sill ?? 0, head: w.spandrels!.head ?? 0, slot: spandrelSlot}} : {}), ...(screenSlot ? {meshScreen: {storeys: [...w.meshScreen!.storeys], from: w.meshScreen!.from ?? MESH_SCREEN.from, to: w.meshScreen!.to ?? MESH_SCREEN.to, joint: w.meshScreen!.joint ?? MESH_SCREEN.joint, slot: screenSlot}} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(w.brickStoreys ? {brickStoreys: w.brickStoreys.map((b, k) => { const sl = `painted@g${gi}s${k}`; palette[sl] = swatch(b.brick); return {storeys: [...b.storeys], slot: sl}; })} : {}), ...(w.mansard ? {mansard: {storeys: [...w.mansard.storeys], slot: (palette[`mansard@g${gi}`] = swatch(w.mansard.colour ?? ROOF_COLOURS.slate.steep), `mansard@g${gi}`)}} : {}), ...(pilasters ? {pilasters} : {}), ...(dressings ? {dressings} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
+      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(plinthSlot ? {plinthSlot} : {}), ...(spandrelSlot ? {spandrels: {sill: w.spandrels!.sill ?? 0, head: w.spandrels!.head ?? 0, slot: spandrelSlot}} : {}), ...(screenSlot ? {meshScreen: {storeys: [...w.meshScreen!.storeys], from: w.meshScreen!.from ?? MESH_SCREEN.from, to: w.meshScreen!.to ?? MESH_SCREEN.to, joint: w.meshScreen!.joint ?? MESH_SCREEN.joint, slot: screenSlot}} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(w.brickStoreys ? {brickStoreys: w.brickStoreys.map((b, k) => { const sl = `painted@g${gi}s${k}`; palette[sl] = swatch(b.brick); return {storeys: [...b.storeys], slot: sl}; })} : {}), ...(w.mansard ? {mansard: {storeys: [...w.mansard.storeys], slot: (palette[`mansard@g${gi}`] = swatch(w.mansard.colour ?? ROOF_COLOURS.slate.steep), `mansard@g${gi}`)}} : {}), ...(pilasters ? {pilasters} : {}), ...(dressings ? {dressings} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia', ...('along' in sign && sign.along ? {along: [sign.along[0], sign.along[1]] as [number, number]} : {})} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
       ...(w.hall ? {hall: {baseM: r3(w.hall.base * eaves), lights: w.hall.lights, rows: w.hall.rows}} : {}),
       ...(w.columns ? {columns: {bays: [...w.columns.bays], share: w.columns.share ?? 0.9, from: w.columns.from ?? 1, slabs: !!w.columns.slabs, ...(colGlass ? {glass: colGlass} : {})}} : {}),
       ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}),
@@ -547,6 +552,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(houses ? {houses} : {}),
       ...(w.arcadePiers ? {arcadePiers: fitArcadePiers(w.arcadePiers, slots.stone)} : {}),
       ...(w.windowBox ? {windowBox: fitWindowBox(w.windowBox, {frame: boxFrame ?? slots.frame, glass: slots.glass, ...(boxDeck ? {deck: boxDeck} : {})}, main ? main.uMax - main.uMin : undefined, bays)} : {}),
+      ...(w.signBoards ? {signBoards: w.signBoards.map((b, k) => { const sl = `signboard@g${gi}k${k}`; palette[sl] = swatch(b.colour ?? pal.door); return {along: [b.along[0], b.along[1]] as [number, number], up: [b.up[0], b.up[1]] as [number, number], slot: sl}; })} : {}),
+      ...(w.falseFront ? {falseFront: {slot: cladSlot ?? slots.wall}} : {}),
       ...(w.gallery ? {gallery: fitGallery(w.gallery, {stone: slots.stone, timber: (k, colour) => { if (!colour) return slots.frame; const sl = `rail@gal${gi}k${k}`; palette[sl] = swatch(colour); return sl; },
         rail: (k, colour) => { const sl = `rail@gal${gi}k${k}r`; palette[sl] = swatch(colour); return sl; }})} : {}),
       ...(clad && cladSlot && cladLine ? {cladding: {kind: clad.kind, ...claddingHeights(eaves, clad.from, clad.to), pitchM: clad.pitch ?? (clad.kind === 'paint' ? 0 : CLADDING[clad.kind].pitch), rowPitchM: clad.rowPitch ?? PANEL_ROW_M, slot: cladSlot, lineSlot: cladLine,
