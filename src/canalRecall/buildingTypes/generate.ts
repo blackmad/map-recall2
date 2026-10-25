@@ -119,6 +119,8 @@ function keys(p: Palette) {
     plinth: (p.plinth ?? p.wall) as MaterialKey,
     roof: p.roof as MaterialKey,
     gable: (p.gable ?? p.wall) as MaterialKey,
+    // #85: a painted fascia / gutter board colour (blue 1990s fascias); only bands that name it draw it. Absent: the `dark` key.
+    fascia: (p.fascia ? {slot: 'door', tint: p.fascia} : {slot: 'door', tint: p.dark}) as MaterialKey,
   };
 }
 type Keys = ReturnType<typeof keys>;
@@ -126,7 +128,7 @@ type Keys = ReturnType<typeof keys>;
 interface Ctx { mb: MeshBuilder; k: Keys; storeys: number; sh: number; variant: string; groundMode: 'solid' | 'pilotis'; recess: number; inset: {front: number; back: number}; key: (name: string) => MaterialKey }
 
 /** Window joinery beyond the default 6 cm border (Element `frameM`, `transomM`): absent, the window is drawn exactly as before. */
-interface Joinery { frameM?: number; transomM?: number; sash?: MaterialKey; sashM?: number; round?: boolean }
+interface Joinery { frameM?: number; transomM?: number; sash?: MaterialKey; sashM?: number; round?: boolean; panesHigh?: number }
 
 function windowUnit(c: Ctx, f: Frame, u: number, v0: number, w: number, h: number, lights: number, d0 = 0, frameKey?: MaterialKey, strips = false, withSill = true, joinery?: Joinery): void {
   const {mb} = c, k = frameKey ? {...c.k, frame: frameKey} : c.k;
@@ -160,6 +162,8 @@ function windowUnit(c: Ctx, f: Frame, u: number, v0: number, w: number, h: numbe
       plate(mb, k.glass, f, u - w / 2 + fm + s, u + w / 2 - fm - s, v0 + fm + s, v0 + h - fm - s, d0 + 0.05);
       for (let i = 1; i < lights; i++) plate(mb, barKey, f, u - w / 2 + w * i / lights - bar / 2, u - w / 2 + w * i / lights + bar / 2, v0 + fm, v0 + h - fm, d0 + 0.055);
       if (joinery.transomM !== undefined && joinery.transomM > fm && joinery.transomM < h - fm) plate(mb, barKey, f, u - w / 2 + fm, u + w / 2 - fm, v0 + h - joinery.transomM - bar / 2, v0 + h - joinery.transomM + bar / 2, d0 + 0.055);
+      // #85 glazed screens: `panesHigh` rows of panes, the horizontal bars evenly up the glass (Aker-Oost 2003 ground-floor fronts).
+      for (let i = 1; i < (joinery.panesHigh ?? 1); i++) { const v = v0 + fm + (h - 2 * fm) * i / joinery.panesHigh!; plate(mb, barKey, f, u - w / 2 + fm, u + w / 2 - fm, v - bar / 2, v + bar / 2, d0 + 0.055); }
     }
     if (v0 > 0.4) box(mb, k.accent, f, u - w / 2 - 0.15, u + w / 2 + 0.15, v0 - 0.11, v0 - 0.05, d0, d0 + 0.12, {back: true, bottom: true});
     return;
@@ -218,8 +222,31 @@ function galleryUnit(c: Ctx, f: Frame, u0: number, u1: number, floorV: number, d
   }
 }
 
-function doorUnit(c: Ctx, f: Frame, u: number, w: number, h: number, steps: number, d0 = 0, v0 = 0, strips = false): void {
-  const {mb, k} = c, rise = 0.17, lift = v0 + steps * rise;
+/** #85 stoop: steps of a given rise/tread/width up to a raised door, with optional handrails on both sides. Absent: 0.17 m rise, 0.3 m tread, w + 0.7 m wide, no rails. */
+interface Stoop { riseM?: number; treadM?: number; widthM?: number; rail?: MaterialKey }
+
+function doorUnit(c: Ctx, f: Frame, u: number, w: number, h: number, steps: number, d0 = 0, v0 = 0, strips = false, stoop?: Stoop): void {
+  const {mb, k} = c, rise = stoop?.riseM ?? 0.17, lift = v0 + steps * rise;
+  if (stoop) {
+    // #85 a stoop to a raised ground floor (Terrasdorp 1958 souterrain rows): the door and its surround as the plain door below,
+    // the steps measured, each a block from the ground, and a sloping handrail with two posts on each side.
+    const tread = stoop.treadM ?? 0.3, half = (stoop.widthM ?? w + 0.7) / 2;
+    box(mb, k.accent, f, u - w / 2 - 0.14, u + w / 2 + 0.14, lift - 0.05, lift + h + 0.12, d0, d0 + 0.07);
+    plate(mb, k.door, f, u - w / 2, u + w / 2, lift, lift + h, d0 + 0.075);
+    plate(mb, k.glass, f, u - w / 2 + 0.14, u + w / 2 - 0.14, lift + h * 0.42, lift + h - 0.14, d0 + 0.08);
+    for (let i = 0; i < steps; i++) box(mb, k.accent, f, u - half, u + half, 0, (steps - i) * rise, d0 + 0.07 + tread * i, d0 + 0.07 + tread * (i + 1), {back: true, bottom: true});
+    if (stoop.rail) {
+      const run = tread * steps, railH = 0.9, t = 0.04;
+      for (const x of [u - half + 0.03, u + half - 0.03]) {
+        // sloping rail from the landing (top step) down to the bottom step, as a thin vertical strip facing out both ways
+        const a = f.p(x, lift + railH, d0 + 0.07 + tread), b = f.p(x, rise + railH, d0 + 0.07 + run);
+        const a2 = f.p(x, lift + railH - t * 1.5, d0 + 0.07 + tread), b2 = f.p(x, rise + railH - t * 1.5, d0 + 0.07 + run);
+        mb.quad(stoop.rail, a, b, b2, a2); mb.quad(stoop.rail, a2, b2, b, a);
+        for (const [dd, vb] of [[d0 + 0.07 + tread, lift], [d0 + 0.07 + run - 0.05, rise]] as const) box(mb, stoop.rail, f, x - t / 2, x + t / 2, vb, vb + railH, dd - t / 2, dd + t / 2, {back: false, bottom: false, top: true});
+      }
+    }
+    return;
+  }
   if (strips) {
     // the leaf 4 cm proud of the wall, glass panel and surround (jambs and head as strips) 4.5 cm in front of it: no stacked plates
     const df = d0 + 0.085;
@@ -341,7 +368,7 @@ function placeFacade(c: Ctx, f: Frame, length: number, id: FacadeId, bays: Bay[]
         const w = e.span || e.kind === 'gallery' ? slotW - 2 * (e.inset ?? 0) : e.w ?? 1, h = e.h ?? 1;
         switch (e.kind) {
           case 'window': case 'ribbon':
-            windowUnit(c, f, u, floor + (e.sill ?? 0.9), w, h, e.lights ?? 1, d0, e.colour ? c.key(e.colour) : undefined, e.frameStyle === 'strips', true, e.frameM !== undefined || e.transomM !== undefined ? {frameM: e.frameM, transomM: e.transomM, ...(e.sash ? {sash: c.key(e.sash), sashM: e.sashM} : {}), ...(e.round ? {round: true} : {})} : undefined);
+            windowUnit(c, f, u, floor + (e.sill ?? 0.9), w, h, e.lights ?? 1, d0, e.colour ? c.key(e.colour) : undefined, e.frameStyle === 'strips', true, e.frameM !== undefined || e.transomM !== undefined ? {frameM: e.frameM, transomM: e.transomM, ...(e.sash ? {sash: c.key(e.sash), sashM: e.sashM} : {}), ...(e.round ? {round: true} : {}), ...(e.panesHigh ? {panesHigh: e.panesHigh} : {})} : undefined);
             openings.push([u - w / 2 - 0.06, u + w / 2 + 0.06, floor + (e.sill ?? 0.9) - 0.11, floor + (e.sill ?? 0.9) + h + 0.06]);
             if (kLevel === 1) count.openingsPerUpperStorey++;
             break;
@@ -349,10 +376,15 @@ function placeFacade(c: Ctx, f: Frame, length: number, id: FacadeId, bays: Bay[]
             galleryUnit(c, f, u - w / 2, u + w / 2, floor, e.depth ?? c.inset[id === 'back' ? 'back' : 'front'], e.h ?? 1.0, e.railing === 'panel' ? 'panel' : 'solid', c.key(e.colour ?? 'column'), e.fins ?? 0);
             break;
           case 'balcony':
-            balconyUnit(c, f, u, floor, w, e.depth ?? 1.2, e.railing === 'panel' ? 'solid' : e.railing ?? 'bars');
+            // #85: `sill` lifts a balcony off its floor line (a French balcony rail in front of a raised door); absent: the floor line.
+            balconyUnit(c, f, u, floor + (e.sill ?? 0), w, e.depth ?? 1.2, e.railing === 'panel' ? 'solid' : e.railing ?? 'bars');
             if (kLevel === 1) count.balconiesPerUpperStorey++;
             break;
-          case 'door': doorUnit(c, f, u, w, h, e.steps ?? 0, d0, floor + (e.sill ?? 0), e.frameStyle === 'strips'); openings.push([u - w / 2 - 0.14, u + w / 2 + 0.14, floor + (e.sill ?? 0), floor + (e.sill ?? 0) + (e.steps ?? 0) * 0.17 + h + 0.12]); if (kLevel === 0) count.groundDoors++; break;
+          case 'door': {
+            const stoop = e.stepRiseM !== undefined || e.stepTreadM !== undefined || e.stepWidthM !== undefined || e.stepRail !== undefined ? {riseM: e.stepRiseM, treadM: e.stepTreadM, widthM: e.stepWidthM, ...(e.stepRail ? {rail: c.key(e.stepRail)} : {})} : undefined;
+            doorUnit(c, f, u, w, h, e.steps ?? 0, d0, floor + (e.sill ?? 0), e.frameStyle === 'strips', stoop);
+            openings.push([u - w / 2 - 0.14, u + w / 2 + 0.14, floor + (e.sill ?? 0), floor + (e.sill ?? 0) + (e.steps ?? 0) * (e.stepRiseM ?? 0.17) + h + 0.12]); if (kLevel === 0) count.groundDoors++; break;
+          }
           case 'canopy': {
             const v = floor + (e.sill ?? 2.25), shape = e.canopy ?? 'flat';
             canopyUnit(c, f, u, w, v, e.depth ?? 0.6, h, shape, c.key(e.colour ?? 'accent'), d0);
@@ -375,6 +407,11 @@ function placeFacade(c: Ctx, f: Frame, length: number, id: FacadeId, bays: Bay[]
               c.mb.tri(key, f.p(u, v0, dd), f.p(u, v0 + h, dd), f.p(u - w / 2, v0 + h / 2, dd));
             }
             else box(c.mb, key, f, u - w / 2, u + w / 2, floor + (e.sill ?? 0), floor + (e.sill ?? 0) + h, d0, d0 + (e.depth ?? 0.08));
+            if (e.louvres) {
+              // #85: horizontal slats (louvred shutters) or grooves (sectional garage doors) evenly up the panel's face, inset 6 cm at the sides
+              const n = e.louvres.count, v0 = floor + (e.sill ?? 0), t = Math.min(0.04, h / (2 * n + 1)), lk = c.key(e.louvres.palette), dd = d0 + (e.depth ?? 0.08) + 0.006;
+              for (let i = 1; i <= n; i++) { const v = v0 + h * i / (n + 1); plate(c.mb, lk, f, u - w / 2 + 0.06, u + w / 2 - 0.06, v - t / 2, v + t / 2, dd); }
+            }
             break;
           }
         }
@@ -808,7 +845,9 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
   for (const a of spec.annexes ?? []) {
     if ((a.variants && !a.variants.includes(variant)) || a.exceptVariants?.includes(variant)) continue;
     const {f, len} = edges[a.facade], mirrorU = params.mirror && (a.facade === 'front' || a.facade === 'back');
-    const u: [number, number] = mirrorU ? [len - a.u[1], len - a.u[0]] : a.u;
+    // #85 uFromEnd: u[1] is the margin from the edge's far end, so one annex spans every unit size of a design
+    const au: [number, number] = a.uFromEnd ? [a.u[0], len - a.u[1]] : a.u;
+    const u: [number, number] = mirrorU ? [len - au[1], len - au[0]] : au;
     annexUnit(ctx, f, a, u, heightOf(a.from ?? 0, sh, params.eavesM), heightOf(a.to, sh, params.eavesM));
     annexCount++;
   }

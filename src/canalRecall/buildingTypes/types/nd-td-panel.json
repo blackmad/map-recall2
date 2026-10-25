@@ -1,0 +1,343 @@
+{
+ "id": "nd-td-panel",
+ "label": "Terrasdorp, Tuindorp Oostzaan (1952, Rozijnenstraat / Citroenenstraat / Notenstraat / Bananenstraat / Amandelstraat) two-storey terraced house clad in grey cement-board panels on a dark plinth: door at the pair line, wide living-room window and a bedroom window above, white frames with ochre casements, flat roof with a grey fascia; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 40,
+  "bouwjaar": [
+   1952,
+   1952
+  ],
+  "lengthM": 5.07,
+  "widthM": 7.97,
+  "bouwlagen": 2,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.7,
+  6.4
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.8,
+   5.5
+  ],
+  "depth": [
+   7.6,
+   8.4
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.15,
+  "vergeOverhangM": 0.03,
+  "thicknessM": 0.3,
+  "pitchDeg": 0,
+  "flatVerge": true,
+  "eavesPinM": 6.05
+ },
+ "ground": {
+  "mode": "solid",
+  "plinthM": 0.6
+ },
+ "defaultVariant": "grey",
+ "variants": {
+  "grey": {
+   "label": "grey-taupe cement-board panels, dark grey plinth, white frames with ochre casements, orange-red doors",
+   "evidence": "terraces #82 #83 #86 #88 #90",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#8f8a84"
+    },
+    "plinth": {
+     "slot": "stucco",
+     "tint": "#4d5150"
+    },
+    "frame": "#f0eee6",
+    "glass": "#3a4148",
+    "door": "#c0583a",
+    "accent": "#d9d8d2",
+    "rail": "#c9a23e",
+    "dark": "#4a4744",
+    "column": "#f0eee6",
+    "joint": "#6f6b66",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#8e9493",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012129403.jpg",
+     "pand": "0363100012129403",
+     "address": "Citroenenstraat",
+     "note": "2024-10 sunlit: grey cement-board panel cladding on a dark grey plinth, door at the pair line, a four-light living-room window with ochre outer casements, a three-light bedroom window above with one ochre casement, flat roof with a grey fascia"
+    },
+    {
+     "photo": "survey crop 0363100012080042.jpg",
+     "pand": "0363100012080042",
+     "address": "Rozijnenstraat",
+     "note": "2025-09: same, orange door"
+    },
+    {
+     "photo": "survey crop 0363100012124438.jpg",
+     "pand": "0363100012124438",
+     "address": "Bananenstraat",
+     "note": "2024-10: same"
+    },
+    {
+     "photo": "survey crop 0363100012111579.jpg",
+     "pand": "0363100012111579",
+     "address": "Amandelstraat",
+     "note": "2024-10: same, yellow doors"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.25,
+       "w": 0.9,
+       "h": 2.1,
+       "note": "door 0.8 m from the pair line, white surround"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.45,
+       "w": 1.2,
+       "h": 1.45,
+       "sill": 0.7,
+       "lights": 2,
+       "note": "fixed middle lights of the living-room window"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.55,
+       "w": 0.55,
+       "h": 1.45,
+       "sill": 0.7,
+       "lights": 1,
+       "frameM": 0.05,
+       "sash": "rail",
+       "sashM": 0.05,
+       "note": "ochre casement"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.35,
+       "w": 0.55,
+       "h": 1.45,
+       "sill": 0.7,
+       "lights": 1,
+       "frameM": 0.05,
+       "sash": "rail",
+       "sashM": 0.05,
+       "note": "ochre casement"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.2,
+       "w": 1.2,
+       "h": 1.35,
+       "sill": 0.8,
+       "lights": 2,
+       "note": "bedroom window, fixed lights"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.1,
+       "w": 0.55,
+       "h": 1.35,
+       "sill": 0.8,
+       "lights": 1,
+       "frameM": 0.05,
+       "sash": "rail",
+       "sashM": 0.05,
+       "note": "ochre casement"
+      }
+     ]
+    }
+   ],
+   "stripes": [
+    {
+     "levels": "all",
+     "pitchM": 0.42,
+     "heightM": 0.016,
+     "offsetM": 0.6,
+     "depthM": 0.004,
+     "palette": "joint"
+    }
+   ],
+   "boards": [
+    {
+     "levels": "all",
+     "pitchM": 0.72,
+     "widthM": 0.016,
+     "depthM": 0.004,
+     "palette": "joint"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012129403.jpg",
+     "pand": "0363100012129403",
+     "address": "Citroenenstraat",
+     "note": "garden side not photographed: garden door and windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012129403.jpg",
+     "pand": "0363100012129403",
+     "address": "Citroenenstraat",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012129403.jpg",
+     "pand": "0363100012129403",
+     "address": "Citroenenstraat",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Panels from the sunlit 2024-10 crop 0363100012129403 white-referenced to the door surround (mean #838380), drawn a step brighter and warmer #8f8a84 as the overcast 2017 crops read them. Joints: 0.42 m courses, 0.72 m panels.",
+  "Heights from the photo: plinth 0.6 m, living window 0.7-2.15 m, bedroom window 3.8-5.15 m, fascia 5.6-6.0 m; 3DBAG flat roof 6.0-6.1 m. The 6 m wide pands of the same streets are a different plan (four doors grouped) and are not this design."
+ ]
+}

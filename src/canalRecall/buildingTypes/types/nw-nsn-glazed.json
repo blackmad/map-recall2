@@ -1,0 +1,346 @@
+{
+ "id": "nw-nsn-glazed",
+ "label": "Nieuw Sloten-Noordwest (1994, Antwerpenbaan / Berlaarstraat / Wevelgemstraat / Waregemstraat) two-storey terraced house with a glazed front: a grey frame, a coloured double door under a white-barred glazed panel, and a two-storey glass bay between white vertical fins with a dark spandrel band; flat roof; one handedness per row",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 69,
+  "bouwjaar": [
+   1994,
+   1994
+  ],
+  "lengthM": 5.42,
+  "widthM": 10.7,
+  "bouwlagen": 2,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  5.0,
+  9.5
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.2,
+   5.9
+  ],
+  "depth": [
+   10.4,
+   11.2
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.25,
+  "vergeOverhangM": 0.03,
+  "thicknessM": 0.35,
+  "pitchDeg": 0,
+  "flatVerge": true,
+  "eavesPinM": 6.0
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "grey",
+ "variants": {
+  "grey": {
+   "label": "grey frame, white fins and bars, dark grey spandrels, coloured doors",
+   "evidence": "terraces #0 #1 #6 #7 #9 #17 #28",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#9aa0a5"
+    },
+    "frame": "#e9e9e4",
+    "glass": "#3a4148",
+    "door": "#2f4f8f",
+    "accent": "#d9d8d2",
+    "rail": "#e9e9e4",
+    "dark": "#4c545b",
+    "column": "#eeeee9",
+    "joint": "#7d8387",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#5f5d5a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012108135-2016080211.jpg",
+     "pand": "0363100012108135",
+     "address": "Antwerpenbaan",
+     "note": "2016-08: grey frame, per house a coloured double door with a white-barred glazed panel above, and a two-storey glass bay between five white fins with a dark grey spandrel band; flat roof"
+    },
+    {
+     "photo": "sunlit crop 0363100012119112-2025071612.jpg",
+     "pand": "0363100012119112",
+     "address": "Antwerpenbaan",
+     "note": "2025-07: same"
+    },
+    {
+     "photo": "survey crop 0363100012126129.jpg",
+     "pand": "0363100012126129",
+     "address": "Berlaarstraat",
+     "note": "2022-04: same, white panels"
+    },
+    {
+     "photo": "survey crop 0363100012135259.jpg",
+     "pand": "0363100012135259",
+     "address": "Wevelgemstraat",
+     "note": "2022-04: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.1,
+       "w": 1.5,
+       "h": 2.25,
+       "note": "coloured double door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.1,
+       "w": 1.5,
+       "h": 2.55,
+       "sill": 2.45,
+       "lights": 1,
+       "frameM": 0.06,
+       "panesHigh": 6,
+       "note": "white-barred glazed panel over the door, to the roof"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.9,
+       "w": 2.9,
+       "h": 5.0,
+       "sill": 0.05,
+       "lights": 4,
+       "frameM": 0.05,
+       "note": "two-storey glass bay"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.9,
+       "w": 2.9,
+       "h": 1.2,
+       "sill": 2.45,
+       "depth": 0.07,
+       "colour": "dark",
+       "note": "dark grey spandrel band"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.45,
+       "w": 0.12,
+       "h": 5.6,
+       "sill": 0.0,
+       "depth": 0.18,
+       "colour": "column",
+       "note": "white fin"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.18,
+       "w": 0.12,
+       "h": 5.6,
+       "sill": 0.0,
+       "depth": 0.18,
+       "colour": "column",
+       "note": "white fin"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.9,
+       "w": 0.12,
+       "h": 5.6,
+       "sill": 0.0,
+       "depth": 0.18,
+       "colour": "column",
+       "note": "white fin"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.62,
+       "w": 0.12,
+       "h": 5.6,
+       "sill": 0.0,
+       "depth": 0.18,
+       "colour": "column",
+       "note": "white fin"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 5.3,
+       "w": 0.12,
+       "h": 5.6,
+       "sill": 0.0,
+       "depth": 0.18,
+       "colour": "column",
+       "note": "white fin"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012126129.jpg",
+     "pand": "0363100012126129",
+     "address": "Berlaarstraat",
+     "note": "garden side not photographed: garden door and windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.2,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.4,
+       "w": 1.2,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012126129.jpg",
+     "pand": "0363100012126129",
+     "address": "Berlaarstraat",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012126129.jpg",
+     "pand": "0363100012126129",
+     "address": "Berlaarstraat",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Layout from the 2016-08 crop 0363100012108135 (52 px/m between doors 5.42 m apart): door 0.3-1.9 m, glass bay 2.4-5.4 m between five fins, spandrel 2.5-3.7 m, roof edge 5.7-6.0 m (3DBAG 5.9-6.1 m). The front is one glazed storey-and-a-half composition, so all of it hangs on the ground storey line (no upper-storey openings counted).",
+  "Grey frame drawn #9aa0a5 from the overcast and sunlit crops (stucco, not measured)."
+ ]
+}

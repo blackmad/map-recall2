@@ -1,0 +1,68 @@
+[
+ {
+  "area": "nw-ao-01",
+  "anchor": {
+   "lng": 4.79021,
+   "lat": 52.34367
+  },
+  "pands": 64,
+  "missing": 0,
+  "per": {
+   "nw-ao-garage/red/photo": 30,
+   "nw-ao-hebriden/red/photo": 34
+  }
+ },
+ {
+  "area": "nw-ao-02",
+  "anchor": {
+   "lng": 4.79256,
+   "lat": 52.344
+  },
+  "pands": 17,
+  "missing": 0,
+  "per": {
+   "nw-ao-garage/red/photo": 17
+  }
+ },
+ {
+  "area": "nw-ao-03",
+  "anchor": {
+   "lng": 4.78479,
+   "lat": 52.34628
+  },
+  "pands": 33,
+  "missing": 0,
+  "per": {
+   "nw-ao-slot/orange/photo": 33
+  }
+ },
+ {
+  "area": "nw-ao-04",
+  "anchor": {
+   "lng": 4.78756,
+   "lat": 52.34625
+  },
+  "pands": 232,
+  "missing": 0,
+  "per": {
+   "nw-ao-hebriden-clad/green/photo": 34,
+   "nw-ao-hebriden/red/photo": 33,
+   "nw-ao-garage/red/photo": 21,
+   "nw-ao-slot/orange/photo": 144
+  }
+ },
+ {
+  "area": "nw-ao-05",
+  "anchor": {
+   "lng": 4.79265,
+   "lat": 52.34627
+  },
+  "pands": 162,
+  "missing": 0,
+  "per": {
+   "nw-ao-garage/red/photo": 54,
+   "nw-ao-hebriden-clad/green/photo": 58,
+   "nw-ao-hebriden/red/photo": 50
+  }
+ }
+]

@@ -1,0 +1,264 @@
+{
+ "terraces": {
+  "9": {
+   "type": "nw-ao-hebriden",
+   "variant": "red",
+   "via": "photo"
+  },
+  "11": {
+   "type": "nw-ao-hebriden",
+   "variant": "red",
+   "via": "photo"
+  },
+  "21": {
+   "type": "nw-ao-hebriden",
+   "variant": "red",
+   "via": "photo"
+  },
+  "88": {
+   "type": "nw-ao-hebriden",
+   "variant": "red",
+   "via": "photo"
+  },
+  "137": {
+   "type": "nw-ao-hebriden",
+   "variant": "red",
+   "via": "photo"
+  },
+  "139": {
+   "type": "nw-ao-hebriden",
+   "variant": "red",
+   "via": "photo"
+  },
+  "14": {
+   "type": "nw-ao-hebriden-clad",
+   "variant": "green",
+   "via": "photo",
+   "repMirror": false
+  },
+  "38": {
+   "type": "nw-ao-hebriden-clad",
+   "variant": "green",
+   "via": "photo",
+   "repMirror": true
+  },
+  "69": {
+   "type": "nw-ao-hebriden-clad",
+   "variant": "green",
+   "via": "photo",
+   "repMirror": false
+  },
+  "102": {
+   "type": "nw-ao-hebriden-clad",
+   "variant": "green",
+   "via": "photo",
+   "repMirror": false
+  },
+  "108": {
+   "type": "nw-ao-hebriden-clad",
+   "variant": "green",
+   "via": "photo",
+   "repMirror": false
+  },
+  "57": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo",
+   "rowMirror": true
+  },
+  "70": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "76": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "79": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo",
+   "rowMirror": true
+  },
+  "89": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo",
+   "rowMirror": true
+  },
+  "93": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "107": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "111": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "124": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "125": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo",
+   "rowMirror": true
+  },
+  "134": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo",
+   "rowMirror": true
+  },
+  "135": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "148": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "149": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo",
+   "rowMirror": true
+  },
+  "150": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo",
+   "rowMirror": true
+  },
+  "156": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "159": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "163": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "167": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo",
+   "rowMirror": true
+  },
+  "170": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "176": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo",
+   "rowMirror": true
+  },
+  "177": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "181": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo"
+  },
+  "186": {
+   "type": "nw-ao-slot",
+   "variant": "orange",
+   "via": "photo",
+   "rowMirror": true
+  },
+  "1": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "2": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "7": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "8": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "10": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "13": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "18": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "37": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "43": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "54": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "62": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "85": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "166": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  },
+  "172": {
+   "type": "nw-ao-garage",
+   "variant": "red",
+   "via": "photo"
+  }
+ }
+}

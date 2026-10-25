@@ -1,0 +1,355 @@
+{
+ "id": "nd-td-souterrain",
+ "label": "Terrasdorp, Tuindorp Oostzaan (1958, Moerbeienstraat / Sinaasappelstraat / Goudreinetstraat / Morellenstraat / Druivenstraat) terraced house on a brick souterrain: washed-gravel concrete panel walls, a stoop with grey rails up to the raised ground floor, French door with a bar balconet above the living-room window, flat roof with a white fascia",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 132,
+  "bouwjaar": [
+   1958,
+   1958
+  ],
+  "lengthM": 5.05,
+  "widthM": 7.35,
+  "bouwlagen": 2,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  6.5,
+  7.5
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.7,
+   5.5
+  ],
+  "depth": [
+   6.9,
+   7.9
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.2,
+  "vergeOverhangM": 0.03,
+  "thicknessM": 0.3,
+  "pitchDeg": 0,
+  "flatVerge": true,
+  "eavesPinM": 6.95
+ },
+ "ground": {
+  "mode": "solid",
+  "plinthM": 1.4
+ },
+ "defaultVariant": "pebble",
+ "variants": {
+  "pebble": {
+   "label": "washed-gravel grey-beige panels over a purple-brown brick souterrain, white frames, green doors, grey stoop rails",
+   "evidence": "terraces #94 #98 #100 #117 #122 #123 #131 #138 #145 #148 #154",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#8a8878"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#7a5e55",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3a4148",
+    "door": "#2f4a40",
+    "accent": "#c9c8c2",
+    "rail": "#7c8387",
+    "dark": "#4a4744",
+    "column": "#f0eee6",
+    "joint": "#737061",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#e6e5df",
+     "measured": true
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012116625.jpg",
+     "pand": "0363100012116625",
+     "address": "Moerbeienstraat",
+     "note": "2024-10 sunlit: raised ground floor over a brick souterrain, stoops with grey rails, French door with a bar balconet and a small square window above per house, flat roof with a white fascia; washed-gravel concrete panels"
+    },
+    {
+     "photo": "survey crop 0363100012062774.jpg",
+     "pand": "0363100012062774",
+     "address": "Goudreinetstraat",
+     "note": "2025-09: same, green doors in white surrounds"
+    },
+    {
+     "photo": "survey crop 0363100012143223.jpg",
+     "pand": "0363100012143223",
+     "address": "Sinaasappelstraat",
+     "note": "2025-09: same"
+    },
+    {
+     "photo": "sunlit crop 0363100012116625-2017052913.jpg",
+     "pand": "0363100012116625",
+     "address": "Moerbeienstraat",
+     "note": "2017-05 overcast: same row, red doors then"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 1
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.45,
+       "w": 0.7,
+       "h": 0.8,
+       "sill": 0.4,
+       "lights": 1,
+       "note": "souterrain window in the brick base beside the door-side party wall"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.14,
+       "w": 0.28,
+       "h": 0.66,
+       "sill": 2.9,
+       "lights": 1,
+       "note": "half of the small two-light window centred on the door-side party wall"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.87,
+       "w": 0.92,
+       "h": 2.0,
+       "steps": 7,
+       "stepRiseM": 0.22,
+       "stepTreadM": 0.27,
+       "stepWidthM": 1.3,
+       "stepRail": "rail",
+       "note": "stoop of seven 0.22 m steps"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.48,
+       "w": 0.55,
+       "h": 0.55,
+       "sill": 2.2,
+       "lights": 1,
+       "note": "small square window high above the door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.53,
+       "w": 1.1,
+       "h": 1.34,
+       "sill": 2.53,
+       "lights": 2,
+       "frameM": 0.07,
+       "note": "living-room window on the raised floor, at the window-side party wall"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "right",
+       "u": 0.91,
+       "w": 0.95,
+       "h": 1.9,
+       "sill": 0.85,
+       "lights": 2,
+       "frameM": 0.07,
+       "note": "French door"
+      },
+      {
+       "kind": "balcony",
+       "levels": [
+        1
+       ],
+       "ref": "right",
+       "u": 0.91,
+       "w": 1.0,
+       "sill": 0.85,
+       "depth": 0.1,
+       "railing": "bars",
+       "note": "bar balconet in the French door"
+      }
+     ]
+    }
+   ],
+   "stripes": [
+    {
+     "levels": "all",
+     "pitchM": 0.5,
+     "heightM": 0.018,
+     "offsetM": 0.0,
+     "depthM": 0.004,
+     "palette": "joint"
+    }
+   ],
+   "boards": [
+    {
+     "levels": "all",
+     "pitchM": 1.0,
+     "widthM": 0.018,
+     "depthM": 0.004,
+     "palette": "joint"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012116625.jpg",
+     "pand": "0363100012116625",
+     "address": "Moerbeienstraat",
+     "note": "garden side not photographed: garden door and windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012116625.jpg",
+     "pand": "0363100012116625",
+     "address": "Moerbeienstraat",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012116625.jpg",
+     "pand": "0363100012116625",
+     "address": "Moerbeienstraat",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Wall from the sunlit 2024-10 crop 0363100012116625 white-referenced to the door surround: mean #837f73, drawn a step brighter #8c8676. Souterrain brick #655854 (part shade), drawn #7a5e55.",
+  "Heights from the 2024-10 Sinaasappelstraat crop 0363100012143223 (camera-matched): brick base to 1.4 m, raised floor 1.55 m (seven 0.22 m steps), living window 2.55-3.85 m, French door 4.3-6.2 m, fascia from 6.4 m; 3DBAG flat roof 6.8-7.0 m. Mirrored pairs with the living-room windows and French doors side by side at one party wall (the downpipe) and the doors at the other, where one small two-light window straddles the party wall (each house draws its half)."
+ ]
+}

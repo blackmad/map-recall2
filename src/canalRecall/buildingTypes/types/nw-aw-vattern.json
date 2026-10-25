@@ -1,0 +1,426 @@
+{
+ "id": "nw-aw-vattern",
+ "label": "De Aker-West (2006, Vätternkade) four-storey terraced house in dark grey mottled brick: a ground storey of orange panels, a full-height window, a dark door and a glass panel under a dark lintel, two then three dark-framed windows above, a big window in a projecting rust frame on the top storey, flat roof",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 40,
+  "bouwjaar": [
+   2006,
+   2006
+  ],
+  "lengthM": 5.7,
+  "widthM": 12.4,
+  "bouwlagen": 4,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 4,
+ "eavesRangeM": [
+  10.0,
+  13.5
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.5,
+   7.2
+  ],
+  "depth": [
+   12.0,
+   14.0
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.05,
+  "vergeOverhangM": 0.03,
+  "thicknessM": 0.2,
+  "pitchDeg": 0,
+  "flatVerge": true,
+  "eavesPinM": 12.0
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "grey",
+ "variants": {
+  "grey": {
+   "label": "dark grey mottled brick, orange ground panels, dark grey frames and doors, rust top-window frame",
+   "evidence": "terraces #37 #50 #61 #74",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#6d7170",
+     "measured": true
+    },
+    "frame": "#3b3f40",
+    "glass": "#3a4148",
+    "door": "#3b484b",
+    "accent": "#a0643c",
+    "rail": "#353a3c",
+    "dark": "#353a3c",
+    "column": "#e4e2da",
+    "joint": "#b9773f",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#5f5d5a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012095972-2025070206.jpg",
+     "pand": "0363100012095972",
+     "address": "Vätternkade",
+     "note": "2025-07 morning sun: dark grey mottled brick in four storeys, per house a ground storey of orange panels, a full-height dark-framed window, a dark grey door and a glass panel under a dark lintel, two windows on the first storey, three on the second, a big window in a projecting rust frame on the top"
+    },
+    {
+     "photo": "survey crop 0363100012105816.jpg",
+     "pand": "0363100012105816",
+     "address": "Vätternkade",
+     "note": "2021: same"
+    },
+    {
+     "photo": "survey crop 0363100012078667.jpg",
+     "pand": "0363100012078667",
+     "address": "Vätternkade",
+     "note": "2021: same"
+    },
+    {
+     "photo": "survey crop 0363100012084373.jpg",
+     "pand": "0363100012084373",
+     "address": "Vätternkade",
+     "note": "2021: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.7,
+       "w": 1.05,
+       "h": 2.35,
+       "sill": 0.0,
+       "depth": 0.02,
+       "colour": "joint",
+       "note": "orange panel"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.85,
+       "w": 1.1,
+       "h": 2.3,
+       "sill": 0.06,
+       "lights": 1,
+       "note": "full-height window"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.95,
+       "w": 0.95,
+       "h": 2.3
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.0,
+       "w": 1.0,
+       "h": 2.35,
+       "sill": 0.0,
+       "depth": 0.02,
+       "colour": "joint",
+       "note": "orange panel"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 0.65,
+       "w": 1.05,
+       "h": 2.3,
+       "sill": 0.06,
+       "lights": 1,
+       "note": "glass panel"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.0,
+       "w": 1.0,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.9,
+       "w": 1.0,
+       "h": 1.4,
+       "sill": 0.9,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 1.35,
+       "w": 0.9,
+       "h": 1.25,
+       "sill": 0.9,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 2.65,
+       "w": 0.9,
+       "h": 1.25,
+       "sill": 0.9,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 4.75,
+       "w": 0.9,
+       "h": 1.25,
+       "sill": 0.9,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        3
+       ],
+       "ref": "left",
+       "u": 2.9,
+       "w": 2.2,
+       "h": 1.2,
+       "sill": 0.7,
+       "lights": 2,
+       "colour": "accent",
+       "frameM": 0.16,
+       "note": "big window in a projecting rust frame"
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 1,
+     "below": 0.2,
+     "above": 0.0,
+     "palette": "dark"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012105816.jpg",
+     "pand": "0363100012105816",
+     "address": "Vätternkade",
+     "note": "garden side not photographed: garden door and windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        3
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        3
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012105816.jpg",
+     "pand": "0363100012105816",
+     "address": "Vätternkade",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012105816.jpg",
+     "pand": "0363100012105816",
+     "address": "Vätternkade",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick: brick-mottle.ts over the wall between the first and second storey of the 2025-07 crop 0363100012095972 reads #6f7b79 in dappled tree shade with a blue sky cast and no white paint to reference; drawn #6d7170, the same mean with the blue sky cast of the shade removed (neutral dark grey, the overcast survey crops' tone); kept measured so the look does not swap it for the city slate. Orange panels drawn #b9773f from their sunlit parts.",
+  "Layout from the same crop (61 px/m between downpipes 5.73 m apart): orange panel 0.15-1.2 m, window 1.3-2.4 m, door 2.5-3.45 m, orange panel 3.5-4.5 m, glass 4.55-5.6 m, 2.35 m high under a dark lintel; first-storey windows 1.5-2.5 and 3.4-4.4 m; second-storey windows 0.9-1.8, 2.2-3.1 and 4.3-5.2 m (the next house places them differently); top window 1.8-4.0 m. 3DBAG roof 11.9-12.1 m."
+ ]
+}

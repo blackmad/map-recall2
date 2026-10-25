@@ -1,0 +1,411 @@
+{
+ "id": "nw-aw-lomond",
+ "label": "De Aker-West (1996, Lomondlaan) three-storey terraced house in red-brown brick: a white-painted ground storey under a white beam with white panelled doors, a dark side light and a wide window, a window / grey stone panel / wide window group on the first storey, a three-light window at the pair line on the top storey, flat roof; mirrored pairs",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 118,
+  "bouwjaar": [
+   1996,
+   1996
+  ],
+  "lengthM": 5.11,
+  "widthM": 9.73,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 3,
+ "eavesRangeM": [
+  7.0,
+  10.0
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.9,
+   6.2
+  ],
+  "depth": [
+   8.8,
+   10.2
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.06,
+  "vergeOverhangM": 0.03,
+  "thicknessM": 0.2,
+  "pitchDeg": 0,
+  "flatVerge": true,
+  "eavesPinM": 8.4
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "red",
+ "variants": {
+  "red": {
+   "label": "red-brown brick, white ground storey, beam and frames, grey stone panels, dark side lights",
+   "evidence": "terraces #26 #42 #48 #55 #60",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#8f6c55",
+     "measured": true,
+     "mottle": {
+      "tones": [
+       {
+        "hex": "#97745c",
+        "share": 0.32
+       },
+       {
+        "hex": "#87644d",
+        "share": 0.3
+       },
+       {
+        "hex": "#8a6c57",
+        "share": 0.21
+       },
+       {
+        "hex": "#956c53",
+        "share": 0.17
+       }
+      ],
+      "evidence": "#85: brick-mottle.ts k=4 over the wall between the first and top storey of sunlit crop 0363100012089013-2019071711 (Lomondlaan, midday sun), white-referenced to a white panelled door in the same crop (the white just clips, x0.96/0.94/0.92); 26460 brick pixels, mean #8f6c55"
+     }
+    },
+    "frame": "#f0eee6",
+    "glass": "#3a4148",
+    "door": "#ecebe4",
+    "accent": "#b4b3a0",
+    "rail": "#3d4246",
+    "dark": "#3d4246",
+    "column": "#ecebe4",
+    "joint": "#7a6f68",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#5f5d5a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012089013-2019071711.jpg",
+     "pand": "0363100012089013",
+     "address": "Lomondlaan",
+     "note": "2019-07 midday sun: red-brown brick, a white-painted ground storey under a white beam with white panelled doors, dark side lights and a wide window per house, a window / grey stone panel / wide window group on the first storey, a three-light window beside the pair line on the top storey with a stone panel between the pair, flat roof; mirrored pairs"
+    },
+    {
+     "photo": "sunlit crop 0363100012105790-2016061612.jpg",
+     "pand": "0363100012105790",
+     "address": "Lomondlaan",
+     "note": "2016-06 sunlit: same, white block planters"
+    },
+    {
+     "photo": "survey crop 0363100012136491.jpg",
+     "pand": "0363100012136491",
+     "address": "Lomondlaan",
+     "note": "2025-07: same"
+    },
+    {
+     "photo": "survey crop 0363100012062831.jpg",
+     "pand": "0363100012062831",
+     "address": "Lomondlaan",
+     "note": "2021-04: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 2,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.55,
+       "w": 5.11,
+       "h": 2.65,
+       "sill": 0.0,
+       "depth": 0.012,
+       "colour": "column",
+       "note": "white-painted ground storey"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.5,
+       "w": 0.9,
+       "h": 2.3,
+       "note": "white panelled storage door at the pair line"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.15,
+       "w": 0.35,
+       "h": 2.3,
+       "sill": 0.06,
+       "lights": 1,
+       "colour": "rail",
+       "note": "dark side light"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.75,
+       "w": 0.95,
+       "h": 2.3,
+       "note": "white panelled front door"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.41,
+       "w": 2.5,
+       "h": 1.45,
+       "sill": 0.9,
+       "lights": 3
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "right",
+       "u": 3.33,
+       "w": 0.75,
+       "h": 1.45,
+       "sill": 0.9,
+       "lights": 1
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "ref": "right",
+       "u": 2.71,
+       "w": 0.42,
+       "h": 1.5,
+       "sill": 0.88,
+       "depth": 0.04,
+       "colour": "accent",
+       "note": "grey stone panel"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "right",
+       "u": 1.81,
+       "w": 1.25,
+       "h": 1.45,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "right",
+       "u": 1.14,
+       "w": 1.75,
+       "h": 1.1,
+       "sill": 1.0,
+       "lights": 3
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        2
+       ],
+       "ref": "right",
+       "u": 0.12,
+       "w": 0.24,
+       "h": 1.1,
+       "sill": 1.0,
+       "depth": 0.03,
+       "colour": "accent",
+       "note": "stone panel between the pair's top windows"
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 1,
+     "below": 0.15,
+     "above": 0.03,
+     "palette": "column"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012136491.jpg",
+     "pand": "0363100012136491",
+     "address": "Lomondlaan",
+     "note": "garden side not photographed: garden door and windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012136491.jpg",
+     "pand": "0363100012136491",
+     "address": "Lomondlaan",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012136491.jpg",
+     "pand": "0363100012136491",
+     "address": "Lomondlaan",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Layout from the sunlit crop 0363100012089013-2019071711 (54 px/m between the pair lines 5.11 m apart): storage door 0.05-0.95 m, side light, front door 1.3-2.25 m, ground window 2.45-4.95 m; first-storey group 1.4-3.95 m; top window 3.1-4.85 m and a 0.5 m stone panel across the pair line. The doors are placed from the door-side party wall, the windows from the pair line of the top windows, so the wider (6.1 m) houses keep both party-wall groupings; the 4.4-4.8 m houses of the same rows are held (no photo of their layout). The white ground storey is 2.65 m high under a white beam.",
+  "3DBAG: roof 8.4-8.5 m over the front; b3_h_dak_min 5.65 m reads a lower rear part that the kit does not draw."
+ ]
+}

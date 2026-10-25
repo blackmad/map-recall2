@@ -1,0 +1,396 @@
+{
+ "id": "nw-ao-slot",
+ "label": "De Aker-Oost (1998, Pond Sterlinglaan / Pesetalaan / Lirestraat) three-storey terraced house in orange-red brick with a projecting purple-brown brick pilaster per house, a tall dark-framed slot bay of French door, grey panel and top window over the door, white arched door hood, living-room window and small horizontal window, brick plinth, flat roof; one handedness per row",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 190,
+  "bouwjaar": [
+   1998,
+   1998
+  ],
+  "lengthM": 5.1,
+  "widthM": 10.4,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 3,
+ "eavesRangeM": [
+  7.5,
+  10.0
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.1,
+   6.1
+  ],
+  "depth": [
+   9.0,
+   11.0
+  ]
+ },
+ "sizeClassesM": {
+  "frontage": [
+   5.0
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.1,
+  "vergeOverhangM": 0.03,
+  "thicknessM": 0.3,
+  "pitchDeg": 0,
+  "flatVerge": true,
+  "eavesPinM": 9.0
+ },
+ "ground": {
+  "mode": "solid",
+  "plinthM": 0.9
+ },
+ "defaultVariant": "orange",
+ "variants": {
+  "orange": {
+   "label": "orange-red brick, purple-brown pilasters and plinth, dark grey slot frames, white ground-floor frames, red / grey doors",
+   "evidence": "terraces #57 #70 #76 #79 #89 #93 #107 #111 #124 #125 #134 #135 #148 #149 #150 #156 #159 #163 #167 #170 #176 #177 #181 #186",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#c9805c",
+     "measured": true
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#6e5650",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3a4148",
+    "door": "#9a3b33",
+    "accent": "#d9d8d2",
+    "rail": "#43484b",
+    "dark": "#6e5650",
+    "column": "#f0eee6",
+    "joint": "#7d8487",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#5f5d5a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012139657-2024091808.jpg",
+     "pand": "0363100012139657",
+     "address": "Pond Sterlinglaan",
+     "note": "2024-09 sunlit: orange-red brick, a projecting purple-brown brick pilaster at each house, a tall dark-framed slot bay over the door (French door with a bar balconet, grey panel, top window), white arched hood over the door, living-room window, purple-brown brick plinth, flat roof"
+    },
+    {
+     "photo": "sunlit crop 0363100012087960-2024091808.jpg",
+     "pand": "0363100012087960",
+     "address": "Pond Sterlinglaan",
+     "note": "2024-09 sunlit: same, wider houses with a small horizontal window, the row mirrored (door at the right pilaster)"
+    },
+    {
+     "photo": "survey crop 0363100012127320.jpg",
+     "pand": "0363100012127320",
+     "address": "Pond Sterlinglaan",
+     "note": "2022-04: same"
+    },
+    {
+     "photo": "survey crop 0363100012152057.jpg",
+     "pand": "0363100012152057",
+     "address": "Pesetalaan",
+     "note": "2022-04: same"
+    },
+    {
+     "photo": "survey crop 0363100012110679.jpg",
+     "pand": "0363100012110679",
+     "address": "Pond Sterlinglaan",
+     "note": "2022-04 sunlit: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 1
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.15,
+       "w": 0.3,
+       "h": 6.7,
+       "sill": 1.0,
+       "depth": 0.14,
+       "colour": "dark",
+       "note": "purple-brown brick pilaster at the house edge, 1.0-7.7 m"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.05,
+       "w": 0.95,
+       "h": 2.3,
+       "note": "door beside the pilaster"
+      },
+      {
+       "kind": "canopy",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.05,
+       "w": 1.35,
+       "h": 0.25,
+       "sill": 2.4,
+       "canopy": "arch",
+       "depth": 0.45,
+       "colour": "column",
+       "note": "white arched hood"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "right",
+       "u": 1.05,
+       "w": 1.7,
+       "h": 1.45,
+       "sill": 1.0,
+       "lights": 2,
+       "note": "living-room window"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.1,
+       "h": 2.1,
+       "sill": 0.2,
+       "lights": 2,
+       "colour": "rail",
+       "note": "slot bay: French door"
+      },
+      {
+       "kind": "balcony",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.1,
+       "sill": 0.2,
+       "depth": 0.08,
+       "railing": "bars",
+       "note": "bar balconet in the French door"
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.1,
+       "h": 0.7,
+       "sill": 2.3,
+       "depth": 0.02,
+       "colour": "joint",
+       "note": "grey panel in the slot"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.1,
+       "h": 1.5,
+       "sill": 0.0,
+       "lights": 1,
+       "colour": "rail",
+       "note": "slot bay: top window"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "right",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 0.25,
+       "sill": 1.1,
+       "lights": 1,
+       "note": "small horizontal window"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012127320.jpg",
+     "pand": "0363100012127320",
+     "address": "Pond Sterlinglaan",
+     "note": "garden side not photographed: garden door and windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012127320.jpg",
+     "pand": "0363100012127320",
+     "address": "Pond Sterlinglaan",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012127320.jpg",
+     "pand": "0363100012127320",
+     "address": "Pond Sterlinglaan",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick from the sunlit 2024-09 crops 0363100012087960 (#ca865b) and 0363100012139657 (#e9986a, over-exposed), drawn #c9805c; the overcast 2021-22 crops show the same brick darker red.",
+  "3DBAG LoD2.2: one roof plane 5.4-9.2 m falling to the garden (a lean-to roof the kit draws only rising to the back), so the roof is drawn flat at the 9.0 m street parapet read from the photos (43.5 px/m in crop 0363100012139657: door top 2.5 m, French door 3.2-5.3 m, top window to 7.5 m, parapet 8.85-9.0 m).",
+  "Rows of 4.2-4.5 m and 5.5-6.0 m houses mix in one terrace (two unit sizes); door and slot measured from the pilaster, the living-room window from the other party wall."
+ ]
+}

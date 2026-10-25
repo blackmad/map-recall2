@@ -1,0 +1,418 @@
+{
+ "id": "nw-ao-garage",
+ "label": "De Aker-Oost (2003, P. Hans Frankfurthersingel / Balearenlaan / Cycladenlaan / Sporadenlaan / Hebridenlaan) three-storey terraced house in red brick: green sectional garage door, white pier and glazed door on the ground storey, a French window with bar balconet between green louvred shutters on the first, a window band under a projecting pergola roof on top",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 120,
+  "bouwjaar": [
+   2003,
+   2004
+  ],
+  "lengthM": 5.7,
+  "widthM": 11.5,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 3,
+ "eavesRangeM": [
+  7.0,
+  14.0
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   5.3,
+   6.3
+  ],
+  "depth": [
+   10.3,
+   14.5
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.1,
+  "vergeOverhangM": 0.03,
+  "thicknessM": 0.25,
+  "pitchDeg": 0,
+  "flatVerge": true,
+  "eavesPinM": 9.0
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "red",
+ "variants": {
+  "red": {
+   "label": "red brick, green garage doors, shutters and doors, white piers, lintels and pergola",
+   "evidence": "terraces #1 #2 #7 #8 #10 #13 #18 #37 #43 #54 #62 #85 #166 #172",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#b98676",
+     "measured": true
+    },
+    "frame": "#f0eee6",
+    "glass": "#3a4148",
+    "door": "#2f5446",
+    "accent": "#d9d8d2",
+    "rail": "#3f6f5a",
+    "dark": "#2f5446",
+    "column": "#f0eee6",
+    "joint": "#30574a",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#5f5d5a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012143444-2025092208.jpg",
+     "pand": "0363100012143444",
+     "address": "P. Hans Frankfurthersingel",
+     "note": "2025-09 sunlit: red brick, per 5.7 m house a green sectional garage door, a white pier, a glazed door and side light; first storey a French window with a bar balconet between green louvred shutters under a white lintel; top storey a window band under a projecting pergola roof on white posts"
+    },
+    {
+     "photo": "sunlit crop 0363100012063057-2024101708.jpg",
+     "pand": "0363100012063057",
+     "address": "Cycladenlaan",
+     "note": "2024-10 sunlit: same"
+    },
+    {
+     "photo": "survey crop 0363100012083330.jpg",
+     "pand": "0363100012083330",
+     "address": "Balearenlaan",
+     "note": "2021-04: same"
+    },
+    {
+     "photo": "survey crop 0363100012083392.jpg",
+     "pand": "0363100012083392",
+     "address": "Cycladenlaan",
+     "note": "2022-04: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 1
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 0.6,
+       "w": 0.85,
+       "h": 2.4,
+       "sill": 0.06,
+       "lights": 1,
+       "note": "full-height side light"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.65,
+       "w": 1.0,
+       "h": 2.4,
+       "note": "glazed door"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.45,
+       "w": 0.45,
+       "h": 2.5,
+       "sill": 0.0,
+       "depth": 0.06,
+       "colour": "column",
+       "note": "white pier"
+      },
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 4.1,
+       "w": 2.8,
+       "h": 2.4,
+       "sill": 0.0,
+       "depth": 0.03,
+       "colour": "rail",
+       "louvres": {
+        "count": 7,
+        "palette": "joint"
+       },
+       "note": "green sectional garage door"
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.95,
+       "w": 3.9,
+       "h": 0.12,
+       "sill": 2.6,
+       "depth": 0.05,
+       "colour": "column",
+       "note": "white lintel"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.95,
+       "w": 1.6,
+       "h": 2.0,
+       "sill": 0.5,
+       "lights": 2,
+       "note": "French window"
+      },
+      {
+       "kind": "balcony",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.95,
+       "w": 1.6,
+       "sill": 0.5,
+       "depth": 0.1,
+       "railing": "bars",
+       "note": "bar balconet"
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.75,
+       "w": 0.75,
+       "h": 2.0,
+       "sill": 0.5,
+       "depth": 0.03,
+       "colour": "rail",
+       "louvres": {
+        "count": 9,
+        "palette": "accent"
+       },
+       "note": "green louvred shutter"
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 4.15,
+       "w": 0.75,
+       "h": 2.0,
+       "sill": 0.5,
+       "depth": 0.03,
+       "colour": "rail",
+       "louvres": {
+        "count": 9,
+        "palette": "accent"
+       },
+       "note": "green louvred shutter"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 2.85,
+       "w": 4.2,
+       "h": 1.15,
+       "sill": 0.55,
+       "lights": 4,
+       "note": "top-storey window band"
+      },
+      {
+       "kind": "canopy",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 2.85,
+       "w": 5.7,
+       "h": 0.14,
+       "sill": 2.75,
+       "canopy": "flat",
+       "depth": 0.9,
+       "colour": "column",
+       "note": "pergola roof"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012083330.jpg",
+     "pand": "0363100012083330",
+     "address": "Balearenlaan",
+     "note": "garden side not photographed: garden door and windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.4,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.4,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012083330.jpg",
+     "pand": "0363100012083330",
+     "address": "Balearenlaan",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012083330.jpg",
+     "pand": "0363100012083330",
+     "address": "Balearenlaan",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick from the sunlit 2025-09 crop 0363100012143444 white-referenced to the white pier (x0.94/0.93/0.90): tones #c39989 / #bf9483, drawn #b98676.",
+  "Layout from the same crop (59 px/m between downpipes): side light 0.17-1.1 m, door 1.1-2.2 m, pier 2.2-2.68 m, garage door 2.68-5.5 m; first-storey window group 1.2-4.75 m with 0.75 m shutters; top band 0.75-5.0 m.",
+  "3DBAG heights of these rows are unreliable (b3_h_maaiveld 2.5-3.1 m below the street; parapets read 8.6-11.3 m), so the parapet is pinned at the photo's 9.0 m. The pergola is drawn as its flat roof only; its white posts, sloping struts and the roof terrace behind are not drawn."
+ ]
+}

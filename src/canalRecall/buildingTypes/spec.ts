@@ -16,7 +16,7 @@ export type Levels = 'ground' | 'upper' | 'all' | number[];
 export type ElementKind = 'window' | 'balcony' | 'door' | 'storageDoor' | 'vents' | 'panel' | 'ribbon' | 'gallery' | 'canopy';
 
 /** Palette entries an element, annex or band can be drawn in (`gable` falls back to `wall` when the palette has none). */
-export type PaletteKey = 'frame' | 'glass' | 'door' | 'accent' | 'rail' | 'dark' | 'column' | 'joint' | 'wall' | 'plinth' | 'roof' | 'gable';
+export type PaletteKey = 'frame' | 'glass' | 'door' | 'accent' | 'rail' | 'dark' | 'column' | 'joint' | 'wall' | 'plinth' | 'roof' | 'gable' | 'fascia';
 
 export interface Element {
   kind: ElementKind;
@@ -58,6 +58,8 @@ export interface Element {
   sashM?: number;
   /** Window only, with `frameM` (#80): round glazing (a porthole) inside the square frame, as a 16-sided pane of diameter min(w, h) - 2 frameM. Absent: unchanged. */
   round?: boolean;
+  /** Window only, with `frameM` (#85): the glass divided into `panesHigh` rows by horizontal bars, evenly spaced (the white-framed glazed screens of the 2003 Aker-Oost fronts). Absent: unchanged. */
+  panesHigh?: number;
   /**
    * Panel only (#80): the top `archM` metres of the panel are a pointed (parabolic) arch head, drawn as a front plate, and the panel
    * is clipped to its bay, so an arch centred on a party line (ref left/right, u 0) draws half in each mirrored pand (Amsterdam
@@ -66,6 +68,8 @@ export interface Element {
   archM?: number;
   /** Panel with `archM` (#82): `round` draws the head as a half ellipse (a round-arched porch or portal) instead of the pointed arch. Absent: pointed (unchanged). */
   archShape?: 'pointed' | 'round';
+  /** Panel only (#85): `count` horizontal slats in the `palette` colour evenly up the panel's face (louvred shutters, the grooves of a sectional garage door). Absent: the plain panel. */
+  louvres?: {count: number; palette: PaletteKey};
   /** Panel only (#82): a rhombus plate (a square set on its point, `w` wide and `h` tall) instead of the box, e.g. the white diamond surround of a small window (Weesp-Zuid 1950). Absent: the box. */
   diamond?: boolean;
   /** Window/ribbon/door: `strips` draws the frame (door: surround) as border strips 4.5 cm in front instead of a plate stacked 5 mm under the glass/leaf (big glazing, many openings: no z-fight). */
@@ -79,6 +83,15 @@ export interface Element {
   groundModes?: ('solid' | 'pilotis')[];
   /** Door only: raised entrance steps. */
   steps?: number;
+  /**
+   * Door with steps (#85): a stoop up to a raised ground floor. `stepRiseM` per step (default 0.17), `stepTreadM` (default 0.3),
+   * `stepWidthM` the stoop's width (default w + 0.7), `stepRail` the palette entry of a sloping handrail on both sides.
+   * Any of them set draws the stoop: steps as blocks from the ground, the door surround from the landing up. Absent: unchanged.
+   */
+  stepRiseM?: number;
+  stepTreadM?: number;
+  stepWidthM?: number;
+  stepRail?: PaletteKey;
   /** Canopy only (door hoods): `flat` slab, `gable` a small pitched hood (ridge out from the wall), `arch` a curved hood; `h` is the hood's rise (flat: slab thickness), `sill` its underside above the floor line, `depth` its projection. Default palette `accent`. */
   canopy?: 'flat' | 'gable' | 'arch';
   note?: string;
@@ -173,6 +186,8 @@ export interface Palette {
   roof: SlotTint;
   /** Gable (short side) walls when they differ from the long walls (brick gables of a panel slab). */
   gable?: SlotTint;
+  /** #85: painted fascia / gutter board (a facade band with `palette: 'fascia'`), e.g. the blue fascias of 1990s rows. Absent: bands naming it take `dark`. */
+  fascia?: string;
 }
 
 export interface Variant {
@@ -335,6 +350,8 @@ export interface Annex {
   facade: FacadeId;
   /** Metres along the facade's rectangle edge from its left end (seen from outside). */
   u: [number, number];
+  /** #85: `u[1]` is the margin from the edge's far end instead of a position (the annex spans every frontage of a design: set-back top storeys over rows of mixed widths). Absent: `u` are positions. */
+  uFromEnd?: boolean;
   /** Metres out from the rectangle edge (negative: inside the footprint, e.g. back to the wall line). */
   d: [number, number];
   from?: Height;
@@ -445,6 +462,11 @@ export function validateSpec(spec: TypeSpec): string[] {
       if ((e.sash !== undefined || e.sashM !== undefined || e.round) && (e.kind !== 'window' || e.frameM === undefined || e.frameStyle === 'strips')) errors.push(`${id}/${b.id}: sash/round need a plate-frame window with frameM`);
       if (e.sashM !== undefined && !(e.sashM > 0 && e.sashM < Math.min(e.w ?? Infinity, e.h ?? Infinity) / 4)) errors.push(`${id}/${b.id}: sashM ${e.sashM} out of range`);
       if (e.round && (e.lights ?? 1) > 1) errors.push(`${id}/${b.id}: a round window has one light`);
+      if ((e.stepRiseM !== undefined || e.stepTreadM !== undefined || e.stepWidthM !== undefined || e.stepRail !== undefined) && (e.kind !== 'door' || !(e.steps && e.steps > 0) || e.frameStyle === 'strips')) errors.push(`${id}/${b.id}: stoop fields need a plate door with steps`);
+      if (e.stepRiseM !== undefined && !(e.stepRiseM > 0.1 && e.stepRiseM < 0.3)) errors.push(`${id}/${b.id}: stepRiseM ${e.stepRiseM} out of range`);
+      if (e.panesHigh !== undefined && (e.kind !== 'window' || e.frameM === undefined || e.frameStyle === 'strips' || e.round || !Number.isInteger(e.panesHigh) || e.panesHigh < 2 || e.panesHigh > 8)) errors.push(`${id}/${b.id}: panesHigh needs a plate-frame window with frameM and 2-8 rows`);
+      if (e.louvres !== undefined && (e.kind !== 'panel' || e.archM !== undefined || e.diamond || !Number.isInteger(e.louvres.count) || e.louvres.count < 1 || e.louvres.count > 30)) errors.push(`${id}/${b.id}: louvres need a plain panel and 1-30 slats`);
+      if (e.stepTreadM !== undefined && !(e.stepTreadM >= 0.15 && e.stepTreadM <= 0.5)) errors.push(`${id}/${b.id}: stepTreadM ${e.stepTreadM} out of range`);
       if (e.frameM === undefined && e.transomM === undefined) continue;
       if (e.kind !== 'window' || e.frameStyle === 'strips') errors.push(`${id}/${b.id}: frameM/transomM are for plate-frame windows`);
       if (e.frameM !== undefined && !(e.frameM > 0 && e.frameM < Math.min(e.w ?? Infinity, e.h ?? Infinity) / 3)) errors.push(`${id}/${b.id}: frameM ${e.frameM} out of range`);
@@ -453,7 +475,7 @@ export function validateSpec(spec: TypeSpec): string[] {
   }
   if (spec.storeys < 2) errors.push('storeys < 2');
   for (const a of spec.annexes ?? []) {
-    if (a.u[1] <= a.u[0] || a.d[1] <= a.d[0]) errors.push(`annex ${a.id}: empty u/d range`);
+    if ((a.uFromEnd ? a.u[0] < 0 || a.u[1] < 0 : a.u[1] <= a.u[0]) || a.d[1] <= a.d[0]) errors.push(`annex ${a.id}: empty u/d range`);
     if (a.plan === 'segment' && (a.kind === 'openStair' || a.doors || (a.segments !== undefined && !(a.segments >= 2)))) errors.push(`annex ${a.id}: a segment bay is solid, without doors, with >= 2 segments`);
     for (const v of [...(a.variants ?? []), ...(a.exceptVariants ?? [])]) if (!spec.variants[v]) errors.push(`annex ${a.id}: unknown variant ${v}`);
   }

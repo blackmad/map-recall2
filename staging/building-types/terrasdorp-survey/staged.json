@@ -1,0 +1,91 @@
+[
+ {
+  "area": "nd-td-01",
+  "anchor": {
+   "lng": 4.89883,
+   "lat": 52.40374
+  },
+  "pands": 20,
+  "missing": 0,
+  "per": {
+   "nd-td-krasseur/buff/photo": 20
+  }
+ },
+ {
+  "area": "nd-td-02",
+  "anchor": {
+   "lng": 4.89581,
+   "lat": 52.4053
+  },
+  "pands": 91,
+  "missing": 0,
+  "per": {
+   "nd-td-krasseur/buff/photo": 91
+  }
+ },
+ {
+  "area": "nd-td-03",
+  "anchor": {
+   "lng": 4.89723,
+   "lat": 52.4045
+  },
+  "pands": 10,
+  "missing": 0,
+  "per": {
+   "nd-td-krasseur/buff/photo": 10
+  }
+ },
+ {
+  "area": "nd-td-04",
+  "anchor": {
+   "lng": 4.89653,
+   "lat": 52.4104
+  },
+  "pands": 56,
+  "missing": 0,
+  "per": {
+   "nd-td-panel/grey/photo": 24,
+   "nd-td-pomona/darkframe/photo": 10,
+   "nd-td-pomona/grey/photo": 22
+  }
+ },
+ {
+  "area": "nd-td-05",
+  "anchor": {
+   "lng": 4.89981,
+   "lat": 52.41051
+  },
+  "pands": 158,
+  "missing": 0,
+  "per": {
+   "nd-td-panel/grey/photo": 16,
+   "nd-td-souterrain/pebble/photo": 132,
+   "nd-td-pomona/darkframe/photo": 10
+  }
+ },
+ {
+  "area": "nd-td-06",
+  "anchor": {
+   "lng": 4.89678,
+   "lat": 52.4121
+  },
+  "pands": 6,
+  "missing": 0,
+  "per": {
+   "nd-td-pomona/grey/photo": 6
+  }
+ },
+ {
+  "area": "nd-td-07",
+  "anchor": {
+   "lng": 4.89795,
+   "lat": 52.41246
+  },
+  "pands": 34,
+  "missing": 0,
+  "per": {
+   "nd-td-pomona/darkframe/photo": 10,
+   "nd-td-pomona/grey/photo": 24
+  }
+ }
+]

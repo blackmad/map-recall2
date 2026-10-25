@@ -1,0 +1,355 @@
+{
+ "id": "nw-nsn-turnhout",
+ "label": "Nieuw Sloten-Noordwest (1992, Turnhoutplantsoen / Herentalsstraat) narrow two-storey terraced house in buff brick: a framed ground-storey front of panel, door and window, a ribbon window in a dark band under a projecting white canopy, and a white glazed top storey set back from the front",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 138,
+  "bouwjaar": [
+   1992,
+   1992
+  ],
+  "lengthM": 4.4,
+  "widthM": 11.1,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 2,
+ "eavesRangeM": [
+  2.5,
+  10.0
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.0,
+   5.0
+  ],
+  "depth": [
+   10.6,
+   12.8
+  ]
+ },
+ "rowCoherentHeights": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.1,
+  "vergeOverhangM": 0.03,
+  "thicknessM": 0.25,
+  "pitchDeg": 0,
+  "flatVerge": true,
+  "eavesPinM": 4.75
+ },
+ "annexes": [
+  {
+   "id": "glazed-top",
+   "facade": "front",
+   "u": [
+    0,
+    0
+   ],
+   "uFromEnd": true,
+   "d": [
+    -8.6,
+    -1.8
+   ],
+   "from": {
+    "eaves": 0
+   },
+   "to": {
+    "eaves": 3.0
+   },
+   "material": "column",
+   "glaze": {
+    "faces": [
+     "out"
+    ],
+    "sill": 0.7,
+    "h": 1.5,
+    "lightM": 1.1,
+    "frame": "rail",
+    "marginM": 0.2
+   },
+   "evidence": "survey crops 0363100012150696 / 0363100012141617: a white top storey with a band of windows, set back behind the canopy; 3DBAG roof 8.7-9.3 m at the back, 5.2-5.4 m at the front"
+  }
+ ],
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "buff",
+ "variants": {
+  "buff": {
+   "label": "buff brick, dark grey band and frames, white canopy and top storey, white / timber ground panels",
+   "evidence": "terraces #41 #46 #52 #54 #57 #60 #61 #66 #69 #71 #83 #84 #87 #88 #94 #96 #98 #100 #101",
+   "palette": {
+    "wall": {
+     "slot": "brick",
+     "tint": "#c9b08a",
+     "measured": true
+    },
+    "frame": "#e9e9e4",
+    "glass": "#3a4148",
+    "door": "#3d4a45",
+    "accent": "#e4e2da",
+    "rail": "#4a4f53",
+    "dark": "#4c5155",
+    "column": "#eeeee9",
+    "joint": "#8f8574",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#5f5d5a"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012124443-2020081307.jpg",
+     "pand": "0363100012124443",
+     "address": "Turnhoutplantsoen",
+     "note": "2020-08 morning sun: buff brick, per house a framed ground-storey front of panel, door and window, a dark band with a ribbon window on the first storey under a projecting white canopy, a white glazed top storey set back behind it"
+    },
+    {
+     "photo": "sunlit crop 0363100012063980-2016101012.jpg",
+     "pand": "0363100012063980",
+     "address": "Turnhoutplantsoen",
+     "note": "2016-10: same"
+    },
+    {
+     "photo": "survey crop 0363100012150696.jpg",
+     "pand": "0363100012150696",
+     "address": "Turnhoutplantsoen",
+     "note": "2021-04: same"
+    },
+    {
+     "photo": "survey crop 0363100012066105.jpg",
+     "pand": "0363100012066105",
+     "address": "Herentalsstraat",
+     "note": "2021-04: same"
+    },
+    {
+     "photo": "survey crop 0363100012141617.jpg",
+     "pand": "0363100012141617",
+     "address": "Turnhoutplantsoen",
+     "note": "2021-04: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.45,
+       "w": 1.15,
+       "h": 2.2,
+       "sill": 0.0,
+       "depth": 0.03,
+       "colour": "accent",
+       "note": "white or timber panel of the ground-storey front"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.55,
+       "w": 0.85,
+       "h": 2.2
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.6,
+       "w": 1.3,
+       "h": 2.15,
+       "sill": 0.05,
+       "lights": 1,
+       "frameM": 0.06,
+       "note": "full-height window"
+      },
+      {
+       "kind": "panel",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.25,
+       "w": 4.3,
+       "h": 0.95,
+       "sill": 1.05,
+       "depth": 0.02,
+       "colour": "dark",
+       "note": "dark band of the ribbon window"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.25,
+       "w": 4.1,
+       "h": 0.8,
+       "sill": 1.12,
+       "lights": 4,
+       "colour": "rail",
+       "note": "ribbon window"
+      },
+      {
+       "kind": "canopy",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 2.25,
+       "w": 4.4,
+       "h": 0.15,
+       "sill": 2.15,
+       "canopy": "flat",
+       "depth": 0.6,
+       "colour": "column",
+       "note": "projecting white canopy"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012150696.jpg",
+     "pand": "0363100012150696",
+     "address": "Turnhoutplantsoen",
+     "note": "garden side not photographed: garden door and windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.2,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.4,
+       "w": 1.2,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012150696.jpg",
+     "pand": "0363100012150696",
+     "address": "Turnhoutplantsoen",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012150696.jpg",
+     "pand": "0363100012150696",
+     "address": "Turnhoutplantsoen",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brick from the sunlit 2020-08 crop 0363100012124443: the sunlit brick clips (#ebd19d raw, tones #e9d49a / #e6ca90 / #b4926a), drawn #c9b08a between the sunlit and the shaded tones.",
+  "Layout from the same crop (60 px/m between downpipes 4.55 m apart): ground front 0.8-4.3 m, 2.25 m high; ribbon band 3.5-4.35 m; canopy 4.35-4.7 m; the white top storey set back ~1.8 m. 3DBAG reads one plane from 5.2-5.4 m at the front to 8.7-9.3 m at the back: the set-back storey, drawn as a box to eaves + 3.0 m."
+ ]
+}

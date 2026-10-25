@@ -1,0 +1,389 @@
+{
+ "id": "nw-nsn-white",
+ "label": "Nieuw Sloten-Noordwest (1995, Laan van Vlaanderen / Lokerenstraat / Rumbeke / Roeselarestraat / Berlaarstraat / Vlimmerenstraat / Vorselaarstraat) three-storey terraced house in white-painted brick: the ground storey of each mirrored pair framed in brown brick with the two doors together, a three-light window beside each, two windows on the first storey and four small square windows under a dark timber eaves box",
+ "frontOnShort": true,
+ "source": {
+  "clusterRank": 0,
+  "panden": 290,
+  "bouwjaar": [
+   1994,
+   1995
+  ],
+  "lengthM": 4.8,
+  "widthM": 10.1,
+  "bouwlagen": 3,
+  "roof": "flat",
+  "dwellingsMedian": 1
+ },
+ "storeys": 3,
+ "eavesRangeM": [
+  6.5,
+  10.0
+ ],
+ "footprintRangeM": {
+  "frontage": [
+   4.6,
+   6.1
+  ],
+  "depth": [
+   9.8,
+   14.5
+  ]
+ },
+ "sizeClassesM": {
+  "frontage": [
+   5.2
+  ]
+ },
+ "rowCoherentHeights": true,
+ "alternateMirror": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0.6,
+  "vergeOverhangM": 0.03,
+  "thicknessM": 0.45,
+  "pitchDeg": 0,
+  "flatVerge": true,
+  "eavesPinM": 8.4
+ },
+ "ground": {
+  "mode": "solid"
+ },
+ "defaultVariant": "white",
+ "variants": {
+  "white": {
+   "label": "white-painted brick, brown brick ground-storey frames, dark grey frames, dark blue doors, dark timber eaves",
+   "evidence": "terraces #10 #14 #15 #20 #25 #44 #56 #59 #62 #64 #70 #75 #79 #82 #90",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#ecebe5"
+    },
+    "frame": "#3f464c",
+    "glass": "#3a4148",
+    "door": "#24345a",
+    "accent": "#e2e1db",
+    "rail": "#3f464c",
+    "dark": "#8b7665",
+    "column": "#f0eee6",
+    "joint": "#7a6a5c",
+    "fascia": "#5e5049",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#4f4e4c"
+    }
+   }
+  }
+ },
+ "facades": {
+  "front": {
+   "confidence": "measured",
+   "evidence": [
+    {
+     "photo": "sunlit crop 0363100012071309-2020081307.jpg",
+     "pand": "0363100012071309",
+     "address": "Laan van Vlaanderen",
+     "note": "2020-08 morning sun: white-painted brick, three storeys; the ground storey of each mirrored pair framed in brown brick (doors together at the party wall, a three-light window at each end, brown lintel), two two-light windows on the first storey and four small square windows on the second per house, a dark timber eaves box"
+    },
+    {
+     "photo": "sunlit crop 0363100012149787-2020081307.jpg",
+     "pand": "0363100012149787",
+     "address": "Laan van Vlaanderen",
+     "note": "2020-08: same"
+    },
+    {
+     "photo": "survey crop 0363100012098913.jpg",
+     "pand": "0363100012098913",
+     "address": "Lokerenstraat",
+     "note": "2022-04: same"
+    },
+    {
+     "photo": "survey crop 0363100012068346.jpg",
+     "pand": "0363100012068346",
+     "address": "Berlaarstraat",
+     "note": "2021-04: same, 5.5 m houses"
+    },
+    {
+     "photo": "survey crop 0363100012080083.jpg",
+     "pand": "0363100012080083",
+     "address": "Rumbeke",
+     "note": "2019-07: same"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "panel",
+       "levels": "ground",
+       "ref": "left",
+       "u": 2.15,
+       "w": 4.3,
+       "h": 2.6,
+       "sill": 0.0,
+       "depth": 0.03,
+       "colour": "dark",
+       "note": "brown brick frame of the pair, from the party wall to past the window, brown lintel on top"
+      },
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.4,
+       "w": 0.9,
+       "h": 2.2,
+       "note": "door beside the partner's at the party wall"
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.1,
+       "w": 1.8,
+       "h": 1.4,
+       "sill": 0.85,
+       "lights": 3,
+       "note": "three-light window"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.35,
+       "w": 1.15,
+       "h": 1.3,
+       "sill": 0.95,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.65,
+       "w": 1.15,
+       "h": 1.3,
+       "sill": 0.95,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 0.73,
+       "w": 0.65,
+       "h": 0.8,
+       "sill": 0.9,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 1.87,
+       "w": 0.65,
+       "h": 0.8,
+       "sill": 0.9,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 2.98,
+       "w": 0.65,
+       "h": 0.8,
+       "sill": 0.9,
+       "lights": 1
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 4.08,
+       "w": 0.65,
+       "h": 0.8,
+       "sill": 0.9,
+       "lights": 1
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 3,
+     "below": 0.3,
+     "above": 0.0,
+     "palette": "fascia"
+    }
+   ]
+  },
+  "back": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012098913.jpg",
+     "pand": "0363100012098913",
+     "address": "Lokerenstraat",
+     "note": "garden side not photographed: garden door and windows inferred"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 2,
+    "groundDoors": 1,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "house",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "door",
+       "levels": "ground",
+       "ref": "left",
+       "u": 1.0,
+       "w": 0.9,
+       "h": 2.1
+      },
+      {
+       "kind": "window",
+       "levels": "ground",
+       "ref": "left",
+       "u": 3.2,
+       "w": 2.0,
+       "h": 1.4,
+       "sill": 0.7,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        1
+       ],
+       "ref": "left",
+       "u": 3.4,
+       "w": 1.2,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 1.3,
+       "w": 1.0,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2
+       ],
+       "ref": "left",
+       "u": 3.4,
+       "w": 1.2,
+       "h": 1.1,
+       "sill": 0.9,
+       "lights": 2
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012098913.jpg",
+     "pand": "0363100012098913",
+     "address": "Lokerenstraat",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  },
+  "right": {
+   "confidence": "inferred",
+   "evidence": [
+    {
+     "photo": "survey crop 0363100012098913.jpg",
+     "pand": "0363100012098913",
+     "address": "Lokerenstraat",
+     "note": "end walls: plain; mid-terrace party walls get none"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "wall",
+     "w": 1,
+     "role": "windows",
+     "elements": []
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Brown brick white-referenced to the white window frame in the sunlit crop 0363100012071309-2020081307 (x1.33/1.22/1.21): mean #8b7665. White paint is drawn as stucco (not measured).",
+  "Layout from the same crop (52 px/m, 4.8 m houses): door 0.96-1.83 m from the party wall, window 2.2-4.0 m, brown frame to 4.3 m and 2.6 m high; first-storey windows centred 1.35 and 3.65 m at 3.75-5.05 m; second-storey windows 0.65 m square centred 0.73/1.87/2.98/4.08 m at 6.5 m; wall top 8.2 m under the eaves box. 3DBAG roofs 8.4-9.0 m; b3_h_dak_min reads the rear extension."
+ ]
+}

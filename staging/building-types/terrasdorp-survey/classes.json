@@ -1,0 +1,232 @@
+{
+ "terraces": {
+  "94": {
+   "type": "nd-td-souterrain",
+   "variant": "pebble",
+   "via": "photo",
+   "repMirror": false
+  },
+  "98": {
+   "type": "nd-td-souterrain",
+   "variant": "pebble",
+   "via": "photo",
+   "repMirror": true
+  },
+  "100": {
+   "type": "nd-td-souterrain",
+   "variant": "pebble",
+   "via": "photo",
+   "repMirror": false
+  },
+  "109": {
+   "type": "nd-td-souterrain",
+   "variant": "pebble",
+   "via": "photo",
+   "repMirror": false
+  },
+  "117": {
+   "type": "nd-td-souterrain",
+   "variant": "pebble",
+   "via": "photo",
+   "repMirror": false
+  },
+  "122": {
+   "type": "nd-td-souterrain",
+   "variant": "pebble",
+   "via": "photo",
+   "repMirror": false
+  },
+  "123": {
+   "type": "nd-td-souterrain",
+   "variant": "pebble",
+   "via": "photo",
+   "repMirror": false
+  },
+  "131": {
+   "type": "nd-td-souterrain",
+   "variant": "pebble",
+   "via": "photo",
+   "repMirror": false
+  },
+  "138": {
+   "type": "nd-td-souterrain",
+   "variant": "pebble",
+   "via": "photo",
+   "repMirror": false
+  },
+  "145": {
+   "type": "nd-td-souterrain",
+   "variant": "pebble",
+   "via": "photo",
+   "repMirror": true
+  },
+  "148": {
+   "type": "nd-td-souterrain",
+   "variant": "pebble",
+   "via": "photo",
+   "repMirror": false
+  },
+  "154": {
+   "type": "nd-td-souterrain",
+   "variant": "pebble",
+   "via": "photo",
+   "repMirror": true
+  },
+  "82": {
+   "type": "nd-td-panel",
+   "variant": "grey",
+   "via": "photo",
+   "repMirror": false
+  },
+  "83": {
+   "type": "nd-td-panel",
+   "variant": "grey",
+   "via": "photo",
+   "repMirror": true
+  },
+  "86": {
+   "type": "nd-td-panel",
+   "variant": "grey",
+   "via": "photo",
+   "repMirror": false
+  },
+  "88": {
+   "type": "nd-td-panel",
+   "variant": "grey",
+   "via": "photo",
+   "repMirror": true
+  },
+  "90": {
+   "type": "nd-td-panel",
+   "variant": "grey",
+   "via": "photo",
+   "repMirror": false
+  },
+  "128": {
+   "type": "nd-td-pomona",
+   "variant": "darkframe",
+   "via": "photo",
+   "repMirror": false
+  },
+  "151": {
+   "type": "nd-td-pomona",
+   "variant": "darkframe",
+   "via": "photo",
+   "repMirror": true
+  },
+  "152": {
+   "type": "nd-td-pomona",
+   "variant": "grey",
+   "via": "photo",
+   "repMirror": true
+  },
+  "159": {
+   "type": "nd-td-pomona",
+   "variant": "darkframe",
+   "via": "photo",
+   "repMirror": false
+  },
+  "161": {
+   "type": "nd-td-pomona",
+   "variant": "grey",
+   "via": "photo",
+   "repMirror": false
+  },
+  "166": {
+   "type": "nd-td-pomona",
+   "variant": "grey",
+   "via": "photo",
+   "repMirror": true
+  },
+  "170": {
+   "type": "nd-td-pomona",
+   "variant": "grey",
+   "via": "photo",
+   "repMirror": false
+  },
+  "144": {
+   "type": "nd-td-pomona",
+   "variant": "grey",
+   "via": "photo",
+   "repMirror": false
+  },
+  "149": {
+   "type": "nd-td-pomona",
+   "variant": "grey",
+   "via": "photo",
+   "repMirror": false
+  },
+  "158": {
+   "type": "nd-td-pomona",
+   "variant": "grey",
+   "via": "photo",
+   "repMirror": true
+  },
+  "4": {
+   "type": "nd-td-krasseur",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "6": {
+   "type": "nd-td-krasseur",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "12": {
+   "type": "nd-td-krasseur",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "14": {
+   "type": "nd-td-krasseur",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "16": {
+   "type": "nd-td-krasseur",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "20": {
+   "type": "nd-td-krasseur",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": false
+  },
+  "21": {
+   "type": "nd-td-krasseur",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "22": {
+   "type": "nd-td-krasseur",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "24": {
+   "type": "nd-td-krasseur",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  },
+  "25": {
+   "type": "nd-td-krasseur",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": false
+  },
+  "26": {
+   "type": "nd-td-krasseur",
+   "variant": "buff",
+   "via": "photo",
+   "repMirror": true
+  }
+ }
+}

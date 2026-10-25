@@ -1,0 +1,53 @@
+[
+ {
+  "area": "nw-nsn-01",
+  "anchor": {
+   "lng": 4.80299,
+   "lat": 52.34646
+  },
+  "pands": 237,
+  "missing": 0,
+  "per": {
+   "nw-nsn-glazed/grey/photo": 69,
+   "nw-nsn-white/white/photo": 168
+  }
+ },
+ {
+  "area": "nw-nsn-02",
+  "anchor": {
+   "lng": 4.80737,
+   "lat": 52.34707
+  },
+  "pands": 117,
+  "missing": 0,
+  "per": {
+   "nw-nsn-white/white/photo": 54,
+   "nw-nsn-turnhout/buff/photo": 63
+  }
+ },
+ {
+  "area": "nw-nsn-03",
+  "anchor": {
+   "lng": 4.80313,
+   "lat": 52.34838
+  },
+  "pands": 68,
+  "missing": 0,
+  "per": {
+   "nw-nsn-white/white/photo": 46,
+   "nw-nsn-white/white/signature": 22
+  }
+ },
+ {
+  "area": "nw-nsn-04",
+  "anchor": {
+   "lng": 4.80856,
+   "lat": 52.34856
+  },
+  "pands": 67,
+  "missing": 0,
+  "per": {
+   "nw-nsn-turnhout/buff/photo": 67
+  }
+ }
+]
