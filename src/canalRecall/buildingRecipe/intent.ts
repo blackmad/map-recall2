@@ -8,6 +8,7 @@
  * terra/facade-component-contract: the model selects and classifies, a
  * compiler builds geometry.
  */
+import type {BoxBalconyIntent} from '../blockBuilding/boxBalcony.ts';
 import type {RoofLevelIntent} from './roofLevel.ts';
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
@@ -1225,6 +1226,8 @@ export interface LargeWallIntent {
    * stone arcade under a timber loggia. Absent = byte-identical.
    */
   gallery?: GalleryIntent | GalleryIntent[];
+  /** Closed box balconies on scattered (storey, bay) cells of the main panel (blockBuilding/boxBalcony.ts, Haarlemmerweg 778 "Pepper"). Absent: byte-identical. */
+  boxBalconies?: BoxBalconyIntent;
 }
 
 export interface LargeBuildingIntent {
@@ -1235,6 +1238,15 @@ export interface LargeBuildingIntent {
   walls: LargeWallIntent[];
   /** System for wall surfaces no group lists (default `blank`). */
   otherWalls?: LargeSystemName;
+  /**
+   * A crown block that overhangs the shell on the named bearings (Salt, Haarlemmerweg 940: the top six storeys
+   * cantilever over the canal corner above a recessed glazed base). The crown keeps the dominant front's bay pattern
+   * and window shape, gets a coffered soffit under the overhang, new end-wall strips and a hidden roof deck; the base
+   * keeps its own facade. `storeys` counts the crown's storeys from the top; `overhang` gives the projection on each
+   * bearing in bays of that front's pitch (not metres); `coffers: false` leaves the soffit plain. Opt-in: a house
+   * without `crown` compiles exactly as before. The photo evidence for each bearing goes in `notes`.
+   */
+  crown?: CrownIntent;
   /** Lift overrun and plant boxes on the largest flat roof. */
   roofPlant?: boolean;
   /**
@@ -1292,6 +1304,15 @@ export interface LargeBuildingIntent {
   notes?: string[];
 }
 export type RoofMaterial = typeof ROOF_MATERIALS[number];
+/** A crown that overhangs its own base (LargeBuildingIntent.crown): storeys from the top, projection per bearing in bays. */
+export interface CrownIntent {
+  /** the crown's storeys, counted from the top (1 .. storeys of the dominant front - 1) */
+  storeys: number;
+  /** plan projection per bearing, in bays of the dominant front's pitch (only the photographed sides) */
+  overhang: Partial<Record<'N' | 'E' | 'S' | 'W', number>>;
+  /** false = a plain soffit (default: the coffered soffit the photo shows) */
+  coffers?: boolean;
+}
 export interface LargeRoofIntent {
   material: RoofMaterial;
   flat?: RoofMaterial;

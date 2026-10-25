@@ -13,6 +13,7 @@ import {drawDressings} from '../blockBuilding/dressings.ts';
 import {drawArcadePiers} from '../blockBuilding/arcadePiers.ts';
 import {drawWindowBox} from '../blockBuilding/windowBox.ts';
 import {drawGallery} from '../blockBuilding/gallery.ts';
+import {drawBoxBalconies} from '../blockBuilding/boxBalcony.ts';
 import {applyCladdingSlots, drawCladdingLines} from '../blockBuilding/cladding.ts';
 import {drawFalseFront, drawSignBoards} from '../blockBuilding/signBoards.ts';
 import {fitsPanel, pointInRing, rectPoly, type Panel} from '../blockBuilding/panels.ts';
@@ -21,11 +22,15 @@ import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {FLAT_ROOF_TONES} from '../look/palette.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
+import {applyCrownCantilever, type CrownReport} from './crownCantilever.ts';
 
-export interface LargeComponentCounts { claddingLines?: number; signBoards?: number; falseFronts?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; mansards?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { claddingLines?: number; signBoards?: number; falseFronts?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; boxBalconies?: number; mansards?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; crowns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
+  /** the crown cantilever this house opted into (`intent.crown`), for the report */
+  crown?: CrownReport;
+
   /** the triangle budget this house is gated on: `intent.budgetTriangles` (opt-in, up to 40,000), else 12,000 */
   budgetTriangles: number;
   /** block-kit wall panels (index = `recipe.panelGroup` index) */
@@ -147,6 +152,8 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   if (g.windowBox && (g.mainPanel === p.index || g.windowBox.spread) && drawWindowBox(c, levels, g.windowBox, g.bays, underCornice, g.mainPanel !== p.index)) counts.windowBoxes = (counts.windowBoxes ?? 0) + 1;
   // Open galleries (verandas) in front of their bay span: decks, posts, arches and balustrades, under the cornice.
   if (g.gallery && g.mainPanel === p.index) for (const gf of g.gallery) { const k = drawGallery(c, levels, gf, g.bays, underCornice); if (k) counts.galleries = (counts.galleries ?? 0) + k; }
+  // Closed box balconies on their listed (storey, bay) cells (Pepper); absent, nothing is drawn.
+  if (g.boxBalconies && g.mainPanel === p.index) { const k = drawBoxBalconies(c, levels, g.boxBalconies, g.bays, underCornice); if (k) counts.boxBalconies = (counts.boxBalconies ?? 0) + k; }
   // Row split: each house's cornice at its own eaves and shop fascia at its own ground line, inside its span.
   const houses = g.houses?.panel === p.index ? g.houses.segs : null;
   if (houses) for (const h of houses) {
@@ -478,6 +485,10 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
   applyHouseSplits(res.mesh, recipe.groups, res.panels);
   applyCladdingSlots(res.mesh, recipe.groups);
   hooks.afterCompose?.(res.mesh, recipe, res.panels);
+  // `crown`: the top storeys cantilever over the shell on the photographed bearings (Salt, Haarlemmerweg 940).
+  // Opt-in: without the field nothing here runs and the output is unchanged.
+  let crown: CrownReport | undefined;
+  if (intent.crown) { crown = applyCrownCantilever(res.mesh, recipe, intent.crown, res.panels); counts.crowns = (counts.crowns ?? 0) + 1; }
   const blockGates = runGates(res.mesh, recipe.set, {budget: budgetTriangles});
-  return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, budgetTriangles, panels: res.panels};
+  return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, budgetTriangles, panels: res.panels, ...(crown ? {crown} : {})};
 }
