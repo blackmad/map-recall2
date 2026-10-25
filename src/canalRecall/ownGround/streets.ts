@@ -39,6 +39,11 @@ import { inRuns, stationOf, type PhotoEvidence } from './photoEvidence.js';
  *  from surveyMarkings.ts instead (OSM crossing / signal / give-way nodes of road-marks-v1 and the junction graph,
  *  measured on and clipped to the carriageway polygons); this band paint stays off there. */
 export const PAINT_ON_SURVEY = false;
+/**
+ * A tram rail as the rider sees it: the dark groove and the worn head together, one dark strip per rail (issue #52, user
+ * 2026-10-24: the light-steel 7 cm rails read as "thin white lines"; the orthophoto and the panoramas show dark pairs).
+ */
+export const RAIL_GROOVE_M = 0.1;
 export const ROAD_MARK_LIFT = { lane: 0.056, paint: 0.062, rail: 0.066 } as const;
 export const LIFT = {
   area: 0.015,
@@ -535,7 +540,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
     const railPieces = bgt && w.section.rails?.length ? railIntervals(w, bgt.index, isBridgeWay(w)) : null;
     if (railPieces) clipped.rails += railPieces.dropped;
     traceMark(out.tram, 'rails');
-    for (const o of w.section.rails ?? []) for (const r of [-0.7175, 0.7175]) for (const piece of railPieces ? railPieces.pieces : [w.points]) if (piece.length >= 2) ribbon(out.tram, piece, o + r, 0.07, height, railLift, { step });
+    for (const o of w.section.rails ?? []) for (const r of [-0.7175, 0.7175]) for (const piece of railPieces ? railPieces.pieces : [w.points]) if (piece.length >= 2) ribbon(out.tram, piece, o + r, RAIL_GROOVE_M, height, railLift, { step });
     // A separate cycle path crossing a carriageway untagged leaves a gap there (pathCuts): mark it as a cycle crossing.
     traceMark(out.cycle, 'cycleCross'); traceMark(out.paint, 'cycleCross');
     if (opts.markings !== false && !carriage && w.section.bands[0]?.kind === 'cycleway' && !isCrossing(w)) out.stats.markings.blocks += cyclePathCrossings(out, w, nodes, st, height, bgt);

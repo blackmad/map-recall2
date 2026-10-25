@@ -117,6 +117,8 @@ export interface CellInput {
 
 /** How far the mask may extend past the cell, metres. */
 const MASK_REACH_M = 150;
+/** Layers whose material multiplies vertex colours that only some of their meshes carry: the rest are padded white. */
+export const VERTEX_TINTED: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['kerb']);
 /** The roads-v1 lookup raster reaches this far past the cell (the cell's own ways and their paint seldom reach further). */
 const ROAD_FAST_PAD_M = 60;
 /** Canal-belt water surface, scene z (−0.40 m NAP under the +1.37 m NAP datum): the default where no polder level is known. */
@@ -541,7 +543,9 @@ export function buildCell(input: CellInput): BuiltCell {
   for (const layer of GROUND_LAYERS) {
     const list = parts[layer];
     if (!list?.length) continue;
-    const m = list.length === 1 ? list[0] : merge(list);
+    let m = list.length === 1 ? list[0] : merge(list);
+    // The kerb material is vertex-coloured (roadSurfaces KERB_SHADOW_M): a kerb mesh without colours (OSM bands only) is white.
+    if (VERTEX_TINTED.has(layer) && !m.colors) m = { ...m, colors: new Array(m.positions.length).fill(1) };
     const p = packMesh(m);
     packed[layer] = p;
     if (tracing) sources[layer] = triangleSources(list, from[layer] ?? []);

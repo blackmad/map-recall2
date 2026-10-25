@@ -1530,19 +1530,24 @@ test('ground looks: default is palette.ts untouched; bright hits its luma target
   assert.ok(Math.abs(luma(street.asphalt.base) - 144) <= 4, `road luma ${luma(street.asphalt.base).toFixed(0)}`);
   assert.ok(Math.abs(luma(street.pavement.base) - 175) <= 4, `pavement luma ${luma(street.pavement.base).toFixed(0)}`);
   assert.ok(Math.abs(luma(rgbOf(tones.water)) - 124) <= 4, `water luma ${luma(rgbOf(tones.water)).toFixed(0)}`);
-  for (const [a, b] of [['asphalt', 'cycle'], ['asphalt', 'klinker'], ['klinker', 'cycle']] as const) {
+  // Option C1 on issue #7 (user 2026-10-24, "C1 sure"): photo-like klinker, the herringbone pattern carries the
+  // klinker/asphalt legend, so that pair's colour rule is the C1 tone's ΔE (9.4, gate 9); cycle red stays ≥ 20 from both.
+  for (const [a, b, min] of [['asphalt', 'cycle', 20], ['asphalt', 'klinker', 9], ['klinker', 'cycle', 20]] as const) {
     const e = deltaE(street[a].base, street[b].base);
-    assert.ok(e >= 20, `${a}/${b} ΔE ${e.toFixed(1)}`);
+    assert.ok(e >= min, `${a}/${b} ΔE ${e.toFixed(1)}`);
   }
   // Road look v2 (2026-10-16): inrit / parking klinker is a muted grey brick near the pavement (ΔE ≤ 10, luma within
   // 20 of it) and still warmer than the asphalt; the klinker carriageway stays brick (legend above) but is no longer
-  // the saturated brown (chroma under 60, luma ≥ 110); rails are lighter than the asphalt round them.
+  // the saturated brown (chroma under 60, luma ≥ 110).
   assert.ok(deltaE(street.brick.base, street.pavement.base) <= 10, `brick/pavement ΔE ${deltaE(street.brick.base, street.pavement.base).toFixed(1)}`);
   assert.ok(Math.abs(luma(street.brick.base) - luma(street.pavement.base)) <= 20, 'inrit brick near the pavement');
   assert.ok(street.brick.base[0] - street.brick.base[2] > street.asphalt.base[0] - street.asphalt.base[2], 'inrit brick warmer than asphalt');
-  assert.ok(deltaE(street.klinker.base, street.brick.base) >= 15, 'road klinker distinct from inrit brick');
+  // C1 (#7): road klinker and inrit brick are both photo-like greyish brick now; ΔE ≥ 10 (was 15), the tone mix differs.
+  assert.ok(deltaE(street.klinker.base, street.brick.base) >= 10, `road klinker distinct from inrit brick: ΔE ${deltaE(street.klinker.base, street.brick.base).toFixed(1)}`);
   assert.ok(Math.max(...street.klinker.base) - Math.min(...street.klinker.base) < 60 && luma(street.klinker.base) >= 110, `klinker ${street.klinker.base}`);
-  assert.ok(luma(rgbOf(street.rail)) > luma(street.asphalt.base) + 25, `rail ${street.rail} over asphalt`);
+  // Tram rails are dark grooves (issue #52, user 2026-10-24: light rails read as "thin white lines"; the orthophoto
+  // has them darker than the asphalt beside them): at least 40 under the asphalt's luma.
+  assert.ok(luma(rgbOf(street.rail)) < luma(street.asphalt.base) - 40, `rail ${street.rail} a dark groove on the asphalt`);
   // Only ground: paint, bollards, parks and woods are today's.
   for (const k of ['paint', 'bollard'] as const) assert.equal(street[k], STREET_GROUND[k]);
   for (const k of ['park', 'wood', 'lawn', 'shrub', 'bed', 'bark', 'sand', 'gravel', 'parkGravel'] as const) assert.equal(tones[k], GROUND_TONES[k]);

@@ -82,7 +82,7 @@ export const ZEBRA_CLUSTER_M = 8;
 /** The carriageway's shortest chord through a crossing is clear when under this share of the chord across it. */
 export const CHORD_CLEAR = 0.6;
 
-export interface SurveyMarkingStats { /** Planned crossings the photo moved / dropped (photoEvidence zebras). */ photoMoved?: number; photoDropped?: number; /** Cycleway runs over a carriageway with no crossing node or crossing tag: not marked. */ cycleUnbacked?: number; zebras: number; stripes: number; blockLines: number; cycleCrossings: number; blocks: number; stopLines: number; giveWays: number; teeth: number; centreDashes: number; ms: number }
+export interface SurveyMarkingStats { /** Planned crossings the photo moved / dropped (photoEvidence zebras). */ photoMoved?: number; photoDropped?: number; /** Cycleway runs over a carriageway with no crossing node or crossing tag: not marked. */ cycleUnbacked?: number; /** Cycle crossings laid parallel to and beside a zebra (alignCycleCrossing). */ cycleAligned?: number; zebras: number; stripes: number; blockLines: number; cycleCrossings: number; blocks: number; stopLines: number; giveWays: number; teeth: number; centreDashes: number; ms: number }
 
 /**
  * A zebra (or block-line crossing) as drawn: what the crossing audit (crossingAudit.ts) measures. `r` is the stripe
@@ -600,6 +600,34 @@ function armLine(a: Arm, len: number): Vec2[] {
   return pts;
 }
 
+/** A cycle crossing within this of a zebra's edge (along the road) and running within ALIGN_DEG of its walking line is laid beside it. */
+export const ALIGN_REACH_M = 2.5, ALIGN_DEG = 25;
+/** The gap between a zebra's edge and the red cycle crossing laid beside it. */
+export const ALIGN_GAP_M = 0.3;
+/**
+ * A red cycle crossing beside a zebra, laid parallel to it and abutting it (issue #52, user 2026-10-24 at Haarlemmerplein:
+ * "zebras, red cycle-crossing boxes and stop lines are disjointed fragments not aligned to the lanes"). The cycle path's
+ * OSM line and the crossing node's road direction disagree by a few degrees and a metre or two, so the two were drawn
+ * as separate skewed pieces; on the orthophoto they are one band across the road, zebra then red. Returns the run
+ * moved onto the zebra's frame (its own extent across the road kept), or null when no zebra is that close.
+ */
+export function alignCycleCrossing(plans: readonly Pick<CrossingPlan, 'kind' | 'centre' | 'r' | 'from' | 'to'>[], a: Vec2, b: Vec2, width: number): [Vec2, Vec2] | null {
+  const u = unit(sub(b, a)), mid: Vec2 = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], cos = Math.cos(ALIGN_DEG * Math.PI / 180);
+  let best: { p: (typeof plans)[number]; along: number } | null = null;
+  for (const p of plans) {
+    if (p.kind !== 'zebra') continue;
+    const n = left(p.r);
+    if (Math.abs(dot(u, n)) < cos) continue;
+    const d = sub(mid, p.centre), along = dot(d, p.r), lateral = dot(d, n);
+    if (Math.abs(along) > ZEBRA.len / 2 + width / 2 + ALIGN_REACH_M || lateral < p.from - 3 || lateral > p.to + 3) continue;
+    if (!best || Math.abs(along) < Math.abs(best.along)) best = { p, along };
+  }
+  if (!best) return null;
+  const { p } = best, n = left(p.r), side = best.along >= 0 ? 1 : -1, off = side * (ZEBRA.len / 2 + ALIGN_GAP_M + width / 2);
+  const at = (q: Vec2): Vec2 => add(add(p.centre, p.r, off), n, dot(sub(q, p.centre), n));
+  return [at(a), at(b)];
+}
+
 export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArrays; red: MeshArrays; stats: SurveyMarkingStats; crossings: DrawnCrossing[]; plan: CrossingPlanStats } {
   const t0 = Date.now();
   const mk = new SurveyMarker(input), { ways, height, lift, marks } = input, st = mk.stats;
@@ -733,16 +761,20 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
       // photo did not show (Kinkerstraat, De Clercqstraat: 14 % and 38 % red in the photo under them).
       const node = marks.find(m => segDist(m.p, run.a, run.b) < 2 && (m.kind === 'zebra' || m.kind === 'blocks'));
       if (!node && !isCrossingWay(w)) { st.cycleUnbacked = (st.cycleUnbacked ?? 0) + 1; continue; }
-      const n = left(u);
-      if (!mk.bar(mk.red, run.a, run.b, width, lift.red, 1.0)) continue;
+      // Beside a zebra: parallel to it and abutting it, when the moved red lies on the carriageway as well.
+      const aligned = alignCycleCrossing(plans, run.a, run.b, width);
+      let ra = run.a, rb = run.b;
+      if (aligned && mk.bar(mk.red, aligned[0], aligned[1], width, lift.red, 1.0)) { [ra, rb] = aligned; st.cycleAligned = (st.cycleAligned ?? 0) + 1; }
+      else if (!mk.bar(mk.red, run.a, run.b, width, lift.red, 1.0)) continue;
+      const ru = unit(sub(rb, ra)), n = left(ru);
       st.cycleCrossings++;
-      addCrossing(run.a, run.b, width / 2);
-      const len = dist(run.a, run.b), pitch = BLOCK.size + BLOCK.gap;
+      addCrossing(ra, rb, width / 2);
+      const len = dist(ra, rb), pitch = BLOCK.size + BLOCK.gap;
       for (const side of [-1, 1]) {
         const o = (width / 2) * side;
         for (let s = BLOCK.gap / 2; s + BLOCK.size <= len; s += pitch) {
-          const a = add(add(run.a, n, o), u, s);
-          st.blocks += mk.bar(mk.paint, a, add(a, u, BLOCK.size), BLOCK.size, lift.paint, BLOCK.size * 0.75);
+          const a = add(add(ra, n, o), ru, s);
+          st.blocks += mk.bar(mk.paint, a, add(a, ru, BLOCK.size), BLOCK.size, lift.paint, BLOCK.size * 0.75);
         }
       }
       if (node?.signalised || isSignalCrossing(w.tags)) crossingStops(mid, road);
