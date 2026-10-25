@@ -26,6 +26,12 @@ export const ROAD_SPOTS: [string, Place][] = [
   // the Marnixstraat busway crossing the red fietsstraat at the Frederik Hendrikplantsoen, looking north.
   ['kinkerstraat-dacostagracht', { lng: 4.87243, lat: 52.36731, bearing: 64 }],
   ['marnixstraat-plantsoen', { lng: 4.87643, lat: 52.37421, bearing: 20 }],
+  // Ground divots (issue #53, 2026-10-24): Stationsplein in front of Centraal, looking north-north-east at the station
+  // front over the metro and bike-garage stairwells; De Ruijterkade on the IJ side heading east into the Michiel de
+  // Ruijtertunnel ramp beside the bus station.
+  ['stationsplein', { lng: 4.8995, lat: 52.37765, bearing: 20 }],
+  ['de-ruijterkade-busstation', { lng: 4.8968, lat: 52.38125, bearing: 118 }],
+  ['de-ruijterkade-ramp', { lng: 4.89875, lat: 52.38074, bearing: 115 }],
 ];
 
 async function boot(page: Page, viewMode = 'chase'): Promise<string[]> {
@@ -54,10 +60,16 @@ async function teleport(page: Page, p: Place): Promise<void> {
 const status = (page: Page) => page.evaluate(() => (window as any).canalRecallGame.vectorMap.ownGroundStatus());
 
 async function settle(page: Page, ms = 3500): Promise<Record<string, any>> {
-  await expect.poll(async () => {
+  const settled = async () => {
     const s = await status(page);
     return s.ready && !s.queued && !Object.keys(s.pending ?? {}).length && Object.values(s.cells ?? {}).includes(0);
-  }, { timeout: 180_000, intervals: [1000] }).toBe(true);
+  };
+  try {
+    await expect.poll(settled, { timeout: 180_000, intervals: [1000] }).toBe(true);
+  } catch (e) {
+    const s = await status(page);
+    throw new Error(`ground never settled: ${JSON.stringify({ ready: s.ready, queued: s.queued, pending: s.pending, cells: s.cells, errors: s.errors })}`);
+  }
   await page.waitForTimeout(ms);
   return status(page);
 }
@@ -73,6 +85,17 @@ test('roads: shots at the user spots and the deck regressions', async ({ page },
     await teleport(page, place);
     const s = await settle(page);
     await page.screenshot({ path: `${OUT}/${info.project.name}-${name}.png` });
+    if (process.env.ROADS_TOPDOWN) {
+      // Straight down over the rider (pitch 0, zoom 18.5), then back to the chase view.
+      await page.evaluate(() => {
+        const m = (window as any).canalRecallGame.vectorMap.map, jump = m.jumpTo.bind(m);
+        (m as any).__chaseJump ??= jump;
+        m.jumpTo = (o: any) => (m as any).__chaseJump({ ...o, pitch: 0, zoom: 18.5 });
+      });
+      await page.waitForTimeout(2500);
+      await page.screenshot({ path: `${OUT}/${info.project.name}-${name}-top.png` });
+      await page.evaluate(() => { const m = (window as any).canalRecallGame.vectorMap.map; m.jumpTo = (m as any).__chaseJump; });
+    }
     report[name] = { place, cells: s.cells, triangles: s.triangles, geometryMB: s.geometryMB, errors: s.errors };
     expect(s.errors, `${name}: ${JSON.stringify(s.errors)}`).toEqual([]);
   }

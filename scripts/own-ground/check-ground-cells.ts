@@ -5,6 +5,7 @@
 //   npx tsx scripts/own-ground/check-ground-cells.ts            # cells around BRU0166 + BRU0044, both LODs
 //   npx tsx scripts/own-ground/check-ground-cells.ts --all      # every cell of the OSM cell manifest (LOD 0)
 //   npx tsx scripts/own-ground/check-ground-cells.ts --road-regressions  # only the roads-v1 named regressions
+//   npx tsx scripts/own-ground/check-ground-cells.ts --relief   # only the relief regressions (reliefRegressions.ts)
 //   npx tsx scripts/own-ground/check-ground-cells.ts --parapets # the canal-mouth parapet regressions alone
 //   npx tsx scripts/own-ground/check-ground-cells.ts --roads    # roads-v1 cells: before/after table (triangles, build ms, gz) against the budgets
 //
@@ -23,6 +24,7 @@ const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.na
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
 import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, gapLand, surveyPaint, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_WAY_STRAYS, STRAYS, SURVEY_GAPS, SURVEY_PAINT, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
+import { RELIEF_SPOTS, reliefSpread } from '../../src/canalRecall/ownGround/reliefRegressions.ts';
 import { auditBridgeSurfaces } from './audit-bridge-surfaces.ts';
 import { ROAD_CELL_BUDGET_GZ } from '../../src/canalRecall/ownGround/roadCells.ts';
 import { statSync } from 'node:fs';
@@ -76,11 +78,22 @@ function bandOnDeck(cell: BuiltCell, deckId: string, layers: string[]): { n: num
   return { n, worstBelow };
 }
 
+/** The relief stays level where the street is (Stationsplein's stairwells, Centraal's IJ side; issue #53). */
+async function reliefRegressions(): Promise<void> {
+  for (const spot of RELIEF_SPOTS) {
+    const c = toLocal(spot.at[0], spot.at[1]);
+    await store.ensureRelief([c[0] - spot.radiusM - 10, c[1] - spot.radiusM - 10, c[0] + spot.radiusM + 10, c[1] + spot.radiusM + 10]);
+    const r = reliefSpread(store.surface.ground, c, spot.radiusM);
+    check(r.spread <= spot.maxSpreadM, `relief ${spot.id}: 2–98 % spread ${r.spread} m (≤ ${spot.maxSpreadM}) within ${spot.radiusM} m — ${spot.label}`);
+  }
+}
+
 async function main(): Promise<void> {
   await store.init();
   console.log(JSON.stringify({ osmCells: store.osmCells.size, reliefTiles: store.relief.tiles.length }));
   if (process.argv.includes('--roads')) { await roadsTable(); return; }
   if (process.argv.includes('--road-regressions')) { await roadRegressions(); if (failed) process.exit(1); return; }
+  if (process.argv.includes('--relief')) { await reliefRegressions(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); await wayDeckHoleRegressions(); await wayDeckCarriageRegressions(); process.exitCode = failed ? 1 : 0; return; }
   if (process.argv.includes('--all')) {
     const rows = [];
@@ -94,6 +107,7 @@ async function main(): Promise<void> {
     console.log(JSON.stringify({ cells: rows.length, fullyMeasured: [...store.osmCells].filter(k => store.fullyCovered(k)).length, extendedTiles: store.synthesised.size, trianglesPerCell: Math.round(t / rows.length), MBPerCell: +(mb / rows.length).toFixed(1), buildMsMedian: ms[ms.length >> 1], buildMsMax: ms[ms.length - 1] }));
     return;
   }
+  await reliefRegressions();
   // Named bridges (lane bridges-elevation 2026-10-13): the user's Westerkerk bridge (Nieuwe-Wercksbrug, Rozengracht
   // over the Prinsengracht), Rijckerbrug, the Blauwbrug, plus the earlier three. Crown rise over the approaches
   // (our relief + the AHN profile, ±0.15 m), and the deck attached: its top fills the footprint out to the railings.
