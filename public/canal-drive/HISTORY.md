@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+**Measured walls brightness (2026-10-25, #50).** Behind `?walls=measured`
+(still off): one linear-light gain of 2 on the measured period walls
+(`measuredWalls.ts` `PERIOD_WALL_GAIN`), brick capped at the existing 0.6
+lightness ceiling so light brick never turns cream, light renders take the
+gain only. Canal period now measured (52 pands, was 12 guessed); De Pijp's
+painted share holds at 5 %. Mean street wall luma: photo 138, flag off 122,
+#46 109, now 124; frame time unchanged. 78 new pand crops archived in
+source-data (c8a6d9cf3). Strip `demos/walls-20261025/sheet.jpg`; flipping
+the default is the user's call.
+
 **Ferry boarding along the pier (2026-10-25, #54).** User: "this whole dock
 should let me turn into a boat". `src/canalRecall/ferry/pierEdge.ts` derives a
 boarding edge from the stops: stops within 80 m are one quay, the edge runs
