@@ -178,10 +178,12 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.balconies.bays !== undefined) { if (!Array.isArray(w.balconies.bays) || !w.balconies.bays.length) problems.push(`${at}.balconies.bays: list of bay indices`); else w.balconies.bays.forEach(b => count(b, `${at}.balconies.bays`, 0, (w.baysPerStorey ?? 80) - 1)); if (w.baysPerStorey === undefined) problems.push(`${at}.balconies.bays needs baysPerStorey`); }
       if (w.balconies.rail !== undefined) oneOf(w.balconies.rail, ['glass', 'bars', 'solid'], `${at}.balconies.rail`);
       const bk = Object.keys(w.balconies);
-      for (const k of bk) if (!['storeys', 'rail', 'every', 'first', 'bays', 'colour', 'deep', 'windows'].includes(k)) problems.push(`${at}.balconies.${k}: unknown field (storeys, rail, every, first, bays, colour, deep, windows)`);
+      for (const k of bk) if (!['storeys', 'rail', 'every', 'first', 'bays', 'colour', 'deep', 'windows', 'run'].includes(k)) problems.push(`${at}.balconies.${k}: unknown field (storeys, rail, every, first, bays, colour, deep, windows, run)`);
       if (w.balconies.colour !== undefined) colour(w.balconies.colour, `${at}.balconies.colour`);
       if (w.balconies.deep !== undefined && !(typeof w.balconies.deep === 'number' && w.balconies.deep >= 0.08 && w.balconies.deep <= 0.45)) problems.push(`${at}.balconies.deep: fraction 0.08..0.45 of the storey height`);
       bool(w.balconies.windows, `${at}.balconies.windows`);
+      bool(w.balconies.run, `${at}.balconies.run`);
+      if (w.balconies.run && !w.balconies.windows) problems.push(`${at}.balconies.run: needs windows (a run of balconies in front of punched windows)`);
       if (w.balconies.every !== undefined && w.balconies.bays !== undefined) problems.push(`${at}.balconies: give every (with first) or bays, not both`);
       if (w.balconies.first !== undefined && w.balconies.every === undefined) problems.push(`${at}.balconies.first needs every`);
       if (w.balconies.every !== undefined) count(w.balconies.every, `${at}.balconies.every`, 2, 12);

@@ -99,3 +99,19 @@ test('Stadhouderskade 111 school wing: white pilasters and paired windows within
   assert.ok(!g.failing.includes('triangle-budget'));
   assert.ok(DRESS.capital.h > 0 && DRESS.corbel.out < DRESS.pier.out, 'a corbel course ends inside the piers, never on their face');
 });
+
+test('balconies.run (Stadsloket West, issue #59): balconies on a window row span the full bay and join into one run; absent: unchanged', () => {
+  const base = raw(WAREHOUSE), w1 = base.walls[1];
+  const withW = (x: Record<string, unknown>) => ({...base, walls: base.walls.map((w, k) => (k === 1 ? {...w1, ...x} : w))});
+  assert.ok(validateLargeIntent(withW({balconies: {storeys: [2], windows: true, run: true}})));
+  assert.throws(() => validateLargeIntent(withW({balconies: {storeys: [2], run: true}})), /balconies\.run: needs windows/);
+  assert.throws(() => validateLargeIntent(withW({balconies: {storeys: [2], windows: true, run: 1}})), /balconies\.run must be true or false/);
+  const f = {pitchM: 4, lines: [0, 5, 8, 11, 14], ground: 'system' as const, slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'curtain'}, balconyStoreys: [2], balconyOnWindows: true};
+  const onWin = largeSystem('brick-bay-grid', f);
+  assert.deepEqual(largeSystem('brick-bay-grid', {...f, balconyRun: undefined}), onWin);
+  const run = largeSystem('brick-bay-grid', {...f, balconyRun: true}).rowOverrides!['2'].balcony!;
+  const one = onWin.rowOverrides!['2'].balcony!;
+  assert.equal(run.w, f.pitchM, 'the balcony runs the whole bay');
+  assert.ok(one.w! < f.pitchM);
+  assert.ok(Math.abs(run.back!.w! * run.w! - one.back!.w! * one.w!) < 0.01, 'the window behind keeps its width');
+});

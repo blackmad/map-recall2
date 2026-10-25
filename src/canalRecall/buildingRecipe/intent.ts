@@ -870,7 +870,9 @@ export interface LargeWallIntent {
   balconies?: {storeys: number[]; rail?: 'glass' | 'bars' | 'solid'; every?: number; first?: number; bays?: number[];
     /** the rails' own colour (black iron balconies; default the frame colour) */ colour?: string;
     /** projection as a fraction of the storey height (0.08..0.45; default 1.2 m): a shallow balcony on consoles */ deep?: number;
-    /** stand in front of the storey's own windows (an iron balcony on a window row) instead of one French window */ windows?: boolean};
+    /** stand in front of the storey's own windows (an iron balcony on a window row) instead of one French window */ windows?: boolean;
+    /** with `windows`: the balcony runs the full bay pitch, so neighbouring bays join into one front-wide balcony in front of
+     *  punched windows (Stadsloket West's continuous galleries); absent: the bay's windows plus 0.2 m, byte-identical */ run?: boolean};
   /**
    * Grouped windows (issue #35): each bay's opening (`windowShape.w` of the bay) is `count` separate windows with `gap`
    * of the bay (default 0.06) of wall between them, on the listed `storeys` (default every upper storey; 0 = ground).
