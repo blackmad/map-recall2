@@ -96,6 +96,15 @@ class OSMLoader {
           });
         }
       }
+      // Open squares are rideable paving (pedestrianAreas.ts); the guard
+      // reads them after projection. Missing data only loses the squares.
+      this.plazaFeatures = null;
+      if (travelMode === 'car') {
+        try {
+          const squaresResponse = await fetch(new URL(`${city.extractPath}/squares.json`, window.location.href));
+          if (squaresResponse.ok) this.plazaFeatures = await squaresResponse.json();
+        } catch (error) { console.warn('Squares unavailable; open plazas ride as corridors only.', error); }
+      }
       this.ferryNetwork = null;
       if (travelMode === 'car' && city.id === 'amsterdam') {
         try {
@@ -333,6 +342,12 @@ class OSMLoader {
     this._roadSnapSegments = built.segments;
     this._roadSnapIndex = index;
     return built.segments;
+  }
+
+  // A lat/lng in game coordinates, with the transform of the last road build.
+  latLngToWorld(lat, lng) {
+    const p = PROJECT.projectToWorld({ lat, lon: lng }, { lat: this._lastCenterLat, lon: this._lastCenterLng });
+    return { x: p.x + this._lastOffsetX, y: p.y + this._lastOffsetY };
   }
 
   // Convert a lat/lng to the nearest road point in game coordinates

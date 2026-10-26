@@ -4,7 +4,9 @@ import { constrainCarToRoad, trackEdgeStall, type CarKinematics, type RoadContac
 import { ROUTE_QUIZ_SETTLE_METRES, routePlaqueName } from '../src/canalRecall/game/recallRules';
 import { bridgeNameAskable } from '../src/canalRecall/game/notableBridges';
 import { coveringBuilding, initialCoverState, updateCoverState } from '../src/canalRecall/coveredPassage';
-import { buildRoadSpatialIndex, type RoadPoint } from '../src/canalRecall/routing/roadSurface';
+import { buildRoadSpatialIndex, contactsAt, pickGuardContact, roadsNear, type RoadPoint } from '../src/canalRecall/routing/roadSurface';
+import { buildPlazaIndex, plazaAt, plazaGuardContact, type PlazaFeature, type PlazaIndex } from '../src/canalRecall/routing/pedestrianAreas';
+import { buildRoadSegments, projectToWorld, PIXELS_PER_METER, type OsmWay } from '../src/canalRecall/osm/roadProjection';
 import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoadName } from '../src/canalRecall/game/bridgeStreetName';
 
 const options = { edgeTolerance: 12 };
@@ -325,4 +327,124 @@ let bridgeWaySummary = '';
   }
 }
 
-process.stdout.write(`Canal Recall car checks passed (6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}).\n`);
+// Open squares are rideable paving (pedestrianAreas.ts, wired into
+// road-network.js getGuardRoad). The world is built as osm-loader.js builds
+// it: closed rings dropped, the same widths and simplification.
+const PLAZA_ROAD_WIDTHS: Record<string, number> = {
+  primary: 30, secondary: 26, tertiary: 21, residential: 18, unclassified: 17, living_street: 16,
+  service: 13, busway: 18, cycleway: 9, pedestrian: 14, footway: 7, path: 8,
+};
+const squares = JSON.parse(await readFile('public/data/extracts/amsterdam/squares.json', 'utf8')) as PlazaFeature[];
+const plazaWorld = (centre: [number, number], radiusMetres = 700) => {
+  const ways: OsmWay[] = [];
+  routing.forEach((street, streetIndex) => (street.paths ?? (street.path ? [street.path] : [])).forEach((p, pathIndex) => {
+    if (p.length < 2) return;
+    if (p.length > 3 && p[0][0] === p.at(-1)![0] && p[0][1] === p.at(-1)![1]) return;
+    if (!p.some(q => metersBetween(q, centre) < radiusMetres)) return;
+    const highway = street.highway || 'residential';
+    ways.push({ id: `${streetIndex}:${pathIndex}`, nodes: p.map(([lat, lon]) => ({ lat, lon })), tags: { name: street.name, highway }, highway } as unknown as OsmWay);
+  }));
+  const centreLL = { lat: centre[0], lon: centre[1] };
+  const built = buildRoadSegments(ways, centreLL, { simplificationToleranceDegrees: 0.00003, roadWidths: PLAZA_ROAD_WIDTHS, defaultRoadWidth: 32 });
+  const toWorld = (lat: number, lon: number) => {
+    const p = projectToWorld({ lat, lon }, centreLL);
+    return { x: p.x + built.offset.x, y: p.y + built.offset.y };
+  };
+  const index = buildRoadSpatialIndex(built.segments, 100);
+  const plazas = buildPlazaIndex(squares, toWorld, PIXELS_PER_METER);
+  const guard = (x: number, y: number, withPlazas: PlazaIndex | null) => {
+    let best = pickGuardContact(contactsAt(roadsNear(index, x, y, 2), x, y), null, { x, y });
+    if (withPlazas) {
+      if (!best && plazaAt(withPlazas, x, y)) best = pickGuardContact(contactsAt(roadsNear(index, x, y, 4), x, y), null, { x, y });
+      best = plazaGuardContact(best, withPlazas, x, y);
+    }
+    return best;
+  };
+  // What constrainCarToRoad treats as leaving the road (edgeTolerance 4 px).
+  const blocked = (x: number, y: number, withPlazas: PlazaIndex | null) => {
+    const contact = guard(x, y, withPlazas);
+    return !contact || contact.dist > contact.width + 4;
+  };
+  const ride = (from: [number, number], to: [number, number], withPlazas: PlazaIndex | null) => {
+    const a = toWorld(from[0], from[1]), b = toWorld(to[0], to[1]);
+    const steps = Math.ceil(Math.hypot(b.x - a.x, b.y - a.y) / PIXELS_PER_METER);
+    let stops = 0;
+    for (let i = 0; i <= steps; i++) if (blocked(a.x + (b.x - a.x) * i / steps, a.y + (b.y - a.y) * i / steps, withPlazas)) stops++;
+    return { steps, stops };
+  };
+  return { plazas, toWorld, blocked, ride };
+};
+let plazaSummary = '';
+{
+  // Named regression (feedback 636a57f4, 2026-10-25, "I should be able to bike
+  // across this square"): the Dam, from in front of the Royal Palace to the
+  // National Monument, is open paving between the corridors.
+  const palace: [number, number] = [52.37300, 4.89210];
+  const monument: [number, number] = [52.37290, 4.89340];
+  const dam = plazaWorld(palace);
+  const before = dam.ride(palace, monument, null);
+  const after = dam.ride(palace, monument, dam.plazas);
+  assert.ok(before.stops > 0, `the Dam crossing leaves every corridor without the squares (${before.stops}/${before.steps} m blocked)`);
+  assert.equal(after.stops, 0, `the Dam is rideable from the Royal Palace to the National Monument (${after.stops}/${after.steps} m blocked)`);
+  // Named regression (feedback 638590e9, 2026-10-25, "got stuck, would like to
+  // move"): the east part of the Leidseplein by Korte Leidsedwarsstraat. The
+  // bike stood on the plaza 5.6 m outside the pedestrian corridor.
+  // The screenshot position is approximate and itself sits 5.6 m from the
+  // corridor, just inside its edge; the plaza paving around it within 25 m
+  // must be rideable, and from the nearest paving that was off every
+  // corridor the bike must be able to leave in all four directions.
+  const reported: [number, number] = [52.36400, 4.88300];
+  const leidse = plazaWorld(reported);
+  const offCorridor: Array<[number, number]> = [];
+  for (let dy = -25; dy <= 25; dy += 1) for (let dx = -25; dx <= 25; dx += 1) {
+    const q: [number, number] = [reported[0] + dy / 111_320, reported[1] + dx / (111_320 * Math.cos(reported[0] * Math.PI / 180))];
+    const w = leidse.toWorld(...q);
+    if (plazaAt(leidse.plazas, w.x, w.y) && leidse.blocked(w.x, w.y, null)) offCorridor.push(q);
+  }
+  assert.ok(offCorridor.length > 50, `Leidseplein paving near the report is off every corridor without the squares (${offCorridor.length} m²)`);
+  const stillBlocked = offCorridor.filter(q => { const w = leidse.toWorld(...q); return leidse.blocked(w.x, w.y, leidse.plazas); });
+  assert.equal(stillBlocked.length, 0, `Leidseplein paving within 25 m of the report is rideable (${stillBlocked.length} m² blocked)`);
+  const stuck = offCorridor.reduce((a, b) => metersBetween(a, reported) <= metersBetween(b, reported) ? a : b);
+  for (const [dLat, dLon] of [[0.00005, 0], [-0.00005, 0], [0, 0.00008], [0, -0.00008]] as const) {
+    const away: [number, number] = [stuck[0] + dLat, stuck[1] + dLon];
+    const moved = leidse.ride(stuck, away, leidse.plazas);
+    assert.equal(moved.stops, 0, `the bike moves ${moved.steps} m off the Leidseplein plaza point ${stuck.map(v => v.toFixed(6)).join(',')} toward ${away.map(v => v.toFixed(6)).join(',')}`);
+  }
+  // Negatives: closed rings that stay blocked. Frederiksplein is a park
+  // (lawn around the fountain); the Piet Heinkade ring (routing_4258 path 6,
+  // 10,159 m², the largest closed street ring in the centre) loops around a
+  // block; osm-loader drops it and it is not a square.
+  const centroid = (r: [number, number][]): [number, number] => [r.reduce((t, q) => t + q[0], 0) / r.length, r.reduce((t, q) => t + q[1], 0) / r.length];
+  const frederiksSquare = squares.find(square => square.name === 'Frederiksplein')!;
+  const frederiks = centroid((frederiksSquare.paths ?? [frederiksSquare.path!])[0]);
+  const fw = plazaWorld(frederiks);
+  const fp = fw.toWorld(...frederiks);
+  assert.equal(plazaAt(fw.plazas, fp.x, fp.y), null, 'the Frederiksplein lawn is not a rideable square');
+  assert.ok(fw.blocked(fp.x, fp.y, fw.plazas), `the Frederiksplein lawn stays off-road (${frederiks.map(v => v.toFixed(6)).join(',')})`);
+  const pietHein = (routing as Array<RoutingStreet & { id?: string }>).find(street => street.id === 'routing_4258')!;
+  const ring = (pietHein.paths ?? [pietHein.path!])[6];
+  const bw = plazaWorld(centroid(ring));
+  const ringWorld = ring.map(([lat, lon]) => bw.toWorld(lat, lon));
+  const inRing = (x: number, y: number) => {
+    let inside = false;
+    for (let i = 0, j = ringWorld.length - 1; i < ringWorld.length; j = i++) {
+      const p = ringWorld[i], q = ringWorld[j];
+      if ((p.y > y) !== (q.y > y) && x < (q.x - p.x) * (y - p.y) / (q.y - p.y) + p.x) inside = !inside;
+    }
+    return inside;
+  };
+  let interior = 0;
+  const xs = ringWorld.map(p => p.x), ys = ringWorld.map(p => p.y);
+  for (let x = Math.min(...xs); x <= Math.max(...xs); x += PIXELS_PER_METER * 2) {
+    for (let y = Math.min(...ys); y <= Math.max(...ys); y += PIXELS_PER_METER * 2) {
+      if (!inRing(x, y) || !bw.blocked(x, y, null)) continue;
+      interior++;
+      assert.equal(plazaAt(bw.plazas, x, y), null, 'the Piet Heinkade ring is not a square');
+      assert.ok(bw.blocked(x, y, bw.plazas), 'the Piet Heinkade ring interior stays off-road');
+    }
+  }
+  assert.ok(interior > 100, `the Piet Heinkade ring has off-road interior to test (${interior} samples)`);
+  plazaSummary = `; squares: Dam crossing ${after.steps} m, Leidseplein ${offCorridor.length} m² opened, 4 exits, Frederiksplein and Piet Heinkade ring blocked`;
+}
+
+process.stdout.write(`Canal Recall car checks passed (6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}${plazaSummary}).\n`);

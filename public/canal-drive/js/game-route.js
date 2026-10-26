@@ -1722,6 +1722,11 @@ class GameRouteRuntime {
         const surfaceIndex = await RoadNetwork.prepareSurfaceIndex(segments, routingGraph, stale);
         if (stale()) return;
         this.track = new RoadNetwork(segments, start, finish, [], routingGraph, surfaceIndex);
+        const surface = window.CanalRecallRoadSurface;
+        if (this.travelMode === 'car' && this.osmLoader.plazaFeatures && surface && surface.buildPlazaIndex) {
+          this.track.plazaIndex = surface.buildPlazaIndex(this.osmLoader.plazaFeatures,
+            (plazaLat, plazaLon) => this.osmLoader.latLngToWorld(plazaLat, plazaLon), PIXELS_PER_METER);
+        }
         this._loadedWorld = {
           cityId: this.cityId || 'amsterdam',
           travelMode: this.travelMode,
