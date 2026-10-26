@@ -384,7 +384,7 @@ export class SharedFrame {
         }
       } else this.shadowKey = '';
       renderer.shadowMap.needsUpdate = redraw;
-      renderer.render(this.scene, this.camera);
+      if (!renderLosingContext(renderer, this.scene, this.camera, gl)) return;
     } else {
       renderer.shadowMap.needsUpdate = false;
       for (const handle of drawn) {
@@ -392,16 +392,37 @@ export class SharedFrame {
         if (!xray) continue;
         for (const other of drawn) other.wrapper.visible = other === handle;
         this.scene.overrideMaterial = xray;
-        try { renderer.render(this.scene, this.camera); }
+        try { if (!renderLosingContext(renderer, this.scene, this.camera, gl)) return; }
         finally { this.scene.overrideMaterial = null; }
       }
       for (const handle of drawn) handle.wrapper.visible = true;
-      renderer.render(this.scene, this.camera);
+      if (!renderLosingContext(renderer, this.scene, this.camera, gl)) return;
     }
     const s = this.stats[pass];
     s.ms = performance.now() - t0; s.calls = renderer.info.render.calls; s.triangles = renderer.info.render.triangles; s.frames++;
   }
 }
+
+/**
+ * A context can die between `isContextLost()` and the shader compile inside
+ * `render`: `createShader` then answers null and three's `shaderSource(null)`
+ * throws a TypeError from the animation frame (Sentry CANAL-RECALL-5, Safari
+ * on Mac, the same second as its CANAL-RECALL-7 context loss). That frame is
+ * dropped quietly; `webglcontextlost` follows and contextLost() takes over.
+ * Any error from a live context still throws. Returns whether it drew.
+ */
+export function renderLosingContext(renderer: { render(scene: any, camera: any): void }, scene: any, camera: any, gl: WebGL2RenderingContext): boolean {
+  try {
+    renderer.render(scene, camera);
+    return true;
+  } catch (error) {
+    if (gl.isContextLost?.() || LOST_SHADER_ERROR.test(String((error as Error)?.message ?? error))) return false;
+    throw error;
+  }
+}
+
+/** A null shader handed to `shaderSource`/`compileShader`/`attachShader`, as WebKit, Chromium and Gecko word it. */
+export const LOST_SHADER_ERROR = /\b(?:shaderSource|compileShader|attachShader)\b/;
 
 /**
  * Draw the sun's shadow map at the full depth range.

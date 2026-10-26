@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+**Shared frame survives a context lost mid-compile (2026-10-26).** Sentry
+CANAL-RECALL-5 (Safari, Mac) regressed even though `renderPass` checks
+`isContextLost()` before drawing: the context died between that check and
+three's shader compile, so `createShader` answered null and `shaderSource`
+threw from the animation frame. `renderLosingContext` now drops that frame
+quietly when the flag has flipped or the error names a shader call; any other
+error still throws. CANAL-RECALL-7/-J (context lost, then restored 1.4 s
+later on Android 10 "K" phones, iPhones and Macs) are the expected diagnostics
+and they show the restore working.
+
 **Open squares are rideable (2026-10-26).** Feedback 636a57f4 (Dam) and
 638590e9 (Leidseplein). `osm-loader.js` drops closed rings, so squares were
 corridor-only. `src/canalRecall/routing/pedestrianAreas.ts` treats points
