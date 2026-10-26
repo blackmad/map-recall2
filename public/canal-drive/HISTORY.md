@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+**Own ground compiles half the shaders (2026-10-26).** Asking why phones that
+lost their WebGL context (CANAL-RECALL-7) reported 66 three.js programs: a
+phone-sized ride measured 68, all compiled within 10 s and none after. About 44
+were the own-ground water-cut material, keyed by ground layer (asphalt, klinker,
+lawn…) although its code depends only on the mask channel and the base
+material's blend edit, plus each one's fade clone. Keying by
+`base.customProgramCacheKey()` gives 32 programs on the same ride; each surface
+keeps its own uniforms. Not shown to cause the context losses (the GPU name in
+those reports is null because it is read after the loss), but it cuts start-up
+compile work on every device.
+
 **Shared frame survives a context lost mid-compile (2026-10-26).** Sentry
 CANAL-RECALL-5 (Safari, Mac) regressed even though `renderPass` checks
 `isContextLost()` before drawing: the context died between that check and

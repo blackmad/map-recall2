@@ -707,7 +707,9 @@ export class OwnGround {
       shader.fragmentShader = shader.fragmentShader.replace('#include <common>', '#include <common>\nvarying highp vec2 vMaskUV;\nuniform sampler2D waterMask;')
         .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>\nif (vMaskUV.x > 0.0 && vMaskUV.y > 0.0 && vMaskUV.x < 1.0 && vMaskUV.y < 1.0 && texture2D(waterMask, vMaskUV).${channel} < 0.5) discard;`);
     };
-    m.customProgramCacheKey = () => `ownGround-cut2-${channel}-${layer}${this.opts.transition ? '-blend' : ''}`;
+    // The cut's code depends on the channel and the base's own edits (the blend), not on the layer: keying by layer
+    // compiled one copy of the same program per ground surface (68 programs on a phone ride, 2026-10-26).
+    m.customProgramCacheKey = () => `ownGround-cut3-${channel}-${base.customProgramCacheKey()}`;
     return m;
   }
 
