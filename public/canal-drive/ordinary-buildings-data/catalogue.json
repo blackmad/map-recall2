@@ -52519,6 +52519,119 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-25T21:36:15.043Z"
+    },
+    {
+      "id": "ordinary-0363100012250972",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012250972",
+      "name": "Haarlemmerweg 940-1138, Amsterdam (Westerpark, north side of the Haarlemmerweg corridor): a 2023 white-panel high-rise, 16 storeys, whose top six storeys cantilever about 5.4 m over the south (canal) front above a coffered white soffit, over a recessed shaft with a deep white window grid of wide-window + narrow-slot pairs, a glazed ground floor and a white lower mass",
+      "hash": "542e94439fdcf01885281ba39b3fa8bd3c4c81b1619e91f5bd0cd3e33502a017",
+      "sha256": "542e94439fdcf01885281ba39b3fa8bd3c4c81b1619e91f5bd0cd3e33502a017",
+      "meshHash": "2dd477d532334455",
+      "bytes": 1861804,
+      "triangles": 36483,
+      "materials": 11,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -11.729,
+          0,
+          -19.447
+        ],
+        "max": [
+          11.685,
+          49.086,
+          23.225
+        ]
+      },
+      "anchor": [
+        4.8528151,
+        52.385509
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8529743,
+              52.3856714
+            ],
+            [
+              4.8526424,
+              52.3856664
+            ],
+            [
+              4.8526559,
+              52.3853465
+            ],
+            [
+              4.8529873,
+              52.3853517
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 48.31,
+      "height": 49.09,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-haarlemmerweg-940.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012250972"
+      ],
+      "aliases": [
+        "w1204459162"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "haarlemmerweg-940",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012250972/w03-359.jpg",
+          "source-data://pand-reference-walls/0363100012250972/w04-179.jpg",
+          "pano-2025-09-29-se",
+          "pano-2025-07-01-north",
+          "source-data://pand-reference-walls/0363100012250972/commons-2023 Haarlemmerweg, Asd-Salt (1).jpg",
+          "source-data://pand-reference-walls/0363100012250972/commons-2023 Haarlemmerweg, Asd-Salt (2).jpg",
+          "mvrdv-2023-westerpark-west"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 16st 16b",
+          "brick-bay-grid 16st 16b",
+          "brick-bay-grid 16st 13b",
+          "brick-bay-grid 16st 12b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] not confirmed by the photo (NO EVIDENCE (usable upper cells 38 % < 40 %)); inferred: tree occludes the crop (usable cells 38 %), model checked by eye against the 2025 panorama",
+        "walls[1] not confirmed by the photo (FAIL (wall dL +0.15; glazing storey band off by 0.36 mean 0.35 vs photo 0.19)); inferred: white facade, raw panel #d9d9d4 matches model #dededa, the light-trim normalisation treats the white wall as trim and glass reflections lower photo glazing, grid and crown cantilever match by eye",
+        "walls[2] not confirmed by the photo (NO PHOTO); inferred: no panorama of this face, grid continued from walls 0 and 1"
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012250972",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-26T06:14:12.922Z"
     }
   ]
 }

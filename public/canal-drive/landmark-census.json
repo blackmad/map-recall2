@@ -1,10 +1,10 @@
 {
  "version": 1,
- "generatedAt": "2026-10-25T21:39:45.151Z",
+ "generatedAt": "2026-10-26T06:14:46.833Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
- "headline": 506,
- "strict": 164,
+ "headline": 507,
+ "strict": 165,
  "byTier": {
   "bespoke": {
    "models": 337,
@@ -19,9 +19,9 @@
    "unreviewed": 0
   },
   "largeRecipe": {
-   "models": 115,
-   "counts": 54,
-   "strict": 54,
+   "models": 116,
+   "counts": 55,
+   "strict": 55,
    "unreviewed": 14
   },
   "landmarkKit": {
@@ -33,7 +33,7 @@
  },
  "byReview": {
   "legacy-gallery": 406,
-  "likeness-gate": 99,
+  "likeness-gate": 100,
   "none": 324,
   "strip-review": 112
  },
@@ -7289,6 +7289,20 @@
    "tier": "largeRecipe",
    "pands": [
     "0363100012250971"
+   ],
+   "namedPoi": false,
+   "rideVisible": true,
+   "held": false,
+   "review": "likeness-gate",
+   "counts": true,
+   "countsStrict": true
+  },
+  {
+   "key": "model:ordinary-0363100012250972",
+   "name": "Haarlemmerweg 940-1138, Amsterdam (Westerpark, north side of the Haarlemmerweg corridor): a 2023 white-panel high-rise, 16 storeys, whose top six storeys cantilever about 5.4 m over the south (canal) front above a coffered white soffit, over a recessed shaft with a deep white window grid of wide-window + narrow-slot pairs, a glazed ground floor and a white lower mass",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012250972"
    ],
    "namedPoi": false,
    "rideVisible": true,

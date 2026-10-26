@@ -2,6 +2,11 @@
  "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional.",
  "notes": [
   {
+   "date": "2026-10-26",
+   "title": "Salt, the white tower at Westerpark West",
+   "text": "MVRDV's white Salt tower beside Pepper is modelled, with its grid facade and the top block cantilevering out over the water."
+  },
+  {
    "date": "2026-10-25",
    "title": "Pepper, the dark tower at Westerpark West",
    "text": "MVRDV's dark-brick Pepper tower across the Haarlemmertrekvaart from the Haarlemmerweg is modelled, with its black box balconies scattered over the facades. Its white neighbour Salt and the stacked Blend tower are next."
