@@ -30,6 +30,7 @@ var CanalRecallRoadSurface = (() => {
     NAME_MERGE_SIZE: () => NAME_MERGE_SIZE,
     NAME_WIDTH_SLACK: () => NAME_WIDTH_SLACK,
     ROAD_GRID_CELL: () => ROAD_GRID_CELL,
+    buildPlazaIndex: () => buildPlazaIndex,
     buildRoadSpatialIndex: () => buildRoadSpatialIndex,
     buildRoadSpatialIndexAsync: () => buildRoadSpatialIndexAsync,
     classifySurface: () => classifySurface,
@@ -41,6 +42,8 @@ var CanalRecallRoadSurface = (() => {
     pickNearestRoadContactForName: () => pickNearestRoadContactForName,
     pickRoadContact: () => pickRoadContact,
     pickRoadContactPreferName: () => pickRoadContactPreferName,
+    plazaAt: () => plazaAt,
+    plazaGuardContact: () => plazaGuardContact,
     roadNameAt: () => roadNameAt,
     roadsNear: () => roadsNear
   });
@@ -57,6 +60,79 @@ var CanalRecallRoadSurface = (() => {
       } while (performance.now() - started < (scheduling.budgetMs ?? 8));
       await yieldToBrowser();
     }
+  }
+
+  // src/canalRecall/routing/pedestrianAreas.ts
+  var PLAZA_EDGE_INSET_METRES = 1.5;
+  var PLAZA_MIN_AREA_M2 = 250;
+  var GREEN_SQUARE_NAME = /(plantsoen|kerkhof|monument|hof)$/i;
+  var GREEN_SQUARES = /* @__PURE__ */ new Set(["Frederiksplein", "Museum Square", "Museumplein", "Cantaplein"]);
+  var isClosedRing = (path) => path.length > 3 && path[0][0] === path[path.length - 1][0] && path[0][1] === path[path.length - 1][1];
+  function ringAreaSquareMetres(path) {
+    const lat0 = path[0][0] * Math.PI / 180;
+    const ky = 111320;
+    const kx = 111320 * Math.cos(lat0);
+    let twice = 0;
+    for (let i = 0, j = path.length - 1; i < path.length; j = i++) {
+      twice += path[j][1] * kx * path[i][0] * ky - path[i][1] * kx * path[j][0] * ky;
+    }
+    return Math.abs(twice / 2);
+  }
+  function isRideablePlaza(feature, path) {
+    const name = (feature.name || "").trim();
+    if (GREEN_SQUARES.has(name) || GREEN_SQUARE_NAME.test(name)) return false;
+    return isClosedRing(path) && ringAreaSquareMetres(path) >= PLAZA_MIN_AREA_M2;
+  }
+  function buildPlazaIndex(features, project, worldUnitsPerMetre) {
+    const plazas = [];
+    for (const feature of features || []) {
+      const paths = feature.paths || (feature.path ? [feature.path] : []);
+      for (const path of paths) {
+        if (!path || !isRideablePlaza(feature, path)) continue;
+        const ring = path.map(([lat, lon]) => project(lat, lon));
+        let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+        for (const p of ring) {
+          if (p.x < minX) minX = p.x;
+          if (p.y < minY) minY = p.y;
+          if (p.x > maxX) maxX = p.x;
+          if (p.y > maxY) maxY = p.y;
+        }
+        plazas.push({ name: feature.name || "", ring, minX, minY, maxX, maxY });
+      }
+    }
+    return { plazas, inset: PLAZA_EDGE_INSET_METRES * worldUnitsPerMetre };
+  }
+  function insideRing(ring, x, y) {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const a = ring[i], b = ring[j];
+      if (a.y > y !== b.y > y && x < (b.x - a.x) * (y - a.y) / (b.y - a.y) + a.x) inside = !inside;
+    }
+    return inside;
+  }
+  function edgeDistance(ring, x, y) {
+    let best = Infinity;
+    for (let i = 0; i < ring.length - 1; i++) {
+      const a = ring[i], b = ring[i + 1];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const len2 = dx * dx + dy * dy;
+      const t = len2 ? Math.max(0, Math.min(1, ((x - a.x) * dx + (y - a.y) * dy) / len2)) : 0;
+      const d = Math.hypot(x - (a.x + t * dx), y - (a.y + t * dy));
+      if (d < best) best = d;
+    }
+    return best;
+  }
+  function plazaAt(index, x, y) {
+    if (!index) return null;
+    for (const plaza of index.plazas) {
+      if (x < plaza.minX || x > plaza.maxX || y < plaza.minY || y > plaza.maxY) continue;
+      if (insideRing(plaza.ring, x, y) && edgeDistance(plaza.ring, x, y) >= index.inset) return plaza;
+    }
+    return null;
+  }
+  function plazaGuardContact(contact, index, x, y) {
+    if (!contact || contact.dist <= contact.width) return contact;
+    return plazaAt(index, x, y) ? { ...contact, dist: 0 } : contact;
   }
 
   // src/canalRecall/routing/roadSurface.ts

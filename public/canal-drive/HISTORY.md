@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Open squares are rideable (2026-10-26).** Feedback 636a57f4 (Dam) and
+638590e9 (Leidseplein). `osm-loader.js` drops closed rings, so squares were
+corridor-only. `src/canalRecall/routing/pedestrianAreas.ts` treats points
+inside `squares.json` rings, at least 1.5 m from the edge, as on-road in
+`getGuardRoad`. Excluded: rings under 250 m², names ending in plantsoen,
+kerkhof, monument or hof, and lawn squares (Frederiksplein, Museumplein,
+Cantaplein). Routing-extract pedestrian rings stay unused because the
+`area` tag is dropped, so a ring could be a block loop. Regressions are in
+check-canal-car (Dam ride, Leidseplein exits, Frederiksplein and the Piet
+Heinkade loop blocked) plus e2e `open-squares.spec.ts`. Also: Sentry
+CANAL-RECALL-H guarded (`inspectBuilding` after a WebGL context loss).
+
 **Westerpark West towers (2026-10-25).** The user's "big ones on the
 Haarlemmerweg" meant MVRDV's Westerpark West, not #83's Carpetright/Da Vinci
 (integrator misread, owned). Pepper (pand 0363100012250971) installed from the

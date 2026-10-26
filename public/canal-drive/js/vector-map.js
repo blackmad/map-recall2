@@ -2511,7 +2511,9 @@ class VectorBasemap {
   }
 
   inspectBuilding(cssX, cssY, canvasRect) {
-    if (!this.ready || !this.map || !canvasRect) return null;
+    // After a WebGL context loss MapLibre drops its style; a tap then hit
+    // map.getLayer on null (Sentry CANAL-RECALL-H, Chrome Mobile).
+    if (!this.ready || !this.map || !this.map.style || !canvasRect) return null;
     const mapCanvas = this.map.getCanvas();
     const pixel = {
       x: cssX * mapCanvas.clientWidth / canvasRect.width,
