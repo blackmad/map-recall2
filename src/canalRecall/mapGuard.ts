@@ -24,7 +24,7 @@
 export const DEAD_GPU_SHADER_ERROR = /^(?:Could not compile (?:fragment|vertex) shader|Program failed to link):\s*(?:null)?$/;
 
 export interface GraphicsFailure {
-  event: 'dead-gpu-shader' | 'webgl-context-lost' | 'webgl-unavailable';
+  event: 'dead-gpu-shader' | 'webgl-context-lost' | 'webgl-context-restored' | 'webgl-unavailable';
   /** How long drawing was paused after a shader failure (0 for a plain context loss). */
   holdMs: number;
   contextLost: boolean | null;
@@ -41,6 +41,18 @@ export interface GraphicsFailure {
   drawingBuffer: { width: number; height: number } | null;
   /** The browser's refusal, for `webgl-unavailable` (MapLibre's JSON-encoded creation error). */
   message?: string;
+  /** Milliseconds since the page started; separates "at load" from "after a long ride". */
+  uptimeMs?: number | null;
+  /** `document.visibilityState` when reported; iOS drops the context of a backgrounded tab. */
+  visibility?: string | null;
+  /** Milliseconds since the page was last hidden (app switch, lock screen); null if never. */
+  msSinceHidden?: number | null;
+  /** For `webgl-context-restored`: how long the context was gone. */
+  lostForMs?: number | null;
+  /** For `webgl-context-restored`: whether the page's own layers came back (CANAL-RECALL-7 says they may not). */
+  restoredOk?: boolean | null;
+  /** Page state from `options.probe` (renderer counts, loaded models, camera), best effort. */
+  probe?: Record<string, unknown> | null;
 }
 
 export interface GuardableMap {
@@ -61,6 +73,23 @@ export interface MapGuardOptions {
   cancel?: (handle: unknown) => void;
   report?: (failure: GraphicsFailure) => void;
   onNotice?: (visible: boolean) => void;
+  /** Show the reload notice this long after a context loss with no restore (default 2.5 s). */
+  lossNoticeAfterMs?: number;
+  /** After a restore, true when the page's own layers came back; false keeps the reload notice up. */
+  restoredOk?: () => boolean;
+  /** Extra page state attached to every report. Must not throw (it is guarded anyway). */
+  probe?: () => Record<string, unknown>;
+}
+
+let lastHiddenAt: number | null = null;
+let visibilityWatched = false;
+
+function watchVisibility(): void {
+  if (visibilityWatched || typeof document === 'undefined') return;
+  visibilityWatched = true;
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') lastHiddenAt = Date.now();
+  });
 }
 
 export function isDeadGpuShaderError(error: unknown): boolean {
@@ -86,7 +115,9 @@ export function guardMapRender(map: GuardableMap | null | undefined, options: Ma
   const schedule = options.schedule ?? ((callback: () => void, ms: number) => setTimeout(callback, ms));
   const cancel = options.cancel ?? ((handle: unknown) => clearTimeout(handle as ReturnType<typeof setTimeout>));
   const report = options.report ?? defaultReport;
+  const lossNoticeAfterMs = options.lossNoticeAfterMs ?? 2500;
   const render = map._render;
+  watchVisibility();
 
   let holdUntil = 0;
   let holdTimer: unknown = null;
@@ -97,8 +128,9 @@ export function guardMapRender(map: GuardableMap | null | undefined, options: Ma
   const reportOnce = (event: GraphicsFailure['event'], hold: number) => {
     if (reported.has(event)) return;
     reported.add(event);
-    report(describeGraphics(map, event, hold));
+    report(describeGraphics(map, event, hold, options.probe));
   };
+  let lostAt: number | null = null;
 
   const showNotice = () => {
     noticeTimer = null;
@@ -139,24 +171,50 @@ export function guardMapRender(map: GuardableMap | null | undefined, options: Ma
     // the GPU process dying (or being killed for memory) before we tried to
     // compile anything, and it is what a "crash after N seconds" looks like
     // from inside the page.
+    lostAt = now();
     reportOnce('webgl-context-lost', 0);
-    if (!noticeShown && noticeTimer == null) noticeTimer = schedule(showNotice, noticeAfterMs);
+    // Temporary fix for CANAL-RECALL-7: iPhone Safari often never restores, so offer the reload soon.
+    if (!noticeShown && noticeTimer == null) noticeTimer = schedule(showNotice, lossNoticeAfterMs);
   });
   map.on?.('webglcontextrestored', () => {
     if (noticeTimer != null) cancel(noticeTimer);
     noticeTimer = null;
     holdUntil = 0;
-    if (noticeShown) {
-      noticeShown = false;
-      options.onNotice?.(false);
-      hideNotice(map);
-    }
+    const lostForMs = lostAt == null ? null : now() - lostAt;
+    lostAt = null;
+    // MapLibre re-adds style layers on restore; give it a beat, then ask whether ours came back.
+    schedule(() => {
+      let ok = true;
+      try {
+        ok = options.restoredOk ? options.restoredOk() : true;
+      } catch {
+        ok = false;
+      }
+      if (!reported.has('webgl-context-restored')) {
+        reported.add('webgl-context-restored');
+        report({ ...describeGraphics(map, 'webgl-context-restored', 0, options.probe), lostForMs, restoredOk: ok });
+      }
+      if (!ok) {
+        showNotice();
+        return;
+      }
+      if (noticeShown) {
+        noticeShown = false;
+        options.onNotice?.(false);
+        hideNotice(map);
+      }
+    }, 500);
   });
 
   return true;
 }
 
-function describeGraphics(map: GuardableMap, event: GraphicsFailure['event'], holdMs: number): GraphicsFailure {
+function describeGraphics(
+  map: GuardableMap,
+  event: GraphicsFailure['event'],
+  holdMs: number,
+  probe?: () => Record<string, unknown>,
+): GraphicsFailure {
   const canvas = map.getCanvas?.() ?? null;
   const memory = typeof performance === 'undefined' ? undefined : (performance as Performance & { memory?: { usedJSHeapSize?: number } }).memory;
   const failure: GraphicsFailure = {
@@ -180,7 +238,16 @@ function describeGraphics(map: GuardableMap, event: GraphicsFailure['event'], ho
         }
       : null,
     drawingBuffer: null,
+    uptimeMs: typeof performance === 'undefined' ? null : Math.round(performance.now()),
+    visibility: typeof document === 'undefined' ? null : document.visibilityState,
+    msSinceHidden: lastHiddenAt == null ? null : Date.now() - lastHiddenAt,
+    probe: null,
   };
+  try {
+    failure.probe = probe ? probe() : null;
+  } catch (error) {
+    failure.probe = { probeError: String(error) };
+  }
   try {
     const gl = canvas?.getContext('webgl2') ?? canvas?.getContext('webgl');
     if (!gl) return failure;

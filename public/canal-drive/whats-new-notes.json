@@ -3,6 +3,16 @@
  "notes": [
   {
    "date": "2026-10-26",
+   "title": "Free ride from the home page",
+   "text": "The rideamsterdam.nl home page now has a Free ride button that starts roaming straight away, with no route and no questions."
+  },
+  {
+   "date": "2026-10-26",
+   "title": "Quicker recovery when an iPhone drops the graphics",
+   "text": "If Safari loses the 3D graphics mid-ride, a Reload button now appears within a few seconds instead of leaving a frozen map."
+  },
+  {
+   "date": "2026-10-26",
    "title": "Ride across open squares",
    "text": "You can now cycle straight across open squares like the Dam and Leidseplein instead of being held to the street lines; lawns and parks stay off-limits."
   },

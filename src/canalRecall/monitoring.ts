@@ -60,6 +60,7 @@ if (enabled) {
 
 const GRAPHICS_FAILURES: Record<string, { message: string; tag: string }> = {
   'webgl-context-lost': { message: 'MapLibre lost the WebGL context', tag: 'context-lost' },
+  'webgl-context-restored': { message: 'MapLibre restored the WebGL context', tag: 'context-restored' },
   'dead-gpu-shader': { message: 'MapLibre lost the GPU while compiling a shader', tag: 'dead-gpu' },
   'webgl-unavailable': { message: 'The browser refused a WebGL context', tag: 'webgl-unavailable' },
 };

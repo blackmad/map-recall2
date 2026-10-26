@@ -142,3 +142,38 @@ test('a browser that refuses WebGL is reported once with its reason (CANAL-RECAL
   assert.equal(failure.event, 'webgl-unavailable');
   assert.match(String(failure.message), /caused context loss and was blocked/);
 });
+
+test('a restore whose layers did not come back keeps the reload notice up (CANAL-RECALL-7)', () => {
+  const listeners: Record<string, () => void> = {};
+  const reported: Array<{ event: string; restoredOk?: boolean | null; lostForMs?: number | null; probe?: unknown }> = [];
+  const notices: boolean[] = [];
+  const queue: Array<{ callback: () => void; ms: number }> = [];
+  let clock = 1000;
+  const map: GuardableMap = {
+    _render() {},
+    on(event, listener) {
+      listeners[event] = listener;
+    },
+  };
+  guardMapRender(map, {
+    report: failure => reported.push(failure),
+    onNotice: visible => notices.push(visible),
+    schedule: (callback, ms) => queue.push({ callback, ms }),
+    cancel: () => {},
+    now: () => clock,
+    restoredOk: () => false,
+    probe: () => ({ programs: 12 }),
+  });
+
+  listeners.webglcontextlost();
+  assert.equal(queue[0].ms, 2500, 'the loss offers a reload within a few seconds');
+  assert.deepEqual(reported[0].probe, { programs: 12 });
+  clock += 4000;
+  listeners.webglcontextrestored();
+  queue[queue.length - 1].callback();
+
+  assert.equal(reported[1].event, 'webgl-context-restored');
+  assert.equal(reported[1].restoredOk, false);
+  assert.equal(reported[1].lostForMs, 4000);
+  assert.deepEqual(notices, [true], 'the notice is shown and not hidden again');
+});

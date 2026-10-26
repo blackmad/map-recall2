@@ -1324,6 +1324,12 @@ class GameRouteRuntime {
       this._startTourFromLink(tourParam);
       return;
     }
+    // `?ride=free` (the landing page's Free Ride link) starts Free Ride straight away.
+    if (new URLSearchParams(window.location.search).get('ride') === 'free' && !window.location.hash.startsWith('#race=')) {
+      this._overlay.store.patchPrefs({ cityId: 'amsterdam', routePattern: 'free' }, this._overlayZoom());
+      this._startConfiguredRoute();
+      return;
+    }
     if (new URLSearchParams(window.location.search).get('ferry') === 'F3') {
       this._overlay.store.patchPrefs({ cityId: 'amsterdam', travelMode: 'car', viewMode: 'chase' }, this._overlayZoom());
       this._ferryPreviewRef = 'F3';

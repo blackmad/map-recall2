@@ -119,3 +119,11 @@ test('free ride: ride without questions, tap a marker for its card, close it, ex
   await expect(page.locator('#free-ride-bar')).toBeHidden();
   expect(errors).toEqual([]);
 });
+
+test('the landing page Free ride link (?ride=free) starts Free Ride without the setup card', async ({ page }) => {
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  await page.goto('/canal-drive/?ride=free');
+  await expect.poll(async () => (await game(page)).state, { timeout: 90_000 }).toBe(4);
+  expect((await game(page)).freeRide).toBe(true);
+  await expect(page.locator('#free-ride-bar')).toBeVisible();
+});

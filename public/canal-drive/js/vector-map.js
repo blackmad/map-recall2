@@ -252,12 +252,42 @@ class VectorBasemap {
     });
   }
 
+  /** Best-effort page state for graphics-failure reports (mapGuard `probe`). */
+  _graphicsProbe() {
+    const map = this.map;
+    const out = {
+      zoom: map ? Math.round(map.getZoom() * 10) / 10 : null,
+      pitch: map ? Math.round(map.getPitch()) : null,
+      sharedFrame: !!this._sharedFrame,
+      ownGround: !!this._ownGroundEnabled,
+      recipeTiles: !!this._recipeTilesEnabled,
+    };
+    const renderer = this._sharedFrame && this._sharedFrame.renderer;
+    if (renderer && renderer.info) {
+      out.geometries = renderer.info.memory && renderer.info.memory.geometries;
+      out.textures = renderer.info.memory && renderer.info.memory.textures;
+      out.programs = renderer.info.programs ? renderer.info.programs.length : null;
+      out.lastFrameCalls = renderer.info.render && renderer.info.render.calls;
+      out.lastFrameTriangles = renderer.info.render && renderer.info.render.triangles;
+    }
+    try {
+      out.styleLayers = map && map.style ? map.getStyle().layers.length : null;
+    } catch (_) { out.styleLayers = null; }
+    return out;
+  }
+
   _installMap() {
     this.map.on('style.load', () => this._afterStyleRestored());
     // MapLibre 5 throws from the render loop when the GPU process dies mid-shader
     // (empty info log). Hold a frame, report once and offer a reload instead of
     // rebuilding the same program every frame until the tab dies.
-    if (window.CanalMapGuard) window.CanalMapGuard.guardMapRender(this.map);
+    // CANAL-RECALL-7 (iPhone Safari): after a context loss the shared-frame
+    // layers may not come back, so the restore check keeps the reload notice up
+    // and the probe records what the page was carrying when the GPU went.
+    if (window.CanalMapGuard) window.CanalMapGuard.guardMapRender(this.map, {
+      restoredOk: () => !this._sharedFrame || !!(this.map.style && this.map.getLayer('shared-frame-main')),
+      probe: () => this._graphicsProbe(),
+    });
     // Slow machines (integrated GPUs at 150-200 % scaling, older phones): after
     // two slow windows of riding, pixel ratio steps towards 1x, then the sun
     // shadows go, then 0.75x. Never steps back up. `?governor=0` turns it off;
