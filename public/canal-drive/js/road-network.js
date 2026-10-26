@@ -224,7 +224,15 @@ class RoadNetwork {
     const cached = this._frameCache.get(cacheKey);
     if (cached !== undefined) return cached;
     const contacts = SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y);
-    const best = SURFACE.pickGuardContact(contacts, preferredAngle, { x, y });
+    let best = SURFACE.pickGuardContact(contacts, preferredAngle, { x, y });
+    // Open squares (Dam, Leidseplein) are paving, not off-road: inside one the
+    // nearest corridor is reported as underfoot. See pedestrianAreas.ts.
+    if (this.plazaIndex && SURFACE.plazaGuardContact) {
+      if (!best && SURFACE.plazaAt(this.plazaIndex, x, y)) {
+        best = SURFACE.pickGuardContact(SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 4), x, y), preferredAngle, { x, y });
+      }
+      best = SURFACE.plazaGuardContact(best, this.plazaIndex, x, y);
+    }
     this._frameCache.set(cacheKey, best);
     return best;
   }

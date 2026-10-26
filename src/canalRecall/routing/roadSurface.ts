@@ -16,6 +16,8 @@
  */
 
 import { finishBatchedBuild, type BuildScheduling } from '../buildScheduling.ts';
+// Open squares are part of the rideable surface (road-network.js getGuardRoad).
+export { buildPlazaIndex, plazaAt, plazaGuardContact } from './pedestrianAreas.ts';
 
 export interface RoadPoint { x: number; y: number }
 
