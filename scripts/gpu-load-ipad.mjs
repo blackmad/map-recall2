@@ -23,6 +23,19 @@ for (const [lng, lat, bearing] of places) {
     const vm = canalRecallGame.vectorMap, f = vm._sharedFrame, i = f.renderer.info;
     return { pitch: Math.round(vm.map.getPitch()), zoom: +vm.map.getZoom().toFixed(2), calls: f.stats.main.calls, tris: f.stats.main.triangles, geometries: i.memory.geometries, textures: i.memory.textures, stats: f.drawStats() };
   });
+  if (process.env.GROUND) console.log(await page.evaluate(() => {
+    // Own-ground triangles by mesh name/layer, plus the cell residency settings.
+    const f = canalRecallGame.vectorMap._sharedFrame, g = canalRecallGame.vectorMap._ownGround;
+    const entry = f.registry.all().find(e => e.id === 'own-ground'), by = {};
+    entry.participant.participant.root.traverseVisible(o => {
+      if (!o.isMesh) return;
+      const geo = o.geometry, n = Math.floor((geo.index ? geo.index.count : geo.attributes.position.count) / 3);
+      const key = (o.name || o.parent?.name || '?').replace(/[-_:]?-?\d[\d.,:_-]*/g, '#');
+      (by[key] ??= { meshes: 0, tris: 0, maxTris: 0 }); by[key].meshes++; by[key].tris += n; by[key].maxTris = Math.max(by[key].maxTris, n);
+    });
+    const st = g?.status?.() || {};
+    return JSON.stringify({ by, cells: st.cells && Object.keys(st.cells).length, far: st.far, keys: Object.keys(st) }, null, 0);
+  }));
   const rows = Object.entries(r.stats).sort((a, b) => b[1].triangles - a[1].triangles);
   console.log(`\n${lng},${lat},${bearing}  pitch ${r.pitch} zoom ${r.zoom}  main pass (incl. shadow redraws): ${r.calls} calls ${(r.tris/1e6).toFixed(2)}M tris  geoms ${r.geometries} tex ${r.textures}`);
   for (const [id, s] of rows) console.log(`  ${id.padEnd(34)} ${String(s.meshes).padStart(5)} meshes ${(s.triangles/1e3).toFixed(0).padStart(7)}k tris`);
