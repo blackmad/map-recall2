@@ -315,6 +315,37 @@ export class SharedFrame {
     return [a[0] + abs[0] * u, a[1] - abs[1] * u, abs[2] * u];
   }
 
+  /**
+   * Triangles each participant drew in the last frame, frustum-culled like three (shadow passes not included).
+   * Diagnostics for GPU load on phones and iPads (Sentry CANAL-RECALL-7); walks the scene, so call it on demand.
+   */
+  private readonly lastDrawn: Partial<Record<FramePass, string[]>> = {};
+
+  drawStats(): Record<string, { meshes: number; triangles: number }> {
+    const THREE = this.THREE;
+    const frustum = new THREE.Frustum().setFromProjectionMatrix(this.camera.projectionMatrix);
+    const sphere = new THREE.Sphere();
+    const out: Record<string, { meshes: number; triangles: number }> = {};
+    const drawn = new Set(Object.values(this.lastDrawn).flat());
+    for (const entry of this.registry.all()) {
+      if (!drawn.has(entry.id)) continue;
+      const stats = { meshes: 0, triangles: 0 };
+      entry.participant.participant.root.traverseVisible((object: any) => {
+        if (!object.isMesh || !object.geometry) return;
+        const geometry = object.geometry;
+        if (object.frustumCulled && !object.isInstancedMesh) {
+          if (!geometry.boundingSphere) geometry.computeBoundingSphere();
+          if (!frustum.intersectsSphere(sphere.copy(geometry.boundingSphere).applyMatrix4(object.matrixWorld))) return;
+        }
+        const vertices = Math.min(geometry.index ? geometry.index.count : geometry.attributes.position?.count ?? 0, geometry.drawRange.count);
+        stats.meshes++;
+        stats.triangles += Math.floor(vertices / 3) * (object.isInstancedMesh ? object.count : 1);
+      });
+      out[entry.id] = stats;
+    }
+    return out;
+  }
+
   private renderPass(pass: FramePass, gl: WebGL2RenderingContext, args: any): void {
     const renderer = this.renderer;
     if (!renderer) return;
@@ -336,6 +367,7 @@ export class SharedFrame {
       bounds: () => (bounds ??= plainBounds(this.map.getBounds())),
     };
     const drawn: Handle[] = [];
+    const drawnIds: string[] = [];
     for (const entry of this.registry.all()) {
       const handle = entry.participant;
       if (entry.pass !== pass) { handle.wrapper.visible = false; continue; }
@@ -349,7 +381,9 @@ export class SharedFrame {
       if (local) handle.wrapper.matrix.multiply(this.tmp.fromArray(local));
       handle.wrapper.matrixWorldNeedsUpdate = true;
       drawn.push(handle);
+      drawnIds.push(entry.id);
     }
+    this.lastDrawn[pass] = drawnIds;
     if (!drawn.length) return;
     const t0 = performance.now();
     renderer.resetState();

@@ -267,9 +267,16 @@ class VectorBasemap {
       out.geometries = renderer.info.memory && renderer.info.memory.geometries;
       out.textures = renderer.info.memory && renderer.info.memory.textures;
       out.programs = renderer.info.programs ? renderer.info.programs.length : null;
-      out.lastFrameCalls = renderer.info.render && renderer.info.render.calls;
-      out.lastFrameTriangles = renderer.info.render && renderer.info.render.triangles;
+      // Main pass (buildings, ground, shadows); renderer.info itself holds only the last (overlay) pass.
+      const main = this._sharedFrame.stats && this._sharedFrame.stats.main;
+      out.lastFrameCalls = main ? main.calls : null;
+      out.lastFrameTriangles = main ? main.triangles : null;
     }
+    try {
+      // The four heaviest shared-frame participants, as "id:triangles".
+      const stats = this._sharedFrame && this._sharedFrame.drawStats ? this._sharedFrame.drawStats() : null;
+      if (stats) out.heaviest = Object.entries(stats).sort((a, b) => b[1].triangles - a[1].triangles).slice(0, 4).map(([id, s]) => `${id}:${s.triangles}`).join(' ');
+    } catch (_) { out.heaviest = null; }
     try {
       out.styleLayers = map && map.style ? map.getStyle().layers.length : null;
     } catch (_) { out.styleLayers = null; }
