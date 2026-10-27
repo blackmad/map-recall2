@@ -7,7 +7,7 @@ import { fitShadowCamera, lightBasis, shadowHalfSizeForZoom } from './shadowFit.
 import { BAKED_LID_SHADE, BAKED_SHADE_GLSL, bakedFaceShade, bakedWallShade, createLightRig, DEFAULT_LIGHT_RIG, enuDirectionInLocal, mapLibreSunPosition, SHADOW_FILL, SUN_DIRECTION, sunDirection } from './lightRig.js';
 import { LayerRegistry, PARTICIPANT_ORDER } from './layerRegistry.js';
 import { withinView } from './residency.js';
-import { fullDepthRangeForShadowMap, SharedFrame, SHARED_FRAME_MAIN_ID, SHARED_FRAME_OVERLAY_ID } from './sharedFrame.js';
+import { fullDepthRangeForShadowMap, renderLosingContext, SharedFrame, SHARED_FRAME_MAIN_ID, SHARED_FRAME_OVERLAY_ID } from './sharedFrame.js';
 import { createLitFacadeMaterial, createFacadeDepthMaterial } from './litFacadeMaterial.js';
 
 const close = (a: number, b: number, eps: number, what = '') => assert.ok(Math.abs(a - b) <= eps, `${what} ${a} vs ${b}`);
@@ -373,4 +373,16 @@ test('shared frame: two passes, one renderer, participants placed by their own l
   frame.mainLayer.render(gl, { defaultProjectionData: { mainMatrix: clip } });
   assert.deepEqual(log, ['reset', 'render facades']);
   assert.equal(frame.rig.sun.shadow.intensity, 0);
+});
+
+test('shared frame: a context lost mid-compile drops the frame instead of throwing (CANAL-RECALL-5)', () => {
+  const live = { isContextLost: () => false } as any;
+  const scene = {}, camera = {};
+  const throwing = (message: string) => ({ render() { throw new TypeError(message); } });
+  // Safari: isContextLost() still false while createShader already answers null.
+  assert.equal(renderLosingContext(throwing("Argument 1 ('shader') to WebGL2RenderingContext.shaderSource must be an instance of WebGLShader"), scene, camera, live), false);
+  assert.equal(renderLosingContext(throwing("Failed to execute 'shaderSource' on 'WebGL2RenderingContext': parameter 1 is not of type 'WebGLShader'."), scene, camera, live), false);
+  assert.equal(renderLosingContext(throwing('anything'), scene, camera, { isContextLost: () => true } as any), false, 'any error once the flag has flipped');
+  assert.throws(() => renderLosingContext(throwing('Cannot read properties of undefined'), scene, camera, live), /Cannot read/, 'a live-context bug still throws');
+  assert.equal(renderLosingContext({ render() {} }, scene, camera, live), true);
 });
