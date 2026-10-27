@@ -8,7 +8,9 @@
 // longer wants are dropped unbuilt, and the next build is always the best-ranked one. Far blocks come after
 // cells. Without an `order` message the queue keeps arrival order, as before.
 
-export type CellJob = { kind: 'cell'; key: string; lod: 0 | 1; gen: number };
+import type { CellDetail } from './groundCell.js';
+
+export type CellJob = { kind: 'cell'; key: string; lod: 0 | 1; gen: number; detail: CellDetail };
 export type FarJob = { kind: 'far'; key: string; gen: number };
 export type GroundJob = CellJob | FarJob;
 
@@ -17,10 +19,10 @@ export class GroundBuildQueue {
   private readonly far = new Map<string, FarJob>();
   private rank: Map<string, number> | null = null;
 
-  /** Ask for a cell; replaces a queued request for the same cell (a newer LOD or generation). */
-  build(key: string, lod: 0 | 1, gen: number): void {
+  /** Ask for a cell; replaces a queued request for the same cell (a newer LOD, detail level or generation). */
+  build(key: string, lod: 0 | 1, gen: number, detail: CellDetail = 'full'): void {
     this.cells.delete(key); // re-inserted at the back: arrival order for unranked cells
-    this.cells.set(key, { kind: 'cell', key, lod, gen });
+    this.cells.set(key, { kind: 'cell', key, lod, gen, detail });
   }
 
   requestFar(key: string, gen: number): void {

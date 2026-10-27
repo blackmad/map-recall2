@@ -13,6 +13,12 @@
 // LOD 0 is the prototype's detail. LOD 1 (the far ring) is a 10 m land grid,
 // carriageways only (no kerbs, sidewalks or paint), coarser drape and walls.
 //
+// Detail (CANAL-RECALL-7): a `touch` cell (a touch device, far from the rider)
+// is built as LOD 0's layers — the surveyed roads, kerbs, paint, tram — with the
+// land grid, the drapes, the quay wall and the kerbs at the far ring's coarser
+// steps and without bollards or park furniture. Every layer keeps its footprint,
+// so the seams with a `full` neighbour are unchanged.
+//
 // The water mask (signed distance, R = water, G = water minus decks) covers
 // the cell plus what its streets and areas reach past it (capped), at 1 m
 // (LOD 0) or 2 m (LOD 1).
@@ -49,11 +55,22 @@ export const GROUND_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 's
 /** Transferable mesh arrays. Colours are sRGB 0..1 when present. */
 export interface PackedMesh { positions: Float32Array; normals: Float32Array; uvs: Float32Array; indices: Uint32Array; colors?: Float32Array }
 
+/**
+ * How much detail a cell is built with (CANAL-RECALL-7). `full` is the desktop build and the near ring on every
+ * device: every drape at its finest step, bollards and park furniture included. `touch` is a cell far from the rider
+ * on a touch device: coarser drape steps and no small objects, with every layer's footprint unchanged (no holes at
+ * the cell seams). It is a level of its own, not LOD 1: a touch cell keeps the surveyed road partition, kerbs, paint
+ * and tram rails that LOD 1 drops.
+ */
+export type CellDetail = 'full' | 'touch';
+
 export interface GroundMask { x0: number; y0: number; res: number; width: number; height: number; texels: Uint8Array }
 
 export interface BuiltCell {
   key: string;
   lod: 0 | 1;
+  /** The level this build used (gameGround.ts, touch devices far from the rider): see CellInput.detail. */
+  detail: CellDetail;
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
@@ -68,6 +85,8 @@ export interface BridgeStats { tops: number; railed: number; railingPosts: numbe
 export interface CellInput {
   key: string;
   lod: 0 | 1;
+  /** Detail level of this build (CellDetail above); default 'full', the desktop build. */
+  detail?: CellDetail;
   rect: Rect;
   surface: GroundSurface;
   water: WaterGeometry | null;
@@ -122,6 +141,11 @@ const MASK_REACH_M = 150;
 export const VERTEX_TINTED: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['kerb']);
 /** The roads-v1 lookup raster reaches this far past the cell (the cell's own ways and their paint seldom reach further). */
 const ROAD_FAST_PAD_M = 60;
+/**
+ * Quay-wall stations in a `touch` cell (CANAL-RECALL-7): the wall is a bank of coping, brick and algae rows along the
+ * shore; 16 m stations still follow a canal's curve at chase distance, while the near ring's is 4 m and LOD 1's 8.
+ */
+export const TOUCH_QUAY_STEP_M = 16;
 /** Canal-belt water surface, scene z (−0.40 m NAP under the +1.37 m NAP datum): the default where no polder level is known. */
 export const CANAL_WATER_Z = -1.77;
 /** Signed-distance range of the water mask (texels saturate at ±this), metres. */
@@ -195,6 +219,11 @@ export function plainSection(w: LocalWay): LocalWay {
 export function buildCell(input: CellInput): BuiltCell {
   const t0 = Date.now();
   const { key, lod, rect, surface } = input;
+  /** A cell far from the rider on a touch device: coarser drapes, no bollards or furniture (CellDetail). */
+  const detail: CellDetail = input.detail === 'touch' ? 'touch' : 'full';
+  const touch = detail === 'touch';
+  /** The finest level this build uses: LOD 0 at `full` detail. */
+  const fine = lod === 0 && !touch;
   const [x0, y0, x1, y1] = rect;
   const parts: Partial<Record<GroundLayer, MeshArrays[]>> = {};
   const tracing = sourceTracing(), from: Partial<Record<GroundLayer, GroundSource[]>> = {};
@@ -224,12 +253,12 @@ export function buildCell(input: CellInput): BuiltCell {
   for (const a of areas) for (const r of a.rings) for (const p of r) grow(input.project(p));
   for (const d of input.decks) { grow([d.profile.bbox[0], d.profile.bbox[1]]); grow([d.profile.bbox[2], d.profile.bbox[3]]); }
   mx0 = Math.max(mx0, x0 - MASK_REACH_M); my0 = Math.max(my0, y0 - MASK_REACH_M); mx1 = Math.min(mx1, x1 + MASK_REACH_M); my1 = Math.min(my1, y1 + MASK_REACH_M);
-  const res = lod === 0 ? 1 : 2;
+  const res = fine ? 1 : 2;
   const geoAround: WaterGeometry = { polygons: input.waterAround.flatMap(g => g.polygons), shores: input.waterAround.flatMap(g => g.shores), levels: input.waterAround.flatMap(g => g.levels ?? g.polygons.map(() => CANAL_WATER_Z)) };
   const hasWater = geoAround.polygons.length > 0;
   const mask = hasWater ? buildWaterMask(geoAround, mx0, my0, mx1, my1, res, MASK_RANGE_M, input.deckRingsAround) : null;
   const overWater = (x: number, y: number) => !!mask && maskDistance(mask, x, y) < 0;
-  const step = lod === 0 ? 5 : 10;
+  const step = fine ? 5 : 10;
   // Everything flat on the land (areas, street bands) drapes on the land grid's own surface plus
   // the decks' lift, so the grid never pokes through between their vertices.
   const landZ = gridHeight(surface.ground, step);
@@ -281,9 +310,9 @@ export function buildCell(input: CellInput): BuiltCell {
   phase('roadIndex');
   let roads: BuiltCell['stats']['roads'] = null;
   let roadCover: SurfaceRaster | null = null, roadSkipped: ReadonlySet<number> = new Set();
-  const canalSide = lod === 0 && mask ? (x: number, y: number) => { const d = maskDistance(mask, x, y); return d > 0 && d < MASK_RANGE_M - 0.2; } : undefined;
+  const canalSide = fine && mask ? (x: number, y: number) => { const d = maskDistance(mask, x, y); return d > 0 && d < MASK_RANGE_M - 0.2; } : undefined;
   if (roadIndex && input.roads) {
-    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, canalSide, dataStep: (x, y) => surface.dataStepAt(x, y), ...(input.drape ?? {}) });
+    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, canalSide, dataStep: (x, y) => surface.dataStepAt(x, y), ...(touch ? { detail: 'touch' as const } : {}), ...(input.drape ?? {}) });
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!, 'bgtCarriage');
     roadSkipped = built.skipped;
     roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, parkingIslands, crossingStrips, greyFiets, markings: null };
@@ -389,7 +418,7 @@ export function buildCell(input: CellInput): BuiltCell {
     if (!layer) continue;
     // Only the green fills need the clearance refinement (see drapeBisect): the land under a street or a square is
     // culled by the road partition or sits under paving that is already 3-4 cm clear.
-    const clearance = layer === 'park' || layer === 'wood' ? (lod === 0 ? CLEARANCE_M : CLEARANCE_FAR_M) : undefined;
+    const clearance = layer === 'park' || layer === 'wood' ? (fine ? CLEARANCE_M : CLEARANCE_FAR_M) : undefined;
     let m = emptyMesh();
     for (const r of a.rings) {
       const pts = r.slice(0, -1).map(input.project);
@@ -399,7 +428,7 @@ export function buildCell(input: CellInput): BuiltCell {
       const flat = pts.concat(...holes).flatMap(p => [p[0], p[1]]);
       greenCut += holes.length;
       // Longest-edge bisection (parks.ts): the n² split cost Westerpark's cell 159k triangles of park fill on earcut slivers.
-      drapeBisect(m, flat, earcut(flat, holeAt), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), lod === 0 ? 8 : 16, clearance, lod === 0 ? 1 : 2, step);
+      drapeBisect(m, flat, earcut(flat, holeAt), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), fine ? 8 : 16, clearance, fine ? 1 : 2, step);
     }
     if (cover && layer === 'park') { const r = cullCovered(m, cover); m = r.mesh; parkFillCulled += r.dropped; }
     m = cullUnderRoads(m);
@@ -411,7 +440,7 @@ export function buildCell(input: CellInput): BuiltCell {
   let parkStats: BuiltCell['stats']['parks'] = null;
   if (input.parks) {
     const tp = Date.now();
-    const built = input.parks.version === 2 ? buildParks(input.parks, onLand, lod, overWater) : { layers: {}, stats: null };
+    const built = input.parks.version === 2 ? buildParks(input.parks, onLand, lod, overWater, touch) : { layers: {}, stats: null };
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!, 'park');
     if (built.stats) parkStats = { ...built.stats, ms: Date.now() - tp };
   }
@@ -424,7 +453,7 @@ export function buildCell(input: CellInput): BuiltCell {
     const { flat, holes } = flatten(a.r.map(decodeLine));
     if (flat.length < 6) continue;
     const m = emptyMesh();
-    drapeBisect(m, flat, earcut(flat, holes), onLand, PARK_LIFT[a.k], lod === 0 ? 8 : 16, lod === 0 ? CLEARANCE_M : CLEARANCE_FAR_M, lod === 0 ? 1 : 2, step);
+    drapeBisect(m, flat, earcut(flat, holes), onLand, PARK_LIFT[a.k], fine ? 8 : 16, fine ? CLEARANCE_M : CLEARANCE_FAR_M, fine ? 1 : 2, step);
     add(SURFACE_LAYER[a.k], m, 'park');
     courtyards++;
   }
@@ -435,7 +464,7 @@ export function buildCell(input: CellInput): BuiltCell {
   // roads-v1: covered ways emit no bands; paint, rails and fills are clipped by the polygons (streets.ts RoadsOption).
   const roadsOpt = roadIndex ? { index: roadIndex, covered: new Set(input.coverWays ?? []), ...(input.evidence ? { evidence: input.evidence } : {}) } : undefined;
   phase('parks');
-  const streets = buildStreets(ways, onLand, { step: lod === 0 ? 3 : 6, only: only(false), canalSide, markings: lod === 0, roads: roadsOpt });
+  const streets = buildStreets(ways, onLand, { step: fine ? 3 : 6, only: only(false), canalSide, markings: lod === 0, roads: roadsOpt });
   phase('streets');
   // Bridge ways follow the measured deck exactly (no land under a deck over water to poke through); 0.75 m at LOD 0:
   // on a hump a 1.5 m chord sags (~9 cm on a masonry arch, ~2 cm at 0.75 m), so the bands follow the profile closer.
@@ -466,7 +495,7 @@ export function buildCell(input: CellInput): BuiltCell {
     add('water', waterSurfaceMesh(input.water, CANAL_WATER_Z), 'water');
     // No municipal quay wall under a bridge deck (its arches) or across a landed platform (the Homomonument's steps bring their own walls).
     const underDecks = input.decks.length ? underDeck(input.decks) : undefined, onPlatform = inLandedPlatform(input.landedPlatforms ?? []);
-    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores, shoreLevels: input.water.shoreLevels }, surface.height, CANAL_WATER_Z, lod === 0 ? 4 : 8, QUAY_CAP_M, (x, y) => onPlatform(x, y) || !!underDecks?.(x, y)), 'quay');
+    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores, shoreLevels: input.water.shoreLevels }, surface.height, CANAL_WATER_Z, fine ? 4 : touch ? TOUCH_QUAY_STEP_M : 8, QUAY_CAP_M, (x, y) => onPlatform(x, y) || !!underDecks?.(x, y)), 'quay');
   }
   const bridges: BridgeStats = { tops: 0, railed: 0, railingPosts: 0, piers: 0, arches: 0, abutments: 0, frames: 0, decks: [], flat: [], floating: [] };
   // The street bands of the bridge ways: on land the deck top stays under them (decks.ts deckWidths, ride review J6).
@@ -569,7 +598,7 @@ export function buildCell(input: CellInput): BuiltCell {
   if (maskOut) bytes += maskOut.texels.byteLength;
   phase('pack');
   return {
-    key, lod, rect, layers: packed, mask: maskOut, ...(tracing ? { sources } : {}),
+    key, lod, detail, rect, layers: packed, mask: maskOut, ...(tracing ? { sources } : {}),
     stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, greenCut, roads, phases, courtyards, ...(viaducts.length ? { viaducts } : {}) },
   };
 }
