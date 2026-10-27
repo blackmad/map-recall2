@@ -6,6 +6,7 @@ test('drops the Microsoft link-scanner rejection (CANAL-RECALL-G/-F)', () => {
   // The message Sentry builds for a non-Error unhandled rejection, and the bare string.
   assert.ok(isIgnoredErrorMessage('Non-Error promise rejection captured with value: Object Not Found Matching Id:1, MethodName:update, ParamCount:4'));
   assert.ok(isIgnoredErrorMessage('Object Not Found Matching Id:2, MethodName:simulateEvent, ParamCount:21'));
+  assert.ok(isIgnoredErrorMessage('Error: reCAPTCHA has already been rendered in this element'));
 });
 
 test('drops empty-log shader failures from a dead GPU, keeps real GLSL errors', () => {
