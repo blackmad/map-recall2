@@ -19,7 +19,7 @@ import {
   type LabelCandidate, type LabelRules, type Rect, type ScreenCandidate,
 } from './labelPlan';
 import { labelCss, labelFont, LABEL_ROOT_CLASS } from './labelStyle';
-import { dedupeLabelCandidates } from './labelDedupe';
+import { dedupeLabelCandidates, screenDuplicateIds, type MarkedPlace } from './labelDedupe';
 
 /** The MapLibre layers this overlay replaces. */
 export const REPLACED_LAYER_IDS = [
@@ -145,6 +145,8 @@ export class LabelOverlay {
   private hiddenIndex: SpoilerIndex | null = null;
   /** Candidates dropped as a second label of a place, for the e2e. */
   duplicates: Array<{ name: string; keptId: string; reason: string }> = [];
+  /** Candidate ids the last plan left out as a second label on screen (a marker's place, another spelling). */
+  screenDuplicates: string[] = [];
   /** Last plan's counts, for the e2e and the debug overlay. */
   stats = { candidates: 0, inView: 0, occluded: 0, drawn: 0, budget: 0 };
 
@@ -420,6 +422,24 @@ export class LabelOverlay {
     return el;
   }
 
+  /**
+   * The places Free Ride has a marker on screen for (freeRide.ts): the marker
+   * already names them. Only placed markers: a nearby place whose pill lost
+   * the layout (off screen, under a card) keeps its label.
+   */
+  private markedPlaces(game: GameLike): MarkedPlace[] {
+    if (!game?.freeRide || !game._freeRideMarkers?.length || !game.osmLoader) return [];
+    const placed = new Set(game._freeRideMarkers.map((m: { key: string }) => m.key));
+    const out: MarkedPlace[] = [];
+    for (const place of game._freeRideNearby || []) {
+      if (!placed.has(place.key)) continue;
+      const ll = this.vm.worldToLngLat(place.x, place.y, game.osmLoader);
+      const [lng, lat] = Array.isArray(ll) ? ll : [ll?.lng, ll?.lat];
+      out.push({ id: String(place.key), name: place.name, ...(Number.isFinite(lng) && Number.isFinite(lat) ? { lng, lat } : {}) });
+    }
+    return out;
+  }
+
   /** Screen and rule pass for every candidate; queues the best few for occlusion picks. */
   private startPlan(map: AnyMap): PlanJob | null {
     const game = this.game();
@@ -450,6 +470,10 @@ export class LabelOverlay {
       if (c.cls !== 'destination' && distanceFade(p.distM, cameraHeightM) <= 0.05) continue;
       screen.push({ ...c, x: p.x, y: p.y, width: 0, height: 0, distM: p.distM, riderDistM, occluded: false, ndcZ: p.ndcZ, w: p.w });
     }
+    // One label per place on screen: not beside a Free Ride marker for it, nor beside its other spelling.
+    const twice = screenDuplicateIds(screen, this.markedPlaces(game));
+    if (twice.size) for (let i = screen.length - 1; i >= 0; i--) if (twice.has(screen[i].id)) screen.splice(i, 1);
+    this.screenDuplicates = [...twice];
     const order = screen.map((c, i) => ({ i, score: labelPriority(c, c.distM) + (this.drawn.has(c.id) ? 150 : 0) }))
       .sort((a, b) => b.score - a.score);
     return { game, rules, cameraHeightM, width, height, screen, tests: order.slice(0, OCCLUSION_TESTS).map(o => o.i), next: 0, occluded: 0 };
