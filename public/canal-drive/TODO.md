@@ -1939,6 +1939,32 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Gameplay analytics without a consent banner (2026-10-28, user ask)**: there is
+  no gameplay analytics today (only Sentry errors). Aim for the most we can
+  measure without needing EU consent. ePrivacy Art. 5(3), and the Dutch Tw
+  11.7a, require consent to store or read anything on the device that is not
+  strictly needed. The Dutch rule exempts analytics with little privacy
+  impact, but a GDPR lawful basis and a privacy-notice line are still needed.
+  The no-consent design:
+  - first-party `navigator.sendBeacon` events to our own endpoint (a Firebase
+    function writing daily aggregate counters);
+  - no cookies, no localStorage ID, no fingerprinting;
+  - a per-tab random session id held in memory only;
+  - no IP stored, coarse user-agent class only, no precise GPS or route traces.
+  What we get: ride starts by mode, route/quiz completion and drop-off step,
+  answer accuracy per question kind, ride length buckets, which neighbourhoods
+  are ridden (rounded to buurt, not coordinates; this also feeds
+  buurt-priority-by-ride), errors and context losses, and device and
+  performance tier.
+  What we give up without consent: returning-user and retention counts across
+  days, cohorts, and cross-session funnels. If we want those, signed-in users
+  are the place: their own progress already lives in Firestore under a privacy
+  notice. The off-the-shelf alternative is Plausible or GoatCounter (EU,
+  cookieless, daily-rotating hash). Do not use Firebase/Google Analytics,
+  which sets identifiers and needs consent.
+  Confirm the legal reading in a needs-david issue before shipping. This is
+  not legal advice.
+
 - **Dutch facts backlog (2026-10-23, HISTORY "Ride and Map Quest speak Dutch")**:
   1,564/2,351 facts carry a Dutch sentence; 787 still fall back to English
   labelled "(Engels)". Next: more agent-writer + fresh-verifier batches via
