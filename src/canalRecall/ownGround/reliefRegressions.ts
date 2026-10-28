@@ -24,6 +24,12 @@ export const RELIEF_SPOTS: readonly ReliefSpot[] = [
   // Issue #57: the Droogbak - De Ruijterkade passage under the rail viaduct west of Centraal (railViaducts.ts), filled
   // from the track bed into a saddle the road climbed over.
   { id: 'centraal-west-viaduct-floor', label: 'Centraal west: the road and channel under the rail viaduct over the Droogbak passage (was a saddle up toward the track bed)', at: [4.89611, 52.38046], radiusM: 15, maxSpreadM: 0.5 },
+  // Feedback a524acc9: the NDSM-oost block AHN flew as a building site (staleRelief.ts ndsm-oost-buiksloterham-kop-works);
+  // the sand fill was a 1.5-3 m hump that buried the low plinth and the blocks on it (spread before 3.32 m, after 0.00 m).
+  { id: 'ndsm-oost-block', label: 'Buiksloterham NDSM-oost block west of the Johan van Hasseltkanaal (was a 2-3 m sand hump over the 2025 blocks)', at: [4.897694, 52.393504], radiusM: 35, maxSpreadM: 0.8 },
+  // Feedback d1423818: the EYE's outdoor stair, drawn by the landmark, not as a ground hump (staleRelief.ts eye-filmmuseum-stair;
+  // spread before 2.85 m, after 0.08 m).
+  { id: 'eye-stair', label: 'EYE Filmmuseum outdoor stair (the DTM stair was a 3 m hump through the modelled treads)', at: [4.901442, 52.384011], radiusM: 12, maxSpreadM: 0.7 },
   { id: 'ijzijde-busstation', label: 'Centraal IJ side, under the bus-station roof south of the Michiel de Ruijtertunnel ramp (the fill rose toward the track bed)', at: [4.8999, 52.3800], radiusM: 20, maxSpreadM: 1.5 },
 ];
 

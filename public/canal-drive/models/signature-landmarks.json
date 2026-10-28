@@ -10040,7 +10040,7 @@
       "bounds": {
         "min": [
           -54,
-          0,
+          -0.6000000238418579,
           -42
         ],
         "max": [
@@ -10061,12 +10061,12 @@
       },
       "extent": {
         "widthMetres": 109,
-        "heightMetres": 24.399999618530273,
+        "heightMetres": 24.99999964237213,
         "depthMetres": 101.91268157958984,
         "depthCoverage": 1.1786614565023388
       },
-      "triangles": 2703,
-      "bytes": 36684,
+      "triangles": 2646,
+      "bytes": 35952,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "royal-theater-carre": {

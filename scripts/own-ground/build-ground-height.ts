@@ -194,7 +194,7 @@ async function main(): Promise<void> {
   const index: GroundIndex = {
     version: 1, crs: 'EPSG:28992', vertical: 'NAP', stepM: STEP, tileSizeM: TILE, samples: n, heightUnitM: 0.01, tiles: [], ...(PREDICTOR !== 'dx' ? { predictor: PREDICTOR } : {}),
     sceneDatumNAP: +(WATER_LEVEL_NAP + FREEBOARD).toFixed(2), waterLevelNAP: WATER_LEVEL_NAP,
-    sources: { dtm: { service: 'https://service.pdok.nl/rws/ahn/wcs/v1_0', coverage: 'dtm_05m', licence: 'CC0 (AHN via PDOK)', fetched: new Date().toISOString().slice(0, 10) }, method: `water (elevation-v1 polygons, +0.5 m, and canal-level returns within 2 m of them) blanked; staleRelief.ts rings blanked; mean of measured 0.5 m pixels per ${STEP} m cell (≥ 1/4 measured); pits (findPits: ${PIT_DEFAULTS.radiusM} m closing, > ${PIT_DEFAULTS.minDepthM} m deep, ≤ ${PIT_DEFAULTS.maxAreaM2} m², level rim) and enclosed measured specks ≤ ${SPECK_MAX_M2} m² blanked; holes (buildings, water, bridges, pits) pull-push filled over the tile plus ${MARGIN} m margin, holes ≥ ${LARGE_HOLE_M2} m² capped at their rim's median; one 3×3 binomial smoothing pass; rail viaduct passages (railViaducts.ts) capped at their open sides' street level` },
+    sources: { dtm: { service: 'https://service.pdok.nl/rws/ahn/wcs/v1_0', coverage: 'dtm_05m', licence: 'CC0 (AHN via PDOK)', fetched: new Date().toISOString().slice(0, 10) }, method: `water (elevation-v1 polygons, +0.5 m, and canal-level returns within 2 m of them) blanked; staleRelief.ts rings blanked (or set to their levelNAP); mean of measured 0.5 m pixels per ${STEP} m cell (≥ 1/4 measured); pits (findPits: ${PIT_DEFAULTS.radiusM} m closing, > ${PIT_DEFAULTS.minDepthM} m deep, ≤ ${PIT_DEFAULTS.maxAreaM2} m², level rim) and enclosed measured specks ≤ ${SPECK_MAX_M2} m² blanked; holes (buildings, water, bridges, pits) pull-push filled over the tile plus ${MARGIN} m margin, holes ≥ ${LARGE_HOLE_M2} m² capped at their rim's median; one 3×3 binomial smoothing pass; rail viaduct passages (railViaducts.ts) capped at their open sides' street level` },
     attribution: 'Heights: AHN (Rijkswaterstaat / PDOK), CC0',
   };
   const report: Record<string, unknown>[] = [];
@@ -220,8 +220,12 @@ async function main(): Promise<void> {
         sourceHashes[r.file.split('/').pop()!] = createHash('sha256').update(readFileSync(r.file)).digest('hex').slice(0, 16);
         blanked += maskWater(r, sx, sy + SRC, rings);
         // Building sites paved since AHN flew (staleRelief.ts): holes, filled from today's level around them.
-        const stale = ringRaster(STALE_RELIEF.map(s => s.rd), sx, sy + SRC, r.width, r.height, PX);
-        for (let k = 0; k < stale.length; k++) if (stale[k] && r.data[k] === r.data[k]) { r.data[k] = NaN; staleBlanked++; }
+        // A ring with `levelNAP` is set to today's measured street level instead (a site beside water: a hole there
+        // would fill from the water side). Water pixels stay blank either way.
+        for (const s of STALE_RELIEF) {
+          const stale = ringRaster([s.rd], sx, sy + SRC, r.width, r.height, PX), level = s.levelNAP ?? NaN;
+          for (let k = 0; k < stale.length; k++) if (stale[k] && r.data[k] === r.data[k]) { r.data[k] = level; staleBlanked++; }
+        }
         const small = downsample(r, factor);
         const ox = (sx - x0) / STEP, oy = (sy - y0) / STEP;
         for (let j = 0; j < small.height; j++) grid.data.set(small.data.subarray(j * small.width, (j + 1) * small.width), (oy + j) * gw + ox);
