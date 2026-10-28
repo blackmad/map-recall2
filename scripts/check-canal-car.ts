@@ -413,6 +413,45 @@ let plazaSummary = '';
     const moved = leidse.ride(stuck, away, leidse.plazas);
     assert.equal(moved.stops, 0, `the bike moves ${moved.steps} m off the Leidseplein plaza point ${stuck.map(v => v.toFixed(6)).join(',')} toward ${away.map(v => v.toFixed(6)).join(',')}`);
   }
+  // The exact positions decoded from the two reports (camera offset applied
+  // to the map centre; game origin 52.355861,4.8995): the bike is free there.
+  for (const [label, at, world] of [
+    ['Dam (636a57f4)', [52.372813, 4.892422], dam],
+    ['Leidseplein (638590e9)', [52.363933, 4.882884], leidse],
+  ] as const) {
+    const w = world.toWorld(at[0], at[1]);
+    assert.equal(world.blocked(w.x, w.y, world.plazas), false, `${label}: the reported bike position is rideable`);
+    for (const [dLat, dLon] of [[0.00004, 0], [-0.00004, 0], [0, 0.00006], [0, -0.00006]] as const) {
+      const away: [number, number] = [at[0] + dLat, at[1] + dLon];
+      assert.equal(world.ride([at[0], at[1]], away, world.plazas).stops, 0, `${label}: the bike leaves the reported position towards ${away.join(',')}`);
+    }
+  }
+  // Named regression (feedback 3e7f0aa4, 2026-10-25, "I should probably be
+  // able to bike to this red path but I'm blocked"): on the paving between the
+  // Oosterdok busway and the quay at 52.377294,4.903152, the cycle bridge Brug
+  // 228 to the Odebrug dead-ends on a 1 m stub 20 m away (pavedLinks.ts).
+  const odeReport: [number, number] = [52.377294, 4.903152];
+  const ode = plazaWorld(odeReport);
+  const brug228: [number, number] = [52.3770640, 4.9034365]; // mid-span, OSM way 1168346867
+  const stub: [number, number] = [52.3771270, 4.9032636]; // the landing stub 1168346869
+  const viaLanding = (from: [number, number], plazas: PlazaIndex | null) => {
+    const legs = [ode.ride(from, stub, plazas), ode.ride(stub, brug228, plazas)];
+    return { steps: legs[0].steps + legs[1].steps, stops: legs[0].stops + legs[1].stops };
+  };
+  const odeBefore = viaLanding(odeReport, null);
+  const odeAfter = viaLanding(odeReport, ode.plazas);
+  assert.ok(odeBefore.stops > 0, `the bridge is off every corridor from the report without the paved link (${odeBefore.stops}/${odeBefore.steps} m blocked)`);
+  assert.equal(odeAfter.stops, 0, `Odebrug (3e7f0aa4): the bike rides from the report onto Brug 228 (${odeAfter.stops}/${odeAfter.steps} m blocked)`);
+  const odeBusway: [number, number] = [52.3773674, 4.9032464]; // busway 1071670642
+  assert.equal(viaLanding(odeBusway, ode.plazas).stops, 0, 'Odebrug: from the busway onto Brug 228');
+  // Brug 228 carries on to the Odebrug and Oostertoegang on corridors alone.
+  const brugEast: [number, number] = [52.3770047, 4.9035998], oostertoegang: [number, number] = [52.3769706, 4.9037110];
+  assert.equal(ode.ride(brug228, brugEast, null).stops + ode.ride(brugEast, oostertoegang, null).stops, 0, 'Odebrug: Brug 228 leads on to Oostertoegang');
+  // The water beside the landing and the bus station west of the wall stay off-road.
+  for (const [label, at] of [['the Oosterdok inlet east of the quay', [52.3772494, 4.9037387]], ['below the wall, west of the steps', [52.3771200, 4.9030300]]] as const) {
+    const w = ode.toWorld(at[0], at[1]);
+    assert.equal(plazaAt(ode.plazas, w.x, w.y), null, `${label} is not paved link`);
+  }
   // Negatives: closed rings that stay blocked. Frederiksplein is a park
   // (lawn around the fountain); the Piet Heinkade ring (routing_4258 path 6,
   // 10,159 m², the largest closed street ring in the centre) loops around a
@@ -447,7 +486,7 @@ let plazaSummary = '';
     }
   }
   assert.ok(interior > 100, `the Piet Heinkade ring has off-road interior to test (${interior} samples)`);
-  plazaSummary = `; squares: Dam crossing ${after.steps} m, Leidseplein ${offCorridor.length} m² opened, 4 exits, Frederiksplein and Piet Heinkade ring blocked`;
+  plazaSummary = `; squares: Dam crossing ${after.steps} m, Leidseplein ${offCorridor.length} m² opened, 4 exits, both report positions free, Odebrug Brug 228 reached in ${odeAfter.steps} m, Frederiksplein and Piet Heinkade ring blocked`;
 }
 
 let ferrySummary = '';

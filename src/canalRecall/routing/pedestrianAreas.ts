@@ -19,6 +19,8 @@
  * corridor guard still owns the strips along the streets.
  */
 
+import { PAVED_LINKS } from './pavedLinks.ts';
+
 export interface PlazaPoint { x: number; y: number }
 
 export interface PlazaFeature {
@@ -82,15 +84,17 @@ export function isRideablePlaza(feature: PlazaFeature, path: ReadonlyArray<[numb
 
 /**
  * Project the rideable squares into world space. `project` takes `[lat, lon]`
- * and returns the same world point the road segments use.
+ * and returns the same world point the road segments use. The curated paved
+ * links (pavedLinks.ts) are indexed with them unless `links` says otherwise.
  */
 export function buildPlazaIndex(
   features: readonly PlazaFeature[],
   project: (lat: number, lon: number) => PlazaPoint,
   worldUnitsPerMetre: number,
+  links: readonly PlazaFeature[] = PAVED_LINKS,
 ): PlazaIndex {
   const plazas: Plaza[] = [];
-  for (const feature of features || []) {
+  for (const feature of [...(features || []), ...links]) {
     const paths = feature.paths || (feature.path ? [feature.path] : []);
     for (const path of paths) {
       if (!path || !isRideablePlaza(feature, path)) continue;
