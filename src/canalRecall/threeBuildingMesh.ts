@@ -24,7 +24,7 @@ import { streetWallBuilding, frontageLayoutScale, PROCEDURAL_RECIPE_LAYER_OFFSET
 import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
-import { CELL_VARIANTS, CELL_LAYER_COUNT, cellLayer } from './facadeCells.js';
+import { CELL_VARIANTS, CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { edgeGroundPieces, edgeLayout, layoutRun, type LayoutScale } from './facadeLayout.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetDistance } from './streetFronts.js';
 import type { StreetFacing } from './streetGableEnds.js';
@@ -118,6 +118,12 @@ export type Chunk = {
   quadCount: number;
   wallCount: number;
   buildingCount: number;
+  /**
+   * Triangles per content kind, for the GPU-load breakdown (CANAL-RECALL-7): `upper` storeys,
+   * `ground`/`door` ground-floor pieces, `frontage-wall`, `parapet`, `roof-*` parts, `lid`,
+   * `frontage` relief and `extras`. Display-only; the buffers are the same with or without it.
+   */
+  kinds?: Record<string, number>;
 };
 
 const M_PER_DEG_LAT = 110_540;
@@ -381,7 +387,7 @@ function sourceWallCutGroups(b:MeshBuilding,edges:readonly Edge[]){
  * `mode: 'extras'` builds only the facade extras (facadeExtras.ts) of these buildings: they are a
  * separate, near-camera chunk, too many triangles to draw across the whole resident city.
  */
-export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, mode: 'walls' | 'extras' = 'walls', streets?: Float32Array, context: readonly MeshBuilding[] = [], hostOpenings: readonly ChunkHostOpeningConfig[] = []): Chunk {
+export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, mode: 'walls' | 'extras' | 'shell' = 'walls', streets?: Float32Array, context: readonly MeshBuilding[] = [], hostOpenings: readonly ChunkHostOpeningConfig[] = []): Chunk {
   type Prepared = { b: MeshBuilding; edges: Edge[]; top: number };
   const prepared: Prepared[] = [];
   const rings: Edge[][][] = [];
@@ -456,11 +462,13 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   };
 
   const CORNICE_STYLES = new Set<string>(['canal', 'c19', 'school']);
-  type Quad = { accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; z1Left?:number;z1Right?:number;v1Left?:number;v1Right?:number;layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
-  const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[] }> = [];
-  let signTotal = 0;
+  type Quad = { kind: string; accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; z1Left?:number;z1Right?:number;v1Left?:number;v1Right?:number;layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
+  const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[]; extraTris: number }> = [];
+  let signTotal = 0, extrasTotal = 0;
   let quadTotal = 0, wallTotal = 0, roofTotal = 0, lidVerts = 0, lidIndices = 0;
   const kxLocal = mPerDegLng(origin.lat);
+  /** `shell`: the touch LOD away from the rider — one wall quad per wall, a flat lid, nothing else. */
+  const shell = mode === 'shell';
   for (const [bi, { b, edges, top:buildingTop }] of prepared.entries()) {
     const quads: Quad[] = [];
     const base = b.minHeightM;
@@ -475,6 +483,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const wallExtraContexts: ExtraContext[] = [];
     const frontageTriangles: SignTri[] = [];
     const cornice: StreetCrownTri[] = [];
+    let extraTris = 0;
     const doorAllowed = doorWalls(bi);
     let groundSeen = Infinity;
     const streetEdges = [...doorAllowed];
@@ -500,7 +509,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const [r, g, bl] = b === fallbackBuilding ? wallRGB : parseHex(b.wallHex);
       const accent = b === fallbackBuilding ? wallAccent : parseHex(b.accentHex ?? '#ffffff');
       if (b.recipe) crownFronts.push({ start:[first.x0,first.y0],end:[run[run.length-1].e.x1,run[run.length-1].e.y1],normal:[first.nx,first.ny],tint:[r*jitter,g*jitter,bl*jitter],plainLayer:b.plainLayer,recipe:b.recipe,frameHex:b.recipe.frameHex??'#e6e1d4',glassHex:b.streetAppearance?.look==='cartoon'?'#68a2bf':'#35464f' });
-      if(b.surveyedEnvelope&&b.plainLayer!==undefined)for(const {e}of run)for(const s of sourceEdgeFor(b,e)!.segments){
+      if(!shell && b.surveyedEnvelope&&b.plainLayer!==undefined)for(const {e}of run)for(const s of sourceEdgeFor(b,e)!.segments){
         if(Math.max(s.z0,s.z1)-top<1e-7)continue;
         const point=(t:number,z:number):[number,number,number]=>[e.x0+(e.x1-e.x0)*t,e.y0+(e.y1-e.y0)*t,z];
         const A=point(s.t0,top),B=point(s.t1,top),C=point(s.t1,s.z1),D=point(s.t0,s.z0),uv=(p:[number,number,number]):[number,number]=>[Math.hypot(p[0]-e.x0,p[1]-e.y0)/5,p[2]/3],n:[number,number,number]=[e.nx,e.ny,0];
@@ -509,6 +518,19 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const paintTint = b === fallbackBuilding ? groundPaint : b.groundHex && b.layers ? parseHex(b.groundHex) : null;
       // A parapet band (large tier) only where the wall is tall enough to keep a storey under it.
       const parapet = b.parapetM && !b.bare && top - b.parapetM - base >= 5 ? b.parapetM : 0, facadeTop = top - parapet;
+      if (shell) {
+        // Touch devices, away from the rider (CANAL-RECALL-7): one quad per wall from the base to the top, in
+        // the wall's own window cell, plus the flat lid below. Same mass, height, tint and skyline as the
+        // coarse shell, without the ground-floor door/shop slices or the projecting cornice.
+        const dims = STYLE_DIMS[b.style], bay = dims.bay * runScale.bay, storey = dims.storey * runScale.storey;
+        const layer = (b.plainWalls || b.bare) && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant);
+        const tint: [number, number, number, number] = [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), 255];
+        for (const { e } of run) {
+          walls++;
+          quads.push({ kind: 'shell-wall', e, u0: 0, u1: Math.max(1, e.len / bay), v1: Math.max(1, (top - base) / storey), layer, accent, z0: base, z1: top, tint, along0: 0, along1: 1 });
+        }
+        continue;
+      }
       const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), facadeTop - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
       if(layout&&b.recipe?.facadeAssembly==='stacked-open-balcony'&&base<.5){
         const center=(layout.bays-1)/2;
@@ -522,7 +544,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       if (!layout) {
         // With the top owned here, a wall too short for a layout (a corner chamfer) is still walled, in bare wall.
         if (b.lid && b.plainLayer !== undefined && top > base + 0.01) for (const { e } of run) {
-          quads.push({ e, u0: 0, u1: Math.max(1, e.len / 5), v1: 1, layer: b.plainLayer, accent, z0: base, z1: top, tint: [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255], along0: 0, along1: 1 });
+          quads.push({ kind: 'wall-plain', e, u0: 0, u1: Math.max(1, e.len / 5), v1: 1, layer: b.plainLayer, accent, z0: base, z1: top, tint: [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255], along0: 0, along1: 1 });
         }
         continue;
       }
@@ -582,13 +604,13 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         if(compound||regular||terrace){
           for(const piece of (compound??regular??terrace)!.wallSegments){
             const a=Math.max(s,piece.left),end=Math.min(s+e.len,piece.left+piece.width);if(end<=a)continue;
-            quads.push({e,u0:a/5,u1:end/5,v0:piece.bottom/3,v1:(piece.bottom+piece.height)/3,tint,layer:b.plainLayer!,accent,z0:piece.bottom,z1:piece.bottom+piece.height,along0:(a-s)/e.len,along1:(end-s)/e.len});
+            quads.push({ kind: 'frontage-wall', e,u0:a/5,u1:end/5,v0:piece.bottom/3,v1:(piece.bottom+piece.height)/3,tint,layer:b.plainLayer!,accent,z0:piece.bottom,z1:piece.bottom+piece.height,along0:(a-s)/e.len,along1:(end-s)/e.len});
           }
         }else for (const piece of edgeGroundPieces(layout, k, e.len)) {
-          quads.push({ e, u0: piece.a0 / bw, u1: piece.a1 / bw, v1: 1, tint: (piece.door && !b.recipe?.groundWallHex) || b.plainWalls ? tint : paint, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
+          quads.push({ kind: piece.door ? 'door' : 'ground', e, u0: piece.a0 / bw, u1: piece.a1 / bw, v1: 1, tint: (piece.door && !b.recipe?.groundWallHex) || b.plainWalls ? tint : paint, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
         }
-        if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
-        if (parapet && b.plainLayer !== undefined) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });
+        if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: s / bw, u1: (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
+        if (parapet && b.plainLayer !== undefined) quads.push({ kind: 'parapet', e, u0: s / bw, u1: (s + e.len) / bw, v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });
       });
     }
     const clampToSource=(q:Quad):Quad[]=>{
@@ -612,8 +634,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal, b.roof.plan.kind === 'gable' || b.roof.plan.streetRidge ? crownFacing(bi) : undefined);
       if (crownFronts.length&&!b.roof.plan.repeatedTerrace) roof = streetCrown(roof,crownFronts,b.heightM,['gable','pitched','halfHipped'].includes(b.roof.plan.kind)&&!b.roof.plan.shutters);
     }
-    const walled = mode === 'walls';
-    const lid = walled && !b.surveyedEnvelope && b.lid && (!b.roof || !roof.length || b.roof.plan.keepLid) ? lidMesh(b, origin) : null;
+    const walled = mode === 'walls', shellMode = mode === 'shell';
+    const lid = (walled || shellMode) && !b.surveyedEnvelope && b.lid && (!b.roof || !roof.length || b.roof.plan.keepLid) ? lidMesh(b, origin) : null;
     // Walls mode carries the signature storefront; extras mode only the extras.
     const sign: SignTri[] = [...frontageTriangles,...(walled && b.signature && b.lid ? signatureTris(b.signature, edges, b.minHeightM, origin) : [])];
     // A chain supermarket's fascia goes on a street wall (else any exposed wall) nearest its point.
@@ -632,11 +654,13 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         if (b.measuredRoof && outer.length) measuredRoofFurniture(b.measuredRoof, [(outer[0][0] - origin.lng) * kxLocal, (outer[0][1] - origin.lat) * M_PER_DEG_LAT], b.heightM, rect, extraSink);
         else if (rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: b.id, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
       }
+      extraTris = extraSink.tris.length;
       sign.push(...extraSink.tris);
     }
-    if (!walled) { quads.length = 0; visibleQuads.length = 0; roof = []; }
+    if (mode === 'extras') { quads.length = 0; visibleQuads.length = 0; roof = []; }
     signTotal += sign.length;
-    quadsByBuilding.push({ b, quads: visibleQuads, walls, roof, lid, sign });
+    extrasTotal += extraTris;
+    quadsByBuilding.push({ b, quads: visibleQuads, walls, roof, lid, sign, extraTris });
     quadTotal += visibleQuads.length; wallTotal += walls; roofTotal += roof.length;
     if (lid) { lidVerts += lid.xy.length / 2; lidIndices += lid.index.length; }
   }
@@ -688,11 +712,15 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   const layers = new Uint8Array(vertexCount), tints = new Uint8Array(vertexCount * 4), accents = new Uint8Array(vertexCount * 4);
   const indices = new Uint32Array(quadTotal * 6 + roofTotal * 3 + lidIndices + signTotal * 3);
   const ranges: VertexRange[] = [];
+  /** Triangles per content kind (diagnostics only; not a rendering input). */
+  const kinds: Record<string, number> = {};
+  const addKind = (kind: string, tris: number) => { if (tris) kinds[kind] = (kinds[kind] ?? 0) + tris; };
   let v = 0, q = 0, ti = quadTotal * 6;
-  for (const { b, quads, roof, lid, sign } of quadsByBuilding) {
+  for (const { b, quads, roof, lid, sign, extraTris } of quadsByBuilding) {
     if (!quads.length && !roof.length && !lid && !sign.length) continue;
     const start = v;
     for (const quad of quads) {
+      addKind(quad.kind, 2);
       const { e } = quad;
       // Sub-span of the wall this quad covers (a ground run is a slice).
       const ax = e.x0 + (e.x1 - e.x0) * quad.along0, ay = e.y0 + (e.y1 - e.y0) * quad.along0;
@@ -717,6 +745,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2, white: [number, number, number] = [255, 255, 255];
       const defaultWallTint = [wr*jitter,wg*jitter,wb*jitter];
       for (const t of roof) {
+        addKind(`roof-${t.part}`, 1);
         const shade = bakedFaceShade(t.n);
         const wall = t.part === 'plate' || t.part === 'dormerFace', flat = t.part === 'trim' || t.part === 'decal';
         // Trim and decals (white stone, cornices, shutters) are flat colour on the lid's flat layer.
@@ -745,6 +774,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         v++;
       }
       for (const k of lid.index) indices[ti++] = base + k;
+      addKind('lid', lid.index.length / 3);
     }
     for (const t of sign) {
       // Signature storefront boxes: flat colour on the flat layer, shaded by facing.
@@ -762,7 +792,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     }
     ranges.push({ id: b.id, start, count: v - start });
   }
-  const chunk = { positions, uvs, layers, tints, accents, indices, ranges, vertexCount, quadCount: quadTotal + Math.ceil(roofTotal / 2), wallCount: wallTotal, buildingCount: ranges.length };
+  addKind('frontage', signTotal - extrasTotal);
+  addKind('extras', extrasTotal);
+  const chunk = { positions, uvs, layers, tints, accents, indices, ranges, vertexCount, quadCount: quadTotal + Math.ceil(roofTotal / 2), wallCount: wallTotal, buildingCount: ranges.length, kinds };
   return mode === 'walls' ? applyHostWallOpenings(chunk, origin, hostOpenings) : chunk;
 }
 
@@ -871,5 +903,5 @@ export function buildKitChunk(parts: readonly KitPartGeometry[], layers: { plain
     }
     ranges.push({ id: part.id, start, count: v - start });
   }
-  return { positions, uvs, layers: layerArr, tints, accents, indices, ranges, vertexCount, quadCount: Math.ceil(tris / 2), wallCount: 0, buildingCount: ranges.length };
+  return { positions, uvs, layers: layerArr, tints, accents, indices, ranges, vertexCount, quadCount: Math.ceil(tris / 2), wallCount: 0, buildingCount: ranges.length, kinds: { kit: tris } };
 }
