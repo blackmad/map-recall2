@@ -144,7 +144,9 @@ function detailFlag(): CellDetail {
 function groundNearFlag(): 'block' | 'cell' | 'all' {
   const g = globalThis as { __canalRecallGroundNear?: string; location?: { search?: string } };
   const asked = g.__canalRecallGroundNear ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundNear') : null);
-  return asked === 'cell' || asked === 'all' ? asked : 'block';
+  // Default `cell` (2026-10-28): the 800 m touch ring fits inside the 3×3 block, so `block` coarsened nothing; the
+  // rider's own cell at full detail looked identical at the Westerkerk and cut own-ground 18 % (CANAL-RECALL-7).
+  return asked === 'block' || asked === 'all' ? asked : 'cell';
 }
 
 type LngLat = [number, number];
