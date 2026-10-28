@@ -23,12 +23,14 @@ for (const face of faces) {
   const strip = JSON.parse(await fs.readFile(path.join(FACES, face, 'strip.json'), 'utf8'));
   const glb = path.join(STAGING, face, 'chunk.glb');
   const x0 = strip.x0M, x1 = strip.x1M, L = x1 - x0, mid = (x0 + x1) / 2, top = strip.heightM - 2;
-  const d = Math.max(14, L * 0.45);
+  const d = Math.max(14, L * 0.45), R = Math.max(L, 28);
   const views: RenderView[] = [
     {eye: [x0 - 0.15 * L, 1.7, d], target: [mid, top * 0.45, 0], fov: 50, ...size},
     {eye: [x1 + 0.15 * L, 1.7, d], target: [mid, top * 0.45, 0], fov: 50, ...size},
-    {eye: [mid - 0.3 * L, top + L * 0.55, L * 0.75], target: [mid, top * 0.4, -4], fov: 40, ...size},
-    {eye: [mid + 0.35 * L, top * 1.2, -L * 0.8], target: [mid, top * 0.4, -6], fov: 40, ...size},
+    // Aerial and rear scale with the row but never closer than a 28 m reach: a two-house face is ~11 m long and
+    // ~15 m deep, so L alone put the rear camera inside the building and its roofs were never reviewed (#87).
+    {eye: [mid - 0.3 * R, top + R * 0.55, R * 0.75], target: [mid, top * 0.4, -4], fov: 40, ...size},
+    {eye: [mid + 0.35 * R, top * 1.2, -R * 0.8 - 8], target: [mid, top * 0.4, -6], fov: 40, ...size},
   ];
   const renders = await renderModels([{file: glb}], views);
   const photo = await sharp(strip.image).resize(size.width, size.height, {fit: 'contain', background: '#ffffff'}).png().toBuffer();
