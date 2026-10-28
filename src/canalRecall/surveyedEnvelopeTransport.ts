@@ -26,7 +26,7 @@ export function diagnosticEnvelopeTransport(input:unknown):EnvelopeTransport|und
   return {revision:json,envelopes:JSON.parse(json)};
  }catch{return;}
 }
-export type EnvelopeBuildOptions={look:BuildingLook;mode?:'walls'|'extras'|'coarse';streets?:Float32Array;profiles?:readonly StreetAppearanceProfile[];contextFeatures?:readonly Feature[];hostOpenings?:readonly ChunkHostOpeningConfig[];surveyedEnvelopeData?:readonly SurveyedBuildingEnvelope[]};
+export type EnvelopeBuildOptions={look:BuildingLook;mode?:'walls'|'extras'|'coarse'|'shell';streets?:Float32Array;profiles?:readonly StreetAppearanceProfile[];contextFeatures?:readonly Feature[];hostOpenings?:readonly ChunkHostOpeningConfig[];surveyedEnvelopeData?:readonly SurveyedBuildingEnvelope[]};
 /** Called inside the worker, or inline after worker failure. Native inputs are
  * authoritative; rejected sources never acquire roof ownership. */
 export function buildTransportedEnvelopeChunk(features:readonly Feature[],options:EnvelopeBuildOptions,now?:string){
