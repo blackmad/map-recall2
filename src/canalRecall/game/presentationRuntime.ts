@@ -85,6 +85,8 @@ const COPPER = '#c9844a';
 const RULE = 'rgba(31,28,23,0.16)';
 /** How long a tap or mouse move keeps the settings/help buttons up mid-ride. */
 const UTILITY_REVEAL_MS = 3000;
+/** Within 150 m (3 px/m) of a dockable pier the aboard notice names it and its distance. */
+const FERRY_DOCK_HINT_PX = 150 * 3;
 /** The own-map overview extract the riding radar draws from (Amsterdam only). */
 const RADAR_OVERVIEW_URL = '../data/extracts/amsterdam/own-map-v1/overview.json.gz';
 /** Steering keys never wake the utilities; every other key does. */
@@ -538,7 +540,7 @@ export class GamePresentationRuntime {
    * The aboard notice: departure pier and allowed destination(s). On a phone it
    * sits below the plaque and minimap; on desktop between the top cards.
    */
-  _renderFerryNotice(player: Pick<Vehicle, 'ferryOrigin' | 'ferryDestinations'>, showMiniMap: boolean): void {
+  _renderFerryNotice(player: Pick<Vehicle, 'ferryOrigin' | 'ferryDestinations' | 'ferryNearest'>, showMiniMap: boolean): void {
     if (!player.ferryOrigin) return;
     const ctx = this.ctx;
     const layout = this._hudRects();
@@ -546,7 +548,11 @@ export class GamePresentationRuntime {
       ? Math.max(layout.recall.y + layout.recall.height, showMiniMap ? layout.minimap.y + layout.minimap.height : 0) + 10
       : 72;
     const title = `Ferry from ${player.ferryOrigin.name}`;
-    const destination = `Dock at ${player.ferryDestinations || 'the connected terminal'}`;
+    // The vessel docks at any pier (ferry/travel.ts): near one, say how.
+    const near = player.ferryNearest && player.ferryNearest.distance <= FERRY_DOCK_HINT_PX ? player.ferryNearest : null;
+    const destination = near
+      ? `${near.name} pier ${Math.max(1, Math.round(near.distance / PIXELS_PER_METER))} m: steer onto it to dock`
+      : `Dock at ${player.ferryDestinations || 'the connected terminal'} or any ferry pier`;
     ctx.save();
     ctx.font = '600 15px sans-serif';
     const width = Math.min(CANVAS_W - 24, Math.max(ctx.measureText(title).width, ctx.measureText(destination).width) + 28);

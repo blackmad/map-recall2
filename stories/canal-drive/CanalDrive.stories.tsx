@@ -31,6 +31,8 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'stacked-notices-touch' | 'neighborhood-fallback-touch' | 'neighborhood-touch'
   // Aboard a cycling IJ ferry: the departure/destination notice under the plaque.
   | 'hud-ferry' | 'touch-hud-ferry'
+  // Aboard, 24 m from a pier: the notice says how to dock there.
+  | 'hud-ferry-dock' | 'touch-hud-ferry-dock'
   // Desktop utilities: tucked a few seconds into the ride, and back after a
   // mouse wiggle (with the destination card's hover-only "% new" badge).
   | 'hud-idle' | 'hud-wiggle'
@@ -180,7 +182,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       win.localStorage.setItem('mapRecall_reviewEvents_v1', JSON.stringify(events));
       doc.getElementById('knowledge-button')?.click();
     }
-    if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario === 'hud-radar' || scenario === 'neighborhood' || scenario === 'neighborhood-touch' || scenario === 'neighborhood-fallback'
+    if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario === 'hud-ferry-dock' || scenario === 'hud-radar' || scenario === 'neighborhood' || scenario === 'neighborhood-touch' || scenario === 'neighborhood-fallback'
       || scenario === 'stacked-notices' || scenario === 'stacked-notices-touch'
       || scenario === 'neighborhood-fallback-touch'
       || scenario.startsWith('finish')
@@ -421,8 +423,8 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           frameMath.random = random;
           return;
         }
-        if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario === 'hud-radar' || scenario.startsWith('touch-hud')) {
-          const ferry = scenario.endsWith('-ferry');
+        if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario === 'hud-ferry-dock' || scenario === 'hud-radar' || scenario.startsWith('touch-hud')) {
+          const ferry = scenario.endsWith('-ferry') || scenario.endsWith('-ferry-dock');
           const asking = scenario === 'touch-hud-question' || ferry;
           const long = scenario === 'touch-hud-long';
           const hood = long ? 'Van Lennepbuurt en Kinkerbuurt-Noord' : 'Jordaan';
@@ -480,6 +482,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
             game._renderFerryNotice({
               ferryOrigin: { id: '3980940', name: 'Centraal Station', x: 0, y: 0, land: { x: 0, y: 0 } },
               ferryDestinations: 'Buiksloterweg',
+              ferryNearest: scenario.endsWith('-ferry-dock') ? { name: 'Buiksloterweg', distance: 72 } : null,
             }, true);
           }
           return;
@@ -568,6 +571,8 @@ export const LiveHudIdlePhone: Story = {
 /** Desktop after a mouse wiggle: the corner cluster is back and the destination card shows "% new" on hover. */
 export const LiveHudWiggle: Story = { args: { scenario: 'hud-wiggle' } };
 export const LiveHudFerry: Story = { args: { scenario: 'hud-ferry' } };
+/** Aboard, 24 m from the Buiksloterweg pier: the notice names it and how to dock. */
+export const LiveHudFerryDock: Story = { args: { scenario: 'hud-ferry-dock' } };
 /** The riding radar: heading-up, route ahead in bold, the Dam clamped to the rim as an arrow. */
 export const LiveHudRadar: Story = { args: { scenario: 'hud-radar' } };
 export const LiveHudRadarPhone: Story = {
@@ -705,6 +710,12 @@ export const PortraitHudLongNames: Story = {
 /** Aboard an IJ ferry on a phone: the notice sits below the plaque and minimap. */
 export const PortraitHudFerry: Story = {
   args: { scenario: 'touch-hud-ferry' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** Aboard on a phone, 24 m from a pier: the dock hint fits the notice. */
+export const PortraitHudFerryDock: Story = {
+  args: { scenario: 'touch-hud-ferry-dock' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
 

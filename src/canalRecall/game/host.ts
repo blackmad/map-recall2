@@ -36,6 +36,8 @@ import type { Bridge, BridgeCrossing, Landmark, LandmarkNotice, Neighborhood, Wo
 export interface Vehicle extends WorldPoint {
   ferryOrigin?: import('../ferry/network').Terminal | null;
   ferryDestinations?: string;
+  /** The nearest dockable pier while aboard (ferry/travel.ts afterFerryMove). */
+  ferryNearest?: { name: string; distance: number } | null;
   angle: number;
   speed: number;
   vx: number;

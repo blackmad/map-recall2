@@ -27,17 +27,31 @@ export const BOARD_WATER_RADIUS = 90;
 export const BOARD_HEADING_TOLERANCE = (60 * Math.PI) / 180;
 /** The vessel has left its own pier once it is this far from it. */
 export const DEPART_RADIUS = BERTH_RADIUS;
-/** Within this radius of an allowed pier the quay is passable for the vessel. */
+/** Within this radius of a pier the vessel has not yet left, the quay is passable (launching, turning out). */
 export const PIER_APPROACH_RADIUS = 48;
-/** Docking happens within this radius of the pier, or on touching its quay within the approach radius. */
-export const DOCK_RADIUS = 18;
 /**
- * The vessel's centre is half a hull from the quay its side touches, so a
- * touch counts within the approach radius plus half the hull width. NDSM-werf
- * (3980786): the F4 line passes 6.3 m from the stop and the vessel ran aground
- * 16.1 m (48.3 px) from it, just outside PIER_APPROACH_RADIUS, and never docked.
+ * Docking on water: within this radius of any armed pier, moving towards it.
+ * Was 6 m (18 px). Buiksloterweg (feedback 50ea10bf, 2026-10-25): the vessel
+ * lay against the pontoon 15 m from the GTFS stop and never docked. The OSM
+ * pontoon (way 294911777) spans 11-23 m from that stop.
  */
-export const QUAY_DOCK_RADIUS = PIER_APPROACH_RADIUS + 27 / 2; // FERRY_SIZE.width / 2
+export const DOCK_RADIUS = 60; // 20 m
+/**
+ * Docking on touching land (the hull's centre or bow) within this radius of
+ * any armed pier. The OSM pier outlines reach 23 m (Buiksloterweg), 37 m
+ * (NDSM, way 588710849) and 48-51 m (Centraal, way 26726075, two stops) from
+ * their stops; a touch anywhere along a pier's own pontoon or quay docks.
+ * NDSM-werf (feedback 1d632c41): the vessel stood on the quay 24.7 m from the
+ * stop, past the old 20.5 m quay radius. Was 16 m + half a hull.
+ */
+export const QUAY_DOCK_RADIUS = 111; // 37 m
+/**
+ * Hysteresis: a pier the vessel was within this radius of when boarding (its
+ * own pier, and Centraal's other stop 40 m along the same quay) can only be
+ * docked at after the vessel has been farther than this from it. It is larger
+ * than both dock radii, so a launch never docks straight back.
+ */
+export const REARM_RADIUS = 150; // 50 m
 /** Half-width of the passable corridor along a terminal access. */
 export const ACCESS_CORRIDOR = 20;
 /** 2026-10-25 (user): "ferry should go a little faster": 135 -> 180 (bike top speed is 260). */
@@ -56,6 +70,10 @@ export interface FerryPlayer extends Point {
   isBoat?: boolean;
   ferryOrigin?: Terminal | null;
   ferryDeparted?: boolean;
+  /** Piers not yet dockable on this crossing (REARM_RADIUS hysteresis). Absent: all are. */
+  ferryUnarmed?: string[];
+  /** The nearest dockable pier and its distance in px, for the aboard notice. */
+  ferryNearest?: { name: string; distance: number } | null;
   ferryDestinations?: string;
   _bikeMaxSpeed?: number;
   _bikeSize?: { length: number; width: number };
@@ -209,12 +227,24 @@ export function board(player: FerryPlayer, boarding: Boarding, links: readonly F
   player.vx = Math.cos(berth.angle) * player.speed;
   player.vy = Math.sin(berth.angle) * player.speed;
   player.ferryDestinations = connectedTerminals(terminal.id, links).map(t => t.name).join(' or ');
+  player.ferryUnarmed = ferryTerminalsOf(links)
+    .filter(t => t.id === terminal.id || Math.hypot(berth.x - t.x, berth.y - t.y) <= REARM_RADIUS).map(t => t.id);
+  player.ferryNearest = null;
+}
+
+/** Every pier on the ferry network, once each. */
+export function ferryTerminalsOf(links: readonly FerryLink[]): Terminal[] {
+  const found = new Map<string, Terminal>();
+  for (const link of links) { found.set(link.from.id, link.from); found.set(link.to.id, link.to); }
+  return [...found.values()];
 }
 
 /** Back on the bike at the pier's land access (GTFS stops can be offshore). */
 export function disembark(player: FerryPlayer, pier: Terminal): void {
   player.ferryOrigin = null;
   player.ferryDeparted = false;
+  player.ferryUnarmed = undefined;
+  player.ferryNearest = null;
   player.isBoat = false;
   if (player._bikeMaxSpeed !== undefined) player.maxSpeed = player._bikeMaxSpeed;
   if (player._bikeSize) Object.assign(player, player._bikeSize);
@@ -265,35 +295,84 @@ function nearAccess(point: Point, t: Terminal): boolean {
 
 export type FerryMoveResult = 'sailing' | 'blocked' | 'docked' | 'ashore';
 
-/** Called after the vehicle moved: dock, or keep the vessel on water/pier access. */
+/**
+ * The hull's leading edge in the direction it just moved: the bow centre and
+ * its two corners (inset a little, the IJveer bow is rounded), or the stern
+ * when reversing. Null when the vessel did not move.
+ */
+export function leadingEdge(p: FerryPlayer, previous: Point): Point[] | null {
+  const mx = p.x - previous.x, my = p.y - previous.y;
+  if (Math.abs(mx) + Math.abs(my) < 1e-6) return null;
+  const hx = Math.cos(p.angle), hy = Math.sin(p.angle);
+  const ahead = (mx * hx + my * hy >= 0 ? 1 : -1) * (p.length || FERRY_SIZE.length) / 2;
+  const side = 0.8 * (p.width || FERRY_SIZE.width) / 2;
+  const bx = p.x + hx * ahead, by = p.y + hy * ahead;
+  return [{ x: bx, y: by }, { x: bx - hy * side, y: by + hx * side }, { x: bx + hy * side, y: by - hx * side }];
+}
+
+/** Degrees the heading eases away from the shore when one bow corner grazes it. */
+const GRAZE_TURN = (4 * Math.PI) / 180;
+
+/**
+ * Called after the vehicle moved: dock, or keep the hull on water.
+ *
+ * The vessel docks at any ferry pier, not only its line's destinations
+ * (feedback 50ea10bf, 2026-10-25: "we should be more lenient with the
+ * ferry"): within DOCK_RADIUS on water while heading in, or on touching land
+ * within QUAY_DOCK_RADIUS. Piers close to the boarding point re-arm only past
+ * REARM_RADIUS. Elsewhere the hull's centre and leading edge must stay on
+ * water (feedback f80d47da, "boat tears through the ground"); a single bow
+ * corner on land glances off instead of stopping dead.
+ */
 export function afterFerryMove(game: FerryGame, previous: Point, isWater: WaterTest): FerryMoveResult {
   const p = game.player, origin = p.ferryOrigin;
   if (!origin) return 'ashore';
   const links = ferryLinksOf(game.track);
   if (Math.hypot(p.x - origin.x, p.y - origin.y) > DEPART_RADIUS) p.ferryDeparted = true;
-  const allowed = [origin, ...connectedTerminals(origin.id, links)];
-  const onWater = isWater(p.x, p.y);
-  if (p.ferryDeparted) {
-    // Dock on reaching the pier, or on touching the quay beside it.
-    const pier = allowed.find(t => {
-      const d = Math.hypot(p.x - t.x, p.y - t.y);
-      return d <= DOCK_RADIUS || (!onWater && d < QUAY_DOCK_RADIUS);
-    });
-    if (pier) {
-      const mx = p.x - previous.x, my = p.y - previous.y;
-      const towards = mx * (pier.x - previous.x) + my * (pier.y - previous.y)
-        + mx * (pier.land.x - previous.x) + my * (pier.land.y - previous.y);
-      if (towards > 0) {
-        disembark(p, pier);
-        return 'docked';
-      }
+  const terminals = ferryTerminalsOf(links);
+  if (!terminals.some(t => t.id === origin.id)) terminals.push(origin);
+  const distance = (t: Terminal) => Math.hypot(p.x - t.x, p.y - t.y);
+  if (p.ferryUnarmed?.length) p.ferryUnarmed = p.ferryUnarmed.filter(id => {
+    const t = terminals.find(u => u.id === id);
+    return !!t && distance(t) <= REARM_RADIUS;
+  });
+  const unarmed = new Set(p.ferryUnarmed || []);
+  // Legacy callers (and the e2e) mark only ferryDeparted.
+  if (p.ferryDeparted && p.ferryUnarmed === undefined) unarmed.delete(origin.id);
+  else if (!p.ferryDeparted && p.ferryUnarmed === undefined) unarmed.add(origin.id);
+  const armed = terminals.filter(t => !unarmed.has(t.id));
+  const nearest = armed.reduce<Terminal | null>((best, t) => (!best || distance(t) < distance(best) ? t : best), null);
+  p.ferryNearest = nearest ? { name: nearest.name, distance: distance(nearest) } : null;
+
+  const centreWet = isWater(p.x, p.y);
+  const edge = leadingEdge(p, previous);
+  const edgeWet = edge ? edge.map(q => isWater(q.x, q.y)) : [true, true, true];
+  const touching = !centreWet || edgeWet.some(w => !w);
+  if (nearest) {
+    const d = distance(nearest);
+    const mx = p.x - previous.x, my = p.y - previous.y;
+    const towards = mx * (nearest.x - previous.x) + my * (nearest.y - previous.y)
+      + mx * (nearest.land.x - previous.x) + my * (nearest.land.y - previous.y);
+    if ((touching && d <= QUAY_DOCK_RADIUS) || (d <= DOCK_RADIUS && towards > 0)) {
+      disembark(p, nearest);
+      return 'docked';
     }
   }
-  const pierAccess = allowed.some(t => Math.hypot(p.x - t.x, p.y - t.y) < PIER_APPROACH_RADIUS || nearAccess(p, t));
-  if (!pierAccess && !onWater) {
-    p.x = previous.x; p.y = previous.y;
-    p.speed = 0; p.vx = 0; p.vy = 0;
+  // Leaving a pier not yet re-armed (launching, turning out): the old corridor rule, centre only.
+  const leaving = terminals.some(t => unarmed.has(t.id) && (distance(t) < PIER_APPROACH_RADIUS || nearAccess(p, t)));
+  if (leaving || !touching) return 'sailing';
+  const grazed = centreWet && edgeWet[0] && edgeWet[1] !== edgeWet[2];
+  const forward = (p.x - previous.x) * Math.cos(p.angle) + (p.y - previous.y) * Math.sin(p.angle) >= 0 ? 1 : -1;
+  p.x = previous.x; p.y = previous.y;
+  if (grazed) {
+    // Screen space has y down, so corner 1 is to starboard and a growing
+    // angle turns the bow to starboard (and swings the stern to port).
+    // Turn the leading end away from whichever corner touched.
+    p.angle += (edgeWet[1] ? 1 : -1) * forward * GRAZE_TURN;
+    p.speed *= 0.6;
+    p.vx = Math.cos(p.angle) * p.speed; p.vy = Math.sin(p.angle) * p.speed;
     return 'blocked';
   }
-  return 'sailing';
+  p.speed = 0; p.vx = 0; p.vy = 0;
+  return 'blocked';
 }

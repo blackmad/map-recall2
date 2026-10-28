@@ -6934,6 +6934,7 @@
   var COPPER = "#c9844a";
   var RULE = "rgba(31,28,23,0.16)";
   var UTILITY_REVEAL_MS = 3e3;
+  var FERRY_DOCK_HINT_PX = 150 * 3;
   var RADAR_OVERVIEW_URL = "../data/extracts/amsterdam/own-map-v1/overview.json.gz";
   var STEERING_KEYS = /* @__PURE__ */ new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "w", "a", "s", "d", "W", "A", "S", "D", " ", "Shift"]);
   var GamePresentationRuntime = class {
@@ -7355,7 +7356,8 @@
       const layout = this._hudRects();
       const top = layout.mode === "compact" ? Math.max(layout.recall.y + layout.recall.height, showMiniMap ? layout.minimap.y + layout.minimap.height : 0) + 10 : 72;
       const title = `Ferry from ${player.ferryOrigin.name}`;
-      const destination = `Dock at ${player.ferryDestinations || "the connected terminal"}`;
+      const near = player.ferryNearest && player.ferryNearest.distance <= FERRY_DOCK_HINT_PX ? player.ferryNearest : null;
+      const destination = near ? `${near.name} pier ${Math.max(1, Math.round(near.distance / PIXELS_PER_METER))} m: steer onto it to dock` : `Dock at ${player.ferryDestinations || "the connected terminal"} or any ferry pier`;
       ctx.save();
       ctx.font = "600 15px sans-serif";
       const width = Math.min(CANVAS_W - 24, Math.max(ctx.measureText(title).width, ctx.measureText(destination).width) + 28);
