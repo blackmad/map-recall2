@@ -2,9 +2,10 @@
 // thread (all ground modules are DOM-free). Bundled as
 // public/canal-drive/js/own-ground-worker.bundle.js (scripts/build-3d-bundles.mjs).
 //
-// Messages in:  { type: 'init', root, parks, roads, groundLook, compact }  extract root URL (absolute); parks: load parks-v1; roads: load roads-v1; far-ring palette;
-//                                                           compact: send compact meshes (compactMesh.ts, phones)
-//               { type: 'build', key, lod, gen }  build one cell
+// Messages in:  { type: 'init', root, parks, roads, groundLook, compact, detail }  extract root URL (absolute); parks: load parks-v1; roads: load roads-v1; far-ring palette;
+//                                                           compact: send compact meshes (compactMesh.ts, phones);
+//                                                           detail: 'touch' on a touch device, the device's far-cell level (gameGround.ts)
+//               { type: 'build', key, lod, gen, detail }  build one cell at 'full' or 'touch' detail (CellDetail)
 //               { type: 'far', key, gen }         build one far block (farRing.ts)
 //               { type: 'evict', x, y, keepM, keep: string[] }
 //               { type: 'order', keys: string[] }  wanted cells, best first: queued cells build in this order and
@@ -19,15 +20,15 @@
 
 import { GroundStore, httpFetchBytes, maybeGunzip } from './groundStore.js';
 import { readGroundTile, type GroundIndex } from './heightField.js';
-import { buildCell, cellTransferables } from './groundCell.js';
+import { buildCell, cellTransferables, type CellDetail } from './groundCell.js';
 import { buildFarBlock, farColours, farTransferables, type FarColours } from './farRing.js';
 import { groundPalette, type GroundLook } from './groundLook.js';
 import { GroundBuildQueue } from './buildQueue.js';
 import { cellGpuTransferables, compactCell, compactFar, farGpuTransferables } from './compactMesh.js';
 
 type In =
-  | { type: 'init'; root: string; parks?: boolean; roads?: boolean; groundLook?: GroundLook; compact?: boolean }
-  | { type: 'build'; key: string; lod: 0 | 1; gen: number }
+  | { type: 'init'; root: string; parks?: boolean; roads?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail }
+  | { type: 'build'; key: string; lod: 0 | 1; gen: number; detail?: CellDetail }
   | { type: 'far'; key: string; gen: number }
   | { type: 'evict'; x: number; y: number; keepM: number; keep: string[] }
   | { type: 'order'; keys: string[] }
@@ -38,6 +39,8 @@ let store: GroundStore | null = null;
 let ready: Promise<void> | null = null;
 let colours: FarColours | undefined;
 let compact = false;
+/** The device's far-cell level (init `detail`): `touch` on a coarse-pointer device, `full` on a desktop. */
+let detail: CellDetail = 'full';
 // One build at a time: cells are big and the order matters (nearest ahead first, buildQueue.ts).
 const queue = new GroundBuildQueue();
 const evictions: Array<() => void> = [];
@@ -54,7 +57,7 @@ async function pump(s: GroundStore): Promise<void> {
       if (!job) break;
       if (job.kind === 'cell') {
         try {
-          const input = await s.cellInput(job.key, job.lod);
+          const input = await s.cellInput(job.key, job.lod, job.detail);
           const built = buildCell(input), cell = compact ? compactCell(built) : built;
           ctx.postMessage({ type: 'cell', gen: job.gen, cell }, compact ? cellGpuTransferables(cell) : cellTransferables(cell));
         } catch (error) {
@@ -80,6 +83,7 @@ ctx.onmessage = event => {
   if (msg.type === 'init') {
     store = new GroundStore(httpFetchBytes(msg.root), { parks: msg.parks !== false, roads: msg.roads === true });
     compact = msg.compact === true;
+    detail = msg.detail === 'touch' ? 'touch' : 'full';
     colours = msg.groundLook && msg.groundLook !== 'default' ? farColours(groundPalette(msg.groundLook)) : undefined;
     ready = store.init().then(() => ctx.postMessage({ type: 'ready', cells: [...store!.osmCells] }))
       .catch(error => ctx.postMessage({ type: 'error', message: `init: ${String(error?.message ?? error)}` }));
@@ -97,7 +101,7 @@ ctx.onmessage = event => {
   }
   if (!store || !ready) return;
   const s = store;
-  if (msg.type === 'build') { queue.build(msg.key, msg.lod, msg.gen); void pump(s); return; }
+  if (msg.type === 'build') { queue.build(msg.key, msg.lod, msg.gen, msg.detail ?? detail); void pump(s); return; }
   if (msg.type === 'far') { queue.requestFar(msg.key, msg.gen); void pump(s); return; }
   if (msg.type === 'order') { queue.order(msg.keys); return; }
   if (msg.type === 'evict') {

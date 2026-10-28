@@ -26,7 +26,7 @@ import { decodeMarks, isRoadMarksCell, type RoadMark, type RoadMarksManifest } f
 import type { CourtyardsCell, CourtyardsManifest } from './courtyards.js';
 import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } from './water.js';
 import { openUnderHouseboats, type Boat } from './moorings.js';
-import type { CellInput } from './groundCell.js';
+import type { CellDetail, CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
 import { deckReach, movableApproaches, pointInRing } from './decks.js';
 import { prepareWays, isBridgeWay } from './streets.js';
@@ -553,7 +553,7 @@ export class GroundStore {
    * Everything a cell build needs, loaded: its relief and decks, the water and
    * OSM of its 3×3 neighbourhood, and the deck footprints near it.
    */
-  async cellInput(key: string, lod: 0 | 1): Promise<CellInput> {
+  async cellInput(key: string, lod: 0 | 1, detail: CellDetail = 'full'): Promise<CellInput> {
     await this.prepareCell(key);
     const around = GroundStore.neighbours(key);
     const [water, waterAround, osm, osmAround, parksAround, roadsAround, courtyardsAround, marksAround] = await Promise.all([
@@ -593,7 +593,7 @@ export class GroundStore {
       ...roadsAround.flatMap(r => (r ? r.surfaces.filter(s => s.h >= 1).map(s => decodeRoadLine(s.r[0])).filter(ring => ring.length >= 3 && near([Math.min(...ring.map(p => p[0])), Math.min(...ring.map(p => p[1])), Math.max(...ring.map(p => p[0])), Math.max(...ring.map(p => p[1]))])) : [])),
     ];
     return {
-      key, lod, rect, surface: this.surface, water,
+      key, lod, detail, rect, surface: this.surface, water,
       waterAround: waterAround.filter((g): g is WaterGeometry => !!g),
       decks: this.decks(key), deckRingsAround,
       flatDecks: [...this.flatDecks(key), ...own.map(a => a.ring)],

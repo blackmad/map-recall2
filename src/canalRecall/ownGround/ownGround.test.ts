@@ -1017,8 +1017,29 @@ for (const [id, lng, lat] of [['BRU0166', 4.87445, 52.37286], ['BRU0044', 4.8875
   });
 }
 
-test('regression (streamed cells): De Clercqstraat Bilderdijkstraat → Kostverlorenvaart reads as street at both LODs', { skip: !haveCells }, async () => {
+/**
+ * CANAL-RECALL-7: a `touch` cell (a touch device, far from the rider) draws every layer a `full` one draws — the same
+ * footprints, so the seams with the near ring have no holes — at coarser steps: fewer triangles, a 2 m water mask, no
+ * bollards and no park furniture. The near ring and the desktop stay `full` (byte-identical, the other tests' pins).
+ */
+test('detail level: a touch cell keeps every layer, with no bollards or furniture and fewer triangles', { skip: !haveCells }, async () => {
   const store = fsStore();
+  await store.init();
+  const [x, y] = storeToLocal(4.87445, 52.37286), key = store.cellAt(x, y);
+  const full = buildCell(await store.cellInput(key, 0)), touch = buildCell(await store.cellInput(key, 0, 'touch'));
+  assert.equal(full.detail, 'full'); assert.equal(touch.detail, 'touch');
+  const optional = new Set(['bollard', 'furniture']);
+  for (const layer of new Set([...Object.keys(full.layers), ...Object.keys(touch.layers)])) {
+    if (optional.has(layer)) continue;
+    assert.ok(full.layers[layer as keyof typeof full.layers] && touch.layers[layer as keyof typeof touch.layers], `${layer} drawn by both builds`);
+  }
+  for (const layer of ['bollard', 'furniture'] as const) assert.equal(touch.layers[layer], undefined, `${layer} left out`);
+  assert.ok(touch.mask && touch.mask.res === 2 && full.mask && full.mask.res === 1, 'water mask at 2 m');
+  assert.ok(touch.stats.triangles < full.stats.triangles * 0.8, `${touch.stats.triangles} triangles against ${full.stats.triangles}`);
+  assert.ok(touch.stats.buildMs <= full.stats.buildMs * 1.5, `touch build ${touch.stats.buildMs} ms against ${full.stats.buildMs}`);
+});
+
+test('regression (streamed cells): De Clercqstraat Bilderdijkstraat → Kostverlorenvaart reads as street at both LODs', { skip: !haveCells }, async () => {  const store = fsStore();
   await store.init();
   const [x, y] = storeToLocal(DE_CLERCQSTRAAT.at[0], DE_CLERCQSTRAAT.at[1]), key = store.cellAt(x, y);
   const input = await store.cellInput(key, 0), ids = new Set(DE_CLERCQSTRAAT.ways), seen = new Set<number>();

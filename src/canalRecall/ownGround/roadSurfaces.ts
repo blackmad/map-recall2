@@ -88,6 +88,14 @@ export const DECK_DRAPE_TOL_M = 0.01, DECK_DRAPE_MAX_EDGE_M = 6;
  */
 export const KERB_SIMPLIFY_M = 0.2, KERB_RELIEF_TOL_M = 0.02, KERB_PROBE_STEP_M = 4;
 /**
+ * A `touch` cell (gameGround.ts, CANAL-RECALL-7): the far ring on a touch device. Its polygons drape at
+ * TOUCH_DRAPE_TOL_SCALE × DRAPE_TOL and never split finer than TOUCH_MIN_EDGE_SCALE × DRAPE_MIN_EDGE_M, and its kerbs
+ * simplify at TOUCH_KERB_SIMPLIFY_SCALE × KERB_SIMPLIFY_M with TOUCH_KERB_RELIEF_SCALE × KERB_RELIEF_TOL_M stations.
+ * Measured 2026-10-27 at the Westerkerk place (scripts/gpu-load-ipad.mjs). Every polygon and kerb is still drawn: the
+ * footprint never changes, only the number of vertices following the relief.
+ */
+export const TOUCH_DRAPE_TOL_SCALE = 8, TOUCH_MIN_EDGE_SCALE = 4, TOUCH_KERB_SIMPLIFY_SCALE = 5, TOUCH_KERB_RELIEF_SCALE = 6;
+/**
  * The kerb's shadow line (issue #52, user 2026-10-24: "no kerbs or edges anywhere, so the whole junction reads as a
  * diagram"; islands "flat lighter grey slabs with no kerb"): a dark strip on the low side at the foot of every sided
  * kerb face. The 11 cm face is a few pixels from the chase camera and lit like the pavement; on the panoramas
@@ -429,6 +437,12 @@ export interface RoadBuildInput {
   /** Ground drape sag / float tolerance overrides for the road classes (measurement scripts); the defaults are DRAPE_TOL. */
   drapeTol?: number;
   drapeFloatTol?: number;
+  /**
+   * 'touch': a cell far from the rider on a touch device (gameGround.ts, CANAL-RECALL-7). The polygons, kerbs and lines
+   * are all still drawn (the footprint is unchanged); the drape and the kerb stations are coarser, as the relief's
+   * shape barely shows at that distance.
+   */
+  detail?: 'full' | 'touch';
   /** Canal-side test for the Amsterdammertjes (streets.ts bollards); near ring only. */
   canalSide?: (x: number, y: number) => boolean;
   /**
@@ -471,6 +485,10 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   const stats: RoadBuildStats = { drawn: { carriage: 0, foot: 0, cycle: 0, pedestrian: 0, parking: 0, driveway: 0, island: 0, berm: 0, verge: 0, square: 0 }, onDeck: 0, skippedHigh: 0, degenerate: 0, kerbs: 0, kerbM: 0, kerbUnsided: 0, bollards: 0, ms: 0 };
   const skipped = new Set<number>();
   const far = input.lod === 1;
+  /** A `touch` cell: coarser drape tolerances and kerb stations (RoadBuildInput.detail). */
+  const touch = input.detail === 'touch';
+  const tolScale = touch ? TOUCH_DRAPE_TOL_SCALE : 1;
+  const minEdgeM = DRAPE_MIN_EDGE_M * (touch ? TOUCH_MIN_EDGE_SCALE : 1);
   // The drape carries each corner's height and asks once per corner and tested point (drapeAdaptive); a 1 cm memo
   // of the heights on top cost more in Map lookups than the land grid's own lookup (the deck surface keeps it).
   const landHeight = input.height, deckHeight = memoHeight(input.deckHeight);
@@ -498,7 +516,9 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
       // Where the relief was measured coarser than the drape's own minimum (the 4 m ring), no triangle splits finer
       // than a data sample: not by edge, and not by area, which on a verge strip's slivers is what the edge test misses.
       const step = input.dataStep?.(flat[0], flat[1]) ?? 0, coarse = step > DRAPE_MIN_EDGE_M;
-      drapeAdaptive(layer, flat, tris, height, ROAD_LIFT[cls], far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, (low && input.drapeTol) || tol.sag, coarse ? step : DRAPE_MIN_EDGE_M, far ? Infinity : (low && input.drapeFloatTol) || tol.float, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0);
+      const sagTol = ((low && input.drapeTol) || tol.sag) * tolScale;
+      const floatTol = ((low && input.drapeFloatTol) || tol.float) * tolScale;
+      drapeAdaptive(layer, flat, tris, height, ROAD_LIFT[cls], far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, sagTol, coarse ? step : minEdgeM, far ? Infinity : floatTol, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0);
     }
     stats.drawn[cls]++;
   }
@@ -506,7 +526,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   const kerb = get('kerb');
   traceMark(kerb, 'bgtKerb');
   for (const e of cell.kerbs) {
-    const run = decodeKerb(e);
+    const run = decodeKerb(e, touch ? KERB_SIMPLIFY_M * TOUCH_KERB_SIMPLIFY_SCALE : KERB_SIMPLIFY_M);
     if (run.length < 2) continue;
     const st = stations(run), total = st[st.length - 1];
     if (total < 0.3) continue;
@@ -522,7 +542,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     if (bridge) { const on = deckSurface([cx, cy]); if (!on) continue; height = on; }
     // Decks hump within a span (DECK_DRAPE_MAX_EDGE_M); on land, no finer than the relief was measured.
     const line = bridge ? densifyOnRelief(run, height, KERB_RELIEF_TOL_M, 1, DECK_DRAPE_MAX_EDGE_M)
-      : densifyOnRelief(run, height, KERB_RELIEF_TOL_M, Math.max(KERB_PROBE_STEP_M / 2, input.dataStep?.(cx, cy) ?? 0), DRAPE_MAX_EDGE_M);
+      : densifyOnRelief(run, height, KERB_RELIEF_TOL_M * (touch ? TOUCH_KERB_RELIEF_SCALE : 1), Math.max(KERB_PROBE_STEP_M / 2, input.dataStep?.(cx, cy) ?? 0), DRAPE_MAX_EDGE_M);
     stats.kerbs++; stats.kerbM += total;
     if (!lowLeft && !lowRight) {
       // No face: the line alone (a kerb between two pavements of different heights the survey does not say).
@@ -550,12 +570,12 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   return { layers, stats, skipped };
 }
 
-/** A kerb run as metres (roadCells decodeRoadLine), simplified to KERB_SIMPLIFY_M (densifyOnRelief adds the stations). */
-function decodeKerb(e: readonly number[]): Vec2[] {
+/** A kerb run as metres (roadCells decodeRoadLine), simplified to `simplifyM` (densifyOnRelief adds the stations). */
+function decodeKerb(e: readonly number[], simplifyM: number = KERB_SIMPLIFY_M): Vec2[] {
   const out: Vec2[] = [];
   let x = 0, y = 0;
   for (let i = 0; i + 1 < e.length; i += 2) { x += e[i]; y += e[i + 1]; out.push([x / 10, y / 10]); }
-  return out.length >= 2 ? simplifyLine(out, KERB_SIMPLIFY_M) : out;
+  return out.length >= 2 ? simplifyLine(out, simplifyM) : out;
 }
 
 // ------------------------------------------------------------------ extractor helpers (also the fixture and tests)

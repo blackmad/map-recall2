@@ -517,9 +517,12 @@ function playPiece(m: MeshArrays, k: ParkPointKind, p: Vec2, a: number, z: numbe
  * The park meshes of one cell. `height` is the land surface the other flat
  * layers drape on (groundCell `onLand`); `lod` 1 (far ring) keeps surfaces
  * (coarser) and hedges, drops benches, lamps, fences and the playground kit.
+ * `touch` (a `touch` detail cell, CANAL-RECALL-7) drape the surfaces as `lod` 1
+ * does and drop the same objects while keeping the cell's LOD 0 semantics.
  */
-export function buildParks(cell: ParksCell, height: HeightFn, lod: 0 | 1, isWater: (x: number, y: number) => boolean = () => false): { layers: Partial<Record<ParkLayer | SharedLayer, MeshArrays>>; stats: ParkBuildStats } {
+export function buildParks(cell: ParksCell, height: HeightFn, lod: 0 | 1, isWater: (x: number, y: number) => boolean = () => false, touch = false): { layers: Partial<Record<ParkLayer | SharedLayer, MeshArrays>>; stats: ParkBuildStats } {
   const layers: Partial<Record<ParkLayer | SharedLayer, MeshArrays>> = {};
+  const fine = lod === 0 && !touch;
   const get = (l: ParkLayer | SharedLayer, colours = false) => (layers[l] ??= emptyMesh(colours));
   const stats: ParkBuildStats = { surfaces: 0, pondsInWater: 0, hedgeM: 0, fenceM: 0, wallM: 0, benches: 0, lamps: 0, play: 0, generated: 0, dropWays: cell.dropWays.length };
   for (const s of cell.surfaces) {
@@ -532,7 +535,7 @@ export function buildParks(cell: ParksCell, height: HeightFn, lod: 0 | 1, isWate
       const at = interiorPoint(rings);
       if (at && isWater(at[0], at[1])) { stats.pondsInWater++; continue; }
     }
-    drapeBisect(get(SURFACE_LAYER[s.k]), flat, tris, height, PARK_LIFT[s.k], lod === 0 ? 8 : 20, lod === 0 ? CLEARANCE_M : CLEARANCE_FAR_M, lod === 0 ? 1 : 2, lod === 0 ? 5 : 10);
+    drapeBisect(get(SURFACE_LAYER[s.k]), flat, tris, height, PARK_LIFT[s.k], fine ? 8 : 20, fine ? CLEARANCE_M : CLEARANCE_FAR_M, fine ? 1 : 2, fine ? 5 : 10);
     stats.surfaces++;
   }
   const hedge = get('hedge', true);
@@ -540,10 +543,11 @@ export function buildParks(cell: ParksCell, height: HeightFn, lod: 0 | 1, isWate
   for (const l of cell.lines) {
     const line = decodeLine(l.g);
     if (l.k === 'hedge') stats.hedgeM += strip(hedge, line, height, 0.8, 1.1, C.hedge, C.hedgeTop);
-    else if (lod === 0 && l.k === 'fence') stats.fenceM += fence(get('furniture', true), line, height);
-    else if (lod === 0 && l.k === 'wall') stats.wallM += strip(get('furniture', true), line, height, 0.3, 0.75, C.wall, C.wallCap);
+    else if (fine && l.k === 'fence') stats.fenceM += fence(get('furniture', true), line, height);
+    else if (fine && l.k === 'wall') stats.wallM += strip(get('furniture', true), line, height, 0.3, 0.75, C.wall, C.wallCap);
   }
-  if (lod === 0) {
+  // Benches, lamps and play pieces: objects on the ground, not the ground (a `touch` cell leaves them out).
+  if (fine) {
     const f = get('furniture', true);
     for (const pt of cell.points) {
       const p: Vec2 = [pt.p[0] / 10, pt.p[1] / 10], z = height(p[0], p[1]);
