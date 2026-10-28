@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**Ferries dock at any pier; Odebrug reachable (2026-10-28, #93).** Feedback
+50ea10bf, 1d632c41, f80d47da and 3e7f0aa4.
+
+- **Docking radii,** measured from the OSM pier outlines:
+  - On water a boat docks within 20 m of the stop. The Buiksloterweg pontoon, way 294911777, spans 11–23 m from it; the old radius was 6 m.
+  - Touching land it docks within 37 m. The NDSM pier outline, way 588710849, reaches 36.8 m; the old radius was 16–20 m.
+- **Any pier:** a boat docks at any ferry pier, not only its line's terminus. Players kept trying to step off at Buiksloterweg from an NDSM boat.
+- **Re-arm hysteresis:** a pier within 50 m of the boarding point only becomes dockable once the boat has been 50 m away. So leaving Centraal F4 never docks at F3, 40 m along the same quay.
+- **Hull on water:** the centre and both bow corners must stay on water. One bow corner on the bank turns the boat 4° away and slows it instead of stopping it.
+- **Odebrug:** the cycle bridge Brug 228, way 1168346867, landed on a 1 m stub joined only to the sidewalks the extract drops. `routing/pavedLinks.ts` adds a curated rideable ring for that stub, indexed with the squares. Other cycleways that end on dropped footways need their own entries, or a generator that keeps connecting footways.
+- **Regressions:** all pinned in `check-canal-car.ts`, the reachability audit and `ferry-docking-feedback.spec.ts`.
+- **Still open:** only the bow is tested, so a hard turn can still swing a side over the quay.
+
 **Own ground compiles half the shaders (2026-10-26).** Asking why phones that
 lost their WebGL context (CANAL-RECALL-7) reported 66 three.js programs: a
 phone-sized ride measured 68, all compiled within 10 s and none after. About 44
