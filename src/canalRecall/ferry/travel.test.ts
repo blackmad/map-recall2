@@ -83,45 +83,90 @@ g.player.x = 200; g.player.y = -598;
 assert.equal(afterFerryMove(g, { x: 200, y: -590 }, water), 'blocked');
 assert.deepEqual([g.player.x, g.player.y], [200, -590]);
 
-// The unrelated north pier does not accept this ferry.
-g.player.x = C.x; g.player.y = C.y + 2;
-assert.equal(afterFerryMove(g, { x: C.x, y: C.y + 10 }, water), 'blocked');
-assert.ok(g.player.ferryOrigin, 'still aboard after refused docking');
+// Any ferry pier accepts the vessel, not only its line's destination
+// (feedback 50ea10bf, 2026-10-25: an F4 boat from Centraal lay at the
+// Buiksloterweg pontoon, the F3 terminal, and would not dock).
+const aboard = (): FerryGame => {
+  const fresh = game({ x: 0, y: 2 });
+  assert.equal(beginFerryFrame(fresh, water), true);
+  fresh.player.x = 200; fresh.player.y = -300;
+  assert.equal(afterFerryMove(fresh, { x: 200, y: -290 }, water), 'sailing');
+  return fresh;
+};
+const elsewhere = aboard();
+elsewhere.player.x = C.x; elsewhere.player.y = C.y + 2;
+assert.equal(afterFerryMove(elsewhere, { x: C.x, y: C.y + 10 }, water), 'docked', 'docks at a pier of another line');
+assert.deepEqual([elsewhere.player.x, elsewhere.player.y], [C.land.x, C.land.y]);
+assert.equal(elsewhere.player.ferryUnarmed, undefined, 'docking clears the crossing state');
 
-// Docking at the connected pier puts the bike on its land access, facing
-// inland, also when the vessel touches the quay beside the pier.
-g.player.x = B.x + 30; g.player.y = B.y + 3;
-assert.equal(afterFerryMove(g, { x: B.x + 30, y: B.y + 10 }, water), 'docked');
-assert.equal(g.player.ferryOrigin, null);
-assert.equal(g.player.isBoat, false);
-assert.deepEqual([g.player.x, g.player.y], [B.land.x, B.land.y]);
-assert.equal(g.player.length, 12);
-assert.equal(g.player.maxSpeed, 300);
-assert.ok(Math.abs(g.player.angle + Math.PI / 2) < 1e-9, 'faces away from the water');
+// Docking puts the bike on the pier's land access, facing inland, also when
+// the vessel touches the quay beside the pier.
+const beside = aboard();
+beside.player.x = B.x + 30; beside.player.y = B.y + 3;
+assert.equal(afterFerryMove(beside, { x: B.x + 30, y: B.y + 10 }, water), 'docked');
+assert.equal(beside.player.ferryOrigin, null);
+assert.equal(beside.player.isBoat, false);
+assert.deepEqual([beside.player.x, beside.player.y], [B.land.x, B.land.y]);
+assert.equal(beside.player.length, 12);
+assert.equal(beside.player.maxSpeed, 300);
+assert.ok(Math.abs(beside.player.angle + Math.PI / 2) < 1e-9, 'faces away from the water');
 
-// NDSM-werf (3980786): the planned F4 line passes 6.3 m from the stop, and the
-// vessel touched the quay 16.1 m (48.3 px) off it, just outside the approach
-// radius, was blocked and never docked. A quay touch within half a hull more docks.
-const ndsm = game({ x: 0, y: 2 });
-beginFerryFrame(ndsm, water);
-ndsm.player.ferryDeparted = true;
-ndsm.player.x = B.x + 48.3; ndsm.player.y = B.y + 3;
-assert.equal(afterFerryMove(ndsm, { x: B.x + 48.3, y: B.y + 12 }, water), 'docked', 'NDSM: quay touch 16.1 m from the stop docks');
-// Far along an unrelated stretch of the same quay it is still blocked.
-const far = game({ x: 0, y: 2 });
-beginFerryFrame(far, water);
-far.player.ferryDeparted = true;
-far.player.x = B.x + 90; far.player.y = B.y + 3;
-assert.equal(afterFerryMove(far, { x: B.x + 90, y: B.y + 12 }, water), 'blocked', '30 m along the quay does not dock');
+// NDSM-werf (feedback 1d632c41): the vessel stood on the quay 24.7 m (74 px)
+// from the stop. A quay touch along the pier's own 37 m pontoon docks; past
+// the pontoon, 50 m along the same quay, the vessel is blocked.
+const ndsm = aboard();
+ndsm.player.x = B.x + 74; ndsm.player.y = B.y + 3;
+assert.equal(afterFerryMove(ndsm, { x: B.x + 74, y: B.y + 12 }, water), 'docked', 'NDSM: quay touch 24.7 m from the stop docks');
+const far = aboard();
+far.player.x = B.x + 150; far.player.y = B.y + 3;
+assert.equal(afterFerryMove(far, { x: B.x + 150, y: B.y + 12 }, water), 'blocked', '50 m along the quay does not dock');
+assert.ok(far.player.ferryOrigin, 'still aboard');
 
-// Returning to the departure pier is allowed only after leaving it.
+// Buiksloterweg (feedback 50ea10bf): afloat against the pontoon 15 m (45 px)
+// from the stop, heading in, docks; drifting away from it does not.
+const pontoon = aboard();
+pontoon.player.x = B.x + 45; pontoon.player.y = B.y + 20;
+assert.equal(afterFerryMove(pontoon, { x: B.x + 47, y: B.y + 26 }, water), 'docked', 'afloat 15 m from the stop, heading in');
+const drifting = aboard();
+drifting.player.x = B.x + 45; drifting.player.y = B.y + 26;
+assert.equal(afterFerryMove(drifting, { x: B.x + 44, y: B.y + 20 }, water), 'sailing', 'afloat 15 m off, heading away');
+
+// Hysteresis: the departure pier re-arms only once the vessel has been 50 m away.
 const back = game({ x: 0, y: 2 });
 beginFerryFrame(back, water);
-back.player.x = 0; back.player.y = -4;
-assert.equal(afterFerryMove(back, { x: 0, y: -12 }, water), 'sailing', 'no instant re-docking at the origin');
-back.player.ferryDeparted = true;
-assert.equal(afterFerryMove(back, { x: 0, y: -12 }, water), 'docked');
+assert.deepEqual(back.player.ferryUnarmed, ['A']);
+back.player.x = 0; back.player.y = -60;
+assert.equal(afterFerryMove(back, { x: 0, y: -50 }, water), 'sailing', 'no instant re-docking at the origin');
+back.player.angle = Math.PI / 2;
+back.player.x = 0; back.player.y = -12;
+assert.equal(afterFerryMove(back, { x: 0, y: -20 }, water), 'sailing', 'still unarmed inside 50 m, even heading in');
+back.player.x = 0; back.player.y = -160;
+assert.equal(afterFerryMove(back, { x: 0, y: -150 }, water), 'sailing');
+assert.deepEqual(back.player.ferryUnarmed, [], 're-armed past 50 m');
+back.player.x = 0; back.player.y = -12;
+assert.equal(afterFerryMove(back, { x: 0, y: -20 }, water), 'docked');
 assert.deepEqual([back.player.x, back.player.y], [A.land.x, A.land.y]);
+
+// The hull stays on water (feedback f80d47da, "boat tears through the ground"):
+// a bow that reaches the bank is blocked though the centre is still afloat,
+// and a single bow corner on the bank glances off instead of stopping dead.
+{
+  const shore = aboard();
+  const p = shore.player;
+  p.angle = -Math.PI / 2; p.x = 200; p.y = -595 + p.length / 2 - 3; p.speed = 100;
+  assert.ok(water(p.x, p.y), 'centre afloat');
+  assert.equal(afterFerryMove(shore, { x: 200, y: p.y + 6 }, water), 'blocked', 'bow on the bank');
+  assert.equal(p.speed, 0);
+  // Sailing east 5 px off the north bank (y = -595): the port bow corner,
+  // 4 m to the north, is on land while the bow centre is afloat.
+  const glance = aboard();
+  const q = glance.player;
+  q.angle = 0; q.x = 200; q.y = -590; q.speed = 100;
+  assert.equal(afterFerryMove(glance, { x: 194, y: -590 }, water), 'blocked');
+  assert.deepEqual([q.x, q.y], [194, -590]);
+  assert.ok(q.angle > 0, 'turns away from the bank (to starboard, positive in screen space)');
+  assert.ok(q.speed > 0, 'keeps way on');
+}
 
 // Issue #54: the whole boarding edge of a two-stop pier boards, like the
 // Centraal F3/F4 quay with its two middle ramps, not only the stops. An

@@ -8,8 +8,9 @@ import { buildRoadSpatialIndex, contactsAt, pickGuardContact, roadsNear, type Ro
 import { buildPlazaIndex, plazaAt, plazaGuardContact, type PlazaFeature, type PlazaIndex } from '../src/canalRecall/routing/pedestrianAreas';
 import { buildRoadSegments, projectToWorld, PIXELS_PER_METER, type OsmWay } from '../src/canalRecall/osm/roadProjection';
 import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoadName } from '../src/canalRecall/game/bridgeStreetName';
-import { afterFerryMove, PIER_APPROACH_RADIUS, QUAY_DOCK_RADIUS, type FerryGame } from '../src/canalRecall/ferry/travel';
-import type { FerryLink, Segment, Terminal } from '../src/canalRecall/ferry/network';
+import { afterFerryMove, beginFerryFrame, leadingEdge, nearestWater, type FerryGame } from '../src/canalRecall/ferry/travel';
+import type { Terminal } from '../src/canalRecall/ferry/network';
+import { ijFerryWorld, ijWaterTest, sail, toLatLon as ijToLatLon, toWorld as ijToWorld } from './lib/ferryIjWorld';
 
 const options = { edgeTolerance: 12 };
 const road = (overrides: Partial<RoadContact> = {}): RoadContact => ({
@@ -451,65 +452,87 @@ let plazaSummary = '';
 
 let ferrySummary = '';
 {
-  // Named regression (whats-new 2026-10-25, "Ferry docks at NDSM reliably").
-  // Following the F4 line into NDSM-werf, the vessel touched the quay 16.1 m
-  // (48.3 px) off the stop, just outside the 16 m approach radius, was blocked
-  // and never docked. The stop is GTFS 3980786 "Amsterdam, NDSM-werf" at
-  // 52.401206, 4.890938 (public/data/extracts/amsterdam/transit-network.json).
-  // The land access is the nearest routed street vertex (NDSM-kade), standing
-  // in for the segment ferrySegments snaps the stop to. A quay touch now
-  // counts within half a hull more (QUAY_DOCK_RADIUS, 20.5 m).
-  const stopLL: [number, number] = [52.401206, 4.890938]; // GTFS 3980786
-  const latScale = 111_320, lonScale = latScale * Math.cos(stopLL[0] * Math.PI / 180);
-  const toPixels = (point: [number, number]) => ({
-    x: (point[1] - stopLL[1]) * lonScale * PIXELS_PER_METER,
-    y: -(point[0] - stopLL[0]) * latScale * PIXELS_PER_METER,
+  // Ferry docking and hull on the real western IJ: terminals and links from
+  // ferrySegments over the transit extract, water from OSM polygons
+  // (scripts/fixtures/ferry-water-ij.json). Feedback of 2026-10-25, build
+  // 2620cb1; positions decoded from each report's camera and map centre.
+  const world = ijFerryWorld(), water = ijWaterTest();
+  const terminal = (id: string) => { const t = world.terminals.get(id); assert.ok(t, `ferry terminal ${id}`); return t!; };
+  const centraalF4 = terminal('3980457'), centraalF3 = terminal('3980940'), ndsm = terminal('3980786'), buiksloterweg = terminal('3980896');
+  const vessel = (lat: number, lon: number, degrees: number, origin: Terminal): FerryGame => ({
+    travelMode: 'car', track: { segments: world.segments, getNearestRoad: () => null },
+    player: { ...ijToWorld(lat, lon), angle: degrees * Math.PI / 180, speed: 60, vx: 0, vy: 0, maxSpeed: 180, length: 96, width: 27,
+      isBoat: true, ferryOrigin: origin, ferryDeparted: true },
   });
-  const landLL = routing.flatMap(street => street.paths ?? (street.path ? [street.path] : []))
-    .flat().reduce((best, point) => (metersBetween(point, stopLL) < metersBetween(best, stopLL) ? point : best));
-  const landDistance = metersBetween(landLL, stopLL);
-  assert.ok(landDistance < 240, `NDSM-werf has a routed land access within 240 m (${landDistance.toFixed(1)} m)`);
-  const stop = toPixels(stopLL), land = toPixels(landLL);
-  const length = Math.hypot(stop.x - land.x, stop.y - land.y);
-  const normal = { x: (stop.x - land.x) / length, y: (stop.y - land.y) / length }; // land -> stop, towards the water
-  const tangent = { x: -normal.y, y: normal.x };
-  const onQuay = (alongPx: number, inlandPx: number) => ({
-    x: stop.x + tangent.x * alongPx - normal.x * inlandPx,
-    y: stop.y + tangent.y * alongPx - normal.y * inlandPx,
-  });
-  const ndsm: Terminal = { id: '3980786', name: 'NDSM-werf', ...stop, land };
-  const origin: Terminal = {
-    id: 'departure', name: 'Departure',
-    x: stop.x - tangent.x * 900, y: stop.y - tangent.y * 900,
-    land: { x: stop.x - tangent.x * 920, y: stop.y - tangent.y * 920 },
-  };
-  const link: FerryLink = { id: 'F4:departure:3980786', ref: 'F4', from: origin, to: ndsm, points: [origin, ndsm] };
-  const segments: Segment[] = [
-    { points: [origin.land, origin], type: 'ferry-access', width: 18, name: '', ferryTerminal: origin },
-    { points: [land, stop], type: 'ferry-access', width: 18, name: '', ferryTerminal: ndsm },
-    { points: [origin, ndsm], type: 'ferry', width: 45, name: '', ferryLink: link },
-  ];
-  // Water is the half-plane beyond the stop, away from the routed land access.
-  const isWater = (x: number, y: number) => (x - stop.x) * normal.x + (y - stop.y) * normal.y > 0;
-  // The vessel's centre sits inland of the quay edge by half a hull; the step
-  // into the quay is what triggers the touch test.
-  const touch = (alongPx: number) => {
-    const quay = onQuay(alongPx, 3);
-    const game: FerryGame = {
-      travelMode: 'car',
-      player: {
-        ...quay, angle: Math.atan2(-normal.y, -normal.x), speed: 0, vx: 0, vy: 0,
-        maxSpeed: 180, length: 96, width: 27, isBoat: true, ferryOrigin: origin, ferryDeparted: true,
-      },
-      track: { segments, getNearestRoad: () => null },
-    };
-    return afterFerryMove(game, { x: quay.x + normal.x * 9, y: quay.y + normal.y * 9 }, isWater);
-  };
-  assert.ok(48.3 > PIER_APPROACH_RADIUS && 48.3 < QUAY_DOCK_RADIUS,
-    `the reported ${(48.3 / PIXELS_PER_METER).toFixed(1)} m NDSM quay touch falls between the approach (${(PIER_APPROACH_RADIUS / PIXELS_PER_METER).toFixed(1)} m) and quay-dock (${(QUAY_DOCK_RADIUS / PIXELS_PER_METER).toFixed(1)} m) radii`);
-  assert.equal(touch(48.3), 'docked', 'NDSM-werf: a quay touch 16.1 m from the stop docks');
-  assert.equal(touch(90), 'blocked', 'NDSM-werf: a quay touch 30 m from the stop is still blocked');
-  ferrySummary = ', NDSM ferry dock pin (16.1 m quay touch docks, 30 m blocked)';
+  const step = (game: FerryGame, metres = 3) => afterFerryMove(game,
+    { x: game.player.x - Math.cos(game.player.angle) * metres * 3, y: game.player.y - Math.sin(game.player.angle) * metres * 3 }, water);
+  // 1d632c41 "can't turn back into a bike even at ndsm": the vessel stood on
+  // the NDSM-werf quay at 52.401408,4.891088, 24.7 m from the stop, heading
+  // in (284 degrees). Build 2620cb1 and the 20.5 m quay radius both blocked it.
+  const ndsmReport = vessel(52.401408, 4.891088, 284.4, centraalF4);
+  assert.equal(water(ndsmReport.player.x, ndsmReport.player.y), false, 'the NDSM report position is on the quay');
+  assert.equal(step(ndsmReport), 'docked', 'NDSM-werf (1d632c41): the vessel on the quay 24.7 m from the stop docks');
+  assert.equal(Math.hypot(ndsmReport.player.x - ndsm.land.x, ndsmReport.player.y - ndsm.land.y), 0, 'onto the NDSM-werf land access');
+  // 50ea10bf "why isn't it letting me turn back [into a bike] at buikslotweg":
+  // an F4 vessel from Centraal afloat by the Buiksloterweg pontoon, 15 m from
+  // the F3 stop, heading in. Other lines' piers were refused, and on water
+  // docking needed 6 m.
+  const buikReport = vessel(52.382217, 4.903187, 310.8, centraalF4);
+  assert.equal(water(buikReport.player.x, buikReport.player.y), true, 'the Buiksloterweg report position is afloat');
+  assert.equal(step(buikReport), 'docked', 'Buiksloterweg (50ea10bf): an F4 vessel 15 m from the F3 pier docks');
+  assert.equal(Math.hypot(buikReport.player.x - buiksloterweg.land.x, buikReport.player.y - buiksloterweg.land.y), 0, 'onto the Buiksloterweg land access');
+  // Negative: the NDSM quay past its 37 m pier outline (OSM way 588710849) is
+  // an ordinary bank; a vessel nosing into it 55-60 m from the stop is blocked.
+  let farQuay = 0;
+  for (let k = 0; k < 72; k++) {
+    const a = k * Math.PI / 36;
+    for (const metres of [55, 60]) {
+      const x = ndsm.x + Math.cos(a) * metres * 3, y = ndsm.y + Math.sin(a) * metres * 3;
+      if (water(x, y)) continue;
+      // Approach from whichever neighbouring point 3 m away is afloat.
+      const from = Array.from({ length: 8 }, (_, j) => j * Math.PI / 4)
+        .map(d => ({ d, x: x - Math.cos(d) * 9, y: y - Math.sin(d) * 9 })).find(q => water(q.x, q.y));
+      if (!from) continue;
+      const g = vessel(...ijToLatLon({ x, y }), from.d * 180 / Math.PI, centraalF4);
+      assert.equal(afterFerryMove(g, from, water), 'blocked', `the NDSM bank ${metres} m from the stop is not a pier`);
+      farQuay++;
+    }
+  }
+  assert.ok(farQuay >= 4, `the NDSM bank beyond the pier is probed (${farQuay} touches)`);
+  // f80d47da "boat tears through the ground a bit": the vessel ran along the
+  // north shore at 52.392846,4.897173 (OSM IJ edge 0.1 m away) with half its
+  // hull over the quay. Holding course into the bank from 80 m out, the hull's
+  // centre and bow stay afloat on every frame; build 2620cb1 put them ashore
+  // on 143 frames. Riding the bank, the bow glances off instead.
+  const shoreStart = ijToWorld(52.392846, 4.897173), shoreHeading = 290.1 * Math.PI / 180;
+  const fromSea = { x: shoreStart.x - Math.cos(shoreHeading) * 240, y: shoreStart.y - Math.sin(shoreHeading) * 240 };
+  const intoBank = sail({ afterFerryMove, leadingEdge }, world, water, centraalF4, fromSea,
+    [{ x: shoreStart.x + Math.cos(shoreHeading) * 180, y: shoreStart.y + Math.sin(shoreHeading) * 180 }]);
+  assert.equal(intoBank.aground, 0, `f80d47da: the hull stays afloat heading into the north shore (${intoBank.aground} frames ashore)`);
+  assert.equal(intoBank.result, 'stalled', 'f80d47da: the bank stops the vessel');
+  // Every GVB crossing in the western IJ, both ways, sails its GTFS line and
+  // docks at the far pier without the hull going ashore. Leaving Centraal F4
+  // passes its sister stop F3 40 m along the same quay, which must not dock
+  // the vessel straight back (REARM_RADIUS hysteresis).
+  const crossings: string[] = [];
+  for (const link of world.links) {
+    if (link.ref === 'F7') continue; // its GTFS shape runs via Distelweg and the Centraal piers; the boat docks at Distelweg
+    for (const [from, to, points] of [[link.from, link.to, link.points], [link.to, link.from, [...link.points].reverse()]] as const) {
+      const boarding: FerryGame = { travelMode: 'car', track: { segments: world.segments, getNearestRoad: () => null },
+        player: { x: from.x, y: from.y, angle: 0, speed: 20, vx: 0, vy: 0, maxSpeed: 260, length: 6, width: 2 } };
+      const shore = nearestWater(from, water);
+      assert.ok(shore, `${link.ref} ${from.name} has water in boarding reach`);
+      boarding.player.angle = shore!.angle ?? Math.atan2(from.y - from.land.y, from.x - from.land.x);
+      assert.equal(beginFerryFrame(boarding, water), true, `${link.ref}: boards at ${from.name}`);
+      const v = sail({ afterFerryMove, leadingEdge }, world, water, boarding.player.ferryOrigin!, boarding.player, points.slice(1), { maxFrames: 60 * 90 });
+      assert.equal(v.result, 'docked', `${link.ref} ${from.name} -> ${to.name} docks (${v.result}, ${v.endMetres.toFixed(1)} m from a pier)`);
+      assert.equal(v.dockedAt, to.name, `${link.ref} ${from.name} -> ${to.name} docks at ${to.name}, not ${v.dockedAt}`);
+      assert.equal(v.aground, 0, `${link.ref} ${from.name} -> ${to.name}: the hull stays afloat (${v.aground} frames ashore)`);
+      crossings.push(`${link.ref}`);
+    }
+  }
+  assert.ok(Math.hypot(centraalF3.x - centraalF4.x, centraalF3.y - centraalF4.y) < 150, 'Centraal F3 and F4 share a quay inside the re-arm radius');
+  ferrySummary = `, ferry: NDSM quay 24.7 m and Buiksloterweg 15 m reports dock, ${farQuay} NDSM bank touches blocked, f80d47da hull afloat, ${crossings.length} IJ crossings dock`;
 }
 
 process.stdout.write(`Canal Recall car checks passed (6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}${plazaSummary}${ferrySummary}).\n`);
