@@ -10,6 +10,12 @@
 //   becomes near again rebuilds at `full` through the ordinary LOD swap. Desktop
 //   is always `full`; the level comes from `pointer: coarse`, and
 //   `?groundDetail=full|touch` / `?groundNear=block|cell|all` override it.
+// - Touch ring and tiles (CANAL-RECALL-7, 2026-10-29): a touch device fits the
+//   resident ring to its own viewport plus a speed margin ahead (residency.ts,
+//   `?groundRing=steps|view`) and cuts each heavy layer of a cell into 3×3
+//   tiles that three.js frustum-culls (cellTiles.ts, `?groundTiles=1..4`).
+//   iPad Westerkerk pitch 60: own-ground 875 k → ~320 k drawn triangles, the
+//   picture unchanged. Desktop keeps the stepped ring and one mesh per layer.
 // - Drawn as one participant of the shared three.js frame (order −10, under
 //   the facades), lit and shadowed by its rig.
 // - Overlays are draped ribbons on the same surface: the route line, the
@@ -34,7 +40,8 @@ import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type CellDetail, type GroundL
 import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
-import { residentRadius, viewReachM } from './residency.js';
+import { splitIntoTiles } from './cellTiles.js';
+import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from './residency.js';
 import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
@@ -94,6 +101,45 @@ export interface OwnGroundOptions {
    * cell and its 8 neighbours, the rider's cell alone, or none.
    */
   groundNear?: 'block' | 'cell' | 'all';
+  /**
+   * How the resident ring follows the view (default: from the page, `groundRingFlag()` below). `steps` is the desktop
+   * rule (a 900 px view, 400 m steps). `view` fits the ring to this device's viewport (its farthest visible corner,
+   * 100 m steps) and reaches further only ahead of a moving rider (residency.ts, CANAL-RECALL-7). Display only.
+   */
+  ring?: 'steps' | 'view';
+  /**
+   * Cut each heavy layer of a cell into `tiles`×`tiles` sub-meshes so the ones off screen are culled (cellTiles.ts;
+   * default: from the page, `groundTilesFlag()` below; 1 = one mesh per layer, the desktop path). Display only.
+   */
+  tiles?: number;
+}
+
+/**
+ * Cell tiles on this device: 3×3 on a touch device, none on a desktop (unchanged). `?groundTiles=1..4` (or
+ * `window.__canalRecallGroundTiles`) overrides it.
+ */
+function groundTilesFlag(): number {
+  const g = globalThis as { __canalRecallGroundTiles?: number | string; matchMedia?: (query: string) => { matches: boolean }; location?: { search?: string } };
+  const asked = Number(g.__canalRecallGroundTiles ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundTiles') : NaN));
+  if (Number.isInteger(asked) && asked >= 1 && asked <= 4) return asked;
+  return g.matchMedia?.('(pointer: coarse)')?.matches ? TOUCH_TILES : 1;
+}
+
+/**
+ * The ring fit on this device: `view` on a touch device (the same `pointer: coarse` test as `detailFlag()`), `steps`
+ * on a desktop, unchanged. `?groundRing=steps|view` (or `window.__canalRecallGroundRing`) overrides it.
+ */
+function groundRingFlag(): 'steps' | 'view' {
+  const g = globalThis as { __canalRecallGroundRing?: string; matchMedia?: (query: string) => { matches: boolean }; location?: { search?: string } };
+  const asked = g.__canalRecallGroundRing ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundRing') : null);
+  if (asked === 'steps' || asked === 'view') return asked;
+  return g.matchMedia?.('(pointer: coarse)')?.matches ? 'view' : 'steps';
+}
+
+/** The page's viewport in CSS pixels (the map canvas fills it), or the iPad landscape profile outside a page. */
+function viewportPx(): [number, number] {
+  const g = globalThis as { innerWidth?: number; innerHeight?: number };
+  return g.innerWidth && g.innerHeight ? [g.innerWidth, g.innerHeight] : [1180, 734];
 }
 
 /** The roads flag from the page: the BGT road surfaces are on by default since 2026-10-16 (user: "if BGT is the fix,
@@ -158,6 +204,9 @@ interface FarResident { key: string; group: any; parts: Map<string, any>; triang
 interface Resident { key: string; lod: 0 | 1; detail: CellDetail; group: any; materials: any[]; textures: any[]; triangles: number; bytes: number; maskInfo: { x0: number; y0: number; res: number } | null; fade?: Fade }
 
 const RADIUS_M = 1400;
+/** Cell tiles per side on a touch device (OwnGroundOptions.tiles), and the smallest layer worth cutting (fewer draw calls for the rest). */
+const TOUCH_TILES = 3;
+const TILE_MIN_TRIANGLES = 4000;
 const AERIAL_RADIUS_M = 2000;
 /** A cell arriving in the ring (not an LOD swap of a resident one) dissolves in over this long. */
 export const FADE_MS = 400;
@@ -227,6 +276,8 @@ export class OwnGround {
   private readonly cellBuilds = new Map<string, BuiltCell['stats'] & { lod: 0 | 1; detail: CellDetail }>();
   /** Far ring radius now (0: the resident ring reaches what the camera sees). */
   private farRadius = 0;
+  /** A `view` ring's extra reach ahead of the moving rider, metres (residency.ts touchAheadMarginM). */
+  private aheadM = 0;
   private readonly far = new Map<string, FarResident>();
   private readonly farPending = new Set<string>();
   /** Far blocks with nothing to draw (outside the extracts). */
@@ -242,7 +293,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), ...options };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -359,7 +410,18 @@ export class OwnGround {
     this.zoom = zoom;
     this.centre = toLocal(lngLat[0], lngLat[1]);
     if (this.lookAheadOn ??= lookAheadEnabled()) this.motion.update(lngLat[0], lngLat[1], performance.now());
-    const reach = viewReachM(zoom, pitchDeg, lngLat[1]), radius = residentRadius(reach, this.opts.radiusM, this.opts.aerialRadiusM);
+    let reach: number, radius: number;
+    if (this.opts.ring === 'view') {
+      const [w, h] = viewportPx();
+      reach = viewCornerReachM(zoom, pitchDeg, lngLat[1], w, h);
+      radius = touchResidentRadius(reach, this.opts.radiusM, this.opts.aerialRadiusM);
+      // The ahead margin follows the speed in steps, so a steady ride does not re-plan every frame.
+      const ahead = this.lookAheadOn ? Math.round(touchAheadMarginM(this.motion.speed) / 50) * 50 : 0;
+      if (ahead !== this.aheadM) { this.aheadM = ahead; this.residencyAt = null; }
+    } else {
+      reach = viewReachM(zoom, pitchDeg, lngLat[1]);
+      radius = residentRadius(reach, this.opts.radiusM, this.opts.aerialRadiusM);
+    }
     if (radius !== this.radiusM) { this.radiusM = radius; this.residencyAt = null; }
     const far = this.opts.far ? farRadiusM(reach, radius) : 0;
     if (far !== this.farRadius) { this.farRadius = far; this.residencyAt = null; }
@@ -438,14 +500,15 @@ export class OwnGround {
     const [x, y] = this.centre, R = this.radiusM, size = this.store.elevation.cellSizeM;
     const direction = this.lookAheadOn ? this.motion.direction : null;
     const out: { key: string; lod: 0 | 1; detail: CellDetail; d: number; rank: number }[] = [];
-    const span = Math.ceil(R / size) + 1;
+    const view = this.opts.ring === 'view', ahead = view && direction ? this.aheadM : 0;
+    const span = Math.ceil((R + ahead) / size) + 1;
     const [cx, cy] = this.store.cellAt(x, y).split('_').map(Number);
     for (let dy = -span; dy <= span; dy++) for (let dx = -span; dx <= span; dx++) {
       const key = `${cx + dx}_${cy + dy}`;
       if (!this.store.covers(key)) continue;
       const rect = this.store.cellRect(key), d = this.rectDistance(rect, this.centre);
-      if (d > R) continue;
       const near: [number, number] = [Math.max(rect[0], Math.min(rect[2], x)), Math.max(rect[1], Math.min(rect[3], y))];
+      if (view ? !inTouchRing(d, d > 1e-6 && direction ? ((near[0] - x) * direction[0] + (near[1] - y) * direction[1]) / d : 0, R, ahead) : d > R) continue;
       const own = dx === 0 && dy === 0, beside = Math.abs(dx) <= 1 && Math.abs(dy) <= 1;
       const fine = this.opts.groundNear === 'all' ? false : own || (this.opts.groundNear === 'block' && beside);
       out.push({ key, lod: d <= this.opts.nearM ? 0 : 1, detail: this.opts.detail === 'touch' && !fine ? 'touch' : 'full', d, rank: direction ? aheadRankXY(this.centre, near, direction) : d });
@@ -854,6 +917,25 @@ export class OwnGround {
     return g;
   }
 
+  /**
+   * One layer's geometries: the whole mesh, or with `tiles` > 1 one per tile (cellTiles.ts) over the same vertex
+   * buffers, each with its own index and bounding sphere so three.js culls the tiles off screen. A tile's fade clone
+   * and material are the layer's; the dispose in drop() runs over every tile.
+   */
+  private tiledGeometries(p: GpuMesh): any[] {
+    const tiles = splitIntoTiles(p.positions, p.indices, this.opts.tiles, TILE_MIN_TRIANGLES);
+    if (!tiles) return [this.geometry(p)];
+    const THREE = this.THREE, base = this.packedGeometry(p);
+    return tiles.map(t => {
+      const g = new THREE.BufferGeometry();
+      for (const [name, attribute] of Object.entries(base.attributes)) g.setAttribute(name, attribute);
+      g.setIndex(new THREE.BufferAttribute(t.indices, 1));
+      g.boundingSphere = new THREE.Sphere(new THREE.Vector3(...t.center), t.radius);
+      if (this.opts.releaseArrays) for (const attribute of [...Object.values(g.attributes), g.index] as any[]) (attribute?.isInterleavedBufferAttribute ? attribute.data : attribute)?.onUpload(releaseArray);
+      return g;
+    });
+  }
+
   private packedGeometry(p: GpuMesh): any {
     const THREE = this.THREE;
     const g = new THREE.BufferGeometry();
@@ -911,15 +993,17 @@ export class OwnGround {
       if (uniforms && CUT[layer]) { material = this.cutMaterial(layer, uniforms); materials.push(material); }
       const original = material;
       if (fade) material = this.fadeMaterial(original, fade.uniform);
-      const mesh = new THREE.Mesh(this.geometry(p), material);
-      if (fade) fade.meshes.push({ mesh, original, clone: material });
-      mesh.name = layer;
-      mesh.matrixAutoUpdate = false;
-      mesh.receiveShadow = true;
-      // Deck bodies, hedges and park furniture stand up; the rest is ground.
-      mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
-      mesh.renderOrder = layer === 'water' || layer === 'quay' ? 0 : layer === 'land' ? 1 : 2;
-      group.add(mesh);
+      for (const geometry of this.tiledGeometries(p)) {
+        const mesh = new THREE.Mesh(geometry, material);
+        if (fade) fade.meshes.push({ mesh, original, clone: material });
+        mesh.name = layer;
+        mesh.matrixAutoUpdate = false;
+        mesh.receiveShadow = true;
+        // Deck bodies, hedges and park furniture stand up; the rest is ground.
+        mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
+        mesh.renderOrder = layer === 'water' || layer === 'quay' ? 0 : layer === 'land' ? 1 : 2;
+        group.add(mesh);
+      }
       triangles += p.indices.length / 3;
       bytes += gpuMeshBytes(p as GpuMesh);
     }
@@ -1162,7 +1246,7 @@ export class OwnGround {
     for (const r of this.resident.values()) { triangles += r.triangles; bytes += r.bytes; cells[r.key] = r.lod; details[r.key] = r.detail; }
     const median = (a: number[]) => { const s = [...a].sort((x, y) => x - y); return s.length ? +s[s.length >> 1].toFixed(1) : null; };
     return {
-      enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), transition: this.opts.transition, blend: this.blend.value, basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom, roads: this.opts.roads ? this.store.roadCells.size : false, detail: this.opts.detail, groundNear: this.opts.groundNear,
+      enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), transition: this.opts.transition, blend: this.blend.value, basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom, roads: this.opts.roads ? this.store.roadCells.size : false, detail: this.opts.detail, groundNear: this.opts.groundNear, ring: this.opts.ring, aheadM: this.aheadM,
       cells, details, pending: Object.fromEntries(this.pending), queued: this.installQueue.length, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
       reliefTiles: this.store.reliefTileCount, decks: this.ready ? this.store.surface.decks.length : 0, surfaceRevision: this.surfaceRevision,
       built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs),
