@@ -38,6 +38,12 @@ kept as its own page).
 
 Lane briefs: the prompt a leaf agent works from, written by the integrator.
 
+2026-10-29 round (from Slop New York, plan `slop-newyork-plan-20261029.md`):
+`lane-three-owns-frame`, `lane-facade-shader`, `lane-binary-extracts`,
+`lane-shadow-standins-culling`, `lane-driving-feel`,
+`lane-ground-raster-spike`, `lane-time-of-day`, all with the suffix
+`-20261029.md`. None started.
+
 2026-10-13 lanes (current round):
 `lane-gameplay-pacing`, `lane-look-consistency`, `lane-large-tier`,
 `lane-ground-data`, `lane-glb-cleanup`, `lane-bag-base-tiles`,
@@ -68,6 +74,10 @@ be archived once the integrator agrees.
 
 ### Direction, rendering and data (docs/research and docs/plans)
 
+- `research/slop-newyork-20261029.md` (2026-10-29): what mrdoob's Slop New
+  York does (shader facades, 441 KB footprints, shadow stand-ins, raster
+  ground, 120 Hz substeps, procedural audio) with file references; feeds
+  `handoffs/slop-newyork-plan-20261029.md`. Not superseded.
 - `research/amsterdam-open-sources-20261009.md` (2026-10-09): verified open
   imagery and data sources for building recipes. Still the source list.
 - `research/own-ground-20261009.md` (2026-10-09): own ground on AHN relief.

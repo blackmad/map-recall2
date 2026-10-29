@@ -39,6 +39,18 @@ an issue labelled `lane` (+ `programme`), commented with its hand-back and
 closed when merged. Inbox:
 https://github.com/blackmad/map-recall2/issues?q=is%3Aopen+label%3Aneeds-david
 
+**Slop New York round (2026-10-29, user asked for an opus plan):** six
+lane briefs from reading mrdoob's slop-newyork, plan
+`docs/handoffs/slop-newyork-plan-20261029.md`, evidence
+`docs/research/slop-newyork-20261029.md`. Order: A three owns the frame
+(revive drop-MapLibre in flag-gated steps; the 2026-10-10 branch is 2,036
+commits behind) and E driving feel first; C binary extracts and D shadow
+stand-ins / culling / loading in parallel; B shader facades for the
+ordinary ring after C; F ground raster as a spike only; G an opt-in dusk
+ride after B (user 2026-10-29: "a cute thing"). User decided 2026-10-29:
+no NPC traffic or pedestrians, no audio or music. Drop-MapLibre pace still
+open on #107. None started.
+
 **Next neighbourhood kits (user, 2026-10-26):** in order De Pijp, Oud-West (Kinkerstraat/Bilderdijkstraat), the Jordaan, Oud-Zuid, then Dapperbuurt and Indische Buurt. Use the #81 block-face kit method. No more outer-estate rounds for now.
 
 **Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
@@ -1958,6 +1970,20 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Large-recipe tier is blocked for modern ride-visible buildings (#105, 2026-10-29).**
+  - **Result:** 17 buildings drafted from the #104 ranks 1–40, 0 installed. Without `--allow-inferred` nothing passes. State note: `docs/handoffs/ride-landmarks-20261029.md`. Drafts are in that worktree's `staging/` and not committed.
+  - **Blockers, most common first:**
+    1. **Likeness judge on curtain walls.** A glass group with no spandrels has no wall material, so it reads as "wall not drawn" with glazing 1.00, while the photo counts the mullion grid as wall (0.35–0.87). Every glass front fails on this. Fixing it means measuring the model's mullion grid the same way as the photo's. That is a measurement fix, not a looser threshold, but it changes verdicts.
+    2. **Crop-to-panel pairing** (0.5 m / 5° / 60 %) misses where 3DBAG facets a front differently from the BAG wall the crop was cut for.
+    3. **Towers have no evidence above about 32 m** in the `all-walls` crops.
+    4. **Missing from the building tiles:** pands 0363100012165685 (Prins en Keizer, Vijzelstraat 66–80) and 0363100012107557 (Belastingdienst).
+    5. **The kit cannot express:** channel glass (NFTA), cantilevered slab balconies, mural fronts, and a warehouse with a modern block on top.
+  - **Crash:** KPN Teleport's measure step fails at `export-glb.ts:81`.
+  - **#104 list fixes:**
+    - De Joodse Invalide (170299) is already covered by `nieuwe-achtergracht-100-253824`.
+    - Weesperplein is the underground metro station.
+    - "DoubleTree" is OBA Centrale plus Post CS.
+
 - **Modelling strategy reset (user, 2026-10-29).**
   - **Why:** agent-per-face and per-house modelling of ordinary rows is stopped. It cost about 3 M tokens per house (#98: 50 houses for 167 M tokens; #97: 72 M tokens and no installs).
   - **The new route:**
@@ -3290,6 +3316,14 @@ Not milestones — standing obligations with live guards.
   fragments.
 - Keep `npm run check:map-recall` green (lint, Map Recall unit tests, trivia,
   postcard and neighbourhood text/story checks) alongside `check:canal`.
+- P1: Firefox Android startup GPU loss follow-ups (#106; the shader warm-up
+  spread merged 2026-10-29, see HISTORY). Unproven until Sentry stays quiet for
+  Firefox Android: the GPU death itself never reproduced headless. Open: (1) the
+  3D frame draws trees and warms shaders behind the opaque guest briefing card,
+  which is where both failures happened, so pause it while the card covers the map;
+  (2) MapLibre recompiles its own ~9-16 programs in one burst after a restore,
+  which is outside our code; (3) after a restore on the briefing, facades start
+  drawing (67-183 k triangles) although they did not before the loss.
 - P0: Real-device pass for the 2026-10-23 phone/slow-machine work (HISTORY
   "Phone memory", "Landmarks stop piling up", "Slow machines step their render
   cost down"): ride 5+ minutes on a real iPhone and a low-end Android, and on

@@ -61,10 +61,10 @@ function run(script: string, args: string[], timeoutS: number): {ok: boolean; ta
   return result;
 }
 
-/** Named routing streets within 30 m of the footprint, nearest first (at most three), for `facts.ts --street`. */
+/** Named routing streets within 30 m of the footprint, nearest first (at most three), for `facts.ts --street`. streets-routing.json paths are [lat, lng]. */
 let streetsCache: {name: string; pathsRD: [number, number][][]}[] | null = null;
 function nearbyStreets(ringRD: [number, number][]): string[] {
-  streetsCache ??= (read('public/data/extracts/amsterdam/streets-routing.json') as any[]).filter(s => s.name).map(s => ({name: s.name, pathsRD: (s.paths ?? [s.path]).map((p: [number, number][]) => p.map(q => { const r = lngLatToRd(q); return [r.x, r.y] as [number, number]; }))}));
+  streetsCache ??= (read('public/data/extracts/amsterdam/streets-routing.json') as any[]).filter(s => s.name).map(s => ({name: s.name, pathsRD: (s.paths ?? [s.path]).map((p: [number, number][]) => p.map(q => { const r = lngLatToRd([q[1], q[0]]); return [r.x, r.y] as [number, number]; }))}));
   const xs = ringRD.map(p => p[0]), ys = ringRD.map(p => p[1]);
   const box = {w: Math.min(...xs) - 40, e: Math.max(...xs) + 40, s: Math.min(...ys) - 40, n: Math.max(...ys) + 40};
   const segDist = (p: [number, number], a: [number, number], b: [number, number]) => {

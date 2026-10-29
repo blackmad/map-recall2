@@ -37,6 +37,7 @@
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
 import { readGroundTile } from './heightField.js';
 import { boundingSphereOf } from '../geometryBounds.js';
+import { compileWithinBudget, precompileBudget, precompileStepDue } from '../rendererShared/compileBudget.js';
 import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type CellDetail, type GroundLayer } from './groundCell.js';
 import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
@@ -113,6 +114,11 @@ export interface OwnGroundOptions {
    * default: from the page, `groundTilesFlag()` below, 3; 1 = one mesh per layer). Display only.
    */
   tiles?: number;
+  /**
+   * New programs the ground warm-up links per frame (rendererShared/compileBudget.ts; default: from the page,
+   * `precompileBudget()`: 2 on a touch device, `Infinity` = all in the first frame on a desktop). CANAL-RECALL-7/-N.
+   */
+  precompilePerFrame?: number;
 }
 
 /**
@@ -296,7 +302,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), precompilePerFrame: precompileBudget(), ...options };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -384,7 +390,7 @@ export class OwnGround {
     this.reliefWaiting.clear();
     this.workerReady = false;
     this.gen++;
-    if (full) { this.unregister?.(); this.unregister = null; this.setBasemapHidden(false); for (const m of this.keepers) m.dispose(); this.keepers.length = 0; this.precompiled = false; }
+    if (full) { this.unregister?.(); this.unregister = null; this.setBasemapHidden(false); for (const m of this.keepers) m.dispose(); this.keepers.length = 0; this.precompiled = false; this.precompileQueue = null; }
   }
 
   /**
@@ -441,6 +447,7 @@ export class OwnGround {
   private beforeRender(zoom: number): boolean {
     this.zoom = zoom;
     if (!this.precompiled) this.precompile();
+    else if (this.precompileQueue) this.precompileStep();
     if (this.opts.transition) {
       this.blendUniform.value = this.blend.update(zoom);
       this.presenceUniform.value = presenceOf(this.blendUniform.value);
@@ -777,6 +784,8 @@ export class OwnGround {
    */
   private precompiled = false;
   private readonly keepers: any[] = [];
+  /** A touch device's warm-up still to compile (one mesh per material variant), and where it resumes. */
+  private precompileQueue: { meshes: any[]; next: number; lastStep: number | null } | null = null;
   private precompile(): void {
     const renderer = this.frame?.renderer;
     if (!renderer || typeof this.frame.compile !== 'function') return;
@@ -806,7 +815,23 @@ export class OwnGround {
       }
     }
     group.updateMatrixWorld(true);
-    this.frame.compile(group);
+    const budget = this.opts.precompilePerFrame ?? Infinity;
+    if (!(budget < Infinity)) { this.frame.compile(group); return; }
+    // Touch: a few new programs per frame instead of ~21 links in one task (the burst a Firefox Android GPU
+    // process died in, twice, CANAL-RECALL-7/-N). A cell that arrives first compiles what it needs itself.
+    this.precompileQueue = { meshes: [...group.children], next: 0, lastStep: null };
+    this.precompileStep();
+  }
+
+  private precompileStep(): void {
+    const q = this.precompileQueue, renderer = this.frame?.renderer;
+    if (!q || !renderer) return;
+    const now = performance.now();
+    if (!precompileStepDue(now, q.lastStep)) { this.host.repaint(); return; }
+    q.lastStep = now;
+    q.next = compileWithinBudget(q.meshes, q.next, this.opts.precompilePerFrame ?? Infinity, mesh => this.frame.compile(mesh), () => renderer.info?.programs?.length ?? 0);
+    if (q.next >= q.meshes.length) this.precompileQueue = null;
+    else this.host.repaint();
   }
 
   /** A clone of a base material that discards fragments over water by this cell's mask. */
