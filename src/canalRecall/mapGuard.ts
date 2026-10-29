@@ -269,11 +269,25 @@ function describeGraphics(
  */
 export const PENDING_GRAPHICS_FAILURES = '__canalRecallPendingGraphicsFailures';
 
+/** Queue for `analytics.bundle.js` (analytics/browser.ts drains it): the failure kind only, nothing else. */
+export const PENDING_ANALYTICS_GRAPHICS = '__canalRecallPendingAnalyticsGraphics';
+
+function noteAnalyticsGraphicsFailure(kind: GraphicsFailure['event']): void {
+  const root = globalThis as {
+    CanalRecallAnalytics?: { graphicsFailure?: (kind: string) => void };
+    [PENDING_ANALYTICS_GRAPHICS]?: string[];
+  };
+  const analytics = root.CanalRecallAnalytics;
+  if (typeof analytics?.graphicsFailure === 'function') analytics.graphicsFailure(kind);
+  else if ((root[PENDING_ANALYTICS_GRAPHICS] ??= []).length < 20) root[PENDING_ANALYTICS_GRAPHICS].push(kind);
+}
+
 function defaultReport(failure: GraphicsFailure): void {
   const root = globalThis as {
     canalRecallMonitoring?: { reportGraphicsFailure?: (detail: GraphicsFailure) => void };
     [PENDING_GRAPHICS_FAILURES]?: GraphicsFailure[];
   };
+  noteAnalyticsGraphicsFailure(failure.event);
   const hook = root.canalRecallMonitoring;
   if (typeof hook?.reportGraphicsFailure === 'function') {
     hook.reportGraphicsFailure(failure);

@@ -1,4 +1,10 @@
 {
   "indexes": [],
-  "fieldOverrides": []
+  "fieldOverrides": [
+    {
+      "collectionGroup": "analytics_shards",
+      "fieldPath": "c",
+      "indexes": []
+    }
+  ]
 }
