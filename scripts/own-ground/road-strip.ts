@@ -34,13 +34,16 @@ async function orthoTile(o: OrthoTiles, s: RoadSpot, px: number): Promise<Buffer
 
 async function frames(): Promise<void> {
   const before = arg('before', 'artifacts/roads/frames-before'), after = arg('after', 'artifacts/roads/frames-after'), out = arg('out', 'artifacts/roads/strip-before-after.jpg');
-  const o = new OrthoTiles(), H = 360, FW = 576, gap = 4, head = 26, W = H + 2 * FW + 2 * gap;
-  const parts: sharp.OverlayOptions[] = [{ input: label(W, 30, `orthophoto | game frame before (main 17f55eb01) | after (lane roads-lanes) · ${ORTHO_ATTRIBUTION}`, 16), left: 0, top: 0 }];
+  // --project=desktop|iphone (the frame files' prefix); --only=id,id; --title=… (the header's before/after names).
+  const project = arg('project', 'desktop'), only = arg('only', '').split(',').filter(Boolean), title = arg('title', 'game frame before (main 17f55eb01) | after (lane roads-lanes)');
+  const phone = project === 'iphone', o = new OrthoTiles(), H = phone ? 640 : 360, FW = phone ? 296 : 576, gap = 4, head = 26, W = H + 2 * FW + 2 * gap;
+  const parts: sharp.OverlayOptions[] = [{ input: label(W, 30, `${project}: orthophoto | ${title} · ${ORTHO_ATTRIBUTION}`, 16), left: 0, top: 0 }];
   let top = 30;
   for (const s of ROAD_SPOTS) {
+    if (only.length && !only.includes(s.id)) continue;
     parts.push({ input: label(W, head, `${s.id}: ${s.label}`), left: 0, top });
     top += head;
-    const f = async (dir: string) => { const p = join(dir, `desktop-${s.id}.png`); return existsSync(p) ? sharp(p).resize(FW, H, { fit: 'cover' }).png().toBuffer() : blank(FW, H); };
+    const f = async (dir: string) => { const p = join(dir, `${project}-${s.id}.png`); return existsSync(p) ? sharp(p).resize(FW, H, { fit: 'cover' }).png().toBuffer() : blank(FW, H); };
     parts.push({ input: await orthoTile(o, s, H), left: 0, top }, { input: await f(before), left: H + gap, top }, { input: await f(after), left: H + FW + 2 * gap, top });
     top += H + gap;
   }

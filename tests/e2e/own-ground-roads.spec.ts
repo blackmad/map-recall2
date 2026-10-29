@@ -1,5 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { openRoute } from './helpers';
 import { ROAD_SPOTS as DIAGNOSE_SPOTS, spotViewpoint } from '../../src/canalRecall/ownGround/roadRegressions';
 
@@ -61,6 +62,15 @@ async function boot(page: Page, viewMode = 'chase'): Promise<string[]> {
   await page.addInitScript(() => { (window as any).__canalRecallOwnGround = true; });
   // The BGT road partition is the default since 2026-10-16; ROADS=0 draws the OSM bands (before/after shots in separate directories).
   if (process.env.ROADS === '0') await page.addInitScript(() => { (window as any).__canalRecallRoads = false; });
+  // BUNDLES_DIR=<dir>: serve *.bundle.js from a local build (as ride-perf.spec.ts), so a lane shoots its source change
+  // without touching the published bundles.
+  const bundles = process.env.BUNDLES_DIR;
+  if (bundles) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+    const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
+    return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+  });
+  // ASPHALT_LUMA=<n>: draw the carriageway at that luma (gameGround asphaltLumaFlag; the step-3 options on the strip).
+  if (process.env.ASPHALT_LUMA) await page.addInitScript((l: number) => { (window as any).__canalRecallAsphaltLuma = l; }, Number(process.env.ASPHALT_LUMA));
   // COMPACT_GROUND=1|0: force the compact ground meshes on or off (compactMesh.ts; phones default on), for a like-for-like A/B.
   if (process.env.COMPACT_GROUND) await page.addInitScript((on: boolean) => { (window as any).__canalRecallCompactGround = on; }, process.env.COMPACT_GROUND === '1');
   await openRoute(page, { travelMode: 'car', viewMode, abortHeavyTiles: false, enterRacing: false });
@@ -123,7 +133,17 @@ test('roads: shots at the user spots and the deck regressions', async ({ page },
       await page.screenshot({ path: `${OUT}/${info.project.name}-${name}-top.png` });
       await page.evaluate(() => { const m = (window as any).canalRecallGame.vectorMap.map; m.jumpTo = (m as any).__chaseJump; });
     }
-    report[name] = { place, cells: s.cells, triangles: s.triangles, geometryMB: s.geometryMB, errors: s.errors };
+    // Ground pixels per metre (device px) at the spot's junction centre, across and along the view (lane
+    // road-look-continuity 2026-10-29: the kerb edge must be >= 1.5 px on the phone frame).
+    const spot = DIAGNOSE_SPOTS.find(q => q.id === name);
+    const ppm = await page.evaluate(({ at, bearing }) => {
+      const m = (window as any).canalRecallGame.vectorMap.map, dpr = window.devicePixelRatio || 1;
+      const [lng, lat] = at, k = 1 / (111320 * Math.cos(lat * Math.PI / 180)), b = bearing * Math.PI / 180;
+      const p0 = m.project([lng, lat]), off = (e: number, n: number) => m.project([lng + e * k, lat + n / 111320]);
+      const d = (q: { x: number; y: number }) => Math.hypot(q.x - p0.x, q.y - p0.y) * dpr;
+      return { across: +d(off(Math.cos(b), -Math.sin(b))).toFixed(2), along: +d(off(Math.sin(b), Math.cos(b))).toFixed(2), zoom: +m.getZoom().toFixed(2), pitch: +m.getPitch().toFixed(1), screen: [Math.round(p0.x * dpr), Math.round(p0.y * dpr)] };
+    }, { at: spot ? spot.at : [place.lng, place.lat], bearing: place.bearing });
+    report[name] = { place, ppm, cells: s.cells, triangles: s.triangles, geometryMB: s.geometryMB, errors: s.errors };
     expect(s.errors, `${name}: ${JSON.stringify(s.errors)}`).toEqual([]);
   }
   writeFileSync(`${OUT}/${info.project.name}-roads.json`, JSON.stringify(report, null, 2));
