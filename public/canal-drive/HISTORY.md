@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+**Oud-West kit, Kinkerstraat first (2026-10-29, #98).** Five Kinkerstraat faces are installed, 50 pands: 1–29, 2–30, 56–84, 206–242 and 376–380. Their stripOverDrawn runs from 0.71 to 1.11.
+
+- **Main fix: roofs.** A 70° slate attic band stood over every cornice; the photos show only dormers against the sky. The rows now have a low front attic behind the cornice.
+- **Kinkerstraat 33–47:** front-hipped saddles read from the PDOK 2024 orthophoto, red or black tile per house.
+- **Kinkerstraat 56–84** was re-stripped from 2023-01-10 at camera height 2.4 m, because the 2024 strip was blown out and cyan. stripOverDrawn went from 0.705 to 0.925.
+- **Kit additions** (typed and tested): `roof.hip: 'front'` with a per-placement roof material, `dormerBody: 'brick'` and `dormerStyle: 'arched'`.
+- **Front-panel depth:** `GROUND_FRONT_PANEL_DEPTH_M` is now 0.1, which fixes coplanar shop risers. cw-prinsen-167765 changed with it and its fit golden was re-recorded.
+- **Facings:** brick facings moved to `paletteOverrides`.
+- **`drawnWall.ts`** now reads walls drawn with a measured tint correctly.
+- **New scripts:** `face-wall-exposure.ts` and `fit-wall-palette.ts`.
+- **Evertsen held back.** Re-running `build-chunk-wall-exposure` would move the published Evertsenstraat entries from about 0.7 to about 1.0, and evertsen-152-160 from 1.12 to 2.10. That is a visible brightening of installed rows, so only the kinker rows were added and the Evertsen values stay as published (see TODO).
+- The strips are archived in source-data 86268f539.
+
+**Manual catalogue deduplicated (2026-10-29).** Union merges had left four memorials in `manualCatalogue.json` several times over: johnny-jordaan-groep ×6, theo-thijssen-standbeeld ×5, carmiggelt-borstbeeld ×4 and winkler-prins-monument ×3. Each copy was placed as its own model. Each id now has one entry, the spec's last variant, which takes the first copy's position in the list. Live manual landmark specs went from 356 to 342.
+
 **Touch GPU load under target (2026-10-29, #100, CANAL-RECALL-7).** The iPad main pass at pitch 60 dropped from 1.7–1.9 M to 1.13–1.36 M triangles; the target was ≤ 1.5 M. Desktop is unchanged: same ground triangles, same meshes and the same 1,400 m ring.
 
 - **Residency ring sized to the screen** (`residency.ts`, touch only). The farthest ground on screen is computed from the screen corners: 464 m on the iPad, which matches the measurement. The ring is that distance plus 25 m, rounded up to 100 m steps, plus 4 s of travel ahead (at most 400 m). That made the iPad ring 500 m instead of 800 m, with 3–4 cells loaded instead of 6–7. In a cap-speed ride at 117 m/s, missing ground at the screen edge fell from 65 samples to 4 out of 8,505. Override with `?groundRing=steps|view`.

@@ -1939,6 +1939,24 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Oud-West kit, next (#98, 2026-10-29).**
+  - **Corner ownership:** kinker-49-63 and kinker-86-110 pass, but their corner pands (133467, 233580) belong to the installed faces face-bilder-133467-159649 and face-bilder-233580-162444. Installing would drop 153782, 159649 and 162444, so decide which face owns each corner first.
+  - **kinker-31-49:** opening-outside on 47's shop. Its front is turned 0.4° from the row, and the audit's wall clustering puts it 3.5 cm off the plane.
+  - **kinker-112-116:** needs a stepped parapet and its raised blocks.
+  - **kinker-142-178:** balcony side rails near the party walls.
+  - **Still failing gates or audit:** 65–87, 120–138, 186–202, 334–374 and 386–390. Intake fails on 244–332.
+  - **Not started:** Bilderdijkstraat (installed faces at 0.46–0.58 stripOverDrawn, so too dark), Overtoom, Jan Pieter Heijestraat, Ten Katestraat, Bellamy.
+  - **The kit cannot yet say:**
+    - sunburst voussoirs
+    - scrolled or fluted dormer cheeks
+    - glazed green roof tiles
+    - alternating segmental and round heads by storey
+    - pointed-gable attic lights
+    - penthouse blocks
+    - frieze consoles
+    - the tower dormers on Kinkerstraat 208–210
+- **Evertsen wall exposure (2026-10-29).** With the `drawnWall` fix, a rerun gives the evertsen-* faces about 1.0 instead of 0.67–0.75, and evertsen-152-160 2.10 instead of 1.12. Before accepting it, compare an in-game screenshot with the strip on Eerste Van Swindenstraat and Evertsenstraat.
+
 - **GPU load, next (#100 follow-up, 2026-10-29).**
   - Turn ground tiles on for desktop by default (`groundTiles=3`; the trial showed the same picture at 56–74 % fewer ground triangles).
   - Facade chunks (600–800 k on the iPad) are now the largest participant; try the same culled-tile split there.

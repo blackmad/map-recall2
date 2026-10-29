@@ -3,6 +3,11 @@
  "notes": [
   {
    "date": "2026-10-29",
+   "title": "Kinkerstraat rows",
+   "text": "Fifty Kinkerstraat houses in Oud-West are now drawn from their street photos: brick and painted fronts, white bands, shopfronts, and the dormer roofline behind the cornice, including arched and brick wall dormers."
+  },
+  {
+   "date": "2026-10-29",
    "title": "Lighter on iPads and phones",
    "text": "Phones and tablets now load only the ground they can actually see and skip what is off screen. That cuts about a third of the GPU work, so the map should crash less often on iPad and iPhone."
   },
