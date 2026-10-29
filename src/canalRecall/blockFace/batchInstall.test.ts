@@ -57,3 +57,9 @@ test('front palette facings move to the house palette (Kinkerstraat 65-87 door/b
   assert.deepEqual(intent.houses[1].type, {paletteOverrides: {brick: '#74705e', wallTint: 'measured', band: '#7a4a30'}});
   assert.deepEqual(intent.houses[2].type, {overrides: {bays: 2}});
 });
+
+test('library year prefilter', async () => {
+  const {libraryYearMatches} = await import('./batchInstall.ts');
+  const types = [{match: {years: [1893, 1893] as [number, number]}}, {match: {years: [1909, 1912] as [number, number], yearSlack: 0}}, {}];
+  assert.equal(libraryYearMatches([1895, 1896, 1913, 1908, null, 1910], types), 2);
+});

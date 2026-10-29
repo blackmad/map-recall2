@@ -41,7 +41,7 @@ import {houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/i
 import {fileTypeLoader} from '../../src/canalRecall/blockFace/typeLibrary.ts';
 import {toHex} from '../../src/canalRecall/blockFace/wallColour.ts';
 import {spanQuality, stripQuality, type StripQualityVerdict} from '../../src/canalRecall/blockFace/stripQuality.ts';
-import {BATCH_GATES, coveredElsewhere, facingsToHousePalette, installVerdict, restripDates, sampleShare, trimShared} from '../../src/canalRecall/blockFace/batchInstall.ts';
+import {BATCH_GATES, coveredElsewhere, facingsToHousePalette, libraryYearMatches, installVerdict, restripDates, sampleShare, trimShared} from '../../src/canalRecall/blockFace/batchInstall.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const flag = (n: string) => process.argv.includes(`--${n}`);
@@ -246,6 +246,7 @@ async function main() {
   let faces: {id: string; street: string; members: string[]; seed?: string}[] = doc
     ? doc.faces.filter((f: any) => !f.covered && f.members.length >= 2).map((f: any) => ({id: f.id, street: f.street, members: f.members, seed: f.seed}))
     : await Promise.all(arg('faces')!.split(',').map(async id => { const d = await readJson(path.join(FACES, id, 'discovery.json')); return {id, street: d.street, members: d.members}; }));
+  const library: {match?: {years: [number, number]; yearSlack?: number}}[] = district ? await Promise.all((await fs.readdir(path.join('scripts/block-face/types', district))).filter(f => f.endsWith('.json')).map(f => readJson(path.join('scripts/block-face/types', district, f)))) : [];
   const rideArg = process.argv.find(a => a.startsWith('--ride'));
   const ride = rideArg ? await rideScores(name, [...new Set(faces.flatMap(f => f.members))], Number(arg('ride') ?? 300)) : null;
   const faceRide = (f: {members: string[]}) => ride ? f.members.reduce((a, p) => a + (ride.get(p) ?? 0), 0) : null;
@@ -272,6 +273,12 @@ async function main() {
     if (flag('intake-only') && existsSync(path.join(FACES, f.id, 'strip.json')) && existsSync(path.join(STAGING, f.id, 'strip.jpg'))) continue;
     if (manifest0.chunks.some((c: any) => c.id === `chunk-face-${f.id}` || c.id.startsWith(`chunk-face-${f.id}-r`) || c.id === `chunk-face-${f.id}-t`)) { rows.push({...base, run: f.id, pands: f.members.length, mode: 'authored', stripDate: null, status: 'skipped', reasons: ['already-installed'], seconds: 0} as Row); await save(); continue; }
     console.log(`\n== ${f.id} (${f.street}, ${f.members.length} pands${base.ride !== null ? `, ride ${base.ride}` : ''})`);
+    // 0. A face the library cannot place (build years) is logged before any panorama fetch.
+    const ownIntent = path.join(FACES, f.id, 'intent.json');
+    if (doc && district && (!existsSync(ownIntent) || String((await readJson(ownIntent)).authoring?.author ?? '').startsWith('auto-place'))) {
+      const years = f.members.map(id => doc.pands.find((p: any) => p.pandId === id)?.builtYear ?? null);
+      if (libraryYearMatches(years, library) < 2) { fail(f.id, 'auto-place', [`no-type: no library year (built ${[...new Set(years)].sort().join('/')}; ${district} types ${library.map(t => t.match?.years.join('-')).join(', ')})`]); await save(); continue; }
+    }
     // 1. Intake / strip.
     try {
       if (!existsSync(path.join(FACES, f.id, 'strip.json'))) {

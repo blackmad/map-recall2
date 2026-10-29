@@ -111,3 +111,12 @@ export function facingsToHousePalette(intent: {houses: {pandId: string; type?: {
   }
   return changed;
 }
+
+/**
+ * Pands whose build year some library type admits (autoPlace.ts scoreType's year veto, `yearSlack` included). A face
+ * with fewer than two such pands cannot place a run, so the batch logs it without re-taking its strip (Helmersbuurt
+ * Oost: Overtoom, Huygensstraat and Nassaukade fronts outside the 1893-1912 library cost a panorama fetch each).
+ */
+export function libraryYearMatches(years: readonly (number | null)[], types: readonly {match?: {years: readonly [number, number]; yearSlack?: number}}[], defaultSlack = 2): number {
+  return years.filter(y => y !== null && types.some(t => t.match && y >= t.match.years[0] - (t.match.yearSlack ?? defaultSlack) && y <= t.match.years[1] + (t.match.yearSlack ?? defaultSlack))).length;
+}
