@@ -11,11 +11,12 @@ rules a review turn applies. Update the numbers with each integration.
 | Acceptance re-run on the new kit (#45) | 28 | 3 | 0 (gate refused all three on street walls) |
 | Ride-visible top 40 (#105, Opus hand passes) | 17 | 0 | 0 |
 | Skill self-test, triage-selected punched/ribbon fronts (2026-10-29) | 9 | 1 | 1 (Molenwerf 1; 5 holds on gates, 3 on kit gaps, 1 no-evidence) |
+| Round 2, the remaining 20 triage-buildable pands (2026-10-29) | 19 | 1 | 1 (pand 094874; 1 fix spent and held, 17 holds: 9 sheds/retail fronts triage should have filtered, 5 gates, 3 kit gaps) |
 
-| Installed large recipes (all time) | 117 |
+| Installed large recipes (all time) | 118 |
 |---|---|
 | Likeness pass on every street group | 7 |
-| Installed with `--allow-inferred` notes | 96 |
+| Installed with `--allow-inferred` notes | 97 |
 | Gates only (pre-gate installs) | 14 |
 
 Reading: the tier installs almost nothing under "every street group must
@@ -38,8 +39,12 @@ from the crop by `measure.ts`.
    on its spandrels or grid colour, and found the FAILs are real: the
    photo's 13 to 30 % "wall" is floor bands 0.5 to 1.5 m tall at the storey
    lines, which the kit's spandrel-less curtain system cannot draw (model
-   glazing 0.97 to 0.99 against the photo's 0.70 to 0.87). A kit lane for
-   floor bands is the unlock, not a judge change.
+   glazing 0.97 to 0.99 against the photo's 0.70 to 0.87). Lane #116 added
+   `walls[].floorBands` (measured by `measure.ts` for spandrel-less curtain
+   groups): Apollo walls[5] now PASSes and walls[3] WARNs. NFTA, Politie
+   NZV, Stadsloket West and Rietveld stay FAIL for other reasons (storey
+   count, dark spandrels the mask cannot separate, a blank crop, wall
+   runs), so curtain fronts remain a per-house judgement, not a batch.
 2. **Towers.** Crops stop at 32 m (`rectify.ts wallHeight`,
    `Math.min(..., 32)`), so upper storeys never have evidence.
 3. **Curved and stepped fronts.** Crops pair to single 3DBAG facets
@@ -52,7 +57,13 @@ from the crop by `measure.ts`.
    balconies and ribbon parapets, mural fronts, metal rib and louvre
    cladding, sawtooth and folded roofs, a warehouse with a modern block on
    top where the BAG footprint differs from the LoD2.2 shell.
-6. **Identity noise in ranked lists.** Name merges (one office drawn by
+6. **Triage over-admits sheds and retail fronts.** Round 2 showed that an
+   unresolved wall family (dark, neutral, no brick courses) on a wide street
+   wall is usually paint or metal cladding, and that balcony bands, shopfront
+   ribbons and open parking decks pass the punched/ribbon filter. Nine of
+   twenty "buildable" pands were these. Until triage learns them, expect the
+   first strip of a batch to carry them and hold them cheaply.
+7. **Identity noise in ranked lists.** Name merges (one office drawn by
    four OSM parts), underground stations, twin BAG registrations of a
    modelled building, pands missing from the tiles. Triage removes these
    before any draft.
@@ -63,7 +74,7 @@ from the crop by `measure.ts`.
 |---|---|---|
 | punched / columns, brick or stone family | yes | buildable; roughly 1 in 3 passes on first compile, more after one `fix` |
 | ribbon | yes | buildable; watch `rowMismatch` (ribbon one side, punched the other) |
-| curtain | any | `kit-gap` until the kit draws floor bands (see blocker 1) |
+| curtain | any | one at a time, with `floorBands` measured; most still fail on the photo side (blocker 1) |
 | blank, mural, cladding | any | `kit-gap` |
 | any | no | `no-evidence` |
 | any, over 32 m | any | `kit-gap` (crop cap) until parametrised |
