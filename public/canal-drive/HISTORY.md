@@ -1,5 +1,7 @@
 # Canal Recall — what is built
 
+**Landmark factory street fix (2026-10-29, #105).** `factory.ts` `nearbyStreets` read the `streets-routing.json` paths as [lng, lat] when they are [lat, lng]. Every factory draft so far therefore had no named streets, and the likeness gate treated every non-blank wall group as street-facing. The #105 run installed nothing; its blockers are in TODO. Its crops are archived in source-data 4be52dd2a.
+
 **Phones follow the street; the camera stops yawing at every wobble
 (2026-10-29).** User: the mobile steering was "not fun to use and kind of
 nauseating". Two causes in code: the chase camera eased toward the bike's

@@ -1965,6 +1965,20 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Large-recipe tier is blocked for modern ride-visible buildings (#105, 2026-10-29).**
+  - **Result:** 17 buildings drafted from the #104 ranks 1–40, 0 installed. Without `--allow-inferred` nothing passes. State note: `docs/handoffs/ride-landmarks-20261029.md`. Drafts are in that worktree's `staging/` and not committed.
+  - **Blockers, most common first:**
+    1. **Likeness judge on curtain walls.** A glass group with no spandrels has no wall material, so it reads as "wall not drawn" with glazing 1.00, while the photo counts the mullion grid as wall (0.35–0.87). Every glass front fails on this. Fixing it means measuring the model's mullion grid the same way as the photo's. That is a measurement fix, not a looser threshold, but it changes verdicts.
+    2. **Crop-to-panel pairing** (0.5 m / 5° / 60 %) misses where 3DBAG facets a front differently from the BAG wall the crop was cut for.
+    3. **Towers have no evidence above about 32 m** in the `all-walls` crops.
+    4. **Missing from the building tiles:** pands 0363100012165685 (Prins en Keizer, Vijzelstraat 66–80) and 0363100012107557 (Belastingdienst).
+    5. **The kit cannot express:** channel glass (NFTA), cantilevered slab balconies, mural fronts, and a warehouse with a modern block on top.
+  - **Crash:** KPN Teleport's measure step fails at `export-glb.ts:81`.
+  - **#104 list fixes:**
+    - De Joodse Invalide (170299) is already covered by `nieuwe-achtergracht-100-253824`.
+    - Weesperplein is the underground metro station.
+    - "DoubleTree" is OBA Centrale plus Post CS.
+
 - **Modelling strategy reset (user, 2026-10-29).**
   - **Why:** agent-per-face and per-house modelling of ordinary rows is stopped. It cost about 3 M tokens per house (#98: 50 houses for 167 M tokens; #97: 72 M tokens and no installs).
   - **The new route:**
