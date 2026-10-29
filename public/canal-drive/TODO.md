@@ -39,6 +39,17 @@ an issue labelled `lane` (+ `programme`), commented with its hand-back and
 closed when merged. Inbox:
 https://github.com/blackmad/map-recall2/issues?q=is%3Aopen+label%3Aneeds-david
 
+**Slop New York round (2026-10-29, user asked for an opus plan):** six
+lane briefs from reading mrdoob's slop-newyork, plan
+`docs/handoffs/slop-newyork-plan-20261029.md`, evidence
+`docs/research/slop-newyork-20261029.md`. Order: A three owns the frame
+(revive drop-MapLibre in flag-gated steps; the 2026-10-10 branch is 2,036
+commits behind) and E driving feel first; C binary extracts and D shadow
+stand-ins / culling / loading in parallel; B shader facades for the
+ordinary ring after C; F ground raster as a spike only. Product questions
+(NPC traffic, time of day, bike audio, drop-MapLibre pace) are on the
+needs-david issue. None started.
+
 **Next neighbourhood kits (user, 2026-10-26):** in order De Pijp, Oud-West (Kinkerstraat/Bilderdijkstraat), the Jordaan, Oud-Zuid, then Dapperbuurt and Indische Buurt. Use the #81 block-face kit method. No more outer-estate rounds for now.
 
 **Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
