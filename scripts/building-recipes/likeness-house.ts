@@ -11,7 +11,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import type {CompiledLargeBuilding} from '../../src/canalRecall/buildingRecipe/largeCompile.ts';
 import {panelEaves} from '../../src/canalRecall/buildingRecipe/fitLarge.ts';
-import {CROP_MIN_OVERLAP, cropStreetShiftM, cropsOfWallsJson, panelCoverageStraight, type CropMatch, type CropWall} from '../../src/canalRecall/buildingRecipe/cropToPanel.ts';
+import {CROP_MIN_OVERLAP, cropStreetShiftM, cropsOfWallsJson, groupPlaneCoverage, type CropMatch, type CropWall} from '../../src/canalRecall/buildingRecipe/cropToPanel.ts';
 import {insidePanel} from '../../src/canalRecall/blockBuilding/panels.ts';
 import {measureFacade, MASK, type FacadeBox, type FacadeImage, type FacadeMeasurement} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import {closeCameraSpan, compareLikeness, LIKENESS, modelElevation, PAD_M, type LikenessResult, type ModelElevation} from '../../src/canalRecall/buildingRecipe/likeness.ts';
@@ -22,7 +22,9 @@ import {pandWallsDir, sha256Of, sourceDataRoot, sourceRef} from './sourceData.ts
 export interface GroupLikeness {
   group: number; panel: number; status: 'measured' | 'no-photo';
   /** the crop covering most of the panel, and every piece of the mosaic (cropToPanel `panelCoverage`) */
-  crop?: CropWall & {ref: string}; match?: CropMatch; pieces?: {tag: string; ref: string; sha256?: string; capturedAt?: string; u0: number; u1: number; streetShiftM?: number}[]; coverage?: number;
+  crop?: CropWall & {ref: string}; match?: CropMatch;
+  /** the crop paired with the group's merged plane, not the main panel itself (cropToPanel `groupPlaneCoverage`) */
+  pairedVia?: 'group-plane'; pieces?: {tag: string; ref: string; sha256?: string; capturedAt?: string; u0: number; u1: number; streetShiftM?: number}[]; coverage?: number;
   box?: FacadeBox; photo?: FacadeMeasurement; model?: ModelElevation; likeness?: LikenessResult;
   /** the photo mosaic (RGB) on the model's box after the best shift, for the sheet */
   photoRgb?: {data: Buffer; width: number; height: number};
@@ -66,7 +68,8 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
     // a blank system under cladding (a metal-clad hall) is a facade the photo judges (GitHub #49)
     if (g.mainPanel === null || (g.system === 'blank' && !g.cladding)) continue;
     const p = built.panels[g.mainPanel];
-    const {pieces, coverage} = panelCoverageStraight(crops, p, built.anchorRD, LIKENESS.maxObliquityDeg);
+    // the main panel's crops, else those on the group's merged plane (a curved or stepped front faceted by 3DBAG, GitHub #114)
+    const {pieces, coverage, via} = groupPlaneCoverage(crops, p, built.panels.filter(q => built.recipe.panelGroup[q.index] === g.index), built.anchorRD, LIKENESS.maxObliquityDeg);
     if (coverage < CROP_MIN_OVERLAP || !pieces.length) { out.push({group: g.index, panel: p.index, status: 'no-photo', coverage}); continue; }
     // Mosaic in panel metres (u from uMin - pad, v from the ground), each column from its piece's crop.
     const box: FacadeBox = {u0: p.uMin, u1: p.uMax, v0: Math.max(0, p.vMin), v1: panelEaves(p)};
@@ -92,7 +95,7 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
     const photoBox: FacadeBox = {u0: 0, u1: W, v0: box.v0 - PAD_M, v1: topM};
     const inside = (u: number, v: number) => insidePanel(p, [u + box.u0 - PAD_M, v]);
     const photo = measureFacade({image, box: photoBox, lines: g.lines, inside});
-    const model = modelElevation(soup, p, box, g.lines, 0.1, measuredTints, g.loggiaDepthM !== undefined ? g.loggiaDepthM + 0.1 : undefined);
+    const model = modelElevation(soup, p, box, g.lines, 0.1, measuredTints, g.loggiaDepthM !== undefined ? g.loggiaDepthM + 0.1 : undefined, g.system);
     const main = [...pieces].sort((a, b) => (b.u1 - b.u0) - (a.u1 - a.u0))[0];
     const replay = {soup, panel: p, measuredTints, obliquityDeg: Math.max(...pieces.map(q => q.crop.obliquityDeg ?? 0)), cameraDistM: Math.min(...pieces.map(q => q.crop.cameraDistM ?? 99)),
       ...(pieces.length > 1 ? {cameraSpanM: closeCameraSpan(pieces)} : {})};
@@ -103,7 +106,7 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
     const photoRgb = wpx > 4 && hpx > 4 ? {data: await sharp(Buffer.from(rgb), {raw: {width, height, channels: 3}}).extract({left: x0, top: y0, width: wpx, height: hpx}).raw().toBuffer(), width: wpx, height: hpx} : undefined;
     const bays = photo.pitchM ? Math.max(1, Math.round((box.u1 - box.u0) / photo.pitchM)) : null;
     const toPanel = (f: number) => r3(Math.max(0, Math.min(1, (box.u0 - PAD_M + f * W - p.uMin) / Math.max(1e-6, p.uMax - p.uMin))));
-    out.push({group: g.index, panel: p.index, status: 'measured', crop: {...main.crop, ref: sourceRef(pand, main.crop.file)}, match: main.match, coverage,
+    out.push({group: g.index, panel: p.index, status: 'measured', crop: {...main.crop, ref: sourceRef(pand, main.crop.file)}, match: main.match, coverage, ...(via === 'group' ? {pairedVia: 'group-plane' as const} : {}),
       pieces: pieces.map(q => ({tag: q.crop.tag, ref: sourceRef(pand, q.crop.file), sha256: q.crop.sha256, capturedAt: q.crop.capturedAt, u0: r3(q.u0 - p.uMin), u1: r3(q.u1 - p.uMin),
         ...(cropStreetShiftM(q.crop, sharedTerrain()) ? {streetShiftM: cropStreetShiftM(q.crop, sharedTerrain())} : {})})),
       box, photo, model, likeness, photoRgb, photoImage: {image, box: photoBox, lines: g.lines, inside}, replay,

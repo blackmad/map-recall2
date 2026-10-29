@@ -36,7 +36,7 @@ from the crop by `measure.ts`.
 1. **Glass curtain fronts.** The judge takes the model's wall as its modal
    wall-slot material; a curtain group has none, so it reads "wall not
    drawn, glazing 1.00", while the photo counts the mullion grid as wall
-   (0.35 to 0.87). Every glass front fails on this. Fix proposed on #112.
+   (0.35 to 0.87). Every glass front fails on this. Fix in lane #114.
 2. **Towers.** Crops stop at 32 m (`rectify.ts wallHeight`,
    `Math.min(..., 32)`), so upper storeys never have evidence.
 3. **Curved and stepped fronts.** Crops pair to single 3DBAG facets
@@ -60,7 +60,7 @@ from the crop by `measure.ts`.
 |---|---|---|
 | punched / columns, brick or stone family | yes | buildable; roughly 1 in 3 passes on first compile, more after one `fix` |
 | ribbon | yes | buildable; watch `rowMismatch` (ribbon one side, punched the other) |
-| curtain | any | `kit-gap` until #112 |
+| curtain | any | `kit-gap` until #114 lands |
 | blank, mural, cladding | any | `kit-gap` |
 | any | no | `no-evidence` |
 | any, over 32 m | any | `kit-gap` (crop cap) until parametrised |

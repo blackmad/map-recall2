@@ -29,7 +29,9 @@ interface GroupMeta {
   house: string; group: number; panel: number; system: string; street: boolean;
   image: {width: number; height: number; ppm: number; topM: number};
   photoBox: FacadeBox; lines: number[]; panelU0: number; polys: unknown;
-  model: {cols: number; rows: number; cell: number; box: FacadeBox; wall: Rgb | null; wallToday: Rgb | null; glass: Rgb | null; wallSlot: string | null};
+  model: {cols: number; rows: number; cell: number; box: FacadeBox; wall: Rgb | null; wallToday: Rgb | null; glass: Rgb | null; wallSlot: string | null; system?: string;
+    /** the curtain reading (likeness.ts `curtainReading`); its mask follows the colours in the .bin */
+    curtain?: {wall: Rgb; wallToday: Rgb; wallSlot: string; mullion: Rgb}};
   obliquityDeg: number; cameraDistM: number; cameraSpanM?: number;
 }
 
@@ -57,11 +59,12 @@ async function dump(dir: string) {
       const {image, box: photoBox, lines} = g.photoImage, m: ModelElevation = g.model, p = built.panels[g.panel];
       const meta: GroupMeta = {house: id, group: g.group, panel: g.panel, system: intent.walls[g.group].system, street: facing.has(g.group),
         image: {width: image.width, height: image.height, ppm: image.ppm, topM: image.topM}, photoBox, lines, panelU0: g.box!.u0 - PAD_M, polys: p.polys,
-        model: {cols: m.cols, rows: m.rows, cell: m.cell, box: m.box, wall: m.wall, wallToday: m.wallToday, glass: m.glass, wallSlot: m.wallSlot},
+        model: {cols: m.cols, rows: m.rows, cell: m.cell, box: m.box, wall: m.wall, wallToday: m.wallToday, glass: m.glass, wallSlot: m.wallSlot,
+          ...(m.system !== undefined ? {system: m.system} : {}), ...(m.curtain ? {curtain: {wall: m.curtain.wall, wallToday: m.curtain.wallToday, wallSlot: m.curtain.wallSlot, mullion: m.curtain.mullion}} : {})},
         obliquityDeg: g.replay.obliquityDeg, cameraDistM: g.replay.cameraDistM, ...(g.replay.cameraSpanM !== undefined ? {cameraSpanM: g.replay.cameraSpanM} : {})};
       const base = path.join(dir, `${id}.g${g.group}`);
       fs.writeFileSync(base + '.json', JSON.stringify(meta));
-      fs.writeFileSync(base + '.bin', zlib.gzipSync(Buffer.concat([Buffer.from(image.rgb), Buffer.from(image.valid ?? new Uint8Array(image.width * image.height).fill(255)), Buffer.from(m.mask), Buffer.from(m.colours)]), {level: 1}));
+      fs.writeFileSync(base + '.bin', zlib.gzipSync(Buffer.concat([Buffer.from(image.rgb), Buffer.from(image.valid ?? new Uint8Array(image.width * image.height).fill(255)), Buffer.from(m.mask), Buffer.from(m.colours), ...(m.curtain ? [Buffer.from(m.curtain.mask)] : [])]), {level: 1}));
       n++;
     }
     console.log(`${id}: ${n} groups`);
@@ -77,7 +80,10 @@ export function replayGroup(meta: GroupMeta, bin: Buffer) {
   const inside = (u: number, v: number) => insidePanel(panel, [u + meta.panelU0, v]);
   const photo = measureFacade({image: {...meta.image, rgb, valid}, box: meta.photoBox, lines: meta.lines, inside});
   const grid = analyseMask({mask, cols: meta.model.cols, rows: meta.model.rows, cell: meta.model.cell, box: meta.model.box, lines: meta.lines});
-  const model: ModelElevation = {...meta.model, mask, colours, grid};
+  const {curtain: cm, ...rest} = meta.model;
+  const cmask = cm ? new Uint8Array(bin.subarray(P * 4 + M * 4, P * 4 + M * 5)) : null;
+  const curtain = cm && cmask ? {...cm, mask: cmask, grid: analyseMask({mask: cmask, cols: meta.model.cols, rows: meta.model.rows, cell: meta.model.cell, box: meta.model.box, lines: meta.lines})} : undefined;
+  const model: ModelElevation = {...rest, mask, colours, grid, ...(curtain ? {curtain} : {})};
   const likeness = compareLikeness({photo, padCells: Math.round(PAD_M / photo.cell), model, lines: meta.lines, obliquityDeg: meta.obliquityDeg, cameraDistM: meta.cameraDistM, cameraSpanM: meta.cameraSpanM});
   return {photo, model, likeness};
 }
