@@ -1,80 +1,93 @@
 {
-  "schemaVersion": 1,
-  "kind": "house-type",
-  "id": "kinker-1900-stucco-front",
-  "district": "oud-west",
-  "description": "Painted/plastered fronts (244-332: 268-264; 1897-1898): a grey or white painted wall over the brick, 3 axes, flat-headed sash windows in moulded surrounds, a plain parapet cornice, pediment dormers; shop ground",
-  "fit": {
-    "widthM": [
-      4.0,
-      6.0
-    ],
-    "storeys": [
-      4
-    ]
-  },
-  "body": {
-    "storeys": 4,
-    "bays": 3,
-    "cornice": "simple",
-    "windows": "t-window",
-    "windowSurround": "stone-lintel"
-  },
-  "crowns": {
-    "pediment-dormer": {
-      "gable": "cornice",
-      "dormers": 1,
-      "dormerStyle": "pediment",
-      "note": "244-332 pands 21-23: pedimented dormers"
-    }
-  },
-  "palettes": {
-    "grey-painted": {
-      "brick": "#777b74",
-      "frame": "#a1aba0",
-      "door": "black",
-      "stone": "#a3a89c",
-      "cornice": "#5d6259",
-      "wallMaterial": "stucco"
-    }
-  },
-  "roof": {
-    "material": "slate"
-  },
-  "rhythm": {
-    "bays": "3 window axes",
-    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
-    "symmetry": "symmetric above the ground",
-    "groundFloor": "shop per house",
-    "signage": "per house",
-    "roofline": "plain parapet cornice; pediment dormers",
-    "photoRows": [
-      1,
-      3,
-      3,
-      3
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0,
-    "schemaLimits": [
-      "moulded window architraves in the paint are drawn as stone lintels and sills"
-    ]
-  },
-  "evidence": [
-    {
-      "face": "kinker-244-332",
-      "pands": [
-        "153531",
-        "156893",
-        "236219"
-      ],
-      "citation": "strip.jpg 2024-12-11 pands 21-23: grey/white painted fronts between brick neighbours (wall median #777b74)"
-    }
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "kinker-1900-stucco-front",
+ "district": "oud-west",
+ "description": "Painted/plastered fronts (244-332: 268-264; 1897-1898): a grey or white painted wall over the brick, 3 axes, flat-headed sash windows in moulded surrounds, a plain parapet cornice, pediment dormers; shop ground",
+ "fit": {
+  "widthM": [
+   4.0,
+   6.0
   ],
-  "schemaLimits": [
-    "painted architraves"
-  ],
-  "notes": [
-    "Few on Kinkerstraat (3 exemplars); the plan expected more. Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json)."
+  "storeys": [
+   4
   ]
+ },
+ "match": {
+  "years": [
+   1895,
+   1900
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   12.8,
+   15.7
+  ],
+  "stucco": true,
+  "note": "Kinkerstraat 264-268 (1897-98, kinker-244-332): painted/plastered fronts"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "cornice": "simple",
+  "windows": "t-window",
+  "windowSurround": "stone-lintel"
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "note": "244-332 pands 21-23: pedimented dormers"
+  }
+ },
+ "palettes": {
+  "grey-painted": {
+   "brick": "#777b74",
+   "frame": "#a1aba0",
+   "door": "black",
+   "stone": "#a3a89c",
+   "cornice": "#5d6259",
+   "wallMaterial": "stucco"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 window axes",
+  "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "shop per house",
+  "signage": "per house",
+  "roofline": "plain parapet cornice; pediment dormers",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "moulded window architraves in the paint are drawn as stone lintels and sills"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "kinker-244-332",
+   "pands": [
+    "153531",
+    "156893",
+    "236219"
+   ],
+   "citation": "strip.jpg 2024-12-11 pands 21-23: grey/white painted fronts between brick neighbours (wall median #777b74)"
+  }
+ ],
+ "schemaLimits": [
+  "painted architraves"
+ ],
+ "notes": [
+  "Few on Kinkerstraat (3 exemplars); the plan expected more. Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json)."
+ ]
 }

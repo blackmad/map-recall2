@@ -1,0 +1,173 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "pijp-1879-five-low",
+ "district": "de-pijp",
+ "description": "Frans Halsbuurt 1877-1881 (Eerste Jacob van Campenstraat, Saenredamstraat, Quellijnstraat, Govert Flinckstraat west): 4-7 m fronts of a ground storey and four low upper storeys (2.3-2.4 m) of dark red-brown brick under a thin white cornice at about 13 m; two axes on fronts under 4.9 m, three above; white T-windows under segmental brick heads with a small white keystone; white sills; one white pediment or pointed dormer with a hoist beam over the middle",
+ "fit": {
+  "widthM": [
+   3.8,
+   7.0
+  ],
+  "storeys": [
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1877,
+   1880
+  ],
+  "yearSlack": 0,
+  "frontEavesM": 13.0,
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 4.9,
+    "bays": 2
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "Stalpertstraat 38-70 (1878-79), Saenredamstraat 1-37 and 26-56 (1878-80), Quellijnstraat 35-61 (1879): cornice 12.8-13.2 m on the 2016-2023 strips; 3DBAG 5 bouwlagen, eaves 12.3-14.5 m (the dormers); the strip skyline reads the dormer at 14.5-16 m (frontSkylineM)",
+  "frontSkylineM": 15.2,
+  "mirrorForDoor": "left"
+ },
+ "body": {
+  "storeys": 5,
+  "bays": 3,
+  "storeyHeights": [
+   3.5,
+   2.4,
+   2.4,
+   2.35,
+   2.35
+  ],
+  "windows": "t-window",
+  "windowSurround": "sill",
+  "windowHead": {
+   "kind": "segmental",
+   "archRing": {
+    "colour": "band",
+    "style": "solid",
+    "widthCourses": 2,
+    "keystone": true
+   }
+  },
+  "windowHeights": [
+   0.6,
+   0.65,
+   0.62,
+   0.58,
+   0.52
+  ],
+  "headLines": [
+   0.85,
+   0.9,
+   0.9,
+   0.87,
+   0.78
+  ],
+  "windowShare": 0.55,
+  "cornice": "simple"
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.36,
+     "to": 0.64
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.15,
+    "rise": 1.6,
+    "setback": 0.3
+   },
+   "dormerHoist": {
+    "reach": 0.8
+   },
+   "note": "Stalpertstraat 38-70: one white dormer about 1.6 m wide over the middle, 13.2-15.0 m, pediment or pointed cap and a hoist beam"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "house door on the left axis; a pand whose door reads on the right is mirrored (mirrorForDoor), so a two-axis front keeps a valid door bay"
+  }
+ },
+ "palettes": {
+  "dark-red-brown-1879": {
+   "brick": "#6a4a3e",
+   "frame": "white-painted",
+   "door": "#2a2a2a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "band": "#4e3128",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "2 axes under 4.9 m, else 3 equal axes",
+  "identicalBays": "every upper storey alike",
+  "windowsPerStorey": "ground: door + window or shop | 1-4: 2 or 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "house door and window, or a shop",
+  "signage": "per shop",
+  "roofline": "thin white cornice at 13 m, one dormer with a hoist beam",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the pointed (bell) dormer caps of Stalpertstraat are drawn as pediments"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "stalpert-38-70",
+   "pands": [
+    "164659",
+    "153510"
+   ],
+   "citation": "strip.jpg 2023 at 0.65x with a metre grid: ground to 3.9 m; window rows 4.1-5.7, 6.5-8.0, 8.9-10.3, 11.2-12.4 m; cornice 12.6-13.1 m; dormer 13.2-15.0 m"
+  },
+  {
+   "face": "saenredam-1-37",
+   "pands": [
+    "236169",
+    "157668"
+   ],
+   "citation": "strip.jpg: 3.9-4.2 m fronts of two axes, window rows 4.0-5.3, 6.6-8.0, 9.2-10.6, 11.5-12.5 m; cornice 12.8-13.2 m"
+  },
+  {
+   "face": "saenredam-26-56",
+   "pands": [
+    "167431"
+   ],
+   "citation": "strip.jpg: two axes, same rows, dormer with hoist to 15.2 m"
+  },
+  {
+   "face": "quellijn-35-61",
+   "pands": [
+    "161231"
+   ],
+   "citation": "strip.jpg: three axes, the same five-storey rhythm"
+  }
+ ]
+}

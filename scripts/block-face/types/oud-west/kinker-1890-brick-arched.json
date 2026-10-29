@@ -1,207 +1,220 @@
 {
-  "schemaVersion": 1,
-  "kind": "house-type",
-  "id": "kinker-1890-brick-arched",
-  "district": "oud-west",
-  "description": "Kinkerstraat 1888-1897 shop rows (18-4, 186-202, 206-210, 296-300, 338-340): red-brown brick, 2 axes per ~4 m module, segmental-arched sash windows with white blocked arch rings (springer blocks, two voussoirs, keystone), a white sill course and a white impost-block course on every upper storey, heavy cream stucco cornice with consoles; crowns: one pediment dormer with scrolled sides per module, none, a stepped corner gable, a flat-topped tower-dormer; every ground floor its own shop",
-  "fit": {
-    "widthM": [
-      3.5,
-      4.4
-    ],
-    "storeys": [
-      4
-    ]
-  },
-  "body": {
-    "storeys": 4,
-    "bays": 2,
-    "cornice": "frieze",
-    "windows": "t-window",
-    "windowHead": {
-      "kind": "segmental",
-      "archRing": {
-        "colour": "stone",
-        "style": "springers",
-        "keystone": true,
-        "springerSize": [
-          0.32,
-          0.28
-        ]
-      }
-    },
-    "windowHeights": [
-      0.7,
-      0.635,
-      0.651,
-      0.655
-    ],
-    "headLines": [
-      0.86,
-      0.94,
-      0.856,
-      0.793
-    ],
-    "windowShare": 0.55,
-    "bands": "painted",
-    "bandLines": [
-      "sill",
-      "transom"
-    ],
-    "bandHeights": {
-      "sill": 0.1,
-      "transom": 0.08
-    },
-    "bandTransomAt": 0.63
-  },
-  "crowns": {
-    "pediment-dormer": {
-      "gable": "cornice",
-      "dormers": 1,
-      "dormerStyle": "pediment",
-      "note": "one pedimented dormer with scrolled cheeks per module, centred, standing behind the cornice (2-30 pands 6-14; 206-242 pands 14-15) (#98: white painted bodies, dormerBody stone; a trim-slot body exported as a frame sunk in the low front attic and failed the opening-outside audit)",
-      "dormerBody": "stone",
-      "dormerSize": {
-        "sill": 0.4,
-        "rise": 1.3,
-        "setback": 0.3
-      }
-    },
-    "none": {
-      "gable": "cornice",
-      "note": "cornice only (2-30 pand 16, corner 161331)"
-    },
-    "step-gable": {
-      "gable": "step",
-      "crownSteps": 2,
-      "crownRise": 0.9,
-      "atticWindows": 1,
-      "crownFinial": true,
-      "note": "Kinkerstraat 2 (163325): a dark brick stepped gable over the whole front, 2 steps a side, one attic window; top ~2.6 m over the cornice line on the strip"
-    },
-    "tower": {
-      "gable": "cornice",
-      "tower": {
-        "bays": {
-          "from": 0,
-          "to": 1
-        },
-        "rise": 0.6,
-        "cap": "flat"
-      },
-      "note": "186-202 (157310, 161134): a brick dormer-tower with an arched light over both axes"
-    }
-  },
-  "palettes": {
-    "kinker-2-30": {
-      "brick": "#543f30",
-      "frame": "#a7a89d",
-      "door": "black",
-      "stone": "#eae7dc",
-      "cornice": "#bebdae",
-      "stoneMaterial": "painted"
-    },
-    "dark-brown": {
-      "brick": "#4b4639",
-      "frame": "#a0a099",
-      "door": "black",
-      "stone": "#dddad0",
-      "cornice": "#bebdae",
-      "stoneMaterial": "painted"
-    },
-    "red-brown-sunlit": {
-      "brick": "#6c5440",
-      "frame": "#b6b8a5",
-      "door": "black",
-      "stone": "#b8b9a7",
-      "cornice": "#b4b69e"
-    }
-  },
-  "roof": {
-    "material": "slate",
-    "source": "front",
-    "rise": 0.25,
-    "pitchDeg": 45,
-    "evidence": "strips 2024-11-29/2024-12-11: over the cornice only the dormers stand against the sky, no roof face shows; PDOK orthophoto 2024: flat roofs (terraces, bitumen) behind a ~1 m front slope on Kinkerstraat 1A-5, 4-20, 55-63; a low attic behind the cornice instead of the 70 degree attic storey"
-  },
-  "rhythm": {
-    "bays": "2 window axes per module (3.6-4.2 m)",
-    "identicalBays": "upper storeys: 2 equal axes, no balconies",
-    "windowsPerStorey": "ground: shop | 1: 2 | 2: 2 | 3: 2",
-    "symmetry": "symmetric about the module centre above the shop",
-    "groundFloor": "a different shop per module",
-    "signage": "per house",
-    "roofline": "heavy cream stucco cornice with consoles and a frieze; one pediment dormer per module",
-    "photoRows": [
-      1,
-      2,
-      2,
-      2
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0,
-    "schemaLimits": [
-      "the dark rubbed-brick ring between the white springers is not drawn (no band brick measured; the springers style draws no ring)",
-      "the springers are square slabs; the photo's are wedge-shaped, rising toward the arch (a V over each pier)",
-      "pediment dormer cheeks are plain (no scrolls); the frieze consoles and panels are a plain frieze",
-      "iron wall anchors between the windows (in the gap between two springers) are not drawn"
-    ]
-  },
-  "evidence": [
-    {
-      "face": "kinker-2-30",
-      "pands": [
-        "236814",
-        "236360",
-        "236379",
-        "163174",
-        "155541",
-        "236383",
-        "164188",
-        "162482",
-        "237357",
-        "163325",
-        "161331"
-      ],
-      "citation": "strip.jpg 2024-12-11 pands 6-16: identical 2-axis uppers; white sill course at each sill line and white impost blocks at the springing line measured as band rows at 5.1-5.2 / 7.15-7.28 / 7.95-8.05 / 9.97-10.07 / 10.8-10.9 / 12.85-12.95 m (162482, 236814; palette-from-strip); detect-house-types links 6-14 (kinker-2-30), cluster-street-types C14"
-    },
-    {
-      "face": "kinker-206-242",
-      "pands": [
-        "160871",
-        "159816"
-      ],
-      "citation": "strip.jpg 2024-12-11 pands 14-15: same white courses and blocked arches, 3 axes on 8 m doubles"
-    },
-    {
-      "face": "kinker-244-332",
-      "pands": [
-        "235916",
-        "236631",
-        "167053"
-      ],
-      "citation": "strip.jpg 2024-12-11 pands 10, 14-15: sill + impost courses continuous, blocked arches (zoom crops)"
-    },
-    {
-      "face": "kinker-186-202",
-      "pands": [
-        "157310",
-        "161134",
-        "159351",
-        "129253"
-      ],
-      "citation": "strip.jpg 2024-12-11 pands 1-4"
-    }
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "kinker-1890-brick-arched",
+ "district": "oud-west",
+ "description": "Kinkerstraat 1888-1897 shop rows (18-4, 186-202, 206-210, 296-300, 338-340): red-brown brick, 2 axes per ~4 m module, segmental-arched sash windows with white blocked arch rings (springer blocks, two voussoirs, keystone), a white sill course and a white impost-block course on every upper storey, heavy cream stucco cornice with consoles; crowns: one pediment dormer with scrolled sides per module, none, a stepped corner gable, a flat-topped tower-dormer; every ground floor its own shop",
+ "fit": {
+  "widthM": [
+   3.5,
+   4.4
   ],
-  "schemaLimits": [
-    "white tympanum lunettes (244-332 236631, 156795) are a placement override (windowHead.tympanum: stone)",
-    "rubbed-brick arch ring colour",
-    "dormer scroll cheeks",
-    "red-brown-sunlit palette keeps the unmeasured stone (no white course measured on its strips)"
-  ],
-  "notes": [
-    "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json); kinker-2-30 = median of pands 6-14 on the overcast 2024-12-11 strip, cornice from 236814 (the only cornice whose light pixels pass 35 %).",
-    "Bands: bands painted (Oud-West 1900 lane, merged 2026-10-14) on the sill and transom lines, 0.10 and 0.12 m: the white sill course and the upper course measured as band rows 0.10-0.13 m tall on 162482 and 236814 (evidence above). The planned 0.04 / 0.05 m sill + head bands were 2 px at 40 px/m and put the upper line on the arch springing, ~0.75 m above the photo course.",
-    "White courses and heads (kit lane 2026-10-14): archRing style springers (springerSize [0.32, 0.28]: the white impost blocks of 162482 at 12.75-13.05 m, 0.30-0.35 m long from each jamb, 0.09 m apart over the pier); headLines 0.94 / 0.856 / 0.793 and windowHeights 0.635 / 0.651 / 0.655 put the arch crowns at the springer rows (7.15, 9.97, 12.75 m + the 0.08 m rise) and the sills on the sill courses (5.2, 8.05, 10.9 m) of 162482 and 236814 on the kit's 15.19 m storeys [4.22, 3.20, 3.07, 2.95]; the thin continuous course is the transom band at 0.63 of the window (6.43 / 9.28 / 12.11 m measured), 0.08 m; stone = paint from palette-from-strip.ts (band-to-frame luma ratio x the drawn frame): median #eae7dc of the 7 pands with band rows (ratios 1.008-1.115), dark-brown #dddad0 (163325, accent = frame), stoneMaterial painted so the look keeps it white."
+  "storeys": [
+   4
   ]
+ },
+ "match": {
+  "years": [
+   1886,
+   1905
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   13.0,
+   17.3
+  ],
+  "stucco": false,
+  "note": "Kinkerstraat 1888-1905 shop rows (36 authored placements on kinker-142-178, 186-202, 2-30, 206-242, 244-332); 3DBAG eaves 13.0-17.3 m"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 2,
+  "cornice": "frieze",
+  "windows": "t-window",
+  "windowHead": {
+   "kind": "segmental",
+   "archRing": {
+    "colour": "stone",
+    "style": "springers",
+    "keystone": true,
+    "springerSize": [
+     0.32,
+     0.28
+    ]
+   }
+  },
+  "windowHeights": [
+   0.7,
+   0.635,
+   0.651,
+   0.655
+  ],
+  "headLines": [
+   0.86,
+   0.94,
+   0.856,
+   0.793
+  ],
+  "windowShare": 0.55,
+  "bands": "painted",
+  "bandLines": [
+   "sill",
+   "transom"
+  ],
+  "bandHeights": {
+   "sill": 0.1,
+   "transom": 0.08
+  },
+  "bandTransomAt": 0.63
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "note": "one pedimented dormer with scrolled cheeks per module, centred, standing behind the cornice (2-30 pands 6-14; 206-242 pands 14-15) (#98: white painted bodies, dormerBody stone; a trim-slot body exported as a frame sunk in the low front attic and failed the opening-outside audit)",
+   "dormerBody": "stone",
+   "dormerSize": {
+    "sill": 0.4,
+    "rise": 1.3,
+    "setback": 0.3
+   }
+  },
+  "none": {
+   "gable": "cornice",
+   "note": "cornice only (2-30 pand 16, corner 161331)"
+  },
+  "step-gable": {
+   "gable": "step",
+   "crownSteps": 2,
+   "crownRise": 0.9,
+   "atticWindows": 1,
+   "crownFinial": true,
+   "note": "Kinkerstraat 2 (163325): a dark brick stepped gable over the whole front, 2 steps a side, one attic window; top ~2.6 m over the cornice line on the strip"
+  },
+  "tower": {
+   "gable": "cornice",
+   "tower": {
+    "bays": {
+     "from": 0,
+     "to": 1
+    },
+    "rise": 0.6,
+    "cap": "flat"
+   },
+   "note": "186-202 (157310, 161134): a brick dormer-tower with an arched light over both axes"
+  }
+ },
+ "palettes": {
+  "kinker-2-30": {
+   "brick": "#543f30",
+   "frame": "#a7a89d",
+   "door": "black",
+   "stone": "#eae7dc",
+   "cornice": "#bebdae",
+   "stoneMaterial": "painted"
+  },
+  "dark-brown": {
+   "brick": "#4b4639",
+   "frame": "#a0a099",
+   "door": "black",
+   "stone": "#dddad0",
+   "cornice": "#bebdae",
+   "stoneMaterial": "painted"
+  },
+  "red-brown-sunlit": {
+   "brick": "#6c5440",
+   "frame": "#b6b8a5",
+   "door": "black",
+   "stone": "#b8b9a7",
+   "cornice": "#b4b69e"
+  }
+ },
+ "roof": {
+  "material": "slate",
+  "source": "front",
+  "rise": 0.25,
+  "pitchDeg": 45,
+  "evidence": "strips 2024-11-29/2024-12-11: over the cornice only the dormers stand against the sky, no roof face shows; PDOK orthophoto 2024: flat roofs (terraces, bitumen) behind a ~1 m front slope on Kinkerstraat 1A-5, 4-20, 55-63; a low attic behind the cornice instead of the 70 degree attic storey"
+ },
+ "rhythm": {
+  "bays": "2 window axes per module (3.6-4.2 m)",
+  "identicalBays": "upper storeys: 2 equal axes, no balconies",
+  "windowsPerStorey": "ground: shop | 1: 2 | 2: 2 | 3: 2",
+  "symmetry": "symmetric about the module centre above the shop",
+  "groundFloor": "a different shop per module",
+  "signage": "per house",
+  "roofline": "heavy cream stucco cornice with consoles and a frieze; one pediment dormer per module",
+  "photoRows": [
+   1,
+   2,
+   2,
+   2
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the dark rubbed-brick ring between the white springers is not drawn (no band brick measured; the springers style draws no ring)",
+   "the springers are square slabs; the photo's are wedge-shaped, rising toward the arch (a V over each pier)",
+   "pediment dormer cheeks are plain (no scrolls); the frieze consoles and panels are a plain frieze",
+   "iron wall anchors between the windows (in the gap between two springers) are not drawn"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "kinker-2-30",
+   "pands": [
+    "236814",
+    "236360",
+    "236379",
+    "163174",
+    "155541",
+    "236383",
+    "164188",
+    "162482",
+    "237357",
+    "163325",
+    "161331"
+   ],
+   "citation": "strip.jpg 2024-12-11 pands 6-16: identical 2-axis uppers; white sill course at each sill line and white impost blocks at the springing line measured as band rows at 5.1-5.2 / 7.15-7.28 / 7.95-8.05 / 9.97-10.07 / 10.8-10.9 / 12.85-12.95 m (162482, 236814; palette-from-strip); detect-house-types links 6-14 (kinker-2-30), cluster-street-types C14"
+  },
+  {
+   "face": "kinker-206-242",
+   "pands": [
+    "160871",
+    "159816"
+   ],
+   "citation": "strip.jpg 2024-12-11 pands 14-15: same white courses and blocked arches, 3 axes on 8 m doubles"
+  },
+  {
+   "face": "kinker-244-332",
+   "pands": [
+    "235916",
+    "236631",
+    "167053"
+   ],
+   "citation": "strip.jpg 2024-12-11 pands 10, 14-15: sill + impost courses continuous, blocked arches (zoom crops)"
+  },
+  {
+   "face": "kinker-186-202",
+   "pands": [
+    "157310",
+    "161134",
+    "159351",
+    "129253"
+   ],
+   "citation": "strip.jpg 2024-12-11 pands 1-4"
+  }
+ ],
+ "schemaLimits": [
+  "white tympanum lunettes (244-332 236631, 156795) are a placement override (windowHead.tympanum: stone)",
+  "rubbed-brick arch ring colour",
+  "dormer scroll cheeks",
+  "red-brown-sunlit palette keeps the unmeasured stone (no white course measured on its strips)"
+ ],
+ "notes": [
+  "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json); kinker-2-30 = median of pands 6-14 on the overcast 2024-12-11 strip, cornice from 236814 (the only cornice whose light pixels pass 35 %).",
+  "Bands: bands painted (Oud-West 1900 lane, merged 2026-10-14) on the sill and transom lines, 0.10 and 0.12 m: the white sill course and the upper course measured as band rows 0.10-0.13 m tall on 162482 and 236814 (evidence above). The planned 0.04 / 0.05 m sill + head bands were 2 px at 40 px/m and put the upper line on the arch springing, ~0.75 m above the photo course.",
+  "White courses and heads (kit lane 2026-10-14): archRing style springers (springerSize [0.32, 0.28]: the white impost blocks of 162482 at 12.75-13.05 m, 0.30-0.35 m long from each jamb, 0.09 m apart over the pier); headLines 0.94 / 0.856 / 0.793 and windowHeights 0.635 / 0.651 / 0.655 put the arch crowns at the springer rows (7.15, 9.97, 12.75 m + the 0.08 m rise) and the sills on the sill courses (5.2, 8.05, 10.9 m) of 162482 and 236814 on the kit's 15.19 m storeys [4.22, 3.20, 3.07, 2.95]; the thin continuous course is the transom band at 0.63 of the window (6.43 / 9.28 / 12.11 m measured), 0.08 m; stone = paint from palette-from-strip.ts (band-to-frame luma ratio x the drawn frame): median #eae7dc of the 7 pands with band rows (ratios 1.008-1.115), dark-brown #dddad0 (163325, accent = frame), stoneMaterial painted so the look keeps it white."
+ ]
 }
