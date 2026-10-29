@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**Type libraries grown; Sarphatiparkbuurt batch rerun (2026-10-29, #113).**
+
+New types, each measured on 3–4 exemplar strips:
+- **De Pijp:** `pijp-1879-five-low`, `pijp-1884-bracketed-hood` and `pijp-1889-five-storey-banded`.
+- **Helmersbuurt:** `helmers-1890-five-wall-dormer` and `helmers-1889-balconette-pediment`.
+- **Oud-West:** `match` blocks on all 14 types. Before this, only authored intents could use the library.
+- **Jordaan:** a new library with `jordaan-1750-neck-gable` and `jordaan-1850-cornice-house`.
+- **New criterion:** `match.crownMatch` in `autoPlace.ts` weights the skyline crown. BAG dates many 17th- and 18th-century gables to 1775–1865, so build year alone cannot separate gable houses from cornice houses.
+
+Sarphatiparkbuurt went from 7 runs / 19 pands to 13 installed runs. "No type fits" fell from 48 faces to 34. Two runs were held at review:
+- **sweelinck-1-11** (held by the lane): four storeys drawn over a three-storey front. The 1889 type now has `match.bands`.
+- **flinck-265-287-r1** (held by the integrator): an interwar block with ribbon windows and white bands, drawn as a 19th-century punched-window row. Its likeness NCC was 0.21. Lesson: the edge-NCC floor of 0.15 cannot tell an era mismatch apart; the median on good installs is 0.16–0.37.
+
 **The 3D frame rests behind the briefing on touch devices; a restore no longer
 loads Damrak facades (2026-10-29, #109, follow-ups to #106).** `rendererShared/mapCover.ts`
 measures whether displayed, opaque cards (the briefing rail, its photo vista, the
