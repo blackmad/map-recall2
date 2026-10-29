@@ -3,6 +3,11 @@
  "notes": [
   {
    "date": "2026-10-29",
+   "title": "Less work for your graphics card",
+   "text": "The city now skips the ground and building fronts that are off screen. On desktop the picture is the same with about half the triangles. On iPad the busiest views drop to under a million triangles."
+  },
+  {
+   "date": "2026-10-29",
    "title": "Around Centraal Station",
    "text": "The pavilions on the Stationsplein island, the Noord-Zuid Hollandsch Koffiehuis among them, are now modelled with their mansard roofs and turret. The IJ-side canopy has its arched ribs, the Beurs van Berlage has proper bays, arches and a crest, and each ferry landing has one label."
   },

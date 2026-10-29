@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+**Desktop draw spans and touch facade tiles (2026-10-29, #100 follow-up).** Ground and facade meshes now skip their off-screen parts. The whole-mesh draw call is unchanged; spans only cut the triangles drawn.
+
+- **Desktop: spans.** The index buffer is reordered once, tile by tile, and each frame draws from the first to the last on-screen tile. Object and draw-call counts are unchanged, and the picture is pixel-identical at Westerkerk, Damrak, Dam and Leidseplein.
+  - Ground: 1,065 → 609 k triangles at Westerkerk and 1,443 → 516 k at Leidseplein.
+  - Facades: 1,493 → 724 k at Westerkerk and 1,571 → 461 k at Leidseplein.
+  - An earlier version used separate tile meshes. It added about 65 draw calls and raised the three-layers time from 0.8 to 1.4 ms, so it was replaced by spans.
+- **Touch: 3×3 tile meshes** that share the owner's buffers. iPad facades went from 596 → 245 k at Westerkerk, and the main pass is now 0.71–0.80 M triangles (1.13–1.36 M after #100).
+  - Touch pictures can differ by 32–368 px at building seams, where draw order decides between coplanar neighbours.
+- **Highlight passes** restore the full draw range after drawing.
+- **Overrides:** `?groundTiles=1`, `?facadeTiles=1`, `?tileDraw=spans|tiles`.
+
 **Centraal surroundings (2026-10-29, #99).**
 
 - **Stationsplein island (feedback 334bcadd).** Pand 0363100012182895, the Noord-Zuid Hollandsch Koffiehuis and its pavilions, is now one bespoke model: `stationsplein-paviljoens` (10.9 k tris, about 160 KB). It suppresses the pand and 13 OSM ways.

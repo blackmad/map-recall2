@@ -1976,8 +1976,8 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 - **Evertsen wall exposure (2026-10-29).** With the `drawnWall` fix, a rerun gives the evertsen-* faces about 1.0 instead of 0.67–0.75, and evertsen-152-160 2.10 instead of 1.12. Before accepting it, compare an in-game screenshot with the strip on Eerste Van Swindenstraat and Evertsenstraat.
 
 - **GPU load, next (#100 follow-up, 2026-10-29).**
-  - Turn ground tiles on for desktop by default (`groundTiles=3`; the trial showed the same picture at 56–74 % fewer ground triangles).
-  - Facade chunks (600–800 k on the iPad) are now the largest participant; try the same culled-tile split there.
+  - Done 2026-10-29: desktop spans and touch facade tiles (see HISTORY).
+  - Still to do: re-run iPhone ride-perf after the spans and tiles change.
   - After the deploy, watch Sentry iPad `webgl-context-lost`; `probe.heaviest` should show own-ground at about 300 k.
   - Lever 1 (simplify coarse road polygons) is parked. It needs a new versioned roads extract.
 

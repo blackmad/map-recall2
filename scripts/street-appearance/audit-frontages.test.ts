@@ -6,6 +6,7 @@ import test from 'node:test';
 // Re-recorded 2026-10-29 after #94 (generic stair-glass removed from facadeExtras.ts; Beurs and Bijenkorf in signature-landmarks.json); frontages byte-identical, only input hashes moved.
 // Re-recorded 2026-10-29 after #95 (four Noord landmarks rebuilt; one halo feature now under a landmark footprint, features 360 -> 359); every cohort byte-identical.
 // Re-recorded 2026-10-29 after #99 (Stationsplein paviljoens added, Beurs and Centraal rebuilt in signature-landmarks.json); frontages byte-identical, only input hashes moved.
+// Re-recorded 2026-10-29 after #100 follow-up (threeBuildingsBrowser.ts span/tile draw ranges); frontages byte-identical, only input hashes moved.
 import assert from 'node:assert/strict';
 import { auditFrontages } from './audit-frontages.ts';
 import { assessStreetAppearanceSourceAdmission } from './survey-admission.ts';
