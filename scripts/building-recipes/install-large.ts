@@ -27,6 +27,7 @@ import {compileLargeBuilding} from '../../src/canalRecall/buildingRecipe/largeCo
 import {rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
 import {closeRenderer} from './render.ts';
 import {loadBagTiles} from '../lib/bagTileIndex.ts';
+import {applyRunCost, costFlags} from '../../src/canalRecall/buildingRecipe/factoryCost.ts';
 
 const CATALOGUE = 'public/canal-drive/ordinary-buildings-data/catalogue.json', MODELS = 'public/canal-drive/models/ordinary-buildings', ARTIFACTS = 'artifacts/building-recipes';
 /** Gallery/placement fields of a replaced hand-built entry that still describe the same building. */
@@ -98,8 +99,12 @@ if (process.argv[1]?.endsWith('install-large.ts')) {
   const install = process.argv.includes('--install'), catalogue = JSON.parse(await fs.readFile(CATALOGUE, 'utf8'));
   const allow = parseAllowInferred(process.argv.find(a => a.startsWith('--allow-inferred='))?.slice(17));
   if (allow.size && ids.length !== 1) throw Error('--allow-inferred names groups of one house: use it with a single --house');
+  // --queue=<file> charges each installed house's queue row with the lane's model, turns and install time (factoryCost.ts)
+  const queueFile = process.argv.find(a => a.startsWith('--queue='))?.slice(8), costs = costFlags(process.argv, process.env);
+  const queue = queueFile ? JSON.parse(await fs.readFile(queueFile, 'utf8')) : null;
   try {
     for (const id of ids) {
+      const t0 = Date.now();
       const {entry, replaced, glbPath} = await largeCatalogueEntry(id, catalogue, undefined, allow);
       await fs.writeFile(path.join(ARTIFACTS, id, 'catalogue-entry.json'), JSON.stringify(entry, null, 2) + '\n');
       if (install) {
@@ -108,6 +113,11 @@ if (process.argv[1]?.endsWith('install-large.ts')) {
         // replace in place (a re-install keeps the catalogue order, so its diff is the one entry), else append
         const at = catalogue.models.findIndex((m: any) => m.id === entry.id);
         if (at >= 0) catalogue.models[at] = entry; else catalogue.models.push(entry);
+      }
+      if (queue) {
+        const rows = queue.items.filter((i: any) => i.house === id);
+        applyRunCost(rows, {...costs, stage: 'install', ms: Date.now() - t0});
+        if (rows.length) await fs.writeFile(queueFile!, JSON.stringify(queue, null, 1) + '\n');
       }
       console.log(`${id}: ${entry.id} ${entry.triangles} tris, anchor ${entry.anchor.join(',')}, ${replaced ? `replaces ${replaced.id} (${replaced.modelUrl}, ${replaced.triangles} tris)` : 'new entry'} -> ${path.join(ARTIFACTS, id, 'catalogue-entry.json')}`);
     }

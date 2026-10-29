@@ -12,6 +12,8 @@
  *   draft    draftLargeIntent()                                                   -> houses/<house>/intent.json (a hand-authored intent is never overwritten)
  *   measure  building-recipes/measure.ts --house --write                          -> measured wall/glass colour, system, window shape, bays
  *   compile  building-recipes/large.ts --house --strict                           -> GLB, gates, likeness, contact sheets under artifacts/building-recipes/<house>/
+ * Cost: `--model=<haiku|opus>` (default CLAUDE_MODEL) and `--turns=<n>` (this run's turns, split over its rows) and per-stage
+ * wall time land in each claimed row's `model`, `turns`, `ms`; `npm run census` prints turns per reviewed building.
  * Statuses: queued -> crops -> facts -> drafted -> measured -> compiled | no-evidence | error. After the review turn
  * (status reviewed-pass) the lane installs with `install-large.ts --house=<house> --install`; `reviewed-fix` items
  * come back through `--stage=compile` once the intent edit is applied.
@@ -20,7 +22,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {draftLargeIntent, factoryMayWrite, factoryMeasureArgs, isDraftIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
-import {lngLatToRd} from '../../src/canalRecall/facade/rdNew.ts';
+import {addStageMs, applyRunCost, costFlags} from '../../src/canalRecall/buildingRecipe/factoryCost.ts';
+import {nearbyStreets as nearbyRoutingStreets, routingStreetsRD, type RoutingStreet} from '../../src/canalRecall/buildingRecipe/factoryStreets.ts';
 import {QUEUE_FILE, type Queue, type QueueItem, type QueueStatus} from './factory-queue.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
@@ -61,24 +64,11 @@ function run(script: string, args: string[], timeoutS: number): {ok: boolean; ta
   return result;
 }
 
-/** Named routing streets within 30 m of the footprint, nearest first (at most three), for `facts.ts --street`. streets-routing.json paths are [lat, lng]. */
-let streetsCache: {name: string; pathsRD: [number, number][][]}[] | null = null;
+/** Named routing streets within 30 m of the footprint, nearest first (at most three), for `facts.ts --street`. */
+let streetsCache: RoutingStreet[] | null = null;
 function nearbyStreets(ringRD: [number, number][]): string[] {
-  streetsCache ??= (read('public/data/extracts/amsterdam/streets-routing.json') as any[]).filter(s => s.name).map(s => ({name: s.name, pathsRD: (s.paths ?? [s.path]).map((p: [number, number][]) => p.map(q => { const r = lngLatToRd([q[1], q[0]]); return [r.x, r.y] as [number, number]; }))}));
-  const xs = ringRD.map(p => p[0]), ys = ringRD.map(p => p[1]);
-  const box = {w: Math.min(...xs) - 40, e: Math.max(...xs) + 40, s: Math.min(...ys) - 40, n: Math.max(...ys) + 40};
-  const segDist = (p: [number, number], a: [number, number], b: [number, number]) => {
-    const dx = b[0] - a[0], dy = b[1] - a[1], l2 = dx * dx + dy * dy || 1, t = Math.max(0, Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / l2));
-    return Math.hypot(p[0] - a[0] - t * dx, p[1] - a[1] - t * dy);
-  };
-  const best = new Map<string, number>();
-  for (const s of streetsCache) for (const path of s.pathsRD) {
-    if (!path.some(q => q[0] > box.w && q[0] < box.e && q[1] > box.s && q[1] < box.n)) continue;
-    let d = Infinity;
-    for (const v of ringRD) for (let i = 1; i < path.length; i++) d = Math.min(d, segDist(v, path[i - 1], path[i]));
-    if (d <= 30 && d < (best.get(s.name) ?? Infinity)) best.set(s.name, d);
-  }
-  return [...best.entries()].sort((a, b) => a[1] - b[1]).slice(0, 3).map(e => e[0]);
+  streetsCache ??= routingStreetsRD(read('public/data/extracts/amsterdam/streets-routing.json'));
+  return nearbyRoutingStreets(ringRD, streetsCache);
 }
 
 function wallsJson(pand: string): {walls: any[]} | null {
@@ -191,6 +181,8 @@ async function main() {
   const claimable = (i: QueueItem) => !i.owner || i.owner === owner || i.status === 'queued' || (i.claimedAt != null && Date.parse(i.claimedAt) < staleBefore);
   const items = queue.items.filter(i => i.pand && (wanted ? wanted.has(i.pand) : (progressable.includes(i.status) || networkError(i)) && claimable(i))).slice(0, wanted ? undefined : n);
   if (!items.length) { console.log('factory: nothing to do'); return; }
+  // every claimed row is charged this run's model and its share of the turns (factoryCost.ts); stage wall time is added per stage below
+  applyRunCost(items, costFlags(process.argv, process.env));
   const save = () => { if (!has('--dry')) { queue.generatedAt = queue.generatedAt; fs.writeFileSync(file + '.tmp', JSON.stringify(queue, null, 1) + '\n'); fs.renameSync(file + '.tmp', file); } };
   const tally: Record<string, number> = {};
   for (const item of items) {
@@ -204,6 +196,7 @@ async function main() {
       const t0 = Date.now();
       ok = stage === 'crops' ? await stageCrops(item, force) : stage === 'facts' ? await stageFacts(item, force) : stage === 'draft' ? await stageDraft(item, force) : stage === 'measure' ? await stageMeasure(item, force) : await stageCompile(item);
       console.log(`  ${stage.padEnd(8)} ${ok ? 'ok' : item.status} ${Math.round((Date.now() - t0) / 1000)} s`);
+      addStageMs(item, stage, Date.now() - t0);
       if (!ok) break;
       item.status = AFTER[stage];
       item.updatedAt = new Date().toISOString();

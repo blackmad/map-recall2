@@ -15,6 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
+import {applyRunCost, costFlags} from '../../src/canalRecall/buildingRecipe/factoryCost.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const HOUSES = 'scripts/building-recipes/houses', ARTIFACTS = 'artifacts/building-recipes';
@@ -49,9 +50,13 @@ async function main() {
   const out = arg('out'); if (!out) throw Error('Use --out=<path without extension>');
   const perPage = Number(arg('per-page', '4')), width = Number(arg('width', '1600'));
   let rows: Row[];
-  if (arg('queue')) {
+  const t0 = Date.now(), queueFile = arg('queue');
+  let queue: any = null, picked: any[] = [];
+  if (queueFile) {
     const status = arg('status', 'compiled'), limit = Number(arg('limit', '20'));
-    rows = read(arg('queue')).items.filter((i: any) => i.house && i.status === status).slice(0, limit).map((i: any) => rowFor(i.house, i.pand, i.name));
+    queue = read(queueFile);
+    picked = queue.items.filter((i: any) => i.house && i.status === status).slice(0, limit);
+    rows = picked.map((i: any) => rowFor(i.house, i.pand, i.name));
   } else rows = arg('houses').split(',').filter(Boolean).map(h => rowFor(h));
   if (!rows.length) throw Error('no houses to strip');
   fs.mkdirSync(path.dirname(out), {recursive: true});
@@ -85,6 +90,11 @@ async function main() {
     pages.push(file);
   }
   fs.writeFileSync(`${out}.json`, JSON.stringify({generatedAt: new Date().toISOString(), pages, rows, verdictTemplate: rows.map(r => ({house: r.house, pand: r.pand, outcome: 'pass | fix | hold | no-evidence', note: '', fix: {}}))}, null, 1) + '\n');
+  // --queue: the stripped rows are charged this run's model, turns and wall time (factoryCost.ts); nothing else in the queue moves
+  if (queue) {
+    applyRunCost(picked, {...costFlags(process.argv, process.env), stage: 'strip', ms: Date.now() - t0});
+    if (picked.length) fs.writeFileSync(queueFile, JSON.stringify(queue, null, 1) + '\n');
+  }
   console.log(`strip: ${rows.length} houses on ${pages.length} page(s): ${pages.join(', ')}; rows ${out}.json`);
 }
 

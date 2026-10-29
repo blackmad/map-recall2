@@ -17,6 +17,7 @@
 import fs from 'node:fs';
 import {ALL_MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels.ts';
 import {KITS, HAND_KITS, kitIds} from '../../src/canalRecall/landmarkKits.ts';
+import {censusCost} from '../../src/canalRecall/buildingRecipe/factoryCost.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const read = (f: string) => JSON.parse(fs.readFileSync(f, 'utf8'));
@@ -103,6 +104,8 @@ if (process.argv[1]?.endsWith('landmarks/census.ts')) {
   console.log('  tier          models  counts  strict  unreviewed');
   for (const [t, v] of Object.entries(c.byTier)) console.log(`  ${t.padEnd(13)} ${String(v.models).padStart(6)} ${String(v.counts).padStart(7)} ${String(v.strict).padStart(7)} ${String(v.unreviewed).padStart(11)}`);
   console.log(`  by review ${JSON.stringify(c.byReview)}`);
+  const cost = censusCost(read('public/canal-drive/landmark-factory-queue.json').items);
+  console.log(`factory cost: ${cost.turnsPerReviewed === null ? 'no rows with turns yet' : `${cost.turnsPerReviewed} turns per reviewed building (${cost.turnsReviewed} turns over ${cost.reviewedWithTurns} reviewed rows)`}; ${cost.reviewed} rows with a verdict, ${cost.turnsAllRows} turns in all; by model ${JSON.stringify(cost.byModel)}`);
   const out = arg('out', 'public/canal-drive/landmark-census.json');
   if (process.argv.includes('--write')) {
     fs.writeFileSync(out, JSON.stringify({version: 1, generatedAt: new Date().toISOString(), definition: 'named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)', target: 1000, headline: c.headline, strict: c.strict, byTier: c.byTier, byReview: c.byReview, rows: c.rows}, null, 1) + '\n');
