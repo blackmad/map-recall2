@@ -1,0 +1,386 @@
+{
+ "street": "Eerste Jan van der Heijdenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164708",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 122E",
+    "Eerste Jan van der Heijdenstraat 122A",
+    "Eerste Jan van der Heijdenstraat 122B",
+    "Eerste Jan van der Heijdenstraat 122C",
+    "Eerste Jan van der Heijdenstraat 122D",
+    "Eerste Jan van der Heijdenstraat 122F",
+    "Eerste Jan van der Heijdenstraat 122G",
+    "Eerste Jan van der Heijdenstraat 122H"
+   ],
+   "groundUnits": [],
+   "units": 24,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162695",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 120"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 120-H",
+     "use": "woonfunctie",
+     "areaM2": 164,
+     "bagId": "0363010000546886"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152526",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 118"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 118-H",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000546872"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157382",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 116-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000546865"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163990",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 114-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000546854"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159232",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 112-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000546843"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13512730830,
+     "lngLat": [
+      4.8920667,
+      52.3535755
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 2.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164592",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 110-H",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000546832"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160406",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 108-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000546822"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153695",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 106-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000546811"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 106-O",
+     "use": "sportfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000546812"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163512",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 104-H",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010000546802"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161346",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 103-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000602449"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 332642297,
+     "lngLat": [
+      4.8918401,
+      52.3530513
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "103;103-H",
+      "addr:postcode": "1072EX",
+      "addr:street": "Ceintuurbaan",
+      "amenity": "restaurant",
+      "check_date": "2026-01-27",
+      "cuisine": "indonesian",
+      "email": "info@restaurantdesa.com",
+      "name": "Dèsa",
+      "opening_hours": "Mo-Su 17:00-21:30",
+      "phone": "+31 20 6710979",
+      "reservation": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "http://www.restaurantdesa.com",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012070072",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 100-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000991602"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164211",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 98-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000546771"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164545",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 96-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000546761"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236501",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 94-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000546749"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167001",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 92"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157422",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 95",
+     "use": "winkelfunctie",
+     "areaM2": 198,
+     "bagId": "0363010000635519"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159468",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 88A"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 257518669,
+     "lngLat": [
+      4.8911103,
+      52.3533913
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "95",
+      "addr:postcode": "1072LD",
+      "addr:street": "Ferdinand Bolstraat",
+      "alt_name": "Pearle Opticiens",
+      "branch": "Amsterdam - de Pijp",
+      "brand": "Pearle",
+      "brand:website": "https://www.pearle.nl",
+      "brand:wikidata": "Q2231148",
+      "brand:wikipedia": "nl:Pearle",
+      "check_date": "2026-01-22",
+      "name": "Pearle",
+      "opening_hours": "Mo-Fr 09:30-18:00; Sa 09:30-17:00; Su 12:00-17:00",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 6796866",
+      "shop": "optician",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.pearle.nl/opticien/amsterdam/ferdinand-bolstraat-95",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13476647632,
+     "lngLat": [
+      4.8909966,
+      52.353411
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.1
+    }
+   ]
+  }
+ ]
+}

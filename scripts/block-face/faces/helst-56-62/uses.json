@@ -1,0 +1,222 @@
+{
+ "street": "Eerste Van der Helststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165647",
+   "addresses": [
+    "Eerste Van der Helststraat 62A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 62A-H",
+     "use": "winkelfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000648745"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506127776,
+     "lngLat": [
+      4.8931195,
+      52.3551558
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62A-H",
+      "addr:postcode": "1072NX",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "restaurant",
+      "branch": "De Pijp",
+      "check_date": "2026-01-21",
+      "cuisine": "breakfast",
+      "email": "benaddicted.pijp@gmail.com",
+      "fixme": "Opening soon. Please update with hours and other details once open.",
+      "name": "Eggs Benaddicted",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://benaddicted.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164105",
+   "addresses": [
+    "Eerste Van der Helststraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 62-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010000548788"
+    },
+    {
+     "address": "Eerste Van der Helststraat 62-H",
+     "use": "winkelfunctie",
+     "areaM2": 91,
+     "bagId": "0363010012068341"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817613066,
+     "lngLat": [
+      4.8930978,
+      52.3552042
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62-H",
+      "addr:postcode": "1072NX",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-21",
+      "clothes": "women",
+      "name": "Eland & Vanderhelst",
+      "opening_hours": "Tu-Fr 12:00-17:00; Sa 11:00-18:00",
+      "phone": "+31 20 6257717",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.elandenvanderhelst.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163996",
+   "addresses": [
+    "Eerste Van der Helststraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 60-H",
+     "use": "winkelfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000548782"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506027858,
+     "lngLat": [
+      4.8930756,
+      52.3552522
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "60-H",
+      "addr:postcode": "1072NX",
+      "addr:street": "Eerste Van der Helststraat",
+      "alt_name": "Volendammer Vishandel J.C.M. Koning",
+      "check_date": "2026-01-21",
+      "name": "Volendammer Vishandel JCM Koning",
+      "outdoor_seating": "yes",
+      "shop": "seafood",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237218",
+   "addresses": [
+    "Eerste Van der Helststraat 56A",
+    "Eerste Van der Helststraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 58-H",
+     "use": "winkelfunctie",
+     "areaM2": 298,
+     "bagId": "0363010000548775"
+    },
+    {
+     "address": "Albert Cuypstraat 130A-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000563566"
+    }
+   ],
+   "units": 13,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506027861,
+     "lngLat": [
+      4.8930315,
+      52.3553481
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "130",
+      "addr:postcode": "1072EA",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "cafe",
+      "check_date": "2026-01-25",
+      "name": "Café De Groene Vlinder",
+      "opening_hours": "Mo-Th 10:00-01:00; Fr-Sa 10:00-03:00; Su 11:00-01:00",
+      "outdoor_seating": "yes",
+      "reservation": "yes",
+      "toilets:wheelchair": "no",
+      "website": "https://cafedegroenevlinder.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2653962863,
+     "lngLat": [
+      4.8930522,
+      52.3553027
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "58-H",
+      "addr:postcode": "1072NX",
+      "addr:street": "Eerste Van der Helststraat",
+      "branch": "Amsterdam De Pijp",
+      "check_date": "2026-01-21",
+      "clothes": "women;men",
+      "name": "We Are Labels",
+      "not:brand:wikidata": "Q1987861",
+      "opening_hours": "Mo 11:00-18:00; Tu-Fr 10:30-18:00; Sa 10:00-18:00; Su 11:00-18:00",
+      "phone": "+31 20 705 9632",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.wearelabels.com/pages/amsterdam-de-pijp",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,555 @@
+{
+ "street": "Tweede Jan Steenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160374",
+   "addresses": [
+    "Tweede Jan Steenstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 1-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000551240"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506128645,
+     "lngLat": [
+      4.8982194,
+      52.355631
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1-H",
+      "addr:postcode": "1073VK",
+      "addr:street": "Tweede Jan Steenstraat",
+      "amenity": "restaurant",
+      "email": "info@samuel-s.nl",
+      "name": "Samuel's",
+      "opening_hours": "Mo-Sa 08:00-01:00",
+      "phone": "+31 20 3541575",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.samuel-s.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236832",
+   "addresses": [
+    "Tweede Jan Steenstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 3-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000551248"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2509618306,
+     "lngLat": [
+      4.8983,
+      52.3556549
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "3-H",
+      "addr:postcode": "1073VK",
+      "addr:street": "Tweede Jan Steenstraat",
+      "air_conditioning": "yes",
+      "amenity": "restaurant",
+      "check_date": "2026-01-29",
+      "cuisine": "french;japanese",
+      "delivery": "no",
+      "email": "info@restaurantja.nl",
+      "mobile": "+31650645829",
+      "name": "Restaurant JA",
+      "opening_hours": "Th-Fr 19:00-23:30",
+      "operator": "Julius Busscher, Amy Delorme",
+      "reservation": "required",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "no",
+      "toilets:wheelchair": "yes",
+      "website": "https://www.restaurantja.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160486",
+   "addresses": [
+    "Tweede Jan Steenstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000551256"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123461",
+   "addresses": [
+    "Tweede Jan Steenstraat 9A",
+    "Tweede Jan Steenstraat 9B",
+    "Tweede Jan Steenstraat 9C",
+    "Tweede Jan Steenstraat 9E",
+    "Tweede Jan Steenstraat 9D",
+    "Tweede Jan Steenstraat 9F",
+    "Tweede Jan Steenstraat 11A",
+    "Tweede Jan Steenstraat 11D",
+    "Tweede Jan Steenstraat 11C",
+    "Tweede Jan Steenstraat 11B",
+    "Tweede Jan Steenstraat 11E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 9A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000710295"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 11A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000711904"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 9B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000711905"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 9C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000711906"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 9E",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000713889"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 9D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000713546"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 11D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000713547"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 11C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000713548"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 11B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000713549"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 9F",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000989746"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 11E",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010011944107"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153705",
+   "addresses": [
+    "Tweede Jan Steenstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000551285"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156050",
+   "addresses": [
+    "Tweede Jan Steenstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000551293"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167048",
+   "addresses": [
+    "Tweede Jan Steenstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000551300"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062137",
+   "addresses": [
+    "Tweede Jan Steenstraat 19",
+    "Tweede Jan Steenstraat 21A",
+    "Tweede Jan Steenstraat 21B",
+    "Tweede Jan Steenstraat 21C",
+    "Tweede Jan Steenstraat 21D",
+    "Tweede Jan Steenstraat 21E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000713890"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 21A",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000713891"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 21B",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000713892"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 21C",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000713916"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 21D",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000713917"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 21E",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000713918"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237284",
+   "addresses": [
+    "Tweede Jan Steenstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000551316"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152994",
+   "addresses": [
+    "Tweede Jan Steenstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000551322"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156687",
+   "addresses": [
+    "Tweede Jan Steenstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000551329"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152873",
+   "addresses": [
+    "Tweede Jan Steenstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000551337"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152777",
+   "addresses": [
+    "Tweede Jan Steenstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000551347"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167233",
+   "addresses": [
+    "Tweede Jan Steenstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000551354"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161347",
+   "addresses": [
+    "Tweede Jan Steenstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000551359"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558868,
+     "lngLat": [
+      4.8995305,
+      52.3560075
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "35-H",
+      "addr:postcode": "1073VM",
+      "addr:street": "Tweede Jan Steenstraat",
+      "amenity": "dentist",
+      "check_date": "2026-01-29",
+      "email": "info@mondzorgpraktijkjansteen.nl",
+      "healthcare": "dentist",
+      "name": "Mondzorgpraktijk Jan Steen",
+      "opening_hours": "Mo-Tu,Th-Fr 09:00-15:00; We 09:00-12:00",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012233592",
+   "addresses": [
+    "Tweede Jan Steenstraat 37",
+    "Tweede Jan Steenstraat 39A",
+    "Tweede Jan Steenstraat 39B",
+    "Tweede Jan Steenstraat 39C",
+    "Tweede Jan Steenstraat 39D",
+    "Tweede Jan Steenstraat 41E",
+    "Tweede Jan Steenstraat 41A",
+    "Tweede Jan Steenstraat 41B",
+    "Tweede Jan Steenstraat 41C",
+    "Tweede Jan Steenstraat 41D",
+    "Tweede Jan Steenstraat 41F",
+    "Tweede Jan Steenstraat 41G",
+    "Tweede Jan Steenstraat 41H",
+    "Tweede Jan Steenstraat 41K",
+    "Tweede Jan Steenstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 41E",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000989745"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 37",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000551363"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 39A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000551368"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 39B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000551369"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 39C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000551370"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 39D",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000551371"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 41A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000551378"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 41B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000551379"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 41C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000551380"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 41D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000551381"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 41F",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000551382"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 41G",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000551383"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 41H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000551384"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 41K",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000551385"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 43",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000551389"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  }
+ ]
+}

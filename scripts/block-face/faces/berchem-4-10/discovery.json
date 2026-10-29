@@ -1,0 +1,525 @@
+{
+ "street": "Nicolaas Berchemstraat",
+ "seed": "0363100012128539",
+ "members": [
+  "0363100012096339",
+  "0363100012128539"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012128539 (face continues: 163811)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012072617",
+   "reason": "frontage 42.0 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012098788",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012159070"
+  },
+  {
+   "pandId": "0363100012104030",
+   "reason": "frontage 86.1 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012136670",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012156505"
+  },
+  {
+   "pandId": "0363100012137448",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012098759"
+  },
+  {
+   "pandId": "0363100012140916",
+   "reason": "frontage 48.4 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012152488",
+   "reason": "frontage 56.8 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012152647",
+   "reason": "frontage 38.5 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012152654",
+   "reason": "frontage 122.6 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012152750",
+   "reason": "frontage 72.2 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012152801",
+   "reason": "frontage 76.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012153554",
+   "reason": "frontage 42.7 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012153681",
+   "reason": "frontage 57.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012154236",
+   "reason": "frontage 52.8 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012155442",
+   "reason": "frontage 34.5 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012155589",
+   "reason": "frontage 33.5 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012155754",
+   "reason": "frontage 30.5 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012155898",
+   "reason": "frontage 62.0 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012156408",
+   "reason": "frontage 47.6 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012156438",
+   "reason": "frontage 35.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012156505",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012163811"
+  },
+  {
+   "pandId": "0363100012156841",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012158052"
+  },
+  {
+   "pandId": "0363100012156947",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012161932"
+  },
+  {
+   "pandId": "0363100012156996",
+   "reason": "frontage 59.1 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012157282",
+   "reason": "frontage 89.0 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012157460",
+   "reason": "frontage 117.8 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012157561",
+   "reason": "frontage 90.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012157562",
+   "reason": "frontage 78.1 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012157781",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012098788"
+  },
+  {
+   "pandId": "0363100012157916",
+   "reason": "frontage 68.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012157993",
+   "reason": "frontage 31.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012158052",
+   "reason": "no frontage on Nicolaas Berchemstraat: No footprint edge faces Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012158291",
+   "reason": "frontage 86.4 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012158460",
+   "reason": "frontage 32.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012158922",
+   "reason": "frontage 70.3 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012159070",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012236510"
+  },
+  {
+   "pandId": "0363100012159097",
+   "reason": "frontage 73.2 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012159447",
+   "reason": "no frontage on Nicolaas Berchemstraat: No footprint edge faces Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012159705",
+   "reason": "frontage 70.5 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012159776",
+   "reason": "frontage 93.5 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012160036",
+   "reason": "frontage 38.1 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012160076",
+   "reason": "frontage 67.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012160312",
+   "reason": "frontage 33.0 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012160372",
+   "reason": "frontage 58.1 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012160398",
+   "reason": "frontage 81.5 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012160477",
+   "reason": "frontage 56.2 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012160499",
+   "reason": "frontage 96.0 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012160542",
+   "reason": "frontage 41.5 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012160590",
+   "reason": "frontage 78.2 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012160777",
+   "reason": "no frontage on Nicolaas Berchemstraat: No footprint edge faces Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012160804",
+   "reason": "frontage 58.3 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012160850",
+   "reason": "frontage 70.4 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012161251",
+   "reason": "frontage 35.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012161721",
+   "reason": "frontage 34.0 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012161722",
+   "reason": "frontage 66.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012162307",
+   "reason": "frontage 78.4 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012162433",
+   "reason": "frontage 71.4 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012162618",
+   "reason": "frontage 60.0 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012162715",
+   "reason": "no frontage on Nicolaas Berchemstraat: No footprint edge faces Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012163021",
+   "reason": "no frontage on Nicolaas Berchemstraat: No footprint edge faces Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012163168",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012096339"
+  },
+  {
+   "pandId": "0363100012163308",
+   "reason": "frontage 63.1 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012163351",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012156505"
+  },
+  {
+   "pandId": "0363100012163588",
+   "reason": "frontage 78.6 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012163710",
+   "reason": "frontage 60.6 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012163765",
+   "reason": "frontage 70.8 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012163776",
+   "reason": "frontage 37.1 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012163890",
+   "reason": "frontage 92.1 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012163950",
+   "reason": "frontage 89.5 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012163974",
+   "reason": "frontage 44.2 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012164382",
+   "reason": "frontage 34.5 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012164383",
+   "reason": "frontage 89.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012164464",
+   "reason": "frontage 38.1 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012164666",
+   "reason": "frontage 57.0 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012164706",
+   "reason": "frontage 30.6 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012164780",
+   "reason": "frontage 84.3 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012164793",
+   "reason": "no frontage on Nicolaas Berchemstraat: No footprint edge faces Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012164926",
+   "reason": "frontage 63.6 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012165136",
+   "reason": "frontage 68.1 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012165187",
+   "reason": "frontage 40.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012165472",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012163811"
+  },
+  {
+   "pandId": "0363100012165636",
+   "reason": "frontage 55.0 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012165680",
+   "reason": "frontage 31.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012166163",
+   "reason": "frontage 68.0 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012166194",
+   "reason": "frontage 43.0 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012166237",
+   "reason": "frontage 59.7 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012166485",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012096339"
+  },
+  {
+   "pandId": "0363100012166567",
+   "reason": "frontage 35.7 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012166601",
+   "reason": "frontage 116.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012166771",
+   "reason": "frontage 64.7 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012166940",
+   "reason": "frontage 35.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012188997",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012099690"
+  },
+  {
+   "pandId": "0363100012191569",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012096339"
+  },
+  {
+   "pandId": "0363100012195354",
+   "reason": "frontage 38.5 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012201641",
+   "reason": "frontage 30.3 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012202881",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012236829"
+  },
+  {
+   "pandId": "0363100012217992",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012161680"
+  },
+  {
+   "pandId": "0363100012231775",
+   "reason": "frontage 41.8 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012233600",
+   "reason": "frontage 73.4 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012235945",
+   "reason": "frontage 89.7 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012236030",
+   "reason": "sightline to Nicolaas Berchemstraat crosses 0363100012099690"
+  },
+  {
+   "pandId": "0363100012236226",
+   "reason": "frontage 50.7 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012236329",
+   "reason": "frontage 64.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012236354",
+   "reason": "frontage 68.1 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012236408",
+   "reason": "frontage 63.6 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012236449",
+   "reason": "frontage 72.3 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012236557",
+   "reason": "frontage 73.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012236629",
+   "reason": "no frontage on Nicolaas Berchemstraat: No footprint edge faces Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012236692",
+   "reason": "frontage 56.3 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012236829",
+   "reason": "no frontage on Nicolaas Berchemstraat: No footprint edge faces Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012236859",
+   "reason": "frontage 63.9 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012236898",
+   "reason": "frontage 63.2 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012237240",
+   "reason": "frontage 69.4 m from Nicolaas Berchemstraat"
+  },
+  {
+   "pandId": "0363100012099690",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161680",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161932",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012203635",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236510",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236513",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236588",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012096339",
+   "alongM": -11.01,
+   "widthM": 10.79,
+   "eavesM": 10.89,
+   "roofMaxM": 16.6,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012128539",
+   "alongM": 0,
+   "widthM": 11.24,
+   "eavesM": 12.4,
+   "roofMaxM": 12.74,
+   "storeys3dbag": 4,
+   "builtYear": 1891,
+   "uncertainty": []
+  }
+ ]
+}

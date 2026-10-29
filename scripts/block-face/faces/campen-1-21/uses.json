@@ -1,0 +1,139 @@
+{
+ "street": "Eerste Jacob van Campenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237018",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 1",
+    "Eerste Jacob van Campenstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 57-H",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000801103"
+    },
+    {
+     "address": "Eerste Jacob van Campenstraat 1",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001169646"
+    }
+   ],
+   "units": 16,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2505967265,
+     "lngLat": [
+      4.8870801,
+      52.3576621
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1",
+      "addr:postcode": "1072BB",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "check_date": "2026-01-12",
+      "email": "marjantiller@planet.nl",
+      "name": "Marjan Tiller",
+      "opening_hours": "Tu-Sa 11:00-17:00",
+      "phone": "+31 20 6622725",
+      "shop": "art",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157140",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 5"
+   ],
+   "groundUnits": [],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154349",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 7"
+   ],
+   "groundUnits": [],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157294",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 9"
+   ],
+   "groundUnits": [],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166055",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 11"
+   ],
+   "groundUnits": [],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164339",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 13"
+   ],
+   "groundUnits": [],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165478",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 15"
+   ],
+   "groundUnits": [],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159456",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 17"
+   ],
+   "groundUnits": [],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012235994",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 19",
+    "Eerste Jacob van Campenstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000995017"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  }
+ ]
+}

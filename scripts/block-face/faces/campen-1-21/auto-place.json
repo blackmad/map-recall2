@@ -1,0 +1,796 @@
+{
+ "face": "campen-1-21",
+ "street": "Eerste Jacob van Campenstraat",
+ "library": "de-pijp",
+ "stripDate": "2022-03-21",
+ "seconds": 2.82,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012237018",
+   "address": "Eerste Jacob van Campenstraat 1",
+   "builtYear": 1875,
+   "widthM": 18.6,
+   "eavesM": 12.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e7bc93",
+    "wallRaw": "#e3bb92",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 237,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.9,
+      "riseM": 0.9,
+      "topWidthM": 2.55,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.151,
+    "structure": {
+     "bayWidthM": 1.23,
+     "bayCentre": 0.06,
+     "balconies": true,
+     "why": "bay-less open axis 0.8 m at 0.05 (light 0.57): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.05,
+       "light": 0.57
+      },
+      {
+       "widthM": 1.95,
+       "centre": 0.92,
+       "light": 0.23
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 18.6 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 18.6 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.92 m = 3 storeys of 4.31 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.5 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.123 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157140",
+   "address": "Eerste Jacob van Campenstraat 5",
+   "builtYear": 1875,
+   "widthM": 9.3,
+   "eavesM": 13.2,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e2c1a0",
+    "wallRaw": "#dbba9a",
+    "skyline": {
+     "eavesM": 14.2,
+     "eavesRow": 257,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 1.95,
+      "topWidthM": 1.1,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.122,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 9.3 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 9.3 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.2 m = 3 storeys of 4.4 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.92 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.103 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154349",
+   "address": "Eerste Jacob van Campenstraat 7",
+   "builtYear": 1875,
+   "widthM": 9.3,
+   "eavesM": 13.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ebbe9a",
+    "wallRaw": "#e7c09e",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.05,
+      "riseM": 1.13,
+      "topWidthM": 1.02,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.213,
+    "structure": {
+     "bayWidthM": 0.6,
+     "bayCentre": 0.37,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.86 (light 0.07): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.86,
+       "light": 0.07
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.1,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 9.3 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 9.3 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.17 m = 3 storeys of 4.39 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.91 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.155 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157294",
+   "address": "Eerste Jacob van Campenstraat 9",
+   "builtYear": 1875,
+   "widthM": 9.3,
+   "eavesM": 13.14,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f0ccab",
+    "wallRaw": "#ebcaa8",
+    "skyline": {
+     "eavesM": 14.43,
+     "eavesRow": 248,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.7,
+      "riseM": 2.02,
+      "topWidthM": 1.23,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.188,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.51 (light 0.33): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.51,
+       "light": 0.33
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 9.3 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 9.3 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.14 m = 3 storeys of 4.38 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.96 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.167 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166055",
+   "address": "Eerste Jacob van Campenstraat 11",
+   "builtYear": 1875,
+   "widthM": 11.9,
+   "eavesM": 13.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ba997d",
+    "wallRaw": "#cda78c",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 236,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.05,
+      "riseM": 4.4,
+      "topWidthM": 0.42,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.241,
+    "structure": {
+     "bayWidthM": 0.8,
+     "bayCentre": 0.39,
+     "balconies": true,
+     "why": "bay-less open axis 0.7 m at 0.39 (light 0.61): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.39,
+       "light": 0.61
+      },
+      {
+       "widthM": 0.8,
+       "centre": 0.89,
+       "light": 0.28
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 11.9 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 11.9 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.13 m = 3 storeys of 4.38 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.214 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164339",
+   "address": "Eerste Jacob van Campenstraat 13",
+   "builtYear": 1875,
+   "widthM": 9.3,
+   "eavesM": 13.09,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 9.29,
+    "toM": 9.29,
+    "depthM": 0.36,
+    "centre": 1,
+    "lineRD": [
+     [
+      120985.1480625,
+      485639.9245
+     ],
+     [
+      120989.4800625,
+      485639.65750000003
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#f6cd9c",
+    "wallRaw": "#e6be8f",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 234,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 3.08,
+      "riseM": 5.85,
+      "topWidthM": 0.65,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.098,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 9.3 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 9.3 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.09 m = 3 storeys of 4.36 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.11 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.084 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165478",
+   "address": "Eerste Jacob van Campenstraat 15",
+   "builtYear": 1875,
+   "widthM": 9.3,
+   "eavesM": 13.1,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#fad2a9",
+    "wallRaw": "#f5cda4",
+    "skyline": {
+     "eavesM": 14.97,
+     "eavesRow": 226,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 0.93,
+      "topWidthM": 1.45,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.235,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.4,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.19 (light 0.14): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.19,
+       "light": 0.14
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.88,
+       "light": 0.27
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.15,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 9.3 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 9.3 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.1 m = 3 storeys of 4.37 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.53 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.11 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159456",
+   "address": "Eerste Jacob van Campenstraat 17",
+   "builtYear": 1875,
+   "widthM": 9.3,
+   "eavesM": 13.1,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f5d0ad",
+    "wallRaw": "#efcaa7",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 246,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 2.1,
+      "topWidthM": 0.88,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.131,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 9.3 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 9.3 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.1 m = 3 storeys of 4.37 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.45 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.094 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012235994",
+   "address": "Eerste Jacob van Campenstraat 19",
+   "builtYear": 1875,
+   "widthM": 18.35,
+   "eavesM": 13.08,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f9d1ad",
+    "wallRaw": "#e9c2a2",
+    "skyline": {
+     "eavesM": 15.1,
+     "eavesRow": 221,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.4,
+      "riseM": 1.2,
+      "topWidthM": 2.75,
+      "centre": 0.27
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.369,
+    "structure": {
+     "bayWidthM": 2.95,
+     "bayCentre": 0.29,
+     "balconies": true,
+     "why": "dark open axis 4 m at 0.88 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.23,
+       "centre": 0.07,
+       "light": 0.64
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.23,
+       "light": 0.99
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.41,
+       "light": 0.97
+      },
+      {
+       "widthM": 4,
+       "centre": 0.88,
+       "light": 0.28
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.18,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 18.35 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 18.35 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.08 m = 3 storeys of 4.36 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.01 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.222 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

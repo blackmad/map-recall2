@@ -1,0 +1,138 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:48:54.538Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162421",
+   "addresses": [
+    "Albert Cuypstraat 124"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 124-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000563535"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610711,
+     "lngLat": [
+      4.8926046,
+      52.3552739
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "124-H",
+      "addr:postcode": "1072EA",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "bar",
+      "check_date": "2026-01-25",
+      "contact:facebook": "https://www.facebook.com/BarBukaAmsterdam",
+      "email": "connect@barbuka.nl",
+      "name": "Bar Buka",
+      "opening_hours": "Th 17:00-00:00; Fr 17:00-00:30; Sa 17:00-01:00; Su 16:00-20:00",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://barbuka.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:48:54.538Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158606",
+   "addresses": [
+    "Albert Cuypstraat 122B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 122B-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000563523"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610666,
+     "lngLat": [
+      4.8925247,
+      52.3552598
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "122B-H",
+      "addr:postcode": "1072EA",
+      "addr:street": "Albert Cuypstraat",
+      "alt_name": "Koffiehuis De Markt",
+      "amenity": "cafe",
+      "check_date": "2026-01-25",
+      "name": "De Markt",
+      "opening_hours": "Mo-Sa 06:30-19:00",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:48:54.538Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158043",
+   "addresses": [
+    "Albert Cuypstraat 122A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 122A-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000563514"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610658,
+     "lngLat": [
+      4.892449,
+      52.3552478
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "122A-H",
+      "addr:postcode": "1072EA",
+      "addr:street": "Albert Cuypstraat",
+      "name": "MC Jewels",
+      "opening_hours": "Tu-Fr 10:30-17:30; Sa 10:30-17:00",
+      "phone": "+31 20 6626782",
+      "shop": "jewelry",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:48:54.538Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

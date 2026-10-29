@@ -1,0 +1,1637 @@
+{
+ "street": "Quellijnstraat",
+ "seed": "0363100012157887",
+ "members": [
+  "0363100012157887",
+  "0363100012158625",
+  "0363100012164504",
+  "0363100012161788",
+  "0363100012161914",
+  "0363100012156538",
+  "0363100012155636",
+  "0363100012083238",
+  "0363100012233456",
+  "0363100012233597"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012157887 (face continues: 160742)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012233597 (face continues: 236279 148687 135465)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012087825",
+   "reason": "frontage 174.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012074388",
+   "reason": "frontage 45.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012082931",
+   "reason": "frontage 134.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012111128",
+   "reason": "frontage 72.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012062070",
+   "reason": "frontage 95.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012062357",
+   "reason": "frontage 164.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012064884",
+   "reason": "frontage 93.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012065390",
+   "reason": "frontage 54.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012066812",
+   "reason": "frontage 152.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012067998",
+   "reason": "frontage 152.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012068649",
+   "reason": "frontage 136.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012069043",
+   "reason": "frontage 74.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012070028",
+   "reason": "frontage 167.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012071682",
+   "reason": "frontage 32.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012071827",
+   "reason": "frontage 101.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012072408",
+   "reason": "frontage 149.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012073912",
+   "reason": "frontage 95.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012077492",
+   "reason": "frontage 108.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012078655",
+   "reason": "frontage 114.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012079089",
+   "reason": "frontage 61.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012079894",
+   "reason": "frontage 127.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012080690",
+   "reason": "frontage 158.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012081074",
+   "reason": "frontage 48.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012086273",
+   "reason": "frontage 234.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012086799",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012087328",
+   "reason": "frontage 89.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012088937",
+   "reason": "frontage 225.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012089728",
+   "reason": "frontage 130.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012090495",
+   "reason": "frontage 89.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012090747",
+   "reason": "frontage 123.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012091498",
+   "reason": "frontage 163.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012092127",
+   "reason": "frontage 173.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012093059",
+   "reason": "frontage 145.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012093534",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012095224",
+   "reason": "frontage 123.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012096576",
+   "reason": "frontage 109.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012096848",
+   "reason": "frontage 214.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012096849",
+   "reason": "frontage 210.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012098699",
+   "reason": "frontage 133.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012098820",
+   "reason": "frontage 142.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012099258",
+   "reason": "frontage 160.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012099490",
+   "reason": "frontage 161.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012099680",
+   "reason": "frontage 89.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012099987",
+   "reason": "frontage 146.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012103450",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012105340",
+   "reason": "frontage 43.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012105881",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012110929",
+   "reason": "frontage 95.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012152469",
+   "reason": "frontage 147.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012152710",
+   "reason": "frontage 74.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153342",
+   "reason": "frontage 134.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012112064",
+   "reason": "frontage 135.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012113212",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012114350",
+   "reason": "frontage 166.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012116517",
+   "reason": "frontage 160.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012116862",
+   "reason": "frontage 125.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012117995",
+   "reason": "frontage 196.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012118196",
+   "reason": "frontage 172.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012118922",
+   "reason": "frontage 130.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012121704",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012121710",
+   "reason": "frontage 160.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012122272",
+   "reason": "frontage 54.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012122594",
+   "reason": "frontage 125.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012123938",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012129385",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012130367",
+   "reason": "frontage 160.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012130921",
+   "reason": "frontage 202.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012133770",
+   "reason": "frontage 94.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012134159",
+   "reason": "frontage 156.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012134540",
+   "reason": "frontage 124.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012135779",
+   "reason": "frontage 124.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012136130",
+   "reason": "frontage 160.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012138135",
+   "reason": "frontage 159.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012138696",
+   "reason": "frontage 65.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012142126",
+   "reason": "frontage 84.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012143481",
+   "reason": "frontage 141.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012145946",
+   "reason": "frontage 145.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012148007",
+   "reason": "frontage 75.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012149520",
+   "reason": "frontage 57.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012149721",
+   "reason": "frontage 123.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012151199",
+   "reason": "frontage 53.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012151391",
+   "reason": "frontage 175.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012152303",
+   "reason": "frontage 187.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012152335",
+   "reason": "frontage 47.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012152579",
+   "reason": "frontage 130.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012152593",
+   "reason": "frontage 108.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012152613",
+   "reason": "frontage 46.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012152867",
+   "reason": "frontage 133.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012152922",
+   "reason": "frontage 143.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012152944",
+   "reason": "frontage 152.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153081",
+   "reason": "frontage 91.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153116",
+   "reason": "frontage 43.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153280",
+   "reason": "frontage 143.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153321",
+   "reason": "frontage 32.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153328",
+   "reason": "frontage 49.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153586",
+   "reason": "frontage 99.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153602",
+   "reason": "frontage 39.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012154326",
+   "reason": "frontage 96.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155438",
+   "reason": "frontage 149.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155659",
+   "reason": "frontage 43.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155761",
+   "reason": "frontage 134.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012156918",
+   "reason": "frontage 149.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153361",
+   "reason": "frontage 96.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153362",
+   "reason": "frontage 120.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153510",
+   "reason": "frontage 72.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153592",
+   "reason": "frontage 87.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153646",
+   "reason": "frontage 72.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153672",
+   "reason": "frontage 100.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012153684",
+   "reason": "sightline to Quellijnstraat crosses 0363100012155493"
+  },
+  {
+   "pandId": "0363100012154148",
+   "reason": "frontage 74.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012154270",
+   "reason": "frontage 114.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012154349",
+   "reason": "frontage 72.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012154376",
+   "reason": "frontage 107.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012154873",
+   "reason": "frontage 159.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155190",
+   "reason": "frontage 89.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155409",
+   "reason": "sightline to Quellijnstraat crosses 0363100012160742"
+  },
+  {
+   "pandId": "0363100012155486",
+   "reason": "frontage 74.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155493",
+   "reason": "sightline to Quellijnstraat crosses 0363100012162395"
+  },
+  {
+   "pandId": "0363100012155510",
+   "reason": "frontage 112.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155525",
+   "reason": "frontage 72.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155531",
+   "reason": "frontage 148.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155600",
+   "reason": "frontage 37.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155728",
+   "reason": "frontage 136.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155732",
+   "reason": "frontage 43.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155819",
+   "reason": "frontage 109.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155840",
+   "reason": "frontage 39.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012155977",
+   "reason": "frontage 109.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012156061",
+   "reason": "frontage 74.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012156114",
+   "reason": "frontage 73.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012156195",
+   "reason": "frontage 109.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012156480",
+   "reason": "frontage 109.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012156636",
+   "reason": "frontage 134.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012156746",
+   "reason": "frontage 32.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012156872",
+   "reason": "frontage 108.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012156937",
+   "reason": "frontage 39.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012156971",
+   "reason": "frontage 146.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012157140",
+   "reason": "frontage 72.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012157683",
+   "reason": "frontage 45.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012158664",
+   "reason": "frontage 74.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012159553",
+   "reason": "frontage 133.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012159856",
+   "reason": "frontage 106.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012159865",
+   "reason": "frontage 74.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012157216",
+   "reason": "frontage 52.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012157291",
+   "reason": "frontage 102.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012157294",
+   "reason": "frontage 72.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012157446",
+   "reason": "frontage 103.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012157463",
+   "reason": "frontage 159.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012157600",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012157614",
+   "reason": "frontage 47.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012157668",
+   "reason": "frontage 112.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012157729",
+   "reason": "frontage 39.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012157731",
+   "reason": "frontage 47.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012158091",
+   "reason": "frontage 107.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012158262",
+   "reason": "frontage 136.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012158604",
+   "reason": "frontage 53.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012158633",
+   "reason": "frontage 72.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012158731",
+   "reason": "frontage 136.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012158890",
+   "reason": "frontage 42.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012158917",
+   "reason": "frontage 46.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012158941",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012158972",
+   "reason": "frontage 47.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012158976",
+   "reason": "frontage 40.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012158987",
+   "reason": "frontage 151.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012159103",
+   "reason": "frontage 45.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012159178",
+   "reason": "frontage 89.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012159179",
+   "reason": "frontage 101.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012159244",
+   "reason": "frontage 74.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012159354",
+   "reason": "sightline to Quellijnstraat crosses 0363100012135465"
+  },
+  {
+   "pandId": "0363100012159456",
+   "reason": "frontage 72.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012159558",
+   "reason": "frontage 123.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012159604",
+   "reason": "frontage 106.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012159617",
+   "reason": "frontage 32.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012159685",
+   "reason": "frontage 151.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012159703",
+   "reason": "frontage 109.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160093",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160151",
+   "reason": "frontage 46.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160198",
+   "reason": "frontage 136.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160200",
+   "reason": "frontage 95.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160263",
+   "reason": "frontage 40.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160332",
+   "reason": "frontage 163.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160699",
+   "reason": "frontage 134.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012161104",
+   "reason": "frontage 74.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162050",
+   "reason": "frontage 43.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160421",
+   "reason": "frontage 108.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160429",
+   "reason": "frontage 75.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160553",
+   "reason": "frontage 72.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160573",
+   "reason": "frontage 48.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160596",
+   "reason": "frontage 74.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160700",
+   "reason": "frontage 134.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160712",
+   "reason": "frontage 72.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012160791",
+   "reason": "frontage 158.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012161247",
+   "reason": "frontage 47.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012161417",
+   "reason": "frontage 43.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012161471",
+   "reason": "frontage 133.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012161600",
+   "reason": "frontage 147.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012161816",
+   "reason": "frontage 106.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012161957",
+   "reason": "sightline to Quellijnstraat crosses 0363100012162798"
+  },
+  {
+   "pandId": "0363100012162009",
+   "reason": "frontage 136.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162055",
+   "reason": "frontage 74.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162065",
+   "reason": "frontage 32.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162196",
+   "reason": "frontage 72.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162212",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162222",
+   "reason": "frontage 117.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162263",
+   "reason": "sightline to Quellijnstraat crosses 0363100012160742"
+  },
+  {
+   "pandId": "0363100012162317",
+   "reason": "frontage 44.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162318",
+   "reason": "frontage 121.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162322",
+   "reason": "frontage 74.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162399",
+   "reason": "frontage 34.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162417",
+   "reason": "frontage 180.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162486",
+   "reason": "frontage 74.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162576",
+   "reason": "frontage 145.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162593",
+   "reason": "frontage 108.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162598",
+   "reason": "frontage 74.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162709",
+   "reason": "frontage 106.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162731",
+   "reason": "frontage 45.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162831",
+   "reason": "frontage 37.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162885",
+   "reason": "frontage 108.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162907",
+   "reason": "frontage 137.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012162924",
+   "reason": "frontage 47.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163120",
+   "reason": "frontage 72.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163377",
+   "reason": "frontage 74.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164142",
+   "reason": "frontage 45.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166062",
+   "reason": "frontage 72.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163052",
+   "reason": "frontage 116.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163098",
+   "reason": "frontage 114.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163135",
+   "reason": "frontage 154.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163137",
+   "reason": "frontage 133.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163164",
+   "reason": "frontage 134.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163196",
+   "reason": "frontage 47.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163233",
+   "reason": "frontage 157.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163235",
+   "reason": "frontage 40.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163246",
+   "reason": "frontage 139.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163396",
+   "reason": "frontage 112.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163485",
+   "reason": "sightline to Quellijnstraat crosses 0363100012153684"
+  },
+  {
+   "pandId": "0363100012163556",
+   "reason": "frontage 109.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163595",
+   "reason": "frontage 79.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163608",
+   "reason": "frontage 74.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163619",
+   "reason": "frontage 107.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163636",
+   "reason": "sightline to Quellijnstraat crosses 0363100012160742"
+  },
+  {
+   "pandId": "0363100012163767",
+   "reason": "frontage 46.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012163963",
+   "reason": "frontage 34.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164016",
+   "reason": "frontage 72.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164149",
+   "reason": "frontage 109.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164261",
+   "reason": "frontage 85.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164316",
+   "reason": "frontage 155.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164339",
+   "reason": "frontage 72.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164404",
+   "reason": "frontage 136.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164541",
+   "reason": "frontage 134.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164596",
+   "reason": "frontage 140.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164608",
+   "reason": "frontage 161.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164659",
+   "reason": "frontage 72.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164796",
+   "reason": "frontage 106.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164799",
+   "reason": "frontage 136.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012164898",
+   "reason": "frontage 74.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012165275",
+   "reason": "frontage 101.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012165478",
+   "reason": "frontage 72.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012165482",
+   "reason": "frontage 142.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012165641",
+   "reason": "frontage 102.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012165741",
+   "reason": "frontage 150.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012165850",
+   "reason": "frontage 48.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012165952",
+   "reason": "frontage 47.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012165989",
+   "reason": "frontage 46.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166055",
+   "reason": "frontage 72.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012167425",
+   "reason": "frontage 106.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012167426",
+   "reason": "frontage 133.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012190846",
+   "reason": "frontage 95.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166068",
+   "reason": "sightline to Quellijnstraat crosses 0363100012135465"
+  },
+  {
+   "pandId": "0363100012166097",
+   "reason": "frontage 152.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166204",
+   "reason": "frontage 72.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166226",
+   "reason": "frontage 74.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166231",
+   "reason": "frontage 136.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166390",
+   "reason": "frontage 106.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166428",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166483",
+   "reason": "frontage 165.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166489",
+   "reason": "frontage 74.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166549",
+   "reason": "frontage 96.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166578",
+   "reason": "frontage 136.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166599",
+   "reason": "frontage 136.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166627",
+   "reason": "frontage 74.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166630",
+   "reason": "frontage 46.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166655",
+   "reason": "frontage 133.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012166810",
+   "reason": "frontage 40.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012167015",
+   "reason": "frontage 74.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012167059",
+   "reason": "frontage 74.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012167062",
+   "reason": "sightline to Quellijnstraat crosses 0363100012135465"
+  },
+  {
+   "pandId": "0363100012167124",
+   "reason": "frontage 37.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012167165",
+   "reason": "frontage 72.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012167242",
+   "reason": "frontage 84.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012167283",
+   "reason": "frontage 149.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012167431",
+   "reason": "frontage 133.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012183259",
+   "reason": "frontage 31.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012183543",
+   "reason": "frontage 144.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012183544",
+   "reason": "frontage 141.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012189110",
+   "reason": "sightline to Quellijnstraat crosses 0363100012148687"
+  },
+  {
+   "pandId": "0363100012189956",
+   "reason": "frontage 95.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012190726",
+   "reason": "frontage 212.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012191807",
+   "reason": "sightline to Quellijnstraat crosses 0363100012098847"
+  },
+  {
+   "pandId": "0363100012197306",
+   "reason": "frontage 142.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012197307",
+   "reason": "frontage 151.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012206448",
+   "reason": "frontage 95.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012207269",
+   "reason": "frontage 98.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012209281",
+   "reason": "frontage 162.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012209336",
+   "reason": "frontage 146.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012210979",
+   "reason": "frontage 98.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012215371",
+   "reason": "frontage 98.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012215721",
+   "reason": "frontage 95.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012218173",
+   "reason": "sightline to Quellijnstraat crosses 0363100012161788"
+  },
+  {
+   "pandId": "0363100012221243",
+   "reason": "sightline to Quellijnstraat crosses 0363100012155636"
+  },
+  {
+   "pandId": "0363100012224122",
+   "reason": "frontage 74.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012224807",
+   "reason": "frontage 34.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012224808",
+   "reason": "frontage 38.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012226693",
+   "reason": "frontage 92.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012227385",
+   "reason": "frontage 95.1 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012233622",
+   "reason": "frontage 36.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236534",
+   "reason": "frontage 133.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236583",
+   "reason": "frontage 97.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012237225",
+   "reason": "frontage 41.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012237354",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012231161",
+   "reason": "sightline to Quellijnstraat crosses 0363100012236279"
+  },
+  {
+   "pandId": "0363100012231162",
+   "reason": "frontage 30.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012233419",
+   "reason": "sightline to Quellijnstraat crosses 0363100012152965"
+  },
+  {
+   "pandId": "0363100012233523",
+   "reason": "frontage 145.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012233526",
+   "reason": "frontage 73.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012233591",
+   "reason": "frontage 139.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012235923",
+   "reason": "frontage 109.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012235966",
+   "reason": "frontage 136.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012235994",
+   "reason": "frontage 73.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236004",
+   "reason": "frontage 127.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236103",
+   "reason": "frontage 170.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236108",
+   "reason": "frontage 109.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236127",
+   "reason": "frontage 32.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236161",
+   "reason": "frontage 159.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236169",
+   "reason": "frontage 105.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236267",
+   "reason": "frontage 97.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236293",
+   "reason": "frontage 195.4 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236483",
+   "reason": "frontage 155.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236524",
+   "reason": "frontage 106.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236548",
+   "reason": "frontage 98.0 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236608",
+   "reason": "frontage 131.9 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236766",
+   "reason": "frontage 106.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012236794",
+   "reason": "frontage 138.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012237018",
+   "reason": "frontage 72.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012237026",
+   "reason": "sightline to Quellijnstraat crosses 0363100012161957"
+  },
+  {
+   "pandId": "0363100012237124",
+   "reason": "frontage 126.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012237155",
+   "reason": "frontage 133.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012237190",
+   "reason": "no frontage on Quellijnstraat: No footprint edge faces Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012237203",
+   "reason": "frontage 173.3 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012237318",
+   "reason": "frontage 150.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012237352",
+   "reason": "frontage 150.5 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012237360",
+   "reason": "frontage 31.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012237377",
+   "reason": "frontage 153.2 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012237381",
+   "reason": "frontage 74.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012239265",
+   "reason": "frontage 32.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012240320",
+   "reason": "frontage 56.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012246868",
+   "reason": "frontage 156.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012248029",
+   "reason": "frontage 31.6 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012250514",
+   "reason": "frontage 67.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012254660",
+   "reason": "frontage 163.8 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012255082",
+   "reason": "frontage 61.7 m from Quellijnstraat"
+  },
+  {
+   "pandId": "0363100012098847",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152965",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153825",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153748",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155984",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156282",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157381",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158953",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159084",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160369",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160359",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161718",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162798",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164644",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164648",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164119",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164256",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012157887",
+   "alongM": 0,
+   "widthM": 6.2,
+   "eavesM": 16.13,
+   "roofMaxM": 18.59,
+   "storeys3dbag": 5,
+   "builtYear": 1876,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158625",
+   "alongM": 6.35,
+   "widthM": 6.5,
+   "eavesM": 10.65,
+   "roofMaxM": 14.52,
+   "storeys3dbag": 4,
+   "builtYear": 1879,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012164504",
+   "alongM": 12.85,
+   "widthM": 6.5,
+   "eavesM": 10.5,
+   "roofMaxM": 14.4,
+   "storeys3dbag": 4,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161788",
+   "alongM": 19.45,
+   "widthM": 6.7,
+   "eavesM": 14,
+   "roofMaxM": 16.24,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161914",
+   "alongM": 26.18,
+   "widthM": 6.75,
+   "eavesM": 15.6,
+   "roofMaxM": 18.54,
+   "storeys3dbag": 5,
+   "builtYear": 1876,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156538",
+   "alongM": 33.13,
+   "widthM": 4.99,
+   "eavesM": 14.53,
+   "roofMaxM": 17.31,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155636",
+   "alongM": 38.88,
+   "widthM": 6.5,
+   "eavesM": 13.21,
+   "roofMaxM": 16.9,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012083238",
+   "alongM": 45.38,
+   "widthM": 6.5,
+   "eavesM": 13.26,
+   "roofMaxM": 16.91,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012233456",
+   "alongM": 55.13,
+   "widthM": 13,
+   "eavesM": 13.26,
+   "roofMaxM": 16.91,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012233597",
+   "alongM": 68.13,
+   "widthM": 13,
+   "eavesM": 13.32,
+   "roofMaxM": 16.62,
+   "storeys3dbag": 5,
+   "builtYear": 1878,
+   "uncertainty": []
+  }
+ ]
+}

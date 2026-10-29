@@ -1,0 +1,268 @@
+{
+ "street": "Frans Halsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163595",
+   "addresses": [
+    "Frans Halsstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 55-H",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010000992324"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167242",
+   "addresses": [
+    "Frans Halsstraat 57B",
+    "Frans Halsstraat 57A",
+    "Frans Halsstraat 57C",
+    "Frans Halsstraat 57D",
+    "Frans Halsstraat 57E",
+    "Frans Halsstraat 57F",
+    "Frans Halsstraat 57G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 57A",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000638464"
+    },
+    {
+     "address": "Frans Halsstraat 57C",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012095458"
+    },
+    {
+     "address": "Frans Halsstraat 57D",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012095459"
+    },
+    {
+     "address": "Frans Halsstraat 57E",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012095460"
+    },
+    {
+     "address": "Frans Halsstraat 57F",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012116380"
+    },
+    {
+     "address": "Frans Halsstraat 57G",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012116381"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090495",
+   "addresses": [
+    "Frans Halsstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000638468"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062070",
+   "addresses": [
+    "Frans Halsstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 61-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000638477"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153672",
+   "addresses": [
+    "Frans Halsstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 63-H",
+     "use": "winkelfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000638491"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506079504,
+     "lngLat": [
+      4.8887526,
+      52.3559399
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "63-H",
+      "addr:postcode": "1072BM",
+      "addr:street": "Frans Halsstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-09",
+      "contact:instagram": "porchetteria_amsterdam",
+      "cuisine": "pizza",
+      "mobile": "+31657068202",
+      "name": "Porchetteria",
+      "note": "Restaurant lists no hours outside of Google Maps. Restaurant website is listed as http://porchetteria-amsterdam.nl, however this website is broken.",
+      "opening_hours": "We-Fr 18:00-22:00; Sa 12:30-16:00, 17:30-22:00; Su 12:30-16:30",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.instagram.com/porchetteria_amsterdam"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162709",
+   "addresses": [
+    "Frans Halsstraat 65"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13449914114,
+     "lngLat": [
+      4.8886659,
+      52.355859
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK03211",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 3.6
+    },
+    {
+     "type": "node",
+     "id": 13449914115,
+     "lngLat": [
+      4.8886701,
+      52.3558886
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK03104",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 3.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155510",
+   "addresses": [
+    "Frans Halsstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 67-H",
+     "use": "winkelfunctie",
+     "areaM2": 122,
+     "bagId": "0363010001038266"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 497165620,
+     "lngLat": [
+      4.8887601,
+      52.3558266
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "67-H",
+      "addr:postcode": "1072BM",
+      "addr:street": "Frans Halsstraat",
+      "check_date": "2026-01-08",
+      "drive_through": "no",
+      "email": "info@vkwijn.nl",
+      "name": "Wijnhandel van Krimpen",
+      "opening_hours": "Tu-Fr 10:00-19:00; Sa 10:00-19:00",
+      "payment:contactless": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 6716130",
+      "shop": "wine",
+      "short_name": "Van Krimpen",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.vkwijn.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13449914114,
+     "lngLat": [
+      4.8886659,
+      52.355859
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK03211",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 3.6
+    }
+   ]
+  }
+ ]
+}

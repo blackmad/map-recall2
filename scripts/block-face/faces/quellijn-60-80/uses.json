@@ -1,0 +1,259 @@
+{
+ "street": "Quellijnstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158342",
+   "addresses": [
+    "Quellijnstraat 80",
+    "Quellijnstraat 80A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 80-H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000996315"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155821",
+   "addresses": [
+    "Quellijnstraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 78-H",
+     "use": "woonfunctie",
+     "areaM2": 163,
+     "bagId": "0363010000787045"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164473",
+   "addresses": [
+    "Quellijnstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 76-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000787038"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153825",
+   "addresses": [
+    "Quellijnstraat 74",
+    "Quellijnstraat 74A",
+    "Quellijnstraat 74B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 74-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000787031"
+    },
+    {
+     "address": "Quellijnstraat 74A",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012140965"
+    },
+    {
+     "address": "Quellijnstraat 74B",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012140966"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164644",
+   "addresses": [
+    "Quellijnstraat 72",
+    "Quellijnstraat 72B",
+    "Quellijnstraat 72A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 72-H",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000787024"
+    },
+    {
+     "address": "Quellijnstraat 72B",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012605596"
+    },
+    {
+     "address": "Quellijnstraat 72A",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012605595"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160369",
+   "addresses": [
+    "Quellijnstraat 70",
+    "Quellijnstraat 70A",
+    "Quellijnstraat 70B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 70-H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000787017"
+    },
+    {
+     "address": "Quellijnstraat 70A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012152897"
+    },
+    {
+     "address": "Quellijnstraat 70B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012152898"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13430506286,
+     "lngLat": [
+      4.8896454,
+      52.3567731
+     ],
+     "tags": {
+      "amenity": "public_bookcase"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 0.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164648",
+   "addresses": [
+    "Quellijnstraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 68-H",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000787010"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159084",
+   "addresses": [
+    "Quellijnstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 62",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 884,
+     "bagId": "0363010000787009"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13442713544,
+     "lngLat": [
+      4.8893264,
+      52.3567302
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62",
+      "addr:postcode": "1072XV",
+      "addr:street": "Quellijnstraat",
+      "amenity": "dancing_school",
+      "education": "dancing_school",
+      "email": "info@dans-dansen.nl",
+      "name": "Dans Dansen",
+      "phone": "+31 20 7796770",
+      "website": "https://www.dans-dansen.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13442713545,
+     "lngLat": [
+      4.8892756,
+      52.3567653
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62",
+      "addr:postcode": "1072XV",
+      "addr:street": "Quellijnstraat",
+      "amenity": "community_centre",
+      "community_centre": "community_hall",
+      "email": "buurtkamer@stichtingprisma.nl",
+      "name": "Buurtkamer Quellijn",
+      "operator": "Stichting Prisma",
+      "operator:type": "charitable",
+      "website": "https://buurtkamerquellijn.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155984",
+   "addresses": [
+    "Quellijnstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 60-H",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010003696381"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

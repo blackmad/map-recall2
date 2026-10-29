@@ -1,0 +1,57 @@
+{
+ "street": "Saenredamstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159593",
+   "addresses": [
+    "Saenredamstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 66-H",
+     "use": "winkelfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000802772"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156620",
+   "addresses": [
+    "Saenredamstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 64-H",
+     "use": "winkelfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000802764"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154200",
+   "addresses": [
+    "Saenredamstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 62-H",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000802757"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

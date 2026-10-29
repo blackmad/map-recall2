@@ -1,0 +1,193 @@
+{
+ "street": "Eerste Sweelinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012081229",
+   "addresses": [
+    "Eerste Sweelinckstraat 34",
+    "Eerste Sweelinckstraat 36",
+    "Eerste Sweelinckstraat 38",
+    "Eerste Sweelinckstraat 40",
+    "Eerste Sweelinckstraat 42",
+    "Eerste Sweelinckstraat 44",
+    "Eerste Sweelinckstraat 46",
+    "Eerste Sweelinckstraat 48",
+    "Eerste Sweelinckstraat 50",
+    "Eerste Sweelinckstraat 52",
+    "Eerste Sweelinckstraat 54",
+    "Eerste Sweelinckstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Sweelinckstraat 36",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000648885"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 38",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000648886"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 40",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000648887"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 42",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000665131"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 48",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000664574"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 44",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000672975"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 46",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000675950"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 54",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000676072"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 50",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000676073"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 34",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000676074"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 56",
+     "use": "winkelfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000710639"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 52",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000989741"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558849,
+     "lngLat": [
+      4.8977737,
+      52.35578
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "34",
+      "addr:postcode": "1073CM",
+      "addr:street": "Eerste Sweelinckstraat",
+      "beauty": "nails;skin_care;hair_removal;spa;eyelash;eyebrow",
+      "check_date": "2026-01-20",
+      "email": "sunnybeautyspot@hotmail.com",
+      "name": "Sunny’s Beauty Spot",
+      "opening_hours": "Tu-We,Fr 10:00-18:00; Th 10:00-20:00; Sa 09:00-17:00",
+      "phone": "+31 20 6716359",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.sunnysbeautyspot.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817559350,
+     "lngLat": [
+      4.8978601,
+      52.3556642
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "56",
+      "addr:postcode": "1073CM",
+      "addr:street": "Eerste Sweelinckstraat",
+      "check_date": "2026-01-20",
+      "description": "Design furniture and giftshop, beautifull products from vazes till books and sofas. ",
+      "email": "info@mudinmay.com",
+      "level": "0",
+      "name": "Mud In May",
+      "opening_hours": "Tu-Fr 11:00-18:00; Sa 11:00-17:00",
+      "payment:cash": "no",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 737 2518",
+      "shop": "interior_decoration",
+      "source": "BAG;local knowledge",
+      "source:date": "2014-03-24",
+      "website": "https://www.mudinmay.com",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157183",
+   "addresses": [
+    "Eerste Sweelinckstraat 24",
+    "Eerste Sweelinckstraat 26",
+    "Eerste Sweelinckstraat 28",
+    "Eerste Sweelinckstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Sweelinckstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001994658"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001994659"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012145126"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

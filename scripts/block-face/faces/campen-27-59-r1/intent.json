@@ -1,0 +1,104 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "campen-27-59-r1",
+ "street": "Eerste Jacob van Campenstraat",
+ "sources": [
+  {
+   "id": "strip-2021-04-23",
+   "kind": "street-panorama",
+   "capturedAt": "2021-04-23",
+   "image": "staging/block-face/campen-27-59-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frans Halsbuurt); scores and holds in scripts/block-face/faces/campen-27-59/auto-place.json"
+ },
+ "types": [
+  "pijp-1875-shop-dormer"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012152710",
+   "slug": "campen-152710",
+   "address": "Eerste Jacob van Campenstraat 37",
+   "type": {
+    "type": "pijp-1875-shop-dormer",
+    "measuredPalette": {
+     "brick": "#857d73",
+     "evidence": "strip 2021-04-23 span 1285-1517: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [],
+    "photoDate": "2021-04-23",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1875-shop-dormer scored 0.8 on eaves 0.5, roof 1, stucco 1; strip 2021-04-23 span 1285-1517"
+   }
+  },
+  {
+   "pandId": "0363100012161104",
+   "slug": "campen-161104",
+   "address": "Eerste Jacob van Campenstraat 39",
+   "type": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#998167",
+      "fascia": true,
+      "name": "Five City Spa",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (industriefunctie, shop=massage); fascia colour measured on the strip 2021-04-23 span 1517-1745"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#9b836e",
+     "evidence": "strip 2021-04-23 span 1517-1745: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Five City Spa",
+    "category": "shop=massage",
+    "osm": {
+     "type": "node",
+     "id": 9035360322,
+     "name": "Five City Spa"
+    },
+    "bag": [
+     "industriefunctie"
+    ],
+    "photoDate": "2021-04-23",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1875-shop-dormer scored 0.8 on eaves 0.5, roof 1, stucco 1; strip 2021-04-23 span 1517-1745"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

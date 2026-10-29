@@ -1,0 +1,47 @@
+{
+ "street": "Frans Halsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237026",
+   "addresses": [
+    "Frans Halsstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001021615"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161957",
+   "addresses": [
+    "Frans Halsstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000638450"
+    },
+    {
+     "address": "Frans Halsstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012159859"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

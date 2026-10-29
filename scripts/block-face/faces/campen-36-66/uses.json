@@ -1,0 +1,408 @@
+{
+ "street": "Eerste Jacob van Campenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159600",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 64-H",
+     "use": "industriefunctie",
+     "areaM2": 84,
+     "bagId": "0363010000545845"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163981",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 62-H",
+     "use": "industriefunctie",
+     "areaM2": 204,
+     "bagId": "0363010000545842"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1475042617,
+     "lngLat": [
+      4.8902249,
+      52.3573682
+     ],
+     "tags": {
+      "amenity": "parking",
+      "capacity": "1",
+      "covered": "no",
+      "fee": "no",
+      "orientation": "parallel",
+      "parking": "street_side",
+      "parking:right:restriction": "loading_only",
+      "surface": "paving_stones"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 3.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166419",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 60-H",
+     "use": "industriefunctie",
+     "areaM2": 129,
+     "bagId": "0363010000545839"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156123",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 58-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000545835"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156663",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000545828"
+    },
+    {
+     "address": "Eerste Jacob van Campenstraat 56-H",
+     "use": "industriefunctie",
+     "areaM2": 137,
+     "bagId": "0363010012063884"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9035360362,
+     "lngLat": [
+      4.889948,
+      52.3572951
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "56-H",
+      "addr:postcode": "1072BH",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "branch": "De Pijp",
+      "check_date": "2026-01-03",
+      "check_date:opening_hours": "2026-01-03",
+      "email": "glowwellspabeauty@gmail.com",
+      "name": "Glow Well",
+      "opening_hours": "Mo-Su 10:30-22:30",
+      "phone": "+31 20 7850820",
+      "shop": "massage",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "website": "https://glowwellspa.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012233622",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 52",
+    "Eerste Jacob van Campenstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 54-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000998423"
+    },
+    {
+     "address": "Eerste Jacob van Campenstraat 52-H",
+     "use": "woonfunctie",
+     "areaM2": 170,
+     "bagId": "0363010001040382"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4500910636,
+     "lngLat": [
+      4.8898583,
+      52.3573232
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "54-H",
+      "addr:postcode": "1072BH",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "amenity": "restaurant",
+      "branch": "De Pijp",
+      "cafe": "yes",
+      "check_date": "2026-01-03",
+      "contact:facebook": "https://www.facebook.com/BakersandRoasters",
+      "contact:instagram": "https://www.instagram.com/bakersandroasters/",
+      "cuisine": "breakfast;brunch",
+      "email": "hello@bakersandroasters.com",
+      "name": "Bakers & Roasters",
+      "opening_hours": "Mo-Su 08:30-16:00; Jan 01,Apr 26,Dec 25,26 off",
+      "source": "BAG",
+      "source:date": "2021-10-03",
+      "website": "https://www.bakersandroasters.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153602",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000545805"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162050",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000545794"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155659",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000545784"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153116",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000545777"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817454326,
+     "lngLat": [
+      4.8894123,
+      52.3573663
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "44-H",
+      "addr:postcode": "1072BG",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "education": "yes",
+      "name": "WeLoveTraffic.nl",
+      "office": "educational_institution",
+      "opening_hours": "Mo-Fr 09:00-17:00",
+      "phone": "+31 6 49678282",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://welovetraffic.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158890",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000545771"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158976",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 40-H",
+     "use": "sportfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000545764"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817454122,
+     "lngLat": [
+      4.889212,
+      52.3573559
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "40-H",
+      "addr:postcode": "1072BG",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "branch": "De Pijp",
+      "check_date": "2026-01-03",
+      "contact:instagram": "https://www.instagram.com/desteekamsterdam",
+      "email": "depijp@desteekamsterdam.nl",
+      "name": "De Steek",
+      "opening_hours": "We-Th 16:00-22:00; Fr-Sa 11:00-17:00",
+      "phone": "+31 20 3312535",
+      "shop": "sewing",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://desteekamsterdam.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160263",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 38-H",
+     "use": "winkelfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001005509"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817453739,
+     "lngLat": [
+      4.8891235,
+      52.3573644
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "38-H",
+      "addr:postcode": "1072BG",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "female": "yes",
+      "male": "yes",
+      "name": "Galerie Sauvage",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.galeriesauvage.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161247",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000545751"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

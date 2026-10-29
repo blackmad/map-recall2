@@ -1,0 +1,2591 @@
+{
+ "street": "Govert Flinckstraat",
+ "seed": "0363100012133038",
+ "members": [
+  "0363100012133038",
+  "0363100012237342",
+  "0363100012235939",
+  "0363100012159755",
+  "0363100012167034",
+  "0363100012158334",
+  "0363100012136696",
+  "0363100012166356",
+  "0363100012160819",
+  "0363100012157076",
+  "0363100012153115",
+  "0363100012161833",
+  "0363100012233677",
+  "0363100012155562",
+  "0363100012165882",
+  "0363100012159291"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012236333 36.1 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012159291 (face continues: 160797 236367 159884 152509 158149 154096 159245 160913 093594 162792 236568 236246 236018)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012070072",
+   "reason": "frontage 135.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012072320",
+   "reason": "frontage 127.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012087190",
+   "reason": "frontage 85.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012087419",
+   "reason": "frontage 40.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012091682",
+   "reason": "frontage 70.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012092305",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012118394"
+  },
+  {
+   "pandId": "0363100012097977",
+   "reason": "frontage 129.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012102639",
+   "reason": "frontage 86.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012110677",
+   "reason": "frontage 109.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012110869",
+   "reason": "frontage 38.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012110961",
+   "reason": "frontage 57.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012117458",
+   "reason": "frontage 37.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012066364",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012074800"
+  },
+  {
+   "pandId": "0363100012071837",
+   "reason": "frontage 123.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012077763",
+   "reason": "frontage 101.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012084221",
+   "reason": "frontage 83.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012091135",
+   "reason": "frontage 58.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012092769",
+   "reason": "frontage 135.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012096104",
+   "reason": "frontage 57.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012097213",
+   "reason": "frontage 99.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012104845",
+   "reason": "frontage 123.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012110857",
+   "reason": "frontage 78.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012069980",
+   "reason": "frontage 167.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012073807",
+   "reason": "frontage 81.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012074329",
+   "reason": "frontage 106.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012077619",
+   "reason": "frontage 60.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012082931",
+   "reason": "frontage 120.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012089864",
+   "reason": "frontage 60.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012093267",
+   "reason": "frontage 60.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012094355",
+   "reason": "frontage 74.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012098051",
+   "reason": "frontage 61.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012111128",
+   "reason": "frontage 172.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012113340",
+   "reason": "frontage 103.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012115810",
+   "reason": "frontage 136.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012062070",
+   "reason": "frontage 183.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012068649",
+   "reason": "frontage 159.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012069043",
+   "reason": "frontage 216.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012090495",
+   "reason": "frontage 187.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012098699",
+   "reason": "frontage 143.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012112064",
+   "reason": "frontage 157.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012124310",
+   "reason": "frontage 85.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012132212",
+   "reason": "frontage 44.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012134263",
+   "reason": "frontage 70.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012140304",
+   "reason": "frontage 81.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012141582",
+   "reason": "frontage 111.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012142566",
+   "reason": "frontage 78.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012145173",
+   "reason": "frontage 110.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012146804",
+   "reason": "frontage 69.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152433",
+   "reason": "frontage 141.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152526",
+   "reason": "frontage 138.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152556",
+   "reason": "frontage 59.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152650",
+   "reason": "frontage 60.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152658",
+   "reason": "frontage 75.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152721",
+   "reason": "frontage 77.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152812",
+   "reason": "frontage 61.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152852",
+   "reason": "frontage 83.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152878",
+   "reason": "frontage 69.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152902",
+   "reason": "frontage 67.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153140",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012157290"
+  },
+  {
+   "pandId": "0363100012130515",
+   "reason": "frontage 98.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012130973",
+   "reason": "frontage 58.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012134984",
+   "reason": "frontage 34.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012142959",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012061406"
+  },
+  {
+   "pandId": "0363100012148158",
+   "reason": "frontage 34.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012151175",
+   "reason": "frontage 98.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152693",
+   "reason": "frontage 85.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152725",
+   "reason": "frontage 57.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152952",
+   "reason": "frontage 99.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153039",
+   "reason": "frontage 100.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012119135",
+   "reason": "frontage 167.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012127543",
+   "reason": "frontage 59.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012136858",
+   "reason": "frontage 59.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012140727",
+   "reason": "frontage 187.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012141534",
+   "reason": "frontage 103.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152469",
+   "reason": "frontage 101.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152738",
+   "reason": "frontage 150.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152502",
+   "reason": "frontage 128.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152867",
+   "reason": "frontage 133.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012152922",
+   "reason": "frontage 140.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153081",
+   "reason": "frontage 198.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153210",
+   "reason": "frontage 32.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153266",
+   "reason": "frontage 70.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153320",
+   "reason": "frontage 77.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153336",
+   "reason": "frontage 66.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153403",
+   "reason": "frontage 42.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153598",
+   "reason": "frontage 42.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153608",
+   "reason": "frontage 57.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153648",
+   "reason": "frontage 65.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153695",
+   "reason": "frontage 136.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153745",
+   "reason": "frontage 143.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153779",
+   "reason": "frontage 58.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012154109",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012161833"
+  },
+  {
+   "pandId": "0363100012154191",
+   "reason": "frontage 40.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012154260",
+   "reason": "frontage 154.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012154298",
+   "reason": "frontage 41.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012154405",
+   "reason": "frontage 57.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155352",
+   "reason": "frontage 111.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155384",
+   "reason": "frontage 166.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155443",
+   "reason": "frontage 32.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155544",
+   "reason": "frontage 64.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155555",
+   "reason": "frontage 62.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153294",
+   "reason": "frontage 111.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153511",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012121342"
+  },
+  {
+   "pandId": "0363100012153530",
+   "reason": "frontage 76.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012154217",
+   "reason": "frontage 80.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155326",
+   "reason": "frontage 98.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155345",
+   "reason": "frontage 100.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153342",
+   "reason": "frontage 117.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153390",
+   "reason": "frontage 100.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153437",
+   "reason": "frontage 126.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153444",
+   "reason": "frontage 134.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153546",
+   "reason": "frontage 77.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153586",
+   "reason": "frontage 146.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012154150",
+   "reason": "frontage 145.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012154200",
+   "reason": "frontage 111.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012154326",
+   "reason": "frontage 144.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012154395",
+   "reason": "frontage 139.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155337",
+   "reason": "frontage 107.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155438",
+   "reason": "frontage 100.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155514",
+   "reason": "frontage 117.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153510",
+   "reason": "frontage 186.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153646",
+   "reason": "frontage 207.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012153672",
+   "reason": "frontage 176.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012154148",
+   "reason": "frontage 220.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155510",
+   "reason": "frontage 167.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155525",
+   "reason": "frontage 190.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155595",
+   "reason": "frontage 58.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155915",
+   "reason": "frontage 126.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155952",
+   "reason": "frontage 167.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155954",
+   "reason": "frontage 153.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156313",
+   "reason": "frontage 174.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156467",
+   "reason": "frontage 58.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156486",
+   "reason": "frontage 58.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156490",
+   "reason": "frontage 66.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156719",
+   "reason": "frontage 159.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157073",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012133038"
+  },
+  {
+   "pandId": "0363100012157290",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012158174"
+  },
+  {
+   "pandId": "0363100012157354",
+   "reason": "frontage 67.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155791",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012098763"
+  },
+  {
+   "pandId": "0363100012155836",
+   "reason": "frontage 57.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155858",
+   "reason": "frontage 74.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156147",
+   "reason": "frontage 103.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156396",
+   "reason": "frontage 87.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156479",
+   "reason": "frontage 100.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156625",
+   "reason": "frontage 98.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156644",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012121342"
+  },
+  {
+   "pandId": "0363100012156891",
+   "reason": "frontage 98.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156956",
+   "reason": "frontage 125.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157170",
+   "reason": "frontage 124.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155721",
+   "reason": "frontage 107.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155760",
+   "reason": "frontage 139.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155761",
+   "reason": "frontage 118.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155782",
+   "reason": "frontage 100.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155889",
+   "reason": "frontage 60.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155901",
+   "reason": "frontage 141.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155925",
+   "reason": "frontage 101.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155928",
+   "reason": "frontage 74.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156473",
+   "reason": "frontage 80.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156620",
+   "reason": "frontage 110.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156649",
+   "reason": "frontage 79.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156741",
+   "reason": "frontage 170.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156810",
+   "reason": "frontage 104.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156811",
+   "reason": "frontage 60.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156918",
+   "reason": "frontage 100.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156921",
+   "reason": "frontage 161.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157365",
+   "reason": "frontage 107.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012155819",
+   "reason": "frontage 189.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156195",
+   "reason": "frontage 179.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156480",
+   "reason": "frontage 162.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156636",
+   "reason": "frontage 125.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156872",
+   "reason": "frontage 175.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012156971",
+   "reason": "frontage 146.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157382",
+   "reason": "frontage 137.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157388",
+   "reason": "frontage 138.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157422",
+   "reason": "frontage 133.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157462",
+   "reason": "frontage 139.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157475",
+   "reason": "frontage 59.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157585",
+   "reason": "frontage 165.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157589",
+   "reason": "frontage 75.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157747",
+   "reason": "frontage 40.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157837",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012160536"
+  },
+  {
+   "pandId": "0363100012158002",
+   "reason": "frontage 166.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158043",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012159245"
+  },
+  {
+   "pandId": "0363100012158070",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012133038"
+  },
+  {
+   "pandId": "0363100012158264",
+   "reason": "frontage 136.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158333",
+   "reason": "frontage 175.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158425",
+   "reason": "frontage 42.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158606",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012160913"
+  },
+  {
+   "pandId": "0363100012158607",
+   "reason": "frontage 99.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158845",
+   "reason": "frontage 58.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158866",
+   "reason": "frontage 127.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157455",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012128651"
+  },
+  {
+   "pandId": "0363100012157530",
+   "reason": "frontage 89.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157792",
+   "reason": "frontage 57.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157856",
+   "reason": "frontage 124.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157878",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012098763"
+  },
+  {
+   "pandId": "0363100012158134",
+   "reason": "frontage 96.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158274",
+   "reason": "frontage 76.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158581",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012100762"
+  },
+  {
+   "pandId": "0363100012157566",
+   "reason": "frontage 77.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157580",
+   "reason": "frontage 77.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157661",
+   "reason": "frontage 59.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157689",
+   "reason": "frontage 101.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157768",
+   "reason": "frontage 152.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157847",
+   "reason": "frontage 131.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157901",
+   "reason": "frontage 121.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157938",
+   "reason": "frontage 105.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158214",
+   "reason": "frontage 161.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158234",
+   "reason": "frontage 59.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158543",
+   "reason": "frontage 146.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158702",
+   "reason": "frontage 59.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158825",
+   "reason": "frontage 80.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157463",
+   "reason": "frontage 127.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012157485",
+   "reason": "frontage 131.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158633",
+   "reason": "frontage 180.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158826",
+   "reason": "frontage 100.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159079",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012160819"
+  },
+  {
+   "pandId": "0363100012159177",
+   "reason": "frontage 94.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159232",
+   "reason": "frontage 137.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159259",
+   "reason": "frontage 126.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159333",
+   "reason": "frontage 41.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159394",
+   "reason": "frontage 58.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159458",
+   "reason": "frontage 64.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159468",
+   "reason": "frontage 133.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159715",
+   "reason": "frontage 37.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159762",
+   "reason": "frontage 130.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159769",
+   "reason": "frontage 58.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159870",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012167034"
+  },
+  {
+   "pandId": "0363100012159871",
+   "reason": "frontage 96.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159966",
+   "reason": "frontage 67.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159980",
+   "reason": "frontage 37.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160100",
+   "reason": "frontage 106.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160228",
+   "reason": "frontage 148.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160393",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012136696"
+  },
+  {
+   "pandId": "0363100012160406",
+   "reason": "frontage 136.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160458",
+   "reason": "frontage 141.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158981",
+   "reason": "frontage 97.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159136",
+   "reason": "frontage 57.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159533",
+   "reason": "frontage 76.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159548",
+   "reason": "frontage 73.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159598",
+   "reason": "frontage 100.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159716",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012098763"
+  },
+  {
+   "pandId": "0363100012159720",
+   "reason": "frontage 109.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160043",
+   "reason": "frontage 57.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012158955",
+   "reason": "frontage 163.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159304",
+   "reason": "frontage 134.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159334",
+   "reason": "frontage 136.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159416",
+   "reason": "frontage 157.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159480",
+   "reason": "frontage 104.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159482",
+   "reason": "frontage 133.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159593",
+   "reason": "frontage 110.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159856",
+   "reason": "frontage 148.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159920",
+   "reason": "frontage 148.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160264",
+   "reason": "frontage 136.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159604",
+   "reason": "frontage 155.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012159685",
+   "reason": "frontage 132.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160320",
+   "reason": "frontage 100.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160553",
+   "reason": "frontage 200.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160596",
+   "reason": "frontage 211.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160607",
+   "reason": "frontage 68.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160665",
+   "reason": "frontage 141.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160694",
+   "reason": "frontage 140.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160758",
+   "reason": "frontage 70.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161025",
+   "reason": "frontage 127.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161045",
+   "reason": "frontage 41.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161124",
+   "reason": "frontage 39.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161137",
+   "reason": "frontage 154.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161185",
+   "reason": "frontage 40.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161198",
+   "reason": "frontage 46.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161346",
+   "reason": "frontage 135.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161729",
+   "reason": "frontage 40.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161801",
+   "reason": "frontage 111.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161987",
+   "reason": "frontage 58.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161992",
+   "reason": "frontage 38.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162087",
+   "reason": "frontage 170.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162232",
+   "reason": "frontage 68.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160840",
+   "reason": "frontage 56.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160891",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012237843"
+  },
+  {
+   "pandId": "0363100012161037",
+   "reason": "frontage 79.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161285",
+   "reason": "frontage 105.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161625",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012100762"
+  },
+  {
+   "pandId": "0363100012161655",
+   "reason": "frontage 75.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161930",
+   "reason": "frontage 125.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161971",
+   "reason": "frontage 57.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162266",
+   "reason": "frontage 97.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160619",
+   "reason": "frontage 141.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160675",
+   "reason": "frontage 155.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160699",
+   "reason": "frontage 116.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160762",
+   "reason": "frontage 74.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160884",
+   "reason": "frontage 77.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161063",
+   "reason": "frontage 114.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161133",
+   "reason": "frontage 129.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161382",
+   "reason": "frontage 73.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161723",
+   "reason": "frontage 60.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162281",
+   "reason": "frontage 71.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160676",
+   "reason": "frontage 125.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160712",
+   "reason": "frontage 204.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012160791",
+   "reason": "frontage 136.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161471",
+   "reason": "frontage 127.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161600",
+   "reason": "frontage 136.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012161816",
+   "reason": "frontage 150.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162196",
+   "reason": "frontage 196.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162310",
+   "reason": "frontage 34.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162350",
+   "reason": "frontage 157.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162421",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012093594"
+  },
+  {
+   "pandId": "0363100012162517",
+   "reason": "frontage 108.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162669",
+   "reason": "frontage 38.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162695",
+   "reason": "frontage 138.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162740",
+   "reason": "frontage 183.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162911",
+   "reason": "frontage 129.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162920",
+   "reason": "frontage 42.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162967",
+   "reason": "frontage 125.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163026",
+   "reason": "frontage 66.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163136",
+   "reason": "frontage 96.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163192",
+   "reason": "frontage 67.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163280",
+   "reason": "frontage 142.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163480",
+   "reason": "frontage 69.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163512",
+   "reason": "frontage 135.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163591",
+   "reason": "frontage 39.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163604",
+   "reason": "frontage 37.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163613",
+   "reason": "frontage 68.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163626",
+   "reason": "frontage 58.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163639",
+   "reason": "frontage 58.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163640",
+   "reason": "frontage 176.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163706",
+   "reason": "frontage 140.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163828",
+   "reason": "frontage 68.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163909",
+   "reason": "frontage 139.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163924",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012157290"
+  },
+  {
+   "pandId": "0363100012163931",
+   "reason": "frontage 175.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163990",
+   "reason": "frontage 137.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163996",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012164105"
+  },
+  {
+   "pandId": "0363100012162752",
+   "reason": "frontage 126.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162991",
+   "reason": "frontage 81.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163338",
+   "reason": "frontage 83.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163572",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012121342"
+  },
+  {
+   "pandId": "0363100012163659",
+   "reason": "frontage 73.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162437",
+   "reason": "frontage 139.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162701",
+   "reason": "frontage 77.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162854",
+   "reason": "frontage 81.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162905",
+   "reason": "frontage 77.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163120",
+   "reason": "frontage 176.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163893",
+   "reason": "frontage 105.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162593",
+   "reason": "frontage 177.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012162709",
+   "reason": "frontage 173.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163137",
+   "reason": "frontage 145.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163164",
+   "reason": "frontage 122.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163595",
+   "reason": "frontage 199.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012163619",
+   "reason": "frontage 187.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164105",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012165647"
+  },
+  {
+   "pandId": "0363100012164162",
+   "reason": "frontage 89.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164182",
+   "reason": "frontage 172.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164203",
+   "reason": "frontage 173.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164211",
+   "reason": "frontage 134.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164238",
+   "reason": "frontage 148.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164392",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012166356"
+  },
+  {
+   "pandId": "0363100012164424",
+   "reason": "frontage 180.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164506",
+   "reason": "frontage 128.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164545",
+   "reason": "frontage 134.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164579",
+   "reason": "frontage 139.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164592",
+   "reason": "frontage 136.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164665",
+   "reason": "frontage 164.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164674",
+   "reason": "frontage 69.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164678",
+   "reason": "frontage 68.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164693",
+   "reason": "frontage 128.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164708",
+   "reason": "frontage 138.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164715",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012158334"
+  },
+  {
+   "pandId": "0363100012165185",
+   "reason": "frontage 162.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012165196",
+   "reason": "frontage 142.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012165387",
+   "reason": "frontage 100.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012165568",
+   "reason": "frontage 125.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012165647",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012236018"
+  },
+  {
+   "pandId": "0363100012165664",
+   "reason": "frontage 43.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164637",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012098763"
+  },
+  {
+   "pandId": "0363100012164826",
+   "reason": "frontage 124.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164873",
+   "reason": "frontage 76.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012165675",
+   "reason": "frontage 97.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164043",
+   "reason": "frontage 134.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164120",
+   "reason": "frontage 130.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164184",
+   "reason": "frontage 59.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164241",
+   "reason": "frontage 103.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164368",
+   "reason": "frontage 145.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164425",
+   "reason": "frontage 117.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164436",
+   "reason": "frontage 73.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164539",
+   "reason": "frontage 133.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164863",
+   "reason": "frontage 74.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012165514",
+   "reason": "frontage 76.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012165639",
+   "reason": "frontage 70.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164016",
+   "reason": "frontage 172.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164121",
+   "reason": "frontage 122.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164261",
+   "reason": "frontage 204.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164316",
+   "reason": "frontage 129.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164541",
+   "reason": "frontage 124.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164596",
+   "reason": "frontage 152.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164659",
+   "reason": "frontage 184.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164796",
+   "reason": "frontage 160.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012164898",
+   "reason": "frontage 217.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012165641",
+   "reason": "frontage 158.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012165846",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012236046"
+  },
+  {
+   "pandId": "0363100012165853",
+   "reason": "frontage 60.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166042",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012244385"
+  },
+  {
+   "pandId": "0363100012166100",
+   "reason": "frontage 173.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166279",
+   "reason": "frontage 166.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166391",
+   "reason": "frontage 140.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166394",
+   "reason": "frontage 65.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166404",
+   "reason": "frontage 39.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166472",
+   "reason": "frontage 42.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166555",
+   "reason": "frontage 58.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166842",
+   "reason": "frontage 172.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166861",
+   "reason": "frontage 175.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166891",
+   "reason": "frontage 149.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166935",
+   "reason": "frontage 169.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166964",
+   "reason": "frontage 60.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012167001",
+   "reason": "frontage 134.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012167054",
+   "reason": "frontage 35.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012167060",
+   "reason": "frontage 41.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012167096",
+   "reason": "frontage 109.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012165765",
+   "reason": "frontage 76.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012165873",
+   "reason": "frontage 107.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012165970",
+   "reason": "frontage 121.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166205",
+   "reason": "frontage 118.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166212",
+   "reason": "frontage 91.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166373",
+   "reason": "frontage 57.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166381",
+   "reason": "frontage 100.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166852",
+   "reason": "frontage 100.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166924",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012098763"
+  },
+  {
+   "pandId": "0363100012166944",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012128651"
+  },
+  {
+   "pandId": "0363100012166015",
+   "reason": "frontage 155.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166062",
+   "reason": "frontage 175.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166124",
+   "reason": "frontage 133.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166339",
+   "reason": "frontage 139.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166517",
+   "reason": "frontage 159.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166921",
+   "reason": "frontage 106.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166936",
+   "reason": "frontage 144.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166938",
+   "reason": "frontage 60.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012167137",
+   "reason": "frontage 105.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166097",
+   "reason": "frontage 141.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166204",
+   "reason": "frontage 199.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166226",
+   "reason": "frontage 223.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166390",
+   "reason": "frontage 156.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166489",
+   "reason": "frontage 220.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012166655",
+   "reason": "frontage 131.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012167059",
+   "reason": "frontage 211.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012167165",
+   "reason": "frontage 191.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012167299",
+   "reason": "frontage 74.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012184210",
+   "reason": "frontage 147.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012185020",
+   "reason": "frontage 83.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012185480",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012159997"
+  },
+  {
+   "pandId": "0363100012202511",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012156828"
+  },
+  {
+   "pandId": "0363100012207372",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012158174"
+  },
+  {
+   "pandId": "0363100012207941",
+   "reason": "frontage 71.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012209358",
+   "reason": "frontage 152.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012211324",
+   "reason": "frontage 165.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012215418",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012236348"
+  },
+  {
+   "pandId": "0363100012216126",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012160380"
+  },
+  {
+   "pandId": "0363100012219468",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012158174"
+  },
+  {
+   "pandId": "0363100012223829",
+   "reason": "frontage 83.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012224823",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012167034"
+  },
+  {
+   "pandId": "0363100012225755",
+   "reason": "frontage 168.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012229980",
+   "reason": "frontage 159.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012231052",
+   "reason": "frontage 95.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012233666",
+   "reason": "frontage 92.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012235888",
+   "reason": "frontage 65.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012235909",
+   "reason": "frontage 59.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236007",
+   "reason": "frontage 65.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236010",
+   "reason": "frontage 66.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012186579",
+   "reason": "frontage 83.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012188295",
+   "reason": "frontage 71.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012193867",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012128651"
+  },
+  {
+   "pandId": "0363100012207270",
+   "reason": "frontage 89.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012214626",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012100762"
+  },
+  {
+   "pandId": "0363100012228429",
+   "reason": "frontage 86.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012235941",
+   "reason": "frontage 68.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012167219",
+   "reason": "frontage 151.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012167425",
+   "reason": "frontage 141.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012167455",
+   "reason": "frontage 73.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012190846",
+   "reason": "frontage 158.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012197545",
+   "reason": "frontage 120.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012200174",
+   "reason": "frontage 119.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012226896",
+   "reason": "frontage 71.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012233460",
+   "reason": "frontage 106.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012235934",
+   "reason": "frontage 79.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012167242",
+   "reason": "frontage 194.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012167431",
+   "reason": "frontage 129.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012183543",
+   "reason": "frontage 155.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012183544",
+   "reason": "frontage 157.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012206448",
+   "reason": "frontage 179.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012207269",
+   "reason": "frontage 192.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012207359",
+   "reason": "frontage 120.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012209336",
+   "reason": "frontage 138.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012235923",
+   "reason": "frontage 181.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236063",
+   "reason": "frontage 40.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236073",
+   "reason": "frontage 64.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236101",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012153140"
+  },
+  {
+   "pandId": "0363100012236102",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012153140"
+  },
+  {
+   "pandId": "0363100012236112",
+   "reason": "frontage 64.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236172",
+   "reason": "frontage 75.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236199",
+   "reason": "frontage 39.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236327",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012157837"
+  },
+  {
+   "pandId": "0363100012236359",
+   "reason": "frontage 167.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236386",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012237843"
+  },
+  {
+   "pandId": "0363100012236455",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012236333"
+  },
+  {
+   "pandId": "0363100012236487",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012160536"
+  },
+  {
+   "pandId": "0363100012236501",
+   "reason": "frontage 134.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236575",
+   "reason": "frontage 154.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236609",
+   "reason": "frontage 154.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236630",
+   "reason": "frontage 98.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236155",
+   "reason": "frontage 67.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236331",
+   "reason": "frontage 59.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236375",
+   "reason": "frontage 62.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236434",
+   "reason": "frontage 61.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236467",
+   "reason": "frontage 125.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236506",
+   "reason": "frontage 57.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236577",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012237843"
+  },
+  {
+   "pandId": "0363100012236640",
+   "reason": "frontage 57.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236036",
+   "reason": "frontage 102.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236047",
+   "reason": "frontage 59.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236091",
+   "reason": "frontage 101.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236148",
+   "reason": "frontage 167.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236154",
+   "reason": "frontage 104.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236190",
+   "reason": "frontage 75.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236356",
+   "reason": "frontage 139.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236388",
+   "reason": "frontage 175.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236490",
+   "reason": "frontage 106.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236563",
+   "reason": "frontage 172.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236583",
+   "reason": "frontage 143.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236661",
+   "reason": "frontage 119.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236667",
+   "reason": "frontage 106.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236108",
+   "reason": "frontage 184.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236169",
+   "reason": "frontage 186.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236267",
+   "reason": "frontage 187.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236483",
+   "reason": "frontage 100.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236524",
+   "reason": "frontage 153.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236608",
+   "reason": "frontage 158.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236695",
+   "reason": "frontage 37.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236698",
+   "reason": "frontage 30.0 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236909",
+   "reason": "frontage 155.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012237115",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012236367"
+  },
+  {
+   "pandId": "0363100012237150",
+   "reason": "frontage 70.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012237218",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012163996"
+  },
+  {
+   "pandId": "0363100012237219",
+   "reason": "frontage 77.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012237272",
+   "reason": "frontage 58.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012239832",
+   "reason": "frontage 93.9 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012240435",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012235939"
+  },
+  {
+   "pandId": "0363100012246040",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012133038"
+  },
+  {
+   "pandId": "0363100012247340",
+   "reason": "frontage 160.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012572100",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012158334"
+  },
+  {
+   "pandId": "0363100012236717",
+   "reason": "frontage 129.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236905",
+   "reason": "frontage 56.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012237062",
+   "reason": "sightline to Govert Flinckstraat crosses 0363100012128651"
+  },
+  {
+   "pandId": "0363100012237347",
+   "reason": "frontage 103.4 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236671",
+   "reason": "frontage 129.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236834",
+   "reason": "frontage 73.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236908",
+   "reason": "frontage 125.2 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012237023",
+   "reason": "frontage 146.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012237153",
+   "reason": "frontage 112.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012237164",
+   "reason": "frontage 105.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012237226",
+   "reason": "frontage 157.5 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012237278",
+   "reason": "frontage 166.8 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012237281",
+   "reason": "frontage 69.6 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012240682",
+   "reason": "frontage 118.3 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012236766",
+   "reason": "frontage 151.7 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012237155",
+   "reason": "frontage 135.1 m from Govert Flinckstraat"
+  },
+  {
+   "pandId": "0363100012067464",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104472",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118394",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012061406",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012063353",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074800",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105599",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145306",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145600",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152639",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152667",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153714",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154370",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156786",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156828",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157232",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158168",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158174",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158205",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158669",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159997",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160380",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160536",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161082",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161086",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162303",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162469",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163530",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163597",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165543",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166270",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236348",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236730",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237280",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012244385",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012249730",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012133038",
+   "alongM": 0,
+   "widthM": 12.94,
+   "eavesM": 14.31,
+   "roofMaxM": 16.7,
+   "storeys3dbag": 5,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012237342",
+   "alongM": 9.16,
+   "widthM": 5.38,
+   "eavesM": 11.27,
+   "roofMaxM": 13.83,
+   "storeys3dbag": 4,
+   "builtYear": 1884,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012235939",
+   "alongM": 14.18,
+   "widthM": 4.65,
+   "eavesM": 11.97,
+   "roofMaxM": 14.54,
+   "storeys3dbag": 5,
+   "builtYear": 1884,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159755",
+   "alongM": 18.83,
+   "widthM": 4.65,
+   "eavesM": 13.78,
+   "roofMaxM": 16.22,
+   "storeys3dbag": 5,
+   "builtYear": 1884,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167034",
+   "alongM": 23.48,
+   "widthM": 4.65,
+   "eavesM": 11.64,
+   "roofMaxM": 14.43,
+   "storeys3dbag": 4,
+   "builtYear": 1884,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158334",
+   "alongM": 28.32,
+   "widthM": 5.03,
+   "eavesM": 11.3,
+   "roofMaxM": 14.45,
+   "storeys3dbag": 4,
+   "builtYear": 1884,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012136696",
+   "alongM": 33.1,
+   "widthM": 4.54,
+   "eavesM": 11.76,
+   "roofMaxM": 14.5,
+   "storeys3dbag": 5,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166356",
+   "alongM": 38.09,
+   "widthM": 5.44,
+   "eavesM": 11.33,
+   "roofMaxM": 14.08,
+   "storeys3dbag": 4,
+   "builtYear": 1882,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160819",
+   "alongM": 43.61,
+   "widthM": 5.55,
+   "eavesM": 11.89,
+   "roofMaxM": 14.61,
+   "storeys3dbag": 4,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157076",
+   "alongM": 49.3,
+   "widthM": 5.88,
+   "eavesM": 13.96,
+   "roofMaxM": 17.16,
+   "storeys3dbag": 5,
+   "builtYear": 1890,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153115",
+   "alongM": 55.1,
+   "widthM": 5.72,
+   "eavesM": 11.12,
+   "roofMaxM": 16.39,
+   "storeys3dbag": 5,
+   "builtYear": 1892,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161833",
+   "alongM": 60.84,
+   "widthM": 5.76,
+   "eavesM": 10.08,
+   "roofMaxM": 14.74,
+   "storeys3dbag": 4,
+   "builtYear": 1892,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012233677",
+   "alongM": 71.98,
+   "widthM": 16.51,
+   "eavesM": 10.01,
+   "roofMaxM": 16.82,
+   "storeys3dbag": 5,
+   "builtYear": 1892,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155562",
+   "alongM": 82.68,
+   "widthM": 4.88,
+   "eavesM": 11.79,
+   "roofMaxM": 16.11,
+   "storeys3dbag": 5,
+   "builtYear": 1892,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165882",
+   "alongM": 87.7,
+   "widthM": 5.16,
+   "eavesM": 12.04,
+   "roofMaxM": 15.97,
+   "storeys3dbag": 5,
+   "builtYear": 1892,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159291",
+   "alongM": 92.86,
+   "widthM": 5.16,
+   "eavesM": 11.43,
+   "roofMaxM": 16.97,
+   "storeys3dbag": 5,
+   "builtYear": 1892,
+   "uncertainty": []
+  }
+ ]
+}

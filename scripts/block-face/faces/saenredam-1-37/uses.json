@@ -1,0 +1,448 @@
+{
+ "street": "Saenredamstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012078655",
+   "addresses": [
+    "Saenredamstraat 1A",
+    "Saenredamstraat 1B",
+    "Saenredamstraat 1C",
+    "Saenredamstraat 1D",
+    "Saenredamstraat 1E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 1A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000802475"
+    },
+    {
+     "address": "Saenredamstraat 1B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000802476"
+    },
+    {
+     "address": "Saenredamstraat 1C",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000802477"
+    },
+    {
+     "address": "Saenredamstraat 1D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000802478"
+    },
+    {
+     "address": "Saenredamstraat 1E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000802479"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152593",
+   "addresses": [
+    "Saenredamstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000802471"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164149",
+   "addresses": [
+    "Saenredamstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001002344"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155977",
+   "addresses": [
+    "Saenredamstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 5-O",
+     "use": "industriefunctie",
+     "areaM2": 39,
+     "bagId": "0363010000802503"
+    },
+    {
+     "address": "Saenredamstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000802502"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157668",
+   "addresses": [
+    "Saenredamstraat 7C",
+    "Saenredamstraat 7D",
+    "Saenredamstraat 7E",
+    "Saenredamstraat 7A",
+    "Saenredamstraat 7B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 7C",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010001162846"
+    },
+    {
+     "address": "Saenredamstraat 7D",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010001162847"
+    },
+    {
+     "address": "Saenredamstraat 7E",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001162848"
+    },
+    {
+     "address": "Saenredamstraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010001162849"
+    },
+    {
+     "address": "Saenredamstraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010001162850"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163396",
+   "addresses": [
+    "Saenredamstraat 9B",
+    "Saenredamstraat 9C",
+    "Saenredamstraat 9D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 9B",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010001162851"
+    },
+    {
+     "address": "Saenredamstraat 9C",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010001162852"
+    },
+    {
+     "address": "Saenredamstraat 9D",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010001162853"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012096576",
+   "addresses": [
+    "Saenredamstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000802531"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160421",
+   "addresses": [
+    "Saenredamstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000802539"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236548",
+   "addresses": [
+    "Saenredamstraat 15",
+    "Saenredamstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 15-H",
+     "use": "industriefunctie",
+     "areaM2": 94,
+     "bagId": "0363010000802547"
+    },
+    {
+     "address": "Saenredamstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000994308"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159703",
+   "addresses": [
+    "Saenredamstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000802554"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155819",
+   "addresses": [
+    "Saenredamstraat 21A",
+    "Saenredamstraat 21B",
+    "Saenredamstraat 21C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 21A",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000980342"
+    },
+    {
+     "address": "Saenredamstraat 21B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000802570"
+    },
+    {
+     "address": "Saenredamstraat 21C",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000802571"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163619",
+   "addresses": [
+    "Saenredamstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000802582"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236169",
+   "addresses": [
+    "Saenredamstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000802586"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236108",
+   "addresses": [
+    "Saenredamstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000802594"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012235923",
+   "addresses": [
+    "Saenredamstraat 29A",
+    "Saenredamstraat 29B",
+    "Saenredamstraat 29C",
+    "Saenredamstraat 29D",
+    "Saenredamstraat 29E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 29A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010001020628"
+    },
+    {
+     "address": "Saenredamstraat 29B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001020629"
+    },
+    {
+     "address": "Saenredamstraat 29C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001020630"
+    },
+    {
+     "address": "Saenredamstraat 29D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001020631"
+    },
+    {
+     "address": "Saenredamstraat 29E",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010001020632"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156195",
+   "addresses": [
+    "Saenredamstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000982510"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162593",
+   "addresses": [
+    "Saenredamstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000802627"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156872",
+   "addresses": [
+    "Saenredamstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 37-H",
+     "use": "winkelfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000802634"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 497165617,
+     "lngLat": [
+      4.8884511,
+      52.3558435
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "37-H",
+      "addr:postcode": "1072CB",
+      "addr:street": "Saenredamstraat",
+      "amenity": "bar",
+      "check_date": "2026-01-08",
+      "name": "La Dilettante",
+      "opening_hours": "Mo-Fr 16:00+; Sa-Su 13:00+",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://ladilettante.amsterdam",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

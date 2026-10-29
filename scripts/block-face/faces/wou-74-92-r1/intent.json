@@ -1,0 +1,180 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "wou-74-92-r1",
+ "street": "Van Woustraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/wou-74-92-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/wou-74-92/auto-place.json"
+ },
+ "types": [
+  "pijp-1886-segmental-mansard"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012164235",
+   "slug": "wou-164235",
+   "address": "Van Woustraat 92",
+   "type": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": {
+     "shopfront": {
+      "colour": "#332c2a",
+      "fascia": true,
+      "name": "Coffee Company",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=cafe); fascia colour measured on the strip 2023-01-03 span 0-230"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#635953",
+     "evidence": "strip 2023-01-03 span 0-230: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "name": "Coffee Company",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 1225666492,
+     "name": "Coffee Company"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "a shop per house",
+    "signage": "per shop",
+    "roofline": "plain brick frieze, thin cornice at 15.1 m, slate mansard with one stone pediment dormer and a hoist beam",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the short slate mansard face (15.1-16.3 m) and its roof lights beside the dormer are drawn as the pitched roof: the kit's mansard put the dormer frames through the roof face and its slate coplanar with the party walls (audit)",
+     "the dormer's carved ears and side cheeks are plain"
+    ],
+    "citation": "auto-place: pijp-1886-segmental-mansard scored 1 on eaves -, wall 1, stucco 1, columns 1; strip 2023-01-03 span 0-230"
+   }
+  },
+  {
+   "pandId": "0363100012134906",
+   "slug": "wou-134906",
+   "address": "Van Woustraat 90",
+   "type": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": {
+     "shopfront": {
+      "colour": "#5b5854",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, amenity=atm); fascia colour measured on the strip 2023-01-03 span 230-469"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#52473f",
+     "evidence": "strip 2023-01-03 span 230-469: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#211c1b"
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "category": "amenity=atm",
+    "osm": {
+     "type": "node",
+     "id": 249628968
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "a shop per house",
+    "signage": "per shop",
+    "roofline": "plain brick frieze, thin cornice at 15.1 m, slate mansard with one stone pediment dormer and a hoist beam",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the short slate mansard face (15.1-16.3 m) and its roof lights beside the dormer are drawn as the pitched roof: the kit's mansard put the dormer frames through the roof face and its slate coplanar with the party walls (audit)",
+     "the dormer's carved ears and side cheeks are plain"
+    ],
+    "citation": "auto-place: pijp-1886-segmental-mansard scored 0.73 on eaves 0, wall 1, stucco 1, columns 1; strip 2023-01-03 span 230-469"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012164235",
+    "stripRow": 259,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1886-segmental-mansard cornice line 15.1 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 16.79 m"
+   },
+   {
+    "pand": "0363100012134906",
+    "stripRow": 259,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1886-segmental-mansard cornice line 15.1 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 16.45 m"
+   }
+  ]
+ }
+}

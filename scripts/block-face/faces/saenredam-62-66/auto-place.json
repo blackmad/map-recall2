@@ -1,0 +1,325 @@
+{
+ "face": "saenredam-62-66",
+ "street": "Saenredamstraat",
+ "library": "de-pijp",
+ "stripDate": "2020-01-06",
+ "seconds": 4.4,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "saenredam-62-66-r1",
+   "pands": [
+    "0363100012159593",
+    "0363100012156620"
+   ],
+   "passed": true,
+   "triangles": 4148
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012159593",
+   "address": "Saenredamstraat 66",
+   "builtYear": 1876,
+   "widthM": 5.18,
+   "eavesM": 13.11,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#342d2e",
+    "wallRaw": "#535450",
+    "skyline": {
+     "eavesM": 18.3,
+     "eavesRow": 24,
+     "confidence": 0.3,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.74,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.38,
+       "widthM": 1.1,
+       "centre": 0.12
+      },
+      {
+       "atM": 5.52,
+       "widthM": 1.02,
+       "centre": 0.43
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1876-hood-frieze",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1876-hood-frieze",
+    "ground": {
+     "shopfront": {
+      "colour": "#2b2928",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2020-01-06 span 0-207"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#342d2e",
+     "evidence": "strip 2020-01-06 span 0-207: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012159593",
+    "ncc": 0.513,
+    "nccRaw": 0.513,
+    "shiftM": [
+     -0.35,
+     0.15
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13",
+     "glazing storey band off by 0.15 mean 0.50 vs photo 0.32",
+     "wall family unresolved (#2d2828 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#2d2828",
+     "model": "#524749",
+     "dL": 0.133
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.423
+   },
+   "challengers": {
+    "pijp-1885-segmental-keystone": 0.485
+   }
+  },
+  {
+   "pandId": "0363100012156620",
+   "address": "Saenredamstraat 64",
+   "builtYear": 1876,
+   "widthM": 5.08,
+   "eavesM": 13.12,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2a292a",
+    "wallRaw": "#3d3c3d",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 756,
+     "confidence": 0.25,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.8,
+     "bayCentre": 0.41,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.47,
+       "widthM": 1,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "pijp-1876-hood-frieze",
+   "score": 0.86,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1876-hood-frieze",
+    "ground": {
+     "shopfront": {
+      "colour": "#242221",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2020-01-06 span 207-410"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#2a292a",
+     "evidence": "strip 2020-01-06 span 207-410: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012156620",
+    "ncc": 0.393,
+    "nccRaw": 0.393,
+    "shiftM": [
+     -0.4,
+     0.05
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.14",
+     "glazing storey band off by 0.35 mean 0.50 vs photo 0.28",
+     "wall family unresolved (#2a292a is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#2a292a",
+     "model": "#4d4c4d",
+     "dL": 0.137
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.346
+   },
+   "challengers": {
+    "pijp-1885-segmental-keystone": 0.398
+   }
+  },
+  {
+   "pandId": "0363100012154200",
+   "address": "Saenredamstraat 62",
+   "builtYear": 1876,
+   "widthM": 4.66,
+   "eavesM": 13.19,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#443935",
+    "wallRaw": "#4b413b",
+    "skyline": {
+     "eavesM": 18.1,
+     "eavesRow": 32,
+     "confidence": 0.48,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5,
+       "widthM": 0.85,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 4.66 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 4.66 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.19 m = 3 storeys of 4.4 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.71 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

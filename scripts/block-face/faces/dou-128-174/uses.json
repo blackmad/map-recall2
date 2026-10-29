@@ -1,0 +1,825 @@
+{
+ "street": "Gerard Doustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153387",
+   "addresses": [
+    "Gerard Doustraat 168"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 168-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000644092"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153232",
+   "addresses": [
+    "Gerard Doustraat 166"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 166-H",
+     "use": "industriefunctie",
+     "areaM2": 94,
+     "bagId": "0363010001006576"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512397,
+     "lngLat": [
+      4.8947965,
+      52.3562378
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "166-H",
+      "addr:postcode": "1073VZ",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-13",
+      "email": "studio@stefanscholten.com",
+      "name": "Studio Stefan Scholten",
+      "operator": "Stefan Scholten",
+      "phone": "+31 20 4208940",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "gallery",
+      "website": "https://www.stefanscholten.com/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13453294010,
+     "lngLat": [
+      4.8948085,
+      52.3562163
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "166-H",
+      "addr:postcode": "1073VZ",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-13",
+      "consulting": "marble",
+      "email": "manuela@stonemadeitaly.com",
+      "mobile": "+31615697942",
+      "name": "Stone Made Italy",
+      "office": "consulting",
+      "operator": "Manuela Rotta",
+      "website": "https://www.stonemadeitaly.com/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156601",
+   "addresses": [
+    "Gerard Doustraat 164"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 164-H",
+     "use": "industriefunctie",
+     "areaM2": 96,
+     "bagId": "0363010000644069"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512384,
+     "lngLat": [
+      4.8947004,
+      52.3562189
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "164-H",
+      "addr:postcode": "1073VZ",
+      "addr:street": "Gerard Doustraat",
+      "craft": "upholsterer",
+      "email": "oudeleeuw@gmail.com",
+      "mobile": "+31627319532",
+      "name": "De Oude Leeuw",
+      "opening_hours": "Mo-Fr 09:00-17:30",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://oudeleeuwstoffeerderij.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012063423",
+   "addresses": [
+    "Gerard Doustraat 158",
+    "Gerard Doustraat 160A",
+    "Gerard Doustraat 160B",
+    "Gerard Doustraat 160C",
+    "Gerard Doustraat 160E",
+    "Gerard Doustraat 160F",
+    "Gerard Doustraat 160G",
+    "Gerard Doustraat 160H",
+    "Gerard Doustraat 160D",
+    "Gerard Doustraat 162"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 158",
+     "use": "industriefunctie",
+     "areaM2": 50,
+     "bagId": "0363010000841739"
+    },
+    {
+     "address": "Gerard Doustraat 162",
+     "use": "industriefunctie",
+     "areaM2": 94,
+     "bagId": "0363010000841740"
+    },
+    {
+     "address": "Gerard Doustraat 160A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000841741"
+    },
+    {
+     "address": "Gerard Doustraat 160B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000841742"
+    },
+    {
+     "address": "Gerard Doustraat 160C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000841743"
+    },
+    {
+     "address": "Gerard Doustraat 160E",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000841862"
+    },
+    {
+     "address": "Gerard Doustraat 160F",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000841863"
+    },
+    {
+     "address": "Gerard Doustraat 160G",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000841864"
+    },
+    {
+     "address": "Gerard Doustraat 160H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000841865"
+    },
+    {
+     "address": "Gerard Doustraat 160D",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000841861"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512333,
+     "lngLat": [
+      4.8944859,
+      52.3561725
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "158",
+      "addr:postcode": "1073VZ",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-13",
+      "email": "sijmonsbloemen158@gmail.com",
+      "mobile": "+31655131491",
+      "name": "Sijmons",
+      "opening_hours": "Mo-Sa 09:00-17:00",
+      "shop": "florist",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817512369,
+     "lngLat": [
+      4.8946122,
+      52.3562017
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "162",
+      "addr:postcode": "1073VZ",
+      "addr:street": "Gerard Doustraat",
+      "branch": "Amsterdam",
+      "check_date": "2026-01-13",
+      "email": "info@abc-schuimplasticshop.nl",
+      "fixme": "Very niche type of shop. If there is a suitable category/tag, please update/correct",
+      "name": "ABC SchuimPlasticHuis",
+      "opening_hours": "Mo-Fr 09:00-17:00",
+      "phone": "+31 20 6646452",
+      "shop": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.abc-schuimplasticshop.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237092",
+   "addresses": [
+    "Gerard Doustraat 156"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 156-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 897,
+     "bagId": "0363010000644065"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512313,
+     "lngLat": [
+      4.894378,
+      52.3561466
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "156-H",
+      "addr:postcode": "1073VZ",
+      "addr:street": "Gerard Doustraat",
+      "amenity": "social_facility",
+      "capacity": "38",
+      "check_date": "2026-01-13",
+      "email": "info@hvoquerido.nl",
+      "name": "Opvang Gerard Doustraat",
+      "operator": "HVO-Querido",
+      "phone": "+31 20 8008993",
+      "social_facility": "group_home",
+      "social_facility:for": "refugee",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://hvoquerido.nl/locaties/opvang-gerard-doustraat/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13464244540,
+     "lngLat": [
+      4.894474,
+      52.3559831
+     ],
+     "tags": {
+      "access": "private",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "building",
+      "check_date": "2026-01-18",
+      "covered": "yes",
+      "email": "stallinggerarddou@match5.nl",
+      "fee": "yes",
+      "fixme": "This is located between Gerard Dou and Albert Cuyp. Actual address is unclear, and no online information can be found",
+      "indoor": "yes",
+      "name": "Buurtstalling Gerard Doustraat",
+      "note": "NL: Alleen voor abonnementhouders / EN: Subscription only",
+      "opening_hours": "24/7",
+      "phone": "+31 20 6109946"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236319",
+   "addresses": [
+    "Gerard Doustraat 148A",
+    "Gerard Doustraat 148B",
+    "Gerard Doustraat 148C",
+    "Gerard Doustraat 148D",
+    "Gerard Doustraat 150A",
+    "Gerard Doustraat 150B",
+    "Gerard Doustraat 152A",
+    "Gerard Doustraat 152B",
+    "Gerard Doustraat 154"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 148A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001162958"
+    },
+    {
+     "address": "Gerard Doustraat 148B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001162959"
+    },
+    {
+     "address": "Gerard Doustraat 148C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001162960"
+    },
+    {
+     "address": "Gerard Doustraat 148D",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001162961"
+    },
+    {
+     "address": "Gerard Doustraat 150A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001162962"
+    },
+    {
+     "address": "Gerard Doustraat 150B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001162963"
+    },
+    {
+     "address": "Gerard Doustraat 152A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001162964"
+    },
+    {
+     "address": "Gerard Doustraat 152B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001162965"
+    },
+    {
+     "address": "Gerard Doustraat 154",
+     "use": "industriefunctie",
+     "areaM2": 101,
+     "bagId": "0363010001163003"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817511788,
+     "lngLat": [
+      4.8942461,
+      52.3561193
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "154",
+      "addr:postcode": "1073VZ",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-13",
+      "clothes": "children",
+      "email": "info@dekleineparade.com",
+      "name": "De Kleine Parade",
+      "opening_hours": "Mo-Sa 09:30-17:00; Su 11:00-17:00",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 7787620",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.dekleineparade.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157974",
+   "addresses": [
+    "Gerard Doustraat 146"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 146",
+     "use": "woonfunctie",
+     "areaM2": 151,
+     "bagId": "0363010011122227"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817511708,
+     "lngLat": [
+      4.89402,
+      52.3560778
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "146",
+      "addr:postcode": "1073VX",
+      "addr:street": "Gerard Doustraat",
+      "air_conditioning": "no",
+      "check_date": "2026-01-13",
+      "guest_house": "bed_and_breakfast",
+      "internet_access": "wlan",
+      "level": "0",
+      "name": "B&B Felix",
+      "note": "Information only found through booking sites, no contact info found.",
+      "operator": "Felix",
+      "rooms": "2",
+      "smoking": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "guest_house"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012127016",
+   "addresses": [
+    "Gerard Doustraat 144"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 144-H",
+     "use": "bijeenkomstfunctie,winkelfunctie",
+     "areaM2": 157,
+     "bagId": "0363010001166672"
+    },
+    {
+     "address": "Gerard Doustraat 144-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012602908"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817510997,
+     "lngLat": [
+      4.8939536,
+      52.3560638
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "144-H",
+      "addr:postcode": "1073VX",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-13",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012095852",
+   "addresses": [
+    "Gerard Doustraat 142"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 142-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012602909"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145070",
+   "addresses": [
+    "Gerard Doustraat 138A",
+    "Gerard Doustraat 138B",
+    "Gerard Doustraat 138C",
+    "Gerard Doustraat 138D",
+    "Gerard Doustraat 140"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 140",
+     "use": "industriefunctie",
+     "areaM2": 98,
+     "bagId": "0363010000936851"
+    },
+    {
+     "address": "Gerard Doustraat 138A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000936838"
+    },
+    {
+     "address": "Gerard Doustraat 138B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000936840"
+    },
+    {
+     "address": "Gerard Doustraat 138C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000936841"
+    },
+    {
+     "address": "Gerard Doustraat 138D",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000936842"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160401",
+   "addresses": [
+    "Gerard Doustraat 136"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 136-H",
+     "use": "industriefunctie",
+     "areaM2": 23,
+     "bagId": "0363010000643992"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161786",
+   "addresses": [
+    "Gerard Doustraat 134"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 134-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000643984"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817510657,
+     "lngLat": [
+      4.8936751,
+      52.3560085
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "134-H",
+      "addr:postcode": "1073VX",
+      "addr:street": "Gerard Doustraat",
+      "alt_name": "Noëlle Styling",
+      "check_date": "2026-01-13",
+      "email": "info@noellestyling.com",
+      "name": "Noëlle",
+      "opening_hours": "Fr-Sa 11:00-17:00",
+      "operator": "Noëlle Baartmans",
+      "shop": "interior_decoration",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://noellestyling.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162832",
+   "addresses": [
+    "Gerard Doustraat 132"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 132-H",
+     "use": "winkelfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000643978"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817510625,
+     "lngLat": [
+      4.8936164,
+      52.3559906
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "132-H",
+      "addr:postcode": "1073VX",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-13",
+      "email": "contact@lxmatten.com",
+      "mobile": "+31618501140",
+      "name": "LX Matten",
+      "shop": "carpet",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://lxmatten.com/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164700",
+   "addresses": [
+    "Gerard Doustraat 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 130",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000643973"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163904",
+   "addresses": [
+    "Gerard Doustraat 128A",
+    "Gerard Doustraat 128B",
+    "Gerard Doustraat 128C",
+    "Gerard Doustraat 128D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 128A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 158,
+     "bagId": "0363010001957793"
+    },
+    {
+     "address": "Gerard Doustraat 128B",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001957794"
+    },
+    {
+     "address": "Gerard Doustraat 128C",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001957795"
+    },
+    {
+     "address": "Gerard Doustraat 128D",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001957796"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2505905142,
+     "lngLat": [
+      4.8934254,
+      52.3560106
+     ],
+     "tags": {
+      "amenity": "post_box",
+      "collection_times": "Mo-Fr 09:00",
+      "indoor": "no",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598",
+      "post_box:type": "pillar"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 3.4
+    },
+    {
+     "type": "node",
+     "id": 2817510363,
+     "lngLat": [
+      4.8934886,
+      52.355965
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "128A",
+      "addr:postcode": "1073VX",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-02-01",
+      "note": "Voormalig Anna + Nina HQ. Verhuisd naar G. Douplein 17-21",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817516989,
+     "lngLat": [
+      4.8933769,
+      52.3559458
+     ],
+     "tags": {
+      "access": "permissive",
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "90-H",
+      "addr:postcode": "1073XG",
+      "addr:street": "Gerard Douplein",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "building",
+      "check_date": "2026-01-11",
+      "covered": "yes",
+      "email": "info@u-stal.nl",
+      "fee": "yes",
+      "indoor": "yes",
+      "lit": "yes",
+      "maxstay": "28 days",
+      "name": "Fietsenstalling Gerard Douplein",
+      "opening_hours": "Mo-Th 11:00-19:00; Fr-Sa 11:00-3:30; Su 12:00-18:00",
+      "operator": "U-stal",
+      "operator:type": "private",
+      "phone": "+31 20 2403800",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.u-stal.nl/locaties-fietsenstallingen/bewaakte-fietsenstallingen/amsterdam-gerard-douplein"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.7
+    }
+   ]
+  }
+ ]
+}

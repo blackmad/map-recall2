@@ -1,0 +1,464 @@
+{
+ "street": "Gerard Doustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163811",
+   "addresses": [
+    "Gerard Doustraat 254"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 254-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000644249"
+    },
+    {
+     "address": "Gerard Doustraat 254-H",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010012118235"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514587,
+     "lngLat": [
+      4.8984602,
+      52.3572598
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "254-H",
+      "addr:postcode": "1073XD",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-14",
+      "name": "Daan Hofman Uitvaartbegeleider",
+      "opening_hours": "\"By appointment\"",
+      "operator": "Daan Hofman",
+      "phone": "+31 20 2157794",
+      "shop": "funeral_directors",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.daanhofman.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165472",
+   "addresses": [
+    "Gerard Doustraat 252A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 252A-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000644246"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514576,
+     "lngLat": [
+      4.898359,
+      52.3572235
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "252A-H",
+      "addr:postcode": "1073XD",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-14",
+      "contact:email": "info@donmimmo.com",
+      "name": "Don Mimmo",
+      "opening_hours": "Fr-Sa 11:00-17:30",
+      "phone": "+31 20 6843616",
+      "shop": "deli",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.donmimmo.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156505",
+   "addresses": [
+    "Gerard Doustraat 252"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 252-H",
+     "use": "industriefunctie",
+     "areaM2": 61,
+     "bagId": "0363010000644242"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163351",
+   "addresses": [
+    "Gerard Doustraat 250"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 250-H",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000644238"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514562,
+     "lngLat": [
+      4.8982696,
+      52.3571998
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "250-H",
+      "addr:postcode": "1073XD",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-19",
+      "contact:email": "info@wendywelvaars.nl",
+      "craft": "caterer",
+      "name": "Wendy Welvaars",
+      "phone": "+31 20 6796777",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://wendywelvaars.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012136670",
+   "addresses": [
+    "Gerard Doustraat 246",
+    "Gerard Doustraat 248"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 246-H",
+     "use": "industriefunctie",
+     "areaM2": 275,
+     "bagId": "0363010000644231"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514537,
+     "lngLat": [
+      4.8981487,
+      52.357161
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "246-H",
+      "addr:postcode": "1073XD",
+      "addr:street": "Gerard Doustraat",
+      "branch": "Amsterdam",
+      "check_date": "2026-01-14",
+      "email": "inquiries@flatlineagency.com",
+      "name": "Flatline Agency",
+      "office": "advertising_agency",
+      "phone": "+31 20 2101668",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.flatlineagency.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163776",
+   "addresses": [
+    "Gerard Doustraat 244"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 244",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010001013754"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166194",
+   "addresses": [
+    "Gerard Doustraat 242"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 242",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010001014930"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012140916",
+   "addresses": [
+    "Gerard Doustraat 238"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 238",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 205,
+     "bagId": "0363010000644226"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506549948,
+     "lngLat": [
+      4.8978616,
+      52.3570574
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "238",
+      "addr:postcode": "1073XC",
+      "addr:street": "Gerard Doustraat",
+      "alt_name": "Tesjoengat Israël",
+      "amenity": "place_of_worship",
+      "check_date": "2026-01-14",
+      "denomination": "orthodox",
+      "email": "info@gerard-dou.nl",
+      "name": "Gerard Dou Synagogue",
+      "name:en": "Gerard Dou Synagogue",
+      "religion": "jewish",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.gerard-dou.nl/",
+      "wikidata": "Q9349121",
+      "wikipedia": "nl:Synagoge Gerard Doustraat"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163710",
+   "addresses": [
+    "Gerard Doustraat 234"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 234-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000644222"
+    },
+    {
+     "address": "Gerard Doustraat 234-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010012145584"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236408",
+   "addresses": [
+    "Gerard Doustraat 232"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 232-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000644218"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236449",
+   "addresses": [
+    "Gerard Doustraat 230"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 230-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010001020448"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162307",
+   "addresses": [
+    "Gerard Doustraat 228"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 228-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001020447"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164780",
+   "addresses": [
+    "Gerard Doustraat 226"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 226-H",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000644204"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514154,
+     "lngLat": [
+      4.8974194,
+      52.3569338
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "226-H",
+      "addr:postcode": "1073XC",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-14",
+      "note": "Formerly Mevrouw Hamersma Kookboekwinkel",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164383",
+   "addresses": [
+    "Gerard Doustraat 222",
+    "Gerard Doustraat 224"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 224-H",
+     "use": "industriefunctie",
+     "areaM2": 60,
+     "bagId": "0363010000644200"
+    },
+    {
+     "address": "Gerard Doustraat 222-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010001014934"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514145,
+     "lngLat": [
+      4.8973362,
+      52.3569206
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "224-H",
+      "addr:postcode": "1073XC",
+      "addr:street": "Gerard Doustraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-14",
+      "cuisine": "thai",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "name": "Thai Roof",
+      "opening_hours": "Mo,We-Su 12:00-20:30",
+      "outdoor_seating": "no",
+      "phone": "+31 6 28326646",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13074853306,
+     "lngLat": [
+      4.8972648,
+      52.3569435
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "check_date": "2025-08-16",
+      "currency:EUR": "yes",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 1.5
+    }
+   ]
+  }
+ ]
+}

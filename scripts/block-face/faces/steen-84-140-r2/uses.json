@@ -1,0 +1,57 @@
+{
+ "street": "Eerste Jan Steenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012235888",
+   "addresses": [
+    "Eerste Jan Steenstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 94-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000546149"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153648",
+   "addresses": [
+    "Eerste Jan Steenstraat 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 92-H",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010001016800"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166394",
+   "addresses": [
+    "Eerste Jan Steenstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 90-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000546133"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

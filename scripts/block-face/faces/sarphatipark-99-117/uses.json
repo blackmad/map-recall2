@@ -1,0 +1,252 @@
+{
+ "street": "Sarphatipark",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167255",
+   "addresses": [
+    "Sarphatipark 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 99-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000804360"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559734,
+     "lngLat": [
+      4.8983463,
+      52.3554596
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "99-H",
+      "addr:postcode": "1073CV",
+      "addr:street": "Sarphatipark",
+      "books": "children",
+      "check_date": "2026-01-20",
+      "email": "info@casperle.nl",
+      "name": "Casperle",
+      "opening_hours": "Tu-Fr 10:00-18:00; Sa 10:00-17:00",
+      "phone": "+31 20 6791101",
+      "shop": "books",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.casperle.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12925468553,
+     "lngLat": [
+      4.8982605,
+      52.355434
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "capacity": "16",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 3.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166061",
+   "addresses": [
+    "Sarphatipark 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 101-H",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000804372"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165912",
+   "addresses": [
+    "Sarphatipark 103",
+    "Sarphatipark 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 105-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000804378"
+    },
+    {
+     "address": "Sarphatipark 105-1",
+     "use": "winkelfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000804385"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9039013081,
+     "lngLat": [
+      4.8984463,
+      52.3553287
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "103-H",
+      "addr:postcode": "1073CV",
+      "addr:street": "Sarphatipark",
+      "check_date": "2026-01-20",
+      "email": "hello@van-verre.com",
+      "name": "Van Verre",
+      "opening_hours": "We-Fr 10:00-18:00; Sa 10:00-17:00",
+      "phone": "+31 20 7769651",
+      "shop": "interior_decoration",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "website": "https://www.van-verre.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155834",
+   "addresses": [
+    "Sarphatipark 107"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 107-H",
+     "use": "woonfunctie",
+     "areaM2": 191,
+     "bagId": "0363010000804389"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162504",
+   "addresses": [
+    "Sarphatipark 109",
+    "Sarphatipark 190"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 109-H",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000804392"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157222",
+   "addresses": [
+    "Sarphatipark 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 111-H",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010000804399"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158414",
+   "addresses": [
+    "Sarphatipark 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 113-H",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010000804405"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163384",
+   "addresses": [
+    "Sarphatipark 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 115-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000804411"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165284",
+   "addresses": [
+    "Sarphatipark 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 117-H",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000804418"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12925493665,
+     "lngLat": [
+      4.8987654,
+      52.3549053
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 7.2
+    }
+   ]
+  }
+ ]
+}

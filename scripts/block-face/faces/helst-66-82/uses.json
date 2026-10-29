@@ -1,0 +1,412 @@
+{
+ "street": "Eerste Van der Helststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152914",
+   "addresses": [
+    "Eerste Van der Helststraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 82-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000548837"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817614050,
+     "lngLat": [
+      4.8934512,
+      52.3545798
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "82-H",
+      "addr:postcode": "1072NZ",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "cafe",
+      "branch": "Amsterdam Van der Helststraat",
+      "check_date": "2026-01-21",
+      "name": "GoodNews",
+      "opening_hours": "Mo 07:30-18:30; Tu-Su 09:00-18:30",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://goodnews.coffee/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159331",
+   "addresses": [
+    "Eerste Van der Helststraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 80-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000548832"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817614004,
+     "lngLat": [
+      4.8934162,
+      52.3546337
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "80-H",
+      "addr:postcode": "1072NZ",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-21",
+      "cuisine": "italian",
+      "email": "info@leonardosraviolibar.com",
+      "name": "Leonardo's Ravioli Bar",
+      "opening_hours": "Mo-Fr 17:00-23:00; Sa-Su 12:00-23:00",
+      "phone": "+31 20 2358790",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.leonardosraviolibar.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161804",
+   "addresses": [
+    "Eerste Van der Helststraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 78-H",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000548828"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817613855,
+     "lngLat": [
+      4.8933928,
+      52.354677
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "78-H",
+      "addr:postcode": "1072NZ",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "ice_cream",
+      "check_date": "2026-01-21",
+      "delivery": "yes",
+      "email": "amsterdam1@casainfante.it",
+      "name": "Casa Infante",
+      "opening_hours": "Mo-Su 11:00-22:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.casainfante.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162310",
+   "addresses": [
+    "Eerste Van der Helststraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 76-H",
+     "use": "winkelfunctie",
+     "areaM2": 53,
+     "bagId": "0363010011118558"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817613831,
+     "lngLat": [
+      4.893364,
+      52.3547157
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "76-H",
+      "addr:postcode": "1072NZ",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-21",
+      "clothes": "women",
+      "email": "info@cottoncake.nl",
+      "name": "Cottoncake",
+      "opening_hours": "Mo-Su 11:00-18:00",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://cottoncake.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236101",
+   "addresses": [
+    "Eerste Van der Helststraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 74-O",
+     "use": "winkelfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000548821"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2638450394,
+     "lngLat": [
+      4.8933371,
+      52.3547563
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "74-H",
+      "addr:postcode": "1072NZ",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "restaurant",
+      "branch": "Amsterdam De Pijp",
+      "check_date": "2026-01-21",
+      "cuisine": "sushi",
+      "delivery": "yes",
+      "name": "Sushito",
+      "opening_hours": "Mo-Su 11:30-21:30",
+      "payment:cash": "no",
+      "payment:contactless": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "phone": "+31 20 3585207",
+      "website": "https://sushito.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236102",
+   "addresses": [
+    "Eerste Van der Helststraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 72-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000548817"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817613366,
+     "lngLat": [
+      4.893313,
+      52.3547936
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "72-H",
+      "addr:postcode": "1072NZ",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "restaurant",
+      "branch": "Amsterdam De Pijp",
+      "brand": "L'Antica Pizzeria da Michele",
+      "brand:wikidata": "Q137571344",
+      "check_date": "2026-01-21",
+      "cuisine": "pizza",
+      "email": "info@pizzeriadamichele.nl",
+      "level": "0",
+      "name": "L'Antica Pizzeria da Michele",
+      "opening_hours": "Su-Th 11:00-24:00; Fr-Sa 11:00-01:00",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "phone": "+31 20 358 6942",
+      "reservation": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.pizzeriadamichele.nl/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153140",
+   "addresses": [
+    "Eerste Van der Helststraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 70-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000548813"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817613328,
+     "lngLat": [
+      4.8932887,
+      52.3548311
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "70-H",
+      "addr:postcode": "1072NZ",
+      "addr:street": "Eerste Van der Helststraat",
+      "alt_name": "Katsu Coffeeshop & Galerie",
+      "check_date": "2026-01-21",
+      "name": "Katsu",
+      "opening_hours": "Mo-Th 10:00-24:00; Fr-Sa 10:00-01:00; Su 11:00-24:00",
+      "shop": "cannabis",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.katsu.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163924",
+   "addresses": [
+    "Eerste Van der Helststraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 68-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000548809"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2510438388,
+     "lngLat": [
+      4.8932622,
+      52.3548716
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "68-H",
+      "addr:postcode": "1072NZ",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-21",
+      "email": "info@parlour.amsterdam",
+      "name": "Parlour Amsterdam",
+      "opening_hours": "Mo-Sa 09:00-17:00 || \"By appointment\"",
+      "phone": "+31 6 15020269",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://parlour.amsterdam"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157290",
+   "addresses": [
+    "Eerste Van der Helststraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 66-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000988425"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817613143,
+     "lngLat": [
+      4.8932308,
+      52.3549125
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "66-H",
+      "addr:postcode": "1072NZ",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-21",
+      "cuisine": "pizza",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "name": "Pizzeria Dope",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

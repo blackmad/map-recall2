@@ -1,0 +1,372 @@
+{
+ "street": "Eerste Jan Steenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160607",
+   "addresses": [
+    "Eerste Jan Steenstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 114-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000546243"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164678",
+   "addresses": [
+    "Eerste Jan Steenstraat 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 112-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000546235"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157354",
+   "addresses": [
+    "Eerste Jan Steenstraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 110-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000546222"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152902",
+   "addresses": [
+    "Eerste Jan Steenstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 108-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000546214"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159966",
+   "addresses": [
+    "Eerste Jan Steenstraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 106-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000546207"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163192",
+   "addresses": [
+    "Eerste Jan Steenstraat 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 104-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000546199"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153336",
+   "addresses": [
+    "Eerste Jan Steenstraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 102-H",
+     "use": "woonfunctie",
+     "areaM2": 195,
+     "bagId": "0363010000995079"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156490",
+   "addresses": [
+    "Eerste Jan Steenstraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 100-H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000546179"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163026",
+   "addresses": [
+    "Eerste Jan Steenstraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 98-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000546170"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236010",
+   "addresses": [
+    "Eerste Jan Steenstraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 96-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000546159"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012235888",
+   "addresses": [
+    "Eerste Jan Steenstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 94-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000546149"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153648",
+   "addresses": [
+    "Eerste Jan Steenstraat 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 92-H",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010001016800"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166394",
+   "addresses": [
+    "Eerste Jan Steenstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 90-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000546133"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236007",
+   "addresses": [
+    "Eerste Jan Steenstraat 84",
+    "Eerste Jan Steenstraat 86",
+    "Eerste Jan Steenstraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 89B",
+     "use": "winkelfunctie",
+     "areaM2": 713,
+     "bagId": "0363010000635496"
+    },
+    {
+     "address": "Ferdinand Bolstraat 91A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000635501"
+    },
+    {
+     "address": "Ferdinand Bolstraat 91B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000635502"
+    },
+    {
+     "address": "Eerste Jan Steenstraat 84",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001017851"
+    },
+    {
+     "address": "Ferdinand Bolstraat 91D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012090187"
+    },
+    {
+     "address": "Ferdinand Bolstraat 89A",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000635495"
+    }
+   ],
+   "units": 13,
+   "osm": [
+    {
+     "type": "node",
+     "id": 332661076,
+     "lngLat": [
+      4.8909288,
+      52.3538793
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "89B",
+      "addr:postcode": "1072LD",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "fast_food",
+      "branch": "Amsterdam Ferdinand Bolstraat",
+      "brand": "FEBO",
+      "brand:wikidata": "Q582245",
+      "brand:wikipedia": "nl:Febo (snackbar)",
+      "check_date": "2026-01-22",
+      "cuisine": "friture",
+      "drive_through": "no",
+      "name": "FEBO",
+      "opening_hours": "Mo-We 11:00-22:00; Th 11:00-24:00; Fr 11:00-01:00; Sa 11:00-02:00; Su 12:00-02:00",
+      "phone": "+31 20 777 9347",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.febo.nl/locaties/amsterdam-ferdinand-bolstraat/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 332661078,
+     "lngLat": [
+      4.890945,
+      52.3538303
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "89B",
+      "addr:postcode": "1072LD",
+      "addr:street": "Ferdinand Bolstraat",
+      "branch": "Amsterdam Ferdinand Bolstraat",
+      "brand": "Jumbo",
+      "brand:website": "https://www.jumbo.com",
+      "brand:wikidata": "Q2262314",
+      "brand:wikipedia": "nl:Jumbo Supermarkten",
+      "check_date": "2026-01-22",
+      "name": "Jumbo",
+      "opening_hours": "Mo-Sa 08:00-22:00; Su 09:00-22:00",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 303 1100",
+      "shop": "supermarket",
+      "website": "https://www.jumbo.com/winkel/amsterdam/jumbo-amsterdam-ferdinand-bolstraat",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155544",
+   "addresses": [
+    "Eerste Jan Steenstraat 84A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 84A",
+     "use": "kantoorfunctie",
+     "areaM2": 803,
+     "bagId": "0363010001017852"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817614073,
+     "lngLat": [
+      4.8910414,
+      52.3540073
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "84",
+      "addr:postcode": "1072NP",
+      "addr:street": "Eerste Jan Steenstraat",
+      "check_date": "2026-01-29",
+      "name": "Unitz",
+      "office": "coworking",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.unitz.nl/unitz/eerste-jan-steenstraat-84"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,481 @@
+{
+ "street": "Frans Halsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012233526",
+   "addresses": [
+    "Frans Halsstraat 26A",
+    "Frans Halsstraat 26B",
+    "Frans Halsstraat 26C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000998422"
+    },
+    {
+     "address": "Frans Halsstraat 26A-H",
+     "use": "winkelfunctie",
+     "areaM2": 340,
+     "bagId": "0363010000638350"
+    },
+    {
+     "address": "Frans Halsstraat 26B",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012601231"
+    },
+    {
+     "address": "Frans Halsstraat 26C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012601232"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073912",
+   "addresses": [
+    "Frans Halsstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000638347"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 497166932,
+     "lngLat": [
+      4.8887663,
+      52.3577771
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "26-H",
+      "addr:postcode": "1072BR",
+      "addr:street": "Frans Halsstraat",
+      "amenity": "restaurant",
+      "cuisine": "french",
+      "delivery": "no",
+      "email": "bonjour@petitcaron.nl",
+      "indoor_seating": "yes",
+      "name": "Petit Caron",
+      "opening_hours": "Mo-Th 18:00-24:00; Fr-Sa 18:00-01:00",
+      "outdoor_seating": "no",
+      "payment:cash": "no",
+      "phone": "+31 20 7232699",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "no",
+      "website": "https://petitcaron.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159179",
+   "addresses": [
+    "Frans Halsstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 199,
+     "bagId": "0363010001002672"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154376",
+   "addresses": [
+    "Frans Halsstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 226,
+     "bagId": "0363010000951463"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154270",
+   "addresses": [
+    "Frans Halsstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 198,
+     "bagId": "0363010001172667"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153362",
+   "addresses": [
+    "Frans Halsstraat 18A",
+    "Frans Halsstraat 18",
+    "Frans Halsstraat 18H",
+    "Frans Halsstraat 18B",
+    "Frans Halsstraat 18C",
+    "Frans Halsstraat 18D",
+    "Frans Halsstraat 18E",
+    "Frans Halsstraat 18F",
+    "Frans Halsstraat 18G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 193,
+     "bagId": "0363010000638328"
+    },
+    {
+     "address": "Frans Halsstraat 18H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012076154"
+    },
+    {
+     "address": "Frans Halsstraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010012098501"
+    },
+    {
+     "address": "Frans Halsstraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010012098502"
+    },
+    {
+     "address": "Frans Halsstraat 18D",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010012098503"
+    },
+    {
+     "address": "Frans Halsstraat 18E",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010012098504"
+    },
+    {
+     "address": "Frans Halsstraat 18F",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010012098505"
+    },
+    {
+     "address": "Frans Halsstraat 18G",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010012098506"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11235787732,
+     "lngLat": [
+      4.8888635,
+      52.3580245
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "check_date": "2026-01-04",
+      "panoramax": "aa49d438-95f4-4bec-9a9d-739987ae8ca6"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 0.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237124",
+   "addresses": [
+    "Frans Halsstraat 14B",
+    "Frans Halsstraat 14C",
+    "Frans Halsstraat 14D",
+    "Frans Halsstraat 14E",
+    "Frans Halsstraat 14F",
+    "Frans Halsstraat 14A",
+    "Frans Halsstraat 16A",
+    "Frans Halsstraat 16C",
+    "Frans Halsstraat 16E",
+    "Frans Halsstraat 16G",
+    "Frans Halsstraat 16K",
+    "Frans Halsstraat 16B",
+    "Frans Halsstraat 16F",
+    "Frans Halsstraat 16H",
+    "Frans Halsstraat 16D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000638307"
+    },
+    {
+     "address": "Frans Halsstraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000638308"
+    },
+    {
+     "address": "Frans Halsstraat 14D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000638309"
+    },
+    {
+     "address": "Frans Halsstraat 14E",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000638310"
+    },
+    {
+     "address": "Frans Halsstraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000638315"
+    },
+    {
+     "address": "Frans Halsstraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000638317"
+    },
+    {
+     "address": "Frans Halsstraat 16E",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000638319"
+    },
+    {
+     "address": "Frans Halsstraat 16G",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000638321"
+    },
+    {
+     "address": "Frans Halsstraat 16K",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000933846"
+    },
+    {
+     "address": "Frans Halsstraat 14F",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000988534"
+    },
+    {
+     "address": "Frans Halsstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000638316"
+    },
+    {
+     "address": "Frans Halsstraat 16F",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000638320"
+    },
+    {
+     "address": "Frans Halsstraat 16H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000638322"
+    },
+    {
+     "address": "Frans Halsstraat 16D",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000638318"
+    },
+    {
+     "address": "Frans Halsstraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000638306"
+    }
+   ],
+   "units": 15,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11235787732,
+     "lngLat": [
+      4.8888635,
+      52.3580245
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "check_date": "2026-01-04",
+      "panoramax": "aa49d438-95f4-4bec-9a9d-739987ae8ca6"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 0.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163246",
+   "addresses": [
+    "Frans Halsstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000638302"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162576",
+   "addresses": [
+    "Frans Halsstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000638299"
+    },
+    {
+     "address": "Frans Halsstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012094482"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158987",
+   "addresses": [
+    "Frans Halsstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000638296"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163233",
+   "addresses": [
+    "Frans Halsstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000638294"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091498",
+   "addresses": [
+    "Frans Halsstraat 2",
+    "Frans Halsstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Stadhouderskade 61-1",
+     "use": "kantoorfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000997422"
+    },
+    {
+     "address": "Frans Halsstraat 2",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 262,
+     "bagId": "0363010001012385"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 497166933,
+     "lngLat": [
+      4.8888625,
+      52.3583981
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2",
+      "addr:postcode": "1072BR",
+      "addr:street": "Frans Halsstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-03",
+      "check_date:opening_hours": "2024-07-01",
+      "cuisine": "japanese",
+      "email": "info@otaru.nl",
+      "indoor_seating": "yes",
+      "name": "Otaru",
+      "opening_hours": "Mo-Fr 12:00-23:00; Sa 15:00-23:00; Su 15:00-22:00",
+      "opening_hours:signed": "no",
+      "phone": "+31 20 670 8972",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.otaru.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

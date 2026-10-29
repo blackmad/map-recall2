@@ -1,0 +1,258 @@
+{
+ "street": "Frans Halsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152965",
+   "addresses": [
+    "Frans Halsstraat 37",
+    "Frans Halsstraat 37A",
+    "Frans Halsstraat 37B",
+    "Frans Halsstraat 37C",
+    "Frans Halsstraat 37D",
+    "Frans Halsstraat 37E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 37",
+     "use": "woonfunctie",
+     "areaM2": 588,
+     "bagId": "0363010000553850"
+    },
+    {
+     "address": "Frans Halsstraat 37A",
+     "use": "winkelfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012568190"
+    },
+    {
+     "address": "Frans Halsstraat 37B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012568191"
+    },
+    {
+     "address": "Frans Halsstraat 37C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012568192"
+    },
+    {
+     "address": "Frans Halsstraat 37D",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012568193"
+    },
+    {
+     "address": "Frans Halsstraat 37E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012568194"
+    },
+    {
+     "address": "Quellijnstraat 58A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012568195"
+    },
+    {
+     "address": "Quellijnstraat 58B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012568196"
+    },
+    {
+     "address": "Quellijnstraat 58C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012568197"
+    },
+    {
+     "address": "Quellijnstraat 58D",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012568198"
+    },
+    {
+     "address": "Quellijnstraat 58E",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012568199"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817453600,
+     "lngLat": [
+      4.8889102,
+      52.35678
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "37",
+      "addr:postcode": "1072BL",
+      "addr:street": "Frans Halsstraat",
+      "branch": "Wijkkantoor Zuid",
+      "check_date": "2026-01-10",
+      "email": "j.harteveld@ymere.nl",
+      "mobile": "+31620200618",
+      "name": "Ymere",
+      "note": "Wijkbeheer Amsterdam Zuid",
+      "office": "property_management",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.ymere.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13430506290,
+     "lngLat": [
+      4.8889754,
+      52.3568395
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "operator:wikidata": "Q9899",
+      "recycling:cardboard": "yes",
+      "recycling:paper": "yes",
+      "recycling_type": "container",
+      "ref": "PAK02862"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 7.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012233419",
+   "addresses": [
+    "Frans Halsstraat 39A",
+    "Frans Halsstraat 39B",
+    "Frans Halsstraat 41A",
+    "Frans Halsstraat 41C",
+    "Frans Halsstraat 41D",
+    "Frans Halsstraat 41B",
+    "Frans Halsstraat 41E",
+    "Frans Halsstraat 43A",
+    "Frans Halsstraat 43C",
+    "Frans Halsstraat 43D",
+    "Frans Halsstraat 43E",
+    "Frans Halsstraat 43B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 41A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000951968"
+    },
+    {
+     "address": "Frans Halsstraat 41C",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000952048"
+    },
+    {
+     "address": "Frans Halsstraat 41D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000952049"
+    },
+    {
+     "address": "Frans Halsstraat 43A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000952051"
+    },
+    {
+     "address": "Frans Halsstraat 43C",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000952053"
+    },
+    {
+     "address": "Frans Halsstraat 43D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000952054"
+    },
+    {
+     "address": "Frans Halsstraat 39A",
+     "use": "winkelfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000809640"
+    },
+    {
+     "address": "Frans Halsstraat 39B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000809641"
+    },
+    {
+     "address": "Frans Halsstraat 41B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000952047"
+    },
+    {
+     "address": "Frans Halsstraat 41E",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000952050"
+    },
+    {
+     "address": "Frans Halsstraat 43E",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000952055"
+    },
+    {
+     "address": "Frans Halsstraat 43B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000952052"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817453761,
+     "lngLat": [
+      4.8889549,
+      52.3567262
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "39A",
+      "addr:postcode": "1072BL",
+      "addr:street": "Frans Halsstraat",
+      "check_date": "2026-01-06",
+      "email": "info@minicards.com",
+      "name": "Minicards",
+      "office": "advertising_agency",
+      "phone": "+31 20 7714186",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.minicards.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

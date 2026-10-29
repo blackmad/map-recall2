@@ -1,0 +1,170 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "ruysdaelkade-75-85-r1",
+ "street": "Ruysdaelkade",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/ruysdaelkade-75-85-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frans Halsbuurt); scores and holds in scripts/block-face/faces/ruysdaelkade-75-85/auto-place.json"
+ },
+ "types": [
+  "pijp-1875-shop-dormer",
+  "pijp-1876-hood-frieze"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012166549",
+   "slug": "ruysdaelkade-166549",
+   "address": "Ruysdaelkade 81",
+   "type": {
+    "type": "pijp-1876-hood-frieze",
+    "measuredPalette": {
+     "brick": "#5e4e47",
+     "evidence": "strip 2023-01-03 span 889-1146: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows of one width",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "a shop per house",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 13.8 m; one pediment dormer with a hoist beam",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the hood friezes' dentil pattern and the rosettes between them are a plain cream ledge",
+     "the white stucco pilasters at the party walls (46-48) are not drawn",
+     "the yellow brick courses of 44 and 48 are not drawn"
+    ],
+    "citation": "auto-place: pijp-1876-hood-frieze scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2023-01-03 span 889-1146"
+   }
+  },
+  {
+   "pandId": "0363100012157446",
+   "slug": "ruysdaelkade-157446",
+   "address": "Ruysdaelkade 83",
+   "type": {
+    "type": "pijp-1875-shop-dormer",
+    "measuredPalette": {
+     "brick": "#584841",
+     "evidence": "strip 2023-01-03 span 1145-1374: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "both upper storeys: 3 T-windows of one width",
+    "windowsPerStorey": "ground: shop (+ side door) | 1: 3 | 2: 3",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "a shop per house, often a residential door at one party wall",
+    "signage": "per shop",
+    "roofline": "deep white entablature at 12.2 m; one pediment dormer with a hoist beam",
+    "photoRows": [
+     1,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the square frieze vents of 12 are not drawn",
+     "the iron balconettes at the storey-1 and storey-2 sills of 12 are not drawn",
+     "the slightly cambered brick heads are flat"
+    ],
+    "citation": "auto-place: pijp-1875-shop-dormer scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2023-01-03 span 1145-1374"
+   }
+  },
+  {
+   "pandId": "0363100012162885",
+   "slug": "ruysdaelkade-162885",
+   "address": "Ruysdaelkade 85",
+   "type": {
+    "type": "pijp-1875-shop-dormer",
+    "measuredPalette": {
+     "brick": "#6c5b52",
+     "evidence": "strip 2023-01-03 span 1374-1616: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#3b3533"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "both upper storeys: 3 T-windows of one width",
+    "windowsPerStorey": "ground: shop (+ side door) | 1: 3 | 2: 3",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "a shop per house, often a residential door at one party wall",
+    "signage": "per shop",
+    "roofline": "deep white entablature at 12.2 m; one pediment dormer with a hoist beam",
+    "photoRows": [
+     1,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the square frieze vents of 12 are not drawn",
+     "the iron balconettes at the storey-1 and storey-2 sills of 12 are not drawn",
+     "the slightly cambered brick heads are flat"
+    ],
+    "citation": "auto-place: pijp-1875-shop-dormer scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2023-01-03 span 1374-1616"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

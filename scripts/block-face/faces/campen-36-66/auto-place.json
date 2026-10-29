@@ -1,0 +1,1086 @@
+{
+ "face": "campen-36-66",
+ "street": "Eerste Jacob van Campenstraat",
+ "library": "de-pijp",
+ "stripDate": "2019-01-30",
+ "seconds": 14.28,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012159600",
+   "address": "Eerste Jacob van Campenstraat 64",
+   "builtYear": 1879,
+   "widthM": 7.01,
+   "eavesM": 11.48,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5a4f",
+    "wallRaw": "#4c4440",
+    "skyline": {
+     "eavesM": 16.9,
+     "eavesRow": 120,
+     "confidence": 0.67,
+     "crown": {
+      "widthM": 1.27,
+      "riseM": 3,
+      "topWidthM": 0.05,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.103,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.32,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.34 (light 0.47): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.34,
+       "light": 0.47
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.32,
+       "widthM": 2.25,
+       "centre": 0.22
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1879, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1879, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.48 m = 3 storeys of 3.83 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.87 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.06 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163981",
+   "address": "Eerste Jacob van Campenstraat 62",
+   "builtYear": 1879,
+   "widthM": 6.41,
+   "eavesM": 11.92,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a8abb0",
+    "wallRaw": "#585350",
+    "skyline": {
+     "eavesM": 17.07,
+     "eavesRow": 113,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 1.4,
+      "riseM": 2.82,
+      "topWidthM": 0.23,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.328,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.07,
+       "widthM": 1.07,
+       "centre": 0.79
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1879, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1879, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.92 m = 3 storeys of 3.97 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.38 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.24 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166419",
+   "address": "Eerste Jacob van Campenstraat 60",
+   "builtYear": 1879,
+   "widthM": 6.74,
+   "eavesM": 12.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f7560",
+    "wallRaw": "#544c48",
+    "skyline": {
+     "eavesM": 18.18,
+     "eavesRow": 69,
+     "confidence": 0.56,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.124,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.05,
+       "widthM": 0.9,
+       "centre": 0.26
+      },
+      {
+       "atM": 5.15,
+       "widthM": 6.03,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1879, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1879, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.13 m = 3 storeys of 4.04 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.73 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.078 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156123",
+   "address": "Eerste Jacob van Campenstraat 58",
+   "builtYear": 1876,
+   "widthM": 6.24,
+   "eavesM": 12.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#705c54",
+    "wallRaw": "#524945",
+    "skyline": {
+     "eavesM": 17.5,
+     "eavesRow": 96,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.23,
+      "topWidthM": 1.68,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.027,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012156123",
+    "ncc": 0.205,
+    "nccRaw": 0.205,
+    "shiftM": [
+     -0.35,
+     0.25
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.31 mean 0.47 vs photo 0.36"
+    ],
+    "wall": {
+     "photo": "#68554c",
+     "model": "#887066",
+     "dL": 0.114
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.412
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156663",
+   "address": "Eerste Jacob van Campenstraat 56",
+   "builtYear": 1876,
+   "widthM": 5.82,
+   "eavesM": 13.14,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#585151",
+    "wallRaw": "#54514f",
+    "skyline": {
+     "eavesM": 17.9,
+     "eavesRow": 80,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 1.63,
+      "topWidthM": 0.65,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.043,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.97,
+       "widthM": 1,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.143 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.20 mean 0.49 vs photo 0.38; columns 3 vs photo 6)",
+   "likeness": {
+    "pandId": "0363100012156663",
+    "ncc": 0.143,
+    "nccRaw": 0.143,
+    "shiftM": [
+     -0.1,
+     -0.1
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20 mean 0.49 vs photo 0.38",
+     "columns 3 vs photo 6"
+    ],
+    "wall": {
+     "photo": "#6f6361",
+     "model": "#6f6666",
+     "dL": 0.01
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.284
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233622",
+   "address": "Eerste Jacob van Campenstraat 52",
+   "builtYear": 1876,
+   "widthM": 12.78,
+   "eavesM": 13.61,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d443d",
+    "wallRaw": "#524841",
+    "skyline": {
+     "eavesM": 18.9,
+     "eavesRow": 40,
+     "confidence": 0.37,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.35,
+       "widthM": 1.35,
+       "centre": 0.87
+      },
+      {
+       "atM": 7,
+       "widthM": 0.93,
+       "centre": 0.21
+      },
+      {
+       "atM": 4.9,
+       "widthM": 1.18,
+       "centre": 0.79
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 12.78 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 12.78 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.61 m = 3 storeys of 4.54 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.62 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153602",
+   "address": "Eerste Jacob van Campenstraat 50",
+   "builtYear": 1876,
+   "widthM": 6.26,
+   "eavesM": 13.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725d58",
+    "wallRaw": "#52453f",
+    "skyline": {
+     "eavesM": 19.13,
+     "eavesRow": 31,
+     "confidence": 0.53,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012153602",
+    "ncc": 0.192,
+    "nccRaw": 0.192,
+    "shiftM": [
+     0.35,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.26 mean 0.44 vs photo 0.24"
+    ],
+    "wall": {
+     "photo": "#725d58",
+     "model": "#89706a",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.251
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162050",
+   "address": "Eerste Jacob van Campenstraat 48",
+   "builtYear": 1876,
+   "widthM": 6.08,
+   "eavesM": 12.78,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#715b52",
+    "wallRaw": "#544740",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 796,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.105 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.41 mean 0.47 vs photo 0.69)",
+   "likeness": {
+    "pandId": "0363100012162050",
+    "ncc": 0.105,
+    "nccRaw": 0.105,
+    "shiftM": [
+     -0.15,
+     0.15
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.41 mean 0.47 vs photo 0.69"
+    ],
+    "wall": {
+     "photo": "#725d55",
+     "model": "#896e64",
+     "dL": 0.075
+    },
+    "glazing": {
+     "photo": 0.69,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.397
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.163
+   }
+  },
+  {
+   "pandId": "0363100012155659",
+   "address": "Eerste Jacob van Campenstraat 46",
+   "builtYear": 1876,
+   "widthM": 5.9,
+   "eavesM": 12.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#52463e",
+    "wallRaw": "#564943",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 796,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.012,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.004 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.14)",
+   "likeness": {
+    "pandId": "0363100012155659",
+    "ncc": 0.004,
+    "nccRaw": 0.004,
+    "shiftM": [
+     0.2,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.14"
+    ],
+    "wall": {
+     "photo": "#473830",
+     "model": "#6d5d52",
+     "dL": 0.141
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.443
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.071
+   }
+  },
+  {
+   "pandId": "0363100012153116",
+   "address": "Eerste Jacob van Campenstraat 44",
+   "builtYear": 1876,
+   "widthM": 6.03,
+   "eavesM": 12.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#554842",
+    "wallRaw": "#5c504a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 796,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.024,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.5,
+       "widthM": 1.32,
+       "centre": 0.24
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.149 < 0.15 (photo vs model body; likeness.ts WARN: columns 3 vs photo 2; mask IoU 0.354 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012153116",
+    "ncc": 0.149,
+    "nccRaw": 0.149,
+    "shiftM": [
+     0.05,
+     -0.2
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "columns 3 vs photo 2",
+     "mask IoU 0.354 < 0.45"
+    ],
+    "wall": {
+     "photo": "#514640",
+     "model": "#6f5e56",
+     "dL": 0.102
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.354
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.071
+   }
+  },
+  {
+   "pandId": "0363100012158890",
+   "address": "Eerste Jacob van Campenstraat 42",
+   "builtYear": 1876,
+   "widthM": 6.1,
+   "eavesM": 13.01,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e665e",
+    "wallRaw": "#63544d",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 796,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.095,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.146 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.45 mean 0.48 vs photo 0.66)",
+   "likeness": {
+    "pandId": "0363100012158890",
+    "ncc": 0.146,
+    "nccRaw": 0.146,
+    "shiftM": [
+     -0.4,
+     -0.1
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.45 mean 0.48 vs photo 0.66"
+    ],
+    "wall": {
+     "photo": "#826960",
+     "model": "#94786f",
+     "dL": 0.065
+    },
+    "glazing": {
+     "photo": 0.66,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.406
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.165,
+    "pijp-1882-keystone-lintel": 0.151,
+    "pijp-1885-segmental-keystone": 0.16
+   }
+  },
+  {
+   "pandId": "0363100012158976",
+   "address": "Eerste Jacob van Campenstraat 40",
+   "builtYear": 1876,
+   "widthM": 7.21,
+   "eavesM": 12.99,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c3c0bf",
+    "wallRaw": "#61524b",
+    "skyline": {
+     "eavesM": 19.5,
+     "eavesRow": 16,
+     "confidence": 0.35,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.072,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012158976",
+    "ncc": 0.19,
+    "nccRaw": 0.19,
+    "shiftM": [
+     0.05,
+     -0.35
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.14",
+     "glazing storey band off by 0.36 mean 0.55 vs photo 0.71"
+    ],
+    "wall": {
+     "photo": "#896e63",
+     "model": "#9c9796",
+     "dL": 0.137
+    },
+    "glazing": {
+     "photo": 0.71,
+     "model": 0.55
+    },
+    "columns": {
+     "photo": 8,
+     "model": 3
+    },
+    "iou": 0.469
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.16,
+    "pijp-1882-keystone-lintel": 0.166,
+    "pijp-1885-segmental-keystone": 0.173
+   }
+  },
+  {
+   "pandId": "0363100012160263",
+   "address": "Eerste Jacob van Campenstraat 38",
+   "builtYear": 1876,
+   "widthM": 6.72,
+   "eavesM": 14.51,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#856c5e",
+    "wallRaw": "#6a574d",
+    "skyline": {
+     "eavesM": 19.1,
+     "eavesRow": 32,
+     "confidence": 0.92,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.051,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.026 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.39 mean 0.49 vs photo 0.61; window shape tall vs photo square)",
+   "likeness": {
+    "pandId": "0363100012160263",
+    "ncc": 0.026,
+    "nccRaw": 0.026,
+    "shiftM": [
+     0.25,
+     -0.15
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.39 mean 0.49 vs photo 0.61",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#897061",
+     "model": "#9a7f70",
+     "dL": 0.063
+    },
+    "glazing": {
+     "photo": 0.61,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.38
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.198,
+    "pijp-1885-segmental-keystone": 0.203
+   }
+  },
+  {
+   "pandId": "0363100012161247",
+   "address": "Eerste Jacob van Campenstraat 36",
+   "builtYear": 1876,
+   "widthM": 7.11,
+   "eavesM": 14.41,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c545a",
+    "wallRaw": "#474241",
+    "skyline": {
+     "eavesM": 18.4,
+     "eavesRow": 60,
+     "confidence": 0.61,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.007,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1875-shop-dormer scores 0.69 < 0.7 (3DBAG eaves 14.41 m = 3 storeys of 4.8 m vs the type's 4.03 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.41 m = 3 storeys of 4.8 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.55 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,309 @@
+{
+ "street": "Sarphatipark",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161016",
+   "addresses": [
+    "Sarphatipark 119"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 119-H",
+     "use": "winkelfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000804423"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817555374,
+     "lngLat": [
+      4.8988535,
+      52.3548139
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "119-H",
+      "addr:postcode": "1073CX",
+      "addr:street": "Sarphatipark",
+      "check_date": "2026-01-20",
+      "email": "info@grandrelocation.nl",
+      "name": "Grand Relocation",
+      "office": "estate_agent",
+      "opening_hours": "Mo-Fr 09:00-18:00",
+      "phone": "+31 20 6200813",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.grandrelocation.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12925496928,
+     "lngLat": [
+      4.8988026,
+      52.3548587
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5
+    },
+    {
+     "type": "node",
+     "id": 12925504697,
+     "lngLat": [
+      4.898738,
+      52.3548059
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152332",
+   "addresses": [
+    "Sarphatipark 121A",
+    "Sarphatipark 121B",
+    "Sarphatipark 121C",
+    "Sarphatipark 121D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 121A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000804429"
+    },
+    {
+     "address": "Sarphatipark 121B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000804430"
+    },
+    {
+     "address": "Sarphatipark 121C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000804431"
+    },
+    {
+     "address": "Sarphatipark 121D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000804432"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159925",
+   "addresses": [
+    "Sarphatipark 123"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 123-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000804435"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11235802443,
+     "lngLat": [
+      4.8989001,
+      52.3546741
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "check_date": "2026-01-20"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 0.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159948",
+   "addresses": [
+    "Sarphatipark 125"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 125-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000804442"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11235802443,
+     "lngLat": [
+      4.8989001,
+      52.3546741
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "check_date": "2026-01-20"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 0.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164031",
+   "addresses": [
+    "Sarphatipark 127"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 127-H",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000804447"
+    },
+    {
+     "address": "Sarphatipark 127-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010012080846"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159213",
+   "addresses": [
+    "Sarphatipark 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 129-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000804452"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162830",
+   "addresses": [
+    "Sarphatipark 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 131-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000804459"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166438",
+   "addresses": [
+    "Sarphatipark 133"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 133-H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000854731"
+    },
+    {
+     "address": "Sarphatipark 133-H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010012166201"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158114",
+   "addresses": [
+    "Sarphatipark 135"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 135-H",
+     "use": "kantoorfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000804470"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2511420731,
+     "lngLat": [
+      4.8991629,
+      52.3544174
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "135-H",
+      "addr:postcode": "1073CX",
+      "addr:street": "Sarphatipark",
+      "check_date": "2026-01-20",
+      "email": "hallo@potionhairdesign.nl",
+      "female:signed": "no",
+      "male:signed": "no",
+      "name": "Potion Hairdesign",
+      "opening_hours": "Tu-We,Fr 09:30-18:00; Th 09:30-21:00; Sa 09:30-17:00",
+      "phone": "+31 20 4700085",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.potionhairdesign.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,135 @@
+{
+ "street": "Gerard Doustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153387",
+   "addresses": [
+    "Gerard Doustraat 168"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 168-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000644092"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153232",
+   "addresses": [
+    "Gerard Doustraat 166"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 166-H",
+     "use": "industriefunctie",
+     "areaM2": 94,
+     "bagId": "0363010001006576"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512397,
+     "lngLat": [
+      4.8947965,
+      52.3562378
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "166-H",
+      "addr:postcode": "1073VZ",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-13",
+      "email": "studio@stefanscholten.com",
+      "name": "Studio Stefan Scholten",
+      "operator": "Stefan Scholten",
+      "phone": "+31 20 4208940",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "gallery",
+      "website": "https://www.stefanscholten.com/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13453294010,
+     "lngLat": [
+      4.8948085,
+      52.3562163
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "166-H",
+      "addr:postcode": "1073VZ",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-13",
+      "consulting": "marble",
+      "email": "manuela@stonemadeitaly.com",
+      "mobile": "+31615697942",
+      "name": "Stone Made Italy",
+      "office": "consulting",
+      "operator": "Manuela Rotta",
+      "website": "https://www.stonemadeitaly.com/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156601",
+   "addresses": [
+    "Gerard Doustraat 164"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 164-H",
+     "use": "industriefunctie",
+     "areaM2": 96,
+     "bagId": "0363010000644069"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512384,
+     "lngLat": [
+      4.8947004,
+      52.3562189
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "164-H",
+      "addr:postcode": "1073VZ",
+      "addr:street": "Gerard Doustraat",
+      "craft": "upholsterer",
+      "email": "oudeleeuw@gmail.com",
+      "mobile": "+31627319532",
+      "name": "De Oude Leeuw",
+      "opening_hours": "Mo-Fr 09:00-17:30",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://oudeleeuwstoffeerderij.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

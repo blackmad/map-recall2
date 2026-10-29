@@ -16,14 +16,17 @@ import {srgbToLinear} from '../../src/canalRecall/look/sunny.ts';
 const FACES = 'scripts/block-face/faces';
 const luma = (c: readonly number[]) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
 const med = (a: number[]) => { const s = a.filter(Number.isFinite).sort((p, q) => p - q); return s.length ? (s.length % 2 ? s[s.length >> 1] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : NaN; };
-for (const face of process.argv.slice(2)) {
+export interface FaceWallExposure {face: string; stripOverDrawn: number | null; white: number[] | null; brickPands: number; rows: string[]; pands: {pandId: string; wallLuma: number; drawnLuma: number; ratio: number}[]}
+
+/** stripOverDrawn (median over the brick pands) and the light-trim white of one face, as build-chunk-wall-exposure.ts records them. */
+export async function faceWallExposure(face: string): Promise<FaceWallExposure | null> {
   const dir = path.join(FACES, face), strip = JSON.parse(fs.readFileSync(path.join(dir, 'strip.json'), 'utf8'));
   const file = [strip.image, `staging/block-face/${face}/strip.jpg`].find(f => f && fs.existsSync(f));
-  if (!file) { console.log(`${face}: no strip image`); continue; }
+  if (!file) return null;
   const {data, info} = await sharp(file).removeAlpha().raw().toBuffer({resolveWithObject: true});
   const rgb = new Uint8Array(data.buffer, data.byteOffset, data.length);
   const intents = houseIntents(validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')), JSON.parse(fs.readFileSync(path.join(dir, 'discovery.json'), 'utf8')).members));
-  const rows: string[] = [], ratios: number[] = [], frames: number[][] = [];
+  const rows: string[] = [], ratios: number[] = [], frames: number[][] = [], pands: FaceWallExposure['pands'] = [];
   for (const s of strip.spans) {
     const facts = path.join(dir, 'pands', s.pandId, 'facts.json'), h = fs.existsSync(facts) ? JSON.parse(fs.readFileSync(facts, 'utf8')).heights : null;
     const p = measureStripPalette({rgb, width: info.width, height: info.height, x0: s.px[0], x1: s.px[1], pixelsPerMetre: strip.pixelsPerMetre, eavesM: h?.eavesM ?? h?.dak70pM ?? 14});
@@ -35,9 +38,17 @@ for (const face of process.argv.slice(2)) {
     const ratio = srgbToLinear(wall) / srgbToLinear(drawn);
     if (p.frame) frames.push(hexToRgb(p.frame));
     ratios.push(ratio);
+    if (Number.isFinite(ratio)) pands.push({pandId: s.pandId, wallLuma: wall, drawnLuma: drawn, ratio});
     rows.push(`  ${s.pandId.slice(-6)} wall ${p.wall ?? '-'} drawn ${intent.palette.brick} (${intent.palette.wallMaterial ?? 'brick'}) frame ${p.frame ?? '-'} ratio ${Number.isFinite(ratio) ? ratio.toFixed(2) : '-'}`);
   }
   const white = frames.length ? [0, 1, 2].map(i => Math.round(med(frames.map(f => f[i])))) : null;
-  console.log(`${face}: stripOverDrawn ${white ? med(ratios).toFixed(3) : '- (no white)'} | white ${white?.join(',') ?? '-'}`);
-  rows.forEach(r => console.log(r));
+  const m = med(ratios);
+  return {face, stripOverDrawn: Number.isFinite(m) ? +m.toFixed(3) : null, white, brickPands: ratios.filter(Number.isFinite).length, rows, pands};
+}
+
+if (process.argv[1]?.endsWith('face-wall-exposure.ts')) for (const face of process.argv.slice(2)) {
+  const r = await faceWallExposure(face);
+  if (!r) { console.log(`${face}: no strip image`); continue; }
+  console.log(`${face}: stripOverDrawn ${r.white && r.stripOverDrawn !== null ? r.stripOverDrawn.toFixed(3) : '- (no white)'} | white ${r.white?.join(',') ?? '-'}`);
+  r.rows.forEach(x => console.log(x));
 }

@@ -1,0 +1,219 @@
+{
+ "street": "Frans Halsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157216",
+   "addresses": [
+    "Frans Halsstraat 66"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157731",
+   "addresses": [
+    "Frans Halsstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 64",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000984119"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163235",
+   "addresses": [
+    "Frans Halsstraat 62A",
+    "Frans Halsstraat 62B",
+    "Frans Halsstraat 62E",
+    "Frans Halsstraat 62F",
+    "Frans Halsstraat 62C",
+    "Frans Halsstraat 62D",
+    "Frans Halsstraat 62G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 62A",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010011291151"
+    },
+    {
+     "address": "Frans Halsstraat 62B",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010011291152"
+    },
+    {
+     "address": "Frans Halsstraat 62E",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010011291153"
+    },
+    {
+     "address": "Frans Halsstraat 62F",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010011291154"
+    },
+    {
+     "address": "Frans Halsstraat 62C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010011291155"
+    },
+    {
+     "address": "Frans Halsstraat 62D",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010011291156"
+    },
+    {
+     "address": "Frans Halsstraat 62G",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010011291157"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163963",
+   "addresses": [
+    "Frans Halsstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 60-H",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 122,
+     "bagId": "0363010001170583"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817455408,
+     "lngLat": [
+      4.8885457,
+      52.3565627
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "60-H",
+      "addr:postcode": "1072BT",
+      "addr:street": "Frans Halsstraat",
+      "amenity": "doctors",
+      "check_date": "2026-01-06",
+      "email": "assistent@fh60.nl",
+      "healthcare": "doctor",
+      "name": "Huisartsenpraktijk FH60",
+      "opening_hours": "Mo-Fr 08:00-17:00",
+      "phone": "+31 20 6739091",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://fh60.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237026",
+   "addresses": [
+    "Frans Halsstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001021615"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161957",
+   "addresses": [
+    "Frans Halsstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000638450"
+    },
+    {
+     "address": "Frans Halsstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012159859"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162798",
+   "addresses": [
+    "Frans Halsstraat 42",
+    "Frans Halsstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 42-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 178,
+     "bagId": "0363010001965011"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817454178,
+     "lngLat": [
+      4.888619,
+      52.3567873
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "42-H",
+      "addr:postcode": "1072BT",
+      "addr:street": "Frans Halsstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-06",
+      "contact:instagram": "https://www.instagram.com/juno.ams",
+      "email": "info@junorestaurant.nl",
+      "name": "Juno",
+      "opening_hours": "Mo-Fr 17:30+; Sa 13:00+",
+      "phone": "+31 6 30500185",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://junorestaurant.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

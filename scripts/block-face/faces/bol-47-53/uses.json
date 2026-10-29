@@ -1,0 +1,160 @@
+{
+ "street": "Ferdinand Bolstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237150",
+   "addresses": [
+    "Ferdinand Bolstraat 47",
+    "Ferdinand Bolstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 47-H",
+     "use": "winkelfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000635372"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506045199,
+     "lngLat": [
+      4.890552,
+      52.355303
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "47-H",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "check_date": "2026-01-10",
+      "clothes": "women;men",
+      "email": "info@circleoftrust.nl",
+      "name": "Circle Of Trust",
+      "operator": "Circle Of Trust",
+      "phone": "+31 20 6757946",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.circleoftrust.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236112",
+   "addresses": [
+    "Ferdinand Bolstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 51-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000635385"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2689134974,
+     "lngLat": [
+      4.890541,
+      52.3551907
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "51-H",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "cafe",
+      "branch": "Amsterdam Ferdinand",
+      "check_date": "2026-01-10",
+      "cuisine": "coffee_shop;tea",
+      "name": "GoodNews",
+      "opening_hours": "Mo-Fr 07:30-18:30; Sa-Su 09:00-18:30",
+      "outdoor_seating": "no",
+      "payment:cash": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://goodnews.coffee/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237272",
+   "addresses": [
+    "Ferdinand Bolstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 53-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 125,
+     "bagId": "0363010001014074"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817515182,
+     "lngLat": [
+      4.8905438,
+      52.3551332
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "53-H",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "branch": "Amsterdam Ferdinand Bolstraat",
+      "check_date": "2026-01-10",
+      "cuisine": "poké;hawaiian",
+      "name": "Hawaiian Poké Bowl",
+      "opening_hours": "Mo-Su 11:00-22:00",
+      "phone": "+31 85 3034505",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://hawaiianpokebowl.be",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13448054826,
+     "lngLat": [
+      4.8905053,
+      52.3550521
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 6.1
+    }
+   ]
+  }
+ ]
+}

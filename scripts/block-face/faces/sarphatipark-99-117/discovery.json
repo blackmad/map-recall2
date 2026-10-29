@@ -1,0 +1,588 @@
+{
+ "street": "Sarphatipark",
+ "seed": "0363100012167255",
+ "members": [
+  "0363100012167255",
+  "0363100012166061",
+  "0363100012165912",
+  "0363100012155834",
+  "0363100012162504",
+  "0363100012157222",
+  "0363100012158414",
+  "0363100012163384",
+  "0363100012165284"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012161016 22.9 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062137",
+   "reason": "frontage 60.8 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012075022",
+   "reason": "frontage 75.7 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012081229",
+   "reason": "sightline to Sarphatipark crosses 0363100012134217"
+  },
+  {
+   "pandId": "0363100012081813",
+   "reason": "frontage 78.5 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012090966",
+   "reason": "no frontage on Sarphatipark: No footprint edge faces Sarphatipark"
+  },
+  {
+   "pandId": "0363100012092498",
+   "reason": "no frontage on Sarphatipark: No footprint edge faces Sarphatipark"
+  },
+  {
+   "pandId": "0363100012114128",
+   "reason": "frontage 61.5 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012115560",
+   "reason": "frontage 39.3 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012123461",
+   "reason": "sightline to Sarphatipark crosses 0363100012160486"
+  },
+  {
+   "pandId": "0363100012126276",
+   "reason": "frontage 53.2 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012135879",
+   "reason": "frontage 110.1 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012152461",
+   "reason": "frontage 93.2 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012152488",
+   "reason": "frontage 110.5 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012152670",
+   "reason": "frontage 56.8 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012152764",
+   "reason": "frontage 41.6 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012152777",
+   "reason": "frontage 94.9 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012152873",
+   "reason": "frontage 89.3 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012152994",
+   "reason": "frontage 78.2 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012153067",
+   "reason": "frontage 52.7 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012153537",
+   "reason": "frontage 104.5 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012153557",
+   "reason": "frontage 97.7 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012153705",
+   "reason": "frontage 44.3 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012154106",
+   "reason": "frontage 56.0 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012154123",
+   "reason": "sightline to Sarphatipark crosses 0363100012165574"
+  },
+  {
+   "pandId": "0363100012155556",
+   "reason": "frontage 81.9 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012155763",
+   "reason": "frontage 48.1 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012155898",
+   "reason": "no frontage on Sarphatipark: No footprint edge faces Sarphatipark"
+  },
+  {
+   "pandId": "0363100012156050",
+   "reason": "frontage 49.8 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012156666",
+   "reason": "frontage 64.6 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012156687",
+   "reason": "frontage 84.1 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012156851",
+   "reason": "frontage 81.7 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012157047",
+   "reason": "frontage 96.1 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012157183",
+   "reason": "frontage 41.5 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012157460",
+   "reason": "frontage 101.9 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012152549",
+   "reason": "frontage 54.3 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012153034",
+   "reason": "frontage 65.6 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012153593",
+   "reason": "sightline to Sarphatipark crosses 0363100012161016"
+  },
+  {
+   "pandId": "0363100012156350",
+   "reason": "frontage 37.1 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012156423",
+   "reason": "frontage 42.8 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012156432",
+   "reason": "frontage 48.5 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012157197",
+   "reason": "sightline to Sarphatipark crosses 0363100012153593"
+  },
+  {
+   "pandId": "0363100012158006",
+   "reason": "frontage 35.9 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012158291",
+   "reason": "frontage 85.4 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012159515",
+   "reason": "frontage 58.9 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012159683",
+   "reason": "frontage 87.5 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012159713",
+   "reason": "frontage 99.9 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012160076",
+   "reason": "no frontage on Sarphatipark: No footprint edge faces Sarphatipark"
+  },
+  {
+   "pandId": "0363100012160085",
+   "reason": "frontage 98.9 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012160398",
+   "reason": "frontage 87.4 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012160474",
+   "reason": "frontage 64.0 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012160486",
+   "reason": "no frontage on Sarphatipark: No footprint edge faces Sarphatipark"
+  },
+  {
+   "pandId": "0363100012161318",
+   "reason": "sightline to Sarphatipark crosses 0363100012160374"
+  },
+  {
+   "pandId": "0363100012161347",
+   "reason": "frontage 106.2 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012161456",
+   "reason": "frontage 30.1 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012161897",
+   "reason": "frontage 76.1 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012163278",
+   "reason": "frontage 87.9 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012163764",
+   "reason": "frontage 66.8 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012163890",
+   "reason": "frontage 83.8 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012163950",
+   "reason": "frontage 93.8 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012164766",
+   "reason": "frontage 53.1 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012165449",
+   "reason": "no frontage on Sarphatipark: No footprint edge faces Sarphatipark"
+  },
+  {
+   "pandId": "0363100012165452",
+   "reason": "frontage 76.8 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012165574",
+   "reason": "sightline to Sarphatipark crosses 0363100012167255"
+  },
+  {
+   "pandId": "0363100012166041",
+   "reason": "frontage 70.4 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012157693",
+   "reason": "frontage 88.2 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012158445",
+   "reason": "frontage 31.4 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012159622",
+   "reason": "sightline to Sarphatipark crosses 0363100012162746"
+  },
+  {
+   "pandId": "0363100012160283",
+   "reason": "frontage 37.1 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012160287",
+   "reason": "frontage 49.0 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012160869",
+   "reason": "frontage 60.0 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012161298",
+   "reason": "frontage 59.9 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012161306",
+   "reason": "frontage 82.6 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012161370",
+   "reason": "frontage 31.5 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012161409",
+   "reason": "frontage 77.2 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012161720",
+   "reason": "frontage 65.7 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012162746",
+   "reason": "sightline to Sarphatipark crosses 0363100012165284"
+  },
+  {
+   "pandId": "0363100012163163",
+   "reason": "frontage 71.3 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012164626",
+   "reason": "frontage 31.0 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012165607",
+   "reason": "frontage 54.2 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012166374",
+   "reason": "no frontage on Sarphatipark: No footprint edge faces Sarphatipark"
+  },
+  {
+   "pandId": "0363100012166679",
+   "reason": "frontage 36.3 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012166771",
+   "reason": "no frontage on Sarphatipark: No footprint edge faces Sarphatipark"
+  },
+  {
+   "pandId": "0363100012167048",
+   "reason": "frontage 55.3 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012167233",
+   "reason": "frontage 100.6 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012167284",
+   "reason": "frontage 77.4 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012167285",
+   "reason": "no frontage on Sarphatipark: No footprint edge faces Sarphatipark"
+  },
+  {
+   "pandId": "0363100012192066",
+   "reason": "frontage 71.5 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012196226",
+   "reason": "frontage 36.1 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012198961",
+   "reason": "frontage 78.6 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012201951",
+   "reason": "frontage 80.9 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012223743",
+   "reason": "frontage 95.8 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012227420",
+   "reason": "frontage 93.5 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012231186",
+   "reason": "frontage 35.7 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012233592",
+   "reason": "frontage 111.9 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012233891",
+   "reason": "frontage 41.4 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012235991",
+   "reason": "frontage 47.4 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012236692",
+   "reason": "frontage 109.6 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012236832",
+   "reason": "no frontage on Sarphatipark: No footprint edge faces Sarphatipark"
+  },
+  {
+   "pandId": "0363100012237284",
+   "reason": "frontage 72.4 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012166874",
+   "reason": "frontage 71.4 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012187167",
+   "reason": "frontage 32.2 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012203991",
+   "reason": "frontage 43.6 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012218766",
+   "reason": "frontage 60.5 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012222671",
+   "reason": "sightline to Sarphatipark crosses 0363100012165912"
+  },
+  {
+   "pandId": "0363100012233034",
+   "reason": "frontage 42.4 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012242135",
+   "reason": "frontage 54.6 m from Sarphatipark"
+  },
+  {
+   "pandId": "0363100012134217",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152458",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156166",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157373",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157452",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153399",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159644",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160374",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161129",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012212463",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236633",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012167255",
+   "alongM": 0,
+   "widthM": 6.41,
+   "eavesM": 13.92,
+   "roofMaxM": 16.28,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166061",
+   "alongM": 6.44,
+   "widthM": 6.48,
+   "eavesM": 14.07,
+   "roofMaxM": 18.11,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165912",
+   "alongM": 15.96,
+   "widthM": 12.6,
+   "eavesM": 14.23,
+   "roofMaxM": 17.53,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155834",
+   "alongM": 25.41,
+   "widthM": 6.3,
+   "eavesM": 17,
+   "roofMaxM": 17.58,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162504",
+   "alongM": 31.71,
+   "widthM": 6.3,
+   "eavesM": 16.97,
+   "roofMaxM": 17.41,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157222",
+   "alongM": 38.01,
+   "widthM": 6.3,
+   "eavesM": 17.22,
+   "roofMaxM": 17.83,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158414",
+   "alongM": 44.31,
+   "widthM": 6.3,
+   "eavesM": 14.59,
+   "roofMaxM": 18.75,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163384",
+   "alongM": 50.61,
+   "widthM": 6.3,
+   "eavesM": 14.2,
+   "roofMaxM": 18.57,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165284",
+   "alongM": 57.24,
+   "widthM": 6.95,
+   "eavesM": 14.16,
+   "roofMaxM": 17.29,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  }
+ ]
+}

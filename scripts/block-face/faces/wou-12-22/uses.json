@@ -1,0 +1,307 @@
+{
+ "street": "Van Woustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162715",
+   "addresses": [
+    "Van Woustraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 22-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000848689"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557985,
+     "lngLat": [
+      4.89956,
+      52.3567288
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "22-H",
+      "addr:postcode": "1073LL",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-14",
+      "email": "info@dierenhandelexotica.nl",
+      "name": "Exotica",
+      "opening_hours": "Mo 12:00-18:00; Tu-Sa 09:00-18:00; PH off",
+      "phone": "+31 20 6794274",
+      "shop": "pet",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://dierenhandelexotica.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163021",
+   "addresses": [
+    "Van Woustraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 20-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000848683"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2507166317,
+     "lngLat": [
+      4.899543,
+      52.3567954
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "20-H",
+      "addr:postcode": "1073LL",
+      "addr:street": "Van Woustraat",
+      "amenity": "fast_food",
+      "check_date": "2026-01-14",
+      "contact:facebook": "broodjepopov020",
+      "cuisine": "sandwich",
+      "drive_through": "no",
+      "email": "info@broodjepopov.nl",
+      "name": "Broodje Popov",
+      "opening_hours": "Mo-Th 08:00-16:00; Fr 08:00-17:00; Sa 10:00-17:00; Su 10:00-16:00",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://broodjepopov.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159447",
+   "addresses": [
+    "Van Woustraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 18-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000848680"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557298,
+     "lngLat": [
+      4.8995244,
+      52.3568493
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18-H",
+      "addr:postcode": "1073LL",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-14",
+      "email": "info@vanwou.com",
+      "name": "Tabak- & Vapeshop Van Wou",
+      "opening_hours": "We-Sa 09:00-18:00",
+      "phone": "+31 20 6719501",
+      "shop": "tobacco",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.vapeshopvanwou.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13456643990,
+     "lngLat": [
+      4.8995481,
+      52.3568789
+     ],
+     "tags": {
+      "amenity": "atm",
+      "brand": "Euronet",
+      "brand:wikidata": "Q5412010",
+      "cash_in": "no",
+      "check_date": "2026-01-14",
+      "drive_through": "no",
+      "indoor": "no",
+      "operator": "Euronet",
+      "operator:wikidata": "Q5412010"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 0.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236629",
+   "addresses": [
+    "Van Woustraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 16-H",
+     "use": "winkelfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000989021"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556971,
+     "lngLat": [
+      4.8994993,
+      52.3569044
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16-H",
+      "addr:postcode": "1073LL",
+      "addr:street": "Van Woustraat",
+      "email": "Info@megorgeous.nl",
+      "name": "Me Gorgeous!",
+      "opening_hours": "Mo-Su 09:00-18:00",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://megorgeous.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157993",
+   "addresses": [
+    "Van Woustraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 14-4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000984733"
+    },
+    {
+     "address": "Van Woustraat 14-H",
+     "use": "winkelfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000848674"
+    },
+    {
+     "address": "Van Woustraat 14-H",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012579261"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556664,
+     "lngLat": [
+      4.8994726,
+      52.3569572
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14-H",
+      "addr:postcode": "1073LL",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-14",
+      "email": "info@badeta.nl",
+      "name": "Badeta Koffiebranders",
+      "note": "Temporary location until shop at Tweede van der Helststraat 18H is renovated",
+      "opening_hours": "Mo-Sa 07:30-17:00; Su 08:00-17:00",
+      "outdoor_seating": "no",
+      "shop": "coffee",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.badeta.nl/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155589",
+   "addresses": [
+    "Van Woustraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 12-H",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000991540"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817555391,
+     "lngLat": [
+      4.8994356,
+      52.3570115
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12-H",
+      "addr:postcode": "1073LL",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-14",
+      "email": "gloriaverlichting@gmail.com",
+      "name": "Gloria Verlichting",
+      "opening_hours": "Mo 11:30-17:30; Tu-Fr 09:30-17:30; Sa 09:30-17:00",
+      "phone": "+31 20 6791829",
+      "shop": "lighting",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

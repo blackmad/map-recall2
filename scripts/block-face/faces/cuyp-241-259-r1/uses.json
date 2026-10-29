@@ -1,0 +1,84 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012156408",
+   "addresses": [
+    "Albert Cuypstraat 249"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 249-H",
+     "use": "winkelfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000994382"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160542",
+   "addresses": [
+    "Albert Cuypstraat 251"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 251-H",
+     "use": "industriefunctie",
+     "areaM2": 81,
+     "bagId": "0363010000564097"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166567",
+   "addresses": [
+    "Albert Cuypstraat 253"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 253-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000564106"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514583,
+     "lngLat": [
+      4.8981854,
+      52.3568983
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "253-H",
+      "addr:postcode": "1073BH",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "email": "caftanbiladi@gmail.com",
+      "name": "Khadija Caftan Biladi",
+      "opening_hours": "Mo-Sa 09:30-18:00",
+      "operator": "Khadija Rachid",
+      "shop": "tailor",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.khadijacaftan-biladi.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

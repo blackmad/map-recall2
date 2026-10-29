@@ -1,0 +1,443 @@
+{
+ "street": "Eerste Jacob van Campenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162924",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000545725"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157614",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000545718"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165952",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000545711"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155600",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010003720951"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167124",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000545690"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236127",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 14",
+    "Eerste Jacob van Campenstraat 16",
+    "Eerste Jacob van Campenstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 14-H",
+     "use": "industriefunctie",
+     "areaM2": 390,
+     "bagId": "0363010000545648"
+    }
+   ],
+   "units": 18,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817451918,
+     "lngLat": [
+      4.8877438,
+      52.3574482
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14-H",
+      "addr:postcode": "1072BE",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "branch": "We Are Labels Outlet",
+      "check_date": "2026-01-03",
+      "fixme": "Location seems closed, but the website still lists this address and hours. Possibly temporarily closed?",
+      "name": "We Are Labels",
+      "not:brand:wikidata": "Q1987861",
+      "opening_hours": "We 12:00-18:00; Th-Fr 11:00-18:00; Sa 10:00-18:00",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.wearelabels.com/pages/amsterdam-outlet-store"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13449914116,
+     "lngLat": [
+      4.887831,
+      52.3574426
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16-H",
+      "addr:postcode": "1072BE",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "email": "info@famavolat.com",
+      "mobile": "+31630838488",
+      "name": "Fama Volat",
+      "office": "advertising_agency",
+      "website": "https://www.famavolat.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159617",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 12-H",
+     "use": "industriefunctie",
+     "areaM2": 290,
+     "bagId": "0363010000545635"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156746",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 10"
+   ],
+   "groundUnits": [],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2512986099,
+     "lngLat": [
+      4.8875505,
+      52.3574509
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "8-10",
+      "addr:postcode": "1072BE",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "check_date": "2026-01-03",
+      "name": "De Aanzet",
+      "opening_hours": "Mo-Fr 08:30-19:00; Sa 08:30-18:00; Su 10:00-17:00",
+      "organic": "only",
+      "payment:cards": "yes",
+      "payment:cash": "yes",
+      "phone": "+31 20 6733415",
+      "shop": "convenience",
+      "website": "https://www.de-aanzet.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155840",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 8-H",
+     "use": "winkelfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000545610"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13081316500,
+     "lngLat": [
+      4.8875004,
+      52.3575327
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "24",
+      "covered": "no",
+      "fee": "no",
+      "indoor": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156937",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 6-H",
+     "use": "industriefunctie",
+     "areaM2": 94,
+     "bagId": "0363010000545598"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162065",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 4",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 300,
+     "bagId": "0363010000545589"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817453789,
+     "lngLat": [
+      4.8872144,
+      52.3574649
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4",
+      "addr:postcode": "1072BE",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "amenity": "place_of_worship",
+      "check_date": "2026-01-03",
+      "denomination": "tibetan",
+      "name": "Shambhala",
+      "opening_hours": "Tu,Th-Fr 10:00-14:00",
+      "phone": "+31 20 6794753",
+      "religion": "buddhist",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://shambhala.nl/meditatiecentra/amsterdam/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13081316498,
+     "lngLat": [
+      4.887169,
+      52.3575667
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "operator:wikidata": "Q9899",
+      "recycling:glass_bottles": "yes",
+      "recycling_type": "container",
+      "ref": "GLK02240",
+      "source": "survey"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 6.4
+    },
+    {
+     "type": "node",
+     "id": 13081316499,
+     "lngLat": [
+      4.887167,
+      52.357551
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "operator:wikidata": "Q9899",
+      "recycling:cardboard": "yes",
+      "recycling:paper": "yes",
+      "recycling_type": "container",
+      "ref": "PAK02662",
+      "source": "survey"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153328",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 2-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000545575"
+    },
+    {
+     "address": "Ruysdaelkade 59",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000801107"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817452428,
+     "lngLat": [
+      4.887082,
+      52.3574819
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2-H",
+      "addr:postcode": "1072BE",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "check_date": "2026-01-12",
+      "email": "stenelux@kpnplanet.nl",
+      "name": "Stenelux Mineralen en Fossielen",
+      "name:en": "Stenelux Minerals and Fossils",
+      "name:nl": "Stenelux Mineralen en Fossielen",
+      "phone": "+31 20 6621490",
+      "shop": "gift",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 5194336784,
+     "lngLat": [
+      4.8870397,
+      52.357575
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "drinking_water",
+      "bottle": "yes",
+      "covered": "no",
+      "fee": "no",
+      "indoor": "no",
+      "man_made": "water_tap",
+      "operator": "Waternet",
+      "operator:wikidata": "Q2137469",
+      "operator:wikipedia": "nl:Waternet (bedrijf)",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 6.5
+    },
+    {
+     "type": "node",
+     "id": 13081316497,
+     "lngLat": [
+      4.8871364,
+      52.357569
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK02434",
+      "source": "survey",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 6.4
+    }
+   ]
+  }
+ ]
+}

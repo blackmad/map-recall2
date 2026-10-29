@@ -1,0 +1,505 @@
+{
+ "face": "ruysdaelkade-75-85",
+ "street": "Ruysdaelkade",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 10.52,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "ruysdaelkade-75-85-r1",
+   "pands": [
+    "0363100012166549",
+    "0363100012157446",
+    "0363100012162885"
+   ],
+   "passed": true,
+   "triangles": 4224
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012237381",
+   "address": "Ruysdaelkade 75",
+   "builtYear": 1876,
+   "widthM": 14.83,
+   "eavesM": 12.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#765f59",
+    "wallRaw": "#5d4c45",
+    "skyline": {
+     "eavesM": 18.13,
+     "eavesRow": 32,
+     "confidence": 0.72,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.017,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.21,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.02,
+       "widthM": 0.85,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 14.83 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 14.83 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.89 m = 3 storeys of 4.3 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.95 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.026 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159178",
+   "address": "Ruysdaelkade 79",
+   "builtYear": 1878,
+   "widthM": 7.39,
+   "eavesM": 14.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e6960",
+    "wallRaw": "#5e534e",
+    "skyline": {
+     "eavesM": 16.13,
+     "eavesRow": 112,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.17,
+      "riseM": 1.2,
+      "topWidthM": 1.5,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.13,
+       "widthM": 0.95,
+       "centre": 0.63
+      },
+      {
+       "atM": 5.47,
+       "widthM": 0.8,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.85 m = 3 storeys of 4.95 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.08 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.022 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166549",
+   "address": "Ruysdaelkade 81",
+   "builtYear": 1877,
+   "widthM": 6.41,
+   "eavesM": 13.09,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e4e47",
+    "wallRaw": "#61524b",
+    "skyline": {
+     "eavesM": 16.13,
+     "eavesRow": 112,
+     "confidence": 0.88,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 2.6,
+      "topWidthM": 0.6,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.021,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "pijp-1876-hood-frieze",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0.85
+   },
+   "placement": {
+    "type": "pijp-1876-hood-frieze",
+    "measuredPalette": {
+     "brick": "#5e4e47",
+     "evidence": "strip 2023-01-03 span 889-1146: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1882-keystone-lintel (0.318 vs 0.18), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012166549",
+    "ncc": 0.18,
+    "nccRaw": 0.18,
+    "shiftM": [
+     -0.25,
+     0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.39 mean 0.44 vs photo 0.58"
+    ],
+    "wall": {
+     "photo": "#86706a",
+     "model": "#77635a",
+     "dL": -0.061
+    },
+    "glazing": {
+     "photo": 0.58,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.453
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.201,
+    "pijp-1882-keystone-lintel": 0.318,
+    "pijp-1885-segmental-keystone": 0.208
+   }
+  },
+  {
+   "pandId": "0363100012157446",
+   "address": "Ruysdaelkade 83",
+   "builtYear": 1877,
+   "widthM": 5.72,
+   "eavesM": 12.88,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#584841",
+    "wallRaw": "#5b4c45",
+    "skyline": {
+     "eavesM": 15.32,
+     "eavesRow": 144,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.52,
+      "riseM": 2.4,
+      "topWidthM": 0.35,
+      "centre": 0.14
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.42,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "pijp-1875-shop-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1876-hood-frieze",
+    "score": 1
+   },
+   "placement": {
+    "type": "pijp-1875-shop-dormer",
+    "measuredPalette": {
+     "brick": "#584841",
+     "evidence": "strip 2023-01-03 span 1145-1374: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "near tie with pijp-1876-hood-frieze (1)",
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012157446",
+    "ncc": 0.2,
+    "nccRaw": 0.2,
+    "shiftM": [
+     -0.4,
+     0.05
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.36 mean 0.47 vs photo 0.16",
+     "window shape tall vs photo wide"
+    ],
+    "wall": {
+     "photo": "#7e685e",
+     "model": "#725e55",
+     "dL": -0.041
+    },
+    "glazing": {
+     "photo": 0.16,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.246
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.134,
+    "pijp-1882-keystone-lintel": 0.247,
+    "pijp-1885-segmental-keystone": 0.162
+   }
+  },
+  {
+   "pandId": "0363100012162885",
+   "address": "Ruysdaelkade 85",
+   "builtYear": 1876,
+   "widthM": 6.05,
+   "eavesM": 12.48,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5b52",
+    "wallRaw": "#534842",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 164,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.5,
+      "topWidthM": 0.3,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.039,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.25 m at 0.11 (light 0.48): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.25,
+       "centre": 0.11,
+       "light": 0.48
+      },
+      {
+       "widthM": 1.2,
+       "centre": 0.44,
+       "light": 0.4
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.77,
+       "light": 0.5
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.94,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.47,
+       "widthM": 1.38,
+       "centre": 0.43
+      },
+      {
+       "atM": 6.77,
+       "widthM": 1.32,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "pijp-1875-shop-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1876-hood-frieze",
+    "score": 1
+   },
+   "placement": {
+    "type": "pijp-1875-shop-dormer",
+    "measuredPalette": {
+     "brick": "#6c5b52",
+     "evidence": "strip 2023-01-03 span 1374-1616: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "near tie with pijp-1876-hood-frieze (1)",
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012162885",
+    "ncc": 0.305,
+    "nccRaw": 0.305,
+    "shiftM": [
+     -0.35,
+     0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#6f5e56",
+     "model": "#846f64",
+     "dL": 0.069
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.597
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.111,
+    "pijp-1882-keystone-lintel": 0.071,
+    "pijp-1885-segmental-keystone": 0.091
+   }
+  }
+ ]
+}
